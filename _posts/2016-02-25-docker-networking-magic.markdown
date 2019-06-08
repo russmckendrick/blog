@@ -1,0 +1,113 @@
+---
+author: russmckendrick
+comments: true
+date: 2016-02-25 17:58:14+00:00
+layout: post
+link: http://mediaglasses.blog/2016/02/25/docker-networking-magic/
+slug: docker-networking-magic
+title: Docker Networking Magic
+wordpress_id: 1132
+categories:
+- Tech
+tags:
+- Docker
+- Network
+---
+
+I have been quiet on here as I am in the process of writing again, one of things I have been looking at is Dockers new networking features. This gave me an excuse to have a play with [Weave](https://www.weave.works). Rather than go into too much detail here, lets go all click bait because you won’t believe what happened next.
+
+I launched two hosts in [Digital Ocean](https://m.do.co/c/52ec4dc3647e), one in London and then one in New York City using Docker Machine;
+
+    
+    docker-machine create 
+     — driver digitalocean 
+     — digitalocean-access-token your-digital-ocean-api-token-goes-here 
+     — digitalocean-region lon1 
+     — digitalocean-size 1gb 
+    mesh-london
+
+
+
+    
+    docker-machine create 
+     — driver digitalocean 
+     — digitalocean-access-token your-digital-ocean-api-token-goes-here 
+     — digitalocean-region nyc2 
+     — digitalocean-size 1gb 
+    mesh-nyc
+
+
+Once both hosts were up and running I downloaded the Weave binaries on each host;
+
+    
+    docker-machine ssh mesh-london ‘curl -L git.io/weave -o /usr/local/bin/weave; chmod a+x /usr/local/bin/weave’
+    docker-machine ssh mesh-nyc ‘curl -L git.io/weave -o /usr/local/bin/weave; chmod a+x /usr/local/bin/weave’
+
+
+Once the binary was on each host, I launched Weave on each host making sure I provided a password so that traffic between the host machines would be encrypted;
+
+    
+    docker-machine ssh mesh-london weave launch — password m3ga_5ecret_pa55w0rd
+    docker-machine ssh mesh-nyc weave launch — password m3ga_5ecret_pa55w0rd
+
+
+Now Weave is running on both my hosts, I instructed the mesh-nyc host to connect to the IP address of the mesh-london host;
+
+    
+    docker-machine ssh mesh-nyc weave connect “$(docker-machine ip mesh-london)”
+
+
+and finally check the status of the Weave cluster;
+
+    
+    docker-machine ssh mesh-nyc weave status
+
+
+There should be two peers and 2 established connections.
+
+This is where it gets interesting. Launching a [NGINX](https://hub.docker.com/r/russmckendrick/nginx/) container on the New York City host by running;
+
+    
+    docker $(docker-machine config mesh-nyc) run -itd 
+     — name=nginx 
+     — net=weave 
+     — hostname=”nginx.weave.local” 
+     — dns=”172.17.0.1" 
+     — dns-search=”weave.local” 
+    russmckendrick/nginx
+
+
+and then on the London host, try wgetting the page being served by NGINX (its just a plain one which says Hello from NGINX);
+
+    
+    docker $(docker-machine config mesh-london) run -it 
+     — rm 
+     — net=weave 
+     — dns=”172.17.0.1" 
+     — dns-search=”weave.local” 
+    russmckendrick/base wget -q -O- <a href="http://nginx.weave.local" target="_blank" data-href="http://nginx.weave.local">http://nginx.weave.local</a>
+
+
+and then finally ping the NGINX container;
+
+    
+    docker $(docker-machine config mesh-london) run -it 
+     — rm 
+     — net=weave 
+     — dns=”172.17.0.1" 
+     — dns-search=”weave.local” 
+    russmckendrick/base ping -c 3 nginx.weave.local
+
+
+If you can’t be bothered to run it yourself, and who can blame you, here is an [asciicinema](https://asciinema.org/~russmckendrick) recording;
+![asciicast](https://cdn-images-1.medium.com/max/800/0*mh4ZpZZt9x7WxKr5.png)
+As you can see, with no effort on my part other than the commands above I had encrypted, multi-host container networking !!!
+![black-magic](https://cdn-images-1.medium.com/max/800/0*u-Luzx1lnJ6usuII.gif)
+Don’t forget to get teardown the two [Digital Ocean](https://m.do.co/c/52ec4dc3647e) hosts if you brought them up;
+
+    
+    docker-machine stop mesh-london mesh-nyc
+    docker-machine rm mesh-london mesh-nyc
+
+
+For further reading on [Weave Net](https://www.weave.works/products/weave-net/) please [see their documentation](https://github.com/weaveworks/weave#readme).

@@ -1,0 +1,70 @@
+# Jekyll configuration
+markdown: kramdown
+highlighter: rouge
+paginate: 20 # it will paginate after this number
+language: 'en-uk'
+words_per_minute: 200
+
+# Website info
+title: Media Glasses
+description: Ramblings of a nerd
+cover: assets/images/blog-cover.jpg
+logo: assets/images/logo.png
+logo_dark: aassets/images/logo.png
+favicon: aassets/images/logo.png
+production_url: https://mediaglasses.blog/
+source_url: https://github.com/jekyller/jasper2/
+CNAME: #add cname for website to be created
+
+# edit baseurl to simply '/' if using as your personal page (instead of a project page)
+baseurl: /
+
+# Social info
+navigation: True # show the navbar links
+subscribers: False # you need to connect an external service for this to work,
+twitter: mediaglasses # replace by your username
+
+# Disqus
+disqus: True
+disqus_shortname: mediaglasses # replace with your disqus username
+
+# Google Analytics
+google_analytics: UA-69281367-1 # replace with your GA tracking identifier
+
+# Permalinks
+permalink: /:title
+# permalink: /author/:author
+# permalink: /tag/:tag
+
+# Authors' info in `_data/authors.yml`
+# Tags' info in `_data/tags_info.yml`
+
+# gems and other configs
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives
+  - jekyll-tagsgenerator
+
+feed:
+  path: feed.xml
+
+exclude:
+  - assets/css
+  - node_modules
+  - vendor
+  - .travis.yml
+  - Gemfile
+  - Gemfile.lock
+  - GHOST.txt
+  - gulpfile.js
+  - LICENSE
+  - package.json
+  - Rakefile
+  - README.md
+  - script.py
+  - changelog.md
+  - "*.Rmd"
+  - .git*
