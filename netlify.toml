@@ -2,12 +2,12 @@
 [build]
   command = "jekyll build"
   functions = "functions"
-  publish = "."
+  publish = "_site/"
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app. 
   ## Not needed for static site generators.
   #[[redirects]]
-  #  from = "/*"
+  #  from = "/_site/*"
   #  to = "/index.html"
   #  status = 200
   
