@@ -32,7 +32,7 @@ that I would be writting a post like this …
 Given that I don’t use Windows much I thought it would be interesting to see how simple it would be for me to install and use the latest version of MS SQL.
 
 First of all you need to ensure that your Docker installation has at least 4GB of RAM assigned, as I am running Docker for Mac, all that I need to do is open up the Preferences and change the memory to 4GB;
-![]({{ baseurl }}/assets/posts/630a8-1y4ajnhe08shkdq0jiyrabq.png)
+![]({{ site.baseurl }}/assets/posts/630a8-1y4ajnhe08shkdq0jiyrabq.png)
 Once you have done that it turns out getting things up and running is really simple, all you have to do is pull the image from the Docker Hub by running;
 
     
@@ -51,7 +51,7 @@ and then launch it by running the following command;
 
 
 Thats it, no messing about, just accept the end user agreement and set a secure password.
-![]({{ baseurl }}/assets/posts/1d5cb-1p8rl7wqptf_nqjof9gypqw.png)
+![]({{ site.baseurl }}/assets/posts/1d5cb-1p8rl7wqptf_nqjof9gypqw.png)
 Great, now what? Well Microsoft have helpfully provided a command line client you can install on macOS by running;
 
     
@@ -70,7 +70,7 @@ Once installed you should be able to connect to your MSSQL container by running 
     mssql -s localhost -u sa -p 'P@$w0rd!123' -e
 
 
-![]({{ baseurl }}/assets/posts/3f522-16usc4h74rxy4d8zodyga7w.png)
+![]({{ site.baseurl }}/assets/posts/3f522-16usc4h74rxy4d8zodyga7w.png)
 
 
 ### Its not just MS SQL, there is .NET Core as well
@@ -95,18 +95,18 @@ This will download and launch the latest .NET core container and switch to a ses
 
 
 To run a simple “Hello World”
-![]({{ baseurl }}/assets/posts/28ab2-13tsvffwn-ywpb0rrwpnixa.png)
+![]({{ site.baseurl }}/assets/posts/28ab2-13tsvffwn-ywpb0rrwpnixa.png)
 
 
 ### Visual Studio on macOS and Linux
 
 
 Add this this that you can also get [an open source version VisualStudio](http://code.visualstudio.com) on macOS & Linux which is actually really stable and not that different from Atom & Sublime Text and all of a sudden building apps in what was once a very (and I mean very) much a traditional Windows only domain is now available to all.
-![]({{ baseurl }}/assets/posts/bbd28-1nxcnjfx-mla2qdnglsnpng.png)
+![]({{ site.baseurl }}/assets/posts/bbd28-1nxcnjfx-mla2qdnglsnpng.png)
 Now, I wouldn’t say that MSSQL is production ready, but Visual Studio Code is extremely stable and it was recently announced that the open source [.NET core powers C# fucntions in AWS Lambda](https://aws.amazon.com/blogs/compute/announcing-c-sharp-support-for-aws-lambda/).
 
 Following it becoming [a platinum member of the Linux Foundation](https://www.linuxfoundation.org/announcements/microsoft-fortifies-commitment-to-open-source-becomes-linux-foundation-platinum) last month I think Microsoft is going to make 2017 a really interesting year for open source.
 
 I guess that …
-![]({{ baseurl }}/assets/posts/fd2c9-1fs1tqsak-g0dzn_a-vrjig.png)
+![]({{ site.baseurl }}/assets/posts/fd2c9-1fs1tqsak-g0dzn_a-vrjig.png)
 … after all.

@@ -38,4 +38,4 @@ You can buy it from from the following links;
 [embed]https://www.packtpub.com/networking-and-servers/kubernetes-serverless-applications[/embed]
 
 [embed]https://www.packtpub.com/networking-and-servers/kubernetes-serverless-applications[/embed]
-![]({{ baseurl }}/assets/posts/06f96-1ocoahvbgvwxyf-uq-g2weg.png)
+![]({{ site.baseurl }}/assets/posts/06f96-1ocoahvbgvwxyf-uq-g2weg.png)

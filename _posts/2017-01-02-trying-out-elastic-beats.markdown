@@ -82,21 +82,21 @@ Now that my three Docker hosts are available and configured I created the Docker
     docker $(docker-machine config worker02) swarm join $(docker-machine ip manager):2377 --token $SWMTKN
 
 
-![]({{ baseurl }}/assets/posts/66786-1-hv7vzizdtfub3qcrygwtq.png)
+![]({{ site.baseurl }}/assets/posts/66786-1-hv7vzizdtfub3qcrygwtq.png)
 I checked that all three Docker hosts were correctly in the cluster;
 
     
     docker $(docker-machine config manager) node ls
 
 
-![]({{ baseurl }}/assets/posts/2ece0-1gyx5urqjtfns7xxysz0fsg.png)
+![]({{ site.baseurl }}/assets/posts/2ece0-1gyx5urqjtfns7xxysz0fsg.png)
 Everything was as expected, it was time to launch the Elasticsearch and Kibana services. I started by creating an overlay network called _elk_;
 
     
     docker $(docker-machine config manager) network create --driver overlay elk
 
 
-![]({{ baseurl }}/assets/posts/c69f4-1eqoppmgp-hrpop7zyivavw.png)
+![]({{ site.baseurl }}/assets/posts/c69f4-1eqoppmgp-hrpop7zyivavw.png)
 Then I created the Elasticsearch service;
 
     
@@ -121,14 +121,14 @@ Followed by the Kibana service;
       kibana
 
 
-![]({{ baseurl }}/assets/posts/9c43e-1jpwt5nyhw6pc-jw8ionpww.png)
+![]({{ site.baseurl }}/assets/posts/9c43e-1jpwt5nyhw6pc-jw8ionpww.png)
 After a minute I checked that the two services were running as expected using;
 
     
     docker $(docker-machine config manager) service ls
 
 
-![]({{ baseurl }}/assets/posts/53f35-1gr-opcx1qwqnv9wbpaywlq.png)
+![]({{ site.baseurl }}/assets/posts/53f35-1gr-opcx1qwqnv9wbpaywlq.png)
 I now had my Elastic stack up and running.
 
 
@@ -212,7 +212,7 @@ Once the configuration file was in place I started the service by running;
     docker-machine ssh worker01 sudo /etc/init.d/metricbeat start
 
 
-![]({{ baseurl }}/assets/posts/f2bea-1yvnejukcuz-la2jtfgfgtg.png)
+![]({{ site.baseurl }}/assets/posts/f2bea-1yvnejukcuz-la2jtfgfgtg.png)
 I then repeated the process on _worker02_ and _manager_ by replacing _worker01_ in the `docker-machine ssh `commands.
 
 Before I logging into Kibana there are two more things that I needed to do, first of all, import the Metricbeat template, to do this I ran;
@@ -241,14 +241,14 @@ To do this, I ran the following command;
 
 
 Like all other Kibana installations, the first thing I needed to do was configure an index pattern, to do this I entered `metricbeat-*`and selected `@timestamp`from the drop-down list;
-![]({{ baseurl }}/assets/posts/29446-1twifjq9qmpq2gx7_sm9b2a.png)
+![]({{ site.baseurl }}/assets/posts/29446-1twifjq9qmpq2gx7_sm9b2a.png)
 Once that index pattern had been configured clicking on **Discover** took me to the following view, as you can see, I was receiving metrics from my three hosts;
-![]({{ baseurl }}/assets/posts/87cc8-18nfq4d__k9-2opqz0jdxpw.png)
+![]({{ site.baseurl }}/assets/posts/87cc8-18nfq4d__k9-2opqz0jdxpw.png)
 Clicking on **Dashboard**, and then selecting **Metricbeat-overview** gave me the following view;
-![]({{ baseurl }}/assets/posts/e0f17-1-c1gnqrt8bn-3b3aiuetvq.png)
+![]({{ site.baseurl }}/assets/posts/e0f17-1-c1gnqrt8bn-3b3aiuetvq.png)
 From there I clicked on **Load/CPU** and **Processes** gave me the following dashboards;
-![]({{ baseurl }}/assets/posts/73744-1zhsgxz3trdeyfou7hv5_mg.png)
-![]({{ baseurl }}/assets/posts/863bb-1kbphmfrz_q6ntlfakkle9q.png)
+![]({{ site.baseurl }}/assets/posts/73744-1zhsgxz3trdeyfou7hv5_mg.png)
+![]({{ site.baseurl }}/assets/posts/863bb-1kbphmfrz_q6ntlfakkle9q.png)
 So far, so good. Before moving onto the Docker dashboards, I decided to launch a few more services. To do this, I ran the following;
 
     
@@ -261,7 +261,7 @@ So far, so good. Before moving onto the Docker dashboards, I decided to launch a
       russmckendrick/cluster
 
 
-![]({{ baseurl }}/assets/posts/335a4-1jyzsteu_l62uefw6sfdchw.png)
+![]({{ site.baseurl }}/assets/posts/335a4-1jyzsteu_l62uefw6sfdchw.png)
 This created a service which launched three basic containers using the image from [russmckendrick/cluster](https://hub.docker.com/r/russmckendrick/cluster/) and then made them available on port 80 on all three hosts.
 
 Then I launched a service using [manomarks/visualizer](https://hub.docker.com/r/manomarks/visualizer/), this gives you a visual representation of your Docker Swarm cluster. To this I ran;
@@ -275,7 +275,7 @@ Then I launched a service using [manomarks/visualizer](https://hub.docker.com/r/
       manomarks/visualizer
 
 
-![]({{ baseurl }}/assets/posts/96901-1i3swl4ra9wr0lipfeak7iw.png)
+![]({{ site.baseurl }}/assets/posts/96901-1i3swl4ra9wr0lipfeak7iw.png)
 Running the following showed me my cluster
 
     
@@ -289,9 +289,9 @@ Then running;
 
 
 Opened my browsers and showed me how my Swarm cluster was organised;
-![]({{ baseurl }}/assets/posts/cadf8-1nz8ots1h2elbvksucbcyra.png)
+![]({{ site.baseurl }}/assets/posts/cadf8-1nz8ots1h2elbvksucbcyra.png)
 Going back to Kibana, I selected the **Metricbeat Docker** dashboard and was greeted by the following;
-![]({{ baseurl }}/assets/posts/0a7ff-14slbvqtxlpuw92iie4bhua.png)
+![]({{ site.baseurl }}/assets/posts/0a7ff-14slbvqtxlpuw92iie4bhua.png)
 The dashboard is exactly what I was expecting to see, selecting the container from the list on the top left shows just the metrics for the selected container. At this point, my time ran out, so I tore down the cluster by running;
 
     

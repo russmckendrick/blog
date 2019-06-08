@@ -56,7 +56,7 @@ Now the requirements are installed and configured it was time to install Minikub
     brew cask install minikube
 
 
-![]({{ baseurl }}/assets/posts/082ae-1d49mtvz_wsqwb_iibbuqya.png)Such download, much install
+![]({{ site.baseurl }}/assets/posts/082ae-1d49mtvz_wsqwb_iibbuqya.png)Such download, much install
 Now that minikube was installed I ran the command below to launch my local Kubernetes cluster;
 
     
@@ -64,7 +64,7 @@ Now that minikube was installed I ran the command below to launch my local Kuber
 
 
 After a minute or two, it returned a message saying _“Kubectl is now configured to use the cluster”_ and that was it, I had my local Kubernetes cluster up and running.
-![]({{ baseurl }}/assets/posts/addc1-1row37aijczxxemprnqov9a.png)
+![]({{ site.baseurl }}/assets/posts/addc1-1row37aijczxxemprnqov9a.png)
 
 That was easy
 To test it ran the following commands to launch two NGINX containers, check that everything is running and then bind the service to a port on the local Kubernetes cluster;
@@ -75,7 +75,7 @@ To test it ran the following commands to launch two NGINX containers, check that
     kubectl expose deployment my-nginx --type=NodePort
 
 
-![]({{ baseurl }}/assets/posts/c59c4-1f8qg-rfzqnioiwqiab1etw.png)
+![]({{ site.baseurl }}/assets/posts/c59c4-1f8qg-rfzqnioiwqiab1etw.png)
 
 Testing my installation
 Running the following command opened the exposed service in my browser;
@@ -84,7 +84,7 @@ Running the following command opened the exposed service in my browser;
     open $(minikube service my-nginx --url)
 
 
-![]({{ baseurl }}/assets/posts/2dbcb-1mtzw59cxrlhmfpdflstk7a.png)
+![]({{ site.baseurl }}/assets/posts/2dbcb-1mtzw59cxrlhmfpdflstk7a.png)
 
 It works !!!
 To view the [Kubernetes Dashboard](http://kubernetes.io/docs/user-guide/ui/) I ran;
@@ -93,11 +93,11 @@ To view the [Kubernetes Dashboard](http://kubernetes.io/docs/user-guide/ui/) I r
     minikube dashboard
 
 
-![]({{ baseurl }}/assets/posts/7858d-1yaureemqho9rthziunzjya.png)
+![]({{ site.baseurl }}/assets/posts/7858d-1yaureemqho9rthziunzjya.png)
 
 Opening the dashboard
 Which opened my browser;
-![]({{ baseurl }}/assets/posts/530e2-1oophjs_hp6mnlxsvvhwzyw.png)
+![]({{ site.baseurl }}/assets/posts/530e2-1oophjs_hp6mnlxsvvhwzyw.png)
 
 The Kubernetes Dashboard with all of its material glory
 As minikube uses libmachine I can configure my local docker client to connect to the local Kubernetes cluster in the same way you would with a Docker Machine launched Docker host, I did this by running;
@@ -107,7 +107,7 @@ As minikube uses libmachine I can configure my local docker client to connect to
     docker ps
 
 
-![]({{ baseurl }}/assets/posts/62593-1u9ue7y4ot2ebahp32qnx9q.png)
+![]({{ site.baseurl }}/assets/posts/62593-1u9ue7y4ot2ebahp32qnx9q.png)
 
 Its so wide !!!
 There are options to enable additional functionality, such as [Heapster](https://github.com/kubernetes/heapster). To install and enable Heapster I ran the following command;
@@ -128,7 +128,7 @@ Once the Pod had a status of _Running_ I checked the name of the service by runn
     minikube service list --namespace=kube-system
 
 
-![]({{ baseurl }}/assets/posts/dbd5b-1wajh2bbrs15u_-etxdhz4g.png)
+![]({{ site.baseurl }}/assets/posts/dbd5b-1wajh2bbrs15u_-etxdhz4g.png)
 
 Enabling Heapster and opening the dashboard
 Once I knew the name of the service I ran the command below to open the stats dashboard;
@@ -137,7 +137,7 @@ Once I knew the name of the service I ran the command below to open the stats da
     open $(minikube service monitoring-grafana --namespace=kube-system  --url)
 
 
-![]({{ baseurl }}/assets/posts/2d2a4-1n-7wtxb2itpyqgie2kycha.png)
+![]({{ site.baseurl }}/assets/posts/2d2a4-1n-7wtxb2itpyqgie2kycha.png)
 
 Heapster uses [Grafana](http://grafana.org/) to visualise its data
 Once I had finished I had the option of either stopping or deleting the local Kubernetes cluster by running on of the following commands;
@@ -148,7 +148,7 @@ Once I had finished I had the option of either stopping or deleting the local Ku
 
 
 As you may notice from the following terminal output there is no warning when deleting the cluster so make sure you do want to delete the local Kubernetes cluster !!!
-![]({{ baseurl }}/assets/posts/9983b-10vcrodifkv0bxb0tr0cylw.png)
+![]({{ site.baseurl }}/assets/posts/9983b-10vcrodifkv0bxb0tr0cylw.png)
 
 Would be nice get a prompt here
 So, what are the drawbacks? Although I have spent the entire post referring to my “local Kubernetes cluster” it is only a single virtual machine, so I won’t be able to demonstrate the scheduler.

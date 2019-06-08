@@ -33,7 +33,7 @@ So rather than edit the post I thought I would write a follow-up, now this is pu
 ### Overview
 
 
-![]({{ baseurl }}/assets/posts/4a60a-1hcbtvkxlpbiq6tbjcyaibw.png)
+![]({{ site.baseurl }}/assets/posts/4a60a-1hcbtvkxlpbiq6tbjcyaibw.png)
 As you can see, at the top we have the Docker Engine which would be running on a single host. You then have your orchestration/scheduler interacting, with typically, several Docker Engines.
 
 
@@ -54,7 +54,7 @@ As you can see, at the top we have the Docker Engine which would be running on a
 
 
 Kitematic is a desktop interface for Docker by Docker, it works on macOS and Windows, it assumes you have Docker Engine installed and that it is hooked up to a Docker host;
-![]({{ baseurl }}/assets/posts/a8bae-1gd6d2nkzjoffnnx89em2fa.png)
+![]({{ site.baseurl }}/assets/posts/a8bae-1gd6d2nkzjoffnnx89em2fa.png)
 As you can see, it has quite a simple interface and is quite intuitive, but basic. For more information, please see [https://kitematic.com/](https://kitematic.com/) or the projects GitHub page;
 
 [embed]https://media-glass.es/portainer-the-ui-for-docker-d067f6335f23[/embed]
@@ -64,7 +64,7 @@ As you can see, it has quite a simple interface and is quite intuitive, but basi
 
 
 Docker Datacenter is Dockers own SaaS offering; it allows you to launch Docker hosts either on-prem or in your public cloud account. Once your hosts have been initiated, you can create and manage containers on them using the web interface.
-![]({{ baseurl }}/assets/posts/1db23-1ayul2eoyvesbbfe28qpg9a.png)
+![]({{ site.baseurl }}/assets/posts/1db23-1ayul2eoyvesbbfe28qpg9a.png)
 Docker Datacentre is a commercial SaaS offering, for more detail and pricing see the following [https://www.docker.com/products/docker-datacenter/](https://www.docker.com/products/docker-datacenter/).
 
 
@@ -72,9 +72,9 @@ Docker Datacentre is a commercial SaaS offering, for more detail and pricing see
 
 
 I am going to assume you have read my previous post, so I am not going to go into any detail here if you haven’t already then [check it out](https://media-glass.es/portainer-the-ui-for-docker-d067f6335f23#.emde9b4j3).
-![]({{ baseurl }}/assets/posts/674a0-1jc-zyc0j-rkphecwmos73a.png)
+![]({{ site.baseurl }}/assets/posts/674a0-1jc-zyc0j-rkphecwmos73a.png)
 One of the aims of the Portainer project is to have as much coverage of the Docker API as possible. The means that your Portainer installation can not only manage a single Docker host but it can also connect to and deploy containers into your Docker Swarm cluster, assuming you have launched your cluster in Docker Swarm mode (introduced in Docker 1.12).
-![]({{ baseurl }}/assets/posts/10e55-1t3d4nrukvpkkkk7zgzh5-q.png)
+![]({{ site.baseurl }}/assets/posts/10e55-1t3d4nrukvpkkkk7zgzh5-q.png)
 However, as portainer is just an interface to the Docker API (for the time being) you can’t bootstrap a Docker host from within the UI like you can with some of the other tools mentioned in this post.
 
 You can find out more about Portainer at [http://www.portainer.io/](http://www.portainer.io/) or the project page;
@@ -86,7 +86,7 @@ You can find out more about Portainer at [http://www.portainer.io/](http://www.p
 
 
 For those of you running an older Docker Swarm cluster Shipyard wraps your cluster in a nice web-based UI;
-![]({{ baseurl }}/assets/posts/d96ab-1u_r10m8v1ihcq-wi-_bcpa.png)
+![]({{ site.baseurl }}/assets/posts/d96ab-1u_r10m8v1ihcq-wi-_bcpa.png)
 However, development has seemed to have slowed down, especially since the introduction of Swarm mode. For more information on please see [http://shipyard-project.com/](http://shipyard-project.com/) or the project page;
 
 [embed]https://media-glass.es/portainer-the-ui-for-docker-d067f6335f23[/embed]
@@ -118,7 +118,7 @@ For more information on Rancher see [http://rancher.com/](http://rancher.com/) o
 
 
 Dashboard is the Web UI which comes with most Kubernetes by default, it is developed alongside Kubernetes and is a practical web-based implementation of the kubectl command-line client.
-![]({{ baseurl }}/assets/posts/0faa8-1oophjs_hp6mnlxsvvhwzyw.png)
+![]({{ site.baseurl }}/assets/posts/0faa8-1oophjs_hp6mnlxsvvhwzyw.png)
 As you can see from the screen above it has been styled using Googles Material Design, and it feels like the control panel which powers Google Cloud.
 
 Google ran a survey to find out what users though of Dashboard at KubeCon 2016, you can see the results here;
@@ -168,7 +168,7 @@ This video gives a better overview than I ever can;
 [embed]https://www.youtube.com/watch?v=VdhJ_Fm3_mk[/embed]
 
 and this is what it looks like;
-![]({{ baseurl }}/assets/posts/a5b9c-16o85hzcxvbvztiiucermsq.jpeg)
+![]({{ site.baseurl }}/assets/posts/a5b9c-16o85hzcxvbvztiiucermsq.jpeg)
 For more information on DC/OS please see;
 
 [embed]https://media-glass.es/portainer-the-ui-for-docker-d067f6335f23[/embed]
@@ -184,7 +184,7 @@ Personally, I am not a fan of Amazon ECS, it feels to me like alot of other tool
 
 
 Its strength lies in working with other AWS services where it seamlessly works alongside them in the excellent AWS API. The version availabile through the Amazon Console will feel instantly familiar to AWS users;
-![]({{ baseurl }}/assets/posts/5ba0e-1bu7wvwyixjc8ykt1elodja.png)
+![]({{ site.baseurl }}/assets/posts/5ba0e-1bu7wvwyixjc8ykt1elodja.png)
 But as mentioned, it is starting to feel a little clunky. For more information on Amazon ECS please see;
 
 [embed]https://media-glass.es/portainer-the-ui-for-docker-d067f6335f23[/embed]
@@ -194,7 +194,7 @@ But as mentioned, it is starting to feel a little clunky. For more information o
 
 
 While these are all interfaces to Docker, however, as you can see from the picture below some of the UIs have an entire orchestration/scheduler stack to work through before reaching Docker so comparing them isn’t going to be an exact science
-![]({{ baseurl }}/assets/posts/5fe1e-1-c4cs9pshoqzctbqti9uma.png)
+![]({{ site.baseurl }}/assets/posts/5fe1e-1-c4cs9pshoqzctbqti9uma.png)
 My personal recommendations would be …
 
 

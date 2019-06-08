@@ -18,7 +18,7 @@ tags:
 
 
 
-![]({{ baseurl }}/assets/posts/d51c0-1u2kciibzrqubyybhbmkuaw.png)
+![]({{ site.baseurl }}/assets/posts/d51c0-1u2kciibzrqubyybhbmkuaw.png)
 
 
 

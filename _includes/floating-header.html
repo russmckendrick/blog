@@ -1,8 +1,8 @@
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="{{ site.url }}{{ baseurl }}">
+        <a href="{{ site.url }}{{ site.baseurl }}">
             {% if site.logo_dark %}
-                <img src="{{ baseurl }}{{ site.logo_dark }}" alt="{{ site.title }} icon" />
+                <img src="{{ site.baseurl }}{{ site.logo_dark }}" alt="{{ site.title }} icon" />
             {% endif %}
             <span>{{ site.title }}</span>
         </a>
@@ -18,6 +18,18 @@
         <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u={{ site.production_url }}{{ page.url | remove_first: '/' }}"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             {% include facebook.html %}
+        </a>
+        <a class="floating-header-share-li" href="https://www.linkedin.com/shareArticle?mini=true&title={{ page.title | url_encode }}&amp;url={{ site.production_url }}{{ page.url | remove_first: '/' }}&amp;source={{ site.production_url }}"
+            onclick="window.open(this.href, 'share-linkedin', 'width=550,height=235');return false;">
+            {% include linkedin.html %}
+        </a>
+        <a class="floating-header-share-re" href="https://www.reddit.com/submit?url={{ site.production_url }}{{ page.url | remove_first: '/' }}&amp;title={{ page.title | url_encode }}"
+            onclick="window.open(this.href, 'share-redit', 'width=550,height=235');return false;">
+            {% include reddit.html %}
+        </a>
+        <a class="floating-header-share-tu" href="http://www.tumblr.com/share/link?url={{ site.production_url }}{{ page.url | remove_first: '/' }}"
+            onclick="window.open(this.href, 'share-tumbr', 'width=550,height=235');return false;">
+            {% include tumblr.html %}
         </a>
     </div>
     <progress class="progress" value="0">

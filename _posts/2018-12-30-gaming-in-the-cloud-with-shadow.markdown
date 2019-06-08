@@ -128,13 +128,13 @@ As you can see from the photos below the client works great on macOS, as well as
 
 
 
-  * ![]({{ baseurl }}/assets/posts/IMG_1303.png?w=1024)
-  * ![]({{ baseurl }}/assets/posts/IMG_5127.png?w=1024)
-  * ![]({{ baseurl }}/assets/posts/IMG_6274-1.png?w=1024)
-  * ![]({{ baseurl }}/assets/posts/IMG_3965-1.png?w=768)
-  * ![]({{ baseurl }}/assets/posts/IMG_0080-1.png?w=1024)
-  * ![]({{ baseurl }}/assets/posts/IMG_2473-1.png)
-  * ![]({{ baseurl }}/assets/posts/IMG_8099.png)
+  * ![]({{ site.baseurl }}/assets/posts/IMG_1303.png?w=1024)
+  * ![]({{ site.baseurl }}/assets/posts/IMG_5127.png?w=1024)
+  * ![]({{ site.baseurl }}/assets/posts/IMG_6274-1.png?w=1024)
+  * ![]({{ site.baseurl }}/assets/posts/IMG_3965-1.png?w=768)
+  * ![]({{ site.baseurl }}/assets/posts/IMG_0080-1.png?w=1024)
+  * ![]({{ site.baseurl }}/assets/posts/IMG_2473-1.png)
+  * ![]({{ site.baseurl }}/assets/posts/IMG_8099.png)
 
 
 
@@ -173,10 +173,10 @@ As you get a full Windows 10 experience you have to make sure that the correct g
 
 
 
-  * ![]({{ baseurl }}/assets/posts/screenshot_101-1.png?w=1000)
-  * ![]({{ baseurl }}/assets/posts/screenshot_102-1.png?w=1000)
-  * ![]({{ baseurl }}/assets/posts/screenshot_104.png?w=1024)
-  * ![]({{ baseurl }}/assets/posts/screenshot_099.png?w=1000)
+  * ![]({{ site.baseurl }}/assets/posts/screenshot_101-1.png?w=1000)
+  * ![]({{ site.baseurl }}/assets/posts/screenshot_102-1.png?w=1000)
+  * ![]({{ site.baseurl }}/assets/posts/screenshot_104.png?w=1024)
+  * ![]({{ site.baseurl }}/assets/posts/screenshot_099.png?w=1000)
 
 
 

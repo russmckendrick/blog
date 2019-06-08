@@ -85,7 +85,7 @@ Then the following to check that I have the three hosts in the cluster;
     docker $(docker-machine config swarm01) node ls
 
 
-![]({{ baseurl }}/assets/posts/94fd1-1dgada3a-dmk5kf5a3u5a8w.png)I can haz cluster
+![]({{ site.baseurl }}/assets/posts/94fd1-1dgada3a-dmk5kf5a3u5a8w.png)I can haz cluster
 
 
 ### Planning the Minio deployment
@@ -140,7 +140,7 @@ To launch the stack using this Docker Compose file, all I needed to do was the r
     docker $(docker-machine config swarm01) stack deploy --compose-file=docker-compose.yml minio
 
 
-![]({{ baseurl }}/assets/posts/b533c-1ufkhuc2fnbl1bhynoqphaa.png)
+![]({{ site.baseurl }}/assets/posts/b533c-1ufkhuc2fnbl1bhynoqphaa.png)
 
 Creating the stack is a lot easier with Docker 1.13
 As you can see from the terminal output above, six services and a network were created, as well as volumes which were created using the default volume driver.
@@ -152,7 +152,7 @@ To check that the stack was there, I ran the following;
 
 
 Which gave me the output below;
-![]({{ baseurl }}/assets/posts/db8a2-10lj385xlwu5cyyqthqncgq.png)
+![]({{ site.baseurl }}/assets/posts/db8a2-10lj385xlwu5cyyqthqncgq.png)
 
 Checking the stack is there
 Now that I knew that my Stack had successfully created and that the expected six services were attached to it, I then wanted to check that the actual services were running.
@@ -164,7 +164,7 @@ To do this, I used the following command which shows a list of all of the servic
 
 
 As you can see from the terminal output below, I had the six services with each service having one of one containers running;
-![]({{ baseurl }}/assets/posts/66d4d-1dbsdrl93dn0j-aeflofdiq.png)
+![]({{ site.baseurl }}/assets/posts/66d4d-1dbsdrl93dn0j-aeflofdiq.png)
 
 Checking the status of the services which make up the stack
 It was now time to open Minio in my browser, to do this I used the following command;
@@ -179,11 +179,11 @@ It was now time to open Minio in my browser, to do this I used the following com
 
 
 Once my browser opened I was greeted with a login page;
-![]({{ baseurl }}/assets/posts/f06d8-1hhj1mexukdsjclky0el87g.png)
+![]({{ site.baseurl }}/assets/posts/f06d8-1hhj1mexukdsjclky0el87g.png)
 
 The login page
 Once logged in using the credentials I defined when launching the services, I was presented with a clean installation;
-![]({{ baseurl }}/assets/posts/4d0af-11kgng21aq-t5kmprcnsrvg.png)
+![]({{ site.baseurl }}/assets/posts/4d0af-11kgng21aq-t5kmprcnsrvg.png)
 
 The main Minio interface
 Rather than start using the web gui straight away I decided to install the command line client, I used Homebrew to do this;
@@ -201,7 +201,7 @@ Configuration of the client was simple, all I needed to do was to run the follow
 It added a host called swarm which can be contacted at any of the public IP addresses of my Swarm cluster (I used `swarm01`), accessed with the access & secret key and finally the host I am connecting to is running the S3v4 API.
 
 As you can see from the terminal output below you get an overview of the which were updated or added;
-![]({{ baseurl }}/assets/posts/eb891-1bdbhb3vvsdssdhmm_qsbzg.png)
+![]({{ site.baseurl }}/assets/posts/eb891-1bdbhb3vvsdssdhmm_qsbzg.png)
 
 Configuring the client
 Now that the client is configured I can create a Bucket and upload a file by running;
@@ -212,7 +212,7 @@ Now that the client is configured I can create a Bucket and upload a file by run
 
 
 I creatively called the bucket “testing”, and the file was the header graphic for this post.
-![]({{ baseurl }}/assets/posts/a62fb-1xzipfneosve_agah1u_ixg.png)
+![]({{ site.baseurl }}/assets/posts/a62fb-1xzipfneosve_agah1u_ixg.png)
 
 Create the bucket and upload a file
 Now that I had some content I can get a bucket and file listing by running;
@@ -223,14 +223,14 @@ Now that I had some content I can get a bucket and file listing by running;
 
 
 Which returned the results I expected;
-![]({{ baseurl }}/assets/posts/028ca-1_i5lnx2i49ew60cbb8a2fg.png)
+![]({{ site.baseurl }}/assets/posts/028ca-1_i5lnx2i49ew60cbb8a2fg.png)
 
 Bucket and file present and correct
 Going back to the web gui I can see that the bucket and file are listed there as well;
-![]({{ baseurl }}/assets/posts/f85bf-1n3oqvsnyiw-bdllckgfezw.png)
+![]({{ site.baseurl }}/assets/posts/f85bf-1n3oqvsnyiw-bdllckgfezw.png)
 Staying in the browser and “testing” bucket I decided to upload the Docker Compose file, to this I clicked on the **+ **icon in the bottom left and then click on **Upload file**;
-![]({{ baseurl }}/assets/posts/3ec61-1y8-i09e_qn9kho6jitmtha.png)
-![]({{ baseurl }}/assets/posts/a96a6-1tzy8ilfpqrr9vufjujt3sa.png)
+![]({{ site.baseurl }}/assets/posts/3ec61-1y8-i09e_qn9kho6jitmtha.png)
+![]({{ site.baseurl }}/assets/posts/a96a6-1tzy8ilfpqrr9vufjujt3sa.png)
 
 Uploading the Docker Compose file
 Back on the command line check I could see the file and then used the built in `cat`command to view the contents of file;
@@ -240,7 +240,7 @@ Back on the command line check I could see the file and then used the built in `
     mc cat swarm/testing/docker-compose.yml | head -10
 
 
-![]({{ baseurl }}/assets/posts/0d308-1_21mj1jugapjtlmgkq5gra.png)
+![]({{ site.baseurl }}/assets/posts/0d308-1_21mj1jugapjtlmgkq5gra.png)
 
 checking and cat’ing
 
@@ -259,7 +259,7 @@ To force the condition to kick in I killed one of the two containers on swarm02.
 
 
 I checked the status of the services, and after a second or two, the replacement container had launched.
-![]({{ baseurl }}/assets/posts/0b70c-1v2kn8oshzeywj3glmmkg-g.png)
+![]({{ site.baseurl }}/assets/posts/0b70c-1v2kn8oshzeywj3glmmkg-g.png)
 
 Bye bye container, hello there container
 As you can see from the commands, Docker 1.13 is introducing a slightly different way to run commands which effect change to your containers rather than running `docker ps`you now run `docker container ps`.
@@ -285,7 +285,7 @@ The introduction of clean-up commands is a godsend for managing unused volumes, 
     docker system prune
 
 
-![]({{ baseurl }}/assets/posts/9d783-1stfyrse7mqmk35cazdqd4w.png)
+![]({{ site.baseurl }}/assets/posts/9d783-1stfyrse7mqmk35cazdqd4w.png)
 Docker 1.13 also introduces a few new experimental features such as an endpoint for Prometheus-style metrics meaning that you should no longer have to use cadivisor as a middle-man, there are also options for squashing images once they are built and using compression when passing assists during a build.
 
 I may do a follow-up post on some of these experimental features at some point soon.

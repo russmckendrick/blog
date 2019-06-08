@@ -24,25 +24,25 @@ Given that DigitalOcean has always prided themselves ease of use and a low barri
 
 First of all, I needed to launch my cluster, to do this I logged into the DigitalOcean control panel and enabled the limited Kubernetes service, once I had done that I was able to create my Kubernetes cluster;
 
-![]({{ baseurl }}/assets/posts/screenshot_071-1.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_071-1.png)
 
 As you may have already guessed, we need to click on the **Create a Kubernetes cluster** button which can be found in the header. Once you click on the button you will be taken a page which where you can decide a few details about the size of the cluster and where you would like it to be launched, along with the version of Kubernetes you would to use;
 
-![]({{ baseurl }}/assets/posts/screenshot_072.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_072.png)
 
 As you can see from the screen above, I used the latest version of Kubernetes supported by DigitalOcean, and as I am based in the UK, I choose to use DigitalOceans London datacentre region.
 
 Scrolling down, I was able to choose the number of nodes in my cluster, their specs, tags and also give my cluster a name;
 
-![]({{ baseurl }}/assets/posts/screenshot_073.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_073.png)
 
 The default number of nodes is 3, which at $10 per month per node would have meant that I would have been able to run a cluster with 6GB of RAM and 3 x vCPUs for $30 per month. Once I was happy with my settings I clicked on the **Create Cluster** button at the bottom of the page.
 
-![]({{ baseurl }}/assets/posts/screenshot_074.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_074.png)
 
 As you can see from the from the screenshot above, you get a rough estimate on how long it will take to launch and configure your cluster. Once your cluster has been created you will be presented with the following;
 
-![]({{ baseurl }}/assets/posts/screenshot_075.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_075.png)
 
 Towards the bottom of the overview page, you have the option to download your configuration file, clicking on the **Download Config File** button will download a YAML file which contains all of the information you need to connect your local Kubernetes client, kubectl, to your newly created Kubernetes cluster.
 
@@ -52,7 +52,7 @@ You can test the connection to your cluster by opening a terminal, changing to t
 $ kubectl --kubeconfig="russ-do-kubeconfig.yaml" get nodes
 ```
 
-![]({{ baseurl }}/assets/posts/screenshot_078.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_078.png)
 
 As you can see, this returned two nodes, which is correct. Now, passing the configuration file each time I want to interact with my cluster can be a chore, so let's look at using the excellent [KubeContext by Hasan Turken, which is available from the Mac App Store](https://itunes.apple.com/gb/app/kubecontext/id1438838068?mt=12).
 
@@ -60,11 +60,11 @@ This application allows you to manage your Kubernetes configurations and context
 
 Selecting Manage Contexts from the menu brings up a dialog box where you can view your current Kubernetes configs;
 
-![]({{ baseurl }}/assets/posts/screenshot_079.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_079.png)
 
 There is an **Import Kubeconfig** button at the bottom, clicking this will open a file explorer where you can select the configuration you downloaded. Once imported, you should see something like the following;
 
-![]({{ baseurl }}/assets/posts/screenshot_080.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_080.png)
 
 Clicking on **Apply** will save the changes, and you will be able to switch to the cluster using the **Switch Context** menu. 
 
@@ -74,7 +74,7 @@ Running the following commands should show you your cluster nodes and also the v
     $ kubectl get nodes<br>$ kubectl version
 ```
 
-![]({{ baseurl }}/assets/posts/screenshot_081.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_081.png)
 
 Now that our cluster is up and running, and we can connect to it let's test it by launching something. I typically tend to use the Sock Shop microservices demo by Weave, which you can [https://microservices-demo.github.io/](https://microservices-demo.github.io/).
 
@@ -84,9 +84,9 @@ To launch the demo shop use the following commands;
 
 This will download the containers and launch the application.
 
-![]({{ baseurl }}/assets/posts/screenshot_082.png)
-![]({{ baseurl }}/assets/posts/screenshot_083.png)
-![]({{ baseurl }}/assets/posts/screenshot_084.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_082.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_083.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_084.png)
 
 Once launched, you can expose the application by running;
 
@@ -95,16 +95,16 @@ Once launched, you can expose the application by running;
 
 As expected, this launches a DigitalOcean load-balancer, you should be able see the public IP address of the load-balancer in the output of the last two command;
 
-![]({{ baseurl }}/assets/posts/screenshot_085.png)
-![]({{ baseurl }}/assets/posts/screenshot_087.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_085.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_087.png)
 
 Going to the IP address and port 8079 in a browser, for example, http://68.138.252.21:8079/ will show you the shop-front (well it would if my test cluster was still online);
 
-![]({{ baseurl }}/assets/posts/screenshot_086.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_086.png)
 
 Once you are finished with the cluster you can return the DigitalOcean control panel, find your cluster and then click on Settings, in here you will find an option to destroy your cluster;
 
-![]({{ baseurl }}/assets/posts/screenshot_077.png)
+![]({{ site.baseurl }}/assets/posts/screenshot_077.png)
 
 Also, don't forget to remove the context from your Kubernetes configuration file.
 

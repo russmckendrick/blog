@@ -21,7 +21,7 @@ tags:
 
 
 
-![]({{ baseurl }}/assets/posts/bd560-1tr2zsqvxhj9-pvbvn4jdoq.png)
+![]({{ site.baseurl }}/assets/posts/bd560-1tr2zsqvxhj9-pvbvn4jdoq.png)
 
 
 

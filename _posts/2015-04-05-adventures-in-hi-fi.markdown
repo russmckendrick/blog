@@ -15,7 +15,7 @@ tags:
 - Tunes
 ---
 
-![]({{ baseurl }}/assets/posts/da655-1dx_mhye55ulxudqu-ythmg.png)
+![]({{ site.baseurl }}/assets/posts/da655-1dx_mhye55ulxudqu-ythmg.png)
 As everyone who knows me will already know, I am a little bit opinionated when it comes to music. However, I haven’t really had a decent sound system for quite a few years.
 
 I decided mid last year that I would do something about it and not only start getting back into vinyl (I know, such a hipster) but also get a decent sound system, so started saving.

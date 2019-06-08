@@ -144,3 +144,30 @@ td.code {
 .highlight table td:last-child {
     background: none;
 }
+
+
+
+.floating-header-share-li,
+.floating-header-share-re,
+.floating-header-share-tu {
+    display: block;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    line-height: 48px;
+    text-align: center;
+    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.floating-header-share-li {
+    background: #4875B4;
+}
+
+.floating-header-share-re {
+    background: #FF4301;
+}
+
+.floating-header-share-tu {
+    background: #34526f;
+}

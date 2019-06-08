@@ -36,7 +36,7 @@ First of all, you don’t upload keys. Instead, you will need to convert your ke
 Once you have your certificate file it’s time to upload it. This is where things got confusing, the only obvious place I could find clicking around the interface was Settings -&gt; Management Certificates which made complete sense to me coming from an AWS background. I uploaded it, launched my Virtual Machine using Terraform and it failed to find the thumbprint so it was back to Google.
 
 After a while I realised as I was launching my Virtual Machine into a “Cloud Service” and that I had to add the certificate there.
-![]({{ baseurl }}/assets/posts/e439c-1q9c2fialtwekjcqkrbzumw.png)
-![]({{ baseurl }}/assets/posts/6a08a-1z96fvycee_eaacdh-hsnuq.png)
-![]({{ baseurl }}/assets/posts/0e6bf-1npzyf91ocfgqwsmdga19ya.png)
+![]({{ site.baseurl }}/assets/posts/e439c-1q9c2fialtwekjcqkrbzumw.png)
+![]({{ site.baseurl }}/assets/posts/6a08a-1z96fvycee_eaacdh-hsnuq.png)
+![]({{ site.baseurl }}/assets/posts/0e6bf-1npzyf91ocfgqwsmdga19ya.png)
 Once I had uploaded the certificate to the Cloud Service I was able to launch the Virtual Machine using the ssh_key_thumbprint variable, the provisioner was able to connect and finally execute sudo without having to provide the password.
