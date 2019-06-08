@@ -159,7 +159,7 @@ Until it is, I will be waiting - thinking about all of the work arounds I will h
 
 For more information on Terraform 0.12 the following video is a good place to start;
 
-https://www.youtube.com/watch?v=U1kSAELCBDw
+{% include youtubePlayer.html id="U1kSAELCBDw" %}
 
 Or the following blog posts from Hashicorp which go to make up a [preview of Terraform 0.12](https://www.hashicorp.com/blog/terraform-0-1-2-preview);  
 

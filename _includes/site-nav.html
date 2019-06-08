@@ -13,14 +13,35 @@
     </div>
     <div class="site-nav-right">
         <div class="social-links">
-            {% if site.facebook %}
-                <a class="social-link social-link-fb" href="https://facebook.com/{{ site.facebook }}" target="_blank" rel="noopener">{% include facebook.html %}</a>
+            {% if site.social.facebook %}
+                <a class="social-link social-link-fb" href="{{ site.social.facebook }}" target="_blank" rel="noopener">{% include facebook.html %}</a>
             {% endif %}
-            {% if site.twitter %}
-                <a class="social-link social-link-tw" href="https://twitter.com/{{ site.twitter }}" target="_blank" rel="noopener">{% include twitter.html %}</a>
+            {% if site.social.twitter %}
+                <a class="social-link social-link-tw" href="{{ site.social.twitter }}" target="_blank" rel="noopener">{% include twitter.html %}</a>
             {% endif %}
-            {% if site.linkedin %}
-                <a class="social-link social-link-tw" href="https://www.linkedin.com/in/{{ site.linkedin }}" target="_blank" rel="noopener">{% include linkedin.html %}</a>
+            {% if site.social.linkedin %}
+                <a class="social-link social-link-tw" href="{{ site.social.linkedin }}" target="_blank" rel="noopener">{% include linkedin.html %}</a>
+            {% endif %}
+            {% if site.social.github %}
+                <a class="social-link social-link-tw" href="{{ site.social.github }}" target="_blank" rel="noopener">{% include github.html %}</a>
+            {% endif %}
+            {% if site.social.amazon %}
+                <a class="social-link social-link-tw" href="{{ site.social.amazon }}" target="_blank" rel="noopener">{% include amazon.html %}</a>
+            {% endif %}
+            {% if site.social.docker %}
+                <a class="social-link social-link-tw" href="{{ site.social.docker }}" target="_blank" rel="noopener">{% include docker.html %}</a>
+            {% endif %}
+            {% if site.social.instagram %}
+                <a class="social-link social-link-tw" href="{{ site.social.instagram }}" target="_blank" rel="noopener">{% include instagram.html %}</a>
+            {% endif %}
+            {% if site.social.discogs %}
+                <a class="social-link social-link-tw" href="{{ site.social.discogs }}" target="_blank" rel="noopener">{% include discogs.html %}</a>
+            {% endif %}
+            {% if site.social.tumblr %}
+                <a class="social-link social-link-tw" href="{{ site.social.tumblr }}" target="_blank" rel="noopener">{% include tumblr.html %}</a>
+            {% endif %}
+            {% if site.social.spotify %}
+                <a class="social-link social-link-tw" href="{{ site.social.spotify }}" target="_blank" rel="noopener">{% include spotify.html %}</a>
             {% endif %}
         </div>
         {% if site.subscribers %}
@@ -28,7 +49,3 @@
         {% endif %}
     </div>
 </nav>
-
-
-
-

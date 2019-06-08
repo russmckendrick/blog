@@ -21,8 +21,17 @@ baseurl: /
 # Social info
 navigation: True
 subscribers: False
-twitter: mediaglasses # replace by your username
-linkedin: russmckendrick
+social:
+  twitter: https://twitter.com/russmckendrick/
+  linkedin: https://www.linkedin.com/in/russmckendrick/
+  github: https://github.com/russmckendrick/
+  medium: https://medium.com/@russmckendrick
+  amazon: https://www.amazon.com/Russ-McKendrick/e/B079KJV88Z
+  docker: https://hub.docker.com/u/russmckendrick/
+  instagram: https://www.instagram.com/russmckendrick/
+  discogs: http://records.mckendrick.page/
+  tumblr: https://www.mckendrick.io
+  spotify: https://open.spotify.com/user/russmckendrick
 
 # Disqus
 disqus: True
