@@ -30,7 +30,7 @@ For example, in Azure, you have to create a resource group and then place resour
 
 The code for the module looked something like the following;
 
-    <code>resource "azurerm_resource_group" "resource_group" {
+    resource "azurerm_resource_group" "resource_group" {
       name     = "${var.resource_group_name}"
       location = "${var.location}"
       tags     = "${var.tags}"
@@ -55,12 +55,12 @@ The code for the module looked something like the following;
     output "rg_name" {
       description = "The name of the newly created resource group"
       value       = "${azurerm_resource_group.resource_group.name}"
-    }</code>
+    }
 
 
 I was hoping that this meant that my **main.tf** could look like;
 
-    <code>module "application-rg" {
+    module "application-rg" {
       source   = "modules/vnet"
       name     = "${var.resource_group_name}"
       location = "${var.location}"
@@ -74,7 +74,7 @@ I was hoping that this meant that my **main.tf** could look like;
       tags                = "${merge(var.default_tags, map("type","network"))}"
       vnet_name           = "${module.application-rg.rg_name}-vnet"
       address_space       = "10.10.0.0/16"
-    }</code>
+    }
 
 While it worked, it did error a lot of the time from a standing start, this was because by Terraform was trying to create the vNet before the Resource Group had been created.
 
@@ -84,7 +84,7 @@ Because of this I had to rejig my **main.tf** file to look like the following;
 
 
     
-    <code>resource "azurerm_resource_group" "resource_group" {
+    resource "azurerm_resource_group" "resource_group" {
       name     = "${var.resource_group_name}"
       location = "${var.location}"
       tags     = "${merge(var.default_tags, map("type","resource"))}"
@@ -97,14 +97,14 @@ Because of this I had to rejig my **main.tf** file to look like the following;
       tags                = "${merge(var.default_tags, map("type","network"))}"
       vnet_name           = "${azurerm_resource_group.resource_group.name}-vnet"
       address_space       = "10.10.0.0/16"
-    }</code>
+    }
 
 This was not the end of the world, but as the documentation was pushing me down the module route, it was annoying.
 
 The next lot of problem I had was with trying to use **count** with lists which had either been dynamically generated from another module or where hard coded. After much searching [StackOverflow](https://stackoverflow.com/questions/tagged/terraform) and [GitHub issues](https://github.com/hashicorp/terraform/issues/) I found workarounds for most of my issues, such as the following (which has been abridged);
 
     
-    <code>resource "azurerm_network_security_group" "nsg" {
+    resource "azurerm_network_security_group" "nsg" {
       resource_group_name = "${var.resource_group_name}"
       location            = "${var.location}"
       tags                = "${var.tags}"
@@ -143,7 +143,7 @@ The next lot of problem I had was with trying to use **count** with lists which 
       access                                = "${lookup(var.rules_groups[count.index], "access", "Allow")}"
       resource_group_name                   = "${var.resource_group_name}"
       network_security_group_name           = "${azurerm_network_security_group.nsg.name}"
-    }</code>
+    }
 
 Here I had to use the **locals** to count the number of items in the **list** I was passing through so that it could be then be used by **count**.
 
