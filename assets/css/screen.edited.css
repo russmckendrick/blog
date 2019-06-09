@@ -147,7 +147,8 @@ td.code {
 
 .floating-header-share-li,
 .floating-header-share-re,
-.floating-header-share-tu {
+.floating-header-share-tu,
+.floating-header-share-ha {
     display: block;
     align-items: center;
     width: 60px;
@@ -170,10 +171,15 @@ td.code {
     background: #34526f;
 }
 
+.floating-header-share-ha {
+    background: #ff6000;
+}
+
 @media (max-width: 900px) {
     .floating-header-share-li,
     .floating-header-share-re,
-    .floating-header-share-tu {
+    .floating-header-share-tu,
+    .floating-header-share-ha {
         width: 40px;
         height: 40px;
         line-height: 38px;
@@ -200,3 +206,4 @@ td.code {
   .site-logo {
     max-height: 65px;
 }
+
