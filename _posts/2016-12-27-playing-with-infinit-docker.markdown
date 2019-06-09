@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-12-27 19:52:04+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/cde3a-1zzejkupjgglplcutbswyna.png
 link: http://mediaglasses.blog/2016/12/27/playing-with-infinit-docker/
 slug: playing-with-infinit-docker
 title: Playing with Infinit & Docker
@@ -207,7 +210,7 @@ Running the following should show you your mounted volume and create some files;
     echo "working" > rah
 
 
-![]({{ site.baseurl }}/assets/posts/4a51b-1wl1dtkkz5gvt2trd-py1yq.png)Mounting and adding some test files
+![](/assets/posts/4a51b-1wl1dtkkz5gvt2trd-py1yq.png)Mounting and adding some test files
 Now we have a user, some storage, a network and a volume we can look at mounting the volume on our second instance, before we move though we need to run the following command which will make allow us to down the credentials for the user we created.
 
 When you run it you will be asked for a passphrase and then will be shown a counter, once the counter expires you will have to re-run the command;
@@ -216,7 +219,7 @@ When you run it you will be asked for a passphrase and then will be shown a coun
     infinit-device --transmit --user --as russ
 
 
-![]({{ site.baseurl }}/assets/posts/c9ff5-1qfdn_7kz6ntb1neih8hg8g.png)
+![](/assets/posts/c9ff5-1qfdn_7kz6ntb1neih8hg8g.png)
 
 Transmitting
 
@@ -231,11 +234,11 @@ To receive our user credentials we need to run the following command;
 
 
 You will be asked for the passphrase you set on **Instance #1** entered you should see something like the following;
-![]({{ site.baseurl }}/assets/posts/bd633-11qg9bi3rgdlg7w7uikbuma.png)
+![](/assets/posts/bd633-11qg9bi3rgdlg7w7uikbuma.png)
 
 Fetching
 and on **Instance #1** you should have confirmation that the credentials have been transmitted;
-![]({{ site.baseurl }}/assets/posts/7844e-15wrf-1gle-bog5l7taypia.png)
+![](/assets/posts/7844e-15wrf-1gle-bog5l7taypia.png)
 
 Mission accomplished
 Now we have our user on our second instance we can fetch the network we created on our first instance by running;
@@ -275,7 +278,7 @@ You should see that the files `wibble` and `rah` are present, and that `rah` con
     echo "still working" >> ~/mnt/wibble
 
 
-![]({{ site.baseurl }}/assets/posts/e0934-1bf4pttowa5tzqfkbvmm57q.png)
+![](/assets/posts/e0934-1bf4pttowa5tzqfkbvmm57q.png)
 
 Messing with files on Instance #2
 We still have our volume mounted on our first instance, lets go back there and check out the contents of `~/mnt` by running;
@@ -286,7 +289,7 @@ We still have our volume mounted on our first instance, lets go back there and c
 
 
 As you should, the changes we made on our second instance have been immediately copied over and are available on our first instance.
-![]({{ site.baseurl }}/assets/posts/4548a-1xqgesaszm94pvcgdhlr0nq.png)
+![](/assets/posts/4548a-1xqgesaszm94pvcgdhlr0nq.png)
 
 All out changes are on Instance #1
 
@@ -300,7 +303,7 @@ If like me, you have probably launched a few instances are going to be destroyin
     infinit-user --export --full --name russ --output russ.user
 
 
-![]({{ site.baseurl }}/assets/posts/158c1-1e7bloksg9s2-lsz1vaxuoq.png)
+![](/assets/posts/158c1-1e7bloksg9s2-lsz1vaxuoq.png)
 
 Exporting our user credentials
 As per the output, it is important you keep the file safe, it is the equivalent of the private and public portions of an SSH key.
@@ -367,22 +370,22 @@ Opening another terminal and running;
 
 
 Should show you the content of the mount, and open it in the finder;
-![]({{ site.baseurl }}/assets/posts/bbb8e-1dspihr5e9ogep0abvurkiq.png)
+![](/assets/posts/bbb8e-1dspihr5e9ogep0abvurkiq.png)
 
 Running on macOS
 and the finder;
-![]({{ site.baseurl }}/assets/posts/c3fb3-1ivxqehxnn2f_e4sbyxcxkg.png)
+![](/assets/posts/c3fb3-1ivxqehxnn2f_e4sbyxcxkg.png)
 
 You can open the mount in the Finder
 Which means you can simply drop a file in the finder;
-![]({{ site.baseurl }}/assets/posts/458ab-1l8nvneqeh5-2h_jl17p51g.png)
+![](/assets/posts/458ab-1l8nvneqeh5-2h_jl17p51g.png)
 
 Simply drag and drop
 To make it available to all instances in the overlay network;
-![]({{ site.baseurl }}/assets/posts/3b974-1t_tfbwfgarvp82hgyc9rja.png)
+![](/assets/posts/3b974-1t_tfbwfgarvp82hgyc9rja.png)
 
 Contents of ~/mnt on Instance #1
-![]({{ site.baseurl }}/assets/posts/7e2c2-1xfax2ngv0palmv17ojcbiq.png)
+![](/assets/posts/7e2c2-1xfax2ngv0palmv17ojcbiq.png)
 
 Contents of ~/mnt on Instance #2
 To unmount the volume press `ctrl + c` to terminate the process.
@@ -430,7 +433,7 @@ I have used the use `root` as that is the default user for the Digital Ocean ins
     docker volume list
 
 
-![]({{ site.baseurl }}/assets/posts/9e782-1gkip1lizewmxs-ilunon7q.png)
+![](/assets/posts/9e782-1gkip1lizewmxs-ilunon7q.png)
 
 Starting and configuring the Docker Plugin
 Now that our volume is available we can attach it to a container by running;
@@ -447,7 +450,7 @@ That should mount our volume to `/mnt` within the container. Once in run the fol
     exit
 
 
-![]({{ site.baseurl }}/assets/posts/6b86e-1ufcqr1knfv6k3ww2ybid3q.png)
+![](/assets/posts/6b86e-1ufcqr1knfv6k3ww2ybid3q.png)
 
 Creating, attaching to and terminating the container on Instance #1
 Typing `exit` will stop and remove the container, you can check that the container has been removed by running;
@@ -470,7 +473,7 @@ and check the contents of `/mnt` by running;
     exit
 
 
-![]({{ site.baseurl }}/assets/posts/fc91c-1dcvsykuvabpoo2lcp9emmq.png)
+![](/assets/posts/fc91c-1dcvsykuvabpoo2lcp9emmq.png)
 
 The data is still there !!!
 Thats about it, so far. I would say that the software itself should be considered pre-alpha and everything above is going to change at some point in the next 12 months. There is currently no support for Docker Swarm or Kubernetes or support for block storage, however it shows quite a lot of potential and as it stands 2017 is going to be an interesting year for Docker and software defined storage.

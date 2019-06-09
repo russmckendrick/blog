@@ -16,7 +16,7 @@ tags:
 ---
 
 I am pleased to able to say that I have contributed a chapter to the final book in the current [The New Stack](http://thenewstack.io/) ebook series on Docker & Containers.
-![]({{ site.baseurl }}/assets/posts/c4fee-1ketxqlauq_jdg4xfy-8cuq.png)
+![](/assets/posts/c4fee-1ketxqlauq_jdg4xfy-8cuq.png)
 The ebook, which is free, is called “Monitoring & Management With Docker & Containers”
 
 
@@ -24,7 +24,7 @@ The ebook, which is free, is called “Monitoring & Management With Docker & Con
 
 
 The chapter I contributed is titled “Identifying And Collecting Container Data” and talks about the various ways you can not only get metrics out of your containers and host instances but also how to best use them.
-![]({{ site.baseurl }}/assets/posts/8e013-1472dae44l7crhhznhaj-bw.jpeg)
+![](/assets/posts/8e013-1472dae44l7crhhznhaj-bw.jpeg)
 The book is available for free download from The New Stack site at [http://thenewstack.io/ebookseries](http://thenewstack.io/)/
 
 [embed]https://twitter.com/thenewstack/status/808327810834108416[/embed]

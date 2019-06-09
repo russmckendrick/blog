@@ -10,7 +10,6 @@ cover: assets/posts/0bf88-1_zj2vrrdtqkpwzwr9weflq.png
 link: http://mediaglasses.blog/2018/01/28/shopping-for-containers/
 slug: shopping-for-containers
 title: Shopping for Containers
-wordpress_id: 1020
 categories:
 - Tech
 tags:
@@ -22,7 +21,7 @@ tags:
 Over the last six months the Docker Store, which was first introduced as a private beta nearly a year and a half ago in June 2016, has come on leaps and bounds.
 
 It has quickly, but without much fanfare, become a one-stop shop for all things Docker, with both the documentation and home pages linking back to content now hosted on the store.
-![]({{ site.baseurl }}/assets/posts/a2c8c-1tjvbr_bypbt7qiivbdjzcg.png)
+![](/assets/posts/a2c8c-1tjvbr_bypbt7qiivbdjzcg.png)
 
 The store front-page
 
@@ -65,7 +64,7 @@ As you can see from the screenshot above, there are currently four main sections
 
 
 This would download the container which contains the plugin from [https://store.docker.com/plugins/weave-net-plugin](https://store.docker.com/plugins/weave-net-plugin).
-![]({{ site.baseurl }}/assets/posts/4037b-1f_4qbwofl-ezcje1jp7bg.png)
+![](/assets/posts/4037b-1f_4qbwofl-ezcje1jp7bg.png)
 
 The Weave Net Docker plugin page on the Docker Store
 At the time of writing, all but one of the plugins listed it Docker Certified.
@@ -79,11 +78,11 @@ Docker Certified containers mean that the publisher of the container image has s
 As mentioned in the previous section, the bulk of the content on the Docker Store is, no surprises, containers.
 
 The Docker Store is now the official home for all of the core containers curated by Docker themselves. While these containers are still available at the Docker Hub, they are slowly being moved to the Docker Store.
-![]({{ site.baseurl }}/assets/posts/494fe-12-jdc4y-z6f2xye5jcpqva.png)
+![](/assets/posts/494fe-12-jdc4y-z6f2xye5jcpqva.png)
 
 PHP on the Docker Hub
 As you can see from the screen above of the [official image for PHP from the Docker Hub](https://hub.docker.com/_/php/), there is a link to the Docker Store at the top of the page. The [Docker Store page for PHP](https://store.docker.com/images/php) gives you the same view, all be it with a few additions;
-![]({{ site.baseurl }}/assets/posts/f1158-18egttyc-o156nsovsfhdgw.png)
+![](/assets/posts/f1158-18egttyc-o156nsovsfhdgw.png)
 
 PHP on the Docker Store
 You will notice that the Docker Store page has the price of $0.00 and also it highlights the fact that the image is an Offical Image.
@@ -97,17 +96,17 @@ The instructions for pulling the image are the same on both the Docker Hub and D
 Hopefully, they will update both the Nub and Store to use the command`docker image pull`, but that is just me wanting to use the new Docker client commands :)
 
 Let’s take a look at another image, [Couchbase on the Docker Hub](https://hub.docker.com/_/couchbase/) looks like any other official image;
-![]({{ site.baseurl }}/assets/posts/65894-1cyjp972k59_qwj8verw1nw.png)
+![](/assets/posts/65894-1cyjp972k59_qwj8verw1nw.png)
 
 Couchbase on the Docker Hub
 However, it’s listing on the Docker Store gives a different story;
-![]({{ site.baseurl }}/assets/posts/8336b-1mnlkbbjzytigdlxaak0ela.png)
+![](/assets/posts/8336b-1mnlkbbjzytigdlxaak0ela.png)
 
 Couchbase on the Docker Store
 Here we can see the image is actually maintained by Couchbase Inc, who, from clicking on the [link](https://store.docker.com/publishers/couchbaselabs), we can tell a verified publisher. You will also notice that there are no commands like`docker pull` listed on the store, instead, there is a **Proceed to Checkout** button, as this image is $0.00 let's try checking it out.
 
 Clicking on the Checkout button takes you to a page which asks for your name, company name, phone number and email address. Once filled in click on Get Content and you will be taken to your subscription page;
-![]({{ site.baseurl }}/assets/posts/81187-1-i6qwkxemsd1o67n2qgutw.png)
+![](/assets/posts/81187-1-i6qwkxemsd1o67n2qgutw.png)
 
 Couchbase subscription page
 Let’s try pulling the image from an un-authenticated Docker client by running;
@@ -116,11 +115,11 @@ Let’s try pulling the image from an un-authenticated Docker client by running;
     $ docker pull store/couchbase/couchbase:3.1.5
 
 
-![]({{ site.baseurl }}/assets/posts/43eb9-1ehy2yyfsfz7ynqgnkc0rlw.png)
+![](/assets/posts/43eb9-1ehy2yyfsfz7ynqgnkc0rlw.png)
 
 Access denied !!!
 Logging in using the `docker login` command then trying to `docker pull` the image has a lot more success;
-![]({{ site.baseurl }}/assets/posts/861eb-18jghw9onytv8kpwz-ejnsq.png)
+![](/assets/posts/861eb-18jghw9onytv8kpwz-ejnsq.png)
 
 It works when logged in !!!
 From there I could for example run the following command to launch Couchbase;

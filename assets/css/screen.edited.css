@@ -145,8 +145,6 @@ td.code {
     background: none;
 }
 
-
-
 .floating-header-share-li,
 .floating-header-share-re,
 .floating-header-share-tu {
@@ -171,6 +169,17 @@ td.code {
 .floating-header-share-tu {
     background: #34526f;
 }
+
+@media (max-width: 900px) {
+    .floating-header-share-li,
+    .floating-header-share-re,
+    .floating-header-share-tu {
+        width: 40px;
+        height: 40px;
+        line-height: 38px;
+    }
+}
+
 
 .embed-container {
     position: relative;

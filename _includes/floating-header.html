@@ -10,26 +10,26 @@
     <span class="floating-header-divider">&mdash;</span>
     <div class="floating-header-title">{{ page.title }}</div>
     <div class="floating-header-share">
-        <div class="floating-header-share-label">Share this {% include point.html %}</div>
+        <div class="floating-header-share-label">Share this {% include svgs/point.html %}</div>
         <a class="floating-header-share-tw" href="https://twitter.com/share?text={{ page.title | url_encode }}&amp;url={{ site.production_url }}{{ page.url | remove_first: '/' }}"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
-            {% include twitter.html %}
+            {% include svgs/twitter.html %}
         </a>
         <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u={{ site.production_url }}{{ page.url | remove_first: '/' }}"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
-            {% include facebook.html %}
+            {% include svgs/facebook.html %}
         </a>
         <a class="floating-header-share-li" href="https://www.linkedin.com/shareArticle?mini=true&title={{ page.title | url_encode }}&amp;url={{ site.production_url }}{{ page.url | remove_first: '/' }}&amp;source={{ site.production_url }}"
             onclick="window.open(this.href, 'share-linkedin', 'width=550,height=235');return false;">
-            {% include linkedin.html %}
+            {% include svgs/linkedin.html %}
         </a>
         <a class="floating-header-share-re" href="https://www.reddit.com/submit?url={{ site.production_url }}{{ page.url | remove_first: '/' }}&amp;title={{ page.title | url_encode }}"
             onclick="window.open(this.href, 'share-redit', 'width=550,height=235');return false;">
-            {% include reddit.html %}
+            {% include svgs/reddit.html %}
         </a>
         <a class="floating-header-share-tu" href="http://www.tumblr.com/share/link?url={{ site.production_url }}{{ page.url | remove_first: '/' }}"
             onclick="window.open(this.href, 'share-tumbr', 'width=550,height=235');return false;">
-            {% include tumblr.html %}
+            {% include svgs/tumblr.html %}
         </a>
     </div>
     <progress class="progress" value="0">

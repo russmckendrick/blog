@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2017-01-21 20:50:07+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/95a2a-1mbtaa7bpgsaigku9k4t5eq.png
 link: http://mediaglasses.blog/2017/01/21/playing-with-docker-1-13-minio/
 slug: playing-with-docker-1-13-minio
 title: Playing with Docker 1.13 & Minio
@@ -27,7 +30,7 @@ _It is important to note before you read further that this post does not cover u
 
 Docker 1.13 was released on Wednesday; you can get an overview of the features added below;
 
-[embed]https://www.youtube.com/watch?v=y_RiG_9jEJ0[/embed]
+{% include youtubePlayer.html id="y_RiG_9jEJ0" %}
 
 The headline feature for me was that you are now able to launch a stack using a Docker Compose file. I last looked at doing this using Distributed Application Bundles back in June last year;
 
@@ -85,7 +88,7 @@ Then the following to check that I have the three hosts in the cluster;
     docker $(docker-machine config swarm01) node ls
 
 
-![]({{ site.baseurl }}/assets/posts/94fd1-1dgada3a-dmk5kf5a3u5a8w.png)I can haz cluster
+![](/assets/posts/94fd1-1dgada3a-dmk5kf5a3u5a8w.png)I can haz cluster
 
 
 ### Planning the Minio deployment
@@ -107,15 +110,13 @@ While this deploy will give me distributed storage, I will only be able to lose 
 
 For more information on the Minio server compoent I will be launching see the following video;
 
-[embed]https://www.youtube.com/watch?v=jJ8xAUut8jY[/embed]
+{% include youtubePlayer.html id="jJ8xAUut8jY" %}
 
 Or go to the Minio website;
 
-[embed]https://media-glass.es/docker-load-balancing-application-bundles-38426d9568d2[/embed]
-
+[https://min.io](https://min.io)
 
 ### Creating the Stack
-
 
 Now I had my Docker Swarm cluster and an idea of how I wanted my application deployment to look it was time to launch a stack.
 
@@ -140,7 +141,7 @@ To launch the stack using this Docker Compose file, all I needed to do was the r
     docker $(docker-machine config swarm01) stack deploy --compose-file=docker-compose.yml minio
 
 
-![]({{ site.baseurl }}/assets/posts/b533c-1ufkhuc2fnbl1bhynoqphaa.png)
+![](/assets/posts/b533c-1ufkhuc2fnbl1bhynoqphaa.png)
 
 Creating the stack is a lot easier with Docker 1.13
 As you can see from the terminal output above, six services and a network were created, as well as volumes which were created using the default volume driver.
@@ -152,7 +153,7 @@ To check that the stack was there, I ran the following;
 
 
 Which gave me the output below;
-![]({{ site.baseurl }}/assets/posts/db8a2-10lj385xlwu5cyyqthqncgq.png)
+![](/assets/posts/db8a2-10lj385xlwu5cyyqthqncgq.png)
 
 Checking the stack is there
 Now that I knew that my Stack had successfully created and that the expected six services were attached to it, I then wanted to check that the actual services were running.
@@ -164,7 +165,7 @@ To do this, I used the following command which shows a list of all of the servic
 
 
 As you can see from the terminal output below, I had the six services with each service having one of one containers running;
-![]({{ site.baseurl }}/assets/posts/66d4d-1dbsdrl93dn0j-aeflofdiq.png)
+![](/assets/posts/66d4d-1dbsdrl93dn0j-aeflofdiq.png)
 
 Checking the status of the services which make up the stack
 It was now time to open Minio in my browser, to do this I used the following command;
@@ -179,11 +180,11 @@ It was now time to open Minio in my browser, to do this I used the following com
 
 
 Once my browser opened I was greeted with a login page;
-![]({{ site.baseurl }}/assets/posts/f06d8-1hhj1mexukdsjclky0el87g.png)
+![](/assets/posts/f06d8-1hhj1mexukdsjclky0el87g.png)
 
 The login page
 Once logged in using the credentials I defined when launching the services, I was presented with a clean installation;
-![]({{ site.baseurl }}/assets/posts/4d0af-11kgng21aq-t5kmprcnsrvg.png)
+![](/assets/posts/4d0af-11kgng21aq-t5kmprcnsrvg.png)
 
 The main Minio interface
 Rather than start using the web gui straight away I decided to install the command line client, I used Homebrew to do this;
@@ -201,7 +202,7 @@ Configuration of the client was simple, all I needed to do was to run the follow
 It added a host called swarm which can be contacted at any of the public IP addresses of my Swarm cluster (I used `swarm01`), accessed with the access & secret key and finally the host I am connecting to is running the S3v4 API.
 
 As you can see from the terminal output below you get an overview of the which were updated or added;
-![]({{ site.baseurl }}/assets/posts/eb891-1bdbhb3vvsdssdhmm_qsbzg.png)
+![](/assets/posts/eb891-1bdbhb3vvsdssdhmm_qsbzg.png)
 
 Configuring the client
 Now that the client is configured I can create a Bucket and upload a file by running;
@@ -212,7 +213,7 @@ Now that the client is configured I can create a Bucket and upload a file by run
 
 
 I creatively called the bucket “testing”, and the file was the header graphic for this post.
-![]({{ site.baseurl }}/assets/posts/a62fb-1xzipfneosve_agah1u_ixg.png)
+![](/assets/posts/a62fb-1xzipfneosve_agah1u_ixg.png)
 
 Create the bucket and upload a file
 Now that I had some content I can get a bucket and file listing by running;
@@ -223,14 +224,14 @@ Now that I had some content I can get a bucket and file listing by running;
 
 
 Which returned the results I expected;
-![]({{ site.baseurl }}/assets/posts/028ca-1_i5lnx2i49ew60cbb8a2fg.png)
+![](/assets/posts/028ca-1_i5lnx2i49ew60cbb8a2fg.png)
 
 Bucket and file present and correct
 Going back to the web gui I can see that the bucket and file are listed there as well;
-![]({{ site.baseurl }}/assets/posts/f85bf-1n3oqvsnyiw-bdllckgfezw.png)
+![](/assets/posts/f85bf-1n3oqvsnyiw-bdllckgfezw.png)
 Staying in the browser and “testing” bucket I decided to upload the Docker Compose file, to this I clicked on the **+ **icon in the bottom left and then click on **Upload file**;
-![]({{ site.baseurl }}/assets/posts/3ec61-1y8-i09e_qn9kho6jitmtha.png)
-![]({{ site.baseurl }}/assets/posts/a96a6-1tzy8ilfpqrr9vufjujt3sa.png)
+![](/assets/posts/3ec61-1y8-i09e_qn9kho6jitmtha.png)
+![](/assets/posts/a96a6-1tzy8ilfpqrr9vufjujt3sa.png)
 
 Uploading the Docker Compose file
 Back on the command line check I could see the file and then used the built in `cat`command to view the contents of file;
@@ -240,7 +241,7 @@ Back on the command line check I could see the file and then used the built in `
     mc cat swarm/testing/docker-compose.yml | head -10
 
 
-![]({{ site.baseurl }}/assets/posts/0d308-1_21mj1jugapjtlmgkq5gra.png)
+![](/assets/posts/0d308-1_21mj1jugapjtlmgkq5gra.png)
 
 checking and cat’ing
 
@@ -259,7 +260,7 @@ To force the condition to kick in I killed one of the two containers on swarm02.
 
 
 I checked the status of the services, and after a second or two, the replacement container had launched.
-![]({{ site.baseurl }}/assets/posts/0b70c-1v2kn8oshzeywj3glmmkg-g.png)
+![](/assets/posts/0b70c-1v2kn8oshzeywj3glmmkg-g.png)
 
 Bye bye container, hello there container
 As you can see from the commands, Docker 1.13 is introducing a slightly different way to run commands which effect change to your containers rather than running `docker ps`you now run `docker container ps`.
@@ -285,7 +286,7 @@ The introduction of clean-up commands is a godsend for managing unused volumes, 
     docker system prune
 
 
-![]({{ site.baseurl }}/assets/posts/9d783-1stfyrse7mqmk35cazdqd4w.png)
+![](/assets/posts/9d783-1stfyrse7mqmk35cazdqd4w.png)
 Docker 1.13 also introduces a few new experimental features such as an endpoint for Prometheus-style metrics meaning that you should no longer have to use cadivisor as a middle-man, there are also options for squashing images once they are built and using compression when passing assists during a build.
 
 I may do a follow-up post on some of these experimental features at some point soon.
@@ -306,4 +307,4 @@ Add it to your list of things to check out :)
 
 I thought I would post a quick follow up, as always submit links to [Hacker News](https://news.ycombinator.com/submitted?id=russmck) and there was an interesting conversation in the comments. It’s well worth reading as it not only discusses the size limitation of Minio but also some of the design decisions;
 
-[embed]https://media-glass.es/docker-load-balancing-application-bundles-38426d9568d2[/embed]
+[https://news.ycombinator.com/item?id=13452085](https://news.ycombinator.com/item?id=13452085)

@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-12-18 17:21:49+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/b1d9c-1baahw8ywxbes846ww6mk_w.png
 link: http://mediaglasses.blog/2016/12/18/thoughts-on-amazon-lightsail/
 slug: thoughts-on-amazon-lightsail
 title: Thoughts on Amazon Lightsail
@@ -16,7 +19,7 @@ tags:
 ---
 
 I am still catching up on all of the announcements from the AWS re:invent 2016, one of the ones I was interested in was Amazon Lightsail. I have always found Digital Ocean to be useful for launching instances, doing some test installations of XYZ and then terminating them.
-![]({{ site.baseurl }}/assets/posts/a61f2-1utnvxjp0ctl2wer0avlzkw.png)The Amazon Lightsail web site with obligatory cape wearing hipster developer with gaffertape headphones.
+![](/assets/posts/a61f2-1utnvxjp0ctl2wer0avlzkw.png)The Amazon Lightsail web site with obligatory cape wearing hipster developer with gaffertape headphones.
 It makes perfect sense that Amazon would offer a service which allows you to consume resources in the same way Digital Ocean allow their users to, they have the infrastructure to provide as well as an established customer base who probably already use Digital Ocean.
 
 
@@ -84,19 +87,19 @@ I am not going to go into the whole Pet vs. Cattle explaination, just read throu
 So does the introduction of Amazon Lightsail mean you can host Pets in AWS? Ermmmmmm, sort of.
 
 Lets walk through launching an Instance with Amazon Lightsail. When you first login you are present with a much friendlier welcome than the overwhelming AWS Console;
-![]({{ site.baseurl }}/assets/posts/23007-1cbmnsrho6ioufddy3ijceg.png)
+![](/assets/posts/23007-1cbmnsrho6ioufddy3ijceg.png)
 Clicking on **Create instance** gives you the option of launching a pre configured software stack;
-![]({{ site.baseurl }}/assets/posts/d4c77-1pfh7-6q4jeurbotqprud_a.png)
+![](/assets/posts/d4c77-1pfh7-6q4jeurbotqprud_a.png)
 Or a plain Operating System (currently limited to Amazin Linux and Ubuntu 16.04 LTS);
-![]({{ site.baseurl }}/assets/posts/99348-1haxev1fuq64ltwbp5ibgiq.png)
+![](/assets/posts/99348-1haxev1fuq64ltwbp5ibgiq.png)
 Scrolling down gives you the options of selecting the size of the instance you want to launch, and it tells you exactly how much it is going to cost you per month, which key to use and which availability zone within us-east1 (currently the only region available) it should be launched in and finally you get to name your instance.
-![]({{ site.baseurl }}/assets/posts/ba799-16vjhdvfekecy3b8sk4tfug.png)
+![](/assets/posts/ba799-16vjhdvfekecy3b8sk4tfug.png)
 As you can see, onced launched you machine has a publicly accessible IP address which you can connect to using a terminal;
-![]({{ site.baseurl }}/assets/posts/732bb-1_9rzgzb-de9vgvr7fclxea.png)
+![](/assets/posts/732bb-1_9rzgzb-de9vgvr7fclxea.png)
 
 Connecting to the instance using the terminal
 Or login using the Connect using SSH button in the GUI;
-![]({{ site.baseurl }}/assets/posts/41a04-1ac5otibfyqnlabsxbdcska.png)
+![](/assets/posts/41a04-1ac5otibfyqnlabsxbdcska.png)
 
 Connecting to the instance using the web interface
 So far on the face it the experience very Digital Ocean like, all be it with an AWS twist. Click on Manage gives you several tabs;
@@ -128,12 +131,12 @@ So far on the face it the experience very Digital Ocean like, all be it with an 
 **Delete** allows you to, well, delete your instance.
 
 
-![]({{ site.baseurl }}/assets/posts/312e7-1qi0uc5afp8ro1qojsnp2rg.png)
-![]({{ site.baseurl }}/assets/posts/ef060-189ijlml5jwzc0bp57vwngq.png)
-![]({{ site.baseurl }}/assets/posts/60fda-1ttoxsvfwbbbbhncysxnwbg.png)
-![]({{ site.baseurl }}/assets/posts/44d6c-1a70izdilivpp-8zib4k5eq.png)
-![]({{ site.baseurl }}/assets/posts/3b854-1bonezdhe-hceidz9_gsdva.png)
-![]({{ site.baseurl }}/assets/posts/4573b-18rd5sqp3s_trqokmfgbo3a.png)
+![](/assets/posts/312e7-1qi0uc5afp8ro1qojsnp2rg.png)
+![](/assets/posts/ef060-189ijlml5jwzc0bp57vwngq.png)
+![](/assets/posts/60fda-1ttoxsvfwbbbbhncysxnwbg.png)
+![](/assets/posts/44d6c-1a70izdilivpp-8zib4k5eq.png)
+![](/assets/posts/3b854-1bonezdhe-hceidz9_gsdva.png)
+![](/assets/posts/4573b-18rd5sqp3s_trqokmfgbo3a.png)
 
 All the tabs !!!
 The whole thing feels very much like a lite AWS, and that is where a few potential problems could come in.

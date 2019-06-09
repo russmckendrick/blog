@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2017-01-05 20:06:27+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/0c009-1t6mqpzxww25bmabjf2uwqa.png
 link: http://mediaglasses.blog/2017/01/05/day-to-day-tools/
 slug: day-to-day-tools
 title: Day to Day Tools
@@ -86,11 +89,3 @@ Finally, using the following services …
 
 
 … along with [Github](https://github.com/russmckendrick), [Pinboard](https://pinboard.in/), [Feedly](http://feedly.com/) and [Pocket](http://getpocket.com/) .
-
-Here are what I was using in 2015, 2014 and 2013;
-
-[embed]https://media-glass.es/day-to-day-tools-7297053ba231[/embed]
-
-[embed]https://media-glass.es/day-to-day-tools-7297053ba231[/embed]
-
-[embed]https://media-glass.es/day-to-day-tools-7297053ba231[/embed]

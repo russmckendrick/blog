@@ -19,7 +19,7 @@ tags:
 
 
 
-![]({{ site.baseurl }}/assets/posts/c2877-1btnvhhpk2c7h1uygnsjz3w.png)
+![](/assets/posts/c2877-1btnvhhpk2c7h1uygnsjz3w.png)
 
 
 
