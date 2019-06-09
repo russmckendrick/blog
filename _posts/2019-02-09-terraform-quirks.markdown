@@ -17,9 +17,6 @@ tags:
   - Terraform
 ---
 
-
-
-
 I have been using Terraform over the last few months, having [not used it in anger for quite a while](https://mediaglasses.blog/2015/07/19/terraform-azure/) since the projects I have been working on have been more suitable for using [Ansible](https://www.packtpub.com/virtualization-and-cloud/learn-ansible).
 
 However, as I am doing more and more with Microsoft Azure, I found the Ansible modules a little lacking, plus for someone of the projects I have had to use an orchestration tool which can natively run on Windows.
