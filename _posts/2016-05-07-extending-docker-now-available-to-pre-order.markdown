@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-05-07 16:51:30+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/extending-docker.png
 link: http://mediaglasses.blog/2016/05/07/extending-docker-now-available-to-pre-order/
 slug: extending-docker-now-available-to-pre-order
 title: Extending Docker now available to Pre-Order

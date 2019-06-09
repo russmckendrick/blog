@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-09-10 20:08:25+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/record-player.png
 link: http://mediaglasses.blog/2016/09/10/whats-on-the-deck-september-2016/
 slug: whats-on-the-deck-september-2016
 title: Whats on the deck September 2016

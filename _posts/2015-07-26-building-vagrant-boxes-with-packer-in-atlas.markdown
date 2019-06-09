@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-07-26 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/74508-1a5gakioumbsubq8uzyafrq.png
 link: http://mediaglasses.blog/2015/07/26/building-vagrant-boxes-with-packer-in-atlas/
 slug: building-vagrant-boxes-with-packer-in-atlas
 title: Building Vagrant Boxes with Packer in Atlas

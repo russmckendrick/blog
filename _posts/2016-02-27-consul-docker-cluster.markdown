@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-02-27 17:55:22+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/34e9c-1upxri424zhxlxm1hltjlva.png
 link: http://mediaglasses.blog/2016/02/27/consul-docker-cluster/
 slug: consul-docker-cluster
 title: Consul Docker Cluster

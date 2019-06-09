@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-10-03 11:57:56+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/elcapitan.png
 link: http://mediaglasses.blog/2015/10/03/upgrading-to-el-capitan/
 slug: upgrading-to-el-capitan
 title: Upgrading to El Capitan

@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-11-19 13:32:31+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/f67498eb918f60ab574bb8e6a47ee343206b4995.png
 link: http://mediaglasses.blog/2016/11/19/annoying-ansible-quirk/
 slug: annoying-ansible-quirk
 title: Annoying Ansible Quirk

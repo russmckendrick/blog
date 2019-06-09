@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-11-07 18:36:01+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/docker-flocker-header.png
 link: http://mediaglasses.blog/2016/11/07/pre-order-docker-data-management-with-flocker/
 slug: pre-order-docker-data-management-with-flocker
 title: Pre-Order Docker Data Management with Flocker

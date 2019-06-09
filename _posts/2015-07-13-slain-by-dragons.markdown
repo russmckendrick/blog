@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-07-13 19:36:52+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/6d56e-1hurxuw_cwup5m2bzinc8mw.png
 link: http://mediaglasses.blog/2015/07/13/slain-by-dragons/
 slug: slain-by-dragons
 title: Slain by Dragons

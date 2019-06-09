@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-06-28 12:23:29+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/ab773-1vqi42wf5whibpcpng-3_iq.png
 link: http://mediaglasses.blog/2015/06/28/digital-ocean-bootstrap/
 slug: digital-ocean-bootstrap
 title: Digital Ocean Bootstrap

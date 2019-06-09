@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-07-19 15:13:10+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/terraform.png
 link: http://mediaglasses.blog/2015/07/19/terraform-azure/
 slug: terraform-azure
 title: Terraform & Azure

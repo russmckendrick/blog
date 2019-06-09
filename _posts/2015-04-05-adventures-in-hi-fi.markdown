@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-04-05 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/da655-1dx_mhye55ulxudqu-ythmg.png
 link: http://mediaglasses.blog/2015/04/05/adventures-in-hi-fi/
 slug: adventures-in-hi-fi
 title: Adventures in Hi-Fi

@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-07-22 18:49:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/keys.png
 link: http://mediaglasses.blog/2015/07/22/adding-a-ssh-key-to-azure/
 slug: adding-a-ssh-key-to-azure
 title: Adding a SSH Key to Azure

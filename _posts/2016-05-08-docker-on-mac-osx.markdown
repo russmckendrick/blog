@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-05-08 16:13:53+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/docker-mac.png
 link: http://mediaglasses.blog/2016/05/08/docker-on-mac-osx/
 slug: docker-on-mac-osx
 title: Docker on Mac OSX

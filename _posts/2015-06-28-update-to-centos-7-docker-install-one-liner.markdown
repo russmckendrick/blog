@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-06-28 14:38:07+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/d1934-1gu5dyuug6eixz3r6ml5ggg.png
 link: http://mediaglasses.blog/2015/06/28/update-to-centos-7-docker-install-one-liner/
 slug: update-to-centos-7-docker-install-one-liner
 title: Update to CentOS 7 Docker install one-liner

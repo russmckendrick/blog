@@ -3,17 +3,20 @@ author: russmckendrick
 comments: true
 date: 2015-05-23 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/037d4-1ps5wkrhvianif6diuiqrjg.png
 link: http://mediaglasses.blog/2015/05/23/openshift-origin-v3/
 slug: openshift-origin-v3
 title: OpenShift Origin V3
 wordpress_id: 1068
 categories:
-- Tech
+    - Tech
 tags:
-- CentOS
-- Docker
-- OpenShift
-- RedHat
+    - CentOS
+    - Docker
+    - OpenShift
+    - RedHat
 ---
 
 After being nagged by the gaffer to try OpenShift Origin V3 I finally got round to running a test server using Vagrant on my Mac.

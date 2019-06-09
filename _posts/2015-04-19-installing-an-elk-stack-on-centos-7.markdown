@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-04-19 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/elk.png
 link: http://mediaglasses.blog/2015/04/19/installing-an-elk-stack-on-centos-7/
 slug: installing-an-elk-stack-on-centos-7
 title: Installing an ELK Stack on CentOS 7

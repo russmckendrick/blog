@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-07-12 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/90871-1kei2ykczwky7bmoyfktwqa.png
 link: http://mediaglasses.blog/2015/07/12/update-to-puppet-install-script/
 slug: update-to-puppet-install-script
 title: Update to Puppet Install Script

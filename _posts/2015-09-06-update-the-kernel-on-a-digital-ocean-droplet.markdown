@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-09-06 16:46:11+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/ab773-1vqi42wf5whibpcpng-3_iq.png
 link: http://mediaglasses.blog/2015/09/06/update-the-kernel-on-a-digital-ocean-droplet/
 slug: update-the-kernel-on-a-digital-ocean-droplet
 title: Update the Kernel on a Digital Ocean droplet
@@ -14,16 +17,6 @@ tags:
 - Digital Ocean
 - Server
 ---
-
-
-
-
-
-
-![](/assets/posts/ab773-1vqi42wf5whibpcpng-3_iq.png)
-
-
-
 
 A while I posted about a script I wrote to quickly [bootstrap a Digital Ocean droplet](https://media-glass.es/2015/06/28/digital-ocean-bootstrap/).
 

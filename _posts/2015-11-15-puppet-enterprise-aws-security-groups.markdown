@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-11-15 18:41:20+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/fire.png
 link: http://mediaglasses.blog/2015/11/15/puppet-enterprise-aws-security-groups/
 slug: puppet-enterprise-aws-security-groups
 title: Puppet Enterprise & AWS Security Groups

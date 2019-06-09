@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-08-12 11:30:31+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/81285-1d61ywe7ljevvqxrwksjeag.png
 link: http://mediaglasses.blog/2016/08/12/docker-for-amazon-web-services-beta/
 slug: docker-for-amazon-web-services-beta
 title: Docker for Amazon Web Services Beta

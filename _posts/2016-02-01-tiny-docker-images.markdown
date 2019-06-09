@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-02-01 18:02:26+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/4c336-1l-_-alrjfqwlb-em6j3e4w.png
 link: http://mediaglasses.blog/2016/02/01/tiny-docker-images/
 slug: tiny-docker-images
 title: Tiny Docker Images

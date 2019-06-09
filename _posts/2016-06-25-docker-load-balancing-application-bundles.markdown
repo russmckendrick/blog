@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-06-25 18:30:16+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/a84bb-1i_ahno4rkznaenaw6kpr2q.png
 link: http://mediaglasses.blog/2016/06/25/docker-load-balancing-application-bundles/
 slug: docker-load-balancing-application-bundles
 title: Docker Load Balancing & Application Bundles

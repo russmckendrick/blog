@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-02-25 17:58:14+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/aca1f-1la-xhr1doss0ljmc73i80q.png
 link: http://mediaglasses.blog/2016/02/25/docker-networking-magic/
 slug: docker-networking-magic
 title: Docker Networking Magic

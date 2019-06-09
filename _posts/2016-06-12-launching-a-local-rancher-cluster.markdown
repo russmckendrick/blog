@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-06-12 15:30:55+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/rancher.png
 link: http://mediaglasses.blog/2016/06/12/launching-a-local-rancher-cluster/
 slug: launching-a-local-rancher-cluster
 title: Launching a local Rancher cluster

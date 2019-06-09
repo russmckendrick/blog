@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-12-12 16:01:50+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/3c70c-1evr6imn-7ztrozizktgewq.png
 link: http://mediaglasses.blog/2016/12/12/monitoring-managment-with-docker-containers-ebook/
 slug: monitoring-managment-with-docker-containers-ebook
 title: Monitoring & Managment with Docker & Containers ebook

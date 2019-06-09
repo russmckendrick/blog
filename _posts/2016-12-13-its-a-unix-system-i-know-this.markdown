@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-12-13 09:01:02+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/unix-system.png
 link: http://mediaglasses.blog/2016/12/13/its-a-unix-system-i-know-this/
 slug: its-a-unix-system-i-know-this
 title: It’s a UNIX system, I know this.

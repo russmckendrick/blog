@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-03-29 12:23:28+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/hackers2.png
 link: http://mediaglasses.blog/2015/03/29/fail2ban-on-centos-7/
 slug: fail2ban-on-centos-7
 title: Fail2Ban on CentOS 7

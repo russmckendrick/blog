@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-12-15 18:15:14+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/monitoring-docker.png
 link: http://mediaglasses.blog/2015/12/15/monitoring-docker-released/
 slug: monitoring-docker-released
 title: Monitoring Docker Released

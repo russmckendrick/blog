@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-10-11 17:43:15+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/aff9c-1kz6uxkclhalseignd09phg.png
 link: http://mediaglasses.blog/2015/10/11/more-site-updates/
 slug: more-site-updates
 title: More site updates

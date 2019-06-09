@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-05-24 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/dc378-1-ehv7guprfyyvtv5okslxq.png
 link: http://mediaglasses.blog/2015/05/24/quick-openstack-kilo-installation/
 slug: quick-openstack-kilo-installation
 title: Quick OpenStack Kilo Installation

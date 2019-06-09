@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-10-30 10:04:50+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/record-player.png
 link: http://mediaglasses.blog/2016/10/30/october-2016-playlist/
 slug: october-2016-playlist
 title: October 2016 Playlist
@@ -20,4 +23,5 @@ I have been writing a lot again this month so not a lot to post, however, I have
 
 You can listen to it all here …
 
-[embed]https://open.spotify.com/user/russmckendrick/playlist/1pHorFlCRQAIGYl6ueNLuv[/embed]
+{% include spotifyEmbed.html id="1pHorFlCRQAIGYl6ueNLuv" %}
+

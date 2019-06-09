@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-10-11 15:45:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/24874-1vddkqflrz3vbraaoqxqxuq.png
 link: http://mediaglasses.blog/2015/10/11/monitoring-docker-book/
 slug: monitoring-docker-book
 title: Monitoring Docker book

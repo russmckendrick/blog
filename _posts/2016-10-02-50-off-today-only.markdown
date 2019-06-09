@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-10-02 15:04:48+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/extending-docker.png
 link: http://mediaglasses.blog/2016/10/02/50-off-today-only/
 slug: 50-off-today-only
 title: 50% Off Today Only

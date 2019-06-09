@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-06-30 18:30:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/c633b-1vzrrt9_ld5aja_krbw73ww.png
 link: http://mediaglasses.blog/2016/06/30/docker-swarm/
 slug: docker-swarm
 title: Docker Swarm

@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2016-05-22 15:36:56+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/falco.png
 link: http://mediaglasses.blog/2016/05/22/falco-by-sysdig/
 slug: falco-by-sysdig
 title: Falco by sysdig

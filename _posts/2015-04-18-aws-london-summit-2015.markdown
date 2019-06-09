@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-04-18 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/72dcb-1zhbttcbelgabpu1q27mipq.png
 link: http://mediaglasses.blog/2015/04/18/aws-london-summit-2015/
 slug: aws-london-summit-2015
 title: AWS London Summit 2015

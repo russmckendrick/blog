@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-12-13 18:18:50+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/flocker.png
 link: http://mediaglasses.blog/2015/12/13/flocker-on-centos-7/
 slug: flocker-on-centos-7
 title: Flocker on CentOS 7
