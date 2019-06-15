@@ -35,4 +35,6 @@ Once that had completed, I enabled the [Agnoster ZSH theme](https://github.com/a
 
 ![](/assets/posts/zsh-screen.png)
 
-Moving over my existing aliases and more importantly, the excellent [z.sh](https://github.com/rupa/z) which is what I use to jump around folders when on the command line. So far, no complaints - it will be an interesting week using it at work and tweaking the settings.
+Moving over my existing aliases and more importantly, the excellent [z.sh](https://github.com/rupa/z) which is what I use to jump around folders when on the command line seem to work without any problems - which is where I think I had problems before.
+
+So far, no complaints - it will be an interesting week using it at work and tweaking the settings.
