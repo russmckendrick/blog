@@ -1,6 +1,6 @@
 @import "global.css";
-.highlight pre { background: color(var(--darkgrey) l(-3%)); }
-.highlight .hll { background: color(var(--darkgrey) l(-3%)); }
+.highlight pre { background-color: #272822; }
+.highlight .hll { background-color: #272822; }
 .highlight .c { color: #75715e } /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
 .highlight .k { color: #66d9ef } /* Keyword */

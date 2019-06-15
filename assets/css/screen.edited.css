@@ -116,6 +116,13 @@ production stylesheet in assets/built/screen.css
     box-shadow: #f4f8fb 0 0 0 5px;
 }
 
+.highlighter-rouge {
+    min-height: 30px;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    }
+
 figure.highlight,
 .highlight pre,
 .highlight code,
@@ -124,14 +131,20 @@ figure.highlight,
 .highlight tr,
 td.code {
     border: none;
+    min-height: 30px;
+    width: 100%;
     min-width: 100%;
     max-width: 100%;
+    overflow-x: scroll
 }
 
 .highlight table,
 .highlight td pre {
     padding: 0;
     margin: 0;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
 }
 
 .highlight table td {
@@ -185,7 +198,6 @@ td.code {
         line-height: 38px;
     }
 }
-
 
 .embed-container {
     position: relative;

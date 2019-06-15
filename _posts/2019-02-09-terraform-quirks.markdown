@@ -27,33 +27,34 @@ For example, in Azure, you have to create a resource group and then place resour
 
 The code for the module looked something like the following;
 
-    resource "azurerm_resource_group" "resource_group" {
-      name     = "${var.resource_group_name}"
-      location = "${var.location}"
-      tags     = "${var.tags}"
-    }
-    
-    variable "name" {
-      description = "The name of the resource group we want to use"
-      default     = ""
-    }
-    
-    variable "location" {
-      description = "The location/region where we are crrating the resource"
-      default     = ""
-    }
-    
-    variable "tags" {
-      description = "The tags to associate the resource we are creating"
-      type        = "map"
-      default     = {}
-    }
-    
-    output "rg_name" {
-      description = "The name of the newly created resource group"
-      value       = "${azurerm_resource_group.resource_group.name}"
-    }
+```
+resource "azurerm_resource_group" "resource_group" {
+  name     = "${var.resource_group_name}"
+  location = "${var.location}"
+  tags     = "${var.tags}"
+}
 
+variable "name" {
+  description = "The name of the resource group we want to use"
+  default     = ""
+}
+
+variable "location" {
+  description = "The location/region where we are crrating the resource"
+  default     = ""
+}
+
+variable "tags" {
+  description = "The tags to associate the resource we are creating"
+  type        = "map"
+  default     = {}
+}
+
+output "rg_name" {
+  description = "The name of the newly created resource group"
+  value       = "${azurerm_resource_group.resource_group.name}"
+}
+```
 
 I was hoping that this meant that my **main.tf** could look like;
 
