@@ -1,13 +1,18 @@
 ---
+author: russmckendrick
+comments: true
+date: 2019-02-09 19:11:25+00:00
 layout: post
 current: post
-subclass: 'post'
 class: post-template
 navigation: True
-title: Advanced Markdown tips
-date: 2017-07-27 05:00:00
-cover:  assets/posts/cover.png
-tags: [tag1, tag2]
-author: russmckendrick
+title: Terraform Quirks
+excerpt: A post about some of my bug bears with the current version of Terraform. Don't worry, they will all be fixed soon.
+slug: terraform-quirks
+\cover: assets/posts/terraform-update.png
+categories: Tech
+tags: 
+  - Azure
+  - Terraform
 ---
 
