@@ -1,15 +1,14 @@
 ---
 author: russmckendrick
 comments: true
-date: 2019-02-09 19:11:25+00:00
+date: YYYY-MM-DD HH:MM:SS
 layout: post
 current: post
 class: post-template
 navigation: True
 title: Terraform Quirks
-excerpt: A post about some of my bug bears with the current version of Terraform. Don't worry, they will all be fixed soon.
 slug: terraform-quirks
-\cover: assets/posts/terraform-update.png
+cover: assets/posts/terraform-update.png
 categories: Tech
 tags: 
   - Azure
