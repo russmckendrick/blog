@@ -50,5 +50,8 @@
     },
     "config": {
         "posts_per_page": 25
+    },
+    "dependencies": {
+        "netlify-cli": "^2.11.23"
     }
 }
