@@ -59,7 +59,7 @@ You also get free component upgrades, for life. There are clients available for 
 
 At the time of writing, there is a wait time of around 15 days from order to activation. While this doesn't sound very cloud-like watching the video which was in part responsible for the delays (it has had over 2 million views) from [Linus Tech Tips](https://www.youtube.com/user/LinusTechTips) shows why;
 
-{% include youtubePlayer.html id="0BQ4bXNdEQI" %}
+{% include embed/youtube.html id="0BQ4bXNdEQI" %}
 
 Around the 3 minute mark in the video, there is an overview of the hardware hosts which each of the Shadow VMs.
 

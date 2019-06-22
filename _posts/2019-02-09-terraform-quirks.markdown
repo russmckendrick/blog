@@ -161,7 +161,7 @@ Until it is, I will be waiting - thinking about all of the work arounds I will h
 
 For more information on Terraform 0.12 the following video is a good place to start;
 
-{% include youtubePlayer.html id="U1kSAELCBDw" %}
+{% include embed/youtube.html id="U1kSAELCBDw" %}
 
 Or the following blog posts from Hashicorp which go to make up a [preview of Terraform 0.12](https://www.hashicorp.com/blog/terraform-0-1-2-preview);  
 
@@ -178,6 +178,6 @@ Or the following blog posts from Hashicorp which go to make up a [preview of Ter
 
 Since I first wrote this post the following update of Terraform 0.12 was posted to Reddit by Mitchell Hashimoto (the founder of HashiCorp) ...
 
-{% include redditEmbed.html id="https://www.reddit.com/r/Terraform/comments/aos3o0/where_is_terraform_012/eg51f07/" %}
+{% include embed/reddit.html id="https://www.reddit.com/r/Terraform/comments/aos3o0/where_is_terraform_012/eg51f07/" %}
 
 ... it is an interesting insight into what is going to behind the scenes to get this release out of the gate.

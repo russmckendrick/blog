@@ -69,7 +69,7 @@ The full list is below (I know there are 30) …
 
 [embed]https://open.spotify.com/user/russmckendrick/playlist/[/embed]
 
-{% include spotifyEmbed.html id="2YTNLxcgnlQc8WNUNP8X72" %}
+{% include embed/spotify.html id="2YTNLxcgnlQc8WNUNP8X72" %}
 
 Here are links to previous years …
 

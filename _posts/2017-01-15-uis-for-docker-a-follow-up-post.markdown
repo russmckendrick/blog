@@ -102,11 +102,11 @@ Rancher described themselves as “A complete Platform for Running Containers”
 
 As you may have noticed in the overview, Rancher allows you manage all three main container orchestration tools and schedulers allowing you not only deploy but also manage both Kubernetes and Docker Swarm Clusters;
 
-{% include vimeoPlayer.html id="160679920" %}
+{% include embed/vimeo.html id="160679920" %}
 
 A recent release has also added support for Mesos Clusters as well;
 
-{% include vimeoPlayer.html id="168834759" %}
+{% include embed/vimeo.html id="168834759" %}
 
 Rancher takes off all the heavy lifting out of deploying orchestration tools and schedulers by connecting to public API’s of cloud services such as Amazon Web Services, Microsoft Azure, Digital Ocean, Packet as well as offer support to add your on-premise hosts.
 
@@ -138,11 +138,11 @@ For more detail on Dashboard see the project page at;
 
 OpenShift is a little different from the other tools mentioned in this post, it is a combination of web and command line based tools, it is has been designed to be a fully functional PaaS been built on top of Kubernetes 1.3 and Docker 1.10. Rather than go into any detail here have a watch of the following video;
 
-{% include youtubePlayer.html id="D_Lj0rObunI" %}
+{% include embed/youtube.html id="D_Lj0rObunI" %}
 
 and for a more detailed walkthrough see;
 
-{% include youtubePlayer.html id="yFPYGeKwmpk" %}
+{% include embed/youtube.html id="yFPYGeKwmpk" %}
 
 Like all Red Hat products, OpenShift comes as open source and commerically support versions,which is certified and supported. For the enterprise version see;
 
@@ -168,7 +168,7 @@ You will notice that the description doesn’t mention conatiners, though it doe
 
 This video gives a better overview than I ever can;
 
-{% include youtubePlayer.html id="VdhJ_Fm3_mk" %}
+{% include embed/youtube.html id="VdhJ_Fm3_mk" %}
 
 and this is what it looks like;
 ![](/assets/posts/a5b9c-16o85hzcxvbvztiiucermsq.jpeg)

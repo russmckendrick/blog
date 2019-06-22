@@ -30,7 +30,7 @@ _It is important to note before you read further that this post does not cover u
 
 Docker 1.13 was released on Wednesday; you can get an overview of the features added below;
 
-{% include youtubePlayer.html id="y_RiG_9jEJ0" %}
+{% include embed/youtube.html id="y_RiG_9jEJ0" %}
 
 The headline feature for me was that you are now able to launch a stack using a Docker Compose file. I last looked at doing this using Distributed Application Bundles back in June last year;
 
@@ -110,7 +110,7 @@ While this deploy will give me distributed storage, I will only be able to lose 
 
 For more information on the Minio server compoent I will be launching see the following video;
 
-{% include youtubePlayer.html id="jJ8xAUut8jY" %}
+{% include embed/youtube.html id="jJ8xAUut8jY" %}
 
 Or go to the Minio website;
 

@@ -23,5 +23,5 @@ I have been writing a lot again this month so not a lot to post, however, I have
 
 You can listen to it all here …
 
-{% include spotifyEmbed.html id="1pHorFlCRQAIGYl6ueNLuv" %}
+{% include embed/spotify.html id="1pHorFlCRQAIGYl6ueNLuv" %}
 
