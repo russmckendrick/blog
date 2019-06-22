@@ -1,21 +1,9 @@
-# example netlify.toml
 [build]
   command = "jekyll build"
   functions = "functions"
   publish = "_site/"
 
-  ## Uncomment to use this redirect for Single Page Applications like create-react-app. 
-  ## Not needed for static site generators.
-  #[[redirects]]
-  #  from = "/_site/*"
-  #  to = "/index.html"
-  #  status = 200
-  
-  ## (optional) Settings for Netlify Dev
-  ## https://github.com/netlify/netlify-dev-plugin#project-detection
-  #[dev] 
-  #  command = "yarn start" # Command to start your dev server
-  #  port = 3000 # Port that the dev server will be listening on
-  #  publish = "dist" # Folder with the static content for _redirect file
-  
-  ## more info on configuring this file: https://www.netlify.com/docs/netlify-toml-reference/ 
+[dev] 
+  command = "bundle exec jekyll serve --drafts --incremental"
+  port = 4000
+  publish = "_site/"
