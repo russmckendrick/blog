@@ -85,14 +85,6 @@
         </div>
     {% endif %}
 
-    <!-- highlight.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
-    <script>$(document).ready(function() {
-      $('pre code').each(function(i, block) {
-        hljs.highlightBlock(block);
-      });
-    });</script>
-
     <!-- jQuery + Fitvids, which makes all video embeds responsive -->
     <script
         src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -100,16 +92,6 @@
         crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="{{ site.baseurl }}assets/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
-
-
-    <!-- Paginator increased to "infinit" in _config.yml -->
-    <!-- if paginator.posts  -->
-    <script>
-        var maxPages = parseInt('{{ paginator.total_pages }}');
-    </script>
-    <script src="{{ site.baseurl }}assets/js/infinitescroll.js"></script>
-    <!-- /endif -->
 
     {% if paginator.total_pages > site.paginate %}
     <script>
@@ -117,7 +99,6 @@
     </script>
     <script src="{{ site.baseurl }}assets/js/infinitescroll.js"></script>
     {% endif %}
-
 
     <!-- Add Google Analytics  -->
     {% include analytics.html %}
