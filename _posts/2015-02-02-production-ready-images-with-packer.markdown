@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-02-02 12:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/d7e92-1eit0el1qo_ktd9pivouocg.png
 link: http://mediaglasses.blog/2015/02/02/production-ready-images-with-packer/
 slug: production-ready-images-with-packer
 title: Production Ready Images with Packer

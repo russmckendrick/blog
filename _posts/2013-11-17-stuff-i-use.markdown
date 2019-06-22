@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2013-11-17 12:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/toolbox.png
 link: http://mediaglasses.blog/2013/11/17/stuff-i-use/
 slug: stuff-i-use
 title: Stuff I use

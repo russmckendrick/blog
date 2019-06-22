@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-08-31 12:13:48+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/76a8e-128uidfijnkymj4befmm04q.png
 link: http://mediaglasses.blog/2014/08/31/docker-fig-nginx-reverse-proxies-and-centos-7/
 slug: docker-fig-nginx-reverse-proxies-and-centos-7
 title: Docker, Fig, NGINX Reverse Proxies and CentOS 7

@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-02-14 15:36:06+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/75ca6-1e1pdsvffisj4fgir-bw0fg.png
 link: http://mediaglasses.blog/2015/02/14/nginx-ngx_pagespeed-on-centos-7/
 slug: nginx-ngx_pagespeed-on-centos-7
 title: NGINX & ngx_pagespeed on CentOS 7

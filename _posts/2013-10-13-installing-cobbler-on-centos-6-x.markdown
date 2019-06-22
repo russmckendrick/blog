@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2013-10-13 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/122aa-1id-18jyy8c991nkkkjlflw.png
 link: http://mediaglasses.blog/2013/10/13/installing-cobbler-on-centos-6-x/
 slug: installing-cobbler-on-centos-6-x
 title: Installing Cobbler on CentOS 6.x
@@ -13,15 +16,6 @@ tags:
 - CentOS
 - Shell
 ---
-
-
-
-
-
-
-![](/assets/posts/122aa-1id-18jyy8c991nkkkjlflw.png)
-
-
 
 
 I needed a simple way to mirror some repos, and potentially kickstart some servers at a future date. While something like [The Foreman](http://theforeman.org) would do the build side of things it doesn’t repo mirrors (yet). So I did an install of [Cobbler](http://www.cobblerd.org).

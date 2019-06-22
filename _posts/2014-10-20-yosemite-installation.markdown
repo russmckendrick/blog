@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-10-20 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/a3b4d-1vdiqkloalydqhhpxqyigpq.png
 link: http://mediaglasses.blog/2014/10/20/yosemite-installation/
 slug: yosemite-installation
 title: Yosemite Installation

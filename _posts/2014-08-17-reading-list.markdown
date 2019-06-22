@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-08-17 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/90e69-1y2b-9-shpfd1vbmuj1ib-w.png
 link: http://mediaglasses.blog/2014/08/17/reading-list/
 slug: reading-list
 title: Reading List
@@ -14,16 +17,6 @@ tags:
 - Pocket
 - Reading
 ---
-
-
-
-
-
-
-![](/assets/posts/90e69-1y2b-9-shpfd1vbmuj1ib-w.png)
-
-
-
 
 At least once a day I skim through a large number of blogs in my [Feedly](https://feedly.com/) feed using [Reeder 2](http://reederapp.com/mac/), when I see something which catches my eye I send it over to [Pocket](http://getpocket.com/) so it is sync’ed to all of my devices.
 

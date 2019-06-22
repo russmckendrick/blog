@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-07-12 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/0575a-11laetu7o-0qvmw-uulixjw.png
 link: http://mediaglasses.blog/2014/07/12/first-play-with-centos-7-0/
 slug: first-play-with-centos-7-0
 title: First play with CentOS 7.0
@@ -14,14 +17,6 @@ tags:
 - Digital Ocean
 - EL7
 ---
-
-
-
-
-
-
-![](/assets/posts/0575a-11laetu7o-0qvmw-uulixjw.png)
-
 
 
 

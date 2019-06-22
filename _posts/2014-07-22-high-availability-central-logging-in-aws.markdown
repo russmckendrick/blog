@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-07-22 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/09429-17i2luhneg1kyhppz4xclwa.png
 link: http://mediaglasses.blog/2014/07/22/high-availability-central-logging-in-aws/
 slug: high-availability-central-logging-in-aws
 title: High Availability Central Logging in AWS
@@ -13,16 +16,6 @@ tags:
 - AWS
 - Logs
 ---
-
-
-
-
-
-
-![](/assets/posts/09429-17i2luhneg1kyhppz4xclwa.png)
-
-
-
 
 As part of another work project I needed to install some central logging to run in AWS. Simple you may say, create an instance and use [Puppet](https://media-glass.es/tags/#puppet) to install [ELK server stack](http://www.elasticsearch.org/overview/elkdownloads/) on there, or go back to basics and create a [rsyslog](http://www.rsyslog.com/) server. Normally this would be well and good, however I needed to ensure that all parts solution were highly available and fully redundant, this meant that I would have engineer a lot of HA into my ELK or rsyslog servers.
 

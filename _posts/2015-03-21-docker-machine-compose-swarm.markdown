@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-03-21 16:16:25+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/56bb6-1fkvck8ohwoqaoqemnflprq.png
 link: http://mediaglasses.blog/2015/03/21/docker-machine-compose-swarm/
 slug: docker-machine-compose-swarm
 title: Docker Machine, Compose & Swarm

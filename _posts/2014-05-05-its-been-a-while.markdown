@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-05-05 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/df740-1yctybgvqt5tfvylmbebedg.png
 link: http://mediaglasses.blog/2014/05/05/its-been-a-while/
 slug: its-been-a-while
 title: It’s Been A While
@@ -13,16 +16,6 @@ tags:
 - Blog
 - Tunes
 ---
-
-
-
-
-
-
-![](/assets/posts/df740-1yctybgvqt5tfvylmbebedg.png)
-
-
-
 
 Been listening to some old albums this past week, some I haven’t heard for years, such as ….
 

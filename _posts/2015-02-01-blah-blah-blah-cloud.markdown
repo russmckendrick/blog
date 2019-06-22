@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-02-01 12:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/2bd39-1d0-v0g-5vax3wktokz7k6w.png
 link: http://mediaglasses.blog/2015/02/01/blah-blah-blah-cloud/
 slug: blah-blah-blah-cloud
 title: Blah Blah Blah Cloud

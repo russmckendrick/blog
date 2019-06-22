@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-07-27 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/57283-1wdad2dih_my51xlzkpn_fw.png
 link: http://mediaglasses.blog/2014/07/27/whats-in-the-toolbox/
 slug: whats-in-the-toolbox
 title: What’s in the toolbox?
@@ -14,16 +17,6 @@ tags:
 - Shell
 - Tools
 ---
-
-
-
-
-
-
-![](/assets/posts/57283-1wdad2dih_my51xlzkpn_fw.png)
-
-
-
 
 It’s been a while since I listed [what I am using day-to-day](https://media-glass.es/2013/11/17/stuff-i-use/) so I thought I would do a quick update;
 

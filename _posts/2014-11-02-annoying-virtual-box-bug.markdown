@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-11-02 12:43:13+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/5c9a1-1n9xhavivb_rx83vbibddvg.png
 link: http://mediaglasses.blog/2014/11/02/annoying-virtual-box-bug/
 slug: annoying-virtual-box-bug
 title: Annoying Virtual Box bug

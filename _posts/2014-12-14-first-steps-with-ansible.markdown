@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-12-14 12:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/05b95-1fbbrk3hdstn5wiwc7ppfka.png
 link: http://mediaglasses.blog/2014/12/14/first-steps-with-ansible/
 slug: first-steps-with-ansible
 title: First Steps with Ansible

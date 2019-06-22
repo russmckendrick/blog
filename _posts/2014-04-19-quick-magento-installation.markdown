@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-04-19 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/c2877-1btnvhhpk2c7h1uygnsjz3w.png
 link: http://mediaglasses.blog/2014/04/19/quick-magento-installation/
 slug: quick-magento-installation
 title: Quick Magento Installation
@@ -13,16 +16,6 @@ tags:
 - Magento
 - Shell
 ---
-
-
-
-
-
-
-![](/assets/posts/c2877-1btnvhhpk2c7h1uygnsjz3w.png)
-
-
-
 
 As part of work I have to install Magento with its sample data a lot for proof of concepts, while the installation is simple it can quickly become a chore. Because of this I have started to use [n98-magerun](http://magerun.net/). It can be installed using the following commands;
 

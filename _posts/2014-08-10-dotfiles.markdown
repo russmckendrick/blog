@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-08-10 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/0b831-1qk9m7usgzvixnh8-0ercaq.png
 link: http://mediaglasses.blog/2014/08/10/dotfiles/
 slug: dotfiles
 title: Dotfiles
@@ -13,15 +16,6 @@ tags:
 - GitHub
 - Mac
 ---
-
-
-
-
-
-
-![](/assets/posts/0b831-1qk9m7usgzvixnh8-0ercaq.png)
-
-
 
 
 For the last few years I have been grabbing some we [documented dotfiles from GitHub](https://github.com/search?o=desc&q=dotfiles&ref=cmdform&s=stars&type=Repositories) but most of them have either ended up reconfigured my Mac to the point of it being unrecognisable or they have just been a collection of useful aliases. The I came across [Bashstrap](https://github.com/barryclark/bashstrap), it was close enough to what I wanted so I [forked it](https://github.com/russmckendrick/dotfiles) ….

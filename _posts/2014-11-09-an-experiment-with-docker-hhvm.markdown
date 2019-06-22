@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-11-09 12:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/54995-1wuw41wqdexz0au4qmvhfmw.png
 link: http://mediaglasses.blog/2014/11/09/an-experiment-with-docker-hhvm/
 slug: an-experiment-with-docker-hhvm
 title: An Experiment with Docker & HHVM

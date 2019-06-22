@@ -3,10 +3,10 @@ author: russmckendrick
 comments: true
 date: 2014-04-27 11:00:00+00:00
 layout: post
-link: http://mediaglasses.blog/2014/04/27/been-playing-with-docker-again-this-weekend-this-time-rather-than-just-doing-for-the-sake-of-doing/
-slug: been-playing-with-docker-again-this-weekend-this-time-rather-than-just-doing-for-the-sake-of-doing
-title: Been playing with Docker again this weekend, this time rather than just doing
-  for the sake of doing…
+current: post
+class: post-template
+cover: assets/posts/docker.png
+title: Docker
 wordpress_id: 1162
 categories:
 - Tech

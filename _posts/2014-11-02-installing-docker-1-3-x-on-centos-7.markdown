@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-11-02 12:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/docker5.png
 link: http://mediaglasses.blog/2014/11/02/installing-docker-1-3-x-on-centos-7/
 slug: installing-docker-1-3-x-on-centos-7
 title: Installing Docker 1.3.x on CentOS 7

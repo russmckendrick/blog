@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-03-15 12:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/52946-1yctybgvqt5tfvylmbebedg.png
 link: http://mediaglasses.blog/2015/03/15/whats-been-on-the-ones-twos/
 slug: whats-been-on-the-ones-twos
 title: What’s Been On The Ones & Twos

@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-03-08 16:37:38+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/1bc06-1untqxqirazoyco3q4hktgg.png
 link: http://mediaglasses.blog/2015/03/08/migration-of-server-swap-space/
 slug: migration-of-server-swap-space
 title: Migration of Server & Swap Space

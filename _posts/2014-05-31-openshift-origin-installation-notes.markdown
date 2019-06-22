@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-05-31 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/04780-1nsq_r0hqmrrtxlczdsfweq.png
 link: http://mediaglasses.blog/2014/05/31/openshift-origin-installation-notes/
 slug: openshift-origin-installation-notes
 title: OpenShift Origin installation notes
@@ -14,14 +17,6 @@ tags:
 - DevOps
 - OpenShift
 ---
-
-
-
-
-
-
-![](/assets/posts/04780-1nsq_r0hqmrrtxlczdsfweq.png)
-
 
 
 

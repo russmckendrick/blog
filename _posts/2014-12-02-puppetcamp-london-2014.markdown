@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-12-02 12:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/cfe30-1xfp3vt_qbjec-pfhc1wb4a.png
 link: http://mediaglasses.blog/2014/12/02/puppetcamp-london-2014/
 slug: puppetcamp-london-2014
 title: PuppetCamp London 2014

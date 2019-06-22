@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-09-07 12:34:12+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/00c1e-1m-jjxgrypzbiwx2s9qhmaw.png
 link: http://mediaglasses.blog/2014/09/07/very-basic-coreos/
 slug: very-basic-coreos
 title: Very basic CoreOS

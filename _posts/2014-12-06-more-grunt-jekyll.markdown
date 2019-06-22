@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-12-06 12:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/acb95-19ybsqntgviaxzhrd6qgehg.png
 link: http://mediaglasses.blog/2014/12/06/more-grunt-jekyll/
 slug: more-grunt-jekyll
 title: More Grunt & Jekyll

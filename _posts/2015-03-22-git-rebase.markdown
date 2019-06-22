@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2015-03-22 12:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/bca2c-1mkjymqzal10iuytaywlyeg.png
 link: http://mediaglasses.blog/2015/03/22/git-rebase/
 slug: git-rebase
 title: Git + Rebase

@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-08-03 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/1627d-19ecz61qnm_cwnu2n7ws9ma.png
 link: http://mediaglasses.blog/2014/08/03/am-i-an-operating-system-snob/
 slug: am-i-an-operating-system-snob
 title: Am I an Operating System snob?
@@ -14,14 +17,6 @@ tags:
 - Fedora
 - Ubuntu
 ---
-
-
-
-
-
-
-![](/assets/posts/1627d-19ecz61qnm_cwnu2n7ws9ma.png)
-
 
 
 

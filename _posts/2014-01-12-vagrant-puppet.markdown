@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-01-12 12:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/bd560-1tr2zsqvxhj9-pvbvn4jdoq.png
 link: http://mediaglasses.blog/2014/01/12/vagrant-puppet/
 slug: vagrant-puppet
 title: Vagrant & Puppet
@@ -15,16 +18,6 @@ tags:
 - Puppet
 - Vagrant
 ---
-
-
-
-
-
-
-![](/assets/posts/bd560-1tr2zsqvxhj9-pvbvn4jdoq.png)
-
-
-
 
 Vagrant allows developers to bring up local development machines in a controlled method using pre-built configuration files called boxes. Once a box has been installed on the developers local machine it can be powered on with the following command;
 

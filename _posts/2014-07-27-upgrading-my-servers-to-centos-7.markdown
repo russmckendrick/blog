@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-07-27 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/upgrade.png
 link: http://mediaglasses.blog/2014/07/27/upgrading-my-servers-to-centos-7/
 slug: upgrading-my-servers-to-centos-7
 title: Upgrading my servers to CentOS 7

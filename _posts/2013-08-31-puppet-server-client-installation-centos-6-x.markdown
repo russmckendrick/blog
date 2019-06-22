@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2013-08-31 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/e8ac9-1zazvvqg5phryav9k_szxzq.png
 link: http://mediaglasses.blog/2013/08/31/puppet-server-client-installation-centos-6-x/
 slug: puppet-server-client-installation-centos-6-x
 title: Puppet Server & Client Installation CentOS 6.x
@@ -14,16 +17,6 @@ tags:
 - Puppet
 - Shell
 ---
-
-
-
-
-
-
-![](/assets/posts/e8ac9-1zazvvqg5phryav9k_szxzq.png)
-
-
-
 
 This post assumes that you are starting with a clean minimal CentOS 6.4 64bit server and you have a full hostname set.
 

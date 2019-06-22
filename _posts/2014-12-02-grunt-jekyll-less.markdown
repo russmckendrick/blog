@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-12-02 20:59:38+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/ee6a2-1tvmm4gxs5ndlx2e6cj6s5w.png
 link: http://mediaglasses.blog/2014/12/02/grunt-jekyll-less/
 slug: grunt-jekyll-less
 title: Grunt + Jekyll + LESS

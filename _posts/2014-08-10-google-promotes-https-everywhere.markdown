@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-08-10 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/03d54-1zwgr4nmh_stb-zfmqgo6ca.png
 link: http://mediaglasses.blog/2014/08/10/google-promotes-https-everywhere/
 slug: google-promotes-https-everywhere
 title: Google promotes HTTPS everywhere
@@ -15,15 +18,6 @@ tags:
 - NGINX
 - SSL
 ---
-
-
-
-
-
-
-![](/assets/posts/03d54-1zwgr4nmh_stb-zfmqgo6ca.png)
-
-
 
 
 Google announced earlier this week that they are going to use [HTTPS as a ranking signal](http://googleonlinesecurity.blogspot.co.uk/2014/08/https-as-ranking-signal_6.html):

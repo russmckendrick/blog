@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-09-07 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/02376-1cyfkfpdf7bj7c3cxylrh4q.png
 link: http://mediaglasses.blog/2014/09/07/music-documentaries/
 slug: music-documentaries
 title: Music Documentaries
@@ -14,20 +17,7 @@ tags:
 - Tunes
 ---
 
-
-
-
-
-
-![](/assets/posts/02376-1cyfkfpdf7bj7c3cxylrh4q.png)
-
-
-
-
 While bored the other day I stumbled across some great music documentaries on YouTube, here are some of the best ….
-
-
-
 
 ![Factory Records: Manchester from Joy Division to Happy Mondays](https://cdn-images-1.medium.com/max/800/0*8KnPfXvDcYwCvqhL.jpg)
 

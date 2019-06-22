@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-05-04 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/0ff71-1jqfagxkj3i_godvoykjazg.png
 link: http://mediaglasses.blog/2014/05/04/yet-more-docker/
 slug: yet-more-docker
 title: Yet More Docker
@@ -12,15 +15,6 @@ categories:
 tags:
 - Docker
 ---
-
-
-
-
-
-
-![](/assets/posts/0ff71-1jqfagxkj3i_godvoykjazg.png)
-
-
 
 
 Since [my last post about Docker](/2014/04/27/more-docker/) I have been playing a lot more, rather than use a GUI like [Shipyard](http://shipyard-project.com/) I decided to use @garethr’s [excellent Puppet Module](https://forge.puppetlabs.com/garethr/docker) to manage and deploy my containers. This allowed me to take a better look at the builds I had over at the [Docker Index](https://index.docker.io/). The following is a list of builds I have deployed so far …..

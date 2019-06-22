@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2014-08-25 12:09:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/56951-1oyjv-fjf15cxlx6eelodqq.png
 link: http://mediaglasses.blog/2014/08/25/connecting-to-docker-containers/
 slug: connecting-to-docker-containers
 title: Connecting to Docker Containers
@@ -13,16 +16,6 @@ tags:
 - CentOS
 - Docker
 ---
-
-
-
-
-
-
-![](/assets/posts/56951-1oyjv-fjf15cxlx6eelodqq.png)
-
-
-
 
 I have been installing and exposing SSH on most of the containers I have deployed, which I know is wrong.
 

@@ -3,6 +3,9 @@ author: russmckendrick
 comments: true
 date: 2013-10-06 11:00:00+00:00
 layout: post
+current: post
+class: post-template
+cover: assets/posts/e2842-1p6hqwrk4zg__uvmjpfc2zq.png
 link: http://mediaglasses.blog/2013/10/06/saltstack-on-centos-6-x/
 slug: saltstack-on-centos-6-x
 title: SaltStack on CentOS 6.x
@@ -13,16 +16,6 @@ tags:
 - CentOS
 - Shell
 ---
-
-
-
-
-
-
-![](/assets/posts/e2842-1p6hqwrk4zg__uvmjpfc2zq.png)
-
-
-
 
 Had a play with [SaltStack](http://saltstack.com/) today, it’s a good way to manage multiple machines from a central location. It runs as a Server (master) and client (minion).
 
