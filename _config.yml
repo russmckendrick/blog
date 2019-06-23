@@ -79,3 +79,6 @@ exclude:
   - "*.Rmd"
   - .git*
   - node_modules
+  - netlify.toml
+  - README-THEME.md
+  - package-lock.json

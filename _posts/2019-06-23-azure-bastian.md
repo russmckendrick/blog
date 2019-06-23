@@ -1,7 +1,7 @@
 ---
 author: russmckendrick
 comments: true
-date: 2019-06-23 05:00:00+00:00
+date: 2019-06-23 05:00:00
 layout: post
 current: post
 class: post-template
@@ -53,7 +53,7 @@ Clicking on **Bastion (Preview)** result will give you a **Create** button, here
 
 ![Creating the Bastion host](/assets/body/2019-06-23-azure-bastion05.png)
 
-Clicking on **Review + Create** and then when I was happy with the details **Create** set off the deployment, after around 5 minutes it completed;
+Clicking on **Review + Create** and then once I was happy with the details **Create** set off the deployment, after around 5 minutes it completed;
 
 ![Success !!!!](/assets/body/2019-06-23-azure-bastion06.png)
 
@@ -83,13 +83,15 @@ Once you click on **Connect** a new browser window will open, and you will be co
 
 You can copy and paste text just as we did on the Linux host using the extendable Clipboard box, but other than that it is a standard RDP connection, in a browser, on my Mac.
 
-For the short time I used Azure Bastion it was responsive, and I didn't have any issues. The service as a whole looks great and solves a problem, having a jump host exposed to the network 24/7, either via the internet or privately using an Express Route. Being able to make ad-hoc connections to Virtual Machines with the added security of using the Azure portal session, meaning MFA, is going to be a plus for compliance and will make managing firewalls more straight forward as you don't need to open ports or add public IP addresses as Azure Bastion runs within the Virtual Network.
+For the short time I used Azure Bastion it was responsive, and I didn't have any issues. The service as a whole looks great and is one of those solves a problem you probably didn't know you have, having a jump host exposed to the network 24/7, either via the internet or privately using an Express Route. 
+
+Being able to make ad-hoc connections to Virtual Machines in a "cloud native way" with the added security of using the Azure portal session, meaning 2FA and whatever access controls you have in place to protect your Azure accounts, is going to be a very big tick when it comes to meeting the requirements of  compliance and info-sec teams. It will make managing firewalls more straight forward as you don't need to open ports or add public IP addresses as Azure Bastion runs within your Virtual Networks and isn't exposed externally.
 
 Please note, while you will be able to see the Azure Bastion service running in the regular Azure Portal;
 
 ![This is useless](/assets/body/2019-06-23-azure-bastion13.png)
 
-You currently will not be able to take advantage of the service without first logging into the exclusive preview portal at [http://aka.ms/BastionHost](http://aka.ms/BastionHost) due to the service's reliance on additional functionality in the Azure Portal.
+You currently will not be able to take advantage of the service without first logging into the Azure Bastion preview portal at [http://aka.ms/BastionHost](http://aka.ms/BastionHost) due to the service's reliance on additional functionality in the Azure Portal.
 
 For more information on the server see the following video;
 

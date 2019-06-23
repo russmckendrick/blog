@@ -4,6 +4,6 @@
   publish = "_site/"
 
 [dev] 
-  command = "bundle exec jekyll serve --drafts --incremental"
+  command = "bundle exec jekyll serve --drafts"
   port = 4000
   publish = "_site/"
