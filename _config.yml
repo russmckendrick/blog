@@ -82,3 +82,6 @@ exclude:
   - netlify.toml
   - README-THEME.md
   - package-lock.json
+  - assests/_posts
+  - assests/_headers
+  - assests/_body
