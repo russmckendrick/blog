@@ -52,11 +52,11 @@ After a few minutes, Docker for Mac started up, the first thing I did was open t
 Docker for Mac version 12.12.0-ce-mac45 (21669)
 As you can see, this window now shows the version numbers of all of the Docker components installed and available. What we are insterested in is Kubernetes v.1.8.2. I also checked the version on the command line using the Docker client ;
 
-    
-    $ docker version
-    $ docker-compose version
-    $ docker-machine version
-
+```
+$ docker version
+$ docker-compose version
+$ docker-machine version
+```
 
 ![](/assets/posts/69f4e-1b8thdqlom6ychrkvcxd_7w.png)
 
@@ -81,18 +81,18 @@ After a few minutes you should see the following message;
 All done
 Docker for Mac also installs the Kubernetes command line client, _kubectl_, you can check this is installed by running;
 
-    
-    $ kubectl version
-
+```
+$ kubectl version
+```
 
 ![](/assets/posts/9c5f8-1awlfh9oizqnqoovlmppymg.png)
 
 kubectl version
 Running the following command will give you information about the nodes running in your Kubernetes cluster, we should see just the one;
 
-    
+```
     $ kubectl get nodes
-
+```
 
 ![](/assets/posts/9a841-1zlugcmmjbf8k1awzh9nfxw.png)
 
@@ -103,9 +103,11 @@ Now that we have a single node cluster up and running lets dig a little deeper i
 Enable Show system containers
 Running the following command will list of the running containers, but only show the container name, image used and the command which was executed;
 
-    
-    $ docker container ls --format "table{{.Names}}t{{.Image }}t{{.Command}}"
-
+```
+{% raw %}
+$ docker container ls --format "table{{.Names}}t{{.Image }}t{{.Command}}"
+{% endraw %}
+```
 
 You can see the results below;
 ![](/assets/posts/ed611-1cselvaop5_pf3-hxzunvnq.png)
