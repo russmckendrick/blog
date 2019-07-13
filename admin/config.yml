@@ -6,5 +6,18 @@ collections:
   - name: 'blog'
     label: 'Blog'
     folder: '_posts/'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
     fields:
-      - { name: Title }
+      - { label: 'Author', name: 'author', widget: 'hidden', default: 'russmckendrick' }
+      - { label: 'Navigation', name: 'navigation', widget: 'hidden', default: 'True' }
+      - { label: 'Current', name: 'current', widget: 'hidden', default: 'post' }
+      - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'post' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Slug', name: 'slug', widget: 'string' }      
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Cover', name: 'cover', widget: 'image' }      
+      - { label: 'Tags', name: 'tags', widget: 'list' }    
+      - { label: 'Body', name: 'body', widget: 'markdown' }
