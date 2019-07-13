@@ -11,11 +11,13 @@ slug: grunt-jekyll-less
 title: Grunt + Jekyll + LESS
 wordpress_id: 1036
 categories:
-- Tech
+  - Tech
 tags:
-- Blog
-- Grunt
-- Jekyll
+  - Blog
+  - Grunt
+  - Jekyll
+redirect_from:
+    - /2014/04/21/new-coat-of-paint/
 ---
 
 As you may have noticed, the website looks different to how it was previously. I decided it was time for a refresh and I wanted to make the design a little more interesting.

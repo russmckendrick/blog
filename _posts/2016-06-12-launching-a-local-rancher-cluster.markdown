@@ -11,11 +11,13 @@ slug: launching-a-local-rancher-cluster
 title: Launching a local Rancher cluster
 wordpress_id: 999
 categories:
-- Tech
+    - Tech
 tags:
-- Docker
-- Mac
-- Rancher
+    - Docker
+    - Mac
+    - Rancher
+redirect_from:
+    - /launching-a-local-rancher-cluster-1422b89b0477/
 ---
 
 Earlier this week I wanted to show someone a copy of [Rancher](http://rancher.com/) running but I realized that I didn’t have a local lab configured. I managed to quickly launch a few machines in [Digital Ocean](https://m.do.co/c/52ec4dc3647e) meaning I could do the demo.

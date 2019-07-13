@@ -12,10 +12,9 @@ categories:
 - Tech
 tags:
 - Docker
+redirect_from:
+    - /2014/04/27/more-docker/
 ---
-
-
-
 
 
 ![](/assets/posts/d0e23-1dafneoqxt72ycfvuaknbow.png)

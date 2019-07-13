@@ -11,10 +11,12 @@ slug: fail2ban-on-centos-7
 title: Fail2Ban on CentOS 7
 wordpress_id: 1031
 categories:
-- Tech
+     - Tech
 tags:
-- CentOS
-- Security
+     - CentOS
+     - Security
+redirect_from:
+    - /fail2ban-on-centos-7-4703f8101b0c/
 ---
 
 One of the first things I do on a new server is install [fail2ban](http://www.fail2ban.org/wiki/index.php/Main_Page). I have written about it before, but that was [back when I was still using CentOS 6](https://media-glass.es/2014/05/10/hackers/). Now I am using CentOS 7 the installation has a few more steps.

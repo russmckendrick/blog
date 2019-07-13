@@ -11,9 +11,9 @@ slug: docker-machine-compose-swarm
 title: Docker Machine, Compose & Swarm
 wordpress_id: 1027
 categories:
-- Tech
+     - Tech
 tags:
-- Docker
+     - Docker
 ---
 
 Since I last properly [wrote about Docker](https://media-glass.es/2014/08/31/docker-fig-reverse-proxy-centos7/) a lot has changed. Docker have introduced some new command line tools which allow for easy orchestration of Docker instances, clusters and container management. These are;
