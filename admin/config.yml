@@ -10,6 +10,7 @@ collections:
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     editor:
       preview: false
+    publish_mode: editorial_workflow
     fields:
       - { label: 'Author', name: 'author', widget: 'hidden', default: 'russmckendrick' }
       - { label: 'Navigation', name: 'navigation', widget: 'hidden', default: 'True' }
