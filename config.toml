@@ -1,4 +1,4 @@
-baseurl         = "/"
+baseurl         = "https://www.mediaglasses.blog/"
 theme           = "casper"
 languageCode    = "en-US"
 disqusShortname = "mediaglasses"
@@ -14,7 +14,7 @@ summaryLength   = 40
   cover       = "img/blog-cover.jpg"
   description = "Ramblings of a nerd."
   metaDescription = ""
-  googleAnalytics = ""
+  googleAnalytics = "UA-43497944-1"
   customCSS = []
   RSSLink = ""
 
@@ -63,6 +63,6 @@ summaryLength   = 40
 
 
 [taxonomies]
-  author = "authors"
-  tag = "tags"
-  category = "categories"
+tag = "tags"
+category = "categories"
+post = "posts"
