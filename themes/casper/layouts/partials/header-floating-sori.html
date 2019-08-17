@@ -1,0 +1,45 @@
+<div class="floating-header">
+  <div class="floating-header-logo">
+    <a href="{{"/" | absURL}}">
+      {{ if .Site.Params.logo }}<img src="{{ .Site.Params.logo  | absURL}}" alt="{{.Site.Params.Title}}" />{{end}}
+      <span>{{.Site.Title}}</span>
+    </a>
+  </div>
+  <div class="floating-header-title">{{.Title}}</div>
+  <div class="floating-header-share">
+    <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      {{ partial "svgs/point" . }}
+    </div>
+    
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text={{.Title | safeHTML}}&amp;url={{.Permalink}}"
+          onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+          {{ partial "svgs/twitter" . }}
+        </a>
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u={{.Permalink}}"
+          onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+          {{ partial "svgs/facebook" . }}
+      </a>
+      <a class="floating-header-share-li" href="https://www.linkedin.com/shareArticle?mini=true&title={{ .Title  | safeHTML }}&url={{ .Permalink }}"
+        onclick="window.open(this.href, 'share-linkedin', 'width=550,height=550');return false;">
+        {{ partial "svgs/linkedin" . }}
+      </a>
+      <a class="floating-header-share-re" href="https://www.reddit.com/submit?url={{ .Permalink }}&title={{ .Title  | safeHTML }}"
+      onclick="window.open(this.href, 'share-redit', 'width=550,height=550');return false;">
+      {{ partial "svgs/reddit" . }}
+    </a>
+    <a class="floating-header-share-tu" href="http://www.tumblr.com/share/link?url={{ .Permalink }}"
+      onclick="window.open(this.href, 'share-tumbr', 'width=550,height=550');return false;">
+      {{ partial "svgs/tumblr" . }}
+    </a>
+    <a class="floating-header-share-ha" href="https://news.ycombinator.com/submitlink?u={{ .Permalink }}&amp;t={{ .Title  | safeHTML }}"
+      onclick="window.open(this.href, 'share-hackernews', 'width=550,height=235');return false;">
+      {{ partial "svgs/hacker-news" . }}
+    </a>
+</div>
+
+  <progress class="progress" value="0">
+    <div class="progress-container">
+      <span class="progress-bar"></span>
+    </div>
+  </progress>
+</div>

@@ -1,0 +1,68 @@
+baseurl         = "/"
+theme           = "casper"
+languageCode    = "en-US"
+disqusShortname = "mediaglasses"
+paginate        = 6
+canonifyurls    = true
+summaryLength   = 40
+
+[params]
+  title       = "Media Glasses"
+  subtitle    = "Ramblings of a nerd"
+  copyright   = "© 2019"
+
+  cover       = "img/blog-cover.jpg"
+  description = "Ramblings of a nerd."
+  metaDescription = ""
+  googleAnalytics = ""
+  customCSS = []
+  RSSLink = ""
+
+  twitter = "https://twitter.com/russmckendrick/"
+  linkedin = "https://www.linkedin.com/in/russmckendrick/"
+  github = "https://github.com/russmckendrick/"
+  medium = "https://medium.com/@russmckendrick"
+  amazon = "https://www.amazon.com/Russ-McKendrick/e/B079KJV88Z"
+  docker = "https://hub.docker.com/u/russmckendrick/"
+  instagram = "https://www.instagram.com/russmckendrick/"
+  discogs = "http://records.mckendrick.page/"
+  tumblr = "https://www.mckendrick.io"
+  spotify = "https://open.spotify.com/user/russmckendrick"
+
+
+  logo = "img/logo.png"
+  orgName = "MediaGlasses"
+  orgWebsite = "https://www.mediaglasses.blog"
+  orgDescription = "Here is a description placeholder for your org"
+
+  showSupport = false
+
+  author = "Russ McKendrick"
+  authorAvatar = "img/russ.jpg"
+  authorLocation = "Nottingham, UK"
+  authorWebsite = "https://russ.mckendrick.io"
+  authorDescription = "Buys way too many vinyl records, writes a lot about Docker & loves orchestration. Works at @node4ltd / @n4stack has written for @PacktPublishing"
+
+  pageNotFoundTitle = "404 - Page not found"
+
+  #casper or caspertwo
+  singleViewStyle = "casper"
+
+[permalinks]
+  post = "/:year/:month/:day/:title/"
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 200
+
+[[menu.main]]
+  name = "Tags"
+  url = "/tags/"
+  weight = 100
+
+
+[taxonomies]
+  author = "authors"
+  tag = "tags"
+  category = "categories"

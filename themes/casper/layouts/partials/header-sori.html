@@ -1,0 +1,40 @@
+<header class="site-header outer">
+  <div class="inner">
+    <nav class="site-nav">
+      <div class="site-nav-left">{{ if .Site.Params.logo }}
+        <a class="site-nav-logo" href="#"><img src="{{ .Site.Params.logo  | absURL}}" alt="{{ .Site.Params.Title }}" /></a>{{end}}
+
+        <ul class="nav" role="menu">
+        {{ $currentNode := . }}
+        {{with .Site.Menus.main}}
+        {{ range sort . "Weight" "desc"}}
+            <li class="{{if or ($currentNode.IsMenuCurrent "main" .) ($currentNode.HasMenuCurrent "main" .)}}nav-current{{end}}" role="menuitem">
+              <a href="{{.URL}}">{{.Name}}</a>
+            </li>
+        {{end}}{{end}}
+      </ul></div>
+
+      <div class="site-nav-right">
+          <div class="social-links">
+              {{ if .Site.Params.twitter }}<a class="social-link" href="{{ .Site.Params.twitter }}" target="_blank" rel="noopener"> {{ partial "svgs/twitter" . }}</a>{{end}}
+              {{ if .Site.Params.github }}<a class="social-link" href="{{ .Site.Params.github }}" target="_blank" rel="noopener">{{ partial "svgs/github" . }}</a>{{end}}
+              {{ if .Site.Params.linkedin }}<a class="social-link" href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener">{{ partial "svgs/linkedin" . }}</a>{{end}}
+              {{ if .Site.Params.medium }}<a class="social-link" href="{{ .Site.Params.medium }}" target="_blank" rel="noopener">{{ partial "svgs/medium" . }}</a>{{end}}
+              {{ if .Site.Params.docker }}<a class="social-link" href="{{ .Site.Params.docker }}" target="_blank" rel="noopener">{{ partial "svgs/docker" . }}</a>{{end}}
+              {{ if .Site.Params.amazon }}<a class="social-link" href="{{ .Site.Params.amazon }}" target="_blank" rel="noopener">{{ partial "svgs/amazon" . }}</a>{{end}}
+              {{ if .Site.Params.instagram }}<a class="social-link" href="{{ .Site.Params.instagram }}" target="_blank" rel="noopener">{{ partial "svgs/instagram" . }}</a>{{end}}
+              {{ if .Site.Params.discogs }}<a class="social-link" href="{{ .Site.Params.discogs }}" target="_blank" rel="noopener">{{ partial "svgs/discogs" . }}</a>{{end}}
+              {{ if .Site.Params.tumblr }}<a class="social-link" href="{{ .Site.Params.tumblr }}" target="_blank" rel="noopener">{{ partial "svgs/tumblr" . }}</a>{{end}}
+              {{ if .Site.Params.spotify }}<a class="social-link" href="{{ .Site.Params.spotify }}" target="_blank" rel="noopener">{{ partial "svgs/spotify" . }}</a>{{end}}
+            </div>  
+        {{ if .Site.Params.RSSLink}}
+        <a class="subscribe-button" href="{{.Site.Params.RSSLink }}">Subscribe</a> </div>
+        {{else if .Site.Params.showSubscribe}}
+        <a class="subscribe-button" href="{{if .IsNode}}{{.RSSLink}}{{else}}{{"index.xml" | absURL}}{{end}}">Subscribe</a>
+        {{end}}    
+      </div>
+
+    </nav>  
+
+  </div>
+</header>

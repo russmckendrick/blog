@@ -1,0 +1,127 @@
+.pagination {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 1rem auto;
+    font-size: 1.3rem;
+    color: #9eabb3;
+    text-align: center;
+}
+
+.pagination a {
+    color: #9eabb3;
+    transition: all .2s ease;
+}
+
+.page-number {
+    display: inline-block;
+    padding: 2px 0;
+    min-width: 100px;
+}
+
+.newer-posts, .older-posts {
+    position: absolute;
+    display: inline-block;
+    padding: 0 15px;
+    border: #ddd 1px dashed;
+    text-decoration: none;
+    transition: border .3s ease;
+}
+
+.newer-posts {
+    left: 0;
+}
+
+.older-posts {
+    right: 0;
+}
+
+.site-footer {
+    padding-bottom: 20px !important;
+}
+
+.nav-current a:visited {
+    color: yellow;
+}
+
+@media (min-width: 900px) {
+    .ctsingle .post-feed {
+        margin-top: -70px;
+        padding-top: 0;    
+    } 
+    .ctsingle .site-nav {
+        position: relative;
+        top: -70px;
+    }    
+}
+
+@media (min-width: 795px) {  
+    .ctsingle .post-feed p {
+        font-size: 1.8rem;
+        line-height: 1.55em;
+    }
+}
+
+@media (max-width: 650px) {
+    .hide {
+        display: none !important;
+    }   
+    .copyright {
+        text-align: center;
+    }
+}
+
+.post-full-content pre code {
+    color: #e5eff5;
+}    
+
+
+.floating-header-share-li,
+.floating-header-share-re,
+.floating-header-share-tu,
+.floating-header-share-ha {
+    display: block;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    line-height: 48px;
+    text-align: center;
+    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.floating-header-share-li {
+    background: #4875B4;
+}
+
+.floating-header-share-re {
+    background: #FF4301;
+}
+
+.floating-header-share-tu {
+    background: #34526f;
+}
+
+.floating-header-share-ha {
+    background: #ff6000;
+}
+
+.reading-time {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 33px;
+    flex-shrink: 0;
+    margin-left: 20px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    float: right;
+    margin-top: -4px;
+    color: var(--midgrey);
+}
+
+.tags {
+    z-index: 10;
+    margin: 0;
+    padding: 5px 0;
+    opacity: 0.8;
+}
