@@ -1,5 +1,8 @@
 {{ if .IsPage }}
 {{ if eq .Type "post" }}
+
+{{ $imgData := imageConfig "static/img/logo.png" }}
+
     <script type="application/ld+json">
     {
         "@context" : "http://schema.org",
@@ -11,7 +14,6 @@
         "inLanguage" : "en-US",
         "author" : "{{ .Params.author }}",
         "creator" : "{{ .Params.author }}",
-        "publisher" : "{{ .Site.Params.title }}",
         "accountablePerson" : "{{ .Params.author }}",
         "copyrightHolder" : "{{ .Params.author }}",
         "copyrightYear" : "{{ .Date.Format "2006" }}",
@@ -21,6 +23,17 @@
         "wordCount" : "{{ .WordCount }}",
         "image" : "{{ .Params.image | absURL}}",
         "keywords" : [ {{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} ],
+		"publisher": {
+			"@type": "Organization",
+			"name": "{{ .Site.Params.title }}",
+			"url": "{{ .Site.BaseURL }}"
+			"logo": {
+				"@type": "ImageObject",
+				"url": "{{ .Site.Params.logo | absURL}}",,
+				"width":"{{ $imgData.Width }}",
+				"height":"{{ $imgData.Height }}"
+			}
+		},
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "{{ .Site.BaseURL }}"
