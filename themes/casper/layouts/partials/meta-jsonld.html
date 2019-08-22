@@ -1,0 +1,26 @@
+{{ if .IsPage }}
+{{ if eq .Type "post" }}
+    <script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "articleSection" : "{{ .Section }}",
+        "name" : "{{ .Title }}",
+        "headline" : "{{ .Title }}",
+        "description" : "{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
+        "inLanguage" : "en-US",
+        "author" : "{{ .Params.author }}",
+        "creator" : "{{ .Params.author }}",
+        "accountablePerson" : "{{ .Params.author }}",
+        "copyrightHolder" : "{{ .Params.author }}",
+        "copyrightYear" : "{{ .Date.Format "2006" }}",
+        "datePublished": "{{ .PublishDate.Format $.Site.Params.ISO8601 }}",
+        "dateModified" : "{{ .Date.Format $.Site.Params.ISO8601 }}",
+        "url" : "{{ .Permalink }}",
+        "wordCount" : "{{ .WordCount }}",
+        "image" : "{{ .Params.image | absURL}}",
+        "keywords" : [ {{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} ]
+    }
+    </script>
+{{ end }}
+{{ end }}

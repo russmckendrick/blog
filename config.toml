@@ -6,6 +6,8 @@ paginate        = 6
 canonifyurls    = true
 summaryLength   = 40
 
+
+
 [params]
   title       = "Media Glasses"
   subtitle    = "Ramblings of a nerd"
@@ -17,6 +19,7 @@ summaryLength   = 40
   googleAnalytics = "UA-43497944-1"
   customCSS = []
   RSSLink = ""
+  ISO8601 = "2006-01-02T15:04:05JST"
 
   twitter = "https://twitter.com/russmckendrick/"
   linkedin = "https://www.linkedin.com/in/russmckendrick/"
@@ -60,7 +63,6 @@ summaryLength   = 40
   name = "Tags"
   url = "/tags/"
   weight = 100
-
 
 [taxonomies]
 tag = "tags"
