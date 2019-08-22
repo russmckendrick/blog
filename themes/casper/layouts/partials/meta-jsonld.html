@@ -20,7 +20,7 @@
         "url" : "{{ .Permalink }}",
         "wordCount" : "{{ .WordCount }}",
         "image" : "{{ .Params.image | absURL}}",
-        "keywords" : [ {{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} ]
+        "keywords" : [ {{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} ],
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "{{ .Site.BaseURL }}"
