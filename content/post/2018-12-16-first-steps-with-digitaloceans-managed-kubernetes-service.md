@@ -1,5 +1,5 @@
 ---
-title: "First steps with DigitalOcean's Managed Kubernetes service"
+title: "First steps with DigitalOceans Managed Kubernetes service"
 author: "Russ Mckendrick"
 comments: true
 date: "2018-12-16"
