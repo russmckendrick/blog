@@ -25,5 +25,5 @@
 {{ partial "footer" . }}
 </div>
 {{ partial "js" . }}
-{{ if .Type | ne "post" }} {{ partial "css-footer" . }} {{ end }}
+{{ if .IsHome }} {{ partial "css-footer" . }} {{ end }}
 </body></html>

@@ -21,8 +21,7 @@
 
     {{ hugo.Generator }}
 
-    {{ if .Type | eq "post" }} {{ partial "css-footer" . }} {{ else }}
-    {{ partial "css-critical" . }}{{ end }}
+    {{ if .IsHome }} {{ partial "css-critical" . }} {{ else }} {{ partial "css-footer" . }}{{ end }}
 
     {{ if .Site.Params.RSSLink}}<link href="{{.Site.Params.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" /> {{else}}{{ if eq .Permalink "/" }}<link href="{{ "index.xml" | absURL}}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" /> {{ end }} {{ end }}
 
