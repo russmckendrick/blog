@@ -1,4 +1,5 @@
-<header class="site-header outer " {{if .Site.Params.cover}} style="background-image: url({{.Site.Params.cover | absURL}})" {{end}} >
+<header class="site-header outer " {{if .Site.Params.cover}} {{ if eq (getenv "HUGO_ENV") "production" }}style="background-image: url(https://andbjhorgm.cloudimg.io/width/1000/webp-lossy-21.png-lossy-30/{{.Site.Params.cover | absURL}})" {{else}} style="background-image: url({{.Site.Params.cover | absURL}})"{{end}}
+{{end}} >
   <div class="inner">
     <div class="site-header-content">
         <h1 class="site-title">
