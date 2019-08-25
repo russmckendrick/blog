@@ -1,0 +1,17 @@
+{{ if .IsNamedParams }}
+
+{{ if eq (getenv "HUGO_ENV") "production" }}
+<p><img src="https://andbjhorgm.cloudimg.io/width/900/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}" alt="{{.Get "alt" }}"></p>
+{{else}}
+<p><img src="{{.Get "src" }}" alt="{{.Get "alt" }}"></p>
+{{end}}
+
+{{ else }}
+
+{{ if eq (getenv "HUGO_ENV") "production" }}
+<p><img src="https://andbjhorgm.cloudimg.io/width/900/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}" alt=""></p>
+{{else}}
+<p><img src="{{.Get 0}}" alt=""></p>
+{{end}}
+
+{{ end }}
