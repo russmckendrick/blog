@@ -3,7 +3,7 @@
     <a href="{{"/" | absURL}}">
       {{ if .Site.Params.logo }}
       {{ if eq (getenv "HUGO_ENV") "production" }}
-      <img src="https://andbjhorgm.cloudimg.io/width/50/webp-lossy-21.png-lossy-30/{{ .Site.Params.logo  | absURL}}" alt="{{.Site.Params.Title}}" />
+      <img src="https://andbjhorgm.cloudimg.io/height/40/webp-lossy-21.png-lossy-30/{{ .Site.Params.logo  | absURL}}" alt="{{.Site.Params.Title}}" />
       {{else}}
       <img src="{{ .Site.Params.logo  | absURL}}" alt="{{.Site.Params.Title}}" />
       {{end}}
@@ -49,5 +49,3 @@
     </div>
   </progress>
 </div>
-
-
