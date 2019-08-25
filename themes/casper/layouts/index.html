@@ -23,4 +23,7 @@
 </main>
 
 {{ partial "footer" . }}
-</div>{{ partial "js" . }}</body></html>
+</div>
+{{ partial "js" . }}
+{{ if .Type | ne "post" }} {{ partial "css-footer" . }} {{ end }}
+</body></html>
