@@ -2,7 +2,7 @@
   <div class="inner">
     <nav class="site-nav-center">
       {{ if .Site.Params.logo }}
-      <a class="site-nav-logo" href="{{"/"|absURL}}"><img src="{{ .Site.Params.logo  | absURL}}" alt="{{ .Site.Params.Title }}" /></a>{{end}}
+      <a class="site-nav-logo" href="{{"/"|absURL}}">{{ partial "svgs/mediaglasses" . }}</a>{{end}}
     </nav>  
   </div>
 </header>

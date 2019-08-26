@@ -32,25 +32,25 @@ As a bonus, this also works for the preview version of the Azure Portal which ca
 
 Going to [https://aad.portal.azure.com/](https://aad.portal.azure.com/) takes you straight to the Azure Active Directory Admin Center. This is a cut-down portal which, as you will have already guessed, can be used to administer your Azure Active Directory tenant.
 
-![](/assets/body/microsoft-azure-portal-urls-01.png)
+{{< cdn "/assets/body/microsoft-azure-portal-urls-01.png" >}}
 
 ### Azure Resource Explorer
 
 The next portal is quite impressive, going to [https://resources.azure.com/](https://resources.azure.com/) takes you to the resource explorer, this is an interface to the Azure management API;
 
-![](/assets/body/microsoft-azure-portal-urls-02.png)
+{{< cdn "/assets/body/microsoft-azure-portal-urls-02.png" >}}
 
 From the menu on the left-hand side you can start to drill down into your resources as if you were running an API request;
 
-![](/assets/body/microsoft-azure-portal-urls-03.png)
+{{< cdn "/assets/body/microsoft-azure-portal-urls-03.png" >}}
 
 From the results on the right side you can then press the PowerShell tab to get the PowerShell command used to to get the results;
 
-![](/assets/body/microsoft-azure-portal-urls-04.png)
+{{< cdn "/assets/body/microsoft-azure-portal-urls-04.png" >}}
 
 Selecting Ansible will give you the Ansible code needed to query the Azure Management API from within your playbooks using the `azure_rm_resource_facts` module;
 
-![](/assets/body/microsoft-azure-portal-urls-05.png)
+{{< cdn "/assets/body/microsoft-azure-portal-urls-05.png" >}}
 
 This portal is excellent for exploring the API and also debugging scripts/playbooks.
 
@@ -58,7 +58,7 @@ This portal is excellent for exploring the API and also debugging scripts/playbo
 
 The next portal is full-screen cloud shell, to access it goto [https://shell.azure.com/](https://shell.azure.com/), once loaded you should see something like;
 
-![](/assets/body/microsoft-azure-portal-urls-06.png)
+{{< cdn "/assets/body/microsoft-azure-portal-urls-06.png" >}}
 
 Like the regular Cloud Shell, you can switch between Bash and PowerShell, as well as use the inbuilt file manager and text editor.
 

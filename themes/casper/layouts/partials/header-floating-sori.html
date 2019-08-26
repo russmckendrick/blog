@@ -2,11 +2,7 @@
   <div class="floating-header-logo">
     <a href="{{"/" | absURL}}">
       {{ if .Site.Params.logo }}
-      {{ if eq (getenv "HUGO_ENV") "production" }}
-      <img src="https://andbjhorgm.cloudimg.io/height/40/webp-lossy-21.png-lossy-30/{{ .Site.Params.logo  | absURL}}" alt="{{.Site.Params.Title}}" />
-      {{else}}
-      <img src="{{ .Site.Params.logo  | absURL}}" alt="{{.Site.Params.Title}}" />
-      {{end}}
+      <a href="{{"/" | absURL}}">{{ partial "svgs/mediaglasses-menu" . }}</a>
       {{end}}
       <span>{{.Site.Title}}</span>
     </a>
