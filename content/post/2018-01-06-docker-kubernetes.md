@@ -3,7 +3,7 @@ author: Russ McKendrick
 comments: true
 date: 2018-01-06
 image: assets/posts/b03e2-1vpr3o4r4ek425d6fzapjyq.png
-title: Docker + Kubernetes
+title: Docker Kubernetes
 categories:
     - Tech
 tags:
