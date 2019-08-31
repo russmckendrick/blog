@@ -1,0 +1,11 @@
+<p><div class="instaflex">
+{{ range .Params }}
+<div class="instathumbnail">  
+    <div class="instacropper">
+        <a href="https://www.instagram.com/p/{{ . }}/">
+            <img class="lazy" data-src="https://www.instagram.com/p/{{ . }}/media/?size=l"/>
+        </a>
+    </div>
+</div>
+{{ end }}
+</div></p>

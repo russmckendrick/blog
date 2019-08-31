@@ -1,3 +1,35 @@
+.instaflex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.instathumbnail {
+    width: 200px;
+    height: 200px;
+}
+
+.instacropper {
+    width: 200px;
+    height: 200px;
+}
+
+.instacropper img {
+    width: 100%;
+    height: 100%;
+}
+
+.instacropper:hover img {
+    transform: scale(2); -webkit-transform: scale();
+    transition:transform .4s ease;  
+}
+
 .pagination {
     position: relative;
     width: 100%;
@@ -115,6 +147,7 @@
         height: 40px;
         line-height: 38px;
     }
+}
 
 .reading-time {
     font-size: 1.2rem;
