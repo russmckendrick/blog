@@ -10,7 +10,7 @@
     {{ if eq (getenv "HUGO_ENV") "production" }}
     <figure class="post-full-image" style="background-image: url(https://andbjhorgm.cloudimg.io/width/1000/webp-lossy-21.png-lossy-30/{{.Params.image | absURL}})"></figure>
     {{else}}
-    <figure class="post-full-image" style="background-image: url({{.Params.image | absURL}})">
+    <figure class="post-full-image" style="background-image: url({{.Params.image | absURL}})"></figure>
     {{end}}
     {{end}}
 
