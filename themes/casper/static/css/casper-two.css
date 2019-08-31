@@ -129,13 +129,6 @@
     color: var(--midgrey);
 }
 
-.tags {
-    z-index: 10;
-    margin: 0;
-    padding: 5px 0;
-    opacity: 0.8;
-}
-
 img:not([src]):not([srcset]) {
     visibility: hidden;
 }
@@ -145,19 +138,3 @@ img:not([src]):not([srcset]) {
         visibility: hidden;
     }
 }
-
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-  }
-  
-  .video-wrapper object,
-  .video-wrapper embed,
-  .video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
