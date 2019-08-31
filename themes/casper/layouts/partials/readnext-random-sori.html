@@ -1,6 +1,5 @@
 {{ $posts := (where .Site.RegularPages "Section" "==" "post") }}{{ $postCount := len $posts }}{{if ge $postCount 4}}{{ $currentPage := . }}
-<article class="read-next-card" {{ if eq (getenv "HUGO_ENV") "production" }}s
-            style="background-image: url(https://andbjhorgm.cloudimg.io/width/600/webp-lossy-21.png-lossy-30/{{.Site.Params.cover | absURL}});" {{else}}style="background-image: url({{.Site.Params.cover | absURL}});"{{end}}>
+<article class="read-next-card lazy" {{ if eq (getenv "HUGO_ENV") "production" }} data-bg="url(https://andbjhorgm.cloudimg.io/width/600/webp-lossy-21.png-lossy-30/{{.Site.Params.cover | absURL}});" {{else}} data-bg="url({{.Site.Params.cover | absURL}});"{{end}}>
     <header class="read-next-card-header">
         <small class="read-next-card-header-sitetitle">&mdash; {{.Site.Params.Title}} &mdash;</small>
         {{if .Params.tags }}{{ range $index, $tag := .Params.tags }}{{if lt $index 1}}

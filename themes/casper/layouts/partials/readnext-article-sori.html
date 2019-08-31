@@ -1,13 +1,13 @@
 <article class="post-card post"> 
     {{ if eq (getenv "HUGO_ENV") "production" }}
     <a class="post-card-image-link" href="{{ .Permalink }}">
-      <div class="post-card-image" style="background-image: url(https://andbjhorgm.cloudimg.io/width/600/webp-lossy-21.png-lossy-30/{{.Params.image | absURL}})"></div>
+      <div class="post-card-image lazy" data-bg="url(https://andbjhorgm.cloudimg.io/width/600/webp-lossy-21.png-lossy-30/{{.Params.image | absURL}})"></div>
     </a>
-    {{else}}
+    {{ else }}
     <a class="post-card-image-link" href="{{ .Permalink }}">
-      <div class="post-card-image" style="background-image: url({{.Params.image | absURL}})"></div>
+      <div class="post-card-image lazy" data-bg="url({{.Params.image | absURL}})"></div>
     </a> 
-    {{end}}
+    {{ end }}
     <div class="post-card-content">
       <a class="post-card-content-link" href="{{ .Permalink }}">
           <header class="post-card-header">
@@ -27,9 +27,9 @@
 
       <footer class="post-card-meta">
           {{ if eq (getenv "HUGO_ENV") "production" }}
-          <img class="author-profile-image" src="https://andbjhorgm.cloudimg.io/width/50/webp-lossy-21.png-lossy-30/{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
+          <img class="author-profile-image lazy" data-src="https://andbjhorgm.cloudimg.io/width/50/webp-lossy-21.png-lossy-30/{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
           {{else}}
-          <img class="author-profile-image" src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
+          <img class="author-profile-image lazy" data-src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
           {{end}}
           <span class="post-card-author"><a href="/">{{.Params.author | default .Site.Params.author}}</a></span>
       </footer>
