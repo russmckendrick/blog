@@ -135,3 +135,13 @@
     padding: 5px 0;
     opacity: 0.8;
 }
+
+img:not([src]):not([srcset]) {
+    visibility: hidden;
+}
+
+@-moz-document url-prefix() {
+    img:-moz-loading {
+        visibility: hidden;
+    }
+}

@@ -2,34 +2,30 @@
 
 {{ if eq (getenv "HUGO_ENV") "production" }}
 <p><picture>
-        <source media="(max-width:576px)" srcset="https://andbjhorgm.cloudimg.io/width/600/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}">
-        <source media="(max-width:768px)" srcset="https://andbjhorgm.cloudimg.io/width/800/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}">
-        <source media="(max-width:992px)" srcset="https://andbjhorgm.cloudimg.io/width/1000/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}">
-        <source media="(max-width:1200px)" srcset="https://andbjhorgm.cloudimg.io/width/1200/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}">
-        <source media="(max-width:1920px)" srcset="https://andbjhorgm.cloudimg.io/width/1920/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}">
-        <img src="https://andbjhorgm.cloudimg.io/cdno/n/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}" alt="">
+        <source media="(max-width:576px)" data-srcset="https://andbjhorgm.cloudimg.io/width/600/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}">
+        <source media="(max-width:768px)" data-srcset="https://andbjhorgm.cloudimg.io/width/800/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}">
+        <source media="(max-width:992px)" data-srcset="https://andbjhorgm.cloudimg.io/width/1000/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}">
+        <source media="(max-width:1200px)" data-srcset="https://andbjhorgm.cloudimg.io/width/1200/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}">
+        <source media="(max-width:1920px)" data-srcset="https://andbjhorgm.cloudimg.io/width/1920/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}">
+        <img class="lazy" data-src="https://andbjhorgm.cloudimg.io/cdno/n/webp-lossy-21.png-lossy-30/{{.Get "src" | absURL }}" alt="">
 </picture></p>
 {{else}}
-<p><img src="{{.Get "src" }}" alt="{{.Get "alt" }}"></p>
+<p><img class="lazy" data-src="{{.Get "src" }}" alt="{{.Get "alt" }}"></p>
 {{end}}
 
 {{ else }}
 
 {{ if eq (getenv "HUGO_ENV") "production" }}
 <p><picture>
-        <source media="(max-width:576px)" srcset="https://andbjhorgm.cloudimg.io/width/600/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}">
-        <source media="(max-width:768px)" srcset="https://andbjhorgm.cloudimg.io/width/800/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}">
-        <source media="(max-width:992px)" srcset="https://andbjhorgm.cloudimg.io/width/1000/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}">
-        <source media="(max-width:1200px)" srcset="https://andbjhorgm.cloudimg.io/width/1200/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}">
-        <source media="(max-width:1920px)" srcset="https://andbjhorgm.cloudimg.io/width/1920/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}">
-        <img src="https://andbjhorgm.cloudimg.io/cdno/n/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}" alt="">
+        <source media="(max-width:576px)" data-srcset="https://andbjhorgm.cloudimg.io/width/600/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}">
+        <source media="(max-width:768px)" data-srcset="https://andbjhorgm.cloudimg.io/width/800/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}">
+        <source media="(max-width:992px)" data-srcset="https://andbjhorgm.cloudimg.io/width/1000/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}">
+        <source media="(max-width:1200px)" data-srcset="https://andbjhorgm.cloudimg.io/width/1200/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}">
+        <source media="(max-width:1920px)" data-srcset="https://andbjhorgm.cloudimg.io/width/1920/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}">
+        <img class="lazy" data-src="https://andbjhorgm.cloudimg.io/cdno/n/webp-lossy-21.png-lossy-30/{{.Get 0 | absURL }}" alt="">
 </picture></p>
 {{else}}
-<p><img src="{{.Get 0}}" alt=""></p>
+<p><img class="lazy" data-src="{{.Get 0}}" alt=""></p>
 {{end}}
 
 {{ end }}
-
-
-
-
