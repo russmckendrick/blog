@@ -1,43 +1,16 @@
-{{ $pages := ((where .Site.RegularPages "Type" "post") | shuffle) }}
-{{ range first 3 $pages}} 
+<article class="post-full post page no-image"> 
+  <header class="post-full-header">
+      <h1 class="post-full-title">{{.Title | title}}</h1>
+  </header>
 
-<article class="post-card post"> 
-    {{ if eq (getenv "HUGO_ENV") "production" }}
-    <a class="post-card-image-link" href="{{ .Permalink }}">
-      <div class="post-card-image lazy" data-bg="url(https://andbjhorgm.cloudimg.io/width/600/webp-lossy-21.png-lossy-30/{{.Params.image | absURL}})"></div>
-    </a>
-    {{else}}
-    <a class="post-card-image-link" href="{{ .Permalink }}">
-      <div class="post-card-image lazy" data-bg="url({{.Params.image | absURL}})"></div>
-    </a> 
-    {{end}}
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="{{ .Permalink }}">
-          <header class="post-card-header">
-              {{if .Params.tags }}<span class="post-card-tags">{{ range $index, $tag := .Params.tags }}
-              #{{$tag}} {{end}} </span>
-              {{ end }}
-              <h2 class="post-card-title">{{.Title}}</h2>
-          </header>
-          <section class="post-card-excerpt">
-              {{ if .Description }} 
-                <p>{{ .Description | markdownify }}</p>
-              {{else}}
-                <p>{{ .Summary | plainify }}{{ if .Truncated }} ... {{end}} </p>
-              {{end}}
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          {{ if eq (getenv "HUGO_ENV") "production" }}
-          <img class="author-profile-image lazy" data-src="https://andbjhorgm.cloudimg.io/width/50/webp-lossy-21.png-lossy-30/{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
-          {{else}}
-          <img class="author-profile-image lazy" data-src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
-          {{end}}
-          <span class="post-card-author">{{.Params.author | default .Site.Params.author}}</span>
-          <span class="reading-time">{{ .ReadingTime }} Min Read</span>
-      </footer>
-    </div>
+  <section class="post-full-content">
+      <div class="kg-card-markdown">
+        <p>
+        {{ $data := .Data }}
+        {{ range $key, $value := .Data.Terms.Alphabetical }}
+        <a href="{{ $.Site.BaseURL }}{{ $data.Plural }}/{{ $value.Name | urlize }}/"> {{ $value.Name }} </a> ({{ $value.Count }})&nbsp;&#x2F;&nbsp;
+        {{ end }}
+        </p>
+      </div>
+  </section>
 </article>
-{{ end }}

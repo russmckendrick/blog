@@ -1,34 +1,16 @@
 {{ partial "head" . }}
 
-{{if eq .Site.Params.singleViewStyle "casper"}}
-  <body class="tag-template"><div class="site-wrapper">
-  {{ partial "header-sori-term" . }}
-{{else}}
-  <body class="home-template"><div class="site-wrapper">
-  {{ partial "header" . }}
-{{end}}
+{{if ne .Site.Params.singleViewStyle "casper"}}<body class="ctsingle">
+{{else}}<body class="page-template">{{end}}
+<div class="site-wrapper"> 
+
+{{if ne .Site.Params.singleViewStyle "casper"}}{{ partial "header" . }}
+{{else}}{{ partial "header-sori" . }}{{end}}
+
 
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
-    {{if ne .Site.Params.singleViewStyle "casper"}}
-    <div class="post-feed">
-      {{ partial "post-list" . }}
-    </div>
-
-    <nav class="pagination" role="navigation">
-      {{if .Paginator.HasPrev}}
-          <a class="newer-posts" href="{{ .Paginator.Prev.URL }}">&larr; <span class="hide">Next Posts</span></a>
-      {{end}}
-      <span class="page-number"><span class="hide">Page {{ .Paginator.PageNumber }} of {{.Paginator.TotalPages}}</span>&nbsp;</span>
-      {{if .Paginator.HasNext}}
-          <a class="older-posts" href="{{ .Paginator.Next.URL }}"><span class="hide">Previous Posts</span> &rarr;</a>
-      {{end}}
-    </nav>
-    {{else}}
-    <div class="post-feed">
-      {{ partial "post-list-term" . }}
-    </div>   
-    {{end}}
+    {{ partial "post-list-term" . }}
   </div>
 </main>
 
