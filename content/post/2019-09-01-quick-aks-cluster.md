@@ -16,7 +16,7 @@ tags:
 
 Over the next few weeks, I am planning on doing some work which requires me to spin up and teardown several small Kubernetes clusters. 
 
-As I have access to an Azure Subscription and Microsoft, have made the process of launching a cluster quite a painless experience I thought it would make sense to write a quick blog post to cover launching, configuring and tearing down an Azure AKS Cluster.
+As I have access to an Azure Subscription and Microsoft have made the process of launching a cluster quite a painless experience I thought it would make sense to write a quick blog post to cover launching, configuring and tearing down an Azure AKS Cluster.
 
 To start with I prefer to set a few environment variables on the command-line for things such and the resource name which are repeated through of the commands I need to run;
 
