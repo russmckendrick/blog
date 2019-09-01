@@ -1,10 +1,12 @@
 ---
-title: "Launch A Quick Azure AKS Cluster"
+title: "Quickly launch an Azure AKS Cluster"
 summary: "I need to be able to quickly launch and teardown an Azure AKS cluster, in this post I look at the commands needed to do that using the Azure CLI"
 author: "Russ McKendrick"
 date: 2019-09-01T10:29:25+01:00
 image: "assets/headers/2019-09-01-quick-aks-cluster.png"
 comments: true
+aliases:
+  - /2019/09/01/launch-a-quick-azure-aks-cluster/
 categories:
   - Tech
 tags: 

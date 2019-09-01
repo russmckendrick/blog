@@ -1,12 +1,10 @@
 baseurl         = "https://www.mediaglasses.blog/"
-theme           = "casper"
+theme           = "mediaglasses"
 languageCode    = "en-US"
 disqusShortname = "mediaglasses"
 paginate        = 6
 canonifyurls    = true
 summaryLength   = 40
-
-
 
 [params]
   title       = "Media Glasses"

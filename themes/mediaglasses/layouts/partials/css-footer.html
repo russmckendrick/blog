@@ -1,0 +1,3 @@
+{{ "<!-- Stylesheets -->" | safeHTML }}
+<link rel="stylesheet" type="text/css" href="{{ "built/site.css" | absURL}}" /> 
+{{ range .Site.Params.customCSS }} <link rel="stylesheet" href="{{ . | absURL }}" /> {{ end }}
