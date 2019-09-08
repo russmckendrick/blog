@@ -1,8 +1,9 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
+summary: ""
 author: "Russ McKendrick"
 date: {{ .Date }}
-image: ""
+image: "assets/headers/"
 comments: true
 categories:
   - Tech
