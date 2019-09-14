@@ -18,7 +18,7 @@ I am currently a working on a few other blog posts and presentations for work on
 One thing I had noticed which doing reading up on the services I am going to be using is that a lot of the demos and documentation from Microsoft had buttons where you could **Deploy to Azure**, so I decided to create my own - you can see the finish product below;
 
 <a href="https://azuredeploy.net/?repository=https://github.com/russmckendrick/azure-ansible-centos" alt="Deploy to Azure" target="_blank">
-   <img src="http://azuredeploy.net/deploybutton.png"/>
+   <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
 
 The HTML used to generate the button above looks like the following;
