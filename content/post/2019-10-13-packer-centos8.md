@@ -1,6 +1,6 @@
 ---
 title: "Packer CentOS 8"
-summary: "CentOS 8 has been out for a few weeks, so this weekend I decided to have a play"
+summary: "CentOS 8 has been out for a few weeks, so this weekend I decided to have a play."
 author: "Russ McKendrick"
 date: 2019-10-13T01:43:27+01:00
 image: "assets/headers/2019-10-13-packer-centos8.png"
@@ -13,7 +13,7 @@ tags:
   - Packer
 ---
 
-Now that CentOS 8 has been out for a few week I decided it was time to dip my toe in the water and update the CentOS 7 Packer scripts I had to work with CentOS 8.
+Now that CentOS 8 has been out for a few weeks I decided it was time to dip my toe in the water and update the CentOS 7 Packer scripts I had to work with CentOS 8.
 
 For those that don't know, [Packer by Hashicorp](https://www.packer.io), is a tool which allows you to build your own images from a number of sources and use them on a number of platforms - Hashicorp describe Packer as;
 
