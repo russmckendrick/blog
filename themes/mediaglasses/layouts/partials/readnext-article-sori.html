@@ -15,7 +15,8 @@
               #{{$tag}} {{end}} </span>
               {{ end }}
               <h2 class="post-card-title">{{.Title}}</h2>
-          </header>
+              <span class="post-card-tags">{{ .Date.Format "2 Jan 2006" | safeHTML }}</span>
+            </header>
           <section class="post-card-excerpt">
               {{ if .Description }} 
                 <p>{{ .Description | markdownify }}</p>
