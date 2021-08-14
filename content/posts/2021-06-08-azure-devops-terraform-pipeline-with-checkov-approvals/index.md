@@ -3,19 +3,19 @@ title: "Azure DevOps Terraform Pipeline  with Checkov & Approvals"
 author: "Russ Mckendrick"
 date: 2021-06-08
 description: ""
+draft: false
+showToc: true
 cover:
     image: "2021-06-08-azure-devops-terraform-pipeline-with-checkov-approvals.png"
     relative: true
-tags:
- - Terraform
- - Azure Devops
- - Azure
- - Checkov
- - Pipeline
-
 aliases:
-- "/azure-devops-terraform-pipeline-with-checkov-approvals-7a68827b2bf3"
-
+  - "/azure-devops-terraform-pipeline-with-checkov-approvals-7a68827b2bf3"
+tags:
+  - "Terraform"
+  - "Azure Devops"
+  - "Azure"
+  - "Checkov"
+  - "Pipeline"
 ---
 
 It’s been just over a year since I [first posted about the Azure DevOps Terraform Pipeline I used to use](https://mediaglasses.blog/azure-devops-terraform-pipeline-e50f1721ea1), I say used to use, because that pipeline is now a little outdated. This posts covers the updated Pipeline I am starting to deploy along side my Terraform code.
@@ -142,7 +142,7 @@ One of the other things which will happen when this stage is executed happens as
 
 Once your code has been validated we can move onto the next stage.
 
-#### **Stage: Terraform Plan**
+#### Stage: Terraform Plan
 
 This stage is where things get a little more interesting, eventually, as our environment does not persist across stages we need to install Terraform and run `terraform init` again.
 
