@@ -2,7 +2,6 @@ baseURL: "https://www.mediaglasses.blog/"
 title: "MediaGlasses"
 paginate: "5"
 theme: ["PaperMod"]
-ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
 enableRobotsTXT: true
 buildDrafts: false
@@ -116,6 +115,8 @@ outputs:
     - JSON # is necessary
     - _redirects
 
+disableAliases: true
+
 mediaTypes:
   text/redirects:
 
@@ -138,3 +139,5 @@ markup:
     lineNos: false
     noClasses: true
     style: monokai
+
+ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken"]
