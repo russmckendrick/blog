@@ -1,0 +1,384 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Azure DevOps Multi-Stage Pipelines | MediaGlasses</title>
+<meta name=keywords content="Azure">
+<meta name=description content="As I move into using Azure DevOps more and more, there is one thing which I really haven’t got on with and that is release pipelines. I didn’t like that I couldn’t easily define it as YAML like I could with build pipelines, even though I don’t like them, there are a few things I do like — like approval gates.
+Environments Luckily, there are ways to get around this — the most simple way is to add an Environment and then add an Approval.">
+<meta name=author content="Russ Mckendrick">
+<link rel=canonical href=https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/>
+<meta name=google-site-verification content="XYZabc">
+<meta name=yandex-verification content="XYZabc">
+<meta name=msvalidate.01 content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.1cabe33df594e7ba6ebd15554fa20e096c6fc15bd43c296f14557b489b7e95bf.css integrity="sha256-HKvjPfWU57puvRVVT6IOCWxvwVvUPClvFFV7SJt+lb8=" rel="preload stylesheet" as=style>
+<link rel=preload href=/favicon.ico as=image>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://www.mediaglasses.blog/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://www.mediaglasses.blog/favicon.ico>
+<link rel=icon type=image/png sizes=32x32 href=https://www.mediaglasses.blog/favicon.ico>
+<link rel=apple-touch-icon href=https://www.mediaglasses.blog/favicon.ico>
+<link rel=mask-icon href=https://www.mediaglasses.blog/images/logo.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.87.0">
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="Azure DevOps Multi-Stage Pipelines">
+<meta property="og:description" content="As I move into using Azure DevOps more and more, there is one thing which I really haven’t got on with and that is release pipelines. I didn’t like that I couldn’t easily define it as YAML like I could with build pipelines, even though I don’t like them, there are a few things I do like — like approval gates.
+Environments Luckily, there are ways to get around this — the most simple way is to add an Environment and then add an Approval.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/">
+<meta property="og:image" content="https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/2021-04-25_azure-devops-multistage-pipelines.png"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-04-25T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-04-25T00:00:00+00:00"><meta property="og:site_name" content="MediaGlasses">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/2021-04-25_azure-devops-multistage-pipelines.png">
+<meta name=twitter:title content="Azure DevOps Multi-Stage Pipelines">
+<meta name=twitter:description content="As I move into using Azure DevOps more and more, there is one thing which I really haven’t got on with and that is release pipelines. I didn’t like that I couldn’t easily define it as YAML like I could with build pipelines, even though I don’t like them, there are a few things I do like — like approval gates.
+Environments Luckily, there are ways to get around this — the most simple way is to add an Environment and then add an Approval.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://www.mediaglasses.blog/posts/"},{"@type":"ListItem","position":2,"name":"Azure DevOps Multi-Stage Pipelines","item":"https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Azure DevOps Multi-Stage Pipelines","name":"Azure DevOps Multi-Stage Pipelines","description":"As I move into using Azure DevOps more and more, there is one thing which I really haven’t got on with and that is release pipelines. I didn’t like that I couldn’t easily define it as YAML like I could with build pipelines, even though I don’t like them, there are a few things I do like — like approval gates.\nEnvironments Luckily, there are ways to get around this — the most simple way is to add an Environment and then add an Approval.","keywords":["Azure"],"articleBody":"As I move into using Azure DevOps more and more, there is one thing which I really haven’t got on with and that is release pipelines. I didn’t like that I couldn’t easily define it as YAML like I could with build pipelines, even though I don’t like them, there are a few things I do like — like approval gates.\nEnvironments Luckily, there are ways to get around this — the most simple way is to add an Environment and then add an Approval. Adding an Environment is simple enough, just click on Environment in your Pipeline and then add one with None selected under Resource;\nOnce you have added the Environment you can then add an approval check, to do this click on the Environment you have just created and click on the three dots in the top right-hand side of the page. From the menu select Approvals and checks;\nNow we have an Environment and the Approval in place we can move onto the Pipeline.\nPipeline I already had a multi-stage pipeline I have been using to demo a container build, so I decided to adapt that as it made sense to slot in an approval at the stage where our container image is built, tagged and pushed, there are a few stages before that though so lets take a quick look at those.\nFirst up is the stage where the Resource Group is created;\n- stage: \"SetupRG\" displayName: \"Resource Group\" jobs: - job: \"CreateResourceGroup\" displayName: \"Resource Group - Setup\" steps: - task: AzureCLI@2 inputs: azureSubscription: \"$(SUBSCRIPTION_NAME)\" addSpnToEnvironment: true scriptType: \"bash\" scriptLocation: \"inlineScript\" inlineScript: | az group create --name $(APP_NAME)-rg --location $(LOCATION) displayName: \"Resource Group - Use Azure CLI to setup or check\" As you can see, I am using the Azure CLI and variables which are defined in the header of the Pipeline.\nOnce the Resource Group has been created the next stage launches an Azure Container Registry if one doesn’t exist, if there is already one there then nothing happens;\n- stage: \"SetupACR\" displayName: \"Azure Container Registry\" dependsOn: - \"SetupRG\" jobs: - job: \"SetupCheckAzureContainerRegistry\" displayName: \"Azure Container Registry - Setup\" variables: - name: \"DECODE_PERCENTS\" value: true steps: - task: AzureCLI@2 inputs: azureSubscription: \"$(SUBSCRIPTION_NAME)\" addSpnToEnvironment: true scriptType: \"bash\" scriptLocation: \"inlineScript\" inlineScript: |ACR_ID=$(az acr show --resource-group $APP_NAME-rg --name $ACR_NAME --query \"id\" -o tsv) if [ -z \"$ACR_ID\" ]; then echo \"There is no Azure Container Registry, we should sort that\" az acr create --resource-group $(APP_NAME)-rg --name $(ACR_NAME) --sku Basic --admin-enabled true else echo \"There is already an Azure Container Registry, we don't need to do anything else here\" fi displayName: \"Azure Container Registry - Use Azure CLI check or setup\" Now that we have a container registry to push our image to we can build and the push the container, this is the stage where we will be getting approval before building;\n- stage: \"BuildContainer\" displayName: \"Build, Tag and Push the container image\" dependsOn: - \"SetupACR\" jobs: - deployment: BuildPushImage displayName: \"Build, tag and push the image\" environment: \"production\" pool: vmImage: \"Ubuntu-20.04\" strategy: runOnce: deploy: steps: - checkout: self - task: AzureCLI@2 inputs: azureSubscription: \"$(SUBSCRIPTION_NAME)\" addSpnToEnvironment: true scriptType: \"bash\" scriptLocation: \"inlineScript\" inlineScript: |export THETIMEANDDATE=$(date '+%Y-%m-%d-%H%M') echo \"$THETIMEANDDATE will be the point in time tag\" az acr login --name $(ACR_NAME) docker image build -t $(IMAGE_NAME) ./ docker image tag $(IMAGE_NAME) $(ACR_NAME).azurecr.io/$(IMAGE_NAME):latest docker image tag $(IMAGE_NAME) $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$THETIMEANDDATE docker image push $(ACR_NAME).azurecr.io/$(IMAGE_NAME):latest docker image push $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$THETIMEANDDATE displayName: \"Use Azure CLI to build and push the container image\" As you can see, rather than defining a job we are using a deployment this means we can then use the environment we created and because the environment is what our approval is attached to the deployment won’t progress until approved.\nOne thing to note here is that there are two steps, the first checkout step downloads a copy of the repo which our azure-pipelines.yml and Dockerfile are in, without this step the build would fail.\nThe second step builds, tags and then pushes the image to the Azure Container Registry launched in the previous stage.\nThe remaining stage, assuming the previous three stages have all completed, configures and launches an App Service Plan, App Service and then configures automatic deployment of any subsequent images which are pushed to our Azure Container Registry, as you can see the code below the steps are only executed if the App Service Plan has not been configured, if our Application is already running then these steps are skipped;\n- stage: \"SetupAppServices\" displayName: \"Azure App Services\" dependsOn: - \"SetupRG\" - \"SetupACR\" - \"BuildContainer\" jobs: - job: \"CheckForAppServicePlan\" displayName: \"App Service Plan - Check if App Service Plan exists\" steps: - task: AzureCLI@2 inputs: azureSubscription: \"$(SUBSCRIPTION_NAME)\" addSpnToEnvironment: true scriptType: \"bash\" scriptLocation: \"inlineScript\" inlineScript: |APP_SERVICE_PLAN_ID=$(az appservice plan show --resource-group $APP_NAME-rg --name $APP_NAME-asp --query \"id\" -o tsv) if [ -z \"$APP_SERVICE_PLAN_ID\" ]; then echo \"There is no App Service Plan, we should sort that\" echo \"##vso[task.setvariable variable=appServiceExist;isOutput=true]No\" # there is no app service plan so we should do stuff else echo \"There is an App Service Plan, we don't need to do anything else here\" echo \"##vso[task.setvariable variable=appServiceExist;isOutput=true]Yes\" # nothing to do lets move on fi name: \"DetermineResult\" displayName: \"App Service Plan - Check to see if there App Service Plan exists\" - job: \"CreateAppServicePlan\" displayName: \"App Service Plan - Setup\" dependsOn: - \"CheckForAppServicePlan\" condition: \"eq(dependencies.CheckForAppServicePlan.outputs['DetermineResult.appServiceExist'], 'No')\" steps: - task: AzureCLI@2 inputs: azureSubscription: \"$(SUBSCRIPTION_NAME)\" addSpnToEnvironment: true scriptType: \"bash\" scriptLocation: \"inlineScript\" inlineScript: | az appservice plan create --resource-group $(APP_NAME)-rg --name $(APP_NAME)-asp --is-linux displayName: \"App Service Plan - Use Azure CLI to setup\" - job: \"CreateAppService\" displayName: \"Web App - Setup\" dependsOn: - \"CheckForAppServicePlan\" - \"CreateAppServicePlan\" condition: \"eq(dependencies.CheckForAppServicePlan.outputs['DetermineResult.appServiceExist'], 'No')\" steps: - task: AzureCLI@2 inputs: azureSubscription: \"$(SUBSCRIPTION_NAME)\" addSpnToEnvironment: true scriptType: \"bash\" scriptLocation: \"inlineScript\" inlineScript: | az webapp create --resource-group $(APP_NAME)-rg --plan $(APP_NAME)-asp --name $(APP_NAME) --deployment-container-image-name $(ACR_NAME).azurecr.io/$(IMAGE_NAME):latest displayName: \"Web App - Use Azure CLI to setup\" - job: \"CreateAppServiceSettings\" displayName: \"Web App - Configure Settings\" dependsOn: - \"CheckForAppServicePlan\" - \"CreateAppServicePlan\" - \"CreateAppService\" condition: \"eq(dependencies.CheckForAppServicePlan.outputs['DetermineResult.appServiceExist'], 'No')\" steps: - task: AzureCLI@2 inputs: azureSubscription: \"$(SUBSCRIPTION_NAME)\" addSpnToEnvironment: true scriptType: \"bash\" scriptLocation: \"inlineScript\" inlineScript: | az webapp config appsettings set --resource-group $(APP_NAME)-rg --name $(APP_NAME) --settings $(APP_SETTINGS) displayName: \"Web App - Use Azure CLI to configure the settings\" - job: \"CreateAppServiceID\" displayName: \"Web App - Configure \u0026 Assign Managed Identity\" dependsOn: - \"CheckForAppServicePlan\" - \"CreateAppServicePlan\" - \"CreateAppService\" - \"CreateAppServiceSettings\" condition: \"eq(dependencies.CheckForAppServicePlan.outputs['DetermineResult.appServiceExist'], 'No')\" steps: - task: AzureCLI@2 inputs: azureSubscription: \"$(SUBSCRIPTION_NAME)\" addSpnToEnvironment: true scriptType: \"bash\" scriptLocation: \"inlineScript\" inlineScript: | az webapp identity assign --resource-group $(APP_NAME)-rg --name $(APP_NAME) displayName: \"Web App - Use Azure CLI to assign an identity\" - task: AzureCLI@2 inputs: azureSubscription: \"$(SUBSCRIPTION_NAME)\" addSpnToEnvironment: true scriptType: \"bash\" scriptLocation: \"inlineScript\" inlineScript: | az role assignment create --assignee $(az webapp identity show --resource-group $(APP_NAME)-rg --name $(APP_NAME) --query principalId --output tsv) --scope /subscriptions/$(az account show --query id --output tsv)/resourceGroups/$(APP_NAME)-rg/providers/Microsoft.ContainerRegistry/registries/$(ACR_NAME) --role \"AcrPull\" displayName: \"Web App - Use Azure CLI to assign an identity\" - job: \"EnableCD\" displayName: \"Web App - Configure Azure Container Registry connedction and enable continuous deployment\" dependsOn: - \"CheckForAppServicePlan\" - \"CreateAppServicePlan\" - \"CreateAppService\" - \"CreateAppServiceSettings\" - \"CreateAppServiceID\" condition: \"eq(dependencies.CheckForAppServicePlan.outputs['DetermineResult.appServiceExist'], 'No')\" steps: - task: AzureCLI@2 inputs: azureSubscription: \"$(SUBSCRIPTION_NAME)\" addSpnToEnvironment: true scriptType: \"bash\" scriptLocation: \"inlineScript\" inlineScript: | az webapp config container set --resource-group $(APP_NAME)-rg --name $(APP_NAME) --docker-custom-image-name $(ACR_NAME).azurecr.io/$(IMAGE_NAME):latest --docker-registry-server-url https://$(ACR_NAME).azurecr.io displayName: \"Web App - Configure the App Serivce to use Azure Container Registry\" - task: AzureCLI@2 inputs: azureSubscription: \"$(SUBSCRIPTION_NAME)\" addSpnToEnvironment: true scriptType: \"bash\" scriptLocation: \"inlineScript\" inlineScript: | az webapp deployment container config --resource-group $(APP_NAME)-rg --name $(APP_NAME) --enable-cd true displayName: \"Web App - Enable continuous deployment whenever the image is updated on the WebApp\" - task: AzureCLI@2 inputs: azureSubscription: \"$(SUBSCRIPTION_NAME)\" addSpnToEnvironment: true scriptType: \"bash\" scriptLocation: \"inlineScript\" inlineScript: | az acr webhook create --name $(ACR_NAME)webhook --registry $(ACR_NAME) --scope $(IMAGE_NAME):latest --actions push --uri $(az webapp deployment container show-cd-url --resource-group $(APP_NAME)-rg --name $(APP_NAME) --query \"CI_CD_URL\" -o tsv) displayName: \"Azure Container Registry - Add the web hook created in the last task to the Azure Container Registry\" A full copy of the azure-pipelines.yml file can be found in the following repo https://github.com/russmckendrick/docker-python-web-app.\nRunning the Pipeline Now that we know what the pipeline looks like this what happened when it executed for the first time, first off, you (or whoever your approver is) will get an email;\nOnce you click through to approve the deployment you should see something which looks like the following;\nOnce approved the pipeline will continue to run and as you can see all the stages, jobs and steps have been executed as this is the first run;\nWhen the pipeline is next triggered you should see something like the following;\nThis time, other than checking to see if the application has already been deployed everything else in the fourth stage has been skipped.\n","wordCount":"1438","inLanguage":"en","image":"https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/2021-04-25_azure-devops-multistage-pipelines.png","datePublished":"2021-04-25T00:00:00Z","dateModified":"2021-04-25T00:00:00Z","author":{"@type":"Person","name":"Russ Mckendrick"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/"},"publisher":{"@type":"Organization","name":"MediaGlasses","logo":{"@type":"ImageObject","url":"https://www.mediaglasses.blog/favicon.ico"}}}</script>
+</head>
+<body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<noscript>
+<style type=text/css>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:#1d1e20;--entry:#2e2e33;--primary:rgba(255, 255, 255, 0.84);--secondary:rgba(255, 255, 255, 0.56);--tertiary:rgba(255, 255, 255, 0.16);--content:rgba(255, 255, 255, 0.74);--hljs-bg:#2e2e33;--code-bg:#37383e;--border:#333}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://www.mediaglasses.blog/ accesskey=h title="MediaGlasses (Alt + H)">
+<img src=/favicon.ico alt=logo aria-label=logo height=35>MediaGlasses</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://www.mediaglasses.blog/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+<li>
+<a href=https://russ.mckendrick.io/ title=about>
+<span>about</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://www.mediaglasses.blog/>Home</a>&nbsp;»&nbsp;<a href=https://www.mediaglasses.blog/posts/>Posts</a></div>
+<h1 class=post-title>
+Azure DevOps Multi-Stage Pipelines
+</h1>
+<div class=post-meta>April 25, 2021&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Russ Mckendrick&nbsp;|&nbsp;<a href=https://github.com/russmckendrick/blog/tree/main/content//posts/2021-04-25_azure-devops-multistage-pipelines/index.md rel="noopener noreferrer" target=_blank>Suggest Changes</a>
+</div>
+</header>
+<figure class=entry-cover>
+<img loading=lazy srcset="https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/2021-04-25_azure-devops-multistage-pipelines_hub8eb5c243e7034b031dec4fc9fe1c063_3432777_360x0_resize_box_3.png 360w ,https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/2021-04-25_azure-devops-multistage-pipelines_hub8eb5c243e7034b031dec4fc9fe1c063_3432777_480x0_resize_box_3.png 480w ,https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/2021-04-25_azure-devops-multistage-pipelines_hub8eb5c243e7034b031dec4fc9fe1c063_3432777_720x0_resize_box_3.png 720w ,https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/2021-04-25_azure-devops-multistage-pipelines_hub8eb5c243e7034b031dec4fc9fe1c063_3432777_1080x0_resize_box_3.png 1080w ,https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/2021-04-25_azure-devops-multistage-pipelines_hub8eb5c243e7034b031dec4fc9fe1c063_3432777_1500x0_resize_box_3.png 1500w ,https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/2021-04-25_azure-devops-multistage-pipelines.png 2500w" sizes="(min-width: 768px) 720px, 100vw" src=https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/2021-04-25_azure-devops-multistage-pipelines.png alt>
+</figure>
+<div class=post-content><p>As I move into using Azure DevOps more and more, there is one thing which I really haven’t got on with and that is release pipelines. I didn’t like that I couldn’t easily define it as YAML like I could with build pipelines, even though I don’t like them, there are a few things I do like — like approval gates.</p>
+<h4 id=environments>Environments<a hidden class=anchor aria-hidden=true href=#environments>#</a></h4>
+<p>Luckily, there are ways to get around this — the most simple way is to add an Environment and then add an Approval. Adding an Environment is simple enough, just click on Environment in your Pipeline and then add one with None selected under Resource;</p>
+<p><img loading=lazy src=images/01.png alt>
+</p>
+<p>Once you have added the Environment you can then add an approval check, to do this click on the Environment you have just created and click on the three dots in the top right-hand side of the page. From the menu select Approvals and checks;</p>
+<p>Now we have an Environment and the Approval in place we can move onto the Pipeline.</p>
+<h4 id=pipeline>Pipeline<a hidden class=anchor aria-hidden=true href=#pipeline>#</a></h4>
+<p>I already had a multi-stage pipeline I have been using to demo a container build, so I decided to adapt that as it made sense to slot in an approval at the stage where our container image is built, tagged and pushed, there are a few stages before that though so lets take a quick look at those.</p>
+<p>First up is the stage where the Resource Group is created;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>stage</span>: <span style=color:#e6db74>&#34;SetupRG&#34;</span>
+    <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Resource Group&#34;</span>
+    <span style=color:#f92672>jobs</span>:
+      - <span style=color:#f92672>job</span>: <span style=color:#e6db74>&#34;CreateResourceGroup&#34;</span>
+        <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Resource Group - Setup&#34;</span>
+        <span style=color:#f92672>steps</span>:
+          - <span style=color:#f92672>task</span>: <span style=color:#ae81ff>AzureCLI@2</span>
+            <span style=color:#f92672>inputs</span>:
+              <span style=color:#f92672>azureSubscription</span>: <span style=color:#e6db74>&#34;$(SUBSCRIPTION_NAME)&#34;</span>
+              <span style=color:#f92672>addSpnToEnvironment</span>: <span style=color:#66d9ef>true</span>
+              <span style=color:#f92672>scriptType</span>: <span style=color:#e6db74>&#34;bash&#34;</span>
+              <span style=color:#f92672>scriptLocation</span>: <span style=color:#e6db74>&#34;inlineScript&#34;</span>
+              <span style=color:#f92672>inlineScript</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>                </span>                <span style=color:#ae81ff>az group create --name $(APP_NAME)-rg --location $(LOCATION)</span>
+            <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Resource Group - Use Azure CLI to setup or check&#34;</span>
+</code></pre></div><p>As you can see, I am using the Azure CLI and variables which are defined in the header of the Pipeline.</p>
+<p>Once the Resource Group has been created the next stage launches an Azure Container Registry if one doesn’t exist, if there is already one there then nothing happens;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>stage</span>: <span style=color:#e6db74>&#34;SetupACR&#34;</span>
+    <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Azure Container Registry&#34;</span>
+    <span style=color:#f92672>dependsOn</span>:
+      - <span style=color:#e6db74>&#34;SetupRG&#34;</span>
+    <span style=color:#f92672>jobs</span>:
+      - <span style=color:#f92672>job</span>: <span style=color:#e6db74>&#34;SetupCheckAzureContainerRegistry&#34;</span>
+        <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Azure Container Registry - Setup&#34;</span>
+        <span style=color:#f92672>variables</span>:
+          - <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;DECODE_PERCENTS&#34;</span>
+            <span style=color:#f92672>value</span>: <span style=color:#66d9ef>true</span>
+        <span style=color:#f92672>steps</span>:
+          - <span style=color:#f92672>task</span>: <span style=color:#ae81ff>AzureCLI@2</span>
+            <span style=color:#f92672>inputs</span>:
+              <span style=color:#f92672>azureSubscription</span>: <span style=color:#e6db74>&#34;$(SUBSCRIPTION_NAME)&#34;</span>
+              <span style=color:#f92672>addSpnToEnvironment</span>: <span style=color:#66d9ef>true</span>
+              <span style=color:#f92672>scriptType</span>: <span style=color:#e6db74>&#34;bash&#34;</span>
+              <span style=color:#f92672>scriptLocation</span>: <span style=color:#e6db74>&#34;inlineScript&#34;</span>
+              <span style=color:#f92672>inlineScript</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>                ACR_ID=$(az acr show --resource-group $APP_NAME-rg --name $ACR_NAME --query &#34;id&#34; -o tsv)
+</span><span style=color:#e6db74>                if [ -z &#34;$ACR_ID&#34; ]; then
+</span><span style=color:#e6db74>                  echo &#34;There is no Azure Container Registry, we should sort that&#34;
+</span><span style=color:#e6db74>                  az acr create --resource-group $(APP_NAME)-rg --name $(ACR_NAME) --sku Basic --admin-enabled true
+</span><span style=color:#e6db74>                else
+</span><span style=color:#e6db74>                  echo &#34;There is already an Azure Container Registry, we don&#39;t need to do anything else here&#34;
+</span><span style=color:#e6db74>                fi</span>                
+            <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Azure Container Registry - Use Azure CLI check or setup&#34;</span>
+</code></pre></div><p>Now that we have a container registry to push our image to we can build and the push the container, this is the stage where we will be getting approval before building;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>stage</span>: <span style=color:#e6db74>&#34;BuildContainer&#34;</span>
+    <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Build, Tag and Push the container image&#34;</span>
+    <span style=color:#f92672>dependsOn</span>:
+      - <span style=color:#e6db74>&#34;SetupACR&#34;</span>
+    <span style=color:#f92672>jobs</span>:
+      - <span style=color:#f92672>deployment</span>: <span style=color:#ae81ff>BuildPushImage</span>
+        <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Build, tag and push the image&#34;</span>
+        <span style=color:#f92672>environment</span>: <span style=color:#e6db74>&#34;production&#34;</span>
+        <span style=color:#f92672>pool</span>:
+          <span style=color:#f92672>vmImage</span>: <span style=color:#e6db74>&#34;Ubuntu-20.04&#34;</span>
+        <span style=color:#f92672>strategy</span>:
+          <span style=color:#f92672>runOnce</span>:
+            <span style=color:#f92672>deploy</span>:
+              <span style=color:#f92672>steps</span>:
+                - <span style=color:#f92672>checkout</span>: <span style=color:#ae81ff>self</span>
+                - <span style=color:#f92672>task</span>: <span style=color:#ae81ff>AzureCLI@2</span>
+                  <span style=color:#f92672>inputs</span>:
+                    <span style=color:#f92672>azureSubscription</span>: <span style=color:#e6db74>&#34;$(SUBSCRIPTION_NAME)&#34;</span>
+                    <span style=color:#f92672>addSpnToEnvironment</span>: <span style=color:#66d9ef>true</span>
+                    <span style=color:#f92672>scriptType</span>: <span style=color:#e6db74>&#34;bash&#34;</span>
+                    <span style=color:#f92672>scriptLocation</span>: <span style=color:#e6db74>&#34;inlineScript&#34;</span>
+                    <span style=color:#f92672>inlineScript</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>                      export THETIMEANDDATE=$(date &#39;+%Y-%m-%d-%H%M&#39;)
+</span><span style=color:#e6db74>                      echo &#34;$THETIMEANDDATE will be the point in time tag&#34;
+</span><span style=color:#e6db74>                      az acr login --name $(ACR_NAME) 
+</span><span style=color:#e6db74>                      docker image build -t $(IMAGE_NAME) ./
+</span><span style=color:#e6db74>                      docker image tag $(IMAGE_NAME) $(ACR_NAME).azurecr.io/$(IMAGE_NAME):latest
+</span><span style=color:#e6db74>                      docker image tag $(IMAGE_NAME) $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$THETIMEANDDATE
+</span><span style=color:#e6db74>                      docker image push $(ACR_NAME).azurecr.io/$(IMAGE_NAME):latest 
+</span><span style=color:#e6db74>                      docker image push $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$THETIMEANDDATE</span>                      
+                  <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Use Azure CLI to build and push the container image&#34;</span>
+</code></pre></div><p>As you can see, rather than defining a <code>job</code> we are using a <code>deployment</code> this means we can then use the <code>environment</code> we created and because the <code>environment</code> is what our approval is attached to the deployment won’t progress until approved.</p>
+<p>One thing to note here is that there are two steps, the first <code>checkout</code> step downloads a copy of the repo which our <code>azure-pipelines.yml</code> and <code>Dockerfile</code> are in, without this step the build would fail.</p>
+<p>The second step builds, tags and then pushes the image to the Azure Container Registry launched in the previous stage.</p>
+<p>The remaining stage, assuming the previous three stages have all completed, configures and launches an App Service Plan, App Service and then configures automatic deployment of any subsequent images which are pushed to our Azure Container Registry, as you can see the code below the steps are only executed if the App Service Plan has not been configured, if our Application is already running then these steps are skipped;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>stage</span>: <span style=color:#e6db74>&#34;SetupAppServices&#34;</span>
+    <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Azure App Services&#34;</span>
+    <span style=color:#f92672>dependsOn</span>:
+      - <span style=color:#e6db74>&#34;SetupRG&#34;</span>
+      - <span style=color:#e6db74>&#34;SetupACR&#34;</span>
+      - <span style=color:#e6db74>&#34;BuildContainer&#34;</span>
+    <span style=color:#f92672>jobs</span>:
+      - <span style=color:#f92672>job</span>: <span style=color:#e6db74>&#34;CheckForAppServicePlan&#34;</span>
+        <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;App Service Plan - Check if App Service Plan exists&#34;</span>
+        <span style=color:#f92672>steps</span>:
+          - <span style=color:#f92672>task</span>: <span style=color:#ae81ff>AzureCLI@2</span>
+            <span style=color:#f92672>inputs</span>:
+              <span style=color:#f92672>azureSubscription</span>: <span style=color:#e6db74>&#34;$(SUBSCRIPTION_NAME)&#34;</span>
+              <span style=color:#f92672>addSpnToEnvironment</span>: <span style=color:#66d9ef>true</span>
+              <span style=color:#f92672>scriptType</span>: <span style=color:#e6db74>&#34;bash&#34;</span>
+              <span style=color:#f92672>scriptLocation</span>: <span style=color:#e6db74>&#34;inlineScript&#34;</span>
+              <span style=color:#f92672>inlineScript</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>                APP_SERVICE_PLAN_ID=$(az appservice plan show --resource-group $APP_NAME-rg --name $APP_NAME-asp --query &#34;id&#34; -o tsv)
+</span><span style=color:#e6db74>                if [ -z &#34;$APP_SERVICE_PLAN_ID&#34; ]; then
+</span><span style=color:#e6db74>                  echo &#34;There is no App Service Plan, we should sort that&#34;
+</span><span style=color:#e6db74>                  echo &#34;##vso[task.setvariable variable=appServiceExist;isOutput=true]No&#34; # there is no app service plan so we should do stuff
+</span><span style=color:#e6db74>                else
+</span><span style=color:#e6db74>                  echo &#34;There is an App Service Plan, we don&#39;t need to do anything else here&#34;
+</span><span style=color:#e6db74>                  echo &#34;##vso[task.setvariable variable=appServiceExist;isOutput=true]Yes&#34; # nothing to do lets move on
+</span><span style=color:#e6db74>                fi</span>                
+            <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;DetermineResult&#34;</span>
+            <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;App Service Plan - Check to see if there App Service Plan exists&#34;</span>
+      - <span style=color:#f92672>job</span>: <span style=color:#e6db74>&#34;CreateAppServicePlan&#34;</span>
+        <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;App Service Plan - Setup&#34;</span>
+        <span style=color:#f92672>dependsOn</span>:
+          - <span style=color:#e6db74>&#34;CheckForAppServicePlan&#34;</span>
+        <span style=color:#f92672>condition</span>: <span style=color:#e6db74>&#34;eq(dependencies.CheckForAppServicePlan.outputs[&#39;DetermineResult.appServiceExist&#39;], &#39;No&#39;)&#34;</span>
+        <span style=color:#f92672>steps</span>:
+          - <span style=color:#f92672>task</span>: <span style=color:#ae81ff>AzureCLI@2</span>
+            <span style=color:#f92672>inputs</span>:
+              <span style=color:#f92672>azureSubscription</span>: <span style=color:#e6db74>&#34;$(SUBSCRIPTION_NAME)&#34;</span>
+              <span style=color:#f92672>addSpnToEnvironment</span>: <span style=color:#66d9ef>true</span>
+              <span style=color:#f92672>scriptType</span>: <span style=color:#e6db74>&#34;bash&#34;</span>
+              <span style=color:#f92672>scriptLocation</span>: <span style=color:#e6db74>&#34;inlineScript&#34;</span>
+              <span style=color:#f92672>inlineScript</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>                </span>                <span style=color:#ae81ff>az appservice plan create --resource-group $(APP_NAME)-rg --name $(APP_NAME)-asp --is-linux</span>
+            <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;App Service Plan - Use Azure CLI to setup&#34;</span>
+      - <span style=color:#f92672>job</span>: <span style=color:#e6db74>&#34;CreateAppService&#34;</span>
+        <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Web App - Setup&#34;</span>
+        <span style=color:#f92672>dependsOn</span>:
+          - <span style=color:#e6db74>&#34;CheckForAppServicePlan&#34;</span>
+          - <span style=color:#e6db74>&#34;CreateAppServicePlan&#34;</span>
+        <span style=color:#f92672>condition</span>: <span style=color:#e6db74>&#34;eq(dependencies.CheckForAppServicePlan.outputs[&#39;DetermineResult.appServiceExist&#39;], &#39;No&#39;)&#34;</span>
+        <span style=color:#f92672>steps</span>:
+          - <span style=color:#f92672>task</span>: <span style=color:#ae81ff>AzureCLI@2</span>
+            <span style=color:#f92672>inputs</span>:
+              <span style=color:#f92672>azureSubscription</span>: <span style=color:#e6db74>&#34;$(SUBSCRIPTION_NAME)&#34;</span>
+              <span style=color:#f92672>addSpnToEnvironment</span>: <span style=color:#66d9ef>true</span>
+              <span style=color:#f92672>scriptType</span>: <span style=color:#e6db74>&#34;bash&#34;</span>
+              <span style=color:#f92672>scriptLocation</span>: <span style=color:#e6db74>&#34;inlineScript&#34;</span>
+              <span style=color:#f92672>inlineScript</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>                </span>                <span style=color:#ae81ff>az webapp create --resource-group $(APP_NAME)-rg --plan $(APP_NAME)-asp --name $(APP_NAME) --deployment-container-image-name $(ACR_NAME).azurecr.io/$(IMAGE_NAME):latest</span>
+            <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Web App - Use Azure CLI to setup&#34;</span>
+      - <span style=color:#f92672>job</span>: <span style=color:#e6db74>&#34;CreateAppServiceSettings&#34;</span>
+        <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Web App - Configure Settings&#34;</span>
+        <span style=color:#f92672>dependsOn</span>:
+          - <span style=color:#e6db74>&#34;CheckForAppServicePlan&#34;</span>
+          - <span style=color:#e6db74>&#34;CreateAppServicePlan&#34;</span>
+          - <span style=color:#e6db74>&#34;CreateAppService&#34;</span>
+        <span style=color:#f92672>condition</span>: <span style=color:#e6db74>&#34;eq(dependencies.CheckForAppServicePlan.outputs[&#39;DetermineResult.appServiceExist&#39;], &#39;No&#39;)&#34;</span>
+        <span style=color:#f92672>steps</span>:
+          - <span style=color:#f92672>task</span>: <span style=color:#ae81ff>AzureCLI@2</span>
+            <span style=color:#f92672>inputs</span>:
+              <span style=color:#f92672>azureSubscription</span>: <span style=color:#e6db74>&#34;$(SUBSCRIPTION_NAME)&#34;</span>
+              <span style=color:#f92672>addSpnToEnvironment</span>: <span style=color:#66d9ef>true</span>
+              <span style=color:#f92672>scriptType</span>: <span style=color:#e6db74>&#34;bash&#34;</span>
+              <span style=color:#f92672>scriptLocation</span>: <span style=color:#e6db74>&#34;inlineScript&#34;</span>
+              <span style=color:#f92672>inlineScript</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>                </span>                <span style=color:#ae81ff>az webapp config appsettings set --resource-group $(APP_NAME)-rg --name $(APP_NAME) --settings $(APP_SETTINGS)</span>
+            <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Web App - Use Azure CLI to configure the settings&#34;</span>
+      - <span style=color:#f92672>job</span>: <span style=color:#e6db74>&#34;CreateAppServiceID&#34;</span>
+        <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Web App - Configure &amp; Assign Managed Identity&#34;</span>
+        <span style=color:#f92672>dependsOn</span>:
+          - <span style=color:#e6db74>&#34;CheckForAppServicePlan&#34;</span>
+          - <span style=color:#e6db74>&#34;CreateAppServicePlan&#34;</span>
+          - <span style=color:#e6db74>&#34;CreateAppService&#34;</span>
+          - <span style=color:#e6db74>&#34;CreateAppServiceSettings&#34;</span>
+        <span style=color:#f92672>condition</span>: <span style=color:#e6db74>&#34;eq(dependencies.CheckForAppServicePlan.outputs[&#39;DetermineResult.appServiceExist&#39;], &#39;No&#39;)&#34;</span>
+        <span style=color:#f92672>steps</span>:
+          - <span style=color:#f92672>task</span>: <span style=color:#ae81ff>AzureCLI@2</span>
+            <span style=color:#f92672>inputs</span>:
+              <span style=color:#f92672>azureSubscription</span>: <span style=color:#e6db74>&#34;$(SUBSCRIPTION_NAME)&#34;</span>
+              <span style=color:#f92672>addSpnToEnvironment</span>: <span style=color:#66d9ef>true</span>
+              <span style=color:#f92672>scriptType</span>: <span style=color:#e6db74>&#34;bash&#34;</span>
+              <span style=color:#f92672>scriptLocation</span>: <span style=color:#e6db74>&#34;inlineScript&#34;</span>
+              <span style=color:#f92672>inlineScript</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>                </span>                <span style=color:#ae81ff>az webapp identity assign --resource-group $(APP_NAME)-rg --name $(APP_NAME)</span>
+              <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Web App - Use Azure CLI to assign an identity&#34;</span>
+          - <span style=color:#f92672>task</span>: <span style=color:#ae81ff>AzureCLI@2</span>
+            <span style=color:#f92672>inputs</span>:
+              <span style=color:#f92672>azureSubscription</span>: <span style=color:#e6db74>&#34;$(SUBSCRIPTION_NAME)&#34;</span>
+              <span style=color:#f92672>addSpnToEnvironment</span>: <span style=color:#66d9ef>true</span>
+              <span style=color:#f92672>scriptType</span>: <span style=color:#e6db74>&#34;bash&#34;</span>
+              <span style=color:#f92672>scriptLocation</span>: <span style=color:#e6db74>&#34;inlineScript&#34;</span>
+              <span style=color:#f92672>inlineScript</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>                </span>                <span style=color:#ae81ff>az role assignment create --assignee $(az webapp identity show  --resource-group $(APP_NAME)-rg --name $(APP_NAME) --query principalId --output tsv) --scope /subscriptions/$(az account show --query id --output tsv)/resourceGroups/$(APP_NAME)-rg/providers/Microsoft.ContainerRegistry/registries/$(ACR_NAME) --role &#34;AcrPull&#34;</span>
+            <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Web App - Use Azure CLI to assign an identity&#34;</span>
+      - <span style=color:#f92672>job</span>: <span style=color:#e6db74>&#34;EnableCD&#34;</span>
+        <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Web App - Configure Azure Container Registry connedction and enable continuous deployment&#34;</span>
+        <span style=color:#f92672>dependsOn</span>:
+          - <span style=color:#e6db74>&#34;CheckForAppServicePlan&#34;</span>
+          - <span style=color:#e6db74>&#34;CreateAppServicePlan&#34;</span>
+          - <span style=color:#e6db74>&#34;CreateAppService&#34;</span>
+          - <span style=color:#e6db74>&#34;CreateAppServiceSettings&#34;</span>
+          - <span style=color:#e6db74>&#34;CreateAppServiceID&#34;</span>
+        <span style=color:#f92672>condition</span>: <span style=color:#e6db74>&#34;eq(dependencies.CheckForAppServicePlan.outputs[&#39;DetermineResult.appServiceExist&#39;], &#39;No&#39;)&#34;</span>
+        <span style=color:#f92672>steps</span>:
+          - <span style=color:#f92672>task</span>: <span style=color:#ae81ff>AzureCLI@2</span>
+            <span style=color:#f92672>inputs</span>:
+              <span style=color:#f92672>azureSubscription</span>: <span style=color:#e6db74>&#34;$(SUBSCRIPTION_NAME)&#34;</span>
+              <span style=color:#f92672>addSpnToEnvironment</span>: <span style=color:#66d9ef>true</span>
+              <span style=color:#f92672>scriptType</span>: <span style=color:#e6db74>&#34;bash&#34;</span>
+              <span style=color:#f92672>scriptLocation</span>: <span style=color:#e6db74>&#34;inlineScript&#34;</span>
+              <span style=color:#f92672>inlineScript</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>                </span>                <span style=color:#ae81ff>az webapp config container set --resource-group $(APP_NAME)-rg --name $(APP_NAME) --docker-custom-image-name $(ACR_NAME).azurecr.io/$(IMAGE_NAME):latest --docker-registry-server-url https://$(ACR_NAME).azurecr.io</span>
+            <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Web App - Configure the App Serivce to use Azure Container Registry&#34;</span>
+          - <span style=color:#f92672>task</span>: <span style=color:#ae81ff>AzureCLI@2</span>
+            <span style=color:#f92672>inputs</span>:
+              <span style=color:#f92672>azureSubscription</span>: <span style=color:#e6db74>&#34;$(SUBSCRIPTION_NAME)&#34;</span>
+              <span style=color:#f92672>addSpnToEnvironment</span>: <span style=color:#66d9ef>true</span>
+              <span style=color:#f92672>scriptType</span>: <span style=color:#e6db74>&#34;bash&#34;</span>
+              <span style=color:#f92672>scriptLocation</span>: <span style=color:#e6db74>&#34;inlineScript&#34;</span>
+              <span style=color:#f92672>inlineScript</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>                </span>                <span style=color:#ae81ff>az webapp deployment container config --resource-group $(APP_NAME)-rg --name $(APP_NAME) --enable-cd true</span>
+            <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Web App - Enable continuous deployment whenever the image is updated on the WebApp&#34;</span>
+          - <span style=color:#f92672>task</span>: <span style=color:#ae81ff>AzureCLI@2</span>
+            <span style=color:#f92672>inputs</span>:
+              <span style=color:#f92672>azureSubscription</span>: <span style=color:#e6db74>&#34;$(SUBSCRIPTION_NAME)&#34;</span>
+              <span style=color:#f92672>addSpnToEnvironment</span>: <span style=color:#66d9ef>true</span>
+              <span style=color:#f92672>scriptType</span>: <span style=color:#e6db74>&#34;bash&#34;</span>
+              <span style=color:#f92672>scriptLocation</span>: <span style=color:#e6db74>&#34;inlineScript&#34;</span>
+              <span style=color:#f92672>inlineScript</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>                </span>                <span style=color:#ae81ff>az acr webhook create --name $(ACR_NAME)webhook --registry $(ACR_NAME) --scope $(IMAGE_NAME):latest --actions push --uri $(az webapp deployment container show-cd-url --resource-group $(APP_NAME)-rg --name $(APP_NAME) --query &#34;CI_CD_URL&#34; -o tsv)</span>
+            <span style=color:#f92672>displayName</span>: <span style=color:#e6db74>&#34;Azure Container Registry - Add the web hook created in the last task to the Azure Container Registry&#34;</span>
+</code></pre></div><p>A full copy of the <code>azure-pipelines.yml</code> file can be found in the following repo <a href=https://github.com/russmckendrick/docker-python-web-app>https://github.com/russmckendrick/docker-python-web-app</a>.</p>
+<h4 id=running-thepipeline>Running the Pipeline<a hidden class=anchor aria-hidden=true href=#running-thepipeline>#</a></h4>
+<p>Now that we know what the pipeline looks like this what happened when it executed for the first time, first off, you (or whoever your approver is) will get an email;</p>
+<p><img loading=lazy src=images/04.png alt>
+</p>
+<p>Once you click through to approve the deployment you should see something which looks like the following;</p>
+<p><img loading=lazy src=images/05.png alt>
+</p>
+<p>Once approved the pipeline will continue to run and as you can see all the stages, jobs and steps have been executed as this is the first run;</p>
+<p><img loading=lazy src=images/06.png alt>
+</p>
+<p>When the pipeline is next triggered you should see something like the following;</p>
+<p><img loading=lazy src=images/07.png alt>
+</p>
+<p>This time, other than checking to see if the application has already been deployed everything else in the fourth stage has been skipped.</p>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://www.mediaglasses.blog/tags/azure/>Azure</a></li>
+<li><a href=https://www.mediaglasses.blog/tags/azure-devops/>Azure Devops</a></li>
+<li><a href=https://www.mediaglasses.blog/tags/pipeline/>Pipeline</a></li>
+<li><a href=https://www.mediaglasses.blog/tags/devops/>DevOps</a></li>
+<li><a href=https://www.mediaglasses.blog/tags/docker/>Docker</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://www.mediaglasses.blog/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/>
+<span class=title>« Prev Page</span>
+<br>
+<span>Azure DevOps Terraform Pipeline with Checkov & Approvals</span>
+</a>
+<a class=next href=https://www.mediaglasses.blog/2021/01/22/top-20ish-records-of-2020/>
+<span class=title>Next Page »</span>
+<br>
+<span>Top 20ish Records of 2020</span>
+</a>
+</nav>
+<div class=share-buttons>
+<a target=_blank rel="noopener noreferrer" aria-label="share Azure DevOps Multi-Stage Pipelines on twitter" href="https://twitter.com/intent/tweet/?text=Azure%20DevOps%20Multi-Stage%20Pipelines&url=https%3a%2f%2fwww.mediaglasses.blog%2f2021%2f04%2f25%2fazure-devops-multi-stage-pipelines%2f&hashtags=Azure%2cAzureDevops%2cPipeline%2cDevOps%2cDocker"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Azure DevOps Multi-Stage Pipelines on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.mediaglasses.blog%2f2021%2f04%2f25%2fazure-devops-multi-stage-pipelines%2f&title=Azure%20DevOps%20Multi-Stage%20Pipelines&summary=Azure%20DevOps%20Multi-Stage%20Pipelines&source=https%3a%2f%2fwww.mediaglasses.blog%2f2021%2f04%2f25%2fazure-devops-multi-stage-pipelines%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Azure DevOps Multi-Stage Pipelines on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fwww.mediaglasses.blog%2f2021%2f04%2f25%2fazure-devops-multi-stage-pipelines%2f&title=Azure%20DevOps%20Multi-Stage%20Pipelines"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Azure DevOps Multi-Stage Pipelines on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.mediaglasses.blog%2f2021%2f04%2f25%2fazure-devops-multi-stage-pipelines%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Azure DevOps Multi-Stage Pipelines on whatsapp" href="https://api.whatsapp.com/send?text=Azure%20DevOps%20Multi-Stage%20Pipelines%20-%20https%3a%2f%2fwww.mediaglasses.blog%2f2021%2f04%2f25%2fazure-devops-multi-stage-pipelines%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Azure DevOps Multi-Stage Pipelines on telegram" href="https://telegram.me/share/url?text=Azure%20DevOps%20Multi-Stage%20Pipelines&url=https%3a%2f%2fwww.mediaglasses.blog%2f2021%2f04%2f25%2fazure-devops-multi-stage-pipelines%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg>
+</a>
+</div>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://www.mediaglasses.blog/>MediaGlasses</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)">
+<button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</button>
+</a><script src=https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin=anonymous referrerpolicy=no-referrer></script>
+<script>const images=Array.from(document.querySelectorAll(".post-content img"));images.forEach(a=>{mediumZoom(a,{margin:0,scrollOffset:40,container:null,template:null})})</script>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
+</body>
+</html>

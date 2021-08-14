@@ -1,0 +1,2 @@
+{{ range .Site.Pages }}{{ if .Aliases }}{{ $new := .RelPermalink }}{{ range .Page.Aliases }}{{ . }} {{ $new }} 301
+{{ end }}{{ end }}{{ end }}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Checkov on MediaGlasses</title>
+    <link>https://www.mediaglasses.blog/tags/checkov/</link>
+    <description>Recent content in Checkov on MediaGlasses</description>
+    <image>
+      <url>https://www.mediaglasses.blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://www.mediaglasses.blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 08 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.mediaglasses.blog/tags/checkov/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure DevOps Terraform Pipeline  with Checkov &amp; Approvals</title>
+      <link>https://www.mediaglasses.blog/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/</link>
+      <pubDate>Tue, 08 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.mediaglasses.blog/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/</guid>
+      <description>It’s been just over a year since I first posted about the Azure DevOps Terraform Pipeline I used to use, I say used to use, because that pipeline is now a little outdated. This posts covers the updated Pipeline I am starting to deploy along side my Terraform code.
+Pipeline Overview The pipeline itself has expanded a little and it now not only uses stages but also depending what Terraform is planning on doing it will trigger a manual approval process should there be any resources being destroyed.</description>
+    </item>
+    
+  </channel>
+</rss>

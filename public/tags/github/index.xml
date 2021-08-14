@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Github on MediaGlasses</title>
+    <link>https://www.mediaglasses.blog/tags/github/</link>
+    <description>Recent content in Github on MediaGlasses</description>
+    <image>
+      <url>https://www.mediaglasses.blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://www.mediaglasses.blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 27 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.mediaglasses.blog/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Migrating my Docker images to the GitHub Container Registry</title>
+      <link>https://www.mediaglasses.blog/2020/09/27/migrating-my-docker-images-to-the-github-container-registry/</link>
+      <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.mediaglasses.blog/2020/09/27/migrating-my-docker-images-to-the-github-container-registry/</guid>
+      <description>A few weeks after the final draft of the fourth edition of Mastering Docker was submitted Docker made the announcement that they would be making changes to the retention of images in Docker Hub as well as the introduction of rate limits.
+These changes make complete sense given that at the time of writing this post there are over 150 million images taking up over 15 PB of storage, of that 10 PB of the images haven’t been accessed in over 6 months and 4.</description>
+    </item>
+    
+    <item>
+      <title>GitHub Codespaces and Terraform</title>
+      <link>https://www.mediaglasses.blog/2020/09/20/github-codespaces-and-terraform/</link>
+      <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.mediaglasses.blog/2020/09/20/github-codespaces-and-terraform/</guid>
+      <description>I got my invite for GitHub Codespaces the other day and I thought I would have a quick play with it as having an an online IDE sounds like it could come in handy.
+If you know me — you will know that I am not a developer, but I do a lot of work in Visual Studio Code as that is where I tend to develop work on a lot of the infrastructure as code projects using Terraform and Ansible, as well as Docker projects.</description>
+    </item>
+    
+  </channel>
+</rss>

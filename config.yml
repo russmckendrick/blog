@@ -1,0 +1,140 @@
+baseURL: "https://www.mediaglasses.blog/"
+title: "MediaGlasses"
+paginate: "5"
+theme: ["PaperMod"]
+ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken"]
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+disqusShortname: "mediaglasses"
+
+googleAnalytics: "UA-43497944-1"
+
+permalinks:
+  posts: "/:year/:month/:day/:title/"
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: "MediaGlasses"
+  description: "Ramblings of a nerd"
+  keywords: ["Blog", "Technical", "Automation", "DevOps"]
+  author: "Russ McKendrick"
+  images: ["/images/blog-cover.jpg"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: "auto" # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: false
+  ShowCodeCopyButtons: true
+  disableSpecial1stPost: true
+  disableScrollToTop: false
+  comments: true
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  assets:
+    disableHLJS: true
+    disableFingerprinting: false
+    favicon: "favicon.ico"
+    favicon16x16: "favicon-16x16.png"
+    favicon32x32: "favicon-32x32.png"
+    apple_touch_icon: "apple-touch-icon.png"
+    safari_pinned_tab: "images/logo.svg"
+
+  label:
+    text: "MediaGlasses"
+    icon: "/images/logo.svg"
+    iconHeight: 40
+
+  socialIcons:
+    - name: twitter
+      url: "https://twitter.com/russmckendrick/"
+    - name: stackoverflow
+      url: "https://stackoverflow.com"
+    - name: github
+      url: "https://github.com/russmckendrick/"
+
+  analytics:
+    google:
+      SiteVerificationTag: "XYZabc"
+    bing:
+      SiteVerificationTag: "XYZabc"
+    yandex:
+      SiteVerificationTag: "XYZabc"
+
+  cover:
+    responsiveImages: true
+    hidden: false # hide everywhere but not in structured data
+    hiddenInList: false # hide on list pages and home
+    hiddenInSingle: false # hide on single page
+
+  editPost:
+    URL: "https://github.com/russmckendrick/blog/tree/main/content/"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+menu:
+  main:
+    - identifier: search
+      name: search
+      url: /search/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
+    - identifier: about
+      name: about
+      url: https://russ.mckendrick.io/
+      weight: 30
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
+    - _redirects
+
+mediaTypes:
+  text/redirects:
+
+outputFormats:
+  _redirect:
+    name: _redirects
+    mediaType: text/redirects
+    baseName: _redirects
+    isPlainText: true
+    rel: alternate
+    isHTML: false
+    noUgly: true
+    permalinkable: false
+
+markup:
+  highlight:
+    anchorLineNos: false
+    codeFences: true
+    guessSyntax: true
+    lineNos: false
+    noClasses: true
+    style: monokai

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Azure on MediaGlasses</title>
+    <link>https://www.mediaglasses.blog/tags/azure/</link>
+    <description>Recent content in Azure on MediaGlasses</description>
+    <image>
+      <url>https://www.mediaglasses.blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://www.mediaglasses.blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 08 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.mediaglasses.blog/tags/azure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure DevOps Terraform Pipeline  with Checkov &amp; Approvals</title>
+      <link>https://www.mediaglasses.blog/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/</link>
+      <pubDate>Tue, 08 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.mediaglasses.blog/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/</guid>
+      <description>It’s been just over a year since I first posted about the Azure DevOps Terraform Pipeline I used to use, I say used to use, because that pipeline is now a little outdated. This posts covers the updated Pipeline I am starting to deploy along side my Terraform code.
+Pipeline Overview The pipeline itself has expanded a little and it now not only uses stages but also depending what Terraform is planning on doing it will trigger a manual approval process should there be any resources being destroyed.</description>
+    </item>
+    
+    <item>
+      <title>Azure DevOps Multi-Stage Pipelines</title>
+      <link>https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/</link>
+      <pubDate>Sun, 25 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.mediaglasses.blog/2021/04/25/azure-devops-multi-stage-pipelines/</guid>
+      <description>As I move into using Azure DevOps more and more, there is one thing which I really haven’t got on with and that is release pipelines. I didn’t like that I couldn’t easily define it as YAML like I could with build pipelines, even though I don’t like them, there are a few things I do like — like approval gates.
+Environments Luckily, there are ways to get around this — the most simple way is to add an Environment and then add an Approval.</description>
+    </item>
+    
+    <item>
+      <title>Ansible, Azure and macOS Big Sur</title>
+      <link>https://www.mediaglasses.blog/2020/12/28/ansible-azure-and-macos-big-sur/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.mediaglasses.blog/2020/12/28/ansible-azure-and-macos-big-sur/</guid>
+      <description>Moving to Docker to run Ansible on macOS Big Sur</description>
+    </item>
+    
+    <item>
+      <title>Azure DevOps Terraform Pipeline</title>
+      <link>https://www.mediaglasses.blog/2020/05/31/azure-devops-terraform-pipeline/</link>
+      <pubDate>Sun, 31 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.mediaglasses.blog/2020/05/31/azure-devops-terraform-pipeline/</guid>
+      <description>In my last post I wrote about how I created an Azure DevOps pipeline using Ansible in a more “Terraform” way, however, although I have used Terraform and Azure DevOps quite a bit I realised I didn’t really have a template for a pipeline.
+Before we look at the pipeline itself I should point out that is uses the the Terraform Azure Pipeline extension by Microsoft DevLabs from the Visual Studio Marketplace, if you are following along with this post please ensure that the extension is installed in your organisation before proceeding.</description>
+    </item>
+    
+    <item>
+      <title>Azure DevOps Ansible Pipeline</title>
+      <link>https://www.mediaglasses.blog/2020/05/10/azure-devops-ansible-pipeline/</link>
+      <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.mediaglasses.blog/2020/05/10/azure-devops-ansible-pipeline/</guid>
+      <description>I thought it was was about time that I started to have a play with Azure DevOps a little more than I have been doing, one of the things I have always meant to look at in the past is using DevOps to run Ansible playbooks.
+However the Ansible Task recommended by Microsoft has always put me off, the reason for this is that this task requires a Virtual Machine to run Ansible — this to me always seemed a little overkill.</description>
+    </item>
+    
+    <item>
+      <title>Ansible and the Azure Rest API</title>
+      <link>https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/</link>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/</guid>
+      <description>Over the last few months I have been doing more and more work with Ansible to manage end to end deployments in Azure. For the most part Ansible’s core set of Azure modules work with no problems and more than do the job.
+However, with the rate which Microsoft are both adding new features and functionality it is difficult to keep up. The core Ansible modules rely on several Azure python libraries to be updated before the functionality can be added or introduced to the core module set.</description>
+    </item>
+    
+  </channel>
+</rss>

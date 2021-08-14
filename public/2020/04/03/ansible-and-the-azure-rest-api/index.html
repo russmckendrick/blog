@@ -1,0 +1,468 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Ansible and the Azure Rest API | MediaGlasses</title>
+<meta name=keywords content="Ansible,Azure">
+<meta name=description content="Over the last few months I have been doing more and more work with Ansible to manage end to end deployments in Azure. For the most part Ansible’s core set of Azure modules work with no problems and more than do the job.
+However, with the rate which Microsoft are both adding new features and functionality it is difficult to keep up. The core Ansible modules rely on several Azure python libraries to be updated before the functionality can be added or introduced to the core module set.">
+<meta name=author content="Russ Mckendrick">
+<link rel=canonical href=https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/>
+<meta name=google-site-verification content="XYZabc">
+<meta name=yandex-verification content="XYZabc">
+<meta name=msvalidate.01 content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.1cabe33df594e7ba6ebd15554fa20e096c6fc15bd43c296f14557b489b7e95bf.css integrity="sha256-HKvjPfWU57puvRVVT6IOCWxvwVvUPClvFFV7SJt+lb8=" rel="preload stylesheet" as=style>
+<link rel=preload href=/favicon.ico as=image>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://www.mediaglasses.blog/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://www.mediaglasses.blog/favicon.ico>
+<link rel=icon type=image/png sizes=32x32 href=https://www.mediaglasses.blog/favicon.ico>
+<link rel=apple-touch-icon href=https://www.mediaglasses.blog/favicon.ico>
+<link rel=mask-icon href=https://www.mediaglasses.blog/images/logo.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.87.0">
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="Ansible and the Azure Rest API">
+<meta property="og:description" content="Over the last few months I have been doing more and more work with Ansible to manage end to end deployments in Azure. For the most part Ansible’s core set of Azure modules work with no problems and more than do the job.
+However, with the rate which Microsoft are both adding new features and functionality it is difficult to keep up. The core Ansible modules rely on several Azure python libraries to be updated before the functionality can be added or introduced to the core module set.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/">
+<meta property="og:image" content="https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/2020-04-03_ansible-and-the-azure-rest-api.jpeg"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-04-03T00:00:00+00:00">
+<meta property="article:modified_time" content="2020-04-03T00:00:00+00:00"><meta property="og:site_name" content="MediaGlasses">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/2020-04-03_ansible-and-the-azure-rest-api.jpeg">
+<meta name=twitter:title content="Ansible and the Azure Rest API">
+<meta name=twitter:description content="Over the last few months I have been doing more and more work with Ansible to manage end to end deployments in Azure. For the most part Ansible’s core set of Azure modules work with no problems and more than do the job.
+However, with the rate which Microsoft are both adding new features and functionality it is difficult to keep up. The core Ansible modules rely on several Azure python libraries to be updated before the functionality can be added or introduced to the core module set.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://www.mediaglasses.blog/posts/"},{"@type":"ListItem","position":2,"name":"Ansible and the Azure Rest API","item":"https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Ansible and the Azure Rest API","name":"Ansible and the Azure Rest API","description":"Over the last few months I have been doing more and more work with Ansible to manage end to end deployments in Azure. For the most part Ansible’s core set of Azure modules work with no problems and more than do the job.\nHowever, with the rate which Microsoft are both adding new features and functionality it is difficult to keep up. The core Ansible modules rely on several Azure python libraries to be updated before the functionality can be added or introduced to the core module set.","keywords":["Ansible","Azure"],"articleBody":"Over the last few months I have been doing more and more work with Ansible to manage end to end deployments in Azure. For the most part Ansible’s core set of Azure modules work with no problems and more than do the job.\nHowever, with the rate which Microsoft are both adding new features and functionality it is difficult to keep up. The core Ansible modules rely on several Azure python libraries to be updated before the functionality can be added or introduced to the core module set.\nOne work around is to use the set of preview modules on Ansible Galaxy provided by Microsoft. However, being this cutting edge comes with a warning that using them could introduce breaking changes to the core Azure modules due to the preview modules reliance on the updated Python SDK.\nTypically I tend to ignore these as a lot of the work I do is for production systems and I don’t want to relay on something which could change, potentially quite dramatically, before it gets merged into the core set of Ansible Azure modules.\nLuckily, Ansible 2.6 introduced the azure_rm_resource module, this gives you access to create, update or delete any Azure resource using the Azure REST API, this means that if the Azure REST API supports managing the resource / feature you want to interact with then you will now be able to do it directly from Ansible.\nGreat you maybe thinking to yourself, end of blog post, I will go ahead and use azure_rm_resource for all of those bits I have been trying to put work arounds in place for …\n… as you can imagine, the Azure REST API is quite complicated and there isn’t much documentation for the module.\nUsing the azure_rm_resource module So let’s dive in and take a look at how we can use the azure_rm_resource and Azure REST API to launch a resource, which at the time of writing, is not supported nativity in the core Azure Ansible modules. For this I am going to look at adding an Azure Private DNS zone and then attach it to a Virtual Network - for more information on Azure Private DNS see the overview page.\nTo start with we are going to be needing a resource group and virtual network, for this we will use the core azure_rm_resourcegroup , azure_rm_virtualnetwork and azure_rm_subnet modules as we don’t need anything special;\n- name: Create a Azure Private DNS zone using Ansible hosts: localhost connection: local gather_facts: true vars: resource_group: \"myResourceGroup\" location: \"uksouth\" network: name: \"iac-vnet\" cidr_block: \"10.10.0.0/23\" subnets: - { name: 'app-sub', subnet: '10.10.0.0/24' } - { name: 'gateway-sub', subnet: '10.10.1.0/27' } dnszone: \"iac.int\" tasks: - name: Create a resource group azure_rm_resourcegroup: name: \"{{ resource_group }}\" location: \"{{ location }}\" - name: create virtual network azure_rm_virtualnetwork: resource_group: \"{{ resource_group }}\" name: \"{{ network.name }}\" address_prefixes: \"{{ network.cidr_block }}\" - name: add the subnets azure_rm_subnet: resource_group: \"{{ resource_group }}\" name: \"{{ item.name }}\" address_prefix: \"{{ item.subnet }}\" virtual_network: \"{{ network.name }}\" with_items: \"{{ network.subnets }}\" The next part of the playbook is where things start to get interesting as this is where we are going to be making our first call to the Azure REST API using azure_rm_resource;\n- name: create a private DNS zone for {{ dnszone }} azure_rm_resource: api_version: \"2018-09-01\" resource_group: \"{{ resource_group }}\" provider: \"network\" resource_type: \"privatednszones\" resource_name: \"{{ dnszone }}\" body: location: \"Global\" There are few things to unpack here, before we look at each of the parameters in the task do lets quickly look at what the REST API would look like.\nFirst off is the PUT request (you may need to scroll to see the full URL), the request contains the subscription ID, resource group and information around the provider to use, which in this case is the Microsoft.Network/privateDnsZones one before finally we provide the name of the zone which we would like to be created and the API version to use;\nPUT https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateDnsZones/iac.int?api-version=2018-09-01 The JSON body we would send with the PUT request contains the following;\n{ \"location\": \"Global\" } You can see that a lot of the request above is repeated in the parameters we have supplied in the task;\n api_version, here you can specify the version of the API to use, this is useful to maintain compatibility within your tasks. resource_group, is self explanatory, which resource group would you like the REST API to create the resource in? provider, the provider to use, this just needs to be the name of the provider and not be prefixed by Microsoft.. resource_type, this is the type of resource we will be creating. resource_name, the name of the resource we want to create. body, finally, we have the body of the request.  So far so good, if we wanted to we could run our playbook and the Resource Group, Virtual Network, Subnets and Private DNS Zone would all be created, however, we need a few more steps top register our newly created Private DNS zone with the virtual network.\nDifferences when launching resources using the azure_rm_resource module This is where one of the main differences between using the core Ansible Azure modules and the Azure REST API rears it head. You will be used to the majority of Ansible modules waiting for resource you are creating to complete creating and gather a bunch of facts about the newly created resource before exiting.\nAs we are now offloading the creation to of the resource to the Azure REST API the azure_rm_resource module only really cares that is making a valid REST request rather than the resource has completed launching. This means we will have add some logic to ensure that our Internal DNS zone have successfully been created before progressing with the registration.\nTo do this we can use the azure_rm_resource_info module, this also interacts with the Azure REST API - but it only performs GET requests;\n- name: wait for the {{ dnszone }} private dns zone to finish registering before progressing azure_rm_resource_info: api_version: \"2018-09-01\" resource_group: \"{{ resource_group }}\" provider: \"network\" resource_type: \"privatednszones\" resource_name: \"{{ dnszone }}\" register: dnszone_output until: dnszone_output.response[0].code != 'NotFound' delay: 10 retries: 10 ignore_errors: true As you can see, we are registering the output of the request and retrying it until the registered output doesn’t contain ‘NotFound’, we are also ignoring errors to stop the playbook run from failing on subsequent executions.\nLet’s do something a little more complex Now that we know that our Private DNS zone has been created we are almost ready to register it within our Virtual Network. The raw REST API request to do this looks something like the following;\nPUT https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateDnsZones/iac.int/virtualNetworkLinks/iac.int?api-version=2018-09-01 This time the JSON body contains the following;\n{ \"location\": \"Global\", \"properties\": { \"virtualNetwork\": { \"id\": \"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/iac-vnet\" }, \"registrationEnabled\": true } } As you can see, the body contains more information — one bit of which is a little troublesome. The ID of virtual network requires a little bit of information, we already know the virtual network name and which resource group the virtual network is in, however, we also need to provide the subscription ID.\nSo far, Ansible has been supplying this for us but now we actually need to include it as a variable within the task, as we want our playbook to be as dynamic as possible we really should be getting this information on the fly.\nFigure out your Azure Subscription ID using Ansible This is where I struggled a little bit as most of the fact gather modules I looked didn’t return just the subscription ID, so get around this we are going to use the azure_rm_resourcegroup_info module. This returns the full resource ID of the group, this in our case would be something like /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroup/myResourceGroup.\nSo what we need to do is register the output of running the azure_rm_resourcegroup_info module and then using regular expressions grab the subscription ID and set it as a fact using the set_fact module;\n- name: get facts about our resource group so we can get the subscription id azure_rm_resourcegroup_info: name: \"{{ resource_group }}\" register: \"current_sub_id\" - name: set the current subscription id using the facts we just grabbed as a variable using some regex set_fact: sub_id: \"{{ current_sub_id.resourcegroups[0].id | regex_findall('^/[^/]+/([^/]*)') | list | join }}\" Now that we have subscription ID we can then register our Private DNS with the Virtual Network and allow resources created in there automatically register themselves with the DNS zone;\n- name: link {{ dnszone }} to {{ network.name }} and allow registrations azure_rm_resource: api_version: '2018-09-01' resource_group: \"{{ resource_group }}\" provider: network resource_type: privatednszones resource_name: \"{{ dnszone }}\" subresource: - type: virtualnetworklinks name: \"{{ network.name }}\" body: location: Global properties: virtualNetwork: id: /subscriptions/{{ sub_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Network/virtualNetworks/{{ network.name }} registrationEnabled: true Now that we have everything we need to create the resource we can run the playbook, a recording of which can be found below;\nChecking the Azure portal shows that the resource has been created as expected;\nThat is only half of the story though, remember the task which registers the internal DNS zone with the virtual network — the JSON body which was sent was starting to get a little complicated …\n- name: link {{ dnszone }} to {{ network.name }} and allow registrations azure_rm_resource: api_version: '2018-09-01' resource_group: \"{{ resource_group }}\" provider: network resource_type: privatednszones resource_name: \"{{ dnszone }}\" subresource: - type: virtualnetworklinks name: \"{{ network.name }}\" body: location: Global properties: virtualNetwork: id: /subscriptions/{{ sub_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Network/virtualNetworks/{{ network.name }} registrationEnabled: true … and that was only a basic task, trying to do more complex tasks can result in some quite complicated requests needing to be made.\nUsing Visual Studio Code to get a head start Luckily, there is a way you can get a head start. Version 0.5.0 of the Ansible Visual Studio Code extension introduced the Samples for azure_rm_resource command, which is in preview. This command does something extremely useful, it downloads a copy of the Azure REST API specification from the official GitHub repo and updates them to be formatted for use with the azure_rm_resource module.\nFor example, to get a idea on what we needed to do to create the private DNS zone I opened Visual Studio Code, and selected the Ansible: Samples for azure_rm_resource (PREVIEW) command;\nOnce selected, I search for DNS;\nSelected privatedns which then gave me all of the options around managing an Azure Private DNS zone;\nOnce I had selected PrivateZones_CreateOrUpdate I was given the a list of API versions to choose from, then Visual Studio Code opened a new file and populated it with the same data;\n- hosts: localhost vars: resource_group: tasks: - name: Sample for Azure REST API - PrivateZones_CreateOrUpdate azure_rm_resource: # url: /subscriptions/{{ lookup('env','AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName} api_version: '2018-09-01' resource_group: \"{{ resource_group }}\" provider: network resource_type: privatednszones resource_name: \"{{ privatezonename }}\" body: location: Global tags: key1: value1 As you can see from the sample data above it is quite easy to follow, also without this tool, performing a complex API request would be extremely difficult as you can see from the task below which creates an Application Gateway;\n- hosts: localhost vars: resource_group: tasks: - name: Sample for Azure REST API - ApplicationGateways_CreateOrUpdate azure_rm_resource: # url: /subscriptions/{{ lookup('env','AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName} api_version: '2019-09-01' resource_group: \"{{ resource_group }}\" provider: network resource_type: applicationgateways resource_name: \"{{ applicationgatewayname }}\" body: identity: type: UserAssigned userAssignedIdentities: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1: location: eastus properties: sku: name: Standard_v2 tier: Standard_v2 capacity: 3 gatewayIPConfigurations: - name: appgwipc properties: subnet: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet/subnets/appgwsubnet sslCertificates: - name: sslcert properties: data: **** password: **** - name: sslcert2 properties: keyVaultSecretId: https://kv/secret trustedRootCertificates: - name: rootcert properties: data: **** - name: rootcert1 properties: keyVaultSecretId: https://kv/secret frontendIPConfigurations: - name: appgwfip properties: publicIPAddress: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/appgwpip frontendPorts: - name: appgwfp properties: port: 443 - name: appgwfp80 properties: port: 80 backendAddressPools: - name: appgwpool properties: backendAddresses: - ipAddress: 10.0.1.1 - ipAddress: 10.0.1.2 backendHttpSettingsCollection: - name: appgwbhs properties: port: 80 protocol: Http cookieBasedAffinity: Disabled requestTimeout: 30 httpListeners: - name: appgwhl properties: frontendIPConfiguration: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendIPConfigurations/appgwfip frontendPort: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendPorts/appgwfp protocol: Https sslCertificate: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/sslCertificates/sslcert requireServerNameIndication: false - name: appgwhttplistener properties: frontendIPConfiguration: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendIPConfigurations/appgwfip frontendPort: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendPorts/appgwfp80 protocol: Http urlPathMaps: - name: pathMap1 properties: defaultBackendAddressPool: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendAddressPools/appgwpool defaultBackendHttpSettings: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendHttpSettingsCollection/appgwbhs defaultRewriteRuleSet: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/rewriteRuleSets/rewriteRuleSet1 pathRules: - name: apiPaths properties: paths: - /api - /v1/api backendAddressPool: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendAddressPools/appgwpool backendHttpSettings: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendHttpSettingsCollection/appgwbhs rewriteRuleSet: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/rewriteRuleSets/rewriteRuleSet1 requestRoutingRules: - name: appgwrule properties: ruleType: Basic priority: 10 httpListener: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/httpListeners/appgwhl backendAddressPool: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendAddressPools/appgwpool backendHttpSettings: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendHttpSettingsCollection/appgwbhs rewriteRuleSet: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/rewriteRuleSets/rewriteRuleSet1 - name: appgwPathBasedRule properties: ruleType: PathBasedRouting priority: 20 httpListener: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/httpListeners/appgwhttplistener urlPathMap: id: /subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/urlPathMaps/pathMap1 rewriteRuleSets: - name: rewriteRuleSet1 properties: rewriteRules: - name: Set X-Forwarded-For ruleSequence: 102 conditions: - variable: http_req_Authorization pattern: ^Bearer ignoreCase: true negate: false actionSet: requestHeaderConfigurations: - headerName: X-Forwarded-For headerValue: var_add_x_forwarded_for_proxy responseHeaderConfigurations: - headerName: Strict-Transport-Security headerValue: max-age=31536000 When dealing with a lot of parameters like that you really do need the head start which the Samples for azure_rm_resource gives you - I can’t tell you the amount of time and hassle the extension has save me so far 😄.\nBeing able to interact directly with the Azure REST API using a tool such as Ansible a real time saver and let’t you keep up with new features as they are added Microsoft without having to wait for the Azure module authors and SDK to catch-up.\n","wordCount":"2198","inLanguage":"en","image":"https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/2020-04-03_ansible-and-the-azure-rest-api.jpeg","datePublished":"2020-04-03T00:00:00Z","dateModified":"2020-04-03T00:00:00Z","author":{"@type":"Person","name":"Russ Mckendrick"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/"},"publisher":{"@type":"Organization","name":"MediaGlasses","logo":{"@type":"ImageObject","url":"https://www.mediaglasses.blog/favicon.ico"}}}</script>
+</head>
+<body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<noscript>
+<style type=text/css>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:#1d1e20;--entry:#2e2e33;--primary:rgba(255, 255, 255, 0.84);--secondary:rgba(255, 255, 255, 0.56);--tertiary:rgba(255, 255, 255, 0.16);--content:rgba(255, 255, 255, 0.74);--hljs-bg:#2e2e33;--code-bg:#37383e;--border:#333}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://www.mediaglasses.blog/ accesskey=h title="MediaGlasses (Alt + H)">
+<img src=/favicon.ico alt=logo aria-label=logo height=35>MediaGlasses</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://www.mediaglasses.blog/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+<li>
+<a href=https://russ.mckendrick.io/ title=about>
+<span>about</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://www.mediaglasses.blog/>Home</a>&nbsp;»&nbsp;<a href=https://www.mediaglasses.blog/posts/>Posts</a></div>
+<h1 class=post-title>
+Ansible and the Azure Rest API
+</h1>
+<div class=post-meta>April 3, 2020&nbsp;·&nbsp;11 min&nbsp;·&nbsp;Russ Mckendrick&nbsp;|&nbsp;<a href=https://github.com/russmckendrick/blog/tree/main/content//posts/2020-04-03_ansible-and-the-azure-rest-api/index.md rel="noopener noreferrer" target=_blank>Suggest Changes</a>
+</div>
+</header>
+<figure class=entry-cover>
+<img loading=lazy srcset="https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/2020-04-03_ansible-and-the-azure-rest-api_hu6ae539d2ef95a231fe4c21616763c912_168450_360x0_resize_q75_box.jpeg 360w ,https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/2020-04-03_ansible-and-the-azure-rest-api_hu6ae539d2ef95a231fe4c21616763c912_168450_480x0_resize_q75_box.jpeg 480w ,https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/2020-04-03_ansible-and-the-azure-rest-api_hu6ae539d2ef95a231fe4c21616763c912_168450_720x0_resize_q75_box.jpeg 720w ,https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/2020-04-03_ansible-and-the-azure-rest-api_hu6ae539d2ef95a231fe4c21616763c912_168450_1080x0_resize_q75_box.jpeg 1080w ,https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/2020-04-03_ansible-and-the-azure-rest-api.jpeg 1400w" sizes="(min-width: 768px) 720px, 100vw" src=https://www.mediaglasses.blog/2020/04/03/ansible-and-the-azure-rest-api/2020-04-03_ansible-and-the-azure-rest-api.jpeg alt>
+</figure>
+<div class=post-content><p>Over the last few months I have been doing more and more work with Ansible to manage end to end deployments in Azure. For the most part Ansible’s core set of Azure modules work with no problems and more than do the job.</p>
+<p>However, with the rate which Microsoft are both adding new features and functionality it is difficult to keep up. The core Ansible modules rely on several Azure python libraries to be updated before the functionality can be added or introduced to the core module set.</p>
+<p>One work around is to use the set of <a href=https://galaxy.ansible.com/azure/azure_preview_modules>preview modules on Ansible Galaxy</a> provided by Microsoft. However, being this cutting edge comes with a warning that using them could introduce breaking changes to the core Azure modules due to the preview modules reliance on the updated Python SDK.</p>
+<p>Typically I tend to ignore these as a lot of the work I do is for production systems and I don’t want to relay on something which could change, potentially quite dramatically, before it gets merged into the core set of Ansible Azure modules.</p>
+<p>Luckily, Ansible 2.6 introduced the <code>azure_rm_resource</code> module, this gives you access to create, update or delete any Azure resource using the Azure REST API, this means that if the Azure REST API supports managing the resource / feature you want to interact with then you will now be able to do it directly from Ansible.</p>
+<p>Great you maybe thinking to yourself, end of blog post, I will go ahead and use <code>azure_rm_resource</code> for all of those bits I have been trying to put work arounds in place for …</p>
+<p>… as you can imagine, the Azure REST API is quite complicated and there isn’t much documentation for the module.</p>
+<h4 id=using-the-azure_rm_resource-module>Using the azure_rm_resource module<a hidden class=anchor aria-hidden=true href=#using-the-azure_rm_resource-module>#</a></h4>
+<p>So let’s dive in and take a look at how we can use the <code>azure_rm_resource</code> and Azure REST API to launch a resource, which at the time of writing, is not supported nativity in the core Azure Ansible modules. For this I am going to look at adding an Azure Private DNS zone and then attach it to a Virtual Network - for more information on Azure Private DNS see <a href=https://docs.microsoft.com/en-us/azure/dns/private-dns-overview>the overview page</a>.</p>
+<p>To start with we are going to be needing a resource group and virtual network, for this we will use the core <code>azure_rm_resourcegroup</code> , <code>azure_rm_virtualnetwork</code> and <code>azure_rm_subnet</code> modules as we don&rsquo;t need anything special;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Create a Azure Private DNS zone using Ansible</span>
+  <span style=color:#f92672>hosts</span>: <span style=color:#ae81ff>localhost</span>
+  <span style=color:#f92672>connection</span>: <span style=color:#ae81ff>local</span>
+  <span style=color:#f92672>gather_facts</span>: <span style=color:#66d9ef>true</span>
+
+  <span style=color:#f92672>vars</span>:
+    <span style=color:#f92672>resource_group</span>: <span style=color:#e6db74>&#34;myResourceGroup&#34;</span>
+    <span style=color:#f92672>location</span>: <span style=color:#e6db74>&#34;uksouth&#34;</span>
+    <span style=color:#f92672>network</span>:
+      <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;iac-vnet&#34;</span>
+      <span style=color:#f92672>cidr_block</span>: <span style=color:#e6db74>&#34;10.10.0.0/23&#34;</span>
+      <span style=color:#f92672>subnets</span>:
+        - { <span style=color:#f92672>name: &#39;app-sub&#39;,    subnet</span>: <span style=color:#e6db74>&#39;10.10.0.0/24&#39;</span> }
+        - { <span style=color:#f92672>name: &#39;gateway-sub&#39;,   subnet</span>: <span style=color:#e6db74>&#39;10.10.1.0/27&#39;</span> }
+    <span style=color:#f92672>dnszone</span>: <span style=color:#e6db74>&#34;iac.int&#34;</span>
+
+  <span style=color:#f92672>tasks</span>:
+    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Create a resource group</span>
+      <span style=color:#f92672>azure_rm_resourcegroup</span>:
+        <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;{{ resource_group }}&#34;</span>
+        <span style=color:#f92672>location</span>: <span style=color:#e6db74>&#34;{{ location }}&#34;</span>
+
+    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>create virtual network</span>
+      <span style=color:#f92672>azure_rm_virtualnetwork</span>:
+        <span style=color:#f92672>resource_group</span>: <span style=color:#e6db74>&#34;{{ resource_group }}&#34;</span>
+        <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;{{ network.name }}&#34;</span>
+        <span style=color:#f92672>address_prefixes</span>: <span style=color:#e6db74>&#34;{{ network.cidr_block }}&#34;</span>
+
+    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>add the subnets</span>
+      <span style=color:#f92672>azure_rm_subnet</span>:
+        <span style=color:#f92672>resource_group</span>: <span style=color:#e6db74>&#34;{{ resource_group }}&#34;</span>
+        <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;{{ item.name }}&#34;</span>
+        <span style=color:#f92672>address_prefix</span>: <span style=color:#e6db74>&#34;{{ item.subnet }}&#34;</span>
+        <span style=color:#f92672>virtual_network</span>: <span style=color:#e6db74>&#34;{{ network.name }}&#34;</span>
+      <span style=color:#f92672>with_items</span>: <span style=color:#e6db74>&#34;{{ network.subnets }}&#34;</span>
+</code></pre></div><p>The next part of the playbook is where things start to get interesting as this is where we are going to be making our first call to the Azure REST API using <code>azure_rm_resource</code>;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>create a private DNS zone for {{ dnszone }}</span>
+      <span style=color:#f92672>azure_rm_resource</span>:
+        <span style=color:#f92672>api_version</span>: <span style=color:#e6db74>&#34;2018-09-01&#34;</span>
+        <span style=color:#f92672>resource_group</span>: <span style=color:#e6db74>&#34;{{ resource_group }}&#34;</span>
+        <span style=color:#f92672>provider</span>: <span style=color:#e6db74>&#34;network&#34;</span>
+        <span style=color:#f92672>resource_type</span>: <span style=color:#e6db74>&#34;privatednszones&#34;</span>
+        <span style=color:#f92672>resource_name</span>: <span style=color:#e6db74>&#34;{{ dnszone }}&#34;</span>
+        <span style=color:#f92672>body</span>:
+          <span style=color:#f92672>location</span>: <span style=color:#e6db74>&#34;Global&#34;</span>
+</code></pre></div><p>There are few things to unpack here, before we look at each of the parameters in the task do lets quickly look at what the REST API would look like.</p>
+<p>First off is the <code>PUT</code> request (you may need to scroll to see the full URL), the request contains the subscription ID, resource group and information around the provider to use, which in this case is the <code>Microsoft.Network/privateDnsZones</code> one before finally we provide the name of the zone which we would like to be created and the API version to use;</p>
+<pre><code>PUT https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateDnsZones/iac.int?api-version=2018-09-01
+</code></pre><p>The JSON body we would send with the <code>PUT</code> request contains the following;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:#f92672>&#34;location&#34;</span>: <span style=color:#e6db74>&#34;Global&#34;</span>
+}
+</code></pre></div><p>You can see that a lot of the request above is repeated in the parameters we have supplied in the task;</p>
+<ul>
+<li><code>api_version</code>, here you can specify the version of the API to use, this is useful to maintain compatibility within your tasks.</li>
+<li><code>resource_group</code>, is self explanatory, which resource group would you like the REST API to create the resource in?</li>
+<li><code>provider</code>, the provider to use, this just needs to be the name of the provider and not be prefixed by <code>Microsoft.</code>.</li>
+<li><code>resource_type</code>, this is the type of resource we will be creating.</li>
+<li><code>resource_name</code>, the name of the resource we want to create.</li>
+<li><code>body</code>, finally, we have the body of the request.</li>
+</ul>
+<p>So far so good, if we wanted to we could run our playbook and the Resource Group, Virtual Network, Subnets and Private DNS Zone would all be created, however, we need a few more steps top register our newly created Private DNS zone with the virtual network.</p>
+<h4 id=differences-when-launching-resources-using-the-azure_rm_resource-module>Differences when launching resources using the azure_rm_resource module<a hidden class=anchor aria-hidden=true href=#differences-when-launching-resources-using-the-azure_rm_resource-module>#</a></h4>
+<p>This is where one of the main differences between using the core Ansible Azure modules and the Azure REST API rears it head. You will be used to the majority of Ansible modules waiting for resource you are creating to complete creating and gather a bunch of facts about the newly created resource before exiting.</p>
+<p>As we are now offloading the creation to of the resource to the Azure REST API the <code>azure_rm_resource</code> module only really cares that is making a valid REST request rather than the resource has completed launching. This means we will have add some logic to ensure that our Internal DNS zone have successfully been created before progressing with the registration.</p>
+<p>To do this we can use the <code>azure_rm_resource_info</code> module, this also interacts with the Azure REST API - but it only performs <code>GET</code> requests;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>wait for the {{ dnszone }} private dns zone to finish registering before progressing</span>
+      <span style=color:#f92672>azure_rm_resource_info</span>:
+        <span style=color:#f92672>api_version</span>: <span style=color:#e6db74>&#34;2018-09-01&#34;</span>
+        <span style=color:#f92672>resource_group</span>: <span style=color:#e6db74>&#34;{{ resource_group }}&#34;</span>
+        <span style=color:#f92672>provider</span>: <span style=color:#e6db74>&#34;network&#34;</span>
+        <span style=color:#f92672>resource_type</span>: <span style=color:#e6db74>&#34;privatednszones&#34;</span>
+        <span style=color:#f92672>resource_name</span>: <span style=color:#e6db74>&#34;{{ dnszone }}&#34;</span>
+      <span style=color:#f92672>register</span>: <span style=color:#ae81ff>dnszone_output</span>
+      <span style=color:#f92672>until</span>: <span style=color:#ae81ff>dnszone_output.response[0].code != &#39;NotFound&#39;</span>
+      <span style=color:#f92672>delay</span>: <span style=color:#ae81ff>10</span>
+      <span style=color:#f92672>retries</span>: <span style=color:#ae81ff>10</span>
+      <span style=color:#f92672>ignore_errors</span>: <span style=color:#66d9ef>true</span>
+</code></pre></div><p>As you can see, we are registering the output of the request and retrying it until the registered output doesn’t contain ‘NotFound’, we are also ignoring errors to stop the playbook run from failing on subsequent executions.</p>
+<h4 id=lets-do-something-a-little-morecomplex>Let’s do something a little more complex<a hidden class=anchor aria-hidden=true href=#lets-do-something-a-little-morecomplex>#</a></h4>
+<p>Now that we know that our Private DNS zone has been created we are almost ready to register it within our Virtual Network. The raw REST API request to do this looks something like the following;</p>
+<pre><code>PUT https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateDnsZones/iac.int/virtualNetworkLinks/iac.int?api-version=2018-09-01
+</code></pre><p>This time the JSON body contains the following;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:#f92672>&#34;location&#34;</span>: <span style=color:#e6db74>&#34;Global&#34;</span>,
+  <span style=color:#f92672>&#34;properties&#34;</span>: {
+    <span style=color:#f92672>&#34;virtualNetwork&#34;</span>: {
+      <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/iac-vnet&#34;</span>
+    },
+    <span style=color:#f92672>&#34;registrationEnabled&#34;</span>: <span style=color:#66d9ef>true</span>
+  }
+}
+</code></pre></div><p>As you can see, the body contains more information — one bit of which is a little troublesome. The ID of virtual network requires a little bit of information, we already know the virtual network name and which resource group the virtual network is in, however, we also need to provide the subscription ID.</p>
+<p>So far, Ansible has been supplying this for us but now we actually need to include it as a variable within the task, as we want our playbook to be as dynamic as possible we really should be getting this information on the fly.</p>
+<h4 id=figure-out-your-azure-subscription-id-usingansible>Figure out your Azure Subscription ID using Ansible<a hidden class=anchor aria-hidden=true href=#figure-out-your-azure-subscription-id-usingansible>#</a></h4>
+<p>This is where I struggled a little bit as most of the fact gather modules I looked didn’t return just the subscription ID, so get around this we are going to use the <code>azure_rm_resourcegroup_info</code> module. This returns the full resource ID of the group, this in our case would be something like <code>/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroup/myResourceGroup</code>.</p>
+<p>So what we need to do is register the output of running the <code>azure_rm_resourcegroup_info</code> module and then using regular expressions grab the subscription ID and set it as a fact using the <code>set_fact</code> module;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>get facts about our resource group so we can get the subscription id</span>
+      <span style=color:#f92672>azure_rm_resourcegroup_info</span>:
+        <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;{{ resource_group }}&#34;</span>
+      <span style=color:#f92672>register</span>: <span style=color:#e6db74>&#34;current_sub_id&#34;</span>
+
+    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>set the current subscription id using the facts we just grabbed as a variable using some regex</span>
+      <span style=color:#f92672>set_fact</span>:
+        <span style=color:#f92672>sub_id</span>: <span style=color:#e6db74>&#34;{{ current_sub_id.resourcegroups[0].id | regex_findall(&#39;^/[^/]+/([^/]*)&#39;) | list | join }}&#34;</span>
+</code></pre></div><p>Now that we have subscription ID we can then register our Private DNS with the Virtual Network and allow resources created in there automatically register themselves with the DNS zone;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>link {{ dnszone }} to {{ network.name }} and allow registrations</span>
+      <span style=color:#f92672>azure_rm_resource</span>:
+        <span style=color:#f92672>api_version</span>: <span style=color:#e6db74>&#39;2018-09-01&#39;</span>
+        <span style=color:#f92672>resource_group</span>: <span style=color:#e6db74>&#34;{{ resource_group }}&#34;</span>
+        <span style=color:#f92672>provider</span>: <span style=color:#ae81ff>network</span>
+        <span style=color:#f92672>resource_type</span>: <span style=color:#ae81ff>privatednszones</span>
+        <span style=color:#f92672>resource_name</span>: <span style=color:#e6db74>&#34;{{ dnszone }}&#34;</span>
+        <span style=color:#f92672>subresource</span>:
+          - <span style=color:#f92672>type</span>: <span style=color:#ae81ff>virtualnetworklinks</span>
+            <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;{{ network.name }}&#34;</span>
+        <span style=color:#f92672>body</span>:
+          <span style=color:#f92672>location</span>: <span style=color:#ae81ff>Global</span>
+          <span style=color:#f92672>properties</span>: 
+            <span style=color:#f92672>virtualNetwork</span>: 
+              <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/{{ sub_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Network/virtualNetworks/{{ network.name }}</span>
+            <span style=color:#f92672>registrationEnabled</span>: <span style=color:#66d9ef>true</span>
+</code></pre></div><p>Now that we have everything we need to create the resource we can run the playbook, a recording of which can be found below;</p>
+<p>Checking the Azure portal shows that the resource has been created as expected;</p>
+<p><img loading=lazy src=images/01.png alt>
+</p>
+<p>That is only half of the story though, remember the task which registers the internal DNS zone with the virtual network — the JSON body which was sent was starting to get a little complicated …</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>name</span>: <span style=color:#ae81ff>link {{ dnszone }} to {{ network.name }} and allow registrations</span>
+      <span style=color:#f92672>azure_rm_resource</span>:
+        <span style=color:#f92672>api_version</span>: <span style=color:#e6db74>&#39;2018-09-01&#39;</span>
+        <span style=color:#f92672>resource_group</span>: <span style=color:#e6db74>&#34;{{ resource_group }}&#34;</span>
+        <span style=color:#f92672>provider</span>: <span style=color:#ae81ff>network</span>
+        <span style=color:#f92672>resource_type</span>: <span style=color:#ae81ff>privatednszones</span>
+        <span style=color:#f92672>resource_name</span>: <span style=color:#e6db74>&#34;{{ dnszone }}&#34;</span>
+        <span style=color:#f92672>subresource</span>:
+          - <span style=color:#f92672>type</span>: <span style=color:#ae81ff>virtualnetworklinks</span>
+            <span style=color:#f92672>name</span>: <span style=color:#e6db74>&#34;{{ network.name }}&#34;</span>
+        <span style=color:#f92672>body</span>:
+          <span style=color:#f92672>location</span>: <span style=color:#ae81ff>Global</span>
+          <span style=color:#f92672>properties</span>: 
+            <span style=color:#f92672>virtualNetwork</span>: 
+              <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/{{ sub_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Network/virtualNetworks/{{ network.name }}</span>
+            <span style=color:#f92672>registrationEnabled</span>: <span style=color:#66d9ef>true</span>
+</code></pre></div><p>… and that was only a basic task, trying to do more complex tasks can result in some quite complicated requests needing to be made.</p>
+<h4 id=using-visual-studio-code-to-get-a-headstart>Using Visual Studio Code to get a head start<a hidden class=anchor aria-hidden=true href=#using-visual-studio-code-to-get-a-headstart>#</a></h4>
+<p>Luckily, there is a way you can get a head start. Version 0.5.0 of the <a href="https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible">Ansible Visual Studio Code extension</a> introduced the <code>Samples for azure_rm_resource</code> command, which is in preview. This command does something extremely useful, it downloads a copy of the Azure REST API specification from the <a href=https://github.com/Azure/azure-rest-api-specs>official GitHub repo</a> and updates them to be formatted for use with the <code>azure_rm_resource</code> module.</p>
+<p>For example, to get a idea on what we needed to do to create the private DNS zone I opened Visual Studio Code, and selected the <code>Ansible: Samples for azure_rm_resource (PREVIEW)</code> command;</p>
+<p><img loading=lazy src=images/02.png alt>
+</p>
+<p>Once selected, I search for <code>DNS</code>;</p>
+<p><img loading=lazy src=images/03.png alt>
+</p>
+<p>Selected <code>privatedns</code> which then gave me all of the options around managing an Azure Private DNS zone;</p>
+<p><img loading=lazy src=images/04.png alt>
+</p>
+<p>Once I had selected <code>PrivateZones_CreateOrUpdate</code> I was given the a list of API versions to choose from, then Visual Studio Code opened a new file and populated it with the same data;</p>
+<p><img loading=lazy src=images/05.png alt>
+</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>hosts</span>: <span style=color:#ae81ff>localhost</span>
+  <span style=color:#f92672>vars</span>:
+    <span style=color:#f92672>resource_group</span>:
+  <span style=color:#f92672>tasks</span>:
+
+    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Sample for Azure REST API - PrivateZones_CreateOrUpdate</span>
+      <span style=color:#f92672>azure_rm_resource</span>:
+        <span style=color:#75715e># url: /subscriptions/{{ lookup(&#39;env&#39;,&#39;AZURE_SUBSCRIPTION_ID&#39;) }}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}</span>
+        <span style=color:#f92672>api_version</span>: <span style=color:#e6db74>&#39;2018-09-01&#39;</span>
+        <span style=color:#f92672>resource_group</span>: <span style=color:#e6db74>&#34;{{ resource_group }}&#34;</span>
+        <span style=color:#f92672>provider</span>: <span style=color:#ae81ff>network</span>
+        <span style=color:#f92672>resource_type</span>: <span style=color:#ae81ff>privatednszones</span>
+        <span style=color:#f92672>resource_name</span>: <span style=color:#e6db74>&#34;{{ privatezonename }}&#34;</span>
+        <span style=color:#f92672>body</span>:
+          <span style=color:#f92672>location</span>: <span style=color:#ae81ff>Global</span>
+          <span style=color:#f92672>tags</span>: 
+            <span style=color:#f92672>key1</span>: <span style=color:#ae81ff>value1</span>
+</code></pre></div><p>As you can see from the sample data above it is quite easy to follow, also without this tool, performing a complex API request would be extremely difficult as you can see from the task below which creates an Application Gateway;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml>- <span style=color:#f92672>hosts</span>: <span style=color:#ae81ff>localhost</span>
+  <span style=color:#f92672>vars</span>:
+    <span style=color:#f92672>resource_group</span>:
+  <span style=color:#f92672>tasks</span>:
+
+    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Sample for Azure REST API - ApplicationGateways_CreateOrUpdate</span>
+      <span style=color:#f92672>azure_rm_resource</span>:
+        <span style=color:#75715e># url: /subscriptions/{{ lookup(&#39;env&#39;,&#39;AZURE_SUBSCRIPTION_ID&#39;) }}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}</span>
+        <span style=color:#f92672>api_version</span>: <span style=color:#e6db74>&#39;2019-09-01&#39;</span>
+        <span style=color:#f92672>resource_group</span>: <span style=color:#e6db74>&#34;{{ resource_group }}&#34;</span>
+        <span style=color:#f92672>provider</span>: <span style=color:#ae81ff>network</span>
+        <span style=color:#f92672>resource_type</span>: <span style=color:#ae81ff>applicationgateways</span>
+        <span style=color:#f92672>resource_name</span>: <span style=color:#e6db74>&#34;{{ applicationgatewayname }}&#34;</span>
+        <span style=color:#f92672>body</span>:
+          <span style=color:#f92672>identity</span>: 
+            <span style=color:#f92672>type</span>: <span style=color:#ae81ff>UserAssigned</span>
+            <span style=color:#f92672>userAssignedIdentities</span>: 
+              <span style=color:#f92672>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1</span>: 
+          <span style=color:#f92672>location</span>: <span style=color:#ae81ff>eastus</span>
+          <span style=color:#f92672>properties</span>: 
+            <span style=color:#f92672>sku</span>: 
+              <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Standard_v2</span>
+              <span style=color:#f92672>tier</span>: <span style=color:#ae81ff>Standard_v2</span>
+              <span style=color:#f92672>capacity</span>: <span style=color:#ae81ff>3</span>
+            <span style=color:#f92672>gatewayIPConfigurations</span>: 
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>appgwipc</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>subnet</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet/subnets/appgwsubnet</span>
+            <span style=color:#f92672>sslCertificates</span>: 
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>sslcert</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>data</span>: <span style=color:#75715e>****</span>
+                  <span style=color:#f92672>password</span>: <span style=color:#75715e>****</span>
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>sslcert2</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>keyVaultSecretId</span>: <span style=color:#ae81ff>https://kv/secret</span>
+            <span style=color:#f92672>trustedRootCertificates</span>: 
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>rootcert</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>data</span>: <span style=color:#75715e>****</span>
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>rootcert1</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>keyVaultSecretId</span>: <span style=color:#ae81ff>https://kv/secret</span>
+            <span style=color:#f92672>frontendIPConfigurations</span>: 
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>appgwfip</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>publicIPAddress</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/appgwpip</span>
+            <span style=color:#f92672>frontendPorts</span>: 
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>appgwfp</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>port</span>: <span style=color:#ae81ff>443</span>
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>appgwfp80</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>port</span>: <span style=color:#ae81ff>80</span>
+            <span style=color:#f92672>backendAddressPools</span>: 
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>appgwpool</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>backendAddresses</span>: 
+                    - <span style=color:#f92672>ipAddress</span>: <span style=color:#ae81ff>10.0.1.1</span>
+                    - <span style=color:#f92672>ipAddress</span>: <span style=color:#ae81ff>10.0.1.2</span>
+            <span style=color:#f92672>backendHttpSettingsCollection</span>: 
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>appgwbhs</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>port</span>: <span style=color:#ae81ff>80</span>
+                  <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>Http</span>
+                  <span style=color:#f92672>cookieBasedAffinity</span>: <span style=color:#ae81ff>Disabled</span>
+                  <span style=color:#f92672>requestTimeout</span>: <span style=color:#ae81ff>30</span>
+            <span style=color:#f92672>httpListeners</span>: 
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>appgwhl</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>frontendIPConfiguration</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendIPConfigurations/appgwfip</span>
+                  <span style=color:#f92672>frontendPort</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendPorts/appgwfp</span>
+                  <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>Https</span>
+                  <span style=color:#f92672>sslCertificate</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/sslCertificates/sslcert</span>
+                  <span style=color:#f92672>requireServerNameIndication</span>: <span style=color:#66d9ef>false</span>
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>appgwhttplistener</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>frontendIPConfiguration</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendIPConfigurations/appgwfip</span>
+                  <span style=color:#f92672>frontendPort</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendPorts/appgwfp80</span>
+                  <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>Http</span>
+            <span style=color:#f92672>urlPathMaps</span>: 
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>pathMap1</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>defaultBackendAddressPool</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendAddressPools/appgwpool</span>
+                  <span style=color:#f92672>defaultBackendHttpSettings</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendHttpSettingsCollection/appgwbhs</span>
+                  <span style=color:#f92672>defaultRewriteRuleSet</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/rewriteRuleSets/rewriteRuleSet1</span>
+                  <span style=color:#f92672>pathRules</span>: 
+                    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>apiPaths</span>
+                      <span style=color:#f92672>properties</span>: 
+                        <span style=color:#f92672>paths</span>: 
+                          - <span style=color:#ae81ff>/api</span>
+                          - <span style=color:#ae81ff>/v1/api</span>
+                        <span style=color:#f92672>backendAddressPool</span>: 
+                          <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendAddressPools/appgwpool</span>
+                        <span style=color:#f92672>backendHttpSettings</span>: 
+                          <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendHttpSettingsCollection/appgwbhs</span>
+                        <span style=color:#f92672>rewriteRuleSet</span>: 
+                          <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/rewriteRuleSets/rewriteRuleSet1</span>
+            <span style=color:#f92672>requestRoutingRules</span>: 
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>appgwrule</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>ruleType</span>: <span style=color:#ae81ff>Basic</span>
+                  <span style=color:#f92672>priority</span>: <span style=color:#ae81ff>10</span>
+                  <span style=color:#f92672>httpListener</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/httpListeners/appgwhl</span>
+                  <span style=color:#f92672>backendAddressPool</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendAddressPools/appgwpool</span>
+                  <span style=color:#f92672>backendHttpSettings</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendHttpSettingsCollection/appgwbhs</span>
+                  <span style=color:#f92672>rewriteRuleSet</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/rewriteRuleSets/rewriteRuleSet1</span>
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>appgwPathBasedRule</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>ruleType</span>: <span style=color:#ae81ff>PathBasedRouting</span>
+                  <span style=color:#f92672>priority</span>: <span style=color:#ae81ff>20</span>
+                  <span style=color:#f92672>httpListener</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/httpListeners/appgwhttplistener</span>
+                  <span style=color:#f92672>urlPathMap</span>: 
+                    <span style=color:#f92672>id</span>: <span style=color:#ae81ff>/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/urlPathMaps/pathMap1</span>
+            <span style=color:#f92672>rewriteRuleSets</span>: 
+              - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>rewriteRuleSet1</span>
+                <span style=color:#f92672>properties</span>: 
+                  <span style=color:#f92672>rewriteRules</span>: 
+                    - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Set X-Forwarded-For</span>
+                      <span style=color:#f92672>ruleSequence</span>: <span style=color:#ae81ff>102</span>
+                      <span style=color:#f92672>conditions</span>: 
+                        - <span style=color:#f92672>variable</span>: <span style=color:#ae81ff>http_req_Authorization</span>
+                          <span style=color:#f92672>pattern</span>: <span style=color:#ae81ff>^Bearer</span>
+                          <span style=color:#f92672>ignoreCase</span>: <span style=color:#66d9ef>true</span>
+                          <span style=color:#f92672>negate</span>: <span style=color:#66d9ef>false</span>
+                      <span style=color:#f92672>actionSet</span>: 
+                        <span style=color:#f92672>requestHeaderConfigurations</span>: 
+                          - <span style=color:#f92672>headerName</span>: <span style=color:#ae81ff>X-Forwarded-For</span>
+                            <span style=color:#f92672>headerValue</span>: <span style=color:#ae81ff>var_add_x_forwarded_for_proxy</span>
+                        <span style=color:#f92672>responseHeaderConfigurations</span>: 
+                          - <span style=color:#f92672>headerName</span>: <span style=color:#ae81ff>Strict-Transport-Security</span>
+                            <span style=color:#f92672>headerValue</span>: <span style=color:#ae81ff>max-age=31536000</span>
+</code></pre></div><p>When dealing with a lot of parameters like that you really do need the head start which the <code>Samples for azure_rm_resource</code> gives you - I can&rsquo;t tell you the amount of time and hassle the extension has save me so far 😄.</p>
+<p>Being able to interact directly with the Azure REST API using a tool such as Ansible a real time saver and let’t you keep up with new features as they are added Microsoft without having to wait for the Azure module authors and SDK to catch-up.</p>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://www.mediaglasses.blog/tags/ansible/>Ansible</a></li>
+<li><a href=https://www.mediaglasses.blog/tags/azure/>Azure</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://www.mediaglasses.blog/2020/05/10/azure-devops-ansible-pipeline/>
+<span class=title>« Prev Page</span>
+<br>
+<span>Azure DevOps Ansible Pipeline</span>
+</a>
+</nav>
+<div class=share-buttons>
+<a target=_blank rel="noopener noreferrer" aria-label="share Ansible and the Azure Rest API on twitter" href="https://twitter.com/intent/tweet/?text=Ansible%20and%20the%20Azure%20Rest%20API&url=https%3a%2f%2fwww.mediaglasses.blog%2f2020%2f04%2f03%2fansible-and-the-azure-rest-api%2f&hashtags=Ansible%2cAzure"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Ansible and the Azure Rest API on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.mediaglasses.blog%2f2020%2f04%2f03%2fansible-and-the-azure-rest-api%2f&title=Ansible%20and%20the%20Azure%20Rest%20API&summary=Ansible%20and%20the%20Azure%20Rest%20API&source=https%3a%2f%2fwww.mediaglasses.blog%2f2020%2f04%2f03%2fansible-and-the-azure-rest-api%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Ansible and the Azure Rest API on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fwww.mediaglasses.blog%2f2020%2f04%2f03%2fansible-and-the-azure-rest-api%2f&title=Ansible%20and%20the%20Azure%20Rest%20API"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Ansible and the Azure Rest API on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.mediaglasses.blog%2f2020%2f04%2f03%2fansible-and-the-azure-rest-api%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Ansible and the Azure Rest API on whatsapp" href="https://api.whatsapp.com/send?text=Ansible%20and%20the%20Azure%20Rest%20API%20-%20https%3a%2f%2fwww.mediaglasses.blog%2f2020%2f04%2f03%2fansible-and-the-azure-rest-api%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Ansible and the Azure Rest API on telegram" href="https://telegram.me/share/url?text=Ansible%20and%20the%20Azure%20Rest%20API&url=https%3a%2f%2fwww.mediaglasses.blog%2f2020%2f04%2f03%2fansible-and-the-azure-rest-api%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg>
+</a>
+</div>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://www.mediaglasses.blog/>MediaGlasses</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)">
+<button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</button>
+</a><script src=https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.6/medium-zoom.min.js integrity="sha512-N9IJRoc3LaP3NDoiGkcPa4gG94kapGpaA5Zq9/Dr04uf5TbLFU5q0o8AbRhLKUUlp8QFS2u7S+Yti0U7QtuZvQ==" crossorigin=anonymous referrerpolicy=no-referrer></script>
+<script>const images=Array.from(document.querySelectorAll(".post-content img"));images.forEach(a=>{mediumZoom(a,{margin:0,scrollOffset:40,container:null,template:null})})</script>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
+</body>
+</html>
