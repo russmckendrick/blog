@@ -34,7 +34,7 @@ The stages in the pipeline are as follows;
 
 The Whole workflow can be found below (click on it for a larger view);
 
-![](images/azure-devops-terraform-pipeline-01.svg)
+![Overview of the entire workflow](images/azure-devops-terraform-pipeline-01.svg)
 
 As well as the addition of the stages detailed above, the pipeline has moved to using the [Terraform Azure DevOps extension from Microsoft DevLabs](https://marketplace.visualstudio.com/items?itemName=ms-devlabs.custom-terraform-tasks&ssr=false#overview) to the [Terraform Azure DevOps extension by Charles Zipp](https://marketplace.visualstudio.com/items?itemName=charleszipp.azure-pipelines-tasks-terraform).
 
@@ -397,17 +397,17 @@ I am using the [Azure CAF Name provider](https://registry.terraform.io/providers
 
 As you can from the screen below, there was a single error, which stated that the storage account for the Terraform state file did not exist, buts that OK as that will be created for us.
 
-![](images/tf01.png)
+![Pipeline results](images/tf01.png)
 
 The two screens below show the warnings;
 
 {{< gallery  "images/tf02.png" "images/tf03.png" >}}
 
-#### No ChangesRun
+#### No Changes Run
 
 The next run didn’t add, change or remove any resources which meant that neither the `HAS_CHANGES_ONLY` or `HAS_DESTROY_CHANGES` variables were set to `true`, so the `terraform apply` stages did not run this time;
 
-![](images/tf04.png)
+![No changes](images/tf04.png)
 #### Introducing some mistakes
 
 One thing which hasn’t happened yet is that we have not added anything which Checkov would scan, let’s do that now by adding a Network Security Group to our Terraform file;
