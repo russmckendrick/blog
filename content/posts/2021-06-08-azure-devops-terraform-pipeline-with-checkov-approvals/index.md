@@ -397,17 +397,21 @@ I am using the [Azure CAF Name provider](https://registry.terraform.io/providers
 
 As you can from the screen below, there was a single error, which stated that the storage account for the Terraform state file did not exist, buts that OK as that will be created for us.
 
-![Pipeline results](images/tf01.png)
+{{< img src="images/tf01.png" alt="Pipeline results" >}}
 
 The two screens below show the warnings;
 
-{{< gallery  "images/tf02.png" "images/tf03.png" >}}
+{{< gallery >}}
+    {{< div >}}{{< img src="images/tf02.png" alt="warnings" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/tf03.png" alt="warnings" >}}{{< /div >}}
+{{< /gallery >}}
 
 #### No Changes Run
 
 The next run didn’t add, change or remove any resources which meant that neither the `HAS_CHANGES_ONLY` or `HAS_DESTROY_CHANGES` variables were set to `true`, so the `terraform apply` stages did not run this time;
 
-![No changes](images/tf04.png)
+{{< img src="images/tf04.png" alt="No changes" >}}
+
 #### Introducing some mistakes
 
 One thing which hasn’t happened yet is that we have not added anything which Checkov would scan, let’s do that now by adding a Network Security Group to our Terraform file;
@@ -467,21 +471,28 @@ resource azurerm_network_security_group "nsg" {
 
 Nothing to bad on the face of it you maybe thinking, let’s commit the change which will trigger a run of the pipeline;
 
-![](images/tf05.png)
+{{< img src="images/tf05.png" alt="Its failed!!!" >}}
 
 Whoops, the Checkov stage failed, clicking on **Tests** should give us more information as to why;
 
-![](images/tf06.png)
+{{< img src="images/tf06.png" alt="Checking why" >}}
 
 Clicking on either the two results will give a more information;
 
-{{< gallery  "images/tf07.png" "images/tf08.png" >}}
+{{< gallery >}}
+    {{< div >}}{{< img src="images/tf07.png" alt="more info" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/tf08.png" alt="more info">}}{{< /div >}}
+{{< /gallery >}}
+
 
 As you can see, we are allow full access to both SSH and RDP to the whole internet — not a great idea so we will need to update the code to lock those two rules down to an IP address. Thankfully, the Checkov stage errored before any of the Terraform stages were executed meaning that our mistake never made it as far as being deployed.
 
 A quick code change & commit later and we have the tests passing and the changes being automatically deployed — which is expected as there is only the addition of the network security group;
 
-{{< gallery  "images/tf09.png" "images/tf10.png" >}}
+{{< gallery >}}
+    {{< div >}}{{< img src="images/tf09.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/tf10.png" >}}{{< /div >}}
+{{< /gallery >}}
 
 Let’s now look at removing the network security group we just added.
 
@@ -491,12 +502,16 @@ Commenting out the network security group configuration in the Terraform code an
 
 This will result in an e-mail;
 
-![](images/tf11.png)
+{{< img src="images/tf11.png" alt="an email" >}}
 
 
 Going to the pipeline, clicking on **Review**, entering a comment then pressing the **Resume** button will then trigger the `terraform apply` stage;
 
-{{< gallery  "images/tf12.png" "images/tf13.png"  "images/tf14.png" >}}
+{{< gallery >}}
+    {{< div >}}{{< img src="images/tf12.png" alt="reviewing the change" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/tf13.png" alt="reviewing the change" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/tf14.png" alt="reviewing the change" >}}{{< /div >}}
+{{< /gallery >}}
 
 Once complete the network security group will have been destroyed, which is what we expected to happen, however, sometimes something unexpected may have happened and resources which you thought were not being touched by your changes maybe being destroyed so that they can be redeployed to make a change which isn’t possible any other way, this is where having your pipeline prompt you that it is going to remove resources comes in extremely useful 😊
 

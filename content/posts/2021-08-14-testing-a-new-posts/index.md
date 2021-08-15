@@ -12,4 +12,7 @@ tags:
   - "post"
 ---
 
+{{< img src="cover.png" alt="Screenshot of the Onion homepage" >}}
+
+
 {{< giphy jqYbk3Vy6NO3C >}}
