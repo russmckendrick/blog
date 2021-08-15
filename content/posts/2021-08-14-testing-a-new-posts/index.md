@@ -12,4 +12,4 @@ tags:
   - "post"
 ---
 
-{{< giphy bq1PRO9CLPHmURBvv2 >}}
+{{< giphy jqYbk3Vy6NO3C >}}

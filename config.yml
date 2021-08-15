@@ -96,17 +96,50 @@ params:
 menu:
   main:
     - identifier: search
-      name: search
       url: /search/
+      pre: <ion-icon name="search"></ion-icon>
       weight: 10
     - identifier: tags
-      name: tags
       url: /tags/
+      pre: <ion-icon name="pricetags"></ion-icon>
       weight: 20
+
+    - identifier: twitter
+      pre: <ion-icon name="logo-twitter"></ion-icon>
+      url: https://twitter.com/russmckendrick/
+      weight: 50
+    - identifier: github
+      pre: <ion-icon name="logo-github"></ion-icon>
+      url: https://github.com/russmckendrick
+      weight: 51
+    - identifier: linkedin
+      pre: <ion-icon name="logo-linkedin"></ion-icon>
+      url: https://www.linkedin.com/in/russmckendrick/
+      weight: 52
+    # - identifier: docker
+    #   pre: <ion-icon name="logo-docker"></ion-icon>
+    #   url: https://hub.docker.com/u/russmckendrick/
+    #   weight: 53
+    - identifier: amazon
+      pre: <ion-icon name="logo-amazon"></ion-icon>
+      url: https://www.amazon.com/author/russmckendrick
+      weight: 54
+    # - identifier: instagram
+    #   pre: <ion-icon name="logo-instagram"></ion-icon>
+    #   url: https://www.instagram.com/russmckendrick/
+    #   weight: 55
+    # - identifier: medium
+    #   pre: <ion-icon name="logo-medium"></ion-icon>
+    #   url: https://russmckendrick.medium.com/
+    #   weight: 56
+    # - identifier: dicogs
+    #   pre: <ion-icon name="disc"></ion-icon>
+    #   url: https://records.mckendrick.page/
+    #   weight: 57
     - identifier: about
-      name: about
+      pre: <ion-icon name="earth"></ion-icon>
       url: https://russ.mckendrick.io/
-      weight: 30
+      weight: 100
 
 outputs:
   home:
