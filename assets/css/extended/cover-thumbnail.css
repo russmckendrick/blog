@@ -33,12 +33,12 @@
          margin-right: .6em;
          margin-top: 1.3em;
          vertical-align: middle;
-         width: 10%;
+         width: 20%;
      }
 
      .entry-cover.entry-cover-thumbnail ~ .entry-item {
          display: inline-block;
          vertical-align: top;
-         width: 85%;
+         width: 75%;
      }
  }
