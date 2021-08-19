@@ -4,7 +4,7 @@ author: "Russ Mckendrick"
 date: 2020-12-28
 description: "Moving to Docker to run Ansible on macOS Big Sur"
 cover:
-    image: "2020-12-28_ansible-azure-and-macos-big-sur.png" 
+    image: "cover.jpg" 
     relative: true
 aliases:
 - "/ansible-azure-and-macos-big-sur-f313e28b6e79"
