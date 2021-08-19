@@ -5,7 +5,7 @@ date: 2021-01-22
 description: ""
 showFullContent: false
 cover:
-    image: "2021-01-22_top-20ish-records-of-2020.png"
+    image: "cover.png"
     relative: true
 aliases:
     - "/top-20ish-records-of-2020-81ab2f2e309e"
