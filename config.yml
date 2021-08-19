@@ -1,6 +1,6 @@
 baseURL: "https://www.mediaglasses.blog/"
 title: "MediaGlasses"
-paginate: "5"
+paginate: "10"
 theme: ["PaperMod"]
 
 enableRobotsTXT: true
@@ -84,6 +84,7 @@ params:
     hidden: false # hide everywhere but not in structured data
     hiddenInList: false # hide on list pages and home
     hiddenInSingle: false # hide on single page
+    thumbnailInList: true
 
   editPost:
     URL: "https://github.com/russmckendrick/blog/tree/main/content/"
