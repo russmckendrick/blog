@@ -26,3 +26,19 @@
          width: 70%;
      }
  }
+
+  @media screen and (max-width: 768px) {
+     .entry-cover.entry-cover-thumbnail {
+         display: inline-block;
+         margin-right: .6em;
+         margin-top: 1.3em;
+         vertical-align: middle;
+         width: 10%;
+     }
+
+     .entry-cover.entry-cover-thumbnail ~ .entry-item {
+         display: inline-block;
+         vertical-align: top;
+         width: 85%;
+     }
+ }
