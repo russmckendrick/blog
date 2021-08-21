@@ -44,7 +44,7 @@ $ pyenv install 3.9.1$ pyenv global 3.9.1$ pyenv version
 
 Once installed, run the following command to make sure that the `pyenv` managed version of Python is picked up:
 
-> Update: 11/06/2021; the command below has been updated to include a change to how the` pyenv init -` command works.
+{{% alert theme="info"%}}**Update: 11/06/2021;** the command below has been updated to include a change to how the "pyenv init" command works.{{% /alert %}}
 
 ``` bash
 $ echo -e $'if command -v pyenv 1>/dev/null 2>&1; then\\n  export PYENV_ROOT="$HOME/.pyenv"\\n  export PATH="$PYENV_ROOT/bin:$PATH"\\n  eval "$(pyenv init --path)"\\n  eval "$(pyenv init -)"\\nfi' >> ~/.zshrc
