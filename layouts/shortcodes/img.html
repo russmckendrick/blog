@@ -7,6 +7,10 @@
 {{ $smallw := default "800x" }}
 {{ $mediumw := default "1200x" }}
 {{ $largew := default "1500x" }}
+{{ $tinywebp := default "500x webp" }}
+{{ $smallwebp := default "800x webp" }}
+{{ $mediumwebp := default "1200x webp" }}
+{{ $largewebp := default "1500x webp" }}
 
 {{/* resize the src image to the given sizes */}}
 
@@ -14,6 +18,10 @@
 {{ .Scratch.Set "small" ($src.Resize $smallw) }}
 {{ .Scratch.Set "medium" ($src.Resize $mediumw) }}
 {{ .Scratch.Set "large" ($src.Resize $largew) }}
+{{ .Scratch.Set "tinywebp" ($src.Resize $tinywebp) }}
+{{ .Scratch.Set "smallwebp" ($src.Resize $smallwebp) }}
+{{ .Scratch.Set "mediumwebp" ($src.Resize $mediumwebp) }}
+{{ .Scratch.Set "largewebp" ($src.Resize $largewebp) }}
 
 {{/* add the processed images to the scratch */}}
 
@@ -21,6 +29,11 @@
 {{ $small := .Scratch.Get "small" }}
 {{ $medium := .Scratch.Get "medium" }}
 {{ $large := .Scratch.Get "large" }}
+{{ $tinywebp := .Scratch.Get "tinywebp" }}
+{{ $smallwebp := .Scratch.Get "smallwebp" }}
+{{ $mediumwebp := .Scratch.Get "mediumwebp" }}
+{{ $largewebp := .Scratch.Get "largewebp" }}
+
 
 {{/* only use images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
 {{/* set the sizes attribute to (min-width: 35em) 1200px, 100vw unless overridden in shortcode */}}
@@ -30,20 +43,28 @@
   srcset='
   {{ if ge $src.Width "500" }}
     {{ with $tiny.RelPermalink }}{{.}} 500w{{ end }}
-  {{ end }}
+    {{ with $tinywebp.RelPermalink }}{{.}} 500w{{ end }}
+    {{ end }}
   {{ if ge $src.Width "800" }}
     {{ with $small.RelPermalink }}, {{.}} 800w{{ end }}
-  {{ end }}
+    {{ with $smallwebp.RelPermalink }}, {{.}} 800w{{ end }}
+    {{ end }}
   {{ if ge $src.Width "1200" }}
     {{ with $medium.RelPermalink }}, {{.}} 1200w{{ end }}
-  {{ end }}
+    {{ with $mediumwebp.RelPermalink }}, {{.}} 1200w{{ end }}
+    {{ end }}
   {{ if ge $src.Width "1500" }}
     {{ with $large.RelPermalink }}, {{.}} 1500w {{ end }}
-  {{ end }}'
+    {{ with $largewebp.RelPermalink }}, {{.}} 1500w {{ end }}
+    {{ end }}'
   {{ if .Get (print $medium) }}
     src="{{ $medium.RelPermalink }}" 
-  {{ else }}
+    width="{{ $medium.Width }}" 
+    height="auto"
+    {{ else }}
     src="{{ $src.RelPermalink }}" 
+    width="{{ $src.Width }}" 
+    height="auto"
   {{ end }}
   {{ with .Get "alt" }}alt="{{.}}"{{ else }}alt=""{{ end }}
   >
