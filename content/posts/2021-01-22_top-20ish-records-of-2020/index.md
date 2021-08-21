@@ -28,12 +28,12 @@ A little late, but there are my top 20 records of 2020, as per previous years th
 
 
 {{< gallery >}}
-    {{< div >}}{{< img src="images/01.jpg" alt="bdrmm ‎- Bedroom" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/02.jpg" alt="Doves ‎- The Universal Want" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/03.jpg" alt="Pure Reason Revolution — Eupnea" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/04.jpg" alt="Orb — Abolition Of The Royal Familia" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/05.jpg" alt="The Smashing Pumpkins — Cyr" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/06.jpg" alt="Andy Bell — The View From Halfway Down" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/01.png" alt="bdrmm ‎- Bedroom" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/02.png" alt="Doves ‎- The Universal Want" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/03.png" alt="Pure Reason Revolution — Eupnea" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/04.png" alt="Orb — Abolition Of The Royal Familia" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/05.png" alt="The Smashing Pumpkins — Cyr" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/06.png" alt="Andy Bell — The View From Halfway Down" >}}{{< /div >}}
 {{< /gallery >}}
 
 - [Ulver — Flowers Of Evil](https://open.spotify.com/album/0VYuTYQPftcTUmq2ehYlzV?si=1CutjzhXTjaVtvYb9StWmw)
@@ -45,12 +45,12 @@ A little late, but there are my top 20 records of 2020, as per previous years th
 - [Bruce Springsteen — Letter To You](https://open.spotify.com/album/5devPxQnSKVF2Ed0CVwQZh?si=VimFvi-nRJGknrBZY0ykwQ)
 
 {{< gallery >}}
-    {{< div >}}{{< img src="images/07.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/08.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/09.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/10.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/11.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/12.jpg" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/07.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/08.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/09.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/10.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/11.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/12.png" >}}{{< /div >}}
 {{< /gallery >}}
 
 - [And You Will Know Us By The Trail Of Dead — X: The Godless Void And Othe Stories](https://open.spotify.com/album/7bLutxO7uah4zdadduPlsb?si=0WHZad1CSSSheHF9kxGgWA)
@@ -60,12 +60,12 @@ A little late, but there are my top 20 records of 2020, as per previous years th
 - [Sparks — A Steady Drip Drip Drip](https://open.spotify.com/album/43DZQacT84CN8EYfKcmeSL?si=UttuUWGeRPylGUVNW6jV8A)
 
 {{< gallery >}}
-    {{< div >}}{{< img src="images/13.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/14.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/15.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/16.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/17.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/18.jpg" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/13.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/14.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/15.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/16.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/17.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/18.png" >}}{{< /div >}}
 {{< /gallery >}}
 
 
@@ -75,13 +75,13 @@ A little late, but there are my top 20 records of 2020, as per previous years th
 - [Kavus Torabi — Hip To The Jag](https://open.spotify.com/album/0rnxP99MwQY1rr6Y4phq1Y?si=5S6GlsGQTfqaQvJblb_IPg)
 
 {{< gallery >}}
-    {{< div >}}{{< img src="images/19.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/20.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/21.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/22.jpg" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/19.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/20.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/21.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/22.png" >}}{{< /div >}}
 {{< /gallery >}}{{< gallery >}}
-    {{< div >}}{{< img src="images/19.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/20.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/21.jpg" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/22.jpg" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/19.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/20.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/21.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/22.png" >}}{{< /div >}}
 {{< /gallery >}}
