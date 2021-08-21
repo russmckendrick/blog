@@ -3,6 +3,8 @@ title: "MediaGlasses"
 paginate: "10"
 theme: ["PaperMod"]
 
+timeout: 30000
+
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
