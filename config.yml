@@ -1,9 +1,9 @@
 baseURL: "https://www.mediaglasses.blog/"
 title: "MediaGlasses"
-paginate: "10"
+paginate: "6"
 theme: ["PaperMod"]
 
-timeout: 600000
+timeout: 600000 # this needs to be long as we converting webp images
 
 enableRobotsTXT: true
 buildDrafts: false
@@ -57,6 +57,26 @@ params:
     icon: "/images/logo.svg"
     iconHeight: 40
 
+  cover:
+    responsiveImages: true
+    hidden: false # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: false # hide on single page
+
+  editPost:
+    URL: "https://github.com/russmckendrick/blog/tree/main/content/"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "summary", "content"]
+
   analytics:
     google:
       SiteVerificationTag: "XYZabc"
@@ -80,26 +100,6 @@ params:
       url: "https://open.spotify.com/user/russmckendrick"
     - name: lastfm
       url: "https://www.last.fm/user/RussMckendrick"
-
-  cover:
-    responsiveImages: true
-    hidden: true # hide everywhere but not in structured data
-    hiddenInList: true # hide on list pages and home
-    hiddenInSingle: false # hide on single page
-
-  editPost:
-    URL: "https://github.com/russmckendrick/blog/tree/main/content/"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
-
-  fuseOpts:
-    isCaseSensitive: false
-    shouldSort: true
-    location: 0
-    distance: 1000
-    threshold: 0.4
-    minMatchCharLength: 0
-    keys: ["title", "summary", "content"]
 
 menu:
   main:
