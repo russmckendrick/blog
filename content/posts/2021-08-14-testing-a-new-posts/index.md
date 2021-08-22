@@ -11,6 +11,39 @@ cover:
 tags:
   - "post"
 ---
+
+# Terminal
+
+{{< terminal title="This is just a test" >}}
+``` yaml
+  - stage: "runCheckov"
+    displayName: "Checkov - Scan Terraform files"
+    jobs:
+      - job: "runCheckov"
+        displayName: "Checkov > Pull, run and publish results of Checkov scan"
+        steps:
+          - bash: |
+              docker pull bridgecrew/checkov
+            workingDirectory: $(System.DefaultWorkingDirectory)
+            displayName: "Pull > bridgecrew/checkov"
+          - bash: |
+              docker run \
+                --volume $(pwd):/tf bridgecrew/checkov \
+                --directory /tf \
+                --output junitxml \
+                --soft-fail > $(pwd)/CheckovReport.xml
+            workingDirectory: $(System.DefaultWorkingDirectory)
+            displayName: "Run > checkov"
+          - task: PublishTestResults@2
+            inputs:
+              testRunTitle: "Checkov Results"
+              failTaskOnFailedTests: true
+              testResultsFormat: "JUnit"
+              testResultsFiles: "CheckovReport.xml"
+              searchFolder: "$(System.DefaultWorkingDirectory)"
+            displayName: "Publish > Checkov scan results"
+```
+{{< /terminal >}}
 # Some text
 
 

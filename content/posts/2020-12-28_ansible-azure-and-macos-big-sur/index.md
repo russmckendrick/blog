@@ -24,13 +24,14 @@ Now normally in the situation I fallback on using [Homebrew](https://www.brew.sh
 
 For those of you that don’t care about the how and just want to use if then you can run the following commands, first, if you have the Azure CLI installed and configured locally, then you can run the command below to mount your Azure CLI configuration within the container …
 
+{{< terminal title="Docker" >}}
 ```
 docker run \
 	-v ${HOME}/.azure:/root/.azure \
 	-v ${PWD}:/playbook \
 	ghcr.io/russmckendrick/ansible:latest \	ansible-playbook -i inv site.yml
 ```
-<br>
+{{< /terminal >}}
 
 As you can see, it is to mount `${HOME}/.azure` into the container and then also the current working directory into `/playbook` within the container. Then we are running the command `ansible-playbook -i inv site.yml` to run the playbook, running the command gives the following output …
 
@@ -40,21 +41,25 @@ As you can see, the image downloaded and the playbook as expected, in this case 
 
 The next option for running Ansible using the image is to pass in your credentials as environment variables, as we don’t these to appear in our command history you can use a variables file, which looks something like the following …
 
+{{< terminal title="Set some secrets" >}}
 ```
 AZURE_CLIENT_ID=yourClientId
 AZURE_SECRET=yourClientSecret
 AZURE_TENANT=yourTenantId
 AZURE_SUBSCRIPTION_ID=yourSubscriptionId
 ```
+{{< /terminal >}}
 
 Once you have the file, call it `azurecreds` and run the following command …
 
+{{< terminal title="Docker" >}}
 ```
 docker run \
 	-v ${PWD}:/playbook \
 	--env-file ./azurecreds \
 	ghcr.io/russmckendrick/ansible:latest \	ansible-playbook -i inv site.yml
 ```
+{{< /terminal >}}
 
 The command is pretty much intact from the last one, however, this time we are using the `--env-file` flag rather than mounting `${HOME}/.azure`, running it should give similar output to before …
 
@@ -62,12 +67,14 @@ The command is pretty much intact from the last one, however, this time we are u
 
 That is about all you need to know to the image, however, if you need to check connectivity to Azure when using `${HOME}/.azure` then you can run the following command …
 
+{{< terminal title="Docker" >}}
 ```
 docker run \
 	-v ${HOME}/.azure:/root/.azure \
 	ghcr.io/russmckendrick/ansible:latest \
 	az account list
 ```
+{{< /terminal >}}
 
 This should list the accounts connected with your user …
 
@@ -75,6 +82,7 @@ This should list the accounts connected with your user …
 
 For those that interested the Dockerfile for the image can be found below …
 
+{{< terminal title="Dockerfile" >}}
 ```
 FROM alpine:latestLABEL maintainer="Russ McKendrick <russ@mckendrick.io>"
 LABEL org.opencontainers.image.source https://github.com/russmckendrick/docker-ansible-azure/
@@ -90,6 +98,7 @@ RUN apk update && apk upgrade && \
         apk del --purge build && \
         mkdir /playbookWORKDIR /playbookCMD [ "ansible-playbook", "--version" ]
 ```
+{{< /terminal >}}
 
 … and as per [my last blog post](https://www.mediaglasses.blog/2020/09/27/migrating-my-docker-images-to-the-github-container-registry/), I am hosting the image in the [GitHub Container Registry](https://docs.github.com/en/free-pro-team@latest/packages/guides/about-github-container-registry) as a public image.
 

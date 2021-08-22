@@ -22,18 +22,22 @@ Before we look at the pipeline itself I should point out that is uses the the [T
 
 Now we have that out of the way, and before I breakdown the `azure-pipelines.yml` file, lets quickly get an overview of what the tasks which are running in the pipeline;
 
+
 ![](images/01.png)
 
 As you can see from the flow of tasks above I am creating the storage account used to store the Terraform state file as part of the pipeline itself rather than doing manually outside of the pipeline. In nearly all of my Azure DevOps pipelines I see the following variable as `SUBSCRIPTION_NAME` which contains the name of the service connection that should be used to connect to Azure, wherever you see `$(SUBSCRIPTION_NAME)` in the following tasks that is referring to the service connection.
 
 The `azure-pipelines.yml` file starts of by defining the trigger, in this case it is triggered each time something is pushed to the master branch:
 
+{{< terminal >}}
 ``` yaml
 trigger:  - master
 ```
+{{< /terminal >}}
 
 Next, I define some variables, apart from `tf_version` which fines which version of Terraform I want to install the rest are to do with the Terraform statefile resources which need to be configured before I run Terraform:
 
+{{< terminal >}}
 ``` yaml
 variables:
   tf_version: "0.12.26" # what version of terraform should be used
@@ -44,16 +48,20 @@ variables:
   tf_state_tags: ("env=blogpost-terraform-devops-pipeline" "deployedBy=devops") # tags for the resources above which support tagging
   tf_environment: "dev" # enviroment name, used for the statefile name
 ```
+{{< /terminal >}}
 
 Then we decide on the image used for the pipeline run, as you may have guessed, I am using Linux:
 
+{{< terminal >}}
 ``` yaml
 pool:
   vmImage: "ubuntu-latest"
 ```
+{{< /terminal >}}
 
 Now that the basics for the pipeline are covered I can start to define some tasks, beginning with installing Terraform:
 
+{{< terminal >}}
 ``` yaml
 steps:
   - task: terraformInstaller@0
@@ -61,9 +69,11 @@ steps:
     inputs:
       terraformVersion: "$(tf_version)"
 ```
+{{< /terminal >}}
 
 As you can see, I am using the `terraformInstaller@0` task from the Terraform DevOps extension along with the `$(tf_version)` which was defined at the top of the file. Now that Terraform is installed I need to either create the storage account, or if it already exists gather some facts. To do this I am using the `AzureCLI@2` task:
 
+{{< terminal >}}
 ``` yaml
 - task: AzureCLI@2
     displayName: "Create/Check the Terraform Statefile Azure Storage Account"
@@ -80,6 +90,7 @@ As you can see, I am using the `terraformInstaller@0` task from the Terraform De
         az storage container create --name $(tf_state_container_name) --account-name $(tf_state_sa_name) --account-key $ACCOUNT_KEY
         echo "##vso[task.setvariable variable=tf_state_sa_key]$ACCOUNT_KEY"
 ```
+{{< /terminal >}}
 
 As you can see I am running a quite a few commands, these do the following:
 
@@ -92,6 +103,7 @@ As you can see I am running a quite a few commands, these do the following:
 
 If the Resource Group, Azure Storage Account and container already exist then we still need the Azure Storage Account key so this task needs to be executed during each pipeline run as the following task needs to interact with the Azure Storage account:
 
+{{< terminal >}}
 ``` yaml
 - task: TerraformTaskV1@0
     displayName: "Run > terraform init"
@@ -103,9 +115,11 @@ If the Resource Group, Azure Storage Account and container already exist then we
       backendAzureRmContainerName: $(tf_state_container_name)
       backendAzureRmKey: "$(tf_environment).terraform.tstate"
 ```
+{{< /terminal >}}
 
 Here I am running `terraform init` and passing all of the variables which tell Terraform how to configure the AzureRM backend service with the details of the Azure Storage account I configured in the previous task. Once the `terraform init` has been executed we do not need to pass the AzureRM backend service details again. The final two tasks `plan` and `apply` the Terraform configuration:
 
+{{< terminal >}}
 ```yaml
 - task: TerraformTaskV1@0
     displayName: "Run > terraform plan"
@@ -119,11 +133,13 @@ Here I am running `terraform init` and passing all of the variables which tell T
       command: "apply"
       environmentServiceNameAzureRM: "$(SUBSCRIPTION_NAME)"
 ```
+{{< /terminal >}}
 
 As you can see I am providing rather than using `backendServiceArm` I am using `environmentServiceNameAzureRM`, this means that if I wanted I could store my Terraform statefile(s) in a completely separate Azure Subscription from where I am deploying my resources should I want to.
 
 The Terraform files themselves in this project are pretty boring as I don’t want it to do anything exciting, the `main.tf` looks like the following:
 
+{{< terminal >}}
 ``` hcl
 # Setup
 ######################################################################################################
@@ -148,9 +164,11 @@ resource "azurerm_resource_group" "resource_group" {
   tags     = merge(var.default_tags, map("type", "resource"))
 }
 ```
+{{< /terminal >}}
 
 With the `variables.tf` looking like:
 
+{{< terminal >}}
 ``` hcl
 variable "default_tags" {
   description = "The defaults tags, we will be adding to the these"
@@ -162,6 +180,7 @@ variable "default_tags" {
   }
 }
 ```
+{{< /terminal >}}
 
 The pipeline run looks like the following:
 

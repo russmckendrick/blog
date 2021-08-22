@@ -20,6 +20,7 @@ If you know me — you will know that I am not a developer, but I do a lot o
 
 I as didn’t have long, I decided to create a repo which would contain nothing more than a Hello World Terraform script — this looks something like the following:
 
+{{< terminal title="main.tf" >}}
 ``` hcl
 terraform {
   # This module is now only being tested with Terraform 0.13.x. However, to make upgrading easier, we are setting
@@ -33,9 +34,11 @@ output "hello_world" {
   value = "Hello, World!"
 }
 ```
+{{< /terminal >}}
 
 Once the `main.tf` file was in place I created a folder called `.devcontainer` and then added two files, `devcontainer.json` and `post-install.sh`. The first file is pretty basic and contains the settings the for the workspace as well the trigger to execute the `post-install.sh` script.
 
+{{< terminal >}}
 ```json
 {
   "name": "terraform-codespaces",
@@ -51,11 +54,13 @@ Once the `main.tf` file was in place I created a folder called `.devcontainer` 
   "postCreateCommand": "/bin/bash ./.devcontainer/post-install.sh"
 }
 ```
+{{< /terminal >}}
 
 As you can see, I am installing a few extensions and setting the integrated Terminal to use ZSH rather than the Bash — which is the default. The reason for this is that my [dotfiles](https://github.com/russmckendrick/dotfiles) repository will be loaded by default and that is now focused on ZSH as that is the default shell on macOS now.
 
 The last line runs a small bash script called `post-install.sh` which will install a few bits of useful software as well as Terraform:
 
+{{< terminal >}}
 ``` bash
 #!/bin/sh
 
@@ -82,6 +87,7 @@ wget "https://releases.hashicorp.com/terraform/"$VERSION"/terraform_"$VERSION"_l
 unzip "terraform_"$VERSION"_linux_amd64.zip"
 sudo install terraform /usr/local/bin/
 ```
+{{< /terminal >}}
 
 As you can see, it is mostly straight forward with the only complicated bit being the part of the script which figures out the latest version of Terraform from the API and then downloads and installs it.
 
@@ -99,11 +105,13 @@ After closing the two files which were opened and dismissing the messages I open
 
 The final thing to do was run the Terraform script, to do this I ran:
 
+{{< terminal >}}
+``` terminfo
+terraform init
+terraform plan
+terraform apply
 ```
-$ terraform init
-$ terraform plan
-$ terraform apply
-```
+{{< /terminal >}}
 
 As expected, I got the immortal words **“Hello, World!”**:
 

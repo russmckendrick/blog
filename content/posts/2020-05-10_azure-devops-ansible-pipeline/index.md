@@ -20,8 +20,9 @@ However the [Ansible Task](https://www.azuredevopslabs.com/labs/vstsextend/ansib
 
 As I had some time I thought I would sit down and have a look at coming up with a pipeline which executes an Ansible playbook which doesn’t use the Ansible Task. As I had already done some work with Python based command line tools on Azure DevOps I thought it best to take the same approach as I took with those to my Ansible pipeline.
 
-As you can see, the start of the pipeline is pretty straight foward, I am triggering whenever `master` is pushed to and using the latest Ububtu VM image:
+As you can see, the start of the pipeline is pretty straight forward, I am triggering whenever `master` is pushed to and using the latest Ububtu VM image:
 
+{{< terminal >}}
 ``` yaml
 trigger:
 - master
@@ -29,9 +30,11 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 ```
+{{< /terminal >}}
 
 The next step is to make sure that Python is installed, here I am using Python 3.6:
 
+{{< terminal >}}
 ``` yaml
 steps:
 
@@ -40,13 +43,15 @@ steps:
   inputs:
     versionSpec: '3.6'
 ```
+{{< /terminal >}}
 
 So far so good, but, the next step had me scratching my head for a little while.
 
-I knew that I was going to connect the Azure DevOps project to my Azure subscription using a service connection which would grant contributer access, I also new that I didn’t want to hard code any values in my `azure-pipelines.yml` file, so how could I make sure that the credentials for the Azure DevOps managed service principle could be securely passed used by Ansible?
+I knew that I was going to connect the Azure DevOps project to my Azure subscription using a service connection which would grant contributor access, I also new that I didn’t want to hard code any values in my `azure-pipelines.yml` file, so how could I make sure that the credentials for the Azure DevOps managed service principle could be securely passed used by Ansible?
 
 After a little trial and error I settled on the task below:
 
+{{< terminal >}}
 ``` yaml
 - task: AzureCLI@2
   displayName: 'Azure CLI'
@@ -61,6 +66,7 @@ After a little trial and error I settled on the task below:
       echo "##vso[task.setvariable variable=ARM_CLIENT_SECRET]${servicePrincipalKey}"
       echo "##vso[task.setvariable variable=ARM_TENANT_ID]${tenantId}"
 ```
+{{< /terminal >}}
 
 As you can see, I am using the AzureCLI Task — this takes a few inputs:
 
@@ -71,12 +77,14 @@ As you can see, I am using the AzureCLI Task — this takes a few inputs:
 
 The inline script uses logging commands to take the SPN variables and set them as variables we can use in later tasks:
 
+{{< terminal >}}
 ``` bash
 echo "##vso[task.setvariable variable=ARM_SUBSCRIPTION_ID]$(az account show --query="id" -o tsv)"
 echo "##vso[task.setvariable variable=ARM_CLIENT_ID]${servicePrincipalId}"
 echo "##vso[task.setvariable variable=ARM_CLIENT_SECRET]${servicePrincipalKey}"
 echo "##vso[task.setvariable variable=ARM_TENANT_ID]${tenantId}"
 ```
+{{< /terminal >}}
 
 You may have noticed that ARM_CLIENT_ID, ARM_CLIENT_SECRET and ARM_TENANT_ID are using the variables from the task which is why they are using the `${variable}` format.
 
@@ -86,13 +94,16 @@ The great thing about this approach is that because the variables which are outp
 
 The next step installs Ansible along with the Azure Modules:
 
+{{< terminal >}}
 ``` yaml
 - script: pip install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
 ```
+{{< /terminal >}}
 
 Now that we have our SPN credentials defined as variables within the pipeline and Ansible installed we can finally run the playbook using the final task:
 
+{{< terminal >}}
 ``` yaml
 - script: ansible-playbook -i inv site.yml
   displayName: 'Run Ansible Playbook'
@@ -102,19 +113,17 @@ Now that we have our SPN credentials defined as variables within the pipeline an
     AZURE_TENANT: $(ARM_TENANT_ID)
     AZURE_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
 ```
+{{< /terminal >}}/
 
 As the Azure Ansible modules expect the Azure credentials, tenant and subscription IDs as environment variables we are passing this at run time in the format which Ansible expects, AZURE_CLIENT_ID, AZURE_SECRET, AZURE_TENANT and AZURE_SUBSCRIPTION_ID — all of which are populated using the pipeline variables which were set in the Azure CLI task.
 
 Running the Pipeline give me the following output:
 
-
-<div class-="gallery-box">
-  <div class="gallery">
-    <image src="images/02.png">
-    <image src="images/03.png">
-    <image src="images/04.png">
-  </div>
-</div><br>
+{{< gallery >}}
+    {{< div >}}{{< img src="images/02.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/03.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/04.png" >}}{{< /div >}}
+{{< /gallery >}}
 
 As you can see from the pipeline output above, the whole pipeline took just over a minute to run, and 50 seconds of that was installing Ansible itself.
 

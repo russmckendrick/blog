@@ -32,6 +32,7 @@ So let’s dive in and take a look at how we can use the `azure_rm_resource` and
 
 To start with we are going to be needing a resource group and virtual network, for this we will use the core `azure_rm_resourcegroup` , `azure_rm_virtualnetwork` and `azure_rm_subnet` modules as we don't need anything special;
 
+{{< terminal >}}
 ``` yaml
 - name: Create a Azure Private DNS zone using Ansible
   hosts: localhost
@@ -69,9 +70,11 @@ To start with we are going to be needing a resource group and virtual network, f
         virtual_network: "{{ network.name }}"
       with_items: "{{ network.subnets }}"
 ```
+{{< /terminal >}}
 
 The next part of the playbook is where things start to get interesting as this is where we are going to be making our first call to the Azure REST API using `azure_rm_resource`;
 
+{{< terminal >}}
 ``` yaml
 - name: create a private DNS zone for {{ dnszone }}
       azure_rm_resource:
@@ -83,22 +86,27 @@ The next part of the playbook is where things start to get interesting as this i
         body:
           location: "Global"
 ```
+{{< /terminal >}}
 
 There are few things to unpack here, before we look at each of the parameters in the task do lets quickly look at what the REST API would look like.
 
 First off is the `PUT` request (you may need to scroll to see the full URL), the request contains the subscription ID, resource group and information around the provider to use, which in this case is the `Microsoft.Network/privateDnsZones` one before finally we provide the name of the zone which we would like to be created and the API version to use;
 
+{{< terminal >}}
 ```
 PUT https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateDnsZones/iac.int?api-version=2018-09-01
 ```
+{{< /terminal >}}
 
 The JSON body we would send with the `PUT` request contains the following;
 
+{{< terminal >}}
 ``` json
 {
   "location": "Global"
 }
 ```
+{{< /terminal >}}
 
 You can see that a lot of the request above is repeated in the parameters we have supplied in the task;
 
@@ -119,6 +127,7 @@ As we are now offloading the creation to of the resource to the Azure REST API t
 
 To do this we can use the `azure_rm_resource_info` module, this also interacts with the Azure REST API - but it only performs `GET` requests;
 
+{{< terminal >}}
 ``` yaml
 - name: wait for the {{ dnszone }} private dns zone to finish registering before progressing
       azure_rm_resource_info:
@@ -133,6 +142,7 @@ To do this we can use the `azure_rm_resource_info` module, this also interacts w
       retries: 10
       ignore_errors: true
 ```
+{{< /terminal >}}
 
 As you can see, we are registering the output of the request and retrying it until the registered output doesn’t contain ‘NotFound’, we are also ignoring errors to stop the playbook run from failing on subsequent executions.
 
@@ -140,12 +150,15 @@ As you can see, we are registering the output of the request and retrying it unt
 
 Now that we know that our Private DNS zone has been created we are almost ready to register it within our Virtual Network. The raw REST API request to do this looks something like the following;
 
+{{< terminal >}}
 ```
 PUT https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateDnsZones/iac.int/virtualNetworkLinks/iac.int?api-version=2018-09-01
 ```
+{{< /terminal >}}
 
 This time the JSON body contains the following;
 
+{{< terminal >}}
 ``` json
 {
   "location": "Global",
@@ -157,6 +170,7 @@ This time the JSON body contains the following;
   }
 }
 ```
+{{< /terminal >}}
 
 As you can see, the body contains more information — one bit of which is a little troublesome. The ID of virtual network requires a little bit of information, we already know the virtual network name and which resource group the virtual network is in, however, we also need to provide the subscription ID.
 
@@ -168,6 +182,7 @@ This is where I struggled a little bit as most of the fact gather modules I look
 
 So what we need to do is register the output of running the `azure_rm_resourcegroup_info` module and then using regular expressions grab the subscription ID and set it as a fact using the `set_fact` module;
 
+{{< terminal >}}
 ``` yaml
 - name: get facts about our resource group so we can get the subscription id
       azure_rm_resourcegroup_info:
@@ -178,9 +193,11 @@ So what we need to do is register the output of running the `azure_rm_resourcegr
       set_fact:
         sub_id: "{{ current_sub_id.resourcegroups[0].id | regex_findall('^/[^/]+/([^/]*)') | list | join }}"
 ```
+{{< /terminal >}}
 
 Now that we have subscription ID we can then register our Private DNS with the Virtual Network and allow resources created in there automatically register themselves with the DNS zone;
 
+{{< terminal >}}
 ``` yaml
 - name: link {{ dnszone }} to {{ network.name }} and allow registrations
       azure_rm_resource:
@@ -199,6 +216,7 @@ Now that we have subscription ID we can then register our Private DNS with the V
               id: /subscriptions/{{ sub_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Network/virtualNetworks/{{ network.name }}
             registrationEnabled: true
 ```
+{{< /terminal >}}
 
 Now that we have everything we need to create the resource we can run the playbook, a recording of which can be found below;
 
@@ -208,6 +226,7 @@ Checking the Azure portal shows that the resource has been created as expected;
 
 That is only half of the story though, remember the task which registers the internal DNS zone with the virtual network — the JSON body which was sent was starting to get a little complicated …
 
+{{< terminal >}}
 ``` yaml
 - name: link {{ dnszone }} to {{ network.name }} and allow registrations
       azure_rm_resource:
@@ -226,6 +245,7 @@ That is only half of the story though, remember the task which registers the int
               id: /subscriptions/{{ sub_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Network/virtualNetworks/{{ network.name }}
             registrationEnabled: true
 ```
+{{< /terminal >}}
 
 … and that was only a basic task, trying to do more complex tasks can result in some quite complicated requests needing to be made.
 
@@ -249,6 +269,7 @@ Once I had selected `PrivateZones_CreateOrUpdate` I was given the a list of API 
 
 ![](images/05.png)
 
+{{< terminal >}}
 ``` yaml
 - hosts: localhost
   vars:
@@ -268,9 +289,11 @@ Once I had selected `PrivateZones_CreateOrUpdate` I was given the a list of API 
           tags: 
             key1: value1
 ```
+{{< /terminal >}}
 
 As you can see from the sample data above it is quite easy to follow, also without this tool, performing a complex API request would be extremely difficult as you can see from the task below which creates an Application Gateway;
 
+{{< terminal >}}
 ``` yaml
 - hosts: localhost
   vars:
@@ -420,6 +443,7 @@ As you can see from the sample data above it is quite easy to follow, also witho
                           - headerName: Strict-Transport-Security
                             headerValue: max-age=31536000
 ```
+{{< /terminal >}}
 
 When dealing with a lot of parameters like that you really do need the head start which the `Samples for azure_rm_resource` gives you - I can't tell you the amount of time and hassle the extension has save me so far 😄.
 

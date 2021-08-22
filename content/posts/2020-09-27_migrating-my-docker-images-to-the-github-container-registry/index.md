@@ -26,6 +26,7 @@ To do this I would need to update all of my Dockerfiles and also create a GitHub
 
 The first part would be easy, lets look at the Dockerfile for Apache Bench:
 
+{{< terminal title="Dockerfile" >}}
 ```Dockerfile
 ### Dockerfile
 #
@@ -40,6 +41,7 @@ LABEL org.opencontainers.image.description "Apache Bench container, see this con
 RUN apk add  -U apache2-utils
 RUN rm -rf /var/cache/apk/*
 ```
+{{< /terminal >}}
 
 As you can see, I am using my own base image which is hosted at `ghcr.io/russmckendrick/base:latest`, I am also using the OpenContainer annotation keys as some of these are supported by the GitHub Container Registry, like `org.opencontainers.image.source`, having this defined in the image will automatically link the back to the repo which means the `README` file will be imported at build time.
 
@@ -49,6 +51,7 @@ Now that the Dockerfile has been updated I needed to create a GitHub Action to b
 
 To get around this I created an individual workflow for each container, for example for Apache Bench I created the following YAML file at [`.github/workflows`](https://github.com/russmckendrick/docker/tree/master/.github/workflows):
 
+{{< terminal title="Github Action" >}}
 ```yaml
 name: ab
 on:
@@ -95,15 +98,19 @@ jobs:
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
 ```
+{{< /terminal >}}
 
 There are a few things to discuss so I will start from the top and break down the file in a little more detail, starting with the name:
 
+{{< terminal title="Github Action" >}}
 ``` yaml
 name: ab
 ```
+{{< /terminal >}}
 
 Now that my look simple, but, I named each of the workflows after the folder where the Dockerfile is hosted within my repo, this meant that I could use the `${{ github.workflow }}` variable within the job definitions so I didn't have to hardcode anything outside of the following:
 
+{{< terminal title="Github Action" >}}
 ``` yaml
 on:
   push:
@@ -112,27 +119,33 @@ on:
       - '!**'
       - 'ab/**'
 ```
+{{< /terminal >}}
 
 This section defines when the workflow should be triggered, here I am doing it whenever the main branch is pushed to — but only if any of the files in the `ab` folder changes. To do this I am using two paths, the first `!**` tells the workflow to ignore all changes to everything apart from the include folder which is defined as `ab/**`, unfortunately I can't use the `${{ github.workflow }}` here as at this point in the workflow the it hasn't been started so I can use variables meaning I have to hardcode the path.
 
 Moving on to the actual build, there is a single job called `login-build-and-push`, as you may have guessed - this does all of the work:
 
+{{< terminal title="Github Action" >}}
 ``` yaml
 jobs:
   login-build-and-push:
     runs-on: ubuntu-latest
 ```
+{{< /terminal >}}
 
 The first step is common to all workflows and checks out the repo:
 
+{{< terminal title="Github Action" >}}
 ``` yaml
       -
         name: Checkout
         uses: actions/checkout@v2
 ```
+{{< /terminal >}}
 
 The next step does the setup of Docker Buildx using the [action provided by Docker](https://github.com/docker/setup-buildx-action) themselves:
 
+{{< terminal title="Github Action" >}}
 ``` yaml
       -
         name: Set up Docker Buildx
@@ -140,6 +153,7 @@ The next step does the setup of Docker Buildx using the [action provided by Dock
         with:
           driver-opts: image=moby/buildkit:master
 ```
+{{< /terminal >}}
 
 “Docker Buildx” you might be thinking to yourself, what's that? This is a Docker CLI plugin which extends the build functionality of Docker using BuildKit, it introduces the following features:
 
@@ -154,16 +168,18 @@ The reason why I am using it as I want to tag each image twice, once with `lates
 
 In the next step I am getting the current date and time, then setting it as an output variable so I can use it on step #5:
 
-
+{{< terminal title="Github Action" >}}
 ``` yaml
       - 
         name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%Y%m%d%H%M')"
 ```
+{{< /terminal >}}
 
 Now we are at the point where we are ready to login to the GitHub Container Registry service:
 
+{{< terminal title="Github Action" >}}
 ``` yaml
       -
         name: Login to the GitHub Container Registry
@@ -173,6 +189,7 @@ Now we are at the point where we are ready to login to the GitHub Container Regi
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_TOKEN }}
 ```
+{{< /terminal >}}
 
 As you can see, I am logging to `ghcr.io`, which is the registry URL, as me using the `${{ github.repository_owner }}` variable. The password is a Personal Access Token (PAT) which has the following permissions:
 
@@ -185,6 +202,7 @@ The token is then stored in an encrypted secret called `GHCR_TOKEN`. For details
 
 Now that I am logged in I can build and push my the two tagged images using step #5:
 
+{{< terminal title="Github Action" >}}
 ``` yaml
       - 
         name: Build and push image
@@ -198,16 +216,19 @@ Now that I am logged in I can build and push my the two tagged images using step
             ghcr.io/${{ github.repository_owner }}/${{ github.workflow }}:latest
             ghcr.io/${{ github.repository_owner }}/${{ github.workflow }}:${{ steps.date.outputs.date }}
 ```
+{{< /terminal >}}
 
 This is where the `${{ github.workflow }}` variable comes into play, here I am using to define both the working directory (`context`) and also the path to the Dockerfile (`file`) as well as in combination with the `${{ github.repository_owner }}` variable to generate the two tags I want to push.
 
 Once pushed, the final step runs and this just outputs some images on the image which has just been pushed:
 
+{{< terminal title="Github Action" >}}
 ``` yaml
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
 ```
+{{< /terminal >}}
 
 After checking in the changes it triggered the build as expected and you see the output below:
 
@@ -215,9 +236,11 @@ After checking in the changes it triggered the build as expected and you see the
 
 Once pushed I was able to run Apache Bench by running the following commands:
 
+{{< terminal title="Docker" >}}
 ``` bash
 docker run --link=web ghcr.io/russmckendrick/ab ab -k -n 10000 -c 16 http://web/
 ```
+{{< /terminal >}}
 
 Running the containers
 
