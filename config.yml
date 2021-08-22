@@ -1,6 +1,6 @@
 baseURL: "https://www.mediaglasses.blog/"
 title: "MediaGlasses"
-paginate: "6"
+paginate: "8"
 theme: ["PaperMod"]
 
 timeout: 600000 # this needs to be long as we converting webp images
@@ -23,7 +23,7 @@ params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: "MediaGlasses"
   description: "Ramblings of a nerd"
-  keywords: ["Blog", "Technical", "Automation", "DevOps"]
+  keywords: ["Blog", "Technical", "Automation", "DevOps", "Cloud"]
   author: "Russ McKendrick"
   images: ["/images/blog-cover.jpg"]
   DateFormat: "January 2, 2006"
