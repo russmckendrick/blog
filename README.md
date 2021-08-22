@@ -13,6 +13,7 @@ This is the code for https://www.mediaglasses.blog/
 
 - [x] Add icons to main menu, added the [Ionicons](https://ionic.io/ionicons) icons.
 - [x] Generate `_redirects` file for 301 redirects, see [here](https://github.com/russmckendrick/blog/blob/main/layouts/_default/home._redirects) and [this config](https://github.com/russmckendrick/blog/blob/2435118e406b146fc1934602b28ac71fa0d199de/config.yml#L151-L163).
-- [x] Optimise images, see this [GitHub Action](https://github.com/russmckendrick/blog/blob/main/.github/workflows/calibreapp-image-actions.yml).
-- [x] Update old posts
-- [ ] Generate webp images
+- [x] Optimize images, see this [GitHub Action](https://github.com/russmckendrick/blog/blob/main/.github/workflows/calibreapp-image-actions.yml).
+- [x] Generate webp images, updated the `{{< img >}}` [short code](https://github.com/russmckendrick/blog/blob/main/layouts/shortcodes/img.html) so that it generates the webp images.
+- [x] Terminal, added the terminal style from [https://codeeverywhere.ca/post.php?id=10](https://codeeverywhere.ca/post.php?id=10) as [short code]https://github.com/russmckendrick/blog/blob/main/layouts/shortcodes/terminal.html) and updated the posts.
+- [x] Update all old posts so they mostly work.
