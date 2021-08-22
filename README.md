@@ -6,7 +6,7 @@ This is the code for https://www.mediaglasses.blog/
 
 - Built using [Hugo](https://gohugo.io/).
 - Using the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme.
-- Comments by [utterances](https://utteranc.es).
+- Comments by [giscus](https://giscus.app).
 - Hosted on [Cloudflare Pages](https://pages.cloudflare.com/).
 
 ## TODO
