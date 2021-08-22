@@ -29,12 +29,10 @@ Luckily, there are ways to get around this — the most simple way is to add
 
 Once you have added the Environment you can then add an approval check, to do this click on the Environment you have just created and click on the three dots in the top right-hand side of the page. From the menu select Approvals and checks;
 
-<div class-="gallery-box">
-  <div class="gallery">
-    <image src="images/02.png">
-    <image src="images/03.png">
-  </div>
-</div><br>
+{{< gallery >}}
+    {{< div >}}{{< img src="images/02.png" >}}{{< /div >}}
+    {{< div >}}{{< img src="images/03.png" >}}{{< /div >}}
+{{< /gallery >}}
 
 Now we have an Environment and the Approval in place we can move onto the Pipeline.
 
@@ -44,6 +42,7 @@ I already had a multi-stage pipeline I have been using to demo a container build
 
 First up is the stage where the Resource Group is created;
 
+{{< terminal title="Resource Group" >}}
 ``` yaml
 - stage: "SetupRG"
     displayName: "Resource Group"
@@ -61,11 +60,13 @@ First up is the stage where the Resource Group is created;
                 az group create --name $(APP_NAME)-rg --location $(LOCATION)
             displayName: "Resource Group - Use Azure CLI to setup or check"
 ```
+{{< /terminal >}}
 
 As you can see, I am using the Azure CLI and variables which are defined in the header of the Pipeline.
 
 Once the Resource Group has been created the next stage launches an Azure Container Registry if one doesn’t exist, if there is already one there then nothing happens;
 
+{{< terminal title="Azure Container Registry" >}}
 ``` yaml
 - stage: "SetupACR"
     displayName: "Azure Container Registry"
@@ -94,9 +95,11 @@ Once the Resource Group has been created the next stage launches an Azure Contai
                 fi
             displayName: "Azure Container Registry - Use Azure CLI check or setup"
 ```
+{{< /terminal >}}
 
 Now that we have a container registry to push our image to we can build and the push the container, this is the stage where we will be getting approval before building;
 
+{{< terminal title="Build, Tag and Push the container image" >}}
 ``` yaml
 - stage: "BuildContainer"
     displayName: "Build, Tag and Push the container image"
@@ -130,6 +133,7 @@ Now that we have a container registry to push our image to we can build and the 
                       docker image push $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$THETIMEANDDATE
                   displayName: "Use Azure CLI to build and push the container image"
 ```
+{{< /terminal >}}
 
 As you can see, rather than defining a `job` we are using a `deployment` this means we can then use the `environment` we created and because the `environment` is what our approval is attached to the deployment won’t progress until approved.
 
@@ -139,6 +143,7 @@ The second step builds, tags and then pushes the image to the Azure Container Re
 
 The remaining stage, assuming the previous three stages have all completed, configures and launches an App Service Plan, App Service and then configures automatic deployment of any subsequent images which are pushed to our Azure Container Registry, as you can see the code below the steps are only executed if the App Service Plan has not been configured, if our Application is already running then these steps are skipped;
 
+{{< terminal title="Azure App Services" >}}
 ``` yaml
 - stage: "SetupAppServices"
     displayName: "Azure App Services"
@@ -280,6 +285,7 @@ The remaining stage, assuming the previous three stages have all completed, conf
                 az acr webhook create --name $(ACR_NAME)webhook --registry $(ACR_NAME) --scope $(IMAGE_NAME):latest --actions push --uri $(az webapp deployment container show-cd-url --resource-group $(APP_NAME)-rg --name $(APP_NAME) --query "CI_CD_URL" -o tsv)
             displayName: "Azure Container Registry - Add the web hook created in the last task to the Azure Container Registry"
 ```
+{{< /terminal >}}
 
 A full copy of the `azure-pipelines.yml` file can be found in the following repo [https://github.com/russmckendrick/docker-python-web-app](https://github.com/russmckendrick/docker-python-web-app).
 
@@ -287,18 +293,18 @@ A full copy of the `azure-pipelines.yml` file can be found in the following repo
 
 Now that we know what the pipeline looks like this what happened when it executed for the first time, first off, you (or whoever your approver is) will get an email;
 
-![](images/04.png)
+{{< img src="images/04.png" >}}
 
 Once you click through to approve the deployment you should see something which looks like the following;
 
-![](images/05.png)
+{{< img src="images/05.png" >}}
 
 Once approved the pipeline will continue to run and as you can see all the stages, jobs and steps have been executed as this is the first run;
 
-![](images/06.png)
+{{< img src="images/06.png" >}}
 
 When the pipeline is next triggered you should see something like the following;
 
-![](images/07.png)
+{{< img src="images/07.png" >}}
 
 This time, other than checking to see if the application has already been deployed everything else in the fourth stage has been skipped.

@@ -1,0 +1,15 @@
+{{/* Taken from https://codeeverywhere.ca/post.php?id=10 */}}
+
+<div class="terminal space shadow">
+    <div class="top">
+        <div class="btns">
+            <span class="circle red"></span>
+            <span class="circle yellow"></span>
+            <span class="circle green"></span>
+        </div>
+        <div class="title">{{ with .Get "title" }}{{.}}{{ else }}~{{ .Page.RelPermalink }}{{ end }}</div>
+    </div>
+    <div class="terminalbody">
+        {{ .Inner | markdownify }}
+    </div>
+</div><br>

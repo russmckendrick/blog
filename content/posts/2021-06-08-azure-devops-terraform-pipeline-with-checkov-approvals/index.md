@@ -48,6 +48,7 @@ Now that we have an idea of what should happen, let’s take a look at what the 
 
 The first stage to run downloads and executes a scan of the Terraform files using [Checkov](http://checkov.io/), you will notice the YAML below that we are pulling the [Checkov container from Dockerhub](https://hub.docker.com/r/bridgecrew/checkov) and the running it;
 
+{{< terminal title="Checkov - Scan Terraform files" >}}
 ``` yaml
   - stage: "runCheckov"
     displayName: "Checkov - Scan Terraform files"
@@ -76,9 +77,11 @@ The first stage to run downloads and executes a scan of the Terraform files usin
               searchFolder: "$(System.DefaultWorkingDirectory)"
             displayName: "Publish > Checkov scan results"
 ```
+{{< /terminal >}}
 
 The command to run a Checkov scan locally on your own machine using Docker is below, just make sure you run it within same folder as your Terraform code;
 
+{{< terminal title="Run Checkov locally" >}}
 ``` terminfo
 docker run \
     --volume $(pwd):/tf \
@@ -88,6 +91,7 @@ docker run \
     --soft-fail \
     > $(pwd)/CheckovReport.xml
 ```
+{{< /terminal >}}
 
 As you can see we are mounting the current folder (the `$(pwd) `variable) which as we have set the `workingDirectory` to be where the code has been checked out using the`$(System.DefaultWorkingDirectory)` variable. We are also setting the `--output` to be `junitxml` and then piping the output to a file called CheckovReport.xml.
 
@@ -101,7 +105,7 @@ We will set what happens when, or if, this stage fails later in the post.
 
 This stage run the `terraform validate` command, and if there are any problems it will fail. As you can see the from YAML below, the stage dependsOn the `runCheckov` stage and we are also installing Terraform and running `terraform init` before the `terraform validate` command is executed;
 
-
+{{< terminal title="Terraform - Validate" >}}
 ``` yaml
   - stage: "validateTerraform"
     displayName: "Terraform - Validate"
@@ -137,6 +141,7 @@ This stage run the `terraform validate` command, and if there are any problems i
               environmentServiceName: "$(SUBSCRIPTION_NAME)"
             displayName: "Run > terraform validate"
 ```
+{{< /terminal >}}
 
 One of the other things which will happen when this stage is executed happens as part of the `terraform init` task, as we are setting `ensureBackend` to `true` the task will check for the presence of the Azure Storage Account we wish to use to store our Terraform state file in, if it is not there then the task will helpfully create it for us.
 
@@ -150,6 +155,7 @@ Once that has been done we are running the `terraform plan` command, thanks to s
 
 Before we look at the last tasks of this stage lets look at the code for the full stage;
 
+{{< terminal title="Terraform - Plan" >}}
 ``` yaml
   - stage: "planTerraform"
     displayName: "Terraform - Plan"
@@ -209,6 +215,7 @@ Before we look at the last tasks of this stage lets look at the code for the ful
             name: "setvar"
             displayName: "Vars > Set Variables for next stage"
 ```
+{{< /terminal >}}
 
 As you can see, after we have ran `terraform plan` we are immediately running `terraform show` using the `terraform.tfplan` file we just generated.
 
@@ -242,6 +249,7 @@ Finally, if …
 
 As you may have already guessed, this stage is only executed if the following condition is met;
 
+{{< terminal title="condition" >}}
 ``` yaml
 condition: |
 and
@@ -250,21 +258,27 @@ succeeded(),
 eq(dependencies.planTerraform.outputs['TerraformJobs.setvar.HAS_CHANGES_ONLY'], 'true')
 )
 ```
+{{< /terminal >}}
 
 As you can see, we are referencing the variable which was set in the previous stage using the following `echo` command;
 
+{{< terminal title="echo" >}}
 ``` bash
 echo "##vso[task.setvariable variable=HAS_CHANGES_ONLY;isOutput=true]true"
 ```
+{{< /terminal >}}
 
 The variable is then referenced by adding the names of the stage, job, task and the variable itself, so something like;
 
+{{< terminal title="dependencies" >}}
 ``` yaml
 dependencies.STAGE_NAME.outputs['JOB_NAME.TASK_NAME.VARIABLE_NAME']
 ```
+{{< /terminal >}}
 
 The full stage looks like the following;
 
+{{< terminal title="Terraform - Auto Approval" >}}
 ``` yaml
   - stage: "autoTerraform"
     displayName: "Terraform - Auto Approval"
@@ -305,6 +319,7 @@ The full stage looks like the following;
               environmentServiceName: "$(SUBSCRIPTION_NAME)"
             displayName: "Run > terraform apply"
 ```
+{{< /terminal >}}
 
 As you can see, we are again installing Terraform and running `terraform init` before finally running `terraform apply`.
 
@@ -312,6 +327,7 @@ As you can see, we are again installing Terraform and running `terraform init` b
 
 This stage is almost exactly the same as the Auto Approval apart from the inclusion of a job which runs before the Terraform job;
 
+{{< terminal title="Terraform - Manual Approval" >}}
 ``` yaml
   - stage: "approveTerraform"
     displayName: "Terraform - Manual Approval"
@@ -366,6 +382,7 @@ This stage is almost exactly the same as the Auto Approval apart from the inclus
               environmentServiceName: "$(SUBSCRIPTION_NAME)"
             displayName: "Run > terraform apply"
 ```
+{{< /terminal >}}
 
 This job basically stalls the pipeline execution for 24 hours, after which, if no-one approves the run, the job will fail. The job utilises the `ManualValidation@0` task, more detail on which can be found at [https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/manual-validation](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/manual-validation?view=azure-devops&tabs=yaml).
 
@@ -377,6 +394,7 @@ Let’t now take a look at running the pipeline, first let’s check in some cod
 
 The Terraform code for this looks like the following;
 
+{{< terminal title="main.tf" >}}
 ``` hcl
 resource "azurecaf_name" "rg_example" {
   name          = "demogroup"
@@ -390,6 +408,7 @@ resource "azurerm_resource_group" "resource_group" {
   tags     = merge(var.default_tags, tomap({ "type" = "resource" }))
 }
 ```
+{{< /terminal >}}
 
 I am using the [Azure CAF Name provider](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/azurecaf_name) to generate the name of the resource group and then the [AzureRM provider](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs) to create it.
 
@@ -416,6 +435,7 @@ The next run didn’t add, change or remove any resources which meant that neith
 
 One thing which hasn’t happened yet is that we have not added anything which Checkov would scan, let’s do that now by adding a Network Security Group to our Terraform file;
 
+{{< terminal title="Bad main.tf" >}}
 ``` hcl
 resource "azurecaf_name" "nsg" {
   name          = "demo"
@@ -468,6 +488,7 @@ resource azurerm_network_security_group "nsg" {
   }
 }
 ```
+{{< /terminal >}}
 
 Nothing to bad on the face of it you maybe thinking, let’s commit the change which will trigger a run of the pipeline;
 
