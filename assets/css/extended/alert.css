@@ -4,10 +4,16 @@
   padding: 0.5em;
   color: rgba(26, 128, 180, 0.9925) !important; }
 
+.alert-info a:link {
+  color: rgba(26, 128, 180, 0.9925) !important; }
+
 .alert-success {
   background-color: #d9efd6 !important;
   padding: 0.5em;
   border-color: #bce3b5 !important;
+  color: rgba(70, 149, 57, 0.9925) !important; }
+
+.alert-success a:link {
   color: rgba(70, 149, 57, 0.9925) !important; }
 
 .alert-warning {
@@ -16,8 +22,14 @@
   border-color: #f6ecbe !important;
   color: rgba(180, 154, 26, 0.9925) !important; }
 
+.alert-warning a:link {
+  color: rgba(180, 154, 26, 0.9925) !important; }
+
 .alert-danger {
   background-color: #f5dddd !important;
   padding: 0.5em;
   border-color: #ecbdbd !important;
+  color: rgba(159, 46, 46, 0.9925) !important; }
+
+.alert-danger a:link {
   color: rgba(159, 46, 46, 0.9925) !important; }
