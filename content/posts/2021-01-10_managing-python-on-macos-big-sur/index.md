@@ -4,7 +4,7 @@ author: "Russ Mckendrick"
 date: 2021-01-10
 description: ""
 cover:
-    image: "2021-01-10_managing-python-on-macos-big-sur.png" 
+    image: "https://andbjhorgm.cloudimg.io/v7/2021/01/10/managing-python-on-macos-big-sur/cover.png?p=cover" 
     relative: true
 aliases:
     - "/managing-python-on-macos-big-sur-c120bfa34403"

@@ -4,7 +4,7 @@ author: "Russ Mckendrick"
 date: 2021-04-25
 showFullContent: false
 cover:
-    image: "cover.png"
+    image: "https://andbjhorgm.cloudimg.io/v7/2021/04/25/azure-devops-multi-stage-pipelines/cover.png?p=cover"
     relative: true
 aliases:
     - "/azure-devops-multi-stage-pipelines-bcbed581fa2d"

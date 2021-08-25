@@ -5,7 +5,7 @@ date: 2021-01-22
 description: ""
 showFullContent: false
 cover:
-    image: "cover.png"
+    image: "https://andbjhorgm.cloudimg.io/v7/2021/01/22/top-20ish-records-of-2020/cover.png?p=cover"
     relative: true
 aliases:
     - "/top-20ish-records-of-2020-81ab2f2e309e"
