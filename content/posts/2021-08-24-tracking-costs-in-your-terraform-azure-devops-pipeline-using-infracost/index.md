@@ -490,8 +490,6 @@ Now the pipeline described above does differ from the native CI/CD integration p
 
 With over 3 million prices listed covering the bulk of Microsoft Azure, Amazon Web Services, and Google Cloud Platform cloud services it should pick up the majority of common mistakes when it comes to incorrectly configuring a service using Terraform and hopefully stop you getting any nasty surprises at the end of the month.
 
-{{< giphy 3oEdvbpl0X32bXD2Vi >}}
-
 They have also just updated the self-hosted version of the Cloud Pricing API meaning that you can connect to your own instance rather than registered to use their public end-point which is extremely useful if you have limited network access, see [this blog post](https://www.infracost.io/blog/jul-2021-update) for more information.
 
 The full code for the pipeline and Terraform scripts covered in this post can be found [in the GitHub repo here](https://github.com/russmckendrick/DevOpsTerraformPipeline/).
