@@ -9,6 +9,7 @@ This is the code for https://www.mediaglasses.blog/
 - Comments by [giscus](https://giscus.app).
 - Hosted on [Cloudflare Pages](https://pages.cloudflare.com/).
 - Image CDN by [Cloudimage](https://www.cloudimage.io/)
+- Uses [Goat Counter](https://goatcounter.com)
 
 ## TODO
 
