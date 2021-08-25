@@ -56,6 +56,7 @@ params:
     text: "MediaGlasses"
     icon: "/images/logo.svg"
     iconHeight: 40
+    iconWidth: 50
 
   cover:
     responsiveImages: true

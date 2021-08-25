@@ -57,7 +57,6 @@ tags:
 ## testing the img shortcode
 
 {{< img src="cover.png" alt="Screenshot of the Onion homepage" >}}
-
 ## testing the giphy shortcode
 
 {{< giphy jqYbk3Vy6NO3C >}}
