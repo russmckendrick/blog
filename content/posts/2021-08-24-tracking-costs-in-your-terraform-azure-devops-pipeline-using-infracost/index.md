@@ -6,7 +6,7 @@ description: ""
 draft: false
 showToc: true
 cover:
-    image: "cover.png"
+    image: "https://andbjhorgm.cloudimg.io/v7/2021/08/24/tracking-costs-in-your-terraform-azure-devops-pipeline-using-infracost/cover.png?p=cover"
     relative: true
 tags:
   - "Terraform"

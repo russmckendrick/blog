@@ -6,7 +6,7 @@ description: ""
 draft: false
 showToc: true
 cover:
-    image: "cover.png"
+    image: "https://andbjhorgm.cloudimg.io/v7/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/cover.png?p=cover"
     relative: true
 aliases:
   - "/azure-devops-terraform-pipeline-with-checkov-approvals-7a68827b2bf3"
