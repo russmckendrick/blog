@@ -8,6 +8,7 @@ This is the code for https://www.mediaglasses.blog/
 - Using the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme.
 - Comments by [giscus](https://giscus.app).
 - Hosted on [Cloudflare Pages](https://pages.cloudflare.com/).
+- Image CDN by [Cloudimage](https://www.cloudimage.io/)
 
 ## TODO
 
@@ -17,3 +18,5 @@ This is the code for https://www.mediaglasses.blog/
 - [x] Generate webp images, updated the `{{< img >}}` [short code](https://github.com/russmckendrick/blog/blob/main/layouts/shortcodes/img.html) so that it generates the webp images.
 - [x] Terminal, added the terminal style from [https://codeeverywhere.ca/post.php?id=10](https://codeeverywhere.ca/post.php?id=10) as [short code](https://github.com/russmckendrick/blog/blob/main/layouts/shortcodes/terminal.html) and updated the posts.
 - [x] Update all old posts so they mostly work.
+- [x] Use CDN for cover images
+- [] Get as close to 100% on PageSpeed Insights as possible
