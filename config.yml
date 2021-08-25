@@ -10,7 +10,7 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-googleAnalytics: "UA-43497944-1"
+# googleAnalytics: "UA-43497944-1" # disabled until I can figure out a way of getting the page speed up
 
 permalinks:
   posts: "/:year/:month/:day/:title/"
@@ -79,11 +79,11 @@ params:
     minMatchCharLength: 0
     keys: ["title", "summary", "content"]
 
-  analytics:
-    google:
-      SiteVerificationTag: "XYZabc"
-    bing:
-      SiteVerificationTag: "XYZabc"
+  # analytics:
+  #   google:
+  #     SiteVerificationTag: "XYZabc"
+  #   bing:
+  #     SiteVerificationTag: "XYZabc"
 
   socialIcons:
     - name: twitter
