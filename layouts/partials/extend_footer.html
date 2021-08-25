@@ -19,4 +19,6 @@ images.forEach(img => {
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <!-- End https://ionic.io/ionicons -->
 
-<script data-goatcounter="https://mediaglasses.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<!-- Add Goat Counter Tracking Pixel -->
+{{- $title := .Title }}{{- $path :=.Page.RelPermalink }}<img src="https://mediaglasses.goatcounter.com/count?p=/{{ $path | urlize }}&t={{ $title | urlize }}">
+<!-- End Goat Counter Tracking Pixel -->
