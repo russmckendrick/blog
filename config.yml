@@ -10,8 +10,6 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-# googleAnalytics: "UA-43497944-1" # disabled until I can figure out a way of getting the page speed up
-
 permalinks:
   posts: "/:year/:month/:day/:title/"
 
@@ -149,5 +147,13 @@ markup:
     lineNos: false
     noClasses: true
     style: monokai
+
+# googleAnalytics: "UA-43497944-1" # disabled until I can figure out a way of getting the page speed up
+
+privacy:
+  disqus:
+    disable: true
+  googleAnalytics:
+    disable: true
 
 ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken"]
