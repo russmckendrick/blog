@@ -24,7 +24,7 @@
     {{- else }}{{/* For absolute urls and external links, no img processing here */}}
         {{- if $addLink }}<a href="{{ (.Params.cover.image) | absURL }}" target="_blank"
             rel="noopener noreferrer">{{ end -}}
-            <img loading="lazy" src="{{ (.Params.cover.image) | absURL }}" alt="{{ $alt }}" width="900" height="531">
+            <img loading="lazy" src="{{ (.Params.cover.image) | absURL }}" alt="{{ $alt }}" width="720" height="411">
     {{- end }}
     {{- if $addLink }}</a>{{ end -}}
     {{/*  Display Caption  */}}
