@@ -1,5 +1,5 @@
 ---
-title: "Tracking costs in your Terraform Azure DevOps Pipeline using Infracost"
+title: "Tracking costs in Terraform using Infracost"
 author: "Russ Mckendrick"
 date: 2021-08-24
 description: ""
@@ -8,12 +8,15 @@ showToc: true
 cover:
     image: "https://andbjhorgm.cloudimg.io/v7/2021/08/24/tracking-costs-in-your-terraform-azure-devops-pipeline-using-infracost/cover.png?p=cover"
     relative: true
+aliases:
+  - "/2021/08/24/tracking-costs-in-your-terraform-azure-devops-pipeline-using-infracost/"
 tags:
   - "Terraform"
   - "Azure DevOps"
+  - "Pipeline"
   - "Azure"
   - "Cost"
-  - "Pipeline"
+  - "Infracost"
 
 ---
 
