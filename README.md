@@ -6,10 +6,12 @@ This is the code for https://www.mediaglasses.blog/
 
 - Built using [Hugo](https://gohugo.io/).
 - Using the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme.
-- Comments by [giscus](https://giscus.app).
 - Hosted on [Cloudflare Pages](https://pages.cloudflare.com/).
-- Image CDN by [Cloudimage](https://www.cloudimage.io/)
-- Uses [Goat Counter](https://goatcounter.com)
+- Uses ...
+    - [giscus](https://giscus.app)
+    - [Goat Counter](https://goatcounter.com)
+    - [SharingButtons](https://sharingbuttons.io)
+    - [Cloudimage](https://www.cloudimage.io/)
 
 ## TODO
 
