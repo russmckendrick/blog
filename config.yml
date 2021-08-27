@@ -17,6 +17,8 @@ minify:
   disableXML: true
   minifyOutput: true
 
+enableEmoji: true
+
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: "MediaGlasses"

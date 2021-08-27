@@ -46,6 +46,8 @@ tags:
 {{< /terminal >}}
 # Some text
 
+:anguished: :+1:
+
 {{% alert theme="info"%}}**This** is an info{{% /alert %}}
 {{% alert theme="success" %}}**Yeahhh !** is an success{{% /alert %}}
 {{% alert theme="warning" %}}**Be careful** is a warning{{% /alert %}}
