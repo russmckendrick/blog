@@ -1,1 +1,1 @@
-<iframe id="reddit-embed" src="{{ (index .Params 0) }}" sandbox="allow-scripts allow-same-origin allow-popups" style="border: none;" height="500" width="100%" scrolling="yes"></iframe>
+<iframe id="reddit-embed" src="{{ with .Get "url" }} {{ . }} {{ end }}" sandbox="allow-scripts allow-same-origin allow-popups" style="border: none;" {{ with .Get "height" }}height="{{ . }}"{{ end }} width="100%" scrolling="yes"></iframe><br>

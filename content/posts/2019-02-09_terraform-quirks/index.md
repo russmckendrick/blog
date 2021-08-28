@@ -75,6 +75,6 @@ Or the following blog posts from Hashicorp which go to make up a [preview of Ter
 
 **Update 16/02/2019**
 
-{{< reddit "https://www.redditmedia.com/r/Terraform/comments/aos3o0/where_is_terraform_012/eg51f07/?depth=1&amp;showmore=false&amp;embed=true&amp;showmedia=false" >}}
+{{< reddit url="https://www.redditmedia.com/r/Terraform/comments/aos3o0/where_is_terraform_012/eg51f07/?depth=1&amp;showmore=false&amp;embed=true&amp;showmedia=false" height="500" >}}
 
 it is an interesting insight into what is going to behind the scenes to get this release out of the gate.
