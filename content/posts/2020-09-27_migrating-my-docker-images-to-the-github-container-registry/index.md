@@ -3,7 +3,7 @@ title: "Migrating my Docker images to the GitHub Container Registry"
 author: "Russ Mckendrick"
 date: 2020-09-27
 cover:
-    image: "https://andbjhorgm.cloudimg.io/v7/2020/09/27/migrating-my-docker-images-to-the-github-container-registry/cover.png?p=cover" 
+    image: "cover.png"
     relative: true
 aliases:
     - "/migrating-my-docker-images-to-the-github-container-registry-9f304ccf0aaa"
