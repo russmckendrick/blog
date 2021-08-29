@@ -3,7 +3,7 @@ title: "GitHub Codespaces and Terraform"
 author: "Russ Mckendrick"
 date: 2020-09-20
 cover:
-    image: "https://andbjhorgm.cloudimg.io/v7/2020/09/20/github-codespaces-and-terraform/cover.png?p=cover" 
+    image: "cover.png"
     relative: true
 aliases:
     - "/github-codespaces-and-terraform-ff8b37c5e54a"

@@ -6,7 +6,7 @@ description: ""
 draft: false
 showToc: true
 cover:
-    image: "https://andbjhorgm.cloudimg.io/v7/2021/08/28/rocky-linux-and-packer/cover.png?p=cover"
+    image: "cover.png"
     relative: true
 tags:
   - "packer"
