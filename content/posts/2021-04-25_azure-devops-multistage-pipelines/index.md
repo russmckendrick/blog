@@ -30,8 +30,8 @@ Luckily, there are ways to get around this — the most simple way is to add
 Once you have added the Environment you can then add an approval check, to do this click on the Environment you have just created and click on the three dots in the top right-hand side of the page. From the menu select Approvals and checks;
 
 {{< gallery >}}
-    {{< div >}}{{< img src="images/02.png" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/03.png" >}}{{< /div >}}
+   {{< img src="images/02.png" >}}
+   {{< img src="images/03.png" >}}
 {{< /gallery >}}
 
 Now we have an Environment and the Approval in place we can move onto the Pipeline.
