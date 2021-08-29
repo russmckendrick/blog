@@ -421,8 +421,8 @@ As you can from the screen below, there was a single error, which stated that th
 The two screens below show the warnings;
 
 {{< gallery >}}
-    {{< div >}}{{< img src="images/tf02.png" alt="warnings" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/tf03.png" alt="warnings" >}}{{< /div >}}
+   {{< img src="images/tf02.png" alt="warnings" >}}
+   {{< img src="images/tf03.png" alt="warnings" >}}
 {{< /gallery >}}
 
 #### No Changes Run
@@ -501,8 +501,8 @@ Whoops, the Checkov stage failed, clicking on **Tests** should give us more info
 Clicking on either the two results will give a more information;
 
 {{< gallery >}}
-    {{< div >}}{{< img src="images/tf07.png" alt="more info" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/tf08.png" alt="more info">}}{{< /div >}}
+   {{< img src="images/tf07.png" alt="more info" >}}
+   {{< img src="images/tf08.png" alt="more info">}}
 {{< /gallery >}}
 
 
@@ -511,8 +511,8 @@ As you can see, we are allow full access to both SSH and RDP to the whole intern
 A quick code change & commit later and we have the tests passing and the changes being automatically deployed — which is expected as there is only the addition of the network security group;
 
 {{< gallery >}}
-    {{< div >}}{{< img src="images/tf09.png" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/tf10.png" >}}{{< /div >}}
+   {{< img src="images/tf09.png" >}}
+   {{< img src="images/tf10.png" >}}
 {{< /gallery >}}
 
 Let’s now look at removing the network security group we just added.
@@ -529,9 +529,9 @@ This will result in an e-mail;
 Going to the pipeline, clicking on **Review**, entering a comment then pressing the **Resume** button will then trigger the `terraform apply` stage;
 
 {{< gallery >}}
-    {{< div >}}{{< img src="images/tf12.png" alt="reviewing the change" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/tf13.png" alt="reviewing the change" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/tf14.png" alt="reviewing the change" >}}{{< /div >}}
+   {{< img src="images/tf12.png" alt="reviewing the change" >}}
+   {{< img src="images/tf13.png" alt="reviewing the change" >}}
+   {{< img src="images/tf14.png" alt="reviewing the change" >}}
 {{< /gallery >}}
 
 Once complete the network security group will have been destroyed, which is what we expected to happen, however, sometimes something unexpected may have happened and resources which you thought were not being touched by your changes maybe being destroyed so that they can be redeployed to make a change which isn’t possible any other way, this is where having your pipeline prompt you that it is going to remove resources comes in extremely useful 😊

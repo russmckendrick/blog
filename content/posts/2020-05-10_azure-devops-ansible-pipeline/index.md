@@ -120,9 +120,9 @@ As the Azure Ansible modules expect the Azure credentials, tenant and subscripti
 Running the Pipeline give me the following output:
 
 {{< gallery >}}
-    {{< div >}}{{< img src="images/02.png" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/03.png" >}}{{< /div >}}
-    {{< div >}}{{< img src="images/04.png" >}}{{< /div >}}
+   {{< img src="images/02.png" >}}
+   {{< img src="images/03.png" >}}
+   {{< img src="images/04.png" >}}
 {{< /gallery >}}
 
 As you can see from the pipeline output above, the whole pipeline took just over a minute to run, and 50 seconds of that was installing Ansible itself.
