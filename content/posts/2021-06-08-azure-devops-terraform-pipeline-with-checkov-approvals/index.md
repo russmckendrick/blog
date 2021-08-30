@@ -20,7 +20,7 @@ tags:
 
 It’s been just over a year since I [first posted about the Azure DevOps Terraform Pipeline I used to use](https://mediaglasses.blog/azure-devops-terraform-pipeline-e50f1721ea1), I say used to use, because that pipeline is now a little outdated. This posts covers the updated Pipeline I am starting to deploy along side my Terraform code.
 
-### Pipeline Overview
+## Pipeline Overview
 
 The pipeline itself has expanded a little and it now not only uses stages but also depending what Terraform is planning on doing it will trigger a manual approval process should there be any resources being destroyed.
 
@@ -40,11 +40,11 @@ As well as the addition of the stages detailed above, the pipeline has moved to 
 
 The reasoning for this is that the extension by [Charles Zipp](https://github.com/charleszipp/azure-pipelines-tasks-terraform) enables a lot of the functionality I needed to enable the two different approval stages without having to code the logic myself — which I am always a fan of 😉
 
-### The Stages
+## The Stages
 
 Now that we have an idea of what should happen, let’s take a look at what the pipeline looks like.
 
-#### Stage: Checkov Scan
+### Stage: Checkov Scan
 
 The first stage to run downloads and executes a scan of the Terraform files using [Checkov](http://checkov.io/), you will notice the YAML below that we are pulling the [Checkov container from Dockerhub](https://hub.docker.com/r/bridgecrew/checkov) and the running it;
 
@@ -101,7 +101,7 @@ We are publishing the test results using the built in [PublishTestResult](https:
 
 We will set what happens when, or if, this stage fails later in the post.
 
-#### Stage: Terraform Validate
+### Stage: Terraform Validate
 
 This stage run the `terraform validate` command, and if there are any problems it will fail. As you can see the from YAML below, the stage dependsOn the `runCheckov` stage and we are also installing Terraform and running `terraform init` before the `terraform validate` command is executed;
 
@@ -147,7 +147,7 @@ One of the other things which will happen when this stage is executed happens as
 
 Once your code has been validated we can move onto the next stage.
 
-#### Stage: Terraform Plan
+### Stage: Terraform Plan
 
 This stage is where things get a little more interesting, eventually, as our environment does not persist across stages we need to install Terraform and run `terraform init` again.
 
@@ -245,7 +245,7 @@ Finally, if …
 
 … then we are just printing a message which will be displayed within the pipeline run to say that no changes were detected.
 
-#### Stage: Terraform Apply (Auto Approval)
+### Stage: Terraform Apply (Auto Approval)
 
 As you may have already guessed, this stage is only executed if the following condition is met;
 
@@ -323,7 +323,7 @@ The full stage looks like the following;
 
 As you can see, we are again installing Terraform and running `terraform init` before finally running `terraform apply`.
 
-#### Stage: Terraform Apply (Manual Approval)
+### Stage: Terraform Apply (Manual Approval)
 
 This stage is almost exactly the same as the Auto Approval apart from the inclusion of a job which runs before the Terraform job;
 
@@ -388,7 +388,7 @@ This job basically stalls the pipeline execution for 24 hours, after which, if n
 
 Once approved the Terraform job will be executed which will ultimately run `terraform apply` which will result in at least one of the resources in your Terraform state file being destroyed.
 
-### Running the Pipeline
+## Running the Pipeline
 
 Let’t now take a look at running the pipeline, first let’s check in some code which adds a basic Resource Group.
 
@@ -412,7 +412,7 @@ resource "azurerm_resource_group" "resource_group" {
 
 I am using the [Azure CAF Name provider](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs/resources/azurecaf_name) to generate the name of the resource group and then the [AzureRM provider](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs) to create it.
 
-#### Initial Run
+### Initial Run
 
 As you can from the screen below, there was a single error, which stated that the storage account for the Terraform state file did not exist, buts that OK as that will be created for us.
 
@@ -425,13 +425,13 @@ The two screens below show the warnings;
    {{< img src="images/tf03.png" alt="warnings" >}}
 {{< /gallery >}}
 
-#### No Changes Run
+### No Changes Run
 
 The next run didn’t add, change or remove any resources which meant that neither the `HAS_CHANGES_ONLY` or `HAS_DESTROY_CHANGES` variables were set to `true`, so the `terraform apply` stages did not run this time;
 
 {{< img src="images/tf04.png" alt="No changes" >}}
 
-#### Introducing some mistakes
+### Introducing some mistakes
 
 One thing which hasn’t happened yet is that we have not added anything which Checkov would scan, let’s do that now by adding a Network Security Group to our Terraform file;
 
@@ -517,7 +517,7 @@ A quick code change & commit later and we have the tests passing and the changes
 
 Let’s now look at removing the network security group we just added.
 
-#### Manual Approval
+### Manual Approval
 
 Commenting out the network security group configuration in the Terraform code and committing it should be enough to trigger a run which will resource in resources being removed.
 
@@ -536,7 +536,7 @@ Going to the pipeline, clicking on **Review**, entering a comment then pressing 
 
 Once complete the network security group will have been destroyed, which is what we expected to happen, however, sometimes something unexpected may have happened and resources which you thought were not being touched by your changes maybe being destroyed so that they can be redeployed to make a change which isn’t possible any other way, this is where having your pipeline prompt you that it is going to remove resources comes in extremely useful 😊
 
-### Summary
+## Summary
 
 As I find myself collaborating on more and more complex Terraform deployments it can get a little scary for all involved if you have a pipeline triggering automatically when you commit.
 
