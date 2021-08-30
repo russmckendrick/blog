@@ -22,15 +22,15 @@ tags:
 
 In [my last blog post](/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/) I introduced [a stage](/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/#stage-checkovscan) which executed [Checkov](https://www.checkov.io/) to my Terraform Azure DevOps pipeline, this scanned the Terraform configuration and stopped the deployment if there was an issue. I also added [a stage](/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/#stage-terraform-plan) which checks to see if there are any resources being destroyed.
 
-# Whats missing?
+## Whats missing?
 
 Both of these I thought should give some basic protection against problems caused by common configuration issues, which they did, but it didn't take into account the end user, i.e. me, making a change which would dramatically increase the running costs of the deployment.
 
-# Enter Infracost
+## Enter Infracost
 
 One day as I was skimming through [Reddit](https://www.reddit.com/r/Terraform/) and I noticed mention of [Infracost](https://www.infracost.io/) (I can't remember the post, sorry) - the description of the tool got my attention "Cloud cost estimates for Terraform in pull requests" peaked my interest and gave it ago locally.
 
-## Installing and registering Infracost locally
+### Installing and registering Infracost locally
 
 As I am macOS user installing Infracost locally was a [Homebrew](https://brew.sh) command away:
 
@@ -71,7 +71,7 @@ You can now run infracost breakdown --path=... and point to your Terraform direc
 
 That is all of the configuration you need to do, once installed you can try running the tool.
 
-## Running Infracost locally
+### Running Infracost locally
 
 Next up we need some Terraform to run it against, I have some test code which launches a Linux Virtual Machine in Azure so decided to use that.
 
@@ -214,7 +214,7 @@ terraform destroy
 ```
 {{< /terminal >}}
 
-# The Pipeline
+## The Pipeline
 
 The stages of the pipeline are not changing too much, they are still the following 
 
@@ -224,7 +224,7 @@ The stages of the pipeline are not changing too much, they are still the followi
 - **Terraform Apply (Auto Approval)**, there are no changes to [this stage](/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/#stage-terraform-apply-auto-approval)
 - **Terraform Apply (Manual Approval)**, there are some minor changes to [this stage](/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/#stage-terraform-apply-manual-approval), mostly around the wording 
 
-## Additional Pipeline variables
+### Additional Pipeline variables
 
 There is an addition of a single variable at the top of the `azure-pipeline.yml` file, this sets the `cost_increase_alert_percentage` threshold - in my case I set this to 50%:
 
@@ -250,7 +250,7 @@ Open the pipeline in Azure DevOps, click **Edit**, then **Variables** and finall
 
 Now the two variables have been added lets look at the changes to the pipeline itself.
 
-## Stage - Terraform Plan
+### Stage - Terraform Plan
 
 Before this stage contained the following tasks:
 
@@ -260,7 +260,7 @@ Before this stage contained the following tasks:
 
 There are no changes to these three tasks, by the end of the them we are left with an idea of what Terraform is going to do and a Terraform Plan file is stored at `$(System.DefaultWorkingDirectory)/terraform.tfplan`. 
 
-### Task - Install > Infracost
+#### Task - Install > Infracost
 
 The first of the two new tasks we are adding simply installs Infracost:
 
@@ -285,7 +285,7 @@ As you can see, there is a little logic in there which skips this step if the `$
 
 Once Infracost has been installed we can then run it.
 
-### Task - Run > Infracost
+#### Task - Run > Infracost
 
 There is quite a bit of logic in the this task, here it is in its entirety:
 
@@ -426,7 +426,7 @@ displayName: "Run > Infrascost"
 ```
 {{< /terminal >}}
 
-### Task - Vars > Set Variables for next stage
+#### Task - Vars > Set Variables for next stage
 
 The final task in this stage is not much different than before, just some of the wording has been tweaked to take into account we are now looking for cost as well a resources being destroyed:
 
@@ -451,11 +451,11 @@ The final task in this stage is not much different than before, just some of the
 
 There are also some tweaks to the rest of the pipeline, but nothing outside of changing some of the wording.
 
-# Running the Pipeline 
+## Running the Pipeline 
 
 Now that we have all of the bits together lets run the same Terraform code which launches a Linux virtual machine with the **Standard_B1ms** SKU.
 
-## Initial Run
+### Initial Run
 
 When the pipeline is first run there are no existing costs so we get the following output:
 
@@ -463,7 +463,7 @@ When the pipeline is first run there are no existing costs so we get the followi
 
 As you can see, we have a message saying that "No previous cost data has been detected" and that Terraform as just run as expected as it is only adding resources.
 
-## Running again
+### Running again
 
 Rerunning with the same SKU us the following:
 
@@ -471,7 +471,7 @@ Rerunning with the same SKU us the following:
 
 As we already have an existing resource Infracost returns information on both the previous and new cost, which in our case was $18.91 - also not that as there are no changes Terraform does not attempt to apply any thing.
 
-## Updating the SKU and increasing costs
+### Updating the SKU and increasing costs
 
 Now lets bump the SKU to **Standard_B4ms**:
 
@@ -479,7 +479,7 @@ Now lets bump the SKU to **Standard_B4ms**:
 
 As you can see, an cost increase of over 50% has been detected, over 630% in-fact from $18.91 to £139.66 per month, so the `$HAS_DESTROY_CHANGES` has been set and the manual validation stage was executed.
 
-## Undo the change to the SKU
+### Undo the change to the SKU
 
 The final change is changing the SKU of the virtual machine back to **Standard_B1ms**:
 
@@ -487,7 +487,7 @@ The final change is changing the SKU of the virtual machine back to **Standard_B
 
 The message this time shows that the costs have been reduced and we are OK with that, so the pipeline triggered the auto-approve stage and we didn't have to step in and review the changes.
 
-# Summary
+## Summary
 
 Now the pipeline described above does differ from the native CI/CD integration provided by Infracost which can be found [here](https://www.infracost.io/docs/integrations/cicd). Infracost's own integration hooks into your repo and is triggered on a pull request - as I already had a pipeline built I decided to adapt their [script](https://github.com/infracost/infracost/blob/master/scripts/ci/diff.sh) a little so that it fitted my own needs.
 
