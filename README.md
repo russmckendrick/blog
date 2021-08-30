@@ -21,4 +21,4 @@ This is the code for https://www.mediaglasses.blog/
 - [x] Terminal, added the terminal style from [https://codeeverywhere.ca/post.php?id=10](https://codeeverywhere.ca/post.php?id=10) as [short code](https://github.com/russmckendrick/blog/blob/main/layouts/shortcodes/terminal.html) and updated the posts.
 - [x] Update all old posts so they mostly work.
 - [x] ~~Use CDN for cover images.~~ webp added for cover images
-- [x] Get as close to [100% on PageSpeed Insights as possible](https://lighthouse-dot-webdotdevsite.appspot.com//lh/html?url=https%3A%2F%2Fwww.mediaglasses.blog)
+- [x] Get as close to [100% on PageSpeed Insights as possible](https://lighthouse-dot-webdotdevsite.appspot.com//lh/html?url=https%3A%2F%2Fwww.mediaglasses.blog/)
