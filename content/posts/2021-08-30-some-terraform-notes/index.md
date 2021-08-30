@@ -3,7 +3,7 @@ title: "Some Terraform Azure Notes"
 author: "Russ Mckendrick"
 date: 2021-08-30T11:41:34+01:00
 description: ""
-draft: true
+draft: false
 showToc: true
 cover:
     image: "cover.png"
@@ -190,3 +190,160 @@ resource "azurerm_key_vault_secret" "host_pool_token" {
 
 ## Azure Automation Account Web Hook
 
+Next up we have what was the bane of my life for a good few days, Azure Automation Accounts. While they are supported by the Terraform Azure provider there are some notable omissions - the creation of Webhooks is one.
+
+Before we look at creating the web hook we are going to need an Automation Account and Runbook, the following code adds these with a really basic configuration:
+
+{{< terminal title="Create an Azure Automation Account and Runbook" >}}
+``` hcl
+terraform {
+  required_version = ">= 1.0.0"
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm" # https://registry.terraform.io/providers/hashicorp/azurerm/latest
+    }
+  }
+}
+
+provider "azurerm" { # Configure the Microsoft Azure RM Provider
+  features {
+    key_vault {
+      purge_soft_delete_on_destroy = true
+    }
+  }
+}
+resource "azurerm_resource_group" "resource_group" {
+  name     = "rg-test-uks"
+  location = "uksouth"
+}
+
+resource "azurerm_automation_account" "automation_account" {
+  resource_group_name = azurerm_resource_group.resource_group.name
+  location            = azurerm_resource_group.resource_group.location
+  name                = "auto-test-uks"
+  sku_name            = "Basic"
+}
+
+resource "azurerm_automation_runbook" "automation_account_runbook" {
+  resource_group_name     = azurerm_resource_group.resource_group.name
+  location                = azurerm_resource_group.resource_group.location
+  automation_account_name = azurerm_automation_account.automation_account.name
+  name                    = "HelloWorld"
+  log_verbose             = "true"
+  log_progress            = "true"
+  runbook_type            = "PowerShell"
+  publish_content_link {
+    uri = "https://gist.githubusercontent.com/russmckendrick/fa422b292a786682da887643e72213d5/raw/c1b7aa3c9729b66341a25efbea75c961d2326df0/HelloWorld-Workflow.ps1"
+  }
+}
+}
+```
+{{< /terminal >}}
+
+You maybe thinking to yourself, if Terraform doesn't support web hooks then how can we add them? Luckily Terraform allows you execute ARM templates - which does support the create and assignment of a web hook, there are a few things we are going to have generate first before run the ARM template though.
+
+- `webhook_expiry_time` = you must assign an expiry date to a webhook, luckily we have just covered how to do that so we will be using that.
+- `webhook_token1` and `webhook_token2` = these are two random strings which will go to make up part of the webhook URL
+
+{{< terminal title="Generate some stuff" >}}
+``` hcl
+resource "time_rotating" "webhook_expiry_time" {
+  rotation_years = 5
+}
+resource "random_string" "webhook_token1" {
+  length  = 10
+  upper   = true
+  lower   = true
+  number  = true
+  special = false
+}
+
+resource "random_string" "webhook_token2" {
+  length  = 31
+  upper   = true
+  lower   = true
+  number  = true
+  special = false
+}
+```
+{{< /terminal >}}
+
+Next we need to create the webook URL itself as this is not done for us, to do this I am setting a local variable so I can reuse it if needed:
+
+{{< terminal title="Set the local variable" >}}
+``` hcl
+locals {
+  webhook = "https://${split("/", azurerm_automation_account.automation_account.dsc_server_endpoint)[4]}.webhook.${substr(azurerm_resource_group.resource_group.location, 0, 3)}.azure-automation.net/webhooks?token={random_string.webhook_token1.result}{random_string.webhook_token2.result}"
+}
+```
+{{< /terminal >}}
+
+As you can see, this using as much dynamically generated content as possible to full in gaps of the URL.
+
+{{% alert theme="warning" %}}**Please note:** As I am am launching my resources in UK South the short location for this is *uks*, depending on the location you are using you may have alter the code above to change the number of characters being used or hardcode the short region ID.{{% /alert %}}
+
+Now that we have everything needed to generate the URL we can deploy the ARM template by using:
+
+{{< terminal title="Generate some stuff" >}}
+``` hcl
+resource "azurerm_template_deployment" "automation_account_webhook" {
+  name                = "HelloWorldWebhook"
+  resource_group_name = azurerm_resource_group.resource_group.name
+  deployment_mode     = "Incremental"
+  template_body       = <<DEPLOY
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "name": "${azurerm_automation_account.automation_account.name}/HelloWorldWebhook",
+      "type": "Microsoft.Automation/automationAccounts/webhooks",
+      "apiVersion": "2015-10-31",
+      "properties": {
+        "isEnabled": true,
+        "uri": "${local.webhook}",
+        "expiryTime": "${time_rotating.webhook_expiry_time.rotation_rfc3339}",
+        "parameters": {},
+        "runbook": {
+          "name": "${azurerm_automation_runbook.automation_account_runbook.name}"
+        }
+      }
+    }
+  ]
+}
+DEPLOY
+}
+```
+{{< /terminal >}}
+
+This gives the following output:
+
+{{< terminal title="The output" >}}
+``` hcl
+webhook = "https://e833b5e7-ef20-41ad-83db-eec633b9d22b.webhook.uks.azure-automation.net/webhooks?token=%2buXamOQWrjJ%2bmzhBt7kpeMKcX5R8wnULaj7zNWBCyh2%3d"
+```
+{{< /terminal >}}
+
+All of which means that the following command, updating it to matech your URL, can be used to trigger the web hook:
+
+{{< terminal title="The output" >}}
+``` terminfo
+curl -H 'Content-Length: 0' -X POST 'https://e833b5e7-ef20-41ad-83db-eec633b9d22b.webhook.uks.azure-automation.net/webhooks?token=%2buXamOQWrjJ%2bmzhBt7kpeMKcX5R8wnULaj7zNWBCyh2%3d'
+```
+{{< /terminal >}}
+
+This should return some JSON with the job ID:
+
+{{< terminal title="The Job ID" >}}
+``` json
+{
+  "JobIds": [
+    "8fd8f676-1a0b-45d7-9472-7697d7720ac5"
+  ]
+}
+```
+{{< /terminal >}}
+
+## Full Example Code
+
+The full example code to accompany this post can be found at [russmckendrick/some-terraform-azure-notes](https://github.com/russmckendrick/some-terraform-azure-notes) on [GitHub](https://github.com/russmckendrick/some-terraform-azure-notes).
