@@ -9,7 +9,7 @@ This is the code for https://www.mediaglasses.blog/
 - Hosted on [Cloudflare Pages](https://pages.cloudflare.com/).
 - Uses ...
     - [giscus](https://giscus.app)
-    - [Goat Counter](https://goatcounter.com)
+    - [Plausible](https://plausible.io)
     - [SharingButtons](https://sharingbuttons.io)
 
 ## TODO
