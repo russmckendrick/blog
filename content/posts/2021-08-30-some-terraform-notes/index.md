@@ -280,7 +280,9 @@ locals {
 
 As you can see, this using as much dynamically generated content as possible to full in gaps of the URL.
 
-{{% alert theme="warning" %}}**Please note:** As I am am launching my resources in UK South the short location for this is *uks*, depending on the location you are using you may have alter the code above to change the number of characters being used or hardcode the short region ID.{{% /alert %}}
+{{< notice warning >}}
+**Please note:** As I am am launching my resources in UK South the short location for this is *uks*, depending on the location you are using you may have alter the code above to change the number of characters being used or hardcode the short region ID.
+{{< /notice >}}
 
 Now that we have everything needed to generate the URL we can deploy the ARM template by using:
 

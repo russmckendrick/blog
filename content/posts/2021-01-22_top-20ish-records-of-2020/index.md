@@ -27,6 +27,7 @@ A little late, but there are my top 20 records of 2020, as per previous years th
 - [Andy Bell — The View From Halfway Down](https://open.spotify.com/album/2Xt22gwrtjMKQQAayKbw4R?si=w3YGtrvVRwugvQaHbhIXQg)
 
 
+
 {{< gallery >}}
    {{< img src="images/01.png" alt="bdrmm ‎- Bedroom" >}}
    {{< img src="images/02.png" alt="Doves ‎- The Universal Want" >}}

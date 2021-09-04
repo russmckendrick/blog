@@ -11,6 +11,7 @@ This is the code for https://www.mediaglasses.blog/
     - [giscus](https://giscus.app)
     - [Plausible](https://plausible.io)
     - [SharingButtons](https://sharingbuttons.io)
+    - [hugo-notice](https://github.com/martignoni/hugo-notice) theme component
 
 ## TODO
 

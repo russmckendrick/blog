@@ -128,8 +128,9 @@ build {
 
 At the moment I only have Virtualbox installed on my machine to I ran the following command to build the image and output the Vagrantbox for Virtualbox:
 
-{{% alert theme="warning" %}}**Please note:** The following command will download a 9GB+ ISO file to your machine.{{% /alert %}}
-
+{{< notice warning >}}
+**Please note:** The following command will download a 9GB+ ISO file to your machine.
+{{< /notice >}}
 
 {{< terminal title="Build the Virtualbox VM" >}}
 ``` terminfo

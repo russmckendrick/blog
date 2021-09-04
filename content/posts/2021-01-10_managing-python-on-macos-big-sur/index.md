@@ -54,7 +54,9 @@ pyenv version
 
 Once installed, run the following command to make sure that the `pyenv` managed version of Python is picked up:
 
-{{% alert theme="info"%}}**Update: 11/06/2021;** the command below has been updated to include a change to how the "pyenv init" command works.{{% /alert %}}
+{{< notice info >}}
+**Update: 11/06/2021;** the command below has been updated to include a change to how the "pyenv init" command works.
+{{< /notice >}}
 
 {{< terminal title="Make sure the pyenv version is used" >}}
 ``` terminfo
