@@ -48,10 +48,22 @@ tags:
 
 :anguished: :+1:
 
-{{% alert theme="info"%}}**This** is an info{{% /alert %}}
-{{% alert theme="success" %}}**Yeahhh !** is an success{{% /alert %}}
-{{% alert theme="warning" %}}**Be careful** is a warning{{% /alert %}}
-{{% alert theme="danger" %}}**Beware !** is a danger{{% /alert %}}
+{{< notice info >}}
+**This** is some info
+{{< /notice >}}
+
+{{< notice tip >}}
+**This** is a tip
+{{< /notice >}}
+
+{{< notice note >}}
+**This** is a note
+{{< /notice >}}
+
+{{< notice warning >}}
+*Beware !** is a danger
+{{< /notice >}}
+
 # Pics
 ## testing the img shortcode
 

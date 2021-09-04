@@ -50,7 +50,9 @@ infracost register
 
 It will ask you for your Name and Email address, once you enter these you should see something like the following output:
 
-{{% alert theme="success" %}}Please make a note of the API key, you will need it later.{{% /alert %}}
+{{< notice tip >}}
+Please make a note of the API key, you will need it later.
+{{< /notice >}}
 
 {{< terminal title="Output" >}}
 ```
@@ -75,7 +77,9 @@ That is all of the configuration you need to do, once installed you can try runn
 
 Next up we need some Terraform to run it against, I have some test code which launches a Linux Virtual Machine in Azure so decided to use that.
 
-{{% alert theme="info" %}}The Terraform code I am using can be found at the [russmckendrick/terraform-vm-local-example](https://github.com/russmckendrick/terraform-vm-local-example) Github repo.{{% /alert %}}
+{{< notice info >}}
+The Terraform code I am using can be found at the [russmckendrick/terraform-vm-local-example](https://github.com/russmckendrick/terraform-vm-local-example) Github repo.
+{{< /notice >}}
 
 To start with run the following:
 
@@ -122,7 +126,9 @@ To estimate usage-based resources use --usage-file, see https://infracost.io/usa
 
 That's a reasonable cost, so lets launch the Virtual Machine by running:
 
-{{% alert theme="danger" %}}**Warning!** If you are following along running the commands below will incur cost.{{% /alert %}}
+{{< notice warning >}}
+**Warning!** If you are following along running the commands below will incur cost.
+{{< /notice >}}
 
 {{< terminal title="Run some Terraform commands" >}}
 ``` terminfo
