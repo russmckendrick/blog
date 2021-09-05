@@ -1,6 +1,6 @@
 ---
 title: "Tracking costs in Terraform using Infracost"
-author: "Russ Mckendrick"
+author: "Russ McKendrick"
 date: 2021-08-24
 description: ""
 draft: false
