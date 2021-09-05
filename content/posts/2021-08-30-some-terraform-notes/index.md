@@ -1,6 +1,6 @@
 ---
 title: "Some Terraform Azure Notes"
-author: "Russ Mckendrick"
+author: "Russ McKendrick"
 date: 2021-08-30T11:41:34+01:00
 description: ""
 draft: false
