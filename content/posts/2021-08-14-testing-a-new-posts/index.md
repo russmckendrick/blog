@@ -12,6 +12,18 @@ tags:
   - "post"
 ---
 
+# Gallery
+
+
+{{< gallery >}}
+   {{< img src="images/01.png" alt="bdrmm ‎- Bedroom" >}}
+   {{< img src="images/02.png" alt="Doves ‎- The Universal Want" >}}
+   {{< img src="images/03.png" alt="Pure Reason Revolution — Eupnea" >}}
+   {{< img src="images/04.png" alt="Orb — Abolition Of The Royal Familia" >}}
+   {{< img src="images/05.png" alt="The Smashing Pumpkins — Cyr" >}}
+   {{< img src="images/06.png" alt="Andy Bell — The View From Halfway Down" >}}
+   {{< img src="images/07.png" alt="Andy Bell — The View From Halfway Down" >}}
+{{< /gallery >}}
 # Terminal
 
 {{< terminal title="This is just a test" >}}
