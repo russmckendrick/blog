@@ -1,3 +1,10 @@
+:root {
+    --terminal-bg: #1C1D21;
+}
+
+.dark {
+    --terminal-bg: #2E2E33;
+}
 
 .terminal {
     border-radius: 5px 5px 5px 5px;
@@ -37,5 +44,3 @@
 }
 
 .shadow { box-shadow: 0px 0px 10px rgba(0,0,0,.4)}
-
-
