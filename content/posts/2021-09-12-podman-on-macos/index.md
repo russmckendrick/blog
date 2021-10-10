@@ -272,7 +272,9 @@ Once running, open a browser and goto **http://localhost:8080/** and you should 
 Now the keen eyed amongst you may have noticed that the command to launch the container is a little slightly different than want we used in the last post, at the time of writing *--network bridge* is needed to map port **8080** from the virtual machine to **127.0.0.1** on the mac. The next release which is due in the next fortnight should resolve this.
 {{< /notice >}}
 
-
+{{< notice info >}}
+**Update 10/10/2021** the update has been release and it works as expected, so you can remove the *--network bridge* from the command.
+{{< /notice >}}
 
 ### Other commands
 
