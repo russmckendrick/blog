@@ -15,7 +15,7 @@ tags:
 
 This week was not only the release of macOS Monterey, but it was also new Mac Book Pro week for a lot of people, including myself. Given that it was alot of effot to install Python on [macOS Big Sur](/2021/01/10/managing-python-on-macos-big-sur/) I was a little worried that it would take the same amount of effort.
 
-As I was starting off with a clean installation, and had already installed [Homebew](https://brew.sh) I just needed to run the following command to install [pyenv](https://github.com/pyenv/pyenv):
+As I was starting a with a clean macOS Monterey installation and had already installed [Homebew](https://brew.sh) I just needed to run the following command to install [pyenv](https://github.com/pyenv/pyenv):
 
 {{< terminal title="Install pyenv" >}}
 ``` terminfo
@@ -23,7 +23,7 @@ brew install pyenv
 ```
 {{< /terminal >}}
 
-Once installed, 
+Once installed, I ran the following to download and compile Python 3.10.0:
 
 
 {{< terminal title="Install Python 3.10.0 using pyenv" >}}
@@ -34,7 +34,7 @@ pyenv version
 ```
 {{< /terminal >}}
 
-The last command should return something simular to the following output:
+The last command should return something similar to the following output:
 
 {{< terminal title="Output of the command" >}}
 ```
@@ -43,10 +43,10 @@ $ pyenv version
 ```
 {{< /terminal >}}
 
-Now that Python is installed and we have set version 3.10.0 to be our default then we need to run the following command to make sure that our prefered version is used when ever we open a new terminal session.
+Now that Python is installed and we have set version 3.10.0 to the default Python install used by pyenv, we need to run the following command to ensure that our preferred version is used whenever we open a new terminal session.
 
 {{< notice info >}}
-**Please note:** The command below assumes that you are using [ZSH](https://zsh.sourceforge.io), if you are using a different shell please check the file file path to your RC file is correct.
+**Please note:** The command below assumes that you are using [ZSH](https://zsh.sourceforge.io), if you are using a different shell please check the file path to your RC file is correct.
 {{< /notice >}}
 
 {{< terminal title="Make sure the pyenv version is used" >}}
@@ -105,4 +105,4 @@ ansible [core 2.11.6]
 ```
 {{< /terminal >}}
 
-This was a massive improvment on last years experience as it was far from a smooth day one experience, so props to pyenv and Homebrew teams 👍
+This was a massive improvement on last years experience as it was far from smooth on day one, so props to pyenv and Homebrew teams 👍
