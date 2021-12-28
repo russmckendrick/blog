@@ -9,7 +9,9 @@ cover:
     image: "cover.png"
     relative: true
 tags:
-  - "post"
+  - "macos"
+  - "azure"
+  - "ansible"
 ---
 
 Following on from upgrading my Macs to all M1 based ones, I get around to finally needing to use Ansible, typically I would install Python using [PyEnv](/2021/10/30/managing-python-on-macos-monterey/) and then run the following ...
