@@ -1,5 +1,5 @@
 ---
-title: "Ansible Azure Setup New Mac"
+title: "Ansible setup with Azure on a new Mac"
 author: "Russ McKendrick"
 date: 2021-12-28T13:38:25Z
 description: ""
@@ -14,7 +14,7 @@ tags:
   - "ansible"
 ---
 
-Following on from upgrading my Macs to all M1 based ones, I get around to finally needing to use Ansible, typically I would install Python using [PyEnv](/2021/10/30/managing-python-on-macos-monterey/) and then run the following ...
+Following on from upgrading my Macs to all M1-based ones, I get around to finally needing to use Ansible; typically, I would install Python using [PyEnv](/2021/10/30/managing-python-on-macos-monterey/) and then run the following ...
 
 {{< terminal title="It should just work?!?!" >}}
 ``` terminfo
@@ -70,4 +70,4 @@ As you can see, first of all by installing the `cryptography` module and its pre
 
 While things "may work" if there is active development going on which has not made its way into the Ansible Galaxy release, then you may have all sorts of compatibility issues, just like I did.
 
-Hopefully, this saves someone scratching their head for hours as I did as everything looked to have been correct and the `azure.mgmt.monitor` module was 100% installed, just not the version which the collection was expecting.
+Hopefully, this saves someone scratching their head for hours as I did as everything looked to have been correct, and the `azure.mgmt.monitor` module was 100% installed, just not the version which the collection was expecting.
