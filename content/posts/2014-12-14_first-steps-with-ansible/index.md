@@ -96,7 +96,7 @@ default : ok=6 changed=5 unreachable=0 failed=0
 
 … like all first steps using a new orchestration tool I had installed & configured NTPD.
 
-The syntax itself isn’t too different from Puppet so it was easy to get the gist of what was going on. Once I had gotten my head around the basics I started on creating a [Playbook](http://docs.ansible.com/playbooks.html) which configures a VPC and launches an Elastic Load Balancer , here is the current work in progress …
+The syntax itself isn’t too different from Puppet so it was easy to get the gist of what was going on. Once I had gotten my head around the basics I started on creating a [Playbook](https://spacelift.io/blog/ansible-playbooks) which configures a VPC and launches an Elastic Load Balancer , here is the current work in progress …
 
 ```
 - name: install ntp
