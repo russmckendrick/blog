@@ -33,7 +33,7 @@ As I am finding myself using Microsoft Azure more and more I thought I would mak
 
 ### The Azure Portal
 
-A lot of the time I use the standard [http://portal.azure.com/](http://portal.azure.com/) URL, but as I started having to jump around various accounts for work and also personal use, I discovered that there were some great short cuts you can use. The quickest of these I have been using to navigate the main Azure portal is appending the name of the tenant you want to access to the end of the URL, for example;
+A lot of the time I use the standard [http://portal.azure.com/](http://portal.azure.com/) URL, but as I started having to jump around various accounts for work and also personal use, I discovered that there were some great short cuts you can use. The quickest of these I have been using to navigate the main Azure portal is appending the primary domain of the tenant you want to access to the end of the URL, for example [http://portal.azure.com/myadtenant.onmicrosoft.com](http://portal.azure.com/myadtenant.onmicrosoft.com);
 
 This will get you straight into the selected tenant without having to switch once logged in.
 
