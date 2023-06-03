@@ -1,5 +1,5 @@
-baseURL: "https://www.mediaglasses.blog/"
-title: "MediaGlasses"
+baseURL: "https://www.russ.foo/"
+title: "russ.foo"
 paginate: "8"
 theme: ["PaperMod", "hugo-notice"]
 
@@ -21,7 +21,7 @@ enableEmoji: true
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: "MediaGlasses"
+  title: "Russ.Foo"
   description: "Ramblings of a nerd"
   keywords: ["Blog", "Technical", "Automation", "DevOps", "Cloud"]
   author: "Russ McKendrick"
@@ -33,7 +33,7 @@ params:
   ShowReadingTime: true
   ShowShareButtons: true
   ShowPostNavLinks: true
-  ShowBreadCrumbs: false
+  ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
   disableSpecial1stPost: true
   disableScrollToTop: false
@@ -53,7 +53,7 @@ params:
     safari_pinned_tab: "images/logo.svg"
 
   label:
-    text: "MediaGlasses"
+    text: "Russ.Foo"
     icon: "/images/logo.svg"
     iconHeight: 40
     iconWidth: 50
