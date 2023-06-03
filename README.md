@@ -1,6 +1,6 @@
-# MediaGlasses Blog
+# Russ.Foo Blog
 
-This is the code for https://www.mediaglasses.blog/
+This is the code for https://www.russ.foo/
 
 ## Tools
 
