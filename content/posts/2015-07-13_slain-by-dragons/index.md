@@ -35,7 +35,7 @@ First up was Fridja, it looks like they host their own Wordpress installation. L
 
 The site did have a blip where it timed out when trying to load the main homepage but it was quick to recover.
 
-{{< tweet 620314730918506496 >}}
+{{< twitter user=russmckendrick id=620314730918506496 >}}
 
 Looking at the list of installed plugins listed by BuiltWith a lot of them are to do with caching, performance and security. So well done Fridja.
 
@@ -51,7 +51,7 @@ Judging by the “on tonights episode” and “still to come” bits things wer
 
 As you can see, not well at all, the site was giving “Resource Limit Is Reached” and “Error establishing a database connection” errors for quite a while.
 
-{{< tweet 620332479119912960 >}}
+{{< twitter user=russmckendrick id=620332479119912960 >}}
 
 Once things had settled down a quick look at [BuiltWith](http://builtwith.com/?https%3a%2f%2fwww.thehousecrowd.com) show like Fridja they are using a combination of Wordpress with some elements of CloudFlare. However their exposed plugins list doesn’t show any plugins which would help cache the site during a spike caused by prime time TV coverage, on a plus side their Wordpress login screens are [themed to fit in](https://wordpress.org/plugins/theme-my-login/) with the rest of the site.
 

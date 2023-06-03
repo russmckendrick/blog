@@ -39,7 +39,7 @@ aliases:
 
 At the start of this month [Docker purchased a storage startup called Infinit](http://blog.infinit.sh/infinit-joins-docker/).
 
-{{< tweet 806153366573318145 >}}
+{{< twitter user=russmckendrick id=806153366573318145 >}}
 
 Up until then I had only heard of their commercial offering which can be found at [https://infinit.io/](https://infinit.io/) which on the face of it has nothing to do with container storage and is a Dropbox equivalent.
 

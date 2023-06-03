@@ -56,7 +56,7 @@ Part of my daily routine is to go through Reddit, RSS feeds and also wading thro
 
 Over the lat week or so I have seen Portainer mentioned quite a lot, particularly since it has now had over 1M + pulls on the Docker Hub;
 
-{{< tweet 812717388332351488 >}}
+{{< twitter user=russmckendrick id=812717388332351488 >}}
 
 I decided to check it out. It describes itself as;
 
