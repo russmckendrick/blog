@@ -69,4 +69,4 @@ Nov 01 10:52:03 docker.server.io docker[8737]: [cc69a548] -job containers() = OK
 
 This should do until CentOS manage to catch-up with the latest Docker releases, which shouldn’t be too long hopefully ….
 
-{{< tweet 521815263163863040 >}}
+{{< twitter user=russmckendrick id=521815263163863040 >}}
