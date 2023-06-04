@@ -12,3 +12,7 @@
 .post-footer .related a:hover {
     box-shadow: 0 1px;
 }
+
+.post-footer .related h3 {
+    margin-bottom: 0.5em;
+}
