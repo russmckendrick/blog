@@ -20,20 +20,19 @@
 </script>
 
 <script>
-  const images = Array.from(document.querySelectorAll(".post-content img"));
-  images.forEach(img => {
-    mediumZoom(img, {
-      margin: 0,
-      /* The space outside the zoomed image */
-      scrollOffset: 40,
-      /* The number of pixels to scroll to close the zoom */
-      container: null,
-      /* The viewport to render the zoom in */
-      template: null /* The template element to display on zoom */
+  const images = Array.from(document.querySelectorAll(".post-content img:not(.no-zoom)"));
+  if (images.length > 0) {
+    images.forEach(img => {
+      mediumZoom(img, {
+        margin: 0,
+        scrollOffset: 40,
+        container: null,
+        template: null
+      });
     });
-  });
+  }
 </script>
-<!-- End Medium Zoom -->
 
 <script defer data-domain="russ.foo" src="https://plausible.io/js/plausible.js"></script>
+
 <link rel="me" href="https://social.mckendrick.io/@russ" />
