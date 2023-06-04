@@ -2,7 +2,6 @@
 {{ $src := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) }}
 
 {{/* set image sizes, these are hardcoded for now, x dictates that images are resized to this width */}}
-
 {{ $tinyw := default "500x" }}
 {{ $smallw := default "800x" }}
 {{ $mediumw := default "1200x" }}
@@ -13,7 +12,6 @@
 {{ $largewebp := default "1500x webp" }}
 
 {{/* resize the src image to the given sizes */}}
-
 {{ .Scratch.Set "tiny" ($src.Resize $tinyw) }}
 {{ .Scratch.Set "small" ($src.Resize $smallw) }}
 {{ .Scratch.Set "medium" ($src.Resize $mediumw) }}
@@ -24,7 +22,6 @@
 {{ .Scratch.Set "largewebp" ($src.Resize $largewebp) }}
 
 {{/* add the processed images to the scratch */}}
-
 {{ $tiny := .Scratch.Get "tiny" }}
 {{ $small := .Scratch.Get "small" }}
 {{ $medium := .Scratch.Get "medium" }}
@@ -34,10 +31,8 @@
 {{ $mediumwebp := .Scratch.Get "mediumwebp" }}
 {{ $largewebp := .Scratch.Get "largewebp" }}
 
-
 {{/* only use images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
 {{/* set the sizes attribute to (min-width: 35em) 1200px, 100vw unless overridden in shortcode */}}
-
 <img loading="lazy"
   {{ with .Get "sizes" }}sizes='{{.}}'{{ else }}sizes="(min-width: 35em) 1200px, 100vw"{{ end }}
   srcset='
@@ -54,17 +49,24 @@
     {{ with $mediumwebp.RelPermalink }}, {{.}} 1200w{{ end }}
     {{ end }}
   {{ if ge $src.Width "1500" }}
-    {{ with $large.RelPermalink }}, {{.}} 1500w {{ end }}
-    {{ with $largewebp.RelPermalink }}, {{.}} 1500w {{ end }}
+    {{ with $large.RelPermalink }}, {{.}} 1500w{{ end }}
+    {{ with $largewebp.RelPermalink }}, {{.}} 1500w{{ end }}
     {{ end }}'
-  {{ if .Get (print $medium) }}
-    src="{{ $medium.RelPermalink }}" 
-    width="{{ $medium.Width }}" 
-    height="auto"
-    {{ else }}
-    src="{{ $src.RelPermalink }}" 
-    width="{{ $src.Width }}" 
-    height="auto"
+  {{ if or (not (isset .Params "zoom")) (eq (.Get "zoom") "true") }}
+    class="medium-zoom-image"
+  {{ else }}
+    class="no-zoom"
   {{ end }}
+  {{ if .Get "width" }}
+    src="{{ $medium.RelPermalink }}"
+    width="{{ .Get "width" }}"
+  {{ else if .Get (print $medium) }}
+    src="{{ $medium.RelPermalink }}"
+    width="{{ $medium.Width }}"
+  {{ else }}
+    src="{{ $src.RelPermalink }}"
+    width="{{ $src.Width }}"
+  {{ end }}
+  height="auto"
   {{ with .Get "alt" }}alt="{{.}}"{{ else }}alt=""{{ end }}
-  >
+>
