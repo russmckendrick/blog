@@ -1,5 +1,5 @@
 baseURL: "https://www.russ.foo/"
-title: "russ.foo"
+title: "Russ.foo"
 paginate: "8"
 theme: ["PaperMod", "hugo-notice"]
 
@@ -80,10 +80,10 @@ params:
     keys: ["title", "summary", "content"]
 
   socialIcons:
-    - name: twitter
-      url: "https://twitter.com/russmckendrick/"
     - name: mastodon
       url: "https://social.mckendrick.io/@russ"
+    - name: twitter
+      url: "https://twitter.com/russmckendrick/"
     - name: linkedin
       url: "https://www.linkedin.com/in/russmckendrick/"
     - name: github
