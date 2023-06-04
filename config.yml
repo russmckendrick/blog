@@ -33,7 +33,7 @@ params:
   ShowReadingTime: true
   ShowShareButtons: true
   ShowPostNavLinks: true
-  ShowBreadCrumbs: true
+  ShowBreadCrumbs: false
   ShowCodeCopyButtons: true
   disableSpecial1stPost: true
   disableScrollToTop: false
@@ -42,6 +42,7 @@ params:
   hideSummary: false
   showtoc: false
   tocopen: false
+  ShowRelatedContent: true
 
   assets:
     disableHLJS: true

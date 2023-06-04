@@ -1,0 +1,14 @@
+.related {
+    border-radius: var(--radius);
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    padding: 1em;
+}
+
+.post-footer .related ul {
+    padding-inline-start: 20px;
+}
+
+.post-footer .related a:hover {
+    box-shadow: 0 1px;
+}
