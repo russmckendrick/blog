@@ -1,3 +1,7 @@
 :root {
     --main-width: 800px;
 }
+
+.tag-entry .entry-cover {
+    display: flex;
+}
