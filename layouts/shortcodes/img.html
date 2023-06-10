@@ -1,7 +1,4 @@
-{{/* get file that matches the filename as specified as src="" in shortcode */}}
 {{ $src := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) }}
-
-{{/* set image sizes, these are hardcoded for now, x dictates that images are resized to this width */}}
 {{ $tinyw := default "500x" }}
 {{ $smallw := default "800x" }}
 {{ $mediumw := default "1200x" }}
@@ -11,7 +8,6 @@
 {{ $mediumwebp := default "1200x webp" }}
 {{ $largewebp := default "1500x webp" }}
 
-{{/* resize the src image to the given sizes */}}
 {{ .Scratch.Set "tiny" ($src.Resize $tinyw) }}
 {{ .Scratch.Set "small" ($src.Resize $smallw) }}
 {{ .Scratch.Set "medium" ($src.Resize $mediumw) }}
@@ -21,7 +17,6 @@
 {{ .Scratch.Set "mediumwebp" ($src.Resize $mediumwebp) }}
 {{ .Scratch.Set "largewebp" ($src.Resize $largewebp) }}
 
-{{/* add the processed images to the scratch */}}
 {{ $tiny := .Scratch.Get "tiny" }}
 {{ $small := .Scratch.Get "small" }}
 {{ $medium := .Scratch.Get "medium" }}
@@ -31,8 +26,10 @@
 {{ $mediumwebp := .Scratch.Get "mediumwebp" }}
 {{ $largewebp := .Scratch.Get "largewebp" }}
 
-{{/* only use images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
-{{/* set the sizes attribute to (min-width: 35em) 1200px, 100vw unless overridden in shortcode */}}
+{{ with .Get "link" }}
+<a href="{{ . }}">
+{{ end }}
+
 <img loading="lazy"
   {{ with .Get "sizes" }}sizes='{{.}}'{{ else }}sizes="(min-width: 35em) 1200px, 100vw"{{ end }}
   srcset='
@@ -70,3 +67,7 @@
   height="auto"
   {{ with .Get "alt" }}alt="{{.}}"{{ else }}alt=""{{ end }}
 >
+
+{{ if .Get "link" }}
+</a>
+{{ end }}
