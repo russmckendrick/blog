@@ -19,6 +19,13 @@ minify:
 
 enableEmoji: true
 
+author:
+  russmckendrick:
+    name: "Russ McKendrick"
+    email: "me@russ.foo"
+    github: "@russmckendrick"
+    location: "Nottingham, UK"
+
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: "Russ.foo"
@@ -129,11 +136,13 @@ outputs:
     - RSS
     - JSON # is necessary for the search
     - _redirects
+    - humans
 
 disableAliases: true
 
 mediaTypes:
   text/redirects:
+  text/plain:
 
 outputFormats:
   _redirect:
@@ -145,6 +154,11 @@ outputFormats:
     isHTML: false
     noUgly: true
     permalinkable: false
+  humans:
+    baseName: humans.txt
+    isPlainText: true
+    mediaType: text/plain
+    notAlternative: true
 
 markup:
   highlight:
