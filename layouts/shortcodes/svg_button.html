@@ -1,0 +1,15 @@
+<a href="{{ .Get "url" }}" style="text-decoration: none !important; border-bottom: none !important; box-shadow: none !important;">
+    <button type="button" style="color: {{ .Get "textColor" }}; background: {{ .Get "bgColor" }}; border-color: {{ .Get "borderColor" }};">
+        {{ .Get "name" }}
+        <svg class="svg-icon"
+             role="img"
+             height="24"
+             width="24"
+             viewBox="0 0 24 24"
+             aria-hidden="true"
+             focusable="false"
+             style="margin-left: 10px;">
+            <path d="{{ .Get "svgPath" }}"/>
+        </svg>
+    </button>
+</a>

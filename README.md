@@ -12,6 +12,7 @@ This is the code for https://www.russ.foo/
     - [Plausible](https://plausible.io)
     - [SharingButtons](https://sharingbuttons.io)
     - [hugo-notice](https://github.com/martignoni/hugo-notice) theme component
+    - [Icons](https://simpleicons.org/)
 
 ## TODO
 
