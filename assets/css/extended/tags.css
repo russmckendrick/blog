@@ -1,0 +1,17 @@
+.terms-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+}
+.terms-tags a {
+    margin: 0.5rem;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.terms-tags a:hover {
+    transform: scale(1.1);
+    color: var(--tag-hover-color);
+}
