@@ -9,7 +9,7 @@ cover:
     image: "cover.png"
     relative: true
 tags:
-    - Macos
+    - macOS
     - Python
 ---
 

@@ -5,11 +5,8 @@ date: 2015-12-13T18:18:50.000Z
 lastmod: 2021-07-31T12:33:33+01:00
 
 tags:
- - Tech
- - Centos
- - Digital Ocean
- - Docker
- - Flocker
+ - "Linux"
+ - "Docker"
 
 cover:
     image: "/img/2015-12-13_flocker-on-centos-7_0.png" 

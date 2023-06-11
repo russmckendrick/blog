@@ -5,8 +5,8 @@ date: 2014-12-03T12:00:00.000Z
 lastmod: 2021-07-31T12:32:25+01:00
 
 tags:
- - Blog
- - Tunes
+    - "Life"
+    - "Vinyl"
 
 cover:
     image: "/img/2014-12-03_2014s-top-20-albums_0.png" 

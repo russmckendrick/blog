@@ -5,9 +5,8 @@ date: 2015-04-05T11:00:00.000Z
 lastmod: 2021-07-31T12:32:56+01:00
 
 tags:
- - Blog
- - Stuff
- - Tunes
+    - "Life"
+    - "Vinyl"
 
 cover:
     image: "/img/2015-04-05_adventures-in-hifi_0.png" 

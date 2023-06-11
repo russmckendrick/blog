@@ -5,9 +5,9 @@ date: 2016-05-08T16:13:53.000Z
 lastmod: 2021-07-31T12:33:51+01:00
 
 tags:
- - Tech
+ - Tools
  - Docker
- - Mac
+ - macOS
 
 cover:
     image: "/img/2016-05-08_docker-on-mac-osx_0.png" 

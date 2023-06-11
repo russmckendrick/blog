@@ -5,11 +5,8 @@ date: 2014-12-02T20:59:38.000Z
 lastmod: 2021-07-31T12:32:18+01:00
 
 tags:
- - Tech
- - Blog
- - Grunt
- - Jekyll
-
+    - "Code"
+    - "Tools"
 cover:
     image: "/img/2014-12-02_grunt-jekyll-less_0.png" 
 images:

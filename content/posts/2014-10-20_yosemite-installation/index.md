@@ -5,8 +5,8 @@ date: 2014-10-20T11:00:00.000Z
 lastmod: 2021-07-31T12:32:06+01:00
 
 tags:
- - Tech
- - Mac
+    - "macOS"
+    - "Tools"
 
 cover:
     image: "/img/2014-10-20_yosemite-installation_0.png" 

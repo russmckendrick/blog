@@ -7,9 +7,6 @@ lastmod: 2021-07-31T12:34:28+01:00
 tags:
  - Docker
  - DevOps
- - Microsoft
- - Linux
- - Mac
 
 cover:
     image: "/img/2016-12-13_its-a-unix-system-i-know-this._0.png" 

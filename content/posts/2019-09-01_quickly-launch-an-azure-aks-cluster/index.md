@@ -9,7 +9,6 @@ description: ""
 subtitle: ""
 tags:
  - Azure
- - Aks
  - Kubernetes
 
 cover:

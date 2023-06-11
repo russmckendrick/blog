@@ -12,11 +12,10 @@ aliases:
   - "/2021/08/24/tracking-costs-in-your-terraform-azure-devops-pipeline-using-infracost/"
 tags:
   - "Terraform"
-  - "Azure DevOps"
-  - "Pipeline"
+  - "DevOps"
   - "Azure"
-  - "Cost"
-  - "Infracost"
+  - "Tools"
+  - "Infrastructure as Code"
 
 ---
 

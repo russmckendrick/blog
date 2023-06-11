@@ -7,8 +7,7 @@ lastmod: 2021-07-31T12:34:35+01:00
 tags:
  - Docker
  - DevOps
- - Portainer
- - Docker Swarm
+ - Tools
 
 cover:
     image: "/img/2016-12-29_portainer-a-ui-for-docker_0.png" 

@@ -8,7 +8,7 @@ description: ""
 
 subtitle: ""
 tags:
- - Macos
+ - macOS
  - Python
 
 cover:

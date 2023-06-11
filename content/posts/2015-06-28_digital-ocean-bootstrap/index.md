@@ -5,10 +5,9 @@ date: 2015-06-28T12:23:29.000Z
 lastmod: 2021-07-31T12:33:08+01:00
 
 tags:
- - Tech
- - Centos
- - Digital Ocean
- - Security
+ - "Cloud"
+ - "Linux"
+ - "Security"
 
 cover:
     image: "/img/2015-06-28_digital-ocean-bootstrap_0.png" 

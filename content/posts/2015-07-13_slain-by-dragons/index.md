@@ -5,10 +5,9 @@ date: 2015-07-13T19:36:52.000Z
 lastmod: 2021-07-31T12:33:14+01:00
 
 tags:
- - Tech
- - Cloud
- - Scale
- - Stuff
+ - "Blog"
+ - "Cloud"
+ - "Web"
 
 cover:
     image: "/img/2015-07-13_slain-by-dragons_0.png" 

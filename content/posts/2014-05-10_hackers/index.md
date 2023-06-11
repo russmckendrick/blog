@@ -5,9 +5,9 @@ date: 2014-05-10T11:00:00.000Z
 lastmod: 2021-07-31T12:31:25+01:00
 
 tags:
- - Tech
- - Centos
- - Security
+    - "Code"
+    - "Tools"
+    - "Security"
 
 cover:
     image: "/img/2014-05-10_hackers_0.png" 

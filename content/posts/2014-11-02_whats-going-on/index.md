@@ -5,7 +5,9 @@ date: 2014-11-02T12:00:00.000Z
 lastmod: 2021-07-31T12:32:12+01:00
 
 tags:
- - Blog
+    - "Blog"
+    - "Life"
+
 
 cover:
     image: "/img/2014-11-02_whats-going-on_0.png" 

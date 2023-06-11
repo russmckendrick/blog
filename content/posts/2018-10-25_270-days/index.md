@@ -6,10 +6,10 @@ lastmod: 2021-07-31T12:35:12+01:00
 
 tags:
  - Docker
- - Tech
- - Books
+ - Life
+ - Book
  - Vinyl
- - Authors
+ - Author
 
 cover:
     image: "/img/2018-10-25_270-days_0.png" 

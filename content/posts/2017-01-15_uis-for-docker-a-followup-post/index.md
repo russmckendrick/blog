@@ -8,8 +8,6 @@ tags:
  - Docker
  - DevOps
  - Kubernetes
- - Mesos
- - Docker Swarm
 
 cover:
     image: "/img/2017-01-15_uis-for-docker-a-followup-post_0.png" 

@@ -11,7 +11,7 @@ aliases:
 
 tags:
  - Ansible
- - Mac
+ - macOS
  - Azure
 
 ---

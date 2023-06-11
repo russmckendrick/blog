@@ -5,11 +5,11 @@ date: 2018-01-20T10:34:04.124Z
 lastmod: 2021-07-31T12:35:06+01:00
 
 tags:
- - Serverless
+ - Life
  - Kubernetes
  - Docker
- - Authors
- - Books
+ - Author
+ - Book
 
 cover:
     image: "/img/2018-01-20_kubernetes-for-serverless-applications_0.png" 

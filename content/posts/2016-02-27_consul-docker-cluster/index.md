@@ -3,7 +3,10 @@ title: "Consul Docker Cluster"
 author: "Russ Mckendrick"
 date: 2016-02-27T17:55:22.000Z
 lastmod: 2021-07-31T12:33:46+01:00
-
+tags:
+    - "Automation"
+    - "Docker"
+    - "Tools"
 
 cover:
     image: "/img/2016-02-27_consul-docker-cluster_0.png" 

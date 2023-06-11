@@ -5,9 +5,8 @@ date: 2014-11-02T12:00:00.000Z
 lastmod: 2021-07-31T12:32:10+01:00
 
 tags:
- - Tech
- - Centos
- - Docker
+    - "Docker"
+    - "Tools"
 
 cover:
     image: "/img/2014-11-02_installing-docker-1.3.x-on-centos-7_0.png" 

@@ -5,8 +5,8 @@ date: 2015-12-27T18:03:34.000Z
 lastmod: 2021-07-31T12:33:40+01:00
 
 tags:
- - Blog
- - Tunes
+ - Life
+ - Vinyl
 
 cover:
     image: "/img/2015-12-27_top-ten-albums-2015_0.png" 

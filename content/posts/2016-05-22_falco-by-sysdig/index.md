@@ -5,11 +5,9 @@ date: 2016-05-22T15:36:56.000Z
 lastmod: 2021-07-31T12:33:53+01:00
 
 tags:
- - Tech
- - Centos
- - Falco
+ - "Linux"
  - Security
- - Sysdig
+ - Tools
 
 cover:
     image: "/img/2016-05-22_falco-by-sysdig_0.png" 

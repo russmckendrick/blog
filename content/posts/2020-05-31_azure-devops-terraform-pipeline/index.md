@@ -12,7 +12,8 @@ tags:
     - Terraform
     - Azure
     - DevOps
-    - Pipeline
+    - Automation
+    - Infrastructure as Code
 
 ---
 

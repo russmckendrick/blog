@@ -3,12 +3,9 @@ title: "Cask"
 author: "Russ Mckendrick"
 date: 2014-05-26T11:00:00.000Z
 lastmod: 2021-07-31T12:31:31+01:00
-
 tags:
- - Tech
- - Mac
- - Tools
-
+    - "macOS"
+    - "Tools"
 cover:
     image: "/img/2014-05-26_cask_0.png" 
 images:

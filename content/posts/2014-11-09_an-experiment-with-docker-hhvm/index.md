@@ -5,11 +5,8 @@ date: 2014-11-09T12:00:00.000Z
 lastmod: 2021-07-31T12:32:14+01:00
 
 tags:
- - Tech
- - Centos
- - Docker
- - Hhvm
- - PHP
+    - "Docker"
+    - "Tools"
 
 cover:
     image: "/img/2014-11-09_an-experiment-with-docker-hhvm_0.png" 

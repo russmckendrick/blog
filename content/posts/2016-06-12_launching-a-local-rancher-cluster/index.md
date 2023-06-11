@@ -5,10 +5,9 @@ date: 2016-06-12T15:30:55.000Z
 lastmod: 2021-07-31T12:33:55+01:00
 
 tags:
- - Tech
  - Docker
- - Mac
- - Rancher
+ - macOS
+ - Tools
 
 cover:
     image: "/img/2016-06-12_launching-a-local-rancher-cluster_0.png" 

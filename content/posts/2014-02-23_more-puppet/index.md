@@ -3,13 +3,11 @@ title: "More Puppet"
 author: "Russ Mckendrick"
 date: 2014-02-23T12:00:00.000Z
 lastmod: 2021-07-31T12:31:15+01:00
-
 tags:
- - Tech
- - Centos
- - DevOps
- - Puppet
-
+    - "Linux"
+    - "Automation"
+    - "Infrastructure as Code"
+    - "DevOps"
 cover:
     image: "/img/2014-02-23_more-puppet_0.png" 
 images:

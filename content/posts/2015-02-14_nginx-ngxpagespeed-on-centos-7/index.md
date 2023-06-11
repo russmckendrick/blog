@@ -5,9 +5,8 @@ date: 2015-02-14T15:36:06.000Z
 lastmod: 2021-07-31T12:32:39+01:00
 
 tags:
- - Tech
- - Centos
- - Nginx
+    - "Linux"
+    - "Web"
 
 cover:
     image: "/img/2015-02-14_nginx-ngxpagespeed-on-centos-7_0.png" 

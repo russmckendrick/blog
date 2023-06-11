@@ -9,8 +9,8 @@ description: ""
 subtitle: ""
 tags:
  - Azure
- - Azure Services
- - Azure Active Directory
+ - Cloud
+ - Tools
 
 cover:
     image: "/img/2019-06-16_microsoft-azure-portal-urls_0.jpeg" 

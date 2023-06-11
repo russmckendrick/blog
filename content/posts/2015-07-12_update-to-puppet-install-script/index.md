@@ -5,9 +5,9 @@ date: 2015-07-12T11:00:00.000Z
 lastmod: 2021-07-31T12:33:12+01:00
 
 tags:
- - Tech
- - Centos
- - Puppet
+ - "Automation"
+ - "Linux"
+ - "Tools"
 
 cover:
     image: "/img/2015-07-12_update-to-puppet-install-script_0.png" 

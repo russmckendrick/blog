@@ -9,7 +9,7 @@ description: ""
 subtitle: ""
 tags:
  - Packer
- - Centos
+ - "Linux"
 
 cover:
     image: "/img/2019-10-13_packer-centos-8_0.jpeg" 

@@ -5,10 +5,8 @@ date: 2015-03-08T16:37:38.000Z
 lastmod: 2021-07-31T12:32:41+01:00
 
 tags:
- - Tech
- - Centos
- - Digital Ocean
- - Server
+    - "Tools"
+    - "Cloud"
 
 cover:
     image: "/img/2015-03-08_migration-of-server-swap-space_0.png" 

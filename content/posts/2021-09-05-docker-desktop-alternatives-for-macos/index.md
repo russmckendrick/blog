@@ -11,10 +11,8 @@ cover:
 tags:
   - "Docker"
   - "macOS"
-  - "Lima"
+  - "Containers"
   - "Kubernetes"
-  - "Rancher"
-  - "Minikube"
 ---
 
 After the news earlier this week that Docker will be introducing charges to the Docker Subscription Service Agreement, as detailed in the Tweet below:

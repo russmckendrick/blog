@@ -3,14 +3,15 @@ title: "SaltStack on CentOS 6.x"
 author: "Russ Mckendrick"
 date: 2013-10-06T11:00:00.000Z
 lastmod: 2021-07-31T12:31:01+01:00
-
-
+category: ""
+tags:
+    - "Linux"
+    - "Automation"
+    - "Infrastructure as Code"
 cover:
     image: "/img/2013-10-06_saltstack-on-centos-6.x_0.png" 
 images:
  - "/img/2013-10-06_saltstack-on-centos-6.x_0.png"
-
-
 aliases:
 - "/saltstack-on-centos-6-x-b76a26a10a90"
 

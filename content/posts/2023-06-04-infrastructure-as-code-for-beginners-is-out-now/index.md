@@ -10,7 +10,14 @@ cover:
     relative: true
 tags:
   - "Book"
-  - "Authors"
+  - "Author"
+  - "Life"
+  - "Infrastructure as Code"
+  - "Terrform"
+  - "Ansible"
+  - "AWS"
+  - "Azure"
+  - "GitHub"
 ---
 
 I am pleased to announce that my latest book, "Infrastructure as Code for Beginners," is now available for purchase.

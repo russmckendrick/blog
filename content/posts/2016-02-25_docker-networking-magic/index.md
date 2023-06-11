@@ -5,9 +5,7 @@ date: 2016-02-25T17:58:14.000Z
 lastmod: 2021-07-31T12:33:44+01:00
 
 tags:
- - Tech
  - Docker
- - Network
 
 cover:
     image: "/img/2016-02-25_docker-networking-magic_0.png" 

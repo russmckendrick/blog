@@ -7,9 +7,7 @@ lastmod: 2021-07-31T12:34:59+01:00
 tags:
  - DevOps
  - Ansible
- - Awx
- - Centos
- - Vagrant
+ - "Linux"
 
 cover:
     image: "/img/2017-09-24_ansible-awx_0.png" 

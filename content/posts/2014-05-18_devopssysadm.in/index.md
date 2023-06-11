@@ -5,8 +5,7 @@ date: 2014-05-18T11:00:00.000Z
 lastmod: 2021-07-31T12:31:27+01:00
 
 tags:
- - Blog
- - DevOps
+    - "Blog"
 
 cover:
     image: "/img/2014-05-18_devopssysadm.in_0.png" 

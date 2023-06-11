@@ -8,8 +8,7 @@ description: ""
 
 subtitle: ""
 tags:
- - Zsh
- - Macos
+ - macOS
 
 cover:
     image: "/img/2019-06-15_moving-to-zsh_0.jpeg" 

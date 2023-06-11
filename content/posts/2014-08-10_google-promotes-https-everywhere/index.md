@@ -3,20 +3,13 @@ title: "Google promotes HTTPS everywhere"
 author: "Russ Mckendrick"
 date: 2014-08-10T11:00:00.000Z
 lastmod: 2021-07-31T12:31:51+01:00
-
 tags:
- - Tech
- - Apache
- - Centos
- - Nginx
- - Ssl
-
+    - "Web"
+    - "Tools"
 cover:
     image: "/img/2014-08-10_google-promotes-https-everywhere_0.png" 
 images:
  - "/img/2014-08-10_google-promotes-https-everywhere_0.png"
-
-
 aliases:
 - "/google-promotes-https-everywhere-e5a77c35bb64"
 

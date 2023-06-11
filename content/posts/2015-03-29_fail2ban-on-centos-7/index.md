@@ -5,9 +5,8 @@ date: 2015-03-29T12:23:28.000Z
 lastmod: 2021-07-31T12:32:54+01:00
 
 tags:
- - Tech
- - Centos
- - Security
+    - "Linux"
+    - "Security"
 
 cover:
     image: "/img/2015-03-29_fail2ban-on-centos-7_0.png" 

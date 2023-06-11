@@ -5,10 +5,8 @@ date: 2015-07-26T11:00:00.000Z
 lastmod: 2021-07-31T12:33:20+01:00
 
 tags:
- - Tech
- - Packer
- - Vagrant
-
+ - "Tools"
+ - "Packer"
 cover:
     image: "/img/2015-07-26_building-vagrant-boxes-with-packer-in-atlas_0.png" 
 images:

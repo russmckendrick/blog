@@ -7,8 +7,7 @@ lastmod: 2021-07-31T12:34:42+01:00
 tags:
  - Docker
  - DevOps
- - Linux
- - Elasticsearch
+ - Tools
 
 cover:
     image: "/img/2017-01-02_trying-out-elastic-beats_0.png" 

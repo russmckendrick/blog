@@ -9,10 +9,10 @@ cover:
     image: "cover.png"
     relative: true
 tags:
-  - "macos"
-  - "arm64"
-  - "azure"
-  - "bicep"
+  - "macOS"
+  - "DevOps"
+  - "Azure"
+  - "Infrastructure as Code"
 ---
 
 Probably a little late to the party with this one, but I have recently upgraded to an M1 Pro MacBook Pro, for the most part, the problems with moving to arm64 are not as bad as I thought - most are annoying little things.

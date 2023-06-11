@@ -3,11 +3,9 @@ title: "Yet More Docker"
 author: "Russ Mckendrick"
 date: 2014-05-04T11:00:00.000Z
 lastmod: 2021-07-31T12:31:21+01:00
-
 tags:
- - Tech
- - Docker
-
+    - "Docker"
+    - "Tools"
 cover:
     image: "/img/2014-05-04_yet-more-docker_0.png" 
 images:

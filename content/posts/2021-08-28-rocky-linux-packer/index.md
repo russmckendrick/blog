@@ -9,11 +9,9 @@ cover:
     image: "cover.png"
     relative: true
 tags:
-  - "packer"
-  - "Rocky Linux"
-  - "CentOS"
+  - "Packer"
   - "Linux"
-  - "Vagrant"
+  - "Tools"
 
 ---
 

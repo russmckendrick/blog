@@ -5,8 +5,7 @@ date: 2018-01-28T16:07:18.553Z
 lastmod: 2021-07-31T12:35:10+01:00
 tags:
  - Docker
- - Docker Store
- - Containers
+ - Tools
 cover:
     image: "/img/2018-01-28_shopping-for-containers_0.png" 
 images:

@@ -9,8 +9,7 @@ description: ""
 subtitle: ""
 tags:
  - Azure
- - Deploy
- - Button
+ - Automation
 
 cover:
     image: "/img/2019-09-14_adding-a-deploy-to-azure-button_0.jpeg" 

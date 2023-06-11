@@ -5,9 +5,9 @@ date: 2015-12-20T18:10:26.000Z
 lastmod: 2021-07-31T12:33:38+01:00
 
 tags:
- - Tech
- - Centos
- - Jenkins
+ - "Linux"
+ - Automation
+ - DevOps
 
 cover:
     image: "/img/2015-12-20_jenkins_0.png" 

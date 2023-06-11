@@ -3,12 +3,9 @@ title: "Installing Cobbler on CentOS 6.x"
 author: "Russ Mckendrick"
 date: 2013-10-13T11:00:00.000Z
 lastmod: 2021-07-31T12:31:02+01:00
-
 tags:
- - Tech
- - Centos
- - Shell
-
+    - "Linux"
+    - "Automation"
 cover:
     image: "/img/2013-10-13_installing-cobbler-on-centos-6.x_0.png" 
 images:

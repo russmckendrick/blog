@@ -5,9 +5,10 @@ date: 2015-02-02T12:00:00.000Z
 lastmod: 2021-07-31T12:32:35+01:00
 
 tags:
- - Tech
- - AWS
- - Packer
+    - "AWS"
+    - "Automation"
+    - "Infrastructure as Code"
+    - "DevOps"
 
 cover:
     image: "/img/2015-02-02_production-ready-images-with-packer_0.png" 

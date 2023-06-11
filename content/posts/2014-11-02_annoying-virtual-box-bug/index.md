@@ -5,8 +5,8 @@ date: 2014-11-02T12:43:13.000Z
 lastmod: 2021-07-31T12:32:08+01:00
 
 tags:
- - Tech
- - Virtualbox
+    - "macOS"
+    - "Tools"
 
 cover:
     image: "/img/2014-11-02_annoying-virtual-box-bug_0.png" 

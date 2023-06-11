@@ -3,16 +3,13 @@ title: "One Year On"
 author: "Russ Mckendrick"
 date: 2014-08-31T11:00:00.000Z
 lastmod: 2021-07-31T12:31:59+01:00
-
 tags:
- - Blog
-
+    - "Blog"
+    - "Life"
 cover:
     image: "/img/2014-08-31_one-year-on_0.png" 
 images:
  - "/img/2014-08-31_one-year-on_0.png"
-
-
 aliases:
 - "/one-year-on-1b3a630b8254"
 

@@ -5,9 +5,9 @@ date: 2014-12-02T12:00:00.000Z
 lastmod: 2021-07-31T12:32:21+01:00
 
 tags:
- - Blog
- - Conference
- - Puppet
+    - "Conference"
+    - "Automation"
+    - "DevOps"
 
 cover:
     image: "/img/2014-12-02_puppetcamp-london-2014_0.png" 

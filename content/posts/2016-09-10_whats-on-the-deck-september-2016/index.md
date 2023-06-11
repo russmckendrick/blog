@@ -5,8 +5,8 @@ date: 2016-09-10T20:08:25.000Z
 lastmod: 2021-07-31T12:34:10+01:00
 
 tags:
- - Blog
- - Tunes
+ - Life
+ - Vinyl
 
 cover:
     image: "/img/2016-09-10_whats-on-the-deck-september-2016_0.png" 

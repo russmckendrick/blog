@@ -5,10 +5,9 @@ date: 2014-07-27T11:00:00.000Z
 lastmod: 2021-07-31T12:31:44+01:00
 
 tags:
- - Tech
- - Mac
- - Shell
- - Tools
+    - "macOS"
+    - "Tools"
+
 
 cover:
     image: "/img/2014-07-27_whats-in-the-toolbox_0.png" 

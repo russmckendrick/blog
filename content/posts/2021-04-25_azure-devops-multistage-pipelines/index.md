@@ -12,10 +12,10 @@ keywords:
     - Azure
 tags:
     - Azure
-    - Azure Devops
-    - Pipeline
     - DevOps
-    - Docker
+    - Infrastructure as Code
+    - Cloud
+    - Automation
 
 ---
 

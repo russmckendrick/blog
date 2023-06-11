@@ -5,9 +5,8 @@ date: 2015-04-19T11:00:00.000Z
 lastmod: 2021-07-31T12:33:01+01:00
 
 tags:
- - Tech
- - Centos
- - Elk
+ - "Tools"
+ - "Linux"
 
 cover:
     image: "/img/2015-04-19_installing-an-elk-stack-on-centos-7_0.png" 
