@@ -1,4 +1,4 @@
-button {
+.custom-svg-button {
   font-size: 0.875em;
   font-weight: bold;
   line-height: 1;
@@ -16,14 +16,14 @@ button {
   }
 }
 
-.svg-icon {
+.custom-svg-icon {
   position: relative;
   top: .125em;
   flex-shrink: 0;
   height: 1em;
   width: 1em;
   fill: currentColor;
- transition: fill .3s;
+  transition: fill .3s;
 }
 
 .visually-hidden {
@@ -34,7 +34,6 @@ button {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
 }
-
 
 @keyframes pulse {
 	0% {
