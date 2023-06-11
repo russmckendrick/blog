@@ -16,17 +16,17 @@ Apart from my work, I have written and contributed to twelve books primarily rev
 
 ## Publications 📚
 
+All books were published by [Packt Publishing](https://www.packtpub.com/), except for "[Monitoring and Management With Docker and Containers](https://thenewstack.io/identifying-collecting-container-data/)", which was published by [The New Stack](https://thenewstack.io/).
+
 | {{< img src="images/02.jpg" alt="Monitoring Docker" width="300" zoom="false" link="https://www.packtpub.com/virtualization-and-cloud/monitoring-docker/" >}} | {{< img src="images/01.png" alt="Monitoring and Management With Docker and Containers" width="300" zoom="false" link="https://thenewstack.io/ebooks/docker-and-containers/monitoring-management-docker-containers/" >}} | {{< img src="images/03.jpg" alt="Extending Docker" width="300" zoom="false" link="https://www.packtpub.com/networking-and-servers/extending-docker/" >}} |
 |:-------------------------:|:-------------------------:|:-------------------------:|
 | {{< img src="images/04.jpg" alt="Docker Bootcamp" width="300" zoom="false" >}} | {{< img src="images/05.jpg" alt="Mastering Docker - Second Edition" width="300" zoom="false" >}} | {{< img src="images/06.jpg" alt="Kubernetes for Serverless Applications" width="300" zoom="false" link="https://www.packtpub.com/product/kubernetes-for-serverless-applications/9781788620376" >}} |
 | {{< img src="images/07.png" alt="Learn Ansible" width="300" zoom="false" link="https://www.packtpub.com/virtualization-and-cloud/learn-ansible/" >}} | {{< img src="images/08.jpg" alt="Mastering Docker - Third Edition" width="300" zoom="false" >}} | {{< img src="images/09.png" alt="Docker High Performance" width="300" zoom="false" link="https://www.packtpub.com/networking-and-servers/docker-high-performance-second-edition/" >}} |
 | {{< img src="images/10.jpg" alt="Mastering Docker - Forth Edition" width="300" zoom="false" link="https://www.packtpub.com/gb/cloud-networking/mastering-docker-fourth-edition/" >}} | {{< img src="images/11.png" alt="The Kubernetes Bible" width="300" zoom="false" link="https://www.packtpub.com/product/the-kubernetes-bible/" >}} | {{< img src="images/12.jpg" alt="Infrastructure as Code for Beginners" width="300" zoom="false" link="https://www.packtpub.com/product/infrastructure-as-code-for-beginners/9781837631636" >}} |
 
-All books were published by [Packt Publishing](https://www.packtpub.com/), except for "[Monitoring and Management With Docker and Containers](https://thenewstack.io/identifying-collecting-container-data/)", which was published by [The New Stack](https://thenewstack.io/).
-
 ## Contact me 📫
 
-Here is where can find me online ...
+Here is where you can find me online ...
 
 {{< center >}}
 {{< svg_button name="GitHub" textColor="white" bgColor="#181717" borderColor="#181717" url="https://github.com/russmckendrick" svgPath="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" >}}
