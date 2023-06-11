@@ -6,8 +6,6 @@ lastmod: 2021-07-31T12:34:45+01:00
 
 tags:
  - Tools
- - Personal
- - Blog
 
 cover:
     image: "/img/2017-01-05_day-to-day-tools_0.png" 

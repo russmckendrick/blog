@@ -5,10 +5,10 @@ date: 2015-07-19T15:13:10.000Z
 lastmod: 2021-07-31T12:33:16+01:00
 
 tags:
- - Tech
- - Azure
- - Cloud
- - Terraform
+ - "Infrastructure as Code"
+ - "Azure"
+ - "Cloud"
+ - "Terraform"
 
 cover:
     image: "/img/2015-07-19_terraform-azure_0.png" 

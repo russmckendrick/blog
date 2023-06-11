@@ -6,7 +6,9 @@ lastmod: 2021-07-31T12:34:56+01:00
 
 tags:
  - Docker
- - Books
+ - Book
+ - Life
+ - Author
 
 cover:
     image: "/img/2017-04-19_docker-bootcamp_0.png" 

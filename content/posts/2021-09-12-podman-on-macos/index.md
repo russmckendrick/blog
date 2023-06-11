@@ -12,7 +12,7 @@ tags:
   - "Docker"
   - "macOS"
   - "Podman"
-  - "Redhat"
+  - "Containers"
 ---
 
 Last weekend I posted about [Docker Desktop Alternatives for macOS](/2021/09/05/docker-desktop-alternatives-for-macos/), and it looks like I missed one as the week before [Podman](https://podman.io/) release version [v3.3.0](https://podman.io/releases/2021/08/31/podman-release-v3.3.0.html) which introduced support for macOS by allowing you to launch a Podman managed virtual machine.

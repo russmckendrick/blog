@@ -7,8 +7,6 @@ lastmod: 2021-07-31T12:34:39+01:00
 tags:
  - Docker
  - Kubernetes
- - Lab
- - Minikube
 
 cover:
     image: "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_0.png" 

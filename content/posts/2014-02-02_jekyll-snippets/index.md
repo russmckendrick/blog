@@ -4,8 +4,8 @@ author: "Russ Mckendrick"
 date: 2014-02-02T12:00:00.000Z
 lastmod: 2021-07-31T12:31:10+01:00
 tags:
- - Tech
- - Jekyll
+    - "Code"
+    - "Tools"
 cover:
     image: "/img/2014-02-02_jekyll-snippets_0.png" 
 images:

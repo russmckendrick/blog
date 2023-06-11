@@ -9,7 +9,7 @@ description: ""
 subtitle: ""
 tags:
  - Kubernetes
- - Digital Ocean
+ - Cloud
 
 cover:
     image: "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_0.jpg" 

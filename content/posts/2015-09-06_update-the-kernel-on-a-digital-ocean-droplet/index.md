@@ -4,6 +4,10 @@ author: "Russ Mckendrick"
 date: 2015-09-06T16:46:11.000Z
 lastmod: 2021-07-31T12:33:22+01:00
 
+tags:
+ - "Linux"
+ - "Cloud"
+ - "Security"
 
 cover:
     image: "/img/2015-09-06_update-the-kernel-on-a-digital-ocean-droplet_0.png" 

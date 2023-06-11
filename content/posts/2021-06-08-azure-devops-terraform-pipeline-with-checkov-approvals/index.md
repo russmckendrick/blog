@@ -12,10 +12,10 @@ aliases:
   - "/azure-devops-terraform-pipeline-with-checkov-approvals-7a68827b2bf3"
 tags:
   - "Terraform"
-  - "Azure Devops"
+  - "Devops"
   - "Azure"
-  - "Checkov"
-  - "Pipeline"
+  - "Security"
+  - "Infrastructure as Code"
 ---
 
 It’s been just over a year since I [first posted about the Azure DevOps Terraform Pipeline I used to use](https://mediaglasses.blog/azure-devops-terraform-pipeline-e50f1721ea1), I say used to use, because that pipeline is now a little outdated. This posts covers the updated Pipeline I am starting to deploy along side my Terraform code.

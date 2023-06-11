@@ -5,11 +5,10 @@ date: 2016-09-11T15:45:16.000Z
 lastmod: 2021-07-31T12:34:12+01:00
 
 tags:
- - Tech
+ - Infrastructure As Code
  - Ansible
  - AWS
  - Cloud
- - Featured
 
 cover:
     image: "/img/2016-09-11_amazon-web-services-with-ansible_0.png" 

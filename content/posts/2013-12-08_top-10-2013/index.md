@@ -4,9 +4,8 @@ author: "Russ Mckendrick"
 date: 2013-12-08T12:00:00.000Z
 lastmod: 2021-07-31T12:31:06+01:00
 tags:
- - Blog
- - Tunes
-
+    - "Life"
+    - "Vinyl"
 cover:
     image: "/img/2013-12-08_top-10-2013_0.png" 
 images:

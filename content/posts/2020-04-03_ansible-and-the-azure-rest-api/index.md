@@ -10,6 +10,8 @@ aliases:
 tags:
  - Ansible
  - Azure
+ - Infrastructure as Code
+ - Automation
 ---
 
 Over the last few months I have been doing more and more work with Ansible to manage end to end deployments in Azure. For the most part Ansible’s core set of Azure modules work with no problems and more than do the job.

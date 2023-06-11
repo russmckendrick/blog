@@ -3,19 +3,14 @@ title: "Puppet Server & Client Installation CentOS 6.x"
 author: "Russ Mckendrick"
 date: 2013-08-31T11:00:00.000Z
 lastmod: 2021-07-31T12:30:58+01:00
-
 tags:
- - Tech
- - Centos
- - Puppet
- - Shell
-
+    - "Linux"
+    - "Automation"
+    - "Infrastructure as Code"
 cover:
     image: "/img/2013-08-31_puppet-server-client-installation-centos-6.x_0.png" 
 images:
  - "/img/2013-08-31_puppet-server-client-installation-centos-6.x_0.png"
-
-
 aliases:
 - "/puppet-server-client-installation-centos-6-x-c8145dacdbd1"
 

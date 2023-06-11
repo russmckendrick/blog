@@ -4,9 +4,8 @@ author: "Russ Mckendrick"
 date: 2014-02-15T12:00:00.000Z
 lastmod: 2021-07-31T12:31:13+01:00
 tags:
- - Tech
- - Centos
- - Docker
+    - "Docker"
+    - "Tools"
 cover:
     image: "/img/2014-02-15_docker_0.png" 
 images:

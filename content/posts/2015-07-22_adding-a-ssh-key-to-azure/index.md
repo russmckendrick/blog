@@ -5,9 +5,8 @@ date: 2015-07-22T18:49:00.000Z
 lastmod: 2021-07-31T12:33:18+01:00
 
 tags:
- - Tech
- - Azure
- - Security
+ - "Azure"
+ - "Security"
 
 cover:
     image: "/img/2015-07-22_adding-a-ssh-key-to-azure_0.png" 

@@ -5,11 +5,8 @@ date: 2015-05-23T11:00:00.000Z
 lastmod: 2021-07-31T12:33:03+01:00
 
 tags:
- - Tech
- - Centos
- - Docker
- - Openshift
- - Redhat
+ - "Linux"
+ - "Docker"
 
 cover:
     image: "/img/2015-05-23_openshift-origin-v3_0.png" 

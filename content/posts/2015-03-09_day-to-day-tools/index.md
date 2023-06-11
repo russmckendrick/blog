@@ -5,12 +5,9 @@ date: 2015-03-09T12:00:00.000Z
 lastmod: 2021-07-31T12:32:43+01:00
 
 tags:
- - Tech
- - Cloud
- - Mac
- - Shell
- - Tools
-
+    - "Cloud"
+    - "Tools"
+    - "macOS"
 cover:
     image: "/img/2015-03-09_day-to-day-tools_0.png" 
 images:

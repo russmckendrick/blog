@@ -5,11 +5,8 @@ date: 2014-07-12T11:00:00.000Z
 lastmod: 2021-07-31T12:31:36+01:00
 
 tags:
- - Tech
- - Centos
- - Digital Ocean
- - El7
-
+    - "Linux"
+    - "Cloud"
 cover:
     image: "/img/2014-07-12_first-play-with-centos-7.0_0.png" 
 images:

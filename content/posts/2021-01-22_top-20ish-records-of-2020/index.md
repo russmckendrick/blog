@@ -12,8 +12,8 @@ aliases:
 keywords:
     - Records
 tags:
-    - Records
-    - Playlist
+    - Vinyl
+    - Life
 
 ---
 

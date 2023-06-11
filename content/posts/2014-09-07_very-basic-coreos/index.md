@@ -5,10 +5,8 @@ date: 2014-09-07T12:34:12.000Z
 lastmod: 2021-07-31T12:32:04+01:00
 
 tags:
- - Tech
- - Coreos
- - Digital Ocean
- - Docker
+    - "Docker"
+    - "Tools"
 
 cover:
     image: "/img/2014-09-07_very-basic-coreos_0.png" 

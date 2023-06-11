@@ -6,10 +6,7 @@ lastmod: 2021-07-31T12:34:32+01:00
 
 tags:
  - Docker
- - Infinit
- - Ubuntu
- - Storage
- - Distributed
+ - Tools
 
 cover:
     image: "/img/2016-12-27_playing-with-infinit-docker_0.png" 

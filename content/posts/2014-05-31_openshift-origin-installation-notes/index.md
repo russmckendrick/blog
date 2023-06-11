@@ -3,12 +3,11 @@ title: "OpenShift Origin installation notes"
 author: "Russ Mckendrick"
 date: 2014-05-31T11:00:00.000Z
 lastmod: 2021-07-31T12:31:34+01:00
-
 tags:
- - Tech
- - Centos
- - DevOps
- - Openshift
+    - "Linux"
+    - "Automation"
+    - "DevOps"
+    - "Docker"
 
 cover:
     image: "/img/2014-05-31_openshift-origin-installation-notes_0.png" 

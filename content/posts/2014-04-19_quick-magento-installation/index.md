@@ -3,11 +3,9 @@ title: "Quick Magento Installation"
 author: "Russ Mckendrick"
 date: 2014-04-19T11:00:00.000Z
 lastmod: 2021-07-31T12:31:17+01:00
-
 tags:
- - Tech
- - Magento
- - Shell
+    - "Code"
+    - "Tools"
 
 cover:
     image: "/img/2014-04-19_quick-magento-installation_0.png" 

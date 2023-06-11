@@ -10,7 +10,7 @@ aliases:
 tags:
  - Github
  - Terraform
- - Iac
+ - Infrastructure as Code
 
 ---
 

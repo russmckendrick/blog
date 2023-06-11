@@ -5,15 +5,9 @@ date: 2014-07-27T11:00:00.000Z
 lastmod: 2021-07-31T12:31:42+01:00
 
 tags:
- - Tech
- - Centos
- - Docker
- - El7
- - Puppet
-
-
-
-
+    - "Linux"
+    - "Automation"
+    - "Docker"
 aliases:
 - "/upgrading-my-servers-to-centos-7-b38ea4c0571f"
 

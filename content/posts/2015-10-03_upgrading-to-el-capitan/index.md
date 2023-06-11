@@ -5,8 +5,7 @@ date: 2015-10-03T11:57:56.000Z
 lastmod: 2021-07-31T12:33:24+01:00
 
 tags:
- - Tech
- - Mac
+ - macOS
 
 cover:
     image: "/img/2015-10-03_upgrading-to-el-capitan_0.png" 

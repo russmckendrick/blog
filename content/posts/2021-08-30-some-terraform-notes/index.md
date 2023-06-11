@@ -10,7 +10,9 @@ cover:
     relative: true
 tags:
   - "Terraform"
-  - "Notes"
+  - "Infrastructure as Code"
+  - "Automation"
+  - "Azure"
 ---
 
 I have just finished working on a few large Terraform Azure deployments, thought I would stick a few notes down in a blog post so that I can refer to them in the future as well as hopefully being useful to others.

@@ -5,9 +5,9 @@ date: 2015-12-15T18:15:14.000Z
 lastmod: 2021-07-31T12:33:35+01:00
 
 tags:
- - Blog
- - Book
- - Docker
+ - "Blog"
+ - "Book"
+ - "Docker"
 
 cover:
     image: "/img/2015-12-15_monitoring-docker-released_0.png" 

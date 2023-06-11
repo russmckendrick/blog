@@ -5,10 +5,9 @@ date: 2016-05-07T16:51:30.000Z
 lastmod: 2021-07-31T12:33:49+01:00
 
 tags:
- - Blog
- - Book
- - Docker
- - Featured
+ - "Author"
+ - "Book"
+ - "Docker"
 
 cover:
     image: "/img/2016-05-07_extending-docker-now-available-to-preorder_0.png" 

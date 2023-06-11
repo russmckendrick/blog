@@ -5,10 +5,7 @@ date: 2015-05-24T11:00:00.000Z
 lastmod: 2021-07-31T12:33:06+01:00
 
 tags:
- - Tech
- - Centos
- - Openstack
- - Vagrant
+ - "Linux"
 
 cover:
     image: "/img/2015-05-24_quick-openstack-kilo-installation_0.png" 

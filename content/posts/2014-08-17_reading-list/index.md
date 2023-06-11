@@ -5,9 +5,8 @@ date: 2014-08-17T11:00:00.000Z
 lastmod: 2021-07-31T12:31:53+01:00
 
 tags:
- - Blog
- - Pocket
- - Reading
+    - "Web"
+    - "Blog"
 
 cover:
     image: "/img/2014-08-17_reading-list_0.png" 

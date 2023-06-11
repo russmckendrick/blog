@@ -4,9 +4,8 @@ author: "Russ Mckendrick"
 date: 2013-11-17T12:00:00.000Z
 lastmod: 2021-07-31T12:31:04+01:00
 tags:
- - Tech
- - Mac
- - Tools
+    - "macOS"
+    - "Tools"
 aliases:
 - "/stuff-i-use-2596d0593b6a"
 

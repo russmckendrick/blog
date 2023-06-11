@@ -5,8 +5,8 @@ date: 2015-02-01T12:00:00.000Z
 lastmod: 2021-07-31T12:32:33+01:00
 
 tags:
- - Blog
- - Cloud
+    - "Cloud"
+    - "Blog"
 
 cover:
     image: "/img/2015-02-01_blah-blah-blah-cloud_0.png" 

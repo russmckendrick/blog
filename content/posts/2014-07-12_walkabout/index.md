@@ -3,7 +3,11 @@ title: "Walkabout"
 author: "Russ Mckendrick"
 date: 2014-07-12T11:00:00.000Z
 lastmod: 2021-07-31T12:31:38+01:00
-
+tags:
+    - "Life"
+    - "Vinyl"
+    - "Docker"
+    - "Linux"
 
 cover:
     image: "/img/2014-07-12_walkabout_0.png" 

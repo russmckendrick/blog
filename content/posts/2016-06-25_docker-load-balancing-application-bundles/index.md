@@ -5,10 +5,7 @@ date: 2016-06-25T18:30:16.000Z
 lastmod: 2021-07-31T12:33:58+01:00
 
 tags:
- - Tech
  - Docker
- - Mac
- - Swarm
 
 cover:
     image: "/img/2016-06-25_docker-load-balancing-application-bundles_0.png" 

@@ -11,6 +11,8 @@ tags:
  - Ansible
  - DevOps
  - Azure
+ - Infrastructure as Code
+ - Automation
 
 ---
 

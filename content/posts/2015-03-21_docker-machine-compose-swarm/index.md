@@ -5,7 +5,6 @@ date: 2015-03-21T16:16:25.000Z
 lastmod: 2021-07-31T12:32:49+01:00
 
 tags:
- - Tech
  - Docker
 
 cover:

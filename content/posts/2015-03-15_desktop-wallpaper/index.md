@@ -5,8 +5,8 @@ date: 2015-03-15T12:00:00.000Z
 lastmod: 2021-07-31T12:32:45+01:00
 
 tags:
- - Blog
- - Mac
+    - "macOS"
+
 
 cover:
     image: "/img/2015-03-15_desktop-wallpaper_0.png" 

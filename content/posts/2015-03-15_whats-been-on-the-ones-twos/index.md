@@ -5,9 +5,8 @@ date: 2015-03-15T12:00:00.000Z
 lastmod: 2021-07-31T12:32:47+01:00
 
 tags:
- - Blog
- - Tunes
-
+    - "Vinyl"
+    - "Life"
 cover:
     image: "/img/2015-03-15_whats-been-on-the-ones-twos_0.png" 
 images:

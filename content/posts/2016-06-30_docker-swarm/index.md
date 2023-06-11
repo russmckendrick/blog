@@ -5,11 +5,7 @@ date: 2016-06-30T18:30:00.000Z
 lastmod: 2021-07-31T12:34:04+01:00
 
 tags:
- - Tech
  - Docker
- - Featured
- - Mac
- - Swarm
 
 cover:
     image: "/img/2016-06-30_docker-swarm_0.png" 

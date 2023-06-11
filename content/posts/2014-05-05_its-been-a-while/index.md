@@ -5,8 +5,9 @@ date: 2014-05-05T11:00:00.000Z
 lastmod: 2021-07-31T12:31:23+01:00
 
 tags:
- - Blog
- - Tunes
+    - "Life"
+    - "Vinyl"
+
 
 cover:
     image: "/img/2014-05-05_its-been-a-while_0.png" 

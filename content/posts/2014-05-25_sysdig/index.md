@@ -3,13 +3,11 @@ title: "Sysdig"
 author: "Russ Mckendrick"
 date: 2014-05-25T11:00:00.000Z
 lastmod: 2021-07-31T12:31:29+01:00
-
 tags:
- - Tech
- - Centos
- - Shell
- - Sysdig
-
+    - "Linux"
+    - "Tools"
+    - "Security"
+    - "DevOps"
 cover:
     image: "/img/2014-05-25_sysdig_0.png" 
 images:

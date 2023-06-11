@@ -5,9 +5,8 @@ date: 2015-11-15T18:41:20.000Z
 lastmod: 2021-07-31T12:33:31+01:00
 
 tags:
- - Tech
- - AWS
- - Puppet
+ - "Automation"
+ - "AWS"
 
 cover:
     image: "/img/2015-11-15_puppet-enterprise-aws-security-groups_0.png" 

@@ -5,12 +5,8 @@ date: 2014-08-31T12:13:48.000Z
 lastmod: 2021-07-31T12:31:57+01:00
 
 tags:
- - Tech
- - Centos
- - Docker
- - Fig
- - Nginx
-
+    - "Docker"
+    - "Tools"
 cover:
     image: "/img/2014-08-31_docker-fig-nginx-reverse-proxies-and-centos-7_0.png" 
 images:

@@ -5,8 +5,8 @@ date: 2015-10-11T17:43:15.000Z
 lastmod: 2021-07-31T12:33:28+01:00
 
 tags:
- - Blog
- - Grunt
+    - "Code"
+    - "Tools"
 
 cover:
     image: "/img/2015-10-11_more-site-updates_0.png" 

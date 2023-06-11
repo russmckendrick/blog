@@ -6,8 +6,7 @@ lastmod: 2021-07-31T12:34:30+01:00
 
 tags:
  - AWS
- - Cloud Computing
- - Amazon Lightsail
+ - Cloud
 
 cover:
     image: "/img/2016-12-18_thoughts-on-amazon-lightsail_0.png" 

@@ -5,9 +5,8 @@ date: 2014-08-25T12:09:00.000Z
 lastmod: 2021-07-31T12:31:55+01:00
 
 tags:
- - Tech
- - Centos
- - Docker
+    - "Docker"
+    - "Tools"
 
 cover:
     image: "/img/2014-08-25_connecting-to-docker-containers_0.png" 

@@ -8,8 +8,6 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
-tags:
-  - "post"
 ---
 
 # Gallery

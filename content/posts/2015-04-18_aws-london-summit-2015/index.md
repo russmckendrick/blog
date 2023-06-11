@@ -5,9 +5,8 @@ date: 2015-04-18T11:00:00.000Z
 lastmod: 2021-07-31T12:32:59+01:00
 
 tags:
- - Tech
- - AWS
- - Conference
+ - "AWS"
+ - "Conference"
 
 cover:
     image: "/img/2015-04-18_aws-london-summit-2015_0.png" 

@@ -9,6 +9,7 @@ description: ""
 subtitle: ""
 tags:
  - Terraform
+ - Infrastructure as Code
 
 cover:
     image: "/img/2019-02-09_terraform-quirks_0.png" 

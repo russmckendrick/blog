@@ -5,10 +5,8 @@ date: 2016-11-19T13:32:31.000Z
 lastmod: 2021-07-31T12:34:22+01:00
 
 tags:
- - Tech
  - Ansible
  - AWS
- - Redhat
 
 cover:
     image: "/img/2016-11-19_annoying-ansible-quirk_0.gif" 

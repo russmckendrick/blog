@@ -3,22 +3,16 @@ title: "Dotfiles"
 author: "Russ Mckendrick"
 date: 2014-08-10T11:00:00.000Z
 lastmod: 2021-07-31T12:31:49+01:00
-
 tags:
- - Tech
- - Github
- - Mac
-
+    - "macOS"
+    - "Tools"
 cover:
     image: "/img/2014-08-10_dotfiles_0.png" 
 images:
  - "/img/2014-08-10_dotfiles_0.png"
  - "/img/2014-08-10_dotfiles_1.png"
-
-
 aliases:
 - "/dotfiles-4b896a743118"
-
 ---
 
 For the last few years I have been grabbing some we [documented dotfiles from GitHub](https://github.com/search?o=desc&q=dotfiles&ref=cmdform&s=stars&type=Repositories) but most of them have either ended up reconfigured my Mac to the point of it being unrecognisable or they have just been a collection of useful aliases. The I came across [Bashstrap](https://github.com/barryclark/bashstrap), it was close enough to what I wanted so I [forked it](https://github.com/russmckendrick/dotfiles) ….

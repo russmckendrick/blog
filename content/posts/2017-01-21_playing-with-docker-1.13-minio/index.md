@@ -7,9 +7,6 @@ lastmod: 2021-07-31T12:34:50+01:00
 tags:
  - Docker
  - DevOps
- - Minio
- - Cloud Storage
- - Docker Swarm
 
 cover:
     image: "/img/2017-01-21_playing-with-docker-1.13-minio_0.png" 

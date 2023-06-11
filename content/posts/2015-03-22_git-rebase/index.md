@@ -5,11 +5,9 @@ date: 2015-03-22T12:00:00.000Z
 lastmod: 2021-07-31T12:32:52+01:00
 
 tags:
- - Tech
- - Blog
- - Ghost
- - Git
- - Github
+    - "Tools"
+    - "Code"
+    - "GitHub"
 
 cover:
     image: "/img/2015-03-22_git-rebase_0.png" 

@@ -7,9 +7,7 @@ lastmod: 2021-07-31T12:35:02+01:00
 tags:
  - Docker
  - Kubernetes
- - Docker For Mac
- - Mac
- - Containers
+ - macOS
 
 cover:
     image: "/img/2018-01-06_docker-kubernetes_0.png" 

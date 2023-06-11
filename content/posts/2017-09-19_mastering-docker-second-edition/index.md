@@ -4,10 +4,10 @@ author: "Russ Mckendrick"
 date: 2017-09-19T11:44:59.044Z
 lastmod: 2021-07-31T12:34:58+01:00
 tags:
- - Books
+ - Book
  - Docker
- - Authors
- - Packt
+ - Author
+ - Life
 cover:
     image: "/img/2017-09-19_mastering-docker-second-edition_0.png" 
 images:

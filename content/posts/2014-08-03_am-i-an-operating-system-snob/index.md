@@ -5,11 +5,8 @@ date: 2014-08-03T11:00:00.000Z
 lastmod: 2021-07-31T12:31:47+01:00
 
 tags:
- - Tech
- - Centos
- - Fedora
- - Ubuntu
-
+    - "Linux"
+    - "Ubuntu"
 cover:
     image: "/img/2014-08-03_am-i-an-operating-system-snob_0.png" 
 images:

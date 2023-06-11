@@ -29,6 +29,9 @@ images:
  - "/img/2018-01-28_playing-with-rancher-2.0_20.png"
 aliases:
 - "/playing-with-rancher-2-0-58830337acfd"
+tags:
+    - Kubernetes
+    - Cloud
 
 ---
 

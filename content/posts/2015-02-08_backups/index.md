@@ -5,10 +5,7 @@ date: 2015-02-08T12:00:00.000Z
 lastmod: 2021-07-31T12:32:37+01:00
 
 tags:
- - Tech
- - Backups
- - Mac
- - Server
+    - "macOS"
 
 cover:
     image: "/img/2015-02-08_backups_0.png" 

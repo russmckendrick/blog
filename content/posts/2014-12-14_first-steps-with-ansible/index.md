@@ -5,12 +5,11 @@ date: 2014-12-14T12:00:00.000Z
 lastmod: 2021-07-31T12:32:30+01:00
 
 tags:
- - Tech
- - Ansible
- - AWS
- - Centos
- - Shell
-
+    - "Linux"
+    - "Automation"
+    - "Infrastructure as Code"
+    - "DevOps"
+    - "Ansible"
 cover:
     image: "/img/2014-12-14_first-steps-with-ansible_0.png" 
 images:

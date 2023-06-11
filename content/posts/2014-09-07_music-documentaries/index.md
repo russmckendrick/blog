@@ -5,8 +5,9 @@ date: 2014-09-07T11:00:00.000Z
 lastmod: 2021-07-31T12:32:02+01:00
 
 tags:
- - Blog
- - Tunes
+    - "Life"
+    - "Vinyl"
+
 
 cover:
     image: "/img/2014-09-07_music-documentaries_0.png" 

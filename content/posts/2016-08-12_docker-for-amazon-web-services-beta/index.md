@@ -5,10 +5,9 @@ date: 2016-08-12T11:30:31.000Z
 lastmod: 2021-07-31T12:34:06+01:00
 
 tags:
- - Tech
+ - Cloud
  - AWS
  - Docker
- - Swarm
 
 cover:
     image: "/img/2016-08-12_docker-for-amazon-web-services-beta_0.png" 

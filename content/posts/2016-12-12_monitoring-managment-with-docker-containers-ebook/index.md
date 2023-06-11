@@ -7,8 +7,8 @@ lastmod: 2021-07-31T12:34:26+01:00
 tags:
  - Docker
  - Book
- - Monitoring
-
+ - Author
+ - Life
 cover:
     image: "/img/2016-12-12_monitoring-managment-with-docker-containers-ebook_0.png" 
 images:
