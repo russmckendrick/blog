@@ -6,7 +6,7 @@ lastmod: 2021-07-31T12:31:47+01:00
 
 tags:
     - "Linux"
-    - "Ubuntu"
+    - "Tools"
 cover:
     image: "/img/2014-08-03_am-i-an-operating-system-snob_0.png" 
 images:
