@@ -13,7 +13,7 @@ tags:
   - "Author"
   - "Life"
   - "Infrastructure as Code"
-  - "Terrform"
+  - "Terraform"
   - "Ansible"
   - "AWS"
   - "Azure"
