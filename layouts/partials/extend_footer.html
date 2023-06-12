@@ -20,11 +20,13 @@
 </script>
 
 <script>
+  // medium-zoom.js
   const images = Array.from(document.querySelectorAll(".post-content img:not(.no-zoom)"));
   if (images.length > 0) {
     images.forEach(img => {
       mediumZoom(img, {
         margin: 0,
+        background: "rgba(0,0,0,0.8)",
         scrollOffset: 40,
         container: null,
         template: null
