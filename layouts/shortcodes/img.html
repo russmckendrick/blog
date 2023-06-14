@@ -1,3 +1,8 @@
+{{ if strings.HasPrefix (.Get "src") "http" }}
+  <!-- This is an external image URL, so use it directly. -->
+  <img src="{{ .Get "src" }}" alt="{{ with .Get "alt" }}{{.}}{{ else }}{{ end }}" loading="lazy">
+{{ else }}
+
 {{ $src := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) }}
 {{ $tinyw := default "500x" }}
 {{ $smallw := default "800x" }}
@@ -70,4 +75,6 @@
 
 {{ if .Get "link" }}
 </a>
+{{ end }}
+
 {{ end }}
