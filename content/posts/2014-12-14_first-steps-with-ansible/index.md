@@ -34,7 +34,7 @@ brew update
 brew install ansible
 ```
 
-… once install I used a CentOS 7 Vagrant box to work through a few [tutorials](http://docs.ansible.com/intro_getting_started.html) …
+… once install I used a CentOS 7 Vagrant box to work through a few [tutorials](https://docs.ansible.com/ansible/latest/getting_started/index.html) …
 
 ```
 russ @ Russs-iMac in ~/Desktop/ansible
@@ -95,7 +95,7 @@ default : ok=6 changed=5 unreachable=0 failed=0
 
 … like all first steps using a new orchestration tool I had installed & configured NTPD.
 
-The syntax itself isn’t too different from Puppet so it was easy to get the gist of what was going on. Once I had gotten my head around the basics I started on creating a [Playbook](http://docs.ansible.com/playbooks.html) which configures a VPC and launches an Elastic Load Balancer , here is the current work in progress …
+The syntax itself isn’t too different from Puppet so it was easy to get the gist of what was going on. Once I had gotten my head around the basics I started on creating a [Playbook](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) which configures a VPC and launches an Elastic Load Balancer , here is the current work in progress …
 
 ```
 - name: install ntp
