@@ -17,7 +17,8 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: 3.11
-        cache: 'pip'
+        cache: "pip"
+        cache-dependency-path: "generate_blog_post.txt"
 
     - name: "🦾 Install dependencies"
       run: pip install -r generate_blog_post.txt
