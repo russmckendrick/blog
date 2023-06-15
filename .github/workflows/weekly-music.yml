@@ -20,7 +20,7 @@ jobs:
         cache: 'pip'
 
     - name: "🦾 Install dependencies"
-      run: pip install -r requirements.txt
+      run: pip install -r generate_blog_post.txt
 
     - name: "🏃‍♂️ Run the python script to generate blog post"
       env:
