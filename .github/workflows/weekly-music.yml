@@ -1,9 +1,9 @@
 name: Generate Music Blog Post
 
 on:
-  schedule:
-    # This will run every Sunday at 00:00 UTC.
-    - cron: '0 0 * * 0'
+    workflow_dispatch:
+        schedule:
+          - cron: "00 23 * * 0"
 
 jobs:
   build:
