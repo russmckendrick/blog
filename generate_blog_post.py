@@ -2,6 +2,8 @@ import os
 import requests
 import json
 import argparse
+import wikipediaapi
+import openai
 from datetime import datetime, timedelta
 from collections import Counter
 from jinja2 import Environment, FileSystemLoader
