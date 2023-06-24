@@ -95,7 +95,7 @@ def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
     album_info = {(artist, album): data for (artist, album), data in info.items()}
     top_artist = top_artists[0][0] if top_artists else 'No artist data'
     top_artist_summary = get_wiki_summary(top_artist)
-    intro = "Write a casual blog post which details what music I have been listening to this week. The blog post should be 900 words long."
+    intro = "Write a casual blog post which details what music I have been listening to this week. The blog post should be 900 words long. Feel free to use emjois and markdown formatting to make the post more interesting."
     other_artists = f"Other artists I listened to this week include {', '.join([artist for artist, count in top_artists[1:10]])}, mention these too the end, but don't repeat any inforation you have already given."
     ai_generated = "Also, mention that this part of the blog post was AI generated - this part of the post should be short"
     if top_artist_summary:
