@@ -20,7 +20,7 @@ summary: "This week's top artist was Easy Star All-Stars."
 {{< /gallery >}}
 
 {{< notice note >}}
-GPT had to say this about what I listened to last week; it is auto-generated and might not be 100% factual.
+This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
 {{< /notice >}}
 
 Hey there, music lovers! It's time for another installment of my weekly music roundup. This week, I dove deep into some groovy tunes that brought sunshine and good vibes to my days. From reggae to funk and everything in between, I had an eclectic mix that kept me dancing and singing along. So, let's jump right in and explore the sonic journey I embarked on this week!

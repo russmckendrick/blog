@@ -14,7 +14,7 @@ summary: "This week's top artist was Pet Shop Boys."
 {{< img src="https://www.mckendrick.rocks/artist/field-music/field-music.jpg" alt="Field music" >}}{{< /gallery >}}
 
 {{< notice note >}}
-GPT had to say this about what I listened to last week; it is auto-generated and might not be 100% factual.
+This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
 {{< /notice >}}
 
 Hey everyone! 👋 It's time for another weekly music update, where I share with you all the tunes that have been jamming through my headphones this past week. 🎧 So, without further ado, let's dive right in and discover the awesome artists that have been gracing my playlist!
