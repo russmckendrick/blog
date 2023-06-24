@@ -98,11 +98,12 @@ def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
     intro = "Write a casual blog post which details what music I have been listening to this week. The blog post should be 900 words long. Feel free to use emjois and markdown formatting to make the post more interesting."
     other_artists = f"Other artists I listened to this week include {', '.join([artist for artist, count in top_artists[1:10]])}, mention these too the end, but don't repeat any inforation you have already given."
     ai_generated = "Also, mention that this part of the blog post was AI generated - this part of the post should be short"
+    data_souce = "The data for this blog post was collected from Last.fm you can find my profile at https://www.last.fm/user/RussMckendrick."
     if top_artist_summary:
         top_artist_info = f"Information from Wikipedia on {top_artist}, who is the most played artist this week, says {top_artist_summary}."
     else:
         top_artist_info = f"The most played artist this week was {top_artist}."
-    gpt3_prompt = f"{intro} {top_artist_info} {other_artists} {ai_generated}" # Construct the full prompt
+    gpt3_prompt = f"{intro} {top_artist_info} {other_artists} {data_souce} {ai_generated}" # Construct the full prompt
     gpt3_summary = get_gpt3_text(gpt3_prompt) # Generate the summary
     context = {
         'date': date_str_start,
