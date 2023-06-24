@@ -5,6 +5,10 @@ draft: false
 summary: "{{ summary }}"
 ---
 
+This is what GPT had to say about this weeks music selection it is auto generated and left here for posterity ...
+
+{{ gpt3_summary }}
+
 ## Top Artists (Week {{ week_number }})
 
 {% raw %}{{< gallery columns="4" >}}{% endraw %}

@@ -28,6 +28,7 @@ jobs:
         LASTFM_USER: "${{ secrets.LASTFM_USER }}"
         LASTFM_API_KEY: "${{ secrets.LASTFM_API_KEY }}"
         COLLECTION_URL: "${{ secrets.COLLECTION_URL }}"
+        OPENAI_KEY: "${{ secrets.OPENAI_KEY }}"
       run: python generate_blog_post.py
 
     - name: "🚨 Create Pull Request"
