@@ -5,12 +5,6 @@ draft: false
 summary: "{{ summary }}"
 ---
 
-This is what GPT had to say about this weeks music selection it is auto generated and left here for posterity ...
-
-{{ gpt3_summary }}
-
-## Top Artists (Week {{ week_number }})
-
 {% raw %}{{< gallery columns="4" >}}{% endraw %}
 {%- for artist, count in top_artists %}
 {% if artist_info.get(artist) and artist_info[artist].get('artist_image') -%}
@@ -18,6 +12,14 @@ This is what GPT had to say about this weeks music selection it is auto generate
 {%- endif -%}
 {%- endfor -%}
 {% raw %}{{< /gallery >}}{% endraw %}
+
+{% raw %}{{< notice info >}}{% endraw %}
+This is what GPT had to say about this weeks music selection it is auto generated and left here for posterity.
+{% raw %}{{< /notice >}}{% endraw %}
+
+{{ gpt3_summary }}
+
+## Top Artists (Week {{ week_number }})
 
 {% for artist, count in top_artists -%}
 {%- if artist_info.get(artist) and artist_info[artist].get('artist_link') -%}
@@ -29,13 +31,6 @@ This is what GPT had to say about this weeks music selection it is auto generate
 
 ## Top Albums (Week {{ week_number }})
 
-{% raw %}{{< gallery columns="4" >}}{% endraw %}
-{% for (artist, album), count in top_albums %}{% if album_info.get((artist, album)) and album_info[(artist, album)].get('cover_image') -%}
-{%- raw %}{{< img src="{% endraw %}{{ album_info[(artist, album)].cover_image }}{%- raw %}" alt="{% endraw %}{{ album }} by {{ artist }}{%- raw %}" >}}{% endraw %}
-{% endif -%}
-{% endfor -%}
-{% raw %}{{< /gallery >}}{% endraw %}
-
 {% for (artist, album), count in top_albums -%}
 {% if album_info.get((artist, album)) and album_info[(artist, album)].get('album_link') -%}
 - [{{ album }}]({{ album_info[(artist, album)].album_link }}) by {{ artist }}
@@ -43,3 +38,10 @@ This is what GPT had to say about this weeks music selection it is auto generate
 - {{ album }} by {{ artist }}
 {% endif %}
 {%- endfor %}
+
+{% raw %}{{< gallery columns="4" >}}{% endraw %}
+{% for (artist, album), count in top_albums %}{% if album_info.get((artist, album)) and album_info[(artist, album)].get('cover_image') -%}
+{%- raw %}{{< img src="{% endraw %}{{ album_info[(artist, album)].cover_image }}{%- raw %}" alt="{% endraw %}{{ album }} by {{ artist }}{%- raw %}" >}}{% endraw %}
+{% endif -%}
+{% endfor -%}
+{% raw %}{{< /gallery >}}{% endraw %}
