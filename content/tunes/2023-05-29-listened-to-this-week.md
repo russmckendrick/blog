@@ -20,7 +20,7 @@ summary: "This week's top artist was The Specials."
 {{< img src="https://www.mckendrick.rocks/artist/baxter-dury/baxter-dury.jpg" alt="Baxter dury" >}}{{< /gallery >}}
 
 {{< notice note >}}
-This is what GPT had to say about this weeks music selection it is auto generated and might not be 100% correct.
+GPT had to say this about what I listened to last week; it is auto-generated and might not be 100% factual.
 {{< /notice >}}
 
 Hey there, fellow music lovers! Welcome back to my blog, where I share all the tunes that have been dominating my playlist this week. 🎧
