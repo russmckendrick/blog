@@ -95,16 +95,16 @@ def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
     album_info = {(artist, album): data for (artist, album), data in info.items()}
     top_artist = top_artists[0][0] if top_artists else 'No artist data'
     top_artist_summary = get_wiki_summary(top_artist)
-    intro = "Write a casual blog post which details what music I have been listening to this week. The blog post should be 900 words long. Feel free to use emjois and markdown formatting to make the post more interesting."
-    other_artists = f"Other artists I listened to this week include {', '.join([artist for artist, count in top_artists[1:10]])}, mention these too the end, but don't repeat any inforation you have already given."
-    ai_generated = "Also, mention that this part of the blog post was AI generated - this part of the post should be short"
-    data_souce = "The data for this blog post was collected from Last.fm you can find my profile at https://www.last.fm/user/RussMckendrick."
+    chat_intro = "Write a casual blog post which details what music I have been listening to this week. The blog post should be 1000 words long. Feel free to use emjois and markdown formatting to make the post more interesting."
+    chat_other_artists = f"Other artists I listened to this week include {', '.join([artist for artist, count in top_artists[1:10]])}, mention these too the end, but don't repeat any inforation you have already given."
+    chat_ai_generated = "Also, mention that this part of the blog post was AI generated - this part of the post should be short"
+    chat_data_souce = "The data for this blog post was collected from Last.fm you can find my profile at https://www.last.fm/user/RussMckendrick."
     if top_artist_summary:
-        top_artist_info = f"Information from Wikipedia on {top_artist}, who is the most played artist this week, says {top_artist_summary}."
+        chat_top_artist_info = f"Information from Wikipedia on {top_artist}, who is the most played artist this week, says {top_artist_summary}."
     else:
-        top_artist_info = f"The most played artist this week was {top_artist}."
-    gpt3_prompt = f"{intro} {top_artist_info} {other_artists} {data_souce} {ai_generated}" # Construct the full prompt
-    gpt3_summary = get_gpt3_text(gpt3_prompt) # Generate the summary
+        chat_top_artist_info = f"The most played artist this week was {top_artist}."
+    gpt3_prompt = f"{chat_intro} {chat_top_artist_info} {chat_other_artists} {chat_data_souce} {chat_ai_generated}"
+    gpt3_summary = get_gpt3_text(gpt3_prompt)
     context = {
         'date': date_str_start,
         'week_number': week_number,
