@@ -10,6 +10,11 @@ tags:
     - "Vinyl"
 ---
 
+{{< notice note >}}
+This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
+{{< /notice >}}
+
+
 {{< gallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/artist/james/james.jpg" alt="James" >}}
 {{< img src="https://www.mckendrick.rocks/artist/matt-berry/matt-berry.jpg" alt="Matt berry" >}}
@@ -23,10 +28,6 @@ tags:
 {{< img src="https://www.mckendrick.rocks/artist/jenny-lewis/jenny-lewis.jpg" alt="Jenny lewis" >}}
 {{< img src="https://www.mckendrick.rocks/artist/killing-joke/killing-joke.jpg" alt="Killing joke" >}}
 {{< img src="https://www.mckendrick.rocks/artist/roger-waters/roger-waters.jpg" alt="Roger waters" >}}{{< /gallery >}}
-
-{{< notice note >}}
-This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
-{{< /notice >}}
 
 Hey everyone! Welcome back to my blog. I hope you've all had a fantastic week so far. Today, I wanted to share with you my weekly music roundup. As usual, I've been diving deep into my eclectic music taste, discovering new artists and revisiting old favorites. So, let's get right into it!
 

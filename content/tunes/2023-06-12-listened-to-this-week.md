@@ -10,6 +10,11 @@ tags:
     - "Vinyl"
 ---
 
+{{< notice note >}}
+This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
+{{< /notice >}}
+
+
 {{< gallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/artist/pet-shop-boys/pet-shop-boys.jpg" alt="Pet shop boys" >}}
 
@@ -17,10 +22,6 @@ tags:
 
 {{< img src="https://www.mckendrick.rocks/artist/the-mighty-mighty-bosstones/the-mighty-mighty-bosstones.jpg" alt="The mighty mighty bosstones" >}}
 {{< img src="https://www.mckendrick.rocks/artist/field-music/field-music.jpg" alt="Field music" >}}{{< /gallery >}}
-
-{{< notice note >}}
-This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
-{{< /notice >}}
 
 Hey everyone! 👋 It's time for another weekly music update, where I share with you all the tunes that have been jamming through my headphones this past week. 🎧 So, without further ado, let's dive right in and discover the awesome artists that have been gracing my playlist!
 
