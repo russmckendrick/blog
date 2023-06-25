@@ -2,6 +2,7 @@ import os
 import requests
 import json
 import argparse
+import random
 import wikipediaapi
 import openai
 from datetime import datetime, timedelta
