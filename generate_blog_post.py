@@ -21,6 +21,12 @@ def get_wiki_summary(page_name):
         return page_py.summary[0:500]  # Limit summary to 500 characters
     return None
 
+# Generate a random number
+def generate_random_number():
+    number = random.randint(1, 23)
+    formatted_number = str(number).zfill(3)
+    return formatted_number
+
 # Function to get GPT-3 generated text
 def get_gpt3_text(prompt):
     completion = openai.ChatCompletion.create(
@@ -107,6 +113,7 @@ def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
     gpt3_prompt = f"{chat_intro} {chat_top_artist_info} {chat_other_artists} {chat_data_souce} {chat_ai_generated}"
     gpt3_summary = get_gpt3_text(chat_post_summary)
     gpt3_post = get_gpt3_text(gpt3_prompt) 
+    random_number = generate_random_number()
     context = {
         'date': date_str_start,
         'week_number': week_number,
@@ -116,6 +123,7 @@ def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
         'album_info': album_info,
         'summary': gpt3_summary,
         'gpt3_post': gpt3_post,
+        'random_number': random_number,
     }
     content = render_template('lastfm-post-template.md', context)
     with open(filename, 'w') as f:
