@@ -3,6 +3,8 @@ title: "What did I listen to in week 21?"
 date: "2023-05-22"
 draft: false
 summary: "This week's top artist was Easy Star All-Stars."
+tags:
+    - "Vinyl"
 ---
 
 {{< gallery columns="4" >}}

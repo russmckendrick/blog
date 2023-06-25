@@ -3,6 +3,8 @@ title: "What did I listen to in week 20?"
 date: "2023-05-15"
 draft: false
 summary: "This week's top artist was The Cure."
+tags:
+    - "Vinyl"
 ---
 
 {{< gallery columns="4" >}}

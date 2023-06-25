@@ -95,16 +95,18 @@ def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
     album_info = {(artist, album): data for (artist, album), data in info.items()}
     top_artist = top_artists[0][0] if top_artists else 'No artist data'
     top_artist_summary = get_wiki_summary(top_artist)
+    chat_post_summary = "According to LastFM data the artist I most played this week was {top_artist}. Can you write a short 50 word summary to say this. It is going to be used as a description for a blog post so should be descrptiove and interesting."
     chat_intro = "Write a casual blog post which details what music I have been listening to this week. The blog post should be 1000 words long. Feel free to use emjois and markdown formatting to make the post more interesting."
-    chat_other_artists = f"Other artists I listened to this week include {', '.join([artist for artist, count in top_artists[1:10]])}, mention these too the end, but don't repeat any inforation you have already given."
-    chat_ai_generated = "Also, mention that this part of the blog post was AI generated - this part of the post should be short"
-    chat_data_souce = "The data for this blog post was collected from Last.fm you can find my profile at https://www.last.fm/user/RussMckendrick."
     if top_artist_summary:
-        chat_top_artist_info = f"Information from Wikipedia on {top_artist}, who is the most played artist this week, says {top_artist_summary}."
+        chat_top_artist_info = f"The most played artist this week was {top_artist}, Wikipedia has this to say about {top_artist} ... {top_artist_summary}."
     else:
         chat_top_artist_info = f"The most played artist this week was {top_artist}."
+    chat_other_artists = f"Other artists I listened to this week include {', '.join([artist for artist, count in top_artists[1:12]])}, mention these too the end, but don't repeat any inforation you have already given."
+    chat_data_souce = "The data for this blog post was collected from Last.fm you can find my profile at https://www.last.fm/user/RussMckendrick."
+    chat_ai_generated = "Also, mention that this part of the blog post was AI generated - this part of the post should be short"
     gpt3_prompt = f"{chat_intro} {chat_top_artist_info} {chat_other_artists} {chat_data_souce} {chat_ai_generated}"
-    gpt3_summary = get_gpt3_text(gpt3_prompt)
+    gpt3_summary = get_gpt3_text(chat_post_summary)
+    gpt3_post = get_gpt3_text(gpt3_prompt) 
     context = {
         'date': date_str_start,
         'week_number': week_number,
@@ -112,8 +114,8 @@ def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
         'artist_info': artist_info,
         'top_albums': top_albums,
         'album_info': album_info,
-        'summary': f"This week's top artist was {top_artist}.",
-        'gpt3_summary': gpt3_summary,
+        'summary': gpt3_summary,
+        'gpt3_post': gpt3_post,
     }
     content = render_template('lastfm-post-template.md', context)
     with open(filename, 'w') as f:
