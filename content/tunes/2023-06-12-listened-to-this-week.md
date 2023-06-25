@@ -3,6 +3,8 @@ title: "What did I listen to in week 24?"
 date: "2023-06-12"
 draft: false
 summary: "This week's top artist was Pet Shop Boys."
+tags:
+    - "Vinyl"
 ---
 
 {{< gallery columns="4" >}}
