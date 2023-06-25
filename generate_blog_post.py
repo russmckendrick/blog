@@ -95,7 +95,7 @@ def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
     album_info = {(artist, album): data for (artist, album), data in info.items()}
     top_artist = top_artists[0][0] if top_artists else 'No artist data'
     top_artist_summary = get_wiki_summary(top_artist)
-    chat_post_summary = "According to LastFM data the artist I most played this week was {top_artist}. Can you write a short 50 word summary to say this. It is going to be used as a description for a blog post so should be descrptiove and interesting."
+    chat_post_summary = f"According to LastFM data the artist I most played this week was {top_artist}. Can you write a short 50 word summary to say this. It is going to be used as a description for a blog post so should be descrptiove and interesting."
     chat_intro = "Write a casual blog post which details what music I have been listening to this week. The blog post should be 1000 words long. Feel free to use emjois and markdown formatting to make the post more interesting."
     if top_artist_summary:
         chat_top_artist_info = f"The most played artist this week was {top_artist}, Wikipedia has this to say about {top_artist} ... {top_artist_summary}."
