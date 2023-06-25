@@ -2,7 +2,7 @@
 title: "What did I listen to in week 23?"
 date: "2023-06-05"
 draft: false
-summary: "This week's top artist was James."
+summary: "In a whirlwind of musical discovery, last week's playlist was graced by the enchanting sounds of the legendary James. Captivating our ears with their eclectic mix of alternative rock, indie pop masterpieces, and poignant lyrics, James took center stage, leaving an indelible mark on our musical journey. Prepare to be enthralled."
 cover:
     image: "/img/weekly-tunes-018.png"
     relative: false

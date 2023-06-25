@@ -2,7 +2,7 @@
 title: "What did I listen to in week 22?"
 date: "2023-05-29"
 draft: false
-summary: "This week's top artist was The Specials."
+summary: "This week, my musical journey took an exhilarating turn as the infectious beats of The Specials took over my playlist. With their iconic fusion of ska, reggae, and punk, this legendary British band revived the spirit of rebellion and unity. Get ready to skank and groove along with their timeless tunes!"
 cover:
     image: "/img/weekly-tunes-008.png"
     relative: false

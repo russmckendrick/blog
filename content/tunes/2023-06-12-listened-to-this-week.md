@@ -2,7 +2,7 @@
 title: "What did I listen to in week 24?"
 date: "2023-06-12"
 draft: false
-summary: "This week's top artist was Pet Shop Boys."
+summary: "Get ready for a mesmerizing musical voyage as the synth-pop legends, Pet Shop Boys, take center stage in your listening habits this week! With their iconic blend of infectious beats and thought-provoking lyrics, immerse yourself in a sonic utopia through their unforgettable discography. Let the Pet Shop Boys soundtrack your week with their timeless tunes!"
 cover:
     image: "/img/weekly-tunes-015.png"
     relative: false
