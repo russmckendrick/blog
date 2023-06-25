@@ -3,6 +3,9 @@ title: "What did I listen to in week 21?"
 date: "2023-05-22"
 draft: false
 summary: "This week's top artist was Easy Star All-Stars."
+cover:
+    image: "/img/weekly-tunes-001.png"
+    relative: false
 tags:
     - "Vinyl"
 ---

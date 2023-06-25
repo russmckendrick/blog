@@ -3,6 +3,9 @@ title: "What did I listen to in week 23?"
 date: "2023-06-05"
 draft: false
 summary: "This week's top artist was James."
+cover:
+    image: "/img/weekly-tunes-018.png"
+    relative: false
 tags:
     - "Vinyl"
 ---

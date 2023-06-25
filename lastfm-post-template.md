@@ -3,6 +3,9 @@ title: "What did I listen to in week {{ week_number }}?"
 date: "{{ date }}"
 draft: false
 summary: "{{ summary }}"
+cover:
+    image: "/img/weekly-tunes-{{ random_number }}.png"
+    relative: false
 tags:
     - "Vinyl"
 ---

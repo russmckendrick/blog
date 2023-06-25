@@ -3,6 +3,9 @@ title: "What did I listen to in week 22?"
 date: "2023-05-29"
 draft: false
 summary: "This week's top artist was The Specials."
+cover:
+    image: "/img/weekly-tunes-008.png"
+    relative: false
 tags:
     - "Vinyl"
 ---
