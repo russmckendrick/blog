@@ -2,7 +2,7 @@
 title: "What did I listen to in week 20?"
 date: "2023-05-15"
 draft: false
-summary: "This week's top artist was The Cure."
+summary: "This week, I delved into a world of enchanting melancholy as The Cure took center stage in my music library. Roaming through haunting melodies and poetic lyrics, their timeless sound provided a sanctuary of introspection and emotional solace. Prepare to be captivated by the ethereal aura that only The Cure can conjure."
 cover:
     image: "/img/weekly-tunes-012.png"
     relative: false

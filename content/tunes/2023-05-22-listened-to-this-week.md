@@ -2,7 +2,7 @@
 title: "What did I listen to in week 21?"
 date: "2023-05-22"
 draft: false
-summary: "This week's top artist was Easy Star All-Stars."
+summary: "Get ready to groove to the infectious beats of Easy Star All-Stars! According to LastFM data, this talented group has dominated your playlist this week. With their unique blend of reggae, dub, and rock, prepare to be transported to a musical paradise that will have you hitting that replay button again and again."
 cover:
     image: "/img/weekly-tunes-001.png"
     relative: false
