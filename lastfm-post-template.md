@@ -10,6 +10,10 @@ tags:
     - "Vinyl"
 ---
 
+{% raw %}{{< notice note >}}{% endraw %}
+This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
+{% raw %}{{< /notice >}}{% endraw %}
+
 {% raw %}{{< gallery columns="4" >}}{% endraw %}
 {%- for artist, count in top_artists %}
 {% if artist_info.get(artist) and artist_info[artist].get('artist_image') -%}
@@ -17,10 +21,6 @@ tags:
 {%- endif -%}
 {%- endfor -%}
 {% raw %}{{< /gallery >}}{% endraw %}
-
-{% raw %}{{< notice note >}}{% endraw %}
-This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
-{% raw %}{{< /notice >}}{% endraw %}
 
 {{ gpt3_post }}
 

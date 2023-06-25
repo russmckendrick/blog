@@ -9,6 +9,9 @@ cover:
 tags:
     - "Vinyl"
 ---
+{{< notice note >}}
+This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
+{{< /notice >}}
 
 {{< gallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/artist/easy-star-all-stars/easy-star-all-stars.jpg" alt="Easy star all-stars" >}}
@@ -24,9 +27,6 @@ tags:
 
 {{< /gallery >}}
 
-{{< notice note >}}
-This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
-{{< /notice >}}
 
 Hey there, music lovers! It's time for another installment of my weekly music roundup. This week, I dove deep into some groovy tunes that brought sunshine and good vibes to my days. From reggae to funk and everything in between, I had an eclectic mix that kept me dancing and singing along. So, let's jump right in and explore the sonic journey I embarked on this week!
 
