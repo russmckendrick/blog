@@ -97,7 +97,7 @@ def render_template(template_name, context):
 def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
     date_str_start = week_start.strftime('%Y-%m-%d')
     week_number = week_start.strftime('%U')
-    filename = f"{date_str_start}-listened-to-this-week.md"
+    filename = f"content/tunes/{date_str_start}-listened-to-this-week.md"
     artist_info = {artist: data for (artist, album), data in info.items()}
     album_info = {(artist, album): data for (artist, album), data in info.items()}
     top_artist = top_artists[0][0] if top_artists else 'No artist data'
