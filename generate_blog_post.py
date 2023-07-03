@@ -15,6 +15,12 @@ api_key = os.getenv('LASTFM_API_KEY')
 url = os.getenv('COLLECTION_URL')
 openai_key = os.getenv('OPENAI_KEY')
 
+wiki_wiki = wikipediaapi.Wikipedia(
+    language='en',
+    extract_format=wikipediaapi.ExtractFormat.WIKI,
+    user_agent="Blog post creator/1.0 (https://www.russ.foo; me@russ.foo)"
+)
+
 # Function to get Wikipedia summary
 def get_wiki_summary(page_name):
     page_py = wiki_wiki.page(page_name)
