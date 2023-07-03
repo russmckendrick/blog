@@ -15,12 +15,6 @@ api_key = os.getenv('LASTFM_API_KEY')
 url = os.getenv('COLLECTION_URL')
 openai_key = os.getenv('OPENAI_KEY')
 
-wiki_wiki = wikipediaapi.Wikipedia(
-    language='en',
-    extract_format=wikipediaapi.ExtractFormat.WIKI,
-    user_agent="Blog post creator/1.0 (https://www.russ.foo; me@russ.foo)"
-)
-
 # Function to get Wikipedia summary
 def get_wiki_summary(page_name):
     page_py = wiki_wiki.page(page_name)
@@ -153,7 +147,11 @@ end_timestamp = int(week_end.timestamp())
 
 # Fetch data and generate blog post
 openai.api_key = openai_key
-wiki_wiki = wikipediaapi.Wikipedia('en')
+wiki_wiki = wikipediaapi.Wikipedia(
+    language='en',
+    extract_format=wikipediaapi.ExtractFormat.WIKI,
+    user_agent="Blog post creator/1.0 (https://www.russ.foo; me@russ.foo)"
+)
 artist_data = get_lastfm_artist_data(user, api_key, start_timestamp, end_timestamp)
 album_data = get_lastfm_album_data(user, api_key, start_timestamp, end_timestamp)
 collection = get_collection_data()
