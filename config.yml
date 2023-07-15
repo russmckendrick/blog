@@ -1,7 +1,7 @@
 baseURL: "https://www.russ.foo/"
 title: "Russ.foo"
 paginate: "8"
-theme: ["PaperMod", "hugo-notice"]
+theme: ["PaperMod"]
 
 timeout: 600000 # this needs to be long as we converting webp images
 
