@@ -4,3 +4,6 @@ url = https://github.com/adityatelange/hugo-PaperMod.git
 [submodule "themes/hugo-notice"]
 path = themes/hugo-notice
 url = https://github.com/martignoni/hugo-notice.git
+[submodule "themes/hugo-shortcode-gallery"]
+	path = themes/hugo-shortcode-gallery
+	url = https://github.com/mfg92/hugo-shortcode-gallery.git
