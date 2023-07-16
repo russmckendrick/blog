@@ -14,7 +14,7 @@ tags:
 This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
 {{< /notice >}}
 
-{{< gallery columns="4" >}}
+{{< oldgallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/artist/prefab-sprout/prefab-sprout.jpg" alt="Prefab sprout" >}}
 {{< img src="https://www.mckendrick.rocks/artist/stone-temple-pilots/stone-temple-pilots.jpg" alt="Stone temple pilots" >}}
 {{< img src="https://www.mckendrick.rocks/artist/airhead/airhead.jpg" alt="Airhead" >}}
@@ -26,7 +26,7 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 {{< img src="https://www.mckendrick.rocks/artist/u2/u2.jpg" alt="U2" >}}
 {{< img src="https://www.mckendrick.rocks/artist/the-style-council/the-style-council.jpg" alt="The style council" >}}
 {{< img src="https://www.mckendrick.rocks/artist/genesis/genesis.jpg" alt="Genesis" >}}
-{{< img src="https://www.mckendrick.rocks/artist/fishbone/fishbone.jpg" alt="Fishbone" >}}{{< /gallery >}}
+{{< img src="https://www.mckendrick.rocks/artist/fishbone/fishbone.jpg" alt="Fishbone" >}}{{< /oldgallery >}}
 
 Hey everyone! Welcome back to my blog. This week, I thought I'd share with you the awesome music that has been filling my ears and lifting my spirits. 🎶😄
 
@@ -94,7 +94,7 @@ Thanks for tuning in and reading about my musical adventures! Let me know in the
 - The Essential Fishbone by Fishbone
 
 
-{{< gallery columns="4" >}}
+{{< oldgallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/albums/core-4798781/core-4798781.jpg" alt="Core by Stone Temple Pilots" >}}
 {{< img src="https://www.mckendrick.rocks/albums/boing-1343423/boing-1343423.jpg" alt="Boing!! by Airhead" >}}
 {{< img src="https://www.mckendrick.rocks/albums/cracked-rear-view-27617181/cracked-rear-view-27617181.jpg" alt="Cracked Rear View by Hootie & The Blowfish" >}}
@@ -102,4 +102,4 @@ Thanks for tuning in and reading about my musical adventures! Let me know in the
 {{< img src="https://www.mckendrick.rocks/albums/ten-1704831/ten-1704831.jpg" alt="Ten by Pearl Jam" >}}
 {{< img src="https://www.mckendrick.rocks/albums/dummy-6326631/dummy-6326631.jpg" alt="Dummy by Portishead" >}}
 {{< img src="https://www.mckendrick.rocks/albums/the-joshua-tree-10391869/the-joshua-tree-10391869.jpg" alt="The Joshua Tree by U2" >}}
-{{< /gallery >}}
+{{< /oldgallery >}}

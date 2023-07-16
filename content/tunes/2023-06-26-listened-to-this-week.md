@@ -14,7 +14,7 @@ tags:
 This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
 {{< /notice >}}
 
-{{< gallery columns="4" >}}
+{{< oldgallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/artist/pixies/pixies.jpg" alt="Pixies" >}}
 {{< img src="https://www.mckendrick.rocks/artist/jimmy-page/jimmy-page.jpg" alt="Jimmy page" >}}
 {{< img src="https://www.mckendrick.rocks/artist/crowded-house/crowded-house.jpg" alt="Crowded house" >}}
@@ -26,7 +26,7 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 {{< img src="https://www.mckendrick.rocks/artist/crippled-black-phoenix/crippled-black-phoenix.jpg" alt="Crippled black phoenix" >}}
 
 {{< img src="https://www.mckendrick.rocks/artist/rush/rush.jpg" alt="Rush" >}}
-{{< img src="https://www.mckendrick.rocks/artist/big-big-train/big-big-train.jpg" alt="Big big train" >}}{{< /gallery >}}
+{{< img src="https://www.mckendrick.rocks/artist/big-big-train/big-big-train.jpg" alt="Big big train" >}}{{< /oldgallery >}}
 
 Hey everyone! 👋
 
@@ -100,11 +100,11 @@ Stay tuned for more musical discoveries in the weeks to come. Until next time, k
 - [Ingenious Devices](https://www.mckendrick.rocks/albums/ingenious-devices-27528075/) by Big Big Train
 
 
-{{< gallery columns="4" >}}
+{{< oldgallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/albums/live-at-the-greek-5029933/live-at-the-greek-5029933.jpg" alt="Live At The Greek by Jimmy Page" >}}
 {{< img src="https://www.mckendrick.rocks/albums/the-complete-singles-26454110/the-complete-singles-26454110.jpg" alt="The Complete Singles by Inspiral Carpets" >}}
 {{< img src="https://www.mckendrick.rocks/albums/thanks-for-reaching-out-27546843/thanks-for-reaching-out-27546843.jpg" alt="Thanks For Reaching Out by Jim Bob" >}}
 {{< img src="https://www.mckendrick.rocks/albums/the-resurrectionists-13562698/the-resurrectionists-13562698.jpg" alt="The Resurrectionists by Crippled Black Phoenix" >}}
 {{< img src="https://www.mckendrick.rocks/albums/levelling-the-land-25th-anniversary-edition-9365189/levelling-the-land-25th-anniversary-edition-9365189.jpg" alt="Levelling The Land 25th Anniversary Edition by The Levellers" >}}
 {{< img src="https://www.mckendrick.rocks/albums/ingenious-devices-27528075/ingenious-devices-27528075.jpg" alt="Ingenious Devices by Big Big Train" >}}
-{{< /gallery >}}
+{{< /oldgallery >}}

@@ -14,13 +14,13 @@ tags:
 This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
 {% raw %}{{< /notice >}}{% endraw %}
 
-{% raw %}{{< gallery columns="4" >}}{% endraw %}
+{% raw %}{{< oldgallery columns="4" >}}{% endraw %}
 {%- for artist, count in top_artists %}
 {% if artist_info.get(artist) and artist_info[artist].get('artist_image') -%}
 {%- raw %}{{< img src="{% endraw %}{{ artist_info[artist].artist_image }}{%- raw %}" alt="{% endraw %}{{ artist | capitalize }}{%- raw %}" >}}{% endraw -%}
 {%- endif -%}
 {%- endfor -%}
-{% raw %}{{< /gallery >}}{% endraw %}
+{% raw %}{{< /oldgallery >}}{% endraw %}
 
 {{ gpt3_post }}
 
@@ -44,9 +44,9 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 {% endif %}
 {%- endfor %}
 
-{% raw %}{{< gallery columns="4" >}}{% endraw %}
+{% raw %}{{< oldgallery columns="4" >}}{% endraw %}
 {% for (artist, album), count in top_albums %}{% if album_info.get((artist, album)) and album_info[(artist, album)].get('cover_image') -%}
 {%- raw %}{{< img src="{% endraw %}{{ album_info[(artist, album)].cover_image }}{%- raw %}" alt="{% endraw %}{{ album }} by {{ artist }}{%- raw %}" >}}{% endraw %}
 {% endif -%}
 {% endfor -%}
-{% raw %}{{< /gallery >}}{% endraw %}
+{% raw %}{{< /oldgallery >}}{% endraw %}

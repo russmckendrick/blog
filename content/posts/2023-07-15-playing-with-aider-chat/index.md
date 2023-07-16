@@ -165,12 +165,7 @@ The `drawApple` function draws the apple on the game screen by drawing a red rec
 
 This time everything worked as expected and we have a mostly functional game as you can see from the following screens;
 
-{{< gallery >}}
-    {{< img src="images/001.png" >}}
-    {{< img src="images/002.png" >}}
-    {{< img src="images/003.png" >}}
-    {{< img src="images/004.png" >}}
-{{< /gallery >}}
+{{< gallery match="images/*" sortOrder="assc" rowHeight="250" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}
 
 The game code is below, it is untouched from what Aider Chat created and as you can see, functionality wise is a little hit and miss, but it well commented and easy to follow;
 
