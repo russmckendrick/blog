@@ -14,7 +14,7 @@ tags:
 This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
 {{< /notice >}}
 
-{{< gallery columns="4" >}}
+{{< oldgallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/artist/george-harrison/george-harrison.jpg" alt="George harrison" >}}
 {{< img src="https://www.mckendrick.rocks/artist/the-style-council/the-style-council.jpg" alt="The style council" >}}
 {{< img src="https://www.mckendrick.rocks/artist/new-order/new-order.jpg" alt="New order" >}}
@@ -26,7 +26,7 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 {{< img src="https://www.mckendrick.rocks/artist/depeche-mode/depeche-mode.jpg" alt="Depeche mode" >}}
 {{< img src="https://www.mckendrick.rocks/artist/simple-minds/simple-minds.jpg" alt="Simple minds" >}}
 
-{{< img src="https://www.mckendrick.rocks/artist/the-smashing-pumpkins/the-smashing-pumpkins.jpg" alt="The smashing pumpkins" >}}{{< /gallery >}}
+{{< img src="https://www.mckendrick.rocks/artist/the-smashing-pumpkins/the-smashing-pumpkins.jpg" alt="The smashing pumpkins" >}}{{< /oldgallery >}}
 
 Hey everyone! 👋 I hope you're all having a fantastic week filled with great vibes and awesome music. In today's blog post, I wanted to share with you all the amazing tunes that have been keeping me grooving and bopping throughout this week. So, without further ado, let's dive into my eclectic playlist!
 
@@ -106,11 +106,11 @@ That's a wrap for this week, folks! I hope this glimpse into my music-filled wor
 - Songs from the Big Chair by Tears for Fears
 
 
-{{< gallery columns="4" >}}
+{{< oldgallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/albums/all-things-must-pass-50th-anniversary-19772260/all-things-must-pass-50th-anniversary-19772260.jpg" alt="All Things Must Pass (50th Anniversary) by George Harrison" >}}
 {{< img src="https://www.mckendrick.rocks/albums/singles-9017905/singles-9017905.jpg" alt="Singles by New Order" >}}
 {{< img src="https://www.mckendrick.rocks/albums/a-foot-in-the-door-the-best-of-pink-floyd-12569365/a-foot-in-the-door-the-best-of-pink-floyd-12569365.jpg" alt="A Foot In The Door (The Best Of Pink Floyd) by Pink Floyd" >}}
 {{< img src="https://www.mckendrick.rocks/albums/fashion-nugget-15007936/fashion-nugget-15007936.jpg" alt="Fashion Nugget by Cake" >}}
 {{< img src="https://www.mckendrick.rocks/albums/faded-seaside-glamour-25891525/faded-seaside-glamour-25891525.jpg" alt="Faded Seaside Glamour by Delays" >}}
 {{< img src="https://www.mckendrick.rocks/albums/once-upon-a-time-762207/once-upon-a-time-762207.jpg" alt="Once Upon A Time by Simple Minds" >}}
-{{< /gallery >}}
+{{< /oldgallery >}}

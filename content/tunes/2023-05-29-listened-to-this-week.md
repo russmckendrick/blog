@@ -15,7 +15,7 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 {{< /notice >}}
 
 
-{{< gallery columns="4" >}}
+{{< oldgallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/artist/the-specials/the-specials.jpg" alt="The specials" >}}
 {{< img src="https://www.mckendrick.rocks/artist/sparks/sparks.jpg" alt="Sparks" >}}
 {{< img src="https://www.mckendrick.rocks/artist/the-lemonheads/the-lemonheads.jpg" alt="The lemonheads" >}}
@@ -27,7 +27,7 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 {{< img src="https://www.mckendrick.rocks/artist/tori-amos/tori-amos.jpg" alt="Tori amos" >}}
 
 {{< img src="https://www.mckendrick.rocks/artist/warrant/warrant.jpg" alt="Warrant" >}}
-{{< img src="https://www.mckendrick.rocks/artist/baxter-dury/baxter-dury.jpg" alt="Baxter dury" >}}{{< /gallery >}}
+{{< img src="https://www.mckendrick.rocks/artist/baxter-dury/baxter-dury.jpg" alt="Baxter dury" >}}{{< /oldgallery >}}
 
 
 Hey there, fellow music lovers! Welcome back to my blog, where I share all the tunes that have been dominating my playlist this week. 🎧
@@ -86,10 +86,10 @@ So there you have it, my musically inclined friends. These were the artists that
 - [Cherry Pie](https://www.mckendrick.rocks/albums/cherry-pie-26175560/) by Warrant
 
 
-{{< gallery columns="4" >}}
+{{< oldgallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/albums/the-best-of-roxy-music-24389216/the-best-of-roxy-music-24389216.jpg" alt="The Best Of Roxy Music by Roxy Music" >}}
 {{< img src="https://www.mckendrick.rocks/albums/sublime-8687804/sublime-8687804.jpg" alt="Sublime by Sublime" >}}
 {{< img src="https://www.mckendrick.rocks/albums/tomorrow-never-comes-27265383/tomorrow-never-comes-27265383.jpg" alt="Tomorrow Never Comes by Rancid" >}}
 {{< img src="https://www.mckendrick.rocks/albums/ill-communication-1856276/ill-communication-1856276.jpg" alt="Ill Communication by Beastie Boys" >}}
 {{< img src="https://www.mckendrick.rocks/albums/cherry-pie-26175560/cherry-pie-26175560.jpg" alt="Cherry Pie by Warrant" >}}
-{{< /gallery >}}
+{{< /oldgallery >}}

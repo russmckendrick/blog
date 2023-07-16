@@ -13,7 +13,7 @@ tags:
 This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
 {{< /notice >}}
 
-{{< gallery columns="4" >}}
+{{< oldgallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/artist/easy-star-all-stars/easy-star-all-stars.jpg" alt="Easy star all-stars" >}}
 {{< img src="https://www.mckendrick.rocks/artist/suede/suede.jpg" alt="Suede" >}}
 
@@ -25,7 +25,7 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 
 
-{{< /gallery >}}
+{{< /oldgallery >}}
 
 
 Hey there, music lovers! It's time for another installment of my weekly music roundup. This week, I dove deep into some groovy tunes that brought sunshine and good vibes to my days. From reggae to funk and everything in between, I had an eclectic mix that kept me dancing and singing along. So, let's jump right in and explore the sonic journey I embarked on this week!
@@ -92,7 +92,7 @@ And that wraps up this week's musical chronicles! I hope my eclectic mix of arti
 - Ziggy Stardub by Easy Star All-Stars & Maxi Priest
 
 
-{{< gallery columns="4" >}}
+{{< oldgallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/albums/ziggy-stardub-26844965/ziggy-stardub-26844965.jpg" alt="Ziggy Stardub by Easy Star All-Stars" >}}
 {{< img src="https://www.mckendrick.rocks/albums/maggot-brain-602546/maggot-brain-602546.jpg" alt="Maggot Brain by Funkadelic" >}}
-{{< /gallery >}}
+{{< /oldgallery >}}

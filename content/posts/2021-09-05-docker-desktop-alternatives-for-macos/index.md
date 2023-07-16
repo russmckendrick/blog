@@ -295,12 +295,12 @@ Once launched you should see something similar to the following screen:
 
 The other options look like the following (click to zoom):
 
-{{< gallery >}}
+{{< oldgallery >}}
 {{< img src="images/03.png" alt="Kubernetes Settings" >}}
 {{< img src="images/04.png" alt="Port Forwarding" >}}
 {{< img src="images/05.png" alt="Images" >}}
 {{< img src="images/06.png" alt="Troubleshooting" >}}
-{{< /gallery >}}
+{{< /oldgallery >}}
 
 ### Using Rancher Desktop
 

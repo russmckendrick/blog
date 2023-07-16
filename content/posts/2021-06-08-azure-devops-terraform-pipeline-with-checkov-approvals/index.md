@@ -420,10 +420,10 @@ As you can from the screen below, there was a single error, which stated that th
 
 The two screens below show the warnings;
 
-{{< gallery >}}
+{{< oldgallery >}}
    {{< img src="images/tf02.png" alt="warnings" >}}
    {{< img src="images/tf03.png" alt="warnings" >}}
-{{< /gallery >}}
+{{< /oldgallery >}}
 
 ### No Changes Run
 
@@ -500,20 +500,20 @@ Whoops, the Checkov stage failed, clicking on **Tests** should give us more info
 
 Clicking on either the two results will give a more information;
 
-{{< gallery >}}
+{{< oldgallery >}}
    {{< img src="images/tf07.png" alt="more info" >}}
    {{< img src="images/tf08.png" alt="more info">}}
-{{< /gallery >}}
+{{< /oldgallery >}}
 
 
 As you can see, we are allow full access to both SSH and RDP to the whole internet — not a great idea so we will need to update the code to lock those two rules down to an IP address. Thankfully, the Checkov stage errored before any of the Terraform stages were executed meaning that our mistake never made it as far as being deployed.
 
 A quick code change & commit later and we have the tests passing and the changes being automatically deployed — which is expected as there is only the addition of the network security group;
 
-{{< gallery >}}
+{{< oldgallery >}}
    {{< img src="images/tf09.png" >}}
    {{< img src="images/tf10.png" >}}
-{{< /gallery >}}
+{{< /oldgallery >}}
 
 Let’s now look at removing the network security group we just added.
 
@@ -528,11 +528,11 @@ This will result in an e-mail;
 
 Going to the pipeline, clicking on **Review**, entering a comment then pressing the **Resume** button will then trigger the `terraform apply` stage;
 
-{{< gallery >}}
+{{< oldgallery >}}
    {{< img src="images/tf12.png" alt="reviewing the change" >}}
    {{< img src="images/tf13.png" alt="reviewing the change" >}}
    {{< img src="images/tf14.png" alt="reviewing the change" >}}
-{{< /gallery >}}
+{{< /oldgallery >}}
 
 Once complete the network security group will have been destroyed, which is what we expected to happen, however, sometimes something unexpected may have happened and resources which you thought were not being touched by your changes maybe being destroyed so that they can be redeployed to make a change which isn’t possible any other way, this is where having your pipeline prompt you that it is going to remove resources comes in extremely useful 😊
 

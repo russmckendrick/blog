@@ -15,7 +15,7 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 {{< /notice >}}
 
 
-{{< gallery columns="4" >}}
+{{< oldgallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/artist/james/james.jpg" alt="James" >}}
 {{< img src="https://www.mckendrick.rocks/artist/matt-berry/matt-berry.jpg" alt="Matt berry" >}}
 {{< img src="https://www.mckendrick.rocks/artist/u2/u2.jpg" alt="U2" >}}
@@ -27,7 +27,7 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 {{< img src="https://www.mckendrick.rocks/artist/anathema/anathema.jpg" alt="Anathema" >}}
 {{< img src="https://www.mckendrick.rocks/artist/jenny-lewis/jenny-lewis.jpg" alt="Jenny lewis" >}}
 {{< img src="https://www.mckendrick.rocks/artist/killing-joke/killing-joke.jpg" alt="Killing joke" >}}
-{{< img src="https://www.mckendrick.rocks/artist/roger-waters/roger-waters.jpg" alt="Roger waters" >}}{{< /gallery >}}
+{{< img src="https://www.mckendrick.rocks/artist/roger-waters/roger-waters.jpg" alt="Roger waters" >}}{{< /oldgallery >}}
 
 Hey everyone! Welcome back to my blog. I hope you've all had a fantastic week so far. Today, I wanted to share with you my weekly music roundup. As usual, I've been diving deep into my eclectic music taste, discovering new artists and revisiting old favorites. So, let's get right into it!
 
@@ -111,7 +111,7 @@ Thank you for joining me on this musical adventure, and until next time, keep di
 - [The Unforgettable Fire](https://www.mckendrick.rocks/albums/the-unforgettable-fire-204237/) by U2
 
 
-{{< gallery columns="4" >}}
+{{< oldgallery columns="4" >}}
 {{< img src="https://www.mckendrick.rocks/albums/be-opened-by-the-wonderful-40-years-orchestrated-27333687/be-opened-by-the-wonderful-40-years-orchestrated-27333687.jpg" alt="Be Opened By The Wonderful (40 Years Orchestrated) by James" >}}
 {{< img src="https://www.mckendrick.rocks/albums/kill-the-wolf-4708269/kill-the-wolf-4708269.jpg" alt="Kill The Wolf by Matt Berry" >}}
 {{< img src="https://www.mckendrick.rocks/albums/greatest-hits-26517422/greatest-hits-26517422.jpg" alt="Greatest Hits by The Police" >}}
@@ -119,4 +119,4 @@ Thank you for joining me on this musical adventure, and until next time, keep di
 {{< img src="https://www.mckendrick.rocks/albums/achtung-baby-21054859/achtung-baby-21054859.jpg" alt="Achtung Baby by U2" >}}
 {{< img src="https://www.mckendrick.rocks/albums/joy-all-27328932/joy-all-27328932.jpg" alt="Joy'All by Jenny Lewis" >}}
 {{< img src="https://www.mckendrick.rocks/albums/the-unforgettable-fire-204237/the-unforgettable-fire-204237.jpg" alt="The Unforgettable Fire by U2" >}}
-{{< /gallery >}}
+{{< /oldgallery >}}

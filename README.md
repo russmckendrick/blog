@@ -11,6 +11,7 @@ This is the code for https://www.russ.foo/
     - [giscus](https://giscus.app)
     - [Plausible](https://plausible.io)
     - [SharingButtons](https://sharingbuttons.io)
+    - [hugo-shortcode-gallery](https://github.com/mfg92/hugo-shortcode-gallery) theme component
     - [hugo-notice](https://github.com/martignoni/hugo-notice) theme component
     - Icons by [Simple Icons](https://simpleicons.org/) and [Feather Icons](https://feathericons.com)
 

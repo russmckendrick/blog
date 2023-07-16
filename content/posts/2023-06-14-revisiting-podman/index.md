@@ -176,12 +176,12 @@ This action will open a dialog box, allowing you to enter various details to lau
 
 Now, you should see your container up and running. By clicking on the container, you can view the container details, and clicking on the "Open in browser" button (fourth button from the left at the top right corner) will display the container in your browser.
 
-{{< gallery >}}
+{{< oldgallery >}}
     {{< img src="images/10.png" >}}
     {{< img src="images/11.png" >}}
     {{< img src="images/12.png" >}}
     {{< img src="images/13.jpg" >}}
-{{< /gallery >}}
+{{< /oldgallery >}}
 
 Running the `podman container ls` command in your terminal will display your running container.
 
@@ -238,12 +238,12 @@ $ podman-compose up -d
 
 Once started, you should see a group of containers running, and visiting [http://localhost:8080](http://localhost:8080) in your browser will take you to the WordPress installation screen.
 
-{{< gallery >}}
+{{< oldgallery >}}
     {{< img src="images/15.png" >}}
     {{< img src="images/16.png" >}}
     {{< img src="images/17.png" >}}
     {{< img src="images/18.png" >}}
-{{< /gallery >}}
+{{< /oldgallery >}}
 
 When finished, you can execute the command below to halt the containers:
 
