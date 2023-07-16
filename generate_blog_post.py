@@ -31,7 +31,7 @@ def generate_random_number():
 # Function to get GPT-3 generated text
 def get_gpt3_text(prompt):
     completion = openai.ChatCompletion.create(
-        model='gpt-3.5-turbo-16k-0613',
+        model='gpt-4-0613',
         messages=[
             {
                 'role': 'user',
@@ -101,7 +101,7 @@ def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
     artist_info = {artist: data for (artist, album), data in info.items()}
     album_info = {(artist, album): data for (artist, album), data in info.items()}
     top_artist = top_artists[0][0] if top_artists else 'No artist data'
-    top_artist_summary = get_wiki_summary(top_artist)
+    top_artist_summary = get_wiki_summary(top_artist + " band")
     chat_post_summary = f"According to LastFM data the artist I most played this week was {top_artist}. Can you write a short 50 word summary to say this. It is going to be used as a description for a blog post so should be descrptiove and interesting."
     chat_intro = "Write a casual blog post which details what music I have been listening to this week. The blog post should be 1000 words long. Feel free to use emjois and markdown formatting to make the post more interesting."
     if top_artist_summary:
