@@ -93,13 +93,60 @@ def render_template(template_name, context):
     template = env.get_template(template_name)
     return template.render(context)
 
+# Download image function
+def download_image(url, folder, name):
+    response = requests.get(url, stream=True)
+    clean_name = name.replace(' ', '-').replace('/', '-')
+    image_file_path = os.path.join(folder, f"{clean_name}.jpg")
+    json_file_path = os.path.join(folder, f"{clean_name}.jpg.meta")
+
+    if response.status_code == 200:
+        with open(image_file_path, 'wb') as out_file:
+            out_file.write(response.content)
+        print(f"Downloaded image to {image_file_path}")
+
+        # Create JSON metadata file
+        metadata = {"Title": name}
+        with open(json_file_path, 'w') as json_file:
+            json.dump(metadata, json_file)
+        print(f"Created JSON metadata at {json_file_path}")
+    else:
+        print(f"Failed to download image from {url}")
+
 # Generate the blog post
 def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
     date_str_start = week_start.strftime('%Y-%m-%d')
     week_number = week_start.strftime('%U')
-    filename = f"content/tunes/{date_str_start}-listened-to-this-week.md"
+    post_folder = f"content/tunes/{date_str_start}-listened-to-this-week"
+    os.makedirs(post_folder, exist_ok=True)  # Create blog post directory
+    albums_folder = os.path.join(post_folder, "albums")
+    artists_folder = os.path.join(post_folder, "artists")
+    os.makedirs(albums_folder, exist_ok=True)  # Create albums directory
+    os.makedirs(artists_folder, exist_ok=True)  # Create artists directory
+    filename = os.path.join(post_folder, "index.md")
     artist_info = {artist: data for (artist, album), data in info.items()}
     album_info = {(artist, album): data for (artist, album), data in info.items()}
+    for artist, _ in top_artists:
+        # Check for artist in info keys
+        artist_image_url = None
+        for (info_artist, info_album), data in info.items():
+            if info_artist == artist:
+                artist_image_url = data.get('artist_image')
+                break  # Break as soon as you find the artist
+                
+        if artist_image_url:
+            download_image(artist_image_url, artists_folder, artist)
+
+    for (artist, album), _ in top_albums:
+        # Check for album in info keys
+        album_cover_url = None
+        for (info_artist, info_album), data in info.items():
+            if info_artist == artist and info_album == album:
+                album_cover_url = data.get('cover_image')
+                break  # Break as soon as you find the album
+
+        if album_cover_url:
+            download_image(album_cover_url, albums_folder, album)
     top_artist = top_artists[0][0] if top_artists else 'No artist data'
     top_artist_summary = get_wiki_summary(top_artist + " band")
     chat_post_summary = f"According to LastFM data the artist I most played this week was {top_artist}. Can you write a short 50 word summary to say this. It is going to be used as a description for a blog post so should be descrptiove and interesting."

@@ -184,3 +184,7 @@ privacy:
     disable: true
 
 ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken"]
+
+imaging:
+  exif:
+    includeFields: ".*"
