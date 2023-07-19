@@ -115,7 +115,7 @@ def download_image(url, folder, name):
 
 # Generate the blog post
 def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
-    date_str_start = week_start.strftime('%Y-%m-%d')
+    date_str_start = week_end.strftime('%Y-%m-%d')
     week_number = week_start.strftime('%U')
     post_folder = f"content/tunes/{date_str_start}-listened-to-this-week"
     os.makedirs(post_folder, exist_ok=True)  # Create blog post directory
