@@ -1,10 +1,10 @@
 ---
-title: "What did I listen to in week 27?"
+title: "What did I listen to in week 26?"
 date: "2023-07-03"
 draft: false
-summary: "Embarking on an auditory journey this week, my soundscape was dominated by the eclectic symphonies of Prefab Sprout. Their unique melodious blend was an unwavering presence, ruling my playlist and setting the rhythm of my week. An undeniable testament to their compelling musical genius and my resolute admiration for their artistry."
+summary: "Diving deep into the addictive cacophony of Pixies this week, LastFM data reveals a personal obsession. Their rebellious rhythms topped my playlist, their undiluted energy resonating through countless repeats. This week, Pixies weren't just another band - they were a lifeline to sanity, an anthem of unparalleled solace."
 cover:
-    image: "/img/weekly-tunes-017.png"
+    image: "/img/weekly-tunes-008.png"
     relative: false
 tags:
     - "Vinyl"
@@ -16,63 +16,60 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 {{< gallery match="artists/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}
 
-Hey, all you beautiful people! 🎵🤘🏼
+## Hey music fans! What's Up? 🎧🎵🌈
 
-This week has been a rollercoaster ride of soothing melodies, bombastic anthems, heart-rending ballads, and groovy tunes 🎶. Thanks to my accountability partner, Last.fm, I've kept track of everything that's been gracing my ears. So, let me give you the scorecard.
+Me, Russ, your fellow music lover, is back again to share with you some exquisite musical tales revolving around the artists who made my week groove, sway, and oh-so-beloved. 🎶 You know these updates are compliments of Last.fm - shout out to the number crunchers over there! Oh, and for the tech savants amongst us, the bulk of this blog was AI generated. Living in the future, right? Trust me, it's awesome!
 
-Setting the tone of my week, Prefab Sprout 🌱 turned out to be my most played artist (yeah, keep the applause going - they deserve it 😉). Their smart, sophisticated pop sensibilities, complex arrangements, coupled with Paddy McAloon's beatifically melancholic vocals, were the perfect companions on my morning jogs. Songs like "Appetite" and "Bonny" have a knack for setting you right, trust me. 
+So, who took the cake this week? Straight from the alternative rock timeline, a band named Pixies 🥁🎸 earned the number one spot, spinning a musical web and catching my attention in its chords. I was completely engrossed in the '80s vibe that Pixies treated me with, their music serving as a comforting escapade from life, to another world which only exists in harmony and lyrics. "Here comes your man," indeed 🕺.
 
-"From Langley Park to Memphis" never fails to make me think - the beautiful melancholy of it is truly Prefab Sprout's trademark aura. "Cars and Girls," in particular, was on loop because who can resist its intricate storytelling? 🔁 
+Pixies' gritty guitar riffs, raw performance style, and straight-up rock image all allured me this week and motivated me to explore more of their musical chronicles. The ingenuity of Black Francis, Joey Santiago, Kim Deal's collective experiment of punk, surf rock, and indie pop creates a melodic saga that's compelling and resonates deeply. "Doolittle," "Bossanova," and "Surfer Rosa" have been my constant companions in the past week.
 
-Fancy a twist in the musical journey? Let's bounce off to Stone Temple Pilots. Their weighty, albeit radio-friendly sound, is always good when I need my rock fix. "Interstate Love Song" makes me forget that I am in the middle of grocery shopping and "Plush" always takes me back to the early '90s, simpler times. 
+Joining Pixies in my weeklong musical journey was the ever-rocking guitar God, Jimmy Page. My speakers were lit with the exhilarating blues rock and folk tunes that this legendary guitarist brought to the table. I was truly "Living Loving Maid" (She's Just a Woman) with Jimmy.
 
-Had some chill afternoons where I vibed to Airhead, their music has this delicately textured arrangements. Hootie & the Blowfish's chart-topper "Only Wanna be With You" also made a resounding comeback in my playlist - the nostalgia is real, folks! 😌 
+Shifting gears from rock to pop, I also found solace in Crowded House's mesmerizing tunes. The splendid amalgamation of rock, pop, and jangle pop, their sound left me in high spirits. 🌻Their song "Don't Dream It's Over" turned out to be an anthem that definitely washed off my blues. 
 
-Yet, it's not just '90s pop-rock vibes all the time! Deviated into some dark melodies with Anathema. Their atmospheric soundscapes always strike a chord (pun intended 😉). Pearl Jam, with Eddie Vedder's powerful growl, added to the diverse sonic tapestry of my week. 
+Continuing in my pop exploration, Deacon Blue uplifted my mood with their new wave and sophisti-pop vibes. 🌊 Their gripping storytelling blended with intoxicating melodies have been nothing but a true delight. Amidst the sophisticated play of musical instruments, their album "Raintown" managed to sprinkle some magic in my mundane routine.
 
-Wanna know my guilty pleasure for nights when sleep eludes me 🌙? It's Portishead with their eerie, haunting tunes. Jane's Addiction swept me off my feet with their ferocious metallic riffs and punky rawness. Now, how can I ever complete my week without letting U2 serenade me? Bono's passionately earnest voice in "One" turned my mundane moments into spectacular ones.
+Music, without a pinch of David Bowie, is like a sky devoid of stars. 🌙⭐ The iconic musician serenaded me with his art rock, pop rock, and lately jazz tunes which were a perfect antidote for my dreary afternoons. 
 
-Digging further back to my roots, The Style Council and Genesis made a welcome return on the playlist. Remember Fishbone? Give "Everyday Sunshine" a spin, it's pure joy encapsulated in music. 
+Inspiral Carpets' Madchester tunes, Stevie Wonder's soul tunes, Jim Bob's alt-rock, Crippled Black Phoenix's post-rock, Levellers' folk-punk, Rush's powerful rock anthems, Big Big Train's progressive rock tunes, each made an appearance, adding distinct colors and tones to my soundtrack of the week. 🎹 🎷 🎺 🎸 🪘 
 
-Okay, let's serve some spicy hot news fresh off the stove 🔥! This part of the blog is AI-generated. Can you believe it? Technology, am I right? It impresses and scares me at the same time, I must admit. Would you be able to tell if I hadn't spilled the beans? Drop your thoughts below! 👇
+Overall, the week was a melodious blend of different genres each resonating with my mood and musings. It was an awe-inspiring gust of different eras of musical brilliance all at once, from iconic rock & roll to heart touching pop, from electrifying punk rock to the soothing calm of folk tunes.
 
-There you have it, folks, a glimpse into my sonic world that kept me company, consoled, and uplifted me this week. Feel like joining me on my musical journey? Check out my Last.fm profile at https://www.last.fm/user/RussMckendrick. Drop me your suggestions too - I am always game for widening my music horizon.
+I'll be back again next week with more updates on my musical adventures. Until then, keep exploring and let the music play. 🎵Hit me up with your recommendations!👩‍🎤 Happy Listening! 🎧
 
-Until the next tune...
-Keep on rockin'! 🤘🏼🎸🎵 
+Check out and follow my continuous musical journey on https://www.last.fm/user/RussMckendrick. 🚀 Let's connect and share our passion for music! Peace! ✌️✨
 
-P.S: Special mention to my coffee ☕, which kept me alive to listen to all these tunes. Shoutout to all caffeine addicts!
+## Top Artists (Week 26)
 
-## Top Artists (Week 27)
-
-- [Prefab Sprout](https://www.mckendrick.rocks/artist/prefab-sprout/) (16 plays)
-- [Stone Temple Pilots](https://www.mckendrick.rocks/artist/stone-temple-pilots/) (12 plays)
-- [Airhead](https://www.mckendrick.rocks/artist/airhead/) (11 plays)
-- [Hootie & The Blowfish](https://www.mckendrick.rocks/artist/hootie-the-blowfish/) (11 plays)
-- [Anathema](https://www.mckendrick.rocks/artist/anathema/) (10 plays)
-- [Pearl Jam](https://www.mckendrick.rocks/artist/pearl-jam/) (10 plays)
-- [Portishead](https://www.mckendrick.rocks/artist/portishead/) (10 plays)
-- [Jane's Addiction](https://www.mckendrick.rocks/artist/janes-addiction/) (8 plays)
-- [U2](https://www.mckendrick.rocks/artist/u2/) (8 plays)
-- [The Style Council](https://www.mckendrick.rocks/artist/the-style-council/) (6 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (5 plays)
-- [Fishbone](https://www.mckendrick.rocks/artist/fishbone/) (4 plays)
+- [Pixies](https://www.mckendrick.rocks/artist/pixies/) (25 plays)
+- [Jimmy Page](https://www.mckendrick.rocks/artist/jimmy-page/) (20 plays)
+- [Crowded House](https://www.mckendrick.rocks/artist/crowded-house/) (19 plays)
+- [Deacon Blue](https://www.mckendrick.rocks/artist/deacon-blue/) (18 plays)
+- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (17 plays)
+- [Inspiral Carpets](https://www.mckendrick.rocks/artist/inspiral-carpets/) (17 plays)
+- [Stevie Wonder](https://www.mckendrick.rocks/artist/stevie-wonder/) (17 plays)
+- [Jim Bob](https://www.mckendrick.rocks/artist/jim-bob/) (12 plays)
+- [Crippled Black Phoenix](https://www.mckendrick.rocks/artist/crippled-black-phoenix/) (11 plays)
+- Levellers (11 plays)
+- [Rush](https://www.mckendrick.rocks/artist/rush/) (8 plays)
+- [Big Big Train](https://www.mckendrick.rocks/artist/big-big-train/) (5 plays)
 
 
-## Top Albums (Week 27)
+## Top Albums (Week 26)
 
-- The Best of Prefab Sprout: A Life of Surprises by Prefab Sprout
-- [Core](https://www.mckendrick.rocks/albums/core-4798781/) by Stone Temple Pilots
-- [Boing!!](https://www.mckendrick.rocks/albums/boing-1343423/) by Airhead
-- [Cracked Rear View](https://www.mckendrick.rocks/albums/cracked-rear-view-27617181/) by Hootie & The Blowfish
-- [Distant Satellites](https://www.mckendrick.rocks/albums/distant-satellites-5766148/) by Anathema
-- [Ten](https://www.mckendrick.rocks/albums/ten-1704831/) by Pearl Jam
-- [Dummy](https://www.mckendrick.rocks/albums/dummy-6326631/) by Portishead
-- Ritual de lo Habitual by Jane's Addiction
-- [The Joshua Tree](https://www.mckendrick.rocks/albums/the-joshua-tree-10391869/) by U2
-- Long Hot Summers: The Story Of The Style Council by The Style Council
-- The Lamb Lies Down On Broadway (remastered 2008) by Genesis
-- The Essential Fishbone by Fishbone
+- Wave Of Mutilation: Best Of Pixies by Pixies
+- [Live At The Greek](https://www.mckendrick.rocks/albums/live-at-the-greek-5029933/) by Jimmy Page
+- The Very Very Best of Crowded House by Crowded House
+- Best of Bowie by David Bowie
+- Our Town - The Greatest Hits by Deacon Blue
+- [The Complete Singles](https://www.mckendrick.rocks/albums/the-complete-singles-26454110/) by Inspiral Carpets
+- Songs in the Key of Life by Stevie Wonder
+- [Thanks For Reaching Out](https://www.mckendrick.rocks/albums/thanks-for-reaching-out-27546843/) by Jim Bob
+- [The Resurrectionists](https://www.mckendrick.rocks/albums/the-resurrectionists-13562698/) by Crippled Black Phoenix
+- [Levelling The Land 25th Anniversary Edition](https://www.mckendrick.rocks/albums/levelling-the-land-25th-anniversary-edition-9365189/) by The Levellers
+- Signals (Remastered) by Rush
+- [Ingenious Devices](https://www.mckendrick.rocks/albums/ingenious-devices-27528075/) by Big Big Train
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

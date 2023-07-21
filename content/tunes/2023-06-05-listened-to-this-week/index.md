@@ -1,10 +1,10 @@
 ---
-title: "What did I listen to in week 23?"
+title: "What did I listen to in week 22?"
 date: "2023-06-05"
 draft: false
-summary: "This week, my auditory journey was ruled by the melodious allure of James. Each harmony echoing the rhythm of my routines, their music intertwined with my daily life. Dive into LastFM data as it unveils my profound connection with this fine tunesmith, their lyrics, and unforgettable beats."
+summary: "This week, my auditory landscape was predominantly colored by the raw energy of The Specials. According to my LastFM data, I've been diving deep into their skank-worthy rhythms and punk-infused lyrics, making them my top-played artist. Stay tuned for a closer look into this gritty music obsession of mine."
 cover:
-    image: "/img/weekly-tunes-015.png"
+    image: "/img/weekly-tunes-020.png"
     relative: false
 tags:
     - "Vinyl"
@@ -16,56 +16,64 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 {{< gallery match="artists/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}
 
-🎵 **Hey there, music lovers!** 🎵
+# 🎧 My Music Diaries: What I've Been Tuning Into This Week 🎶
 
-If there’s one thing I’ve found over the years, it’s that my taste in music is just as eclectic as my taste in food (and let me tell you - that’s saying something 😅). This week was no different, and I spent a good portion of my time getting lost in the epic soundscapes crafted by some of my favorite artists. This week has been one for the books – or well, the speakers! 🎧
+Hello peeps! 😁  So I'm back again to share more of my musical journey with you. And oh boy, what an interesting week it was! It was like a musical rollercoaster ride with different genres and beats creating a wonderful melody in my ears. 
 
-**Current earworm: James.** 
+This week was a beautiful blend of the old and the new. I spent most of my listening time with a terrific group that rose to popularity during the ska revival of the late 70s - *The Specials.* 🎷🎺 From “Ghost Town” to “A Message to You Rudy,” their tunes have been my constant companions these past few days. What's more, their catchy and crisp lyrics echo in my mind long after the music has stopped. 
 
-An English rock band hailing from Manchester, they first made their mark on the scene back in the strapping year of 1982 🎸. Let me be clear about one thing, though: their music is as timeless as they come. I have been grooving to their tracks all week long, letting songs like "Come Home", "Sit Down", "She's a Star" and "Laid" take me on a trip down memory lane. Their sound is a vibrant mix of soulful lyrics and melodies that stick with you long after the song is over. 🤘 I can see why American college radio had quite the soft spot for their song "Laid". A quick courtesy check on [Wikipedia](https://en.wikipedia.org/wiki/James_(band)) will tell you all about their splendid journey, from formation to fame, to the departure of lead singer Tim Booth in 2001, and their much-awaited reunion in 2007. 
+Possibly, what I loved the most was how their music managed to blend political sensibilities with peppy and danceable tunes so well. It's no small feat, and no other band has perhaps captured the spirit of that era as they did. So, a big shout out to The Specials! 👏😎 
 
-Besides the Manchester marvels, I've also been spinning **Matt Berry, U2, Steven Wilson**, and **Radiohead**. It's always a pleasure to revisit The Beach Boys, whose harmonies are reminiscent of sunlit days and endless ocean waves 🌊. Anathema's prog-rock vibes and Jenny Lewis' indie pop sound added a nice variety to my playlist. I also spent some time immersed in the energetic post-punk sound of Killing Joke and, when the mood called for some introspection, I turned to none other than The Police and the legendary Roger Waters 🧡.
+Of course, the playlist didn't stop there! I got a bit more eclectic with my afternoon listens. Have any of you heard of *Sparks*? This American duo is a quirky mix of rock, new wave, and synth-pop. This week, I got hooked by their characteristic falsetto vocals and tongue-in-cheek lyrical style. 🎵
 
-By the way, all the music data was collected via Last.fm - shoutout to them for being such a great platform. You can check out my musical journey over there - [here's my profile](https://www.last.fm/user/RussMckendrick). 👈 
+In the spirit of variety, I also listened to some cool tunes from *The Lemonheads,* a catchy and influential indie-rock band, and *Super Furry Animals,* the psychedelic rock band from Wales. Oh, and can't forget *Roxy Music* with their unique blend of glam art-rock that is always a pleasure to listen to! 🎸🥁
 
-To top it all off, I've been experimenting with an AI (I know, sounds fancy right?), which helped me jot down parts of this post. It's been interesting and somewhat surreal to collaborate with a virtual entity, but hey, it turns out we make quite a team! 
+To switch things up, I also delved into the laid back sounds of *Sublime,* bringing back those good old 90s alternative rock vibes. I swayed to *Rancid* tunes, punks at heart who present some brilliant tracks. 👌 
 
-Let's embrace the unpredictable, swirling beauty of music 🌀. Who knows? This time next week, I might be raving about a whole different set of artists. Until then, keep your ears open and your playlist long. Music is, after all, the language of the soul. ✨ 
+And how could I miss out on the genre-bending sounds of the *Beastie Boys*? They always get my spirits up! To soothe and balance these explosive beats, *Tori Amos* made her entrance. Her piano-driven melodies were wonderfully calm and uplifting. 🎹
 
-Catch ya later, audiophiles!  Till then, let the music play on 🙌
+*Vast,* with their vast (pun intended 🙈) soundscapes, also had a discreet presence in my playlist. The rock band *Warrant* brought in some fresh and hard-edged music, and *Baxter Dury* livened things up with his distinctive sounds. 
 
-P.S. Do drop me a comment and let me know what you’ve been blasting through your speakers this week. 🎵 Let's swap some tunes, yeah?
+Go on, hop over to my profile on [Last.fm](https://www.last.fm/user/RussMckendrick) to check out what I've been up to. 🎧
 
-## Top Artists (Week 23)
+And hey, would you believe if I told you that a good part of this post was AI-generated? Well believe it, because denizens of the future, we're living in it! Always fun to experiment with different formats, and I’m thrilled with the results.🤖💫
 
-- [James](https://www.mckendrick.rocks/artist/james/) (53 plays)
-- [Matt Berry](https://www.mckendrick.rocks/artist/matt-berry/) (27 plays)
-- [U2](https://www.mckendrick.rocks/artist/u2/) (22 plays)
-- [Steven Wilson](https://www.mckendrick.rocks/artist/steven-wilson/) (17 plays)
-- [Radiohead](https://www.mckendrick.rocks/artist/radiohead/) (16 plays)
-- [The Police](https://www.mckendrick.rocks/artist/the-police/) (16 plays)
-- [Talk Talk](https://www.mckendrick.rocks/artist/talk-talk/) (15 plays)
-- [The Beach Boys](https://www.mckendrick.rocks/artist/the-beach-boys/) (13 plays)
-- [Anathema](https://www.mckendrick.rocks/artist/anathema/) (11 plays)
-- [Jenny Lewis](https://www.mckendrick.rocks/artist/jenny-lewis/) (10 plays)
-- [Killing Joke](https://www.mckendrick.rocks/artist/killing-joke/) (6 plays)
-- [Roger Waters](https://www.mckendrick.rocks/artist/roger-waters/) (6 plays)
+Well, that's it folks! That's a wrap-up of my musical diary for this week. As always, I had a blast exploring different sounds and artists, seeking out the old and the new, the mainstream and the obscure. I hope you enjoyed hearing about my week in music as much as I enjoyed living it. 
+
+Till the next post, let the melodies float in the air and let the rhythms get you grooving. Stay groovy, my friends! 🤘🎼
+
+**Happy listening and keep rocking!** 🎧🚀
+
+## Top Artists (Week 22)
+
+- [The Specials](https://www.mckendrick.rocks/artist/the-specials/) (25 plays)
+- [Sparks](https://www.mckendrick.rocks/artist/sparks/) (24 plays)
+- [The Lemonheads](https://www.mckendrick.rocks/artist/the-lemonheads/) (23 plays)
+- [Super Furry Animals](https://www.mckendrick.rocks/artist/super-furry-animals/) (20 plays)
+- [Roxy Music](https://www.mckendrick.rocks/artist/roxy-music/) (18 plays)
+- [Sublime](https://www.mckendrick.rocks/artist/sublime/) (17 plays)
+- [Rancid](https://www.mckendrick.rocks/artist/rancid/) (16 plays)
+- [Beastie Boys](https://www.mckendrick.rocks/artist/beastie-boys/) (15 plays)
+- [Tori Amos](https://www.mckendrick.rocks/artist/tori-amos/) (13 plays)
+- Vast (12 plays)
+- [Warrant](https://www.mckendrick.rocks/artist/warrant/) (12 plays)
+- [Baxter Dury](https://www.mckendrick.rocks/artist/baxter-dury/) (10 plays)
 
 
-## Top Albums (Week 23)
+## Top Albums (Week 22)
 
-- [Be Opened By The Wonderful (40 Years Orchestrated)](https://www.mckendrick.rocks/albums/be-opened-by-the-wonderful-40-years-orchestrated-27333687/) by James
-- [Kill The Wolf](https://www.mckendrick.rocks/albums/kill-the-wolf-4708269/) by Matt Berry
-- KID A MNESIA by Radiohead
-- [Greatest Hits](https://www.mckendrick.rocks/albums/greatest-hits-26517422/) by The Police
-- Fresh As A Daisy - The Singles by James
-- The Very Best Of by Talk Talk
-- [Pet Sounds](https://www.mckendrick.rocks/albums/pet-sounds-1567306/) by The Beach Boys
-- [Achtung Baby](https://www.mckendrick.rocks/albums/achtung-baby-21054859/) by U2
-- Distant Satellites (Tour Edition) by Anathema
-- To the Bone by Steven Wilson
-- [Joy'All](https://www.mckendrick.rocks/albums/joy-all-27328932/) by Jenny Lewis
-- [The Unforgettable Fire](https://www.mckendrick.rocks/albums/the-unforgettable-fire-204237/) by U2
+- The Specials (Deluxe Version) by The Specials
+- Come on Feel the Lemonheads by The Lemonheads
+- Alternative Anthems by Various Artists
+- Songbook: The Singles, Vol. 1 by Super Furry Animals
+- [The Best Of Roxy Music](https://www.mckendrick.rocks/albums/the-best-of-roxy-music-24389216/) by Roxy Music
+- [Sublime](https://www.mckendrick.rocks/albums/sublime-8687804/) by Sublime
+- [Tomorrow Never Comes](https://www.mckendrick.rocks/albums/tomorrow-never-comes-27265383/) by Rancid
+- [Ill Communication](https://www.mckendrick.rocks/albums/ill-communication-1856276/) by Beastie Boys
+- The Girl Is Crying in Her Latte by Sparks
+- Under the Pink by Tori Amos
+- Music for People by Vast
+- [Cherry Pie](https://www.mckendrick.rocks/albums/cherry-pie-26175560/) by Warrant
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

@@ -1,10 +1,10 @@
 ---
-title: "What did I listen to in week 22?"
+title: "What did I listen to in week 21?"
 date: "2023-05-29"
 draft: false
-summary: "This week, my auditory landscape was predominantly colored by the raw energy of The Specials. According to my LastFM data, I've been diving deep into their skank-worthy rhythms and punk-infused lyrics, making them my top-played artist. Stay tuned for a closer look into this gritty music obsession of mine."
+summary: "Diving into the eclectic rhythm universe this week, my soundtrack was passionately dominated by the Easy Star All-Stars. This captivating group, renowned for their unique reggae/dub spin on classic albums, held a powerful sway over my playlists, becoming my most played artist this week according to LastFM data."
 cover:
-    image: "/img/weekly-tunes-020.png"
+    image: "/img/weekly-tunes-010.png"
     relative: false
 tags:
     - "Vinyl"
@@ -16,64 +16,78 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 {{< gallery match="artists/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}
 
-# 🎧 My Music Diaries: What I've Been Tuning Into This Week 🎶
+## MY WEEKLY MUSICAL BUFFET 🎶
 
-Hello peeps! 😁  So I'm back again to share more of my musical journey with you. And oh boy, what an interesting week it was! It was like a musical rollercoaster ride with different genres and beats creating a wonderful melody in my ears. 
+Hey there music enthusiasts! 👋
 
-This week was a beautiful blend of the old and the new. I spent most of my listening time with a terrific group that rose to popularity during the ska revival of the late 70s - *The Specials.* 🎷🎺 From “Ghost Town” to “A Message to You Rudy,” their tunes have been my constant companions these past few days. What's more, their catchy and crisp lyrics echo in my mind long after the music has stopped. 
+It's been another incredible week full of melody, rhythm, and lyrics. I've spent so many hours lost in a realm of harmonious vibes and I thought, why not share it with my awesome community! Here, I am dishing out tales of the tunes that have captured my soul this week. Bonus, this part of the post was AI-generated! Surprising, isn't it? 
 
-Possibly, what I loved the most was how their music managed to blend political sensibilities with peppy and danceable tunes so well. It's no small feat, and no other band has perhaps captured the spirit of that era as they did. So, a big shout out to The Specials! 👏😎 
+Alright, diving right in! 
 
-Of course, the playlist didn't stop there! I got a bit more eclectic with my afternoon listens. Have any of you heard of *Sparks*? This American duo is a quirky mix of rock, new wave, and synth-pop. This week, I got hooked by their characteristic falsetto vocals and tongue-in-cheek lyrical style. 🎵
+### #1 On the Charts - Easy Star All-Stars ⭐
 
-In the spirit of variety, I also listened to some cool tunes from *The Lemonheads,* a catchy and influential indie-rock band, and *Super Furry Animals,* the psychedelic rock band from Wales. Oh, and can't forget *Roxy Music* with their unique blend of glam art-rock that is always a pleasure to listen to! 🎸🥁
+This week, no other band has gotten more playtime on my decks than the Easy Star All-Stars. There seems to be something incredibly magical about their music that simply resonates with my soul. The fusion of reggae, rock, dub, and progressive pop has resulted in a sound which is captivating, invigorating, and oh-so addictive. You just can't help but jive to their music. It's like a melodious entrée before diving into the main course of the week's music. 🎵 
 
-To switch things up, I also delved into the laid back sounds of *Sublime,* bringing back those good old 90s alternative rock vibes. I swayed to *Rancid* tunes, punks at heart who present some brilliant tracks. 👌 
+### Music Menu: Eclectic Mix 🎧
 
-And how could I miss out on the genre-bending sounds of the *Beastie Boys*? They always get my spirits up! To soothe and balance these explosive beats, *Tori Amos* made her entrance. Her piano-driven melodies were wonderfully calm and uplifting. 🎹
+Now, let's talk about my other musical pursuits of the week. 
 
-*Vast,* with their vast (pun intended 🙈) soundscapes, also had a discreet presence in my playlist. The rock band *Warrant* brought in some fresh and hard-edged music, and *Baxter Dury* livened things up with his distinctive sounds. 
+**Suede** has been gracing my eardrums with their Britpop anthems. Frontman Brett Anderson's soulful vocals combined with Bernard Butler's fiery guitar work always take me on an unforgettable sonic journey. It's like an appetizer that sets the mood for what's to follow. 
 
-Go on, hop over to my profile on [Last.fm](https://www.last.fm/user/RussMckendrick) to check out what I've been up to. 🎧
+Throw in some **Hepcat** to lighten the mood with their soothing ska and reggae vibes. Perfect for when I need a musical breather. 
 
-And hey, would you believe if I told you that a good part of this post was AI-generated? Well believe it, because denizens of the future, we're living in it! Always fun to experiment with different formats, and I’m thrilled with the results.🤖💫
+A dash of **Funkadelic** amplifies the flavor quotient with their intoxicating mix of soul, funk, and psychedelic rock. 
 
-Well, that's it folks! That's a wrap-up of my musical diary for this week. As always, I had a blast exploring different sounds and artists, seeking out the old and the new, the mainstream and the obscure. I hope you enjoyed hearing about my week in music as much as I enjoyed living it. 
+Feeling nostalgic? **Tears for Fears** are my go-to! I can't seem to get enough of their classic 80s anthems. It's like a delicious retro dessert that concludes my everyday musical course. 
 
-Till the next post, let the melodies float in the air and let the rhythms get you grooving. Stay groovy, my friends! 🤘🎼
+And last, but definitely not the least, **The Specials** offer a perfect after-party treat with their addictive ska beats perfect as a bedtime lullaby.
 
-**Happy listening and keep rocking!** 🎧🚀
+### Special Mentions 🎖
 
-## Top Artists (Week 22)
+This week was also about exploring interesting collaborations. **Zwan**, **The Slackers**, **Chris Murray**, topped my list. Their unique sounds and melodies infused that extra oomph factor in my playlist this week. And let's not forget **Easy Star All-Stars'** collaborations with **Macy Gray**, **Maxi Priest**, **and Naomi Cowan**. These were just the sprinkles on the big fat musical cake of this week. 
 
-- [The Specials](https://www.mckendrick.rocks/artist/the-specials/) (25 plays)
-- [Sparks](https://www.mckendrick.rocks/artist/sparks/) (24 plays)
-- [The Lemonheads](https://www.mckendrick.rocks/artist/the-lemonheads/) (23 plays)
-- [Super Furry Animals](https://www.mckendrick.rocks/artist/super-furry-animals/) (20 plays)
-- [Roxy Music](https://www.mckendrick.rocks/artist/roxy-music/) (18 plays)
-- [Sublime](https://www.mckendrick.rocks/artist/sublime/) (17 plays)
-- [Rancid](https://www.mckendrick.rocks/artist/rancid/) (16 plays)
-- [Beastie Boys](https://www.mckendrick.rocks/artist/beastie-boys/) (15 plays)
-- [Tori Amos](https://www.mckendrick.rocks/artist/tori-amos/) (13 plays)
-- Vast (12 plays)
-- [Warrant](https://www.mckendrick.rocks/artist/warrant/) (12 plays)
-- [Baxter Dury](https://www.mckendrick.rocks/artist/baxter-dury/) (10 plays)
+And there it is, fellow music lovers, my weekly soundtrack! It's been a symphony of tunes, beats, lyrics, and feels and I hope it inspires you to venture beyond your musical horizons. So, go ahead, explore these artists, who knows, you too might find a whole new side to your musical palette! 😉
+
+Remember, music connects souls, and just as mine connected with these artists this week, I hope yours finds a connection too. Till next time, happy listening! 🎧
+
+Do you want to delve deeper into my musical journey? Visit my Last.fm profile: [RussMckendrick](https://www.last.fm/user/RussMckendrick) and indulge in my world of tunes. 
+
+PS: Don't just listen to the music, feel it! 🎶
+
+Move to the rhythm! Groove to the beats! Over and out. 
+
+_Russ McKendrick._
+
+## Top Artists (Week 21)
+
+- [Easy Star All-Stars](https://www.mckendrick.rocks/artist/easy-star-all-stars/) (20 plays)
+- [Suede](https://www.mckendrick.rocks/artist/suede/) (16 plays)
+- Hepcat (14 plays)
+- [Funkadelic](https://www.mckendrick.rocks/artist/funkadelic/) (8 plays)
+- Tears for Fears (7 plays)
+- [The Specials](https://www.mckendrick.rocks/artist/the-specials/) (7 plays)
+- [Zwan](https://www.mckendrick.rocks/artist/zwan/) (7 plays)
+- [The Slackers](https://www.mckendrick.rocks/artist/the-slackers/) (2 plays)
+- Chris Murray (1 plays)
+- Easy Star All-Stars & Macy Gray (1 plays)
+- Easy Star All-Stars & Maxi Priest (1 plays)
+- Easy Star All-Stars & Naomi Cowan (1 plays)
 
 
-## Top Albums (Week 22)
+## Top Albums (Week 21)
 
+- Beautiful Ones: The Best of Suede 1992-2018 (Deluxe) by Suede
+- Right on Time by Hepcat
+- Dub Side of the Moon (A Reggae Version of Pink Floyd's Dark Side of the Moon) by Easy Star All-Stars
+- [Ziggy Stardub](https://www.mckendrick.rocks/albums/ziggy-stardub-26844965/) by Easy Star All-Stars
+- Songs from the Big Chair by Tears for Fears
 - The Specials (Deluxe Version) by The Specials
-- Come on Feel the Lemonheads by The Lemonheads
-- Alternative Anthems by Various Artists
-- Songbook: The Singles, Vol. 1 by Super Furry Animals
-- [The Best Of Roxy Music](https://www.mckendrick.rocks/albums/the-best-of-roxy-music-24389216/) by Roxy Music
-- [Sublime](https://www.mckendrick.rocks/albums/sublime-8687804/) by Sublime
-- [Tomorrow Never Comes](https://www.mckendrick.rocks/albums/tomorrow-never-comes-27265383/) by Rancid
-- [Ill Communication](https://www.mckendrick.rocks/albums/ill-communication-1856276/) by Beastie Boys
-- The Girl Is Crying in Her Latte by Sparks
-- Under the Pink by Tori Amos
-- Music for People by Vast
-- [Cherry Pie](https://www.mckendrick.rocks/albums/cherry-pie-26175560/) by Warrant
+- Mary Star of the Sea by Zwan
+- [Maggot Brain](https://www.mckendrick.rocks/albums/maggot-brain-602546/) by Funkadelic
+- One Nation Under a Groove (Remastered Edition) by Funkadelic
+- Slackness by Chris Murray
+- Ziggy Stardub by Easy Star All-Stars & Macy Gray
+- Ziggy Stardub by Easy Star All-Stars & Maxi Priest
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

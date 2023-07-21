@@ -1,10 +1,10 @@
 ---
-title: "What did I listen to in week 28?"
+title: "What did I listen to in week 27?"
 date: "2023-07-10"
 draft: false
-summary: "Immersing myself in the intoxicating rhythms of The Stranglers, this week has been an auditory delight. My most-played artist, according to LastFM data, their pulsating beats and distinctive sound painted the backdrop of my days, their music weaving a vibrant tapestry of impeccable rock n' roll into my everyday life."
+summary: "Embarking on an auditory journey this week, my soundscape was dominated by the eclectic symphonies of Prefab Sprout. Their unique melodious blend was an unwavering presence, ruling my playlist and setting the rhythm of my week. An undeniable testament to their compelling musical genius and my resolute admiration for their artistry."
 cover:
-    image: "/img/weekly-tunes-005.png"
+    image: "/img/weekly-tunes-017.png"
     relative: false
 tags:
     - "Vinyl"
@@ -16,84 +16,63 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 {{< gallery match="artists/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}
 
-## 🎵 Russ' Music Rotation: The Stranglers Take the Lead 🎶
+Hey, all you beautiful people! 🎵🤘🏼
 
-Hello there, music enthusiasts! 🕺How have you been fueling your soul lately with the power of music? 🔊
+This week has been a rollercoaster ride of soothing melodies, bombastic anthems, heart-rending ballads, and groovy tunes 🎶. Thanks to my accountability partner, Last.fm, I've kept track of everything that's been gracing my ears. So, let me give you the scorecard.
 
-There's always something magically fascinating about delving into different sounds, lyrics, beats, and rhythms and letting them wash over you and transport you to different worlds. 🌍 It's much like a sonic adventure, traversing across different genres, eras, and moods. Ah, the joy of music!🎧
+Setting the tone of my week, Prefab Sprout 🌱 turned out to be my most played artist (yeah, keep the applause going - they deserve it 😉). Their smart, sophisticated pop sensibilities, complex arrangements, coupled with Paddy McAloon's beatifically melancholic vocals, were the perfect companions on my morning jogs. Songs like "Appetite" and "Bonny" have a knack for setting you right, trust me. 
 
-In this week's blog post, I'll be sharing the music that has been gracing my ears and motivating my daily life in the past seven days. This week's data was collected from Last.fm, where I keep a record of my listening habits. You can check out my profile at [RussMckendrick](https://www.last.fm/user/RussMckendrick) on Last.fm 🎵
+"From Langley Park to Memphis" never fails to make me think - the beautiful melancholy of it is truly Prefab Sprout's trademark aura. "Cars and Girls," in particular, was on loop because who can resist its intricate storytelling? 🔁 
 
-_Just a quick heads-up:_ this section of the blog post was AI-generated, which is pretty cool, right? 🤖💻 Let's get on with it without further ado.
+Fancy a twist in the musical journey? Let's bounce off to Stone Temple Pilots. Their weighty, albeit radio-friendly sound, is always good when I need my rock fix. "Interstate Love Song" makes me forget that I am in the middle of grocery shopping and "Plush" always takes me back to the early '90s, simpler times. 
 
-### 🥇**The Stranglers** 🎶
+Had some chill afternoons where I vibed to Airhead, their music has this delicately textured arrangements. Hootie & the Blowfish's chart-topper "Only Wanna be With You" also made a resounding comeback in my playlist - the nostalgia is real, folks! 😌 
 
-Topping my list this week are the under-appreciated masters of music, The Stranglers. Why 'underappreciated,' you ask? Well, let's just say they've been repeatedly overshadowed by their contemporaries like The Sex Pistols and The Clash in popular discourse. Yet their music offerings prove they deserve all kinds of accolades their own unique sound.
+Yet, it's not just '90s pop-rock vibes all the time! Deviated into some dark melodies with Anathema. Their atmospheric soundscapes always strike a chord (pun intended 😉). Pearl Jam, with Eddie Vedder's powerful growl, added to the diverse sonic tapestry of my week. 
 
-The Stranglers' music is just timeless! They seamlessly blend punk rock, new wave, and Gothic elements, creating a sound that's undeniably addictive. Part dark, part uplifting, part rebellious, their music is a distinct brand you won't mistake for another, and I've been loving every second of it this week. 🖤🤘
+Wanna know my guilty pleasure for nights when sleep eludes me 🌙? It's Portishead with their eerie, haunting tunes. Jane's Addiction swept me off my feet with their ferocious metallic riffs and punky rawness. Now, how can I ever complete my week without letting U2 serenade me? Bono's passionately earnest voice in "One" turned my mundane moments into spectacular ones.
 
-### Other Beats Caught in my Rotation this Week⏮⏸⏭
+Digging further back to my roots, The Style Council and Genesis made a welcome return on the playlist. Remember Fishbone? Give "Everyday Sunshine" a spin, it's pure joy encapsulated in music. 
 
-My ears have seen a tour of quite a few artists and their captivating sounds this week. Here's a rundown 📝:
+Okay, let's serve some spicy hot news fresh off the stove 🔥! This part of the blog is AI-generated. Can you believe it? Technology, am I right? It impresses and scares me at the same time, I must admit. Would you be able to tell if I hadn't spilled the beans? Drop your thoughts below! 👇
 
-**Rush** - Consistent, experimental, and groundbreaking. Rush's progressive rock mastery is a blissful experience.
+There you have it, folks, a glimpse into my sonic world that kept me company, consoled, and uplifted me this week. Feel like joining me on my musical journey? Check out my Last.fm profile at https://www.last.fm/user/RussMckendrick. Drop me your suggestions too - I am always game for widening my music horizon.
 
-**Stevie Wonder** - Ah, the Motown legend! There's not quite anything like grooving to Wonder's melodious tracks.
+Until the next tune...
+Keep on rockin'! 🤘🏼🎸🎵 
 
-**Faith No More** - Their alt-metal sounds with a twist of funk have been a refreshing interlude in my playlist this week.
+P.S: Special mention to my coffee ☕, which kept me alive to listen to all these tunes. Shoutout to all caffeine addicts!
 
-**Gabriels** - This trio’s soulful gospel house music has the power to touch the deepest chords of your heart.
+## Top Artists (Week 27)
 
-**The Damned** - New wave and gothic rock at its best! The Damned made a rhythmic cameo in my rotation.
-
-**Tool** - The kings of progressive metal made their way into my playlist too, offering a heavier touch to my music repertoire. 
-
-**Pink Floyd** - Classics never go out of style, right? The psychedelic echoes of Pink Floyd were part of this week's journey.
-
-**Zero 7** - An interesting mix of trip-hop and downtempo; Zero 7 keeps things unconventional and enchanting.
-
-**Genesis** - Prog rock at its finest. How could they not be a part of my weekly ensemble?
-
-**Bombay Bicycle Club** - Indie rock for the soul. Their resonantly eclectic tunes have set the tone for many of my introspective moments.
-
-**Lemon Jelly** - A delightful blend of electronica and downtempo. Their dreamy soundscapes were the perfect audio backdrop to end some of my days.
-
-This week has been a musical carnival, without a doubt. 🎪 Being able to explore the different elements of these diverse artists is a constant source of delight. 🎵 Each artist brings something unique to the table, and it's always interesting to see where the notes lead next. 🎶
-
-Stay tuned in for the next shared rotation and until then, keep the music playing, keep the rhythm alive, and let your soul dance to the melody of life! 💃🎵🕺
-
-Keep it groovy, folks! ✌️
-
-## Top Artists (Week 28)
-
-- [The Stranglers](https://www.mckendrick.rocks/artist/the-stranglers/) (20 plays)
-- [Rush](https://www.mckendrick.rocks/artist/rush/) (19 plays)
-- [Stevie Wonder](https://www.mckendrick.rocks/artist/stevie-wonder/) (17 plays)
-- [Faith No More](https://www.mckendrick.rocks/artist/faith-no-more/) (15 plays)
-- [Gabriels](https://www.mckendrick.rocks/artist/gabriels/) (13 plays)
-- [The Damned](https://www.mckendrick.rocks/artist/the-damned/) (11 plays)
-- [Tool](https://www.mckendrick.rocks/artist/tool/) (9 plays)
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (7 plays)
-- [Zero 7](https://www.mckendrick.rocks/artist/zero-7/) (6 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (4 plays)
-- Bombay Bicycle Club (2 plays)
-- Lemon Jelly (2 plays)
+- [Prefab Sprout](https://www.mckendrick.rocks/artist/prefab-sprout/) (16 plays)
+- [Stone Temple Pilots](https://www.mckendrick.rocks/artist/stone-temple-pilots/) (12 plays)
+- [Airhead](https://www.mckendrick.rocks/artist/airhead/) (11 plays)
+- [Hootie & The Blowfish](https://www.mckendrick.rocks/artist/hootie-the-blowfish/) (11 plays)
+- [Anathema](https://www.mckendrick.rocks/artist/anathema/) (10 plays)
+- [Pearl Jam](https://www.mckendrick.rocks/artist/pearl-jam/) (10 plays)
+- [Portishead](https://www.mckendrick.rocks/artist/portishead/) (10 plays)
+- [Jane's Addiction](https://www.mckendrick.rocks/artist/janes-addiction/) (8 plays)
+- [U2](https://www.mckendrick.rocks/artist/u2/) (8 plays)
+- [The Style Council](https://www.mckendrick.rocks/artist/the-style-council/) (6 plays)
+- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (5 plays)
+- [Fishbone](https://www.mckendrick.rocks/artist/fishbone/) (4 plays)
 
 
-## Top Albums (Week 28)
+## Top Albums (Week 27)
 
-- The Endless Coloured Ways: The Songs of Nick Drake by Various Artists
-- Peaches: The Very Best of the Stranglers by The Stranglers
-- Songs in the Key of Life by Stevie Wonder
-- Who Cares a Lot? The Greatest Hits by Faith No More
-- [Angels & Queens](https://www.mckendrick.rocks/albums/angels-queens-27577632/) by Gabriels
-- Another Great Record from the Damned: the Best of the Damned by The Damned
-- Retrospective II (1981-1987) by Rush
-- Retrospective I (1974-1980) by Rush
-- [Fear Inoculum](https://www.mckendrick.rocks/albums/fear-inoculum-22253038/) by Tool
-- A Momentary Lapse of Reason (2019 Remix) by Pink Floyd
-- Simple Things (Special Edition) by Zero 7
-- Invisible Touch (2007 Remaster) by Genesis
+- The Best of Prefab Sprout: A Life of Surprises by Prefab Sprout
+- [Core](https://www.mckendrick.rocks/albums/core-4798781/) by Stone Temple Pilots
+- [Boing!!](https://www.mckendrick.rocks/albums/boing-1343423/) by Airhead
+- [Cracked Rear View](https://www.mckendrick.rocks/albums/cracked-rear-view-27617181/) by Hootie & The Blowfish
+- [Distant Satellites](https://www.mckendrick.rocks/albums/distant-satellites-5766148/) by Anathema
+- [Ten](https://www.mckendrick.rocks/albums/ten-1704831/) by Pearl Jam
+- [Dummy](https://www.mckendrick.rocks/albums/dummy-6326631/) by Portishead
+- Ritual de lo Habitual by Jane's Addiction
+- [The Joshua Tree](https://www.mckendrick.rocks/albums/the-joshua-tree-10391869/) by U2
+- Long Hot Summers: The Story Of The Style Council by The Style Council
+- The Lamb Lies Down On Broadway (remastered 2008) by Genesis
+- The Essential Fishbone by Fishbone
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

@@ -1,10 +1,10 @@
 ---
-title: "What did I listen to in week 26?"
+title: "What did I listen to in week 25?"
 date: "2023-06-26"
 draft: false
-summary: "Diving deep into the addictive cacophony of Pixies this week, LastFM data reveals a personal obsession. Their rebellious rhythms topped my playlist, their undiluted energy resonating through countless repeats. This week, Pixies weren't just another band - they were a lifeline to sanity, an anthem of unparalleled solace."
+summary: "Diving into the sublime melody of George Harrison, the enigmatic former Beatle, ruled my speakers this week. My LastFM data brightly reflects Harrison's ingenious compositions claiming maximum airtime. An audial journey through rock, pop and experimental genres narrated by the 'Dark Horse' himself - a week steeped in sheer musical bliss."
 cover:
-    image: "/img/weekly-tunes-008.png"
+    image: "/img/weekly-tunes-009.png"
     relative: false
 tags:
     - "Vinyl"
@@ -16,60 +16,68 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 {{< gallery match="artists/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}
 
-## Hey music fans! What's Up? 🎧🎵🌈
+# 🎵Russ Mckendrick's Weekly Music Breakdown🎵
 
-Me, Russ, your fellow music lover, is back again to share with you some exquisite musical tales revolving around the artists who made my week groove, sway, and oh-so-beloved. 🎶 You know these updates are compliments of Last.fm - shout out to the number crunchers over there! Oh, and for the tech savants amongst us, the bulk of this blog was AI generated. Living in the future, right? Trust me, it's awesome!
+Hey there, music aficionados! 🎧 As with every week, we're diving deep into my musical landscapes, shedding light on the eclectic mix of sounds that have resonated through my speakers and headphones this week.
 
-So, who took the cake this week? Straight from the alternative rock timeline, a band named Pixies 🥁🎸 earned the number one spot, spinning a musical web and catching my attention in its chords. I was completely engrossed in the '80s vibe that Pixies treated me with, their music serving as a comforting escapade from life, to another world which only exists in harmony and lyrics. "Here comes your man," indeed 🕺.
+This data, meticulously compiled from my Last.fm profile (give it a follow if you haven't: https://www.last.fm/user/RussMckendrick), is served fresh with no repeats, guaranteeing a blend of old favorites and new discoveries. Enjoy the journey! 
 
-Pixies' gritty guitar riffs, raw performance style, and straight-up rock image all allured me this week and motivated me to explore more of their musical chronicles. The ingenuity of Black Francis, Joey Santiago, Kim Deal's collective experiment of punk, surf rock, and indie pop creates a melodic saga that's compelling and resonates deeply. "Doolittle," "Bossanova," and "Surfer Rosa" have been my constant companions in the past week.
+Hauntingly serving as my sonic backdrop for this week has been none other than George Harrison.😎✌️ Yes, you heard that right, the magical mystery man from The Beatles! Harrison, known not just for his innovative guitar work but also for his profound songwriting skill, has occupied the top spot on my playlist.
 
-Joining Pixies in my weeklong musical journey was the ever-rocking guitar God, Jimmy Page. My speakers were lit with the exhilarating blues rock and folk tunes that this legendary guitarist brought to the table. I was truly "Living Loving Maid" (She's Just a Woman) with Jimmy.
+His genius at blending rock, pop and Eastern mysticism is captivating in its tracks like "My Sweet Lord," where his sitar playing strikes a deep chord. Then there's the emotionally rich "While My Guitar Gently Weeps," with its poignant lyrics and heart-rending melody. George Harrison's refreshing perspective on life, love, and spirituality has been providing a rich backdrop to my week.
 
-Shifting gears from rock to pop, I also found solace in Crowded House's mesmerizing tunes. The splendid amalgamation of rock, pop, and jangle pop, their sound left me in high spirits. 🌻Their song "Don't Dream It's Over" turned out to be an anthem that definitely washed off my blues. 
+Switching gears from Harrison's eastern-tinged guitar vibes, I've also been indulging in The Style Council's funky and soulful rhythms. 🎷Their song, "Shout to the Top!" is an underrated 80s gem that has had me grooving in my living room.
 
-Continuing in my pop exploration, Deacon Blue uplifted my mood with their new wave and sophisti-pop vibes. 🌊 Their gripping storytelling blended with intoxicating melodies have been nothing but a true delight. Amidst the sophisticated play of musical instruments, their album "Raintown" managed to sprinkle some magic in my mundane routine.
+Talk about an 80s vibe, let's not forget the post-punk ecstasy in the form of New Order. Blending rock with electronica, their song "Blue Monday" will make you feel anything but blue.
 
-Music, without a pinch of David Bowie, is like a sky devoid of stars. 🌙⭐ The iconic musician serenaded me with his art rock, pop rock, and lately jazz tunes which were a perfect antidote for my dreary afternoons. 
+When it comes to making the sonic cosmos echo, nothing compares to Pink Floyd. The surreal journey offered by "Comfortably Numb" or the thought-provoking commentary of "Another Brick in the Wall" has been pouring out of my headphones this week.
 
-Inspiral Carpets' Madchester tunes, Stevie Wonder's soul tunes, Jim Bob's alt-rock, Crippled Black Phoenix's post-rock, Levellers' folk-punk, Rush's powerful rock anthems, Big Big Train's progressive rock tunes, each made an appearance, adding distinct colors and tones to my soundtrack of the week. 🎹 🎷 🎺 🎸 🪘 
+Moving a bit more into the rock lane, I've been enjoying Tom Petty and The Heartbreakers' classic hits such as "Free Fallin'" and "I Won't Back Down". They have added nicely to my playlist with their heartland rock.
 
-Overall, the week was a melodious blend of different genres each resonating with my mood and musings. It was an awe-inspiring gust of different eras of musical brilliance all at once, from iconic rock & roll to heart touching pop, from electrifying punk rock to the soothing calm of folk tunes.
+Adding some icing to the cake, or should I say, Cake? This band was right at home in the midweeks, with their alternative rock prowess loud in tracks like "Short Skirt/Long Jacket".
 
-I'll be back again next week with more updates on my musical adventures. Until then, keep exploring and let the music play. 🎵Hit me up with your recommendations!👩‍🎤 Happy Listening! 🎧
+The indie rush of Delays was also present in my playlist, combined with the ever-dazzling Kate Bush. From her haunting "Wuthering Heights" to the emotionally packed "This Woman's Work," Bush alone can turn a mundane day into a cinematic experience.
 
-Check out and follow my continuous musical journey on https://www.last.fm/user/RussMckendrick. 🚀 Let's connect and share our passion for music! Peace! ✌️✨
+And what's a week without a dose of Depeche Mode? The synth-pop masters have been serving their gooey, addictive recipe of electronic bliss.
 
-## Top Artists (Week 26)
+I've also been travelling back to the 80s with Simple Minds and Tears for Fears, spinning up a storm with "Don't You (Forget About Me)" and "Everybody Wants to Rule the World" respectively.
 
-- [Pixies](https://www.mckendrick.rocks/artist/pixies/) (25 plays)
-- [Jimmy Page](https://www.mckendrick.rocks/artist/jimmy-page/) (20 plays)
-- [Crowded House](https://www.mckendrick.rocks/artist/crowded-house/) (19 plays)
-- [Deacon Blue](https://www.mckendrick.rocks/artist/deacon-blue/) (18 plays)
-- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (17 plays)
-- [Inspiral Carpets](https://www.mckendrick.rocks/artist/inspiral-carpets/) (17 plays)
-- [Stevie Wonder](https://www.mckendrick.rocks/artist/stevie-wonder/) (17 plays)
-- [Jim Bob](https://www.mckendrick.rocks/artist/jim-bob/) (12 plays)
-- [Crippled Black Phoenix](https://www.mckendrick.rocks/artist/crippled-black-phoenix/) (11 plays)
-- Levellers (11 plays)
-- [Rush](https://www.mckendrick.rocks/artist/rush/) (8 plays)
-- [Big Big Train](https://www.mckendrick.rocks/artist/big-big-train/) (5 plays)
+Last but not least, The Smashing Pumpkins' alternative rock anthems like "1979" have been rounding off my week with a blast.
+
+Surprise, surprise! 🥳 This week's blog post added a new flair. It was AI generated. Mind blown, right? With AI at the help, let's just say creativity knows no bounds.
+
+Well, that wraps up my rollercoaster ride through the euphoric highs and soothing lows of this week. 🎢 Tune in again next week. Who knows what the playlist will unveil! Until then, keep your heads high and the music loud! 🎶
+
+## Top Artists (Week 25)
+
+- [George Harrison](https://www.mckendrick.rocks/artist/george-harrison/) (40 plays)
+- [The Style Council](https://www.mckendrick.rocks/artist/the-style-council/) (27 plays)
+- [New Order](https://www.mckendrick.rocks/artist/new-order/) (24 plays)
+- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (16 plays)
+- Tom Petty and The Heartbreakers (15 plays)
+- [Cake](https://www.mckendrick.rocks/artist/cake/) (14 plays)
+- [Delays](https://www.mckendrick.rocks/artist/delays/) (12 plays)
+- [Kate Bush](https://www.mckendrick.rocks/artist/kate-bush/) (12 plays)
+- [Depeche Mode](https://www.mckendrick.rocks/artist/depeche-mode/) (10 plays)
+- [Simple Minds](https://www.mckendrick.rocks/artist/simple-minds/) (9 plays)
+- Tears for Fears (8 plays)
+- [The Smashing Pumpkins](https://www.mckendrick.rocks/artist/the-smashing-pumpkins/) (6 plays)
 
 
-## Top Albums (Week 26)
+## Top Albums (Week 25)
 
-- Wave Of Mutilation: Best Of Pixies by Pixies
-- [Live At The Greek](https://www.mckendrick.rocks/albums/live-at-the-greek-5029933/) by Jimmy Page
-- The Very Very Best of Crowded House by Crowded House
-- Best of Bowie by David Bowie
-- Our Town - The Greatest Hits by Deacon Blue
-- [The Complete Singles](https://www.mckendrick.rocks/albums/the-complete-singles-26454110/) by Inspiral Carpets
-- Songs in the Key of Life by Stevie Wonder
-- [Thanks For Reaching Out](https://www.mckendrick.rocks/albums/thanks-for-reaching-out-27546843/) by Jim Bob
-- [The Resurrectionists](https://www.mckendrick.rocks/albums/the-resurrectionists-13562698/) by Crippled Black Phoenix
-- [Levelling The Land 25th Anniversary Edition](https://www.mckendrick.rocks/albums/levelling-the-land-25th-anniversary-edition-9365189/) by The Levellers
-- Signals (Remastered) by Rush
-- [Ingenious Devices](https://www.mckendrick.rocks/albums/ingenious-devices-27528075/) by Big Big Train
+- [All Things Must Pass (50th Anniversary)](https://www.mckendrick.rocks/albums/all-things-must-pass-50th-anniversary-19772260/) by George Harrison
+- Now 80s Alternative by Various Artists
+- Long Hot Summers: The Story Of The Style Council by The Style Council
+- [Singles](https://www.mckendrick.rocks/albums/singles-9017905/) by New Order
+- [A Foot In The Door (The Best Of Pink Floyd)](https://www.mckendrick.rocks/albums/a-foot-in-the-door-the-best-of-pink-floyd-12569365/) by Pink Floyd
+- Greatest Hits by Tom Petty and The Heartbreakers
+- [Fashion Nugget](https://www.mckendrick.rocks/albums/fashion-nugget-15007936/) by Cake
+- [Faded Seaside Glamour](https://www.mckendrick.rocks/albums/faded-seaside-glamour-25891525/) by Delays
+- Hounds of Love by Kate Bush
+- Songs of Faith and Devotion by Depeche Mode
+- [Once Upon A Time](https://www.mckendrick.rocks/albums/once-upon-a-time-762207/) by Simple Minds
+- Songs from the Big Chair by Tears for Fears
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}
