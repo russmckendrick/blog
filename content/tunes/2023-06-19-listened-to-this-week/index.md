@@ -1,10 +1,10 @@
 ---
-title: "What did I listen to in week 25?"
+title: "What did I listen to in week 24?"
 date: "2023-06-19"
 draft: false
-summary: "Diving into the sublime melody of George Harrison, the enigmatic former Beatle, ruled my speakers this week. My LastFM data brightly reflects Harrison's ingenious compositions claiming maximum airtime. An audial journey through rock, pop and experimental genres narrated by the 'Dark Horse' himself - a week steeped in sheer musical bliss."
+summary: "Immerse yourself in a sonic journey this week as my LastFM stats revealed an obsession with the iconic pop duo; the Pet Shop Boys. Their timeless synth beats and captivating lyrics dominated my playlist, heightening the auditory experience and encapsulating the transformative power of their evocative, pop-disco soundscape."
 cover:
-    image: "/img/weekly-tunes-009.png"
+    image: "/img/weekly-tunes-016.png"
     relative: false
 tags:
     - "Vinyl"
@@ -16,68 +16,53 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 {{< gallery match="artists/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}
 
-# 🎵Russ Mckendrick's Weekly Music Breakdown🎵
+**✨Week In Review: A Dive into My Quintessential Music Tastes This Week, From Last.fm✨**
 
-Hey there, music aficionados! 🎧 As with every week, we're diving deep into my musical landscapes, shedding light on the eclectic mix of sounds that have resonated through my speakers and headphones this week.
+Hey lovelies! 🎀 I'm here with an out-of-the-ordinary entry for y'all. Today's  🎶music share comes from my Last.fm profile (you can find me at https://www.last.fm/user/RussMckendrick) & guess what? Most of the text written here is AI 𝓰𝓮𝓷𝓮𝓻𝓪𝓽𝓮𝓭. Super wild, right?
 
-This data, meticulously compiled from my Last.fm profile (give it a follow if you haven't: https://www.last.fm/user/RussMckendrick), is served fresh with no repeats, guaranteeing a blend of old favorites and new discoveries. Enjoy the journey! 
+This week has been thoroughly filled with insurmountable beats, rhythm, and soul-pouring lyrics. The real MVP of my week has been none other than the Pet Shop Boys. 🎉Can we give them a virtual round of applause?👏 Their music has undoubtedly marked an indelible impact on the music industry that's unmistakable.
 
-Hauntingly serving as my sonic backdrop for this week has been none other than George Harrison.😎✌️ Yes, you heard that right, the magical mystery man from The Beatles! Harrison, known not just for his innovative guitar work but also for his profound songwriting skill, has occupied the top spot on my playlist.
+Now, who doesn't love Pet Shop Boys? They're legendary on many fronts - their iconic synth-pop sound, lyrical ingenuity, and art-forward videos have cemented their status in the annals of pop culture. 🎤🎧 Their unmistakable sound has been a constant backtrack to my life this week, providing the perfect mojo as I juggle through everyday chores.
 
-His genius at blending rock, pop and Eastern mysticism is captivating in its tracks like "My Sweet Lord," where his sitar playing strikes a deep chord. Then there's the emotionally rich "While My Guitar Gently Weeps," with its poignant lyrics and heart-rending melody. George Harrison's refreshing perspective on life, love, and spirituality has been providing a rich backdrop to my week.
+From classics like "West End Girls" to "It's a Sin" - every song takes me on a different ride, a different story every time, pressed with infectious basslines and penetrating vocals.🕺💃 Their music is like a sonic time machine, transporting me to the vibrant and eclectic 80s. Amid our fast-paced lives, a little blast from the past is sometimes exactly what we need.✔
 
-Switching gears from Harrison's eastern-tinged guitar vibes, I've also been indulging in The Style Council's funky and soulful rhythms. 🎷Their song, "Shout to the Top!" is an underrated 80s gem that has had me grooving in my living room.
+But, hey! It's not just the Pet Shop Boys who have had my ears this week. The Finn Brothers 💖graced my playlist too with their melodic serenades. Their chemistry resonates through each lyric, each note, and every song they've produced. Finn Brothers' music has this sort of emphatic allure that makes you stop whatever you're doing and just 𝓵𝓲𝓼𝓽𝓮𝓷. Anyone else feels this way, or is it just me?
 
-Talk about an 80s vibe, let's not forget the post-punk ecstasy in the form of New Order. Blending rock with electronica, their song "Blue Monday" will make you feel anything but blue.
+INXS was another treat for my ears this week. There's something about Michael Hutchence’s raw, seductive voice and the band’s fusion of rock, funk, and new wave that had my headphones 🎧on repeat mode. ❤ Every INXS song uniquely stands out yet seamlessly fits together in their repertoire—an incredible musical paradox, if you ask me—always leaving me craving more.
 
-When it comes to making the sonic cosmos echo, nothing compares to Pink Floyd. The surreal journey offered by "Comfortably Numb" or the thought-provoking commentary of "Another Brick in the Wall" has been pouring out of my headphones this week.
+Can we also talk about Jason Isbell and the 400 Unit? Their music is like a breath of fresh air in the country landscape—with a tinge of rock influence.🎸 Whether it's a soulful ballad or a fun carousel-like track, there's a surprising depth in their music, a nicely layered sound that swiftly shifts between moods and tones. A true masterpiece! 🌟
 
-Moving a bit more into the rock lane, I've been enjoying Tom Petty and The Heartbreakers' classic hits such as "Free Fallin'" and "I Won't Back Down". They have added nicely to my playlist with their heartland rock.
+The playlist further went head-bopping with The Mighty Mighty Bosstones. Known for their energetic performances and danceable tunes, they made the week a little more ska-rrific. 😎 Their songs harbour an infectious optimism, both in lyrics and beats. A dose of positivity that we sure can use in our lives, am I right?
 
-Adding some icing to the cake, or should I say, Cake? This band was right at home in the midweeks, with their alternative rock prowess loud in tracks like "Short Skirt/Long Jacket".
+Lastly, Field Music graced my music chart with their alternative indie pop vibes. Each song of theirs is like a miniature art-pop symphony - tightly packed with tons of interesting musical ideas. Tracks that often break typical pop song structures while still retaining that catchy, feel-good sound. 🙌
 
-The indie rush of Delays was also present in my playlist, combined with the ever-dazzling Kate Bush. From her haunting "Wuthering Heights" to the emotionally packed "This Woman's Work," Bush alone can turn a mundane day into a cinematic experience.
+That's it, folks, for this week's music recommendations straight from my Last.fm 💻playlist! Music tastes are fluid and continually evolve. I always love discovering new treats for my ears.
 
-And what's a week without a dose of Depeche Mode? The synth-pop masters have been serving their gooey, addictive recipe of electronic bliss.
+Remember to keep your playlist fresh and diverse. After all, music 🎶is the universal language of mankind, capable of bridging gaps, soothing hearts, and igniting fires. Until next update, keep the music playing and the souls swaying! 🎼✌
+Stay tuned for more AI generated ✨content! Expect the unexpected with me. 💖
 
-I've also been travelling back to the 80s with Simple Minds and Tears for Fears, spinning up a storm with "Don't You (Forget About Me)" and "Everybody Wants to Rule the World" respectively.
+Happy Listening! 🎵😌
 
-Last but not least, The Smashing Pumpkins' alternative rock anthems like "1979" have been rounding off my week with a blast.
+Over and out.🌙 Toodles!
 
-Surprise, surprise! 🥳 This week's blog post added a new flair. It was AI generated. Mind blown, right? With AI at the help, let's just say creativity knows no bounds.
+## Top Artists (Week 24)
 
-Well, that wraps up my rollercoaster ride through the euphoric highs and soothing lows of this week. 🎢 Tune in again next week. Who knows what the playlist will unveil! Until then, keep your heads high and the music loud! 🎶
-
-## Top Artists (Week 25)
-
-- [George Harrison](https://www.mckendrick.rocks/artist/george-harrison/) (40 plays)
-- [The Style Council](https://www.mckendrick.rocks/artist/the-style-council/) (27 plays)
-- [New Order](https://www.mckendrick.rocks/artist/new-order/) (24 plays)
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (16 plays)
-- Tom Petty and The Heartbreakers (15 plays)
-- [Cake](https://www.mckendrick.rocks/artist/cake/) (14 plays)
-- [Delays](https://www.mckendrick.rocks/artist/delays/) (12 plays)
-- [Kate Bush](https://www.mckendrick.rocks/artist/kate-bush/) (12 plays)
-- [Depeche Mode](https://www.mckendrick.rocks/artist/depeche-mode/) (10 plays)
-- [Simple Minds](https://www.mckendrick.rocks/artist/simple-minds/) (9 plays)
-- Tears for Fears (8 plays)
-- [The Smashing Pumpkins](https://www.mckendrick.rocks/artist/the-smashing-pumpkins/) (6 plays)
+- [Pet Shop Boys](https://www.mckendrick.rocks/artist/pet-shop-boys/) (55 plays)
+- Finn Brothers (22 plays)
+- [INXS](https://www.mckendrick.rocks/artist/inxs/) (20 plays)
+- Jason Isbell and the 400 Unit (13 plays)
+- [The Mighty Mighty Bosstones](https://www.mckendrick.rocks/artist/the-mighty-mighty-bosstones/) (12 plays)
+- [Field Music](https://www.mckendrick.rocks/artist/field-music/) (11 plays)
 
 
-## Top Albums (Week 25)
+## Top Albums (Week 24)
 
-- [All Things Must Pass (50th Anniversary)](https://www.mckendrick.rocks/albums/all-things-must-pass-50th-anniversary-19772260/) by George Harrison
-- Now 80s Alternative by Various Artists
-- Long Hot Summers: The Story Of The Style Council by The Style Council
-- [Singles](https://www.mckendrick.rocks/albums/singles-9017905/) by New Order
-- [A Foot In The Door (The Best Of Pink Floyd)](https://www.mckendrick.rocks/albums/a-foot-in-the-door-the-best-of-pink-floyd-12569365/) by Pink Floyd
-- Greatest Hits by Tom Petty and The Heartbreakers
-- [Fashion Nugget](https://www.mckendrick.rocks/albums/fashion-nugget-15007936/) by Cake
-- [Faded Seaside Glamour](https://www.mckendrick.rocks/albums/faded-seaside-glamour-25891525/) by Delays
-- Hounds of Love by Kate Bush
-- Songs of Faith and Devotion by Depeche Mode
-- [Once Upon A Time](https://www.mckendrick.rocks/albums/once-upon-a-time-762207/) by Simple Minds
-- Songs from the Big Chair by Tears for Fears
+- [Smash (The Singles 1985-2020)](https://www.mckendrick.rocks/albums/smash-the-singles-1985-2020-27393912/) by Pet Shop Boys
+- Finn by Finn Brothers
+- [The Very Best](https://www.mckendrick.rocks/albums/the-very-best-17981053/) by INXS
+- Weathervanes by Jason Isbell and The 400 Unit
+- [Don't Know How To Party](https://www.mckendrick.rocks/albums/don-t-know-how-to-party-13667166/) by The Mighty Mighty Bosstones
+- [Tones Of Town](https://www.mckendrick.rocks/albums/tones-of-town-10173938/) by Field Music
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

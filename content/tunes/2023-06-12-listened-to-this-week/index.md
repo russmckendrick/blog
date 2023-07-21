@@ -1,10 +1,10 @@
 ---
-title: "What did I listen to in week 24?"
+title: "What did I listen to in week 23?"
 date: "2023-06-12"
 draft: false
-summary: "Immerse yourself in a sonic journey this week as my LastFM stats revealed an obsession with the iconic pop duo; the Pet Shop Boys. Their timeless synth beats and captivating lyrics dominated my playlist, heightening the auditory experience and encapsulating the transformative power of their evocative, pop-disco soundscape."
+summary: "This week, my auditory journey was ruled by the melodious allure of James. Each harmony echoing the rhythm of my routines, their music intertwined with my daily life. Dive into LastFM data as it unveils my profound connection with this fine tunesmith, their lyrics, and unforgettable beats."
 cover:
-    image: "/img/weekly-tunes-016.png"
+    image: "/img/weekly-tunes-015.png"
     relative: false
 tags:
     - "Vinyl"
@@ -16,53 +16,56 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 {{< gallery match="artists/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}
 
-**✨Week In Review: A Dive into My Quintessential Music Tastes This Week, From Last.fm✨**
+🎵 **Hey there, music lovers!** 🎵
 
-Hey lovelies! 🎀 I'm here with an out-of-the-ordinary entry for y'all. Today's  🎶music share comes from my Last.fm profile (you can find me at https://www.last.fm/user/RussMckendrick) & guess what? Most of the text written here is AI 𝓰𝓮𝓷𝓮𝓻𝓪𝓽𝓮𝓭. Super wild, right?
+If there’s one thing I’ve found over the years, it’s that my taste in music is just as eclectic as my taste in food (and let me tell you - that’s saying something 😅). This week was no different, and I spent a good portion of my time getting lost in the epic soundscapes crafted by some of my favorite artists. This week has been one for the books – or well, the speakers! 🎧
 
-This week has been thoroughly filled with insurmountable beats, rhythm, and soul-pouring lyrics. The real MVP of my week has been none other than the Pet Shop Boys. 🎉Can we give them a virtual round of applause?👏 Their music has undoubtedly marked an indelible impact on the music industry that's unmistakable.
+**Current earworm: James.** 
 
-Now, who doesn't love Pet Shop Boys? They're legendary on many fronts - their iconic synth-pop sound, lyrical ingenuity, and art-forward videos have cemented their status in the annals of pop culture. 🎤🎧 Their unmistakable sound has been a constant backtrack to my life this week, providing the perfect mojo as I juggle through everyday chores.
+An English rock band hailing from Manchester, they first made their mark on the scene back in the strapping year of 1982 🎸. Let me be clear about one thing, though: their music is as timeless as they come. I have been grooving to their tracks all week long, letting songs like "Come Home", "Sit Down", "She's a Star" and "Laid" take me on a trip down memory lane. Their sound is a vibrant mix of soulful lyrics and melodies that stick with you long after the song is over. 🤘 I can see why American college radio had quite the soft spot for their song "Laid". A quick courtesy check on [Wikipedia](https://en.wikipedia.org/wiki/James_(band)) will tell you all about their splendid journey, from formation to fame, to the departure of lead singer Tim Booth in 2001, and their much-awaited reunion in 2007. 
 
-From classics like "West End Girls" to "It's a Sin" - every song takes me on a different ride, a different story every time, pressed with infectious basslines and penetrating vocals.🕺💃 Their music is like a sonic time machine, transporting me to the vibrant and eclectic 80s. Amid our fast-paced lives, a little blast from the past is sometimes exactly what we need.✔
+Besides the Manchester marvels, I've also been spinning **Matt Berry, U2, Steven Wilson**, and **Radiohead**. It's always a pleasure to revisit The Beach Boys, whose harmonies are reminiscent of sunlit days and endless ocean waves 🌊. Anathema's prog-rock vibes and Jenny Lewis' indie pop sound added a nice variety to my playlist. I also spent some time immersed in the energetic post-punk sound of Killing Joke and, when the mood called for some introspection, I turned to none other than The Police and the legendary Roger Waters 🧡.
 
-But, hey! It's not just the Pet Shop Boys who have had my ears this week. The Finn Brothers 💖graced my playlist too with their melodic serenades. Their chemistry resonates through each lyric, each note, and every song they've produced. Finn Brothers' music has this sort of emphatic allure that makes you stop whatever you're doing and just 𝓵𝓲𝓼𝓽𝓮𝓷. Anyone else feels this way, or is it just me?
+By the way, all the music data was collected via Last.fm - shoutout to them for being such a great platform. You can check out my musical journey over there - [here's my profile](https://www.last.fm/user/RussMckendrick). 👈 
 
-INXS was another treat for my ears this week. There's something about Michael Hutchence’s raw, seductive voice and the band’s fusion of rock, funk, and new wave that had my headphones 🎧on repeat mode. ❤ Every INXS song uniquely stands out yet seamlessly fits together in their repertoire—an incredible musical paradox, if you ask me—always leaving me craving more.
+To top it all off, I've been experimenting with an AI (I know, sounds fancy right?), which helped me jot down parts of this post. It's been interesting and somewhat surreal to collaborate with a virtual entity, but hey, it turns out we make quite a team! 
 
-Can we also talk about Jason Isbell and the 400 Unit? Their music is like a breath of fresh air in the country landscape—with a tinge of rock influence.🎸 Whether it's a soulful ballad or a fun carousel-like track, there's a surprising depth in their music, a nicely layered sound that swiftly shifts between moods and tones. A true masterpiece! 🌟
+Let's embrace the unpredictable, swirling beauty of music 🌀. Who knows? This time next week, I might be raving about a whole different set of artists. Until then, keep your ears open and your playlist long. Music is, after all, the language of the soul. ✨ 
 
-The playlist further went head-bopping with The Mighty Mighty Bosstones. Known for their energetic performances and danceable tunes, they made the week a little more ska-rrific. 😎 Their songs harbour an infectious optimism, both in lyrics and beats. A dose of positivity that we sure can use in our lives, am I right?
+Catch ya later, audiophiles!  Till then, let the music play on 🙌
 
-Lastly, Field Music graced my music chart with their alternative indie pop vibes. Each song of theirs is like a miniature art-pop symphony - tightly packed with tons of interesting musical ideas. Tracks that often break typical pop song structures while still retaining that catchy, feel-good sound. 🙌
+P.S. Do drop me a comment and let me know what you’ve been blasting through your speakers this week. 🎵 Let's swap some tunes, yeah?
 
-That's it, folks, for this week's music recommendations straight from my Last.fm 💻playlist! Music tastes are fluid and continually evolve. I always love discovering new treats for my ears.
+## Top Artists (Week 23)
 
-Remember to keep your playlist fresh and diverse. After all, music 🎶is the universal language of mankind, capable of bridging gaps, soothing hearts, and igniting fires. Until next update, keep the music playing and the souls swaying! 🎼✌
-Stay tuned for more AI generated ✨content! Expect the unexpected with me. 💖
-
-Happy Listening! 🎵😌
-
-Over and out.🌙 Toodles!
-
-## Top Artists (Week 24)
-
-- [Pet Shop Boys](https://www.mckendrick.rocks/artist/pet-shop-boys/) (55 plays)
-- Finn Brothers (22 plays)
-- [INXS](https://www.mckendrick.rocks/artist/inxs/) (20 plays)
-- Jason Isbell and the 400 Unit (13 plays)
-- [The Mighty Mighty Bosstones](https://www.mckendrick.rocks/artist/the-mighty-mighty-bosstones/) (12 plays)
-- [Field Music](https://www.mckendrick.rocks/artist/field-music/) (11 plays)
+- [James](https://www.mckendrick.rocks/artist/james/) (53 plays)
+- [Matt Berry](https://www.mckendrick.rocks/artist/matt-berry/) (27 plays)
+- [U2](https://www.mckendrick.rocks/artist/u2/) (22 plays)
+- [Steven Wilson](https://www.mckendrick.rocks/artist/steven-wilson/) (17 plays)
+- [Radiohead](https://www.mckendrick.rocks/artist/radiohead/) (16 plays)
+- [The Police](https://www.mckendrick.rocks/artist/the-police/) (16 plays)
+- [Talk Talk](https://www.mckendrick.rocks/artist/talk-talk/) (15 plays)
+- [The Beach Boys](https://www.mckendrick.rocks/artist/the-beach-boys/) (13 plays)
+- [Anathema](https://www.mckendrick.rocks/artist/anathema/) (11 plays)
+- [Jenny Lewis](https://www.mckendrick.rocks/artist/jenny-lewis/) (10 plays)
+- [Killing Joke](https://www.mckendrick.rocks/artist/killing-joke/) (6 plays)
+- [Roger Waters](https://www.mckendrick.rocks/artist/roger-waters/) (6 plays)
 
 
-## Top Albums (Week 24)
+## Top Albums (Week 23)
 
-- [Smash (The Singles 1985-2020)](https://www.mckendrick.rocks/albums/smash-the-singles-1985-2020-27393912/) by Pet Shop Boys
-- Finn by Finn Brothers
-- [The Very Best](https://www.mckendrick.rocks/albums/the-very-best-17981053/) by INXS
-- Weathervanes by Jason Isbell and The 400 Unit
-- [Don't Know How To Party](https://www.mckendrick.rocks/albums/don-t-know-how-to-party-13667166/) by The Mighty Mighty Bosstones
-- [Tones Of Town](https://www.mckendrick.rocks/albums/tones-of-town-10173938/) by Field Music
+- [Be Opened By The Wonderful (40 Years Orchestrated)](https://www.mckendrick.rocks/albums/be-opened-by-the-wonderful-40-years-orchestrated-27333687/) by James
+- [Kill The Wolf](https://www.mckendrick.rocks/albums/kill-the-wolf-4708269/) by Matt Berry
+- KID A MNESIA by Radiohead
+- [Greatest Hits](https://www.mckendrick.rocks/albums/greatest-hits-26517422/) by The Police
+- Fresh As A Daisy - The Singles by James
+- The Very Best Of by Talk Talk
+- [Pet Sounds](https://www.mckendrick.rocks/albums/pet-sounds-1567306/) by The Beach Boys
+- [Achtung Baby](https://www.mckendrick.rocks/albums/achtung-baby-21054859/) by U2
+- Distant Satellites (Tour Edition) by Anathema
+- To the Bone by Steven Wilson
+- [Joy'All](https://www.mckendrick.rocks/albums/joy-all-27328932/) by Jenny Lewis
+- [The Unforgettable Fire](https://www.mckendrick.rocks/albums/the-unforgettable-fire-204237/) by U2
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}
