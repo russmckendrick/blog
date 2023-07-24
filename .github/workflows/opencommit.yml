@@ -2,7 +2,7 @@ name: 'OpenCommit Action'
 
 on:
   push:
-    branches-ignore: [main master dev development release]
+    branches-ignore: [main]
 
 jobs:
   opencommit:
