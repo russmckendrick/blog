@@ -4,7 +4,7 @@ date: "2023-07-24"
 draft: false
 summary: "Immersing into sonic textures and profound lyricism, I find Radiohead reigning as my most played artist this week, according to LastFM data. This enlightening musical voyage underscores my seemingly insatiable craving for their experimental rock sounds, mirroring the band's distinctive fusion of compelling narratives with unconventional tones."
 cover:
-    image: "/img/weekly-tunes-017.png"
+    image: "/img/weekly-tunes-004.png"
     relative: false
 tags:
     - "Vinyl"
