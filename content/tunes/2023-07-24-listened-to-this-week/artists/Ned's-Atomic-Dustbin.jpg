@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html> <head>
+<meta name="generator" content="Hugo 0.111.3">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>McKendrickRocks</title>
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+<link rel="icon" href="/images/favicon.ico">
+<script>
+    
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
+</script>
+</head><body class="dark:bg-gray-800 dark:text-gray-200"><nav class="bg-white border-gray-200 dark:bg-gray-900">
+<div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+<a href="/" class="flex items-center">
+<div class="text-3xl font-bold text-indigo-600 tracking-tight uppercase">
+<span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
+Mckendrick
+</span>
+Rocks
+</div>
+</a>
+<div class="flex items-center">
+<a href="/search/">
+<button type="button" class="ml-2 rounded-full bg-gray-600 px-3 py-1 text-small font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"><i class="fa-solid fa-magnifying-glass"></i>
+</button>
+</a>
+<a href="/random/">
+<button type="button" class="ml-2 rounded-full bg-green-600 px-3 py-1 text-small font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"><i class="fa-solid fa-shuffle"></i>
+</button>
+</a>
+<button id="theme-toggle" type="button" class="ml-2 rounded-full bg-gray-800 dark:bg-gray-500 px-3 py-1 text-small font-semibold text-white shadow-sm hover:bg-gray-500 dark:hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800 dark:focus-visible:outline-gray-500">
+<i class="fa-solid fa-moon hidden w-5 h-5" id="theme-toggle-dark-icon"></i>
+<i class="fa-solid fa-sun hidden w-5 h-5" id="theme-toggle-light-icon"></i>
+</button>
+</div>
+</div>
+</nav>
+<nav class="bg-gray-50 dark:bg-gray-700">
+<div class="max-w-screen-xl px-4 py-3 mx-auto">
+<div class="flex items-center">
+<ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
+<li>
+<a href="/artist/" class="text-gray-900 dark:text-white hover:underline"> Artists</a>
+</li>
+<li>
+<a href="/styles/" class="text-gray-900 dark:text-white hover:underline"> Styles</a>
+</li>
+<li>
+<a href="/genres/" class="text-gray-900 dark:text-white hover:underline"> Genres</a>
+</li>
+<li>
+<a href="https://github.com/russmckendrick/records" class="text-gray-900 dark:text-white hover:underline"> Source Code</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<a rel="me" href="https://social.mckendrick.io/@russ"></a>
+<div class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
+<div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl" aria-hidden="true">
+<div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+</div>
+<div class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu" aria-hidden="true">
+<div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+</div>
+<div class="mx-auto max-w-2xl text-center">
+<h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Hi, my name is Russ</h1>
+<p class="mb-8 font-normal text-gray-300 lg:text-lg">and this is my record collection, listed in the order I purchased them.</p>
+</div>
+</div>
+<div class="container my-24 px-6 mx-auto dark:bg-gray-800">
+<section class="mb-32 text-gray-800">
+<div class="grid lg:grid-cols-3 gap-6">
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/are-you-normal-27674652/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/are-you-normal-27674652/are-you-normal-27674652.jpg" alt="Ned&#39;s Atomic Dustbin">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Are You Normal? by Ned&#39;s Atomic Dustbin
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 19 July, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/indie-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Indie Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/alternative-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Alternative Rock</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/reprise-18089404/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/reprise-18089404/reprise-18089404.jpg" alt="Moby">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Reprise by Moby
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 17 July, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/electronic">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Electronic</span>
+</div>
+</a>
+</div>
+<a href="/genres/funk-/-soul">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Funk / Soul</span>
+</div>
+</a>
+</div>
+<a href="/genres/pop">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Pop</span>
+</div>
+</a>
+</div>
+<a href="/genres/classical">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Classical</span>
+</div>
+</a>
+</div>
+<a href="/styles/classical">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Classical</span>
+</div>
+</a>
+</div>
+<a href="/styles/leftfield">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Leftfield</span>
+</div>
+</a>
+</div>
+<a href="/styles/breakbeat">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Breakbeat</span>
+</div>
+</a>
+</div>
+<a href="/styles/downtempo">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Downtempo</span>
+</div>
+</a>
+</div>
+<a href="/styles/ambient">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Ambient</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/another-great-record-from-the-damned-the-best-of-the-damned-27538179/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/another-great-record-from-the-damned-the-best-of-the-damned-27538179/another-great-record-from-the-damned-the-best-of-the-damned-27538179.jpg" alt="The Damned">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Another Great Record From The Damned: The Best Of The Damned by The Damned
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 15 July, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/punk">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Punk</span>
+</div>
+</a>
+</div>
+<a href="/styles/goth-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Goth Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/psychedelic-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Psychedelic Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/alternative-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Alternative Rock</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/angels-queens-27577632/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/angels-queens-27577632/angels-queens-27577632.jpg" alt="Gabriels">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Angels &amp; Queens by Gabriels
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 15 July, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/funk-/-soul">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Funk / Soul</span>
+</div>
+</a>
+</div>
+<a href="/styles/soul">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Soul</span>
+</div>
+</a>
+</div>
+<a href="/styles/contemporary-rb">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Contemporary R&amp;B</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/the-endless-coloured-ways-the-songs-of-nick-drake-27634329/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/the-endless-coloured-ways-the-songs-of-nick-drake-27634329/the-endless-coloured-ways-the-songs-of-nick-drake-27634329.jpg" alt="Various">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+The Endless Coloured Ways: The Songs Of Nick Drake by Various
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 10 July, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/jazz">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Jazz</span>
+</div>
+</a>
+</div>
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/genres/pop">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Pop</span>
+</div>
+</a>
+</div>
+<a href="/genres/folk-world-country">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Folk, World, &amp; Country</span>
+</div>
+</a>
+</div>
+<a href="/styles/alt-pop">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Alt-Pop</span>
+</div>
+</a>
+</div>
+<a href="/styles/alternative-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Alternative Rock</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/cracked-rear-view-27617181/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/cracked-rear-view-27617181/cracked-rear-view-27617181.jpg" alt="Hootie &amp; The Blowfish">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Cracked Rear View by Hootie &amp; The Blowfish
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 8 July, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/blues-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Blues Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/alternative-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Alternative Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/pop-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Pop Rock</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/i-don-t-know-27538611/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/i-don-t-know-27538611/i-don-t-know-27538611.jpg" alt="bdrmm">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+I Don&#39;t Know by bdrmm
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 7 July, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/electronic">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Electronic</span>
+</div>
+</a>
+</div>
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/genres/pop">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Pop</span>
+</div>
+</a>
+</div>
+<a href="/styles/downtempo">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Downtempo</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/thanks-for-reaching-out-27546843/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/thanks-for-reaching-out-27546843/thanks-for-reaching-out-27546843.jpg" alt="Jim Bob">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Thanks For Reaching Out by Jim Bob
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 1 July, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/indie-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Indie Rock</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/ingenious-devices-27528075/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/ingenious-devices-27528075/ingenious-devices-27528075.jpg" alt="Big Big Train">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Ingenious Devices by Big Big Train
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 30 June, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/prog-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Prog Rock</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/the-light-in-you-25240180/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/the-light-in-you-25240180/the-light-in-you-25240180.jpg" alt="Mercury Rev">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+The Light In You by Mercury Rev
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 24 June, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/indie-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Indie Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/psychedelic-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Psychedelic Rock</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/now-80s-alternative-27441879/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/now-80s-alternative-27441879/now-80s-alternative-27441879.jpg" alt="Various">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+NOW 80s Alternative by Various
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 21 June, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/electronic">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Electronic</span>
+</div>
+</a>
+</div>
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/genres/pop">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Pop</span>
+</div>
+</a>
+</div>
+<a href="/styles/alternative-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Alternative Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/ambient">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Ambient</span>
+</div>
+</a>
+</div>
+<a href="/styles/art-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Art Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/downtempo">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Downtempo</span>
+</div>
+</a>
+</div>
+<a href="/styles/dub">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Dub</span>
+</div>
+</a>
+</div>
+<a href="/styles/experimental">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Experimental</span>
+</div>
+</a>
+</div>
+<a href="/styles/goth-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Goth Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/indo-pop">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Indo-Pop</span>
+</div>
+</a>
+</div>
+<a href="/styles/indie-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Indie Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/jangle-pop">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Jangle Pop</span>
+</div>
+</a>
+</div>
+<a href="/styles/j-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">J-Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/new-wave">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">New Wave</span>
+</div>
+</a>
+</div>
+<a href="/styles/pop-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Pop Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/post-punk">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Post-Punk</span>
+</div>
+</a>
+</div>
+<a href="/styles/punk">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Punk</span>
+</div>
+</a>
+</div>
+<a href="/styles/synth-pop">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Synth-pop</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/all-things-must-pass-50th-anniversary-19772260/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/all-things-must-pass-50th-anniversary-19772260/all-things-must-pass-50th-anniversary-19772260.jpg" alt="George Harrison">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+All Things Must Pass (50th Anniversary) by George Harrison
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 20 June, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/genres/pop">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Pop</span>
+</div>
+</a>
+</div>
+<a href="/styles/pop-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Pop Rock</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/smash-the-singles-1985-2020-27393912/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/smash-the-singles-1985-2020-27393912/smash-the-singles-1985-2020-27393912.jpg" alt="Pet Shop Boys">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Smash (The Singles 1985-2020) by Pet Shop Boys
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 16 June, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/electronic">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Electronic</span>
+</div>
+</a>
+</div>
+<a href="/genres/pop">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Pop</span>
+</div>
+</a>
+</div>
+<a href="/styles/dance-pop">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Dance-pop</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/drop-dead-fred-27392157/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/drop-dead-fred-27392157/drop-dead-fred-27392157.jpg" alt="How Did This Get Made">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Drop Dead Fred by How Did This Get Made
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 16 June, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/non-music">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Non-Music</span>
+</div>
+</a>
+</div>
+<a href="/genres/stage-screen">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Stage &amp; Screen</span>
+</div>
+</a>
+</div>
+<a href="/styles/spoken-word">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Spoken Word</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/weathervanes-27356562/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/weathervanes-27356562/weathervanes-27356562.jpg" alt="Jason Isbell And The 400 Unit">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Weathervanes by Jason Isbell And The 400 Unit
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 12 June, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/country-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Country Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/southern-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Southern Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/indie-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Indie Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/alternative-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Alternative Rock</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/countdown-to-ecstasy-27181434/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/countdown-to-ecstasy-27181434/countdown-to-ecstasy-27181434.jpg" alt="Steely Dan">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Countdown To Ecstasy by Steely Dan
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 10 June, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/classic-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Classic Rock</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/joy-all-27328932/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/joy-all-27328932/joy-all-27328932.jpg" alt="Jenny Lewis">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Joy&#39;All by Jenny Lewis
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 9 June, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/indie-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Indie Rock</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-gray-700">
+<a href="https://www.mckendrick.rocks/albums/be-opened-by-the-wonderful-40-years-orchestrated-27333687/">
+<img class="rounded-t-lg" src="https://www.mckendrick.rocks/albums/be-opened-by-the-wonderful-40-years-orchestrated-27333687/be-opened-by-the-wonderful-40-years-orchestrated-27333687.jpg" alt="James">
+</a>
+<div class="p-4">
+<h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+Be Opened By The Wonderful (40 Years Orchestrated) by James
+</h1>
+<p class="mb-2 leading-tight text-neutral-800 dark:text-neutral-50">
+<small>Added on <u> 9 June, 2023</u></small>
+</p>
+<div class="flex flex-wrap">
+<a href="/genres/rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-blue-500 text-white text-xs px-1 py-0.5 rounded-r-md">Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/alternative-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Alternative Rock</span>
+</div>
+</a>
+</div>
+<a href="/styles/indie-rock">
+<div class="flex items-center p-1">
+<div class="flex">
+<span class="bg-gray-800 text-white text-xs px-1 py-0.5 rounded-l-md">Style</span>
+<span class="bg-green-500 text-white text-xs px-1 py-0.5 rounded-r-md">Indie Rock</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div><br>
+<nav class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
+<div class="-mt-px flex w-0 flex-1">
+<a class="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500">
+<svg class="mr-3 h-5 w-5 text-gray-400" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
+<path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 011.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+</svg>
+Previous
+</a>
+</div>
+<div class="hidden md:-mt-px md:flex">
+<a class="inline-flex items-center border-t-2 border-transparent text-gray-500 px-4 pt-4 text-sm font-medium" aria-disabled="true">
+First
+</a>
+<a href="/" class="inline-flex items-center border-t-2 border-indigo-500 text-indigo-600 px-4 pt-4 text-sm font-medium" aria-label="Page 1" aria-current="page">
+1
+</a>
+<a href="/page/2/" class="inline-flex items-center border-t-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 px-4 pt-4 text-sm font-medium" aria-label="Page 2" aria-current>
+2
+</a>
+<a href="/page/3/" class="inline-flex items-center border-t-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 px-4 pt-4 text-sm font-medium" aria-label="Page 3" aria-current>
+3
+</a>
+<a href="/page/4/" class="inline-flex items-center border-t-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 px-4 pt-4 text-sm font-medium" aria-label="Page 4" aria-current>
+4
+</a>
+<a href="/page/5/" class="inline-flex items-center border-t-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 px-4 pt-4 text-sm font-medium" aria-label="Page 5" aria-current>
+5
+</a>
+<a href="/page/6/" class="inline-flex items-center border-t-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 px-4 pt-4 text-sm font-medium" aria-label="Page 6" aria-current>
+6
+</a>
+<a href="/page/7/" class="inline-flex items-center border-t-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 px-4 pt-4 text-sm font-medium" aria-label="Page 7" aria-current>
+7
+</a>
+<a href="/page/8/" class="inline-flex items-center border-t-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 px-4 pt-4 text-sm font-medium" aria-label="Page 8" aria-current>
+8
+</a>
+<a href="/page/9/" class="inline-flex items-center border-t-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 px-4 pt-4 text-sm font-medium" aria-label="Page 9" aria-current>
+9
+</a>
+<a href="/page/144/" class="inline-flex items-center border-t-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 px-4 pt-4 text-sm font-medium" aria-label="Last page">
+Last
+</a>
+</div>
+<div class="-mt-px flex w-0 flex-1 justify-end">
+<a href="/page/2/" class="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+Next
+<svg class="ml-3 h-5 w-5 text-gray-400" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
+<path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+</svg>
+</a>
+</div>
+</nav>
+</section>
+</div>
+<footer class="bg-white m-4 dark:bg-gray-800">
+<div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+<a href="/" class="flex items-center">&copy; 2023
+<div class="font-bold text-indigo-600 tracking-tight uppercase ml-1">
+<span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
+Mckendrick
+</span>
+Rocks
+</div>
+</a>
+</span>
+<ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+<li>
+<a href="https://github.com/russmckendrick/records/" class="mr-4 hover:underline md:mr-6 "> Source Code</a>
+</li>
+<li>
+<a href="/random/" class="mr-4 hover:underline md:mr-6 "> Random Album</a>
+</li>
+</ul>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+<script>
+var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+
+if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    themeToggleLightIcon.classList.remove('hidden');
+} else {
+    themeToggleDarkIcon.classList.remove('hidden');
+}
+
+var themeToggleBtn = document.getElementById('theme-toggle');
+
+themeToggleBtn.addEventListener('click', function() {
+
+    
+    themeToggleDarkIcon.classList.toggle('hidden');
+    themeToggleLightIcon.classList.toggle('hidden');
+
+    
+    if (localStorage.getItem('color-theme')) {
+        if (localStorage.getItem('color-theme') === 'light') {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        }
+
+    
+    } else {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        }
+    }
+    
+});
+</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;d2ebf27cb4ef4188886b8cb4d51cd181&quot;}"></script></body>
+</html>
