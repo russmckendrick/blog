@@ -27,3 +27,4 @@ This is the code for https://www.russ.foo/
 - [x] ~~Add icons to main menu, added the [Ionicons](https://ionic.io/ionicons) icons.~~ removed due to messing up CLS
 - [x] ~~Use CDN for cover images.~~ webp added for cover images
 - [x] ~~Optimize images, see this [GitHub Action](https://github.com/russmckendrick/blog/blob/main/.github/workflows/calibreapp-image-actions.yml).~~
+
