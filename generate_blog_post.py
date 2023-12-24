@@ -29,17 +29,24 @@ def generate_random_number():
     return formatted_number
 
 # Function to get GPT-4 generated text
+# def get_gpt3_text(prompt):
+#     completion = openai.Completion.create(
+#         engine='gpt-4-1106-preview',
+#         messages=[
+#             {
+#                 'role': 'user',
+#                 'content': prompt
+#             }
+#         ]
+#     )
+#     return completion['choices'][0]['message']['content'].strip()
+
 def get_gpt3_text(prompt):
-    completion = openai.ChatCompletion.create(
-        model='gpt-4-1106-preview',
-        messages=[
-            {
-                'role': 'user',
-                'content': prompt
-            }
-        ]
-    )
-    return completion['choices'][0]['message']['content'].strip()
+    completion = openai.Completion.create(
+        engine="gpt-4-1106-preview",
+        prompt=prompt    )
+    return completion.choices[0].text.strip()
+
 
 # Get artist data from Last.fm API
 def get_lastfm_artist_data(user, api_key, from_time, to_time):
