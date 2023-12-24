@@ -4,7 +4,9 @@ import json
 import argparse
 import random
 import wikipediaapi
-import openai
+from openai import OpenAI
+
+client = OpenAI(api_key=openai_key)
 from datetime import datetime, timedelta
 from collections import Counter
 from jinja2 import Environment, FileSystemLoader
@@ -29,24 +31,15 @@ def generate_random_number():
     return formatted_number
 
 # Function to get GPT-4 generated text
-# def get_gpt3_text(prompt):
-#     completion = openai.Completion.create(
-#         engine='gpt-4-1106-preview',
-#         messages=[
-#             {
-#                 'role': 'user',
-#                 'content': prompt
-#             }
-#         ]
-#     )
-#     return completion['choices'][0]['message']['content'].strip()
-
 def get_gpt3_text(prompt):
-    completion = openai.Completion.create(
-        engine="gpt-4-1106-preview",
-        prompt=prompt    )
-    return completion.choices[0].text.strip()
-
+    completion = client.completions.create(engine='gpt-4-1106-preview',
+    messages=[
+        {
+            'role': 'user',
+            'content': prompt
+        }
+    ])
+    return completion['choices'][0]['message']['content'].strip()
 
 # Get artist data from Last.fm API
 def get_lastfm_artist_data(user, api_key, from_time, to_time):
@@ -200,7 +193,6 @@ start_timestamp = int(week_start.timestamp())
 end_timestamp = int(week_end.timestamp())
 
 # Fetch data and generate blog post
-openai.api_key = openai_key
 wiki_wiki = wikipediaapi.Wikipedia(
     language='en',
     extract_format=wikipediaapi.ExtractFormat.WIKI,
