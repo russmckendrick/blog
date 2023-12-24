@@ -4,8 +4,7 @@ import json
 import argparse
 import random
 import wikipediaapi
-from openai import OpenAI
-
+import openai
 from datetime import datetime, timedelta
 from collections import Counter
 from jinja2 import Environment, FileSystemLoader
@@ -15,7 +14,6 @@ user = os.getenv('LASTFM_USER')
 api_key = os.getenv('LASTFM_API_KEY')
 url = os.getenv('COLLECTION_URL')
 openai_key = os.getenv('OPENAI_KEY')
-client = OpenAI(api_key=openai_key)
 
 # Function to get Wikipedia summary
 def get_wiki_summary(page_name):
@@ -30,11 +28,16 @@ def generate_random_number():
     formatted_number = str(number).zfill(3)
     return formatted_number
 
-# Function to get GPT-4 generated text
+# Function to get GPT-3 generated text
 def get_gpt3_text(prompt):
-    completion = client.completions.create(
-        model='gpt-4-turbo',
-        prompt=prompt
+    completion = openai.ChatCompletion.create(
+        model='gpt-4-1106-preview',
+        messages=[
+            {
+                'role': 'user',
+                'content': prompt
+            }
+        ]
     )
     return completion['choices'][0]['message']['content'].strip()
 
@@ -190,6 +193,7 @@ start_timestamp = int(week_start.timestamp())
 end_timestamp = int(week_end.timestamp())
 
 # Fetch data and generate blog post
+openai.api_key = openai_key
 wiki_wiki = wikipediaapi.Wikipedia(
     language='en',
     extract_format=wikipediaapi.ExtractFormat.WIKI,
