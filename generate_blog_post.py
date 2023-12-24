@@ -6,7 +6,6 @@ import random
 import wikipediaapi
 from openai import OpenAI
 
-client = OpenAI(api_key=openai_key)
 from datetime import datetime, timedelta
 from collections import Counter
 from jinja2 import Environment, FileSystemLoader
@@ -16,6 +15,7 @@ user = os.getenv('LASTFM_USER')
 api_key = os.getenv('LASTFM_API_KEY')
 url = os.getenv('COLLECTION_URL')
 openai_key = os.getenv('OPENAI_KEY')
+client = OpenAI(api_key=openai_key)
 
 # Function to get Wikipedia summary
 def get_wiki_summary(page_name):
