@@ -33,8 +33,8 @@ def generate_random_number():
 # Function to get GPT-4 generated text
 def get_gpt3_text(prompt):
     completion = client.completions.create(
-    engine='gpt-4-1106-preview',
-    prompt=prompt
+        model='gpt-4-1106-preview',
+        prompt=prompt
     )
     return completion['choices'][0]['message']['content'].strip()
 
