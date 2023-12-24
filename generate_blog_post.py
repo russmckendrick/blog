@@ -28,10 +28,10 @@ def generate_random_number():
     formatted_number = str(number).zfill(3)
     return formatted_number
 
-# Function to get GPT-3 generated text
+# Function to get GPT-4 generated text
 def get_gpt3_text(prompt):
     completion = openai.ChatCompletion.create(
-        model='gpt-4-0613',
+        model='gpt-4-1106-preview',
         messages=[
             {
                 'role': 'user',
