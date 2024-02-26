@@ -2,7 +2,7 @@
 title: "What did I listen to in week 07?"
 date: "2024-02-26"
 draft: false
-summary: ""Rocking through the week with the timeless anthems of The Who, LastFM data reveals my undeniable affinity for their electrifying riffs and legendary lyrics, crowning them as my most-played artist. Join me on a musical journey celebrating the iconic band that continues to resonate across generations!""
+summary: "Rocking through the week with the timeless anthems of The Who, LastFM data reveals my undeniable affinity for their electrifying riffs and legendary lyrics, crowning them as my most-played artist. Join me on a musical journey celebrating the iconic band that continues to resonate across generations!"
 cover:
     image: "/img/weekly-tunes-002.png"
     relative: false
