@@ -183,8 +183,10 @@ privacy:
   googleAnalytics:
     disable: true
 
-ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken"]
+ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken", "shortcode-twitter-getremote"]
 
 imaging:
   exif:
     includeFields: ".*"
+
+
