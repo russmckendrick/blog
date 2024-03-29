@@ -38,6 +38,7 @@
 .green { background: #64CC57; border-color: #4EA73B; }
 .yellow{ background: #F5C04F; border-color: #D6A13D; }
 .clear{clear: both;}
+
 .terminal .terminalbody {
     background: var(--terminal-bg);
     overflow: auto;
