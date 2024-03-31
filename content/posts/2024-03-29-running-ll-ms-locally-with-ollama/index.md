@@ -2,7 +2,7 @@
 title: "Running LLMs locally with Ollama"
 author: "Russ McKendrick"
 date: 2024-03-23T17:30:00+01:00
-description: "Playing with local LLMs in my free time."
+description: "A step-by-step guide to installing Ollama on macOS and running large language models like llama2 and Mistral entirely offline. Learn how to interact with the models via chat, API, and even remotely using ngrok."
 draft: false
 showToc: true
 cover:
@@ -406,6 +406,14 @@ docker container remove open-webui
 Don't worry again about the container being removed; the data and configuration are safe on the local machine, and to restore them, you need only run the `docker container run` command from earlier in the post.
 
 The final thing you should do is quit the Ollama desktop application. This will shut down the API server and stop it from running in the background. Then, reopen the application to start everything back up again.
+
+# Conclusion
+
+In this post, we explored how to run powerful large language models like llama2, Mistral, and codellama entirely locally on macOS using the Ollama tool. We saw how easy it is to pull models, interact with them via a chat interface and API, run a feature-rich web UI, and even access the models remotely using ngrok.
+
+The fact that all of this cutting-edge AI capability can run offline on a laptop with a tool that's simple to install is truly incredible. I encourage you to try out Ollama for yourself and experience the power of local LLMs. The possibilities are endless, from exploring and learning about these models to building your own applications on top of them.
+
+I hope this post has been informative and inspirational. Feel free to reach out with any questions, and happy local LLM'ing!
 
 Here are some links to the tools we have looked at in the post:
 
