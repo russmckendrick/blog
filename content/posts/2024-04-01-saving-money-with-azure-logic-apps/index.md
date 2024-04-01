@@ -10,6 +10,9 @@ cover:
     relative: true
 tags:
   - "azure"
+  - "code"
+  - "cloud"
+  - "automation"
 ---
 
 During the day job, I have to get a little creative with controlling costs for Azure resources; there are some everyday tasks and scenarios where Azure Logic Apps can help you save money 💰.
