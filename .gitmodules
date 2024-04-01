@@ -7,3 +7,6 @@ url = https://github.com/martignoni/hugo-notice.git
 [submodule "themes/hugo-shortcode-gallery"]
 	path = themes/hugo-shortcode-gallery
 	url = https://github.com/mfg92/hugo-shortcode-gallery.git
+[submodule "themes/gohugo-asciinema"]
+	path = themes/gohugo-asciinema
+	url = git@github.com:cljoly/gohugo-asciinema.git
