@@ -22,10 +22,13 @@ The first is quite a typical scenario: stopping and starting Azure Virtual Machi
 Another common requirement I have encountered is Azure Application Gateways. With the retirement of v1 Azure Application Gateway SKUs, v2 SKUs can be expensive if you run multiple Azure Application Gateways for Dev, Test, and PreProd environments that are not needed 24/7. A little-known feature, mainly because you cannot do it from the Azure Portal, is that you can stop Azure Application Gateways. You will not be charged for them while they are in the stopped state.
 
 I could discuss some other common scenarios, but before we do that, let's examine the LogicApps and workflow I have settled on for the two scenarios I mentioned.
-# Targetting Azure Virtual Machines
+
+## Targetting Azure Virtual Machines
 
 I have settled on a standard (ish) workflow using the Azure REST API. We will need a few supporting resources and the Azure Logic App itself.
-## Deploying the Azure Logic App and supporting resources
+
+### Deploying the Azure Logic App and supporting resources
+
 Our first task is to clone the [GitHub repo, which contains the JSON definition](https://github.com/russmckendrick/money-saving-azure-logic-apps) of the Azure Logic Apps we will be deploying;
 
 {{< terminal title="Cloning to accompanying repo" >}}
@@ -147,7 +150,8 @@ Logging into [the Azure Portal](https://portal.azure.com/); you should see your 
 {{< gallery match="images/deploying-the-logic-app-and-supporting-resources/*" sortOrder="assc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}<br>
 
 We are now ready to apply our cost-saving automation; well, we would be if we had the resources, so let's launch some Azure Virtual Machines.
-## Creating test Azure Virtual Machine resources
+
+### Creating test Azure Virtual Machine resources
 
 We will go through the Logic App in more detail soon; for now, let's create some Azure Virtual Machines we can target with the Azure Logic App. The commands below will launch three virtual machines, two of which are tagged and will be targeted by our Azure Logic App:
 
@@ -204,7 +208,7 @@ done
 
 With the resources now deployed, let's run the Azure Logic App and start saving money.
 
-## Running the Azure Logic App
+### Running the Azure Logic App
 
 In [the Azure Portal](https://portal.azure.com/), go to your Logic App and press the **Enable** button. This will trigger a Run, and clicking on **Refresh** should show you that a run is in progress:
 
@@ -225,7 +229,7 @@ az group delete --name $RESOURCE_GROUP_NAME
 ```
 {{< /terminal >}}
 
-## Working through the Azure Logic App
+### Working through the Azure Logic App
 
 As you may have already spotted in the Logic app designer section, there are quite a few steps defined, so let's work through them now; below is the full workflow:
 
@@ -233,7 +237,7 @@ As you may have already spotted in the Logic app designer section, there are qui
 
 So, let's start at the beginning.
 
-### Recurrence (Azure Virtual Machine)
+#### Recurrence (Azure Virtual Machine)
 
 This is our trigger, by default, is set to run at 07:00 and 18:00 on Monday, Tuesday, Wednesday, Thursday, and Friday every week. The for this step is below:
 
@@ -264,7 +268,8 @@ This is our trigger, by default, is set to run at 07:00 and 18:00 on Monday, Tue
 }
 ```
 
-### Get a list of all resources tagged to be managed (Azure Virtual Machine)
+#### Get a list of all resources tagged to be managed (Azure Virtual Machine)
+
 This is where our first HTTP call to the Azure REST API takes place; it makes a **GET** request to the [https://management.azure.com/subscriptions/{subscriptionId}/resources?api-version=2021-04-01](https://learn.microsoft.com/en-us/rest/api/resources/resources/list?view=rest-resources-2021-04-01) API and filters using the contents of the **tagName** and **tagValue** parameters:
 
 ```json
@@ -392,7 +397,8 @@ When we first ran the Azure Logic App, this is an example of the output that was
 }
 ```
 
-### Filter everything but the VMs we are managing (Azure Virtual Machine)
+#### Filter everything but the VMs we are managing (Azure Virtual Machine)
+
 While testing the Logic App, I found that more than just the virtual machine resource could be tagged with **tagName**; for example, in the output of the previous step, disks, network interfaces, and more all have the same tag. Now, this would result in an error when running later parts of the workflow, so here we filtered down the list of resources the last step fetched to where the resource **type** is equal to **Microsoft.Compute/virtualMachines**.
 
 ```json
@@ -444,7 +450,8 @@ Once this filter has been applied, we are now left with details on the two machi
 ]
 ```
 
-### Process just the VMs (Azure Virtual Machine)
+#### Process just the VMs (Azure Virtual Machine)
+
 Now that we have a JSON object which contains only the information on virtual machines with the tags that indicate the workflow should be working with them, we need to parse the JSON object and turn the data into something we can use; this task takes the schema and does just that: 
 
 ```json
@@ -505,7 +512,9 @@ Now that we have a JSON object which contains only the information on virtual ma
 ```
 
 While the output looks the same as the last step, it is now referenced in a way that allows us to loop over it with a for each task.
-### For Each VM (Azure Virtual Machine)
+
+#### For Each VM (Azure Virtual Machine)
+
 This is the first of two loops we need to run, the second of which is nested in this loop.
 
 ```json
@@ -531,7 +540,7 @@ Clicking on the right arrow will take us to the second virtual machine:
 
 Now, let's see what we ran for each virtual machine.
 
-#### Get some information on the Virtual Machine (Azure Virtual Machine)
+##### Get some information on the Virtual Machine (Azure Virtual Machine)
 
 The first task of the loop gets information about the virtual machine we are currently processing, it does this by making a GET request to the [https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView?api-version=2024-03-01](https://learn.microsoft.com/en-us/rest/api/compute/virtual-machines/instance-view?view=rest-compute-2024-03-01&tabs=HTTP) Azure REST API endpoint:
 
@@ -611,7 +620,9 @@ Which returns the following output:
 ```
 
 So, we now need to know the power status.
-#### Filter just the status about the PowerState (Azure Virtual Machine)
+
+##### Filter just the status about the PowerState (Azure Virtual Machine)
+
 Again, we are running another query - we need to do this because there are two statuses being returned from the initial API call, one for the **ProvisioningState** and the second for the **PowerState** - it is this one we need to work with:
 
 ```json
@@ -641,7 +652,7 @@ This leaves us with the following output to use as input for the next task:
 ]
 ```
 
-#### Process just the VMs power state
+##### Process just the VMs power state
 
 Again, we need to get the data into a format we can use:
 
@@ -684,7 +695,7 @@ Again, we need to get the data into a format we can use:
 
 We then take this and pass it to our nest loop.
 
-### For each PowerState code (Azure Virtual Machine)
+#### For each PowerState code (Azure Virtual Machine)
 
 Because we are going to be using a conditional, we need to use another loop to get the output from above into a state we can use:
 
@@ -701,7 +712,7 @@ Because we are going to be using a conditional, we need to use another loop to g
 }
 ```
 
-#### Condition (Azure Virtual Machine)
+##### Condition (Azure Virtual Machine)
 
 Here we have the final step: if `@items('For_each_PowerState_code')['code']` is equal to `PowerState/deallocated`, ie **True**, then we need to power the virtual machine on.
 
@@ -772,10 +783,10 @@ In our first run, this final task's output was **False**, so the virtual machine
 
 Let's now see what the approach for an Azure Application Gateway looks like.
 
-# Targeting Azure Application Gateways
+## Targeting Azure Application Gateways
 As already mentioned, there is no way to stop an Application Gateway in the Azure portal; you need to use the Azure CLI or Powershell - both of which call the Azure REST API - so how can we do the same with an Azure Logic App?
 
-## Deploying the Logic App and supporting resources
+### Deploying the Logic App and supporting resources
 Again, our first task is to clone the GitHub repo, which contains the JSON definition of the Logic Apps we will be deploying. If you already have this, open a new terminal session and change to the `money-saving-azure-logic-apps` folder.:
 
 {{< terminal title="Cloning to accompanying repo" >}}
@@ -851,7 +862,7 @@ az logic workflow update \
 
 So far, it's very similar to the workflow for Azure Virtual Machines which I aimed for with this approach. This time, the **tagName** we are looking for is **applicationGatewayStopStart**, and the **tagValue** is again **included**.
 
-## Creating an Azure Application Gateway
+### Creating an Azure Application Gateway
 
 Again, for testing, we need a resource to target; the commands below deploy an Azure Application Gateway with the most basic configuration I could get away with:
 
@@ -905,7 +916,7 @@ az network application-gateway create \
 
 The Azure Application Gateway will finish deploying in about 10 minutes, so now would be a good time to grab a drink ☕.
 
-## Running the Logic App (Azure Application Gateway)
+### Running the Logic App (Azure Application Gateway)
 
 In [the Azure Portal](https://portal.azure.com/), go to your Azure Logic App and press the **Enable** button. This will trigger a Run, and clicking on **Refresh** should show you that a run is in progress:
 
@@ -926,7 +937,7 @@ az group delete --name $RESOURCE_GROUP_NAME
 ```
 {{< /terminal >}}
 
-## Working through the Azure Logic App
+### Working through the Azure Logic App
 
 As you may have already spotted in the Logic app designer section, the workflow looks pretty similar:
 
@@ -934,7 +945,7 @@ As you may have already spotted in the Logic app designer section, the workflow 
 
 So let's work through it.
 
-### Recurrence & Get a list of all resources tagged to be managed (Azure Application Gateway)
+#### Recurrence & Get a list of all resources tagged to be managed (Azure Application Gateway)
 
 Both of these steps are the same as detailed in [Recurrence](#recurrence) and [Get a list of all resources tagged to be managed](#recurrence) when we covered the Azure Virtual Machine workflow. The output on the first example run was:
 
@@ -956,7 +967,7 @@ Both of these steps are the same as detailed in [Recurrence](#recurrence) and [G
 }
 ```
 
-### Filter everything but the App Gateways we are managing (Azure Application Gateway)
+#### Filter everything but the App Gateways we are managing (Azure Application Gateway)
 
 Here, we are filtering on **Microsoft.Network/applicationGateways**  resource type incase a supporting resource, such as the public IP address, just happens to have the tag applied:
 
@@ -976,7 +987,7 @@ Here, we are filtering on **Microsoft.Network/applicationGateways**  resource ty
 
 ```
 
-### For Each App Gateway (Azure Application Gateway)
+#### For Each App Gateway (Azure Application Gateway)
 
 So begins our loop; this differs slightly in that there is no nested loop this time as all of the information we need is available in a single place rather than the multiple statuses we had returned when working with Azure Virtual Machines:
 
@@ -993,7 +1004,7 @@ So begins our loop; this differs slightly in that there is no nested loop this t
 }
 ```
 
-#### Get some information on the Application Gateway (Azure Application Gateway)
+##### Get some information on the Application Gateway (Azure Application Gateway)
 
 This performs a **GET** against [https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}?api-version=2023-09-01](https://learn.microsoft.com/en-us/rest/api/application-gateway/application-gateways/get?view=rest-application-gateway-2023-09-01&tabs=HTTP) which returns information on the Azure Application Gateway:
 
@@ -1200,7 +1211,7 @@ As you can see from the output below, there is a lot of information returned:
 ```
 
 
-#### Condition  (Azure Application Gateway)
+##### Condition  (Azure Application Gateway)
 
 This checks if **operationalState** is equal to **Running** and **True** is returned, then a **POST** against [https://management.azure.com/subscriptions/{subscriptionId}/resource groups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/stop?api-version=2023-09-01](https://learn.microsoft.com/en-us/rest/api/application-gateway/application-gateways/stop?view=rest-application-gateway-2023-09-01&tabs=HTTP) is made, this instructs the Application Gateway to stop.
 
@@ -1275,7 +1286,7 @@ As you can see, while we are working with two different resource types, the work
 
 {{< gallery match="cover02-large.png" sortOrder="assc" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}<br>
 
-# Removing the Azure Logic Apps
+## Removing the Azure Logic Apps
 
 To remove the Azure Logic Apps and also the user-managed identity run the following:
 
@@ -1288,7 +1299,7 @@ az group delete --name $RESOURCE_GROUP_NAME
 
 You may also have to tidy up the RBAC assignments on your subscription in the [Azure Portal](http://portal.azure.com/).
 
-# Conclusion
+## Conclusion
 
 Azure Logic Apps provide a powerful and flexible way to automate cost-saving tasks in your Azure environment. By leveraging the Azure REST API and managed identities, you can create workflows that intelligently start and stop your Virtual Machines and Application Gateways based on tags and schedules.
 

@@ -24,7 +24,7 @@ Luckily for me, the fact I have been busy writing has meant enough time has pass
 As you may know from reading other my blog posts, I am a MacOS user, so the commands in this post will cover only MacOS. I also have an M3 MacBook Pro with 36GB of RAM, so your mileage may vary depending on your machine’s specifications.
 {{< /notice >}}
 
-# Ollama
+## Ollama
 
 So, what is Ollama?  The [ollama website](https://ollama.com/) describes the tool as:
 
@@ -35,7 +35,9 @@ The description is simple and to the point, much like the tool itself. Once you 
 You are not only getting a tool that allows you to pull, update, and maintain copies of dozens of models—it also runs as a server in the background on your local machine. It gives you a standard API endpoint to connect to, allowing you to consume the models in a standardised way.
 
 Rather than discussing the tool’s features more, let’s dive straight in and get it installed and running.
-## Installing on macOS
+
+### Installing on macOS
+
 Installing Ollama on macOS using [Homebrew](~https://brew.sh/~) couldn't be simpler; all you need to do is run:
 
 {{< terminal title="Installing the desktop version of ollama" >}}
@@ -55,7 +57,8 @@ brew install ollama
 While the desktop version of Olama doesn’t have many features, running allows you to quickly start and stop the web services that run in the background by opening and closing the application. Another reason to prefer the desktop application over just running it on the command line is that it quietly handles updating itself in the background, prompting you to restart whenever a fresh update is available for download.
 
 So now that we have it installed let’s do something.
-## Pulling and running a model
+
+### Pulling and running a model
 
 Anyone familiar with the Docker way of pulling and using images will instantly feel at home to download and install the llama2 7b model we need to run:
 
@@ -134,7 +137,7 @@ Use """ to begin a multi-line message.
 
 Entering any text in at the `>>>` prompt will be sent directly to the module; there is a help menu that can be accessed by typing ￼`/?`￼; this will show the available commands, one of which is `/bye` which exists the chat.
 
-## Using the API
+### Using the API
 
 As mentioned, Ollama runs a web-based API on your local machine, which listens on port 11434 by default. You can view this by going [http://localhost:11434](http://localhost:11434) in your browser, and you should receive the message "Ollama is running" - you can send requests directly to the API using cURL, for example:
 
@@ -174,7 +177,7 @@ After a second or two, a response is returned:
 
 In the output above, I truncated the context values as many exist.
 
-## Running another model
+### Running another model
 
 Do you want to run another model, like the newly launched Mistral 7B v0.2 release (which, when writing this post, was released last week)? No problem, just run:
 
@@ -232,7 +235,7 @@ ollama pull codellama:latest
 ```
 {{< /terminal >}}
 
-# Open WebUI
+## Open WebUI
 
 {{< gallery match="cover02-large.png" sortOrder="assc" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}<br>
 
@@ -242,7 +245,7 @@ The authors describe the project, which was formally called Ollama WebUI - so yo
 
 It is distributed in a container, so we can run it using Docker or Podman - with little in the way of any prerequisites needing to be installed.
 
-## Running on macOS
+### Running on macOS
 
 The only steps we need to do is create somewhere to store our data in, to do this I have a folder called `~/Containers/` on my machine so lets stick an `open-webui` folder in there\:
 
@@ -271,7 +274,7 @@ docker container run \
 
 With the container running, go to [http://localhost:3000/](http://localhost:3000).
 
-## Our first chat
+### Our first chat
 
 A login page should greet you; click on the Sign-Up link and create a user; once you have an account - you will be presented with a ChatGPT-like interface - select a model from the drop-down menu at the top of the chat box and ask your question:
 
@@ -291,7 +294,7 @@ Now, let's ask Mistral something about the document I uploaded. In the chapter, 
 
 As you can see from the screens above, I typed in `#chatper01pd` to select and attached the uploaded document to the chat prompt and then asked the question below:
 
-{{< notice tip "You" >}}
+{{< notice tip "Me" >}}
 What happens in the declarative example given in the document? Also, can you give me a summary of each of the runs documented?
 {{< /notice >}}
 
@@ -334,7 +337,7 @@ There are a few important things to remember here: first, this is all running on
 
 I could discuss many more features, but this post is getting quite long, and there is one more thing I would like to cover.
 
-# One more thing
+## One more thing
 
 {{< gallery match="one-more-thing.png" sortOrder="assc" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}<br>
 
@@ -390,7 +393,7 @@ As you can see from the screens below, if you goto the URL given by ngrok and cl
 
 Once finished, press `ctrl+c` to close the tunnel and quit the ngrok session. 
 
-# Cleaning up
+## Cleaning up
 
 {{< gallery match="cover03-large.png" sortOrder="assc" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}<br>
 
@@ -407,7 +410,7 @@ Don't worry again about the container being removed; the data and configuration 
 
 The final thing you should do is quit the Ollama desktop application. This will shut down the API server and stop it from running in the background. Then, reopen the application to start everything back up again.
 
-# Conclusion
+## Conclusion
 
 In this post, we explored how to run powerful large language models like llama2, Mistral, and codellama entirely locally on macOS using the Ollama tool. We saw how easy it is to pull models, interact with them via a chat interface and API, run a feature-rich web UI, and even access the models remotely using ngrok.
 
