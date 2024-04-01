@@ -23,7 +23,7 @@ I could discuss some other common scenarios, but before we do that, let's examin
 
 I have settled on a standard (ish) workflow using the Azure REST API. We will need a few supporting resources and the Azure Logic App itself.
 ## Deploying the Azure Logic App and supporting resources
-Our first task is to clone the GitHub repo, which contains the JSON definition of the Azure Logic Apps we will be deploying;
+Our first task is to clone the [GitHub repo, which contains the JSON definition](https://github.com/russmckendrick/money-saving-azure-logic-apps) of the Azure Logic Apps we will be deploying;
 
 {{< terminal title="Cloning to accompanying repo" >}}
 ```
