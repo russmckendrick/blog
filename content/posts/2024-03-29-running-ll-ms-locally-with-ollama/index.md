@@ -1,7 +1,7 @@
 ---
 title: "Running LLMs locally with Ollama"
 author: "Russ McKendrick"
-date: 2024-03-23T17:30:00+01:00
+date: 2024-03-29T17:30:00+01:00
 description: "A step-by-step guide to installing Ollama on macOS and running large language models like llama2 and Mistral entirely offline. Learn how to interact with the models via chat, API, and even remotely using ngrok."
 draft: false
 showToc: true
