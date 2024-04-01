@@ -1272,6 +1272,19 @@ As you can see, while we are working with two different resource types, the work
 
 {{< gallery match="cover02-large.png" sortOrder="assc" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}<br>
 
+# Removing the Azure Logic Apps
+
+To remove the Azure Logic Apps and also the user-managed identity run the following:
+
+{{< terminal title="Setting some environment variables" >}}
+```
+export RESOURCE_GROUP_NAME="rg-logicapps-blogpost-uks"
+az group delete --name $RESOURCE_GROUP_NAME
+```
+{{< /terminal >}}
+
+You may also have to tidy up the RBAC assignments on your subscription in the [Azure Portal](http://portal.azure.com/).
+
 # Conclusion
 
 Azure Logic Apps provide a powerful and flexible way to automate cost-saving tasks in your Azure environment. By leveraging the Azure REST API and managed identities, you can create workflows that intelligently start and stop your Virtual Machines and Application Gateways based on tags and schedules.
