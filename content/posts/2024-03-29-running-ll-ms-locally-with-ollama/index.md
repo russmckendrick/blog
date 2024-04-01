@@ -32,13 +32,13 @@ So, what is Ollama?  The [ollama website](https://ollama.com/) describes the too
 
 The description is simple and to the point, much like the tool itself. Once you start using the tool, it will feel simple and basic - but don’t let that fool you; a lot is happening in the background.
 
-You are not only getting a tool that allows you to pull, update, and maintain copies of dozens of models—it also runs as a server in the background on your local machine. It gives you a standard API endpoint to connect to, allowing you to consume the models in a standardised way.
+You are getting a tool that allows you to pull, update, and maintain copies of dozens of models—it also runs as a server in the background on your local machine. It gives you a standard API endpoint to connect to, allowing you to consume the models in a standardised way.
 
-Rather than discussing the tool’s features more, let’s dive straight in and get it installed and running.
+Rather than discussing the tool’s features further, let’s install it and run some tests.
 
 ### Installing on macOS
 
-Installing Ollama on macOS using [Homebrew](~https://brew.sh/~) couldn't be simpler; all you need to do is run:
+Installing Ollama on macOS using [Homebrew](https://brew.sh/) couldn't be simpler; all you need to do is run:
 
 {{< terminal title="Installing the desktop version of ollama" >}}
 ```
