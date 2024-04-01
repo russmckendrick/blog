@@ -76,7 +76,7 @@ Peace out and rock on, folks! 🤟
 
 ## Top Artists (Week 12)
 
-- Orchestral Manoeuvres in the Dark (40 plays)
+- [Orchestral Manoeuvres in the Dark](https://www.mckendrick.rocks/artist/orchestral-manoeuvres-in-the-dark/) (40 plays)
 - [Mr. Scruff](https://www.mckendrick.rocks/artist/mr.-scruff/) (18 plays)
 - [Zwan](https://www.mckendrick.rocks/artist/zwan/) (15 plays)
 - [Thundercat](https://www.mckendrick.rocks/artist/thundercat/) (14 plays)
@@ -84,22 +84,22 @@ Peace out and rock on, folks! 🤟
 - [Ride](https://www.mckendrick.rocks/artist/ride/) (12 plays)
 - [The Staves](https://www.mckendrick.rocks/artist/the-staves/) (12 plays)
 - [Pure Reason Revolution](https://www.mckendrick.rocks/artist/pure-reason-revolution/) (10 plays)
-- Soulsavers (9 plays)
-- Alice in Chains (7 plays)
+- [Soulsavers](https://www.mckendrick.rocks/artist/the-soulsavers/) (9 plays)
+- [Alice in Chains](https://www.mckendrick.rocks/artist/alice-in-chains/) (7 plays)
 
 
 ## Top Albums (Week 12)
 
-- Souvenir by Orchestral Manoeuvres in the Dark
+- [Souvenir](https://www.mckendrick.rocks/albums/souvenir-14216215/) by Orchestral Manoeuvres in the Dark
 - [Ninja Tuna](https://www.mckendrick.rocks/albums/ninja-tuna-30208622/) by Mr. Scruff
-- Mary Star of the Sea by Zwan
+- [Mary Star of the Sea](https://www.mckendrick.rocks/albums/mary-star-of-the-sea-892155/) by Zwan
 - [Apocalypse](https://www.mckendrick.rocks/albums/apocalypse-30091313/) by Thundercat
 - [Pet Sounds](https://www.mckendrick.rocks/albums/pet-sounds-1567306/) by The Beach Boys
 - [Interplay](https://www.mckendrick.rocks/albums/interplay-30233693/) by Ride
 - [All Now](https://www.mckendrick.rocks/albums/all-now-30163826/) by The Staves
 - [Hammer And Anvil](https://www.mckendrick.rocks/albums/hammer-and-anvil-24455267/) by Pure Reason Revolution
 - [20](https://www.mckendrick.rocks/albums/20-30222686/) by The Soulsavers
-- Jar of Flies by Alice in Chains
+- [Jar of Flies](https://www.mckendrick.rocks/albums/jar-of-flies-30170624/) by Alice in Chains
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}
