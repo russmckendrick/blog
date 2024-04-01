@@ -1,5 +1,5 @@
 baseURL: "https://www.russ.foo/"
-title: "Russ.foo"
+title: "Russ.Foo"
 paginate: "8"
 theme: ["PaperMod", "hugo-shortcode-gallery"]
 
@@ -29,7 +29,7 @@ author:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: "Russ.foo"
+  title: "Russ.Foo"
   description: "Ramblings of a nerd"
   keywords: ["Blog", "Technical", "Automation", "DevOps", "Cloud"]
   author: "Russ McKendrick"
@@ -62,7 +62,7 @@ params:
     safari_pinned_tab: "images/logo.svg"
 
   label:
-    text: "Russ.foo"
+    text: "Russ McKendrick"
     icon: "/images/logo.svg"
     iconHeight: 40
     iconWidth: 50
@@ -188,5 +188,3 @@ ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken", "s
 imaging:
   exif:
     includeFields: ".*"
-
-
