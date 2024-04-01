@@ -23,7 +23,7 @@ Another common requirement I have encountered is Azure Application Gateways. Wit
 
 I could discuss some other common scenarios, but before we do that, let's examine the LogicApps and workflow I have settled on for the two scenarios I mentioned.
 
-## Targetting Azure Virtual Machines
+## Targeting Azure Virtual Machines
 
 I have settled on a standard (ish) workflow using the Azure REST API. We will need a few supporting resources and the Azure Logic App itself.
 
