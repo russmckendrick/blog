@@ -20,7 +20,7 @@ I decided to spring clean my Dotfiles repo, as it had been a while. Then I notic
 This is all VERY customised to my requirements, and there are a lot of hard-coded bits in there. You probably don't want to blindly copy and paste any of the commands below as things will break!!!
 {{< /notice >}}
 
-## Install everything needed for the dotfiles.
+## Install everything needed for the dotfiles
 
 The commands below assume you are starting from a clean installation, which I do at least once a year. The first thing is to install Oh MyZsh:
 
@@ -90,7 +90,8 @@ You can also click on the link below to see it in action:
 
 <a href="https://asciinema.org/a/PTUqbpxikms7nFWNs4R7OhMQR" target="_blank"><img src="https://asciinema.org/a/PTUqbpxikms7nFWNs4R7OhMQR.svg" class="no-zoom"/></a>
 
-# Conclusion 
+## Conclusion
+
 In this blog post, we walked through updating my dotfiles repository and setting up your development environment on a fresh macOS installation. I created a highly personalised and efficient terminal setup by using tools like Oh My Zsh, custom fonts, and a custom theme. While these dotfiles are tailored to my specific needs and may not be suitable for everyone to copy directly, they provide a great example of how to customize and streamline your development workflow. Keeping your dotfiles up to date and versioned in a repository is a great way to maintain consistency across your machines and make setting up new environments a breeze.
 
 If you have any questions, feel free to leave a comment.
