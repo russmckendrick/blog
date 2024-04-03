@@ -16,7 +16,7 @@ tags:
 
 As I am coming to the end of writing the second edition of Lean Ansible (more news on that coming soon), I thought now would be a great time to have a look at what exciting developments have been happening in the six months now that I have a little more free time.
 
-One of the things I have been keeping an eye on is the state of Large Language Models (LLM for short), especially since the introduction of open-source models such as [Llama from Meta](~https://llama.meta.com~) and [Mistral 7B](~https://mistral.ai/news/announcing-mistral-7b/~), which you can run locally.
+One of the things I have been keeping an eye on is the state of Large Language Models (LLM for short), especially since the introduction of open-source models such as [Llama from Meta](https://llama.meta.com) and [Mistral 7B](https://mistral.ai/news/announcing-mistral-7b/), which you can run locally.
 
 Luckily for me, the fact I have been busy writing has meant enough time has passed for deployment methods to be much more straightforward and streamlined than they first were. The first tool I will look at in this post is Ollama; while it has been available since July last year, it has come on leaps and bounds since November 2023.
 
