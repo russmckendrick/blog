@@ -3,8 +3,8 @@ title: "Updating my dotfiles"
 author: "Russ McKendrick"
 date: 2024-04-02T07:30:00+01:00
 description: "For the first time in nearly a decade, I updated my dotfiles blog post."
-draft: falase
-showToc: falase
+draft: false
+showToc: false
 cover:
     image: "cover.png"
     relative: true
