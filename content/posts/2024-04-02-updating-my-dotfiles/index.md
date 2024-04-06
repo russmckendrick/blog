@@ -14,7 +14,7 @@ tags:
   - "life"
 ---
 
-I decided to spring clean my Dotfiles repo, as it had been a while. Then I noticed that the last time I mentioned them on the blog was [nearly ten years ago](/2014/08/10/dotfiles/), so I wanted to give a quick update. The most significant change is that I have moved to using [Zsh](https://www.zsh.org/ "Zsh") and [Oh My Zsh](https://ohmyz.sh/) since Zsh became the default Shell in macOS.
+I decided to spring clean my [Dotfiles repo](https://github.com/russmckendrick/dotfiles), as it had been a while. Then I noticed that the last time I mentioned them on the blog was [nearly ten years ago](/2014/08/10/dotfiles/), so I wanted to give a quick update. The most significant change is that I have moved to using [Zsh](https://www.zsh.org/ "Zsh") and [Oh My Zsh](https://ohmyz.sh/) since Zsh became the default Shell in macOS.
 
 {{< notice warning >}}
 This is all VERY customised to my requirements, and there are a lot of hard-coded bits in there. You probably don't want to blindly copy and paste any of the commands below as things will break!!!
