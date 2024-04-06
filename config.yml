@@ -181,10 +181,6 @@ markup:
     lineNos: false
     noClasses: true
     style: monokai
-  goldmark:
-    renderer:
-      unsafe: true
-
 
 # googleAnalytics: "UA-43497944-1" # disabled until I can figure out a way of getting the page speed up
 
