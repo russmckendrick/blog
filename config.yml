@@ -51,6 +51,7 @@ params:
   showtoc: false
   tocopen: false
   ShowRelatedContent: true
+  hideDescription: true
 
   assets:
     disableHLJS: true
