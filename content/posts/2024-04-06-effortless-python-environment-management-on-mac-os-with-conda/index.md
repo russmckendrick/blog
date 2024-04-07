@@ -1,5 +1,5 @@
 ---
-title: "Effortless Python environment management on macOS with Conda"
+title: "Conda for Python environment management on macOS"
 author: "Russ McKendrick"
 date: 2024-04-06T07:30:00+01:00
 description: "Learn how to efficiently manage Python environments on your MacBook Pro using Conda. This comprehensive guide covers installation, creating and activating environments, installing packages, and best practices for streamlining your Python development workflow."
