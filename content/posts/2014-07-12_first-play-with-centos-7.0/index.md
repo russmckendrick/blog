@@ -1,6 +1,6 @@
 ---
 title: "First play with CentOS 7.0"
-description: "Explore the key changes and new features in CentOS 7.0 as I take it for a test drive on a DigitalOcean Droplet. Discover the differences in networking commands, the introduction of systemd, and the benefits of the new default XFS filesystem. Learn about the updated versions of popular software packages and the native support for Linux Containers with Docker. A must-read for anyone considering upgrading to CentOS 7.0 or starting a new project with this powerful Linux distribution."
+description: "Taking CentOS 7.0 for a spin: Discover the changes in networking, systemd, XFS, and Docker support in this firsthand exploration on a DigitalOcean Droplet."
 author: "Russ Mckendrick"
 date: 2014-07-12T11:00:00.000Z
 lastmod: 2021-07-31T12:31:36+01:00

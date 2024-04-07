@@ -1,6 +1,6 @@
 ---
 title: "Quick Magento Installation"
-description: "Simplify your Magento installation process with n98-magerun, a powerful command-line tool for Magento developers. Learn how to quickly install n98-magerun on your system and use it to perform clean Magento installations with sample data, saving time and effort during proof-of-concept setups. Perfect for developers looking to streamline their Magento workflow."
+description: "Streamline Magento installations with n98-magerun, a handy command-line tool, for efficient setup and deployment of Magento with sample data."
 author: "Russ Mckendrick"
 date: 2014-04-19T11:00:00.000Z
 lastmod: 2021-07-31T12:31:17+01:00

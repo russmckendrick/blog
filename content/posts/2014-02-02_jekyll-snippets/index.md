@@ -1,6 +1,6 @@
 ---
 title: "Jekyll Snippets"
-description: "Discover useful code snippets for working with Jekyll, a popular static site generator. Learn how to display the latest post differently from the rest, control the number of posts shown, and customize post excerpts. Perfect for developers looking to convert dynamic websites to static Jekyll sites or anyone seeking to enhance their Jekyll templates."
+description: "Explore handy Jekyll snippets for enhancing static site generation, including unique presentation of the latest post and consistent post excerpts."
 author: "Russ Mckendrick"
 date: 2014-02-02T12:00:00.000Z
 lastmod: 2021-07-31T12:31:10+01:00

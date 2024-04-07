@@ -1,5 +1,6 @@
 ---
 title: "2014’s Top 20 Albums"
+description: "Revealing my top 10 albums of 2014 with a mix of genres and artists, plus additional favorites that almost made the cut, all available on Spotify."
 author: "Russ Mckendrick"
 date: 2014-12-03T12:00:00.000Z
 lastmod: 2021-07-31T12:32:25+01:00

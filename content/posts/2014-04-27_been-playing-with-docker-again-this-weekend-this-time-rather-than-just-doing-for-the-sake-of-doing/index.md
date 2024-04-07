@@ -1,6 +1,6 @@
 ---
 title: "Deploying a Stable Docker Setup on CentOS with Shipyard"
-description: "Learn how to deploy a production-ready Docker setup on CentOS using Shipyard for easy container management. This step-by-step guide covers installing Docker with Puppet, configuring Shipyard, and ensuring high availability of the Shipyard agent using Supervisor. Includes tips on using trusted builds from the Docker Index to streamline your workflow."
+description: "Deploy a stable Docker setup on CentOS with Shipyard for container management, using Puppet for installation and Supervisor for high availability."
 author: "Russ Mckendrick"
 date: 2014-04-27T11:00:00.000Z
 lastmod: 2021-07-31T12:31:19+01:00

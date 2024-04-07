@@ -1,6 +1,6 @@
 ---
 title: "Top 10 2013"
-description: "Discover my top 10 albums of 2013, featuring a diverse mix of rock, jazz, and alternative music. From the psychedelic rock of Monster Magnet to the soulful jazz of Gregory Porter, this list showcases the best releases of the year. Includes albums by David Bowie, Coheed and Cambria, Gary Numan, Clutch, Public Service Broadcasting, How to Destroy Angels, Sigur Rós, Katatonia, and The Temperance Movement."
+description: "My top 10 albums of 2013, a rich mix of genres with highlights from Monster Magnet, David Bowie, and more, showcasing the year's standout music."
 author: "Russ Mckendrick"
 date: 2013-12-08T12:00:00.000Z
 lastmod: 2021-07-31T12:31:06+01:00

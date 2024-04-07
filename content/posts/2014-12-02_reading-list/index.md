@@ -1,5 +1,6 @@
 ---
 title: "Reading list"
+description: "Curated a list of compelling reads from Pocket, covering topics from Google Docs reverse engineering to AWS scalability and Docker in production."
 author: "Russ Mckendrick"
 date: 2014-12-02T12:00:00.000Z
 lastmod: 2021-07-31T12:32:23+01:00

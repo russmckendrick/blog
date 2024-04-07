@@ -1,6 +1,6 @@
 ---
 title: "DevOps-SysAdm.in"
-description: "Introducing DevOps-SysAdm.in, my new Tumblr-based website for sharing and curating DevOps and system administration resources. Learn why I chose Tumblr over Jekyll for this project and discover how you can contribute to the site by submitting your own links and content. Follow along to stay up-to-date with the latest tools, techniques, and best practices in the world of DevOps and system administration."
+description: "Launching DevOps-SysAdm.in on Tumblr, a curated hub for DevOps and sysadmin resources. Find out why Tumblr was the chosen platform and how to contribute."
 author: "Russ Mckendrick"
 date: 2014-05-18T11:00:00.000Z
 lastmod: 2021-07-31T12:31:27+01:00

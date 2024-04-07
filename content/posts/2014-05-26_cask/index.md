@@ -1,6 +1,6 @@
 ---
 title: "Cask"
-description: "Streamline your macOS application installation process with Cask, a powerful Homebrew package that automates the download and installation of your favorite apps. Learn how to set up Cask and use it to quickly install essential applications like Google Chrome, Dropbox, Sublime Text, and more with just a few simple commands. Perfect for anyone looking to save time and effort when setting up a new Mac or updating their existing setup."
+description: "Learn how to use Cask with Homebrew for easy installation of macOS applications, saving time and simplifying setup processes for your favorite apps."
 author: "Russ Mckendrick"
 date: 2014-05-26T11:00:00.000Z
 lastmod: 2021-07-31T12:31:31+01:00
