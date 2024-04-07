@@ -1,5 +1,6 @@
 ---
 title: "More Grunt & Jekyll"
+description: "Explore the upgrade to CentOS 7 for enhanced performance and access to modern software without extra repositories. Delve into the choice between CentOS, Fedora, and Ubuntu LTS, considering familiarity, release cycles, and server suitability. Embrace DevOps with Docker and Puppet for streamlined configurations."
 author: "Russ Mckendrick"
 date: 2014-12-06T12:00:00.000Z
 lastmod: 2021-07-31T12:32:28+01:00

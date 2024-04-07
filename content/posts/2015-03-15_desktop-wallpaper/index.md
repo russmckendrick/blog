@@ -1,5 +1,6 @@
 ---
 title: "Desktop Wallpaper"
+description: "Explore the timeless charm of the 'Aqua Blue' desktop wallpaper, a MacOS X standard since 2001. Join me in reflecting on its enduring presence across operating systems for over 14 years."
 author: "Russ Mckendrick"
 date: 2015-03-15T12:00:00.000Z
 lastmod: 2021-07-31T12:32:45+01:00

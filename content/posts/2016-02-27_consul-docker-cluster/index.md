@@ -1,5 +1,6 @@
 ---
 title: "Consul Docker Cluster"
+description: "Set up Consul cluster on Docker with Docker Machine & Swarm for service discovery, using shared private IPs for networking."
 author: "Russ Mckendrick"
 date: 2016-02-27T17:55:22.000Z
 lastmod: 2021-07-31T12:33:46+01:00

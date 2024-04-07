@@ -1,5 +1,6 @@
 ---
 title: "Tiny Docker Images"
+description: "Experience Alpine Linux for ultra-compact Docker images. Drastically reduce container size. Find my images on Docker Hub & GitHub."
 author: "Russ Mckendrick"
 date: 2016-02-01T18:02:26.000Z
 lastmod: 2021-07-31T12:33:42+01:00

@@ -1,5 +1,6 @@
 ---
 title: "Git + Rebase"
+description: "Discover the efficient Git workflow of forking, adding remotes, and rebasing with Russ Mckendrick. Learn how to stay updated with the original repository using Git rebase."
 author: "Russ Mckendrick"
 date: 2015-03-22T12:00:00.000Z
 lastmod: 2021-07-31T12:32:52+01:00

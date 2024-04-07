@@ -1,5 +1,6 @@
 ---
 title: "Monitoring Docker Released"
+description: "Learn effective Docker container monitoring techniques in my newly released book. Order your copy from Packt Publishing or Amazon now!"
 author: "Russ Mckendrick"
 date: 2015-12-15T18:15:14.000Z
 lastmod: 2021-07-31T12:33:35+01:00

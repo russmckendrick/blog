@@ -1,5 +1,6 @@
 ---
 title: "Slain by Dragons"
+description: "Analyzing the online fate of businesses featured on Dragons Den. Insights into website performance under prime-time pressure. Lessons for online resilience and optimization."
 author: "Russ Mckendrick"
 date: 2015-07-13T19:36:52.000Z
 lastmod: 2021-07-31T12:33:14+01:00

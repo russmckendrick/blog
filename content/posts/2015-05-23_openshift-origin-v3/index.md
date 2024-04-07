@@ -1,5 +1,6 @@
 ---
 title: "OpenShift Origin V3"
+description: "Learn how to install and run OpenShift Origin V3 on CentOS, step-by-step guide with commands and configuration for setting up a test server using Vagrant."
 author: "Russ Mckendrick"
 date: 2015-05-23T11:00:00.000Z
 lastmod: 2021-07-31T12:33:03+01:00

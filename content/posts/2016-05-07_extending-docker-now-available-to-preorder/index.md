@@ -1,5 +1,6 @@
 ---
 title: "Extending Docker now available to Pre-Order"
+description: "Pre-order Russ Mckendrick's book 'Extending Docker' from Packt or Amazon. Learn advanced Docker techniques."
 author: "Russ Mckendrick"
 date: 2016-05-07T16:51:30.000Z
 lastmod: 2021-07-31T12:33:49+01:00

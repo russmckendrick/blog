@@ -1,5 +1,6 @@
 ---
 title: "Terraform & Azure"
+description: "Discover the synergy between Terraform and Azure for efficient virtual machine provisioning. Simplify Azure infrastructure management with Terraform's intuitive approach."
 author: "Russ Mckendrick"
 date: 2015-07-19T15:13:10.000Z
 lastmod: 2021-07-31T12:33:16+01:00

@@ -1,5 +1,6 @@
 ---
 title: "Flocker on CentOS 7"
+description: "Russ Mckendrick explores Flocker on CentOS 7, enhancing Dockerized applications with robust persistent storage solutions."
 author: "Russ Mckendrick"
 date: 2015-12-13T18:18:50.000Z
 lastmod: 2021-07-31T12:33:33+01:00
@@ -19,7 +20,7 @@ aliases:
 
 ---
 
-I have been reading about [Flocker](https://clusterhq.com/flocker/introduction/) for quite a while and it’s been something I have been meaning to look at since the introduction of plugins back in the [Docker 1.7 release](http://blog.docker.com/2015/06/announcing-docker-1-7-multi-host-networking-plugins-and-orchestration-updates/). But I have [been busy](https://media-glass.es/2015/10/11/monitoring-docker-book/) looking at other parts of Docker.
+I have been reading about [Flocker](https://clusterhq.com/flocker/introduction/) for quite a while and it’s been something I have been meaning to look at since the introduction of plugins back in the [Docker 1.7 release](http://blog.docker.com/2015/06/announcing-docker-1-7-multi-host-networking-plugins-and-orchestration-updates/). But I have [been busy](/2015/10/11/monitoring-docker-book/) looking at other parts of Docker.
 
 Since I had a few hours this weekend I thought it was about time and had a play. ClusterHQ describes Flocker as;
 

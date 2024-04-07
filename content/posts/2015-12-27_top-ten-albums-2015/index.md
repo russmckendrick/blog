@@ -1,5 +1,6 @@
 ---
 title: "Top Ten Albums 2015"
+description: "Explore top albums of 2015 from various artists, including Steven Wilson, Vennart, Leon Bridges, and more. Check out my eclectic music picks!"
 author: "Russ Mckendrick"
 date: 2015-12-27T18:03:34.000Z
 lastmod: 2021-07-31T12:33:40+01:00

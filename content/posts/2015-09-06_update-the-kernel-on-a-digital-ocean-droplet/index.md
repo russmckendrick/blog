@@ -1,5 +1,6 @@
 ---
 title: "Update the Kernel on a Digital Ocean droplet"
+description: "Upgrade your Digital Ocean droplet's kernel effortlessly. Discover the steps to ensure smooth kernel updates for enhanced security and performance."
 author: "Russ Mckendrick"
 date: 2015-09-06T16:46:11.000Z
 lastmod: 2021-07-31T12:33:22+01:00

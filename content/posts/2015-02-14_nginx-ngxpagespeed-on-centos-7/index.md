@@ -1,5 +1,6 @@
 ---
 title: "NGINX & ngx_pagespeed on CentOS 7"
+description: "Compile NGINX with ngx_pagespeed on CentOS 7. Automate setup with init script. Configure NGINX for ngx_pagespeed to enhance performance."
 author: "Russ Mckendrick"
 date: 2015-02-14T15:36:06.000Z
 lastmod: 2021-07-31T12:32:39+01:00

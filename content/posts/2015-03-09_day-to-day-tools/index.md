@@ -1,5 +1,6 @@
 ---
 title: "Day To Day Tools"
+description: "Explore the essential desktop and command-line apps, along with services, utilized daily, including SublimeText, Dashlane, GitHub, Digital Ocean, and more, for efficient productivity and management."
 author: "Russ Mckendrick"
 date: 2015-03-09T12:00:00.000Z
 lastmod: 2021-07-31T12:32:43+01:00
