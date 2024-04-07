@@ -16,7 +16,7 @@ aliases:
 
 ---
 
-I just noticed that the [first post](/2013/08/31/puppet-server-and-client-installation-centos-6.x/) on this blog was made exactly a year ago today.
+I just noticed that the [first post](/2013/08/31/puppet-server-client-installation-centos-6.x/) on this blog was made exactly a year ago today.
 
-While the [layout](/2014/04/21/new-coat-of-paint/) and [blogging engine has changed](/2014/01/11/another-new-blog/) and I have not posted for [extended periods of time](/2014/07/12/walkabout/) happy birthday to me.
+While the [layout](/tags/blog/) and [blogging engine has changed](/tags/blog/) and I have not posted for [extended periods of time](/2014/07/12/walkabout/) happy birthday to me.
 

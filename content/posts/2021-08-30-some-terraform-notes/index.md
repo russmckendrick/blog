@@ -19,7 +19,7 @@ I have just finished working on a few large Terraform Azure deployments, thought
 
 ## Azure Diagnostic Settings 
 
-While the **[azurerm_monitor_diagnostic_setting](azurerm_monitor_diagnostic_setting)** resource can be used to apply diagnostic settings to pretty much any other resource, however, as each resource has different `logs` and `metrics` figuring them out can be a chore. This is where the **[azurerm_monitor_diagnostic_categories](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/monitor_diagnostic_categories)** data source comes in.
+While the **azurerm_monitor_diagnostic_setting** resource can be used to apply diagnostic settings to pretty much any other resource, however, as each resource has different `logs` and `metrics` figuring them out can be a chore. This is where the **[azurerm_monitor_diagnostic_categories](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/monitor_diagnostic_categories)** data source comes in.
 
 The **azurerm_monitor_diagnostic_categories** data source can be used to target an existing resource to gather information on the `logs` and `metrics` which need to be applied, you can then take this data and apply to a dynamic block in your **azurerm_monitor_diagnostic_setting** resource. Let's look at how this would work for a virtual network.
 
