@@ -1,5 +1,6 @@
 ---
 title: "Pre-Order Docker Data Management with Flocker"
+description: "Pre-order 'Docker Data Management with Flocker' by Russ Mckendrick. Gain early access to the ebook by purchasing from Packt."
 author: "Russ Mckendrick"
 date: 2016-11-07T18:36:01.000Z
 lastmod: 2021-07-31T12:34:19+01:00

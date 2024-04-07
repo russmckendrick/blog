@@ -1,5 +1,6 @@
 ---
 title: "Launching a local Rancher cluster"
+description: "Learn to launch a local Rancher cluster effortlessly with Docker for Mac beta and Docker Machine for smooth demo setups."
 author: "Russ Mckendrick"
 date: 2016-06-12T15:30:55.000Z
 lastmod: 2021-07-31T12:33:55+01:00

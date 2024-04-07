@@ -1,5 +1,6 @@
 ---
 title: "Mastering Docker Second Edition"
+description: "Author Russ Mckendrick's 'Mastering Docker Second Edition' is now available. Get an updated guide to Docker from Packt and other bookstores."
 author: "Russ Mckendrick"
 date: 2017-09-19T11:44:59.044Z
 lastmod: 2021-07-31T12:34:58+01:00

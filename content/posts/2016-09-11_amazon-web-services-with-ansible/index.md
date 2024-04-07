@@ -1,5 +1,6 @@
 ---
 title: "Amazon Web Services with Ansible"
+description: "Explore how Russ Mckendrick utilizes Ansible to manage Amazon Web Services infrastructure, from VPC creation to EC2 instance deployment and AMI management."
 author: "Russ Mckendrick"
 date: 2016-09-11T15:45:16.000Z
 lastmod: 2021-07-31T12:34:12+01:00

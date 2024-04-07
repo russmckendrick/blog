@@ -1,5 +1,6 @@
 ---
 title: "Ansible and the Azure Rest API"
+description: "Learn how Ansible utilizes Azure REST API for efficient resource management, with insights on azure_rm_resource module and Visual Studio Code extension."
 author: "Russ Mckendrick"
 date: 2020-04-03
 cover:

@@ -1,5 +1,6 @@
 ---
 title: "Docker Load Balancing & Application Bundles"
+description: "Explore Docker Swarm, load balancing, and DAB with Ansible on Digital Ocean. Step-by-step guide included."
 author: "Russ Mckendrick"
 date: 2016-06-25T18:30:16.000Z
 lastmod: 2021-07-31T12:33:58+01:00

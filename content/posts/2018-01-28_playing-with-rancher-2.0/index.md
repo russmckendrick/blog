@@ -1,5 +1,6 @@
 ---
 title: "Playing with Rancher 2.0"
+description: "Join Russ Mckendrick in exploring Rancher 2.0 for Kubernetes orchestration. Follow his journey as he tests out the preview version, uncovering its features and limitations."
 author: "Russ Mckendrick"
 date: 2018-01-28T12:52:26.760Z
 lastmod: 2021-07-31T12:35:08+01:00

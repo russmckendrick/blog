@@ -1,5 +1,6 @@
 ---
 title: "Azure DevOps Ansible Pipeline"
+description: "Discover how to set up an Azure DevOps pipeline to run Ansible playbooks efficiently, avoiding the need for a dedicated VM, with insights on Azure CLI integration."
 author: "Russ Mckendrick"
 date: 2020-05-10
 cover:

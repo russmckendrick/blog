@@ -2,7 +2,7 @@
 title: "VSCode + Bicep on an M1 Mac"
 author: "Russ McKendrick"
 date: 2021-12-04T17:26:55Z
-description: ""
+description: "Learn how to run Bicep on an M1 Mac using VSCode, addressing the .Net 5.0 runtime issue with Rosetta 2 and Homebrew."
 draft: false
 showToc: true
 cover:

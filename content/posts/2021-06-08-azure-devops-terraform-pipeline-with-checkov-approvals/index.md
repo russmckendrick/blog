@@ -2,7 +2,7 @@
 title: "Azure DevOps Terraform Pipeline  with Checkov & Approvals"
 author: "Russ Mckendrick"
 date: 2021-06-08
-description: ""
+description: "Setting up an Azure DevOps pipeline for Terraform deployments with Checkov scans, validation, and manual approval steps."
 draft: false
 showToc: true
 cover:

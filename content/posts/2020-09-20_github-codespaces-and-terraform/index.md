@@ -1,5 +1,6 @@
 ---
 title: "GitHub Codespaces and Terraform"
+description: "Explore GitHub Codespaces with Terraform for online IDE experience. Easily set up a workspace for infrastructure as code projects using Terraform and Ansible."
 author: "Russ Mckendrick"
 date: 2020-09-20
 cover:

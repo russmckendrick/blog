@@ -1,5 +1,6 @@
 ---
 title: "Microsoft Azure Portal URLs"
+description: "Access Microsoft Azure portals efficiently with handy URLs for Azure, Azure Active Directory, Resource Explorer, and Cloud Shell."
 author: "Russ Mckendrick"
 date: 2019-06-16T00:00:00.000Z
 lastmod: 2021-07-31T12:35:25+01:00

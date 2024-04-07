@@ -1,5 +1,6 @@
 ---
 title: "Docker Swarm"
+description: "Discover Docker Swarm on macOS beta, orchestrate services effortlessly, and scale with ease. Step-by-step guide included."
 author: "Russ Mckendrick"
 date: 2016-06-30T18:30:00.000Z
 lastmod: 2021-07-31T12:34:04+01:00

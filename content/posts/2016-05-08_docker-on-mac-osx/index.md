@@ -1,5 +1,6 @@
 ---
 title: "Docker on Mac OSX"
+description: "Experience Docker on macOS with enhanced speed and reliability. Learn how to install and leverage its native features seamlessly."
 author: "Russ Mckendrick"
 date: 2016-05-08T16:13:53.000Z
 lastmod: 2021-07-31T12:33:51+01:00

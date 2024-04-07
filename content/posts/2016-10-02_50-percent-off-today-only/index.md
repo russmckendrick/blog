@@ -1,5 +1,6 @@
 ---
 title: "50% Off Today Only"
+description: "Get 50% off Russ Mckendrick's Docker books today only. Dive into Docker with comprehensive guides at an exclusive discount. Limited time offer!"
 author: "Russ Mckendrick"
 date: 2016-10-02T15:04:48.000Z
 lastmod: 2021-07-31T12:34:15+01:00

@@ -1,5 +1,6 @@
 ---
 title: "Thoughts on Amazon Lightsail"
+description: "Amazon Lightsail offers an easy entry to AWS with instance hosting akin to Digital Ocean. A look at its features, costs, and potential limitations."
 author: "Russ Mckendrick"
 date: 2016-12-18T17:21:49.496Z
 lastmod: 2021-07-31T12:34:30+01:00

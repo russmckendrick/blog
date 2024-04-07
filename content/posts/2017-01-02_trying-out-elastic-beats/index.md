@@ -1,5 +1,6 @@
 ---
 title: "Trying out Elastic Beats"
+description: "Explore Elastic Beats for data shipping in DevOps. Learn to set up and configure Metricbeat on Docker Swarm for system and Docker metrics analysis."
 author: "Russ Mckendrick"
 date: 2017-01-02T21:49:35.674Z
 lastmod: 2021-07-31T12:34:42+01:00

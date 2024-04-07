@@ -1,5 +1,6 @@
 ---
 title: "Playing with Docker 1.13 & Minio"
+description: "Deploy Minio in Docker Swarm with Docker 1.13 for distributed object storage. Easy setup and management."
 author: "Russ Mckendrick"
 date: 2017-01-21T20:50:07.458Z
 lastmod: 2021-07-31T12:34:50+01:00

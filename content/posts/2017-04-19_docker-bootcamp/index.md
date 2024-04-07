@@ -1,5 +1,6 @@
 ---
 title: "Docker Bootcamp"
+description: "Author Russ Mckendrick's third book, 'Docker Bootcamp,' is coming soon. Pre-order now for a comprehensive guide to Docker."
 author: "Russ Mckendrick"
 date: 2017-04-19T19:34:19.987Z
 lastmod: 2021-07-31T12:34:56+01:00

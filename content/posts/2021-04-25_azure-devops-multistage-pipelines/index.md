@@ -1,5 +1,6 @@
 ---
 title: "Azure DevOps Multi-Stage Pipelines"
+description: "Learn how to implement multi-stage pipelines in Azure DevOps for efficient deployment workflows with approval gates and infrastructure setup."
 author: "Russ Mckendrick"
 date: 2021-04-25
 showFullContent: false
