@@ -1,5 +1,6 @@
 ---
 title: "Walkabout"
+description: "Catch up on what I've been up to during my recent absence from blogging. From the release of Docker 1.0 and CentOS 7 to updates to the site's theme and new music from Aphex Twin, Neil Finn, Anathema, and Crippled Black Phoenix, this post covers the highlights of the past few weeks. Plus, learn about my recent blog post on multi-factor authentication in AWS."
 author: "Russ Mckendrick"
 date: 2014-07-12T11:00:00.000Z
 lastmod: 2021-07-31T12:31:38+01:00
