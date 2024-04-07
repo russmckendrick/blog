@@ -1,6 +1,7 @@
 ---
 title: "Stuff I use"
 author: "Russ Mckendrick"
+description: "Discover the tools and services that streamline my workflow as a developer and sysadmin. From local development with Vagrant and Packer to server management with Puppet and SaltStack, this article covers the essential software and platforms I rely on for both my macOS setup and server infrastructure. Learn about my preferred code editors, version control tools, hosting providers, and more."
 date: 2013-11-17T12:00:00.000Z
 lastmod: 2021-07-31T12:31:04+01:00
 tags:

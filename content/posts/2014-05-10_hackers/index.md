@@ -1,5 +1,6 @@
 ---
 title: "Hackers"
+description: "Discover the importance of securing your servers, even when running test environments with Docker. Learn how I detected port scanning and brute-force attacks on my servers, despite using key-based authentication. Find out how implementing Fail2Ban with Puppet helped me protect my servers and gain valuable insights into the frequency of these attacks."
 author: "Russ Mckendrick"
 date: 2014-05-10T11:00:00.000Z
 lastmod: 2021-07-31T12:31:25+01:00

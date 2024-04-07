@@ -1,5 +1,6 @@
 ---
 title: "More Puppet"
+description: "Streamline your Puppet setup on CentOS with these helpful installation scripts. Learn how to quickly deploy a Puppet Master and Puppet Agents using simple curl commands, making server rebuilds and configuration management a breeze. The article also provides a link to a non-personalized Puppet configuration on GitHub, serving as a useful starting point for your own infrastructure automation projects."
 author: "Russ Mckendrick"
 date: 2014-02-23T12:00:00.000Z
 lastmod: 2021-07-31T12:31:15+01:00

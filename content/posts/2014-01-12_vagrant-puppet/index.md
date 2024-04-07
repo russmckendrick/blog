@@ -1,5 +1,6 @@
 ---
 title: "Vagrant & Puppet"
+description: "Learn how to use Vagrant and Puppet to create reproducible development environments that closely mirror production setups. This article explores the benefits of using Vagrant for local development, including easy provisioning, shared folders, and the ability to use production-ready Puppet scripts. Walk through a typical Vagrant workflow and discover how it can streamline your development process."
 author: "Russ Mckendrick"
 date: 2014-01-12T12:00:00.000Z
 lastmod: 2021-07-31T12:31:08+01:00

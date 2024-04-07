@@ -1,6 +1,7 @@
 ---
 title: "It’s Been A While"
 author: "Russ Mckendrick"
+description: "Rediscover classic albums from the past as I take a nostalgic journey through my music collection. From Jellyfish's power pop masterpiece 'Bellybutton' to The Wannadies' indie rock gem 'Be a Girl' and Spacehog's glam-inspired 'Resident Alien,' join me in revisiting these timeless records and the memories they evoke."
 date: 2014-05-05T11:00:00.000Z
 lastmod: 2021-07-31T12:31:23+01:00
 
