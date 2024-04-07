@@ -1,5 +1,5 @@
 ---
-title: "Been playing with Docker again this weekend, this time rather than just doing for the sake of doing…"
+title: "Deploying a Stable Docker Setup on CentOS with Shipyard"
 author: "Russ Mckendrick"
 date: 2014-04-27T11:00:00.000Z
 lastmod: 2021-07-31T12:31:19+01:00
