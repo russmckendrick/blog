@@ -1,5 +1,6 @@
 ---
 title: "Sysdig"
+description: "Discover Sysdig, a powerful open-source system-level exploration tool for Linux. Learn how Sysdig combines the functionality of strace, tcpdump, and lsof to capture, save, filter, and analyze system state and activity. Find out how easy it is to install and use Sysdig, and explore real-world examples of how it can help sysadmins and DevOps professionals investigate server attacks and troubleshoot complex issues."
 author: "Russ Mckendrick"
 date: 2014-05-25T11:00:00.000Z
 lastmod: 2021-07-31T12:31:29+01:00

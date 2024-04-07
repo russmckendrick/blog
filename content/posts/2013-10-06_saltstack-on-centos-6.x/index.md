@@ -1,6 +1,7 @@
 ---
 title: "SaltStack on CentOS 6.x"
 author: "Russ Mckendrick"
+description: "Learn how to set up SaltStack, a powerful configuration management tool, on CentOS 6.x. This guide walks you through installing Salt-Master and Salt-Minion, configuring the master and minion settings, and executing remote commands across multiple machines. Includes code snippets and practical examples to help you get started with managing your infrastructure using SaltStack."
 date: 2013-10-06T11:00:00.000Z
 lastmod: 2021-07-31T12:31:01+01:00
 category: ""

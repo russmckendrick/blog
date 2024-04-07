@@ -1,5 +1,6 @@
 ---
 title: "Yet More Docker"
+description: "Dive deeper into Docker as I explore managing and deploying containers using Puppet. Discover my collection of trusted builds on the Docker Index, including base images, database containers running MySQL 5.5 and 5.6, and PHP environments with Apache or NGINX and PHP 5.4 or 5.5. Learn how to streamline your Docker workflow and infrastructure management with these reusable container images."
 author: "Russ Mckendrick"
 date: 2014-05-04T11:00:00.000Z
 lastmod: 2021-07-31T12:31:21+01:00

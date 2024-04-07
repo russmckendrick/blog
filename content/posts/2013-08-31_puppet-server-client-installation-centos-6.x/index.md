@@ -1,6 +1,7 @@
 ---
 title: "Puppet Server & Client Installation CentOS 6.x"
 author: "Russ Mckendrick"
+description: "Step-by-step guide on installing Puppet Server and Client on CentOS 6.x. Learn how to set up the Puppet Master server, configure Apache, and install the Puppet Agent on client machines. Includes code snippets for easy implementation and troubleshooting tips to ensure a smooth setup process."
 date: 2013-08-31T11:00:00.000Z
 lastmod: 2021-07-31T12:30:58+01:00
 tags:
