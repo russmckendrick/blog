@@ -18,7 +18,7 @@ aliases:
 
 ---
 
-Since [my last post about Docker](/2014/04/27/more-docker/) I have been playing a lot more, rather than use a GUI like [Shipyard](http://shipyard-project.com/) I decided to use @garethr’s [excellent Puppet Module](https://forge.puppetlabs.com/garethr/docker) to manage and deploy my containers. This allowed me to take a better look at the builds I had over at the [Docker Index](https://index.docker.io/). The following is a list of builds I have deployed so far …..
+Since [my last post about Docker](/2014/04/27/deploying-a-stable-docker-setup-on-centos-with-shipyard/) I have been playing a lot more, rather than use a GUI like [Shipyard](http://shipyard-project.com/) I decided to use @garethr’s [excellent Puppet Module](https://forge.puppetlabs.com/garethr/docker) to manage and deploy my containers. This allowed me to take a better look at the builds I had over at the [Docker Index](https://index.docker.io/). The following is a list of builds I have deployed so far …..
 
 #### General Containers
 

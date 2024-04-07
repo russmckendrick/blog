@@ -22,7 +22,7 @@ aliases:
 
 ---
 
-Since the [last post about the blog](/2015/09/29/web-site-update/) I have been playing with the blog a bit more, I have finally got a decent [PageSpeed Insights Score](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fmedia-glass.es&tab=desktop);
+Since the [last post about the blog](/tags/blog/) I have been playing with the blog a bit more, I have finally got a decent [PageSpeed Insights Score](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fmedia-glass.es&tab=desktop);
 
 ![pagespeedinsights](/img/2015-10-11_more-site-updates_1.png)
 
