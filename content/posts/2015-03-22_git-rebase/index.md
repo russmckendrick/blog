@@ -24,7 +24,7 @@ As you may have noticed, the blog looks different (again). This is because I hav
 
 One of the things I like about Ghost is the default theme, [Casper](https://github.com/TryGhost/Casper "Casper"). While I wanted to keep it there were a few things I wanted to tweak, such as removing the full page header image on main index.
 
-When I have previously used Ghost I have [forked the theme](https://github.com/russmckendrick/Casper "My fork of Casper") on GitHub and then manually messed about getting any updates from the original code in.
+When I have previously used Ghost I have forked the theme on GitHub and then manually messed about getting any updates from the original code in.
 
 This time I decided that I should try and make a proper job of it, this would mean;
 

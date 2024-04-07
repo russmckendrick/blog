@@ -92,7 +92,7 @@ $ kubectl version
 
 ![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_6.jpg)
 
-Now that our cluster is up and running, and we can connect to it let’s test it by launching something. I typically tend to use the Sock Shop microservices demo by Weave, which you can [https://microservices-demo.github.io/](https://microservices-demo.github.io/).
+Now that our cluster is up and running, and we can connect to it let’s test it by launching something. I typically tend to use the Sock Shop microservices demo by Weave, which you can [https://github.com/microservices-demo/microservices-demo](https://github.com/microservices-demo/microservices-demo).
 
 To launch the demo shop use the following commands;
 

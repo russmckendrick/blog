@@ -124,7 +124,7 @@ The album also features a significant contribution from Ninet Tayeb, particularl
 
 Overall, 'The Harmony Codex' is seen as a brave step forward for Wilson, with a mix of familiar elements and new explorations in sound. It's a testament to his evolving career, offering diverse and challenging compositions that require and reward attentive listening.
 
-For more detailed insights into the album, you can explore the reviews on [The Prog Report](https://progreport.com/steven-wilson-the-harmony-codex-album-review/), [At The Barrier](https://atthebarrier.com/2023/08/22/steven-wilson-the-harmony-codex-album-review/), and [Spinning Platters](https://spinningplatters.com/2023/08/14/album-review-steven-wilson-the-harmony-codex/)."
+For more detailed insights into the album, you can explore the reviews on [The Prog Report](https://progreport.com/steven-wilson-the-harmony-codex-album-review/), [At The Barrier](https://atthebarrier.com/2023/09/28/steven-wilson-the-harmony-codex-album-review/), and [Spinning Platters](https://spinningplatters.com/2023/08/14/album-review-steven-wilson-the-harmony-codex/)."
 
 ## Brothers & Sisters - Steve Mason ([](https://www.mckendrick.rocks/albums/brothers-sisters-26299913/))
 
@@ -214,7 +214,7 @@ The album also explores the realms of pure ambience in tracks like "Why Can You 
 
 Overall, "Prism" is described as an uplifting and positive album, blending musical ambience, songwriting substance, and sample-based humor. It's an album that's not just for sitting back and relaxing, but also encourages the listener to get up and dance, reflecting The Orb's reputation as the post-rave therapy of choice for generations of clubbers.
 
-For a more detailed exploration of the album, you can refer to the reviews from [PopMatters](https://www.popmatters.com/the-orb-prism-review-2023), [Joey Beltdrives](https://joeybeltdrives.com/album-review-the-orb-prism-released-april-28th-2023/), [AllMusic](https://www.allmusic.com/album/prism-mw0004100933), [musicOMH](https://www.musicomh.com/reviews/albums/the-orb-prism), and [The Arts Desk](https://www.theartsdesk.com/new-music/album-orb-prism)."
+For a more detailed exploration of the album, you can refer to the reviews from [PopMatters](https://www.popmatters.com/the-orb-prism-album-review), [Joey Beltdrives](https://joeybeltdrives.com/album-review-the-orb-prism-released-april-28th-2023/), [AllMusic](https://www.allmusic.com/album/prism-mw0004100933), [musicOMH](https://www.musicomh.com/reviews/albums/the-orb-prism), and [The Arts Desk](https://www.theartsdesk.com/new-music/album-orb-prism)."
 
 ## Version Girl - Rhoda Dakar  ([](https://www.mckendrick.rocks/albums/version-girl-27220650/))
 
@@ -226,7 +226,7 @@ The album begins with the eponymous track "Version Girl," which is a cover of Da
 
 Overall, "Version Girl" is an album that radiates energy and vitality. It's a testament to Dakar's skill as an artist and her ability to breathe new life into well-known songs, proving her status as a significant figure in the UK pop-reggae scene. The album is celebrated for its diversity and the way it effortlessly shifts the meaning of the original songs, providing a set of covers that are both familiar and refreshingly new.
 
-For more detailed insights into the album, you can refer to the reviews from Louder Than War [Louder Than War](https://louderthanwar.com/rhoda-dakar-version-girl-album-review/), New Sounds [New Sounds](https://newsoundsmag.co.uk/2023/05/29/album-review-rhoda-dakar-version-girl-sunday-best-records/), and God Is In The TV [God Is In The TV](https://www.godisinthetvzine.co.uk/2023/05/29/rhoda-dakar-version-girl-sunday-best-recordings/).
+For more detailed insights into the album, you can refer to the reviews from Louder Than War [Louder Than War](https://louderthanwar.com/rhoda-dakar-version-girl-album-review/) and God Is In The TV [God Is In The TV](https://www.godisinthetvzine.co.uk/2023/05/29/rhoda-dakar-version-girl-sunday-best-recordings/).
 
 ## Joy'All - Jenny Lewis ([](https://www.mckendrick.rocks/albums/joy-all-27328932/))
 

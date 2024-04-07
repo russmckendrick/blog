@@ -118,7 +118,7 @@ $ docker container run -d store/couchbase/couchbase:3.1.5
 
 As you can see, I have had to use the full image name and version to ensure that the image from the Docker Store will be used.
 
-Please note, the commands above are not the best ones to launch a Couchbase container, they are purely for example. If you want to know how to run Couchbase in a container I recommend reviewing [the offical documentation](https://developer.couchbase.com/documentation/server/5.0/getting-started/do-a-quick-install.html).
+Please note, the commands above are not the best ones to launch a Couchbase container, they are purely for example. If you want to know how to run Couchbase in a container I recommend reviewing [the offical documentation](https://developer.couchbase.com/).
 
 Another type of purchase from the Docker Store is a Developer Tier one, a good example of this is the Oracle Database Enterprise Edition container, to attach the subscription to your Docker Store account you need to agree to the following;
 

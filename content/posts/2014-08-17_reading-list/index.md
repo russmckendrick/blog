@@ -31,7 +31,6 @@ Here are some of the posts I have saved for further reading ….
 
 #### Cloud, Scale and DevOps
 
-- [System Administration at Netflix](http://www.lauradhamilton.com/system-administration-at-netflix)
 - [There’s No Konami Code for Operations](http://blog.lusis.org/blog/2014/06/13/no-konami-for-operations/)
 - [10 Things You Should Know About AWS](http://highscalability.com/blog/2013/11/5/10-things-you-should-know-about-aws.html)
 - [The Easy Way Of Building A Growing Startup Architecture Using HAProxy, PHP, Redis And MySQL To Handle 1 Billion Requests A Week](http://highscalability.com/blog/2014/8/11/the-easy-way-of-building-a-growing-startup-architecture-usin.html)

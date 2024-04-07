@@ -20,7 +20,7 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 Hey there, music aficionados! 🎧 As with every week, we're diving deep into my musical landscapes, shedding light on the eclectic mix of sounds that have resonated through my speakers and headphones this week.
 
-This data, meticulously compiled from my Last.fm profile (give it a follow if you haven't: https://www.last.fm/user/RussMckendrick), is served fresh with no repeats, guaranteeing a blend of old favorites and new discoveries. Enjoy the journey! 
+This data, meticulously compiled from my Last.fm profile (give it a follow if you haven't: https://www.last.fm/user/RussMckendrick, is served fresh with no repeats, guaranteeing a blend of old favorites and new discoveries. Enjoy the journey! 
 
 Hauntingly serving as my sonic backdrop for this week has been none other than George Harrison.😎✌️ Yes, you heard that right, the magical mystery man from The Beatles! Harrison, known not just for his innovative guitar work but also for his profound songwriting skill, has occupied the top spot on my playlist.
 

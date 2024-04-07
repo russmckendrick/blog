@@ -20,7 +20,7 @@ aliases:
 
 ---
 
-I have been quiet on here as I am in the process of writing again, one of things I have been looking at is Dockers new networking features. This gave me an excuse to have a play with [Weave](https://www.weave.works). Rather than go into too much detail here, lets go all click bait because you won’t believe what happened next.
+I have been quiet on here as I am in the process of writing again, one of things I have been looking at is Dockers new networking features. This gave me an excuse to have a play with Weave. Rather than go into too much detail here, lets go all click bait because you won’t believe what happened next.
 
 I launched two hosts in [Digital Ocean](https://m.do.co/c/52ec4dc3647e), one in London and then one in New York City using Docker Machine;
 
@@ -117,4 +117,4 @@ docker-machine stop mesh-london mesh-nyc
 docker-machine rm mesh-london mesh-nyc
 ```
 
-For further reading on [Weave Net](https://www.weave.works/products/weave-net/) please [see their documentation](https://github.com/weaveworks/weave#readme).
+For further reading on Weave Net please [see their documentation](https://github.com/weaveworks/weave#readme).

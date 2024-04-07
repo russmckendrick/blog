@@ -31,7 +31,7 @@ Rancher is described as being …
 
 > From the ground up, Rancher was designed to solve all of the critical challenges necessary to run all of your applications in containers. Rancher provides a full set of infrastructure services for containers, including networking, storage services, host management, load balancing and more. All of these services work across any infrastructure, and make it simple to reliably deploy and manage applications.
 
-As I am running the [Docker for Mac Beta](/2016/05/08/docker-mac/) I got to thinking if I could use that to launch Rancher and then using Docker machine to launch a few hosts running [RancherOS](http://rancher.com/rancher-os/) to act as hosts.
+As I am running the [Docker for Mac Beta](/2016/05/08/docker-on-mac-osx/) I got to thinking if I could use that to launch Rancher and then using Docker machine to launch a few hosts running [RancherOS](http://rancher.com/rancher-os/) to act as hosts.
 
 Let’s do the easy bit, launching Rancher is incredibly easy. I just ran the following command;
 
