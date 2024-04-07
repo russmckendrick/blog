@@ -24,7 +24,7 @@ This could be the most straight forward MacOS update I have ever performed (I ha
 
 This time all three machines (iMac, MBP and MBA) worked first time with no dramas. As always the first thing I did was a full TimeMachine back-up (I have been burnt before) and then downloaded a copy of the Yosemite install from the AppStore. Rather than do an in-place upgrade I always do a clean installation, for the last three releases I have used the excellent [DiskMaker X (or Lion Disk Maker as it used to be known)](http://liondiskmaker.com). Once I have a USB installer I rebooted into the USB disk and then erased my primary hard drive using the disk utility, which is always a fun moment.
 
-Once the new system had installed and I have logged in the first thing I do is install the [Command Line Tools](http://adcdownload.apple.com/Developer_Tools/command_line_tools_os_x_10.10_for_xcode__xcode_6.1/command_line_tools_for_osx_10.10_for_xcode_6.1.dmg), once they are installed [Brew](http://brew.sh/) can be installed and then [Cask](https://media-glass.es/2014/05/26/cask/) …….
+Once the new system had installed and I have logged in the first thing I do is install the [Command Line Tools](http://adcdownload.apple.com/Developer_Tools/command_line_tools_os_x_10.10_for_xcode__xcode_6.1/command_line_tools_for_osx_10.10_for_xcode_6.1.dmg), once they are installed [Brew](http://brew.sh/) can be installed and then [Cask](/2014/05/26/cask/) …….
 
 ```
 ruby -e “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

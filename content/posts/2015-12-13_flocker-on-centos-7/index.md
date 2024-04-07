@@ -81,7 +81,7 @@ The following commands need to the run on all three cluster nodes;
 - flocker01.mydomain.com
 - flocker02.mydomain.com
 
-We will be launching three [CentOS 7](https://www.centos.org) instances in [Digital Ocean](https://www.digitalocean.com/?refcode=52ec4dc3647e), first of all on each of the nodes run the [Digital Ocean bootstrap script](https://media-glass.es/2015/06/28/digital-ocean-bootstrap/) to get the defaults in place, and also run the [Docker install script](https://media-glass.es/2015/06/28/update-to-centos7-docker-install-one-liner/) to get the latest version Docker installed and configured.
+We will be launching three [CentOS 7](https://www.centos.org) instances in [Digital Ocean](https://www.digitalocean.com/?refcode=52ec4dc3647e), first of all on each of the nodes run the [Digital Ocean bootstrap script](/2015/06/28/digital-ocean-bootstrap/) to get the defaults in place, and also run the [Docker install script](/2015/06/28/update-to-centos7-docker-install-one-liner/) to get the latest version Docker installed and configured.
 
 ```
 curl -fsS https://raw.githubusercontent.com/russmckendrick/DOBootstrap/master/do-bootstrap.sh | bash
@@ -118,7 +118,7 @@ The following commands need to the run on the **storage nodes**;
 
 We are going to be using a ZFS peer-to-peer backend, this uses the local storage on the **storage nodes**, at the moment it is experimental so please do not try and use it in production.
 
-As we ran the [Digital Ocean bootstrap script](https://media-glass.es/2015/06/28/digital-ocean-bootstrap/) and changed the Kernel configuration we just need to install the kernel-devel package, this should match the running kernel. To check this run
+As we ran the [Digital Ocean bootstrap script](/2015/06/28/digital-ocean-bootstrap/) and changed the Kernel configuration we just need to install the kernel-devel package, this should match the running kernel. To check this run
 
 ```
 uname -a

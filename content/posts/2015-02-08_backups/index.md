@@ -35,7 +35,7 @@ As I have both an iMac & a MacBook I use a 2TB drive connected to an [AirPort Ex
 
 #### Stuff
 
-For command like configuration & settings like SSH keys etc I use a private GitHub repo, then there is various online services such as Google Drive and Dropbox for the remainder. Finally passwords are synced to my [Dashline](https://media-glass.es/2014/12/13/password-managers/) account.
+For command like configuration & settings like SSH keys etc I use a private GitHub repo, then there is various online services such as Google Drive and Dropbox for the remainder. Finally passwords are synced to my [Dashline](/2014/12/13/password-managers/) account.
 
 #### Security?
 

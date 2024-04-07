@@ -30,7 +30,7 @@ First thing I did was type in ifconfig and got …..
 -bash: ifconfig: command not found
 ```
 
-….. not a good start, have dabbled with a [Fedora](https://fedoraproject.org) when I [installed OpenShift](https://media-glass.es/2014/05/31/openshift-notes/) I remembered about the ip command …..
+….. not a good start, have dabbled with a [Fedora](https://fedoraproject.org) when I [installed OpenShift](/2014/05/31/openshift-notes/) I remembered about the ip command …..
 
 ```
 [root@server ~]# ip addr
@@ -142,7 +142,7 @@ XFS is now the default file system when you install, though [DigitalOcean](https
 
 #### Linux Containers
 
-Docker (which I have written about [here](https://media-glass.es/2014/02/15/docker/), [here](https://media-glass.es/2014/04/27/more-docker/) and [here](https://media-glass.es/2014/05/04/yet-more-docker/)) is now fully support out of the box with no need to install [EPEL](https://fedoraproject.org/wiki/EPEL), in fact, at the time of writing the CentOS repo was more up-to-date than EPEL.
+Docker (which I have written about [here](/2014/02/15/docker/), [here](/2014/04/27/more-docker/) and [here](/2014/05/04/yet-more-docker/)) is now fully support out of the box with no need to install [EPEL](https://fedoraproject.org/wiki/EPEL), in fact, at the time of writing the CentOS repo was more up-to-date than EPEL.
 
 ```
 [root@server ~]# yum list | grep docker

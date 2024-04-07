@@ -102,4 +102,4 @@ New Order [Music Complete](https://open.spotify.com/album/3c1pvSBGoHSbtiKWGCSTcp
 
 ![11](/img/2015-12-27_top-ten-albums-2015_16.jpg)
 
-There are also lists for [2014](https://media-glass.es/2014/12/03/2014s-top-20-albums/) and [2013](https://media-glass.es/2013/12/08/top-10-2013/).
+There are also lists for [2014](/2014/12/03/2014s-top-20-albums/) and [2013](/2013/12/08/top-10-2013/).

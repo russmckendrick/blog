@@ -22,7 +22,7 @@ aliases:
 
 ---
 
-It’s been a while since I listed [what I am using day-to-day](https://media-glass.es/2013/11/17/stuff-i-use/) so I thought I would do a quick update;
+It’s been a while since I listed [what I am using day-to-day](/2013/11/17/stuff-i-use/) so I thought I would do a quick update;
 
 ![desktop_tiih3b](/img/2014-07-27_whats-in-the-toolbox_1.png)
 
@@ -44,7 +44,7 @@ It’s been a while since I listed [what I am using day-to-day](https://media-gl
 - [known_hosts](https://github.com/markmcconachie/known_hosts) — A simple cli known hosts manager
 - [Packer](http://www.packer.io) — Build machine images
 - [Z](https://github.com/rupa/z) — Jump around the CLI
-- [Jekyll](http://jekyllrb.com/) — What [this blog](https://media-glass.es/2014/01/11/another-new-blog/) is published with
+- [Jekyll](http://jekyllrb.com/) — What [this blog](/2014/01/11/another-new-blog/) is published with
 
 #### Server Stack
 

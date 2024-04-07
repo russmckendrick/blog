@@ -23,7 +23,7 @@ aliases:
 
 ---
 
-In my [previous post](https://media-glass.es/2015/07/19/terraform-and-azure/) I wrote about launching a CentOS 7 Virtual Machine in [Azure](http://azure.microsoft.com/) using [Terraform](https://www.terraform.io).
+In my [previous post](/2015/07/19/terraform-and-azure/) I wrote about launching a CentOS 7 Virtual Machine in [Azure](http://azure.microsoft.com/) using [Terraform](https://www.terraform.io).
 
 As you can see from my original configuration I was adding a password and my own user. This worked well, the machine launched and I could access it as expect and sudo to root.
 

@@ -20,7 +20,7 @@ aliases:
 
 ---
 
-One of the first things I do on a new server is install [fail2ban](http://www.fail2ban.org/wiki/index.php/Main_Page "fail2ban"). I have written about it before, but that was [back when I was still using CentOS 6](https://media-glass.es/2014/05/10/hackers/ "Hackers"). Now I am using CentOS 7 the installation has a few more steps.
+One of the first things I do on a new server is install [fail2ban](http://www.fail2ban.org/wiki/index.php/Main_Page "fail2ban"). I have written about it before, but that was [back when I was still using CentOS 6](/2014/05/10/hackers/ "Hackers"). Now I am using CentOS 7 the installation has a few more steps.
 
 Firstly, as EPEL is not enabled by standard on most CentOS 7 installations enable the repo and then install fail2ban.
 

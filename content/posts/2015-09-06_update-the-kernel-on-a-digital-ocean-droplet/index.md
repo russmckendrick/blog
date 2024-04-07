@@ -23,7 +23,7 @@ aliases:
 
 ---
 
-A while I posted about a script I wrote to quickly [bootstrap a Digital Ocean droplet](https://media-glass.es/2015/06/28/digital-ocean-bootstrap/).
+A while I posted about a script I wrote to quickly [bootstrap a Digital Ocean droplet](/2015/06/28/digital-ocean-bootstrap/).
 
 One one of the things I noticed while trying to install a few packages is that even though my script had run a yum update I was booting into the original Kernel and this was causing all sorts of hilarity when trying to build a Kernel module, because of this I added a few lines to my script to tell you if the kernel has been updated, and if so what the new version is;
 
@@ -37,4 +37,4 @@ After you have changed the kernel return to the “Power” section and power on
 
 Once the droplet has booted you will be running the new kernel.
 
-This process differs depending on the Operating System have chosen, but it is applicable to all of the CentOS droplets and Ubuntu versions below 15.04, not that I am running any [Ubuntu servers](https://media-glass.es/2014/08/03/operating-system-snob/).
+This process differs depending on the Operating System have chosen, but it is applicable to all of the CentOS droplets and Ubuntu versions below 15.04, not that I am running any [Ubuntu servers](/2014/08/03/operating-system-snob/).
