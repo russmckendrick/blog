@@ -20,7 +20,7 @@ aliases:
 
 ---
 
-Since I last properly [wrote about Docker](https://media-glass.es/2014/08/31/docker-fig-reverse-proxy-centos7/ "Docker, Fig, NGINX Reverse Proxies and CentOS 7") a lot has changed. Docker have introduced some new command line tools which allow for easy orchestration of Docker instances, clusters and container management. These are;
+Since I last properly [wrote about Docker](/2014/08/31/docker-fig-reverse-proxy-centos7/ "Docker, Fig, NGINX Reverse Proxies and CentOS 7") a lot has changed. Docker have introduced some new command line tools which allow for easy orchestration of Docker instances, clusters and container management. These are;
 
 - [Docker Machine](https://docs.docker.com/machine/ "Docker Machine") — Allows you to easily deploy Docker instances to a lot of different platforms.
 - [Docker Compose](https://docs.docker.com/compose/ "Docker Compose") — A replacement for [Fig](https://fig.sh "Fig").
@@ -30,7 +30,7 @@ Out of these three technologies, Swarm is not really suitable for production use
 
 #### Docker Machine
 
-Rather than downloading the pre-compiled binary I decided to use the [Homebrew](http://brew.sh "Brew") formula (this assumes you have [Cask installed](https://media-glass.es/2014/10/20/yosemite-installation/ "Cask"));
+Rather than downloading the pre-compiled binary I decided to use the [Homebrew](http://brew.sh "Brew") formula (this assumes you have [Cask installed](/2014/10/20/yosemite-installation/ "Cask"));
 
 ```
  # Make sure everything is up-to-date
@@ -237,7 +237,7 @@ So thats a quick overview of docker-machine. As you can see, it is a a really co
 
 #### Docker Compose
 
-Docker Compose started life as Fig which is something [I have written about before in a previous post](https://media-glass.es/2014/08/31/docker-fig-reverse-proxy-centos7/ "Docker, Fig, NGINX Reverse Proxies and CentOS 7"), the currently release doesn’t add too much in the way of new functionality, but it does start laying the foundations for working with docker-swam, [click here](https://github.com/docker/compose/releases/tag/1.1.0 "Docker Compose 1.1.0 release notes") for the full release notes.
+Docker Compose started life as Fig which is something [I have written about before in a previous post](/2014/08/31/docker-fig-reverse-proxy-centos7/ "Docker, Fig, NGINX Reverse Proxies and CentOS 7"), the currently release doesn’t add too much in the way of new functionality, but it does start laying the foundations for working with docker-swam, [click here](https://github.com/docker/compose/releases/tag/1.1.0 "Docker Compose 1.1.0 release notes") for the full release notes.
 
 Like docker-machine I installed it using a [Homebrew](http://brew.sh/ "Homebrew") formula;
 

@@ -19,7 +19,7 @@ aliases:
 
 ---
 
-Last week I posted about [upgrading my servers to CentOS 7](https://media-glass.es/2014/07/27/upgrade-to-centos7/), one of the main factors about upgrading to CentOS 7 was the jump in kernel version (from 2.6.x to 3.10.x).
+Last week I posted about [upgrading my servers to CentOS 7](/2014/07/27/upgrade-to-centos7/), one of the main factors about upgrading to CentOS 7 was the jump in kernel version (from 2.6.x to 3.10.x).
 
 Also, it was so that I could use more modern versions core of software without having to worry about installing numerous additional repos.
 

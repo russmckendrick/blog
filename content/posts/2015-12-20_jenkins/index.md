@@ -96,7 +96,7 @@ As I wasn’t going to directly expose Jenkins to the world, I configured it to 
 echo ‘JENKINS_ARGS=” — webroot=/var/cache/jenkins/war — httpListenAddress=127.0.0.1 — httpPort=$HTTP_PORT -ajp13Port=$AJP_PORT’ > /etc/default/jenkins
 ```
 
-Finally, it’s time to enable the firewall, by default Firewalld has the ssh port (22) configured. As the bootstrap script installed [Fail2Ban](https://media-glass.es/2015/03/29/fail2ban-on-centos-7/), and also password enabled login is disabled on the instance so I am happy to keep the port open. So we just need to enable ports 80 & 443;
+Finally, it’s time to enable the firewall, by default Firewalld has the ssh port (22) configured. As the bootstrap script installed [Fail2Ban](/2015/03/29/fail2ban-on-centos-7/), and also password enabled login is disabled on the instance so I am happy to keep the port open. So we just need to enable ports 80 & 443;
 
 ```
 systemctl enable firewalld && systemctl restart firewalld

@@ -21,7 +21,7 @@ aliases:
 
 ---
 
-Around this time last year I blogged about [Upgrading my servers to CentOS 7](https://media-glass.es/2014/07/27/upgrading-servers-centos-7/), the post contained a link to a script which I wrote to deploy a Puppet Master & Agent and some updated instructions for installing on RHEL / CentOS 7.
+Around this time last year I blogged about [Upgrading my servers to CentOS 7](/2014/07/27/upgrading-servers-centos-7/), the post contained a link to a script which I wrote to deploy a Puppet Master & Agent and some updated instructions for installing on RHEL / CentOS 7.
 
 As those instructions no longer work, and I needed to install a Puppet Master to have a play with I decided to update the installation script.
 

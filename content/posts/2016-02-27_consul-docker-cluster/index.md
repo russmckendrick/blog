@@ -125,7 +125,7 @@ As you can see, there are a lot of port which need to be published for the clust
 
 The other thing to note is that I am telling Consul to advertise it is running on the shared private networking IP address, if I didn’t then Consul would default to advertising the IP address of the container.
 
-This means that while nodes would be registering themselves correctly they would not be able to contact each other as we have not enabled any sort of Docker multi-host networking for the service discovery nodes. Again, I could if I wanted to by using something like [Weave](https://media-glass.es/2016/02/25/docker-networking-magic/), but that would add additional steps to these already long notes.
+This means that while nodes would be registering themselves correctly they would not be able to contact each other as we have not enabled any sort of Docker multi-host networking for the service discovery nodes. Again, I could if I wanted to by using something like [Weave](/2016/02/25/docker-networking-magic/), but that would add additional steps to these already long notes.
 
 Now that the three Consul nodes have been launched I created the cluster by running the following command against Consul on **service-discovery01**;
 

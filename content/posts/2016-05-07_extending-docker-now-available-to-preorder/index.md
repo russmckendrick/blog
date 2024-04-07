@@ -22,6 +22,6 @@ aliases:
 
 ---
 
-As mentioned in [a post back in February](https://media-glass.es/2016/02/25/docker-networking-magic/) I have been working on my second book for [Packt Publishing](https://www.packtpub.com) which is now available for pre-order.
+As mentioned in [a post back in February](/2016/02/25/docker-networking-magic/) I have been working on my second book for [Packt Publishing](https://www.packtpub.com) which is now available for pre-order.
 
 You can pre-order your copy from the [Packt website](https://www.packtpub.com/networking-and-servers/extending-docker) or [Amazon](https://www.amazon.co.uk/Extending-Docker-Russ-McKendrick-ebook/dp/B01F3LATNI/).
