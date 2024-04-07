@@ -1,8 +1,10 @@
 {{ range .Site.Pages }}{{ if .Aliases }}{{ $new := .RelPermalink }}{{ range .Page.Aliases }}{{ . }} {{ $new }} 301
 {{ end }}{{ end }}{{ end }}
+/2024/04/06/effortless-python-environment-management-on-macos-with-conda/ /2024/04/06/conda-for-python-environment-management-on-macos/ 301
+/2014/04/27/been-playing-with-docker-again-this-weekend-this-time-rather-than-just-doing-for-the-sake-of-doing/ /2014/04/27/deploying-a-stable-docker-setup-on-centos-with-shipyard/ 301
 /2014/01/11/another-new-blog/ /tags/blog/ 301
 /2014/08/03/operating-system-snob/ / 301
-/2014/12/02/grunt-jekyll-less/ / 301
+/2014/12/02/grunt-jekyll-less/ /tags/blog/ 301
 /2016/06/25/docker-service-load-balancing-and-docker-distributed-application-bundles/ /tags/docker 301
 /2016/06/25/docker-service-load-balancing-and-docker-distributed-application-bundles/ /tags/docker/ 301
 /2016/06/30/docker-service/ /tags/docker 301
@@ -128,4 +130,3 @@
 /tags /tags/ 301
 /tags/2016/ /tags/ 301
 /50-off-today-only-ee616b96e41f / 301
-/404.html /404/ 301
