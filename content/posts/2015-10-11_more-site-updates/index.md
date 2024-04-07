@@ -1,5 +1,6 @@
 ---
 title: "More site updates"
+description: "Russ Mckendrick improves blog speed, adds Gruntfile features for testing and deployment to Amazon S3 with Cloudflare cache flushing."
 author: "Russ Mckendrick"
 date: 2015-10-11T17:43:15.000Z
 lastmod: 2021-07-31T12:33:28+01:00
@@ -46,4 +47,4 @@ You can see it in action below;
 
 ![asciicast](/img/2015-10-11_more-site-updates_2.png)
 
-I also added a [404 page](/404.html).
+I also added a [404 page](/404/).

@@ -1,5 +1,6 @@
 ---
 title: "First Steps with Ansible"
+description: "Explore Ansible for AWS automation, transitioning from manual scripting. Initiate playbook for VPC and ELB deployment."
 author: "Russ Mckendrick"
 date: 2014-12-14T12:00:00.000Z
 lastmod: 2021-07-31T12:32:30+01:00

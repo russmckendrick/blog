@@ -1,5 +1,6 @@
 ---
 title: "Backups"
+description: "Secure backups for WordPress with VaultPress and DigitalOcean. Macs synced via iCloud and Time Machine. Essential data stored on private GitHub, Google Drive, and Dropbox with enhanced security."
 author: "Russ Mckendrick"
 date: 2015-02-08T12:00:00.000Z
 lastmod: 2021-07-31T12:32:37+01:00

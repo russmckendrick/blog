@@ -1,5 +1,6 @@
 ---
 title: "Adding a SSH Key to Azure"
+description: "Enable passwordless sudo on Azure VMs by adding SSH keys via Terraform. Simplify provisioning and management with seamless key configuration."
 author: "Russ Mckendrick"
 date: 2015-07-22T18:49:00.000Z
 lastmod: 2021-07-31T12:33:18+01:00

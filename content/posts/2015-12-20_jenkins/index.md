@@ -1,5 +1,6 @@
 ---
 title: "Jenkins"
+description: "Discover Jenkins for automation on CentOS 7 with NGINX SSL setup. Orchestrate tasks efficiently!"
 author: "Russ Mckendrick"
 date: 2015-12-20T18:10:26.000Z
 lastmod: 2021-07-31T12:33:38+01:00

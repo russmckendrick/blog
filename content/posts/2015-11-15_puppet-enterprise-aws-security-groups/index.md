@@ -1,5 +1,6 @@
 ---
 title: "Puppet Enterprise & AWS Security Groups"
+description: "Russ Mckendrick tackles AWS security group hurdles installing Puppet Enterprise, resolves by temporarily allowing all traffic."
 author: "Russ Mckendrick"
 date: 2015-11-15T18:41:20.000Z
 lastmod: 2021-07-31T12:33:31+01:00

@@ -1,5 +1,6 @@
 ---
 title: "Production Ready Images with Packer"
+description: "Automate AWS instance setup with Packer. Ensure rapid scalability with pre-configured images. Explore Packer's versatility across platforms."
 author: "Russ Mckendrick"
 date: 2015-02-02T12:00:00.000Z
 lastmod: 2021-07-31T12:32:35+01:00

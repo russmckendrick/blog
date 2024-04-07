@@ -1,5 +1,6 @@
 ---
 title: "Docker Networking Magic"
+description: "Explore Docker's new networking features with Weave for encrypted, multi-host container networking. See the magic in action!"
 author: "Russ Mckendrick"
 date: 2016-02-25T17:58:14.000Z
 lastmod: 2021-07-31T12:33:44+01:00

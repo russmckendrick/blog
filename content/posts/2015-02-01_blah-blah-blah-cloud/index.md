@@ -1,5 +1,6 @@
 ---
 title: "Blah Blah Blah Cloud"
+description: "Deciphering the complexities of 'Cloud' in computing, from VMs to SaaS. Embrace clarity by avoiding catch-all terms, following Dilbert's lead."
 author: "Russ Mckendrick"
 date: 2015-02-01T12:00:00.000Z
 lastmod: 2021-07-31T12:32:33+01:00

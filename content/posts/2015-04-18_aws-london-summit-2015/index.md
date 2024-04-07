@@ -1,5 +1,6 @@
 ---
 title: "AWS London Summit 2015"
+description: "Discover the 2015 AWS Summit in London: insights into Amazon EFS, hybrid architectures, and the challenges of navigating the bustling crowd."
 author: "Russ Mckendrick"
 date: 2015-04-18T11:00:00.000Z
 lastmod: 2021-07-31T12:32:59+01:00

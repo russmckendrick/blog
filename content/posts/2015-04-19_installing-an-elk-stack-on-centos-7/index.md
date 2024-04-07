@@ -1,5 +1,6 @@
 ---
 title: "Installing an ELK Stack on CentOS 7"
+description: "Learn how to install the ELK stack on CentOS 7 for centralized logging: Elasticsearch, Logstash, and Kibana, step-by-step guide with configuration."
 author: "Russ Mckendrick"
 date: 2015-04-19T11:00:00.000Z
 lastmod: 2021-07-31T12:33:01+01:00

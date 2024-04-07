@@ -1,5 +1,6 @@
 ---
 title: "Migration of Server & Swap Space"
+description: "Migrate DigitalOcean instance for cost efficiency. Enable swap space to prevent oomkiller issues. Optimize performance with tuned settings."
 author: "Russ Mckendrick"
 date: 2015-03-08T16:37:38.000Z
 lastmod: 2021-07-31T12:32:41+01:00

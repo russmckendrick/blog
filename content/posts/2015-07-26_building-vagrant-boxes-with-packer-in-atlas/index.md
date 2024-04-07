@@ -1,5 +1,6 @@
 ---
 title: "Building Vagrant Boxes with Packer in Atlas"
+description: "Explore hassle-free Vagrant box creation with Packer in Atlas. Harness the power of seamless integration for efficient box building and management."
 author: "Russ Mckendrick"
 date: 2015-07-26T11:00:00.000Z
 lastmod: 2021-07-31T12:33:20+01:00
