@@ -1,5 +1,6 @@
 ---
 title: "Documentation"
+description: "Explore the benefits of using GitHub and Markdown for managing technical documentation and code snippets in a collaborative project. Learn how I structured my project using README.md files, external Git repositories, and submodules. Discover the tools I use, including Byword, Sublime Text, and the GitHub Mac Client, to create and manage my documentation using GitHub Flavored Markdown. Perfect for anyone looking to streamline their technical writing and version control process."
 author: "Russ Mckendrick"
 date: 2014-07-20T11:00:00.000Z
 lastmod: 2021-07-31T12:31:39+01:00
