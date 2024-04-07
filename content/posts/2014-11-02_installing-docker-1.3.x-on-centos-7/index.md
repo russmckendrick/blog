@@ -1,5 +1,7 @@
 ---
 title: "Installing Docker 1.3.x on CentOS 7"
+
+description: "Successfully upgraded to Docker 1.3 with process injection feature on CentOS, bypassing outdated repos with a manual install."
 author: "Russ Mckendrick"
 date: 2014-11-02T12:00:00.000Z
 lastmod: 2021-07-31T12:32:10+01:00

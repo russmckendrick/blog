@@ -1,5 +1,6 @@
 ---
 title: "Whats going on?"
+description: "Exciting weeks with a surge in Twitter favorites from a Docker-related tweet and mentions in Docker Weekly News and by CenturyLink Labs."
 author: "Russ Mckendrick"
 date: 2014-11-02T12:00:00.000Z
 lastmod: 2021-07-31T12:32:12+01:00

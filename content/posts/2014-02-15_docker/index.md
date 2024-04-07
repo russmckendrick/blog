@@ -1,6 +1,6 @@
 ---
 title: "Docker"
-description: "Get started with Docker, the popular containerization platform, on CentOS. This beginner-friendly guide walks you through installing Docker on CentOS, pulling images, running containers, and managing them using basic Docker commands. Learn how to search for images, view running containers, and explore practical examples to help you understand the fundamentals of working with Docker."
+description: "A beginner's guide to Docker on CentOS, covering installation, running containers, and basic management with an introduction to Docker commands."
 author: "Russ Mckendrick"
 date: 2014-02-15T12:00:00.000Z
 lastmod: 2021-07-31T12:31:13+01:00

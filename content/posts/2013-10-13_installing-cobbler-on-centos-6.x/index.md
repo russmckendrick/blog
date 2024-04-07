@@ -1,6 +1,6 @@
 ---
 title: "Installing Cobbler on CentOS 6.x"
-description: "This guide provides step-by-step instructions for installing Cobbler, a powerful Linux installation server, on CentOS 6.x. Learn how to set up Cobbler to mirror repositories and kickstart server installations. The article covers enabling EPEL, installing necessary packages, configuring modules, and securing the web interface. Perfect for anyone looking to streamline their Linux server deployment process."
+description: "A comprehensive guide on setting up Cobbler on CentOS 6.x for mirroring repos and server kickstarts, including EPEL enablement and security setup."
 author: "Russ Mckendrick"
 date: 2013-10-13T11:00:00.000Z
 lastmod: 2021-07-31T12:31:02+01:00

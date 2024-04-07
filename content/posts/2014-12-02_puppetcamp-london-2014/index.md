@@ -1,5 +1,6 @@
 ---
 title: "PuppetCamp London 2014"
+description: "Attended PuppetCamp London 2014 with enlightening talks on Augeas, Puppet 4.x upgrades, and AWS management, sparking new project inspirations."
 author: "Russ Mckendrick"
 date: 2014-12-02T12:00:00.000Z
 lastmod: 2021-07-31T12:32:21+01:00

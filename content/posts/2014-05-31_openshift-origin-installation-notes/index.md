@@ -1,6 +1,6 @@
 ---
 title: "OpenShift Origin installation notes"
-description: "Learn how to install OpenShift Origin on a CentOS 6.5 Digital Ocean Droplet with this step-by-step guide. Discover the key differences between installing on CentOS and Fedora 19, and find out how to overcome common pitfalls in the installation process. Includes a detailed list of required packages, configuration changes, and troubleshooting tips to help you get your own Platform as a Service up and running quickly."
+description: "Step-by-step guide on installing OpenShift Origin on a CentOS 6.5 Digital Ocean Droplet, including package installation, configuration adjustments, and troubleshooting tips for a successful setup."
 author: "Russ Mckendrick"
 date: 2014-05-31T11:00:00.000Z
 lastmod: 2021-07-31T12:31:34+01:00

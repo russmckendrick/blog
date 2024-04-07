@@ -1,5 +1,6 @@
 ---
 title: "Grunt + Jekyll + LESS"
+description: "Revamped my website with a new design, integrating LESS with Jekyll via Grunt for a more efficient and automated workflow."
 author: "Russ Mckendrick"
 date: 2014-12-02T20:59:38.000Z
 lastmod: 2021-07-31T12:32:18+01:00

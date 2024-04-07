@@ -1,5 +1,6 @@
 ---
 title: "An Experiment with Docker & HHVM"
+description: "Experimented with Docker and HHVM for our Drupal7 site at work, achieving a seamless transition and saving significant setup time."
 author: "Russ Mckendrick"
 date: 2014-11-09T12:00:00.000Z
 lastmod: 2021-07-31T12:32:14+01:00

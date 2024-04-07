@@ -1,5 +1,6 @@
 ---
 title: "Whats been on the headphones?"
+description: "Curating a playlist from my recent favorite albums, sharing select tracks now available for streaming on Spotify."
 author: "Russ Mckendrick"
 date: 2014-11-16T21:11:52.000Z
 lastmod: 2021-07-31T12:32:17+01:00

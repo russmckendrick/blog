@@ -1,5 +1,6 @@
 ---
 title: "Annoying Virtual Box bug"
+description: "Solved a perplexing issue where static files weren't updating in Vagrant due to a long-standing VirtualBox bug with 'sendfile'."
 author: "Russ Mckendrick"
 date: 2014-11-02T12:43:13.000Z
 lastmod: 2021-07-31T12:32:08+01:00
