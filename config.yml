@@ -2,8 +2,7 @@ baseURL: "https://www.russ.foo/"
 title: "Russ.Foo"
 paginate: "8"
 theme: ["PaperMod", "hugo-shortcode-gallery"]
-
-timeout: 600000 # this needs to be long as we converting webp images
+timeout: 600000 
 
 enableRobotsTXT: true
 buildDrafts: false
@@ -28,30 +27,30 @@ author:
     location: "Nottingham, UK"
 
 params:
-  env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: "Russ.Foo"
-  description: "Ramblings of a nerd"
+  env: "production"
+  title: "Russ.Foo - The personal blog of Russ McKendrick"
+  description: "The ramblings of a nerd"
   keywords: ["Blog", "Technical", "Automation", "DevOps", "Cloud"]
   author: "Russ McKendrick"
   images: ["/images/blog-cover.jpg"]
   DateFormat: "January 2, 2006"
   defaultTheme: "auto" # dark, light
-  disableThemeToggle: false
-
-  ShowReadingTime: true
-  ShowShareButtons: true
-  ShowPostNavLinks: true
-  ShowBreadCrumbs: false
-  ShowCodeCopyButtons: true
-  disableSpecial1stPost: true
-  disableScrollToTop: false
   comments: true
+  disableScrollToTop: false
+  disableSpecial1stPost: true
+  disableThemeToggle: false
+  hideDescription: true
   hidemeta: false
   hideSummary: false
+  ShowBreadCrumbs: false
+  ShowCodeCopyButtons: true
+  ShowPageNums: true
+  ShowPostNavLinks: true
+  ShowReadingTime: true
+  ShowRelatedContent: true
+  ShowShareButtons: true
   showtoc: false
   tocopen: false
-  ShowRelatedContent: true
-  hideDescription: true
 
   assets:
     disableHLJS: true
@@ -69,10 +68,10 @@ params:
     iconWidth: 50
 
   cover:
+    hidden: false
+    hiddenInList: false
+    hiddenInSingle: false
     responsiveImages: true
-    hidden: false # hide everywhere but not in structured data
-    hiddenInList: false # hide on list pages and home
-    hiddenInSingle: false # hide on single page
     thumbnailInList: true
 
   editPost:
@@ -87,7 +86,7 @@ params:
     distance: 1000
     threshold: 0.4
     minMatchCharLength: 0
-    keys: ["title", "summary", "content"]
+    keys: ["title", "summary", "content", "desctipion", "tags"]
 
   socialIcons:
     - name: mastodon
@@ -182,16 +181,14 @@ markup:
     noClasses: true
     style: monokai
 
-# googleAnalytics: "UA-43497944-1" # disabled until I can figure out a way of getting the page speed up
-
 privacy:
   disqus:
     disable: true
   googleAnalytics:
     disable: true
 
-ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken", "shortcode-twitter-getremote"]
-
 imaging:
   exif:
     includeFields: ".*"
+
+ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken", "shortcode-twitter-getremote"]
