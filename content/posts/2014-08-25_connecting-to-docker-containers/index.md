@@ -1,5 +1,6 @@
 ---
 title: "Connecting to Docker Containers"
+description: "Learn how I seamlessly access and manage containers without SSH using nsenter and docker-enter on CentOS 7, making DevOps simpler."
 author: "Russ Mckendrick"
 date: 2014-08-25T12:09:00.000Z
 lastmod: 2021-07-31T12:31:55+01:00

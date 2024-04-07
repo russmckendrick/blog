@@ -1,5 +1,6 @@
 ---
 title: "What’s in the toolbox?"
+description: "As a long-time user of macOS, I wanted to share an update on the tools and apps that make up my daily tech toolkit. In this post, I'll walk through the desktop applications, command-line tools, server stack, and online services that I rely on to get work done."
 author: "Russ Mckendrick"
 date: 2014-07-27T11:00:00.000Z
 lastmod: 2021-07-31T12:31:44+01:00

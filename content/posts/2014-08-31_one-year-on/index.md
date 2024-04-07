@@ -1,5 +1,6 @@
 ---
 title: "One Year On"
+description: "Reflecting on a year of blogging: celebrating the first post's anniversary, layout changes, and the evolution of my blogging journey."
 author: "Russ Mckendrick"
 date: 2014-08-31T11:00:00.000Z
 lastmod: 2021-07-31T12:31:59+01:00

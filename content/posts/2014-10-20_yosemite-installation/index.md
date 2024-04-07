@@ -1,5 +1,6 @@
 ---
 title: "Yosemite Installation"
+description: "Reflecting on my smoothest MacOS upgrade experience with Yosemite: a journey from backup to clean installation and setting up my essentials."
 author: "Russ Mckendrick"
 date: 2014-10-20T11:00:00.000Z
 lastmod: 2021-07-31T12:32:06+01:00

@@ -1,5 +1,6 @@
 ---
 title: "High Availability Central Logging in AWS"
+description: "Discover how to set up high availability central logging in AWS using the newly launched Amazon CloudWatch Logs service. Learn about the challenges of creating a highly available and fully redundant logging solution using traditional tools like ELK stack or rsyslog, and explore alternative options like shipping logs to RDS or S3. Find out how CloudWatch Logs simplifies the process and provides near real-time monitoring of your system and application logs. Includes a step-by-step guide on setting up the CloudWatch Logs agent and configuring IAM permissions."
 author: "Russ Mckendrick"
 date: 2014-07-22T11:00:00.000Z
 lastmod: 2021-07-31T12:31:40+01:00
