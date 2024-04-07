@@ -1,5 +1,6 @@
 ---
 title: "Docker, Fig, NGINX Reverse Proxies and CentOS 7"
+description: "Exploring Docker's rapid updates and the ecosystem, including using Fig for container orchestration and setting up an NGINX reverse proxy."
 author: "Russ Mckendrick"
 date: 2014-08-31T12:13:48.000Z
 lastmod: 2021-07-31T12:31:57+01:00

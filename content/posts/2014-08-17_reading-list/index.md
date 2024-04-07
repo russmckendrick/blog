@@ -1,5 +1,6 @@
 ---
 title: "Reading List"
+description: "Discover how I effortlessly stay updated with the latest blogs using Feedly and Reeder 2, and how it fuels my reading list."
 author: "Russ Mckendrick"
 date: 2014-08-17T11:00:00.000Z
 lastmod: 2021-07-31T12:31:53+01:00

@@ -1,5 +1,6 @@
 ---
 title: "Very basic CoreOS"
+description: "Exploring CoreOS on DigitalOcean: From setting up a single instance with familiar tools to configuring a powerful container-oriented OS."
 author: "Russ Mckendrick"
 date: 2014-09-07T12:34:12.000Z
 lastmod: 2021-07-31T12:32:04+01:00

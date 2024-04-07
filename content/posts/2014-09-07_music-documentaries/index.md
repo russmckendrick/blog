@@ -1,5 +1,6 @@
 ---
 title: "Music Documentaries"
+description: "Sharing a captivating collection of music documentaries I discovered on YouTube, from Factory Records to Prog Rock legends."
 author: "Russ Mckendrick"
 date: 2014-09-07T11:00:00.000Z
 lastmod: 2021-07-31T12:32:02+01:00
