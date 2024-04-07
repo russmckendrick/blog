@@ -1,5 +1,6 @@
 ---
 title: "Kubernetes for Serverless Applications"
+description: "Unlock the potential of Kubernetes for serverless applications with insights and practical guidance from Russ Mckendrick's latest book."
 author: "Russ Mckendrick"
 date: 2018-01-20T10:34:04.124Z
 lastmod: 2021-07-31T12:35:06+01:00

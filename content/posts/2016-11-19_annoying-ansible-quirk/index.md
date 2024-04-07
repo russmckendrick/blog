@@ -1,5 +1,6 @@
 ---
 title: "Annoying Ansible Quirk"
+description: "Discover a workaround for an annoying quirk in Ansible playbook execution. Learn why pre-tasks were ignored and how to ensure their execution."
 author: "Russ Mckendrick"
 date: 2016-11-19T13:32:31.000Z
 lastmod: 2021-07-31T12:34:22+01:00

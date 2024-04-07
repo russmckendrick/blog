@@ -2,7 +2,7 @@
 title: "My Top 10 of 2023"
 author: "Russ McKendrick"
 date: 2023-12-23T13:01:41+01:00
-description: "Here are more top 10 albums and a few more of 2023"
+description: "Explore 2023's diverse music scene with 17 albums, from The Polyphonic Spree's 'Salvage Enterprise' to Peter Gabriel's 'I/O'."
 draft: false
 showToc: true
 TocOpen: true

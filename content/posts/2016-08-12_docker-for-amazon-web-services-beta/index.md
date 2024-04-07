@@ -1,5 +1,6 @@
 ---
 title: "Docker for Amazon Web Services Beta"
+description: "Explore Docker for Amazon Web Services beta, effortlessly launch Docker Swarm clusters on AWS with CloudFormation templates. Easy scaling and management."
 author: "Russ Mckendrick"
 date: 2016-08-12T11:30:31.000Z
 lastmod: 2021-07-31T12:34:06+01:00

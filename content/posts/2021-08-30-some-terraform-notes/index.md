@@ -2,7 +2,7 @@
 title: "Some Terraform Azure Notes"
 author: "Russ McKendrick"
 date: 2021-08-30T11:41:34+01:00
-description: ""
+description: "Notes on Terraform Azure deployments: diagnostic settings, expiration dates, Azure Automation Account web hooks."
 draft: false
 showToc: true
 cover:

@@ -1,5 +1,6 @@
 ---
 title: "270 Days"
+description: "Discover what Russ Mckendrick has been up to in the past 270 days. From writing books like 'Learn Ansible' and updating 'Mastering Docker' to adding over 250 records to his vinyl collection."
 author: "Russ Mckendrick"
 date: 2018-10-25T09:38:28.257Z
 lastmod: 2021-07-31T12:35:12+01:00

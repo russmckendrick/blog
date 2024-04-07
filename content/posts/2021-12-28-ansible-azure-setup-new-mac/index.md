@@ -2,7 +2,7 @@
 title: "Ansible setup with Azure on a new Mac"
 author: "Russ McKendrick"
 date: 2021-12-28T13:38:25Z
-description: ""
+description: "Learn how to set up Ansible with Azure on a new Mac, addressing common issues with cryptography and module dependencies."
 draft: false
 showToc: true
 cover:

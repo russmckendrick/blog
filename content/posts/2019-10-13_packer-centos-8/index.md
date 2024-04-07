@@ -1,5 +1,6 @@
 ---
 title: "Packer CentOS 8"
+description: "Easily transition to CentOS 8 with Packer and Vagrant, featuring Cockpit for efficient server management."
 author: "Russ Mckendrick"
 date: 2019-10-13T20:27:00.000Z
 lastmod: 2021-07-31T12:44:14+01:00

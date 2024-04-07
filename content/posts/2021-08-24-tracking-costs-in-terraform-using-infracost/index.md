@@ -1,8 +1,8 @@
 ---
 title: "Tracking costs in Terraform using Infracost"
+description: "Track Terraform costs with Infracost. Install, register, and monitor changes in your Azure DevOps pipeline efficiently."
 author: "Russ McKendrick"
 date: 2021-08-24
-description: ""
 draft: false
 showToc: true
 cover:

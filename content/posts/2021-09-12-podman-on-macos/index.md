@@ -2,7 +2,7 @@
 title: "Running Podman on macOS"
 author: "Russ McKendrick"
 date: 2021-09-12
-description: ""
+description: "Discover how to run Podman on macOS using a virtual machine, enabling Docker compatibility and container management."
 draft: false
 showToc: true
 cover:

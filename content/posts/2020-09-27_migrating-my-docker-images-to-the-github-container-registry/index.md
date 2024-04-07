@@ -1,5 +1,6 @@
 ---
 title: "Migrating my Docker images to the GitHub Container Registry"
+description: "Migrating Docker images to GitHub Container Registry with automated workflows. Updates Dockerfiles for each image."
 author: "Russ Mckendrick"
 date: 2020-09-27
 cover:

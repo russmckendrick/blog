@@ -1,5 +1,6 @@
 ---
 title: "Ansible AWX"
+description: "Author Russ Mckendrick explores Ansible AWX, the open-source version of Ansible Tower. Follow his guide to quickly set up AWX with CentOS 7 using Vagrant."
 author: "Russ Mckendrick"
 date: 2017-09-24T14:28:05.252Z
 lastmod: 2021-07-31T12:34:59+01:00

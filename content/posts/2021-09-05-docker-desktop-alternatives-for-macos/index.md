@@ -2,7 +2,7 @@
 title: "Docker Desktop Alternatives for macOS"
 author: "Russ McKendrick"
 date: 2021-09-05T10:29:51+01:00
-description: ""
+description: "Explore Docker Desktop alternatives for macOS: Lima, Rancher Desktop, and Minikube offer containerization and Kubernetes clustering solutions."
 draft: false
 showToc: true
 cover:

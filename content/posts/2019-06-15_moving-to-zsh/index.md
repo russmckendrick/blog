@@ -1,5 +1,6 @@
 ---
 title: "Moving to ZSH"
+description: "Transition smoothly to ZSH on macOS Catalina with tips on setup, Oh My ZSH installation, theme customization, and porting existing configurations."
 author: "Russ Mckendrick"
 date: 2019-06-15T00:00:00.000Z
 lastmod: 2021-07-31T12:35:23+01:00

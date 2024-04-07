@@ -1,5 +1,6 @@
 ---
 title: "Shopping for Containers"
+description: "Explore the Docker Store, your one-stop marketplace for Docker-related content. From Docker EE to plugins and containers, find both free and paid offerings."
 author: "Russ Mckendrick"
 date: 2018-01-28T16:07:18.553Z
 lastmod: 2021-07-31T12:35:10+01:00

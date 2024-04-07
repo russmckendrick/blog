@@ -1,5 +1,6 @@
 ---
 title: "Launching a local Kubernetes lab using Minikube"
+description: "Learn to set up a local Kubernetes lab using Minikube for testing or development. Install, configure, and enable additional functionalities."
 author: "Russ Mckendrick"
 date: 2017-01-01T17:02:25.093Z
 lastmod: 2021-07-31T12:34:39+01:00

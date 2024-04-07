@@ -1,5 +1,6 @@
 ---
 title: "Playing with Infinit & Docker"
+description: "Exploring Infinit & Docker integration: concepts, setup, & usage on Ubuntu & macOS, offering potential for Docker's storage solutions. Acquisition by Docker adds promise."
 author: "Russ Mckendrick"
 date: 2016-12-27T19:52:04.068Z
 lastmod: 2021-07-31T12:34:32+01:00

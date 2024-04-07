@@ -1,5 +1,6 @@
 ---
 title: "It’s a UNIX system, I know this."
+description: "Discover Microsoft SQL Server on Mac via Docker, along with .NET Core & Visual Studio. A glimpse into technology's evolving integration."
 author: "Russ Mckendrick"
 date: 2016-12-13T09:01:02.264Z
 lastmod: 2021-07-31T12:34:28+01:00

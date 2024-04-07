@@ -1,5 +1,6 @@
 ---
 title: "Whats on the deck September 2016"
+description: "Discover Russ Mckendrick's colored vinyl playlist for September 2016. Explore the vibrant records played over the past months."
 author: "Russ Mckendrick"
 date: 2016-09-10T20:08:25.000Z
 lastmod: 2021-07-31T12:34:10+01:00

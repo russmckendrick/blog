@@ -1,5 +1,6 @@
 ---
 title: "Azure DevOps Terraform Pipeline"
+description: "Learn to create a robust Azure DevOps pipeline for Terraform deployments, managing infrastructure as code efficiently with Azure CLI and Terraform tasks."
 author: "Russ Mckendrick"
 date: 2020-05-31
 cover:

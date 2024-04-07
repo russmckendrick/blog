@@ -1,5 +1,6 @@
 ---
 title: "Managing Python on macOS Big Sur"
+description: "Upgrade Python on macOS Big Sur using pyenv. Install Python 3.9.1 and update pip for smoother management."
 author: "Russ Mckendrick"
 date: 2021-01-10
 description: ""

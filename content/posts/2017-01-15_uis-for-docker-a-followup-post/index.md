@@ -1,5 +1,6 @@
 ---
 title: "UIs for Docker, a follow-up post"
+description: "Explore UI options for Docker management including Portainer, Docker Datacenter, Shipyard, Rancher, Kubernetes Dashboard, RedHat OpenShift, DC/OS, and AWS ECS."
 author: "Russ Mckendrick"
 date: 2017-01-15T14:07:10.698Z
 lastmod: 2021-07-31T12:34:47+01:00

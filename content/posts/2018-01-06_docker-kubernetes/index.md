@@ -1,5 +1,6 @@
 ---
 title: "Docker + Kubernetes"
+description: "Discover Docker and Kubernetes integration on Mac, enabling easy deployment and management of containerized applications."
 author: "Russ Mckendrick"
 date: 2018-01-06T16:22:39.751Z
 lastmod: 2021-07-31T12:35:02+01:00

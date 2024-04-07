@@ -1,5 +1,6 @@
 ---
 title: "Falco by sysdig"
+description: "Discover Falco by Sysdig, a powerful behavioral security service monitoring system calls."
 author: "Russ Mckendrick"
 date: 2016-05-22T15:36:56.000Z
 lastmod: 2021-07-31T12:33:53+01:00

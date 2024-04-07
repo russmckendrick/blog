@@ -1,5 +1,6 @@
 ---
 title: "Day to Day Tools"
+description: "Explore Russ Mckendrick's essential day-to-day tools, including Visual Studio Code, Docker, Ansible, and Digital Ocean, among others."
 author: "Russ Mckendrick"
 date: 2017-01-05T20:06:27.593Z
 lastmod: 2021-07-31T12:34:45+01:00

@@ -1,5 +1,6 @@
 ---
 title: "October 2016 Playlist"
+description: "Discover Russ Mckendrick's October 2016 playlist, featuring a curated selection of tracks to set the mood for the month. Tune in and enjoy the eclectic mix!"
 author: "Russ Mckendrick"
 date: 2016-10-30T10:04:50.000Z
 lastmod: 2021-07-31T12:34:17+01:00

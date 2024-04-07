@@ -1,5 +1,6 @@
 ---
 title: "2016 Top Ten"
+description: "Explore Russ Mckendrick's top ten albums of 2016, including works by David Bowie, Radiohead, and Knifeworld. Dive into the diverse sounds of the year."
 author: "Russ Mckendrick"
 date: 2016-12-12T09:47:09.772Z
 lastmod: 2021-07-31T12:34:24+01:00
