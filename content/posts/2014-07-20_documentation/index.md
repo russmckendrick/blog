@@ -25,7 +25,7 @@ I have been using Markdown for quite a while to draft documents so I wanted to d
 
 When I first learnt Git I read [Ravishankar Somasundaram’s Git: Version Control for Everyone](http://www.packtpub.com/git-version-control-for-everyone/book) a lot of the examples in the book had you editing documents . Hmmmmmm, I thought, maybe I should try and use [GitHub](https://github.com/)?
 
-I created a private repository and started commit, so far it is going great, I have my basic structure sorted out and it seems to render as expected (using [README.md](https://github.com/russmckendrick/russmckendrick.github.io) as index files).
+I created a private repository and started commit, so far it is going great, I have my basic structure sorted out and it seems to render as expected (using [README.md](https://github.com/russmckendrick/) as index files).
 
 Where large chunks of code are needed I am using external Git repositories and adding them as [Submodules](http://git-scm.com/docs/git-submodule).
 

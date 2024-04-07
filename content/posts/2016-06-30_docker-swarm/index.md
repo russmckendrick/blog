@@ -23,7 +23,7 @@ aliases:
 
 ---
 
-As mentioned a few weeks ago I have been part of the Docker for macOS (as its now known) [beta](/2016/05/08/docker-mac/) for a while. I didn’t pay much attention to the update last night until I just caught up on the tweets from Docker Con and noticed that they have built in orchestration straight into the core Docker Engine.
+As mentioned a few weeks ago I have been part of the Docker for macOS (as its now known) [beta](/2016/05/08/docker-on-mac-osx/) for a while. I didn’t pay much attention to the update last night until I just caught up on the tweets from Docker Con and noticed that they have built in orchestration straight into the core Docker Engine.
 
 They said it was there now and it will take no time to run so I decided to give it ago;
 

@@ -21,7 +21,7 @@ aliases:
 
 When [Docker 1.3](http://blog.docker.com/2014/10/docker-1-3-signed-images-process-injection-security-options-mac-shared-directories/) was released a few weeks ago I was interested in using the process injection docker exec functionality.
 
-Unfortunately, all of the repos which provide RPMs for Docker are out of date, the documentation suggests a [manual installation](https://docs.docker.com/installation/centos/#manual-installation-of-latest-version) of the binary which is turns out to be straight forward:
+Unfortunately, all of the repos which provide RPMs for Docker are out of date, the documentation suggests a [manual installation](https://docs.docker.com/) of the binary which is turns out to be straight forward:
 
 ```
 # Download the binary & set the permissions
