@@ -33,7 +33,7 @@ Our first task is to clone the [GitHub repo, which contains the JSON definition]
 
 {{< terminal title="Cloning to accompanying repo" >}}
 ```
-git clone git@github.com:russmckendrick/money-saving-azure-logic-apps.git
+git clone https://github.com/russmckendrick/money-saving-azure-logic-apps.git
 cd money-saving-azure-logic-apps
 ```
 {{< /terminal >}}
