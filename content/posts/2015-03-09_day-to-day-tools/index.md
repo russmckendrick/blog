@@ -57,4 +57,4 @@ I am currently using most of these tools day to day …
 - [Authy](https://www.authy.com/) — A nice Two Factor Authentication tool
 - [Plex](http://plex.tv/) — An impressive cross device media centre
 
-… so not much in the way of changes since I last [wrote](/2014/07/27/whats-toolbox/ "What’s in the toolbox?") about the tools I use.
+… so not much in the way of changes since I last [wrote](/2014/07/27/whats-in-the-toolbox/ "What’s in the toolbox?") about the tools I use.

@@ -35,7 +35,7 @@ Yesterday the following email dropped into my inbox …
 
 … I spend a lot of the day job looking at and talking about Amazon Web Services (AWS) so this had got my interest.
 
-In [my last book](https://www.packtpub.com/networking-and-servers/extending-docker) I covered Amazon’s Elastic Container Service (ECS) and I have to admit that it wasn’t the most greatest service Amazon had released, especially compared the ease you can now [launch Swarm Clusters using Docker](/2016/06/20/docker-service/).
+In [my last book](https://www.packtpub.com/networking-and-servers/extending-docker) I covered Amazon’s Elastic Container Service (ECS) and I have to admit that it wasn’t the most greatest service Amazon had released, especially compared the ease you can now [launch Swarm Clusters using Docker](/2016/06/25/docker-load-balancing-application-bundles/).
 
 As you can see from the e-mail, Dockers AWS beta ships in two parts, the first being the Amazon Machine Image (AMI) which until general release is shared with your AWS account and the second part is a CloudFormation template.
 
@@ -110,7 +110,7 @@ Docker version 1.12.0, build 8eab29e, experimental
 
 The full release notes for this version [can be found here](https://github.com/docker/docker/releases/tag/v1.12.0)
 
-Now we have our cluster up and running, we can launch a container service, like in my [previous](/2016/06/20/docker-service/)[posts](/2016/06/25/docker-service-load-balancing-and-docker-distributed-application-bundles/) we will launch [a simple container which just gives you the container ID](https://hub.docker.com/r/russmckendrick/cluster/). To launch a single container simply run the following command;
+Now we have our cluster up and running, we can launch a container service, like in my [previous](/2016/06/25/docker-load-balancing-application-bundles/)[posts](/2016/06/25/docker-service-load-balancing-and-docker-distributed-application-bundles/) we will launch [a simple container which just gives you the container ID](https://hub.docker.com/r/russmckendrick/cluster/). To launch a single container simply run the following command;
 
 ```
 docker service create — name cluster -p:80:80/tcp russmckendrick/cluster
