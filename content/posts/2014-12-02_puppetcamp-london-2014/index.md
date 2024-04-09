@@ -39,5 +39,5 @@ https://www.slideshare.net/slideshow/embed_code/41653710"
 
 So in all a great day, other than the early start …
 
-It has also inspired me a enough to revisit a module I cobbled together earlier in the year which manages the installation of [Cloudwatch logs](/2014/07/22/ha-central-logging-in-aws/) and get it up to a decent standard so I can push it to the forge and be just like [Danny](https://forge.puppetlabs.com/kemra102).
+It has also inspired me a enough to revisit a module I cobbled together earlier in the year which manages the installation of [Cloudwatch logs](/2014/07/22/high-availability-central-logging-in-aws/) and get it up to a decent standard so I can push it to the forge and be just like [Danny](https://forge.puppetlabs.com/kemra102).
 

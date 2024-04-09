@@ -16,7 +16,7 @@ aliases:
 
 ==**PLEASE NOTE:** THESE INSTRUCTIONS ARE NOW OUTDATED, SEE [THIS POST FOR AN UPDATE](/2015/07/12/update-to-puppet-install-script/)==
 
-After I dabbled with [CentOS 7](/2014/07/13/centos-7/) a few weeks ago I decided to take the plunge and upgrade the few servers I run at [DigitalOcean](https://www.digitalocean.com/?refcode=52ec4dc3647e) to CentOS 7. I run two machines, one is a Puppet and Salt Master, the second runs Docker.
+After I dabbled with [CentOS 7](/2014/07/12/first-play-with-centos-7.0/) a few weeks ago I decided to take the plunge and upgrade the few servers I run at [DigitalOcean](https://www.digitalocean.com/?refcode=52ec4dc3647e) to CentOS 7. I run two machines, one is a Puppet and Salt Master, the second runs Docker.
 
 #### Puppet Master Server
 
