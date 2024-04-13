@@ -237,7 +237,7 @@ ollama pull codellama:latest
 
 ## Open WebUI
 
-{{< gallery match="cover02-large.png" sortOrder="assc" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}<br>
+{{< gallery match="cover02.png" sortOrder="assc" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}<br>
 
 The authors describe the project, which was formally called Ollama WebUI - so you can guess what it used for, as;
 
@@ -395,7 +395,7 @@ Once finished, press `ctrl+c` to close the tunnel and quit the ngrok session.
 
 ## Cleaning up
 
-{{< gallery match="cover03-large.png" sortOrder="assc" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}<br>
+{{< gallery match="cover03.png" sortOrder="assc" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}<br>
 
 There is just one thing to do: clean up the resources we have launched, starting with the containers:
 
