@@ -312,7 +312,7 @@ For example, you can only see containers running on your Swarm manager just like
 
 ![](/img/2016-12-29_portainer-a-ui-for-docker_31.png)
 
-It would be nice to see all of the hosts which make up the Swarm cluster auto-discovered and added to a single view, however it makes sense as to why this feature isn’t already there, after all Portainer has not been designed to be a replacement for [Docker Cloud](https://www.docker.com/products/docker-cloud/) or [Rancher](https://media-glass.es/launching-a-local-rancher-cluster-1422b89b0477#.umi8gcl92).
+It would be nice to see all of the hosts which make up the Swarm cluster auto-discovered and added to a single view, however it makes sense as to why this feature isn’t already there, after all Portainer has not been designed to be a replacement for [Docker Cloud](https://www.docker.com/) or [Rancher](https://media-glass.es/launching-a-local-rancher-cluster-1422b89b0477#.umi8gcl92).
 
 In all, well recommend if you need a UI to manage either your container hosts or a Docker Swarm cluster.
 

@@ -38,7 +38,7 @@ I had initially assumed that I would have to spend some time configuring a Vagra
 
 Minikube launches a virtual machine and then can be used to manage the configuration much like the way [Docker Machine](https://docs.docker.com/machine/) does, in fact it uses [libmachine](https://github.com/docker/machine/tree/master/libmachine) which is part of Docker Machine to launch the virtual machine.
 
-I jumped straight into installing it. First of all, using [Homebrew](http://brew.sh/) and [Cask](https://caskroom.github.io/) I installed the requirements which are;
+I jumped straight into installing it. First of all, using [Homebrew](http://brew.sh/) and [Cask](https://github.com/Homebrew/homebrew-cask/) I installed the requirements which are;
 
 - [kubectl](http://kubernetes.io/docs/user-guide/kubectl-overview/), this allows you control your Kubernetes cluster from the command line
 - [virtualbox](http://virtualbox.org/), a way of running VMs on your local machine
@@ -159,4 +159,4 @@ Other than that, there is more than enough for me to explain the basic concepts 
 For more information on Minikube see the following;
 
 - Github project, [https://github.com/kubernetes/minikube](https://github.com/kubernetes/minikube)
-- Project Roadmap, [https://github.com/kubernetes/minikube/blob/master/ROADMAP.md](https://github.com/kubernetes/minikube/blob/master/ROADMAP.md)
+- Project Roadmap, [https://minikube.sigs.k8s.io/docs/contrib/roadmap/](https://minikube.sigs.k8s.io/docs/contrib/roadmap/)

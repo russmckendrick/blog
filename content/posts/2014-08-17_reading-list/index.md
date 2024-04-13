@@ -39,4 +39,4 @@ Here are some of the posts I have saved for further reading ….
 - [What it takes to run Stack Overflow](http://nickcraver.com/blog/2013/11/22/what-it-takes-to-run-stack-overflow/)
 - [How Facebook Moved 20 Billion Instagram Photos Without You Noticing](http://www.wired.com/2014/06/facebook-instagram/)
 - [CloudFlare’s Matthew Prince: Building A Better Internet](http://readwrite.com/2014/07/28/cloudflare-matthew-prince-security-protection-builders)
-- [It’s Called Jekyll, and It Works](http://developmentseed.org/blog-2013/blog/2013/10/24/its-called-jekyll/)
+- [It’s Called Jekyll, and It Works](https://developmentseed.org/blog/2013-10-24-its-called-jekyll-and-it-works)

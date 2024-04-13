@@ -26,7 +26,7 @@ Music somehow always seems to take the front seat when it comes to emotions, and
 
 The trio of twin brothers, Jez and Andy Williams, playing the guitar and drums along with vocals, and Jimi Goodwin handling the lead vocals, bass, and guitar crafted a distinct sound that never fails to pluck at my heartstrings. Martin Rebelski added a unique touch to their live performances with his skill on the keyboards.
 
-The replay button has been invariably stuck 🔁 on [The Places Between: The Best of Doves](https://open.spotify.com/album/15St67wo5Ef25WflP2krib), a compilation album that was released in April 2. It's honestly been quite the ride – I'm finding it hard to put in words how their music makes me feel.
+The replay button has been invariably stuck 🔁 on The Places Between: The Best of Doves, a compilation album that was released in April 2. It's honestly been quite the ride – I'm finding it hard to put in words how their music makes me feel.
 
 Let's just say, Doves have certainly provided an ethereal soundtrack to my week, and I'm super glad I hit upon their harmonious tunes on [Last.fm](https://www.last.fm/user/RussMckendrick).
 

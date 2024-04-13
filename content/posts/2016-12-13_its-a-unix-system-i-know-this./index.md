@@ -115,7 +115,7 @@ Add this this that you can also get [an open source version VisualStudio](http:/
 
 Now, I wouldn’t say that MSSQL is production ready, but Visual Studio Code is extremely stable and it was recently announced that the open source [.NET core powers C# fucntions in AWS Lambda](https://aws.amazon.com/blogs/compute/announcing-c-sharp-support-for-aws-lambda/).
 
-Following it becoming [a platinum member of the Linux Foundation](https://www.linuxfoundation.org/announcements/microsoft-fortifies-commitment-to-open-source-becomes-linux-foundation-platinum) last month I think Microsoft is going to make 2017 a really interesting year for open source.
+Following it becoming [a platinum member of the Linux Foundation](https://www.linuxfoundation.org/press/press-release/microsoft-fortifies-commitment-to-open-source-becomes-linux-foundation-platinum-member) last month I think Microsoft is going to make 2017 a really interesting year for open source.
 
 I guess that …
 

@@ -136,7 +136,7 @@ Tracks like "No More" and "I’m On My Way" exhibit Mason's signature sound, ble
 
 "Brothers & Sisters" is fundamentally about connections and unity, delivering a message that things must work for everyone or they work for none. In creating this album, Mason reminds us that protest music needn't always be angry; it can also be a unifying and joyous celebration.
 
-For more detailed reviews of the album, you can visit [AllMusic](https://www.allmusic.com/album/brothers-sisters-mw0003856586), [NARC. Magazine](https://narcmagazine.com/album-review-steve-mason-brothers-sisters/), [Echoes And Dust](https://echoesanddust.com/2023/03/steve-mason-brothers-sisters/), and [Live4ever](https://www.live4ever.uk.com/2023/03/review-steve-mason-brothers-sisters/).
+For more detailed reviews of the album, you can visit [AllMusic](https://www.allmusic.com/album/brothers-sisters-mw0003856586), [NARC. Magazine](https://narcmagazine.com/album-review-steve-mason-brothers-sisters/), [Echoes And Dust](https://echoesanddust.com/), and [Live4ever](https://www.live4ever.uk.com/2023/03/review-steve-mason-brothers-sisters/).
 
 ## The Endless Coloured Ways (The Songs Of Nick Drake) - Various ([](https://www.mckendrick.rocks/albums/the-endless-coloured-ways-the-songs-of-nick-drake-27634329/))
 
@@ -148,7 +148,7 @@ The album showcases a range of styles, from the post-punk elements in Fontaines 
 
 Overall, "The Endless Coloured Ways: The Songs of Nick Drake" is not only a celebration of Drake's songwriting but also a demonstration of how his music transcends styles and continues to inspire a wide range of artists. It's a testament to his influence in the music world and serves as a beautifully crafted homage to his legacy.
 
-For a deeper dive into the album, you can explore the reviews on [Tradfolk](https://tradfolk.co/the-endless-coloured-ways-the-songs-of-nick-drake-a-review/), [Folk Radio UK](https://www.folkradio.co.uk/2023/07/the-endless-coloured-ways-the-songs-of-nick-drake-album-review/), [The Indiependent](https://www.indiependent.co.uk/album-review-the-endless-coloured-ways-the-songs-of-nick-drake-various-artists/), and [mxdwn Music](https://music.mxdwn.com/2023/08/01/reviews/album-review-various-artists-the-endless-coloured-ways-songs-of-nick-drake/).
+For a deeper dive into the album, you can explore the reviews on [Tradfolk](https://tradfolk.co/), [Folk Radio UK](https://www.folkradio.co.uk/2023/07/the-endless-coloured-ways-the-songs-of-nick-drake-album-review/), [The Indiependent](https://www.indiependent.co.uk/album-review-the-endless-coloured-ways-the-songs-of-nick-drake-various-artists/), and [mxdwn Music](https://music.mxdwn.com/2023/08/01/reviews/album-review-various-artists-the-endless-coloured-ways-songs-of-nick-drake/).
 
 # Bubbling under
 
@@ -162,7 +162,7 @@ The album is noted for its dynamic range, from the gothic magnificence of "Opali
 
 Critics have commended "Sky Void Of Stars" for its cohesive collection of tracks, blending powerful and dramatic music with a tone of vibrant darkness. Each song offers a unique experience, from memorable choruses to heavy grooves, showcasing Katatonia's skill in creating gloomy, melancholic metal.
 
-For more detailed reviews and insights into the album, you can explore the reviews from [The Prog Report](https://progreport.com/katatonia-sky-void-of-stars-album-review/), [MetalSucks](https://www.metalsucks.net/2023/01/19/review-katatonia-sky-void-of-stars/), [Angry Metal Guy](https://www.angrymetalguy.com/katatonia-sky-void-of-stars-review/), [Distorted Sound Magazine](https://distortedsoundmag.com/album-review-sky-void-of-stars-katatonia/), and [The Soundboard](https://thesoundboardreviews.com/).
+For more detailed reviews and insights into the album, you can explore the reviews from [The Prog Report](https://progreport.com/katatonia-sky-void-of-stars-album-review/), [MetalSucks](https://www.metalsucks.net/), [Angry Metal Guy](https://www.angrymetalguy.com/katatonia-sky-void-of-stars-review/), [Distorted Sound Magazine](https://distortedsoundmag.com/album-review-sky-void-of-stars-katatonia/), and [The Soundboard](https://thesoundboardreviews.com/).
 
 ## ID.Entity - Riverside ([](https://www.mckendrick.rocks/albums/id-entity-25826326/))
 
@@ -242,5 +242,5 @@ The title track, "Joy’All," recalls the style of Ani DiFranco, a former collab
 
 Overall, "Joy'All" is celebrated as possibly Jenny Lewis's best solo work to date, embodying her fearless confrontation with middle age and the complexities it brings. It is seen as a record that both haunts and inspires, being fun and uniquely complicated, a testament to Lewis's enduring talent and creativity.
 
-For more detailed reviews of Jenny Lewis's "Joy'All," you can read the insights from [The Fire Note](https://thefirenote.com/2023/06/14/jenny-lewis-joyall-album-review/), [AllMusic](https://www.allmusic.com/album/joyall-mw0003963498), [PopMatters](https://www.popmatters.com/jenny-lewis-joyall-review-2023), and [musicOMH](https://www.musicomh.com/reviews/albums/jenny-lewis-joyall).
+For more detailed reviews of Jenny Lewis's "Joy'All," you can read the insights from [The Fire Note](https://thefirenote.com/2023/06/14/jenny-lewis-joyall-album-review/), [AllMusic](https://www.allmusic.com/album/joyall-mw0003963498), [PopMatters](https://www.popmatters.com/), and [musicOMH](https://www.musicomh.com/reviews/albums/jenny-lewis-joyall).
 
