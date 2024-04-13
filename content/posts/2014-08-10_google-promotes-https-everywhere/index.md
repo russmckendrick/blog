@@ -1,6 +1,6 @@
 ---
 title: "Google promotes HTTPS everywhere"
-description: "As a web enthusiast, I explain Google's move to use HTTPS as a ranking signal and the benefits of Server Name Indication (SNI) for hosting multiple SSL certificates on a single IP, ensuring secure and highly ranked sites without contributing to IPv4 address exhaustion."
+description: "Unlock the secrets of Google's HTTPS ranking signal and SNI! Learn how to secure your site for maximum visibility."
 author: "Russ Mckendrick"
 date: 2014-08-10T11:00:00.000Z
 lastmod: 2021-07-31T12:31:51+01:00

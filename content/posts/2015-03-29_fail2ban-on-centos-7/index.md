@@ -1,6 +1,6 @@
 ---
 title: "Fail2Ban on CentOS 7"
-description: "Learn how to secure your CentOS 7 server with fail2ban. Follow Russ Mckendrick's step-by-step guide to block malicious SSH login attempts and keep your system protected from unauthorized access."
+description: "Protect your CentOS 7 server with fail2ban! Follow my guide to secure your system from unwanted SSH login attempts."
 author: "Russ Mckendrick"
 date: 2015-03-29T12:23:28.000Z
 lastmod: 2021-07-31T12:32:54+01:00

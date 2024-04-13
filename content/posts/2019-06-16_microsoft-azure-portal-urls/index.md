@@ -4,15 +4,10 @@ description: "Access Microsoft Azure portals efficiently with handy URLs for Azu
 author: "Russ Mckendrick"
 date: 2019-06-16T00:00:00.000Z
 lastmod: 2021-07-31T12:35:25+01:00
-
-description: ""
-
-subtitle: ""
 tags:
  - Azure
  - Cloud
  - Tools
-
 cover:
     image: "/img/2019-06-16_microsoft-azure-portal-urls_0.jpeg" 
 images:
@@ -23,8 +18,6 @@ images:
  - "/img/2019-06-16_microsoft-azure-portal-urls_4.png"
  - "/img/2019-06-16_microsoft-azure-portal-urls_5.png"
  - "/img/2019-06-16_microsoft-azure-portal-urls_6.png"
-
-
 aliases:
 - "/microsoft-azure-portal-urls-baa2ddda6250"
 

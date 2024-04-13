@@ -1,5 +1,6 @@
 ---
 title: "What have I been listening to? 🎧"
+description: "Stay up-to-date with my music preferences! Check out my weekly playlist on @lastfm and my personal album collection on my website."
 draft: false
 showToc: false
 ---

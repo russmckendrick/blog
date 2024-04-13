@@ -3,22 +3,14 @@ title: "Upgrade Python on MacOS"
 description: "Upgrade to Python 3 on macOS using pyenv for easy installation and maintenance of different Python versions."
 author: "Russ Mckendrick"
 date: 2019-12-29T16:21:00.000Z
-lastmod: 2021-07-31T12:44:17+01:00
-
-description: ""
-
-subtitle: ""
 tags:
  - macOS
  - Python
-
 cover:
     image: "/img/2019-12-29_upgrade-python-on-macos_0.jpeg" 
 images:
  - "/img/2019-12-29_upgrade-python-on-macos_0.jpeg"
  - "/img/2019-12-29_upgrade-python-on-macos_1.png"
-
-
 aliases:
 - "/upgrade-python-on-macos-b2e67aeece36"
 

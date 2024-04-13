@@ -3,15 +3,9 @@ title: "Adding a Deploy to Azure Button"
 description: "Simplify Azure deployments with a 'Deploy to Azure' button for ARM templates, enabling effortless resource launch directly from GitHub repositories."
 author: "Russ Mckendrick"
 date: 2019-09-14T00:00:00.000Z
-lastmod: 2021-07-31T12:44:11+01:00
-
-description: ""
-
-subtitle: ""
 tags:
  - Azure
  - Automation
-
 cover:
     image: "/img/2019-09-14_adding-a-deploy-to-azure-button_0.jpeg" 
 images:
@@ -21,8 +15,6 @@ images:
  - "/img/2019-09-14_adding-a-deploy-to-azure-button_3.png"
  - "/img/2019-09-14_adding-a-deploy-to-azure-button_4.png"
  - "/img/2019-09-14_adding-a-deploy-to-azure-button_5.gif"
-
-
 aliases:
 - "/adding-a-deploy-to-azure-button-17141269d79f"
 

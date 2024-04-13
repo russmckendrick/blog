@@ -1,6 +1,6 @@
 ---
 title: "Digital Ocean Bootstrap"
-description: "Bootstrap your CentOS 7 DigitalOcean droplet quickly with essential tasks: update, swap enablement, Fail2Ban installation, firewalld activation, and EPEL repository setup."
+description: "Get your CentOS 7 DigitalOcean droplet up and running in no time! Learn how to perform essential tasks for a smooth deployment."
 author: "Russ Mckendrick"
 date: 2015-06-28T12:23:29.000Z
 lastmod: 2021-07-31T12:33:08+01:00

@@ -1,14 +1,12 @@
 ---
 title: "Playing with Infinit & Docker"
-description: "Exploring Infinit & Docker integration: concepts, setup, & usage on Ubuntu & macOS, offering potential for Docker's storage solutions. Acquisition by Docker adds promise."
+description: "Learn how to integrate Infinit and Docker on Ubuntu & macOS. Explore concepts, setup, and usage for enhanced storage solutions. Acquisition by Docker boosts promise."
 author: "Russ Mckendrick"
 date: 2016-12-27T19:52:04.068Z
 lastmod: 2021-07-31T12:34:32+01:00
-
 tags:
  - Docker
  - Tools
-
 cover:
     image: "/img/2016-12-27_playing-with-infinit-docker_0.png" 
 images:
@@ -28,8 +26,6 @@ images:
  - "/img/2016-12-27_playing-with-infinit-docker_13.png"
  - "/img/2016-12-27_playing-with-infinit-docker_14.png"
  - "/img/2016-12-27_playing-with-infinit-docker_15.png"
-
-
 aliases:
 - "/playing-with-infinit-docker-651236e68cf"
 

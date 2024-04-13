@@ -3,11 +3,6 @@ title: "Terraform Quirks"
 description: "Explore Terraform quirks: module challenges, resource dependencies, and count/list workarounds."
 author: "Russ Mckendrick"
 date: 2019-02-09T00:00:00.000Z
-lastmod: 2021-07-31T12:35:20+01:00
-
-description: ""
-
-subtitle: ""
 tags:
  - Terraform
  - Infrastructure as Code
