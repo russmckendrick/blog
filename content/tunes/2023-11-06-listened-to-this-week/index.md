@@ -2,7 +2,7 @@
 title: "What did I listen to in week 44?"
 date: "2023-11-06"
 draft: false
-summary: "Immersed in the dynamic rhythm of Cardiacs, my week was melodically vibrant, according to LastFM data. This audacious British rock band seized the top spot on my most-played list, captivating with its blend of punk, progressive rock, and whimsical vibes. A musical adventure worth sharing!"
+summary: "Embrace the eclectic sounds of Cardiacs, where punk meets progressive rock and whimsical vibes collide! Their dynamic rhythm will leave you captivated!"
 cover:
     image: "/img/weekly-tunes-008.png"
     relative: false
