@@ -2,7 +2,7 @@
 title: "What did I listen to in week 32?"
 date: "2023-08-14"
 draft: false
-summary: "Dive into my world of music, as LastFM data unveils my top musical accompaniment this week: the mesmerizing band, Ride. An addictive blend of fuzzy guitars and ethereal melodies, their unique style has looped through my speakers, shaping my soundtrack and subtly altering my week's rhythm. Tune in to Ride!"
+summary: "Ride's addictive sound took over my speakers this week! 🎧💥 LastFM data reveals their unique style, shaping my soundtrack and altering my rhythm."
 cover:
     image: "/img/weekly-tunes-017.png"
     relative: false

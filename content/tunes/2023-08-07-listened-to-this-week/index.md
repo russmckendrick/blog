@@ -2,7 +2,7 @@
 title: "What did I listen to in week 31?"
 date: "2023-08-07"
 draft: false
-summary: "In an immersive week of rhythmic exploration, my top choice was the captivating allure of Alice in Chains. Their harmonic fusion of grunge and heavy metal took central stage, leading the charge in my LastFM playlist. The gritty vocals and evocative guitar riffs reigned supreme in my sonic universe."
+summary: "Alice in Chains' grunge-heavy fusion topped my LastFM playlist, with gritty vocals and evocative guitar riffs leading the charge."
 cover:
     image: "/img/weekly-tunes-007.png"
     relative: false

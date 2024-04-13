@@ -1,6 +1,6 @@
 ---
 title: "Monitoring & Managment with Docker & Containers ebook"
-description: "Discover valuable insights into monitoring and managing Docker containers with Russ Mckendrick's chapter in 'Monitoring & Management With Docker & Containers' ebook. Download for free!"
+description: "Get insights on monitoring & managing Docker contns with Russ McKendrick's chapter. Free ebook download!"
 author: "Russ Mckendrick"
 date: 2016-12-12T16:01:50.795Z
 lastmod: 2021-07-31T12:34:26+01:00

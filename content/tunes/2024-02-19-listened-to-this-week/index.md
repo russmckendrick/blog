@@ -2,7 +2,7 @@
 title: "What did I listen to in week 06?"
 date: "2024-02-19"
 draft: false
-summary: "This week's sonic odyssey was dominated by the aural tapestry of Pure Reason Revolution. A fusion of ethereal vocals and dense electronic-infused prog rock, their soundtracks were a daily revelation, showcasing their unique ability to weave complex melodies into an unforgettable musical journey that consistently topped my playlist."
+summary: "Pure Reason Revolution's aural tapestry captivated my musical journey this week! "
 cover:
     image: "/img/weekly-tunes-016.png"
     relative: false

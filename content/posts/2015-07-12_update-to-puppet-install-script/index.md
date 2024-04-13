@@ -1,6 +1,6 @@
 ---
 title: "Update to Puppet Install Script"
-description: "Discover the updated Puppet installation script for deploying a Puppet Master and Agent effortlessly on CentOS and RHEL. Streamline your automation setup with ease."
+description: "Effortless deployment of Puppet on CentOS/RHEL? Check out my updated installation script and streamline your automation setup today!"
 author: "Russ Mckendrick"
 date: 2015-07-12T11:00:00.000Z
 lastmod: 2021-07-31T12:33:12+01:00

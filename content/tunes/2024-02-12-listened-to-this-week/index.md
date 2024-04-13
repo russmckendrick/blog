@@ -2,7 +2,7 @@
 title: "What did I listen to in week 05?"
 date: "2024-02-12"
 draft: false
-summary: "This week's auditory journey was dominated by the evocative soundscapes of No-Man. The LastFM stats reveal a blissful dalliance with their hauntingly beautiful mix of dream pop and art rock. Embrace the ethereal melodies and introspective lyrics that have unmistakably captivated my musical soul."
+summary: "Ethereal melodies & introspective lyrics captured my musical soul this week! Join me in embracing No-Man's haunting soundscapes"
 cover:
     image: "/img/weekly-tunes-019.png"
     relative: false

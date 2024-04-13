@@ -2,7 +2,7 @@
 title: "What did I listen to in week 21?"
 date: "2023-05-29"
 draft: false
-summary: "Diving into the eclectic rhythm universe this week, my soundtrack was passionately dominated by the Easy Star All-Stars. This captivating group, renowned for their unique reggae/dub spin on classic albums, held a powerful sway over my playlists, becoming my most played artist this week according to LastFM data."
+Summary: Diving into the eclectic rhythm universe, Easy Star All-Stars dominated my soundtrack with their unique reggae/dub spin on classic albums, becoming my most played artist this week.
 cover:
     image: "/img/weekly-tunes-010.png"
     relative: false

@@ -2,7 +2,7 @@
 title: "What did I listen to in week 28?"
 date: "2023-07-17"
 draft: false
-summary: "Immersing myself in the intoxicating rhythms of The Stranglers, this week has been an auditory delight. My most-played artist, according to LastFM data, their pulsating beats and distinctive sound painted the backdrop of my days, their music weaving a vibrant tapestry of impeccable rock n' roll into my everyday life."
+summary: "The Stranglers' rhythms have been my soundtrack this week, according to LastFM data. Their unique sound has woven a vibrant tapestry of rock n' roll into my daily life."
 cover:
     image: "/img/weekly-tunes-005.png"
     relative: false

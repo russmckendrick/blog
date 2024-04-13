@@ -2,7 +2,7 @@
 title: "What did I listen to in week 26?"
 date: "2023-07-03"
 draft: false
-summary: "Diving deep into the addictive cacophony of Pixies this week, LastFM data reveals a personal obsession. Their rebellious rhythms topped my playlist, their undiluted energy resonating through countless repeats. This week, Pixies weren't just another band - they were a lifeline to sanity, an anthem of unparalleled solace."
+summary: "Pixies top my playlist with their rebellious rhythms, providing an anthem of solace. LastFM data reveals a personal obsession."
 cover:
     image: "/img/weekly-tunes-008.png"
     relative: false
