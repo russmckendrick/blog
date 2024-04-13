@@ -44,7 +44,7 @@ There are some other tools called by the dot files, so lets install those too.
 
 {{< terminal title="Installing other bits" >}}
 ```
-brew install tree pygments ffmpeg yt-dlp visual-studio-code drawio thefuck
+brew install tree pygments ffmpeg yt-dlp visual-studio-code drawio thefuck stow zoxide
 ```
 {{< /terminal >}}
 
@@ -68,15 +68,12 @@ mv ~/.gitconfig ~/.dotfiles/backups/
 ```
 {{< /terminal >}}
 
-Now we can create symbolic links to load contents from our `~/.dotfiles` folder:
+Now we can create symbolic links to load contents from our `~/.dotfiles` folder using `stow`:
 
 {{< terminal title="Create the Symbolic Links" >}}
 ```
-ln -s ~/.dotfiles/.zprofile ~/.zprofile
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.hushlogin ~/.hushlogin
-ln -s ~/.dotfiles/z.sh ~/.z.sh
+cd ~/.dotfiles
+stow .
 ```
 {{< /terminal >}}
 
