@@ -2,7 +2,7 @@
 title: "What did I listen to in week 37?"
 date: "2023-09-18"
 draft: false
-summary: "Immersing in the nuanced soundscapes of Doves, this week has been a sonic journey. Their alt-rock melodies dominated my LastFM playlist, accentuating highs and soothing lows. Exploring their profound repertoire has been insightful, revealing the artistic brilliance that makes Doves my most-played artist this week. Stay tuned for more musical explorations."
+summary: "Discover the captivating soundscapes of Doves, where alt-rock meets emotional depth. Their intricate melodies will resonate with your highs and lows!"
 cover:
     image: "/img/weekly-tunes-006.png"
     relative: false

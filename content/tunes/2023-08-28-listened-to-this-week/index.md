@@ -2,7 +2,7 @@
 title: "What did I listen to in week 34?"
 date: "2023-08-28"
 draft: false
-summary: "Dive into a world of rich cultural narratives as we explore my most played artist of the week, Rhiannon Giddens. Blending elements of folk, country and blues, her emotive melodies and striking lyrics offer a memorable musical journey. Prepare for a feast of balmy rhythms and arresting vocal harmonies."
+summary: "Explore the captivating narratives of Rhiannon Giddens, where folk meets blues and country. Her emotional melodies and striking lyrics will leave you captivated!"
 cover:
     image: "/img/weekly-tunes-014.png"
     relative: false

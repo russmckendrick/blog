@@ -2,7 +2,7 @@
 title: "What did I listen to in week 39?"
 date: "2023-10-02"
 draft: false
-summary: "This week found me in a deeply entranced reverie, with the compelling rhythms of Depeche Mode reverberating in my ears. According to LastFM data, their profoundly stirring catalog took the crown as my most played artist, proving once again the immutable allure of their timeless synth-pop soundscapes."
+summary: "Immerse yourself in the timeless allure of Depeche Mode's synth-pop masterpieces. Their captivating rhythms will leave you captivated!"
 cover:
     image: "/img/weekly-tunes-023.png"
     relative: false

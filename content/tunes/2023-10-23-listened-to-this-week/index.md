@@ -2,7 +2,7 @@
 title: "What did I listen to in week 42?"
 date: "2023-10-23"
 draft: false
-summary: "Diving deep into the iconic tunes of Devo, this week has been an audio journey dominated by this pioneering new wave band. Synth-driven resonance, clever lyricism, and rhythmic dynamics found in Devo's discography topped my LastFM charts, dominating every play, pause, and repeat. Stay tuned for a detailed review."
+summary: "Explore the innovative sounds of Devo, where new wave meets synth-driven brilliance. Their catchy tunes and clever lyrics will resonate with your inner new wave enthusiast!"
 cover:
     image: "/img/weekly-tunes-007.png"
     relative: false

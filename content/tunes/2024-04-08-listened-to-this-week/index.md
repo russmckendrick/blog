@@ -2,7 +2,7 @@
 title: "What did I listen to in week 13?"
 date: "2024-04-08"
 draft: false
-summary: "This week, my audio journey was dominated by the gritty, guitar-fueled grooves of Dr. Feelgood. The British pub rock band's raw, energetic rhythms and bluesy melodies didn't just top my playlist—they provided a relentless soundtrack that resurrected the raucous spirit of '70s R&B in every note."
+summary: "Immerse yourself in the gritty guitar grooves of Dr. Feelgood. Their British pub rock brings 70's R&B back to life with energetic, bluesy melodies. A raw, retro sound you'll love!"
 cover:
     image: "/img/weekly-tunes-002.png"
     relative: false

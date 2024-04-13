@@ -2,7 +2,7 @@
 title: "What did I listen to in week 33?"
 date: "2023-08-21"
 draft: false
-summary: "Diving into an auditory nostalgia, the iconic tunes of The Beatles dominated my playlists this week, capturing the most plays according to LastFM data! Immersed in harmonies that influenced generations, their timeless melodies reassured, and rebellious rhythm resounded, making for a music week steeped in profound Beatlemania."
+summary: "Beatles' tunes dominated my playlists this week, according to LastFM data. Harmonious melodies reassured and rebellious rhythms resounded, immersing me in a Beatlemania-steeped music week."
 cover:
     image: "/img/weekly-tunes-010.png"
     relative: false
