@@ -20,8 +20,6 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 Greetings music lovers! Well, it's that time of the week where we gather around virtually and share our recent playlist obsessions. As a music enthusiast, my taste is as assorted as a kid's pick-n-mix sweets selection. Timeless classics, fresh tracks, and unheard gems - they all find their way into my eclectic playlist rotation. I'm excited to share my most played artist and the myriad of melodious flavors my ears have indulged in during this past week.
 
-![Music Head](https://images.unsplash.com/photo-1544776527-68e63addedf6)
-
 Oh, and before I unravel the tracks that had my toes tapping and head nodding all week, know this - all the data for this week's post is faithfully collated by [Last.fm](https://www.last.fm/user/RussMckendrick) where my music listening tool tracks my sonic journey in real-time. Also, fun fact, this part was AI-generated! Kinda cool, huh? Now, let’s dive right into the musical abyss!🌊
 
 First off, we need a drumroll here... 🥁 *drumroll speaks louder than words...drumroll speaks louder than words*...and the top accolades go to – the Jurassic 5!🏆 This week, I've been swaying to their eclectic fusion of old-school hip hop, jazz rhythms, and jumpy beats. They undoubtedly seized the crown this time. 
@@ -29,8 +27,6 @@ First off, we need a drumroll here... 🥁 *drumroll speaks louder than words...
 These rhythmic word wizards weaved their storytelling magic, with tracks like 'Concrete Schoolyard' and 'Jayou.' Their unique ability to combine wordplay with thumping bass lines and slick DJ cuts compelled me to put their sounds on repeat. Funny how their unique blend of timeless sounds transcends the limits, and captures the essence of a particular time, place, or feeling. That's the beauty of the Jurassic 5! 👑
 
 But the J5 isn't the sole inhabitant of my magical auditory land. I have also been jamming to some other epic sounds.
-
-![Jurassic 5](https://blacksheepfestival.com/wp-content/uploads/2016/11/jurassic5_black-sheep-2017.jpg)
 
 Soundtracking my morning brew this week was Silver Sun, whose 'Bubblegum' track has just the right amount of morning mojo. Pavement kept the ball rolling with 'Range Life', the perfect backdrop to my afternoon saunters. 
 
