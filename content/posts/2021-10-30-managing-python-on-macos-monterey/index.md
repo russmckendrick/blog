@@ -2,7 +2,7 @@
 title: "Managing Python on macOS Monterey"
 author: "Russ McKendrick"
 date: 2021-10-30
-description: ""
+description: "Just installed macOS Monterey and Python on my MacBook Pro! Easy peasy with pyenv. Check out my experience!"
 draft: false
 showToc: true
 cover:

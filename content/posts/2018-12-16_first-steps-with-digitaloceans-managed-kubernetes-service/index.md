@@ -4,14 +4,9 @@ description: "Exploring DigitalOcean’s Managed Kubernetes service: setup, test
 author: "Russ Mckendrick"
 date: 2018-12-16T17:58:12.000Z
 lastmod: 2021-07-31T12:35:14+01:00
-
-description: ""
-
-subtitle: ""
 tags:
  - Kubernetes
  - Cloud
-
 cover:
     image: "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_0.jpg" 
 images:
@@ -29,8 +24,6 @@ images:
  - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_11.jpg"
  - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_12.jpg"
  - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_13.jpg"
-
-
 aliases:
 - "/first-steps-with-digitaloceans-managed-kubernetes-service-e53cd5d40909"
 

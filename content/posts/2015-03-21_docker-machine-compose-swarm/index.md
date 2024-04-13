@@ -1,6 +1,6 @@
 ---
 title: "Docker Machine, Compose & Swarm"
-description: "Learn about Docker Machine, Compose, and Swarm - powerful tools for managing Docker instances, orchestrating containers, and setting up clusters across various platforms."
+description: "Unlock the full potential of Docker with Machine, Compose, & Swarm. Learn how to orchestrate containers, and create clusters across different platforms!"
 author: "Russ Mckendrick"
 date: 2015-03-21T16:16:25.000Z
 lastmod: 2021-07-31T12:32:49+01:00

@@ -3,8 +3,6 @@ title: "Top 20ish Records of 2020"
 description: "Discover Russ Mckendrick's top 20 vinyl records of 2020 featuring a diverse selection of music genres."
 author: "Russ Mckendrick"
 date: 2021-01-22
-description: ""
-showFullContent: false
 cover:
     image: "cover.png"
     relative: true

@@ -1,6 +1,6 @@
 ---
 title: "What’s Been On The Ones & Twos"
-description: "Discover Russ Mckendrick's top picks in music this month, featuring eclectic tracks from artists like David Bowie, The Smashing Pumpkins, New Order, and more. Explore his diverse playlist on Spotify."
+description: "Get ready for a musical journey! Check out Russ Mckendrick's top picks this month on Spotify."
 author: "Russ Mckendrick"
 date: 2015-03-15T12:00:00.000Z
 lastmod: 2021-07-31T12:32:47+01:00

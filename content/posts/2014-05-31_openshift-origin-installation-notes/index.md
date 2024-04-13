@@ -1,6 +1,6 @@
 ---
 title: "OpenShift Origin installation notes"
-description: "Step-by-step guide on installing OpenShift Origin on a CentOS 6.5 Digital Ocean Droplet, including package installation, configuration adjustments, and troubleshooting tips for a successful setup."
+description: "Follow my guide to install OpenShift Origin on a CentOS 6.5 DO droplet. Get step-by-step instructions & troubleshoot issues."
 author: "Russ Mckendrick"
 date: 2014-05-31T11:00:00.000Z
 lastmod: 2021-07-31T12:31:34+01:00

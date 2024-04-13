@@ -1,6 +1,6 @@
 ---
 title: "Portainer, a UI for Docker"
-description: "Discover Portainer, the popular Docker management tool that has surpassed 1 million pulls on Docker Hub. Learn why this open-source platform is gaining traction among developers and DevOps professionals for simplifying container deployment, management, and monitoring. Explore Portainer's features and benefits in this article."
+description: "Discover Portainer: Simplify Docker management (150k+ pulls). Open-source tool streamlines container deployment, management & monitoring for devs & DevOps."
 author: "Russ Mckendrick"
 date: 2016-12-29T18:14:07.257Z
 lastmod: 2021-07-31T12:34:35+01:00

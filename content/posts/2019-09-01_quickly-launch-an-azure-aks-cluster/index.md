@@ -3,11 +3,6 @@ title: "Quickly launch an Azure AKS Cluster"
 description: "Effortlessly launch and manage Azure AKS clusters for your Kubernetes workloads with simple commands and streamlined setup."
 author: "Russ Mckendrick"
 date: 2019-09-01T00:00:00.000Z
-lastmod: 2021-07-31T12:44:08+01:00
-
-description: ""
-
-subtitle: ""
 tags:
  - Azure
  - Kubernetes
@@ -20,8 +15,6 @@ images:
  - "/img/2019-09-01_quickly-launch-an-azure-aks-cluster_2.png"
  - "/img/2019-09-01_quickly-launch-an-azure-aks-cluster_3.gif"
  - "/img/2019-09-01_quickly-launch-an-azure-aks-cluster_4.gif"
-
-
 aliases:
 - "/quickly-launch-an-azure-aks-cluster-64b6fde981aa"
 
