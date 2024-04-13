@@ -2,7 +2,7 @@
 title: "What did I listen to in week 09?"
 date: "2024-03-11"
 draft: false
-summary: "This week, my sonic landscape was dominated by the electrifying waves of Amplifier, LastFM's data painting a picture of my auditory journey. Their genre-bending riffs and expansive soundscapes provided a thrilling soundtrack, proving this band's innovative rock prowess is as mesmerizing as ever – a truly immersive experience."
+summary: "Embark on an electrifying journey with Amplifier, where innovative riffs meet expansive soundscapes!"
 cover:
     image: "/img/weekly-tunes-002.png"
     relative: false

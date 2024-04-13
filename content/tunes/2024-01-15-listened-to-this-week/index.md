@@ -2,7 +2,7 @@
 title: "What did I listen to in week 01?"
 date: "2024-01-15"
 draft: false
-summary: "This week saw an electric surge in rhythm and synth, as my LastFM stats reveal a deep dive into the pulsating world of Electronic. The genre's layered textures and infectious beats took the crown, leading a sonic journey that oscillated between nostalgia and futuristic soundscapes. Tune in for synth-driven bliss."
+summary: "Embrace the rhythmic fusion of electronic music, where layered textures meet infectious beats!"
 cover:
     image: "/img/weekly-tunes-011.png"
     relative: false

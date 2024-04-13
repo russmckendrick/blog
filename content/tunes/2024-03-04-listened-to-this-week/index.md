@@ -2,7 +2,7 @@
 title: "What did I listen to in week 08?"
 date: "2024-03-04"
 draft: false
-summary: "This week's soundwaves were dominated by the timeless melodies of The Beatles, as their iconic anthems spun repeatedly on my playlist. Join me as I explore the enduring magic of the Fab Four that transcends generations, resonating with a fresh twist in every listen. #BeatlesMania #MusicNostalgia"
+summary: "Relive the timeless magic of The Beatles, where iconic anthems meet enduring melodies!"
 cover:
     image: "/img/weekly-tunes-015.png"
     relative: false

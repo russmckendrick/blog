@@ -2,7 +2,7 @@
 title: "What did I listen to in week 10?"
 date: "2024-03-18"
 draft: false
-summary: "This week, my musical journey was dominated by the timeless anthems of Queen, as revealed by my LastFM stats. The iconic riffs and Freddie Mercury's powerhouse vocals held court, captivating my ears with a royal parade of classic rock majesty that never ceases to thrill and inspire. 🎸👑🎤 #QueenReignsMyPlaylist"
+summary: "Immerse yourself in the royal brilliance of Queen, where iconic riffs meet Freddie Mercury's
 cover:
     image: "/img/weekly-tunes-001.png"
     relative: false

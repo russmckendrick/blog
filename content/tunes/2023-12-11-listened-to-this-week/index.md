@@ -2,7 +2,7 @@
 title: "What did I listen to in week 49?"
 date: "2023-12-11"
 draft: false
-summary: "Immersed in the celestial sonnet of Stars, my week was guided by their unwavering allure. According to LastFM data, the undeniable charm of this indie-pop constellation formed the soundtrack to my rhythm of life, earning them a stellar spot as my most-played artist this week. Experience their melodic magic now!"
+summary: "Embark on an indie-pop journey with Stars, where their celestial melodies will captivate your senses!"
 cover:
     image: "/img/weekly-tunes-006.png"
     relative: false

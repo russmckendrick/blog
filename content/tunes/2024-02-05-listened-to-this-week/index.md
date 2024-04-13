@@ -2,7 +2,7 @@
 title: "What did I listen to in week 04?"
 date: "2024-02-05"
 draft: false
-summary: "This week's auditory odyssey was dominated by the symphonic rock brilliance of Electric Light Orchestra. With a blend of classical arrangements and rock rhythms, ELO's timeless tunes provided the perfect soundscape, leading the charge on my most-played list—a testament to their enduring musical allure.
+summary: "Immerse yourself in the symphonic rock magic of Electric Light Orchestra, where classical arrangements meet rock rhythms!"
 
 (Note: The LastFM data mentioned is assumed as a given context for this piece of creative writing.)"
 cover:

@@ -2,7 +2,7 @@
 title: "What did I listen to in week 46?"
 date: "2023-11-20"
 draft: false
-summary: "Diving into a timeless musical journey, this week was dominated by none other than The Beatles, according to LastFM data. The iconic melodies and lyrical genius of this legendary band seemed to take my soul on a nostalgic trip, echoing through my days as my most played artist to date."
+summary: "Embark on a nostalgic journey with The Beatles. Their timeless melodies and lyrical brilliance will resonate with your inner music lover!"
 cover:
     image: "/img/weekly-tunes-018.png"
     relative: false
