@@ -1,0 +1,13 @@
+{{- define "main" }}
+<div class="not-found-container">
+  <h1 class="not-found-title">404</h1>
+  <p class="not-found-text">Oops! The page you're looking for could not be found.</p>
+  <p class="not-found-text">Here are a few things you can try:</p>
+  <ul class="not-found-list">
+    <li><a href="{{ "/search/" | relURL }}">Perform a search</a>.</li>
+    <li><a href="{{ "/tags/" | relURL }}">Checkout the tags page</a>.</li>
+    <li><a href="{{ "/" | relURL }}">Visit the homepage</a>.</li>
+    <li><a href="{{ "/about/" | relURL }}">If you believe this is an error, please  contact me</a>.</li>
+    </ul>
+</div>
+{{- end }}{{/* end main */ -}}
