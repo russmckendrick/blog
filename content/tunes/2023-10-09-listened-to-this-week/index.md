@@ -2,7 +2,7 @@
 title: "What did I listen to in week 40?"
 date: "2023-10-09"
 draft: false
-summary: "Explore the mesmerizing psychedelic realms of Pink Floyd. Their timeless compositions will transport you to an ethereal sonic universe
+summary: "Explore the mesmerizing psychedelic realms of Pink Floyd. Their timeless compositions will transport you to an ethereal sonic universe"
 cover:
     image: "/img/weekly-tunes-009.png"
     relative: false
