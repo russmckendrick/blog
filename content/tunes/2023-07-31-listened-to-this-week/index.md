@@ -2,7 +2,7 @@
 title: "What did I listen to in week 30?"
 date: "2023-07-31"
 draft: false
-summary: "Dive into the captivating rhythmic world of Jurassic 5, the accomplished band that stole the limelight on my playlist this week. Delivering an intoxicating fusion of old-school hip hop and intriguing melodies, they've left no stone unturned to reign supreme in my musical journey. Immerse yourself in their timeless tracks."
+summary: "Jurassic 5 ruled my playlist this week! 🎧💥 Their fusion of old-school hip hop & melodies reign supreme, immerse yourself in their timeless tracks."
 cover:
     image: "/img/weekly-tunes-012.png"
     relative: false

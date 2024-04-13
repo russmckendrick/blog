@@ -2,7 +2,7 @@
 title: "What did I listen to in week 22?"
 date: "2023-06-05"
 draft: false
-summary: "This week, my auditory landscape was predominantly colored by the raw energy of The Specials. According to my LastFM data, I've been diving deep into their skank-worthy rhythms and punk-infused lyrics, making them my top-played artist. Stay tuned for a closer look into this gritty music obsession of mine."
+Summary: The Specials have been my top-played artist this week, according to LastFM data. Their raw energy and skank-worthy rhythms have had me hooked on their punk-infused lyrics
 cover:
     image: "/img/weekly-tunes-020.png"
     relative: false

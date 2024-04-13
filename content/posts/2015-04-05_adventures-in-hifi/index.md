@@ -1,6 +1,6 @@
 ---
 title: "Adventures in Hi-Fi"
-description: "Join me on my journey into the world of hi-fi as I explore the joys of vinyl and upgrade my sound system with Sonos speakers. Discover how I enhanced my music experience with Spotify and Deezer Elite subscriptions."
+description: "Grooving into hi-fi! Exploring vinyl and upgrading my sound system with Sonos speakers."
 author: "Russ Mckendrick"
 date: 2015-04-05T11:00:00.000Z
 lastmod: 2021-07-31T12:32:56+01:00

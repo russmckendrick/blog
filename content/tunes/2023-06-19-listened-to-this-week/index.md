@@ -2,7 +2,7 @@
 title: "What did I listen to in week 24?"
 date: "2023-06-19"
 draft: false
-summary: "Immerse yourself in a sonic journey this week as my LastFM stats revealed an obsession with the iconic pop duo; the Pet Shop Boys. Their timeless synth beats and captivating lyrics dominated my playlist, heightening the auditory experience and encapsulating the transformative power of their evocative, pop-disco soundscape."
+summary: "Embark on a sonic adventure this week with me! My LastFM stats reveal an obsession with the legendary Pet Shop Boys. Their catchy synth beats and memorable lyrics have captivated my ears."
 cover:
     image: "/img/weekly-tunes-016.png"
     relative: false

@@ -1,6 +1,6 @@
 ---
 title: "Monitoring Docker book"
-description: "Author Russ Mckendrick announces the upcoming release of his book 'Monitoring Docker,' offering a detailed guide to Docker container monitoring. Pre-order now to explore Docker monitoring."
+description: "Pre-order my new book 'Monitoring Docker' for a comprehensive guide to container monitoring. Stay ahead of the game with tips and tricks"
 author: "Russ Mckendrick"
 date: 2015-10-11T15:45:00.000Z
 lastmod: 2021-07-31T12:33:27+01:00

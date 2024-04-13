@@ -1,6 +1,6 @@
 ---
 title: "Upgrading to El Capitan"
-description: "Upgrade smoothly to OS X 10.11 El Capitan with these steps. From creating a USB install disk to restoring backups, ensure a seamless transition for enhanced performance."
+description: "Ready to upgrade to OS X 10.11 El Capitan? Follow my steps and enjoy a smooth transition with enhanced performance!"\
 author: "Russ Mckendrick"
 date: 2015-10-03T11:57:56.000Z
 lastmod: 2021-07-31T12:33:24+01:00

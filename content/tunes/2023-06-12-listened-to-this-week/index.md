@@ -2,7 +2,7 @@
 title: "What did I listen to in week 23?"
 date: "2023-06-12"
 draft: false
-summary: "This week, my auditory journey was ruled by the melodious allure of James. Each harmony echoing the rhythm of my routines, their music intertwined with my daily life. Dive into LastFM data as it unveils my profound connection with this fine tunesmith, their lyrics, and unforgettable beats."
+Summary: James has been the soundtrack to my daily routine, according to LastFM data. Their melodious allure and harmonious rhythms have weaved themselves into my life
 cover:
     image: "/img/weekly-tunes-015.png"
     relative: false

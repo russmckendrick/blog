@@ -2,7 +2,7 @@
 title: "What did I listen to in week 25?"
 date: "2023-06-26"
 draft: false
-summary: "Diving into the sublime melody of George Harrison, the enigmatic former Beatle, ruled my speakers this week. My LastFM data brightly reflects Harrison's ingenious compositions claiming maximum airtime. An audial journey through rock, pop and experimental genres narrated by the 'Dark Horse' himself - a week steeped in sheer musical bliss."
+summary: "George Harrison's sublime melodies ruled my speakers this week! "
 cover:
     image: "/img/weekly-tunes-009.png"
     relative: false

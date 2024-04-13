@@ -2,7 +2,7 @@
 title: "What did I listen to in week 27?"
 date: "2023-07-10"
 draft: false
-summary: "Embarking on an auditory journey this week, my soundscape was dominated by the eclectic symphonies of Prefab Sprout. Their unique melodious blend was an unwavering presence, ruling my playlist and setting the rhythm of my week. An undeniable testament to their compelling musical genius and my resolute admiration for their artistry."
+summary: "Prefab Sprout's soundscape captivated me this week, with their eclectic melodies ruling my playlist. Their artistic genius is undeniable."
 cover:
     image: "/img/weekly-tunes-017.png"
     relative: false

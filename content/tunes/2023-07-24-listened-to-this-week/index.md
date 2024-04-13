@@ -2,7 +2,7 @@
 title: "What did I listen to in week 29?"
 date: "2023-07-24"
 draft: false
-summary: "Immersing into sonic textures and profound lyricism, I find Radiohead reigning as my most played artist this week, according to LastFM data. This enlightening musical voyage underscores my seemingly insatiable craving for their experimental rock sounds, mirroring the band's distinctive fusion of compelling narratives with unconventional tones."
+summary: "Radiohead reigns as my most played artist this week, according to LastFM data. Their experimental rock sounds satisfy my seemingly insatiable craving for unique musical textures and profound lyricism."
 cover:
     image: "/img/weekly-tunes-004.png"
     relative: false
