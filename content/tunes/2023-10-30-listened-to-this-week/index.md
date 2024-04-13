@@ -2,7 +2,7 @@
 title: "What did I listen to in week 43?"
 date: "2023-10-30"
 draft: false
-summary: "Immerse yourself in a synth-pop soundscape as CHVRCHES takes the lead as the most played artist this week, according to LastFM data. Echoing harmonies and ethereal melodies punctuated my everyday routine, defining my sonic journey. Tune in to grasp the compelling allure of CHVRCHES that has captivated my musical heart."
+summary: "Discover the enchanting blend of synth-pop and ethereal melodies in CHVRCHES' music. Their captivating harmonies will leave you captivated!"
 cover:
     image: "/img/weekly-tunes-022.png"
     relative: false

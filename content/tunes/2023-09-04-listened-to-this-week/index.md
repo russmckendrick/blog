@@ -2,7 +2,7 @@
 title: "What did I listen to in week 35?"
 date: "2023-09-04"
 draft: false
-summary: "Diving into the rhythmic euphoria of iconic punk-rock, my musical week was dominated by the distinct sounds of 'The Jam.' Succumbing to their compelling tunes, LastFM data unveiled this legendary band as my most played artist. Explore the raw energy and timeless allure that continues to define my auditory journey."
+summary: "Experience the electrifying sounds of The Jam as they dominate this week's playlist. Their timeless punk-rock tunes will leave you captivated by their raw energy!"
 cover:
     image: "/img/weekly-tunes-012.png"
     relative: false

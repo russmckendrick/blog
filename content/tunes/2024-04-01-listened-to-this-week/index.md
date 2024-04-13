@@ -2,7 +2,7 @@
 title: "What did I listen to in week 12?"
 date: "2024-04-01"
 draft: false
-summary: "Immerse yourself in synth-pop nostalgia with my latest blog post! This week, I've been entranced by the captivating melodies of Orchestral Manoeuvres in the Dark. LastFM confirms they're my top-played artist, echoing through my days with their distinctive electronic beats and emotive lyrics. Step into the OMD universe with me."
+summary: "Journey through 80's synth-pop with Orchestral Manoeuvres in the Dark. Their captivating melodies and evocative lyrics will take you back in time!"
 cover:
     image: "/img/weekly-tunes-014.png"
     relative: false

@@ -2,7 +2,7 @@
 title: "What did I listen to in week 41?"
 date: "2023-10-16"
 draft: false
-summary: "Diving into the vibrant soundscape of glam rock, I was entranced by the iconic Roxy Music this week. This enigmatic band's distinctive fusion of bold aesthetics, avant-garde style, and idiosyncratic compositions dominated my LastFM, becoming my most played artist. A symphony of pure sonic joy, Roxy Music is definitely aural bliss!"
+summary: "Experience the flamboyant world of glam rock with Roxy Music. Their captivating blend of bold style and avant-garde compositions will leave you captivated!"
 cover:
     image: "/img/weekly-tunes-022.png"
     relative: false

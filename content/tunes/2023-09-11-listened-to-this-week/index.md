@@ -2,7 +2,7 @@
 title: "What did I listen to in week 36?"
 date: "2023-09-11"
 draft: false
-summary: "Dive into a sonic dream with Slowdive, the most-played artist on my LastFM this week. Immerse yourself in their ambient melodies, evocative of hazy sunsets and windswept seas. Join my musical journey; let Slowdive's ethereal tunes be your entrancing guide. Explore their captivating soundscape, where sound meets emotion."
+summary: "Escape to a sonic dream with Slowdive's mesmerizing ambient melodies. Their hazy tunes will transport you to a calming atmosphere of sunsets and ocean breezes."
 cover:
     image: "/img/weekly-tunes-002.png"
     relative: false

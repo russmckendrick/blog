@@ -2,7 +2,7 @@
 title: "What did I listen to in week 40?"
 date: "2023-10-09"
 draft: false
-summary: "Diving deep into the psychedelic world of sound, my week was dominated by the iconic rock band, Pink Floyd. With their ethereal compositions, they've topped my LastFM playlist, proving that their timeless music continues to inspire and resonate. Join me as I explore the captivating sonic universe of Pink Floyd."
+summary: "Explore the mesmerizing psychedelic realms of Pink Floyd. Their timeless compositions will transport you to an ethereal sonic universe
 cover:
     image: "/img/weekly-tunes-009.png"
     relative: false
