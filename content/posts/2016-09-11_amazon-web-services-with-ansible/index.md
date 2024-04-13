@@ -26,7 +26,7 @@ More and more I am having to not only think about how I would ensure that the in
 
 I have tried several tools for this such as [Terraform](http://media-glass.es/tag/terraform/), [Puppet](/tag/puppet/) and [Ansible](/tag/ansible/), however over the last six months or so I have settled on Ansible.
 
-After I first looked at it back in [December 2014](http://media-glass.es/2014/12/14/first-steps-with-ansible/) it has come on quite a lot, especially after the [version 2 release at the start of this year](https://www.ansible.com/blog/ansible-2.0-launch).
+After I first looked at it back in [December 2014](http://media-glass.es/2014/12/14/first-steps-with-ansible/) it has come on quite a lot, especially after the [version 2 release at the start of this year](https://www.redhat.com/en/about/press-releases/red-hat-releases-ansible-20-expanding-support-hybrid-cloud-deployments-and-introducing-new-automation-capabilities).
 
 I have demo playbook I use when showing people how Ansible works, it targets Amazon Web Services and does the following;
 

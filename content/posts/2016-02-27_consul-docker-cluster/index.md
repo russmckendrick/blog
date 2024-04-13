@@ -21,7 +21,7 @@ aliases:
 
 ---
 
-As mentioned in my previous post I have been doing a lot of work with [Docker Machine](https://www.docker.com/products/docker-machine) and [Docker Swarm](https://www.docker.com/products/docker-swarm) recently, to configure mulit-host networking with the latest version of Docker I needed to use a service discovery tool. As I had played with [Consul](https://www.consul.io/) in the past I decided to use that for my back-end service discovery.
+As mentioned in my previous post I have been doing a lot of work with [Docker Machine](https://github.com/docker/machine) and [Docker Swarm](https://www.docker.com/products/docker-swarm) recently, to configure mulit-host networking with the latest version of Docker I needed to use a service discovery tool. As I had played with [Consul](https://www.consul.io/) in the past I decided to use that for my back-end service discovery.
 
 Now if I wanted to launch a single node then I would run the following;
 

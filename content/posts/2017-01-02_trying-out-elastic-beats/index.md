@@ -276,7 +276,7 @@ docker $(docker-machine config manager) service create \
 
 This created a service which launched three basic containers using the image from [russmckendrick/cluster](https://hub.docker.com/r/russmckendrick/cluster/) and then made them available on port 80 on all three hosts.
 
-Then I launched a service using [manomarks/visualizer](https://hub.docker.com/r/manomarks/visualizer/), this gives you a visual representation of your Docker Swarm cluster. To this I ran;
+Then I launched a service using [manomarks/visualizer](https://hub.docker.com/r/dockersamples/visualizer/), this gives you a visual representation of your Docker Swarm cluster. To this I ran;
 
 ```
 docker $(docker-machine config manager) service create \

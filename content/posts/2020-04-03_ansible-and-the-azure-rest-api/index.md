@@ -254,7 +254,7 @@ That is only half of the story though, remember the task which registers the int
 
 #### Using Visual Studio Code to get a head start
 
-Luckily, there is a way you can get a head start. Version 0.5.0 of the [Ansible Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible) introduced the `Samples for azure_rm_resource` command, which is in preview. This command does something extremely useful, it downloads a copy of the Azure REST API specification from the [official GitHub repo](https://github.com/Azure/azure-rest-api-specs) and updates them to be formatted for use with the `azure_rm_resource` module.
+Luckily, there is a way you can get a head start. Version 0.5.0 of the [Ansible Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=redhat.ansible) introduced the `Samples for azure_rm_resource` command, which is in preview. This command does something extremely useful, it downloads a copy of the Azure REST API specification from the [official GitHub repo](https://github.com/Azure/azure-rest-api-specs) and updates them to be formatted for use with the `azure_rm_resource` module.
 
 For example, to get a idea on what we needed to do to create the private DNS zone I opened Visual Studio Code, and selected the `Ansible: Samples for azure_rm_resource (PREVIEW)` command;
 

@@ -18,7 +18,7 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 Hello Music Maniacs! 🎵🔥
 
-I'm back again with Mckendrick's weekly mixtape. My whole week’s been documented through my musical taste – shout out to my Last.fm profile – where my soundtracks paint an auditory picture of my lived experiences. You can follow my musical journey here at my Last.fm profile (https://www.last.fm/user/RussMckendrick). 
+I'm back again with Mckendrick's weekly mixtape. My whole week’s been documented through my musical taste – shout out to my Last.fm profile – where my soundtracks paint an auditory picture of my lived experiences. You can follow my musical journey here at [my Last.fm profile](https://www.last.fm/user/RussMckendrick).
 
 As some of you might be aware, I've been entrusting my blog's composition to artificial intelligence lately, and here's another fine piece of AI craftsmanship!🤖🎵
 

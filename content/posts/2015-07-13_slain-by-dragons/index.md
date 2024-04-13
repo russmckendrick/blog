@@ -23,7 +23,7 @@ aliases:
 
 ---
 
-Last night I did some I haven’t done for a while and watched the opening episode of a new [Dragons Den](http://www.bbc.co.uk/iplayer/episode/b062r0nm/dragons-den-series-13-episode-1) series while it was being aired.
+Last night I did some I haven’t done for a while and watched the opening episode of a new [Dragons Den](https://www.bbc.co.uk/programmes/b062r0nm) series while it was being aired.
 
 After a short time I found myself less interested in what was happening on screen and more interested in what was happening to the contestants (this is after all a primetime game show isn’t it?) websites during what should be a predicted spike in traffic.
 
@@ -59,7 +59,7 @@ Once things had settled down a quick look at [BuiltWith](http://builtwith.com/?h
 
 Last up were BeamBlock Yoga. Their site just flat out refused to load at any point during their screen time. No errors, just lots of time outs.
 
-When the site eventually started to load and I had a look at it with [BuiltWith](http://builtwith.com/beamblockyoga.com) I found it was yet another Wordpress site. This time there was no CloudFlare or plugins to help cache the site exposed.
+When the site eventually started to load and I had a look at it with [BuiltWith](https://builtwith.com/) I found it was yet another Wordpress site. This time there was no CloudFlare or plugins to help cache the site exposed.
 
 #### So what does all this mean?
 
