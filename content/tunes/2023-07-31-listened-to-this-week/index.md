@@ -2,7 +2,7 @@
 title: "What did I listen to in week 30?"
 date: "2023-07-31"
 draft: false
-summary: "Jurassic 5 ruled my playlist this week! 🎧💥 Their fusion of old-school hip hop & melodies reign supreme, immerse yourself in their timeless tracks."
+summary: "Jurassic 5 ruled my playlist this week! Their fusion of old-school hip hop & melodies reign supreme, immerse yourself in their timeless tracks."
 cover:
     image: "/img/weekly-tunes-012.png"
     relative: false

@@ -2,7 +2,7 @@
 title: "What did I listen to in week 50?"
 date: "2023-12-18"
 draft: false
-summary: "Diving into the high-energy sonic landscapes of alternative rock, my week was musically dominated by Jesus Jones according to LastFM data. The influential sound and intense lyrical prowess of this iconic British band became my recurrent anthem, showcasing a significant portion of my listening streak. Join my auditory ride!"
+summary: "Embrace the high-energy vibes of Jesus Jones, where their influential sound meets intense lyrical prowess!"
 cover:
     image: "/img/weekly-tunes-003.png"
     relative: false

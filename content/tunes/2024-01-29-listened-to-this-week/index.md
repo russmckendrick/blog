@@ -2,7 +2,7 @@
 title: "What did I listen to in week 03?"
 date: "2024-01-29"
 draft: false
-summary: "This week's auditory obsession, brought to life by LastFM stats, spotlighted the eclectic soundscapes of They Might Be Giants. My musical landscape was dominated by their quirky melodies, cerebral lyrics, and innovative charm that consistently defy genre boundaries, marking them as the standout soundtrack of my every moment."
+summary: "Explore the quirky brilliance of They Might Be Giants, where catchy melodies meet cerebral lyrics and innovative charm!"
 cover:
     image: "/img/weekly-tunes-016.png"
     relative: false

@@ -2,7 +2,7 @@
 title: "What did I listen to in week 11?"
 date: "2024-03-25"
 draft: false
-summary: "Diving into the progressive depths of rock, my week resonated with the intricate melodies of Marillion. LastFM's data painted a vivid soundscape of this iconic band's genius, marking them as my top auditory companion. Join the journey as I explore the allure behind my Marillion marathon."
+summary: "Journey into the progressive rock realm with Marillion, where intricate melodies meet sonic experimentation!"
 cover:
     image: "/img/weekly-tunes-004.png"
     relative: false

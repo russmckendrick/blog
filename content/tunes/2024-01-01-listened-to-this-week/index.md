@@ -2,7 +2,7 @@
 title: "What did I listen to in week 52?"
 date: "2024-01-01"
 draft: false
-summary: "Dive into the melodic world of Deacon Blue, a Scottish pop rock band that has captured my sonic landscape this week. Their stirring lyrics and compelling rhythms dominated my playlist, providing a rich tapestry of sounds that resonated with every beat of my heart. Join me in exploring..."
+summary: "Experience the melodic magic of Deacon Blue, where stirring lyrics meet captivating rhythms!"
 cover:
     image: "/img/weekly-tunes-007.png"
     relative: false

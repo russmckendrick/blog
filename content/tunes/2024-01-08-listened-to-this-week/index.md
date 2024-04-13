@@ -2,7 +2,7 @@
 title: "What did I listen to in week 00?"
 date: "2024-01-08"
 draft: false
-summary: "Dissecting the ethereal resonance of my week, LastFM analytics vividly capture my sonic journey where Kate Bush reigned supreme. With her haunting melodies and unique artistry, Bush's avant-garde catalogue became the soundtrack to my days, her voice a constant echo blending into the rhythm of my life."
+summary: "Explore the ethereal landscapes of Kate Bush's music, where haunting melodies meet avant-garde artistry!"
 cover:
     image: "/img/weekly-tunes-021.png"
     relative: false

@@ -2,7 +2,7 @@
 title: "What did I listen to in week 47?"
 date: "2023-11-27"
 draft: false
-summary: "Diving into the rhythmic pulse of the music universe this week, LastFM data revealed an intriguing champion - The Beat. This iconic band has satisfyingly filled my ear-space, dominating my playlists with their intoxicating blend of punk and reggae. Relive the magic of their sound to awaken your audio senses."
+summary: "Discover the captivating blend of punk and reggae in The Beat's music. Their rhythmic pulse will leave you energized and captivated!"
 cover:
     image: "/img/weekly-tunes-009.png"
     relative: false

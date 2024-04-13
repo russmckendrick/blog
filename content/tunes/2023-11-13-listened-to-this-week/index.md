@@ -2,7 +2,7 @@
 title: "What did I listen to in week 45?"
 date: "2023-11-13"
 draft: false
-summary: "Diving into the iconic soundscape of rock this week, my audio journey found a home with the legendary band, The Who. According to LastFM data, their timeless tunes resonated most, reinforcing their undying charm. Stay tuned to explore this lyrical adventure, captivating us in a symphony of rebellious anthems."
+summary: "Experience the rebellious spirit of The Who through their timeless tunes. Their lyrical adventures and captivating melodies will resonate with your inner rock fan!""
 cover:
     image: "/img/weekly-tunes-004.png"
     relative: false

@@ -2,7 +2,7 @@
 title: "What did I listen to in week 51?"
 date: "2023-12-25"
 draft: false
-summary: "Embarking on a cosmic journey with the Starman himself, this week's auditory odyssey was commandeered by the eclectic genius of David Bowie. LastFM data reveals a labyrinth of soundscapes, as we zigzagged through his genre-defying hits, exploring the innovative artistry that crowned him the eternal chameleon of rock."
+summary: "Journey through the cosmos of David Bowie's music, where innovative soundscapes and genre-defying hits collide!"
 cover:
     image: "/img/weekly-tunes-015.png"
     relative: false

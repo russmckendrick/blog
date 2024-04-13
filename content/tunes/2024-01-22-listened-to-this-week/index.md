@@ -2,7 +2,7 @@
 title: "What did I listen to in week 02?"
 date: "2024-01-22"
 draft: false
-summary: "This week on LastFM, the relentless rhythmic beats of Carter the Unstable Sex Machine dominated my playlist. Their unique fusion of punk energy and electronic wit soundtracked my every move, proving that Carter's anthemic tales of life and love still resonate with unstoppable vigor in today's soundscape."
+summary: "Embrace the rhythmic chaos of Carter the Unstable Sex Machine, where punk meets electronic wit!"
 cover:
     image: "/img/weekly-tunes-009.png"
     relative: false
