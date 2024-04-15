@@ -97,23 +97,23 @@ Keep your playlists dynamic and your hearts open to new sonic experiences. Until
 - [The Smashing Pumpkins](https://www.mckendrick.rocks/artist/the-smashing-pumpkins/) (11 plays)
 - [Split Enz](https://www.mckendrick.rocks/artist/split-enz/) (10 plays)
 - [The Black Crowes](https://www.mckendrick.rocks/artist/the-black-crowes/) (10 plays)
-- Tears for Fears (9 plays)
+- [Tears for Fears](https://www.mckendrick.rocks/artist/tears-for-fears/) (9 plays)
 
 
 ## Top Albums (Week 14)
 
-- ...And Out Come the Wolves by Rancid
-- Who Cares a Lot? The Greatest Hits by Faith No More
+- [...And Out Come the Wolves](https://www.mckendrick.rocks/albums/and-out-come-the-wolves-8007348/) by Rancid
+- [Who Cares a Lot? The Greatest Hits](https://www.mckendrick.rocks/albums/who-cares-a-lot-the-greatest-hits-17063952/) by Faith No More
 - [Too Much Pressure](https://www.mckendrick.rocks/albums/too-much-pressure-18421726/) by The Selecter
 - [God Fodder](https://www.mckendrick.rocks/albums/god-fodder-781893/) by Ned's Atomic Dustbin
 - [Stacked Up](https://www.mckendrick.rocks/albums/stacked-up-1723235/) by Senser
-- Set Yourself on Fire by Stars
+- [Set Yourself on Fire](https://www.mckendrick.rocks/albums/set-yourself-on-fire-4062521/) by Stars
 - [Twisted](https://www.mckendrick.rocks/albums/twisted-30318908/) by Del Amitri
 - [Schubert Dip](https://www.mckendrick.rocks/albums/schubert-dip-2122351/) by EMF
 - [Gish](https://www.mckendrick.rocks/albums/gish-3266516/) by The Smashing Pumpkins
 - [Mental Notes](https://www.mckendrick.rocks/albums/mental-notes-1445113/) by Split Enz
-- The Southern Harmony and Musical Companion by The Black Crowes
-- Songs From the Big Chair (Super Deluxe Version) by Tears for Fears
+- [The Southern Harmony and Musical Companion](https://www.mckendrick.rocks/albums/the-southern-harmony-and-musical-companion-7867280/) by The Black Crowes
+- [Songs From the Big Chair](https://www.mckendrick.rocks/albums/songs-from-the-big-chair-6298468/) by Tears for Fears
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}
