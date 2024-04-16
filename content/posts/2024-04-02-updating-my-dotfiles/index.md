@@ -42,9 +42,11 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 There are some other tools called by the dot files, so lets install those too.
 
-{{< terminal title="Installing other bits" >}}
+{{< terminal title="Installing and configuring the other bits" >}}
 ```
-brew install tree pygments ffmpeg yt-dlp visual-studio-code drawio thefuck stow zoxide
+brew install tree pygments ffmpeg yt-dlp visual-studio-code drawio thefuck stow zoxide gh
+gh extension install github/gh-copilot # enable the gh-copilot  extension
+gh copilot alias -- zsh # run one and accept the t&cs
 ```
 {{< /terminal >}}
 
