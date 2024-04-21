@@ -3,8 +3,8 @@ title: "Announcing the second edition of Learn Ansible"
 author: "Russ McKendrick"
 date: 2024-04-21T16:07:25+01:00
 description: "My new book, the second edition of Learn Ansible is now available for pre-order."
-draft: true
-showToc: true
+draft: false
+showToc: false
 cover:
     image: "cover.png"
     relative: true
