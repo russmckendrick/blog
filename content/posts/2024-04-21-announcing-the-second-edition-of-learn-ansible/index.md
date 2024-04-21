@@ -17,9 +17,9 @@ tags:
 
 Exciting News! I'm thrilled to announce that the 2nd edition of my book, "Learn Ansible: Automate your cloud infrastructure, security configuration, and application deployment using Ansible" is now available for pre-order on Amazon and Packt Publishing's website! 📣 🎉 📚
 
-- [Amazon (🇺🇸)](https://www.amazon.com/Learn-Ansible-infrastructure-configuration-application-ebook/dp/B0D1Y2D5Z6/)
-- [Amazon (🇬🇧)](https://www.amazon.co.uk/dp/B0D1Y2D5Z6/)
-- [Packt Publishing (🌍)](https://www.packtpub.com/product/learn-ansible-second-edition/9781835088913)
+- [Amazon ( 🇺🇸 )[noExternalIcon]](https://www.amazon.com/Learn-Ansible-infrastructure-configuration-application-ebook/dp/B0D1Y2D5Z6/)
+- [Amazon ( 🇬🇧 )[noExternalIcon]](https://www.amazon.co.uk/dp/B0D1Y2D5Z6/)
+- [Packt Publishing ( 🌍 )[noExternalIcon]](https://www.packtpub.com/product/learn-ansible-second-edition/9781835088913)
 
 Whether you're a beginner or an intermediate user looking to take your Ansible skills to the next level, this hands-on guide will empower you to automate your infrastructure and application deployments consistently and efficiently. 💻 🚀
 
