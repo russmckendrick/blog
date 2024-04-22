@@ -82,13 +82,13 @@ Peace out, music lovers. 🖖
 - [Bruce Springsteen](https://www.mckendrick.rocks/artist/bruce-springsteen/) (18 plays)
 - [R.E.M.](https://www.mckendrick.rocks/artist/r.e.m./) (18 plays)
 - [James](https://www.mckendrick.rocks/artist/james/) (12 plays)
-- Spear of Destiny (12 plays)
+- [Spear of Destiny](https://www.mckendrick.rocks/artist/spear-of-destiny/) (12 plays)
 - [Simple Minds](https://www.mckendrick.rocks/artist/simple-minds/) (8 plays)
-- Alice in Chains (6 plays)
+- [Alice in Chains](https://www.mckendrick.rocks/artist/alice-in-chains/) (6 plays)
 - [Depeche Mode](https://www.mckendrick.rocks/artist/depeche-mode/) (1 plays)
 - [Duran Duran](https://www.mckendrick.rocks/artist/duran-duran/) (1 plays)
 - [Kate Bush](https://www.mckendrick.rocks/artist/kate-bush/) (1 plays)
-- Orchestral Manoeuvres in the Dark (1 plays)
+- [Orchestral Manoeuvres in the Dark](https://www.mckendrick.rocks/artist/orchestral-manoeuvres-in-the-dark/) (1 plays)
 - [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (1 plays)
 
 
@@ -96,14 +96,14 @@ Peace out, music lovers. 🖖
 
 - [Free World The Best Of 1979-2000](https://www.mckendrick.rocks/albums/free-world-the-best-of-1979-2000-29500981/) by Kirsty MacColl
 - [Best Of](https://www.mckendrick.rocks/albums/best-of-30441302/) by Bruce Springsteen
-- In Time: The Best of R.E.M. 1988-2003 by R.E.M.
+- [In Time: The Best of R.E.M. 1988-2003](https://www.mckendrick.rocks/albums/in-time-the-best-of-r-e-m-1988-2003-13640264/) by R.E.M.
 - [Yummy](https://www.mckendrick.rocks/albums/yummy-30375872/) by James
-- Liberators! The Best Of 1983-1988 by Spear of Destiny
+- [Liberators! The Best Of 1983-1988](https://www.mckendrick.rocks/albums/liberators-the-best-of-1983-1988-23727314/) by Spear of Destiny
 - [Once Upon A Time](https://www.mckendrick.rocks/albums/once-upon-a-time-762207/) by Simple Minds
-- Dirt (2022 Remaster) by Alice in Chains
-- Violator (Deluxe) by Depeche Mode
+- [Dirt (2022 Remaster)](https://www.mckendrick.rocks/albums/dirt-24564872/) by Alice in Chains
+- [Violator (Deluxe)(https://www.mckendrick.rocks/albums/violator-5529916/)] by Depeche Mode
 - Duran Duran (Deluxe Edition) by Duran Duran
-- Hounds of Love (2018 Remaster) by Kate Bush
+- [Hounds of Love (2018 Remaster)](https://www.mckendrick.rocks/albums/hounds-of-love-19605145/) by Kate Bush
 - Crush by Orchestral Manoeuvres in the Dark
 - [So](https://www.mckendrick.rocks/albums/so-379036/) by Peter Gabriel
 
