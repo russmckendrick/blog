@@ -17,6 +17,8 @@ from fuzzywuzzy import fuzz
 lastfm_user = os.getenv('LASTFM_USER')
 lastfm_api_key = os.getenv('LASTFM_API_KEY')
 collection_url = os.getenv('COLLECTION_URL')
+os.environ["OPENAI_API_KEY"]
+os.environ["OPENAI_MODEL_NAME"]
 
 search_tool = DuckDuckGoSearchRun()
 web_tool = WebsiteSearchTool()
