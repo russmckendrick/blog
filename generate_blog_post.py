@@ -323,9 +323,5 @@ def main():
 
     generate_blog_post(top_artists, top_albums, collection_info, week_start, week_end)
 
-    # Remove the index.json file and the "db" folder after the script finishes
-    os.remove('index.json')
-    shutil.rmtree('db')
-
 if __name__ == '__main__':
     main()
