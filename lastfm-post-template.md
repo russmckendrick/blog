@@ -1,5 +1,5 @@
 ---
-title: "{{ title }}"
+title: {{ title }}
 author: "Russ McKendrick"
 date: "{{ date }}"
 description: "{{ summary }}"
