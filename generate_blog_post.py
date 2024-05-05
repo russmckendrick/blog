@@ -1,62 +1,68 @@
+from crewai import Agent, Task, Crew, Process
+from langchain_community.tools import DuckDuckGoSearchRun
+from crewai_tools import WebsiteSearchTool
 import os
 import requests
 import json
 import argparse
 import random
-import wikipediaapi
-import openai
+import time
+import re
 from datetime import datetime, timedelta
 from collections import Counter
 from jinja2 import Environment, FileSystemLoader
+from fuzzywuzzy import fuzz
 
 # Load user secrets from environment variables
-user = os.getenv('LASTFM_USER')
-api_key = os.getenv('LASTFM_API_KEY')
-url = os.getenv('COLLECTION_URL')
-openai_key = os.getenv('OPENAI_KEY')
+lastfm_user = os.getenv('LASTFM_USER')
+lastfm_api_key = os.getenv('LASTFM_API_KEY')
+collection_url = os.getenv('COLLECTION_URL')
 
-# Function to get Wikipedia summary
-def get_wiki_summary(page_name):
-    page_py = wiki_wiki.page(page_name)
-    if page_py.exists():
-        return page_py.summary[0:500]  # Limit summary to 500 characters
-    return None
+search_tool = DuckDuckGoSearchRun()
+web_tool = WebsiteSearchTool()
 
-# Generate a random number
 def generate_random_number():
+    """Generate a random number between 1 and 23 and format it as a 3-digit string."""
     number = random.randint(1, 23)
-    formatted_number = str(number).zfill(3)
-    return formatted_number
+    return str(number).zfill(3)
 
-# Function to get GPT-3 generated text
-def get_gpt3_text(prompt):
-    completion = openai.ChatCompletion.create(
-        model='gpt-4-1106-preview',
-        messages=[
-            {
-                'role': 'user',
-                'content': prompt
-            }
-        ]
-    )
-    return completion['choices'][0]['message']['content'].strip()
-
-# Get artist data from Last.fm API
-def get_lastfm_artist_data(user, api_key, from_time, to_time):
-    url = f"http://ws.audioscrobbler.com/2.0/?method=user.getweeklyartistchart&user={user}&api_key={api_key}&format=json&from={from_time}&to={to_time}"
+def get_lastfm_data(method, lastfm_user, lastfm_api_key, from_time, to_time):
+    """Get data from the Last.fm API for a given method and time range."""
+    url = f"http://ws.audioscrobbler.com/2.0/?method={method}&user={lastfm_user}&api_key={lastfm_api_key}&format=json&from={from_time}&to={to_time}"
     response = requests.get(url)
     return response.json()
 
-# Get album data from Last.fm API
-def get_lastfm_album_data(user, api_key, from_time, to_time):
-    url = f"http://ws.audioscrobbler.com/2.0/?method=user.getweeklyalbumchart&user={user}&api_key={api_key}&format=json&from={from_time}&to={to_time}"
-    response = requests.get(url)
-    return response.json()
+import os
+import json
+import time
+import requests
 
-# Get collection data from personal website
-def get_collection_data():
-    response = requests.get(f'{url}/index.json')
-    data = response.json()
+def get_collection_data(collection_url):
+    """Get collection data from a personal website."""
+    local_file = 'index.json'
+    
+    # Check if the local index.json file exists
+    if os.path.exists(local_file):
+        # Get the modification time of the local file
+        mod_time = os.path.getmtime(local_file)
+        current_time = time.time()
+        
+        # Check if the file is more than an hour old
+        if current_time - mod_time > 3600:
+            # Download the updated index.json file
+            response = requests.get(f'{collection_url}/index.json')
+            with open(local_file, 'wb') as f:
+                f.write(response.content)
+    else:
+        # Download the index.json file if it doesn't exist
+        response = requests.get(f'{collection_url}/index.json')
+        with open(local_file, 'wb') as f:
+            f.write(response.content)
+    
+    # Read the local index.json file
+    with open(local_file, 'r') as f:
+        data = json.load(f)
+    
     info = {}
     for doc in data['documents']:
         artist = doc.get('artist')
@@ -65,36 +71,58 @@ def get_collection_data():
         artist_image = doc.get('artistImage')
         album_uri = doc.get('uri')
         artist_uri = doc.get('artistUri')
-        if artist and album and cover_image and artist_image and album_uri and artist_uri:
+        
+        if artist and album and album_uri:
+            album_link = f"{collection_url}{album_uri}"
+            
+            # Check if the cover image URL is valid
+            if cover_image and cover_image.startswith('https://'):
+                album_image_link = cover_image
+            else:
+                album_image_link = None
+            
             info[(artist, album)] = {
-                'cover_image': cover_image,
-                'artist_image': artist_image,
-                'album_link': f"{url}{album_uri}",
-                'artist_link': artist_uri
+                'album_image': album_image_link,
+                'album_link': album_link
             }
+        
+        if artist and artist_uri:
+            artist_link = artist_uri
+            
+            # Check if the artist image URL is valid
+            if artist_image and artist_image.startswith('https://'):
+                artist_image_link = artist_image
+            else:
+                artist_image_link = None
+            
+            info[artist] = {
+                'artist_image': artist_image_link,
+                'artist_link': artist_link
+            }
+    
     return info
 
-# Generate summary of weekly music activity
-def generate_summary(data_artists, data_albums, collection):
+def generate_summary(artist_data, album_data, collection_info):
+    """Generate a summary of weekly music activity."""
     top_artists = Counter()
     top_albums = Counter()
-    for artist in data_artists['weeklyartistchart']['artist']:
+    for artist in artist_data['weeklyartistchart']['artist']:
         artist_name = artist['name']
         top_artists[artist_name] += int(artist['playcount'])
-    for album in data_albums['weeklyalbumchart']['album']:
+    for album in album_data['weeklyalbumchart']['album']:
         artist_name = album['artist']['#text']
         album_name = album['name']
         top_albums[(artist_name, album_name)] += int(album['playcount'])
-    return top_artists.most_common(12), top_albums.most_common(12), collection
+    return top_artists.most_common(12), top_albums.most_common(12), collection_info
 
-# Render the markdown template
 def render_template(template_name, context):
+    """Render a template using Jinja2."""
     env = Environment(loader=FileSystemLoader('.'))
     template = env.get_template(template_name)
     return template.render(context)
 
-# Download image function
 def download_image(url, folder, name):
+    """Download an image from a URL and save it to a folder."""
     response = requests.get(url, stream=True)
     clean_name = name.replace(' ', '-').replace('/', '-')
     image_file_path = os.path.join(folder, f"{clean_name}.jpg")
@@ -113,8 +141,95 @@ def download_image(url, folder, name):
     else:
         print(f"Failed to download image from {url}")
 
-# Generate the blog post
-def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
+def kickoff_crew(album):
+    """Kickoff the crew to generate a blog post section for a given album."""
+    blogger = Agent(
+        role="Music Research",
+        goal=f"You are a Music lover and are going to be writing sections of a blog post containing information on the albums you have listed to this week. One the albums you listened to is '{album}'. Find a good summary of '{album}' which can be used to write the blog post.",
+        backstory=f"You are an expert music Blogger on Internet. Include details on the album '{album}', artist and any other interesting facts you can find. You have a passion for music of all genres and you are excited to share your thoughts with the world.",
+        verbose=True,
+        max_inter=1,
+    )
+
+    task_blog_post = Task(
+        description=f"Search for details about the album '{album}'. Your final answer MUST be a consolidated content that can be as a section of a blog post. This content should be well organized, and should be very easy to read. You must provide a 800 word section for a blog post.",
+        expected_output=f"Write a well structured section for a blog post on '{album}'. A comprehensive section on '{album}' in markdown format - do not use any H1 headers, only H2 and below, add lots of relevant emojis and make it no more than 800 words.",
+        max_inter=1,
+        tools=[search_tool, web_tool],
+        agent=blogger)
+
+    crew = Crew(
+        agents=[blogger],
+        tasks=[task_blog_post],
+        process=Process.sequential,
+        max_rpm=10,
+        full_output=True,
+    )
+
+    result = crew.kickoff()
+    return result
+
+def generate_title_and_summary(date_str_start, week_number, top_artists, top_albums):
+    """Generate a title and summary for the blog post using CrewAI."""
+    title_agent = Agent(
+        role="Title Generator",
+        goal=f"Generate a catchy and SEO-friendly title for a weekly music blog post. The post is about the top artists and albums listened to this week, {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}.",
+        backstory="You are an expert in creating engaging and SEO-optimized titles for blog posts. Your titles should grab the reader's attention and include relevant keywords.",
+        verbose=True,
+        max_inter=1,
+    )
+
+    title_task = Task(
+        description=f"Generate a title for a weekly music blog post featuring the top artists: {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}.",
+        expected_output="A catchy and SEO-friendly title for the blog post. Do not exceed 70 characters or use special characters such a :, -, |,  or emojis.",
+        max_inter=1,
+        tools=[],
+        agent=title_agent,
+    )
+
+    summary_agent = Agent(
+        role="Summary Generator",
+        goal=f"Generate a concise and SEO-friendly summary for a weekly music blog post. The post is about the top artists and albums listened to in week {week_number} starting from {date_str_start}.",
+        backstory="You are an expert in creating informative and SEO-optimized summaries for blog posts. Your summaries should provide a brief overview of the post's content and include relevant keywords.",
+        verbose=True,
+        max_inter=1,
+    )
+
+    summary_task = Task(
+        description=f"Generate a summary for a weekly music blog post featuring the top artists: {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}.",
+        expected_output="A concise and SEO-friendly summary for the blog post. It shoud be no more than 180 characters.",
+        max_inter=1,
+        tools=[],
+        agent=summary_agent,
+    )
+
+    crew = Crew(
+        agents=[title_agent, summary_agent],
+        tasks=[title_task, summary_task],
+        max_rpm=10,
+        full_output=True,
+    )
+
+    result = crew.kickoff()
+    title = re.sub(r'[^\w\s-]', '', result['tasks_outputs'][0].exported_output)
+    print("Crew.kickoff() result:")
+    print(result)
+    print()
+
+    print("Title:")
+    print(result['tasks_outputs'][0].exported_output)
+    print()
+
+    print("Summary:")
+    print(result['tasks_outputs'][1].exported_output)
+    print()
+
+    title = result['tasks_outputs'][0].exported_output
+    summary = result['tasks_outputs'][1].exported_output
+    return title, summary
+
+def generate_blog_post(top_artists, top_albums, collection_info, week_start, week_end):
+    """Generate a blog post for the weekly music activity."""
     date_str_start = week_end.strftime('%Y-%m-%d')
     week_number = week_start.strftime('%U')
     post_folder = f"content/tunes/{date_str_start}-listened-to-this-week"
@@ -124,43 +239,45 @@ def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
     os.makedirs(albums_folder, exist_ok=True)  # Create albums directory
     os.makedirs(artists_folder, exist_ok=True)  # Create artists directory
     filename = os.path.join(post_folder, "index.md")
-    artist_info = {artist: data for (artist, album), data in info.items()}
-    album_info = {(artist, album): data for (artist, album), data in info.items()}
+    artist_info = {artist: data for artist, data in collection_info.items() if not isinstance(artist, tuple)}
+    album_info = {key: data for key, data in collection_info.items() if isinstance(key, tuple)}
+
     for artist, _ in top_artists:
-        # Check for artist in info keys
-        artist_image_url = None
-        for (info_artist, info_album), data in info.items():
-            if info_artist == artist:
-                artist_image_url = data.get('artist_image')
-                break  # Break as soon as you find the artist
-                
-        if artist_image_url:
-            download_image(artist_image_url, artists_folder, artist)
+        artist_data = artist_info.get(artist)
+        if artist_data:
+            artist_image_url = artist_data.get('artist_image')
+            if artist_image_url:
+                download_image(artist_image_url, artists_folder, artist)
 
     for (artist, album), _ in top_albums:
-        # Check for album in info keys
-        album_cover_url = None
-        for (info_artist, info_album), data in info.items():
-            if info_artist == artist and info_album == album:
-                album_cover_url = data.get('cover_image')
-                break  # Break as soon as you find the album
+        max_ratio = 0
+        best_match = None
+        for key, data in album_info.items():
+            if key[0] == artist:
+                ratio = fuzz.ratio(album.lower(), key[1].lower())
+                if ratio > max_ratio:
+                    max_ratio = ratio
+                    best_match = data
 
-        if album_cover_url:
-            download_image(album_cover_url, albums_folder, album)
-    top_artist = top_artists[0][0] if top_artists else 'No artist data'
-    top_artist_summary = get_wiki_summary(top_artist + " band")
-    chat_post_summary = f"According to LastFM data the artist I most played this week was {top_artist}. Can you write a short 50 word summary to say this. It is going to be used as a description for a blog post so should be descrptiove and interesting."
-    chat_intro = "Write a casual blog post which details what music I have been listening to this week. The blog post should be 1000 words long. Feel free to use emjois and markdown formatting to make the post more interesting."
-    if top_artist_summary:
-        chat_top_artist_info = f"The most played artist this week was {top_artist}, Wikipedia has this to say about {top_artist} ... {top_artist_summary}."
-    else:
-        chat_top_artist_info = f"The most played artist this week was {top_artist}."
-    chat_other_artists = f"Other artists I listened to this week include {', '.join([artist for artist, count in top_artists[1:12]])}, mention these too the end, but don't repeat any inforation you have already given."
-    chat_data_souce = "The data for this blog post was collected from Last.fm you can find my profile at https://www.last.fm/user/RussMckendrick."
-    chat_ai_generated = "Also, mention that this part of the blog post was AI generated - this part of the post should be short"
-    gpt3_prompt = f"{chat_intro} {chat_top_artist_info} {chat_other_artists} {chat_data_souce} {chat_ai_generated}"
-    gpt3_summary = get_gpt3_text(chat_post_summary)
-    gpt3_post = get_gpt3_text(gpt3_prompt) 
+        if best_match:
+            album_cover_url = best_match.get('album_image')
+            if album_cover_url:
+                download_image(album_cover_url, albums_folder, album)
+
+    topics = [f"{album} by {artist}" for (artist, album), _ in top_albums]
+    blog_post_sections = []
+
+    # Generate title and summary using CrewAI
+    title, summary = generate_title_and_summary(date_str_start, week_number, top_artists, top_albums)
+
+    for album in topics:
+        result = kickoff_crew(album)
+        print(result)
+        output_str = result['final_output']
+        blog_post_sections.append(output_str)
+
+    blog_post = "\n\n".join(blog_post_sections)
+
     random_number = generate_random_number()
     context = {
         'date': date_str_start,
@@ -169,38 +286,40 @@ def generate_blog_post(top_artists, top_albums, info, week_start, week_end):
         'artist_info': artist_info,
         'top_albums': top_albums,
         'album_info': album_info,
-        'summary': gpt3_summary,
-        'gpt3_post': gpt3_post,
+        'title': title,
+        'summary': summary,
+        'blog_post': blog_post,
         'random_number': random_number,
     }
     content = render_template('lastfm-post-template.md', context)
     with open(filename, 'w') as f:
         f.write(content)
 
-# Command line argument for the start of the week
-parser = argparse.ArgumentParser(description='Generate a blog post about your week in music.')
-parser.add_argument('--week_start', type=str, help='The starting date of the week, in YYYY-MM-DD format. Defaults to 7 days ago.')
-args = parser.parse_args()
+def main():
+    # Command line argument for the start of the week
+    parser = argparse.ArgumentParser(description='Generate a blog post about your week in music.')
+    parser.add_argument('--week_start', type=str, help='The starting date of the week, in YYYY-MM-DD format. Defaults to 7 days ago.')
+    args = parser.parse_args()
 
-# Calculate start and end of the week
-if args.week_start:
-    week_start = datetime.strptime(args.week_start, '%Y-%m-%d')
-else:
-    week_start = datetime.now() - timedelta(days=7)
-week_end = week_start + timedelta(days=7)
+    # Calculate start and end of the week
+    if args.week_start:
+        week_start = datetime.strptime(args.week_start, '%Y-%m-%d')
+    else:
+        week_start = datetime.now() - timedelta(days=7)
+    week_end = week_start + timedelta(days=7)
 
-start_timestamp = int(week_start.timestamp())
-end_timestamp = int(week_end.timestamp())
+    start_timestamp = int(week_start.timestamp())
+    end_timestamp = int(week_end.timestamp())
 
-# Fetch data and generate blog post
-openai.api_key = openai_key
-wiki_wiki = wikipediaapi.Wikipedia(
-    language='en',
-    extract_format=wikipediaapi.ExtractFormat.WIKI,
-    user_agent="Blog post creator/1.0 (https://www.russ.foo; me@russ.foo)"
-)
-artist_data = get_lastfm_artist_data(user, api_key, start_timestamp, end_timestamp)
-album_data = get_lastfm_album_data(user, api_key, start_timestamp, end_timestamp)
-collection = get_collection_data()
-top_artists, top_albums, images = generate_summary(artist_data, album_data, collection)
-generate_blog_post(top_artists, top_albums, collection, week_start, week_end)
+    artist_data = get_lastfm_data('user.getweeklyartistchart', lastfm_user, lastfm_api_key, start_timestamp, end_timestamp)
+    album_data = get_lastfm_data('user.getweeklyalbumchart', lastfm_user, lastfm_api_key, start_timestamp, end_timestamp)
+    collection_info = get_collection_data(collection_url)
+    top_artists, top_albums, images = generate_summary(artist_data, album_data, collection_info)
+
+    print(top_artists)
+    print(top_albums)
+
+    generate_blog_post(top_artists, top_albums, collection_info, week_start, week_end)
+
+if __name__ == '__main__':
+    main()
