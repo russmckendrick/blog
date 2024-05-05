@@ -1,5 +1,7 @@
-requests
-argparse
+crewai
+crewai_tools
+fuzzywuzzy
 jinja2
-openai==0.28
-wikipedia-api
+langchain_community
+python-Levenshtein
+requests
