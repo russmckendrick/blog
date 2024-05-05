@@ -1,5 +1,5 @@
 ---
-title: {{ title }}
+title: "{{ title }}"
 author: "Russ McKendrick"
 date: "{{ date }}"
 description: "{{ summary }}"
@@ -16,7 +16,7 @@ tags:
 This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
 {% raw %}{{< /notice >}}{% endraw %}
 
-{% raw %}{{< gallery match="artists/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}{% endraw %}
+{% raw %}{{< gallery match="artists/*" sortOrder="desc" rowHeight="250" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}{% endraw %}
 
 {{ blog_post }}
 
@@ -40,4 +40,4 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 {% endif %}
 {%- endfor %}
 
-{% raw %}{{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}{% endraw %}
+{% raw %}{{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}{% endraw %}
