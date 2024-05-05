@@ -34,10 +34,9 @@ def get_lastfm_data(method, lastfm_user, lastfm_api_key, from_time, to_time):
     response = requests.get(url)
     return response.json()
 
-import os
-import json
-import time
-import requests
+def clean_output(text):
+    # Remove backticks, double quotes, and any non-word, non-whitespace, or non-hyphen characters
+    return re.sub(r'[\'"]', '', text)
 
 def get_collection_data(collection_url):
     """Get collection data from a personal website."""
@@ -117,10 +116,15 @@ def generate_summary(artist_data, album_data, collection_info):
         top_albums[(artist_name, album_name)] += int(album['playcount'])
     return top_artists.most_common(12), top_albums.most_common(12), collection_info
 
+# Define the custom filter function
+def regex_replace(value, pattern, replacement=""):
+    return re.sub(pattern, replacement, value)
+
 def render_template(template_name, context):
     """Render a template using Jinja2."""
     env = Environment(loader=FileSystemLoader('.'))
     template = env.get_template(template_name)
+    env.filters['regex_replace'] = regex_replace
     return template.render(context)
 
 def download_image(url, folder, name):
@@ -175,15 +179,15 @@ def generate_title_and_summary(date_str_start, week_number, top_artists, top_alb
     """Generate a title and summary for the blog post using CrewAI."""
     title_agent = Agent(
         role="Title Generator",
-        goal=f"Generate a catchy and SEO-friendly title for a weekly music blog post. The post is about the top artists and albums listened to this week, {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}.",
-        backstory="You are an expert in creating engaging and SEO-optimized titles for blog posts. Your titles should grab the reader's attention and include relevant keywords.",
+        goal=f"Generate a catchy and SEO-friendly title for a weekly music blog post. The post is about the top artists and albums listened to this week, {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}. Do not exceed 70 characters or use special characters such a :, -, |, quotes or emojis.",
+        backstory="You are an expert in creating creative, engaging and SEO-optimized titles for blog posts. Your titles should grab the reader's attention and include relevant keywords.",
         verbose=True,
         max_inter=1,
     )
 
     title_task = Task(
         description=f"Generate a title for a weekly music blog post featuring the top artists: {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}.",
-        expected_output="A catchy and SEO-friendly title for the blog post. Do not exceed 70 characters or use special characters such a :, -, |,  or emojis.",
+        expected_output="A catchy and SEO-friendly title for the blog post. Do not exceed 70 characters or use special characters such a :, -, |, quotes or emojis.",
         max_inter=1,
         tools=[],
         agent=title_agent,
@@ -199,7 +203,7 @@ def generate_title_and_summary(date_str_start, week_number, top_artists, top_alb
 
     summary_task = Task(
         description=f"Generate a summary for a weekly music blog post featuring the top artists: {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}.",
-        expected_output="A concise and SEO-friendly summary for the blog post. It shoud be no more than 180 characters.",
+        expected_output="A concise and SEO-friendly summary for the blog post. It shouldn't be more than 180 characters and it should NOT use special characters such a :, -, |,  quotes or emojis.",
         max_inter=1,
         tools=[],
         agent=summary_agent,
@@ -213,21 +217,20 @@ def generate_title_and_summary(date_str_start, week_number, top_artists, top_alb
     )
 
     result = crew.kickoff()
-    title = re.sub(r'[^\w\s-]', '', result['tasks_outputs'][0].exported_output)
     print("Crew.kickoff() result:")
     print(result)
     print()
 
+    title = clean_output(result['tasks_outputs'][0].exported_output)
     print("Title:")
-    print(result['tasks_outputs'][0].exported_output)
+    print(title)
     print()
-
+    
+    summary = clean_output(result['tasks_outputs'][1].exported_output)
     print("Summary:")
-    print(result['tasks_outputs'][1].exported_output)
+    print(summary)
     print()
-
-    title = result['tasks_outputs'][0].exported_output
-    summary = result['tasks_outputs'][1].exported_output
+    
     return title, summary
 
 def generate_blog_post(top_artists, top_albums, collection_info, week_start, week_end):
