@@ -203,14 +203,53 @@ I decided that I should have two separate crews in my code, the first will gener
 
 {{< terminal title="The Subject and Summary Crew" >}}
 ```python
-def clean_output(text):
+def sanitize_text_output(text):
+    """
+    Clean the output text by removing backticks, double quotes, and any characters that are not word characters, whitespace, or hyphens.
+    Args:
+        text (str): The input text to be cleaned.
+    Returns:
+        str: The cleaned text with backticks, double quotes, and specified characters removed.
+    """
     return re.sub(r'[\'"]', '', text)
 
 def generate_title_and_summary(date_str_start, week_number, top_artists, top_albums):
-    """Generate a title and summary for the blog post using CrewAI."""
+    """
+    Generate a title and summary for a weekly music blog post using a crew of agents.
+    This function takes the start date, week number, top artists, and top albums as input and kicks off
+    a crew of agents to generate a catchy and SEO-friendly title and a concise summary for the blog post.
+    The crew consists of two agents: a "Title Generator" agent and a "Summary Generator" agent.
+    The "Title Generator" agent is assigned a task to generate a title for the blog post, considering the
+    top artists and albums of the week. The title should be catchy, SEO-friendly, and not exceed 70
+    characters or use special characters such as :, -, |, quotes, or emojis.
+    The "Summary Generator" agent is assigned a task to generate a summary for the blog post, providing
+    a brief overview of the post's content. The summary should be concise, SEO-friendly, and not exceed
+    180 characters or use special characters.
+    Args:
+        date_str_start (str): The start date of the week in string format.
+        week_number (int): The number of the week.
+        top_artists (list): A list of tuples representing the top artists of the week, where each tuple
+        contains the artist name and the play count.
+        top_albums (list): A list of tuples representing the top albums of the week, where each tuple
+        contains a tuple of the artist name and album name, and the play count.
+    Returns:
+    tuple: A tuple containing two elements:
+        - title (str): The generated title for the blog post.
+        - summary (str): The generated summary for the blog post.
+    Raises:
+        AgentError: If an error occurs during the agents' execution of the tasks.
+        TaskError: If an error occurs while processing the tasks.
+        CrewError: If an error occurs during the crew's execution.
+    Notes:
+        - The function uses the clean_output function to remove special characters from the generated
+        title and summary.
+        - The crew is set up with a maximum of 10 interactions per minute.
+        - The function prints the result of the crew's execution, the generated title, and the generated
+        summary.
+    """
     title_agent = Agent(
         role="Title Generator",
-        goal=f"Generate a catchy and SEO-friendly title for a weekly music blog post. The post is about the top artists and albums listened to this week, {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}. Do not exceed 70 characters or use special characters, quotes or emojis.",
+        goal=f"Generate a catchy and SEO-friendly title for a weekly music blog post. The post is about the top artists and albums listened to this week, {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}. Do not exceed 70 characters or use special characters such a :, -, |, quotes or emojis.",
         backstory="You are an expert in creating creative, engaging and SEO-optimized titles for blog posts. Your titles should grab the reader's attention and include relevant keywords.",
         verbose=True,
         max_inter=1,
@@ -218,7 +257,7 @@ def generate_title_and_summary(date_str_start, week_number, top_artists, top_alb
 
     title_task = Task(
         description=f"Generate a title for a weekly music blog post featuring the top artists: {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}.",
-        expected_output="A catchy and SEO-friendly title for the blog post. Do not exceed 70 characters or use special characters, quotes or emojis.",
+        expected_output="A catchy and SEO-friendly title for the blog post. Do not exceed 70 characters or use special characters such a :, -, |, quotes or emojis.",
         max_inter=1,
         tools=[],
         agent=title_agent,
@@ -247,8 +286,9 @@ def generate_title_and_summary(date_str_start, week_number, top_artists, top_alb
         full_output=True,
     )
 
-    title = clean_output(result['tasks_outputs'][0].exported_output)
-    summary = clean_output(result['tasks_outputs'][1].exported_output)
+    result = crew.kickoff()
+    title = sanitize_text_output(result['tasks_outputs'][0].exported_output)
+    summary = sanitize_text_output(result['tasks_outputs'][1].exported_output)
 
     return title, summary
 ```
@@ -268,8 +308,29 @@ Next up we have the crew that researched the albums I listened to one by one ...
 
 {{< terminal title="The Album Research Crew" >}}
 ```python
-def kickoff_crew(album):
-    """Kickoff the crew to generate a blog post section for a given album."""
+def research_an_album(album):
+    """
+    Research an album and generate a blog post section using a crew of agents.
+    This function takes an album name as input and kicks off a crew of agents to research the album
+    and generate a well-structured blog post section. The crew consists of a single "Music Research"
+    agent with a specific goal and backstory. The agent is assigned a task to search for details about
+    the album and write an informative and engaging blog post section in markdown format.
+    Args:
+        album (str): The name of the album to research and write about.
+    Returns:
+        str: The generated blog post section about the album in markdown format.
+    Raises:
+        AgentError: If an error occurs during the agent's execution of the task.
+        TaskError: If an error occurs while processing the task.
+        CrewError: If an error occurs during the crew's execution.
+    Notes:
+        - The agent uses search and web tools (search_tool and web_tool) to gather information about the album.
+        - The generated blog post section should be well-organized, easy to read, and in markdown format.
+        - The section should be no more than 800 words and include relevant emojis.
+        - The agent is limited to a single interaction (max_inter=1) to generate the content.
+        - The crew is set up with sequential processing and a maximum of 10 interactions per minute.
+        - The function returns the full output of the crew's execution, which includes the generated blog post section.    
+    """
     blogger = Agent(
         role="Music Research",
         goal=f"You are a Music lover and are going to be writing sections of a blog post containing information on the albums you have listed to this week. One the albums you listened to is '{album}'. Find a good summary of '{album}' which can be used to write the blog post.",
@@ -306,7 +367,7 @@ This was called by a for loop which contained details of the album ...
     blog_post_sections = []
 
     for album in topics:
-        result = kickoff_crew(album)
+        result = research_an_album(album)
         print(result)
         output_str = result['final_output']
         blog_post_sections.append(output_str)
