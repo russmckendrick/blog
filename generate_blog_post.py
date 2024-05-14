@@ -273,15 +273,25 @@ def research_an_album(album):
     """
     blogger = Agent(
         role="Music Research",
-        goal=f"You are a Music lover and are going to be writing sections of a blog post containing information on the albums you have listed to this week. One the albums you listened to is '{album}'. Find a good summary of '{album}' which can be used to write the blog post.",
-        backstory=f"You are an expert music Blogger on Internet. Include details on the album '{album}', artist and any other interesting facts you can find. You have a passion for music of all genres and you are excited to share your thoughts with the world.",
+        goal=f"""You are a Music lover and are going to be writing sections of a blog post
+            containing information on the albums you have listed to this week. One the albums
+            you listened to is '{album}'. Find a good summary of '{album}' which can be used
+            to write the blog post.""",
+        backstory=f"""You are an expert music Blogger on Internet. Include details on the album
+            '{album}', artist and any other interesting facts you can find. You have a passion
+            for music of all genres and you are excited to share your thoughts with the world.""",
         verbose=True,
         max_inter=1,
     )
 
     task_blog_post = Task(
-        description=f"Search for details about the album '{album}'. Your final answer MUST be a consolidated content that can be as a section of a blog post. This content should be well organized, and should be very easy to read. You must provide a 800 word section for a blog post.",
-        expected_output=f"Write a well structured section for a blog post on '{album}'. A comprehensive section on '{album}' in markdown format - do not use any H1 headers, only H2 and below, add lots of relevant emojis and make it no more than 800 words.",
+        description=f"""Search for details about the album '{album}'. Your final answer MUST be a
+            consolidated content that can be as a section of a blog post. This content should be
+            well organized, and should be very easy to read. You must provide a 800 word section
+            for a blog post.""",
+        expected_output=f"""Write a well structured section for a blog post on '{album}'. A comprehensive
+            section on '{album}' in markdown format - do not use any H1 headers, only H2 and below, add
+            lots of relevant emojis and make it no more than 800 words.""",
         max_inter=1,
         tools=[search_tool, web_tool],
         agent=blogger)
@@ -333,15 +343,24 @@ def generate_title_and_summary(date_str_start, week_number, top_artists, top_alb
     """
     title_agent = Agent(
         role="Title Generator",
-        goal=f"Generate a catchy and SEO-friendly title for a weekly music blog post. The post is about the top artists and albums listened to this week, {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}. Do not exceed 70 characters or use special characters such a :, -, |, quotes or emojis.",
-        backstory="You are an expert in creating creative, engaging and SEO-optimized titles for blog posts. Your titles should grab the reader's attention and include relevant keywords.",
+        goal=f"""Generate a catchy and SEO-friendly title for a weekly music blog
+            post. The post is about the top artists and albums listened to this week, 
+            {', '.join([artist for artist, _ in top_artists])} and top albums: 
+            {', '.join([album for (_, album), _ in top_albums])}. Do not exceed 70 
+            characters or use special characters such a :, -, |, quotes or emojis.""",
+        backstory="""You are an expert in creating creative, engaging and SEO-optimized
+            titles for blog posts. Your titles should grab the reader's attention and
+            include relevant keywords.""",
         verbose=True,
         max_inter=1,
     )
 
     title_task = Task(
-        description=f"Generate a title for a weekly music blog post featuring the top artists: {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}.",
-        expected_output="A catchy and SEO-friendly title for the blog post. Do not exceed 70 characters or use special characters such a :, -, |, quotes or emojis.",
+        description=f"""Generate a title for a weekly music blog post featuring the
+            top artists: {', '.join([artist for artist, _ in top_artists])} and top albums:
+            {', '.join([album for (_, album), _ in top_albums])}.""",
+        expected_output="""A catchy and SEO-friendly title for the blog post. Do not
+            exceed 70 characters or use special characters such a :, -, |, quotes or emojis.""",
         max_inter=1,
         tools=[],
         agent=title_agent,
@@ -349,15 +368,23 @@ def generate_title_and_summary(date_str_start, week_number, top_artists, top_alb
 
     summary_agent = Agent(
         role="Summary Generator",
-        goal=f"Generate a concise and SEO-friendly summary for a weekly music blog post. The post is about the top artists and albums listened to in week {week_number} starting from {date_str_start}.",
-        backstory="You are an expert in creating informative and SEO-optimized summaries for blog posts. Your summaries should provide a brief overview of the post's content and include relevant keywords.",
+        goal=f"""Generate a concise and SEO-friendly summary for a weekly music blog post.
+            The post is about the top artists and albums listened to in week {week_number}
+            starting from {date_str_start}.""",
+        backstory="""You are an expert in creating informative and SEO-optimized summaries for
+            blog posts. Your summaries should provide a brief overview of the post's content 
+            and include relevant keywords.""",
         verbose=True,
         max_inter=1,
     )
 
     summary_task = Task(
-        description=f"Generate a summary for a weekly music blog post featuring the top artists: {', '.join([artist for artist, _ in top_artists])} and top albums: {', '.join([album for (_, album), _ in top_albums])}.",
-        expected_output="A concise and SEO-friendly summary for the blog post. It shouldn't be more than 180 characters and it should NOT use special characters such a :, -, |,  quotes or emojis.",
+        description=f"""Generate a summary for a weekly music blog post featuring the top artists:
+            {', '.join([artist for artist, _ in top_artists])} and top albums: 
+            {', '.join([album for (_, album), _ in top_albums])}.""",
+        expected_output="""A concise and SEO-friendly summary for the blog post. It shouldn't be 
+            more than 180 characters and it should NOT use special characters such a :, -, |, 
+            quotes or emojis.""",
         max_inter=1,
         tools=[],
         agent=summary_agent,
