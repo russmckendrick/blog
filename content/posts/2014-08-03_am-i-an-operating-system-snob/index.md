@@ -1,6 +1,6 @@
 ---
 title: "Am I an Operating System snob?"
-description: "As an experienced Linux user, I explore my operating system preferences and the factors that have led me to primarily use CentOS on my servers. The post discusses the pros and cons of Fedora, Ubuntu, and other distros, and how newer tools like Docker and Puppet are changing the importance of the underlying OS."
+description: "As an experienced Linux user, I discuss why I prefer CentOS for my servers, comparing it to Fedora and Ubuntu."
 author: "Russ Mckendrick"
 date: 2014-08-03T11:00:00.000Z
 lastmod: 2021-07-31T12:31:47+01:00

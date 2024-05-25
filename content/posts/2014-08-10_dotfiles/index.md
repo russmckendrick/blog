@@ -1,6 +1,6 @@
 ---
 title: "Dotfiles"
-description: "In this post, the author shares his approach to managing dotfiles, the hidden configuration files that customize the user's computing environment. The author discusses his previous experiences with pre-built dotfile collections and explains how he has forked the 'Bashstrap' project to create his own customized dotfile setup. The post includes instructions for installing the author's dotfiles and highlights some of the key features and functionalities they provide."
+description: "Learn how to manage dotfiles to customize your computing environment using with pre-built collections and forking Bashstrap."
 author: "Russ Mckendrick"
 date: 2014-08-10T11:00:00.000Z
 lastmod: 2021-07-31T12:31:49+01:00

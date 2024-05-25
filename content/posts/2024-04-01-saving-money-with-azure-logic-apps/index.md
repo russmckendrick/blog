@@ -2,7 +2,7 @@
 title: "Saving money with Azure Logic Apps"
 author: "Russ McKendrick"
 date: 2024-04-01T11:30:00+01:00
-description: "Discover how Azure Logic Apps can help you save money by automating tasks like stopping and starting Virtual Machines and Application Gateways. This post provides a step-by-step guide on deploying Logic Apps and walks through the workflows for cost-saving automations, ensuring your Azure resources only run when needed."
+description: "Discover how Azure Logic Apps save you money by automating tasks like stopping and starting VMs and App Gateways. Follow this step-by-step guide to deploy cost-saving automation efficiently."
 draft: false
 showToc: true
 cover:

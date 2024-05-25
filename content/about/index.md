@@ -6,6 +6,7 @@ disableShare: true
 hidemeta: true
 hideSummary: true
 ShowBreadCrumbs: false
+description: "Hi! I’m Russ, an IT professional with 25 years of experience in DevOps and system administration. I’m passionate about Linux, open-source systems, automation, and containers."
 ---
 
 # Hi there {{< inline src="images/wave.gif" alt="Hello there" height="50px" >}}, my name is Russ
