@@ -9,6 +9,8 @@ cover:
     relative: false
 tags:
     - "Vinyl"
+aliases:
+    - "/2023/12/11/what-did-i-listen"
 ---
 
 {{< notice note >}}
