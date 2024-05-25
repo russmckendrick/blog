@@ -11,6 +11,8 @@ cover:
     relative: false
 tags:
     - "Vinyl"
+aliases:
+    - "/2024/04/22/what-did-i-listen-to-in-week-15/"
 ---
 
 {{< notice note >}}
