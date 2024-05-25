@@ -2,6 +2,7 @@
 title: "What did I listen to in week 23?"
 date: "2023-06-12"
 draft: false
+robotsNoIndex: true
 Summary: James has been the soundtrack to my daily routine, according to LastFM data. Their melodious allure and harmonious rhythms have weaved themselves into my life
 cover:
     image: "/img/weekly-tunes-015.png"

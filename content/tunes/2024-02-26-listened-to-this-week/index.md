@@ -2,6 +2,7 @@
 title: "What did I listen to in week 07?"
 date: "2024-02-26"
 draft: false
+robotsNoIndex: true
 summary: "Relive the electrifying magic of The Who, where legendary riffs meet timeless anthems!"
 cover:
     image: "/img/weekly-tunes-002.png"

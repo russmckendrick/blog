@@ -2,6 +2,7 @@
 title: "What did I listen to in week 02?"
 date: "2024-01-22"
 draft: false
+robotsNoIndex: true
 summary: "Embrace the rhythmic chaos of Carter the Unstable Sex Machine, where punk meets electronic wit!"
 cover:
     image: "/img/weekly-tunes-009.png"

@@ -5,6 +5,7 @@ date: "2024-05-13"
 description: "Discover top tracks from U2, Paul Simon, Cake, and more in our latest music roundup. Dive into hits from albums like Graceland and The Unforgettable Fire."
 draft: false
 showToc: true
+robotsNoIndex: true
 cover:
     image: "/img/weekly-tunes-013.png"
     relative: false

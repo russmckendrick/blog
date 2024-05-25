@@ -2,6 +2,7 @@
 title: "What did I listen to in week 09?"
 date: "2024-03-11"
 draft: false
+robotsNoIndex: true
 summary: "Embark on an electrifying journey with Amplifier, where innovative riffs meet expansive soundscapes!"
 cover:
     image: "/img/weekly-tunes-002.png"

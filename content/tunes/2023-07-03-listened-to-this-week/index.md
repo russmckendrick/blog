@@ -2,6 +2,7 @@
 title: "What did I listen to in week 26?"
 date: "2023-07-03"
 draft: false
+robotsNoIndex: true
 summary: "Pixies top my playlist with their rebellious rhythms, providing an anthem of solace. LastFM data reveals a personal obsession."
 cover:
     image: "/img/weekly-tunes-008.png"

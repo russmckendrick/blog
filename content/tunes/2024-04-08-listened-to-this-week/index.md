@@ -5,6 +5,7 @@ date: "2024-04-08"
 description: "Explore week 13s top hits from Dr. Feelgood, The Who, and others, featuring albums like Mellon Collie and Songs From the Big Chair."
 draft: false
 showToc: true
+robotsNoIndex: true
 cover:
     image: "/img/weekly-tunes-007.png"
     relative: false

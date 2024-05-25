@@ -4,6 +4,7 @@ author: "Russ McKendrick"
 date: "{{ date }}"
 description: "{{ summary }}"
 draft: false
+robotsNoIndex: true
 showToc: true
 cover:
     image: "/img/weekly-tunes-{{ random_number }}.png"

@@ -2,6 +2,7 @@
 title: "What did I listen to in week 44?"
 date: "2023-11-06"
 draft: false
+robotsNoIndex: true
 summary: "Embrace the eclectic sounds of Cardiacs, where punk meets progressive rock and whimsical vibes collide! Their dynamic rhythm will leave you captivated!"
 cover:
     image: "/img/weekly-tunes-008.png"

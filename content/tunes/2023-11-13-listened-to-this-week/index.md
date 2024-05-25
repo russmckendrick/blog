@@ -2,6 +2,7 @@
 title: "What did I listen to in week 45?"
 date: "2023-11-13"
 draft: false
+robotsNoIndex: true
 summary: "Experience the rebellious spirit of The Who through their timeless tunes. Their lyrical adventures and captivating melodies will resonate with your inner rock fan!"
 cover:
     image: "/img/weekly-tunes-004.png"

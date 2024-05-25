@@ -2,6 +2,7 @@
 title: "What did I listen to in week 11?"
 date: "2024-03-25"
 draft: false
+robotsNoIndex: true
 summary: "Journey into the progressive rock realm with Marillion, where intricate melodies meet sonic experimentation!"
 cover:
     image: "/img/weekly-tunes-004.png"

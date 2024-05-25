@@ -2,6 +2,7 @@
 title: "What did I listen to in week 41?"
 date: "2023-10-16"
 draft: false
+robotsNoIndex: true
 summary: "Experience the flamboyant world of glam rock with Roxy Music. Their captivating blend of bold style and avant-garde compositions will leave you captivated!"
 cover:
     image: "/img/weekly-tunes-022.png"
