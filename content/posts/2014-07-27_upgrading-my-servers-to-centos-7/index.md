@@ -36,7 +36,7 @@ Invalid command ‘RackAutoDetect’, perhaps misspelled or defined by a module 
 
 This was due to the presence of RackAutoDetect Off and RailsAutoDetect Off in the puppet_passenger.conf.erb file. Once these two lines were removed everything worked.
 
-The final script can be [found here](https://github.com/russmckendrick/puppet-install/blob/master/install-el7)
+The final script can be [found here](https://github.com/russmckendrick/puppet-install/blob/master/install)
 
 #### Puppet Configuration
 
@@ -53,7 +53,7 @@ The rest of the packages and configuration worked as expected.
 This time I tried the Puppet Agent install script, it worked first time;
 
 [code gutter=”false”]
-curl -fsS [https://raw2.github.com/russmckendrick/puppet-install/master/agent-el7](https://raw2.github.com/russmckendrick/puppet-install/master/agent-el7) | bash -s puppet.master.com
+curl -fsS [https://raw.githubusercontent.com/russmckendrick/puppet-install/master/agent](https://raw.githubusercontent.com/russmckendrick/puppet-install/master/agent) | bash -s puppet.master.com
 [/code]
 
 Once I had Puppet installed I ran puppet agent — test and was greeted with lots of NGINX errors, but thats all. Everything else worked as expected.

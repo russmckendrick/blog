@@ -57,7 +57,7 @@ databaseserver:
 
 In the example above when fig up is run in the same directory as the fig.yml it will launch two containers and link them together.
 
-In the [terminal session](https://asciinema.org/a/11845) below you can see that I launch an NGINX Proxy (more on that later in this post), and then used fig to launch a [web container](https://registry.hub.docker.com/u/russmckendrick/nginx-php/) and [database container](https://registry.hub.docker.com/u/russmckendrick/mariadb/), the web container runs a simple PHP script which prints the containers IP address to the screen. Once the containers are up and running I then scale the web containers up to 5 containers and then back down to a single container.
+In the [terminal session](https://asciinema.org/a/11845) below you can see that I launch an NGINX Proxy (more on that later in this post), and then used fig to launch a [web container](https://github.com/russmckendrick/docker/pkgs/container/php7) and [database container](https://github.com/russmckendrick/docker/pkgs/container/mariadb), the web container runs a simple PHP script which prints the containers IP address to the screen. Once the containers are up and running I then scale the web containers up to 5 containers and then back down to a single container.
 
 ![asciicast](/img/2014-08-31_docker-fig-nginx-reverse-proxies-and-centos-7_2.png)
 
@@ -107,7 +107,7 @@ The [terminal session](https://asciinema.org/a/11845) in the previous section of
 
 Previously I had been using @garethr’s [Puppet Module](https://forge.puppetlabs.com/garethr/docker) to manage and deploy my containers alongside a NGINX reverse proxy on the host machine. While this worked fine, it did seem a little overkill cerry on using Puppet to manage my containers if I was going to be using Fig.
 
-After consulting the all knowing Google I stumbled across [Jason Wilder’s blog post](http://jasonwilder.com/blog/2014/03/25/automated-nginx-reverse-proxy-for-docker/) about how to configure an Automated Nginx Reverse Proxy for Docker. It seemed like the perfect solution to the problem I was having so I ported his [Dockerfile](https://github.com/jwilder/nginx-proxy) to run using my own [base build](https://registry.hub.docker.com/u/russmckendrick/base/) and then pushed it as a [trusted build](https://registry.hub.docker.com/u/russmckendrick/nginx-proxy/).
+After consulting the all knowing Google I stumbled across [Jason Wilder’s blog post](http://jasonwilder.com/blog/2014/03/25/automated-nginx-reverse-proxy-for-docker/) about how to configure an Automated Nginx Reverse Proxy for Docker. It seemed like the perfect solution to the problem I was having so I ported his [Dockerfile](https://github.com/jwilder/nginx-proxy) to run using my own [base build](https://github.com/russmckendrick/docker/pkgs/container/base) and then pushed it as a [trusted build](https://github.com/russmckendrick/docker/pkgs/container/nginx).
 
 This means that with a single command …..
 

@@ -23,7 +23,7 @@ aliases:
 
 Now the dev team at [work](https://reconnix.com) have moved over to using Docker we decided to have some fun.
 
-An internal system we use is based on [Drupal7](https://www.drupal.org/drupal-7.0), the development version of the site has a [NGINX / PHP 5.4 container](https://registry.hub.docker.com/u/russmckendrick/nginx-php/) running in front of it. We have been hearing alot about [HHVM](http://hhvm.com) so why not try building a container and seeing if it our codebase works?
+An internal system we use is based on [Drupal7](https://www.drupal.org/drupal-7.0), the development version of the site has a [NGINX / PHP 5.4 container](https://github.com/russmckendrick/docker/pkgs/container/php7) running in front of it. We have been hearing alot about [HHVM](http://hhvm.com) so why not try building a container and seeing if it our codebase works?
 
 First off, as I prefer to use [CentOS](/2014/08/03/operating-system-snob/), I needed to find a way of getting HHVM installed which wouldn’t take hours (a build from source can notoriously take hours) as I was on the clock. Luckily for me someone had [pushed a package](https://copr.fedoraproject.org/coprs/no1youknowz/hhvm-repo/) to [Copr](https://copr.fedoraproject.org/coprs/) meaning I could do a yum install and quickly adapt the [Dockerfile](http://docs.docker.com/reference/builder/) I already had in place for PHP 5.4 changing it from ….
 

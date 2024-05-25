@@ -54,7 +54,7 @@ source ~/.bashrc
 
 and thats it, we can now use fig, nsenter and docker-enter as the “core” & “root” users.
 
-Next up is to add our [NGINX proxy](https://registry.hub.docker.com/u/russmckendrick/nginx-proxy/), rather than use fig for this I will use systemd;
+Next up is to add our [NGINX proxy](https://github.com/russmckendrick/docker/pkgs/container/nginx), rather than use fig for this I will use systemd;
 
 ```
 sudo curl -o /etc/systemd/system/nginx-proxy.service https://raw.githubusercontent.com/russmckendrick/coreos/master/nginx-proxy.service
