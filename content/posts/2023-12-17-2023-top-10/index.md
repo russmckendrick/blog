@@ -214,7 +214,7 @@ The album also explores the realms of pure ambience in tracks like "Why Can You 
 
 Overall, "Prism" is described as an uplifting and positive album, blending musical ambience, songwriting substance, and sample-based humor. It's an album that's not just for sitting back and relaxing, but also encourages the listener to get up and dance, reflecting The Orb's reputation as the post-rave therapy of choice for generations of clubbers.
 
-For a more detailed exploration of the album, you can refer to the reviews from [PopMatters](https://www.popmatters.com/the-orb-prism-album-review), [Joey Beltdrives](https://joeybeltdrives.com/album-review-the-orb-prism-released-april-28th-2023/), [AllMusic](https://www.allmusic.com/album/prism-mw0004100933), [musicOMH](https://www.musicomh.com/reviews/albums/the-orb-prism), and [The Arts Desk](https://www.theartsdesk.com/new-music/album-orb-prism)."
+For a more detailed exploration of the album, you can refer to the reviews from [PopMatters](https://www.popmatters.com/the-orb-prism-album-review), [Joey Beltdrives](https://joeybeltdrives.com/the-orb-prism/), [AllMusic](https://www.allmusic.com/album/prism-mw0004100933), [musicOMH](https://www.musicomh.com/reviews/albums/the-orb-prism), and [The Arts Desk](https://www.theartsdesk.com/new-music/album-orb-prism)."
 
 ## Version Girl - Rhoda Dakar  ([](https://www.mckendrick.rocks/albums/version-girl-27220650/))
 
