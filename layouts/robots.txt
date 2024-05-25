@@ -4,6 +4,6 @@ Disallow:
 {{- else }}
 Disallow: *?readmore
 Disallow: *?source
-Disallow: */?responses
+Disallow: *?responses
 {{- end }}
 Sitemap: {{ "sitemap.xml" | absURL }}
