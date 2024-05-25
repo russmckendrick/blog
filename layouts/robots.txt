@@ -2,8 +2,8 @@ User-agent: *
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 Disallow:
 {{- else }}
-Disallow: /
-{{- end }}
-Sitemap: {{ "sitemap.xml" | absURL }}
 Disallow: *?readmore
 Disallow: *?source
+Disallow: */?responses
+{{- end }}
+Sitemap: {{ "sitemap.xml" | absURL }}
