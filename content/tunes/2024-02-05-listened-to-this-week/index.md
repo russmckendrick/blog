@@ -2,6 +2,7 @@
 title: "What did I listen to in week 04?"
 date: "2024-02-05"
 draft: false
+robotsNoIndex: true
 summary: "Immerse yourself in the symphonic rock magic of Electric Light Orchestra, where classical arrangements meet rock rhythms!"
 
 (Note: The LastFM data mentioned is assumed as a given context for this piece of creative writing.)"

@@ -2,6 +2,7 @@
 title: "What did I listen to in week 52?"
 date: "2024-01-01"
 draft: false
+robotsNoIndex: true
 summary: "Experience the melodic magic of Deacon Blue, where stirring lyrics meet captivating rhythms!"
 cover:
     image: "/img/weekly-tunes-007.png"

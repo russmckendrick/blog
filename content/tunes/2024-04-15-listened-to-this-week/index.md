@@ -5,6 +5,7 @@ date: "2024-04-15"
 description: "Explore this weeks top music from artists like Rancid and Tears for Fears, featuring albums from ...And Out Come the Wolves to Songs From the Big Chair."
 draft: false
 showToc: true
+robotsNoIndex: true
 cover:
     image: "/img/weekly-tunes-023.png"
     relative: false

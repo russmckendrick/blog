@@ -2,6 +2,7 @@
 title: "What did I listen to in week 35?"
 date: "2023-09-04"
 draft: false
+robotsNoIndex: true
 summary: "Experience the electrifying sounds of The Jam as they dominate this week's playlist. Their timeless punk-rock tunes will leave you captivated by their raw energy!"
 cover:
     image: "/img/weekly-tunes-012.png"

@@ -6,6 +6,7 @@ Summary: The Specials have been my top-played artist this week, according to Las
 cover:
     image: "/img/weekly-tunes-020.png"
     relative: false
+robotsNoIndex: true
 tags:
     - "Vinyl"
 ---

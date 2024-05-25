@@ -2,6 +2,7 @@
 title: "What did I listen to in week 46?"
 date: "2023-11-20"
 draft: false
+robotsNoIndex: true
 summary: "Embark on a nostalgic journey with The Beatles. Their timeless melodies and lyrical brilliance will resonate with your inner music lover!"
 cover:
     image: "/img/weekly-tunes-018.png"

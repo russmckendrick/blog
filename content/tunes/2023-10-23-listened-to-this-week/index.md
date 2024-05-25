@@ -2,6 +2,7 @@
 title: "What did I listen to in week 42?"
 date: "2023-10-23"
 draft: false
+robotsNoIndex: true
 summary: "Explore the innovative sounds of Devo, where new wave meets synth-driven brilliance. Their catchy tunes and clever lyrics will resonate with your inner new wave enthusiast!"
 cover:
     image: "/img/weekly-tunes-007.png"

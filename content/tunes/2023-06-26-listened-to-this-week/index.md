@@ -2,6 +2,7 @@
 title: "What did I listen to in week 25?"
 date: "2023-06-26"
 draft: false
+robotsNoIndex: true
 summary: "George Harrison's sublime melodies ruled my speakers this week! "
 cover:
     image: "/img/weekly-tunes-009.png"

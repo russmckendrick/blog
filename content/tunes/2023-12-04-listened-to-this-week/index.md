@@ -2,6 +2,7 @@
 title: "What did I listen to in week 48?"
 date: "2023-12-04"
 draft: false
+robotsNoIndex: true
 summary: "Explore the genre-defying brilliance of Faith No More, where rock meets funk and experimental beats collide!"
 cover:
     image: "/img/weekly-tunes-021.png"

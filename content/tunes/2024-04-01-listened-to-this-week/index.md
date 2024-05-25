@@ -5,6 +5,7 @@ date: "2024-04-01"
 description: "Explore week 12s top music featuring artists from Orchestral Manoeuvres in the Dark to Alice in Chains and albums like Souvenir to Jar of Flies."
 draft: false
 showToc: true
+robotsNoIndex: true
 cover:
     image: "/img/weekly-tunes-020.png"
     relative: false

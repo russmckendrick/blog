@@ -5,6 +5,7 @@ date: "2024-04-29"
 description: "Explore this weeks top music hits featuring Eagles, Blur, Kim Gordon, and albums like Parklife and The Collective."
 draft: false
 showToc: true
+robotsNoIndex: true
 cover:
     image: "/img/weekly-tunes-017.png"
     relative: false
