@@ -11,6 +11,7 @@ cover:
     relative: false
 tags:
     - "Vinyl"
+
 ---
 
 {{< notice note >}}

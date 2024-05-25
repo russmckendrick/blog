@@ -9,6 +9,8 @@ cover:
     relative: false
 tags:
     - "Vinyl"
+aliases:
+    - "/2023/06/19/what-did-i-listen-to-in-week-25/"
 ---
 
 {{< notice note >}}
