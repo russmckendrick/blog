@@ -62,6 +62,12 @@
   {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}
   {{- end }}
+
+  {{- if (.Param "ShowRelated") }}
+  {{- partial "related.html" . }}
+  {{- end }}
+  
+
 </article>
 
 {{- end }}{{/* end main */}}

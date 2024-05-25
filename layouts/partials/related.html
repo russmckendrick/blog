@@ -1,14 +1,24 @@
-{{ $related := first 3 (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
-{{ with $related }}
-  <div class="related">
-    <h3 class="see-also">Related Posts ...</h3>
-    <ul>
+<section class="related-posts">
+  {{ $related := first 4 (where (where (where .Site.RegularPages "Section" "posts") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+  {{ with $related }}
+    <h2>{{ i18n "related_posts" }}</h2>
+    <div class="related-posts-grid {{ if lt (len $related) 4 }}less-than-four{{ end }}">
       {{ range . }}
-        <li>
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        </li>
+        <div class="related-post">
+          <a href="{{ .Permalink }}">
+            {{- if .Params.cover.image }}
+            {{- $alt := (.Params.cover.alt | default .Params.cover.caption | plainify) }}
+            {{- $cover := (.Page.Resources.ByType "image").GetMatch (printf "*%s*" (.Params.cover.image)) }}
+            {{- if $cover -}}
+                <img loading="lazy" src="{{ $cover.Permalink }}" alt="{{ $alt }}" class="cover-image"/>
+            {{- else }}
+                <img loading="lazy" src="{{ (.Params.cover.image) | absURL }}" alt="{{ $alt }}" class="cover-image"/>
+            {{- end }}
+            {{- end }}
+            <h3>{{ .Title }}</h3>
+          </a>
+        </div>
       {{ end }}
-    </ul>
-  </div>
-  <br>
-{{ end }}
+    </div>
+  {{ end }}
+</section>
