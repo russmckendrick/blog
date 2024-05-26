@@ -2,6 +2,7 @@
 title: "What did I listen to in week 39?"
 date: "2023-10-02"
 draft: false
+ShowRelated: false
 summary: "Immerse yourself in the timeless allure of Depeche Mode's synth-pop masterpieces. Their captivating rhythms will leave you captivated!"
 robotsNoIndex: true
 cover:

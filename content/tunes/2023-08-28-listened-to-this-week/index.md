@@ -3,6 +3,7 @@ title: "What did I listen to in week 34?"
 date: "2023-08-28"
 draft: false
 robotsNoIndex: true
+ShowRelated: false
 summary: "Explore the captivating narratives of Rhiannon Giddens, where folk meets blues and country. Her emotional melodies and striking lyrics will leave you captivated!"
 cover:
     image: "/img/weekly-tunes-014.png"

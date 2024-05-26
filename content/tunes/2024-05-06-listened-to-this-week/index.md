@@ -6,6 +6,7 @@ description: "Explore week 17s top music hits, featuring artists like Pink Floyd
 draft: false
 showToc: true
 robotsNoIndex: true
+ShowRelated: false
 cover:
     image: "/img/weekly-tunes-003.png"
     relative: false

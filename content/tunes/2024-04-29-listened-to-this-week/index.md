@@ -6,6 +6,7 @@ description: "Explore this weeks top music hits featuring Eagles, Blur, Kim Gord
 draft: false
 showToc: true
 robotsNoIndex: true
+ShowRelated: false
 cover:
     image: "/img/weekly-tunes-017.png"
     relative: false

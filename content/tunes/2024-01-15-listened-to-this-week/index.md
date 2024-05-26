@@ -3,6 +3,7 @@ title: "What did I listen to in week 01?"
 date: "2024-01-15"
 draft: false
 robotsNoIndex: true
+ShowRelated: false
 summary: "Embrace the rhythmic fusion of electronic music, where layered textures meet infectious beats!"
 cover:
     image: "/img/weekly-tunes-011.png"

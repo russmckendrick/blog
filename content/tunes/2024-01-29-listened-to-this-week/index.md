@@ -3,6 +3,7 @@ title: "What did I listen to in week 03?"
 date: "2024-01-29"
 draft: false
 robotsNoIndex: true
+ShowRelated: false
 summary: "Explore the quirky brilliance of They Might Be Giants, where catchy melodies meet cerebral lyrics and innovative charm!"
 cover:
     image: "/img/weekly-tunes-016.png"

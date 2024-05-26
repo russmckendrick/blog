@@ -6,6 +6,7 @@ description: "Explore this weeks top music hits from U2, Pearl Jam, and more fea
 draft: false
 showToc: true
 robotsNoIndex: true
+ShowRelated: false
 cover:
     image: "/img/weekly-tunes-023.png"
     relative: false

@@ -6,6 +6,7 @@ description: "Explore week 13s top hits from Dr. Feelgood, The Who, and others, 
 draft: false
 showToc: true
 robotsNoIndex: true
+ShowRelated: false
 cover:
     image: "/img/weekly-tunes-007.png"
     relative: false
