@@ -4,6 +4,7 @@ date: "2023-05-29"
 draft: false
 Summary: Diving into the eclectic rhythm universe, Easy Star All-Stars dominated my soundtrack with their unique reggae/dub spin on classic albums, becoming my most played artist this week.
 robotsNoIndex: true
+ShowRelated: false
 cover:
     image: "/img/weekly-tunes-010.png"
     relative: false

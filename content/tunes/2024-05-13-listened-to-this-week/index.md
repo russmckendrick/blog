@@ -6,6 +6,7 @@ description: "Discover top tracks from U2, Paul Simon, Cake, and more in our lat
 draft: false
 showToc: true
 robotsNoIndex: true
+ShowRelated: false
 cover:
     image: "/img/weekly-tunes-013.png"
     relative: false

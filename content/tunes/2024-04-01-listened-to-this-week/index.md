@@ -6,6 +6,7 @@ description: "Explore week 12s top music featuring artists from Orchestral Manoe
 draft: false
 showToc: true
 robotsNoIndex: true
+ShowRelated: false
 cover:
     image: "/img/weekly-tunes-020.png"
     relative: false

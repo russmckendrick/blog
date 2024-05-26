@@ -6,6 +6,7 @@ description: "Explore this weeks top music hits featuring artists like Bruce Spr
 draft: false
 showToc: true
 robotsNoIndex: true
+ShowRelated: false
 cover:
     image: "/img/weekly-tunes-019.png"
     relative: false

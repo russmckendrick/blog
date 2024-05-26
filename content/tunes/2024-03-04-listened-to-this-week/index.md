@@ -3,6 +3,7 @@ title: "What did I listen to in week 08?"
 date: "2024-03-04"
 draft: false
 robotsNoIndex: true
+ShowRelated: false
 summary: "Relive the timeless magic of The Beatles, where iconic anthems meet enduring melodies!"
 cover:
     image: "/img/weekly-tunes-015.png"

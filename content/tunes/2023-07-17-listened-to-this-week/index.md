@@ -3,6 +3,7 @@ title: "What did I listen to in week 28?"
 date: "2023-07-17"
 draft: false
 robotsNoIndex: true
+ShowRelated: false
 summary: "The Stranglers' rhythms have been my soundtrack this week, according to LastFM data. Their unique sound has woven a vibrant tapestry of rock n' roll into my daily life."
 cover:
     image: "/img/weekly-tunes-005.png"

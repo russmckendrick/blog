@@ -6,6 +6,7 @@ description: "Explore this weeks top music from artists like Rancid and Tears fo
 draft: false
 showToc: true
 robotsNoIndex: true
+ShowRelated: false
 cover:
     image: "/img/weekly-tunes-023.png"
     relative: false

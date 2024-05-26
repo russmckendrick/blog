@@ -3,6 +3,7 @@ title: "What did I listen to in week 43?"
 date: "2023-10-30"
 draft: false
 robotsNoIndex: true
+ShowRelated: false
 summary: "Discover the enchanting blend of synth-pop and ethereal melodies in CHVRCHES' music. Their captivating harmonies will leave you captivated!"
 cover:
     image: "/img/weekly-tunes-022.png"

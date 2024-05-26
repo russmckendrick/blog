@@ -6,6 +6,7 @@ description: "{{ summary }}"
 draft: false
 robotsNoIndex: true
 showToc: true
+ShowRelated: false
 cover:
     image: "/img/weekly-tunes-{{ random_number }}.png"
     relative: false

@@ -3,6 +3,7 @@ title: "What did I listen to in week 27?"
 date: "2023-07-10"
 draft: false
 robotsNoIndex: true
+ShowRelated: false
 summary: "Prefab Sprout's soundscape captivated me this week, with their eclectic melodies ruling my playlist. Their artistic genius is undeniable."
 cover:
     image: "/img/weekly-tunes-017.png"

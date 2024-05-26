@@ -3,6 +3,7 @@ title: "What did I listen to in week 06?"
 date: "2024-02-19"
 draft: false
 robotsNoIndex: true
+ShowRelated: false
 summary: "Pure Reason Revolution's aural tapestry captivated my musical journey this week! "
 cover:
     image: "/img/weekly-tunes-016.png"

@@ -3,6 +3,7 @@ title: "What did I listen to in week 49?"
 date: "2023-12-11"
 draft: false
 robotsNoIndex: true
+ShowRelated: false
 summary: "Embark on an indie-pop journey with Stars, where their celestial melodies will captivate your senses!"
 cover:
     image: "/img/weekly-tunes-006.png"

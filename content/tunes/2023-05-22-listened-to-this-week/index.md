@@ -3,7 +3,7 @@ title: "What did I listen to in week 20?"
 date: "2023-05-22"
 draft: false
 summary: "Immersing myself in a world of post-punk melancholy, this week was dominated by the haunting, yet captivating tunes of The Cure. LastFM data confirms this immersion, crowning them as my most played artist. Their signature blend of moody lyricism and gothic rock provided the soundtrack to my week."
-robotsNoIndex: true
+robotsNoIndex: trueShowRelated: false
 cover:
     image: "/img/weekly-tunes-018.png"
     relative: false
