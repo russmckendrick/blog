@@ -75,7 +75,7 @@ CMD [“/usr/local/bin/run”]
 
 ![docker-success_x7gdrq](/img/2014-11-09_an-experiment-with-docker-hhvm_1.jpg)
 
-…. yep, it just worked. Within 30 minutes we had decided to try HHVM, built a [Docker Image](https://registry.hub.docker.com/u/russmckendrick/nginx-hhvm/) and put it in-front of our codebase.
+…. yep, it just worked. Within 30 minutes we had decided to try HHVM, built a Docker Image and put it in-front of our codebase.
 
 Due to actually needing to get on with some work we could not do much in-depth testing and simply put the PHP 5.4 container back in front of the codebase.
 
