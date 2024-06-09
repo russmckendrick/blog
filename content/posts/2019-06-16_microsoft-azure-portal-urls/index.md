@@ -45,6 +45,10 @@ Going to [https://aad.portal.azure.com/](https://aad.portal.azure.com/) takes yo
 
 ### Azure Resource Explorer
 
+{{< notice warning >}}
+Update 06/2024 - Please note, this service, while functional, is giving a certificate error so please use it with caution.
+{{< /notice >}}
+
 The next portal is quite impressive, going to [https://resources.azure.com/](https://resources.azure.com/) takes you to the resource explorer, this is an interface to the Azure management API;
 
 ![](/img/2019-06-16_microsoft-azure-portal-urls_2.png)

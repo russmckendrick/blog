@@ -44,7 +44,7 @@ sh <(curl -s https://install.openshift.com/) # See notes below before answering 
 reboot
 ```
 
-So, the problem I was having with is that by default oo_install assumes you are running [Fedora 19](http://fedoraproject.org/en/about-fedora) and populates repos_base with [http://mirror.openshift.com/pub/origin-server/release/3/fedora-19/](http://mirror.openshift.com/pub/origin-server/release/3/fedora-19/) what [the install instructions](http://openshift.github.io/documentation/oo_install_users_guide.html) fail to say is that you need to replace this with [http://mirror.openshift.com/pub/origin-server/release/3/rhel-6](http://mirror.openshift.com/pub/origin-server/release/3/rhel-6) when prompted about the subscription configuration oo_install will use for the deployment.
+So, the problem I was having with is that by default oo_install assumes you are running [Fedora 19](http://fedoraproject.org/) and populates repos_base with [http://mirror.openshift.com/pub/origin-server/release/3/fedora-19/](http://mirror.openshift.com/pub/origin-server/release/3/fedora-19/) what [the install instructions](http://openshift.github.io/documentation/oo_install_users_guide.html) fail to say is that you need to replace this with [http://mirror.openshift.com/pub/origin-server/release/3/rhel-6](http://mirror.openshift.com/pub/origin-server/release/3/rhel-6) when prompted about the subscription configuration oo_install will use for the deployment.
 
 You can view the output of a full oo_install run through [listed in this Gist](https://gist.github.com/russmckendrick/7ee0e73912a29d5cea47).
 

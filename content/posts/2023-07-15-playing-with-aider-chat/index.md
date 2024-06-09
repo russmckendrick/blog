@@ -379,4 +379,4 @@ if __name__ == '__main__':
 
 As you can see Aider is is simple to use and I suspect is way more powerful than I have shown here, I am going to spend some more time playing with it and see what else it can do.
 
-If you want to learn more about Aider Chat, you can more examples [here](https://aider.chat/examples/) and a GitHub repo containing the code and full chat history I generated for this post [here](https://github.com/russmckendrick/aider-blog-post).
+If you want to learn more about Aider Chat, you can more examples [here](https://aider.chat/examples/README.html) and a GitHub repo containing the code and full chat history I generated for this post [here](https://github.com/russmckendrick/aider-blog-post).
