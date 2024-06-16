@@ -35,6 +35,6 @@ What you'll learn:
 
 This practical learning resource is perfect for system administrators, developers, and infrastructure engineers who want to streamline their workflows and save time by automating repetitive tasks. Technology professionals working with public cloud platforms will also benefit from the book's in-depth coverage of automating deployments on AWS and Azure. 🌐☁️
 
-{{< gallery match="images/cover_image_large.jpg" sortOrder="assc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}<br>
+![Cover image of the book 'Learn Ansible' by Russ McKendrick, 2nd edition, featuring a photograph of a modern bridge against a blue sky. The book focuses on automating cloud infrastructure, security configuration, and application deployment using Ansible, published by Packt.](images/cover_image_large.jpg)
 
 Don't miss this opportunity to master Ansible and take your deployments to the next level! Pre-order your copy today and be among the first to receive the book upon its release in late May. 📚💨
