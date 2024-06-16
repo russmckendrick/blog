@@ -1,5 +1,5 @@
 ---
-title: "Day to Days Tools, the 2024 edition"
+title: "Day to Day Tools, the 2024 edition"
 author: "Russ McKendrick"
 date: 2024-06-16T14:53:40+01:00
 description: "Day-to-day tools for a macOS user in 2024: Visual Studio Code, Sublime Text, Paste, 1Password, and more. Discover essential desktop, terminal, and online services for productivity."
