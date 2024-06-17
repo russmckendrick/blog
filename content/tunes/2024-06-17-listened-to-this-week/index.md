@@ -248,40 +248,6 @@ Bowie supported "Earthling" with a vigorous touring schedule, bringing the album
 
 🎧 For those who have yet to experience this audacious album, "Earthling" is a must-listen, encapsulating the daring spirit of one of music’s greatest icons.
 
-## 🎶 Exploring 'Premier Hits' by Gary Numan 🎹
-
-Gary Numan, a trailblazer in the synth-pop and electronic music genres, has captivated audiences since his rise to fame in the late 1970s. His unique sound, characterized by heavy synthesizer hooks and futuristic themes, has cemented his status as a pioneer in the music industry. Among his numerous projects, 'Premier Hits' stands out as a definitive compilation that showcases the best of Numan’s illustrious career.
-
-### 🌟 The Genesis of 'Premier Hits'
-
-Released for the first time on vinyl on August 14th, 'Premier Hits' is not just an album but a journey through the evolution of Gary Numan's music. This double LP is a meticulously curated selection of tracks that span his early hits as well as gems from his later years. Each song is a reminder of Numan's ability to evolve and adapt his style, making him a lasting figure in the music scene.
-
-### 📀 What's Inside 'Premier Hits'?
-
-While the album includes many of Numan's well-known tracks, it also offers fans a chance to experience his musical transformations. From the groundbreaking chart-topper "Cars" to other significant tracks like "Are Friends Electric?"—which originally skyrocketed Numan and his band Tubeway Army to fame—each track is a piece of the puzzle that is Gary Numan's career.
-
-The album's production, handled largely by Numan himself, features a blend of intense electronic sounds and deep, introspective lyrics. The cover design by Steve Webbon and photography by Geoff Howes visually echo the themes of innovation and introspection that are hallmarks of Numan's work.
-
-### 🎧 Legacy and Influence
-
-Gary Numan's influence on the music industry is profound. His fearless experimentation with new sounds and technologies not only defined a genre but also inspired a generation of musicians and producers. By integrating electronic music with thematic depth, Numan opened the door for artists to explore new realms of musical expression.
-
-'Premier Hits' is more than just a collection of songs; it's a historical document that highlights the peaks of Numan's career. For new listeners, it serves as a perfect introduction to his work, and for long-time fans, it is a nostalgic reminder of his musical genius.
-
-### 🌐 Gary Numan: More Than Just Music
-
-Beyond his music, Gary Numan is a fascinating character with a story that adds depth to his artistic output. Born as Gary Anthony James Webb in 1958 in West London, Numan's journey into music was as transformative personally as it was professionally. His early days with Tubeway Army marked the beginning of what would become a revolutionary career.
-
-### 💖 For Fans and Newcomers Alike
-
-Whether you're a die-hard Numan fan or a newcomer to his music, 'Premier Hits' offers something for everyone. Its release on vinyl not only catifies it as a collector's item but also as a testament to the enduring appeal of vinyl records in the digital age. Listening to this album is like taking a master class in the history of electronic music—from its nascent early days to its sophisticated, contemporary iterations.
-
-### 🎤 Conclusion: A Timeless Collection
-
-'Premier Hits' by Gary Numan is not just an album; it's an essential piece of music history. Its significance is amplified by Numan's pioneering role in the electronic and synth-pop music landscape. This album encapsulates a pivotal moment in music history and continues to inspire and entertain music lovers around the world.
-
-🌌 Dive into 'Premier Hits' and experience the power of Gary Numan's musical legacy—a journey that is as intellectually engaging as it is emotionally resonant.
-
 ## Top Artists (Week 23)
 
 - [Sparks](https://www.mckendrick.rocks/artist/sparks/) (24 plays)
@@ -292,8 +258,6 @@ Whether you're a die-hard Numan fan or a newcomer to his music, 'Premier Hits' o
 - [John Grant](https://www.mckendrick.rocks/artist/john-grant/) (11 plays)
 - [Stars](https://www.mckendrick.rocks/artist/stars/) (11 plays)
 - [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (9 plays)
-- [Gary Numan](https://www.mckendrick.rocks/artist/gary-numan/) (2 plays)
-
 
 ## Top Albums (Week 23)
 
@@ -301,11 +265,9 @@ Whether you're a die-hard Numan fan or a newcomer to his music, 'Premier Hits' o
 - [Terraformer](https://www.mckendrick.rocks/albums/terraformer-13732222/) by Thank You Scientist
 - [As It Ever Was, So It Will Be Again](https://www.mckendrick.rocks/albums/as-it-ever-was-so-it-will-be-again-30976879/) by The Decemberists
 - [Lateralus](https://www.mckendrick.rocks/albums/lateralus-10315855/) by Tool
-- Born in the U.S.A. by Bruce Springsteen
+- [Born in the U.S.A.](https://www.mckendrick.rocks/albums/born-in-the-u-s-a-30957880/) by Bruce Springsteen
 - [The Art Of The Lie](https://www.mckendrick.rocks/albums/the-art-of-the-lie-30947866/) by John Grant
 - [The Five Ghosts](https://www.mckendrick.rocks/albums/the-five-ghosts-2332240/) by Stars
 - [Earthling](https://www.mckendrick.rocks/albums/earthling-7781493/) by David Bowie
-- [Premier Hits](https://www.mckendrick.rocks/albums/premier-hits-7341798/) by Gary Numan
-
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}
