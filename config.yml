@@ -51,7 +51,7 @@ params:
   ShowShareButtons: true
   showtoc: false
   tocopen: false
-  ShowRelated: true
+  ShowRelated: false
 
   assets:
     disableHLJS: true
