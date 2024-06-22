@@ -1,5 +1,5 @@
 ---
-title: "About me"
+# title: "About me"
 url: "/about"
 comments: false
 disableShare: true
@@ -9,7 +9,7 @@ ShowBreadCrumbs: false
 description: "Hi! I’m Russ, an IT professional with 25 years of experience in DevOps and system administration. I’m passionate about Linux, open-source systems, automation, and containers."
 ---
 
-# Hi there {{< inline src="images/wave.gif" alt="Hello there" height="50px" >}}, my name is Russ
+# Hi there {{< inline src="images/wave.gif" alt="Hello there" height="50px" >}}, my name is Russ.
 
 Hello! I'm Russ, an IT professional with a strong background in DevOps and system administration. I've spent the last 25 years working in various IT roles across multiple industries. I have a deep passion for Linux, open-source systems, automation, and containers. I currently serve as the Practice Manager of SRE & DevOps at [Node4](https://www.node4.co.uk/), managing projects across public and private clouds.
 
