@@ -1,5 +1,5 @@
 ---
-# title: "About me"
+title: "About me"
 url: "/about"
 comments: false
 disableShare: true
