@@ -1,0 +1,107 @@
+{{- $rawUrl := (.Get 0) -}}
+{{- $url := urls.Parse $rawUrl -}}
+{{- $result := resources.GetRemote $rawUrl -}}
+{{- if $result.Err -}}
+    {{- warnf "%s" $result.Err -}}
+    <div class="link-preview-card link-preview-error">
+        <div class="link-preview-content">
+            <div class="link-preview-title">Not Found</div>
+            <p>{{ $url.Host }}</p>
+        </div>
+    </div>
+{{- else -}}
+    {{- $headContent := index (findRE "<head>(.|\n)*?</head>" $result.Content) 0 -}}
+    {{- $metaData := findRE "<meta\\s+[^>]*>" $headContent -}}
+    {{- $linkData := findRE "<link\\s+[^>]*>" $headContent -}}
+    {{- $title := "" -}}
+    {{- $description := "" -}}
+    {{- $image := "" -}}
+    {{- $faviconUrl := "" -}}
+    {{- $manifestUrl := "" -}}
+
+    {{- range $meta := $metaData -}}
+        {{- $name := replaceRE "<.*?name=\"([^\"]*)\".*?>" "$1" $meta -}}
+        {{- $property := replaceRE "<.*?property=\"([^\"]*)\".*?>" "$1" $meta -}}
+        {{- $content := replaceRE "<.*?content=\"([^\"]*)\".*?>" "$1" $meta -}}
+        {{- if or (eq $property "og:title") (and (eq $title "") (eq $name "title")) -}}
+            {{- $title = $content -}}
+        {{- else if or (eq $name "zenn:description") (eq $property "og:description") (and (eq $description "") (eq $name "description")) -}}
+            {{- $description = $content -}}
+        {{- else if or (eq $name "zenn:image") (eq $property "og:image") (and (eq $image "") (eq $name "image")) -}}
+            {{- $image = $content -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- range $link := $linkData -}}
+        {{- if or (findRE "rel=\"icon\"" $link) (findRE "rel=\"shortcut icon\"" $link) -}}
+            {{- if eq $faviconUrl "" -}}
+                {{- $faviconUrl = replaceRE ".*href=\"([^\"]*)\".*" "$1" $link -}}
+            {{- end -}}
+        {{- else if findRE "rel=\"manifest\"" $link -}}
+            {{- $manifestUrl = replaceRE ".*href=\"([^\"]*)\".*" "$1" $link -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- if $manifestUrl -}}
+        {{- $manifest := resources.GetRemote $manifestUrl -}}
+        {{- if and (not $manifest.Err) ($manifest.Content | jsonify) -}}
+            {{- $json := $manifest.Content | jsonify -}}
+            {{- if $json.icons -}}
+                {{- $maxIcon := index $json.icons 0 -}}
+                {{- $maxSize := 0 -}}
+                {{- range $json.icons -}}
+                    {{- $sizes := split .sizes "x" -}}
+                    {{- if eq (len $sizes) 2 -}}
+                        {{- $width := int (index $sizes 0) -}}
+                        {{- $height := int (index $sizes 1) -}}
+                        {{- $size := mul $width $height -}}
+                        {{- if gt $size $maxSize -}}
+                            {{- $maxSize = $size -}}
+                            {{- $maxIcon = . -}}
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
+                {{- $faviconUrl = $maxIcon.src -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- if eq $faviconUrl "" -}}
+        {{- $baseFaviconUrl := printf "%s://%s" $url.Scheme $url.Host -}}
+        {{- $faviconUrls := slice (printf "%s/favicon.svg" $baseFaviconUrl) (printf "%s/favicon.png" $baseFaviconUrl) (printf "%s/favicon.ico" $baseFaviconUrl) -}}
+        {{- range $faviconUrls -}}
+            {{- $faviconUrl = . -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- $imageQuality := default 80 $.Site.Params.imageQuality -}}
+    {{- $thumbnail_url := "" -}}
+    {{- if $image -}}
+        {{- with $thumbnail := resources.GetRemote $image -}}
+            {{- if $thumbnail.Err -}}
+                {{- warnf "%s" $thumbnail.Err -}}
+            {{- else -}}
+                {{- $thumbnail_url = ($thumbnail.Fit (printf "800x400 center q%d webp" $imageQuality)).Permalink -}}
+            {{- end -}}
+        {{- end -}}
+    {{- else -}}
+        {{- $thumbnail := resources.Get $.Site.Params.defaultNoimage -}}
+        {{- $thumbnail_url = ($thumbnail.Fit (printf "800x400 center q%d webp" $imageQuality)).Permalink -}}
+    {{- end -}}
+
+    <a href="{{- $url.String -}}" class="link-preview-card">
+        <div class="link-preview-image-container">
+            <img src="{{- $thumbnail_url -}}" alt="" class="link-preview-image">
+        </div>
+        <div class="link-preview-content">
+            <div class="link-preview-title">{{- $title -}}</div>
+            <p class="link-preview-description">
+                {{- $description | plainify | safeHTML -}}
+            </p>
+            <div class="link-preview-meta">
+                <img src="{{ $faviconUrl }}" alt="favicon" class="link-preview-favicon">
+                <span class="link-preview-domain">{{ $url.Host }}</span>
+            </div>
+        </div>
+    </a>
+{{- end -}}
