@@ -1,4 +1,5 @@
 {{- $rawUrl := (.Get 0) -}}
+{{- $noImage := .Get 1 -}}
 {{- $url := urls.Parse $rawUrl -}}
 {{- $result := resources.GetRemote $rawUrl -}}
 {{- if $result.Err -}}
@@ -90,16 +91,18 @@
     {{- end -}}
 
     <a href="{{- $url.String -}}" class="link-preview-card">
-        <div class="link-preview-image-container">
-            <img src="{{- $thumbnail_url -}}" alt="" class="link-preview-image">
-        </div>
+        {{- if ne $noImage "noimage" -}}
+            {{- if $thumbnail_url -}}
+                <div class="link-preview-image-container">
+                    <img src="{{- $thumbnail_url -}}" alt="" class="link-preview-image no-zoom">
+                </div>
+            {{- end -}}
+        {{- end -}}
         <div class="link-preview-content">
             <div class="link-preview-title">{{- $title -}}</div>
-            <p class="link-preview-description">
-                {{- $description | plainify | safeHTML -}}
-            </p>
+            <p class="link-preview-description">{{- $description | plainify | safeHTML -}}</p>
             <div class="link-preview-meta">
-                <img src="{{ $faviconUrl }}" alt="favicon" class="link-preview-favicon">
+                <img src="{{ $faviconUrl }}" alt="favicon" class="link-preview-favicon no-zoom">
                 <span class="link-preview-domain">{{ $url.Host }}</span>
             </div>
         </div>
