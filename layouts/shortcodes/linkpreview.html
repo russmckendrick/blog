@@ -86,8 +86,11 @@
             {{- end -}}
         {{- end -}}
     {{- else -}}
-        {{- $thumbnail := resources.Get $.Site.Params.defaultNoimage -}}
-        {{- $thumbnail_url = ($thumbnail.Fit (printf "800x400 center q%d webp" $imageQuality)).Permalink -}}
+        {{- with $thumbnail := resources.Get $.Site.Params.defaultNoimage -}}
+            {{- if $thumbnail -}}
+                {{- $thumbnail_url = ($thumbnail.Fit (printf "800x400 center q%d webp" $imageQuality)).Permalink -}}
+            {{- end -}}
+        {{- end -}}
     {{- end -}}
 
     <a href="{{- $url.String -}}" class="link-preview-card">
@@ -99,8 +102,8 @@
             {{- end -}}
         {{- end -}}
         <div class="link-preview-content">
-            <div class="link-preview-title">{{- $title -}}</div>
-            <p class="link-preview-description">{{- $description | plainify | safeHTML -}}</p>
+            <div class="link-preview-title">{{- $title | htmlUnescape -}}</div>
+            <p class="link-preview-description">{{- $description | plainify | htmlUnescape | safeHTML -}}</p>
             <div class="link-preview-meta">
                 <img src="{{ $faviconUrl }}" alt="favicon" class="link-preview-favicon no-zoom">
                 <span class="link-preview-domain">{{ $url.Host }}</span>
