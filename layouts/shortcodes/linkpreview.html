@@ -67,11 +67,21 @@
         {{- end -}}
     {{- end -}}
 
-    {{- if eq $faviconUrl "" -}}
-        {{- $baseFaviconUrl := printf "%s://%s" $url.Scheme $url.Host -}}
-        {{- $faviconUrls := slice (printf "%s/favicon.svg" $baseFaviconUrl) (printf "%s/favicon.png" $baseFaviconUrl) (printf "%s/favicon.ico" $baseFaviconUrl) -}}
-        {{- range $faviconUrls -}}
-            {{- $faviconUrl = . -}}
+    {{- $baseFaviconUrl := printf "%s://%s" $url.Scheme $url.Host -}}
+    {{- $faviconUrls := slice $faviconUrl (printf "%s/favicon.ico" $baseFaviconUrl) (printf "%s/favicon.png" $baseFaviconUrl) (printf "%s/apple-touch-icon.png" $baseFaviconUrl) -}}
+
+    {{- $validFaviconUrl := "" -}}
+    {{- range $potentialFavicon := $faviconUrls -}}
+        {{- if and (ne $potentialFavicon "") (ne $potentialFavicon "/favicon.ico") -}}
+            {{- $absoluteFaviconUrl := $potentialFavicon -}}
+            {{- if not (hasPrefix $potentialFavicon "http") -}}
+                {{- $absoluteFaviconUrl = printf "%s%s" $baseFaviconUrl $potentialFavicon -}}
+            {{- end -}}
+            {{- $faviconResource := resources.GetRemote $absoluteFaviconUrl -}}
+            {{- if and $faviconResource (not $faviconResource.Err) -}}
+                {{- $validFaviconUrl = $absoluteFaviconUrl -}}
+                {{- break -}}
+            {{- end -}}
         {{- end -}}
     {{- end -}}
 
@@ -105,8 +115,10 @@
             <div class="link-preview-title">{{- $title | htmlUnescape -}}</div>
             <p class="link-preview-description">{{- $description | plainify | htmlUnescape | safeHTML -}}</p>
             <div class="link-preview-meta">
-                <img src="{{ $faviconUrl }}" alt="favicon" class="link-preview-favicon no-zoom">
-                <span class="link-preview-domain">{{ $url.Host }}</span>
+                {{- if $validFaviconUrl -}}
+                    <img src="{{ $validFaviconUrl }}" alt="favicon" class="link-preview-favicon no-zoom" onerror="this.style.display='none'">
+                {{- end -}}
+                <span class="link-preview-domain">&nbsp;&nbsp;{{ $url.Host }}</span>
             </div>
         </div>
     </a>
