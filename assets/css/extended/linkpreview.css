@@ -28,14 +28,12 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Highlight start */
 .link-preview-image-container {
   width: 100%;
   overflow: hidden;
   padding: 0 16px; /* Adjust this value to bring the image in from the sides */
   box-sizing: border-box;
 }
-/* Highlight end */
 
 .link-preview-image {
   width: 100%;
@@ -77,6 +75,7 @@
   width: 16px;
   height: 16px;
   display: block;
+  padding: 1px; /* Added padding around the favicon */
 }
 
 .link-preview-domain {
