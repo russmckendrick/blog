@@ -1,5 +1,5 @@
 ---
-title: "Azure DevOps Ansible Pipeline Updated; Boosting Efficiency with Caching"
+title: "Azure DevOps Ansible Pipeline; Boosting Efficiency with Caching"
 author: "Russ McKendrick"
 date: 2024-06-28T14:24:15+01:00
 description: "Discover how to optimize your Azure DevOps Ansible pipeline with caching techniques. Learn to reduce execution time, improve efficiency, and maintain security checks in your infrastructure as code deployments."
@@ -13,6 +13,8 @@ tags:
   - "devops"
   - "azure"
   - "infrastructure-as-code"
+aliases:
+    - "/2024/06/28/azure-devops-ansible-pipeline-updated-boosting-efficiency-with-caching/"
 ---
 
 Back in May 2020 I published what would be one of the more popular posts on this blog [Azure DevOps Ansible Pipeline](/2020/05/10/azure-devops-ansible-pipeline/), it covered the Azure DevOps pipeline I had settled upon for running my Ansible playbooks which built and interacted with workloads running in [Microsoft Azure](/tags/azure/).
