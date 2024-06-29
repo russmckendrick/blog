@@ -19,9 +19,9 @@ aliases:
 
 Back in May 2020 I published what would be one of the more popular posts on this blog [Azure DevOps Ansible Pipeline](/2020/05/10/azure-devops-ansible-pipeline/), it covered the Azure DevOps pipeline I had settled upon for running my Ansible playbooks which built and interacted with workloads running in [Microsoft Azure](/tags/azure/).
 
-Fast forward four years, I updated the pipeline for Chapter 15 of the second edition of [Learn Ansible](https://www.packtpub.com/en-us/product/learn-ansible-9781835088913); this version of the pipeline, which is covered in detail in the book, can be found in the repo linked below;
+Fast forward four years, I updated the pipeline for Chapter 15 of the second edition of [Learn Ansible](https://www.packtpub.com/en-gb/product/learn-ansible-9781835088913); this version of the pipeline, which is covered in detail in the book, can be found in the repo linked below;
 
-{{< linkpreview "https://github.com/PacktPublishing/Learn-Ansible-Second-Edition/blob/main/Chapter15/azure-pipelines.yml" "noimage" >}}
+{{< linkpreview "https://github.com/PacktPublishing/Learn-Ansible-Second-Edition/blob/main/Chapter15/azure-pipelines.yml" >}}
 
 After the book was published, it occurred to me that something was missing from the pipeline, and that is caching !!!
 
@@ -214,12 +214,12 @@ You can find the full code below:
 
 You can buy the second edition of Learn Ansible from the link below:
 
-{{< linkpreview "https://www.packtpub.com/en-gb/product/learn-ansible-9781835088913" "noimage" >}}
+{{< linkpreview "https://www.packtpub.com/en-gb/product/learn-ansible-9781835088913" >}}
 
 Read the original blog post here:
 
-{{< linkpreview "https://www.russ.foo/2020/05/10/azure-devops-ansible-pipeline/" "noimage" >}}
+{{< linkpreview "https://www.russ.foo/2020/05/10/azure-devops-ansible-pipeline/" >}}
 
 Find out more on the `Cache@2` task at:
 
-{{< linkpreview "https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/cache-v2?view=azure-pipelines" "noimage" >}}
+{{< linkpreview "https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/cache-v2?view=azure-pipelines" >}}
