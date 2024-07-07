@@ -6,14 +6,14 @@ disableShare: true
 hidemeta: true
 hideSummary: true
 ShowBreadCrumbs: false
-description: "Hi! I’m Russ, an IT professional with 25 years of experience in DevOps and system administration. I’m passionate about Linux, open-source systems, automation, and containers."
+description: "Hi! I’m Russ, an IT professional with 30 years of experience in DevOps and system administration. I’m passionate about Linux, open-source systems, automation, and containers."
 ---
 
 # Hi there {{< inline src="images/wave.gif" alt="Hello there" height="50px" >}}, my name is Russ.
 
-Hello! I'm Russ, an IT professional with a strong background in DevOps and system administration. I've spent the last 25 years working in various IT roles across multiple industries. I have a deep passion for Linux, open-source systems, automation, and containers. I currently serve as the Practice Manager of SRE & DevOps at [Node4](https://www.node4.co.uk/), managing projects across public and private clouds.
+Hello! I'm Russ, an IT professional with a strong background in DevOps and system administration. I've spent the last 30 years working in various IT roles across multiple industries. I have a deep passion for Linux, open-source systems, automation, and containers. I currently serve as the Practice Manager of SRE & DevOps at [Node4](https://www.node4.co.uk/), managing projects across public and private clouds.
 
-Apart from my work, I have written and contributed to twelve books primarily revolving around container technologies and automation. In my downtime, I enjoy expanding my [vinyl record collection](https://www.mckendrick.rocks/).
+Apart from my work, I have written and contributed to thirteen books primarily revolving around container technologies and automation. In my downtime, I enjoy expanding [my vinyl record collection](https://www.mckendrick.rocks/).
 
 ## Publications 📚
 
@@ -59,5 +59,5 @@ Here is where you can find me online ...
 
 {{< svg_button name="Last.fm" textColor="white" bgColor="#D51007" borderColor="#D51007" url="https://www.last.fm/user/RussMckendrick" svgPath="M10.584 17.21l-.88-2.392s-1.43 1.594-3.573 1.594c-1.897 0-3.244-1.649-3.244-4.288 0-3.382 1.704-4.591 3.381-4.591 2.42 0 3.189 1.567 3.849 3.574l.88 2.749c.88 2.666 2.529 4.81 7.285 4.81 3.409 0 5.718-1.044 5.718-3.793 0-2.227-1.265-3.381-3.63-3.931l-1.758-.385c-1.21-.275-1.567-.77-1.567-1.595 0-.934.742-1.484 1.952-1.484 1.32 0 2.034.495 2.144 1.677l2.749-.33c-.22-2.474-1.924-3.492-4.729-3.492-2.474 0-4.893.935-4.893 3.932 0 1.87.907 3.051 3.189 3.601l1.87.44c1.402.33 1.869.907 1.869 1.704 0 1.017-.99 1.43-2.86 1.43-2.776 0-3.93-1.457-4.59-3.464l-.907-2.75c-1.155-3.573-2.997-4.893-6.653-4.893C2.144 5.333 0 7.89 0 12.233c0 4.18 2.144 6.434 5.993 6.434 3.106 0 4.591-1.457 4.591-1.457z" >}}
 
-{{< svg_button name="Email" textColor="white" bgColor="#8B89CC" borderColor="#8B89CC" url="mailto:me@russ.foo" svgPath="M12 20.351s-1.096-.108-1.955-.705c-.86-.596-6.58-4.688-6.58-4.688v8.098S3.513 24 4.55 24h14.9c1.036 0 1.085-.942 1.085-.942v-8.1s-5.723 4.092-6.58 4.69c-.86.595-1.955.704-1.955.704zm0-20.35S4.925-.23 3.465 7.623v5.35s.06.572 1.67 1.735c1.607 1.162 5.773 4.436 6.867 4.436 1.088 0 5.254-3.273 6.865-4.437 1.607-1.164 1.668-1.737 1.668-1.737V7.62C19.075-.229 12 .003 12 .003zm4.846 10.536h-9.69V7.623C8.14 3.723 12 3.67 12 3.67s3.863.054 4.846 3.954z" >}}
+{{< svg_button name="Email" textColor="white" bgColor="#8B89CC" borderColor="#8B89CC" url="mailto:web.site@mckendrick.email" svgPath="M12 20.351s-1.096-.108-1.955-.705c-.86-.596-6.58-4.688-6.58-4.688v8.098S3.513 24 4.55 24h14.9c1.036 0 1.085-.942 1.085-.942v-8.1s-5.723 4.092-6.58 4.69c-.86.595-1.955.704-1.955.704zm0-20.35S4.925-.23 3.465 7.623v5.35s.06.572 1.67 1.735c1.607 1.162 5.773 4.436 6.867 4.436 1.088 0 5.254-3.273 6.865-4.437 1.607-1.164 1.668-1.737 1.668-1.737V7.62C19.075-.229 12 .003 12 .003zm4.846 10.536h-9.69V7.623C8.14 3.723 12 3.67 12 3.67s3.863.054 4.846 3.954z" >}}
 {{< /center >}}
