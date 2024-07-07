@@ -18,7 +18,7 @@ This is a quick post collating some of the notes for KQL queries for Azure Virtu
 
 This query looks at the past 30 days, counting connections by username and client IP address, then sorts these counts in descending order, adds geolocation data for each IP, and finally outputs the client IP, connection count, and location details (country, state, and city) to provide insights into connection patterns and frequencies across different users and locations in the Windows Virtual Desktop environment.
 
-{{< terminal title="Find out all the IP addresses in the last 30 days" >}}
+{{< terminal title="Find out all the IP a ddresses in the last 30 days" >}}
 ```kql
 let daysAgo = 30d;
 WVDConnections
@@ -63,7 +63,7 @@ This query allows for targeted analysis of connection patterns for specific user
 
 {{< terminal title="Find out the IP addresses of where a user is connecting from" >}}
 ```
-let userSearch = "<replace with the UPN on the user>";
+let userSearch = "<replace with the UPN of a user>";
 let daysAgo = 30d;
 WVDConnections
 | where TimeGenerated > ago(daysAgo)
