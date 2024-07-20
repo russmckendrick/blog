@@ -23,7 +23,7 @@ The first of these posts [can be found here](/2023/05/22/what-did-i-listen-to-in
 
 The code to write this was very basic, there was a simple function that calls the OpenAI API ...
 
-{{< terminal title="Original GPT Function" >}}
+{{< ide title="Original GPT Function" lang="Python" >}}
 ```python
 def get_gpt3_text(prompt):
     completion = openai.ChatCompletion.create(
@@ -37,11 +37,11 @@ def get_gpt3_text(prompt):
     )
     return completion['choices'][0]['message']['content'].strip()
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 This function was then called with the following information which defined the instructions and then passed them to the function ...
 
-{{< terminal title="The Prompt" >}}
+{{< ide title="The Prompt" lang="Python" >}}
 ```python
 top_artist_summary = get_wiki_summary(top_artist + " band")
 chat_post_summary = f"According to LastFM data the artist I most played this week was {top_artist}. Can you write a short 50 word summary to say this. It is going to be used as a description for a blog post so should be descriptive and interesting."
@@ -57,7 +57,7 @@ gpt3_prompt = f"{chat_intro} {chat_top_artist_info} {chat_other_artists} {chat_d
 gpt3_summary = get_gpt3_text(chat_post_summary)
 gpt3_post = get_gpt3_text(gpt3_prompt) 
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 As you can see, I was getting information on the top artists, using Wikipedia and then passing everything to OpenAI to write the blog post, there is also code to pull down artist and album images from [mckendrick.rocks ](https://mckendrick.rocks/) - which is my other site that catalogs my record collection.
 
@@ -75,7 +75,7 @@ The [CrewAI website](https://www.crewai.com) describes the tool as ...
 
 ... which does sound a little far-fetched, but then I started looking at some of the example code and it VERY easy to read and understand, the code below is taken from the [documentation](https://docs.crewai.com/how-to/Creating-a-Crew-and-kick-it-off/) ...
 
-{{< terminal title="Creating the agents" >}}
+{{< ide title="Creating the agents" lang="Python" >}}
 ```python
 import os
 os.environ["SERPER_API_KEY"] = "Your Key"  # serper.dev API key
@@ -115,13 +115,13 @@ writer = Agent(
   allow_delegation=False
 )
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 As you can see, this is adding two agents, one who will research the subject `{topic}` and the other who will write about it. Both can access and search the internet using [Serper ](https://serper.dev). With the two agents defined you then need to create tasks ...
 
 
 
-{{< terminal title="Creating the tasks" >}}
+{{< ide title="Creating the tasks" lang="Python" >}}
 ```python
 from crewai import Task
 
@@ -152,11 +152,11 @@ write_task = Task(
   output_file='new-blog-post.md'  # Example of output customization
 )
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 Again, it easy to see what is happening here as each of the two tasks is assigned an agent and that expected output is being clearly defined. With the agents and tasks defined we can then assemble the crew ...
 
-{{< terminal title="Assembling the crew" >}}
+{{< ide title="Assembling the crew" lang="Python">}}
 ```python
 from crewai import Crew, Process
 
@@ -171,17 +171,17 @@ crew = Crew(
   share_crew=True
 )
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 Finally, we can then run the tasks ...
 
-{{< terminal title="Start the task" >}}
+{{< ide title="Start the task" lang="Python" >}}
 ```python
 # Starting the task execution process with enhanced feedback
 result = crew.kickoff(inputs={'topic': 'AI in healthcare'})
 print(result)
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 Running the code above, but using the topic of "AI in blogging" gave the following results ...
 
@@ -201,7 +201,7 @@ Running the code above, but using the topic of "AI in blogging" gave the followi
 
 I decided that I should have two separate crews in my code, the first will generate the post title and add an SEO-friendly description ...
 
-{{< terminal title="The Subject and Summary Crew" >}}
+{{< ide title="The Subject and Summary Crew" lang="Python" >}}
 ```python
 def sanitize_text_output(text):
     """
@@ -292,21 +292,21 @@ def generate_title_and_summary(date_str_start, week_number, top_artists, top_alb
 
     return title, summary
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 You might have noticed that I am passing the output through another function that removes some of the characters that would break the blog posts front-mater as I found that it generates something that would look something like `""My Blog Post""` and the `""` would break Hugo.
 
 This was called using ...
 
-{{< terminal title="Calling the function" >}}
+{{< ide title="Calling the function" lang="Python" >}}
 ```python
 title, summary = generate_title_and_summary(date_str_start, week_number, top_artists, top_albums)
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 Next up we have the crew that researched the albums I listened to one by one ...
 
-{{< terminal title="The Album Research Crew" >}}
+{{< ide title="The Album Research Crew" lang="Python" >}}
 ```python
 def research_an_album(album):
     """
@@ -357,11 +357,11 @@ def research_an_album(album):
     result = crew.kickoff()
     return result
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 This was called by a for loop which contained details of the album ...
 
-{{< terminal title="Calling the function" >}}
+{{< ide title="Calling the function" lang="Python" >}}
 ```python
     topics = [f"{album} by {artist}" for (artist, album), _ in top_albums]
     blog_post_sections = []
@@ -373,7 +373,7 @@ This was called by a for loop which contained details of the album ...
         blog_post_sections.append(output_str)
     blog_post = "\n\n".join(blog_post_sections)
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 This resulted in a BIG improvement to the size, quality and accuracy of the posts, I went through and updated all of April's posts and today's (6th May 2024) was also automatically generated:
 

@@ -39,7 +39,7 @@ All of the work to introduce caching happens in the Run Ansible stage of the pip
 
 Before we get there, though, a few additional variables are introduced at the top of the file. These are ...
 
-{{< terminal title="The Variables" >}}
+{{< ide title="The Variables" lang="YAML" >}}
 ```yaml
   - name: PATH_COLLECTION
     value: /home/vsts/.ansible/collections/ansible_collections/azure/azcollection
@@ -50,7 +50,7 @@ Before we get there, though, a few additional variables are introduced at the to
   - name: REQUIREMENTS_FILE_NAME
     value: requirements.txt
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 While they mainly deal with paths, the last one is important as the Azure Collection maintainers at Microsoft kindly changed the name of the requirements file we are using to install the Python modules we need for the pipeline to work. This changed the name of the requirements file, which broke all the builds I had that used it; thanks for that grrrrrrr 😠.
 
@@ -59,7 +59,7 @@ Also, as a bonus, should you ever need to update the cache, change the `CACHE_VE
 ### Set up the virtual environment.
 This task configures a virtual environment; this is important as we will be taking a copy of the virtual environment for future runs of the pipelines:
 
-{{< terminal title="Set up the virtual environment" >}}
+{{< ide title="Set up the virtual environment" lang="YAML" >}}
 ```yaml
           - task: Bash@3
             name: "setup_environment"
@@ -73,7 +73,7 @@ This task configures a virtual environment; this is important as we will be taki
                     pip install --upgrade pip
                 echo "##[endgroup]"
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 The next task is as per the original pipeline, which grabs a copy of the private and public SSH keys and then copies them to the host running the Azure DevOps agent.
 
@@ -81,7 +81,7 @@ The next task is as per the original pipeline, which grabs a copy of the private
 
 Next up, we have the `Cache@2` task; with this task, we both check to see if there is already an active cache and if there isn't, at the end of the pipeline run, a cache will be created will save us time and network bandwidth by caching files between pipeline runs.
 
-{{< terminal title="Check if there is an active cache" >}}
+{{< ide title="Check if there is an active cache" lang="YAML" >}}
 ```yaml
           - task: Cache@2
             name: "cache_venv"
@@ -91,7 +91,7 @@ Next up, we have the `Cache@2` task; with this task, we both check to see if the
               path: $(PATH_VENV)
               cacheHitVar: CACHE_RESTORED
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 The inputs needed for the task to run are;
 
@@ -107,7 +107,7 @@ The inputs needed for the task to run are;
 
 This next task is responsible for installing dependencies when the cache isn't available. 
 
-{{< terminal title="Install the requirements if there is no active cache" >}}
+{{< ide title="Install the requirements if there is no active cache" lang="YAML" >}}
 ```yaml
           - task: Bash@3
             name: "install_dependencies"
@@ -124,7 +124,7 @@ This next task is responsible for installing dependencies when the cache isn't a
                     pip freeze > $(PATH_VENV)/$(REQUIREMENTS_FILE_NAME)
                 echo "##[endgroup]"
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 Here's an explanation of what's happening:
 
@@ -145,7 +145,7 @@ This task ensures that all necessary dependencies are installed when the cache i
 
 This task is responsible for running the Ansible playbook and handling its output; there have been some changes to the task since the Learn Ansible version, these changes load the virtual environment and also confirm that the Azure modules are available:
 
-{{< terminal title="Run the Ansible Playbook" >}}
+{{< ide title="Run the Ansible Playbook" lang="YAML">}}
 ```yaml
           - task: Bash@3
             name: "ansible"
@@ -163,16 +163,13 @@ This task is responsible for running the Ansible playbook and handling its outpu
                       echo "$(SSH_PUBLIC_KEY)" > ~/.ssh/id_rsa.pub
                       chmod 644 ~/.ssh/id_rsa.pub
                   echo "##[endgroup]"
-  
                   echo "##[group]Verify Azure module installation"
                       source $(PATH_VENV)/bin/activate
                       python -c "import azure; print('Azure module is available')"
                   echo "##[endgroup]"
-  
                   echo "##[group]Run the Ansible Playbook"
                       ansible-playbook -i inv site.yml 2>&1 | tee $(System.DefaultWorkingDirectory)/ansible_output.log
                   echo "##[endgroup]"
-
                   echo "##[group]Create the markdown file for the Ansible Playbook Output"
                       mkdir -p $(System.DefaultWorkingDirectory)/markdown
                       echo "# Ansible Playbook Output" > $(System.DefaultWorkingDirectory)/markdown/summary.md
@@ -184,7 +181,7 @@ This task is responsible for running the Ansible playbook and handling its outpu
                       echo "</details>" >> $(System.DefaultWorkingDirectory)/markdown/summary.md
                   echo "##[endgroup]"
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 Let's take a deeper dive; as you can see, it uses the `Bash@3` task to execute a series of bash commands. The task begins by setting up Azure-related environment variables for authentication and disables Ansible host key checking for non-interactive execution.
 

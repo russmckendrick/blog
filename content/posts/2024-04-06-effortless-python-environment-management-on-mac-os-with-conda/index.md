@@ -49,7 +49,7 @@ conda init zsh
 
 This adds the following code to the end of `~/.zshrc`:
 
-{{< terminal title="Contents appended to ~/.zshrc" >}}
+{{< ide title="Contents appended to ~/.zshrc" >}}
 ```
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -66,7 +66,7 @@ fi
 unset __conda_setup
 # <<< conda initialize
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 I have already [updated my dotfiles](/2024/04/02/updating-my-dotfiles/) to include the above and also to use the [Powerline10k theme](https://github.com/romkatv/powerlevel10k) so it shows the Conda environment that is currently selected in my terminal:
 

@@ -1,0 +1,26 @@
+{{ $language := .Get "lang" | default "Plain Text" }}
+{{ $content := .Inner }}
+{{ $lines := split $content "\n" }}
+{{ $lineCount := len $lines }}
+{{ $charCount := len $content }}
+{{ $lineCount = sub $lineCount 4 }}
+
+
+<div class="ide-window">
+  <div class="ide-titlebar">
+    <div class="ide-buttons">
+      <span class="ide-button ide-close"></span>
+      <span class="ide-button ide-minimize"></span>
+      <span class="ide-button ide-maximize"></span>
+    </div>
+    <div class="ide-title">{{ with .Get "title" }}{{.}}{{ else }}untitled{{ end }}</div>
+  </div>
+  <div class="ide-content">
+    {{ .Inner | markdownify }}
+  </div>
+  <div class="ide-footer">
+    <span class="ide-info">Lines: {{ $lineCount }}</span>
+    <span class="ide-charcount">Chars: {{ $charCount }}</span>
+    <span class="ide-type">Language: {{ $language }}</span>
+  </div>
+</div>
