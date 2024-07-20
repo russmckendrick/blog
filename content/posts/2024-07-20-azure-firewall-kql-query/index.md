@@ -19,7 +19,7 @@ This is a quick post to share a useful KQL query for Azure Firewalls that I've b
 This query allows you to analyze Azure Firewall logs, focusing on specific source and destination IP addresses within a defined time range. It's particularly useful for troubleshooting and security analysis.
 
 {{< ide title="Azure Firewall Query with variables" lang="KQL" >}}
-```kql
+```kql {linenos=true}
 let timeAgo = 15m; // how far back to look in the logs
 let sourceIP = "192.168.0.1"; // the source IP address
 let targetIP = "10.0.0.1"; // the desination IP address

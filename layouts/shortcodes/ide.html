@@ -5,22 +5,21 @@
 {{ $charCount := len $content }}
 {{ $lineCount = sub $lineCount 4 }}
 
-
-<div class="ide-window">
-  <div class="ide-titlebar">
-    <div class="ide-buttons">
-      <span class="ide-button ide-close"></span>
-      <span class="ide-button ide-minimize"></span>
-      <span class="ide-button ide-maximize"></span>
-    </div>
-    <div class="ide-title">{{ with .Get "title" }}{{.}}{{ else }}untitled{{ end }}</div>
+<div class="terminal space shadow">
+  <div class="top">
+      <div class="btns">
+          <span class="circle red"></span>
+          <span class="circle yellow"></span>
+          <span class="circle green"></span>
+      </div>
+      <div class="title">{{ with .Get "title" }}{{.}}{{ else }}~{{ .Page.RelPermalink }}{{ end }}</div>
   </div>
-  <div class="ide-content">
-    {{ .Inner | markdownify }}
-  </div>
-  <div class="ide-footer">
+  <div class="ide-info-bar">
     <span class="ide-info">Lines: {{ $lineCount }}</span>
-    <span class="ide-charcount">Chars: {{ $charCount }}</span>
+    <span class="ide-charcount">Charaters: {{ $charCount }}</span>
     <span class="ide-type">Language: {{ $language }}</span>
+  </div>
+  <div class="terminalbody">
+      {{ .Inner | markdownify }}
   </div>
 </div>

@@ -24,7 +24,7 @@ The first of these posts [can be found here](/2023/05/22/what-did-i-listen-to-in
 The code to write this was very basic, there was a simple function that calls the OpenAI API ...
 
 {{< ide title="Original GPT Function" lang="Python" >}}
-```python
+```python {linenos=true}
 def get_gpt3_text(prompt):
     completion = openai.ChatCompletion.create(
         model='gpt-4-1106-preview',
@@ -42,7 +42,7 @@ def get_gpt3_text(prompt):
 This function was then called with the following information which defined the instructions and then passed them to the function ...
 
 {{< ide title="The Prompt" lang="Python" >}}
-```python
+```python {linenos=true}
 top_artist_summary = get_wiki_summary(top_artist + " band")
 chat_post_summary = f"According to LastFM data the artist I most played this week was {top_artist}. Can you write a short 50 word summary to say this. It is going to be used as a description for a blog post so should be descriptive and interesting."
 chat_intro = "Write a casual blog post which details what music I have been listening to this week. The blog post should be 1000 words long. Feel free to use emjois and markdown formatting to make the post more interesting."
@@ -76,7 +76,7 @@ The [CrewAI website](https://www.crewai.com) describes the tool as ...
 ... which does sound a little far-fetched, but then I started looking at some of the example code and it VERY easy to read and understand, the code below is taken from the [documentation](https://docs.crewai.com/how-to/Creating-a-Crew-and-kick-it-off/) ...
 
 {{< ide title="Creating the agents" lang="Python" >}}
-```python
+```python {linenos=true}
 import os
 os.environ["SERPER_API_KEY"] = "Your Key"  # serper.dev API key
 os.environ["OPENAI_API_KEY"] = "Your Key"
@@ -122,7 +122,7 @@ As you can see, this is adding two agents, one who will research the subject `{t
 
 
 {{< ide title="Creating the tasks" lang="Python" >}}
-```python
+```python {linenos=true}
 from crewai import Task
 
 # Research task
@@ -157,7 +157,7 @@ write_task = Task(
 Again, it easy to see what is happening here as each of the two tasks is assigned an agent and that expected output is being clearly defined. With the agents and tasks defined we can then assemble the crew ...
 
 {{< ide title="Assembling the crew" lang="Python">}}
-```python
+```python {linenos=true}
 from crewai import Crew, Process
 
 # Forming the tech-focused crew with some enhanced configurations
@@ -176,7 +176,7 @@ crew = Crew(
 Finally, we can then run the tasks ...
 
 {{< ide title="Start the task" lang="Python" >}}
-```python
+```python {linenos=true}
 # Starting the task execution process with enhanced feedback
 result = crew.kickoff(inputs={'topic': 'AI in healthcare'})
 print(result)
@@ -202,7 +202,7 @@ Running the code above, but using the topic of "AI in blogging" gave the followi
 I decided that I should have two separate crews in my code, the first will generate the post title and add an SEO-friendly description ...
 
 {{< ide title="The Subject and Summary Crew" lang="Python" >}}
-```python
+```python {linenos=true}
 def sanitize_text_output(text):
     """
     Clean the output text by removing backticks, double quotes, and any characters that are not word characters, whitespace, or hyphens.
@@ -299,7 +299,7 @@ You might have noticed that I am passing the output through another function tha
 This was called using ...
 
 {{< ide title="Calling the function" lang="Python" >}}
-```python
+```python {linenos=true}
 title, summary = generate_title_and_summary(date_str_start, week_number, top_artists, top_albums)
 ```
 {{< /ide >}}
@@ -307,7 +307,7 @@ title, summary = generate_title_and_summary(date_str_start, week_number, top_art
 Next up we have the crew that researched the albums I listened to one by one ...
 
 {{< ide title="The Album Research Crew" lang="Python" >}}
-```python
+```python {linenos=true}
 def research_an_album(album):
     """
     Research an album and generate a blog post section using a crew of agents.
@@ -362,7 +362,7 @@ def research_an_album(album):
 This was called by a for loop which contained details of the album ...
 
 {{< ide title="Calling the function" lang="Python" >}}
-```python
+```python {linenos=true}
     topics = [f"{album} by {artist}" for (artist, album), _ in top_albums]
     blog_post_sections = []
 
