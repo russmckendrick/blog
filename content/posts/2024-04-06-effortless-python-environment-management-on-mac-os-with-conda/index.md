@@ -50,7 +50,7 @@ conda init zsh
 This adds the following code to the end of `~/.zshrc`:
 
 {{< ide title="Contents appended to ~/.zshrc" >}}
-```
+``` {linenos=true}
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

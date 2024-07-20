@@ -19,7 +19,7 @@ This is a quick post collating some of the notes for KQL queries for Azure Virtu
 This query looks at the past 30 days, counting connections by username and client IP address, then sorts these counts in descending order, adds geolocation data for each IP, and finally outputs the client IP, connection count, and location details (country, state, and city) to provide insights into connection patterns and frequencies across different users and locations in the Windows Virtual Desktop environment.
 
 {{< ide title="Find out all the IP addresses in the last 30 days" lang="KQL" >}}
-```kql
+```kql {linenos=true}
 let daysAgo = 30d;
 WVDConnections
 | where TimeGenerated > ago(daysAgo)
@@ -39,7 +39,7 @@ WVDConnections
 This query extends the previous query and analyses AVD connections over the last 30 days, counting connections by username and client IP address, sorting these counts in descending order, enriching the data with geo-location information for each IP, and finally outputting the username, client IP, connection count, and location details (country, state, and city). This provides a comprehensive view of the Azure Virtual Desktop environment's connection patterns, frequencies, and geographical distribution for each user.
 
 {{< ide title="Find out all Users and their IP addresses in the last 30 days"  lang="KQL" >}}
-```kql
+```kql {linenos=true}
 let daysAgo = 30d;
 WVDConnections
 | where TimeGenerated > ago(daysAgo)
@@ -62,7 +62,7 @@ The query analyses WVDConnections over the past 30 days, filters for usernames c
 This query allows for targeted analysis of connection patterns for specific users or user groups, providing insights into the geographical distribution of their connections to the Windows Virtual Desktop environment.
 
 {{< ide title="Find out the IP addresses of where a user is connecting from"  lang="KQL" >}}
-```
+```kql {linenos=true}
 let userSearch = "<replace with the UPN of a user>";
 let daysAgo = 30d;
 WVDConnections
@@ -84,7 +84,7 @@ WVDConnections
 The query first identifies users connected from a specified IP address (currently set to an empty string) within the last 30 days using the WVDConnections table. It then uses this list of users to filter the WVDErrors table, summarising the count of errors for each user and the error code. The results are ordered by error count in descending order. This query allows for targeted error analysis, linking connection data with error occurrences to help identify potential issues affecting users connecting from specific IP addresses in the Windows Virtual Desktop environment.
 
 {{< ide title="Get all errors for all users from a single IP address" lang="KQL" >}}
-```kql
+```kql {linenos=true}
 let ipAddress = "<replace with the IP address you are interested in>";
 let daysAgo = 30d;
 let users =
@@ -105,7 +105,7 @@ WVDErrors
 This KQL query analyses Azure Virtual Desktop connections over the past month, matching 'Connected' and 'Completed' session states to calculate total session durations for each user and connection type, then presents the results in both hours and days, sorted to show the most active users first, thereby providing insights into user engagement patterns and system usage within the WVD environment.
 
 {{< ide title="Total session time"  lang="KQL" >}}
-```kql
+```kql {linenos=true}
 let daysAgo = 31d;
 WVDConnections
 | where TimeGenerated > ago(daysAgo)
@@ -130,7 +130,7 @@ WVDConnections
 This KQL query analyses Windows Virtual Desktop connections from the past 31 days, focusing on successful connections to count distinct users per host pool, then formats the host pool names by combining specific segments of the resource ID, ultimately providing a concise summary of user diversity across different WVD host pools.
 
 {{< ide title="Total number of sessions per host pool"  lang="KQL" >}}
-```kql
+```kql {linenos=true}
 let daysAgo = 31d;
 WVDConnections 
 | where TimeGenerated > ago(daysAgo)
@@ -148,7 +148,7 @@ WVDConnections
 This KQL query analyses Windows Virtual Desktop connections from the past day, focusing on completed sessions, and extracts key session information including timestamp, user, client details, connection type, and a reformatted host pool identifier, providing a detailed snapshot of recent WVD activity across different host pools with an emphasis on successfully concluded sessions.
 
 {{< ide title="Total Sessions"  lang="KQL" >}}
-```kql
+```kql {linenos=true}
 let daysAgo = 1d;
 WVDConnections
 | where TimeGenerated > ago(daysAgo) and State contains "Completed"
@@ -163,7 +163,7 @@ WVDConnections
 This KQL query examines Azure Virtual Desktop errors from the past day, extracting the error code and reformatting the host pool identifier from the resource ID, then summarises the data by counting the occurrences of each error code per host pool, providing a concise overview of recent error patterns across different AVD environments.
 
 {{< ide title="Errors per host pool"  lang="KQL" >}}
-```kql
+```kql {linenos=true}
 let daysAgo = 1d;
 WVDErrors
 | where TimeGenerated > ago(daysAgo) 

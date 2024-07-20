@@ -40,15 +40,15 @@ All of the work to introduce caching happens in the Run Ansible stage of the pip
 Before we get there, though, a few additional variables are introduced at the top of the file. These are ...
 
 {{< ide title="The Variables" lang="YAML" >}}
-```yaml
-  - name: PATH_COLLECTION
-    value: /home/vsts/.ansible/collections/ansible_collections/azure/azcollection
-  - name: PATH_VENV
-    value: $(Pipeline.Workspace)/venv
-  - name: CACHE_VERSION
-    value: v001
-  - name: REQUIREMENTS_FILE_NAME
-    value: requirements.txt
+```yaml {linenos=true}
+- name: PATH_COLLECTION
+  value: /home/vsts/.ansible/collections/ansible_collections/azure/azcollection
+- name: PATH_VENV
+  value: $(Pipeline.Workspace)/venv
+- name: CACHE_VERSION
+  value: v001
+- name: REQUIREMENTS_FILE_NAME
+  value: requirements.txt
 ```
 {{< /ide >}}
 
@@ -60,18 +60,18 @@ Also, as a bonus, should you ever need to update the cache, change the `CACHE_VE
 This task configures a virtual environment; this is important as we will be taking a copy of the virtual environment for future runs of the pipelines:
 
 {{< ide title="Set up the virtual environment" lang="YAML" >}}
-```yaml
-          - task: Bash@3
-            name: "setup_environment"
-            displayName: "Setup Python Environment"
-            inputs:
-              targetType: "inline"
-              script: |
-                echo "##[group]Setup Python Virtual Environment"
-                    python3 -m venv $(PATH_VENV)
-                    source $(PATH_VENV)/bin/activate
-                    pip install --upgrade pip
-                echo "##[endgroup]"
+```yaml {linenos=true}
+- task: Bash@3
+  name: "setup_environment"
+  displayName: "Setup Python Environment"
+  inputs:
+    targetType: "inline"
+    script: |
+      echo "##[group]Setup Python Virtual Environment"
+          python3 -m venv $(PATH_VENV)
+          source $(PATH_VENV)/bin/activate
+          pip install --upgrade pip
+      echo "##[endgroup]"
 ```
 {{< /ide >}}
 
@@ -82,14 +82,14 @@ The next task is as per the original pipeline, which grabs a copy of the private
 Next up, we have the `Cache@2` task; with this task, we both check to see if there is already an active cache and if there isn't, at the end of the pipeline run, a cache will be created will save us time and network bandwidth by caching files between pipeline runs.
 
 {{< ide title="Check if there is an active cache" lang="YAML" >}}
-```yaml
-          - task: Cache@2
-            name: "cache_venv"
-            displayName: "Cache virtual environment"
-            inputs:
-              key: 'venv$(CACHE_VERSION) | "$(Agent.OS)" | $(PATH_COLLECTION)/$(REQUIREMENTS_FILE_NAME)'
-              path: $(PATH_VENV)
-              cacheHitVar: CACHE_RESTORED
+```yaml {linenos=true}
+- task: Cache@2
+  name: "cache_venv"
+  displayName: "Cache virtual environment"
+  inputs:
+    key: 'venv$(CACHE_VERSION) | "$(Agent.OS)" | $(PATH_COLLECTION)/$(REQUIREMENTS_FILE_NAME)'
+    path: $(PATH_VENV)
+    cacheHitVar: CACHE_RESTORED
 ```
 {{< /ide >}}
 
@@ -108,21 +108,21 @@ The inputs needed for the task to run are;
 This next task is responsible for installing dependencies when the cache isn't available. 
 
 {{< ide title="Install the requirements if there is no active cache" lang="YAML" >}}
-```yaml
-          - task: Bash@3
-            name: "install_dependencies"
-            displayName: "Install Dependencies"
-            condition: ne(variables.CACHE_RESTORED, 'true')
-            inputs:
-              targetType: "inline"
-              script: |
-                echo "##[group]Install pip requirements"
-                    source $(PATH_VENV)/bin/activate
-                    pip install ansible[azure]
-                    ansible-galaxy collection install --force azure.azcollection
-                    pip install -r $(PATH_COLLECTION)/$(REQUIREMENTS_FILE_NAME)
-                    pip freeze > $(PATH_VENV)/$(REQUIREMENTS_FILE_NAME)
-                echo "##[endgroup]"
+```yaml {linenos=true}
+- task: Bash@3
+  name: "install_dependencies"
+  displayName: "Install Dependencies"
+  condition: ne(variables.CACHE_RESTORED, 'true')
+  inputs:
+    targetType: "inline"
+    script: |
+      echo "##[group]Install pip requirements"
+          source $(PATH_VENV)/bin/activate
+          pip install ansible[azure]
+          ansible-galaxy collection install --force azure.azcollection
+          pip install -r $(PATH_COLLECTION)/$(REQUIREMENTS_FILE_NAME)
+          pip freeze > $(PATH_VENV)/$(REQUIREMENTS_FILE_NAME)
+      echo "##[endgroup]"
 ```
 {{< /ide >}}
 
@@ -146,40 +146,40 @@ This task ensures that all necessary dependencies are installed when the cache i
 This task is responsible for running the Ansible playbook and handling its output; there have been some changes to the task since the Learn Ansible version, these changes load the virtual environment and also confirm that the Azure modules are available:
 
 {{< ide title="Run the Ansible Playbook" lang="YAML">}}
-```yaml
-          - task: Bash@3
-            name: "ansible"
-            displayName: "Run Ansible"
-            env:
-              AZURE_CLIENT_ID: $(ARM_CLIENT_ID)
-              AZURE_SECRET: $(ARM_CLIENT_SECRET)
-              AZURE_TENANT: $(ARM_TENANT_ID)
-              AZURE_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
-              ANSIBLE_HOST_KEY_CHECKING: "False"
-            inputs:
-                targetType: "inline"
-                script: |
-                  echo "##[group]Add SSH key"
-                      echo "$(SSH_PUBLIC_KEY)" > ~/.ssh/id_rsa.pub
-                      chmod 644 ~/.ssh/id_rsa.pub
-                  echo "##[endgroup]"
-                  echo "##[group]Verify Azure module installation"
-                      source $(PATH_VENV)/bin/activate
-                      python -c "import azure; print('Azure module is available')"
-                  echo "##[endgroup]"
-                  echo "##[group]Run the Ansible Playbook"
-                      ansible-playbook -i inv site.yml 2>&1 | tee $(System.DefaultWorkingDirectory)/ansible_output.log
-                  echo "##[endgroup]"
-                  echo "##[group]Create the markdown file for the Ansible Playbook Output"
-                      mkdir -p $(System.DefaultWorkingDirectory)/markdown
-                      echo "# Ansible Playbook Output" > $(System.DefaultWorkingDirectory)/markdown/summary.md
-                      echo "<details><summary>Click to expand</summary>" >> $(System.DefaultWorkingDirectory)/markdown/summary.md
-                      echo "" >> $(System.DefaultWorkingDirectory)/markdown/summary.md
-                      echo "\`\`\`" >> $(System.DefaultWorkingDirectory)/markdown/summary.md
-                      cat $(System.DefaultWorkingDirectory)/ansible_output.log >> $(System.DefaultWorkingDirectory)/markdown/summary.md
-                      echo "\`\`\`" >> $(System.DefaultWorkingDirectory)/markdown/summary.md
-                      echo "</details>" >> $(System.DefaultWorkingDirectory)/markdown/summary.md
-                  echo "##[endgroup]"
+```yaml {linenos=true}
+ - task: Bash@3
+   name: "ansible"
+   displayName: "Run Ansible"
+   env:
+     AZURE_CLIENT_ID: $(ARM_CLIENT_ID)
+     AZURE_SECRET: $(ARM_CLIENT_SECRET)
+     AZURE_TENANT: $(ARM_TENANT_ID)
+     AZURE_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
+     ANSIBLE_HOST_KEY_CHECKING: "False"
+   inputs:
+       targetType: "inline"
+       script: |
+         echo "##[group]Add SSH key"
+             echo "$(SSH_PUBLIC_KEY)" > ~/.ssh/id_rsa.pub
+             chmod 644 ~/.ssh/id_rsa.pub
+         echo "##[endgroup]"
+         echo "##[group]Verify Azure module installation"
+             source $(PATH_VENV)/bin/activate
+             python -c "import azure; print('Azure module is available')"
+         echo "##[endgroup]"
+         echo "##[group]Run the Ansible Playbook"
+             ansible-playbook -i inv site.yml 2>&1 | tee $(System.DefaultWorkingDirectory)/ansible_output.log
+         echo "##[endgroup]"
+         echo "##[group]Create the markdown file for the Ansible Playbook Output"
+             mkdir -p $(System.DefaultWorkingDirectory)/markdown
+             echo "# Ansible Playbook Output" > $(System.DefaultWorkingDirectory)/markdown/summary.md
+             echo "<details><summary>Click to expand</summary>" >> $(System.DefaultWorkingDirectory)/markdown/summary.md
+             echo "" >> $(System.DefaultWorkingDirectory)/markdown/summary.md
+             echo "\`\`\`" >> $(System.DefaultWorkingDirectory)/markdown/summary.md
+             cat $(System.DefaultWorkingDirectory)/ansible_output.log >> $(System.DefaultWorkingDirectory)/markdown/summary.md
+             echo "\`\`\`" >> $(System.DefaultWorkingDirectory)/markdown/summary.md
+             echo "</details>" >> $(System.DefaultWorkingDirectory)/markdown/summary.md
+         echo "##[endgroup]"
 ```
 {{< /ide >}}
 
