@@ -6,9 +6,9 @@ date: 2019-09-01T00:00:00.000Z
 tags:
  - Azure
  - Kubernetes
-
 cover:
     image: "/img/2019-09-01_quickly-launch-an-azure-aks-cluster_0.jpeg" 
+    alt: "Effortlessly launch and manage Azure AKS clusters for your Kubernetes workloads with simple commands and streamlined setup."
 images:
  - "/img/2019-09-01_quickly-launch-an-azure-aks-cluster_0.jpeg"
  - "/img/2019-09-01_quickly-launch-an-azure-aks-cluster_1.png"

@@ -14,6 +14,8 @@ tags:
 
 cover:
     image: "/img/2018-01-20_kubernetes-for-serverless-applications_0.png" 
+    alt: "Unlock the potential of Kubernetes for serverless applications with insights and practical guidance from Russ Mckendrick's latest book."
+
 images:
  - "/img/2018-01-20_kubernetes-for-serverless-applications_0.png"
  - "/img/2018-01-20_kubernetes-for-serverless-applications_1.png"

@@ -10,8 +10,9 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-{{ random_number }}.png"
     relative: false
+    alt: "{{ summary }}"
 tags:
-    - "Vinyl"
+    - "Listened"
 ---
 
 {% raw %}{{< notice note >}}{% endraw %}

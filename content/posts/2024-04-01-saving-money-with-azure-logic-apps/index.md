@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Discover how Azure Logic Apps save you money by automating tasks like stopping and starting VMs and App Gateways. Follow this step-by-step guide to deploy cost-saving automation efficiently."
 tags:
   - "azure"
   - "code"

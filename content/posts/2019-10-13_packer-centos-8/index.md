@@ -7,7 +7,8 @@ tags:
  - Packer
  - "Linux"
 cover:
-    image: "/img/2019-10-13_packer-centos-8_0.jpeg" 
+    image: "/img/2019-10-13_packer-centos-8_0.jpeg"
+    alt: "Easily transition to CentOS 8 with Packer and Vagrant, featuring Cockpit for efficient server management."
 images:
  - "/img/2019-10-13_packer-centos-8_0.jpeg"
  - "/img/2019-10-13_packer-centos-8_1.png"

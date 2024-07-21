@@ -6,6 +6,7 @@ date: 2021-01-22
 cover:
     image: "cover.png"
     relative: true
+    alt: "Discover Russ Mckendrick's top 20 vinyl records of 2020 featuring a diverse selection of music genres."
 aliases:
     - "/top-20ish-records-of-2020-81ab2f2e309e"
 keywords:

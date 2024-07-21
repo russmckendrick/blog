@@ -9,7 +9,7 @@ cover:
     image: "/img/weekly-tunes-002.png"
     relative: false
 tags:
-    - "Vinyl"
+    - "Listened"
 ---
 
 {{< notice note >}}

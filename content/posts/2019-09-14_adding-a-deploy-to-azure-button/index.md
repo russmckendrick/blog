@@ -7,7 +7,8 @@ tags:
  - Azure
  - Automation
 cover:
-    image: "/img/2019-09-14_adding-a-deploy-to-azure-button_0.jpeg" 
+    image: "/img/2019-09-14_adding-a-deploy-to-azure-button_0.jpeg"
+    alt: "Simplify Azure deployments with a 'Deploy to Azure' button for ARM templates, enabling effortless resource launch directly from GitHub repositories."
 images:
  - "/img/2019-09-14_adding-a-deploy-to-azure-button_0.jpeg"
  - "/img/2019-09-14_adding-a-deploy-to-azure-button_1.png"

@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "A step-by-step guide to installing Ollama on macOS and running large language models like llama2 and Mistral entirely offline. Learn how to interact with the models via chat, API, and even remotely using ngrok."
 tags:
   - "ai"
   - "code"

@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Explore Docker Desktop alternatives for macOS: Lima, Rancher Desktop, and Minikube offer containerization and Kubernetes clustering solutions."
 tags:
   - "Docker"
   - "macOS"

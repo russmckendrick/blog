@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Learn how to set up Ansible with Azure on a new Mac, addressing common issues with cryptography and module dependencies."
 tags:
   - "macos"
   - "azure"

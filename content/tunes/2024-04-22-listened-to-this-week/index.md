@@ -11,7 +11,7 @@ cover:
     image: "/img/weekly-tunes-019.png"
     relative: false
 tags:
-    - "Vinyl"
+    - "Listened"
 aliases:
     - "/2024/04/22/what-did-i-listen-to-in-week-15/"
 ---

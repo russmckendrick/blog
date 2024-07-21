@@ -8,6 +8,7 @@ showToc: false
 cover:
     image: "cover.png"
     relative: true
+    alt: "For the first time in nearly a decade, I updated my dotfiles blog post."
 tags:
   - "macos"
   - "code"

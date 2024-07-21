@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Discover powerful KQL queries to enhance your Azure Virtual Desktop (AVD) management. Learn how to track user connections, analyze session times, monitor errors, and gain insights into your AVD environment's performance and security."
 tags:
   - "azure"
 ---

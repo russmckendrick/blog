@@ -6,6 +6,7 @@ date: 2020-09-27
 cover:
     image: "cover.png"
     relative: true
+    alt: "Migrating Docker images to GitHub Container Registry with automated workflows. Updates Dockerfiles for each image."
 aliases:
     - "/migrating-my-docker-images-to-the-github-container-registry-9f304ccf0aaa"
 

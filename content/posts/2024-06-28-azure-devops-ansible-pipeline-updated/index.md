@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Discover how to optimize your Azure DevOps Ansible pipeline with caching techniques. Learn to reduce execution time, improve efficiency, and maintain security checks in your infrastructure as code deployments."
 tags:
   - "ansible"
   - "devops"

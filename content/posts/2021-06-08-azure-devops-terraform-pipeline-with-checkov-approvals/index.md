@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Setting up an Azure DevOps pipeline for Terraform deployments with Checkov scans, validation, and manual approval steps."
 aliases:
   - "/azure-devops-terraform-pipeline-with-checkov-approvals-7a68827b2bf3"
 tags:

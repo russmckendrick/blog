@@ -9,7 +9,7 @@ cover:
     relative: false
 robotsNoIndex: true
 tags:
-    - "Vinyl"
+    - "Listened"
 ---
 
 {{< notice note >}}

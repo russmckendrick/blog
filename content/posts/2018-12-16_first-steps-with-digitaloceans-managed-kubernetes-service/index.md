@@ -9,6 +9,8 @@ tags:
  - Cloud
 cover:
     image: "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_0.jpg" 
+    alt: "Exploring DigitalOcean’s Managed Kubernetes service: setup, testing, and ease of use. A comprehensive guide by Russ Mckendrick."
+
 images:
  - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_0.jpg"
  - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_1.jpg"

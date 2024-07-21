@@ -6,6 +6,7 @@ date: 2020-09-20
 cover:
     image: "cover.png"
     relative: true
+    alt: "Explore GitHub Codespaces with Terraform for online IDE experience. Easily set up a workspace for infrastructure as code projects using Terraform and Ansible."
 aliases:
     - "/github-codespaces-and-terraform-ff8b37c5e54a"
 tags:

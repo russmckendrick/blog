@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "I had some time so decided to have a play with a new tool called Aider Chat, which allows you to write and edit code with OpenAI’s GPT models."
 tags:
   - "ai"
   - "code"

@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Explore a powerful KQL query for Azure Firewall logs. Learn how to analyze network traffic, filter by source and destination IP, and gain insights into your Azure Firewall's performance and security."
 tags:
   - "azure"
 ---

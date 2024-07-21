@@ -5,7 +5,8 @@ author: "Russ Mckendrick"
 date: 2020-04-03
 cover:
     image: "2020-04-03_ansible-and-the-azure-rest-api.jpeg" 
-    relative: true 
+    relative: true
+    alt: "Learn how Ansible utilizes Azure REST API for efficient resource management, with insights on azure_rm_resource module and Visual Studio Code extension."
 aliases:
     - "/ansible-and-the-azure-rest-api-97f880b5206d"
 tags:
