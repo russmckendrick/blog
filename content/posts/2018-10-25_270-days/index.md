@@ -14,6 +14,8 @@ tags:
 
 cover:
     image: "/img/2018-10-25_270-days_0.png" 
+    alt: "Catch up on Russ Mckendrick's adventures in the last 270 days! From book writing to vinyl collecting"
+
 images:
  - "/img/2018-10-25_270-days_0.png"
  - "/img/2018-10-25_270-days_1.png"

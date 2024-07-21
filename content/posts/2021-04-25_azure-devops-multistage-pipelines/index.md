@@ -7,6 +7,7 @@ showFullContent: false
 cover:
     image: "cover.png"
     relative: true
+    alt: "Learn how to implement multi-stage pipelines in Azure DevOps for efficient deployment workflows with approval gates and infrastructure setup."
 aliases:
     - "/azure-devops-multi-stage-pipelines-bcbed581fa2d"
 keywords:

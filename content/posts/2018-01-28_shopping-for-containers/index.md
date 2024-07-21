@@ -9,6 +9,8 @@ tags:
  - Tools
 cover:
     image: "/img/2018-01-28_shopping-for-containers_0.png" 
+    alt: "Explore the Docker Store, your one-stop marketplace for Docker-related content. From Docker EE to plugins and containers, find both free and paid offerings."
+
 images:
  - "/img/2018-01-28_shopping-for-containers_0.png"
  - "/img/2018-01-28_shopping-for-containers_1.png"

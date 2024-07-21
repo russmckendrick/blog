@@ -6,6 +6,7 @@ description: "Moving to Docker to run Ansible on macOS Big Sur"
 cover:
     image: "cover.png"
     relative: true
+    alt: "Moving to Docker to run Ansible on macOS Big Sur"
 aliases:
 - "/ansible-azure-and-macos-big-sur-f313e28b6e79"
 

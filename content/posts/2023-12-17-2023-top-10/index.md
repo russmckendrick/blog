@@ -9,6 +9,7 @@ TocOpen: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Explore 2023's diverse music scene with 17 albums, from The Polyphonic Spree's 'Salvage Enterprise' to Peter Gabriel's 'I/O'."
 tags:
   - "life"
   - "vinyl"

@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "My new book, Infrastructure as Code for Beginners, has been released and is available to buy now."
 tags:
   - "Book"
   - "Author"

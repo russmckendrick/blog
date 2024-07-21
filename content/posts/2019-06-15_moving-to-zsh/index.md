@@ -9,6 +9,8 @@ tags:
 
 cover:
     image: "/img/2019-06-15_moving-to-zsh_0.jpeg" 
+    alt: "Transition smoothly to ZSH on macOS Catalina with tips on setup, Oh My ZSH installation, theme customization, and porting existing configurations."
+
 images:
  - "/img/2019-06-15_moving-to-zsh_0.jpeg"
  - "/img/2019-06-15_moving-to-zsh_1.png"

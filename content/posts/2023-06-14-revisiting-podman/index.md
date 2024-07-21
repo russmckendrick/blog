@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Delve into the exciting features and benefits of Podman, a powerful alternative to traditional container technologies."
 tags:
     - "Podman"
     - "Docker"

@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Explore Packer's use with Rocky Linux. Migrate CentOS projects efficiently. Use provided templates for Virtualbox and VMWare."
 tags:
   - "Packer"
   - "Linux"

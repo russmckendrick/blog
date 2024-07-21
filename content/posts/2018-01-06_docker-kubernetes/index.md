@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2018-01-06_docker-kubernetes_0.png" 
+    alt: "Discover Docker and Kubernetes integration on Mac, enabling easy deployment and management of containerized applications."
+
 images:
  - "/img/2018-01-06_docker-kubernetes_0.png"
  - "/img/2018-01-06_docker-kubernetes_1.png"

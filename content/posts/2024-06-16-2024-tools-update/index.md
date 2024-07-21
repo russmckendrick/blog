@@ -8,6 +8,7 @@ showToc: false
 cover:
     image: "cover.png"
     relative: true
+    alt: "Day-to-day tools for a macOS user in 2024: Visual Studio Code, Sublime Text, Paste, 1Password, and more. Discover essential desktop, terminal, and online services for productivity."
 tags:
   - "tools"
   - "macos"

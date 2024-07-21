@@ -9,7 +9,8 @@ tags:
  - Cloud
  - Tools
 cover:
-    image: "/img/2019-06-16_microsoft-azure-portal-urls_0.jpeg" 
+    image: "/img/2019-06-16_microsoft-azure-portal-urls_0.jpeg"
+    alt: "Access Microsoft Azure portals efficiently with handy URLs for Azure, Azure Active Directory, Resource Explorer, and Cloud Shell."
 images:
  - "/img/2019-06-16_microsoft-azure-portal-urls_0.jpeg"
  - "/img/2019-06-16_microsoft-azure-portal-urls_1.png"

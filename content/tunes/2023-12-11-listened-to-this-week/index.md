@@ -9,7 +9,7 @@ cover:
     image: "/img/weekly-tunes-006.png"
     relative: false
 tags:
-    - "Vinyl"
+    - "Listened"
 aliases:
     - "/2023/12/11/what-did-i-listen"
 ---

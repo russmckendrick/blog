@@ -7,7 +7,8 @@ tags:
  - macOS
  - Python
 cover:
-    image: "/img/2019-12-29_upgrade-python-on-macos_0.jpeg" 
+    image: "/img/2019-12-29_upgrade-python-on-macos_0.jpeg"
+    alt: "Upgrade to Python 3 on macOS using pyenv for easy installation and maintenance of different Python versions."
 images:
  - "/img/2019-12-29_upgrade-python-on-macos_0.jpeg"
  - "/img/2019-12-29_upgrade-python-on-macos_1.png"

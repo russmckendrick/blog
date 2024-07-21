@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Discover how CrewAI revolutionized my blog's AI-generated music roundups, enhancing content quality and accuracy. Unlock the potential of collaborative AI for your creative projects."
 tags:
   - "ai"
   - "blog"

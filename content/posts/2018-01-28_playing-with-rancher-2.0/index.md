@@ -6,6 +6,8 @@ date: 2018-01-28T12:52:26.760Z
 lastmod: 2021-07-31T12:35:08+01:00
 cover:
     image: "/img/2018-01-28_playing-with-rancher-2.0_0.png" 
+    alt: "Explore Rancher 2.0 with me. Test the preview version and discover its features & limitations."
+
 images:
  - "/img/2018-01-28_playing-with-rancher-2.0_0.png"
  - "/img/2018-01-28_playing-with-rancher-2.0_1.png"

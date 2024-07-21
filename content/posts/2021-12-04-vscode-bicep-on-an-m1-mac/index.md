@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Learn how to run Bicep on an M1 Mac using VSCode, addressing the .Net 5.0 runtime issue with Rosetta 2 and Homebrew."
 tags:
   - "macOS"
   - "DevOps"

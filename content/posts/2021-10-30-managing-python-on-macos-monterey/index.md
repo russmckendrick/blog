@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Just installed macOS Monterey and Python on my MacBook Pro! Easy peasy with pyenv. Check out my experience!"
 tags:
     - macOS
     - Python

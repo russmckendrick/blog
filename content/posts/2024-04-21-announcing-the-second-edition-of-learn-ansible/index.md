@@ -8,6 +8,7 @@ showToc: false
 cover:
     image: "cover.png"
     relative: true
+    alt: "My new book, the second edition of Learn Ansible is now available for pre-order."
 tags:
   - "book"
   - "ansible"

@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Learn how to efficiently manage Python environments on your MacBook Pro using Conda. This comprehensive guide covers installation, creating and activating environments, installing packages, and best practices for streamlining your Python development workflow."
 tags:
   - "macOS"
   - "Python"

@@ -6,6 +6,7 @@ date: 2020-05-31
 cover:
     image: "2020-05-31_azure-devops-terraform-pipeline_0.png" 
     relative: true
+    alt: "Learn to create a robust Azure DevOps pipeline for Terraform deployments, managing infrastructure as code efficiently with Azure CLI and Terraform tasks."
 aliases:
     - "/azure-devops-terraform-pipeline-e50f1721ea1"
 

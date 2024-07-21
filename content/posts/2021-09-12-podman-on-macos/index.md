@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Discover how to run Podman on macOS using a virtual machine, enabling Docker compatibility and container management."
 tags:
   - "Docker"
   - "macOS"

@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "A step-by-step guide on installing and running InvokeAI on macOS for local AI image generation using Conda and Python."
 tags:
   - "macOS"
   - "Python"

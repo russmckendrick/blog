@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Notes on Terraform Azure deployments: diagnostic settings, expiration dates, Azure Automation Account web hooks."
 tags:
   - "Terraform"
   - "Infrastructure as Code"

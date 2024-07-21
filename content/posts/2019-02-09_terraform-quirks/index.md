@@ -9,6 +9,8 @@ tags:
 
 cover:
     image: "/img/2019-02-09_terraform-quirks_0.png" 
+    alt: "Explore Terraform quirks: module challenges, resource dependencies, and count/list workarounds."
+
 images:
  - "/img/2019-02-09_terraform-quirks_0.png"
 

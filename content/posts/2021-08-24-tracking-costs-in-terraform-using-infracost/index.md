@@ -8,6 +8,7 @@ showToc: true
 cover:
     image: "cover.png"
     relative: true
+    alt: "Track Terraform costs with Infracost. Install, register, and monitor changes in your Azure DevOps pipeline efficiently."
 aliases:
   - "/2021/08/24/tracking-costs-in-your-terraform-azure-devops-pipeline-using-infracost/"
 tags:

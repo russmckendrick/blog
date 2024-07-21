@@ -6,12 +6,12 @@ date: 2021-01-10
 cover:
     image: "cover.png"
     relative: true
+    alt: "Upgrade Python on macOS Big Sur using pyenv. Install Python 3.9.1 and update pip for smoother management."
 aliases:
     - "/managing-python-on-macos-big-sur-c120bfa34403"
 tags:
     - Macos
     - Python
-
 ---
 
 When Apple releases a new version of macOS it always takes a few months for everything to catchup, following my last blog post where I mentioned that I was [having problems installing Python on macOS Big Sur](https://www.mediaglasses.blog/2020/12/28/ansible-azure-and-macos-big-sur/)which meant that my preferred method of installing and managing Python using `pyenv`, which is [documented in this blog post](https://www.mediaglasses.blog/2019/12/29/upgrade-python-on-macos/), didn't work out of the box — and the workarounds suggested workarounds on GitHub made my shell really slow.
