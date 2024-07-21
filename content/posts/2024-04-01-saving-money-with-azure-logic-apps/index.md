@@ -241,7 +241,8 @@ So, let's start at the beginning.
 
 This is our trigger, by default, is set to run at 07:00 and 18:00 on Monday, Tuesday, Wednesday, Thursday, and Friday every week. The for this step is below:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "Recurrence",
   "recurrence": {
@@ -267,12 +268,15 @@ This is our trigger, by default, is set to run at 07:00 and 18:00 on Monday, Tue
   }
 }
 ```
+{{< /ide >}}
 
 #### Get a list of all resources tagged to be managed (Azure Virtual Machine)
 
 This is where our first HTTP call to the Azure REST API takes place; it makes a **GET** request to the [https://management.azure.com/subscriptions/{subscriptionId}/resources?api-version=2021-04-01](https://learn.microsoft.com/en-us/rest/api/resources/resources/list?view=rest-resources-2021-04-01) API and filters using the contents of the **tagName** and **tagValue** parameters:
 
-```json
+
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "Http",
   "inputs": {
@@ -291,10 +295,12 @@ This is where our first HTTP call to the Azure REST API takes place; it makes a 
   }
 }
 ```
+{{< /ide >}}
 
 When we first ran the Azure Logic App, this is an example of the output that was passed onto the following task:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "value": [
     {
@@ -396,12 +402,14 @@ When we first ran the Azure Logic App, this is an example of the output that was
   ]
 }
 ```
+{{< /ide >}}
 
 #### Filter everything but the VMs we are managing (Azure Virtual Machine)
 
 While testing the Logic App, I found that more than just the virtual machine resource could be tagged with **tagName**; for example, in the output of the previous step, disks, network interfaces, and more all have the same tag. Now, this would result in an error when running later parts of the workflow, so here we filtered down the list of resources the last step fetched to where the resource **type** is equal to **Microsoft.Compute/virtualMachines**.
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "Query",
   "inputs": {
@@ -414,16 +422,17 @@ While testing the Logic App, I found that more than just the virtual machine res
     ]
   }
 }
-
 ```
-
+{{< /ide >}}
+<br>
 {{< notice info >}}
 There is an annoying limitation when searching for resources using the [https://management.azure.com/subscriptions/{subscriptionId}/resources?api-version=2021-04-01](https://learn.microsoft.com/en-us/rest/api/resources/resources/list?view=rest-resources-2021-04-01) API. While you can filter on any number of **tags** you like or even the resource **type**, you can not filter on both simultaneously, which is why we have this extra step.
 {{< /notice >}}
 
 Once this filter has been applied, we are now left with details on the two machines from the test run:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 [
   {
     "id": "/subscriptions/ce7aa0b9-3545-4104-99dc-d4d082339a05/resourceGroups/rg-demo-vms-uks/providers/Microsoft.Compute/virtualMachines/vm-demo-d62ef52290-uks",
@@ -449,12 +458,14 @@ Once this filter has been applied, we are now left with details on the two machi
   }
 ]
 ```
+{{< /ide >}}
 
 #### Process just the VMs (Azure Virtual Machine)
 
 Now that we have a JSON object which contains only the information on virtual machines with the tags that indicate the workflow should be working with them, we need to parse the JSON object and turn the data into something we can use; this task takes the schema and does just that: 
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "ParseJson",
   "inputs": {
@@ -510,6 +521,7 @@ Now that we have a JSON object which contains only the information on virtual ma
   }
 }
 ```
+{{< /ide >}}
 
 While the output looks the same as the last step, it is now referenced in a way that allows us to loop over it with a for each task.
 
@@ -517,7 +529,8 @@ While the output looks the same as the last step, it is now referenced in a way 
 
 This is the first of two loops we need to run, the second of which is nested in this loop.
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "Foreach",
   "foreach": "@body('Process_just_the_VMs')",
@@ -529,6 +542,7 @@ This is the first of two loops we need to run, the second of which is nested in 
   }
 }
 ```
+{{< /ide >}}
 
 You can see in the screens below it looped through two virtual machines:
 
@@ -544,7 +558,8 @@ Now, let's see what we ran for each virtual machine.
 
 The first task of the loop gets information about the virtual machine we are currently processing, it does this by making a GET request to the [https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView?api-version=2024-03-01](https://learn.microsoft.com/en-us/rest/api/compute/virtual-machines/instance-view?view=rest-compute-2024-03-01&tabs=HTTP) Azure REST API endpoint:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "Http",
   "inputs": {
@@ -562,16 +577,20 @@ The first task of the loop gets information about the virtual machine we are cur
   }
 }
 ```
+{{< /ide >}}
 
 As you can see from the code above, we are using `{items('For_Each_VM')['id']}` - this contains all of the information we need to connect to the endpoint, for example:
 
-```
+{{< ide title="" >}}
+``` {linenos=true}
 /subscriptions/ce7aa0b9-3545-4104-99dc-d4d082339a05/resourceGroups/rg-demo-vms-uks/providers/Microsoft.Compute/virtualMachines/vm-demo-e8ab6db95a-uks
 ```
+{{< /ide >}}
 
 Which returns the following output:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "computerName": "vm-demo-e8ab6db95a-uks",
   "osName": "ubuntu",
@@ -618,6 +637,7 @@ Which returns the following output:
   ]
 }
 ```
+{{< /ide >}}
 
 So, we now need to know the power status.
 
@@ -625,7 +645,8 @@ So, we now need to know the power status.
 
 Again, we are running another query - we need to do this because there are two statuses being returned from the initial API call, one for the **ProvisioningState** and the second for the **PowerState** - it is this one we need to work with:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "Query",
   "inputs": {
@@ -639,10 +660,12 @@ Again, we are running another query - we need to do this because there are two s
   }
 }
 ```
+{{< /ide >}}
 
 This leaves us with the following output to use as input for the next task:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 [
   {
     "code": "PowerState/running",
@@ -651,12 +674,14 @@ This leaves us with the following output to use as input for the next task:
   }
 ]
 ```
+{{< /ide >}}
 
 ##### Process just the VMs power state
 
 Again, we need to get the data into a format we can use:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "ParseJson",
   "inputs": {
@@ -690,8 +715,8 @@ Again, we need to get the data into a format we can use:
     ]
   }
 }
-
 ```
+{{< /ide >}}
 
 We then take this and pass it to our nest loop.
 
@@ -699,7 +724,8 @@ We then take this and pass it to our nest loop.
 
 Because we are going to be using a conditional, we need to use another loop to get the output from above into a state we can use:
 
-```
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "Foreach",
   "foreach": "@outputs('Process_just_the_VMs_power_state')['body']",
@@ -711,6 +737,7 @@ Because we are going to be using a conditional, we need to use another loop to g
   }
 }
 ```
+{{< /ide >}}
 
 ##### Condition (Azure Virtual Machine)
 
@@ -722,7 +749,8 @@ If `@items('For_each_PowerState_code')['code']` is not equal to `PowerState/deal
 
 The JSON for the conditional is below:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "If",
   "expression": {
@@ -774,8 +802,8 @@ The JSON for the conditional is below:
     }
   }
 }
-
 ```
+{{< /ide >}}
 
 In our first run, this final task's output was **False**, so the virtual machines were deallocated, as you can see from the results below:
 
@@ -949,7 +977,8 @@ So let's work through it.
 
 Both of these steps are the same as detailed in [Recurrence](#recurrence) and [Get a list of all resources tagged to be managed](#recurrence) when we covered the Azure Virtual Machine workflow. The output on the first example run was:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "value": [
     {
@@ -966,12 +995,14 @@ Both of these steps are the same as detailed in [Recurrence](#recurrence) and [G
   ]
 }
 ```
+{{< /ide >}}
 
 #### Filter everything but the App Gateways we are managing (Azure Application Gateway)
 
 Here, we are filtering on **Microsoft.Network/applicationGateways**  resource type incase a supporting resource, such as the public IP address, just happens to have the tag applied:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "Query",
   "inputs": {
@@ -984,14 +1015,15 @@ Here, we are filtering on **Microsoft.Network/applicationGateways**  resource ty
     ]
   }
 }
-
 ```
+{{< /ide >}}
 
 #### For Each App Gateway (Azure Application Gateway)
 
 So begins our loop; this differs slightly in that there is no nested loop this time as all of the information we need is available in a single place rather than the multiple statuses we had returned when working with Azure Virtual Machines:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "Foreach",
   "foreach": "@body('Procetipless_just_the_App_Gateways')",
@@ -1003,12 +1035,14 @@ So begins our loop; this differs slightly in that there is no nested loop this t
   }
 }
 ```
+{{< /ide >}}
 
 ##### Get some information on the Application Gateway (Azure Application Gateway)
 
 This performs a **GET** against [https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}?api-version=2023-09-01](https://learn.microsoft.com/en-us/rest/api/application-gateway/application-gateways/get?view=rest-application-gateway-2023-09-01&tabs=HTTP) which returns information on the Azure Application Gateway:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "Http",
   "inputs": {
@@ -1025,12 +1059,13 @@ This performs a **GET** against [https://management.azure.com/subscriptions/{sub
     }
   }
 }
-
 ```
+{{< /ide >}}
 
 As you can see from the output below, there is a lot of information returned:
 
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "name": "agw-demo-appgw-uks",
   "id": "/subscriptions/ce7aa0b9-3545-4104-99dc-d4d082339a05/resourceGroups/rg-demo-appgw-uks/providers/Microsoft.Network/applicationGateways/agw-demo-appgw-uks",
@@ -1209,6 +1244,7 @@ As you can see from the output below, there is a lot of information returned:
   }
 }
 ```
+{{< /ide >}}
 
 
 ##### Condition  (Azure Application Gateway)
@@ -1217,7 +1253,8 @@ This checks if **operationalState** is equal to **Running** and **True** is retu
 
 Or if **operationalState** is not equal to **Running** and **False** is returned, then a **POST** against [https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/start?api-version=2023-09-01](https://learn.microsoft.com/en-us/rest/api/application-gateway/application-gateways/start?view=rest-application-gateway-2023-09-01&tabs=HTTP) is executed, this starts the Application Gateway.
 
-```
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
   "type": "If",
   "expression": {
@@ -1275,8 +1312,8 @@ Or if **operationalState** is not equal to **Running** and **False** is returned
     ]
   }
 }
-
 ```
+{{< /ide >}}
 
 As the Azure Application Gateway was running when we ran the Azure Logic App the first time, the run stopped the Application Gateway:
 

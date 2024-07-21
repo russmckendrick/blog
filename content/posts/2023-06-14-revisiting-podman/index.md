@@ -200,8 +200,8 @@ To stop the container and remove it from Podman Desktop, click on the stop butto
 
 Having explored Podman Desktop, let's turn our attention to Podman Compose. As mentioned earlier, Podman Compose is a tool for defining and running multi-container applications with Podman. As a replacement for Docker Compose, it utilizes the same `docker-compose.yml` file format.
 
-{{< terminal title="docker-compose.yml" >}}
-``` yaml
+{{< ide title="docker-compose.yml" lang="YAML" >}}
+```yaml {linenos=true} 
 ---
 volumes:
   db_data:
@@ -226,7 +226,7 @@ services:
       - MYSQL_USER=wordpress
       - MYSQL_PASSWORD=password
 ```
-{{< /terminal >}}
+{{< /ide >}}
 
 Save the above `docker-compose.yml` file to a folder called 'wordpress' on your local machine. Then, execute the following command to start the containers:
 

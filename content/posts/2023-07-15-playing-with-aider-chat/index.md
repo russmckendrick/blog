@@ -169,8 +169,8 @@ This time everything worked as expected and we have a mostly functional game as 
 
 The game code is below, it is untouched from what Aider Chat created and as you can see, functionality wise is a little hit and miss, but it well commented and easy to follow;
 
-{{< terminal title="main.py" >}}
-``` python
+{{< ide title="" lang="Python" >}}
+```python {linenos=true} 
 import pygame
 import sys
 import time
@@ -373,9 +373,8 @@ def showGameOverScreen():
 
 if __name__ == '__main__':
     main()
-
 ```
-{{< /terminal >}}
+{{< /ide >}}<br>
 
 As you can see Aider is is simple to use and I suspect is way more powerful than I have shown here, I am going to spend some more time playing with it and see what else it can do.
 
