@@ -180,7 +180,10 @@ markup:
     guessSyntax: true
     lineNos: false
     noClasses: true
-    style: monokai
+    style: "monokai"
+  goldmark:
+    renderer:
+      hardWraps: true
 
 privacy:
   disqus:

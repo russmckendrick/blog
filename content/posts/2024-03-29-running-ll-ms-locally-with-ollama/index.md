@@ -155,8 +155,8 @@ curl -X POST http://localhost:11434/api/generate -d '{
 
 After a second or two, a response is returned:
 
-{{< terminal title="The truncated JSON response" >}}
-```json
+{{< ide title="" lang="JSON" >}}
+```json {linenos=true}
 {
     "model": "llama2",
     "created_at": "2024-03-29T11:16:00.231151Z",
@@ -175,8 +175,7 @@ After a second or two, a response is returned:
     "eval_duration": 9548392000
 }
 ```
-{{< /terminal >}}
-
+{{< /ide >}}
 In the output above, I truncated the context values as many exist.
 
 ### Running another model
