@@ -9,6 +9,7 @@ tags:
     - "Tools"
 cover:
     image: "/img/2014-02-15_docker_0.png" 
+    alt: "A beginner's guide to Docker on CentOS, covering installation, running containers, and basic management with an introduction to Docker commands."
 images:
  - "/img/2014-02-15_docker_0.png"
 aliases:

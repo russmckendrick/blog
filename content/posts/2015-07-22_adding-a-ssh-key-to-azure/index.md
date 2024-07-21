@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-07-22_adding-a-ssh-key-to-azure_0.png" 
+    alt: "Enable passwordless sudo on Azure VMs by adding SSH keys via Terraform. Simplify provisioning and management with seamless key configuration."
+
 images:
  - "/img/2015-07-22_adding-a-ssh-key-to-azure_0.png"
  - "/img/2015-07-22_adding-a-ssh-key-to-azure_1.png"

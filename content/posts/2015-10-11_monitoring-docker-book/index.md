@@ -13,6 +13,8 @@ tags:
 
 cover:
     image: "/img/2015-10-11_monitoring-docker-book_0.png" 
+    alt: "Pre-order my new book 'Monitoring Docker' for a comprehensive guide to container monitoring. Stay ahead of the game with tips and tricks"
+
 images:
  - "/img/2015-10-11_monitoring-docker-book_0.png"
  - "/img/2015-10-11_monitoring-docker-book_1.png"

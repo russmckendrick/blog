@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-03-08_migration-of-server-swap-space_0.png" 
+    alt: "Migrate DigitalOcean instance for cost efficiency. Enable swap space to prevent oomkiller issues. Optimize performance with tuned settings."
+
 images:
  - "/img/2015-03-08_migration-of-server-swap-space_0.png"
 

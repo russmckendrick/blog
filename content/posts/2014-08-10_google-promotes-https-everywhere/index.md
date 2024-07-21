@@ -9,6 +9,7 @@ tags:
     - "Tools"
 cover:
     image: "/img/2014-08-10_google-promotes-https-everywhere_0.png" 
+    alt: "Unlock the secrets of Google's HTTPS ranking signal and SNI! Learn how to secure your site for maximum visibility."
 images:
  - "/img/2014-08-10_google-promotes-https-everywhere_0.png"
 aliases:

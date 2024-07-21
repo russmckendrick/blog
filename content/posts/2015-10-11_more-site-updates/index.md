@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-10-11_more-site-updates_0.png" 
+    alt: "Russ Mckendrick improves blog speed, adds Gruntfile features for testing and deployment to Amazon S3 with Cloudflare cache flushing."
+
 images:
  - "/img/2015-10-11_more-site-updates_0.png"
  - "/img/2015-10-11_more-site-updates_1.png"

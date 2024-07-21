@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-04-19_installing-an-elk-stack-on-centos-7_0.png" 
+    alt: "Learn how to install the ELK stack on CentOS 7 for centralized logging: Elasticsearch, Logstash, and Kibana, step-by-step guide with configuration."
+
 images:
  - "/img/2015-04-19_installing-an-elk-stack-on-centos-7_0.png"
  - "/img/2015-04-19_installing-an-elk-stack-on-centos-7_1.png"

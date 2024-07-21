@@ -10,6 +10,8 @@ tags:
 
 cover:
     image: "/img/2015-03-21_docker-machine-compose-swarm_0.png" 
+    alt: "Unlock the full potential of Docker with Machine, Compose, & Swarm. Learn how to orchestrate containers, and create clusters across different platforms!"
+
 images:
  - "/img/2015-03-21_docker-machine-compose-swarm_0.png"
  - "/img/2015-03-21_docker-machine-compose-swarm_1.png"

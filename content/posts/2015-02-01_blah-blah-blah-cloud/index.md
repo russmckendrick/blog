@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-02-01_blah-blah-blah-cloud_0.png" 
+    alt: "Deciphering the complexities of 'Cloud' in computing, from VMs to SaaS. Embrace clarity by avoiding catch-all terms, following Dilbert's lead."
+
 images:
  - "/img/2015-02-01_blah-blah-blah-cloud_0.png"
  - "/img/2015-02-01_blah-blah-blah-cloud_1.jpg"

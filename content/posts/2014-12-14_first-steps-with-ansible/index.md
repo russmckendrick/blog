@@ -13,6 +13,8 @@ tags:
     - "Ansible"
 cover:
     image: "/img/2014-12-14_first-steps-with-ansible_0.png" 
+    alt: "Explore Ansible for AWS automation, transitioning from manual scripting. Initiate playbook for VPC and ELB deployment."
+
 images:
  - "/img/2014-12-14_first-steps-with-ansible_0.png"
 

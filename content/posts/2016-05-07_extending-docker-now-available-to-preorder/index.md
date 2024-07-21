@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2016-05-07_extending-docker-now-available-to-preorder_0.png" 
+    alt: "Pre-order Russ Mckendrick's book 'Extending Docker' from Packt or Amazon. Learn advanced Docker techniques."
+
 images:
  - "/img/2016-05-07_extending-docker-now-available-to-preorder_0.png"
  - "/img/2016-05-07_extending-docker-now-available-to-preorder_1.png"

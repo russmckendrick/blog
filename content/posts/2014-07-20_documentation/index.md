@@ -9,6 +9,8 @@ tags:
     - "Tools"
 cover:
     image: "/img/2014-07-20_documentation_0.png" 
+    alt: "Discover how I use GitHub and Markdown for technical documentation and code management, streamlining collaboration and version control in projects."
+
 images:
  - "/img/2014-07-20_documentation_0.png"
 

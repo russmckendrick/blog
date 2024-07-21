@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-12-27_top-ten-albums-2015_0.png" 
+    alt: "Explore top albums of 2015 from various artists, including Steven Wilson, Vennart, Leon Bridges, and more. Check out my eclectic music picks!"
+
 images:
  - "/img/2015-12-27_top-ten-albums-2015_0.png"
  - "/img/2015-12-27_top-ten-albums-2015_1.jpg"

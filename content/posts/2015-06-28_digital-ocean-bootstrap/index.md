@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2015-06-28_digital-ocean-bootstrap_0.png" 
+    alt: "Get your CentOS 7 DigitalOcean droplet up and running in no time! Learn how to perform essential tasks for a smooth deployment."
+
 images:
  - "/img/2015-06-28_digital-ocean-bootstrap_0.png"
 

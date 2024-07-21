@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-04-05_adventures-in-hifi_0.png" 
+    alt: "Grooving into hi-fi! Exploring vinyl and upgrading my sound system with Sonos speakers."
+
 images:
  - "/img/2015-04-05_adventures-in-hifi_0.png"
  - "/img/2015-04-05_adventures-in-hifi_1.jpg"

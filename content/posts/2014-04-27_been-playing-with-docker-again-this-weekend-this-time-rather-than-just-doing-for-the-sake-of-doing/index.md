@@ -9,6 +9,8 @@ tags:
     - "Tools"
 cover:
     image: "/img/2014-04-27_been-playing-with-docker-again-this-weekend-this-time-rather-than-just-doing-for-the-sake-of-doing_0.png" 
+    alt: "Deploy a stable Docker setup on CentOS with Shipyard for container management, using Puppet for installation and Supervisor for high availability."
+
 images:
  - "/img/2014-04-27_been-playing-with-docker-again-this-weekend-this-time-rather-than-just-doing-for-the-sake-of-doing_0.png"
 

@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2015-07-13_slain-by-dragons_0.png" 
+    alt: "Examine the web fortunes of Dragons Den businesses. Study site performance under heavy traffic & learn resilience tips."
+
 images:
  - "/img/2015-07-13_slain-by-dragons_0.png"
  - "/img/2015-07-13_slain-by-dragons_1.png"

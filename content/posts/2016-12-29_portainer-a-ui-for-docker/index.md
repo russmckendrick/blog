@@ -10,6 +10,8 @@ tags:
  - Tools
 cover:
     image: "/img/2016-12-29_portainer-a-ui-for-docker_0.png" 
+    alt: "Discover Portainer: Simplify Docker management (150k+ pulls). Open-source tool streamlines container deployment, management & monitoring for devs & DevOps."
+
 images:
  - "/img/2016-12-29_portainer-a-ui-for-docker_0.png"
  - "/img/2016-12-29_portainer-a-ui-for-docker_1.png"

@@ -12,6 +12,8 @@ tags:
  - Life
 cover:
     image: "/img/2016-12-12_monitoring-managment-with-docker-containers-ebook_0.png" 
+    alt: "Get insights on monitoring & managing Docker contns with Russ McKendrick's chapter. Free ebook download!"
+
 images:
  - "/img/2016-12-12_monitoring-managment-with-docker-containers-ebook_0.png"
  - "/img/2016-12-12_monitoring-managment-with-docker-containers-ebook_1.png"

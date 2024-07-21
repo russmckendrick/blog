@@ -11,6 +11,8 @@ tags:
     - "Infrastructure as Code"
 cover:
     image: "/img/2013-10-06_saltstack-on-centos-6.x_0.png" 
+    alt: "A concise tutorial on setting up SaltStack for centralized server management on CentOS, including master-minion setup and basic commands."
+
 images:
  - "/img/2013-10-06_saltstack-on-centos-6.x_0.png"
 aliases:

@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2016-12-18_thoughts-on-amazon-lightsail_0.png" 
+    alt: "Amazon Lightsail offers an easy entry to AWS with instance hosting akin to Digital Ocean. A look at its features, costs, and potential limitations."
+
 images:
  - "/img/2016-12-18_thoughts-on-amazon-lightsail_0.png"
  - "/img/2016-12-18_thoughts-on-amazon-lightsail_1.png"

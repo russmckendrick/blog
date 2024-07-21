@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2016-12-12_2016-top-ten_0.png" 
+    alt: "Explore Russ Mckendrick's top ten albums of 2016, including works by David Bowie, Radiohead, and Knifeworld. Dive into the diverse sounds of the year."
+
 images:
  - "/img/2016-12-12_2016-top-ten_0.png"
  - "/img/2016-12-12_2016-top-ten_1.jpeg"

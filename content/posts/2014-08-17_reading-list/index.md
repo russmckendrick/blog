@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2014-08-17_reading-list_0.png" 
+    alt: "Discover how I effortlessly stay updated with the latest blogs using Feedly and Reeder 2, and how it fuels my reading list."
+
 images:
  - "/img/2014-08-17_reading-list_0.png"
 

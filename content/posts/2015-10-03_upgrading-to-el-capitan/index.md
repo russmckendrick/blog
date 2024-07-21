@@ -9,7 +9,9 @@ tags:
  - macOS
 
 cover:
-    image: "/img/2015-10-03_upgrading-to-el-capitan_0.png" 
+    image: "/img/2015-10-03_upgrading-to-el-capitan_0.png"
+    alt: "Ready to upgrade to OS X 10.11 El Capitan? Follow my steps and enjoy a smooth transition with enhanced performance!"
+ 
 images:
  - "/img/2015-10-03_upgrading-to-el-capitan_0.png"
  - "/img/2015-10-03_upgrading-to-el-capitan_1.png"

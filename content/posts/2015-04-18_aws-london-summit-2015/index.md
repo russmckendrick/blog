@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-04-18_aws-london-summit-2015_0.png" 
+    alt: "Discover the 2015 AWS Summit in London: insights into Amazon EFS, hybrid architectures, and the challenges of navigating the bustling crowd."
+
 images:
  - "/img/2015-04-18_aws-london-summit-2015_0.png"
  - "/img/2015-04-18_aws-london-summit-2015_1.png"

@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2014-11-16_whats-been-on-the-headphones_0.png" 
+    alt: "Curating a playlist from my recent favorite albums, sharing select tracks now available for streaming on Spotify."
+
 images:
  - "/img/2014-11-16_whats-been-on-the-headphones_0.png"
 

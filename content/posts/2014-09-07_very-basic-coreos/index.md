@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2014-09-07_very-basic-coreos_0.png" 
+    alt: "Exploring CoreOS on DigitalOcean: From setting up a single instance with familiar tools to configuring a powerful container-oriented OS."
+
 images:
  - "/img/2014-09-07_very-basic-coreos_0.png"
 

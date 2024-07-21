@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2016-06-12_launching-a-local-rancher-cluster_0.png" 
+    alt: "Learn to launch a local Rancher cluster effortlessly with Docker for Mac beta and Docker Machine for smooth demo setups."
+
 images:
  - "/img/2016-06-12_launching-a-local-rancher-cluster_0.png"
  - "/img/2016-06-12_launching-a-local-rancher-cluster_1.png"

@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2017-01-02_trying-out-elastic-beats_0.png" 
+    alt: "Explore Elastic Beats for data shipping in DevOps. Learn to set up and configure Metricbeat on Docker Swarm for system and Docker metrics analysis."
+
 images:
  - "/img/2017-01-02_trying-out-elastic-beats_0.png"
  - "/img/2017-01-02_trying-out-elastic-beats_1.png"

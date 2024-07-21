@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-03-15_desktop-wallpaper_0.png" 
+    alt: "Timeless charm! Exploring the 'Aqua Blue' desktop wallpaper, a MacOS X standard since 2001."
+
 images:
  - "/img/2015-03-15_desktop-wallpaper_0.png"
  - "/img/2015-03-15_desktop-wallpaper_1.jpeg"

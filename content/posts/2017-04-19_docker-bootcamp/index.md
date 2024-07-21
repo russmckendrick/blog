@@ -13,6 +13,8 @@ tags:
 
 cover:
     image: "/img/2017-04-19_docker-bootcamp_0.png" 
+    alt: "Author Russ Mckendrick's third book, 'Docker Bootcamp,' is coming soon. Pre-order now for a comprehensive guide to Docker."
+
 images:
  - "/img/2017-04-19_docker-bootcamp_0.png"
  - "/img/2017-04-19_docker-bootcamp_1.png"

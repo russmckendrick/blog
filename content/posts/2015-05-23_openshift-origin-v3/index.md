@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-05-23_openshift-origin-v3_0.png" 
+    alt: "Learn how to install and run OpenShift Origin V3 on CentOS, step-by-step guide with commands and configuration for setting up a test server using Vagrant."
+
 images:
  - "/img/2015-05-23_openshift-origin-v3_0.png"
  - "/img/2015-05-23_openshift-origin-v3_1.png"

@@ -10,6 +10,8 @@ tags:
     - "Tools"
 cover:
     image: "/img/2014-08-03_am-i-an-operating-system-snob_0.png" 
+    alt: "As an experienced Linux user, I discuss why I prefer CentOS for my servers, comparing it to Fedora and Ubuntu."
+
 images:
  - "/img/2014-08-03_am-i-an-operating-system-snob_0.png"
 

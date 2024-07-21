@@ -13,6 +13,8 @@ tags:
 
 cover:
     image: "/img/2016-11-07_preorder-docker-data-management-with-flocker_0.png" 
+    alt: "Pre-order 'Docker Data Management with Flocker' by Russ Mckendrick. Gain early access to the ebook by purchasing from Packt."
+
 images:
  - "/img/2016-11-07_preorder-docker-data-management-with-flocker_0.png"
  - "/img/2016-11-07_preorder-docker-data-management-with-flocker_1.jpeg"

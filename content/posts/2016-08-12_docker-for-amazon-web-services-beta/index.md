@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2016-08-12_docker-for-amazon-web-services-beta_0.png" 
+    alt: "Explore Docker for Amazon Web Services beta, effortlessly launch Docker Swarm clusters on AWS with CloudFormation templates. Easy scaling and management."
+
 images:
  - "/img/2016-08-12_docker-for-amazon-web-services-beta_0.png"
  - "/img/2016-08-12_docker-for-amazon-web-services-beta_1.jpg"

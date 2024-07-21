@@ -10,6 +10,8 @@ tags:
 
 cover:
     image: "/img/2015-02-08_backups_0.png" 
+    alt: "Secure backups for WordPress with VaultPress and DigitalOcean."
+
 images:
  - "/img/2015-02-08_backups_0.png"
 

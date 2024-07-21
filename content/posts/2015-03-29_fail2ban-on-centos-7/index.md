@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-03-29_fail2ban-on-centos-7_0.png" 
+    alt: "Protect your CentOS 7 server with fail2ban! Follow my guide to secure your system from unwanted SSH login attempts."
+
 images:
  - "/img/2015-03-29_fail2ban-on-centos-7_0.png"
 

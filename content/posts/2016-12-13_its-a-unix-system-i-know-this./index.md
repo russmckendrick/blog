@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2016-12-13_its-a-unix-system-i-know-this._0.png" 
+    alt: "Discover Microsoft SQL Server on Mac via Docker, along with .NET Core & Visual Studio. A glimpse into technology's evolving integration."
+
 images:
  - "/img/2016-12-13_its-a-unix-system-i-know-this._0.png"
  - "/img/2016-12-13_its-a-unix-system-i-know-this._1.png"

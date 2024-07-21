@@ -10,6 +10,8 @@ tags:
     - "Tools"
 cover:
     image: "/img/2014-08-31_docker-fig-nginx-reverse-proxies-and-centos-7_0.png" 
+    alt: "Exploring Docker's rapid updates and the ecosystem, including using Fig for container orchestration and setting up an NGINX reverse proxy."
+
 images:
  - "/img/2014-08-31_docker-fig-nginx-reverse-proxies-and-centos-7_0.png"
  - "/img/2014-08-31_docker-fig-nginx-reverse-proxies-and-centos-7_1.png"

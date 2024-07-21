@@ -12,6 +12,7 @@ tags:
 
 cover:
     image: "/img/2014-05-31_openshift-origin-installation-notes_0.png" 
+    alt: "Follow my guide to install OpenShift Origin on a CentOS 6.5 DO droplet. Get step-by-step instructions & troubleshoot issues."
 images:
  - "/img/2014-05-31_openshift-origin-installation-notes_0.png"
 

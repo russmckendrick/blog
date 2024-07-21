@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-11-15_puppet-enterprise-aws-security-groups_0.png" 
+    alt: "Russ Mckendrick tackles AWS security group hurdles installing Puppet Enterprise, resolves by temporarily allowing all traffic."
+
 images:
  - "/img/2015-11-15_puppet-enterprise-aws-security-groups_0.png"
 

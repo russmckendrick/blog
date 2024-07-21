@@ -13,6 +13,8 @@ tags:
 
 cover:
     image: "/img/2014-07-22_high-availability-central-logging-in-aws_0.png" 
+    alt: "Set up high availability central logging in AWS with Amazon CloudWatch Logs. This guide covers installation, IAM permissions, and CloudWatch Logs agent setup."
+
 images:
  - "/img/2014-07-22_high-availability-central-logging-in-aws_0.png"
 

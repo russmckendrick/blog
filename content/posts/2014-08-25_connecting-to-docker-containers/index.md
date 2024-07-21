@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2014-08-25_connecting-to-docker-containers_0.png" 
+    alt: "Learn how I seamlessly access and manage containers without SSH using nsenter and docker-enter on CentOS 7, making DevOps simpler."
+
 images:
  - "/img/2014-08-25_connecting-to-docker-containers_0.png"
 

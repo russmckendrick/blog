@@ -10,6 +10,8 @@ tags:
 
 cover:
     image: "/img/2016-02-25_docker-networking-magic_0.png" 
+    alt: "Explore Docker's new networking features with Weave for encrypted, multi-host container networking. See the magic in action!"
+
 images:
  - "/img/2016-02-25_docker-networking-magic_0.png"
  - "/img/2016-02-25_docker-networking-magic_1.png"

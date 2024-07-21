@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2015-09-06_update-the-kernel-on-a-digital-ocean-droplet_0.png" 
+    alt: "Upgrade your Digital Ocean droplet's kernel effortlessly. Discover the steps to ensure smooth kernel updates for enhanced security and performance."
+
 images:
  - "/img/2015-09-06_update-the-kernel-on-a-digital-ocean-droplet_0.png"
  - "/img/2015-09-06_update-the-kernel-on-a-digital-ocean-droplet_1.png"
