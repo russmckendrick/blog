@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2016-10-02_50-percent-off-today-only_0.png" 
+    alt: "Get 50% off Russ Mckendrick's Docker books today only. Dive into Docker with comprehensive guides at an exclusive discount. Limited time offer!"
+
 images:
  - "/img/2016-10-02_50-percent-off-today-only_0.png"
  - "/img/2016-10-02_50-percent-off-today-only_1.png"

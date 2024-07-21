@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2014-12-06_more-grunt-jekyll_0.png" 
+    alt: "Streamlined my Grunt configuration by combining tasks, now I can concatenate JS files, compress them with Uglify, and minify CSS files in one go!"
+
 images:
  - "/img/2014-12-06_more-grunt-jekyll_0.png"
 

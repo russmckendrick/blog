@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2017-01-21_playing-with-docker-1.13-minio_0.png" 
+    alt: "Deploy Minio in Docker Swarm with Docker 1.13 for distributed object storage. Easy setup and management."
+
 images:
  - "/img/2017-01-21_playing-with-docker-1.13-minio_0.png"
  - "/img/2017-01-21_playing-with-docker-1.13-minio_1.png"

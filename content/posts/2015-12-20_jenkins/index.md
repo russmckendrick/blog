@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2015-12-20_jenkins_0.png" 
+    alt: "Discover Jenkins for automation on CentOS 7 with NGINX SSL setup. Orchestrate tasks efficiently!"
+
 images:
  - "/img/2015-12-20_jenkins_0.png"
 

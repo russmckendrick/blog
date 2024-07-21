@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2016-10-30_october-2016-playlist_0.jpeg" 
+    alt: "Discover Russ Mckendrick's October 2016 playlist, featuring a curated selection of tracks to set the mood for the month. Tune in and enjoy the eclectic mix!"
+
 images:
  - "/img/2016-10-30_october-2016-playlist_0.jpeg"
 

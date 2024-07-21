@@ -10,6 +10,8 @@ tags:
     - "macOS"
 cover:
     image: "/img/2015-03-09_day-to-day-tools_0.png" 
+    alt: "Discover my must-have desktop & command-line apps, services, and utilities I use daily on my macOS machine."
+
 images:
  - "/img/2015-03-09_day-to-day-tools_0.png"
 aliases:

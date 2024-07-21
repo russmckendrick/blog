@@ -10,6 +10,8 @@ tags:
     - "Life"
 cover:
     image: "/img/2015-03-15_whats-been-on-the-ones-twos_0.png" 
+    alt: "Get ready for a musical journey! Check out Russ Mckendrick's top picks this month on Spotify."
+
 images:
  - "/img/2015-03-15_whats-been-on-the-ones-twos_0.png"
 

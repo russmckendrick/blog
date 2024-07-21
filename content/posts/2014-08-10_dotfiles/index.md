@@ -9,6 +9,7 @@ tags:
     - "Tools"
 cover:
     image: "/img/2014-08-10_dotfiles_0.png" 
+    alt: "Learn how to manage dotfiles to customize your computing environment using with pre-built collections and forking Bashstrap."
 images:
  - "/img/2014-08-10_dotfiles_0.png"
  - "/img/2014-08-10_dotfiles_1.png"

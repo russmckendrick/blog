@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2014-11-09_an-experiment-with-docker-hhvm_0.png" 
+    alt: "Experimented with Docker and HHVM for our Drupal7 site at work, achieving a seamless transition and saving significant setup time."
+
 images:
  - "/img/2014-11-09_an-experiment-with-docker-hhvm_0.png"
  - "/img/2014-11-09_an-experiment-with-docker-hhvm_1.jpg"

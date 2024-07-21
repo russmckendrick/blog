@@ -10,6 +10,8 @@ tags:
 
 cover:
     image: "/img/2016-06-25_docker-load-balancing-application-bundles_0.png" 
+    alt: "Explore Docker Swarm, load balancing, and DAB with Ansible on Digital Ocean. Step-by-step guide included."
+
 images:
  - "/img/2016-06-25_docker-load-balancing-application-bundles_0.png"
  - "/img/2016-06-25_docker-load-balancing-application-bundles_1.png"

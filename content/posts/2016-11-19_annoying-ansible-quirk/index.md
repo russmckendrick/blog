@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2016-11-19_annoying-ansible-quirk_0.gif" 
+    alt: "Discover a workaround for an annoying quirk in Ansible playbook execution. Learn why pre-tasks were ignored and how to ensure their execution."
+
 images:
  - "/img/2016-11-19_annoying-ansible-quirk_0.gif"
 

@@ -9,6 +9,7 @@ tags:
     - "Tools"
 cover:
     image: "/img/2014-05-04_yet-more-docker_0.png" 
+    alt: "Enhance your Docker experience with Puppet-managed containers, featuring a suite of trusted builds for databases and PHP environments on the Docker Index."
 images:
  - "/img/2014-05-04_yet-more-docker_0.png"
 

@@ -10,6 +10,8 @@ tags:
     - "Blog"
 cover:
     image: "/img/2014-12-02_reading-list_0.png" 
+    alt: "Curated a list of compelling reads from Pocket, covering topics from Google Docs reverse engineering to AWS scalability and Docker in production."
+
 images:
  - "/img/2014-12-02_reading-list_0.png"
 

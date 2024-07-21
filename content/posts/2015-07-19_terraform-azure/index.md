@@ -13,6 +13,8 @@ tags:
 
 cover:
     image: "/img/2015-07-19_terraform-azure_0.png" 
+    alt: "Unlock the power of Terraform and Azure for seamless VM provisioning! Learn how to streamline your infrastructure management today!"
+
 images:
  - "/img/2015-07-19_terraform-azure_0.png"
  - "/img/2015-07-19_terraform-azure_1.png"

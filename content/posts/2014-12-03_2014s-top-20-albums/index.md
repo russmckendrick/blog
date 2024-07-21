@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2014-12-03_2014s-top-20-albums_0.png" 
+    alt: "Revealing my top 10 albums of 2014 with a mix of genres and artists, plus additional favorites that almost made the cut, all available on Spotify."
+
 images:
  - "/img/2014-12-03_2014s-top-20-albums_0.png"
 

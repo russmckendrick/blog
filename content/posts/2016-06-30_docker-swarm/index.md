@@ -10,6 +10,8 @@ tags:
 
 cover:
     image: "/img/2016-06-30_docker-swarm_0.png" 
+    alt: "Discover Docker Swarm on macOS beta, orchestrate services effortlessly, and scale with ease. Step-by-step guide included."
+
 images:
  - "/img/2016-06-30_docker-swarm_0.png"
  - "/img/2016-06-30_docker-swarm_1.png"

@@ -10,6 +10,8 @@ tags:
 
 cover:
     image: "/img/2014-05-18_devopssysadm.in_0.png" 
+    alt: "Launching DevOps-SysAdm.in on Tumblr, a curated hub for DevOps and sysadmin resources. Find out why Tumblr was the chosen platform and how to contribute."
+
 images:
  - "/img/2014-05-18_devopssysadm.in_0.png"
 

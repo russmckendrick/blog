@@ -10,6 +10,8 @@ tags:
  - "Packer"
 cover:
     image: "/img/2015-07-26_building-vagrant-boxes-with-packer-in-atlas_0.png" 
+    alt: "Explore hassle-free Vagrant box creation with Packer in Atlas. Harness the power of seamless integration for efficient box building and management."
+
 images:
  - "/img/2015-07-26_building-vagrant-boxes-with-packer-in-atlas_0.png"
  - "/img/2015-07-26_building-vagrant-boxes-with-packer-in-atlas_1.png"

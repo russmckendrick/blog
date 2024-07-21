@@ -10,6 +10,8 @@ tags:
 
 cover:
     image: "/img/2015-05-24_quick-openstack-kilo-installation_0.png" 
+    alt: "Learn how to quickly install OpenStack Kilo on CentOS 7 using Vagrant and RedHat RDO. Follow step-by-step instructions for setting up a test environment."
+
 images:
  - "/img/2015-05-24_quick-openstack-kilo-installation_0.png"
 

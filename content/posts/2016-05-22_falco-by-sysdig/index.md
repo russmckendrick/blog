@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2016-05-22_falco-by-sysdig_0.png" 
+    alt: "Discover Falco by Sysdig, a powerful behavioral security service monitoring system calls."
+
 images:
  - "/img/2016-05-22_falco-by-sysdig_0.png"
 

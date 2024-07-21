@@ -13,6 +13,8 @@ tags:
 
 cover:
     image: "/img/2016-09-11_amazon-web-services-with-ansible_0.png" 
+    alt: "Explore how Russ Mckendrick utilizes Ansible to manage Amazon Web Services infrastructure, from VPC creation to EC2 instance deployment and AMI management."
+
 images:
  - "/img/2016-09-11_amazon-web-services-with-ansible_0.png"
 

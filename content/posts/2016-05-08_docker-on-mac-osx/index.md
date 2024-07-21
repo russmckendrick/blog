@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2016-05-08_docker-on-mac-osx_0.png" 
+    alt: "Experience Docker on macOS with enhanced speed and reliability. Learn how to install and leverage its native features seamlessly."
+
 images:
  - "/img/2016-05-08_docker-on-mac-osx_0.png"
  - "/img/2016-05-08_docker-on-mac-osx_1.png"

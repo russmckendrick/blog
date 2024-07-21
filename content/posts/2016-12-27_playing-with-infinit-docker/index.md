@@ -9,6 +9,8 @@ tags:
  - Tools
 cover:
     image: "/img/2016-12-27_playing-with-infinit-docker_0.png" 
+    alt: "Learn how to integrate Infinit and Docker on Ubuntu & macOS. Explore concepts, setup, and usage for enhanced storage solutions. Acquisition by Docker boosts promise."
+
 images:
  - "/img/2016-12-27_playing-with-infinit-docker_0.png"
  - "/img/2016-12-27_playing-with-infinit-docker_1.png"

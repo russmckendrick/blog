@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2014-09-07_music-documentaries_0.png" 
+    alt: "Sharing a captivating collection of music documentaries I discovered on YouTube, from Factory Records to Prog Rock legends."
+
 images:
  - "/img/2014-09-07_music-documentaries_0.png"
  - "/img/2014-09-07_music-documentaries_1.jpg"

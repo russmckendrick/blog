@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2014-12-02_puppetcamp-london-2014_0.png" 
+    alt: "Attended PuppetCamp London 2014 with enlightening talks on Augeas, Puppet 4.x upgrades, and AWS management, sparking new project inspirations."
+
 images:
  - "/img/2014-12-02_puppetcamp-london-2014_0.png"
 

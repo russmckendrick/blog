@@ -9,6 +9,8 @@ tags:
     - "Vinyl"
 cover:
     image: "/img/2013-12-08_top-10-2013_0.png" 
+    alt: "My top 10 albums of 2013, a rich mix of genres with highlights from Monster Magnet, David Bowie, and more, showcasing the year's standout music."
+
 images:
  - "/img/2013-12-08_top-10-2013_0.png"
 aliases:

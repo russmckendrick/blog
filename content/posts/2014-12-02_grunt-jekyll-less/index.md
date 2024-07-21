@@ -10,6 +10,8 @@ tags:
     - "Tools"
 cover:
     image: "/img/2014-12-02_grunt-jekyll-less_0.png" 
+    alt: "Revamped my website with a new design, integrating LESS with Jekyll via Grunt for a more efficient and automated workflow."
+
 images:
  - "/img/2014-12-02_grunt-jekyll-less_0.png"
 

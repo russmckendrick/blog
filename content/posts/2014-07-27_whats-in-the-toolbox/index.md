@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2014-07-27_whats-in-the-toolbox_0.png" 
+    description: "Catch up on my recent absence from blogging and learn about the highlights, including the release of Docker 1.0, CentOS 7, updates to the site's theme, and new music releases. Plus, explore my blog post on multi-factor authentication in AWS."
+
 images:
  - "/img/2014-07-27_whats-in-the-toolbox_0.png"
  - "/img/2014-07-27_whats-in-the-toolbox_1.png"

@@ -11,6 +11,8 @@ tags:
     - "DevOps"
 cover:
     image: "/img/2014-05-25_sysdig_0.png" 
+    alt: "Explore Sysdig, the versatile tool for system-level exploration on Linux, offering insights into server state and activities for troubleshooting and security."
+
 images:
  - "/img/2014-05-25_sysdig_0.png"
 

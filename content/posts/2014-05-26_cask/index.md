@@ -9,6 +9,7 @@ tags:
     - "Tools"
 cover:
     image: "/img/2014-05-26_cask_0.png" 
+    alt: "Learn how to use Cask with Homebrew for easy installation of macOS applications, saving time and simplifying setup processes for your favorite apps."
 images:
  - "/img/2014-05-26_cask_0.png"
 

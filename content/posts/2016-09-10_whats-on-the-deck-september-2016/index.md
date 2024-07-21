@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2016-09-10_whats-on-the-deck-september-2016_0.png" 
+    alt: "Discover Russ Mckendrick's colored vinyl playlist for September 2016. Explore the vibrant records played over the past months."
+
 images:
  - "/img/2016-09-10_whats-on-the-deck-september-2016_0.png"
 

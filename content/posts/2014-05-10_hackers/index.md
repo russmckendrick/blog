@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2014-05-10_hackers_0.png" 
+    alt: "Highlighting the critical need for server security with personal experiences of port scans and brute-force attacks, and how Fail2Ban provided protection."
+
 images:
  - "/img/2014-05-10_hackers_0.png"
 

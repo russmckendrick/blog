@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2015-12-15_monitoring-docker-released_0.png" 
+    alt: "Learn effective Docker container monitoring techniques in my newly released book. Order your copy from Packt Publishing or Amazon now!"
+
 images:
  - "/img/2015-12-15_monitoring-docker-released_0.png"
  - "/img/2015-12-15_monitoring-docker-released_1.jpg"

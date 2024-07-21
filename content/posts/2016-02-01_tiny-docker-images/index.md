@@ -10,6 +10,8 @@ tags:
 
 cover:
     image: "/img/2016-02-01_tiny-docker-images_0.png" 
+    alt: "Experience Alpine Linux for ultra-compact Docker images. Drastically reduce container size. Find my images on Docker Hub & GitHub."
+
 images:
  - "/img/2016-02-01_tiny-docker-images_0.png"
 

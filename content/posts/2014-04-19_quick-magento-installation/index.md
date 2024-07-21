@@ -10,6 +10,8 @@ tags:
 
 cover:
     image: "/img/2014-04-19_quick-magento-installation_0.png" 
+    alt: "Streamline Magento installations with n98-magerun, a handy command-line tool, for efficient setup and deployment of Magento with sample data."
+
 images:
  - "/img/2014-04-19_quick-magento-installation_0.png"
 

@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2016-02-27_consul-docker-cluster_0.png" 
+    alt: "Set up Consul cluster on Docker with Docker Machine & Swarm for service discovery, using shared private IPs for networking."
+
 images:
  - "/img/2016-02-27_consul-docker-cluster_0.png"
  - "/img/2016-02-27_consul-docker-cluster_1.png"

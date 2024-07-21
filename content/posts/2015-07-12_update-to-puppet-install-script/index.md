@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2015-07-12_update-to-puppet-install-script_0.png" 
+    alt: "Effortless deployment of Puppet on CentOS/RHEL? Check out my updated installation script and streamline your automation setup today!"
+
 images:
  - "/img/2015-07-12_update-to-puppet-install-script_0.png"
 

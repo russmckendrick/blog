@@ -11,6 +11,7 @@ tags:
     - "DevOps"
 cover:
     image: "/img/2014-01-12_vagrant-puppet_0.png" 
+    alt: "A deep dive into using Vagrant and Puppet for setting up reproducible development environments, mirroring production with local Virtualbox instances."
 images:
  - "/img/2014-01-12_vagrant-puppet_0.png"
 

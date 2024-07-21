@@ -11,6 +11,8 @@ tags:
  - Life
 cover:
     image: "/img/2017-09-19_mastering-docker-second-edition_0.png" 
+    alt: "Author Russ Mckendrick's 'Mastering Docker Second Edition' is now available. Get an updated guide to Docker from Packt and other bookstores."
+
 images:
  - "/img/2017-09-19_mastering-docker-second-edition_0.png"
  - "/img/2017-09-19_mastering-docker-second-edition_1.png"

@@ -10,6 +10,8 @@ tags:
     - "Infrastructure as Code"
 cover:
     image: "/img/2013-08-31_puppet-server-client-installation-centos-6.x_0.png" 
+    alt: "Step-by-step guide to setting up a Puppet Server and agent on CentOS 6.4, including Apache configuration and SSL certificate management."
+
 images:
  - "/img/2013-08-31_puppet-server-client-installation-centos-6.x_0.png"
 aliases:

@@ -9,6 +9,7 @@ tags:
     - "Tools"
 cover:
     image: "/img/2014-02-02_jekyll-snippets_0.png" 
+    alt: "Explore handy Jekyll snippets for enhancing static site generation, including unique presentation of the latest post and consistent post excerpts."
 images:
  - "/img/2014-02-02_jekyll-snippets_0.png"
 aliases:

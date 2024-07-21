@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2014-07-12_walkabout_0.png" 
+    alt: "Catch up on my latest adventures: Docker 1.0 release, CentOS 7, new site theme, music from Aphex Twin, and a work post on AWS multi-factor authentication."
+
 images:
  - "/img/2014-07-12_walkabout_0.png"
 

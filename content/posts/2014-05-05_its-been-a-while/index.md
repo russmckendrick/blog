@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2014-05-05_its-been-a-while_0.png" 
+    alt: "Revisiting classic albums from Jellyfish, The Wannadies, and Spacehog, exploring the enduring appeal of these musical gems from my collection."
+
 images:
  - "/img/2014-05-05_its-been-a-while_0.png"
 

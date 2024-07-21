@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-02-14_nginx-ngxpagespeed-on-centos-7_0.png" 
+    alt: "Compile NGINX with ngx_pagespeed on CentOS 7. Automate setup with init script. Configure NGINX for ngx_pagespeed to enhance performance."
+
 images:
  - "/img/2015-02-14_nginx-ngxpagespeed-on-centos-7_0.png"
 

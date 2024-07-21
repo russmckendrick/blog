@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_0.png" 
+    alt: "Learn to set up a local Kubernetes lab using Minikube for testing or development. Install, configure, and enable additional functionalities."
+
 images:
  - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_0.png"
  - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_1.png"

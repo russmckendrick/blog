@@ -10,6 +10,7 @@ tags:
     - "Cloud"
 cover:
     image: "/img/2014-07-12_first-play-with-centos-7.0_0.png" 
+    alt: "Taking CentOS 7.0 for a spin: Discover the changes in networking, systemd, XFS, and Docker support in this firsthand exploration on a DigitalOcean Droplet."
 images:
  - "/img/2014-07-12_first-play-with-centos-7.0_0.png"
 

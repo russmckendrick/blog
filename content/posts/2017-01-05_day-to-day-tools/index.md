@@ -10,6 +10,8 @@ tags:
 
 cover:
     image: "/img/2017-01-05_day-to-day-tools_0.png" 
+    alt: "Explore Russ Mckendrick's essential day-to-day tools, including Visual Studio Code, Docker, Ansible, and Digital Ocean, among others."
+
 images:
  - "/img/2017-01-05_day-to-day-tools_0.png"
 

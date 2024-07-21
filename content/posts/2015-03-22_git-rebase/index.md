@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2015-03-22_git-rebase_0.png" 
+    alt: "Streamline your Git workflow with Russ Mckendrick's tips! Learn how to fork, add remotes, and rebase for maximum efficiency."
+
 images:
  - "/img/2015-03-22_git-rebase_0.png"
 

@@ -13,6 +13,8 @@ tags:
 
 cover:
     image: "/img/2015-02-02_production-ready-images-with-packer_0.png" 
+    alt: "Automate AWS instance setup with Packer. Ensure rapid scalability with pre-configured images. Explore Packer's versatility across platforms."
+
 images:
  - "/img/2015-02-02_production-ready-images-with-packer_0.png"
 

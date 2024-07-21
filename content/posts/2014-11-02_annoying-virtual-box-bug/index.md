@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2014-11-02_annoying-virtual-box-bug_0.png" 
+    alt: "Solved a perplexing issue where static files weren't updating in Vagrant due to a long-standing VirtualBox bug with 'sendfile'."
+
 images:
  - "/img/2014-11-02_annoying-virtual-box-bug_0.png"
 

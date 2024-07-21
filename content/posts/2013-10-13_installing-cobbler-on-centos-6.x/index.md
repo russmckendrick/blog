@@ -9,6 +9,8 @@ tags:
     - "Automation"
 cover:
     image: "/img/2013-10-13_installing-cobbler-on-centos-6.x_0.png" 
+    alt: "A comprehensive guide on setting up Cobbler on CentOS 6.x for mirroring repos and server kickstarts, including EPEL enablement and security setup."
+
 images:
  - "/img/2013-10-13_installing-cobbler-on-centos-6.x_0.png"
 

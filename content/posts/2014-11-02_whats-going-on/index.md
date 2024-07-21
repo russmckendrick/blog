@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2014-11-02_whats-going-on_0.png" 
+    alt: "Exciting weeks with a surge in Twitter favorites from a Docker-related tweet and mentions in Docker Weekly News and by CenturyLink Labs."
+
 images:
  - "/img/2014-11-02_whats-going-on_0.png"
 

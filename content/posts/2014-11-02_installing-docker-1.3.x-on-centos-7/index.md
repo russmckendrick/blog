@@ -12,6 +12,8 @@ tags:
 
 cover:
     image: "/img/2014-11-02_installing-docker-1.3.x-on-centos-7_0.png" 
+    alt: "Successfully upgraded to Docker 1.3 with process injection feature on CentOS, bypassing outdated repos with a manual install."
+
 images:
  - "/img/2014-11-02_installing-docker-1.3.x-on-centos-7_0.png"
 

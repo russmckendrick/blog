@@ -11,6 +11,8 @@ tags:
     - "DevOps"
 cover:
     image: "/img/2014-02-23_more-puppet_0.png" 
+    alt: "Efficient Puppet setup on CentOS with quick deployment scripts for Puppet Master and Agents, including a GitHub repo for easy configuration management."
+
 images:
  - "/img/2014-02-23_more-puppet_0.png"
 

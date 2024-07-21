@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2015-12-13_flocker-on-centos-7_0.png" 
+    alt: "Russ Mckendrick explores Flocker on CentOS 7, enhancing Dockerized applications with robust persistent storage solutions."
+
 images:
  - "/img/2015-12-13_flocker-on-centos-7_0.png"
 

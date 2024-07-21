@@ -11,6 +11,8 @@ tags:
 
 cover:
     image: "/img/2014-10-20_yosemite-installation_0.png" 
+    alt: "Reflecting on my smoothest MacOS upgrade experience with Yosemite: a journey from backup to clean installation and setting up my essentials."
+
 images:
  - "/img/2014-10-20_yosemite-installation_0.png"
 
