@@ -1,5 +1,5 @@
-baseURL: "https://www.russ.foo/"
-title: "Russ.Foo"
+baseURL: "https://www.russ.cloud/"
+title: "Russ.Cloud"
 paginate: "8"
 theme: ["PaperMod", "hugo-shortcode-gallery"]
 timeout: 600000 
@@ -22,13 +22,13 @@ enableEmoji: true
 author:
   russmckendrick:
     name: "Russ McKendrick"
-    email: "me@russ.foo"
+    email: "me@russ.email"
     github: "@russmckendrick"
     location: "Nottingham, UK"
 
 params:
   env: "production"
-  title: "Russ.Foo - The personal blog of Russ McKendrick"
+  title: "Russ.Cloud - The personal blog of Russ McKendrick"
   description: "The ramblings of a nerd about random things that interest me."
   keywords: ["Blog", "Technical", "Automation", "DevOps", "Cloud"]
   author: "Russ McKendrick"
@@ -87,7 +87,7 @@ params:
     distance: 1000
     threshold: 0.4
     minMatchCharLength: 0
-    keys: ["title", "summary", "content", "desctipion", "tags"]
+    keys: ["title", "summary", "content", "description", "tags"]
 
   socialIcons:
     - name: mastodon
