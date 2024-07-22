@@ -1,8 +1,8 @@
 crewai == 0.36.1
 crewai_tools == 0.4.8
-duckduckgo-search
-fuzzywuzzy
+duckduckgo-search == 6.1.12
+fuzzywuzzy == 0.18.0
 jinja2
-langchain_community
-python-Levenshtein
+langchain_community == 0.2.7
+python-Levenshtein == 0.25.1
 requests
