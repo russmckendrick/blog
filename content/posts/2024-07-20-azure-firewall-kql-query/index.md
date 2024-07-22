@@ -13,7 +13,7 @@ tags:
   - "azure"
 ---
 
-This is a quick post to share a useful KQL query for Azure Firewalls that I've been using. It's based on the default Firewall query from Microsoft, but with some added variables to allow for a more focused analysis of source and destination traffic. I'm putting it here for [my]((/about)) future reference and in case it's helpful for anyone else.
+This is a quick post to share a useful KQL query for Azure Firewalls that I've been using. It's based on the default Firewall query from Microsoft, but with some added variables to allow for a more focused analysis of source and destination traffic. I'm putting it here for [my](/about) future reference and in case it's helpful for anyone else.
 
 ## Azure Firewall Query with Variables
 
@@ -118,6 +118,6 @@ A few final thoughts:
 - Always test your queries, especially after making modifications.
 - Don't forget to update the placeholders (like `sourceIP` and `targetIP`) with actual values when you use this query.
 
-Hopefully, this query will save future me, (👋 Hello again future [Russ](/about)), and maybe you sometime when digging into Azure Firewall logs.
+Hopefully, this query will save future me, (👋 Hello again future [Russ](/about), and maybe you sometime when digging into Azure Firewall logs.
 
 Happy querying!
