@@ -8,7 +8,7 @@ robotsNoIndex: true
 showToc: true
 ShowRelated: false
 cover:
-    image: "/img/weekly-tunes-016.png"
+    image: "/img/weekly-tunes-002.png"
     relative: false
     alt: "Explore this weeks top music hits featuring artists like John Lennon and Rush with albums like Mind Games and Moving Pictures."
 tags:
