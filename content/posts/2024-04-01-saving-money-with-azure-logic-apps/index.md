@@ -33,7 +33,7 @@ I have settled on a standard (ish) workflow using the Azure REST API. We will ne
 Our first task is to clone the [GitHub repo, which contains the JSON definition](https://github.com/russmckendrick/money-saving-azure-logic-apps) of the Azure Logic Apps we will be deploying;
 
 {{< terminal title="Cloning to accompanying repo" >}}
-```
+```text
 git clone https://github.com/russmckendrick/money-saving-azure-logic-apps.git
 cd money-saving-azure-logic-apps
 ```
@@ -42,7 +42,7 @@ cd money-saving-azure-logic-apps
 With the repo cloned, we can now create the Azure Resources; I will be using the Azure CLI to do this, starting with setting some environment variables which you can update as needed:
 
 {{< terminal title="Setting some environment variables" >}}
-```
+```text
 export RESOURCE_GROUP_NAME="rg-logicapps-blogpost-uks"
 export REGION="uksouth"
 export SUBSCRIPTION_ID=$(az account show --query id --output tsv)
@@ -54,7 +54,7 @@ export LOGIC_APP_NAME="la-virtualMachineStopStart-uks"
 With the variables in place, we can deploy the resource group;
 
 {{< terminal title="Create the resource group" >}}
-```
+```text
 az group create \
 	--name $RESOURCE_GROUP_NAME \
 	--location $REGION
@@ -64,7 +64,7 @@ az group create \
 The first resource we will need to deploy is a user-managed identity; we will be granting this ID permissions to do "stuff" in our Azure subscription and attaching it to the Azure Logic App to use when we connect to the Azure REST API :
 
 {{< terminal title="Create the user managed identity" >}}
-```
+```text
 az identity create \
 	--resource-group $RESOURCE_GROUP_NAME \
 	--name $MANAGED_ID_NAME
@@ -74,7 +74,7 @@ az identity create \
 As the Azure Logic App will need to search for resources in the subscription and also be able to interact with Azure virtual machines; we should permit it to do just those tasks by granting our User Assigned Identity the Reader and Virtual Machine Contributor roles :
 
 {{< terminal title="Granting RBAC permissions" >}}
-```
+```text
 az role assignment create \
 	--assignee-principal-type "ServicePrincipal" \
 	--assignee-object "$(az identity show --resource-group $RESOURCE_GROUP_NAME --name $MANAGED_ID_NAME --query principalId --output tsv)" \
@@ -94,7 +94,7 @@ With the User Managed Identity in place, we can now create the Azure Logic App.
 To do this, run the following command:
 
 {{< terminal title="Create the Azure Logic App" >}}
-```
+```text
 az logic workflow create \
 	--resource-group $RESOURCE_GROUP_NAME \
 	--location $REGION \
@@ -108,7 +108,7 @@ az logic workflow create \
 This part of the Azure CLI is, at the time of writing this post, in preview, so you may get the following prompt; if you do, follow the on-screen instructions:
 
 {{< terminal title="Do you need to install the extension?" >}}
-```
+```text
 The command requires the extension logic. Do you
 want to install it now? The command will continue
 to run after the extension is installed. (Y/n)
@@ -127,7 +127,7 @@ The Logic App JSON contains four Parameters these are;
 Luckily, we can use the Azure CLI to do that as well; here are the two commands, starting with one to update the **managedId** parameter:
 
 {{< terminal title="Setting the managedId parameter" >}}
-```
+```text
 az logic workflow update \
 	--resource-group $RESOURCE_GROUP_NAME \
 	--name $LOGIC_APP_NAME \
@@ -138,7 +138,7 @@ az logic workflow update \
 Now the **subscriptionId** parameter:
 
 {{< terminal title="Setting the subscriptionId parameter" >}}
-```
+```text
 az logic workflow update \
 	--resource-group $RESOURCE_GROUP_NAME \
 	--name $LOGIC_APP_NAME \
@@ -157,7 +157,7 @@ We are now ready to apply our cost-saving automation; well, we would be if we ha
 We will go through the Logic App in more detail soon; for now, let's create some Azure Virtual Machines we can target with the Azure Logic App. The commands below will launch three virtual machines, two of which are tagged and will be targeted by our Azure Logic App:
 
 {{< terminal title="Launching three test VMs" >}}
-```
+```text
 export RESOURCE_GROUP_NAME="rg-demo-vms-uks"
 export REGION=uksouth
 export VNET_NAME=vnet-demo-vms-uks
@@ -224,7 +224,7 @@ Running the Logic App for a second time will start the two tagged machines as th
 If you are following along and have deployed the example resources, now would be a good time to terminate them. You can do this by running:
 
 {{< terminal title="Removing the demo Virtual Machines and Group" >}}
-```
+```text
 export RESOURCE_GROUP_NAME="rg-demo-vms-uks"
 az group delete --name $RESOURCE_GROUP_NAME
 ```
@@ -819,7 +819,7 @@ As already mentioned, there is no way to stop an Application Gateway in the Azur
 Again, our first task is to clone the GitHub repo, which contains the JSON definition of the Logic Apps we will be deploying. If you already have this, open a new terminal session and change to the `money-saving-azure-logic-apps` folder.:
 
 {{< terminal title="Cloning to accompanying repo" >}}
-```
+```text
 git clone git@github.com:russmckendrick/money-saving-azure-logic-apps.git
 cd money-saving-azure-logic-apps
 ```
@@ -828,7 +828,7 @@ cd money-saving-azure-logic-apps
 Now, we can set some environment variables:
 
 {{< terminal title="Setting some environment variables" >}}
-```
+```text
 export RESOURCE_GROUP_NAME="rg-logicapps-blogpost-uks"
 export REGION="uksouth"
 export SUBSCRIPTION_ID=$(az account show --query id --output tsv)
@@ -840,7 +840,7 @@ export LOGIC_APP_NAME="la-applicationGatewayStopStart-uks"
 The commands below are repeated from the last section of the post, so if you have already run them, you can move on to the next set of commands; if you haven't, then we need to create the resource group, user-managed identity and assign Reader access:
 
 {{< terminal title="Create the resource group, identity and assign Reader access" >}}
-```
+```text
 az group create --name $RESOURCE_GROUP_NAME --location $REGION
 az identity create --resource-group $RESOURCE_GROUP_NAME --name $MANAGED_ID_NAME
 az role assignment create --assignee-principal-type "ServicePrincipal" --assignee-object "$(az identity show --resource-group $RESOURCE_GROUP_NAME --name $MANAGED_ID_NAME --query principalId --output tsv)" --role "Reader" --scope "/subscriptions/$SUBSCRIPTION_ID"
@@ -850,7 +850,7 @@ az role assignment create --assignee-principal-type "ServicePrincipal" --assigne
 Next, we need to assign the user-managed identity Network Contributor access to our subscription:
 
 {{< terminal title="Granting Network Contributor permissions" >}}
-```
+```text
 az role assignment create \
 	--assignee-principal-type "ServicePrincipal" \
 	--assignee-object "$(az identity show --resource-group $RESOURCE_GROUP_NAME --name $MANAGED_ID_NAME --query principalId --output tsv)" \
@@ -862,7 +862,7 @@ az role assignment create \
 The access is sorted, we can create the Logic App:
 
 {{< terminal title="Create the Logic App" >}}
-```
+```text
 az logic workflow create \
 	--resource-group $RESOURCE_GROUP_NAME \
 	--location $REGION \
@@ -876,7 +876,7 @@ az logic workflow create \
 Now we can update the parameters:
 
 {{< terminal title="Setting the managedId and subscriptionId parameters" >}}
-```
+```text
 az logic workflow update \
 	--resource-group $RESOURCE_GROUP_NAME \
 	--name $LOGIC_APP_NAME \
@@ -896,7 +896,7 @@ So far, it's very similar to the workflow for Azure Virtual Machines which I aim
 Again, for testing, we need a resource to target; the commands below deploy an Azure Application Gateway with the most basic configuration I could get away with:
 
 {{< terminal title="Launching an Azure Application Gateway" >}}
-```
+```text
 export RESOURCE_GROUP_NAME="rg-demo-appgw-uks"
 export REGION=uksouth
 export VNET_NAME=vnet-demo-appgw-uks

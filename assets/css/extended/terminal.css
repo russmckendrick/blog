@@ -45,3 +45,22 @@
 }
 
 .shadow { box-shadow: 0px 0px 10px rgba(0,0,0,.4)}
+
+/* Target everything within the terminal body */
+.terminal .macosterminalbody,
+.terminal .macosterminalbody pre,
+.terminal .macosterminalbody code,
+.terminal .macosterminalbody .highlight,
+.terminal .macosterminalbody .chroma,
+.terminal .macosterminalbody .chroma * {
+    background: var(--terminal-bg);
+    color: #00FF00 !important; /* Bright green text */
+    background-color: var(--terminal-bg); !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    overflow: auto;
+}
+
+/* Ensure no backgrounds on inline elements */
+.terminal .macosterminalbody .chroma span {
+    background-color: transparent !important;
+}
