@@ -26,7 +26,7 @@ This is all VERY customised to my requirements, and there are a lot of hard-code
 The commands below assume you are starting from a clean installation, which I do at least once a year. The first thing is to install Oh MyZsh:
 
 {{< terminal title="Installing Oh My ZSH" >}}
-```
+```text
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 {{< /terminal >}}
@@ -34,7 +34,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 Once installed, we can download and install the Fonts and Theme I use:
 
 {{< terminal title="Installing the fonts and theme" >}}
-```
+```text
 brew tap homebrew/cask-fonts
 brew install font-hack-nerd-font
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -44,7 +44,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 There are some other tools called by the dot files, so lets install those too.
 
 {{< terminal title="Installing and configuring the other bits" >}}
-```
+```text
 brew install tree pygments ffmpeg yt-dlp visual-studio-code drawio thefuck stow zoxide gh
 gh extension install github/gh-copilot # enable the gh-copilot  extension
 gh copilot alias -- zsh # run one and accept the t&cs
@@ -56,7 +56,7 @@ gh copilot alias -- zsh # run one and accept the t&cs
 First, we need to pull [my dotfiles repo](https://github.com/russmckendrick/dotfiles/):
 
 {{< terminal title="Some Command" >}}
-```
+```text
 git clone git@github.com:russmckendrick/dotfiles.git ~/.dotfiles
 ```
 {{< /terminal >}}
@@ -64,7 +64,7 @@ git clone git@github.com:russmckendrick/dotfiles.git ~/.dotfiles
 Then, create backups of all of the existing files:
 
 {{< terminal title="Backup some files" >}}
-```
+```text
 mv ~/.zprofile ~/.dotfiles/backups/
 mv ~/.zshrc ~/.dotfiles/backups/
 mv ~/.gitconfig ~/.dotfiles/backups/
@@ -74,7 +74,7 @@ mv ~/.gitconfig ~/.dotfiles/backups/
 Now we can create symbolic links to load contents from our `~/.dotfiles` folder using `stow`:
 
 {{< terminal title="Create the Symbolic Links" >}}
-```
+```text
 cd ~/.dotfiles
 stow .
 ```

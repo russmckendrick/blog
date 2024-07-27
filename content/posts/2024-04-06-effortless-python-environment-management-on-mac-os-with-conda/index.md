@@ -35,7 +35,7 @@ So, as I wanted to keep things as simple as possible, I used Miniconda rather th
 The installation guide for Miniconda is simple if you are using [Homebrew](https://brew.sh/), you just need to run the following command:
 
 {{< terminal title="Installing Miniconda" >}}
-```
+```text
 brew install miniconda
 ```
 {{< /terminal >}}
@@ -43,7 +43,7 @@ brew install miniconda
 Once installed, we must ensure it is loaded when we open our terminal. To add the right lines to `~/.zshrc` run the following command:
 
 {{< terminal title="Update the ~/.zshrc file" >}}
-```
+```text
 conda init zsh
 ```
 {{< /terminal >}}
@@ -84,7 +84,7 @@ In this example, I will create an environment for running Ansible; let's start b
 To add an environment for running just Ansible, I ran the following command:
 
 {{< terminal title="Creating the Ansible environment" >}}
-```
+```text
 conda create -n ansible python=3.12
 ```
 {{< /terminal >}}
@@ -92,7 +92,7 @@ conda create -n ansible python=3.12
 The command gave me the following output:
 
 {{< terminal title="Output of the create command" >}}
-```
+```text
 Channels:
  - defaults
 Platform: osx-arm64
@@ -163,7 +163,7 @@ Executing transaction: done
 With the dedicated Ansible environment created, we can activate using the following command: 
 
 {{< terminal title="Activating the Ansible environment" >}}
-```
+```text
 conda activate ansible
 ```
 {{< /terminal >}}
@@ -171,7 +171,7 @@ conda activate ansible
 We can now check the path of the `python` binary by running `which python`:
 
 {{< terminal title="Checking which python is being used" >}}
-```
+```text
 which python
 /opt/homebrew/Caskroom/miniconda/base/envs/ansible/bin/python
 ```
@@ -180,7 +180,7 @@ which python
 As you can see, it is using the `python` binary within our environment, which means that Ansible can now be installed along with some collections:
 
 {{< terminal title="Installing Ansible and some collections" >}}
-```
+```text
 python -m pip install ansible
 ansible-galaxy collection install azure.azcollection
 python -m pip install -r ~/.ansible/collections/ansible_collections/azure/azcollection/requirements-azure.txt
@@ -202,7 +202,7 @@ Here are some notes on package management and virtual environment management.
 As well as being a Python environment manager, Conda also provides it own package management, so rather that running pip using 
 
 {{< terminal title="Installing Ansible using pip" >}}
-```
+```text
 python -m pip install ansible
 ```
 {{< /terminal >}}
@@ -210,7 +210,7 @@ python -m pip install ansible
 I could have run the following command:
 
 {{< terminal title="The Conda install command" >}}
-```
+```text
 conda install conda-forge::ansible
 ```
 {{< /terminal >}}
@@ -218,7 +218,7 @@ conda install conda-forge::ansible
 This would install Ansible from the main [Anaconda](https://anaconda.org/) site, which hosts its own files at  [conda-forge/ansible](https://anaconda.org/conda-forge/ansible) for Ansible, if I had taken this route the installation would have looked like the following:
 
 {{< terminal title="Going through the installation" >}}
-```
+```text
 Channels:
  - defaults
  - conda-forge
@@ -274,9 +274,11 @@ However, in my case, as I wanted to keep things simple - I am sticking to what I
 
 I did, however, add the following `alias` for `pip` in my [dotfile](https://github.com/russmckendrick/dotfiles) to call `python -m pip` each time I run the `pip` command:
 
-```
+{{< ide title="Installing Python 3.10" >}}
+```text
 alias pip='python -m pip'
 ```
+{{< /ide >}}
 
 This means that if I run ￼`pip install ansible`￼ , the command ￼`python -m pip install ansible`￼ would be run, so I can be sure that I am not calling the `pip` executable from some other random place. 
 
@@ -285,7 +287,7 @@ This means that if I run ￼`pip install ansible`￼ , the command ￼`python -m
 Now, not every piece of code supports the latest and greatest version of Python. Luckily, as you might have already guessed, we can define what version of Python to install when you create your virtual environment using Conda.
 
 {{< terminal title="Installing Python 3.10" >}}
-```
+```text
 conda create -n test python=3.10
 ```
 {{< /terminal >}}
@@ -293,7 +295,7 @@ conda create -n test python=3.10
 As you can see, we are requesting that Python 3.10 be installed instead of Python 3.12, which is what our other virtual environments use.
 
 {{< terminal title="The output of installing Python 3.10" >}}
-```
+```text
 Channels:
  - defaults
 Platform: osx-arm64
@@ -363,7 +365,7 @@ As you can see from the screen below, switching to the new virtual environment l
 You can list all of your virtual environments using the command below:
 
 {{< terminal title="Listing all envs" >}}
-```
+```text
 conda env list
 ```
 {{< /terminal >}}
@@ -371,7 +373,7 @@ conda env list
 This will return something like the following:
 
 {{< terminal title="The output of conda env list" >}}
-```
+```text
 # conda environments:
 #
 base                  *  /opt/homebrew/Caskroom/miniconda/base
@@ -384,7 +386,7 @@ test                     /opt/homebrew/Caskroom/miniconda/base/envs/test
 Now let's remove the test virtual environment:
 
 {{< terminal title="Removing the test env" >}}
-```
+```text
 conda remove -n test --all
 ```
 {{< /terminal >}}
@@ -392,7 +394,7 @@ conda remove -n test --all
 This will nuke everything to do with the test virtual environment:
 
 {{< terminal title="The output of conda remove -n test --all" >}}
-```
+```text
 Remove all packages in environment /opt/homebrew/Caskroom/miniconda/base/envs/test:
 
 ## Package Plan ##
@@ -432,7 +434,7 @@ Everything found within the environment (/opt/homebrew/Caskroom/miniconda/base/e
 Even if, like me, you use `pip` there are still some packages managed by Conda in your Virtual environment, you can update them by switching to the virtual environment you want to update and then run:
 
 {{< terminal title="Updating the Conda managed packages in your env" >}}
-```
+```text
 conda update --all
 ```
 {{< /terminal >}}

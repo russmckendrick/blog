@@ -30,7 +30,7 @@ While there is an automated installer, I thought it best to run through a manual
 I am going to use Conda so I don't end up messing up my newly organized Python environment:
 
 {{< terminal title="Creating the InvokeAI conda environment" >}}
-```
+```text
 conda create -n InvokeAI python=3.11
 conda activate InvokeAI
 ```
@@ -43,7 +43,7 @@ As you can see, we are setting up the environment using Python 3.11, this is bec
 With our Python environment ready we can now set the path where InvokeAI will store its config, database and files:
 
 {{< terminal title="Setting the path" >}}
-```
+```text
 export INVOKEAI_ROOT=~/invokeai
 mkdir $INVOKEAI_ROOT
 ```
@@ -54,7 +54,7 @@ The path I have used, `~/invokeai` is the default one, if you change this I woul
 We can now install InvokeAI itself, to do this run the following command:
 
 {{< terminal title="Installing InvokeAI and its requirements" >}}
-```
+```text
 pip install InvokeAI --use-pep517 --extra-index-url https://download.pytorch.org/whl/cu121
 ```
 {{< /terminal >}}
@@ -66,7 +66,7 @@ As you can see, it installs **alot** of packages and takes a few minutes to down
 Once installed, all that is left to do is to start the web interface - to do this run the following command:
 
 {{< terminal title="Starting the InvokeAI web interface" >}}
-```
+```text
 invokeai-web
 ```
 {{< /terminal >}}
