@@ -1,5 +1,5 @@
 baseURL: "https://www.russ.cloud/"
-title: "Russ.Cloud"
+title: "Russ McKendrick"
 paginate: "8"
 theme: ["PaperMod", "hugo-shortcode-gallery"]
 timeout: 600000 
@@ -150,6 +150,13 @@ disableAliases: true
 mediaTypes:
   text/redirects:
   text/plain:
+
+taxonomies:
+    tag: "tags"
+
+disableKinds: ["taxonomy"]
+
+notFound: "/404.html"
 
 outputFormats:
   _redirect:
