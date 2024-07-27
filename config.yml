@@ -151,11 +151,6 @@ mediaTypes:
   text/redirects:
   text/plain:
 
-taxonomies:
-    tag: "tags"
-
-disableKinds: ["taxonomy"]
-
 notFound: "/404.html"
 
 outputFormats:
