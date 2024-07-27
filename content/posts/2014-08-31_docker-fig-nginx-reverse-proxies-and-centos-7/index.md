@@ -123,7 +123,7 @@ Couple this with a [wildcard DNS record](http://en.wikipedia.org/wiki/Wildcard_D
 
 #### Docker on CentOS 7
 
-All of this is great, however the [repo version of Docker in CentOS 7](http://mirror.centos.org/centos/7/extras/x86_64/Packages/) is old, its [0.11](http://blog.docker.com/2014/05/docker-0-11-release-candidate-for-1-0/) which for a piece of software as fast moving as Docker is ancient. Luckily there is a repo on [copr](https://copr.fedoraproject.org/coprs/) which is [hosting EL7 compatible RPMs of the latest builds](https://copr.fedoraproject.org/coprs/goldmann/docker-io/). As I rebuild my servers all the time I knocked out a small [one liner](https://github.com/russmckendrick/docker-install) which installs the later version of Docker on a CentOS 7 server;
+All of this is great, however the [repo version of Docker in CentOS 7](http://mirror.centos.org/centos-7/) is old, its [0.11](http://blog.docker.com/2014/05/docker-0-11-release-candidate-for-1-0/) which for a piece of software as fast moving as Docker is ancient. Luckily there is a repo on [copr](https://copr.fedoraproject.org/coprs/) which is [hosting EL7 compatible RPMs of the latest builds](https://copr.fedoraproject.org/coprs/goldmann/docker-io/). As I rebuild my servers all the time I knocked out a small [one liner](https://github.com/russmckendrick/docker-install) which installs the later version of Docker on a CentOS 7 server;
 
 ```
 curl -fsS https://raw2.github.com/russmckendrick/docker-install/master/install | bash
