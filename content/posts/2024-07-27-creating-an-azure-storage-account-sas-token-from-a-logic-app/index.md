@@ -10,7 +10,7 @@ cover:
     relative: true
     alt: "Learn how to generate an Azure Storage Account SAS token from a Logic App using an Azure Function. This step-by-step guide covers deploying a PowerShell-based Function App, creating the SAS token generation function, and integrating it into your Logic App workflow. Overcome common challenges and enhance your Azure development skills with this practical tutorial."
 tags:
-  - "post"
+  - "Azure"
 ---
 
 Don't you just love it when you open your laptop first thing on a Monday morning, a fresh cup of coffee at the ready and you think to yourself ... 
