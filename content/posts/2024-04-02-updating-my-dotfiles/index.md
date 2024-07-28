@@ -13,6 +13,10 @@ tags:
   - "macos"
   - "code"
   - "life"
+keywords:
+  - "macOS"
+  - "Dotfile"
+  - "stow"
 ---
 
 I decided to spring clean my [Dotfiles repo](https://github.com/russmckendrick/dotfiles), as it had been a while. Then I noticed that the last time I mentioned them on the blog was [nearly ten years ago](/2014/08/10/dotfiles/), so I wanted to give a quick update. The most significant change is that I have moved to using [Zsh](https://www.zsh.org/ "Zsh") and [Oh My Zsh](https://ohmyz.sh/) since Zsh became the default Shell in macOS.

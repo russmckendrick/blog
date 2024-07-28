@@ -198,3 +198,8 @@ imaging:
     includeFields: ".*"
 
 ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken", "shortcode-twitter-getremote"]
+
+sitemap:
+  changefreq: "weekly"
+  priority: 0.5
+  filename: "sitemap.xml"

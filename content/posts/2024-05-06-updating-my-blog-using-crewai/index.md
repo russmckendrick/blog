@@ -12,6 +12,11 @@ cover:
 tags:
   - "ai"
   - "blog"
+keywords:
+  - "AI"
+  - "CrewAI"
+  - "Python"
+  - "Blogging"
 ---
 
 I have been reading a lot about CrewAI recently and as it was a long weekend I decided to tip my toe in the water and do something with it, but what?

@@ -14,6 +14,12 @@ tags:
   - "code"
   - "cloud"
   - "automation"
+keywords:
+  - "Azure"
+  - "Azure Logic App"
+  - "Azure Application Gateway"
+  - "Azure Virtual Machine"
+  - "Save Money"
 ---
 
 During the day job, I have to get a little creative with controlling costs for Azure resources; there are some everyday tasks and scenarios where Azure Logic Apps can help you save money 💰.

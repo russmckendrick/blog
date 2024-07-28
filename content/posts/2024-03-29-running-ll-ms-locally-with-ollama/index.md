@@ -15,6 +15,13 @@ tags:
   - "macOS"
 aliases:
     - "/2024/03/23/running-llms-locally-with-ollama/"
+keywords:
+  - "AI"
+  - "ollama"
+  - "Llama"
+  - "macOS"
+  - "Mistral"
+  - "ngrok"
 ---
 
 As I am coming to the end of writing the second edition of Lean Ansible (more news on that coming soon), I thought now would be a great time to have a look at what exciting developments have been happening in the six months now that I have a little more free time.

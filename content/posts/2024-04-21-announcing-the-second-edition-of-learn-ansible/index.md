@@ -13,6 +13,10 @@ tags:
   - "book"
   - "ansible"
   - "life"
+keywords:
+  - "Learn Ansible"
+  - "Book"
+  - "Ansible"
 ---
 
 
