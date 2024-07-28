@@ -4,7 +4,7 @@ author: "Russ McKendrick"
 date: "2024-07-15"
 description: "This Weeks Top Music: Depeche Mode, Radiohead & More Hits"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 showToc: true
 ShowRelated: false
 cover:

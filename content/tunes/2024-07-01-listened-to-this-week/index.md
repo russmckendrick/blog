@@ -4,7 +4,7 @@ author: "Russ McKendrick"
 date: "2024-07-01"
 description: "Explore week 25s top music hits from artists like Arcade Fire and Prince, featuring albums such as The Suburbs and 1999."
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 showToc: true
 ShowRelated: false
 cover:

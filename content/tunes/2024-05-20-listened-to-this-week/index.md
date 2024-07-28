@@ -5,7 +5,7 @@ date: "2024-05-20"
 description: "Explore this weeks top music hits from U2, Pearl Jam, and more featuring albums like The Joshua Tree and Vs. Dive into the best tunes!"
 draft: false
 showToc: true
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 cover:
     image: "/img/weekly-tunes-023.png"

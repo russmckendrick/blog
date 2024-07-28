@@ -4,7 +4,7 @@ author: "Russ McKendrick"
 date: "2024-06-03"
 description: "Explore this weeks top music hits featuring artists like Primal Scream, Pixies, and albums like The 59 Sound, Copper Blue."
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 showToc: true
 ShowRelated: false
 cover:

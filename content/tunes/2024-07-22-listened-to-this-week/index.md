@@ -4,7 +4,7 @@ author: "Russ McKendrick"
 date: "2024-07-22"
 description: "Explore this weeks top music hits featuring artists like John Lennon and Rush with albums like Mind Games and Moving Pictures."
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 showToc: true
 ShowRelated: false
 cover:
@@ -13,6 +13,28 @@ cover:
     alt: "Explore this weeks top music hits featuring artists like John Lennon and Rush with albums like Mind Games and Moving Pictures."
 tags:
     - "Listened"
+keywords:
+  - "John Lennon"
+  - "Mind Games"
+  - "Mother Earth"
+  - "The People Tree"
+  - "Cardiacs"
+  - "Sing to God"
+  - "Finn Brothers"
+  - "Finn"
+  - "Haken"
+  - "Affinity"
+  - "Fleetwood Mac"
+  - "Emiliana Torrini"
+  - "Miss Flower"
+  - "Anathema"
+  - "Distant Satellites"
+  - "Death in Vega"
+  - "Scorpio Rising"
+  - "Rush"
+  - "Moving Pictures"
+  - "The Radicant"
+  - "We Ascend"
 ---
 
 {{< notice note >}}

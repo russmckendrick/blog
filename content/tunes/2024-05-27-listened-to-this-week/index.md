@@ -4,7 +4,7 @@ author: "Russ McKendrick"
 date: "2024-05-27"
 description: "This Weeks Top Music Hits from Pearl Jam to Genesis and Beyond"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 showToc: true
 ShowRelated: false
 cover:

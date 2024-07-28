@@ -4,7 +4,7 @@ author: "Russ McKendrick"
 date: "2024-06-10"
 description: "Explore top music hits of the week featuring artists like INXS, Bowie and more with albums such as Blackstar and Duke lighting up the charts."
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 showToc: true
 ShowRelated: false
 cover:
