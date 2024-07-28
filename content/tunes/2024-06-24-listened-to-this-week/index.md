@@ -4,7 +4,7 @@ author: "Russ McKendrick"
 date: "2024-06-24"
 description: "Explore week 24s trending music with artists like Suede, Oasis, and LCD Soundsystem, plus top albums including Empath and Definitely Maybe."
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 showToc: true
 ShowRelated: false
 cover:

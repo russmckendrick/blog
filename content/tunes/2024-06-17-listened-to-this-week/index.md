@@ -4,7 +4,7 @@ author: "Russ McKendrick"
 date: "2024-06-17"
 description: "Explore top tracks from Springsteens Born in the U.S.A., Bowies Earthling, Tools Lateralus & more trending albums and artists this week."
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 showToc: true
 ShowRelated: false
 cover:

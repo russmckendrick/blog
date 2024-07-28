@@ -4,7 +4,7 @@ author: "Russ McKendrick"
 date: "{{ date }}"
 description: "{{ summary }}"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 showToc: true
 ShowRelated: false
 cover:
@@ -13,6 +13,11 @@ cover:
     alt: "{{ summary }}"
 tags:
     - "Listened"
+keywords:
+{% for (artist, album), count in top_albums -%}
+- "{{ artist }}"
+- "{{ album }}"
+{%- endfor %}
 ---
 
 {% raw %}{{< notice note >}}{% endraw %}

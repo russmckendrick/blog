@@ -5,7 +5,7 @@ date: "2024-05-06"
 description: "Explore week 17s top music hits, featuring artists like Pink Floyd and Soulwax, and albums from The Dark Side of the Moon to Songs in the Key of Life."
 draft: false
 showToc: true
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 cover:
     image: "/img/weekly-tunes-003.png"

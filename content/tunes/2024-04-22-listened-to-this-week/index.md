@@ -5,7 +5,7 @@ date: "2024-04-22"
 description: "Explore this weeks top music hits featuring artists like Bruce Springsteen and R.E.M., and albums like Dirt and Violator."
 draft: false
 showToc: true
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 cover:
     image: "/img/weekly-tunes-019.png"

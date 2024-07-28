@@ -4,7 +4,7 @@ author: "Russ McKendrick"
 date: "2024-07-08"
 description: "This Weeks Top Music Hits: Explore Sepultura, R.E.M. & More"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 showToc: true
 ShowRelated: false
 cover:
