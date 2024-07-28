@@ -13,6 +13,12 @@ tags:
   - "macOS"
   - "Python"
   - "AI"
+keywords:
+  - "InvokeAI"
+  - "AI"
+  - "Stable Diffusion"
+  - "Generative AI"
+  - "macOS"
 ---
 
 Just a quick post this week, following on from [my last post last week about using Conda](/2024/04/06/conda-for-python-environment-management-on-macos/) and also the one from a few weeks about about [running LLMs locally using ollama](/2024/03/29/running-llms-locally-with-ollama/) I decided to explore the world of AI image generation on my local macOS machine.

@@ -16,6 +16,12 @@ tags:
   - "infrastructure-as-code"
 aliases:
     - "/2024/06/28/azure-devops-ansible-pipeline-updated-boosting-efficiency-with-caching/"
+keywords:
+  - "Azure"
+  - "Azure DevOps"
+  - "Ansible"
+  - "Caching"
+  - "Learn Ansible"
 ---
 
 Back in May 2020 I published what would be one of the more popular posts on this blog [Azure DevOps Ansible Pipeline](/2020/05/10/azure-devops-ansible-pipeline/), it covered the Azure DevOps pipeline I had settled upon for running my Ansible playbooks which built and interacted with workloads running in [Microsoft Azure](/tags/azure/).

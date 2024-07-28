@@ -11,6 +11,12 @@ cover:
     alt: "Discover powerful KQL queries to enhance your Azure Virtual Desktop (AVD) management. Learn how to track user connections, analyze session times, monitor errors, and gain insights into your AVD environment's performance and security."
 tags:
   - "azure"
+keywords:
+  - "Azure"
+  - "Azure Virtual Desktop"
+  - "Azure Log Analytics"
+  - "KQL"
+  - "Logs"
 ---
 
 This is a quick post collating some of the notes for KQL queries for Azure Virtual Desktop I have in various documents into a single place, just in case they are helpful for anyone and also for my reference, 👋 hello future [Russ](/about).

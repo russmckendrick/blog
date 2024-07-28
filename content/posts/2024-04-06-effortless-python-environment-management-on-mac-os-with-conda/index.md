@@ -14,6 +14,11 @@ tags:
   - "Python"
   - "Ansible"
   - "Code"
+keywords:
+  - "macOS"
+  - "Conda"
+  - "Python"
+  - "Tutorial"
 ---
 
 As mentioned in a [previous post](/2024/03/29/running-llms-locally-with-ollama/), I recently finished writing the second edition of Learn Ansible. This had me using Python a lot, and my one key takeaway is that managing Python has become a massive chore. Now, with the book complete, I thought I would strip back on my machine, start from scratch - or as close to clean as I could get - and develop a cleaner, more streamlined way of managing Python on my local machine.

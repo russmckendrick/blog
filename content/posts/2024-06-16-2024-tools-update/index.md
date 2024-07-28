@@ -12,6 +12,12 @@ cover:
 tags:
   - "tools"
   - "macos"
+keywords:
+  - "Tools"
+  - "macOS"
+  - "Desktop tools"
+  - "Terminal Apps"
+  - "SaaS"
 ---
 
 It looks like I have written about the tools I use day-to-day since [2017](/2017/01/05/day-to-day-tools/); I wonder how much has changed. 🤔
