@@ -14,7 +14,7 @@ cover:
 tags:
     - "Listened"
 keywords:
-{% for (artist, album), count in top_albums -%}
+{% for (artist, album), count in top_albums %}
 - "{{ artist }}"
 - "{{ album }}"
 {%- endfor %}
