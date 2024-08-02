@@ -98,7 +98,7 @@ az functionapp create \
 
 ## Deploying the Function
 
-Now we have the Azure Function App deployed, our next task is to create and deploy our actual function. Being a [macOS](/tags/mags/) user I use `func` to create the function locally and then publish it, you can [download the tool from here](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local), once installed, run the following commands to create the local function:
+Now we have the Azure Function App deployed, our next task is to create and deploy our actual function. Being a [macOS](/tags/macos/) user I use `func` to create the function locally and then publish it, you can [download the tool from here](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local), once installed, run the following commands to create the local function:
 
 {{< terminal title="Deploy to the Function App using the Azure CLI" >}}
 ```text
