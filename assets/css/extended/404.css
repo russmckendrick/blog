@@ -108,6 +108,7 @@
 .popular-tags h2 {
   font-size: 24px;
   color: var(--text-color);
+  margin-bottom: 20px;
 }
 
 .tag-cloud {
@@ -115,10 +116,11 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
 }
 
 .tag {
+  display: inline-flex;
+  align-items: center;
   padding: 8px 16px;
   background-color: var(--tag-bg);
   color: var(--tag-text);
@@ -133,4 +135,9 @@
   background-color: var(--tag-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.tag-count {
+  margin-left: 5px;
+  font-weight: bold;
 }

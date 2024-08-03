@@ -1,6 +1,8 @@
 {{- define "main" }}
+
 <div class="not-found-container page-404">
     <h1 class="not-found-title">404</h1>
+    
     <p class="not-found-message">Oops! The page you're looking for could not be found.</p>
     
     <div class="not-found-actions">
@@ -10,12 +12,20 @@
     </div>
     
     <div class="popular-tags">
-        <h2>Tags</h2>
+        <h2>Popular Tags</h2>
         <div class="tag-cloud">
         {{- range $name, $taxonomy := .Site.Taxonomies.tags }}
-            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" class="tag">{{ $name }}</a>
+            {{- $count := len $taxonomy }}
+            {{- with $.Site.GetPage (printf "/tags/%s" $name) }}
+                <a href="{{ .Permalink }}" class="tag">
+                    {{ .Title }}
+                    {{- if .Params.icon }} {{ .Params.icon | safeHTML }} {{- end }}
+                    <span class="tag-count">{{ $count }}</span>
+                </a>
+            {{- end }}
         {{- end }}
         </div>
     </div>
 </div>
+
 {{- end }}{{/* end main */}}
