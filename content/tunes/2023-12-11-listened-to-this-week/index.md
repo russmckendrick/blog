@@ -8,6 +8,7 @@ summary: "Embark on an indie-pop journey with Stars, where their celestial melod
 cover:
     image: "/img/weekly-tunes-006.png"
     relative: false
+    alt: "Embark on an indie-pop journey with Stars, where their celestial melodies will captivate your senses!"
 tags:
     - "Listened"
 aliases:

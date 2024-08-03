@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-013.png"
     relative: false
+    alt: "Discover top tracks from U2, Paul Simon, Cake, and more in our latest music roundup. Dive into hits from albums like Graceland and The Unforgettable Fire."
 tags:
     - "Listened"
 

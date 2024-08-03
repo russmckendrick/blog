@@ -8,6 +8,7 @@ summary: "Discover the captivating soundscapes of Doves, where alt-rock meets em
 cover:
     image: "/img/weekly-tunes-006.png"
     relative: false
+    alt: "Discover the captivating soundscapes of Doves, where alt-rock meets emotional depth. Their intricate melodies will resonate with your highs and lows!"
 tags:
     - "Listened"
 ---

@@ -8,6 +8,7 @@ summary: "Embrace the rhythmic fusion of electronic music, where layered texture
 cover:
     image: "/img/weekly-tunes-011.png"
     relative: false
+    alt: "Embrace the rhythmic fusion of electronic music, where layered textures meet infectious beats!"
 tags:
     - "Listened"
 ---

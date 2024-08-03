@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-004.png"
     relative: false
+    alt: "Explore this weeks top music hits featuring artists like Primal Scream, Pixies, and albums like The 59 Sound, Copper Blue."
 tags:
     - "Listened"
 ---

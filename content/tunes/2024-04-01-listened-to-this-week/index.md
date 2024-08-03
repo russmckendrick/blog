@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-020.png"
     relative: false
+    alt: "Explore week 12s top music featuring artists from Orchestral Manoeuvres in the Dark to Alice in Chains and albums like Souvenir to Jar of Flies."
 tags:
     - "Listened"
 aliases:

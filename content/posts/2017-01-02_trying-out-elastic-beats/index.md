@@ -38,7 +38,7 @@ aliases:
 
 ---
 
-![](/img/2017-01-02_trying-out-elastic-beats_0.png)
+![a person playing a drum set](/img/2017-01-02_trying-out-elastic-beats_0.png)
 
 I thought it was about time, as I had some to spare today, to have a play with one of the new feature of the Elastic family of products I have yet to try.
 
@@ -99,7 +99,7 @@ docker $(docker-machine config worker01) swarm join $(docker-machine ip manager)
 docker $(docker-machine config worker02) swarm join $(docker-machine ip manager):2377 --token $SWMTKN
 ```
 
-![](/img/2017-01-02_trying-out-elastic-beats_1.png)
+![text](/img/2017-01-02_trying-out-elastic-beats_1.png)
 
 I checked that all three Docker hosts were correctly in the cluster;
 
@@ -107,7 +107,7 @@ I checked that all three Docker hosts were correctly in the cluster;
 docker $(docker-machine config manager) node ls
 ```
 
-![](/img/2017-01-02_trying-out-elastic-beats_2.png)
+![a screenshot of a computer](/img/2017-01-02_trying-out-elastic-beats_2.png)
 
 Everything was as expected, it was time to launch the Elasticsearch and Kibana services. I started by creating an overlay network called elk;
 
@@ -115,7 +115,7 @@ Everything was as expected, it was time to launch the Elasticsearch and Kibana s
 docker $(docker-machine config manager) network create --driver overlay elk
 ```
 
-![](/img/2017-01-02_trying-out-elastic-beats_3.png)
+![graphical user interface, text](/img/2017-01-02_trying-out-elastic-beats_3.png)
 
 Then I created the Elasticsearch service;
 
@@ -141,7 +141,7 @@ docker $(docker-machine config manager) service create \
   kibana
 ```
 
-![](/img/2017-01-02_trying-out-elastic-beats_4.png)
+![text](/img/2017-01-02_trying-out-elastic-beats_4.png)
 
 After a minute I checked that the two services were running as expected using;
 
@@ -149,7 +149,7 @@ After a minute I checked that the two services were running as expected using;
 docker $(docker-machine config manager) service ls
 ```
 
-![](/img/2017-01-02_trying-out-elastic-beats_5.png)
+![text](/img/2017-01-02_trying-out-elastic-beats_5.png)
 
 I now had my Elastic stack up and running.
 
@@ -222,7 +222,7 @@ Once the configuration file was in place I started the service by running;
 docker-machine ssh worker01 sudo /etc/init.d/metricbeat start
 ```
 
-![](/img/2017-01-02_trying-out-elastic-beats_6.png)
+![text](/img/2017-01-02_trying-out-elastic-beats_6.png)
 
 I then repeated the process on worker02 and manager by replacing worker01 in the `docker-machine ssh `commands.
 
@@ -250,19 +250,19 @@ open http://$(docker-machine ip manager):5601
 
 Like all other Kibana installations, the first thing I needed to do was configure an index pattern, to do this I entered `metricbeat-*`and selected `@timestamp`from the drop-down list;
 
-![](/img/2017-01-02_trying-out-elastic-beats_7.png)
+![graphical user interface, text, application, email](/img/2017-01-02_trying-out-elastic-beats_7.png)
 
 Once that index pattern had been configured clicking on **Discover** took me to the following view, as you can see, I was receiving metrics from my three hosts;
 
-![](/img/2017-01-02_trying-out-elastic-beats_8.png)
+![graphical user interface, text, application, table](/img/2017-01-02_trying-out-elastic-beats_8.png)
 
 Clicking on **Dashboard**, and then selecting **Metricbeat-overview** gave me the following view;
 
-![](/img/2017-01-02_trying-out-elastic-beats_9.png)
+![graphical user interface, table](/img/2017-01-02_trying-out-elastic-beats_9.png)
 
 From there I clicked on **Load/CPU** and **Processes** gave me the following dashboards;
 
-![](/img/2017-01-02_trying-out-elastic-beats_10.png)![](/img/2017-01-02_trying-out-elastic-beats_11.png)
+![graphical user interface](/img/2017-01-02_trying-out-elastic-beats_10.png)![chart](/img/2017-01-02_trying-out-elastic-beats_11.png)
 
 So far, so good. Before moving onto the Docker dashboards, I decided to launch a few more services. To do this, I ran the following;
 
@@ -289,7 +289,7 @@ docker $(docker-machine config manager) service create \
   manomarks/visualizer
 ```
 
-![](/img/2017-01-02_trying-out-elastic-beats_13.png)
+![text](/img/2017-01-02_trying-out-elastic-beats_13.png)
 
 Running the following showed me my cluster
 
@@ -305,11 +305,11 @@ open http://$(docker-machine ip manager):8080
 
 Opened my browsers and showed me how my Swarm cluster was organised;
 
-![](/img/2017-01-02_trying-out-elastic-beats_14.png)
+![chart, treemap chart](/img/2017-01-02_trying-out-elastic-beats_14.png)
 
 Going back to Kibana, I selected the **Metricbeat Docker** dashboard and was greeted by the following;
 
-![](/img/2017-01-02_trying-out-elastic-beats_15.png)
+![graphical user interface](/img/2017-01-02_trying-out-elastic-beats_15.png)
 
 The dashboard is exactly what I was expecting to see, selecting the container from the list on the top left shows just the metrics for the selected container. At this point, my time ran out, so I tore down the cluster by running;
 

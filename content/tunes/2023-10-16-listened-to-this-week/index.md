@@ -8,6 +8,7 @@ summary: "Experience the flamboyant world of glam rock with Roxy Music. Their ca
 cover:
     image: "/img/weekly-tunes-022.png"
     relative: false
+    alt: "Experience the flamboyant world of glam rock with Roxy Music. Their captivating blend of bold style and avant-garde compositions will leave you captivated!"
 tags:
     - "Listened"
 ---

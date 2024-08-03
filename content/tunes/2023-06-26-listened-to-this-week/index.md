@@ -8,6 +8,7 @@ summary: "George Harrison's sublime melodies ruled my speakers this week! "
 cover:
     image: "/img/weekly-tunes-009.png"
     relative: false
+    alt: "George Harrison's sublime melodies ruled my speakers this week! "
 tags:
     - "Listened"
 ---

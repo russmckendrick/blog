@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-013.png"
     relative: false
+    alt: "Explore top music hits of the week featuring artists like INXS, Bowie and more with albums such as Blackstar and Duke lighting up the charts."
 tags:
     - "Listened"
 ---

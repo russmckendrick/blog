@@ -8,6 +8,7 @@ summary: "Prefab Sprout's soundscape captivated me this week, with their eclecti
 cover:
     image: "/img/weekly-tunes-017.png"
     relative: false
+    alt: "Prefab Sprout's soundscape captivated me this week, with their eclectic melodies ruling my playlist. Their artistic genius is undeniable."
 tags:
     - "Listened"
 ---

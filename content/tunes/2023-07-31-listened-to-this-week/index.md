@@ -8,6 +8,7 @@ summary: "Jurassic 5 ruled my playlist this week! Their fusion of old-school hip
 cover:
     image: "/img/weekly-tunes-012.png"
     relative: false
+    alt: "Jurassic 5 ruled my playlist this week! Their fusion of old-school hip hop & melodies reign supreme, immerse yourself in their timeless tracks."
 tags:
     - "Listened"
 ---

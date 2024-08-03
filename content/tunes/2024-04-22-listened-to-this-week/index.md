@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-019.png"
     relative: false
+    alt: "Explore this weeks top music hits featuring artists like Bruce Springsteen and R.E.M., and albums like Dirt and Violator."
 tags:
     - "Listened"
 aliases:

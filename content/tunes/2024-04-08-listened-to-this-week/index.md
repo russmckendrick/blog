@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-007.png"
     relative: false
+    alt: "Explore week 13s top hits from Dr. Feelgood, The Who, and others, featuring albums like Mellon Collie and Songs From the Big Chair."
 tags:
     - "Listened"
 aliases:

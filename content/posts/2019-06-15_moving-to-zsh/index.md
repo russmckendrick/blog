@@ -39,7 +39,7 @@ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/m
 
 Once that had completed, I enabled the [Agnoster ZSH theme](https://github.com/agnoster/agnoster-zsh-theme) and enabled the [Sauce Code Powerline font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro) in iTerm2, this has left me a terminal which looks like the following;
 
-![](/img/2019-06-15_moving-to-zsh_1.png)
+![text](/img/2019-06-15_moving-to-zsh_1.png)
 
 Moving over my existing aliases and more importantly, the excellent [z.sh](https://github.com/rupa/z) which is what I use to jump around folders when on the command line seem to work without any problems — which is where I think I had problems before.
 

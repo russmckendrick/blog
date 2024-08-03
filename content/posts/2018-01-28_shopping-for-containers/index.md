@@ -31,7 +31,7 @@ Over the last six months the Docker Store, which was first introduced as a priva
 
 It has quickly, but without much fanfare, become a one stop shop for all things Docker, with the both the documentation and home pages linking back to content now hosted on the store.
 
-![](/img/2018-01-28_shopping-for-containers_1.png)
+![graphical user interface, application](/img/2018-01-28_shopping-for-containers_1.png)
 
 ### So what is the Docker Store?
 
@@ -59,7 +59,7 @@ $ docker plugin install store/weaveworks/net-plugin:2.0.1
 
 This would download the container which contains the plugin from [https://store.docker.com/plugins/weave-net-plugin](https://store.docker.com/plugins/weave-net-plugin).
 
-![](/img/2018-01-28_shopping-for-containers_2.png)
+![graphical user interface, text, application, website](/img/2018-01-28_shopping-for-containers_2.png)
 
 At the time of writing, all but one of the plugins listed it Docker Certified.
 
@@ -71,11 +71,11 @@ As mentioned in the previous section, the bulk of the content on the Docker Stor
 
 The Docker Store is now the offical home for all of the core containers currated by Docker themselves. While these containers are still available at the Docker Hub, they are slowly being moved to the Docker Store.
 
-![](/img/2018-01-28_shopping-for-containers_3.png)
+![graphical user interface, text, application, email](/img/2018-01-28_shopping-for-containers_3.png)
 
 As you can see from the screen above of the [official image for PHP from the Docker Hub](https://hub.docker.com/_/php/), there is a link to the Docker Store at the top of the page. The [Docker Store page for PHP](https://store.docker.com/images/php) gives you the same view, all be it with a few additions;
 
-![](/img/2018-01-28_shopping-for-containers_4.png)
+![graphical user interface, application](/img/2018-01-28_shopping-for-containers_4.png)
 
 You will notice that the the Docker Store page has the price of $0.00 and also it highlights the fact that the image is an Offical Image.
 
@@ -89,17 +89,17 @@ Hopefully they will update both the Nub and Store to use the `docker image pull`
 
 Let’s take a look at another image, [Couchbase on the Docker Hub](https://hub.docker.com/_/couchbase/) looks like any other official image;
 
-![](/img/2018-01-28_shopping-for-containers_5.png)
+![graphical user interface, text, application, email](/img/2018-01-28_shopping-for-containers_5.png)
 
 However, it’s listing on the Docker Store gives a different story;
 
-![](/img/2018-01-28_shopping-for-containers_6.png)
+![graphical user interface, text, application](/img/2018-01-28_shopping-for-containers_6.png)
 
 Here we can see the image is actually maintained by Couchbase Inc, who, from clicking on the [link](https://store.docker.com/publishers/couchbaselabs), we can tell a verified publisher. You will also notice that there are no `docker pull` command listed on the store, instead there is a **Proceed to Checkout** button, as this image is $0.00 lets try checking it out.
 
 Clicking on on the Checkout button takes you to a page which asks for your name, company name, phone number and email address. Once filled in click on Get Content and you will be take to your subscription page;
 
-![](/img/2018-01-28_shopping-for-containers_7.png)
+![graphical user interface, application, website](/img/2018-01-28_shopping-for-containers_7.png)
 
 Let’s try pulling the image from an un-authenciated Docker client by running;
 
@@ -107,11 +107,11 @@ Let’s try pulling the image from an un-authenciated Docker client by running;
 $ docker pull store/couchbase/couchbase:3.1.5
 ```
 
-![](/img/2018-01-28_shopping-for-containers_8.png)
+![graphical user interface, text](/img/2018-01-28_shopping-for-containers_8.png)
 
 Logging in using the `docker login` command then trying to `docker pull` the image has a lot more success;
 
-![](/img/2018-01-28_shopping-for-containers_9.png)
+![text](/img/2018-01-28_shopping-for-containers_9.png)
 
 From there I could for example run the following command to launch Couchbase;
 

@@ -8,6 +8,7 @@ summary: "Explore the mesmerizing psychedelic realms of Pink Floyd. Their timele
 cover:
     image: "/img/weekly-tunes-009.png"
     relative: false
+    alt: "Explore the mesmerizing psychedelic realms of Pink Floyd. Their timeless compositions will transport you to an ethereal sonic universe"
 tags:
     - "Listened"
 ---

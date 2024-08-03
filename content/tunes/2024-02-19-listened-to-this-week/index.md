@@ -8,6 +8,7 @@ summary: "Pure Reason Revolution's aural tapestry captivated my musical journey 
 cover:
     image: "/img/weekly-tunes-016.png"
     relative: false
+    alt: "Pure Reason Revolution's aural tapestry captivated my musical journey this week! "
 tags:
     - "Listened"
 ---

@@ -1,23 +1,20 @@
 ---
-title: "Puppet Server & Client Installation CentOS 6.x"
-author: "Russ Mckendrick"
-description: "Step-by-step guide to setting up a Puppet Server and agent on CentOS 6.4, including Apache configuration and SSL certificate management."
-date: 2013-08-31T11:00:00.000Z
-lastmod: 2021-07-31T12:30:58+01:00
-tags:
-    - "Linux"
-    - "Automation"
-    - "Infrastructure as Code"
-cover:
-    image: "/img/2013-08-31_puppet-server-client-installation-centos-6.x_0.png" 
-    alt: "Step-by-step guide to setting up a Puppet Server and agent on CentOS 6.4, including Apache configuration and SSL certificate management."
-
-images:
- - "/img/2013-08-31_puppet-server-client-installation-centos-6.x_0.png"
 aliases:
-- "/puppet-server-client-installation-centos-6-x-c8145dacdbd1"
-
+- /puppet-server-client-installation-centos-6-x-c8145dacdbd1
+author: Russ Mckendrick
+cover:
+  alt: Step-by-step guide to setting up a Puppet Server and agent on CentOS 6.4, including Apache configuration and SSL certificate management.
+  image: /img/2013-08-31_puppet-server-client-installation-centos-6.x_0.png
+date: 2013-08-31 11:00:00+00:00
+description: Step-by-step guide to setting up a Puppet Server and agent on CentOS 6.4, including Apache configuration and SSL certificate management.
+lastmod: 2021-07-31 12:30:58+01:00
+tags:
+- Linux
+- Automation
+- Infrastructure as Code
+title: Puppet Server & Client Installation CentOS 6.x
 ---
+
 
 This post assumes that you are starting with a clean minimal CentOS 6.4 64bit server and you have a full hostname set.
 

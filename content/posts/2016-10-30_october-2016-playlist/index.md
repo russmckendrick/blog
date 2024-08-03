@@ -22,7 +22,7 @@ aliases:
 
 ---
 
-![](/img/2016-10-30_october-2016-playlist_0.jpeg)
+![a shelf of books](/img/2016-10-30_october-2016-playlist_0.jpeg)
 
 I have been writing a lot again this month so not a lot to post, however, I have been listening to a lot of music …
 

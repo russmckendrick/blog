@@ -8,6 +8,7 @@ summary: "Explore the genre-defying brilliance of Faith No More, where rock meet
 cover:
     image: "/img/weekly-tunes-021.png"
     relative: false
+    alt: "Explore the genre-defying brilliance of Faith No More, where rock meets funk and experimental beats collide!"
 tags:
     - "Listened"
 ---

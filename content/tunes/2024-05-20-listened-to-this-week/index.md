@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-023.png"
     relative: false
+    alt: "Explore this weeks top music hits from U2, Pearl Jam, and more featuring albums like The Joshua Tree and Vs. Dive into the best tunes!"
 tags:
     - "Listened"
 ---

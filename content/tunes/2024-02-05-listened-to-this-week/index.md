@@ -5,11 +5,10 @@ draft: false
 robotsNoIndex: true
 ShowRelated: false
 summary: "Immerse yourself in the symphonic rock magic of Electric Light Orchestra, where classical arrangements meet rock rhythms!"
-
-(Note: The LastFM data mentioned is assumed as a given context for this piece of creative writing.)"
 cover:
     image: "/img/weekly-tunes-023.png"
     relative: false
+    alt: "Immerse yourself in the symphonic rock magic of Electric Light Orchestra, where classical arrangements meet rock rhythms!"
 tags:
     - "Listened"
 ---

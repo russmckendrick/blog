@@ -8,6 +8,7 @@ summary: "Discover the captivating blend of punk and reggae in The Beat's music.
 cover:
     image: "/img/weekly-tunes-009.png"
     relative: false
+    alt: "Discover the captivating blend of punk and reggae in The Beat's music. Their rhythmic pulse will leave you energized and captivated!"
 tags:
     - "Listened"
 ---

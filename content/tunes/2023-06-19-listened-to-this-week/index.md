@@ -8,6 +8,7 @@ summary: "Embark on a sonic adventure this week with me! My LastFM stats reveal 
 cover:
     image: "/img/weekly-tunes-016.png"
     relative: false
+    alt: "Embark on a sonic adventure this week with me! My LastFM stats reveal an obsession with the legendary Pet Shop Boys. Their catchy synth beats and memorable lyrics have captivated my ears."
 tags:
     - "Listened"
 aliases:

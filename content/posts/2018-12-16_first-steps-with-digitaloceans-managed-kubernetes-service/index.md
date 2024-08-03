@@ -39,25 +39,25 @@ Given that DigitalOcean has always prided themselves ease of use and a low barri
 
 First of all, I needed to launch my cluster, to do this I logged into the DigitalOcean control panel and enabled the limited Kubernetes service, once I had done that I was able to create my Kubernetes cluster;
 
-![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_0.jpg)
+![graphical user interface, website](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_0.jpg)
 
 As you may have already guessed, we need to click on the **Create a Kubernetes cluster** button which can be found in the header. Once you click on the button you will be taken a page which where you can decide a few details about the size of the cluster and where you would like it to be launched, along with the version of Kubernetes you would to use;
 
-![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_1.jpg)
+![graphical user interface](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_1.jpg)
 
 As you can see from the screen above, I used the latest version of Kubernetes supported by DigitalOcean, and as I am based in the UK, I choose to use DigitalOceans London datacentre region.
 
 Scrolling down, I was able to choose the number of nodes in my cluster, their specs, tags and also give my cluster a name;
 
-![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_2.jpg)
+![graphical user interface, text, application, email](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_2.jpg)
 
 The default number of nodes is 3, which at $10 per month per node would have meant that I would have been able to run a cluster with 6GB of RAM and 3 x vCPUs for $30 per month. Once I was happy with my settings I clicked on the **Create Cluster** button at the bottom of the page.
 
-![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_3.jpg)
+![graphical user interface, text, application, email](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_3.jpg)
 
 As you can see from the from the screenshot above, you get a rough estimate on how long it will take to launch and configure your cluster. Once your cluster has been created you will be presented with the following;
 
-![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_4.jpg)
+![graphical user interface, text, email, website](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_4.jpg)
 
 Towards the bottom of the overview page, you have the option to download your configuration file, clicking on the **Download Config File** button will download a YAML file which contains all of the information you need to connect your local Kubernetes client, kubectl, to your newly created Kubernetes cluster.
 
@@ -67,7 +67,7 @@ You can test the connection to your cluster by opening a terminal, changing to t
 $ kubectl --kubeconfig="russ-do-kubeconfig.yaml" get nodes
 ```
 
-![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_5.jpg)
+![text](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_5.jpg)
 
 As you can see, this returned two nodes, which is correct. Now, passing the configuration file each time I want to interact with my cluster can be a chore, so let’s look at using the excellent [KubeContext by Hasan Turken, which is available from the Mac App Store](https://itunes.apple.com/gb/app/kubecontext/id1438838068?mt=12).
 
@@ -86,7 +86,7 @@ $ kubectl get nodes
 $ kubectl version
 ```
 
-![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_6.jpg)
+![text](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_6.jpg)
 
 Now that our cluster is up and running, and we can connect to it let’s test it by launching something. I typically tend to use the Sock Shop microservices demo by Weave, which you can [https://github.com/microservices-demo/microservices-demo](https://github.com/microservices-demo/microservices-demo).
 
@@ -99,7 +99,7 @@ $ kubectl apply -n sock-shop -f "https://github.com/microservices-demo/microserv
 
 This will download the containers and launch the application.
 
-![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_7.jpg)![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_8.jpg)![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_9.jpg)
+![text](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_7.jpg)![text](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_8.jpg)![text](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_9.jpg)
 
 Once launched, you can expose the application by running;
 
@@ -111,15 +111,15 @@ $ kubectl -n sock-shop describe services front-end-lb
 
 As expected, this launches a DigitalOcean load-balancer, you should be able see the public IP address of the load-balancer in the output of the last two command;
 
-![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_10.jpg)![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_11.jpg)
+![text](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_10.jpg)![text](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_11.jpg)
 
 Going to the IP address and port 8079 in a browser, for example, [http://68.138.252.21:8079/](http://68.138.252.21:8079/) will show you the shop-front (well it would if my test cluster was still online);
 
-![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_12.jpg)
+![graphical user interface, website](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_12.jpg)
 
 Once you are finished with the cluster you can return the DigitalOcean control panel, find your cluster and then click on Settings, in here you will find an option to destroy your cluster;
 
-![](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_13.jpg)
+![graphical user interface, text, application, email](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_13.jpg)
 
 Also, don’t forget to remove the context from your Kubernetes configuration file.
 

@@ -8,6 +8,7 @@ summary: "Journey through the cosmos of David Bowie's music, where innovative so
 cover:
     image: "/img/weekly-tunes-015.png"
     relative: false
+    alt: "Journey through the cosmos of David Bowie's music, where innovative soundscapes and genre-defying hits collide!"
 tags:
     - "Listened"
 ---

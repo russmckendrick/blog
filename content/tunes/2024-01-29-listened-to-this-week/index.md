@@ -8,6 +8,7 @@ summary: "Explore the quirky brilliance of They Might Be Giants, where catchy me
 cover:
     image: "/img/weekly-tunes-016.png"
     relative: false
+    alt: "Explore the quirky brilliance of They Might Be Giants, where catchy melodies meet cerebral lyrics and innovative charm!"
 tags:
     - "Listened"
 ---

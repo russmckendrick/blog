@@ -8,6 +8,7 @@ summary: "Ride's addictive sound took over my speakers this week! 🎧💥 LastF
 cover:
     image: "/img/weekly-tunes-017.png"
     relative: false
+    alt: "Ride's addictive sound took over my speakers this week! 🎧💥 LastFM data reveals their unique style, shaping my soundtrack and altering my rhythm."
 tags:
     - "Listened"
 ---

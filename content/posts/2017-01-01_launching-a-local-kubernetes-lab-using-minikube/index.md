@@ -62,7 +62,7 @@ Now the requirements are installed and configured it was time to install Minikub
 brew cask install minikube
 ```
 
-![](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_1.png)
+![text](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_1.png)
 
 Now that minikube was installed I ran the command below to launch my local Kubernetes cluster;
 
@@ -72,7 +72,7 @@ minikube start
 
 After a minute or two, it returned a message saying “Kubectl is now configured to use the cluster” and that was it, I had my local Kubernetes cluster up and running.
 
-![](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_2.png)
+![graphical user interface, text](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_2.png)
 
 To test it ran the following commands to launch two NGINX containers, check that everything is running and then bind the service to a port on the local Kubernetes cluster;
 
@@ -82,7 +82,7 @@ kubectl get pods
 kubectl expose deployment my-nginx --type=NodePort
 ```
 
-![](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_3.png)
+![text](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_3.png)
 
 Running the following command opened the exposed service in my browser;
 
@@ -90,7 +90,7 @@ Running the following command opened the exposed service in my browser;
 open $(minikube service my-nginx --url)
 ```
 
-![](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_4.png)
+![graphical user interface, text, application, email](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_4.png)
 
 To view the [Kubernetes Dashboard](http://kubernetes.io/docs/user-guide/ui/) I ran;
 
@@ -98,11 +98,11 @@ To view the [Kubernetes Dashboard](http://kubernetes.io/docs/user-guide/ui/) I r
 minikube dashboard
 ```
 
-![](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_5.png)
+![graphical user interface, text, chat or text message](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_5.png)
 
 Which opened my browser;
 
-![](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_6.png)
+![graphical user interface, application](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_6.png)
 
 As minikube uses libmachine I can configure my local docker client to connect to the local Kubernetes cluster in the same way you would with a Docker Machine launched Docker host, I did this by running;
 
@@ -111,7 +111,7 @@ eval $(minikube docker-env)
 docker ps
 ```
 
-![](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_7.png)
+![graphical user interface, text](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_7.png)
 
 There are options to enable additional functionality, such as [Heapster](https://github.com/kubernetes/heapster). To install and enable Heapster I ran the following command;
 
@@ -131,7 +131,7 @@ Once the Pod had a status of Running I checked the name of the service by runnin
 minikube service list --namespace=kube-system
 ```
 
-![](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_8.png)
+![graphical user interface, text](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_8.png)
 
 Once I knew the name of the service I ran the command below to open the stats dashboard;
 
@@ -139,7 +139,7 @@ Once I knew the name of the service I ran the command below to open the stats da
 open $(minikube service monitoring-grafana --namespace=kube-system  --url)
 ```
 
-![](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_9.png)
+![a screenshot of a computer](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_9.png)
 
 Once I had finished I had the option of either stopping or deleting the local Kubernetes cluster by running on of the following commands;
 
@@ -150,7 +150,7 @@ minikube delete
 
 As you may notice from the following terminal output there is no warning when deleting the cluster so make sure you do want to delete the local Kubernetes cluster !!!
 
-![](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_10.png)
+![graphical user interface, text](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_10.png)
 
 So, what are the drawbacks? Although I have spent the entire post referring to my “local Kubernetes cluster” it is only a single virtual machine, so I won’t be able to demonstrate the scheduler.
 

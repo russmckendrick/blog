@@ -8,6 +8,7 @@ summary: "Relive the timeless magic of The Beatles, where iconic anthems meet en
 cover:
     image: "/img/weekly-tunes-015.png"
     relative: false
+    alt: "Relive the timeless magic of The Beatles, where iconic anthems meet enduring melodies!"
 tags:
     - "Listened"
 ---

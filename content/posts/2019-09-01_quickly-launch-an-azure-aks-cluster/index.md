@@ -66,11 +66,11 @@ $ kubectl get nodes
 
 Should show that you have two nodes in your cluster;
 
-![](/img/2019-09-01_quickly-launch-an-azure-aks-cluster_1.png)
+![text](/img/2019-09-01_quickly-launch-an-azure-aks-cluster_1.png)
 
 Also, you should be able to see the cluster in the [Azure Portal](https://portal.azure.com/);
 
-![](/img/2019-09-01_quickly-launch-an-azure-aks-cluster_2.png)
+![graphical user interface, text, application](/img/2019-09-01_quickly-launch-an-azure-aks-cluster_2.png)
 
 To tear down the cluster, return to the command-line and if needed re-enter just the `AKSRG` and `AKSCLUSTER` environment variables;
 
@@ -86,7 +86,7 @@ $ az aks delete \     --resource-group $AKSRG \    --name $AKSCLUSTER
 
 It is possible to add `--yes` to the command to skip the prompt; however, it is always best to check just in case you end up removing the wrong cluster;
 
-![](/img/2019-09-01_quickly-launch-an-azure-aks-cluster_3.gif)
+![a person holding a stack of boxes](/img/2019-09-01_quickly-launch-an-azure-aks-cluster_3.gif)
 
 The final Azure resource to remove will the resource group, to do this run;
 
@@ -108,4 +108,4 @@ $ kubectl config get-contexts$ kubectl config get-clusters
 
 There you have it, with three commands you quickly spin up an X node Kubernetes cluster within Azure with little effort.
 
-![](/img/2019-09-01_quickly-launch-an-azure-aks-cluster_4.gif)
+![a few men sitting in front of a computer](/img/2019-09-01_quickly-launch-an-azure-aks-cluster_4.gif)

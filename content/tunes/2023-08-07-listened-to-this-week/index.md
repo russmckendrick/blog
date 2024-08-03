@@ -8,6 +8,7 @@ summary: "Alice in Chains' grunge-heavy fusion topped my LastFM playlist, with g
 cover:
     image: "/img/weekly-tunes-007.png"
     relative: false
+    alt: "Alice in Chains' grunge-heavy fusion topped my LastFM playlist, with gritty vocals and evocative guitar riffs leading the charge."
 tags:
     - "Listened"
 ---

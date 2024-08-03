@@ -8,6 +8,7 @@ summary: "The Stranglers' rhythms have been my soundtrack this week, according t
 cover:
     image: "/img/weekly-tunes-005.png"
     relative: false
+    alt: "The Stranglers' rhythms have been my soundtrack this week, according to LastFM data. Their unique sound has woven a vibrant tapestry of rock n' roll into my daily life."
 tags:
     - "Listened"
 ---

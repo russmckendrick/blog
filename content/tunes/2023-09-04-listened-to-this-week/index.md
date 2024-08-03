@@ -8,6 +8,8 @@ summary: "Experience the electrifying sounds of The Jam as they dominate this we
 cover:
     image: "/img/weekly-tunes-012.png"
     relative: false
+    ShowRelated: false
+    alt: "Experience the electrifying sounds of The Jam as they dominate this week's playlist. Their timeless punk-rock tunes will leave you captivated by their raw energy!"
 tags:
     - "Listened"
 ---

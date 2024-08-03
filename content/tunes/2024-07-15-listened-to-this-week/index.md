@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-016.png"
     relative: false
+    alt: "This Weeks Top Music: Depeche Mode, Radiohead & More Hits"
 tags:
     - "Listened"
 ---

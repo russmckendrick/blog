@@ -7,6 +7,7 @@ Summary: The Specials have been my top-played artist this week, according to Las
 cover:
     image: "/img/weekly-tunes-020.png"
     relative: false
+    alt: "The Specials have been my top-played artist this week, according to LastFM data. Their raw energy and skank-worthy rhythms have had me hooked on their punk-infused lyrics"
 robotsNoIndex: true
 tags:
     - "Listened"

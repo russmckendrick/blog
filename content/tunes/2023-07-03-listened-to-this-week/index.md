@@ -8,6 +8,7 @@ summary: "Pixies top my playlist with their rebellious rhythms, providing an ant
 cover:
     image: "/img/weekly-tunes-008.png"
     relative: false
+    alt: "Pixies top my playlist with their rebellious rhythms, providing an anthem of solace. LastFM data reveals a personal obsession."
 tags:
     - "Listened"
 ---

@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-003.png"
     relative: false
+    alt: "Explore week 17s top music hits, featuring artists like Pink Floyd and Soulwax, and albums from The Dark Side of the Moon to Songs in the Key of Life."
 tags:
     - "Listened"
 ---

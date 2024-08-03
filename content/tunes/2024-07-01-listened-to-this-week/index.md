@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-014.png"
     relative: false
+    alt: "Explore week 25s top music hits from artists like Arcade Fire and Prince, featuring albums such as The Suburbs and 1999."
 tags:
     - "Listened"
 ---
