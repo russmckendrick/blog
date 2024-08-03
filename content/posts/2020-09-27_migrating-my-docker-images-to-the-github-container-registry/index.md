@@ -234,7 +234,7 @@ Once pushed, the final step runs and this just outputs some images on the image 
 
 After checking in the changes it triggered the build as expected and you see the output below:
 
-![](images/01.png)
+![graphical user interface, text](images/01.png)
 
 Once pushed I was able to run Apache Bench by running the following commands:
 
@@ -246,7 +246,7 @@ docker run --link=web ghcr.io/russmckendrick/ab ab -k -n 10000 -c 16 http://web/
 
 Running the containers
 
-![](images/02.png)
+![text](images/02.png)
 
 I then repeated this process for the rest of my images, you can find the full repo at [https://github.com/russmckendrick/docker/](https://github.com/russmckendrick/docker/) with the workflow files at [https://github.com/russmckendrick/docker/tree/master/.github/workflows](https://github.com/russmckendrick/docker/tree/master/.github/workflows) and finally, the resulting images are at [https://github.com/russmckendrick?tab=packages](https://github.com/russmckendrick?tab=packages).
 
@@ -261,6 +261,6 @@ The announcement for GitHub Container Registry is at:
 
 Finally, Mastering Docker — Fourth Edition:
 
-![](images/03.png)
+![diagram](images/03.png)
 
 This is available from [Packt Publishing](https://www.packtpub.com/product/mastering-docker-fourth-edition/9781839216572).

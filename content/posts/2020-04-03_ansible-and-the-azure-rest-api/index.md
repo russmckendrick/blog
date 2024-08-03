@@ -226,7 +226,7 @@ Now that we have everything we need to create the resource we can run the playbo
 
 Checking the Azure portal shows that the resource has been created as expected;
 
-![](images/01.png)
+![graphical user interface, text](images/01.png)
 
 That is only half of the story though, remember the task which registers the internal DNS zone with the virtual network — the JSON body which was sent was starting to get a little complicated …
 
@@ -259,19 +259,19 @@ Luckily, there is a way you can get a head start. Version 0.5.0 of the [Ansible 
 
 For example, to get a idea on what we needed to do to create the private DNS zone I opened Visual Studio Code, and selected the `Ansible: Samples for azure_rm_resource (PREVIEW)` command;
 
-![](images/02.png)
+![a screenshot of a computer](images/02.png)
 
 Once selected, I search for `DNS`;
 
-![](images/03.png)
+![a screenshot of a computer](images/03.png)
 
 Selected `privatedns` which then gave me all of the options around managing an Azure Private DNS zone;
 
-![](images/04.png)
+![graphical user interface, text](images/04.png)
 
 Once I had selected `PrivateZones_CreateOrUpdate` I was given the a list of API versions to choose from, then Visual Studio Code opened a new file and populated it with the same data;
 
-![](images/05.png)
+![text](images/05.png)
 
 {{< terminal >}}
 ``` yaml

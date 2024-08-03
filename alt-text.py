@@ -18,14 +18,13 @@ client = ComputerVisionClient(
     credentials=credentials
 )
 
-# Get the directory where the script is located
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-
-def get_image_path(relative_path):
+def get_image_path(relative_path, md_file_path):
+    md_dir = os.path.dirname(md_file_path)
+    
     possible_paths = [
+        os.path.join(md_dir, relative_path),
         os.path.join(SITE_PATH, relative_path.lstrip('/')),
-        os.path.join(SCRIPT_DIR, 'static', relative_path.lstrip('/')),
-        os.path.join(SCRIPT_DIR, relative_path.lstrip('/')),
+        os.path.join(SITE_PATH, 'static', relative_path.lstrip('/')),
     ]
     
     for path in possible_paths:
@@ -37,9 +36,9 @@ def get_image_path(relative_path):
         print(f"  - {path}")
     return None
 
-def get_image_description(image_path):
+def get_image_description(image_path, md_file_path):
     try:
-        full_image_path = get_image_path(image_path)
+        full_image_path = get_image_path(image_path, md_file_path)
         if not full_image_path:
             print(f"Image not found: {image_path}")
             return None
@@ -58,12 +57,12 @@ def get_image_description(image_path):
     
     except Exception as e:
         print(f"Failed to get description for {image_path}: {e}")
-        traceback.print_exc()  # Print full traceback 
+        traceback.print_exc()
 
     return None
 
 def update_markdown_content(content, image_descriptions):
-    def replace_image(match):
+    def replace_markdown_image(match):
         full_match = match.group(0)
         alt_text = match.group(1)
         image_path = match.group(2)
@@ -77,11 +76,41 @@ def update_markdown_content(content, image_descriptions):
         
         return full_match
 
-    # Regular expression to match image references in markdown
-    image_pattern = r'!\[(.*?)\]\((.*?)\)'
+    def replace_html_image(match):
+        full_match = match.group(0)
+        image_path = match.group(1)
+        
+        if 'alt=' in full_match:  # If alt attribute is already present, don't change it
+            return full_match
+        
+        if image_path in image_descriptions:
+            new_alt_text = image_descriptions[image_path]
+            return f'<image src="{image_path}" alt="{new_alt_text}">'
+        
+        return full_match
+
+    def replace_hugo_shortcode(match):
+        full_match = match.group(0)
+        image_path = match.group(1)
+        
+        if 'alt=' in full_match:  # If alt attribute is already present, don't change it
+            return full_match
+        
+        if image_path in image_descriptions:
+            new_alt_text = image_descriptions[image_path]
+            return f'{{{{< img src="{image_path}" alt="{new_alt_text}" >}}}}'
+        
+        return full_match
+
+    # Regular expressions
+    markdown_image_pattern = r'!\[(.*?)\]\((.*?)\)'
+    html_image_pattern = r'<image\s+src="([^"]+)"[^>]*>'
+    hugo_shortcode_pattern = r'{{<\s*img\s+src="([^"]+)"[^>]*>}}'
     
-    # Replace image references with updated ones (including alt text)
-    updated_content = re.sub(image_pattern, replace_image, content)
+    # Replace image references
+    updated_content = re.sub(markdown_image_pattern, replace_markdown_image, content)
+    updated_content = re.sub(html_image_pattern, replace_html_image, updated_content)
+    updated_content = re.sub(hugo_shortcode_pattern, replace_hugo_shortcode, updated_content)
     
     return updated_content
 
@@ -91,13 +120,31 @@ def process_markdown_file(md_file_path):
             content = file.read()
 
         # Find all image references in the markdown content
-        image_pattern = r'!\[(.*?)\]\((.*?)\)'
-        image_matches = re.findall(image_pattern, content)
+        markdown_image_pattern = r'!\[(.*?)\]\((.*?)\)'
+        html_image_pattern = r'<image\s+src="([^"]+)"[^>]*>'
+        hugo_shortcode_pattern = r'{{<\s*img\s+src="([^"]+)"[^>]*>}}'
+        
+        markdown_matches = re.findall(markdown_image_pattern, content)
+        html_matches = re.findall(html_image_pattern, content)
+        hugo_matches = re.findall(hugo_shortcode_pattern, content)
 
         image_descriptions = {}
-        for alt_text, image_path in image_matches:
+        
+        for alt_text, image_path in markdown_matches:
             if not alt_text:  # Only process images without alt text
-                description = get_image_description(image_path)
+                description = get_image_description(image_path, md_file_path)
+                if description:
+                    image_descriptions[image_path] = description
+
+        for image_path in html_matches:
+            if f'alt="{image_path}"' not in content:  # Only process images without alt attribute
+                description = get_image_description(image_path, md_file_path)
+                if description:
+                    image_descriptions[image_path] = description
+
+        for image_path in hugo_matches:
+            if f'alt=' not in content:  # Only process images without alt attribute
+                description = get_image_description(image_path, md_file_path)
                 if description:
                     image_descriptions[image_path] = description
 

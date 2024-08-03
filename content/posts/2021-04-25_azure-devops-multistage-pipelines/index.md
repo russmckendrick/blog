@@ -27,13 +27,13 @@ As I move into using Azure DevOps more and more, there is one thing which I real
 
 Luckily, there are ways to get around this — the most simple way is to add an Environment and then add an Approval. Adding an Environment is simple enough, just click on Environment in your Pipeline and then add one with None selected under Resource;
 
-![](images/01.png)
+![graphical user interface, text, application](images/01.png)
 
 Once you have added the Environment you can then add an approval check, to do this click on the Environment you have just created and click on the three dots in the top right-hand side of the page. From the menu select Approvals and checks;
 
 {{< oldgallery >}}
-   {{< img src="images/02.png" >}}
-   {{< img src="images/03.png" >}}
+   {{< img src="images/02.png" alt="graphical user interface, application" >}}
+   {{< img src="images/03.png" alt="graphical user interface, application" >}}
 {{< /oldgallery >}}
 
 Now we have an Environment and the Approval in place we can move onto the Pipeline.
@@ -295,18 +295,18 @@ A full copy of the `azure-pipelines.yml` file can be found in the following repo
 
 Now that we know what the pipeline looks like this what happened when it executed for the first time, first off, you (or whoever your approver is) will get an email;
 
-{{< img src="images/04.png" >}}
+{{< img src="images/04.png" alt="graphical user interface, text, application, email" >}}
 
 Once you click through to approve the deployment you should see something which looks like the following;
 
-{{< img src="images/05.png" >}}
+{{< img src="images/05.png" alt="graphical user interface, application" >}}
 
 Once approved the pipeline will continue to run and as you can see all the stages, jobs and steps have been executed as this is the first run;
 
-{{< img src="images/06.png" >}}
+{{< img src="images/06.png" alt="graphical user interface, application" >}}
 
 When the pipeline is next triggered you should see something like the following;
 
-{{< img src="images/07.png" >}}
+{{< img src="images/07.png" alt="graphical user interface, application" >}}
 
 This time, other than checking to see if the application has already been deployed everything else in the fourth stage has been skipped.

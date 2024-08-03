@@ -26,7 +26,7 @@ Before we look at the pipeline itself I should point out that is uses the the [T
 Now we have that out of the way, and before I breakdown the `azure-pipelines.yml` file, lets quickly get an overview of what the tasks which are running in the pipeline;
 
 
-![](images/01.png)
+![diagram](images/01.png)
 
 As you can see from the flow of tasks above I am creating the storage account used to store the Terraform state file as part of the pipeline itself rather than doing manually outside of the pipeline. In nearly all of my Azure DevOps pipelines I see the following variable as `SUBSCRIPTION_NAME` which contains the name of the service connection that should be used to connect to Azure, wherever you see `$(SUBSCRIPTION_NAME)` in the following tasks that is referring to the service connection.
 
@@ -189,11 +189,11 @@ The pipeline run looks like the following:
 
 <div class-="gallery-box">
   <div class="gallery">
-    <image src="images/02.png">
-    <image src="images/03.png">
-    <image src="images/04.png">
-    <image src="images/05.png">
-    <image src="images/06.png">
+    <image src="images/02.png" alt="graphical user interface, text">
+    <image src="images/03.png" alt="graphical user interface, text">
+    <image src="images/04.png" alt="text">
+    <image src="images/05.png" alt="text">
+    <image src="images/06.png" alt="graphical user interface, text">
   </div>
 </div><br>
 
