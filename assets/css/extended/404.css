@@ -1,9 +1,9 @@
 :root {
   --bg-color: rgba(255, 255, 255, 0.9);
   --text-color: #333333;
-  --button-bg: #007bff;
+  --button-bg: #1C1D21;
   --button-text: #ffffff;
-  --button-hover: #0056b3;
+  --button-hover: #2E2E33;
   --tag-bg: #f0f0f0;
   --tag-text: #333333;
   --tag-hover: #e0e0e0;
@@ -12,8 +12,8 @@
 .dark {
   --bg-color: rgba(26, 26, 26, 0.9);
   --text-color: #ffffff;
-  --button-bg: #3a86ff;
-  --button-hover: #2f6bcc;
+  --button-bg: #2E2E33;;
+  --button-hover: #1C1D21;
   --tag-bg: #333333;
   --tag-text: #ffffff;
   --tag-hover: #4a4a4a;
