@@ -8,6 +8,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-018.png"
     relative: false
+    alt: "Immersing myself in a world of post-punk melancholy, this week was dominated by the haunting, yet captivating tunes of The Cure. LastFM data confirms this immersion, crowning them as my most played artist. Their signature blend of moody lyricism and gothic rock provided the soundtrack to my week."
 tags:
     - "Listened"
 aliases:

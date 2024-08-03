@@ -34,7 +34,7 @@ aliases:
 
 So here they are, my top ten albums of 2016. Like last year they are all ones I physically own rather than stream or have brought digitally …
 
-![](/img/2016-12-12_2016-top-ten_1.jpeg)![](/img/2016-12-12_2016-top-ten_2.jpeg)![](/img/2016-12-12_2016-top-ten_3.jpeg)![](/img/2016-12-12_2016-top-ten_4.jpeg)![](/img/2016-12-12_2016-top-ten_5.jpeg)![](/img/2016-12-12_2016-top-ten_6.jpeg)![](/img/2016-12-12_2016-top-ten_7.jpeg)![](/img/2016-12-12_2016-top-ten_8.jpeg)![](/img/2016-12-12_2016-top-ten_9.jpeg)![](/img/2016-12-12_2016-top-ten_10.jpeg)
+![a black rectangular object with a white circle on it](/img/2016-12-12_2016-top-ten_1.jpeg)![a book with a picture of a tree on it](/img/2016-12-12_2016-top-ten_2.jpeg)![graphical user interface, website](/img/2016-12-12_2016-top-ten_3.jpeg)![a black rectangular object with a white and blue design on it](/img/2016-12-12_2016-top-ten_4.jpeg)![a framed picture of a man](/img/2016-12-12_2016-top-ten_5.jpeg)![a book on a table](/img/2016-12-12_2016-top-ten_6.jpeg)![a book on a table](/img/2016-12-12_2016-top-ten_7.jpeg)![a cd on a table](/img/2016-12-12_2016-top-ten_8.jpeg)![a box with a picture of flowers on it](/img/2016-12-12_2016-top-ten_9.jpeg)![a piece of meat on a black surface](/img/2016-12-12_2016-top-ten_10.jpeg)
 
 The full list is below (I know there are 30) …
 

@@ -8,6 +8,7 @@ summary: "Journey into the progressive rock realm with Marillion, where intricat
 cover:
     image: "/img/weekly-tunes-004.png"
     relative: false
+    alt: "Journey into the progressive rock realm with Marillion, where intricate melodies meet sonic experimentation!"
 tags:
     - "Listened"
 ---

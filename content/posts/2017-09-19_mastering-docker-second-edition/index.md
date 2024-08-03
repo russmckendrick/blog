@@ -23,4 +23,4 @@ aliases:
 
 It has been a while since I have posted, since Docker Bootcamp was published I have been hard at work on the second edition of Mastering Docker for [Packt](https://www.packtpub.com/) which is now available from [https://www.packtpub.com/virtualization-and-cloud/mastering-docker-second-edition](https://www.packtpub.com/virtualization-and-cloud/mastering-docker-second-edition) as well as Amazon and all other book stores.
 
-![](/img/2017-09-19_mastering-docker-second-edition_1.png)
+![graphical user interface, website](/img/2017-09-19_mastering-docker-second-edition_1.png)

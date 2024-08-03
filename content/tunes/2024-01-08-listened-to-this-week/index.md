@@ -8,6 +8,7 @@ summary: "Explore the ethereal landscapes of Kate Bush's music, where haunting m
 cover:
     image: "/img/weekly-tunes-021.png"
     relative: false
+    alt: "Explore the ethereal landscapes of Kate Bush's music, where haunting melodies meet avant-garde artistry!"
 tags:
     - "Listened"
 ---

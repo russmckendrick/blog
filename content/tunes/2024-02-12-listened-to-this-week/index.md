@@ -8,6 +8,7 @@ summary: "Ethereal melodies & introspective lyrics captured my musical soul this
 cover:
     image: "/img/weekly-tunes-019.png"
     relative: false
+    alt: "Ethereal melodies & introspective lyrics captured my musical soul this week! Join me in embracing No-Man's haunting soundscapes"
 tags:
     - "Listened"
 ---

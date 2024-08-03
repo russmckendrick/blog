@@ -19,7 +19,7 @@ aliases:
 
 For the last few years I have been grabbing some we [documented dotfiles from GitHub](https://github.com/search?o=desc&q=dotfiles&ref=cmdform&s=stars&type=Repositories) but most of them have either ended up reconfigured my Mac to the point of it being unrecognisable or they have just been a collection of useful aliases. The I came across [Bashstrap](https://github.com/barryclark/bashstrap), it was close enough to what I wanted so I [forked it](https://github.com/russmckendrick/dotfiles) ….
 
-![screenshot_otyb2f](/img/2014-08-10_dotfiles_1.png)
+![text](/img/2014-08-10_dotfiles_1.png)
 
 You can install them using the following commands;
 

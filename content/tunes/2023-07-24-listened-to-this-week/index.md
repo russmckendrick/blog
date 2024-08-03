@@ -8,6 +8,7 @@ summary: "Radiohead reigns as my most played artist this week, according to Last
 cover:
     image: "/img/weekly-tunes-004.png"
     relative: false
+    alt: "Radiohead reigns as my most played artist this week, according to LastFM data. Their experimental rock sounds satisfy my seemingly insatiable craving for unique musical textures and profound lyricism."
 tags:
     - "Listened"
 ---

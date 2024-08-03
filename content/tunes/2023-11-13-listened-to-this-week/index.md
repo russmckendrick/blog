@@ -8,6 +8,7 @@ summary: "Experience the rebellious spirit of The Who through their timeless tun
 cover:
     image: "/img/weekly-tunes-004.png"
     relative: false
+    alt: "Experience the rebellious spirit of The Who through their timeless tunes. Their lyrical adventures and captivating melodies will resonate with your inner rock fan!"
 tags:
     - "Listened"
 ---

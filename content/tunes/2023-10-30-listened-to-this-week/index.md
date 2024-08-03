@@ -8,6 +8,7 @@ summary: "Discover the enchanting blend of synth-pop and ethereal melodies in CH
 cover:
     image: "/img/weekly-tunes-022.png"
     relative: false
+    alt: "Discover the enchanting blend of synth-pop and ethereal melodies in CHVRCHES' music. Their captivating harmonies will leave you captivated!"
 tags:
     - "Listened"
 ---

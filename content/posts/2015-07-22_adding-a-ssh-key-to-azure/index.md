@@ -48,6 +48,6 @@ Once you have your certificate file it’s time to upload it. This is where thin
 
 After a while I realised as I was launching my Virtual Machine into a “Cloud Service” and that I had to add the certificate there.
 
-![](/img/2015-07-22_adding-a-ssh-key-to-azure_1.png)![](/img/2015-07-22_adding-a-ssh-key-to-azure_2.png)![](/img/2015-07-22_adding-a-ssh-key-to-azure_3.png)
+![a screenshot of a computer](/img/2015-07-22_adding-a-ssh-key-to-azure_1.png)![graphical user interface, text, application](/img/2015-07-22_adding-a-ssh-key-to-azure_2.png)![graphical user interface](/img/2015-07-22_adding-a-ssh-key-to-azure_3.png)
 
 Once I had uploaded the certificate to the Cloud Service I was able to launch the Virtual Machine using the ssh_key_thumbprint variable, the provisioner was able to connect and finally execute sudo without having to provide the password.

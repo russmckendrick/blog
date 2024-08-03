@@ -8,6 +8,7 @@ summary: "Explore the innovative sounds of Devo, where new wave meets synth-driv
 cover:
     image: "/img/weekly-tunes-007.png"
     relative: false
+    alt: "Explore the innovative sounds of Devo, where new wave meets synth-driven brilliance. Their catchy tunes and clever lyrics will resonate with your inner new wave enthusiast!"
 tags:
     - "Listened"
 ---

@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-012.png"
     relative: false
+    alt: "Explore top tracks from Springsteens Born in the U.S.A., Bowies Earthling, Tools Lateralus & more trending albums and artists this week."
 tags:
     - "Listened"
 ---

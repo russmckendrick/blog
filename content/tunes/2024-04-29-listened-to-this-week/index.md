@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-017.png"
     relative: false
+    alt: "Explore this weeks top music hits featuring Eagles, Blur, Kim Gordon, and albums like Parklife and The Collective."
 tags:
     - "Listened"
 ---

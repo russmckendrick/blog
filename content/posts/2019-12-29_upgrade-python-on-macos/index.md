@@ -53,4 +53,4 @@ $ python --version
 
 If everything has gone as planned you should see the following output;
 
-![](/img/2019-12-29_upgrade-python-on-macos_1.png)
+![text](/img/2019-12-29_upgrade-python-on-macos_1.png)

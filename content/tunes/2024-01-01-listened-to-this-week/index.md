@@ -8,6 +8,7 @@ summary: "Experience the melodic magic of Deacon Blue, where stirring lyrics mee
 cover:
     image: "/img/weekly-tunes-007.png"
     relative: false
+    alt: "Experience the melodic magic of Deacon Blue, where stirring lyrics meet captivating rhythms!"
 tags:
     - "Listened"
 ---

@@ -8,6 +8,7 @@ summary: "Embark on an electrifying journey with Amplifier, where innovative rif
 cover:
     image: "/img/weekly-tunes-002.png"
     relative: false
+    alt: "Embark on an electrifying journey with Amplifier, where innovative riffs meet expansive soundscapes!"
 tags:
     - "Listened"
 ---

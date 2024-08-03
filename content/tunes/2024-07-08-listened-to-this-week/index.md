@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-006.png"
     relative: false
+    alt: "This Weeks Top Music Hits: Explore Sepultura, R.E.M. & More"
 tags:
     - "Listened"
 ---

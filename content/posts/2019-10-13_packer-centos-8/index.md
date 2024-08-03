@@ -46,7 +46,7 @@ $ packer build -only virtualbox-iso CentOS_8.json
 
 and got;
 
-![](/img/2019-10-13_packer-centos-8_1.png)![](/img/2019-10-13_packer-centos-8_2.png)
+![text](/img/2019-10-13_packer-centos-8_1.png)![text](/img/2019-10-13_packer-centos-8_2.png)
 
 Once I have the two Vagrant boxes the Packer configuration produced I uploaded the them to [Vagrant Cloud](https://app.vagrantup.com/russmckendrick/), you can find them both at [http://app.vagrantup.com/russmckendrick/boxes/centos8](http://app.vagrantup.com/russmckendrick/boxes/centos8). Once uploaded I used Vagrant to launch my first CentOS 8 server;
 
@@ -70,19 +70,19 @@ $ vagrant ssh -c "ip address show | grep 'inet ' | grep -v '127.0.0.1' | sed -e 
 
 For me, this returned `192.168.151.129`, I then went to the following URL [https://192.168.151.129:9090/](https://192.168.151.129:9090/) and was greeted by a login page;
 
-![](/img/2019-10-13_packer-centos-8_3.png)
+![graphical user interface](/img/2019-10-13_packer-centos-8_3.png)
 
 Using the username and password of “ **vagrant**” I logged in and got;
 
-![](/img/2019-10-13_packer-centos-8_4.png)
+![timeline](/img/2019-10-13_packer-centos-8_4.png)
 
 As you can see, these are the basic stats, there are also updates available, most of which appear to be bug fixes;
 
-![](/img/2019-10-13_packer-centos-8_5.png)
+![graphical user interface, text, application, email](/img/2019-10-13_packer-centos-8_5.png)
 
 Also, Cockpit comes with its own built in Terminal;
 
-![](/img/2019-10-13_packer-centos-8_6.png)
+![text](/img/2019-10-13_packer-centos-8_6.png)
 
 Finally, to remove the Vagrant box I ran;
 

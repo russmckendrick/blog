@@ -10,6 +10,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-011.png"
     relative: false
+    alt: "Explore week 24s trending music with artists like Suede, Oasis, and LCD Soundsystem, plus top albums including Empath and Definitely Maybe."
 tags:
     - "Listened"
 ---

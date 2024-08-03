@@ -8,6 +8,7 @@ summary: "Immerse yourself in the royal brilliance of Queen, where iconic riffs 
 cover:
     image: "/img/weekly-tunes-001.png"
     relative: false
+    alt: "Immerse yourself in the royal brilliance of Queen, where iconic riffs meet Freddie Mercury's"
 tags:
     - "Listened"
 ---

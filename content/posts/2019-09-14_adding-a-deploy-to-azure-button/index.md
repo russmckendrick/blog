@@ -39,16 +39,16 @@ All you need to do is make sure that your ARM templates are called `azuredeploy.
 
 Once loaded they should be presented with a screen which looks like the following;
 
-![](/img/2019-09-14_adding-a-deploy-to-azure-button_2.png)
+![a screenshot of a computer](/img/2019-09-14_adding-a-deploy-to-azure-button_2.png)
 
 Once the required information has been filled in, clicking **Next** starts the validation, once passed they will be given an overview of the resources are about to be launched;
 
-![](/img/2019-09-14_adding-a-deploy-to-azure-button_3.png)
+![a screenshot of a computer](/img/2019-09-14_adding-a-deploy-to-azure-button_3.png)
 
 Clicking on the **Deploy** button will deploy the resources, and after several minutes they should see something like the following;
 
-![](/img/2019-09-14_adding-a-deploy-to-azure-button_4.png)
+![a screenshot of a computer](/img/2019-09-14_adding-a-deploy-to-azure-button_4.png)
 
 This is a nice and simple way to allow your users to launch your ARM template powered application in Azure ☁️.
 
-![](/img/2019-09-14_adding-a-deploy-to-azure-button_5.gif)
+![a man in a blue shirt](/img/2019-09-14_adding-a-deploy-to-azure-button_5.gif)

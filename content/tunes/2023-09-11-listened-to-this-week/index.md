@@ -8,6 +8,7 @@ summary: "Escape to a sonic dream with Slowdive's mesmerizing ambient melodies. 
 cover:
     image: "/img/weekly-tunes-002.png"
     relative: false
+    alt: "Escape to a sonic dream with Slowdive's mesmerizing ambient melodies. Their hazy tunes will transport you to a calming atmosphere of sunsets and ocean breezes."
 tags:
     - "Listened"
 ---

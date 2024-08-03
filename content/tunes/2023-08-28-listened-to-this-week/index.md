@@ -8,6 +8,7 @@ summary: "Explore the captivating narratives of Rhiannon Giddens, where folk mee
 cover:
     image: "/img/weekly-tunes-014.png"
     relative: false
+    alt: "Explore the captivating narratives of Rhiannon Giddens, where folk meets blues and country. Her emotional melodies and striking lyrics will leave you captivated!"
 tags:
     - "Listened"
 ---

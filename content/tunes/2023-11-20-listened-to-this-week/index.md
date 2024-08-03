@@ -8,6 +8,7 @@ summary: "Embark on a nostalgic journey with The Beatles. Their timeless melodie
 cover:
     image: "/img/weekly-tunes-018.png"
     relative: false
+    alt: "Embark on a nostalgic journey with The Beatles. Their timeless melodies and lyrical brilliance will resonate with your inner music lover!"
 tags:
     - "Listened"
 ---

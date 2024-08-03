@@ -130,7 +130,7 @@ This launches the following **playbook.yml** which prepares the CentOS 7 box by 
 
 (You can find the files above in a [gist on GitHub](https://gist.github.com/russmckendrick/36d3f131cae273e6c85060a8d172a195)) Running `vagrant up` will launch the CentOS 7 machine and execute the playbook to install AWX, this process takes about 15 minutes.
 
-![](/img/2017-09-24_ansible-awx_1.png)
+![text](/img/2017-09-24_ansible-awx_1.png)
 
 In the background the installer has built and downloaded several Docker images, you can check what is going on the machine by running;
 
@@ -142,22 +142,22 @@ sudo docker container ls
 
 Once the build has completed you should the following images;
 
-![](/img/2017-09-24_ansible-awx_2.png)
+![text](/img/2017-09-24_ansible-awx_2.png)
 
 Also, you should have several containers running;
 
-![](/img/2017-09-24_ansible-awx_3.png)
+![text](/img/2017-09-24_ansible-awx_3.png)
 
 Once the containers have launched, going to [http://localhost:8080/](http://localhost:8080/) should show you the following;
 
-![](/img/2017-09-24_ansible-awx_4.png)
+![graphical user interface, text](/img/2017-09-24_ansible-awx_4.png)
 
 After a while the page will eventually refresh into a login screen, the default user is **admin** and the password is **password**. Once logged in you will be taken to the dashboard, here you can see that there is already a project created, this is a simple test job;
 
-![](/img/2017-09-24_ansible-awx_5.png)
+![graphical user interface](/img/2017-09-24_ansible-awx_5.png)
 
 You can test your installation by running the test job, which is the Ansible equivalent of a Hello World, you can see the output of running the template below;
 
-![](/img/2017-09-24_ansible-awx_6.png)
+![graphical user interface, text, application](/img/2017-09-24_ansible-awx_6.png)
 
 As I said at the start of this post this was a only a quick post to document how you can get quickly (well sort of quickly) get an AWX host up and running, if you would like more detail on how to use AWX see the [Ansible Tower Document site](http://docs.ansible.com/ansible-tower/index.html).

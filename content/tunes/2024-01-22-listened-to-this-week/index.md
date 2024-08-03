@@ -8,6 +8,7 @@ summary: "Embrace the rhythmic chaos of Carter the Unstable Sex Machine, where p
 cover:
     image: "/img/weekly-tunes-009.png"
     relative: false
+    alt: "Embrace the rhythmic chaos of Carter the Unstable Sex Machine, where punk meets electronic wit!"
 tags:
     - "Listened"
 ---

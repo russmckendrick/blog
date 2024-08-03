@@ -37,7 +37,7 @@ aliases:
 
 I am still catching up on all of the announcements from the AWS re:invent 2016, one of the ones I was interested in was Amazon Lightsail. I have always found Digital Ocean to be useful for launching instances, doing some test installations of XYZ and then terminating them.
 
-![](/img/2016-12-18_thoughts-on-amazon-lightsail_1.png)
+![a man wearing headphones](/img/2016-12-18_thoughts-on-amazon-lightsail_1.png)
 
 It makes perfect sense that Amazon would offer a service which allows you to consume resources in the same way Digital Ocean allow their users to, they have the infrastructure to provide as well as an established customer base who probably already use Digital Ocean.
 
@@ -84,27 +84,27 @@ So does the introduction of Amazon Lightsail mean you can host Pets in AWS? Ermm
 
 Lets walk through launching an Instance with Amazon Lightsail. When you first login you are present with a much friendlier welcome than the overwhelming AWS Console;
 
-![](/img/2016-12-18_thoughts-on-amazon-lightsail_2.png)
+![text](/img/2016-12-18_thoughts-on-amazon-lightsail_2.png)
 
 Clicking on **Create instance** gives you the option of launching a pre configured software stack;
 
-![](/img/2016-12-18_thoughts-on-amazon-lightsail_3.png)
+![graphical user interface, application](/img/2016-12-18_thoughts-on-amazon-lightsail_3.png)
 
 Or a plain Operating System (currently limited to Amazin Linux and Ubuntu 16.04 LTS);
 
-![](/img/2016-12-18_thoughts-on-amazon-lightsail_4.png)
+![graphical user interface, text, application](/img/2016-12-18_thoughts-on-amazon-lightsail_4.png)
 
 Scrolling down gives you the options of selecting the size of the instance you want to launch, and it tells you exactly how much it is going to cost you per month, which key to use and which availability zone within us-east1 (currently the only region available) it should be launched in and finally you get to name your instance.
 
-![](/img/2016-12-18_thoughts-on-amazon-lightsail_5.png)
+![graphical user interface, text, application, chat or text message, email](/img/2016-12-18_thoughts-on-amazon-lightsail_5.png)
 
 As you can see, onced launched you machine has a publicly accessible IP address which you can connect to using a terminal;
 
-![](/img/2016-12-18_thoughts-on-amazon-lightsail_6.png)
+![text](/img/2016-12-18_thoughts-on-amazon-lightsail_6.png)
 
 Or login using the Connect using SSH button in the GUI;
 
-![](/img/2016-12-18_thoughts-on-amazon-lightsail_7.png)
+![text](/img/2016-12-18_thoughts-on-amazon-lightsail_7.png)
 
 So far on the face it the experience very Digital Ocean like, all be it with an AWS twist. Click on Manage gives you several tabs;
 
@@ -115,7 +115,7 @@ So far on the face it the experience very Digital Ocean like, all be it with an 
 - **History** shows you a run down of what tasks though the web interface have been carried out on the instance.
 - **Delete** allows you to, well, delete your instance.
 
-![](/img/2016-12-18_thoughts-on-amazon-lightsail_8.png)![](/img/2016-12-18_thoughts-on-amazon-lightsail_9.png)![](/img/2016-12-18_thoughts-on-amazon-lightsail_10.png)![](/img/2016-12-18_thoughts-on-amazon-lightsail_11.png)![](/img/2016-12-18_thoughts-on-amazon-lightsail_12.png)![](/img/2016-12-18_thoughts-on-amazon-lightsail_13.png)
+![graphical user interface, text, application, website](/img/2016-12-18_thoughts-on-amazon-lightsail_8.png)![chart](/img/2016-12-18_thoughts-on-amazon-lightsail_9.png)![graphical user interface, website](/img/2016-12-18_thoughts-on-amazon-lightsail_10.png)![graphical user interface, text, email, website](/img/2016-12-18_thoughts-on-amazon-lightsail_11.png)![graphical user interface, text, application, email, website](/img/2016-12-18_thoughts-on-amazon-lightsail_12.png)![graphical user interface, text, website](/img/2016-12-18_thoughts-on-amazon-lightsail_13.png)
 
 The whole thing feels very much like a lite AWS, and that is where a few potential problems could come in.
 

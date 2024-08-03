@@ -8,6 +8,7 @@ summary: "Embrace the high-energy vibes of Jesus Jones, where their influential 
 cover:
     image: "/img/weekly-tunes-003.png"
     relative: false
+    alt: "Embrace the high-energy vibes of Jesus Jones, where their influential sound meets intense lyrical prowess!"
 tags:
     - "Listened"
 ---

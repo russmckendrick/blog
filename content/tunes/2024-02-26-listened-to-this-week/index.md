@@ -8,6 +8,7 @@ summary: "Relive the electrifying magic of The Who, where legendary riffs meet t
 cover:
     image: "/img/weekly-tunes-002.png"
     relative: false
+    alt: "Relive the electrifying magic of The Who, where legendary riffs meet timeless anthems!"
 tags:
     - "Listened"
 ---

@@ -8,6 +8,7 @@ summary: "Beatles' tunes dominated my playlists this week, according to LastFM d
 cover:
     image: "/img/weekly-tunes-010.png"
     relative: false
+    alt: "Beatles' tunes dominated my playlists this week, according to LastFM data. Harmonious melodies reassured and rebellious rhythms resounded, immersing me in a Beatlemania-steeped music week."
 tags:
     - "Listened"
 ---

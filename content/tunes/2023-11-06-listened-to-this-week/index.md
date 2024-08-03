@@ -8,6 +8,8 @@ summary: "Embrace the eclectic sounds of Cardiacs, where punk meets progressive 
 cover:
     image: "/img/weekly-tunes-008.png"
     relative: false
+    ShowRelated: false
+    alt: "Embrace the eclectic sounds of Cardiacs, where punk meets progressive rock and whimsical vibes collide! Their dynamic rhythm will leave you captivated!"
 tags:
     - "Listened"
 ---

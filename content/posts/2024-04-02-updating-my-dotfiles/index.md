@@ -93,7 +93,7 @@ Below are some screens of what my current terminal looks like:
 You can also click on the link below to see it in action:
 
 {{< rawHTML >}}
-<a href="https://asciinema.org/a/PTUqbpxikms7nFWNs4R7OhMQR" target="_blank"><img src="https://asciinema.org/a/PTUqbpxikms7nFWNs4R7OhMQR.svg" class="no-zoom"/></a>
+<a href="https://asciinema.org/a/PTUqbpxikms7nFWNs4R7OhMQR" target="_blank"><img src="https://asciinema.org/a/PTUqbpxikms7nFWNs4R7OhMQR.svg" class="no-zoom"/ alt="See what my terminal is like"></a>
 {{< /rawHTML >}}
 
 

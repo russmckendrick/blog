@@ -42,7 +42,7 @@ Given that I don’t use Windows much I thought it would be interesting to see h
 
 First of all you need to ensure that your Docker installation has at least 4GB of RAM assigned, as I am running Docker for Mac, all that I need to do is open up the Preferences and change the memory to 4GB;
 
-![](/img/2016-12-13_its-a-unix-system-i-know-this._1.png)
+![graphical user interface](/img/2016-12-13_its-a-unix-system-i-know-this._1.png)
 
 Once you have done that it turns out getting things up and running is really simple, all you have to do is pull the image from the Docker Hub by running;
 
@@ -63,7 +63,7 @@ docker run -itd \
 
 Thats it, no messing about, just accept the end user agreement and set a secure password.
 
-![](/img/2016-12-13_its-a-unix-system-i-know-this._2.png)
+![text](/img/2016-12-13_its-a-unix-system-i-know-this._2.png)
 
 Great, now what? Well Microsoft have helpfully provided a command line client you can install on macOS by running;
 
@@ -83,7 +83,7 @@ Once installed you should be able to connect to your MSSQL container by running 
 mssql -s localhost -u sa -p 'P@$$w0rd!123' -e
 ```
 
-![](/img/2016-12-13_its-a-unix-system-i-know-this._3.png)
+![text](/img/2016-12-13_its-a-unix-system-i-know-this._3.png)
 
 ### Its not just MS SQL, there is .NET Core as well
 
@@ -107,13 +107,13 @@ dotnet run
 
 To run a simple “Hello World”
 
-![](/img/2016-12-13_its-a-unix-system-i-know-this._4.png)
+![text](/img/2016-12-13_its-a-unix-system-i-know-this._4.png)
 
 ### Visual Studio on macOS and Linux
 
 Add this this that you can also get [an open source version VisualStudio](http://code.visualstudio.com) on macOS & Linux which is actually really stable and not that different from Atom & Sublime Text and all of a sudden building apps in what was once a very (and I mean very) much a traditional Windows only domain is now available to all.
 
-![](/img/2016-12-13_its-a-unix-system-i-know-this._5.png)
+![text](/img/2016-12-13_its-a-unix-system-i-know-this._5.png)
 
 Now, I wouldn’t say that MSSQL is production ready, but Visual Studio Code is extremely stable and it was recently announced that the open source [.NET core powers C# fucntions in AWS Lambda](https://aws.amazon.com/blogs/compute/announcing-c-sharp-support-for-aws-lambda/).
 
@@ -121,6 +121,6 @@ Following it becoming [a platinum member of the Linux Foundation](https://www.li
 
 I guess that …
 
-![](/img/2016-12-13_its-a-unix-system-i-know-this._6.png)
+![logo, company name](/img/2016-12-13_its-a-unix-system-i-know-this._6.png)
 
 … after all.

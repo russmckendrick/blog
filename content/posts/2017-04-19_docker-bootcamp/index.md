@@ -27,6 +27,6 @@ aliases:
 
 I haven’t posted here in a while as I have been busy writting my third book. I am pleased to say that Docker Bootcamp will be published in the next few weeks by [Packt](https://www.packtpub.com/virtualization-and-cloud/docker-bootcamp).
 
-![](/img/2017-04-19_docker-bootcamp_1.png)
+![graphical user interface](/img/2017-04-19_docker-bootcamp_1.png)
 
 It is [available for pre-order now](https://www.packtpub.com/virtualization-and-cloud/docker-bootcamp).

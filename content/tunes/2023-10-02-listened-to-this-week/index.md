@@ -8,6 +8,7 @@ robotsNoIndex: true
 cover:
     image: "/img/weekly-tunes-023.png"
     relative: false
+    alt: "Immerse yourself in the timeless allure of Depeche Mode's synth-pop masterpieces. Their captivating rhythms will leave you captivated!"
 tags:
     - "Listened"
 ---

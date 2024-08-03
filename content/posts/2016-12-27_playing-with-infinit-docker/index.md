@@ -168,7 +168,7 @@ touch wibble
 echo "working" > rah
 ```
 
-![](/img/2016-12-27_playing-with-infinit-docker_1.png)
+![graphical user interface, text](/img/2016-12-27_playing-with-infinit-docker_1.png)
 
 Now we have a user, some storage, a network and a volume we can look at mounting the volume on our second instance, before we move though we need to run the following command which will make allow us to down the credentials for the user we created.
 
@@ -178,7 +178,7 @@ When you run it you will be asked for a passphrase and then will be shown a coun
 infinit-device --transmit --user --as russ
 ```
 
-![](/img/2016-12-27_playing-with-infinit-docker_2.png)
+![graphical user interface, text](/img/2016-12-27_playing-with-infinit-docker_2.png)
 
 #### Instance #2
 
@@ -190,11 +190,11 @@ infinit-device --receive --user --name russ
 
 You will be asked for the passphrase you set on **Instance #1** entered you should see something like the following;
 
-![](/img/2016-12-27_playing-with-infinit-docker_3.png)
+![a screenshot of a computer](/img/2016-12-27_playing-with-infinit-docker_3.png)
 
 and on **Instance #1** you should have confirmation that the credentials have been transmitted;
 
-![](/img/2016-12-27_playing-with-infinit-docker_4.png)
+![graphical user interface, text](/img/2016-12-27_playing-with-infinit-docker_4.png)
 
 Now we have our user on our second instance we can fetch the network we created on our first instance by running;
 
@@ -233,7 +233,7 @@ You should see that the files `wibble` and `rah` are present, and that `rah` con
 echo "still working" >> ~/mnt/wibble
 ```
 
-![](/img/2016-12-27_playing-with-infinit-docker_5.png)
+![text](/img/2016-12-27_playing-with-infinit-docker_5.png)
 
 We still have our volume mounted on our first instance, lets go back there and check out the contents of `~/mnt` by running;
 
@@ -244,7 +244,7 @@ cat ~/mnt/wibble
 
 As you should, the changes we made on our second instance have been immediately copied over and are available on our first instance.
 
-![](/img/2016-12-27_playing-with-infinit-docker_6.png)
+![a screenshot of a computer](/img/2016-12-27_playing-with-infinit-docker_6.png)
 
 #### Exporting our user
 
@@ -254,7 +254,7 @@ If like me, you have probably launched a few instances are going to be destroyin
 infinit-user --export --full --name russ --output russ.user
 ```
 
-![](/img/2016-12-27_playing-with-infinit-docker_7.png)
+![text](/img/2016-12-27_playing-with-infinit-docker_7.png)
 
 As per the output, it is important you keep the file safe, it is the equivalent of the private and public portions of an SSH key.
 
@@ -316,19 +316,19 @@ open .
 
 Should show you the content of the mount, and open it in the finder;
 
-![](/img/2016-12-27_playing-with-infinit-docker_8.png)
+![text](/img/2016-12-27_playing-with-infinit-docker_8.png)
 
 and the finder;
 
-![](/img/2016-12-27_playing-with-infinit-docker_9.png)
+![graphical user interface, text](/img/2016-12-27_playing-with-infinit-docker_9.png)
 
 Which means you can simply drop a file in the finder;
 
-![](/img/2016-12-27_playing-with-infinit-docker_10.png)
+![diagram](/img/2016-12-27_playing-with-infinit-docker_10.png)
 
 To make it available to all instances in the overlay network;
 
-![](/img/2016-12-27_playing-with-infinit-docker_11.png)![](/img/2016-12-27_playing-with-infinit-docker_12.png)
+![a screenshot of a computer](/img/2016-12-27_playing-with-infinit-docker_11.png)![a screenshot of a computer](/img/2016-12-27_playing-with-infinit-docker_12.png)
 
 To unmount the volume press `ctrl + c` to terminate the process.
 
@@ -372,7 +372,7 @@ I have used the use `root` as that is the default user for the Digital Ocean ins
 docker volume list
 ```
 
-![](/img/2016-12-27_playing-with-infinit-docker_13.png)
+![graphical user interface, text](/img/2016-12-27_playing-with-infinit-docker_13.png)
 
 Now that our volume is available we can attach it to a container by running;
 
@@ -388,7 +388,7 @@ echo "FROM DOCKER" >> /mnt/docker
 exit
 ```
 
-![](/img/2016-12-27_playing-with-infinit-docker_14.png)
+![a screenshot of a computer](/img/2016-12-27_playing-with-infinit-docker_14.png)
 
 Typing `exit` will stop and remove the container, you can check that the container has been removed by running;
 
@@ -410,7 +410,7 @@ cat /mnt/docker
 exit
 ```
 
-![](/img/2016-12-27_playing-with-infinit-docker_15.png)
+![a screenshot of a computer](/img/2016-12-27_playing-with-infinit-docker_15.png)
 
 Thats about it, so far. I would say that the software itself should be considered pre-alpha and everything above is going to change at some point in the next 12 months. There is currently no support for Docker Swarm or Kubernetes or support for block storage, however it shows quite a lot of potential and as it stands 2017 is going to be an interesting year for Docker and software defined storage.
 

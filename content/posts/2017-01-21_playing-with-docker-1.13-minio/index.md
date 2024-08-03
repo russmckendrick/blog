@@ -93,7 +93,7 @@ Then the following to check that I have the three hosts in the cluster;
 docker $(docker-machine config swarm01) node ls
 ```
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_1.png)
+![a screenshot of a computer](/img/2017-01-21_playing-with-docker-1.13-minio_1.png)
 
 ### Planning the Minio deployment
 
@@ -275,7 +275,7 @@ To launch the stack using this Docker Compose file, all I needed to do was the r
 docker $(docker-machine config swarm01) stack deploy --compose-file=docker-compose.yml minio
 ```
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_2.png)
+![text](/img/2017-01-21_playing-with-docker-1.13-minio_2.png)
 
 As you can see from the terminal output above, six services and a network were created, as well as volumes which were created using the default volume driver.
 
@@ -287,7 +287,7 @@ docker $(docker-machine config swarm01) stack ls
 
 Which gave me the output below;
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_3.png)
+![graphical user interface, text](/img/2017-01-21_playing-with-docker-1.13-minio_3.png)
 
 Now that I knew that my Stack had successfully created and that the expected six services were attached to it, I then wanted to check that the actual services were running.
 
@@ -299,7 +299,7 @@ docker $(docker-machine config swarm01) stack services minio
 
 As you can see from the terminal output below, I had the six services with each service having one of one containers running;
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_4.png)
+![a screenshot of a computer](/img/2017-01-21_playing-with-docker-1.13-minio_4.png)
 
 It was now time to open Minio in my browser, to do this I used the following command;
 
@@ -311,11 +311,11 @@ open http://$(docker-machine ip swarm01):9000
 
 Once my browser opened I was greeted with a login page;
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_5.png)
+![graphical user interface](/img/2017-01-21_playing-with-docker-1.13-minio_5.png)
 
 Once logged in using the credentials I defined when launching the services, I was presented with a clean installation;
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_6.png)
+![graphical user interface, text, application, email](/img/2017-01-21_playing-with-docker-1.13-minio_6.png)
 
 Rather than start using the web gui straight away I decided to install the command line client, I used Homebrew to do this;
 
@@ -333,7 +333,7 @@ It added a host called swarm which can be contacted at any of the public IP addr
 
 As you can see from the terminal output below you get an overview of the which were updated or added;
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_7.png)
+![a screenshot of a computer](/img/2017-01-21_playing-with-docker-1.13-minio_7.png)
 
 Now that the client is configured I can create a Bucket and upload a file by running;
 
@@ -344,7 +344,7 @@ mc cp ~/Desktop/boss-fight-free-high-quality-stock-images-photos-photography-clo
 
 I creatively called the bucket “testing”, and the file was the header graphic for this post.
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_8.png)
+![text](/img/2017-01-21_playing-with-docker-1.13-minio_8.png)
 
 Now that I had some content I can get a bucket and file listing by running;
 
@@ -355,15 +355,15 @@ mc ls swarm/testing
 
 Which returned the results I expected;
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_9.png)
+![a screenshot of a computer](/img/2017-01-21_playing-with-docker-1.13-minio_9.png)
 
 Going back to the web gui I can see that the bucket and file are listed there as well;
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_10.png)
+![graphical user interface, text, application, email](/img/2017-01-21_playing-with-docker-1.13-minio_10.png)
 
 Staying in the browser and “testing” bucket I decided to upload the Docker Compose file, to this I clicked on the **+**icon in the bottom left and then click on **Upload file**;
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_11.png)![](/img/2017-01-21_playing-with-docker-1.13-minio_12.png)
+![graphical user interface, text, application](/img/2017-01-21_playing-with-docker-1.13-minio_11.png)![graphical user interface, application](/img/2017-01-21_playing-with-docker-1.13-minio_12.png)
 
 Back on the command line check I could see the file and then used the built in `cat`command to view the contents of file;
 
@@ -372,7 +372,7 @@ mc ls swarm/testing
 mc cat swarm/testing/docker-compose.yml | head -10
 ```
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_13.png)
+![text](/img/2017-01-21_playing-with-docker-1.13-minio_13.png)
 
 ### Killing a Container
 
@@ -388,7 +388,7 @@ docker $(docker-machine config swarm01) stack services minio
 
 I checked the status of the services, and after a second or two, the replacement container had launched.
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_14.png)
+![graphical user interface, text](/img/2017-01-21_playing-with-docker-1.13-minio_14.png)
 
 As you can see from the commands, Docker 1.13 is introducing a slightly different way to run commands which effect change to your containers rather than running `docker ps`you now run `docker container ps`.
 
@@ -411,7 +411,7 @@ docker system df
 docker system prune
 ```
 
-![](/img/2017-01-21_playing-with-docker-1.13-minio_15.png)
+![graphical user interface, text](/img/2017-01-21_playing-with-docker-1.13-minio_15.png)
 
 Docker 1.13 also introduces a few new experimental features such as an endpoint for Prometheus-style metrics meaning that you should no longer have to use cadivisor as a middle-man, there are also options for squashing images once they are built and using compression when passing assists during a build.
 

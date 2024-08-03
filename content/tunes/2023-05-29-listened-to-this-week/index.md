@@ -8,6 +8,7 @@ ShowRelated: false
 cover:
     image: "/img/weekly-tunes-010.png"
     relative: false
+    alt: Diving into the eclectic rhythm universe, Easy Star All-Stars dominated my soundtrack with their unique reggae/dub spin on classic albums, becoming my most played artist this week.
 tags:
     - "Listened"
 ---

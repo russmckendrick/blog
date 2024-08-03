@@ -20,7 +20,7 @@ aliases:
 
 ---
 
-![](/img/2014-07-20_documentation_0.png)
+![a group of colorful paper](/img/2014-07-20_documentation_0.png)
 
 I am currently working on a technical project for work where I need to keep a combination of code and technical documentation together, at the moment it is only me working on the project though other people may start to contribute later. Normally on projects like this I dump all of my work in either a [Google Docs ](https://docs.google.com/)document or use files in [Basecamp](http://basecamp.com/) however as this was mostly technical documentation along side snippets of code I decided I wanted to use [Markdown](http://daringfireball.net/projects/markdown/).
 
