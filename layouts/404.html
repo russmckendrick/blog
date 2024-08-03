@@ -12,7 +12,7 @@
     </div>
     
     <div class="popular-tags">
-        <h2>Popular Tags</h2>
+        <h2>Tags</h2>
         <div class="tag-cloud">
         {{- range $name, $taxonomy := .Site.Taxonomies.tags }}
             {{- $count := len $taxonomy }}
@@ -28,4 +28,4 @@
     </div>
 </div>
 
-{{- end }}{{/* end main */}}
+{{- end }}
