@@ -80,7 +80,7 @@ This launches the following **playbook.yml** which prepares the CentOS 7 box by 
     - name: add the docker ce yum repo
       yum_repository:
         name: "docker-ce"
-        description: "Docker CE YUM repo"
+        alt: "Docker CE YUM repo"
         gpgcheck: "yes"
         enabled: "yes"
         baseurl: "https://download.docker.com/linux/centos/7/$basearch/stable"

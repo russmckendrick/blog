@@ -12,7 +12,7 @@ tags:
 
 cover:
     image: "/img/2017-01-15_uis-for-docker-a-followup-post_0.png" 
-    descrialtption: "Explore UI options for Docker management including Portainer, Docker Datacenter, Shipyard, Rancher, Kubernetes Dashboard, RedHat OpenShift, DC/OS, and AWS ECS."
+    alt: "Explore UI options for Docker management including Portainer, Docker Datacenter, Shipyard, Rancher, Kubernetes Dashboard, RedHat OpenShift, DC/OS, and AWS ECS."
 
 images:
  - "/img/2017-01-15_uis-for-docker-a-followup-post_0.png"

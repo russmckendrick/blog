@@ -36,7 +36,7 @@ docker run \
 
 As you can see, it is to mount `${HOME}/.azure` into the container and then also the current working directory into `/playbook` within the container. Then we are running the command `ansible-playbook -i inv site.yml` to run the playbook, running the command gives the following output …
 
-![](images/2020-12-28_ansible-azure-and-macos-big-sur-01.png)
+![text](images/2020-12-28_ansible-azure-and-macos-big-sur-01.png)
 
 As you can see, the image downloaded and the playbook as expected, in this case it was the sample playbook I have shipped in the [image’s repo](https://github.com/russmckendrick/docker-ansible-azure).
 
@@ -64,7 +64,7 @@ docker run \
 
 The command is pretty much intact from the last one, however, this time we are using the `--env-file` flag rather than mounting `${HOME}/.azure`, running it should give similar output to before …
 
-![](images/2020-12-28_ansible-azure-and-macos-big-sur-02.png)
+![graphical user interface](images/2020-12-28_ansible-azure-and-macos-big-sur-02.png)
 
 That is about all you need to know to the image, however, if you need to check connectivity to Azure when using `${HOME}/.azure` then you can run the following command …
 
@@ -79,7 +79,7 @@ docker run \
 
 This should list the accounts connected with your user …
 
-![](images/2020-12-28_ansible-azure-and-macos-big-sur-03.png)
+![graphical user interface, application](images/2020-12-28_ansible-azure-and-macos-big-sur-03.png)
 
 For those that interested the Dockerfile for the image can be found below …
 

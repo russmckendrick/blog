@@ -9,8 +9,7 @@ tags:
     - "Life"
 cover:
     image: "/img/2014-08-31_one-year-on_0.png" 
-    description: "Reflecting on a year of blogging: celebrating the first post's anniversary, layout changes, and the evolution of my blogging journey."
-
+    alt: "Reflecting on a year of blogging: celebrating the first post's anniversary, layout changes, and the evolution of my blogging journey."
 images:
  - "/img/2014-08-31_one-year-on_0.png"
 aliases:

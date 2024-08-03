@@ -95,15 +95,15 @@ As you can see, it is mostly straight forward with the only complicated bit bein
 
 Once committed I opened GitHub and in using the dropdown menu in the **Code** button selected **Open with Codespaces**, then clicked on **+New codespace**.
 
-![](images/01.png)
+![graphical user interface](images/01.png)
 
 After a minute or two I was presented with the following page:
 
-![](images/02.png)
+![graphical user interface, text, application, email](images/02.png)
 
 After closing the two files which were opened and dismissing the messages I opened the `main.tf` file and also opened a Terminal, as you can see from the screen below ZSH was selected by default and the latest version of Terraform was installed:
 
-![](images/03.png)
+![graphical user interface, text, application, email](images/03.png)
 
 The final thing to do was run the Terraform script, to do this I ran:
 
@@ -117,6 +117,6 @@ terraform apply
 
 As expected, I got the immortal words **“Hello, World!”**:
 
-![](images/04.png)
+![graphical user interface, text, application, email](images/04.png)
 
 In all, it was a really nice experience the process of setting up a Codespaces workspace for the repo was very easy. I think that I will be including a `.devcontainer` folder and supporting files for a lot of my repos and projects from now on. If you want to clone the repo used in this blog post you can find it at [https://github.com/russmckendrick/terraform-codespaces](https://github.com/russmckendrick/terraform-codespaces).
