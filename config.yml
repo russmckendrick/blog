@@ -19,19 +19,11 @@ minify:
 
 enableEmoji: true
 
-author:
-  russmckendrick:
-    name: "Russ McKendrick"
-    email: "me@russ.email"
-    github: "@russmckendrick"
-    location: "Nottingham, UK"
-
 params:
   env: "production"
   title: "Russ.Cloud - The personal blog of Russ McKendrick"
   description: "The ramblings of a nerd about random things that interest me."
   keywords: ["Blog", "Technical", "Automation", "DevOps", "Cloud"]
-  author: "Russ McKendrick"
   images: ["/images/blog-cover.png"]
   DateFormat: "January 2, 2006"
   defaultTheme: "auto" # dark, light
@@ -52,6 +44,13 @@ params:
   showtoc: false
   tocopen: false
   ShowRelated: false
+
+  author:
+    russmckendrick:
+      name: "Russ McKendrick"
+      email: "r@russ.email"
+      github: "@russmckendrick"
+      location: "Nottingham, UK"
 
   assets:
     disableHLJS: true
@@ -168,7 +167,6 @@ outputFormats:
     isPlainText: true
     mediaType: text/plain
     notAlternative: true
-
   asciinema:
     defaults:
       theme: "solarized-dark"
@@ -197,9 +195,9 @@ imaging:
   exif:
     includeFields: ".*"
 
-ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken", "shortcode-twitter-getremote"]
-
 sitemap:
   changefreq: "weekly"
   priority: 0.5
   filename: "sitemap.xml"
+
+ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken", "shortcode-twitter-getremote"]

@@ -1,13 +1,21 @@
 {{- define "main" }}
-<div class="not-found-container">
-  <h1 class="not-found-title">404</h1>
-  <p class="not-found-text">Oops! The page you're looking for could not be found.</p>
-  <p class="not-found-text">Here are a few things you can try:</p>
-  <ul class="not-found-list">
-    <li><a href="{{ "/search/" | relURL }}">Perform a search</a>.</li>
-    <li><a href="{{ "/tags/" | relURL }}">Checkout the tags page</a>.</li>
-    <li><a href="{{ "/" | relURL }}">Visit the homepage</a>.</li>
-    <li><a href="{{ "/about/" | relURL }}">If you believe this is an error, please  contact me</a>.</li>
-    </ul>
+<div class="not-found-container page-404">
+    <h1 class="not-found-title">404</h1>
+    <p class="not-found-message">Oops! The page you're looking for could not be found.</p>
+    
+    <div class="not-found-actions">
+        <a href="{{ "search" | relURL }}" class="not-found-button">Perform a search</a>
+        <a href="{{ "/" | relURL }}" class="not-found-button">Visit the homepage</a>
+        <a href="{{ "about" | relURL }}" class="not-found-button">Contact me</a>
+    </div>
+    
+    <div class="popular-tags">
+        <h2>Tags</h2>
+        <div class="tag-cloud">
+        {{- range $name, $taxonomy := .Site.Taxonomies.tags }}
+            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" class="tag">{{ $name }}</a>
+        {{- end }}
+        </div>
+    </div>
 </div>
-{{- end }}{{/* end main */ -}}
+{{- end }}{{/* end main */}}
