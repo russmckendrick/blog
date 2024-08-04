@@ -32,6 +32,7 @@ It was an interesting idea but felt a little clunky, likewise, launching individ
 
 Before creating the cluster I needed to start some Docker hosts, I decided to launch three of them in [DigitalOcean](https://m.do.co/c/52ec4dc3647e) using the following commands;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 1/16" >}}
 ```
 docker-machine create \
 --driver digitalocean \
@@ -54,21 +55,26 @@ docker-machine create \
 --digitalocean-size 2gb \
 swarm03
 ```
+{{< /terminal >}}
 
 Once I had my three hosts up and running I ran the following commands to create the Swarm;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 2/16" >}}
 ```
 docker $(docker-machine config swarm01) swarm init --advertise-addr $(docker-machine ip swarm01):2377 --listen-addr $(docker-machine ip swarm01):2377
 SWMTKN=$(docker $(docker-machine config swarm01) swarm join-token -q worker)
 docker $(docker-machine config swarm02) swarm join $(docker-machine ip swarm01):2377 --token $SWMTKN
 docker $(docker-machine config swarm03) swarm join $(docker-machine ip swarm01):2377 --token $SWMTKN
 ```
+{{< /terminal >}}
 
 Then the following to check that I have the three hosts in the cluster;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 3/16" >}}
 ```
 docker $(docker-machine config swarm01) node ls
 ```
+{{< /terminal >}}
 
 ![a screenshot of a computer](/img/2017-01-21_playing-with-docker-1.13-minio_1.png)
 
@@ -98,6 +104,7 @@ Now I had my Docker Swarm cluster and an idea of how I wanted my application dep
 
 To do this, I created a Docker Compose V3 file which I based on the Minio example Docker Compose file. The compose file below is what I ended up with;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 4/16" >}}
 ```
 version: "3"
 
@@ -234,6 +241,7 @@ volumes:
   minio5:
   minio6:
 ```
+{{< /terminal >}}
 
 On the face of it, the Docker Compose file seems to be very similar to a v2 file. However you may notice that there is an additional section for each of the Minio containers, everything which comes below deploy is new to the v3 Docker Compose format.
 
@@ -241,16 +249,20 @@ As you can see, I was able to add a restart policy and also a constraint to the 
 
 If you don’t feel like using the MINIO_ACCESS_KEY and MINIO_SECRET_KEY in the Docker Compose then you can generate your own by running the following two commands which will randomly create two new keys for you;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 5/16" >}}
 ```
 openssl rand -hex 10 # for MINIO_ACCESS_KEY
 openssl rand -hex 15 # for MINIO_SECRET_KEY
 ```
+{{< /terminal >}}
 
 To launch the stack using this Docker Compose file, all I needed to do was the run the following command;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 6/16" >}}
 ```
 docker $(docker-machine config swarm01) stack deploy --compose-file=docker-compose.yml minio
 ```
+{{< /terminal >}}
 
 ![text](/img/2017-01-21_playing-with-docker-1.13-minio_2.png)
 
@@ -258,9 +270,11 @@ As you can see from the terminal output above, six services and a network were c
 
 To check that the stack was there, I ran the following;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 7/16" >}}
 ```
 docker $(docker-machine config swarm01) stack ls
 ```
+{{< /terminal >}}
 
 Which gave me the output below;
 
@@ -270,9 +284,11 @@ Now that I knew that my Stack had successfully created and that the expected six
 
 To do this, I used the following command which shows a list of all of the services attached to the specified Stack;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 8/16" >}}
 ```
 docker $(docker-machine config swarm01) stack services minio
 ```
+{{< /terminal >}}
 
 As you can see from the terminal output below, I had the six services with each service having one of one containers running;
 
@@ -280,9 +296,11 @@ As you can see from the terminal output below, I had the six services with each 
 
 It was now time to open Minio in my browser, to do this I used the following command;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 9/16" >}}
 ```
 open http://$(docker-machine ip swarm01):9000
 ```
+{{< /terminal >}}
 
 ### Using Minio
 
@@ -296,15 +314,19 @@ Once logged in using the credentials I defined when launching the services, I wa
 
 Rather than start using the web gui straight away I decided to install the command line client, I used Homebrew to do this;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 10/16" >}}
 ```
 brew install minio-mc
 ```
+{{< /terminal >}}
 
 Configuration of the client was simple, all I needed to do was to run the following command;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 11/16" >}}
 ```
 mc config host add swarm http://$(docker-machine ip swarm01):9000 6b4535c9d0545e036d5a f50a73124f5699570beb9ad44cd940 S3v4
 ```
+{{< /terminal >}}
 
 It added a host called swarm which can be contacted at any of the public IP addresses of my Swarm cluster (I used `swarm01`), accessed with the access & secret key and finally the host I am connecting to is running the S3v4 API.
 
@@ -314,10 +336,12 @@ As you can see from the terminal output below you get an overview of the which w
 
 Now that the client is configured I can create a Bucket and upload a file by running;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 12/16" >}}
 ```
 mc mb swarm/testing
 mc cp ~/Desktop/boss-fight-free-high-quality-stock-images-photos-photography-clouds-crane-lake.jpg swarm/testing
 ```
+{{< /terminal >}}
 
 I creatively called the bucket “testing”, and the file was the header graphic for this post.
 
@@ -325,10 +349,12 @@ I creatively called the bucket “testing”, and the file was the header graphi
 
 Now that I had some content I can get a bucket and file listing by running;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 13/16" >}}
 ```
 mc ls swarm
 mc ls swarm/testing
 ```
+{{< /terminal >}}
 
 Which returned the results I expected;
 
@@ -344,10 +370,12 @@ Staying in the browser and “testing” bucket I decided to upload the Docker C
 
 Back on the command line check I could see the file and then used the built in `cat`command to view the contents of file;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 14/16" >}}
 ```
 mc ls swarm/testing
 mc cat swarm/testing/docker-compose.yml | head -10
 ```
+{{< /terminal >}}
 
 ![text](/img/2017-01-21_playing-with-docker-1.13-minio_13.png)
 
@@ -357,11 +385,13 @@ If one of the services should stop responding, I know it will get replaced as I 
 
 To force the condition to kick in I killed one of the two containers on swarm02. First of all, I got a listing of all of the containers running on the host, and then forcibly removed it by running;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 15/16" >}}
 ```
 docker $(docker-machine config swarm02) container ls
 docker $(docker-machine config swarm02) container rm -f 09d5f1e49093
 docker $(docker-machine config swarm01) stack services minio
 ```
+{{< /terminal >}}
 
 I checked the status of the services, and after a second or two, the replacement container had launched.
 
@@ -383,10 +413,12 @@ I have been waiting for the 1.13 release for a while as it is going to make work
 
 The introduction of clean-up commands is a godsend for managing unused volumes, networks and dangling images;
 
+{{< terminal title="Playing with Docker 1.13 & Minio 16/16" >}}
 ```
 docker system df
 docker system prune
 ```
+{{< /terminal >}}
 
 ![graphical user interface, text](/img/2017-01-21_playing-with-docker-1.13-minio_15.png)
 

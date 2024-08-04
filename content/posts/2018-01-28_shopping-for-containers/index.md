@@ -40,9 +40,11 @@ As you can see from the screenshot above, there are currently four main sections
 
 **Plugins**, here you will find the container images used to power the Docker Engine managed plugin system. For example if you wanted to install the Weave Net plugin into your Docker Swarm cluster you would run;
 
+{{< terminal title="Shopping for Containers 1/4" >}}
 ```
 $ docker plugin install store/weaveworks/net-plugin:2.0.1
 ```
+{{< /terminal >}}
 
 This would download the container which contains the plugin from [https://store.docker.com/plugins/weave-net-plugin](https://store.docker.com/plugins/weave-net-plugin).
 
@@ -68,9 +70,11 @@ You will notice that the the Docker Store page has the price of $0.00 and also i
 
 The instuctions for pulling the image are the same on both the Docker Hub and Docker Store;
 
+{{< terminal title="Shopping for Containers 2/4" >}}
 ```
 $ docker pull php
 ```
+{{< /terminal >}}
 
 Hopefully they will update both the Nub and Store to use the `docker image pull` command, but that is just me wanting to use the new Docker client commands :)
 
@@ -90,9 +94,11 @@ Clicking on on the Checkout button takes you to a page which asks for your name,
 
 Let’s try pulling the image from an un-authenciated Docker client by running;
 
+{{< terminal title="Shopping for Containers 3/4" >}}
 ```
 $ docker pull store/couchbase/couchbase:3.1.5
 ```
+{{< /terminal >}}
 
 ![graphical user interface, text](/img/2018-01-28_shopping-for-containers_8.png)
 
@@ -102,9 +108,11 @@ Logging in using the `docker login` command then trying to `docker pull` the ima
 
 From there I could for example run the following command to launch Couchbase;
 
+{{< terminal title="Shopping for Containers 4/4" >}}
 ```
 $ docker container run -d store/couchbase/couchbase:3.1.5
 ```
+{{< /terminal >}}
 
 As you can see, I have had to use the full image name and version to ensure that the image from the Docker Store will be used.
 

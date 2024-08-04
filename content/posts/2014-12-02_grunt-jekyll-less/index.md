@@ -20,10 +20,12 @@ While [Jekyll](http://jekyllrb.com) & [Github](https://pages.github.com) pages u
 
 Installation was straight forward enough;
 
+{{< terminal title="Grunt + Jekyll + LESS 1/3" >}}
 ```
 brew install node
 npm install -g grunt-cli
 ```
+{{< /terminal >}}
 
 So now what? I needed something which would do the following …
 
@@ -42,6 +44,7 @@ My configuration currently looks like ….
 
 **packages.json**
 
+{{< terminal title="Grunt + Jekyll + LESS 2/3" >}}
 ```
 {
  “name”: “mediaglasses”,
@@ -62,9 +65,11 @@ My configuration currently looks like ….
  }
 }
 ```
+{{< /terminal >}}
 
 **Gruntfile.js**
 
+{{< terminal title="Grunt + Jekyll + LESS 3/3" >}}
 ```
 module.exports = function(grunt) {
  grunt.initConfig({
@@ -139,6 +144,7 @@ grunt.registerTask(‘css’, [‘less’, ‘concat:css’, ‘cssmin:css’]);
 grunt.registerTask(‘server’, [‘connect’, ‘watch’]);
 };
 ```
+{{< /terminal >}}
 
 The following posts helped me get to where I am at the moment;
 

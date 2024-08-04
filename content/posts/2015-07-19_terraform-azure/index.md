@@ -26,10 +26,12 @@ I decided that it maybe more straight forward to launch my test Virtual Machines
 
 Terraform is straight forward to install if you have [Homebrew](http://brew.sh "Homebrew") installed, none Mac users can follow the [install guide](https://www.terraform.io/intro/getting-started/install.html).
 
+{{< terminal title="Terraform & Azure 1/6" >}}
 ```
  brew install terraform
  brew cask install graphviz
 ```
+{{< /terminal >}}
 
 There is a Cask version of terraform, this does not ship with the Azure provider so use the main brew package instead. [Graphviz](http://www.graphviz.org "Graphviz") is installed so that the graph functionality can be used.
 
@@ -37,6 +39,7 @@ I downloaded a copy of my Publish Settings from [https://manage.windowsazure.com
 
 First off I checked everything was OK with the configuration using terraform plan;
 
+{{< terminal title="Terraform & Azure 2/6" >}}
 ```
  ⚡ terraform plan
  var.azure_settings_file
@@ -88,17 +91,21 @@ Note: You didn’t specify an “-out” parameter to save this plan, so when
 
 Plan: 2 to add, 0 to change, 0 to destroy.
 ```
+{{< /terminal >}}
 
 As you can see everything is good to go, I also generated graphical overview using terraform graph which shows how it looks;
 
+{{< terminal title="Terraform & Azure 3/6" >}}
 ```
 terraform graph | dot -Tpng > graph.png
 ```
+{{< /terminal >}}
 
 ![graph](/img/2015-07-19_terraform-azure_1.png)
 
 As everything looked good it was time to apply the configuration and launch the Virtual Machine using terraform apply;
 
+{{< terminal title="Terraform & Azure 4/6" >}}
 ```
  ⚡ terraform apply
  var.azure_settings_file
@@ -147,6 +154,7 @@ The state of your infrastructure has been saved to the path
 
 State path: terraform.tfstate
 ```
+{{< /terminal >}}
 
 As you can see from the GUI below it launched the Cloud Service and Virtual Machine as defined.
 
@@ -154,8 +162,8 @@ As you can see from the GUI below it launched the Cloud Service and Virtual Mach
 
 I then used terraform show to query my instance to get the computed elements of the configuration;
 
+{{< terminal title="Terraform & Azure 5/6" >}}
 ```
-
  ⚡ terraform show
  azure_hosted_service.terraform-service:
  id = russ-terraform-service
@@ -186,9 +194,11 @@ I then used terraform show to query my instance to get the computed elements of 
  username = azureuser
  vip_address = 104.40.211.127
 ```
+{{< /terminal >}}
 
 I connected to the Virtual Machine, did what I had to do (thats a whole other blog post) and then finally tore down the Virtual Machine and Cloud Service using terraform destroy;
 
+{{< terminal title="Terraform & Azure 6/6" >}}
 ```
  ⚡ terraform destroy
  Do you really want to destroy?
@@ -210,5 +220,6 @@ azure_hosted_service.terraform-service: Refreshing state… (ID: russ-terraform-
 
 Apply complete! Resources: 0 added, 0 changed, 2 destroyed.
 ```
+{{< /terminal >}}
 
 As a Mac / Linux user I found the whole experience to be a lot more what I am used to with other cloud services and a lot less “Microsoft” than I feared.

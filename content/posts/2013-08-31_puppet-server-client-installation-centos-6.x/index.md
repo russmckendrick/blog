@@ -20,6 +20,7 @@ This post assumes that you are starting with a clean minimal CentOS 6.4 64bit se
 
 Puppet Server Installation ……
 
+{{< terminal title="Puppet Server & Client Installation CentOS 6.x 1/4" >}}
 ```
 # Hostname — Make sure the host name it set to puppet.yourdomain.com and that you replace references in this file
 
@@ -93,9 +94,11 @@ netstat -ln | grep 8140
 
 # bosh
 ```
+{{< /terminal >}}
 
 Install the agent ……
 
+{{< terminal title="Puppet Server & Client Installation CentOS 6.x 2/4" >}}
 ```
 # Add the Puppetlabs & VIM !!!
 yum install -y http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-6.noarch.rpm vim-enhanced
@@ -117,16 +120,21 @@ CONFIG
 chkconfig puppet on
 puppet agent — daemonize
 ```
+{{< /terminal >}}
 
 This will have sent the client certificate to the master server, all you have to do now is sign it. On Puppet Master ……
 
+{{< terminal title="Puppet Server & Client Installation CentOS 6.x 3/4" >}}
 ```
 puppet cert list
 puppet cert sign — all
 ```
+{{< /terminal >}}
 
 and then test on the Puppet client ……
 
+{{< terminal title="Puppet Server & Client Installation CentOS 6.x 4/4" >}}
 ```
 puppet agent — test
 ```
+{{< /terminal >}}

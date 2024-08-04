@@ -25,13 +25,16 @@ I decided there must be a more elegant way of doing this so I looked at Puppet u
 
 As Ansible is agent-less I needed to install it on my Mac, this is simple enough as you can use [Brew](http://brew.sh) ….
 
+{{< terminal title="First Steps with Ansible 1/3" >}}
 ```
 brew update
 brew install ansible
 ```
+{{< /terminal >}}
 
 … once install I used a CentOS 7 Vagrant box to work through a few [tutorials](https://docs.ansible.com/ansible/latest/getting_started/index.html) …
 
+{{< terminal title="First Steps with Ansible 2/3" >}}
 ```
 russ @ Russs-iMac in ~/Desktop/ansible
 vagrant up
@@ -88,11 +91,13 @@ changed: [default]
 PLAY RECAP ******************************************************************** 
 default : ok=6 changed=5 unreachable=0 failed=0
 ```
+{{< /terminal >}}
 
 … like all first steps using a new orchestration tool I had installed & configured NTPD.
 
 The syntax itself isn’t too different from Puppet so it was easy to get the gist of what was going on. Once I had gotten my head around the basics I started on creating a [Playbook](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html) which configures a VPC and launches an Elastic Load Balancer , here is the current work in progress …
 
+{{< terminal title="First Steps with Ansible 3/3" >}}
 ```
 - name: install ntp
   yum: pkg=ntp state=installed
@@ -109,5 +114,6 @@ The syntax itself isn’t too different from Puppet so it was easy to get the gi
 - name: start ntpd service
   service: name=ntpd state=started enabled=yes
 ```
+{{< /terminal >}}
 
 Once I have everything working as expected I will post an update.

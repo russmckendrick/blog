@@ -32,6 +32,7 @@ There is a good introduction to the stack on YouTube;
 
 The only pre-requisite for Elasticsearch is a recent version of Java, the quickest way to install this is directly from Oracle;
 
+{{< terminal title="Installing an ELK Stack on CentOS 7 1/11" >}}
 ```
  cd /opt
  wget — no-cookies — no-check-certificate — header “Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie” “http://download.oracle.com/otn-pub/java/jdk/8u40-b25/jre-8u40-linux-x64.tar.gz"
@@ -39,9 +40,11 @@ The only pre-requisite for Elasticsearch is a recent version of Java, the quicke
  chown -R root: jre1.8*
  rm /opt/jre-8*.tar.gz
 ```
+{{< /terminal >}}
 
 Now we have a java Runtime installed in /opt/jre1.8* lets use alternatives to set it so the system uses it by default;
 
+{{< terminal title="Installing an ELK Stack on CentOS 7 2/11" >}}
 ```
 alternatives — install /usr/bin/java java /opt/jre1.8*/bin/java 1
 java -version
@@ -49,24 +52,30 @@ java version “1.8.0_40”
 Java(TM) SE Runtime Environment (build 1.8.0_40-b25)
 Java HotSpot(TM) 64-Bit Server VM (build 25.40-b25, mixed mode)
 ```
+{{< /terminal >}}
 
 So thats Java installed and set as the system default, next up is Elasticsearch itself. There is an official Yum repository so lets use it;
 
+{{< terminal title="Installing an ELK Stack on CentOS 7 3/11" >}}
 ```
 cat >> /etc/yum.repos.d/elasticsearch.repo <> /etc/systemd/system/kibana4.service <> /etc/nginx/conf.d/kibana.conf
 ```
+{{< /terminal >}}
 
 and finally start the services;
 
+{{< terminal title="Installing an ELK Stack on CentOS 7 4/11" >}}
 ```
 systemctl start nginx
 systemctl enable nginx
 ```
+{{< /terminal >}}
 
 ### Logstash
 
 Like Elasticsearch there is a Yum repository;
 
+{{< terminal title="Installing an ELK Stack on CentOS 7 5/11" >}}
 ```
 cat >> /etc/yum.repos.d/logstash.repo <> /etc/logstash/conf.d/01-lumberjack-input.conf < 5000
  type => “logs”
@@ -76,9 +85,11 @@ cat >> /etc/yum.repos.d/logstash.repo <> /etc/logstash/conf.d/01-lumberjack-inpu
  }
  INPUT
 ```
+{{< /terminal >}}
 
 As we will be shipping syslog data to our ELK stack we need to let Logstash how it will look;
 
+{{< terminal title="Installing an ELK Stack on CentOS 7 6/11" >}}
 ```
  cat >> /etc/logstash/conf.d/10-syslog.conf < { “message” => “%{SYSLOGTIMESTAMP:syslog_timestamp} %{SYSLOGHOST:syslog_hostname} %{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?: %{GREEDYDATA:syslog_message}” }
  add_field => [ “received_at”, “%{@timestamp}” ]
@@ -92,22 +103,27 @@ As we will be shipping syslog data to our ELK stack we need to let Logstash how 
  }
  SYSLOG
 ```
+{{< /terminal >}}
 
 Finally lets send the data to the Elasticsearch installation on localhost;
 
+{{< terminal title="Installing an ELK Stack on CentOS 7 7/11" >}}
 ```
  cat >> //etc/logstash/conf.d/30-lumberjack-output.conf < localhost }
  stdout { codec => rubydebug }
  }
  OUTPUT
 ```
+{{< /terminal >}}
 
 So thats Logstash configured, lets start the service;
 
+{{< terminal title="Installing an ELK Stack on CentOS 7 8/11" >}}
 ```
  service logstash restart
  chkconfig logstash on
 ```
+{{< /terminal >}}
 
 and thats the main stack installed and configured. You should be able to visit the FQDN you specified in the NGINX configuration and see the Kibana dashboard.
 
@@ -119,12 +135,15 @@ Now we have our main stack installed, let pump some data into it.
 
 First of all, lets import the GPG key for the Forwarder repo;
 
+{{< terminal title="Installing an ELK Stack on CentOS 7 9/11" >}}
 ```
  rpm — import http://packages.elasticsearch.org/GPG-KEY-elasticsearch
 ```
+{{< /terminal >}}
 
 Now add the repo;
 
+{{< terminal title="Installing an ELK Stack on CentOS 7 10/11" >}}
 ```
  cat >> /etc/yum.repos.d/logstash-forwarder.repo <> /etc/logstash-forwarder.conf << FORWARD
  {
@@ -149,15 +168,18 @@ The list of files configurations
  }
  FORWARD
 ```
+{{< /terminal >}}
 
 as you can see I am shipping /var/log/messages, /var/log/secure and /var/log/fail2ban.log over to my ELK stack.
 
 Finally we need to start the service and configure to start on boot;
 
+{{< terminal title="Installing an ELK Stack on CentOS 7 11/11" >}}
 ```
  service logstash-forwarder restart
  chkconfig logstash-forwarder on
 ```
+{{< /terminal >}}
 
 and hey presto, we now have data appearing in Kibana;
 

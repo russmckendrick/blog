@@ -21,22 +21,27 @@ As always I started off with a blank CentOS 7 server hosted in Digital and ran [
 
 Once I had that in order I grabbed the repo file for the Jenkins RPM repository and installed the package along with Java and NGINX;
 
+{{< terminal title="Jenkins 1/7" >}}
 ```
 wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
 rpm — import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 yum install nginx httpd-tools java-1.7.0-openjdk jenkins
 ```
+{{< /terminal >}}
 
 As there is only going to be me using this installation I decided that I would use NGINX to provide both the SSL termination and also the password protection for the installation.
 
 I started by creating the password file for NGINX to use;
 
+{{< terminal title="Jenkins 2/7" >}}
 ```
 htpasswd -c /etc/nginx/.htpasswd my_username
 ```
+{{< /terminal >}}
 
 The NGINX config file which was called /etc/nginx/conf.d/jenkins.conf looks like this;
 
+{{< terminal title="Jenkins 3/7" >}}
 ```
 server {
  listen 80;
@@ -74,37 +79,46 @@ auth_basic “Restricted”;
  }
  }
 ```
+{{< /terminal >}}
 
 As you have noticed I got the certificate from the incredibly awesome [LetEncrypt](https://letsencrypt.org). As the domain I was using was already resolving to the server getting the certificate was a simple as running the following commands and then following the on screen prompts;
 
+{{< terminal title="Jenkins 4/7" >}}
 ```
 cd /root/
 git clone https://github.com/letsencrypt/letsencrypt
 cd letsencrypt/
 ./letsencrypt-auto certonly
 ```
+{{< /terminal >}}
 
 As I wasn’t going to directly expose Jenkins to the world, I configured it to listen on localhost, that way we don’t have a Java service bond directly publicly available NIC. To do this run the following command;
 
+{{< terminal title="Jenkins 5/7" >}}
 ```
 echo ‘JENKINS_ARGS=” — webroot=/var/cache/jenkins/war — httpListenAddress=127.0.0.1 — httpPort=$HTTP_PORT -ajp13Port=$AJP_PORT’ > /etc/default/jenkins
 ```
+{{< /terminal >}}
 
 Finally, it’s time to enable the firewall, by default Firewalld has the ssh port (22) configured. As the bootstrap script installed [Fail2Ban](/2015/03/29/fail2ban-on-centos-7/), and also password enabled login is disabled on the instance so I am happy to keep the port open. So we just need to enable ports 80 & 443;
 
+{{< terminal title="Jenkins 6/7" >}}
 ```
 systemctl enable firewalld && systemctl restart firewalld
 firewall-cmd — zone=public — add-port=80/tcp — permanent
 firewall-cmd — zone=public — add-port=443/tcp — permanent
 firewall-cmd — reload
 ```
+{{< /terminal >}}
 
 Finally, its time to enable and start the rest of the services;
 
+{{< terminal title="Jenkins 7/7" >}}
 ```
 systemctl enable jenkins.service && systemctl restart jenkins.service
 systemctl enable nginx.service && systemctl restart nginx
 ```
+{{< /terminal >}}
 
 If everything went as planned you should be able to access Jenkins at the domain name you configured in the NGINX configuration.
 

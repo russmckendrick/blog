@@ -49,11 +49,13 @@ After a few minutes, Docker for Mac started up, the first thing I did was open t
 
 As you can see, this window now shows the version numbers of all of the Docker components installed and available. What we are insterested in is Kubernetes v.1.8.2. I also checked the version on the command line using the Docker client ;
 
+{{< terminal title="Docker + Kubernetes 1/14" >}}
 ```
 $ docker version
 $ docker-compose version
 $ docker-machine version
 ```
+{{< /terminal >}}
 
 ![text](/img/2018-01-06_docker-kubernetes_9.png)
 
@@ -77,17 +79,21 @@ After a few minutes you should see the following message;
 
 Docker for Mac also installs the Kubernetes command line client, kubectl, you can check this is installed by running;
 
+{{< terminal title="Docker + Kubernetes 2/14" >}}
 ```
 $ kubectl version
 ```
+{{< /terminal >}}
 
 ![text](/img/2018-01-06_docker-kubernetes_14.png)
 
 Running the following command will give you information about the nodes running in your Kubernetes cluster, we should see just the one;
 
+{{< terminal title="Docker + Kubernetes 3/14" >}}
 ```
 $ kubectl get nodes
 ```
+{{< /terminal >}}
 
 ![graphical user interface, text, application, chat or text message](/img/2018-01-06_docker-kubernetes_15.png)
 
@@ -97,9 +103,11 @@ Now that we have a single node cluster up and running lets dig a little deeper i
 
 Running the following command will list of the running containers, but only show the container name, image used and the command which was executed;
 
+{{< terminal title="Docker + Kubernetes 4/14" >}}
 ```
 $ docker container ls --format "table{{.Names}}\t{{.Image }}\t{{.Command}}"
 ```
+{{< /terminal >}}
 
 You can see the results below;
 
@@ -111,10 +119,12 @@ One thing to note is that only one of the container images is from Docker themse
 
 We can find out a little more on the installation itself by running the following commands;
 
+{{< terminal title="Docker + Kubernetes 5/14" >}}
 ```
 $ kubectl get namespaces
 $ kubectl get pods --namespace kube-system
 ```
+{{< /terminal >}}
 
 As you can see from the terminal output below, this lists all of the pods which containers below belong to;
 
@@ -124,24 +134,30 @@ The one service which is missing is the Kubernetes Dashboard, this would be a go
 
 Installing the Dashboard is quite a simple task, running the following command will deploy it your Kubernetes cluster;
 
+{{< terminal title="Docker + Kubernetes 6/14" >}}
 ```
 $ kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 ```
+{{< /terminal >}}
 
 After a minute or two you should be able to run the following commands to view the deployments and services running in the **kube-system** namespace;
 
+{{< terminal title="Docker + Kubernetes 7/14" >}}
 ```
 $ kubectl get deployments --namespace kube-system
 $ kubectl get services --namespace kube-system
 ```
+{{< /terminal >}}
 
 ![text](/img/2018-01-06_docker-kubernetes_19.png)
 
 Now that the Dashboard is running you can access it through the proxy service provided by kubectl, to start this service simply run;
 
+{{< terminal title="Docker + Kubernetes 8/14" >}}
 ```
 $ kubectl proxy
 ```
+{{< /terminal >}}
 
 ![text](/img/2018-01-06_docker-kubernetes_20.png)
 
@@ -161,6 +177,7 @@ Docker also provide an example application, lets take a look at deploying it.
 
 The Docker Compose file, yes you read that right we are going be using Docker Compose, looks like the following;
 
+{{< terminal title="Docker + Kubernetes 9/14" >}}
 ```
 version: '3.3'
 
@@ -192,12 +209,15 @@ services:
     cover:
     image: dockerdemos/lab-db
 ```
+{{< /terminal >}}
 
 Running the following command;
 
+{{< terminal title="Docker + Kubernetes 10/14" >}}
 ```
 $ docker stack deploy --compose-file stack.yml demo
 ```
+{{< /terminal >}}
 
 Will launch a demo application which was origininally used during European DockerCon 17.
 
@@ -205,18 +225,22 @@ Will launch a demo application which was origininally used during European Docke
 
 Once the stack is stable and running you can check run;
 
+{{< terminal title="Docker + Kubernetes 11/14" >}}
 ```
 $ kubectl get pods
 ```
+{{< /terminal >}}
 
 ![a screenshot of a computer](/img/2018-01-06_docker-kubernetes_25.png)
 
 As you can see, this has launched several pods, we can also check the deployment and services by running;
 
+{{< terminal title="Docker + Kubernetes 12/14" >}}
 ```
 $ kubectl get deployments
 $ kubectl get services
 ```
+{{< /terminal >}}
 
 ![text](/img/2018-01-06_docker-kubernetes_26.png)
 
@@ -226,14 +250,18 @@ As you see, the web service has a type of **LoadBalancer**, while the Exteral-IP
 
 Running the following command will stop and remove the example service;
 
+{{< terminal title="Docker + Kubernetes 13/14" >}}
 ```
 $ docker stack remove demo
 ```
+{{< /terminal >}}
 
 If you want to remove the Kubernetes Dashboard you can run;
 
+{{< terminal title="Docker + Kubernetes 14/14" >}}
 ```
 $ kubectl delete deployment kubernetes-dashboard --namespace kube-system
 ```
+{{< /terminal >}}
 
 As you can see, Kubernetes on Docker for Mac is quite straight forward, and so far I have to say I much prefer it to running [Minikube](https://media-glass.es/launching-a-local-kubernetes-lab-using-minikube-39560f792889), having everything all in a single place really makes things straight foward.

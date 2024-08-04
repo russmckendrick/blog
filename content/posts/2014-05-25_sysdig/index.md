@@ -22,9 +22,11 @@ aliases:
 
 It’s easy to [install](http://www.sysdig.org/install/) ….
 
+{{< terminal title="Sysdig 1/1" >}}
 ```
 curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | sudo bash
 ```
+{{< /terminal >}}
 
 …. and even easier to run ….
 

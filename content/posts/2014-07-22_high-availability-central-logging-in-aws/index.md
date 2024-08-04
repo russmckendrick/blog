@@ -29,7 +29,9 @@ Ooooooooo, thats convenient. The great thing is that it just works and its reall
 The first step is add a IAM user or role with the following permissions ……
 
 {{< terminal title="Example code" >}}
-``` terminfo
+{{< terminal title="High Availability Central Logging in AWS 1/2" >}}
+```
+terminfo
 {
  “Version”: “2012–10–17”,
  “Statement”: [
@@ -48,11 +50,14 @@ The first step is add a IAM user or role with the following permissions ……
 }
 ```
 {{< /terminal >}}
+{{< /terminal >}}
 
 …… once you have done this bit and launched an EC2 instance with the new role or have the user credentials its just a case of running the install script ……
 
 {{< terminal title="Example code" >}}
-``` terminfo
+{{< terminal title="High Availability Central Logging in AWS 2/2" >}}
+```
+terminfo
 wget https://s3.amazonaws.com/aws-cloudwatch/downloads/awslogs-agent-setup-v1.0.py
 chmod 755 awslogs-agent-setup-v1.0.py
 ./awslogs-agent-setup-v1.0.py -r us-east-1
@@ -121,8 +126,9 @@ Step 5 of 5: Setting up agent as a daemon …DONE
 - You can use ‘sudo service awslogs start|stop|status|restart’ to control the daemon.
 - To see diagnostic information for the CloudWatch Logs Agent, see /var/log/awslogs.log
 - You can rerun interactive setup using ‘sudo ./awslogs-agent-setup.py — region us-east-1 — only-generate-config’
- — — — — — — — — — — — — — — — — — — — — — — — — — — — 
+ — — — — — — — — — — — — — — — — — — — — — — — — — — —
 ```
+{{< /terminal >}}
 {{< /terminal >}}
 
 and thats it, if you goto your AWS Console you should now see the /var/log/messages and /var/log/secure logs being captured.

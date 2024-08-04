@@ -17,9 +17,11 @@ aliases:
 ---
 Vagrant allows developers to bring up local development machines in a controlled method using pre-built configuration files called boxes. Once a box has been installed on the developers local machine it can be powered on with the following command;
 
+{{< terminal title="Vagrant & Puppet 1/2" >}}
 ```
 vagrant up
 ```
+{{< /terminal >}}
 
 When the box is brought up it automatically provisions itself using a number of provisioners including Puppet, this means that the production deployment scripts can also be run on local development copies of the instances. The instances on the local machines are powered by Virtualbox and there Windows, Linux and Mac versions of Vagrant.
 
@@ -27,6 +29,7 @@ Once a local instance has booted it can attach a folder on the developers local 
 
 A typical Vagrant session looks like the following;
 
+{{< terminal title="Vagrant & Puppet 2/2" >}}
 ```
 russ$ vagrant up
 Bringing machine ‘default’ up with ‘virtualbox’ provider…
@@ -92,6 +95,7 @@ Notice: /Stage[main]/Services::Git/Git::Repo[vagrant-dev-box]/Exec[git_repo_vagr
 Notice: /Stage[main]/Services::Php/Package[php-xml]/ensure: created
 Notice: Finished catalog run in 260.98 seconds
 ```
+{{< /terminal >}}
 
 This brings up a CentOS server, port maps port 8888 on the local machine to port 80 on the instance and then mounts ~/Documents/Vagrant/apache/webroot/ as /webroot on the instance. Once the instance has booted it then executes a Puppet manifest which installs & configures the following services;
 

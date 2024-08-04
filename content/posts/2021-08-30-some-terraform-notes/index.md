@@ -27,7 +27,8 @@ The **azurerm_monitor_diagnostic_categories** data source can be used to target 
 The code below will create a Resource Group, launch a Log Analytics Workspace and also create a Virtual Network:
 
 {{< ide title="Create the example resources" lang="HCL" >}}
-```hcl {linenos=true} 
+{{< terminal title="Some Terraform Azure Notes 1/15" >}}
+```hcl {linenos=true}
 resource "azurerm_resource_group" "resource_group" {
   name     = "rg-test-uks"
   location = "uksouth"
@@ -55,21 +56,25 @@ resource "azurerm_subnet" "subnet_001" {
   address_prefixes     = ["192.168.10.0/24"]
 }
 ```
+{{< /terminal >}}
 {{< /ide >}}
 
 Now that the resources have been defined, we can grab the information on what `logs` and `metrics` we need to be enable on the Virtual Network itself by passing the **azurerm_monitor_diagnostic_categories** data source the ID of our virtual network:
 
 {{< ide title="Use azurerm_monitor_diagnostic_categories" lang="HCL" >}}
+{{< terminal title="Some Terraform Azure Notes 2/15" >}}
 ```hcl {linenos=true}
 data "azurerm_monitor_diagnostic_categories" "vnet" {
   resource_id = azurerm_virtual_network.vnet.id
 }
 ```
+{{< /terminal >}}
 {{< /ide >}}
 
 Finally, we can take the information gathered above and apply it using two dynamic blocks, one for the `log` and other for the `metric`:
 
 {{< ide title="Add the Diagnostic Settings" lang="HCL" >}}
+{{< terminal title="Some Terraform Azure Notes 3/15" >}}
 ```hcl {linenos=true}
 resource "azurerm_monitor_diagnostic_setting" "vnet" {
   name                       = "diag-${azurerm_virtual_network.vnet.name}"
@@ -99,11 +104,13 @@ resource "azurerm_monitor_diagnostic_setting" "vnet" {
   }
 }
 ```
+{{< /terminal >}}
 {{< /ide >}}
 
 In the case of the Virtual Network there are just a single output for each type of diagnostic setting, 
 
 {{< ide title="The output" lang="HCL" >}}
+{{< terminal title="Some Terraform Azure Notes 4/15" >}}
 ```hcl {linenos=true}
 logs = toset([
   "VMProtectionAlerts",
@@ -112,6 +119,7 @@ metrics = toset([
   "AllMetrics",
 ])
 ```
+{{< /terminal >}}
 {{< /ide >}}
 
 Now while this may seem a little overkill, some resources can have up to half a dozen different diagnostic settings so taking approach means you don't have to really care what they are as they will just be applied.
@@ -123,6 +131,7 @@ The next thing isn't really anything to do with Azure - but is useful when you n
 Let's look at an example first:
 
 {{< ide title="Setting a 30 day expiry" lang="HCL" >}}
+{{< terminal title="Some Terraform Azure Notes 5/15" >}}
 ```hcl {linenos=true}
 terraform {
   required_version = ">= 1.0.0"
@@ -139,19 +148,23 @@ provider "time" {
 resource "time_rotating" "token" {
   rotation_days = 30
 }
-```{{< /ide >}}
+```
+{{< /terminal >}}{{< /ide >}}
 
 This will give the following output:
 
 {{< ide title="The output" lang="HCL" >}}
+{{< terminal title="Some Terraform Azure Notes 6/15" >}}
 ```hcl {linenos=true}
 expiry-date = "2021-09-29T11:51:17Z"
 ```
+{{< /terminal >}}
 {{< /ide >}}
 
 While the above is a really basic example, using it for something like a **[azurerm_virtual_desktop_host_pool](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_desktop_host_pool)** resource would look something like:
 
 {{< ide title="Hostpool example"lang="HCL"  >}}
+{{< terminal title="Some Terraform Azure Notes 7/15" >}}
 ```hcl {linenos=true}
 resource "azurerm_virtual_desktop_host_pool" "host_pool" {
   resource_group_name      = azurerm_resource_group.resource_group.name
@@ -172,11 +185,13 @@ resource "azurerm_virtual_desktop_host_pool" "host_pool" {
 
 }
 ```
+{{< /terminal >}}
 {{< /ide >}}
 
 You can then take the token generated above and add it to an Azure Key Vault using **[azurerm_key_vault_secret](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_secret)**:
 
 {{< ide title="Key Vault Secret example" lang="HCL" >}}
+{{< terminal title="Some Terraform Azure Notes 8/15" >}}
 ```hcl {linenos=true}
 resource "azurerm_key_vault_secret" "host_pool_token" {
   depends_on = [
@@ -189,6 +204,7 @@ resource "azurerm_key_vault_secret" "host_pool_token" {
   expiration_date = time_rotating.token.rotation_rfc3339
 }
 ```
+{{< /terminal >}}
 {{< /ide >}}
 
 ## Azure Automation Account Web Hook
@@ -198,6 +214,7 @@ Next up we have what was the bane of my life for a good few days, Azure Automati
 Before we look at creating the web hook we are going to need an Automation Account and Runbook, the following code adds these with a really basic configuration:
 
 {{< ide title="Create an Azure Automation Account and Runbook" lang="HCL">}}
+{{< terminal title="Some Terraform Azure Notes 9/15" >}}
 ```hcl {linenos=true}
 terraform {
   required_version = ">= 1.0.0"
@@ -240,6 +257,7 @@ resource "azurerm_automation_runbook" "automation_account_runbook" {
   }
 }
 ```
+{{< /terminal >}}
 {{< /ide >}}
 
 You maybe thinking to yourself, if Terraform doesn't support web hooks then how can we add them? Luckily Terraform allows you execute ARM templates - which does support the create and assignment of a web hook, there are a few things we are going to have generate first before run the ARM template though.
@@ -248,6 +266,7 @@ You maybe thinking to yourself, if Terraform doesn't support web hooks then how 
 - `webhook_token1` and `webhook_token2` = these are two random strings which will go to make up part of the webhook URL
 
 {{< ide title="Generate some stuff" lang="HCL" >}}
+{{< terminal title="Some Terraform Azure Notes 10/15" >}}
 ```hcl {linenos=true}
 resource "time_rotating" "webhook_expiry_time" {
   rotation_years = 5
@@ -268,16 +287,19 @@ resource "random_string" "webhook_token2" {
   special = false
 }
 ```
+{{< /terminal >}}
 {{< /ide >}}
 
 Next we need to create the webook URL itself as this is not done for us, to do this I am setting a local variable so I can reuse it if needed:
 
 {{< ide title="Set the local variable" lang="HCL">}}
+{{< terminal title="Some Terraform Azure Notes 11/15" >}}
 ```hcl {linenos=true}
 locals {
   webhook = "https://${split("/", azurerm_automation_account.automation_account.dsc_server_endpoint)[4]}.webhook.${substr(azurerm_resource_group.resource_group.location, 0, 3)}.azure-automation.net/webhooks?token={random_string.webhook_token1.result}{random_string.webhook_token2.result}"
 }
 ```
+{{< /terminal >}}
 {{< /ide >}}
 
 As you can see, this using as much dynamically generated content as possible to full in gaps of the URL.
@@ -289,6 +311,7 @@ As you can see, this using as much dynamically generated content as possible to 
 Now that we have everything needed to generate the URL we can deploy the ARM template by using:
 
 {{< ide title="Generate some stuff" lang="HCL" >}}
+{{< terminal title="Some Terraform Azure Notes 12/15" >}}
 ```hcl {linenos=true}
 resource "azurerm_template_deployment" "automation_account_webhook" {
   name                = "HelloWorldWebhook"
@@ -318,14 +341,17 @@ resource "azurerm_template_deployment" "automation_account_webhook" {
 DEPLOY
 }
 ```
+{{< /terminal >}}
 {{< /ide >}}
 
 This gives the following output:
 
 {{< ide title="The output" lang="HCL">}}
+{{< terminal title="Some Terraform Azure Notes 13/15" >}}
 ```hcl {linenos=true}
 webhook = "https://e833b5e7-ef20-41ad-83db-eec633b9d22b.webhook.uks.azure-automation.net/webhooks?token=%2buXamOQWrjJ%2bmzhBt7kpeMKcX5R8wnULaj7zNWBCyh2%3d"
 ```
+{{< /terminal >}}
 {{< /ide >}}
 
 All of which means that the following command, updating it to matech your URL, can be used to trigger the web hook:

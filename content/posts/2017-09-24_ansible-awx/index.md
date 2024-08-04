@@ -19,6 +19,7 @@ It has been a while as I have been busy writing, I thought I would spend some of
 
 I created the following **Vagrantfile** to launch a [CentOS 7](https://www.centos.org/) server;
 
+{{< terminal title="Ansible AWX 1/3" >}}
 ```
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
@@ -44,9 +45,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 end
 ```
+{{< /terminal >}}
 
 This launches the following **playbook.yml** which prepares the CentOS 7 box by installing Docker and the other prerequisites need to build and launch AWX;
 
+{{< terminal title="Ansible AWX 2/3" >}}
 ```
 - name: Deploy AWX
   hosts: all
@@ -113,6 +116,7 @@ This launches the following **playbook.yml** which prepares the CentOS 7 box by 
       args:
         chdir: "~/awx/installer"
 ```
+{{< /terminal >}}
 
 (You can find the files above in a [gist on GitHub](https://gist.github.com/russmckendrick/36d3f131cae273e6c85060a8d172a195)) Running `vagrant up` will launch the CentOS 7 machine and execute the playbook to install AWX, this process takes about 15 minutes.
 
@@ -120,11 +124,13 @@ This launches the following **playbook.yml** which prepares the CentOS 7 box by 
 
 In the background the installer has built and downloaded several Docker images, you can check what is going on the machine by running;
 
+{{< terminal title="Ansible AWX 3/3" >}}
 ```
 vagrant ssh
 sudo docker image ls
 sudo docker container ls
 ```
+{{< /terminal >}}
 
 Once the build has completed you should the following images;
 

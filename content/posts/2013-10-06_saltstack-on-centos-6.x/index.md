@@ -20,6 +20,7 @@ Had a play with [SaltStack](http://saltstack.com/) today, it’s a good way to m
 
 First we need to install the Salt-Master, this assumes you are installing on CentOS and don’t mind having EPEL installed on both the master and minion ….
 
+{{< terminal title="SaltStack on CentOS 6.x 1/3" >}}
 ```
 # Install EPEL and Update on both the master and minions
 yum update -y
@@ -39,16 +40,20 @@ chkconfig salt-minion on
 sed -i ‘s/#master: salt/master: manager.yourdomain.com/g’ /etc/salt/minion
 service salt-minion start
 ```
+{{< /terminal >}}
 
 Now we have a minion talking to the master we need to accept the certificate;
 
+{{< terminal title="SaltStack on CentOS 6.x 2/3" >}}
 ```
 salt-key -L
 salt-key -A [hostname]
 ```
+{{< /terminal >}}
 
 Thats it, you can now run commands across all your machines e.g.
 
+{{< terminal title="SaltStack on CentOS 6.x 3/3" >}}
 ```
 salt ‘*’ test.ping
 salt ‘*’ grains.ls
@@ -58,5 +63,6 @@ salt ‘*’ cmd.run “service nginx stop”
 salt ‘*’ cmd.run “service nginx start”
 salt ‘*’ cmd.run “yum update -y”
 ```
+{{< /terminal >}}
 
 For further reading [RTFM](https://salt.readthedocs.org/en/latest/).

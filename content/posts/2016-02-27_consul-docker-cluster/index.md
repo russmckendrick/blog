@@ -19,12 +19,15 @@ As mentioned in my previous post I have been doing a lot of work with [Docker Ma
 
 Now if I wanted to launch a single node then I would run the following;
 
+{{< terminal title="Consul Docker Cluster 1/10" >}}
 ```
 docker run -d -p “8400:8400” -p “8500:8500” -h “consul” russmckendrick/consul
 ```
+{{< /terminal >}}
 
 However, thats not really recommended so here is how you stat a cluster using the same [image](https://hub.docker.com/r/russmckendrick/consul/). First of all, I launched three hosts in [Digital Ocean](https://m.do.co/c/52ec4dc3647e) with shared private networking enabled using Docker Machine;
 
+{{< terminal title="Consul Docker Cluster 2/10" >}}
 ```
 docker-machine create \
  — driver digitalocean \
@@ -50,19 +53,23 @@ docker-machine create \
  — digitalocean-private-networking \
 service-discovery03
 ```
+{{< /terminal >}}
 
 As Docker Machine only returns the primary IP address when you run docker-machine ip machine-name I needed to grab the shared private IP addresses for each of the three hosts and put them in an environment variable as I would be using them several times;
 
+{{< terminal title="Consul Docker Cluster 3/10" >}}
 ```
 SD1=$(docker-machine ssh service-discovery01 “ip addr show eth1 | grep -Po ‘inet \K[\d.]+’”)
 SD2=$(docker-machine ssh service-discovery02 “ip addr show eth1 | grep -Po ‘inet \K[\d.]+’”)
 SD3=$(docker-machine ssh service-discovery03 “ip addr show eth1 | grep -Po ‘inet \K[\d.]+’”)
 ```
+{{< /terminal >}}
 
 Now I had the hosts up and also the shared private IP addresses of the three hosts it was time to launch the three Consul nodes;
 
 First on **service-discovery01**;
 
+{{< terminal title="Consul Docker Cluster 4/10" >}}
 ```
 docker $(docker-machine config service-discovery01) run -d \
 -p “$SD1:8300:8300” \
@@ -78,9 +85,11 @@ docker $(docker-machine config service-discovery01) run -d \
  — name=”consul01" \
 russmckendrick/consul agent -data-dir /data -server -bootstrap-expect 3 -ui-dir /ui -client=0.0.0.0 -advertise=$SD1
 ```
+{{< /terminal >}}
 
 then on **service-discovery02**;
 
+{{< terminal title="Consul Docker Cluster 5/10" >}}
 ```
 docker $(docker-machine config service-discovery02) run -d \
 -p “$SD2:8300:8300” \
@@ -96,9 +105,11 @@ docker $(docker-machine config service-discovery02) run -d \
  — name=”consul02" \
 russmckendrick/consul agent -data-dir /data -server -bootstrap-expect 3 -ui-dir /ui -client=0.0.0.0 -advertise=$SD2
 ```
+{{< /terminal >}}
 
 and finally on **service-discovery03**;
 
+{{< terminal title="Consul Docker Cluster 6/10" >}}
 ```
 docker $(docker-machine config service-discovery03) run -d \
 -p “$SD3:8300:8300” \
@@ -114,6 +125,7 @@ docker $(docker-machine config service-discovery03) run -d \
  — name=”consul03" \
 russmckendrick/consul agent -data-dir /data -server -bootstrap-expect 3 -ui-dir /ui -client=0.0.0.0 -advertise=$SD3
 ```
+{{< /terminal >}}
 
 As you can see, there are a lot of port which need to be published for the clustering to work, including ones on UDP. This is the reason for launching using [Digital Ocean’s](https://m.do.co/c/52ec4dc3647e) share private networking. I could have took it one step further and properly locked each of the three hosts down further so they could only talk with each other, but thats for another time.
 
@@ -123,18 +135,23 @@ This means that while nodes would be registering themselves correctly they would
 
 Now that the three Consul nodes have been launched I created the cluster by running the following command against Consul on **service-discovery01**;
 
+{{< terminal title="Consul Docker Cluster 7/10" >}}
 ```
 docker $(docker-machine config service-discovery01) exec consul01 consul join $SD1 $SD2 $SD3
 ```
+{{< /terminal >}}
 
 I then checked the logs on **service-discovery01** by running;
 
+{{< terminal title="Consul Docker Cluster 8/10" >}}
 ```
 docker $(docker-machine config service-discovery01) logs consul01
 ```
+{{< /terminal >}}
 
 Should show you something like;
 
+{{< terminal title="Consul Docker Cluster 9/10" >}}
 ```
 ==> WARNING: Expect Mode enabled, expecting 3 servers
 ==> Starting Consul agent…
@@ -173,12 +190,15 @@ Atlas:
 2016/02/27 17:09:01 [INFO] consul: New leader elected: consul03
 2016/02/27 17:09:02 [INFO] agent: Synced service ‘consul’
 ```
+{{< /terminal >}}
 
 Finally, as the image has the [Consul UI](https://www.consul.io/intro/getting-started/ui.html) enabled, I could view my cluster in my browser by opening service-discovery01’s IP;
 
+{{< terminal title="Consul Docker Cluster 10/10" >}}
 ```
 open http://$(docker-machine ip service-discovery01):8500/ui
 ```
+{{< /terminal >}}
 
 and as expected I had three hosts within my cluster all on the shared private networking IP;
 

@@ -32,12 +32,15 @@ First of all you need to ensure that your Docker installation has at least 4GB o
 
 Once you have done that it turns out getting things up and running is really simple, all you have to do is pull the image from the Docker Hub by running;
 
+{{< terminal title="It’s a UNIX system, I know this. 1/7" >}}
 ```
 docker pull microsoft/mssql-server-linux
 ```
+{{< /terminal >}}
 
 and then launch it by running the following command;
 
+{{< terminal title="It’s a UNIX system, I know this. 2/7" >}}
 ```
 docker run -itd \
  --name mssql \
@@ -46,6 +49,7 @@ docker run -itd \
  -p 1433:1433 \
  microsoft/mssql-server-linux
 ```
+{{< /terminal >}}
 
 Thats it, no messing about, just accept the end user agreement and set a secure password.
 
@@ -53,21 +57,27 @@ Thats it, no messing about, just accept the end user agreement and set a secure 
 
 Great, now what? Well Microsoft have helpfully provided a command line client you can install on macOS by running;
 
+{{< terminal title="It’s a UNIX system, I know this. 3/7" >}}
 ```
 npm install -g sql-cli
 ```
+{{< /terminal >}}
 
 If you don’t have Node.js install you can install that using Homebrew;
 
+{{< terminal title="It’s a UNIX system, I know this. 4/7" >}}
 ```
 brew install npm
 ```
+{{< /terminal >}}
 
 Once installed you should be able to connect to your MSSQL container by running the following;
 
+{{< terminal title="It’s a UNIX system, I know this. 5/7" >}}
 ```
 mssql -s localhost -u sa -p 'P@$$w0rd!123' -e
 ```
+{{< /terminal >}}
 
 ![text](/img/2016-12-13_its-a-unix-system-i-know-this._3.png)
 
@@ -77,12 +87,15 @@ Its not just Microsoft SQL server, they have been hard at work getting .NET cor
 
 Now it is as simple as running;
 
+{{< terminal title="It’s a UNIX system, I know this. 6/7" >}}
 ```
 docker run -it microsoft/dotnet:latest
 ```
+{{< /terminal >}}
 
 This will download and launch the latest .NET core container and switch to a session, from there you can run;
 
+{{< terminal title="It’s a UNIX system, I know this. 7/7" >}}
 ```
 mkdir hwapp
 cd hwapp
@@ -90,6 +103,7 @@ dotnet new
 dotnet restore
 dotnet run
 ```
+{{< /terminal >}}
 
 To run a simple “Hello World”
 

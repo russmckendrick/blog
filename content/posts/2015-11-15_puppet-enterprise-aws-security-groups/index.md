@@ -38,6 +38,7 @@ That seemed simple enough, however when I create a security group with those por
 
 Everything ran as expected until the installation got to “Waiting for Node Classifier to start” and then it hung;
 
+{{< terminal title="Puppet Enterprise & AWS Security Groups 1/2" >}}
 ```
 PuppetDB configured.
 Waiting for Node Classifier to start…
@@ -47,12 +48,15 @@ Waiting for Node Classifier to start…
 ** HTTP_PROXY= http_proxy= HTTPS_PROXY= https_proxy= /opt/puppetlabs/puppet/bin/curl — tlsv1 -s — cacert /etc/puppetlabs/puppet/ssl/certs/ca.pem — key /opt/puppetlabs/server/data/console-services/certs/puppet.mckendrick.io.private_key.pem — cert /opt/puppetlabs/server/data/console-services/certs/puppet.mckendrick.io.cert.pem https://puppet.mckendrick.io:4433/classifier-api/v1/last-class-update | grep -q last_update.*[[:digit:]]
 ** HTTP_PROXY= http_proxy= HTTPS_PROXY= https_proxy= /opt/puppetlabs/puppet/bin/curl — tlsv1 -s — cacert /etc/puppetlabs/puppet/ssl/certs/ca.pem — key /opt/puppetlabs/server/data/console-services/certs/puppet.mckendrick.io.private_key.pem — cert /opt/puppetlabs/server/data/console-services/certs/puppet.mckendrick.io.cert.pem https://puppet.mckendrick.io:4433/classifier-api/v1/last-class-update | grep -q last_update.*[[:digit:]]
 ```
+{{< /terminal >}}
 
 I tried running the curl command manually and got the same problem;
 
+{{< terminal title="Puppet Enterprise & AWS Security Groups 2/2" >}}
 ```
 /opt/puppetlabs/puppet/bin/curl — tlsv1 -s — cacert /etc/puppetlabs/puppet/ssl/certs/ca.pem — key /opt/puppetlabs/server/data/console-services/certs/puppet.mckendrick.io.private_key.pem — cert /opt/puppetlabs/server/data/console-services/certs/puppet.mckendrick.io.cert.pem https://puppet.mckendrick.io:4433/classifier-api/v1/last-class-update
 ```
+{{< /terminal >}}
 
 It was obviously an issue with the security group as when I added an allow all rule and re-ran the installer it worked without issue, however after the installation completed I removed the allow all rule and I could no longer login to the Puppet Enterprise Dashboard.
 

@@ -32,25 +32,31 @@ Next up its the geeky stuff, time to roll my sleeves up and open the terminal to
 
 Brew now grabs the command line tools for you, so all you need to do is run;
 
+{{< terminal title="Upgrading to El Capitan 1/3" >}}
 ```
 ruby -e “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
 brew install caskroom/cask/brew-cask
 ```
+{{< /terminal >}}
 
 Once the basics are installed I checkout a copy of my [dotfiles from GutHub](https://github.com/russmckendrick/dotfiles), these contain the line export HOMEBREW_CASK_OPTS=” — appdir=/Applications” which means that when I come to install Apps using Cask that the links to them are installed in the main Applications folder and not the user one (a pet hate).
 
 Once the dotfiles are in place install of the command line “stuff”;
 
+{{< terminal title="Upgrading to El Capitan 2/3" >}}
 ```
 brew install asciinema hugo packer known_hosts stormssh terraform go node tree
 ```
+{{< /terminal >}}
 
 and then the non appstore apps;
 
+{{< terminal title="Upgrading to El Capitan 3/3" >}}
 ```
 brew cask install alfred sublime-text textexpander omnigraffle vagrant vmware-fusion github-desktop transmit virtualbox spotify microsoft-office-365 spotify deezer skype expandrive adobe-creative-cloud sonos vyprvpn bittorrent-sync
 ```
+{{< /terminal >}}
 
 I then restore my backups from using time machine, everyone has [backups](/2015/02/08/backups/) right?
 

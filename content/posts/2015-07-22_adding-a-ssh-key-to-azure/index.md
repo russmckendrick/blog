@@ -28,10 +28,12 @@ A few hours and much head scratching later I had it sorted.
 
 First of all, you don’t upload keys. Instead, you will need to convert your key to pem file and then a certificate. You can do that using the commands below (replace the paths as needed);
 
+{{< terminal title="Adding a SSH Key to Azure 1/1" >}}
 ```
 openssl req -x509 -key /.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out /Desktop/myCert.pem
  openssl x509 -outform der -in ~/Desktop/myCert.pem -out ~/Desktop/myCert.cer
 ```
+{{< /terminal >}}
 
 Once you have your certificate file it’s time to upload it. This is where things got confusing, the only obvious place I could find clicking around the interface was Settings -&gt; Management Certificates which made complete sense to me coming from an AWS background. I uploaded it, launched my Virtual Machine using Terraform and it failed to find the thumbprint so it was back to Google.
 

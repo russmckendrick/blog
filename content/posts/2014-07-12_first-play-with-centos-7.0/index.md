@@ -20,13 +20,16 @@ As I didn’t get chance to have a play with the pre-release CentOS 7.0 builds I
 
 First thing I did was type in ifconfig and got …..
 
+{{< terminal title="First play with CentOS 7.0 1/5" >}}
 ```
 [root@server ~]# ifconfig
 -bash: ifconfig: command not found
 ```
+{{< /terminal >}}
 
 ….. not a good start, have dabbled with a [Fedora](https://fedoraproject.org) when I [installed OpenShift](/2014/05/31/openshift-origin-installation-notes/) I remembered about the ip command …..
 
+{{< terminal title="First play with CentOS 7.0 2/5" >}}
 ```
 [root@server ~]# ip addr
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
@@ -42,6 +45,7 @@ First thing I did was type in ifconfig and got …..
  inet6 fe80::fe80:fe80:fe80:fe80/64 scope link 
  valid_lft forever preferred_lft forever
 ```
+{{< /terminal >}}
 
 ….. I can see a lot of muscle memory having to be re-learned.
 
@@ -49,6 +53,7 @@ First thing I did was type in ifconfig and got …..
 
 Next up is a change I was expecting, the introduction of [systemd](http://en.wikipedia.org/wiki/Systemd) …..
 
+{{< terminal title="First play with CentOS 7.0 3/5" >}}
 ```
 [root@server ~]# yum install httpd
 Loaded plugins: fastestmirror
@@ -92,9 +97,11 @@ Complete!
 [root@server ~]# service httpd restart
 Redirecting to /bin/systemctl restart httpd.service
 ```
+{{< /terminal >}}
 
 …. as you can see it did what I asked, but dropped some hints that I should have used `systemctl restart httpd`. What would `systemctl status httpd` give us …..
 
+{{< terminal title="First play with CentOS 7.0 4/5" >}}
 ```
 [root@server ~]# systemctl status httpd
 httpd.service — The Apache HTTP Server
@@ -114,6 +121,7 @@ httpd.service — The Apache HTTP Server
 Jul 13 13:24:45 server.domain.com systemd[1]: Starting The Apache HTTP Server…
 Jul 13 13:24:45 server.domain.com systemd[1]: Started The Apache HTTP Server.
 ```
+{{< /terminal >}}
 
 ….. now thats a lot more useful that what serivce httpd status used to give.
 
@@ -139,11 +147,13 @@ XFS is now the default file system when you install, though [DigitalOcean](https
 
 Docker (which I have written about [here](/2014/02/15/docker/), [here](/2014/04/27/deploying-a-stable-docker-setup-on-centos-with-shipyard/) and [here](/2014/05/04/yet-more-docker/)) is now fully support out of the box with no need to install [EPEL](https://fedoraproject.org/wiki/EPEL), in fact, at the time of writing the CentOS repo was more up-to-date than EPEL.
 
+{{< terminal title="First play with CentOS 7.0 5/5" >}}
 ```
 [root@server ~]# yum list | grep docker
 docker.x86_64 0.11.1–22.el7.centos extras 
-docker-registry.noarch 0.6.8–8.el7 extras 
+docker-registry.noarch 0.6.8–8.el7 extras
 ```
+{{< /terminal >}}
 
 #### Other software
 

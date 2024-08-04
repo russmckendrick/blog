@@ -29,8 +29,10 @@ As I am lazy and sometimes re-launch instances several times when working on a p
 
 You can call the script by running;
 
+{{< terminal title="Digital Ocean Bootstrap 1/1" >}}
 ```
 curl -fsS https://raw.githubusercontent.com/russmckendrick/DOBootstrap/master/do-bootstrap.sh | bash
 ```
+{{< /terminal >}}
 
 I recommend that you only run this on CentOS 7 droplet.

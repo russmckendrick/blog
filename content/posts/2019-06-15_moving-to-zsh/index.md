@@ -19,15 +19,19 @@ I have tried making the switch once before, but for one reason or another I ende
 
 First of all, I started by installing zsh and a [Powerline font](https://github.com/powerline/fonts), as I already had Homebrew and Cask installed I simply needed to run;
 
+{{< terminal title="Moving to ZSH 1/2" >}}
 ```
 $ brew install zsh$ brew cask install font-source-code-pro-for-powerline
 ```
+{{< /terminal >}}
 
 Once I had the basics installed, rather than configuring it all myself I decided to install [Oh My ZSH](https://ohmyz.sh) and use that as a starting point, I did that by running;
 
+{{< terminal title="Moving to ZSH 2/2" >}}
 ```
 $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
+{{< /terminal >}}
 
 Once that had completed, I enabled the [Agnoster ZSH theme](https://github.com/agnoster/agnoster-zsh-theme) and enabled the [Sauce Code Powerline font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro) in iTerm2, this has left me a terminal which looks like the following;
 

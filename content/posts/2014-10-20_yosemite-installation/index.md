@@ -20,14 +20,17 @@ This time all three machines (iMac, MBP and MBA) worked first time with no drama
 
 Once the new system had installed and I have logged in the first thing I do is install the [Command Line Tools](http://adcdownload.apple.com/Developer_Tools/command_line_tools_os_x_10.10_for_xcode__xcode_6.1/command_line_tools_for_osx_10.10_for_xcode_6.1.dmg), once they are installed [Brew](http://brew.sh/) can be installed and then [Cask](/2014/05/26/cask/) …….
 
+{{< terminal title="Yosemite Installation 1/3" >}}
 ```
 ruby -e “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
 brew install caskroom/cask/brew-cask
 ```
+{{< /terminal >}}
 
 Now its time for the none AppStore software ….
 
+{{< terminal title="Yosemite Installation 2/3" >}}
 ```
 brew cask install onepassword
 brew cask install spotify
@@ -54,12 +57,15 @@ sudo easy_install stormssh
 sudo gem install jekyll
 sudo gem install github-pages
 ```
+{{< /terminal >}}
 
 Finally open the AppStore & install the rest ….
 
+{{< terminal title="Yosemite Installation 3/3" >}}
 ```
 open /Applications/App\ Store.app
 ```
+{{< /terminal >}}
 
 …. other than putting the Apps in the [dock](http://en.wikipedia.org/wiki/Dock_%28OS_X%29) and actually adding licenses etc that was it.
 

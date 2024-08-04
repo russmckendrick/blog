@@ -33,24 +33,30 @@ Considering I will only be using Minikube to give people a quick overview I deci
 
 To install these, I ran the following command;
 
+{{< terminal title="Launching a local Kubernetes lab using Minikube 1/12" >}}
 ```
 brew install kubectl
 brew cask install virtualbox
 ```
+{{< /terminal >}}
 
 Now the requirements are installed and configured it was time to install Minikube. To install Minikube, I ran the following;
 
+{{< terminal title="Launching a local Kubernetes lab using Minikube 2/12" >}}
 ```
 brew cask install minikube
 ```
+{{< /terminal >}}
 
 ![text](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_1.png)
 
 Now that minikube was installed I ran the command below to launch my local Kubernetes cluster;
 
+{{< terminal title="Launching a local Kubernetes lab using Minikube 3/12" >}}
 ```
 minikube start
 ```
+{{< /terminal >}}
 
 After a minute or two, it returned a message saying “Kubectl is now configured to use the cluster” and that was it, I had my local Kubernetes cluster up and running.
 
@@ -58,27 +64,33 @@ After a minute or two, it returned a message saying “Kubectl is now configured
 
 To test it ran the following commands to launch two NGINX containers, check that everything is running and then bind the service to a port on the local Kubernetes cluster;
 
+{{< terminal title="Launching a local Kubernetes lab using Minikube 4/12" >}}
 ```
 kubectl run my-nginx --image=nginx --replicas=2 --port=80
 kubectl get pods
 kubectl expose deployment my-nginx --type=NodePort
 ```
+{{< /terminal >}}
 
 ![text](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_3.png)
 
 Running the following command opened the exposed service in my browser;
 
+{{< terminal title="Launching a local Kubernetes lab using Minikube 5/12" >}}
 ```
 open $(minikube service my-nginx --url)
 ```
+{{< /terminal >}}
 
 ![graphical user interface, text, application, email](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_4.png)
 
 To view the [Kubernetes Dashboard](http://kubernetes.io/docs/user-guide/ui/) I ran;
 
+{{< terminal title="Launching a local Kubernetes lab using Minikube 6/12" >}}
 ```
 minikube dashboard
 ```
+{{< /terminal >}}
 
 ![graphical user interface, text, chat or text message](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_5.png)
 
@@ -88,47 +100,59 @@ Which opened my browser;
 
 As minikube uses libmachine I can configure my local docker client to connect to the local Kubernetes cluster in the same way you would with a Docker Machine launched Docker host, I did this by running;
 
+{{< terminal title="Launching a local Kubernetes lab using Minikube 7/12" >}}
 ```
 eval $(minikube docker-env)
 docker ps
 ```
+{{< /terminal >}}
 
 ![graphical user interface, text](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_7.png)
 
 There are options to enable additional functionality, such as [Heapster](https://github.com/kubernetes/heapster). To install and enable Heapster I ran the following command;
 
+{{< terminal title="Launching a local Kubernetes lab using Minikube 8/12" >}}
 ```
 minikube addons enable heapster
 ```
+{{< /terminal >}}
 
 To check on the status of the service, I ran the following;
 
+{{< terminal title="Launching a local Kubernetes lab using Minikube 9/12" >}}
 ```
 kubectl get pods --namespace=kube-system
 ```
+{{< /terminal >}}
 
 Once the Pod had a status of Running I checked the name of the service by running;
 
+{{< terminal title="Launching a local Kubernetes lab using Minikube 10/12" >}}
 ```
 minikube service list --namespace=kube-system
 ```
+{{< /terminal >}}
 
 ![graphical user interface, text](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_8.png)
 
 Once I knew the name of the service I ran the command below to open the stats dashboard;
 
+{{< terminal title="Launching a local Kubernetes lab using Minikube 11/12" >}}
 ```
 open $(minikube service monitoring-grafana --namespace=kube-system  --url)
 ```
+{{< /terminal >}}
 
 ![a screenshot of a computer](/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_9.png)
 
 Once I had finished I had the option of either stopping or deleting the local Kubernetes cluster by running on of the following commands;
 
+{{< terminal title="Launching a local Kubernetes lab using Minikube 12/12" >}}
 ```
 minikube stop
 minikube delete
 ```
+{{< /terminal >}}
 
 As you may notice from the following terminal output there is no warning when deleting the cluster so make sure you do want to delete the local Kubernetes cluster !!!
 

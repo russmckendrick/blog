@@ -30,20 +30,25 @@ This time I decided that I should try and make a proper job of it, this would me
 
 The initial part was easy enough, I forked the code and added the remote upstream;
 
+{{< terminal title="Git + Rebase 1/3" >}}
 ```
  git clone https://github.com/russmckendrick/Casper.git
  git remote add upstream https://github.com/TryGhost/Casper.git
 ```
+{{< /terminal >}}
 
 This should allow me to run the following commands when there was an update to Casper;
 
+{{< terminal title="Git + Rebase 2/3" >}}
 ```
  git fetch upstream
  git rebase upstream/master
 ```
+{{< /terminal >}}
 
 I noticed today that there was an update made to the theme so I tried my first rebase;
 
+{{< terminal title="Git + Rebase 3/3" >}}
 ```
  ⚡ git fetch upstream
  From https://github.com/TryGhost/Casper
@@ -57,5 +62,6 @@ I noticed today that there was an update made to the theme so I tried my first r
  Applying: Adding Twemoji and changing tag prefix
  Applying: Use last post as the header
 ```
+{{< /terminal >}}
 
 It worked :D. Will be interesting to see what happens when there is a bigger update to the original.

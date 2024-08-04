@@ -20,6 +20,7 @@ An internal system we use is based on [Drupal7](https://www.drupal.org/drupal-7.
 
 First off, as I prefer to use [CentOS](/2014/08/03/operating-system-snob/), I needed to find a way of getting HHVM installed which wouldn’t take hours (a build from source can notoriously take hours) as I was on the clock. Luckily for me someone had [pushed a package](https://copr.fedoraproject.org/coprs/no1youknowz/hhvm-repo/) to [Copr](https://copr.fedoraproject.org/coprs/) meaning I could do a yum install and quickly adapt the [Dockerfile](http://docs.docker.com/reference/builder/) I already had in place for PHP 5.4 changing it from ….
 
+{{< terminal title="An Experiment with Docker & HHVM 1/2" >}}
 ```
 ### Dockerfile
 #
@@ -39,9 +40,11 @@ ADD run /usr/local/bin/
 RUN chmod +x /usr/local/bin/run
 CMD [“/usr/local/bin/run”]
 ```
+{{< /terminal >}}
 
 …. to ….
 
+{{< terminal title="An Experiment with Docker & HHVM 2/2" >}}
 ```
 ### Dockerfile
 #
@@ -63,6 +66,7 @@ ADD run /usr/local/bin/
 RUN chmod +x /usr/local/bin/run
 CMD [“/usr/local/bin/run”]
 ```
+{{< /terminal >}}
 
 …. and hey presto a working HHVM image. Now all we had to do was change the reference to the container being pulled down in the [fig.yml](http://www.fig.sh/yml.html) file for the project. After doing a fig stop and then fig rm we did a fig up -d and waited ….
 

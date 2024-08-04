@@ -23,17 +23,21 @@ I took my [CentOS 7 Packer configuration](https://github.com/russmckendrick/pack
 
 Running the build went as expected, building using VMWare with the following command;
 
+{{< terminal title="Packer CentOS 8 1/6" >}}
 ```
 $ packer build -only vmware-iso CentOS_8.json
 ```
+{{< /terminal >}}
 
 Gave the following;
 
 For VirtualBox I ran;
 
+{{< terminal title="Packer CentOS 8 2/6" >}}
 ```
 $ packer build -only virtualbox-iso CentOS_8.json
 ```
+{{< /terminal >}}
 
 and got;
 
@@ -41,23 +45,29 @@ and got;
 
 Once I have the two Vagrant boxes the Packer configuration produced I uploaded the them to [Vagrant Cloud](https://app.vagrantup.com/russmckendrick/), you can find them both at [http://app.vagrantup.com/russmckendrick/boxes/centos8](http://app.vagrantup.com/russmckendrick/boxes/centos8). Once uploaded I used Vagrant to launch my first CentOS 8 server;
 
+{{< terminal title="Packer CentOS 8 3/6" >}}
 ```
 $ mkdir ~/centos8 $ cd ~/centos8 $ vagrant init russmckendrick/centos8 $ vagrant up
 ```
+{{< /terminal >}}
 
 Once launched, I used `vagrant ssh` to login and check the release file;
 
 As you can see, I was prompted to to activate the web console, to do this I ran the following commands within the Vagrant box;
 
+{{< terminal title="Packer CentOS 8 4/6" >}}
 ```
 $ sudo systemctl enable --now cockpit.socket $ sudo systemctl start cockpit
 ```
+{{< /terminal >}}
 
 Then found out the IP address of the Vagrant box by running;
 
+{{< terminal title="Packer CentOS 8 5/6" >}}
 ```
 $ vagrant ssh -c "ip address show | grep 'inet ' | grep -v '127.0.0.1' | sed -e 's/^.*inet //' -e 's/\/.*$//'" 2> /dev/null
 ```
+{{< /terminal >}}
 
 For me, this returned `192.168.151.129`, I then went to the following URL [https://192.168.151.129:9090/](https://192.168.151.129:9090/) and was greeted by a login page;
 
@@ -77,8 +87,10 @@ Also, Cockpit comes with its own built in Terminal;
 
 Finally, to remove the Vagrant box I ran;
 
+{{< terminal title="Packer CentOS 8 6/6" >}}
 ```
 $ vagrant destroy
 ```
+{{< /terminal >}}
 
 This stopped and removed the box and concluded my very brief play with CentOS 8. Expect more posts soon(ish).

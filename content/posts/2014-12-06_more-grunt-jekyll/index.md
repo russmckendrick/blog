@@ -20,6 +20,7 @@ At the end of my [last post about Grunt](/2014/12/02/grunt-jekyll-less/) I menti
 
 I moved all of the javascript to a folder called _js and then set up the following ….
 
+{{< terminal title="More Grunt & Jekyll 1/7" >}}
 ```
 js: {
  src: [
@@ -28,11 +29,13 @@ js: {
  dest: ‘js/main.js’
  }
 ```
+{{< /terminal >}}
 
 As you can see I am having to merge the javascript in a certain order, I tried using src: [‘_js/*’] but this broke a lot of the site.
 
 Now I have all of the javascript in a single file which works I can compress it using [Uglify](https://github.com/gruntjs/grunt-contrib-uglify) ….
 
+{{< terminal title="More Grunt & Jekyll 2/7" >}}
 ```
 uglify: {
  options: {
@@ -45,12 +48,15 @@ uglify: {
  }
 },
 ```
+{{< /terminal >}}
 
 I then created a task to put it all together ….
 
+{{< terminal title="More Grunt & Jekyll 3/7" >}}
 ```
 grunt.registerTask(‘js’, [‘concat:js’, ‘uglify’]);
 ```
+{{< /terminal >}}
 
 as well as adding the _js and tasks to the watch section of my Gruntfile.js.
 
@@ -58,6 +64,7 @@ as well as adding the _js and tasks to the watch section of my Gruntfile.js.
 
 I use the [TinyPNG](https://tinypng.com) Photoshop plug-in to export the headers and other images so most of the graphics on the site are already quite compressed, however to ensure that everything is as optimised as possible I added the following ….
 
+{{< terminal title="More Grunt & Jekyll 4/7" >}}
 ```
 imgcompress: {
  dist: {
@@ -84,12 +91,15 @@ svgmin: {
 }
 },
 ```
+{{< /terminal >}}
 
 as the site has a lot of image files [Newer](https://www.npmjs.org/package/grunt-newer) was used to files are only processed if they have been changed or haven’t been processed. I added the following task ….
 
+{{< terminal title="More Grunt & Jekyll 5/7" >}}
 ```
 grunt.registerTask(‘images’, [‘newer:imgcompress’, ‘newer:svgmin’]);
 ```
+{{< /terminal >}}
 
 However, for the moment I have left it out of the watch list as it can take a little while to execute.
 
@@ -97,6 +107,7 @@ However, for the moment I have left it out of the watch list as it can take a li
 
 This now means my Gruntfile.js looks like ….
 
+{{< terminal title="More Grunt & Jekyll 6/7" >}}
 ```
 module.exports = function(grunt) {
  grunt.initConfig({
@@ -217,9 +228,11 @@ grunt.registerTask(‘server’, [‘connect’, ‘watch’]);
 grunt.registerTask(‘images’, [‘newer:imgcompress’, ‘newer:svgmin’]);
 };
 ```
+{{< /terminal >}}
 
 And the `package.json` file ….
 
+{{< terminal title="More Grunt & Jekyll 7/7" >}}
 ```
 {
  “name”: “mediaglasses”,
@@ -245,3 +258,4 @@ And the `package.json` file ….
  }
 }
 ```
+{{< /terminal >}}

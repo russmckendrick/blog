@@ -22,6 +22,7 @@ Having ran a local copy of [OpenShift Origin](http://openshift.github.io/) using
 
 Well, sort of, after a few failed installs I finally managed it using the following (this assumes you are running a clean and minimal CentOS 6.5 installation)
 
+{{< terminal title="OpenShift Origin installation notes 1/2" >}}
 ```
 yum update -y
 yum install -y http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
@@ -38,6 +39,7 @@ scl enable ruby193 bash # Make sure that all Ruby is piped through the SCL insta
 sh <(curl -s https://install.openshift.com/) # See notes below before answering any questions !!!
 reboot
 ```
+{{< /terminal >}}
 
 So, the problem I was having with is that by default oo_install assumes you are running [Fedora 19](http://fedoraproject.org/) and populates repos_base with [http://mirror.openshift.com/pub/origin-server/release/3/fedora-19/](http://mirror.openshift.com/pub/origin-server/release/3/fedora-19/) what [the install instructions](http://openshift.github.io/documentation/oo_install_users_guide.html) fail to say is that you need to replace this with [http://mirror.openshift.com/pub/origin-server/release/3/rhel-6](http://mirror.openshift.com/pub/origin-server/release/3/rhel-6) when prompted about the subscription configuration oo_install will use for the deployment.
 
@@ -45,6 +47,7 @@ You can view the output of a full oo_install run through [listed in this Gist](h
 
 So, if I had run through this on a Fedora 19 Droplet, would this have been any different? In short, yes;
 
+{{< terminal title="OpenShift Origin installation notes 2/2" >}}
 ```
 yum update -y
 yum install -y ruby vim-enhanced unzip curl puppet httpd-tools augeas bind bind-utils
@@ -53,5 +56,6 @@ reboot
 sh <(curl -s https://install.openshift.com/)
 reboot
 ```
+{{< /terminal >}}
 
 This is mostly because of Fedora is way ahead of RHEL 6 based installations, this however should all change shortly with the release of [RHEL 7](http://distrowatch.com/?newsid=08406) and [CentOS 7](http://seven.centos.org/).

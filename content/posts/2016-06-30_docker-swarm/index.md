@@ -21,21 +21,27 @@ They said it was there now and it will take no time to run so I decided to give 
 
 As you can see, it was that easy !!! The commands I ran were as follows;
 
+{{< terminal title="Docker Swarm 1/4" >}}
 ```
 docker swarm init
 ```
+{{< /terminal >}}
 
 This turn my local Docker installation into the Swarm manager, I then created an overlay network called “clusternetwork”;
 
+{{< terminal title="Docker Swarm 2/4" >}}
 ```
 docker network create -d overlay clusternetwork
 ```
+{{< /terminal >}}
 
 and finally created the service called “cluster”, which was made up of 3 replicas all bound to port 80, by running;
 
+{{< terminal title="Docker Swarm 3/4" >}}
 ```
 docker service create — name cluster — replicas 3 -p:80:80/tcp — network clusternetwork russmckendrick/cluster
 ```
+{{< /terminal >}}
 
 I already had a container hosted in the [Docker Hub which runs NGINX and shows a page with the containers ID](https://hub.docker.com/r/russmckendrick/cluster/).
 
@@ -61,10 +67,12 @@ All really simple stuff, now imagine if I had more than a single host all of the
 
 To remove the service and leave the swarm run the following commands;
 
+{{< terminal title="Docker Swarm 4/4" >}}
 ```
 docker service rm cluster
 docker network rm clusternetwork
 docker swarm leave — force
 ```
+{{< /terminal >}}
 
 and for more information on this new feature see the following [blog post](https://blog.docker.com/2016/06/docker-1-12-built-in-orchestration/), at the time of writing the documentation is in the process of being rolled out so I will update this post if anything is wrong :)

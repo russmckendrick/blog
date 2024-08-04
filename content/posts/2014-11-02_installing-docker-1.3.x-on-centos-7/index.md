@@ -18,6 +18,7 @@ When [Docker 1.3](http://blog.docker.com/2014/10/docker-1-3-signed-images-proces
 
 Unfortunately, all of the repos which provide RPMs for Docker are out of date, the documentation suggests a [manual installation](https://docs.docker.com/) of the binary which is turns out to be straight forward:
 
+{{< terminal title="Installing Docker 1.3.x on CentOS 7 1/2" >}}
 ```
 # Download the binary & set the permissions
 curl -L https://get.docker.com/builds/Linux/x86_64/docker-latest > /usr/bin/docker; chmod +x /usr/bin/docker
@@ -33,9 +34,11 @@ systemctl start docker
 # Install Fig as well
 curl -L https://github.com/docker/fig/releases/download/1.0.0/fig-`uname -s`-`uname -m` > /usr/local/bin/fig; chmod +x /usr/local/bin/fig
 ```
+{{< /terminal >}}
 
 now to check it works:
 
+{{< terminal title="Installing Docker 1.3.x on CentOS 7 2/2" >}}
 ```
 [root@docker ~]# docker -v
 Docker version 1.3.1, build 4e9bbfa
@@ -58,8 +61,9 @@ Nov 01 10:51:53 docker.server.io docker[8737]: [cc69a548] -job acceptconnections
 Nov 01 10:52:03 docker.server.io docker[8737]: [info] GET /v1.15/containers/json
 Nov 01 10:52:03 docker.server.io docker[8737]: [cc69a548] +job containers()
 Nov 01 10:52:03 docker.server.io docker[8737]: [cc69a548] -job containers() = OK (0)
-[root@docker ~]# 
+[root@docker ~]#
 ```
+{{< /terminal >}}
 
 This should do until CentOS manage to catch-up with the latest Docker releases, which shouldn’t be too long hopefully ….
 

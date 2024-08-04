@@ -52,6 +52,7 @@ As I have been working through creating the playbook to achieve the above there 
 
 At one point I was hard coding variables for the subnets into the environment file in group_vars , while this worked great for VPCs which only had a single subnet range
 
+{{< terminal title="Amazon Web Services with Ansible 1/9" >}}
 ```
 subnet_elb:
  - { az: ‘a’, subnet: ‘192.168.0.0/24’ }
@@ -62,9 +63,11 @@ subnet_ec2:
  — { az: ‘b’, subnet: ‘192.168.4.0/24’ }
  — { az: ‘c’, subnet: ‘192.168.5.0/24’ }
 ```
+{{< /terminal >}}
 
 This means when it comes to creating the subnets I can use the use the with_items command to loop through the variables;
 
+{{< terminal title="Amazon Web Services with Ansible 2/9" >}}
 ```
 - name: create the EC2 subnets
   ec2_vpc_subnet:
@@ -93,13 +96,14 @@ This means when it comes to creating the subnets I can use the use the with_item
 - name: register the IDs for the ELB subnets
   set_fact: subnet_elb_ids=”{{ subnets_elb.results | map(attribute=’subnet.id’) | list }}”
 ```
+{{< /terminal >}}
 
 Note that I am creating the subnets, registering the results when they have been created and then I setting a fact which contains just the subnet IDs.
 
 This means when it comes to using doing something with the subnets, such as setting up a route for them on an internet gateway, I can do the following;
 
+{{< terminal title="Amazon Web Services with Ansible 3/9" >}}
 ```
-
 - name: create the internet gateway
   ec2_vpc_igw:
    vpc_id: “{{ vpc.vpc_id }}”
@@ -117,6 +121,7 @@ This means when it comes to using doing something with the subnets, such as sett
       region: “{{ ec2_region }}”
   register: public_route_table
 ```
+{{< /terminal >}}
 
 As you can see, I am just using {{ subnet_elb_ids + subnet_ec2_ids }} to create a list of the all of the subnets from the two facts, it took me ages to figure that I could join lists like that.
 
@@ -126,6 +131,7 @@ This meant that I have more control at the variable level rather than having to 
 
 One thing I found when trying to apply the same logic to security groups was that if I used something like the following code;
 
+{{< terminal title="Amazon Web Services with Ansible 4/9" >}}
 ```
 firewall_elb:
  - { port: ‘443’, source: ‘0.0.0.0/0’ }
@@ -145,6 +151,7 @@ firewall_elb:
       with_items: “{{ firewall_elb }}”
   register: sg_elb
 ```
+{{< /terminal >}}
 
 I would only ever have a single rule created once the playbook had run through. After much head scratching I realised that unlike other Ansible modules the ec2_group module required you to explicitly define the rules rather than loop over — which kind of makes sense after I had thought about it.
 
@@ -154,6 +161,7 @@ To get around this I looked at using a template or creating my own python script
 
 In the end I just went with defining the entire rule set as a variable !!!
 
+{{< terminal title="Amazon Web Services with Ansible 5/9" >}}
 ```
 firewall_elb:
  — proto: tcp
@@ -174,6 +182,7 @@ firewall_elb:
    rules: “{{ firewall_elb }}”
   register: sg_elb
 ```
+{{< /terminal >}}
 
 This was a lot less confusing to keep on top of as I just created a file calls firewall.yml and loaded that as part of the playbook :)
 
@@ -185,6 +194,7 @@ This mean that Ansible had moved on before the ELB had launched meaning that the
 
 To get around this the I added until, retries and delay to the end of the module;
 
+{{< terminal title="Amazon Web Services with Ansible 6/9" >}}
 ```
 - name: Provision an Elastic Load Balancer
   ec2_elb_lb:
@@ -217,6 +227,7 @@ To get around this the I added until, retries and delay to the end of the module
   retries: 2
   delay: 1
 ```
+{{< /terminal >}}
 
 #### Searching for the AMI
 
@@ -226,15 +237,18 @@ Again, this was something I had been hard coding for quite a while as each regio
 
 To get around this I defined the following variables in my enviroment.yml file;
 
+{{< terminal title="Amazon Web Services with Ansible 7/9" >}}
 ```
 # Which AMI do we want to base our own off?
 image_base: amzn-ami-hvm-*
 image_owner: amazon
 image_architecture: x86_64
 ```
+{{< /terminal >}}
 
 and then used the following to get the AMI ID of the latest release in a given region by running;
 
+{{< terminal title="Amazon Web Services with Ansible 8/9" >}}
 ```
 - name: Search for all of the AMIs in {{ ec2_region }} which match {{ image_base }}
   ec2_ami_find:
@@ -264,9 +278,11 @@ and then used the following to get the AMI ID of the latest release in a given r
   set_fact:
     our_ami_id: "{{ amiSortFilter.ami_id }}"
 ```
+{{< /terminal >}}
 
 Now we have the AMI ID of the latest release of Amazon Linux in the region we have defined we can then launch the EC2 instance with something like;
 
+{{< terminal title="Amazon Web Services with Ansible 9/9" >}}
 ```
 - name: Launch a temporary instance so we can bootstrap it
   ec2:
@@ -291,5 +307,6 @@ Now we have the AMI ID of the latest release of Amazon Linux in the region we ha
       tier: "{{ app_tier }}-temporary"
   register: temporary
 ```
+{{< /terminal >}}
 
 There are lots of other things I came across when coming up with the playbooks, but those are for another post.
