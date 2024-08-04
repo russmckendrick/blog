@@ -2,24 +2,18 @@
 title: "Sysdig"
 description: "Explore Sysdig, the versatile tool for system-level exploration on Linux, offering insights into server state and activities for troubleshooting and security."
 author: "Russ Mckendrick"
-date: 2014-05-25T11:00:00.000Z
-lastmod: 2021-07-31T12:31:29+01:00
+date: "2014-05-25T11:00:00+01:00"
 tags:
-    - "Linux"
-    - "Tools"
-    - "Security"
-    - "DevOps"
+  - "Linux"
+  - "Tools"
+  - "Security"
+  - "DevOps"
 cover:
-    image: "/img/2014-05-25_sysdig_0.png" 
-    alt: "Explore Sysdig, the versatile tool for system-level exploration on Linux, offering insights into server state and activities for troubleshooting and security."
-
-images:
- - "/img/2014-05-25_sysdig_0.png"
-
-
+  image: "/img/2014-05-25_sysdig_0.png"
+  alt: "Explore Sysdig, the versatile tool for system-level exploration on Linux, offering insights into server state and activities for troubleshooting and security."
+lastmod: "2021-07-31T12:31:29+01:00"
 aliases:
-- "/sysdig-9c185a85f4f7"
-
+  - "/sysdig-9c185a85f4f7"
 ---
 
 [Sysdig](http://www.sysdig.org/) looks like it could be a useful addition to a sysadmins list of tools, it is described as;

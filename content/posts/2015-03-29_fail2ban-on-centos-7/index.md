@@ -2,24 +2,16 @@
 title: "Fail2Ban on CentOS 7"
 description: "Protect your CentOS 7 server with fail2ban! Follow my guide to secure your system from unwanted SSH login attempts."
 author: "Russ Mckendrick"
-date: 2015-03-29T12:23:28.000Z
-lastmod: 2021-07-31T12:32:54+01:00
-
+date: "2015-03-29T12:23:28+01:00"
 tags:
-    - "Linux"
-    - "Security"
-
+  - "Linux"
+  - "Security"
 cover:
-    image: "/img/2015-03-29_fail2ban-on-centos-7_0.png" 
-    alt: "Protect your CentOS 7 server with fail2ban! Follow my guide to secure your system from unwanted SSH login attempts."
-
-images:
- - "/img/2015-03-29_fail2ban-on-centos-7_0.png"
-
-
+  image: "/img/2015-03-29_fail2ban-on-centos-7_0.png"
+  alt: "Protect your CentOS 7 server with fail2ban! Follow my guide to secure your system from unwanted SSH login attempts."
+lastmod: "2021-07-31T12:32:54+01:00"
 aliases:
-- "/fail2ban-on-centos-7-4703f8101b0c"
-
+  - "/fail2ban-on-centos-7-4703f8101b0c"
 ---
 
 One of the first things I do on a new server is install [fail2ban](http://www.fail2ban.org/wiki/index.php/Main_Page "fail2ban"). I have written about it before, but that was [back when I was still using CentOS 6](/2014/05/10/hackers/ "Hackers"). Now I am using CentOS 7 the installation has a few more steps.

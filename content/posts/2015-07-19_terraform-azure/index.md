@@ -2,28 +2,18 @@
 title: "Terraform & Azure"
 description: "Unlock the power of Terraform and Azure for seamless VM provisioning! Learn how to streamline your infrastructure management today!"
 author: "Russ Mckendrick"
-date: 2015-07-19T15:13:10.000Z
-lastmod: 2021-07-31T12:33:16+01:00
-
+date: "2015-07-19T15:13:10+01:00"
 tags:
- - "Infrastructure as Code"
- - "Azure"
- - "Cloud"
- - "Terraform"
-
+  - "Infrastructure as Code"
+  - "Azure"
+  - "Cloud"
+  - "Terraform"
 cover:
-    image: "/img/2015-07-19_terraform-azure_0.png" 
-    alt: "Unlock the power of Terraform and Azure for seamless VM provisioning! Learn how to streamline your infrastructure management today!"
-
-images:
- - "/img/2015-07-19_terraform-azure_0.png"
- - "/img/2015-07-19_terraform-azure_1.png"
- - "/img/2015-07-19_terraform-azure_2.png"
-
-
+  image: "/img/2015-07-19_terraform-azure_0.png"
+  alt: "Unlock the power of Terraform and Azure for seamless VM provisioning! Learn how to streamline your infrastructure management today!"
+lastmod: "2021-07-31T12:33:16+01:00"
 aliases:
-- "/terraform-azure-d818760b0eeb"
-
+  - "/terraform-azure-d818760b0eeb"
 ---
 
 As regular readers will know I really like the tools provided by [Hashicorp](https://hashicorp.com/ "Hashicorp") and today I found an excuse to use one. I needed to bring up a Virtual Machine in [Microsoft Azure](http://azure.microsoft.com/en-gb/ "Azure"). I hadn’t logged into Azure for quite a while so imagine my shock when I opened the dashboard, it’s not that great and the beta of the new one isn’t that brilliant either. It was so bad I tweeted about it ….

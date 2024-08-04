@@ -2,29 +2,16 @@
 title: "Shopping for Containers"
 description: "Explore the Docker Store, your one-stop marketplace for Docker-related content. From Docker EE to plugins and containers, find both free and paid offerings."
 author: "Russ Mckendrick"
-date: 2018-01-28T16:07:18.553Z
-lastmod: 2021-07-31T12:35:10+01:00
+date: "2018-01-28T16:07:18+01:00"
 tags:
- - Docker
- - Tools
+  - "Docker"
+  - "Tools"
 cover:
-    image: "/img/2018-01-28_shopping-for-containers_0.png" 
-    alt: "Explore the Docker Store, your one-stop marketplace for Docker-related content. From Docker EE to plugins and containers, find both free and paid offerings."
-
-images:
- - "/img/2018-01-28_shopping-for-containers_0.png"
- - "/img/2018-01-28_shopping-for-containers_1.png"
- - "/img/2018-01-28_shopping-for-containers_2.png"
- - "/img/2018-01-28_shopping-for-containers_3.png"
- - "/img/2018-01-28_shopping-for-containers_4.png"
- - "/img/2018-01-28_shopping-for-containers_5.png"
- - "/img/2018-01-28_shopping-for-containers_6.png"
- - "/img/2018-01-28_shopping-for-containers_7.png"
- - "/img/2018-01-28_shopping-for-containers_8.png"
- - "/img/2018-01-28_shopping-for-containers_9.png"
+  image: "/img/2018-01-28_shopping-for-containers_0.png"
+  alt: "Explore the Docker Store, your one-stop marketplace for Docker-related content. From Docker EE to plugins and containers, find both free and paid offerings."
+lastmod: "2021-07-31T12:35:10+01:00"
 aliases:
-- "/shopping-for-containers-f510da15fc9e"
-
+  - "/shopping-for-containers-f510da15fc9e"
 ---
 
 Over the last six months the Docker Store, which was first introduced as a private beta nearly a year and a half ago in June 2016, has come on leaps and bounds.

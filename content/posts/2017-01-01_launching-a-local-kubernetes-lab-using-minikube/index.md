@@ -2,34 +2,16 @@
 title: "Launching a local Kubernetes lab using Minikube"
 description: "Learn to set up a local Kubernetes lab using Minikube for testing or development. Install, configure, and enable additional functionalities."
 author: "Russ Mckendrick"
-date: 2017-01-01T17:02:25.093Z
-lastmod: 2021-07-31T12:34:39+01:00
-
+date: "2017-01-01T17:02:25+01:00"
 tags:
- - Docker
- - Kubernetes
-
+  - "Docker"
+  - "Kubernetes"
 cover:
-    image: "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_0.png" 
-    alt: "Learn to set up a local Kubernetes lab using Minikube for testing or development. Install, configure, and enable additional functionalities."
-
-images:
- - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_0.png"
- - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_1.png"
- - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_2.png"
- - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_3.png"
- - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_4.png"
- - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_5.png"
- - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_6.png"
- - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_7.png"
- - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_8.png"
- - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_9.png"
- - "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_10.png"
-
-
+  image: "/img/2017-01-01_launching-a-local-kubernetes-lab-using-minikube_0.png"
+  alt: "Learn to set up a local Kubernetes lab using Minikube for testing or development. Install, configure, and enable additional functionalities."
+lastmod: "2021-07-31T12:34:39+01:00"
 aliases:
-- "/launching-a-local-kubernetes-lab-using-minikube-39560f792889"
-
+  - "/launching-a-local-kubernetes-lab-using-minikube-39560f792889"
 ---
 
 I have more and more people at work asking me about Docker and [Kubernetes](http://kubernetes.io/), so I thought it would be good to write down some instructions on bringing up a small test lab on my laptop.

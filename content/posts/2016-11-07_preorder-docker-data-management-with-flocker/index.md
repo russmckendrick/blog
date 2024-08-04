@@ -2,27 +2,18 @@
 title: "Pre-Order Docker Data Management with Flocker"
 description: "Pre-order 'Docker Data Management with Flocker' by Russ Mckendrick. Gain early access to the ebook by purchasing from Packt."
 author: "Russ Mckendrick"
-date: 2016-11-07T18:36:01.000Z
-lastmod: 2021-07-31T12:34:19+01:00
-
+date: "2016-11-07T18:36:01+01:00"
 tags:
- - Book
- - Docker
- - Author
- - Life
-
+  - "Book"
+  - "Docker"
+  - "Author"
+  - "Life"
 cover:
-    image: "/img/2016-11-07_preorder-docker-data-management-with-flocker_0.png" 
-    alt: "Pre-order 'Docker Data Management with Flocker' by Russ Mckendrick. Gain early access to the ebook by purchasing from Packt."
-
-images:
- - "/img/2016-11-07_preorder-docker-data-management-with-flocker_0.png"
- - "/img/2016-11-07_preorder-docker-data-management-with-flocker_1.jpeg"
-
-
+  image: "/img/2016-11-07_preorder-docker-data-management-with-flocker_0.png"
+  alt: "Pre-order 'Docker Data Management with Flocker' by Russ Mckendrick. Gain early access to the ebook by purchasing from Packt."
+lastmod: "2021-07-31T12:34:19+01:00"
 aliases:
-- "/pre-order-docker-data-management-with-flocker-bed7b582e3a"
-
+  - "/pre-order-docker-data-management-with-flocker-bed7b582e3a"
 ---
 
 {{< notice note >}}

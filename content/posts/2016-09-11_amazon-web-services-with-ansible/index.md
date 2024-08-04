@@ -2,26 +2,18 @@
 title: "Amazon Web Services with Ansible"
 description: "Explore how Russ Mckendrick utilizes Ansible to manage Amazon Web Services infrastructure, from VPC creation to EC2 instance deployment and AMI management."
 author: "Russ Mckendrick"
-date: 2016-09-11T15:45:16.000Z
-lastmod: 2021-07-31T12:34:12+01:00
-
+date: "2016-09-11T15:45:16+01:00"
 tags:
- - Infrastructure As Code
- - Ansible
- - AWS
- - Cloud
-
+  - "Infrastructure As Code"
+  - "Ansible"
+  - "AWS"
+  - "Cloud"
 cover:
-    image: "/img/2016-09-11_amazon-web-services-with-ansible_0.png" 
-    alt: "Explore how Russ Mckendrick utilizes Ansible to manage Amazon Web Services infrastructure, from VPC creation to EC2 instance deployment and AMI management."
-
-images:
- - "/img/2016-09-11_amazon-web-services-with-ansible_0.png"
-
-
+  image: "/img/2016-09-11_amazon-web-services-with-ansible_0.png"
+  alt: "Explore how Russ Mckendrick utilizes Ansible to manage Amazon Web Services infrastructure, from VPC creation to EC2 instance deployment and AMI management."
+lastmod: "2021-07-31T12:34:12+01:00"
 aliases:
-- "/amazon-web-services-with-ansible-5e07d7e0e387"
-
+  - "/amazon-web-services-with-ansible-5e07d7e0e387"
 ---
 
 More and more I am having to not only think about how I would ensure that the infrastructure a service I am deploying on is highly available but also how I can manage its entire life-cycle in code.

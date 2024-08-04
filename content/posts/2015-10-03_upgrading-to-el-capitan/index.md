@@ -2,25 +2,15 @@
 title: "Upgrading to El Capitan"
 description: "Ready to upgrade to OS X 10.11 El Capitan? Follow my steps and enjoy a smooth transition with enhanced performance!"
 author: "Russ Mckendrick"
-date: 2015-10-03T11:57:56.000Z
-lastmod: 2021-07-31T12:33:24+01:00
-
+date: "2015-10-03T11:57:56+01:00"
 tags:
- - macOS
-
+  - "macOS"
 cover:
-    image: "/img/2015-10-03_upgrading-to-el-capitan_0.png"
-    alt: "Ready to upgrade to OS X 10.11 El Capitan? Follow my steps and enjoy a smooth transition with enhanced performance!"
- 
-images:
- - "/img/2015-10-03_upgrading-to-el-capitan_0.png"
- - "/img/2015-10-03_upgrading-to-el-capitan_1.png"
- - "/img/2015-10-03_upgrading-to-el-capitan_2.png"
-
-
+  image: "/img/2015-10-03_upgrading-to-el-capitan_0.png"
+  alt: "Ready to upgrade to OS X 10.11 El Capitan? Follow my steps and enjoy a smooth transition with enhanced performance!"
+lastmod: "2021-07-31T12:33:24+01:00"
 aliases:
-- "/upgrading-to-el-capitan-58da55ce1d4b"
-
+  - "/upgrading-to-el-capitan-58da55ce1d4b"
 ---
 
 Every six months or so I like to do clean installs of all of my Macs. I try and time this for late September which is normally when Apple releases its latest updates. This year its OS X 10.11 El Capitan;

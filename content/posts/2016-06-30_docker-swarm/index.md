@@ -2,28 +2,15 @@
 title: "Docker Swarm"
 description: "Discover Docker Swarm on macOS beta, orchestrate services effortlessly, and scale with ease. Step-by-step guide included."
 author: "Russ Mckendrick"
-date: 2016-06-30T18:30:00.000Z
-lastmod: 2021-07-31T12:34:04+01:00
-
+date: "2016-06-30T18:30:00+01:00"
 tags:
- - Docker
-
+  - "Docker"
 cover:
-    image: "/img/2016-06-30_docker-swarm_0.png" 
-    alt: "Discover Docker Swarm on macOS beta, orchestrate services effortlessly, and scale with ease. Step-by-step guide included."
-
-images:
- - "/img/2016-06-30_docker-swarm_0.png"
- - "/img/2016-06-30_docker-swarm_1.png"
- - "/img/2016-06-30_docker-swarm_2.png"
- - "/img/2016-06-30_docker-swarm_3.png"
- - "/img/2016-06-30_docker-swarm_4.png"
- - "/img/2016-06-30_docker-swarm_5.png"
-
-
+  image: "/img/2016-06-30_docker-swarm_0.png"
+  alt: "Discover Docker Swarm on macOS beta, orchestrate services effortlessly, and scale with ease. Step-by-step guide included."
+lastmod: "2021-07-31T12:34:04+01:00"
 aliases:
-- "/docker-service-dfad77652d50"
-
+  - "/docker-service-dfad77652d50"
 ---
 
 As mentioned a few weeks ago I have been part of the Docker for macOS (as its now known) [beta](/2016/05/08/docker-on-mac-osx/) for a while. I didn’t pay much attention to the update last night until I just caught up on the tweets from Docker Con and noticed that they have built in orchestration straight into the core Docker Engine.

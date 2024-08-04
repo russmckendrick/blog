@@ -2,25 +2,16 @@
 title: "Installing an ELK Stack on CentOS 7"
 description: "Learn how to install the ELK stack on CentOS 7 for centralized logging: Elasticsearch, Logstash, and Kibana, step-by-step guide with configuration."
 author: "Russ Mckendrick"
-date: 2015-04-19T11:00:00.000Z
-lastmod: 2021-07-31T12:33:01+01:00
-
+date: "2015-04-19T11:00:00+01:00"
 tags:
- - "Tools"
- - "Linux"
-
+  - "Tools"
+  - "Linux"
 cover:
-    image: "/img/2015-04-19_installing-an-elk-stack-on-centos-7_0.png" 
-    alt: "Learn how to install the ELK stack on CentOS 7 for centralized logging: Elasticsearch, Logstash, and Kibana, step-by-step guide with configuration."
-
-images:
- - "/img/2015-04-19_installing-an-elk-stack-on-centos-7_0.png"
- - "/img/2015-04-19_installing-an-elk-stack-on-centos-7_1.png"
-
-
+  image: "/img/2015-04-19_installing-an-elk-stack-on-centos-7_0.png"
+  alt: "Learn how to install the ELK stack on CentOS 7 for centralized logging: Elasticsearch, Logstash, and Kibana, step-by-step guide with configuration."
+lastmod: "2021-07-31T12:33:01+01:00"
 aliases:
-- "/installing-an-elk-stack-on-centos-7-5ca8e6840b37"
-
+  - "/installing-an-elk-stack-on-centos-7-5ca8e6840b37"
 ---
 
 I haven’t installed an ELK stack since CentOS 7 came out, all of the components which go to make up the stack have been updated quite bit since then so I decided to have a go at installing the stack on a clean CentOS 7 installation.

@@ -1,19 +1,19 @@
 ---
 title: "Revisting Podman"
-author: "Russ McKendrick"
-date: 2023-06-14T09:12:54+01:00
 description: "Delve into the exciting features and benefits of Podman, a powerful alternative to traditional container technologies."
+author: "Russ McKendrick"
+date: "2023-06-14T09:12:54+01:00"
+tags:
+  - "Podman"
+  - "Docker"
+  - "Containers"
+  - "macOS"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Delve into the exciting features and benefits of Podman, a powerful alternative to traditional container technologies."
 draft: false
 showToc: true
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Delve into the exciting features and benefits of Podman, a powerful alternative to traditional container technologies."
-tags:
-    - "Podman"
-    - "Docker"
-    - "Containers"
-    - "macOS"
 ---
 
 Although it's been some time since I've worked with containers on my local machine, I recently found myself intrigued to discover what's new with Podman.

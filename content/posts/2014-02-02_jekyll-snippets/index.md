@@ -2,19 +2,16 @@
 title: "Jekyll Snippets"
 description: "Explore handy Jekyll snippets for enhancing static site generation, including unique presentation of the latest post and consistent post excerpts."
 author: "Russ Mckendrick"
-date: 2014-02-02T12:00:00.000Z
-lastmod: 2021-07-31T12:31:10+01:00
+date: "2014-02-02T12:00:00+01:00"
 tags:
-    - "Code"
-    - "Tools"
+  - "Code"
+  - "Tools"
 cover:
-    image: "/img/2014-02-02_jekyll-snippets_0.png" 
-    alt: "Explore handy Jekyll snippets for enhancing static site generation, including unique presentation of the latest post and consistent post excerpts."
-images:
- - "/img/2014-02-02_jekyll-snippets_0.png"
+  image: "/img/2014-02-02_jekyll-snippets_0.png"
+  alt: "Explore handy Jekyll snippets for enhancing static site generation, including unique presentation of the latest post and consistent post excerpts."
+lastmod: "2021-07-31T12:31:10+01:00"
 aliases:
-- "/jekyll-snippets-c0192a5f3f6d"
-
+  - "/jekyll-snippets-c0192a5f3f6d"
 ---
 
 Had a go at converting a mostly static but dynamically rendered site to use Jekyll yesterday, it was a lot more straight forward than I thought it was going to be.

@@ -2,30 +2,17 @@
 title: "Launching a local Rancher cluster"
 description: "Learn to launch a local Rancher cluster effortlessly with Docker for Mac beta and Docker Machine for smooth demo setups."
 author: "Russ Mckendrick"
-date: 2016-06-12T15:30:55.000Z
-lastmod: 2021-07-31T12:33:55+01:00
-
+date: "2016-06-12T15:30:55+01:00"
 tags:
- - Docker
- - macOS
- - Tools
-
+  - "Docker"
+  - "macOS"
+  - "Tools"
 cover:
-    image: "/img/2016-06-12_launching-a-local-rancher-cluster_0.png" 
-    alt: "Learn to launch a local Rancher cluster effortlessly with Docker for Mac beta and Docker Machine for smooth demo setups."
-
-images:
- - "/img/2016-06-12_launching-a-local-rancher-cluster_0.png"
- - "/img/2016-06-12_launching-a-local-rancher-cluster_1.png"
- - "/img/2016-06-12_launching-a-local-rancher-cluster_2.png"
- - "/img/2016-06-12_launching-a-local-rancher-cluster_3.png"
- - "/img/2016-06-12_launching-a-local-rancher-cluster_4.png"
- - "/img/2016-06-12_launching-a-local-rancher-cluster_5.png"
-
-
+  image: "/img/2016-06-12_launching-a-local-rancher-cluster_0.png"
+  alt: "Learn to launch a local Rancher cluster effortlessly with Docker for Mac beta and Docker Machine for smooth demo setups."
+lastmod: "2021-07-31T12:33:55+01:00"
 aliases:
-- "/launching-a-local-rancher-cluster-1422b89b0477"
-
+  - "/launching-a-local-rancher-cluster-1422b89b0477"
 ---
 
 Earlier this week I wanted to show someone a copy of [Rancher](http://rancher.com/) running but I realized that I didn’t have a local lab configured. I managed to quickly launch a few machines in [Digital Ocean](https://m.do.co/c/52ec4dc3647e) meaning I could do the demo.

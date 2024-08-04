@@ -2,31 +2,15 @@
 title: "Docker Load Balancing & Application Bundles"
 description: "Explore Docker Swarm, load balancing, and DAB with Ansible on Digital Ocean. Step-by-step guide included."
 author: "Russ Mckendrick"
-date: 2016-06-25T18:30:16.000Z
-lastmod: 2021-07-31T12:33:58+01:00
-
+date: "2016-06-25T18:30:16+01:00"
 tags:
- - Docker
-
+  - "Docker"
 cover:
-    image: "/img/2016-06-25_docker-load-balancing-application-bundles_0.png" 
-    alt: "Explore Docker Swarm, load balancing, and DAB with Ansible on Digital Ocean. Step-by-step guide included."
-
-images:
- - "/img/2016-06-25_docker-load-balancing-application-bundles_0.png"
- - "/img/2016-06-25_docker-load-balancing-application-bundles_1.png"
- - "/img/2016-06-25_docker-load-balancing-application-bundles_2.jpg"
- - "/img/2016-06-25_docker-load-balancing-application-bundles_3.jpg"
- - "/img/2016-06-25_docker-load-balancing-application-bundles_4.jpg"
- - "/img/2016-06-25_docker-load-balancing-application-bundles_5.jpg"
- - "/img/2016-06-25_docker-load-balancing-application-bundles_6.jpg"
- - "/img/2016-06-25_docker-load-balancing-application-bundles_7.jpg"
- - "/img/2016-06-25_docker-load-balancing-application-bundles_8.png"
-
-
+  image: "/img/2016-06-25_docker-load-balancing-application-bundles_0.png"
+  alt: "Explore Docker Swarm, load balancing, and DAB with Ansible on Digital Ocean. Step-by-step guide included."
+lastmod: "2021-07-31T12:33:58+01:00"
 aliases:
-- "/docker-load-balancing-application-bundles-38426d9568d2"
-
+  - "/docker-load-balancing-application-bundles-38426d9568d2"
 ---
 
 Earlier in the week I wrote about the [new Docker Swarm functionality](/2016/06/30/docker-service/), as i didn’t have much time I was just using the [Docker for Mac](https://www.docker.com/products/docker#/mac) beta.

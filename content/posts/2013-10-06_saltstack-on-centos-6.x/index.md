@@ -1,23 +1,19 @@
 ---
 title: "SaltStack on CentOS 6.x"
-author: "Russ Mckendrick"
 description: "A concise tutorial on setting up SaltStack for centralized server management on CentOS, including master-minion setup and basic commands."
-date: 2013-10-06T11:00:00.000Z
-lastmod: 2021-07-31T12:31:01+01:00
-category: ""
+author: "Russ Mckendrick"
+date: "2013-10-06T11:00:00+01:00"
 tags:
-    - "Linux"
-    - "Automation"
-    - "Infrastructure as Code"
+  - "Linux"
+  - "Automation"
+  - "Infrastructure as Code"
 cover:
-    image: "/img/2013-10-06_saltstack-on-centos-6.x_0.png" 
-    alt: "A concise tutorial on setting up SaltStack for centralized server management on CentOS, including master-minion setup and basic commands."
-
-images:
- - "/img/2013-10-06_saltstack-on-centos-6.x_0.png"
+  image: "/img/2013-10-06_saltstack-on-centos-6.x_0.png"
+  alt: "A concise tutorial on setting up SaltStack for centralized server management on CentOS, including master-minion setup and basic commands."
+lastmod: "2021-07-31T12:31:01+01:00"
+category: ""
 aliases:
-- "/saltstack-on-centos-6-x-b76a26a10a90"
-
+  - "/saltstack-on-centos-6-x-b76a26a10a90"
 ---
 
 Had a play with [SaltStack](http://saltstack.com/) today, it’s a good way to manage multiple machines from a central location. It runs as a Server (master) and client (minion).

@@ -2,24 +2,16 @@
 title: "NGINX & ngx_pagespeed on CentOS 7"
 description: "Compile NGINX with ngx_pagespeed on CentOS 7. Automate setup with init script. Configure NGINX for ngx_pagespeed to enhance performance."
 author: "Russ Mckendrick"
-date: 2015-02-14T15:36:06.000Z
-lastmod: 2021-07-31T12:32:39+01:00
-
+date: "2015-02-14T15:36:06+01:00"
 tags:
-    - "Linux"
-    - "Web"
-
+  - "Linux"
+  - "Web"
 cover:
-    image: "/img/2015-02-14_nginx-ngxpagespeed-on-centos-7_0.png" 
-    alt: "Compile NGINX with ngx_pagespeed on CentOS 7. Automate setup with init script. Configure NGINX for ngx_pagespeed to enhance performance."
-
-images:
- - "/img/2015-02-14_nginx-ngxpagespeed-on-centos-7_0.png"
-
-
+  image: "/img/2015-02-14_nginx-ngxpagespeed-on-centos-7_0.png"
+  alt: "Compile NGINX with ngx_pagespeed on CentOS 7. Automate setup with init script. Configure NGINX for ngx_pagespeed to enhance performance."
+lastmod: "2021-07-31T12:32:39+01:00"
 aliases:
-- "/nginx-ngx-pagespeed-on-centos-7-a1766f433e0f"
-
+  - "/nginx-ngx-pagespeed-on-centos-7-a1766f433e0f"
 ---
 
 I wanted to have a quick play with Googles Pagespeed module, as I use NGINX and not Apache I needed to compile NGINX from source to enable the ngx_pagespeed module. The following assumes you are have a clean CentOS 7 installation.

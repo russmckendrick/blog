@@ -2,24 +2,16 @@
 title: "Puppet Enterprise & AWS Security Groups"
 description: "Russ Mckendrick tackles AWS security group hurdles installing Puppet Enterprise, resolves by temporarily allowing all traffic."
 author: "Russ Mckendrick"
-date: 2015-11-15T18:41:20.000Z
-lastmod: 2021-07-31T12:33:31+01:00
-
+date: "2015-11-15T18:41:20+01:00"
 tags:
- - "Automation"
- - "AWS"
-
+  - "Automation"
+  - "AWS"
 cover:
-    image: "/img/2015-11-15_puppet-enterprise-aws-security-groups_0.png" 
-    alt: "Russ Mckendrick tackles AWS security group hurdles installing Puppet Enterprise, resolves by temporarily allowing all traffic."
-
-images:
- - "/img/2015-11-15_puppet-enterprise-aws-security-groups_0.png"
-
-
+  image: "/img/2015-11-15_puppet-enterprise-aws-security-groups_0.png"
+  alt: "Russ Mckendrick tackles AWS security group hurdles installing Puppet Enterprise, resolves by temporarily allowing all traffic."
+lastmod: "2021-07-31T12:33:31+01:00"
 aliases:
-- "/puppet-enterprise-aws-security-groups-997ef7a75f7f"
-
+  - "/puppet-enterprise-aws-security-groups-997ef7a75f7f"
 ---
 
 This week I had to do a few installations of Puppet Enterprise on an EC2 instance. Although this seemed like a simple enough task, I did hit upon one annoying issue.

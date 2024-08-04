@@ -2,25 +2,17 @@
 title: "Falco by sysdig"
 description: "Discover Falco by Sysdig, a powerful behavioral security service monitoring system calls."
 author: "Russ Mckendrick"
-date: 2016-05-22T15:36:56.000Z
-lastmod: 2021-07-31T12:33:53+01:00
-
+date: "2016-05-22T15:36:56+01:00"
 tags:
- - "Linux"
- - Security
- - Tools
-
+  - "Linux"
+  - "Security"
+  - "Tools"
 cover:
-    image: "/img/2016-05-22_falco-by-sysdig_0.png" 
-    alt: "Discover Falco by Sysdig, a powerful behavioral security service monitoring system calls."
-
-images:
- - "/img/2016-05-22_falco-by-sysdig_0.png"
-
-
+  image: "/img/2016-05-22_falco-by-sysdig_0.png"
+  alt: "Discover Falco by Sysdig, a powerful behavioral security service monitoring system calls."
+lastmod: "2021-07-31T12:33:53+01:00"
 aliases:
-- "/falco-by-sysdig-9a1502438d47"
-
+  - "/falco-by-sysdig-9a1502438d47"
 ---
 
 Earlier this week the guys over at [sysdig](https://sysdig.com/) announced the availability of Falco, a behavioral security service which is built on top of their core [Open Source sysdig engine](/2014/05/25/sysdig/). As is always the case when I try new things, I launched a [Digital Ocean](https://m.do.co/c/52ec4dc3647e) Droplet running CentOS 7.2. Once the Droplet was available I ran the command to [get the basics configured](/2015/06/28/digital-ocean-bootstrap/) on the droplet;

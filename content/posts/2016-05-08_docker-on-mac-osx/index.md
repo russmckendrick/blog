@@ -2,34 +2,17 @@
 title: "Docker on Mac OSX"
 description: "Experience Docker on macOS with enhanced speed and reliability. Learn how to install and leverage its native features seamlessly."
 author: "Russ Mckendrick"
-date: 2016-05-08T16:13:53.000Z
-lastmod: 2021-07-31T12:33:51+01:00
-
+date: "2016-05-08T16:13:53+01:00"
 tags:
- - Tools
- - Docker
- - macOS
-
+  - "Tools"
+  - "Docker"
+  - "macOS"
 cover:
-    image: "/img/2016-05-08_docker-on-mac-osx_0.png" 
-    alt: "Experience Docker on macOS with enhanced speed and reliability. Learn how to install and leverage its native features seamlessly."
-
-images:
- - "/img/2016-05-08_docker-on-mac-osx_0.png"
- - "/img/2016-05-08_docker-on-mac-osx_1.png"
- - "/img/2016-05-08_docker-on-mac-osx_2.png"
- - "/img/2016-05-08_docker-on-mac-osx_3.png"
- - "/img/2016-05-08_docker-on-mac-osx_4.png"
- - "/img/2016-05-08_docker-on-mac-osx_5.png"
- - "/img/2016-05-08_docker-on-mac-osx_6.png"
- - "/img/2016-05-08_docker-on-mac-osx_7.png"
- - "/img/2016-05-08_docker-on-mac-osx_8.png"
- - "/img/2016-05-08_docker-on-mac-osx_9.png"
-
-
+  image: "/img/2016-05-08_docker-on-mac-osx_0.png"
+  alt: "Experience Docker on macOS with enhanced speed and reliability. Learn how to install and leverage its native features seamlessly."
+lastmod: "2021-07-31T12:33:51+01:00"
 aliases:
-- "/docker-on-mac-osx-46a6ede7843"
-
+  - "/docker-on-mac-osx-46a6ede7843"
 ---
 
 I finally have a beta invite for the native OSX version of Docker, well sort of native OSX version, as you can see from the quote below there is still a virtual machine running …

@@ -2,26 +2,18 @@
 title: "High Availability Central Logging in AWS"
 description: "Set up high availability central logging in AWS with Amazon CloudWatch Logs. This guide covers installation, IAM permissions, and CloudWatch Logs agent setup."
 author: "Russ Mckendrick"
-date: 2014-07-22T11:00:00.000Z
-lastmod: 2021-07-31T12:31:40+01:00
-
+date: "2014-07-22T11:00:00+01:00"
 tags:
-    - "Code"
-    - "Tools"
-    - "AWS"
-    - "Cloud"
-
+  - "Code"
+  - "Tools"
+  - "AWS"
+  - "Cloud"
 cover:
-    image: "/img/2014-07-22_high-availability-central-logging-in-aws_0.png" 
-    alt: "Set up high availability central logging in AWS with Amazon CloudWatch Logs. This guide covers installation, IAM permissions, and CloudWatch Logs agent setup."
-
-images:
- - "/img/2014-07-22_high-availability-central-logging-in-aws_0.png"
-
-
+  image: "/img/2014-07-22_high-availability-central-logging-in-aws_0.png"
+  alt: "Set up high availability central logging in AWS with Amazon CloudWatch Logs. This guide covers installation, IAM permissions, and CloudWatch Logs agent setup."
+lastmod: "2021-07-31T12:31:40+01:00"
 aliases:
-- "/high-availability-central-logging-in-aws-88878a25e9f1"
-
+  - "/high-availability-central-logging-in-aws-88878a25e9f1"
 ---
 
 As part of another work project I needed to install some central logging to run in AWS. Simple you may say, create an instance and use [Puppet](/tags/#puppet) to install [ELK server stack](http://www.elasticsearch.org/overview/elkdownloads/) on there, or go back to basics and create a [rsyslog](http://www.rsyslog.com/) server. Normally this would be well and good, however I needed to ensure that all parts solution were highly available and fully redundant, this meant that I would have engineer a lot of HA into my ELK or rsyslog servers.

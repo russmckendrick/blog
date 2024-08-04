@@ -2,19 +2,16 @@
 title: "Installing Cobbler on CentOS 6.x"
 description: "A comprehensive guide on setting up Cobbler on CentOS 6.x for mirroring repos and server kickstarts, including EPEL enablement and security setup."
 author: "Russ Mckendrick"
-date: 2013-10-13T11:00:00.000Z
-lastmod: 2021-07-31T12:31:02+01:00
+date: "2013-10-13T11:00:00+01:00"
 tags:
-    - "Linux"
-    - "Automation"
+  - "Linux"
+  - "Automation"
 cover:
-    image: "/img/2013-10-13_installing-cobbler-on-centos-6.x_0.png" 
-    alt: "A comprehensive guide on setting up Cobbler on CentOS 6.x for mirroring repos and server kickstarts, including EPEL enablement and security setup."
-images:
- - "/img/2013-10-13_installing-cobbler-on-centos-6.x_0.png"
+  image: "/img/2013-10-13_installing-cobbler-on-centos-6.x_0.png"
+  alt: "A comprehensive guide on setting up Cobbler on CentOS 6.x for mirroring repos and server kickstarts, including EPEL enablement and security setup."
+lastmod: "2021-07-31T12:31:02+01:00"
 aliases:
-- "/installing-cobbler-on-centos-6-x-7039a8de0f6c"
-
+  - "/installing-cobbler-on-centos-6-x-7039a8de0f6c"
 ---
 
 I needed a simple way to mirror some repos, and potentially kickstart some servers at a future date. While something like [The Foreman](http://theforeman.org) would do the build side of things it doesn’t repo mirrors (yet). So I did an install of [Cobbler](http://www.cobblerd.org).

@@ -2,22 +2,16 @@
 title: "Deploying a Stable Docker Setup on CentOS with Shipyard"
 description: "Deploy a stable Docker setup on CentOS with Shipyard for container management, using Puppet for installation and Supervisor for high availability."
 author: "Russ Mckendrick"
-date: 2014-04-27T11:00:00.000Z
-lastmod: 2021-07-31T12:31:19+01:00
+date: "2014-04-27T11:00:00+01:00"
 tags:
-    - "Docker"
-    - "Tools"
+  - "Docker"
+  - "Tools"
 cover:
-    image: "/img/2014-04-27_been-playing-with-docker-again-this-weekend-this-time-rather-than-just-doing-for-the-sake-of-doing_0.png" 
-    alt: "Deploy a stable Docker setup on CentOS with Shipyard for container management, using Puppet for installation and Supervisor for high availability."
-
-images:
- - "/img/2014-04-27_been-playing-with-docker-again-this-weekend-this-time-rather-than-just-doing-for-the-sake-of-doing_0.png"
-
-
+  image: "/img/2014-04-27_been-playing-with-docker-again-this-weekend-this-time-rather-than-just-doing-for-the-sake-of-doing_0.png"
+  alt: "Deploy a stable Docker setup on CentOS with Shipyard for container management, using Puppet for installation and Supervisor for high availability."
+lastmod: "2021-07-31T12:31:19+01:00"
 aliases:
-- "/been-playing-with-docker-again-this-weekend-this-time-rather-than-just-doing-for-the-sake-of-doing-e16eebf37069"
-
+  - "/been-playing-with-docker-again-this-weekend-this-time-rather-than-just-doing-for-the-sake-of-doing-e16eebf37069"
 ---
 
 Been playing with [Docker](http://docker.io/) again this weekend, this time rather than just doing for the sake of doing it I went for something a little more stable.

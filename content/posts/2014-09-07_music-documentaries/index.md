@@ -2,34 +2,16 @@
 title: "Music Documentaries"
 description: "Sharing a captivating collection of music documentaries I discovered on YouTube, from Factory Records to Prog Rock legends."
 author: "Russ Mckendrick"
-date: 2014-09-07T11:00:00.000Z
-lastmod: 2021-07-31T12:32:02+01:00
-
+date: "2014-09-07T11:00:00+01:00"
 tags:
-    - "Life"
-    - "Vinyl"
-
-
+  - "Life"
+  - "Vinyl"
 cover:
-    image: "/img/2014-09-07_music-documentaries_0.png" 
-    alt: "Sharing a captivating collection of music documentaries I discovered on YouTube, from Factory Records to Prog Rock legends."
-
-images:
- - "/img/2014-09-07_music-documentaries_0.png"
- - "/img/2014-09-07_music-documentaries_1.jpg"
- - "/img/2014-09-07_music-documentaries_2.jpg"
- - "/img/2014-09-07_music-documentaries_3.jpg"
- - "/img/2014-09-07_music-documentaries_4.jpg"
- - "/img/2014-09-07_music-documentaries_5.jpg"
- - "/img/2014-09-07_music-documentaries_6.jpg"
- - "/img/2014-09-07_music-documentaries_7.jpg"
- - "/img/2014-09-07_music-documentaries_8.jpg"
- - "/img/2014-09-07_music-documentaries_9.jpg"
-
-
+  image: "/img/2014-09-07_music-documentaries_0.png"
+  alt: "Sharing a captivating collection of music documentaries I discovered on YouTube, from Factory Records to Prog Rock legends."
+lastmod: "2021-07-31T12:32:02+01:00"
 aliases:
-- "/music-documentaries-3bbaf32fe2ec"
-
+  - "/music-documentaries-3bbaf32fe2ec"
 ---
 
 While bored the other day I stumbled across some great music documentaries on YouTube, here are some of the best ….

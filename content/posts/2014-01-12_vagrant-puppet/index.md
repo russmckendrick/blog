@@ -2,22 +2,18 @@
 title: "Vagrant & Puppet"
 description: "A deep dive into using Vagrant and Puppet for setting up reproducible development environments, mirroring production with local Virtualbox instances."
 author: "Russ Mckendrick"
-date: 2014-01-12T12:00:00.000Z
-lastmod: 2021-07-31T12:31:08+01:00
+date: "2014-01-12T12:00:00+01:00"
 tags:
-    - "Linux"
-    - "Automation"
-    - "Infrastructure as Code"
-    - "DevOps"
+  - "Linux"
+  - "Automation"
+  - "Infrastructure as Code"
+  - "DevOps"
 cover:
-    image: "/img/2014-01-12_vagrant-puppet_0.png" 
-    alt: "A deep dive into using Vagrant and Puppet for setting up reproducible development environments, mirroring production with local Virtualbox instances."
-images:
- - "/img/2014-01-12_vagrant-puppet_0.png"
-
+  image: "/img/2014-01-12_vagrant-puppet_0.png"
+  alt: "A deep dive into using Vagrant and Puppet for setting up reproducible development environments, mirroring production with local Virtualbox instances."
+lastmod: "2021-07-31T12:31:08+01:00"
 aliases:
-- "/vagrant-puppet-237b2b68dec"
-
+  - "/vagrant-puppet-237b2b68dec"
 ---
 Vagrant allows developers to bring up local development machines in a controlled method using pre-built configuration files called boxes. Once a box has been installed on the developers local machine it can be powered on with the following command;
 

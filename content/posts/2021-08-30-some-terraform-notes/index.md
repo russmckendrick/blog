@@ -1,19 +1,19 @@
 ---
 title: "Some Terraform Azure Notes"
-author: "Russ McKendrick"
-date: 2021-08-30T11:41:34+01:00
 description: "Notes on Terraform Azure deployments: diagnostic settings, expiration dates, Azure Automation Account web hooks."
-draft: false
-showToc: true
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Notes on Terraform Azure deployments: diagnostic settings, expiration dates, Azure Automation Account web hooks."
+author: "Russ McKendrick"
+date: "2021-08-30T11:41:34+01:00"
 tags:
   - "Terraform"
   - "Infrastructure as Code"
   - "Automation"
   - "Azure"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Notes on Terraform Azure deployments: diagnostic settings, expiration dates, Azure Automation Account web hooks."
+draft: false
+showToc: true
 ---
 
 I have just finished working on a few large Terraform Azure deployments, thought I would stick a few notes down in a blog post so that I can refer to them in the future as well as hopefully being useful to others.

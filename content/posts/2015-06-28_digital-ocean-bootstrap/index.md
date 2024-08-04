@@ -2,25 +2,17 @@
 title: "Digital Ocean Bootstrap"
 description: "Get your CentOS 7 DigitalOcean droplet up and running in no time! Learn how to perform essential tasks for a smooth deployment."
 author: "Russ Mckendrick"
-date: 2015-06-28T12:23:29.000Z
-lastmod: 2021-07-31T12:33:08+01:00
-
+date: "2015-06-28T12:23:29+01:00"
 tags:
- - "Cloud"
- - "Linux"
- - "Security"
-
+  - "Cloud"
+  - "Linux"
+  - "Security"
 cover:
-    image: "/img/2015-06-28_digital-ocean-bootstrap_0.png" 
-    alt: "Get your CentOS 7 DigitalOcean droplet up and running in no time! Learn how to perform essential tasks for a smooth deployment."
-
-images:
- - "/img/2015-06-28_digital-ocean-bootstrap_0.png"
-
-
+  image: "/img/2015-06-28_digital-ocean-bootstrap_0.png"
+  alt: "Get your CentOS 7 DigitalOcean droplet up and running in no time! Learn how to perform essential tasks for a smooth deployment."
+lastmod: "2021-07-31T12:33:08+01:00"
 aliases:
-- "/digital-ocean-bootstrap-64fbb20a4f99"
-
+  - "/digital-ocean-bootstrap-64fbb20a4f99"
 ---
 
 As I have mentioned a few times on this blog I tend to use [DigtialOcean](https://www.digitalocean.com/?refcode=52ec4dc3647e) to spin up servers for testing and to host some of my projects. I also still [use CentOS 7](/2014/08/03/operating-system-snob/ "Am I an Operating System snob?") as my preferred OS.

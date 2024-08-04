@@ -1,26 +1,17 @@
 ---
 title: "Installing Docker 1.3.x on CentOS 7"
-
 description: "Successfully upgraded to Docker 1.3 with process injection feature on CentOS, bypassing outdated repos with a manual install."
 author: "Russ Mckendrick"
-date: 2014-11-02T12:00:00.000Z
-lastmod: 2021-07-31T12:32:10+01:00
-
+date: "2014-11-02T12:00:00+01:00"
 tags:
-    - "Docker"
-    - "Tools"
-
+  - "Docker"
+  - "Tools"
 cover:
-    image: "/img/2014-11-02_installing-docker-1.3.x-on-centos-7_0.png" 
-    alt: "Successfully upgraded to Docker 1.3 with process injection feature on CentOS, bypassing outdated repos with a manual install."
-
-images:
- - "/img/2014-11-02_installing-docker-1.3.x-on-centos-7_0.png"
-
-
+  image: "/img/2014-11-02_installing-docker-1.3.x-on-centos-7_0.png"
+  alt: "Successfully upgraded to Docker 1.3 with process injection feature on CentOS, bypassing outdated repos with a manual install."
+lastmod: "2021-07-31T12:32:10+01:00"
 aliases:
-- "/installing-docker-1-3-x-on-centos-7-1ef443aade2d"
-
+  - "/installing-docker-1-3-x-on-centos-7-1ef443aade2d"
 ---
 
 When [Docker 1.3](http://blog.docker.com/2014/10/docker-1-3-signed-images-process-injection-security-options-mac-shared-directories/) was released a few weeks ago I was interested in using the process injection docker exec functionality.

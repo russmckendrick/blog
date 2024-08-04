@@ -2,19 +2,16 @@
 title: "Docker"
 description: "A beginner's guide to Docker on CentOS, covering installation, running containers, and basic management with an introduction to Docker commands."
 author: "Russ Mckendrick"
-date: 2014-02-15T12:00:00.000Z
-lastmod: 2021-07-31T12:31:13+01:00
+date: "2014-02-15T12:00:00+01:00"
 tags:
-    - "Docker"
-    - "Tools"
+  - "Docker"
+  - "Tools"
 cover:
-    image: "/img/2014-02-15_docker_0.png" 
-    alt: "A beginner's guide to Docker on CentOS, covering installation, running containers, and basic management with an introduction to Docker commands."
-images:
- - "/img/2014-02-15_docker_0.png"
+  image: "/img/2014-02-15_docker_0.png"
+  alt: "A beginner's guide to Docker on CentOS, covering installation, running containers, and basic management with an introduction to Docker commands."
+lastmod: "2021-07-31T12:31:13+01:00"
 aliases:
-- "/docker-516afc902732"
-
+  - "/docker-516afc902732"
 ---
 
 Been playing a little with [Docker](http://docker.io/) this afternoon, while its something I have been aware for a while its not something I have really looked into.

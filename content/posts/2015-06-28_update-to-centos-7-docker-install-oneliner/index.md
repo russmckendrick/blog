@@ -2,25 +2,16 @@
 title: "Update to CentOS 7 Docker install one-liner"
 description: "Discover the updated one-liner Docker installer for CentOS 7. Install Docker 1.7 and docker-compose effortlessly with the official RPM and a single command."
 author: "Russ Mckendrick"
-date: 2015-06-28T14:38:07.000Z
-lastmod: 2021-07-31T12:33:10+01:00
-
+date: "2015-06-28T14:38:07+01:00"
 tags:
- - "Linux"
- - "Docker"
-
+  - "Linux"
+  - "Docker"
 cover:
-    image: "/img/2015-06-28_update-to-centos-7-docker-install-oneliner_0.png" 
-    alt: "Discover the updated one-liner Docker installer for CentOS 7. Install Docker 1.7 and docker-compose effortlessly with the official RPM and a single command."
-
-images:
- - "/img/2015-06-28_update-to-centos-7-docker-install-oneliner_0.png"
- - "/img/2015-06-28_update-to-centos-7-docker-install-oneliner_1.png"
-
-
+  image: "/img/2015-06-28_update-to-centos-7-docker-install-oneliner_0.png"
+  alt: "Discover the updated one-liner Docker installer for CentOS 7. Install Docker 1.7 and docker-compose effortlessly with the official RPM and a single command."
+lastmod: "2021-07-31T12:33:10+01:00"
 aliases:
-- "/update-to-centos-7-docker-install-one-liner-c2627cf62db1"
-
+  - "/update-to-centos-7-docker-install-one-liner-c2627cf62db1"
 ---
 
 **UPDATE 26/07/2015**

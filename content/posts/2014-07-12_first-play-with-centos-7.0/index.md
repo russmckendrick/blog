@@ -2,22 +2,16 @@
 title: "First play with CentOS 7.0"
 description: "Taking CentOS 7.0 for a spin: Discover the changes in networking, systemd, XFS, and Docker support in this firsthand exploration on a DigitalOcean Droplet."
 author: "Russ Mckendrick"
-date: 2014-07-12T11:00:00.000Z
-lastmod: 2021-07-31T12:31:36+01:00
-
+date: "2014-07-12T11:00:00+01:00"
 tags:
-    - "Linux"
-    - "Cloud"
+  - "Linux"
+  - "Cloud"
 cover:
-    image: "/img/2014-07-12_first-play-with-centos-7.0_0.png" 
-    alt: "Taking CentOS 7.0 for a spin: Discover the changes in networking, systemd, XFS, and Docker support in this firsthand exploration on a DigitalOcean Droplet."
-images:
- - "/img/2014-07-12_first-play-with-centos-7.0_0.png"
-
-
+  image: "/img/2014-07-12_first-play-with-centos-7.0_0.png"
+  alt: "Taking CentOS 7.0 for a spin: Discover the changes in networking, systemd, XFS, and Docker support in this firsthand exploration on a DigitalOcean Droplet."
+lastmod: "2021-07-31T12:31:36+01:00"
 aliases:
-- "/first-play-with-centos-7-0-6b0cb4411e47"
-
+  - "/first-play-with-centos-7-0-6b0cb4411e47"
 ---
 
 As I didn’t get chance to have a play with the pre-release CentOS 7.0 builds I decided to wait until [DigitalOcean](https://www.digitalocean.com/?refcode=52ec4dc3647e) lauched [their image](https://twitter.com/digitalocean/status/487664919127420928) which they did just in time for the weekend.

@@ -3,21 +3,20 @@ title: "Tracking costs in Terraform using Infracost"
 description: "Track Terraform costs with Infracost. Install, register, and monitor changes in your Azure DevOps pipeline efficiently."
 author: "Russ McKendrick"
 date: 2021-08-24
-draft: false
-showToc: true
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Track Terraform costs with Infracost. Install, register, and monitor changes in your Azure DevOps pipeline efficiently."
-aliases:
-  - "/2021/08/24/tracking-costs-in-your-terraform-azure-devops-pipeline-using-infracost/"
 tags:
   - "Terraform"
   - "DevOps"
   - "Azure"
   - "Tools"
   - "Infrastructure as Code"
-
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Track Terraform costs with Infracost. Install, register, and monitor changes in your Azure DevOps pipeline efficiently."
+draft: false
+showToc: true
+aliases:
+  - "/2021/08/24/tracking-costs-in-your-terraform-azure-devops-pipeline-using-infracost/"
 ---
 
 In [my last blog post](/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/) I introduced [a stage](/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/#stage-checkovscan) which executed [Checkov](https://www.checkov.io/) to my Terraform Azure DevOps pipeline, this scanned the Terraform configuration and stopped the deployment if there was an issue. I also added [a stage](/2021/06/08/azure-devops-terraform-pipeline-with-checkov-approvals/#stage-terraform-plan) which checks to see if there are any resources being destroyed.

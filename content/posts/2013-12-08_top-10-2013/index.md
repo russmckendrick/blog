@@ -2,20 +2,16 @@
 title: "Top 10 2013"
 description: "My top 10 albums of 2013, a rich mix of genres with highlights from Monster Magnet, David Bowie, and more, showcasing the year's standout music."
 author: "Russ Mckendrick"
-date: 2013-12-08T12:00:00.000Z
-lastmod: 2021-07-31T12:31:06+01:00
+date: "2013-12-08T12:00:00+01:00"
 tags:
-    - "Life"
-    - "Vinyl"
+  - "Life"
+  - "Vinyl"
 cover:
-    image: "/img/2013-12-08_top-10-2013_0.png" 
-    alt: "My top 10 albums of 2013, a rich mix of genres with highlights from Monster Magnet, David Bowie, and more, showcasing the year's standout music."
-
-images:
- - "/img/2013-12-08_top-10-2013_0.png"
+  image: "/img/2013-12-08_top-10-2013_0.png"
+  alt: "My top 10 albums of 2013, a rich mix of genres with highlights from Monster Magnet, David Bowie, and more, showcasing the year's standout music."
+lastmod: "2021-07-31T12:31:06+01:00"
 aliases:
-- "/top-10-2013-6b0750f71466"
-
+  - "/top-10-2013-6b0750f71466"
 ---
 
 Keeping up the yearly tradition here is what I have been listing to in 2013 ….

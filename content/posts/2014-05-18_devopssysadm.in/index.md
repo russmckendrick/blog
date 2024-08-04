@@ -2,23 +2,15 @@
 title: "DevOps-SysAdm.in"
 description: "Launching DevOps-SysAdm.in on Tumblr, a curated hub for DevOps and sysadmin resources. Find out why Tumblr was the chosen platform and how to contribute."
 author: "Russ Mckendrick"
-date: 2014-05-18T11:00:00.000Z
-lastmod: 2021-07-31T12:31:27+01:00
-
+date: "2014-05-18T11:00:00+01:00"
 tags:
-    - "Blog"
-
+  - "Blog"
 cover:
-    image: "/img/2014-05-18_devopssysadm.in_0.png" 
-    alt: "Launching DevOps-SysAdm.in on Tumblr, a curated hub for DevOps and sysadmin resources. Find out why Tumblr was the chosen platform and how to contribute."
-
-images:
- - "/img/2014-05-18_devopssysadm.in_0.png"
-
-
+  image: "/img/2014-05-18_devopssysadm.in_0.png"
+  alt: "Launching DevOps-SysAdm.in on Tumblr, a curated hub for DevOps and sysadmin resources. Find out why Tumblr was the chosen platform and how to contribute."
+lastmod: "2021-07-31T12:31:27+01:00"
 aliases:
-- "/devops-sysadm-in-7c3f13cc9a3"
-
+  - "/devops-sysadm-in-7c3f13cc9a3"
 ---
 
 I had registered the domain [DevOps-SysAdm.in](http://devops-sysadm.in/) with the intention of creating a second Jekyll based site which was going to be a link dump for stuff. Instead I decided to use [Tumblr](https://www.tumblr.com/) as that seemed alot less hassle.

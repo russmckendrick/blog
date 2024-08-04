@@ -2,40 +2,16 @@
 title: "Top Ten Albums 2015"
 description: "Explore top albums of 2015 from various artists, including Steven Wilson, Vennart, Leon Bridges, and more. Check out my eclectic music picks!"
 author: "Russ Mckendrick"
-date: 2015-12-27T18:03:34.000Z
-lastmod: 2021-07-31T12:33:40+01:00
-
+date: "2015-12-27T18:03:34+01:00"
 tags:
- - Life
- - Vinyl
-
+  - "Life"
+  - "Vinyl"
 cover:
-    image: "/img/2015-12-27_top-ten-albums-2015_0.png" 
-    alt: "Explore top albums of 2015 from various artists, including Steven Wilson, Vennart, Leon Bridges, and more. Check out my eclectic music picks!"
-
-images:
- - "/img/2015-12-27_top-ten-albums-2015_0.png"
- - "/img/2015-12-27_top-ten-albums-2015_1.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_2.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_3.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_4.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_5.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_6.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_7.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_8.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_9.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_10.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_11.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_12.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_13.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_14.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_15.jpg"
- - "/img/2015-12-27_top-ten-albums-2015_16.jpg"
-
-
+  image: "/img/2015-12-27_top-ten-albums-2015_0.png"
+  alt: "Explore top albums of 2015 from various artists, including Steven Wilson, Vennart, Leon Bridges, and more. Check out my eclectic music picks!"
+lastmod: "2021-07-31T12:33:40+01:00"
 aliases:
-- "/top-ten-albums-2015-36eb738ac95c"
-
+  - "/top-ten-albums-2015-36eb738ac95c"
 ---
 
 Here are my top ten and bit albums of 2015 (yes I know one is a remake, one was first released in 2014 and one is an EP).

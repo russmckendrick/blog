@@ -2,33 +2,17 @@
 title: "Docker for Amazon Web Services Beta"
 description: "Explore Docker for Amazon Web Services beta, effortlessly launch Docker Swarm clusters on AWS with CloudFormation templates. Easy scaling and management."
 author: "Russ Mckendrick"
-date: 2016-08-12T11:30:31.000Z
-lastmod: 2021-07-31T12:34:06+01:00
-
+date: "2016-08-12T11:30:31+01:00"
 tags:
- - Cloud
- - AWS
- - Docker
-
+  - "Cloud"
+  - "AWS"
+  - "Docker"
 cover:
-    image: "/img/2016-08-12_docker-for-amazon-web-services-beta_0.png" 
-    alt: "Explore Docker for Amazon Web Services beta, effortlessly launch Docker Swarm clusters on AWS with CloudFormation templates. Easy scaling and management."
-
-images:
- - "/img/2016-08-12_docker-for-amazon-web-services-beta_0.png"
- - "/img/2016-08-12_docker-for-amazon-web-services-beta_1.jpg"
- - "/img/2016-08-12_docker-for-amazon-web-services-beta_2.jpg"
- - "/img/2016-08-12_docker-for-amazon-web-services-beta_3.jpg"
- - "/img/2016-08-12_docker-for-amazon-web-services-beta_4.jpg"
- - "/img/2016-08-12_docker-for-amazon-web-services-beta_5.jpg"
- - "/img/2016-08-12_docker-for-amazon-web-services-beta_6.jpg"
- - "/img/2016-08-12_docker-for-amazon-web-services-beta_7.jpg"
- - "/img/2016-08-12_docker-for-amazon-web-services-beta_8.jpg"
-
-
+  image: "/img/2016-08-12_docker-for-amazon-web-services-beta_0.png"
+  alt: "Explore Docker for Amazon Web Services beta, effortlessly launch Docker Swarm clusters on AWS with CloudFormation templates. Easy scaling and management."
+lastmod: "2021-07-31T12:34:06+01:00"
 aliases:
-- "/docker-for-amazon-web-services-beta-b0a48d6df1a5"
-
+  - "/docker-for-amazon-web-services-beta-b0a48d6df1a5"
 ---
 
 Yesterday the following email dropped into my inbox …

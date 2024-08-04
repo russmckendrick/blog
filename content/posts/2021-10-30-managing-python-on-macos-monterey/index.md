@@ -1,17 +1,17 @@
 ---
 title: "Managing Python on macOS Monterey"
+description: "Just installed macOS Monterey and Python on my MacBook Pro! Easy peasy with pyenv. Check out my experience!"
 author: "Russ McKendrick"
 date: 2021-10-30
-description: "Just installed macOS Monterey and Python on my MacBook Pro! Easy peasy with pyenv. Check out my experience!"
+tags:
+  - "macOS"
+  - "Python"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Just installed macOS Monterey and Python on my MacBook Pro! Easy peasy with pyenv. Check out my experience!"
 draft: false
 showToc: true
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Just installed macOS Monterey and Python on my MacBook Pro! Easy peasy with pyenv. Check out my experience!"
-tags:
-    - macOS
-    - Python
 ---
 
 This week was not only the release of macOS Monterey, but it was also new Mac Book Pro week for a lot of people, including myself. Given that it was alot of effot to install Python on [macOS Big Sur](/2021/01/10/managing-python-on-macos-big-sur/) I was a little worried that it would take the same amount of effort.

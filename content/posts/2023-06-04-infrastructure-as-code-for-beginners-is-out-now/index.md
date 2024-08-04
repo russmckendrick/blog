@@ -1,14 +1,8 @@
 ---
 title: "Infrastructure as Code for Beginners is out now"
-author: "Russ McKendrick"
-date: 2023-06-04T10:56:17+01:00
 description: "My new book, Infrastructure as Code for Beginners, has been released and is available to buy now."
-draft: false
-showToc: true
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "My new book, Infrastructure as Code for Beginners, has been released and is available to buy now."
+author: "Russ McKendrick"
+date: "2023-06-04T10:56:17+01:00"
 tags:
   - "Book"
   - "Author"
@@ -19,6 +13,12 @@ tags:
   - "AWS"
   - "Azure"
   - "GitHub"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "My new book, Infrastructure as Code for Beginners, has been released and is available to buy now."
+draft: false
+showToc: true
 ---
 
 I am pleased to announce that my latest book, "Infrastructure as Code for Beginners," is now available for purchase.

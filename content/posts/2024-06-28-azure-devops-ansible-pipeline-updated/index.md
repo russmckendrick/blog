@@ -222,7 +222,7 @@ You can buy the second edition of Learn Ansible from the link below:
 
 Read the original blog post here:
 
-{{< linkpreview "https://www.russ.foo/2020/05/10/azure-devops-ansible-pipeline/" "noimage" >}}
+{{< linkpreview "https://www.russ.cloud/2020/05/10/azure-devops-ansible-pipeline/" "noimage" >}}
 
 Find out more on the `Cache@2` task at:
 

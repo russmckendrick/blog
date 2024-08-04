@@ -2,25 +2,16 @@
 title: "Docker, Fig, NGINX Reverse Proxies and CentOS 7"
 description: "Exploring Docker's rapid updates and the ecosystem, including using Fig for container orchestration and setting up an NGINX reverse proxy."
 author: "Russ Mckendrick"
-date: 2014-08-31T12:13:48.000Z
-lastmod: 2021-07-31T12:31:57+01:00
-
+date: "2014-08-31T12:13:48+01:00"
 tags:
-    - "Docker"
-    - "Tools"
+  - "Docker"
+  - "Tools"
 cover:
-    image: "/img/2014-08-31_docker-fig-nginx-reverse-proxies-and-centos-7_0.png" 
-    alt: "Exploring Docker's rapid updates and the ecosystem, including using Fig for container orchestration and setting up an NGINX reverse proxy."
-
-images:
- - "/img/2014-08-31_docker-fig-nginx-reverse-proxies-and-centos-7_0.png"
- - "/img/2014-08-31_docker-fig-nginx-reverse-proxies-and-centos-7_1.png"
- - "/img/2014-08-31_docker-fig-nginx-reverse-proxies-and-centos-7_2.png"
-
-
+  image: "/img/2014-08-31_docker-fig-nginx-reverse-proxies-and-centos-7_0.png"
+  alt: "Exploring Docker's rapid updates and the ecosystem, including using Fig for container orchestration and setting up an NGINX reverse proxy."
+lastmod: "2021-07-31T12:31:57+01:00"
 aliases:
-- "/docker-fig-nginx-reverse-proxies-and-centos-7-4b358cde769f"
-
+  - "/docker-fig-nginx-reverse-proxies-and-centos-7-4b358cde769f"
 ---
 
 I have been writing a lot about [Docker](https://www.docker.com/) and how I have used it over the last several months so why another another post?

@@ -1,19 +1,19 @@
 ---
 title: "Running Podman on macOS"
+description: "Discover how to run Podman on macOS using a virtual machine, enabling Docker compatibility and container management."
 author: "Russ McKendrick"
 date: 2021-09-12
-description: "Discover how to run Podman on macOS using a virtual machine, enabling Docker compatibility and container management."
-draft: false
-showToc: true
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Discover how to run Podman on macOS using a virtual machine, enabling Docker compatibility and container management."
 tags:
   - "Docker"
   - "macOS"
   - "Podman"
   - "Containers"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Discover how to run Podman on macOS using a virtual machine, enabling Docker compatibility and container management."
+draft: false
+showToc: true
 ---
 
 Last weekend I posted about [Docker Desktop Alternatives for macOS](/2021/09/05/docker-desktop-alternatives-for-macos/), and it looks like I missed one as the week before [Podman](https://podman.io/) release version [v3.3.0](https://github.com/containers/podman/releases) which introduced support for macOS by allowing you to launch a Podman managed virtual machine.

@@ -2,35 +2,17 @@
 title: "UIs for Docker, a follow-up post"
 description: "Explore UI options for Docker management including Portainer, Docker Datacenter, Shipyard, Rancher, Kubernetes Dashboard, RedHat OpenShift, DC/OS, and AWS ECS."
 author: "Russ Mckendrick"
-date: 2017-01-15T14:07:10.698Z
-lastmod: 2021-07-31T12:34:47+01:00
-
+date: "2017-01-15T14:07:10+01:00"
 tags:
- - Docker
- - DevOps
- - Kubernetes
-
+  - "Docker"
+  - "DevOps"
+  - "Kubernetes"
 cover:
-    image: "/img/2017-01-15_uis-for-docker-a-followup-post_0.png" 
-    alt: "Explore UI options for Docker management including Portainer, Docker Datacenter, Shipyard, Rancher, Kubernetes Dashboard, RedHat OpenShift, DC/OS, and AWS ECS."
-
-images:
- - "/img/2017-01-15_uis-for-docker-a-followup-post_0.png"
- - "/img/2017-01-15_uis-for-docker-a-followup-post_1.png"
- - "/img/2017-01-15_uis-for-docker-a-followup-post_2.png"
- - "/img/2017-01-15_uis-for-docker-a-followup-post_3.png"
- - "/img/2017-01-15_uis-for-docker-a-followup-post_4.png"
- - "/img/2017-01-15_uis-for-docker-a-followup-post_5.png"
- - "/img/2017-01-15_uis-for-docker-a-followup-post_6.png"
- - "/img/2017-01-15_uis-for-docker-a-followup-post_7.png"
- - "/img/2017-01-15_uis-for-docker-a-followup-post_8.jpeg"
- - "/img/2017-01-15_uis-for-docker-a-followup-post_9.png"
- - "/img/2017-01-15_uis-for-docker-a-followup-post_10.png"
-
-
+  image: "/img/2017-01-15_uis-for-docker-a-followup-post_0.png"
+  alt: "Explore UI options for Docker management including Portainer, Docker Datacenter, Shipyard, Rancher, Kubernetes Dashboard, RedHat OpenShift, DC/OS, and AWS ECS."
+lastmod: "2021-07-31T12:34:47+01:00"
 aliases:
-- "/uis-for-docker-a-follow-up-post-79a2dacc16fa"
-
+  - "/uis-for-docker-a-follow-up-post-79a2dacc16fa"
 ---
 
 Following on from the post I wrote on Portainer;

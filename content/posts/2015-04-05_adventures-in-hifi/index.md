@@ -2,27 +2,16 @@
 title: "Adventures in Hi-Fi"
 description: "Grooving into hi-fi! Exploring vinyl and upgrading my sound system with Sonos speakers."
 author: "Russ Mckendrick"
-date: 2015-04-05T11:00:00.000Z
-lastmod: 2021-07-31T12:32:56+01:00
-
+date: "2015-04-05T11:00:00+01:00"
 tags:
-    - "Life"
-    - "Vinyl"
-
+  - "Life"
+  - "Vinyl"
 cover:
-    image: "/img/2015-04-05_adventures-in-hifi_0.png" 
-    alt: "Grooving into hi-fi! Exploring vinyl and upgrading my sound system with Sonos speakers."
-
-images:
- - "/img/2015-04-05_adventures-in-hifi_0.png"
- - "/img/2015-04-05_adventures-in-hifi_1.jpg"
- - "/img/2015-04-05_adventures-in-hifi_2.png"
- - "/img/2015-04-05_adventures-in-hifi_3.png"
-
-
+  image: "/img/2015-04-05_adventures-in-hifi_0.png"
+  alt: "Grooving into hi-fi! Exploring vinyl and upgrading my sound system with Sonos speakers."
+lastmod: "2021-07-31T12:32:56+01:00"
 aliases:
-- "/adventures-in-hi-fi-9f67ad1f019c"
-
+  - "/adventures-in-hi-fi-9f67ad1f019c"
 ---
 
 As everyone who knows me will already know, I am a little bit opinionated when it comes to music. However, I haven’t really had a decent sound system for quite a few years.

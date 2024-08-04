@@ -2,52 +2,17 @@
 title: "Docker + Kubernetes"
 description: "Discover Docker and Kubernetes integration on Mac, enabling easy deployment and management of containerized applications."
 author: "Russ Mckendrick"
-date: 2018-01-06T16:22:39.751Z
-lastmod: 2021-07-31T12:35:02+01:00
-
+date: "2018-01-06T16:22:39+01:00"
 tags:
- - Docker
- - Kubernetes
- - macOS
-
+  - "Docker"
+  - "Kubernetes"
+  - "macOS"
 cover:
-    image: "/img/2018-01-06_docker-kubernetes_0.png" 
-    alt: "Discover Docker and Kubernetes integration on Mac, enabling easy deployment and management of containerized applications."
-
-images:
- - "/img/2018-01-06_docker-kubernetes_0.png"
- - "/img/2018-01-06_docker-kubernetes_1.png"
- - "/img/2018-01-06_docker-kubernetes_2.png"
- - "/img/2018-01-06_docker-kubernetes_3.png"
- - "/img/2018-01-06_docker-kubernetes_4.png"
- - "/img/2018-01-06_docker-kubernetes_5.png"
- - "/img/2018-01-06_docker-kubernetes_6.png"
- - "/img/2018-01-06_docker-kubernetes_7.png"
- - "/img/2018-01-06_docker-kubernetes_8.png"
- - "/img/2018-01-06_docker-kubernetes_9.png"
- - "/img/2018-01-06_docker-kubernetes_10.png"
- - "/img/2018-01-06_docker-kubernetes_11.png"
- - "/img/2018-01-06_docker-kubernetes_12.png"
- - "/img/2018-01-06_docker-kubernetes_13.png"
- - "/img/2018-01-06_docker-kubernetes_14.png"
- - "/img/2018-01-06_docker-kubernetes_15.png"
- - "/img/2018-01-06_docker-kubernetes_16.png"
- - "/img/2018-01-06_docker-kubernetes_17.png"
- - "/img/2018-01-06_docker-kubernetes_18.png"
- - "/img/2018-01-06_docker-kubernetes_19.png"
- - "/img/2018-01-06_docker-kubernetes_20.png"
- - "/img/2018-01-06_docker-kubernetes_21.png"
- - "/img/2018-01-06_docker-kubernetes_22.png"
- - "/img/2018-01-06_docker-kubernetes_23.png"
- - "/img/2018-01-06_docker-kubernetes_24.png"
- - "/img/2018-01-06_docker-kubernetes_25.png"
- - "/img/2018-01-06_docker-kubernetes_26.png"
- - "/img/2018-01-06_docker-kubernetes_27.png"
-
-
+  image: "/img/2018-01-06_docker-kubernetes_0.png"
+  alt: "Discover Docker and Kubernetes integration on Mac, enabling easy deployment and management of containerized applications."
+lastmod: "2021-07-31T12:35:02+01:00"
 aliases:
-- "/docker-and-kubernetes-40ab7d01909f"
-
+  - "/docker-and-kubernetes-40ab7d01909f"
 ---
 
 This morning, like a lot of the Docker community, I receieved an email I had been waiting for since November, confirmation that Kubernetes on Docker for Mac had made its way through to a public edge release.

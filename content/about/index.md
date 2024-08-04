@@ -1,5 +1,5 @@
 ---
-title: "About me"
+title: "About Russ McKenderick"
 url: "/about"
 comments: false
 disableShare: true

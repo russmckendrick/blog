@@ -2,24 +2,16 @@
 title: "Connecting to Docker Containers"
 description: "Learn how I seamlessly access and manage containers without SSH using nsenter and docker-enter on CentOS 7, making DevOps simpler."
 author: "Russ Mckendrick"
-date: 2014-08-25T12:09:00.000Z
-lastmod: 2021-07-31T12:31:55+01:00
-
+date: "2014-08-25T12:09:00+01:00"
 tags:
-    - "Docker"
-    - "Tools"
-
+  - "Docker"
+  - "Tools"
 cover:
-    image: "/img/2014-08-25_connecting-to-docker-containers_0.png" 
-    alt: "Learn how I seamlessly access and manage containers without SSH using nsenter and docker-enter on CentOS 7, making DevOps simpler."
-
-images:
- - "/img/2014-08-25_connecting-to-docker-containers_0.png"
-
-
+  image: "/img/2014-08-25_connecting-to-docker-containers_0.png"
+  alt: "Learn how I seamlessly access and manage containers without SSH using nsenter and docker-enter on CentOS 7, making DevOps simpler."
+lastmod: "2021-07-31T12:31:55+01:00"
 aliases:
-- "/connecting-to-docker-containers-34954cb33ce5"
-
+  - "/connecting-to-docker-containers-34954cb33ce5"
 ---
 
 I have been installing and exposing SSH on most of the containers I have deployed, which I know is wrong.

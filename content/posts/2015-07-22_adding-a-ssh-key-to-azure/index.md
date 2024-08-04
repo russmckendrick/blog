@@ -2,27 +2,16 @@
 title: "Adding a SSH Key to Azure"
 description: "Enable passwordless sudo on Azure VMs by adding SSH keys via Terraform. Simplify provisioning and management with seamless key configuration."
 author: "Russ Mckendrick"
-date: 2015-07-22T18:49:00.000Z
-lastmod: 2021-07-31T12:33:18+01:00
-
+date: "2015-07-22T18:49:00+01:00"
 tags:
- - "Azure"
- - "Security"
-
+  - "Azure"
+  - "Security"
 cover:
-    image: "/img/2015-07-22_adding-a-ssh-key-to-azure_0.png" 
-    alt: "Enable passwordless sudo on Azure VMs by adding SSH keys via Terraform. Simplify provisioning and management with seamless key configuration."
-
-images:
- - "/img/2015-07-22_adding-a-ssh-key-to-azure_0.png"
- - "/img/2015-07-22_adding-a-ssh-key-to-azure_1.png"
- - "/img/2015-07-22_adding-a-ssh-key-to-azure_2.png"
- - "/img/2015-07-22_adding-a-ssh-key-to-azure_3.png"
-
-
+  image: "/img/2015-07-22_adding-a-ssh-key-to-azure_0.png"
+  alt: "Enable passwordless sudo on Azure VMs by adding SSH keys via Terraform. Simplify provisioning and management with seamless key configuration."
+lastmod: "2021-07-31T12:33:18+01:00"
 aliases:
-- "/adding-a-ssh-key-to-azure-6d571c61a644"
-
+  - "/adding-a-ssh-key-to-azure-6d571c61a644"
 ---
 
 In my [previous post](/2015/07/19/terraform-azure/) I wrote about launching a CentOS 7 Virtual Machine in [Azure](http://azure.microsoft.com/) using [Terraform](https://www.terraform.io).

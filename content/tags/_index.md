@@ -1,3 +1,3 @@
 ---
-title: "Tags 🏷️"
+title: "Post tags 🏷️"
 ---

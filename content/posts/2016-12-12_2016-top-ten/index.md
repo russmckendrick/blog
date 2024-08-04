@@ -2,34 +2,16 @@
 title: "2016 Top Ten"
 description: "Explore Russ Mckendrick's top ten albums of 2016, including works by David Bowie, Radiohead, and Knifeworld. Dive into the diverse sounds of the year."
 author: "Russ Mckendrick"
-date: 2016-12-12T09:47:09.772Z
-lastmod: 2021-07-31T12:34:24+01:00
-
+date: "2016-12-12T09:47:09+01:00"
 tags:
- - Vinyl
- - Life
-
+  - "Vinyl"
+  - "Life"
 cover:
-    image: "/img/2016-12-12_2016-top-ten_0.png" 
-    alt: "Explore Russ Mckendrick's top ten albums of 2016, including works by David Bowie, Radiohead, and Knifeworld. Dive into the diverse sounds of the year."
-
-images:
- - "/img/2016-12-12_2016-top-ten_0.png"
- - "/img/2016-12-12_2016-top-ten_1.jpeg"
- - "/img/2016-12-12_2016-top-ten_2.jpeg"
- - "/img/2016-12-12_2016-top-ten_3.jpeg"
- - "/img/2016-12-12_2016-top-ten_4.jpeg"
- - "/img/2016-12-12_2016-top-ten_5.jpeg"
- - "/img/2016-12-12_2016-top-ten_6.jpeg"
- - "/img/2016-12-12_2016-top-ten_7.jpeg"
- - "/img/2016-12-12_2016-top-ten_8.jpeg"
- - "/img/2016-12-12_2016-top-ten_9.jpeg"
- - "/img/2016-12-12_2016-top-ten_10.jpeg"
-
-
+  image: "/img/2016-12-12_2016-top-ten_0.png"
+  alt: "Explore Russ Mckendrick's top ten albums of 2016, including works by David Bowie, Radiohead, and Knifeworld. Dive into the diverse sounds of the year."
+lastmod: "2021-07-31T12:34:24+01:00"
 aliases:
-- "/2016-top-ten-c661a84c0376"
-
+  - "/2016-top-ten-c661a84c0376"
 ---
 
 So here they are, my top ten albums of 2016. Like last year they are all ones I physically own rather than stream or have brought digitally …

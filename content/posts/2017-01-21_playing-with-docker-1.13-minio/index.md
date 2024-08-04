@@ -2,39 +2,16 @@
 title: "Playing with Docker 1.13 & Minio"
 description: "Deploy Minio in Docker Swarm with Docker 1.13 for distributed object storage. Easy setup and management."
 author: "Russ Mckendrick"
-date: 2017-01-21T20:50:07.458Z
-lastmod: 2021-07-31T12:34:50+01:00
-
+date: "2017-01-21T20:50:07+01:00"
 tags:
- - Docker
- - DevOps
-
+  - "Docker"
+  - "DevOps"
 cover:
-    image: "/img/2017-01-21_playing-with-docker-1.13-minio_0.png" 
-    alt: "Deploy Minio in Docker Swarm with Docker 1.13 for distributed object storage. Easy setup and management."
-
-images:
- - "/img/2017-01-21_playing-with-docker-1.13-minio_0.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_1.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_2.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_3.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_4.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_5.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_6.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_7.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_8.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_9.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_10.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_11.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_12.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_13.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_14.png"
- - "/img/2017-01-21_playing-with-docker-1.13-minio_15.png"
-
-
+  image: "/img/2017-01-21_playing-with-docker-1.13-minio_0.png"
+  alt: "Deploy Minio in Docker Swarm with Docker 1.13 for distributed object storage. Easy setup and management."
+lastmod: "2021-07-31T12:34:50+01:00"
 aliases:
-- "/playing-with-docker-1-13-minio-9b38a36e88b"
-
+  - "/playing-with-docker-1-13-minio-9b38a36e88b"
 ---
 
 I had some time today, so I thought I would combine two posts I have been planning on writing for a week or two, looking at Docker 1.13 and also Minio.

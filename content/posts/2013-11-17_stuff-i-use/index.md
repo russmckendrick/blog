@@ -1,15 +1,15 @@
 ---
 title: "Stuff I use"
-author: "Russ Mckendrick"
 description: "Explore the essential tools and services that enhance my efficiency as a developer and sysadmin, from code editors and version control to server hosting."
-date: 2013-11-17T12:00:00.000Z
-lastmod: 2021-07-31T12:31:04+01:00
+author: "Russ Mckendrick"
+date: "2013-11-17T12:00:00+01:00"
 tags:
-    - "macOS"
-    - "Tools"
+  - "macOS"
+  - "Tools"
+cover: ""
+lastmod: "2021-07-31T12:31:04+01:00"
 aliases:
-- "/stuff-i-use-2596d0593b6a"
-
+  - "/stuff-i-use-2596d0593b6a"
 ---
 
 I am trying to streamline my workflow at the moment. Currently on the Mac these are;

@@ -2,24 +2,15 @@
 title: "Packer CentOS 8"
 description: "Easily transition to CentOS 8 with Packer and Vagrant, featuring Cockpit for efficient server management."
 author: "Russ Mckendrick"
-date: 2019-10-13T20:27:00.000Z
+date: "2019-10-13T20:27:00+01:00"
 tags:
- - Packer
- - "Linux"
+  - "Packer"
+  - "Linux"
 cover:
-    image: "/img/2019-10-13_packer-centos-8_0.jpeg"
-    alt: "Easily transition to CentOS 8 with Packer and Vagrant, featuring Cockpit for efficient server management."
-images:
- - "/img/2019-10-13_packer-centos-8_0.jpeg"
- - "/img/2019-10-13_packer-centos-8_1.png"
- - "/img/2019-10-13_packer-centos-8_2.png"
- - "/img/2019-10-13_packer-centos-8_3.png"
- - "/img/2019-10-13_packer-centos-8_4.png"
- - "/img/2019-10-13_packer-centos-8_5.png"
- - "/img/2019-10-13_packer-centos-8_6.png"
+  image: "/img/2019-10-13_packer-centos-8_0.jpeg"
+  alt: "Easily transition to CentOS 8 with Packer and Vagrant, featuring Cockpit for efficient server management."
 aliases:
-- "/packer-centos-8-bda5f10772b4"
-
+  - "/packer-centos-8-bda5f10772b4"
 ---
 
 Now that CentOS 8 has been out for a few weeks I decided it was time to dip my toe in the water and update the CentOS 7 Packer scripts I had to work with CentOS 8.

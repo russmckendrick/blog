@@ -1,17 +1,17 @@
 ---
 title: "Playing with Aider Chat"
-author: "Russ McKendrick"
-date: 2023-07-15T13:01:41+01:00
 description: "I had some time so decided to have a play with a new tool called Aider Chat, which allows you to write and edit code with OpenAI’s GPT models."
-draft: false
-showToc: true
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "I had some time so decided to have a play with a new tool called Aider Chat, which allows you to write and edit code with OpenAI’s GPT models."
+author: "Russ McKendrick"
+date: "2023-07-15T13:01:41+01:00"
 tags:
   - "ai"
   - "code"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "I had some time so decided to have a play with a new tool called Aider Chat, which allows you to write and edit code with OpenAI’s GPT models."
+draft: false
+showToc: true
 ---
 
 I had some time, so I thought I would take a look at [Aider Chat](https://aider.chat),  Aidir Chat is described by its authors as;

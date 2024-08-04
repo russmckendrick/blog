@@ -2,23 +2,15 @@
 title: "Adding a Deploy to Azure Button"
 description: "Simplify Azure deployments with a 'Deploy to Azure' button for ARM templates, enabling effortless resource launch directly from GitHub repositories."
 author: "Russ Mckendrick"
-date: 2019-09-14T00:00:00.000Z
+date: "2019-09-14T00:00:00+01:00"
 tags:
- - Azure
- - Automation
+  - "Azure"
+  - "Automation"
 cover:
-    image: "/img/2019-09-14_adding-a-deploy-to-azure-button_0.jpeg"
-    alt: "Simplify Azure deployments with a 'Deploy to Azure' button for ARM templates, enabling effortless resource launch directly from GitHub repositories."
-images:
- - "/img/2019-09-14_adding-a-deploy-to-azure-button_0.jpeg"
- - "/img/2019-09-14_adding-a-deploy-to-azure-button_1.png"
- - "/img/2019-09-14_adding-a-deploy-to-azure-button_2.png"
- - "/img/2019-09-14_adding-a-deploy-to-azure-button_3.png"
- - "/img/2019-09-14_adding-a-deploy-to-azure-button_4.png"
- - "/img/2019-09-14_adding-a-deploy-to-azure-button_5.gif"
+  image: "/img/2019-09-14_adding-a-deploy-to-azure-button_0.jpeg"
+  alt: "Simplify Azure deployments with a 'Deploy to Azure' button for ARM templates, enabling effortless resource launch directly from GitHub repositories."
 aliases:
-- "/adding-a-deploy-to-azure-button-17141269d79f"
-
+  - "/adding-a-deploy-to-azure-button-17141269d79f"
 ---
 
 I am currently working on a few other blog posts and presentations for work on some Azure features which required me to launch a CentOS 7 Virtual Machine running the latest version of Ansible using an ARM template.

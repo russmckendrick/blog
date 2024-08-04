@@ -2,40 +2,16 @@
 title: "Playing with Rancher 2.0"
 description: "Explore Rancher 2.0 with me. Test the preview version and discover its features & limitations."
 author: "Russ Mckendrick"
-date: 2018-01-28T12:52:26.760Z
-lastmod: 2021-07-31T12:35:08+01:00
-cover:
-    image: "/img/2018-01-28_playing-with-rancher-2.0_0.png" 
-    alt: "Explore Rancher 2.0 with me. Test the preview version and discover its features & limitations."
-
-images:
- - "/img/2018-01-28_playing-with-rancher-2.0_0.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_1.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_2.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_3.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_4.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_5.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_6.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_7.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_8.gif"
- - "/img/2018-01-28_playing-with-rancher-2.0_9.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_10.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_11.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_12.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_13.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_14.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_15.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_16.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_17.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_18.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_19.png"
- - "/img/2018-01-28_playing-with-rancher-2.0_20.png"
-aliases:
-- "/playing-with-rancher-2-0-58830337acfd"
+date: "2018-01-28T12:52:26+01:00"
 tags:
-    - Kubernetes
-    - Cloud
-
+  - "Kubernetes"
+  - "Cloud"
+cover:
+  image: "/img/2018-01-28_playing-with-rancher-2.0_0.png"
+  alt: "Explore Rancher 2.0 with me. Test the preview version and discover its features & limitations."
+lastmod: "2021-07-31T12:35:08+01:00"
+aliases:
+  - "/playing-with-rancher-2-0-58830337acfd"
 ---
 
 As I had some free time this weekend so I thought it would be good to have a play with the recently released preview of Rancher 2.0.

@@ -3,17 +3,17 @@ title: "Top 20ish Records of 2020"
 description: "Discover Russ Mckendrick's top 20 vinyl records of 2020 featuring a diverse selection of music genres."
 author: "Russ Mckendrick"
 date: 2021-01-22
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Discover Russ Mckendrick's top 20 vinyl records of 2020 featuring a diverse selection of music genres."
-aliases:
-    - "/top-20ish-records-of-2020-81ab2f2e309e"
-keywords:
-    - Records
 tags:
-    - Vinyl
-    - Life
+  - "Vinyl"
+  - "Life"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Discover Russ Mckendrick's top 20 vinyl records of 2020 featuring a diverse selection of music genres."
+aliases:
+  - "/top-20ish-records-of-2020-81ab2f2e309e"
+keywords:
+  - "Records"
 ---
 
 A little late, but there are my top 20 records of 2020, as per previous years these are all ones which I have purchased on vinyl.

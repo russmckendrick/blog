@@ -1,22 +1,22 @@
 ---
 title: "Azure DevOps Terraform Pipeline  with Checkov & Approvals"
+description: "Setting up an Azure DevOps pipeline for Terraform deployments with Checkov scans, validation, and manual approval steps."
 author: "Russ Mckendrick"
 date: 2021-06-08
-description: "Setting up an Azure DevOps pipeline for Terraform deployments with Checkov scans, validation, and manual approval steps."
-draft: false
-showToc: true
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Setting up an Azure DevOps pipeline for Terraform deployments with Checkov scans, validation, and manual approval steps."
-aliases:
-  - "/azure-devops-terraform-pipeline-with-checkov-approvals-7a68827b2bf3"
 tags:
   - "Terraform"
   - "Devops"
   - "Azure"
   - "Security"
   - "Infrastructure as Code"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Setting up an Azure DevOps pipeline for Terraform deployments with Checkov scans, validation, and manual approval steps."
+draft: false
+showToc: true
+aliases:
+  - "/azure-devops-terraform-pipeline-with-checkov-approvals-7a68827b2bf3"
 ---
 
 It’s been just over a year since I [first posted about the Azure DevOps Terraform Pipeline I used to use](https://mediaglasses.blog/azure-devops-terraform-pipeline-e50f1721ea1), I say used to use, because that pipeline is now a little outdated. This posts covers the updated Pipeline I am starting to deploy along side my Terraform code.

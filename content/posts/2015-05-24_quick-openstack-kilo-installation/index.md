@@ -2,23 +2,15 @@
 title: "Quick OpenStack Kilo Installation"
 description: "Learn how to quickly install OpenStack Kilo on CentOS 7 using Vagrant and RedHat RDO. Follow step-by-step instructions for setting up a test environment."
 author: "Russ Mckendrick"
-date: 2015-05-24T11:00:00.000Z
-lastmod: 2021-07-31T12:33:06+01:00
-
+date: "2015-05-24T11:00:00+01:00"
 tags:
- - "Linux"
-
+  - "Linux"
 cover:
-    image: "/img/2015-05-24_quick-openstack-kilo-installation_0.png" 
-    alt: "Learn how to quickly install OpenStack Kilo on CentOS 7 using Vagrant and RedHat RDO. Follow step-by-step instructions for setting up a test environment."
-
-images:
- - "/img/2015-05-24_quick-openstack-kilo-installation_0.png"
-
-
+  image: "/img/2015-05-24_quick-openstack-kilo-installation_0.png"
+  alt: "Learn how to quickly install OpenStack Kilo on CentOS 7 using Vagrant and RedHat RDO. Follow step-by-step instructions for setting up a test environment."
+lastmod: "2021-07-31T12:33:06+01:00"
 aliases:
-- "/quick-openstack-kilo-installation-89ea199853e3"
-
+  - "/quick-openstack-kilo-installation-89ea199853e3"
 ---
 
 I am going to be playing with OpenStack over the next few weeks so I decided to create a Vagrant script which would bootstrap a working [OpenStack Kilo](https://wiki.openstack.org/wiki/ReleaseNotes/Kilo) installation using [RedHat RDO](https://www.rdoproject.org/ "RDO Project").

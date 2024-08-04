@@ -2,16 +2,14 @@
 title: "Upgrading my servers to CentOS 7"
 description: "Learn about the process of upgrading servers from CentOS 6 to CentOS 7, including updates for Puppet Master server, Apache configuration, and Docker server."
 author: "Russ Mckendrick"
-date: 2014-07-27T11:00:00.000Z
-lastmod: 2021-07-31T12:31:42+01:00
-
+date: "2014-07-27T11:00:00+01:00"
 tags:
-    - "Linux"
-    - "Automation"
-    - "Docker"
+  - "Linux"
+  - "Automation"
+  - "Docker"
+lastmod: "2021-07-31T12:31:42+01:00"
 aliases:
-- "/upgrading-my-servers-to-centos-7-b38ea4c0571f"
-
+  - "/upgrading-my-servers-to-centos-7-b38ea4c0571f"
 ---
 
 ==**PLEASE NOTE:** THESE INSTRUCTIONS ARE NOW OUTDATED, SEE [THIS POST FOR AN UPDATE](/2015/07/12/update-to-puppet-install-script/)==

@@ -3,17 +3,16 @@ title: "GitHub Codespaces and Terraform"
 description: "Explore GitHub Codespaces with Terraform for online IDE experience. Easily set up a workspace for infrastructure as code projects using Terraform and Ansible."
 author: "Russ Mckendrick"
 date: 2020-09-20
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Explore GitHub Codespaces with Terraform for online IDE experience. Easily set up a workspace for infrastructure as code projects using Terraform and Ansible."
-aliases:
-    - "/github-codespaces-and-terraform-ff8b37c5e54a"
 tags:
- - Github
- - Terraform
- - Infrastructure as Code
-
+  - "Github"
+  - "Terraform"
+  - "Infrastructure as Code"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Explore GitHub Codespaces with Terraform for online IDE experience. Easily set up a workspace for infrastructure as code projects using Terraform and Ansible."
+aliases:
+  - "/github-codespaces-and-terraform-ff8b37c5e54a"
 ---
 
 I got my invite for GitHub Codespaces the other day and I thought I would have a quick play with it as having an an online IDE sounds like it could come in handy.

@@ -2,23 +2,15 @@
 title: "Day to Day Tools"
 description: "Explore Russ Mckendrick's essential day-to-day tools, including Visual Studio Code, Docker, Ansible, and Digital Ocean, among others."
 author: "Russ Mckendrick"
-date: 2017-01-05T20:06:27.593Z
-lastmod: 2021-07-31T12:34:45+01:00
-
+date: "2017-01-05T20:06:27+01:00"
 tags:
- - Tools
-
+  - "Tools"
 cover:
-    image: "/img/2017-01-05_day-to-day-tools_0.png" 
-    alt: "Explore Russ Mckendrick's essential day-to-day tools, including Visual Studio Code, Docker, Ansible, and Digital Ocean, among others."
-
-images:
- - "/img/2017-01-05_day-to-day-tools_0.png"
-
-
+  image: "/img/2017-01-05_day-to-day-tools_0.png"
+  alt: "Explore Russ Mckendrick's essential day-to-day tools, including Visual Studio Code, Docker, Ansible, and Digital Ocean, among others."
+lastmod: "2021-07-31T12:34:45+01:00"
 aliases:
-- "/day-to-day-tools-74a9861fa2f9"
-
+  - "/day-to-day-tools-74a9861fa2f9"
 ---
 
 Its been quite a while since I wrote up what I am using on day to day, in fact I seem to have skipped all of 2016.

@@ -2,26 +2,19 @@
 title: "First Steps with Ansible"
 description: "Explore Ansible for AWS automation, transitioning from manual scripting. Initiate playbook for VPC and ELB deployment."
 author: "Russ Mckendrick"
-date: 2014-12-14T12:00:00.000Z
-lastmod: 2021-07-31T12:32:30+01:00
-
+date: "2014-12-14T12:00:00+01:00"
 tags:
-    - "Linux"
-    - "Automation"
-    - "Infrastructure as Code"
-    - "DevOps"
-    - "Ansible"
+  - "Linux"
+  - "Automation"
+  - "Infrastructure as Code"
+  - "DevOps"
+  - "Ansible"
 cover:
-    image: "/img/2014-12-14_first-steps-with-ansible_0.png" 
-    alt: "Explore Ansible for AWS automation, transitioning from manual scripting. Initiate playbook for VPC and ELB deployment."
-
-images:
- - "/img/2014-12-14_first-steps-with-ansible_0.png"
-
-
+  image: "/img/2014-12-14_first-steps-with-ansible_0.png"
+  alt: "Explore Ansible for AWS automation, transitioning from manual scripting. Initiate playbook for VPC and ELB deployment."
+lastmod: "2021-07-31T12:32:30+01:00"
 aliases:
-- "/first-steps-with-ansible-dd5f4615d6ea"
-
+  - "/first-steps-with-ansible-dd5f4615d6ea"
 ---
 
 All of the posts on orchestration on here have been about [Puppet](/2014/01/12/vagrant-puppet/) on [CentOS](/2014/02/23/more-puppet/) however last week I had need to script an AWS architecture and then launch instances built with [Packer](https://www.packer.io/) into it.

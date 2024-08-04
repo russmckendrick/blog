@@ -2,24 +2,16 @@
 title: "Very basic CoreOS"
 description: "Exploring CoreOS on DigitalOcean: From setting up a single instance with familiar tools to configuring a powerful container-oriented OS."
 author: "Russ Mckendrick"
-date: 2014-09-07T12:34:12.000Z
-lastmod: 2021-07-31T12:32:04+01:00
-
+date: "2014-09-07T12:34:12+01:00"
 tags:
-    - "Docker"
-    - "Tools"
-
+  - "Docker"
+  - "Tools"
 cover:
-    image: "/img/2014-09-07_very-basic-coreos_0.png" 
-    alt: "Exploring CoreOS on DigitalOcean: From setting up a single instance with familiar tools to configuring a powerful container-oriented OS."
-
-images:
- - "/img/2014-09-07_very-basic-coreos_0.png"
-
-
+  image: "/img/2014-09-07_very-basic-coreos_0.png"
+  alt: "Exploring CoreOS on DigitalOcean: From setting up a single instance with familiar tools to configuring a powerful container-oriented OS."
+lastmod: "2021-07-31T12:32:04+01:00"
 aliases:
-- "/very-basic-coreos-841323e9f743"
-
+  - "/very-basic-coreos-841323e9f743"
 ---
 
 On Friday [DigitalOcean announced the availability](https://www.digitalocean.com/company/blog/coreos-now-available-on-digitalocean/) of [CoreOS](https://coreos.com/) on their platform.
