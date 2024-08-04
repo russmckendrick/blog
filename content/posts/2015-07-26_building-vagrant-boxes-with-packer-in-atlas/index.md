@@ -35,9 +35,11 @@ For the Atlas interaction you need to make sure you are using the latest version
 
 First of all, ensure Homebrew is up-to-date;
 
+{{< terminal title="Building Vagrant Boxes with Packer in Atlas 1/9" >}}
 ```
 brew update
 ```
+{{< /terminal >}}
 
 Once updated you can install the software by using;
 
@@ -47,18 +49,22 @@ brew cask install vagrant[/code]
 
 Finally, check the versions you have installed;
 
+{{< terminal title="Building Vagrant Boxes with Packer in Atlas 2/9" >}}
 ```
 ⚡ packer version
 Packer v0.8.2
 ```
+{{< /terminal >}}
 
 and;
 
+{{< terminal title="Building Vagrant Boxes with Packer in Atlas 3/9" >}}
 ```
 ⚡ vagrant version
 Installed Version: 1.7.4
 Latest Version: 1.7.4
 ```
+{{< /terminal >}}
 
 You’re running an up-to-date version of Vagrant!
 
@@ -74,33 +80,41 @@ You can get a token from your [settings page](https://atlas.hashicorp.com/settin
 
 As the message on the page says, make a copy of your token as you will not be able to see it again. Once you have your access token you will need to set it as a environment variable;
 
+{{< terminal title="Building Vagrant Boxes with Packer in Atlas 4/9" >}}
 ```
 export ATLAS_TOKEN=”axYdYYAte8MGqw.atlasv1.n3pj1oC9qQq4DRbPxykJy3pSHlDoFzfsBkGTrEqq3WWZarX8tuaHjr1gkdenRAazdLo”
 ```
+{{< /terminal >}}
 
 #### Packer
 
 For this part of the blog post you can use [my templates](https://github.com/russmckendrick/vagrant/), you can grab them from GitHub using;
 
+{{< terminal title="Building Vagrant Boxes with Packer in Atlas 5/9" >}}
 ```
 git clone https://github.com/russmckendrick/vagrant.git
 ```
+{{< /terminal >}}
 
 Lets use the CentOS 7.1 template, open centos7.json in your text editor of choice and update [the variables at the bottom of the file](https://github.com/russmckendrick/vagrant/blob/master/centos71.json#L111-L116) replacing the atlas_username, atlas_name and artifactversion as needed.
 
 Next up should use packer validate to check there are not any errors with the template file;
 
+{{< terminal title="Building Vagrant Boxes with Packer in Atlas 6/9" >}}
 ```
 ⚡ packer validate centos71.json
 Template validated successfully.
 ```
+{{< /terminal >}}
 
 Once you have validated the template you will need to push the template to Atlas using packer push;
 
+{{< terminal title="Building Vagrant Boxes with Packer in Atlas 7/9" >}}
 ```
 ⚡ packer push -m “Initial Push” centos71.json
 Push successful to ‘russmckendrick/centos71’
 ```
+{{< /terminal >}}
 
 Once the template has been pushed you should [see the build in the web interface](https://atlas.hashicorp.com/builds);
 
@@ -114,15 +128,19 @@ Once the build has completed the artifact will be automatically uploaded to Atla
 
 Once completed you will be able to use the boxes with the commands which accompany the release e.g.
 
+{{< terminal title="Building Vagrant Boxes with Packer in Atlas 8/9" >}}
 ```
 vagrant init russmckendrick/centos71; vagrant up — provider virtualbox
 ```
+{{< /terminal >}}
 
 or for VMWare;
 
+{{< terminal title="Building Vagrant Boxes with Packer in Atlas 9/9" >}}
 ```
 vagrant init russmckendrick/centos71; vagrant up — provider vmware_fusion
 ```
+{{< /terminal >}}
 
 Remember to wait until the build has completed the version is labelled as released before trying to use the box.
 

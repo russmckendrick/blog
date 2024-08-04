@@ -20,6 +20,7 @@ I started off by creating a new [DigitalOcean](https://www.digitalocean.com/?ref
 
 So now I had Docker installed now what? I looked at some PaaS services, a bulk of them require Ubuntu (which I simply don’t do on servers), however [Shipyard](http://shipyard-project.com/) looked good. It was simple to install;
 
+{{< terminal title="Deploying a Stable Docker Setup on CentOS with Shipyard 1/3" >}}
 ```
 yum install http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 yum -y install docker-io vim-enhanced
@@ -28,17 +29,21 @@ service docker start
 chkconfig docker on
 docker run -i -t -v /var/run/docker.sock:/docker.sock shipyard/deploy setup
 ```
+{{< /terminal >}}
 
 Once installed I added the agent using;
 
+{{< terminal title="Deploying a Stable Docker Setup on CentOS with Shipyard 2/3" >}}
 ```
 curl https://github.com/shipyard/shipyard-agent/releases/download/v0.3.1/shipyard-agent -L -o /usr/local/bin/shipyard-agent
 chmod +x /usr/local/bin/shipyard-agent 
 shipyard-agent -url http://<shipyard-host>:8000 -register
 ```
+{{< /terminal >}}
 
 Once the agent has been registered you should have a key, make a note of this because you need to ensure that the agent is always running, to do this I used [supervisord](http://supervisord.org/);
 
+{{< terminal title="Deploying a Stable Docker Setup on CentOS with Shipyard 3/3" >}}
 ```
 yum install python-pip
 pip install “pip>=1.4,<1.5” — upgrade
@@ -62,5 +67,6 @@ SUPERDUPER
 
 supervisord -c /etc/supervisord.conf
 ```
+{{< /terminal >}}
 
 As I needed to checkout PHP 5.5 & MySQL 5.6 on CentOS using [The IUS Community Project](https://iuscommunity.org/pages/About.html) for another project I created the a [GitHub Repo](https://github.com/russmckendrick/docker) and then published it as a [trusted build on the Docker Index](https://index.docker.io/u/russmckendrick/).

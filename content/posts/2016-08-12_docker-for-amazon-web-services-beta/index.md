@@ -53,12 +53,15 @@ ssh docker@Docker-ELB-SSH-62516391.eu-west-1.elb.amazonaws.comm
 
 Before we start to look at Docker itself lets see what underlying operation system the AMI Docker shared with us is using by running …
 
+{{< terminal title="Docker for Amazon Web Services Beta 1/7" >}}
 ```
 cat /etc/*release
 ```
+{{< /terminal >}}
 
 as you can see from the output below, they are using [Alpine Linux](https://www.alpinelinux.org) …
 
+{{< terminal title="Docker for Amazon Web Services Beta 2/7" >}}
 ```
 NAME=”Alpine Linux”
 ID=alpine
@@ -67,6 +70,7 @@ PRETTY_NAME=”Alpine Linux v3.3"
 HOME_URL=”http://alpinelinux.org"
 BUG_REPORT_URL=”http://bugs.alpinelinux.org"
 ```
+{{< /terminal >}}
 
 … which makes sense as its also the operating system Docker are using for the underlying virtual machine in Docker for Mac & Windows.
 
@@ -76,6 +80,7 @@ There are a few containers which run on all of the nodes default, you can see th
 
 As you can see from the screen above, we have 6 EC2 instances launched, so if we run the docker node ls command we should 6 nodes returned (1 management instance and 5 cluster nodes) …
 
+{{< terminal title="Docker for Amazon Web Services Beta 3/7" >}}
 ```
 docker node ls
 ID HOSTNAME STATUS AVAILABILITY MANAGER STATUS
@@ -86,21 +91,26 @@ ID HOSTNAME STATUS AVAILABILITY MANAGER STATUS
 6xdmbb9lew1ahatxk5sb5rrum ip-192–168–33–189.eu-west-1.compute.internal Ready Active
 82cj3u8ck5sbuaagv6ebn0m8w ip-192–168–34–5.eu-west-1.compute.internal Ready Active
 ```
+{{< /terminal >}}
 
 Before we launch a server, lets take a quick look at the version of Docker which is running;
 
+{{< terminal title="Docker for Amazon Web Services Beta 4/7" >}}
 ```
 docker -v
 Docker version 1.12.0, build 8eab29e, experimental
 ```
+{{< /terminal >}}
 
 The full release notes for this version [can be found here](https://github.com/docker/docker/releases/tag/v1.12.0)
 
 Now we have our cluster up and running, we can launch a container service, like in my [previous](/2016/06/25/docker-load-balancing-application-bundles/)[posts](/2016/06/25/docker-service-load-balancing-and-docker-distributed-application-bundles/) we will launch [a simple container which just gives you the container ID](https://hub.docker.com/r/russmckendrick/cluster/). To launch a single container simply run the following command;
 
+{{< terminal title="Docker for Amazon Web Services Beta 5/7" >}}
 ```
 docker service create — name cluster -p:80:80/tcp russmckendrick/cluster
 ```
+{{< /terminal >}}
 
 and this will launch a container which will be available at the **docker-elb** ELB address which was given in the output tab of the CloudFormation page.
 
@@ -108,17 +118,21 @@ and this will launch a container which will be available at the **docker-elb** E
 
 As before we can scale the service using the following command …
 
+{{< terminal title="Docker for Amazon Web Services Beta 6/7" >}}
 ```
 docker service scale cluster=20
 ```
+{{< /terminal >}}
 
 Once scaled you should be able to refresh your browser a few times to see the container ID change. At any time you can check how many containers you have in service by running the docker service ls command …
 
+{{< terminal title="Docker for Amazon Web Services Beta 7/7" >}}
 ```
 docker service ls
 ID NAME REPLICAS IMAGE COMMAND
 5rxo34jox7ly cluster 20/20 russmckendrick/cluster
 ```
+{{< /terminal >}}
 
 You can remove a running service using the following command docker service rm cluster.
 

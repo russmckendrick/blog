@@ -25,6 +25,7 @@ Out of these three technologies, Swarm is not really suitable for production use
 
 Rather than downloading the pre-compiled binary I decided to use the [Homebrew](http://brew.sh "Brew") formula (this assumes you have [Cask installed](/2014/10/20/yosemite-installation/ "Cask"));
 
+{{< terminal title="Docker Machine, Compose & Swarm 1/39" >}}
 ```
  # Make sure everything is up-to-date
  brew update
@@ -34,18 +35,22 @@ Rather than downloading the pre-compiled binary I decided to use the [Homebrew](
  # install docker-machine
  brew cask install docker-machine
 ```
+{{< /terminal >}}
 
 This will install docker-machine;
 
+{{< terminal title="Docker Machine, Compose & Swarm 2/39" >}}
 ```
  docker-machine -v
  docker-machine version 0.1.0
  docker-machine ls
  NAME ACTIVE DRIVER STATE URL SWARM
 ```
+{{< /terminal >}}
 
 I already have [VirtualBox](https://www.virtualbox.org "VirtualBox") installed so lets create a machine called “Testing”;
 
+{{< terminal title="Docker Machine, Compose & Swarm 3/39" >}}
 ```
  docker-machine create — driver virtualbox testing
  INFO[0000] Creating SSH key…
@@ -55,9 +60,11 @@ I already have [VirtualBox](https://www.virtualbox.org "VirtualBox") installed s
  INFO[0038] “testing” has been created and is now the active machine.
  INFO[0038] To point your Docker client at it, run this in your shell: $(docker-machine env testing)
 ```
+{{< /terminal >}}
 
 docker-machine comes with a few commands which will help you connect using the locally installed docker client;
 
+{{< terminal title="Docker Machine, Compose & Swarm 4/39" >}}
 ```
  docker-machine env testing
  export DOCKER_TLS_VERIFY=yes
@@ -66,17 +73,21 @@ docker-machine comes with a few commands which will help you connect using the l
  docker-machine config testing
  — tls — tlscacert=/Users/russ/.docker/machine/machines/testing/ca.pem — tlscert=/Users/russ/.docker/machine/machines/testing/cert.pem — tlskey=/Users/russ/.docker/machine/machines/testing/key.pem -H=”tcp://192.168.99.100:2376
 ```
+{{< /terminal >}}
 
 Thats it, I now have a Virtual Machine launched and ready for me to start using Docker;
 
+{{< terminal title="Docker Machine, Compose & Swarm 5/39" >}}
 ```
  docker-machine ls
  NAME ACTIVE DRIVER STATE URL SWARM
  testing * virtualbox Running tcp://192.168.99.100:2376
 ```
+{{< /terminal >}}
 
 As with any new installation, lets run a [“Hello World”](http://en.wikipedia.org/wiki/%22Hello,_World!%22_program "Hello World");
 
+{{< terminal title="Docker Machine, Compose & Swarm 6/39" >}}
 ```
  docker $(docker-machine config testing) run busybox echo hello world
  Unable to find image ‘busybox:latest’ locally
@@ -89,9 +100,11 @@ As with any new installation, lets run a [“Hello World”](http://en.wikipedia
 Status: Downloaded newer image for busybox:latest
  hello world
 ```
+{{< /terminal >}}
 
 Finally you can SSH to the Virtual Machine using docker-machine ssh machine-name;
 
+{{< terminal title="Docker Machine, Compose & Swarm 7/39" >}}
 ```
 
  docker-machine ssh testing
@@ -112,6 +125,7 @@ Finally you can SSH to the Virtual Machine using docker-machine ssh machine-name
  BUG_REPORT_URL=”https://github.com/boot2docker/boot2docker/issues"
  docker@testing:$ exit
 ```
+{{< /terminal >}}
 
 Great, so I now have a Virtual Machine running on my local computer, what more is there?
 
@@ -129,6 +143,7 @@ docker-machine is designed to be used with the following public and private clou
 
 Lets use docker-machine to launch a [Digital Ocean](https://www.digitalocean.com/?refcode=52ec4dc3647e "Digital Ocean") droplet. To do this you will need to generate a Personal Access Token, you can do this by [following these instructions](https://www.digitalocean.com/community/tutorials/how-to-use-the-digitalocean-api-v2). Once have the token launch the droplet as follows;
 
+{{< terminal title="Docker Machine, Compose & Swarm 8/39" >}}
 ```
  docker-machine create \
  → — driver digitalocean \
@@ -141,6 +156,7 @@ Lets use docker-machine to launch a [Digital Ocean](https://www.digitalocean.com
  INFO[0120] “dotesting” has been created and is now the active machine.
  INFO[0120] To point your Docker client at it, run this in your shell: $(docker-machine env dotesting)
 ```
+{{< /terminal >}}
 
 (and no, that is not my Digital Ocean Personal Access Token, it’s just a random string)
 
@@ -157,15 +173,18 @@ Once the droplet had finished booting, docker-machine connected to the droplet v
 
 So, we now have two machines launched, one locally and one in Digital Ocean;
 
+{{< terminal title="Docker Machine, Compose & Swarm 9/39" >}}
 ```
  docker-machine ls
  NAME ACTIVE DRIVER STATE URL SWARM
  dotesting * digitalocean Running tcp://45.55.134.248:2376
  testing virtualbox Running tcp://192.168.99.100:2376
 ```
+{{< /terminal >}}
 
 lets run the “hello world” again, but this time use the droplet which has just been launched;
 
+{{< terminal title="Docker Machine, Compose & Swarm 10/39" >}}
 ```
  docker $(docker-machine config dotesting) run busybox echo hello world
  Unable to find image ‘busybox:latest’ locally
@@ -178,9 +197,11 @@ lets run the “hello world” again, but this time use the droplet which has ju
 Status: Downloaded newer image for busybox:latest
  hello world
 ```
+{{< /terminal >}}
 
 and finally SSH into the machine;
 
+{{< terminal title="Docker Machine, Compose & Swarm 11/39" >}}
 ```
 
  docker-machine ssh dotesting
@@ -207,9 +228,11 @@ root@dotesting:~# docker images
  root@dotesting:~# exit
  logout
 ```
+{{< /terminal >}}
 
 Finally, you can stop and remove machines using docker-machine stop machine-name and docker-machine rm machine-name, be careful when using rm as it does not prompt you if you are sure;
 
+{{< terminal title="Docker Machine, Compose & Swarm 12/39" >}}
 ```
  docker-machine ls
  NAME ACTIVE DRIVER STATE URL SWARM
@@ -225,6 +248,7 @@ Finally, you can stop and remove machines using docker-machine stop machine-name
  NAME ACTIVE DRIVER STATE URL SWARM
  testing virtualbox Running tcp://192.168.99.100:2376
 ```
+{{< /terminal >}}
 
 So thats a quick overview of docker-machine. As you can see, it is a a really convenient way to bootstrap Docker server instances across many different providers and tear them down all using a single command from your local machine.
 
@@ -234,6 +258,7 @@ Docker Compose started life as Fig which is something [I have written about befo
 
 Like docker-machine I installed it using a [Homebrew](http://brew.sh/ "Homebrew") formula;
 
+{{< terminal title="Docker Machine, Compose & Swarm 13/39" >}}
 ```
  brew install docker-compose
  ==> Downloading https://homebrew.bintray.com/bottles/fig-1.1.0.yosemite.bottle.1.tar.gz
@@ -245,9 +270,11 @@ Like docker-machine I installed it using a [Homebrew](http://brew.sh/ "Homebrew"
  ==> Summary
  /usr/local/Cellar/fig/1.1.0: 186 files, 2.2M
 ```
+{{< /terminal >}}
 
 So using docker-machine lets create a Docker server instance to use docker-compose with;
 
+{{< terminal title="Docker Machine, Compose & Swarm 14/39" >}}
 ```
  docker-machine create — driver virtualbox compose
  INFO[0001] Creating SSH key…
@@ -257,24 +284,30 @@ So using docker-machine lets create a Docker server instance to use docker-compo
  INFO[0041] “compose” has been created and is now the active machine.
  INFO[0041] To point your Docker client at it, run this in your shell: $(docker-machine env compose)
 ```
+{{< /terminal >}}
 
 as docker-compose doesn’t interact directly with docker-machine we need to tell the main docker client the details of the server instance which has just been launched;
 
+{{< terminal title="Docker Machine, Compose & Swarm 15/39" >}}
 ```
  $(docker-machine env compose)
 ```
+{{< /terminal >}}
 
 this command injects the environment variables needed for the docker client to connect to the server instance, to see these you can just run docker-machine env machine-name on it’s own;
 
+{{< terminal title="Docker Machine, Compose & Swarm 16/39" >}}
 ```
  docker-machine env compose
  export DOCKER_TLS_VERIFY=yes
  export DOCKER_CERT_PATH=/Users/russ/.docker/machine/machines/compose
  export DOCKER_HOST=tcp://192.168.99.100:2376
 ```
+{{< /terminal >}}
 
 From here, it is just like Fig, apart from fig.yml file should now be called docker-compose.yml, I had a fig.yml file from a previous post still on my machine;
 
+{{< terminal title="Docker Machine, Compose & Swarm 17/39" >}}
 ```
 web:
  cover:
@@ -299,9 +332,11 @@ db:
  MYSQL_USER: wibble
  MYSQL_PASSWORD: wibble
 ```
+{{< /terminal >}}
 
 It launches two containers and links them together along with mounting the ./web folder in the NGINX container. The directory structure of the folder I am going to be running docker-compose from looks like;
 
+{{< terminal title="Docker Machine, Compose & Swarm 18/39" >}}
 ```
  tree -a
  .
@@ -311,25 +346,31 @@ It launches two containers and links them together along with mounting the ./we
 
 1 directory, 2 files
 ```
+{{< /terminal >}}
 
 To start with I pulled the images which are going to be launched, you can ignore this part, it just makes showing whats going on in this post more straight forward;
 
+{{< terminal title="Docker Machine, Compose & Swarm 19/39" >}}
 ```
  docker-compose pull
  Pulling db (russmckendrick/mariadb:latest)…
  Pulling web (russmckendrick/nginx-php:latest)…
 ```
+{{< /terminal >}}
 
 Now the images have been pulled down it’s time to launch the containers;
 
+{{< terminal title="Docker Machine, Compose & Swarm 20/39" >}}
 ```
  docker-compose up -d
  Creating example_db_1…
  Creating example_web_1…
 ```
+{{< /terminal >}}
 
 We now have two running containers;
 
+{{< terminal title="Docker Machine, Compose & Swarm 21/39" >}}
 ```
  docker-compose ps
  Name Command State Ports
@@ -337,12 +378,15 @@ We now have two running containers;
  example_db_1 /usr/local/bin/run Up 0.0.0.0:49154->3306/tcp
  example_web_1 /usr/local/bin/run Up 0.0.0.0:80->80/tcp
 ```
+{{< /terminal >}}
 
 You can also open your browser using;
 
+{{< terminal title="Docker Machine, Compose & Swarm 22/39" >}}
 ```
  open http://$(docker-machine ip)
 ```
+{{< /terminal >}}
 
 In my example I see a [phpinfo()](http://php.net/manual/en/function.phpinfo.php "PHPInfo") page.
 
@@ -350,6 +394,7 @@ In my example I see a [phpinfo()](http://php.net/manual/en/function.phpinfo.php 
 
 Once the containers are running you can connect to them using docker exec;
 
+{{< terminal title="Docker Machine, Compose & Swarm 23/39" >}}
 ```
 
  docker exec -it example_web_1 bash
@@ -373,9 +418,11 @@ Once the containers are running you can connect to them using docker exec;
  [root@997bbe6b5c80 /]# exit
  exit
 ```
+{{< /terminal >}}
 
 Finally you can stop and remove the containers, and the Docker instance;
 
+{{< terminal title="Docker Machine, Compose & Swarm 24/39" >}}
 ```
  docker-compose stop && docker-compose rm — force
  Stopping example_web_1…
@@ -387,6 +434,7 @@ Finally you can stop and remove the containers, and the Docker instance;
  docker-machine ls
  NAME ACTIVE DRIVER STATE URL SWARM
 ```
+{{< /terminal >}}
 
 ### Docker Swarm
 
@@ -396,6 +444,7 @@ Before going any further, the documentation warns ….
 
 Now that’s out of the way lets use [Homebrew](https://brew.sh/) to install docker-swarm;
 
+{{< terminal title="Docker Machine, Compose & Swarm 25/39" >}}
 ```
 brew install docker-swarm
  ==> Downloading https://homebrew.bintray.com/bottles/docker-swarm-0.1.0.yosemite.bottle.tar.gz
@@ -403,9 +452,11 @@ brew install docker-swarm
  ==> Pouring docker-swarm-0.1.0.yosemite.bottle.tar.gz
  /usr/local/Cellar/docker-swarm/0.1.0: 4 files, 8.7M
 ```
+{{< /terminal >}}
 
 As we already have docker-machine installed I will be using it to locally create the cluster, first of all we need to launch an instance and run the swarm container;
 
+{{< terminal title="Docker Machine, Compose & Swarm 26/39" >}}
 ```
  docker-machine ls
  NAME ACTIVE DRIVER STATE URL SWARM
@@ -432,9 +483,11 @@ As we already have docker-machine installed I will be using it to locally create
 Status: Downloaded newer image for swarm:latest
  63e7a1adb607ce4db056a29b1f5d30cf
 ```
+{{< /terminal >}}
 
 As you can see, I got a token when the container launched 63e7a1adb607ce4db056a29b1f5d30cf I will need this to add more nodes, but first we will need to create a Swarm master;
 
+{{< terminal title="Docker Machine, Compose & Swarm 27/39" >}}
 ```
 docker-machine create \
  → -d virtualbox \
@@ -450,15 +503,19 @@ docker-machine create \
  INFO[0043] “swarm-master” has been created and is now the active machine.
  INFO[0043] To point your Docker client at it, run this in your shell: $(docker-machine env swarm-master)
 ```
+{{< /terminal >}}
 
 We then need to connect the Docker client to the swarm, this is done by adding — swarm to the $(docker-machine env machine-name) command;
 
+{{< terminal title="Docker Machine, Compose & Swarm 28/39" >}}
 ```
  $(docker-machine env — swarm swarm-master)
 ```
+{{< /terminal >}}
 
 Now lets add another node;
 
+{{< terminal title="Docker Machine, Compose & Swarm 29/39" >}}
 ```
  docker-machine create \
  → -d virtualbox \
@@ -472,9 +529,11 @@ Now lets add another node;
  INFO[0039] Configuring Swarm…
  INFO[0048] “swarm-node-00” has been created and is now the active machine.
 ```
+{{< /terminal >}}
 
 We now have a 2 node cluster called “swarm-master”;
 
+{{< terminal title="Docker Machine, Compose & Swarm 30/39" >}}
 ```
  docker-machine ls
  NAME ACTIVE DRIVER STATE URL SWARM
@@ -482,9 +541,11 @@ We now have a 2 node cluster called “swarm-master”;
  swarm-master virtualbox Running tcp://192.168.99.101:2376 swarm-master (master)
  swarm-node-00 * virtualbox Running tcp://192.168.99.102:2376 swarm-master
 ```
+{{< /terminal >}}
 
 Using docker info gives more information about the cluster;
 
+{{< terminal title="Docker Machine, Compose & Swarm 31/39" >}}
 ```
  docker info
  Containers: 3
@@ -498,18 +559,22 @@ Using docker info gives more information about the cluster;
  └ Reserved CPUs: 0 / 4
  └ Reserved Memory: 0 B / 999.9 MiB
 ```
+{{< /terminal >}}
 
 Great, so what does all of this mean?
 
 Lets pull some images down;
 
+{{< terminal title="Docker Machine, Compose & Swarm 32/39" >}}
 ```
  docker -H 192.168.99.101:2376 pull redis
  docker -H 192.168.99.102:2376 pull mysql
 ```
+{{< /terminal >}}
 
 Notice how I have pulled redis on “swarm-master” and mysql on “swarm-node-00”, I can now make sure that containers only launch on a node where the image is available;
 
+{{< terminal title="Docker Machine, Compose & Swarm 33/39" >}}
 ```
  docker run -d — name redis1 -e affinity:image==redis redis
  af66148bbbc8dcd799d82448dfd133b968d34eb7066a353108bf909ea3324a58
@@ -520,37 +585,47 @@ Notice how I have pulled redis on “swarm-master” and mysql on “swarm-node-
  70b2d93d6f83 mysql:latest “/entrypoint.sh mysq 3 seconds ago Up Less than a second 3306/tcp swarm-node-00/mysql
  af66148bbbc8 redis:latest “/entrypoint.sh redi 2 minutes ago Up 2 minutes 6379/tcp swarm-master/redis1
 ```
+{{< /terminal >}}
 
 another example would be ports being used on a node, lets pull my NGINX & PHP image on both nodes;
 
+{{< terminal title="Docker Machine, Compose & Swarm 34/39" >}}
 ```
  docker -H 192.168.99.101:2376 pull russmckendrick/nginx-php
  docker -H 192.168.99.102:2376 pull russmckendrick/nginx-php
 ```
+{{< /terminal >}}
 
 Now lets launch the a container and bind it to port 80;
 
+{{< terminal title="Docker Machine, Compose & Swarm 35/39" >}}
 ```
  docker run -d -p 80:80 russmckendrick/nginx-php
  2d066b2ccf28d2a1fa9edad8ac7b065266f29ecb49a8753b972780051ff83587
 ```
+{{< /terminal >}}
 
 and again;
 
+{{< terminal title="Docker Machine, Compose & Swarm 36/39" >}}
 ```
  docker run -d -p 80:80 russmckendrick/nginx-php
  40f5fee257bb2546a639a5dc5c2d30f8fa0ac169145e431c534f85d8db51357f
 ```
+{{< /terminal >}}
 
 Nothing special there you say? Well, normally, when trying to launch the second container you would have gotten the following error as you can not bind two containers to the same port;
 
+{{< terminal title="Docker Machine, Compose & Swarm 37/39" >}}
 ```
  docker run -d -p 80:80 russmckendrick/nginx-php
  FATA[0000] Error response from daemon: unable to find a node with port 80 available
 ```
+{{< /terminal >}}
 
 However, in this case as Docker is aware of what is running on the nodes wothin the cluster including which ports are in use. Docker via Swarm simply launched the container on “swarm-node-00” and it knew that port 80 was already in use on “swarm-master”;
 
+{{< terminal title="Docker Machine, Compose & Swarm 38/39" >}}
 ```
  docker ps
  CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
@@ -559,6 +634,7 @@ However, in this case as Docker is aware of what is running on the nodes wothin 
  70b2d93d6f83 mysql:latest “/entrypoint.sh mysq 26 minutes ago Up 26 minutes 3306/tcp swarm-node-00/mysql
  af66148bbbc8 redis:latest “/entrypoint.sh redi 29 minutes ago Up 29 minutes 6379/tcp swarm-master/redis1
 ```
+{{< /terminal >}}
 
 All of this was done with no prompting or special commands, it helpfully just got on with it
 
@@ -566,8 +642,10 @@ As you can see, docker-swarm is still very much in-development and there are som
 
 Finally, lets remove the running instances;
 
+{{< terminal title="Docker Machine, Compose & Swarm 39/39" >}}
 ```
  docker-machine rm local swarm-master swarm-node-00
 ```
+{{< /terminal >}}
 
 That’s it for now, expect a follow up post in the next few months as these tools are updated.

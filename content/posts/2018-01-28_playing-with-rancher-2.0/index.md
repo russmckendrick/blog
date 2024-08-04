@@ -22,6 +22,7 @@ As I had some free time this weekend so I thought it would be good to have a pla
 
 When I last wrote about [Rancher, is was back in June 2016](https://media-glass.es/launching-a-local-rancher-cluster-1422b89b0477), in that post I launched Rancher locally and used it target a few VirtualBox VMs. Rather than Virtual Box VMs I am going to use a cloud service, but I am going to be running it locally again, to do this launch the container I ran the following command;
 
+{{< terminal title="Playing with Rancher 2.0 1/7" >}}
 ```
 $ docker container run -d \
     --restart=unless-stopped \
@@ -29,14 +30,17 @@ $ docker container run -d \
     -p 8443:443 \
     rancher/server:preview
 ```
+{{< /terminal >}}
 
 ![text](/img/2018-01-28_playing-with-rancher-2.0_2.png)
 
 I checked that the container was up and running by running;
 
+{{< terminal title="Playing with Rancher 2.0 2/7" >}}
 ```
 $ docker container ls
 ```
+{{< /terminal >}}
 
 ![graphical user interface, text](/img/2018-01-28_playing-with-rancher-2.0_3.png)
 
@@ -116,34 +120,43 @@ This is kind of where my journey with Rancher 2.0 fell apart, I wasn’t able to
 
 To test this, I launched a droplet in DigitalOcean using `doctl`;
 
+{{< terminal title="Playing with Rancher 2.0 3/7" >}}
 ```
 $ doctl compute droplet create rancher \
     --region lon1 \
     --image ubuntu-17-10-x64 \
     --size 1gb
 ```
+{{< /terminal >}}
 
 Checked that the droplet had launched by running;
 
+{{< terminal title="Playing with Rancher 2.0 4/7" >}}
 ```
 $ doctl compute droplet list
 ```
+{{< /terminal >}}
 
 Then SSH’ed to the droplet by running;
 
+{{< terminal title="Playing with Rancher 2.0 5/7" >}}
 ```
 $ doctl compute ssh rancher
 ```
+{{< /terminal >}}
 
 Once I was on the droplet I installed Docker using the following commands;
 
+{{< terminal title="Playing with Rancher 2.0 6/7" >}}
 ```
 $ curl -fsSL get.docker.com -o get-docker.sh
 $ sh get-docker.sh
 ```
+{{< /terminal >}}
 
 Then launched the Rancher 2.0 container by running;
 
+{{< terminal title="Playing with Rancher 2.0 7/7" >}}
 ```
 $ docker container run -d \
     --restart=unless-stopped \
@@ -151,6 +164,7 @@ $ docker container run -d \
     -p 443:443 \
     rancher/server:preview
 ```
+{{< /terminal >}}
 
 Note that this time I have used ports 80 and 443, putting the IP address of my droplet into my browser took me to the login page via the usual self-signed certificate warnings.
 

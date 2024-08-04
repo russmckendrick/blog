@@ -18,6 +18,7 @@ I needed a simple way to mirror some repos, and potentially kickstart some serve
 
 This turned out to be more stright forward than I thought, first you need to ensure [EPEL](http://fedoraproject.org/wiki/EPEL) is enabled ….
 
+{{< terminal title="Installing Cobbler on CentOS 6.x 1/1" >}}
 ```
 yum install http://ftp.linux.ncsu.edu/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 yum install cobbler cobbler-web pykickstart
@@ -49,6 +50,7 @@ cobbler sync
 # cobbler sets the username and password for the web interface to cobbler / cobbler, change that by running ….
 htdigest /etc/cobbler/users.digest “Cobbler” cobbler
 ```
+{{< /terminal >}}
 
 ….. all done. You should be able to access your installation at …..
 

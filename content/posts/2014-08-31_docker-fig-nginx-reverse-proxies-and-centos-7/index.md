@@ -28,6 +28,7 @@ Since Docker released 1.0 they have [purchased](http://blog.docker.com/2014/07/w
 
 Fig is a great tool which allows you orchestrate your containers using a single configuration file which looks something like;
 
+{{< terminal title="Docker, Fig, NGINX Reverse Proxies and CentOS 7 1/4" >}}
 ```
 webserver:
  cover:
@@ -47,6 +48,7 @@ databaseserver:
  volumes:
    — /home/containers/database:/var/lib/mysql/
 ```
+{{< /terminal >}}
 
 In the example above when fig up is run in the same directory as the fig.yml it will launch two containers and link them together.
 
@@ -56,6 +58,7 @@ In the [terminal session](https://asciinema.org/a/11845) below you can see that 
 
 Fig can be installed using the following commands;
 
+{{< terminal title="Docker, Fig, NGINX Reverse Proxies and CentOS 7 2/4" >}}
 ```
 [root@docker ~]# curl -L https://github.com/docker/fig/releases/download/0.5.2/linux &gt; /usr/local/bin/fig
 [root@docker ~]# chmod +x /usr/local/bin/fig
@@ -85,6 +88,7 @@ Commands:
  stop Stop services
  up Create and start containers
 ```
+{{< /terminal >}}
 
 You need to be sure you are running the latest version of Docker, see the last section of this post for details on how to install Docker 1.2 on CentOS 7.
 
@@ -104,9 +108,11 @@ After consulting the all knowing Google I stumbled across [Jason Wilder’s blog
 
 This means that with a single command …..
 
+{{< terminal title="Docker, Fig, NGINX Reverse Proxies and CentOS 7 3/4" >}}
 ```
 docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock -t russmckendrick/nginx-proxy
 ```
+{{< /terminal >}}
 
 ….. I can launch a container which runs on port 80 and then listens for containers being launched, if they have the VIRTUAL_HOST environment variable set NGINX will be reconfigured automatically using [docker-gen](https://github.com/jwilder/docker-gen) to serve the new domain.
 
@@ -116,6 +122,8 @@ Couple this with a [wildcard DNS record](http://en.wikipedia.org/wiki/Wildcard_D
 
 All of this is great, however the [repo version of Docker in CentOS 7](http://mirror.centos.org/centos-7/) is old, its [0.11](http://blog.docker.com/2014/05/docker-0-11-release-candidate-for-1-0/) which for a piece of software as fast moving as Docker is ancient. Luckily there is a repo on [copr](https://copr.fedoraproject.org/coprs/) which is [hosting EL7 compatible RPMs of the latest builds](https://copr.fedoraproject.org/coprs/goldmann/docker-io/). As I rebuild my servers all the time I knocked out a small [one liner](https://github.com/russmckendrick/docker-install) which installs the later version of Docker on a CentOS 7 server;
 
+{{< terminal title="Docker, Fig, NGINX Reverse Proxies and CentOS 7 4/4" >}}
 ```
 curl -fsS https://raw2.github.com/russmckendrick/docker-install/master/install | bash
 ```
+{{< /terminal >}}

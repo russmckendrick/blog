@@ -16,6 +16,7 @@ aliases:
 
 I did a clean installation of my laptop this weekend, rather than go through the list of apps I had installed and do a manual installation of each one using the “Download and drag” method I decided to use [Cask](https://github.com/Homebrew/homebrew-cask). Cask is a [Homebrew](http://brew.sh/) package which automates to the download and install part. Here is pretty much my entire installation process ….
 
+{{< terminal title="Cask 1/1" >}}
 ```
 ruby -e “$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew doctor
@@ -30,5 +31,6 @@ brew cask install libreoffice
 brew cask install virtualbox
 brew cask install skype
 ```
+{{< /terminal >}}
 
 The only downside is that it installs the packages into the users Application directory which set my OCD off, it was quickly remedied though by simply moving the link once I had installed everything I needed.

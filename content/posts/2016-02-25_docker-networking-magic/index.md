@@ -17,6 +17,7 @@ I have been quiet on here as I am in the process of writing again, one of things
 
 I launched two hosts in [Digital Ocean](https://m.do.co/c/52ec4dc3647e), one in London and then one in New York City using Docker Machine;
 
+{{< terminal title="Docker Networking Magic 1/9" >}}
 ```
 docker-machine create \
  — driver digitalocean \
@@ -32,37 +33,47 @@ docker-machine create \
  — digitalocean-size 1gb \
 mesh-nyc
 ```
+{{< /terminal >}}
 
 Once both hosts were up and running I downloaded the Weave binaries on each host;
 
+{{< terminal title="Docker Networking Magic 2/9" >}}
 ```
 docker-machine ssh mesh-london ‘curl -L git.io/weave -o /usr/local/bin/weave; chmod a+x /usr/local/bin/weave’
 docker-machine ssh mesh-nyc ‘curl -L git.io/weave -o /usr/local/bin/weave; chmod a+x /usr/local/bin/weave’
 ```
+{{< /terminal >}}
 
 Once the binary was on each host, I launched Weave on each host making sure I provided a password so that traffic between the host machines would be encrypted;
 
+{{< terminal title="Docker Networking Magic 3/9" >}}
 ```
 docker-machine ssh mesh-london weave launch — password m3ga_5ecret_pa55w0rd
 docker-machine ssh mesh-nyc weave launch — password m3ga_5ecret_pa55w0rd
 ```
+{{< /terminal >}}
 
 Now Weave is running on both my hosts, I instructed the mesh-nyc host to connect to the IP address of the mesh-london host;
 
+{{< terminal title="Docker Networking Magic 4/9" >}}
 ```
 docker-machine ssh mesh-nyc weave connect “$(docker-machine ip mesh-london)”
 ```
+{{< /terminal >}}
 
 and finally check the status of the Weave cluster;
 
+{{< terminal title="Docker Networking Magic 5/9" >}}
 ```
 docker-machine ssh mesh-nyc weave status
 ```
+{{< /terminal >}}
 
 There should be two peers and 2 established connections.
 
 This is where it gets interesting. Launching a [NGINX](https://hub.docker.com/r/russmckendrick/nginx/) container on the New York City host by running;
 
+{{< terminal title="Docker Networking Magic 6/9" >}}
 ```
 docker $(docker-machine config mesh-nyc) run -itd \
  — name=nginx \
@@ -72,9 +83,11 @@ docker $(docker-machine config mesh-nyc) run -itd \
  — dns-search=”weave.local” \
 russmckendrick/nginx
 ```
+{{< /terminal >}}
 
 and then on the London host, try wgetting the page being served by NGINX (its just a plain one which says Hello from NGINX);
 
+{{< terminal title="Docker Networking Magic 7/9" >}}
 ```
 docker $(docker-machine config mesh-london) run -it \
  — rm \
@@ -83,9 +96,11 @@ docker $(docker-machine config mesh-london) run -it \
  — dns-search=”weave.local” \
 russmckendrick/base wget -q -O- http://nginx.weave.local
 ```
+{{< /terminal >}}
 
 and then finally ping the NGINX container;
 
+{{< terminal title="Docker Networking Magic 8/9" >}}
 ```
 docker $(docker-machine config mesh-london) run -it \
  — rm \
@@ -94,6 +109,7 @@ docker $(docker-machine config mesh-london) run -it \
  — dns-search=”weave.local” \
 russmckendrick/base ping -c 3 nginx.weave.local
 ```
+{{< /terminal >}}
 
 If you can’t be bothered to run it yourself, and who can blame you, here is an [asciicinema](https://asciinema.org/~russmckendrick) recording;
 
@@ -105,9 +121,11 @@ As you can see, with no effort on my part other than the commands above I had en
 
 Don’t forget to get teardown the two [Digital Ocean](https://m.do.co/c/52ec4dc3647e) hosts if you brought them up;
 
+{{< terminal title="Docker Networking Magic 9/9" >}}
 ```
 docker-machine stop mesh-london mesh-nyc
 docker-machine rm mesh-london mesh-nyc
 ```
+{{< /terminal >}}
 
 For further reading on Weave Net please [see their documentation](https://github.com/weaveworks/weave#readme).

@@ -28,6 +28,7 @@ The first thing you will notice about CoreOS when you first access it is that it
 
 This philosophy makes things interesting when it comes to installing Fig, nsenter & docker-enter. As you can see from the following, we install all of the tools into a read / write partition in the core users home directory;
 
+{{< terminal title="Very basic CoreOS 1/3" >}}
 ```
 mkdir -p tools/bin
 docker run — rm jpetazzo/nsenter cat /nsenter > tools/bin/nsenter
@@ -35,9 +36,11 @@ curl -L https://raw.githubusercontent.com/jpetazzo/nsenter/master/docker-enter >
 curl -L https://github.com/docker/fig/releases/download/0.5.2/linux > tools/bin/fig
 chmod +x tools/bin/*
 ```
+{{< /terminal >}}
 
 Once our basic toolset is installed we have to add the binaries to the system paths;
 
+{{< terminal title="Very basic CoreOS 2/3" >}}
 ```
 mv .bashrc .bashrc-original
 curl -L https://raw.githubusercontent.com/russmckendrick/coreos/master/bashrc > ~/.bashrc
@@ -45,16 +48,19 @@ sudo curl -L https://raw.githubusercontent.com/russmckendrick/coreos/master/bash
 sudo ln -s /root/.bashrc /root/.bash_profile
 source ~/.bashrc
 ```
+{{< /terminal >}}
 
 and thats it, we can now use fig, nsenter and docker-enter as the “core” & “root” users.
 
 Next up is to add our [NGINX proxy](https://github.com/russmckendrick/docker/pkgs/container/nginx), rather than use fig for this I will use systemd;
 
+{{< terminal title="Very basic CoreOS 3/3" >}}
 ```
 sudo curl -o /etc/systemd/system/nginx-proxy.service https://raw.githubusercontent.com/russmckendrick/coreos/master/nginx-proxy.service
 sudo systemctl enable /etc/systemd/system/nginx-proxy.service 
 sudo systemctl start nginx-proxy.service
 sudo systemctl status nginx-proxy.service
 ```
+{{< /terminal >}}
 
 and thats it, we have a stripped down Operating System which is geared to running just containers while maintaining a tool-set we know. However, as with everything cloud, this is a massive single point of failure. When I next post about CoreOS I will cover how to do it properly and create a cluster.

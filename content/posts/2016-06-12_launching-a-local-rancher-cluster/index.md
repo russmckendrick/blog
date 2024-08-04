@@ -25,9 +25,11 @@ As I am running the [Docker for Mac Beta](/2016/05/08/docker-on-mac-osx/) I got 
 
 Let’s do the easy bit, launching Rancher is incredibly easy. I just ran the following command;
 
+{{< terminal title="Launching a local Rancher cluster 1/9" >}}
 ```
 docker run -d — restart=always -p 8080:8080 rancher/server:latest
 ```
+{{< /terminal >}}
 
 It takes a minute for Rancher to download and start. You can check the progress by running docker logs container_name against the containers name, you can find the containers name by running the docker ps command.
 
@@ -35,15 +37,19 @@ It takes a minute for Rancher to download and start. You can check the progress 
 
 This started the Rancher server on port 8080 on my Mac, at the moment there is a problem which causes the UI to error when running in Safari so I opened it with FireFox by running;
 
+{{< terminal title="Launching a local Rancher cluster 2/9" >}}
 ```
 open -a FireFox http://localhost:8080
 ```
+{{< /terminal >}}
 
 You will notice that we are accessing Rancher using localhost, when it comes to launching the host VMs they will not be able to access that address so lets grab the IP address of our local machine;
 
+{{< terminal title="Launching a local Rancher cluster 3/9" >}}
 ```
 ipconfig getifaddr en1
 ```
+{{< /terminal >}}
 
 For me, this was 10.0.1.15. Next up lets goto FireFox, if everything went as planned you should see a screen asking you to add a host. While we haven’t got our host VMs launched we will need to configure Rancher to listen on our local machines IP address. To do this click on “Add Host”, when you do this you will be able to a page which asks you to confirm the “Host Registration URL”.
 
@@ -53,9 +59,11 @@ This is the URL which our host machines will use to call back to the Rancher ser
 
 Once you have updated the IP address click on “Save”, you will then be taken a screen where you can add your hosts. Ignore steps one through to four, step five should give you the command you need to run on your host machines to download the Rancher client agent and register itself with your server. For me this command was ….
 
+{{< terminal title="Launching a local Rancher cluster 4/9" >}}
 ```
 sudo docker run -d — privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.0.1 http://10.0.1.15:8080/v1/scripts/2925437AFC94D6994999:1465743600000:C8O5m4OXR0giBvn3DonFFvow
 ```
+{{< /terminal >}}
 
 Once you have made a note of the command, click on “Close” and go back to your terminal to launch a few host VMs. Here we will be using Docker Machine to launch two VMs running RancherOS.
 
@@ -63,10 +71,12 @@ Once you have made a note of the command, click on “Close” and go back to yo
 
 To do this run the following two commands;
 
+{{< terminal title="Launching a local Rancher cluster 5/9" >}}
 ```
 docker-machine create -d virtualbox — virtualbox-boot2docker-url https://releases.rancher.com/os/latest/rancheros.iso rancher01
 docker-machine create -d virtualbox — virtualbox-boot2docker-url https://releases.rancher.com/os/latest/rancheros.iso rancher02
 ```
+{{< /terminal >}}
 
 You can check that your machines are OK by running docker-machine ls, you should see something like;
 
@@ -74,15 +84,19 @@ You can check that your machines are OK by running docker-machine ls, you should
 
 Now we have our two host machines up and running we just need to launch the agent container. To do this run the following command, making sure to replace the end part with the command from step five on your own Rancher installation;
 
+{{< terminal title="Launching a local Rancher cluster 6/9" >}}
 ```
 docker-machine ssh rancher01 docker run -d — privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.0.1 http://10.0.1.15:8080/v1/scripts/2925437AFC94D6994999:1465743600000:C8O5m4OXR0giBvn3DonFFvow
 ```
+{{< /terminal >}}
 
 and for the second host VM;
 
+{{< terminal title="Launching a local Rancher cluster 7/9" >}}
 ```
 docker-machine ssh rancher02 docker run -d — privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.0.1 http://10.0.1.15:8080/v1/scripts/2925437AFC94D6994999:1465743600000:C8O5m4OXR0giBvn3DonFFvow
 ```
+{{< /terminal >}}
 
 once you have ran the commands, it will take a minute or two for the agents to register themselves with your server. Once the hosts have registered themselves you should see something like the following;
 
@@ -94,14 +108,18 @@ You can now start to launch services from the catalog etc;
 
 To teardown the cluster run the following command, replacing the “amazing_brattain” with the name of your container, to stop and remove the container running the Rancher Server;
 
+{{< terminal title="Launching a local Rancher cluster 8/9" >}}
 ```
 docker stop amazing_brattain && docker rm amazing_brattain
 ```
+{{< /terminal >}}
 
 and to remove the two hosts run;
 
+{{< terminal title="Launching a local Rancher cluster 9/9" >}}
 ```
 docker-machine rm rancher01 rancher02
 ```
+{{< /terminal >}}
 
 So thats how you can quickly launch a local Rancher cluster using the Docker for Mac beta and Docker Machine.

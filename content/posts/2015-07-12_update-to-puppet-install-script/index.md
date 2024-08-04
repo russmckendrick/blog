@@ -25,15 +25,19 @@ The release of Puppet Server made it a lot easier to install a Puppet Master and
 
 The updated scripts can be found [in my GitHub account](https://github.com/russmckendrick/puppet-install) or to install Puppet Server you can run the following on either clean RHEL / CentOS 6 or 7 installation;
 
+{{< terminal title="Update to Puppet Install Script 1/2" >}}
 ```
 curl -fsS https://raw.githubusercontent.com/russmckendrick/puppet-install/master/install | bash
 ```
+{{< /terminal >}}
 
 and to install an agent;
 
+{{< terminal title="Update to Puppet Install Script 2/2" >}}
 ```
 curl -fsS https://raw.githubusercontent.com/russmckendrick/puppet-install/master/agent | bash -s puppet.master.com
 ```
+{{< /terminal >}}
 
 making sure to replace puppet.master.com with your freshly installed Puppet Server URL.
 

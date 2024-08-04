@@ -25,27 +25,35 @@ So what’s the best way to upgrade to Python 3 on macOS? Having found myself st
 
 You can install it using [Homebrew](https://brew.sh/) with the following commands;
 
+{{< terminal title="Upgrade Python on MacOS 1/4" >}}
 ```
 $ brew update $ brew install pyenv
 ```
+{{< /terminal >}}
 
 Once installed, you simply need to install your desired version of Python, the current version at the time of writing is 3.8.0;
 
+{{< terminal title="Upgrade Python on MacOS 2/4" >}}
 ```
 $ pyenv install 3.8.0 $ pyenv global 3.8.0 $ pyenv version
 ```
+{{< /terminal >}}
 
 Now that the right version of newer version of Python is installed we can use the following command to make sure that the pyenv shims are correctly loaded each time you open a shell;
 
+{{< terminal title="Upgrade Python on MacOS 3/4" >}}
 ```
 $ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\\n eval "$(pyenv init -)"\\nfi' >> ~/.zshrc
 ```
+{{< /terminal >}}
 
 Once you have restarted your terminal session you should be able to run;
 
+{{< terminal title="Upgrade Python on MacOS 4/4" >}}
 ```
 $ python --version
 ```
+{{< /terminal >}}
 
 If everything has gone as planned you should see the following output;
 

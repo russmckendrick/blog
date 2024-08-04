@@ -16,17 +16,21 @@ aliases:
 
 As part of work I have to install Magento with its sample data a lot for proof of concepts, while the installation is simple it can quickly become a chore. Because of this I have started to use [n98-magerun](http://magerun.net/). It can be installed using the following commands;
 
+{{< terminal title="Quick Magento Installation 1/2" >}}
 ```
 curl -o n98-magerun.phar https://raw.github.com/netz98/n98-magerun/master/n98-magerun.phar
 chmod +x ./n98-magerun.phar
 cp ./n98-magerun.phar /usr/local/bin/
 n98-magerun.phar self-update
 ```
+{{< /terminal >}}
 
 Once installed you can do clean installation by running the following command where you would like Magento to be installed;
 
+{{< terminal title="Quick Magento Installation 2/2" >}}
 ```
 n98-magerun.phar install
 ```
+{{< /terminal >}}
 
 for more on how to use n98-magerun [click here](https://github.com/netz98/n98-magerun/wiki).

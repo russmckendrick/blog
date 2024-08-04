@@ -43,9 +43,11 @@ Once Docker finishes configuring the network component and linking the Docker cl
 
 And thats its, you now have Docker up and running as natively as you can on a non-Linux machine, as per any new installation, lets run the Hello World container, running ….
 
+{{< terminal title="Docker on Mac OSX 1/2" >}}
 ```
 docker run hello-world
 ```
+{{< /terminal >}}
 
 …. gave me the following;
 
@@ -59,9 +61,11 @@ A good test is trying to run MariaDB / MySQL container and have the /var/lib/mys
 
 I used the following command to launch MariaDB using my own [MariaDB image](https://hub.docker.com/r/russmckendrick/mariadb/);
 
+{{< terminal title="Docker on Mac OSX 2/2" >}}
 ```
 docker run -d -p 3306:3306 — name=”database” -e MYSQL_DATABASE=wibble -v ~/Projects/permissions/database:/var/lib/mysql russmckendrick/mariadb
 ```
+{{< /terminal >}}
 
 This would mount ~/Projects/permissions/database to /var/lib/mysql within the container, as you can see from the following terminal session, it worked flawlessly;
 

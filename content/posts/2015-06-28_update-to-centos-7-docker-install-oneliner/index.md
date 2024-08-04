@@ -17,11 +17,13 @@ aliases:
 **UPDATE 26/07/2015**
 In typical fashion, a few weeks after posting this Docker themselves released a much better version than mine, you can install it using the following commands;
 
+{{< terminal title="Update to CentOS 7 Docker install one-liner 1/2" >}}
 ```
 curl -sSL https://get.docker.com/ | sh
 systemctl enable docker &amp;&amp; systemctl start docker
 docker run hello-world
 ```
+{{< /terminal >}}
 
 What follows is the original, now mostly redundant post.
 
@@ -39,8 +41,10 @@ You can see the updated script in action below;
 
 or run it using;
 
+{{< terminal title="Update to CentOS 7 Docker install one-liner 2/2" >}}
 ```
 curl -fsS https://raw.githubusercontent.com/russmckendrick/docker-install/master/install-offical | bash
 ```
+{{< /terminal >}}
 
 It is also available at [GitHub](https://github.com/russmckendrick/docker-install "docker-install").

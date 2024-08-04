@@ -27,12 +27,14 @@ Each weekday morning at 0730am it …
 
 The base operating system is Red Hat Enterprise Linux 7 which does not ship with any AWS tools installed by default, so before the tasks which start interacting with the instance and application I run the following;
 
+{{< terminal title="Annoying Ansible Quirk 1/5" >}}
 ```
 pre_tasks:
   - yum: name=python-setuptools state=installed
   - shell: easy_install pip
   - pip: name=boto
 ```
+{{< /terminal >}}
 
 There are several tasks which run when the AMI is launched such as mounting the EFS share, and then once mounted the instance which is running a named AZ removes the contents of the EFS shares and syncs the previous nights S3 back-ups.
 
@@ -46,16 +48,19 @@ To save any problems with peoples work being removed before the environment gets
 
 After tagging those parts of the playbook and then running …
 
+{{< terminal title="Annoying Ansible Quirk 2/5" >}}
 ```
 ansible-playbook -i hosts stage-launch.yml — extra-vars “ami_name=$(date +%Y-%m-%d-%H%M)” — ask-vault-pass
 ```
+{{< /terminal >}}
 
 Everything worked as expected, now I had my environment up and running I tried to do a deploy using …
 
+{{< terminal title="Annoying Ansible Quirk 3/5" >}}
 ```
-
 ansible-playbook -i hosts stage-launch.yml — skip-tags “morning” — extra-vars “ami_name=$(date +%Y-%m-%d-%H%M)” — ask-vault-pass
 ```
+{{< /terminal >}}
 
 Everything worked fine until it came to running the part of the playbook which interacted with the AWS API from the instance itself, it bombed out telling me that Boto was needed to run the task.
 
@@ -89,8 +94,8 @@ Reading some more I found;
 
 I updated the pre_tasks section of the playbook to read;
 
+{{< terminal title="Annoying Ansible Quirk 4/5" >}}
 ```
-
 pre_tasks:
   - yum: name=python-setuptools state=installed
 tags:
@@ -102,12 +107,15 @@ tags:
 tags:
   - always
 ```
+{{< /terminal >}}
 
 And then ran;
 
+{{< terminal title="Annoying Ansible Quirk 5/5" >}}
 ```
 ansible-playbook -i hosts stage-launch.yml — skip-tags “morning” — extra-vars “ami_name=$(date +%Y-%m-%d-%H%M)” — ask-vault-pass
 ```
+{{< /terminal >}}
 
 What do you know, it worked !!!
 

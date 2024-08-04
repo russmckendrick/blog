@@ -20,6 +20,7 @@ For the last few years I have been grabbing some we [documented dotfiles from Gi
 
 You can install them using the following commands;
 
+{{< terminal title="Dotfiles 1/1" >}}
 ```
 git clone git@github.com:russmckendrick/dotfiles.git ~/.dotfiles
 sudo easy_install Pygments
@@ -33,6 +34,7 @@ ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.hushlogin ~/.hushlogin
 ln -s ~/.dotfiles/z.sh ~/.z.sh
 ```
+{{< /terminal >}}
 
 Once installed you can do stuff like;
 

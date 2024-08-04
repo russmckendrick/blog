@@ -44,18 +44,22 @@ Now you have your Docker Swarm cluster up and running we can test the Load Balan
 
 Once connected you can check everything is OK with your cluster by running;
 
+{{< terminal title="Docker Load Balancing & Application Bundles 1/13" >}}
 ```
 docker node ls
 ```
+{{< /terminal >}}
 
 This will show all of the Droplets in the cluster and their current status. Now we have confirm our cluster is working as it should be we can launch some containers. In my previous post I created a service using my [test container](https://hub.docker.com/r/russmckendrick/cluster/) so I will do that again here.
 
+{{< terminal title="Docker Load Balancing & Application Bundles 2/13" >}}
 ```
 docker network create -d overlay clusternetwork
 docker service create — name cluster -p:80:80/tcp — network clusternetwork russmckendrick/cluster
 docker service ls
 docker service tasks cluster
 ```
+{{< /terminal >}}
 
 ![more-docker-service02](/img/2016-06-25_docker-load-balancing-application-bundles_3.jpg)
 
@@ -67,19 +71,23 @@ and there we have our container !!!
 
 Last time we tried scaling, so lets try again now. As we have four droplets we can get into double digits;
 
+{{< terminal title="Docker Load Balancing & Application Bundles 3/13" >}}
 ```
 docker service scale cluster=15
 docker service tasks cluster
 ```
+{{< /terminal >}}
 
 ![more-docker-service04](/img/2016-06-25_docker-load-balancing-application-bundles_5.jpg)
 
 Before looking at anything else lets remove the cluster service;
 
+{{< terminal title="Docker Load Balancing & Application Bundles 4/13" >}}
 ```
 docker service rm cluster
 docker service ls
 ```
+{{< /terminal >}}
 
 #### Docker Distributed Application Bundles (DAB)
 
@@ -89,6 +97,7 @@ While we have our Swarm cluster up and running, lets look at building a distribu
 
 The Docker Compose file we will be using follows;
 
+{{< terminal title="Docker Load Balancing & Application Bundles 5/13" >}}
 ```
 version: ‘2’
 services:
@@ -110,39 +119,48 @@ services:
  environment:
  — “MYSQL_ROOT_PASSWORD=password”
 ```
+{{< /terminal >}}
 
 As you can see the docker-compose.yml file runs a WordPress and MySQL container as well configures networking. On your local machine, check that you are running Docker Compose 1.8rc1, this is included in the latest Docker for Mac beta, by running;
 
+{{< terminal title="Docker Load Balancing & Application Bundles 6/13" >}}
 ```
 docker-compose — version
 ```
+{{< /terminal >}}
 
 Now create a temporary folder and download the docker-compose.yml file;
 
+{{< terminal title="Docker Load Balancing & Application Bundles 7/13" >}}
 ```
 mkdir ~/Desktop/test
 cd ~/Desktop/test
 curl -O https://gist.githubusercontent.com/russmckendrick/c6320315431afd19a0ee10132e086673/raw/e3a8019a68c2122141cae14bcb84b4c20ef18fe6/docker-compose.yml
 ```
+{{< /terminal >}}
 
 Now we have our Docker Compose file, download the images by running;
 
+{{< terminal title="Docker Load Balancing & Application Bundles 8/13" >}}
 ```
 docker-compose pull
 ```
+{{< /terminal >}}
 
 and finally create the bundle by running;
 
+{{< terminal title="Docker Load Balancing & Application Bundles 9/13" >}}
 ```
 docker-compose bundle -o wordpress.dsb
 ```
+{{< /terminal >}}
 
 ![more-docker-service06](/img/2016-06-25_docker-load-balancing-application-bundles_6.jpg)
 
 a copy of the bundle created above looks like;
 
+{{< terminal title="Docker Load Balancing & Application Bundles 10/13" >}}
 ```
-
 <!DOCTYPE html>
 <html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
   <head>
@@ -1003,25 +1021,32 @@ a copy of the bundle created above looks like;
 </html>
 
 ```
+{{< /terminal >}}
 
 Back on our Swarm manager, we can download the distributed app by running;
 
+{{< terminal title="Docker Load Balancing & Application Bundles 11/13" >}}
 ```
 curl -O https://gist.githubusercontent.com/russmckendrick/c6320315431afd19a0ee10132e086673/raw/e3a8019a68c2122141cae14bcb84b4c20ef18fe6/wordpress.dsb
 docker deploy wordpress
 ```
+{{< /terminal >}}
 
 Now the application has been deployed you can check its status by running;
 
+{{< terminal title="Docker Load Balancing & Application Bundles 12/13" >}}
 ```
 docker stack tasks wordpress
 ```
+{{< /terminal >}}
 
 Finally, we need to know which port our WordPress container has been published on so that we can access it in our browser. To get this information run the following command;
 
+{{< terminal title="Docker Load Balancing & Application Bundles 13/13" >}}
 ```
 docker service inspect wordpress_wordpress
 ```
+{{< /terminal >}}
 
 and make a note of the **PublishedPort** in the Endpoint section.
 

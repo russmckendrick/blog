@@ -46,9 +46,11 @@ Towards the bottom of the overview page, you have the option to download your co
 
 You can test the connection to your cluster by opening a terminal, changing to the location of the YAML file and then running the following command, making sure to update the name of the file to match that of yours;
 
+{{< terminal title="First steps with DigitalOcean’s Managed Kubernetes service 1/4" >}}
 ```
 $ kubectl --kubeconfig="russ-do-kubeconfig.yaml" get nodes
 ```
+{{< /terminal >}}
 
 ![text](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_5.jpg)
 
@@ -64,10 +66,12 @@ Clicking on **Apply** will save the changes, and you will be able to switch to t
 
 Running the following commands should show you your cluster nodes and also the version of Kubernetes running on the server;
 
+{{< terminal title="First steps with DigitalOcean’s Managed Kubernetes service 2/4" >}}
 ```
 $ kubectl get nodes
 $ kubectl version
 ```
+{{< /terminal >}}
 
 ![text](/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_6.jpg)
 
@@ -75,10 +79,12 @@ Now that our cluster is up and running, and we can connect to it let’s test it
 
 To launch the demo shop use the following commands;
 
+{{< terminal title="First steps with DigitalOcean’s Managed Kubernetes service 3/4" >}}
 ```
 $ kubectl create namespace sock-shop
 $ kubectl apply -n sock-shop -f "https://github.com/microservices-demo/microservices-demo/blob/master/deploy/kubernetes/complete-demo.yaml?raw=true"$ kubectl -n sock-shop get pods$ kubectl -n sock-shop get services
 ```
+{{< /terminal >}}
 
 This will download the containers and launch the application.
 
@@ -86,11 +92,13 @@ This will download the containers and launch the application.
 
 Once launched, you can expose the application by running;
 
+{{< terminal title="First steps with DigitalOcean’s Managed Kubernetes service 4/4" >}}
 ```
 $ kubectl -n sock-shop expose deployment front-end --type=LoadBalancer --name=front-end-lb$ kubectl -n sock-shop get services front-end-lb
 
 $ kubectl -n sock-shop describe services front-end-lb
 ```
+{{< /terminal >}}
 
 As expected, this launches a DigitalOcean load-balancer, you should be able see the public IP address of the load-balancer in the output of the last two command;
 

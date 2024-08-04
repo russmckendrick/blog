@@ -19,28 +19,35 @@ It uses my [CentOS 7 Vagrant box](https://vagrantcloud.com/russmckendrick/boxes/
 
 To get it up and running create a folder for the Vagrantfile to live;
 
+{{< terminal title="Quick OpenStack Kilo Installation 1/4" >}}
 ```
 mkdir -p ~/Machines/OpenStack/
 ```
+{{< /terminal >}}
 
 Download a copy of the Vagrantfile;
 
+{{< terminal title="Quick OpenStack Kilo Installation 2/4" >}}
 ```
 curl -O https://gist.githubusercontent.com/russmckendrick/49700dbf18ac2d7fbbfa/raw/46c367fa9d257bab46affe15a19904c9d5171be9/Vagrantfile > ~/Machines/OpenStack/Vagrantfile
 ```
+{{< /terminal >}}
 
 and start the machine up;
 
+{{< terminal title="Quick OpenStack Kilo Installation 3/4" >}}
 ```
  cd ~/Machines/OpenStack/
  vagrant up # for VirtualBox
  vagrant up — provider vmware_fusion # for VMWare Fusion
 ```
+{{< /terminal >}}
 
 It will take around 20 minutes to bootstrap the machine so make a cup of tea and watch this introduction to Kilo;
 
 Feel free to reuse the Vagrantfile if you like;
 
+{{< terminal title="Quick OpenStack Kilo Installation 4/4" >}}
 ```
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
@@ -100,3 +107,4 @@ config.vm.provision "shell",
 
 end
 ```
+{{< /terminal >}}

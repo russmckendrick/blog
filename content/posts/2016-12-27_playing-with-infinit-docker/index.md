@@ -79,14 +79,17 @@ A volume sits on top of the overlay network and means that you can present the d
 
 I am running two Ubuntu 16.06 instances for this test, as I am using [Digital Ocean](https://m.do.co/c/52ec4dc3647e) I am connecting as the `root` user, if you aren’t already `root` then run the following commands to switch to `root` and apply any upgrades;
 
+{{< terminal title="Playing with Infinit & Docker 1/37" >}}
 ```
 sudo su -
 apt-get update -y
 apt-get upgrade -y
 ```
+{{< /terminal >}}
 
 Now that we have an up-to-date system lets install Infinit, Although the instructions below look like they are for Ubuntu 14.04 they work fine with Ubuntu 16.04;
 
+{{< terminal title="Playing with Infinit & Docker 2/37" >}}
 ```
 apt-get install -y fuse
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3D2C3B0B
@@ -94,13 +97,16 @@ add-apt-repository "deb https://debian.infinit.sh/ trusty main"
 apt-get update -y
 apt-get install -y infinit
 ```
+{{< /terminal >}}
 
 As all we have done is install binaries to `/opt/infinit` we need to make that is in our execution path, to do this run the following;
 
+{{< terminal title="Playing with Infinit & Docker 3/37" >}}
 ```
 cd /opt/infinit
 export PATH=$PWD/bin/:$PATH
 ```
+{{< /terminal >}}
 
 Once you have run the commands above on both Ubuntu 16.04 instances we can start to play with Infinit.
 
@@ -112,42 +118,54 @@ To start with we are just going to be using one of our two Ubuntu 16.04 instance
 
 Lets start by creating a user, to do this run the following command replacing my name with your name;
 
+{{< terminal title="Playing with Infinit & Docker 4/37" >}}
 ```
 infinit-user --signup --name russ --fullname "Russ McKendrick"
 ```
+{{< /terminal >}}
 
 Now we have a user created, we can create a local filesystem;
 
+{{< terminal title="Playing with Infinit & Docker 5/37" >}}
 ```
 infinit-storage --create --filesystem --name local --capacity 1GB
 ```
+{{< /terminal >}}
 
 and then a network;
 
+{{< terminal title="Playing with Infinit & Docker 6/37" >}}
 ```
 infinit-network --create --as russ --storage local --name blogpost --push
 ```
+{{< /terminal >}}
 
 and finally a volume;
 
+{{< terminal title="Playing with Infinit & Docker 7/37" >}}
 ```
 infinit-volume --create --as russ --network blogpost --name my-volume --push
 ```
+{{< /terminal >}}
 
 Now that we have a volume we can mount it by running the following command;
 
+{{< terminal title="Playing with Infinit & Docker 8/37" >}}
 ```
 infinit-volume --mount --as russ --name my-volume --mountpoint ~/mnt --allow-root-creation --cache --publish --daemon
 ```
+{{< /terminal >}}
 
 Running the following should show you your mounted volume and create some files;
 
+{{< terminal title="Playing with Infinit & Docker 9/37" >}}
 ```
 df -h
 cd ~/mnt
 touch wibble
 echo "working" > rah
 ```
+{{< /terminal >}}
 
 ![graphical user interface, text](/img/2016-12-27_playing-with-infinit-docker_1.png)
 
@@ -155,9 +173,11 @@ Now we have a user, some storage, a network and a volume we can look at mounting
 
 When you run it you will be asked for a passphrase and then will be shown a counter, once the counter expires you will have to re-run the command;
 
+{{< terminal title="Playing with Infinit & Docker 10/37" >}}
 ```
 infinit-device --transmit --user --as russ
 ```
+{{< /terminal >}}
 
 ![graphical user interface, text](/img/2016-12-27_playing-with-infinit-docker_2.png)
 
@@ -165,9 +185,11 @@ infinit-device --transmit --user --as russ
 
 To receive our user credentials we need to run the following command;
 
+{{< terminal title="Playing with Infinit & Docker 11/37" >}}
 ```
 infinit-device --receive --user --name russ
 ```
+{{< /terminal >}}
 
 You will be asked for the passphrase you set on **Instance #1** entered you should see something like the following;
 
@@ -179,49 +201,63 @@ and on **Instance #1** you should have confirmation that the credentials have be
 
 Now we have our user on our second instance we can fetch the network we created on our first instance by running;
 
+{{< terminal title="Playing with Infinit & Docker 12/37" >}}
 ```
 infinit-network --fetch --as russ --name blogpost
 ```
+{{< /terminal >}}
 
 and then the volume we created;
 
+{{< terminal title="Playing with Infinit & Docker 13/37" >}}
 ```
 infinit-volume --fetch --as russ --name my-volume
 ```
+{{< /terminal >}}
 
 and then we need to link our instance to the network by running;
 
+{{< terminal title="Playing with Infinit & Docker 14/37" >}}
 ```
 infinit-network --link --as russ --name blogpost
 ```
+{{< /terminal >}}
 
 Now that our instance has joined the network we can mount the volume by running the following as we did on our first instance;
 
+{{< terminal title="Playing with Infinit & Docker 15/37" >}}
 ```
 infinit-volume --mount --as russ --name my-volume --mountpoint ~/mnt --allow-root-creation --cache --publish --daemon
 ```
+{{< /terminal >}}
 
 Now we have the volume mounted lets check the contents;
 
+{{< terminal title="Playing with Infinit & Docker 16/37" >}}
 ```
 ls -lhat ~/mnt/
 cat ~/mnt/rah
 ```
+{{< /terminal >}}
 
 You should see that the files `wibble` and `rah` are present, and that `rah` contains the word **Working**, lets add some content to `wibble` by running;
 
+{{< terminal title="Playing with Infinit & Docker 17/37" >}}
 ```
 echo "still working" >> ~/mnt/wibble
 ```
+{{< /terminal >}}
 
 ![text](/img/2016-12-27_playing-with-infinit-docker_5.png)
 
 We still have our volume mounted on our first instance, lets go back there and check out the contents of `~/mnt` by running;
 
+{{< terminal title="Playing with Infinit & Docker 18/37" >}}
 ```
 ls -lhat ~/mnt
 cat ~/mnt/wibble
 ```
+{{< /terminal >}}
 
 As you should, the changes we made on our second instance have been immediately copied over and are available on our first instance.
 
@@ -231,9 +267,11 @@ As you should, the changes we made on our second instance have been immediately 
 
 If like me, you have probably launched a few instances are going to be destroying them as soon as you have finished playing with Infinit, to make sure we have access to our users credentials we can export the keys used by running the following;
 
+{{< terminal title="Playing with Infinit & Docker 19/37" >}}
 ```
 infinit-user --export --full --name russ --output russ.user
 ```
+{{< /terminal >}}
 
 ![text](/img/2016-12-27_playing-with-infinit-docker_7.png)
 
@@ -249,51 +287,65 @@ You can also run Infinit on local machines running both macOS and Windows. As I 
 
 First of all we need to install [FUSE for macOS](https://osxfuse.github.io/) by running;
 
+{{< terminal title="Playing with Infinit & Docker 20/37" >}}
 ```
 brew cask install osxfuse
 ```
+{{< /terminal >}}
 
 Once installed, reboot your machine. When your machine is back up and running you can run the following `brew` command to install Infinit;
 
+{{< terminal title="Playing with Infinit & Docker 21/37" >}}
 ```
 brew install infinit/releases/infinit
 ```
+{{< /terminal >}}
 
 Now that Infinit is installed, goto one of the instances and run the following command;
 
+{{< terminal title="Playing with Infinit & Docker 22/37" >}}
 ```
 infinit-device --transmit --user --as russ
 ```
+{{< /terminal >}}
 
 and then on your macOS machine run;
 
+{{< terminal title="Playing with Infinit & Docker 23/37" >}}
 ```
 infinit-device --receive --user --name russ
 ```
+{{< /terminal >}}
 
 Now the key is installed we can join the overlay network by running;
 
+{{< terminal title="Playing with Infinit & Docker 24/37" >}}
 ```
 infinit-network --fetch --as russ --name blogpost
 infinit-volume --fetch --as russ --name my-volume
 infinit-network --link --as russ --name blogpost
 ```
+{{< /terminal >}}
 
 and then to mount it run the following;
 
+{{< terminal title="Playing with Infinit & Docker 25/37" >}}
 ```
 infinit-volume --mount --as russ --name my-volume --mountpoint ~/mnt --allow-root-creation --cache --publish
 ```
+{{< /terminal >}}
 
 Note, that I am not adding `--daemon` to the command this time, if you do you might get a timeout error.
 
 Opening another terminal and running;
 
+{{< terminal title="Playing with Infinit & Docker 26/37" >}}
 ```
 cd ~/mnt/
 ls -lhat
 open .
 ```
+{{< /terminal >}}
 
 Should show you the content of the mount, and open it in the finder;
 
@@ -317,79 +369,101 @@ You maybe thinking yourself, thats great but what about Docker? They brought the
 
 Before we look how to hook Infinit into Docker we should unmount the volumes on our two instances, to do this run;
 
+{{< terminal title="Playing with Infinit & Docker 27/37" >}}
 ```
 killall infinit-volume
 ```
+{{< /terminal >}}
 
 ### Docker Plugin
 
 Before we look at the Infinit Docker plugin we need to install Docker, to do this simply run the following commands on both instances to download and install the latest version of Docker;
 
+{{< terminal title="Playing with Infinit & Docker 28/37" >}}
 ```
 curl -sSL https://get.docker.com/ | sh
 ```
+{{< /terminal >}}
 
 Now that Docker is installed, check it has started by running;
 
+{{< terminal title="Playing with Infinit & Docker 29/37" >}}
 ```
 docker ps
 ```
+{{< /terminal >}}
 
 Finally, we have to allow non root users access to FUSE, to do this simply run;
 
+{{< terminal title="Playing with Infinit & Docker 30/37" >}}
 ```
 echo "user_allow_other" >> /etc/fuse.conf
 ```
+{{< /terminal >}}
 
 On both instances and thats all of the preparation done. To install and configure the Docker plugin simply run the following command;
 
+{{< terminal title="Playing with Infinit & Docker 31/37" >}}
 ```
 infinit-daemon --start --as russ --docker-user root
 ```
+{{< /terminal >}}
 
 I have used the use `root` as that is the default user for the Digital Ocean instances I launched, and thats kind of it, the Docker plugin should now be installed and configured. To check simply run;
 
+{{< terminal title="Playing with Infinit & Docker 32/37" >}}
 ```
 docker volume list
 ```
+{{< /terminal >}}
 
 ![graphical user interface, text](/img/2016-12-27_playing-with-infinit-docker_13.png)
 
 Now that our volume is available we can attach it to a container by running;
 
+{{< terminal title="Playing with Infinit & Docker 33/37" >}}
 ```
 docker run -it --rm --volume-driver infinit -v russ/my-volume:/mnt alpine ash
 ```
+{{< /terminal >}}
 
 That should mount our volume to `/mnt` within the container. Once in run the following commands;
 
+{{< terminal title="Playing with Infinit & Docker 34/37" >}}
 ```
 ls -lhat /mnt
 echo "FROM DOCKER" >> /mnt/docker
 exit
 ```
+{{< /terminal >}}
 
 ![a screenshot of a computer](/img/2016-12-27_playing-with-infinit-docker_14.png)
 
 Typing `exit` will stop and remove the container, you can check that the container has been removed by running;
 
+{{< terminal title="Playing with Infinit & Docker 35/37" >}}
 ```
 docker ps -a
 ```
+{{< /terminal >}}
 
 To launch a new container simply run the same command as before;
 
+{{< terminal title="Playing with Infinit & Docker 36/37" >}}
 ```
 docker run -it --rm --volume-driver infinit -v russ/my-volume:/mnt alpine ash
 ```
+{{< /terminal >}}
 
 and check the contents of `/mnt` by running;
 
+{{< terminal title="Playing with Infinit & Docker 37/37" >}}
 ```
 ls -lhat /mnt
 cat /mnt/docker
 exit
 ```
+{{< /terminal >}}
 
 ![a screenshot of a computer](/img/2016-12-27_playing-with-infinit-docker_15.png)
 

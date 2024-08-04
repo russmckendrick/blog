@@ -23,9 +23,11 @@ The HTML used to generate the button above looks like the following;
 
 Alternatively, you could use markdown, which looks like the following;
 
+{{< terminal title="Adding a Deploy to Azure Button 1/1" >}}
 ```
 [![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/?repository=https://github.com/russmckendrick/azure-ansible-centos)
 ```
+{{< /terminal >}}
 
 All you need to do is make sure that your ARM templates are called `azuredeploy.json` and when a user clicks on the **Deploy to Azure** button, they will be transferred to the launcher which loads in the [ARM template in the provided repository](https://github.com/russmckendrick/azure-ansible-centos).
 

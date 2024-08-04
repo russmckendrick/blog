@@ -43,10 +43,12 @@ Now, let’s crack on with installing it.
 
 First of all using Docker For Mac lets install it locally and have a poke around. To start off with, let’s pull the image so we can see how large it is;
 
+{{< terminal title="Portainer, a UI for Docker 1/12" >}}
 ```
 docker pull portainer/portainer
 docker images
 ```
+{{< /terminal >}}
 
 ![text](/img/2016-12-29_portainer-a-ui-for-docker_1.png)
 
@@ -54,9 +56,11 @@ As you can see from the terminal output above, the current version comes in at 9
 
 Now we have the image pulled; we can launch the container. As with any container which needs to access the Docker daemon on the host machine, we need to mount the socket file from the host within the container so to run Portainer we need to run the following command;
 
+{{< terminal title="Portainer, a UI for Docker 2/12" >}}
 ```
 docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
 ```
+{{< /terminal >}}
 
 ![text](/img/2016-12-29_portainer-a-ui-for-docker_2.png)
 
@@ -110,9 +114,11 @@ Finally, clicking on **Console** will open a terminal, first of all, you have to
 
 Running a container outside of Portainer will isn’t a problem, as we are hooked into the Docker daemon, it will show up within Portainer. For example, running Apache Bench against our NGINX container by running;
 
+{{< terminal title="Portainer, a UI for Docker 3/12" >}}
 ```
 docker run --link=webserver russmckendrick/ab ab -k -n 100000 -c 30 http://webserver/
 ```
+{{< /terminal >}}
 
 Will show up as a stopped container in the list of containers;
 
@@ -144,6 +150,7 @@ Now let’s see what happens when we attach Portainer to a Docker Swarm cluster 
 
 First, we need to launch our Docker hosts; I ran the commands below to start a three node cluster in Digital Ocean using Docker Machine starting with the Swarm master;
 
+{{< terminal title="Portainer, a UI for Docker 4/12" >}}
 ```
 docker-machine create \
   --driver digitalocean \
@@ -152,9 +159,11 @@ docker-machine create \
   --digitalocean-size 1gb \
 swmaster
 ```
+{{< /terminal >}}
 
 and then the two nodes;
 
+{{< terminal title="Portainer, a UI for Docker 5/12" >}}
 ```
 docker-machine create \
   --driver digitalocean \
@@ -170,12 +179,15 @@ docker-machine create \
   --digitalocean-size 1gb \
 swnode02
 ```
+{{< /terminal >}}
 
 Now that our three Docker hosts are online we can quickly configure Swarm by running the following commands. First, initialize cluster by running;
 
+{{< terminal title="Portainer, a UI for Docker 6/12" >}}
 ```
 docker $(docker-machine config swmaster) swarm init --advertise-addr $(docker-machine ip swmaster):2377 --listen-addr $(docker-machine ip swmaster):2377
 ```
+{{< /terminal >}}
 
 Once the manager has been configured, you will be given a token;
 
@@ -183,27 +195,33 @@ Once the manager has been configured, you will be given a token;
 
 Make a note of the token as you will need it to run the following commands which join the remaining two Docker hosts to our cluster;
 
+{{< terminal title="Portainer, a UI for Docker 7/12" >}}
 ```
 docker $(docker-machine config swnode01) swarm join $(docker-machine ip swmaster):2377 --token SWMTKN-1-3sx2yobftwdk1ed5bywh3tomlhm46gke4kp887w9uzmmgkhgtw-bv9unn94pva98dhrtx0hrkjzb
 
 docker $(docker-machine config swnode02) swarm join $(docker-machine ip swmaster):2377 --token SWMTKN-1-3sx2yobftwdk1ed5bywh3tomlhm46gke4kp887w9uzmmgkhgtw-bv9unn94pva98dhrtx0hrkjzb
 ```
+{{< /terminal >}}
 
 ![text](/img/2016-12-29_portainer-a-ui-for-docker_19.png)
 
 You can check that all three hosts are part of the Swarm cluster by running;
 
+{{< terminal title="Portainer, a UI for Docker 8/12" >}}
 ```
 docker $(docker-machine config swmaster) node ls
 ```
+{{< /terminal >}}
 
 ![a screenshot of a computer](/img/2016-12-29_portainer-a-ui-for-docker_20.png)
 
 Next, we need to connect our local Portainer installation to our Docker Swarm, to do this we will need the TLS certificates which Docker Machine created, to get these type the following command;
 
+{{< terminal title="Portainer, a UI for Docker 9/12" >}}
 ```
 open ~/.docker/machine/certs/
 ```
+{{< /terminal >}}
 
 This will open a finder window with the certificates you will need to upload to Portainer;
 
@@ -211,9 +229,11 @@ This will open a finder window with the certificates you will need to upload to 
 
 Now that we have the certificates we need to the IP address of the Docker Swarm Manager, to get this run the following;
 
+{{< terminal title="Portainer, a UI for Docker 10/12" >}}
 ```
 echo $(docker-machine ip swmaster)
 ```
+{{< /terminal >}}
 
 Return to your Portainer installation and click on **Endpoints**, click **TLS** and upload your certificates and give the endpoint details as per the screen below;
 
@@ -253,16 +273,20 @@ For example, you can reduce the number of conatiners within the service by click
 
 Don’t forget to remove your Docker Swarm nodes once you have finished playing, you can do this by running;
 
+{{< terminal title="Portainer, a UI for Docker 11/12" >}}
 ```
 docker-machine rm swmaster swnode01 swnode02
 ```
+{{< /terminal >}}
 
 and also remove your Portainer installation by running;
 
+{{< terminal title="Portainer, a UI for Docker 12/12" >}}
 ```
 docker stop name_of_your_portainer_conatiner
 docker rm name_of_your_portainer_conatiner
 ```
+{{< /terminal >}}
 
 #### Limitations?
 
