@@ -2,25 +2,16 @@
 title: "An Experiment with Docker & HHVM"
 description: "Experimented with Docker and HHVM for our Drupal7 site at work, achieving a seamless transition and saving significant setup time."
 author: "Russ Mckendrick"
-date: 2014-11-09T12:00:00.000Z
-lastmod: 2021-07-31T12:32:14+01:00
-
+date: "2014-11-09T12:00:00+01:00"
 tags:
-    - "Docker"
-    - "Tools"
-
+  - "Docker"
+  - "Tools"
 cover:
-    image: "/img/2014-11-09_an-experiment-with-docker-hhvm_0.png" 
-    alt: "Experimented with Docker and HHVM for our Drupal7 site at work, achieving a seamless transition and saving significant setup time."
-
-images:
- - "/img/2014-11-09_an-experiment-with-docker-hhvm_0.png"
- - "/img/2014-11-09_an-experiment-with-docker-hhvm_1.jpg"
-
-
+  image: "/img/2014-11-09_an-experiment-with-docker-hhvm_0.png"
+  alt: "Experimented with Docker and HHVM for our Drupal7 site at work, achieving a seamless transition and saving significant setup time."
+lastmod: "2021-07-31T12:32:14+01:00"
 aliases:
-- "/an-experiment-with-docker-hhvm-72ccc2849749"
-
+  - "/an-experiment-with-docker-hhvm-72ccc2849749"
 ---
 
 Now the dev team at [work](https://reconnix.com) have moved over to using Docker we decided to have some fun.

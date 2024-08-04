@@ -1,18 +1,18 @@
 ---
 title: "My Top 10 of 2023"
-author: "Russ McKendrick"
-date: 2023-12-23T13:01:41+01:00
 description: "Explore 2023's diverse music scene with 17 albums, from The Polyphonic Spree's 'Salvage Enterprise' to Peter Gabriel's 'I/O'."
-draft: false
-showToc: true
-TocOpen: true
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Explore 2023's diverse music scene with 17 albums, from The Polyphonic Spree's 'Salvage Enterprise' to Peter Gabriel's 'I/O'."
+author: "Russ McKendrick"
+date: "2023-12-23T13:01:41+01:00"
 tags:
   - "life"
   - "vinyl"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Explore 2023's diverse music scene with 17 albums, from The Polyphonic Spree's 'Salvage Enterprise' to Peter Gabriel's 'I/O'."
+draft: false
+showToc: true
+TocOpen: true
 ---
 
 2023 has been an extraordinary year for music, showcasing an eclectic mix of genres, styles, and artistic visions. This list of 17 albums represents the year's rich musical landscape, each offering a unique perspective and sound. From the psychedelic choral pop of The Polyphonic Spree's "Salvage Enterprise" to the introspective and nuanced melodies of Jenny Lewis in "Joy'All," these albums traverse a spectrum of emotional and sonic experiences.

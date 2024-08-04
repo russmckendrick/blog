@@ -2,23 +2,16 @@
 title: "Grunt + Jekyll + LESS"
 description: "Revamped my website with a new design, integrating LESS with Jekyll via Grunt for a more efficient and automated workflow."
 author: "Russ Mckendrick"
-date: 2014-12-02T20:59:38.000Z
-lastmod: 2021-07-31T12:32:18+01:00
-
+date: "2014-12-02T20:59:38+01:00"
 tags:
-    - "Code"
-    - "Tools"
+  - "Code"
+  - "Tools"
 cover:
-    image: "/img/2014-12-02_grunt-jekyll-less_0.png" 
-    alt: "Revamped my website with a new design, integrating LESS with Jekyll via Grunt for a more efficient and automated workflow."
-
-images:
- - "/img/2014-12-02_grunt-jekyll-less_0.png"
-
-
+  image: "/img/2014-12-02_grunt-jekyll-less_0.png"
+  alt: "Revamped my website with a new design, integrating LESS with Jekyll via Grunt for a more efficient and automated workflow."
+lastmod: "2021-07-31T12:32:18+01:00"
 aliases:
-- "/grunt-jekyll-less-3c259369fa4f"
-
+  - "/grunt-jekyll-less-3c259369fa4f"
 ---
 
 As you may have noticed, the website looks different to how it was previously. I decided it was time for a refresh and I wanted to make the design a little more interesting.

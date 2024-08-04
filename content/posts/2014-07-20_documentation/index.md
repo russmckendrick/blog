@@ -2,22 +2,16 @@
 title: "Documentation"
 description: "Discover how I use GitHub and Markdown for technical documentation and code management, streamlining collaboration and version control in projects."
 author: "Russ Mckendrick"
-date: 2014-07-20T11:00:00.000Z
-lastmod: 2021-07-31T12:31:39+01:00
+date: "2014-07-20T11:00:00+01:00"
 tags:
-    - "Code"
-    - "Tools"
+  - "Code"
+  - "Tools"
 cover:
-    image: "/img/2014-07-20_documentation_0.png" 
-    alt: "Discover how I use GitHub and Markdown for technical documentation and code management, streamlining collaboration and version control in projects."
-
-images:
- - "/img/2014-07-20_documentation_0.png"
-
-
+  image: "/img/2014-07-20_documentation_0.png"
+  alt: "Discover how I use GitHub and Markdown for technical documentation and code management, streamlining collaboration and version control in projects."
+lastmod: "2021-07-31T12:31:39+01:00"
 aliases:
-- "/documentation-2f190c3d8c44"
-
+  - "/documentation-2f190c3d8c44"
 ---
 
 ![a group of colorful paper](/img/2014-07-20_documentation_0.png)

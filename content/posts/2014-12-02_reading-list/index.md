@@ -2,23 +2,16 @@
 title: "Reading list"
 description: "Curated a list of compelling reads from Pocket, covering topics from Google Docs reverse engineering to AWS scalability and Docker in production."
 author: "Russ Mckendrick"
-date: 2014-12-02T12:00:00.000Z
-lastmod: 2021-07-31T12:32:23+01:00
-
+date: "2014-12-02T12:00:00+01:00"
 tags:
-    - "Web"
-    - "Blog"
+  - "Web"
+  - "Blog"
 cover:
-    image: "/img/2014-12-02_reading-list_0.png" 
-    alt: "Curated a list of compelling reads from Pocket, covering topics from Google Docs reverse engineering to AWS scalability and Docker in production."
-
-images:
- - "/img/2014-12-02_reading-list_0.png"
-
-
+  image: "/img/2014-12-02_reading-list_0.png"
+  alt: "Curated a list of compelling reads from Pocket, covering topics from Google Docs reverse engineering to AWS scalability and Docker in production."
+lastmod: "2021-07-31T12:32:23+01:00"
 aliases:
-- "/reading-list-89970a7972d8"
-
+  - "/reading-list-89970a7972d8"
 ---
 
 As mentioned in a previous post I tend to send most articles I am interested in reading to [Pocket](http://getpocket.com/) so I can read them when I have time. Here is a selection of the most interesting “stuff” I have bookmarked over the last month or so ….

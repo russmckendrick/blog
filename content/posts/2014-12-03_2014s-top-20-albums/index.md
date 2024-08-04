@@ -2,24 +2,16 @@
 title: "2014’s Top 20 Albums"
 description: "Revealing my top 10 albums of 2014 with a mix of genres and artists, plus additional favorites that almost made the cut, all available on Spotify."
 author: "Russ Mckendrick"
-date: 2014-12-03T12:00:00.000Z
-lastmod: 2021-07-31T12:32:25+01:00
-
+date: "2014-12-03T12:00:00+01:00"
 tags:
-    - "Life"
-    - "Vinyl"
-
+  - "Life"
+  - "Vinyl"
 cover:
-    image: "/img/2014-12-03_2014s-top-20-albums_0.png" 
-    alt: "Revealing my top 10 albums of 2014 with a mix of genres and artists, plus additional favorites that almost made the cut, all available on Spotify."
-
-images:
- - "/img/2014-12-03_2014s-top-20-albums_0.png"
-
-
+  image: "/img/2014-12-03_2014s-top-20-albums_0.png"
+  alt: "Revealing my top 10 albums of 2014 with a mix of genres and artists, plus additional favorites that almost made the cut, all available on Spotify."
+lastmod: "2021-07-31T12:32:25+01:00"
 aliases:
-- "/2014s-top-20-albums-4b37b603bee3"
-
+  - "/2014s-top-20-albums-4b37b603bee3"
 ---
 
 It’s that time of year [again](/2013/12/08/top-10-2013/), here’s my top 10 albums of 2014….

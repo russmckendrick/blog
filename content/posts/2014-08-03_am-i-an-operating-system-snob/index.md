@@ -2,23 +2,16 @@
 title: "Am I an Operating System snob?"
 description: "As an experienced Linux user, I discuss why I prefer CentOS for my servers, comparing it to Fedora and Ubuntu."
 author: "Russ Mckendrick"
-date: 2014-08-03T11:00:00.000Z
-lastmod: 2021-07-31T12:31:47+01:00
-
+date: "2014-08-03T11:00:00+01:00"
 tags:
-    - "Linux"
-    - "Tools"
+  - "Linux"
+  - "Tools"
 cover:
-    image: "/img/2014-08-03_am-i-an-operating-system-snob_0.png" 
-    alt: "As an experienced Linux user, I discuss why I prefer CentOS for my servers, comparing it to Fedora and Ubuntu."
-
-images:
- - "/img/2014-08-03_am-i-an-operating-system-snob_0.png"
-
-
+  image: "/img/2014-08-03_am-i-an-operating-system-snob_0.png"
+  alt: "As an experienced Linux user, I discuss why I prefer CentOS for my servers, comparing it to Fedora and Ubuntu."
+lastmod: "2021-07-31T12:31:47+01:00"
 aliases:
-- "/am-i-an-operating-system-snob-e12a77808205"
-
+  - "/am-i-an-operating-system-snob-e12a77808205"
 ---
 
 Last week I posted about [upgrading my servers to CentOS 7](/2014/07/27/upgrading-my-servers-to-centos-7/), one of the main factors about upgrading to CentOS 7 was the jump in kernel version (from 2.6.x to 3.10.x).

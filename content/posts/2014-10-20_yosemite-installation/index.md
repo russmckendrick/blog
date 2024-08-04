@@ -2,24 +2,16 @@
 title: "Yosemite Installation"
 description: "Reflecting on my smoothest MacOS upgrade experience with Yosemite: a journey from backup to clean installation and setting up my essentials."
 author: "Russ Mckendrick"
-date: 2014-10-20T11:00:00.000Z
-lastmod: 2021-07-31T12:32:06+01:00
-
+date: "2014-10-20T11:00:00+01:00"
 tags:
-    - "macOS"
-    - "Tools"
-
+  - "macOS"
+  - "Tools"
 cover:
-    image: "/img/2014-10-20_yosemite-installation_0.png" 
-    alt: "Reflecting on my smoothest MacOS upgrade experience with Yosemite: a journey from backup to clean installation and setting up my essentials."
-
-images:
- - "/img/2014-10-20_yosemite-installation_0.png"
-
-
+  image: "/img/2014-10-20_yosemite-installation_0.png"
+  alt: "Reflecting on my smoothest MacOS upgrade experience with Yosemite: a journey from backup to clean installation and setting up my essentials."
+lastmod: "2021-07-31T12:32:06+01:00"
 aliases:
-- "/yosemite-installation-6bdf5d68ea1a"
-
+  - "/yosemite-installation-6bdf5d68ea1a"
 ---
 
 This could be the most straight forward MacOS update I have ever performed (I have been doing them since [System 7.5](http://en.wikipedia.org/wiki/System_7)).

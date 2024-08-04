@@ -3,22 +3,21 @@ title: "Azure DevOps Multi-Stage Pipelines"
 description: "Learn how to implement multi-stage pipelines in Azure DevOps for efficient deployment workflows with approval gates and infrastructure setup."
 author: "Russ Mckendrick"
 date: 2021-04-25
-showFullContent: false
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Learn how to implement multi-stage pipelines in Azure DevOps for efficient deployment workflows with approval gates and infrastructure setup."
-aliases:
-    - "/azure-devops-multi-stage-pipelines-bcbed581fa2d"
-keywords:
-    - Azure
 tags:
-    - Azure
-    - DevOps
-    - Infrastructure as Code
-    - Cloud
-    - Automation
-
+  - "Azure"
+  - "DevOps"
+  - "Infrastructure as Code"
+  - "Cloud"
+  - "Automation"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Learn how to implement multi-stage pipelines in Azure DevOps for efficient deployment workflows with approval gates and infrastructure setup."
+showFullContent: false
+aliases:
+  - "/azure-devops-multi-stage-pipelines-bcbed581fa2d"
+keywords:
+  - "Azure"
 ---
 
 As I move into using Azure DevOps more and more, there is one thing which I really haven’t got on with and that is release pipelines. I didn’t like that I couldn’t easily define it as YAML like I could with build pipelines, even though I don’t like them, there are a few things I do like — like approval gates.

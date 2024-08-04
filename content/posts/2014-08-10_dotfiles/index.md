@@ -2,19 +2,16 @@
 title: "Dotfiles"
 description: "Learn how to manage dotfiles to customize your computing environment using with pre-built collections and forking Bashstrap."
 author: "Russ Mckendrick"
-date: 2014-08-10T11:00:00.000Z
-lastmod: 2021-07-31T12:31:49+01:00
+date: "2014-08-10T11:00:00+01:00"
 tags:
-    - "macOS"
-    - "Tools"
+  - "macOS"
+  - "Tools"
 cover:
-    image: "/img/2014-08-10_dotfiles_0.png" 
-    alt: "Learn how to manage dotfiles to customize your computing environment using with pre-built collections and forking Bashstrap."
-images:
- - "/img/2014-08-10_dotfiles_0.png"
- - "/img/2014-08-10_dotfiles_1.png"
+  image: "/img/2014-08-10_dotfiles_0.png"
+  alt: "Learn how to manage dotfiles to customize your computing environment using with pre-built collections and forking Bashstrap."
+lastmod: "2021-07-31T12:31:49+01:00"
 aliases:
-- "/dotfiles-4b896a743118"
+  - "/dotfiles-4b896a743118"
 ---
 
 For the last few years I have been grabbing some we [documented dotfiles from GitHub](https://github.com/search?o=desc&q=dotfiles&ref=cmdform&s=stars&type=Repositories) but most of them have either ended up reconfigured my Mac to the point of it being unrecognisable or they have just been a collection of useful aliases. The I came across [Bashstrap](https://github.com/barryclark/bashstrap), it was close enough to what I wanted so I [forked it](https://github.com/russmckendrick/dotfiles) ….

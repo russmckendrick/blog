@@ -2,25 +2,17 @@
 title: "PuppetCamp London 2014"
 description: "Attended PuppetCamp London 2014 with enlightening talks on Augeas, Puppet 4.x upgrades, and AWS management, sparking new project inspirations."
 author: "Russ Mckendrick"
-date: 2014-12-02T12:00:00.000Z
-lastmod: 2021-07-31T12:32:21+01:00
-
+date: "2014-12-02T12:00:00+01:00"
 tags:
-    - "Conference"
-    - "Automation"
-    - "DevOps"
-
+  - "Conference"
+  - "Automation"
+  - "DevOps"
 cover:
-    image: "/img/2014-12-02_puppetcamp-london-2014_0.png" 
-    alt: "Attended PuppetCamp London 2014 with enlightening talks on Augeas, Puppet 4.x upgrades, and AWS management, sparking new project inspirations."
-
-images:
- - "/img/2014-12-02_puppetcamp-london-2014_0.png"
-
-
+  image: "/img/2014-12-02_puppetcamp-london-2014_0.png"
+  alt: "Attended PuppetCamp London 2014 with enlightening talks on Augeas, Puppet 4.x upgrades, and AWS management, sparking new project inspirations."
+lastmod: "2021-07-31T12:32:21+01:00"
 aliases:
-- "/puppetcamp-london-2014-1f973252c29"
-
+  - "/puppetcamp-london-2014-1f973252c29"
 ---
 
 Yesterday, I had day out of the office with [Danny](https://www.linkedin.com/pub/danny-roberts/14/333/636) at the 2014 London [PuppetCamp](https://twitter.com/hashtag/puppetcamp). It was the first time I had attended a PuppetLabs event, though I have streamed plenty of video from past camps and conferences.

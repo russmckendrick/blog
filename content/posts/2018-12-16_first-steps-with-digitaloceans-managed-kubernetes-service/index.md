@@ -2,33 +2,16 @@
 title: "First steps with DigitalOcean’s Managed Kubernetes service"
 description: "Exploring DigitalOcean’s Managed Kubernetes service: setup, testing, and ease of use. A comprehensive guide by Russ Mckendrick."
 author: "Russ Mckendrick"
-date: 2018-12-16T17:58:12.000Z
-lastmod: 2021-07-31T12:35:14+01:00
+date: "2018-12-16T17:58:12+01:00"
 tags:
- - Kubernetes
- - Cloud
+  - "Kubernetes"
+  - "Cloud"
 cover:
-    image: "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_0.jpg" 
-    alt: "Exploring DigitalOcean’s Managed Kubernetes service: setup, testing, and ease of use. A comprehensive guide by Russ Mckendrick."
-
-images:
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_0.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_1.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_2.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_3.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_4.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_5.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_6.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_7.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_8.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_9.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_10.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_11.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_12.jpg"
- - "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_13.jpg"
+  image: "/img/2018-12-16_first-steps-with-digitaloceans-managed-kubernetes-service_0.jpg"
+  alt: "Exploring DigitalOcean’s Managed Kubernetes service: setup, testing, and ease of use. A comprehensive guide by Russ Mckendrick."
+lastmod: "2021-07-31T12:35:14+01:00"
 aliases:
-- "/first-steps-with-digitaloceans-managed-kubernetes-service-e53cd5d40909"
-
+  - "/first-steps-with-digitaloceans-managed-kubernetes-service-e53cd5d40909"
 ---
 
 A few days ago DigitalOcean released their Managed Kubernetes service, as I had a little time this afternoon I decided to give it a spin.

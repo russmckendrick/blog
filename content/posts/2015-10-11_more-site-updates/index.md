@@ -2,26 +2,16 @@
 title: "More site updates"
 description: "Russ Mckendrick improves blog speed, adds Gruntfile features for testing and deployment to Amazon S3 with Cloudflare cache flushing."
 author: "Russ Mckendrick"
-date: 2015-10-11T17:43:15.000Z
-lastmod: 2021-07-31T12:33:28+01:00
-
+date: "2015-10-11T17:43:15+01:00"
 tags:
-    - "Code"
-    - "Tools"
-
+  - "Code"
+  - "Tools"
 cover:
-    image: "/img/2015-10-11_more-site-updates_0.png" 
-    alt: "Russ Mckendrick improves blog speed, adds Gruntfile features for testing and deployment to Amazon S3 with Cloudflare cache flushing."
-
-images:
- - "/img/2015-10-11_more-site-updates_0.png"
- - "/img/2015-10-11_more-site-updates_1.png"
- - "/img/2015-10-11_more-site-updates_2.png"
-
-
+  image: "/img/2015-10-11_more-site-updates_0.png"
+  alt: "Russ Mckendrick improves blog speed, adds Gruntfile features for testing and deployment to Amazon S3 with Cloudflare cache flushing."
+lastmod: "2021-07-31T12:33:28+01:00"
 aliases:
-- "/more-site-updates-7e2210318999"
-
+  - "/more-site-updates-7e2210318999"
 ---
 
 Since the [last post about the blog](/tags/blog/) I have been playing with the blog a bit more, I have finally got a decent [PageSpeed Insights Score](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fmedia-glass.es&tab=desktop);

@@ -2,27 +2,17 @@
 title: "Update the Kernel on a Digital Ocean droplet"
 description: "Upgrade your Digital Ocean droplet's kernel effortlessly. Discover the steps to ensure smooth kernel updates for enhanced security and performance."
 author: "Russ Mckendrick"
-date: 2015-09-06T16:46:11.000Z
-lastmod: 2021-07-31T12:33:22+01:00
-
+date: "2015-09-06T16:46:11+01:00"
 tags:
- - "Linux"
- - "Cloud"
- - "Security"
-
+  - "Linux"
+  - "Cloud"
+  - "Security"
 cover:
-    image: "/img/2015-09-06_update-the-kernel-on-a-digital-ocean-droplet_0.png" 
-    alt: "Upgrade your Digital Ocean droplet's kernel effortlessly. Discover the steps to ensure smooth kernel updates for enhanced security and performance."
-
-images:
- - "/img/2015-09-06_update-the-kernel-on-a-digital-ocean-droplet_0.png"
- - "/img/2015-09-06_update-the-kernel-on-a-digital-ocean-droplet_1.png"
- - "/img/2015-09-06_update-the-kernel-on-a-digital-ocean-droplet_2.png"
-
-
+  image: "/img/2015-09-06_update-the-kernel-on-a-digital-ocean-droplet_0.png"
+  alt: "Upgrade your Digital Ocean droplet's kernel effortlessly. Discover the steps to ensure smooth kernel updates for enhanced security and performance."
+lastmod: "2021-07-31T12:33:22+01:00"
 aliases:
-- "/update-the-kernel-on-a-digital-ocean-droplet-de267b6366c0"
-
+  - "/update-the-kernel-on-a-digital-ocean-droplet-de267b6366c0"
 ---
 
 A while I posted about a script I wrote to quickly [bootstrap a Digital Ocean droplet](/2015/06/28/digital-ocean-bootstrap/).

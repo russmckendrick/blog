@@ -2,25 +2,16 @@
 title: "OpenShift Origin V3"
 description: "Learn how to install and run OpenShift Origin V3 on CentOS, step-by-step guide with commands and configuration for setting up a test server using Vagrant."
 author: "Russ Mckendrick"
-date: 2015-05-23T11:00:00.000Z
-lastmod: 2021-07-31T12:33:03+01:00
-
+date: "2015-05-23T11:00:00+01:00"
 tags:
- - "Linux"
- - "Docker"
-
+  - "Linux"
+  - "Docker"
 cover:
-    image: "/img/2015-05-23_openshift-origin-v3_0.png" 
-    alt: "Learn how to install and run OpenShift Origin V3 on CentOS, step-by-step guide with commands and configuration for setting up a test server using Vagrant."
-
-images:
- - "/img/2015-05-23_openshift-origin-v3_0.png"
- - "/img/2015-05-23_openshift-origin-v3_1.png"
-
-
+  image: "/img/2015-05-23_openshift-origin-v3_0.png"
+  alt: "Learn how to install and run OpenShift Origin V3 on CentOS, step-by-step guide with commands and configuration for setting up a test server using Vagrant."
+lastmod: "2021-07-31T12:33:03+01:00"
 aliases:
-- "/openshift-origin-v3-1e8bc7db46a7"
-
+  - "/openshift-origin-v3-1e8bc7db46a7"
 ---
 
 After being nagged by the gaffer to try OpenShift Origin V3 I finally got round to running a test server using Vagrant on my Mac.

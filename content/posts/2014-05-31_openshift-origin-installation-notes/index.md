@@ -2,24 +2,18 @@
 title: "OpenShift Origin installation notes"
 description: "Follow my guide to install OpenShift Origin on a CentOS 6.5 DO droplet. Get step-by-step instructions & troubleshoot issues."
 author: "Russ Mckendrick"
-date: 2014-05-31T11:00:00.000Z
-lastmod: 2021-07-31T12:31:34+01:00
+date: "2014-05-31T11:00:00+01:00"
 tags:
-    - "Linux"
-    - "Automation"
-    - "DevOps"
-    - "Docker"
-
+  - "Linux"
+  - "Automation"
+  - "DevOps"
+  - "Docker"
 cover:
-    image: "/img/2014-05-31_openshift-origin-installation-notes_0.png" 
-    alt: "Follow my guide to install OpenShift Origin on a CentOS 6.5 DO droplet. Get step-by-step instructions & troubleshoot issues."
-images:
- - "/img/2014-05-31_openshift-origin-installation-notes_0.png"
-
-
+  image: "/img/2014-05-31_openshift-origin-installation-notes_0.png"
+  alt: "Follow my guide to install OpenShift Origin on a CentOS 6.5 DO droplet. Get step-by-step instructions & troubleshoot issues."
+lastmod: "2021-07-31T12:31:34+01:00"
 aliases:
-- "/openshift-origin-installation-notes-52f0efd3790a"
-
+  - "/openshift-origin-installation-notes-52f0efd3790a"
 ---
 
 Having ran a local copy of [OpenShift Origin](http://openshift.github.io/) using [VirtualBox](http://openshift.github.io/documentation/oo_deployment_guide_vm.html#virtualbox) I decided to have a go at running it on a [Digital Ocean](https://www.digitalocean.com/?refcode=52ec4dc3647e) Droplet running CentOS 6.5. This should be easy as there is [an installer](https://install.openshift.com/) which claims;

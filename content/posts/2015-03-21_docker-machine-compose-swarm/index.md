@@ -2,24 +2,15 @@
 title: "Docker Machine, Compose & Swarm"
 description: "Unlock the full potential of Docker with Machine, Compose, & Swarm. Learn how to orchestrate containers, and create clusters across different platforms!"
 author: "Russ Mckendrick"
-date: 2015-03-21T16:16:25.000Z
-lastmod: 2021-07-31T12:32:49+01:00
-
+date: "2015-03-21T16:16:25+01:00"
 tags:
- - Docker
-
+  - "Docker"
 cover:
-    image: "/img/2015-03-21_docker-machine-compose-swarm_0.png" 
-    alt: "Unlock the full potential of Docker with Machine, Compose, & Swarm. Learn how to orchestrate containers, and create clusters across different platforms!"
-
-images:
- - "/img/2015-03-21_docker-machine-compose-swarm_0.png"
- - "/img/2015-03-21_docker-machine-compose-swarm_1.png"
-
-
+  image: "/img/2015-03-21_docker-machine-compose-swarm_0.png"
+  alt: "Unlock the full potential of Docker with Machine, Compose, & Swarm. Learn how to orchestrate containers, and create clusters across different platforms!"
+lastmod: "2021-07-31T12:32:49+01:00"
 aliases:
-- "/docker-machine-compose-swarm-4180ceff6afa"
-
+  - "/docker-machine-compose-swarm-4180ceff6afa"
 ---
 
 Since I last properly [wrote about Docker](/2014/08/31/docker-fig-nginx-reverse-proxies-and-centos-7/"Docker, Fig, NGINX Reverse Proxies and CentOS 7") a lot has changed. Docker have introduced some new command line tools which allow for easy orchestration of Docker instances, clusters and container management. These are;

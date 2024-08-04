@@ -1,19 +1,19 @@
 ---
 title: "VSCode + Bicep on an M1 Mac"
-author: "Russ McKendrick"
-date: 2021-12-04T17:26:55Z
 description: "Learn how to run Bicep on an M1 Mac using VSCode, addressing the .Net 5.0 runtime issue with Rosetta 2 and Homebrew."
-draft: false
-showToc: true
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Learn how to run Bicep on an M1 Mac using VSCode, addressing the .Net 5.0 runtime issue with Rosetta 2 and Homebrew."
+author: "Russ McKendrick"
+date: "2021-12-04T17:26:55+01:00"
 tags:
   - "macOS"
   - "DevOps"
   - "Azure"
   - "Infrastructure as Code"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Learn how to run Bicep on an M1 Mac using VSCode, addressing the .Net 5.0 runtime issue with Rosetta 2 and Homebrew."
+draft: false
+showToc: true
 ---
 
 Probably a little late to the party with this one, but I have recently upgraded to an M1 Pro MacBook Pro, for the most part, the problems with moving to arm64 are not as bad as I thought - most are annoying little things.

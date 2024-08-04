@@ -2,24 +2,16 @@
 title: "Reading List"
 description: "Discover how I effortlessly stay updated with the latest blogs using Feedly and Reeder 2, and how it fuels my reading list."
 author: "Russ Mckendrick"
-date: 2014-08-17T11:00:00.000Z
-lastmod: 2021-07-31T12:31:53+01:00
-
+date: "2014-08-17T11:00:00+01:00"
 tags:
-    - "Web"
-    - "Blog"
-
+  - "Web"
+  - "Blog"
 cover:
-    image: "/img/2014-08-17_reading-list_0.png" 
-    alt: "Discover how I effortlessly stay updated with the latest blogs using Feedly and Reeder 2, and how it fuels my reading list."
-
-images:
- - "/img/2014-08-17_reading-list_0.png"
-
-
+  image: "/img/2014-08-17_reading-list_0.png"
+  alt: "Discover how I effortlessly stay updated with the latest blogs using Feedly and Reeder 2, and how it fuels my reading list."
+lastmod: "2021-07-31T12:31:53+01:00"
 aliases:
-- "/reading-list-938e6bd33220"
-
+  - "/reading-list-938e6bd33220"
 ---
 
 At least once a day I skim through a large number of blogs in my [Feedly](https://feedly.com/) feed using [Reeder 2](http://reederapp.com/mac/), when I see something which catches my eye I send it over to [Pocket](http://getpocket.com/) so it is sync’ed to all of my devices.

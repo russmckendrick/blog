@@ -2,24 +2,16 @@
 title: "Annoying Virtual Box bug"
 description: "Solved a perplexing issue where static files weren't updating in Vagrant due to a long-standing VirtualBox bug with 'sendfile'."
 author: "Russ Mckendrick"
-date: 2014-11-02T12:43:13.000Z
-lastmod: 2021-07-31T12:32:08+01:00
-
+date: "2014-11-02T12:43:13+01:00"
 tags:
-    - "macOS"
-    - "Tools"
-
+  - "macOS"
+  - "Tools"
 cover:
-    image: "/img/2014-11-02_annoying-virtual-box-bug_0.png" 
-    alt: "Solved a perplexing issue where static files weren't updating in Vagrant due to a long-standing VirtualBox bug with 'sendfile'."
-
-images:
- - "/img/2014-11-02_annoying-virtual-box-bug_0.png"
-
-
+  image: "/img/2014-11-02_annoying-virtual-box-bug_0.png"
+  alt: "Solved a perplexing issue where static files weren't updating in Vagrant due to a long-standing VirtualBox bug with 'sendfile'."
+lastmod: "2021-07-31T12:32:08+01:00"
 aliases:
-- "/annoying-virtual-box-bug-2ee3381104f5"
-
+  - "/annoying-virtual-box-bug-2ee3381104f5"
 ---
 
 I am in the process of building a [Vagrant](https://www.vagrantup.com) Box for [work](https://www.reconnix.com). All was going great until I ended up having to spend the best part of two days trying to figure out why static files (css, javascript etc) were not being served after being updated on the host file system.

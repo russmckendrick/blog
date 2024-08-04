@@ -2,23 +2,15 @@
 title: "Backups"
 description: "Secure backups for WordPress with VaultPress and DigitalOcean."
 author: "Russ Mckendrick"
-date: 2015-02-08T12:00:00.000Z
-lastmod: 2021-07-31T12:32:37+01:00
-
+date: "2015-02-08T12:00:00+01:00"
 tags:
-    - "macOS"
-
+  - "macOS"
 cover:
-    image: "/img/2015-02-08_backups_0.png" 
-    alt: "Secure backups for WordPress with VaultPress and DigitalOcean."
-
-images:
- - "/img/2015-02-08_backups_0.png"
-
-
+  image: "/img/2015-02-08_backups_0.png"
+  alt: "Secure backups for WordPress with VaultPress and DigitalOcean."
+lastmod: "2021-07-31T12:32:37+01:00"
 aliases:
-- "/backups-33ecd1d69db"
-
+  - "/backups-33ecd1d69db"
 ---
 
 In my line of work one of the things you learn quickly is that there is no such thing as too many backups. Call me paranoid, but I would rather be spoilt for choice should the worst happen. So what backups do I have in place?

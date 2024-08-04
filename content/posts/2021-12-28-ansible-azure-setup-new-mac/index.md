@@ -1,18 +1,18 @@
 ---
 title: "Ansible setup with Azure on a new Mac"
-author: "Russ McKendrick"
-date: 2021-12-28T13:38:25Z
 description: "Learn how to set up Ansible with Azure on a new Mac, addressing common issues with cryptography and module dependencies."
-draft: false
-showToc: true
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Learn how to set up Ansible with Azure on a new Mac, addressing common issues with cryptography and module dependencies."
+author: "Russ McKendrick"
+date: "2021-12-28T13:38:25+01:00"
 tags:
   - "macos"
   - "azure"
   - "ansible"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Learn how to set up Ansible with Azure on a new Mac, addressing common issues with cryptography and module dependencies."
+draft: false
+showToc: true
 ---
 
 Following on from upgrading my Macs to all M1-based ones, I get around to finally needing to use Ansible; typically, I would install Python using [PyEnv](/2021/10/30/managing-python-on-macos-monterey/) and then run the following ...

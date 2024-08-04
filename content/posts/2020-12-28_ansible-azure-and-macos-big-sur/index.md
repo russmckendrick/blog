@@ -1,20 +1,18 @@
 ---
 title: "Ansible, Azure and macOS Big Sur"
+description: "Moving to Docker to run Ansible on macOS Big Sur"
 author: "Russ Mckendrick"
 date: 2020-12-28
-description: "Moving to Docker to run Ansible on macOS Big Sur"
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Moving to Docker to run Ansible on macOS Big Sur"
-aliases:
-- "/ansible-azure-and-macos-big-sur-f313e28b6e79"
-
 tags:
- - Ansible
- - macOS
- - Azure
-
+  - "Ansible"
+  - "macOS"
+  - "Azure"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Moving to Docker to run Ansible on macOS Big Sur"
+aliases:
+  - "/ansible-azure-and-macos-big-sur-f313e28b6e79"
 ---
 
 One of the annoying things about updating to the latest version of macOS is that a lot of the command-line tools I use tend to break or need tweaking slightly from how I have been using them.

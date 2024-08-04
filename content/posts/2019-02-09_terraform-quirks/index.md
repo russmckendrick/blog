@@ -2,22 +2,15 @@
 title: "Terraform Quirks"
 description: "Explore Terraform quirks: module challenges, resource dependencies, and count/list workarounds."
 author: "Russ Mckendrick"
-date: 2019-02-09T00:00:00.000Z
+date: "2019-02-09T00:00:00+01:00"
 tags:
- - Terraform
- - Infrastructure as Code
-
+  - "Terraform"
+  - "Infrastructure as Code"
 cover:
-    image: "/img/2019-02-09_terraform-quirks_0.png" 
-    alt: "Explore Terraform quirks: module challenges, resource dependencies, and count/list workarounds."
-
-images:
- - "/img/2019-02-09_terraform-quirks_0.png"
-
-
+  image: "/img/2019-02-09_terraform-quirks_0.png"
+  alt: "Explore Terraform quirks: module challenges, resource dependencies, and count/list workarounds."
 aliases:
-- "/terraform-quirks-d43569381300"
-
+  - "/terraform-quirks-d43569381300"
 ---
 
 I have been using Terraform over the last few months, having [not used it in anger for quite a while](https://mediaglasses.blog/2015/07/19/terraform-azure/) since the projects I have been working on have been more suitable for using [Ansible](https://www.packtpub.com/virtualization-and-cloud/learn-ansible).

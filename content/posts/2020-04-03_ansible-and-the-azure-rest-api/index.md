@@ -3,17 +3,17 @@ title: "Ansible and the Azure Rest API"
 description: "Learn how Ansible utilizes Azure REST API for efficient resource management, with insights on azure_rm_resource module and Visual Studio Code extension."
 author: "Russ Mckendrick"
 date: 2020-04-03
-cover:
-    image: "2020-04-03_ansible-and-the-azure-rest-api.jpeg" 
-    relative: true
-    alt: "Learn how Ansible utilizes Azure REST API for efficient resource management, with insights on azure_rm_resource module and Visual Studio Code extension."
-aliases:
-    - "/ansible-and-the-azure-rest-api-97f880b5206d"
 tags:
- - Ansible
- - Azure
- - Infrastructure as Code
- - Automation
+  - "Ansible"
+  - "Azure"
+  - "Infrastructure as Code"
+  - "Automation"
+cover:
+  image: "2020-04-03_ansible-and-the-azure-rest-api.jpeg"
+  relative: true
+  alt: "Learn how Ansible utilizes Azure REST API for efficient resource management, with insights on azure_rm_resource module and Visual Studio Code extension."
+aliases:
+  - "/ansible-and-the-azure-rest-api-97f880b5206d"
 ---
 
 Over the last few months I have been doing more and more work with Ansible to manage end to end deployments in Azure. For the most part Ansible’s core set of Azure modules work with no problems and more than do the job.

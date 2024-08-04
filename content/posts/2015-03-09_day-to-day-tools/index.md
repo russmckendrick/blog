@@ -2,21 +2,17 @@
 title: "Day To Day Tools"
 description: "Discover my must-have desktop & command-line apps, services, and utilities I use daily on my macOS machine."
 author: "Russ Mckendrick"
-date: 2015-03-09T12:00:00.000Z
-lastmod: 2021-07-31T12:32:43+01:00
+date: "2015-03-09T12:00:00+01:00"
 tags:
-    - "Cloud"
-    - "Tools"
-    - "macOS"
+  - "Cloud"
+  - "Tools"
+  - "macOS"
 cover:
-    image: "/img/2015-03-09_day-to-day-tools_0.png" 
-    alt: "Discover my must-have desktop & command-line apps, services, and utilities I use daily on my macOS machine."
-
-images:
- - "/img/2015-03-09_day-to-day-tools_0.png"
+  image: "/img/2015-03-09_day-to-day-tools_0.png"
+  alt: "Discover my must-have desktop & command-line apps, services, and utilities I use daily on my macOS machine."
+lastmod: "2021-07-31T12:32:43+01:00"
 aliases:
-- "/day-to-day-tools-7297053ba231"
-
+  - "/day-to-day-tools-7297053ba231"
 ---
 
 I am currently using most of these tools day to day …

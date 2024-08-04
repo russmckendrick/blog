@@ -2,26 +2,16 @@
 title: "Blah Blah Blah Cloud"
 description: "Deciphering the complexities of 'Cloud' in computing, from VMs to SaaS. Embrace clarity by avoiding catch-all terms, following Dilbert's lead."
 author: "Russ Mckendrick"
-date: 2015-02-01T12:00:00.000Z
-lastmod: 2021-07-31T12:32:33+01:00
-
+date: "2015-02-01T12:00:00+01:00"
 tags:
-    - "Cloud"
-    - "Blog"
-
+  - "Cloud"
+  - "Blog"
 cover:
-    image: "/img/2015-02-01_blah-blah-blah-cloud_0.png" 
-    alt: "Deciphering the complexities of 'Cloud' in computing, from VMs to SaaS. Embrace clarity by avoiding catch-all terms, following Dilbert's lead."
-
-images:
- - "/img/2015-02-01_blah-blah-blah-cloud_0.png"
- - "/img/2015-02-01_blah-blah-blah-cloud_1.jpg"
- - "/img/2015-02-01_blah-blah-blah-cloud_2.jpg"
-
-
+  image: "/img/2015-02-01_blah-blah-blah-cloud_0.png"
+  alt: "Deciphering the complexities of 'Cloud' in computing, from VMs to SaaS. Embrace clarity by avoiding catch-all terms, following Dilbert's lead."
+lastmod: "2021-07-31T12:32:33+01:00"
 aliases:
-- "/blah-blah-blah-cloud-b7dbeca9692e"
-
+  - "/blah-blah-blah-cloud-b7dbeca9692e"
 ---
 
 As someone who deals with the word “Cloud” as part of their day job it can get very confusing. When a client or colleague says “I want cloud” or “what about hosting it in the cloud” what does it mean? Well, in my line of work it could mean any of the following ….

@@ -2,26 +2,18 @@
 title: "Production Ready Images with Packer"
 description: "Automate AWS instance setup with Packer. Ensure rapid scalability with pre-configured images. Explore Packer's versatility across platforms."
 author: "Russ Mckendrick"
-date: 2015-02-02T12:00:00.000Z
-lastmod: 2021-07-31T12:32:35+01:00
-
+date: "2015-02-02T12:00:00+01:00"
 tags:
-    - "AWS"
-    - "Automation"
-    - "Infrastructure as Code"
-    - "DevOps"
-
+  - "AWS"
+  - "Automation"
+  - "Infrastructure as Code"
+  - "DevOps"
 cover:
-    image: "/img/2015-02-02_production-ready-images-with-packer_0.png" 
-    alt: "Automate AWS instance setup with Packer. Ensure rapid scalability with pre-configured images. Explore Packer's versatility across platforms."
-
-images:
- - "/img/2015-02-02_production-ready-images-with-packer_0.png"
-
-
+  image: "/img/2015-02-02_production-ready-images-with-packer_0.png"
+  alt: "Automate AWS instance setup with Packer. Ensure rapid scalability with pre-configured images. Explore Packer's versatility across platforms."
+lastmod: "2021-07-31T12:32:35+01:00"
 aliases:
-- "/production-ready-images-with-packer-df467297c0ea"
-
+  - "/production-ready-images-with-packer-df467297c0ea"
 ---
 
 I have watched numerous videos and seen quite a few slide decks which cover tools such as Puppet, Chef & Ansible. I have witnessed an entire rack of servers PXE boot, installing their base operating systems, configuring their services and then finally checking out a copy of a production ready codebase. Even after seeing this several times the old school sysadmin in me still thinks this is witchcraft.

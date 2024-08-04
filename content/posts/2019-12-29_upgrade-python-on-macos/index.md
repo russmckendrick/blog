@@ -2,19 +2,15 @@
 title: "Upgrade Python on MacOS"
 description: "Upgrade to Python 3 on macOS using pyenv for easy installation and maintenance of different Python versions."
 author: "Russ Mckendrick"
-date: 2019-12-29T16:21:00.000Z
+date: "2019-12-29T16:21:00+01:00"
 tags:
- - macOS
- - Python
+  - "macOS"
+  - "Python"
 cover:
-    image: "/img/2019-12-29_upgrade-python-on-macos_0.jpeg"
-    alt: "Upgrade to Python 3 on macOS using pyenv for easy installation and maintenance of different Python versions."
-images:
- - "/img/2019-12-29_upgrade-python-on-macos_0.jpeg"
- - "/img/2019-12-29_upgrade-python-on-macos_1.png"
+  image: "/img/2019-12-29_upgrade-python-on-macos_0.jpeg"
+  alt: "Upgrade to Python 3 on macOS using pyenv for easy installation and maintenance of different Python versions."
 aliases:
-- "/upgrade-python-on-macos-b2e67aeece36"
-
+  - "/upgrade-python-on-macos-b2e67aeece36"
 ---
 
 The latest major version of Python 2 was originally release on 03/07/2010 and on 01/01/2020 Python 2 will be no more;

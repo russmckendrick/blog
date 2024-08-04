@@ -2,35 +2,16 @@
 title: "Playing with Infinit & Docker"
 description: "Learn how to integrate Infinit and Docker on Ubuntu & macOS. Explore concepts, setup, and usage for enhanced storage solutions. Acquisition by Docker boosts promise."
 author: "Russ Mckendrick"
-date: 2016-12-27T19:52:04.068Z
-lastmod: 2021-07-31T12:34:32+01:00
+date: "2016-12-27T19:52:04+01:00"
 tags:
- - Docker
- - Tools
+  - "Docker"
+  - "Tools"
 cover:
-    image: "/img/2016-12-27_playing-with-infinit-docker_0.png" 
-    alt: "Learn how to integrate Infinit and Docker on Ubuntu & macOS. Explore concepts, setup, and usage for enhanced storage solutions. Acquisition by Docker boosts promise."
-
-images:
- - "/img/2016-12-27_playing-with-infinit-docker_0.png"
- - "/img/2016-12-27_playing-with-infinit-docker_1.png"
- - "/img/2016-12-27_playing-with-infinit-docker_2.png"
- - "/img/2016-12-27_playing-with-infinit-docker_3.png"
- - "/img/2016-12-27_playing-with-infinit-docker_4.png"
- - "/img/2016-12-27_playing-with-infinit-docker_5.png"
- - "/img/2016-12-27_playing-with-infinit-docker_6.png"
- - "/img/2016-12-27_playing-with-infinit-docker_7.png"
- - "/img/2016-12-27_playing-with-infinit-docker_8.png"
- - "/img/2016-12-27_playing-with-infinit-docker_9.png"
- - "/img/2016-12-27_playing-with-infinit-docker_10.png"
- - "/img/2016-12-27_playing-with-infinit-docker_11.png"
- - "/img/2016-12-27_playing-with-infinit-docker_12.png"
- - "/img/2016-12-27_playing-with-infinit-docker_13.png"
- - "/img/2016-12-27_playing-with-infinit-docker_14.png"
- - "/img/2016-12-27_playing-with-infinit-docker_15.png"
+  image: "/img/2016-12-27_playing-with-infinit-docker_0.png"
+  alt: "Learn how to integrate Infinit and Docker on Ubuntu & macOS. Explore concepts, setup, and usage for enhanced storage solutions. Acquisition by Docker boosts promise."
+lastmod: "2021-07-31T12:34:32+01:00"
 aliases:
-- "/playing-with-infinit-docker-651236e68cf"
-
+  - "/playing-with-infinit-docker-651236e68cf"
 ---
 
 At the start of this month [Docker purchased a storage startup called Infinit](http://blog.infinit.sh/infinit-joins-docker/).

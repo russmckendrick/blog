@@ -2,25 +2,16 @@
 title: "Building Vagrant Boxes with Packer in Atlas"
 description: "Explore hassle-free Vagrant box creation with Packer in Atlas. Harness the power of seamless integration for efficient box building and management."
 author: "Russ Mckendrick"
-date: 2015-07-26T11:00:00.000Z
-lastmod: 2021-07-31T12:33:20+01:00
-
+date: "2015-07-26T11:00:00+01:00"
 tags:
- - "Tools"
- - "Packer"
+  - "Tools"
+  - "Packer"
 cover:
-    image: "/img/2015-07-26_building-vagrant-boxes-with-packer-in-atlas_0.png" 
-    alt: "Explore hassle-free Vagrant box creation with Packer in Atlas. Harness the power of seamless integration for efficient box building and management."
-
-images:
- - "/img/2015-07-26_building-vagrant-boxes-with-packer-in-atlas_0.png"
- - "/img/2015-07-26_building-vagrant-boxes-with-packer-in-atlas_1.png"
- - "/img/2015-07-26_building-vagrant-boxes-with-packer-in-atlas_2.png"
-
-
+  image: "/img/2015-07-26_building-vagrant-boxes-with-packer-in-atlas_0.png"
+  alt: "Explore hassle-free Vagrant box creation with Packer in Atlas. Harness the power of seamless integration for efficient box building and management."
+lastmod: "2021-07-31T12:33:20+01:00"
 aliases:
-- "/building-vagrant-boxes-with-packer-in-atlas-c9857e3f8b6b"
-
+  - "/building-vagrant-boxes-with-packer-in-atlas-c9857e3f8b6b"
 ---
 
 I have a need to create both some Ubuntu and CentOS Vagrant boxes for a project I am working on.

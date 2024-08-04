@@ -2,26 +2,17 @@
 title: "Microsoft Azure Portal URLs"
 description: "Access Microsoft Azure portals efficiently with handy URLs for Azure, Azure Active Directory, Resource Explorer, and Cloud Shell."
 author: "Russ Mckendrick"
-date: 2019-06-16T00:00:00.000Z
-lastmod: 2021-07-31T12:35:25+01:00
+date: "2019-06-16T00:00:00+01:00"
 tags:
- - Azure
- - Cloud
- - Tools
+  - "Azure"
+  - "Cloud"
+  - "Tools"
 cover:
-    image: "/img/2019-06-16_microsoft-azure-portal-urls_0.jpeg"
-    alt: "Access Microsoft Azure portals efficiently with handy URLs for Azure, Azure Active Directory, Resource Explorer, and Cloud Shell."
-images:
- - "/img/2019-06-16_microsoft-azure-portal-urls_0.jpeg"
- - "/img/2019-06-16_microsoft-azure-portal-urls_1.png"
- - "/img/2019-06-16_microsoft-azure-portal-urls_2.png"
- - "/img/2019-06-16_microsoft-azure-portal-urls_3.png"
- - "/img/2019-06-16_microsoft-azure-portal-urls_4.png"
- - "/img/2019-06-16_microsoft-azure-portal-urls_5.png"
- - "/img/2019-06-16_microsoft-azure-portal-urls_6.png"
+  image: "/img/2019-06-16_microsoft-azure-portal-urls_0.jpeg"
+  alt: "Access Microsoft Azure portals efficiently with handy URLs for Azure, Azure Active Directory, Resource Explorer, and Cloud Shell."
+lastmod: "2021-07-31T12:35:25+01:00"
 aliases:
-- "/microsoft-azure-portal-urls-baa2ddda6250"
-
+  - "/microsoft-azure-portal-urls-baa2ddda6250"
 ---
 
 As I am finding myself using Microsoft Azure more and more I thought I would make some notes about how to quickly access the various web portals.

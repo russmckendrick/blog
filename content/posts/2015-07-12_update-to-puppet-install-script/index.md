@@ -2,25 +2,17 @@
 title: "Update to Puppet Install Script"
 description: "Effortless deployment of Puppet on CentOS/RHEL? Check out my updated installation script and streamline your automation setup today!"
 author: "Russ Mckendrick"
-date: 2015-07-12T11:00:00.000Z
-lastmod: 2021-07-31T12:33:12+01:00
-
+date: "2015-07-12T11:00:00+01:00"
 tags:
- - "Automation"
- - "Linux"
- - "Tools"
-
+  - "Automation"
+  - "Linux"
+  - "Tools"
 cover:
-    image: "/img/2015-07-12_update-to-puppet-install-script_0.png" 
-    alt: "Effortless deployment of Puppet on CentOS/RHEL? Check out my updated installation script and streamline your automation setup today!"
-
-images:
- - "/img/2015-07-12_update-to-puppet-install-script_0.png"
-
-
+  image: "/img/2015-07-12_update-to-puppet-install-script_0.png"
+  alt: "Effortless deployment of Puppet on CentOS/RHEL? Check out my updated installation script and streamline your automation setup today!"
+lastmod: "2021-07-31T12:33:12+01:00"
 aliases:
-- "/update-to-puppet-install-script-1c6b965d330c"
-
+  - "/update-to-puppet-install-script-1c6b965d330c"
 ---
 
 Around this time last year I blogged about [Upgrading my servers to CentOS 7](/2014/07/27/upgrading-my-servers-to-centos-7/), the post contained a link to a script which I wrote to deploy a Puppet Master & Agent and some updated instructions for installing on RHEL / CentOS 7.

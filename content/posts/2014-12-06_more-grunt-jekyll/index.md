@@ -2,24 +2,16 @@
 title: "More Grunt & Jekyll"
 description: "Streamlined my Grunt configuration by combining tasks, now I can concatenate JS files, compress them with Uglify, and minify CSS files in one go!"
 author: "Russ Mckendrick"
-date: 2014-12-06T12:00:00.000Z
-lastmod: 2021-07-31T12:32:28+01:00
-
+date: "2014-12-06T12:00:00+01:00"
 tags:
-    - "Code"
-    - "Tools"
-
+  - "Code"
+  - "Tools"
 cover:
-    image: "/img/2014-12-06_more-grunt-jekyll_0.png" 
-    alt: "Streamlined my Grunt configuration by combining tasks, now I can concatenate JS files, compress them with Uglify, and minify CSS files in one go!"
-
-images:
- - "/img/2014-12-06_more-grunt-jekyll_0.png"
-
-
+  image: "/img/2014-12-06_more-grunt-jekyll_0.png"
+  alt: "Streamlined my Grunt configuration by combining tasks, now I can concatenate JS files, compress them with Uglify, and minify CSS files in one go!"
+lastmod: "2021-07-31T12:32:28+01:00"
 aliases:
-- "/more-grunt-jekyll-1b0ab0e47e"
-
+  - "/more-grunt-jekyll-1b0ab0e47e"
 ---
 
 At the end of my [last post about Grunt](/2014/12/02/grunt-jekyll-less/) I mentioned that I will be adding code to concatenate the javascript, compress the images and also tidy the code up abit. I have now done this ….

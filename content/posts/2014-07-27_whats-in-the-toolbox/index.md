@@ -2,26 +2,16 @@
 title: "What’s in the toolbox?"
 description: "Catch up on my recent absence from blogging and learn about the highlights, including the release of Docker 1.0, CentOS 7, updates to the site's theme, and new music releases. Plus, explore my blog post on multi-factor authentication in AWS."
 author: "Russ Mckendrick"
-date: 2014-07-27T11:00:00.000Z
-lastmod: 2021-07-31T12:31:44+01:00
-
+date: "2014-07-27T11:00:00+01:00"
 tags:
-    - "macOS"
-    - "Tools"
-
-
+  - "macOS"
+  - "Tools"
 cover:
-    image: "/img/2014-07-27_whats-in-the-toolbox_0.png" 
-    alt: "Catch up on my recent absence from blogging and learn about the highlights, including the release of Docker 1.0, CentOS 7, updates to the site's theme, and new music releases. Plus, explore my blog post on multi-factor authentication in AWS."
-
-images:
- - "/img/2014-07-27_whats-in-the-toolbox_0.png"
- - "/img/2014-07-27_whats-in-the-toolbox_1.png"
-
-
+  image: "/img/2014-07-27_whats-in-the-toolbox_0.png"
+  alt: "Catch up on my recent absence from blogging and learn about the highlights, including the release of Docker 1.0, CentOS 7, updates to the site's theme, and new music releases. Plus, explore my blog post on multi-factor authentication in AWS."
+lastmod: "2021-07-31T12:31:44+01:00"
 aliases:
-- "/whats-in-the-toolbox-dd9dcfe398a1"
-
+  - "/whats-in-the-toolbox-dd9dcfe398a1"
 ---
 
 It’s been a while since I listed [what I am using day-to-day](/2013/11/17/stuff-i-use/) so I thought I would do a quick update;

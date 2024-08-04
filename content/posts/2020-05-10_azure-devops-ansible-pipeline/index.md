@@ -3,19 +3,18 @@ title: "Azure DevOps Ansible Pipeline"
 description: "Streamline your DevOps workflows by setting up an Azure pipeline using Ansible playbooks. Learn how to integrate Azure CLI for faster results!"
 author: "Russ Mckendrick"
 date: 2020-05-10
-cover:
-    image: "2020-05-10_azure-devops-ansible-pipeline_0.png" 
-    relative: true
-    alt: "Streamline your DevOps workflows by setting up an Azure pipeline using Ansible playbooks. Learn how to integrate Azure CLI for faster results!"
-aliases:
-    - "/azure-devops-ansible-pipeline-69a13781be85"
 tags:
- - Ansible
- - DevOps
- - Azure
- - Infrastructure as Code
- - Automation
-
+  - "Ansible"
+  - "DevOps"
+  - "Azure"
+  - "Infrastructure as Code"
+  - "Automation"
+cover:
+  image: "2020-05-10_azure-devops-ansible-pipeline_0.png"
+  relative: true
+  alt: "Streamline your DevOps workflows by setting up an Azure pipeline using Ansible playbooks. Learn how to integrate Azure CLI for faster results!"
+aliases:
+  - "/azure-devops-ansible-pipeline-69a13781be85"
 ---
 
 I thought it was was about time that I started to have a play with Azure DevOps a little more than I have been doing, one of the things I have always meant to look at in the past is using DevOps to run Ansible playbooks.

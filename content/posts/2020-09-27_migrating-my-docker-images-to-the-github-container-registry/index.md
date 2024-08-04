@@ -3,17 +3,15 @@ title: "Migrating my Docker images to the GitHub Container Registry"
 description: "Migrating Docker images to GitHub Container Registry with automated workflows. Updates Dockerfiles for each image."
 author: "Russ Mckendrick"
 date: 2020-09-27
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Migrating Docker images to GitHub Container Registry with automated workflows. Updates Dockerfiles for each image."
-aliases:
-    - "/migrating-my-docker-images-to-the-github-container-registry-9f304ccf0aaa"
-
 tags:
-    - Docker
-    - Github
-
+  - "Docker"
+  - "Github"
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Migrating Docker images to GitHub Container Registry with automated workflows. Updates Dockerfiles for each image."
+aliases:
+  - "/migrating-my-docker-images-to-the-github-container-registry-9f304ccf0aaa"
 ---
 
 A few weeks after the final draft of the [fourth edition of Mastering Docker ](https://www.packtpub.com/product/mastering-docker-fourth-edition/9781839216572)was submitted Docker made the announcement that they would be making changes to the retention of images in Docker Hub as well as the introduction of rate limits.

@@ -2,25 +2,17 @@
 title: "Consul Docker Cluster"
 description: "Set up Consul cluster on Docker with Docker Machine & Swarm for service discovery, using shared private IPs for networking."
 author: "Russ Mckendrick"
-date: 2016-02-27T17:55:22.000Z
-lastmod: 2021-07-31T12:33:46+01:00
+date: "2016-02-27T17:55:22+01:00"
 tags:
-    - "Automation"
-    - "Docker"
-    - "Tools"
-
+  - "Automation"
+  - "Docker"
+  - "Tools"
 cover:
-    image: "/img/2016-02-27_consul-docker-cluster_0.png" 
-    alt: "Set up Consul cluster on Docker with Docker Machine & Swarm for service discovery, using shared private IPs for networking."
-
-images:
- - "/img/2016-02-27_consul-docker-cluster_0.png"
- - "/img/2016-02-27_consul-docker-cluster_1.png"
-
-
+  image: "/img/2016-02-27_consul-docker-cluster_0.png"
+  alt: "Set up Consul cluster on Docker with Docker Machine & Swarm for service discovery, using shared private IPs for networking."
+lastmod: "2021-07-31T12:33:46+01:00"
 aliases:
-- "/consul-docker-cluster-4b32160c1853"
-
+  - "/consul-docker-cluster-4b32160c1853"
 ---
 
 As mentioned in my previous post I have been doing a lot of work with [Docker Machine](https://github.com/docker/machine) and [Docker Swarm](https://www.docker.com/products/docker-swarm) recently, to configure mulit-host networking with the latest version of Docker I needed to use a service discovery tool. As I had played with [Consul](https://www.consul.io/) in the past I decided to use that for my back-end service discovery.

@@ -2,23 +2,15 @@
 title: "Tiny Docker Images"
 description: "Experience Alpine Linux for ultra-compact Docker images. Drastically reduce container size. Find my images on Docker Hub & GitHub."
 author: "Russ Mckendrick"
-date: 2016-02-01T18:02:26.000Z
-lastmod: 2021-07-31T12:33:42+01:00
-
+date: "2016-02-01T18:02:26+01:00"
 tags:
- - Docker
-
+  - "Docker"
 cover:
-    image: "/img/2016-02-01_tiny-docker-images_0.png" 
-    alt: "Experience Alpine Linux for ultra-compact Docker images. Drastically reduce container size. Find my images on Docker Hub & GitHub."
-
-images:
- - "/img/2016-02-01_tiny-docker-images_0.png"
-
-
+  image: "/img/2016-02-01_tiny-docker-images_0.png"
+  alt: "Experience Alpine Linux for ultra-compact Docker images. Drastically reduce container size. Find my images on Docker Hub & GitHub."
+lastmod: "2021-07-31T12:33:42+01:00"
 aliases:
-- "/tiny-docker-images-3348a128be9d"
-
+  - "/tiny-docker-images-3348a128be9d"
 ---
 
 I had a play with the excellent [Alpine Linux](http://www.alpinelinux.org) over the weekend. Alpine describes itself as;

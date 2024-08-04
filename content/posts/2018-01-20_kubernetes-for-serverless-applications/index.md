@@ -2,28 +2,19 @@
 title: "Kubernetes for Serverless Applications"
 description: "Unlock the potential of Kubernetes for serverless applications with insights and practical guidance from Russ Mckendrick's latest book."
 author: "Russ Mckendrick"
-date: 2018-01-20T10:34:04.124Z
-lastmod: 2021-07-31T12:35:06+01:00
-
+date: "2018-01-20T10:34:04+01:00"
 tags:
- - Life
- - Kubernetes
- - Docker
- - Author
- - Book
-
+  - "Life"
+  - "Kubernetes"
+  - "Docker"
+  - "Author"
+  - "Book"
 cover:
-    image: "/img/2018-01-20_kubernetes-for-serverless-applications_0.png" 
-    alt: "Unlock the potential of Kubernetes for serverless applications with insights and practical guidance from Russ Mckendrick's latest book."
-
-images:
- - "/img/2018-01-20_kubernetes-for-serverless-applications_0.png"
- - "/img/2018-01-20_kubernetes-for-serverless-applications_1.png"
-
-
+  image: "/img/2018-01-20_kubernetes-for-serverless-applications_0.png"
+  alt: "Unlock the potential of Kubernetes for serverless applications with insights and practical guidance from Russ Mckendrick's latest book."
+lastmod: "2021-07-31T12:35:06+01:00"
 aliases:
-- "/kubernetes-for-serverless-applications-2e1c8a24e0e3"
-
+  - "/kubernetes-for-serverless-applications-2e1c8a24e0e3"
 ---
 
 My fifth book has now been published, and is avilable from [Packt](https://medium.com/u/8ef58ed680e6) publishing;

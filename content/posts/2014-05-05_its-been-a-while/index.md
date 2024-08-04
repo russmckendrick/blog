@@ -1,26 +1,17 @@
 ---
 title: "It’s Been A While"
-author: "Russ Mckendrick"
 description: "Revisiting classic albums from Jellyfish, The Wannadies, and Spacehog, exploring the enduring appeal of these musical gems from my collection."
-date: 2014-05-05T11:00:00.000Z
-lastmod: 2021-07-31T12:31:23+01:00
-
+author: "Russ Mckendrick"
+date: "2014-05-05T11:00:00+01:00"
 tags:
-    - "Life"
-    - "Vinyl"
-
-
+  - "Life"
+  - "Vinyl"
 cover:
-    image: "/img/2014-05-05_its-been-a-while_0.png" 
-    alt: "Revisiting classic albums from Jellyfish, The Wannadies, and Spacehog, exploring the enduring appeal of these musical gems from my collection."
-
-images:
- - "/img/2014-05-05_its-been-a-while_0.png"
-
-
+  image: "/img/2014-05-05_its-been-a-while_0.png"
+  alt: "Revisiting classic albums from Jellyfish, The Wannadies, and Spacehog, exploring the enduring appeal of these musical gems from my collection."
+lastmod: "2021-07-31T12:31:23+01:00"
 aliases:
-- "/its-been-a-while-105e8f62c574"
-
+  - "/its-been-a-while-105e8f62c574"
 ---
 
 Been listening to some old albums this past week, some I haven’t heard for years, such as ….

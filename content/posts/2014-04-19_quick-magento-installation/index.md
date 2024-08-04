@@ -2,23 +2,16 @@
 title: "Quick Magento Installation"
 description: "Streamline Magento installations with n98-magerun, a handy command-line tool, for efficient setup and deployment of Magento with sample data."
 author: "Russ Mckendrick"
-date: 2014-04-19T11:00:00.000Z
-lastmod: 2021-07-31T12:31:17+01:00
+date: "2014-04-19T11:00:00+01:00"
 tags:
-    - "Code"
-    - "Tools"
-
+  - "Code"
+  - "Tools"
 cover:
-    image: "/img/2014-04-19_quick-magento-installation_0.png" 
-    alt: "Streamline Magento installations with n98-magerun, a handy command-line tool, for efficient setup and deployment of Magento with sample data."
-
-images:
- - "/img/2014-04-19_quick-magento-installation_0.png"
-
-
+  image: "/img/2014-04-19_quick-magento-installation_0.png"
+  alt: "Streamline Magento installations with n98-magerun, a handy command-line tool, for efficient setup and deployment of Magento with sample data."
+lastmod: "2021-07-31T12:31:17+01:00"
 aliases:
-- "/quick-magento-installation-bd993fd21e8c"
-
+  - "/quick-magento-installation-bd993fd21e8c"
 ---
 
 As part of work I have to install Magento with its sample data a lot for proof of concepts, while the installation is simple it can quickly become a chore. Because of this I have started to use [n98-magerun](http://magerun.net/). It can be installed using the following commands;

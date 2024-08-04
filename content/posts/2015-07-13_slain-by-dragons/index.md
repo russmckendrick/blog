@@ -2,27 +2,17 @@
 title: "Slain by Dragons"
 description: "Examine the web fortunes of Dragons Den businesses. Study site performance under heavy traffic & learn resilience tips."
 author: "Russ Mckendrick"
-date: 2015-07-13T19:36:52.000Z
-lastmod: 2021-07-31T12:33:14+01:00
-
+date: "2015-07-13T19:36:52+01:00"
 tags:
- - "Blog"
- - "Cloud"
- - "Web"
-
+  - "Blog"
+  - "Cloud"
+  - "Web"
 cover:
-    image: "/img/2015-07-13_slain-by-dragons_0.png" 
-    alt: "Examine the web fortunes of Dragons Den businesses. Study site performance under heavy traffic & learn resilience tips."
-
-images:
- - "/img/2015-07-13_slain-by-dragons_0.png"
- - "/img/2015-07-13_slain-by-dragons_1.png"
- - "/img/2015-07-13_slain-by-dragons_2.jpg"
-
-
+  image: "/img/2015-07-13_slain-by-dragons_0.png"
+  alt: "Examine the web fortunes of Dragons Den businesses. Study site performance under heavy traffic & learn resilience tips."
+lastmod: "2021-07-31T12:33:14+01:00"
 aliases:
-- "/slain-by-dragons-5f95ac982e69"
-
+  - "/slain-by-dragons-5f95ac982e69"
 ---
 
 Last night I did some I haven’t done for a while and watched the opening episode of a new [Dragons Den](https://www.bbc.co.uk/programmes/b062r0nm) series while it was being aired.

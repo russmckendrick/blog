@@ -2,23 +2,16 @@
 title: "What’s Been On The Ones & Twos"
 description: "Get ready for a musical journey! Check out Russ Mckendrick's top picks this month on Spotify."
 author: "Russ Mckendrick"
-date: 2015-03-15T12:00:00.000Z
-lastmod: 2021-07-31T12:32:47+01:00
-
+date: "2015-03-15T12:00:00+01:00"
 tags:
-    - "Vinyl"
-    - "Life"
+  - "Vinyl"
+  - "Life"
 cover:
-    image: "/img/2015-03-15_whats-been-on-the-ones-twos_0.png" 
-    alt: "Get ready for a musical journey! Check out Russ Mckendrick's top picks this month on Spotify."
-
-images:
- - "/img/2015-03-15_whats-been-on-the-ones-twos_0.png"
-
-
+  image: "/img/2015-03-15_whats-been-on-the-ones-twos_0.png"
+  alt: "Get ready for a musical journey! Check out Russ Mckendrick's top picks this month on Spotify."
+lastmod: "2021-07-31T12:32:47+01:00"
 aliases:
-- "/whats-been-on-the-ones-twos-6dcd2456fd95"
-
+  - "/whats-been-on-the-ones-twos-6dcd2456fd95"
 ---
 
 According to [my LastFM profile](http://www.last.fm/user/RussMckendrick) I have been listening to the following a lot this month …

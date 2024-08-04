@@ -2,24 +2,16 @@
 title: "Migration of Server & Swap Space"
 description: "Migrate DigitalOcean instance for cost efficiency. Enable swap space to prevent oomkiller issues. Optimize performance with tuned settings."
 author: "Russ Mckendrick"
-date: 2015-03-08T16:37:38.000Z
-lastmod: 2021-07-31T12:32:41+01:00
-
+date: "2015-03-08T16:37:38+01:00"
 tags:
-    - "Tools"
-    - "Cloud"
-
+  - "Tools"
+  - "Cloud"
 cover:
-    image: "/img/2015-03-08_migration-of-server-swap-space_0.png" 
-    alt: "Migrate DigitalOcean instance for cost efficiency. Enable swap space to prevent oomkiller issues. Optimize performance with tuned settings."
-
-images:
- - "/img/2015-03-08_migration-of-server-swap-space_0.png"
-
-
+  image: "/img/2015-03-08_migration-of-server-swap-space_0.png"
+  alt: "Migrate DigitalOcean instance for cost efficiency. Enable swap space to prevent oomkiller issues. Optimize performance with tuned settings."
+lastmod: "2021-07-31T12:32:41+01:00"
 aliases:
-- "/migration-of-server-swap-space-ef1da66dc9f1"
-
+  - "/migration-of-server-swap-space-ef1da66dc9f1"
 ---
 
 I noticed yesterday that my DigitalOcean monthly spend was a little more than I was expecting, turns out I have launched the wrong instance size when I last rebuilt my machine, so to save myself a few dollars a month I migrated the instance to a fresh server with a lower spec.

@@ -2,23 +2,15 @@
 title: "Moving to ZSH"
 description: "Transition smoothly to ZSH on macOS Catalina with tips on setup, Oh My ZSH installation, theme customization, and porting existing configurations."
 author: "Russ Mckendrick"
-date: 2019-06-15T00:00:00.000Z
-lastmod: 2021-07-31T12:35:23+01:00
+date: "2019-06-15T00:00:00+01:00"
 tags:
- - macOS
-
+  - "macOS"
 cover:
-    image: "/img/2019-06-15_moving-to-zsh_0.jpeg" 
-    alt: "Transition smoothly to ZSH on macOS Catalina with tips on setup, Oh My ZSH installation, theme customization, and porting existing configurations."
-
-images:
- - "/img/2019-06-15_moving-to-zsh_0.jpeg"
- - "/img/2019-06-15_moving-to-zsh_1.png"
-
-
+  image: "/img/2019-06-15_moving-to-zsh_0.jpeg"
+  alt: "Transition smoothly to ZSH on macOS Catalina with tips on setup, Oh My ZSH installation, theme customization, and porting existing configurations."
+lastmod: "2021-07-31T12:35:23+01:00"
 aliases:
-- "/moving-to-zsh-1b0cb5659afc"
-
+  - "/moving-to-zsh-1b0cb5659afc"
 ---
 
 After the [announcement a few weeks back](https://www.theverge.com/2019/6/4/18651872/apple-macos-catalina-zsh-bash-shell-replacement-features) that Apple would be defaulting to [zsh](http://zsh.sourceforge.net) in macOS Catalina I decided to take the plunge and make the switch on my current machines.

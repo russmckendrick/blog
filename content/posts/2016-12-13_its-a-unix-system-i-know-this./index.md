@@ -2,30 +2,16 @@
 title: "It’s a UNIX system, I know this."
 description: "Discover Microsoft SQL Server on Mac via Docker, along with .NET Core & Visual Studio. A glimpse into technology's evolving integration."
 author: "Russ Mckendrick"
-date: 2016-12-13T09:01:02.264Z
-lastmod: 2021-07-31T12:34:28+01:00
-
+date: "2016-12-13T09:01:02+01:00"
 tags:
- - Docker
- - DevOps
-
+  - "Docker"
+  - "DevOps"
 cover:
-    image: "/img/2016-12-13_its-a-unix-system-i-know-this._0.png" 
-    alt: "Discover Microsoft SQL Server on Mac via Docker, along with .NET Core & Visual Studio. A glimpse into technology's evolving integration."
-
-images:
- - "/img/2016-12-13_its-a-unix-system-i-know-this._0.png"
- - "/img/2016-12-13_its-a-unix-system-i-know-this._1.png"
- - "/img/2016-12-13_its-a-unix-system-i-know-this._2.png"
- - "/img/2016-12-13_its-a-unix-system-i-know-this._3.png"
- - "/img/2016-12-13_its-a-unix-system-i-know-this._4.png"
- - "/img/2016-12-13_its-a-unix-system-i-know-this._5.png"
- - "/img/2016-12-13_its-a-unix-system-i-know-this._6.png"
-
-
+  image: "/img/2016-12-13_its-a-unix-system-i-know-this._0.png"
+  alt: "Discover Microsoft SQL Server on Mac via Docker, along with .NET Core & Visual Studio. A glimpse into technology's evolving integration."
+lastmod: "2021-07-31T12:34:28+01:00"
 aliases:
-- "/its-a-unix-system-i-know-this-44fa5a1d4b4"
-
+  - "/its-a-unix-system-i-know-this-44fa5a1d4b4"
 ---
 
 I am late to the party with this post due to other [projects](https://media-glass.es/pre-order-docker-data-management-with-flocker-bed7b582e3a) and [work](http://www.node4.co.uk/) taking up nearly all of my time, but its one I have been to write for a while.

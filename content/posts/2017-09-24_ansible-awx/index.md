@@ -2,31 +2,17 @@
 title: "Ansible AWX"
 description: "Author Russ Mckendrick explores Ansible AWX, the open-source version of Ansible Tower. Follow his guide to quickly set up AWX with CentOS 7 using Vagrant."
 author: "Russ Mckendrick"
-date: 2017-09-24T14:28:05.252Z
-lastmod: 2021-07-31T12:34:59+01:00
-
+date: "2017-09-24T14:28:05+01:00"
 tags:
- - DevOps
- - Ansible
- - "Linux"
-
+  - "DevOps"
+  - "Ansible"
+  - "Linux"
 cover:
-    image: "/img/2017-09-24_ansible-awx_0.png" 
-    alt: "Author Russ Mckendrick explores Ansible AWX, the open-source version of Ansible Tower. Follow his guide to quickly set up AWX with CentOS 7 using Vagrant."
-
-images:
- - "/img/2017-09-24_ansible-awx_0.png"
- - "/img/2017-09-24_ansible-awx_1.png"
- - "/img/2017-09-24_ansible-awx_2.png"
- - "/img/2017-09-24_ansible-awx_3.png"
- - "/img/2017-09-24_ansible-awx_4.png"
- - "/img/2017-09-24_ansible-awx_5.png"
- - "/img/2017-09-24_ansible-awx_6.png"
-
-
+  image: "/img/2017-09-24_ansible-awx_0.png"
+  alt: "Author Russ Mckendrick explores Ansible AWX, the open-source version of Ansible Tower. Follow his guide to quickly set up AWX with CentOS 7 using Vagrant."
+lastmod: "2021-07-31T12:34:59+01:00"
 aliases:
-- "/ansible-awx-cdb395fb70c7"
-
+  - "/ansible-awx-cdb395fb70c7"
 ---
 
 It has been a while as I have been busy writing, I thought I would spend some of my freetime having a very quick play with [Ansible AWX](http://www.eweek.com/enterprise-apps/red-hat-launches-open-source-ansible-tower-awx-automation-project), which is the Open Source version of [Ansible Tower](https://www.ansible.com/tower/).

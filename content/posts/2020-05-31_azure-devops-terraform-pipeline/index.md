@@ -3,20 +3,18 @@ title: "Azure DevOps Terraform Pipeline"
 description: "Learn to create a robust Azure DevOps pipeline for Terraform deployments, managing infrastructure as code efficiently with Azure CLI and Terraform tasks."
 author: "Russ Mckendrick"
 date: 2020-05-31
-cover:
-    image: "2020-05-31_azure-devops-terraform-pipeline_0.png" 
-    relative: true
-    alt: "Learn to create a robust Azure DevOps pipeline for Terraform deployments, managing infrastructure as code efficiently with Azure CLI and Terraform tasks."
-aliases:
-    - "/azure-devops-terraform-pipeline-e50f1721ea1"
-
 tags:
-    - Terraform
-    - Azure
-    - DevOps
-    - Automation
-    - Infrastructure as Code
-
+  - "Terraform"
+  - "Azure"
+  - "DevOps"
+  - "Automation"
+  - "Infrastructure as Code"
+cover:
+  image: "2020-05-31_azure-devops-terraform-pipeline_0.png"
+  relative: true
+  alt: "Learn to create a robust Azure DevOps pipeline for Terraform deployments, managing infrastructure as code efficiently with Azure CLI and Terraform tasks."
+aliases:
+  - "/azure-devops-terraform-pipeline-e50f1721ea1"
 ---
 
 In my [last post](https://www.mediaglasses.blog/2020/05/10/azure-devops-ansible-pipeline/) I wrote about how I created an Azure DevOps pipeline using Ansible in a more “Terraform” way, however, although I have used Terraform and Azure DevOps quite a bit I realised I didn’t really have a template for a pipeline.

@@ -2,37 +2,16 @@
 title: "Thoughts on Amazon Lightsail"
 description: "Amazon Lightsail offers an easy entry to AWS with instance hosting akin to Digital Ocean. A look at its features, costs, and potential limitations."
 author: "Russ Mckendrick"
-date: 2016-12-18T17:21:49.496Z
-lastmod: 2021-07-31T12:34:30+01:00
-
+date: "2016-12-18T17:21:49+01:00"
 tags:
- - AWS
- - Cloud
-
+  - "AWS"
+  - "Cloud"
 cover:
-    image: "/img/2016-12-18_thoughts-on-amazon-lightsail_0.png" 
-    alt: "Amazon Lightsail offers an easy entry to AWS with instance hosting akin to Digital Ocean. A look at its features, costs, and potential limitations."
-
-images:
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_0.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_1.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_2.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_3.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_4.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_5.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_6.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_7.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_8.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_9.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_10.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_11.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_12.png"
- - "/img/2016-12-18_thoughts-on-amazon-lightsail_13.png"
-
-
+  image: "/img/2016-12-18_thoughts-on-amazon-lightsail_0.png"
+  alt: "Amazon Lightsail offers an easy entry to AWS with instance hosting akin to Digital Ocean. A look at its features, costs, and potential limitations."
+lastmod: "2021-07-31T12:34:30+01:00"
 aliases:
-- "/thoughts-on-amazon-lightsail-fc37ca50d626"
-
+  - "/thoughts-on-amazon-lightsail-fc37ca50d626"
 ---
 
 I am still catching up on all of the announcements from the AWS re:invent 2016, one of the ones I was interested in was Amazon Lightsail. I have always found Digital Ocean to be useful for launching instances, doing some test installations of XYZ and then terminating them.

@@ -2,25 +2,15 @@
 title: "Docker Networking Magic"
 description: "Explore Docker's new networking features with Weave for encrypted, multi-host container networking. See the magic in action!"
 author: "Russ Mckendrick"
-date: 2016-02-25T17:58:14.000Z
-lastmod: 2021-07-31T12:33:44+01:00
-
+date: "2016-02-25T17:58:14+01:00"
 tags:
- - Docker
-
+  - "Docker"
 cover:
-    image: "/img/2016-02-25_docker-networking-magic_0.png" 
-    alt: "Explore Docker's new networking features with Weave for encrypted, multi-host container networking. See the magic in action!"
-
-images:
- - "/img/2016-02-25_docker-networking-magic_0.png"
- - "/img/2016-02-25_docker-networking-magic_1.png"
- - "/img/2016-02-25_docker-networking-magic_2.gif"
-
-
+  image: "/img/2016-02-25_docker-networking-magic_0.png"
+  alt: "Explore Docker's new networking features with Weave for encrypted, multi-host container networking. See the magic in action!"
+lastmod: "2021-07-31T12:33:44+01:00"
 aliases:
-- "/docker-networking-magic-d85b497f58ed"
-
+  - "/docker-networking-magic-d85b497f58ed"
 ---
 
 I have been quiet on here as I am in the process of writing again, one of things I have been looking at is Dockers new networking features. This gave me an excuse to have a play with Weave. Rather than go into too much detail here, lets go all click bait because you won’t believe what happened next.

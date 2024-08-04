@@ -2,25 +2,17 @@
 title: "Git + Rebase"
 description: "Streamline your Git workflow with Russ Mckendrick's tips! Learn how to fork, add remotes, and rebase for maximum efficiency."
 author: "Russ Mckendrick"
-date: 2015-03-22T12:00:00.000Z
-lastmod: 2021-07-31T12:32:52+01:00
-
+date: "2015-03-22T12:00:00+01:00"
 tags:
-    - "Tools"
-    - "Code"
-    - "GitHub"
-
+  - "Tools"
+  - "Code"
+  - "GitHub"
 cover:
-    image: "/img/2015-03-22_git-rebase_0.png" 
-    alt: "Streamline your Git workflow with Russ Mckendrick's tips! Learn how to fork, add remotes, and rebase for maximum efficiency."
-
-images:
- - "/img/2015-03-22_git-rebase_0.png"
-
-
+  image: "/img/2015-03-22_git-rebase_0.png"
+  alt: "Streamline your Git workflow with Russ Mckendrick's tips! Learn how to fork, add remotes, and rebase for maximum efficiency."
+lastmod: "2021-07-31T12:32:52+01:00"
 aliases:
-- "/git-rebase-b6180e17cf81"
-
+  - "/git-rebase-b6180e17cf81"
 ---
 
 As you may have noticed, the blog looks different (again). This is because I have moved from [Wordpress](https://wordpress.org "Wordpress") back to [Ghost](https://ghost.org "Ghost") using their [GhostPro](http://blog.ghost.org/introducing-ghostpro/ "GhostPro") offering.

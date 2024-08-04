@@ -2,19 +2,16 @@
 title: "Google promotes HTTPS everywhere"
 description: "Unlock the secrets of Google's HTTPS ranking signal and SNI! Learn how to secure your site for maximum visibility."
 author: "Russ Mckendrick"
-date: 2014-08-10T11:00:00.000Z
-lastmod: 2021-07-31T12:31:51+01:00
+date: "2014-08-10T11:00:00+01:00"
 tags:
-    - "Web"
-    - "Tools"
+  - "Web"
+  - "Tools"
 cover:
-    image: "/img/2014-08-10_google-promotes-https-everywhere_0.png" 
-    alt: "Unlock the secrets of Google's HTTPS ranking signal and SNI! Learn how to secure your site for maximum visibility."
-images:
- - "/img/2014-08-10_google-promotes-https-everywhere_0.png"
+  image: "/img/2014-08-10_google-promotes-https-everywhere_0.png"
+  alt: "Unlock the secrets of Google's HTTPS ranking signal and SNI! Learn how to secure your site for maximum visibility."
+lastmod: "2021-07-31T12:31:51+01:00"
 aliases:
-- "/google-promotes-https-everywhere-e5a77c35bb64"
-
+  - "/google-promotes-https-everywhere-e5a77c35bb64"
 ---
 
 Google announced earlier this week that they are going to use [HTTPS as a ranking signal](http://googleonlinesecurity.blogspot.co.uk/2014/08/https-as-ranking-signal_6.html):

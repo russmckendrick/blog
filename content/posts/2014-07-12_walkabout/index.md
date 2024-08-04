@@ -2,25 +2,18 @@
 title: "Walkabout"
 description: "Catch up on my latest adventures: Docker 1.0 release, CentOS 7, new site theme, music from Aphex Twin, and a work post on AWS multi-factor authentication."
 author: "Russ Mckendrick"
-date: 2014-07-12T11:00:00.000Z
-lastmod: 2021-07-31T12:31:38+01:00
+date: "2014-07-12T11:00:00+01:00"
 tags:
-    - "Life"
-    - "Vinyl"
-    - "Docker"
-    - "Linux"
-
+  - "Life"
+  - "Vinyl"
+  - "Docker"
+  - "Linux"
 cover:
-    image: "/img/2014-07-12_walkabout_0.png" 
-    alt: "Catch up on my latest adventures: Docker 1.0 release, CentOS 7, new site theme, music from Aphex Twin, and a work post on AWS multi-factor authentication."
-
-images:
- - "/img/2014-07-12_walkabout_0.png"
-
-
+  image: "/img/2014-07-12_walkabout_0.png"
+  alt: "Catch up on my latest adventures: Docker 1.0 release, CentOS 7, new site theme, music from Aphex Twin, and a work post on AWS multi-factor authentication."
+lastmod: "2021-07-31T12:31:38+01:00"
 aliases:
-- "/walkabout-f79c9a604b6c"
-
+  - "/walkabout-f79c9a604b6c"
 ---
 
 I have been missing in action for a while, busy with work and other “stuff”. Since I last posted …..

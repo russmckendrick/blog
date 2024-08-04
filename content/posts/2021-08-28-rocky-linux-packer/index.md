@@ -1,19 +1,18 @@
 ---
 title: "Rocky Linux and Packer"
-author: "Russ McKendrick"
-date: 2021-08-28T15:52:25+01:00
 description: "Explore Packer's use with Rocky Linux. Migrate CentOS projects efficiently. Use provided templates for Virtualbox and VMWare."
-draft: false
-showToc: true
-cover:
-    image: "cover.png"
-    relative: true
-    alt: "Explore Packer's use with Rocky Linux. Migrate CentOS projects efficiently. Use provided templates for Virtualbox and VMWare."
+author: "Russ McKendrick"
+date: "2021-08-28T15:52:25+01:00"
 tags:
   - "Packer"
   - "Linux"
   - "Tools"
-
+cover:
+  image: "cover.png"
+  relative: true
+  alt: "Explore Packer's use with Rocky Linux. Migrate CentOS projects efficiently. Use provided templates for Virtualbox and VMWare."
+draft: false
+showToc: true
 ---
 
 It has been a while since I last looked at running [Packer](https://www.packer.io) locally, when I did [CentOS 8 had just been released](/2019/10/13/packer-centos-8/).

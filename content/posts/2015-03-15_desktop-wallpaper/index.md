@@ -2,26 +2,15 @@
 title: "Desktop Wallpaper"
 description: "Timeless charm! Exploring the 'Aqua Blue' desktop wallpaper, a MacOS X standard since 2001."
 author: "Russ Mckendrick"
-date: 2015-03-15T12:00:00.000Z
-lastmod: 2021-07-31T12:32:45+01:00
-
+date: "2015-03-15T12:00:00+01:00"
 tags:
-    - "macOS"
-
-
+  - "macOS"
 cover:
-    image: "/img/2015-03-15_desktop-wallpaper_0.png" 
-    alt: "Timeless charm! Exploring the 'Aqua Blue' desktop wallpaper, a MacOS X standard since 2001."
-
-images:
- - "/img/2015-03-15_desktop-wallpaper_0.png"
- - "/img/2015-03-15_desktop-wallpaper_1.jpeg"
- - "/img/2015-03-15_desktop-wallpaper_2.jpg"
-
-
+  image: "/img/2015-03-15_desktop-wallpaper_0.png"
+  alt: "Timeless charm! Exploring the 'Aqua Blue' desktop wallpaper, a MacOS X standard since 2001."
+lastmod: "2021-07-31T12:32:45+01:00"
 aliases:
-- "/desktop-wallpaper-f321c26f2fe8"
-
+  - "/desktop-wallpaper-f321c26f2fe8"
 ---
 
 It has just dawned on me, I have been using the “Aqua Blue” variation of wallpapers which stated shiping with MacOS X since I got my first iMac G3 in 2001.

@@ -2,21 +2,16 @@
 title: "Yet More Docker"
 description: "Enhance your Docker experience with Puppet-managed containers, featuring a suite of trusted builds for databases and PHP environments on the Docker Index."
 author: "Russ Mckendrick"
-date: 2014-05-04T11:00:00.000Z
-lastmod: 2021-07-31T12:31:21+01:00
+date: "2014-05-04T11:00:00+01:00"
 tags:
-    - "Docker"
-    - "Tools"
+  - "Docker"
+  - "Tools"
 cover:
-    image: "/img/2014-05-04_yet-more-docker_0.png" 
-    alt: "Enhance your Docker experience with Puppet-managed containers, featuring a suite of trusted builds for databases and PHP environments on the Docker Index."
-images:
- - "/img/2014-05-04_yet-more-docker_0.png"
-
-
+  image: "/img/2014-05-04_yet-more-docker_0.png"
+  alt: "Enhance your Docker experience with Puppet-managed containers, featuring a suite of trusted builds for databases and PHP environments on the Docker Index."
+lastmod: "2021-07-31T12:31:21+01:00"
 aliases:
-- "/yet-more-docker-ce917afc06cf"
-
+  - "/yet-more-docker-ce917afc06cf"
 ---
 
 Since [my last post about Docker](/2014/04/27/deploying-a-stable-docker-setup-on-centos-with-shipyard/) I have been playing a lot more, rather than use a GUI like [Shipyard](http://shipyard-project.com/) I decided to use @garethr’s [excellent Puppet Module](https://forge.puppetlabs.com/garethr/docker) to manage and deploy my containers. This allowed me to take a better look at the builds I had over at the [Docker Index](https://index.docker.io/). The following is a list of builds I have deployed so far …..

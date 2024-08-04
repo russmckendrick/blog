@@ -2,25 +2,17 @@
 title: "Jenkins"
 description: "Discover Jenkins for automation on CentOS 7 with NGINX SSL setup. Orchestrate tasks efficiently!"
 author: "Russ Mckendrick"
-date: 2015-12-20T18:10:26.000Z
-lastmod: 2021-07-31T12:33:38+01:00
-
+date: "2015-12-20T18:10:26+01:00"
 tags:
- - "Linux"
- - Automation
- - DevOps
-
+  - "Linux"
+  - "Automation"
+  - "DevOps"
 cover:
-    image: "/img/2015-12-20_jenkins_0.png" 
-    alt: "Discover Jenkins for automation on CentOS 7 with NGINX SSL setup. Orchestrate tasks efficiently!"
-
-images:
- - "/img/2015-12-20_jenkins_0.png"
-
-
+  image: "/img/2015-12-20_jenkins_0.png"
+  alt: "Discover Jenkins for automation on CentOS 7 with NGINX SSL setup. Orchestrate tasks efficiently!"
+lastmod: "2021-07-31T12:33:38+01:00"
 aliases:
-- "/jenkins-afbc870c46ee"
-
+  - "/jenkins-afbc870c46ee"
 ---
 
 Jenkins has always been a bit of an elephant in the room to me. Not being a developer I have always just shrugged it off a tool used for running unit tests, however, as I moving more into orchestration and automation I am finding the need for a tool which can run both tasks and unit tests, so this weekend I decided to finally take the plunge and have a play around with it.

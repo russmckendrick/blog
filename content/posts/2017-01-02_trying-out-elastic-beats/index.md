@@ -2,40 +2,17 @@
 title: "Trying out Elastic Beats"
 description: "Explore Elastic Beats for data shipping in DevOps. Learn to set up and configure Metricbeat on Docker Swarm for system and Docker metrics analysis."
 author: "Russ Mckendrick"
-date: 2017-01-02T21:49:35.674Z
-lastmod: 2021-07-31T12:34:42+01:00
-
+date: "2017-01-02T21:49:35+01:00"
 tags:
- - Docker
- - DevOps
- - Tools
-
+  - "Docker"
+  - "DevOps"
+  - "Tools"
 cover:
-    image: "/img/2017-01-02_trying-out-elastic-beats_0.png" 
-    alt: "Explore Elastic Beats for data shipping in DevOps. Learn to set up and configure Metricbeat on Docker Swarm for system and Docker metrics analysis."
-
-images:
- - "/img/2017-01-02_trying-out-elastic-beats_0.png"
- - "/img/2017-01-02_trying-out-elastic-beats_1.png"
- - "/img/2017-01-02_trying-out-elastic-beats_2.png"
- - "/img/2017-01-02_trying-out-elastic-beats_3.png"
- - "/img/2017-01-02_trying-out-elastic-beats_4.png"
- - "/img/2017-01-02_trying-out-elastic-beats_5.png"
- - "/img/2017-01-02_trying-out-elastic-beats_6.png"
- - "/img/2017-01-02_trying-out-elastic-beats_7.png"
- - "/img/2017-01-02_trying-out-elastic-beats_8.png"
- - "/img/2017-01-02_trying-out-elastic-beats_9.png"
- - "/img/2017-01-02_trying-out-elastic-beats_10.png"
- - "/img/2017-01-02_trying-out-elastic-beats_11.png"
- - "/img/2017-01-02_trying-out-elastic-beats_12.png"
- - "/img/2017-01-02_trying-out-elastic-beats_13.png"
- - "/img/2017-01-02_trying-out-elastic-beats_14.png"
- - "/img/2017-01-02_trying-out-elastic-beats_15.png"
-
-
+  image: "/img/2017-01-02_trying-out-elastic-beats_0.png"
+  alt: "Explore Elastic Beats for data shipping in DevOps. Learn to set up and configure Metricbeat on Docker Swarm for system and Docker metrics analysis."
+lastmod: "2021-07-31T12:34:42+01:00"
 aliases:
-- "/trying-out-elastic-beats-db618e758afa"
-
+  - "/trying-out-elastic-beats-db618e758afa"
 ---
 
 ![a person playing a drum set](/img/2017-01-02_trying-out-elastic-beats_0.png)

@@ -2,29 +2,19 @@
 title: "270 Days"
 description: "Catch up on Russ Mckendrick's adventures in the last 270 days! From book writing to vinyl collecting"
 author: "Russ Mckendrick"
-date: 2018-10-25T09:38:28.257Z
-lastmod: 2021-07-31T12:35:12+01:00
-
+date: "2018-10-25T09:38:28+01:00"
 tags:
- - Docker
- - Life
- - Book
- - Vinyl
- - Author
-
+  - "Docker"
+  - "Life"
+  - "Book"
+  - "Vinyl"
+  - "Author"
 cover:
-    image: "/img/2018-10-25_270-days_0.png" 
-    alt: "Catch up on Russ Mckendrick's adventures in the last 270 days! From book writing to vinyl collecting"
-
-images:
- - "/img/2018-10-25_270-days_0.png"
- - "/img/2018-10-25_270-days_1.png"
- - "/img/2018-10-25_270-days_2.png"
-
-
+  image: "/img/2018-10-25_270-days_0.png"
+  alt: "Catch up on Russ Mckendrick's adventures in the last 270 days! From book writing to vinyl collecting"
+lastmod: "2021-07-31T12:35:12+01:00"
 aliases:
-- "/270-days-13d3d0537bbf"
-
+  - "/270-days-13d3d0537bbf"
 ---
 
 It has been 270 days since my last post, so what I have been doing with my time?
