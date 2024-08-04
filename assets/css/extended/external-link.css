@@ -1,0 +1,17 @@
+.external-link-wrapper {
+  white-space: nowrap;
+}
+
+.external-link-icon {
+  display: inline-block;
+  text-decoration: none;
+  margin-left: 0.1em;
+  margin-right: 0.3em; /* Add space after the arrow by default */
+  font-size: 0.7em;
+  vertical-align: super;
+  opacity: 0.4;
+}
+
+.external-link-icon.no-space {
+  margin-right: 0; /* Remove space after the arrow when .no-space class is present */
+}

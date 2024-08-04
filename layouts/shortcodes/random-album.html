@@ -1,0 +1,59 @@
+{{ $albumsUrl := "https://www.mckendrick.rocks/index.json" }}
+
+<section class="bg-center bg-no-repeat bg-[url('https://www.mckendrick.rocks/images/banner.jpg')] bg-gray-700 dark:bg-gray-900 bg-blend-multiply py-10">
+    <div class="container mx-auto px-4">
+      <div class="random-record-container">
+        <div class="random-record-sleeve">
+          <div class="random-record-sleeve-front" id="random-record-cover"></div>
+          <div class="random-record-sleeve-back">
+            <h3 id="random-record-album" class="text-xl font-bold mb-2"></h3>
+            <p id="random-record-artist" class="text-lg mb-2"></p>
+            <p>Date added: <span id="random-record-date"></span></p>
+          </div>
+        </div>
+      </div>
+      <div class="random-record-info">
+        <a href="#" id="random-record-goto-album" class="random-record-button random-record-button-primary" target="_blank" rel="noopener noreferrer">Album Details</a>
+        <button id="random-record-get-another" class="random-record-button random-record-button-secondary">Grab Another Album</button>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+  const albumsUrl = {{ $albumsUrl }};
+  const albumCoverEl = document.getElementById('random-record-cover');
+  const albumArtistEl = document.getElementById('random-record-artist');
+  const albumAlbumEl = document.getElementById('random-record-album');
+  const albumDateEl = document.getElementById('random-record-date');
+  const getRandomAlbumBtn = document.getElementById('random-record-get-another');
+  const gotoAlbumLink = document.getElementById('random-record-goto-album');
+  let albums;
+  
+  fetch(albumsUrl)
+      .then(response => response.text())
+      .then(data => {
+          data = data.replace(/&nbsp;/g, ' ');
+          albums = JSON.parse(data).documents;
+          getRandomAlbum();
+      })
+      .catch(error => console.error(error));
+  
+  function getRandomAlbum() {
+      const randomIndex = Math.floor(Math.random() * albums.length);
+      const randomAlbum = albums[randomIndex];
+      albumCoverEl.style.backgroundImage = `url('${randomAlbum.coverImage}')`;
+      albumArtistEl.textContent = randomAlbum.artist;
+      albumAlbumEl.textContent = randomAlbum.album;
+      albumDateEl.textContent = randomAlbum.date;
+      gotoAlbumLink.href = `https://www.mckendrick.rocks${randomAlbum.uri}`;
+  }
+  
+  getRandomAlbumBtn.addEventListener('click', getRandomAlbum);
+  
+  gotoAlbumLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (gotoAlbumLink.href !== '#') {
+          window.open(gotoAlbumLink.href, '_blank', 'noopener,noreferrer');
+      }
+  });
+  </script>

@@ -1,0 +1,89 @@
+:root {
+    --random-record-background-color: #ffffff;
+    --random-record-text-color: #333333;
+    --random-record-sleeve-back-color: #f0f0f0;
+    --random-record-button-primary-bg: #4CAF50;
+    --random-record-button-primary-text: #ffffff;
+    --random-record-button-secondary-bg: #008CBA;
+    --random-record-button-secondary-text: #ffffff;
+    --random-record-shadow-color: rgba(0,0,0,0.2);
+  }
+
+  .dark {
+    --random-record-background-color: #1a1a1a;
+    --random-record-text-color: #e0e0e0;
+    --random-record-sleeve-back-color: #2c2c2c;
+    --random-record-button-primary-bg: #45a049;
+    --random-record-button-primary-text: #ffffff;
+    --random-record-button-secondary-bg: #007B9E;
+    --random-record-button-secondary-text: #ffffff;
+    --random-record-shadow-color: rgba(255,255,255,0.1);
+  }
+
+  .random-record-container {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    position: relative;
+    perspective: 1000px;
+  }
+  .random-record-sleeve {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  .random-record-sleeve:hover {
+    transform: rotateY(180deg);
+  }
+  .random-record-sleeve-front, .random-record-sleeve-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px var(--random-record-shadow-color);
+  }
+  .random-record-sleeve-front {
+    background-size: cover;
+    background-position: center;
+  }
+  .random-record-sleeve-back {
+    background-color: var(--random-record-sleeve-back-color);
+    color: var(--random-record-text-color);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+  .random-record-info {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .random-record-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .random-record-button-primary {
+    background-color: var(--random-record-button-primary-bg);
+    color: var(--random-record-button-primary-text);
+  }
+  .random-record-button-primary:hover {
+    filter: brightness(110%);
+  }
+  .random-record-button-secondary {
+    background-color: var(--random-record-button-secondary-bg);
+    color: var(--random-record-button-secondary-text);
+  }
+  .random-record-button-secondary:hover {
+    filter: brightness(110%);
+  }
