@@ -21,12 +21,14 @@
   }
 
   .random-record-container {
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    max-width: 500px;
     margin: 0 auto;
     position: relative;
     perspective: 1000px;
+    aspect-ratio: 1 / 1;
   }
+  
   .random-record-sleeve {
     width: 100%;
     height: 100%;
@@ -34,6 +36,7 @@
     transition: transform 0.6s;
     transform-style: preserve-3d;
   }
+
   .random-record-sleeve:hover {
     transform: rotateY(180deg);
   }
@@ -73,6 +76,7 @@
     font-weight: bold;
     transition: background-color 0.3s, color 0.3s;
   }
+
   .random-record-button-primary {
     background-color: var(--random-record-button-primary-bg);
     color: var(--random-record-button-primary-text);
@@ -86,4 +90,26 @@
   }
   .random-record-button-secondary:hover {
     filter: brightness(110%);
+  }
+
+  @media (max-width: 768px) {
+    .random-record-container {
+      max-width: 90%;
+    }
+  
+    .random-record-button {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .random-record-container {
+      max-width: 90%;
+    }
+  
+    .random-record-button {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
   }
