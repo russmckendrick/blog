@@ -6,7 +6,9 @@ date: "2013-11-17T12:00:00+01:00"
 tags:
   - "macOS"
   - "Tools"
-cover: ""
+cover:
+  image: "/img/2014-07-22_high-availability-central-logging-in-aws_0.png"
+  alt: "Explore the essential tools and services that enhance my efficiency as a developer and sysadmin, from code editors and version control to server hosting."
 lastmod: "2021-07-31T12:31:04+01:00"
 aliases:
   - "/stuff-i-use-2596d0593b6a"
