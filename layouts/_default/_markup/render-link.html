@@ -1,10 +1,14 @@
-<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="nofollow noopener noreferrer"{{ end }}>
-  {{- if (in .PlainText "[noExternalIcon]") -}}
-  {{- .Text | replaceRE "\\[noExternalIcon\\]" "" | safeHTML -}}
-  {{- else -}}
-  {{ .Text | safeHTML }}
-  {{- end -}}
-  {{- if and (strings.HasPrefix .Destination "http") (not (in .PlainText "[noExternalIcon]")) -}}
-  <span style="display: inline-block; text-decoration: none; margin-left: 0.2em; font-size: 0.9em; vertical-align: super;">&#x2197;</span>
-  {{- end -}}
+{{- if and (strings.HasPrefix .Destination "http") (not (in .PlainText "[noExternalIcon]")) -}}
+<span class="external-link-wrapper">
+{{- end -}}
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="nofollow noopener noreferrer"{{ end }} class="external-link">
+ {{- if (in .PlainText "[noExternalIcon]") -}}
+ {{- .Text | replaceRE "\\[noExternalIcon\\]" "" | safeHTML -}}
+ {{- else -}}
+ {{- .Text | replaceRE "\\[noSpace\\]" "" | safeHTML -}}
+ {{- end -}}
 </a>
+{{- if and (strings.HasPrefix .Destination "http") (not (in .PlainText "[noExternalIcon]")) -}}
+<span class="external-link-icon{{ if in .PlainText "[noSpace]" }} no-space{{ end }}">↗</span>
+</span>
+{{- end -}}
