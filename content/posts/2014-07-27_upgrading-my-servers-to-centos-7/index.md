@@ -3,6 +3,9 @@ title: "Upgrading my servers to CentOS 7"
 description: "Learn about the process of upgrading servers from CentOS 6 to CentOS 7, including updates for Puppet Master server, Apache configuration, and Docker server."
 author: "Russ Mckendrick"
 date: "2014-07-27T11:00:00+01:00"
+cover:
+  image: "/img/2014-07-27_upgrading-my-servers-to-centos-7.png"
+  alt: "Learn about the process of upgrading servers from CentOS 6 to CentOS 7, including updates for Puppet Master server, Apache configuration, and Docker server."
 tags:
   - "Linux"
   - "Automation"
