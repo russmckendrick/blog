@@ -25,7 +25,7 @@
 <link rel="canonical" href="{{ if .Params.canonicalURL -}}
     {{ trim .Params.canonicalURL " " }}
 {{- else if eq .RelPermalink "/404.html" -}}
-    {{ .Site.BaseURL }}404/
+    {{ .Site.BaseURL }}404
 {{- else -}}
     {{ .Permalink }}
 {{- end }}">
