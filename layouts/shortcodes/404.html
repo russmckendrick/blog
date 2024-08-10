@@ -1,0 +1,10 @@
+{{- range $name, $taxonomy := .Site.Taxonomies.tags }}
+    {{- $count := len $taxonomy }}
+    {{- with $.Site.GetPage (printf "/tags/%s" $name) }}
+        <a href="{{ .Permalink }}" class="tag">
+            {{ .Title }}
+            {{- if .Params.icon }} {{ .Params.icon | safeHTML }} {{- end }}
+            <span class="tag-count">{{ $count }}</span>
+        </a>
+    {{- end }}
+{{- end }}
