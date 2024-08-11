@@ -360,7 +360,7 @@ A high-resolution digital photograph featuring an Azure-colored traditional comb
 
 {{< gallery match="images/covers/generating-an-azure-storage-account-sas-token-using-azure-logic-and-function-apps/01.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="800x800 q90 Lanczos" showExif=true previewType="blur" embedPreview=true >}}<br>
 
-**Flux:1 [Pro]** ...
+**Flux.1 [pro]** ...
 
 {{< gallery match="images/covers/generating-an-azure-storage-account-sas-token-using-azure-logic-and-function-apps/02.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="800x800 q90 Lanczos" showExif=true previewType="blur" embedPreview=true >}}<br>
 
@@ -378,7 +378,7 @@ Retro computing magazine cover, KQL queries theme vibrant illustrated with futur
 
 {{< gallery match="images/covers/azure-firewall-kql-query/01.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="800x800 q90 Lanczos" showExif=true previewType="blur" embedPreview=true >}}<br>
 
-**Flux:1 [Pro]** ...
+**Flux.1 [pro]** ...
 
 {{< gallery match="images/covers/azure-firewall-kql-query/02.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="800x800 q90 Lanczos" showExif=true previewType="blur" embedPreview=true >}}<br>
 
@@ -395,7 +395,7 @@ Retro computing magazine cover, KQL queries theme vibrant illustrated landscape 
 
 {{< gallery match="images/covers/azure-virtual-desktop-kql-queries/01.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="800x800 q90 Lanczos" showExif=true previewType="blur" embedPreview=true >}}<br>
 
-**Flux:1 [Pro]** ...
+**Flux.1 [pro]** ...
 
 {{< gallery match="images/covers/azure-virtual-desktop-kql-queries/02.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="800x800 q90 Lanczos" showExif=true previewType="blur" embedPreview=true >}}<br>
 
@@ -412,7 +412,7 @@ Photorealistic image of a 1950s workshop bench. Two side-by-side conveyor belts 
 
 {{< gallery match="images/covers/azure-devops-ansible-pipeline-boosting-efficiency-with-caching/01.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="800x800 q90 Lanczos" showExif=true previewType="blur" embedPreview=true >}}<br>
 
-**Flux:1 [Pro]** ...
+**Flux.1 [pro]** ...
 
 {{< gallery match="images/covers/azure-devops-ansible-pipeline-boosting-efficiency-with-caching/02.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="800x800 q90 Lanczos" showExif=true previewType="blur" embedPreview=true >}}<br>
 
@@ -428,7 +428,7 @@ Create a photorealistic image of a well-organized tool wall in an indoor rustic 
 
 {{< gallery match="images/covers/day-to-day-tools-the-2024-edition/01.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="800x800 q90 Lanczos" showExif=true previewType="blur" embedPreview=true >}}<br>
 
-**Flux:1 [Pro]** ...
+**Flux.1 [pro]** ...
 
 {{< gallery match="images/covers/day-to-day-tools-the-2024-edition/02.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="800x800 q90 Lanczos" showExif=true previewType="blur" embedPreview=true >}}<br>
 
@@ -444,7 +444,7 @@ An extremely photo-realistic image of a developer with pronounced frustration on
 
 {{< gallery match="images/covers/conda-for-python-environment-management-on-macos/01.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="800x800 q90 Lanczos" showExif=true previewType="blur" embedPreview=true >}}<br>
 
-**Flux:1 [Pro]** ...
+**Flux.1 [pro]** ...
 
 {{< gallery match="images/covers/conda-for-python-environment-management-on-macos/02.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="800x800 q90 Lanczos" showExif=true previewType="blur" embedPreview=true >}}<br>
 
