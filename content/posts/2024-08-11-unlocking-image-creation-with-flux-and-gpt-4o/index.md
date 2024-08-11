@@ -130,13 +130,13 @@ Make a note of the keys and keep them very safe.
 
 ### Creating the environment
 
-Next up we need to create an environment to run the application in and grab the code from [GitHub](https://github.com/russmckendrick/flux-fal-openai-streamlit).
+Next up we need to create an environment to run the application in and grab the code from [GitHub](https://github.com/russmckendrick/flux-fal-openai-streamlit/).
 
 {{< notice info >}}
 I use Conda to run Python on my local machine, you can find [my blog post about installing and using Conda here](/2024/04/06/conda-for-python-environment-management-on-macos/).
 {{< /notice >}}
 
-Run the commands below to create the conda environment, switch to it, check the code out from [GitHub](https://github.com/russmckendrick/flux-fal-openai-streamlit) and install the required Python packages:
+Run the commands below to create the conda environment, switch to it, check the code out from [GitHub](https://github.com/russmckendrick/flux-fal-openai-streamlit/) and install the required Python packages:
 
 {{< terminal title="Preparing the environment" >}}
 ```text
@@ -344,7 +344,7 @@ The drop-downs, text input boxes, sliders and the hidden advanced settings are a
 ```
 {{< /ide >}}<br>
 
-The rest of the code can be found on the applications [GitHub repo](https://github.com/russmckendrick/flux-fal-openai-streamlit)](https://github.com/russmckendrick/flux-fal-openai-streamlit).
+The rest of the code can be found on the application's [GitHub repo](https://github.com/russmckendrick/flux-fal-openai-streamlit/).
 
 ## Some more images
 
