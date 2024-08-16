@@ -20,7 +20,7 @@ I had initially assumed that I would have to spend some time configuring a Vagra
 
 > Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM on your laptop for users looking to try out Kubernetes or develop with it day-to-day.
 
-Minikube launches a virtual machine and then can be used to manage the configuration much like the way [Docker Machine](https://docs.docker.com/machine/) does, in fact it uses [libmachine](https://github.com/docker/machine/tree/master/libmachine) which is part of Docker Machine to launch the virtual machine.
+Minikube launches a virtual machine and then can be used to manage the configuration much like the way [Docker Machine](https://docs.docker.com/) does, in fact it uses [libmachine](https://github.com/docker/machine/tree/master/libmachine) which is part of Docker Machine to launch the virtual machine.
 
 I jumped straight into installing it. First of all, using [Homebrew](http://brew.sh/) and [Cask](https://github.com/Homebrew/homebrew-cask/) I installed the requirements which are;
 
