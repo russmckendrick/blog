@@ -15,7 +15,7 @@ aliases:
 
 Since I last properly [wrote about Docker](/2014/08/31/docker-fig-nginx-reverse-proxies-and-centos-7/"Docker, Fig, NGINX Reverse Proxies and CentOS 7") a lot has changed. Docker have introduced some new command line tools which allow for easy orchestration of Docker instances, clusters and container management. These are;
 
-- [Docker Machine](https://docs.docker.com/machine/ "Docker Machine") — Allows you to easily deploy Docker instances to a lot of different platforms.
+- [Docker Machine](https://docs.docker.com/ "Docker Machine") — Allows you to easily deploy Docker instances to a lot of different platforms.
 - [Docker Compose](https://docs.docker.com/compose/ "Docker Compose") — A replacement for [Fig](https://fig.sh "Fig").
 - [Docker Swarm](https://docs.docker.com/swarm/ "Docker Swarm") — Native clustering for your Docker instances.
 
