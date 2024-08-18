@@ -532,7 +532,7 @@ def main():
         using the `--week_start` argument in the format 'YYYY-MM-DD'. If not provided, it defaults to 7 days ago.
 
         Example:
-            python script_name.py --week_start 2023-05-01
+            python generate_blog_post.py --week_start 2024-08-19
 
     Dependencies:
         - argparse: For parsing command line arguments.
