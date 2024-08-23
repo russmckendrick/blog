@@ -72,32 +72,32 @@ Cheers! 🎧
 ## Top Artists (Week 02)
 
 - Carter the Unstoppable Sex Machine (21 plays)
-- [Pop Will Eat Itself](https://www.mckendrick.rocks/artist/pop-will-eat-itself/) (19 plays)
-- [Elliott Smith](https://www.mckendrick.rocks/artist/elliott-smith/) (18 plays)
-- [The Smiths](https://www.mckendrick.rocks/artist/the-smiths/) (16 plays)
-- [The Smashing Pumpkins](https://www.mckendrick.rocks/artist/the-smashing-pumpkins/) (13 plays)
-- [Gomez](https://www.mckendrick.rocks/artist/gomez/) (12 plays)
-- [Paris Angels](https://www.mckendrick.rocks/artist/paris-angels/) (10 plays)
-- [LCD Soundsystem](https://www.mckendrick.rocks/artist/lcd-soundsystem/) (9 plays)
-- [The Waterboys](https://www.mckendrick.rocks/artist/the-waterboys/) (8 plays)
-- [Mansun](https://www.mckendrick.rocks/artist/mansun/) (3 plays)
-- [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (1 plays)
+- [Pop Will Eat Itself](https://www.russ.fm/artist/pop-will-eat-itself/) (19 plays)
+- [Elliott Smith](https://www.russ.fm/artist/elliott-smith/) (18 plays)
+- [The Smiths](https://www.russ.fm/artist/the-smiths/) (16 plays)
+- [The Smashing Pumpkins](https://www.russ.fm/artist/the-smashing-pumpkins/) (13 plays)
+- [Gomez](https://www.russ.fm/artist/gomez/) (12 plays)
+- [Paris Angels](https://www.russ.fm/artist/paris-angels/) (10 plays)
+- [LCD Soundsystem](https://www.russ.fm/artist/lcd-soundsystem/) (9 plays)
+- [The Waterboys](https://www.russ.fm/artist/the-waterboys/) (8 plays)
+- [Mansun](https://www.russ.fm/artist/mansun/) (3 plays)
+- [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (1 plays)
 
 
 ## Top Albums (Week 02)
 
-- [16 Different Flavours Of Hell](https://www.mckendrick.rocks/albums/16-different-flavours-of-hell-1873913/) by Pop Will Eat Itself
-- [Figure 8](https://www.mckendrick.rocks/albums/figure-8-8843169/) by Elliott Smith
+- [16 Different Flavours Of Hell](https://www.russ.fm/albums/16-different-flavours-of-hell-1873913/) by Pop Will Eat Itself
+- [Figure 8](https://www.russ.fm/albums/figure-8-8843169/) by Elliott Smith
 - Hatful of Hollow by The Smiths
-- [Siamese Dream](https://www.mckendrick.rocks/albums/siamese-dream-3255473/) by The Smashing Pumpkins
-- [Bring It On](https://www.mckendrick.rocks/albums/bring-it-on-11890384/) by Gomez
+- [Siamese Dream](https://www.russ.fm/albums/siamese-dream-3255473/) by The Smashing Pumpkins
+- [Bring It On](https://www.russ.fm/albums/bring-it-on-11890384/) by Gomez
 - 101 Damnations by Carter the Unstoppable Sex Machine
 - 1992 The Love Album by Carter the Unstoppable Sex Machine
-- [Sundew](https://www.mckendrick.rocks/albums/sundew-661808/) by Paris Angels
-- [This Is Happening](https://www.mckendrick.rocks/albums/this-is-happening-2395827/) by LCD Soundsystem
+- [Sundew](https://www.russ.fm/albums/sundew-661808/) by Paris Angels
+- [This Is Happening](https://www.russ.fm/albums/this-is-happening-2395827/) by LCD Soundsystem
 - The Whole of the Moon: The Music of Mike Scott & The Waterboys by The Waterboys
 - Attack Of The Grey Lantern (Collector's Edition) by Mansun
-- [So](https://www.mckendrick.rocks/albums/so-379036/) by Peter Gabriel
+- [So](https://www.russ.fm/albums/so-379036/) by Peter Gabriel
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

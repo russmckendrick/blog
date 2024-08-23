@@ -361,34 +361,34 @@ In revisiting this album, we are reminded of The Verve’s daring to be differen
 
 ## Top Artists (Week 31)
 
-- [The Beatles](https://www.mckendrick.rocks/artist/the-beatles/) (37 plays)
-- [Led Zeppelin](https://www.mckendrick.rocks/artist/led-zeppelin/) (24 plays)
-- [The Divine Comedy](https://www.mckendrick.rocks/artist/the-divine-comedy/) (24 plays)
+- [The Beatles](https://www.russ.fm/artist/the-beatles/) (37 plays)
+- [Led Zeppelin](https://www.russ.fm/artist/led-zeppelin/) (24 plays)
+- [The Divine Comedy](https://www.russ.fm/artist/the-divine-comedy/) (24 plays)
 - Tom Petty and The Heartbreakers (19 plays)
-- [The Charlatans](https://www.mckendrick.rocks/artist/the-charlatans/) (17 plays)
-- [The Wonder Stuff](https://www.mckendrick.rocks/artist/the-wonder-stuff/) (17 plays)
-- [Blur](https://www.mckendrick.rocks/artist/blur/) (16 plays)
-- [DJ Shadow](https://www.mckendrick.rocks/artist/dj-shadow/) (14 plays)
-- [James](https://www.mckendrick.rocks/artist/james/) (14 plays)
+- [The Charlatans](https://www.russ.fm/artist/the-charlatans/) (17 plays)
+- [The Wonder Stuff](https://www.russ.fm/artist/the-wonder-stuff/) (17 plays)
+- [Blur](https://www.russ.fm/artist/blur/) (16 plays)
+- [DJ Shadow](https://www.russ.fm/artist/dj-shadow/) (14 plays)
+- [James](https://www.russ.fm/artist/james/) (14 plays)
 - Levellers (13 plays)
-- [Super Furry Animals](https://www.mckendrick.rocks/artist/super-furry-animals/) (12 plays)
-- [The Verve](https://www.mckendrick.rocks/artist/the-verve/) (12 plays)
+- [Super Furry Animals](https://www.russ.fm/artist/super-furry-animals/) (12 plays)
+- [The Verve](https://www.russ.fm/artist/the-verve/) (12 plays)
 
 
 ## Top Albums (Week 31)
 
-- [1967-1970](https://www.mckendrick.rocks/albums/1967-1970-28859359/) by The Beatles
-- [Mothership](https://www.mckendrick.rocks/albums/mothership-7690309/) by Led Zeppelin
-- [Charmed Life (The Best Of The Divine Comedy)](https://www.mckendrick.rocks/albums/charmed-life-the-best-of-the-divine-comedy-22022677/) by The Divine Comedy
+- [1967-1970](https://www.russ.fm/albums/1967-1970-28859359/) by The Beatles
+- [Mothership](https://www.russ.fm/albums/mothership-7690309/) by Led Zeppelin
+- [Charmed Life (The Best Of The Divine Comedy)](https://www.russ.fm/albums/charmed-life-the-best-of-the-divine-comedy-22022677/) by The Divine Comedy
 - Greatest Hits by Tom Petty and The Heartbreakers
-- [Melting Pot](https://www.mckendrick.rocks/albums/melting-pot-7147752/) by The Charlatans
+- [Melting Pot](https://www.russ.fm/albums/melting-pot-7147752/) by The Charlatans
 - If The Beatles Had Read Hunter... The Singles by The Wonder Stuff
-- [Modern Life Is Rubbish](https://www.mckendrick.rocks/albums/modern-life-is-rubbish-3773519/) by Blur
-- [Endtroducing...](https://www.mckendrick.rocks/albums/endtroducing-3244766/) by DJ Shadow
+- [Modern Life Is Rubbish](https://www.russ.fm/albums/modern-life-is-rubbish-3773519/) by Blur
+- [Endtroducing...](https://www.russ.fm/albums/endtroducing-3244766/) by DJ Shadow
 - The Best of James by James
 - Levelling the Land by Levellers
 - The Best Of by Super Furry Animals
-- [A Northern Soul](https://www.mckendrick.rocks/albums/a-northern-soul-9033688/) by The Verve
+- [A Northern Soul](https://www.russ.fm/albums/a-northern-soul-9033688/) by The Verve
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

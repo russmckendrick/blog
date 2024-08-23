@@ -49,7 +49,7 @@ For those special editions and compilations, my bookshelves house an array of bo
 
 ## Exploring the Collection Digitally
 
-With over 2,827 items cataloged on [Discogs[noSpace]](https://www.discogs.com/user/russmck/collection?page=1&limit=250&header=1&layout=big); the collection caters to every mood and taste and I don't find myself with nothing to listen to. A while ago I got bored during a winter weekend and using ChatGPT created a custom website that brings my collection to life digitally. Using data from Discogs, Wikipedia, Apple Music, and Spotify, [https://www.mckendrick.rocks/](https://www.mckendrick.rocks/) offers an interactive exploration of my vinyl collection.
+With over 2,827 items cataloged on [Discogs[noSpace]](https://www.discogs.com/user/russmck/collection?page=1&limit=250&header=1&layout=big); the collection caters to every mood and taste and I don't find myself with nothing to listen to. A while ago I got bored during a winter weekend and using ChatGPT created a custom website that brings my collection to life digitally. Using data from Discogs, Wikipedia, Apple Music, and Spotify, [https://www.russ.fm/](https://www.russ.fm/) offers an interactive exploration of my vinyl collection.
 
 ### Discover a Random Album
 

@@ -382,31 +382,31 @@ In conclusion, whether you're a longtime fan or a newcomer to their music, Blind
 
 ## Top Artists (Week 21)
 
-- [Primal Scream](https://www.mckendrick.rocks/artist/primal-scream/) (18 plays)
-- [Jesus Jones](https://www.mckendrick.rocks/artist/jesus-jones/) (12 plays)
-- [The Gaslight Anthem](https://www.mckendrick.rocks/artist/the-gaslight-anthem/) (12 plays)
-- [Blackfield](https://www.mckendrick.rocks/artist/blackfield/) (10 plays)
+- [Primal Scream](https://www.russ.fm/artist/primal-scream/) (18 plays)
+- [Jesus Jones](https://www.russ.fm/artist/jesus-jones/) (12 plays)
+- [The Gaslight Anthem](https://www.russ.fm/artist/the-gaslight-anthem/) (12 plays)
+- [Blackfield](https://www.russ.fm/artist/blackfield/) (10 plays)
 - Tears for Fears (9 plays)
-- [Nordic Giants](https://www.mckendrick.rocks/artist/nordic-giants/) (8 plays)
-- [Sugar](https://www.mckendrick.rocks/artist/sugar/) (6 plays)
-- [Pixies](https://www.mckendrick.rocks/artist/pixies/) (3 plays)
+- [Nordic Giants](https://www.russ.fm/artist/nordic-giants/) (8 plays)
+- [Sugar](https://www.russ.fm/artist/sugar/) (6 plays)
+- [Pixies](https://www.russ.fm/artist/pixies/) (3 plays)
 - Alice in Chains (2 plays)
-- [Gary Numan](https://www.mckendrick.rocks/artist/gary-numan/) (2 plays)
-- [Nine Inch Nails](https://www.mckendrick.rocks/artist/nine-inch-nails/) (2 plays)
-- [Soundgarden](https://www.mckendrick.rocks/artist/soundgarden/) (2 plays)
+- [Gary Numan](https://www.russ.fm/artist/gary-numan/) (2 plays)
+- [Nine Inch Nails](https://www.russ.fm/artist/nine-inch-nails/) (2 plays)
+- [Soundgarden](https://www.russ.fm/artist/soundgarden/) (2 plays)
 
 
 ## Top Albums (Week 21)
 
 - Give Out But Don't Give Up: The Original Memphis Recordings by Primal Scream
-- [Doubt](https://www.mckendrick.rocks/albums/doubt-564216/) by Jesus Jones
-- [The '59 Sound](https://www.mckendrick.rocks/albums/the-59-sound-7246420/) by The Gaslight Anthem
-- [Blackfield](https://www.mckendrick.rocks/albums/blackfield-30444917/) by Blackfield
-- [Origins](https://www.mckendrick.rocks/albums/origins-30822024/) by Nordic Giants
+- [Doubt](https://www.russ.fm/albums/doubt-564216/) by Jesus Jones
+- [The '59 Sound](https://www.russ.fm/albums/the-59-sound-7246420/) by The Gaslight Anthem
+- [Blackfield](https://www.russ.fm/albums/blackfield-30444917/) by Blackfield
+- [Origins](https://www.russ.fm/albums/origins-30822024/) by Nordic Giants
 - Songs from the Big Chair by Tears for Fears
-- [Copper Blue](https://www.mckendrick.rocks/albums/copper-blue-5251610/) by Sugar
+- [Copper Blue](https://www.russ.fm/albums/copper-blue-5251610/) by Sugar
 - The Essential Alice In Chains by Alice in Chains
-- [Premier Hits](https://www.mckendrick.rocks/albums/premier-hits-7341798/) by Gary Numan
+- [Premier Hits](https://www.russ.fm/albums/premier-hits-7341798/) by Gary Numan
 - Wave Of Mutilation: Best Of Pixies by Pixies
 - Sweet Ride - Best Of Belly by Belly
 - Best Of Blind Melon by Blind Melon

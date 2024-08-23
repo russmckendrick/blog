@@ -45,34 +45,34 @@ Check out and follow my continuous musical journey on https://www.last.fm/user/R
 
 ## Top Artists (Week 26)
 
-- [Pixies](https://www.mckendrick.rocks/artist/pixies/) (25 plays)
-- [Jimmy Page](https://www.mckendrick.rocks/artist/jimmy-page/) (20 plays)
-- [Crowded House](https://www.mckendrick.rocks/artist/crowded-house/) (19 plays)
-- [Deacon Blue](https://www.mckendrick.rocks/artist/deacon-blue/) (18 plays)
-- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (17 plays)
-- [Inspiral Carpets](https://www.mckendrick.rocks/artist/inspiral-carpets/) (17 plays)
-- [Stevie Wonder](https://www.mckendrick.rocks/artist/stevie-wonder/) (17 plays)
-- [Jim Bob](https://www.mckendrick.rocks/artist/jim-bob/) (12 plays)
-- [Crippled Black Phoenix](https://www.mckendrick.rocks/artist/crippled-black-phoenix/) (11 plays)
+- [Pixies](https://www.russ.fm/artist/pixies/) (25 plays)
+- [Jimmy Page](https://www.russ.fm/artist/jimmy-page/) (20 plays)
+- [Crowded House](https://www.russ.fm/artist/crowded-house/) (19 plays)
+- [Deacon Blue](https://www.russ.fm/artist/deacon-blue/) (18 plays)
+- [David Bowie](https://www.russ.fm/artist/david-bowie/) (17 plays)
+- [Inspiral Carpets](https://www.russ.fm/artist/inspiral-carpets/) (17 plays)
+- [Stevie Wonder](https://www.russ.fm/artist/stevie-wonder/) (17 plays)
+- [Jim Bob](https://www.russ.fm/artist/jim-bob/) (12 plays)
+- [Crippled Black Phoenix](https://www.russ.fm/artist/crippled-black-phoenix/) (11 plays)
 - Levellers (11 plays)
-- [Rush](https://www.mckendrick.rocks/artist/rush/) (8 plays)
-- [Big Big Train](https://www.mckendrick.rocks/artist/big-big-train/) (5 plays)
+- [Rush](https://www.russ.fm/artist/rush/) (8 plays)
+- [Big Big Train](https://www.russ.fm/artist/big-big-train/) (5 plays)
 
 
 ## Top Albums (Week 26)
 
 - Wave Of Mutilation: Best Of Pixies by Pixies
-- [Live At The Greek](https://www.mckendrick.rocks/albums/live-at-the-greek-5029933/) by Jimmy Page
+- [Live At The Greek](https://www.russ.fm/albums/live-at-the-greek-5029933/) by Jimmy Page
 - The Very Very Best of Crowded House by Crowded House
 - Best of Bowie by David Bowie
 - Our Town - The Greatest Hits by Deacon Blue
-- [The Complete Singles](https://www.mckendrick.rocks/albums/the-complete-singles-26454110/) by Inspiral Carpets
+- [The Complete Singles](https://www.russ.fm/albums/the-complete-singles-26454110/) by Inspiral Carpets
 - Songs in the Key of Life by Stevie Wonder
-- [Thanks For Reaching Out](https://www.mckendrick.rocks/albums/thanks-for-reaching-out-27546843/) by Jim Bob
-- [The Resurrectionists](https://www.mckendrick.rocks/albums/the-resurrectionists-13562698/) by Crippled Black Phoenix
-- [Levelling The Land 25th Anniversary Edition](https://www.mckendrick.rocks/albums/levelling-the-land-25th-anniversary-edition-9365189/) by The Levellers
+- [Thanks For Reaching Out](https://www.russ.fm/albums/thanks-for-reaching-out-27546843/) by Jim Bob
+- [The Resurrectionists](https://www.russ.fm/albums/the-resurrectionists-13562698/) by Crippled Black Phoenix
+- [Levelling The Land 25th Anniversary Edition](https://www.russ.fm/albums/levelling-the-land-25th-anniversary-edition-9365189/) by The Levellers
 - Signals (Remastered) by Rush
-- [Ingenious Devices](https://www.mckendrick.rocks/albums/ingenious-devices-27528075/) by Big Big Train
+- [Ingenious Devices](https://www.russ.fm/albums/ingenious-devices-27528075/) by Big Big Train
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

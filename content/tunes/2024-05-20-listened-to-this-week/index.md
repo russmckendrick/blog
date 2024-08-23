@@ -337,34 +337,34 @@ Gary Numan's legacy is carved not only in his records but also in the impact he 
 
 ## Top Artists (Week 19)
 
-- [U2](https://www.mckendrick.rocks/artist/u2/) (48 plays)
-- [Paul Weller](https://www.mckendrick.rocks/artist/paul-weller/) (29 plays)
-- [Manic Street Preachers](https://www.mckendrick.rocks/artist/manic-street-preachers/) (24 plays)
-- [Crowded House](https://www.mckendrick.rocks/artist/crowded-house/) (19 plays)
-- [Therapy?](https://www.mckendrick.rocks/artist/therapy/) (14 plays)
-- [Pearl Jam](https://www.mckendrick.rocks/artist/pearl-jam/) (12 plays)
-- [Field Music](https://www.mckendrick.rocks/artist/field-music/) (11 plays)
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (11 plays)
-- [R.E.M.](https://www.mckendrick.rocks/artist/r.e.m./) (11 plays)
-- [Blancmange](https://www.mckendrick.rocks/artist/blancmange/) (10 plays)
-- [The The](https://www.mckendrick.rocks/artist/the-the/) (7 plays)
-- [Gary Numan](https://www.mckendrick.rocks/artist/gary-numan/) (3 plays)
+- [U2](https://www.russ.fm/artist/u2/) (48 plays)
+- [Paul Weller](https://www.russ.fm/artist/paul-weller/) (29 plays)
+- [Manic Street Preachers](https://www.russ.fm/artist/manic-street-preachers/) (24 plays)
+- [Crowded House](https://www.russ.fm/artist/crowded-house/) (19 plays)
+- [Therapy?](https://www.russ.fm/artist/therapy/) (14 plays)
+- [Pearl Jam](https://www.russ.fm/artist/pearl-jam/) (12 plays)
+- [Field Music](https://www.russ.fm/artist/field-music/) (11 plays)
+- [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (11 plays)
+- [R.E.M.](https://www.russ.fm/artist/r.e.m./) (11 plays)
+- [Blancmange](https://www.russ.fm/artist/blancmange/) (10 plays)
+- [The The](https://www.russ.fm/artist/the-the/) (7 plays)
+- [Gary Numan](https://www.russ.fm/artist/gary-numan/) (3 plays)
 
 
 ## Top Albums (Week 19)
 
-- [The Joshua Tree](https://www.mckendrick.rocks/albums/the-joshua-tree-10391869/) by U2
-- [Modern Classics (The Greatest Hits)](https://www.mckendrick.rocks/albums/modern-classics-the-greatest-hits-24798500/) by Paul Weller
-- [Lifeblood](https://www.mckendrick.rocks/albums/lifeblood-30365657/) by Manic Street Preachers
+- [The Joshua Tree](https://www.russ.fm/albums/the-joshua-tree-10391869/) by U2
+- [Modern Classics (The Greatest Hits)](https://www.russ.fm/albums/modern-classics-the-greatest-hits-24798500/) by Paul Weller
+- [Lifeblood](https://www.russ.fm/albums/lifeblood-30365657/) by Manic Street Preachers
 - The Very Very Best of Crowded House by Crowded House
-- [Troublegum](https://www.mckendrick.rocks/albums/troublegum-834572/) by Therapy?
-- [Vs.](https://www.mckendrick.rocks/albums/vs-8354355/) by Pearl Jam
-- [Tones Of Town](https://www.mckendrick.rocks/albums/tones-of-town-10173938/) by Field Music
-- [The Division Bell](https://www.mckendrick.rocks/albums/the-division-bell-13718487/) by Pink Floyd
+- [Troublegum](https://www.russ.fm/albums/troublegum-834572/) by Therapy?
+- [Vs.](https://www.russ.fm/albums/vs-8354355/) by Pearl Jam
+- [Tones Of Town](https://www.russ.fm/albums/tones-of-town-10173938/) by Field Music
+- [The Division Bell](https://www.russ.fm/albums/the-division-bell-13718487/) by Pink Floyd
 - Out of Time by R.E.M.
-- [Everything Is Connected (The Best Of Blancmange 1979-2024)](https://www.mckendrick.rocks/albums/everything-is-connected-the-best-of-blancmange-1979-2024-30640249/) by Blancmange
-- [Soul Mining](https://www.mckendrick.rocks/albums/soul-mining-24818426/) by The The
-- [Premier Hits](https://www.mckendrick.rocks/albums/premier-hits-7341798/) by Gary Numan
+- [Everything Is Connected (The Best Of Blancmange 1979-2024)](https://www.russ.fm/albums/everything-is-connected-the-best-of-blancmange-1979-2024-30640249/) by Blancmange
+- [Soul Mining](https://www.russ.fm/albums/soul-mining-24818426/) by The The
+- [Premier Hits](https://www.russ.fm/albums/premier-hits-7341798/) by Gary Numan
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

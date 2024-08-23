@@ -45,34 +45,34 @@ That's all for now; keep checking out new music, revisit the classics, and keep 
 
 ## Top Artists (Week 32)
 
-- [Ride](https://www.mckendrick.rocks/artist/ride/) (24 plays)
-- [New Order](https://www.mckendrick.rocks/artist/new-order/) (20 plays)
-- [Rush](https://www.mckendrick.rocks/artist/rush/) (20 plays)
-- [Fleetwood Mac](https://www.mckendrick.rocks/artist/fleetwood-mac/) (19 plays)
-- [The Who](https://www.mckendrick.rocks/artist/the-who/) (19 plays)
-- [They Might Be Giants](https://www.mckendrick.rocks/artist/they-might-be-giants/) (19 plays)
-- [The Decemberists](https://www.mckendrick.rocks/artist/the-decemberists/) (18 plays)
-- [Lush](https://www.mckendrick.rocks/artist/lush/) (12 plays)
-- [The Polyphonic Spree](https://www.mckendrick.rocks/artist/the-polyphonic-spree/) (8 plays)
+- [Ride](https://www.russ.fm/artist/ride/) (24 plays)
+- [New Order](https://www.russ.fm/artist/new-order/) (20 plays)
+- [Rush](https://www.russ.fm/artist/rush/) (20 plays)
+- [Fleetwood Mac](https://www.russ.fm/artist/fleetwood-mac/) (19 plays)
+- [The Who](https://www.russ.fm/artist/the-who/) (19 plays)
+- [They Might Be Giants](https://www.russ.fm/artist/they-might-be-giants/) (19 plays)
+- [The Decemberists](https://www.russ.fm/artist/the-decemberists/) (18 plays)
+- [Lush](https://www.russ.fm/artist/lush/) (12 plays)
+- [The Polyphonic Spree](https://www.russ.fm/artist/the-polyphonic-spree/) (8 plays)
 - Orchestral Manoeuvres in the Dark (7 plays)
-- [Steely Dan](https://www.mckendrick.rocks/artist/steely-dan/) (7 plays)
-- [Simple Minds](https://www.mckendrick.rocks/artist/simple-minds/) (5 plays)
+- [Steely Dan](https://www.russ.fm/artist/steely-dan/) (7 plays)
+- [Simple Minds](https://www.russ.fm/artist/simple-minds/) (5 plays)
 
 
 ## Top Albums (Week 32)
 
-- [Singles](https://www.mckendrick.rocks/albums/singles-9017905/) by New Order
+- [Singles](https://www.russ.fm/albums/singles-9017905/) by New Order
 - Fleetwood Mac (Deluxe) by Fleetwood Mac
-- [Flood](https://www.mckendrick.rocks/albums/flood-1593562/) by They Might Be Giants
+- [Flood](https://www.russ.fm/albums/flood-1593562/) by They Might Be Giants
 - Quadrophenia (2013 Remaster) by The Who
 - Retrospective II (1981-1987) by Rush
-- [Spooky](https://www.mckendrick.rocks/albums/spooky-27919932/) by Lush
+- [Spooky](https://www.russ.fm/albums/spooky-27919932/) by Lush
 - Carnival of Light by Ride
-- [Tarantula](https://www.mckendrick.rocks/albums/tarantula-27861876/) by Ride
-- [I'll Be Your Girl](https://www.mckendrick.rocks/albums/i-ll-be-your-girl-11709250/) by The Decemberists
-- [The Beginning Stages Of...](https://www.mckendrick.rocks/albums/the-beginning-stages-of-890127/) by The Polyphonic Spree
+- [Tarantula](https://www.russ.fm/albums/tarantula-27861876/) by Ride
+- [I'll Be Your Girl](https://www.russ.fm/albums/i-ll-be-your-girl-11709250/) by The Decemberists
+- [The Beginning Stages Of...](https://www.russ.fm/albums/the-beginning-stages-of-890127/) by The Polyphonic Spree
 - The Best of Orchestral Manoeuvres in the Dark by Orchestral Manoeuvres in the Dark
-- [Aja](https://www.mckendrick.rocks/albums/aja-2884821/) by Steely Dan
+- [Aja](https://www.russ.fm/albums/aja-2884821/) by Steely Dan
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

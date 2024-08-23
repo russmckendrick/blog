@@ -65,34 +65,34 @@ Catch up with my music extravaganza on [Last.fm](https://www.last.fm/user/RussMc
 
 ## Top Artists (Week 46)
 
-- [The Beatles](https://www.mckendrick.rocks/artist/the-beatles/) (37 plays)
-- [Richard Hawley](https://www.mckendrick.rocks/artist/richard-hawley/) (22 plays)
-- [Radiohead](https://www.mckendrick.rocks/artist/radiohead/) (13 plays)
-- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (11 plays)
-- [Matt Berry](https://www.mckendrick.rocks/artist/matt-berry/) (11 plays)
-- [R.E.M.](https://www.mckendrick.rocks/artist/r.e.m./) (11 plays)
-- [Van Halen](https://www.mckendrick.rocks/artist/van-halen/) (11 plays)
-- [John Farnham](https://www.mckendrick.rocks/artist/john-farnham/) (10 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (9 plays)
-- [Talking Heads](https://www.mckendrick.rocks/artist/talking-heads/) (7 plays)
-- [Beastie Boys](https://www.mckendrick.rocks/artist/beastie-boys/) (4 plays)
-- [Weezer](https://www.mckendrick.rocks/artist/weezer/) (3 plays)
+- [The Beatles](https://www.russ.fm/artist/the-beatles/) (37 plays)
+- [Richard Hawley](https://www.russ.fm/artist/richard-hawley/) (22 plays)
+- [Radiohead](https://www.russ.fm/artist/radiohead/) (13 plays)
+- [David Bowie](https://www.russ.fm/artist/david-bowie/) (11 plays)
+- [Matt Berry](https://www.russ.fm/artist/matt-berry/) (11 plays)
+- [R.E.M.](https://www.russ.fm/artist/r.e.m./) (11 plays)
+- [Van Halen](https://www.russ.fm/artist/van-halen/) (11 plays)
+- [John Farnham](https://www.russ.fm/artist/john-farnham/) (10 plays)
+- [Genesis](https://www.russ.fm/artist/genesis/) (9 plays)
+- [Talking Heads](https://www.russ.fm/artist/talking-heads/) (7 plays)
+- [Beastie Boys](https://www.russ.fm/artist/beastie-boys/) (4 plays)
+- [Weezer](https://www.russ.fm/artist/weezer/) (3 plays)
 
 
 ## Top Albums (Week 46)
 
-- [1967-1970](https://www.mckendrick.rocks/albums/1967-1970-28859359/) by The Beatles
+- [1967-1970](https://www.russ.fm/albums/1967-1970-28859359/) by The Beatles
 - Now Then: The Very Best of Richard Hawley by Richard Hawley
 - KID A MNESIA by Radiohead
-- [Simplicity](https://www.mckendrick.rocks/albums/simplicity-28940773/) by Matt Berry
+- [Simplicity](https://www.russ.fm/albums/simplicity-28940773/) by Matt Berry
 - Out of Time by R.E.M.
 - Van Halen by Van Halen
 - The Rise and Fall of Ziggy Stardust and the Spiders from Mars (2012 Remaster) by David Bowie
-- [Whispering Jack](https://www.mckendrick.rocks/albums/whispering-jack-1161865/) by John Farnham
-- [Duke](https://www.mckendrick.rocks/albums/duke-773021/) by Genesis
+- [Whispering Jack](https://www.russ.fm/albums/whispering-jack-1161865/) by John Farnham
+- [Duke](https://www.russ.fm/albums/duke-773021/) by Genesis
 - The Best of Talking Heads by Talking Heads
 - The Tori Amos Video Collection: Fade to Red by Tori Amos
-- [Angel Dust](https://www.mckendrick.rocks/albums/angel-dust-7410902/) by Faith No More
+- [Angel Dust](https://www.russ.fm/albums/angel-dust-7410902/) by Faith No More
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

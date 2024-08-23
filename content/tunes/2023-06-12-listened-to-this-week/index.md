@@ -41,34 +41,34 @@ P.S. Do drop me a comment and let me know what you’ve been blasting through yo
 
 ## Top Artists (Week 23)
 
-- [James](https://www.mckendrick.rocks/artist/james/) (53 plays)
-- [Matt Berry](https://www.mckendrick.rocks/artist/matt-berry/) (27 plays)
-- [U2](https://www.mckendrick.rocks/artist/u2/) (22 plays)
-- [Steven Wilson](https://www.mckendrick.rocks/artist/steven-wilson/) (17 plays)
-- [Radiohead](https://www.mckendrick.rocks/artist/radiohead/) (16 plays)
-- [The Police](https://www.mckendrick.rocks/artist/the-police/) (16 plays)
-- [Talk Talk](https://www.mckendrick.rocks/artist/talk-talk/) (15 plays)
-- [The Beach Boys](https://www.mckendrick.rocks/artist/the-beach-boys/) (13 plays)
-- [Anathema](https://www.mckendrick.rocks/artist/anathema/) (11 plays)
-- [Jenny Lewis](https://www.mckendrick.rocks/artist/jenny-lewis/) (10 plays)
-- [Killing Joke](https://www.mckendrick.rocks/artist/killing-joke/) (6 plays)
-- [Roger Waters](https://www.mckendrick.rocks/artist/roger-waters/) (6 plays)
+- [James](https://www.russ.fm/artist/james/) (53 plays)
+- [Matt Berry](https://www.russ.fm/artist/matt-berry/) (27 plays)
+- [U2](https://www.russ.fm/artist/u2/) (22 plays)
+- [Steven Wilson](https://www.russ.fm/artist/steven-wilson/) (17 plays)
+- [Radiohead](https://www.russ.fm/artist/radiohead/) (16 plays)
+- [The Police](https://www.russ.fm/artist/the-police/) (16 plays)
+- [Talk Talk](https://www.russ.fm/artist/talk-talk/) (15 plays)
+- [The Beach Boys](https://www.russ.fm/artist/the-beach-boys/) (13 plays)
+- [Anathema](https://www.russ.fm/artist/anathema/) (11 plays)
+- [Jenny Lewis](https://www.russ.fm/artist/jenny-lewis/) (10 plays)
+- [Killing Joke](https://www.russ.fm/artist/killing-joke/) (6 plays)
+- [Roger Waters](https://www.russ.fm/artist/roger-waters/) (6 plays)
 
 
 ## Top Albums (Week 23)
 
-- [Be Opened By The Wonderful (40 Years Orchestrated)](https://www.mckendrick.rocks/albums/be-opened-by-the-wonderful-40-years-orchestrated-27333687/) by James
-- [Kill The Wolf](https://www.mckendrick.rocks/albums/kill-the-wolf-4708269/) by Matt Berry
+- [Be Opened By The Wonderful (40 Years Orchestrated)](https://www.russ.fm/albums/be-opened-by-the-wonderful-40-years-orchestrated-27333687/) by James
+- [Kill The Wolf](https://www.russ.fm/albums/kill-the-wolf-4708269/) by Matt Berry
 - KID A MNESIA by Radiohead
-- [Greatest Hits](https://www.mckendrick.rocks/albums/greatest-hits-26517422/) by The Police
+- [Greatest Hits](https://www.russ.fm/albums/greatest-hits-26517422/) by The Police
 - Fresh As A Daisy - The Singles by James
 - The Very Best Of by Talk Talk
-- [Pet Sounds](https://www.mckendrick.rocks/albums/pet-sounds-1567306/) by The Beach Boys
-- [Achtung Baby](https://www.mckendrick.rocks/albums/achtung-baby-21054859/) by U2
+- [Pet Sounds](https://www.russ.fm/albums/pet-sounds-1567306/) by The Beach Boys
+- [Achtung Baby](https://www.russ.fm/albums/achtung-baby-21054859/) by U2
 - Distant Satellites (Tour Edition) by Anathema
 - To the Bone by Steven Wilson
-- [Joy'All](https://www.mckendrick.rocks/albums/joy-all-27328932/) by Jenny Lewis
-- [The Unforgettable Fire](https://www.mckendrick.rocks/albums/the-unforgettable-fire-204237/) by U2
+- [Joy'All](https://www.russ.fm/albums/joy-all-27328932/) by Jenny Lewis
+- [The Unforgettable Fire](https://www.russ.fm/albums/the-unforgettable-fire-204237/) by U2
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

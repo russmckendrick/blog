@@ -251,24 +251,24 @@ Bowie supported "Earthling" with a vigorous touring schedule, bringing the album
 
 ## Top Artists (Week 23)
 
-- [Sparks](https://www.mckendrick.rocks/artist/sparks/) (24 plays)
-- [Thank You Scientist](https://www.mckendrick.rocks/artist/thank-you-scientist/) (13 plays)
-- [The Decemberists](https://www.mckendrick.rocks/artist/the-decemberists/) (13 plays)
-- [Tool](https://www.mckendrick.rocks/artist/tool/) (13 plays)
-- [Bruce Springsteen](https://www.mckendrick.rocks/artist/bruce-springsteen/) (12 plays)
-- [John Grant](https://www.mckendrick.rocks/artist/john-grant/) (11 plays)
-- [Stars](https://www.mckendrick.rocks/artist/stars/) (11 plays)
-- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (9 plays)
+- [Sparks](https://www.russ.fm/artist/sparks/) (24 plays)
+- [Thank You Scientist](https://www.russ.fm/artist/thank-you-scientist/) (13 plays)
+- [The Decemberists](https://www.russ.fm/artist/the-decemberists/) (13 plays)
+- [Tool](https://www.russ.fm/artist/tool/) (13 plays)
+- [Bruce Springsteen](https://www.russ.fm/artist/bruce-springsteen/) (12 plays)
+- [John Grant](https://www.russ.fm/artist/john-grant/) (11 plays)
+- [Stars](https://www.russ.fm/artist/stars/) (11 plays)
+- [David Bowie](https://www.russ.fm/artist/david-bowie/) (9 plays)
 
 ## Top Albums (Week 23)
 
-- [The Best & The Rest Of The Island Years 74-78](https://www.mckendrick.rocks/albums/the-best-the-rest-of-the-island-years-74-78-11894228/) by Sparks
-- [Terraformer](https://www.mckendrick.rocks/albums/terraformer-13732222/) by Thank You Scientist
-- [As It Ever Was, So It Will Be Again](https://www.mckendrick.rocks/albums/as-it-ever-was-so-it-will-be-again-30976879/) by The Decemberists
-- [Lateralus](https://www.mckendrick.rocks/albums/lateralus-10315855/) by Tool
-- [Born in the U.S.A.](https://www.mckendrick.rocks/albums/born-in-the-u-s-a-30957880/) by Bruce Springsteen
-- [The Art Of The Lie](https://www.mckendrick.rocks/albums/the-art-of-the-lie-30947866/) by John Grant
-- [The Five Ghosts](https://www.mckendrick.rocks/albums/the-five-ghosts-2332240/) by Stars
-- [Earthling](https://www.mckendrick.rocks/albums/earthling-7781493/) by David Bowie
+- [The Best & The Rest Of The Island Years 74-78](https://www.russ.fm/albums/the-best-the-rest-of-the-island-years-74-78-11894228/) by Sparks
+- [Terraformer](https://www.russ.fm/albums/terraformer-13732222/) by Thank You Scientist
+- [As It Ever Was, So It Will Be Again](https://www.russ.fm/albums/as-it-ever-was-so-it-will-be-again-30976879/) by The Decemberists
+- [Lateralus](https://www.russ.fm/albums/lateralus-10315855/) by Tool
+- [Born in the U.S.A.](https://www.russ.fm/albums/born-in-the-u-s-a-30957880/) by Bruce Springsteen
+- [The Art Of The Lie](https://www.russ.fm/albums/the-art-of-the-lie-30947866/) by John Grant
+- [The Five Ghosts](https://www.russ.fm/albums/the-five-ghosts-2332240/) by Stars
+- [Earthling](https://www.russ.fm/albums/earthling-7781493/) by David Bowie
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

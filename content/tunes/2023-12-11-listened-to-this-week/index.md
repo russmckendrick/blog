@@ -60,34 +60,34 @@ P.S. This segment of the blog post is AI generated, so kudos to my creative acco
 
 ## Top Artists (Week 49)
 
-- [Stars](https://www.mckendrick.rocks/artist/stars/) (23 plays)
-- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (21 plays)
-- [Soft Cell](https://www.mckendrick.rocks/artist/soft-cell/) (21 plays)
-- [R.E.M.](https://www.mckendrick.rocks/artist/r.e.m./) (18 plays)
-- [Thank You Scientist](https://www.mckendrick.rocks/artist/thank-you-scientist/) (13 plays)
-- [A Perfect Circle](https://www.mckendrick.rocks/artist/a-perfect-circle/) (12 plays)
-- [Oceansize](https://www.mckendrick.rocks/artist/oceansize/) (12 plays)
-- [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (12 plays)
+- [Stars](https://www.russ.fm/artist/stars/) (23 plays)
+- [David Bowie](https://www.russ.fm/artist/david-bowie/) (21 plays)
+- [Soft Cell](https://www.russ.fm/artist/soft-cell/) (21 plays)
+- [R.E.M.](https://www.russ.fm/artist/r.e.m./) (18 plays)
+- [Thank You Scientist](https://www.russ.fm/artist/thank-you-scientist/) (13 plays)
+- [A Perfect Circle](https://www.russ.fm/artist/a-perfect-circle/) (12 plays)
+- [Oceansize](https://www.russ.fm/artist/oceansize/) (12 plays)
+- [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (12 plays)
 - Booth & The Bad Angel (11 plays)
 - Hepcat (7 plays)
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (6 plays)
-- [Jim Bob](https://www.mckendrick.rocks/artist/jim-bob/) (4 plays)
+- [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (6 plays)
+- [Jim Bob](https://www.russ.fm/artist/jim-bob/) (4 plays)
 
 
 ## Top Albums (Week 49)
 
-- [Nightsongs](https://www.mckendrick.rocks/albums/nightsongs-28758394/) by Stars
-- [Non-Stop Erotic Cabaret](https://www.mckendrick.rocks/albums/non-stop-erotic-cabaret-29082403/) by Soft Cell
+- [Nightsongs](https://www.russ.fm/albums/nightsongs-28758394/) by Stars
+- [Non-Stop Erotic Cabaret](https://www.russ.fm/albums/non-stop-erotic-cabaret-29082403/) by Soft Cell
 - In Time: The Best of R.E.M. 1988-2003 by R.E.M.
-- [Terraformer](https://www.mckendrick.rocks/albums/terraformer-13732222/) by Thank You Scientist
+- [Terraformer](https://www.russ.fm/albums/terraformer-13732222/) by Thank You Scientist
 - Mer de noms by A Perfect Circle
-- [Effloresce](https://www.mckendrick.rocks/albums/effloresce-1460913/) by Oceansize
+- [Effloresce](https://www.russ.fm/albums/effloresce-1460913/) by Oceansize
 - i/o (Bright-Side Mixes) by Peter Gabriel
 - Booth and the Bad Angel by Booth and the Bad Angel
 - The Rise and Fall of Ziggy Stardust and the Spiders from Mars (2012 Remaster) by David Bowie
-- [Heathen](https://www.mckendrick.rocks/albums/heathen-3285687/) by David Bowie
+- [Heathen](https://www.russ.fm/albums/heathen-3285687/) by David Bowie
 - Right on Time by Hepcat
-- [Meddle](https://www.mckendrick.rocks/albums/meddle-4137493/) by Pink Floyd
+- [Meddle](https://www.russ.fm/albums/meddle-4137493/) by Pink Floyd
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

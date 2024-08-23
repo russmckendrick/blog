@@ -383,34 +383,34 @@ Beth Orton's 'Trailer Park' remains a landmark album in the folktronica genre. I
 
 ## Top Artists (Week 29)
 
-- [Faith No More](https://www.mckendrick.rocks/artist/faith-no-more/) (34 plays)
-- [Mother Earth](https://www.mckendrick.rocks/artist/mother-earth/) (24 plays)
-- [Bruce Springsteen](https://www.mckendrick.rocks/artist/bruce-springsteen/) (18 plays)
-- [Red Hot Chili Peppers](https://www.mckendrick.rocks/artist/red-hot-chili-peppers/) (15 plays)
-- [Crowded House](https://www.mckendrick.rocks/artist/crowded-house/) (13 plays)
-- [Squeeze](https://www.mckendrick.rocks/artist/squeeze/) (13 plays)
-- [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (12 plays)
-- [Roxette](https://www.mckendrick.rocks/artist/roxette/) (12 plays)
-- [Sam Morton](https://www.mckendrick.rocks/artist/sam-morton/) (12 plays)
-- [Suede](https://www.mckendrick.rocks/artist/suede/) (12 plays)
-- [Zero 7](https://www.mckendrick.rocks/artist/zero-7/) (12 plays)
-- [Beth Orton](https://www.mckendrick.rocks/artist/beth-orton/) (11 plays)
+- [Faith No More](https://www.russ.fm/artist/faith-no-more/) (34 plays)
+- [Mother Earth](https://www.russ.fm/artist/mother-earth/) (24 plays)
+- [Bruce Springsteen](https://www.russ.fm/artist/bruce-springsteen/) (18 plays)
+- [Red Hot Chili Peppers](https://www.russ.fm/artist/red-hot-chili-peppers/) (15 plays)
+- [Crowded House](https://www.russ.fm/artist/crowded-house/) (13 plays)
+- [Squeeze](https://www.russ.fm/artist/squeeze/) (13 plays)
+- [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (12 plays)
+- [Roxette](https://www.russ.fm/artist/roxette/) (12 plays)
+- [Sam Morton](https://www.russ.fm/artist/sam-morton/) (12 plays)
+- [Suede](https://www.russ.fm/artist/suede/) (12 plays)
+- [Zero 7](https://www.russ.fm/artist/zero-7/) (12 plays)
+- [Beth Orton](https://www.russ.fm/artist/beth-orton/) (11 plays)
 
 
 ## Top Albums (Week 29)
 
-- [Angel Dust](https://www.mckendrick.rocks/albums/angel-dust-7410902/) by Faith No More
-- [The People Tree](https://www.mckendrick.rocks/albums/the-people-tree-31166870/) by Mother Earth
-- [Best Of](https://www.mckendrick.rocks/albums/best-of-30441302/) by Bruce Springsteen
-- [Californication](https://www.mckendrick.rocks/albums/californication-31323387/) by Red Hot Chili Peppers
-- [Together Alone](https://www.mckendrick.rocks/albums/together-alone-2187186/) by Crowded House
+- [Angel Dust](https://www.russ.fm/albums/angel-dust-7410902/) by Faith No More
+- [The People Tree](https://www.russ.fm/albums/the-people-tree-31166870/) by Mother Earth
+- [Best Of](https://www.russ.fm/albums/best-of-30441302/) by Bruce Springsteen
+- [Californication](https://www.russ.fm/albums/californication-31323387/) by Red Hot Chili Peppers
+- [Together Alone](https://www.russ.fm/albums/together-alone-2187186/) by Crowded House
 - Greatest Hits by Squeeze
-- [Shaking The Tree (Twelve Golden Greats)](https://www.mckendrick.rocks/albums/shaking-the-tree-twelve-golden-greats-1662226/) by Peter Gabriel
-- [Joyride](https://www.mckendrick.rocks/albums/joyride-3178939/) by Roxette
-- [Daffodils & Dirt](https://www.mckendrick.rocks/albums/daffodils-dirt-31002340/) by Sam Morton
-- [Dog Man Star](https://www.mckendrick.rocks/albums/dog-man-star-5448646/) by Suede
-- [Simple Things](https://www.mckendrick.rocks/albums/simple-things-7198006/) by Zero 7
-- [Trailer Park](https://www.mckendrick.rocks/albums/trailer-park-2391456/) by Beth Orton
+- [Shaking The Tree (Twelve Golden Greats)](https://www.russ.fm/albums/shaking-the-tree-twelve-golden-greats-1662226/) by Peter Gabriel
+- [Joyride](https://www.russ.fm/albums/joyride-3178939/) by Roxette
+- [Daffodils & Dirt](https://www.russ.fm/albums/daffodils-dirt-31002340/) by Sam Morton
+- [Dog Man Star](https://www.russ.fm/albums/dog-man-star-5448646/) by Suede
+- [Simple Things](https://www.russ.fm/albums/simple-things-7198006/) by Zero 7
+- [Trailer Park](https://www.russ.fm/albums/trailer-park-2391456/) by Beth Orton
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

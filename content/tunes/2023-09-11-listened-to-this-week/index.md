@@ -55,18 +55,18 @@ Happy listening and let the music play on! 🎵🖖🏼
 
 ## Top Artists (Week 36)
 
-- [Slowdive](https://www.mckendrick.rocks/artist/slowdive/) (24 plays)
-- [Faith No More](https://www.mckendrick.rocks/artist/faith-no-more/) (15 plays)
+- [Slowdive](https://www.russ.fm/artist/slowdive/) (24 plays)
+- [Faith No More](https://www.russ.fm/artist/faith-no-more/) (15 plays)
 - Orchestral Manoeuvres in the Dark (15 plays)
-- [Super Furry Animals](https://www.mckendrick.rocks/artist/super-furry-animals/) (14 plays)
-- [Kate Bush](https://www.mckendrick.rocks/artist/kate-bush/) (12 plays)
-- [Sigur Rós](https://www.mckendrick.rocks/artist/sigur-r%C3%B3s/) (10 plays)
-- [Therapy?](https://www.mckendrick.rocks/artist/therapy/) (9 plays)
-- [Depeche Mode](https://www.mckendrick.rocks/artist/depeche-mode/) (8 plays)
-- [Public Service Broadcasting](https://www.mckendrick.rocks/artist/public-service-broadcasting/) (8 plays)
-- [Tori Amos](https://www.mckendrick.rocks/artist/tori-amos/) (8 plays)
-- [U2](https://www.mckendrick.rocks/artist/u2/) (5 plays)
-- [James](https://www.mckendrick.rocks/artist/james/) (4 plays)
+- [Super Furry Animals](https://www.russ.fm/artist/super-furry-animals/) (14 plays)
+- [Kate Bush](https://www.russ.fm/artist/kate-bush/) (12 plays)
+- [Sigur Rós](https://www.russ.fm/artist/sigur-r%C3%B3s/) (10 plays)
+- [Therapy?](https://www.russ.fm/artist/therapy/) (9 plays)
+- [Depeche Mode](https://www.russ.fm/artist/depeche-mode/) (8 plays)
+- [Public Service Broadcasting](https://www.russ.fm/artist/public-service-broadcasting/) (8 plays)
+- [Tori Amos](https://www.russ.fm/artist/tori-amos/) (8 plays)
+- [U2](https://www.russ.fm/artist/u2/) (5 plays)
+- [James](https://www.russ.fm/artist/james/) (4 plays)
 
 
 ## Top Albums (Week 36)
@@ -75,7 +75,7 @@ Happy listening and let the music play on! 🎵🖖🏼
 - everything is alive by Slowdive
 - Souvenir by Orchestral Manoeuvres in the Dark
 - King for a Day, Fool for a Lifetime by Faith No More
-- [Phantom Power](https://www.mckendrick.rocks/albums/phantom-power-28168933/) by Super Furry Animals
+- [Phantom Power](https://www.russ.fm/albums/phantom-power-28168933/) by Super Furry Animals
 - Hounds of Love (2018 Remaster) by Kate Bush
 - ÁTTA by Sigur Rós
 - Songs Of Faith And Devotion (Deluxe) by Depeche Mode

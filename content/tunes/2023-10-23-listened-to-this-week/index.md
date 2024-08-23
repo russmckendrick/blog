@@ -55,26 +55,26 @@ Peace & Love ✌️💕, Russ.
 
 ## Top Artists (Week 42)
 
-- [Devo](https://www.mckendrick.rocks/artist/devo/) (25 plays)
-- [Rush](https://www.mckendrick.rocks/artist/rush/) (24 plays)
-- [Blur](https://www.mckendrick.rocks/artist/blur/) (16 plays)
-- [Salad](https://www.mckendrick.rocks/artist/salad/) (14 plays)
-- [Pitman](https://www.mckendrick.rocks/artist/pitman/) (12 plays)
-- [Roxette](https://www.mckendrick.rocks/artist/roxette/) (12 plays)
-- [Ozric Tentacles](https://www.mckendrick.rocks/artist/ozric-tentacles/) (6 plays)
-- [Led Zeppelin](https://www.mckendrick.rocks/artist/led-zeppelin/) (1 plays)
+- [Devo](https://www.russ.fm/artist/devo/) (25 plays)
+- [Rush](https://www.russ.fm/artist/rush/) (24 plays)
+- [Blur](https://www.russ.fm/artist/blur/) (16 plays)
+- [Salad](https://www.russ.fm/artist/salad/) (14 plays)
+- [Pitman](https://www.russ.fm/artist/pitman/) (12 plays)
+- [Roxette](https://www.russ.fm/artist/roxette/) (12 plays)
+- [Ozric Tentacles](https://www.russ.fm/artist/ozric-tentacles/) (6 plays)
+- [Led Zeppelin](https://www.russ.fm/artist/led-zeppelin/) (1 plays)
 
 
 ## Top Albums (Week 42)
 
-- [50 Years Of De-Evolution (1973-2023)](https://www.mckendrick.rocks/albums/50-years-of-de-evolution-1973-2023-28664713/) by Devo
-- [Modern Life Is Rubbish](https://www.mckendrick.rocks/albums/modern-life-is-rubbish-3773519/) by Blur
+- [50 Years Of De-Evolution (1973-2023)](https://www.russ.fm/albums/50-years-of-de-evolution-1973-2023-28664713/) by Devo
+- [Modern Life Is Rubbish](https://www.russ.fm/albums/modern-life-is-rubbish-3773519/) by Blur
 - Retrospective II (1981-1987) by Rush
-- [Drink Me](https://www.mckendrick.rocks/albums/drink-me-28603771/) by Salad
+- [Drink Me](https://www.russ.fm/albums/drink-me-28603771/) by Salad
 - It Takes a Nation of Tossers by Pitman
-- [Joyride](https://www.mckendrick.rocks/albums/joyride-3178939/) by Roxette
+- [Joyride](https://www.russ.fm/albums/joyride-3178939/) by Roxette
 - Retrospective I (1974-1980) by Rush
-- [Lotus Unfolding](https://www.mckendrick.rocks/albums/lotus-unfolding-28619602/) by Ozric Tentacles
+- [Lotus Unfolding](https://www.russ.fm/albums/lotus-unfolding-28619602/) by Ozric Tentacles
 - Led Zeppelin IV by Led Zeppelin
 
 

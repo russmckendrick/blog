@@ -13,7 +13,7 @@ description: "Hi! I’m Russ, an IT professional with 30 years of experience in 
 
 Hello! I'm Russ, an IT professional with a strong background in DevOps and system administration. I've spent the last 30 years working in various IT roles across multiple industries. I have a deep passion for Linux, open-source systems, automation, and containers. I currently serve as the Practice Manager of SRE & DevOps at [Node4](https://www.node4.co.uk/), managing projects across public and private clouds.
 
-Apart from my work, I have written and contributed to thirteen books primarily revolving around container technologies and automation. In my downtime, I enjoy expanding [my vinyl record collection](https://www.mckendrick.rocks/).
+Apart from my work, I have written and contributed to thirteen books primarily revolving around container technologies and automation. In my downtime, I enjoy expanding [my vinyl record collection](https://www.russ.fm/).
 
 ## Publications 📚
 

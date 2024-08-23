@@ -49,34 +49,34 @@ Weaving through octaves, harmonies, rhythms, and lyrics in this magnificently in
 
 ## Top Artists (Week 33)
 
-- [The Beatles](https://www.mckendrick.rocks/artist/the-beatles/) (63 plays)
-- [Arcade Fire](https://www.mckendrick.rocks/artist/arcade-fire/) (26 plays)
-- [The Beta Band](https://www.mckendrick.rocks/artist/the-beta-band/) (24 plays)
-- [Regina Spektor](https://www.mckendrick.rocks/artist/regina-spektor/) (22 plays)
-- [The Hold Steady](https://www.mckendrick.rocks/artist/the-hold-steady/) (21 plays)
-- [Erasure](https://www.mckendrick.rocks/artist/erasure/) (20 plays)
-- [Talking Heads](https://www.mckendrick.rocks/artist/talking-heads/) (18 plays)
-- [Stars](https://www.mckendrick.rocks/artist/stars/) (14 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (12 plays)
-- [INXS](https://www.mckendrick.rocks/artist/inxs/) (12 plays)
-- [Zero 7](https://www.mckendrick.rocks/artist/zero-7/) (11 plays)
-- [Marillion](https://www.mckendrick.rocks/artist/marillion/) (10 plays)
+- [The Beatles](https://www.russ.fm/artist/the-beatles/) (63 plays)
+- [Arcade Fire](https://www.russ.fm/artist/arcade-fire/) (26 plays)
+- [The Beta Band](https://www.russ.fm/artist/the-beta-band/) (24 plays)
+- [Regina Spektor](https://www.russ.fm/artist/regina-spektor/) (22 plays)
+- [The Hold Steady](https://www.russ.fm/artist/the-hold-steady/) (21 plays)
+- [Erasure](https://www.russ.fm/artist/erasure/) (20 plays)
+- [Talking Heads](https://www.russ.fm/artist/talking-heads/) (18 plays)
+- [Stars](https://www.russ.fm/artist/stars/) (14 plays)
+- [Genesis](https://www.russ.fm/artist/genesis/) (12 plays)
+- [INXS](https://www.russ.fm/artist/inxs/) (12 plays)
+- [Zero 7](https://www.russ.fm/artist/zero-7/) (11 plays)
+- [Marillion](https://www.russ.fm/artist/marillion/) (10 plays)
 
 
 ## Top Albums (Week 33)
 
-- [Revolver](https://www.mckendrick.rocks/albums/revolver-24971641/) by The Beatles
-- [The Three E.P.'s](https://www.mckendrick.rocks/albums/the-three-e-p-s-12647330/) by The Beta Band
+- [Revolver](https://www.russ.fm/albums/revolver-24971641/) by The Beatles
+- [The Three E.P.'s](https://www.russ.fm/albums/the-three-e-p-s-12647330/) by The Beta Band
 - Begin to Hope by Regina Spektor
 - Boys And Girls In America by The Hold Steady
 - Always - The Very Best Of by Erasure
 - Stop Making Sense (Music from a film by Jonathan Demme and Talking Heads) by Talking Heads
-- [The Suburbs](https://www.mckendrick.rocks/albums/the-suburbs-2399813/) by Arcade Fire
+- [The Suburbs](https://www.russ.fm/albums/the-suburbs-2399813/) by Arcade Fire
 - Set Yourself on Fire by Stars
 - Kick ((Remastered)) by INXS
-- [Duke](https://www.mckendrick.rocks/albums/duke-773021/) by Genesis
-- [Simple Things](https://www.mckendrick.rocks/albums/simple-things-7198006/) by Zero 7
-- [Funeral](https://www.mckendrick.rocks/albums/funeral-2093841/) by Arcade Fire
+- [Duke](https://www.russ.fm/albums/duke-773021/) by Genesis
+- [Simple Things](https://www.russ.fm/albums/simple-things-7198006/) by Zero 7
+- [Funeral](https://www.russ.fm/albums/funeral-2093841/) by Arcade Fire
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

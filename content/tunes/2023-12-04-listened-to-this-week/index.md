@@ -55,31 +55,31 @@ Until then, keep headbanging, two-stepping, or whatever gets you grooving. Over 
 
 ## Top Artists (Week 48)
 
-- [Faith No More](https://www.mckendrick.rocks/artist/faith-no-more/) (44 plays)
-- [Marvin Gaye](https://www.mckendrick.rocks/artist/marvin-gaye/) (35 plays)
-- [John Grant](https://www.mckendrick.rocks/artist/john-grant/) (22 plays)
-- [Modest Mouse](https://www.mckendrick.rocks/artist/modest-mouse/) (17 plays)
-- [Frost*](https://www.mckendrick.rocks/artist/frost/) (16 plays)
-- [Guns N' Roses](https://www.mckendrick.rocks/artist/guns-n-roses/) (15 plays)
-- [Monster Magnet](https://www.mckendrick.rocks/artist/monster-magnet/) (15 plays)
-- [Depeche Mode](https://www.mckendrick.rocks/artist/depeche-mode/) (14 plays)
-- [Fleetwood Mac](https://www.mckendrick.rocks/artist/fleetwood-mac/) (13 plays)
-- [Ian Dury](https://www.mckendrick.rocks/artist/ian-dury/) (12 plays)
-- [Kate Bush](https://www.mckendrick.rocks/artist/kate-bush/) (12 plays)
+- [Faith No More](https://www.russ.fm/artist/faith-no-more/) (44 plays)
+- [Marvin Gaye](https://www.russ.fm/artist/marvin-gaye/) (35 plays)
+- [John Grant](https://www.russ.fm/artist/john-grant/) (22 plays)
+- [Modest Mouse](https://www.russ.fm/artist/modest-mouse/) (17 plays)
+- [Frost*](https://www.russ.fm/artist/frost/) (16 plays)
+- [Guns N' Roses](https://www.russ.fm/artist/guns-n-roses/) (15 plays)
+- [Monster Magnet](https://www.russ.fm/artist/monster-magnet/) (15 plays)
+- [Depeche Mode](https://www.russ.fm/artist/depeche-mode/) (14 plays)
+- [Fleetwood Mac](https://www.russ.fm/artist/fleetwood-mac/) (13 plays)
+- [Ian Dury](https://www.russ.fm/artist/ian-dury/) (12 plays)
+- [Kate Bush](https://www.russ.fm/artist/kate-bush/) (12 plays)
 - Siouxsie and the Banshees (12 plays)
 
 
 ## Top Albums (Week 48)
 
-- [Angel Dust](https://www.mckendrick.rocks/albums/angel-dust-7410902/) by Faith No More
-- [What's Going On](https://www.mckendrick.rocks/albums/what-s-going-on-1576940/) by Marvin Gaye
-- [Pale Green Ghosts](https://www.mckendrick.rocks/albums/pale-green-ghosts-4359155/) by John Grant
-- [Good News For People Who Love Bad News](https://www.mckendrick.rocks/albums/good-news-for-people-who-love-bad-news-2862960/) by Modest Mouse
-- [Day And Age](https://www.mckendrick.rocks/albums/day-and-age-18819115/) by Frost*
-- [Greatest Hits](https://www.mckendrick.rocks/albums/greatest-hits-15959531/) by Guns N' Roses
+- [Angel Dust](https://www.russ.fm/albums/angel-dust-7410902/) by Faith No More
+- [What's Going On](https://www.russ.fm/albums/what-s-going-on-1576940/) by Marvin Gaye
+- [Pale Green Ghosts](https://www.russ.fm/albums/pale-green-ghosts-4359155/) by John Grant
+- [Good News For People Who Love Bad News](https://www.russ.fm/albums/good-news-for-people-who-love-bad-news-2862960/) by Modest Mouse
+- [Day And Age](https://www.russ.fm/albums/day-and-age-18819115/) by Frost*
+- [Greatest Hits](https://www.russ.fm/albums/greatest-hits-15959531/) by Guns N' Roses
 - Dopes to Infinity by Monster Magnet
 - The Singles 86>98 by Depeche Mode
-- [Greatest Hits](https://www.mckendrick.rocks/albums/greatest-hits-6123681/) by Fleetwood Mac
+- [Greatest Hits](https://www.russ.fm/albums/greatest-hits-6123681/) by Fleetwood Mac
 - Greatest by Ian Dury
 - Hounds of Love by Kate Bush
 - The Rapture by Siouxsie and the Banshees

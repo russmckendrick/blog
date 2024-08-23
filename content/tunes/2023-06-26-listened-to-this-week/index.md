@@ -53,33 +53,33 @@ Well, that wraps up my rollercoaster ride through the euphoric highs and soothin
 
 ## Top Artists (Week 25)
 
-- [George Harrison](https://www.mckendrick.rocks/artist/george-harrison/) (40 plays)
-- [The Style Council](https://www.mckendrick.rocks/artist/the-style-council/) (27 plays)
-- [New Order](https://www.mckendrick.rocks/artist/new-order/) (24 plays)
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (16 plays)
+- [George Harrison](https://www.russ.fm/artist/george-harrison/) (40 plays)
+- [The Style Council](https://www.russ.fm/artist/the-style-council/) (27 plays)
+- [New Order](https://www.russ.fm/artist/new-order/) (24 plays)
+- [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (16 plays)
 - Tom Petty and The Heartbreakers (15 plays)
-- [Cake](https://www.mckendrick.rocks/artist/cake/) (14 plays)
-- [Delays](https://www.mckendrick.rocks/artist/delays/) (12 plays)
-- [Kate Bush](https://www.mckendrick.rocks/artist/kate-bush/) (12 plays)
-- [Depeche Mode](https://www.mckendrick.rocks/artist/depeche-mode/) (10 plays)
-- [Simple Minds](https://www.mckendrick.rocks/artist/simple-minds/) (9 plays)
+- [Cake](https://www.russ.fm/artist/cake/) (14 plays)
+- [Delays](https://www.russ.fm/artist/delays/) (12 plays)
+- [Kate Bush](https://www.russ.fm/artist/kate-bush/) (12 plays)
+- [Depeche Mode](https://www.russ.fm/artist/depeche-mode/) (10 plays)
+- [Simple Minds](https://www.russ.fm/artist/simple-minds/) (9 plays)
 - Tears for Fears (8 plays)
-- [The Smashing Pumpkins](https://www.mckendrick.rocks/artist/the-smashing-pumpkins/) (6 plays)
+- [The Smashing Pumpkins](https://www.russ.fm/artist/the-smashing-pumpkins/) (6 plays)
 
 
 ## Top Albums (Week 25)
 
-- [All Things Must Pass (50th Anniversary)](https://www.mckendrick.rocks/albums/all-things-must-pass-50th-anniversary-19772260/) by George Harrison
+- [All Things Must Pass (50th Anniversary)](https://www.russ.fm/albums/all-things-must-pass-50th-anniversary-19772260/) by George Harrison
 - Now 80s Alternative by Various Artists
 - Long Hot Summers: The Story Of The Style Council by The Style Council
-- [Singles](https://www.mckendrick.rocks/albums/singles-9017905/) by New Order
-- [A Foot In The Door (The Best Of Pink Floyd)](https://www.mckendrick.rocks/albums/a-foot-in-the-door-the-best-of-pink-floyd-12569365/) by Pink Floyd
+- [Singles](https://www.russ.fm/albums/singles-9017905/) by New Order
+- [A Foot In The Door (The Best Of Pink Floyd)](https://www.russ.fm/albums/a-foot-in-the-door-the-best-of-pink-floyd-12569365/) by Pink Floyd
 - Greatest Hits by Tom Petty and The Heartbreakers
-- [Fashion Nugget](https://www.mckendrick.rocks/albums/fashion-nugget-15007936/) by Cake
-- [Faded Seaside Glamour](https://www.mckendrick.rocks/albums/faded-seaside-glamour-25891525/) by Delays
+- [Fashion Nugget](https://www.russ.fm/albums/fashion-nugget-15007936/) by Cake
+- [Faded Seaside Glamour](https://www.russ.fm/albums/faded-seaside-glamour-25891525/) by Delays
 - Hounds of Love by Kate Bush
 - Songs of Faith and Devotion by Depeche Mode
-- [Once Upon A Time](https://www.mckendrick.rocks/albums/once-upon-a-time-762207/) by Simple Minds
+- [Once Upon A Time](https://www.russ.fm/albums/once-upon-a-time-762207/) by Simple Minds
 - Songs from the Big Chair by Tears for Fears
 
 

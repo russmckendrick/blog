@@ -56,15 +56,15 @@ See you on the flip side my audiophiles! 🤘
 
 ## Top Artists (Week 37)
 
-- [Doves](https://www.mckendrick.rocks/artist/doves/) (12 plays)
-- [The Smiths](https://www.mckendrick.rocks/artist/the-smiths/) (12 plays)
-- [The Smashing Pumpkins](https://www.mckendrick.rocks/artist/the-smashing-pumpkins/) (10 plays)
-- [Prince](https://www.mckendrick.rocks/artist/prince/) (9 plays)
-- [Tom Waits](https://www.mckendrick.rocks/artist/tom-waits/) (9 plays)
-- [Held By Trees](https://www.mckendrick.rocks/artist/held-by-trees/) (8 plays)
-- [Talk Talk](https://www.mckendrick.rocks/artist/talk-talk/) (8 plays)
-- [Oceansize](https://www.mckendrick.rocks/artist/oceansize/) (4 plays)
-- [Suede](https://www.mckendrick.rocks/artist/suede/) (2 plays)
+- [Doves](https://www.russ.fm/artist/doves/) (12 plays)
+- [The Smiths](https://www.russ.fm/artist/the-smiths/) (12 plays)
+- [The Smashing Pumpkins](https://www.russ.fm/artist/the-smashing-pumpkins/) (10 plays)
+- [Prince](https://www.russ.fm/artist/prince/) (9 plays)
+- [Tom Waits](https://www.russ.fm/artist/tom-waits/) (9 plays)
+- [Held By Trees](https://www.russ.fm/artist/held-by-trees/) (8 plays)
+- [Talk Talk](https://www.russ.fm/artist/talk-talk/) (8 plays)
+- [Oceansize](https://www.russ.fm/artist/oceansize/) (4 plays)
+- [Suede](https://www.russ.fm/artist/suede/) (2 plays)
 
 
 ## Top Albums (Week 37)
@@ -72,11 +72,11 @@ See you on the flip side my audiophiles! 🤘
 - Lost Souls by Doves
 - The Sound Of The Smiths (Deluxe) by The Smiths
 - Rotten Apples: Greatest Hits by The Smashing Pumpkins
-- [Lovesexy](https://www.mckendrick.rocks/albums/lovesexy-27790731/) by Prince
+- [Lovesexy](https://www.russ.fm/albums/lovesexy-27790731/) by Prince
 - Closing Time (Remastered) by Tom Waits
-- [Eventide / Solace - Live At Real World Studios](https://www.mckendrick.rocks/albums/eventide-solace-live-at-real-world-studios-27925125/) by Held By Trees
+- [Eventide / Solace - Live At Real World Studios](https://www.russ.fm/albums/eventide-solace-live-at-real-world-studios-27925125/) by Held By Trees
 - The Very Best Of by Talk Talk
-- [Everyone Into Position](https://www.mckendrick.rocks/albums/everyone-into-position-1460942/) by Oceansize
+- [Everyone Into Position](https://www.russ.fm/albums/everyone-into-position-1460942/) by Oceansize
 - Beautiful Ones: The Best of Suede 1992-2018 (Deluxe) by Suede
 
 

@@ -207,20 +207,20 @@ The release of "Second Toughest in the Infants" solidified Underworld’s reputa
 
 ## Top Artists (Week 26)
 
-- [Sepultura](https://www.mckendrick.rocks/artist/sepultura/) (27 plays)
-- [Talking Heads](https://www.mckendrick.rocks/artist/talking-heads/) (18 plays)
-- [The Smashing Pumpkins](https://www.mckendrick.rocks/artist/the-smashing-pumpkins/) (13 plays)
-- [A Perfect Circle](https://www.mckendrick.rocks/artist/a-perfect-circle/) (12 plays)
-- [R.E.M.](https://www.mckendrick.rocks/artist/r.e.m./) (12 plays)
-- [Bruce Springsteen](https://www.mckendrick.rocks/artist/bruce-springsteen/) (8 plays)
-- [Underworld](https://www.mckendrick.rocks/artist/underworld/) (8 plays)
+- [Sepultura](https://www.russ.fm/artist/sepultura/) (27 plays)
+- [Talking Heads](https://www.russ.fm/artist/talking-heads/) (18 plays)
+- [The Smashing Pumpkins](https://www.russ.fm/artist/the-smashing-pumpkins/) (13 plays)
+- [A Perfect Circle](https://www.russ.fm/artist/a-perfect-circle/) (12 plays)
+- [R.E.M.](https://www.russ.fm/artist/r.e.m./) (12 plays)
+- [Bruce Springsteen](https://www.russ.fm/artist/bruce-springsteen/) (8 plays)
+- [Underworld](https://www.russ.fm/artist/underworld/) (8 plays)
 
 
 ## Top Albums (Week 26)
 
-- [Roots](https://www.mckendrick.rocks/albums/roots-11088399/) by Sepultura
+- [Roots](https://www.russ.fm/albums/roots-11088399/) by Sepultura
 - The Best of Talking Heads by Talking Heads
-- [Oceania](https://www.mckendrick.rocks/albums/oceania-3702725/) by The Smashing Pumpkins
+- [Oceania](https://www.russ.fm/albums/oceania-3702725/) by The Smashing Pumpkins
 - Mer de noms by A Perfect Circle
 - Automatic for the People by R.E.M.
 - Born to Run by Bruce Springsteen

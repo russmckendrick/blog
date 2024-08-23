@@ -53,31 +53,31 @@ Keep playing, keep exploring! 🎵✨
 
 ## Top Artists (Week 45)
 
-- [The Who](https://www.mckendrick.rocks/artist/the-who/) (17 plays)
-- [Longpigs](https://www.mckendrick.rocks/artist/longpigs/) (12 plays)
-- [New Order](https://www.mckendrick.rocks/artist/new-order/) (12 plays)
-- [Sultans Of Ping F.C.](https://www.mckendrick.rocks/artist/sultans-of-ping-f.c./) (12 plays)
-- [Peeping Tom](https://www.mckendrick.rocks/artist/peeping-tom/) (11 plays)
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (9 plays)
-- [Easy Star All-Stars](https://www.mckendrick.rocks/artist/easy-star-all-stars/) (8 plays)
-- [U2](https://www.mckendrick.rocks/artist/u2/) (7 plays)
-- [The Rolling Stones](https://www.mckendrick.rocks/artist/the-rolling-stones/) (3 plays)
+- [The Who](https://www.russ.fm/artist/the-who/) (17 plays)
+- [Longpigs](https://www.russ.fm/artist/longpigs/) (12 plays)
+- [New Order](https://www.russ.fm/artist/new-order/) (12 plays)
+- [Sultans Of Ping F.C.](https://www.russ.fm/artist/sultans-of-ping-f.c./) (12 plays)
+- [Peeping Tom](https://www.russ.fm/artist/peeping-tom/) (11 plays)
+- [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (9 plays)
+- [Easy Star All-Stars](https://www.russ.fm/artist/easy-star-all-stars/) (8 plays)
+- [U2](https://www.russ.fm/artist/u2/) (7 plays)
+- [The Rolling Stones](https://www.russ.fm/artist/the-rolling-stones/) (3 plays)
 - Easy Star All-Stars & Naomi Cowan (2 plays)
-- [Manic Street Preachers](https://www.mckendrick.rocks/artist/manic-street-preachers/) (2 plays)
-- [Talk Talk](https://www.mckendrick.rocks/artist/talk-talk/) (2 plays)
+- [Manic Street Preachers](https://www.russ.fm/artist/manic-street-preachers/) (2 plays)
+- [Talk Talk](https://www.russ.fm/artist/talk-talk/) (2 plays)
 
 
 ## Top Albums (Week 45)
 
 - Quadrophenia (2013 Remaster) by The Who
-- [The Sun Is Often Out](https://www.mckendrick.rocks/albums/the-sun-is-often-out-15537055/) by Longpigs
-- [Substance](https://www.mckendrick.rocks/albums/substance-28848151/) by New Order
+- [The Sun Is Often Out](https://www.russ.fm/albums/the-sun-is-often-out-15537055/) by Longpigs
+- [Substance](https://www.russ.fm/albums/substance-28848151/) by New Order
 - Casual Sex in the Cineplex by Sultans Of Ping F.C.
-- [Peeping Tom](https://www.mckendrick.rocks/albums/peeping-tom-28643479/) by Peeping Tom
-- [The Division Bell](https://www.mckendrick.rocks/albums/the-division-bell-13718487/) by Pink Floyd
-- [Ziggy Stardub](https://www.mckendrick.rocks/albums/ziggy-stardub-26844965/) by Easy Star All-Stars
-- [The Unforgettable Fire](https://www.mckendrick.rocks/albums/the-unforgettable-fire-204237/) by U2
-- [Hot Rocks 1964-1971](https://www.mckendrick.rocks/albums/hot-rocks-1964-1971-879358/) by The Rolling Stones
+- [Peeping Tom](https://www.russ.fm/albums/peeping-tom-28643479/) by Peeping Tom
+- [The Division Bell](https://www.russ.fm/albums/the-division-bell-13718487/) by Pink Floyd
+- [Ziggy Stardub](https://www.russ.fm/albums/ziggy-stardub-26844965/) by Easy Star All-Stars
+- [The Unforgettable Fire](https://www.russ.fm/albums/the-unforgettable-fire-204237/) by U2
+- [Hot Rocks 1964-1971](https://www.russ.fm/albums/hot-rocks-1964-1971-879358/) by The Rolling Stones
 - Ziggy Stardub by Easy Star All-Stars & Naomi Cowan
 - Gold Against the Soul (Remastered) by Manic Street Preachers
 - The Very Best Of by Talk Talk

@@ -52,30 +52,30 @@ Ciao, catch you in my next 'sound-opia'!👋🎶
 
 ## Top Artists (Week 40)
 
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (40 plays)
-- [The Seatbelts](https://www.mckendrick.rocks/artist/the-seatbelts/) (22 plays)
-- [Crowded House](https://www.mckendrick.rocks/artist/crowded-house/) (19 plays)
-- [Yes](https://www.mckendrick.rocks/artist/yes/) (14 plays)
-- [The Gaslight Anthem](https://www.mckendrick.rocks/artist/the-gaslight-anthem/) (12 plays)
-- [Tori Amos](https://www.mckendrick.rocks/artist/tori-amos/) (11 plays)
-- [Steven Wilson](https://www.mckendrick.rocks/artist/steven-wilson/) (10 plays)
-- [The Dears](https://www.mckendrick.rocks/artist/the-dears/) (10 plays)
-- [Simple Minds](https://www.mckendrick.rocks/artist/simple-minds/) (6 plays)
-- [Kate Bush](https://www.mckendrick.rocks/artist/kate-bush/) (1 plays)
-- [Ned's Atomic Dustbin](https://www.mckendrick.rocks/artist/neds-atomic-dustbin/) (1 plays)
+- [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (40 plays)
+- [The Seatbelts](https://www.russ.fm/artist/the-seatbelts/) (22 plays)
+- [Crowded House](https://www.russ.fm/artist/crowded-house/) (19 plays)
+- [Yes](https://www.russ.fm/artist/yes/) (14 plays)
+- [The Gaslight Anthem](https://www.russ.fm/artist/the-gaslight-anthem/) (12 plays)
+- [Tori Amos](https://www.russ.fm/artist/tori-amos/) (11 plays)
+- [Steven Wilson](https://www.russ.fm/artist/steven-wilson/) (10 plays)
+- [The Dears](https://www.russ.fm/artist/the-dears/) (10 plays)
+- [Simple Minds](https://www.russ.fm/artist/simple-minds/) (6 plays)
+- [Kate Bush](https://www.russ.fm/artist/kate-bush/) (1 plays)
+- [Ned's Atomic Dustbin](https://www.russ.fm/artist/neds-atomic-dustbin/) (1 plays)
 
 
 ## Top Albums (Week 40)
 
-- [Animals (2018 Remix)](https://www.mckendrick.rocks/albums/animals-2018-remix-24735206/) by Pink Floyd
-- [Cowboy Bebop (Original Series Soundtrack)](https://www.mckendrick.rocks/albums/cowboy-bebop-original-series-soundtrack-16328898/) by The Seatbelts
+- [Animals (2018 Remix)](https://www.russ.fm/albums/animals-2018-remix-24735206/) by Pink Floyd
+- [Cowboy Bebop (Original Series Soundtrack)](https://www.russ.fm/albums/cowboy-bebop-original-series-soundtrack-16328898/) by The Seatbelts
 - The Very Very Best of Crowded House by Crowded House
 - Best Of by Yes
-- [The '59 Sound](https://www.mckendrick.rocks/albums/the-59-sound-7246420/) by The Gaslight Anthem
+- [The '59 Sound](https://www.russ.fm/albums/the-59-sound-7246420/) by The Gaslight Anthem
 - Little Earthquakes (Remastered) by Tori Amos
-- [The Harmony Codex](https://www.mckendrick.rocks/albums/the-harmony-codex-28432588/) by Steven Wilson
-- [Missiles](https://www.mckendrick.rocks/albums/missiles-12677910/) by The Dears
-- [Once Upon A Time](https://www.mckendrick.rocks/albums/once-upon-a-time-762207/) by Simple Minds
+- [The Harmony Codex](https://www.russ.fm/albums/the-harmony-codex-28432588/) by Steven Wilson
+- [Missiles](https://www.russ.fm/albums/missiles-12677910/) by The Dears
+- [Once Upon A Time](https://www.russ.fm/albums/once-upon-a-time-762207/) by Simple Minds
 - The Sensual World (2018 Remaster) by Kate Bush
 - 'GOD FODDER' by Ned's Atomic Dustbin
 

@@ -25,7 +25,7 @@ From the ethereal shoegaze of Slowdive's "Everything Is Alive" to the dynamic ro
 
 {{< gallery match="top10/*" sortOrder="assc" rowHeight="250" margins="3" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=false previewType="blur" embedPreview=true loadJQuery=true >}}
 
-## Salvage Enterprise - The Polyphonic Spree ([](https://www.mckendrick.rocks/albums/salvage-enterprise-28945606/))
+## Salvage Enterprise - The Polyphonic Spree ([](https://www.russ.fm/albums/salvage-enterprise-28945606/))
 
 "Salvage Enterprise" by The Polyphonic Spree, released in 2023, marks a significant return for the band, known for their theatrical and operatic approach to alternative music. The album is categorized as a rock album on Apple Music, but it encompasses a broader range of styles. The band continues its tradition of naming songs starting with “Section” followed by a number, a unique titling method that adds a layer of intrigue to the album.
 
@@ -39,7 +39,7 @@ In summary, "Salvage Enterprise" is characterized by its dramatic and operatic s
 
 For more details, you can explore the reviews from [mxdwn Music](https://music.mxdwn.com/2023/11/28/reviews/album-review-the-polyphonic-spree-salvage-enterprise/), [Spectrum Culture](https://spectrumculture.com/2023/12/06/the-polyphonic-spree-salvage-enterprise-review/), [Tinnitist](https://tinnitist.com/2023/11/17/albums-of-the-week-the-polyphonic-spree-salvage-enterprise/), [Glide Magazine](https://glidemagazine.com/297692/the-polyphonic-sprees-robust-positive-pop-returns-on-salvage-enterprise-album-review/), and [AllMusic](https://www.allmusic.com/album/salvage-enterprise-mw0004100460).
 
-## News From The Invisible World - The Fierce & The Dead ([](https://www.mckendrick.rocks/albums/news-from-the-invisible-world-28073356/))
+## News From The Invisible World - The Fierce & The Dead ([](https://www.russ.fm/albums/news-from-the-invisible-world-28073356/))
 
 "News From The Invisible World" by The Fierce & The Dead is a significant evolution in the band's journey, introducing vocals for the first time in their discography. This album, with its eight tracks spanning 42 minutes, marks a bold step forward, showcasing the band's willingness to embrace change and expand their musical horizons.
 
@@ -53,7 +53,7 @@ Overall, "News From The Invisible World" is a journey of musical exploration and
 
 For detailed reviews, please visit [Psychedelic Scene Magazine](https://psychedelicscene.com/2023/08/21/news-from-the-invisible-world-by-the-fierce-and-the-dead-album-review/), [At The Barrier](https://atthebarrier.com/2023/07/24/the-fierce-the-dead/), [Echoes And Dust](https://echoesanddust.com/2023/06/the-fierce-and-the-dead-news-from-the-invisible-world/), and [Progradar](https://www.progradar.org/?s=+News+From+The+Invisible+World).
 
-## I/O -  Peter Gabriel ([](https://www.mckendrick.rocks/albums/i-o-bright-side-mixes-29079523/))
+## I/O -  Peter Gabriel ([](https://www.russ.fm/albums/i-o-bright-side-mixes-29079523/))
 
 Peter Gabriel's album "i/o," released in December 2023, marks his first album of new material in over two decades. The album unfolds a narrative of modern concerns and personal reflections. It was uniquely released track by track every full moon throughout 2023, creating a gradual buildup to the album's release.
 
@@ -67,7 +67,7 @@ Overall, "i/o" is seen as a worthy addition to Peter Gabriel's catalog, reflecti
 
 For more detailed insights, you can refer to the reviews from [The Prog Report](https://progreport.com/peter-gabriel-i-o-album-review/), [Ultimate Classic Rock](https://ultimateclassicrock.com/peter-gabriel-io-album-review/), and [Rolling Stone UK](https://www.rollingstone.co.uk/music/album-reviews/peter-gabriel-i-o-review-a-return-well-worth-waiting-for-35083/).
 
-## Hologram - Amplifier ([](https://www.mckendrick.rocks/albums/hologram-28259452/))
+## Hologram - Amplifier ([](https://www.russ.fm/albums/hologram-28259452/))
 
 "Hologram," Amplifier's first album since 2017, emerges as a strong and diverse addition to the band's catalog. Not originally intended as their next album, "Hologram" was created in the Autumn of 2022, during sessions for another project, "Gargantuan," which is yet to be released. Realizing that the material from these sessions didn't quite fit the "Gargantuan" project, the band decided to release it as "Hologram."
 
@@ -79,7 +79,7 @@ Tracks like "Two Way Mirror" display classic Amplifier riffs with stoner tones, 
 
 For more details on the album, you can refer to the reviews on [Sputnikmusic](https://www.sputnikmusic.com/review/86684/Amplifier-Hologram/) and [The Progressive Aspect](https://theprogressiveaspect.net/blog/2023/04/20/51910/).
 
-## Pearlies - Emma Anderson ([](https://www.mckendrick.rocks/albums/pearlies-28653319/))
+## Pearlies - Emma Anderson ([](https://www.russ.fm/albums/pearlies-28653319/))
 
 "Pearlies," the solo debut album from Emma Anderson, known for her work with Lush, is a significant return to the music scene. Released following the final breakup of Lush in 2016, "Pearlies" showcases Anderson's journey back into the spotlight with a collection of songs that revisit the gauzy sound of Lush's early shoegaze years. The album diverges from the brasher Britpop era of Lush, instead embracing a more atmospheric and dream-pop approach.
 
@@ -91,7 +91,7 @@ Overall, "Pearlies" is a glowingly lovely and nicely crafted record that shows A
 
 For more detailed insights into the album, you can refer to the reviews on [UNCUT](https://www.uncut.co.uk/reviews/emma-anderson-143992/) and [Spectrum Culture](https://spectrumculture.com/2023/10/22/emma-anderson-pearlies-review/).
 
-## Ziggy Stardub - Easy Star All-Stars ([](https://www.mckendrick.rocks/albums/ziggy-stardub-26844965/))
+## Ziggy Stardub - Easy Star All-Stars ([](https://www.russ.fm/albums/ziggy-stardub-26844965/))
 
 "Ziggy Stardub" by Easy Star All-Stars is a reggae reinterpretation of David Bowie’s iconic album "The Rise and Fall of Ziggy Stardust and The Spiders from Mars." This album is a fresh take on Bowie's work, delivered in a dub reggae style that's both straightforward and impactful. Featuring a mix of younger and veteran vocalists, including notable names like Steel Pulse, Maxi Priest, and Macy Gray, the album offers a blend of reggae styles with well-established and emerging talents.
 
@@ -101,7 +101,7 @@ The Easy Star All-Stars have a history of reimagining classic albums in reggae s
 
 For a more detailed review and insights into the album, you can visit [AllMusic](https://www.allmusic.com/album/ziggy-stardub-mw0003921922), [The Arts Desk](https://www.theartsdesk.com/new-music/album-easy-star-all-stars-ziggy-stardub), and [Tinnitist](https://tinnitist.com/2023/04/21/albums-of-the-week-easy-star-all-stars-ziggy-stardub/).
 
-## Everything Is Alive - Slowdive ([](https://www.mckendrick.rocks/albums/everything-is-alive-28131346/))
+## Everything Is Alive - Slowdive ([](https://www.russ.fm/albums/everything-is-alive-28131346/))
 
 "Everything Is Alive" by Slowdive marks a significant evolution in the band's sound, presenting an album that is both intimately familiar yet ventures into new sonic territories. The album, which follows their self-titled reunion album, manages to retain and invigorate the timeless magic of Slowdive’s music, while also exploring new dimensions in sound and emotion.
 
@@ -115,7 +115,7 @@ Throughout the album, there's a consistent balance between darkness and hope, wi
 
 This description of "Everything Is Alive" is based on reviews from [SPIN](https://www.spin.com/2023/08/slowdive-everything-is-alive-album-review/) and [Our Culture Magazine](https://ourculturemag.com/2023/08/31/album-review-slowdive-everything-is-alive/), where you can find more detailed analyses and insights into the album.
 
-## The Harmony Codex - Steven Wilson ([](https://www.mckendrick.rocks/albums/the-harmony-codex-28455277/))
+## The Harmony Codex - Steven Wilson ([](https://www.russ.fm/albums/the-harmony-codex-28455277/))
 
 "Steven Wilson's album 'The Harmony Codex' represents a significant milestone in his career, showcasing an evolution in his sound and artistic expression. The album intertwines various musical styles, including progressive rock, jazz, electronica, and ambient soundscapes, creating a unique listening experience.
 
@@ -127,7 +127,7 @@ Overall, 'The Harmony Codex' is seen as a brave step forward for Wilson, with a 
 
 For more detailed insights into the album, you can explore the reviews on [The Prog Report](https://progreport.com/steven-wilson-the-harmony-codex-album-review/), [At The Barrier](https://atthebarrier.com/2023/09/28/steven-wilson-the-harmony-codex-album-review/), and [Spinning Platters](https://spinningplatters.com/2023/08/14/album-review-steven-wilson-the-harmony-codex/)."
 
-## Brothers & Sisters - Steve Mason ([](https://www.mckendrick.rocks/albums/brothers-sisters-26299913/))
+## Brothers & Sisters - Steve Mason ([](https://www.russ.fm/albums/brothers-sisters-26299913/))
 
 "Brothers & Sisters," the fifth solo album by Steve Mason, is a creative and politically charged work that sees him returning to the experimental and melodic styles that marked his time with The Beta Band. The album opens with expansive synth waves, possibly paying homage to the late Vangelis, and quickly establishes itself as an uplifting and optimistic spiritual reckoning. Mason doesn't shy away from addressing the turmoil and chaos of current global and political climates, using his music as a platform for expression and defiance.
 
@@ -139,7 +139,7 @@ Tracks like "No More" and "I’m On My Way" exhibit Mason's signature sound, ble
 
 For more detailed reviews of the album, you can visit [AllMusic](https://www.allmusic.com/album/brothers-sisters-mw0003856586), [NARC. Magazine](https://narcmagazine.com/album-review-steve-mason-brothers-sisters/), [Echoes And Dust](https://echoesanddust.com/), and [Live4ever](https://www.live4ever.uk.com/2023/03/review-steve-mason-brothers-sisters/).
 
-## The Endless Coloured Ways (The Songs Of Nick Drake) - Various ([](https://www.mckendrick.rocks/albums/the-endless-coloured-ways-the-songs-of-nick-drake-27634329/))
+## The Endless Coloured Ways (The Songs Of Nick Drake) - Various ([](https://www.russ.fm/albums/the-endless-coloured-ways-the-songs-of-nick-drake-27634329/))
 
 "The Endless Coloured Ways: The Songs of Nick Drake" is an album that stands as a significant tribute to the enduring musical legacy of Nick Drake, featuring an eclectic mix of artists who bring their unique interpretations to his songs. This compilation album, released on July 7, 2023, includes contributions from a variety of artists across different genres, all unified by Drake's poignant lyricism.
 
@@ -155,7 +155,7 @@ For a deeper dive into the album, you can explore the reviews on [Tradfolk](http
 
 {{< gallery match="under/*" sortOrder="assc" rowHeight="175" margins="4" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=false previewType="blur" embedPreview=true loadJQuery=false >}}
 
-## Sky Void Of Stars - Katatonia ([](https://www.mckendrick.rocks/albums/sky-void-of-stars-25820851/))
+## Sky Void Of Stars - Katatonia ([](https://www.russ.fm/albums/sky-void-of-stars-25820851/))
 
 "Sky Void Of Stars" by Katatonia, released in 2023, showcases the band's evolution from their previous work. This album is praised for its unique blend of gothic rock and prog elements, with a focus on brooding, morose songwriting. The opening track "Austerity" is highlighted for its complexity and melancholic melodies, setting the tone for the album.
 
@@ -165,7 +165,7 @@ Critics have commended "Sky Void Of Stars" for its cohesive collection of tracks
 
 For more detailed reviews and insights into the album, you can explore the reviews from [The Prog Report](https://progreport.com/katatonia-sky-void-of-stars-album-review/), [MetalSucks](https://www.metalsucks.net/), [Angry Metal Guy](https://www.angrymetalguy.com/katatonia-sky-void-of-stars-review/), [Distorted Sound Magazine](https://distortedsoundmag.com/album-review-sky-void-of-stars-katatonia/), and [The Soundboard](https://thesoundboardreviews.com/).
 
-## ID.Entity - Riverside ([](https://www.mckendrick.rocks/albums/id-entity-25826326/))
+## ID.Entity - Riverside ([](https://www.russ.fm/albums/id-entity-25826326/))
 
 "ID.Entity" by Riverside, released in 2023, is an album that delves into contemporary themes with emotional depth and melodic richness. The album reflects on the complexities of identity and the digital age, presenting these topics through a mix of prog rock and modern musical elements.
 
@@ -179,7 +179,7 @@ Despite some criticisms regarding certain lyrical choices and the use of compute
 
 For more detailed insights into the album, you can explore the reviews from [Metal Wani](https://metalwani.com/2023/01/review-riverside-id-entity.html), [The Prog Report](https://progreport.com/riverside-i-d-entity-album-review/), [Angry Metal Guy](https://www.angrymetalguy.com/riverside-id-entity-review/), [Maximum Volume Music](https://maximumvolumemusic.com/review-riverside-id-entity-2023/), [Millstream Park](https://millstreampark.com/riverside-id-entity-2023-album-review/), and [Sonic Perspectives](https://www.sonicperspectives.com/album-reviews/riverside-id-entity/).
 
-## The Girl Is Crying In Her Latte - Sparks ([](https://www.mckendrick.rocks/albums/the-girl-is-crying-in-her-latte-27196083/))
+## The Girl Is Crying In Her Latte - Sparks ([](https://www.russ.fm/albums/the-girl-is-crying-in-her-latte-27196083/))
 
 "The Girl Is Crying In Her Latte" by Sparks is a testament to the band's creative endurance, marking their 26th studio album. This 2023 release showcases Sparks' ability to blend their classic sound with a modern twist, infusing a more electronic and hard-edged approach compared to their previous works. The album is applauded for its versatility, featuring a range of styles and sounds that demonstrate the band's evolving artistry while maintaining their distinct identity.
 
@@ -193,7 +193,7 @@ Overall, "The Girl Is Crying In Her Latte" is celebrated for its ingenious lyric
 
 For more detailed reviews and insights, you can refer to [The Spill Magazine](https://spillmagazine.com/spill-album-review-sparks-the-girl-is-crying-in-her-latte/), [Set The Tape](https://setthetape.com/2023/06/02/sparks-the-girl-is-crying-in-her-latte/), [Maximum Volume Music](https://maximumvolumemusic.com/review-sparks-the-girl-is-crying-in-her-latte-2023/), [The Fire Note](https://thefirenote.com/reviews/sparks-the-girl-is-crying-in-her-latte-album-review/), and [musicOMH](https://www.musicomh.com/reviews/albums/sparks-the-girl-is-crying-in-her-latte).
 
-## Simplicity - Matt Berry ([](https://www.mckendrick.rocks/albums/simplicity-28940773/))
+## Simplicity - Matt Berry ([](https://www.russ.fm/albums/simplicity-28940773/))
 
 Matt Berry's 2023 album "Simplicity" is a distinctive and innovative work, created in collaboration with the library music label KPM. The album consists of 11 instrumental tracks, each around three minutes long, and is notable for its retro tone and intelligent construction. This collection of songs is very much in the vein of Berry's previous works like "Blue Elephant" and "Music for Insomniacs," marked by their familiarity yet fresh and lively feel.
 
@@ -203,7 +203,7 @@ The single "Top Brass" from the album is described as a jaunty tune that quickly
 
 For more detailed information and reviews on Matt Berry's "Simplicity," you can visit The Arts Desk [The Arts Desk](https://www.theartsdesk.com/new-music/album-matt-berry-simplicity) and AllMusic [AllMusic](https://www.allmusic.com/album/simplicity-mw0004100933).
 
-## Prism - The Orb ([](https://www.mckendrick.rocks/albums/prism-26908850/))
+## Prism - The Orb ([](https://www.russ.fm/albums/prism-26908850/))
 
 "The Orb's album "Prism," released on April 28, 2023, is a rich blend of various musical styles, demonstrating the duo's versatility and mastery in electronic music. The album is described as one of their best, despite not introducing anything particularly new. It reaffirms The Orb's love for music, especially reggae, which is prominently featured in the song-based material. The album spans about 70 minutes, offering a diverse musical journey.
 
@@ -217,7 +217,7 @@ Overall, "Prism" is described as an uplifting and positive album, blending music
 
 For a more detailed exploration of the album, you can refer to the reviews from [PopMatters](https://www.popmatters.com/the-orb-prism-album-review), [Joey Beltdrives](https://joeybeltdrives.com/the-orb-prism/), [AllMusic](https://www.allmusic.com/album/prism-mw0004100933), [musicOMH](https://www.musicomh.com/reviews/albums/the-orb-prism), and [The Arts Desk](https://www.theartsdesk.com/new-music/album-orb-prism)."
 
-## Version Girl - Rhoda Dakar  ([](https://www.mckendrick.rocks/albums/version-girl-27220650/))
+## Version Girl - Rhoda Dakar  ([](https://www.russ.fm/albums/version-girl-27220650/))
 
 "Version Girl" by Rhoda Dakar, released in 2023, is a remarkable album that showcases Dakar's love for Reggae, Ska, and Rocksteady. This 12-song collection, her first album in five years, features a variety of covers from artists like David Bowie, Tim Buckley, The Pretenders, Louis Armstrong, and The Rolling Stones, each transformed and reimagined through Dakar's unique musical lens.
 
@@ -229,7 +229,7 @@ Overall, "Version Girl" is an album that radiates energy and vitality. It's a te
 
 For more detailed insights into the album, you can refer to the reviews from Louder Than War [Louder Than War](https://louderthanwar.com/rhoda-dakar-version-girl-album-review/) and God Is In The TV [God Is In The TV](https://www.godisinthetvzine.co.uk/2023/05/29/rhoda-dakar-version-girl-sunday-best-recordings/).
 
-## Joy'All - Jenny Lewis ([](https://www.mckendrick.rocks/albums/joy-all-27328932/))
+## Joy'All - Jenny Lewis ([](https://www.russ.fm/albums/joy-all-27328932/))
 
 "Joy'All," the fifth solo album by Jenny Lewis, released in 2023, marks a significant step in her artistic journey. The album, recorded entirely in Nashville, is imbued with a country tinge, but it also reflects the complexity of emotions that Lewis is known for, as the former lead singer of Rilo Kiley.
 

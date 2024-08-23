@@ -5,4 +5,4 @@ showToc: false
 robotsNoIndex: true
 ---
 
-All my posts about [vinyl](http://mckendrick.rocks) I am listening to
+All my posts about [vinyl](http://russ.fm) I am listening to

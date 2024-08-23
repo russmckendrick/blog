@@ -63,34 +63,34 @@ P.S.: Make sure to dial up Deacon Blue if you haven't yet—your ears will thank
 
 ## Top Artists (Week 52)
 
-- [Deacon Blue](https://www.mckendrick.rocks/artist/deacon-blue/) (24 plays)
+- [Deacon Blue](https://www.russ.fm/artist/deacon-blue/) (24 plays)
 - The Soundtrack of Our Lives (24 plays)
-- [Radiohead](https://www.mckendrick.rocks/artist/radiohead/) (23 plays)
-- [Gene](https://www.mckendrick.rocks/artist/gene/) (22 plays)
-- [Erasure](https://www.mckendrick.rocks/artist/erasure/) (20 plays)
-- [Dinosaur Jr.](https://www.mckendrick.rocks/artist/dinosaur-jr./) (19 plays)
+- [Radiohead](https://www.russ.fm/artist/radiohead/) (23 plays)
+- [Gene](https://www.russ.fm/artist/gene/) (22 plays)
+- [Erasure](https://www.russ.fm/artist/erasure/) (20 plays)
+- [Dinosaur Jr.](https://www.russ.fm/artist/dinosaur-jr./) (19 plays)
 - Tom Petty and The Heartbreakers (19 plays)
-- [Bruce Springsteen](https://www.mckendrick.rocks/artist/bruce-springsteen/) (18 plays)
-- [Crowded House](https://www.mckendrick.rocks/artist/crowded-house/) (14 plays)
-- [Spacehog](https://www.mckendrick.rocks/artist/spacehog/) (14 plays)
-- [Senser](https://www.mckendrick.rocks/artist/senser/) (13 plays)
-- [Doves](https://www.mckendrick.rocks/artist/doves/) (12 plays)
+- [Bruce Springsteen](https://www.russ.fm/artist/bruce-springsteen/) (18 plays)
+- [Crowded House](https://www.russ.fm/artist/crowded-house/) (14 plays)
+- [Spacehog](https://www.russ.fm/artist/spacehog/) (14 plays)
+- [Senser](https://www.russ.fm/artist/senser/) (13 plays)
+- [Doves](https://www.russ.fm/artist/doves/) (12 plays)
 
 
 ## Top Albums (Week 52)
 
 - All The Old 45s - The Very Best Of Deacon Blue by Deacon Blue
 - Communion by The Soundtrack of Our Lives
-- [OK Computer OKNOTOK 1997 2017](https://www.mckendrick.rocks/albums/ok-computer-oknotok-1997-2017-10229846/) by Radiohead
-- [Yours For The Taking (The Best Of)](https://www.mckendrick.rocks/albums/yours-for-the-taking-the-best-of-15778008/) by Gene
-- [Always (The Very Best Of Erasure)](https://www.mckendrick.rocks/albums/always-the-very-best-of-erasure-27978444/) by Erasure
-- [Where You Been](https://www.mckendrick.rocks/albums/where-you-been-5474712/) by Dinosaur Jr.
+- [OK Computer OKNOTOK 1997 2017](https://www.russ.fm/albums/ok-computer-oknotok-1997-2017-10229846/) by Radiohead
+- [Yours For The Taking (The Best Of)](https://www.russ.fm/albums/yours-for-the-taking-the-best-of-15778008/) by Gene
+- [Always (The Very Best Of Erasure)](https://www.russ.fm/albums/always-the-very-best-of-erasure-27978444/) by Erasure
+- [Where You Been](https://www.russ.fm/albums/where-you-been-5474712/) by Dinosaur Jr.
 - Greatest Hits by Tom Petty and The Heartbreakers
-- [Greatest Hits](https://www.mckendrick.rocks/albums/greatest-hits-12213768/) by Bruce Springsteen
+- [Greatest Hits](https://www.russ.fm/albums/greatest-hits-12213768/) by Bruce Springsteen
 - Happy Daze (Volume One) by Various Artists
-- [Woodface](https://www.mckendrick.rocks/albums/woodface-632637/) by Crowded House
-- [Resident Alien](https://www.mckendrick.rocks/albums/resident-alien-15815605/) by Spacehog
-- [Stacked Up](https://www.mckendrick.rocks/albums/stacked-up-1723235/) by Senser
+- [Woodface](https://www.russ.fm/albums/woodface-632637/) by Crowded House
+- [Resident Alien](https://www.russ.fm/albums/resident-alien-15815605/) by Spacehog
+- [Stacked Up](https://www.russ.fm/albums/stacked-up-1723235/) by Senser
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

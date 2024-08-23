@@ -52,25 +52,25 @@ Russ.
 
 ## Top Artists (Week 47)
 
-- [The Beat](https://www.mckendrick.rocks/artist/the-beat/) (23 plays)
-- [The Polyphonic Spree](https://www.mckendrick.rocks/artist/the-polyphonic-spree/) (18 plays)
-- [XTC](https://www.mckendrick.rocks/artist/xtc/) (14 plays)
-- [808 State](https://www.mckendrick.rocks/artist/808-state/) (13 plays)
-- [Stars](https://www.mckendrick.rocks/artist/stars/) (13 plays)
-- [Pearl Jam](https://www.mckendrick.rocks/artist/pearl-jam/) (12 plays)
-- [Split Enz](https://www.mckendrick.rocks/artist/split-enz/) (11 plays)
+- [The Beat](https://www.russ.fm/artist/the-beat/) (23 plays)
+- [The Polyphonic Spree](https://www.russ.fm/artist/the-polyphonic-spree/) (18 plays)
+- [XTC](https://www.russ.fm/artist/xtc/) (14 plays)
+- [808 State](https://www.russ.fm/artist/808-state/) (13 plays)
+- [Stars](https://www.russ.fm/artist/stars/) (13 plays)
+- [Pearl Jam](https://www.russ.fm/artist/pearl-jam/) (12 plays)
+- [Split Enz](https://www.russ.fm/artist/split-enz/) (11 plays)
 - Orchestral Manoeuvres in the Dark (2 plays)
 
 
 ## Top Albums (Week 47)
 
-- [I Just Can't Stop It](https://www.mckendrick.rocks/albums/i-just-can-t-stop-it-3723205/) by The Beat
-- [Salvage Enterprise](https://www.mckendrick.rocks/albums/salvage-enterprise-28945606/) by The Polyphonic Spree
+- [I Just Can't Stop It](https://www.russ.fm/albums/i-just-can-t-stop-it-3723205/) by The Beat
+- [Salvage Enterprise](https://www.russ.fm/albums/salvage-enterprise-28945606/) by The Polyphonic Spree
 - Drums and Wires by XTC
-- [ex:el](https://www.mckendrick.rocks/albums/ex-el-28581625/) by 808 State
+- [ex:el](https://www.russ.fm/albums/ex-el-28581625/) by 808 State
 - Set Yourself on Fire by Stars
-- [Vs.](https://www.mckendrick.rocks/albums/vs-8354355/) by Pearl Jam
-- [History Never Repeats (The Best Of Split Enz)](https://www.mckendrick.rocks/albums/history-never-repeats-the-best-of-split-enz-1414426/) by Split Enz
+- [Vs.](https://www.russ.fm/albums/vs-8354355/) by Pearl Jam
+- [History Never Repeats (The Best Of Split Enz)](https://www.russ.fm/albums/history-never-repeats-the-best-of-split-enz-1414426/) by Split Enz
 - The Best of Orchestral Manoeuvres in the Dark by Orchestral Manoeuvres in the Dark
 
 

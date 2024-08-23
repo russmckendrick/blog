@@ -66,33 +66,33 @@ RussMckendrick 🎩🎻
 
 ## Top Artists (Week 44)
 
-- [Cardiacs](https://www.mckendrick.rocks/artist/cardiacs/) (47 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (22 plays)
-- [Anathema](https://www.mckendrick.rocks/artist/anathema/) (13 plays)
-- [Billy Bragg](https://www.mckendrick.rocks/artist/billy-bragg/) (13 plays)
+- [Cardiacs](https://www.russ.fm/artist/cardiacs/) (47 plays)
+- [Genesis](https://www.russ.fm/artist/genesis/) (22 plays)
+- [Anathema](https://www.russ.fm/artist/anathema/) (13 plays)
+- [Billy Bragg](https://www.russ.fm/artist/billy-bragg/) (13 plays)
 - Orchestral Manoeuvres in the Dark (12 plays)
-- [The James Taylor Quartet](https://www.mckendrick.rocks/artist/the-james-taylor-quartet/) (12 plays)
-- [Therapy?](https://www.mckendrick.rocks/artist/therapy/) (12 plays)
-- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (11 plays)
-- [Split Enz](https://www.mckendrick.rocks/artist/split-enz/) (11 plays)
-- [The Gaslight Anthem](https://www.mckendrick.rocks/artist/the-gaslight-anthem/) (10 plays)
-- [Oceansize](https://www.mckendrick.rocks/artist/oceansize/) (9 plays)
-- [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (9 plays)
+- [The James Taylor Quartet](https://www.russ.fm/artist/the-james-taylor-quartet/) (12 plays)
+- [Therapy?](https://www.russ.fm/artist/therapy/) (12 plays)
+- [David Bowie](https://www.russ.fm/artist/david-bowie/) (11 plays)
+- [Split Enz](https://www.russ.fm/artist/split-enz/) (11 plays)
+- [The Gaslight Anthem](https://www.russ.fm/artist/the-gaslight-anthem/) (10 plays)
+- [Oceansize](https://www.russ.fm/artist/oceansize/) (9 plays)
+- [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (9 plays)
 
 
 ## Top Albums (Week 44)
 
 - A Little Man and a House and the Whole World Window by Cardiacs
-- [Internal Landscapes 2008-2018 (The Best Of)](https://www.mckendrick.rocks/albums/internal-landscapes-2008-2018-the-best-of-12717350/) by Anathema
-- [The Roaring Forty | 1983-2023](https://www.mckendrick.rocks/albums/the-roaring-forty-1983-2023-28738012/) by Billy Bragg
+- [Internal Landscapes 2008-2018 (The Best Of)](https://www.russ.fm/albums/internal-landscapes-2008-2018-the-best-of-12717350/) by Anathema
+- [The Roaring Forty | 1983-2023](https://www.russ.fm/albums/the-roaring-forty-1983-2023-28738012/) by Billy Bragg
 - The Lamb Lies Down On Broadway (remastered 2008) by Genesis
 - Bauhaus Staircase by Orchestral Manoeuvres in the Dark
-- [The Money Spyder](https://www.mckendrick.rocks/albums/the-money-spyder-28740754/) by The James Taylor Quartet
-- [Semi-Detached](https://www.mckendrick.rocks/albums/semi-detached-28696462/) by Therapy?
+- [The Money Spyder](https://www.russ.fm/albums/the-money-spyder-28740754/) by The James Taylor Quartet
+- [Semi-Detached](https://www.russ.fm/albums/semi-detached-28696462/) by Therapy?
 - The Rise and Fall of Ziggy Stardust and the Spiders from Mars (2012 Remaster) by David Bowie
-- [History Never Repeats (The Best Of Split Enz)](https://www.mckendrick.rocks/albums/history-never-repeats-the-best-of-split-enz-1414426/) by Split Enz
-- [Duke](https://www.mckendrick.rocks/albums/duke-773021/) by Genesis
-- [History Books](https://www.mckendrick.rocks/albums/history-books-28718389/) by The Gaslight Anthem
+- [History Never Repeats (The Best Of Split Enz)](https://www.russ.fm/albums/history-never-repeats-the-best-of-split-enz-1414426/) by Split Enz
+- [Duke](https://www.russ.fm/albums/duke-773021/) by Genesis
+- [History Books](https://www.russ.fm/albums/history-books-28718389/) by The Gaslight Anthem
 - Effloresce (Remastered) by Oceansize
 
 

@@ -69,26 +69,26 @@ Catch ya on the flip side!
 
 ## Top Artists (Week 11)
 
-- [Marillion](https://www.mckendrick.rocks/artist/marillion/) (28 plays)
-- [Doves](https://www.mckendrick.rocks/artist/doves/) (12 plays)
-- [Cake](https://www.mckendrick.rocks/artist/cake/) (11 plays)
-- [Paul Simon](https://www.mckendrick.rocks/artist/paul-simon/) (11 plays)
-- [The Black Crowes](https://www.mckendrick.rocks/artist/the-black-crowes/) (10 plays)
-- [Sigur Rós](https://www.mckendrick.rocks/artist/sigur-r%C3%B3s/) (8 plays)
-- [Steven Wilson](https://www.mckendrick.rocks/artist/steven-wilson/) (8 plays)
-- [Radiohead](https://www.mckendrick.rocks/artist/radiohead/) (3 plays)
+- [Marillion](https://www.russ.fm/artist/marillion/) (28 plays)
+- [Doves](https://www.russ.fm/artist/doves/) (12 plays)
+- [Cake](https://www.russ.fm/artist/cake/) (11 plays)
+- [Paul Simon](https://www.russ.fm/artist/paul-simon/) (11 plays)
+- [The Black Crowes](https://www.russ.fm/artist/the-black-crowes/) (10 plays)
+- [Sigur Rós](https://www.russ.fm/artist/sigur-r%C3%B3s/) (8 plays)
+- [Steven Wilson](https://www.russ.fm/artist/steven-wilson/) (8 plays)
+- [Radiohead](https://www.russ.fm/artist/radiohead/) (3 plays)
 
 
 ## Top Albums (Week 11)
 
-- [Misplaced Childhood](https://www.mckendrick.rocks/albums/misplaced-childhood-913326/) by Marillion
-- [The Last Broadcast](https://www.mckendrick.rocks/albums/the-last-broadcast-13697174/) by Doves
-- [Pressure Chief](https://www.mckendrick.rocks/albums/pressure-chief-30088206/) by Cake
-- [Graceland](https://www.mckendrick.rocks/albums/graceland-5416395/) by Paul Simon
-- [Happiness Bastards](https://www.mckendrick.rocks/albums/happiness-bastards-30103142/) by The Black Crowes
-- [( )](https://www.mckendrick.rocks/albums/6589097/) by Sigur Rós
+- [Misplaced Childhood](https://www.russ.fm/albums/misplaced-childhood-913326/) by Marillion
+- [The Last Broadcast](https://www.russ.fm/albums/the-last-broadcast-13697174/) by Doves
+- [Pressure Chief](https://www.russ.fm/albums/pressure-chief-30088206/) by Cake
+- [Graceland](https://www.russ.fm/albums/graceland-5416395/) by Paul Simon
+- [Happiness Bastards](https://www.russ.fm/albums/happiness-bastards-30103142/) by The Black Crowes
+- [( )](https://www.russ.fm/albums/6589097/) by Sigur Rós
 - The Raven That Refused to Sing (and Other Stories) by Steven Wilson
-- [Kid A](https://www.mckendrick.rocks/albums/kid-a-65034/) by Radiohead
+- [Kid A](https://www.russ.fm/albums/kid-a-65034/) by Radiohead
 - To the Bone by Steven Wilson
 
 

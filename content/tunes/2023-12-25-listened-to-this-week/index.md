@@ -71,23 +71,23 @@ Your Music Maestro 🎼
 
 ## Top Artists (Week 51)
 
-- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (27 plays)
-- [The Divine Comedy](https://www.mckendrick.rocks/artist/the-divine-comedy/) (24 plays)
-- [The Stranglers](https://www.mckendrick.rocks/artist/the-stranglers/) (20 plays)
-- [Pearl Jam](https://www.mckendrick.rocks/artist/pearl-jam/) (16 plays)
+- [David Bowie](https://www.russ.fm/artist/david-bowie/) (27 plays)
+- [The Divine Comedy](https://www.russ.fm/artist/the-divine-comedy/) (24 plays)
+- [The Stranglers](https://www.russ.fm/artist/the-stranglers/) (20 plays)
+- [Pearl Jam](https://www.russ.fm/artist/pearl-jam/) (16 plays)
 - The Sisters of Mercy (12 plays)
-- [Simple Minds](https://www.mckendrick.rocks/artist/simple-minds/) (10 plays)
+- [Simple Minds](https://www.russ.fm/artist/simple-minds/) (10 plays)
 - David Bowie & Mick Jagger (1 plays)
 
 
 ## Top Albums (Week 51)
 
 - Nothing Has Changed (The Best Of David Bowie) [Deluxe Edition] by David Bowie
-- [Charmed Life (The Best Of The Divine Comedy)](https://www.mckendrick.rocks/albums/charmed-life-the-best-of-the-divine-comedy-22022677/) by The Divine Comedy
+- [Charmed Life (The Best Of The Divine Comedy)](https://www.russ.fm/albums/charmed-life-the-best-of-the-divine-comedy-22022677/) by The Divine Comedy
 - Peaches: The Very Best of the Stranglers by The Stranglers
-- [Rearviewmirror (Greatest Hits 1991-2003: Volume 1)](https://www.mckendrick.rocks/albums/rearviewmirror-greatest-hits-1991-2003-volume-1-22421005/) by Pearl Jam
+- [Rearviewmirror (Greatest Hits 1991-2003: Volume 1)](https://www.russ.fm/albums/rearviewmirror-greatest-hits-1991-2003-volume-1-22421005/) by Pearl Jam
 - Greatest Hits Volume One - A Slight Case Of Overbombing by The Sisters of Mercy
-- [Street Fighting Years](https://www.mckendrick.rocks/albums/street-fighting-years-499455/) by Simple Minds
+- [Street Fighting Years](https://www.russ.fm/albums/street-fighting-years-499455/) by Simple Minds
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

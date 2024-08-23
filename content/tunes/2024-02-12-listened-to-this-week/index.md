@@ -61,26 +61,26 @@ P.S. Follow me for more weekly updates and random musings from a music addict's 
 
 ## Top Artists (Week 05)
 
-- [No-Man](https://www.mckendrick.rocks/artist/no-man/) (18 plays)
-- [Soul Asylum](https://www.mckendrick.rocks/artist/soul-asylum/) (12 plays)
+- [No-Man](https://www.russ.fm/artist/no-man/) (18 plays)
+- [Soul Asylum](https://www.russ.fm/artist/soul-asylum/) (12 plays)
 - Spear of Destiny (12 plays)
-- [Sleater-Kinney](https://www.mckendrick.rocks/artist/sleater-kinney/) (10 plays)
-- [Metallica](https://www.mckendrick.rocks/artist/metallica/) (9 plays)
-- [Wings](https://www.mckendrick.rocks/artist/wings/) (9 plays)
-- [The Pineapple Thief](https://www.mckendrick.rocks/artist/the-pineapple-thief/) (8 plays)
-- [Oceansize](https://www.mckendrick.rocks/artist/oceansize/) (6 plays)
+- [Sleater-Kinney](https://www.russ.fm/artist/sleater-kinney/) (10 plays)
+- [Metallica](https://www.russ.fm/artist/metallica/) (9 plays)
+- [Wings](https://www.russ.fm/artist/wings/) (9 plays)
+- [The Pineapple Thief](https://www.russ.fm/artist/the-pineapple-thief/) (8 plays)
+- [Oceansize](https://www.russ.fm/artist/oceansize/) (6 plays)
 
 
 ## Top Albums (Week 05)
 
-- [Swagger (Lost Not Lost Volume One: 1989/1990)](https://www.mckendrick.rocks/albums/swagger-lost-not-lost-volume-one-1989-1990-29642302/) by No-Man
-- [Grave Dancers Union](https://www.mckendrick.rocks/albums/grave-dancers-union-7068256/) by Soul Asylum
+- [Swagger (Lost Not Lost Volume One: 1989/1990)](https://www.russ.fm/albums/swagger-lost-not-lost-volume-one-1989-1990-29642302/) by No-Man
+- [Grave Dancers Union](https://www.russ.fm/albums/grave-dancers-union-7068256/) by Soul Asylum
 - Liberators! The Best Of 1983-1988 by Spear of Destiny
-- [Little Rope](https://www.mckendrick.rocks/albums/little-rope-29531152/) by Sleater-Kinney
-- [… And Justice For All](https://www.mckendrick.rocks/albums/and-justice-for-all-29674207/) by Metallica
+- [Little Rope](https://www.russ.fm/albums/little-rope-29531152/) by Sleater-Kinney
+- [… And Justice For All](https://www.russ.fm/albums/and-justice-for-all-29674207/) by Metallica
 - Band on the Run by Wings
-- [It Leads To This](https://www.mckendrick.rocks/albums/it-leads-to-this-29741239/) by The Pineapple Thief
-- [Everyone Into Position](https://www.mckendrick.rocks/albums/everyone-into-position-1460942/) by Oceansize
+- [It Leads To This](https://www.russ.fm/albums/it-leads-to-this-29741239/) by The Pineapple Thief
+- [Everyone Into Position](https://www.russ.fm/albums/everyone-into-position-1460942/) by Oceansize
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

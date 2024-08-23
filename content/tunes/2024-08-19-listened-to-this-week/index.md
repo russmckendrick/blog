@@ -243,24 +243,24 @@ For music enthusiasts and vinyl collectors, diving into the remastered version o
 
 ## Top Artists (Week 32)
 
-- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (19 plays)
-- [Justin Townes Earle](https://www.mckendrick.rocks/artist/justin-townes-earle/) (19 plays)
-- [The Smashing Pumpkins](https://www.mckendrick.rocks/artist/the-smashing-pumpkins/) (18 plays)
-- [Hifi Sean](https://www.mckendrick.rocks/artist/hifi-sean/) (13 plays)
-- [Bad Brains](https://www.mckendrick.rocks/artist/bad-brains/) (10 plays)
-- [Oceansize](https://www.mckendrick.rocks/artist/oceansize/) (9 plays)
-- [Love](https://www.mckendrick.rocks/artist/love/) (6 plays)
-- [Queen](https://www.mckendrick.rocks/artist/queen/) (1 plays)
+- [David Bowie](https://www.russ.fm/artist/david-bowie/) (19 plays)
+- [Justin Townes Earle](https://www.russ.fm/artist/justin-townes-earle/) (19 plays)
+- [The Smashing Pumpkins](https://www.russ.fm/artist/the-smashing-pumpkins/) (18 plays)
+- [Hifi Sean](https://www.russ.fm/artist/hifi-sean/) (13 plays)
+- [Bad Brains](https://www.russ.fm/artist/bad-brains/) (10 plays)
+- [Oceansize](https://www.russ.fm/artist/oceansize/) (9 plays)
+- [Love](https://www.russ.fm/artist/love/) (6 plays)
+- [Queen](https://www.russ.fm/artist/queen/) (1 plays)
 
 
 ## Top Albums (Week 32)
 
-- [Nothing Has Changed](https://www.mckendrick.rocks/albums/nothing-has-changed-6301714/) by David Bowie
-- [ALL IN: Unreleased & Rarities (The New West Years)](https://www.mckendrick.rocks/albums/all-in-unreleased-rarities-the-new-west-years-31381727/) by Justin Townes Earle
-- [Rotten Apples: Greatest Hits](https://www.mckendrick.rocks/albums/rotten-apples-greatest-hits-31416686/) by The Smashing Pumpkins
+- [Nothing Has Changed](https://www.russ.fm/albums/nothing-has-changed-6301714/) by David Bowie
+- [ALL IN: Unreleased & Rarities (The New West Years)](https://www.russ.fm/albums/all-in-unreleased-rarities-the-new-west-years-31381727/) by Justin Townes Earle
+- [Rotten Apples: Greatest Hits](https://www.russ.fm/albums/rotten-apples-greatest-hits-31416686/) by The Smashing Pumpkins
 - DAYLIGHT by Hifi Sean
-- [I Against I](https://www.mckendrick.rocks/albums/i-against-i-31356778/) by Bad Brains
-- [Everyone Into Position](https://www.mckendrick.rocks/albums/everyone-into-position-1460942/) by Oceansize
+- [I Against I](https://www.russ.fm/albums/i-against-i-31356778/) by Bad Brains
+- [Everyone Into Position](https://www.russ.fm/albums/everyone-into-position-1460942/) by Oceansize
 - Forever Changes (Remastered) by Love
 
 

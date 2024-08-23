@@ -56,32 +56,32 @@ Catch you later folks! 🤟
 ## Top Artists (Week 31)
 
 - Alice in Chains (25 plays)
-- [The Cure](https://www.mckendrick.rocks/artist/the-cure/) (19 plays)
-- [Gene](https://www.mckendrick.rocks/artist/gene/) (18 plays)
-- [Spacehog](https://www.mckendrick.rocks/artist/spacehog/) (14 plays)
-- [Fun Boy Three](https://www.mckendrick.rocks/artist/fun-boy-three/) (11 plays)
-- [Argent](https://www.mckendrick.rocks/artist/argent/) (10 plays)
-- [Longpigs](https://www.mckendrick.rocks/artist/longpigs/) (10 plays)
-- [Radiohead](https://www.mckendrick.rocks/artist/radiohead/) (10 plays)
-- [Swervedriver](https://www.mckendrick.rocks/artist/swervedriver/) (10 plays)
-- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (6 plays)
+- [The Cure](https://www.russ.fm/artist/the-cure/) (19 plays)
+- [Gene](https://www.russ.fm/artist/gene/) (18 plays)
+- [Spacehog](https://www.russ.fm/artist/spacehog/) (14 plays)
+- [Fun Boy Three](https://www.russ.fm/artist/fun-boy-three/) (11 plays)
+- [Argent](https://www.russ.fm/artist/argent/) (10 plays)
+- [Longpigs](https://www.russ.fm/artist/longpigs/) (10 plays)
+- [Radiohead](https://www.russ.fm/artist/radiohead/) (10 plays)
+- [Swervedriver](https://www.russ.fm/artist/swervedriver/) (10 plays)
+- [David Bowie](https://www.russ.fm/artist/david-bowie/) (6 plays)
 - Trevor Jones (6 plays)
-- [John Coltrane](https://www.mckendrick.rocks/artist/john-coltrane/) (5 plays)
+- [John Coltrane](https://www.russ.fm/artist/john-coltrane/) (5 plays)
 
 
 ## Top Albums (Week 31)
 
 - The Cure: Greatest Hits by The Cure
 - As Good As It Gets - The Best Of Gene by Gene
-- [Resident Alien](https://www.mckendrick.rocks/albums/resident-alien-15815605/) by Spacehog
+- [Resident Alien](https://www.russ.fm/albums/resident-alien-15815605/) by Spacehog
 - Dirt by Alice in Chains
 - Jar of Flies / Sap by Alice in Chains
 - Labyrinth (From the Original Soundtrack of the Jim Henson Film) by David Bowie
-- [The Fun Boy Three](https://www.mckendrick.rocks/albums/the-fun-boy-three-27872178/) by Fun Boy Three
-- [Hold Your Head Up - The Best Of Argent](https://www.mckendrick.rocks/albums/hold-your-head-up-the-best-of-argent-23925737/) by Argent
-- [The Sun Is Often Out](https://www.mckendrick.rocks/albums/the-sun-is-often-out-15537055/) by Longpigs
-- [Pablo Honey](https://www.mckendrick.rocks/albums/pablo-honey-8765909/) by Radiohead
-- [Mezcal Head](https://www.mckendrick.rocks/albums/mezcal-head-27823374/) by Swervedriver
+- [The Fun Boy Three](https://www.russ.fm/albums/the-fun-boy-three-27872178/) by Fun Boy Three
+- [Hold Your Head Up - The Best Of Argent](https://www.russ.fm/albums/hold-your-head-up-the-best-of-argent-23925737/) by Argent
+- [The Sun Is Often Out](https://www.russ.fm/albums/the-sun-is-often-out-15537055/) by Longpigs
+- [Pablo Honey](https://www.russ.fm/albums/pablo-honey-8765909/) by Radiohead
+- [Mezcal Head](https://www.russ.fm/albums/mezcal-head-27823374/) by Swervedriver
 - A Love Supreme by John Coltrane
 
 

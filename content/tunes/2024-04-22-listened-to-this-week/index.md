@@ -365,34 +365,34 @@ In reflecting on "So," it's clear that Peter Gabriel didn't just make an album; 
 
 ## Top Artists (Week 15)
 
-- [Kirsty MacColl](https://www.mckendrick.rocks/artist/kirsty-maccoll/) (24 plays)
-- [Bruce Springsteen](https://www.mckendrick.rocks/artist/bruce-springsteen/) (18 plays)
-- [R.E.M.](https://www.mckendrick.rocks/artist/r.e.m./) (18 plays)
-- [James](https://www.mckendrick.rocks/artist/james/) (12 plays)
+- [Kirsty MacColl](https://www.russ.fm/artist/kirsty-maccoll/) (24 plays)
+- [Bruce Springsteen](https://www.russ.fm/artist/bruce-springsteen/) (18 plays)
+- [R.E.M.](https://www.russ.fm/artist/r.e.m./) (18 plays)
+- [James](https://www.russ.fm/artist/james/) (12 plays)
 - Spear of Destiny (12 plays)
-- [Simple Minds](https://www.mckendrick.rocks/artist/simple-minds/) (8 plays)
+- [Simple Minds](https://www.russ.fm/artist/simple-minds/) (8 plays)
 - Alice in Chains (6 plays)
-- [Depeche Mode](https://www.mckendrick.rocks/artist/depeche-mode/) (1 plays)
-- [Duran Duran](https://www.mckendrick.rocks/artist/duran-duran/) (1 plays)
-- [Kate Bush](https://www.mckendrick.rocks/artist/kate-bush/) (1 plays)
+- [Depeche Mode](https://www.russ.fm/artist/depeche-mode/) (1 plays)
+- [Duran Duran](https://www.russ.fm/artist/duran-duran/) (1 plays)
+- [Kate Bush](https://www.russ.fm/artist/kate-bush/) (1 plays)
 - Orchestral Manoeuvres in the Dark (1 plays)
-- [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (1 plays)
+- [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (1 plays)
 
 
 ## Top Albums (Week 15)
 
-- [Free World The Best Of 1979-2000](https://www.mckendrick.rocks/albums/free-world-the-best-of-1979-2000-29500981/) by Kirsty MacColl
-- [Best Of](https://www.mckendrick.rocks/albums/best-of-30441302/) by Bruce Springsteen
+- [Free World The Best Of 1979-2000](https://www.russ.fm/albums/free-world-the-best-of-1979-2000-29500981/) by Kirsty MacColl
+- [Best Of](https://www.russ.fm/albums/best-of-30441302/) by Bruce Springsteen
 - In Time: The Best of R.E.M. 1988-2003 by R.E.M.
-- [Yummy](https://www.mckendrick.rocks/albums/yummy-30375872/) by James
+- [Yummy](https://www.russ.fm/albums/yummy-30375872/) by James
 - Liberators! The Best Of 1983-1988 by Spear of Destiny
-- [Once Upon A Time](https://www.mckendrick.rocks/albums/once-upon-a-time-762207/) by Simple Minds
+- [Once Upon A Time](https://www.russ.fm/albums/once-upon-a-time-762207/) by Simple Minds
 - Dirt (2022 Remaster) by Alice in Chains
 - Violator (Deluxe) by Depeche Mode
 - Duran Duran (Deluxe Edition) by Duran Duran
 - Hounds of Love (2018 Remaster) by Kate Bush
 - Crush by Orchestral Manoeuvres in the Dark
-- [So](https://www.mckendrick.rocks/albums/so-379036/) by Peter Gabriel
+- [So](https://www.russ.fm/albums/so-379036/) by Peter Gabriel
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

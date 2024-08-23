@@ -48,31 +48,31 @@ P.S: Special mention to my coffee ☕, which kept me alive to listen to all thes
 
 ## Top Artists (Week 27)
 
-- [Prefab Sprout](https://www.mckendrick.rocks/artist/prefab-sprout/) (16 plays)
-- [Stone Temple Pilots](https://www.mckendrick.rocks/artist/stone-temple-pilots/) (12 plays)
-- [Airhead](https://www.mckendrick.rocks/artist/airhead/) (11 plays)
-- [Hootie & The Blowfish](https://www.mckendrick.rocks/artist/hootie-the-blowfish/) (11 plays)
-- [Anathema](https://www.mckendrick.rocks/artist/anathema/) (10 plays)
-- [Pearl Jam](https://www.mckendrick.rocks/artist/pearl-jam/) (10 plays)
-- [Portishead](https://www.mckendrick.rocks/artist/portishead/) (10 plays)
-- [Jane's Addiction](https://www.mckendrick.rocks/artist/janes-addiction/) (8 plays)
-- [U2](https://www.mckendrick.rocks/artist/u2/) (8 plays)
-- [The Style Council](https://www.mckendrick.rocks/artist/the-style-council/) (6 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (5 plays)
-- [Fishbone](https://www.mckendrick.rocks/artist/fishbone/) (4 plays)
+- [Prefab Sprout](https://www.russ.fm/artist/prefab-sprout/) (16 plays)
+- [Stone Temple Pilots](https://www.russ.fm/artist/stone-temple-pilots/) (12 plays)
+- [Airhead](https://www.russ.fm/artist/airhead/) (11 plays)
+- [Hootie & The Blowfish](https://www.russ.fm/artist/hootie-the-blowfish/) (11 plays)
+- [Anathema](https://www.russ.fm/artist/anathema/) (10 plays)
+- [Pearl Jam](https://www.russ.fm/artist/pearl-jam/) (10 plays)
+- [Portishead](https://www.russ.fm/artist/portishead/) (10 plays)
+- [Jane's Addiction](https://www.russ.fm/artist/janes-addiction/) (8 plays)
+- [U2](https://www.russ.fm/artist/u2/) (8 plays)
+- [The Style Council](https://www.russ.fm/artist/the-style-council/) (6 plays)
+- [Genesis](https://www.russ.fm/artist/genesis/) (5 plays)
+- [Fishbone](https://www.russ.fm/artist/fishbone/) (4 plays)
 
 
 ## Top Albums (Week 27)
 
 - The Best of Prefab Sprout: A Life of Surprises by Prefab Sprout
-- [Core](https://www.mckendrick.rocks/albums/core-4798781/) by Stone Temple Pilots
-- [Boing!!](https://www.mckendrick.rocks/albums/boing-1343423/) by Airhead
-- [Cracked Rear View](https://www.mckendrick.rocks/albums/cracked-rear-view-27617181/) by Hootie & The Blowfish
-- [Distant Satellites](https://www.mckendrick.rocks/albums/distant-satellites-5766148/) by Anathema
-- [Ten](https://www.mckendrick.rocks/albums/ten-1704831/) by Pearl Jam
-- [Dummy](https://www.mckendrick.rocks/albums/dummy-6326631/) by Portishead
+- [Core](https://www.russ.fm/albums/core-4798781/) by Stone Temple Pilots
+- [Boing!!](https://www.russ.fm/albums/boing-1343423/) by Airhead
+- [Cracked Rear View](https://www.russ.fm/albums/cracked-rear-view-27617181/) by Hootie & The Blowfish
+- [Distant Satellites](https://www.russ.fm/albums/distant-satellites-5766148/) by Anathema
+- [Ten](https://www.russ.fm/albums/ten-1704831/) by Pearl Jam
+- [Dummy](https://www.russ.fm/albums/dummy-6326631/) by Portishead
 - Ritual de lo Habitual by Jane's Addiction
-- [The Joshua Tree](https://www.mckendrick.rocks/albums/the-joshua-tree-10391869/) by U2
+- [The Joshua Tree](https://www.russ.fm/albums/the-joshua-tree-10391869/) by U2
 - Long Hot Summers: The Story Of The Style Council by The Style Council
 - The Lamb Lies Down On Broadway (remastered 2008) by Genesis
 - The Essential Fishbone by Fishbone

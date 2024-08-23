@@ -350,32 +350,32 @@ As we look back on the impact of "Quadrophenia," it's clear that its legacy is n
 
 ## Top Artists (Week 13)
 
-- [Dr. Feelgood](https://www.mckendrick.rocks/artist/dr.-feelgood/) (26 plays)
-- [Manic Street Preachers](https://www.mckendrick.rocks/artist/manic-street-preachers/) (20 plays)
-- [The Police](https://www.mckendrick.rocks/artist/the-police/) (16 plays)
-- [Del Amitri](https://www.mckendrick.rocks/artist/del-amitri/) (12 plays)
-- [Stephen Malkmus](https://www.mckendrick.rocks/artist/stephen-malkmus/) (12 plays)
-- [Dodgy](https://www.mckendrick.rocks/artist/dodgy/) (11 plays)
-- [INXS](https://www.mckendrick.rocks/artist/inxs/) (11 plays)
+- [Dr. Feelgood](https://www.russ.fm/artist/dr.-feelgood/) (26 plays)
+- [Manic Street Preachers](https://www.russ.fm/artist/manic-street-preachers/) (20 plays)
+- [The Police](https://www.russ.fm/artist/the-police/) (16 plays)
+- [Del Amitri](https://www.russ.fm/artist/del-amitri/) (12 plays)
+- [Stephen Malkmus](https://www.russ.fm/artist/stephen-malkmus/) (12 plays)
+- [Dodgy](https://www.russ.fm/artist/dodgy/) (11 plays)
+- [INXS](https://www.russ.fm/artist/inxs/) (11 plays)
 - Levellers (11 plays)
-- [The Smashing Pumpkins](https://www.mckendrick.rocks/artist/the-smashing-pumpkins/) (11 plays)
-- [Jane's Addiction](https://www.mckendrick.rocks/artist/janes-addiction/) (10 plays)
+- [The Smashing Pumpkins](https://www.russ.fm/artist/the-smashing-pumpkins/) (11 plays)
+- [Jane's Addiction](https://www.russ.fm/artist/janes-addiction/) (10 plays)
 - Tears for Fears (9 plays)
-- [The Who](https://www.mckendrick.rocks/artist/the-who/) (3 plays)
+- [The Who](https://www.russ.fm/artist/the-who/) (3 plays)
 
 
 ## Top Albums (Week 13)
 
-- [Singles (The U.A. Years+)](https://www.mckendrick.rocks/albums/singles-the-u-a-years-19248733/) by Dr. Feelgood
-- [Forever Delayed - The Greatest Hits](https://www.mckendrick.rocks/albums/forever-delayed-the-greatest-hits-3368048/) by Manic Street Preachers
-- [Greatest Hits](https://www.mckendrick.rocks/albums/greatest-hits-26517422/) by The Police
-- [Change Everything](https://www.mckendrick.rocks/albums/change-everything-29478691/) by Del Amitri
-- [Stephen Malkmus](https://www.mckendrick.rocks/albums/stephen-malkmus-11761123/) by Stephen Malkmus
+- [Singles (The U.A. Years+)](https://www.russ.fm/albums/singles-the-u-a-years-19248733/) by Dr. Feelgood
+- [Forever Delayed - The Greatest Hits](https://www.russ.fm/albums/forever-delayed-the-greatest-hits-3368048/) by Manic Street Preachers
+- [Greatest Hits](https://www.russ.fm/albums/greatest-hits-26517422/) by The Police
+- [Change Everything](https://www.russ.fm/albums/change-everything-29478691/) by Del Amitri
+- [Stephen Malkmus](https://www.russ.fm/albums/stephen-malkmus-11761123/) by Stephen Malkmus
 - Homegrown by Dodgy
 - X by INXS
 - Levelling The Land Live by Levellers
 - Mellon Collie and the Infinite Sadness (Remastered) by The Smashing Pumpkins
-- [Nothing's Shocking](https://www.mckendrick.rocks/albums/nothing-s-shocking-5251712/) by Jane's Addiction
+- [Nothing's Shocking](https://www.russ.fm/albums/nothing-s-shocking-5251712/) by Jane's Addiction
 - Songs From the Big Chair (Super Deluxe Version) by Tears for Fears
 - Quadrophenia (2013 Remaster) by The Who
 

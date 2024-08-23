@@ -70,34 +70,34 @@ Peace out,
 
 ## Top Artists (Week 09)
 
-- [Amplifier](https://www.mckendrick.rocks/artist/amplifier/) (24 plays)
-- [Pixies](https://www.mckendrick.rocks/artist/pixies/) (23 plays)
-- [Pete Wylie](https://www.mckendrick.rocks/artist/pete-wylie/) (20 plays)
-- [Frost*](https://www.mckendrick.rocks/artist/frost/) (16 plays)
-- [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (16 plays)
+- [Amplifier](https://www.russ.fm/artist/amplifier/) (24 plays)
+- [Pixies](https://www.russ.fm/artist/pixies/) (23 plays)
+- [Pete Wylie](https://www.russ.fm/artist/pete-wylie/) (20 plays)
+- [Frost*](https://www.russ.fm/artist/frost/) (16 plays)
+- [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (16 plays)
 - Days of the New (14 plays)
-- [James](https://www.mckendrick.rocks/artist/james/) (13 plays)
-- [Faith No More](https://www.mckendrick.rocks/artist/faith-no-more/) (12 plays)
-- [Fleetwood Mac](https://www.mckendrick.rocks/artist/fleetwood-mac/) (12 plays)
-- [Metallica](https://www.mckendrick.rocks/artist/metallica/) (12 plays)
-- [Cake](https://www.mckendrick.rocks/artist/cake/) (11 plays)
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (11 plays)
+- [James](https://www.russ.fm/artist/james/) (13 plays)
+- [Faith No More](https://www.russ.fm/artist/faith-no-more/) (12 plays)
+- [Fleetwood Mac](https://www.russ.fm/artist/fleetwood-mac/) (12 plays)
+- [Metallica](https://www.russ.fm/artist/metallica/) (12 plays)
+- [Cake](https://www.russ.fm/artist/cake/) (11 plays)
+- [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (11 plays)
 
 
 ## Top Albums (Week 09)
 
-- [Insider](https://www.mckendrick.rocks/albums/insider-20391511/) by Amplifier
-- [Best Of Pixies (Wave Of Mutilation)](https://www.mckendrick.rocks/albums/best-of-pixies-wave-of-mutilation-2650664/) by Pixies
-- [Teach Yself WAH! - A Best of Pete Wylie & The Mighty WAH!](https://www.mckendrick.rocks/albums/teach-yself-wah-a-best-of-pete-wylie-the-mighty-wah-29966587/) by Pete Wylie
-- [Day And Age](https://www.mckendrick.rocks/albums/day-and-age-18819115/) by Frost*
-- [Secret World Live](https://www.mckendrick.rocks/albums/secret-world-live-16094641/) by Peter Gabriel
+- [Insider](https://www.russ.fm/albums/insider-20391511/) by Amplifier
+- [Best Of Pixies (Wave Of Mutilation)](https://www.russ.fm/albums/best-of-pixies-wave-of-mutilation-2650664/) by Pixies
+- [Teach Yself WAH! - A Best of Pete Wylie & The Mighty WAH!](https://www.russ.fm/albums/teach-yself-wah-a-best-of-pete-wylie-the-mighty-wah-29966587/) by Pete Wylie
+- [Day And Age](https://www.russ.fm/albums/day-and-age-18819115/) by Frost*
+- [Secret World Live](https://www.russ.fm/albums/secret-world-live-16094641/) by Peter Gabriel
 - Days Of The New by Days of the New
-- [Gold Mother](https://www.mckendrick.rocks/albums/gold-mother-11284851/) by James
+- [Gold Mother](https://www.russ.fm/albums/gold-mother-11284851/) by James
 - King for a Day, Fool for a Lifetime by Faith No More
 - Tango in the Night by Fleetwood Mac
-- [Metallica](https://www.mckendrick.rocks/albums/metallica-6007719/) by Metallica
-- [Comfort Eagle](https://www.mckendrick.rocks/albums/comfort-eagle-28256146/) by Cake
-- [The Division Bell](https://www.mckendrick.rocks/albums/the-division-bell-13718487/) by Pink Floyd
+- [Metallica](https://www.russ.fm/albums/metallica-6007719/) by Metallica
+- [Comfort Eagle](https://www.russ.fm/albums/comfort-eagle-28256146/) by Cake
+- [The Division Bell](https://www.russ.fm/albums/the-division-bell-13718487/) by Pink Floyd
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}
