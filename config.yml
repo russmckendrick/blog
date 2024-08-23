@@ -142,7 +142,7 @@ outputs:
     - HTML
     - RSS
     - JSON # is necessary for the search
-    - _redirects
+    - redirects
     - humans
 
 disableAliases: true
@@ -154,7 +154,7 @@ mediaTypes:
 notFound: "/404.html"
 
 outputFormats:
-  _redirect:
+  redirects:
     name: _redirects
     mediaType: text/redirects
     baseName: _redirects
@@ -168,11 +168,6 @@ outputFormats:
     isPlainText: true
     mediaType: text/plain
     notAlternative: true
-  asciinema:
-    defaults:
-      theme: "solarized-dark"
-      loop: true
-      autoPlay: true
 
 markup:
   highlight:
