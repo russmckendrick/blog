@@ -378,34 +378,34 @@ Don't forget to follow the blog for more album reviews, artist spotlights, and a
 
 ## Top Artists (Week 18)
 
-- [Inspiral Carpets](https://www.mckendrick.rocks/artist/inspiral-carpets/) (24 plays)
+- [Inspiral Carpets](https://www.russ.fm/artist/inspiral-carpets/) (24 plays)
 - Tom Petty and The Heartbreakers (19 plays)
-- [Cake](https://www.mckendrick.rocks/artist/cake/) (14 plays)
-- [Gary Numan](https://www.mckendrick.rocks/artist/gary-numan/) (14 plays)
-- [Paraorchestra](https://www.mckendrick.rocks/artist/paraorchestra/) (12 plays)
-- [The Slackers](https://www.mckendrick.rocks/artist/the-slackers/) (12 plays)
-- [Paul Simon](https://www.mckendrick.rocks/artist/paul-simon/) (11 plays)
-- [John Farnham](https://www.mckendrick.rocks/artist/john-farnham/) (10 plays)
-- [St. Vincent](https://www.mckendrick.rocks/artist/st.-vincent/) (10 plays)
-- [U2](https://www.mckendrick.rocks/artist/u2/) (10 plays)
-- [Talk Talk](https://www.mckendrick.rocks/artist/talk-talk/) (9 plays)
-- [Vennart](https://www.mckendrick.rocks/artist/vennart/) (8 plays)
+- [Cake](https://www.russ.fm/artist/cake/) (14 plays)
+- [Gary Numan](https://www.russ.fm/artist/gary-numan/) (14 plays)
+- [Paraorchestra](https://www.russ.fm/artist/paraorchestra/) (12 plays)
+- [The Slackers](https://www.russ.fm/artist/the-slackers/) (12 plays)
+- [Paul Simon](https://www.russ.fm/artist/paul-simon/) (11 plays)
+- [John Farnham](https://www.russ.fm/artist/john-farnham/) (10 plays)
+- [St. Vincent](https://www.russ.fm/artist/st.-vincent/) (10 plays)
+- [U2](https://www.russ.fm/artist/u2/) (10 plays)
+- [Talk Talk](https://www.russ.fm/artist/talk-talk/) (9 plays)
+- [Vennart](https://www.russ.fm/artist/vennart/) (8 plays)
 
 
 ## Top Albums (Week 18)
 
-- [The Complete Singles](https://www.mckendrick.rocks/albums/the-complete-singles-26454110/) by Inspiral Carpets
+- [The Complete Singles](https://www.russ.fm/albums/the-complete-singles-26454110/) by Inspiral Carpets
 - Greatest Hits by Tom Petty and The Heartbreakers
-- [Fashion Nugget](https://www.mckendrick.rocks/albums/fashion-nugget-15007936/) by Cake
-- [Death Songbook](https://www.mckendrick.rocks/albums/death-songbook-30464051/) by Paraorchestra
-- [Redlight](https://www.mckendrick.rocks/albums/redlight-10018831/) by The Slackers
-- [Graceland](https://www.mckendrick.rocks/albums/graceland-5416395/) by Paul Simon
-- [The Pleasure Principle](https://www.mckendrick.rocks/albums/the-pleasure-principle-45996/) by Gary Numan
-- [Whispering Jack](https://www.mckendrick.rocks/albums/whispering-jack-1161865/) by John Farnham
-- [All Born Screaming](https://www.mckendrick.rocks/albums/all-born-screaming-30547978/) by St. Vincent
-- [The Unforgettable Fire](https://www.mckendrick.rocks/albums/the-unforgettable-fire-204237/) by U2
-- [It's My Life](https://www.mckendrick.rocks/albums/it-s-my-life-151789/) by Talk Talk
-- [Forgiveness & The Grain](https://www.mckendrick.rocks/albums/forgiveness-the-grain-30551653/) by Vennart
+- [Fashion Nugget](https://www.russ.fm/albums/fashion-nugget-15007936/) by Cake
+- [Death Songbook](https://www.russ.fm/albums/death-songbook-30464051/) by Paraorchestra
+- [Redlight](https://www.russ.fm/albums/redlight-10018831/) by The Slackers
+- [Graceland](https://www.russ.fm/albums/graceland-5416395/) by Paul Simon
+- [The Pleasure Principle](https://www.russ.fm/albums/the-pleasure-principle-45996/) by Gary Numan
+- [Whispering Jack](https://www.russ.fm/albums/whispering-jack-1161865/) by John Farnham
+- [All Born Screaming](https://www.russ.fm/albums/all-born-screaming-30547978/) by St. Vincent
+- [The Unforgettable Fire](https://www.russ.fm/albums/the-unforgettable-fire-204237/) by U2
+- [It's My Life](https://www.russ.fm/albums/it-s-my-life-151789/) by Talk Talk
+- [Forgiveness & The Grain](https://www.russ.fm/albums/forgiveness-the-grain-30551653/) by Vennart
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

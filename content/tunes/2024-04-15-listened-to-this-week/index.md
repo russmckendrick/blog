@@ -358,17 +358,17 @@ Whether you’re a long-time fan or exploring Tears for Fears for the first time
 
 ## Top Artists (Week 14)
 
-- [Rancid](https://www.mckendrick.rocks/artist/rancid/) (19 plays)
-- [Faith No More](https://www.mckendrick.rocks/artist/faith-no-more/) (15 plays)
-- [The Selecter](https://www.mckendrick.rocks/artist/the-selecter/) (15 plays)
-- [Ned's Atomic Dustbin](https://www.mckendrick.rocks/artist/neds-atomic-dustbin/) (13 plays)
-- [Senser](https://www.mckendrick.rocks/artist/senser/) (13 plays)
-- [Stars](https://www.mckendrick.rocks/artist/stars/) (13 plays)
-- [Del Amitri](https://www.mckendrick.rocks/artist/del-amitri/) (12 plays)
-- [EMF](https://www.mckendrick.rocks/artist/emf/) (11 plays)
-- [The Smashing Pumpkins](https://www.mckendrick.rocks/artist/the-smashing-pumpkins/) (11 plays)
-- [Split Enz](https://www.mckendrick.rocks/artist/split-enz/) (10 plays)
-- [The Black Crowes](https://www.mckendrick.rocks/artist/the-black-crowes/) (10 plays)
+- [Rancid](https://www.russ.fm/artist/rancid/) (19 plays)
+- [Faith No More](https://www.russ.fm/artist/faith-no-more/) (15 plays)
+- [The Selecter](https://www.russ.fm/artist/the-selecter/) (15 plays)
+- [Ned's Atomic Dustbin](https://www.russ.fm/artist/neds-atomic-dustbin/) (13 plays)
+- [Senser](https://www.russ.fm/artist/senser/) (13 plays)
+- [Stars](https://www.russ.fm/artist/stars/) (13 plays)
+- [Del Amitri](https://www.russ.fm/artist/del-amitri/) (12 plays)
+- [EMF](https://www.russ.fm/artist/emf/) (11 plays)
+- [The Smashing Pumpkins](https://www.russ.fm/artist/the-smashing-pumpkins/) (11 plays)
+- [Split Enz](https://www.russ.fm/artist/split-enz/) (10 plays)
+- [The Black Crowes](https://www.russ.fm/artist/the-black-crowes/) (10 plays)
 - Tears for Fears (9 plays)
 
 
@@ -376,14 +376,14 @@ Whether you’re a long-time fan or exploring Tears for Fears for the first time
 
 - ...And Out Come the Wolves by Rancid
 - Who Cares a Lot? The Greatest Hits by Faith No More
-- [Too Much Pressure](https://www.mckendrick.rocks/albums/too-much-pressure-18421726/) by The Selecter
-- [God Fodder](https://www.mckendrick.rocks/albums/god-fodder-781893/) by Ned's Atomic Dustbin
-- [Stacked Up](https://www.mckendrick.rocks/albums/stacked-up-1723235/) by Senser
+- [Too Much Pressure](https://www.russ.fm/albums/too-much-pressure-18421726/) by The Selecter
+- [God Fodder](https://www.russ.fm/albums/god-fodder-781893/) by Ned's Atomic Dustbin
+- [Stacked Up](https://www.russ.fm/albums/stacked-up-1723235/) by Senser
 - Set Yourself on Fire by Stars
-- [Twisted](https://www.mckendrick.rocks/albums/twisted-30318908/) by Del Amitri
-- [Schubert Dip](https://www.mckendrick.rocks/albums/schubert-dip-2122351/) by EMF
-- [Gish](https://www.mckendrick.rocks/albums/gish-3266516/) by The Smashing Pumpkins
-- [Mental Notes](https://www.mckendrick.rocks/albums/mental-notes-1445113/) by Split Enz
+- [Twisted](https://www.russ.fm/albums/twisted-30318908/) by Del Amitri
+- [Schubert Dip](https://www.russ.fm/albums/schubert-dip-2122351/) by EMF
+- [Gish](https://www.russ.fm/albums/gish-3266516/) by The Smashing Pumpkins
+- [Mental Notes](https://www.russ.fm/albums/mental-notes-1445113/) by Split Enz
 - The Southern Harmony and Musical Companion by The Black Crowes
 - Songs From the Big Chair (Super Deluxe Version) by Tears for Fears
 

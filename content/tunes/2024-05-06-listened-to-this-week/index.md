@@ -367,34 +367,34 @@ This exploration into "So" by Peter Gabriel reveals an album that is as impactfu
 
 ## Top Artists (Week 17)
 
-- [Pure Reason Revolution](https://www.mckendrick.rocks/artist/pure-reason-revolution/) (33 plays)
-- [Steely Dan](https://www.mckendrick.rocks/artist/steely-dan/) (28 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (18 plays)
-- [Camera Obscura](https://www.mckendrick.rocks/artist/camera-obscura/) (16 plays)
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (15 plays)
-- [Portishead](https://www.mckendrick.rocks/artist/portishead/) (14 plays)
-- [Kamasi Washington](https://www.mckendrick.rocks/artist/kamasi-washington/) (12 plays)
-- [Soulwax](https://www.mckendrick.rocks/artist/soulwax/) (11 plays)
-- [Stevie Wonder](https://www.mckendrick.rocks/artist/stevie-wonder/) (11 plays)
-- [Pet Shop Boys](https://www.mckendrick.rocks/artist/pet-shop-boys/) (10 plays)
-- [New Order](https://www.mckendrick.rocks/artist/new-order/) (9 plays)
-- [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (8 plays)
+- [Pure Reason Revolution](https://www.russ.fm/artist/pure-reason-revolution/) (33 plays)
+- [Steely Dan](https://www.russ.fm/artist/steely-dan/) (28 plays)
+- [Genesis](https://www.russ.fm/artist/genesis/) (18 plays)
+- [Camera Obscura](https://www.russ.fm/artist/camera-obscura/) (16 plays)
+- [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (15 plays)
+- [Portishead](https://www.russ.fm/artist/portishead/) (14 plays)
+- [Kamasi Washington](https://www.russ.fm/artist/kamasi-washington/) (12 plays)
+- [Soulwax](https://www.russ.fm/artist/soulwax/) (11 plays)
+- [Stevie Wonder](https://www.russ.fm/artist/stevie-wonder/) (11 plays)
+- [Pet Shop Boys](https://www.russ.fm/artist/pet-shop-boys/) (10 plays)
+- [New Order](https://www.russ.fm/artist/new-order/) (9 plays)
+- [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (8 plays)
 
 
 ## Top Albums (Week 17)
 
-- [The Dark Third](https://www.mckendrick.rocks/albums/the-dark-third-3050616/) by Pure Reason Revolution
+- [The Dark Third](https://www.russ.fm/albums/the-dark-third-3050616/) by Pure Reason Revolution
 - The Very Best Of Steely Dan by Steely Dan
-- [Turn It On Again - The Hits](https://www.mckendrick.rocks/albums/turn-it-on-again-the-hits-30580414/) by Genesis
+- [Turn It On Again - The Hits](https://www.russ.fm/albums/turn-it-on-again-the-hits-30580414/) by Genesis
 - Look to the East, Look to the West by Camera Obscura
-- [Roseland NYC Live](https://www.mckendrick.rocks/albums/roseland-nyc-live-3586054/) by Portishead
-- [Fearless Movement](https://www.mckendrick.rocks/albums/fearless-movement-30564730/) by Kamasi Washington
-- [Much Against Everyone's Advice](https://www.mckendrick.rocks/albums/much-against-everyone-s-advice-4163855/) by Soulwax
+- [Roseland NYC Live](https://www.russ.fm/albums/roseland-nyc-live-3586054/) by Portishead
+- [Fearless Movement](https://www.russ.fm/albums/fearless-movement-30564730/) by Kamasi Washington
+- [Much Against Everyone's Advice](https://www.russ.fm/albums/much-against-everyone-s-advice-4163855/) by Soulwax
 - Songs in the Key of Life by Stevie Wonder
-- [Nonetheless](https://www.mckendrick.rocks/albums/nonetheless-30511678/) by Pet Shop Boys
+- [Nonetheless](https://www.russ.fm/albums/nonetheless-30511678/) by Pet Shop Boys
 - The Dark Side of the Moon by Pink Floyd
-- [Singles](https://www.mckendrick.rocks/albums/singles-9017905/) by New Order
-- [So](https://www.mckendrick.rocks/albums/so-379036/) by Peter Gabriel
+- [Singles](https://www.russ.fm/albums/singles-9017905/) by New Order
+- [So](https://www.russ.fm/albums/so-379036/) by Peter Gabriel
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

@@ -48,32 +48,32 @@ That's it from me this week, fellow music lovers. Keep up the eargasmic experien
 
 ## Top Artists (Week 35)
 
-- [The Jam](https://www.mckendrick.rocks/artist/the-jam/) (33 plays)
-- [Deacon Blue](https://www.mckendrick.rocks/artist/deacon-blue/) (24 plays)
-- [The Smiths](https://www.mckendrick.rocks/artist/the-smiths/) (19 plays)
+- [The Jam](https://www.russ.fm/artist/the-jam/) (33 plays)
+- [Deacon Blue](https://www.russ.fm/artist/deacon-blue/) (24 plays)
+- [The Smiths](https://www.russ.fm/artist/the-smiths/) (19 plays)
 - ...And You Will Know Us by the Trail of Dead (16 plays)
-- [U2](https://www.mckendrick.rocks/artist/u2/) (15 plays)
+- [U2](https://www.russ.fm/artist/u2/) (15 plays)
 - Tom Petty and The Heartbreakers (14 plays)
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (11 plays)
-- [Led Zeppelin](https://www.mckendrick.rocks/artist/led-zeppelin/) (9 plays)
-- [The Decemberists](https://www.mckendrick.rocks/artist/the-decemberists/) (9 plays)
-- [Def Leppard](https://www.mckendrick.rocks/artist/def-leppard/) (6 plays)
-- [The Stone Roses](https://www.mckendrick.rocks/artist/the-stone-roses/) (6 plays)
-- [The Who](https://www.mckendrick.rocks/artist/the-who/) (5 plays)
+- [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (11 plays)
+- [Led Zeppelin](https://www.russ.fm/artist/led-zeppelin/) (9 plays)
+- [The Decemberists](https://www.russ.fm/artist/the-decemberists/) (9 plays)
+- [Def Leppard](https://www.russ.fm/artist/def-leppard/) (6 plays)
+- [The Stone Roses](https://www.russ.fm/artist/the-stone-roses/) (6 plays)
+- [The Who](https://www.russ.fm/artist/the-who/) (5 plays)
 
 
 ## Top Albums (Week 35)
 
-- [Snap!](https://www.mckendrick.rocks/albums/snap-14312912/) by The Jam
-- [All The Old 45s (The Very Best of Deacon Blue)](https://www.mckendrick.rocks/albums/all-the-old-45s-the-very-best-of-deacon-blue-28160602/) by Deacon Blue
+- [Snap!](https://www.russ.fm/albums/snap-14312912/) by The Jam
+- [All The Old 45s (The Very Best of Deacon Blue)](https://www.russ.fm/albums/all-the-old-45s-the-very-best-of-deacon-blue-28160602/) by Deacon Blue
 - The Sound of the Smiths (Deluxe Edition) by The Smiths
 - Tao of the Dead by ...And You Will Know Us by the Trail of Dead
-- [The Joshua Tree](https://www.mckendrick.rocks/albums/the-joshua-tree-10391869/) by U2
+- [The Joshua Tree](https://www.russ.fm/albums/the-joshua-tree-10391869/) by U2
 - Greatest Hits by Tom Petty and The Heartbreakers
 - Led Zeppelin III (Remastered) by Led Zeppelin
-- [The Division Bell](https://www.mckendrick.rocks/albums/the-division-bell-13718487/) by Pink Floyd
-- [I'll Be Your Girl](https://www.mckendrick.rocks/albums/i-ll-be-your-girl-11709250/) by The Decemberists
-- [Hysteria](https://www.mckendrick.rocks/albums/hysteria-10660430/) by Def Leppard
+- [The Division Bell](https://www.russ.fm/albums/the-division-bell-13718487/) by Pink Floyd
+- [I'll Be Your Girl](https://www.russ.fm/albums/i-ll-be-your-girl-11709250/) by The Decemberists
+- [Hysteria](https://www.russ.fm/albums/hysteria-10660430/) by Def Leppard
 - The Stone Roses (Remastered) by The Stone Roses
 - Quadrophenia (2013 Remaster) by The Who
 

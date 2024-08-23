@@ -49,33 +49,33 @@ That's all for now folks, stay tuned, stay musical. 🎵🤘🏻 Until next week
 
 ## Top Artists (Week 41)
 
-- [Roxy Music](https://www.mckendrick.rocks/artist/roxy-music/) (18 plays)
-- [U2](https://www.mckendrick.rocks/artist/u2/) (18 plays)
+- [Roxy Music](https://www.russ.fm/artist/roxy-music/) (18 plays)
+- [U2](https://www.russ.fm/artist/u2/) (18 plays)
 - Tears for Fears (16 plays)
-- [Stone Temple Pilots](https://www.mckendrick.rocks/artist/stone-temple-pilots/) (13 plays)
-- [James](https://www.mckendrick.rocks/artist/james/) (12 plays)
-- [Jawbreaker](https://www.mckendrick.rocks/artist/jawbreaker/) (11 plays)
-- [The Anchoress](https://www.mckendrick.rocks/artist/the-anchoress/) (10 plays)
+- [Stone Temple Pilots](https://www.russ.fm/artist/stone-temple-pilots/) (13 plays)
+- [James](https://www.russ.fm/artist/james/) (12 plays)
+- [Jawbreaker](https://www.russ.fm/artist/jawbreaker/) (11 plays)
+- [The Anchoress](https://www.russ.fm/artist/the-anchoress/) (10 plays)
 - The War on Drugs (10 plays)
-- [Japan](https://www.mckendrick.rocks/artist/japan/) (8 plays)
-- [Pixies](https://www.mckendrick.rocks/artist/pixies/) (4 plays)
-- [The Smashing Pumpkins](https://www.mckendrick.rocks/artist/the-smashing-pumpkins/) (4 plays)
-- [Mad Season](https://www.mckendrick.rocks/artist/mad-season/) (3 plays)
+- [Japan](https://www.russ.fm/artist/japan/) (8 plays)
+- [Pixies](https://www.russ.fm/artist/pixies/) (4 plays)
+- [The Smashing Pumpkins](https://www.russ.fm/artist/the-smashing-pumpkins/) (4 plays)
+- [Mad Season](https://www.russ.fm/artist/mad-season/) (3 plays)
 
 
 ## Top Albums (Week 41)
 
-- [The Best Of Roxy Music](https://www.mckendrick.rocks/albums/the-best-of-roxy-music-24389216/) by Roxy Music
-- [U218 Singles](https://www.mckendrick.rocks/albums/u218-singles-1268163/) by U2
+- [The Best Of Roxy Music](https://www.russ.fm/albums/the-best-of-roxy-music-24389216/) by Roxy Music
+- [U218 Singles](https://www.russ.fm/albums/u218-singles-1268163/) by U2
 - Rule The World by Tears for Fears
 - Fresh As A Daisy - The Singles by James
-- [Core](https://www.mckendrick.rocks/albums/core-4798781/) by Stone Temple Pilots
-- [24 Hour Revenge Therapy](https://www.mckendrick.rocks/albums/24-hour-revenge-therapy-23656178/) by Jawbreaker
-- [Versions](https://www.mckendrick.rocks/albums/versions-28432765/) by The Anchoress
+- [Core](https://www.russ.fm/albums/core-4798781/) by Stone Temple Pilots
+- [24 Hour Revenge Therapy](https://www.russ.fm/albums/24-hour-revenge-therapy-23656178/) by Jawbreaker
+- [Versions](https://www.russ.fm/albums/versions-28432765/) by The Anchoress
 - Lost in the Dream by The War on Drugs
-- [Quiet Life](https://www.mckendrick.rocks/albums/quiet-life-17617648/) by Japan
+- [Quiet Life](https://www.russ.fm/albums/quiet-life-17617648/) by Japan
 - Rotten Apples: Greatest Hits by The Smashing Pumpkins
-- [Above](https://www.mckendrick.rocks/albums/above-7643695/) by Mad Season
+- [Above](https://www.russ.fm/albums/above-7643695/) by Mad Season
 - Doolittle by Pixies
 
 

@@ -71,34 +71,34 @@ Russ 🎸
 
 ## Top Artists (Week 10)
 
-- [Queen](https://www.mckendrick.rocks/artist/queen/) (46 plays)
-- [Hefner](https://www.mckendrick.rocks/artist/hefner/) (24 plays)
-- [Gene](https://www.mckendrick.rocks/artist/gene/) (22 plays)
-- [Suede](https://www.mckendrick.rocks/artist/suede/) (21 plays)
-- [AC/DC](https://www.mckendrick.rocks/artist/ac/dc/) (20 plays)
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (18 plays)
-- [Buzzcocks](https://www.mckendrick.rocks/artist/buzzcocks/) (16 plays)
-- [The Slackers](https://www.mckendrick.rocks/artist/the-slackers/) (13 plays)
-- [Dire Straits](https://www.mckendrick.rocks/artist/dire-straits/) (11 plays)
-- [Tim Finn](https://www.mckendrick.rocks/artist/tim-finn/) (10 plays)
-- [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (9 plays)
-- [Inspiral Carpets](https://www.mckendrick.rocks/artist/inspiral-carpets/) (8 plays)
+- [Queen](https://www.russ.fm/artist/queen/) (46 plays)
+- [Hefner](https://www.russ.fm/artist/hefner/) (24 plays)
+- [Gene](https://www.russ.fm/artist/gene/) (22 plays)
+- [Suede](https://www.russ.fm/artist/suede/) (21 plays)
+- [AC/DC](https://www.russ.fm/artist/ac/dc/) (20 plays)
+- [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (18 plays)
+- [Buzzcocks](https://www.russ.fm/artist/buzzcocks/) (16 plays)
+- [The Slackers](https://www.russ.fm/artist/the-slackers/) (13 plays)
+- [Dire Straits](https://www.russ.fm/artist/dire-straits/) (11 plays)
+- [Tim Finn](https://www.russ.fm/artist/tim-finn/) (10 plays)
+- [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (9 plays)
+- [Inspiral Carpets](https://www.russ.fm/artist/inspiral-carpets/) (8 plays)
 
 
 ## Top Albums (Week 10)
 
-- [The Platinum Collection](https://www.mckendrick.rocks/albums/the-platinum-collection-23601854/) by Queen
-- [We Love The City](https://www.mckendrick.rocks/albums/we-love-the-city-21297037/) by Hefner
-- [Yours For The Taking (The Best Of)](https://www.mckendrick.rocks/albums/yours-for-the-taking-the-best-of-15778008/) by Gene
-- [The Best Of Suede. Beautiful Ones. 1992-2018](https://www.mckendrick.rocks/albums/the-best-of-suede-beautiful-ones-1992-2018-16073517/) by Suede
+- [The Platinum Collection](https://www.russ.fm/albums/the-platinum-collection-23601854/) by Queen
+- [We Love The City](https://www.russ.fm/albums/we-love-the-city-21297037/) by Hefner
+- [Yours For The Taking (The Best Of)](https://www.russ.fm/albums/yours-for-the-taking-the-best-of-15778008/) by Gene
+- [The Best Of Suede. Beautiful Ones. 1992-2018](https://www.russ.fm/albums/the-best-of-suede-beautiful-ones-1992-2018-16073517/) by Suede
 - A Momentary Lapse of Reason (2019 Remix) by Pink Floyd
-- [Singles Going Steady](https://www.mckendrick.rocks/albums/singles-going-steady-30026605/) by Buzzcocks
-- [Peculiar](https://www.mckendrick.rocks/albums/peculiar-13689689/) by The Slackers
+- [Singles Going Steady](https://www.russ.fm/albums/singles-going-steady-30026605/) by Buzzcocks
+- [Peculiar](https://www.russ.fm/albums/peculiar-13689689/) by The Slackers
 - Money for Nothing by Dire Straits
 - Back in Black by AC/DC
 - Highway to Hell by AC/DC
-- [Escapade](https://www.mckendrick.rocks/albums/escapade-2733922/) by Tim Finn
-- [So](https://www.mckendrick.rocks/albums/so-379036/) by Peter Gabriel
+- [Escapade](https://www.russ.fm/albums/escapade-2733922/) by Tim Finn
+- [So](https://www.russ.fm/albums/so-379036/) by Peter Gabriel
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

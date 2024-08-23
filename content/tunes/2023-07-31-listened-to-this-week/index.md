@@ -47,28 +47,28 @@ In the meantime, I would love to hear what melodies are massaging your eardrums.
 
 ## Top Artists (Week 30)
 
-- [Jurassic 5](https://www.mckendrick.rocks/artist/jurassic-5/) (15 plays)
-- [Silver Sun](https://www.mckendrick.rocks/artist/silver-sun/) (15 plays)
-- [The Breeders](https://www.mckendrick.rocks/artist/the-breeders/) (15 plays)
-- [Pavement](https://www.mckendrick.rocks/artist/pavement/) (14 plays)
-- [Def Leppard](https://www.mckendrick.rocks/artist/def-leppard/) (12 plays)
-- [Brad](https://www.mckendrick.rocks/artist/brad/) (11 plays)
-- [Richard Hawley](https://www.mckendrick.rocks/artist/richard-hawley/) (11 plays)
+- [Jurassic 5](https://www.russ.fm/artist/jurassic-5/) (15 plays)
+- [Silver Sun](https://www.russ.fm/artist/silver-sun/) (15 plays)
+- [The Breeders](https://www.russ.fm/artist/the-breeders/) (15 plays)
+- [Pavement](https://www.russ.fm/artist/pavement/) (14 plays)
+- [Def Leppard](https://www.russ.fm/artist/def-leppard/) (12 plays)
+- [Brad](https://www.russ.fm/artist/brad/) (11 plays)
+- [Richard Hawley](https://www.russ.fm/artist/richard-hawley/) (11 plays)
 - Voice of the Beehive (11 plays)
 - The War on Drugs (10 plays)
-- [Curtis Mayfield](https://www.mckendrick.rocks/artist/curtis-mayfield/) (8 plays)
-- [Aphex Twin](https://www.mckendrick.rocks/artist/aphex-twin/) (4 plays)
+- [Curtis Mayfield](https://www.russ.fm/artist/curtis-mayfield/) (8 plays)
+- [Aphex Twin](https://www.russ.fm/artist/aphex-twin/) (4 plays)
 
 
 ## Top Albums (Week 30)
 
-- [Quality Control](https://www.mckendrick.rocks/albums/quality-control-7119855/) by Jurassic 5
-- [Silver Sun](https://www.mckendrick.rocks/albums/silver-sun-24926828/) by Silver Sun
+- [Quality Control](https://www.russ.fm/albums/quality-control-7119855/) by Jurassic 5
+- [Silver Sun](https://www.russ.fm/albums/silver-sun-24926828/) by Silver Sun
 - Last Splash by The Breeders
 - Slanted and Enchanted by Pavement
-- [Hysteria](https://www.mckendrick.rocks/albums/hysteria-10660430/) by Def Leppard
-- [Shame](https://www.mckendrick.rocks/albums/shame-27739077/) by Brad
-- [Late Night Final](https://www.mckendrick.rocks/albums/late-night-final-6196121/) by Richard Hawley
+- [Hysteria](https://www.russ.fm/albums/hysteria-10660430/) by Def Leppard
+- [Shame](https://www.russ.fm/albums/shame-27739077/) by Brad
+- [Late Night Final](https://www.russ.fm/albums/late-night-final-6196121/) by Richard Hawley
 - Let It Bee by Voice of the Beehive
 - Lost in the Dream by The War on Drugs
 - Curtis by Curtis Mayfield

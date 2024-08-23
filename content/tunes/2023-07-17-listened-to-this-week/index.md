@@ -69,16 +69,16 @@ Keep it groovy, folks! ✌️
 
 ## Top Artists (Week 28)
 
-- [The Stranglers](https://www.mckendrick.rocks/artist/the-stranglers/) (20 plays)
-- [Rush](https://www.mckendrick.rocks/artist/rush/) (19 plays)
-- [Stevie Wonder](https://www.mckendrick.rocks/artist/stevie-wonder/) (17 plays)
-- [Faith No More](https://www.mckendrick.rocks/artist/faith-no-more/) (15 plays)
-- [Gabriels](https://www.mckendrick.rocks/artist/gabriels/) (13 plays)
-- [The Damned](https://www.mckendrick.rocks/artist/the-damned/) (11 plays)
-- [Tool](https://www.mckendrick.rocks/artist/tool/) (9 plays)
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (7 plays)
-- [Zero 7](https://www.mckendrick.rocks/artist/zero-7/) (6 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (4 plays)
+- [The Stranglers](https://www.russ.fm/artist/the-stranglers/) (20 plays)
+- [Rush](https://www.russ.fm/artist/rush/) (19 plays)
+- [Stevie Wonder](https://www.russ.fm/artist/stevie-wonder/) (17 plays)
+- [Faith No More](https://www.russ.fm/artist/faith-no-more/) (15 plays)
+- [Gabriels](https://www.russ.fm/artist/gabriels/) (13 plays)
+- [The Damned](https://www.russ.fm/artist/the-damned/) (11 plays)
+- [Tool](https://www.russ.fm/artist/tool/) (9 plays)
+- [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (7 plays)
+- [Zero 7](https://www.russ.fm/artist/zero-7/) (6 plays)
+- [Genesis](https://www.russ.fm/artist/genesis/) (4 plays)
 - Bombay Bicycle Club (2 plays)
 - Lemon Jelly (2 plays)
 
@@ -89,11 +89,11 @@ Keep it groovy, folks! ✌️
 - Peaches: The Very Best of the Stranglers by The Stranglers
 - Songs in the Key of Life by Stevie Wonder
 - Who Cares a Lot? The Greatest Hits by Faith No More
-- [Angels & Queens](https://www.mckendrick.rocks/albums/angels-queens-27577632/) by Gabriels
+- [Angels & Queens](https://www.russ.fm/albums/angels-queens-27577632/) by Gabriels
 - Another Great Record from the Damned: the Best of the Damned by The Damned
 - Retrospective II (1981-1987) by Rush
 - Retrospective I (1974-1980) by Rush
-- [Fear Inoculum](https://www.mckendrick.rocks/albums/fear-inoculum-22253038/) by Tool
+- [Fear Inoculum](https://www.russ.fm/albums/fear-inoculum-22253038/) by Tool
 - A Momentary Lapse of Reason (2019 Remix) by Pink Floyd
 - Simple Things (Special Edition) by Zero 7
 - Invisible Touch (2007 Remaster) by Genesis

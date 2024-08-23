@@ -65,7 +65,7 @@ gpt3_post = get_gpt3_text(gpt3_prompt)
 ```
 {{< /ide >}}
 
-As you can see, I was getting information on the top artists, using Wikipedia and then passing everything to OpenAI to write the blog post, there is also code to pull down artist and album images from [mckendrick.rocks ](https://mckendrick.rocks/) - which is my other site that catalogs my record collection.
+As you can see, I was getting information on the top artists, using Wikipedia and then passing everything to OpenAI to write the blog post, there is also code to pull down artist and album images from [russ.fm ](https://russ.fm/) - which is my other site that catalogs my record collection.
 
 This was all run from a GitHub Action which was automatically triggered early Monday morning, creating a pull request for me to review on my way to work.
 

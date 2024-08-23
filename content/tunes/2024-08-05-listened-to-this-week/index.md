@@ -385,34 +385,34 @@ In revisiting 'Brainbloodvolume', listeners are reminded of the dynamic and tran
 
 ## Top Artists (Week 30)
 
-- [Pixies](https://www.mckendrick.rocks/artist/pixies/) (23 plays)
-- [Easy Star All-Stars](https://www.mckendrick.rocks/artist/easy-star-all-stars/) (20 plays)
-- [Orville Peck](https://www.mckendrick.rocks/artist/orville-peck/) (15 plays)
-- [Jane's Addiction](https://www.mckendrick.rocks/artist/janes-addiction/) (14 plays)
-- [Beck](https://www.mckendrick.rocks/artist/beck/) (13 plays)
-- [Cassandra Jenkins](https://www.mckendrick.rocks/artist/cassandra-jenkins/) (13 plays)
-- [INXS](https://www.mckendrick.rocks/artist/inxs/) (12 plays)
-- [Kate Bush](https://www.mckendrick.rocks/artist/kate-bush/) (12 plays)
-- [Radiohead](https://www.mckendrick.rocks/artist/radiohead/) (12 plays)
-- [Soundgarden](https://www.mckendrick.rocks/artist/soundgarden/) (12 plays)
-- [Stone Temple Pilots](https://www.mckendrick.rocks/artist/stone-temple-pilots/) (12 plays)
-- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (11 plays)
+- [Pixies](https://www.russ.fm/artist/pixies/) (23 plays)
+- [Easy Star All-Stars](https://www.russ.fm/artist/easy-star-all-stars/) (20 plays)
+- [Orville Peck](https://www.russ.fm/artist/orville-peck/) (15 plays)
+- [Jane's Addiction](https://www.russ.fm/artist/janes-addiction/) (14 plays)
+- [Beck](https://www.russ.fm/artist/beck/) (13 plays)
+- [Cassandra Jenkins](https://www.russ.fm/artist/cassandra-jenkins/) (13 plays)
+- [INXS](https://www.russ.fm/artist/inxs/) (12 plays)
+- [Kate Bush](https://www.russ.fm/artist/kate-bush/) (12 plays)
+- [Radiohead](https://www.russ.fm/artist/radiohead/) (12 plays)
+- [Soundgarden](https://www.russ.fm/artist/soundgarden/) (12 plays)
+- [Stone Temple Pilots](https://www.russ.fm/artist/stone-temple-pilots/) (12 plays)
+- [David Bowie](https://www.russ.fm/artist/david-bowie/) (11 plays)
 
 
 ## Top Albums (Week 30)
 
-- [Best Of Pixies (Wave Of Mutilation)](https://www.mckendrick.rocks/albums/best-of-pixies-wave-of-mutilation-2650664/) by Pixies
+- [Best Of Pixies (Wave Of Mutilation)](https://www.russ.fm/albums/best-of-pixies-wave-of-mutilation-2650664/) by Pixies
 - STAMPEDE by Orville Peck
-- [Odelay](https://www.mckendrick.rocks/albums/odelay-9168171/) by Beck
-- [My Light, My Destroyer](https://www.mckendrick.rocks/albums/my-light-my-destroyer-31205095/) by Cassandra Jenkins
-- [Radiodread](https://www.mckendrick.rocks/albums/radiodread-10307769/) by Easy Star All-Stars
+- [Odelay](https://www.russ.fm/albums/odelay-9168171/) by Beck
+- [My Light, My Destroyer](https://www.russ.fm/albums/my-light-my-destroyer-31205095/) by Cassandra Jenkins
+- [Radiodread](https://www.russ.fm/albums/radiodread-10307769/) by Easy Star All-Stars
 - Kick ((Remastered)) by INXS
 - Hounds of Love (2018 Remaster) by Kate Bush
-- [The Bends](https://www.mckendrick.rocks/albums/the-bends-1594061/) by Radiohead
-- [Badmotorfinger](https://www.mckendrick.rocks/albums/badmotorfinger-3364487/) by Soundgarden
+- [The Bends](https://www.russ.fm/albums/the-bends-1594061/) by Radiohead
+- [Badmotorfinger](https://www.russ.fm/albums/badmotorfinger-3364487/) by Soundgarden
 - Core (Remastered) by Stone Temple Pilots
 - The Rise and Fall of Ziggy Stardust and the Spiders from Mars (2012 Remaster) by David Bowie
-- [Brainbloodvolume](https://www.mckendrick.rocks/albums/brainbloodvolume-31385231/) by Ned's Atomic Dustbin
+- [Brainbloodvolume](https://www.russ.fm/albums/brainbloodvolume-31385231/) by Ned's Atomic Dustbin
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

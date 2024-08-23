@@ -64,7 +64,7 @@ Russ
 
 ## Top Artists (Week 34)
 
-- [Rhiannon Giddens](https://www.mckendrick.rocks/artist/rhiannon-giddens/) (24 plays)
+- [Rhiannon Giddens](https://www.russ.fm/artist/rhiannon-giddens/) (24 plays)
 
 
 ## Top Albums (Week 34)

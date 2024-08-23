@@ -55,28 +55,28 @@ Peace out, rockstars! 🤟
 
 ## Top Artists (Week 06)
 
-- [Pure Reason Revolution](https://www.mckendrick.rocks/artist/pure-reason-revolution/) (33 plays)
-- [Dodgy](https://www.mckendrick.rocks/artist/dodgy/) (17 plays)
-- [Primal Scream](https://www.mckendrick.rocks/artist/primal-scream/) (17 plays)
-- [The Specials](https://www.mckendrick.rocks/artist/the-specials/) (14 plays)
-- [Pearl Jam](https://www.mckendrick.rocks/artist/pearl-jam/) (12 plays)
+- [Pure Reason Revolution](https://www.russ.fm/artist/pure-reason-revolution/) (33 plays)
+- [Dodgy](https://www.russ.fm/artist/dodgy/) (17 plays)
+- [Primal Scream](https://www.russ.fm/artist/primal-scream/) (17 plays)
+- [The Specials](https://www.russ.fm/artist/the-specials/) (14 plays)
+- [Pearl Jam](https://www.russ.fm/artist/pearl-jam/) (12 plays)
 - The Sisters of Mercy (12 plays)
-- [Franz Ferdinand](https://www.mckendrick.rocks/artist/franz-ferdinand/) (11 plays)
-- [The Flaming Lips](https://www.mckendrick.rocks/artist/the-flaming-lips/) (11 plays)
-- [Gruff Rhys](https://www.mckendrick.rocks/artist/gruff-rhys/) (10 plays)
+- [Franz Ferdinand](https://www.russ.fm/artist/franz-ferdinand/) (11 plays)
+- [The Flaming Lips](https://www.russ.fm/artist/the-flaming-lips/) (11 plays)
+- [Gruff Rhys](https://www.russ.fm/artist/gruff-rhys/) (10 plays)
 
 
 ## Top Albums (Week 06)
 
-- [The Dark Third](https://www.mckendrick.rocks/albums/the-dark-third-3050616/) by Pure Reason Revolution
-- [Ace A's + Killer B's](https://www.mckendrick.rocks/albums/ace-a-s-killer-b-s-22218358/) by Dodgy
+- [The Dark Third](https://www.russ.fm/albums/the-dark-third-3050616/) by Pure Reason Revolution
+- [Ace A's + Killer B's](https://www.russ.fm/albums/ace-a-s-killer-b-s-22218358/) by Dodgy
 - Maximum Rock 'N' Roll The Singles Volume 1 by Primal Scream
-- [Specials](https://www.mckendrick.rocks/albums/specials-5759349/) by The Specials
-- [Vs.](https://www.mckendrick.rocks/albums/vs-8354355/) by Pearl Jam
+- [Specials](https://www.russ.fm/albums/specials-5759349/) by The Specials
+- [Vs.](https://www.russ.fm/albums/vs-8354355/) by Pearl Jam
 - Greatest Hits Volume One - A Slight Case Of Overbombing by The Sisters of Mercy
-- [Franz Ferdinand](https://www.mckendrick.rocks/albums/franz-ferdinand-29697511/) by Franz Ferdinand
+- [Franz Ferdinand](https://www.russ.fm/albums/franz-ferdinand-29697511/) by Franz Ferdinand
 - Yoshimi Battles the Pink Robots by The Flaming Lips
-- [Sadness Sets Me Free](https://www.mckendrick.rocks/albums/sadness-sets-me-free-29584693/) by Gruff Rhys
+- [Sadness Sets Me Free](https://www.russ.fm/albums/sadness-sets-me-free-29584693/) by Gruff Rhys
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

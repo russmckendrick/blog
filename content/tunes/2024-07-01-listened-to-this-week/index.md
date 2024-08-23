@@ -200,22 +200,22 @@ This exploration into "Blue Lines" has been an immersive journey through the sig
 
 ## Top Artists (Week 25)
 
-- [Arcade Fire](https://www.mckendrick.rocks/artist/arcade-fire/) (16 plays)
-- [Nine Inch Nails](https://www.mckendrick.rocks/artist/nine-inch-nails/) (14 plays)
-- [Manic Street Preachers](https://www.mckendrick.rocks/artist/manic-street-preachers/) (13 plays)
+- [Arcade Fire](https://www.russ.fm/artist/arcade-fire/) (16 plays)
+- [Nine Inch Nails](https://www.russ.fm/artist/nine-inch-nails/) (14 plays)
+- [Manic Street Preachers](https://www.russ.fm/artist/manic-street-preachers/) (13 plays)
 - Vast (12 plays)
-- [Prince](https://www.mckendrick.rocks/artist/prince/) (11 plays)
-- [The Polyphonic Spree](https://www.mckendrick.rocks/artist/the-polyphonic-spree/) (10 plays)
-- [Massive Attack](https://www.mckendrick.rocks/artist/massive-attack/) (9 plays)
+- [Prince](https://www.russ.fm/artist/prince/) (11 plays)
+- [The Polyphonic Spree](https://www.russ.fm/artist/the-polyphonic-spree/) (10 plays)
+- [Massive Attack](https://www.russ.fm/artist/massive-attack/) (9 plays)
 
 ## Top Albums (Week 25)
 
-- [The Suburbs](https://www.mckendrick.rocks/albums/the-suburbs-2399813/) by Arcade Fire
-- [The Downward Spiral](https://www.mckendrick.rocks/albums/the-downward-spiral-1475731/) by Nine Inch Nails
+- [The Suburbs](https://www.russ.fm/albums/the-suburbs-2399813/) by Arcade Fire
+- [The Downward Spiral](https://www.russ.fm/albums/the-downward-spiral-1475731/) by Nine Inch Nails
 - The Holy Bible by Manic Street Preachers
 - Music for People by Vast
-- [1999](https://www.mckendrick.rocks/albums/1999-4913531/) by Prince
-- [Together We're Heavy](https://www.mckendrick.rocks/albums/together-we-re-heavy-5326625/) by The Polyphonic Spree
-- [Blue Lines](https://www.mckendrick.rocks/albums/blue-lines-9442778/) by Massive Attack
+- [1999](https://www.russ.fm/albums/1999-4913531/) by Prince
+- [Together We're Heavy](https://www.russ.fm/albums/together-we-re-heavy-5326625/) by The Polyphonic Spree
+- [Blue Lines](https://www.russ.fm/albums/blue-lines-9442778/) by Massive Attack
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

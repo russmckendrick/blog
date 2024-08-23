@@ -49,18 +49,18 @@ Till the next post, let the melodies float in the air and let the rhythms get yo
 
 ## Top Artists (Week 22)
 
-- [The Specials](https://www.mckendrick.rocks/artist/the-specials/) (25 plays)
-- [Sparks](https://www.mckendrick.rocks/artist/sparks/) (24 plays)
-- [The Lemonheads](https://www.mckendrick.rocks/artist/the-lemonheads/) (23 plays)
-- [Super Furry Animals](https://www.mckendrick.rocks/artist/super-furry-animals/) (20 plays)
-- [Roxy Music](https://www.mckendrick.rocks/artist/roxy-music/) (18 plays)
-- [Sublime](https://www.mckendrick.rocks/artist/sublime/) (17 plays)
-- [Rancid](https://www.mckendrick.rocks/artist/rancid/) (16 plays)
-- [Beastie Boys](https://www.mckendrick.rocks/artist/beastie-boys/) (15 plays)
-- [Tori Amos](https://www.mckendrick.rocks/artist/tori-amos/) (13 plays)
+- [The Specials](https://www.russ.fm/artist/the-specials/) (25 plays)
+- [Sparks](https://www.russ.fm/artist/sparks/) (24 plays)
+- [The Lemonheads](https://www.russ.fm/artist/the-lemonheads/) (23 plays)
+- [Super Furry Animals](https://www.russ.fm/artist/super-furry-animals/) (20 plays)
+- [Roxy Music](https://www.russ.fm/artist/roxy-music/) (18 plays)
+- [Sublime](https://www.russ.fm/artist/sublime/) (17 plays)
+- [Rancid](https://www.russ.fm/artist/rancid/) (16 plays)
+- [Beastie Boys](https://www.russ.fm/artist/beastie-boys/) (15 plays)
+- [Tori Amos](https://www.russ.fm/artist/tori-amos/) (13 plays)
 - Vast (12 plays)
-- [Warrant](https://www.mckendrick.rocks/artist/warrant/) (12 plays)
-- [Baxter Dury](https://www.mckendrick.rocks/artist/baxter-dury/) (10 plays)
+- [Warrant](https://www.russ.fm/artist/warrant/) (12 plays)
+- [Baxter Dury](https://www.russ.fm/artist/baxter-dury/) (10 plays)
 
 
 ## Top Albums (Week 22)
@@ -69,14 +69,14 @@ Till the next post, let the melodies float in the air and let the rhythms get yo
 - Come on Feel the Lemonheads by The Lemonheads
 - Alternative Anthems by Various Artists
 - Songbook: The Singles, Vol. 1 by Super Furry Animals
-- [The Best Of Roxy Music](https://www.mckendrick.rocks/albums/the-best-of-roxy-music-24389216/) by Roxy Music
-- [Sublime](https://www.mckendrick.rocks/albums/sublime-8687804/) by Sublime
-- [Tomorrow Never Comes](https://www.mckendrick.rocks/albums/tomorrow-never-comes-27265383/) by Rancid
-- [Ill Communication](https://www.mckendrick.rocks/albums/ill-communication-1856276/) by Beastie Boys
+- [The Best Of Roxy Music](https://www.russ.fm/albums/the-best-of-roxy-music-24389216/) by Roxy Music
+- [Sublime](https://www.russ.fm/albums/sublime-8687804/) by Sublime
+- [Tomorrow Never Comes](https://www.russ.fm/albums/tomorrow-never-comes-27265383/) by Rancid
+- [Ill Communication](https://www.russ.fm/albums/ill-communication-1856276/) by Beastie Boys
 - The Girl Is Crying in Her Latte by Sparks
 - Under the Pink by Tori Amos
 - Music for People by Vast
-- [Cherry Pie](https://www.mckendrick.rocks/albums/cherry-pie-26175560/) by Warrant
+- [Cherry Pie](https://www.russ.fm/albums/cherry-pie-26175560/) by Warrant
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

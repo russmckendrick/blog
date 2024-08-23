@@ -47,28 +47,28 @@ Stay tuned for next week's musical journey. Who knows what unforeseen auditory t
 
 ## Top Artists (Week 29)
 
-- [Radiohead](https://www.mckendrick.rocks/artist/radiohead/) (39 plays)
-- [Moby](https://www.mckendrick.rocks/artist/moby/) (14 plays)
-- [Tori Amos](https://www.mckendrick.rocks/artist/tori-amos/) (14 plays)
-- [Ned's Atomic Dustbin](https://www.mckendrick.rocks/artist/neds-atomic-dustbin/) (13 plays)
-- [Teenage Fanclub](https://www.mckendrick.rocks/artist/teenage-fanclub/) (12 plays)
-- [Steven Wilson](https://www.mckendrick.rocks/artist/steven-wilson/) (9 plays)
-- [Simple Minds](https://www.mckendrick.rocks/artist/simple-minds/) (8 plays)
-- [The Slackers](https://www.mckendrick.rocks/artist/the-slackers/) (3 plays)
-- [Vennart](https://www.mckendrick.rocks/artist/vennart/) (3 plays)
+- [Radiohead](https://www.russ.fm/artist/radiohead/) (39 plays)
+- [Moby](https://www.russ.fm/artist/moby/) (14 plays)
+- [Tori Amos](https://www.russ.fm/artist/tori-amos/) (14 plays)
+- [Ned's Atomic Dustbin](https://www.russ.fm/artist/neds-atomic-dustbin/) (13 plays)
+- [Teenage Fanclub](https://www.russ.fm/artist/teenage-fanclub/) (12 plays)
+- [Steven Wilson](https://www.russ.fm/artist/steven-wilson/) (9 plays)
+- [Simple Minds](https://www.russ.fm/artist/simple-minds/) (8 plays)
+- [The Slackers](https://www.russ.fm/artist/the-slackers/) (3 plays)
+- [Vennart](https://www.russ.fm/artist/vennart/) (3 plays)
 
 
 ## Top Albums (Week 29)
 
 - KID A MNESIA by Radiohead
-- [Reprise](https://www.mckendrick.rocks/albums/reprise-18089404/) by Moby
+- [Reprise](https://www.russ.fm/albums/reprise-18089404/) by Moby
 - A Tori Amos Collection - Tales of a Librarian by Tori Amos
-- [Are You Normal?](https://www.mckendrick.rocks/albums/are-you-normal-929001/) by Ned's Atomic Dustbin
-- [Bandwagonesque](https://www.mckendrick.rocks/albums/bandwagonesque-8667450/) by Teenage Fanclub
+- [Are You Normal?](https://www.russ.fm/albums/are-you-normal-929001/) by Ned's Atomic Dustbin
+- [Bandwagonesque](https://www.russ.fm/albums/bandwagonesque-8667450/) by Teenage Fanclub
 - Hand. Cannot. Erase. (Deluxe Edition) by Steven Wilson
-- [Once Upon A Time](https://www.mckendrick.rocks/albums/once-upon-a-time-762207/) by Simple Minds
-- [Redlight](https://www.mckendrick.rocks/albums/redlight-10018831/) by The Slackers
-- [The Demon Joke](https://www.mckendrick.rocks/albums/the-demon-joke-7147581/) by Vennart
+- [Once Upon A Time](https://www.russ.fm/albums/once-upon-a-time-762207/) by Simple Minds
+- [Redlight](https://www.russ.fm/albums/redlight-10018831/) by The Slackers
+- [The Demon Joke](https://www.russ.fm/albums/the-demon-joke-7147581/) by Vennart
 - Forty: The Best of Simple Minds 1979-2019 by Simple Minds
 
 

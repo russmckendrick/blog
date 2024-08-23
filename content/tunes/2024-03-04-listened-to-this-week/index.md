@@ -56,27 +56,27 @@ Your fellow music fanatic 🎧✌️
 
 ## Top Artists (Week 08)
 
-- [The Beatles](https://www.mckendrick.rocks/artist/the-beatles/) (37 plays)
-- [The Beta Band](https://www.mckendrick.rocks/artist/the-beta-band/) (24 plays)
-- [Crowded House](https://www.mckendrick.rocks/artist/crowded-house/) (19 plays)
-- [The Saw Doctors](https://www.mckendrick.rocks/artist/the-saw-doctors/) (15 plays)
-- [New Order](https://www.mckendrick.rocks/artist/new-order/) (13 plays)
-- [Steven Wilson](https://www.mckendrick.rocks/artist/steven-wilson/) (10 plays)
-- [Heaven 17](https://www.mckendrick.rocks/artist/heaven-17/) (9 plays)
-- [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (9 plays)
-- [Big Big Train](https://www.mckendrick.rocks/artist/big-big-train/) (8 plays)
+- [The Beatles](https://www.russ.fm/artist/the-beatles/) (37 plays)
+- [The Beta Band](https://www.russ.fm/artist/the-beta-band/) (24 plays)
+- [Crowded House](https://www.russ.fm/artist/crowded-house/) (19 plays)
+- [The Saw Doctors](https://www.russ.fm/artist/the-saw-doctors/) (15 plays)
+- [New Order](https://www.russ.fm/artist/new-order/) (13 plays)
+- [Steven Wilson](https://www.russ.fm/artist/steven-wilson/) (10 plays)
+- [Heaven 17](https://www.russ.fm/artist/heaven-17/) (9 plays)
+- [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (9 plays)
+- [Big Big Train](https://www.russ.fm/artist/big-big-train/) (8 plays)
 
 
 ## Top Albums (Week 08)
 
-- [1967-1970](https://www.mckendrick.rocks/albums/1967-1970-28859359/) by The Beatles
-- [The Three E.P.'s](https://www.mckendrick.rocks/albums/the-three-e-p-s-12647330/) by The Beta Band
+- [1967-1970](https://www.russ.fm/albums/1967-1970-28859359/) by The Beatles
+- [The Three E.P.'s](https://www.russ.fm/albums/the-three-e-p-s-12647330/) by The Beta Band
 - The Very Very Best of Crowded House by Crowded House
-- [If This Is Rock And Roll, I Want My Old Job Back](https://www.mckendrick.rocks/albums/if-this-is-rock-and-roll-i-want-my-old-job-back-2736659/) by The Saw Doctors
-- [Singles](https://www.mckendrick.rocks/albums/singles-9017905/) by New Order
-- [The Harmony Codex](https://www.mckendrick.rocks/albums/the-harmony-codex-28432588/) by Steven Wilson
+- [If This Is Rock And Roll, I Want My Old Job Back](https://www.russ.fm/albums/if-this-is-rock-and-roll-i-want-my-old-job-back-2736659/) by The Saw Doctors
+- [Singles](https://www.russ.fm/albums/singles-9017905/) by New Order
+- [The Harmony Codex](https://www.russ.fm/albums/the-harmony-codex-28432588/) by Steven Wilson
 - The Luxury Gap by Heaven 17
-- [So](https://www.mckendrick.rocks/albums/so-379036/) by Peter Gabriel
+- [So](https://www.russ.fm/albums/so-379036/) by Peter Gabriel
 - The Likes of Us by Big Big Train
 
 

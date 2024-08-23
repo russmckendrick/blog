@@ -337,32 +337,32 @@ Join me next week as we continue to explore more unique musical pieces from arou
 
 ## Top Artists (Week 28)
 
-- [John Lennon](https://www.mckendrick.rocks/artist/john-lennon/) (24 plays)
-- [Mother Earth](https://www.mckendrick.rocks/artist/mother-earth/) (24 plays)
-- [Cardiacs](https://www.mckendrick.rocks/artist/cardiacs/) (23 plays)
+- [John Lennon](https://www.russ.fm/artist/john-lennon/) (24 plays)
+- [Mother Earth](https://www.russ.fm/artist/mother-earth/) (24 plays)
+- [Cardiacs](https://www.russ.fm/artist/cardiacs/) (23 plays)
 - Finn Brothers (22 plays)
-- [Haken](https://www.mckendrick.rocks/artist/haken/) (18 plays)
-- [Fleetwood Mac](https://www.mckendrick.rocks/artist/fleetwood-mac/) (12 plays)
+- [Haken](https://www.russ.fm/artist/haken/) (18 plays)
+- [Fleetwood Mac](https://www.russ.fm/artist/fleetwood-mac/) (12 plays)
 - Emilíana Torrini (11 plays)
-- [Anathema](https://www.mckendrick.rocks/artist/anathema/) (10 plays)
+- [Anathema](https://www.russ.fm/artist/anathema/) (10 plays)
 - Death in Vegas (10 plays)
-- [Rush](https://www.mckendrick.rocks/artist/rush/) (7 plays)
-- [The Radicant](https://www.mckendrick.rocks/artist/the-radicant/) (5 plays)
+- [Rush](https://www.russ.fm/artist/rush/) (7 plays)
+- [The Radicant](https://www.russ.fm/artist/the-radicant/) (5 plays)
 
 
 ## Top Albums (Week 28)
 
-- [Mind Games](https://www.mckendrick.rocks/albums/mind-games-31202122/) by John Lennon
-- [The People Tree](https://www.mckendrick.rocks/albums/the-people-tree-31166870/) by Mother Earth
+- [Mind Games](https://www.russ.fm/albums/mind-games-31202122/) by John Lennon
+- [The People Tree](https://www.russ.fm/albums/the-people-tree-31166870/) by Mother Earth
 - Sing to God by Cardiacs
 - Finn by Finn Brothers
-- [Affinity](https://www.mckendrick.rocks/albums/affinity-17746783/) by Haken
-- [Peter Green's Fleetwood Mac](https://www.mckendrick.rocks/albums/peter-green-s-fleetwood-mac-3107317/) by Fleetwood Mac
-- [Miss Flower](https://www.mckendrick.rocks/albums/miss-flower-31020979/) by Emiliana Torrini
-- [Distant Satellites](https://www.mckendrick.rocks/albums/distant-satellites-5766148/) by Anathema
+- [Affinity](https://www.russ.fm/albums/affinity-17746783/) by Haken
+- [Peter Green's Fleetwood Mac](https://www.russ.fm/albums/peter-green-s-fleetwood-mac-3107317/) by Fleetwood Mac
+- [Miss Flower](https://www.russ.fm/albums/miss-flower-31020979/) by Emiliana Torrini
+- [Distant Satellites](https://www.russ.fm/albums/distant-satellites-5766148/) by Anathema
 - Scorpio Rising by Death in Vegas
-- [Moving Pictures](https://www.mckendrick.rocks/albums/moving-pictures-7258897/) by Rush
-- [We Ascend](https://www.mckendrick.rocks/albums/we-ascend-31279829/) by The Radicant
+- [Moving Pictures](https://www.russ.fm/albums/moving-pictures-7258897/) by Rush
+- [We Ascend](https://www.russ.fm/albums/we-ascend-31279829/) by The Radicant
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

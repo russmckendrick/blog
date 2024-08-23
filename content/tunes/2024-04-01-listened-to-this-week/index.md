@@ -300,13 +300,13 @@ Celebrating its 30th anniversary, "Jar of Flies" has seen special reissues that 
 ## Top Artists (Week 12)
 
 - Orchestral Manoeuvres in the Dark (40 plays)
-- [Mr. Scruff](https://www.mckendrick.rocks/artist/mr.-scruff/) (18 plays)
-- [Zwan](https://www.mckendrick.rocks/artist/zwan/) (15 plays)
-- [Thundercat](https://www.mckendrick.rocks/artist/thundercat/) (14 plays)
-- [The Beach Boys](https://www.mckendrick.rocks/artist/the-beach-boys/) (13 plays)
-- [Ride](https://www.mckendrick.rocks/artist/ride/) (12 plays)
-- [The Staves](https://www.mckendrick.rocks/artist/the-staves/) (12 plays)
-- [Pure Reason Revolution](https://www.mckendrick.rocks/artist/pure-reason-revolution/) (10 plays)
+- [Mr. Scruff](https://www.russ.fm/artist/mr.-scruff/) (18 plays)
+- [Zwan](https://www.russ.fm/artist/zwan/) (15 plays)
+- [Thundercat](https://www.russ.fm/artist/thundercat/) (14 plays)
+- [The Beach Boys](https://www.russ.fm/artist/the-beach-boys/) (13 plays)
+- [Ride](https://www.russ.fm/artist/ride/) (12 plays)
+- [The Staves](https://www.russ.fm/artist/the-staves/) (12 plays)
+- [Pure Reason Revolution](https://www.russ.fm/artist/pure-reason-revolution/) (10 plays)
 - Soulsavers (9 plays)
 - Alice in Chains (7 plays)
 
@@ -314,14 +314,14 @@ Celebrating its 30th anniversary, "Jar of Flies" has seen special reissues that 
 ## Top Albums (Week 12)
 
 - Souvenir by Orchestral Manoeuvres in the Dark
-- [Ninja Tuna](https://www.mckendrick.rocks/albums/ninja-tuna-30208622/) by Mr. Scruff
+- [Ninja Tuna](https://www.russ.fm/albums/ninja-tuna-30208622/) by Mr. Scruff
 - Mary Star of the Sea by Zwan
-- [Apocalypse](https://www.mckendrick.rocks/albums/apocalypse-30091313/) by Thundercat
-- [Pet Sounds](https://www.mckendrick.rocks/albums/pet-sounds-1567306/) by The Beach Boys
-- [Interplay](https://www.mckendrick.rocks/albums/interplay-30233693/) by Ride
-- [All Now](https://www.mckendrick.rocks/albums/all-now-30163826/) by The Staves
-- [Hammer And Anvil](https://www.mckendrick.rocks/albums/hammer-and-anvil-24455267/) by Pure Reason Revolution
-- [20](https://www.mckendrick.rocks/albums/20-30222686/) by The Soulsavers
+- [Apocalypse](https://www.russ.fm/albums/apocalypse-30091313/) by Thundercat
+- [Pet Sounds](https://www.russ.fm/albums/pet-sounds-1567306/) by The Beach Boys
+- [Interplay](https://www.russ.fm/albums/interplay-30233693/) by Ride
+- [All Now](https://www.russ.fm/albums/all-now-30163826/) by The Staves
+- [Hammer And Anvil](https://www.russ.fm/albums/hammer-and-anvil-24455267/) by Pure Reason Revolution
+- [20](https://www.russ.fm/albums/20-30222686/) by The Soulsavers
 - Jar of Flies by Alice in Chains
 
 

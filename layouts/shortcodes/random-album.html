@@ -1,6 +1,6 @@
-{{ $albumsUrl := "https://www.mckendrick.rocks/index.json" }}
+{{ $albumsUrl := "https://www.russ.fm/index.json" }}
 
-<section class="bg-center bg-no-repeat bg-[url('https://www.mckendrick.rocks/images/banner.jpg')] bg-gray-700 dark:bg-gray-900 bg-blend-multiply py-10">
+<section class="bg-center bg-no-repeat bg-[url('https://www.russ.fm/images/banner.jpg')] bg-gray-700 dark:bg-gray-900 bg-blend-multiply py-10">
     <div class="container mx-auto px-4">
       <div class="random-record-container">
         <div class="random-record-sleeve">
@@ -46,7 +46,7 @@
       albumArtistEl.textContent = randomAlbum.artist;
       albumAlbumEl.textContent = randomAlbum.album;
       albumDateEl.textContent = randomAlbum.date;
-      gotoAlbumLink.href = `https://www.mckendrick.rocks${randomAlbum.uri}`;
+      gotoAlbumLink.href = `https://www.russ.fm${randomAlbum.uri}`;
   }
   
   getRandomAlbumBtn.addEventListener('click', getRandomAlbum);

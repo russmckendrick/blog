@@ -98,34 +98,34 @@ Ciao for now!
 
 ## Top Artists (Week 03)
 
-- [They Might Be Giants](https://www.mckendrick.rocks/artist/they-might-be-giants/) (19 plays)
+- [They Might Be Giants](https://www.russ.fm/artist/they-might-be-giants/) (19 plays)
 - Tom Petty and The Heartbreakers (19 plays)
-- [The Rolling Stones](https://www.mckendrick.rocks/artist/the-rolling-stones/) (18 plays)
-- [Ride](https://www.mckendrick.rocks/artist/ride/) (15 plays)
-- [Future Islands](https://www.mckendrick.rocks/artist/future-islands/) (12 plays)
-- [Oceansize](https://www.mckendrick.rocks/artist/oceansize/) (12 plays)
-- [Teenage Fanclub](https://www.mckendrick.rocks/artist/teenage-fanclub/) (12 plays)
-- [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (10 plays)
-- [Rush](https://www.mckendrick.rocks/artist/rush/) (10 plays)
+- [The Rolling Stones](https://www.russ.fm/artist/the-rolling-stones/) (18 plays)
+- [Ride](https://www.russ.fm/artist/ride/) (15 plays)
+- [Future Islands](https://www.russ.fm/artist/future-islands/) (12 plays)
+- [Oceansize](https://www.russ.fm/artist/oceansize/) (12 plays)
+- [Teenage Fanclub](https://www.russ.fm/artist/teenage-fanclub/) (12 plays)
+- [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (10 plays)
+- [Rush](https://www.russ.fm/artist/rush/) (10 plays)
 - Tears for Fears (9 plays)
-- [Metallica](https://www.mckendrick.rocks/artist/metallica/) (8 plays)
-- [The James Taylor Quartet](https://www.mckendrick.rocks/artist/the-james-taylor-quartet/) (7 plays)
+- [Metallica](https://www.russ.fm/artist/metallica/) (8 plays)
+- [The James Taylor Quartet](https://www.russ.fm/artist/the-james-taylor-quartet/) (7 plays)
 
 
 ## Top Albums (Week 03)
 
-- [Flood](https://www.mckendrick.rocks/albums/flood-1593562/) by They Might Be Giants
+- [Flood](https://www.russ.fm/albums/flood-1593562/) by They Might Be Giants
 - Greatest Hits by Tom Petty and The Heartbreakers
 - Exile on Main St. by The Rolling Stones
 - OX4_ The Best of Ride by Ride
-- [People Who Aren't There Anymore](https://www.mckendrick.rocks/albums/people-who-aren-t-there-anymore-29592508/) by Future Islands
-- [Effloresce](https://www.mckendrick.rocks/albums/effloresce-1460913/) by Oceansize
-- [Bandwagonesque](https://www.mckendrick.rocks/albums/bandwagonesque-8667450/) by Teenage Fanclub
-- [Peter Gabriel](https://www.mckendrick.rocks/albums/peter-gabriel-9473688/) by Peter Gabriel
-- [Hold Your Fire](https://www.mckendrick.rocks/albums/hold-your-fire-7897222/) by Rush
+- [People Who Aren't There Anymore](https://www.russ.fm/albums/people-who-aren-t-there-anymore-29592508/) by Future Islands
+- [Effloresce](https://www.russ.fm/albums/effloresce-1460913/) by Oceansize
+- [Bandwagonesque](https://www.russ.fm/albums/bandwagonesque-8667450/) by Teenage Fanclub
+- [Peter Gabriel](https://www.russ.fm/albums/peter-gabriel-9473688/) by Peter Gabriel
+- [Hold Your Fire](https://www.russ.fm/albums/hold-your-fire-7897222/) by Rush
 - Songs from the Big Chair by Tears for Fears
 - Master of Puppets by Metallica
-- [Mission Impossible](https://www.mckendrick.rocks/albums/mission-impossible-29592832/) by The James Taylor Quartet
+- [Mission Impossible](https://www.russ.fm/albums/mission-impossible-29592832/) by The James Taylor Quartet
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

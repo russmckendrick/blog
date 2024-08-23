@@ -61,18 +61,18 @@ Rock on and stay eclectic! 🤟🎶
 
 ## Top Artists (Week 01)
 
-- [Electronic](https://www.mckendrick.rocks/artist/electronic/) (15 plays)
-- [Gram Parsons](https://www.mckendrick.rocks/artist/gram-parsons/) (11 plays)
-- [Jesus Jones](https://www.mckendrick.rocks/artist/jesus-jones/) (11 plays)
-- [Faith No More](https://www.mckendrick.rocks/artist/faith-no-more/) (5 plays)
+- [Electronic](https://www.russ.fm/artist/electronic/) (15 plays)
+- [Gram Parsons](https://www.russ.fm/artist/gram-parsons/) (11 plays)
+- [Jesus Jones](https://www.russ.fm/artist/jesus-jones/) (11 plays)
+- [Faith No More](https://www.russ.fm/artist/faith-no-more/) (5 plays)
 
 
 ## Top Albums (Week 01)
 
 - Get The Message The Best of Electronic by Electronic
-- [GP](https://www.mckendrick.rocks/albums/gp-5886669/) by Gram Parsons
-- [Doubt](https://www.mckendrick.rocks/albums/doubt-564216/) by Jesus Jones
-- [The Real Thing](https://www.mckendrick.rocks/albums/the-real-thing-383371/) by Faith No More
+- [GP](https://www.russ.fm/albums/gp-5886669/) by Gram Parsons
+- [Doubt](https://www.russ.fm/albums/doubt-564216/) by Jesus Jones
+- [The Real Thing](https://www.russ.fm/albums/the-real-thing-383371/) by Faith No More
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

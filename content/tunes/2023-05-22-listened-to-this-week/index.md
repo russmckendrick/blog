@@ -56,28 +56,28 @@ Ending this music-diaries entry now. Let's regroup next week for another rocking
 
 ## Top Artists (Week 20)
 
-- [The Cure](https://www.mckendrick.rocks/artist/the-cure/) (15 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (12 plays)
-- [Manic Street Preachers](https://www.mckendrick.rocks/artist/manic-street-preachers/) (11 plays)
-- [U2](https://www.mckendrick.rocks/artist/u2/) (10 plays)
+- [The Cure](https://www.russ.fm/artist/the-cure/) (15 plays)
+- [Genesis](https://www.russ.fm/artist/genesis/) (12 plays)
+- [Manic Street Preachers](https://www.russ.fm/artist/manic-street-preachers/) (11 plays)
+- [U2](https://www.russ.fm/artist/u2/) (10 plays)
 - The Sisters of Mercy (9 plays)
-- [James](https://www.mckendrick.rocks/artist/james/) (6 plays)
-- [Longpigs](https://www.mckendrick.rocks/artist/longpigs/) (4 plays)
-- [Depeche Mode](https://www.mckendrick.rocks/artist/depeche-mode/) (1 plays)
-- [Joy Division](https://www.mckendrick.rocks/artist/joy-division/) (1 plays)
-- [New Order](https://www.mckendrick.rocks/artist/new-order/) (1 plays)
+- [James](https://www.russ.fm/artist/james/) (6 plays)
+- [Longpigs](https://www.russ.fm/artist/longpigs/) (4 plays)
+- [Depeche Mode](https://www.russ.fm/artist/depeche-mode/) (1 plays)
+- [Joy Division](https://www.russ.fm/artist/joy-division/) (1 plays)
+- [New Order](https://www.russ.fm/artist/new-order/) (1 plays)
 - The Mission (1 plays)
 
 
 ## Top Albums (Week 20)
 
 - The Cure: Greatest Hits by The Cure
-- [Duke](https://www.mckendrick.rocks/albums/duke-773021/) by Genesis
+- [Duke](https://www.russ.fm/albums/duke-773021/) by Genesis
 - Gold Against the Soul (Remastered) by Manic Street Preachers
-- [The Joshua Tree](https://www.mckendrick.rocks/albums/the-joshua-tree-10391869/) by U2
+- [The Joshua Tree](https://www.russ.fm/albums/the-joshua-tree-10391869/) by U2
 - Greatest Hits, Vol. One: A Slight Case of Overbombing (2018 Remaster) by The Sisters of Mercy
 - Fresh As A Daisy - The Singles by James
-- [The Sun Is Often Out](https://www.mckendrick.rocks/albums/the-sun-is-often-out-15537055/) by Longpigs
+- [The Sun Is Often Out](https://www.russ.fm/albums/the-sun-is-often-out-15537055/) by Longpigs
 - Violator (Deluxe) by Depeche Mode
 - Invisible Touch (2007 Remaster) by Genesis
 - Closer (40th Anniversary) [2020 Digital Master] by Joy Division

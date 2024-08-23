@@ -71,32 +71,32 @@ Keep the turntable spinning, the bass thumping, and your spirits high – until 
 
 ## Top Artists (Week 07)
 
-- [The Who](https://www.mckendrick.rocks/artist/the-who/) (21 plays)
-- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (16 plays)
-- [Grandaddy](https://www.mckendrick.rocks/artist/grandaddy/) (13 plays)
+- [The Who](https://www.russ.fm/artist/the-who/) (21 plays)
+- [David Bowie](https://www.russ.fm/artist/david-bowie/) (16 plays)
+- [Grandaddy](https://www.russ.fm/artist/grandaddy/) (13 plays)
 - Death in Vegas (11 plays)
-- [Gary Numan](https://www.mckendrick.rocks/artist/gary-numan/) (10 plays)
-- [U2](https://www.mckendrick.rocks/artist/u2/) (10 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (9 plays)
-- [The Waterboys](https://www.mckendrick.rocks/artist/the-waterboys/) (9 plays)
-- [Simple Minds](https://www.mckendrick.rocks/artist/simple-minds/) (8 plays)
-- [Sedibus](https://www.mckendrick.rocks/artist/sedibus/) (5 plays)
-- [Bruce Springsteen](https://www.mckendrick.rocks/artist/bruce-springsteen/) (3 plays)
-- [Fleetwood Mac](https://www.mckendrick.rocks/artist/fleetwood-mac/) (3 plays)
+- [Gary Numan](https://www.russ.fm/artist/gary-numan/) (10 plays)
+- [U2](https://www.russ.fm/artist/u2/) (10 plays)
+- [Genesis](https://www.russ.fm/artist/genesis/) (9 plays)
+- [The Waterboys](https://www.russ.fm/artist/the-waterboys/) (9 plays)
+- [Simple Minds](https://www.russ.fm/artist/simple-minds/) (8 plays)
+- [Sedibus](https://www.russ.fm/artist/sedibus/) (5 plays)
+- [Bruce Springsteen](https://www.russ.fm/artist/bruce-springsteen/) (3 plays)
+- [Fleetwood Mac](https://www.russ.fm/artist/fleetwood-mac/) (3 plays)
 
 
 ## Top Albums (Week 07)
 
 - Quadrophenia (2013 Remaster) by The Who
 - The Rise and Fall of Ziggy Stardust and the Spiders from Mars (2012 Remaster) by David Bowie
-- [Blu Wav](https://www.mckendrick.rocks/albums/blu-wav-29808619/) by Grandaddy
+- [Blu Wav](https://www.russ.fm/albums/blu-wav-29808619/) by Grandaddy
 - Dead Elvis by Death in Vegas
-- [The Joshua Tree](https://www.mckendrick.rocks/albums/the-joshua-tree-10391869/) by U2
+- [The Joshua Tree](https://www.russ.fm/albums/the-joshua-tree-10391869/) by U2
 - Abacab (Remastered) by Genesis
-- [This Is The Sea](https://www.mckendrick.rocks/albums/this-is-the-sea-29905867/) by The Waterboys
-- [The Pleasure Principle](https://www.mckendrick.rocks/albums/the-pleasure-principle-45996/) by Gary Numan
-- [Once Upon A Time](https://www.mckendrick.rocks/albums/once-upon-a-time-762207/) by Simple Minds
-- [Seti](https://www.mckendrick.rocks/albums/seti-29917387/) by Sedibus
+- [This Is The Sea](https://www.russ.fm/albums/this-is-the-sea-29905867/) by The Waterboys
+- [The Pleasure Principle](https://www.russ.fm/albums/the-pleasure-principle-45996/) by Gary Numan
+- [Once Upon A Time](https://www.russ.fm/albums/once-upon-a-time-762207/) by Simple Minds
+- [Seti](https://www.russ.fm/albums/seti-29917387/) by Sedibus
 - Born in the U.S.A. by Bruce Springsteen
 - So (Special Edition) by Peter Gabriel
 

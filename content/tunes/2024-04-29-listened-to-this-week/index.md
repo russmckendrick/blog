@@ -200,24 +200,24 @@ As we anticipate this exciting release, let's keep our ears open and our turntab
 
 ## Top Artists (Week 16)
 
-- [Eagles](https://www.mckendrick.rocks/artist/eagles/) (51 plays)
-- [Blur](https://www.mckendrick.rocks/artist/blur/) (16 plays)
-- [Flowered Up](https://www.mckendrick.rocks/artist/flowered-up/) (12 plays)
-- [Kim Gordon](https://www.mckendrick.rocks/artist/kim-gordon/) (11 plays)
-- [Orbital](https://www.mckendrick.rocks/artist/orbital/) (11 plays)
-- [Northside](https://www.mckendrick.rocks/artist/northside/) (10 plays)
-- [Oceansize](https://www.mckendrick.rocks/artist/oceansize/) (6 plays)
+- [Eagles](https://www.russ.fm/artist/eagles/) (51 plays)
+- [Blur](https://www.russ.fm/artist/blur/) (16 plays)
+- [Flowered Up](https://www.russ.fm/artist/flowered-up/) (12 plays)
+- [Kim Gordon](https://www.russ.fm/artist/kim-gordon/) (11 plays)
+- [Orbital](https://www.russ.fm/artist/orbital/) (11 plays)
+- [Northside](https://www.russ.fm/artist/northside/) (10 plays)
+- [Oceansize](https://www.russ.fm/artist/oceansize/) (6 plays)
 
 
 ## Top Albums (Week 16)
 
-- [To The Limit - The Essential Collection](https://www.mckendrick.rocks/albums/to-the-limit-the-essential-collection-30426416/) by Eagles
-- [Parklife](https://www.mckendrick.rocks/albums/parklife-7579798/) by Blur
-- [A Life With Brian](https://www.mckendrick.rocks/albums/a-life-with-brian-30439004/) by Flowered Up
-- [The Collective](https://www.mckendrick.rocks/albums/the-collective-30035155/) by Kim Gordon
-- [Orbital](https://www.mckendrick.rocks/albums/orbital-30430805/) by Orbital
-- [Chicken Rhythms](https://www.mckendrick.rocks/albums/chicken-rhythms-30452714/) by Northside
-- [Home & Minor](https://www.mckendrick.rocks/albums/home-minor-30461468/) by Oceansize
+- [To The Limit - The Essential Collection](https://www.russ.fm/albums/to-the-limit-the-essential-collection-30426416/) by Eagles
+- [Parklife](https://www.russ.fm/albums/parklife-7579798/) by Blur
+- [A Life With Brian](https://www.russ.fm/albums/a-life-with-brian-30439004/) by Flowered Up
+- [The Collective](https://www.russ.fm/albums/the-collective-30035155/) by Kim Gordon
+- [Orbital](https://www.russ.fm/albums/orbital-30430805/) by Orbital
+- [Chicken Rhythms](https://www.russ.fm/albums/chicken-rhythms-30452714/) by Northside
+- [Home & Minor](https://www.russ.fm/albums/home-minor-30461468/) by Oceansize
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

@@ -293,30 +293,30 @@ This album is a reminder of the power of electronic music to innovate and inspir
 
 ## Top Artists (Week 22)
 
-- [INXS](https://www.mckendrick.rocks/artist/inxs/) (20 plays)
-- [Monster Magnet](https://www.mckendrick.rocks/artist/monster-magnet/) (15 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (12 plays)
-- [Richard Hawley](https://www.mckendrick.rocks/artist/richard-hawley/) (12 plays)
-- [Crowded House](https://www.mckendrick.rocks/artist/crowded-house/) (11 plays)
-- [The Decemberists](https://www.mckendrick.rocks/artist/the-decemberists/) (10 plays)
-- [Steven Wilson](https://www.mckendrick.rocks/artist/steven-wilson/) (9 plays)
-- [Amplifier](https://www.mckendrick.rocks/artist/amplifier/) (8 plays)
-- [David Bowie](https://www.mckendrick.rocks/artist/david-bowie/) (7 plays)
-- [Gary Numan](https://www.mckendrick.rocks/artist/gary-numan/) (6 plays)
+- [INXS](https://www.russ.fm/artist/inxs/) (20 plays)
+- [Monster Magnet](https://www.russ.fm/artist/monster-magnet/) (15 plays)
+- [Genesis](https://www.russ.fm/artist/genesis/) (12 plays)
+- [Richard Hawley](https://www.russ.fm/artist/richard-hawley/) (12 plays)
+- [Crowded House](https://www.russ.fm/artist/crowded-house/) (11 plays)
+- [The Decemberists](https://www.russ.fm/artist/the-decemberists/) (10 plays)
+- [Steven Wilson](https://www.russ.fm/artist/steven-wilson/) (9 plays)
+- [Amplifier](https://www.russ.fm/artist/amplifier/) (8 plays)
+- [David Bowie](https://www.russ.fm/artist/david-bowie/) (7 plays)
+- [Gary Numan](https://www.russ.fm/artist/gary-numan/) (6 plays)
 
 
 ## Top Albums (Week 22)
 
-- [The Very Best](https://www.mckendrick.rocks/albums/the-very-best-17981053/) by INXS
+- [The Very Best](https://www.russ.fm/albums/the-very-best-17981053/) by INXS
 - Dopes to Infinity by Monster Magnet
-- [Duke](https://www.mckendrick.rocks/albums/duke-773021/) by Genesis
-- [In This City They Call You Love](https://www.mckendrick.rocks/albums/in-this-city-they-call-you-love-30835086/) by Richard Hawley
-- [Gravity Stairs](https://www.mckendrick.rocks/albums/gravity-stairs-30830307/) by Crowded House
-- [The Crane Wife](https://www.mckendrick.rocks/albums/the-crane-wife-7762976/) by The Decemberists
-- [Harmonic Divergence (The Harmony Codex Remixed And Reimagined)](https://www.mckendrick.rocks/albums/harmonic-divergence-the-harmony-codex-remixed-and-reimagined-30450185/) by Steven Wilson
-- [Echo Street](https://www.mckendrick.rocks/albums/echo-street-4379512/) by Amplifier
-- [★ (Blackstar)](https://www.mckendrick.rocks/albums/blackstar-7932038/) by David Bowie
-- [Premier Hits](https://www.mckendrick.rocks/albums/premier-hits-7341798/) by Gary Numan
+- [Duke](https://www.russ.fm/albums/duke-773021/) by Genesis
+- [In This City They Call You Love](https://www.russ.fm/albums/in-this-city-they-call-you-love-30835086/) by Richard Hawley
+- [Gravity Stairs](https://www.russ.fm/albums/gravity-stairs-30830307/) by Crowded House
+- [The Crane Wife](https://www.russ.fm/albums/the-crane-wife-7762976/) by The Decemberists
+- [Harmonic Divergence (The Harmony Codex Remixed And Reimagined)](https://www.russ.fm/albums/harmonic-divergence-the-harmony-codex-remixed-and-reimagined-30450185/) by Steven Wilson
+- [Echo Street](https://www.russ.fm/albums/echo-street-4379512/) by Amplifier
+- [★ (Blackstar)](https://www.russ.fm/albums/blackstar-7932038/) by David Bowie
+- [Premier Hits](https://www.russ.fm/albums/premier-hits-7341798/) by Gary Numan
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

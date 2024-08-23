@@ -55,17 +55,17 @@ Till next week, keep the sound up, and rock it, folks! 🤘🎶
 
 ## Top Artists (Week 39)
 
-- [Depeche Mode](https://www.mckendrick.rocks/artist/depeche-mode/) (26 plays)
-- [Amplifier](https://www.mckendrick.rocks/artist/amplifier/) (21 plays)
-- [The Cure](https://www.mckendrick.rocks/artist/the-cure/) (20 plays)
-- [Hawkwind](https://www.mckendrick.rocks/artist/hawkwind/) (17 plays)
-- [Electronic](https://www.mckendrick.rocks/artist/electronic/) (15 plays)
-- [Green Day](https://www.mckendrick.rocks/artist/green-day/) (15 plays)
-- [The Decemberists](https://www.mckendrick.rocks/artist/the-decemberists/) (13 plays)
-- [Manic Street Preachers](https://www.mckendrick.rocks/artist/manic-street-preachers/) (12 plays)
-- [Cake](https://www.mckendrick.rocks/artist/cake/) (11 plays)
-- [Pearl Jam](https://www.mckendrick.rocks/artist/pearl-jam/) (11 plays)
-- [Steven Wilson](https://www.mckendrick.rocks/artist/steven-wilson/) (11 plays)
+- [Depeche Mode](https://www.russ.fm/artist/depeche-mode/) (26 plays)
+- [Amplifier](https://www.russ.fm/artist/amplifier/) (21 plays)
+- [The Cure](https://www.russ.fm/artist/the-cure/) (20 plays)
+- [Hawkwind](https://www.russ.fm/artist/hawkwind/) (17 plays)
+- [Electronic](https://www.russ.fm/artist/electronic/) (15 plays)
+- [Green Day](https://www.russ.fm/artist/green-day/) (15 plays)
+- [The Decemberists](https://www.russ.fm/artist/the-decemberists/) (13 plays)
+- [Manic Street Preachers](https://www.russ.fm/artist/manic-street-preachers/) (12 plays)
+- [Cake](https://www.russ.fm/artist/cake/) (11 plays)
+- [Pearl Jam](https://www.russ.fm/artist/pearl-jam/) (11 plays)
+- [Steven Wilson](https://www.russ.fm/artist/steven-wilson/) (11 plays)
 - Hepcat (10 plays)
 
 
@@ -73,15 +73,15 @@ Till next week, keep the sound up, and rock it, folks! 🤘🎶
 
 - New Wave Of The 80's Collected by Various Artists
 - The Cure: Greatest Hits by The Cure
-- [Space Ritual](https://www.mckendrick.rocks/albums/space-ritual-28412089/) by Hawkwind
+- [Space Ritual](https://www.russ.fm/albums/space-ritual-28412089/) by Hawkwind
 - Get The Message The Best of Electronic by Electronic
-- [Dookie](https://www.mckendrick.rocks/albums/dookie-3375961/) by Green Day
+- [Dookie](https://www.russ.fm/albums/dookie-3375961/) by Green Day
 - Violator (Deluxe) by Depeche Mode
-- [Hologram](https://www.mckendrick.rocks/albums/hologram-28259452/) by Amplifier
+- [Hologram](https://www.russ.fm/albums/hologram-28259452/) by Amplifier
 - Songs Of Faith And Devotion (Deluxe) by Depeche Mode
 - Gold Against the Soul (Remastered) by Manic Street Preachers
-- [Comfort Eagle](https://www.mckendrick.rocks/albums/comfort-eagle-28256146/) by Cake
-- [Ten](https://www.mckendrick.rocks/albums/ten-1704831/) by Pearl Jam
+- [Comfort Eagle](https://www.russ.fm/albums/comfort-eagle-28256146/) by Cake
+- [Ten](https://www.russ.fm/albums/ten-1704831/) by Pearl Jam
 - To the Bone by Steven Wilson
 
 

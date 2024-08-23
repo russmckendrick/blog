@@ -58,33 +58,33 @@ Peace out and rock on,
 
 ## Top Artists (Week 00)
 
-- [Kate Bush](https://www.mckendrick.rocks/artist/kate-bush/) (35 plays)
-- [Madness](https://www.mckendrick.rocks/artist/madness/) (20 plays)
+- [Kate Bush](https://www.russ.fm/artist/kate-bush/) (35 plays)
+- [Madness](https://www.russ.fm/artist/madness/) (20 plays)
 - Prince & The Revolution (18 plays)
-- [The Police](https://www.mckendrick.rocks/artist/the-police/) (16 plays)
-- [Faith No More](https://www.mckendrick.rocks/artist/faith-no-more/) (13 plays)
-- [INXS](https://www.mckendrick.rocks/artist/inxs/) (13 plays)
-- [Björk](https://www.mckendrick.rocks/artist/bj%C3%B6rk/) (11 plays)
-- [Primal Scream](https://www.mckendrick.rocks/artist/primal-scream/) (11 plays)
-- [Prince](https://www.mckendrick.rocks/artist/prince/) (11 plays)
-- [The Decemberists](https://www.mckendrick.rocks/artist/the-decemberists/) (11 plays)
-- [Manic Street Preachers](https://www.mckendrick.rocks/artist/manic-street-preachers/) (10 plays)
-- [The Dears](https://www.mckendrick.rocks/artist/the-dears/) (10 plays)
+- [The Police](https://www.russ.fm/artist/the-police/) (16 plays)
+- [Faith No More](https://www.russ.fm/artist/faith-no-more/) (13 plays)
+- [INXS](https://www.russ.fm/artist/inxs/) (13 plays)
+- [Björk](https://www.russ.fm/artist/bj%C3%B6rk/) (11 plays)
+- [Primal Scream](https://www.russ.fm/artist/primal-scream/) (11 plays)
+- [Prince](https://www.russ.fm/artist/prince/) (11 plays)
+- [The Decemberists](https://www.russ.fm/artist/the-decemberists/) (11 plays)
+- [Manic Street Preachers](https://www.russ.fm/artist/manic-street-preachers/) (10 plays)
+- [The Dears](https://www.russ.fm/artist/the-dears/) (10 plays)
 
 
 ## Top Albums (Week 00)
 
 - Theatre of the Absurd presents C’est La Vie by Madness
 - Purple Rain by Prince & The Revolution
-- [Greatest Hits](https://www.mckendrick.rocks/albums/greatest-hits-26517422/) by The Police
-- [Angel Dust](https://www.mckendrick.rocks/albums/angel-dust-7410902/) by Faith No More
+- [Greatest Hits](https://www.russ.fm/albums/greatest-hits-26517422/) by The Police
+- [Angel Dust](https://www.russ.fm/albums/angel-dust-7410902/) by Faith No More
 - Kick 25 ((Super Deluxe Edition)) by INXS
 - Hounds of Love by Kate Bush
 - The Red Shoes by Kate Bush
-- [Debut](https://www.mckendrick.rocks/albums/debut-8051406/) by Björk
-- [Screamadelica](https://www.mckendrick.rocks/albums/screamadelica-3194462/) by Primal Scream
-- [1999](https://www.mckendrick.rocks/albums/1999-4913531/) by Prince
-- [I'll Be Your Girl](https://www.mckendrick.rocks/albums/i-ll-be-your-girl-11709250/) by The Decemberists
+- [Debut](https://www.russ.fm/albums/debut-8051406/) by Björk
+- [Screamadelica](https://www.russ.fm/albums/screamadelica-3194462/) by Primal Scream
+- [1999](https://www.russ.fm/albums/1999-4913531/) by Prince
+- [I'll Be Your Girl](https://www.russ.fm/albums/i-ll-be-your-girl-11709250/) by The Decemberists
 - The Sensual World by Kate Bush
 
 

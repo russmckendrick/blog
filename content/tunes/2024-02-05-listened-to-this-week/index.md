@@ -65,29 +65,29 @@ Happy listening! 🎤🎸
 
 ## Top Artists (Week 04)
 
-- [Electric Light Orchestra](https://www.mckendrick.rocks/artist/electric-light-orchestra/) (20 plays)
-- [Pink Floyd](https://www.mckendrick.rocks/artist/pink-floyd/) (16 plays)
-- [EMF](https://www.mckendrick.rocks/artist/emf/) (10 plays)
+- [Electric Light Orchestra](https://www.russ.fm/artist/electric-light-orchestra/) (20 plays)
+- [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (16 plays)
+- [EMF](https://www.russ.fm/artist/emf/) (10 plays)
 - Tears for Fears (9 plays)
-- [The Smashing Pumpkins](https://www.mckendrick.rocks/artist/the-smashing-pumpkins/) (8 plays)
-- [The Smile](https://www.mckendrick.rocks/artist/the-smile/) (8 plays)
-- [Simple Minds](https://www.mckendrick.rocks/artist/simple-minds/) (7 plays)
-- [Pixies](https://www.mckendrick.rocks/artist/pixies/) (4 plays)
-- [Depeche Mode](https://www.mckendrick.rocks/artist/depeche-mode/) (1 plays)
+- [The Smashing Pumpkins](https://www.russ.fm/artist/the-smashing-pumpkins/) (8 plays)
+- [The Smile](https://www.russ.fm/artist/the-smile/) (8 plays)
+- [Simple Minds](https://www.russ.fm/artist/simple-minds/) (7 plays)
+- [Pixies](https://www.russ.fm/artist/pixies/) (4 plays)
+- [Depeche Mode](https://www.russ.fm/artist/depeche-mode/) (1 plays)
 - Finn Brothers (1 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (1 plays)
+- [Genesis](https://www.russ.fm/artist/genesis/) (1 plays)
 - LostBoy! AKA Jim Kerr (1 plays)
 
 
 ## Top Albums (Week 04)
 
-- [All Over The World - The Very Best Of](https://www.mckendrick.rocks/albums/all-over-the-world-the-very-best-of-8685628/) by Electric Light Orchestra
-- [A Foot In The Door (The Best Of Pink Floyd)](https://www.mckendrick.rocks/albums/a-foot-in-the-door-the-best-of-pink-floyd-12569365/) by Pink Floyd
+- [All Over The World - The Very Best Of](https://www.russ.fm/albums/all-over-the-world-the-very-best-of-8685628/) by Electric Light Orchestra
+- [A Foot In The Door (The Best Of Pink Floyd)](https://www.russ.fm/albums/a-foot-in-the-door-the-best-of-pink-floyd-12569365/) by Pink Floyd
 - The Beauty and the Chaos by EMF
 - Songs from the Big Chair by Tears for Fears
 - Rotten Apples: Greatest Hits by The Smashing Pumpkins
 - Wall of Eyes by The Smile
-- [Once Upon A Time](https://www.mckendrick.rocks/albums/once-upon-a-time-762207/) by Simple Minds
+- [Once Upon A Time](https://www.russ.fm/albums/once-upon-a-time-762207/) by Simple Minds
 - Wave Of Mutilation: Best Of Pixies by Pixies
 - Violator (Deluxe) by Depeche Mode
 - Finn by Finn Brothers

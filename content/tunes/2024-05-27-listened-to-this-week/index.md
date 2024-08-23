@@ -365,33 +365,33 @@ In essence, the "Foxtrot (2007 Stereo Mix)" is more than just a remaster; it's a
 
 ## Top Artists (Week 20)
 
-- [Pearl Jam](https://www.mckendrick.rocks/artist/pearl-jam/) (22 plays)
-- [Modest Mouse](https://www.mckendrick.rocks/artist/modest-mouse/) (21 plays)
-- [Oceansize](https://www.mckendrick.rocks/artist/oceansize/) (16 plays)
-- [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (16 plays)
-- [Extreme](https://www.mckendrick.rocks/artist/extreme/) (15 plays)
-- [Stars](https://www.mckendrick.rocks/artist/stars/) (13 plays)
-- [Split Enz](https://www.mckendrick.rocks/artist/split-enz/) (11 plays)
+- [Pearl Jam](https://www.russ.fm/artist/pearl-jam/) (22 plays)
+- [Modest Mouse](https://www.russ.fm/artist/modest-mouse/) (21 plays)
+- [Oceansize](https://www.russ.fm/artist/oceansize/) (16 plays)
+- [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (16 plays)
+- [Extreme](https://www.russ.fm/artist/extreme/) (15 plays)
+- [Stars](https://www.russ.fm/artist/stars/) (13 plays)
+- [Split Enz](https://www.russ.fm/artist/split-enz/) (11 plays)
 - Belle and Sebastian (10 plays)
-- [Supertramp](https://www.mckendrick.rocks/artist/supertramp/) (10 plays)
-- [Dream Theater](https://www.mckendrick.rocks/artist/dream-theater/) (9 plays)
-- [Tennis](https://www.mckendrick.rocks/artist/tennis/) (9 plays)
-- [Genesis](https://www.mckendrick.rocks/artist/genesis/) (4 plays)
+- [Supertramp](https://www.russ.fm/artist/supertramp/) (10 plays)
+- [Dream Theater](https://www.russ.fm/artist/dream-theater/) (9 plays)
+- [Tennis](https://www.russ.fm/artist/tennis/) (9 plays)
+- [Genesis](https://www.russ.fm/artist/genesis/) (4 plays)
 
 
 ## Top Albums (Week 20)
 
-- [Ten](https://www.mckendrick.rocks/albums/ten-1704831/) by Pearl Jam
-- [Good News For People Who Love Bad News](https://www.mckendrick.rocks/albums/good-news-for-people-who-love-bad-news-2862960/) by Modest Mouse
-- [Frames](https://www.mckendrick.rocks/albums/frames-6030016/) by Oceansize
-- [Secret World Live](https://www.mckendrick.rocks/albums/secret-world-live-16094641/) by Peter Gabriel
-- [III Sides To Every Story](https://www.mckendrick.rocks/albums/iii-sides-to-every-story-10091923/) by Extreme
+- [Ten](https://www.russ.fm/albums/ten-1704831/) by Pearl Jam
+- [Good News For People Who Love Bad News](https://www.russ.fm/albums/good-news-for-people-who-love-bad-news-2862960/) by Modest Mouse
+- [Frames](https://www.russ.fm/albums/frames-6030016/) by Oceansize
+- [Secret World Live](https://www.russ.fm/albums/secret-world-live-16094641/) by Peter Gabriel
+- [III Sides To Every Story](https://www.russ.fm/albums/iii-sides-to-every-story-10091923/) by Extreme
 - Set Yourself on Fire by Stars
-- [History Never Repeats (The Best Of Split Enz)](https://www.mckendrick.rocks/albums/history-never-repeats-the-best-of-split-enz-1414426/) by Split Enz
+- [History Never Repeats (The Best Of Split Enz)](https://www.russ.fm/albums/history-never-repeats-the-best-of-split-enz-1414426/) by Split Enz
 - Tigermilk by Belle and Sebastian
 - Breakfast in America by Supertramp
 - Metropolis Pt. 2: Scenes From a Memory by Dream Theater
-- [Swimmer](https://www.mckendrick.rocks/albums/swimmer-26162459/) by Tennis
+- [Swimmer](https://www.russ.fm/albums/swimmer-26162459/) by Tennis
 - Foxtrot (2007 Stereo Mix) by Genesis
 
 

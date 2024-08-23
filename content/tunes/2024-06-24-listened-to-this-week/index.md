@@ -358,34 +358,34 @@ As we reflect on King Crimson's vast influence and the indelible mark "Red" has 
 
 ## Top Artists (Week 24)
 
-- [It Bites](https://www.mckendrick.rocks/artist/it-bites/) (24 plays)
-- [Gene](https://www.mckendrick.rocks/artist/gene/) (22 plays)
-- [Suede](https://www.mckendrick.rocks/artist/suede/) (21 plays)
-- [Devin Townsend](https://www.mckendrick.rocks/artist/devin-townsend/) (20 plays)
-- [The Cure](https://www.mckendrick.rocks/artist/the-cure/) (13 plays)
-- [Oasis](https://www.mckendrick.rocks/artist/oasis/) (12 plays)
-- [Electronic](https://www.mckendrick.rocks/artist/electronic/) (11 plays)
-- [Flying Colors](https://www.mckendrick.rocks/artist/flying-colors/) (11 plays)
-- [Mercury Rev](https://www.mckendrick.rocks/artist/mercury-rev/) (11 plays)
-- [Mazzy Star](https://www.mckendrick.rocks/artist/mazzy-star/) (10 plays)
-- [LCD Soundsystem](https://www.mckendrick.rocks/artist/lcd-soundsystem/) (9 plays)
-- [King Crimson](https://www.mckendrick.rocks/artist/king-crimson/) (5 plays)
+- [It Bites](https://www.russ.fm/artist/it-bites/) (24 plays)
+- [Gene](https://www.russ.fm/artist/gene/) (22 plays)
+- [Suede](https://www.russ.fm/artist/suede/) (21 plays)
+- [Devin Townsend](https://www.russ.fm/artist/devin-townsend/) (20 plays)
+- [The Cure](https://www.russ.fm/artist/the-cure/) (13 plays)
+- [Oasis](https://www.russ.fm/artist/oasis/) (12 plays)
+- [Electronic](https://www.russ.fm/artist/electronic/) (11 plays)
+- [Flying Colors](https://www.russ.fm/artist/flying-colors/) (11 plays)
+- [Mercury Rev](https://www.russ.fm/artist/mercury-rev/) (11 plays)
+- [Mazzy Star](https://www.russ.fm/artist/mazzy-star/) (10 plays)
+- [LCD Soundsystem](https://www.russ.fm/artist/lcd-soundsystem/) (9 plays)
+- [King Crimson](https://www.russ.fm/artist/king-crimson/) (5 plays)
 
 
 ## Top Albums (Week 24)
 
-- [The Tall Ships](https://www.mckendrick.rocks/albums/the-tall-ships-18661786/) by It Bites
-- [Yours For The Taking (The Best Of)](https://www.mckendrick.rocks/albums/yours-for-the-taking-the-best-of-15778008/) by Gene
-- [The Best Of Suede. Beautiful Ones. 1992-2018](https://www.mckendrick.rocks/albums/the-best-of-suede-beautiful-ones-1992-2018-16073517/) by Suede
-- [Empath](https://www.mckendrick.rocks/albums/empath-13421381/) by Devin Townsend
+- [The Tall Ships](https://www.russ.fm/albums/the-tall-ships-18661786/) by It Bites
+- [Yours For The Taking (The Best Of)](https://www.russ.fm/albums/yours-for-the-taking-the-best-of-15778008/) by Gene
+- [The Best Of Suede. Beautiful Ones. 1992-2018](https://www.russ.fm/albums/the-best-of-suede-beautiful-ones-1992-2018-16073517/) by Suede
+- [Empath](https://www.russ.fm/albums/empath-13421381/) by Devin Townsend
 - Standing on a Beach • the Singles by The Cure
-- [Definitely Maybe](https://www.mckendrick.rocks/albums/definitely-maybe-5697791/) by Oasis
-- [Electronic](https://www.mckendrick.rocks/albums/electronic-7046233/) by Electronic
-- [Flying Colors](https://www.mckendrick.rocks/albums/flying-colors-4214185/) by Flying Colors
-- [Deserter's Songs](https://www.mckendrick.rocks/albums/deserter-s-songs-12865243/) by Mercury Rev
-- [So Tonight That I Might See](https://www.mckendrick.rocks/albums/so-tonight-that-i-might-see-10806771/) by Mazzy Star
+- [Definitely Maybe](https://www.russ.fm/albums/definitely-maybe-5697791/) by Oasis
+- [Electronic](https://www.russ.fm/albums/electronic-7046233/) by Electronic
+- [Flying Colors](https://www.russ.fm/albums/flying-colors-4214185/) by Flying Colors
+- [Deserter's Songs](https://www.russ.fm/albums/deserter-s-songs-12865243/) by Mercury Rev
+- [So Tonight That I Might See](https://www.russ.fm/albums/so-tonight-that-i-might-see-10806771/) by Mazzy Star
 - Sound of Silver by LCD Soundsystem
-- [Red](https://www.mckendrick.rocks/albums/red-4703409/) by King Crimson
+- [Red](https://www.russ.fm/albums/red-4703409/) by King Crimson
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

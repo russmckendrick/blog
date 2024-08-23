@@ -362,17 +362,17 @@ Join me next week as we unearth more hidden gems from the music world! 🌍🎧
 
 ## Top Artists (Week 27)
 
-- [Depeche Mode](https://www.mckendrick.rocks/artist/depeche-mode/) (30 plays)
-- [Elvis Costello & The Attractions](https://www.mckendrick.rocks/artist/elvis-costello-the-attractions/) (17 plays)
-- [Ned's Atomic Dustbin](https://www.mckendrick.rocks/artist/neds-atomic-dustbin/) (13 plays)
-- [Amplifier](https://www.mckendrick.rocks/artist/amplifier/) (11 plays)
-- [The B-52's](https://www.mckendrick.rocks/artist/the-b-52s/) (10 plays)
-- [Jesus Jones](https://www.mckendrick.rocks/artist/jesus-jones/) (9 plays)
-- [Bill Withers](https://www.mckendrick.rocks/artist/bill-withers/) (7 plays)
-- [Radiohead](https://www.mckendrick.rocks/artist/radiohead/) (6 plays)
-- [Elvis Costello](https://www.mckendrick.rocks/artist/elvis-costello/) (5 plays)
-- [Blondie](https://www.mckendrick.rocks/artist/blondie/) (1 plays)
-- [Fun Boy Three](https://www.mckendrick.rocks/artist/fun-boy-three/) (1 plays)
+- [Depeche Mode](https://www.russ.fm/artist/depeche-mode/) (30 plays)
+- [Elvis Costello & The Attractions](https://www.russ.fm/artist/elvis-costello-the-attractions/) (17 plays)
+- [Ned's Atomic Dustbin](https://www.russ.fm/artist/neds-atomic-dustbin/) (13 plays)
+- [Amplifier](https://www.russ.fm/artist/amplifier/) (11 plays)
+- [The B-52's](https://www.russ.fm/artist/the-b-52s/) (10 plays)
+- [Jesus Jones](https://www.russ.fm/artist/jesus-jones/) (9 plays)
+- [Bill Withers](https://www.russ.fm/artist/bill-withers/) (7 plays)
+- [Radiohead](https://www.russ.fm/artist/radiohead/) (6 plays)
+- [Elvis Costello](https://www.russ.fm/artist/elvis-costello/) (5 plays)
+- [Blondie](https://www.russ.fm/artist/blondie/) (1 plays)
+- [Fun Boy Three](https://www.russ.fm/artist/fun-boy-three/) (1 plays)
 - Smudge (1 plays)
 
 
@@ -380,15 +380,15 @@ Join me next week as we unearth more hidden gems from the music world! 🌍🎧
 
 - The Best Of The First 10 Years by Elvis Costello
 - The Best of Depeche Mode, Vol. 1 (Deluxe) by Depeche Mode
-- [God Fodder](https://www.mckendrick.rocks/albums/god-fodder-781893/) by Ned's Atomic Dustbin
-- [Amplifier](https://www.mckendrick.rocks/albums/amplifier-9479697/) by Amplifier
+- [God Fodder](https://www.russ.fm/albums/god-fodder-781893/) by Ned's Atomic Dustbin
+- [Amplifier](https://www.russ.fm/albums/amplifier-9479697/) by Amplifier
 - Music for the Masses by Depeche Mode
-- [Cosmic Thing](https://www.mckendrick.rocks/albums/cosmic-thing-951365/) by The B-52's
-- [Doubt](https://www.mckendrick.rocks/albums/doubt-564216/) by Jesus Jones
-- [Bill Withers Live At Carnegie Hall](https://www.mckendrick.rocks/albums/bill-withers-live-at-carnegie-hall-3748571/) by Bill Withers
-- [Kid A](https://www.mckendrick.rocks/albums/kid-a-65034/) by Radiohead
+- [Cosmic Thing](https://www.russ.fm/albums/cosmic-thing-951365/) by The B-52's
+- [Doubt](https://www.russ.fm/albums/doubt-564216/) by Jesus Jones
+- [Bill Withers Live At Carnegie Hall](https://www.russ.fm/albums/bill-withers-live-at-carnegie-hall-3748571/) by Bill Withers
+- [Kid A](https://www.russ.fm/albums/kid-a-65034/) by Radiohead
 - Parallel Lines (Remastered) by Blondie
-- [Waiting](https://www.mckendrick.rocks/albums/waiting-27873642/) by Fun Boy Three
+- [Waiting](https://www.russ.fm/albums/waiting-27873642/) by Fun Boy Three
 - Manilow by Smudge
 
 

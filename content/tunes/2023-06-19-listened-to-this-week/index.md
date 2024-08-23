@@ -52,22 +52,22 @@ Over and out.🌙 Toodles!
 
 ## Top Artists (Week 24)
 
-- [Pet Shop Boys](https://www.mckendrick.rocks/artist/pet-shop-boys/) (55 plays)
+- [Pet Shop Boys](https://www.russ.fm/artist/pet-shop-boys/) (55 plays)
 - Finn Brothers (22 plays)
-- [INXS](https://www.mckendrick.rocks/artist/inxs/) (20 plays)
+- [INXS](https://www.russ.fm/artist/inxs/) (20 plays)
 - Jason Isbell and the 400 Unit (13 plays)
-- [The Mighty Mighty Bosstones](https://www.mckendrick.rocks/artist/the-mighty-mighty-bosstones/) (12 plays)
-- [Field Music](https://www.mckendrick.rocks/artist/field-music/) (11 plays)
+- [The Mighty Mighty Bosstones](https://www.russ.fm/artist/the-mighty-mighty-bosstones/) (12 plays)
+- [Field Music](https://www.russ.fm/artist/field-music/) (11 plays)
 
 
 ## Top Albums (Week 24)
 
-- [Smash (The Singles 1985-2020)](https://www.mckendrick.rocks/albums/smash-the-singles-1985-2020-27393912/) by Pet Shop Boys
+- [Smash (The Singles 1985-2020)](https://www.russ.fm/albums/smash-the-singles-1985-2020-27393912/) by Pet Shop Boys
 - Finn by Finn Brothers
-- [The Very Best](https://www.mckendrick.rocks/albums/the-very-best-17981053/) by INXS
+- [The Very Best](https://www.russ.fm/albums/the-very-best-17981053/) by INXS
 - Weathervanes by Jason Isbell and The 400 Unit
-- [Don't Know How To Party](https://www.mckendrick.rocks/albums/don-t-know-how-to-party-13667166/) by The Mighty Mighty Bosstones
-- [Tones Of Town](https://www.mckendrick.rocks/albums/tones-of-town-10173938/) by Field Music
+- [Don't Know How To Party](https://www.russ.fm/albums/don-t-know-how-to-party-13667166/) by The Mighty Mighty Bosstones
+- [Tones Of Town](https://www.russ.fm/albums/tones-of-town-10173938/) by Field Music
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

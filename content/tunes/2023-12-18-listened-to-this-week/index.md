@@ -47,34 +47,34 @@ Until next week, stay groovy and rock on! 🤘✌️
 
 ## Top Artists (Week 50)
 
-- [Jesus Jones](https://www.mckendrick.rocks/artist/jesus-jones/) (27 plays)
-- [Porcupine Tree](https://www.mckendrick.rocks/artist/porcupine-tree/) (21 plays)
-- [The Coral](https://www.mckendrick.rocks/artist/the-coral/) (14 plays)
-- [Talk Talk](https://www.mckendrick.rocks/artist/talk-talk/) (13 plays)
-- [Peter Gabriel](https://www.mckendrick.rocks/artist/peter-gabriel/) (12 plays)
-- [Crippled Black Phoenix](https://www.mckendrick.rocks/artist/crippled-black-phoenix/) (11 plays)
-- [Trevor Horn](https://www.mckendrick.rocks/artist/trevor-horn/) (11 plays)
-- [Killing Joke](https://www.mckendrick.rocks/artist/killing-joke/) (10 plays)
-- [Stone Temple Pilots](https://www.mckendrick.rocks/artist/stone-temple-pilots/) (10 plays)
+- [Jesus Jones](https://www.russ.fm/artist/jesus-jones/) (27 plays)
+- [Porcupine Tree](https://www.russ.fm/artist/porcupine-tree/) (21 plays)
+- [The Coral](https://www.russ.fm/artist/the-coral/) (14 plays)
+- [Talk Talk](https://www.russ.fm/artist/talk-talk/) (13 plays)
+- [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (12 plays)
+- [Crippled Black Phoenix](https://www.russ.fm/artist/crippled-black-phoenix/) (11 plays)
+- [Trevor Horn](https://www.russ.fm/artist/trevor-horn/) (11 plays)
+- [Killing Joke](https://www.russ.fm/artist/killing-joke/) (10 plays)
+- [Stone Temple Pilots](https://www.russ.fm/artist/stone-temple-pilots/) (10 plays)
 - Belle and Sebastian (9 plays)
-- [Mother Earth](https://www.mckendrick.rocks/artist/mother-earth/) (9 plays)
-- [New Order](https://www.mckendrick.rocks/artist/new-order/) (9 plays)
+- [Mother Earth](https://www.russ.fm/artist/mother-earth/) (9 plays)
+- [New Order](https://www.russ.fm/artist/new-order/) (9 plays)
 
 
 ## Top Albums (Week 50)
 
-- [Zeroes And Ones - The Best Of](https://www.mckendrick.rocks/albums/zeroes-and-ones-the-best-of-24975325/) by Jesus Jones
-- [Closure / Continuation.Live. Amsterdam 07/11/22](https://www.mckendrick.rocks/albums/closure-continuation-live-amsterdam-07-11-22-29133415/) by Porcupine Tree
-- [Sea Of Mirrors](https://www.mckendrick.rocks/albums/sea-of-mirrors-28205629/) by The Coral
+- [Zeroes And Ones - The Best Of](https://www.russ.fm/albums/zeroes-and-ones-the-best-of-24975325/) by Jesus Jones
+- [Closure / Continuation.Live. Amsterdam 07/11/22](https://www.russ.fm/albums/closure-continuation-live-amsterdam-07-11-22-29133415/) by Porcupine Tree
+- [Sea Of Mirrors](https://www.russ.fm/albums/sea-of-mirrors-28205629/) by The Coral
 - The Very Best Of by Talk Talk
 - i/o (Dark-Side Mixes) by Peter Gabriel
-- [The Resurrectionists](https://www.mckendrick.rocks/albums/the-resurrectionists-13562698/) by Crippled Black Phoenix
-- [Echoes - Ancient & Modern](https://www.mckendrick.rocks/albums/echoes-ancient-modern-29085826/) by Trevor Horn
+- [The Resurrectionists](https://www.russ.fm/albums/the-resurrectionists-13562698/) by Crippled Black Phoenix
+- [Echoes - Ancient & Modern](https://www.russ.fm/albums/echoes-ancient-modern-29085826/) by Trevor Horn
 - Singles Collection 1979 - 2012 (Deluxe) by Killing Joke
 - Core (Remastered) by Stone Temple Pilots
 - The Boy with the Arab Strap by Belle and Sebastian
-- [Stoned Woman](https://www.mckendrick.rocks/albums/stoned-woman-26514866/) by Mother Earth
-- [Singles](https://www.mckendrick.rocks/albums/singles-9017905/) by New Order
+- [Stoned Woman](https://www.russ.fm/albums/stoned-woman-26514866/) by Mother Earth
+- [Singles](https://www.russ.fm/albums/singles-9017905/) by New Order
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}

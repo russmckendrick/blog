@@ -47,20 +47,20 @@ Here's looking forward to another week bombarded with bass, treble, rhythm, and 
 
 - CHVRCHES (21 plays)
 - The Jesus and Mary Chain (17 plays)
-- [Pearl Jam](https://www.mckendrick.rocks/artist/pearl-jam/) (16 plays)
-- [Prince](https://www.mckendrick.rocks/artist/prince/) (13 plays)
-- [Richard Hawley](https://www.mckendrick.rocks/artist/richard-hawley/) (11 plays)
-- [Emma Anderson](https://www.mckendrick.rocks/artist/emma-anderson/) (10 plays)
+- [Pearl Jam](https://www.russ.fm/artist/pearl-jam/) (16 plays)
+- [Prince](https://www.russ.fm/artist/prince/) (13 plays)
+- [Richard Hawley](https://www.russ.fm/artist/richard-hawley/) (11 plays)
+- [Emma Anderson](https://www.russ.fm/artist/emma-anderson/) (10 plays)
 
 
 ## Top Albums (Week 43)
 
 - The Bones Of What You Believe (10 Year Anniversary Edition) by CHVRCHES
 - Munki by The Jesus and Mary Chain
-- [Rearviewmirror (Greatest Hits 1991-2003: Volume 1)](https://www.mckendrick.rocks/albums/rearviewmirror-greatest-hits-1991-2003-volume-1-22421005/) by Pearl Jam
-- [Diamonds And Pearls](https://www.mckendrick.rocks/albums/diamonds-and-pearls-28719109/) by Prince
-- [Late Night Final](https://www.mckendrick.rocks/albums/late-night-final-6196121/) by Richard Hawley
-- [Pearlies](https://www.mckendrick.rocks/albums/pearlies-28653319/) by Emma Anderson
+- [Rearviewmirror (Greatest Hits 1991-2003: Volume 1)](https://www.russ.fm/albums/rearviewmirror-greatest-hits-1991-2003-volume-1-22421005/) by Pearl Jam
+- [Diamonds And Pearls](https://www.russ.fm/albums/diamonds-and-pearls-28719109/) by Prince
+- [Late Night Final](https://www.russ.fm/albums/late-night-final-6196121/) by Richard Hawley
+- [Pearlies](https://www.russ.fm/albums/pearlies-28653319/) by Emma Anderson
 
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="150" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}
