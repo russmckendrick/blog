@@ -104,7 +104,7 @@ Docker version 1.12.0, build 8eab29e, experimental
 
 The full release notes for this version [can be found here](https://github.com/docker/docker/releases/tag/v1.12.0)
 
-Now we have our cluster up and running, we can launch a container service, like in my [previous](/2016/06/25/docker-load-balancing-application-bundles/)[posts](/2016/06/25/docker-service-load-balancing-and-docker-distributed-application-bundles/) we will launch [a simple container which just gives you the container ID](https://hub.docker.com/r/russmckendrick/cluster/). To launch a single container simply run the following command;
+Now we have our cluster up and running, we can launch a container service, like in my [previous posts](/2016/06/25/docker-load-balancing-application-bundles/) we will launch [a simple container which just gives you the container ID](https://hub.docker.com/r/russmckendrick/cluster/). To launch a single container simply run the following command;
 
 {{< terminal title="Docker for Amazon Web Services Beta 5/7" >}}
 ```

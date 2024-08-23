@@ -15,7 +15,7 @@ aliases:
   - "/digital-ocean-bootstrap-64fbb20a4f99"
 ---
 
-As I have mentioned a few times on this blog I tend to use [DigtialOcean](https://www.digitalocean.com/?refcode=52ec4dc3647e) to spin up servers for testing and to host some of my projects. I also still [use CentOS 7](/2014/08/03/operating-system-snob/ "Am I an Operating System snob?") as my preferred OS.
+As I have mentioned a few times on this blog I tend to use [DigtialOcean](https://www.digitalocean.com/?refcode=52ec4dc3647e) to spin up servers for testing and to host some of my projects. I also still [use CentOS 7](/2014/08/03/am-i-an-operating-system-snob/ "Am I an Operating System snob?") as my preferred OS.
 
 Each time I boot a droplet I run few a couple of tasks to get the server how I prefer it.
 

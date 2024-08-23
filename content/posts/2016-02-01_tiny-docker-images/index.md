@@ -25,7 +25,7 @@ And by lightweight they really do mean lightweight, with an 8MB container size a
 - [MariaDB](https://hub.docker.com/r/russmckendrick/mariadb/) / 432MB / 189MB
 - [AB](https://hub.docker.com/r/russmckendrick/ab/) / 261MB / 14MB
 
-… even though I have stated before I am quite a [snob when it comes to which Operating System I run](/2014/08/03/operating-system-snob/) I think Apline has definitely changed my mind.
+… even though I have stated before I am quite a [snob when it comes to which Operating System I run](/2014/08/03/am-i-an-operating-system-snob/) I think Apline has definitely changed my mind.
 
 So far I have managed to install everything I need from their [package repo](https://pkgs.alpinelinux.org/packages) with very little in the way of changes to my original [CentOS 7 image](https://hub.docker.com/_/centos/) configuration. Very impressive stuff.
 
