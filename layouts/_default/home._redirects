@@ -3,13 +3,11 @@
 /2014/01/11/another-new-blog/ /tags/blog/ 301
 /2014/04/27/been-playing-with-docker-again-this-weekend-this-time-rather-than-just-doing-for-the-sake-of-doing/ /2014/04/27/deploying-a-stable-docker-setup-on-centos-with-shipyard/ 301
 /2014/04/27/more-docker/ /tags/docker/ 301
-/2014/08/03/operating-system-snob/ / 301
+/2014/08/03/operating-system-snob/ /2014/08/03/am-i-an-operating-system-snob/ 301
 /2014/12/02/grunt-jekyll-less/ /tags/blog/ 301
 /2016/06/20/docker-service/ /tags/docker/ 301
 /2016/06/25/docker-service-load-balancing-and-docker-distributed-application-bundles/ /tags/docker 301
-/2016/06/25/docker-service-load-balancing-and-docker-distributed-application-bundles/ /tags/docker/ 301
 /2016/06/30/docker-service/ /tags/docker 301
-/2016/06/30/docker-service/ /tags/docker/ 301
 /2021/12/04/vscode-bicep-on-an-m1-mac/ /2021/12/04/vscode--bicep-on-an-m1-mac/ 301
 /2024/03/23/running-llms-locally-with-ollama/~https://brew.sh/~ / 301
 /2024/03/23/running-llms-locally-with-ollama/~https://llama.meta.com~ https://llama.meta.com 301
@@ -40,9 +38,7 @@
 /subscriptions/ce7aa0b9-3545-4104-99dc-d4d082339a05/resourceGroups/rg-demo-vms-uks/providers/Microsoft.Network/networkInterfaces/vm-demo-e8ab6db95a-uksVMNic / 301
 /subscriptions/ce7aa0b9-3545-4104-99dc-d4d082339a05/resourceGroups/rg-demo-vms-uks/providers/Microsoft.Network/networkSecurityGroups/vm-demo-d62ef52290-uksNSG /tags/azure/ 301
 /subscriptions/ce7aa0b9-3545-4104-99dc-d4d082339a05/resourceGroups/rg-demo-vms-uks/providers/Microsoft.Network/networkSecurityGroups/vm-demo-e8ab6db95a-uksNSG / 301
-/tags/ansible/  /tags/ 301
-/tags/ansible/  /tags/infrastructure-as-code 301
-/tag/puppet/ /tags/ 301
+/tag/ansible/  /tags/ansible/ 301
 /tag/puppet/ /tags/infrastructure-as-code 301
 /tags /tags/ 301
 /tags/2016/ /tags/ 301
@@ -128,7 +124,6 @@
 /tags/php/ /tags 301
 /tags/pipeline/ /tags/devops/ 301
 /tags/portainer/ /tags/docker 301
-/tags/puppet/ /tags/ 301
 /tags/rancher/ /tags/ 301
 /tags/reading/ /tags 301
 /tags/records/ /tags/ 301
