@@ -14,7 +14,7 @@ aliases:
   - "/more-grunt-jekyll-1b0ab0e47e"
 ---
 
-At the end of my [last post about Grunt](/2014/12/02/grunt-jekyll-less/) I mentioned that I will be adding code to concatenate the javascript, compress the images and also tidy the code up abit. I have now done this ….
+At the end of my [last post about Grunt](/2014/12/02/grunt--jekyll--less/) I mentioned that I will be adding code to concatenate the javascript, compress the images and also tidy the code up abit. I have now done this ….
 
 #### Javascript
 

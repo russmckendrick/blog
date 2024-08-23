@@ -29,4 +29,4 @@ After you have changed the kernel return to the “Power” section and power on
 
 Once the droplet has booted you will be running the new kernel.
 
-This process differs depending on the Operating System have chosen, but it is applicable to all of the CentOS droplets and Ubuntu versions below 15.04, not that I am running any [Ubuntu servers](/2014/08/03/operating-system-snob/).
+This process differs depending on the Operating System have chosen, but it is applicable to all of the CentOS droplets and Ubuntu versions below 15.04, not that I am running any [Ubuntu servers](/2014/08/03/am-i-an-operating-system-snob/).
