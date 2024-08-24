@@ -23,7 +23,7 @@ I have been reading a lot about CrewAI recently and as it was a long weekend I d
 
 About a year ago, while bored, I added a Python script to this blog which used the OpenAI API to write a blog post based on what I had listened to the previous week using data from [Last.FM](http://last.fm/user/RussMckendrick).
 
-The first of these posts [can be found here](/2023/05/22/what-did-i-listen-to-in-week-20/). 
+The first of these posts [can be found here](/2023/05/22/the-cure-dominates-my-week-a-deep-dive-into-post-punk-melancholy-and-gothic-rock/). 
 
 ## The Original Code
 
