@@ -1,5 +1,5 @@
 ---
-title: "What did I listen to in week 22?"
+title: "The Specials Take Center Stage: A Week of Ska-Punk Dominance in My Playlist"
 date: "2023-06-05"
 draft: false
 ShowRelated: false
@@ -8,7 +8,7 @@ cover:
     image: "/img/weekly-tunes-020.png"
     relative: false
     alt: "The Specials have been my top-played artist this week, according to LastFM data. Their raw energy and skank-worthy rhythms have had me hooked on their punk-infused lyrics"
-robotsNoIndex: true
+robotsNoIndex: false
 tags:
     - "Listened"
 ---

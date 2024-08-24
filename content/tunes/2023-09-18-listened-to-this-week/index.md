@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 37?"
+title: "Doves' Alt-Rock Soundscapes: Captivating Melodies with Emotional Depth"
 date: "2023-09-18"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Discover the captivating soundscapes of Doves, where alt-rock meets emotional depth. Their intricate melodies will resonate with your highs and lows!"
 cover:

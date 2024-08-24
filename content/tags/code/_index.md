@@ -2,7 +2,7 @@
 title: "Code 🐛"
 draft: false
 showToc: false
-robotsNoIndex: true
+robotsNoIndex: false
 ---
 
 All my posts about various bits of code and projects

@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 27?"
+title: "Prefab Sprout's Artistry Reigns: Eclectic Pop Mastery Defines My Week"
 date: "2023-07-10"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Prefab Sprout's soundscape captivated me this week, with their eclectic melodies ruling my playlist. Their artistic genius is undeniable."
 cover:

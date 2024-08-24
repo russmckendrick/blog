@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 24?"
+title: "Pet Shop Boys Reign: Synth-Pop Nostalgia Dominates My Weekly Playlist"
 date: "2023-06-19"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Embark on a sonic adventure this week with me! My LastFM stats reveal an obsession with the legendary Pet Shop Boys. Their catchy synth beats and memorable lyrics have captivated my ears."
 cover:

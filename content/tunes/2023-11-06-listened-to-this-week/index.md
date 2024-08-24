@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 44?"
+title: "Cardiacs' Eclectic Sound: Punk Meets Progressive Rock with Whimsical Vibes"
 date: "2023-11-06"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Embrace the eclectic sounds of Cardiacs, where punk meets progressive rock and whimsical vibes collide! Their dynamic rhythm will leave you captivated!"
 cover:

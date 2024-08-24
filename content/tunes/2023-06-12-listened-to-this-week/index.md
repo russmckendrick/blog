@@ -1,14 +1,14 @@
 ---
-title: "What did I listen to in week 23?"
+title: "James Dominates My Week: Indie Rock Melodies Soundtrack Daily Life"
 date: "2023-06-12"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
-Summary: James has been the soundtrack to my daily routine, according to LastFM data. Their melodious allure and harmonious rhythms have weaved themselves into my life
+Summary: "James has been the soundtrack to my daily routine, according to LastFM data. Their melodious allure and harmonious rhythms have weaved themselves into my life"
 cover:
     image: "/img/weekly-tunes-015.png"
     relative: false
-    alt: James has been the soundtrack to my daily routine, according to LastFM data. Their melodious allure and harmonious rhythms have weaved themselves into my life
+    alt: "James has been the soundtrack to my daily routine, according to LastFM data. Their melodious allure and harmonious rhythms have weaved themselves into my life"
 tags:
     - "Listened"
 ---

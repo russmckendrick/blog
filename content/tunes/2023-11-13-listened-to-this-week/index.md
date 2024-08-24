@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 45?"
+title: "The Who's Timeless Tunes: Rebellious Spirit and Lyrical Adventures in Rock"
 date: "2023-11-13"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Experience the rebellious spirit of The Who through their timeless tunes. Their lyrical adventures and captivating melodies will resonate with your inner rock fan!"
 cover:

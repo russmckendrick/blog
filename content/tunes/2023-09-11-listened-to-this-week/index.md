@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 36?"
+title: "Slowdive's Mesmerizing Ambient Melodies: A Sonic Escape to Tranquility"
 date: "2023-09-11"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Escape to a sonic dream with Slowdive's mesmerizing ambient melodies. Their hazy tunes will transport you to a calming atmosphere of sunsets and ocean breezes."
 cover:

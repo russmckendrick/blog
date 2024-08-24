@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 25?"
+title: "George Harrison's Solo Genius: Beatles Legend Tops My Weekly Playlist"
 date: "2023-06-26"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "George Harrison's sublime melodies ruled my speakers this week! "
 cover:

@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 00?"
+title: "Kate Bush's Ethereal Landscapes: Haunting Melodies and Avant-Garde Artistry"
 date: "2024-01-08"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Explore the ethereal landscapes of Kate Bush's music, where haunting melodies meet avant-garde artistry!"
 cover:

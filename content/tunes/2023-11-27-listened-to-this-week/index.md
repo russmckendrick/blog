@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 47?"
+title: "The Beat's Captivating Blend of Punk and Reggae: Energetic Rhythms to Move You"
 date: "2023-11-27"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Discover the captivating blend of punk and reggae in The Beat's music. Their rhythmic pulse will leave you energized and captivated!"
 cover:

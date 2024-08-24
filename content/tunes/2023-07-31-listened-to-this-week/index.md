@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 30?"
+title: "Jurassic 5's Old-School Revival: Hip-Hop Fusion Dominates Weekly Playlist"
 date: "2023-07-31"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Jurassic 5 ruled my playlist this week! Their fusion of old-school hip hop & melodies reign supreme, immerse yourself in their timeless tracks."
 cover:

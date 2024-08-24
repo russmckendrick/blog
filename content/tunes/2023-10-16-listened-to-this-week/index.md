@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 41?"
+title: "Roxy Music's Glam Rock World: Bold Style and Avant-Garde Compositions"
 date: "2023-10-16"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Experience the flamboyant world of glam rock with Roxy Music. Their captivating blend of bold style and avant-garde compositions will leave you captivated!"
 cover:

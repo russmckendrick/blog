@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 08?"
+title: "The Beatles' Timeless Magic: Iconic Anthems and Enduring Melodies"
 date: "2024-03-04"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Relive the timeless magic of The Beatles, where iconic anthems meet enduring melodies!"
 cover:

@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 03?"
+title: "They Might Be Giants: Quirky Brilliance with Catchy Melodies and Cerebral Lyrics"
 date: "2024-01-29"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Explore the quirky brilliance of They Might Be Giants, where catchy melodies meet cerebral lyrics and innovative charm!"
 cover:

@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 02?"
+title: "Carter the Unstoppable Sex Machine: Rhythmic Chaos of Punk and Electronic Wit"
 date: "2024-01-22"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Embrace the rhythmic chaos of Carter the Unstable Sex Machine, where punk meets electronic wit!"
 cover:

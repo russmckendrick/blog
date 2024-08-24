@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 10?"
+title: "Queen's Royal Brilliance: Iconic Riffs and Freddie Mercury's Unmatched Vocals"
 date: "2024-03-18"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Immerse yourself in the royal brilliance of Queen, where iconic riffs meet Freddie Mercury's"
 cover:

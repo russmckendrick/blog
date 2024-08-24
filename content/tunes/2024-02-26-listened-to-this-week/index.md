@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 07?"
+title: "The Who’s Electrifying Magic: Legendary Riffs and Timeless Anthems"
 date: "2024-02-26"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Relive the electrifying magic of The Who, where legendary riffs meet timeless anthems!"
 cover:

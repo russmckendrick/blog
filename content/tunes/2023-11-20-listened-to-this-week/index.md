@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 46?"
+title: "The Beatles' Nostalgic Journey: Timeless Melodies and Lyrical Brilliance"
 date: "2023-11-20"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Embark on a nostalgic journey with The Beatles. Their timeless melodies and lyrical brilliance will resonate with your inner music lover!"
 cover:
