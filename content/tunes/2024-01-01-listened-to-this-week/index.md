@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 52?"
+title: "Deacon Blue's Melodic Magic: Stirring Lyrics and Captivating Rhythms"
 date: "2024-01-01"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Experience the melodic magic of Deacon Blue, where stirring lyrics meet captivating rhythms!"
 cover:

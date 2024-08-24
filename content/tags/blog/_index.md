@@ -2,7 +2,7 @@
 title: "Blog 🤷‍♂️"
 draft: false
 showToc: false
-robotsNoIndex: true
+robotsNoIndex: false
 ---
 
 Some general Posts

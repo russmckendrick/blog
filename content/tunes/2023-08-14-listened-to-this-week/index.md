@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 32?"
+title: "Ride's Unique Sound Dominates My Playlist: A LastFM Data Insight"
 date: "2023-08-14"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Ride's addictive sound took over my speakers this week! 🎧💥 LastFM data reveals their unique style, shaping my soundtrack and altering my rhythm."
 cover:

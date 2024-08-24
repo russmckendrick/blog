@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 31?"
+title: "Alice in Chains Tops My LastFM Playlist with Grunge-Heavy Hits"
 date: "2023-08-07"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Alice in Chains' grunge-heavy fusion topped my LastFM playlist, with gritty vocals and evocative guitar riffs leading the charge."
 cover:

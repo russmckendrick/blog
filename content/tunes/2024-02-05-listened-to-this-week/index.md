@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 04?"
+title: "Electric Light Orchestra's Symphonic Rock Magic: Classical Arrangements Meet Rock Rhythms"
 date: "2024-02-05"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Immerse yourself in the symphonic rock magic of Electric Light Orchestra, where classical arrangements meet rock rhythms!"
 cover:

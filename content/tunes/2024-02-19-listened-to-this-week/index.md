@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 06?"
+title: "Pure Reason Revolution's Aural Tapestry Captivated My Musical Journey This Week"
 date: "2024-02-19"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Pure Reason Revolution's aural tapestry captivated my musical journey this week! "
 cover:

@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 51?"
+title: "David Bowie's Cosmic Journey: Innovative Soundscapes and Genre-Defying Hits"
 date: "2023-12-25"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Journey through the cosmos of David Bowie's music, where innovative soundscapes and genre-defying hits collide!"
 cover:

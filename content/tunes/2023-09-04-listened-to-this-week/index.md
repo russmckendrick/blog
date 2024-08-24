@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 35?"
+title: "The Jam's Timeless Punk-Rock Electrifies This Week's Playlist"
 date: "2023-09-04"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Experience the electrifying sounds of The Jam as they dominate this week's playlist. Their timeless punk-rock tunes will leave you captivated by their raw energy!"
 cover:

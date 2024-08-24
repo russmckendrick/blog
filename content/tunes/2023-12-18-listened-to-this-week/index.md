@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 50?"
+title: "Jesus Jones' High-Energy Vibes: Influential Sound and Intense Lyrics"
 date: "2023-12-18"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Embrace the high-energy vibes of Jesus Jones, where their influential sound meets intense lyrical prowess!"
 cover:

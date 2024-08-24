@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 33?"
+title: "Beatles' Tunes Dominate My Playlist: A Week Immersed in Beatlemania"
 date: "2023-08-21"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Beatles' tunes dominated my playlists this week, according to LastFM data. Harmonious melodies reassured and rebellious rhythms resounded, immersing me in a Beatlemania-steeped music week."
 cover:

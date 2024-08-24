@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 05?"
+title: "No-Man's Haunting Soundscapes: Ethereal Melodies and Introspective Lyrics Captured My Week"
 date: "2024-02-12"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Ethereal melodies & introspective lyrics captured my musical soul this week! Join me in embracing No-Man's haunting soundscapes"
 cover:

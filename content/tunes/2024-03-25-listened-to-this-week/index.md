@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 11?"
+title: "Marillion's Progressive Rock Realm: Intricate Melodies and Sonic Experimentation"
 date: "2024-03-25"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Journey into the progressive rock realm with Marillion, where intricate melodies meet sonic experimentation!"
 cover:

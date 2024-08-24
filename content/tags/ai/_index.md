@@ -2,7 +2,7 @@
 title: "AI 🤖"
 draft: false
 showToc: false
-robotsNoIndex: true
+robotsNoIndex: false
 ---
 
  All my posts about AI

@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 34?"
+title: "Rhiannon Giddens: Captivating Folk, Blues, and Country Narratives"
 date: "2023-08-28"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Explore the captivating narratives of Rhiannon Giddens, where folk meets blues and country. Her emotional melodies and striking lyrics will leave you captivated!"
 cover:

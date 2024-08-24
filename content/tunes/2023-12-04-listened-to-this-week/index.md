@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 48?"
+title: "Faith No More's Genre-Defying Brilliance: Rock Meets Funk and Experimental Beats"
 date: "2023-12-04"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Explore the genre-defying brilliance of Faith No More, where rock meets funk and experimental beats collide!"
 cover:

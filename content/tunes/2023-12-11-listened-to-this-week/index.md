@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 49?"
+title: "Stars' Indie-Pop Journey: Celestial Melodies to Captivate Your Senses"
 date: "2023-12-11"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Embark on an indie-pop journey with Stars, where their celestial melodies will captivate your senses!"
 cover:

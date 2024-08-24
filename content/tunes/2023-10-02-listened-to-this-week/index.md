@@ -1,10 +1,10 @@
 ---
-title: "What did I listen to in week 39?"
+title: "Depeche Mode's Synth-Pop Masterpieces: Timeless Allure and Captivating Rhythms"
 date: "2023-10-02"
 draft: false
 ShowRelated: false
 summary: "Immerse yourself in the timeless allure of Depeche Mode's synth-pop masterpieces. Their captivating rhythms will leave you captivated!"
-robotsNoIndex: true
+robotsNoIndex: false
 cover:
     image: "/img/weekly-tunes-023.png"
     relative: false

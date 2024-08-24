@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 40?"
+title: "Pink Floyd's Psychedelic Realms: Timeless Compositions in an Ethereal Sonic Universe"
 date: "2023-10-09"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Explore the mesmerizing psychedelic realms of Pink Floyd. Their timeless compositions will transport you to an ethereal sonic universe"
 cover:

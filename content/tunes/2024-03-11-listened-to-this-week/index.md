@@ -1,8 +1,8 @@
 ---
-title: "What did I listen to in week 09?"
+title: "Amplifier's Electrifying Journey: Innovative Riffs and Expansive Soundscapes"
 date: "2024-03-11"
 draft: false
-robotsNoIndex: true
+robotsNoIndex: false
 ShowRelated: false
 summary: "Embark on an electrifying journey with Amplifier, where innovative riffs meet expansive soundscapes!"
 cover:
