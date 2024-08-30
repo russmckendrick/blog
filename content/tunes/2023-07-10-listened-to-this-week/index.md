@@ -55,7 +55,7 @@ P.S: Special mention to my coffee ☕, which kept me alive to listen to all thes
 - [Anathema](https://www.russ.fm/artist/anathema/) (10 plays)
 - [Pearl Jam](https://www.russ.fm/artist/pearl-jam/) (10 plays)
 - [Portishead](https://www.russ.fm/artist/portishead/) (10 plays)
-- [Jane's Addiction](https://www.russ.fm/artist/janes-addiction/) (8 plays)
+- [Jane's Addiction](https://www.russ.fm/artist/jane-s-addiction/) (8 plays)
 - [U2](https://www.russ.fm/artist/u2/) (8 plays)
 - [The Style Council](https://www.russ.fm/artist/the-style-council/) (6 plays)
 - [Genesis](https://www.russ.fm/artist/genesis/) (5 plays)

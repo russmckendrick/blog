@@ -74,7 +74,7 @@ Catch ya on the flip side!
 - [Cake](https://www.russ.fm/artist/cake/) (11 plays)
 - [Paul Simon](https://www.russ.fm/artist/paul-simon/) (11 plays)
 - [The Black Crowes](https://www.russ.fm/artist/the-black-crowes/) (10 plays)
-- [Sigur Rós](https://www.russ.fm/artist/sigur-r%C3%B3s/) (8 plays)
+- [Sigur Rós](https://www.russ.fm/artist/sigur-rs/) (8 plays)
 - [Steven Wilson](https://www.russ.fm/artist/steven-wilson/) (8 plays)
 - [Radiohead](https://www.russ.fm/artist/radiohead/) (3 plays)
 

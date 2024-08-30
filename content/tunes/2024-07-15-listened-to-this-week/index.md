@@ -364,9 +364,9 @@ Join me next week as we unearth more hidden gems from the music world! 🌍🎧
 
 - [Depeche Mode](https://www.russ.fm/artist/depeche-mode/) (30 plays)
 - [Elvis Costello & The Attractions](https://www.russ.fm/artist/elvis-costello-the-attractions/) (17 plays)
-- [Ned's Atomic Dustbin](https://www.russ.fm/artist/neds-atomic-dustbin/) (13 plays)
+- [Ned's Atomic Dustbin](https://www.russ.fm/artist/ned-s-atomic-dustbin/) (13 plays)
 - [Amplifier](https://www.russ.fm/artist/amplifier/) (11 plays)
-- [The B-52's](https://www.russ.fm/artist/the-b-52s/) (10 plays)
+- [The B-52's](https://www.russ.fm/artist/the-b-52-s/) (10 plays)
 - [Jesus Jones](https://www.russ.fm/artist/jesus-jones/) (9 plays)
 - [Bill Withers](https://www.russ.fm/artist/bill-withers/) (7 plays)
 - [Radiohead](https://www.russ.fm/artist/radiohead/) (6 plays)

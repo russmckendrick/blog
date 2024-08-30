@@ -361,7 +361,7 @@ Whether you’re a long-time fan or exploring Tears for Fears for the first time
 - [Rancid](https://www.russ.fm/artist/rancid/) (19 plays)
 - [Faith No More](https://www.russ.fm/artist/faith-no-more/) (15 plays)
 - [The Selecter](https://www.russ.fm/artist/the-selecter/) (15 plays)
-- [Ned's Atomic Dustbin](https://www.russ.fm/artist/neds-atomic-dustbin/) (13 plays)
+- [Ned's Atomic Dustbin](https://www.russ.fm/artist/ned-s-atomic-dustbin/) (13 plays)
 - [Senser](https://www.russ.fm/artist/senser/) (13 plays)
 - [Stars](https://www.russ.fm/artist/stars/) (13 plays)
 - [Del Amitri](https://www.russ.fm/artist/del-amitri/) (12 plays)

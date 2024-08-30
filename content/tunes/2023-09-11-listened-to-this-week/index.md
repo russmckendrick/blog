@@ -60,7 +60,7 @@ Happy listening and let the music play on! 🎵🖖🏼
 - Orchestral Manoeuvres in the Dark (15 plays)
 - [Super Furry Animals](https://www.russ.fm/artist/super-furry-animals/) (14 plays)
 - [Kate Bush](https://www.russ.fm/artist/kate-bush/) (12 plays)
-- [Sigur Rós](https://www.russ.fm/artist/sigur-r%C3%B3s/) (10 plays)
+- [Sigur Rós](https://www.russ.fm/artist/sigur-rs/) (10 plays)
 - [Therapy?](https://www.russ.fm/artist/therapy/) (9 plays)
 - [Depeche Mode](https://www.russ.fm/artist/depeche-mode/) (8 plays)
 - [Public Service Broadcasting](https://www.russ.fm/artist/public-service-broadcasting/) (8 plays)

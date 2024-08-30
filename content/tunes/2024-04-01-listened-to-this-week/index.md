@@ -300,7 +300,7 @@ Celebrating its 30th anniversary, "Jar of Flies" has seen special reissues that 
 ## Top Artists (Week 12)
 
 - Orchestral Manoeuvres in the Dark (40 plays)
-- [Mr. Scruff](https://www.russ.fm/artist/mr.-scruff/) (18 plays)
+- [Mr. Scruff](https://www.russ.fm/artist/mr-scruff/) (18 plays)
 - [Zwan](https://www.russ.fm/artist/zwan/) (15 plays)
 - [Thundercat](https://www.russ.fm/artist/thundercat/) (14 plays)
 - [The Beach Boys](https://www.russ.fm/artist/the-beach-boys/) (13 plays)

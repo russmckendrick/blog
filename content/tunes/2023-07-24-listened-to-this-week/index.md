@@ -50,7 +50,7 @@ Stay tuned for next week's musical journey. Who knows what unforeseen auditory t
 - [Radiohead](https://www.russ.fm/artist/radiohead/) (39 plays)
 - [Moby](https://www.russ.fm/artist/moby/) (14 plays)
 - [Tori Amos](https://www.russ.fm/artist/tori-amos/) (14 plays)
-- [Ned's Atomic Dustbin](https://www.russ.fm/artist/neds-atomic-dustbin/) (13 plays)
+- [Ned's Atomic Dustbin](https://www.russ.fm/artist/ned-s-atomic-dustbin/) (13 plays)
 - [Teenage Fanclub](https://www.russ.fm/artist/teenage-fanclub/) (12 plays)
 - [Steven Wilson](https://www.russ.fm/artist/steven-wilson/) (9 plays)
 - [Simple Minds](https://www.russ.fm/artist/simple-minds/) (8 plays)

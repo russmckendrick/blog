@@ -62,7 +62,7 @@ Ciao, catch you in my next 'sound-opia'!👋🎶
 - [The Dears](https://www.russ.fm/artist/the-dears/) (10 plays)
 - [Simple Minds](https://www.russ.fm/artist/simple-minds/) (6 plays)
 - [Kate Bush](https://www.russ.fm/artist/kate-bush/) (1 plays)
-- [Ned's Atomic Dustbin](https://www.russ.fm/artist/neds-atomic-dustbin/) (1 plays)
+- [Ned's Atomic Dustbin](https://www.russ.fm/artist/ned-s-atomic-dustbin/) (1 plays)
 
 
 ## Top Albums (Week 40)

@@ -350,7 +350,7 @@ As we look back on the impact of "Quadrophenia," it's clear that its legacy is n
 
 ## Top Artists (Week 13)
 
-- [Dr. Feelgood](https://www.russ.fm/artist/dr.-feelgood/) (26 plays)
+- [Dr. Feelgood](https://www.russ.fm/artist/dr-feelgood/) (26 plays)
 - [Manic Street Preachers](https://www.russ.fm/artist/manic-street-preachers/) (20 plays)
 - [The Police](https://www.russ.fm/artist/the-police/) (16 plays)
 - [Del Amitri](https://www.russ.fm/artist/del-amitri/) (12 plays)
@@ -359,7 +359,7 @@ As we look back on the impact of "Quadrophenia," it's clear that its legacy is n
 - [INXS](https://www.russ.fm/artist/inxs/) (11 plays)
 - Levellers (11 plays)
 - [The Smashing Pumpkins](https://www.russ.fm/artist/the-smashing-pumpkins/) (11 plays)
-- [Jane's Addiction](https://www.russ.fm/artist/janes-addiction/) (10 plays)
+- [Jane's Addiction](https://www.russ.fm/artist/jane-s-addiction/) (10 plays)
 - Tears for Fears (9 plays)
 - [The Who](https://www.russ.fm/artist/the-who/) (3 plays)
 

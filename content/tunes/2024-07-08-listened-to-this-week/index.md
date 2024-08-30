@@ -211,7 +211,7 @@ The release of "Second Toughest in the Infants" solidified Underworld’s reputa
 - [Talking Heads](https://www.russ.fm/artist/talking-heads/) (18 plays)
 - [The Smashing Pumpkins](https://www.russ.fm/artist/the-smashing-pumpkins/) (13 plays)
 - [A Perfect Circle](https://www.russ.fm/artist/a-perfect-circle/) (12 plays)
-- [R.E.M.](https://www.russ.fm/artist/r.e.m./) (12 plays)
+- [R.E.M.](https://www.russ.fm/artist/r-e-m/) (12 plays)
 - [Bruce Springsteen](https://www.russ.fm/artist/bruce-springsteen/) (8 plays)
 - [Underworld](https://www.russ.fm/artist/underworld/) (8 plays)
 

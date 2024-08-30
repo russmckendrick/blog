@@ -56,7 +56,7 @@ Keep playing, keep exploring! 🎵✨
 - [The Who](https://www.russ.fm/artist/the-who/) (17 plays)
 - [Longpigs](https://www.russ.fm/artist/longpigs/) (12 plays)
 - [New Order](https://www.russ.fm/artist/new-order/) (12 plays)
-- [Sultans Of Ping F.C.](https://www.russ.fm/artist/sultans-of-ping-f.c./) (12 plays)
+- [Sultans Of Ping F.C.](https://www.russ.fm/artist/sultans-of-ping-f-c/) (12 plays)
 - [Peeping Tom](https://www.russ.fm/artist/peeping-tom/) (11 plays)
 - [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (9 plays)
 - [Easy Star All-Stars](https://www.russ.fm/artist/easy-star-all-stars/) (8 plays)
