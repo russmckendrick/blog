@@ -75,7 +75,7 @@ Russ 🎸
 - [Hefner](https://www.russ.fm/artist/hefner/) (24 plays)
 - [Gene](https://www.russ.fm/artist/gene/) (22 plays)
 - [Suede](https://www.russ.fm/artist/suede/) (21 plays)
-- [AC/DC](https://www.russ.fm/artist/ac/dc/) (20 plays)
+- [AC/DC](https://www.russ.fm/artist/ac-dc/) (20 plays)
 - [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (18 plays)
 - [Buzzcocks](https://www.russ.fm/artist/buzzcocks/) (16 plays)
 - [The Slackers](https://www.russ.fm/artist/the-slackers/) (13 plays)

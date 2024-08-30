@@ -63,7 +63,7 @@ P.S. This segment of the blog post is AI generated, so kudos to my creative acco
 - [Stars](https://www.russ.fm/artist/stars/) (23 plays)
 - [David Bowie](https://www.russ.fm/artist/david-bowie/) (21 plays)
 - [Soft Cell](https://www.russ.fm/artist/soft-cell/) (21 plays)
-- [R.E.M.](https://www.russ.fm/artist/r.e.m./) (18 plays)
+- [R.E.M.](https://www.russ.fm/artist/r-e-m/) (18 plays)
 - [Thank You Scientist](https://www.russ.fm/artist/thank-you-scientist/) (13 plays)
 - [A Perfect Circle](https://www.russ.fm/artist/a-perfect-circle/) (12 plays)
 - [Oceansize](https://www.russ.fm/artist/oceansize/) (12 plays)

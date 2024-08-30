@@ -367,7 +367,7 @@ In reflecting on "So," it's clear that Peter Gabriel didn't just make an album; 
 
 - [Kirsty MacColl](https://www.russ.fm/artist/kirsty-maccoll/) (24 plays)
 - [Bruce Springsteen](https://www.russ.fm/artist/bruce-springsteen/) (18 plays)
-- [R.E.M.](https://www.russ.fm/artist/r.e.m./) (18 plays)
+- [R.E.M.](https://www.russ.fm/artist/r-e-m/) (18 plays)
 - [James](https://www.russ.fm/artist/james/) (12 plays)
 - Spear of Destiny (12 plays)
 - [Simple Minds](https://www.russ.fm/artist/simple-minds/) (8 plays)

@@ -64,7 +64,7 @@ Peace out and rock on,
 - [The Police](https://www.russ.fm/artist/the-police/) (16 plays)
 - [Faith No More](https://www.russ.fm/artist/faith-no-more/) (13 plays)
 - [INXS](https://www.russ.fm/artist/inxs/) (13 plays)
-- [Björk](https://www.russ.fm/artist/bj%C3%B6rk/) (11 plays)
+- [Björk](https://www.russ.fm/artist/bjrk/) (11 plays)
 - [Primal Scream](https://www.russ.fm/artist/primal-scream/) (11 plays)
 - [Prince](https://www.russ.fm/artist/prince/) (11 plays)
 - [The Decemberists](https://www.russ.fm/artist/the-decemberists/) (11 plays)

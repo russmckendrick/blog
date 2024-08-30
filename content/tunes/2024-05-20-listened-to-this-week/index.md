@@ -345,7 +345,7 @@ Gary Numan's legacy is carved not only in his records but also in the impact he 
 - [Pearl Jam](https://www.russ.fm/artist/pearl-jam/) (12 plays)
 - [Field Music](https://www.russ.fm/artist/field-music/) (11 plays)
 - [Pink Floyd](https://www.russ.fm/artist/pink-floyd/) (11 plays)
-- [R.E.M.](https://www.russ.fm/artist/r.e.m./) (11 plays)
+- [R.E.M.](https://www.russ.fm/artist/r-e-m/) (11 plays)
 - [Blancmange](https://www.russ.fm/artist/blancmange/) (10 plays)
 - [The The](https://www.russ.fm/artist/the-the/) (7 plays)
 - [Gary Numan](https://www.russ.fm/artist/gary-numan/) (3 plays)

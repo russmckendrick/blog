@@ -386,7 +386,7 @@ Don't forget to follow the blog for more album reviews, artist spotlights, and a
 - [The Slackers](https://www.russ.fm/artist/the-slackers/) (12 plays)
 - [Paul Simon](https://www.russ.fm/artist/paul-simon/) (11 plays)
 - [John Farnham](https://www.russ.fm/artist/john-farnham/) (10 plays)
-- [St. Vincent](https://www.russ.fm/artist/st.-vincent/) (10 plays)
+- [St. Vincent](https://www.russ.fm/artist/st-vincent/) (10 plays)
 - [U2](https://www.russ.fm/artist/u2/) (10 plays)
 - [Talk Talk](https://www.russ.fm/artist/talk-talk/) (9 plays)
 - [Vennart](https://www.russ.fm/artist/vennart/) (8 plays)

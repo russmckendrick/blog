@@ -388,7 +388,7 @@ In revisiting 'Brainbloodvolume', listeners are reminded of the dynamic and tran
 - [Pixies](https://www.russ.fm/artist/pixies/) (23 plays)
 - [Easy Star All-Stars](https://www.russ.fm/artist/easy-star-all-stars/) (20 plays)
 - [Orville Peck](https://www.russ.fm/artist/orville-peck/) (15 plays)
-- [Jane's Addiction](https://www.russ.fm/artist/janes-addiction/) (14 plays)
+- [Jane's Addiction](https://www.russ.fm/artist/jane-s-addiction/) (14 plays)
 - [Beck](https://www.russ.fm/artist/beck/) (13 plays)
 - [Cassandra Jenkins](https://www.russ.fm/artist/cassandra-jenkins/) (13 plays)
 - [INXS](https://www.russ.fm/artist/inxs/) (12 plays)

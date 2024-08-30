@@ -68,7 +68,7 @@ P.S.: Make sure to dial up Deacon Blue if you haven't yet—your ears will thank
 - [Radiohead](https://www.russ.fm/artist/radiohead/) (23 plays)
 - [Gene](https://www.russ.fm/artist/gene/) (22 plays)
 - [Erasure](https://www.russ.fm/artist/erasure/) (20 plays)
-- [Dinosaur Jr.](https://www.russ.fm/artist/dinosaur-jr./) (19 plays)
+- [Dinosaur Jr.](https://www.russ.fm/artist/dinosaur-jr/) (19 plays)
 - Tom Petty and The Heartbreakers (19 plays)
 - [Bruce Springsteen](https://www.russ.fm/artist/bruce-springsteen/) (18 plays)
 - [Crowded House](https://www.russ.fm/artist/crowded-house/) (14 plays)

@@ -70,7 +70,7 @@ Catch up with my music extravaganza on [Last.fm](https://www.last.fm/user/RussMc
 - [Radiohead](https://www.russ.fm/artist/radiohead/) (13 plays)
 - [David Bowie](https://www.russ.fm/artist/david-bowie/) (11 plays)
 - [Matt Berry](https://www.russ.fm/artist/matt-berry/) (11 plays)
-- [R.E.M.](https://www.russ.fm/artist/r.e.m./) (11 plays)
+- [R.E.M.](https://www.russ.fm/artist/r-e-m/) (11 plays)
 - [Van Halen](https://www.russ.fm/artist/van-halen/) (11 plays)
 - [John Farnham](https://www.russ.fm/artist/john-farnham/) (10 plays)
 - [Genesis](https://www.russ.fm/artist/genesis/) (9 plays)
