@@ -387,7 +387,7 @@ In summary, "Amplifier" is more than just an album; it's a journey through the c
 
 ## Top Artists (Week 34)
 
-- Carter the Unstoppable Sex Machine (21 plays)
+- [Carter the Unstoppable Sex Machine](https://www.russ.fm/artist/carter-the-unstoppable-sex-machine/)](21 plays)
 - [Crowded House](https://www.russ.fm/artist/crowded-house/) (19 plays)
 - [Genesis](https://www.russ.fm/artist/genesis/) (18 plays)
 - [Frost*](https://www.russ.fm/artist/frost/) (16 plays)
@@ -398,23 +398,21 @@ In summary, "Amplifier" is more than just an album; it's a journey through the c
 - [Nine Inch Nails](https://www.russ.fm/artist/nine-inch-nails/) (14 plays)
 - [Flowered Up](https://www.russ.fm/artist/flowered-up/) (12 plays)
 - [Peter Gabriel](https://www.russ.fm/artist/peter-gabriel/) (12 plays)
-- The Frank and Walters (11 plays)
-
+- [The Frank and Walters](https://www.russ.fm/artist/the-frank-and-walters/) (11 plays)
 
 ## Top Albums (Week 34)
 
-- Post Historic Monsters by Carter the Unstoppable Sex Machine
-- The Very Very Best of Crowded House by Crowded House
+- [Post Historic Monsters](https://www.russ.fm/albums/post-historic-monsters-31545799/) by Carter the Unstoppable Sex Machine
+- [The Very Very Best of Crowded House](https://www.russ.fm/albums/the-very-very-best-of-crowded-house-13782819/) by Crowded House
 - [Day And Age](https://www.russ.fm/albums/day-and-age-18819115/) by Frost*
-- Some Furtive Years: a Ned's Anthology by Ned's Atomic Dustbin
+- [Some Furtive Years: a Ned's Anthology](https://www.russ.fm/albums/some-furtive-years-a-ned-s-anthology-31586179/) by Ned's Atomic Dustbin
 - [Bubblegum XX](https://www.russ.fm/albums/bubblegum-xx-31551316/) by Mark Lanegan Band
 - The Cure: Greatest Hits by The Cure
-- Mary Star of the Sea by Zwan
+- [Mary Star of the Sea](https://www.russ.fm/albums/mary-star-of-the-sea-892155/) by Zwan
 - [The Downward Spiral](https://www.russ.fm/albums/the-downward-spiral-1475731/) by Nine Inch Nails
 - [A Life With Brian](https://www.russ.fm/albums/a-life-with-brian-30439004/) by Flowered Up
 - [Scratch My Back](https://www.russ.fm/albums/scratch-my-back-2290486/) by Peter Gabriel
-- Trains, Boats and Planes by The Frank and Walters
+- [Trains, Boats and Planes](https://www.russ.fm/albums/trains-boats-and-planes-1208911/) by The Frank and Walters
 - [Amplifier](https://www.russ.fm/albums/amplifier-9479697/) by Amplifier
-
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}
