@@ -289,20 +289,19 @@ This section of the blog post aims to not only introduce the album and its creat
 - [David Gilmour](https://www.russ.fm/artist/david-gilmour/) (9 plays)
 - [Pure Reason Revolution](https://www.russ.fm/artist/pure-reason-revolution/) (8 plays)
 - [Split Enz](https://www.russ.fm/artist/split-enz/) (4 plays)
-- Basic, Chris Forsyth, Nick Millevoi & Mikel Patrick Avery (1 plays)
+- [Basic](https://www.russ.fm/artist/basic/) (1 plays)
 
 
 ## Top Albums (Week 35)
 
-- The Best of Chapterhouse by Chapterhouse
+- T[he Best of Chapterhouse](https://www.russ.fm/albums/the-best-of-chapterhouse-14377153/) by Chapterhouse
 - [We Can't Dance](https://www.russ.fm/albums/we-can-t-dance-12652409/) by Genesis
-- Hounds of Love by Kate Bush
+- [Hounds of Love](https://www.russ.fm/albums/hounds-of-love-19605145/) by Kate Bush
 - [Ensoulment](https://www.russ.fm/albums/ensoulment-31668308/) by The The
-- The Dark Side of the Moon by Pink Floyd
-- Luck and Strange by David Gilmour
+- [The Dark Side of the Moon](https://www.russ.fm/albums/the-dark-side-of-the-moon-30414329/) by Pink Floyd
+- [Luck and Strange](https://www.russ.fm/albums/luck-and-strange-31657538/) by David Gilmour
 - [Coming Up To Consciousness](https://www.russ.fm/albums/coming-up-to-consciousness-31683545/) by Pure Reason Revolution
-- Dizrythmia (2020 Remaster) by Split Enz
-- This Is BASIC by Basic, Chris Forsyth, Nick Millevoi & Mikel Patrick Avery
-
+- [Dizrythmia (2020 Remaster)](https://www.russ.fm/albums/dizrythmia-15348573/) by Split Enz
+- [This Is BASIC](https://www.russ.fm/albums/this-is-basic-31558960/) by Basic
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}
