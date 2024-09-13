@@ -452,27 +452,38 @@ def generate_blog_post(top_artists, top_albums, collection_info, week_start, wee
     date_str_start = week_end.strftime('%Y-%m-%d')
     week_number = week_start.strftime('%U')
     post_folder = f"content/tunes/{date_str_start}-listened-to-this-week"
-    os.makedirs(post_folder, exist_ok=True)  # Create blog post directory
+    os.makedirs(post_folder, exist_ok=True)
     albums_folder = os.path.join(post_folder, "albums")
     artists_folder = os.path.join(post_folder, "artists")
-    os.makedirs(albums_folder, exist_ok=True)  # Create albums directory
-    os.makedirs(artists_folder, exist_ok=True)  # Create artists directory
+    os.makedirs(albums_folder, exist_ok=True)
+    os.makedirs(artists_folder, exist_ok=True)
     filename = os.path.join(post_folder, "index.md")
+    
+    # Separate artist and album info
     artist_info = {artist: data for artist, data in collection_info.items() if not isinstance(artist, tuple)}
     album_info = {key: data for key, data in collection_info.items() if isinstance(key, tuple)}
 
+    # Process top artists
     for artist, _ in top_artists:
-        artist_data = artist_info.get(artist)
-        if artist_data:
-            artist_image_url = artist_data.get('artist_image')
+        max_ratio = 0
+        best_match = None
+        for key, data in artist_info.items():
+            ratio = fuzz.ratio(artist.lower(), key.lower())
+            if ratio > max_ratio:
+                max_ratio = ratio
+                best_match = data
+        
+        if best_match:
+            artist_image_url = best_match.get('artist_image')
             if artist_image_url:
                 download_image(artist_image_url, artists_folder, artist)
 
+    # Process top albums
     for (artist, album), _ in top_albums:
         max_ratio = 0
         best_match = None
         for key, data in album_info.items():
-            if key[0] == artist:
+            if fuzz.ratio(artist.lower(), key[0].lower()) > 80:  # Only consider albums by the same artist
                 ratio = fuzz.ratio(album.lower(), key[1].lower())
                 if ratio > max_ratio:
                     max_ratio = ratio
@@ -498,13 +509,40 @@ def generate_blog_post(top_artists, top_albums, collection_info, week_start, wee
     blog_post = "\n\n".join(blog_post_sections)
 
     random_number = generate_random_number()
+    
+    # Update artist_info and album_info with fuzzy matched data
+    updated_artist_info = {}
+    for artist, _ in top_artists:
+        max_ratio = 0
+        best_match = None
+        for key, data in artist_info.items():
+            ratio = fuzz.ratio(artist.lower(), key.lower())
+            if ratio > max_ratio:
+                max_ratio = ratio
+                best_match = data
+        if best_match:
+            updated_artist_info[artist] = best_match
+
+    updated_album_info = {}
+    for (artist, album), _ in top_albums:
+        max_ratio = 0
+        best_match = None
+        for key, data in album_info.items():
+            if fuzz.ratio(artist.lower(), key[0].lower()) > 80:
+                ratio = fuzz.ratio(album.lower(), key[1].lower())
+                if ratio > max_ratio:
+                    max_ratio = ratio
+                    best_match = data
+        if best_match:
+            updated_album_info[(artist, album)] = best_match
+
     context = {
         'date': date_str_start,
         'week_number': week_number,
         'top_artists': top_artists,
-        'artist_info': artist_info,
+        'artist_info': updated_artist_info,
         'top_albums': top_albums,
-        'album_info': album_info,
+        'album_info': updated_album_info,
         'title': title,
         'summary': summary,
         'blog_post': blog_post,
