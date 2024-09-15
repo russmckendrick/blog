@@ -19,6 +19,27 @@ keywords:
   - "Amazon Web Services"
 ---
 
+If like me you have been guilty of hard coding all of your network configuration in Ansible variables like this ...
+
+{{< ide title="Something here" lang="YAML" >}}
+```yaml {linenos=true}
+  vars:
+    network:
+      full_range: "10.0.0.0/24"
+      subnets:
+        - name: "subnet1"
+          address_range: "10.0.0.0/27"
+        - name: "subnet2"
+          address_range: "10.0.0.32/27"
+        - name: "subnet3"
+          address_range: "10.0.0.64/27"
+        - name: "subnet4"
+          address_range: "10.0.0.96/27"
+```
+{{< /ide >}}<br>
+
+... then this post is for you. Not that I am saying that is wrong, but it does mean if you want to the network range you are using them you also have to update it in four other places.
+
 ## Working with Networks dynamically in Ansible
 
 ### A Basic Playbook
