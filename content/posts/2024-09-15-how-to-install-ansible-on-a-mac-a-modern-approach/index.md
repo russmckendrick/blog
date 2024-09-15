@@ -3,7 +3,7 @@ title: "How to Install Ansible on a Mac: A Modern Approach"
 author: "Russ McKendrick"
 date: 2024-09-15T11:15:29+01:00
 description: "A guide to installing and managing Ansible on macOS using Conda, with tips for handling collections and dependencies."
-draft: true
+draft: false
 showToc: true
 cover:
     image: "cover.png"
