@@ -387,14 +387,14 @@ Jon Hopkins' "Ritual" is more than just an album; it's an experience, a journey,
 
 ## Top Albums (Week 36)
 
-- [Definitely Maybe](https://www.russ.fm/albums/definitely-maybe-5697791/) by Oasis
+- [Definitely Maybe](https://www.russ.fm/albums/definitely-maybe-31592299/) by Oasis
 - [All The Old 45s - The Very Best Of Deacon Blue](https://www.russ.fm/albums/all-the-old-45s-the-very-best-of-deacon-blue-28160602/) by Deacon Blue
 - [Secret World Live](https://www.russ.fm/albums/secret-world-live-16094641/) by Peter Gabriel
 - [Noble Beast](https://www.russ.fm/albums/noble-beast-1638537/) by Andrew Bird
 - [Fashion Nugget](https://www.russ.fm/albums/fashion-nugget-15007936/) by Cake
 - [Dirt](https://www.russ.fm/albums/dirt-2055654/) by Alice in Chains
 - [Heathen](https://www.russ.fm/albums/heathen-3285687/) by David Bowie
-- [Innuendo](https://www.russ.fm/albums/the-platinum-collection-23601854/) by Queen
+- [Innuendo](https://www.russ.fm/albums/studio-collection-7554390/) by Queen
 - [Some Cities](https://www.russ.fm/albums/some-cities-13701527/) by Doves
 - [The Argument](https://www.russ.fm/albums/the-argument-31394765/) by Fugazi
 - [Hand. Cannot. Erase.](https://www.russ.fm/albums/hand-cannot-erase-6678914/) by Steven Wilson
