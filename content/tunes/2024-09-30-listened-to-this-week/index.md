@@ -8,7 +8,7 @@ robotsNoIndex: false
 showToc: true
 ShowRelated: false
 cover:
-    image: "/img/weekly-tunes-002.png"
+    image: "/img/weekly-tunes-007.png"
     relative: false
     alt: "Explore week 38s top music hits, featuring Genesis, U2, and Blur plus albums from Fleetwood Mac to King Crimson."
 tags:
