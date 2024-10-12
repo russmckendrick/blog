@@ -1,0 +1,8 @@
+<div class="container">
+    <audio controls style="width: 100%; margin-bottom: 20px">
+        {{ with .Get "wav" }}<source type="audio/wav" src="{{ . }}">{{ end }}
+        {{ with .Get "ogg" }}<source type="audio/ogg" src="{{ . }}">{{ end }}
+        {{ with .Get "mp3" }}<source type="audio/mpeg" src="{{ . }}">{{ end }}
+        Your browser does not support the audio element.
+    </audio>
+</div>
