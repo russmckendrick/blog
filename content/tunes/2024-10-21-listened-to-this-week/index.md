@@ -326,30 +326,6 @@ Listeners and critics have noted that the middle section of the album, particula
 
 In conclusion, "The Demon Joke" by Vennart is not just an album; it's a journey through the artistic soul of Mike Vennart, delivered with passion and precision. It's definitely a recommended listen for those who appreciate music that pushes boundaries while staying true to its emotional core. 🌈🎧
 
-## Neil Young & Crazy Horse: A Legacy of Raw, Unfiltered Rock 🎸
-
-Neil Young, a venerable icon of rock and folk music, has carved an indelible mark on the music landscape alongside his sporadic yet significant collaborators, Crazy Horse. This ensemble, known for its rugged style and unpolished vigor, has been instrumental in crafting some of the most enduring songs in Neil Young’s expansive catalog. Here’s a dive into what could be considered their "greatest hits", painting a sonic picture of their collective genius.
-
-### Early Beginnings and Iconic Albums 🌟
-Neil Young first teamed up with Crazy Horse for his second studio album, "Everybody Knows This Is Nowhere" in 1969, a record that is foundational to the garage rock and grunge genres that would follow decades later. Songs like "Cinnamon Girl", "Down by the River", and "Cowgirl in the Sand" not only defined Young's early sound but also showcased the raw chemistry between Neil and Crazy Horse.
-
-### 1970s: The Golden Era 📀
-The 1970s saw Neil Young and Crazy Horse produce some of their most influential work. The 1975 album "Zuma" is particularly noteworthy, with tracks like "Cortez the Killer" and "Through My Sails" highlighting the band’s ability to blend melodic harmonies with gritty guitar work. This period solidified their reputation, with the music resonating through the raw emotional depth and the band's characteristic loose playstyle.
-
-### The 90s Resurgence 🔥
-After a period of experimentation and different collaborations in the 80s, Neil Young returned to his roots with Crazy Horse with the 1990 album "Ragged Glory", a powerhouse of rock that rekindled interest in both Young and the band. The track "Fuckin' Up" is a quintessential Crazy Horse song — loud, rambling, and bristling with energy. This era reminded fans of the band’s ability to capture the spontaneous spirit of rock music.
-
-### Live Performances and Recent Years 🎤
-Neil Young and Crazy Horse are also known for their electrifying live performances. Albums like "Live Rust" and "Weld" capture the essence of their live sound, with extended jams and raw renditions of their studio tracks. More recently, the album "Colorado" (2019) marked another chapter in their collaboration, proving that the ensemble has lost none of its original fire and intensity.
-
-### Enduring Influence and Musical Legacy 🎶
-What sets Neil Young & Crazy Horse apart is their ability to convey profound emotional truths through a blend of simple lyrics and rugged instrumentation. Their music, characterized by its lack of polish but brimming with soul, has influenced countless musicians and bands from Nirvana to Pearl Jam, who cite Young and his frequent collaborators as seminal influences.
-
-### Conclusion: A Rock and Roll Journey 🌈
-While a dedicated "Greatest Hits by Neil Young & Crazy Horse" album may not exist, the body of work they have created together over the years is a testament to their significant impact on rock music. Each album and track tells a story, a piece of a larger mosaic that represents decades of musical innovation and heartfelt storytelling. For fans old and new, Neil Young and Crazy Horse's music remains a beacon of authenticity in a world of ever-changing musical landscapes.
-
-This exploration into the heart of Neil Young & Crazy Horse’s music is not just about revisiting the hits but appreciating the timeless quality of their work that continues to inspire and resonate with listeners around the globe. Whether you’re a long-time fan or a newcomer to their music, the journey through Neil Young and Crazy Horse’s discography is a profoundly rewarding experience. 🎵🌎
-
 ## Top Artists (Week 41)
 
 - [New Order](https://www.russ.fm/artist/new-order/) (21 plays)
@@ -363,8 +339,6 @@ This exploration into the heart of Neil Young & Crazy Horse’s music is not jus
 - [Nine Inch Nails](https://www.russ.fm/artist/nine-inch-nails/) (9 plays)
 - [U2](https://www.russ.fm/artist/u2/) (9 plays)
 - [Vennart](https://www.russ.fm/artist/vennart/) (6 plays)
-- [Neil Young & Crazy Horse](https://www.russ.fm/artist/neil-young/) (4 plays)
-
 
 ## Top Albums (Week 41)
 
@@ -375,11 +349,9 @@ This exploration into the heart of Neil Young & Crazy Horse’s music is not jus
 - [Greatest Hits](https://www.russ.fm/albums/greatest-hits-2406602/) by Neil Young
 - [Five Leaves Left](https://www.russ.fm/albums/five-leaves-left-4968730/) by Nick Drake
 - [Everyone Into Position](https://www.russ.fm/albums/everyone-into-position-1460942/) by Oceansize
-- Psalm 69: The Way to Succeed and the Way to Suck Eggs by Ministry
+- [Psalm 69: The Way to Succeed and the Way to Suck Eggs by Ministry](https://www.russ.fm/albums/3490956/)
 - [Pretty Hate Machine](https://www.russ.fm/albums/pretty-hate-machine-3004371/) by Nine Inch Nails
 - [Achtung Baby](https://www.russ.fm/albums/achtung-baby-21054859/) by U2
 - [The Demon Joke](https://www.russ.fm/albums/the-demon-joke-7147581/) by Vennart
-- Greatest Hits by Neil Young & Crazy Horse
-
 
 {{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}
