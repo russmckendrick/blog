@@ -402,7 +402,7 @@ Whether you're revisiting this classic or discovering it for the first time, 'Mi
 - [Best Of Pixies (Wave Of Mutilation)](https://www.russ.fm/albums/best-of-pixies-wave-of-mutilation-2650664/) by Pixies
 - [Dirt](https://www.russ.fm/albums/dirt-2055654/) by Alice in Chains
 - [Foxbase Alpha](https://www.russ.fm/albums/foxbase-beta-12876626/) by Saint Etienne
-- [The Cure: Greatest Hits](https://www.russ.fm/albums/acoustic-hits-10505690/) by The Cure
+- Greatest Hits by The Cure
 - [Exile on Coldharbour Lane](https://www.russ.fm/albums/exile-on-coldharbour-lane-8176313/) by Alabama 3
 - [Half the City](https://www.russ.fm/albums/half-the-city-5421968/) by St. Paul & The Broken Bones
 - [Greatest Hits Volume One - A Slight Case Of Overbombing](https://www.russ.fm/albums/greatest-hits-volume-one-a-slight-case-of-overbombing-12129846/) by The Sisters of Mercy
