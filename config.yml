@@ -1,7 +1,8 @@
 baseURL: "https://www.russ.cloud/"
 title: "Russ McKendrick"
-paginate: "8"
-theme: ["PaperMod", "hugo-shortcode-gallery"]
+pagination:
+  pagerSize: 8
+theme: ["hugo-papermod-russcloud", "PaperMod", "hugo-shortcode-gallery", "hugo-shortcode-russcloud"]
 timeout: 600000 
 
 enableRobotsTXT: true
