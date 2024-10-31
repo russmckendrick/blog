@@ -1,23 +1,24 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-US'
-title = 'My New Hugo Site'
+name = 'Shortcodes for RussCloud'
+license = 'MIT'
+licenselink = 'https://github.com/owner/repo/LICENSE'
+description = 'My overrides for the PaperMod theme'
 
-[[menus.main]]
-name = 'Home'
-pageRef = '/'
-weight = 10
+# The home page of the theme, where the source can be found
+homepage = 'http://github.com/russmckendrick/blog'
 
-[[menus.main]]
-name = 'Posts'
-pageRef = '/posts'
-weight = 20
+# If you have a running demo of the theme
+demosite = 'https://www.russ.cloud/'
 
-[[menus.main]]
-name = 'Tags'
-pageRef = '/tags'
-weight = 30
+# Taxonomy terms
+tags = ['blog']
+features = ['papermod', 'overide']
 
-[module]
-  [module.hugoVersion]
-    extended = false
-    min = "0.116.0"
+# If the theme has multiple authors
+authors = [
+  {name = 'Russ Mckendrick', homepage = 'https://www.russ.cloud/'},
+]
+
+# If the theme has a single author
+[author]
+  name = 'Russ McKendrick'
+  homepage = 'https://www.russ.cloud/'

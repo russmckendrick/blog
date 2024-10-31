@@ -1,31 +1,30 @@
-name = 'Theme name'
+name = 'PaperMod RussCloud Overide'
 license = 'MIT'
 licenselink = 'https://github.com/owner/repo/LICENSE'
-description = 'Theme description'
+description = 'My overrides for the PaperMod theme'
 
 # The home page of the theme, where the source can be found
-homepage = 'https://github.com/owner/repo'
+homepage = 'http://github.com/russmckendrick/blog'
 
 # If you have a running demo of the theme
-demosite = 'https://owner.github.io/repo'
+demosite = 'https://www.russ.cloud/'
 
 # Taxonomy terms
-tags = ['blog', 'company']
-features = ['some', 'awesome', 'features']
+tags = ['blog']
+features = ['papermod', 'overide']
 
 # If the theme has multiple authors
 authors = [
-  {name = 'Name of author', homepage = 'Website of author'},
-  {name = 'Name of author', homepage = 'Website of author'}
+  {name = 'Russ Mckendrick', homepage = 'https://www.russ.cloud/'},
 ]
 
 # If the theme has a single author
 [author]
-  name = 'Your name'
-  homepage = 'Your website'
+  name = 'Russ McKendrick'
+  homepage = 'https://www.russ.cloud/'
 
 # If porting an existing theme
 [original]
-  author = 'Name of original author'
-  homepage = 'Website of original author'
-  repo = 'https://github.com/owner/repo'
+  author = 'Aditya Telange'
+  homepage = 'https://adityatelange.in/'
+  repo = 'https://github.com/adityatelange/'
