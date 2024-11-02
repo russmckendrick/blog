@@ -41,11 +41,13 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 ## Top Albums (Week {{ week_number }})
 
 {% for (artist, album), count in top_albums -%}
-{% if album_info.get((artist, album)) and album_info[(artist, album)].get('album_link') -%}
-- [{{ album }}]({{ album_info[(artist, album)].album_link }}) by {{ artist }}
+{%- set album_key = (artist|lower, album|lower) -%}
+{% if album_info.get(album_key) and album_info[album_key].get('album_link') -%}
+- [{{ album }}]({{ album_info[album_key].album_link }}) by {{ artist }}
 {% else -%}
 - {{ album }} by {{ artist }}
 {% endif %}
 {%- endfor %}
+
 
 {% raw %}{{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}{% endraw %}
