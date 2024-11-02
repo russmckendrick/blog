@@ -1,0 +1,87 @@
+# config/tasks.yaml
+tasks:
+  research_album:
+    description: |
+      Research and create a unique blog section about '{album}' using proper Markdown formatting.
+      
+      Required Markdown Structure:
+      - Use H2 (##) for the main album title
+      - Use H3 (###) for all subsections
+      - Include relevant emojis in headers and content
+      
+      Your writing should:
+      - Choose creative subsection titles that fit the album's character
+      - Find interesting angles and lesser-known facts
+      - Match the writing style to the album's era and genre
+      - Include relevant emojis naturally throughout the text
+      - Focus on what makes this album unique
+
+      Consider creative approaches like:
+      - The album's influence on specific artists or genres
+      - Technical innovations in recording or production
+      - Cultural context and its relevance today
+      - Personal stories from the band/artist
+      - Fan reception and legacy
+      - Unique recording locations or conditions
+      - Evolution of the artist's sound
+    expected_output: |
+      A well-structured blog section in proper Markdown format that:
+      - Starts with H2 (##) album title with emoji
+      - Uses H3 (###) for all subsections with relevant emojis
+      - Presents information in a narrative, storytelling style
+      - Stays under 800 words while being comprehensive
+      - Makes connections to broader musical/cultural context
+      
+      Example structure:
+      ## Album Name by Artist 🎸
+      ### Recording Journey 🎵
+      Content...
+      ### Cultural Impact 🌍
+      Content...
+      ### Legacy and Influence 🏆
+      Content...
+    agent: music_research_agent
+    tools:
+      - search
+      - web
+
+  generate_title:
+    description: |
+      Create an attention-grabbing title for a weekly music blog post featuring:
+      Artists: {artists}
+      Albums: {albums}
+      
+      Consider:
+      - The overall theme or connections between the artists
+      - Standout albums or performances
+      - Musical eras represented
+      - Genre diversity
+      - Cultural significance
+    expected_output: |
+      A compelling title that:
+      - Captures attention while being SEO-friendly
+      - Maximum 70 characters
+      - Avoids special characters (:, -, |, quotes, emojis)
+      - Highlights key artists/albums naturally
+      - Suggests the diverse nature of the content
+    agent: title_generator_agent
+
+  generate_summary:
+    description: |
+      Create an engaging summary for week {week_number} starting {date_str}.
+      Artists: {artists}
+      Albums: {albums}
+      
+      The summary should:
+      - Capture the week's musical journey
+      - Highlight connections between different artists/albums
+      - Note any themes or patterns
+      - Emphasize standout discoveries
+    expected_output: |
+      A concise and compelling summary that:
+      - Maximum 180 characters
+      - Avoids special characters
+      - Captures the essence of the musical selection
+      - Entices readers to explore further
+      - Highlights the unique aspects of this week's listening
+    agent: summary_generator_agent
