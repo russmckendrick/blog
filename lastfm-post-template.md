@@ -41,21 +41,21 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 ## Top Albums (Week {{ week_number }})
 
-{% for (artist, album), count in top_albums %}
+{%- for (artist, album), count in top_albums -%}
 {%- set album_key = (artist|lower, album|lower) -%}
 {%- set artist_key = artist|lower -%}
 {%- if album_info.get(album_key) and album_info[album_key].get('album_link') -%}
-{%- if artist_info.get(artist_key) and artist_info[artist_key].get('artist_link') %}
+{%- if artist_info.get(artist_key) and artist_info[artist_key].get('artist_link') -%}
 - [{{ album }}]({{ album_info[album_key].album_link }}) by [{{ artist }}]({{ artist_info[artist_key].artist_link }})
-{%- else %}
-- [{{ album }}]({{ album_info[album_key].album_link }}) by {{ artist }}
-{%- endif %}
 {%- else -%}
-{%- if artist_info.get(artist_key) and artist_info[artist_key].get('artist_link') %}
+- [{{ album }}]({{ album_info[album_key].album_link }}) by {{ artist }}
+{%- endif -%}
+{%- else -%}
+{%- if artist_info.get(artist_key) and artist_info[artist_key].get('artist_link') -%}
 - {{ album }} by [{{ artist }}]({{ artist_info[artist_key].artist_link }})
-{%- else %}
+{%- else -%}
 - {{ album }} by {{ artist }}
-{%- endif %}
+{%- endif -%}
 {%- endif %}
 {% endfor %}
 
