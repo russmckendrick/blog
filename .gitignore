@@ -10,8 +10,6 @@ trained_agents_data.pkl
 index.json
 db
 db/*
-config/__pycache__
-config/__pycache__/*
 
 ## OS Files
 
@@ -26,3 +24,8 @@ $RECYCLE.BIN/
 
 # OSX
 .DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
