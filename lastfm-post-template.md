@@ -57,7 +57,7 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 - {{ album }} by {{ artist }}
 {%- endif -%}
 {% endif %}
-{%- endfor %}
 
+{%- endfor %}
 
 {% raw %}{{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}{% endraw %}
