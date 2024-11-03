@@ -8,7 +8,8 @@ tasks:
       - Use H2 (##) for the main album title
       - Use H3 (###) for all subsections
       - Include relevant emojis in headers and content
-      
+      - Do not under any circumstances wrap the text in codefences (```)
+
       Your writing should:
       - Choose creative subsection titles that fit the album's character
       - Find interesting angles and lesser-known facts
@@ -31,6 +32,7 @@ tasks:
       - Presents information in a narrative, storytelling style
       - Stays under 800 words while being comprehensive
       - Makes connections to broader musical/cultural context
+      - Is not wrapped in codefences (```)
       
       Example structure:
       ## Album Name by Artist 🎸
