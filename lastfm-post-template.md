@@ -41,23 +41,22 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 ## Top Albums (Week {{ week_number }})
 
-{% for (artist, album), count in top_albums -%}
+{% for (artist, album), count in top_albums %}
 {%- set album_key = (artist|lower, album|lower) -%}
 {%- set artist_key = artist|lower -%}
-{% if album_info.get(album_key) and album_info[album_key].get('album_link') -%}
-{%- if artist_info.get(artist_key) and artist_info[artist_key].get('artist_link') -%}
+{%- if album_info.get(album_key) and album_info[album_key].get('album_link') -%}
+{%- if artist_info.get(artist_key) and artist_info[artist_key].get('artist_link') %}
 - [{{ album }}]({{ album_info[album_key].album_link }}) by [{{ artist }}]({{ artist_info[artist_key].artist_link }})
-{%- else -%}
+{%- else %}
 - [{{ album }}]({{ album_info[album_key].album_link }}) by {{ artist }}
-{%- endif -%}
-{% else -%}
-{%- if artist_info.get(artist_key) and artist_info[artist_key].get('artist_link') -%}
-- {{ album }} by [{{ artist }}]({{ artist_info[artist_key].artist_link }})
+{%- endif %}
 {%- else -%}
+{%- if artist_info.get(artist_key) and artist_info[artist_key].get('artist_link') %}
+- {{ album }} by [{{ artist }}]({{ artist_info[artist_key].artist_link }})
+{%- else %}
 - {{ album }} by {{ artist }}
-{%- endif -%}
-{% endif %}
-
-{%- endfor %}
+{%- endif %}
+{%- endif %}
+{% endfor %}
 
 {% raw %}{{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}{% endraw %}
