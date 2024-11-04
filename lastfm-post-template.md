@@ -41,7 +41,7 @@ This is what GPT had to say this about what I listened to last week; it is auto-
 
 ## Top Albums (Week {{ week_number }})
 
-{%- for (artist, album), count in top_albums -%}
+{ for (artist, album), count in top_albums -%}
 {%- set album_key = (artist|lower, album|lower) -%}
 {%- set artist_key = artist|lower -%}
 {%- if album_info.get(album_key) and album_info[album_key].get('album_link') -%}
