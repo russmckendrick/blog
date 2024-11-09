@@ -65,6 +65,4 @@ Nov 01 10:52:03 docker.server.io docker[8737]: [cc69a548] -job containers() = OK
 ```
 {{< /terminal >}}
 
-This should do until CentOS manage to catch-up with the latest Docker releases, which shouldn’t be too long hopefully ….
-
-{{< twitter user=russmckendrick id=521815263163863040 >}}
+This should do until CentOS manage to catch-up with the latest Docker releases, which shouldn’t be too long hopefully.
