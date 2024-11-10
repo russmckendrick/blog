@@ -23,6 +23,8 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+no_of_items = 11
+
 # Shared utility functions
 class Utils:
     @staticmethod
@@ -417,7 +419,7 @@ class BlogPostGenerator:
             original_entries[key] = artist_name
     
         # Convert back to original case for display
-        return [(original_entries.get(key, key), count) for key, count in artists.most_common(16)]
+        return [(original_entries.get(key, key), count) for key, count in artists.most_common(no_of_items)]
     
 
     def _process_album_data(self, album_data: Dict, original_cases: Dict) -> List[Tuple[Tuple[str, str], int]]:
@@ -435,7 +437,7 @@ class BlogPostGenerator:
             original_entries[key] = (artist, album_name)
         
         # Convert back to original case for display
-        return [(original_entries.get(key, key), count) for key, count in albums.most_common(16)]
+        return [(original_entries.get(key, key), count) for key, count in albums.most_common(no_of_items)]
 
     def _generate_blog_sections(self, top_albums: List[Tuple[Tuple[str, str], int]]) -> str:
         sections = []
