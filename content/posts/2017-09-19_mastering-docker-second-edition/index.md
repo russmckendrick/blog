@@ -16,6 +16,6 @@ aliases:
   - "/mastering-docker-second-edition-9d15d7b9c9e9"
 ---
 
-It has been a while since I have posted, since Docker Bootcamp was published I have been hard at work on the second edition of Mastering Docker for [Packt](https://www.packtpub.com/) which is now available from [https://www.packtpub.com/virtualization-and-cloud/mastering-docker-second-edition](https://www.packtpub.com/virtualization-and-cloud/mastering-docker-second-edition) as well as Amazon and all other book stores.
+It has been a while since I have posted, since Docker Bootcamp was published I have been hard at work on the second edition of Mastering Docker for [Packt](https://www.packtpub.com/) which is now available from [https://www.packtpub.com/en-us/product/mastering-docker-9781789618686](https://www.packtpub.com/en-us/product/mastering-docker-9781789618686) as well as Amazon and all other book stores.
 
 ![graphical user interface, website](/img/2017-09-19_mastering-docker-second-edition_1.png)

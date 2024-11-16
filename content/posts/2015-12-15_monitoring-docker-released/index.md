@@ -17,6 +17,6 @@ aliases:
 
 As mentioned in [a post a few months ago](/2015/10/11/monitoring-docker-book/) I have been working on a book about the various ways you can approach monitoring your Docker containers, I am proud to announce that it was published today by [Packt Publishing](https://www.packtpub.com).
 
-You can order your copy from the [Packt website](https://www.packtpub.com/virtualization-and-cloud/monitoring-docker/) or [Amazon](http://www.amazon.co.uk/Monitoring-Docker-Russ-McKendrick/dp/1785882759/).
+You can order your copy from the [Packt website](https://www.packtpub.com/en-us/product/monitoring-docker-9781785885501) or [Amazon](http://www.amazon.co.uk/Monitoring-Docker-Russ-McKendrick/dp/1785882759/).
 
 A free sample of the book can [be found here](http://www.slideshare.net/PacktPub/monitoring-docker-sample-chapter).

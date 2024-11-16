@@ -29,7 +29,7 @@ Here are some of the posts I have saved for further reading ….
 - [There’s No Konami Code for Operations](http://blog.lusis.org/blog/2014/06/13/no-konami-for-operations/)
 - [10 Things You Should Know About AWS](http://highscalability.com/blog/2013/11/5/10-things-you-should-know-about-aws.html)
 - [The Easy Way Of Building A Growing Startup Architecture Using HAProxy, PHP, Redis And MySQL To Handle 1 Billion Requests A Week](http://highscalability.com/blog/2014/8/11/the-easy-way-of-building-a-growing-startup-architecture-usin.html)
-- [99.99% uptime on a 9-to-5 schedule](http://blog.scalyr.com/2014/08/99-99-uptime-9-5-schedule/)
+- [99.99% uptime on a 9-to-5 schedule](https://web.archive.org/web/20180309184352/http://blog.scalyr.com/2014/08/99-99-uptime-9-5-schedule/)
 - [What it takes to run Stack Overflow](http://nickcraver.com/blog/2013/11/22/what-it-takes-to-run-stack-overflow/)
 - [How Facebook Moved 20 Billion Instagram Photos Without You Noticing](http://www.wired.com/2014/06/facebook-instagram/)
 - [CloudFlare’s Matthew Prince: Building A Better Internet](http://readwrite.com/2014/07/28/cloudflare-matthew-prince-security-protection-builders)
