@@ -19,7 +19,7 @@ aliases:
 
 It has been 270 days since my last post, so what I have been doing with my time?
 
-Well, I have been busy writing, just not this blog. Not only have I wrote and released [Learn Ansible](https://www.packtpub.com/virtualization-and-cloud/learn-ansible/), but also I have updated the [Second Edition of Mastering Docker](https://www.packtpub.com/virtualization-and-cloud/mastering-docker-second-edition/) bringing it up to date with the release of the [Third Edition of Mastering Docker](https://www.packtpub.com/virtualization-and-cloud/mastering-docker-third-edition/) which is now available from [Packt Publishing](https://packtpub.com).
+Well, I have been busy writing, just not this blog. Not only have I wrote and released [Learn Ansible](https://www.packtpub.com/en-us/product/learn-ansible-9781788999328), but also I have updated the [Second Edition of Mastering Docker](https://www.packtpub.com/en-us/product/mastering-docker-9781789618686/) bringing it up to date with the release of the [Third Edition of Mastering Docker](https://www.packtpub.com/en-us/product/mastering-docker-9781789618686) which is now available from [Packt Publishing](https://packtpub.com).
 
 ![graphical user interface, calendar](/img/2018-10-25_270-days_1.png)![graphical user interface](/img/2018-10-25_270-days_2.png)
 

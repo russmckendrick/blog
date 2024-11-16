@@ -20,6 +20,6 @@ One of the reasons I haven’t been posting much on here for the last fews month
 
 ![pre-order](/img/2015-10-11_monitoring-docker-book_1.png)
 
-It’s now available for pre-order from the [Packt website](https://www.packtpub.com/virtualization-and-cloud/monitoring-docker/) and also Amazon !!!
+It’s now available for pre-order from the [Packt website](https://www.packtpub.com/en-us/product/monitoring-docker-9781785885501) and also Amazon !!!
 
 Exciting times :D
