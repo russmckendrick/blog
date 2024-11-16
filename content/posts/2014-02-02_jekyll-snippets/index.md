@@ -18,11 +18,8 @@ Had a go at converting a mostly static but dynamically rendered site to use Jeky
 
 As part of the conversion I needed to display the first post differently, after consulting the all knowing Google I settled on the following method;
 
-{{< terminal title="Jekyll Snippets 1/4" >}}
-```
-Getting just the latest post;
-```
-{{< /terminal >}}html
+{{< terminal title="Jekyll Snippets 1/3" >}}
+```html
 {% for post in site.posts offset: 0 limit: 1 %}
 <div class="some-style">
 <a href="{{post.url}}">
@@ -31,12 +28,15 @@ Getting just the latest post;
 </a>
 <p>{{ page.excerpt }} <a href='{{post.url}}'><span class='read-more'> Read more</span></a></p>
 </div>
+```
 {% endfor %}
-{{< terminal title="Jekyll Snippets 2/4" >}}
 ```
+{{< /terminal >}}
+
 Getting the rest of the posts;
-```
-{{< /terminal >}}html
+
+{{< terminal title="Jekyll Snippets 2/3" >}}
+```html
 {% for post in site.posts offset: 1 limit: 4 %}
 <div class="some-other-style">
 <a href="{{post.url}}">
@@ -46,17 +46,17 @@ Getting the rest of the posts;
 <p>{{ page.excerpt }} <a href='{{post.url}}'><span class='read-more'> Read more</span></a></p>
 </div>
 {% endfor %}
-{{< terminal title="Jekyll Snippets 3/4" >}}
 ```
+{{< /terminal >}}
+
 that worked apart from I need more consistancy with the `page.excerpt` to keep things a little more uniform, the following code fitted the bill nicely;
-```
-{{< /terminal >}}
+{{< terminal title="Jekyll Snippets 3/3" >}}
+```html
 {{ post.content | strip_html | truncatewords:75 }}
-{{< terminal title="Jekyll Snippets 4/4" >}}
-```
-it even added `...` to the end automagically.
 ```
 {{< /terminal >}}
+
+it even added `...` to the end automagically.
 
 Also, if you don’t know what Jekyll is then have a look at [the website](http://jekyllrb.com) or dive straight in with the following simple install guide above.
 
