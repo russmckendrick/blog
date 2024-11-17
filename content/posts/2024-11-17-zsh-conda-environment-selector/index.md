@@ -12,6 +12,7 @@ cover:
 tags:
   - "python"
   - "macos"
+  - "code"
 ---
 
 Managing Python environments can sometimes feel like navigating a jungle 🌴🐍, especially when dealing with dependency conflicts. To streamline this process, I created a handy Zsh function to add to your [dotfile](/2024/04/02/updating-my-dotfiles/) for switching Conda environments quickly and efficiently. 🚀 Let me walk you through it!
