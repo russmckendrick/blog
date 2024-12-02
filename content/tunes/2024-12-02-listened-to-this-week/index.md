@@ -304,7 +304,7 @@ In essence, *Temple Of Low Men* remains a poignant reminder of Crowded House’s
 - [Hatful of Hollow](https://www.russ.fm/albums/hatful-of-hollow-4418602/) by [The Smiths](https://www.russ.fm/artist/the-smiths/)
 - [The Best of OMD](https://www.russ.fm/albums/the-best-of-omd-522821/) by [Orchestral Manoeuvres in the Dark](https://www.russ.fm/artist/orchestral-manoeuvres-in-the-dark/)
 - [Resident Alien](https://www.russ.fm/albums/resident-alien-15815605/) by [Spacehog](https://www.russ.fm/artist/spacehog/)
-- Spawn (The Album) by Various Artists
+- [Spawn (The Album)](https://www.russ.fm/albums/spawn-the-album-30359798/) by Various Artists
 - [Insider](https://www.russ.fm/albums/insider-20391511/) by [Amplifier](https://www.russ.fm/artist/amplifier/)
 - [Central Reservation](https://www.russ.fm/albums/central-reservation-23031092/) by [Beth Orton](https://www.russ.fm/artist/beth-orton/)
 - [Bandwagonesque](https://www.russ.fm/albums/bandwagonesque-8667450/) by [Teenage Fanclub](https://www.russ.fm/artist/teenage-fanclub/)
