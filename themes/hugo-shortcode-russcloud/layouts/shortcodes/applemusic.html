@@ -1,0 +1,104 @@
+<!--
+Parameters:
+    url - (Required) The URL, for example https://music.apple.com/gb/album/signals-remastered/1440765198
+    height - (Optional) height
+-->
+{{ $embedUrl := replace (.Get "url") "music.apple.com" "embed.music.apple.com" }}
+<span class="apple-music-widget" style="display: inline-block; margin-left: 4px; vertical-align: middle;">
+    <button onclick="openModal('{{ $embedUrl }}')" class="apple-music-trigger" aria-label="Open Apple Music Player" style="
+        padding: 2px;
+        border: none;
+        background: transparent;
+        color: var(--secondary);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        vertical-align: middle;
+        transition: color 0.2s ease;
+    ">
+    ▶️
+    </button>
+
+    <template id="modalTemplate">
+        <div id="musicModal" class="music-modal" onclick="closeModal(event)">
+            <div class="modal-content">
+                <button class="close-button" onclick="closeModal(event)" aria-label="Close modal">×</button>
+                <div class="apple-music-container">
+                    <iframe 
+                        class="apple-music-embed"
+                        height="{{ default "450px" (.Get "height") }}"
+                        frameborder="0"
+                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+                        allow="autoplay *; encrypted-media *; clipboard-write">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script>
+    (function() {
+        if (!window.appleMusic) {
+            window.appleMusic = {
+                getTheme: function() {
+                    const storedTheme = localStorage.getItem("pref-theme");
+                    return storedTheme === "dark" || 
+                        (!storedTheme && document.body.classList.contains("dark")) ||
+                        (!storedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches) 
+                        ? "dark" : "light";
+                },
+                updateEmbed: function(iframe, url) {
+                    const embedUrl = `${url}?app=music&itsct=music_box_player&itscg=30200&ls=1&theme=${this.getTheme()}`;
+                    iframe.src = embedUrl;
+                }
+            };
+
+            // Theme toggle listener
+            const themeToggle = document.getElementById("theme-toggle");
+            if (themeToggle) {
+                themeToggle.addEventListener("click", () => {
+                    setTimeout(() => {
+                        document.querySelectorAll('.apple-music-embed').forEach(embed => {
+                            if (embed.src) {
+                                const url = new URL(embed.src);
+                                url.searchParams.set("theme", window.appleMusic.getTheme());
+                                embed.src = url.toString();
+                            }
+                        });
+                    }, 0);
+                });
+            }
+        }
+    })();
+
+    function openModal(url) {
+        const template = document.getElementById('modalTemplate');
+        const modal = template.content.cloneNode(true);
+        const iframe = modal.querySelector('iframe');
+        window.appleMusic.updateEmbed(iframe, url);
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(event) {
+        if (event) {
+            event.stopPropagation();
+        }
+        const modal = document.getElementById('musicModal');
+        if (modal && (event.target === modal || event.target.classList.contains('close-button'))) {
+            modal.remove();
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Close on escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            const modal = document.getElementById('musicModal');
+            if (modal) {
+                closeModal();
+            }
+        }
+    });
+    </script>
+</span>
