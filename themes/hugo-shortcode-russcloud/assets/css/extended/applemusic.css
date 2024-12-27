@@ -1,0 +1,67 @@
+.music-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    background: var(--entry);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+.close-button {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: var(--code-bg);
+    color: var(--primary);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+.close-button:hover {
+    background: var(--border);
+}
+.apple-music-container .apple-music-embed {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+}
+.apple-music-container .apple-music-embed::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+.apple-music-container .apple-music-embed::-webkit-scrollbar-track {
+    background: transparent;
+}
+.apple-music-container .apple-music-embed::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 4px;
+    border: 2px solid transparent;
+}
+.apple-music-container .apple-music-embed::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(155, 155, 155, 0.7);
+}
+.apple-music-trigger:hover {
+    color: var(--primary);
+}
