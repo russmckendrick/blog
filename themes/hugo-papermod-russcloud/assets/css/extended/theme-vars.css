@@ -5,3 +5,10 @@
 .tag-entry .entry-cover {
     display: flex;
 }
+
+.instagram-media {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto; /* Optional: Centers the element within the column */
+}
