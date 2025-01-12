@@ -68,7 +68,7 @@ With Xcode installed and a new project created, I dropped a copy of the Python s
 Now that I had a base to build on, I could start adding functionality back in. This went as follows:
 
 - **Sorting out permissions**: By default, the application was being blocked from accessing the internet, which made interacting with the Discogs and LastFM APIs a little troublesome. :rofl:
-- **Clearing up some misunderstandings**: The original Python code was documented, but the documentation mostly dealt with what to do with each function rather than why it was there. This meant I had to fix some of the logic related to how it was scrobbling tracks to LastFM.
+- **Clearing up some misunderstandings**: The original Python code was documented, but the documentation mostly dealt with what to do with each function rather than why it was there. This meant I had to fix some of the logic related to how it was scrobbling tracks to Last.FM.
 - **Build errors**: With each change came build errors, most of which were simple to fix. However, I did find that some fixes broke previously working functionality, which resulted in quite a bit of back and forth.
 
 Now I had a working application, so I decided it was time to add some functionality. This was partly inspired by my experience using AI-powered tools like Windsurf for other projects and my curiosity about how far I could take this app with similar assistance.
@@ -106,7 +106,30 @@ Now given that both tools use Claude 3.5 Sonnet by default, the difference was n
 
 Sure, it had problems when adding code that caused build errors - but these were nowhere near as dramatic as the ones which Windsurf caused in that it was a problem with the new code which was added rather than the tool decided to remove entire functions without explanation or reason.
 
-99% of the time these errors were resolved by passing the line number and the error itself and also if XCode gave a suggested fix passing that along too. This gave me the confidence to add more functionality.
+99% of the time these errors were resolved by passing the line number and the error itself and also if Xcode gave a suggested fix passing that along too. This gave me the confidence to add more functionality.
 
-#### LastFM authenication
+#### Last.FM authentication
 
+One of things which I had been doing, since it was only really me using the application was putting my Last.FM credentials in a text file, it was very hacky, but functional. If I was to make a little more user friendly I had to get the end users to properly authenticate against using their own Last.FM credentials. After a little looking around I found ScrobbleKit, it would handle both the authentication as well as Srobbling the tracks to Last.FM:
+
+{{< linkpreview "https://github.com/tfmart/ScrobbleKit" "noimage" >}}
+
+With a few prompts and a little back and forth with Cursor and a little Googling I had removed my method of handling the authentication and was using ScrobbleKit to sign into Last.FM and saving the credntials to the Key Chain so I could use them each time the application launched. I had also switched over to using ScrobbleKit to send the actual scrobbles.
+
+{{< gallery match="images/screens/04.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=false >}}<br>
+
+#### Searching Discogs
+
+Up until now I was passing in the Discogs release ID to search for an album and load its details, this was good for me as I index my collection on [Russ.FM](https://www.russ.fm) and one of the features I added a while ago was a button which copies the Discogs ID to the clipboard, which you can see [here][(](https://www.russ.fm/albums/metropolis-pt-2-scenes-from-a-memory-32745087/)).
+
+Again, with a few prompts I had the application searching Discogs and presenting the results back to the user so that can select which release to Scrobble.
+
+{{< gallery match="images/screens/03.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=false >}}<br>
+
+#### Time to submit to Apple
+
+I did a little bit of tidying up and removing some of the left over debug code I was ready to submit to Apple.
+
+
+
+{{< img src="images/LandscapeBannerAd.png" alt="Download on the App Store [noExternalIcon]" zoom="false" link="https://apps.apple.com/gb/app/vinyl-scrobbler/id6740146205?mt=12&itscg=30200&itsct=apps_box_badge&mttnsubad=6740146205" >}}
