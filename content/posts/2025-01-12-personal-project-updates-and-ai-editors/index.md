@@ -78,7 +78,7 @@ Now I had a working application, so I decided it was time to add some functional
 
 The first new functionality I tried to add was a player window, and this is where I became a little unstuck with Windsurf.
 
-While prompting the functionality, things started off great, but I soon found myself fighting Windsurf due to technical issues and limitations. Specifically, it started overcomplicating the code when making small changes and, worse, removed large chunks of existing working code for no apparent reason. as it started over complicating code when making small changes and worse, it removed large chunks of existing working code for no apparent reason. Normally when an LLM starts to do that I start new chats with a detailed prompt, in this case I used:
+While prompting the functionality, things started off great, but I soon found myself fighting Windsurf due to technical issues and limitations. Specifically, it started overcomplicating the code when making small changes and, worse, removed large chunks of existing working code for no apparent reason. as it started over complicating code when making small changes and worse, it removed large chunks of existing working code for no apparent reason. Normally, when an LLM starts to do that,t I start new chats with a detailed prompt; in this case, I used:
 
 {{< chat-message position="left" avatar="https://www.russ.social/sticker-clear.svg" >}}
 
@@ -103,13 +103,13 @@ While this approach normally works when dealing with Claude directly I was still
 
 I had used [Cursor](https://www.cursor.com) when it was first launched, and I am not entirely sure why, but I didn't get on with the interface. It felt like having a whole separate IDE when VS Code was fine seemed like overkill. Given my experience of Windsurf I decided to sign-up for the trial and give it a second chance to see if it could pick up from where Windsurf left off.
 
-Now given that both tools use Claude 3.5 Sonnet by default, the difference was night and day. The quality of the interactions felt a lot better and within no time I had a player window, with artwork and track listing within the application.
+Now given that both tools use Claude 3.5 Sonnet by default, the difference was night and day. The quality of the interactions felt a lot better, and within no time, I had a player window, with artwork and track listing within the application.
 
 {{< gallery match="images/screens/01.png" sortOrder="assc" rowHeight="600" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}<br>
 
-Sure, it had problems when adding code that caused build errors - but these were nowhere near as dramatic as the ones which Windsurf caused in that it was a problem with the new code which was added rather than the tool decided to remove entire functions without explanation or reason.
+Sure, it had problems when adding code that caused build errors—but these were nowhere near as dramatic as the ones Windsurf caused in that it was a problem with the new code that was added rather than the tool's decision to remove entire functions without explanation or reason.
 
-99% of the time these errors were resolved by passing the line number and the error itself and also if Xcode gave a suggested fix passing that along too. This gave me the confidence to add more functionality.
+99% of the time, these errors were resolved by passing the line number and the error itself, and if Xcode suggested a fix, I passed that along, too. This gave me the confidence to add more functionality.
 
 #### Last.FM authentication
 
@@ -131,18 +131,17 @@ Again, with a few prompts I had the application searching Discogs and presenting
 
 #### Time to submit to Apple
 
-I did a little bit of tidying up and removing some of the left over debug code I was ready to submit to Apple. The application was rejected a few times as I had not removed some of the security entitlements which had allowed the application to access the configuration file in the user's folder, which was a good catch. There was also a redundant entitlement file which had been created at some point which was doubling up on some information.
+After a little bit of tidying up and removing some of the leftover debug code, I was ready to submit the application to Apple. The application was rejected a few times because I had not removed some of the security entitlements that had allowed the application to access the configuration file in the user's folder, which was a good catch. There was also a redundant entitlement file that had been created at some point and was doubling up on some information.
 
-Once those issues were resolved the application was accepted and i published it, you can find it on the Mac App Store by clicking the banner below:
+Once those issues were resolved, the application was accepted, and I published it; you can find it on the Mac App Store by clicking the banner below:
 
 {{< img src="images/LandscapeBannerAd.png" alt="Download on the App Store [noExternalIcon]" zoom="false" link="https://apps.apple.com/gb/app/vinyl-scrobbler/id6740146205?mt=12&itscg=30200&itsct=apps_box_badge&mttnsubad=6740146205" >}}
 
-So with that, I have what was a app only would use, converted to native Swift and published on the Mac Store. Not bad considering I am not a developer by trade, not had I ever used Swift or Xcode before starting this project.
-
+So, with that, I have what was a simple app that I would only use, converted to native Swift, and published on the Mac Store. That's not bad, considering I am not a developer by trade, nor had I ever used Swift or Xcode before starting this project.
 
 ## Things I wish I knew before starting
 
-There are a few things I should have been doing, didn't and regretted.
+There are a few things I should have been doing, but I didn't and regretted not doing so.
 
 ### Branch and commit often
 
@@ -153,11 +152,11 @@ Create a "feature" branch in Git, commit often and don't be afraid to roll back.
 Take baby steps, it is tempting to ask the LLM to just make one big feature change in one go. Don't do this, instead explain your plan and ask the LLM to break it down into steps, here is the initial prompt I have used to implement an upcoming feature.
 
 {{< chat-message position="left" avatar="https://www.russ.social/sticker-clear.svg" >}}
-We are working on a feature branch. I would like to add the option to use ShazamKit to listen for what the user is playing and then use the results to search Discogs. As ShazamKit only returns the Artist and track title, we need to think carefully about how to pass this information onto Discogs. I think we should use the LastFM API to get more information on the track using track.getInfo and then the album information from there to pass onto the Discogs search we already have using the Album details there.
+We are working on a feature branch. I want to add the option to use ShazamKit to listen to what the user is playing and then use the results to search Discogs. As ShazamKit only returns the Artist and track title, we need to think carefully about how to pass this information onto Discogs. Let's use the LastFM API to get more information on the track using track.getInfo and then the album information from there to pass onto the Discogs search we already have using the Album details there.
 
-The interface should be a new slider activated from a new “Listen” menu item below “Load Album.” As per the rest of the application, this new slider should be modern and animated, providing user feedback as to what is happening. It should also, as always, be written and implemented using pure SwiftUI and Apple’s best practices with regards to creating new Views and Models and if request Services.
+The interface should be a new slider activated from a new “Listen” menu item below “Load Album.” As per the rest of the application, this new slider should be modern and animated, providing user feedback on what is happening. It should also, as always, be written and implemented using pure SwiftUI and Apple’s best practices regarding creating new Views, models, and, if requested, Services.
 
-Please do not change any existing functionality
+Please do not change any existing functionality.
 
 How does this sound? 
 {{< /chat-message >}}
@@ -226,7 +225,7 @@ A preview of this (and the new GUI) can been seen below:
 
 ### Going around in circles
 
-You will find yourself going around in a loop sometimes, you will ask to fix an error, the LLM will try and cause another problem. You manage to prompt a fix for the new issue, but all that does is recreate the original problem and your prompt to fix that recreates the new problem you just fixed.
+Sometimes, you will find yourself going around in a loop. You will ask to fix an error, and the LLM will try to cause another problem. You manage to prompt a fix for the new issue, but all that does is recreate the original problem, and your prompt to fix that recreates the new problem you just fixed.
 
 Ask the LLM this one simple thing:
 
@@ -234,16 +233,15 @@ Ask the LLM this one simple thing:
 Are we using the simplest approach and best practices for the scale of our project structure?
 {{< /chat-message >}}
 
-A lot of LLMs like Clade 3.5 and GPT-4o love to over complicate their solutions and sometimes need to be told to calm things down and take a simpler approach.
+A lot of LLMs like Clade 3.5 and GPT-4o love to overcomplicate their solutions and sometimes need to be told to calm things down and take a simpler approach.
 
 ### Forgetfulness
 
-At some point the LLM will behaving like its forgotten what's its doing, at the first sign of this start a new session, and give the LLM a prompt to refresh its context of where you are in the task. To do this you can use the plan it originally gave, just let us know what steps it has done and which step you will like it work on next, ensure that you tell it do it one step at a time.
+At some point, the LLM will behave like it has forgotten what it is doing. At the first sign of this, start a new session and give the LLM a prompt to refresh its context of where you are in the task. To do this, you can use the plan it originally gave. Just let us know what steps it has done and which step you would like it to work on next. Ensure that you tell it to do it one step at a time.
 
 ## Summary
 
-This blog post chronicles my journey of revisiting the Vinyl Scrobbler app, initially written in Python, and transforming it into a fully native macOS app using Swift. Through a combination of AI-assisted development tools like Windsurf and Cursor, I explored new functionality, tackled technical challenges, and learned valuable lessons about working with AI-driven tools. Finally, the project culminated in the successful publication of Vinyl Scrobbler on the Mac App Store which was fun considering my lack of prior experience with Swift or Xcode. The lessons learned during this process are applicable to anyone venturing into AI-assisted app development or embarking on similar projects.
-
+This blog post chronicles my journey of revisiting the Vinyl Scrobbler app, initially written in Python, and transforming it into a fully native macOS app using Swift. Using AI-assisted development tools like Windsurf and Cursor, I explored new functionality, tackled technical challenges, and learned valuable lessons about working with AI-driven tools. Finally, the project culminated in the successful publication of Vinyl Scrobbler on the Mac App Store, which was fun considering my lack of prior experience with Swift or Xcode. The lessons learned during this process apply to anyone venturing into AI-assisted app development or embarking on similar projects.
 
 ## Audio Summary
 
