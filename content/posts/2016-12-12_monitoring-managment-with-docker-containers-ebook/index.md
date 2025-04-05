@@ -30,4 +30,4 @@ The chapter I contributed is titled “Identifying And Collecting Container Data
 
 The book is available for free download from The New Stack site at [http://thenewstack.io/ebookseries](http://thenewstack.io/)/
 
-{{< twitter user=russmckendrick id=808327810834108416 >}}
+{{< x user=russmckendrick id=808327810834108416 >}}

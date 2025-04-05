@@ -26,7 +26,7 @@ After installing the [Bicep VSCode extension ](https://marketplace.visualstudio.
 
 As you can see, there are complaints about installing the .Net 5.0 runtime; this makes sense as there is no arm64 .Net 5.0 for macOS, .Net 6.0 will be fully supported - however, Bicep will not offer support for this until its 0.5 release, which is due at some point in January 2022 ...
 
-{{< center >}}{{< twitter user=russmckendrick id=1461124007441305601 >}}{{< /center >}}
+{{< center >}}{{< x user=russmckendrick id=1461124007441305601 >}}{{< /center >}}
 
 ... so, how do we work around this?
 

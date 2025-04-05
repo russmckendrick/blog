@@ -18,7 +18,7 @@ aliases:
 
 As regular readers will know I really like the tools provided by [Hashicorp](https://hashicorp.com/ "Hashicorp") and today I found an excuse to use one. I needed to bring up a Virtual Machine in [Microsoft Azure](http://azure.microsoft.com/en-gb/ "Azure"). I hadn’t logged into Azure for quite a while so imagine my shock when I opened the dashboard, it’s not that great and the beta of the new one isn’t that brilliant either. It was so bad I tweeted about it ….
 
-{{< twitter user=russmckendrick id=622503853162934273 >}}
+{{< x user=russmckendrick id=622503853162934273 >}}
 
 I had recently looked at [Terraform](https://www.terraform.io "Terraform") for another project and I worked through the [excellent getting started guide which covers how to launch AWS Instances](https://www.terraform.io/intro/getting-started/install.html "Getting started").
 
