@@ -198,4 +198,4 @@ sitemap:
   priority: 0.5
   filename: "sitemap.xml"
 
-ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken", "shortcode-twitter-getremote"]
+ignoreErrors: ["error-remote-getjson", "error-missing-instagram-accesstoken", "shortcode-twitter-getremote", "shortcode-x-getremote"]

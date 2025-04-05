@@ -18,7 +18,7 @@ showToc: true
 
 After the news earlier this week that Docker will be introducing charges to the Docker Subscription Service Agreement, as detailed in the Tweet below:
 
-{{< center >}}{{< twitter user=russmckendrick id=1432739340266913797 >}}{{< /center >}}
+{{< center >}}{{< x user=russmckendrick id=1432739340266913797 >}}{{< /center >}}
 
 I started to think about looking at alternatives, while I use Docker Desktop I did not use it enough to warrant looking at one of the new subscriptions. There are two main reasons to run Docker Desktop
 
