@@ -1,9 +1,9 @@
 {{- $rawUrl := (.Get 0) -}}
 {{- $noImage := .Get 1 -}}
 {{- $url := urls.Parse $rawUrl -}}
+
 {{- $result := resources.GetRemote $rawUrl -}}
-{{- if $result.Err -}}
-    {{- warnf "%s" $result.Err -}}
+{{- if not $result -}}
     <div class="link-preview-card link-preview-error">
         <div class="link-preview-content">
             <div class="link-preview-title">Not Found</div>
@@ -43,30 +43,6 @@
         {{- end -}}
     {{- end -}}
 
-    {{- if $manifestUrl -}}
-        {{- $manifest := resources.GetRemote $manifestUrl -}}
-        {{- if and (not $manifest.Err) ($manifest.Content | jsonify) -}}
-            {{- $json := $manifest.Content | jsonify -}}
-            {{- if $json.icons -}}
-                {{- $maxIcon := index $json.icons 0 -}}
-                {{- $maxSize := 0 -}}
-                {{- range $json.icons -}}
-                    {{- $sizes := split .sizes "x" -}}
-                    {{- if eq (len $sizes) 2 -}}
-                        {{- $width := int (index $sizes 0) -}}
-                        {{- $height := int (index $sizes 1) -}}
-                        {{- $size := mul $width $height -}}
-                        {{- if gt $size $maxSize -}}
-                            {{- $maxSize = $size -}}
-                            {{- $maxIcon = . -}}
-                        {{- end -}}
-                    {{- end -}}
-                {{- end -}}
-                {{- $faviconUrl = $maxIcon.src -}}
-            {{- end -}}
-        {{- end -}}
-    {{- end -}}
-
     {{- $baseFaviconUrl := printf "%s://%s" $url.Scheme $url.Host -}}
     {{- $faviconUrls := slice $faviconUrl (printf "%s/favicon.ico" $baseFaviconUrl) (printf "%s/favicon.png" $baseFaviconUrl) (printf "%s/apple-touch-icon.png" $baseFaviconUrl) -}}
 
@@ -77,11 +53,8 @@
             {{- if not (hasPrefix $potentialFavicon "http") -}}
                 {{- $absoluteFaviconUrl = printf "%s%s" $baseFaviconUrl $potentialFavicon -}}
             {{- end -}}
-            {{- $faviconResource := resources.GetRemote $absoluteFaviconUrl -}}
-            {{- if and $faviconResource (not $faviconResource.Err) -}}
-                {{- $validFaviconUrl = $absoluteFaviconUrl -}}
-                {{- break -}}
-            {{- end -}}
+            {{- $validFaviconUrl = $absoluteFaviconUrl -}}
+            {{- break -}}
         {{- end -}}
     {{- end -}}
 
@@ -89,9 +62,7 @@
     {{- $thumbnail_url := "" -}}
     {{- if $image -}}
         {{- with $thumbnail := resources.GetRemote $image -}}
-            {{- if $thumbnail.Err -}}
-                {{- warnf "%s" $thumbnail.Err -}}
-            {{- else -}}
+            {{- if $thumbnail -}}
                 {{- $thumbnail_url = ($thumbnail.Fit (printf "800x400 center q%d webp" $imageQuality)).Permalink -}}
             {{- end -}}
         {{- end -}}
