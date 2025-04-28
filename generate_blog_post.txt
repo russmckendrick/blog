@@ -1,4 +1,5 @@
 # requirements.txt
+setuptools>=65.5.0
 chromadb==0.5.18
 crewai==0.76.9
 crewai-tools==0.13.4
