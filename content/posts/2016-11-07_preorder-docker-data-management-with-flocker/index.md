@@ -20,9 +20,8 @@ aliases:
 This book was scrapped just before it was due to be published due to the Flocker project loosing its funding and folding.
 {{< /notice >}}
 
-I am pleased to say that my third book is now available to pre-order from [Packt](https://www.packtpub.com/virtualization-and-cloud/docker-data-management-flocker), [Amazon UK](https://www.amazon.co.uk/Docker-Data-Management-Flocker-McKendrick-ebook/dp/B01M2DAAUN/ref=sr_1_1?ie=UTF8&qid=1478542761&sr=8-1&keywords=Docker+Data+Management+with+Flocker) & [Amazon US](https://www.amazon.com/Docker-Data-Management-Flocker-McKendrick-ebook/dp/B01M2DAAUN/ref=sr_1_1?s=books&ie=UTF8&qid=1478440938&sr=1-1&keywords=Docker+Data+Management+with+Flocker).
+I am pleased to say that my third book is now available to pre-order from [Packt](https://www.packtpub.com/), [Amazon UK](https://www.amazon.co.uk/) & [Amazon US](https://www.amazon.com/).
 
 ![book3.jpeg](/img/2016-11-07_preorder-docker-data-management-with-flocker_1.jpeg)
 
-The book is released in the new year. However, if you purchase from Packt, you will get [early access](https://www.packtpub.com/books/info/packt/early-access) to the ebook.
-
+The book is released in the new year. However, if you purchase from Packt, you will get [early access](https://www.packtpub.com/) to the ebook.

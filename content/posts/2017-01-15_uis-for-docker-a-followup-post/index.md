@@ -133,7 +133,7 @@ On the face of it DC/OS is similar to Kubernetes in that it is a scheduler/orche
 
 You will notice that the description doesn’t mention conatiners, though it does talk about distributed systems. The container managment isn’t actually handled by DC/OS or Mesos, Marathon is deployed as part of an initial DC/OS installation.
 
-[Marathon: A container orchestration platform for Mesos and DC/OS](https://mesosphere.github.io/marathon/ "https://mesosphere.github.io/marathon/")
+[Marathon: A container orchestration platform for Mesos and DC/OS](https://github.com/mesosphere "https://github.com/mesosphere")
 
 This video gives a better overview than I ever can;
 

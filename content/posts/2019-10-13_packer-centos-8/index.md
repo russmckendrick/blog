@@ -43,7 +43,7 @@ and got;
 
 ![text](/img/2019-10-13_packer-centos-8_1.png)![text](/img/2019-10-13_packer-centos-8_2.png)
 
-Once I have the two Vagrant boxes the Packer configuration produced I uploaded the them to [Vagrant Cloud](https://app.vagrantup.com/russmckendrick/), you can find them both at [http://app.vagrantup.com/russmckendrick/boxes/centos8](http://app.vagrantup.com/russmckendrick/boxes/centos8). Once uploaded I used Vagrant to launch my first CentOS 8 server;
+Once I have the two Vagrant boxes the Packer configuration produced I uploaded the them to [Vagrant Cloud](https://portal.cloud.hashicorp.com/vagrant/discover/russmckendrick/), you can find them both at https://portal.cloud.hashicorp.com/vagrant/discover/russmckendrick/centos8](http://app.vagrantup.com/russmckendrick/boxes/centos8). Once uploaded I used Vagrant to launch my first CentOS 8 server;
 
 {{< terminal title="Packer CentOS 8 3/6" >}}
 ```

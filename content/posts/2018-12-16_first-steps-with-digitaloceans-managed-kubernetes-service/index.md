@@ -16,7 +16,7 @@ aliases:
 
 A few days ago DigitalOcean released their Managed Kubernetes service, as I had a little time this afternoon I decided to give it a spin.
 
-Each of the public clouds has a Kubernetes service now, I covered these in the third edition of [Mastering Docker](https://www.packtpub.com/virtualization-and-cloud/mastering-docker-third-edition). The general gist of the chapter was that both the Microsoft Azure and Google Cloud offerings were both excellent. However, the Amazon Web Services offering was an over-complicated mess.
+Each of the public clouds has a Kubernetes service now, I covered these in the third edition of [Mastering Docker](https://www.packtpub.com/en-us/product/mastering-docker-fourth-edition-9781839213519). The general gist of the chapter was that both the Microsoft Azure and Google Cloud offerings were both excellent. However, the Amazon Web Services offering was an over-complicated mess.
 
 Given that DigitalOcean has always prided themselves ease of use and a low barrier to entry so that developers can get stuck in it will be interesting to see which category their offering fits into.
 
