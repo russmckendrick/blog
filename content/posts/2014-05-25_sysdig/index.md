@@ -30,8 +30,8 @@ curl -s https://s3.amazonaws.com/download.draios.com/stable/install-sysdig | sud
 
 …. and even easier to run ….
 
-- [Overview](http://www.sysdig.org/wiki/sysdig-overview/)
-- [Sysdig Examples](http://www.sysdig.org/wiki/sysdig-examples/)
+- [Overview](http://www.sysdig.org/)
+- [Sysdig Examples](http://www.sysdig.org/)
 - [Fishing for Hackers: Analysis of a Linux Server Attack](http://draios.com/fishing-for-hackers/)
 
 I wish I had something this straight forward when I was doing syadmin work as a day job, you youngsters don’t know how good you have it.

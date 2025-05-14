@@ -27,7 +27,7 @@ It was interesting to see how best practices had moved on (answer, lots) since I
 
 https://www.slideshare.net/slideshow/embed_code/41653710"
 
-#### Keeping AWS in check with Puppet by [Oholiab](https://www.slideshare.net/oholiab/)
+#### Keeping AWS in check with Puppet by [Oholiab](https://www.slideshare.net/)
 
 <iframe src="https://www.slideshare.net/slideshow/embed_code/key/4LExPLT9oB8kc8" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; " allowfullscreen> </iframe>
 

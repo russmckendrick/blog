@@ -21,7 +21,7 @@ Yesterday the following email dropped into my inbox …
 
 … I spend a lot of the day job looking at and talking about Amazon Web Services (AWS) so this had got my interest.
 
-In [my last book](https://www.packtpub.com/networking-and-servers/extending-docker) I covered Amazon’s Elastic Container Service (ECS) and I have to admit that it wasn’t the most greatest service Amazon had released, especially compared the ease you can now [launch Swarm Clusters using Docker](/2016/06/25/docker-load-balancing-application-bundles/).
+In [my last book](https://www.packtpub.com/en-us/product/extending-docker-9781786462312) I covered Amazon’s Elastic Container Service (ECS) and I have to admit that it wasn’t the most greatest service Amazon had released, especially compared the ease you can now [launch Swarm Clusters using Docker](/2016/06/25/docker-load-balancing-application-bundles/).
 
 As you can see from the e-mail, Dockers AWS beta ships in two parts, the first being the Amazon Machine Image (AMI) which until general release is shared with your AWS account and the second part is a CloudFormation template.
 
