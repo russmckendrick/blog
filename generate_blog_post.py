@@ -144,7 +144,7 @@ class LastFMClient:
 class CollectionManager:
     def __init__(self, base_url: str):
         self.base_url = base_url
-        self.local_file = 'index.json'
+        self.local_file = 'collection.json'
         
     def get_collection_data(self) -> Dict:
         """
@@ -168,7 +168,7 @@ class CollectionManager:
         )
         
         if should_update:
-            response = requests.get(f'{self.base_url}/index.json')
+            response = requests.get(f'{self.base_url}/collection.json')
             response.raise_for_status()
             with open(self.local_file, 'wb') as f:
                 f.write(response.content)
@@ -180,24 +180,36 @@ class CollectionManager:
         
         info = {}
         original_cases = {}  # Store original cases
-        for doc in data['documents']:
-            self._process_document(doc, info, original_cases)
+        
+        # Handle the new collection.json format - data is a list of releases
+        for release in data:
+            self._process_release(release, info, original_cases)
         return info, original_cases
 
-    def _process_document(self, doc: Dict, info: Dict, original_cases: Dict):
-        """Process individual document data while preserving original cases."""
-        artist = doc.get('artist')
-        album = doc.get('album')
-        cover_image = doc.get('coverImage')
-        artist_image = doc.get('artistImage')
-        album_uri = doc.get('albumUri')
-        artist_uri = doc.get('artistUri')
+    def _process_release(self, release: Dict, info: Dict, original_cases: Dict):
+        """Process individual release data while preserving original cases."""
+        artist = release.get('release_artist')
+        album = release.get('release_name')
+        
+        # Get hi-res images from the new format
+        album_image_url = None
+        artist_image_url = None
+        
+        if release.get('images_uri_release') and release['images_uri_release'].get('hi-res'):
+            album_image_url = f"{self.base_url}{release['images_uri_release']['hi-res']}"
+        
+        if release.get('images_uri_artist') and release['images_uri_artist'].get('hi-res'):
+            artist_image_url = f"{self.base_url}{release['images_uri_artist']['hi-res']}"
+        
+        # Get URIs for album and artist pages
+        album_uri = f"{self.base_url}{release.get('uri_release', '')}" if release.get('uri_release') else None
+        artist_uri = f"{self.base_url}{release.get('uri_artist', '')}" if release.get('uri_artist') else None
 
         if artist and album and album_uri:
             # Store lowercase key for matching
             key = (artist.lower(), album.lower())
             info[key] = {
-                'album_image': cover_image if cover_image and cover_image.startswith('https://') else None,
+                'album_image': album_image_url,
                 'album_link': album_uri
             }
             # Store original case
@@ -206,7 +218,7 @@ class CollectionManager:
         if artist and artist_uri:
             artist_key = artist.lower()
             info[artist_key] = {
-                'artist_image': artist_image if artist_image and artist_image.startswith('https://') else None,
+                'artist_image': artist_image_url,
                 'artist_link': artist_uri
             }
             original_cases[artist_key] = artist
