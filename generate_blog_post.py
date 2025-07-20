@@ -194,12 +194,13 @@ class CollectionManager:
         # Get hi-res images from the new format
         album_image_url = None
         artist_image_url = None
+        image_base_url = 'https://assests.russ.fm/'
         
         if release.get('images_uri_release') and release['images_uri_release'].get('hi-res'):
-            album_image_url = f"{self.base_url}{release['images_uri_release']['hi-res']}"
+            album_image_url = f"{image_base_url}{release['images_uri_release']['hi-res']}"
         
         if release.get('images_uri_artist') and release['images_uri_artist'].get('hi-res'):
-            artist_image_url = f"{self.base_url}{release['images_uri_artist']['hi-res']}"
+            artist_image_url = f"{image_base_url}{release['images_uri_artist']['hi-res']}"
         
         # Get URIs for album and artist pages
         album_uri = f"{self.base_url}{release.get('uri_release', '')}" if release.get('uri_release') else None
