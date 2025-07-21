@@ -194,7 +194,7 @@ class CollectionManager:
         # Get hi-res images from the new format
         album_image_url = None
         artist_image_url = None
-        image_base_url = 'https://assests.russ.fm/'
+        image_base_url = 'https://assets.russ.fm'
         
         if release.get('images_uri_release') and release['images_uri_release'].get('hi-res'):
             album_image_url = f"{image_base_url}{release['images_uri_release']['hi-res']}"
