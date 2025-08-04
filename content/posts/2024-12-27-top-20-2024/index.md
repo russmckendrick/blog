@@ -20,7 +20,7 @@ The progressive rock scene has been especially vibrant with strong releases from
 
 If you're interested in exploring my complete vinyl collection and purchases throughout 2024, don't forget to check out my detailed tracking at the link below:
 
-{{< linkpreview "https://unwrapped.russ.fm/2024" >}}
+{{< linkpreview "https://www.russ.fm/wrapped/2024" >}}
 
 In no particular order, here are what I dug in 2024 ...
 
