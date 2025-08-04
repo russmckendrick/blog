@@ -48,7 +48,7 @@ I first ended up asking Windsurf to create a set of Python scripts, as I am gett
 
 It suggested creating a Vue 3-powered SPA that read the JSON files and created the site, which is hosted at:
 
-{{< linkpreview "https://wwww.russ.fm/" "noimage" >}}
+{{< linkpreview "https://www.russ.fm/" "noimage" >}}
 
 ... As you can see, it eventually did a good job. I say "eventually" because while it worked, I got stuck in a few loops, which annoyingly ate into my prompt allowance (more on that later).
 
