@@ -18,9 +18,7 @@ This year has been particularly notable for the long-awaited return of Tears For
 
 The progressive rock scene has been especially vibrant with strong releases from Frost*, Pure Reason Revolution, and The Pineapple Thief. What's particularly striking about 2024's releases is the diversity of sounds - from Underworld's electronic landscapes in "Strawberry Hotel" to Orville Peck's unique take on country music with "Stampede." The year has demonstrated that established artists can still innovate while staying true to their core sound.
 
-If you're interested in exploring my complete vinyl collection and purchases throughout 2024, don't forget to check out my detailed tracking at the link below:
-
-{{< linkpreview "https://www.russ.fm/wrapped/2024" >}}
+If you're interested in exploring my complete vinyl collection and purchases throughout 2024, don't forget to check out my detailed tracking at this link https://www.russ.fm/wrapped/2024.
 
 In no particular order, here are what I dug in 2024 ...
 
