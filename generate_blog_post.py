@@ -148,6 +148,24 @@ class Utils:
                 best_match = data
         return best_match if max_ratio > 70 else None
 
+    @staticmethod
+    def lookup_artist_data(artist: str, collection_info: Dict) -> Optional[Tuple[str, str]]:
+        """Consistent artist lookup using fuzzy matching. Returns (link, image) tuple or None."""
+        artist_info = {artist: data for artist, data in collection_info.items() if not isinstance(artist, tuple)}
+        best_match = Utils.find_best_match(artist, artist_info)
+        if best_match:
+            return best_match.get('artist_link'), best_match.get('artist_image')
+        return None
+
+    @staticmethod
+    def lookup_album_data(artist: str, album: str, collection_info: Dict) -> Optional[Tuple[str, str]]:
+        """Consistent album lookup using fuzzy matching. Returns (link, image) tuple or None."""
+        album_info = {key: data for key, data in collection_info.items() if isinstance(key, tuple)}
+        best_match = Utils.find_best_album_match(artist, album, album_info)
+        if best_match:
+            return best_match.get('album_link'), best_match.get('album_image')
+        return None
+
 
 class LastFMClient:
     def __init__(self, username: str, api_key: str):
@@ -516,37 +534,40 @@ class BlogPostGenerator:
         return "\n\n".join(sections)
 
     def _handle_images(self, top_artists, top_albums, collection_info, artists_folder, albums_folder):
-        artist_info = {artist: data for artist, data in collection_info.items() if not isinstance(artist, tuple)}
-        album_info = {key: data for key, data in collection_info.items() if isinstance(key, tuple)}
-
         for artist, _ in top_artists:
-            best_match = Utils.find_best_match(artist.lower(), artist_info)
-            if best_match and best_match.get('artist_image'):
-                ImageHandler.download_image(best_match['artist_image'], artists_folder, artist)
+            artist_data = Utils.lookup_artist_data(artist, collection_info)
+            if artist_data:
+                artist_link, artist_image = artist_data
+                if artist_image:
+                    ImageHandler.download_image(artist_image, artists_folder, artist)
 
         for (artist, album), _ in top_albums:
-            best_match = Utils.find_best_album_match(artist, album, album_info)
-            if best_match:
-                if not best_match.get('album_image'):
+            album_data = Utils.lookup_album_data(artist, album, collection_info)
+            if album_data:
+                album_link, album_image = album_data
+                if not album_image:
                     print(f"Missing album image for {album} by {artist}")
-                if not best_match.get('album_link'):
+                if not album_link:
                     print(f"Missing album link for {album} by {artist}")
-                ImageHandler.download_image(best_match.get('album_image', ''), albums_folder, album)
+                if album_image:
+                    ImageHandler.download_image(album_image, albums_folder, album)
 
     def _print_links(self, collection_info: Dict, top_artists: List[Tuple[str, int]], top_albums: List[Tuple[Tuple[str, str], int]]):
         print("\nArtist Links:")
         for artist, _ in top_artists:
-            artist_key = normalize_text(artist)
-            if artist_key in collection_info:
-                artist_link = collection_info[artist_key].get('artist_link', 'No link available')
-                print(f"{artist}: {artist_link}")
+            artist_data = Utils.lookup_artist_data(artist, collection_info)
+            if artist_data:
+                artist_link, artist_image = artist_data
+                print(f"{artist}: {artist_link or 'No link available'}")
+            else:
+                print(f"No data found for {artist}")
 
         print("\nAlbum Links:")
         for (artist, album), _ in top_albums:
-            album_key = (normalize_text(artist), normalize_text(album))
-            if album_key in collection_info:
-                album_link = collection_info[album_key].get('album_link', 'No link available')
-                print(f"{album} by {artist}: {album_link}")
+            album_data = Utils.lookup_album_data(artist, album, collection_info)
+            if album_data:
+                album_link, album_image = album_data
+                print(f"{album} by {artist}: {album_link or 'No link available'}")
             else:
                 print(f"No data found for {album} by {artist}")
 
