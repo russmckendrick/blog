@@ -71,12 +71,19 @@ class ConfigLoader:
         # Get the tools specified for this task
         task_tools = []
         if self.tools and 'tools' in config:
-            task_tools = [self.tools[tool] for tool in config['tools']
-                         if tool in self.tools]
+            for tool_name in config['tools']:
+                if tool_name in self.tools and self.tools[tool_name] is not None:
+                    task_tools.append(self.tools[tool_name])
 
-        return Task(
-            description=description,
-            expected_output=expected_output,
-            agent=agent,
-            tools=task_tools
-        )
+        # Create task with or without tools
+        task_params = {
+            'description': description,
+            'expected_output': expected_output,
+            'agent': agent
+        }
+        
+        # Only add tools if we have valid tools
+        if task_tools:
+            task_params['tools'] = task_tools
+
+        return Task(**task_params)
