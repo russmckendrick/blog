@@ -26,8 +26,11 @@ warnings.filterwarnings("ignore", category=DeprecationWarning, module="opentelem
 from pydantic import BaseModel
 from crewai import Agent, Task, Crew, Process
 from langchain.tools import BaseTool
-from langchain_community.tools import DuckDuckGoSearchRun
-from crewai_tools import WebsiteSearchTool
+from crewai_tools import SerperDevTool, WebsiteSearchTool
+try:
+    from langchain_community.tools import DuckDuckGoSearchRun
+except ImportError:
+    DuckDuckGoSearchRun = None
 from config.config_loader import ConfigLoader
 from dotenv import load_dotenv
 
@@ -43,19 +46,44 @@ def normalize_text(text: str) -> str:
     # Normalize Unicode characters and convert to lowercase
     return unicodedata.normalize('NFKD', text.strip()).lower()
 
+class SimpleFallbackTool(BaseTool):
+    """Fallback tool when other search tools aren't available."""
+    name: str = "simple_search"
+    description: str = "A simple fallback search tool"
+    
+    def _run(self, query: str) -> str:
+        return f"Search query: {query} - Using fallback search mode"
+
 # Shared utility functions
 class Utils:
     @staticmethod
     def initialize_tools() -> Dict[str, BaseTool]:
         """Initialize search tools with error handling."""
         try:
-            return {
-                'search': DuckDuckGoSearchRun(),
-                'web': WebsiteSearchTool()
-            }
+            tools = {}
+            
+            # Try to use SerperDevTool first (CrewAI native)
+            try:
+                tools['search'] = SerperDevTool()
+            except Exception:
+                # Fallback to DuckDuckGo if SerperDevTool fails
+                try:
+                    if DuckDuckGoSearchRun:
+                        tools['search'] = DuckDuckGoSearchRun()
+                    else:
+                        raise Exception("DuckDuckGo not available")
+                except Exception:
+                    # Final fallback
+                    print("Using fallback search tool")
+                    tools['search'] = SimpleFallbackTool()
+            
+            # Web search tool
+            tools['web'] = WebsiteSearchTool()
+            
+            return tools
         except Exception as e:
             print(f"Error initializing tools: {e}")
-            return None
+            return {}
 
     @staticmethod
     def configure_logging():
