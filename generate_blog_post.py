@@ -7,6 +7,7 @@ import time
 import re
 import warnings
 import logging
+import unicodedata
 from datetime import datetime, timedelta
 from collections import Counter
 from jinja2 import Environment, FileSystemLoader
@@ -24,6 +25,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 no_of_items = 11
+
+def normalize_text(text: str) -> str:
+    """Normalize text for case-insensitive Unicode matching."""
+    if not text:
+        return ""
+    # Normalize Unicode characters and convert to lowercase
+    return unicodedata.normalize('NFKD', text.strip()).lower()
 
 # Shared utility functions
 class Utils:
@@ -79,8 +87,10 @@ class Utils:
         """Find best matching entry using fuzzy matching."""
         max_ratio = 0
         best_match = None
+        normalized_name = normalize_text(name)
         for key, data in info_dict.items():
-            ratio = fuzz.ratio(name.lower(), key.lower())
+            normalized_key = normalize_text(key) if isinstance(key, str) else key
+            ratio = fuzz.ratio(normalized_name, normalized_key)
             if ratio > max_ratio:
                 max_ratio = ratio
                 best_match = data
@@ -91,9 +101,13 @@ class Utils:
         """Find best matching album using fuzzy matching."""
         max_ratio = 0
         best_match = None
+        normalized_artist = normalize_text(artist)
+        normalized_album = normalize_text(album)
         for (a, b), data in album_info.items():
-            artist_match_ratio = fuzz.ratio(artist.lower(), a.lower())
-            album_match_ratio = fuzz.ratio(album.lower(), b.lower())
+            normalized_a = normalize_text(a) if isinstance(a, str) else a
+            normalized_b = normalize_text(b) if isinstance(b, str) else b
+            artist_match_ratio = fuzz.ratio(normalized_artist, normalized_a)
+            album_match_ratio = fuzz.ratio(normalized_album, normalized_b)
             combined_ratio = (artist_match_ratio + album_match_ratio) / 2
             if combined_ratio > max_ratio:
                 max_ratio = combined_ratio
@@ -193,22 +207,17 @@ class CollectionManager:
         
         # Get hi-res images from the new format
         album_image_url = None
-        artist_image_url = None
         image_base_url = 'https://assets.russ.fm'
         
         if release.get('images_uri_release') and release['images_uri_release'].get('hi-res'):
             album_image_url = f"{image_base_url}{release['images_uri_release']['hi-res']}"
         
-        if release.get('images_uri_artist') and release['images_uri_artist'].get('hi-res'):
-            artist_image_url = f"{image_base_url}{release['images_uri_artist']['hi-res']}"
-        
         # Get URIs for album and artist pages
         album_uri = f"{self.base_url}{release.get('uri_release', '')}" if release.get('uri_release') else None
-        artist_uri = f"{self.base_url}{release.get('uri_artist', '')}" if release.get('uri_artist') else None
-
+        
         if artist and album and album_uri:
-            # Store lowercase key for matching
-            key = (artist.lower(), album.lower())
+            # Store normalized key for matching
+            key = (normalize_text(artist), normalize_text(album))
             info[key] = {
                 'album_image': album_image_url,
                 'album_link': album_uri
@@ -216,13 +225,26 @@ class CollectionManager:
             # Store original case
             original_cases[key] = {'artist': artist, 'album': album}
 
-        if artist and artist_uri:
-            artist_key = artist.lower()
-            info[artist_key] = {
-                'artist_image': artist_image_url,
-                'artist_link': artist_uri
-            }
-            original_cases[artist_key] = artist
+        # Process artist data from the nested artists array
+        if release.get('artists'):
+            for artist_data in release['artists']:
+                artist_name = artist_data.get('name')
+                artist_uri_path = artist_data.get('uri_artist')
+                
+                if artist_name and artist_uri_path:
+                    artist_key = normalize_text(artist_name)
+                    artist_uri = f"{self.base_url}{artist_uri_path}"
+                    
+                    # Generate artist image URL using the URI path (which handles special chars correctly)
+                    # Extract the slug from the URI path and construct image URL
+                    artist_slug = artist_uri_path.strip('/').split('/')[-1]  # e.g., "sigur-ros" from "/artist/sigur-ros/"
+                    artist_image_url = f"{image_base_url}/artist/{artist_slug}/{artist_slug}-hi-res.jpg"
+                    
+                    info[artist_key] = {
+                        'artist_image': artist_image_url,
+                        'artist_link': artist_uri
+                    }
+                    original_cases[artist_key] = artist_name
 
 
 class ImageHandler:
@@ -425,8 +447,8 @@ class BlogPostGenerator:
         
         for artist in artist_data['weeklyartistchart']['artist']:
             artist_name = artist['name']
-            # Use lowercase for the counter key
-            key = artist_name.lower()
+            # Use normalized text for the counter key
+            key = normalize_text(artist_name)
             artists[key] += int(artist['playcount'])
             # Store original case
             original_entries[key] = artist_name
@@ -443,8 +465,8 @@ class BlogPostGenerator:
         for album in album_data['weeklyalbumchart']['album']:
             artist = album['artist']['#text']
             album_name = album['name']
-            # Use lowercase for the counter key
-            key = (artist.lower(), album_name.lower())
+            # Use normalized text for the counter key
+            key = (normalize_text(artist), normalize_text(album_name))
             albums[key] += int(album['playcount'])
             # Store original case
             original_entries[key] = (artist, album_name)
@@ -480,14 +502,14 @@ class BlogPostGenerator:
     def _print_links(self, collection_info: Dict, top_artists: List[Tuple[str, int]], top_albums: List[Tuple[Tuple[str, str], int]]):
         print("\nArtist Links:")
         for artist, _ in top_artists:
-            artist_key = artist.lower()
+            artist_key = normalize_text(artist)
             if artist_key in collection_info:
                 artist_link = collection_info[artist_key].get('artist_link', 'No link available')
                 print(f"{artist}: {artist_link}")
 
         print("\nAlbum Links:")
         for (artist, album), _ in top_albums:
-            album_key = (artist.lower(), album.lower())
+            album_key = (normalize_text(artist), normalize_text(album))
             if album_key in collection_info:
                 album_link = collection_info[album_key].get('album_link', 'No link available')
                 print(f"{album} by {artist}: {album_link}")
