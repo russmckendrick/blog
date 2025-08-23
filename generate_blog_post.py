@@ -13,6 +13,16 @@ from collections import Counter
 from jinja2 import Environment, FileSystemLoader
 from fuzzywuzzy import fuzz
 from typing import Any, Dict, List, Tuple, Optional
+
+# Suppress deprecation warnings early
+warnings.filterwarnings("ignore", message=".*TracerProvider.*")
+warnings.filterwarnings("ignore", message=".*class-based.*config.*deprecated.*") 
+warnings.filterwarnings("ignore", message=".*schema.*method.*deprecated.*")
+warnings.filterwarnings("ignore", message=".*path_separator.*configuration.*")
+warnings.filterwarnings("ignore", category=DeprecationWarning, module="pydantic")
+warnings.filterwarnings("ignore", category=DeprecationWarning, module="alembic")
+warnings.filterwarnings("ignore", category=DeprecationWarning, module="opentelemetry")
+
 from pydantic import BaseModel
 from crewai import Agent, Task, Crew, Process
 from langchain.tools import BaseTool
@@ -49,11 +59,7 @@ class Utils:
 
     @staticmethod
     def configure_logging():
-        """Configure logging and suppress unwanted warnings."""
-        warnings.filterwarnings(
-            "ignore", 
-            message="Overriding of current TracerProvider is not allowed"
-        )
+        """Configure logging for the application."""
         logging.basicConfig(
             level=logging.INFO,
             format='%(asctime)s - %(levelname)s - %(message)s'
