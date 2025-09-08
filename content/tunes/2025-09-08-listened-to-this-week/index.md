@@ -1,0 +1,250 @@
+---
+title: "The Clash The Police and Jethro Tull hits from punk to prog to indie"
+author: "Russ McKendrick"
+date: "2025-09-08"
+description: "From Clash and Police hits to Tull epics and Supertramp drama, Britpop and indie hues from Suede Belle and Sebastian, Dodgy singles and B sides. Standout If Youre Feeling Sinister."
+draft: false
+robotsNoIndex: false
+showToc: true
+ShowRelated: false
+cover:
+    image: "/img/weekly-tunes-002.png"
+    relative: false
+    alt: "From Clash and Police hits to Tull epics and Supertramp drama, Britpop and indie hues from Suede Belle and Sebastian, Dodgy singles and B sides. Standout If Youre Feeling Sinister."
+tags:
+    - "Listened"
+keywords:
+
+- "The Clash"
+- "Hits Back"
+- "The Police"
+- "Greatest Hits"
+- "Dodgy"
+- "Ace A's + Killer B's"
+- "Suede"
+- "Antidepressants"
+- "Belle and Sebastian"
+- "If You're Feeling Sinister"
+- "Supertramp"
+- "Crime of the Century"
+- "Jethro Tull"
+- "Thick as a Brick"
+---
+
+{{< notice note >}}
+This is what GPT had to say this about what I listened to last week; it is auto-generated and might not be 💯% factual.
+{{< /notice >}}
+
+{{< gallery match="artists/*" sortOrder="desc" rowHeight="250" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=true >}}
+
+## Hits Back by The Clash ⚡️
+### Setlist as Storyline 🎭
+“Hits Back” (2013) isn’t just a greatest-hits—its a narrative. Sequenced to mirror a 1982 Brixton Fair Deal (now Brixton Academy) setlist, it drops you into the Clash’s live arc: the sprinting openers, the dubby mid-set haze, the closing salvos that felt like headlines shouted from a street corner. It’s a time capsule of how the band understood momentum, tension, and release on stage—translated to a living-room revolution. 🎤🔥
+
+### The Brixton Blueprint 🗺️
+The compilation’s running order follows a specific night’s flow, with artwork reproducing the handwritten setlist—an intimate, tactile touch that evokes sweaty halls and battered flight cases. Rather than a chronological museum tour, this is muscle memory pressed to disc: you feel the band’s genre-crashing instincts—punk, reggae, rockabilly, funk—snap into focus the way they did under the lights. 🎶📝
+
+### Released in Lockstep with a Myth 📦
+Issued alongside the colossal “Sound System” box set in September 2013, “Hits Back” played the role of accessible front door to the Clash’s house of ideas. While “Sound System” dove into remasters and rarities, “Hits Back” made the case for the band’s popular canon as a live organism—an argument that their anthems (“London Calling,” “Should I Stay or Should I Go,” “Rock the Casbah”) weren’t just radio fodder but cogs in a kinetic, political machine. 🏠🔊
+
+### The Only Band That Mixes This Hard 🧪
+What makes “Hits Back” unique isn’t just the songs—it’s the crossfade of ideologies and sonics. You get the jump-cut from punk urgency to dub spaciousness, from street reportage to surreal wordplay. Sequencing classic singles alongside deep cuts mirrors the way The Clash collapsed walls between subcultures in real time. That genre agility—so natural it felt inevitable—still fuels post-punk revivalists, indie agitators, and global bass scenes today. 🌍⚙️
+
+### Lesser-Known Sparks ✨
+- The title “Hits Back” cheekily suggests retaliation rather than nostalgia—true to a band that never played passive with its own legacy. 🥊  
+- The Brixton Fair Deal reference roots the record in a specific London venue moment, capturing the city’s early-’80s tensions—youth unemployment, race relations, and club culture ferment—contexts baked into the Clash’s DNA. 🏙️  
+- The artwork’s setlist isn’t just ephemera; it’s a map to the emotional geometry of a Clash night: pulse, pause, pressure, payoff. 🗺️
+
+### Why It Still Lands in 2025 📡
+In an algorithmic era, “Hits Back” models intentional curation: a political mixtape disguised as a show. It reminds newer listeners that sequencing can argue as loudly as lyrics. For artists raised on playlists, this album demonstrates how order turns tracks into testimony. And for fans, it’s a reminder that The Clash’s big singalongs were never divorced from the grit of the newsstand or the dancefloor’s liberation. 📰💃
+
+### Legacy: A Set That Keeps Touring 🏆
+“Hits Back” became the go-to gateway for the post-Strummer generation—lean, loud, and alive. It doesn’t canonize; it galvanizes. Each replay revives the idea that punk can be expansive, that pop hooks can riot, and that a band’s best-of can still feel like a night out where the lights never quite come up. 🚦🎸
+
+## Greatest Hits by The Police 🚨
+
+### A Snapshot in Blue and Yellow 📸
+When The Police issued Greatest Hits in 1992, it felt less like a victory lap and more like a forensic snapshot of a band that smuggled reggae accents and punk urgency into the pop mainstream. Released in the CD-dominated era and later reintroduced on half-speed–mastered vinyl in 2022, the set leans on the original single/album mixes, letting the trio’s lean chemistry do the heavy lifting—no shiny 1986 remixes to sand off the edges. You can practically hear the air around Stewart Copeland’s hi-hats and the chorus shimmer of Andy Summers’ clean guitars as they tug against Sting’s melodic bass lines. 🎚️🎸
+
+### Why This Compilation Matters 🧭
+Unlike 1986’s Every Breath You Take: The Singles (which favored the era’s new mixes), Greatest Hits restores the narrative arc of the group’s rise—from the wiry skank of Roxanne and So Lonely to the widescreen refinement of Every Breath You Take and Wrapped Around Your Finger. It quietly corrected the record for a new generation: original versions, smarter sequencing, and the inclusion of fan-crucial cuts like So Lonely that trace the band’s reggae-punk DNA back to its club days. The result became a UK staple, notching multi‑platinum status and outlasting trends as a definitive front-door entry to the band. 🏅
+
+### Sequencing as Storytelling 🧵
+- Side one feels like the after-hours club: Roxanne, Can’t Stand Losing You, and Message in a Bottle captured with the wiry, open-room immediacy of late-’70s studios.
+- The middle stretch pivots to lunar minimalism—Walking on the Moon and the eerie glow of Invisible Sun—where negative space becomes an instrument.
+- By the closing run—Every Little Thing She Does Is Magic through King of Pain—the Police are stadium-sized without losing their syncopated skeleton. It’s a lesson in dynamics: verses whisper, choruses land like searchlights. 🌕✨
+
+### The 2022 Half-Speed Revival 🛠️
+Three decades on, the compilation got a deep-clean: remastered and cut at half-speed at Abbey Road by Miles Showell, spread across 2LPs for breathing room. Half-speed mastering is more than audiophile trivia—it gives those off-beat accents and ghost notes a little more daylight. Copeland’s sidestick ticks, Summers’ harmonics, Sting’s fretless glide on later tracks—everything stands slightly forward, like a restored negative that finally shows the grain. 🎛️
+
+### Lesser-Known Threads 🧶
+- The original Don’t Stand So Close to Me is here, not the 1986 rework—subtle, but it re-centers the band’s nervy early aesthetic.  
+- So Lonely’s inclusion is a quiet triumph; its DNA would echo through pop-punk and ska revivals in the ’90s and 2000s, from No Doubt to early blink‑182, who absorbed the Police’s trick of turning anxiety into buoyant hooks.  
+- Invisible Sun, often overshadowed, remains one of the band’s boldest political meditations—proof that their sleek surfaces could carry heavy cultural weight. 🕯️
+
+### Echoes Across Genres 🌊
+Guitarists still chase Summers’ crystalline chorus tones (hello, JC‑120 crowd), drummers study Copeland’s reggae-informed hi-hat lattice, and countless songwriters borrow Sting’s trick of marrying uneasy verses to euphoric choruses. Indie and alt-pop artists—from The 1975 to Vampire Weekend—inherit that bright-on-top, rhythm-beneath architecture. The Police made “space” fashionable; Greatest Hits makes the case in 16 arguments.
+
+### Enduring Legacy 🏆
+Greatest Hits endures because it tells the band’s story without editorializing. It’s the rare compilation that feels like an album: tense, spacious, and oddly intimate. Whether you came for the omnipresent Every Breath You Take or stayed for the nervy skank of Can’t Stand Losing You, this set frames The Police not as a playlist, but as a revolution executed with three instruments, a lot of air, and impeccable timing. 🚦
+
+## Ace A’s + Killer B’s by Dodgy 🍭
+### Britpop’s Sweet-Spot Anthology 🎯
+Released in May 1998 as Britpop’s first golden wave receded, Ace A’s + Killer B’s captured Dodgy at their tuneful peak—hook-heavy singles on one side, cult-favorite flips on the other. It functions like a time capsule: the buoyant optimism of mid-90s UK radio, the sun-streaked harmonies that set Dodgy apart, and a band savvy enough to make B-sides feel like secret messages to the faithful.
+
+### Singles That Stuck to Your Summer ☀️
+From the breezy Staying Out for the Summer to the singalong juggernaut Good Enough (a top 5 UK hit), Dodgy’s A-sides were era-defining. In a Room and So Let Me Go Far dialed up tight riffs and exuberant choruses, while If You’re Thinking of Me offered their reflective streak—proof they could slow the engine without losing the melody. These tracks weren’t just “hits”; they were fixtures at festivals and in shared houses with portable stereos and open windows.
+
+### The “Killer” in the B’s 🐝
+What makes this compilation special is how it dignifies the B-side tradition. In the 90s UK scene, B-sides were a proving ground; Dodgy used them to stretch out—experimenting with harmonies, psychedelic edges, and acoustic detours that didn’t always fit the single cycle. The result is a parallel portrait of the band: more playful, sometimes stranger, and often more intimate. Fans didn’t just buy singles for the A—they chased the B for surprises.
+
+### Harmony as a Statement 🎙️
+Dodgy’s secret weapon was always those Beach Boys-meets-busker harmonies. At a time when Britpop leaned on swagger and snark, Dodgy doubled down on blended voices and sunlit chord changes. The arrangements—stacked vocals, jangling guitars, rhythm tracks that bounce instead of stomp—remain a study in how to make “feel-good” music that’s musically savvy. The compilation showcases that craft in widescreen.
+
+### Between Peak and Parting 🧭
+Ace A’s + Killer B’s arrives at a hinge moment in the band’s story. It effectively bookends an A&M/Polydor era that saw chart success, heavy touring, and a community-like fan base. Issued as the original run came to a pause, it felt like both a celebration and a curtain call—capturing a band whose positivity felt radical in a scene increasingly defined by hangovers and comedowns.
+
+### Cultural Echoes and Quiet Influence 🌍
+While contemporaries chased bigger statements, Dodgy normalized generosity: bigger choruses, deeper B-sides, friendlier shows. That ethos echoes in later UK indie-pop—bands who prioritize melodic uplift without irony, and who treat non-album tracks as canon rather than landfill. In a broader sense, Ace A’s + Killer B’s is a reminder that pop smarts and emotional openness can outlast fashion.
+
+### Fan Lore and Lifers 💌
+Ask long-time fans and you’ll hear travelogues of following Dodgy across summer festivals, memorizing harmonies in shared flats, and trading B-sides like postcards. This compilation sits at the center of that lore: a gateway for newcomers and a map for completists. Even today, anniversary shows for Ace A’s + Killer B’s draw a cross-generational crowd—proof those choruses still travel.
+
+### Why It Endures ✨
+- It’s a perfectly paced listen—singles that sparkle, B-sides that deepen.  
+- It encapsulates a specific Britpop mood: warmth without arrogance.  
+- It honors the craft of songwriting and the culture of the single.  
+
+Spin it front-to-back and you’ll hear not just a greatest-hits package, but a philosophy: music as community, melody as a common language, and B-sides as love letters to the people who were there from the start.
+
+## Antidepressants by Suede 💊⚡
+### A Razor-Wire Lullaby 🎙️
+“Antidepressants” finds Suede in full late-career ferocity—lean, hungry, and unafraid to lace glamour with grit. Surfacing during the Autofiction era, the track distills the band’s long-running themes—escape, dependency, and nocturnal romance—into a sprint of serrated guitars and Brett Anderson’s tremoring croon. It’s the sound of a group that learned to make catharsis feel both dangerous and tender, as if dancing on shattered glass in a neon-lit pharmacy.
+
+### From B-Side to Bloodstream 🧬
+Suede have a habit of hiding gems in the margins, and “Antidepressants” is classic Suede sleight of hand: a song that could headline a set, tucked away like a secret. In the lineage of their storied B-sides (“My Insatiable One,” “Killing of a Flashboy”), this track carries that tradition—raw, immediate, written like a confession and hurled like a flare. Fans who track setlists and limited singles know the thrill: Suede’s “secondary” releases often map the band’s real heartbeat.
+
+### Autofiction’s Shadow Twin 🌓
+Autofiction was Suede’s manifesto of tape hiss and human heat—recorded with the urgency of a great debut but with the scars of experience. “Antidepressants” feels like its shadow twin: jagged, punchy, and emotionally blunt. The guitars snap like elastic; the rhythm section locks into a post-punk strut; Anderson delivers lines with a lived-in ache that nods to the band’s romantic fatalism while speaking to modern malaise. It’s less lacquered glamour, more sodium-streetlight realism—Dog Man Star’s poetry sharpened by Coming Up’s bite.
+
+### Chemical Romance, Modern Malaise 💔💊
+Suede have always told love stories haunted by the city—subways, tower blocks, late buses, and pills in jacket pockets. “Antidepressants” updates that map for the 2020s, where self-medication is mainstream conversation and the quick fix feels both intimate and industrial. The song isn’t finger-wagging; it’s observational—aware that chemicals can be lifelines and prisons, that romance can feel like a prescription and a withdrawal. In classic Suede fashion, the personal and social blur into one nocturne.
+
+### Production: Teeth and Tape Hiss 🎛️
+Technically, “Antidepressants” leans into Suede’s renewed live-room philosophy: fewer overdubs, more friction. The guitars are mic’d to catch the scrape of plectrum; the drums sit up-front with a dry crack; the bass snakes melodically rather than thuds. This immediacy recalls their earliest sessions while benefiting from seasoned restraint—space where needed, impact where it counts. The result is post-punk velocity wearing glam’s sharp jacket.
+
+### The Faithful Hear It First 🗺️👥
+Part of the track’s mythos is how fans encountered it—through setlists, limited editions, and live clips traded with the fervor of ‘90s zines gone digital. In the Suede universe, discovery is part of devotion. “Antidepressants” became a password among faithfuls: you had to be there, or you had to care enough to dig. That intimacy mirrors the song’s subject matter—private struggles, public noise—and helps explain its cultish glow.
+
+### Echoes and Influence 📡
+You can hear “Antidepressants”’ DNA in the current wave of UK guitar bands chasing tension over polish—short songs, high stakes, no safety nets. It also dialogues with peers who’ve reframed Britpop’s afterimage through a darker lens—echoes of Interpol’s stern romance, Savages’ serration, and Idles’ bodily immediacy, but with Suede’s singular swoon intact. For younger artists, it’s a blueprint: glam doesn’t need glitter to cut deep.
+
+### Why It Matters Now 🕯️
+In an era when mental health is discussed more openly but often commodified, “Antidepressants” feels uncomfortably true. It neither glamorizes nor condemns; it inhabits. The track’s power lies in its contradiction—beautiful and bruised, wired and weary. Suede have aged into that paradox gracefully, and “Antidepressants” proves their alchemy still works: take the darkness, make it sing, let the chorus hold you for three minutes—and then let go.
+
+## If You’re Feeling Sinister by Belle and Sebastian 🌧️📚
+
+### Ten Songs, One Glasgow Autumn 🍂
+Released in November 1996 on Jeepster, If You’re Feeling Sinister was written largely during Stuart Murdoch’s recovery from chronic fatigue syndrome—days spent in libraries, cafes, and church halls turned into miniature novels set to chamber-pop. Recorded quickly in Glasgow with engineer/producer Tony Doogan, its hushed textures weren’t a lo-fi accident but a deliberate devotion to intimacy: brushed drums, parlor-room pianos, shy trumpet, and strings that feel smuggled from a school orchestra. The songs move like whispered confessions on a bus ride home.
+
+### The Seminar for Outsiders 🎓
+Murdoch’s lyrics cast everyday Glaswegians as saints and sinners—“The Stars of Track and Field,” “The Fox in the Snow,” and “Judy and the Dream of Horses” populate a small universe of dreamers, strivers, and spiritual skeptics. Catholic imagery meets secular doubt, library crushes meet existential dread. There’s a sly resistance in titles like “Like Dylan in the Movies” and “Get Me Away From Here I’m Dying,” a refusal of Britpop bravado in favor of interior worlds. It made indie feel bookish without being precious—campus-lit for the heartbroken.
+
+### A Quiet Rebellion in Red 📸🔴
+The cover’s monochrome red portrait—stark, domestic, and resolutely un-rock-star—telegraphed the band’s anti-industry stance. Early on, Belle and Sebastian side-stepped the usual promo circuit, letting word of mouth, fanzines, and university radio do the evangelizing. The album became an unlikely cult text: passed hand-to-hand, quoted in margins, and discovered like a secret. In a year crowded by swaggering releases, Sinister wore a cardigan and still stole the scene.
+
+### Recording on a Shoestring, Scoring in the Margins 🧵🎙️
+Tracked with economy and speed, the record’s small sonic choices made big emotional moves—woodwinds that sigh rather than soar; a rhythm section that tiptoes instead of stomps. The production’s restraint was so central that, years later, the band revisited the album in full at London’s Barbican, releasing If You’re Feeling Sinister: Live at the Barbican to capture the songs’ onstage warmth and dynamic bloom. The contrast became part of the myth: the studio album as a perfectly folded note; the live version as the handwritten letter opened wide.
+
+### Influence: From Twee to Tender Maximalism 🌱➡️🌿
+Sinister re-centered indie away from laddish bravado and toward narrative sensitivity—its fingerprints show up in chamber-pop (Camera Obscura, The Divine Comedy’s softer turns), literate indie (The Shins, Magnetic Fields’ devotees), and the orchestral flourishes of mid-2000s bands who made strings cool again. It helped normalize softness as a stance: vulnerability as not just permissible but powerful. Critics frequently rank it among the era’s best, but its real legacy lives in how many artists learned to whisper—and still be heard.
+
+### Fan Communion and Lived Afterlife 💌
+Ask fans which song saved their semester, and you’ll get ten different answers. “The Boy Done Wrong Again” becomes a winter ritual; “Mayfly” an inside joke; the title track a secular hymn for those grappling with faith, therapy, or both. The album’s characters aged with its listeners—once a refuge for misfits, now a compass for anyone navigating adult compromises. It’s an LP that teaches what to do with melancholy: name it, befriend it, and give it a melody.
+
+### Why It Still Matters Today 🕰️✨
+In a hyper-amplified age, If You’re Feeling Sinister remains subversive: it’s patient, literate, and deliberately small. Its moral universe is complicated but humane; its musical language soft yet unshakeable. Put it on and the world shrinks to a room where tenderness is a radical act—and every chorus feels like a quiet promise kept.
+
+## Crime of the Century by Supertramp 🌌🚪
+
+### A Midnight Reboot: From Near-Implosion to Clarity 🌙
+In 1974, Supertramp hit reset. After two commercially quiet albums and a revolving door of bandmates, Rick Davies and Roger Hodgson rebuilt the group and cut a record that sounded like the lights coming on in a lonely classroom. Crime of the Century wasn’t just a third album; it was a hard-won identity—sleek, mysterious, and finely engineered, the moment the band’s eccentric pop met cinematic ambition.
+
+### The Ken Scott Lens: Precision With a Pulse 🎚️🎛️
+Producer/engineer Ken Scott (who’d worked with Bowie and Beatles alumni) became their third ear, helping sculpt a sound where every Wurlitzer bark, harmonium breath, and clarinet sigh felt placed with intent. Recording across multiple London studios—including Trident—Scott pushed for space and impact: the snare in “School” cracks like a reprimand; “Rudy” moves like a tracking shot; the title track swells with orchestral dread. It’s prog without bloat—dynamics as drama, not decoration.
+
+### Two Voices, One Mirror 🪞
+Davies and Hodgson wrote separately but created a dialogue: Davies’ gravel-and-smoke pragmatism vs. Hodgson’s high, yearning mysticism. That duality is the album’s engine. “Dreamer” (Hodgson’s sparkplug of a single, hammered out on a Wurlitzer) ricochets against Davies’ slow-burn haunt “Bloody Well Right.” Together, they sketch a world where conformity bruises the spirit, but dreamers aren’t safe either.
+
+### Classroom Doors and Station Platforms: A Cinematic Tracklist 🚉
+- School: Whistle, harmonica, and a bassline that stalks—childhood as a cold institution.
+- Bloody Well Right: Sardonic swagger; Davies’ wit enshrined in FM radio.
+- Hide in Your Shell: Hodgson’s sanctuary song, swelling with emotional brass and choir-like textures.
+- Rudy: A miniature film—loneliness in motion, scored with strings, piano, and sudden vistas.
+- If Everyone Was Listening: Theater-curtain metaphor, fragile and fatalistic.
+- Crime of the Century: The curtain call—cosmic, accusatory, and strangely tender.
+
+### The Sleeper That Woke Up the World 💤➡️🌍
+Released by A&M in 1974, the record built quietly and then surged—“Dreamer” and “Bloody Well Right” cracked radio, and the album became a long-haul seller. It’s often called a “sleeper hit,” but that undersells how carefully it was staged: Supertramp toured it like a precision ensemble, and hi-fi listeners embraced it as a reference recording—one of those LPs used to demo speakers, where you can “hear the room.”
+
+### Hipgnosis Bars in the Cosmos 🌌🖼️
+The cover—hands grasping metal bars that float in starry space—came through Hipgnosis involvement (Aubrey Powell’s studio), with striking photography often attributed to Paul Wakefield. It’s the album distilled: a prison with no walls, modern life as both infinite and confining. Before punk spelled it out in block letters, Supertramp whispered it with style.
+
+### Influence: Art-Pop DNA and Studio Standards 🧬
+Crime of the Century refined the art-pop/prog crossroads—concise yet symphonic. You can hear its imprint on later studio-centric pop: the immaculate balances of Tears for Fears, the widescreen melancholy of Radiohead’s The Bends era, even the cultivated bite of Britpop’s more orchestrated corners. Producers cite it for its headroom and instrument separation; bands cite it for making sophistication feel human.
+
+### Why It Still Matters Today 🕰️✨
+In an age of algorithmic gloss, Crime of the Century remains a model for emotional clarity through engineering. Its themes—alienation, performance, escape—read like a pre-internet forecast. And its craft reminds us: technology is a lantern, not a destination. Supertramp didn’t show off the studio; they used it to reveal the characters inside the songs.
+
+### Epilogue: The Long Fade-Out 🌠
+By the time the title track’s strings dissolve, you’re not sure whether you’ve escaped or just noticed the bars. That ambiguity is Supertramp’s signature on Crime of the Century—music that feels impeccably arranged, yet haunted at the edges, like someone switched the classroom lights off and the night just kept playing.
+
+## Thick as a Brick by Jethro Tull 📰🎩
+
+### A Single Song, A Whole World 🌐
+Jethro Tull’s 1972 opus is both a parody and a pinnacle of prog-rock ambition: one continuous 40-plus-minute composition, split only by the LP’s side break. Framed as a poem by the fictional eight-year-old prodigy Gerald Bostock and wrapped in a full faux-newspaper (the St. Cleve Chronicle & Linwell Advertiser), Thick as a Brick wasn’t just an album—it was a media ecosystem. The satire was deliberate: Ian Anderson set out to poke fun at the labyrinthine “concept album,” only to produce one of the genre’s most enduring monuments.
+
+### The St. Cleve Chronicle: Newsprint as Liner Notes 🗞️
+Rather than lyrics-on-a-sleeve, buyers got a 12-page newspaper stuffed with crossword puzzles, horoscopes, fake classifieds, and small-town scandals—each a narrative breadcrumb pointing back to Bostock’s dubious fame and “disqualification” from a poetry prize on moral grounds. The meta-joke worked: the album blurred authorship, journalism, and performance, decades before “world-building” became a buzzword.
+
+### Studio Alchemy and Meter Games 🎚️🧪
+Recorded in London (with Ian Anderson at the production helm), the piece stitches nimble time signatures—5/4, 7/8, 6/8—into seamless transitions, as if folk reels learned how to waltz through a math class. Barre’s guitar carves out muscular counterlines, John Evan’s keys slide from baroque to brawl, Jeffrey Hammond’s bass keeps the ground shifting, and Barriemore Barlow’s drumming is a clinic in precision mischief. The composition feels “suite-like,” yet the recurring motifs and reprises bind it into a unified arc—proof that parody can still be meticulously engineered.
+
+### The Joke That Topped the Charts 🏆📈
+For all its self-aware wink, Thick as a Brick hit No. 1 on the US Billboard 200 and cracked the UK Top 5—prank meets platinum. Part of its power lies in how it invites listeners inside the gag. You aren’t just hearing a song; you’re cross-referencing headlines, decoding asides, and piecing together a mock-moral panic around a child poet who never was.
+
+### Folk Flute, Steel Nerve: Tull’s Sound Refined 🎶🪈
+Coming off Aqualung, Anderson doubled down on the hybrid: earthy British folk lilt, bluesy heft, and chamber-prog intricacy. The flute isn’t an ornament; it’s narrative, switching from pastoral whistle to cutting accent. Acoustic guitars ground the storytelling; sudden electric surges feel like editorial corrections mid-verse. The result is both theatrical and intimate, a village play staged with symphonic confidence.
+
+### Ripples Through Prog and Beyond 🌊
+Thick as a Brick helped set a template for meta-concept albums, influencing later artists who built worlds around records (from neo-prog suites to alt-rock mythmakers). Its structural ambition prefigured the single-track albums and long-form movements embraced by post-rock and modern prog outfits. And its media satire—questioning authority, authorship, and “official” narratives—feels eerily at home in today’s era of headline skepticism.
+
+### Stagecraft and Afterlives 🎭
+Live, Tull leaned into the vaudeville—comic bits, costume shifts, and mock-serious announcements braided through the music. The album has seen thoughtful remixes and archival editions, inviting new ears to the layers hidden in the transitions and edits. Decades later, Anderson revisited the mythos with Thick as a Brick 2, extending the Gerald Bostock “what-if” timeline—like reopening a case file from a town that only exists between grooves.
+
+### Why It Still Matters Today 🧠✨
+Thick as a Brick is prog rock’s sly grin: a reminder that sophistication and satire can share a stage. It challenges the idea that concept albums must be earnest to be profound. In a culture that questions the truth behind every headline, Tull’s newspaper-wrapped epic feels prophetic—an album that asks you not just to listen, but to read between the lines.
+
+## Top Artists (Week 35)
+
+- [The Clash](https://www.russ.fm/artist/the-clash/) (32 plays)
+- [The Police](https://www.russ.fm/artist/the-police/) (19 plays)
+- [Dodgy](https://www.russ.fm/artist/dodgy/) (17 plays)
+- [Suede](https://www.russ.fm/artist/suede/) (11 plays)
+- Belle and Sebastian (10 plays)
+- [Supertramp](https://www.russ.fm/artist/supertramp/) (8 plays)
+- [Jethro Tull](https://www.russ.fm/artist/jethro-tull/) (2 plays)
+
+
+## Top Albums (Week 35)
+
+- Hits Back by [The Clash](https://www.russ.fm/artist/the-clash/)
+- [Greatest Hits](https://www.russ.fm/album/greatest-hits-26517422/) by [The Police](https://www.russ.fm/artist/the-police/)
+- [Ace A's + Killer B's](https://www.russ.fm/album/ace-as-killer-bs-22218358/) by [Dodgy](https://www.russ.fm/artist/dodgy/)
+- Antidepressants by [Suede](https://www.russ.fm/artist/suede/)
+- If You're Feeling Sinister by Belle and Sebastian
+- Crime of the Century by [Supertramp](https://www.russ.fm/artist/supertramp/)
+- [Thick as a Brick](https://www.russ.fm/album/thick-as-a-brick-7190621/) by [Jethro Tull](https://www.russ.fm/artist/jethro-tull/)
+
+
+{{< gallery match="albums/*" sortOrder="desc" rowHeight="200" margins="5" thumbnailResizeOptions="600x600 q90 Lanczos" showExif=true previewType="blur" embedPreview=true loadJQuery=flase >}}
