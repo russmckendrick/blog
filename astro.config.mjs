@@ -55,7 +55,7 @@ export default defineConfig({
 			cache: true,
 			preload: {
 				hover: true,
-				visible: true
+				visible: false  // Disable visible preloading to reduce initial request chain
 			},
 			accessibility: true,
 			smoothScrolling: true,
@@ -63,7 +63,7 @@ export default defineConfig({
 			updateHead: true,
 			reloadScripts: true,
 			progress: false,
-			loadOnIdle: true,
+			loadOnIdle: false,  // Disable idle preloading to reduce background requests
 			globalInstance: true,
 			linkSelector: 'a[href^="/"]:not([data-no-swup]):not(.lg-trigger):not(.astro-lightgallery-adaptive-item):not([href*="#"])',
 			ignoreVisit: (url, { el }) => {
@@ -94,6 +94,16 @@ export default defineConfig({
 			]
 		})
 	],
+	image: {
+		service: {
+			entrypoint: 'astro/assets/services/sharp',
+			config: {
+				limitInputPixels: false,
+			}
+		},
+		// Configure WebP quality and format defaults
+		remotePatterns: [{ protocol: "https" }],
+	},
 	vite: {
 		plugins: [tailwindcss()],
 	},
