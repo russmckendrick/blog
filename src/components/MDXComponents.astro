@@ -1,0 +1,31 @@
+---
+// Global MDX components
+import { YouTube } from '@astro-community/astro-embed-youtube';
+import Instagram from './embeds/Instagram.astro';
+import LinkPreview from './embeds/LinkPreview.astro';
+import {
+  Callout,
+  GeneralCallout,
+  InfoCallout,
+  NoteCallout,
+  TipCallout,
+  ImportantCallout,
+  CautionCallout,
+  WarningCallout,
+} from './embeds/callouts';
+
+// Export components to be used globally in MDX
+export const components = {
+  Instagram,
+  YouTube,
+  LinkPreview,
+  Callout,
+  GeneralCallout,
+  InfoCallout,
+  NoteCallout,
+  TipCallout,
+  ImportantCallout,
+  CautionCallout,
+  WarningCallout,
+};
+---

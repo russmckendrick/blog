@@ -1,0 +1,43 @@
+---
+import BaseHead from '../components/layout/BaseHead.astro';
+import Header from '../components/layout/Header.astro';
+import HeaderWrapper from '../components/layout/HeaderWrapper';
+import Footer from '../components/layout/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+// Import embed components to make them available
+import { YouTube } from '@astro-community/astro-embed-youtube';
+import { LinkPreview } from '@astro-community/astro-embed-link-preview';
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: any;
+	keywords?: string[];
+}
+
+const {
+	title = SITE_TITLE,
+	description = SITE_DESCRIPTION,
+	image,
+	keywords
+} = Astro.props;
+
+const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={pageTitle} description={description} image={image} keywords={keywords} />
+	</head>
+	<body class="bg-gray-50 dark:bg-gray-950">
+		<HeaderWrapper client:load autoHide={false}>
+			<Header />
+		</HeaderWrapper>
+		<main class="mt-10 sm:mt-14">
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>

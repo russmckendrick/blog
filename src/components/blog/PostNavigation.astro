@@ -1,0 +1,143 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import FormattedDate from './FormattedDate.astro';
+import { getPostUrl } from '../../utils/url.ts';
+import { getReadingTime } from '../../utils/reading-time';
+
+interface Props {
+	previousPost?: CollectionEntry<'blog'>;
+	nextPost?: CollectionEntry<'blog'>;
+}
+
+const { previousPost, nextPost } = Astro.props;
+
+function getPostData(post: CollectionEntry<'blog'>) {
+	const href = getPostUrl(post.data.pubDate, post.data.title);
+	const heroImage = post.data.heroImage || post.data.cover?.image;
+	const alt = post.data.cover?.alt || post.data.title;
+	const readingTime = getReadingTime(post.body);
+
+	return { href, heroImage, alt, readingTime };
+}
+---
+
+{(previousPost || nextPost) && (
+	<nav aria-label="Post navigation" class="mt-12 mb-8">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+			{previousPost ? (
+				<a
+					href={getPostData(previousPost).href}
+					class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-4 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 rounded-2xl"
+				>
+					<article class="relative h-full bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
+						{getPostData(previousPost).heroImage && (
+							<figure class="relative overflow-hidden h-40">
+								<Image
+									src={getPostData(previousPost).heroImage}
+									alt={getPostData(previousPost).alt}
+									width={640}
+									height={360}
+									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+								/>
+							</figure>
+						)}
+						<div class="p-5">
+							<div class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2 flex items-center gap-1">
+								<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+								</svg>
+								Previous Post
+							</div>
+							<h3 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-100 mb-2 line-clamp-2">
+								{previousPost.data.title}
+							</h3>
+							<div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2">
+								<FormattedDate date={previousPost.data.pubDate} />
+								{getPostData(previousPost).readingTime && (
+									<>
+										<span aria-hidden="true">·</span>
+										<span>{getPostData(previousPost).readingTime}</span>
+									</>
+								)}
+							</div>
+						</div>
+					</article>
+				</a>
+			) : (
+				<div class="hidden md:block">
+					<article class="relative h-full bg-gray-100/50 dark:bg-gray-800/30 border border-gray-200/30 dark:border-gray-700/30 rounded-2xl overflow-hidden opacity-40">
+						<div class="h-40 bg-gray-200/50 dark:bg-gray-700/30"></div>
+						<div class="p-5">
+							<div class="text-xs font-medium text-gray-400 dark:text-gray-500 mb-2 flex items-center gap-1">
+								<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+								</svg>
+								No Previous Post
+							</div>
+							<div class="h-4 bg-gray-200/50 dark:bg-gray-700/30 rounded w-3/4 mb-2"></div>
+							<div class="h-3 bg-gray-200/50 dark:bg-gray-700/30 rounded w-1/2"></div>
+						</div>
+					</article>
+				</div>
+			)}
+
+			{nextPost ? (
+				<a
+					href={getPostData(nextPost).href}
+					class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-4 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 rounded-2xl"
+				>
+					<article class="relative h-full bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
+						{getPostData(nextPost).heroImage && (
+							<figure class="relative overflow-hidden h-40">
+								<Image
+									src={getPostData(nextPost).heroImage}
+									alt={getPostData(nextPost).alt}
+									width={640}
+									height={360}
+									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+								/>
+							</figure>
+						)}
+						<div class="p-5">
+							<div class="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2 flex items-center justify-end gap-1">
+								Next Post
+								<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+								</svg>
+							</div>
+							<h3 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-100 mb-2 line-clamp-2">
+								{nextPost.data.title}
+							</h3>
+							<div class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-2">
+								<FormattedDate date={nextPost.data.pubDate} />
+								{getPostData(nextPost).readingTime && (
+									<>
+										<span aria-hidden="true">·</span>
+										<span>{getPostData(nextPost).readingTime}</span>
+									</>
+								)}
+							</div>
+						</div>
+					</article>
+				</a>
+			) : (
+				<div class="hidden md:block">
+					<article class="relative h-full bg-gray-100/50 dark:bg-gray-800/30 border border-gray-200/30 dark:border-gray-700/30 rounded-2xl overflow-hidden opacity-40">
+						<div class="h-40 bg-gray-200/50 dark:bg-gray-700/30"></div>
+						<div class="p-5">
+							<div class="text-xs font-medium text-gray-400 dark:text-gray-500 mb-2 flex items-center justify-end gap-1">
+								No Next Post
+								<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+								</svg>
+							</div>
+							<div class="h-4 bg-gray-200/50 dark:bg-gray-700/30 rounded w-3/4 mb-2"></div>
+							<div class="h-3 bg-gray-200/50 dark:bg-gray-700/30 rounded w-1/2"></div>
+						</div>
+					</article>
+				</div>
+			)}
+		</div>
+	</nav>
+)}

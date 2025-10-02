@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import Pagination from '../../components/layout/Pagination.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+
+export async function getStaticPaths({ paginate }) {
+	const allPosts = (await getCollection('blog'))
+		.filter(post => !post.data.draft)
+		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+	return paginate(allPosts, { pageSize: 5 });
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title={`${SITE_TITLE} - Page ${page.currentPage}`} description={SITE_DESCRIPTION}>
+	<section class="max-w-3xl mx-auto px-5">
+		<ul class="space-y-12">
+			{page.data.map((post) => (
+				<li>
+					<PostCard post={post} />
+				</li>
+			))}
+			</ul>
+
+			{page.total > page.size && (
+				<Pagination
+					currentPage={page.currentPage}
+					totalPages={page.lastPage}
+					getHref={(pageNum) => (pageNum === 1 ? '/' : `/page/${pageNum}/`)}
+					hideIfSingle={false}
+				/>
+			)}
+		</section>
+</BaseLayout>

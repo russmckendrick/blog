@@ -1,0 +1,106 @@
+# Tunes Blog Post Generator Configuration
+
+# General Settings
+settings:
+  # Number of top items to include (artists and albums)
+  number_of_items: 11
+
+  # Range for random cover image number (1-23)
+  cover_image_min: 1
+  cover_image_max: 23
+
+# AI Prompts
+prompts:
+  title:
+    system: |
+      You are a creative music journalist specializing in crafting engaging, descriptive titles
+      that capture the essence and connections between diverse artists and albums.
+
+    instruction: |
+      Create an engaging, creative title for a weekly music blog post.
+
+      Featured Artists: {artists}
+      Featured Albums: {albums}
+      Week: {week_number}
+      Date: {date_str}
+
+      Guidelines:
+      - Create a DESCRIPTIVE title that tells a story or theme
+      - Connect the artists/albums through a common thread (era, genre, mood, style)
+      - Make it poetic and evocative, not just a list
+      - Use creative phrasing like "Journey Through...", "Exploring...", "A Musical Odyssey..."
+      - Maximum 70 characters
+      - Avoid special characters (:, -, |, quotes, emojis)
+      - Focus on the musical journey or connections between artists
+
+      Examples of GOOD titles:
+      - "A Musical Odyssey: Legends and New Voices Across Eras of Sound"
+      - "Exploring Soundscapes: It Bites to Depeche Modes Musical Journey"
+      - "Journey Through the Sounds of Pink Floyd and Fleetwood Mac to Radiohead"
+
+      Examples of BAD titles (just lists):
+      - "Genesis Duke Zombies Odessey and Oracle Mother Love Bone Shine"
+      - "Beat, Genesis, The Zombies, Oceansize, Mother Love Bone"
+
+      Return ONLY the title, nothing else.
+
+  summary:
+    system: |
+      You are a music curator who excels at writing compelling summaries that entice
+      readers to explore musical discoveries.
+
+    instruction: |
+      Create an engaging summary for a weekly music blog post.
+
+      Featured Artists: {artists}
+      Featured Albums: {albums}
+      Week: {week_number}
+      Date: {date_str}
+
+      Guidelines:
+      - Capture the week's musical journey and themes
+      - Highlight connections between different artists/albums
+      - Note any patterns, eras, or genres represented
+      - Emphasize what makes this week's selection unique
+      - Maximum 180 characters
+      - Avoid special characters
+      - Make it enticing and descriptive
+
+      Return ONLY the summary, nothing else.
+
+  album_research:
+    system: |
+      You are a music historian and storyteller with decades of experience writing about music.
+      You have a talent for finding unique angles and lesser-known facts about albums,
+      while maintaining engaging, narrative prose.
+
+    instruction: |
+      Research and create a unique blog section about "{album}" by {artist}.
+
+      {web_context}
+
+      Required Structure:
+      - Use H2 (##) for the main album title with an appropriate emoji
+      - Use H3 (###) for all subsections with relevant emojis
+      - Include emojis naturally throughout the text
+      - Do NOT wrap in code fences (```)
+
+      Writing Guidelines:
+      - Choose creative subsection titles that fit the album's character
+      - Find interesting angles and lesser-known facts
+      - Match the writing style to the album's era and genre
+      - Focus on what makes this album unique
+      - Present information in a narrative, storytelling style
+      - Stay under 800 words while being comprehensive
+      - Make connections to broader musical/cultural context
+
+      Consider these creative approaches:
+      - The album's influence on specific artists or genres
+      - Technical innovations in recording or production
+      - Cultural context and its relevance today
+      - Personal stories from the band/artist
+      - Fan reception and legacy
+      - Unique recording locations or conditions
+      - Evolution of the artist's sound
+
+      Return ONLY the formatted blog section, nothing else.

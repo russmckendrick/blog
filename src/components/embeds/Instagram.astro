@@ -1,0 +1,65 @@
+---
+interface Props {
+	/** Full permalink to the Instagram media, e.g. https://www.instagram.com/reel/... */
+	permalink: string;
+	/** Whether to display the caption underneath the embed (default: true) */
+	captioned?: boolean;
+}
+
+const { permalink, captioned = true } = Astro.props;
+---
+
+<blockquote
+	class="instagram-media rounded-3xl border border-gray-200 bg-white text-center shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-900"
+	data-instgrm-version="14"
+	data-instgrm-permalink={permalink}
+	data-instgrm-captioned={captioned ? '' : undefined}
+>
+	<a href={permalink} target="_blank" rel="noopener noreferrer" class="sr-only">
+		View this post on Instagram
+	</a>
+</blockquote>
+
+<script is:inline>
+	if (typeof window !== 'undefined') {
+		const win = window;
+		if (!win.__instagramEmbedScriptInjected) {
+			const script = document.createElement('script');
+			script.src = 'https://www.instagram.com/embed.js';
+			script.async = true;
+			document.head.appendChild(script);
+			win.__instagramEmbedScriptInjected = true;
+		} else if (win.instgrm && win.instgrm.Embeds && typeof win.instgrm.Embeds.process === 'function') {
+			win.instgrm.Embeds.process();
+		}
+	}
+</script>
+
+<style is:global>
+	.instagram-media {
+		margin: 1.5rem auto !important;
+		max-width: 100% !important;
+		width: 100% !important;
+		background: var(--color-surface, #fff);
+	}
+
+	.dark .instagram-media {
+		background: rgb(17 24 39) !important; /* gray-900 */
+	}
+
+	.instagram-media iframe,
+	.instagram-media-rendered {
+		width: 100% !important;
+		max-width: 100% !important;
+		min-width: unset !important;
+	}
+
+	/* Force dark mode styling for Instagram embeds in dark mode */
+	.dark .instagram-media iframe {
+		color-scheme: dark;
+	}
+
+	.instagram-media ::selection {
+		background: transparent;
+	}
+</style>

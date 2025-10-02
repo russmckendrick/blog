@@ -1,0 +1,14 @@
+---
+// This file makes embed components available globally
+import { YouTube } from '@astro-community/astro-embed-youtube';
+import { LinkPreview } from '@astro-community/astro-embed-link-preview';
+
+// Make components available to the global scope
+globalThis.YouTube = YouTube;
+globalThis.LinkPreview = LinkPreview;
+---
+
+<!-- This component is imported to make YouTube and LinkPreview available globally -->
+<script is:inline>
+  // Components are now globally available
+</script>

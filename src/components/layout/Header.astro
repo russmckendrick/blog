@@ -1,0 +1,164 @@
+---
+import { SITE_TITLE, NAVIGATION_ITEMS, SOCIAL_LINKS } from '../../consts';
+import Icon from '../ui/Icon.astro';
+---
+
+<header id="site-header" class="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80">
+	<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex justify-between items-center h-16">
+				<a href="/" class="flex items-center space-x-3 !text-gray-900 dark:!text-gray-100 visited:!text-gray-900 dark:visited:!text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors no-underline" aria-label="home">
+				<img src="/images/logo.svg" alt="Logo" height="40" width="50" class="h-8 w-10" />
+				<span class="font-bold text-xl">{SITE_TITLE}</span>
+			</a>
+
+			<!-- Mobile menu button -->
+			<button id="menu-trigger" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-label="Toggle menu">
+				<span class="sr-only">Open main menu</span>
+				<!-- Hamburger icon -->
+				<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+				</svg>
+			</button>
+
+			<!-- Desktop menu -->
+			<div class="hidden md:flex md:items-center md:space-x-6">
+				<ul class="flex items-center space-x-4">
+					{NAVIGATION_ITEMS.map(item =>
+						<li>
+							{item.external ? (
+								<a
+									href={item.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="flex items-center justify-center p-2 !text-gray-600 dark:!text-gray-400 visited:!text-gray-600 dark:visited:!text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
+									title={item.name}
+								>
+									<Icon name={item.icon} />
+								</a>
+							) : (
+								<a href={item.url} class="flex items-center justify-center p-2 !text-gray-600 dark:!text-gray-400 visited:!text-gray-600 dark:visited:!text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors" title={item.name}>
+									<Icon name={item.icon} />
+								</a>
+							)}
+						</li>
+					)}
+				</ul>
+
+				<div class="flex items-center">
+					<button id="theme-toggle" class="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Toggle theme">
+						<Icon name="sun" class="theme-icon light-icon h-5 w-5 hidden dark:block" />
+						<Icon name="moon" class="theme-icon dark-icon h-5 w-5 block dark:hidden" />
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Mobile menu, hidden by default -->
+		<div class="md:hidden mobile-hidden" id="mobile-menu">
+			<div class="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+					{NAVIGATION_ITEMS.map(item =>
+						<div>
+							{item.external ? (
+								<a
+									href={item.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="flex items-center px-3 py-2 !text-gray-600 dark:!text-gray-400 visited:!text-gray-600 dark:visited:!text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
+								title={item.name}
+							>
+								<Icon name={item.icon} />
+								<span class="ml-3">{item.name}</span>
+							</a>
+						) : (
+								<a href={item.url} class="flex items-center px-3 py-2 !text-gray-600 dark:!text-gray-400 visited:!text-gray-600 dark:visited:!text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors" title={item.name}>
+								<Icon name={item.icon} />
+								<span class="ml-3">{item.name}</span>
+							</a>
+						)}
+					</div>
+				)}
+				<div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+					<button id="mobile-theme-toggle" class="flex items-center w-full px-3 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors" aria-label="Toggle theme">
+						<Icon name="sun" class="theme-icon light-icon h-5 w-5 hidden dark:block" />
+						<Icon name="moon" class="theme-icon dark-icon h-5 w-5 block dark:hidden" />
+						<span class="ml-3">Toggle theme</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		// Theme switching functionality
+		const themeToggle = document.getElementById('theme-toggle');
+		const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+		const html = document.documentElement;
+
+		// Initialize theme following Tailwind docs pattern
+		const initializeTheme = () => {
+			// Set the dark class based on localStorage or system preference
+			const isDark = localStorage.theme === 'dark' ||
+				(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+			html.classList.toggle('dark', isDark);
+			html.setAttribute('data-theme', isDark ? 'dark' : 'light');
+		};
+
+		// Apply theme - using Tailwind's class-based dark mode and data-theme for Expressive Code
+		const applyTheme = (theme: string) => {
+			if (theme === 'dark') {
+				html.classList.add('dark');
+				html.setAttribute('data-theme', 'dark');
+				localStorage.theme = 'dark';
+			} else {
+				html.classList.remove('dark');
+				html.setAttribute('data-theme', 'light');
+				localStorage.theme = 'light';
+			}
+		};
+
+		// Initialize theme on page load
+		initializeTheme();
+
+		// Theme toggle click handlers
+		const toggleTheme = () => {
+			const isDark = html.classList.contains('dark');
+			const newTheme = isDark ? 'light' : 'dark';
+			applyTheme(newTheme);
+		};
+
+		if (themeToggle) {
+			themeToggle.addEventListener('click', toggleTheme);
+		}
+
+		if (mobileThemeToggle) {
+			mobileThemeToggle.addEventListener('click', toggleTheme);
+		}
+
+		// Mobile menu functionality
+		const menuTrigger = document.getElementById('menu-trigger');
+		const mobileMenu = document.getElementById('mobile-menu');
+
+		if (menuTrigger && mobileMenu) {
+			menuTrigger.addEventListener('click', function() {
+				mobileMenu.classList.toggle('mobile-hidden');
+			});
+
+			// Hide menu when clicking outside
+			document.addEventListener('click', function(event) {
+				if (!menuTrigger.contains(event.target as Node) && !mobileMenu.contains(event.target as Node)) {
+					mobileMenu.classList.add('mobile-hidden');
+				}
+			});
+
+			// Close menu on escape key
+			document.addEventListener('keydown', function(event) {
+				if (event.key === 'Escape') {
+					mobileMenu.classList.add('mobile-hidden');
+				}
+			});
+		}
+	});
+</script>

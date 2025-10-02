@@ -1,0 +1,13 @@
+---
+import { YouTube as YouTubeEmbed } from '@astro-community/astro-embed-youtube';
+
+interface Props {
+  id: string;
+  params?: string;
+  playlabel?: string;
+}
+
+const { id, params, playlabel } = Astro.props;
+---
+
+<YouTubeEmbed id={id} params={params} playlabel={playlabel} />

@@ -1,0 +1,26 @@
+---
+import { YouTube } from '@astro-community/astro-embed-youtube';
+import { LinkPreview } from '@astro-community/astro-embed-link-preview';
+---
+
+<!-- YouTube embed example -->
+<YouTube id="oqUclC3gqKs" />
+
+<!-- Link preview example -->
+<LinkPreview id="https://www.anthropic.com/news/claude-4" />
+
+<style>
+	/* Custom styling for embeds */
+	:global(.youtube-embed) {
+		margin: 2rem 0;
+		border-radius: 0.5rem;
+		overflow: hidden;
+	}
+
+	:global(.link-preview) {
+		margin: 1.5rem 0;
+		border-radius: 0.5rem;
+		border: 1px solid var(--border);
+		overflow: hidden;
+	}
+</style>

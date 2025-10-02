@@ -1,0 +1,85 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import FormattedDate from './FormattedDate.astro';
+import { getPostUrl } from '../../utils/url.ts';
+import { getReadingTime } from '../../utils/reading-time';
+import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../../utils/tags';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+	priority?: boolean; // For LCP optimization on first card
+}
+
+const { post, priority = false } = Astro.props;
+const href = getPostUrl(post.data.pubDate, post.data.title);
+const heroImage = post.data.heroImage || post.data.cover?.image;
+const alt = post.data.cover?.alt || post.data.title;
+const description = post.data.summary || post.data.description;
+const readingTime = getReadingTime(post.body);
+const author = post.data.author;
+const tags = post.data.tags ?? [];
+---
+
+<a
+	href={href}
+	class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-4 focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-[28px]">
+	<article
+		class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-[28px] shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
+		{heroImage && (
+			<figure class="relative overflow-hidden">
+				<Image
+					src={heroImage}
+					alt={alt}
+					widths={[400, 600, 800]}
+					sizes="(min-width: 768px) 720px, 100vw"
+					loading={priority ? "eager" : "lazy"}
+					fetchpriority={priority ? "high" : "auto"}
+					class="w-full h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+				/>
+			</figure>
+		)}
+		<div class="relative p-6 md:p-8 flex flex-col gap-6">
+			<header class="space-y-3">
+				<h3 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+					{post.data.title}
+				</h3>
+			</header>
+			{description && (
+				<p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+					{description}
+				</p>
+			)}
+			<footer class="mt-1 text-sm text-gray-500 dark:text-gray-400 flex flex-wrap items-center gap-x-2 gap-y-3 justify-between">
+				<span class="text-inherit">
+					<FormattedDate date={post.data.pubDate} />
+				</span>
+				{readingTime && (
+					<>
+						<span aria-hidden="true">·</span>
+						<span>{readingTime}</span>
+					</>
+				)}
+				{author && (
+					<>
+						<span aria-hidden="true">·</span>
+						<span>{author}</span>
+					</>
+				)}
+				{tags.length > 0 && (
+					<div class="flex flex-wrap gap-2 ml-auto">
+						{tags.slice(0, 6).map((tag) => (
+							<a
+								href={getTagUrl(tag)}
+								class={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${getTagColorClasses(tag)} transition-all hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500/50`}
+								onclick="event.stopPropagation()"
+							>
+								{getTagDisplayName(tag)}
+							</a>
+						))}
+					</div>
+				)}
+			</footer>
+		</div>
+	</article>
+</a>

@@ -2,106 +2,277 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Repository Overview
+## Commands
 
-This is a Hugo-based blog hosted at https://www.russ.cloud/, focusing on technical content related to DevOps, automation, cloud computing, and infrastructure-as-code.
+### Development
+- `npm run dev` - Start Astro development server (http://localhost:4321) with hot reloading
+- `npm run build` - Build production site to `./dist/`
+- `npm run preview` - Preview production build locally
+- `npx astro check` - Run type-safe Astro diagnostics (run before PRs)
+- `npm run astro -- sync` - Regenerate types after adding/changing frontmatter fields
 
-## Build & Development Commands
+### Content Creation
+- `npm run post` - Interactive script to create a new blog post with proper structure
+  - Prompts for title, description, tags, and ToC preference
+  - Automatically creates MDX file with frontmatter in `src/content/blog/`
+  - Creates corresponding assets directory in `src/assets/`
+  - Generates filename in format: `YYYY-MM-DD-slug.mdx`
+  - Sets `draft: true` by default
 
-### Hugo Site Management
+- `npm run tunes` - Generate weekly music blog post from Last.fm data (see [Tunes Generator](#tunes-blog-post-generator))
+  - Fetches Last.fm listening stats for the previous week
+  - AI-powered album research and content generation
+  - Downloads artist/album artwork from russ.fm
+  - Creates MDX post with galleries in `src/content/tunes/`
+  - Options: `--week_start=YYYY-MM-DD` (custom week), `--debug` (single album)
+
+### Image Optimization
+- `npm run optimize` - Optimize all images in `src/assets/` and `public/assets/` in place
+  - Compresses JPG, PNG, WebP, and AVIF formats
+  - Uses quality 85 with progressive JPEGs
+  - Only replaces originals if optimization saves space
+  - Shows progress and savings for each image
+  - Displays total space saved summary
+- `npm run optimize <path>` - Optimize images in a specific directory
+  - Supports both relative (to project root) and absolute paths
+  - Example: `npm run optimize src/assets/2025-10-01-my-post`
+
+### Content Migration
+- `scripts/convert-to-mdx.sh` - Script for migrating legacy posts to MDX format
+
+## Architecture Overview
+
+### OpenGraph Image Generation
+
+The site automatically generates custom OpenGraph (OG) images for all blog posts using `astro-og-canvas`:
+- **Endpoint**: `src/pages/og/[...route].ts` - Dynamic route that generates OG images
+- **Images**: Generated at build time and saved to `dist/og/[post-slug].png`
+- **Dimensions**: 1200x630 (standard OG image size)
+- **Design**: Features site logo, gradient background (gray-900 to gray-800), blue accent border, and Inter font family
+- **Integration**: Blog posts automatically reference their OG image in meta tags via the `ogImageSlug` prop
+- **Caching**: Images are cached in `node_modules/.astro-og-canvas` across builds for performance
+
+The OG images are automatically linked in the HTML meta tags for both OpenGraph and Twitter Card metadata.
+
+### SEO Management
+
+The site uses `astro-seo-plugin` for comprehensive SEO optimization:
+- **Component**: `AstroSEO` component imported in `src/components/layout/BaseHead.astro`
+- **Features**: Manages meta tags, OpenGraph tags, Twitter Card tags, canonical URLs, and robots directives
+- **Social**: Configured with Twitter handle `@russmckendrick` for creator attribution
+- **Verification**: Includes Mastodon verification link (`rel="me"`)
+- **Sitemap**: Automatically generated via `@astrojs/sitemap` integration, excludes `/draft/` pages
+- **robots.txt**: Generated via `astro-robots-txt` integration with proper disallow rules
+- **RSS Feed**: Available at `/rss.xml` with correct date-based URLs matching site structure
+
+### Content Collections
+This site uses Astro's content collections system for type-safe content management:
+- **Blog collection** (`src/content/blog/`): Main blog posts in `.md` or `.mdx` format
+  - Configured in `src/content.config.ts` with Zod schema for frontmatter validation
+  - Supports both Astro-native and Hugo-style frontmatter fields (e.g., `date`/`pubDate`, `cover` object)
+  - Automatically transforms dates and normalizes field names for backward compatibility
+- **Tunes collection** (`src/content/tunes/`): Music-related content with album metadata
+
+### URL Structure and Routing
+Blog posts use a date-based URL pattern: `/[year]/[month]/[day]/[slug]`
+- Dynamic route implemented in `src/pages/[year]/[month]/[day]/[slug].astro`
+- Slugs are generated from post titles via `createUrlFriendlySlug()` in `src/utils/url.ts`
+- The `getStaticPaths()` function extracts date components and generates all static routes at build time
+
+### MDX Component System
+Global MDX components are available in all blog posts without imports:
+- Components defined in `mdx-components.ts` (root level) are automatically available
+- Embed components live in `src/components/embeds/`
+- Callout components in `src/components/embeds/callouts/`: Info, Note, Tip, Warning, Important, Caution, General
+- All components are injected via the `components` prop in the dynamic blog post route (`src/pages/[year]/[month]/[day]/[slug].astro`)
+- See `EMBED_USAGE.md` for detailed component usage examples
+
+**Available Embed Components:**
+- **Media**: YouTube, Instagram, Giphy, Reddit, Img, LightGallery
+- **Audio/Music**: Audio (MP3/OGG/WAV), AppleMusic
+- **Content**: LinkPreview, ChatMessage
+- **Callouts**: 8 types (Note, Tip, Info, Important, Warning, Caution, General, Callout)
+
+**Adding New Embed Components:**
+1. Create component in `src/components/embeds/YourComponent.astro`
+2. Export from `src/components/embeds/index.ts`
+3. Add to imports in `mdx-components.ts` (root) and export in `components` object
+4. Add to imports in `src/pages/[year]/[month]/[day]/[slug].astro` and add to `components` object
+5. Update `EMBED_USAGE.md` with usage examples and features
+6. Add example to `src/content/blog/2025-09-29-kitchen-sink.mdx`
+
+**Embed Component Guidelines:**
+- Use Tailwind classes directly (no `@apply` in Tailwind v4)
+- Support dark mode via `.dark` class selector
+- Use `is:global` for styles that need to affect markdown content
+- For theme-aware embeds, watch `document.documentElement` for class changes
+- Set `data-theme` attribute for Expressive Code integration when needed
+- Keep components responsive with max-width constraints
+- Use `my-6` for consistent vertical spacing
+
+### Styling System
+- Tailwind CSS 4.x via `@tailwindcss/vite` plugin (configured in `astro.config.mjs`)
+- Tailwind Typography plugin (`@tailwindcss/typography`) for prose styling
+- Global styles in `src/styles/global.css`
+- Dark mode via `.dark` class on `<html>` element (toggled by theme switcher in Header)
+- Theme also sets `data-theme="dark"` or `data-theme="light"` for Expressive Code integration
+- **Important**: Tailwind v4 has strict `@apply` rules - prefer standard CSS properties or inline Tailwind classes
+
+### Code Highlighting
+- Uses `astro-expressive-code` with GitHub Dark/Light themes
+- Syntax highlighting disabled in markdown (`syntaxHighlight: false`) - handled by Expressive Code
+- Theme selection via `data-theme` CSS selector (`[data-theme='dark']` or `[data-theme='light']`)
+- Custom styling: Fira Code font, 0.5rem border radius
+- Code blocks automatically styled with `my-6` spacing via global CSS
+- **Note**: Expressive Code must be placed before `mdx()` in integrations array
+
+### Site Configuration
+- Site URL and integrations in `astro.config.mjs`
+- Site metadata, social links, and navigation in `src/consts.ts`
+- Tag metadata with colors and emojis defined in `TAG_METADATA` constant in `src/consts.ts`
+- Sitemap automatically excludes `/draft/` pages
+- Page transitions via Swup integration for smooth navigation
+- Search functionality via Pagefind integration
+
+### Build Optimization
+The site uses `@playform/compress` for production build optimization:
+- **Integration**: `@playform/compress` compresses all static assets in the build output
+- **Position**: Added last in the integrations array for optimal compression
+- **Asset Types Compressed**:
+  - CSS (via csso/lightningcss)
+  - HTML (via html-minifier-terser)
+  - JavaScript (via terser)
+  - JSON (via native JSON.stringify)
+  - Images (via sharp): avif, gif, heic, heif, jpeg, jpg, png, raw, tiff, webp
+  - SVG (via svgo)
+- **Configuration**: Uses default settings for all compression types
+- **Note**: Only compresses statically generated build output and pre-rendered routes, not runtime requests
+
+### Layout Structure
+- `BaseLayout.astro`: Base HTML structure with head and footer
+- `BlogPost.astro`: Blog-specific layout with hero images, date display, and tag styling
+- Header/Footer components in `src/components/layout/`
+
+### Tags System
+- Tags page at `/tags/` displays all tags with post counts
+- Animated tag cloud using Web Animations API with staggered fade-in effects
+- Each tag has custom colors defined in `TAG_METADATA` (src/consts.ts)
+- Tag colors: light/dark mode variants with inset rings
+- Tag pages at `/tags/[tag]/[page]/` for browsing posts by tag
+- Pagination built-in for tag archives
+
+### Table of Contents
+- Automatically generated from markdown headings (h2 and h3)
+- Enabled per-post via `showToc: true` in frontmatter
+- Collapsible component with smooth scrolling
+- Displays at the top of post content, before the article body
+- Component: `src/components/blog/TableOfContents.astro`
+- Supports both `showToc` and `ShowToc` frontmatter fields (Hugo compatibility)
+- Headings automatically get scroll margin to account for fixed header
+- Dark mode support with theme-aware styling
+
+## Important Frontmatter Fields
+
+Blog posts support both native Astro and Hugo-style frontmatter:
+- `title` (required): Post title
+- `description` (required): Post description
+- `date` or `pubDate`: Publication date (date takes precedence for Hugo compatibility)
+- `tags`: Array of tag strings
+- `heroImage`: Astro image import for hero banner
+- `cover.image`: Hugo-style cover image path
+- `draft`: Boolean to exclude from production builds
+- `showToc` or `ShowToc`: Display table of contents
+
+After changing the schema in `src/content.config.ts`, run `npm run astro -- sync` to regenerate TypeScript types.
+
+## File Naming Conventions
+- Components: PascalCase (`Header.astro`, `PostCard.astro`)
+- Routes: kebab-case (`about.astro`) or bracketed for dynamic segments (`[slug].astro`)
+- Blog posts: lowercase with hyphens (`2024-12-27-post-title.md`)
+- Keep blog post filenames consistent with URL slug format
+
+## Content Workflow
+1. Create new posts in `src/content/blog/` as `.md` or `.mdx`
+2. Use lowercase filenames with hyphens for consistent URL slugs
+3. Run `npm run astro -- sync` after adding new frontmatter fields
+4. For embeds, use components from `src/components/embeds/` (see `EMBED_USAGE.md`)
+5. Test in dev mode across light/dark themes and responsive breakpoints
+6. Verify with `npx astro check` before committing
+
+## External Links
+External links in markdown are automatically enhanced via `rehypeExternalLinks` plugin (`src/utils/rehype-external-links.ts`):
+- Adds `target="_blank"` and `rel="nofollow noopener noreferrer"` attributes
+- Adds arrow icon (↗) after link text
+- Supports `[noExternalIcon]` marker to suppress icon
+- Supports `[noSpace]` marker to remove spacing before icon
+- Markers are automatically stripped from displayed text
+- Icon styling in `src/styles/global.css` with hover animation
+
+## Tunes Blog Post Generator
+
+Automated weekly music blog post generation using Last.fm data and AI content generation. See `scripts/TUNES_README.md` for full documentation.
+
+### Quick Start
 ```bash
-# Build the site locally (generates static files in /public)
-hugo
+# Generate post for previous week
+npm run tunes
 
-# Start development server with live reload
-hugo server
+# Custom week
+npm run tunes -- --week_start=2025-09-25
 
-# Start development server including draft posts
-hugo server -D
-
-# Build for production with minification
-hugo --minify
+# Debug mode (single album only)
+npm run tunes -- --debug
 ```
 
-### Python Utilities
-The repository includes several Python utility scripts for content management:
-
+### Environment Variables Required
 ```bash
-# Generate automated blog posts (requires API keys)
-python generate_blog_post.py
+# Last.fm
+LASTFM_USER=your-username
+LASTFM_API_KEY=your-api-key
 
-# Fix frontmatter in posts
-python hugo_util_frontmatter_clearner.py
+# Collection metadata
+COLLECTION_URL=https://www.russ.fm
 
-# Update shortcodes across posts
-python hugo_util_shortcode_updater.py
+# AI Provider (choose one)
+OPENAI_API_KEY=your-key
+# OR
+ANTHROPIC_API_KEY=your-key
 
-# Generate alt text for images
-python hugo_util_alt_text_generator.py
-
-# Wrap code blocks with proper styling
-python hugo_util_code_block_wrapper.py
+# Optional: Web search for album facts
+TAVILY_API_KEY=your-key
 ```
 
-## Architecture & Structure
+### What It Does
+1. Fetches weekly listening stats from Last.fm (top 11 artists/albums)
+2. Retrieves album/artist metadata (images, links) from russ.fm collection
+3. AI researches each album and writes engaging blog sections
+4. Downloads high-res artwork to `src/assets/[date]-listened-to-this-week/`
+5. Generates MDX post with LightGallery components in `src/content/tunes/`
 
-### Content Organization
-- **`content/posts/`**: Main blog posts, organized by date with format `YYYY-MM-DD_slug/`
-- **`content/tunes/`**: Auto-generated weekly listening posts from Last.fm data
-- **`content/about/`**: About page content
-- **`content/tags/`**: Tag taxonomy pages
-- **`static/`**: Static assets (images, icons, etc.)
-- **`public/`**: Generated site output (not versioned)
+### Output Structure
+- **Content**: `src/content/tunes/YYYY-MM-DD-listened-to-this-week/index.mdx`
+- **Images**: `src/assets/YYYY-MM-DD-listened-to-this-week/{artists,albums}/`
+- **Features**: Frontmatter, artist/album galleries, AI-generated sections, Top N lists with play counts
 
-### Theme Configuration
-- Uses multiple Hugo themes: `hugo-papermod-russcloud`, `PaperMod`, `hugo-shortcode-gallery`, `hugo-shortcode-russcloud`
-- Custom theme modifications in theme directories
-- Site configuration in `config.yml` with extensive customization
+### Tech Stack
+- **LangChain.js** - AI orchestration
+- **OpenAI GPT-4 / Anthropic Claude** - Content generation
+- **Tavily API** - Optional web search for factual research
+- **Last.fm API** - Listening statistics
+- **russ.fm** - Collection metadata and images
 
-### Key Features
-- Automated weekly listening posts generated via Python scripts
-- Custom shortcodes for images, galleries, terminals
-- WebP image optimization
-- Custom redirects handling via `_redirects` file generation
-- Full-text search functionality
-- Multiple content types (posts, tunes, about)
+### Key Files
+- `scripts/generate-tunes-post.js` - Main orchestrator
+- `scripts/lib/lastfm-client.js` - Last.fm API
+- `scripts/lib/collection-manager.js` - russ.fm metadata
+- `scripts/lib/content-generator.js` - AI content (LangChain)
+- `scripts/lib/image-handler.js` - Image downloads
+- `scripts/lib/blog-post-renderer.js` - MDX rendering
 
-### Post Structure
-Each post follows the pattern:
-```
-content/posts/YYYY-MM-DD_title-slug/
-├── index.md          # Main content with frontmatter
-├── cover.png         # Cover image (if applicable)
-└── images/           # Additional post images
-```
-
-### Frontmatter Schema
-Posts use YAML frontmatter with these key fields:
-- `title`: Post title
-- `description`: Meta description
-- `author`: Post author
-- `date`: Publication date (ISO format)
-- `tags`: Array of tags for categorization
-- `cover`: Cover image configuration
-- `showToc`: Table of contents display
-- `TocOpen`: TOC expansion state
-
-### Automation & Scripts
-- **Auto-generated content**: Weekly listening posts created via Last.fm API integration
-- **Image optimization**: WebP conversion and responsive images
-- **Content processing**: Various Python utilities for bulk operations
-- **Build process**: Hugo generates static site deployed to Cloudflare Pages
-
-### Custom Shortcodes
-- `{{< img >}}`: Responsive image with WebP generation
-- `{{< terminal >}}`: Terminal-styled code blocks
-- `{{< gallery >}}`: Image galleries with lightbox
-- `{{< notice >}}`: Styled notice/alert boxes
-
-## Development Notes
-
-- The site uses a 600-second timeout for builds due to large image processing
-- Custom themes are heavily modified versions of PaperMod
-- Python scripts require various API keys (Last.fm, OpenAI, etc.) via environment variables
-- Images are processed into WebP format automatically for performance
-- The site includes extensive SEO optimization and performance tuning
+## Existing Guidelines
+Additional repository guidelines are documented in `AGENTS.md`, including:
+- Module organization (pages in `src/pages`, components in `src/components`, utils in `src/utils`)
+- Coding style (2-space indentation, semicolon-free, PascalCase components)
+- Commit message conventions (imperative, single-sentence)
+- Testing approach (manual verification + `npx astro check`)
+- Add what we have learned about SWUP and what to look out for

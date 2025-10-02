@@ -1,0 +1,224 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { Icon } from 'astro-icon/components';
+
+type BaseVariant = 'note' | 'tip' | 'important' | 'caution' | 'warning';
+
+export type CalloutVariant = BaseVariant | 'general' | 'info';
+
+export interface CalloutProps extends HTMLAttributes<'aside'> {
+  /** Choose from the supported callout variants */
+  variant?: CalloutVariant;
+  /** Optional heading shown above the content. Defaults to the variant label. */
+  title?: string;
+  /** Override the default icon. Pass an Iconify name (e.g. fe:info) or fallback text/emoji. */
+  icon?: string;
+}
+
+const {
+  variant = 'general',
+  title,
+  icon,
+  class: className,
+  ...rest
+} = Astro.props as CalloutProps;
+
+const variants: Record<BaseVariant, {
+  label: string;
+  iconName: string;
+  container: string[];
+  heading: string[];
+  text: string[];
+  icon: string[];
+}> = {
+  note: {
+    label: 'Note',
+    iconName: 'tabler:info-circle',
+    container: [
+      'border-violet-200',
+      'bg-violet-50',
+      'text-slate-900',
+      'dark:border-violet-500/60',
+      'dark:bg-violet-950/40',
+      'dark:text-violet-100',
+    ],
+    heading: [
+      'text-violet-700',
+      'dark:text-violet-200',
+    ],
+    text: [
+      'text-slate-700',
+      'dark:text-violet-50',
+    ],
+    icon: [
+      'text-violet-600',
+      'dark:text-violet-100',
+    ],
+  },
+  tip: {
+    label: 'Tip',
+    iconName: 'tabler:bulb',
+    container: [
+      'border-emerald-200',
+      'bg-emerald-50',
+      'text-slate-900',
+      'dark:border-emerald-500/60',
+      'dark:bg-emerald-950/40',
+      'dark:text-emerald-100',
+    ],
+    heading: [
+      'text-emerald-700',
+      'dark:text-emerald-200',
+    ],
+    text: [
+      'text-slate-700',
+      'dark:text-emerald-50',
+    ],
+    icon: [
+      'text-emerald-600',
+      'dark:text-emerald-100',
+    ],
+  },
+  important: {
+    label: 'Important',
+    iconName: 'tabler:alert-circle',
+    container: [
+      'border-sky-200',
+      'bg-sky-50',
+      'text-slate-900',
+      'dark:border-sky-500/60',
+      'dark:bg-sky-950/40',
+      'dark:text-sky-100',
+    ],
+    heading: [
+      'text-sky-700',
+      'dark:text-sky-200',
+    ],
+    text: [
+      'text-slate-700',
+      'dark:text-sky-50',
+    ],
+    icon: [
+      'text-sky-600',
+      'dark:text-sky-100',
+    ],
+  },
+  caution: {
+    label: 'Caution',
+    iconName: 'tabler:circle-x',
+    container: [
+      'border-rose-200',
+      'bg-rose-50',
+      'text-slate-900',
+      'dark:border-rose-500/60',
+      'dark:bg-rose-950/40',
+      'dark:text-rose-100',
+    ],
+    heading: [
+      'text-rose-800',
+      'dark:text-rose-200',
+    ],
+    text: [
+      'text-slate-700',
+      'dark:text-rose-50',
+    ],
+    icon: [
+      'text-rose-600',
+      'dark:text-rose-100',
+    ],
+  },
+  warning: {
+    label: 'Warning',
+    iconName: 'tabler:alert-triangle',
+    container: [
+      'border-amber-300',
+      'bg-amber-50',
+      'text-slate-900',
+      'dark:border-amber-500/60',
+      'dark:bg-amber-950/40',
+      'dark:text-amber-100',
+    ],
+    heading: [
+      'text-amber-700',
+      'dark:text-amber-200',
+    ],
+    text: [
+      'text-slate-700',
+      'dark:text-amber-50',
+    ],
+    icon: [
+      'text-amber-600',
+      'dark:text-amber-100',
+    ],
+  },
+};
+
+const variantKey: BaseVariant = (() => {
+  if (variant === 'general' || variant === 'info') return 'note';
+  return variant as BaseVariant;
+})();
+
+const current = variants[variantKey];
+const label = title ?? (() => {
+  if (variant === 'general') return 'General';
+  if (variant === 'info') return 'Info';
+  return current.label;
+})();
+const resolvedIcon = icon ?? current.iconName;
+const isIconName = resolvedIcon.includes(':');
+---
+
+<aside
+  {...rest}
+  role="note"
+  aria-label={label}
+  class:list={[
+    'relative my-6 rounded-lg border p-4 transition-colors',
+    ...current.container,
+    className,
+  ]}
+>
+  <div class="flex flex-col gap-1">
+    <div class="flex items-center gap-2">
+      {isIconName ? (
+        <Icon
+          name={resolvedIcon}
+          class:list={['h-5 w-5 shrink-0', ...current.icon]}
+          aria-hidden="true"
+        />
+      ) : (
+        <span class:list={['text-base font-semibold', ...current.icon]}>
+          {resolvedIcon}
+        </span>
+      )}
+      {label && (
+        <span
+          class:list={[
+            'text-base font-semibold',
+            ...current.heading,
+          ]}
+        >
+          {label}
+        </span>
+      )}
+    </div>
+    <div
+      class:list={[
+        'callout-content not-prose text-base leading-relaxed',
+        ...current.text,
+      ]}
+    >
+      <slot />
+    </div>
+  </div>
+</aside>
+
+<style is:global>
+  .callout-content > :first-child {
+    margin-top: 0 !important;
+  }
+
+  .callout-content > :last-child {
+    margin-bottom: 0 !important;
+  }
+</style>

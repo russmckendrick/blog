@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Search from 'astro-pagefind/components/Search';
+
+const isDev = import.meta.env.DEV;
+---
+
+<BaseLayout title="Search" description="Search Russ.Cloud blog posts and content">
+	<div class="search-container">
+		<section class="search-header">
+			<h1>Search</h1>
+			<p class="subtitle">Find articles, tutorials, and insights</p>
+		</section>
+
+		{isDev && (
+			<div class="dev-notice">
+				<p><strong>Development Mode:</strong> Search requires a production build to index content. Run <code>npm run build</code> and <code>npm run preview</code> to test search functionality.</p>
+			</div>
+		)}
+
+		<section class="search-content">
+			<Search
+				id="search"
+				className="pagefind-ui"
+				uiOptions={{ showImages: false, excerptLength: 15 }}
+			/>
+		</section>
+	</div>
+</BaseLayout>
+
+<script>
+	// Reinitialize Pagefind after SWUP page transitions
+	function initPagefind() {
+		const searchElement = document.querySelector('.pagefind-ui');
+		if (searchElement && window.PagefindUI) {
+			// Clear existing content
+			searchElement.innerHTML = '';
+			// Reinitialize
+			new window.PagefindUI({
+				element: searchElement,
+				showImages: false,
+				excerptLength: 15
+			});
+		}
+	}
+
+	// Run on page load
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initPagefind);
+	} else {
+		initPagefind();
+	}
+</script>
+
+<style>
+	.search-container {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.search-header {
+		text-align: center;
+		padding: 2rem 0 3rem;
+		margin-bottom: 2rem;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.search-header h1 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+		color: var(--primary);
+	}
+
+	.subtitle {
+		font-size: 1.25rem;
+		color: var(--secondary);
+		margin: 0;
+	}
+
+	.search-content {
+		padding: 1rem 0;
+	}
+
+	.dev-notice {
+		background-color: #fef3c7;
+		border: 1px solid #f59e0b;
+		border-radius: 0.5rem;
+		padding: 1rem 1.5rem;
+		margin-bottom: 2rem;
+		color: #92400e;
+	}
+
+	.dark .dev-notice {
+		background-color: #451a03;
+		border-color: #f59e0b;
+		color: #fbbf24;
+	}
+
+	.dev-notice code {
+		background-color: rgba(0, 0, 0, 0.1);
+		padding: 0.2rem 0.4rem;
+		border-radius: 0.25rem;
+		font-family: 'Fira Code', monospace;
+		font-size: 0.875rem;
+	}
+
+	.dark .dev-notice code {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+
+	@media (max-width: 768px) {
+		.search-header {
+			padding: 1.5rem 0 2rem;
+		}
+
+		.search-header h1 {
+			font-size: 2rem;
+		}
+
+		.subtitle {
+			font-size: 1.125rem;
+		}
+	}
+</style>

@@ -1,0 +1,9 @@
+export { default as Callout } from './Callout.astro';
+export { default as GeneralCallout } from './GeneralCallout.astro';
+export { default as InfoCallout } from './InfoCallout.astro';
+export { default as NoteCallout } from './NoteCallout.astro';
+export { default as TipCallout } from './TipCallout.astro';
+export { default as ImportantCallout } from './ImportantCallout.astro';
+export { default as CautionCallout } from './CautionCallout.astro';
+export { default as WarningCallout } from './WarningCallout.astro';
+export type { CalloutProps, CalloutVariant } from './Callout.astro';

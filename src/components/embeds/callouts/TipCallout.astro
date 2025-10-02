@@ -1,0 +1,9 @@
+---
+import Callout, { type CalloutProps } from './Callout.astro';
+
+const props = Astro.props as Omit<CalloutProps, 'variant'>;
+---
+
+<Callout {...props} variant="tip">
+  <slot />
+</Callout>

@@ -1,0 +1,71 @@
+---
+title: "Docker Swarm"
+description: "Discover Docker Swarm on macOS beta, orchestrate services effortlessly, and scale with ease. Step-by-step guide included."
+date: 2016-06-30T18:30:00+01:00
+cover:
+  image: "../../assets/2016-06-30-docker-swarm/blog-cover-2016-06-30-docker-swarm.png"
+tags:
+  - "Docker"
+aliases:
+  - "/docker-service-dfad77652d50"
+---
+
+As mentioned a few weeks ago I have been part of the Docker for macOS (as its now known) [beta](/2016/05/08/docker-on-mac-osx/) for a while. I didn’t pay much attention to the update last night until I just caught up on the tweets from Docker Con and noticed that they have built in orchestration straight into the core Docker Engine.
+
+They said it was there now and it will take no time to run so I decided to give it ago;
+
+<Img src="/assets/2016-06-30-docker-swarm/img/2016-06-30_docker-swarm_1.png" alt="service01" />
+
+As you can see, it was that easy !!! The commands I ran were as follows;
+
+```bash frame="terminal" title="Docker Swarm 1/4"
+docker swarm init
+```
+
+
+This turn my local Docker installation into the Swarm manager, I then created an overlay network called “clusternetwork”;
+
+```bash frame="terminal" title="Docker Swarm 2/4"
+docker network create -d overlay clusternetwork
+```
+
+
+and finally created the service called “cluster”, which was made up of 3 replicas all bound to port 80, by running;
+
+```bash frame="terminal" title="Docker Swarm 3/4"
+docker service create — name cluster — replicas 3 -p:80:80/tcp — network clusternetwork russmckendrick/cluster
+```
+
+
+I already had a container hosted in the [Docker Hub which runs NGINX and shows a page with the containers ID](https://hub.docker.com/r/russmckendrick/cluster/).
+
+Opening my browser and going to [http://localhost/](http://localhost/) showed me the following page;
+
+<Img src="/assets/2016-06-30-docker-swarm/img/2016-06-30_docker-swarm_2.png" alt="service02" />
+
+So far so good, lets now forcible remove the container with the ID of “6af0c7d1256b”;
+
+<Img src="/assets/2016-06-30-docker-swarm/img/2016-06-30_docker-swarm_3.png" alt="service03" />
+
+As you can see, it was replaced and refreshing my browser now shows that I am connecting to another container in the cluster;
+
+<Img src="/assets/2016-06-30-docker-swarm/img/2016-06-30_docker-swarm_4.png" alt="service04" />
+
+Lets try scaling the service, this is as simple as running;
+
+[code gutter=”false”]docker service scale cluster=6[/code]
+
+<Img src="/assets/2016-06-30-docker-swarm/img/2016-06-30_docker-swarm_5.png" alt="more-docker-service04" />
+
+All really simple stuff, now imagine if I had more than a single host all of the containers I launched would be nicely distributed amongst them and it should all magically take care of itself.
+
+To remove the service and leave the swarm run the following commands;
+
+```bash frame="terminal" title="Docker Swarm 4/4"
+docker service rm cluster
+docker network rm clusternetwork
+docker swarm leave — force
+```
+
+
+and for more information on this new feature see the following [blog post](https://blog.docker.com/2016/06/docker-1-12-built-in-orchestration/), at the time of writing the documentation is in the process of being rolled out so I will update this post if anything is wrong :)

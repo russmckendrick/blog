@@ -1,0 +1,160 @@
+---
+interface Props {
+	/** Reddit post URL (e.g., https://www.reddit.com/r/Anthropic/comments/1ntnwb8/...) */
+	url: string;
+	/** Height of the embed (default: 500px) */
+	height?: string;
+	/** Enable dark theme (default: auto-detect from site theme) */
+	theme?: 'light' | 'dark' | 'auto';
+}
+
+const { url, height = '500px', theme = 'auto' } = Astro.props;
+// Generate unique ID for this embed
+const embedId = `reddit-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class="reddit-container my-6">
+	<blockquote
+		id={embedId}
+		class="reddit-embed-bq"
+		style={`height:${height}`}
+		data-embed-height="240"
+		data-embed-theme={theme === 'auto' ? undefined : theme}
+		data-embed-url={url}
+	>
+		<a href={url}>View on Reddit</a>
+	</blockquote>
+</div>
+
+<script>
+	// Store original embed data
+	const embedData = new Map();
+
+	// Load Reddit embed script
+	function loadRedditEmbeds() {
+		if (!window.rembeddit) {
+			const script = document.createElement('script');
+			script.src = 'https://embed.reddit.com/widgets.js';
+			script.async = true;
+			script.charset = 'UTF-8';
+			script.onload = () => {
+				// Initialize embeds after script loads
+				if (window.rembeddit) {
+					window.rembeddit();
+				}
+			};
+			document.body.appendChild(script);
+		} else {
+			// Script already loaded, just process embeds
+			window.rembeddit();
+		}
+	}
+
+	// Store embed data for recreation
+	function storeEmbedData() {
+		document.querySelectorAll('.reddit-embed-bq[data-embed-url]').forEach((embed) => {
+			const blockquote = embed as HTMLElement;
+			const id = blockquote.id;
+			if (id && !embedData.has(id)) {
+				embedData.set(id, {
+					url: blockquote.getAttribute('data-embed-url'),
+					height: blockquote.style.height,
+					hasFixedTheme: blockquote.hasAttribute('data-embed-theme') &&
+						blockquote.getAttribute('data-embed-theme') !== ''
+				});
+			}
+		});
+	}
+
+	// Recreate embeds with new theme
+	function recreateRedditEmbeds() {
+		const isDark = document.documentElement.classList.contains('dark');
+
+		document.querySelectorAll('.reddit-embed-bq[data-embed-url]').forEach((embed) => {
+			const blockquote = embed as HTMLElement;
+			const id = blockquote.id;
+			const data = embedData.get(id);
+
+			if (!data) return;
+
+			// Check if this embed has a fixed theme
+			if (data.hasFixedTheme) return;
+
+			// Remove the rendered iframe
+			const iframe = blockquote.querySelector('iframe');
+			if (iframe) {
+				iframe.remove();
+			}
+
+			// Reset blockquote content
+			blockquote.innerHTML = `<a href="${data.url}">View on Reddit</a>`;
+			blockquote.style.height = data.height;
+			blockquote.setAttribute('data-embed-theme', isDark ? 'dark' : 'light');
+		});
+
+		// Reload embeds
+		if (window.rembeddit) {
+			window.rembeddit();
+		}
+	}
+
+	// Auto-detect theme for embeds with theme="auto"
+	function updateRedditThemes() {
+		const isDark = document.documentElement.classList.contains('dark');
+		document.querySelectorAll('.reddit-embed-bq[data-embed-url]').forEach((embed) => {
+			const blockquote = embed as HTMLElement;
+			const id = blockquote.id;
+			const data = embedData.get(id);
+
+			// Only update if theme is auto (no fixed theme)
+			if (!data || !data.hasFixedTheme) {
+				blockquote.setAttribute('data-embed-theme', isDark ? 'dark' : 'light');
+			}
+		});
+	}
+
+	// Initialize on load
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', () => {
+			storeEmbedData();
+			updateRedditThemes();
+			loadRedditEmbeds();
+		});
+	} else {
+		storeEmbedData();
+		updateRedditThemes();
+		loadRedditEmbeds();
+	}
+
+	// Watch for theme changes
+	const observer = new MutationObserver(() => {
+		recreateRedditEmbeds();
+	});
+
+	observer.observe(document.documentElement, {
+		attributes: true,
+		attributeFilter: ['class', 'data-theme']
+	});
+</script>
+
+<style is:global>
+	.reddit-container {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.reddit-embed-bq {
+		border-radius: 0.75rem;
+		overflow: hidden;
+		border: 1px solid rgb(229 231 235);
+	}
+
+	.dark .reddit-embed-bq {
+		border-color: rgb(55 65 81);
+	}
+
+	/* Style the Reddit embed iframe when it loads */
+	.reddit-embed-bq iframe {
+		border-radius: 0.75rem;
+	}
+</style>
