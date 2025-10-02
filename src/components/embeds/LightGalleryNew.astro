@@ -1,0 +1,31 @@
+---
+import { LightGallery as AstroLightGallery } from 'astro-lightgallery';
+
+interface GalleryImage {
+  src: string;
+  alt?: string;
+}
+
+interface Layout {
+  imgs: GalleryImage[];
+}
+
+interface Options {
+  thumbnail?: boolean;
+  download?: boolean;
+}
+
+interface Props {
+  layout: Layout;
+  options?: Options;
+}
+
+const { layout, options } = Astro.props;
+---
+
+<div data-no-swup>
+  <AstroLightGallery
+    layout={layout}
+    options={options}
+  />
+</div>

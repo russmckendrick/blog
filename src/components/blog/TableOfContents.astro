@@ -1,0 +1,90 @@
+---
+export interface Heading {
+  depth: number;
+  text: string;
+  slug: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+
+// Filter to only show h2 and h3 headings
+const tocHeadings = headings.filter(h => h.depth <= 3);
+---
+
+{tocHeadings.length > 0 && (
+  <nav class="toc-wrapper mb-10">
+    <details class="group bg-blue-50/50 dark:bg-blue-950/30 rounded-2xl border border-blue-200/60 dark:border-blue-800/40 shadow-sm" id="toc-details">
+      <summary class="cursor-pointer select-none px-6 py-4 font-semibold text-gray-900 dark:text-gray-100 flex items-center justify-between hover:bg-blue-100/50 dark:hover:bg-blue-900/30 rounded-2xl transition-colors">
+        <span class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
+          </svg>
+          Table of Contents
+        </span>
+        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </summary>
+      <div class="px-6 pb-4 pt-2">
+        <ol class="space-y-2 text-sm">
+          {tocHeadings.map((heading) => (
+            <li
+              class:list={[
+                'leading-relaxed',
+                {
+                  'ml-0': heading.depth === 2,
+                  'ml-4': heading.depth === 3,
+                }
+              ]}
+            >
+              <a
+                href={`#${heading.slug}`}
+                class="group/link inline-flex items-start gap-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                <span class="text-blue-400/60 dark:text-blue-500/60 group-hover/link:text-blue-600 dark:group-hover/link:text-blue-400 transition-colors">
+                  {heading.depth === 2 ? '•' : '◦'}
+                </span>
+                <span>{heading.text}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </details>
+  </nav>
+)}
+
+<script>
+  // Restore TOC state from localStorage
+  function initTocState() {
+    const details = document.getElementById('toc-details');
+    if (!details) return;
+
+    const savedState = localStorage.getItem('toc-open');
+    if (savedState === 'true') {
+      details.setAttribute('open', '');
+    }
+
+    // Save state when toggled
+    details.addEventListener('toggle', () => {
+      localStorage.setItem('toc-open', details.open.toString());
+    });
+  }
+
+  // Initialize on page load
+  initTocState();
+
+  // Re-initialize after SWUP page transitions
+  document.addEventListener('swup:page:view', initTocState);
+</script>
+
+<style>
+  /* Smooth scroll for anchor links */
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+</style>

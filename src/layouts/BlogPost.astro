@@ -1,0 +1,210 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/layout/BaseHead.astro';
+import Footer from '../components/layout/Footer.astro';
+import FormattedDate from '../components/blog/FormattedDate.astro';
+import Header from '../components/layout/Header.astro';
+import HeaderWrapper from '../components/layout/HeaderWrapper';
+import PostNavigation from '../components/blog/PostNavigation.astro';
+import Comments from '../components/blog/Comments.astro';
+import ShareButtons from '../components/social/ShareButtons.astro';
+import TableOfContents from '../components/blog/TableOfContents.astro';
+import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../utils/tags';
+
+// Import embed components to make them available in blog posts
+import { YouTube } from '@astro-community/astro-embed-youtube';
+import { LinkPreview } from '@astro-community/astro-embed-link-preview';
+
+export interface Heading {
+	depth: number;
+	text: string;
+	slug: string;
+}
+
+interface Props extends CollectionEntry<'blog'>['data'] {
+	previousPost?: CollectionEntry<'blog'>;
+	nextPost?: CollectionEntry<'blog'>;
+	ogImagePath?: string;
+	isTune?: boolean;
+	headings?: Heading[];
+}
+
+const { title, description, pubDate, updatedDate, heroImage, cover, tags = [], previousPost, nextPost, ogImagePath, isTune = false, showToc = false, headings = [] } = Astro.props;
+
+// Use the provided OG image path
+const ogImage = ogImagePath;
+
+// Use cover.image if available, otherwise fall back to heroImage
+// cover.image can be a string (public URL) or an imported image
+const displayImage = cover?.image || heroImage;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} image={ogImage} />
+	</head>
+
+	<body class="bg-gray-50 dark:bg-gray-950">
+		<HeaderWrapper client:load autoHide={true}>
+			<Header />
+		</HeaderWrapper>
+		<main class="relative">
+			{displayImage && (
+				<section class="relative isolate -mt-20">
+					<div class="relative h-[420px] sm:h-[520px] lg:h-[640px] xl:h-[720px] 2xl:h-[820px] overflow-hidden">
+						<Image
+							src={displayImage}
+							alt={cover?.alt || title}
+							width={1920}
+							height={960}
+							fit="cover"
+							class="absolute inset-0 h-full w-full object-cover"
+						/>
+					<div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-transparent dark:from-black/40 dark:via-black/25"></div>
+					<div class="absolute inset-0 bg-gradient-to-t from-transparent via-white/10 to-white/30 dark:via-white/5 dark:to-white/10 mix-blend-screen"></div>
+					</div>
+					<div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 xl:h-52 2xl:h-60 bg-gradient-to-b from-transparent via-gray-50/60 to-gray-50 dark:via-gray-950/60 dark:to-gray-950"></div>
+				</section>
+			)}
+
+			<article class={`relative z-10 ${displayImage ? '-mt-32 sm:-mt-40 lg:-mt-48 xl:-mt-60 2xl:-mt-72' : 'mt-12'}`}>
+				<div class="max-w-4xl 2xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+					<div class="bg-white/95 dark:bg-gray-900/90 rounded-3xl shadow-2xl shadow-gray-300/40 dark:shadow-black/60 ring-1 ring-gray-200/60 dark:ring-gray-800 backdrop-blur-xl px-6 sm:px-10 xl:px-16 py-10 sm:py-12 xl:py-16">
+						<header class="text-center mb-10 space-y-6">
+							<div class="mb-6 space-y-2 text-sm text-gray-500 dark:text-gray-400">
+								<div class="text-base font-medium text-gray-600 dark:text-gray-300">
+									<FormattedDate date={pubDate} />
+								</div>
+								{updatedDate && (
+									<div>
+										Last updated on <FormattedDate date={updatedDate} />
+									</div>
+								)}
+							</div>
+							<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-gray-100">
+								{title}
+							</h1>
+							{tags.length > 0 && (
+								<div class="flex flex-wrap justify-center gap-3">
+									{tags.slice(0, 8).map((tag) => (
+										<a
+											href={getTagUrl(tag)}
+											class={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${getTagColorClasses(tag)} transition-all hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500/50`}
+										>
+											{getTagDisplayName(tag)}
+										</a>
+									))}
+								</div>
+							)}
+						</header>
+
+						{showToc && headings.length > 0 && (
+							<TableOfContents headings={headings} />
+						)}
+
+						<div class="prose mx-auto">
+							<slot />
+						</div>
+
+						{!isTune && <ShareButtons title={title} url={Astro.url.href} tags={tags} />}
+					</div>
+
+					<PostNavigation previousPost={previousPost} nextPost={nextPost} />
+
+					{!isTune && <Comments />}
+				</div>
+			</article>
+		</main>
+		<Footer />
+		<script>
+			import { createLightGallery } from 'astro-lightgallery';
+			import type { LightGallerySettings } from 'lightgallery/lg-settings';
+			import type { AstroLightGalleryPluginStrType } from 'astro-lightgallery';
+
+			// Re-initialize LightGallery after SWUP page transitions
+			async function initLightGallery() {
+				const galleries = document.querySelectorAll('astro-lightgallery');
+
+				// Collect all gallery items across all galleries
+				const allGalleryItems: HTMLElement[] = [];
+				const galleryOptions: LightGallerySettings = {};
+				let addPlugins: AstroLightGalleryPluginStrType[] = [];
+
+				for (const gallery of galleries) {
+					const htmlGallery = gallery as HTMLElement;
+
+					// Skip if already initialized on this page load
+					if (htmlGallery.hasAttribute('data-lg-initialized')) {
+						continue;
+					}
+
+					// Collect options from first gallery
+					if (allGalleryItems.length === 0) {
+						const options = JSON.parse(htmlGallery.dataset.options || '{}');
+						Object.assign(galleryOptions, options);
+						addPlugins = JSON.parse(htmlGallery.dataset.addplugins || '[]');
+					}
+
+					// Collect all gallery items
+					const items = htmlGallery.querySelectorAll<HTMLElement>('a[data-lg-id]');
+					allGalleryItems.push(...Array.from(items));
+
+					// Mark as initialized
+					htmlGallery.setAttribute('data-lg-initialized', 'true');
+				}
+
+				// If we have items, create a single unified gallery
+				if (allGalleryItems.length > 0) {
+					// Create a wrapper for all items
+					const unifiedGalleryId = 'unified-lightgallery';
+					let unifiedGallery = document.getElementById(unifiedGalleryId);
+
+					if (!unifiedGallery) {
+						unifiedGallery = document.createElement('div');
+						unifiedGallery.id = unifiedGalleryId;
+						unifiedGallery.style.display = 'none';
+						document.body.appendChild(unifiedGallery);
+					}
+
+					// Clear and populate unified gallery
+					unifiedGallery.innerHTML = '';
+					allGalleryItems.forEach(item => {
+						const clone = item.cloneNode(true) as HTMLElement;
+						unifiedGallery!.appendChild(clone);
+					});
+
+					// Initialize unified gallery
+					await createLightGallery(unifiedGalleryId, galleryOptions, addPlugins);
+
+					// Redirect clicks from original galleries to unified gallery
+					allGalleryItems.forEach((item, index) => {
+						item.addEventListener('click', (e) => {
+							e.preventDefault();
+							const unifiedItems = unifiedGallery!.querySelectorAll('a[data-lg-id]');
+							if (unifiedItems[index]) {
+								(unifiedItems[index] as HTMLElement).click();
+							}
+						});
+					});
+				}
+			}
+
+			// Re-initialize after SWUP transitions
+			const setupSwupHandler = () => {
+				if (window.swup) {
+					window.swup.hooks.on('page:view', async () => {
+						// Small delay to ensure DOM is ready
+						setTimeout(() => initLightGallery(), 100);
+					});
+				}
+			};
+
+			if (window.swup) {
+				setupSwupHandler();
+			} else {
+				document.addEventListener('swup:enable', setupSwupHandler);
+			}
+		</script>
+	</body>
+</html>

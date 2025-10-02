@@ -1,0 +1,121 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import BlogPost from '../../../../layouts/BlogPost.astro';
+import { createUrlFriendlySlug } from '../../../../utils/url.ts';
+import {
+	AppleMusic,
+	Audio,
+	ChatMessage,
+	Giphy,
+	Img,
+	LightGallery,
+	Reddit,
+	YouTube,
+	Instagram,
+	LinkPreview,
+	Callout,
+	GeneralCallout,
+	InfoCallout,
+	NoteCallout,
+	TipCallout,
+	ImportantCallout,
+	CautionCallout,
+	WarningCallout,
+} from '../../../../components/embeds';
+
+export async function getStaticPaths() {
+	// Get both blog posts and tunes
+	const blogPosts = await getCollection('blog');
+	const tunes = await getCollection('tunes');
+
+	// Combine and sort all posts by date
+	const allPosts = [...blogPosts, ...tunes];
+	const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+	// Sort blog posts separately for blog-only navigation
+	const sortedBlogPosts = blogPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+	// Sort tunes separately for tunes-only navigation
+	const sortedTunes = tunes.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+	return sortedPosts.map((post) => {
+		const date = post.data.pubDate;
+		const year = date.getFullYear().toString();
+		const month = (date.getMonth() + 1).toString().padStart(2, '0');
+		const day = date.getDate().toString().padStart(2, '0');
+		const slug = createUrlFriendlySlug(post.data.title);
+
+		// Construct OG image path
+		const ogImagePath = `/${year}/${month}/${day}/${slug}-og.png`;
+
+		// Determine if this is a tune
+		const isTune = post.collection === 'tunes';
+
+		// Get navigation based on collection type
+		let previousPost, nextPost;
+		if (isTune) {
+			// For tunes, only navigate within tunes
+			const tuneIndex = sortedTunes.findIndex(t => t.id === post.id);
+			previousPost = tuneIndex < sortedTunes.length - 1 ? sortedTunes[tuneIndex + 1] : undefined;
+			nextPost = tuneIndex > 0 ? sortedTunes[tuneIndex - 1] : undefined;
+		} else {
+			// For blog posts, only navigate within blog posts
+			const postIndex = sortedBlogPosts.findIndex(p => p.id === post.id);
+			previousPost = postIndex < sortedBlogPosts.length - 1 ? sortedBlogPosts[postIndex + 1] : undefined;
+			nextPost = postIndex > 0 ? sortedBlogPosts[postIndex - 1] : undefined;
+		}
+
+		return {
+			params: {
+				year,
+				month,
+				day,
+				slug
+			},
+			props: {
+				...post,
+				previousPost,
+				nextPost,
+				ogImagePath,
+				isTune,
+			},
+		};
+	});
+}
+
+interface Props extends CollectionEntry<'blog'> {
+	previousPost?: CollectionEntry<'blog'>;
+	nextPost?: CollectionEntry<'blog'>;
+	ogImagePath: string;
+	isTune?: boolean;
+}
+
+const { previousPost, nextPost, ogImagePath, isTune, ...post } = Astro.props;
+const { Content, headings } = await render(post);
+
+// Components to be available globally in MDX
+const components = {
+	AppleMusic,
+	Audio,
+	ChatMessage,
+	Giphy,
+	Img,
+	LightGallery,
+	Reddit,
+	YouTube,
+	Instagram,
+	LinkPreview,
+	Callout,
+	GeneralCallout,
+	InfoCallout,
+	NoteCallout,
+	TipCallout,
+	ImportantCallout,
+	CautionCallout,
+	WarningCallout,
+};
+---
+
+<BlogPost {...post.data} previousPost={previousPost} nextPost={nextPost} ogImagePath={ogImagePath} isTune={isTune} headings={headings}>
+	<Content components={components} />
+</BlogPost>

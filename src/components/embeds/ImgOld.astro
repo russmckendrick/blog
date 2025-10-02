@@ -1,0 +1,84 @@
+---
+import { LightGallery } from 'astro-lightgallery'
+
+interface Props {
+  src: string;
+  alt?: string;
+  width?: string;
+  link?: string;
+  zoom?: string | boolean;
+  sizes?: string;
+}
+
+const { src, alt = '', width, link, zoom = true, sizes } = Astro.props;
+
+// Check if src is external URL
+const isExternal = src.startsWith('http://') || src.startsWith('https://');
+
+// Determine if zoom should be enabled
+const enableZoom = zoom === 'true' || zoom === true;
+
+// For local images, we need to handle them as imports
+// The src should be a path relative to the content directory
+let imgSrc = src;
+let srcsetString = '';
+
+if (!isExternal) {
+  // For local images, generate responsive versions
+  // Note: Astro will handle the image optimization at build time
+  const imageSizes = [500, 800, 1200, 1500];
+
+  // Generate srcset entries for responsive images
+  srcsetString = imageSizes
+    .map(size => `${src} ${size}w`)
+    .join(', ');
+}
+---
+
+<div class="img-wrapper my-6">
+  {enableZoom ? (
+    <LightGallery
+      layout={{
+        imgs: [{ src: imgSrc, alt: alt }]
+      }}
+      options={{
+        thumbnail: false,
+        download: false,
+      }}
+    >
+      <a href={imgSrc}>
+        <img
+          src={imgSrc}
+          alt={alt}
+          loading="lazy"
+          class="rounded-lg max-w-full h-auto hover:opacity-90 transition-opacity cursor-zoom-in"
+          sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
+          {...(width && { width })}
+          {...(!isExternal && srcsetString && { srcset: srcsetString })}
+        />
+      </a>
+    </LightGallery>
+  ) : link ? (
+    <a href={link} target="_blank" rel="noopener noreferrer">
+      <img
+        src={imgSrc}
+        alt={alt}
+        loading="lazy"
+        class="rounded-lg max-w-full h-auto hover:opacity-90 transition-opacity"
+        sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
+        {...(width && { width })}
+        {...(!isExternal && srcsetString && { srcset: srcsetString })}
+      />
+    </a>
+  ) : (
+    <img
+      src={imgSrc}
+      alt={alt}
+      loading="lazy"
+      class="rounded-lg max-w-full h-auto"
+      sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
+      {...(width && { width })}
+      {...(!isExternal && srcsetString && { srcset: srcsetString })}
+    />
+  )}
+</div>

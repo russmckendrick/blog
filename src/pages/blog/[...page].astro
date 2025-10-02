@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import Pagination from '../../components/layout/Pagination.astro';
+
+export async function getStaticPaths({ paginate }) {
+	const posts = (await getCollection('blog'))
+		.filter(post => !post.data.draft)
+		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+	return paginate(posts, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title="Blog" description="All blog posts from Russ McKendrick">
+	<section class="text-center py-8 pb-12 mb-8 border-b border-gray-200 dark:border-gray-700">
+		<h1 class="text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">Blog</h1>
+		<p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Technical posts, thoughts, and ramblings about DevOps, automation, and cloud technologies.</p>
+	</section>
+
+	<section class="max-w-3xl mx-auto px-5">
+			<ul class="space-y-12">
+				{page.data.map((post) => (
+					<li>
+						<PostCard post={post} />
+					</li>
+				))}
+			</ul>
+
+			{page.total > page.size && (
+				<Pagination
+					currentPage={page.currentPage}
+					totalPages={page.lastPage}
+					getHref={(pageNum) => (pageNum === 1 ? '/blog/' : `/blog/${pageNum}/`)}
+					hideIfSingle={false}
+				/>
+			)}
+		</section>
+</BaseLayout>

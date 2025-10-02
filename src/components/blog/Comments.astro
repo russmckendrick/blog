@@ -1,0 +1,78 @@
+---
+// Giscus comments component with dark/light mode support
+---
+
+<div class="giscus-wrapper mt-12 mb-8">
+	<div class="bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg shadow-gray-300/50 dark:shadow-black/30 p-6 md:p-8">
+		<h2 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 mb-6">Comments</h2>
+		<div class="giscus"></div>
+		<noscript>
+			<p class="text-sm text-gray-500 dark:text-gray-400">Please enable JavaScript to view the comments</p>
+		</noscript>
+	</div>
+</div>
+
+<script>
+	function getGiscusTheme() {
+		const htmlElement = document.documentElement;
+		const isDark = htmlElement.classList.contains('dark');
+		return isDark ? 'dark' : 'light';
+	}
+
+	function setGiscusTheme() {
+		function sendMessage(message) {
+			const iframe = document.querySelector('iframe.giscus-frame');
+			if (!iframe) return;
+			iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+		}
+		sendMessage({
+			setConfig: {
+				theme: getGiscusTheme(),
+			},
+		});
+	}
+
+	function loadGiscus() {
+		const attrs = {
+			"src": "https://giscus.app/client.js",
+			"data-repo": "russmckendrick/blog",
+			"data-repo-id": "MDEwOlJlcG9zaXRvcnkzOTYwNTIzNzQ=",
+			"data-category": "Comment",
+			"data-category-id": "DIC_kwDOF5tHls4B-xZs",
+			"data-mapping": "pathname",
+			"data-strict": "0",
+			"data-reactions-enabled": "1",
+			"data-emit-metadata": "0",
+			"data-input-position": "bottom",
+			"data-theme": getGiscusTheme(),
+			"data-lang": "en",
+			"crossorigin": "anonymous",
+			"async": ""
+		};
+
+		const giscusScript = document.createElement("script");
+		Object.entries(attrs).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+
+		const giscusContainer = document.querySelector('.giscus');
+		if (giscusContainer) {
+			giscusContainer.appendChild(giscusScript);
+		}
+	}
+
+	// Load Giscus when the page loads
+	loadGiscus();
+
+	// Watch for theme changes
+	const observer = new MutationObserver((mutations) => {
+		mutations.forEach((mutation) => {
+			if (mutation.attributeName === 'class') {
+				setGiscusTheme();
+			}
+		});
+	});
+
+	observer.observe(document.documentElement, {
+		attributes: true,
+		attributeFilter: ['class']
+	});
+</script>

@@ -1,0 +1,121 @@
+---
+import Icon from '../ui/Icon.astro'
+
+interface Props {
+  title: string
+  url: string
+  tags?: string[]
+}
+
+const { title, url, tags = [] } = Astro.props
+const pageUrl = encodeURIComponent(url)
+const pageTitle = encodeURIComponent(title)
+const hashtags = tags.join(',')
+---
+
+<div class="share-buttons">
+  <!-- Twitter -->
+  <a
+    class="resp-sharing-button__link"
+    href={`https://twitter.com/intent/tweet/?text=${pageTitle}&url=${pageUrl}&hashtags=${hashtags}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Share ${title} on Twitter`}
+  >
+    <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <Icon name="twitter" size={20} />
+      </div>
+    </div>
+  </a>
+
+  <!-- LinkedIn -->
+  <a
+    class="resp-sharing-button__link"
+    href={`https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=${pageTitle}&summary=${pageTitle}&source=${pageUrl}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Share ${title} on LinkedIn`}
+  >
+    <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <Icon name="linkedin" size={20} />
+      </div>
+    </div>
+  </a>
+
+  <!-- Reddit -->
+  <a
+    class="resp-sharing-button__link"
+    href={`https://reddit.com/submit/?url=${pageUrl}&title=${pageTitle}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Share ${title} on Reddit`}
+  >
+    <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <Icon name="reddit" size={20} />
+      </div>
+    </div>
+  </a>
+
+  <!-- Hacker News -->
+  <a
+    class="resp-sharing-button__link"
+    href={`https://news.ycombinator.com/submitlink?u=${pageUrl}&t=${pageTitle}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Share ${title} on Hacker News`}
+  >
+    <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <Icon name="hackernews" size={20} />
+      </div>
+    </div>
+  </a>
+
+  <!-- Tumblr -->
+  <a
+    class="resp-sharing-button__link"
+    href={`https://www.tumblr.com/widgets/share/tool?posttype=link&title=${pageTitle}&caption=${pageTitle}&content=${pageUrl}&canonicalUrl=${pageUrl}&shareSource=tumblr_share_button`}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Share ${title} on Tumblr`}
+  >
+    <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <Icon name="tumblr" size={20} />
+      </div>
+    </div>
+  </a>
+
+  <!-- Pinterest -->
+  <a
+    class="resp-sharing-button__link"
+    href={`https://pinterest.com/pin/create/button/?url=${pageUrl}&media=${pageUrl}&description=${pageTitle}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Share ${title} on Pinterest`}
+  >
+    <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <Icon name="pinterest" size={20} />
+      </div>
+    </div>
+  </a>
+
+  <!-- Facebook -->
+  <a
+    class="resp-sharing-button__link"
+    href={`https://facebook.com/sharer/sharer.php?u=${pageUrl}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Share ${title} on Facebook`}
+  >
+    <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <Icon name="facebook" size={20} />
+      </div>
+    </div>
+  </a>
+</div>

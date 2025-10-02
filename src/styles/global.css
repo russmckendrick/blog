@@ -1,0 +1,340 @@
+@import "tailwindcss";
+
+/* Configure dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Custom Tailwind theme extensions */
+@theme {
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  --font-serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+}
+
+/* Base styling */
+body {
+  @apply font-inter text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900;
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enhanced typography */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-inter font-semibold tracking-tight;
+}
+
+h1 {
+  @apply text-4xl lg:text-5xl font-extrabold leading-tight;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  @apply text-3xl lg:text-4xl font-bold leading-tight;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  @apply text-2xl lg:text-3xl font-semibold leading-tight;
+}
+
+/* Code styling */
+code {
+  @apply font-mono bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm;
+}
+
+pre code {
+  @apply bg-transparent p-0;
+}
+
+/* Link styling */
+a {
+  @apply text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors;
+}
+
+/* Focus states */
+*:focus {
+  @apply outline-none ring-2 ring-blue-500/50;
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Mobile menu utility */
+.mobile-hidden {
+  @apply hidden;
+}
+
+/* Custom prose styling for blog posts */
+.prose {
+  @apply text-gray-900 dark:text-gray-100 max-w-none;
+}
+
+.prose h1 {
+  @apply text-4xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 leading-tight tracking-tight;
+}
+
+.prose h2 {
+  @apply text-3xl font-semibold text-gray-900 dark:text-gray-100 mt-12 mb-6 leading-tight tracking-tight;
+  outline: none;
+}
+
+.prose h3 {
+  @apply text-2xl font-semibold text-gray-900 dark:text-gray-100 mt-10 mb-4 leading-tight;
+  outline: none;
+}
+
+.prose h4 {
+  @apply text-xl font-semibold text-gray-900 dark:text-gray-100 mt-8 mb-3 leading-tight;
+  outline: none;
+}
+
+.prose h5 {
+  @apply text-lg font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-2;
+  outline: none;
+}
+
+.prose h6 {
+  @apply text-base font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-2;
+  outline: none;
+}
+
+.prose p {
+  @apply text-lg leading-relaxed mb-6 text-gray-700 dark:text-gray-300;
+}
+
+.prose a {
+  @apply text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 no-underline hover:underline transition-colors;
+}
+
+.prose strong {
+  @apply font-semibold text-gray-900 dark:text-gray-100;
+}
+
+.prose em {
+  @apply italic;
+}
+
+.prose ul {
+  @apply list-disc list-inside mb-6 space-y-2;
+}
+
+.prose ol {
+  @apply list-decimal list-inside mb-6 space-y-2;
+}
+
+.prose li {
+  @apply text-lg leading-relaxed text-gray-700 dark:text-gray-300 pl-2;
+}
+
+.prose li ul, .prose li ol {
+  @apply mt-2 mb-2 ml-6;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-950/20 pl-6 py-4 my-6 italic rounded-r;
+}
+
+.prose blockquote p {
+  @apply mb-0 text-gray-700 dark:text-gray-300;
+}
+
+.prose code {
+  @apply bg-gray-100 dark:bg-gray-800 text-pink-600 dark:text-pink-400 px-2 py-1 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-gray-900 dark:bg-gray-950 text-gray-100 p-6 rounded-lg overflow-x-auto my-6 border border-gray-200 dark:border-gray-800;
+}
+
+.prose pre code {
+  @apply bg-transparent text-gray-100 p-0 text-sm;
+}
+
+/* Expressive Code blocks spacing */
+.prose figure[data-rehype-pretty-code-figure],
+.prose .expressive-code,
+.prose [class*="expressive-code"] {
+  @apply my-6;
+}
+
+.prose img {
+  @apply rounded-lg shadow-lg my-8 max-w-full h-auto;
+}
+
+.prose table {
+  @apply w-full border-collapse border border-gray-300 dark:border-gray-700 my-6;
+}
+
+.prose th {
+  @apply border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-2 text-left font-semibold;
+}
+
+.prose td {
+  @apply border border-gray-300 dark:border-gray-700 px-4 py-2;
+}
+
+.prose hr {
+  @apply border-gray-300 dark:border-gray-700 my-12;
+}
+
+/* External link styling */
+.external-link-wrapper {
+  @apply inline-flex items-center;
+}
+
+.external-link-icon {
+  @apply inline-block text-blue-400 dark:text-blue-500 text-sm font-normal ml-0.5 transition-transform duration-200 opacity-60;
+}
+
+.external-link-icon.no-space {
+  @apply ml-0;
+}
+
+.external-link-wrapper:hover .external-link-icon {
+  @apply transform translate-x-0.5 -translate-y-0.5 opacity-100;
+}
+
+/* LightGallery z-index fixes - use very high values to ensure it's above everything */
+.lg-backdrop {
+  z-index: 99998 !important;
+  background-color: rgba(0, 0, 0, 0.95) !important;
+}
+
+.lg-outer {
+  z-index: 99999 !important;
+}
+
+.lg-container,
+.lg-inner {
+  z-index: 100000 !important;
+}
+
+/* Ensure LightGallery content is above everything */
+body.lg-on {
+  overflow: hidden !important;
+}
+
+/* Additional lightgallery fixes */
+#lg-backdrop,
+.lg-backdrop.in {
+  z-index: 99998 !important;
+}
+
+.lg-outer.lg-visible {
+  z-index: 99999 !important;
+}
+
+.lg-item,
+.lg-img-wrap {
+  z-index: 100001 !important;
+}
+
+/* Astro LightGallery specific - ensure proper block layout */
+astro-lightgallery {
+  display: block;
+  position: relative;
+  z-index: 1;
+  margin: 3rem 0;
+  clear: both;
+}
+
+/* Ensure gallery images don't overlap with text */
+.astro-lightgallery-adaptive-container {
+  display: block;
+  width: 100%;
+  margin: 3rem 0;
+  clear: both;
+}
+
+.astro-lightgallery-adaptive-item {
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+/* Add spacing in prose context */
+.prose astro-lightgallery {
+  margin: 3rem 0;
+  clear: both;
+}
+
+/* Share buttons styling */
+.share-buttons {
+  @apply flex flex-wrap justify-center gap-3 mt-8 pt-8 border-t border-gray-200 dark:border-gray-800;
+}
+
+.resp-sharing-button__link {
+  @apply inline-block no-underline hover:scale-105 transition-all duration-200;
+}
+
+.resp-sharing-button {
+  @apply inline-flex items-center justify-center rounded-full shadow-md hover:shadow-lg transition-all duration-200;
+}
+
+.resp-sharing-button--small {
+  @apply w-12 h-12 p-3;
+}
+
+.resp-sharing-button__icon {
+  @apply flex items-center justify-center w-full h-full;
+}
+
+/* Platform-specific colors */
+.resp-sharing-button--twitter {
+  @apply bg-[#1da1f2] hover:bg-[#1a91da] text-white ring-1 ring-[#1da1f2]/20;
+}
+
+.resp-sharing-button--linkedin {
+  @apply bg-[#0077b5] hover:bg-[#006399] text-white ring-1 ring-[#0077b5]/20;
+}
+
+.resp-sharing-button--reddit {
+  @apply bg-[#ff4500] hover:bg-[#e03d00] text-white ring-1 ring-[#ff4500]/20;
+}
+
+.resp-sharing-button--hackernews {
+  @apply bg-[#ff6600] hover:bg-[#e65c00] text-white ring-1 ring-[#ff6600]/20;
+}
+
+.resp-sharing-button--tumblr {
+  @apply bg-[#35465c] hover:bg-[#2a3749] text-white ring-1 ring-[#35465c]/20;
+}
+
+.resp-sharing-button--pinterest {
+  @apply bg-[#bd081c] hover:bg-[#a50718] text-white ring-1 ring-[#bd081c]/20;
+}
+
+.resp-sharing-button--facebook {
+  @apply bg-[#1877f2] hover:bg-[#0c63d4] text-white ring-1 ring-[#1877f2]/20;
+}
+
+/* Dark mode adjustments */
+.dark .resp-sharing-button--twitter {
+  @apply bg-[#1a91da] hover:bg-[#1580c7] ring-[#1a91da]/30;
+}
+
+.dark .resp-sharing-button--linkedin {
+  @apply bg-[#006399] hover:bg-[#005280] ring-[#006399]/30;
+}
+
+.dark .resp-sharing-button--reddit {
+  @apply bg-[#e03d00] hover:bg-[#c73600] ring-[#e03d00]/30;
+}
+
+.dark .resp-sharing-button--hackernews {
+  @apply bg-[#e65c00] hover:bg-[#cc5200] ring-[#e65c00]/30;
+}
+
+.dark .resp-sharing-button--tumblr {
+  @apply bg-[#2a3749] hover:bg-[#1f2936] ring-[#2a3749]/30;
+}
+
+.dark .resp-sharing-button--pinterest {
+  @apply bg-[#a50718] hover:bg-[#8c0614] ring-[#a50718]/30;
+}
+
+.dark .resp-sharing-button--facebook {
+  @apply bg-[#0c63d4] hover:bg-[#0952b5] ring-[#0c63d4]/30;
+}

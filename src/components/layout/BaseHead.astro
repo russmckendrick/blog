@@ -1,0 +1,93 @@
+---
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseHead /> component.
+import '../../styles/global.css';
+import { AstroSEO } from 'astro-seo-plugin';
+import { SITE_TITLE, SITE_KEYWORDS } from '../../consts';
+
+interface Props {
+	title: string;
+	description: string;
+	image?: string;
+	keywords?: string[];
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Default fallback image (public URL)
+const defaultImage = '/images/blog-cover.png';
+const { title, description, image = defaultImage, keywords = SITE_KEYWORDS } = Astro.props;
+
+// Construct full image URL
+// If image starts with http, use it as is, otherwise construct full URL
+const imageURL = image?.startsWith('http')
+	? image
+	: new URL(image || defaultImage, Astro.site || Astro.url).toString();
+---
+
+<!-- AstroSEO Component for comprehensive SEO management -->
+<AstroSEO
+	title={title}
+	description={description}
+	canonical={canonicalURL.toString()}
+	openGraph={{
+		title: title,
+		description: description,
+		type: "website",
+		url: Astro.url.toString(),
+		image: imageURL,
+		siteName: SITE_TITLE
+	}}
+	twitter={{
+		card: "summary_large_image",
+		site: "@russmckendrick",
+		creator: "@russmckendrick",
+		title: title,
+		description: description,
+		image: imageURL
+	}}
+	robots={{
+		index: true,
+		follow: true
+	}}
+	additionalMetaTags={[
+		{ name: "keywords", content: keywords.join(', ') },
+		{ name: "generator", content: Astro.generator },
+		{ name: "theme-color", content: "#ffffff" }
+	]}
+	additionalLinkTags={[
+		{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+		{ rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
+		{ rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
+		{ rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+		{ rel: "mask-icon", href: "/images/logo.svg" },
+		{ rel: "sitemap", href: "/sitemap-index.xml" },
+		{ rel: "alternate", type: "application/rss+xml", href: new URL('rss.xml', Astro.site).toString() },
+		{ rel: "me", href: "https://social.mckendrick.io/@russ" }
+	]}
+/>
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"></noscript>
+
+<!-- Plausible Analytics -->
+<script defer data-domain="russ.cloud" src="https://plausible.io/js/plausible.js"></script>
+
+<!-- Theme initialization to prevent FOUC -->
+<script is:inline>
+	// Set theme immediately to prevent flash
+	(function() {
+		document.documentElement.classList.toggle(
+			'dark',
+			localStorage.theme === 'dark' ||
+			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+		);
+	})();
+</script>

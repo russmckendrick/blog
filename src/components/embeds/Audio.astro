@@ -1,0 +1,35 @@
+---
+interface Props {
+	/** Path to WAV audio file */
+	wav?: string;
+	/** Path to OGG audio file */
+	ogg?: string;
+	/** Path to MP3 audio file */
+	mp3?: string;
+}
+
+const { wav, ogg, mp3 } = Astro.props;
+---
+
+<div class="audio-container my-6">
+	<audio
+		controls
+		class="w-full rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
+	>
+		{wav && <source type="audio/wav" src={wav} />}
+		{ogg && <source type="audio/ogg" src={ogg} />}
+		{mp3 && <source type="audio/mpeg" src={mp3} />}
+		Your browser does not support the audio element.
+	</audio>
+</div>
+
+<style>
+	.audio-container audio {
+		outline: none;
+	}
+
+	.audio-container audio:focus {
+		outline: 2px solid rgb(59 130 246 / 0.5);
+		outline-offset: 2px;
+	}
+</style>

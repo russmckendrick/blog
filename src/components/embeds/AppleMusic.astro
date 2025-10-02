@@ -1,0 +1,96 @@
+---
+interface Props {
+	/** Apple Music URL, e.g. https://music.apple.com/gb/album/signals-remastered/1440765198 */
+	url: string;
+	/** Height of the embed (default: 450px) */
+	height?: string;
+}
+
+const { url, height = '450px' } = Astro.props;
+const embedUrl = url.replace('music.apple.com', 'embed.music.apple.com');
+// Generate unique ID for this embed
+const embedId = `apple-music-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class="apple-music-container my-6">
+	<iframe
+		id={embedId}
+		class="apple-music-embed"
+		height={height}
+		data-embed-url={embedUrl}
+		frameborder="0"
+		sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+		allow="autoplay *; encrypted-media *; clipboard-write"
+	>
+	</iframe>
+</div>
+
+<script>
+	// Initialize Apple Music theme handler
+	function initAppleMusicEmbeds() {
+		function getTheme() {
+			return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+		}
+
+		function updateEmbed(iframe: HTMLIFrameElement) {
+			const baseUrl = iframe.getAttribute('data-embed-url');
+			if (baseUrl) {
+				const embedUrl = `${baseUrl}?app=music&itsct=music_box_player&itscg=30200&ls=1&theme=${getTheme()}`;
+				iframe.src = embedUrl;
+			}
+		}
+
+		// Initialize all Apple Music embeds
+		document.querySelectorAll('.apple-music-embed').forEach((iframe) => {
+			updateEmbed(iframe as HTMLIFrameElement);
+		});
+
+		// Update embeds on theme change
+		const observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (mutation.attributeName === 'class' || mutation.attributeName === 'data-theme') {
+					document.querySelectorAll('.apple-music-embed').forEach((embed) => {
+						const iframe = embed as HTMLIFrameElement;
+						if (iframe.src) {
+							const url = new URL(iframe.src);
+							url.searchParams.set('theme', getTheme());
+							iframe.src = url.toString();
+						}
+					});
+				}
+			});
+		});
+
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ['class', 'data-theme']
+		});
+	}
+
+	// Initialize on load
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initAppleMusicEmbeds);
+	} else {
+		initAppleMusicEmbeds();
+	}
+</script>
+
+<style>
+	.apple-music-container {
+		width: 100%;
+		max-width: 100%;
+		margin: 1.5rem auto;
+	}
+
+	.apple-music-embed {
+		width: 100%;
+		max-width: 100%;
+		border-radius: 0.75rem;
+		border: 1px solid rgb(229 231 235);
+		overflow: hidden;
+	}
+
+	:global(.dark) .apple-music-embed {
+		border-color: rgb(55 65 81);
+	}
+</style>

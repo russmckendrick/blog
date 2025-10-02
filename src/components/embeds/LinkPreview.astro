@@ -1,0 +1,30 @@
+---
+import { LinkPreview as LinkPreviewEmbed } from '@astro-community/astro-embed-link-preview';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<div class="link-preview-wrapper">
+  <LinkPreviewEmbed id={id} />
+</div>
+
+<style>
+  .link-preview-wrapper {
+    width: 100%;
+    margin: 1.5rem 0;
+  }
+
+  .link-preview-wrapper :global(a) {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .link-preview-wrapper :global(.link-preview) {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+</style>
