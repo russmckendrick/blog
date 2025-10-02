@@ -23,7 +23,7 @@ const tags = post.data.tags ?? [];
 
 <a
 	href={href}
-	class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-4 focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-[28px]">
+	class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-[28px]">
 	<article
 		class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-[28px] shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
 		{heroImage && (
@@ -35,6 +35,8 @@ const tags = post.data.tags ?? [];
 					sizes="(min-width: 768px) 720px, 100vw"
 					loading={priority ? "eager" : "lazy"}
 					fetchpriority={priority ? "high" : "auto"}
+					quality={75}
+					format="webp"
 					class="w-full h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 				/>
 			</figure>

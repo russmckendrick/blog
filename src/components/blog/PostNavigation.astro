@@ -28,7 +28,7 @@ function getPostData(post: CollectionEntry<'blog'>) {
 			{previousPost ? (
 				<a
 					href={getPostData(previousPost).href}
-					class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-4 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 rounded-2xl"
+					class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 rounded-2xl"
 				>
 					<article class="relative h-full bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
 						{getPostData(previousPost).heroImage && (
@@ -38,6 +38,8 @@ function getPostData(post: CollectionEntry<'blog'>) {
 									alt={getPostData(previousPost).alt}
 									width={640}
 									height={360}
+									quality={75}
+									format="webp"
 									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 								/>
 							</figure>
@@ -85,7 +87,7 @@ function getPostData(post: CollectionEntry<'blog'>) {
 			{nextPost ? (
 				<a
 					href={getPostData(nextPost).href}
-					class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-4 focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 rounded-2xl"
+					class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 rounded-2xl"
 				>
 					<article class="relative h-full bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
 						{getPostData(nextPost).heroImage && (
@@ -95,6 +97,8 @@ function getPostData(post: CollectionEntry<'blog'>) {
 									alt={getPostData(nextPost).alt}
 									width={640}
 									height={360}
+									quality={75}
+									format="webp"
 									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 								/>
 							</figure>
