@@ -25,6 +25,10 @@ const imageURL = image?.startsWith('http')
 	: new URL(image || defaultImage, Astro.site || Astro.url).toString();
 ---
 
+<!-- Critical meta tags first -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
 <!-- AstroSEO Component for comprehensive SEO management -->
 <AstroSEO
 	title={title}
@@ -66,10 +70,6 @@ const imageURL = image?.startsWith('http')
 		{ rel: "me", href: "https://social.mckendrick.io/@russ" }
 	]}
 />
-
-<!-- Global Metadata -->
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">

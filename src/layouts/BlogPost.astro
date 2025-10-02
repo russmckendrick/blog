@@ -56,9 +56,12 @@ const displayImage = cover?.image || heroImage;
 						<Image
 							src={displayImage}
 							alt={cover?.alt || title}
-							width={1920}
-							height={960}
-							fit="cover"
+							widths={[640, 1024, 1280, 1536, 1920, 2560]}
+							sizes="100vw"
+							loading="eager"
+							fetchpriority="high"
+							quality={85}
+							format="webp"
 							class="absolute inset-0 h-full w-full object-cover"
 						/>
 					<div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-transparent dark:from-black/40 dark:via-black/25"></div>
