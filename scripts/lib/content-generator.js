@@ -1,6 +1,7 @@
 import { ChatOpenAI } from '@langchain/openai'
 import { ChatAnthropic } from '@langchain/anthropic'
 import { ConfigLoader } from './config-loader.js'
+import { normalizeForFilename, lookupArtistData, lookupAlbumData } from './text-utils.js'
 
 export class ContentGenerator {
   constructor(config = null) {
@@ -100,8 +101,8 @@ export class ContentGenerator {
 
   addImagesAndLinks(section, artist, album, collectionInfo, dateStr) {
     // Get album and artist data
-    const albumData = this.lookupAlbumData(artist, album, collectionInfo)
-    const artistData = this.lookupArtistData(artist, collectionInfo)
+    const albumData = lookupAlbumData(artist, album, collectionInfo)
+    const artistData = lookupArtistData(artist, collectionInfo)
 
     // Split section into lines
     const lines = section.split('\n')
@@ -126,7 +127,7 @@ export class ContentGenerator {
       if (!headerFound && lines[i].startsWith('## ')) {
         headerFound = true
         if (albumData?.image) {
-          const albumImagePath = `/assets/${dateStr}-listened-to-this-week/albums/${album.replace(/\s+/g, '-').replace(/\//g, '-')}.jpg`
+          const albumImagePath = `/assets/${dateStr}-listened-to-this-week/albums/${normalizeForFilename(album)}.jpg`
           enrichedLines.push('')
           enrichedLines.push(`<Img src="${albumImagePath}" alt="${album} by ${artist}" />`)
           enrichedLines.push('')
@@ -135,7 +136,7 @@ export class ContentGenerator {
 
       // After the middle H3 header, add artist image
       if (headerFound && i === middleH3Index && artistData?.image) {
-        const artistImagePath = `/assets/${dateStr}-listened-to-this-week/artists/${artist.replace(/\s+/g, '-').replace(/\//g, '-')}.jpg`
+        const artistImagePath = `/assets/${dateStr}-listened-to-this-week/artists/${normalizeForFilename(artist)}.jpg`
         enrichedLines.push('')
         enrichedLines.push(`<Img src="${artistImagePath}" alt="${artist}" />`)
         enrichedLines.push('')
@@ -159,42 +160,6 @@ export class ContentGenerator {
     }
 
     return enrichedLines.join('\n')
-  }
-
-  normalizeText(text) {
-    if (!text) return ''
-    return text.normalize('NFKD').toLowerCase().trim()
-  }
-
-  lookupArtistData(artist, collectionInfo) {
-    const normalizedArtist = this.normalizeText(artist)
-    for (const [key, data] of Object.entries(collectionInfo)) {
-      if (typeof key === 'string' && this.normalizeText(key) === normalizedArtist) {
-        return {
-          link: data.artist_link,
-          image: data.artist_image
-        }
-      }
-    }
-    return null
-  }
-
-  lookupAlbumData(artist, album, collectionInfo) {
-    const normalizedArtist = this.normalizeText(artist)
-    const normalizedAlbum = this.normalizeText(album)
-
-    for (const [key, data] of Object.entries(collectionInfo)) {
-      if (key.includes('|||')) {
-        const [keyArtist, keyAlbum] = key.split('|||')
-        if (this.normalizeText(keyArtist) === normalizedArtist && this.normalizeText(keyAlbum) === normalizedAlbum) {
-          return {
-            link: data.album_link,
-            image: data.album_image
-          }
-        }
-      }
-    }
-    return null
   }
 
   async researchAlbum(artist, album) {
