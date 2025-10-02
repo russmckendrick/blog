@@ -23,9 +23,59 @@ interface Props {
 const { layout, options } = Astro.props;
 ---
 
-<div data-no-swup>
+<div data-no-swup class="lightgallery-wrapper">
   <AstroLightGallery
     layout={layout}
     options={options}
   />
 </div>
+
+<style is:global>
+  .lightgallery-wrapper {
+    margin: 3rem 0;
+    width: 100%;
+  }
+
+  .lightgallery-wrapper astro-lightgallery {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .lightgallery-wrapper .astro-lightgallery-adaptive-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 0 auto;
+    width: 100%;
+    justify-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .lightgallery-wrapper .astro-lightgallery-adaptive-container {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  .lightgallery-wrapper .astro-lightgallery-adaptive-item {
+    display: block;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 0.5rem;
+  }
+
+  .lightgallery-wrapper .astro-lightgallery-adaptive-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .lightgallery-wrapper .astro-lightgallery-adaptive-item:hover img {
+    transform: scale(1.05);
+  }
+</style>
