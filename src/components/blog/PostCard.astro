@@ -23,6 +23,7 @@ const tags = post.data.tags ?? [];
 
 <a
 	href={href}
+	aria-label={`Read blog post: ${post.data.title}`}
 	class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-[28px]">
 	<article
 		class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-[28px] shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
@@ -31,8 +32,8 @@ const tags = post.data.tags ?? [];
 				<Image
 					src={heroImage}
 					alt={alt}
-					widths={[400, 600, 800]}
-					sizes="(min-width: 768px) 720px, 100vw"
+					widths={[320, 400, 480, 640, 800]}
+					sizes="(min-width: 1024px) 392px, (min-width: 768px) 45vw, 92vw"
 					loading={priority ? "eager" : "lazy"}
 					fetchpriority={priority ? "high" : "auto"}
 					quality={75}
