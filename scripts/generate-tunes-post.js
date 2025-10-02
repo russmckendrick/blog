@@ -10,6 +10,7 @@ import { ContentGenerator } from './lib/content-generator.js'
 import { ImageHandler } from './lib/image-handler.js'
 import { BlogPostRenderer } from './lib/blog-post-renderer.js'
 import { ConfigLoader } from './lib/config-loader.js'
+import { normalizeText, lookupArtistData, lookupAlbumData } from './lib/text-utils.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -137,11 +138,6 @@ function getWeekNumber(date) {
   return Math.ceil((((d - yearStart) / 86400000) + 1) / 7)
 }
 
-function normalizeText(text) {
-  if (!text) return ''
-  return text.normalize('NFKD').toLowerCase().trim()
-}
-
 function processArtistData(artistData, originalCases, limit) {
   const artists = {}
   const originalEntries = {}
@@ -198,37 +194,6 @@ function printLinks(collectionInfo, topArtists, topAlbums) {
     }
   }
   console.log('')
-}
-
-function lookupArtistData(artist, collectionInfo) {
-  const normalizedArtist = normalizeText(artist)
-  for (const [key, data] of Object.entries(collectionInfo)) {
-    if (typeof key === 'string' && normalizeText(key) === normalizedArtist) {
-      return {
-        link: data.artist_link,
-        image: data.artist_image
-      }
-    }
-  }
-  return null
-}
-
-function lookupAlbumData(artist, album, collectionInfo) {
-  const normalizedArtist = normalizeText(artist)
-  const normalizedAlbum = normalizeText(album)
-
-  for (const [key, data] of Object.entries(collectionInfo)) {
-    if (key.includes('|||')) {
-      const [keyArtist, keyAlbum] = key.split('|||')
-      if (normalizeText(keyArtist) === normalizedArtist && normalizeText(keyAlbum) === normalizedAlbum) {
-        return {
-          link: data.album_link,
-          image: data.album_image
-        }
-      }
-    }
-  }
-  return null
 }
 
 main()
