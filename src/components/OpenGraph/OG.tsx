@@ -5,35 +5,35 @@ import path from "path";
 export default function OG(
   title: string = "Russ McKendrick - Blog",
   description?: string,
-  coverImagePath?: string | { src: string; width: number; height: number; format: string },
+  coverImagePath?: string,
 ) {
+  console.log('OG function called with:', { title, description, coverImagePath });
+
   // Convert cover image to base64 if it exists
   let coverImageBase64: string | undefined;
 
-  if (coverImagePath) {
+  if (coverImagePath && typeof coverImagePath === 'string') {
     try {
+      // coverImagePath is already an absolute filesystem path or relative path
       let imagePath: string;
 
-      // Check if it's an Astro image object
-      if (typeof coverImagePath === 'object' && 'src' in coverImagePath) {
-        // Extract the file path from the Astro image src
-        // Format: /@fs/Users/...path...?origWidth=1400&origHeight=800&origFormat=png
-        const srcPath = coverImagePath.src;
-        const cleanPath = srcPath.split('?')[0]; // Remove query params
-        imagePath = cleanPath.replace('/@fs', ''); // Remove /@fs prefix
-      } else if (typeof coverImagePath === 'string') {
-        // Handle string paths
-        if (coverImagePath.includes('../../assets/')) {
-          const assetPath = coverImagePath.replace('../../assets/', 'src/assets/');
-          imagePath = path.join(process.cwd(), assetPath);
-        } else if (coverImagePath.startsWith('/')) {
-          imagePath = path.join(process.cwd(), 'public', coverImagePath);
-        } else {
-          imagePath = path.join(process.cwd(), 'public', coverImagePath);
-        }
+      if (path.isAbsolute(coverImagePath)) {
+        // Already absolute
+        imagePath = coverImagePath;
+      } else if (coverImagePath.includes('../../assets/')) {
+        // Relative from content file
+        const assetPath = coverImagePath.replace('../../assets/', 'src/assets/');
+        imagePath = path.join(process.cwd(), assetPath);
+      } else if (coverImagePath.startsWith('/')) {
+        // Absolute from public
+        imagePath = path.join(process.cwd(), 'public', coverImagePath);
       } else {
-        throw new Error('Invalid coverImagePath format');
+        // Relative from public
+        imagePath = path.join(process.cwd(), 'public', coverImagePath);
       }
+
+      console.log('OG - Loading image from:', imagePath);
+      console.log('OG - File exists:', fs.existsSync(imagePath));
 
       const imageBuffer = fs.readFileSync(imagePath);
       const base64Image = imageBuffer.toString('base64');
@@ -41,9 +41,11 @@ export default function OG(
       const ext = path.extname(imagePath).toLowerCase();
       const mimeType = ext === '.png' ? 'image/png' : ext === '.jpg' || ext === '.jpeg' ? 'image/jpeg' : 'image/png';
       coverImageBase64 = `data:${mimeType};base64,${base64Image}`;
+      console.log('OG - Image loaded, base64 length:', base64Image.length);
+      console.log('OG - Has coverImageBase64:', !!coverImageBase64);
     } catch (error) {
       // If image fails to load, no cover image
-      console.error('OG Image - Failed to load:', error);
+      console.error('OG Image - Failed to load:', coverImagePath, error);
       coverImageBase64 = undefined;
     }
   }
