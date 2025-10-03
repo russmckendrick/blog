@@ -1,5 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { AI_AUTHOR } from './consts';
 
 const blog = defineCollection({
 	// Load Markdown and MDX files in the `src/content/blog/` directory.
@@ -54,7 +55,7 @@ const tunes = defineCollection({
 			updatedDate: z.coerce.date().optional(),
 			// Use image() for heroImage to properly handle imported images
 			heroImage: image().optional(),
-			author: z.string().default('Russ McKendrick'),
+			author: z.string().default(AI_AUTHOR.name),
 			tags: z.array(z.string()).default([]),
 			keywords: z.array(z.string()).default([]),
 			draft: z.boolean().default(false),
