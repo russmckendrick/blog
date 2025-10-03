@@ -8,22 +8,17 @@ interface Props {
 const { id } = Astro.props;
 ---
 
-<div class="link-preview-wrapper">
+<div class="my-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
   <LinkPreviewEmbed id={id} />
 </div>
 
 <style>
-  .link-preview-wrapper {
-    width: 100%;
-    margin: 1.5rem 0;
-  }
-
-  .link-preview-wrapper :global(a) {
+  div :global(a) {
     width: 100% !important;
     max-width: 100% !important;
   }
 
-  .link-preview-wrapper :global(.link-preview) {
+  div :global(.link-preview) {
     width: 100% !important;
     max-width: 100% !important;
   }
