@@ -71,14 +71,28 @@ const imageURL = image?.startsWith('http')
 	]}
 />
 
-<!-- Google Fonts -->
+<!-- DNS Prefetch & Preconnect -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://plausible.io">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"></noscript>
 
-<!-- Plausible Analytics -->
-<script defer data-domain="russ.cloud" src="https://plausible.io/js/plausible.js"></script>
+<!-- Plausible Analytics - Load after page interactive -->
+<script>
+	if (document.readyState === 'complete') {
+		loadPlausible();
+	} else {
+		window.addEventListener('load', loadPlausible);
+	}
+	function loadPlausible() {
+		const script = document.createElement('script');
+		script.defer = true;
+		script.dataset.domain = 'russ.cloud';
+		script.src = 'https://plausible.io/js/plausible.js';
+		document.head.appendChild(script);
+	}
+</script>
 
 <!-- Theme initialization to prevent FOUC -->
 <script is:inline>
