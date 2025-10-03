@@ -11,6 +11,7 @@ import Comments from '../components/blog/Comments.astro';
 import ShareButtons from '../components/social/ShareButtons.astro';
 import TableOfContents from '../components/blog/TableOfContents.astro';
 import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../utils/tags';
+import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR } from '../consts';
 
 // Import embed components to make them available in blog posts
 import { YouTube } from '@astro-community/astro-embed-youtube';
@@ -28,9 +29,10 @@ interface Props extends CollectionEntry<'blog'>['data'] {
 	ogImagePath?: string;
 	isTune?: boolean;
 	headings?: Heading[];
+	filePath?: string;
 }
 
-const { title, description, pubDate, updatedDate, heroImage, cover, tags = [], previousPost, nextPost, ogImagePath, isTune = false, showToc = false, headings = [] } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, cover, tags = [], previousPost, nextPost, ogImagePath, isTune = false, showToc = false, headings = [], filePath } = Astro.props;
 
 // Use the provided OG image path
 const ogImage = ogImagePath;
@@ -38,6 +40,16 @@ const ogImage = ogImagePath;
 // Use cover.image if available, otherwise fall back to heroImage
 // cover.image can be a string (public URL) or an imported image
 const displayImage = cover?.image || heroImage;
+
+// Build edit URL
+const editUrl = filePath && EDIT_POST.appendFilePath
+	? `${EDIT_POST.url}/${filePath}`
+	: EDIT_POST.url;
+
+// Determine author info based on whether this is a tune
+const authorName = isTune ? AI_AUTHOR.name : AUTHOR_NAME;
+const avatarSrc = isTune ? AI_AUTHOR.avatar : '/images/avatar.svg';
+const avatarFallback = isTune ? AI_AUTHOR.avatarFallback : '/images/avatar-192x192.png';
 ---
 
 <html lang="en">
@@ -75,19 +87,40 @@ const displayImage = cover?.image || heroImage;
 				<div class="max-w-4xl 2xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
 					<div class="bg-white/95 dark:bg-gray-900/90 rounded-3xl shadow-2xl shadow-gray-300/40 dark:shadow-black/60 ring-1 ring-gray-200/60 dark:ring-gray-800 backdrop-blur-xl px-6 sm:px-10 xl:px-16 py-10 sm:py-12 xl:py-16">
 						<header class="text-center mb-10 space-y-6">
-							<div class="mb-6 space-y-2 text-sm text-gray-500 dark:text-gray-400">
-								<div class="text-base font-medium text-gray-600 dark:text-gray-300">
-									<FormattedDate date={pubDate} />
-								</div>
-								{updatedDate && (
-									<div>
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)}
-							</div>
 							<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-gray-100">
 								{title}
 							</h1>
+							<div class="flex items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+								<img
+									src={avatarSrc}
+									alt={authorName}
+									class="w-8 h-8 rounded-full"
+									onError={`this.onerror=null; this.src='${avatarFallback}';`}
+								/>
+								<span class="font-medium text-gray-600 dark:text-gray-300">{authorName}</span>
+								<span>|</span>
+								<span class="text-gray-600 dark:text-gray-300">
+									<FormattedDate date={pubDate} />
+								</span>
+								{filePath && (
+									<>
+										<span>|</span>
+										<a
+											href={editUrl}
+											rel="noopener noreferrer edit"
+											target="_blank"
+											class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+										>
+											{EDIT_POST.text}
+										</a>
+									</>
+								)}
+							</div>
+							{updatedDate && (
+								<div class="text-xs text-gray-500 dark:text-gray-400">
+									Last updated on <FormattedDate date={updatedDate} />
+								</div>
+							)}
 							{tags.length > 0 && (
 								<div class="flex flex-wrap justify-center gap-3">
 									{tags.slice(0, 8).map((tag) => (
