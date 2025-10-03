@@ -32,8 +32,8 @@ const tags = post.data.tags ?? [];
 				<Image
 					src={heroImage}
 					alt={alt}
-					widths={[320, 400, 480, 640, 800]}
-					sizes="(min-width: 1024px) 392px, (min-width: 768px) 45vw, 92vw"
+					widths={[400, 800]}
+					sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
 					loading={priority ? "eager" : "lazy"}
 					fetchpriority={priority ? "high" : "auto"}
 					quality={75}
