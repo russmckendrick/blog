@@ -39,5 +39,61 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 			<slot />
 		</main>
 		<Footer />
+		<script>
+			// Global cleanup for LightGallery when navigating away from pages
+			function cleanupLightGallery() {
+				// Remove unified gallery container
+				const unifiedGallery = document.getElementById('unified-lightgallery');
+				if (unifiedGallery) {
+					unifiedGallery.remove();
+				}
+
+				// Remove ALL LightGallery elements (comprehensive cleanup)
+				const lgSelectors = [
+					'.lg-outer',
+					'.lg-backdrop',
+					'.lg-container',
+					'#lg-backdrop',
+					'#lg-outer',
+					'[class^="lg-"]',
+					'[id^="lg-"]'
+				];
+
+				lgSelectors.forEach(selector => {
+					const elements = document.querySelectorAll(selector);
+					elements.forEach(el => el.remove());
+				});
+
+				// Also check for any elements directly attached to body that might be LightGallery-related
+				const bodyChildren = Array.from(document.body.children);
+				bodyChildren.forEach(child => {
+					const el = child as HTMLElement;
+					if (el.className && typeof el.className === 'string' && el.className.includes('lg-')) {
+						el.remove();
+					}
+				});
+
+				// Reset initialization flags on all galleries
+				const galleries = document.querySelectorAll('astro-lightgallery[data-lg-initialized]');
+				galleries.forEach(gallery => {
+					gallery.removeAttribute('data-lg-initialized');
+				});
+			}
+
+			// Setup global SWUP cleanup handler
+			const setupGlobalSwupHandler = () => {
+				if (window.swup) {
+					window.swup.hooks.on('visit:start', () => {
+						cleanupLightGallery();
+					});
+				}
+			};
+
+			if (window.swup) {
+				setupGlobalSwupHandler();
+			} else {
+				document.addEventListener('swup:enable', setupGlobalSwupHandler);
+			}
+		</script>
 	</body>
 </html>

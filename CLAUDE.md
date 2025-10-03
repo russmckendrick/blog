@@ -131,8 +131,52 @@ Global MDX components are available in all blog posts without imports:
 - Site metadata, social links, and navigation in `src/consts.ts`
 - Tag metadata with colors and emojis defined in `TAG_METADATA` constant in `src/consts.ts`
 - Sitemap automatically excludes `/draft/` pages
-- Page transitions via Swup integration for smooth navigation
 - Search functionality via Pagefind integration
+
+### Page Transitions (SWUP)
+The site uses SWUP for smooth page transitions with important cleanup considerations:
+
+**Configuration** (`astro.config.mjs`):
+- **Theme**: `fade` animation
+- **Containers**: Only `main` is replaced (header/footer persist)
+- **Cache**: Enabled for better performance
+- **Link Selector**: Excludes LightGallery elements (`.lg-trigger`, `.astro-lightgallery-adaptive-item`, `[data-lg-id]`, etc.)
+- **Ignore Visit**: Custom logic to prevent SWUP from intercepting LightGallery clicks
+
+**Critical SWUP Pattern - DOM Cleanup**:
+When using JavaScript libraries that append elements to `document.body` (like LightGallery), you MUST implement cleanup on `visit:start`:
+
+```javascript
+// In BaseLayout.astro (global cleanup for all pages)
+function cleanupLibrary() {
+  // Remove persisted DOM elements
+  document.querySelectorAll('.library-element').forEach(el => el.remove());
+}
+
+window.swup.hooks.on('visit:start', () => {
+  cleanupLibrary();
+});
+```
+
+**Why This Matters**:
+- SWUP only replaces content inside `containers` (in our case, `main`)
+- Elements appended to `document.body` are NOT removed by SWUP
+- Without cleanup, artifacts from previous pages will persist and appear on subsequent pages
+- Place global cleanup in `BaseLayout.astro` so it runs for all page transitions
+
+**LightGallery Specific**:
+The site implements comprehensive LightGallery cleanup in `BaseLayout.astro`:
+- Removes `.lg-outer`, `.lg-backdrop`, `.lg-container` elements
+- Removes the unified gallery container (`#unified-lightgallery`)
+- Cleans up all elements with `lg-` class/ID prefixes
+- Resets gallery initialization flags
+
+**Best Practices**:
+1. Always place global cleanup hooks in `BaseLayout.astro`
+2. Use `visit:start` hook for cleanup (runs before navigation)
+3. Use `page:view` hook for re-initialization (runs after new page loads)
+4. Test navigation between pages with and without the library to verify cleanup
+5. Check browser console for orphaned DOM elements during development
 
 ### Build Optimization
 The site uses `@playform/compress` for production build optimization:
@@ -275,4 +319,3 @@ Additional repository guidelines are documented in `AGENTS.md`, including:
 - Coding style (2-space indentation, semicolon-free, PascalCase components)
 - Commit message conventions (imperative, single-sentence)
 - Testing approach (manual verification + `npx astro check`)
-- Add what we have learned about SWUP and what to look out for
