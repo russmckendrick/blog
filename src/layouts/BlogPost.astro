@@ -158,7 +158,7 @@ const avatarFallback = isTune ? AI_AUTHOR.avatarFallback : '/images/avatar-192x1
 			import type { LightGallerySettings } from 'lightgallery/lg-settings';
 			import type { AstroLightGalleryPluginStrType } from 'astro-lightgallery';
 
-			// Re-initialize LightGallery after SWUP page transitions
+			// Initialize LightGallery for blog post pages
 			async function initLightGallery() {
 				const galleries = document.querySelectorAll('astro-lightgallery');
 
@@ -226,7 +226,7 @@ const avatarFallback = isTune ? AI_AUTHOR.avatarFallback : '/images/avatar-192x1
 				}
 			}
 
-			// Re-initialize after SWUP transitions
+			// Setup SWUP handler for re-initialization (cleanup is handled globally in BaseLayout)
 			const setupSwupHandler = () => {
 				if (window.swup) {
 					window.swup.hooks.on('page:view', async () => {
