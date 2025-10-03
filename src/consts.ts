@@ -11,6 +11,12 @@ export const AUTHOR_GITHUB = '@russmckendrick';
 export const AUTHOR_LOCATION = 'Nottingham, UK';
 export const AUTHOR_HOMEPAGE = 'https://www.russ.cloud/about/';
 
+export const AI_AUTHOR = {
+  name: 'AI Generated',
+  avatar: '/images/bot.svg',
+  avatarFallback: '/images/avatar-192x192.png'
+};
+
 export const SOCIAL_LINKS = [
   { name: 'github', url: 'https://github.com/russmckendrick' },
   { name: 'mastodon', url: 'https://social.mckendrick.io/@russ' },
@@ -35,6 +41,12 @@ export const NAVIGATION_ITEMS = [
   { name: 'About', url: '/about/', icon: 'user' },
   { name: 'Source', url: 'https://github.com/russmckendrick/blog/', icon: 'github', external: true }
 ];
+
+export const EDIT_POST = {
+  url: 'https://github.com/russmckendrick/blog/blob/main',
+  text: 'Suggest Changes',
+  appendFilePath: true
+};
 
 // Tag metadata extracted from Hugo tag index files
 // Provides consistent display names, emojis, descriptions, and colors for all tags

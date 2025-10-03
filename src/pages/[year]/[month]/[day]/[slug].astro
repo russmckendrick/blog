@@ -73,25 +73,28 @@ export async function getStaticPaths() {
 				slug
 			},
 			props: {
-				...post,
+				entry: post,
 				previousPost,
 				nextPost,
 				ogImagePath,
 				isTune,
+				filePath: `src/content/${post.collection}/${post.id}.mdx`,
 			},
 		};
 	});
 }
 
-interface Props extends CollectionEntry<'blog'> {
+interface Props {
+	entry: CollectionEntry<'blog'>;
 	previousPost?: CollectionEntry<'blog'>;
 	nextPost?: CollectionEntry<'blog'>;
 	ogImagePath: string;
 	isTune?: boolean;
+	filePath?: string;
 }
 
-const { previousPost, nextPost, ogImagePath, isTune, ...post } = Astro.props;
-const { Content, headings } = await render(post);
+const { entry, previousPost, nextPost, ogImagePath, isTune, filePath } = Astro.props;
+const { Content, headings } = await render(entry);
 
 // Components to be available globally in MDX
 const components = {
@@ -116,6 +119,6 @@ const components = {
 };
 ---
 
-<BlogPost {...post.data} previousPost={previousPost} nextPost={nextPost} ogImagePath={ogImagePath} isTune={isTune} headings={headings}>
+<BlogPost {...entry.data} previousPost={previousPost} nextPost={nextPost} ogImagePath={ogImagePath} isTune={isTune} headings={headings} filePath={filePath}>
 	<Content components={components} />
 </BlogPost>

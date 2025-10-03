@@ -16,7 +16,7 @@ This is the code for https://www.russ.cloud/
 
 ## Features
 
-- ✅ 100/100 Lighthouse performance
+- ✅ Nearly perfect Lighthouse performance
 - ✅ SEO-friendly with canonical URLs and OpenGraph data
 - ✅ Auto-generated OpenGraph images for all blog posts
 - ✅ Sitemap support with draft exclusion
@@ -111,6 +111,8 @@ npm run post
 
 - [CLAUDE.md](./CLAUDE.md) - Detailed development guidelines and architecture overview
 - [docs/EMBED_USAGE.md](./docs/EMBED_USAGE.md) - Complete guide to all available embed components
+- [docs/TUNES_README.md](./docs/TUNES_README.md) - Details on the "Weekly Tunes" generator
+- [docs/migrations](./docs/migrations) - Notes on the migrations ran when moving from Hugo
 
 ## 👀 Want to learn more?
 
