@@ -108,6 +108,7 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 	},
 	build: {
-		format: 'directory'
+		format: 'directory',
+		inlineStylesheets: 'always'  // Inline all CSS to eliminate render-blocking requests
 	}
 });
