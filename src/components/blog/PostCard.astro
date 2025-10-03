@@ -5,6 +5,7 @@ import FormattedDate from './FormattedDate.astro';
 import { getPostUrl } from '../../utils/url.ts';
 import { getReadingTime } from '../../utils/reading-time';
 import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../../utils/tags';
+import { AI_AUTHOR } from '../../consts';
 
 interface Props {
 	post: CollectionEntry<'blog'>;
@@ -17,7 +18,7 @@ const heroImage = post.data.heroImage || post.data.cover?.image;
 const alt = post.data.cover?.alt || post.data.title;
 const description = post.data.summary || post.data.description;
 const readingTime = getReadingTime(post.body);
-const author = post.data.author;
+const author = post.data.author || AI_AUTHOR.name;
 const tags = post.data.tags ?? [];
 ---
 
@@ -53,22 +54,18 @@ const tags = post.data.tags ?? [];
 					{description}
 				</p>
 			)}
-			<footer class="mt-1 text-sm text-gray-500 dark:text-gray-400 flex flex-wrap items-center gap-x-2 gap-y-3 justify-between">
-				<span class="text-inherit">
+			<footer class="mt-1 text-sm flex flex-wrap items-center gap-x-2 gap-y-3">
+				<span class="text-blue-600 dark:text-blue-400">
 					<FormattedDate date={post.data.pubDate} />
 				</span>
 				{readingTime && (
 					<>
-						<span aria-hidden="true">·</span>
-						<span>{readingTime}</span>
+						<span class="text-gray-500 dark:text-gray-400" aria-hidden="true">·</span>
+						<span class="text-gray-500 dark:text-gray-400">{readingTime}</span>
 					</>
 				)}
-				{author && (
-					<>
-						<span aria-hidden="true">·</span>
-						<span>{author}</span>
-					</>
-				)}
+				<span class="text-gray-500 dark:text-gray-400" aria-hidden="true">·</span>
+				<span class="text-gray-500 dark:text-gray-400">{author}</span>
 				{tags.length > 0 && (
 					<div class="flex flex-wrap gap-2 ml-auto">
 						{tags.slice(0, 6).map((tag) => (
