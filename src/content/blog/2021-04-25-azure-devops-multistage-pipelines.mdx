@@ -24,10 +24,8 @@ Luckily, there are ways to get around this — the most simple way is to add
 
 Once you have added the Environment you can then add an approval check, to do this click on the Environment you have just created and click on the three dots in the top right-hand side of the page. From the menu select Approvals and checks;
 
-{/* Old gallery removed - please add images manually if needed */}
    <Img src="/assets/2021-04-25-azure-devops-multistage-pipelines/images/02.png" alt="graphical user interface, application" />
    <Img src="/assets/2021-04-25-azure-devops-multistage-pipelines/images/03.png" alt="graphical user interface, application" />
-{/* TODO: End shortcode: {{/oldgallery}} */}
 
 Now we have an Environment and the Approval in place we can move onto the Pipeline.
 
@@ -37,8 +35,7 @@ I already had a multi-stage pipeline I have been using to demo a container build
 
 First up is the stage where the Resource Group is created;
 
-```bash frame="terminal" title="Resource Group"
-``` yaml
+```yaml title="Resource Group"
 - stage: "SetupRG"
     displayName: "Resource Group"
     jobs:
@@ -55,15 +52,13 @@ First up is the stage where the Resource Group is created;
                 az group create --name $(APP_NAME)-rg --location $(LOCATION)
             displayName: "Resource Group - Use Azure CLI to setup or check"
 ```
-```
 
 
 As you can see, I am using the Azure CLI and variables which are defined in the header of the Pipeline.
 
 Once the Resource Group has been created the next stage launches an Azure Container Registry if one doesn’t exist, if there is already one there then nothing happens;
 
-```bash frame="terminal" title="Azure Container Registry"
-``` yaml
+```yaml title="Azure Container Registry"
 - stage: "SetupACR"
     displayName: "Azure Container Registry"
     dependsOn:
@@ -91,13 +86,10 @@ Once the Resource Group has been created the next stage launches an Azure Contai
                 fi
             displayName: "Azure Container Registry - Use Azure CLI check or setup"
 ```
-```
-
 
 Now that we have a container registry to push our image to we can build and the push the container, this is the stage where we will be getting approval before building;
 
-```bash frame="terminal" title="Build, Tag and Push the container image"
-``` yaml
+```yaml title="Build, Tag and Push the container image"
 - stage: "BuildContainer"
     displayName: "Build, Tag and Push the container image"
     dependsOn:
@@ -130,7 +122,6 @@ Now that we have a container registry to push our image to we can build and the 
                       docker image push $(ACR_NAME).azurecr.io/$(IMAGE_NAME):$THETIMEANDDATE
                   displayName: "Use Azure CLI to build and push the container image"
 ```
-```
 
 
 As you can see, rather than defining a `job` we are using a `deployment` this means we can then use the `environment` we created and because the `environment` is what our approval is attached to the deployment won’t progress until approved.
@@ -141,8 +132,7 @@ The second step builds, tags and then pushes the image to the Azure Container Re
 
 The remaining stage, assuming the previous three stages have all completed, configures and launches an App Service Plan, App Service and then configures automatic deployment of any subsequent images which are pushed to our Azure Container Registry, as you can see the code below the steps are only executed if the App Service Plan has not been configured, if our Application is already running then these steps are skipped;
 
-```bash frame="terminal" title="Azure App Services"
-``` yaml
+```yaml title="Azure App Services"
 - stage: "SetupAppServices"
     displayName: "Azure App Services"
     dependsOn:
@@ -283,8 +273,6 @@ The remaining stage, assuming the previous three stages have all completed, conf
                 az acr webhook create --name $(ACR_NAME)webhook --registry $(ACR_NAME) --scope $(IMAGE_NAME):latest --actions push --uri $(az webapp deployment container show-cd-url --resource-group $(APP_NAME)-rg --name $(APP_NAME) --query "CI_CD_URL" -o tsv)
             displayName: "Azure Container Registry - Add the web hook created in the last task to the Azure Container Registry"
 ```
-```
-
 
 A full copy of the `azure-pipelines.yml` file can be found in the following repo [https://github.com/russmckendrick/docker-python-web-app](https://github.com/russmckendrick/docker-python-web-app).
 
