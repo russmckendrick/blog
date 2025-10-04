@@ -10,13 +10,16 @@ interface Props {
 	description: string;
 	image?: string;
 	keywords?: string[];
+	datePublished?: Date;
+	dateModified?: Date;
+	author?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Default fallback image (public URL)
 const defaultImage = '/images/blog-cover.png';
-const { title, description, image = defaultImage, keywords = SITE_KEYWORDS } = Astro.props;
+const { title, description, image = defaultImage, keywords = SITE_KEYWORDS, datePublished, dateModified, author } = Astro.props;
 
 // Construct full image URL
 // If image starts with http, use it as is, otherwise construct full URL
@@ -57,7 +60,10 @@ const imageURL = image?.startsWith('http')
 	additionalMetaTags={[
 		{ name: "keywords", content: keywords.join(', ') },
 		{ name: "generator", content: Astro.generator },
-		{ name: "theme-color", content: "#ffffff" }
+		{ name: "theme-color", content: "#ffffff" },
+		...(datePublished ? [{ property: "article:published_time", content: datePublished.toISOString() }] : []),
+		...(dateModified || datePublished ? [{ property: "article:modified_time", content: (dateModified || datePublished)!.toISOString() }] : []),
+		...(author ? [{ property: "article:author", content: author }] : [])
 	]}
 	additionalLinkTags={[
 		{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" },

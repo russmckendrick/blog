@@ -643,6 +643,72 @@ Since you migrated from Hugo to Astro, verify:
 
 ---
 
+### Phase 2: Content Freshness Signals - COMPLETED ✅
+
+**Date Completed**: 2025-10-04
+
+#### What Was Implemented:
+
+1. **Article Meta Tags** (`src/components/layout/BaseHead.astro`):
+   - Added `article:published_time` - ISO 8601 formatted publication date
+   - Added `article:modified_time` - ISO 8601 formatted modification date (or pubDate if no updatedDate)
+   - Added `article:author` - Author name for blog posts
+   - Tags are conditionally added only when dates/author are provided
+   - Integrated into `BlogPost.astro` layout (passes pubDate, updatedDate, authorName)
+
+2. **Enhanced Sitemap** (`astro.config.mjs`):
+   - Added `serialize` function to sitemap integration
+   - Extracts dates from URL patterns (`/YYYY/MM/DD/`)
+   - Automatically sets `<lastmod>` for all blog posts
+   - Helps search engines understand content freshness
+
+3. **Reading Time Functionality**:
+   - **Utility** (`src/utils/reading-time.ts`):
+     - `calculateReadingTime()` - Calculates minutes based on ~200 words/minute
+     - `formatReadingTime()` - Formats output as "X min read"
+   - **Component** (`src/components/blog/ReadingTime.astro`):
+     - Displays reading time with consistent styling
+     - Matches site's dark mode theme
+   - **Integration Points**:
+     - Blog post pages (`BlogPost.astro`) - displays next to date in header
+     - Post cards (`PostCard.astro`) - shows in post preview cards
+     - Post navigation (`PostNavigation.astro`) - included in prev/next links
+     - Dynamic route (`[slug].astro`) - calculates and passes to layout
+
+#### Example Output:
+
+**Article Meta Tags** (in `<head>`):
+```html
+<meta property="article:published_time" content="2014-05-26T10:00:00.000Z">
+<meta property="article:modified_time" content="2014-05-26T10:00:00.000Z">
+<meta property="article:author" content="Russ McKendrick">
+```
+
+**Sitemap Entry**:
+```xml
+<url>
+  <loc>https://www.russ.cloud/2014/05/26/cask/</loc>
+  <lastmod>2014-05-26T00:00:00.000Z</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.5</priority>
+</url>
+```
+
+**Reading Time Display**:
+- Blog post header: "Russ McKendrick | May 26, 2014 | **1 min read**"
+- Post cards: Date + reading time
+- Navigation: Previous/Next post cards show reading time
+
+#### SEO Benefits Achieved:
+
+- ✅ **Content Freshness**: Search engines know when content was published/updated
+- ✅ **Author Attribution**: Proper article authorship signals
+- ✅ **Sitemap Optimization**: lastmod dates help crawlers prioritize fresh content
+- ✅ **User Experience**: Reading time helps users decide what to read
+- ✅ **Engagement Signals**: Better UX may reduce bounce rate
+
+---
+
 **Last Updated**: 2025-10-04
-**Status**: Phase 1 Complete ✅ | Phases 2-5 Ready for Implementation
-**Estimated Timeline**: 5 weeks remaining for Phases 2-5
+**Status**: Phase 1 & 2 Complete ✅ | Phases 3-5 Ready for Implementation
+**Estimated Timeline**: 3 weeks remaining for Phases 3-5

@@ -1,0 +1,13 @@
+---
+import { formatReadingTime } from '../../utils/reading-time';
+
+interface Props {
+  minutes: number;
+}
+
+const { minutes } = Astro.props;
+---
+
+<span class="text-sm text-gray-500 dark:text-gray-400">
+  {formatReadingTime(minutes)}
+</span>
