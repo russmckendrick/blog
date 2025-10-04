@@ -30,6 +30,7 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 <html lang="en">
 	<head>
 		<BaseHead title={pageTitle} description={description} image={image} keywords={keywords} />
+		<slot name="head" />
 	</head>
 	<body class="bg-gray-50 dark:bg-gray-950">
 		<HeaderWrapper client:load autoHide={false}>

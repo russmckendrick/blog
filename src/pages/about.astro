@@ -1,9 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Img from '../components/embeds/Img.astro';
+import { Schema } from 'astro-seo-schema';
+import { createPersonSchema, createOrganizationSchema } from '../utils/schema';
+
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
+const personSchema = createPersonSchema(siteUrl);
+const organizationSchema = createOrganizationSchema(siteUrl);
 ---
 
 <BaseLayout title="About Russ McKendrick" description="Hi! I'm Russ, an IT professional with 30 years of experience in DevOps and system administration. I'm passionate about Linux, open-source systems, automation, and containers.">
+	<Fragment slot="head">
+		<Schema item={personSchema} />
+		<Schema item={organizationSchema} />
+	</Fragment>
 	<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 		<h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 flex items-center gap-3">
 			Hi there <img src="/assets/about/images/wave.gif" alt="Hello there" class="inline-block h-12 align-middle" />, my name is Russ.
