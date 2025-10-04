@@ -9,7 +9,8 @@
     "astro": "astro",
     "post": "node scripts/new-post.js",
     "tunes": "node scripts/generate-tunes-post.js",
-    "optimize": "node scripts/optimize-images.js"
+    "optimize": "node scripts/optimize-images.js",
+    "analyze-links": "node scripts/analyze-internal-links.js"
   },
   "dependencies": {
     "@astro-community/astro-embed-link-preview": "^0.2.2",

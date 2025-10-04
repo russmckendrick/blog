@@ -123,6 +123,6 @@ const components = {
 };
 ---
 
-<BlogPost {...entry.data} previousPost={previousPost} nextPost={nextPost} ogImagePath={ogImagePath} isTune={isTune} headings={headings} filePath={filePath} readingTime={readingTime}>
+<BlogPost entry={entry} {...entry.data} previousPost={previousPost} nextPost={nextPost} ogImagePath={ogImagePath} isTune={isTune} headings={headings} filePath={filePath} readingTime={readingTime}>
 	<Content components={components} />
 </BlogPost>
