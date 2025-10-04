@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getTagMetadata, getTagUrl, normalizeTagSlug } from '../../utils/tags';
 
 // Get all blog posts and count tags
-const posts = (await getCollection('blog')).filter(post => !post.data.draft);
+const posts = (await getCollection('blog')).filter(post => import.meta.env.DEV || !post.data.draft);
 
 // Count posts per tag (normalize to lowercase with hyphens)
 const tagCounts = new Map<string, number>();

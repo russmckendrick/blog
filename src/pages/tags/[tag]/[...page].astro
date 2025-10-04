@@ -9,7 +9,7 @@ import { TAG_METADATA } from '../../../consts';
 
 export async function getStaticPaths({ paginate }) {
   const posts = (await getCollection('blog'))
-    .filter(post => !post.data.draft)
+    .filter(post => import.meta.env.DEV || !post.data.draft)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
   // Get all unique tags (normalized to lowercase with hyphens)
@@ -43,7 +43,7 @@ const { tag } = Astro.params;
 const metadata = getTagMetadata(tag);
 
 // Count total posts with this tag across all pages
-const allPosts = (await getCollection('blog')).filter(post => !post.data.draft);
+const allPosts = (await getCollection('blog')).filter(post => import.meta.env.DEV || !post.data.draft);
 const totalTagPosts = allPosts.filter(post =>
   (post.data.tags || []).map(t => normalizeTagSlug(t)).includes(tag)
 ).length;

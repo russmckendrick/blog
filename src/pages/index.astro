@@ -7,7 +7,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 const postsPerPage = 5;
 
 const allPosts = (await getCollection('blog'))
-	.filter(post => !post.data.draft)
+	.filter(post => import.meta.env.DEV || !post.data.draft)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const posts = allPosts.slice(0, postsPerPage);
