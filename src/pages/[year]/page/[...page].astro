@@ -19,7 +19,7 @@ export async function getStaticPaths({ paginate }) {
 	const paths = [];
 	for (const year of years) {
 		const yearContent = allContent
-			.filter(item => !item.data.draft && item.data.pubDate.getFullYear().toString() === year)
+			.filter(item => (import.meta.env.DEV || !item.data.draft) && item.data.pubDate.getFullYear().toString() === year)
 			.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 		const paginatedPaths = paginate(yearContent, {

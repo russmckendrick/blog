@@ -13,7 +13,7 @@ interface Props {
 const { currentPost, previousPost, nextPost, limit = 3 } = Astro.props;
 
 // Get all published blog posts
-const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const allPosts = await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft);
 
 // Build list of post IDs to exclude
 const excludedIds = [

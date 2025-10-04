@@ -6,7 +6,7 @@ import Pagination from '../../components/layout/Pagination.astro';
 
 export async function getStaticPaths({ paginate }) {
 	const posts = (await getCollection('blog'))
-		.filter(post => !post.data.draft)
+		.filter(post => import.meta.env.DEV || !post.data.draft)
 		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 	return paginate(posts, { pageSize: 10 });
