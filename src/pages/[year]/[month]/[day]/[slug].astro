@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BlogPost from '../../../../layouts/BlogPost.astro';
 import { createUrlFriendlySlug } from '../../../../utils/url.ts';
+import { calculateReadingTime } from '../../../../utils/reading-time';
 import {
 	AppleMusic,
 	Audio,
@@ -96,6 +97,9 @@ interface Props {
 const { entry, previousPost, nextPost, ogImagePath, isTune, filePath } = Astro.props;
 const { Content, headings } = await render(entry);
 
+// Calculate reading time from raw content
+const readingTime = calculateReadingTime(entry.body);
+
 // Components to be available globally in MDX
 const components = {
 	AppleMusic,
@@ -119,6 +123,6 @@ const components = {
 };
 ---
 
-<BlogPost {...entry.data} previousPost={previousPost} nextPost={nextPost} ogImagePath={ogImagePath} isTune={isTune} headings={headings} filePath={filePath}>
+<BlogPost {...entry.data} previousPost={previousPost} nextPost={nextPost} ogImagePath={ogImagePath} isTune={isTune} headings={headings} filePath={filePath} readingTime={readingTime}>
 	<Content components={components} />
 </BlogPost>

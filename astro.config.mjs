@@ -37,6 +37,15 @@ export default defineConfig({
 			filter: (page) => !page.includes('/draft/'),
 			changefreq: 'weekly',
 			priority: 0.5,
+			serialize: (item) => {
+				// Extract date from URL pattern /YYYY/MM/DD/ and use as lastmod
+				const match = item.url.match(/\/(\d{4})\/(\d{2})\/(\d{2})\//);
+				if (match) {
+					const [, year, month, day] = match;
+					item.lastmod = new Date(`${year}-${month}-${day}`);
+				}
+				return item;
+			}
 		}),
 		robotsTxt({
 			policy: [
