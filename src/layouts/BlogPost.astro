@@ -12,6 +12,8 @@ import ShareButtons from '../components/social/ShareButtons.astro';
 import TableOfContents from '../components/blog/TableOfContents.astro';
 import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../utils/tags';
 import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR } from '../consts';
+import { Schema } from 'astro-seo-schema';
+import { createBlogPostingSchema } from '../utils/schema';
 
 // Import embed components to make them available in blog posts
 import { YouTube } from '@astro-community/astro-embed-youtube';
@@ -34,6 +36,9 @@ interface Props extends CollectionEntry<'blog'>['data'] {
 
 const { title, description, pubDate, updatedDate, heroImage, cover, tags = [], previousPost, nextPost, ogImagePath, isTune = false, showToc = false, headings = [], filePath } = Astro.props;
 
+// Default fallback image
+const defaultImage = '/images/blog-cover.png';
+
 // Use the provided OG image path
 const ogImage = ogImagePath;
 
@@ -50,11 +55,25 @@ const editUrl = filePath && EDIT_POST.appendFilePath
 const authorName = isTune ? AI_AUTHOR.name : AUTHOR_NAME;
 const avatarSrc = isTune ? AI_AUTHOR.avatar : '/images/avatar.svg';
 const avatarFallback = isTune ? AI_AUTHOR.avatarFallback : '/images/avatar-192x192.png';
+
+// Create BlogPosting schema for SEO
+const blogPostingSchema = createBlogPostingSchema({
+	title,
+	description,
+	url: Astro.url.toString(),
+	datePublished: pubDate,
+	dateModified: updatedDate,
+	image: ogImage || new URL(defaultImage, Astro.site).toString(),
+	author: authorName,
+	keywords: tags,
+	siteUrl: Astro.site?.toString() || 'https://www.russ.cloud/'
+});
 ---
 
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} image={ogImage} />
+		<Schema item={blogPostingSchema} />
 	</head>
 
 	<body class="bg-gray-50 dark:bg-gray-950">
