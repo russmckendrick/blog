@@ -63,11 +63,11 @@ const tags = post.data.tags ?? [];
 					</span>
 					{readingTime && (
 						<>
-							<span class="text-gray-500 dark:text-gray-400" aria-hidden="true">·</span>
+							<span class="text-gray-500 dark:text-gray-400 px-1" aria-hidden="true">·</span>
 							<span class="text-gray-500 dark:text-gray-400">{readingTime}</span>
 						</>
 					)}
-					<span class="text-gray-500 dark:text-gray-400" aria-hidden="true">·</span>
+					<span class="text-gray-500 dark:text-gray-400 px-1" aria-hidden="true">·</span>
 					<span class="text-gray-500 dark:text-gray-400">{author}</span>
 					{tags.length > 0 && (
 						<div class="flex flex-wrap gap-2 ml-auto">
@@ -125,7 +125,7 @@ const tags = post.data.tags ?? [];
 						</span>
 						{readingTime && (
 							<>
-								<span class="text-gray-500 dark:text-gray-400" aria-hidden="true">·</span>
+								<span class="text-gray-500 dark:text-gray-400 px-1" aria-hidden="true">·</span>
 								<span class="text-gray-500 dark:text-gray-400">{readingTime}</span>
 							</>
 						)}

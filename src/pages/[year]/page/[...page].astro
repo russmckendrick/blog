@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PostCard from '../../../components/blog/PostCard.astro';
+import Pagination from '../../../components/layout/Pagination.astro';
+import { SITE_TITLE } from '../../../consts';
+
+export async function getStaticPaths({ paginate }) {
+	const allPosts = await getCollection('blog');
+	const allTunes = await getCollection('tunes');
+	const allContent = [...allPosts, ...allTunes];
+
+	// Get unique years
+	const years = [...new Set(allContent.map(item =>
+		item.data.pubDate.getFullYear().toString()
+	))];
+
+	// Create paginated paths for each year
+	const paths = [];
+	for (const year of years) {
+		const yearContent = allContent
+			.filter(item => !item.data.draft && item.data.pubDate.getFullYear().toString() === year)
+			.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+		const paginatedPaths = paginate(yearContent, {
+			params: { year },
+			pageSize: 10,
+		});
+
+		paths.push(...paginatedPaths);
+	}
+
+	return paths;
+}
+
+const { page } = Astro.props;
+const { year } = Astro.params;
+
+const title = `${year} Archive - Page ${page.currentPage} - ${SITE_TITLE}`;
+const description = `All posts and tunes from ${year} - Page ${page.currentPage}`;
+---
+
+<BaseLayout title={title} description={description}>
+	<section class="max-w-3xl mx-auto px-5">
+		<h1 class="text-4xl font-bold mb-8 text-gray-900 dark:text-gray-100">{year}</h1>
+		<p class="text-gray-600 dark:text-gray-400 mb-8">
+			{page.total} {page.total === 1 ? 'post' : 'posts'} published in {year}
+		</p>
+
+		<ul class="space-y-12">
+			{page.data.map((item, index) => (
+				<li>
+					<PostCard post={item} priority={index === 0 && page.currentPage === 1} />
+				</li>
+			))}
+		</ul>
+
+		{page.total > page.size && (
+			<Pagination
+				currentPage={page.currentPage}
+				totalPages={page.lastPage}
+				getHref={(pageNum) => (pageNum === 1 ? `/${year}/` : `/${year}/page/${pageNum}/`)}
+			/>
+		)}
+	</section>
+</BaseLayout>

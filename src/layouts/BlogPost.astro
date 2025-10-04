@@ -12,6 +12,7 @@ import ShareButtons from '../components/social/ShareButtons';
 import TableOfContents from '../components/blog/TableOfContents.astro';
 import ReadingTime from '../components/blog/ReadingTime.astro';
 import RelatedPosts from '../components/blog/RelatedPosts.astro';
+import Breadcrumbs from '../components/navigation/Breadcrumbs.astro';
 import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../utils/tags';
 import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR } from '../consts';
 import { Schema } from 'astro-seo-schema';
@@ -72,6 +73,14 @@ const blogPostingSchema = createBlogPostingSchema({
 	keywords: tags,
 	siteUrl: Astro.site?.toString() || 'https://www.russ.cloud/'
 });
+
+// Build breadcrumb items
+const year = pubDate.getFullYear().toString();
+const breadcrumbItems = [
+	{ label: 'Home', url: '/' },
+	{ label: year, url: `/${year}/` },
+	{ label: title, url: Astro.url.pathname }
+];
 ---
 
 <html lang="en">
@@ -116,6 +125,8 @@ const blogPostingSchema = createBlogPostingSchema({
 			<article class={`relative z-10 ${displayImage ? '-mt-32 sm:-mt-40 lg:-mt-48 xl:-mt-60 2xl:-mt-72' : 'mt-12'}`}>
 				<div class="max-w-4xl 2xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
 					<div class="bg-white/95 dark:bg-gray-900/90 rounded-3xl shadow-2xl shadow-gray-300/40 dark:shadow-black/60 ring-1 ring-gray-200/60 dark:ring-gray-800 backdrop-blur-xl px-6 sm:px-10 xl:px-16 py-10 sm:py-12 xl:py-16">
+						<Breadcrumbs items={breadcrumbItems} />
+
 						<header class="text-center mb-10 space-y-6">
 							<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-gray-100">
 								{title}

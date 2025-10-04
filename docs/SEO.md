@@ -453,10 +453,10 @@ const breadcrumbSchema = {
 - [ ] Audit orphaned pages
 - [ ] Add contextual internal links to high-traffic posts
 
-### Phase 4: Navigation & UX (Week 5)
-- [ ] Create `Breadcrumbs.astro` component
-- [ ] Add breadcrumbs to blog posts
-- [ ] Create `BreadcrumbSchema.astro`
+### Phase 4: Navigation & UX (Week 5) - IN PROGRESS 🔄
+- [x] Create `Breadcrumbs.astro` component
+- [x] Add breadcrumbs to blog posts
+- [x] Create `BreadcrumbSchema.astro`
 - [ ] Create reading progress indicator (optional)
 
 ### Phase 5: Testing & Validation (Week 6)
@@ -768,6 +768,113 @@ Since you migrated from Hugo to Astro, verify:
 
 ---
 
+### Phase 4: Navigation & UX - COMPLETED ✅
+
+**Date Completed**: 2025-10-04
+
+#### What Was Implemented:
+
+1. **Breadcrumbs Component** (`src/components/navigation/Breadcrumbs.astro`):
+   - Clean, accessible navigation component with `aria-label="Breadcrumb"`
+   - Displays hierarchical path: Home > [Year] > [Post Title]
+   - Includes BreadcrumbList JSON-LD schema for rich snippets
+   - Dark mode support with theme-aware styling
+   - Hover effects on clickable breadcrumb items
+   - Last breadcrumb item (current page) styled differently and not clickable
+
+2. **Schema Integration**:
+   - BreadcrumbList structured data embedded in component
+   - Each breadcrumb item properly formatted with:
+     - `@type: "ListItem"`
+     - `position`: Sequential numbering
+     - `name`: Display label
+     - `item`: Fully qualified URL
+
+3. **BlogPost Integration** (`src/layouts/BlogPost.astro`):
+   - Breadcrumbs display at top of article content
+   - Positioned before page header for optimal UX
+   - Automatically constructs breadcrumb path from post metadata:
+     - Home: Links to site root
+     - Year: Extracted from `pubDate`, links to year archive
+     - Post Title: Current page (no link)
+
+#### Example Output:
+
+**Breadcrumb Schema** (in page source):
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.russ.cloud/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "2024",
+      "item": "https://www.russ.cloud/2024/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Installing and Running InvokeAI on macOS",
+      "item": "https://www.russ.cloud/2024/04/14/installing-and-running-invokeai-on-macos/"
+    }
+  ]
+}
+```
+
+**Visual Display** (on blog posts):
+- Appears at top of article card
+- Format: `Home / 2024 / [Post Title]`
+- Home and Year are clickable links
+- Current post title is non-clickable
+- Subtle gray text with blue hover states
+
+#### SEO Benefits Achieved:
+
+- ✅ **Rich Snippets**: Breadcrumb structured data enables breadcrumb rich snippets in search results
+- ✅ **Improved Navigation**: Users can easily navigate to parent pages
+- ✅ **Better UX**: Clear indication of page hierarchy and location
+- ✅ **SEO Signals**: Structured breadcrumbs help search engines understand site architecture
+- ✅ **Accessibility**: Proper ARIA labels for screen readers
+
+#### Testing Instructions:
+
+1. **View in browser**:
+   ```bash
+   # Dev server should be running
+   # Visit any blog post (e.g., http://localhost:4322/2024/04/14/installing-and-running-invokeai-on-macos/)
+   ```
+
+2. **Verify breadcrumbs display**:
+   - Should appear at top of article content
+   - Home and Year should be clickable
+   - Post title should be non-clickable and darker
+
+3. **Validate schema**:
+   - View page source and search for `BreadcrumbList`
+   - Copy JSON-LD to https://validator.schema.org/
+   - Should show zero errors
+
+4. **Test with Google Rich Results**:
+   - Deploy site to production
+   - Go to: https://search.google.com/test/rich-results
+   - Enter blog post URL
+   - Should show "BreadcrumbList" as detected structured data
+
+#### Future Enhancements:
+
+- **Optional**: Add reading progress indicator component
+- Consider adding breadcrumbs to tag archive pages
+- May add breadcrumbs to other page types (About, etc.)
+
+---
+
 **Last Updated**: 2025-10-04
-**Status**: Phases 1, 2 & 3 Complete ✅ | Phases 4-5 Ready for Implementation
-**Estimated Timeline**: 2 weeks remaining for Phases 4-5
+**Status**: Phases 1-4 Complete ✅ | Phase 5 Ready for Implementation
+**Estimated Timeline**: 1 week remaining for Phase 5
