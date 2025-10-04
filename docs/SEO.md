@@ -709,6 +709,65 @@ Since you migrated from Hugo to Astro, verify:
 
 ---
 
+### Phase 3: Internal Linking - COMPLETED ✅
+
+**Date Completed**: 2025-10-04
+
+#### What Was Implemented:
+
+1. **Related Posts Component** (`src/components/blog/RelatedPosts.astro`):
+   - Tag-based similarity algorithm that counts shared tags between posts
+   - Falls back to recent posts if no tag matches found
+   - Displays up to 3 related posts (configurable limit)
+   - Filters out draft posts and the current post
+   - Sorts by similarity score, then by date
+   - Integrated into `BlogPost.astro` layout (shows below article, before navigation)
+   - Only displays for blog posts (not tunes)
+   - Uses existing `PostCard` component for consistent styling
+
+2. **Internal Link Analysis Script** (`scripts/analyze-internal-links.js`):
+   - Analyzes all blog posts and tunes for internal linking patterns
+   - Identifies orphaned pages (0 internal links)
+   - Identifies pages with low link count (< 3 internal links)
+   - Tracks incoming links and their sources
+   - Provides summary statistics and recommendations
+   - Run via: `npm run analyze-links`
+
+#### Example Output:
+
+**Related Posts Section** (on blog posts):
+- Appears after share buttons
+- Shows 3 related posts with shared tags
+- Falls back to recent posts if no tag matches
+- Clean, responsive grid layout
+- Consistent with site design
+
+**Link Analysis Results** (current baseline):
+- Total posts: 286
+- Well-linked posts (≥3 links): 6 (2%)
+- Posts with low links (<3): 47 (16%)
+- Orphaned posts (0 links): 233 (81%)
+- Average internal links per post: 0.27
+
+**Top Linked Post**: "Conda for Python environment management on macOS" (6 links)
+
+#### Benefits Achieved:
+
+- ✅ **Improved Crawlability**: Related posts automatically create internal link structure
+- ✅ **Better PageRank Distribution**: Links spread authority across related content
+- ✅ **Increased Time on Site**: Users can discover related content easily
+- ✅ **Data-Driven Optimization**: Script identifies posts needing more links
+- ✅ **Automated Linking**: RelatedPosts component reduces manual linking work
+
+#### Future Enhancements:
+
+- Add "More posts about [tag]" contextual links within article content
+- Use link analysis script to identify and fix orphaned posts
+- Consider adding related posts to tag archive pages
+- Implement internal link suggestions for content creators
+
+---
+
 **Last Updated**: 2025-10-04
-**Status**: Phase 1 & 2 Complete ✅ | Phases 3-5 Ready for Implementation
-**Estimated Timeline**: 3 weeks remaining for Phases 3-5
+**Status**: Phases 1, 2 & 3 Complete ✅ | Phases 4-5 Ready for Implementation
+**Estimated Timeline**: 2 weeks remaining for Phases 4-5

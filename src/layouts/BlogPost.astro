@@ -8,9 +8,10 @@ import Header from '../components/layout/Header.astro';
 import HeaderWrapper from '../components/layout/HeaderWrapper';
 import PostNavigation from '../components/blog/PostNavigation.astro';
 import Comments from '../components/blog/Comments.astro';
-import ShareButtons from '../components/social/ShareButtons.astro';
+import ShareButtons from '../components/social/ShareButtons';
 import TableOfContents from '../components/blog/TableOfContents.astro';
 import ReadingTime from '../components/blog/ReadingTime.astro';
+import RelatedPosts from '../components/blog/RelatedPosts.astro';
 import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../utils/tags';
 import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR } from '../consts';
 import { Schema } from 'astro-seo-schema';
@@ -27,6 +28,7 @@ export interface Heading {
 }
 
 interface Props extends CollectionEntry<'blog'>['data'] {
+	entry?: CollectionEntry<'blog'>;
 	previousPost?: CollectionEntry<'blog'>;
 	nextPost?: CollectionEntry<'blog'>;
 	ogImagePath?: string;
@@ -36,7 +38,7 @@ interface Props extends CollectionEntry<'blog'>['data'] {
 	readingTime?: number;
 }
 
-const { title, description, pubDate, updatedDate, heroImage, cover, tags = [], previousPost, nextPost, ogImagePath, isTune = false, showToc = false, headings = [], filePath, readingTime } = Astro.props;
+const { entry, title, description, pubDate, updatedDate, heroImage, cover, tags = [], previousPost, nextPost, ogImagePath, isTune = false, showToc = false, headings = [], filePath, readingTime } = Astro.props;
 
 // Default fallback image
 const defaultImage = '/images/blog-cover.png';
@@ -177,7 +179,9 @@ const blogPostingSchema = createBlogPostingSchema({
 							<slot />
 						</div>
 
-						{!isTune && <ShareButtons title={title} url={Astro.url.href} tags={tags} />}
+						{!isTune && <ShareButtons client:load title={title} url={Astro.url.href} tags={tags} />}
+
+						{!isTune && entry && <RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={3} />}
 					</div>
 
 					<PostNavigation previousPost={previousPost} nextPost={nextPost} />

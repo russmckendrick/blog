@@ -10,9 +10,10 @@ import { AI_AUTHOR } from '../../consts';
 interface Props {
 	post: CollectionEntry<'blog'>;
 	priority?: boolean; // For LCP optimization on first card
+	variant?: 'vertical' | 'horizontal'; // Layout variant
 }
 
-const { post, priority = false } = Astro.props;
+const { post, priority = false, variant = 'vertical' } = Astro.props;
 const href = getPostUrl(post.data.pubDate, post.data.title);
 const heroImage = post.data.heroImage || post.data.cover?.image;
 const alt = post.data.cover?.alt || post.data.title;
@@ -23,64 +24,114 @@ const author = post.data.author || AI_AUTHOR.name;
 const tags = post.data.tags ?? [];
 ---
 
-<a
-	href={href}
-	aria-label={`Read blog post: ${post.data.title}`}
-	class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-[28px]">
-	<article
-		class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-[28px] shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
-		{heroImage && (
-			<figure class="relative overflow-hidden">
-				<Image
-					src={heroImage}
-					alt={alt}
-					widths={[400, 800]}
-					sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
-					loading={priority ? "eager" : "lazy"}
-					fetchpriority={priority ? "high" : "auto"}
-					quality={75}
-					format="webp"
-					class="w-full h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-				/>
-			</figure>
-		)}
-		<div class="relative p-6 md:p-8 flex flex-col gap-6">
-			<header class="space-y-3">
-				<h3 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
-					{post.data.title}
-				</h3>
-			</header>
-			{description && (
-				<p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
-					{description}
-				</p>
+{variant === 'vertical' ? (
+	<a
+		href={href}
+		aria-label={`Read blog post: ${post.data.title}`}
+		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-[28px]">
+		<article
+			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-[28px] shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
+			{heroImage && (
+				<figure class="relative overflow-hidden">
+					<Image
+						src={heroImage}
+						alt={alt}
+						widths={[400, 800]}
+						sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+						loading={priority ? "eager" : "lazy"}
+						fetchpriority={priority ? "high" : "auto"}
+						quality={75}
+						format="webp"
+						class="w-full h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+					/>
+				</figure>
 			)}
-			<footer class="mt-1 text-sm flex flex-wrap items-center gap-x-2 gap-y-3">
-				<span class="text-blue-600 dark:text-blue-400">
-					<FormattedDate date={post.data.pubDate} />
-				</span>
-				{readingTime && (
-					<>
-						<span class="text-gray-500 dark:text-gray-400" aria-hidden="true">·</span>
-						<span class="text-gray-500 dark:text-gray-400">{readingTime}</span>
-					</>
+			<div class="relative p-6 md:p-8 flex flex-col gap-6">
+				<header class="space-y-3">
+					<h3 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+						{post.data.title}
+					</h3>
+				</header>
+				{description && (
+					<p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+						{description}
+					</p>
 				)}
-				<span class="text-gray-500 dark:text-gray-400" aria-hidden="true">·</span>
-				<span class="text-gray-500 dark:text-gray-400">{author}</span>
-				{tags.length > 0 && (
-					<div class="flex flex-wrap gap-2 ml-auto">
-						{tags.slice(0, 6).map((tag) => (
-							<a
-								href={getTagUrl(tag)}
-								class={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${getTagColorClasses(tag)} transition-all hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500/50`}
-								onclick="event.stopPropagation()"
-							>
-								{getTagDisplayName(tag)}
-							</a>
-						))}
-					</div>
+				<footer class="mt-1 text-sm flex flex-wrap items-center gap-x-2 gap-y-3">
+					<span class="text-blue-600 dark:text-blue-400">
+						<FormattedDate date={post.data.pubDate} />
+					</span>
+					{readingTime && (
+						<>
+							<span class="text-gray-500 dark:text-gray-400" aria-hidden="true">·</span>
+							<span class="text-gray-500 dark:text-gray-400">{readingTime}</span>
+						</>
+					)}
+					<span class="text-gray-500 dark:text-gray-400" aria-hidden="true">·</span>
+					<span class="text-gray-500 dark:text-gray-400">{author}</span>
+					{tags.length > 0 && (
+						<div class="flex flex-wrap gap-2 ml-auto">
+							{tags.slice(0, 6).map((tag) => (
+								<a
+									href={getTagUrl(tag)}
+									class={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${getTagColorClasses(tag)} transition-all hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500/50`}
+									onclick="event.stopPropagation()"
+								>
+									{getTagDisplayName(tag)}
+								</a>
+							))}
+						</div>
+					)}
+				</footer>
+			</div>
+		</article>
+	</a>
+) : (
+	<a
+		href={href}
+		aria-label={`Read blog post: ${post.data.title}`}
+		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-2xl">
+		<article
+			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:shadow-2xl">
+			<div class="flex flex-col sm:flex-row">
+				{heroImage && (
+					<figure class="relative overflow-hidden sm:w-48 md:w-56 lg:w-64 flex-shrink-0">
+						<Image
+							src={heroImage}
+							alt={alt}
+							widths={[256, 384, 512]}
+							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 100vw"
+							loading="lazy"
+							quality={75}
+							format="webp"
+							class="w-full h-48 sm:h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+						/>
+					</figure>
 				)}
-			</footer>
-		</div>
-	</article>
-</a>
+				<div class="relative p-6 flex flex-col gap-3 flex-1 min-w-0">
+					<header>
+						<h3 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 line-clamp-2">
+							{post.data.title}
+						</h3>
+					</header>
+					{description && (
+						<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-2">
+							{description}
+						</p>
+					)}
+					<footer class="mt-auto text-xs flex flex-wrap items-center gap-x-2 gap-y-2">
+						<span class="text-blue-600 dark:text-blue-400">
+							<FormattedDate date={post.data.pubDate} />
+						</span>
+						{readingTime && (
+							<>
+								<span class="text-gray-500 dark:text-gray-400" aria-hidden="true">·</span>
+								<span class="text-gray-500 dark:text-gray-400">{readingTime}</span>
+							</>
+						)}
+					</footer>
+				</div>
+			</div>
+		</article>
+	</a>
+)}

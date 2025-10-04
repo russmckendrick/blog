@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import PostCard from './PostCard.astro';
+
+interface Props {
+  currentPost: CollectionEntry<'blog'>;
+  previousPost?: CollectionEntry<'blog'>;
+  nextPost?: CollectionEntry<'blog'>;
+  limit?: number;
+}
+
+const { currentPost, previousPost, nextPost, limit = 3 } = Astro.props;
+
+// Get all published blog posts
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+
+// Build list of post IDs to exclude
+const excludedIds = [
+  currentPost.id,
+  previousPost?.id,
+  nextPost?.id
+].filter(Boolean) as string[];
+
+// Calculate similarity scores based on shared tags
+const relatedPosts = allPosts
+  .filter(post => !excludedIds.includes(post.id))
+  .map(post => {
+    const currentTags = currentPost.data.tags || [];
+    const postTags = post.data.tags || [];
+    const sharedTags = postTags.filter(tag => currentTags.includes(tag));
+    return {
+      post,
+      score: sharedTags.length
+    };
+  })
+  .filter(({ score }) => score > 0)
+  .sort((a, b) => {
+    // Sort by score (number of shared tags) first
+    if (b.score !== a.score) {
+      return b.score - a.score;
+    }
+    // If scores are equal, sort by date (newest first)
+    return b.post.data.pubDate.getTime() - a.post.data.pubDate.getTime();
+  })
+  .slice(0, limit)
+  .map(({ post }) => post);
+
+// If we don't have enough related posts, fill with recent posts
+if (relatedPosts.length < limit) {
+  const recentPosts = allPosts
+    .filter(post => !excludedIds.includes(post.id) && !relatedPosts.includes(post))
+    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+    .slice(0, limit - relatedPosts.length);
+
+  relatedPosts.push(...recentPosts);
+}
+---
+
+{relatedPosts.length > 0 && (
+  <section class="border-t border-gray-200 dark:border-gray-800 pt-8">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+      Related Posts
+    </h2>
+    <div class="flex flex-col gap-4">
+      {relatedPosts.map((post) => (
+        <PostCard post={post} variant="horizontal" />
+      ))}
+    </div>
+  </section>
+)}
