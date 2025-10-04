@@ -22,28 +22,24 @@ As I had some time I thought I would sit down and have a look at coming up with 
 
 As you can see, the start of the pipeline is pretty straight forward, I am triggering whenever `master` is pushed to and using the latest Ububtu VM image:
 
-```bash frame="terminal"
-``` yaml
+```yaml 
 trigger:
 - master
 
 pool:
   vmImage: 'ubuntu-latest'
 ```
-```
 
 
 The next step is to make sure that Python is installed, here I am using Python 3.6:
 
-```bash frame="terminal"
-``` yaml
+```yaml 
 steps:
 
 - task: UsePythonVersion@0
   displayName: 'Install Python'
   inputs:
     versionSpec: '3.6'
-```
 ```
 
 
@@ -53,8 +49,7 @@ I knew that I was going to connect the Azure DevOps project to my Azure subscrip
 
 After a little trial and error I settled on the task below:
 
-```bash frame="terminal"
-``` yaml
+```yaml
 - task: AzureCLI@2
   displayName: 'Azure CLI'
   inputs:
@@ -68,8 +63,6 @@ After a little trial and error I settled on the task below:
       echo "##vso[task.setvariable variable=ARM_CLIENT_SECRET]${servicePrincipalKey}"
       echo "##vso[task.setvariable variable=ARM_TENANT_ID]${tenantId}"
 ```
-```
-
 
 As you can see, I am using the AzureCLI Task — this takes a few inputs:
 
@@ -81,14 +74,11 @@ As you can see, I am using the AzureCLI Task — this takes a few inputs:
 The inline script uses logging commands to take the SPN variables and set them as variables we can use in later tasks:
 
 ```bash frame="terminal"
-``` bash
 echo "##vso[task.setvariable variable=ARM_SUBSCRIPTION_ID]$(az account show --query="id" -o tsv)"
 echo "##vso[task.setvariable variable=ARM_CLIENT_ID]${servicePrincipalId}"
 echo "##vso[task.setvariable variable=ARM_CLIENT_SECRET]${servicePrincipalKey}"
 echo "##vso[task.setvariable variable=ARM_TENANT_ID]${tenantId}"
 ```
-```
-
 
 You may have noticed that ARM_CLIENT_ID, ARM_CLIENT_SECRET and ARM_TENANT_ID are using the variables from the task which is why they are using the `${variable}` format.
 
@@ -98,17 +88,14 @@ The great thing about this approach is that because the variables which are outp
 
 The next step installs Ansible along with the Azure Modules:
 
-```bash frame="terminal"
-``` yaml
+```yaml
 - script: pip install ansible[azure]
   displayName: 'Install Ansible and the Azure modules'
-```
 ```
 
 
 Now that we have our SPN credentials defined as variables within the pipeline and Ansible installed we can finally run the playbook using the final task:
 
-```bash frame="terminal"
 ``` yaml
 - script: ansible-playbook -i inv site.yml
   displayName: 'Run Ansible Playbook'
@@ -118,8 +105,6 @@ Now that we have our SPN credentials defined as variables within the pipeline an
     AZURE_TENANT: $(ARM_TENANT_ID)
     AZURE_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
 ```
-```
-/
 
 As the Azure Ansible modules expect the Azure credentials, tenant and subscription IDs as environment variables we are passing this at run time in the format which Ansible expects, AZURE_CLIENT_ID, AZURE_SECRET, AZURE_TENANT and AZURE_SUBSCRIPTION_ID — all of which are populated using the pipeline variables which were set in the Azure CLI task.
 

@@ -46,8 +46,7 @@ Now that we have an idea of what should happen, let’s take a look at what the 
 
 The first stage to run downloads and executes a scan of the Terraform files using [Checkov](http://checkov.io/), you will notice the YAML below that we are pulling the [Checkov container from Dockerhub](https://hub.docker.com/r/bridgecrew/checkov) and the running it;
 
-```bash frame="terminal" title="Checkov - Scan Terraform files"
-``` yaml
+```yaml title="Checkov - Scan Terraform files"
   - stage: "runCheckov"
     displayName: "Checkov - Scan Terraform files"
     jobs:
@@ -75,13 +74,11 @@ The first stage to run downloads and executes a scan of the Terraform files usin
               searchFolder: "$(System.DefaultWorkingDirectory)"
             displayName: "Publish > Checkov scan results"
 ```
-```
 
 
 The command to run a Checkov scan locally on your own machine using Docker is below, just make sure you run it within same folder as your Terraform code;
 
 ```bash frame="terminal" title="Run Checkov locally"
-``` terminfo
 docker run \
     --volume $(pwd):/tf \
     bridgecrew/checkov \
@@ -90,8 +87,6 @@ docker run \
     --soft-fail \
     > $(pwd)/CheckovReport.xml
 ```
-```
-
 
 As you can see we are mounting the current folder (the `$(pwd) `variable) which as we have set the `workingDirectory` to be where the code has been checked out using the`$(System.DefaultWorkingDirectory)` variable. We are also setting the `--output` to be `junitxml` and then piping the output to a file called CheckovReport.xml.
 
@@ -105,8 +100,7 @@ We will set what happens when, or if, this stage fails later in the post.
 
 This stage run the `terraform validate` command, and if there are any problems it will fail. As you can see the from YAML below, the stage dependsOn the `runCheckov` stage and we are also installing Terraform and running `terraform init` before the `terraform validate` command is executed;
 
-```bash frame="terminal" title="Terraform - Validate"
-``` yaml
+```yaml title="Terraform - Validate" 
   - stage: "validateTerraform"
     displayName: "Terraform - Validate"
     dependsOn:
@@ -141,8 +135,6 @@ This stage run the `terraform validate` command, and if there are any problems i
               environmentServiceName: "$(SUBSCRIPTION_NAME)"
             displayName: "Run > terraform validate"
 ```
-```
-
 
 One of the other things which will happen when this stage is executed happens as part of the `terraform init` task, as we are setting `ensureBackend` to `true` the task will check for the presence of the Azure Storage Account we wish to use to store our Terraform state file in, if it is not there then the task will helpfully create it for us.
 
@@ -156,8 +148,7 @@ Once that has been done we are running the `terraform plan` command, thanks to s
 
 Before we look at the last tasks of this stage lets look at the code for the full stage;
 
-```bash frame="terminal" title="Terraform - Plan"
-``` yaml
+```yaml title="Terraform - Plan"
   - stage: "planTerraform"
     displayName: "Terraform - Plan"
     dependsOn:
@@ -216,8 +207,6 @@ Before we look at the last tasks of this stage lets look at the code for the ful
             name: "setvar"
             displayName: "Vars > Set Variables for next stage"
 ```
-```
-
 
 As you can see, after we have ran `terraform plan` we are immediately running `terraform show` using the `terraform.tfplan` file we just generated.
 
@@ -251,8 +240,7 @@ Finally, if …
 
 As you may have already guessed, this stage is only executed if the following condition is met;
 
-```bash frame="terminal" title="condition"
-``` yaml
+```yaml title="condition"
 condition: |
 and
 (
@@ -260,31 +248,24 @@ succeeded(),
 eq(dependencies.planTerraform.outputs['TerraformJobs.setvar.HAS_CHANGES_ONLY'], 'true')
 )
 ```
-```
 
 
 As you can see, we are referencing the variable which was set in the previous stage using the following `echo` command;
 
 ```bash frame="terminal" title="echo"
-``` bash
 echo "##vso[task.setvariable variable=HAS_CHANGES_ONLY;isOutput=true]true"
 ```
-```
-
 
 The variable is then referenced by adding the names of the stage, job, task and the variable itself, so something like;
 
-```bash frame="terminal" title="dependencies"
-``` yaml
+```yaml title="dependencies"
 dependencies.STAGE_NAME.outputs['JOB_NAME.TASK_NAME.VARIABLE_NAME']
-```
 ```
 
 
 The full stage looks like the following;
 
-```bash frame="terminal" title="Terraform - Auto Approval"
-``` yaml
+```yaml title="Terraform - Auto Approval"
   - stage: "autoTerraform"
     displayName: "Terraform - Auto Approval"
     dependsOn:
@@ -324,7 +305,6 @@ The full stage looks like the following;
               environmentServiceName: "$(SUBSCRIPTION_NAME)"
             displayName: "Run > terraform apply"
 ```
-```
 
 
 As you can see, we are again installing Terraform and running `terraform init` before finally running `terraform apply`.
@@ -333,8 +313,7 @@ As you can see, we are again installing Terraform and running `terraform init` b
 
 This stage is almost exactly the same as the Auto Approval apart from the inclusion of a job which runs before the Terraform job;
 
-```bash frame="terminal" title="Terraform - Manual Approval"
-``` yaml
+```yaml title="Terraform - Manual Approval"
   - stage: "approveTerraform"
     displayName: "Terraform - Manual Approval"
     dependsOn:
@@ -388,7 +367,6 @@ This stage is almost exactly the same as the Auto Approval apart from the inclus
               environmentServiceName: "$(SUBSCRIPTION_NAME)"
             displayName: "Run > terraform apply"
 ```
-```
 
 
 This job basically stalls the pipeline execution for 24 hours, after which, if no-one approves the run, the job will fail. The job utilises the `ManualValidation@0` task, more detail on which can be found at [https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/manual-validation](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/utility/manual-validation?view=azure-devops&tabs=yaml).
@@ -401,8 +379,7 @@ Let’t now take a look at running the pipeline, first let’s check in some cod
 
 The Terraform code for this looks like the following;
 
-```bash frame="terminal" title="main.tf"
-``` hcl
+```hcl title="main.tf"
 resource "azurecaf_name" "rg_example" {
   name          = "demogroup"
   resource_type = "azurerm_resource_group"
@@ -414,7 +391,6 @@ resource "azurerm_resource_group" "resource_group" {
   location = "uksouth"
   tags     = merge(var.default_tags, tomap({ "type" = "resource" }))
 }
-```
 ```
 
 
@@ -443,8 +419,7 @@ The next run didn’t add, change or remove any resources which meant that neith
 
 One thing which hasn’t happened yet is that we have not added anything which Checkov would scan, let’s do that now by adding a Network Security Group to our Terraform file;
 
-```bash frame="terminal" title="Bad main.tf"
-``` hcl
+```hcl title="Bad main.tf"
 resource "azurecaf_name" "nsg" {
   name          = "demo"
   resource_type = "azurerm_network_security_group"
@@ -496,8 +471,6 @@ resource azurerm_network_security_group "nsg" {
   }
 }
 ```
-```
-
 
 Nothing to bad on the face of it you maybe thinking, let’s commit the change which will trigger a run of the pipeline;
 
