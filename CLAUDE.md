@@ -93,6 +93,18 @@ Global MDX components are available in all blog posts without imports:
 - **Content**: LinkPreview, ChatMessage
 - **Callouts**: 8 types (Note, Tip, Info, Important, Warning, Caution, General, Callout)
 
+**LightGallery Meta File Plugin:**
+The LightGallery component includes a custom plugin that automatically loads image captions from `.meta` files:
+- **Format**: `.meta` files are JSON files with the structure `{"Title": "Caption text"}`
+- **Location**: Place `.meta` files alongside images (e.g., `/assets/image.jpg` + `/assets/image.jpg.meta`)
+- **Auto-enabled**: Plugin is enabled by default on all LightGallery instances
+- **Hugo-compatible**: Maintains compatibility with Hugo's `.meta` file system from the previous site architecture
+- **Props**:
+  - `enableMetaPlugin={true}` - Enable/disable the plugin (default: `true`)
+  - `debugMeta={false}` - Enable console logging for debugging (default: `false`)
+- **Implementation**: Plugin fetches `.meta` files via `fetch()` and sets `data-sub-html` attributes on gallery items
+- **File location**: `src/utils/lightgallery-meta-plugin.ts` (standalone module) and inline in `src/components/embeds/LightGalleryNew.astro`
+
 **Adding New Embed Components:**
 1. Create component in `src/components/embeds/YourComponent.astro`
 2. Export from `src/components/embeds/index.ts`

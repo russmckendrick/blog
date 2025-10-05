@@ -15,6 +15,7 @@
   "dependencies": {
     "@astro-community/astro-embed-link-preview": "^0.2.2",
     "@astro-community/astro-embed-youtube": "^0.5.7",
+    "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.6",
     "@astrojs/react": "^4.4.0",
     "@astrojs/rss": "^4.0.12",
@@ -45,6 +46,7 @@
     "schema-dts": "^1.1.5",
     "sharp": "^0.34.4",
     "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.3",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
