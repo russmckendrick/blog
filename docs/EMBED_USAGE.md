@@ -107,13 +107,22 @@ Generate rich link previews automatically.
 ```mdx
 <!-- Basic link preview -->
 <LinkPreview id="https://www.anthropic.com/news/claude-4" />
+
+<!-- Link preview without media (text only) -->
+<LinkPreview id="https://www.anthropic.com/news/claude-4" hideMedia />
 ```
+
+**Props:**
+- `id` - URL to preview (required)
+- `hideMedia` - Hide image/video, show only text metadata (optional boolean)
 
 **Features:**
 - ✅ Automatic metadata extraction
 - ✅ Fallback for missing images
+- ✅ Optional media hiding for text-only previews
 - ✅ Responsive design
 - ✅ Open Graph and Twitter Card support
+- ✅ Video player support for og:video metadata
 - ✅ Metadata caching for performance
 
 ### Reddit

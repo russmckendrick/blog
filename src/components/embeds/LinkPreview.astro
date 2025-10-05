@@ -3,13 +3,14 @@ import { LinkPreview as LinkPreviewEmbed } from '@astro-community/astro-embed-li
 
 interface Props {
   id: string;
+  hideMedia?: boolean;
 }
 
-const { id } = Astro.props;
+const { id, hideMedia } = Astro.props;
 ---
 
 <div class="my-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-  <LinkPreviewEmbed id={id} />
+  <LinkPreviewEmbed id={id} hideMedia={hideMedia} />
 </div>
 
 <style>
