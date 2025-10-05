@@ -18,9 +18,13 @@ interface Options {
 interface Props {
   layout: Layout;
   options?: Options;
+  /** Enable loading of .meta files for captions */
+  enableMetaPlugin?: boolean;
+  /** Enable debug logging for meta plugin */
+  debugMeta?: boolean;
 }
 
-const { layout, options } = Astro.props;
+const { layout, options, enableMetaPlugin = true, debugMeta = false } = Astro.props;
 ---
 
 <div data-no-swup class="lightgallery-wrapper">
@@ -29,6 +33,115 @@ const { layout, options } = Astro.props;
     options={options}
   />
 </div>
+
+{enableMetaPlugin && (
+  <script define:vars={{ debugMeta }}>
+    /**
+     * Fetches and parses a .meta file for a given image URL
+     */
+    async function fetchMetaFile(imageUrl, debug = false) {
+      try {
+        const metaUrl = `${imageUrl}.meta`;
+
+        if (debug) {
+          console.log(`[LG Meta Plugin] Fetching meta file: ${metaUrl}`);
+        }
+
+        const response = await fetch(metaUrl);
+
+        if (!response.ok) {
+          if (debug) {
+            console.log(`[LG Meta Plugin] Meta file not found: ${metaUrl}`);
+          }
+          return null;
+        }
+
+        const data = await response.json();
+
+        if (data.Title) {
+          if (debug) {
+            console.log(`[LG Meta Plugin] Found title: ${data.Title}`);
+          }
+          return data.Title;
+        }
+
+        return null;
+      } catch (error) {
+        if (debug) {
+          console.error(`[LG Meta Plugin] Error fetching meta file for ${imageUrl}:`, error);
+        }
+        return null;
+      }
+    }
+
+    /**
+     * Initialize the meta plugin on a LightGallery element
+     */
+    async function initMetaPlugin(galleryElement, debug = false) {
+      if (debug) {
+        console.log('[LG Meta Plugin] Initializing plugin');
+      }
+
+      // Find all gallery items
+      const items = galleryElement.querySelectorAll('a[href]');
+
+      if (debug) {
+        console.log(`[LG Meta Plugin] Found ${items.length} gallery items`);
+      }
+
+      // Process each item
+      const promises = Array.from(items).map(async (item) => {
+        const link = item;
+        const imageUrl = link.getAttribute('href');
+
+        if (!imageUrl) {
+          return;
+        }
+
+        // Check if caption already exists
+        if (link.getAttribute('data-sub-html')) {
+          if (debug) {
+            console.log(`[LG Meta Plugin] Item already has caption, skipping: ${imageUrl}`);
+          }
+          return;
+        }
+
+        // Fetch meta file
+        const title = await fetchMetaFile(imageUrl, debug);
+
+        if (title) {
+          // Set the caption using data-sub-html
+          link.setAttribute('data-sub-html', `<h4>${title}</h4>`);
+
+          if (debug) {
+            console.log(`[LG Meta Plugin] Set caption for ${imageUrl}: ${title}`);
+          }
+        }
+      });
+
+      // Wait for all meta files to be fetched
+      await Promise.all(promises);
+
+      if (debug) {
+        console.log('[LG Meta Plugin] Plugin initialization complete');
+      }
+    }
+
+    // Initialize the meta plugin when the component is mounted
+    const wrapper = document.currentScript?.previousElementSibling;
+
+    if (wrapper && wrapper.classList.contains('lightgallery-wrapper')) {
+      const gallery = wrapper.querySelector('astro-lightgallery');
+
+      if (gallery) {
+        // Wait for astro-lightgallery to initialize
+        setTimeout(() => {
+          initMetaPlugin(gallery, debugMeta);
+        }, 200);
+      }
+    }
+  </script>
+)}
 
 <style is:global>
   .lightgallery-wrapper {

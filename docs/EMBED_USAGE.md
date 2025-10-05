@@ -233,6 +233,50 @@ Create beautiful image galleries with lightbox functionality, thumbnails, and zo
 - `options` - Optional configuration object:
   - `thumbnail` - Show thumbnail navigation (boolean)
   - `download` - Enable download button (boolean)
+- `enableMetaPlugin` - Enable automatic loading of `.meta` files for captions (boolean, default: `true`)
+- `debugMeta` - Enable debug logging for the meta plugin (boolean, default: `false`)
+
+**Meta File Support:**
+
+LightGallery automatically looks for `.meta` files alongside your images to display captions. For example, if you have an image at `/assets/image.jpg`, the plugin will look for `/assets/image.jpg.meta`.
+
+Meta file format (JSON):
+```json
+{"Title": "Your caption text here"}
+```
+
+Example usage:
+```mdx
+<!-- This gallery will automatically load captions from .meta files -->
+<LightGallery
+  layout={{
+    imgs: [
+      { src: "/assets/2024-02-05/album.jpg" },
+      { src: "/assets/2024-02-05/artist.jpg" }
+    ]
+  }}
+/>
+
+<!-- Disable the meta plugin if needed -->
+<LightGallery
+  layout={{
+    imgs: [
+      { src: "/assets/image.jpg" }
+    ]
+  }}
+  enableMetaPlugin={false}
+/>
+
+<!-- Enable debug logging to troubleshoot meta file loading -->
+<LightGallery
+  layout={{
+    imgs: [
+      { src: "/assets/image.jpg" }
+    ]
+  }}
+  debugMeta={true}
+/>
+```
 
 **Features:**
 - ✅ Beautiful lightbox image viewer
@@ -244,6 +288,7 @@ Create beautiful image galleries with lightbox functionality, thumbnails, and zo
 - ✅ Dark mode support
 - ✅ Swup-compatible (won't trigger page transitions)
 - ✅ Full-screen viewing mode
+- ✅ Automatic caption loading from `.meta` files (Hugo-compatible)
 
 ### ChatMessage
 Display chat-style messages with optional avatars, names, timestamps, and custom colors - perfect for showing conversations, prompts, or chat interfaces.
