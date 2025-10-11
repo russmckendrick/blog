@@ -49,6 +49,15 @@ export const EDIT_POST = {
   appendFilePath: true
 };
 
+export const ERROR_404 = {
+  title: '404 - Page Not Found',
+  description: 'The page you are looking for does not exist',
+  heading: 'Signal Lost',
+  message: 'The page you\'re searching for has vanished into the digital void',
+  submessage: 'It may have been deleted, moved, or never existed',
+  buttonText: 'Return Home'
+};
+
 // Tag metadata extracted from Hugo tag index files
 // Provides consistent display names, emojis, descriptions, and colors for all tags
 export interface TagMetadata {
@@ -217,7 +226,7 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
   },
   "tools": {
     title: "Tools 🧰",
-    description: "All my posts about varous tools",
+    description: "All my posts about various tools",
     colorLight: "bg-orange-50 text-orange-700 inset-ring inset-ring-orange-600/10",
     colorDark: "dark:bg-orange-400/10 dark:text-orange-400 dark:inset-ring-orange-400/20"
   },
