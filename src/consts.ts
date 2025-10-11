@@ -37,6 +37,7 @@ export const SOCIAL_LINKS = [
 export const NAVIGATION_ITEMS = [
   { name: 'Search', url: '/search/', icon: 'search' },
   { name: 'Tags', url: '/tags/', icon: 'tag' },
+  { name: 'Archives', url: '/archives/', icon: 'archive' },
   { name: 'Tunes', url: '/tunes/', icon: 'headphones' },
   { name: 'About', url: '/about/', icon: 'user' },
   { name: 'Source', url: 'https://github.com/russmckendrick/blog/', icon: 'github', external: true }
