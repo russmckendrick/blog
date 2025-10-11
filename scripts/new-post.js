@@ -86,6 +86,15 @@ async function createBlogPost() {
     console.log(`✅ Created assets directory: ${path.relative(process.cwd(), assetsDir)}`)
   }
 
+  // Copy placeholder cover image
+  const placeholderImagePath = path.join(__dirname, '..', 'public', 'images', 'blog-cover.png')
+  if (fs.existsSync(placeholderImagePath)) {
+    fs.copyFileSync(placeholderImagePath, coverImagePath)
+    console.log(`✅ Copied placeholder cover image: ${path.relative(process.cwd(), coverImagePath)}`)
+  } else {
+    console.warn(`⚠️  Placeholder image not found: ${placeholderImagePath}`)
+  }
+
   // Create frontmatter
   const tagsYaml = tags.length > 0
     ? '\n' + tags.map(tag => `  - "${tag}"`).join('\n')
@@ -119,9 +128,9 @@ More content...
   // Summary
   console.log('\n✨ Blog post created successfully!\n')
   console.log('📄 Post file:', path.relative(process.cwd(), postPath))
-  console.log('🖼️  Cover image location:', path.relative(process.cwd(), coverImagePath))
+  console.log('🖼️  Cover image:', path.relative(process.cwd(), coverImagePath))
   console.log('\n📋 Next steps:')
-  console.log('  1. Add a cover image to:', path.relative(process.cwd(), assetsDir))
+  console.log('  1. Replace placeholder cover image if desired:', path.relative(process.cwd(), coverImagePath))
   console.log('  2. Write your blog post content')
   console.log('  3. Set draft: false when ready to publish')
   console.log(`  4. Post URL: /${year}/${month}/${day}/${slug}\n`)
