@@ -2,6 +2,8 @@
   "name": "russ-cloud",
   "compatibility_date": "2025-10-02",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "/404"
   }
 }
