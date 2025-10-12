@@ -1,0 +1,157 @@
+---
+title: "A new coat of paint"
+description: "After 5 years with Hugo, I rebuilt this blog using Astro, Tailwind CSS v4, and modern JavaScript tooling. Here's what changed and why."
+date: 2025-10-12T11:52:51.639Z
+cover:
+  image: "../../assets/2025-10-12-a-new-coat-of-paint/blog-cover-2025-10-12-a-new-coat-of-paint.png"
+draft: false
+showToc: true
+tags:
+  - "blog"
+---
+
+While there are posts in this blog dating back to 2014, nearly the last 5 years it has been built and deployed using a combination of [Hugo](https://gohugo.io), [Cloudflare Pages](https://pages.cloudflare.com) and the excellent [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme.
+
+## Why the change?
+
+For my other sites ...
+
+<LinkPreview id="https://russ.fm/" hideMedia />
+
+<LinkPreview id="https://russ.tools/" hideMedia/>
+
+... I have been using various Javascript tools, and I wanted to use something similar for this blog. The Hugo setup served me well, but I wanted to modernize the stack and bring it in line with the tools I'm using for my other projects.
+
+### The Hugo pain points
+
+Don't get me wrong - Hugo is an excellent static site generator. It's incredibly fast, has a great community, and PaperMod is a beautiful theme. However, after five years, I started feeling some friction:
+
+- **Template language limitations**: Hugo's Go templating syntax, while powerful, felt limited from what I had been using for my other projects
+- **Theme customization**: Making changes to PaperMod was challenging, I had to make changes to the underlying HTML and CSS and then figure out a way of applying those changes to the using a sub-theme
+- **Tooling ecosystem**: My other projects use modern JavaScript tooling (TypeScript, ESLint, Prettier) and I wanted that same developer experience for my blog
+- **Content scripting**: The automated weekly music posts I generate required Python scripts that felt disconnected from the blog itself
+- **Component reusability**: I had built custom components for my other sites that I couldn't easily reuse in Hugo
+
+### Evaluating JavaScript static site generators
+
+While the other sites are both single page web apps, I wanted to stick with a static site generator for the blog. When it comes to JavaScript static site generators, I evaluated several options:
+- **[Next.js](https://nextjs.org)** - The obvious choice given its popularity, but felt like overkill for a simple blog. The app router and server components, while powerful, added complexity I didn't need. Plus, the build times for a large blog can get hefty.
+- **[Gatsby](https://www.gatsbyjs.com)** - I had used Gatsby in the past and appreciated its GraphQL data layer, but the framework has lost momentum in recent years. The plugin ecosystem felt stagnant, and I wanted something with a more active community.
+- **[Eleventy (11ty)](https://www.11ty.dev)** - A strong contender with great flexibility and performance. However, it felt too minimal - I'd need to build a lot of structure myself. The template language agnosticism, while nice, meant less cohesive tooling.
+- **[VitePress](https://vitepress.dev)** - Excellent for documentation sites but too opinionated for a personal blog. The Vue-centric approach also meant I'd be writing components in a framework I don't use elsewhere.
+- **[Astro](https://astro.build)** - After working through a "Hello World" blog implementation, Astro emerged as the clear winner. 
+
+Here's why it clicked with me:
+- **Content Collections**: Type-safe content management with Zod schemas felt like a massive upgrade
+- **Framework agnostic**: While I used React components where needed, I wasn't locked into any framework
+- **Island architecture**: Ship only the JavaScript you need, when you need it
+- **MDX first-class support**: Unlike Hugo's shortcodes, MDX components are just JavaScript/React
+- **Excellent DX**: TypeScript throughout, great error messages, fast dev server
+- **Active ecosystem**: Integrations for everything I needed (Tailwind, image optimization, sitemap, etc.)
+- **Performance**: Nearly perfect Lighthouse scores out of the box
+
+### The tipping point
+
+The final push came when I wanted to overhaul my automated weekly music posts. The Python/CrewAI implementation worked, but required context switching between languages and tools. With Astro and JavaScript, I could:
+
+- Keep all automation scripts in the same language as the blog
+- Share types and utilities between the blog and automation
+- Use the same content collections API to generate posts
+- Leverage the Node.js ecosystem for API integrations
+
+It just made sense to consolidate around a single stack.
+
+## The new tech stack
+
+The blog is now built with a modern JavaScript-first stack:
+
+- **[Astro](https://astro.build)** - The core framework, providing excellent performance and flexibility
+- **[Tailwind CSS v4](https://tailwindcss.com)** - For utility-first styling with dark mode support
+- **[Expressive Code](https://expressive-code.com/)** - Beautiful syntax highlighting with GitHub Dark/Light themes
+- **[Pagefind](https://pagefind.app/)** - Fast, client-side search functionality
+- **[Swup](https://swup.js.org/)** - Smooth page transitions
+- **[Tabler Icons](https://tabler.io/icons)** - Icon library
+- **[Cloudflare Pages](https://pages.cloudflare.com)** - Hosting and deployment
+
+## Key features
+
+### Content Collections
+
+The site uses Astro's content collections for type-safe content management. Blog posts are stored in `src/content/blog/` as MDX files with Zod schema validation for frontmatter. This provides compile-time safety while maintaining backward compatibility with Hugo-style frontmatter.
+
+### Auto-generated OpenGraph images
+
+Using `astro-og-canvas`, every blog post automatically gets a custom OpenGraph image generated at build time. These images feature the site logo, gradient background, and consistent branding - perfect for social media sharing.
+
+For example, here is what the OpenGraph image looks like for the post I made last week:
+
+<LinkPreview id="https://www.russ.cloud/2025/10/04/install-n8n-locally-using-cloudflare/"/>
+
+### MDX component system
+
+Global MDX components are automatically available in all blog posts without imports. This includes:
+
+- **Media embeds**: YouTube, Instagram, Giphy, Reddit
+- **Audio**: MP3/OGG/WAV player, Apple Music
+- **Content**: LinkPreview, ChatMessage
+- **Callouts**: Note, Tip, Info, Important, Warning, Caution
+- **LightGallery**: Image galleries with a custom meta file plugin for captions
+
+The LightGallery component maintains compatibility with Hugo's `.meta` file system, making the migration seamless.
+
+### Weekly music posts automation
+
+One of the most exciting updates was to the automated "Weekly Tunes" generator. This system:
+
+1. Fetches listening stats from Last.fm for the previous week
+2. Retrieves album/artist metadata and images from [russ.fm](https://russ.fm)
+3. Uses AI (LangChain with OpenAI GPT-5) to research each album and write engaging content
+4. Generates a complete MDX post with galleries
+
+This was migrated from a Python/CrewAI implementation to JavaScript/LangChain.js, providing better integration with the Astro ecosystem, and also it gave me chance to roll my sleeves up and play with LangChain.
+
+For more information on the old implementation see the following post:
+
+<LinkPreview id="http://www.russ.cloud/2024/05/06/updating-my-blog-using-crewai/" hideMedia/>
+
+You can view the results of the new implementation at [this post](/2025/10/06/exploring-the-echoes-of-melancholy-from-therapy-to-tears-for-fears/).
+
+### SEO and performance
+
+The site includes comprehensive SEO optimization via `astro-seo-plugin`:
+
+- Automatic sitemap generation (excluding draft posts)
+- robots.txt generation
+- RSS feed at `/rss.xml`
+- Canonical URLs and meta tags
+- Twitter Card and OpenGraph support
+
+Performance is excellent with nearly perfect Lighthouse scores, thanks to Astro's island architecture and static site generation.
+
+### Dark mode and styling
+
+Dark mode is implemented via a `.dark` class on the `<html>` element, with Tailwind CSS v4 providing theme-aware utilities. The theme switcher persists preferences and integrates with Expressive Code for syntax highlighting.
+
+### Page transitions
+
+Swup provides smooth fade transitions between pages while maintaining performance. Careful cleanup hooks prevent DOM artifacts from libraries like LightGallery that append to `document.body`.
+
+## Migration considerations
+
+The migration involved several key decisions:
+
+- **Hugo shortcodes → MDX components**: All custom shortcodes were reimplemented as Astro components
+- **URL structure**: Maintained the date-based pattern `/[year]/[month]/[day]/[slug]` for backward compatibility
+- **Frontmatter**: Support for both Astro and Hugo-style fields ensures old posts work without modification
+- **Image handling**: Assets moved from `static/` to `src/assets/` for Astro's image optimization
+- **Build optimization**: `@playform/compress` handles compression of all static assets
+
+## What's next?
+
+While I am happy with the new setup, there are still a few things I want to improve - but I am holding off on those for now as I slowly bring my site score on [Lighthouse up to 100](https://pagespeed.web.dev/analysis/https-www-russ-cloud/kx1utv17io?form_factor=desktop) and work through the issues which [ahrefs](http://ahrefs.com) is flagging.
+
+## Summary
+
+After five years running on Hugo and the PaperMod theme, this blog has been completely rebuilt using a modern JavaScript-first stack centered around Astro. The migration brings significant improvements including type-safe content collections with Zod validation, automatically generated OpenGraph images for every post, and a global MDX component system that eliminates the need for imports.
+Key features include seamless media embeds, a migrated weekly music automation system (now using JavaScript/LangChain.js instead of Python/CrewAI), comprehensive SEO optimization, and smooth page transitions via Swup. The new stack maintains backward compatibility with Hugo-style frontmatter and URL structures while leveraging Astro's island architecture for excellent performance.
+The migration required reimplementing all Hugo shortcodes as Astro components and reorganizing assets, but the result is a more maintainable codebase that aligns with modern web development practices and the author's other projects.
