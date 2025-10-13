@@ -69,6 +69,17 @@ async function optimizeImage(imagePath) {
     let image = sharp(imagePath)
     const metadata = await image.metadata()
 
+    // Resize if image is wider than 1500px
+    const maxWidth = 1500
+    let resized = false
+    if (metadata.width > maxWidth) {
+      image = image.resize(maxWidth, null, {
+        withoutEnlargement: true,
+        fit: 'inside'
+      })
+      resized = true
+    }
+
     // Choose optimization based on format
     let optimized
     if (ext === '.jpg' || ext === '.jpeg') {
@@ -100,7 +111,8 @@ async function optimizeImage(imagePath) {
         originalSize,
         newSize,
         savings: `${savings}%`,
-        dimensions: `${metadata.width}x${metadata.height}`
+        dimensions: `${metadata.width}x${metadata.height}`,
+        resized
       }
     } else {
       // Remove temp file if optimization didn't help
@@ -111,7 +123,8 @@ async function optimizeImage(imagePath) {
         newSize: originalSize,
         savings: '0%',
         skipped: true,
-        dimensions: `${metadata.width}x${metadata.height}`
+        dimensions: `${metadata.width}x${metadata.height}`,
+        resized
       }
     }
   } catch (error) {
@@ -174,11 +187,13 @@ async function main() {
       totalOriginalSize += result.originalSize
       totalNewSize += result.newSize
 
+      const resizeInfo = result.resized ? ' [resized]' : ''
+
       if (result.skipped) {
-        console.log(`✓ Already optimal (${result.dimensions})`)
+        console.log(`✓ Already optimal (${result.dimensions})${resizeInfo}`)
         skippedCount++
       } else {
-        console.log(`✓ Saved ${result.savings} (${result.dimensions})`)
+        console.log(`✓ Saved ${result.savings} (${result.dimensions})${resizeInfo}`)
         optimizedCount++
       }
     } else {
