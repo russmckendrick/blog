@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { ERROR_404 } from '../consts';
+
+// Set proper 404 status code
+Astro.response.status = 404;
 ---
 
 <BaseLayout title={ERROR_404.title} description={ERROR_404.description}>
