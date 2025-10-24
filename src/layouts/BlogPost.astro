@@ -39,7 +39,7 @@ interface Props extends CollectionEntry<'blog'>['data'] {
 	readingTime?: number;
 }
 
-const { entry, title, description, pubDate, updatedDate, heroImage, cover, tags = [], previousPost, nextPost, ogImagePath, isTune = false, showToc = false, headings = [], filePath, readingTime } = Astro.props;
+const { entry, title, description, pubDate, updatedDate, lastModified, heroImage, cover, tags = [], previousPost, nextPost, ogImagePath, isTune = false, showToc = false, headings = [], filePath, readingTime } = Astro.props;
 
 // Default fallback image
 const defaultImage = '/images/blog-cover.png';
@@ -67,7 +67,7 @@ const blogPostingSchema = createBlogPostingSchema({
 	description,
 	url: Astro.url.toString(),
 	datePublished: pubDate,
-	dateModified: updatedDate,
+	dateModified: lastModified || updatedDate,
 	image: ogImage || new URL(defaultImage, Astro.site).toString(),
 	author: authorName,
 	keywords: tags,
@@ -91,6 +91,7 @@ const breadcrumbItems = [
 			image={ogImage}
 			datePublished={pubDate}
 			dateModified={updatedDate}
+			lastModified={lastModified}
 			author={authorName}
 		/>
 		<Schema item={blogPostingSchema} />

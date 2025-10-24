@@ -231,13 +231,22 @@ The site uses `@playform/compress` for production build optimization:
 
 Blog posts support both native Astro and Hugo-style frontmatter:
 - `title` (required): Post title
-- `description` (required): Post description
+- `description` (required): Post description - ensure each post has a unique, SEO-optimized description
 - `date` or `pubDate`: Publication date (date takes precedence for Hugo compatibility)
+- `updatedDate`: Date when the post was last updated
+- `lastModified`: Alternative field for last modified date (takes precedence over updatedDate)
 - `tags`: Array of tag strings
 - `heroImage`: Astro image import for hero banner
 - `cover.image`: Hugo-style cover image path
+- `cover.alt`: Alt text for cover image (falls back to title if not provided)
 - `draft`: Boolean to exclude from production builds
 - `showToc` or `ShowToc`: Display table of contents
+
+**SEO Best Practices**:
+- Always provide unique `description` for each post (used in meta tags and OpenGraph)
+- Add `cover.alt` text for hero images to improve accessibility and image SEO
+- Use `lastModified` or `updatedDate` when updating posts to help search engines understand content freshness
+- LightGallery images support `alt` attribute - use it for better accessibility
 
 After changing the schema in `src/content.config.ts`, run `npm run astro -- sync` to regenerate TypeScript types.
 

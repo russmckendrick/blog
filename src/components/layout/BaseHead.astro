@@ -12,6 +12,7 @@ interface Props {
 	keywords?: string[];
 	datePublished?: Date;
 	dateModified?: Date;
+	lastModified?: Date;
 	author?: string;
 }
 
@@ -19,7 +20,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Default fallback image (public URL)
 const defaultImage = '/images/blog-cover.png';
-const { title, description, image = defaultImage, keywords = SITE_KEYWORDS, datePublished, dateModified, author } = Astro.props;
+const { title, description, image = defaultImage, keywords = SITE_KEYWORDS, datePublished, dateModified, lastModified, author } = Astro.props;
+
+// Use lastModified if available, otherwise fall back to dateModified
+const effectiveModifiedDate = lastModified || dateModified;
 
 // Construct full image URL
 // If image starts with http, use it as is, otherwise construct full URL
@@ -66,7 +70,7 @@ const imageURL = image?.startsWith('http')
 		{ property: "og:image:height", content: "630" },
 		{ property: "og:image:alt", content: title },
 		...(datePublished ? [{ property: "article:published_time", content: datePublished.toISOString() }] : []),
-		...(dateModified || datePublished ? [{ property: "article:modified_time", content: (dateModified || datePublished)!.toISOString() }] : []),
+		...(effectiveModifiedDate || datePublished ? [{ property: "article:modified_time", content: (effectiveModifiedDate || datePublished)!.toISOString() }] : []),
 		...(author ? [{ property: "article:author", content: author }] : [])
 	]}
 	additionalLinkTags={[

@@ -14,6 +14,7 @@ const blog = defineCollection({
 			pubDate: z.coerce.date().optional(),
 			date: z.coerce.date().optional(),
 			updatedDate: z.coerce.date().optional(),
+			lastModified: z.coerce.date().optional(),
 			heroImage: image().optional(),
 			author: z.string().default('Russ McKendrick'),
 			tags: z.array(z.string()).default([]),
@@ -53,6 +54,7 @@ const tunes = defineCollection({
 			pubDate: z.coerce.date().optional(),
 			date: z.coerce.date().optional(),
 			updatedDate: z.coerce.date().optional(),
+			lastModified: z.coerce.date().optional(),
 			// Use image() for heroImage to properly handle imported images
 			heroImage: image().optional(),
 			author: z.string().default(AI_AUTHOR.name),
