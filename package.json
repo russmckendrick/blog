@@ -47,15 +47,15 @@
     "sharp": "^0.34.4",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.3",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "@playform/compress": "0.2.0",
+    "astro-robots-txt": "^1.0.0"
   },
   "devDependencies": {
     "@langchain/anthropic": "^0.3.30",
     "@langchain/community": "^0.3.57",
     "@langchain/core": "^0.3.78",
     "@langchain/openai": "^0.6.14",
-    "@playform/compress": "0.2.0",
-    "astro-robots-txt": "^1.0.0",
     "dotenv": "^16.4.7",
     "kill-port": "^2.0.1",
     "langchain": "^0.3.35",
