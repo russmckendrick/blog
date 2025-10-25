@@ -29,6 +29,58 @@ const OPTIMIZE_OPTIONS = {
   avif: { quality: 85 }
 }
 
+// Additional derivative profiles that get generated alongside the optimized original
+const DERIVATIVE_PROFILES = [
+  {
+    name: 'card',
+    suffix: '-card',
+    width: 900,
+    height: 506,
+    format: 'avif',
+    quality: 72,
+    match: (filePath, metadata) =>
+      metadata.width >= 1000 || /blog-cover/i.test(path.basename(filePath))
+  }
+]
+
+/**
+ * Generate derivative assets (like pre-cropped card art) alongside the primary image
+ */
+async function generateDerivatives(imagePath, metadata) {
+  const outputs = []
+
+  for (const profile of DERIVATIVE_PROFILES) {
+    if (!profile.match(imagePath, metadata)) continue
+
+    const { dir, name } = path.parse(imagePath)
+    const outputPath = path.join(dir, `${name}${profile.suffix}.${profile.format}`)
+
+    try {
+      const derivative = sharp(imagePath)
+        .resize(profile.width, profile.height, {
+          fit: 'cover',
+          position: 'attention'
+        })
+        .toFormat(profile.format, {
+          quality: profile.quality
+        })
+
+      await derivative.toFile(outputPath)
+      const stats = await fs.stat(outputPath)
+
+      outputs.push({
+        path: outputPath,
+        profile: profile.name,
+        size: stats.size
+      })
+    } catch (error) {
+      console.error(`Error generating ${profile.name} derivative for ${imagePath}:`, error.message)
+    }
+  }
+
+  return outputs
+}
+
 /**
  * Recursively find all image files in a directory
  */
@@ -106,17 +158,20 @@ async function optimizeImage(imagePath) {
     // Only replace if we saved space
     if (newSize < originalSize) {
       await fs.rename(tempPath, imagePath)
+      const derivatives = await generateDerivatives(imagePath, metadata)
       return {
         path: imagePath,
         originalSize,
         newSize,
         savings: `${savings}%`,
         dimensions: `${metadata.width}x${metadata.height}`,
-        resized
+        resized,
+        derivatives
       }
     } else {
       // Remove temp file if optimization didn't help
       await fs.unlink(tempPath)
+      const derivatives = await generateDerivatives(imagePath, metadata)
       return {
         path: imagePath,
         originalSize,
@@ -124,7 +179,8 @@ async function optimizeImage(imagePath) {
         savings: '0%',
         skipped: true,
         dimensions: `${metadata.width}x${metadata.height}`,
-        resized
+        resized,
+        derivatives
       }
     }
   } catch (error) {
@@ -189,13 +245,17 @@ async function main() {
 
       const resizeInfo = result.resized ? ' [resized]' : ''
 
-      if (result.skipped) {
-        console.log(`✓ Already optimal (${result.dimensions})${resizeInfo}`)
-        skippedCount++
-      } else {
-        console.log(`✓ Saved ${result.savings} (${result.dimensions})${resizeInfo}`)
-        optimizedCount++
-      }
+    const derivativeInfo = result.derivatives && result.derivatives.length > 0
+      ? ` + ${result.derivatives.map((derivative) => `${derivative.profile} (${formatBytes(derivative.size)})`).join(', ')}`
+      : ''
+
+    if (result.skipped) {
+      console.log(`✓ Already optimal (${result.dimensions})${resizeInfo}${derivativeInfo}`)
+      skippedCount++
+    } else {
+      console.log(`✓ Saved ${result.savings} (${result.dimensions})${resizeInfo}${derivativeInfo}`)
+      optimizedCount++
+    }
     } else {
       console.log('✗ Failed')
     }

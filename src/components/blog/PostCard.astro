@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import FormattedDate from './FormattedDate.astro';
 import { getPostUrl } from '../../utils/url.ts';
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
@@ -31,21 +31,21 @@ const tags = post.data.tags ?? [];
 		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-[28px]">
 		<article
 			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-[28px] shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
-			{heroImage && (
-				<figure class="relative overflow-hidden">
-					<Image
-						src={heroImage}
-						alt={alt}
-						widths={[320, 400, 640]}
-						sizes="(min-width: 1024px) 400px, (min-width: 768px) 45vw, 92vw"
-						loading={priority ? "eager" : "lazy"}
-						fetchpriority={priority ? "high" : "auto"}
-						quality={55}
-						format="webp"
-						class="w-full h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-					/>
-				</figure>
-			)}
+				{heroImage && (
+					<figure class="relative overflow-hidden">
+						<Picture
+							src={heroImage}
+							alt={alt}
+							widths={[280, 360, 420, 520, 640, 768]}
+							sizes="(min-width: 1536px) 520px, (min-width: 1280px) 460px, (min-width: 1024px) 420px, (min-width: 768px) calc(50vw - 2.5rem), 92vw"
+							formats={['avif', 'webp']}
+							loading={priority ? "eager" : "lazy"}
+							fetchpriority={priority ? "high" : "auto"}
+							quality={priority ? 72 : 58}
+							class="w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+						/>
+					</figure>
+				)}
 			<div class="relative p-6 md:p-8 flex flex-col gap-6">
 				<header class="space-y-3">
 					<h3 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
@@ -96,14 +96,14 @@ const tags = post.data.tags ?? [];
 			<div class="flex flex-col sm:flex-row">
 				{heroImage && (
 					<figure class="relative overflow-hidden sm:w-48 md:w-56 lg:w-64 flex-shrink-0">
-						<Image
+						<Picture
 							src={heroImage}
 							alt={alt}
-							widths={[192, 256, 384]}
-							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 100vw"
+							widths={[192, 224, 256, 320, 384, 448]}
+							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 92vw"
+							formats={['avif', 'webp']}
 							loading="lazy"
-							quality={55}
-							format="webp"
+							quality={58}
 							class="w-full h-48 sm:h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 						/>
 					</figure>
