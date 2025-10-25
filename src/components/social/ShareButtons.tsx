@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 interface ShareButtonsProps {
   title: string;
@@ -108,34 +108,17 @@ const shareButtons = [
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const item = {
-  hidden: { scale: 0, opacity: 0 },
-  show: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 260,
-      damping: 20,
-    }
-  },
-};
-
 export default function ShareButtons({ title, url, tags = [] }: ShareButtonsProps) {
+  const [isVisible, setIsVisible] = useState(false);
   const pageUrl = encodeURIComponent(url);
   const pageTitle = encodeURIComponent(title);
   const hashtags = tags.join(',');
+
+  useEffect(() => {
+    // Trigger animation after component mounts
+    const timer = setTimeout(() => setIsVisible(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="py-6 border-t border-gray-200 dark:border-gray-800">
@@ -143,28 +126,28 @@ export default function ShareButtons({ title, url, tags = [] }: ShareButtonsProp
         <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 tracking-wide uppercase">
           Share
         </h3>
-        <motion.div
-          className="flex items-center gap-3 flex-wrap"
-          variants={container}
-          initial="hidden"
-          animate="show"
+        <div
+          className={`flex items-center gap-3 flex-wrap transition-opacity duration-500 ${
+            isVisible ? 'opacity-100' : 'opacity-0'
+          }`}
         >
-          {shareButtons.map((button) => (
-            <motion.a
+          {shareButtons.map((button, index) => (
+            <a
               key={button.name}
               href={button.getUrl(pageUrl, pageTitle, hashtags)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Share on ${button.name}`}
-              className={`${button.color} text-white rounded-full p-3 transition-all duration-200 shadow-md hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-gray-400 dark:focus:ring-offset-gray-900`}
-              variants={item}
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
+              className={`${button.color} text-white rounded-full p-3 transition-all duration-200 shadow-md hover:shadow-xl hover:scale-110 hover:rotate-6 active:scale-95 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-gray-400 dark:focus:ring-offset-gray-900 animate-fade-in-up`}
+              style={{
+                animationDelay: `${200 + index * 50}ms`,
+                animationFillMode: 'backwards'
+              }}
             >
               {button.icon}
-            </motion.a>
+            </a>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );
