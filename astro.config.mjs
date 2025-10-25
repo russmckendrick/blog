@@ -9,7 +9,6 @@ import { defineConfig } from 'astro/config';
 import astroIcon from 'astro-icon';
 import { rehypeExternalLinks } from './src/utils/rehype-external-links.ts';
 import pagefind from 'astro-pagefind';
-import swup from '@swup/astro';
 import robotsTxt from 'astro-robots-txt';
 import compress from '@playform/compress';
 
@@ -55,38 +54,6 @@ export default defineConfig({
 					disallow: ['/draft/', '/_astro/'],
 				},
 			],
-		}),
-		swup({
-			theme: 'fade',
-			animationClass: 'page-swap-',
-			animationSelector: '[class*="page-swap-"]',
-			containers: ['main'],
-			cache: true,
-			preload: {
-				hover: true,
-				visible: false  // Disable visible preloading to reduce initial request chain
-			},
-			accessibility: true,
-			smoothScrolling: true,
-			updateBodyClass: false,
-			updateHead: true,
-			reloadScripts: true,
-			progress: false,
-			loadOnIdle: false,  // Disable idle preloading to reduce background requests
-			globalInstance: true,
-			linkSelector: 'a[href^="/"]:not([data-no-swup]):not(.lg-trigger):not(.astro-lightgallery-adaptive-item):not([href*="#"])',
-			ignoreVisit: (url, { el }) => {
-				// Ignore LightGallery links and elements inside galleries
-				if (el?.closest('.lg-trigger') ||
-				    el?.closest('astro-lightgallery') ||
-				    el?.closest('.lg-outer') ||
-				    el?.classList?.contains('astro-lightgallery-adaptive-item') ||
-				    el?.hasAttribute('data-lg-id') ||
-				    el?.hasAttribute('data-lg-size')) {
-					return true
-				}
-				return false
-			}
 		}),
 		compress({
 			Logger: 2,

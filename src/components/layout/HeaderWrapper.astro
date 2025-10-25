@@ -62,7 +62,7 @@ const { autoHide = false } = Astro.props;
   // Initialize on page load
   initHeaderAutoHide();
 
-  // Re-initialize on SWUP navigation
+  // Re-initialize on View Transitions navigation
   document.addEventListener('astro:page-load', initHeaderAutoHide);
 </script>
 
