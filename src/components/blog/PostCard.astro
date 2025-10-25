@@ -36,12 +36,12 @@ const tags = post.data.tags ?? [];
 						<Picture
 							src={heroImage}
 							alt={alt}
-							widths={[280, 360, 420, 520, 640, 768]}
+							widths={[320, 420, 520, 640]}
 							sizes="(min-width: 1536px) 520px, (min-width: 1280px) 460px, (min-width: 1024px) 420px, (min-width: 768px) calc(50vw - 2.5rem), 92vw"
 							formats={['avif', 'webp']}
 							loading={priority ? "eager" : "lazy"}
 							fetchpriority={priority ? "high" : "auto"}
-							quality={priority ? 72 : 58}
+							quality={priority ? 70 : 52}
 							class="w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 						/>
 					</figure>
@@ -99,11 +99,11 @@ const tags = post.data.tags ?? [];
 						<Picture
 							src={heroImage}
 							alt={alt}
-							widths={[192, 224, 256, 320, 384, 448]}
+							widths={[192, 224, 256, 288]}
 							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 92vw"
 							formats={['avif', 'webp']}
 							loading="lazy"
-							quality={58}
+							quality={50}
 							class="w-full h-48 sm:h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 						/>
 					</figure>
