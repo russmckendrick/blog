@@ -33,7 +33,7 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 		<slot name="head" />
 	</head>
 	<body class="bg-gray-50 dark:bg-gray-950">
-		<HeaderWrapper client:load autoHide={false}>
+		<HeaderWrapper client:idle autoHide={false}>
 			<Header />
 		</HeaderWrapper>
 		<main class="mt-10 sm:mt-14">

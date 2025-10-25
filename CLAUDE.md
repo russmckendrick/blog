@@ -65,6 +65,67 @@ The site uses `astro-seo-plugin` for comprehensive SEO optimization:
 - **robots.txt**: Generated via `astro-robots-txt` integration with proper disallow rules
 - **RSS Feed**: Available at `/rss.xml` with correct date-based URLs matching site structure
 
+#### Structured Data (Schema.org)
+
+The site implements rich structured data for enhanced search engine visibility:
+
+**Automatic Schema (All Blog Posts):**
+- **BlogPosting**: Automatically added to every blog post with title, description, dates, author, and keywords
+- **BreadcrumbList**: Automatically generated from the breadcrumb navigation (Home → Year → Post)
+- **Person**: Author information with social links and expertise areas
+- **Organization**: Publisher information for the blog
+
+**Optional Schema (Add Manually to Posts):**
+- **FAQ Schema** (`createFAQSchema`): For posts with Q&A sections - generates rich snippets with expandable questions
+- **HowTo Schema** (`createHowToSchema`): For tutorial posts - generates step-by-step rich snippets with images
+
+**Usage Example - Adding FAQ Schema:**
+```astro
+---
+import { Schema } from 'astro-seo-schema';
+import { createFAQSchema } from '../utils/schema';
+
+const faqSchema = createFAQSchema([
+  {
+    question: "How do I install Docker on Ubuntu?",
+    answer: "First update your package index with 'sudo apt update', then install prerequisites..."
+  },
+  {
+    question: "What is Cloudflare Tunnel?",
+    answer: "Cloudflare Tunnel is a secure way to connect your web services to Cloudflare..."
+  }
+], Astro.url.toString());
+---
+<Schema item={faqSchema} />
+```
+
+**Usage Example - Adding HowTo Schema:**
+```astro
+---
+import { createHowToSchema } from '../utils/schema';
+
+const howToSchema = createHowToSchema({
+  name: "Install n8n locally using Cloudflare",
+  description: "Complete guide to setting up n8n with Docker and Cloudflare Tunnel",
+  url: Astro.url.toString(),
+  totalTime: "PT30M", // ISO 8601 duration format (30 minutes)
+  image: ogImage,
+  steps: [
+    { name: "Install Docker", text: "Update apt and install Docker prerequisites..." },
+    { name: "Setup Cloudflare Tunnel", text: "Create a new tunnel in Cloudflare Zero Trust..." },
+    { name: "Configure n8n", text: "Create docker-compose.yml with PostgreSQL and n8n..." }
+  ]
+});
+---
+<Schema item={howToSchema} />
+```
+
+**Schema.org Resources:**
+- All schema utilities are in `src/utils/schema.ts`
+- Uses `schema-dts` for TypeScript type safety
+- Validate schemas with [Google Rich Results Test](https://search.google.com/test/rich-results)
+- Test structured data with [Schema.org Validator](https://validator.schema.org/)
+
 ### Content Collections
 This site uses Astro's content collections system for type-safe content management:
 - **Blog collection** (`src/content/blog/`): Main blog posts in `.md` or `.mdx` format

@@ -1,4 +1,4 @@
-import type { BlogPosting, Person, Organization, BreadcrumbList, WithContext } from 'schema-dts'
+import type { BlogPosting, Person, Organization, BreadcrumbList, FAQPage, HowTo, WithContext } from 'schema-dts'
 import { SITE_TITLE, AUTHOR_NAME, AUTHOR_HOMEPAGE, SOCIAL_LINKS } from '../consts'
 
 /**
@@ -110,6 +110,73 @@ export function createBreadcrumbSchema(
       position: index + 1,
       name: item.name,
       item: new URL(item.url, siteUrl).toString()
+    }))
+  }
+}
+
+/**
+ * Creates a FAQPage schema for posts with Q&A sections
+ */
+export interface FAQItem {
+  question: string
+  answer: string
+}
+
+export function createFAQSchema(
+  faqs: FAQItem[],
+  url: string
+): WithContext<FAQPage> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
+      }
+    }))
+  }
+}
+
+/**
+ * Creates a HowTo schema for tutorial posts
+ */
+export interface HowToStep {
+  name: string
+  text: string
+  image?: string
+}
+
+export function createHowToSchema({
+  name,
+  description,
+  steps,
+  totalTime,
+  url,
+  image
+}: {
+  name: string
+  description: string
+  steps: HowToStep[]
+  totalTime?: string
+  url: string
+  image?: string
+}): WithContext<HowTo> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name,
+    description,
+    ...(image && { image }),
+    ...(totalTime && { totalTime }),
+    step: steps.map((step, index) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+      ...(step.image && { image: step.image })
     }))
   }
 }

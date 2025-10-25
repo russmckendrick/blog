@@ -16,7 +16,7 @@ import Breadcrumbs from '../components/navigation/Breadcrumbs.astro';
 import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../utils/tags';
 import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR } from '../consts';
 import { Schema } from 'astro-seo-schema';
-import { createBlogPostingSchema } from '../utils/schema';
+import { createBlogPostingSchema, createBreadcrumbSchema } from '../utils/schema';
 
 // Import embed components to make them available in blog posts
 import { YouTube } from '@astro-community/astro-embed-youtube';
@@ -81,6 +81,12 @@ const breadcrumbItems = [
 	{ label: year, url: `/${year}/` },
 	{ label: title, url: Astro.url.pathname }
 ];
+
+// Create BreadcrumbList schema for SEO
+const breadcrumbSchema = createBreadcrumbSchema(
+	breadcrumbItems.map(item => ({ name: item.label, url: item.url })),
+	Astro.site?.toString() || 'https://www.russ.cloud/'
+);
 ---
 
 <html lang="en">
@@ -93,12 +99,14 @@ const breadcrumbItems = [
 			dateModified={updatedDate}
 			lastModified={lastModified}
 			author={authorName}
+			keywords={tags}
 		/>
 		<Schema item={blogPostingSchema} />
+		<Schema item={breadcrumbSchema} />
 	</head>
 
 	<body class="bg-gray-50 dark:bg-gray-950">
-		<HeaderWrapper client:load autoHide={true}>
+		<HeaderWrapper client:idle autoHide={true}>
 			<Header />
 		</HeaderWrapper>
 		<main class="relative">
@@ -191,7 +199,7 @@ const breadcrumbItems = [
 							<slot />
 						</div>
 
-						{!isTune && <ShareButtons client:load title={title} url={Astro.url.href} tags={tags} />}
+						{!isTune && <ShareButtons client:visible title={title} url={Astro.url.href} tags={tags} />}
 
 						{!isTune && entry && <RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={3} />}
 					</div>
