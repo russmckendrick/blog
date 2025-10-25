@@ -36,11 +36,11 @@ const tags = post.data.tags ?? [];
 					<Image
 						src={heroImage}
 						alt={alt}
-						widths={[320, 400]}
+						widths={[320, 400, 640]}
 						sizes="(min-width: 1024px) 400px, (min-width: 768px) 45vw, 92vw"
 						loading={priority ? "eager" : "lazy"}
 						fetchpriority={priority ? "high" : "auto"}
-						quality={45}
+						quality={55}
 						format="webp"
 						class="w-full h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 					/>
@@ -99,10 +99,10 @@ const tags = post.data.tags ?? [];
 						<Image
 							src={heroImage}
 							alt={alt}
-							widths={[192, 256]}
+							widths={[192, 256, 384]}
 							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 100vw"
 							loading="lazy"
-							quality={45}
+							quality={55}
 							format="webp"
 							class="w-full h-48 sm:h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 						/>
