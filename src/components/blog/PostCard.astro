@@ -36,12 +36,12 @@ const tags = post.data.tags ?? [];
 						<Picture
 							src={heroImage}
 							alt={alt}
-							widths={[320, 420, 520, 640]}
-							sizes="(min-width: 1536px) 520px, (min-width: 1280px) 460px, (min-width: 1024px) 420px, (min-width: 768px) calc(50vw - 2.5rem), 92vw"
+							widths={[320, 480, 640, 728, 1456]}
+							sizes="(min-width: 768px) 728px, calc(100vw - 2.5rem)"
 							formats={['avif', 'webp']}
 							loading={priority ? "eager" : "lazy"}
 							fetchpriority={priority ? "high" : "auto"}
-							quality={priority ? 70 : 52}
+							quality={48}
 							class="w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 						/>
 					</figure>
