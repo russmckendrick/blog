@@ -1,0 +1,73 @@
+---
+interface Props {
+  autoHide?: boolean;
+}
+
+const { autoHide = false } = Astro.props;
+---
+
+<div
+  class="header-wrapper sticky top-0 z-50 focus:outline-none focus:ring-0 transition-transform duration-300 ease-in-out"
+  data-auto-hide={autoHide}
+>
+  <slot />
+</div>
+
+<script>
+  function initHeaderAutoHide() {
+    const header = document.querySelector('.header-wrapper');
+    if (!header) return;
+
+    const autoHide = header.getAttribute('data-auto-hide') === 'true';
+    if (!autoHide) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function updateHeader() {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 100) {
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down - hide header
+          header.style.transform = 'translateY(-100%)';
+        } else {
+          // Scrolling up - show header
+          header.style.transform = 'translateY(0)';
+        }
+      } else {
+        // Always show at top
+        header.style.transform = 'translateY(0)';
+      }
+
+      lastScrollY = currentScrollY;
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Cleanup on page navigation
+    document.addEventListener('astro:before-swap', () => {
+      window.removeEventListener('scroll', onScroll);
+    });
+  }
+
+  // Initialize on page load
+  initHeaderAutoHide();
+
+  // Re-initialize on SWUP navigation
+  document.addEventListener('astro:page-load', initHeaderAutoHide);
+</script>
+
+<style>
+  .header-wrapper {
+    will-change: transform;
+  }
+</style>

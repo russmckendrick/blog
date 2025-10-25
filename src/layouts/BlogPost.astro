@@ -5,7 +5,7 @@ import BaseHead from '../components/layout/BaseHead.astro';
 import Footer from '../components/layout/Footer.astro';
 import FormattedDate from '../components/blog/FormattedDate.astro';
 import Header from '../components/layout/Header.astro';
-import HeaderWrapper from '../components/layout/HeaderWrapper';
+import HeaderWrapper from '../components/layout/HeaderWrapper.astro';
 import PostNavigation from '../components/blog/PostNavigation.astro';
 import Comments from '../components/blog/Comments.astro';
 import ShareButtons from '../components/social/ShareButtons';
@@ -106,7 +106,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 	</head>
 
 	<body class="bg-gray-50 dark:bg-gray-950">
-		<HeaderWrapper client:idle autoHide={true}>
+		<HeaderWrapper autoHide={true}>
 			<Header />
 		</HeaderWrapper>
 		<main class="relative">

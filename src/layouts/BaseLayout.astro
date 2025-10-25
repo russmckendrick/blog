@@ -1,7 +1,7 @@
 ---
 import BaseHead from '../components/layout/BaseHead.astro';
 import Header from '../components/layout/Header.astro';
-import HeaderWrapper from '../components/layout/HeaderWrapper';
+import HeaderWrapper from '../components/layout/HeaderWrapper.astro';
 import Footer from '../components/layout/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
@@ -33,7 +33,7 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 		<slot name="head" />
 	</head>
 	<body class="bg-gray-50 dark:bg-gray-950">
-		<HeaderWrapper client:idle autoHide={false}>
+		<HeaderWrapper autoHide={false}>
 			<Header />
 		</HeaderWrapper>
 		<main class="mt-10 sm:mt-14">
