@@ -11,12 +11,6 @@ export const AUTHOR_GITHUB = '@russmckendrick';
 export const AUTHOR_LOCATION = 'Nottingham, UK';
 export const AUTHOR_HOMEPAGE = 'https://www.russ.cloud/about/';
 
-export const AI_AUTHOR = {
-  name: 'AI Generated',
-  avatar: '/images/avatars/glitch.svg',
-  avatarFallback: '/images/avatar-192x192.png'
-};
-
 export const SOCIAL_LINKS = [
   { name: 'github', url: 'https://github.com/russmckendrick' },
   { name: 'mastodon', url: 'https://social.mckendrick.io/@russ' },
@@ -57,6 +51,34 @@ export const ERROR_404 = {
   submessage: 'It may have been deleted, moved, or never existed',
   buttonText: 'Return Home'
 };
+
+export const AI_AUTHOR = {
+  name: 'AI Generated',
+  avatar: '/images/avatars/glitch.svg',
+  avatarFallback: '/images/avatar-192x192.png'
+};
+
+export const AVAILABLE_AVATARS = [
+  'arms-folded.svg',
+  'arms-folded-02.svg',
+  'arms-to-side.svg',
+  'founder.svg',
+  'hacker.svg',
+  'coffee.svg',
+  'headphones.svg',
+  'headphones-off.svg',
+  'hoodie-down.svg',
+  'hoodie-up.svg',
+  'jobs.svg',
+  'nerd.svg',
+  'matrix.svg',
+  'speaker.svg',
+  'terminal.svg',
+  'hipster.svg',
+  'thumbs-up.svg',
+  'thumbs-down.svg',
+  'glitch.svg'
+];
 
 // Tag metadata extracted from Hugo tag index files
 // Provides consistent display names, emojis, descriptions, and colors for all tags
