@@ -302,6 +302,61 @@ Blog posts support both native Astro and Hugo-style frontmatter:
 - `cover.alt`: Alt text for cover image (falls back to title if not provided)
 - `draft`: Boolean to exclude from production builds
 - `showToc` or `ShowToc`: Display table of contents
+- `avatar`: Avatar name for post author (optional)
+
+### Avatar System
+
+The blog supports custom avatars for posts with 19 unique avatar designs available in both PNG and SVG formats:
+
+**Available Avatars:**
+- `arms-folded` - Professional pose with arms crossed
+- `arms-to-side` - Casual standing pose
+- `coffee` - Holding a coffee cup (great for casual posts)
+- `dark-mode` - Wearing sunglasses (perfect for technical deep-dives)
+- `founder` - Business professional look
+- `glitch` - Digital glitch effect
+- `hacker` - Hoodie and laptop (ideal for security/hacking posts)
+- `headphones` - Listening to music (perfect for tunes posts)
+- `hipster` - Trendy casual style
+- `jobs` - Steve Jobs style (turtleneck)
+- `matrix` - Matrix-inspired digital theme
+- `noir` - Film noir black and white aesthetic
+- `pixil` - Pixelated retro gaming style
+- `snug` - Cozy comfortable pose
+- `speaker` - Presenting or speaking
+- `suit` - Formal business attire
+- `terminal` - Command-line focused (DevOps/coding)
+- `thumbs-down` - Negative feedback pose
+- `thumbs-up` - Positive feedback pose
+
+**Usage in Frontmatter:**
+```yaml
+---
+title: "My Docker Tutorial"
+description: "Learn Docker the easy way"
+tags: ["docker", "devops"]
+avatar: "terminal"  # Just the name, no extension needed
+---
+```
+
+**Format Support:**
+- Specify avatar name without extension (defaults to `.svg`)
+- Or include extension: `avatar: "coffee.png"` or `avatar: "coffee.svg"`
+- Avatars are loaded from `/public/images/avatars/`
+- Falls back to default `/images/avatar.svg` if not specified
+
+**Visual Features:**
+- **Blog posts**: Large 80-96px avatar with colored ring matching primary tag
+- **Post cards**: Medium 40-56px avatar in metadata section
+- **Effects**: Gradient glow on hover, smooth scale transitions
+- **Schema.org**: Avatar automatically included in author structured data
+
+**Recommended Pairings:**
+- Technical/DevOps posts: `terminal`, `hacker`, `matrix`, `dark-mode`
+- Music posts: `headphones`, `speaker`
+- Casual/personal posts: `coffee`, `snug`, `arms-to-side`
+- Professional/business: `suit`, `founder`, `arms-folded`
+- Tutorial feedback: `thumbs-up`, `thumbs-down`
 
 **SEO Best Practices**:
 - Always provide unique `description` for each post (used in meta tags and OpenGraph)

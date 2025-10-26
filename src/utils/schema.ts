@@ -4,15 +4,17 @@ import { SITE_TITLE, AUTHOR_NAME, AUTHOR_HOMEPAGE, SOCIAL_LINKS } from '../const
 /**
  * Creates a Person schema for the author
  */
-export function createPersonSchema(siteUrl: string): WithContext<Person> {
+export function createPersonSchema(siteUrl: string, avatarPath?: string): WithContext<Person> {
   const socialUrls = SOCIAL_LINKS.map(link => link.url)
+  const defaultAvatar = '/images/avatar.svg'
+  const avatarUrl = avatarPath || defaultAvatar
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: AUTHOR_NAME,
     url: AUTHOR_HOMEPAGE,
-    image: new URL('/images/avatar.svg', siteUrl).toString(),
+    image: new URL(avatarUrl, siteUrl).toString(),
     sameAs: socialUrls,
     knowsAbout: ['DevOps', 'Cloud Computing', 'Docker', 'Kubernetes', 'Azure', 'AWS', 'Linux', 'Automation']
   }
@@ -46,6 +48,7 @@ interface BlogPostingSchemaProps {
   dateModified?: Date
   image: string
   author: string
+  authorAvatar?: string
   keywords?: string[]
   siteUrl: string
 }
@@ -58,9 +61,14 @@ export function createBlogPostingSchema({
   dateModified,
   image,
   author,
+  authorAvatar,
   keywords = [],
   siteUrl
 }: BlogPostingSchemaProps): WithContext<BlogPosting> {
+  const authorImageUrl = authorAvatar
+    ? new URL(authorAvatar, siteUrl).toString()
+    : new URL('/images/avatar.svg', siteUrl).toString()
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -72,7 +80,8 @@ export function createBlogPostingSchema({
     author: {
       '@type': 'Person',
       name: author,
-      url: AUTHOR_HOMEPAGE
+      url: AUTHOR_HOMEPAGE,
+      image: authorImageUrl
     },
     publisher: {
       '@type': 'Organization',

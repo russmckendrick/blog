@@ -5,10 +5,10 @@ import FormattedDate from './FormattedDate.astro';
 import { getPostUrl } from '../../utils/url.ts';
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
 import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../../utils/tags';
-import { AI_AUTHOR } from '../../consts';
+import { AI_AUTHOR, TAG_METADATA } from '../../consts';
 
 interface Props {
-	post: CollectionEntry<'blog'>;
+	post: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
 	priority?: boolean; // For LCP optimization on first card
 	variant?: 'vertical' | 'horizontal'; // Layout variant
 }
@@ -22,6 +22,45 @@ const minutes = calculateReadingTime(post.body);
 const readingTime = formatReadingTime(minutes);
 const author = post.data.author || AI_AUTHOR.name;
 const tags = post.data.tags ?? [];
+
+// Check if this is an AI-generated post
+const isAIAuthor = author === AI_AUTHOR.name;
+
+// Build avatar path
+const buildAvatarPath = (avatarName: string | undefined) => {
+	if (!avatarName) return null;
+	if (avatarName.includes('.')) {
+		return `/images/avatars/${avatarName}`;
+	}
+	return `/images/avatars/${avatarName}.svg`;
+};
+
+// Determine avatar source
+const avatarSrc = post.data.avatar
+	? buildAvatarPath(post.data.avatar)
+	: (isAIAuthor ? AI_AUTHOR.avatar : '/images/avatar.svg');
+const avatarFallback = '/images/avatar-192x192.png';
+
+// Get the primary tag color for avatar glow
+const primaryTag = tags[0];
+const getAvatarGlowColor = () => {
+	if (!primaryTag || !TAG_METADATA[primaryTag]) {
+		return 'text-blue-600 dark:text-blue-400';
+	}
+
+	const tagColorLight = TAG_METADATA[primaryTag].colorLight;
+
+	// Extract the text color class from tag metadata (e.g., "text-purple-700")
+	const textColorMatch = tagColorLight.match(/text-(\w+)-(\d+)/);
+	if (textColorMatch) {
+		const [, color, shade] = textColorMatch;
+		return `text-${color}-${shade} dark:text-${color}-400`;
+	}
+
+	return 'text-blue-600 dark:text-blue-400';
+};
+
+const avatarGlowColor = getAvatarGlowColor();
 ---
 
 {variant === 'vertical' ? (
@@ -58,17 +97,31 @@ const tags = post.data.tags ?? [];
 					</p>
 				)}
 				<footer class="mt-1 text-sm flex flex-wrap items-center gap-x-2 gap-y-3">
-					<span class="text-blue-600 dark:text-blue-400">
-						<FormattedDate date={post.data.pubDate} />
-					</span>
-					{readingTime && (
-						<>
-							<span class="text-gray-500 dark:text-gray-400 px-1" aria-hidden="true">·</span>
-							<span class="text-gray-500 dark:text-gray-400">{readingTime}</span>
-						</>
-					)}
-					<span class="text-gray-500 dark:text-gray-400 px-1" aria-hidden="true">·</span>
-					<span class="text-gray-500 dark:text-gray-400">{author}</span>
+					<div class="flex items-center gap-2">
+						<div class="relative flex-shrink-0">
+							<div class={`absolute -inset-0.5 bg-gradient-to-r from-current to-current rounded-full opacity-60 blur-sm ${avatarGlowColor}`}></div>
+							<img
+								src={avatarSrc}
+								alt={author}
+								class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-2 ring-white dark:ring-gray-900 shadow-md object-cover"
+								onError={`this.onerror=null; this.src='${avatarFallback}';`}
+							/>
+						</div>
+						<div class="flex flex-col">
+							<span class="text-gray-700 dark:text-gray-300 font-medium">{author}</span>
+							<div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+								<span class="text-blue-600 dark:text-blue-400">
+									<FormattedDate date={post.data.pubDate} />
+								</span>
+								{readingTime && (
+									<>
+										<span aria-hidden="true">·</span>
+										<span>{readingTime}</span>
+									</>
+								)}
+							</div>
+						</div>
+					</div>
 					{tags.length > 0 && (
 						<div class="flex flex-wrap gap-2 ml-auto">
 							{tags.slice(0, 6).map((tag) => (
@@ -119,16 +172,30 @@ const tags = post.data.tags ?? [];
 							{description}
 						</p>
 					)}
-					<footer class="mt-auto text-xs flex flex-wrap items-center gap-x-2 gap-y-2">
-						<span class="text-blue-600 dark:text-blue-400">
-							<FormattedDate date={post.data.pubDate} />
-						</span>
-						{readingTime && (
-							<>
-								<span class="text-gray-500 dark:text-gray-400 px-1" aria-hidden="true">·</span>
-								<span class="text-gray-500 dark:text-gray-400">{readingTime}</span>
-							</>
-						)}
+					<footer class="mt-auto text-xs flex items-center gap-2">
+						<div class="relative flex-shrink-0">
+							<div class={`absolute -inset-0.5 bg-gradient-to-r from-current to-current rounded-full opacity-60 blur-sm ${avatarGlowColor}`}></div>
+							<img
+								src={avatarSrc}
+								alt={author}
+								class="relative w-8 h-8 rounded-full ring-2 ring-white dark:ring-gray-900 shadow-md object-cover"
+								onError={`this.onerror=null; this.src='${avatarFallback}';`}
+							/>
+						</div>
+						<div class="flex flex-col">
+							<span class="text-gray-700 dark:text-gray-300 font-medium text-xs">{author}</span>
+							<div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+								<span class="text-blue-600 dark:text-blue-400">
+									<FormattedDate date={post.data.pubDate} />
+								</span>
+								{readingTime && (
+									<>
+										<span aria-hidden="true">·</span>
+										<span>{readingTime}</span>
+									</>
+								)}
+							</div>
+						</div>
 					</footer>
 				</div>
 			</div>

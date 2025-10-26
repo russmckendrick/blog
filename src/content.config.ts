@@ -17,6 +17,7 @@ const blog = defineCollection({
 			lastModified: z.coerce.date().optional(),
 			heroImage: image().optional(),
 			author: z.string().default('Russ McKendrick'),
+			avatar: z.string().optional(),
 			tags: z.array(z.string()).default([]),
 			draft: z.boolean().default(false),
 			summary: z.string().optional(),
@@ -58,6 +59,7 @@ const tunes = defineCollection({
 			// Use image() for heroImage to properly handle imported images
 			heroImage: image().optional(),
 			author: z.string().default(AI_AUTHOR.name),
+			avatar: z.string().optional(),
 			tags: z.array(z.string()).default([]),
 			keywords: z.array(z.string()).default([]),
 			draft: z.boolean().default(false),

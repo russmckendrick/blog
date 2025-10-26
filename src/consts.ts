@@ -13,7 +13,7 @@ export const AUTHOR_HOMEPAGE = 'https://www.russ.cloud/about/';
 
 export const AI_AUTHOR = {
   name: 'AI Generated',
-  avatar: '/images/bot.svg',
+  avatar: '/images/avatars/glitch.svg',
   avatarFallback: '/images/avatar-192x192.png'
 };
 
