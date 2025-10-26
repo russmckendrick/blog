@@ -58,28 +58,6 @@ export const AI_AUTHOR = {
   avatarFallback: '/images/avatar-192x192.png'
 };
 
-export const AVAILABLE_AVATARS = [
-  'arms-folded.svg',
-  'arms-folded-02.svg',
-  'arms-to-side.svg',
-  'founder.svg',
-  'hacker.svg',
-  'coffee.svg',
-  'headphones.svg',
-  'headphones-off.svg',
-  'hoodie-down.svg',
-  'hoodie-up.svg',
-  'jobs.svg',
-  'nerd.svg',
-  'matrix.svg',
-  'speaker.svg',
-  'terminal.svg',
-  'hipster.svg',
-  'thumbs-up.svg',
-  'thumbs-down.svg',
-  'glitch.svg'
-];
-
 // Tag metadata extracted from Hugo tag index files
 // Provides consistent display names, emojis, descriptions, and colors for all tags
 export interface TagMetadata {
@@ -265,3 +243,47 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorDark: "dark:bg-emerald-400/10 dark:text-emerald-400 dark:inset-ring-emerald-400/20"
   }
 };
+
+export const AVAILABLE_AVATARS = [
+  'arms-folded.svg',
+  'arms-folded-02.svg',
+  'arms-to-side.svg',
+  'founder.svg',
+  'hacker.svg',
+  'coffee.svg',
+  'coffee-02.svg',
+  'headphones.svg',
+  'headphones-off.svg',
+  'hoodie-down.svg',
+  'hoodie-up.svg',
+  'jobs.svg',
+  'nerd.svg',
+  'matrix.svg',
+  'speaker.svg',
+  'terminal.svg',
+  'hipster.svg',
+  'thumbs-up.svg',
+  'thumbs-down.svg',
+  'glitch.svg',
+  '3am.svg',
+  'band-01.svg',
+  'band-02.svg',
+  'band-03.svg',
+  'band-04.svg',
+  'band-05.svg',
+  'cables.svg',
+  'data.svg',
+  'devops.svg',
+  'keyboard.svg',
+  'laptop-01.svg',
+  'laptop-02.svg',
+  'network.svg',
+  'network-02.svg',
+  'pass.svg',
+  'phone.svg',
+  'record-01.svg',
+  'record-02.svg',
+  'record-03.svg',
+  'tablet.svg',
+  'watch.svg'
+];
