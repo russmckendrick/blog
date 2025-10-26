@@ -33,7 +33,7 @@ export default defineConfig({
 		astroIcon(),
 		pagefind(),
 		sitemap({
-			filter: (page) => !page.includes('/draft/'),
+			filter: (page) => !page.includes('/draft/') && !page.includes('/avatars/'),
 			changefreq: 'weekly',
 			priority: 0.5,
 			serialize: (item) => {
@@ -41,7 +41,7 @@ export default defineConfig({
 				const match = item.url.match(/\/(\d{4})\/(\d{2})\/(\d{2})\//);
 				if (match) {
 					const [, year, month, day] = match;
-					item.lastmod = new Date(`${year}-${month}-${day}`);
+					item.lastmod = new Date(`${year}-${month}-${day}`).toISOString();
 				}
 				return item;
 			}

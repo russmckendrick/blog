@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_TITLE } from '../consts';
+import { readdirSync } from 'fs';
+import { join } from 'path';
+
+// Build avatar list at build time
+const avatarsDir = join(process.cwd(), 'public', 'images', 'avatars');
+const files = readdirSync(avatarsDir);
+
+// Get unique avatar names (ignoring .DS_Store and duplicates)
+const avatarNames = Array.from(
+  new Set(
+    files
+      .filter(file => file !== '.DS_Store')
+      .map(file => file.replace(/\.(svg|png)$/, ''))
+  )
+).sort();
+
+const siteUrl = 'https://www.russ.cloud';
+---
+
+<BaseLayout title={`Avatar Contact Sheet - ${SITE_TITLE}`} description="Avatar reference sheet with all available avatars">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="mb-12 text-center">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Avatar Contact Sheet</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">Click avatar to copy name, click URL to copy full path</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {avatarNames.map((name) => (
+        <div class="avatar-card flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <button
+            type="button"
+            class="copy-name-btn mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg transition-transform hover:scale-105"
+            data-name={name}
+            aria-label={`Copy ${name} to clipboard`}
+          >
+            <img
+              src={`/images/avatars/${name}.svg`}
+              alt={name}
+              class="w-48 h-48 object-contain"
+              loading="lazy"
+            />
+          </button>
+
+          <div class="text-center w-full space-y-2">
+            <p class="text-sm font-semibold text-gray-900 dark:text-gray-100 break-words">{name}</p>
+
+            <div class="space-y-1">
+              <button
+                type="button"
+                class="copy-url-btn text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline break-all w-full text-left px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                data-url={`${siteUrl}/images/avatars/${name}.svg`}
+              >
+                {`${siteUrl}/images/avatars/${name}.svg`}
+              </button>
+
+              <button
+                type="button"
+                class="copy-url-btn text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline break-all w-full text-left px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                data-url={`${siteUrl}/images/avatars/${name}.png`}
+              >
+                {`${siteUrl}/images/avatars/${name}.png`}
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Toast notification -->
+    <div
+      id="copy-toast"
+      class="fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none z-50"
+      role="alert"
+      aria-live="polite"
+    >
+      <span id="toast-message">Copied to clipboard!</span>
+    </div>
+  </div>
+
+  <script>
+    function showToast(message: string) {
+      const toast = document.getElementById('copy-toast');
+      const toastMessage = document.getElementById('toast-message');
+
+      if (toast && toastMessage) {
+        toastMessage.textContent = message;
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-20', 'opacity-0');
+        }, 2000);
+      }
+    }
+
+    async function copyToClipboard(text: string, type: 'name' | 'url') {
+      try {
+        await navigator.clipboard.writeText(text);
+        const message = type === 'name'
+          ? `Copied "${text}" to clipboard!`
+          : 'Copied URL to clipboard!';
+        showToast(message);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+        showToast('Failed to copy to clipboard');
+      }
+    }
+
+    function setupEventListeners() {
+      // Copy avatar name
+      document.querySelectorAll('.copy-name-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const name = btn.getAttribute('data-name');
+          if (name) {
+            copyToClipboard(name, 'name');
+          }
+        });
+      });
+
+      // Copy URL
+      document.querySelectorAll('.copy-url-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const url = btn.getAttribute('data-url');
+          if (url) {
+            copyToClipboard(url, 'url');
+          }
+        });
+      });
+    }
+
+    // Setup on initial page load
+    setupEventListeners();
+
+    // Re-setup after SWUP page transitions
+    if (window.swup) {
+      window.swup.hooks.on('page:view', () => {
+        setupEventListeners();
+      });
+    }
+  </script>
+
+  <style>
+    .avatar-card {
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .avatar-card:hover {
+      transform: translateY(-4px);
+    }
+  </style>
+</BaseLayout>
