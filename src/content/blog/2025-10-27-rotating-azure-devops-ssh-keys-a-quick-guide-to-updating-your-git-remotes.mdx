@@ -1,0 +1,176 @@
+---
+title: "Rotating Azure DevOps SSH Keys: How to Update Your Git Remotes and SSH Config"
+description: "Learn how to rotate expired Azure DevOps SSH keys, update your SSH configuration, and fix Git remote authentication quickly and securely."
+date: 2025-10-27T19:11:06.743Z
+cover:
+  image: "../../assets/2025-10-27-rotating-azure-devops-ssh-keys-a-quick-guide-to-updating-your-git-remotes/blog-cover-2025-10-27-rotating-azure-devops-ssh-keys-a-quick-guide-to-updating-your-git-remotes.png"
+draft: false
+showToc: true
+avatar: "coffee-02"
+tags:
+  - "Azure"
+  - "DevOps"
+---
+
+We've all been there. Your SSH key for Azure DevOps expires, you generate a new one, and suddenly you're faced with the task of updating all your local repositories. While it’s not complicated, it’s easy to forget the exact steps when you’re in the moment. Here’s a straightforward guide to get you back up and running quickly.
+
+## The Problem: Rotating Azure DevOps SSH Keys
+
+SSH keys expire (and they should – it’s good security practice). When you generate a new SSH key pair and add the public key to Azure DevOps, your local Git repositories still point to the old configuration. You need to update two things:
+
+1. Your SSH configuration file  
+2. Your Git remote URLs to use the new SSH config
+
+If you haven’t already, you’ll need to generate your new SSH key:
+
+```bash frame="terminal" title="Generate your SSH key"
+ssh-keygen -t rsa-sha2-512 -C "user@domain.com"
+```
+
+<InfoCallout title="Please note">
+You will be asked to provide the file path and name for the key. I entered the following: `/Users/russ.mckendrick/.ssh/ado_id_rsa`.  
+You’ll need to update yours as required – just make sure the key name isn’t the same as an existing one.
+</InfoCallout>
+
+When you have your key, make a note of the path, as we’ll need it for the next step.
+
+## Step 1: Configure Your SSH Config for Azure DevOps
+
+First, update your `~/.ssh/config` file to include your new Azure DevOps SSH configuration:
+
+```text title="SSH Config"
+Host azure-devops
+  Hostname ssh.dev.azure.com
+  User git
+  IdentityFile ~/.ssh/ado_id_rsa
+  IdentitiesOnly yes
+```
+
+This creates a convenient alias (`azure-devops`) that you can use instead of typing out the full hostname every time. The `IdentitiesOnly yes` directive is particularly important, as it ensures SSH only uses the specified identity file, preventing authentication issues when you have multiple SSH keys.
+
+## Step 2: Check Your Current Git Remotes
+
+Before making changes, let’s see what we’re working with:
+
+```bash frame="terminal" title="Check the remotes"
+git remote -v
+```
+
+You’ll likely see something like:
+
+```bash frame="terminal" title="The results"
+origin  git@ssh.dev.azure.com:v3/YourOrg/YourProject/YourRepo (fetch)
+origin  git@ssh.dev.azure.com:v3/YourOrg/YourProject/YourRepo (push)
+```
+
+## Step 3: Update Your Git Remote URLs for Azure DevOps
+
+Now update your Git remote to use the new SSH config host:
+
+```bash frame="terminal" title="Set the new remote"
+git remote set-url origin git@azure-devops:v3/YourOrg/YourProject/YourRepo
+```
+
+The key change here is replacing the hostname (`ssh.dev.azure.com` or `vs-ssh.visualstudio.com`) with your SSH config host alias (`azure-devops`).
+
+## Step 4: Verify the Remote Configuration
+
+Check that the remote was updated correctly:
+
+```bash frame="terminal" title="Confirm the new remotes"
+git remote -v
+```
+
+You should now see:
+
+```bash frame="terminal" title="The results"
+origin  git@azure-devops:v3/YourOrg/YourProject/YourRepo (fetch)
+origin  git@azure-devops:v3/YourOrg/YourProject/YourRepo (push)
+```
+
+## Step 5: Test Your Azure DevOps SSH Connection
+
+Before you start working, verify that SSH authentication is working:
+
+```bash frame="terminal" title="Check the connection"
+ssh -T git@azure-devops
+```
+
+You should see a response like:
+
+```bash frame="terminal" title="The result of the test connection"
+remote: Shell access is not supported.
+```
+
+Don’t worry – this is exactly what you want to see! It means SSH successfully authenticated, but Azure DevOps doesn’t provide shell access (which is expected and secure).
+
+Finally, test with an actual Git operation:
+
+```bash frame="terminal" title="Run a git command"
+git fetch
+```
+
+If this completes without prompting for credentials or throwing errors, you’re all set!
+
+## Handling Multiple Git Remotes
+
+If you work with multiple remotes (for example, `origin` and `upstream` in a fork workflow), you’ll need to update each one:
+
+```bash
+git remote set-url origin git@azure-devops:v3/MainOrg/MainProject/MainRepo
+git remote set-url upstream git@azure-devops:v3/ForkOrg/ForkProject/ForkRepo
+```
+
+## Automating SSH Key Rotation Across Multiple Repositories
+
+If you have many local repositories that need updating, you can create a simple script to automate this process:
+
+```bash
+#!/bin/bash
+
+# Find all Git repositories in your projects directory
+find ~/projects -name ".git" -type d | while read gitdir; do
+    repo=$(dirname "$gitdir")
+    echo "Updating $repo"
+    cd "$repo"
+    
+    # Get current remote URL
+    current_url=$(git remote get-url origin 2>/dev/null)
+    
+    # Check if it's an Azure DevOps SSH URL
+    if [[ $current_url == *"dev.azure.com"* ]] || [[ $current_url == *"visualstudio.com"* ]]; then
+        # Extract the path (everything after the hostname)
+        path=$(echo "$current_url" | sed 's/.*://') 
+        new_url="git@azure-devops:$path"
+        
+        echo "  Old: $current_url"
+        echo "  New: $new_url"
+        
+        git remote set-url origin "$new_url"
+    fi
+    echo ""
+done
+```
+
+Save this as `update-ado-remotes.sh`, make it executable with `chmod +x update-ado-remotes.sh`, and run it from your projects directory.
+
+## Best Practices for Azure DevOps SSH Key Management
+
+While we’re on the topic, here are some best practices for managing SSH keys effectively:
+
+- **Use strong passphrases**: Always protect your SSH private keys with a strong passphrase. Use `ssh-agent` to avoid typing it repeatedly.  
+- **Set expiration dates**: Azure DevOps allows you to set expiration dates on SSH keys. Use this feature – it’s a great way to enforce key rotation.  
+- **Keep your config organised**: As you accumulate more SSH configurations, keep your `~/.ssh/config` file well-organised with comments. Future you will thank present you.  
+- **Document your setup**: Keep notes about which keys are used where. When you have multiple keys for different services or organisations, this documentation is invaluable.
+
+## Summary
+
+In short:
+
+- Rotate your Azure DevOps SSH keys regularly.  
+- Update your SSH config and Git remotes to match.  
+- Test connections before committing changes.  
+- Use automation for bulk updates.  
+- Keep keys protected and your config tidy.  
+
+A few small steps now will save you a lot of frustration later.
