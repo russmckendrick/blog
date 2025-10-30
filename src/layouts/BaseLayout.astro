@@ -35,13 +35,13 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 		<slot name="head" />
 	</head>
 	<body class="bg-gray-50 dark:bg-gray-950">
-		<HeaderWrapper autoHide={false}>
+		<HeaderWrapper autoHide={false} transition:persist="site-header">
 			<Header />
 		</HeaderWrapper>
-		<main class="mt-10 sm:mt-14">
+		<main class="mt-10 sm:mt-14" transition:animate="fade">
 			<slot />
 		</main>
-		<Footer />
+		<Footer transition:persist="site-footer" />
 		<script>
 			// Global cleanup for LightGallery when navigating away from pages
 			function cleanupLightGallery() {

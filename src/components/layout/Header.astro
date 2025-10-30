@@ -90,7 +90,7 @@ import Icon from '../ui/Icon.astro';
 </header>
 
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
+	function initializeHeader() {
 		// Theme switching functionality
 		const themeToggle = document.getElementById('theme-toggle');
 		const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
@@ -160,5 +160,11 @@ import Icon from '../ui/Icon.astro';
 				}
 			});
 		}
-	});
+	}
+
+	// Initialize on first load
+	initializeHeader();
+
+	// Re-initialize after View Transitions navigation
+	document.addEventListener('astro:page-load', initializeHeader);
 </script>

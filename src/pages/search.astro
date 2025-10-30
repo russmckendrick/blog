@@ -29,7 +29,7 @@ const isDev = import.meta.env.DEV;
 </BaseLayout>
 
 <script>
-	// Reinitialize Pagefind after SWUP page transitions
+	// Reinitialize Pagefind after View Transitions navigation
 	function initPagefind() {
 		const searchElement = document.querySelector('.pagefind-ui');
 		if (searchElement && window.PagefindUI) {
@@ -44,12 +44,11 @@ const isDev = import.meta.env.DEV;
 		}
 	}
 
-	// Run on page load
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initPagefind);
-	} else {
-		initPagefind();
-	}
+	// Initialize on first load
+	initPagefind();
+
+	// Re-initialize after View Transitions navigation
+	document.addEventListener('astro:page-load', initPagefind);
 </script>
 
 <style>

@@ -206,18 +206,40 @@ The LightGallery component includes a custom plugin that automatically loads ima
 - Sitemap automatically excludes `/draft/` pages
 - Search functionality via Pagefind integration
 
-### Page Transitions (SWUP)
-The site uses SWUP for smooth page transitions with important cleanup considerations:
+### Page Transitions (Astro View Transitions)
+The site uses Astro's native View Transitions API for smooth page navigation:
 
-**Configuration** (`astro.config.mjs`):
-- **Theme**: `fade` animation
-- **Containers**: Only `main` is replaced (header/footer persist)
-- **Cache**: Enabled for better performance
-- **Link Selector**: Excludes LightGallery elements (`.lg-trigger`, `.astro-lightgallery-adaptive-item`, `[data-lg-id]`, etc.)
-- **Ignore Visit**: Custom logic to prevent SWUP from intercepting LightGallery clicks
+**Implementation** (`src/layouts/BaseLayout.astro`):
+- **Component**: `<ViewTransitions />` added in the `<head>` section
+- **Animation**: Uses default fade transition (customizable via `transition:animate` directives)
+- **Fallback**: Automatic fallback for browsers without View Transitions API support
+- **Accessibility**: Respects `prefers-reduced-motion` automatically
+- **Performance**: Faster than JavaScript-based solutions, uses browser-native APIs
 
-**Critical SWUP Pattern - DOM Cleanup**:
-When using JavaScript libraries that append elements to `document.body` (like LightGallery), you MUST implement cleanup on `visit:start`:
+**Available Transition Animations**:
+- `fade` - Default smooth crossfade (currently in use)
+- `slide` - Content slides in from right/left based on navigation direction
+- `initial` - Uses browser's default View Transition styling
+- `none` - Disables animations entirely
+
+**Customizing Transitions**:
+Add `transition:animate` directive to elements for custom animations:
+```astro
+<main transition:animate="slide">
+  <slot />
+</main>
+```
+
+For custom animations, define keyframes in `src/styles/global.css`:
+```css
+@keyframes custom-fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+```
+
+**Critical Pattern - DOM Cleanup for Third-Party Libraries**:
+When using JavaScript libraries that append elements to `document.body` (like LightGallery), you MUST implement cleanup using View Transitions lifecycle events:
 
 ```javascript
 // In BaseLayout.astro (global cleanup for all pages)
@@ -226,30 +248,55 @@ function cleanupLibrary() {
   document.querySelectorAll('.library-element').forEach(el => el.remove());
 }
 
-window.swup.hooks.on('visit:start', () => {
-  cleanupLibrary();
-});
+document.addEventListener('astro:before-swap', cleanupLibrary);
 ```
 
 **Why This Matters**:
-- SWUP only replaces content inside `containers` (in our case, `main`)
-- Elements appended to `document.body` are NOT removed by SWUP
-- Without cleanup, artifacts from previous pages will persist and appear on subsequent pages
-- Place global cleanup in `BaseLayout.astro` so it runs for all page transitions
+- Astro View Transitions only replace the page content (typically `<main>`)
+- Elements appended to `document.body` are NOT automatically removed
+- Without cleanup, artifacts from previous pages will persist and cause visual bugs
+- Always place cleanup logic in `BaseLayout.astro` so it runs for all transitions
 
-**LightGallery Specific**:
+**LightGallery Cleanup Implementation**:
 The site implements comprehensive LightGallery cleanup in `BaseLayout.astro`:
 - Removes `.lg-outer`, `.lg-backdrop`, `.lg-container` elements
 - Removes the unified gallery container (`#unified-lightgallery`)
 - Cleans up all elements with `lg-` class/ID prefixes
 - Resets gallery initialization flags
+- Uses `astro:before-swap` event for cleanup timing
+
+**Lifecycle Events**:
+- `astro:before-preparation` - Before fetching new page
+- `astro:after-preparation` - After new page HTML loaded
+- `astro:before-swap` - Before old page replaced (use for cleanup)
+- `astro:after-swap` - After new page inserted
+- `astro:page-load` - After navigation complete (use for re-initialization)
 
 **Best Practices**:
-1. Always place global cleanup hooks in `BaseLayout.astro`
-2. Use `visit:start` hook for cleanup (runs before navigation)
-3. Use `page:view` hook for re-initialization (runs after new page loads)
-4. Test navigation between pages with and without the library to verify cleanup
-5. Check browser console for orphaned DOM elements during development
+1. Place global cleanup hooks in `BaseLayout.astro`
+2. Use `astro:before-swap` for cleanup (runs before old content removed)
+3. Use `astro:page-load` for re-initialization (runs after new page ready)
+4. Add `transition:persist` to elements that should maintain state across navigations
+5. Test navigation between pages with different content to verify cleanup
+6. Check browser console for orphaned DOM elements during development
+
+**Persisting State Across Transitions**:
+Use `transition:persist` to maintain component state (e.g., video players, forms):
+```astro
+<video transition:persist controls>
+  <source src="video.mp4" />
+</video>
+```
+
+**Script Behavior**:
+- Inline scripts re-execute on every page navigation
+- Bundled module scripts only execute once (on initial load)
+- Use `astro:page-load` event to re-run initialization code:
+```javascript
+document.addEventListener('astro:page-load', () => {
+  // Re-initialize components here
+});
+```
 
 ### Build Optimization
 The site uses `@playform/compress` for production build optimization:

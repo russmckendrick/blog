@@ -9,6 +9,7 @@ const { autoHide = false } = Astro.props;
 <div
   class="header-wrapper sticky top-0 z-50 focus:outline-none focus:ring-0 transition-transform duration-300 ease-in-out"
   data-auto-hide={autoHide}
+  transition:name="site-header"
 >
   <slot />
 </div>

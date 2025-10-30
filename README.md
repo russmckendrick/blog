@@ -11,7 +11,6 @@ This is the code for https://www.russ.cloud/
   - [Expressive Code](https://expressive-code.com/) for syntax highlighting
   - [astro-og-canvas](https://github.com/delucis/astro-og-canvas) for OpenGraph image generation
   - [Pagefind](https://pagefind.app/) for search
-  - [Swup](https://swup.js.org/) for page transitions
   - Icons by [Tabler Icons](https://tabler.io/icons)
 
 ## Features

@@ -113,18 +113,18 @@ const embedId = `reddit-${Math.random().toString(36).substr(2, 9)}`;
 		});
 	}
 
-	// Initialize on load
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', () => {
-			storeEmbedData();
-			updateRedditThemes();
-			loadRedditEmbeds();
-		});
-	} else {
+	// Initialize function
+	function initReddit() {
 		storeEmbedData();
 		updateRedditThemes();
 		loadRedditEmbeds();
 	}
+
+	// Initialize on first load
+	initReddit();
+
+	// Re-initialize after View Transitions navigation
+	document.addEventListener('astro:page-load', initReddit);
 
 	// Watch for theme changes
 	const observer = new MutationObserver(() => {

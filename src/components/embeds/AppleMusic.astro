@@ -67,12 +67,11 @@ const embedId = `apple-music-${Math.random().toString(36).substr(2, 9)}`;
 		});
 	}
 
-	// Initialize on load
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initAppleMusicEmbeds);
-	} else {
-		initAppleMusicEmbeds();
-	}
+	// Initialize on first load
+	initAppleMusicEmbeds();
+
+	// Re-initialize after View Transitions navigation
+	document.addEventListener('astro:page-load', initAppleMusicEmbeds);
 </script>
 
 <style>

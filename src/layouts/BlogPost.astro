@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import { ViewTransitions } from 'astro:transitions';
 import BaseHead from '../components/layout/BaseHead.astro';
 import Footer from '../components/layout/Footer.astro';
 import FormattedDate from '../components/blog/FormattedDate.astro';
@@ -139,15 +140,16 @@ const breadcrumbSchema = createBreadcrumbSchema(
 			author={authorName}
 			keywords={tags}
 		/>
+		<ViewTransitions />
 		<Schema item={blogPostingSchema} />
 		<Schema item={breadcrumbSchema} />
 	</head>
 
 	<body class="bg-gray-50 dark:bg-gray-950">
-		<HeaderWrapper autoHide={true}>
+		<HeaderWrapper autoHide={false} transition:persist="site-header">
 			<Header />
 		</HeaderWrapper>
-		<main class="relative">
+		<main class="relative" transition:animate="fade">
 			{displayImage && (
 				<section class="relative isolate -mt-20">
 					<div class="relative h-[420px] sm:h-[520px] lg:h-[640px] xl:h-[720px] 2xl:h-[820px] overflow-hidden">
@@ -280,7 +282,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 				</div>
 			</article>
 		</main>
-		<Footer />
+		<Footer transition:persist="site-footer" />
 		<script>
 			import { createLightGallery } from 'astro-lightgallery';
 			import type { LightGallerySettings } from 'lightgallery/lg-settings';
@@ -354,21 +356,14 @@ const breadcrumbSchema = createBreadcrumbSchema(
 				}
 			}
 
-			// Setup SWUP handler for re-initialization (cleanup is handled globally in BaseLayout)
-			const setupSwupHandler = () => {
-				if (window.swup) {
-					window.swup.hooks.on('page:view', async () => {
-						// Small delay to ensure DOM is ready
-						setTimeout(() => initLightGallery(), 100);
-					});
-				}
-			};
+			// Initialize on first load
+			initLightGallery();
 
-			if (window.swup) {
-				setupSwupHandler();
-			} else {
-				document.addEventListener('swup:enable', setupSwupHandler);
-			}
+			// Re-initialize after View Transitions navigation (cleanup is handled globally in BaseLayout)
+			document.addEventListener('astro:page-load', () => {
+				// Small delay to ensure DOM is ready
+				setTimeout(() => initLightGallery(), 100);
+			});
 		</script>
 	</body>
 </html>
