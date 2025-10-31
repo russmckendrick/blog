@@ -1,0 +1,20 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "russ-cloud"
+main = "dist"
+compatibility_date = "2025-10-02"
+
+# Static assets configuration
+[assets]
+directory = "dist"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "single-page-application"
+
+# Routes (update these to match your actual domain)
+# routes = [
+#   { pattern = "www.russ.cloud/*", zone_name = "russ.cloud" },
+#   { pattern = "russ.cloud/*", zone_name = "russ.cloud" }
+# ]
+
+[env.production]
+name = "russ-cloud"

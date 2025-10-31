@@ -1,4 +1,4 @@
-name: Build and Deploy to Cloudflare Pages
+name: Build and Deploy to Cloudflare Workers
 
 on:
   push:
@@ -58,7 +58,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=russ-cloud
+          command: deploy --env production
 
       - name: 📝 Comment on PR
         if: github.event_name == 'pull_request'
@@ -69,5 +69,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '✅ Build successful! Preview will be available on Cloudflare Pages.'
+              body: '✅ Build successful! Site deployed to Cloudflare Workers.'
             })
