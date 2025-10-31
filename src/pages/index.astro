@@ -12,9 +12,22 @@ const allPosts = (await getCollection('blog'))
 
 const posts = allPosts.slice(0, postsPerPage);
 const totalPages = Math.ceil(allPosts.length / postsPerPage);
+
+// Get first post hero image for LCP preload optimization
+const firstPost = posts[0];
+const firstPostHeroImage = firstPost?.data.heroImage || firstPost?.data.cover?.image;
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	{firstPostHeroImage && (
+		<link
+			slot="head"
+			rel="preload"
+			as="image"
+			href={firstPostHeroImage.src}
+			fetchpriority="high"
+		/>
+	)}
 	<section class="max-w-3xl mx-auto px-5">
 		<ul class="space-y-12">
 			{posts.map((post, index) => (

@@ -69,7 +69,7 @@ const avatarGlowColor = getAvatarGlowColor();
 		aria-label={`Read blog post: ${post.data.title}`}
 		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-[28px]">
 		<article
-			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-[28px] shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
+			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-[28px] shadow-lg dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
 				{heroImage && (
 					<figure class="relative overflow-hidden">
 						<Picture
@@ -80,7 +80,7 @@ const avatarGlowColor = getAvatarGlowColor();
 							formats={['avif', 'webp']}
 							loading={priority ? "eager" : "lazy"}
 							fetchpriority={priority ? "high" : "auto"}
-							quality={48}
+							quality={priority ? 65 : 48}
 							class="w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 						/>
 					</figure>
@@ -99,7 +99,7 @@ const avatarGlowColor = getAvatarGlowColor();
 				<footer class="mt-1 text-sm flex flex-wrap items-center gap-x-2 gap-y-3">
 					<div class="flex items-center gap-2">
 						<div class="relative flex-shrink-0">
-							<div class={`absolute -inset-0.5 bg-gradient-to-r from-current to-current rounded-full opacity-60 blur-sm ${avatarGlowColor}`}></div>
+							<div class={`absolute -inset-0.5 bg-gradient-to-r from-current to-current rounded-full opacity-60 blur-sm will-change-transform ${avatarGlowColor}`}></div>
 							<img
 								src={avatarSrc}
 								alt={author}
@@ -145,7 +145,7 @@ const avatarGlowColor = getAvatarGlowColor();
 		aria-label={`Read blog post: ${post.data.title}`}
 		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-2xl">
 		<article
-			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:shadow-2xl">
+			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:shadow-2xl">
 			<div class="flex flex-col sm:flex-row">
 				{heroImage && (
 					<figure class="relative overflow-hidden sm:w-48 md:w-56 lg:w-64 flex-shrink-0">
@@ -174,7 +174,7 @@ const avatarGlowColor = getAvatarGlowColor();
 					)}
 					<footer class="mt-auto text-xs flex items-center gap-2">
 						<div class="relative flex-shrink-0">
-							<div class={`absolute -inset-0.5 bg-gradient-to-r from-current to-current rounded-full opacity-60 blur-sm ${avatarGlowColor}`}></div>
+							<div class={`absolute -inset-0.5 bg-gradient-to-r from-current to-current rounded-full opacity-60 blur-sm will-change-transform ${avatarGlowColor}`}></div>
 							<img
 								src={avatarSrc}
 								alt={author}
