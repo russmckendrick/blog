@@ -149,7 +149,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 		<HeaderWrapper autoHide={false} transition:persist="site-header">
 			<Header />
 		</HeaderWrapper>
-		<main class="relative" transition:animate="fade">
+		<main class="relative">
 			{displayImage && (
 				<section class="relative isolate -mt-20">
 					<div class="relative h-[420px] sm:h-[520px] lg:h-[640px] xl:h-[720px] 2xl:h-[820px] overflow-hidden">
@@ -173,7 +173,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 
 			<article class={`relative z-10 ${displayImage ? '-mt-32 sm:-mt-40 lg:-mt-48 xl:-mt-60 2xl:-mt-72' : 'mt-12'}`}>
 				<div class="max-w-4xl 2xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
-					<div class="bg-white/95 dark:bg-gray-900/90 rounded-3xl shadow-2xl shadow-gray-300/40 dark:shadow-black/60 ring-1 ring-gray-200/60 dark:ring-gray-800 backdrop-blur-xl px-6 sm:px-10 xl:px-16 py-10 sm:py-12 xl:py-16">
+					<div class="bg-white/95 dark:bg-gray-900/90 rounded-3xl shadow-2xl shadow-gray-300/40 dark:shadow-black/60 ring-1 ring-gray-200/60 dark:ring-gray-800 backdrop-blur-xl px-6 sm:px-10 xl:px-16 py-10 sm:py-12 xl:py-16" transition:animate="fade">
 						<Breadcrumbs items={breadcrumbItems} />
 
 						<header class="text-center mb-10 space-y-6">

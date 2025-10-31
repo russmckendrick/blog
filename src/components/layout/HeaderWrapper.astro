@@ -9,7 +9,6 @@ const { autoHide = false } = Astro.props;
 <div
   class="header-wrapper sticky top-0 z-50 focus:outline-none focus:ring-0 transition-transform duration-300 ease-in-out"
   data-auto-hide={autoHide}
-  transition:name="site-header"
 >
   <slot />
 </div>
@@ -70,5 +69,15 @@ const { autoHide = false } = Astro.props;
 <style>
   .header-wrapper {
     will-change: transform;
+    /* Ensure header is always visible and not affected by page transitions */
+    view-transition-name: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Prevent View Transitions from hiding the header on initial load */
+  @supports (view-transition-name: none) {
+    .header-wrapper {
+      contain: layout style paint;
+    }
   }
 </style>

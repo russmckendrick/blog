@@ -109,6 +109,15 @@ const imageURL = image?.startsWith('http')
 	}
 </script>
 
+<!-- Critical CSS to ensure header is immediately visible -->
+<style is:inline>
+	.header-wrapper {
+		opacity: 1 !important;
+		visibility: visible !important;
+		display: block !important;
+	}
+</style>
+
 <!-- Theme initialization to prevent FOUC -->
 <script is:inline>
 	// Set theme immediately to prevent flash
