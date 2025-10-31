@@ -77,10 +77,10 @@ const avatarGlowColor = getAvatarGlowColor();
 							alt={alt}
 							widths={priority ? [320, 400, 640, 728] : [320, 400, 480]}
 							sizes={priority ? "(min-width: 768px) 728px, (min-width: 640px) 640px, (min-width: 400px) 400px, 320px" : "(min-width: 768px) 480px, (min-width: 400px) 400px, 320px"}
-							formats={priority ? ['avif', 'webp'] : ['webp']}
+							formats={priority ? ['avif', 'webp'] : ['avif', 'webp']}
 							loading={priority ? "eager" : "lazy"}
 							fetchpriority={priority ? "high" : "low"}
-							quality={priority ? 50 : 30}
+							quality={priority ? 50 : 40}
 							class="w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 						/>
 					</figure>
