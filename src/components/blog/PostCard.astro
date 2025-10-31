@@ -75,12 +75,12 @@ const avatarGlowColor = getAvatarGlowColor();
 						<Picture
 							src={heroImage}
 							alt={alt}
-							widths={[320, 480, 640, 728, 1456]}
-							sizes="(min-width: 768px) 728px, calc(100vw - 2.5rem)"
-							formats={['avif', 'webp']}
+							widths={priority ? [320, 480, 640, 728] : [320, 480, 640]}
+							sizes={priority ? "(min-width: 768px) 728px, calc(100vw - 2.5rem)" : "(min-width: 768px) 640px, calc(100vw - 2.5rem)"}
+							formats={priority ? ['avif', 'webp'] : ['webp']}
 							loading={priority ? "eager" : "lazy"}
-							fetchpriority={priority ? "high" : "auto"}
-							quality={priority ? 65 : 48}
+							fetchpriority={priority ? "high" : "low"}
+							quality={priority ? 65 : 40}
 							class="w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 						/>
 					</figure>
