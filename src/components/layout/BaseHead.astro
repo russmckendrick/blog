@@ -121,11 +121,24 @@ const imageURL = image?.startsWith('http')
 <!-- Theme initialization to prevent FOUC -->
 <script is:inline>
 	// Set theme immediately to prevent flash
-	(function() {
-		document.documentElement.classList.toggle(
-			'dark',
-			localStorage.theme === 'dark' ||
-			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-		);
-	})();
+	function applyThemeImmediately() {
+		const isDark = localStorage.theme === 'dark' ||
+			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+		document.documentElement.classList.toggle('dark', isDark);
+		document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+	}
+
+	// Apply on initial load
+	applyThemeImmediately();
+
+	// Apply before View Transitions swap to prevent flicker
+	document.addEventListener('astro:before-swap', (e) => {
+		// Get theme from current page
+		const isDark = document.documentElement.classList.contains('dark');
+
+		// Apply to new page before swap
+		e.newDocument.documentElement.classList.toggle('dark', isDark);
+		e.newDocument.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+	});
 </script>
