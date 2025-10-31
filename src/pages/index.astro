@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/blog/PostCard.astro';
 import Pagination from '../components/layout/Pagination.astro';
@@ -14,17 +15,28 @@ const posts = allPosts.slice(0, postsPerPage);
 const totalPages = Math.ceil(allPosts.length / postsPerPage);
 
 // Get first post hero image for LCP preload optimization
+// Generate optimized AVIF at desktop size for fastest LCP
 const firstPost = posts[0];
 const firstPostHeroImage = firstPost?.data.heroImage || firstPost?.data.cover?.image;
+let optimizedHeroImage;
+if (firstPostHeroImage) {
+	optimizedHeroImage = await getImage({
+		src: firstPostHeroImage,
+		width: 728,
+		format: 'avif',
+		quality: 65
+	});
+}
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	{firstPostHeroImage && (
+	{optimizedHeroImage && (
 		<link
 			slot="head"
 			rel="preload"
 			as="image"
-			href={firstPostHeroImage.src}
+			href={optimizedHeroImage.src}
+			type="image/avif"
 			fetchpriority="high"
 		/>
 	)}
