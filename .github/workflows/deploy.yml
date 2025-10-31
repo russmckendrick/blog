@@ -53,12 +53,12 @@ jobs:
           echo "**Files Generated:**" >> $GITHUB_STEP_SUMMARY
           find dist -type f | wc -l >> $GITHUB_STEP_SUMMARY
 
-      - name: 🚀 Deploy to Cloudflare Pages
+      - name: 🚀 Deploy to Cloudflare Workers (Static Assets)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=russ-cloud --commit-dirty=true
+          command: pages deploy dist --project-name=russ-cloud
 
       - name: 📝 Comment on PR
         if: github.event_name == 'pull_request'

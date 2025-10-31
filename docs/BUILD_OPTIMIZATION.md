@@ -51,17 +51,23 @@ You need two values from your Cloudflare account:
 **Cloudflare API Token:**
 1. Go to: https://dash.cloudflare.com/profile/api-tokens
 2. Click "Create Token"
-3. Use the "Edit Cloudflare Workers" template
-4. Add additional permission: "Cloudflare Pages - Edit"
-5. Include your account under "Account Resources"
-6. Create token and copy it
+3. Click "Create Custom Token"
+4. Give it a name (e.g., "GitHub Actions - Pages Deploy")
+5. Add these permissions:
+   - **Account** → **Cloudflare Pages** → **Edit**
+   - ⚠️ This is the ONLY permission needed - don't add Workers or other permissions
+6. Under "Account Resources", select "Include" → "Your Account Name"
+7. Optional: Set token expiration (or leave as never expires)
+8. Optional: Add IP filtering for extra security
+9. Click "Continue to summary"
+10. Review permissions and click "Create Token"
+11. **Copy the token immediately** (you won't see it again!)
 
 **Cloudflare Account ID:**
 1. Go to: https://dash.cloudflare.com/
-2. Select your website
-3. Scroll down on the Overview page
-4. Find "Account ID" in the right sidebar
-5. Copy the ID
+2. Select your website or go to Workers & Pages
+3. On the right sidebar, find "Account ID"
+4. Copy the ID (it looks like: `abc123def456ghi789jkl012mno345pq`)
 
 ### 2. Add GitHub Secrets
 
@@ -76,7 +82,12 @@ Add these secrets to your repository:
 | `CLOUDFLARE_API_TOKEN` | Your API token | From step 1 above |
 | `CLOUDFLARE_ACCOUNT_ID` | Your account ID | From step 1 above |
 
-### 3. Update Cloudflare Pages Settings
+**Important:** If you previously created an API token with wrong permissions, you need to:
+1. Delete the old `CLOUDFLARE_API_TOKEN` secret in GitHub
+2. Create a new token with correct permissions
+3. Add the new token as a secret
+
+### 3. Update Cloudflare Pages Settings (Optional)
 
 Since you're now deploying via GitHub Actions:
 
@@ -85,7 +96,8 @@ Since you're now deploying via GitHub Actions:
 3. Go to Settings → Builds & deployments
 4. **Disable automatic deployments** (optional but recommended)
    - This prevents Cloudflare from trying to build alongside GitHub Actions
-   - Or leave enabled and GitHub Actions will be faster
+   - GitHub Actions will handle all builds and deployments
+   - Or leave enabled if you want both (GitHub Actions will be faster)
 
 ### 4. Verify Deployment
 
@@ -123,6 +135,42 @@ restore-keys: |
 - ❌ Changed dependencies (cache still valid)
 - ❌ Changed config (cache still valid unless affects image processing)
 
+## Troubleshooting
+
+### Authentication Error (code: 10000)
+
+**Error message:**
+```
+A request to the Cloudflare API failed.
+Authentication error [code: 10000]
+```
+
+**Solution:**
+Your API token doesn't have the correct permissions. You need:
+1. Go to https://dash.cloudflare.com/profile/api-tokens
+2. Delete your old token (or create a new one)
+3. Create a Custom Token with ONLY this permission:
+   - **Account** → **Cloudflare Pages** → **Edit**
+4. Update the `CLOUDFLARE_API_TOKEN` secret in GitHub with the new token
+
+### Build Still Slow After First Run
+
+- Check if cache is being restored (look for "Cache restored" in logs)
+- Verify cache key is stable (shouldn't change on every build)
+- Check if image source files are changing between builds
+
+### Deployment Fails
+
+- Verify Cloudflare secrets are correct
+- Check Cloudflare Pages project name matches (`russ-cloud`)
+- Ensure API token has correct permissions (see above)
+
+### Out of Disk Space
+
+- GitHub Actions runners have 14GB disk space
+- Cached data counts toward this limit
+- May need to reduce cache size or clear old caches
+
 ## Maintenance
 
 ### Clearing the Cache
@@ -139,23 +187,6 @@ Check build summaries in GitHub Actions:
 - Build directory size
 - Number of files generated
 - Time breakdown for each step
-
-### Troubleshooting
-
-**Build still slow after first run:**
-- Check if cache is being restored (look for "Cache restored" in logs)
-- Verify cache key is stable (shouldn't change on every build)
-- Check if image source files are changing between builds
-
-**Deployment fails:**
-- Verify Cloudflare secrets are correct
-- Check Cloudflare Pages project name matches (`russ-cloud`)
-- Ensure API token has correct permissions
-
-**Out of disk space:**
-- GitHub Actions runners have 14GB disk space
-- Cached data counts toward this limit
-- May need to reduce cache size or clear old caches
 
 ## Advanced Optimizations (Future)
 
@@ -185,3 +216,4 @@ Consider these if builds are still too slow:
 - [GitHub Actions Caching](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows)
 - [Cloudflare Pages Deployment](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/)
 - [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)
+- [Cloudflare API Token Permissions](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)
