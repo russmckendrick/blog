@@ -40,6 +40,32 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Content Migration
 - `scripts/convert-to-mdx.sh` - Script for migrating legacy posts to MDX format
 
+## Build & Deployment
+
+### GitHub Actions Workflow
+The site uses GitHub Actions for optimized builds and deployment to Cloudflare Pages:
+- **Workflow**: `.github/workflows/deploy.yml` - Main build and deploy workflow
+- **Trigger**: Runs on push to `main` and on pull requests
+- **Performance**: First build ~20min, subsequent builds ~2-5min (with caching)
+- **Caching Strategy**:
+  - Caches `node_modules/` for faster dependency installation
+  - Caches `node_modules/.astro/` for processed images (prevents reprocessing 9,320+ image variations)
+  - Cache key based on `src/**` and `public/**` file hashes
+- **Deployment**: Uses Wrangler CLI to deploy to Cloudflare Pages
+
+### Build Performance
+- **Source images**: 173 images in `src/assets/`
+- **Generated variations**: ~9,320 image operations (53 per source image)
+- **Formats**: webp, avif, png at multiple responsive sizes
+- **Optimization**: Smart caching dramatically reduces subsequent build times
+
+### Setup Requirements
+To use the GitHub Actions workflow, configure these repository secrets:
+- `CLOUDFLARE_API_TOKEN` - API token with Cloudflare Pages edit permissions
+- `CLOUDFLARE_ACCOUNT_ID` - Your Cloudflare account ID
+
+See `BUILD_OPTIMIZATION.md` for detailed setup instructions and performance analysis.
+
 ## Architecture Overview
 
 ### OpenGraph Image Generation
