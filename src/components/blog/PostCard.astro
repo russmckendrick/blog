@@ -74,7 +74,7 @@ const avatarGlowColor = getAvatarGlowColor();
 					<figure class="relative overflow-hidden">
 						<img
 							src={getCFImageUrl(heroImage, {
-								width: priority ? 640 : 480,
+								width: 480,
 								quality: priority ? 85 : 80,
 								format: 'avif',
 								fit: 'cover'
@@ -85,7 +85,7 @@ const avatarGlowColor = getAvatarGlowColor();
 								priority ? 85 : 80,
 							'avif'
 							)}
-							sizes={priority ? "(min-width: 1024px) 640px, (min-width: 768px) 480px, (min-width: 640px) 640px, (min-width: 400px) 400px, 320px" : "(min-width: 1024px) 400px, (min-width: 640px) 480px, (min-width: 400px) 400px, 320px"}
+							sizes={priority ? "(min-width: 1024px) 400px, (min-width: 768px) 480px, (min-width: 640px) 480px, (min-width: 400px) 400px, 320px" : "(min-width: 1024px) 400px, (min-width: 640px) 480px, (min-width: 400px) 400px, 320px"}
 							alt={alt}
 							loading={priority ? "eager" : "lazy"}
 							fetchpriority={priority ? "high" : "low"}
