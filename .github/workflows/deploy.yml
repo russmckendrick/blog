@@ -27,16 +27,9 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: 🎨 Restore Astro build cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            node_modules/.astro
-            .astro
-            dist
-          key: astro-build-${{ hashFiles('src/**', 'public/**') }}
-          restore-keys: |
-            astro-build-
+      # Astro build cache removed - no longer needed with Cloudflare Image Transformations!
+      # Images are now transformed on-demand by Cloudflare CDN, not during build.
+      # This dramatically reduces build time from 20+ minutes to 2-3 minutes.
 
       - name: 🏗️ Build site
         run: npm run build

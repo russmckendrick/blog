@@ -1,5 +1,6 @@
 ---
 import { LightGallery } from 'astro-lightgallery'
+import { getCFImageUrl, generateCFSrcSet } from '../../utils/cloudflare-images';
 
 interface Props {
   src: string;
@@ -18,31 +19,29 @@ const isExternal = src.startsWith('http://') || src.startsWith('https://');
 // Determine if zoom should be enabled
 const enableZoom = zoom === 'true' || zoom === true;
 
-let imgSrc = src;
-let srcsetString = '';
-
-if (!isExternal) {
-  const imageSizes = [500, 800, 1200, 1500];
-  srcsetString = imageSizes.map(size => `${src} ${size}w`).join(', ');
-}
+// For local images, use Cloudflare Image Transformations
+// For gallery/zoom, use high quality (90)
+const imgSrc = isExternal ? src : getCFImageUrl(src, { width: 1200, quality: 90, format: 'auto' });
+const highResSrc = isExternal ? src : getCFImageUrl(src, { width: 2048, quality: 90, format: 'auto' });
+const srcsetString = isExternal ? '' : generateCFSrcSet(src, [640, 1024, 1536, 2048], 90);
 ---
 
 <div class="img-wrapper my-6 flex justify-center">
   {enableZoom ? (
     <div data-no-swup>
       <LightGallery
-        layout={{ imgs: [{ src: imgSrc, alt: alt }] }}
+        layout={{ imgs: [{ src: highResSrc, alt: alt }] }}
         options={{ thumbnail: false, download: false }}
       >
-        <a href={imgSrc}>
+        <a href={highResSrc}>
           <img
             src={imgSrc}
+            srcset={srcsetString}
             alt={alt}
             loading="lazy"
             class="rounded-lg max-w-full h-auto hover:opacity-90 transition-opacity cursor-zoom-in"
             sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
             {...(width && { width })}
-            {...(!isExternal && srcsetString && { srcset: srcsetString })}
           />
         </a>
       </LightGallery>
@@ -51,23 +50,23 @@ if (!isExternal) {
     <a href={link} target="_blank" rel="noopener noreferrer" data-no-swup>
       <img
         src={imgSrc}
+        srcset={srcsetString}
         alt={alt}
         loading="lazy"
         class="rounded-lg max-w-full h-auto hover:opacity-90 transition-opacity"
         sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
         {...(width && { width })}
-        {...(!isExternal && srcsetString && { srcset: srcsetString })}
       />
     </a>
   ) : (
     <img
       src={imgSrc}
+      srcset={srcsetString}
       alt={alt}
       loading="lazy"
       class="rounded-lg max-w-full h-auto"
       sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
       {...(width && { width })}
-      {...(!isExternal && srcsetString && { srcset: srcsetString })}
     />
   )}
 </div>

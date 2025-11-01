@@ -1,10 +1,10 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Picture } from 'astro:assets';
 import FormattedDate from './FormattedDate.astro';
 import { getPostUrl } from '../../utils/url.ts';
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
 import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../../utils/tags';
+import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../../utils/cloudflare-images';
 import { AI_AUTHOR, TAG_METADATA } from '../../consts';
 
 interface Props {
@@ -72,15 +72,22 @@ const avatarGlowColor = getAvatarGlowColor();
 			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-[28px] shadow-lg dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
 				{heroImage && (
 					<figure class="relative overflow-hidden">
-						<Picture
-							src={heroImage}
-							alt={alt}
-							widths={priority ? [320, 400, 640, 728] : [320, 400, 480]}
+						<img
+							src={getCFImageUrl(heroImage, {
+								width: 728,
+								quality: priority ? 85 : 80,
+								format: 'auto',
+								fit: 'cover'
+							})}
+							srcset={generateCFSrcSet(
+								heroImage,
+								priority ? CF_IMAGE_PRESETS.thumbnailPriority.widths : CF_IMAGE_PRESETS.thumbnail.widths,
+								priority ? 85 : 80
+							)}
 							sizes={priority ? "(min-width: 768px) 728px, (min-width: 640px) 640px, (min-width: 400px) 400px, 320px" : "(min-width: 768px) 480px, (min-width: 400px) 400px, 320px"}
-							formats={priority ? ['avif', 'webp'] : ['avif', 'webp']}
+							alt={alt}
 							loading={priority ? "eager" : "lazy"}
 							fetchpriority={priority ? "high" : "low"}
-							quality={priority ? 48 : 42}
 							class="w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 						/>
 					</figure>
@@ -149,14 +156,18 @@ const avatarGlowColor = getAvatarGlowColor();
 			<div class="flex flex-col sm:flex-row">
 				{heroImage && (
 					<figure class="relative overflow-hidden sm:w-48 md:w-56 lg:w-64 flex-shrink-0">
-						<Picture
-							src={heroImage}
-							alt={alt}
-							widths={[192, 224, 256, 288]}
+						<img
+							src={getCFImageUrl(heroImage, {
+								width: 288,
+								quality: 80,
+								format: 'auto',
+								fit: 'cover'
+							})}
+							srcset={generateCFSrcSet(heroImage, [192, 224, 256, 288], 80)}
 							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 92vw"
-							formats={['avif', 'webp']}
+							alt={alt}
 							loading="lazy"
-							quality={50}
+							fetchpriority="low"
 							class="w-full h-48 sm:h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
 						/>
 					</figure>

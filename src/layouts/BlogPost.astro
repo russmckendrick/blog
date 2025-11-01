@@ -1,6 +1,6 @@
 ---
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../utils/cloudflare-images';
 import BaseHead from '../components/layout/BaseHead.astro';
 import Footer from '../components/layout/Footer.astro';
 import FormattedDate from '../components/blog/FormattedDate.astro';
@@ -151,15 +151,18 @@ const breadcrumbSchema = createBreadcrumbSchema(
 			{displayImage && (
 				<section class="relative isolate -mt-20">
 					<div class="relative h-[420px] sm:h-[520px] lg:h-[640px] xl:h-[720px] 2xl:h-[820px] overflow-hidden">
-						<Image
-							src={displayImage}
-							alt={cover?.alt || title}
-							widths={[640, 1024, 1280, 1920]}
+						<img
+							src={getCFImageUrl(displayImage, {
+								width: 1920,
+								quality: 85,
+								format: 'auto',
+								fit: 'cover'
+							})}
+							srcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, 85)}
 							sizes="100vw"
+							alt={cover?.alt || title}
 							loading="eager"
 							fetchpriority="high"
-							quality={65}
-							format="webp"
 							class="absolute inset-0 h-full w-full object-cover"
 						/>
 					<div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-transparent dark:from-black/40 dark:via-black/25"></div>

@@ -80,6 +80,38 @@ The site automatically generates custom OpenGraph (OG) images for all blog posts
 
 The OG images are automatically linked in the HTML meta tags for both OpenGraph and Twitter Card metadata.
 
+### Image Processing & Delivery
+
+The site uses **Cloudflare Image Transformations** for on-demand image optimization and delivery:
+
+**Architecture**:
+- **No build-time processing**: Images are NOT processed during `npm run build`
+- **CDN-level transformations**: Cloudflare intercepts `/cdn-cgi/image/` URLs automatically
+- **On-demand optimization**: Images are resized/optimized on first request, then cached globally
+- **Automatic format selection**: Serves AVIF → WebP → original based on browser support
+
+**Implementation**:
+- Helper utility: `src/utils/cloudflare-images.ts`
+- URL pattern: `/cdn-cgi/image/width=800,quality=85,format=auto/assets/image.jpg`
+- Quality presets: `CF_IMAGE_PRESETS` (hero, thumbnail, gallery, avatar)
+- **No adapter needed**: Works with fully static sites
+
+**Benefits**:
+- Build time reduced from 20+ minutes to 2-3 minutes
+- No Sharp processing (9,320+ image operations eliminated)
+- Global CDN delivery (280+ Cloudflare edge locations)
+- Free tier: 5,000 unique transformations/month
+
+**Components using Cloudflare Images**:
+- `PostCard.astro`: Card thumbnails with responsive srcset
+- `BlogPost.astro`: Hero images for blog posts
+- `Img.astro`: Embed component for inline images with LightGallery zoom
+- All components use `getCFImageUrl()` and `generateCFSrcSet()` helpers
+
+**Transformation options**: width, height, quality (1-100), format (auto/webp/avif/jpeg), fit (scale-down/contain/cover/crop/pad), gravity (auto/left/right/top/bottom/center), sharpen (0-10), blur (0-250), metadata (keep/copyright/none)
+
+**Docs**: https://developers.cloudflare.com/images/transform-images/transform-via-url/
+
 ### SEO Management
 
 The site uses `astro-seo-plugin` for comprehensive SEO optimization:
