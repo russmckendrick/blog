@@ -71,13 +71,11 @@ export default defineConfig({
 		})
 	],
 	image: {
+		// Use passthrough service - no build-time image processing
+		// Images are optimized on-demand by Cloudflare Image Transformations
 		service: {
-			entrypoint: 'astro/assets/services/sharp',
-			config: {
-				limitInputPixels: false,
-			}
+			entrypoint: 'astro/assets/services/noop'
 		},
-		// Configure WebP quality and format defaults
 		remotePatterns: [{ protocol: "https" }],
 	},
 	vite: {
