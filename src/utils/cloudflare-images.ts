@@ -72,15 +72,17 @@ export function getCFImageUrl(
  * @param src - Image path
  * @param widths - Array of widths to generate
  * @param quality - Image quality (default: 85)
+ * @param format - Image format (default: 'auto')
  * @returns srcset string
  */
 export function generateCFSrcSet(
   src: string | { src: string },
   widths: number[],
-  quality: number = 85
+  quality: number = 85,
+  format: 'auto' | 'webp' | 'avif' | 'jpeg' | 'baseline-jpeg' | 'json' = 'auto'
 ): string {
   return widths
-    .map(w => `${getCFImageUrl(src, { width: w, quality })} ${w}w`)
+    .map(w => `${getCFImageUrl(src, { width: w, quality, format })} ${w}w`)
     .join(', ');
 }
 
