@@ -91,7 +91,7 @@ export const CF_IMAGE_PRESETS = {
   // Hero images for blog posts
   hero: {
     quality: 85,
-    format: 'auto' as const,
+    format: 'avif' as const,
     fit: 'cover' as const,
     widths: [640, 1024, 1536, 2048]
   },
@@ -99,7 +99,7 @@ export const CF_IMAGE_PRESETS = {
   // Post card thumbnails
   thumbnail: {
     quality: 80,
-    format: 'auto' as const,
+    format: 'avif' as const,
     fit: 'cover' as const,
     widths: [320, 400, 480]  // Matches actual display: 385px max
   },
@@ -107,7 +107,7 @@ export const CF_IMAGE_PRESETS = {
   // Post card thumbnails (priority/high quality)
   thumbnailPriority: {
     quality: 85,
-    format: 'auto' as const,
+    format: 'avif' as const,
     fit: 'cover' as const,
     widths: [320, 400, 640]  // Priority card matches actual 640px display
   },
@@ -115,7 +115,7 @@ export const CF_IMAGE_PRESETS = {
   // Gallery/lightbox images (high quality)
   gallery: {
     quality: 90,
-    format: 'auto' as const,
+    format: 'avif' as const,
     fit: 'scale-down' as const,
     widths: [1024, 1536, 2048, 2560]
   },
