@@ -5,7 +5,7 @@ import { getPostUrl } from '../../utils/url.ts';
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
 import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../../utils/tags';
 import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../../utils/cloudflare-images';
-import { AI_AUTHOR, TAG_METADATA } from '../../consts';
+import { AI_AUTHOR, TAG_METADATA, TAG_AVATAR_MAP } from '../../consts';
 
 interface Props {
 	post: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
@@ -35,10 +35,20 @@ const buildAvatarPath = (avatarName: string | undefined) => {
 	return `/images/avatars/${avatarName}.svg`;
 };
 
+// Get avatar from primary tag if no avatar specified
+const getDefaultAvatar = () => {
+	if (isAIAuthor) return AI_AUTHOR.avatar;
+	const primaryTag = tags[0];
+	if (primaryTag && TAG_AVATAR_MAP[primaryTag]) {
+		return `/images/avatars/${TAG_AVATAR_MAP[primaryTag]}`;
+	}
+	return '/images/avatar.svg';
+};
+
 // Determine avatar source
 const avatarSrc = post.data.avatar
 	? buildAvatarPath(post.data.avatar)
-	: (isAIAuthor ? AI_AUTHOR.avatar : '/images/avatar.svg');
+	: getDefaultAvatar();
 const avatarFallback = '/images/avatar-192x192.png';
 
 // Get the primary tag color for avatar glow

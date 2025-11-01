@@ -14,7 +14,7 @@ import ReadingTime from '../components/blog/ReadingTime.astro';
 import RelatedPosts from '../components/blog/RelatedPosts.astro';
 import Breadcrumbs from '../components/navigation/Breadcrumbs.astro';
 import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../utils/tags';
-import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, TAG_METADATA } from '../consts';
+import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, TAG_METADATA, TAG_AVATAR_MAP } from '../consts';
 import { Schema } from 'astro-seo-schema';
 import { createBlogPostingSchema, createBreadcrumbSchema } from '../utils/schema';
 
@@ -72,9 +72,19 @@ const buildAvatarPath = (avatarName: string | undefined) => {
 	return `/images/avatars/${avatarName}.svg`;
 };
 
+// Get avatar from primary tag if no avatar specified
+const getDefaultAvatar = () => {
+	if (isTune) return AI_AUTHOR.avatar;
+	const primaryTag = tags[0];
+	if (primaryTag && TAG_AVATAR_MAP[primaryTag]) {
+		return `/images/avatars/${TAG_AVATAR_MAP[primaryTag]}`;
+	}
+	return '/images/avatar.svg';
+};
+
 const avatarSrc = avatar
 	? buildAvatarPath(avatar)
-	: (isTune ? AI_AUTHOR.avatar : '/images/avatar.svg');
+	: getDefaultAvatar();
 const avatarFallback = isTune ? AI_AUTHOR.avatarFallback : '/images/avatar-192x192.png';
 
 // Get the primary tag color for avatar glow

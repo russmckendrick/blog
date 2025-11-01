@@ -414,36 +414,48 @@ Blog posts support both native Astro and Hugo-style frontmatter:
 
 ### Avatar System
 
-The blog supports custom avatars for posts with 19 unique avatar designs available in both PNG and SVG formats:
+The blog supports custom avatars for posts with **automatic tag-based selection** when no avatar is specified in frontmatter.
+
+**Automatic Avatar Selection:**
+When no `avatar` field is provided in frontmatter, the system automatically selects an appropriate avatar based on the post's primary tag (first tag in the tags array). This mapping is defined in `TAG_AVATAR_MAP` in `src/consts.ts`.
+
+**Tag-to-Avatar Mappings:**
+- `ai` → ai.svg
+- `ansible` → ansible.svg
+- `author`, `book` → book.svg
+- `automation`, `devops` → devops.svg
+- `aws`, `cloud` → cloud.svg
+- `azure` → azure.svg
+- `blog`, `life` → coffee.svg / coffee-02.svg
+- `code`, `linux`, `terraform` → terminal.svg
+- `conference` → speaker.svg
+- `containers`, `docker`, `kubernetes`, `podman` → docker.svg
+- `github` → github.svg
+- `infrastructure-as-code`, `packer` → data.svg
+- `listened` → headphones.svg
+- `macos` → laptop-01.svg
+- `python` → python.svg
+- `security` → hacker.svg
+- `tools` → keyboard.svg
+- `vinyl` → record-01.svg
+- `web` → network.svg
 
 **Available Avatars:**
-- `arms-folded` - Professional pose with arms crossed
-- `arms-to-side` - Casual standing pose
-- `coffee` - Holding a coffee cup (great for casual posts)
-- `dark-mode` - Wearing sunglasses (perfect for technical deep-dives)
-- `founder` - Business professional look
-- `glitch` - Digital glitch effect
-- `hacker` - Hoodie and laptop (ideal for security/hacking posts)
-- `headphones` - Listening to music (perfect for tunes posts)
-- `hipster` - Trendy casual style
-- `jobs` - Steve Jobs style (turtleneck)
-- `matrix` - Matrix-inspired digital theme
-- `noir` - Film noir black and white aesthetic
-- `pixil` - Pixelated retro gaming style
-- `snug` - Cozy comfortable pose
-- `speaker` - Presenting or speaking
-- `suit` - Formal business attire
-- `terminal` - Command-line focused (DevOps/coding)
-- `thumbs-down` - Negative feedback pose
-- `thumbs-up` - Positive feedback pose
+50+ avatars in both PNG and SVG formats, including:
+- **Tech**: terminal, keyboard, laptop-01, laptop-02, hacker, matrix, devops, data, network, network-02, cables, phone, tablet, watch
+- **Music**: headphones, headphones-off, speaker, record-01, record-02, record-03, band-01 through band-05
+- **Professional**: arms-folded, arms-folded-02, founder, suit, jobs, speaker
+- **Casual**: coffee, coffee-02, arms-to-side, snug, hipster
+- **Tech-specific**: ai, ansible, azure, book, cloud, docker, github, python
+- **Other**: glitch, noir, pixil, 3am, thumbs-up, thumbs-down
 
-**Usage in Frontmatter:**
+**Manual Avatar Override:**
 ```yaml
 ---
 title: "My Docker Tutorial"
 description: "Learn Docker the easy way"
 tags: ["docker", "devops"]
-avatar: "terminal"  # Just the name, no extension needed
+avatar: "terminal"  # Override automatic selection
 ---
 ```
 
@@ -451,20 +463,19 @@ avatar: "terminal"  # Just the name, no extension needed
 - Specify avatar name without extension (defaults to `.svg`)
 - Or include extension: `avatar: "coffee.png"` or `avatar: "coffee.svg"`
 - Avatars are loaded from `/public/images/avatars/`
-- Falls back to default `/images/avatar.svg` if not specified
+- Falls back to tag-based selection if no avatar specified
+- Falls back to `/images/avatar.svg` if no matching tag
 
 **Visual Features:**
-- **Blog posts**: Large 80-96px avatar with colored ring matching primary tag
+- **Blog posts**: Large 64-80px avatar with colored ring matching primary tag
 - **Post cards**: Medium 40-56px avatar in metadata section
-- **Effects**: Gradient glow on hover, smooth scale transitions
+- **Effects**: Gradient glow matching primary tag color, smooth scale transitions
 - **Schema.org**: Avatar automatically included in author structured data
 
-**Recommended Pairings:**
-- Technical/DevOps posts: `terminal`, `hacker`, `matrix`, `dark-mode`
-- Music posts: `headphones`, `speaker`
-- Casual/personal posts: `coffee`, `snug`, `arms-to-side`
-- Professional/business: `suit`, `founder`, `arms-folded`
-- Tutorial feedback: `thumbs-up`, `thumbs-down`
+**Implementation:**
+- Avatar selection logic in `PostCard.astro` (line 38-46) and `BlogPost.astro` (line 75-83)
+- Uses `getDefaultAvatar()` function to check primary tag and return appropriate avatar
+- AI-generated posts (tunes) automatically use the glitch avatar
 
 **SEO Best Practices**:
 - Always provide unique `description` for each post (used in meta tags and OpenGraph)
@@ -564,3 +575,7 @@ Additional repository guidelines are documented in `AGENTS.md`, including:
 - Coding style (2-space indentation, semicolon-free, PascalCase components)
 - Commit message conventions (imperative, single-sentence)
 - Testing approach (manual verification + `npx astro check`)
+- Priority Card (First Post) Optimization:
+  - src width: 640px → 480px (matches regular cards)
+  - sizes attribute: Changed from 640px at desktop to 400px at desktop
+  - srcset widths: Removed 640w, now uses [320w, 400w, 480w] (same as regular cards)

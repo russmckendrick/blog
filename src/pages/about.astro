@@ -3,14 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Img from '../components/embeds/Img.astro';
 import { Schema } from 'astro-seo-schema';
 import { createPersonSchema, createOrganizationSchema } from '../utils/schema';
-import { AVAILABLE_AVATARS } from '../consts';
+import { getAvailableAvatars } from '../utils/avatars';
 
 const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
 const personSchema = createPersonSchema(siteUrl);
 const organizationSchema = createOrganizationSchema(siteUrl);
 
-// Select a random avatar
-const randomAvatar = AVAILABLE_AVATARS[Math.floor(Math.random() * AVAILABLE_AVATARS.length)];
+// Select a random avatar from the available avatars
+const availableAvatars = getAvailableAvatars();
+const randomAvatar = availableAvatars[Math.floor(Math.random() * availableAvatars.length)];
 const avatarPath = `/images/avatars/${randomAvatar}`;
 ---
 
@@ -20,27 +21,46 @@ const avatarPath = `/images/avatars/${randomAvatar}`;
 		<Schema item={organizationSchema} />
 	</Fragment>
 	<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+		<!-- Mobile: Avatar centered above header -->
+		<div class="flex justify-center mb-6 sm:hidden">
+			<div class="relative">
+				<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-600 rounded-full opacity-40 blur-md dark:from-blue-400 dark:to-blue-400"></div>
+				<div class="relative w-32 h-32 rounded-full overflow-hidden ring-4 ring-white dark:ring-gray-800 shadow-xl bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900">
+					<img
+						src={avatarPath}
+						alt="Russ McKendrick avatar"
+						class="w-full h-full object-cover object-center"
+					/>
+				</div>
+			</div>
+		</div>
+
+		<!-- Desktop: Avatar floated left -->
+		<div class="hidden sm:block sm:float-left sm:mr-6 sm:mb-4 sm:mt-2">
+			<div class="relative">
+				<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-600 rounded-full opacity-40 blur-md dark:from-blue-400 dark:to-blue-400"></div>
+				<div class="relative w-36 h-36 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden ring-4 ring-white dark:ring-gray-800 shadow-xl bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900">
+					<img
+						src={avatarPath}
+						alt="Russ McKendrick avatar"
+						class="w-full h-full object-cover object-center"
+					/>
+				</div>
+			</div>
+		</div>
+
 		<h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 flex items-center gap-3">
 			Hi there <img src="/assets/about/images/wave.gif" alt="Hello there" class="inline-block h-12 align-middle" />, my name is Russ.
 		</h2>
 
 		<div class="prose prose-lg dark:prose-invert prose-blue max-w-none mb-12">
 			<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-				Hello! I'm Russ, an IT professional with a strong background in DevOps and system administration. I've spent the last 30 years working in various IT roles across multiple industries. I have a deep passion for Linux, open-source systems, automation, and containers. I currently serve as the Practice Manager of SRE & DevOps at <a href="https://www.node4.co.uk/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">Node4</a>, managing projects across public and private clouds.
+				Hello! I'm Russ, an IT professional with a strong background in DevOps and system administration. I've spent the last 30 years working in various IT roles across multiple industries.
 			</p>
 
-			<div class="flex justify-center my-12">
-				<div class="relative inline-block">
-					<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-600 rounded-3xl opacity-40 blur-lg dark:from-blue-400 dark:to-blue-400"></div>
-					<div class="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden ring-8 ring-white dark:ring-gray-800 shadow-2xl bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900">
-						<img
-							src={avatarPath}
-							alt="Russ McKendrick avatar"
-							class="w-full h-full object-cover object-bottom scale-110"
-						/>
-					</div>
-				</div>
-			</div>
+			<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+				I have a deep passion for Linux, open-source systems, automation, and containers. I currently serve as the Practice Manager of SRE & DevOps at <a href="https://www.node4.co.uk/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">Node4</a>, managing projects across public and private clouds.
+			</p>
 
 			<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
 				Apart from my work, I have written and contributed to thirteen books primarily revolving around container technologies and automation. In my downtime, I enjoy expanding <a href="https://www.russ.fm/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">my vinyl record collection</a>.

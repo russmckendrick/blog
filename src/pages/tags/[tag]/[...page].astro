@@ -5,7 +5,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PostCard from '../../../components/blog/PostCard.astro';
 import Pagination from '../../../components/layout/Pagination.astro';
 import { getTagMetadata, getTagUrl, normalizeTagSlug } from '../../../utils/tags';
-import { TAG_METADATA } from '../../../consts';
+import { TAG_METADATA, TAG_AVATAR_MAP } from '../../../consts';
 
 export async function getStaticPaths({ paginate }) {
   const posts = (await getCollection('blog'))
@@ -47,31 +47,74 @@ const allPosts = (await getCollection('blog')).filter(post => import.meta.env.DE
 const totalTagPosts = allPosts.filter(post =>
   (post.data.tags || []).map(t => normalizeTagSlug(t)).includes(tag)
 ).length;
+
+// Get avatar for this tag
+const avatarSrc = TAG_AVATAR_MAP[tag] ? `/images/avatars/${TAG_AVATAR_MAP[tag]}` : null;
+const avatarFallback = '/images/avatar-192x192.png';
+
+// Get avatar glow color from tag metadata
+const getAvatarGlowColor = () => {
+	if (!TAG_METADATA[tag]) {
+		return 'text-blue-600 dark:text-blue-400';
+	}
+
+	const tagColorLight = TAG_METADATA[tag].colorLight;
+	const textColorMatch = tagColorLight.match(/text-(\w+)-(\d+)/);
+	if (textColorMatch) {
+		const [, color, shade] = textColorMatch;
+		return `text-${color}-${shade} dark:text-${color}-400`;
+	}
+
+	return 'text-blue-600 dark:text-blue-400';
+};
+
+const avatarGlowColor = getAvatarGlowColor();
 ---
 
 <BaseLayout
   title={metadata.title}
   description={metadata.description}
 >
-  <section class="text-center py-8 pb-12 mb-8 border-b border-gray-200 dark:border-gray-700">
-    <div class="mb-4">
-      <a
-        href="/tags/"
-        class="inline-flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-      >
-        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
-        All tags
-      </a>
+  <section class="py-8 pb-12 mb-8 border-b border-gray-200 dark:border-gray-700">
+    <div class="max-w-3xl mx-auto px-5">
+      <div class="mb-6 text-center">
+        <a
+          href="/tags/"
+          class="inline-flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+        >
+          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          All tags
+        </a>
+      </div>
+
+      <div class="flex flex-col items-center text-center gap-6">
+        {avatarSrc && (
+          <div class="flex-shrink-0">
+            <div class="relative">
+              <div class={`absolute -inset-1 bg-gradient-to-r from-current to-current rounded-full opacity-60 blur-md ${avatarGlowColor}`}></div>
+              <img
+                src={avatarSrc}
+                alt={metadata.title}
+                class="relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full ring-4 ring-white dark:ring-gray-900 shadow-lg object-cover"
+                onerror={`this.onerror=null; this.src='${avatarFallback}';`}
+              />
+            </div>
+          </div>
+        )}
+
+        <div>
+          <h1 class="text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+            {metadata.title}
+          </h1>
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-3" set:html={metadata.description} />
+          <p class="text-sm text-gray-500 dark:text-gray-500">
+            {totalTagPosts} post{totalTagPosts !== 1 ? 's' : ''}
+          </p>
+        </div>
+      </div>
     </div>
-    <h1 class="text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-      {metadata.title}
-    </h1>
-    <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-4" set:html={metadata.description} />
-    <p class="text-sm text-gray-500 dark:text-gray-500">
-      {totalTagPosts} post{totalTagPosts !== 1 ? 's' : ''}
-    </p>
   </section>
 
   <section class="max-w-3xl mx-auto px-5">
