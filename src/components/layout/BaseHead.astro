@@ -100,14 +100,15 @@ const imageURL = image?.startsWith('http')
 	} else {
 		window.addEventListener('load', loadPlausible);
 	}
-	function loadPlausible() {
-		const script = document.createElement('script');
-		script.defer = true;
-		script.dataset.domain = 'russ.cloud';
-		script.src = 'https://plausible.io/js/plausible.js';
-		document.head.appendChild(script);
-	}
-</script>
+		function loadPlausible() {
+			const script = document.createElement('script');
+			script.defer = true;
+			script.dataset.domain = 'russ.cloud';
+			script.dataset.api = 'https://plausible.io/api/event';
+			script.src = '/js/plausible.js';
+			document.head.appendChild(script);
+		}
+	</script>
 
 <!-- Critical CSS to ensure header is immediately visible -->
 <style is:inline>
