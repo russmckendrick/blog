@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
 import BaseHead from '../components/layout/BaseHead.astro';
 import Header from '../components/layout/Header.astro';
 import HeaderWrapper from '../components/layout/HeaderWrapper.astro';
@@ -31,17 +30,16 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 <html lang="en">
 	<head>
 		<BaseHead title={pageTitle} description={description} image={image} keywords={keywords} />
-		<ViewTransitions />
 		<slot name="head" />
 	</head>
 	<body class="bg-gray-50 dark:bg-gray-950">
-		<HeaderWrapper autoHide={false} transition:persist="site-header">
+		<HeaderWrapper autoHide={false}>
 			<Header />
 		</HeaderWrapper>
-		<main class="mt-10 sm:mt-14" transition:animate="fade">
+		<main class="mt-10 sm:mt-14">
 			<slot />
 		</main>
-		<Footer transition:persist="site-footer" />
+		<Footer />
 		<script>
 			// Global cleanup for LightGallery when navigating away from pages
 			function cleanupLightGallery() {

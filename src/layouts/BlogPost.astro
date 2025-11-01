@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import { ViewTransitions } from 'astro:transitions';
 import BaseHead from '../components/layout/BaseHead.astro';
 import Footer from '../components/layout/Footer.astro';
 import FormattedDate from '../components/blog/FormattedDate.astro';
@@ -140,13 +139,12 @@ const breadcrumbSchema = createBreadcrumbSchema(
 			author={authorName}
 			keywords={tags}
 		/>
-		<ViewTransitions />
 		<Schema item={blogPostingSchema} />
 		<Schema item={breadcrumbSchema} />
 	</head>
 
 	<body class="bg-gray-50 dark:bg-gray-950">
-		<HeaderWrapper autoHide={false} transition:persist="site-header">
+		<HeaderWrapper autoHide={false}>
 			<Header />
 		</HeaderWrapper>
 		<main class="relative">
@@ -173,7 +171,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 
 			<article class={`relative z-10 ${displayImage ? '-mt-32 sm:-mt-40 lg:-mt-48 xl:-mt-60 2xl:-mt-72' : 'mt-12'}`}>
 				<div class="max-w-4xl 2xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
-					<div class="bg-white/95 dark:bg-gray-900/90 rounded-3xl shadow-2xl shadow-gray-300/40 dark:shadow-black/60 ring-1 ring-gray-200/60 dark:ring-gray-800 backdrop-blur-xl px-6 sm:px-10 xl:px-16 py-10 sm:py-12 xl:py-16" transition:animate="fade">
+					<div class="bg-white/95 dark:bg-gray-900/90 rounded-3xl shadow-2xl shadow-gray-300/40 dark:shadow-black/60 ring-1 ring-gray-200/60 dark:ring-gray-800 backdrop-blur-xl px-6 sm:px-10 xl:px-16 py-10 sm:py-12 xl:py-16">
 						<Breadcrumbs items={breadcrumbItems} />
 
 						<header class="text-center mb-10 space-y-6">
@@ -282,7 +280,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 				</div>
 			</article>
 		</main>
-		<Footer transition:persist="site-footer" />
+		<Footer />
 		<script>
 			import { createLightGallery } from 'astro-lightgallery';
 			import type { LightGallerySettings } from 'lightgallery/lg-settings';
