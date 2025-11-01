@@ -39,6 +39,12 @@ export function getCFImageUrl(
     return imagePath;
   }
 
+  // Skip transformations in local development
+  // This allows npm run dev to work with original images
+  if (import.meta.env.DEV) {
+    return imagePath;
+  }
+
   // Build transformation parameters
   const params: string[] = [];
 

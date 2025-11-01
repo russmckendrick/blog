@@ -27,9 +27,17 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      # Astro build cache removed - no longer needed with Cloudflare Image Transformations!
-      # Images are now transformed on-demand by Cloudflare CDN, not during build.
-      # This dramatically reduces build time from 20+ minutes to 2-3 minutes.
+      - name: 🎨 Restore OpenGraph image cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.astro-og-canvas
+          key: og-canvas-${{ hashFiles('src/content/**/*.md', 'src/content/**/*.mdx') }}
+          restore-keys: |
+            og-canvas-
+
+      # Note: Main Astro image processing cache removed - no longer needed!
+      # Blog post images now use Cloudflare Image Transformations (on-demand CDN processing).
+      # We only cache OpenGraph image generation (astro-og-canvas) which still uses Sharp.
 
       - name: 🏗️ Build site
         run: npm run build

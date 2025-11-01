@@ -71,12 +71,15 @@ See `BUILD_OPTIMIZATION.md` for detailed setup instructions and performance anal
 ### OpenGraph Image Generation
 
 The site automatically generates custom OpenGraph (OG) images for all blog posts using `astro-og-canvas`:
-- **Endpoint**: `src/pages/og/[...route].ts` - Dynamic route that generates OG images
-- **Images**: Generated at build time and saved to `dist/og/[post-slug].png`
+- **Endpoint**: `src/pages/[year]/[month]/[day]/[slug]-og.png.ts` - Dynamic route that generates OG images
+- **Images**: Generated at build time and saved to `dist/[year]/[month]/[day]/[slug]-og.png`
 - **Dimensions**: 1200x630 (standard OG image size)
 - **Design**: Features site logo, gradient background (gray-900 to gray-800), blue accent border, and Inter font family
-- **Integration**: Blog posts automatically reference their OG image in meta tags via the `ogImageSlug` prop
-- **Caching**: Images are cached in `node_modules/.astro-og-canvas` across builds for performance
+- **Component**: `src/components/OpenGraph/OG.tsx` - React component that renders the OG image
+- **Integration**: Blog posts automatically reference their OG image in meta tags via the `ogImagePath` prop
+- **Caching**: Images are cached in `node_modules/.astro-og-canvas` across builds for performance (GitHub Actions cache enabled)
+
+**Important**: OG images use `astro-og-canvas` with Sharp processing at build time. This is separate from blog post images which use Cloudflare Image Transformations. The GitHub Actions workflow caches only the OG canvas output (`node_modules/.astro-og-canvas`), not the main Astro image processing.
 
 The OG images are automatically linked in the HTML meta tags for both OpenGraph and Twitter Card metadata.
 
