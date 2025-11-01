@@ -11,6 +11,7 @@ import { ImageHandler } from './lib/image-handler.js'
 import { BlogPostRenderer } from './lib/blog-post-renderer.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { normalizeText, lookupArtistData, lookupAlbumData } from './lib/text-utils.js'
+import { createStripCollage } from './strip-collage.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -99,6 +100,28 @@ async function main() {
     console.log('Downloading images...')
     await imageHandler.downloadArtistImages(topArtists, collectionInfo.info, artistsFolder)
     await imageHandler.downloadAlbumImages(topAlbums, collectionInfo.info, albumsFolder)
+
+    // Generate collage cover
+    console.log('Generating cover collage...')
+    const srcAssetsFolder = path.join(process.cwd(), 'src', 'assets', `${dateStr}-listened-to-this-week`)
+    await fs.mkdir(srcAssetsFolder, { recursive: true })
+
+    const albumFiles = await fs.readdir(albumsFolder)
+    const albumImagePaths = albumFiles
+      .filter(file => file.endsWith('.jpg') && !file.endsWith('.meta'))
+      .map(file => path.join(albumsFolder, file))
+
+    const coverOutputPath = path.join(srcAssetsFolder, `tunes-cover-${dateStr}-listened-to-this-week.png`)
+
+    // Use the post date as seed for deterministic randomness
+    const dateSeed = new Date(dateStr).getTime()
+    await createStripCollage(albumImagePaths, coverOutputPath, {
+      seed: dateSeed,
+      width: 1400,
+      height: 800
+    })
+
+    console.log(`✅ Cover collage generated: ${coverOutputPath}`)
 
     // Render blog post
     console.log('Rendering blog post...')

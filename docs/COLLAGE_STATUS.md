@@ -1,5 +1,9 @@
 # Tunes Cover Collage Generation - Status & TODO
 
+## 🎉 Integration Complete!
+
+The collage generator has been successfully integrated into the `npm run tunes` workflow. All new tunes posts will automatically generate custom cover collages.
+
 ## What Works ✅
 
 The torn strip collage generator is production-ready with the following behaviour:
@@ -52,20 +56,21 @@ All legacy edge issues resolved. Suggested follow-ups:
 
 ### Integration Tasks 📦
 
-Once edge coverage is fixed:
-
 1. **Integrate into `npm run tunes` workflow**
-   - Modify `scripts/generate-tunes-post.js`
-   - Call `createStripCollage()` after downloading album images
-   - Auto-generate cover for each new tunes post
+   - ✅ Completed: Modified `scripts/generate-tunes-post.js`
+   - ✅ Completed: `createStripCollage()` now called after downloading album images
+   - ✅ Completed: Cover auto-generated for each new tunes post with date-based seed
 
 2. **Update all existing posts**
    - ✅ Completed: regenerated every `tunes-cover-*.png` at 1400×800 with new pipeline.
    - Run pixel-scan guard (once added) before committing future batches.
 
 3. **Add to documentation**
-   - Update `scripts/TUNES_README.md` with collage info
-   - Document cover generation in `CLAUDE.md`
+   - ✅ Completed: Documented in `CLAUDE.md` under "Tunes Blog Post Generator" section
+   - ✅ Completed: Added "Cover Collage Generation" subsection with full details
+   - ✅ Completed: Updated "What It Does" workflow with collage generation step
+   - ✅ Completed: Updated "Output Structure" with cover file location
+   - ✅ Completed: Added `scripts/strip-collage.js` to "Key Files" list
 
 ## Files Involved 📁
 

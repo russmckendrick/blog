@@ -546,13 +546,26 @@ TAVILY_API_KEY=your-key
 1. Fetches weekly listening stats from Last.fm (top 11 artists/albums)
 2. Retrieves album/artist metadata (images, links) from russ.fm collection
 3. AI researches each album and writes engaging blog sections
-4. Downloads high-res artwork to `src/assets/[date]-listened-to-this-week/`
-5. Generates MDX post with LightGallery components in `src/content/tunes/`
+4. Downloads high-res artwork to `public/assets/[date]-listened-to-this-week/{artists,albums}/`
+5. Generates custom cover collage from album artwork (1400×800 PNG)
+6. Generates MDX post with LightGallery components in `src/content/tunes/`
 
 ### Output Structure
 - **Content**: `src/content/tunes/YYYY-MM-DD-listened-to-this-week/index.mdx`
-- **Images**: `src/assets/YYYY-MM-DD-listened-to-this-week/{artists,albums}/`
+- **Images**: `public/assets/YYYY-MM-DD-listened-to-this-week/{artists,albums}/`
+- **Cover**: `src/assets/YYYY-MM-DD-listened-to-this-week/tunes-cover-YYYY-MM-DD-listened-to-this-week.png`
 - **Features**: Frontmatter, artist/album galleries, AI-generated sections, Top N lists with play counts
+
+### Cover Collage Generation
+Each tunes post automatically gets a unique torn-paper strip collage as its cover image:
+- **Dimensions**: 1400×800 PNG (native render, no upscaling)
+- **Style**: Vertical strips with torn edges, slight rotation (±4°), high overlap
+- **Source**: Album artwork only (no tinting, original colors preserved)
+- **Deduplication**: Each album appears exactly once per collage
+- **Deterministic**: Uses post date as seed for consistent regeneration
+- **Dynamic**: Strip width adapts to album count (2-3 albums: wider strips, 9+ albums: narrower strips)
+- **Coverage**: Full edge-to-edge coverage with intelligent seam guards (no black/transparent edges)
+- **Implementation**: `scripts/strip-collage.js` with Sharp image processing
 
 ### Tech Stack
 - **LangChain.js** - AI orchestration
@@ -568,6 +581,7 @@ TAVILY_API_KEY=your-key
 - `scripts/lib/content-generator.js` - AI content (LangChain)
 - `scripts/lib/image-handler.js` - Image downloads
 - `scripts/lib/blog-post-renderer.js` - MDX rendering
+- `scripts/strip-collage.js` - Cover collage generation with torn-paper effect
 
 ## Existing Guidelines
 Additional repository guidelines are documented in `AGENTS.md`, including:
