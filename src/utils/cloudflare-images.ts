@@ -100,7 +100,7 @@ export const CF_IMAGE_PRESETS = {
 
   // Post card thumbnails
   thumbnail: {
-    quality: 85,
+    quality: 65,
     format: 'avif' as const,
     fit: 'cover' as const,
     widths: [400, 600, 800, 1200, 1600]  // Supports up to 800px @ 2x DPR (1600px)
@@ -108,7 +108,7 @@ export const CF_IMAGE_PRESETS = {
 
   // Post card thumbnails (priority/high quality)
   thumbnailPriority: {
-    quality: 90,
+    quality: 70,
     format: 'avif' as const,
     fit: 'cover' as const,
     widths: [400, 600, 800, 1200, 1600]  // High quality for LCP, supports 2x DPR

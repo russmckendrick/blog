@@ -85,14 +85,14 @@ const avatarGlowColor = getAvatarGlowColor();
 						<img
 							src={getCFImageUrl(heroImage, {
 								width: 800,
-								quality: priority ? 90 : 85,
+								quality: priority ? 70 : 65,
 								format: 'avif',
 								fit: 'cover'
 							})}
 							srcset={generateCFSrcSet(
 								heroImage,
 								priority ? CF_IMAGE_PRESETS.thumbnailPriority.widths : CF_IMAGE_PRESETS.thumbnail.widths,
-								priority ? 90 : 85,
+								priority ? 70 : 65,
 							'avif'
 							)}
 							sizes="(min-width: 1024px) 728px, (min-width: 768px) 688px, (min-width: 640px) 600px, (min-width: 400px) 360px, 280px"
@@ -170,11 +170,11 @@ const avatarGlowColor = getAvatarGlowColor();
 						<img
 							src={getCFImageUrl(heroImage, {
 								width: 384,
-								quality: 85,
+								quality: 65,
 								format: 'avif',
 								fit: 'cover'
 							})}
-							srcset={generateCFSrcSet(heroImage, [256, 320, 384, 512], 85, 'avif')}
+							srcset={generateCFSrcSet(heroImage, [256, 320, 384, 512], 65, 'avif')}
 							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 100vw"
 							alt={alt}
 							loading="lazy"
