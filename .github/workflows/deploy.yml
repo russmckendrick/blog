@@ -40,7 +40,9 @@ jobs:
       # We only cache OpenGraph image generation (astro-og-canvas) which still uses Sharp.
 
       - name: 🏗️ Build site
-        run: npm run build
+        run: |
+          mkdir -p node_modules/.astro-og-canvas
+          npm run build
         env:
           NODE_ENV: production
 
