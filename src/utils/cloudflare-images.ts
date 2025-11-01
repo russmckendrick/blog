@@ -101,7 +101,7 @@ export const CF_IMAGE_PRESETS = {
     quality: 80,
     format: 'auto' as const,
     fit: 'cover' as const,
-    widths: [320, 400, 640, 728]
+    widths: [320, 400, 480]  // Matches actual display: 385px max
   },
 
   // Post card thumbnails (priority/high quality)
@@ -109,7 +109,7 @@ export const CF_IMAGE_PRESETS = {
     quality: 85,
     format: 'auto' as const,
     fit: 'cover' as const,
-    widths: [320, 400, 640, 728]
+    widths: [320, 400, 640, 768]  // Priority card is larger
   },
 
   // Gallery/lightbox images (high quality)

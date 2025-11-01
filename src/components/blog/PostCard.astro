@@ -74,7 +74,7 @@ const avatarGlowColor = getAvatarGlowColor();
 					<figure class="relative overflow-hidden">
 						<img
 							src={getCFImageUrl(heroImage, {
-								width: 640,
+								width: priority ? 640 : 480,
 								quality: priority ? 85 : 80,
 								format: 'auto',
 								fit: 'cover'
