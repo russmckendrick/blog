@@ -263,13 +263,13 @@ export const EXCLUDED_AVATARS = [
 // Default avatar mappings for tags
 // Used when no avatar is specified in post frontmatter
 export const TAG_AVATAR_MAP: Record<string, string> = {
-  "ai": "ai.svg",
+  "ai": "nerd.svg",
   "ansible": "ansible.svg",
   "author": "book.svg",
   "automation": "devops.svg",
   "aws": "cloud.svg",
   "azure": "azure.svg",
-  "blog": "coffee.svg",
+  "blog": "coffee-02.svg",
   "book": "book.svg",
   "cloud": "cloud.svg",
   "code": "terminal.svg",
@@ -278,18 +278,18 @@ export const TAG_AVATAR_MAP: Record<string, string> = {
   "devops": "devops.svg",
   "docker": "docker.svg",
   "github": "github.svg",
-  "infrastructure-as-code": "data.svg",
+  "infrastructure-as-code": "founder.svg",
   "kubernetes": "docker.svg",
-  "life": "coffee-02.svg",
+  "life": "watch.svg",
   "linux": "terminal.svg",
   "listened": "headphones.svg",
-  "macos": "laptop-01.svg",
-  "packer": "data.svg",
+  "macos": "laptop-02.svg",
+  "packer": "hoodie-down.svg",
   "podman": "docker.svg",
   "python": "python.svg",
   "security": "hacker.svg",
   "terraform": "terminal.svg",
-  "tools": "keyboard.svg",
+  "tools": "cables.svg",
   "vinyl": "record-01.svg",
-  "web": "network.svg"
+  "web": "keyboard.svg"
 };
