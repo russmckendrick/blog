@@ -109,7 +109,7 @@ export const CF_IMAGE_PRESETS = {
     quality: 85,
     format: 'auto' as const,
     fit: 'cover' as const,
-    widths: [320, 400, 640, 768]  // Priority card is larger
+    widths: [320, 400, 640]  // Priority card matches actual 640px display
   },
 
   // Gallery/lightbox images (high quality)
