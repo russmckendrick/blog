@@ -84,18 +84,18 @@ const avatarGlowColor = getAvatarGlowColor();
 					<figure class="relative overflow-hidden">
 						<img
 							src={getCFImageUrl(heroImage, {
-								width: 680,
-								quality: priority ? 80 : 70,
+								width: 800,
+								quality: priority ? 90 : 85,
 								format: 'avif',
 								fit: 'cover'
 							})}
 							srcset={generateCFSrcSet(
 								heroImage,
 								priority ? CF_IMAGE_PRESETS.thumbnailPriority.widths : CF_IMAGE_PRESETS.thumbnail.widths,
-								priority ? 85 : 80,
+								priority ? 90 : 85,
 							'avif'
 							)}
-							sizes={priority ? "(min-width: 1024px) 640px, (min-width: 768px) 480px, (min-width: 640px) 480px, (min-width: 400px) 400px, 320px" : "(min-width: 1024px) 640px, (min-width: 640px) 480px, (min-width: 400px) 400px, 320px"}
+							sizes="(min-width: 1024px) 728px, (min-width: 768px) 688px, (min-width: 640px) 600px, (min-width: 400px) 360px, 280px"
 							alt={alt}
 							loading={priority ? "eager" : "lazy"}
 							fetchpriority={priority ? "high" : "low"}
@@ -169,13 +169,13 @@ const avatarGlowColor = getAvatarGlowColor();
 					<figure class="relative overflow-hidden sm:w-48 md:w-56 lg:w-64 flex-shrink-0">
 						<img
 							src={getCFImageUrl(heroImage, {
-								width: 288,
-								quality: 80,
+								width: 384,
+								quality: 85,
 								format: 'avif',
 								fit: 'cover'
 							})}
-							srcset={generateCFSrcSet(heroImage, [192, 224, 256, 288], 80, 'avif')}
-							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 92vw"
+							srcset={generateCFSrcSet(heroImage, [256, 320, 384, 512], 85, 'avif')}
+							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 100vw"
 							alt={alt}
 							loading="lazy"
 							fetchpriority="low"
