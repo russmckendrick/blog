@@ -97,6 +97,8 @@ const avatarGlowColor = getAvatarGlowColor();
 							)}
 							sizes="(min-width: 1024px) 728px, (min-width: 768px) 688px, (min-width: 640px) 600px, (min-width: 400px) 360px, 280px"
 							alt={alt}
+							width="1600"
+							height="900"
 							loading={priority ? "eager" : "lazy"}
 							fetchpriority={priority ? "high" : "low"}
 							class="w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
@@ -177,6 +179,8 @@ const avatarGlowColor = getAvatarGlowColor();
 							srcset={generateCFSrcSet(heroImage, [256, 320, 384, 512], 60, 'avif')}
 							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 100vw"
 							alt={alt}
+							width="512"
+							height="384"
 							loading="lazy"
 							fetchpriority="low"
 							class="w-full h-48 sm:h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"

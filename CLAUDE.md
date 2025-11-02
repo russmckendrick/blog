@@ -593,3 +593,4 @@ Additional repository guidelines are documented in `AGENTS.md`, including:
   - src width: 640px → 480px (matches regular cards)
   - sizes attribute: Changed from 640px at desktop to 400px at desktop
   - srcset widths: Removed 640w, now uses [320w, 400w, 480w] (same as regular cards)
+- Add details about the sizing
