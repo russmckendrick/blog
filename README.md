@@ -108,10 +108,31 @@ npm run post
 
 ## 📚 Documentation
 
-- [CLAUDE.md](./CLAUDE.md) - Detailed development guidelines and architecture overview
-- [docs/EMBED_USAGE.md](./docs/EMBED_USAGE.md) - Complete guide to all available embed components
-- [docs/TUNES_README.md](./docs/TUNES_README.md) - Details on the "Weekly Tunes" generator
-- [docs/migrations](./docs/migrations) - Notes on the migrations ran when moving from Hugo
+Comprehensive documentation is available in the [docs/](./docs/) folder:
+
+### Quick Links
+
+- **[CLAUDE.md](./CLAUDE.md)** - Development guide for Claude Code (detailed architecture and workflows)
+- **[docs/README.md](./docs/README.md)** - Documentation index and navigation
+
+### User Guides
+
+- **[Getting Started](./docs/guides/getting-started.md)** - Setup and development environment
+- **[Creating Posts](./docs/guides/creating-posts.md)** - How to write and publish blog posts
+- **[Using Embeds](./docs/guides/using-embeds.md)** - Embed components quick reference
+- **[Tunes Generator](./docs/guides/tunes-generator.md)** - Automated weekly music posts
+
+### Architecture
+
+- **[System Overview](./docs/architecture/overview.md)** - Architecture with diagrams
+- **[Image Delivery](./docs/architecture/image-delivery.md)** - Cloudflare Image Transformations
+- **[SEO Implementation](./docs/architecture/seo-implementation.md)** - SEO strategy and structured data
+
+### Reference
+
+- **[Embed Components](./docs/reference/embed-components.md)** - Complete embed component API
+- **[Frontmatter Fields](./docs/reference/frontmatter-fields.md)** - Blog post schema reference
+- **[LightGallery Meta](./docs/reference/lightgallery-meta.md)** - Image caption system
 
 ## 👀 Want to learn more?
 
