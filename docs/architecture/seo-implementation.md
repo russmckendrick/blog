@@ -25,10 +25,10 @@ graph TD
 
     B --> M[OG Image]
     M --> N[astro-og-canvas]
-    N --> O[Generated 1200x630 PNG]
+    N --> O["Generated 1200x630 PNG"]
 
     B --> P[Sitemap]
-    P --> Q[@astrojs/sitemap]
+    P --> Q["@astrojs/sitemap"]
 
     style C fill:#9cf,stroke:#333
     style H fill:#fcf,stroke:#333
