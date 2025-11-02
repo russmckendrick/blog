@@ -24,9 +24,11 @@ This will:
 title: "Post Title"                          # Required
 description: "SEO-optimized description"     # Required
 pubDate: 2025-11-02                          # Required
-tags: ["docker", "kubernetes", "devops"]     # Required
+tags: ["docker", "kubernetes", "devops"]     # Required (array, 2-5 recommended)
 ---
 ```
+
+**Note**: See **[Using Tags](./using-tags.md)** for complete tag reference with all 30+ available tags.
 
 ### Optional Fields
 
@@ -542,6 +544,7 @@ npm run astro -- sync
 
 ## Next Steps
 
+- **[Using Tags](./using-tags.md)** - Complete tag system reference (30+ tags)
 - **[Using Embeds](./using-embeds.md)** - Comprehensive embed component guide
 - **[Embed Reference](../reference/embed-components.md)** - Full component API
 - **[SEO Implementation](../architecture/seo-implementation.md)** - SEO best practices

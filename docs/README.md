@@ -15,6 +15,7 @@ User-facing guides for common tasks and workflows:
 
 - **[Getting Started](./guides/getting-started.md)** - Set up your development environment
 - **[Creating Posts](./guides/creating-posts.md)** - Write and publish blog posts
+- **[Using Tags](./guides/using-tags.md)** - Complete tag system reference (30+ tags)
 - **[Using Embed Components](./guides/using-embeds.md)** - Add media, callouts, and interactive elements
 - **[Tunes Generator](./guides/tunes-generator.md)** - Generate automated weekly music posts
 

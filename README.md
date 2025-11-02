@@ -119,6 +119,7 @@ Comprehensive documentation is available in the [docs/](./docs/) folder:
 
 - **[Getting Started](./docs/guides/getting-started.md)** - Setup and development environment
 - **[Creating Posts](./docs/guides/creating-posts.md)** - How to write and publish blog posts
+- **[Using Tags](./docs/guides/using-tags.md)** - Complete tag system reference (30+ tags)
 - **[Using Embeds](./docs/guides/using-embeds.md)** - Embed components quick reference
 - **[Tunes Generator](./docs/guides/tunes-generator.md)** - Automated weekly music posts
 
