@@ -4,8 +4,8 @@ import FormattedDate from './FormattedDate.astro';
 import { getPostUrl } from '../../utils/url.ts';
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
 import { getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } from '../../utils/tags';
-import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../../utils/cloudflare-images';
-import { AI_AUTHOR, TAG_METADATA, TAG_AVATAR_MAP } from '../../consts';
+import { getCFImageUrl, generateCFSrcSet } from '../../utils/cloudflare-images';
+import { AI_AUTHOR, TAG_METADATA, TAG_AVATAR_MAP, CF_IMAGE_PRESETS } from '../../consts';
 
 interface Props {
 	post: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
@@ -85,14 +85,14 @@ const avatarGlowColor = getAvatarGlowColor();
 						<img
 							src={getCFImageUrl(heroImage, {
 								width: 800,
-								quality: priority ? 65 : 60,
+								quality: priority ? CF_IMAGE_PRESETS.thumbnailPriority.quality : CF_IMAGE_PRESETS.thumbnail.quality,
 								format: 'avif',
 								fit: 'cover'
 							})}
 							srcset={generateCFSrcSet(
 								heroImage,
 								priority ? CF_IMAGE_PRESETS.thumbnailPriority.widths : CF_IMAGE_PRESETS.thumbnail.widths,
-								priority ? 65 : 60,
+								priority ? CF_IMAGE_PRESETS.thumbnailPriority.quality : CF_IMAGE_PRESETS.thumbnail.quality,
 							'avif'
 							)}
 							sizes="(min-width: 1024px) 728px, (min-width: 768px) 688px, (min-width: 640px) 600px, (min-width: 400px) 360px, 280px"
@@ -172,11 +172,11 @@ const avatarGlowColor = getAvatarGlowColor();
 						<img
 							src={getCFImageUrl(heroImage, {
 								width: 384,
-								quality: 60,
+								quality: CF_IMAGE_PRESETS.thumbnailHorizontal.quality,
 								format: 'avif',
 								fit: 'cover'
 							})}
-							srcset={generateCFSrcSet(heroImage, [256, 320, 384, 512], 60, 'avif')}
+							srcset={generateCFSrcSet(heroImage, CF_IMAGE_PRESETS.thumbnailHorizontal.widths, CF_IMAGE_PRESETS.thumbnailHorizontal.quality, 'avif')}
 							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 100vw"
 							alt={alt}
 							width="512"

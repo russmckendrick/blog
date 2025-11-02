@@ -293,3 +293,60 @@ export const TAG_AVATAR_MAP: Record<string, string> = {
   "vinyl": "record-01.svg",
   "web": "keyboard.svg"
 };
+
+// Cloudflare Image Transformation Presets
+// Single source of truth for all image quality and size settings
+export const CF_IMAGE_PRESETS = {
+  // Default quality for all images
+  default: {
+    quality: 85
+  },
+
+  // Hero images for blog posts
+  hero: {
+    quality: 85,
+    format: 'avif' as const,
+    fit: 'cover' as const,
+    widths: [640, 1024, 1536, 2048]
+  },
+
+  // Post card thumbnails (vertical layout)
+  thumbnail: {
+    quality: 50,
+    format: 'avif' as const,
+    fit: 'cover' as const,
+    widths: [400, 600, 800, 1200, 1600]  // Supports up to 800px @ 2x DPR (1600px)
+  },
+
+  // Post card thumbnails (vertical layout, priority/high quality for LCP)
+  thumbnailPriority: {
+    quality: 60,
+    format: 'avif' as const,
+    fit: 'cover' as const,
+    widths: [400, 600, 800, 1200, 1600]  // High quality for LCP, supports 2x DPR
+  },
+
+  // Post card thumbnails (horizontal layout)
+  thumbnailHorizontal: {
+    quality: 50,
+    format: 'avif' as const,
+    fit: 'cover' as const,
+    widths: [256, 320, 384, 512]
+  },
+
+  // Gallery/lightbox images (high quality)
+  gallery: {
+    quality: 90,
+    format: 'avif' as const,
+    fit: 'scale-down' as const,
+    widths: [1024, 1536, 2048, 2560]
+  },
+
+  // Avatar images
+  avatar: {
+    quality: 85,
+    format: 'auto' as const,
+    fit: 'cover' as const,
+    widths: [40, 48, 80, 96, 160, 192]
+  }
+};

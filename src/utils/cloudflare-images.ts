@@ -8,6 +8,8 @@
  * Cloudflare adapter's imageService. Works with fully static sites.
  */
 
+import { CF_IMAGE_PRESETS } from '../consts';
+
 export interface CFImageOptions {
   width?: number;
   height?: number;
@@ -59,9 +61,9 @@ export function getCFImageUrl(
   if (options.onerror) params.push(`onerror=${options.onerror}`);
   if (options.metadata) params.push(`metadata=${options.metadata}`);
 
-  // Default to auto format and quality 85 if not specified
+  // Default to auto format and default quality if not specified
   if (!options.format) params.push('format=auto');
-  if (!options.quality) params.push('quality=85');
+  if (!options.quality) params.push(`quality=${CF_IMAGE_PRESETS.default.quality}`);
 
   const paramsString = params.join(',');
   return `/cdn-cgi/image/${paramsString}${imagePath}`;
@@ -71,14 +73,14 @@ export function getCFImageUrl(
  * Generate responsive srcset for Cloudflare images
  * @param src - Image path
  * @param widths - Array of widths to generate
- * @param quality - Image quality (default: 85)
+ * @param quality - Image quality (default: CF_IMAGE_PRESETS.default.quality)
  * @param format - Image format (default: 'auto')
  * @returns srcset string
  */
 export function generateCFSrcSet(
   src: string | { src: string },
   widths: number[],
-  quality: number = 85,
+  quality: number = CF_IMAGE_PRESETS.default.quality,
   format: 'auto' | 'webp' | 'avif' | 'jpeg' | 'baseline-jpeg' | 'json' = 'auto'
 ): string {
   return widths
@@ -86,47 +88,5 @@ export function generateCFSrcSet(
     .join(', ');
 }
 
-/**
- * Preset configurations for common use cases
- */
-export const CF_IMAGE_PRESETS = {
-  // Hero images for blog posts
-  hero: {
-    quality: 85,
-    format: 'avif' as const,
-    fit: 'cover' as const,
-    widths: [640, 1024, 1536, 2048]
-  },
-
-  // Post card thumbnails
-  thumbnail: {
-    quality: 60,
-    format: 'avif' as const,
-    fit: 'cover' as const,
-    widths: [400, 600, 800, 1200, 1600]  // Supports up to 800px @ 2x DPR (1600px)
-  },
-
-  // Post card thumbnails (priority/high quality)
-  thumbnailPriority: {
-    quality: 65,
-    format: 'avif' as const,
-    fit: 'cover' as const,
-    widths: [400, 600, 800, 1200, 1600]  // High quality for LCP, supports 2x DPR
-  },
-
-  // Gallery/lightbox images (high quality)
-  gallery: {
-    quality: 90,
-    format: 'avif' as const,
-    fit: 'scale-down' as const,
-    widths: [1024, 1536, 2048, 2560]
-  },
-
-  // Avatar images
-  avatar: {
-    quality: 85,
-    format: 'auto' as const,
-    fit: 'cover' as const,
-    widths: [40, 48, 80, 96, 160, 192]
-  }
-};
+// Re-export CF_IMAGE_PRESETS from consts for backward compatibility
+export { CF_IMAGE_PRESETS };
