@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import { getPostUrl } from '../../utils/url.ts';
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
-import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../../utils/tags';
+import { getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } from '../../utils/tags';
 import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../../utils/cloudflare-images';
 import { AI_AUTHOR, TAG_METADATA, TAG_AVATAR_MAP } from '../../consts';
 
@@ -39,8 +39,8 @@ const buildAvatarPath = (avatarName: string | undefined) => {
 const getDefaultAvatar = () => {
 	if (isAIAuthor) return AI_AUTHOR.avatar;
 	const primaryTag = tags[0];
-	if (primaryTag && TAG_AVATAR_MAP[primaryTag]) {
-		return `/images/avatars/${TAG_AVATAR_MAP[primaryTag]}`;
+	if (primaryTag && TAG_AVATAR_MAP[normalizeTagSlug(primaryTag)]) {
+		return `/images/avatars/${TAG_AVATAR_MAP[normalizeTagSlug(primaryTag)]}`;
 	}
 	return '/images/avatar.svg';
 };

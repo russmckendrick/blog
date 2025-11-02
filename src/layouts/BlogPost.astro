@@ -13,7 +13,7 @@ import TableOfContents from '../components/blog/TableOfContents.astro';
 import ReadingTime from '../components/blog/ReadingTime.astro';
 import RelatedPosts from '../components/blog/RelatedPosts.astro';
 import Breadcrumbs from '../components/navigation/Breadcrumbs.astro';
-import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../utils/tags';
+import { getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } from '../utils/tags';
 import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, TAG_METADATA, TAG_AVATAR_MAP } from '../consts';
 import { Schema } from 'astro-seo-schema';
 import { createBlogPostingSchema, createBreadcrumbSchema } from '../utils/schema';
@@ -76,8 +76,8 @@ const buildAvatarPath = (avatarName: string | undefined) => {
 const getDefaultAvatar = () => {
 	if (isTune) return AI_AUTHOR.avatar;
 	const primaryTag = tags[0];
-	if (primaryTag && TAG_AVATAR_MAP[primaryTag]) {
-		return `/images/avatars/${TAG_AVATAR_MAP[primaryTag]}`;
+	if (primaryTag && TAG_AVATAR_MAP[normalizeTagSlug(primaryTag)]) {
+		return `/images/avatars/${TAG_AVATAR_MAP[normalizeTagSlug(primaryTag)]}`;
 	}
 	return '/images/avatar.svg';
 };
