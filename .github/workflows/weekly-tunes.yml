@@ -67,6 +67,33 @@ jobs:
 
             echo "Post date: $POST_DATE"
 
+            # Format the date for PR title (e.g., "2025-11-02" -> "Week of Nov 2, 2025")
+            YEAR=$(echo "$POST_DATE" | cut -d'-' -f1)
+            MONTH=$(echo "$POST_DATE" | cut -d'-' -f2)
+            DAY=$(echo "$POST_DATE" | cut -d'-' -f3 | sed 's/-listened-to-this-week//')
+
+            # Convert month number to name
+            case $MONTH in
+              01) MONTH_NAME="Jan" ;;
+              02) MONTH_NAME="Feb" ;;
+              03) MONTH_NAME="Mar" ;;
+              04) MONTH_NAME="Apr" ;;
+              05) MONTH_NAME="May" ;;
+              06) MONTH_NAME="Jun" ;;
+              07) MONTH_NAME="Jul" ;;
+              08) MONTH_NAME="Aug" ;;
+              09) MONTH_NAME="Sep" ;;
+              10) MONTH_NAME="Oct" ;;
+              11) MONTH_NAME="Nov" ;;
+              12) MONTH_NAME="Dec" ;;
+            esac
+
+            # Remove leading zero from day
+            DAY=$(echo $DAY | sed 's/^0//')
+
+            PR_TITLE="🎵 Week of ${MONTH_NAME} ${DAY}, ${YEAR}: ${TITLE}"
+            echo "PR_TITLE=${PR_TITLE}" >> "$GITHUB_OUTPUT"
+
             # Count albums and artists
             ALBUM_COUNT=$(find public/assets/${POST_DATE}/albums -name "*.jpg" 2>/dev/null | wc -l | tr -d ' ')
             ARTIST_COUNT=$(find public/assets/${POST_DATE}/artists -name "*.jpg" 2>/dev/null | wc -l | tr -d ' ')
@@ -105,6 +132,7 @@ jobs:
             } >> "$GITHUB_OUTPUT"
           else
             echo "No tunes post found, using fallback message"
+            echo 'PR_TITLE=🤖 Add weekly listened to blog post' >> "$GITHUB_OUTPUT"
             echo 'PR_BODY=This week, I have mostly been listening to...' >> "$GITHUB_OUTPUT"
           fi
 
@@ -112,8 +140,8 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
-          commit-message: "🤖 Add weekly listened to blog post"
-          title: "🤖 Add weekly listened to blog post"
+          commit-message: "${{ steps.pr_summary.outputs.PR_TITLE }}"
+          title: "${{ steps.pr_summary.outputs.PR_TITLE }}"
           body: ${{ steps.pr_summary.outputs.PR_BODY }}
           branch: "weekly-listened-to-blog-post"
           branch-suffix: timestamp
