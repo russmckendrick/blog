@@ -9,8 +9,8 @@ const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
 const personSchema = createPersonSchema(siteUrl);
 const organizationSchema = createOrganizationSchema(siteUrl);
 
-// Select a random avatar from the available avatars
-const availableAvatars = getAvailableAvatars();
+// Select a random SVG avatar from the available avatars
+const availableAvatars = getAvailableAvatars().filter(avatar => avatar.endsWith('.svg'));
 const randomAvatar = availableAvatars[Math.floor(Math.random() * availableAvatars.length)];
 const avatarPath = `/images/avatars/${randomAvatar}`;
 ---
