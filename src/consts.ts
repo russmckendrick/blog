@@ -263,7 +263,7 @@ export const EXCLUDED_AVATARS = [
 // Default avatar mappings for tags
 // Used when no avatar is specified in post frontmatter
 export const TAG_AVATAR_MAP: Record<string, string> = {
-  "ai": "nerd.svg",
+  "ai": "ai.svg",
   "ansible": "ansible.svg",
   "author": "book.svg",
   "automation": "devops.svg",
@@ -281,7 +281,7 @@ export const TAG_AVATAR_MAP: Record<string, string> = {
   "infrastructure-as-code": "founder.svg",
   "kubernetes": "docker.svg",
   "life": "watch.svg",
-  "linux": "terminal.svg",
+  "linux": "linux.svg",
   "listened": "headphones.svg",
   "macos": "laptop-02.svg",
   "packer": "hoodie-down.svg",
