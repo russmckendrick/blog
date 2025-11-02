@@ -44,53 +44,67 @@ jobs:
       - name: "📝 Generate PR summary"
         id: pr_summary
         run: |
-          # Find the generated MDX file
-          TUNES_POST=$(find src/content/tunes -name "index.mdx" -type f | sort -r | head -1)
+          # Find the generated MDX file (either index.mdx in a directory or direct .mdx file)
+          TUNES_POST=$(find src/content/tunes -name "*-listened-to-this-week.mdx" -o -name "index.mdx" -path "*/content/tunes/*-listened-to-this-week/*" | sort -r | head -1)
 
           if [ -n "$TUNES_POST" ]; then
+            echo "Found tunes post: $TUNES_POST"
+
             # Extract title and description from frontmatter
             TITLE=$(grep "^title:" "$TUNES_POST" | sed 's/^title: *"//' | sed 's/"$//')
             DESCRIPTION=$(grep "^description:" "$TUNES_POST" | sed 's/^description: *"//' | sed 's/"$//')
 
-            # Extract date from filename
-            POST_DIR=$(dirname "$TUNES_POST")
-            POST_DATE=$(basename "$POST_DIR")
+            # Extract date from filename/directory
+            if [[ "$TUNES_POST" == *"/index.mdx" ]]; then
+              # It's in a directory structure
+              POST_DIR=$(dirname "$TUNES_POST")
+              POST_DATE=$(basename "$POST_DIR")
+            else
+              # It's a direct file, extract date from filename
+              POST_FILE=$(basename "$TUNES_POST")
+              POST_DATE=$(echo "$POST_FILE" | sed 's/\.mdx$//')
+            fi
+
+            echo "Post date: $POST_DATE"
 
             # Count albums and artists
             ALBUM_COUNT=$(find public/assets/${POST_DATE}/albums -name "*.jpg" 2>/dev/null | wc -l | tr -d ' ')
             ARTIST_COUNT=$(find public/assets/${POST_DATE}/artists -name "*.jpg" 2>/dev/null | wc -l | tr -d ' ')
 
-            # Extract top albums from the post (look for ### lines that aren't "Introduction" or section headers)
-            TOP_ALBUMS=$(grep "^### " "$TUNES_POST" | grep -v "Introduction" | grep -v "Top Albums" | grep -v "Top Artists" | head -5 | sed 's/^### /- /')
+            echo "Found $ALBUM_COUNT albums and $ARTIST_COUNT artists"
+
+            # Extract album sections (## headers, excluding the stats sections)
+            ALBUMS=$(grep "^## " "$TUNES_POST" | grep -v "Top Artists" | grep -v "Top Albums" | head -5 | sed 's/^## /- /' | sed 's/ [🎵🎤🎶🎧🌌💿🎸🎭🧘‍♂️].*$//')
 
             # Build PR body
-            cat << EOF > pr_body.md
+            cat << 'EOF' > pr_body.md
           ## 🎵 This Week, I Have Mostly Been Listening To...
 
-          **${TITLE}**
-
-          ${DESCRIPTION}
-
-          ### 📊 Stats
-          - 🎸 **Artists featured**: ${ARTIST_COUNT}
-          - 💿 **Albums covered**: ${ALBUM_COUNT}
-          - 📅 **Week**: ${POST_DATE}
-
-          ### 🎧 Top Albums Preview
-          ${TOP_ALBUMS}
-
-          ---
-
-          🤖 *Auto-generated weekly listening post from Last.fm data*
           EOF
+            echo "**${TITLE}**" >> pr_body.md
+            echo "" >> pr_body.md
+            echo "${DESCRIPTION}" >> pr_body.md
+            echo "" >> pr_body.md
+            echo "### 📊 Stats" >> pr_body.md
+            echo "- 🎸 **Artists featured**: ${ARTIST_COUNT}" >> pr_body.md
+            echo "- 💿 **Albums covered**: ${ALBUM_COUNT}" >> pr_body.md
+            echo "- 📅 **Week**: ${POST_DATE}" >> pr_body.md
+            echo "" >> pr_body.md
+            echo "### 🎧 Top Albums This Week" >> pr_body.md
+            echo "${ALBUMS}" >> pr_body.md
+            echo "" >> pr_body.md
+            echo "---" >> pr_body.md
+            echo "" >> pr_body.md
+            echo "🤖 *Auto-generated weekly listening post from Last.fm data*" >> pr_body.md
 
             # Save to output
             {
               echo 'PR_BODY<<EOF'
               cat pr_body.md
-              echo EOF
+              echo 'EOF'
             } >> "$GITHUB_OUTPUT"
           else
+            echo "No tunes post found, using fallback message"
             echo 'PR_BODY=This week, I have mostly been listening to...' >> "$GITHUB_OUTPUT"
           fi
 
