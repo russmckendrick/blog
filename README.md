@@ -138,3 +138,8 @@ Comprehensive documentation is available in the [docs/](./docs/) folder:
 ## 👀 Want to learn more?
 
 Check out [Astro documentation](https://docs.astro.build) for more information about the framework.
+
+## Build stats
+
+[![Build and Deploy to Cloudflare Workers](https://github.com/russmckendrick/blog/actions/workflows/deploy.yml/badge.svg)](https://github.com/russmckendrick/blog/actions/workflows/deploy.yml)
+[![Generate Weekly Listened to Blog Post](https://github.com/russmckendrick/blog/actions/workflows/weekly-tunes.yml/badge.svg)](https://github.com/russmckendrick/blog/actions/workflows/weekly-tunes.yml)
