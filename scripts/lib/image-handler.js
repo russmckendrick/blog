@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { promises as fs } from 'fs'
 import path from 'path'
-import { normalizeForFilename, lookupArtistData, lookupAlbumData } from './text-utils.js'
+import { normalizeForFilename, lookupArtistData, lookupAlbumData, isVariousArtists } from './text-utils.js'
 
 export class ImageHandler {
 
@@ -26,6 +26,12 @@ export class ImageHandler {
   async downloadArtistImages(topArtists, collectionInfo, artistsFolder) {
     console.log('Downloading artist images...')
     for (const [artist] of topArtists) {
+      // Skip "Various Artists" entries
+      if (isVariousArtists(artist)) {
+        console.log(`  ⊘ Skipping "Various Artists": ${artist}`)
+        continue
+      }
+
       const artistData = lookupArtistData(artist, collectionInfo)
       if (artistData?.image) {
         await this.downloadImage(artistData.image, artistsFolder, artist)

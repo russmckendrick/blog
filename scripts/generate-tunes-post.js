@@ -10,7 +10,7 @@ import { ContentGenerator } from './lib/content-generator.js'
 import { ImageHandler } from './lib/image-handler.js'
 import { BlogPostRenderer } from './lib/blog-post-renderer.js'
 import { ConfigLoader } from './lib/config-loader.js'
-import { normalizeText, lookupArtistData, lookupAlbumData } from './lib/text-utils.js'
+import { normalizeText, lookupArtistData, lookupAlbumData, isVariousArtists } from './lib/text-utils.js'
 import { createStripCollage } from './strip-collage.js'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -75,8 +75,15 @@ async function main() {
 
     // Process data
     console.log('Processing artist and album data...')
-    const topArtists = processArtistData(artistData, collectionInfo.originalCases, debugMode ? 1 : numberOfItems)
+    let topArtists = processArtistData(artistData, collectionInfo.originalCases, debugMode ? 1 : numberOfItems)
     const topAlbums = processAlbumData(albumData, collectionInfo.originalCases, debugMode ? 1 : numberOfItems)
+
+    // Filter out "Various Artists" from the top artists list
+    const beforeFilter = topArtists.length
+    topArtists = topArtists.filter(([artist]) => !isVariousArtists(artist))
+    if (beforeFilter > topArtists.length) {
+      console.log(`Filtered out ${beforeFilter - topArtists.length} "Various Artists" entries`)
+    }
 
     // Print links for verification
     printLinks(collectionInfo.info, topArtists, topAlbums)

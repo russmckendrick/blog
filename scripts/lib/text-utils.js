@@ -13,6 +13,21 @@ export function removeArticle(text) {
 }
 
 /**
+ * Check if an artist name is a variation of "Various Artists"
+ */
+export function isVariousArtists(artist) {
+  if (!artist) return false
+  const normalized = normalizeText(artist)
+  const variousPatterns = [
+    'various artists',
+    'various artitsts', // common typo
+    'various',
+    'va'
+  ]
+  return variousPatterns.includes(normalized)
+}
+
+/**
  * Normalize text for filenames - convert special characters to ASCII equivalents
  */
 export function normalizeForFilename(text) {
