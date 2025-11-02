@@ -25,7 +25,7 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: 🎨 Restore OpenGraph image cache
         uses: actions/cache@v4
