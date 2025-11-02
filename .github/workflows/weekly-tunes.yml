@@ -20,7 +20,7 @@ jobs:
           cache: 'npm'
 
       - name: "🦾 Install dependencies"
-        run: npm ci
+        run: npm ci || (npm install --package-lock-only && npm ci)
 
       - name: "🏃‍♂️ Run the script to generate blog post"
         env:
@@ -41,12 +41,65 @@ jobs:
             echo "No weekly folder found to optimize"
           fi
 
+      - name: "📝 Generate PR summary"
+        id: pr_summary
+        run: |
+          # Find the generated MDX file
+          TUNES_POST=$(find src/content/tunes -name "index.mdx" -type f | sort -r | head -1)
+
+          if [ -n "$TUNES_POST" ]; then
+            # Extract title and description from frontmatter
+            TITLE=$(grep "^title:" "$TUNES_POST" | sed 's/^title: *"//' | sed 's/"$//')
+            DESCRIPTION=$(grep "^description:" "$TUNES_POST" | sed 's/^description: *"//' | sed 's/"$//')
+
+            # Extract date from filename
+            POST_DIR=$(dirname "$TUNES_POST")
+            POST_DATE=$(basename "$POST_DIR")
+
+            # Count albums and artists
+            ALBUM_COUNT=$(find public/assets/${POST_DATE}/albums -name "*.jpg" 2>/dev/null | wc -l | tr -d ' ')
+            ARTIST_COUNT=$(find public/assets/${POST_DATE}/artists -name "*.jpg" 2>/dev/null | wc -l | tr -d ' ')
+
+            # Extract top albums from the post (look for ### lines that aren't "Introduction" or section headers)
+            TOP_ALBUMS=$(grep "^### " "$TUNES_POST" | grep -v "Introduction" | grep -v "Top Albums" | grep -v "Top Artists" | head -5 | sed 's/^### /- /')
+
+            # Build PR body
+            cat << EOF > pr_body.md
+          ## 🎵 This Week, I Have Mostly Been Listening To...
+
+          **${TITLE}**
+
+          ${DESCRIPTION}
+
+          ### 📊 Stats
+          - 🎸 **Artists featured**: ${ARTIST_COUNT}
+          - 💿 **Albums covered**: ${ALBUM_COUNT}
+          - 📅 **Week**: ${POST_DATE}
+
+          ### 🎧 Top Albums Preview
+          ${TOP_ALBUMS}
+
+          ---
+
+          🤖 *Auto-generated weekly listening post from Last.fm data*
+          EOF
+
+            # Save to output
+            {
+              echo 'PR_BODY<<EOF'
+              cat pr_body.md
+              echo EOF
+            } >> "$GITHUB_OUTPUT"
+          else
+            echo 'PR_BODY=This week, I have mostly been listening to...' >> "$GITHUB_OUTPUT"
+          fi
+
       - name: "🚨 Create Pull Request"
         uses: peter-evans/create-pull-request@v7
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           commit-message: "🤖 Add weekly listened to blog post"
           title: "🤖 Add weekly listened to blog post"
-          body: "This week, I have mostly been listening to..."
+          body: ${{ steps.pr_summary.outputs.PR_BODY }}
           branch: "weekly-listened-to-blog-post"
           branch-suffix: timestamp
