@@ -61,17 +61,20 @@ const tocHeadings = headings.filter(h => h.depth <= 3);
 <script>
   // Restore TOC state from localStorage
   function initTocState() {
-    const details = document.getElementById('toc-details');
-    if (!details) return;
+    // Use requestAnimationFrame to batch DOM reads and avoid forced reflow
+    requestAnimationFrame(() => {
+      const details = document.getElementById('toc-details');
+      if (!details) return;
 
-    const savedState = localStorage.getItem('toc-open');
-    if (savedState === 'true') {
-      details.setAttribute('open', '');
-    }
+      const savedState = localStorage.getItem('toc-open');
+      if (savedState === 'true') {
+        details.setAttribute('open', '');
+      }
 
-    // Save state when toggled
-    details.addEventListener('toggle', () => {
-      localStorage.setItem('toc-open', details.open.toString());
+      // Save state when toggled
+      details.addEventListener('toggle', () => {
+        localStorage.setItem('toc-open', details.open.toString());
+      });
     });
   }
 

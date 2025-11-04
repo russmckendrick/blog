@@ -282,7 +282,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 							<slot />
 						</div>
 
-						{!isTune && <ShareButtons client:visible title={title} url={Astro.url.href} tags={tags} />}
+						{!isTune && <ShareButtons client:idle title={title} url={Astro.url.href} tags={tags} />}
 
 						{!isTune && entry && <RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={3} />}
 					</div>
@@ -372,8 +372,12 @@ const breadcrumbSchema = createBreadcrumbSchema(
 
 			// Re-initialize after View Transitions navigation (cleanup is handled globally in BaseLayout)
 			document.addEventListener('astro:page-load', () => {
-				// Small delay to ensure DOM is ready
-				setTimeout(() => initLightGallery(), 100);
+				// Use requestIdleCallback for better performance, fallback to microtask
+				if ('requestIdleCallback' in window) {
+					requestIdleCallback(() => initLightGallery(), { timeout: 2000 });
+				} else {
+					Promise.resolve().then(() => initLightGallery());
+				}
 			});
 		</script>
 	</body>
