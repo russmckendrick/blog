@@ -93,6 +93,10 @@ const imageURL = image?.startsWith('http')
 <link rel="dns-prefetch" href="https://plausible.io">
 <link rel="preconnect" href="https://plausible.io" crossorigin>
 
+<!-- Preconnect to Cloudflare CDN for image optimization -->
+<link rel="preconnect" href="https://www.russ.cloud" crossorigin>
+<link rel="dns-prefetch" href="https://www.russ.cloud">
+
 <!-- Plausible Analytics - Load after page interactive -->
 <script>
 	if (document.readyState === 'complete') {
