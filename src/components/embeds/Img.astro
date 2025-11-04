@@ -39,6 +39,7 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(src, [640, 1024, 1536, 2
             srcset={srcsetString}
             alt={alt}
             loading="lazy"
+            decoding="async"
             class="rounded-lg max-w-full h-auto hover:opacity-90 transition-opacity cursor-zoom-in"
             sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
             {...(width && { width })}
@@ -53,6 +54,7 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(src, [640, 1024, 1536, 2
         srcset={srcsetString}
         alt={alt}
         loading="lazy"
+        decoding="async"
         class="rounded-lg max-w-full h-auto hover:opacity-90 transition-opacity"
         sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
         {...(width && { width })}
@@ -64,6 +66,7 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(src, [640, 1024, 1536, 2
       srcset={srcsetString}
       alt={alt}
       loading="lazy"
+      decoding="async"
       class="rounded-lg max-w-full h-auto"
       sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
       {...(width && { width })}

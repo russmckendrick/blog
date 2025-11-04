@@ -149,6 +149,22 @@ const breadcrumbSchema = createBreadcrumbSchema(
 			author={authorName}
 			keywords={tags}
 		/>
+		<!-- Preload hero image for LCP optimization -->
+		{displayImage && (
+			<link
+				rel="preload"
+				as="image"
+				href={getCFImageUrl(displayImage, {
+					width: 1920,
+					quality: 85,
+					format: 'auto',
+					fit: 'cover'
+				})}
+				imagesrcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, 85)}
+				imagesizes="100vw"
+				fetchpriority="high"
+			/>
+		)}
 		<Schema item={blogPostingSchema} />
 		<Schema item={breadcrumbSchema} />
 	</head>
@@ -173,6 +189,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 							alt={cover?.alt || title}
 							loading="eager"
 							fetchpriority="high"
+							decoding="async"
 							class="absolute inset-0 h-full w-full object-cover"
 						/>
 					<div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-transparent dark:from-black/40 dark:via-black/25"></div>
