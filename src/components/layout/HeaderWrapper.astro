@@ -23,25 +23,38 @@ const { autoHide = false } = Astro.props;
 
     let lastScrollY = window.scrollY;
     let ticking = false;
+    let scrollTimeout: number | undefined;
 
     function updateHeader() {
       const currentScrollY = window.scrollY;
 
+      // Add will-change only during active scrolling for better performance
+      if (!scrollTimeout) {
+        (header as HTMLElement).style.willChange = 'transform';
+      }
+
       if (currentScrollY > 100) {
         if (currentScrollY > lastScrollY) {
           // Scrolling down - hide header
-          header.style.transform = 'translateY(-100%)';
+          (header as HTMLElement).style.transform = 'translateY(-100%)';
         } else {
           // Scrolling up - show header
-          header.style.transform = 'translateY(0)';
+          (header as HTMLElement).style.transform = 'translateY(0)';
         }
       } else {
         // Always show at top
-        header.style.transform = 'translateY(0)';
+        (header as HTMLElement).style.transform = 'translateY(0)';
       }
 
       lastScrollY = currentScrollY;
       ticking = false;
+
+      // Remove will-change after scrolling stops (performance optimization)
+      clearTimeout(scrollTimeout);
+      scrollTimeout = window.setTimeout(() => {
+        (header as HTMLElement).style.willChange = 'auto';
+        scrollTimeout = undefined;
+      }, 150);
     }
 
     function onScroll() {
@@ -56,6 +69,7 @@ const { autoHide = false } = Astro.props;
     // Cleanup on page navigation
     document.addEventListener('astro:before-swap', () => {
       window.removeEventListener('scroll', onScroll);
+      clearTimeout(scrollTimeout);
     });
   }
 
@@ -68,7 +82,7 @@ const { autoHide = false } = Astro.props;
 
 <style>
   .header-wrapper {
-    will-change: transform;
+    /* will-change is added dynamically during scrolling for better performance */
     /* Ensure header is always visible and not affected by page transitions */
     view-transition-name: none !important;
     opacity: 1 !important;
