@@ -89,6 +89,14 @@ const imageURL = image?.startsWith('http')
 <link rel="preload" href="/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 
+<!--
+  Resource Hints for Critical JavaScript:
+  For optimal performance, consider adding modulepreload hints for critical JS bundles.
+  Since bundle names are hashed, extract them from build output and add:
+  <link rel="modulepreload" href="/_astro/[bundle-name].js">
+  Priority order: 1) View Transitions, 2) React runtime, 3) Component bundles
+-->
+
 <!-- DNS Prefetch for analytics -->
 <link rel="dns-prefetch" href="https://plausible.io">
 <link rel="preconnect" href="https://plausible.io" crossorigin>
@@ -97,22 +105,27 @@ const imageURL = image?.startsWith('http')
 <link rel="preconnect" href="https://www.russ.cloud" crossorigin>
 <link rel="dns-prefetch" href="https://www.russ.cloud">
 
-<!-- Plausible Analytics - Load after page interactive -->
+<!-- Plausible Analytics - Load during idle time for optimal performance -->
 <script>
-	if (document.readyState === 'complete') {
-		loadPlausible();
-	} else {
-		window.addEventListener('load', loadPlausible);
+	function loadPlausible() {
+		const script = document.createElement('script');
+		script.defer = true;
+		script.dataset.domain = 'russ.cloud';
+		script.dataset.api = 'https://plausible.io/api/event';
+		script.src = '/js/plausible.js';
+		document.head.appendChild(script);
 	}
-		function loadPlausible() {
-			const script = document.createElement('script');
-			script.defer = true;
-			script.dataset.domain = 'russ.cloud';
-			script.dataset.api = 'https://plausible.io/api/event';
-			script.src = '/js/plausible.js';
-			document.head.appendChild(script);
-		}
-	</script>
+
+	// Load analytics during browser idle time for best performance
+	if ('requestIdleCallback' in window) {
+		requestIdleCallback(loadPlausible, { timeout: 2000 });
+	} else if (document.readyState === 'complete') {
+		// Fallback for browsers without requestIdleCallback
+		setTimeout(loadPlausible, 1);
+	} else {
+		window.addEventListener('load', () => setTimeout(loadPlausible, 1));
+	}
+</script>
 
 <!-- Critical CSS to ensure header is immediately visible -->
 <style is:inline>
