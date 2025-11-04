@@ -295,13 +295,20 @@ const breadcrumbSchema = createBreadcrumbSchema(
 		</main>
 		<Footer />
 		<script>
-			import { createLightGallery } from 'astro-lightgallery';
 			import type { LightGallerySettings } from 'lightgallery/lg-settings';
 			import type { AstroLightGalleryPluginStrType } from 'astro-lightgallery';
 
 			// Initialize LightGallery for blog post pages
 			async function initLightGallery() {
 				const galleries = document.querySelectorAll('astro-lightgallery');
+
+				// Early exit if no galleries - don't load the library at all
+				if (galleries.length === 0) {
+					return;
+				}
+
+				// Dynamic import - only load LightGallery when galleries exist
+				const { createLightGallery } = await import('astro-lightgallery');
 
 				// Collect all gallery items across all galleries
 				const allGalleryItems: HTMLElement[] = [];
