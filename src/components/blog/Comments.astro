@@ -13,6 +13,8 @@
 </div>
 
 <script>
+	let giscusLoaded = false;
+
 	function getGiscusTheme() {
 		const htmlElement = document.documentElement;
 		const isDark = htmlElement.classList.contains('dark');
@@ -33,12 +35,15 @@
 	}
 
 	function loadGiscus() {
+		if (giscusLoaded) return;
+		giscusLoaded = true;
+
 		const attrs = {
 			"src": "https://giscus.app/client.js",
 			"data-repo": "russmckendrick/blog",
 			"data-repo-id": "MDEwOlJlcG9zaXRvcnkzOTYwNTIzNzQ=",
-			"data-category": "Comment",
-			"data-category-id": "DIC_kwDOF5tHls4B-xZs",
+			"data-category": "Comments",
+			"data-category-id": "DIC_kwDOF5tHls4CldC4",
 			"data-mapping": "pathname",
 			"data-strict": "0",
 			"data-reactions-enabled": "1",
@@ -46,6 +51,7 @@
 			"data-input-position": "bottom",
 			"data-theme": getGiscusTheme(),
 			"data-lang": "en",
+			"data-loading": "lazy",
 			"crossorigin": "anonymous",
 			"async": ""
 		};
@@ -53,26 +59,56 @@
 		const giscusScript = document.createElement("script");
 		Object.entries(attrs).forEach(([key, value]) => giscusScript.setAttribute(key, value));
 
+		// Add error handler
+		giscusScript.onerror = () => {
+			console.warn('Giscus failed to load. Check your configuration at https://giscus.app/');
+		};
+
 		const giscusContainer = document.querySelector('.giscus');
 		if (giscusContainer) {
 			giscusContainer.appendChild(giscusScript);
 		}
 	}
 
-	// Load Giscus when the page loads
-	loadGiscus();
+	// Lazy load Giscus using Intersection Observer
+	function setupLazyLoad() {
+		const giscusWrapper = document.querySelector('.giscus-wrapper');
+		if (!giscusWrapper) return;
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					loadGiscus();
+					observer.disconnect();
+				}
+			});
+		}, {
+			rootMargin: '200px' // Start loading 200px before it comes into view
+		});
+
+		observer.observe(giscusWrapper);
+	}
+
+	// Setup lazy loading on page load
+	setupLazyLoad();
 
 	// Watch for theme changes
-	const observer = new MutationObserver((mutations) => {
+	const themeObserver = new MutationObserver((mutations) => {
 		mutations.forEach((mutation) => {
-			if (mutation.attributeName === 'class') {
+			if (mutation.attributeName === 'class' && giscusLoaded) {
 				setGiscusTheme();
 			}
 		});
 	});
 
-	observer.observe(document.documentElement, {
+	themeObserver.observe(document.documentElement, {
 		attributes: true,
 		attributeFilter: ['class']
+	});
+
+	// Re-setup lazy loading after View Transitions
+	document.addEventListener('astro:page-load', () => {
+		giscusLoaded = false;
+		setupLazyLoad();
 	});
 </script>
