@@ -299,12 +299,12 @@ export const TAG_AVATAR_MAP: Record<string, string> = {
 export const CF_IMAGE_PRESETS = {
   // Default quality for all images
   default: {
-    quality: 85
+    quality: 60
   },
 
   // Hero images for blog posts
   hero: {
-    quality: 85,
+    quality: 60,
     format: 'avif' as const,
     fit: 'cover' as const,
     widths: [640, 1024, 1536, 2048]
@@ -336,7 +336,7 @@ export const CF_IMAGE_PRESETS = {
 
   // Gallery/lightbox images (high quality)
   gallery: {
-    quality: 85,
+    quality: 60,
     format: 'avif' as const,
     fit: 'scale-down' as const,
     widths: [1024, 1536, 2048, 2560]
