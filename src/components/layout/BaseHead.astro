@@ -105,6 +105,14 @@ const imageURL = image?.startsWith('http')
 <link rel="preconnect" href="https://www.russ.cloud" crossorigin>
 <link rel="dns-prefetch" href="https://www.russ.cloud">
 
+<!-- Preconnect to Giscus for faster comment loading -->
+<link rel="dns-prefetch" href="https://giscus.app">
+<link rel="preconnect" href="https://giscus.app" crossorigin>
+
+<!-- Preconnect to GitHub for faster asset loading -->
+<link rel="dns-prefetch" href="https://github.githubassets.com">
+<link rel="dns-prefetch" href="https://opengraph.githubassets.com">
+
 <!-- Plausible Analytics - Load during idle time for optimal performance -->
 <script>
 	function loadPlausible() {
