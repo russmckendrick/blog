@@ -80,6 +80,29 @@ export default defineConfig({
 	},
 	vite: {
 		plugins: [tailwindcss()],
+		build: {
+			// Optimize module preloading to reduce critical request chains
+			modulePreload: {
+				polyfill: false, // Modern browsers support ES modules, no polyfill needed
+				resolveDependencies: (filename, deps, { hostId, hostType }) => {
+					// Preload all dependencies to avoid chained requests
+					return deps;
+				}
+			},
+			// Optimize chunking strategy
+			rollupOptions: {
+				output: {
+					// Group small vendor chunks together to reduce requests
+					manualChunks: (id) => {
+						// Keep Expressive Code together
+						if (id.includes('expressive-code')) {
+							return 'expressive-code';
+						}
+					}
+				}
+			},
+			chunkSizeWarningLimit: 1000,
+		}
 	},
 	build: {
 		format: 'directory',
