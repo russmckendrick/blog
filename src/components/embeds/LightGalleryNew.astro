@@ -1,5 +1,6 @@
 ---
 import { LightGallery as AstroLightGallery } from 'astro-lightgallery';
+import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../../utils/cloudflare-images';
 
 interface GalleryImage {
   src: string;
@@ -25,11 +26,32 @@ interface Props {
 }
 
 const { layout, options, enableMetaPlugin = true, debugMeta = false } = Astro.props;
+
+// Transform gallery images to use Cloudflare Image Transformations
+const transformedLayout = {
+  imgs: layout.imgs.map(img => ({
+    // Use high-quality transformed URL for the lightbox view
+    src: getCFImageUrl(img.src, {
+      width: 2048,
+      quality: CF_IMAGE_PRESETS.gallery.quality,
+      format: CF_IMAGE_PRESETS.gallery.format,
+      fit: CF_IMAGE_PRESETS.gallery.fit
+    }),
+    // Use lower quality for thumbnails
+    thumbnail: getCFImageUrl(img.src, {
+      width: 400,
+      quality: CF_IMAGE_PRESETS.gallery.quality,
+      format: CF_IMAGE_PRESETS.gallery.format,
+      fit: 'cover'
+    }),
+    alt: img.alt
+  }))
+};
 ---
 
 <div data-no-swup class="lightgallery-wrapper">
   <AstroLightGallery
-    layout={layout}
+    layout={transformedLayout}
     options={options}
   />
 </div>
