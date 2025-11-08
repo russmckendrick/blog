@@ -156,11 +156,11 @@ const breadcrumbSchema = createBreadcrumbSchema(
 				as="image"
 				href={getCFImageUrl(displayImage, {
 					width: 1920,
-					quality: 85,
-					format: 'auto',
-					fit: 'cover'
+					quality: CF_IMAGE_PRESETS.hero.quality,
+					format: CF_IMAGE_PRESETS.hero.format,
+					fit: CF_IMAGE_PRESETS.hero.fit
 				})}
-				imagesrcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, 85)}
+				imagesrcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
 				imagesizes="100vw"
 				fetchpriority="high"
 			/>
@@ -180,11 +180,11 @@ const breadcrumbSchema = createBreadcrumbSchema(
 						<img
 							src={getCFImageUrl(displayImage, {
 								width: 1920,
-								quality: 85,
-								format: 'auto',
-								fit: 'cover'
+								quality: CF_IMAGE_PRESETS.hero.quality,
+								format: CF_IMAGE_PRESETS.hero.format,
+								fit: CF_IMAGE_PRESETS.hero.fit
 							})}
-							srcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, 85)}
+							srcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
 							sizes="100vw"
 							alt={cover?.alt || title}
 							loading="eager"
