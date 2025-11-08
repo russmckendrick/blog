@@ -320,7 +320,7 @@ export const CF_IMAGE_PRESETS = {
 
   // Post card thumbnails (vertical layout)
   thumbnail: {
-    quality: 30,
+    quality: 25,
     format: 'avif' as const,
     fit: 'cover' as const,
     widths: [400, 600, 800, 1200, 1600]  // Supports up to 800px @ 2x DPR (1600px)
@@ -328,7 +328,7 @@ export const CF_IMAGE_PRESETS = {
 
   // Post card thumbnails (horizontal layout)
   thumbnailHorizontal: {
-    quality: 30,
+    quality: 25,
     format: 'avif' as const,
     fit: 'cover' as const,
     widths: [256, 320, 384, 512]
@@ -344,7 +344,7 @@ export const CF_IMAGE_PRESETS = {
 
   // Avatar images
   avatar: {
-    quality: 85,
+    quality: 60,
     format: 'auto' as const,
     fit: 'cover' as const,
     widths: [40, 48, 80, 96, 160, 192]

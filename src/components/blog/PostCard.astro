@@ -11,9 +11,11 @@ interface Props {
 	post: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
 	priority?: boolean; // For LCP optimization on first card
 	variant?: 'vertical' | 'horizontal'; // Layout variant
+	headingLevel?: '2' | '3'; // Heading level for accessibility
 }
 
-const { post, priority = false, variant = 'vertical' } = Astro.props;
+const { post, priority = false, variant = 'vertical', headingLevel = '2' } = Astro.props;
+const HeadingTag = `h${headingLevel}` as 'h2' | 'h3';
 const href = getPostUrl(post.data.pubDate, post.data.title);
 const heroImage = post.data.heroImage || post.data.cover?.image;
 const alt = post.data.cover?.alt || post.data.title;
@@ -107,9 +109,9 @@ const avatarGlowColor = getAvatarGlowColor();
 				)}
 			<div class="relative p-6 md:p-8 flex flex-col gap-6">
 				<header class="space-y-3">
-					<h3 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+					<HeadingTag class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
 						{post.data.title}
-					</h3>
+					</HeadingTag>
 				</header>
 				{description && (
 					<p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -189,9 +191,9 @@ const avatarGlowColor = getAvatarGlowColor();
 				)}
 				<div class="relative p-6 flex flex-col gap-3 flex-1 min-w-0">
 					<header>
-						<h3 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 line-clamp-2">
+						<HeadingTag class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 line-clamp-2">
 							{post.data.title}
-						</h3>
+						</HeadingTag>
 					</header>
 					{description && (
 						<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-2">
