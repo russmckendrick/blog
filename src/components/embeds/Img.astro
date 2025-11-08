@@ -1,6 +1,6 @@
 ---
 import { LightGallery } from 'astro-lightgallery'
-import { getCFImageUrl, generateCFSrcSet } from '../../utils/cloudflare-images';
+import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../../utils/cloudflare-images';
 
 interface Props {
   src: string;
@@ -19,11 +19,24 @@ const isExternal = src.startsWith('http://') || src.startsWith('https://');
 // Determine if zoom should be enabled
 const enableZoom = zoom === 'true' || zoom === true;
 
-// For local images, use Cloudflare Image Transformations
-// For gallery/zoom, use high quality (90)
-const imgSrc = isExternal ? src : getCFImageUrl(src, { width: 1200, quality: 90, format: 'auto' });
-const highResSrc = isExternal ? src : getCFImageUrl(src, { width: 2048, quality: 90, format: 'auto' });
-const srcsetString = isExternal ? '' : generateCFSrcSet(src, [640, 1024, 1536, 2048], 90);
+// For local images, use Cloudflare Image Transformations with gallery preset
+const imgSrc = isExternal ? src : getCFImageUrl(src, {
+  width: 1200,
+  quality: CF_IMAGE_PRESETS.gallery.quality,
+  format: CF_IMAGE_PRESETS.gallery.format
+});
+const highResSrc = isExternal ? src : getCFImageUrl(src, {
+  width: 2048,
+  quality: CF_IMAGE_PRESETS.gallery.quality,
+  format: CF_IMAGE_PRESETS.gallery.format,
+  fit: CF_IMAGE_PRESETS.gallery.fit
+});
+const srcsetString = isExternal ? '' : generateCFSrcSet(
+  src,
+  CF_IMAGE_PRESETS.gallery.widths,
+  CF_IMAGE_PRESETS.gallery.quality,
+  CF_IMAGE_PRESETS.gallery.format
+);
 ---
 
 <div class="img-wrapper my-6 flex justify-center">

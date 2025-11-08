@@ -86,14 +86,14 @@ const avatarGlowColor = getAvatarGlowColor();
 							src={getCFImageUrl(heroImage, {
 								width: 800,
 								quality: priority ? CF_IMAGE_PRESETS.thumbnailPriority.quality : CF_IMAGE_PRESETS.thumbnail.quality,
-								format: 'avif',
-								fit: 'cover'
+								format: priority ? CF_IMAGE_PRESETS.thumbnailPriority.format : CF_IMAGE_PRESETS.thumbnail.format,
+								fit: priority ? CF_IMAGE_PRESETS.thumbnailPriority.fit : CF_IMAGE_PRESETS.thumbnail.fit
 							})}
 							srcset={generateCFSrcSet(
 								heroImage,
 								priority ? CF_IMAGE_PRESETS.thumbnailPriority.widths : CF_IMAGE_PRESETS.thumbnail.widths,
 								priority ? CF_IMAGE_PRESETS.thumbnailPriority.quality : CF_IMAGE_PRESETS.thumbnail.quality,
-							'avif'
+								priority ? CF_IMAGE_PRESETS.thumbnailPriority.format : CF_IMAGE_PRESETS.thumbnail.format
 							)}
 							sizes="(min-width: 1024px) 728px, (min-width: 768px) 688px, (min-width: 640px) 600px, (min-width: 400px) 360px, 280px"
 							alt={alt}
@@ -173,10 +173,10 @@ const avatarGlowColor = getAvatarGlowColor();
 							src={getCFImageUrl(heroImage, {
 								width: 384,
 								quality: CF_IMAGE_PRESETS.thumbnailHorizontal.quality,
-								format: 'avif',
-								fit: 'cover'
+								format: CF_IMAGE_PRESETS.thumbnailHorizontal.format,
+								fit: CF_IMAGE_PRESETS.thumbnailHorizontal.fit
 							})}
-							srcset={generateCFSrcSet(heroImage, CF_IMAGE_PRESETS.thumbnailHorizontal.widths, CF_IMAGE_PRESETS.thumbnailHorizontal.quality, 'avif')}
+							srcset={generateCFSrcSet(heroImage, CF_IMAGE_PRESETS.thumbnailHorizontal.widths, CF_IMAGE_PRESETS.thumbnailHorizontal.quality, CF_IMAGE_PRESETS.thumbnailHorizontal.format)}
 							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 100vw"
 							alt={alt}
 							width="512"
