@@ -3,6 +3,9 @@ dist/
 # generated types
 .astro/
 
+# packages
+.package-lock.json
+
 # dependencies
 node_modules/
 
@@ -30,8 +33,4 @@ hugo/
 .env
 .claude
 collection.json
-
-# lighthouse reports
-lighthouse
-
-.package-lock.json
+pr_body.md
