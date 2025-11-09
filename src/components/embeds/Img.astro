@@ -39,9 +39,9 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
 );
 ---
 
-<div class="img-wrapper my-6 flex justify-center">
+<div class="img-wrapper mb-1 flex justify-center">
   {enableZoom ? (
-    <div data-no-swup>
+    <div>
       <LightGallery
         layout={{ imgs: [{ src: highResSrc, alt: alt }] }}
         options={{ thumbnail: false, download: false }}
@@ -61,7 +61,7 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
       </LightGallery>
     </div>
   ) : link ? (
-    <a href={link} target="_blank" rel="noopener noreferrer" data-no-swup>
+    <a href={link} target="_blank" rel="noopener noreferrer">
       <img
         src={imgSrc}
         srcset={srcsetString}
