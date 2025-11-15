@@ -1,0 +1,244 @@
+---
+title: "My Starship Prompt Setup"
+description: "A Deep Dive into a Gruvbox-Themed Terminal"
+date: 2025-11-15T13:48:35.271Z
+cover:
+  image: "../../assets/2025-11-15-my-starship-prompt-setup/blog-cover-2025-11-15-my-starship-prompt-setup.jpg"
+  caption: "A Deep Dive into a Gruvbox-Themed Terminal"
+draft: false
+showToc: true
+tags:
+  - "MacOS"
+---
+
+I spend alot of time in the terminal on both my home and work machines so have taken the time to get my terminal prompt looking good and I had been using [PowerLine10k](https://github.com/romkatv/powerlevel10k) for a few years.
+
+After trying to debug why my terminal was opening slowly I spotted the warning below at the top of the projects repo:
+
+<CautionCallout title="PowerLine10k Warning">
+- The project has very limited support
+- No new features are in the works
+- Most bugs will go unfixed
+- Help requests will be ignored
+</CautionCallout>
+
+I decided it was time for a change.
+
+## Why Starship?
+
+After some quick Googling I decided upon [Starship](https://starship.rs/), it is a cross-shell prompt written in Rust that's fast, customizable, and incredibly feature-rich. Its repo boasts that unlike traditional shell prompts, Starship:
+
+- Works across multiple shells (zsh, bash, fish, PowerShell)
+- Is blazingly fast (written in Rust)
+- Provides context-aware information
+- Supports extensive customization through a simple TOML file
+- Has minimal dependencies
+
+That ticks a lot of boxes so I decided to give it a try.
+
+## The Design Philosophy
+
+My prompt design follows a few key principles:
+
+1. **Information density without clutter**: Show relevant context without overwhelming
+2. **Visual hierarchy**: Use color and positioning to prioritize information
+3. **Gruvbox aesthetics**: Maintain a consistent retro-groove color scheme
+4. **Left-to-right narrative**: Left side shows "where I am," right side shows "what's happening"
+5. **Look good**: I take a lot of screen shots and do screen shares - so it needs to look good !!!
+
+Now this is a little zoomed in, but this is what my prompt looks like:
+
+<Img src="/assets/2025-11-15-my-starship-prompt-setup/prompt-layout.png" alt="Prompt Layout" />
+
+## The Color Palette: Gruvbox Dark
+
+I'm using the [Gruvbox](https://github.com/morhetz/gruvbox) Dark color scheme, which provides a warm, retro aesthetic that's easy on the eyes during long coding sessions. The palette includes:
+
+- **Orange** (`#d65d0e`): System and user context
+- **Yellow** (`#d79921`): Current directory and status
+- **Aqua** (`#689d6a`): Git information
+- **Blue** (`#458588`): Programming language indicators
+- **Purple** (`#b16286`): Time display
+- **Red** (`#cc241d`): Battery and critical indicators
+
+## The Prompt Layout
+
+My prompt is divided into segments, connected with powerline-style arrows. Here's the breakdown:
+
+### Left Side: Contextual Information
+
+```toml title="OS and Username Segment (Orange)"
+[os]
+disabled = false
+style = "bg:color_orange fg:color_fg0"
+
+[username]
+show_always = true
+format = '[ $user ]($style)'
+```
+
+The prompt starts with the OS icon (on macOS) and username. While some people hide the username, I keep it visible—it's a quick visual confirmation of which system I'm on, especially when dealing with remote sessions.
+
+
+```toml title="Directory Segment (Yellow)"
+[directory]
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = " "
+truncate_to_repo = true
+```
+
+The current directory is shown with intelligent truncation. If I'm in a git repository, it truncates relative to the repo root. I've also added custom substitutions with icons for common directories, such as `~/Code/`, `~/Documents` and `~/Downloads`:
+
+<LightGallery
+  layout={{
+    imgs: [
+      { src: "/assets/2025-11-15-my-starship-prompt-setup/dir/dir-01.png", alt: "Code" },
+      { src: "/assets/2025-11-15-my-starship-prompt-setup/dir/dir-02.png", alt: "Documents" },
+      { src: "/assets/2025-11-15-my-starship-prompt-setup/dir/dir-03.png", alt: "Downloads" },
+      { src: "/assets/2025-11-15-my-starship-prompt-setup/dir/dir-04.png", alt: "Pictures" },
+    ]
+  }}
+/>
+
+```toml title="Git Metrics Segment (Aqua)"
+[git_metrics]
+disabled = false
+format = '[[+$added]($added_style)/[-$deleted]($deleted_style) ]'
+```
+
+This is where things get interesting. The git segment shows four pieces of information:
+
+1. **Branch name** with an icon
+2. **Git status** showing staged/modified/untracked files
+3. **Git state** for operations like rebasing or merging
+4. **Git metrics** showing additions and deletions
+
+<Img src="/assets/2025-11-15-my-starship-prompt-setup/git.png" alt="Git Metrics" />
+
+The metrics feature is particularly useful—at a glance, I can see `+7/-7` to understand the scope of my changes.
+
+**Language Environment Segment** (Blue)
+
+This segment automatically detects and displays icons for active programming environments:
+
+<LightGallery
+  layout={{
+    imgs: [
+      { src: "/assets/2025-11-15-my-starship-prompt-setup/lang/python.png", alt: "Python" },
+      { src: "/assets/2025-11-15-my-starship-prompt-setup/lang/nodejs.png", alt: "Node.js" },
+      { src: "/assets/2025-11-15-my-starship-prompt-setup/lang/go.png", alt: "Go" },
+    ]
+  }}
+/>
+
+The segment only appears when relevant files are detected in the current directory, keeping the prompt clean when you're not in a project.
+
+### Right Side: Status Information
+
+Using the `$fill` variable, I push status information to the right side of the terminal:
+
+**Time** (Purple)
+```toml
+[time]
+disabled = false
+time_format = "%R"
+format = '[[ 󰥔 $time ]]'
+```
+
+A simple 24-hour clock (e.g., `14:30`). Some find this redundant, but I appreciate having timestamps in my terminal sessions.
+
+**Battery** (Red background)
+```toml
+[battery]
+full_symbol = "󰁹"
+charging_symbol = "󰂄"
+discharging_symbol = "󰂃"
+```
+
+Battery status with appropriate icons. The red background serves as a visual alert when I'm unplugged.
+
+**Command Duration** (Aqua)
+```toml
+[cmd_duration]
+min_time = 2000
+format = '[[  $duration ]]'
+```
+
+Shows execution time for commands that take longer than 2 seconds. This is invaluable for understanding which operations are slow and need optimization.
+
+**Exit Status** (Yellow)
+
+Displays an error indicator (✖) when the last command failed, along with the exit code.
+
+**Background Jobs** (Orange)
+
+Shows a  icon with a count when there are background jobs running.
+
+### The Command Line
+
+Finally, after all the context, comes the actual command line:
+
+```toml
+[character]
+success_symbol = '[](bold fg:color_bright_green)'
+error_symbol = '[](bold fg:color_bright_red)'
+```
+
+A simple `❯` that turns red when the previous command failed. I've also configured vim mode indicators (since I use vi-mode in zsh):
+
+-  Normal mode (green)
+-  Replace mode (purple)
+-  Visual mode (yellow)
+
+## Performance Considerations
+
+Starship is fast, but I've made a few tweaks to ensure it stays that way:
+
+```toml
+scan_timeout = 35
+command_timeout = 700
+```
+
+The `scan_timeout` controls how long Starship spends looking for context (like git repos), while `command_timeout` limits how long individual modules can run. These values ensure the prompt never feels laggy.
+
+## Installation
+
+Want to use this configuration? Here's how:
+
+1. **Install Starship:**
+    ```bash
+    brew install starship
+    ```
+
+2. **Install a Nerd Font:** The icons require a Nerd Font. I use Hack Nerd Font Mono:
+    ```bash
+    brew tap homebrew/cask-fonts
+    brew install font-hack-nerd-font
+    ```
+
+3. **Configure your shell:** Add to your `~/.zshrc`:
+    ```bash
+    eval "$(starship init zsh)"
+    ```
+
+4. **Edit your configuration:** Find the configuration at `~/.config/starship.toml`
+
+## Customization Tips
+
+The beauty of Starship is how easy it is to customize. Here are some ideas:
+
+- **Minimize for remote sessions**: Use different configs based on `$SSH_CONNECTION`
+- **Add custom modules**: Starship supports custom commands and environment variables
+- **Theme variations**: Try different palettes like Tokyo Night, Nord, or Dracula
+- **Context-aware layouts**: Use different formats for different directories
+
+## Summary
+
+Your terminal prompt is personal - it should reflect how you work and what information you need at a glance. My Starship configuration has evolved from when I was using PowerLine10k and will continue to be added to as time goes on.
+
+The key is to start with something functional, then iterate. Pay attention to which information you actually use and which just becomes noise. A great prompt should feel invisible when you don't need it and invaluable when you do.
+
+You can find my current and full `starship.toml` configuration at the following link:
+
+<LinkPreview id="https://github.com/russmckendrick/dotfiles/blob/main/starship.toml" />

@@ -179,7 +179,7 @@ a {
 }
 
 .prose ol {
-  @apply list-decimal list-inside mb-6 space-y-2;
+  @apply list-decimal list-outside mb-6 space-y-2 pl-6;
 }
 
 .prose li {
