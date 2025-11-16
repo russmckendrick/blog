@@ -37,6 +37,9 @@ Automatically generates weekly music blog posts based on Last.fm listening data,
 
    # Optional: Enhanced album research
    TAVILY_API_KEY=your-tavily-api-key
+
+   # Optional: FAL.ai for AI-generated collages
+   FAL_KEY=your-fal-ai-api-key
    ```
 
 3. **Get API Keys**
@@ -44,6 +47,7 @@ Automatically generates weekly music blog posts based on Last.fm listening data,
    - **OpenAI**: https://platform.openai.com/api-keys
    - **Anthropic**: https://console.anthropic.com/
    - **Tavily** (optional): https://tavily.com/
+   - **FAL.ai** (optional): https://fal.ai/dashboard
 
 ## Usage
 
@@ -104,12 +108,91 @@ Posts are created in:
 - `lib/content-generator.js` - AI content generation (LangChain)
 - `lib/image-handler.js` - Image downloading
 - `lib/blog-post-renderer.js` - MDX template renderer
+- `strip-collage.js` - Local Sharp-based torn-paper collage generator
+- `fal-collage.js` - AI-powered collage using FAL.ai WAN 2.5 (alternative)
 
 ### AI Models Used
 
 - **Anthropic**: Claude 3.5 Sonnet (default if key available)
 - **OpenAI**: GPT-4 Turbo (fallback)
 - **Web Search**: Tavily API (optional, for factual research)
+- **Image Generation**: FAL.ai WAN 2.5 (optional, for AI-powered collages)
+
+## Cover Collage Generation
+
+The tunes generator creates custom cover images for each weekly post. Two collage generators are available:
+
+### Strip Collage (Default)
+
+**File**: `scripts/strip-collage.js`
+
+A local Sharp-based generator that creates torn-paper strip collages:
+- **Style**: Vertical strips with torn edges and slight rotation (±4°)
+- **Source**: Uses original album artwork colors (no tinting)
+- **Coverage**: Full edge-to-edge with intelligent seam guards
+- **Deduplication**: Each album appears exactly once
+- **Performance**: Fast, runs locally without API calls
+- **Deterministic**: Uses post date as seed for consistent regeneration
+
+**Usage in generate-tunes-post.js:**
+```javascript
+import { createStripCollage } from './strip-collage.js'
+
+await createStripCollage(albumImagePaths, coverOutputPath, {
+  seed: dateSeed,
+  width: 1400,
+  height: 800
+})
+```
+
+### FAL.ai Collage (AI-Powered Alternative)
+
+**File**: `scripts/fal-collage.js`
+
+An AI-powered generator using FAL.ai's WAN 2.5 image-to-image model:
+- **Style**: AI-generated artistic fusion of album covers
+- **Selection**: Analyzes all albums and selects 4 most vibrant/colorful covers
+- **Algorithm**: Color variance analysis (saturation 60% + variance 40%)
+- **Output**: 1400×800 PNG with seamless blending
+- **API**: Requires `FAL_KEY` environment variable
+- **Cost**: Uses FAL.ai API credits (check pricing at fal.ai)
+
+**Selection Process:**
+1. Analyzes each image (resized to 256×256 for performance)
+2. Calculates RGB variance and saturation metrics
+3. Scores each image: `(avgSaturation × 0.6) + (√variance × 0.4)`
+4. Selects top 4 highest-scoring images
+
+**Prompt Strategy:**
+- **Main**: "Create a vibrant music blog header merging these album artworks into a cohesive artistic collage. Blend the cover art seamlessly without any text or typography."
+- **Negative**: "text, typography, letters, words, watermark, low quality, defects"
+
+**Usage in generate-tunes-post.js:**
+```javascript
+import { createFALCollage } from './fal-collage.js'
+
+await createFALCollage(albumImagePaths, coverOutputPath, {
+  seed: dateSeed,
+  width: 1400,
+  height: 800,
+  debug: true
+})
+```
+
+**Test the FAL.ai collage:**
+```bash
+# Set FAL_KEY in .env first
+DEBUG_COLLAGE=1 node scripts/fal-collage.js
+```
+
+**Error Handling:**
+- Throws errors on API failures (no fallback to strip-collage by default)
+- Validates FAL_KEY presence before making API calls
+- Provides detailed error messages for debugging
+
+**When to Use:**
+- **Strip Collage**: Default choice, fast, free, consistent style
+- **FAL.ai Collage**: Experimental AI-generated look, requires API credits, varies each time
 
 ## Customization
 

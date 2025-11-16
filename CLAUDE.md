@@ -540,6 +540,9 @@ ANTHROPIC_API_KEY=your-key
 
 # Optional: Web search for album facts
 TAVILY_API_KEY=your-key
+
+# Optional: FAL.ai for AI-generated collages
+FAL_KEY=your-key
 ```
 
 ### What It Does
@@ -557,7 +560,10 @@ TAVILY_API_KEY=your-key
 - **Features**: Frontmatter, artist/album galleries, AI-generated sections, Top N lists with play counts
 
 ### Cover Collage Generation
-Each tunes post automatically gets a unique torn-paper strip collage as its cover image:
+Each tunes post automatically gets a unique cover collage. Two generators are available:
+
+#### Strip Collage (Default - `scripts/strip-collage.js`)
+Local Sharp-based torn-paper strip collage generator:
 - **Dimensions**: 1400×800 PNG (native render, no upscaling)
 - **Style**: Vertical strips with torn edges, slight rotation (±4°), high overlap
 - **Source**: Album artwork only (no tinting, original colors preserved)
@@ -565,7 +571,31 @@ Each tunes post automatically gets a unique torn-paper strip collage as its cove
 - **Deterministic**: Uses post date as seed for consistent regeneration
 - **Dynamic**: Strip width adapts to album count (2-3 albums: wider strips, 9+ albums: narrower strips)
 - **Coverage**: Full edge-to-edge coverage with intelligent seam guards (no black/transparent edges)
-- **Implementation**: `scripts/strip-collage.js` with Sharp image processing
+- **Performance**: Fast, runs locally without API calls
+
+#### FAL.ai Collage (Alternative - `scripts/fal-collage.js`)
+AI-powered collage using FAL.ai WAN 2.5 image-to-image model:
+- **Dimensions**: 1400×800 PNG
+- **Style**: AI-generated artistic fusion of album covers
+- **Selection**: Analyzes all albums and selects 4 most vibrant/colorful covers
+- **Algorithm**: Color variance analysis (saturation 60% + variance 40%)
+- **Output**: Seamless AI-blended collage without text/typography
+- **API**: Requires `FAL_KEY` environment variable
+- **Cost**: Uses FAL.ai API credits (check pricing at fal.ai)
+- **Error handling**: Fails loudly on API errors (no fallback to strip-collage)
+
+**Usage**:
+```javascript
+// Default: Strip collage
+import { createStripCollage } from './strip-collage.js'
+await createStripCollage(albumImagePaths, coverOutputPath, { seed: dateSeed, width: 1400, height: 800 })
+
+// Alternative: FAL.ai collage
+import { createFALCollage } from './fal-collage.js'
+await createFALCollage(albumImagePaths, coverOutputPath, { seed: dateSeed, width: 1400, height: 800 })
+```
+
+See `docs/guides/tunes-generator.md` for detailed collage documentation.
 
 ### Tech Stack
 - **LangChain.js** - AI orchestration
@@ -581,7 +611,8 @@ Each tunes post automatically gets a unique torn-paper strip collage as its cove
 - `scripts/lib/content-generator.js` - AI content (LangChain)
 - `scripts/lib/image-handler.js` - Image downloads
 - `scripts/lib/blog-post-renderer.js` - MDX rendering
-- `scripts/strip-collage.js` - Cover collage generation with torn-paper effect
+- `scripts/strip-collage.js` - Cover collage generation with torn-paper effect (default)
+- `scripts/fal-collage.js` - AI-powered collage using FAL.ai WAN 2.5 (alternative)
 
 ## Existing Guidelines
 Additional repository guidelines are documented in `AGENTS.md`, including:
