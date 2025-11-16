@@ -91,19 +91,7 @@ async function generateSmartPrompt(imageUrls, debug = false) {
           content: [
             {
               type: 'text',
-              text: `Analyze these ${imageUrls.length} album covers. For each, briefly describe:
-1. Main colors (be specific: "vibrant yellow", "deep red", "cool blue", etc.)
-2. Key visual elements (people, objects, scenes, patterns)
-3. Overall mood/style (vintage, modern, abstract, photographic, etc.)
-
-Then create a single detailed prompt (2-3 sentences) for an AI model to blend these albums into a cohesive music blog header. The prompt should:
-- Reference the specific colors, subjects, and styles you identified
-- Instruct the AI to merge/blend them with flowing transitions (not a grid)
-- Emphasize keeping each album recognizable but integrated
-- Mention removing text/typography
-- Aim for a "painted mural" or "watercolor blend" effect
-
-Output ONLY the final prompt, nothing else.`
+              text: `Analyze these ${imageUrls.length} album covers and create a prompt for compositing them into a cinematic music blog header.`
             },
             ...imageContent
           ]
