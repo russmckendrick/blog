@@ -1,0 +1,50 @@
+{
+  "model": {
+    "name": "fal-ai/reve/fast/remix",
+    "fallback": "fal-ai/reve/remix"
+  },
+  "output": {
+    "aspectRatio": "16:9",
+    "numImages": 1,
+    "format": "png"
+  },
+  "images": {
+    "minCount": 2,
+    "maxCount": 6,
+    "cropRegions": {
+      "top": 0.15,
+      "bottom": 0.15,
+      "left": 0.05,
+      "right": 0.05
+    }
+  },
+  "scoring": {
+    "saturationWeight": 0.4,
+    "varianceWeight": 0.3,
+    "textPenaltyWeight": 0.3
+  },
+  "prompts": {
+    "default": "Create a vibrant music blog header collage by seamlessly blending these album covers into a unified artistic composition. Merge the images with painterly brushstrokes and flowing transitions, maintaining the recognizable elements of each cover while creating a cohesive whole. Remove all text and typography. The result should feel like a hand-painted mural celebrating diverse musical styles.",
+    "gptVisionSystemPrompt": "You are an expert art director creating prompts for an AI image generator. Analyze the provided album covers and generate a creative, descriptive prompt that will blend them into a cohesive music blog header. Focus on colors, mood, artistic style, and visual elements. Avoid mentioning text, band names, or album titles. The prompt should guide the AI to create a seamless blend while maintaining recognizable elements from each cover."
+  },
+  "blacklist": {
+    "albums": [
+      "Is This It",
+      "Med-sud-i-eyrum-vid-spilum-endalaust"
+    ],
+    "artists": [],
+    "note": "Albums/artists that trigger content policy violations. Matches are case-insensitive and partial."
+  },
+  "retry": {
+    "maxAttempts": 3,
+    "contentPolicyViolation": {
+      "enabled": true,
+      "excludeProblematicImages": true
+    }
+  },
+  "debug": {
+    "logScores": false,
+    "logPrompts": true,
+    "savePreprocessedImages": false
+  }
+}

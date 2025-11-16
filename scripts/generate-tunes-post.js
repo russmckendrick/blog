@@ -11,7 +11,7 @@ import { ImageHandler } from './lib/image-handler.js'
 import { BlogPostRenderer } from './lib/blog-post-renderer.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { normalizeText, lookupArtistData, lookupAlbumData, isVariousArtists } from './lib/text-utils.js'
-import { createStripCollage } from './strip-collage.js'
+import { createFALCollage } from './fal-collage.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -120,12 +120,14 @@ async function main() {
 
     const coverOutputPath = path.join(srcAssetsFolder, `tunes-cover-${dateStr}-listened-to-this-week.png`)
 
-    // Use the post date as seed for deterministic randomness
+    // Use FAL.ai collage with smart prompt generation
+    console.log('Generating AI-powered collage with smart prompt...')
     const dateSeed = new Date(dateStr).getTime()
-    await createStripCollage(albumImagePaths, coverOutputPath, {
+    await createFALCollage(albumImagePaths, coverOutputPath, {
       seed: dateSeed,
       width: 1400,
-      height: 800
+      height: 800,
+      debug: debugMode
     })
 
     console.log(`✅ Cover collage generated: ${coverOutputPath}`)
