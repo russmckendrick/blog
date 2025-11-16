@@ -148,24 +148,53 @@ await createStripCollage(albumImagePaths, coverOutputPath, {
 ### FAL.ai Collage (AI-Powered Alternative)
 
 **File**: `scripts/fal-collage.js`
+**Config**: `scripts/fal-collage-config.json`
 
-An AI-powered generator using FAL.ai's WAN 2.5 image-to-image model:
+An AI-powered generator using FAL.ai's Reve fast remix model:
 - **Style**: AI-generated artistic fusion of album covers
-- **Selection**: Analyzes all albums and selects 4 most vibrant/colorful covers
-- **Algorithm**: Color variance analysis (saturation 60% + variance 40%)
+- **Selection**: Analyzes all albums and selects 2-6 most vibrant/colorful covers
+- **Algorithm**: Color variance analysis (saturation 40% + variance 30% + text penalty 30%)
+- **Smart Prompts**: Uses GPT-4 Vision to analyze covers and generate context-aware prompts
+- **Blacklist**: Configurable album/artist filtering to avoid content policy violations
 - **Output**: 1400×800 PNG with seamless blending
-- **API**: Requires `FAL_KEY` environment variable
-- **Cost**: Uses FAL.ai API credits (check pricing at fal.ai)
+- **API**: Requires `FAL_KEY` and `OPENAI_API_KEY` environment variables
+- **Cost**: Uses FAL.ai and OpenAI API credits
 
 **Selection Process:**
-1. Analyzes each image (resized to 256×256 for performance)
-2. Calculates RGB variance and saturation metrics
-3. Scores each image: `(avgSaturation × 0.6) + (√variance × 0.4)`
-4. Selects top 4 highest-scoring images
+1. Filters out blacklisted albums/artists (from config)
+2. Analyzes each image (resized to 256×256 for performance)
+3. Detects text using edge detection (top/bottom 20% of cover)
+4. Calculates color vibrancy (RGB variance + saturation)
+5. Scores: `(saturation × 0.4) + (√variance × 0.3) + (textPenalty × 0.3)`
+6. Selects top 2-6 highest-scoring images
+7. Preprocesses images to crop text regions (top 15%, bottom 15%, sides 5%)
+8. Uses GPT-4 Vision to analyze covers and generate custom blend prompt
+9. Sends to FAL.ai Reve model for AI blending
 
-**Prompt Strategy:**
-- **Main**: "Create a vibrant music blog header merging these album artworks into a cohesive artistic collage. Blend the cover art seamlessly without any text or typography."
-- **Negative**: "text, typography, letters, words, watermark, low quality, defects"
+**Configuration (`scripts/fal-collage-config.json`):**
+```json
+{
+  "model": {
+    "name": "fal-ai/reve/fast/remix"
+  },
+  "blacklist": {
+    "albums": ["Is This It", "Album Name"],
+    "artists": ["Artist Name"]
+  },
+  "scoring": {
+    "saturationWeight": 0.4,
+    "varianceWeight": 0.3,
+    "textPenaltyWeight": 0.3
+  },
+  "prompts": {
+    "default": "Create a vibrant music blog header...",
+    "gptVisionSystemPrompt": "You are an expert art director..."
+  },
+  "retry": {
+    "maxAttempts": 3
+  }
+}
+```
 
 **Usage in generate-tunes-post.js:**
 ```javascript

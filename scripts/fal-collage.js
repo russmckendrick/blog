@@ -5,18 +5,193 @@ import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import { fal } from '@fal-ai/client'
 import dotenv from 'dotenv'
+import OpenAI from 'openai'
 
 // Load environment variables
 dotenv.config()
 
+// Initialize OpenAI client
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+})
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
+// Load configuration
+let config
+try {
+  const configPath = path.join(__dirname, 'fal-collage-config.json')
+  const configFile = await fs.readFile(configPath, 'utf-8')
+  config = JSON.parse(configFile)
+} catch (error) {
+  console.error('Failed to load fal-collage-config.json:', error.message)
+  process.exit(1)
+}
+
 /**
- * Analyzes an image and calculates a color variance score
- * Higher score = more vibrant and diverse colors
+ * Check if an album/artist is blacklisted
  */
-async function calculateColorScore(imagePath) {
+function isBlacklisted(albumName, artistName = '') {
+  const blacklistConfig = config.blacklist || { albums: [], artists: [] }
+  const albums = blacklistConfig.albums || []
+  const artists = blacklistConfig.artists || []
+
+  const albumLower = albumName.toLowerCase()
+  const artistLower = artistName.toLowerCase()
+
+  // Check if album name contains any blacklisted album (case-insensitive, partial match)
+  for (const blacklistedAlbum of albums) {
+    if (albumLower.includes(blacklistedAlbum.toLowerCase())) {
+      return true
+    }
+  }
+
+  // Check if artist name contains any blacklisted artist
+  for (const blacklistedArtist of artists) {
+    if (artistLower.includes(blacklistedArtist.toLowerCase())) {
+      return true
+    }
+  }
+
+  return false
+}
+
+/**
+ * Analyzes album covers with GPT-4 Vision and generates a custom blending prompt
+ */
+async function generateSmartPrompt(imageUrls, debug = false) {
+  try {
+    if (!process.env.OPENAI_API_KEY) {
+      if (debug || config.debug?.logPrompts) {
+        console.log('  ⚠ No OpenAI API key found, using default prompt')
+      }
+      return null // Will use default prompt
+    }
+
+    if (debug || config.debug?.logPrompts) {
+      console.log('  Analyzing album covers with GPT-4 Vision...')
+    }
+
+    // Prepare image content for GPT-4 Vision
+    const imageContent = imageUrls.map(url => ({
+      type: 'image_url',
+      image_url: { url }
+    }))
+
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4o',
+      messages: [
+        {
+          role: 'system',
+          content: config.prompts.gptVisionSystemPrompt
+        },
+        {
+          role: 'user',
+          content: [
+            {
+              type: 'text',
+              text: `Analyze these ${imageUrls.length} album covers. For each, briefly describe:
+1. Main colors (be specific: "vibrant yellow", "deep red", "cool blue", etc.)
+2. Key visual elements (people, objects, scenes, patterns)
+3. Overall mood/style (vintage, modern, abstract, photographic, etc.)
+
+Then create a single detailed prompt (2-3 sentences) for an AI model to blend these albums into a cohesive music blog header. The prompt should:
+- Reference the specific colors, subjects, and styles you identified
+- Instruct the AI to merge/blend them with flowing transitions (not a grid)
+- Emphasize keeping each album recognizable but integrated
+- Mention removing text/typography
+- Aim for a "painted mural" or "watercolor blend" effect
+
+Output ONLY the final prompt, nothing else.`
+            },
+            ...imageContent
+          ]
+        }
+      ],
+      max_tokens: 300,
+      temperature: 0.7
+    })
+
+    const generatedPrompt = response.choices[0].message.content.trim()
+
+    if (debug || config.debug?.logPrompts) {
+      console.log(`  ✓ Generated smart prompt: "${generatedPrompt}"`)
+    }
+
+    return generatedPrompt
+  } catch (error) {
+    if (debug || config.debug?.logPrompts) {
+      console.error(`  ⚠ Failed to generate smart prompt: ${error.message}`)
+    }
+    return null // Fall back to default prompt
+  }
+}
+
+/**
+ * Detects text in an image using edge detection
+ * Higher score = more text/sharp edges (likely text)
+ * Lower score = less text (better for content policy)
+ */
+async function detectTextScore(imagePath) {
+  try {
+    // Focus on top and bottom regions where text usually appears
+    const image = sharp(imagePath)
+    const metadata = await image.metadata()
+
+    const { width, height } = metadata
+
+    // Extract top 20% and bottom 20% where album titles/artist names typically are
+    const topRegion = await sharp(imagePath)
+      .extract({ left: 0, top: 0, width, height: Math.floor(height * 0.2) })
+      .resize(256, 51, { fit: 'fill' })
+      .greyscale()
+      .convolve({
+        width: 3,
+        height: 3,
+        kernel: [-1, -1, -1, -1, 8, -1, -1, -1, -1] // Edge detection kernel
+      })
+      .raw()
+      .toBuffer()
+
+    const bottomRegion = await sharp(imagePath)
+      .extract({ left: 0, top: Math.floor(height * 0.8), width, height: Math.floor(height * 0.2) })
+      .resize(256, 51, { fit: 'fill' })
+      .greyscale()
+      .convolve({
+        width: 3,
+        height: 3,
+        kernel: [-1, -1, -1, -1, 8, -1, -1, -1, -1]
+      })
+      .raw()
+      .toBuffer()
+
+    // Count high-intensity pixels (edges) which indicate text
+    let topEdgeCount = 0
+    let bottomEdgeCount = 0
+    const threshold = 50
+
+    for (let i = 0; i < topRegion.length; i++) {
+      if (topRegion[i] > threshold) topEdgeCount++
+      if (bottomRegion[i] > threshold) bottomEdgeCount++
+    }
+
+    const totalEdgePixels = topEdgeCount + bottomEdgeCount
+    const totalPixels = topRegion.length + bottomRegion.length
+    const textScore = (totalEdgePixels / totalPixels) * 100
+
+    return textScore
+  } catch (error) {
+    console.error(`  Error detecting text in ${path.basename(imagePath)}:`, error.message)
+    return 100 // Assume high text score on error (to deprioritize)
+  }
+}
+
+/**
+ * Analyzes an image and calculates a comprehensive score
+ * Higher score = more vibrant colors + less text = better for collage
+ */
+async function calculateImageScore(imagePath, debug = false) {
   try {
     // Resize to 256x256 for performance
     const image = sharp(imagePath).resize(256, 256, { fit: 'cover' })
@@ -64,52 +239,158 @@ async function calculateColorScore(imagePath) {
 
     const totalVariance = (rVariance + gVariance + bVariance) / 3
 
-    // Combined score: saturation (60%) + variance (40%)
-    const score = (avgSaturation * 0.6) + (Math.sqrt(totalVariance) * 0.4)
+    // Detect text
+    const textScore = await detectTextScore(imagePath)
+
+    // Combined score (using config weights):
+    // - Color vibrancy: saturation + variance
+    // - Less text is better: penalize text
+    const weights = config.scoring || { saturationWeight: 0.4, varianceWeight: 0.3, textPenaltyWeight: 0.3 }
+    const colorScore = (avgSaturation * weights.saturationWeight) + (Math.sqrt(totalVariance) * weights.varianceWeight)
+    const textPenalty = (100 - textScore) * weights.textPenaltyWeight // Invert text score (less text = higher score)
+    const finalScore = colorScore + textPenalty
+
+    if (debug) {
+      return {
+        score: finalScore,
+        colorScore,
+        textScore,
+        avgSaturation,
+        totalVariance,
+        path: imagePath
+      }
+    }
 
     return {
-      score,
-      avgSaturation,
-      totalVariance,
+      score: finalScore,
       path: imagePath
     }
   } catch (error) {
     console.error(`  Error analyzing ${path.basename(imagePath)}:`, error.message)
     return {
       score: 0,
-      avgSaturation: 0,
-      totalVariance: 0,
       path: imagePath
     }
   }
 }
 
 /**
- * Selects the 4 most colorful/vibrant images from a list
+ * Selects the best images based on color vibrancy and low text content
+ * Filters out blacklisted albums/artists
  */
 async function selectMostInterestingImages(imagePaths, count = 4, debug = false) {
   if (debug) {
-    console.log(`  Analyzing ${imagePaths.length} images for color variance...`)
+    console.log(`  Analyzing ${imagePaths.length} images (color vibrancy + text detection + blacklist filtering)...`)
+  }
+
+  // Filter out blacklisted images first
+  const filteredPaths = imagePaths.filter(imagePath => {
+    const filename = path.basename(imagePath, path.extname(imagePath))
+
+    // Check if blacklisted
+    if (isBlacklisted(filename)) {
+      if (debug) {
+        console.log(`  ⚠ Blacklisted (skipping): ${filename}`)
+      }
+      return false
+    }
+    return true
+  })
+
+  if (debug && filteredPaths.length < imagePaths.length) {
+    console.log(`  Filtered out ${imagePaths.length - filteredPaths.length} blacklisted images`)
+  }
+
+  if (filteredPaths.length === 0) {
+    throw new Error('All images are blacklisted! Update fal-collage-config.json')
   }
 
   const scores = await Promise.all(
-    imagePaths.map(imagePath => calculateColorScore(imagePath))
+    filteredPaths.map(imagePath => calculateImageScore(imagePath, debug))
   )
 
-  // Sort by score descending
+  // Sort by score descending (high score = vibrant + minimal text)
   scores.sort((a, b) => b.score - a.score)
 
   // Take top N
   const selected = scores.slice(0, Math.min(count, scores.length))
 
-  if (debug) {
-    console.log(`  Top ${selected.length} most vibrant images:`)
+  if (debug || config.debug?.logScores) {
+    console.log(`  Top ${selected.length} best images (vibrant + low text):`)
     selected.forEach((item, idx) => {
-      console.log(`    ${idx + 1}. ${path.basename(item.path)} (score: ${item.score.toFixed(2)})`)
+      const details = item.textScore !== undefined
+        ? ` [color: ${item.colorScore.toFixed(1)}, text: ${item.textScore.toFixed(1)}%, final: ${item.score.toFixed(1)}]`
+        : ` [score: ${item.score.toFixed(1)}]`
+      console.log(`    ${idx + 1}. ${path.basename(item.path)}${details}`)
     })
   }
 
   return selected.map(item => item.path)
+}
+
+/**
+ * Creates a grid composition from multiple album covers
+ * @param {Array} imagePaths - Array of image paths to compose
+ * @param {number} columns - Number of columns in grid
+ * @param {number} cellSize - Size of each cell in pixels
+ * @param {boolean} debug - Enable debug logging
+ * @returns {Buffer} - JPEG buffer of the grid composition
+ */
+async function createGridComposition(imagePaths, columns = 3, cellSize = 400, debug = false) {
+  try {
+    const imageCount = imagePaths.length
+    const rows = Math.ceil(imageCount / columns)
+    const gridWidth = columns * cellSize
+    const gridHeight = rows * cellSize
+
+    if (debug) {
+      console.log(`    Creating ${columns}x${rows} grid (${gridWidth}x${gridHeight}px) from ${imageCount} images`)
+    }
+
+    // Create base canvas
+    const canvas = sharp({
+      create: {
+        width: gridWidth,
+        height: gridHeight,
+        channels: 3,
+        background: { r: 0, g: 0, b: 0 }
+      }
+    })
+
+    // Prepare composites
+    const composites = []
+
+    for (let i = 0; i < imageCount; i++) {
+      const col = i % columns
+      const row = Math.floor(i / columns)
+      const left = col * cellSize
+      const top = row * cellSize
+
+      // Pre-process image (crop text regions)
+      const processedBuffer = await preprocessImageForCollage(imagePaths[i], false)
+
+      // Resize to cell size
+      const resizedBuffer = await sharp(processedBuffer)
+        .resize(cellSize, cellSize, { fit: 'cover', kernel: sharp.kernel.lanczos3 })
+        .toBuffer()
+
+      composites.push({
+        input: resizedBuffer,
+        left,
+        top
+      })
+    }
+
+    // Composite all images onto canvas
+    const gridBuffer = await canvas
+      .composite(composites)
+      .jpeg({ quality: 95 })
+      .toBuffer()
+
+    return gridBuffer
+  } catch (error) {
+    throw new Error(`Failed to create grid composition: ${error.message}`)
+  }
 }
 
 /**
@@ -123,9 +404,8 @@ async function preprocessImageForCollage(imagePath, debug = false) {
 
     const { width: origWidth, height: origHeight } = metadata
 
-    // Calculate crop area - remove top 15% and bottom 15% where text usually appears
-    // Also remove left/right 5% for edge text/logos
-    const cropPercentage = {
+    // Calculate crop area - use config values for crop regions
+    const cropPercentage = config.images?.cropRegions || {
       top: 0.15,
       bottom: 0.15,
       left: 0.05,
@@ -204,106 +484,133 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
     throw new Error('No unique album images provided to createFALCollage')
   }
 
-  // Get all candidate images sorted by color variance
-  // Note: WAN 2.5 supports up to 4 images per request
-  const imageCount = 4
-  const maxRetries = Math.min(5, Math.floor(uniqueImagePaths.length / imageCount))
+  // Get all candidate images sorted by vibrancy and text score
+  // Strategy: Send individual album covers to model (flexible based on available images)
+  const minAlbums = config.images?.minCount || 2
+  const maxAlbums = config.images?.maxCount || 6
+  const totalAlbumsNeeded = Math.min(maxAlbums, Math.max(minAlbums, uniqueImagePaths.length))
+
+  if (uniqueImagePaths.length < minAlbums) {
+    throw new Error(`Not enough unique images (need at least ${minAlbums}, have ${uniqueImagePaths.length})`)
+  }
+
+  const maxRetries = config.retry?.maxAttempts || 3
   const allCandidates = await selectMostInterestingImages(uniqueImagePaths, uniqueImagePaths.length, debug)
 
   if (debug) {
-    console.log(`  Ranked ${allCandidates.length} images by color variance (will retry up to ${maxRetries} times if content policy issues occur)`)
+    console.log(`  Strategy: Send ${totalAlbumsNeeded} individual album covers to Reve remix model (${minAlbums}-${maxAlbums} range)`)
+    console.log(`  Ranked ${allCandidates.length} images by vibrancy + text score`)
+    console.log(`  Will retry up to ${maxRetries} times if content policy issues occur`)
   }
 
   let attempt = 0
   let selectedImages = []
   let uploadedUrls = []
-  let contentPolicyViolation = false
 
-  // Helper function to preprocess and upload images
-  async function preprocessAndUpload(imagePaths) {
+  // Helper function to preprocess and upload individual albums
+  async function preprocessAndUploadAlbums(imagePaths) {
     const urls = []
+
+    if (debug) {
+      console.log(`  Pre-processing and uploading ${imagePaths.length} albums:`)
+    }
+
     for (const imagePath of imagePaths) {
       try {
         if (debug) {
-          console.log(`  Pre-processing ${path.basename(imagePath)}...`)
+          console.log(`    Processing ${path.basename(imagePath)}...`)
         }
 
         // Pre-process to remove text regions
         const processedBuffer = await preprocessImageForCollage(imagePath, debug)
 
-        if (debug) {
-          console.log(`  Uploading processed image...`)
-        }
-
+        // Upload to FAL.ai
         const file = new File([processedBuffer], path.basename(imagePath), { type: 'image/jpeg' })
         const url = await fal.storage.upload(file)
         urls.push(url)
 
         if (debug) {
-          console.log(`    → Uploaded: ${url}`)
+          console.log(`      → Uploaded: ${url}`)
         }
       } catch (error) {
         throw new Error(`Failed to process/upload ${path.basename(imagePath)}: ${error.message}`)
       }
     }
+
     return urls
   }
 
-  // Select initial images (top 4 most vibrant)
-  selectedImages = allCandidates.slice(0, imageCount)
+  // Select initial images (as many as available, up to max)
+  selectedImages = allCandidates.slice(0, totalAlbumsNeeded)
+
+  if (selectedImages.length < minAlbums) {
+    throw new Error(`Not enough images (need at least ${minAlbums}, have ${selectedImages.length})`)
+  }
 
   if (debug) {
-    console.log(`  Attempt ${attempt + 1}: Selected ${imageCount} images:`)
+    console.log(`  Attempt ${attempt + 1}: Selected ${selectedImages.length} albums:`)
     selectedImages.forEach((img, idx) => console.log(`    ${idx + 1}. ${path.basename(img)}`))
   }
 
-  uploadedUrls = await preprocessAndUpload(selectedImages)
+  uploadedUrls = await preprocessAndUploadAlbums(selectedImages)
 
   if (uploadedUrls.length === 0) {
     throw new Error('No images were successfully uploaded to FAL.ai')
   }
 
-  // Prepare enhanced prompt for artistic transformation
-  const prompt = "Create an abstract artistic collage merging these album artworks. Transform and blend the visual elements, colors, and textures from the covers into a seamless, flowing composition. Focus on the artistic imagery, color palettes, and visual motifs while completely removing all text, logos, and typography. The result should be a cohesive piece of art that captures the essence and mood of the albums without any readable elements."
+  // Generate smart prompt using GPT-4 Vision (falls back to default if unavailable)
+  const defaultPrompt = config.prompts?.default || "Fuse and blend these album covers into a seamless artistic music collage. The covers should flow together organically with their colors, imagery, and textures merging and overlapping naturally. Create smooth, painterly transitions between albums where they meet - think watercolor bleeding or double exposure photography. Each album's distinctive visual elements should remain visible and recognizable, but integrated into a unified flowing composition. Remove all text and typography. The final result should look like a dreamy, cohesive artistic piece where the albums naturally blend into each other, not a grid of separate images."
 
-  const negativePrompt = "text, typography, letters, words, logos, titles, album names, artist names, watermark, labels, signs, readable text, fonts, writing, characters, symbols, low quality, defects, harsh edges, grid layout, separate panels"
+  const smartPrompt = await generateSmartPrompt(uploadedUrls, debug)
+  const prompt = smartPrompt || defaultPrompt
 
   if (debug) {
-    console.log(`  Generating collage with ${uploadedUrls.length} images...`)
-    console.log(`  Uploaded URLs:`)
-    uploadedUrls.forEach((url, idx) => console.log(`    ${idx + 1}. ${url}`))
-    console.log(`  Prompt: ${prompt}`)
-    console.log(`  Negative prompt: ${negativePrompt}`)
-    console.log(`  Dimensions: ${width}×${height}`)
+    console.log(`  Generating collage with ${uploadedUrls.length} images using Reve fast remix...`)
+    console.log(`  Using ${smartPrompt ? 'AI-generated' : 'default'} prompt`)
+    console.log(`  Prompt: "${prompt}"`)
   }
 
-  // Prepare API request payload
+  // Determine aspect ratio based on dimensions
+  let aspectRatio = '16:9' // Default for 1400×800
+  if (width === height) {
+    aspectRatio = '1:1'
+  } else if (width > height) {
+    const ratio = width / height
+    if (ratio > 1.7) aspectRatio = '16:9'
+    else if (ratio > 1.4) aspectRatio = '3:2'
+    else aspectRatio = '4:3'
+  } else {
+    const ratio = height / width
+    if (ratio > 1.7) aspectRatio = '9:16'
+    else if (ratio > 1.4) aspectRatio = '2:3'
+    else aspectRatio = '3:4'
+  }
+
+  // Prepare API request payload for Reve
   const apiInput = {
     prompt,
     image_urls: uploadedUrls,
-    negative_prompt: negativePrompt,
-    image_size: {
-      width,
-      height
-    },
-    num_images: 1,
-    enable_safety_checker: true
-  }
-
-  // Only include seed if it's provided
-  if (seed) {
-    apiInput.seed = seed
+    aspect_ratio: config.output?.aspectRatio || aspectRatio,
+    num_images: config.output?.numImages || 1,
+    output_format: config.output?.format || 'png'
   }
 
   if (debug) {
+    console.log(`  Aspect ratio: ${aspectRatio}`)
     console.log(`  API payload:`, JSON.stringify(apiInput, null, 2))
   }
 
   // Retry loop for content policy violations
+  const modelName = config.model?.name || "fal-ai/reve/fast/remix"
+
   while (attempt < maxRetries) {
     try {
-      // Call FAL.ai WAN 2.5 image-to-image
-      const result = await fal.subscribe("fal-ai/wan-25-preview/image-to-image", {
+      // Call FAL.ai model (from config)
+      if (debug) {
+        console.log(`  Using model: ${modelName}`)
+      }
+
+      const result = await fal.subscribe(modelName, {
         input: apiInput,
         logs: debug,
         onQueueUpdate: (update) => {
@@ -314,14 +621,13 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
       })
 
       if (!result.data || !result.data.images || result.data.images.length === 0) {
-        throw new Error('FAL.ai returned no images')
+        throw new Error('FAL.ai Reve returned no images')
       }
 
       const imageUrl = result.data.images[0].url
 
       if (debug) {
         console.log(`  Generated image URL: ${imageUrl}`)
-        console.log(`  Seed used: ${result.data.seeds?.[0] || 'N/A'}`)
       }
 
       // Download and save the image
@@ -360,34 +666,44 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
 
       if (isContentPolicyViolation && attempt < maxRetries - 1) {
         console.log(`  ⚠ Content policy violation detected on attempt ${attempt + 1}`)
-        console.log(`  → Retrying with next ${imageCount} images from the ranked list...`)
+        console.log(`  → Retrying with different album selection from the ranked list...`)
 
         // Select next batch of images
         attempt++
-        const startIndex = attempt * imageCount
-        selectedImages = allCandidates.slice(startIndex, startIndex + imageCount)
+        const startIndex = attempt * totalAlbumsNeeded
+        const remainingCandidates = allCandidates.slice(startIndex)
 
-        if (selectedImages.length < imageCount) {
-          console.log(`  ✗ Not enough alternative images to retry (need ${imageCount}, have ${selectedImages.length})`)
+        // Use as many as available, down to the minimum (2)
+        if (remainingCandidates.length < minAlbums) {
+          console.log(`  ✗ Not enough alternative images to retry (need at least ${minAlbums}, have ${remainingCandidates.length})`)
           break
         }
 
+        // Take as many as we can, up to maxAlbums
+        selectedImages = remainingCandidates.slice(0, Math.min(maxAlbums, remainingCandidates.length))
+
         if (debug) {
-          console.log(`  Attempt ${attempt + 1}: Selected new images:`)
+          console.log(`  Attempt ${attempt + 1}: Selected ${selectedImages.length} albums (using ${selectedImages.length >= minAlbums ? 'enough' : 'insufficient'} images)`)
           selectedImages.forEach((img, idx) => console.log(`    ${idx + 1}. ${path.basename(img)}`))
         }
 
-        // Pre-process and upload new batch
-        uploadedUrls = await preprocessAndUpload(selectedImages)
+        // Preprocess and upload new albums
+        uploadedUrls = await preprocessAndUploadAlbums(selectedImages)
 
-        // Update API payload with new URLs
+        // Regenerate smart prompt with new images
+        const newSmartPrompt = await generateSmartPrompt(uploadedUrls, debug)
+        const newPrompt = newSmartPrompt || defaultPrompt
+
+        // Update API payload with new URLs and prompt
         apiInput.image_urls = uploadedUrls
+        apiInput.prompt = newPrompt
 
         if (debug) {
-          console.log(`  Updated API payload with new image URLs`)
+          console.log(`  Updated API payload with ${uploadedUrls.length} album URLs`)
+          console.log(`  Regenerated ${newSmartPrompt ? 'AI' : 'default'} prompt for retry`)
         }
 
-        // Loop will retry with new images
+        // Loop will retry with new albums
         continue
       }
 
@@ -600,7 +916,7 @@ async function testFALCollage(cliArgs = []) {
 }
 
 // Export for use in other scripts
-export { createFALCollage, selectMostInterestingImages }
+export { createFALCollage, selectMostInterestingImages, createGridComposition, detectTextScore }
 
 // Run test if executed directly
 if (import.meta.url === `file://${process.argv[1]}`) {

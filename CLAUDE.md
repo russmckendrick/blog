@@ -574,15 +574,18 @@ Local Sharp-based torn-paper strip collage generator:
 - **Performance**: Fast, runs locally without API calls
 
 #### FAL.ai Collage (Alternative - `scripts/fal-collage.js`)
-AI-powered collage using FAL.ai WAN 2.5 image-to-image model:
+AI-powered collage using FAL.ai Reve fast remix model:
 - **Dimensions**: 1400×800 PNG
 - **Style**: AI-generated artistic fusion of album covers
-- **Selection**: Analyzes all albums and selects 4 most vibrant/colorful covers
-- **Algorithm**: Color variance analysis (saturation 60% + variance 40%)
+- **Selection**: Analyzes all albums and selects 2-6 most vibrant/colorful covers
+- **Algorithm**: Color variance analysis (saturation 40% + variance 30% + text penalty 30%)
+- **Blacklist**: Configurable album/artist blacklist to avoid content policy violations
+- **Smart Prompts**: Uses GPT-4 Vision to analyze covers and generate context-aware prompts
 - **Output**: Seamless AI-blended collage without text/typography
-- **API**: Requires `FAL_KEY` environment variable
-- **Cost**: Uses FAL.ai API credits (check pricing at fal.ai)
-- **Error handling**: Fails loudly on API errors (no fallback to strip-collage)
+- **API**: Requires `FAL_KEY` and `OPENAI_API_KEY` environment variables
+- **Configuration**: `scripts/fal-collage-config.json` - models, prompts, blacklist, scoring weights
+- **Cost**: Uses FAL.ai and OpenAI API credits
+- **Error handling**: Automatic retry with different images on content policy violations
 
 **Usage**:
 ```javascript
