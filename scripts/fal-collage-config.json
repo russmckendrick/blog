@@ -1,12 +1,13 @@
 {
   "model": {
-    "name": "fal-ai/reve/fast/remix",
-    "fallback": "fal-ai/reve/remix"
+    "name": "fal-ai/nano-banana-pro/edit",
+    "fallback": "fal-ai/reve/fast/remix"
   },
   "output": {
     "aspectRatio": "16:9",
     "numImages": 1,
-    "format": "png"
+    "format": "png",
+    "resolution": "2K"
   },
   "images": {
     "minCount": 2,

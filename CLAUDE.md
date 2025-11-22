@@ -574,8 +574,8 @@ Local Sharp-based torn-paper strip collage generator:
 - **Performance**: Fast, runs locally without API calls
 
 #### FAL.ai Collage (Alternative - `scripts/fal-collage.js`)
-AI-powered collage using FAL.ai Reve fast remix model:
-- **Dimensions**: 1400×800 PNG
+AI-powered collage using FAL.ai Gemini 3 Pro Image model:
+- **Dimensions**: 2K resolution (2048px) PNG
 - **Style**: AI-generated artistic fusion of album covers
 - **Selection**: Analyzes all albums and selects 2-6 most vibrant/colorful covers
 - **Algorithm**: Color variance analysis (saturation 40% + variance 30% + text penalty 30%)

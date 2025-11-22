@@ -109,14 +109,14 @@ Posts are created in:
 - `lib/image-handler.js` - Image downloading
 - `lib/blog-post-renderer.js` - MDX template renderer
 - `strip-collage.js` - Local Sharp-based torn-paper collage generator
-- `fal-collage.js` - AI-powered collage using FAL.ai WAN 2.5 (alternative)
+- `fal-collage.js` - AI-powered collage using FAL.ai Gemini 3 Pro Image (alternative)
 
 ### AI Models Used
 
 - **Anthropic**: Claude 3.5 Sonnet (default if key available)
 - **OpenAI**: GPT-4 Turbo (fallback)
 - **Web Search**: Tavily API (optional, for factual research)
-- **Image Generation**: FAL.ai WAN 2.5 (optional, for AI-powered collages)
+- **Image Generation**: FAL.ai Gemini 3 Pro Image (optional, for AI-powered collages)
 
 ## Cover Collage Generation
 
@@ -150,13 +150,13 @@ await createStripCollage(albumImagePaths, coverOutputPath, {
 **File**: `scripts/fal-collage.js`
 **Config**: `scripts/fal-collage-config.json`
 
-An AI-powered generator using FAL.ai's Reve fast remix model:
+An AI-powered generator using FAL.ai's Gemini 3 Pro Image model:
 - **Style**: AI-generated artistic fusion of album covers
 - **Selection**: Analyzes all albums and selects 2-6 most vibrant/colorful covers
 - **Algorithm**: Color variance analysis (saturation 40% + variance 30% + text penalty 30%)
 - **Smart Prompts**: Uses GPT-4 Vision to analyze covers and generate context-aware prompts
 - **Blacklist**: Configurable album/artist filtering to avoid content policy violations
-- **Output**: 1400×800 PNG with seamless blending
+- **Output**: 2K resolution (2048px) PNG with seamless blending
 - **API**: Requires `FAL_KEY` and `OPENAI_API_KEY` environment variables
 - **Cost**: Uses FAL.ai and OpenAI API credits
 
@@ -169,13 +169,20 @@ An AI-powered generator using FAL.ai's Reve fast remix model:
 6. Selects top 2-6 highest-scoring images
 7. Preprocesses images to crop text regions (top 15%, bottom 15%, sides 5%)
 8. Uses GPT-4 Vision to analyze covers and generate custom blend prompt
-9. Sends to FAL.ai Reve model for AI blending
+9. Sends to FAL.ai Gemini 3 Pro Image model for AI blending
 
 **Configuration (`scripts/fal-collage-config.json`):**
 ```json
 {
   "model": {
-    "name": "fal-ai/reve/fast/remix"
+    "name": "fal-ai/nano-banana-pro/edit",
+    "fallback": "fal-ai/reve/fast/remix"
+  },
+  "output": {
+    "aspectRatio": "16:9",
+    "numImages": 1,
+    "format": "png",
+    "resolution": "2K"
   },
   "blacklist": {
     "albums": ["Is This It", "Album Name"],
