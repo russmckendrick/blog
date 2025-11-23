@@ -9,9 +9,10 @@ interface Props {
   link?: string;
   zoom?: string | boolean;
   sizes?: string;
+  fullWidth?: boolean;
 }
 
-const { src, alt = '', width, link, zoom = true, sizes } = Astro.props;
+const { src, alt = '', width, link, zoom = true, sizes, fullWidth = false } = Astro.props;
 
 // Check if src is external URL
 const isExternal = src.startsWith('http://') || src.startsWith('https://');
@@ -39,9 +40,9 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
 );
 ---
 
-<div class="img-wrapper mb-1 flex justify-center">
+<div class={`img-wrapper mb-1 flex ${fullWidth ? '' : 'justify-center'}`}>
   {enableZoom ? (
-    <div>
+    <div class={fullWidth ? 'w-full' : ''}>
       <LightGallery
         layout={{ imgs: [{ src: highResSrc, alt: alt }] }}
         options={{ thumbnail: false, download: false }}
@@ -53,7 +54,7 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
             alt={alt}
             loading="lazy"
             decoding="async"
-            class="rounded-lg max-w-full h-auto hover:opacity-90 transition-opacity cursor-zoom-in"
+            class={`rounded-lg h-auto hover:opacity-90 transition-opacity cursor-zoom-in ${fullWidth ? 'w-full' : 'max-w-full'}`}
             sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
             {...(width && { width })}
           />
@@ -61,14 +62,14 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
       </LightGallery>
     </div>
   ) : link ? (
-    <a href={link} target="_blank" rel="noopener noreferrer">
+    <a href={link} target="_blank" rel="noopener noreferrer" class={fullWidth ? 'w-full' : ''}>
       <img
         src={imgSrc}
         srcset={srcsetString}
         alt={alt}
         loading="lazy"
         decoding="async"
-        class="rounded-lg max-w-full h-auto hover:opacity-90 transition-opacity"
+        class={`rounded-lg h-auto hover:opacity-90 transition-opacity ${fullWidth ? 'w-full' : 'max-w-full'}`}
         sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
         {...(width && { width })}
       />
@@ -80,7 +81,7 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
       alt={alt}
       loading="lazy"
       decoding="async"
-      class="rounded-lg max-w-full h-auto"
+      class={`rounded-lg h-auto ${fullWidth ? 'w-full' : 'max-w-full'}`}
       sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
       {...(width && { width })}
     />

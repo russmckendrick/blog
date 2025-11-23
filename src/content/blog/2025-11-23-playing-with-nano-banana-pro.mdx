@@ -1,6 +1,6 @@
 ---
 title: "Playing with Nano Banana Pro: AI-Powered Album Cover Collages"
-description: "Migrating from FAL.ai's WAN 2.5 to Nano Banana Pro for generating stunning AI-powered album cover collages with intelligent image selection and content policy handling"
+description: "Using Nano Banana Pro for generating stunning AI-powered album cover collages with intelligent image selection and content policy handling"
 date: 2025-11-23T10:28:53.300Z
 cover:
   image: "../../assets/2025-11-23-playing-with-nano-banana-pro/blog-cover-2025-11-23-playing-with-nano-banana-pro.png"
@@ -14,11 +14,12 @@ tags:
 
 Every week, I generate a "[Listened to This Week](/tunes/)" blog post that showcases my top albums from Last.fm. The header of each post is a custom cover collage—a visually stunning blend of album artwork that serves as the hero image. Until recently, I was using a local Sharp-based "torn paper strip" generator. But I wanted something more dynamic, more artistic, and more... AI-powered.
 
-Enter **[Nano Banana Pro](https://blog.google/technology/ai/nano-banana-pro/)**, Googles latest image editing model which is now available on the [FAL.ai](https://fal.ai/) API.
+Enter **[Nano Banana Pro](https://blog.google/technology/ai/nano-banana-pro/)**, Googles latest image editing model:
 
 <YouTube id="UQsJIo46ZR8" />
+<br />
 
-After implementing this I now have a sophisticated AI-powered collage generator that intelligently selects the most vibrant album covers, analyzes them with GPT-4 Vision, and composites them into cinematic masterpieces.
+It is now available on the [FAL.ai](https://fal.ai/) API and after implementing this I now have a sophisticated AI-powered collage generator that intelligently selects the most vibrant album covers, analyzes them with GPT-4 Vision, and composites them into quirky music masterpieces.
 
 ## The Challenge
 
@@ -225,9 +226,9 @@ This approach has a high success rate because it systematically tries different 
 
 ## Blacklist Management
 
-Some albums are persistent offenders (I'm looking at you, [*Is This It* by The Strokes]()). The config file includes a blacklist:
+Some albums are persistent offenders (I'm looking at you, [*Is This It*](https://russ.fm/album/is-this-it-3146367) and [*Með Suð Í Eyrum Við Spilum Endalaust*](https://russ.fm/album/med-sud-i-eyrum-vid-spilum-endalaust-21139177)). The config file includes a blacklist:
 
-```json
+```json title="Blacklist"
 {
   "blacklist": {
     "albums": [
@@ -239,13 +240,13 @@ Some albums are persistent offenders (I'm looking at you, [*Is This It* by The S
 }
 ```
 
-Blacklisted items are filtered out **before** scoring, ensuring they never make it to the API.
+Blacklisted items are filtered out **before** scoring, ensuring they never make it to the API and I don't shouted for submitting pictures of bums !!!.
 
 ## Configuration-Driven Design
 
 Everything is configurable via `fal-collage-config.json`:
 
-```json
+```json title="Config"
 {
   "model": {
     "name": "fal-ai/nano-banana-pro/edit",
@@ -284,18 +285,36 @@ Everything is configurable via `fal-collage-config.json`:
 
 Want to change the model? Update `model.name`. Want more aggressive text removal? Adjust `images.cropRegions`. Want to prioritize color variance over saturation? Tweak `scoring` weights.
 
-## The Nano Banana Pro Migration
+## Model Selection & Fallback Strategy
 
-The original implementation used FAL.ai's WAN 2.5 model. Migrating to Nano Banana Pro required:
+The collage generator is built around **Nano Banana Pro** as the primary model, with **WAN 2.5** configured as a fallback option. This design provides reliability while leveraging the best available technology.
 
-1. **Model endpoint change**: `fal-ai/nano-banana-pro/edit`
-2. **API payload adjustment**: Different parameter naming conventions
-3. **Prompt refinement**: Nano Banana Pro responds better to photographic composition language
-4. **Output resolution**: Upgraded to 2K (2048px) resolution
+### Why Nano Banana Pro?
 
-The key configuration change:
+When designing the system, I chose Nano Banana Pro for several key reasons:
 
-```javascript
+1. **Photographic Quality**: Produces photorealistic, cinematic results rather than painterly effects
+2. **High Resolution**: Native 2K (2048px) output without upscaling artifacts
+3. **Better Composition**: Stronger understanding of spatial relationships and scene composition
+4. **Text Removal**: More effective at removing typography while preserving visual elements
+5. **Color Preservation**: Maintains original album artwork vibrancy better
+
+### Configuration-Driven Model Selection
+
+The system uses a flexible config-driven approach defined in `fal-collage-config.json`:
+
+```json title="Model selection"
+{
+  "model": {
+    "name": "fal-ai/nano-banana-pro/edit",
+    "fallback": "fal-ai/reve/fast/remix"
+  }
+}
+```
+
+The implementation loads the model dynamically:
+
+```javascript title="Model loading"
 const modelName = config.model?.name || "fal-ai/nano-banana-pro/edit"
 
 const apiInput = {
@@ -318,12 +337,42 @@ const result = await fal.subscribe(modelName, {
 })
 ```
 
-Nano Banana Pro produces more photographic, less painterly results—exactly what I wanted for music blog headers.
+### Fallback Strategy
 
-## Results & Performance
+While Nano Banana Pro is the primary model, the configuration includes a fallback model (`fal-ai/reve/fast/remix`) that can be activated by simply changing the config file. This provides:
 
-```
-node scripts/fal-collage.js --input=public/assets/2025-11-17-listened-to-this-week/albums --output=test-output/tunes-cover-2025-11-17-listened-to-this-week.png --debug
+- **Flexibility**: Switch models without code changes
+- **Reliability**: Alternative if Nano Banana Pro has availability issues
+- **Experimentation**: Easy A/B testing between different models
+- **Future-proofing**: Simple to add new models as FAL.ai releases them
+
+The result? Photorealistic context aware music blog headers that look professionally designed—all generated automatically each week.
+
+## The Results
+
+I tested with the post from [Nov 17, 2025 post](https://www.russ.cloud/2025/11/17/a-sonic-journey-through-euphoria-and-reflection-in-timeless-sounds/), which contained these albums:
+
+<LightGallery
+  layout={{
+    imgs: [
+      { src: "/assets/2025-11-17-listened-to-this-week/albums/Zeitgeist.jpg" },
+      { src: "/assets/2025-11-17-listened-to-this-week/albums/So-Here-We-Are-Best-Of-Doves.jpg" },
+      { src: "/assets/2025-11-17-listened-to-this-week/albums/De-La-Soul-Is-Dead.jpg" },
+      { src: "/assets/2025-11-17-listened-to-this-week/albums/The-Big-Lad-In-The-Windmill.jpg" },
+      { src: "/assets/2025-11-17-listened-to-this-week/albums/Lost-in-the-Dream.jpg" },
+      { src: "/assets/2025-11-17-listened-to-this-week/albums/Metropolis-Pt-2-Scenes-From-a-Memory.jpg" },
+      { src: "/assets/2025-11-17-listened-to-this-week/albums/Best-of-1969-1974.jpg" },
+      { src: "/assets/2025-11-17-listened-to-this-week/albums/Specials.jpg" },
+      { src: "/assets/2025-11-17-listened-to-this-week/albums/A-Secret-Wish.jpg" },
+      { src: "/assets/2025-11-17-listened-to-this-week/albums/Songs-from-the-Big-Chair.jpg" },
+      { src: "/assets/2025-11-17-listened-to-this-week/albums/Stop-Making-Sense-Music-from-a-film-by-Jonathan-Demme-and-Talking-Heads.jpg" }
+    ]
+  }}
+/>
+
+As you can see from the output below and the covers above it certainly made the right choice for which 8 covers to use for the collage, it correctly skipped the all text [Stop Making Sense](https://www.russ.fm/album/stop-making-sense-music-from-a-film-by-jonathan-demme-and-talking-heads-27799152/), and the not very colorful [Songs from the Big Chair](https://www.russ.fm/album/songs-from-the-big-chair-124187) and [A Secret Wish]()https://www.russ.fm/album/a-secret-wish-35663980/) ....
+
+```text frame="terminal" title="Running the script"
 Creating FAL.ai music collage...\n
 Input folder: /Users/russ.mckendrick/Code/blog/public/assets/2025-11-17-listened-to-this-week/albums
 Found 11 album images\n
@@ -411,24 +460,33 @@ Creating FAL.ai collage...\n
   Selected images: 8
   ```
 
+This gave us the following:
 
-## Future Improvements
+<Img src="/assets/2025-11-23-playing-with-nano-banana-pro/tunes-cover-2025-11-17-listened-to-this-week.png" alt="17/11/205" fullWidth="true" />
+<br />
 
-Some ideas I'm exploring:
+I also went back and did the rest of the year, here are some more examples:
 
-1. **Face detection**: Prioritize album covers with faces (more engaging)
-2. **Color palette extraction**: Ensure selected albums have complementary colors
-3. **Aspect ratio adaptation**: Generate collages for different formats (Instagram, Twitter, etc.)
-4. **Style transfer**: Apply consistent artistic styles across all weekly collages
-5. **A/B testing**: Generate multiple variations and select the best
+<LightGallery
+  layout={{
+    imgs: [
+      { src: "/assets/2025-11-23-playing-with-nano-banana-pro/tunes-cover-2025-04-21-listened-to-this-week.png", alt: "21/04/205"},
+      { src: "/assets/2025-11-23-playing-with-nano-banana-pro/tunes-cover-2025-05-19-listened-to-this-week.png", alt: "19/05/205"},
+      { src: "/assets/2025-11-23-playing-with-nano-banana-pro/tunes-cover-2025-06-16-listened-to-this-week.png", alt: "16/06/205"},      
+      { src: "/assets/2025-11-23-playing-with-nano-banana-pro/tunes-cover-2025-06-30-listened-to-this-week.png", alt: "30/06/205"},   
+      { src: "/assets/2025-11-23-playing-with-nano-banana-pro/tunes-cover-2025-09-15-listened-to-this-week.png", alt: "15/09/205"},
+      { src: "/assets/2025-11-23-playing-with-nano-banana-pro/tunes-cover-2025-10-20-listened-to-this-week.png", alt: "20/10/205"}
+    ]
+  }}
+/>
 
 ## Try It Yourself
 
-The collage generator is part of my blog's codebase and runs automatically via GitHub Actions every week. Key files:
+The collage generator is part of my blog's codebase and runs automatically via GitHub Actions every week. You can find the key files below:
 
-- **Main script**: `scripts/fal-collage.js`
-- **Config**: `scripts/fal-collage-config.json`
-- **Tunes generator**: `scripts/generate-tunes-post.js` (orchestrator)
+- **Main script**: [scripts/fal-collage.js](https://github.com/russmckendrick/blog/blob/main/scripts/fal-collage.js)
+- **Config**: [scripts/fal-collage-config.json](https://github.com/russmckendrick/blog/blob/main/scripts/fal-collage-config.json)
+- **Tunes generator**: [scripts/generate-tunes-post.js (orchestrator)](https://github.com/russmckendrick/blog/blob/main/scripts/generate-tunes-post.js)
 
 **Required environment variables:**
 ```bash
@@ -441,23 +499,22 @@ OPENAI_API_KEY=your-openai-key
 node scripts/fal-collage.js --input=./albums --output=./collage.png --debug
 ```
 
-## Conclusion
+## Summary
 
-Migrating to Nano Banana Pro transformed my weekly music blog post workflow. What started as a simple image processing task evolved into a sophisticated AI-powered pipeline that combines:
+Migrating to Nano Banana Pro transformed my weekly music blog post workflow, what started as a simple image processing task evolved into a AI-powered pipeline that combines:
 
 - Computer vision (color analysis, text detection)
 - GPT-4 Vision (intelligent prompt generation)
 - Nano Banana Pro (photographic composition)
 - Smart retry logic (content policy handling)
 
-The result? Stunning, unique cover collages that make each weekly post visually distinctive—and all generated automatically.
+The result? Unique cover collages that make each weekly post visually distinctive—and all generated automatically.
 
 Next time you see a "Listened to This Week" post, you'll know there's a lot more than meets the eye behind that cover image.
 
----
+## Resources
 
-**Resources:**
-- [FAL.ai Nano Banana Pro Documentation](https://fal.ai/models/nano-banana-pro)
+- [FAL.ai Nano Banana Pro Documentation](https://fal.ai/models/fal-ai/nano-banana-pro)
 - [FAL.ai API Reference](https://fal.ai/docs)
 - [GPT-4 Vision API](https://platform.openai.com/docs/guides/vision)
 - [Sharp Image Processing](https://sharp.pixelplumbing.com/)
