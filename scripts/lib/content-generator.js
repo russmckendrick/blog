@@ -129,7 +129,7 @@ export class ContentGenerator {
         if (albumData?.image) {
           const albumImagePath = `/assets/${dateStr}-listened-to-this-week/albums/${normalizeForFilename(album)}.jpg`
           enrichedLines.push('')
-          enrichedLines.push(`<Img src="${albumImagePath}" alt="${album} by ${artist}" />`)
+          enrichedLines.push(`<Img src="${albumImagePath}" alt="${album} by ${artist}" fullWidth="true" />`)
           enrichedLines.push('')
         }
       }
@@ -138,7 +138,7 @@ export class ContentGenerator {
       if (headerFound && i === middleH3Index && artistData?.image) {
         const artistImagePath = `/assets/${dateStr}-listened-to-this-week/artists/${normalizeForFilename(artist)}.jpg`
         enrichedLines.push('')
-        enrichedLines.push(`<Img src="${artistImagePath}" alt="${artist}" />`)
+        enrichedLines.push(`<Img src="${artistImagePath}" alt="${artist}" fullWidth="true" />`)
         enrichedLines.push('')
         // Only add once
         artistData.image = null
