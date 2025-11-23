@@ -81,8 +81,22 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 				});
 			}
 
+			// Global cleanup for Mermaid diagrams when navigating away from pages
+			function cleanupMermaid() {
+				// Remove any Mermaid elements that might have been appended to body
+				document.querySelectorAll('[id^="mermaid-"]').forEach(el => {
+					// Don't remove elements inside .mermaid-wrapper (those are part of the page content)
+					if (!el.closest('.mermaid-wrapper')) {
+						el.remove();
+					}
+				});
+			}
+
 			// Cleanup before View Transitions swap
-			document.addEventListener('astro:before-swap', cleanupLightGallery);
+			document.addEventListener('astro:before-swap', () => {
+				cleanupLightGallery();
+				cleanupMermaid();
+			});
 		</script>
 	</body>
 </html>

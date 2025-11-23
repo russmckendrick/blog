@@ -213,7 +213,44 @@ Global MDX components are available in all blog posts without imports:
 - **Media**: YouTube, Instagram, Giphy, Reddit, Img, LightGallery
 - **Audio/Music**: Audio (MP3/OGG/WAV), AppleMusic
 - **Content**: LinkPreview, ChatMessage
+- **Diagrams**: Mermaid (interactive diagrams with zoom/pan/export)
 - **Callouts**: 8 types (Note, Tip, Info, Important, Warning, Caution, General, Callout)
+
+**Mermaid Diagram Component:**
+The Mermaid component renders interactive diagrams with zoom, pan, and export capabilities (based on Mermaider):
+- **Usage**: `<Mermaid code={\`graph TD\nA --> B\`} />` or `<Mermaid code={\`...\`} title="Diagram description" minimapPosition="TL" />`
+- **Features**:
+  - **Interactive minimap**: Bottom-right overlay showing diagram overview with viewport indicator, drag to pan, click to jump
+  - **Zoom/pan controls**: Mouse wheel zoom (0.2x-5x range), click-drag panning, minimap controls (+/-/reset buttons)
+  - **Auto theme-switching**: Diagrams automatically re-render when dark mode toggles (watches `<html>` class changes)
+  - **Export capabilities**: PNG (2x resolution) and SVG export, always exports in light mode regardless of theme
+  - **Error handling**: Graceful fallback with user-friendly error messages for invalid Mermaid syntax
+  - **Responsive**: Diagrams auto-size to container with proper SVG dimension fixes
+- **Props**:
+  - `code` (required): The Mermaid diagram code as a string
+  - `title` (optional): Accessibility label and export filename (default: "Mermaid diagram")
+  - `minimapPosition` (optional): Minimap position - `"TL"` (top-left), `"TR"` (top-right), `"BL"` (bottom-left), `"BR"` (bottom-right, default), `"off"` (disabled)
+- **Implementation**:
+  - Component: `src/components/embeds/Mermaid.astro`
+  - Export utility: `src/utils/exportMermaidPNG.ts`
+  - Uses `mermaid@11.12.1` with manual rendering (`startOnLoad: false`)
+  - SVG sizing fixes remove hardcoded dimensions for responsive behavior
+  - MutationObserver watches for theme changes and triggers re-render
+- **View Transitions**: Cleanup logic in `BaseLayout.astro` removes orphaned Mermaid elements on navigation
+- **Styling**: Border, controls bar, dark mode support, matches blog component patterns
+
+**Example Usage:**
+```mdx
+<Mermaid code={`
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Processing
+    Processing --> Success
+    Processing --> Error
+    Success --> [*]
+    Error --> Idle
+`} title="State machine diagram" />
+```
 
 **LightGallery Meta File Plugin:**
 The LightGallery component includes a custom plugin that automatically loads image captions from `.meta` files:

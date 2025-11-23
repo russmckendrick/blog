@@ -9,5 +9,6 @@ export { default as ChatMessage } from './ChatMessage.astro';
 export { default as Reddit } from './Reddit.astro';
 export { default as Img } from './Img.astro';
 export { default as LightGallery } from './LightGalleryNew.astro';
+export { default as Mermaid } from './Mermaid.astro';
 export * from './callouts';
 export const YouTube = AstroYouTube;

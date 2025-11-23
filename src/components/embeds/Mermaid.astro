@@ -1,0 +1,805 @@
+---
+interface Props {
+  /** The Mermaid diagram code */
+  code: string;
+  /** Optional title for accessibility */
+  title?: string;
+  /** Minimap position: TL (top-left), TR (top-right), BL (bottom-left), BR (bottom-right), off (disabled) */
+  minimapPosition?: 'TL' | 'TR' | 'BL' | 'BR' | 'off';
+}
+
+const { code, title = "Mermaid diagram", minimapPosition = "BR" } = Astro.props;
+const diagramId = `mermaid-${Math.random().toString(36).substring(2, 9)}`;
+
+// Calculate minimap position classes
+const positionClasses = {
+  TL: 'top-3 left-3',
+  TR: 'top-3 right-3',
+  BL: 'bottom-3 left-3',
+  BR: 'bottom-3 right-3',
+  off: 'hidden'
+};
+const minimapPositionClass = positionClasses[minimapPosition];
+---
+
+<div class="mermaid-wrapper not-prose my-6 border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-900" data-diagram-id={diagramId} data-diagram-title={title}>
+  <!-- Controls bar -->
+  <div class="controls-bar flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
+    <div class="flex items-center gap-3">
+      {title && title !== "Mermaid diagram" && (
+        <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{title}</span>
+      )}
+    </div>
+    <div class="flex items-center gap-2">
+      <button
+        class="export-svg-btn px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+        data-action="export-svg"
+        aria-label="Export as SVG"
+      >
+        Export SVG
+      </button>
+      <button
+        class="export-png-btn px-3 py-1 text-xs font-medium text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded transition-colors"
+        data-action="export-png"
+        aria-label="Export as PNG"
+      >
+        Export PNG
+      </button>
+    </div>
+  </div>
+
+  <!-- Error display -->
+  <div class="error-display hidden px-4 py-3 bg-red-50 dark:bg-red-900/20 border-b border-red-200 dark:border-red-800">
+    <p class="text-sm text-red-800 dark:text-red-200 font-medium">Error rendering diagram:</p>
+    <pre class="text-xs text-red-700 dark:text-red-300 mt-1 overflow-auto max-h-40"></pre>
+  </div>
+
+  <!-- Diagram container -->
+  <div
+    class="preview-container relative flex items-center justify-center overflow-hidden bg-white dark:bg-gray-900"
+    style="min-height: 300px;"
+    role="img"
+    aria-label={title}
+  >
+    <div class="svg-wrap" style="transform-origin: center center;"></div>
+
+    <!-- Minimap overlay -->
+    <div class={`minimap-container absolute ${minimapPositionClass} bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-300 dark:border-gray-600 rounded shadow-lg overflow-hidden`} style="width: 140px; height: 105px;">
+      <div class="minimap-canvas relative" style="width: 100%; height: 100%;"></div>
+      <div class="minimap-viewport absolute border-2 border-blue-500 bg-blue-500/20 cursor-move" style="pointer-events: auto;"></div>
+      <div class="minimap-controls absolute top-1 right-1 flex flex-col gap-0.5">
+        <button
+          class="minimap-zoom-in p-0.5 bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm border border-gray-300 dark:border-gray-600 rounded shadow-sm hover:bg-white dark:hover:bg-gray-600 transition-colors text-xs"
+          data-action="zoom-in"
+          aria-label="Zoom in"
+        >
+          <span class="zoom-icon">+</span>
+        </button>
+        <button
+          class="minimap-zoom-out p-0.5 bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm border border-gray-300 dark:border-gray-600 rounded shadow-sm hover:bg-white dark:hover:bg-gray-600 transition-colors text-xs"
+          data-action="zoom-out"
+          aria-label="Zoom out"
+        >
+          <span class="zoom-icon">−</span>
+        </button>
+        <button
+          class="minimap-reset p-0.5 bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm border border-gray-300 dark:border-gray-600 rounded shadow-sm hover:bg-white dark:hover:bg-gray-600 transition-colors text-xs"
+          data-action="reset"
+          aria-label="Reset view"
+        >
+          <span class="zoom-icon text-[10px]">⟲</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Store diagram code in data attribute -->
+  <script type="application/json" class="diagram-code" set:html={JSON.stringify(code)}></script>
+</div>
+
+<script>
+  // This script runs once when the module is loaded
+  import mermaid from 'mermaid';
+  import { exportMermaidPNG } from '../../utils/exportMermaidPNG';
+
+  // Initialize Mermaid once with proper font settings
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'default',
+    themeVariables: {
+      fontFamily: '"trebuchet ms", verdana, arial, sans-serif'
+    },
+    flowchart: {
+      useMaxWidth: true,
+      htmlLabels: true,
+      curve: 'basis'
+    }
+  });
+
+  // Function to initialize a single diagram wrapper
+  function initializeDiagram(wrapper: HTMLElement) {
+    // Get diagram code from JSON script tag
+    const codeScript = wrapper.querySelector('.diagram-code');
+    if (!codeScript) {
+      console.error('[Mermaid] No diagram code found');
+      return;
+    }
+
+    const codeText = codeScript.textContent || '""';
+
+    let code: string;
+    try {
+      code = JSON.parse(codeText);
+    } catch (e) {
+      console.error('[Mermaid] Failed to parse code JSON:', e);
+      return;
+    }
+
+    const diagramId = wrapper.getAttribute('data-diagram-id') || 'mermaid-default';
+    const diagramTitle = wrapper.getAttribute('data-diagram-title') || '';
+
+    // Diagram state
+    let scale = 1;
+    let panX = 0;
+    let panY = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let currentTheme = 'default';
+
+    // Get DOM elements
+    const previewDiv = wrapper.querySelector('.preview-container') as HTMLElement;
+    const svgWrap = wrapper.querySelector('.svg-wrap') as HTMLElement;
+    const errorDisplay = wrapper.querySelector('.error-display') as HTMLElement;
+    const errorPre = errorDisplay?.querySelector('pre') as HTMLPreElement;
+    const minimapContainer = wrapper.querySelector('.minimap-container') as HTMLElement;
+    const minimapCanvas = wrapper.querySelector('.minimap-canvas') as HTMLElement;
+    const minimapViewport = wrapper.querySelector('.minimap-viewport') as HTMLElement;
+
+    if (!previewDiv || !svgWrap || !errorDisplay || !errorPre || !minimapContainer || !minimapCanvas || !minimapViewport) {
+      console.error('Mermaid wrapper elements not found');
+      return;
+    }
+
+    // Detect current theme
+    function detectTheme() {
+      return document.documentElement.classList.contains('dark') ? 'dark' : 'default';
+    }
+
+    // Apply transform to SVG wrapper
+    function applyTransform() {
+      svgWrap.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+      updateMinimap();
+    }
+
+    // Update minimap viewport indicator
+    function updateMinimap() {
+      const svgEl = svgWrap.querySelector('svg');
+      if (!svgEl) return;
+
+      const svgRect = svgEl.getBoundingClientRect();
+      const previewRect = previewDiv.getBoundingClientRect();
+      const viewBox = svgEl.viewBox.baseVal;
+
+      // Calculate minimap dimensions
+      const minimapWidth = minimapCanvas.clientWidth;
+      const minimapHeight = minimapCanvas.clientHeight;
+
+      // Calculate scale factor for minimap
+      const scaleX = minimapWidth / viewBox.width;
+      const scaleY = minimapHeight / viewBox.height;
+      const minimapScale = Math.min(scaleX, scaleY);
+
+      // Calculate visible viewport in SVG coordinates
+      const visibleWidth = previewRect.width / scale;
+      const visibleHeight = previewRect.height / scale;
+
+      // Calculate viewport position in minimap
+      const viewportWidth = (visibleWidth / viewBox.width) * minimapWidth;
+      const viewportHeight = (visibleHeight / viewBox.height) * minimapHeight;
+
+      // Calculate center offset (since SVG is centered)
+      const svgCenterX = (previewRect.width - svgRect.width) / 2;
+      const svgCenterY = (previewRect.height - svgRect.height) / 2;
+
+      // Calculate viewport position accounting for pan and center offset
+      const viewportX = ((svgCenterX - panX) / scale / viewBox.width) * minimapWidth;
+      const viewportY = ((svgCenterY - panY) / scale / viewBox.height) * minimapHeight;
+
+      // Update viewport indicator
+      minimapViewport.style.left = `${Math.max(0, Math.min(viewportX, minimapWidth - viewportWidth))}px`;
+      minimapViewport.style.top = `${Math.max(0, Math.min(viewportY, minimapHeight - viewportHeight))}px`;
+      minimapViewport.style.width = `${Math.min(viewportWidth, minimapWidth)}px`;
+      minimapViewport.style.height = `${Math.min(viewportHeight, minimapHeight)}px`;
+    }
+
+    // Render minimap thumbnail
+    function renderMinimap() {
+      const svgEl = svgWrap.querySelector('svg');
+      if (!svgEl) return;
+
+      // Clone the SVG for minimap
+      const svgClone = svgEl.cloneNode(true) as SVGSVGElement;
+      svgClone.removeAttribute('style');
+
+      const viewBox = svgEl.viewBox.baseVal;
+
+      // Calculate scale to fit minimap
+      const minimapWidth = minimapCanvas.clientWidth;
+      const minimapHeight = minimapCanvas.clientHeight;
+      const scaleX = minimapWidth / viewBox.width;
+      const scaleY = minimapHeight / viewBox.height;
+      const minimapScale = Math.min(scaleX, scaleY);
+
+      const scaledWidth = viewBox.width * minimapScale;
+      const scaledHeight = viewBox.height * minimapScale;
+
+      svgClone.style.width = `${scaledWidth}px`;
+      svgClone.style.height = `${scaledHeight}px`;
+      svgClone.style.position = 'absolute';
+      svgClone.style.left = '50%';
+      svgClone.style.top = '50%';
+      svgClone.style.transform = 'translate(-50%, -50%)';
+      svgClone.style.pointerEvents = 'none';
+      svgClone.style.opacity = '0.7';
+
+      // Clear and add minimap SVG
+      minimapCanvas.innerHTML = '';
+      minimapCanvas.appendChild(svgClone);
+
+      updateMinimap();
+    }
+
+    // Render Mermaid diagram
+    async function renderMermaid(diagramCode: string) {
+      try {
+        // Hide error, clear preview
+        errorDisplay.classList.add('hidden');
+        errorPre.textContent = '';
+
+        // Detect theme and render
+        currentTheme = detectTheme();
+
+        // Configure theme-specific settings
+        if (currentTheme === 'dark') {
+          mermaid.initialize({
+            startOnLoad: false,
+            theme: 'dark',
+            themeVariables: {
+              darkMode: true,
+              background: '#0f172a',
+              primaryColor: '#1e3a5f',
+              primaryTextColor: '#f1f5f9',
+              primaryBorderColor: '#64748b',
+              lineColor: '#94a3b8',
+              secondaryColor: '#1e4620',
+              tertiaryColor: '#4a3f1a',
+              mainBkg: '#1e3a5f',
+              secondBkg: '#1e4620',
+              tertiaryBkg: '#4a3f1a',
+              textColor: '#f1f5f9',
+              labelTextColor: '#f1f5f9',
+              clusterBkg: '#334155',
+              clusterBorder: '#64748b',
+              edgeLabelBackground: '#1e293b',
+              nodeBorder: '#64748b',
+              errorBkgColor: '#5a1f1f',
+              errorTextColor: '#f1f5f9'
+            }
+          });
+        } else {
+          mermaid.initialize({
+            startOnLoad: false,
+            theme: 'default',
+            themeVariables: {
+              fontFamily: '"trebuchet ms", verdana, arial, sans-serif',
+              primaryColor: '#e1f5ff',
+              secondaryColor: '#d4edda',
+              tertiaryColor: '#fff3cd',
+              errorBkgColor: '#f8d7da'
+            }
+          });
+        }
+
+        // Render the diagram with unique ID
+        const renderResult = await mermaid.render(diagramId, diagramCode);
+        const svg = renderResult.svg;
+
+        // Use requestAnimationFrame for DOM manipulation timing
+        requestAnimationFrame(() => {
+          svgWrap.innerHTML = svg;
+
+          const svgEl = svgWrap.querySelector('svg');
+          if (svgEl) {
+            // Store viewBox before modifications
+            const viewBox = svgEl.viewBox.baseVal;
+
+            // Critical: Remove fixed dimensions for responsive sizing (Mermaider approach)
+            svgEl.removeAttribute('width');
+            svgEl.removeAttribute('height');
+            svgEl.removeAttribute('style');
+
+            // Apply responsive sizing - use explicit width from viewBox
+            svgEl.style.width = `${viewBox.width}px`;
+            svgEl.style.height = `${viewBox.height}px`;
+            svgEl.style.maxWidth = '100%';
+            svgEl.style.maxHeight = '100%';
+
+            // Apply dark mode color overrides directly to elements
+            if (currentTheme === 'dark') {
+              const colorMap = {
+                '#e1f5ff': '#1e3a5f',
+                'rgb(225, 245, 255)': '#1e3a5f',
+                '#d4edda': '#1e4620',
+                'rgb(212, 237, 218)': '#1e4620',
+                '#f8d7da': '#5a1f1f',
+                'rgb(248, 215, 218)': '#5a1f1f',
+                '#fff3cd': '#4a3f1a',
+                'rgb(255, 243, 205)': '#4a3f1a'
+              };
+
+              // Find all elements with fill styles and replace colors
+              svgEl.querySelectorAll('[style*="fill"]').forEach(el => {
+                const style = el.getAttribute('style') || '';
+                let newStyle = style;
+
+                Object.keys(colorMap).forEach(lightColor => {
+                  if (style.includes(lightColor)) {
+                    newStyle = newStyle.replace(new RegExp(lightColor, 'gi'), colorMap[lightColor]);
+                  }
+                });
+
+                if (newStyle !== style) {
+                  el.setAttribute('style', newStyle);
+                }
+              });
+
+              // Also update fill attributes directly
+              svgEl.querySelectorAll('[fill]').forEach(el => {
+                const fill = el.getAttribute('fill') || '';
+                Object.keys(colorMap).forEach(lightColor => {
+                  if (fill.toLowerCase() === lightColor.toLowerCase()) {
+                    el.setAttribute('fill', colorMap[lightColor]);
+                  }
+                });
+              });
+            }
+
+            // Reset transform
+            scale = 1;
+            panX = 0;
+            panY = 0;
+            applyTransform();
+            renderMinimap();
+          }
+        });
+      } catch (err: any) {
+        // Show error
+        const errorMsg = err?.str || err?.message || (typeof err === 'string' ? err : JSON.stringify(err));
+        errorDisplay.classList.remove('hidden');
+        errorPre.textContent = errorMsg;
+        svgWrap.innerHTML = '';
+      }
+    }
+
+    // Zoom controls
+    function handleZoom(direction: 'in' | 'out' | 'reset') {
+      if (direction === 'in') {
+        scale *= 1.1;
+      } else if (direction === 'out') {
+        scale *= 0.9;
+      } else if (direction === 'reset') {
+        scale = 1;
+        panX = 0;
+        panY = 0;
+      }
+
+      // Clamp scale (0.2x to 5x)
+      scale = Math.max(0.2, Math.min(scale, 5));
+
+      applyTransform();
+    }
+
+    // Mouse wheel zoom
+    function handleWheel(e: WheelEvent) {
+      e.preventDefault();
+      const delta = e.deltaY;
+
+      // Zoom centered on mouse position
+      scale *= delta > 0 ? 0.9 : 1.1;
+      scale = Math.max(0.2, Math.min(scale, 5));
+
+      applyTransform();
+    }
+
+    // Mouse drag pan
+    function handleMouseDown(e: MouseEvent) {
+      isDragging = true;
+      startX = e.clientX - panX;
+      startY = e.clientY - panY;
+      previewDiv.style.cursor = 'grabbing';
+    }
+
+    function handleMouseMove(e: MouseEvent) {
+      if (!isDragging) return;
+      panX = e.clientX - startX;
+      panY = e.clientY - startY;
+      applyTransform();
+    }
+
+    function handleMouseUp() {
+      isDragging = false;
+      previewDiv.style.cursor = 'grab';
+    }
+
+    // Minimap viewport drag
+    let isMinimapDragging = false;
+    let minimapStartX = 0;
+    let minimapStartY = 0;
+    let minimapStartPanX = 0;
+    let minimapStartPanY = 0;
+
+    function handleMinimapViewportMouseDown(e: MouseEvent) {
+      e.stopPropagation();
+      isMinimapDragging = true;
+      minimapStartX = e.clientX;
+      minimapStartY = e.clientY;
+      minimapStartPanX = panX;
+      minimapStartPanY = panY;
+      minimapViewport.style.cursor = 'grabbing';
+    }
+
+    function handleMinimapMouseMove(e: MouseEvent) {
+      if (!isMinimapDragging) return;
+
+      const svgEl = svgWrap.querySelector('svg');
+      if (!svgEl) return;
+
+      const viewBox = svgEl.viewBox.baseVal;
+      const minimapWidth = minimapCanvas.clientWidth;
+      const minimapHeight = minimapCanvas.clientHeight;
+
+      // Calculate movement in minimap space
+      const deltaX = e.clientX - minimapStartX;
+      const deltaY = e.clientY - minimapStartY;
+
+      // Convert to SVG space
+      const svgDeltaX = (deltaX / minimapWidth) * viewBox.width * scale;
+      const svgDeltaY = (deltaY / minimapHeight) * viewBox.height * scale;
+
+      // Update pan (inverted because we're moving the viewport indicator)
+      panX = minimapStartPanX - svgDeltaX;
+      panY = minimapStartPanY - svgDeltaY;
+
+      applyTransform();
+    }
+
+    function handleMinimapMouseUp() {
+      isMinimapDragging = false;
+      minimapViewport.style.cursor = 'move';
+    }
+
+    // Click on minimap to jump to that position
+    function handleMinimapClick(e: MouseEvent) {
+      if (e.target !== minimapCanvas && e.target !== (minimapCanvas.querySelector('svg'))) return;
+
+      const svgEl = svgWrap.querySelector('svg');
+      if (!svgEl) return;
+
+      const viewBox = svgEl.viewBox.baseVal;
+      const minimapRect = minimapCanvas.getBoundingClientRect();
+
+      // Calculate click position relative to minimap
+      const clickX = e.clientX - minimapRect.left;
+      const clickY = e.clientY - minimapRect.top;
+
+      // Convert to SVG coordinates
+      const svgX = (clickX / minimapRect.width) * viewBox.width;
+      const svgY = (clickY / minimapRect.height) * viewBox.height;
+
+      // Calculate new pan to center on click position
+      const previewRect = previewDiv.getBoundingClientRect();
+      const centerX = previewRect.width / 2;
+      const centerY = previewRect.height / 2;
+
+      panX = centerX - (svgX * scale);
+      panY = centerY - (svgY * scale);
+
+      applyTransform();
+    }
+
+    // Get light mode version of SVG for export
+    async function getLightModeSVG() {
+      // Re-render with light theme
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: 'default',
+        themeVariables: {
+          fontFamily: '"trebuchet ms", verdana, arial, sans-serif',
+          primaryColor: '#e1f5ff',
+          secondaryColor: '#d4edda',
+          tertiaryColor: '#fff3cd',
+          errorBkgColor: '#f8d7da'
+        }
+      });
+
+      const renderResult = await mermaid.render(`${diagramId}-export`, code);
+      return renderResult.svg;
+    }
+
+    // Export to PNG (always light mode)
+    async function handleExportPNG() {
+      try {
+        const lightSvg = await getLightModeSVG();
+
+        // Create temporary container
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = lightSvg;
+        tempDiv.style.position = 'absolute';
+        tempDiv.style.left = '-9999px';
+        document.body.appendChild(tempDiv);
+
+        const svgEl = tempDiv.querySelector('svg') as SVGSVGElement;
+        if (svgEl) {
+          const filename = diagramTitle && diagramTitle !== 'Mermaid diagram'
+            ? `${diagramTitle.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.png`
+            : `${diagramId}.png`;
+          exportMermaidPNG(svgEl, filename);
+        }
+
+        // Cleanup
+        document.body.removeChild(tempDiv);
+
+        // Re-render current theme
+        renderMermaid(code);
+      } catch (err) {
+        console.error('Export PNG failed:', err);
+      }
+    }
+
+    // Export to SVG (always light mode)
+    async function handleExportSVG() {
+      try {
+        const lightSvg = await getLightModeSVG();
+
+        // Create blob and download
+        const blob = new Blob([lightSvg], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = diagramTitle && diagramTitle !== 'Mermaid diagram'
+          ? `${diagramTitle.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.svg`
+          : `${diagramId}.svg`;
+        a.click();
+        URL.revokeObjectURL(url);
+
+        // Re-render current theme
+        renderMermaid(code);
+      } catch (err) {
+        console.error('Export SVG failed:', err);
+      }
+    }
+
+    // Event listeners for minimap zoom controls
+    wrapper.querySelector('.minimap-zoom-in')?.addEventListener('click', () => handleZoom('in'));
+    wrapper.querySelector('.minimap-zoom-out')?.addEventListener('click', () => handleZoom('out'));
+    wrapper.querySelector('.minimap-reset')?.addEventListener('click', () => handleZoom('reset'));
+
+    // Event listeners for export buttons
+    wrapper.querySelector('.export-png-btn')?.addEventListener('click', handleExportPNG);
+    wrapper.querySelector('.export-svg-btn')?.addEventListener('click', handleExportSVG);
+
+    // Mouse interactions for main preview pan/zoom
+    previewDiv.addEventListener('wheel', handleWheel, { passive: false });
+    previewDiv.addEventListener('mousedown', handleMouseDown);
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+    previewDiv.style.cursor = 'grab';
+
+    // Minimap interactions
+    minimapViewport.addEventListener('mousedown', handleMinimapViewportMouseDown);
+    document.addEventListener('mousemove', handleMinimapMouseMove);
+    document.addEventListener('mouseup', handleMinimapMouseUp);
+    minimapCanvas.addEventListener('click', handleMinimapClick);
+
+    // Watch for theme changes and re-render
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          const newTheme = detectTheme();
+          if (newTheme !== currentTheme) {
+            currentTheme = newTheme;
+            renderMermaid(code);
+          }
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    // Initial render
+    renderMermaid(code);
+  }
+
+  // Initialize all diagrams on page load
+  function initializeAllDiagrams() {
+    document.querySelectorAll('.mermaid-wrapper').forEach((wrapper) => {
+      initializeDiagram(wrapper as HTMLElement);
+    });
+  }
+
+  // Run on initial page load
+  initializeAllDiagrams();
+
+  // Re-initialize on Astro page transitions
+  document.addEventListener('astro:page-load', initializeAllDiagrams);
+</script>
+
+<style is:global>
+  .mermaid-wrapper {
+    max-width: 100%;
+  }
+
+  .preview-container {
+    cursor: grab;
+  }
+
+  .preview-container:active {
+    cursor: grabbing;
+  }
+
+  .svg-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease-out;
+  }
+
+  .zoom-icon {
+    font-size: 14px;
+    line-height: 1;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+  }
+
+  /* Minimap styles */
+  .minimap-container {
+    pointer-events: auto;
+    z-index: 10;
+  }
+
+  .minimap-canvas {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .minimap-canvas {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .minimap-viewport {
+    z-index: 11;
+  }
+
+  .minimap-controls {
+    z-index: 12;
+  }
+
+  .minimap-controls button {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 11px;
+  }
+
+  .minimap-container:hover {
+    opacity: 1;
+  }
+
+  .minimap-container {
+    transition: opacity 0.2s ease;
+  }
+
+  /* Ensure Mermaid diagrams are visible in dark mode */
+  .dark .mermaid-wrapper svg {
+    filter: none;
+  }
+
+  /* Dark mode overrides for common Mermaid diagram colors */
+  /* Override default node backgrounds */
+  .dark .mermaid-wrapper svg .node rect,
+  .dark .mermaid-wrapper svg .node circle,
+  .dark .mermaid-wrapper svg .node ellipse,
+  .dark .mermaid-wrapper svg .node polygon,
+  .dark .mermaid-wrapper svg .node path {
+    fill: #334155 !important;
+    stroke: #64748b !important;
+  }
+
+  /* Override specific style fills in dark mode */
+  .dark .mermaid-wrapper svg [style*="fill:#e1f5ff"],
+  .dark .mermaid-wrapper svg [style*="fill: #e1f5ff"],
+  .dark .mermaid-wrapper svg [style*="fill: rgb(225, 245, 255)"] {
+    fill: #1e3a5f !important;
+  }
+
+  .dark .mermaid-wrapper svg [style*="fill:#d4edda"],
+  .dark .mermaid-wrapper svg [style*="fill: #d4edda"],
+  .dark .mermaid-wrapper svg [style*="fill: rgb(212, 237, 218)"] {
+    fill: #1e4620 !important;
+  }
+
+  .dark .mermaid-wrapper svg [style*="fill:#f8d7da"],
+  .dark .mermaid-wrapper svg [style*="fill: #f8d7da"],
+  .dark .mermaid-wrapper svg [style*="fill: rgb(248, 215, 218)"] {
+    fill: #5a1f1f !important;
+  }
+
+  .dark .mermaid-wrapper svg [style*="fill:#fff3cd"],
+  .dark .mermaid-wrapper svg [style*="fill: #fff3cd"],
+  .dark .mermaid-wrapper svg [style*="fill: rgb(255, 243, 205)"] {
+    fill: #4a3f1a !important;
+  }
+
+  /* Hide the JSON script tag */
+  .diagram-code {
+    display: none;
+  }
+
+  /* Targeted CSS reset for Mermaid - keep SVG styling, fix text only */
+  .mermaid-wrapper svg {
+    /* Keep Mermaid's SVG styles intact */
+    font-family: "trebuchet ms", verdana, arial, sans-serif !important;
+    font-size: 16px !important;
+  }
+
+  /* Reset ONLY text-related properties that blog CSS is overriding */
+  .mermaid-wrapper svg text,
+  .mermaid-wrapper svg tspan {
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    word-spacing: 0 !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+  }
+
+  /* Reset all child elements' text properties */
+  .mermaid-wrapper svg * {
+    transition: none !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    word-spacing: 0 !important;
+  }
+
+  /* Fix foreignObject text (used for HTML labels) */
+  .mermaid-wrapper svg foreignObject {
+    overflow: visible !important;
+    font-size: 14px !important;
+    line-height: 1.15 !important;
+  }
+
+  .mermaid-wrapper svg foreignObject *,
+  .mermaid-wrapper svg foreignObject div,
+  .mermaid-wrapper svg foreignObject p,
+  .mermaid-wrapper svg foreignObject span {
+    font-family: "trebuchet ms", verdana, arial, sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.15 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    letter-spacing: 0 !important;
+    word-spacing: 0 !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    text-align: center !important;
+    display: block !important;
+  }
+</style>
