@@ -19,6 +19,17 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: "💾 Restore research cache"
+        uses: actions/cache@v4
+        with:
+          path: scripts/.research-cache
+          key: research-cache-${{ hashFiles('scripts/.research-cache/**') }}
+          restore-keys: |
+            research-cache-
+        # Cache album research results to avoid re-searching same albums
+        # Saves Exa/Tavily API costs and speeds up generation
+        # Cache TTL: 30 days (managed by search-cache.js)
+
       - name: "🦾 Install dependencies"
         run: npm ci || (npm install --package-lock-only && npm ci)
 
@@ -28,6 +39,8 @@ jobs:
           LASTFM_API_KEY: "${{ secrets.LASTFM_API_KEY }}"
           COLLECTION_URL: "${{ secrets.COLLECTION_URL }}"
           OPENAI_API_KEY: "${{ secrets.OPENAI_API_KEY }}"
+          PERPLEXITY_API_KEY: "${{ secrets.PERPLEXITY_API_KEY }}"
+          EXA_API_KEY: "${{ secrets.EXA_API_KEY }}"
           TAVILY_API_KEY: "${{ secrets.TAVILY_API_KEY }}"
           FAL_KEY: "${{ secrets.FAL_KEY }}"
         run: npm run tunes

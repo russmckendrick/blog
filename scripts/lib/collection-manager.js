@@ -95,6 +95,13 @@ export class CollectionManager {
 
   normalizeText(text) {
     if (!text) return ''
-    return text.normalize('NFKD').toLowerCase().trim()
+    return text
+      .normalize('NFKD')
+      .toLowerCase()
+      .trim()
+      // Replace "&" with "and" for consistent matching
+      .replace(/\s*&\s*/g, ' and ')
+      // Normalize multiple spaces to single space
+      .replace(/\s+/g, ' ')
   }
 }

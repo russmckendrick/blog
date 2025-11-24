@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import { CollectionManager } from './lib/collection-manager.js'
 import { ImageHandler } from './lib/image-handler.js'
+import { escapeQuotes } from './lib/text-utils.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -277,8 +278,9 @@ async function integrateImagesIntoSections(content, dateStr, artistImages, album
       if (currentSection && !checkImageExists(lines, i, 3)) {
         const albumImage = await findOrFetchAlbumImage(albumImages, currentSection.album, currentSection.artist, dateStr, filePath)
         if (albumImage) {
+          const altText = escapeQuotes(`${currentSection.album} by ${currentSection.artist}`)
           newLines.push('')
-          newLines.push(`<Img src="${albumImage}" alt="${currentSection.album} by ${currentSection.artist}" />`)
+          newLines.push(`<Img src="${albumImage}" alt="${altText}" />`)
           newLines.push('')
         }
       }
@@ -302,8 +304,9 @@ async function integrateImagesIntoSections(content, dateStr, artistImages, album
       if (!checkImageExists(lines, i, 5)) {
         const artistImage = await findOrFetchArtistImage(artistImages, currentSection.artist, dateStr, filePath)
         if (artistImage) {
+          const altText = escapeQuotes(currentSection.artist)
           newLines.push('')
-          newLines.push(`<Img src="${artistImage}" alt="${currentSection.artist}" />`)
+          newLines.push(`<Img src="${artistImage}" alt="${altText}" />`)
           newLines.push('')
         }
       }

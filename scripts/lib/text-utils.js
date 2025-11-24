@@ -2,9 +2,26 @@
  * Shared text normalization and lookup utilities
  */
 
+/**
+ * Escape quotes in text for safe use in HTML/JSX attributes
+ */
+export function escapeQuotes(text) {
+  if (!text) return ''
+  return text
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 export function normalizeText(text) {
   if (!text) return ''
-  return text.normalize('NFKD').toLowerCase().trim()
+  return text
+    .normalize('NFKD')
+    .toLowerCase()
+    .trim()
+    // Replace "&" with "and" for consistent matching
+    .replace(/\s*&\s*/g, ' and ')
+    // Normalize multiple spaces to single space
+    .replace(/\s+/g, ' ')
 }
 
 export function removeArticle(text) {
