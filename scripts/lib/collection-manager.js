@@ -65,7 +65,11 @@ export class CollectionManager {
       const key = `${this.normalizeText(artist)}|||${this.normalizeText(album)}`
       info[key] = {
         album_image: albumImageUrl,
-        album_link: albumUri
+        album_link: albumUri,
+        // Rich metadata for classification
+        genres: release.genre_names || [],
+        release_year: this.extractYear(release.date_release_year),
+        date_added: release.date_added || null
       }
       originalCases[key] = { artist, album }
     }
@@ -83,14 +87,31 @@ export class CollectionManager {
           const artistSlug = artistUriPath.trim().split('/').filter(Boolean).pop()
           const artistImageUrl = `${imageBaseUrl}/artist/${artistSlug}/${artistSlug}-hi-res.jpg`
 
-          info[artistKey] = {
-            artist_image: artistImageUrl,
-            artist_link: artistUri
+          // Only update if not already set (preserve first occurrence with most data)
+          if (!info[artistKey]) {
+            info[artistKey] = {
+              artist_image: artistImageUrl,
+              artist_link: artistUri,
+              // Rich metadata for classification
+              biography: artistData.biography || null
+            }
+          } else if (!info[artistKey].biography && artistData.biography) {
+            // Add biography if we have it and didn't before
+            info[artistKey].biography = artistData.biography
           }
           originalCases[artistKey] = artistName
         }
       }
     }
+  }
+
+  /**
+   * Extract year from date string (handles YYYY-MM-DD or YYYY formats)
+   */
+  extractYear(dateStr) {
+    if (!dateStr) return null
+    const match = dateStr.toString().match(/^(\d{4})/)
+    return match ? parseInt(match[1], 10) : null
   }
 
   normalizeText(text) {

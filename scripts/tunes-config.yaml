@@ -9,7 +9,487 @@ settings:
   cover_image_min: 1
   cover_image_max: 23
 
-# AI Prompts
+  # Classification cache duration (days) - longer than research cache
+  classification_cache_days: 90
+
+# =============================================================================
+# CLASSIFICATION CONFIGURATION
+# =============================================================================
+# Used to classify albums before generating contextual research questions.
+# The hybrid approach uses collection metadata first, then LLM if needed.
+
+classification:
+  # Metadata inference rules (check these before API call)
+  metadata_patterns:
+    compilation_keywords:
+      - "greatest hits"
+      - "best of"
+      - "anthology"
+      - "collection"
+      - "singles"
+      - "definitive"
+      - "essential"
+      - "ultimate"
+      - "complete"
+      - "retrospective"
+    live_keywords:
+      - "live"
+      - "in concert"
+      - "unplugged"
+      - "mtv unplugged"
+      - "at the"
+      - "live at"
+      - "on stage"
+      - "acoustic"
+    soundtrack_keywords:
+      - "soundtrack"
+      - "ost"
+      - "motion picture"
+      - "film"
+      - "original score"
+      - "music from"
+    reissue_keywords:
+      - "remaster"
+      - "remastered"
+      - "deluxe"
+      - "anniversary"
+      - "expanded"
+      - "special edition"
+      - "bonus"
+    ep_keywords:
+      - " ep"
+      - "[ep]"
+      - "(ep)"
+    box_set_keywords:
+      - "box set"
+      - "boxset"
+      - "complete works"
+      - "collected"
+
+  # LLM classification (used when metadata inference is insufficient)
+  system_prompt: |
+    You are a music classification expert. Your task is to analyze an album and
+    categorize it across multiple dimensions. Be precise and consistent.
+
+    Return your classification as valid JSON with no additional text or markdown.
+
+  instruction: |
+    Classify the album "{album}" by {artist}.
+
+    Available context from collection:
+    - Genres: {genres}
+    - Release year: {release_year}
+    - Artist biography: {biography}
+
+    Return a JSON object with these exact fields:
+
+    {{
+      "genre": {{
+        "primary": "<primary genre from: rock, electronic, jazz, pop, hip-hop, metal, folk, soul, punk, classical, country, reggae, prog, synth-pop, new-wave, ska, ambient, indie, alternative, blues, disco, funk, r&b, world>",
+        "secondary": ["<additional genres>"],
+        "subgenre": "<specific subgenre if applicable>"
+      }},
+      "era": {{
+        "decade": "<1950s|1960s|1970s|1980s|1990s|2000s|2010s|2020s>",
+        "year_released": <year as number or null>,
+        "era_label": "<pre-rock|classic-rock|punk-era|new-wave|grunge-era|britpop|modern>"
+      }},
+      "type": {{
+        "format": "<studio|live|compilation|soundtrack|ep|remix|box-set>",
+        "is_debut": <true|false>,
+        "is_farewell": <true|false>,
+        "is_comeback": <true|false>,
+        "is_concept": <true|false>,
+        "is_reissue": <true|false>
+      }},
+      "artist_type": {{
+        "category": "<solo|band|collaboration|supergroup|various-artists|orchestra>",
+        "is_side_project": <true|false>,
+        "career_stage": "<early|peak|late|reunion>"
+      }},
+      "significance": {{
+        "critical_acclaim": "<classic|acclaimed|mixed|obscure>",
+        "commercial_success": "<blockbuster|hit|moderate|cult|unknown>",
+        "cultural_impact": "<landmark|influential|notable|niche>"
+      }},
+      "themes": ["<thematic keywords like 'love', 'politics', 'existential', 'party'>"]
+    }}
+
+    If uncertain about any field, use your best judgment based on the album/artist name and context.
+
+# =============================================================================
+# DYNAMIC QUESTION TEMPLATES
+# =============================================================================
+# Questions are composed from these templates based on album classification.
+# Base questions apply to all albums; dimension-specific questions are added
+# based on genre, era, type, etc.
+
+questions:
+  # Base questions that apply to ALL albums
+  base:
+    - "What is the recording history and creation process behind this album?"
+    - "What is the musical style and what makes it distinctive?"
+    - "What was the critical and commercial reception?"
+    - "What is the lasting legacy and influence of this album?"
+
+  # Era-specific questions (by decade)
+  era:
+    "1950s":
+      - "How did this album reflect or shape the early rock and roll movement?"
+      - "What technological limitations or innovations affected the recording?"
+      - "How does this album connect to the pre-rock popular music traditions?"
+    "1960s":
+      - "How did this album relate to the cultural revolution of the 60s?"
+      - "What studio innovations or psychedelic experiments were employed?"
+      - "How did the British Invasion or American counterculture influence this work?"
+    "1970s":
+      - "How did this album fit into the diverse musical landscape of the 70s?"
+      - "What role did the rise of album-oriented rock or punk play?"
+      - "How did the recording technology of the era shape its sound?"
+    "1980s":
+      - "How did synthesizers and new production techniques influence this album?"
+      - "What was the relationship to MTV and the visual music era?"
+      - "How did it navigate between mainstream pop and underground movements?"
+    "1990s":
+      - "How did this album relate to the alternative rock explosion or grunge movement?"
+      - "What DIY or indie spirit influenced the recording?"
+      - "How did it respond to the musical diversity of the decade?"
+    "2000s":
+      - "How did the digital revolution affect this album's creation or distribution?"
+      - "What post-9/11 or millennial themes emerge in the work?"
+      - "How did it navigate the changing music industry landscape?"
+    "2010s":
+      - "How does this album reflect the streaming era and social media influence?"
+      - "What genre-blending or post-genre tendencies appear?"
+      - "How did it respond to the political and social climate of the decade?"
+    "2020s":
+      - "How did pandemic conditions or remote collaboration affect creation?"
+      - "What current cultural or political themes resonate in this work?"
+      - "How does it fit into contemporary music's genre fluidity?"
+
+  # Genre-specific questions
+  genre:
+    rock:
+      - "How does the guitar work and rhythm section define the album's sound?"
+      - "What rock traditions does it honor or subvert?"
+      - "How does it balance raw energy with musical sophistication?"
+    electronic:
+      - "What synthesizers, drum machines, or production techniques are notable?"
+      - "How does it fit into the evolution of electronic music?"
+      - "What sonic textures and atmospheres does it create?"
+    jazz:
+      - "What improvisation techniques and jazz traditions are evident?"
+      - "How does it relate to jazz's evolution from bebop to fusion to modern?"
+      - "What role do the arrangements and interplay between musicians play?"
+    pop:
+      - "What makes the hooks and production commercially appealing?"
+      - "How does it balance artistry with accessibility?"
+      - "What production choices define its pop sensibility?"
+    hip-hop:
+      - "What sampling techniques or production innovations stand out?"
+      - "How does the lyrical content reflect its cultural moment?"
+      - "What's the relationship between the beats and the vocal delivery?"
+    metal:
+      - "How does the heaviness and technicality serve the music?"
+      - "What subgenre traditions does it represent or challenge?"
+      - "How do the guitar tones and drumming define the sound?"
+    folk:
+      - "What acoustic traditions and storytelling elements are present?"
+      - "How does it connect to folk music's social commentary heritage?"
+      - "What regional or cultural influences shape the sound?"
+    soul:
+      - "What vocal techniques and emotional expression define it?"
+      - "How does it relate to the soul/R&B continuum?"
+      - "What role do the arrangements and backing musicians play?"
+    punk:
+      - "What DIY ethos and anti-establishment themes emerge?"
+      - "How does the raw energy serve the message?"
+      - "What punk traditions does it build upon or break from?"
+    classical:
+      - "What compositional techniques and orchestration are notable?"
+      - "How does it fit into the classical canon or challenge it?"
+      - "What emotional or narrative arc does the composition create?"
+    country:
+      - "What storytelling traditions and instrumental styles are present?"
+      - "How does it balance tradition with innovation?"
+      - "What regional or subgenre influences shape the sound?"
+    reggae:
+      - "What rhythmic patterns and production techniques are used?"
+      - "How do the social and spiritual themes manifest?"
+      - "What's the relationship to Jamaican music traditions?"
+    prog:
+      - "What compositional complexity and conceptual ambition is evident?"
+      - "How does it balance technical prowess with emotional impact?"
+      - "What thematic or narrative threads run through the album?"
+    synth-pop:
+      - "What synthesizer sounds and production aesthetics define it?"
+      - "How does it balance electronic coldness with pop warmth?"
+      - "What visual or fashion elements complement the music?"
+    new-wave:
+      - "What post-punk energy and art-school aesthetics are present?"
+      - "How did it bridge punk's DIY ethos with commercial accessibility?"
+      - "What artistic or avant-garde influences appear?"
+    ska:
+      - "How do the horn arrangements and offbeat rhythms work?"
+      - "What two-tone or Jamaican ska traditions inform it?"
+      - "How does it blend ska with other genre influences?"
+    ambient:
+      - "What atmospheric textures and sonic environments are created?"
+      - "How does it relate to ambient music's meditation on space and time?"
+      - "What production techniques create the immersive soundscapes?"
+    indie:
+      - "What independent spirit and DIY aesthetic defines this album?"
+      - "How does it position itself against mainstream music conventions?"
+      - "What underground or alternative influences are evident?"
+    alternative:
+      - "How does this album challenge or redefine rock conventions?"
+      - "What makes it 'alternative' compared to mainstream releases of its era?"
+      - "How did it influence the broader alternative music movement?"
+    blues:
+      - "What blues traditions and techniques are employed?"
+      - "How does it connect to the roots of rock and roll?"
+      - "What emotional authenticity and storytelling emerge?"
+    disco:
+      - "What production techniques create the dancefloor-ready sound?"
+      - "How does it reflect the disco era's cultural moment?"
+      - "What string arrangements, bass lines, or rhythms stand out?"
+    funk:
+      - "What groove elements and rhythmic innovations define the sound?"
+      - "How does it connect to the funk tradition and its offshoots?"
+      - "What role do the bass and rhythm section play?"
+    r&b:
+      - "What vocal styles and production choices define the R&B sound?"
+      - "How does it relate to the evolution of rhythm and blues?"
+      - "What emotional depth and romantic themes emerge?"
+    world:
+      - "What cultural traditions and regional influences are present?"
+      - "How does it bridge different musical traditions?"
+      - "What authentic elements versus fusion approaches are evident?"
+    default:
+      - "What genre conventions does this album embrace or challenge?"
+      - "How does its musical style reflect its cultural context?"
+
+  # Album type questions
+  type:
+    studio:
+      - "What was the studio environment and recording process like?"
+      - "How did producer choices shape the final sound?"
+      - "What creative decisions defined the album's sonic character?"
+    live:
+      - "What makes this live recording special or historically significant?"
+      - "How does the live energy differ from studio recordings?"
+      - "What venue, tour, or moment does this capture?"
+    compilation:
+      - "What narrative does the track selection create?"
+      - "Are there rare tracks, demos, or new recordings that add value?"
+      - "How does this compilation represent the artist's career arc?"
+    soundtrack:
+      - "How does the music serve or transcend the visual medium?"
+      - "What makes this soundtrack stand alone as a musical work?"
+      - "How did the film/TV context influence the musical choices?"
+    ep:
+      - "What does this EP reveal about the artist's direction?"
+      - "How does the shorter format affect the artistic statement?"
+      - "Is this a transitional work or a complete artistic statement?"
+    box-set:
+      - "What archival treasures or alternate takes are included?"
+      - "How does the expanded view change understanding of the original work?"
+      - "What previously unreleased material adds to the story?"
+    remix:
+      - "How do the remixes recontextualize the original material?"
+      - "What new artistic interpretations emerge?"
+      - "Which remixers bring interesting perspectives to the work?"
+    default:
+      - "What format choices influenced the album's structure and flow?"
+
+  # Artist type questions
+  artist_type:
+    solo:
+      - "How does the album reflect the artist's personal vision?"
+      - "What collaborators helped realize that vision?"
+      - "How does this fit into the artist's solo career trajectory?"
+    band:
+      - "How did the band dynamics and collaboration shape the album?"
+      - "What was the creative balance between members?"
+      - "How does this album reflect the band's chemistry or tensions?"
+    collaboration:
+      - "What unexpected chemistry emerges from this pairing?"
+      - "How do the different artistic personalities complement each other?"
+      - "What does each collaborator bring to the table?"
+    supergroup:
+      - "How do the members' distinct histories inform the sound?"
+      - "Does it transcend the sum of its parts or feel like a side project?"
+      - "What expectations did fans have and were they met?"
+    various-artists:
+      - "What unifying vision ties the various contributions together?"
+      - "Which standout tracks define the collection?"
+      - "How does the curation create a cohesive listening experience?"
+    orchestra:
+      - "What orchestration and arrangement choices stand out?"
+      - "How does the ensemble create its distinctive voice?"
+      - "What conductor or arranger decisions shape the interpretation?"
+    default:
+      - "How does the artist's creative process manifest in this album?"
+
+  # Significance questions (for notable albums)
+  significance:
+    debut:
+      - "How did this debut announce a new voice in music?"
+      - "What seeds of future development are present?"
+      - "How did critics and fans initially receive this first statement?"
+    farewell:
+      - "How does this album reflect on a career's arc?"
+      - "What sense of closure or summation is achieved?"
+      - "Does it break new ground or revisit familiar territory?"
+    comeback:
+      - "What drove the artist's return, and how have they evolved?"
+      - "How does it compare to their earlier work?"
+      - "What relevance does it find in the contemporary landscape?"
+    concept:
+      - "What narrative or thematic thread ties the album together?"
+      - "How does the concept serve or challenge the music?"
+      - "What story does the album tell from start to finish?"
+    landmark:
+      - "Why is this considered a landmark album in music history?"
+      - "How did it change music, culture, or the industry?"
+      - "What specific innovations or breakthroughs does it represent?"
+    influential:
+      - "What specific artists or movements did this album influence?"
+      - "Why does its impact persist across generations?"
+      - "How can its DNA be heard in later music?"
+    cult:
+      - "What makes this a cult favorite despite limited commercial success?"
+      - "What does its devoted fanbase appreciate most?"
+      - "How was it rediscovered or reappraised over time?"
+    default:
+      - "What is the album's place in the artist's catalog and music history?"
+
+# =============================================================================
+# AGENT CONFIGURATION
+# =============================================================================
+# Replaces hardcoded system prompt in content-generator.js
+
+agent:
+  system_prompt: |
+    ## Your Role: Music Research Agent
+
+    You are an expert Music Blogger writing sections of a weekly music blog post. You have:
+    - A passion for music of all genres
+    - Expertise in music history, recording techniques, and cultural context
+    - A talent for making complex music topics accessible and engaging
+    - Enthusiasm for sharing interesting facts and stories with readers
+
+    ## Album Context
+    You are researching: "{album}" by {artist}
+
+    Classification:
+    - Genre: {genre_primary} ({genre_secondary})
+    - Era: {era_decade} ({era_label})
+    - Type: {album_type}
+    - Artist Type: {artist_category}
+    - Significance: {significance_label}
+
+    ## Research Questions
+    Focus your research on answering these contextual questions:
+
+    {research_questions}
+
+    ## Tools Available
+    You have access to a music search tool that researches albums using authoritative sources.
+    Use this tool to research the album before writing.
+
+    ## Your Task
+    1. **FIRST**: Use the search tool to research "{album}" by {artist}
+       - Search for information relevant to the research questions above
+       - Read the search results carefully
+
+    2. **THEN**: Write a well-structured blog section (350-450 words) with:
+       - H2 header: Album title by Artist (with emoji)
+       - 3-4 H3 subsections that address the research questions
+       - Interesting facts, stories, and context throughout
+       - Markdown format with emojis in headers
+       - NOT using H1 headers (only H2 and H3)
+
+    ## Voice and Style
+    {voice_guidelines}
+
+    Remember: FIRST use the search tool to research, THEN write your section based on what you found.
+
+  voice_guidelines: |
+    Write as if you're a knowledgeable friend excitedly telling someone about a great album.
+
+    DO write like this:
+    - "Released in 1975, Wish You Were Here explores themes of absence and longing..."
+    - "The recording journey was marked by innovation and experimentation..."
+    - "What makes this album stand out is its fusion of..."
+
+    DON'T write like this:
+    - "Sources indicate that critics note..." (too academic)
+    - "The supplied research shows..." (too meta)
+    - Brief summaries (too shallow)
+
+  user_message: |
+    Research and write a comprehensive blog section about "{album}" by {artist}.
+
+    Start by using the search tool to gather information relevant to these questions:
+
+    {research_questions}
+
+# =============================================================================
+# TOOL CONFIGURATION
+# =============================================================================
+# Configuration for search tools (Perplexity, Exa)
+
+tools:
+  perplexity:
+    description: |
+      Searches for comprehensive information about music albums using Perplexity AI.
+      This tool combines web search with AI analysis to provide detailed, factual
+      information about albums, artists, recording history, and cultural impact.
+      Input should be a query about an album or artist.
+      Returns a comprehensive research summary from multiple sources.
+
+    research_prompt: |
+      Research the following music topic and provide comprehensive, factual information
+      from authoritative music sources:
+
+      {query}
+
+      Focus areas based on album classification:
+      {focus_areas}
+
+      Provide detailed, well-organized information suitable for writing an engaging music
+      blog post. Include specific facts like release dates, producers, studios, chart
+      performance, and critical quotes when available.
+
+  exa:
+    description: |
+      Searches music journalism sites for album reviews, critical analysis, and
+      historical context about music albums.
+      Input should be a search query about an album or artist.
+      Returns comprehensive excerpts from authoritative music journalism sources.
+
+    domains:
+      - pitchfork.com
+      - allmusic.com
+      - rollingstone.com
+      - theguardian.com
+      - nme.com
+      - metacritic.com
+      - albumoftheyear.org
+      - consequence.net
+      - stereogum.com
+      - brooklynvegan.com
+      - paste magazine.com
+      - spin.com
+      - loudersound.com
+      - clashmusic.com
+
+# =============================================================================
+# TITLE AND SUMMARY PROMPTS
+# =============================================================================
+# AI Prompts for generating post title and summary
+
 prompts:
   title:
     system: |
@@ -68,39 +548,23 @@ prompts:
 
       Return ONLY the summary, nothing else.
 
-  album_research:
-    system: |
-      You are a music historian and storyteller with decades of experience writing about music.
-      You have a talent for finding unique angles and lesser-known facts about albums,
-      while maintaining engaging, narrative prose.
+# =============================================================================
+# FALLBACK CONTENT
+# =============================================================================
+# Used when research fails or no tools are available
 
-    instruction: |
-      Research and create a unique blog section about "{album}" by {artist}.
+fallback:
+  section: |
+    ## {album} by {artist} 🎵
 
-      {web_context}
+    ### A Musical Journey 🎶
 
-      Required Structure:
-      - Use H2 (##) for the main album title with an appropriate emoji
-      - Use H3 (###) for all subsections with relevant emojis
-      - Include emojis naturally throughout the text
-      - Do NOT wrap in code fences (```)
+    {album} by {artist} represents an important moment in their musical journey.
+    This album showcases the artist's evolution and continues to resonate with listeners
+    who appreciate their distinctive sound and artistic vision.
 
-      Writing Guidelines:
-      - Choose creative subsection titles that fit the album's character
-      - Find interesting angles and lesser-known facts
-      - Match the writing style to the album's era and genre
-      - Focus on what makes this album unique
-      - Present information in a narrative, storytelling style
-      - Stay under 800 words while being comprehensive
-      - Make connections to broader musical/cultural context
+    ### Legacy 🌟
 
-      Consider these creative approaches:
-      - The album's influence on specific artists or genres
-      - Technical innovations in recording or production
-      - Cultural context and its relevance today
-      - Personal stories from the band/artist
-      - Fan reception and legacy
-      - Unique recording locations or conditions
-      - Evolution of the artist's sound
-
-      Return ONLY the formatted blog section, nothing else.
+    The impact of this work can still be felt in contemporary music, influencing
+    new generations of artists and fans alike. It remains a testament to the
+    creative vision that has defined their career.

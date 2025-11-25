@@ -5,6 +5,8 @@ import { normalizeForFilename, lookupArtistData, lookupAlbumData, escapeQuotes }
 import { SearchCache } from './search-cache.js'
 import { ExaMusicSearchTool } from './exa-tool.js'
 import { PerplexityMusicSearchTool } from './perplexity-tool.js'
+import { AlbumClassifier } from './album-classifier.js'
+import { QuestionComposer } from './question-composer.js'
 
 export class ContentGenerator {
   constructor(config = null) {
@@ -32,16 +34,30 @@ export class ContentGenerator {
       throw new Error('Either ANTHROPIC_API_KEY or OPENAI_API_KEY must be set')
     }
 
+    // Initialize classifier and question composer for dynamic questions
+    if (config) {
+      this.classifier = new AlbumClassifier(this.llm, config.config || config)
+      this.questionComposer = new QuestionComposer(config.config || config)
+    }
+
     // Initialize search tools for agent (priority: Perplexity > Exa > Tavily)
     this.tools = []
     this.searchProvider = 'none'
+    this.perplexityTool = null
 
     if (process.env.PERPLEXITY_API_KEY) {
-      this.tools.push(new PerplexityMusicSearchTool(process.env.PERPLEXITY_API_KEY))
+      this.perplexityTool = new PerplexityMusicSearchTool(
+        process.env.PERPLEXITY_API_KEY,
+        config?.config || config
+      )
+      this.tools.push(this.perplexityTool)
       this.searchProvider = 'Perplexity AI (search + LLM)'
       console.log('Using Perplexity AI - search-augmented LLM for research')
     } else if (process.env.EXA_API_KEY) {
-      this.tools.push(new ExaMusicSearchTool(process.env.EXA_API_KEY))
+      this.tools.push(new ExaMusicSearchTool(
+        process.env.EXA_API_KEY,
+        config?.config || config
+      ))
       this.searchProvider = 'Exa AI (semantic search)'
       console.log('Using Exa AI with LangChain agent architecture')
     } else if (process.env.TAVILY_API_KEY) {
@@ -106,7 +122,18 @@ export class ContentGenerator {
     for (const [[artist, album]] of topAlbums) {
       console.log(`  Researching: ${album} by ${artist}...`)
       try {
-        const section = await this.researchAlbum(artist, album)
+        // Get collection metadata for this album
+        const albumData = lookupAlbumData(artist, album, collectionInfo)
+        const artistData = lookupArtistData(artist, collectionInfo)
+
+        // Build collection context for classification
+        const collectionContext = {
+          genres: albumData?.genres || [],
+          release_year: albumData?.release_year || null,
+          biography: artistData?.biography || null
+        }
+
+        const section = await this.researchAlbum(artist, album, collectionContext)
         const enrichedSection = this.addImagesAndLinks(section, artist, album, collectionInfo, dateStr)
         sections.push(enrichedSection)
       } catch (error) {
@@ -185,7 +212,7 @@ export class ContentGenerator {
     return enrichedLines.join('\n')
   }
 
-  async researchAlbum(artist, album) {
+  async researchAlbum(artist, album, collectionContext = {}) {
     // Initialize cache if not done yet
     await this.searchCache.init()
 
@@ -204,48 +231,37 @@ export class ContentGenerator {
     }
 
     try {
-      // Use LLM with tool-calling (like CrewAI agent with tools)
+      // ========================================
+      // PHASE 1: Classify the album
+      // ========================================
+      let classification = null
+      let formattedQuestions = ''
+      let focusAreas = ''
+
+      if (this.classifier && this.questionComposer) {
+        classification = await this.classifier.classify(artist, album, collectionContext)
+
+        // PHASE 2: Compose dynamic questions based on classification
+        const questions = this.questionComposer.composeQuestions(classification)
+        formattedQuestions = this.questionComposer.formatQuestionsForPrompt(questions)
+        focusAreas = this.questionComposer.getFocusAreas(classification)
+
+        console.log(`    Generated ${questions.length} contextual questions`)
+
+        // Set focus areas for search tools
+        if (this.perplexityTool) {
+          this.perplexityTool.setFocusAreas(focusAreas)
+        }
+      }
+
+      // ========================================
+      // PHASE 3: Research with dynamic context
+      // ========================================
       console.log(`    Agent researching ${album} by ${artist}...`)
 
-      const systemPrompt = `## Your Role: Music Research Agent
-
-You are an expert Music Blogger writing sections of a weekly music blog post. You have:
-- A passion for music of all genres
-- Expertise in music history, recording techniques, and cultural context
-- A talent for making complex music topics accessible and engaging
-- Enthusiasm for sharing interesting facts and stories with readers
-
-## Tools Available
-You have access to a music search tool that researches albums using authoritative sources.
-
-Use this tool to research albums before writing about them.
-
-## Your Task
-1. **FIRST**: Use the search tool to research "${album}" by ${artist}
-   - Search for: album reviews, critical analysis, recording details, legacy, cultural impact
-   - Read the search results carefully
-
-2. **THEN**: Write a well-structured blog section (350-450 words) with:
-   - H2 header: Album title by Artist (with emoji)
-   - 3-4 H3 subsections covering: recording/creation, musical style, cultural impact, and legacy
-   - Interesting facts, stories, and context throughout
-   - Markdown format with emojis in headers
-   - NOT using H1 headers (only H2 and H3)
-
-## Voice and Style
-✅ DO write like this:
-- "Released in 1975, Wish You Were Here explores themes of absence and longing..."
-- "The recording journey was marked by innovation and experimentation..."
-- "What makes this album stand out is its fusion of..."
-
-❌ DON'T write like this:
-- "Sources indicate that critics note..." (too academic)
-- "The supplied research shows..." (too meta)
-- Brief summaries (too shallow)
-
-Write as if you're a knowledgeable friend excitedly telling someone about a great album.
-
-Remember: FIRST use the search tool to research, THEN write your section based on what you found.`
+      // Build system prompt from config or use default
+      const systemPrompt = this.buildSystemPrompt(artist, album, classification, formattedQuestions)
+      const userMessage = this.buildUserMessage(artist, album, formattedQuestions)
 
       // Bind tools to LLM for tool-calling
       const llmWithTools = this.llm.bindTools(this.tools)
@@ -253,7 +269,7 @@ Remember: FIRST use the search tool to research, THEN write your section based o
       // Initial message to trigger tool use
       const messages = [
         { role: 'system', content: systemPrompt },
-        { role: 'user', content: `Research and write a comprehensive blog section about "${album}" by ${artist}. Start by using the search tool to gather information.` }
+        { role: 'user', content: userMessage }
       ]
 
       // First call - LLM should call the tool
@@ -306,6 +322,123 @@ Remember: FIRST use the search tool to research, THEN write your section based o
     }
   }
 
+  /**
+   * Build system prompt from config template or use default
+   */
+  buildSystemPrompt(artist, album, classification, formattedQuestions) {
+    // Try to use config-based prompt
+    if (this.config && classification) {
+      const context = {
+        artist,
+        album,
+        genre_primary: classification.genre?.primary || 'unknown',
+        genre_secondary: (classification.genre?.secondary || []).join(', ') || 'none',
+        era_decade: classification.era?.decade || 'unknown',
+        era_label: classification.era?.era_label || 'unknown',
+        album_type: classification.type?.format || 'studio',
+        artist_category: classification.artist_type?.category || 'band',
+        significance_label: this.getSignificanceLabel(classification),
+        research_questions: formattedQuestions
+      }
+
+      const configPrompt = this.config.getAgentSystemPrompt
+        ? this.config.getAgentSystemPrompt(context)
+        : null
+
+      if (configPrompt) {
+        return configPrompt
+      }
+    }
+
+    // Default system prompt (backwards compatible)
+    return `## Your Role: Music Research Agent
+
+You are an expert Music Blogger writing sections of a weekly music blog post. You have:
+- A passion for music of all genres
+- Expertise in music history, recording techniques, and cultural context
+- A talent for making complex music topics accessible and engaging
+- Enthusiasm for sharing interesting facts and stories with readers
+
+${classification ? `## Album Context
+You are researching: "${album}" by ${artist}
+Classification: ${classification.genre?.primary || 'unknown'} / ${classification.era?.decade || 'unknown'}
+` : ''}
+${formattedQuestions ? `## Research Questions
+Focus your research on answering these contextual questions:
+
+${formattedQuestions}
+` : ''}
+## Tools Available
+You have access to a music search tool that researches albums using authoritative sources.
+Use this tool to research albums before writing about them.
+
+## Your Task
+1. **FIRST**: Use the search tool to research "${album}" by ${artist}
+   - Search for: album reviews, critical analysis, recording details, legacy, cultural impact
+   - Read the search results carefully
+
+2. **THEN**: Write a well-structured blog section (350-450 words) with:
+   - H2 header: Album title by Artist (with emoji)
+   - 3-4 H3 subsections that address the research questions
+   - Interesting facts, stories, and context throughout
+   - Markdown format with emojis in headers
+   - NOT using H1 headers (only H2 and H3)
+
+## Voice and Style
+Write as if you're a knowledgeable friend excitedly telling someone about a great album.
+
+DO write like this:
+- "Released in 1975, Wish You Were Here explores themes of absence and longing..."
+- "The recording journey was marked by innovation and experimentation..."
+- "What makes this album stand out is its fusion of..."
+
+DON'T write like this:
+- "Sources indicate that critics note..." (too academic)
+- "The supplied research shows..." (too meta)
+- Brief summaries (too shallow)
+
+Remember: FIRST use the search tool to research, THEN write your section based on what you found.`
+  }
+
+  /**
+   * Build user message from config template or use default
+   */
+  buildUserMessage(artist, album, formattedQuestions) {
+    // Try to use config-based message
+    if (this.config && formattedQuestions) {
+      const context = {
+        artist,
+        album,
+        research_questions: formattedQuestions
+      }
+
+      const configMessage = this.config.getAgentUserMessage
+        ? this.config.getAgentUserMessage(context)
+        : null
+
+      if (configMessage) {
+        return configMessage
+      }
+    }
+
+    // Default user message
+    return `Research and write a comprehensive blog section about "${album}" by ${artist}. Start by using the search tool to gather information.${formattedQuestions ? `\n\nFocus on these questions:\n${formattedQuestions}` : ''}`
+  }
+
+  /**
+   * Get a human-readable significance label from classification
+   */
+  getSignificanceLabel(classification) {
+    const parts = []
+    if (classification.type?.is_debut) parts.push('debut')
+    if (classification.type?.is_farewell) parts.push('farewell')
+    if (classification.type?.is_comeback) parts.push('comeback')
+    if (classification.type?.is_concept) parts.push('concept')
+    if (classification.significance?.cultural_impact === 'landmark') parts.push('landmark')
+    if (classification.significance?.cultural_impact === 'influential') parts.push('influential')
+    return parts.length > 0 ? parts.join(', ') : 'notable release'
+  }
+
   getDefaultTitlePrompt(context) {
     return `Create a creative title for a weekly music blog post.
 Artists: ${context.artists}
@@ -330,6 +463,19 @@ Return ONLY the blog section.`
   }
 
   generateFallbackSection(artist, album) {
+    // Try to use config-based fallback
+    if (this.config) {
+      const context = { artist, album }
+      const configFallback = this.config.getFallbackSection
+        ? this.config.getFallbackSection(context)
+        : null
+
+      if (configFallback) {
+        return configFallback
+      }
+    }
+
+    // Default fallback
     return `## ${album} by ${artist} 🎵
 
 ### A Musical Journey 🎸

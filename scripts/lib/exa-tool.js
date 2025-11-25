@@ -1,16 +1,37 @@
 import { Tool } from '@langchain/core/tools'
 import Exa from 'exa-js'
 
+// Default domains if not provided in config
+const DEFAULT_DOMAINS = [
+  'pitchfork.com',
+  'allmusic.com',
+  'rollingstone.com',
+  'theguardian.com',
+  'nme.com',
+  'metacritic.com',
+  'albumoftheyear.org',
+  'consequence.net',
+  'stereogum.com'
+]
+
 /**
  * LangChain Tool wrapper for Exa AI search
  */
 export class ExaMusicSearchTool extends Tool {
-  constructor(apiKey) {
+  constructor(apiKey, config = null) {
     super()
+    this.config = config
     this.name = 'exa_music_search'
-    this.description = `Searches music journalism sites for album reviews, critical analysis, and historical context about music albums.
+
+    // Use description from config or default
+    const configDesc = config?.tools?.exa?.description
+    this.description = configDesc || `Searches music journalism sites for album reviews, critical analysis, and historical context about music albums.
     Input should be a search query about an album or artist (e.g., "Around the World in a Day by Prince review analysis").
     Returns comprehensive excerpts from authoritative music journalism sources like Pitchfork, AllMusic, Rolling Stone, etc.`
+
+    // Use domains from config or defaults
+    this.domains = config?.tools?.exa?.domains || DEFAULT_DOMAINS
+
     this.exa = new Exa(apiKey)
   }
 
@@ -22,18 +43,8 @@ export class ExaMusicSearchTool extends Tool {
         text: {
           maxCharacters: 3000
         },
-        // Prioritize music journalism sites
-        includeDomains: [
-          'pitchfork.com',
-          'allmusic.com',
-          'rollingstone.com',
-          'theguardian.com',
-          'nme.com',
-          'metacritic.com',
-          'albumoftheyear.org',
-          'consequence.net',
-          'stereogum.com'
-        ]
+        // Prioritize music journalism sites from config
+        includeDomains: this.domains
       })
 
       if (!searchResults.results || searchResults.results.length === 0) {

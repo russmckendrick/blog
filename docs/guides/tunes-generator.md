@@ -91,10 +91,15 @@ Posts are created in:
 ## How It Works
 
 1. **Fetch Data**: Retrieves weekly charts from Last.fm API
-2. **Get Metadata**: Downloads collection data from russ.fm (images, links)
-3. **AI Research**: For each album:
-   - Optional web search for facts
-   - AI generates engaging blog section (800 words max)
+2. **Get Metadata**: Downloads collection data from russ.fm (images, links, genres, release years)
+3. **AI Research**: For each album (two-phase approach):
+   - **Phase 1 - Classification**: Classifies the album by genre, era, type, artist type, and significance
+     - Uses collection metadata (genres, release year, biography) when confident
+     - Falls back to LLM classification when metadata is insufficient
+   - **Phase 2 - Dynamic Questions**: Generates contextual research questions based on classification
+     - Base questions (all albums) + era-specific + genre-specific + type-specific + significance questions
+   - **Phase 3 - Research**: Uses search tools with contextual focus areas to gather information
+   - AI generates engaging blog section (350-450 words) tailored to the album's characteristics
 4. **Download Images**: Fetches high-res artist/album artwork
 5. **Render MDX**: Creates formatted blog post with galleries and links
 
@@ -104,10 +109,15 @@ Posts are created in:
 
 - `generate-tunes-post.js` - Main orchestrator
 - `lib/lastfm-client.js` - Last.fm API client
-- `lib/collection-manager.js` - russ.fm data fetcher/processor
-- `lib/content-generator.js` - AI content generation (LangChain)
+- `lib/collection-manager.js` - russ.fm data fetcher/processor (genres, release years, biographies)
+- `lib/content-generator.js` - AI content generation with two-phase classification/research
+- `lib/album-classifier.js` - Hybrid metadata/LLM album classification
+- `lib/question-composer.js` - Dynamic question composition from classification
+- `lib/config-loader.js` - YAML configuration loader
 - `lib/image-handler.js` - Image downloading
 - `lib/blog-post-renderer.js` - MDX template renderer
+- `lib/perplexity-tool.js` - Perplexity AI search tool (config-driven)
+- `lib/exa-tool.js` - Exa AI search tool (config-driven)
 - `strip-collage.js` - Local Sharp-based torn-paper collage generator
 - `fal-collage.js` - AI-powered collage using FAL.ai Gemini 3 Pro Image (alternative)
 
@@ -234,30 +244,141 @@ DEBUG_COLLAGE=1 node scripts/fal-collage.js
 
 ### Configuration File
 
-Edit `scripts/tunes-config.yaml` to customize:
+Edit `scripts/tunes-config.yaml` to customize all aspects of content generation:
 
 ```yaml
+# General Settings
 settings:
-  # Number of top items (artists/albums)
-  number_of_items: 11
-
-  # Cover image range
-  cover_image_min: 1
+  number_of_items: 20              # Number of top items (artists/albums)
+  cover_image_min: 1               # Cover image range
   cover_image_max: 23
+  classification_cache_days: 90    # How long to cache album classifications
 
+# Classification Configuration (for dynamic questions)
+classification:
+  metadata_patterns:               # Keywords to detect album types
+    compilation_keywords: ["greatest hits", "best of", ...]
+    live_keywords: ["live", "in concert", "unplugged", ...]
+    soundtrack_keywords: ["soundtrack", "ost", ...]
+  system_prompt: "..."             # LLM prompt for classification
+  instruction: "..."               # Classification instructions
+
+# Dynamic Question Templates
+questions:
+  base:                            # Questions for ALL albums
+    - "What is the recording history and creation process?"
+    - "What is the musical style and what makes it distinctive?"
+    - "What was the critical and commercial reception?"
+    - "What is the lasting legacy and influence?"
+
+  era:                             # Era-specific questions
+    "1960s": ["How did this relate to the cultural revolution?", ...]
+    "1980s": ["How did synthesizers influence this album?", ...]
+    "1990s": ["How did this relate to alternative rock explosion?", ...]
+    # ... more decades
+
+  genre:                           # Genre-specific questions
+    rock: ["How does the guitar work define the sound?", ...]
+    electronic: ["What synthesizers and techniques are notable?", ...]
+    jazz: ["What improvisation techniques are evident?", ...]
+    # ... 20+ genres
+
+  type:                            # Album type questions
+    studio: ["What was the studio environment like?", ...]
+    live: ["What makes this live recording significant?", ...]
+    compilation: ["What narrative does the track selection create?", ...]
+
+  artist_type:                     # Artist type questions
+    solo: ["How does this reflect the artist's personal vision?", ...]
+    band: ["How did band dynamics shape the album?", ...]
+
+  significance:                    # Significance questions
+    debut: ["How did this debut announce a new voice?", ...]
+    landmark: ["Why is this considered a landmark album?", ...]
+    cult: ["What makes this a cult favorite?", ...]
+
+# Agent Configuration (replaces hardcoded system prompts)
+agent:
+  system_prompt: |
+    ## Your Role: Music Research Agent
+    You are researching: "{album}" by {artist}
+    Classification: {genre_primary} / {era_decade}
+    ## Research Questions
+    {research_questions}
+    ...
+
+  voice_guidelines: |
+    Write as a knowledgeable friend sharing album insights.
+    DO: "Released in 1975, this explores themes of..."
+    DON'T: "Sources indicate..." (too academic)
+
+  user_message: |
+    Research and write about "{album}" by {artist}.
+    Focus on: {research_questions}
+
+# Tool Configuration
+tools:
+  perplexity:
+    description: "Searches for music album information..."
+    research_prompt: "Research {query}. Focus areas: {focus_areas}"
+  exa:
+    description: "Searches music journalism sites..."
+    domains: [pitchfork.com, allmusic.com, rollingstone.com, ...]
+
+# Title and Summary Prompts
 prompts:
   title:
-    system: "AI system instructions for title generation"
-    instruction: "Detailed prompt template with {variables}"
-
+    system: "You are a creative music journalist..."
+    instruction: "Create an engaging title for {artists}, {albums}..."
   summary:
-    system: "AI system instructions for summary"
-    instruction: "Detailed prompt template"
+    system: "You are a music curator..."
+    instruction: "Create a summary for week {week_number}..."
 
-  album_research:
-    system: "AI system instructions for album research"
-    instruction: "Detailed prompt template"
+# Fallback Content (when research fails)
+fallback:
+  section: |
+    ## {album} by {artist} 🎵
+    ### A Musical Journey 🎶
+    ...
 ```
+
+### Dynamic Question System
+
+The generator now uses a two-phase approach for better content:
+
+1. **Classification Phase**: Each album is classified by:
+   - **Genre**: rock, electronic, jazz, pop, hip-hop, metal, folk, etc. (20+ genres)
+   - **Era**: 1950s through 2020s with era labels (classic-rock, punk-era, grunge-era, etc.)
+   - **Type**: studio, live, compilation, soundtrack, EP, box-set
+   - **Artist Type**: solo, band, collaboration, supergroup, various-artists
+   - **Significance**: debut, farewell, comeback, concept, landmark, influential, cult
+
+2. **Question Composition**: Based on classification, 6-8 contextual questions are selected:
+   - 4 base questions (all albums)
+   - Era-specific questions (e.g., "How did it relate to grunge movement?" for 1990s)
+   - Genre-specific questions (e.g., "What guitar tones define the sound?" for metal)
+   - Type-specific questions (e.g., "What makes this live recording significant?")
+   - Significance questions (e.g., "Why is this considered a landmark album?")
+
+**Example**: For "Nevermind" by Nirvana (rock/1990s/studio/band/landmark):
+```
+1. What is the recording history and creation process?
+2. What is the musical style and what makes it distinctive?
+3. What was the critical and commercial reception?
+4. What is the lasting legacy and influence?
+5. How did this album relate to the alternative rock explosion? (era: 1990s)
+6. How does the guitar work define the album's sound? (genre: rock)
+7. Why is this considered a landmark album? (significance: landmark)
+```
+
+### Classification Sources
+
+The classifier uses a hybrid approach:
+- **Collection Metadata** (russ.fm): genres, release year, artist biography
+- **Album Name Patterns**: detects "Best Of", "Live at", "Soundtrack", etc.
+- **LLM Fallback**: when metadata confidence is below 70%
+
+Classifications are cached for 90 days (configurable) since album metadata rarely changes.
 
 ### Template File
 

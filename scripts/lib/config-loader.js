@@ -32,6 +32,26 @@ export class ConfigLoader {
     return this.config?.prompts || {}
   }
 
+  get classification() {
+    return this.config?.classification || {}
+  }
+
+  get questions() {
+    return this.config?.questions || {}
+  }
+
+  get agent() {
+    return this.config?.agent || {}
+  }
+
+  get tools() {
+    return this.config?.tools || {}
+  }
+
+  get fallback() {
+    return this.config?.fallback || {}
+  }
+
   getNumberOfItems() {
     return this.settings.number_of_items || 11
   }
@@ -67,7 +87,58 @@ export class ConfigLoader {
     return `${prompt.system}\n\n${instruction}`
   }
 
+  /**
+   * Get agent system prompt with interpolated context
+   */
+  getAgentSystemPrompt(context) {
+    const agentConfig = this.agent
+    if (!agentConfig.system_prompt) return null
+
+    // Include voice guidelines in the context
+    const fullContext = {
+      ...context,
+      voice_guidelines: agentConfig.voice_guidelines || ''
+    }
+
+    return this.interpolate(agentConfig.system_prompt, fullContext)
+  }
+
+  /**
+   * Get agent user message with interpolated context
+   */
+  getAgentUserMessage(context) {
+    const agentConfig = this.agent
+    if (!agentConfig.user_message) return null
+
+    return this.interpolate(agentConfig.user_message, context)
+  }
+
+  /**
+   * Get fallback section with interpolated context
+   */
+  getFallbackSection(context) {
+    const fallbackConfig = this.fallback
+    if (!fallbackConfig.section) return null
+
+    return this.interpolate(fallbackConfig.section, context)
+  }
+
+  /**
+   * Get Perplexity tool configuration
+   */
+  getPerplexityConfig() {
+    return this.tools.perplexity || {}
+  }
+
+  /**
+   * Get Exa tool configuration
+   */
+  getExaConfig() {
+    return this.tools.exa || {}
+  }
+
   interpolate(template, context) {
+    if (!template) return ''
     return template.replace(/\{(\w+)\}/g, (match, key) => {
       return context[key] !== undefined ? context[key] : match
     })
