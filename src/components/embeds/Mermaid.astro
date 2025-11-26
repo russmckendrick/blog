@@ -31,6 +31,12 @@ const minimapPositionClass = positionClasses[minimapPosition];
       )}
     </div>
     <div class="flex items-center gap-2">
+      <span class="hidden sm:inline-flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400" title="Hold Ctrl (or Cmd on Mac) and scroll to zoom">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>Ctrl+scroll to zoom</span>
+      </span>
       <button
         class="export-svg-btn px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
         data-action="export-svg"
@@ -56,12 +62,11 @@ const minimapPositionClass = positionClasses[minimapPosition];
 
   <!-- Diagram container -->
   <div
-    class="preview-container relative flex items-center justify-center overflow-hidden bg-white dark:bg-gray-900"
-    style="min-height: 300px;"
+    class="preview-container relative overflow-hidden bg-white dark:bg-gray-900"
     role="img"
     aria-label={title}
   >
-    <div class="svg-wrap" style="transform-origin: center center;"></div>
+    <div class="svg-wrap flex items-center justify-center" style="transform-origin: center center; min-height: 200px;"></div>
 
     <!-- Minimap overlay -->
     <div class={`minimap-container absolute ${minimapPositionClass} bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-300 dark:border-gray-600 rounded shadow-lg overflow-hidden`} style="width: 140px; height: 105px;">
@@ -319,11 +324,22 @@ const minimapPositionClass = positionClasses[minimapPosition];
             svgEl.removeAttribute('height');
             svgEl.removeAttribute('style');
 
-            // Apply responsive sizing - use explicit width from viewBox
-            svgEl.style.width = `${viewBox.width}px`;
-            svgEl.style.height = `${viewBox.height}px`;
+            // Calculate responsive sizing based on container width
+            const containerWidth = previewDiv.clientWidth;
+            const aspectRatio = viewBox.height / viewBox.width;
+
+            // If diagram is wider than container, scale it down
+            const displayWidth = Math.min(viewBox.width, containerWidth - 40); // 40px padding
+            const displayHeight = displayWidth * aspectRatio;
+
+            // Apply responsive sizing
+            svgEl.style.width = `${displayWidth}px`;
+            svgEl.style.height = `${displayHeight}px`;
             svgEl.style.maxWidth = '100%';
-            svgEl.style.maxHeight = '100%';
+
+            // Set the wrapper height to match the SVG with padding
+            const wrapperHeight = Math.max(200, displayHeight + 40);
+            svgWrap.style.minHeight = `${wrapperHeight}px`;
 
             // Apply dark mode color overrides directly to elements
             if (currentTheme === 'dark') {
