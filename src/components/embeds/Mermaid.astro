@@ -400,8 +400,13 @@ const minimapPositionClass = positionClasses[minimapPosition];
       applyTransform();
     }
 
-    // Mouse wheel zoom
+    // Mouse wheel zoom (requires Ctrl/Cmd key to zoom, otherwise allows normal scrolling)
     function handleWheel(e: WheelEvent) {
+      // Only zoom if Ctrl (Windows/Linux) or Cmd (Mac) is held
+      if (!e.ctrlKey && !e.metaKey) {
+        return; // Allow normal page scrolling
+      }
+
       e.preventDefault();
       const delta = e.deltaY;
 

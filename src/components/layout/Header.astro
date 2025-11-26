@@ -1,18 +1,33 @@
 ---
 import { SITE_TITLE, NAVIGATION_ITEMS, SOCIAL_LINKS } from '../../consts';
 import Icon from '../ui/Icon.astro';
+
+interface Props {
+	transparent?: boolean;
+}
+
+const { transparent = false } = Astro.props;
 ---
 
-<header id="site-header" class="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80">
+<header
+	id="site-header"
+	class:list={[
+		"transition-all duration-300",
+		transparent
+			? "header-transparent border-b border-transparent"
+			: "border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80"
+	]}
+	data-transparent={transparent}
+>
 	<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex justify-between items-center h-16">
-				<a href="/" class="flex items-center space-x-3 !text-gray-900 dark:!text-gray-100 visited:!text-gray-900 dark:visited:!text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors no-underline" aria-label="home">
+				<a href="/" class="header-logo flex items-center space-x-3 hover:text-blue-600 dark:hover:text-blue-400 transition-colors no-underline" aria-label="home">
 				<img src="/images/logo.svg" alt="Logo" height="40" width="50" class="h-8 w-10" />
 				<span class="font-bold text-xl">{SITE_TITLE}</span>
 			</a>
 
 			<!-- Mobile menu button -->
-			<button id="menu-trigger" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-label="Toggle menu">
+			<button id="menu-trigger" class="header-nav-item md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-label="Toggle menu">
 				<span class="sr-only">Open main menu</span>
 				<!-- Hamburger icon -->
 				<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -30,13 +45,13 @@ import Icon from '../ui/Icon.astro';
 									href={item.url}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="flex items-center justify-center p-2 !text-gray-600 dark:!text-gray-400 visited:!text-gray-600 dark:visited:!text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
+									class="header-nav-item flex items-center justify-center p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
 									title={item.name}
 								>
 									<Icon name={item.icon} />
 								</a>
 							) : (
-								<a href={item.url} class="flex items-center justify-center p-2 !text-gray-600 dark:!text-gray-400 visited:!text-gray-600 dark:visited:!text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors" title={item.name}>
+								<a href={item.url} class="header-nav-item flex items-center justify-center p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors" title={item.name}>
 									<Icon name={item.icon} />
 								</a>
 							)}
@@ -45,7 +60,7 @@ import Icon from '../ui/Icon.astro';
 				</ul>
 
 				<div class="flex items-center">
-					<button id="theme-toggle" class="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Toggle theme">
+					<button id="theme-toggle" class="header-nav-item p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Toggle theme">
 						<Icon name="sun" class="theme-icon light-icon h-5 w-5 hidden dark:block" />
 						<Icon name="moon" class="theme-icon dark-icon h-5 w-5 block dark:hidden" />
 					</button>
@@ -95,6 +110,44 @@ import Icon from '../ui/Icon.astro';
 		const themeToggle = document.getElementById('theme-toggle');
 		const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
 		const html = document.documentElement;
+		const header = document.getElementById('site-header');
+		const isTransparent = header?.getAttribute('data-transparent') === 'true';
+
+		// Transparent header scroll handling
+		if (isTransparent && header) {
+			let ticking = false;
+
+			const updateHeaderBackground = () => {
+				const scrollY = window.scrollY;
+				const threshold = 50; // Start transition after 50px scroll
+
+				if (scrollY > threshold) {
+					// Scrolled - show solid background
+					header.classList.add('header-scrolled');
+					header.classList.remove('header-transparent');
+				} else {
+					// At top - transparent
+					header.classList.remove('header-scrolled');
+					header.classList.add('header-transparent');
+				}
+				ticking = false;
+			};
+
+			const onScroll = () => {
+				if (!ticking) {
+					window.requestAnimationFrame(updateHeaderBackground);
+					ticking = true;
+				}
+			};
+
+			window.addEventListener('scroll', onScroll, { passive: true });
+			updateHeaderBackground(); // Initial state
+
+			// Cleanup on page navigation
+			document.addEventListener('astro:before-swap', () => {
+				window.removeEventListener('scroll', onScroll);
+			}, { once: true });
+		}
 
 		// Initialize theme following Tailwind docs pattern
 		const initializeTheme = () => {

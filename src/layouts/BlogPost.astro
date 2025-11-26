@@ -171,11 +171,11 @@ const breadcrumbSchema = createBreadcrumbSchema(
 
 	<body class="bg-gray-50 dark:bg-gray-950">
 		<HeaderWrapper autoHide={false}>
-			<Header />
+			<Header transparent={!!displayImage} />
 		</HeaderWrapper>
 		<main class="relative">
 			{displayImage && (
-				<section class="relative isolate -mt-20">
+				<section class="relative isolate -mt-16">
 					<div class="relative h-[420px] sm:h-[520px] lg:h-[640px] xl:h-[720px] 2xl:h-[820px] overflow-hidden">
 						<img
 							src={getCFImageUrl(displayImage, {

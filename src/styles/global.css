@@ -141,6 +141,133 @@ a {
   @apply hidden;
 }
 
+/* Header default styles */
+#site-header .header-logo,
+#site-header .header-logo span {
+  color: rgb(17 24 39); /* gray-900 */
+}
+
+.dark #site-header .header-logo,
+.dark #site-header .header-logo span {
+  color: rgb(243 244 246); /* gray-100 */
+}
+
+#site-header .header-nav-item {
+  color: rgb(75 85 99); /* gray-600 */
+}
+
+.dark #site-header .header-nav-item {
+  color: rgb(156 163 175); /* gray-400 */
+}
+
+#site-header .header-nav-item:hover {
+  color: rgb(17 24 39); /* gray-900 */
+}
+
+.dark #site-header .header-nav-item:hover {
+  color: rgb(243 244 246); /* gray-100 */
+}
+
+/* Transparent header styles for blog posts with hero images */
+.header-transparent {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+  border-color: transparent !important;
+}
+
+.header-transparent .header-logo,
+.header-transparent .header-logo span {
+  color: white !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.header-transparent .header-nav-item,
+.header-transparent .header-nav-item:visited {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.header-transparent .header-nav-item:hover {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.header-transparent .header-nav-item svg {
+  color: white !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+/* For stroke-based icons (search, tag, headphones, etc.) */
+.header-transparent .header-nav-item svg[stroke="currentColor"] {
+  stroke: white !important;
+}
+
+/* For fill-based icons (github, social icons) */
+.header-transparent .header-nav-item svg[fill="currentColor"] {
+  fill: white !important;
+}
+
+/* Theme toggle icons */
+.header-transparent .header-nav-item .theme-icon {
+  stroke: white !important;
+}
+
+/* Scrolled state - solid background */
+.header-scrolled {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgb(229 231 235) !important; /* gray-200 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dark .header-scrolled {
+  background-color: rgba(17, 24, 39, 0.95) !important; /* gray-900 */
+  border-color: rgb(55 65 81) !important; /* gray-700 */
+}
+
+.header-scrolled .header-logo,
+.header-scrolled .header-logo span {
+  color: rgb(17 24 39) !important; /* gray-900 */
+  text-shadow: none;
+}
+
+.dark .header-scrolled .header-logo,
+.dark .header-scrolled .header-logo span {
+  color: rgb(243 244 246) !important; /* gray-100 */
+}
+
+.header-scrolled .header-nav-item {
+  color: rgb(75 85 99) !important; /* gray-600 */
+  text-shadow: none;
+}
+
+.dark .header-scrolled .header-nav-item {
+  color: rgb(156 163 175) !important; /* gray-400 */
+}
+
+.header-scrolled .header-nav-item:hover {
+  color: rgb(17 24 39) !important; /* gray-900 */
+  background-color: rgba(243, 244, 246, 0.5) !important; /* gray-100/50 */
+}
+
+.dark .header-scrolled .header-nav-item:hover {
+  color: rgb(243 244 246) !important; /* gray-100 */
+  background-color: rgba(31, 41, 55, 0.5) !important; /* gray-800/50 */
+}
+
+.header-scrolled .header-nav-item svg {
+  filter: none;
+  color: inherit;
+}
+
+.header-scrolled .header-nav-item svg[stroke="currentColor"] {
+  stroke: currentColor;
+}
+
+.header-scrolled .header-nav-item svg[fill="currentColor"] {
+  fill: currentColor;
+}
+
 /* Custom prose styling for blog posts */
 .prose {
   @apply text-gray-900 dark:text-gray-100 max-w-none;
