@@ -156,42 +156,48 @@ export class ContentGenerator {
     const lines = section.split('\n')
     const enrichedLines = []
     let headerFound = false
-    const h3Headers = []
-
-    // First pass: find all H3 headers
-    for (let i = 0; i < lines.length; i++) {
-      if (lines[i].startsWith('### ')) {
-        h3Headers.push(i)
-      }
-    }
-
-    // Calculate middle position - after the middle H3 section
-    const middleH3Index = h3Headers.length > 1 ? h3Headers[Math.floor(h3Headers.length / 2)] : h3Headers[0]
-
     for (let i = 0; i < lines.length; i++) {
       enrichedLines.push(lines[i])
 
-      // After the H2 header (## Album Title), add album image
+      // After the H2 header (## Album Title), add LightGallery component with album and artist images
       if (!headerFound && lines[i].startsWith('## ')) {
         headerFound = true
+
+        const galleryImages = []
+
+        // Add album image if available
         if (albumData?.image) {
           const albumImagePath = `/assets/${dateStr}-listened-to-this-week/albums/${normalizeForFilename(album)}.jpg`
           const altText = escapeQuotes(`${album} by ${artist}`)
+          galleryImages.push(`{ src: "${albumImagePath}", alt: "${altText}" }`)
+        }
+
+        // Add artist image if available
+        if (artistData?.image) {
+          const artistImagePath = `/assets/${dateStr}-listened-to-this-week/artists/${normalizeForFilename(artist)}.jpg`
+          const altText = escapeQuotes(artist)
+          galleryImages.push(`{ src: "${artistImagePath}", alt: "${altText}" }`)
+          // Mark as used so we don't try to use it again (though we removed that logic anyway)
+          artistData.image = null
+        }
+
+        // Insert LightGallery component if we have images
+        if (galleryImages.length > 0) {
           enrichedLines.push('')
-          enrichedLines.push(`<Img src="${albumImagePath}" alt="${altText}" fullWidth="true" />`)
+          enrichedLines.push('<LightGallery')
+          enrichedLines.push('    layout={{')
+          enrichedLines.push('        imgs: [')
+
+          // Add images with commas
+          for (let j = 0; j < galleryImages.length; j++) {
+            enrichedLines.push(`            ${galleryImages[j]}${j < galleryImages.length - 1 ? ',' : ''}`)
+          }
+
+          enrichedLines.push('        ]')
+          enrichedLines.push('    }}')
+          enrichedLines.push('/>')
           enrichedLines.push('')
         }
-      }
-
-      // After the middle H3 header, add artist image
-      if (headerFound && i === middleH3Index && artistData?.image) {
-        const artistImagePath = `/assets/${dateStr}-listened-to-this-week/artists/${normalizeForFilename(artist)}.jpg`
-        const altText = escapeQuotes(artist)
-        enrichedLines.push('')
-        enrichedLines.push(`<Img src="${artistImagePath}" alt="${altText}" fullWidth="true" />`)
-        enrichedLines.push('')
-        // Only add once
-        artistData.image = null
       }
     }
 

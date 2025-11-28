@@ -40,6 +40,7 @@ const transformedLayout = {
     // Use lower quality for thumbnails
     thumbnail: getCFImageUrl(img.src, {
       width: 400,
+      height: 400,
       quality: CF_IMAGE_PRESETS.gallery.quality,
       format: CF_IMAGE_PRESETS.gallery.format,
       fit: 'cover'
@@ -47,13 +48,33 @@ const transformedLayout = {
     alt: img.alt
   }))
 };
+
+const imageCount = transformedLayout.imgs.length;
 ---
 
-<div data-no-swup class="lightgallery-wrapper">
-  <AstroLightGallery
-    layout={transformedLayout}
-    options={options}
-  />
+<div 
+  class="lightgallery-component lightgallery-wrapper" 
+  data-options={JSON.stringify(options)}
+  data-grid-count={imageCount}
+>
+  <div class="astro-lightgallery-adaptive-container">
+    {transformedLayout.imgs.map((img) => (
+      <a 
+        href={img.src} 
+        class="astro-lightgallery-adaptive-item"
+        data-lg-id="true"
+        data-src={img.src}
+        data-sub-html={img.alt ? `<h4>${img.alt}</h4>` : ''}
+      >
+        <img 
+          src={img.thumbnail} 
+          alt={img.alt || ''} 
+          loading="lazy" 
+          decoding="async"
+        />
+      </a>
+    ))}
+  </div>
 </div>
 
 {enableMetaPlugin && (
@@ -153,14 +174,11 @@ const transformedLayout = {
     const wrapper = document.currentScript?.previousElementSibling;
 
     if (wrapper && wrapper.classList.contains('lightgallery-wrapper')) {
-      const gallery = wrapper.querySelector('astro-lightgallery');
-
-      if (gallery) {
-        // Wait for astro-lightgallery to initialize
-        setTimeout(() => {
-          initMetaPlugin(gallery, debugMeta);
-        }, 200);
-      }
+      // Use the wrapper itself as the gallery container for the plugin
+      // Wait for DOM to be ready
+      setTimeout(() => {
+        initMetaPlugin(wrapper, debugMeta);
+      }, 200);
     }
   </script>
 )}
@@ -171,25 +189,37 @@ const transformedLayout = {
     width: 100%;
   }
 
-  .lightgallery-wrapper astro-lightgallery {
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-  }
-
   .lightgallery-wrapper .astro-lightgallery-adaptive-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1rem;
     margin: 0 auto;
     width: 100%;
     justify-items: center;
   }
 
+  @media (min-width: 640px) {
+    .lightgallery-wrapper .astro-lightgallery-adaptive-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (min-width: 1024px) {
     .lightgallery-wrapper .astro-lightgallery-adaptive-container {
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
+    }
+
+    /* Adaptive grid overrides for specific image counts */
+    .lightgallery-wrapper[data-grid-count="1"] .astro-lightgallery-adaptive-container {
+      grid-template-columns: 1fr;
+      max-width: 600px; /* Optional: limit width for single image so it's not too huge */
+      margin: 0 auto;
+    }
+
+    .lightgallery-wrapper[data-grid-count="2"] .astro-lightgallery-adaptive-container,
+    .lightgallery-wrapper[data-grid-count="4"] .astro-lightgallery-adaptive-container {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
@@ -198,15 +228,16 @@ const transformedLayout = {
     margin: 0;
     width: 100%;
     max-width: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 1 !important;
     overflow: hidden;
     border-radius: 0.5rem;
+    cursor: pointer;
   }
 
   .lightgallery-wrapper .astro-lightgallery-adaptive-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 100% !important;
+    object-fit: cover !important;
     transition: transform 0.3s ease;
   }
 

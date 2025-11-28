@@ -23,6 +23,11 @@ import { getHeroColors, gradientStylesToString, getGradientStyles } from '../uti
 import { YouTube } from '@astro-community/astro-embed-youtube';
 import { LinkPreview } from '@astro-community/astro-embed-link-preview';
 
+// Import LightGallery CSS
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-zoom.css';
+import 'lightgallery/css/lg-thumbnail.css';
+
 export interface Heading {
 	depth: number;
 	text: string;
@@ -329,105 +334,155 @@ const breadcrumbSchema = createBreadcrumbSchema(
 			import type { LightGallerySettings } from 'lightgallery/lg-settings';
 			import type { AstroLightGalleryPluginStrType } from 'astro-lightgallery';
 
+			// Guard to prevent concurrent initializations
+			let isInitializing = false;
+
 			// Initialize LightGallery for blog post pages with optimized DOM operations
 			async function initLightGallery() {
-				// Use requestAnimationFrame to batch DOM reads and avoid forced reflows
-				requestAnimationFrame(async () => {
-					const galleries = document.querySelectorAll('astro-lightgallery');
+				if (isInitializing) return;
+				isInitializing = true;
 
-					// Early exit if no galleries - don't load the library at all
-					if (galleries.length === 0) {
-						return;
-					}
+				try {
+					// Use requestAnimationFrame to batch DOM reads and avoid forced reflows
+					await new Promise<void>(resolve => {
+						requestAnimationFrame(async () => {
+							const galleries = document.querySelectorAll('astro-lightgallery, .lightgallery-component');
 
-					// Dynamic import - only load LightGallery when galleries exist
-					const { createLightGallery } = await import('astro-lightgallery');
+							// Early exit if no galleries - don't load the library at all
+							if (galleries.length === 0) {
+								resolve();
+								return;
+							}
 
-					// Batch all DOM reads first to avoid layout thrashing
-					const galleryData: Array<{
-						htmlGallery: HTMLElement;
-						items: HTMLElement[];
-						options?: LightGallerySettings;
-						addPlugins?: AstroLightGalleryPluginStrType[];
-					}> = [];
+							// Dynamic import - only load LightGallery when galleries exist
+							const { default: lightGallery } = await import('lightgallery');
+							const { default: lgThumbnail } = await import('lightgallery/plugins/thumbnail');
+							const { default: lgZoom } = await import('lightgallery/plugins/zoom');
 
-					let firstGalleryOptions: LightGallerySettings = {};
-					let firstGalleryPlugins: AstroLightGalleryPluginStrType[] = [];
+							// Batch all DOM reads first to avoid layout thrashing
+							const galleryData: Array<{
+								htmlGallery: HTMLElement;
+								items: HTMLElement[];
+								options?: LightGallerySettings;
+							}> = [];
 
-					for (const gallery of galleries) {
-						const htmlGallery = gallery as HTMLElement;
+							let firstGalleryOptions: LightGallerySettings = {};
 
-						// Skip if already initialized
-						if (htmlGallery.hasAttribute('data-lg-initialized')) {
-							continue;
-						}
+							for (const gallery of galleries) {
+								const htmlGallery = gallery as HTMLElement;
 
-						// Read options (first gallery only)
-						if (galleryData.length === 0) {
-							firstGalleryOptions = JSON.parse(htmlGallery.dataset.options || '{}');
-							firstGalleryPlugins = JSON.parse(htmlGallery.dataset.addplugins || '[]');
-						}
-
-						// Collect all items
-						const items = Array.from(htmlGallery.querySelectorAll<HTMLElement>('a[data-lg-id]'));
-
-						galleryData.push({
-							htmlGallery,
-							items,
-							options: firstGalleryOptions,
-							addPlugins: firstGalleryPlugins
-						});
-					}
-
-					// Now do all DOM writes in a single batch
-					if (galleryData.length > 0) {
-						// Flatten all items
-						const allGalleryItems = galleryData.flatMap(g => g.items);
-
-						if (allGalleryItems.length === 0) {
-							return;
-						}
-
-						// Create unified gallery container
-						const unifiedGalleryId = 'unified-lightgallery';
-						let unifiedGallery = document.getElementById(unifiedGalleryId);
-
-						if (!unifiedGallery) {
-							unifiedGallery = document.createElement('div');
-							unifiedGallery.id = unifiedGalleryId;
-							unifiedGallery.style.display = 'none';
-							document.body.appendChild(unifiedGallery);
-						}
-
-						// Clear and populate unified gallery
-						unifiedGallery.innerHTML = '';
-						const fragment = document.createDocumentFragment();
-						allGalleryItems.forEach(item => {
-							const clone = item.cloneNode(true) as HTMLElement;
-							fragment.appendChild(clone);
-						});
-						unifiedGallery.appendChild(fragment);
-
-						// Mark galleries as initialized
-						galleryData.forEach(({ htmlGallery }) => {
-							htmlGallery.setAttribute('data-lg-initialized', 'true');
-						});
-
-						// Initialize unified gallery
-						await createLightGallery(unifiedGalleryId, firstGalleryOptions, firstGalleryPlugins);
-
-						// Redirect clicks from original galleries to unified gallery
-						allGalleryItems.forEach((item, index) => {
-							item.addEventListener('click', (e) => {
-								e.preventDefault();
-								const unifiedItems = unifiedGallery!.querySelectorAll('a[data-lg-id]');
-								if (unifiedItems[index]) {
-									(unifiedItems[index] as HTMLElement).click();
+								// Skip if already initialized by THIS script
+								if (htmlGallery.hasAttribute('data-unified-initialized')) {
+									continue;
 								}
-							});
+
+								// Read options (first gallery only)
+								if (galleryData.length === 0) {
+									// Try to get options from data-options (new component) or dataset (old component)
+									const optionsStr = htmlGallery.getAttribute('data-options') || htmlGallery.dataset.options || '{}';
+									
+									try {
+										firstGalleryOptions = JSON.parse(optionsStr);
+									} catch (e) {
+										console.warn('Failed to parse gallery options', e);
+									}
+								}
+
+								// Collect all items
+								const items = Array.from(htmlGallery.querySelectorAll<HTMLElement>('a[data-lg-id]'));
+
+								galleryData.push({
+									htmlGallery,
+									items,
+									options: firstGalleryOptions
+								});
+							}
+
+							// Now do all DOM writes in a single batch
+							if (galleryData.length > 0) {
+								// Flatten all items
+								const allGalleryItems = galleryData.flatMap(g => g.items);
+
+								if (allGalleryItems.length === 0) {
+									resolve();
+									return;
+								}
+
+								// Create unified gallery container
+								const unifiedGalleryId = 'unified-lightgallery';
+								let unifiedGallery = document.getElementById(unifiedGalleryId);
+
+								if (unifiedGallery) {
+									// If it exists, clear it out to be safe
+									unifiedGallery.innerHTML = '';
+								} else {
+									unifiedGallery = document.createElement('div');
+									unifiedGallery.id = unifiedGalleryId;
+									// Use visibility hidden instead of display none to ensure events/dimensions work if needed
+									unifiedGallery.style.position = 'absolute';
+									unifiedGallery.style.top = '0';
+									unifiedGallery.style.left = '0';
+									unifiedGallery.style.width = '0';
+									unifiedGallery.style.height = '0';
+									unifiedGallery.style.visibility = 'hidden';
+									unifiedGallery.style.overflow = 'hidden';
+									document.body.appendChild(unifiedGallery);
+								}
+
+								// Populate unified gallery
+								const fragment = document.createDocumentFragment();
+								allGalleryItems.forEach(item => {
+									const clone = item.cloneNode(true) as HTMLElement;
+									fragment.appendChild(clone);
+								});
+								unifiedGallery.appendChild(fragment);
+
+								// Mark galleries as initialized
+								galleryData.forEach(({ htmlGallery }) => {
+									htmlGallery.setAttribute('data-unified-initialized', 'true');
+								});
+
+								// Initialize unified gallery
+								// Merge plugins into options
+								const lgOptions = {
+									...firstGalleryOptions,
+									plugins: [lgThumbnail, lgZoom],
+									selector: 'a[data-lg-id]', // Explicitly select items
+									licenseKey: '0000-0000-000-0000' // Open source license
+								};
+
+								const galleryInstance = lightGallery(unifiedGallery, lgOptions);
+
+								// Redirect clicks from original galleries to unified gallery
+								// CRITICAL: Clone and replace items to strip any existing event listeners (e.g. from astro-lightgallery auto-init)
+								allGalleryItems.forEach((item, index) => {
+									const newItem = item.cloneNode(true) as HTMLElement;
+									if (item.parentNode) {
+										item.parentNode.replaceChild(newItem, item);
+									}
+									
+									newItem.addEventListener('click', (e) => {
+										e.preventDefault();
+										e.stopPropagation(); // Stop propagation to be safe
+										
+										if (galleryInstance && typeof galleryInstance.openGallery === 'function') {
+											galleryInstance.openGallery(index);
+										} else {
+											console.warn('[LightGallery] Instance not found or openGallery missing, falling back to click simulation');
+											const unifiedItems = unifiedGallery!.querySelectorAll('a[data-lg-id]');
+											if (unifiedItems[index]) {
+												(unifiedItems[index] as HTMLElement).click();
+											}
+										}
+									});
+								});
+							}
+							resolve();
 						});
-					}
-				});
+					});
+				} finally {
+					isInitializing = false;
+				}
 			}
 
 			// Initialize on first load

@@ -191,6 +191,7 @@ function processAlbumData(albumData, originalCases, limit) {
   const albums = {}
   const originalEntries = {}
 
+  // First pass: Collect all entries
   for (const album of albumData.weeklyalbumchart.album) {
     const artist = album.artist['#text']
     const albumName = album.name
@@ -199,10 +200,83 @@ function processAlbumData(albumData, originalCases, limit) {
     originalEntries[key] = [artist, albumName]
   }
 
-  return Object.entries(albums)
+  // Second pass: Group by normalized album name to find split albums
+  const albumsByName = {}
+  for (const [key, count] of Object.entries(albums)) {
+    const [artistKey, albumKey] = key.split('|||')
+    if (!albumsByName[albumKey]) {
+      albumsByName[albumKey] = []
+    }
+    albumsByName[albumKey].push({
+      key,
+      artistKey,
+      count,
+      originalArtist: originalEntries[key][0],
+      originalAlbum: originalEntries[key][1]
+    })
+  }
+
+  // Common titles that shouldn't be merged (e.g. "Greatest Hits" by different artists)
+  const commonTitles = [
+    'greatest hits',
+    'greatest hits ii',
+    'greatest hits vol. 1',
+    'greatest hits vol. 2',
+    'the best of',
+    'best of',
+    'live',
+    'unplugged',
+    'essential',
+    'gold',
+    'platinum collection',
+    'anthology',
+    'collection',
+    'definitive collection'
+  ]
+
+  const mergedAlbums = {}
+  const mergedOriginalEntries = {}
+
+  // Process groups and merge if necessary
+  for (const [albumName, entries] of Object.entries(albumsByName)) {
+    let shouldMerge = false
+    let dominantArtist = null
+
+    // Only consider merging if there are multiple entries for the same album name
+    if (entries.length > 1 && !commonTitles.includes(albumName)) {
+      const totalPlays = entries.reduce((sum, entry) => sum + entry.count, 0)
+
+      // Find if there's a dominant artist (> 70% of plays)
+      const sortedEntries = [...entries].sort((a, b) => b.count - a.count)
+      const topEntry = sortedEntries[0]
+
+      if (topEntry.count / totalPlays > 0.7) {
+        shouldMerge = true
+        dominantArtist = topEntry
+        console.log(`Merging split album "${topEntry.originalAlbum}": attributing ${totalPlays} plays to ${topEntry.originalArtist} (Dominance: ${Math.round((topEntry.count / totalPlays) * 100)}%)`)
+      }
+    }
+
+    if (shouldMerge && dominantArtist) {
+      // Merge all entries into the dominant artist
+      const key = dominantArtist.key
+      const totalPlays = entries.reduce((sum, entry) => sum + entry.count, 0)
+
+      mergedAlbums[key] = totalPlays
+      mergedOriginalEntries[key] = [dominantArtist.originalArtist, dominantArtist.originalAlbum]
+    } else {
+      // Keep entries separate
+      for (const entry of entries) {
+        mergedAlbums[entry.key] = entry.count
+        mergedOriginalEntries[entry.key] = [entry.originalArtist, entry.originalAlbum]
+      }
+    }
+  }
+
+  return Object.entries(mergedAlbums)
     .sort((a, b) => b[1] - a[1])
     .slice(0, limit)
-    .map(([key, count]) => [originalEntries[key] || key.split('|||'), count])
+    .map(([key, count]) => [mergedOriginalEntries[key] || key.split('|||'), count])
 }
 
 function printLinks(collectionInfo, topArtists, topAlbums) {

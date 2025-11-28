@@ -1,5 +1,4 @@
 ---
-import { LightGallery } from 'astro-lightgallery'
 import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../../utils/cloudflare-images';
 
 interface Props {
@@ -43,11 +42,11 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
 <div class={`img-wrapper mb-1 flex ${fullWidth ? '' : 'justify-center'}`}>
   {enableZoom ? (
     <div class={fullWidth ? 'w-full' : ''}>
-      <LightGallery
-        layout={{ imgs: [{ src: highResSrc, alt: alt }] }}
-        options={{ thumbnail: false, download: false }}
+      <div 
+        class="lightgallery-component" 
+        data-options={JSON.stringify({ thumbnail: false, download: false })}
       >
-        <a href={highResSrc}>
+        <a href={highResSrc} data-lg-id="true">
           <img
             src={imgSrc}
             srcset={srcsetString}
@@ -59,7 +58,7 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
             {...(width && { width })}
           />
         </a>
-      </LightGallery>
+      </div>
     </div>
   ) : link ? (
     <a href={link} target="_blank" rel="noopener noreferrer" class={fullWidth ? 'w-full' : ''}>
