@@ -628,20 +628,43 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
       const arrayBuffer = await response.arrayBuffer()
       const buffer = Buffer.from(arrayBuffer)
 
+      // Get original image dimensions
+      const originalMetadata = await sharp(buffer).metadata()
+      const originalWidth = originalMetadata.width
+      const originalHeight = originalMetadata.height
+
       // Ensure output directory exists
       const outputDir = path.dirname(outputPath)
       await fs.mkdir(outputDir, { recursive: true })
 
-      // Process with Sharp to ensure exact dimensions and format
+      // Save the original full-resolution image to the main output path
       await sharp(buffer)
-        .resize(width, height, { fit: 'cover' })
         .png({ compressionLevel: 6, quality: 100 })
         .toFile(outputPath)
 
+      if (debug) {
+        console.log(`  ✓ Saved original resolution: ${originalWidth}×${originalHeight} → ${outputPath}`)
+      }
+
+      // Save resized version with -small suffix
+      const ext = path.extname(outputPath)
+      const baseName = path.basename(outputPath, ext)
+      const smallOutputPath = path.join(outputDir, `${baseName}-small${ext}`)
+
+      await sharp(buffer)
+        .resize(width, height, { fit: 'cover' })
+        .png({ compressionLevel: 6, quality: 100 })
+        .toFile(smallOutputPath)
+
       console.log(`  ✓ Created FAL.ai collage with ${selectedImages.length} vibrant album covers`)
+      console.log(`    Original: ${originalWidth}×${originalHeight} → ${outputPath}`)
+      console.log(`    Small:    ${width}×${height} → ${smallOutputPath}`)
 
       return {
         outputPath,
+        smallOutputPath,
+        originalWidth,
+        originalHeight,
         selectedImages,
         seed: result.data.seeds?.[0],
         imageUrl
@@ -788,6 +811,11 @@ Positional Arguments:
   <input-folder>      Same as --input
   [output-file]       Same as --output
 
+Output Files:
+  The script saves TWO images:
+  1. <output>.png           - Full resolution from FAL.ai (typically 2752×1536)
+  2. <output>-small.png     - Resized to --width×--height (default 1400×800)
+
 Examples:
   # Use default test folder
   node scripts/fal-collage.js
@@ -797,6 +825,7 @@ Examples:
 
   # Custom input and output
   node scripts/fal-collage.js --input=./albums --output=./my-collage.png
+  # Creates: ./my-collage.png (full res) + ./my-collage-small.png (1400×800)
 
   # Using positional arguments
   node scripts/fal-collage.js ./albums ./output.png
@@ -890,8 +919,8 @@ async function testFALCollage(cliArgs = []) {
     )
 
     console.log('\\n✓ FAL.ai collage complete!')
-    console.log(`  Output: ${result.outputPath}`)
-    console.log(`  Dimensions: ${options.width}×${options.height}`)
+    console.log(`  Original: ${result.outputPath} (${result.originalWidth}×${result.originalHeight})`)
+    console.log(`  Small:    ${result.smallOutputPath} (${options.width}×${options.height})`)
     console.log(`  Selected images: ${result.selectedImages.length}`)
     if (result.seed) {
       console.log(`  Seed: ${result.seed}`)
