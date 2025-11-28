@@ -1,5 +1,5 @@
 // Re-export embed convenience components for consistent imports
-import { YouTube as AstroYouTube } from '@astro-community/astro-embed-youtube';
+// Re-export embed convenience components for consistent imports
 export { default as LinkPreview } from './LinkPreview.astro';
 export { default as Instagram } from './Instagram.astro';
 export { default as Audio } from './Audio.astro';
@@ -11,4 +11,4 @@ export { default as Img } from './Img.astro';
 export { default as LightGallery } from './LightGalleryNew.astro';
 export { default as Mermaid } from './Mermaid.astro';
 export * from './callouts';
-export const YouTube = AstroYouTube;
+export { default as YouTube } from './YouTube.astro';

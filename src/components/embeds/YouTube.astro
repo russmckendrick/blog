@@ -10,4 +10,13 @@ interface Props {
 const { id, params, playlabel } = Astro.props;
 ---
 
-<YouTubeEmbed id={id} params={params} playlabel={playlabel} />
+<div class="w-full aspect-video">
+  <YouTubeEmbed id={id} params={params} playlabel={playlabel} class="w-full h-full" />
+</div>
+
+<style is:global>
+  lite-youtube {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+</style>
