@@ -268,6 +268,40 @@ a {
   fill: currentColor;
 }
 
+/* ================================================
+   Hero Gradient Section
+   ================================================ */
+
+.hero-gradient-section {
+  /* Uses CSS custom properties set inline from extracted colors */
+}
+
+/* Light mode gradient - soft, muted wash effect like russ.fm */
+.hero-gradient-bg {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--gradient-primary, #3B82F6) 15%, white 85%) 0%,
+    color-mix(in srgb, var(--gradient-secondary, #1E40AF) 10%, #f9fafb 90%) 40%,
+    #f9fafb 100%
+  );
+  transition: background 0.3s ease-in-out;
+}
+
+/* Dark mode gradient - more visible color wash */
+.dark .hero-gradient-bg {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--gradient-primary-dark, #1E3A5F) 40%, #030712 60%) 0%,
+    color-mix(in srgb, var(--gradient-secondary-dark, #0F172A) 25%, #030712 75%) 40%,
+    #030712 100%
+  );
+}
+
+/* Hero image inside card - no constraints, natural size */
+.hero-image-card {
+  display: block;
+}
+
 /* Custom prose styling for blog posts */
 .prose {
   @apply text-gray-900 dark:text-gray-100 max-w-none;

@@ -17,6 +17,7 @@ import { getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } fr
 import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, TAG_METADATA, TAG_AVATAR_MAP } from '../consts';
 import { Schema } from 'astro-seo-schema';
 import { createBlogPostingSchema, createBreadcrumbSchema } from '../utils/schema';
+import { getHeroColors, gradientStylesToString, getGradientStyles } from '../utils/hero-colors';
 
 // Import embed components to make them available in blog posts
 import { YouTube } from '@astro-community/astro-embed-youtube';
@@ -50,6 +51,10 @@ const ogImage = ogImagePath;
 // Use cover.image if available, otherwise fall back to heroImage
 // cover.image can be a string (public URL) or an imported image
 const displayImage = cover?.image || heroImage;
+
+// Get color palette for hero gradient
+const heroColors = getHeroColors(displayImage);
+const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors));
 
 // Build edit URL
 const editUrl = filePath && EDIT_POST.appendFilePath
@@ -171,38 +176,46 @@ const breadcrumbSchema = createBreadcrumbSchema(
 
 	<body class="bg-gray-50 dark:bg-gray-950">
 		<HeaderWrapper autoHide={false}>
-			<Header transparent={!!displayImage} />
+			<Header transparent={false} />
 		</HeaderWrapper>
 		<main class="relative">
-			{displayImage && (
-				<section class="relative isolate -mt-16">
-					<div class="relative h-[420px] sm:h-[520px] lg:h-[640px] xl:h-[720px] 2xl:h-[820px] overflow-hidden">
-						<img
-							src={getCFImageUrl(displayImage, {
-								width: 1920,
-								quality: CF_IMAGE_PRESETS.hero.quality,
-								format: CF_IMAGE_PRESETS.hero.format,
-								fit: CF_IMAGE_PRESETS.hero.fit
-							})}
-							srcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
-							sizes="100vw"
-							alt={cover?.alt || title}
-							loading="eager"
-							fetchpriority="high"
-							decoding="async"
-							class="absolute inset-0 h-full w-full object-cover"
-						/>
-					<div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-transparent dark:from-black/40 dark:via-black/25"></div>
-					<div class="absolute inset-0 bg-gradient-to-t from-transparent via-white/10 to-white/30 dark:via-white/5 dark:to-white/10 mix-blend-screen"></div>
-					</div>
-					<div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 xl:h-52 2xl:h-60 bg-gradient-to-b from-transparent via-gray-50/60 to-gray-50 dark:via-gray-950/60 dark:to-gray-950"></div>
-				</section>
-			)}
+			{/* Dynamic gradient section - soft color wash behind content */}
+			<section
+				class="hero-gradient-section absolute inset-x-0 top-0 -mt-16 h-[70vh] min-h-[450px]"
+				style={gradientStyleString}
+			>
+				<div class="hero-gradient-bg absolute inset-0"></div>
+			</section>
 
-			<article class={`relative z-10 ${displayImage ? '-mt-32 sm:-mt-40 lg:-mt-48 xl:-mt-60 2xl:-mt-72' : 'mt-12'}`}>
+			{/* Post card - positioned below nav with gap */}
+			<article class="relative z-10 pt-20 sm:pt-24">
 				<div class="max-w-4xl 2xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
-					<div class="bg-white/95 dark:bg-gray-900/90 rounded-3xl shadow-2xl shadow-gray-300/40 dark:shadow-black/60 ring-1 ring-gray-200/60 dark:ring-gray-800 backdrop-blur-xl px-6 sm:px-10 xl:px-16 py-10 sm:py-12 xl:py-16">
-						<Breadcrumbs items={breadcrumbItems} />
+					<div class="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl shadow-gray-300/40 dark:shadow-black/60 ring-1 ring-gray-200/60 dark:ring-gray-800 overflow-hidden">
+						{/* Hero image inside the card - edge to edge with rounded top corners */}
+						{displayImage && (
+							<div class="relative mb-2">
+								<img
+									src={getCFImageUrl(displayImage, {
+										width: 1920,
+										quality: CF_IMAGE_PRESETS.hero.quality,
+										format: CF_IMAGE_PRESETS.hero.format,
+										fit: 'scale-down'
+									})}
+									srcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
+									sizes="(max-width: 1152px) 100vw, 1100px"
+									alt={cover?.alt || title}
+									loading="eager"
+									fetchpriority="high"
+									decoding="async"
+									class="hero-image-card w-full h-auto rounded-t-3xl"
+								/>
+								{/* Shadow at bottom of image only */}
+								<div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/25 to-transparent pointer-events-none"></div>
+							</div>
+						)}
+
+						<div class="px-6 sm:px-10 xl:px-16 py-8 sm:py-10 xl:py-12">
+							<Breadcrumbs items={breadcrumbItems} />
 
 						<header class="text-center mb-10 space-y-6">
 							<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-gray-100">
@@ -302,6 +315,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 						{!isTune && <ShareButtons title={title} url={Astro.url.href} tags={tags} />}
 
 						{!isTune && entry && <RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={3} />}
+						</div>
 					</div>
 
 					<PostNavigation previousPost={previousPost} nextPost={nextPost} />

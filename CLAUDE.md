@@ -37,6 +37,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - Supports both relative (to project root) and absolute paths
   - Example: `npm run optimize src/assets/2025-10-01-my-post`
 
+### Hero Color Extraction
+- `npm run extract-colors` - Extract dominant colors from all hero images for dynamic gradients
+  - Processes all hero/cover images in `src/assets/`
+  - Generates `src/data/hero-colors.json` with color palettes
+  - Caches results in `node_modules/.cache/hero-colors-cache.json` for incremental builds
+  - Automatically runs before builds via `npm run prebuild`
+  - Re-run manually after adding new hero images or to regenerate colors
+
 ### Content Migration
 - `scripts/convert-to-mdx.sh` - Script for migrating legacy posts to MDX format
 
@@ -114,6 +122,53 @@ The site uses **Cloudflare Image Transformations** for on-demand image optimizat
 **Transformation options**: width, height, quality (1-100), format (auto/webp/avif/jpeg), fit (scale-down/contain/cover/crop/pad), gravity (auto/left/right/top/bottom/center), sharpen (0-10), blur (0-250), metadata (keep/copyright/none)
 
 **Docs**: https://developers.cloudflare.com/images/transform-images/transform-via-url/
+
+### Dynamic Hero Gradients
+
+Blog posts feature a dynamic gradient background extracted from each post's hero image colors:
+
+**How It Works**:
+1. `scripts/extract-hero-colors.js` analyzes hero images using Sharp at build time
+2. Extracts 4 dominant, vibrant colors (primary, secondary, accent, tertiary) plus dark mode variants
+3. Saves color palettes to `src/data/hero-colors.json`
+4. `src/utils/hero-colors.ts` provides utilities to retrieve colors and generate CSS custom properties
+5. `BlogPost.astro` applies colors as inline CSS variables on the gradient section
+6. CSS uses `color-mix()` to create soft, muted gradient washes
+
+**Color Extraction Algorithm**:
+- Samples 128x128 pixels from each hero image
+- Scores colors by saturation (vibrance) and frequency
+- Ensures selected colors are visually distinct (minimum color distance)
+- Generates darkened variants for dark mode (40% darker)
+
+**Files**:
+- `scripts/extract-hero-colors.js` - Build-time color extraction script
+- `src/utils/hero-colors.ts` - Runtime utilities (`getHeroColors()`, `getGradientStyles()`)
+- `src/data/hero-colors.json` - Generated color data (343 images)
+- `src/styles/global.css` - `.hero-gradient-bg` CSS with `color-mix()` for soft washes
+
+**Gradient Styling**:
+- Light mode: 15% extracted color mixed with white, fading to page background
+- Dark mode: 40% extracted color mixed with gray-950, fading to page background
+- Uses CSS `color-mix(in srgb, ...)` for precise color blending
+- Covers 70vh of viewport height behind the post card
+
+**Caching**:
+- Color extraction results cached by file modification time
+- Cache location: `node_modules/.cache/hero-colors-cache.json`
+- Incremental builds only process new/modified images
+- First extraction: ~10 seconds for 340+ images
+- Subsequent builds: <1 second (cached)
+
+**Regenerating Colors**:
+```bash
+# Clear cache and regenerate all colors
+rm node_modules/.cache/hero-colors-cache.json
+npm run extract-colors
+
+# Or just run extraction (uses cache for unchanged images)
+npm run extract-colors
+```
 
 ### SEO Management
 
