@@ -37,7 +37,7 @@ export const DEFAULT_HERO_COLORS: HeroColorPalette = {
  */
 function extractImageKey(imagePath: string): string {
   // Handle various path formats:
-  // - /_astro/image.abc123.jpg (processed)
+  // - /_astro/blog-cover-2024-09-15-post.DxB3k9_Z.png (Astro processed)
   // - /src/assets/2025-01-01-post/cover.jpg (source)
   // - src/assets/2025-01-01-post/cover.jpg (relative)
 
@@ -46,9 +46,10 @@ function extractImageKey(imagePath: string): string {
     .replace(/^https?:\/\/[^/]+/, '')
     // Remove leading src/assets/ or /src/assets/
     .replace(/^\/?src\/assets\//, '')
-    // Remove /_astro/ prefix and hash
+    // Remove /_astro/ prefix
     .replace(/^\/_astro\//, '')
-    .replace(/\.[a-f0-9]+\./, '.'); // Remove Astro hash (e.g., .abc123.)
+    // Remove Astro hash - matches .XXXXXXXX. pattern before extension
+    .replace(/\.[A-Za-z0-9_-]{6,}\.(png|jpg|jpeg|webp|avif)$/i, '.$1');
 
   return key;
 }
@@ -71,17 +72,21 @@ export function getHeroColors(
   const colors = (heroColorsData as Record<string, HeroColorPalette>)[key];
   if (colors) return colors;
 
-  // Try partial matching for different path formats
+  // Extract just the filename without extension for fuzzy matching
+  const keyFilename = (key.split('/').pop() || '').replace(/\.\w+$/, '');
+
+  // Try matching against all entries
   const entries = Object.entries(heroColorsData as Record<string, HeroColorPalette>);
   for (const [cachedKey, cachedColors] of entries) {
-    // Check if the key contains the cached key or vice versa
-    if (key.includes(cachedKey) || cachedKey.includes(key)) {
+    // Check if the JSON key contains our processed filename
+    // e.g., cachedKey: "2024-09-15-.../blog-cover-2024-09-15-...png"
+    // keyFilename: "blog-cover-2024-09-15-..."
+    if (cachedKey.includes(keyFilename)) {
       return cachedColors;
     }
 
-    // Also try matching just the filename
-    const keyFilename = key.split('/').pop() || '';
-    const cachedFilename = cachedKey.split('/').pop() || '';
+    // Also check if filenames match exactly (without path)
+    const cachedFilename = (cachedKey.split('/').pop() || '').replace(/\.\w+$/, '');
     if (keyFilename && cachedFilename && keyFilename === cachedFilename) {
       return cachedColors;
     }
