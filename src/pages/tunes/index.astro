@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import Pagination from '../../components/layout/Pagination.astro';
+import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../utils/hero-colors';
 
 const postsPerPage = 20;
 
@@ -12,9 +13,22 @@ const allTunes = (await getCollection('tunes'))
 
 const tunes = allTunes.slice(0, postsPerPage);
 const totalPages = Math.ceil(allTunes.length / postsPerPage);
+
+// Get gradient colors from first tunes post's hero image
+const firstPost = tunes[0];
+const firstPostHeroImage = firstPost?.data.heroImage || firstPost?.data.cover?.image;
+const heroColors = getHeroColors(firstPostHeroImage);
+const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors));
 ---
 
 <BaseLayout title="Listened to This Week" description="My weekly music listening posts - what I've been enjoying on repeat">
+	<!-- Hero gradient background from first post -->
+	<section
+		class="hero-gradient-section absolute inset-x-0 top-0 -z-10 h-[70vh] min-h-[450px]"
+		style={gradientStyleString}
+	>
+		<div class="hero-gradient-bg absolute inset-0"></div>
+	</section>
 	<section class="max-w-3xl mx-auto px-5">
 		<div class="mb-12 text-center">
 			<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-gray-100 mb-4">

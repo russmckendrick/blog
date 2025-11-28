@@ -6,6 +6,7 @@ import PostCard from '../../../components/blog/PostCard.astro';
 import Pagination from '../../../components/layout/Pagination.astro';
 import { getTagMetadata, getTagUrl, normalizeTagSlug } from '../../../utils/tags';
 import { TAG_METADATA, TAG_AVATAR_MAP } from '../../../consts';
+import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../../utils/hero-colors';
 
 export async function getStaticPaths({ paginate }) {
   const posts = (await getCollection('blog'))
@@ -69,12 +70,25 @@ const getAvatarGlowColor = () => {
 };
 
 const avatarGlowColor = getAvatarGlowColor();
+
+// Get gradient colors from first post's hero image
+const firstPost = page.data[0];
+const firstPostHeroImage = firstPost?.data.heroImage || firstPost?.data.cover?.image;
+const heroColors = getHeroColors(firstPostHeroImage);
+const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors));
 ---
 
 <BaseLayout
   title={metadata.title}
   description={metadata.description}
 >
+  <!-- Hero gradient background from first post -->
+  <section
+    class="hero-gradient-section absolute inset-x-0 top-0 -z-10 h-[70vh] min-h-[450px]"
+    style={gradientStyleString}
+  >
+    <div class="hero-gradient-bg absolute inset-0"></div>
+  </section>
   <section class="py-8 pb-12 mb-8 border-b border-gray-200 dark:border-gray-700">
     <div class="max-w-3xl mx-auto px-5">
       <div class="mb-6 text-center">

@@ -5,6 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/blog/PostCard.astro';
 import Pagination from '../components/layout/Pagination.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getHeroColors, gradientStylesToString, getGradientStyles } from '../utils/hero-colors';
 const postsPerPage = 5;
 
 const allPosts = (await getCollection('blog'))
@@ -27,6 +28,10 @@ if (firstPostHeroImage) {
 		quality: 50
 	});
 }
+
+// Get gradient colors from first post's hero image
+const heroColors = getHeroColors(firstPostHeroImage);
+const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors));
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -40,6 +45,13 @@ if (firstPostHeroImage) {
 			fetchpriority="high"
 		/>
 	)}
+	<!-- Hero gradient background from first post -->
+	<section
+		class="hero-gradient-section absolute inset-x-0 top-0 -z-10 h-[70vh] min-h-[450px]"
+		style={gradientStyleString}
+	>
+		<div class="hero-gradient-bg absolute inset-0"></div>
+	</section>
 	<section class="max-w-3xl mx-auto px-5">
 		<h1 class="sr-only">{SITE_TITLE}</h1>
 		<ul class="space-y-12">
