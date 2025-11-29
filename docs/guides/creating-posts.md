@@ -6,14 +6,45 @@ Complete guide to creating and publishing blog posts on Russ.Cloud.
 
 ```bash
 # Create new post (interactive)
-npm run post
+pnpm run post
 ```
 
 This will:
 1. Prompt for title, description, tags, and ToC preference
-2. Generate MDX file: `src/content/blog/YYYY-MM-DD-slug.mdx`
-3. Create assets directory: `src/assets/YYYY-MM-DD-slug/`
-4. Set `draft: true` for safety
+2. Optionally generate an AI-powered cover image (if `FAL_KEY` is configured)
+3. Generate MDX file: `src/content/blog/YYYY-MM-DD-slug.mdx`
+4. Create assets directory: `src/assets/YYYY-MM-DD-slug/`
+5. Set `draft: true` for safety
+
+### AI Cover Generation
+
+When `FAL_KEY` environment variable is set, the script will offer to generate an AI cover image:
+
+```
+Generate AI cover image? (y/n) [y]: y
+
+🎨 Generating AI cover image...
+
+────────────────────────────────────────────────────────────
+📝 PROMPT REVIEW
+────────────────────────────────────────────────────────────
+
+🎨 Current image prompt:
+
+   "A dramatic close-up of sleek aluminum surfaces..."
+
+✓ Accept prompt? (y)es / (e)dit / (r)egenerate / (q)uit:
+```
+
+**Interactive options:**
+- **(y)es** - Accept the prompt and generate the image
+- **(e)dit** - Describe changes and GPT-4 will refine the prompt
+- **(r)egenerate** - Generate a completely new prompt from scratch
+- **(q)uit** - Skip AI generation and use placeholder
+
+**Requirements:**
+- `FAL_KEY` - FAL.ai API key (required)
+- `OPENAI_API_KEY` - OpenAI API key (required for prompt generation)
 
 ## Frontmatter Reference
 
@@ -426,7 +457,7 @@ lastModified: 2025-11-03  # Signals freshness to search engines
 ### 1. Create Post
 
 ```bash
-npm run post
+pnpm run post
 ```
 
 ### 2. Write Content
@@ -440,7 +471,7 @@ Place in `src/assets/YYYY-MM-DD-slug/`
 ### 4. Preview Locally
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Visit: `http://localhost:4321/YYYY/MM/DD/slug/`
@@ -531,7 +562,7 @@ git push
 
 ```bash
 # After changing frontmatter fields
-npm run astro -- sync
+pnpm run astro -- sync
 ```
 
 ### Embed Components Not Working

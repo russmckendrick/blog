@@ -14,10 +14,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Content Creation
 - `pnpm run post` - Interactive script to create a new blog post with proper structure
   - Prompts for title, description, tags, and ToC preference
+  - Optionally generates AI-powered cover image using FAL.ai (if `FAL_KEY` is configured)
+  - Interactive prompt review: accept, edit, regenerate, or skip
   - Automatically creates MDX file with frontmatter in `src/content/blog/`
   - Creates corresponding assets directory in `src/assets/`
   - Generates filename in format: `YYYY-MM-DD-slug.mdx`
   - Sets `draft: true` by default
+
+- `node scripts/fal-cover-generator.js` - Standalone AI cover image generator
+  - Uses GPT-4 to generate creative image prompts from post metadata
+  - Interactive prompt review loop with edit/regenerate options
+  - Generates images using FAL.ai's Gemini 3 Pro Image model
+  - Outputs both full resolution (2K) and resized (1400×800) versions
+  - Configuration in `scripts/fal-cover-config.json`
+  - Options: `--title`, `--description`, `--tags`, `--output`, `-y` (skip interactive)
+  - Requires: `FAL_KEY` and `OPENAI_API_KEY` environment variables
 
 - `pnpm run tunes` - Generate weekly music blog post from Last.fm data (see [Tunes Generator](#tunes-blog-post-generator))
   - Fetches Last.fm listening stats for the previous week

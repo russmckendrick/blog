@@ -57,54 +57,66 @@ Any static assets, like images, can be placed in the `public/` directory.
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run post`            | Create a new blog post with proper structure     |
-| `npm run optimize`        | Optimize all images in `src/assets/` and `public/assets/` |
-| `npm run optimize <path>` | Optimize images in a specific directory          |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command                    | Action                                           |
+| :------------------------- | :----------------------------------------------- |
+| `pnpm install`             | Installs dependencies                            |
+| `pnpm run dev`             | Starts local dev server at `localhost:4321`      |
+| `pnpm run build`           | Build your production site to `./dist/`          |
+| `pnpm run preview`         | Preview your build locally, before deploying     |
+| `pnpm run post`            | Create a new blog post with AI cover generation  |
+| `pnpm run tunes`           | Generate weekly music blog post from Last.fm     |
+| `pnpm run optimize`        | Optimize all images in `src/assets/` and `public/assets/` |
+| `pnpm run optimize <path>` | Optimize images in a specific directory          |
+| `pnpm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `pnpm run astro -- --help` | Get help using the Astro CLI                     |
 
 ### Creating a New Blog Post
 
-Run `npm run post` to create a new blog post with the proper structure. The interactive script will:
+Run `pnpm run post` to create a new blog post. The interactive script will:
 
 1. Prompt you for:
    - Post title
    - Description
    - Tags (comma-separated)
    - Table of contents preference (y/n)
+   - AI cover generation (if `FAL_KEY` is configured)
 
-2. Automatically generate:
+2. If AI cover generation is enabled:
+   - Generate a creative image prompt using GPT-4
+   - Show you the prompt for review/refinement
+   - Generate a unique cover image using FAL.ai
+
+3. Automatically generate:
    - MDX file in `src/content/blog/` with format: `YYYY-MM-DD-slug.mdx`
    - Assets directory in `src/assets/YYYY-MM-DD-slug/`
+   - AI-generated or placeholder cover image
    - Complete frontmatter with all required fields
    - Draft status set to `true` for safety
 
-3. Provide you with:
-   - File locations for the post and cover image
-   - The future URL path for the post
-   - Next steps to publish
-
 **Example:**
 ```bash
-npm run post
+pnpm run post
 
 # Prompts:
 # Post title: My Awesome Post
 # Description: A description of my post
 # Tags: docker, kubernetes, devops
 # Show table of contents? (y/n): y
+# Generate AI cover image? (y/n): y
+#
+# 📝 PROMPT REVIEW
+# 🎨 Current image prompt: "..."
+# ✓ Accept prompt? (y)es / (e)dit / (r)egenerate / (q)uit: y
 
 # Creates:
 # - src/content/blog/2025-10-01-my-awesome-post.mdx
-# - src/assets/2025-10-01-my-awesome-post/ (for cover image)
+# - src/assets/2025-10-01-my-awesome-post/blog-cover-*.png (AI-generated)
 # - Post URL: /2025/10/01/my-awesome-post
 ```
+
+**Environment variables for AI cover generation:**
+- `FAL_KEY` - FAL.ai API key (required)
+- `OPENAI_API_KEY` - OpenAI API key (required for prompt generation)
 
 ## 📚 Documentation
 

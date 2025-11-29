@@ -1,0 +1,44 @@
+{
+  "model": {
+    "name": "fal-ai/nano-banana-pro",
+    "fallback": null
+  },
+  "output": {
+    "aspectRatio": "16:9",
+    "numImages": 1,
+    "format": "png",
+    "resolution": "2K"
+  },
+  "prompts": {
+    "gptSystemPrompt": "You are an expert at creating prompts for AI image generation. Given a blog post title, description, and tags, create a prompt for a stunning blog cover image.\n\nCRITICAL RULES - MUST FOLLOW:\n1. ABSOLUTELY NO text, words, letters, numbers, code snippets, or typography of ANY kind\n2. NO screens showing text or code\n3. NO books with visible text\n4. NO signs, labels, badges, name tags, or UI elements\n5. NO watermarks, logos, or branding\n6. Faces are OK if they add to the composition\n\nGOOD approaches - be creative and thematic:\n- Dramatic landscapes or cityscapes related to the theme\n- Interesting objects, tools, or technology (without text on them)\n- Nature scenes that evoke the topic's mood\n- Artistic still life compositions\n- Architectural elements\n- Macro photography of interesting textures/materials\n- Atmospheric scenes with dramatic lighting\n- Silhouettes and shadows\n- Creative metaphors for the topic\n\nStyle guidelines:\n- Cinematic, professional photography quality\n- Rich, harmonious color palette\n- Dramatic lighting with depth and shadows\n- Wide format composition (16:9 ratio)\n- High production value, magazine cover quality\n\nDO NOT include quality suffixes like '4K', 'hi-res', or 'no text' - these will be added automatically.\n\nOutput ONLY the image prompt, nothing else. Keep it under 120 words. Be creative but ensure NO TEXT appears anywhere in the image.",
+    "gptUserPromptTemplate": "Create an image generation prompt for a blog post:\n\nTitle: \"${title}\"\nDescription: \"${description}\"\nTags: ${tags}\n\nGenerate a detailed, creative prompt for the cover image.",
+    "basicPromptTemplate": "Cinematic blog header image: ${theme}. Professional photography quality, wide 16:9 format, dramatic lighting and rich colors.",
+    "promptSuffix": "Ultra high resolution, 4K, photorealistic, professional photography. Absolutely no text, words, letters, numbers, signs, labels, badges, watermarks, or typography of any kind anywhere in the image."
+  },
+  "tagThemes": {
+    "docker": "shipping containers stacked at a port at sunset, dramatic orange and blue lighting, industrial aesthetic",
+    "kubernetes": "aerial view of a complex highway interchange at night with light trails, representing orchestration",
+    "cloud": "dramatic cloudscape at golden hour with sun rays breaking through, ethereal and majestic",
+    "devops": "industrial gears and mechanisms in motion with dramatic lighting, precision engineering",
+    "security": "a vault door or safe with dramatic moody lighting, deep shadows, metallic textures",
+    "ai": "neural network visualization as glowing interconnected nodes in deep space, futuristic",
+    "python": "coiled snake scales in macro photography with iridescent colors, nature detail",
+    "automation": "robotic arm in a factory with dramatic industrial lighting, precision machinery",
+    "linux": "a penguin in dramatic arctic landscape, cinematic nature photography",
+    "azure": "blue sky with dramatic cloud formations, ethereal heavenly light",
+    "aws": "data center interior with rows of servers, dramatic orange accent lighting",
+    "terraform": "architectural blueprints or building blocks, geometric construction imagery",
+    "ansible": "conductor hands directing an orchestra, dramatic stage lighting",
+    "github": "branching tree silhouette against dramatic sky, representing version control",
+    "web": "spider web with morning dew drops, macro photography with bokeh",
+    "code": "vintage typewriter keys in dramatic lighting, craftsmanship aesthetic",
+    "macos": "sleek aluminum and glass surfaces with reflections, minimalist product photography",
+    "vinyl": "vinyl record grooves in extreme macro, warm analog tones, nostalgic feel",
+    "life": "coffee cup steam rising in morning light, cozy atmospheric scene",
+    "blog": "vintage fountain pen on quality paper, warm lighting, creative writing aesthetic"
+  },
+  "defaultTheme": "dramatic landscape with rich colors, cinematic lighting, professional photography",
+  "debug": {
+    "logPrompts": true
+  }
+}

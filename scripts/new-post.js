@@ -4,6 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import readline from 'readline'
+import { generateCoverImage, isFALAvailable } from './fal-cover-generator.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -54,6 +55,15 @@ async function createBlogPost() {
   const showTocInput = await question('Show table of contents? (y/n) [y]: ')
   const showToc = showTocInput.toLowerCase() !== 'n'
 
+  // Check if FAL.ai cover generation is available
+  let generateAICover = false
+  if (isFALAvailable()) {
+    const aiCoverInput = await question('Generate AI cover image? (y/n) [y]: ')
+    generateAICover = aiCoverInput.toLowerCase() !== 'n'
+  } else {
+    console.log('💡 Tip: Set FAL_KEY environment variable to enable AI cover generation')
+  }
+
   rl.close()
 
   // Generate file details
@@ -86,13 +96,41 @@ async function createBlogPost() {
     console.log(`✅ Created assets directory: ${path.relative(process.cwd(), assetsDir)}`)
   }
 
-  // Copy placeholder cover image
-  const placeholderImagePath = path.join(__dirname, '..', 'public', 'images', 'blog-cover.png')
-  if (fs.existsSync(placeholderImagePath)) {
-    fs.copyFileSync(placeholderImagePath, coverImagePath)
-    console.log(`✅ Copied placeholder cover image: ${path.relative(process.cwd(), coverImagePath)}`)
+  // Generate or copy cover image
+  if (generateAICover) {
+    console.log('\n🎨 Generating AI cover image...')
+    try {
+      const result = await generateCoverImage({
+        title,
+        description,
+        tags,
+        outputPath: coverImagePath,
+        width: 1400,
+        height: 800,
+        debug: process.env.DEBUG_COLLAGE === '1',
+        interactive: true // Enable interactive prompt review
+      })
+      console.log(`✅ Generated AI cover image: ${path.relative(process.cwd(), coverImagePath)}`)
+      console.log(`   Original resolution: ${result.originalWidth}×${result.originalHeight}`)
+    } catch (error) {
+      console.warn(`⚠️  AI cover generation failed: ${error.message}`)
+      console.log('   Falling back to placeholder image...')
+      // Fall back to placeholder
+      const placeholderImagePath = path.join(__dirname, '..', 'public', 'images', 'blog-cover.png')
+      if (fs.existsSync(placeholderImagePath)) {
+        fs.copyFileSync(placeholderImagePath, coverImagePath)
+        console.log(`✅ Copied placeholder cover image: ${path.relative(process.cwd(), coverImagePath)}`)
+      }
+    }
   } else {
-    console.warn(`⚠️  Placeholder image not found: ${placeholderImagePath}`)
+    // Copy placeholder cover image
+    const placeholderImagePath = path.join(__dirname, '..', 'public', 'images', 'blog-cover.png')
+    if (fs.existsSync(placeholderImagePath)) {
+      fs.copyFileSync(placeholderImagePath, coverImagePath)
+      console.log(`✅ Copied placeholder cover image: ${path.relative(process.cwd(), coverImagePath)}`)
+    } else {
+      console.warn(`⚠️  Placeholder image not found: ${placeholderImagePath}`)
+    }
   }
 
   // Create frontmatter
@@ -130,9 +168,15 @@ More content...
   console.log('📄 Post file:', path.relative(process.cwd(), postPath))
   console.log('🖼️  Cover image:', path.relative(process.cwd(), coverImagePath))
   console.log('\n📋 Next steps:')
-  console.log('  1. Replace placeholder cover image if desired:', path.relative(process.cwd(), coverImagePath))
-  console.log('  2. Write your blog post content')
-  console.log('  3. Set draft: false when ready to publish')
+  if (!generateAICover) {
+    console.log('  1. Replace placeholder cover image if desired:', path.relative(process.cwd(), coverImagePath))
+    console.log('  2. Write your blog post content')
+    console.log('  3. Set draft: false when ready to publish')
+  } else {
+    console.log('  1. Write your blog post content')
+    console.log('  2. Review the AI-generated cover image and regenerate if needed')
+    console.log('  3. Set draft: false when ready to publish')
+  }
   console.log(`  4. Post URL: /${year}/${month}/${day}/${slug}\n`)
 }
 
