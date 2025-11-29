@@ -29,6 +29,9 @@ jobs:
       - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: 🔒 Security audit
+        run: pnpm audit
+
       - name: 🎨 Restore OpenGraph image cache
         uses: actions/cache@v4
         with:

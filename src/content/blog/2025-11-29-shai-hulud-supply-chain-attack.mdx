@@ -1,0 +1,227 @@
+---
+title: "When the Sandworm Came for My Secrets: Lessons from Shai-Hulud 2.0"
+description: "How a sophisticated npm supply chain attack via a trojanized kill-port package compromised my development environment, exposing API keys to attacker-controlled repositories - and what I'm doing differently now."
+date: 2025-11-29
+cover:
+  image: "../../assets/2025-11-29-shai-hulud-supply-chain-attack/blog-cover-2025-11-29-shai-hulud-supply-chain-attack.png"
+tags: ["security", "devops", "github"]
+draft: true
+showToc: true
+---
+
+Earlier this week, I discovered that this very repository had fallen victim to **Shai-Hulud 2.0** - a sophisticated supply chain attack that compromised npm packages and exfiltrated secrets from thousands of developers and CI/CD pipelines. My API keys for services like FAL.ai, OpenAI, Perplexity, and others were published to attacker-controlled repositories before I even knew what had happened.
+
+This post covers what the attack is, how it works, exactly how I got caught, and the changes I've made to prevent this from happening again.
+
+## How I Found Out
+
+On November 27th, I received an email from Omar Hammou, a security researcher who monitors GitHub for exposed secrets:
+
+> I have identified several leaked credentials associated with your accounts, including OpenAI and Perplexity tokens. I operate a GitHub monitoring system that continuously flags exposed secrets, and although some repositories were deleted, the leaked data is still present in GitHub's historical snapshots.
+
+The credentials had been exfiltrated to a repository at `github.com/dp5iveme/zf0jxl7wqn14g9enav` (since deleted by GitHub). Omar was kind enough to share the full payload that was captured - a JSON dump of my entire shell environment, including every environment variable that was set at the time of the attack.
+
+## What is Shai-Hulud 2.0?
+
+Named after the giant sandworms from Frank Herbert's Dune, Shai-Hulud 2.0 is an ongoing malware campaign that targets npm package maintainers. Attackers compromise maintainer accounts and publish trojanized versions of legitimate packages.
+
+<YouTube id="weLhik7ArCY" />
+<br />
+According to [Wiz's analysis](https://www.wiz.io/blog/shai-hulud-2-0-ongoing-supply-chain-attack), the scale is staggering:
+
+- **25,000+ repositories** affected
+- **350+ unique users** compromised
+- **1,000 new repositories** being created every 30 minutes during the initial outbreak
+- Packages from major companies including **Zapier**, **ENS Domains**, **PostHog**, and **Postman** were trojanized
+
+## How the Attack Works
+
+The malware is deceptively simple but devastatingly effective:
+
+1. **Preinstall Hook Execution**: The malicious code runs during npm's `preinstall` phase via scripts like `setup_bun.js` and `bun_environment.js`. This ensures execution *before* any code review or static analysis can occur.
+
+2. **Credential Harvesting**: The malware systematically steals:
+   - Local configuration files (`.npmrc`, `.env`, cloud CLI configs)
+   - Environment variables
+   - Cloud metadata service tokens
+   - Secrets from AWS Secrets Manager, Google Secret Manager, and Azure Key Vault
+
+3. **Triple Base64 Encoding**: Stolen data is encoded three times before exfiltration, evading simple detection rules.
+
+4. **Exfiltration to GitHub**: Credentials are published to attacker-controlled repositories with the description "Sha1-Hulud: The Second Coming."
+
+5. **Persistent Backdoor**: The malware injects a `discussion.yaml` GitHub Actions workflow that registers infected machines as self-hosted runners named "SHA1HULUD", enabling future remote command execution.
+
+6. **Destructive Fallback**: If credential exfiltration fails, the malware attempts to **delete the victim's entire home directory** - converting espionage into sabotage.
+
+## The Smoking Gun: kill-port@2.0.3
+
+Thanks to the exfiltrated payload Omar shared, I was able to identify exactly which package compromised my system. The evidence was right there in the environment variables:
+
+```json title="The Smoking Gun"
+{
+  "npm_lifecycle_script": "node setup_bun.js",
+  "npm_lifecycle_event": "preinstall",
+  "npm_package_name": "kill-port",
+  "npm_package_version": "2.0.3",
+  "PWD": "/Users/russ.mckendrick/Code/blog/node_modules/kill-port"
+}
+```
+
+The culprit was **`kill-port`** - a utility package for killing processes on specific ports. According to the [GitLab Advisory (GMS-2025-498)](https://advisories.gitlab.com/pkg/npm/kill-port/GMS-2025-498/), versions **2.0.2 and 2.0.3** were compromised on November 24th, 2025. The vulnerability is rated **HIGH severity (CVSS 8.6)** and classified as CWE-506 (Embedded Malicious Code).
+
+The `npm_lifecycle_script` value of `node setup_bun.js` is the exact malicious script identified in the Wiz security report - it's designed to look innocuous (who wouldn't trust something called "setup_bun.js" in 2025?), but its sole purpose is credential theft.
+
+The package maintainer [confirmed on GitHub](https://github.com/tiaanduplessis/kill-port/issues/84) that npm support has since removed the infected versions (2.0.2 and 2.0.3) from the registry. Version 2.0.1 is safe and does not contain the malicious files.
+
+<WarningCallout title="Check Your Installation">
+If you have kill-port installed, verify your version doesn't contain `setup_bun.js` or `bun_environment.js` files. These are the telltale signs of infection. Pin to version **2.0.1 or earlier** to be safe.
+</WarningCallout>
+
+## What Was Stolen
+
+The payload captured my entire environment, including:
+
+| Service | Credential Type |
+|---------|----------------|
+| OpenAI | API Key |
+| Perplexity | API Key |
+| FAL.ai | API Key |
+| Tavily | API Key |
+| Exa | API Key |
+| Last.fm | API Key |
+
+Plus my username, home directory path, shell configuration paths, and various other environment details that could be useful for further attacks.
+
+Fortunately, I don't store AWS, GCP, or Azure credentials in environment variables (they use CLI-based authentication), but many developers aren't so lucky.
+
+## The Global Damage
+
+According to Wiz's preliminary analysis, attackers obtained:
+
+| Credential Type | Count |
+|----------------|-------|
+| GitHub Access Tokens | 775 |
+| AWS Credentials | 373 |
+| GCP Credentials | 300 |
+| Azure Credentials | 115 |
+
+These numbers only represent what was discovered in the attacker's public repositories before GitHub took action.
+
+## What I've Changed
+
+After rotating all my compromised credentials (a fun few hours, I must say), I've implemented several changes to reduce the attack surface:
+
+### Migrated from npm to pnpm
+
+Beyond being faster and more disk-efficient, pnpm has better security defaults. I've updated all my GitHub Actions workflows to use pnpm with the `--frozen-lockfile` flag:
+
+```yaml
+- name: 🌸 Setup PNPM
+  uses: pnpm/action-setup@v4
+
+- name: 📦 Install dependencies
+  run: pnpm install --frozen-lockfile
+```
+
+The `--frozen-lockfile` flag ensures CI/CD installs exactly what's in the lockfile - no surprises from updated packages.
+
+I've also added aliases to my `.zshrc` to prevent accidental npm usage locally:
+
+```bash
+# 📦 pnpm aliases in .zshrc
+alias npm='echo "Error: Use pnpm"; false'
+alias n="pnpm"
+alias ni="pnpm install"
+```
+
+This ensures I can't accidentally run `npm install` out of muscle memory.
+
+### Why Not --ignore-scripts?
+
+You might think disabling lifecycle scripts entirely would prevent this attack:
+
+```bash
+pnpm install --ignore-scripts
+```
+
+However, many legitimate packages **require** lifecycle scripts to function. In my case:
+
+| Package | Script | Purpose |
+|---------|--------|---------|
+| `sharp` | `install` | Downloads native image processing binaries |
+| `esbuild` | `postinstall` | Downloads platform-specific bundler binary |
+| `workerd` | `postinstall` | Downloads Cloudflare Workers runtime |
+
+Using `--ignore-scripts` would break my build entirely. The better protection is the combination of **lockfiles** and **`--frozen-lockfile`** - these ensure you only install exactly what you've previously vetted, not whatever the latest (potentially compromised) version happens to be.
+
+### Regular Security Audits
+
+I've added `pnpm audit` to all my GitHub Actions workflows:
+
+```yaml title="pnpm audit"
+- name: 🔒 Security audit
+  run: pnpm audit
+```
+
+This checks dependencies against the npm security advisory database and will fail the build if any known vulnerabilities are found. You can also run it locally:
+
+```bash
+pnpm audit
+```
+
+### Pinned Dependencies
+
+Rather than allowing automatic updates, I'm now pinning dependencies to specific versions and reviewing changes manually:
+
+```json title="package.json"
+{
+  "dependencies": {
+    "astro": "5.1.1"
+  }
+}
+```
+
+### Auditing for Compromise
+
+If you're concerned your environment may have been affected, check for:
+
+1. **Suspicious workflow files**: Look in `.github/workflows/` for `shai-hulud-workflow.yml`, `discussion.yaml`, or unexpected branches
+2. **Self-hosted runner registrations**: Check for runners named "SHA1HULUD" in your GitHub repository settings
+3. **Unexpected npm packages**: Review your `package-lock.json` or `pnpm-lock.yaml` for packages added between November 21-25, 2025
+
+### Credential Rotation
+
+If you installed any npm packages during the attack window (November 21-25, 2025), you should:
+
+1. Clear your npm/pnpm cache: `pnpm store prune`
+2. Delete `node_modules` and reinstall
+3. Rotate **all** credentials that were accessible to your development environment
+4. Review GitHub for any unauthorized workflow changes
+
+## Lessons Learned
+
+This attack is a stark reminder of several realities in modern development:
+
+1. **Supply chain attacks are the new normal**: We implicitly trust thousands of packages and their maintainers every time we run `npm install`.
+
+2. **CI/CD environments are high-value targets**: They often have access to production credentials, cloud resources, and deployment capabilities.
+
+3. **Lifecycle scripts are a security risk**: The ability for packages to execute arbitrary code during installation is powerful but dangerous.
+
+4. **Defense in depth matters**: No single measure would have prevented this, but layers of security (restricted CI/CD permissions, pinned dependencies, disabled scripts) reduce the blast radius.
+
+5. **The security community is watching**: I'm grateful to researchers like Omar who actively monitor for exposed secrets and alert affected developers. Without his email, I might not have known for weeks.
+
+## Acknowledgments
+
+Thanks to Omar Hammou for the heads-up and for sharing the exfiltrated payload so I could identify the attack vector. Security researchers who responsibly disclose findings like this are invaluable to the community.
+
+## Further Reading
+
+- [Wiz: Shai-Hulud 2.0 - Ongoing Supply Chain Attack](https://www.wiz.io/blog/shai-hulud-2-0-ongoing-supply-chain-attack)
+- [The Hacker News: Second Sha1-Hulud Wave Affects 25,000+ Repositories](https://thehackernews.com/2025/11/second-sha1-hulud-wave-affects-25000.html)
+- [GitLab Advisory GMS-2025-498: kill-port](https://advisories.gitlab.com/pkg/npm/kill-port/GMS-2025-498/)
+- [GitHub Issue: kill-port infected with malware](https://github.com/tiaanduplessis/kill-port/issues/84)
+
+Stay vigilant out there !!!

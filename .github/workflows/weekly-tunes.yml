@@ -35,6 +35,9 @@ jobs:
       - name: "🦾 Install dependencies"
         run: pnpm install --frozen-lockfile
 
+      - name: "🔒 Security audit"
+        run: pnpm audit
+
       - name: "🏃‍♂️ Run the script to generate blog post"
         env:
           LASTFM_USER: "${{ secrets.LASTFM_USER }}"

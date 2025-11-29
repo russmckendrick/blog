@@ -5,21 +5,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ### Development
-- `npm run dev` - Start Astro development server (http://localhost:4321) with hot reloading
-- `npm run build` - Build production site to `./dist/`
-- `npm run preview` - Preview production build locally
+- `pnpm run dev` - Start Astro development server (http://localhost:4321) with hot reloading
+- `pnpm run build` - Build production site to `./dist/`
+- `pnpm run preview` - Preview production build locally
 - `npx astro check` - Run type-safe Astro diagnostics (run before PRs)
-- `npm run astro -- sync` - Regenerate types after adding/changing frontmatter fields
+- `pnpm run astro -- sync` - Regenerate types after adding/changing frontmatter fields
 
 ### Content Creation
-- `npm run post` - Interactive script to create a new blog post with proper structure
+- `pnpm run post` - Interactive script to create a new blog post with proper structure
   - Prompts for title, description, tags, and ToC preference
   - Automatically creates MDX file with frontmatter in `src/content/blog/`
   - Creates corresponding assets directory in `src/assets/`
   - Generates filename in format: `YYYY-MM-DD-slug.mdx`
   - Sets `draft: true` by default
 
-- `npm run tunes` - Generate weekly music blog post from Last.fm data (see [Tunes Generator](#tunes-blog-post-generator))
+- `pnpm run tunes` - Generate weekly music blog post from Last.fm data (see [Tunes Generator](#tunes-blog-post-generator))
   - Fetches Last.fm listening stats for the previous week
   - AI-powered album research and content generation
   - Downloads artist/album artwork from russ.fm
@@ -27,22 +27,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - Options: `--week_start=YYYY-MM-DD` (custom week), `--debug` (single album)
 
 ### Image Optimization
-- `npm run optimize` - Optimize all images in `src/assets/` and `public/assets/` in place
+- `pnpm run optimize` - Optimize all images in `src/assets/` and `public/assets/` in place
   - Compresses JPG, PNG, WebP, and AVIF formats
   - Uses quality 85 with progressive JPEGs
   - Only replaces originals if optimization saves space
   - Shows progress and savings for each image
   - Displays total space saved summary
-- `npm run optimize <path>` - Optimize images in a specific directory
+- `pnpm run optimize <path>` - Optimize images in a specific directory
   - Supports both relative (to project root) and absolute paths
-  - Example: `npm run optimize src/assets/2025-10-01-my-post`
+  - Example: `pnpm run optimize src/assets/2025-10-01-my-post`
 
 ### Hero Color Extraction
-- `npm run extract-colors` - Extract dominant colors from all hero images for dynamic gradients
+- `pnpm run extract-colors` - Extract dominant colors from all hero images for dynamic gradients
   - Processes all hero/cover images in `src/assets/`
   - Generates `src/data/hero-colors.json` with color palettes
   - Caches results in `node_modules/.cache/hero-colors-cache.json` for incremental builds
-  - Automatically runs before builds via `npm run prebuild`
+  - Automatically runs before builds via `pnpm run prebuild`
   - Re-run manually after adding new hero images or to regenerate colors
 
 ### Content Migration
@@ -96,7 +96,7 @@ The OG images are automatically linked in the HTML meta tags for both OpenGraph 
 The site uses **Cloudflare Image Transformations** for on-demand image optimization and delivery:
 
 **Architecture**:
-- **No build-time processing**: Images are NOT processed during `npm run build`
+- **No build-time processing**: Images are NOT processed during `pnpm run build`
 - **CDN-level transformations**: Cloudflare intercepts `/cdn-cgi/image/` URLs automatically
 - **On-demand optimization**: Images are resized/optimized on first request, then cached globally
 - **Automatic format selection**: Serves AVIF → WebP → original based on browser support
@@ -164,10 +164,10 @@ Blog posts feature a dynamic gradient background extracted from each post's hero
 ```bash
 # Clear cache and regenerate all colors
 rm node_modules/.cache/hero-colors-cache.json
-npm run extract-colors
+pnpm run extract-colors
 
 # Or just run extraction (uses cache for unchanged images)
-npm run extract-colors
+pnpm run extract-colors
 ```
 
 ### SEO Management
@@ -575,7 +575,7 @@ avatar: "terminal"  # Override automatic selection
 - Use `lastModified` or `updatedDate` when updating posts to help search engines understand content freshness
 - LightGallery images support `alt` attribute - use it for better accessibility
 
-After changing the schema in `src/content.config.ts`, run `npm run astro -- sync` to regenerate TypeScript types.
+After changing the schema in `src/content.config.ts`, run `pnpm run astro -- sync` to regenerate TypeScript types.
 
 ## File Naming Conventions
 - Components: PascalCase (`Header.astro`, `PostCard.astro`)
@@ -586,7 +586,7 @@ After changing the schema in `src/content.config.ts`, run `npm run astro -- sync
 ## Content Workflow
 1. Create new posts in `src/content/blog/` as `.md` or `.mdx`
 2. Use lowercase filenames with hyphens for consistent URL slugs
-3. Run `npm run astro -- sync` after adding new frontmatter fields
+3. Run `pnpm run astro -- sync` after adding new frontmatter fields
 4. For embeds, use components from `src/components/embeds/` (see `EMBED_USAGE.md`)
 5. Test in dev mode across light/dark themes and responsive breakpoints
 6. Verify with `npx astro check` before committing
@@ -607,13 +607,13 @@ Automated weekly music blog post generation using Last.fm data and AI content ge
 ### Quick Start
 ```bash
 # Generate post for previous week
-npm run tunes
+pnpm run tunes
 
 # Custom week
-npm run tunes -- --week_start=2025-09-25
+pnpm run tunes -- --week_start=2025-09-25
 
 # Debug mode (single album only)
-npm run tunes -- --debug
+pnpm run tunes -- --debug
 ```
 
 ### Environment Variables Required
@@ -720,3 +720,4 @@ Additional repository guidelines are documented in `AGENTS.md`, including:
   - sizes attribute: Changed from 640px at desktop to 400px at desktop
   - srcset widths: Removed 640w, now uses [320w, 400w, 480w] (same as regular cards)
 - Add details about the sizing
+- Use pnpm rather than npm
