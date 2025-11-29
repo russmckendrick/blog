@@ -5,7 +5,7 @@ date: 2025-11-29
 cover:
   image: "../../assets/2025-11-29-shai-hulud-supply-chain-attack/blog-cover-2025-11-29-shai-hulud-supply-chain-attack.png"
 tags: ["security", "devops", "github"]
-draft: true
+draft: false
 showToc: true
 ---
 
@@ -137,15 +137,30 @@ alias ni="pnpm install"
 
 This ensures I can't accidentally run `npm install` out of muscle memory.
 
-### Why Not --ignore-scripts?
+### Explicitly Approve Build Scripts
 
-You might think disabling lifecycle scripts entirely would prevent this attack:
+pnpm 10+ has a security feature that blocks lifecycle scripts by default, showing warnings like:
 
-```bash
-pnpm install --ignore-scripts
+```text frame="terminal" title="Ignore build scripts !!!"
+Ignored build scripts: esbuild, sharp, workerd.
+Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.
 ```
 
-However, many legitimate packages **require** lifecycle scripts to function. In my case:
+Rather than blanket-allowing all scripts, you can explicitly whitelist only the packages you trust. I've added this to my `package.json`:
+
+```json title="package.json"
+{
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "workerd"
+    ]
+  }
+}
+```
+
+This means:
 
 | Package | Script | Purpose |
 |---------|--------|---------|
@@ -153,7 +168,7 @@ However, many legitimate packages **require** lifecycle scripts to function. In 
 | `esbuild` | `postinstall` | Downloads platform-specific bundler binary |
 | `workerd` | `postinstall` | Downloads Cloudflare Workers runtime |
 
-Using `--ignore-scripts` would break my build entirely. The better protection is the combination of **lockfiles** and **`--frozen-lockfile`** - these ensure you only install exactly what you've previously vetted, not whatever the latest (potentially compromised) version happens to be.
+Any *other* package trying to run lifecycle scripts will be blocked. This is a much better approach than `--ignore-scripts` (which breaks legitimate packages) or allowing everything (which is what npm does by default).
 
 ### Regular Security Audits
 
