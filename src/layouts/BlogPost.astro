@@ -367,6 +367,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 							}> = [];
 
 							let firstGalleryOptions: LightGallerySettings = {};
+							let foundFullGalleryOptions = false;
 
 							for (const gallery of galleries) {
 								const htmlGallery = gallery as HTMLElement;
@@ -376,15 +377,28 @@ const breadcrumbSchema = createBreadcrumbSchema(
 									continue;
 								}
 
-								// Read options (first gallery only)
-								if (galleryData.length === 0) {
-									// Try to get options from data-options (new component) or dataset (old component)
-									const optionsStr = htmlGallery.getAttribute('data-options') || htmlGallery.dataset.options || '{}';
-									
-									try {
-										firstGalleryOptions = JSON.parse(optionsStr);
-									} catch (e) {
-										console.warn('Failed to parse gallery options', e);
+								// Read options logic:
+								// 1. If we haven't found options from a "full gallery" yet, check this one.
+								// 2. If this IS a full gallery (has lightgallery-wrapper), it overrides any previous options (even if we already found some from a single image).
+								const isFullGallery = htmlGallery.classList.contains('lightgallery-wrapper');
+								
+								if (!foundFullGalleryOptions) {
+									// If we haven't found a full gallery yet, we can take options from this one
+									// But if THIS one is a full gallery, we mark it so we don't get overridden by a later single image
+									if (galleryData.length === 0 || isFullGallery) {
+										const optionsStr = htmlGallery.getAttribute('data-options') || htmlGallery.dataset.options || '{}';
+										try {
+											const parsedOptions = JSON.parse(optionsStr);
+											// Only update if it's the first one OR if it's a full gallery overriding a previous one
+											if (galleryData.length === 0 || isFullGallery) {
+												firstGalleryOptions = parsedOptions;
+											}
+											if (isFullGallery) {
+												foundFullGalleryOptions = true;
+											}
+										} catch (e) {
+											console.warn('Failed to parse gallery options', e);
+										}
 									}
 								}
 
@@ -394,7 +408,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 								galleryData.push({
 									htmlGallery,
 									items,
-									options: firstGalleryOptions
+									options: firstGalleryOptions // This might be slightly stale for the pushed item if a later gallery overrides it, but we only use `firstGalleryOptions` at the end for the unified instance anyway.
 								});
 							}
 
