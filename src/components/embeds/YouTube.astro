@@ -5,13 +5,14 @@ interface Props {
   id: string;
   params?: string;
   playlabel?: string;
+  posterQuality?: 'max' | 'high' | 'default' | 'low';
 }
 
-const { id, params, playlabel } = Astro.props;
+const { id, params, playlabel, posterQuality = 'max' } = Astro.props;
 ---
 
 <div class="w-full aspect-video">
-  <YouTubeEmbed id={id} params={params} playlabel={playlabel} class="w-full h-full" />
+  <YouTubeEmbed id={id} params={params} playlabel={playlabel} posterQuality={posterQuality} class="w-full h-full" />
 </div>
 
 <style is:global>
