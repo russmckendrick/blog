@@ -15,15 +15,15 @@ jobs:
 
     steps:
       - name: "👨‍💻 Check out code"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
+
+      - name: "🌸 Setup PNPM"
+        uses: pnpm/action-setup@v4
 
       - name: "🟢 Set up Node.js"
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: 🌸 Setup PNPM
-        uses: pnpm/action-setup@v4
 
       - name: "💾 Restore research cache"
         uses: actions/cache@v4
