@@ -2,6 +2,11 @@
   "name": "astro-blog",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.23.0",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -12,7 +17,8 @@
     "optimize": "node scripts/optimize-images.js",
     "analyze-links": "node scripts/analyze-internal-links.js",
     "extract-colors": "node scripts/extract-hero-colors.js",
-    "prebuild": "npm run extract-colors"
+    "prebuild": "pnpm run extract-colors",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@astro-community/astro-embed-link-preview": "^0.2.2",
