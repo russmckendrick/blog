@@ -1,14 +1,4 @@
 {
-  "2013-10-06-saltstack-on-centos-6.x/blog-cover-2013-10-06-saltstack-on-centos-6.x.png": {
-    "primary": "#a06060",
-    "secondary": "#604040",
-    "accent": "#606080",
-    "tertiary": "#8080a0",
-    "primaryDark": "#603a3a",
-    "secondaryDark": "#3a2626",
-    "accentDark": "#3e3e53",
-    "tertiaryDark": "#535368"
-  },
   "2013-08-31-puppet-server-client-installation-centos-6.x/blog-cover-2013-08-31-puppet-server-client-installation-centos-6.x.png": {
     "primary": "#606060",
     "secondary": "#c0c0c0",
@@ -19,15 +9,15 @@
     "accentDark": "#535353",
     "tertiaryDark": "#686868"
   },
-  "2014-01-12-vagrant-puppet/blog-cover-2014-01-12-vagrant-puppet.png": {
-    "primary": "#606060",
-    "secondary": "#808080",
-    "accent": "#a0a0a0",
-    "tertiary": "#c0c0c0",
-    "primaryDark": "#3a3a3a",
-    "secondaryDark": "#4d4d4d",
-    "accentDark": "#686868",
-    "tertiaryDark": "#7d7d7d"
+  "2013-10-06-saltstack-on-centos-6.x/blog-cover-2013-10-06-saltstack-on-centos-6.x.png": {
+    "primary": "#a06060",
+    "secondary": "#604040",
+    "accent": "#606080",
+    "tertiary": "#8080a0",
+    "primaryDark": "#603a3a",
+    "secondaryDark": "#3a2626",
+    "accentDark": "#3e3e53",
+    "tertiaryDark": "#535368"
   },
   "2013-10-13-installing-cobbler-on-centos-6.x/blog-cover-2013-10-13-installing-cobbler-on-centos-6.x.png": {
     "primary": "#606040",
@@ -48,6 +38,26 @@
     "secondaryDark": "#861313",
     "accentDark": "#7d2a2a",
     "tertiaryDark": "#923e3e"
+  },
+  "2014-01-12-vagrant-puppet/blog-cover-2014-01-12-vagrant-puppet.png": {
+    "primary": "#606060",
+    "secondary": "#808080",
+    "accent": "#a0a0a0",
+    "tertiary": "#c0c0c0",
+    "primaryDark": "#3a3a3a",
+    "secondaryDark": "#4d4d4d",
+    "accentDark": "#686868",
+    "tertiaryDark": "#7d7d7d"
+  },
+  "2014-02-15-docker/blog-cover-2014-02-15-docker.png": {
+    "primary": "#006060",
+    "secondary": "#40a0c0",
+    "accent": "#208080",
+    "tertiary": "#c0a040",
+    "primaryDark": "#003a3a",
+    "secondaryDark": "#266073",
+    "accentDark": "#155353",
+    "tertiaryDark": "#7d682a"
   },
   "2014-02-23-more-puppet/blog-cover-2014-02-23-more-puppet.png": {
     "primary": "#c00020",
@@ -98,16 +108,6 @@
     "secondaryDark": "#864d3a",
     "accentDark": "#a66853",
     "tertiaryDark": "#3e2a2a"
-  },
-  "2014-02-15-docker/blog-cover-2014-02-15-docker.png": {
-    "primary": "#006060",
-    "secondary": "#40a0c0",
-    "accent": "#208080",
-    "tertiary": "#c0a040",
-    "primaryDark": "#003a3a",
-    "secondaryDark": "#266073",
-    "accentDark": "#155353",
-    "tertiaryDark": "#7d682a"
   },
   "2014-05-10-hackers/blog-cover-2014-05-10-hackers.png": {
     "primary": "#4060c0",
@@ -169,16 +169,6 @@
     "accentDark": "#a69253",
     "tertiaryDark": "#7d683e"
   },
-  "2014-07-20-documentation/blog-cover-2014-07-20-documentation.png": {
-    "primary": "#e08000",
-    "secondary": "#a04000",
-    "accent": "#c00020",
-    "tertiary": "#c06020",
-    "primaryDark": "#864d00",
-    "secondaryDark": "#602600",
-    "accentDark": "#7d0015",
-    "tertiaryDark": "#7d3e15"
-  },
   "2014-07-12-walkabout/blog-cover-2014-07-12-walkabout.png": {
     "primary": "#0080e0",
     "secondary": "#20a0ff",
@@ -188,6 +178,16 @@
     "secondaryDark": "#136099",
     "accentDark": "#153e53",
     "tertiaryDark": "#2a7d92"
+  },
+  "2014-07-20-documentation/blog-cover-2014-07-20-documentation.png": {
+    "primary": "#e08000",
+    "secondary": "#a04000",
+    "accent": "#c00020",
+    "tertiary": "#c06020",
+    "primaryDark": "#864d00",
+    "secondaryDark": "#602600",
+    "accentDark": "#7d0015",
+    "tertiaryDark": "#7d3e15"
   },
   "2014-07-22-high-availability-central-logging-in-aws/blog-cover-2014-07-22-high-availability-central-logging-in-aws.png": {
     "primary": "#806020",
@@ -269,15 +269,15 @@
     "accentDark": "#922a2a",
     "tertiaryDark": "#533e15"
   },
-  "2014-09-07-very-basic-coreos/blog-cover-2014-09-07-very-basic-coreos.png": {
-    "primary": "#c02020",
-    "secondary": "#e06020",
-    "accent": "#ffa020",
-    "tertiary": "#806020",
-    "primaryDark": "#731313",
-    "secondaryDark": "#863a13",
-    "accentDark": "#a66815",
-    "tertiaryDark": "#533e15"
+  "2014-08-31-one-year-on/blog-cover-2014-08-31-one-year-on.png": {
+    "primary": "#00a0c0",
+    "secondary": "#a04000",
+    "accent": "#008040",
+    "tertiary": "#0060a0",
+    "primaryDark": "#006073",
+    "secondaryDark": "#602600",
+    "accentDark": "#00532a",
+    "tertiaryDark": "#003e68"
   },
   "2014-09-07-music-documentaries/blog-cover-2014-09-07-music-documentaries.png": {
     "primary": "#c0c0c0",
@@ -289,15 +289,15 @@
     "accentDark": "#3e3e3e",
     "tertiaryDark": "#535353"
   },
-  "2014-08-31-one-year-on/blog-cover-2014-08-31-one-year-on.png": {
-    "primary": "#00a0c0",
-    "secondary": "#a04000",
-    "accent": "#008040",
-    "tertiary": "#0060a0",
-    "primaryDark": "#006073",
-    "secondaryDark": "#602600",
-    "accentDark": "#00532a",
-    "tertiaryDark": "#003e68"
+  "2014-09-07-very-basic-coreos/blog-cover-2014-09-07-very-basic-coreos.png": {
+    "primary": "#c02020",
+    "secondary": "#e06020",
+    "accent": "#ffa020",
+    "tertiary": "#806020",
+    "primaryDark": "#731313",
+    "secondaryDark": "#863a13",
+    "accentDark": "#a66815",
+    "tertiaryDark": "#533e15"
   },
   "2014-10-20-yosemite-installation/blog-cover-2014-10-20-yosemite-installation.png": {
     "primary": "#e0a060",
@@ -379,16 +379,6 @@
     "accentDark": "#3e5392",
     "tertiaryDark": "#153e2a"
   },
-  "2014-12-06-more-grunt-jekyll/blog-cover-2014-12-06-more-grunt-jekyll.png": {
-    "primary": "#c0a060",
-    "secondary": "#606040",
-    "accent": "#a08040",
-    "tertiary": "#e0c0a0",
-    "primaryDark": "#73603a",
-    "secondaryDark": "#3a3a26",
-    "accentDark": "#68532a",
-    "tertiaryDark": "#927d68"
-  },
   "2014-12-02-reading-list/blog-cover-2014-12-02-reading-list.png": {
     "primary": "#e0e000",
     "secondary": "#a04000",
@@ -408,6 +398,16 @@
     "secondaryDark": "#600000",
     "accentDark": "#a63e00",
     "tertiaryDark": "#a6a600"
+  },
+  "2014-12-06-more-grunt-jekyll/blog-cover-2014-12-06-more-grunt-jekyll.png": {
+    "primary": "#c0a060",
+    "secondary": "#606040",
+    "accent": "#a08040",
+    "tertiary": "#e0c0a0",
+    "primaryDark": "#73603a",
+    "secondaryDark": "#3a3a26",
+    "accentDark": "#68532a",
+    "tertiaryDark": "#927d68"
   },
   "2014-12-14-first-steps-with-ansible/blog-cover-2014-12-14-first-steps-with-ansible.png": {
     "primary": "#804000",
@@ -429,16 +429,6 @@
     "accentDark": "#3e3e2a",
     "tertiaryDark": "#53533e"
   },
-  "2015-02-08-backups/blog-cover-2015-02-08-backups.png": {
-    "primary": "#e02020",
-    "secondary": "#a04040",
-    "accent": "#c0a040",
-    "tertiary": "#606040",
-    "primaryDark": "#861313",
-    "secondaryDark": "#602626",
-    "accentDark": "#7d682a",
-    "tertiaryDark": "#3e3e2a"
-  },
   "2015-02-02-production-ready-images-with-packer/blog-cover-2015-02-02-production-ready-images-with-packer.png": {
     "primary": "#e0e000",
     "secondary": "#80e000",
@@ -448,6 +438,16 @@
     "secondaryDark": "#4d8600",
     "accentDark": "#7d1500",
     "tertiaryDark": "#a66800"
+  },
+  "2015-02-08-backups/blog-cover-2015-02-08-backups.png": {
+    "primary": "#e02020",
+    "secondary": "#a04040",
+    "accent": "#c0a040",
+    "tertiary": "#606040",
+    "primaryDark": "#861313",
+    "secondaryDark": "#602626",
+    "accentDark": "#7d682a",
+    "tertiaryDark": "#3e3e2a"
   },
   "2015-02-14-nginx-ngxpagespeed-on-centos-7/blog-cover-2015-02-14-nginx-ngxpagespeed-on-centos-7.png": {
     "primary": "#c06020",
@@ -469,16 +469,6 @@
     "accentDark": "#7d683e",
     "tertiaryDark": "#3e2a2a"
   },
-  "2015-03-15-desktop-wallpaper/blog-cover-2015-03-15-desktop-wallpaper.png": {
-    "primary": "#2060a0",
-    "secondary": "#4080c0",
-    "accent": "#4178ae",
-    "tertiary": "#33669a",
-    "primaryDark": "#133a60",
-    "secondaryDark": "#264d73",
-    "accentDark": "#2a4e71",
-    "tertiaryDark": "#214264"
-  },
   "2015-03-09-day-to-day-tools/blog-cover-2015-03-09-day-to-day-tools.png": {
     "primary": "#804060",
     "secondary": "#406060",
@@ -488,6 +478,16 @@
     "secondaryDark": "#263a3a",
     "accentDark": "#3e5353",
     "tertiaryDark": "#536868"
+  },
+  "2015-03-15-desktop-wallpaper/blog-cover-2015-03-15-desktop-wallpaper.png": {
+    "primary": "#2060a0",
+    "secondary": "#4080c0",
+    "accent": "#4178ae",
+    "tertiary": "#33669a",
+    "primaryDark": "#133a60",
+    "secondaryDark": "#264d73",
+    "accentDark": "#2a4e71",
+    "tertiaryDark": "#214264"
   },
   "2015-03-15-whats-been-on-the-ones-twos/blog-cover-2015-03-15-whats-been-on-the-ones-twos.png": {
     "primary": "#a06040",
@@ -539,16 +539,6 @@
     "accentDark": "#53532a",
     "tertiaryDark": "#3e2a2a"
   },
-  "2015-05-23-openshift-origin-v3/blog-cover-2015-05-23-openshift-origin-v3.png": {
-    "primary": "#c06000",
-    "secondary": "#ff8000",
-    "accent": "#804000",
-    "tertiary": "#ffc020",
-    "primaryDark": "#733a00",
-    "secondaryDark": "#994d00",
-    "accentDark": "#532a00",
-    "tertiaryDark": "#a67d15"
-  },
   "2015-04-18-aws-london-summit-2015/blog-cover-2015-04-18-aws-london-summit-2015.png": {
     "primary": "#a08020",
     "secondary": "#804020",
@@ -569,6 +559,16 @@
     "accentDark": "#683e3e",
     "tertiaryDark": "#3e5353"
   },
+  "2015-05-23-openshift-origin-v3/blog-cover-2015-05-23-openshift-origin-v3.png": {
+    "primary": "#c06000",
+    "secondary": "#ff8000",
+    "accent": "#804000",
+    "tertiary": "#ffc020",
+    "primaryDark": "#733a00",
+    "secondaryDark": "#994d00",
+    "accentDark": "#532a00",
+    "tertiaryDark": "#a67d15"
+  },
   "2015-05-24-quick-openstack-kilo-installation/blog-cover-2015-05-24-quick-openstack-kilo-installation.png": {
     "primary": "#e0c0a0",
     "secondary": "#c0a080",
@@ -578,26 +578,6 @@
     "secondaryDark": "#73604d",
     "accentDark": "#3e533e",
     "tertiaryDark": "#645342"
-  },
-  "2015-06-28-digital-ocean-bootstrap/blog-cover-2015-06-28-digital-ocean-bootstrap.png": {
-    "primary": "#406080",
-    "secondary": "#6080a0",
-    "accent": "#80a0c0",
-    "tertiary": "#c0e0e0",
-    "primaryDark": "#263a4d",
-    "secondaryDark": "#3a4d60",
-    "accentDark": "#53687d",
-    "tertiaryDark": "#7d9292"
-  },
-  "2015-07-13-slain-by-dragons/blog-cover-2015-07-13-slain-by-dragons.png": {
-    "primary": "#a04000",
-    "secondary": "#c06020",
-    "accent": "#a08040",
-    "tertiary": "#e0a040",
-    "primaryDark": "#602600",
-    "secondaryDark": "#733a13",
-    "accentDark": "#68532a",
-    "tertiaryDark": "#92682a"
   },
   "2015-06-28-update-to-centos-7-docker-install-oneliner/blog-cover-2015-06-28-update-to-centos-7-docker-install-oneliner.png": {
     "primary": "#c04000",
@@ -619,6 +599,26 @@
     "accentDark": "#4e4e4e",
     "tertiaryDark": "#262626"
   },
+  "2015-06-28-digital-ocean-bootstrap/blog-cover-2015-06-28-digital-ocean-bootstrap.png": {
+    "primary": "#406080",
+    "secondary": "#6080a0",
+    "accent": "#80a0c0",
+    "tertiary": "#c0e0e0",
+    "primaryDark": "#263a4d",
+    "secondaryDark": "#3a4d60",
+    "accentDark": "#53687d",
+    "tertiaryDark": "#7d9292"
+  },
+  "2015-07-13-slain-by-dragons/blog-cover-2015-07-13-slain-by-dragons.png": {
+    "primary": "#a04000",
+    "secondary": "#c06020",
+    "accent": "#a08040",
+    "tertiary": "#e0a040",
+    "primaryDark": "#602600",
+    "secondaryDark": "#733a13",
+    "accentDark": "#68532a",
+    "tertiaryDark": "#92682a"
+  },
   "2015-07-19-terraform-azure/blog-cover-2015-07-19-terraform-azure.png": {
     "primary": "#406000",
     "secondary": "#60a000",
@@ -638,6 +638,16 @@
     "secondaryDark": "#863a00",
     "accentDark": "#7d5315",
     "tertiaryDark": "#a66815"
+  },
+  "2015-09-06-update-the-kernel-on-a-digital-ocean-droplet/blog-cover-2015-09-06-update-the-kernel-on-a-digital-ocean-droplet.png": {
+    "primary": "#406080",
+    "secondary": "#6080a0",
+    "accent": "#80a0c0",
+    "tertiary": "#c0e0e0",
+    "primaryDark": "#263a4d",
+    "secondaryDark": "#3a4d60",
+    "accentDark": "#53687d",
+    "tertiaryDark": "#7d9292"
   },
   "2015-07-26-building-vagrant-boxes-with-packer-in-atlas/blog-cover-2015-07-26-building-vagrant-boxes-with-packer-in-atlas.png": {
     "primary": "#806040",
@@ -659,15 +669,15 @@
     "accentDark": "#a6532a",
     "tertiaryDark": "#92683e"
   },
-  "2015-09-06-update-the-kernel-on-a-digital-ocean-droplet/blog-cover-2015-09-06-update-the-kernel-on-a-digital-ocean-droplet.png": {
-    "primary": "#406080",
-    "secondary": "#6080a0",
-    "accent": "#80a0c0",
-    "tertiary": "#c0e0e0",
-    "primaryDark": "#263a4d",
-    "secondaryDark": "#3a4d60",
-    "accentDark": "#53687d",
-    "tertiaryDark": "#7d9292"
+  "2015-10-11-more-site-updates/blog-cover-2015-10-11-more-site-updates.png": {
+    "primary": "#ff8020",
+    "secondary": "#e02040",
+    "accent": "#c06020",
+    "tertiary": "#ff4060",
+    "primaryDark": "#994d13",
+    "secondaryDark": "#861326",
+    "accentDark": "#7d3e15",
+    "tertiaryDark": "#a62a3e"
   },
   "2015-10-11-monitoring-docker-book/blog-cover-2015-10-11-monitoring-docker-book.png": {
     "primary": "#206080",
@@ -678,16 +688,6 @@
     "secondaryDark": "#264d60",
     "accentDark": "#3e687d",
     "tertiaryDark": "#3e3e3e"
-  },
-  "2015-10-11-more-site-updates/blog-cover-2015-10-11-more-site-updates.png": {
-    "primary": "#ff8020",
-    "secondary": "#e02040",
-    "accent": "#c06020",
-    "tertiary": "#ff4060",
-    "primaryDark": "#994d13",
-    "secondaryDark": "#861326",
-    "accentDark": "#7d3e15",
-    "tertiaryDark": "#a62a3e"
   },
   "2015-11-15-puppet-enterprise-aws-security-groups/blog-cover-2015-11-15-puppet-enterprise-aws-security-groups.png": {
     "primary": "#ff4000",
@@ -719,16 +719,6 @@
     "accentDark": "#2a68a6",
     "tertiaryDark": "#3e92a6"
   },
-  "2015-12-27-top-ten-albums-2015/blog-cover-2015-12-27-top-ten-albums-2015.png": {
-    "primary": "#c00020",
-    "secondary": "#c06020",
-    "accent": "#804020",
-    "tertiary": "#e0a020",
-    "primaryDark": "#730013",
-    "secondaryDark": "#733a13",
-    "accentDark": "#532a15",
-    "tertiaryDark": "#926815"
-  },
   "2015-12-20-jenkins/blog-cover-2015-12-20-jenkins.png": {
     "primary": "#804000",
     "secondary": "#a06020",
@@ -739,15 +729,15 @@
     "accentDark": "#7d532a",
     "tertiaryDark": "#92683e"
   },
-  "2016-02-25-docker-networking-magic/blog-cover-2016-02-25-docker-networking-magic.png": {
-    "primary": "#0060a0",
-    "secondary": "#2080c0",
-    "accent": "#20a0ff",
-    "tertiary": "#40c0e0",
-    "primaryDark": "#003a60",
-    "secondaryDark": "#134d73",
-    "accentDark": "#1568a6",
-    "tertiaryDark": "#2a7d92"
+  "2015-12-27-top-ten-albums-2015/blog-cover-2015-12-27-top-ten-albums-2015.png": {
+    "primary": "#c00020",
+    "secondary": "#c06020",
+    "accent": "#804020",
+    "tertiary": "#e0a020",
+    "primaryDark": "#730013",
+    "secondaryDark": "#733a13",
+    "accentDark": "#532a15",
+    "tertiaryDark": "#926815"
   },
   "2016-02-01-tiny-docker-images/blog-cover-2016-02-01-tiny-docker-images.png": {
     "primary": "#006080",
@@ -759,16 +749,6 @@
     "accentDark": "#a61515",
     "tertiaryDark": "#15687d"
   },
-  "2016-05-07-extending-docker-now-available-to-preorder/blog-cover-2016-05-07-extending-docker-now-available-to-preorder.png": {
-    "primary": "#0060a0",
-    "secondary": "#806020",
-    "accent": "#4080c0",
-    "tertiary": "#e0a040",
-    "primaryDark": "#003a60",
-    "secondaryDark": "#4d3a13",
-    "accentDark": "#2a537d",
-    "tertiaryDark": "#92682a"
-  },
   "2016-02-27-consul-docker-cluster/blog-cover-2016-02-27-consul-docker-cluster.png": {
     "primary": "#2060c0",
     "secondary": "#a02040",
@@ -779,6 +759,16 @@
     "accentDark": "#2a6892",
     "tertiaryDark": "#923e2a"
   },
+  "2016-02-25-docker-networking-magic/blog-cover-2016-02-25-docker-networking-magic.png": {
+    "primary": "#0060a0",
+    "secondary": "#2080c0",
+    "accent": "#20a0ff",
+    "tertiary": "#40c0e0",
+    "primaryDark": "#003a60",
+    "secondaryDark": "#134d73",
+    "accentDark": "#1568a6",
+    "tertiaryDark": "#2a7d92"
+  },
   "2016-05-08-docker-on-mac-osx/blog-cover-2016-05-08-docker-on-mac-osx.png": {
     "primary": "#ffc000",
     "secondary": "#a02020",
@@ -788,6 +778,16 @@
     "secondaryDark": "#601313",
     "accentDark": "#685315",
     "tertiaryDark": "#926815"
+  },
+  "2016-05-07-extending-docker-now-available-to-preorder/blog-cover-2016-05-07-extending-docker-now-available-to-preorder.png": {
+    "primary": "#0060a0",
+    "secondary": "#806020",
+    "accent": "#4080c0",
+    "tertiary": "#e0a040",
+    "primaryDark": "#003a60",
+    "secondaryDark": "#4d3a13",
+    "accentDark": "#2a537d",
+    "tertiaryDark": "#92682a"
   },
   "2016-05-22-falco-by-sysdig/blog-cover-2016-05-22-falco-by-sysdig.png": {
     "primary": "#406080",
@@ -869,6 +869,16 @@
     "accentDark": "#2a537d",
     "tertiaryDark": "#92682a"
   },
+  "2016-11-07-preorder-docker-data-management-with-flocker/blog-cover-2016-11-07-preorder-docker-data-management-with-flocker.png": {
+    "primary": "#00a040",
+    "secondary": "#007830",
+    "accent": "#26ae5d",
+    "tertiary": "#006026",
+    "primaryDark": "#006026",
+    "secondaryDark": "#00481d",
+    "accentDark": "#19713c",
+    "tertiaryDark": "#003e19"
+  },
   "2016-10-30-october-2016-playlist/blog-cover-2016-10-30-october-2016-playlist.jpeg": {
     "primary": "#c06020",
     "secondary": "#2060a0",
@@ -889,26 +899,6 @@
     "accentDark": "#15a6a6",
     "tertiaryDark": "#15687d"
   },
-  "2016-12-12-2016-top-ten/blog-cover-2016-12-12-2016-top-ten.png": {
-    "primary": "#c02020",
-    "secondary": "#e04040",
-    "accent": "#804020",
-    "tertiary": "#a06040",
-    "primaryDark": "#731313",
-    "secondaryDark": "#862626",
-    "accentDark": "#532a15",
-    "tertiaryDark": "#683e2a"
-  },
-  "2016-11-07-preorder-docker-data-management-with-flocker/blog-cover-2016-11-07-preorder-docker-data-management-with-flocker.png": {
-    "primary": "#00a040",
-    "secondary": "#007830",
-    "accent": "#26ae5d",
-    "tertiary": "#006026",
-    "primaryDark": "#006026",
-    "secondaryDark": "#00481d",
-    "accentDark": "#19713c",
-    "tertiaryDark": "#003e19"
-  },
   "2016-11-19-annoying-ansible-quirk/blog-cover-2016-11-19-annoying-ansible-quirk.png": {
     "primary": "#0080a0",
     "secondary": "#00e0e0",
@@ -918,6 +908,16 @@
     "secondaryDark": "#008686",
     "accentDark": "#15a6a6",
     "tertiaryDark": "#15687d"
+  },
+  "2016-12-12-2016-top-ten/blog-cover-2016-12-12-2016-top-ten.png": {
+    "primary": "#c02020",
+    "secondary": "#e04040",
+    "accent": "#804020",
+    "tertiary": "#a06040",
+    "primaryDark": "#731313",
+    "secondaryDark": "#862626",
+    "accentDark": "#532a15",
+    "tertiaryDark": "#683e2a"
   },
   "2016-12-12-monitoring-managment-with-docker-containers-ebook/blog-cover-2016-12-12-monitoring-managment-with-docker-containers-ebook.png": {
     "primary": "#a04080",
@@ -939,15 +939,15 @@
     "accentDark": "#532a15",
     "tertiaryDark": "#a6922a"
   },
-  "2016-12-29-portainer-a-ui-for-docker/blog-cover-2016-12-29-portainer-a-ui-for-docker.png": {
-    "primary": "#a00000",
-    "secondary": "#e02000",
-    "accent": "#a04020",
-    "tertiary": "#e08020",
-    "primaryDark": "#600000",
-    "secondaryDark": "#861300",
-    "accentDark": "#682a15",
-    "tertiaryDark": "#925315"
+  "2016-12-13-its-a-unix-system-i-know-this./blog-cover-2016-12-13-its-a-unix-system-i-know-this..png": {
+    "primary": "#0020ff",
+    "secondary": "#2040e0",
+    "accent": "#4060ff",
+    "tertiary": "#4040a0",
+    "primaryDark": "#001399",
+    "secondaryDark": "#132686",
+    "accentDark": "#2a3ea6",
+    "tertiaryDark": "#2a2a68"
   },
   "2016-12-27-playing-with-infinit-docker/blog-cover-2016-12-27-playing-with-infinit-docker.png": {
     "primary": "#ffe040",
@@ -959,25 +959,15 @@
     "accentDark": "#7d683e",
     "tertiaryDark": "#533e2a"
   },
-  "2016-12-13-its-a-unix-system-i-know-this./blog-cover-2016-12-13-its-a-unix-system-i-know-this..png": {
-    "primary": "#0020ff",
-    "secondary": "#2040e0",
-    "accent": "#4060ff",
-    "tertiary": "#4040a0",
-    "primaryDark": "#001399",
-    "secondaryDark": "#132686",
-    "accentDark": "#2a3ea6",
-    "tertiaryDark": "#2a2a68"
-  },
-  "2017-01-01-launching-a-local-kubernetes-lab-using-minikube/blog-cover-2017-01-01-launching-a-local-kubernetes-lab-using-minikube.png": {
-    "primary": "#a08060",
-    "secondary": "#806040",
-    "accent": "#604060",
-    "tertiary": "#c0a080",
-    "primaryDark": "#604d3a",
-    "secondaryDark": "#4d3a26",
-    "accentDark": "#3e2a3e",
-    "tertiaryDark": "#7d6853"
+  "2016-12-29-portainer-a-ui-for-docker/blog-cover-2016-12-29-portainer-a-ui-for-docker.png": {
+    "primary": "#a00000",
+    "secondary": "#e02000",
+    "accent": "#a04020",
+    "tertiary": "#e08020",
+    "primaryDark": "#600000",
+    "secondaryDark": "#861300",
+    "accentDark": "#682a15",
+    "tertiaryDark": "#925315"
   },
   "2017-01-02-trying-out-elastic-beats/blog-cover-2017-01-02-trying-out-elastic-beats.png": {
     "primary": "#206060",
@@ -989,16 +979,6 @@
     "accentDark": "#3e3e2a",
     "tertiaryDark": "#53533e"
   },
-  "2017-01-15-uis-for-docker-a-followup-post/blog-cover-2017-01-15-uis-for-docker-a-followup-post.png": {
-    "primary": "#20a040",
-    "secondary": "#e0c020",
-    "accent": "#208080",
-    "tertiary": "#c0a040",
-    "primaryDark": "#136026",
-    "secondaryDark": "#867313",
-    "accentDark": "#155353",
-    "tertiaryDark": "#7d682a"
-  },
   "2017-01-05-day-to-day-tools/blog-cover-2017-01-05-day-to-day-tools.png": {
     "primary": "#604020",
     "secondary": "#806040",
@@ -1008,6 +988,26 @@
     "secondaryDark": "#4d3a26",
     "accentDark": "#68533e",
     "tertiaryDark": "#7d6853"
+  },
+  "2017-01-01-launching-a-local-kubernetes-lab-using-minikube/blog-cover-2017-01-01-launching-a-local-kubernetes-lab-using-minikube.png": {
+    "primary": "#a08060",
+    "secondary": "#806040",
+    "accent": "#604060",
+    "tertiary": "#c0a080",
+    "primaryDark": "#604d3a",
+    "secondaryDark": "#4d3a26",
+    "accentDark": "#3e2a3e",
+    "tertiaryDark": "#7d6853"
+  },
+  "2017-01-15-uis-for-docker-a-followup-post/blog-cover-2017-01-15-uis-for-docker-a-followup-post.png": {
+    "primary": "#20a040",
+    "secondary": "#e0c020",
+    "accent": "#208080",
+    "tertiary": "#c0a040",
+    "primaryDark": "#136026",
+    "secondaryDark": "#867313",
+    "accentDark": "#155353",
+    "tertiaryDark": "#7d682a"
   },
   "2017-01-21-playing-with-docker-1.13-minio/blog-cover-2017-01-21-playing-with-docker-1.13-minio.png": {
     "primary": "#a06040",
@@ -1039,16 +1039,6 @@
     "accentDark": "#689292",
     "tertiaryDark": "#7da6a6"
   },
-  "2018-01-06-docker-kubernetes/blog-cover-2018-01-06-docker-kubernetes.png": {
-    "primary": "#806040",
-    "secondary": "#604020",
-    "accent": "#a08060",
-    "tertiary": "#c0a080",
-    "primaryDark": "#4d3a26",
-    "secondaryDark": "#3a2613",
-    "accentDark": "#68533e",
-    "tertiaryDark": "#7d6853"
-  },
   "2017-09-24-ansible-awx/blog-cover-2017-09-24-ansible-awx.png": {
     "primary": "#006080",
     "secondary": "#2080a0",
@@ -1059,6 +1049,16 @@
     "accentDark": "#2a3e3e",
     "tertiaryDark": "#3e687d"
   },
+  "2018-01-06-docker-kubernetes/blog-cover-2018-01-06-docker-kubernetes.png": {
+    "primary": "#806040",
+    "secondary": "#604020",
+    "accent": "#a08060",
+    "tertiary": "#c0a080",
+    "primaryDark": "#4d3a26",
+    "secondaryDark": "#3a2613",
+    "accentDark": "#68533e",
+    "tertiaryDark": "#7d6853"
+  },
   "2018-01-20-kubernetes-for-serverless-applications/blog-cover-2018-01-20-kubernetes-for-serverless-applications.png": {
     "primary": "#6040a0",
     "secondary": "#8060c0",
@@ -1068,16 +1068,6 @@
     "secondaryDark": "#4d3a73",
     "accentDark": "#68687d",
     "tertiaryDark": "#7d7d92"
-  },
-  "2018-10-25-270-days/blog-cover-2018-10-25-270-days.png": {
-    "primary": "#c06060",
-    "secondary": "#804040",
-    "accent": "#e08080",
-    "tertiary": "#c0a0a0",
-    "primaryDark": "#733a3a",
-    "secondaryDark": "#4d2626",
-    "accentDark": "#925353",
-    "tertiaryDark": "#7d6868"
   },
   "2018-01-28-playing-with-rancher-2.0/blog-cover-2018-01-28-playing-with-rancher-2.0.png": {
     "primary": "#808000",
@@ -1098,6 +1088,16 @@
     "secondaryDark": "#733a00",
     "accentDark": "#003e68",
     "tertiaryDark": "#927d00"
+  },
+  "2018-10-25-270-days/blog-cover-2018-10-25-270-days.png": {
+    "primary": "#c06060",
+    "secondary": "#804040",
+    "accent": "#e08080",
+    "tertiary": "#c0a0a0",
+    "primaryDark": "#733a3a",
+    "secondaryDark": "#4d2626",
+    "accentDark": "#925353",
+    "tertiaryDark": "#7d6868"
   },
   "2018-12-16-first-steps-with-digitaloceans-managed-kubernetes-service/blog-cover-2018-12-16-first-steps-with-digitaloceans-managed-kubernetes-service.jpg": {
     "primary": "#2040e0",
@@ -1128,26 +1128,6 @@
     "secondaryDark": "#996026",
     "accentDark": "#533e15",
     "tertiaryDark": "#7d3e2a"
-  },
-  "2019-09-01-quickly-launch-an-azure-aks-cluster/blog-cover-2019-09-01-quickly-launch-an-azure-aks-cluster.jpeg": {
-    "primary": "#606020",
-    "secondary": "#a08040",
-    "accent": "#c0a060",
-    "tertiary": "#e0c080",
-    "primaryDark": "#3a3a13",
-    "secondaryDark": "#604d26",
-    "accentDark": "#7d683e",
-    "tertiaryDark": "#927d53"
-  },
-  "2019-09-01-quickly-launch-an-azure-aks-cluster/blog-cover-2019-09-01-quickly-launch-an-azure-aks-cluster.png": {
-    "primary": "#0080a0",
-    "secondary": "#00e0e0",
-    "accent": "#20ffff",
-    "tertiary": "#20a0c0",
-    "primaryDark": "#004d60",
-    "secondaryDark": "#008686",
-    "accentDark": "#15a6a6",
-    "tertiaryDark": "#15687d"
   },
   "2019-06-15-moving-to-zsh/blog-cover-2019-06-15-moving-to-zsh.jpeg": {
     "primary": "#a04020",
@@ -1209,6 +1189,26 @@
     "accentDark": "#15a6a6",
     "tertiaryDark": "#15687d"
   },
+  "2019-09-01-quickly-launch-an-azure-aks-cluster/blog-cover-2019-09-01-quickly-launch-an-azure-aks-cluster.jpeg": {
+    "primary": "#606020",
+    "secondary": "#a08040",
+    "accent": "#c0a060",
+    "tertiary": "#e0c080",
+    "primaryDark": "#3a3a13",
+    "secondaryDark": "#604d26",
+    "accentDark": "#7d683e",
+    "tertiaryDark": "#927d53"
+  },
+  "2019-09-01-quickly-launch-an-azure-aks-cluster/blog-cover-2019-09-01-quickly-launch-an-azure-aks-cluster.png": {
+    "primary": "#0080a0",
+    "secondary": "#00e0e0",
+    "accent": "#20ffff",
+    "tertiary": "#20a0c0",
+    "primaryDark": "#004d60",
+    "secondaryDark": "#008686",
+    "accentDark": "#15a6a6",
+    "tertiaryDark": "#15687d"
+  },
   "2019-10-13-packer-centos-8/blog-cover-2019-10-13-packer-centos-8.jpeg": {
     "primary": "#206060",
     "secondary": "#408080",
@@ -1220,26 +1220,6 @@
     "tertiaryDark": "#3e6868"
   },
   "2019-10-13-packer-centos-8/blog-cover-2019-10-13-packer-centos-8.png": {
-    "primary": "#0080a0",
-    "secondary": "#00e0e0",
-    "accent": "#20ffff",
-    "tertiary": "#20a0c0",
-    "primaryDark": "#004d60",
-    "secondaryDark": "#008686",
-    "accentDark": "#15a6a6",
-    "tertiaryDark": "#15687d"
-  },
-  "2020-04-03-ansible-and-the-azure-rest-api/blog-cover-2020-04-03-ansible-and-the-azure-rest-api.jpeg": {
-    "primary": "#ffa000",
-    "secondary": "#0060c0",
-    "accent": "#a04000",
-    "tertiary": "#e06000",
-    "primaryDark": "#996000",
-    "secondaryDark": "#003a73",
-    "accentDark": "#682a00",
-    "tertiaryDark": "#923e00"
-  },
-  "2020-04-03-ansible-and-the-azure-rest-api/blog-cover-2020-04-03-ansible-and-the-azure-rest-api.png": {
     "primary": "#0080a0",
     "secondary": "#00e0e0",
     "accent": "#20ffff",
@@ -1269,6 +1249,26 @@
     "accentDark": "#15a6a6",
     "tertiaryDark": "#15687d"
   },
+  "2020-04-03-ansible-and-the-azure-rest-api/blog-cover-2020-04-03-ansible-and-the-azure-rest-api.jpeg": {
+    "primary": "#ffa000",
+    "secondary": "#0060c0",
+    "accent": "#a04000",
+    "tertiary": "#e06000",
+    "primaryDark": "#996000",
+    "secondaryDark": "#003a73",
+    "accentDark": "#682a00",
+    "tertiaryDark": "#923e00"
+  },
+  "2020-04-03-ansible-and-the-azure-rest-api/blog-cover-2020-04-03-ansible-and-the-azure-rest-api.png": {
+    "primary": "#0080a0",
+    "secondary": "#00e0e0",
+    "accent": "#20ffff",
+    "tertiary": "#20a0c0",
+    "primaryDark": "#004d60",
+    "secondaryDark": "#008686",
+    "accentDark": "#15a6a6",
+    "tertiaryDark": "#15687d"
+  },
   "2020-05-10-azure-devops-ansible-pipeline/blog-cover-2020-05-10-azure-devops-ansible-pipeline.png": {
     "primary": "#c0a020",
     "secondary": "#806020",
@@ -1288,16 +1288,6 @@
     "secondaryDark": "#4d6000",
     "accentDark": "#685315",
     "tertiaryDark": "#7d682a"
-  },
-  "2020-09-20-github-codespaces-and-terraform/blog-cover-2020-09-20-github-codespaces-and-terraform.png": {
-    "primary": "#604040",
-    "secondary": "#806060",
-    "accent": "#a08080",
-    "tertiary": "#c0a0a0",
-    "primaryDark": "#3a2626",
-    "secondaryDark": "#4d3a3a",
-    "accentDark": "#685353",
-    "tertiaryDark": "#7d6868"
   },
   "2020-09-27-migrating-my-docker-images-to-the-github-container-registry/blog-cover-2020-09-27-migrating-my-docker-images-to-the-github-container-registry.png": {
     "primary": "#0060a0",
@@ -1339,6 +1329,16 @@
     "accentDark": "#a6682a",
     "tertiaryDark": "#533e15"
   },
+  "2020-09-20-github-codespaces-and-terraform/blog-cover-2020-09-20-github-codespaces-and-terraform.png": {
+    "primary": "#604040",
+    "secondary": "#806060",
+    "accent": "#a08080",
+    "tertiary": "#c0a0a0",
+    "primaryDark": "#3a2626",
+    "secondaryDark": "#4d3a3a",
+    "accentDark": "#685353",
+    "tertiaryDark": "#7d6868"
+  },
   "2021-04-25-azure-devops-multistage-pipelines/blog-cover-2021-04-25-azure-devops-multistage-pipelines.png": {
     "primary": "#e0a000",
     "secondary": "#c00000",
@@ -1369,16 +1369,6 @@
     "accentDark": "#156853",
     "tertiaryDark": "#2a7d68"
   },
-  "2021-08-30-some-terraform-notes/blog-cover-2021-08-30-some-terraform-notes.png": {
-    "primary": "#804000",
-    "secondary": "#a06020",
-    "accent": "#c08040",
-    "tertiary": "#e0a060",
-    "primaryDark": "#4d2600",
-    "secondaryDark": "#603a13",
-    "accentDark": "#7d532a",
-    "tertiaryDark": "#92683e"
-  },
   "2021-08-28-rocky-linux-packer/blog-cover-2021-08-28-rocky-linux-packer.png": {
     "primary": "#606040",
     "secondary": "#a08080",
@@ -1388,6 +1378,16 @@
     "secondaryDark": "#604d4d",
     "accentDark": "#929292",
     "tertiaryDark": "#7d6868"
+  },
+  "2021-08-30-some-terraform-notes/blog-cover-2021-08-30-some-terraform-notes.png": {
+    "primary": "#804000",
+    "secondary": "#a06020",
+    "accent": "#c08040",
+    "tertiary": "#e0a060",
+    "primaryDark": "#4d2600",
+    "secondaryDark": "#603a13",
+    "accentDark": "#7d532a",
+    "tertiaryDark": "#92683e"
   },
   "2021-09-05-docker-desktop-alternatives-for-macos/blog-cover-2021-09-05-docker-desktop-alternatives-for-macos.png": {
     "primary": "#206080",
@@ -1409,6 +1409,16 @@
     "accentDark": "#3e687d",
     "tertiaryDark": "#687d92"
   },
+  "2021-12-28-ansible-azure-setup-new-mac/blog-cover-2021-12-28-ansible-azure-setup-new-mac.png": {
+    "primary": "#00c0ff",
+    "secondary": "#0080e0",
+    "accent": "#c00080",
+    "tertiary": "#0060a0",
+    "primaryDark": "#007399",
+    "secondaryDark": "#004d86",
+    "accentDark": "#7d0053",
+    "tertiaryDark": "#003e68"
+  },
   "2021-10-30-managing-python-on-macos-monterey/blog-cover-2021-10-30-managing-python-on-macos-monterey.png": {
     "primary": "#8000e0",
     "secondary": "#a020c0",
@@ -1428,16 +1438,6 @@
     "secondaryDark": "#864d13",
     "accentDark": "#a6682a",
     "tertiaryDark": "#3e2a15"
-  },
-  "2021-12-28-ansible-azure-setup-new-mac/blog-cover-2021-12-28-ansible-azure-setup-new-mac.png": {
-    "primary": "#00c0ff",
-    "secondary": "#0080e0",
-    "accent": "#c00080",
-    "tertiary": "#0060a0",
-    "primaryDark": "#007399",
-    "secondaryDark": "#004d86",
-    "accentDark": "#7d0053",
-    "tertiaryDark": "#003e68"
   },
   "2023-06-04-infrastructure-as-code-for-beginners-is-out-now/blog-cover-2023-06-04-infrastructure-as-code-for-beginners-is-out-now.png": {
     "primary": "#806000",
@@ -1589,16 +1589,6 @@
     "accentDark": "#a66815",
     "tertiaryDark": "#922a15"
   },
-  "2024-07-27-creating-an-azure-storage-account-sas-token-from-a-logic-app/blog-cover-2024-07-27-creating-an-azure-storage-account-sas-token-from-a-logic-app.png": {
-    "primary": "#208080",
-    "secondary": "#40a0a0",
-    "accent": "#406060",
-    "tertiary": "#60c0c0",
-    "primaryDark": "#134d4d",
-    "secondaryDark": "#266060",
-    "accentDark": "#2a3e3e",
-    "tertiaryDark": "#3e7d7d"
-  },
   "2024-08-04-i-like-your-background/blog-cover-2024-08-04-i-like-your-background.png": {
     "primary": "#804020",
     "secondary": "#a08040",
@@ -1608,6 +1598,16 @@
     "secondaryDark": "#604d26",
     "accentDark": "#3e3e2a",
     "tertiaryDark": "#7d3e3e"
+  },
+  "2024-07-27-creating-an-azure-storage-account-sas-token-from-a-logic-app/blog-cover-2024-07-27-creating-an-azure-storage-account-sas-token-from-a-logic-app.png": {
+    "primary": "#208080",
+    "secondary": "#40a0a0",
+    "accent": "#406060",
+    "tertiary": "#60c0c0",
+    "primaryDark": "#134d4d",
+    "secondaryDark": "#266060",
+    "accentDark": "#2a3e3e",
+    "tertiaryDark": "#3e7d7d"
   },
   "2024-08-11-unlocking-image-creation-with-flux-and-gpt-4o/blog-cover-2024-08-11-unlocking-image-creation-with-flux-and-gpt-4o.png": {
     "primary": "#c02000",
@@ -1619,16 +1619,6 @@
     "accentDark": "#923e15",
     "tertiaryDark": "#003e53"
   },
-  "2024-09-15-how-to-install-ansible-on-a-mac-a-modern-approach/blog-cover-2024-09-15-how-to-install-ansible-on-a-mac-a-modern-approach.png": {
-    "primary": "#20e0a0",
-    "secondary": "#00a080",
-    "accent": "#006060",
-    "tertiary": "#20ffff",
-    "primaryDark": "#138660",
-    "secondaryDark": "#00604d",
-    "accentDark": "#003e3e",
-    "tertiaryDark": "#15a6a6"
-  },
   "2024-09-21-dynamic-network-config-in-ansible-local-to-azure-vnet/blog-cover-2024-09-21-dynamic-network-config-in-ansible-local-to-azure-vnet.png": {
     "primary": "#006080",
     "secondary": "#00c0e0",
@@ -1639,15 +1629,15 @@
     "accentDark": "#00537d",
     "tertiaryDark": "#1592a6"
   },
-  "2024-10-28-vinyl-scrobbling-app/blog-cover-2024-10-28-vinyl-scrobbling-app.png": {
-    "primary": "#ff6000",
-    "secondary": "#c04000",
-    "accent": "#e0a000",
-    "tertiary": "#ffe000",
-    "primaryDark": "#993a00",
-    "secondaryDark": "#732600",
-    "accentDark": "#926800",
-    "tertiaryDark": "#a69200"
+  "2024-09-15-how-to-install-ansible-on-a-mac-a-modern-approach/blog-cover-2024-09-15-how-to-install-ansible-on-a-mac-a-modern-approach.png": {
+    "primary": "#20e0a0",
+    "secondary": "#00a080",
+    "accent": "#006060",
+    "tertiary": "#20ffff",
+    "primaryDark": "#138660",
+    "secondaryDark": "#00604d",
+    "accentDark": "#003e3e",
+    "tertiaryDark": "#15a6a6"
   },
   "2024-11-17-zsh-conda-environment-selector/blog-cover-2024-11-17-zsh-conda-environment-selector.png": {
     "primary": "#ffe040",
@@ -1658,6 +1648,16 @@
     "secondaryDark": "#602626",
     "accentDark": "#a62a3e",
     "tertiaryDark": "#923e2a"
+  },
+  "2024-10-28-vinyl-scrobbling-app/blog-cover-2024-10-28-vinyl-scrobbling-app.png": {
+    "primary": "#ff6000",
+    "secondary": "#c04000",
+    "accent": "#e0a000",
+    "tertiary": "#ffe000",
+    "primaryDark": "#993a00",
+    "secondaryDark": "#732600",
+    "accentDark": "#926800",
+    "tertiaryDark": "#a69200"
   },
   "2024-11-24-running-flux-on-macos/blog-cover-2024-11-24-running-flux-on-macos.png": {
     "primary": "#0060a0",
@@ -1749,26 +1749,6 @@
     "accentDark": "#003e68",
     "tertiaryDark": "#a69215"
   },
-  "2023-05-29-listened-to-this-week/tunes-cover-2023-05-29-listened-to-this-week-small.png": {
-    "primary": "#ffc000",
-    "secondary": "#806000",
-    "accent": "#e08000",
-    "tertiary": "#a02000",
-    "primaryDark": "#997300",
-    "secondaryDark": "#4d3a00",
-    "accentDark": "#925300",
-    "tertiaryDark": "#681500"
-  },
-  "2023-05-29-listened-to-this-week/tunes-cover-2023-05-29-listened-to-this-week.png": {
-    "primary": "#ffe000",
-    "secondary": "#e0a000",
-    "accent": "#a06000",
-    "tertiary": "#c02000",
-    "primaryDark": "#998600",
-    "secondaryDark": "#866000",
-    "accentDark": "#683e00",
-    "tertiaryDark": "#7d1500"
-  },
   "2023-05-22-listened-to-this-week/tunes-cover-2023-05-22-listened-to-this-week-small.png": {
     "primary": "#206080",
     "secondary": "#608080",
@@ -1788,6 +1768,26 @@
     "secondaryDark": "#99864d",
     "accentDark": "#3e5368",
     "tertiaryDark": "#7d5353"
+  },
+  "2023-05-29-listened-to-this-week/tunes-cover-2023-05-29-listened-to-this-week-small.png": {
+    "primary": "#ffc000",
+    "secondary": "#806000",
+    "accent": "#e08000",
+    "tertiary": "#a02000",
+    "primaryDark": "#997300",
+    "secondaryDark": "#4d3a00",
+    "accentDark": "#925300",
+    "tertiaryDark": "#681500"
+  },
+  "2023-05-29-listened-to-this-week/tunes-cover-2023-05-29-listened-to-this-week.png": {
+    "primary": "#ffe000",
+    "secondary": "#e0a000",
+    "accent": "#a06000",
+    "tertiary": "#c02000",
+    "primaryDark": "#998600",
+    "secondaryDark": "#866000",
+    "accentDark": "#683e00",
+    "tertiaryDark": "#7d1500"
   },
   "2023-06-05-listened-to-this-week/tunes-cover-2023-06-05-listened-to-this-week-small.png": {
     "primary": "#406040",
@@ -1949,6 +1949,26 @@
     "accentDark": "#15537d",
     "tertiaryDark": "#925315"
   },
+  "2023-07-31-listened-to-this-week/tunes-cover-2023-07-31-listened-to-this-week-small.png": {
+    "primary": "#a02020",
+    "secondary": "#c06020",
+    "accent": "#ff6040",
+    "tertiary": "#206080",
+    "primaryDark": "#601313",
+    "secondaryDark": "#733a13",
+    "accentDark": "#a63e2a",
+    "tertiaryDark": "#153e53"
+  },
+  "2023-07-31-listened-to-this-week/tunes-cover-2023-07-31-listened-to-this-week.png": {
+    "primary": "#e06020",
+    "secondary": "#ff8040",
+    "accent": "#a02020",
+    "tertiary": "#206080",
+    "primaryDark": "#863a13",
+    "secondaryDark": "#994d26",
+    "accentDark": "#681515",
+    "tertiaryDark": "#153e53"
+  },
   "2023-08-07-listened-to-this-week/tunes-cover-2023-08-07-listened-to-this-week-small.png": {
     "primary": "#e0a000",
     "secondary": "#804000",
@@ -1988,26 +2008,6 @@
     "secondaryDark": "#864d00",
     "accentDark": "#921515",
     "tertiaryDark": "#a66815"
-  },
-  "2023-07-31-listened-to-this-week/tunes-cover-2023-07-31-listened-to-this-week-small.png": {
-    "primary": "#a02020",
-    "secondary": "#c06020",
-    "accent": "#ff6040",
-    "tertiary": "#206080",
-    "primaryDark": "#601313",
-    "secondaryDark": "#733a13",
-    "accentDark": "#a63e2a",
-    "tertiaryDark": "#153e53"
-  },
-  "2023-07-31-listened-to-this-week/tunes-cover-2023-07-31-listened-to-this-week.png": {
-    "primary": "#e06020",
-    "secondary": "#ff8040",
-    "accent": "#a02020",
-    "tertiary": "#206080",
-    "primaryDark": "#863a13",
-    "secondaryDark": "#994d26",
-    "accentDark": "#681515",
-    "tertiaryDark": "#153e53"
   },
   "2023-08-21-listened-to-this-week/tunes-cover-2023-08-21-listened-to-this-week-small.png": {
     "primary": "#208060",
@@ -2059,26 +2059,6 @@
     "accentDark": "#7d6853",
     "tertiaryDark": "#534232"
   },
-  "2023-10-02-listened-to-this-week/tunes-cover-2023-10-02-listened-to-this-week-small.png": {
-    "primary": "#00a0a0",
-    "secondary": "#c00020",
-    "accent": "#006060",
-    "tertiary": "#e04000",
-    "primaryDark": "#006060",
-    "secondaryDark": "#730013",
-    "accentDark": "#003e3e",
-    "tertiaryDark": "#922a00"
-  },
-  "2023-10-02-listened-to-this-week/tunes-cover-2023-10-02-listened-to-this-week.png": {
-    "primary": "#e00040",
-    "secondary": "#00a0a0",
-    "accent": "#a00020",
-    "tertiary": "#006060",
-    "primaryDark": "#860026",
-    "secondaryDark": "#006060",
-    "accentDark": "#680015",
-    "tertiaryDark": "#003e3e"
-  },
   "2023-09-18-listened-to-this-week/tunes-cover-2023-09-18-listened-to-this-week-small.png": {
     "primary": "#c02020",
     "secondary": "#e08020",
@@ -2098,6 +2078,26 @@
     "secondaryDark": "#863a13",
     "accentDark": "#a66815",
     "tertiaryDark": "#532a15"
+  },
+  "2023-10-02-listened-to-this-week/tunes-cover-2023-10-02-listened-to-this-week-small.png": {
+    "primary": "#00a0a0",
+    "secondary": "#c00020",
+    "accent": "#006060",
+    "tertiary": "#e04000",
+    "primaryDark": "#006060",
+    "secondaryDark": "#730013",
+    "accentDark": "#003e3e",
+    "tertiaryDark": "#922a00"
+  },
+  "2023-10-02-listened-to-this-week/tunes-cover-2023-10-02-listened-to-this-week.png": {
+    "primary": "#e00040",
+    "secondary": "#00a0a0",
+    "accent": "#a00020",
+    "tertiary": "#006060",
+    "primaryDark": "#860026",
+    "secondaryDark": "#006060",
+    "accentDark": "#680015",
+    "tertiaryDark": "#003e3e"
   },
   "2023-10-09-listened-to-this-week/tunes-cover-2023-10-09-listened-to-this-week-small.png": {
     "primary": "#e0a020",
@@ -2179,26 +2179,6 @@
     "accentDark": "#a66800",
     "tertiaryDark": "#7d0000"
   },
-  "2023-11-06-listened-to-this-week/tunes-cover-2023-11-06-listened-to-this-week-small.png": {
-    "primary": "#c00000",
-    "secondary": "#e06000",
-    "accent": "#ff2000",
-    "tertiary": "#a04000",
-    "primaryDark": "#730000",
-    "secondaryDark": "#863a00",
-    "accentDark": "#a61500",
-    "tertiaryDark": "#682a00"
-  },
-  "2023-11-06-listened-to-this-week/tunes-cover-2023-11-06-listened-to-this-week.png": {
-    "primary": "#e00000",
-    "secondary": "#e08000",
-    "accent": "#c04000",
-    "tertiary": "#ff4020",
-    "primaryDark": "#860000",
-    "secondaryDark": "#864d00",
-    "accentDark": "#7d2a00",
-    "tertiaryDark": "#a62a15"
-  },
   "2023-11-13-listened-to-this-week/tunes-cover-2023-11-13-listened-to-this-week-small.png": {
     "primary": "#806020",
     "secondary": "#c08020",
@@ -2219,25 +2199,25 @@
     "accentDark": "#92682a",
     "tertiaryDark": "#683e2a"
   },
-  "2023-11-20-listened-to-this-week/tunes-cover-2023-11-20-listened-to-this-week-small.png": {
-    "primary": "#006080",
-    "secondary": "#2080a0",
-    "accent": "#e04020",
-    "tertiary": "#a02020",
-    "primaryDark": "#003a4d",
-    "secondaryDark": "#134d60",
-    "accentDark": "#922a15",
-    "tertiaryDark": "#681515"
+  "2023-11-06-listened-to-this-week/tunes-cover-2023-11-06-listened-to-this-week-small.png": {
+    "primary": "#c00000",
+    "secondary": "#e06000",
+    "accent": "#ff2000",
+    "tertiary": "#a04000",
+    "primaryDark": "#730000",
+    "secondaryDark": "#863a00",
+    "accentDark": "#a61500",
+    "tertiaryDark": "#682a00"
   },
-  "2023-11-20-listened-to-this-week/tunes-cover-2023-11-20-listened-to-this-week.png": {
-    "primary": "#006080",
-    "secondary": "#2080a0",
-    "accent": "#e04020",
-    "tertiary": "#804020",
-    "primaryDark": "#003a4d",
-    "secondaryDark": "#134d60",
-    "accentDark": "#922a15",
-    "tertiaryDark": "#532a15"
+  "2023-11-06-listened-to-this-week/tunes-cover-2023-11-06-listened-to-this-week.png": {
+    "primary": "#e00000",
+    "secondary": "#e08000",
+    "accent": "#c04000",
+    "tertiary": "#ff4020",
+    "primaryDark": "#860000",
+    "secondaryDark": "#864d00",
+    "accentDark": "#7d2a00",
+    "tertiaryDark": "#a62a15"
   },
   "2023-11-27-listened-to-this-week/tunes-cover-2023-11-27-listened-to-this-week-small.png": {
     "primary": "#c06000",
@@ -2258,6 +2238,26 @@
     "secondaryDark": "#600000",
     "accentDark": "#7d002a",
     "tertiaryDark": "#927d00"
+  },
+  "2023-11-20-listened-to-this-week/tunes-cover-2023-11-20-listened-to-this-week-small.png": {
+    "primary": "#006080",
+    "secondary": "#2080a0",
+    "accent": "#e04020",
+    "tertiary": "#a02020",
+    "primaryDark": "#003a4d",
+    "secondaryDark": "#134d60",
+    "accentDark": "#922a15",
+    "tertiaryDark": "#681515"
+  },
+  "2023-11-20-listened-to-this-week/tunes-cover-2023-11-20-listened-to-this-week.png": {
+    "primary": "#006080",
+    "secondary": "#2080a0",
+    "accent": "#e04020",
+    "tertiary": "#804020",
+    "primaryDark": "#003a4d",
+    "secondaryDark": "#134d60",
+    "accentDark": "#922a15",
+    "tertiaryDark": "#532a15"
   },
   "2023-12-04-listened-to-this-week/tunes-cover-2023-12-04-listened-to-this-week-small.png": {
     "primary": "#206080",
@@ -2299,26 +2299,6 @@
     "accentDark": "#68003e",
     "tertiaryDark": "#7d1515"
   },
-  "2023-12-25-listened-to-this-week/tunes-cover-2023-12-25-listened-to-this-week-small.png": {
-    "primary": "#0060c0",
-    "secondary": "#a02000",
-    "accent": "#e04000",
-    "tertiary": "#e0a020",
-    "primaryDark": "#003a73",
-    "secondaryDark": "#601300",
-    "accentDark": "#922a00",
-    "tertiaryDark": "#926815"
-  },
-  "2023-12-25-listened-to-this-week/tunes-cover-2023-12-25-listened-to-this-week.png": {
-    "primary": "#0060c0",
-    "secondary": "#c06000",
-    "accent": "#e0a020",
-    "tertiary": "#a02000",
-    "primaryDark": "#003a73",
-    "secondaryDark": "#733a00",
-    "accentDark": "#926815",
-    "tertiaryDark": "#681500"
-  },
   "2023-12-18-listened-to-this-week/tunes-cover-2023-12-18-listened-to-this-week-small.png": {
     "primary": "#60a040",
     "secondary": "#8040a0",
@@ -2338,6 +2318,26 @@
     "secondaryDark": "#3a3a26",
     "accentDark": "#533e68",
     "tertiaryDark": "#68533e"
+  },
+  "2023-12-25-listened-to-this-week/tunes-cover-2023-12-25-listened-to-this-week-small.png": {
+    "primary": "#0060c0",
+    "secondary": "#a02000",
+    "accent": "#e04000",
+    "tertiary": "#e0a020",
+    "primaryDark": "#003a73",
+    "secondaryDark": "#601300",
+    "accentDark": "#922a00",
+    "tertiaryDark": "#926815"
+  },
+  "2023-12-25-listened-to-this-week/tunes-cover-2023-12-25-listened-to-this-week.png": {
+    "primary": "#0060c0",
+    "secondary": "#c06000",
+    "accent": "#e0a020",
+    "tertiary": "#a02000",
+    "primaryDark": "#003a73",
+    "secondaryDark": "#733a00",
+    "accentDark": "#926815",
+    "tertiaryDark": "#681500"
   },
   "2024-01-01-listened-to-this-week/tunes-cover-2024-01-01-listened-to-this-week-small.png": {
     "primary": "#e04040",
@@ -2378,6 +2378,26 @@
     "secondaryDark": "#003a73",
     "accentDark": "#7d6800",
     "tertiaryDark": "#680015"
+  },
+  "2024-01-22-listened-to-this-week/tunes-cover-2024-01-22-listened-to-this-week-small.png": {
+    "primary": "#a04000",
+    "secondary": "#ffa000",
+    "accent": "#e06020",
+    "tertiary": "#c08000",
+    "primaryDark": "#602600",
+    "secondaryDark": "#996000",
+    "accentDark": "#923e15",
+    "tertiaryDark": "#7d5300"
+  },
+  "2024-01-22-listened-to-this-week/tunes-cover-2024-01-22-listened-to-this-week.png": {
+    "primary": "#a02000",
+    "secondary": "#ffa000",
+    "accent": "#e08020",
+    "tertiary": "#c04020",
+    "primaryDark": "#601300",
+    "secondaryDark": "#996000",
+    "accentDark": "#925315",
+    "tertiaryDark": "#7d2a15"
   },
   "2024-01-15-listened-to-this-week/tunes-cover-2024-01-15-listened-to-this-week-small.png": {
     "primary": "#c02000",
@@ -2459,25 +2479,25 @@
     "accentDark": "#926815",
     "tertiaryDark": "#2a6815"
   },
-  "2024-01-22-listened-to-this-week/tunes-cover-2024-01-22-listened-to-this-week-small.png": {
-    "primary": "#a04000",
-    "secondary": "#ffa000",
-    "accent": "#e06020",
-    "tertiary": "#c08000",
-    "primaryDark": "#602600",
-    "secondaryDark": "#996000",
-    "accentDark": "#923e15",
-    "tertiaryDark": "#7d5300"
+  "2024-02-26-listened-to-this-week/tunes-cover-2024-02-26-listened-to-this-week-small.png": {
+    "primary": "#a02020",
+    "secondary": "#806020",
+    "accent": "#c08040",
+    "tertiary": "#604040",
+    "primaryDark": "#601313",
+    "secondaryDark": "#4d3a13",
+    "accentDark": "#7d532a",
+    "tertiaryDark": "#3e2a2a"
   },
-  "2024-01-22-listened-to-this-week/tunes-cover-2024-01-22-listened-to-this-week.png": {
-    "primary": "#a02000",
-    "secondary": "#ffa000",
-    "accent": "#e08020",
-    "tertiary": "#c04020",
-    "primaryDark": "#601300",
-    "secondaryDark": "#996000",
-    "accentDark": "#925315",
-    "tertiaryDark": "#7d2a15"
+  "2024-02-26-listened-to-this-week/tunes-cover-2024-02-26-listened-to-this-week.png": {
+    "primary": "#a02020",
+    "secondary": "#806020",
+    "accent": "#a08040",
+    "tertiary": "#206040",
+    "primaryDark": "#601313",
+    "secondaryDark": "#4d3a13",
+    "accentDark": "#68532a",
+    "tertiaryDark": "#153e2a"
   },
   "2024-02-19-listened-to-this-week/tunes-cover-2024-02-19-listened-to-this-week-small.png": {
     "primary": "#e0a020",
@@ -2498,26 +2518,6 @@
     "secondaryDark": "#4d3a13",
     "accentDark": "#92682a",
     "tertiaryDark": "#153e3e"
-  },
-  "2024-02-26-listened-to-this-week/tunes-cover-2024-02-26-listened-to-this-week-small.png": {
-    "primary": "#a02020",
-    "secondary": "#806020",
-    "accent": "#c08040",
-    "tertiary": "#604040",
-    "primaryDark": "#601313",
-    "secondaryDark": "#4d3a13",
-    "accentDark": "#7d532a",
-    "tertiaryDark": "#3e2a2a"
-  },
-  "2024-02-26-listened-to-this-week/tunes-cover-2024-02-26-listened-to-this-week.png": {
-    "primary": "#a02020",
-    "secondary": "#806020",
-    "accent": "#a08040",
-    "tertiary": "#206040",
-    "primaryDark": "#601313",
-    "secondaryDark": "#4d3a13",
-    "accentDark": "#68532a",
-    "tertiaryDark": "#153e2a"
   },
   "2024-03-04-listened-to-this-week/tunes-cover-2024-03-04-listened-to-this-week-small.png": {
     "primary": "#804000",
@@ -2619,26 +2619,6 @@
     "accentDark": "#7d5300",
     "tertiaryDark": "#921515"
   },
-  "2024-04-08-listened-to-this-week/tunes-cover-2024-04-08-listened-to-this-week-small.png": {
-    "primary": "#ffa020",
-    "secondary": "#e06020",
-    "accent": "#a04020",
-    "tertiary": "#c08040",
-    "primaryDark": "#996013",
-    "secondaryDark": "#863a13",
-    "accentDark": "#682a15",
-    "tertiaryDark": "#7d532a"
-  },
-  "2024-04-08-listened-to-this-week/tunes-cover-2024-04-08-listened-to-this-week.png": {
-    "primary": "#ffa020",
-    "secondary": "#e08040",
-    "accent": "#c04020",
-    "tertiary": "#a06040",
-    "primaryDark": "#996013",
-    "secondaryDark": "#864d26",
-    "accentDark": "#7d2a15",
-    "tertiaryDark": "#683e2a"
-  },
   "2024-04-15-listened-to-this-week/tunes-cover-2024-04-15-listened-to-this-week-small.png": {
     "primary": "#006080",
     "secondary": "#0080c0",
@@ -2658,6 +2638,26 @@
     "secondaryDark": "#006073",
     "accentDark": "#a63e00",
     "tertiaryDark": "#921500"
+  },
+  "2024-04-08-listened-to-this-week/tunes-cover-2024-04-08-listened-to-this-week-small.png": {
+    "primary": "#ffa020",
+    "secondary": "#e06020",
+    "accent": "#a04020",
+    "tertiary": "#c08040",
+    "primaryDark": "#996013",
+    "secondaryDark": "#863a13",
+    "accentDark": "#682a15",
+    "tertiaryDark": "#7d532a"
+  },
+  "2024-04-08-listened-to-this-week/tunes-cover-2024-04-08-listened-to-this-week.png": {
+    "primary": "#ffa020",
+    "secondary": "#e08040",
+    "accent": "#c04020",
+    "tertiary": "#a06040",
+    "primaryDark": "#996013",
+    "secondaryDark": "#864d26",
+    "accentDark": "#7d2a15",
+    "tertiaryDark": "#683e2a"
   },
   "2024-04-22-listened-to-this-week/tunes-cover-2024-04-22-listened-to-this-week-small.png": {
     "primary": "#2080a0",
@@ -2679,26 +2679,6 @@
     "accentDark": "#682a15",
     "tertiaryDark": "#923e15"
   },
-  "2024-04-29-listened-to-this-week/tunes-cover-2024-04-29-listened-to-this-week-small.png": {
-    "primary": "#ffe020",
-    "secondary": "#a02020",
-    "accent": "#e0a020",
-    "tertiary": "#a08020",
-    "primaryDark": "#998613",
-    "secondaryDark": "#601313",
-    "accentDark": "#926815",
-    "tertiaryDark": "#685315"
-  },
-  "2024-04-29-listened-to-this-week/tunes-cover-2024-04-29-listened-to-this-week.png": {
-    "primary": "#c0a020",
-    "secondary": "#e0e020",
-    "accent": "#a02020",
-    "tertiary": "#806020",
-    "primaryDark": "#736013",
-    "secondaryDark": "#868613",
-    "accentDark": "#681515",
-    "tertiaryDark": "#533e15"
-  },
   "2024-05-06-listened-to-this-week/tunes-cover-2024-05-06-listened-to-this-week-small.png": {
     "primary": "#006080",
     "secondary": "#00a0a0",
@@ -2718,6 +2698,26 @@
     "secondaryDark": "#006060",
     "accentDark": "#926815",
     "tertiaryDark": "#7d2a15"
+  },
+  "2024-04-29-listened-to-this-week/tunes-cover-2024-04-29-listened-to-this-week-small.png": {
+    "primary": "#ffe020",
+    "secondary": "#a02020",
+    "accent": "#e0a020",
+    "tertiary": "#a08020",
+    "primaryDark": "#998613",
+    "secondaryDark": "#601313",
+    "accentDark": "#926815",
+    "tertiaryDark": "#685315"
+  },
+  "2024-04-29-listened-to-this-week/tunes-cover-2024-04-29-listened-to-this-week.png": {
+    "primary": "#c0a020",
+    "secondary": "#e0e020",
+    "accent": "#a02020",
+    "tertiary": "#806020",
+    "primaryDark": "#736013",
+    "secondaryDark": "#868613",
+    "accentDark": "#681515",
+    "tertiaryDark": "#533e15"
   },
   "2024-05-13-listened-to-this-week/tunes-cover-2024-05-13-listened-to-this-week-small.png": {
     "primary": "#006080",
@@ -3299,26 +3299,6 @@
     "accentDark": "#a69200",
     "tertiaryDark": "#003e68"
   },
-  "2024-12-02-listened-to-this-week/tunes-cover-2024-12-02-listened-to-this-week-small.png": {
-    "primary": "#e04000",
-    "secondary": "#ffe000",
-    "accent": "#804000",
-    "tertiary": "#e08020",
-    "primaryDark": "#862600",
-    "secondaryDark": "#998600",
-    "accentDark": "#532a00",
-    "tertiaryDark": "#925315"
-  },
-  "2024-12-02-listened-to-this-week/tunes-cover-2024-12-02-listened-to-this-week.png": {
-    "primary": "#e06000",
-    "secondary": "#c02000",
-    "accent": "#ffff00",
-    "tertiary": "#804000",
-    "primaryDark": "#863a00",
-    "secondaryDark": "#731300",
-    "accentDark": "#a6a600",
-    "tertiaryDark": "#532a00"
-  },
   "2024-12-09-listened-to-this-week/tunes-cover-2024-12-09-listened-to-this-week-small.png": {
     "primary": "#ffc020",
     "secondary": "#606000",
@@ -3338,6 +3318,26 @@
     "secondaryDark": "#997313",
     "accentDark": "#153e68",
     "tertiaryDark": "#7d6815"
+  },
+  "2024-12-02-listened-to-this-week/tunes-cover-2024-12-02-listened-to-this-week-small.png": {
+    "primary": "#e04000",
+    "secondary": "#ffe000",
+    "accent": "#804000",
+    "tertiary": "#e08020",
+    "primaryDark": "#862600",
+    "secondaryDark": "#998600",
+    "accentDark": "#532a00",
+    "tertiaryDark": "#925315"
+  },
+  "2024-12-02-listened-to-this-week/tunes-cover-2024-12-02-listened-to-this-week.png": {
+    "primary": "#e06000",
+    "secondary": "#c02000",
+    "accent": "#ffff00",
+    "tertiary": "#804000",
+    "primaryDark": "#863a00",
+    "secondaryDark": "#731300",
+    "accentDark": "#a6a600",
+    "tertiaryDark": "#532a00"
   },
   "2024-12-16-listened-to-this-week/tunes-cover-2024-12-16-listened-to-this-week-small.png": {
     "primary": "#006080",
@@ -3499,26 +3499,6 @@
     "accentDark": "#005353",
     "tertiaryDark": "#7d3e15"
   },
-  "2025-02-10-listened-to-this-week/tunes-cover-2025-02-10-listened-to-this-week-small.png": {
-    "primary": "#ffe000",
-    "secondary": "#ff2020",
-    "accent": "#e0c020",
-    "tertiary": "#a0a020",
-    "primaryDark": "#998600",
-    "secondaryDark": "#991313",
-    "accentDark": "#927d15",
-    "tertiaryDark": "#686815"
-  },
-  "2025-02-10-listened-to-this-week/tunes-cover-2025-02-10-listened-to-this-week.png": {
-    "primary": "#ffe000",
-    "secondary": "#e02020",
-    "accent": "#e0c020",
-    "tertiary": "#a08020",
-    "primaryDark": "#998600",
-    "secondaryDark": "#861313",
-    "accentDark": "#927d15",
-    "tertiaryDark": "#685315"
-  },
   "2025-02-17-listened-to-this-week/tunes-cover-2025-02-17-listened-to-this-week-small.png": {
     "primary": "#a06000",
     "secondary": "#804020",
@@ -3538,6 +3518,26 @@
     "secondaryDark": "#4d2613",
     "accentDark": "#925315",
     "tertiaryDark": "#7d3e2a"
+  },
+  "2025-02-10-listened-to-this-week/tunes-cover-2025-02-10-listened-to-this-week-small.png": {
+    "primary": "#ffe000",
+    "secondary": "#ff2020",
+    "accent": "#e0c020",
+    "tertiary": "#a0a020",
+    "primaryDark": "#998600",
+    "secondaryDark": "#991313",
+    "accentDark": "#927d15",
+    "tertiaryDark": "#686815"
+  },
+  "2025-02-10-listened-to-this-week/tunes-cover-2025-02-10-listened-to-this-week.png": {
+    "primary": "#ffe000",
+    "secondary": "#e02020",
+    "accent": "#e0c020",
+    "tertiary": "#a08020",
+    "primaryDark": "#998600",
+    "secondaryDark": "#861313",
+    "accentDark": "#927d15",
+    "tertiaryDark": "#685315"
   },
   "2025-02-24-listened-to-this-week/tunes-cover-2025-02-24-listened-to-this-week-small.png": {
     "primary": "#c08000",
@@ -3859,26 +3859,6 @@
     "accentDark": "#7d5315",
     "tertiaryDark": "#92682a"
   },
-  "2025-06-16-listened-to-this-week/tunes-cover-2025-06-16-listened-to-this-week-small.png": {
-    "primary": "#0080c0",
-    "secondary": "#00c0e0",
-    "accent": "#a04000",
-    "tertiary": "#e08020",
-    "primaryDark": "#004d73",
-    "secondaryDark": "#007386",
-    "accentDark": "#682a00",
-    "tertiaryDark": "#925315"
-  },
-  "2025-06-16-listened-to-this-week/tunes-cover-2025-06-16-listened-to-this-week.png": {
-    "primary": "#0080c0",
-    "secondary": "#00c0e0",
-    "accent": "#a04020",
-    "tertiary": "#e06020",
-    "primaryDark": "#004d73",
-    "secondaryDark": "#007386",
-    "accentDark": "#682a15",
-    "tertiaryDark": "#923e15"
-  },
   "2025-06-23-listened-to-this-week/tunes-cover-2025-06-23-listened-to-this-week-small.png": {
     "primary": "#c02000",
     "secondary": "#c02060",
@@ -3898,6 +3878,26 @@
     "secondaryDark": "#73133a",
     "accentDark": "#682a00",
     "tertiaryDark": "#680015"
+  },
+  "2025-06-16-listened-to-this-week/tunes-cover-2025-06-16-listened-to-this-week-small.png": {
+    "primary": "#0080c0",
+    "secondary": "#00c0e0",
+    "accent": "#a04000",
+    "tertiary": "#e08020",
+    "primaryDark": "#004d73",
+    "secondaryDark": "#007386",
+    "accentDark": "#682a00",
+    "tertiaryDark": "#925315"
+  },
+  "2025-06-16-listened-to-this-week/tunes-cover-2025-06-16-listened-to-this-week.png": {
+    "primary": "#0080c0",
+    "secondary": "#00c0e0",
+    "accent": "#a04020",
+    "tertiary": "#e06020",
+    "primaryDark": "#004d73",
+    "secondaryDark": "#007386",
+    "accentDark": "#682a15",
+    "tertiaryDark": "#923e15"
   },
   "2025-06-30-listened-to-this-week/tunes-cover-2025-06-30-listened-to-this-week-small.png": {
     "primary": "#2040c0",
@@ -3979,35 +3979,45 @@
     "accentDark": "#536868",
     "tertiaryDark": "#3e3e2a"
   },
+  "2025-07-28-listened-to-this-week/tunes-cover-2025-07-28-listened-to-this-week-small.png": {
+    "primary": "#ffe000",
+    "secondary": "#0080c0",
+    "accent": "#006080",
+    "tertiary": "#a0a000",
+    "primaryDark": "#998600",
+    "secondaryDark": "#004d73",
+    "accentDark": "#003e53",
+    "tertiaryDark": "#686800"
+  },
   "2025-07-28-listened-to-this-week/tunes-cover-2025-07-28-listened-to-this-week.png": {
     "primary": "#ffe000",
-    "secondary": "#006040",
-    "accent": "#0080c0",
-    "tertiary": "#ff6020",
+    "secondary": "#a08000",
+    "accent": "#00a0e0",
+    "tertiary": "#0060a0",
     "primaryDark": "#998600",
-    "secondaryDark": "#003a26",
-    "accentDark": "#00537d",
-    "tertiaryDark": "#a63e15"
+    "secondaryDark": "#604d00",
+    "accentDark": "#006892",
+    "tertiaryDark": "#003e68"
+  },
+  "2025-08-04-listened-to-this-week/tunes-cover-2025-08-04-listened-to-this-week-small.png": {
+    "primary": "#206080",
+    "secondary": "#a04020",
+    "accent": "#4080a0",
+    "tertiary": "#a06060",
+    "primaryDark": "#133a4d",
+    "secondaryDark": "#602613",
+    "accentDark": "#2a5368",
+    "tertiaryDark": "#683e3e"
   },
   "2025-08-04-listened-to-this-week/tunes-cover-2025-08-04-listened-to-this-week.png": {
-    "primary": "#a02020",
-    "secondary": "#804040",
-    "accent": "#a08040",
-    "tertiary": "#a0a080",
-    "primaryDark": "#601313",
-    "secondaryDark": "#4d2626",
-    "accentDark": "#68532a",
-    "tertiaryDark": "#686853"
-  },
-  "2025-08-18-listened-to-this-week/tunes-cover-2025-08-18-listened-to-this-week.png": {
-    "primary": "#e02060",
-    "secondary": "#ffc020",
-    "accent": "#a02040",
-    "tertiary": "#e08020",
-    "primaryDark": "#86133a",
-    "secondaryDark": "#997313",
-    "accentDark": "#68152a",
-    "tertiaryDark": "#925315"
+    "primary": "#206080",
+    "secondary": "#a04020",
+    "accent": "#4080a0",
+    "tertiary": "#a06060",
+    "primaryDark": "#133a4d",
+    "secondaryDark": "#602613",
+    "accentDark": "#2a5368",
+    "tertiaryDark": "#683e3e"
   },
   "2025-08-11-listened-to-this-week/tunes-cover-2025-08-11-listened-to-this-week-old.png": {
     "primary": "#a00020",
@@ -4019,145 +4029,305 @@
     "accentDark": "#a67d15",
     "tertiaryDark": "#a63e15"
   },
+  "2025-08-11-listened-to-this-week/tunes-cover-2025-08-11-listened-to-this-week-small.png": {
+    "primary": "#a04020",
+    "secondary": "#e08020",
+    "accent": "#c06040",
+    "tertiary": "#e0c040",
+    "primaryDark": "#602613",
+    "secondaryDark": "#864d13",
+    "accentDark": "#7d3e2a",
+    "tertiaryDark": "#927d2a"
+  },
   "2025-08-11-listened-to-this-week/tunes-cover-2025-08-11-listened-to-this-week.png": {
-    "primary": "#e06020",
-    "secondary": "#ff8000",
-    "accent": "#c04000",
-    "tertiary": "#a02020",
-    "primaryDark": "#863a13",
-    "secondaryDark": "#994d00",
-    "accentDark": "#7d2a00",
-    "tertiaryDark": "#681515"
+    "primary": "#a04020",
+    "secondary": "#c08020",
+    "accent": "#e0a040",
+    "tertiary": "#806040",
+    "primaryDark": "#602613",
+    "secondaryDark": "#734d13",
+    "accentDark": "#92682a",
+    "tertiaryDark": "#533e2a"
+  },
+  "2025-08-25-listened-to-this-week/tunes-cover-2025-08-25-listened-to-this-week-small.png": {
+    "primary": "#ffc000",
+    "secondary": "#e0a020",
+    "accent": "#a08020",
+    "tertiary": "#804000",
+    "primaryDark": "#997300",
+    "secondaryDark": "#866013",
+    "accentDark": "#685315",
+    "tertiaryDark": "#532a00"
   },
   "2025-08-25-listened-to-this-week/tunes-cover-2025-08-25-listened-to-this-week.png": {
-    "primary": "#006080",
-    "secondary": "#00a0a0",
-    "accent": "#20a060",
-    "tertiary": "#008040",
-    "primaryDark": "#003a4d",
-    "secondaryDark": "#006060",
-    "accentDark": "#15683e",
-    "tertiaryDark": "#00532a"
+    "primary": "#ffe000",
+    "secondary": "#e0a000",
+    "accent": "#a08020",
+    "tertiary": "#804020",
+    "primaryDark": "#998600",
+    "secondaryDark": "#866000",
+    "accentDark": "#685315",
+    "tertiaryDark": "#532a15"
+  },
+  "2025-09-01-listened-to-this-week/tunes-cover-2025-09-01-listened-to-this-week-small.png": {
+    "primary": "#ff2000",
+    "secondary": "#a02000",
+    "accent": "#e06000",
+    "tertiary": "#60a000",
+    "primaryDark": "#991300",
+    "secondaryDark": "#601300",
+    "accentDark": "#923e00",
+    "tertiaryDark": "#3e6800"
   },
   "2025-09-01-listened-to-this-week/tunes-cover-2025-09-01-listened-to-this-week.png": {
-    "primary": "#008080",
-    "secondary": "#c02060",
-    "accent": "#20a0a0",
-    "tertiary": "#206060",
-    "primaryDark": "#004d4d",
-    "secondaryDark": "#73133a",
-    "accentDark": "#156868",
-    "tertiaryDark": "#153e3e"
+    "primary": "#ff2000",
+    "secondary": "#c06000",
+    "accent": "#40a000",
+    "tertiary": "#80c000",
+    "primaryDark": "#991300",
+    "secondaryDark": "#733a00",
+    "accentDark": "#2a6800",
+    "tertiaryDark": "#537d00"
+  },
+  "2025-08-18-listened-to-this-week/tunes-cover-2025-08-18-listened-to-this-week-small.png": {
+    "primary": "#e0a000",
+    "secondary": "#a00040",
+    "accent": "#c08020",
+    "tertiary": "#c02060",
+    "primaryDark": "#866000",
+    "secondaryDark": "#600026",
+    "accentDark": "#7d5315",
+    "tertiaryDark": "#7d153e"
+  },
+  "2025-08-18-listened-to-this-week/tunes-cover-2025-08-18-listened-to-this-week.png": {
+    "primary": "#e0a000",
+    "secondary": "#c06000",
+    "accent": "#a00040",
+    "tertiary": "#c02060",
+    "primaryDark": "#866000",
+    "secondaryDark": "#733a00",
+    "accentDark": "#68002a",
+    "tertiaryDark": "#7d153e"
+  },
+  "2025-09-08-listened-to-this-week/tunes-cover-2025-09-08-listened-to-this-week-small.png": {
+    "primary": "#c00020",
+    "secondary": "#ff2040",
+    "accent": "#008080",
+    "tertiary": "#20a0a0",
+    "primaryDark": "#730013",
+    "secondaryDark": "#991326",
+    "accentDark": "#005353",
+    "tertiaryDark": "#156868"
   },
   "2025-09-08-listened-to-this-week/tunes-cover-2025-09-08-listened-to-this-week.png": {
-    "primary": "#606040",
-    "secondary": "#a08060",
-    "accent": "#c0a080",
-    "tertiary": "#e0c0a0",
-    "primaryDark": "#3a3a26",
-    "secondaryDark": "#604d3a",
-    "accentDark": "#7d6853",
-    "tertiaryDark": "#927d68"
+    "primary": "#c00020",
+    "secondary": "#006060",
+    "accent": "#ff2040",
+    "tertiary": "#208080",
+    "primaryDark": "#730013",
+    "secondaryDark": "#003a3a",
+    "accentDark": "#a6152a",
+    "tertiaryDark": "#155353"
+  },
+  "2025-09-15-listened-to-this-week/tunes-cover-2025-09-15-listened-to-this-week-small.png": {
+    "primary": "#006060",
+    "secondary": "#0080a0",
+    "accent": "#a00020",
+    "tertiary": "#e02020",
+    "primaryDark": "#003a3a",
+    "secondaryDark": "#004d60",
+    "accentDark": "#680015",
+    "tertiaryDark": "#921515"
   },
   "2025-09-15-listened-to-this-week/tunes-cover-2025-09-15-listened-to-this-week.png": {
-    "primary": "#e02000",
-    "secondary": "#ff4020",
-    "accent": "#a00020",
-    "tertiary": "#c06020",
-    "primaryDark": "#861300",
-    "secondaryDark": "#992613",
-    "accentDark": "#680015",
-    "tertiaryDark": "#7d3e15"
+    "primary": "#006080",
+    "secondary": "#006020",
+    "accent": "#00a0a0",
+    "tertiary": "#a00000",
+    "primaryDark": "#003a4d",
+    "secondaryDark": "#003a13",
+    "accentDark": "#006868",
+    "tertiaryDark": "#680000"
   },
-  "2025-09-22-listened-to-this-week/tunes-cover-2025-09-22-listened-to-this-week.png": {
-    "primary": "#a02000",
-    "secondary": "#e04020",
-    "accent": "#804020",
-    "tertiary": "#ff2040",
-    "primaryDark": "#601300",
-    "secondaryDark": "#862613",
-    "accentDark": "#532a15",
-    "tertiaryDark": "#a6152a"
+  "2025-09-29-listened-to-this-week/tunes-cover-2025-09-29-listened-to-this-week-small.png": {
+    "primary": "#c02000",
+    "secondary": "#0060a0",
+    "accent": "#e06000",
+    "tertiary": "#ffc000",
+    "primaryDark": "#731300",
+    "secondaryDark": "#003a60",
+    "accentDark": "#923e00",
+    "tertiaryDark": "#a67d00"
   },
   "2025-09-29-listened-to-this-week/tunes-cover-2025-09-29-listened-to-this-week.png": {
-    "primary": "#c02000",
-    "secondary": "#ff8000",
-    "accent": "#808000",
-    "tertiary": "#e06020",
-    "primaryDark": "#731300",
-    "secondaryDark": "#994d00",
-    "accentDark": "#535300",
-    "tertiaryDark": "#923e15"
+    "primary": "#0060a0",
+    "secondary": "#c02000",
+    "accent": "#e06000",
+    "tertiary": "#c0a000",
+    "primaryDark": "#003a60",
+    "secondaryDark": "#731300",
+    "accentDark": "#923e00",
+    "tertiaryDark": "#7d6800"
+  },
+  "2025-09-22-listened-to-this-week/tunes-cover-2025-09-22-listened-to-this-week-small.png": {
+    "primary": "#c00000",
+    "secondary": "#ff0020",
+    "accent": "#a02020",
+    "tertiary": "#e04040",
+    "primaryDark": "#730000",
+    "secondaryDark": "#990013",
+    "accentDark": "#681515",
+    "tertiaryDark": "#922a2a"
+  },
+  "2025-09-22-listened-to-this-week/tunes-cover-2025-09-22-listened-to-this-week.png": {
+    "primary": "#c00000",
+    "secondary": "#ff0020",
+    "accent": "#a02020",
+    "tertiary": "#e04040",
+    "primaryDark": "#730000",
+    "secondaryDark": "#990013",
+    "accentDark": "#681515",
+    "tertiaryDark": "#922a2a"
+  },
+  "2025-10-06-listened-to-this-week/tunes-cover-2025-10-06-listened-to-this-week-small.png": {
+    "primary": "#a06020",
+    "secondary": "#804000",
+    "accent": "#c08040",
+    "tertiary": "#e0c040",
+    "primaryDark": "#603a13",
+    "secondaryDark": "#4d2600",
+    "accentDark": "#7d532a",
+    "tertiaryDark": "#927d2a"
   },
   "2025-10-06-listened-to-this-week/tunes-cover-2025-10-06-listened-to-this-week.png": {
-    "primary": "#ffa000",
-    "secondary": "#0080c0",
-    "accent": "#006080",
-    "tertiary": "#e06000",
-    "primaryDark": "#996000",
-    "secondaryDark": "#004d73",
-    "accentDark": "#003e53",
-    "tertiaryDark": "#923e00"
+    "primary": "#804020",
+    "secondary": "#c08020",
+    "accent": "#e0a040",
+    "tertiary": "#a06040",
+    "primaryDark": "#4d2613",
+    "secondaryDark": "#734d13",
+    "accentDark": "#92682a",
+    "tertiaryDark": "#683e2a"
   },
-  "2025-10-13-listened-to-this-week/tunes-cover-2025-10-13-listened-to-this-week.png": {
-    "primary": "#ff6000",
-    "secondary": "#006080",
-    "accent": "#c02000",
-    "tertiary": "#ffa020",
-    "primaryDark": "#993a00",
-    "secondaryDark": "#003a4d",
-    "accentDark": "#7d1500",
-    "tertiaryDark": "#a66815"
-  },
-  "2025-10-20-listened-to-this-week/tunes-cover-2025-10-20-listened-to-this-week.png": {
-    "primary": "#c00020",
-    "secondary": "#e0c000",
-    "accent": "#e08020",
-    "tertiary": "#a04020",
-    "primaryDark": "#730013",
-    "secondaryDark": "#867300",
-    "accentDark": "#925315",
-    "tertiaryDark": "#682a15"
-  },
-  "2025-10-27-listened-to-this-week/tunes-cover-2025-10-27-listened-to-this-week.png": {
-    "primary": "#a04000",
-    "secondary": "#e08000",
-    "accent": "#ffc000",
-    "tertiary": "#c06020",
-    "primaryDark": "#602600",
-    "secondaryDark": "#864d00",
-    "accentDark": "#a67d00",
-    "tertiaryDark": "#7d3e15"
-  },
-  "2025-11-03-listened-to-this-week/tunes-cover-2025-11-03-listened-to-this-week.png": {
-    "primary": "#0060a0",
-    "secondary": "#a02020",
-    "accent": "#2080c0",
+  "2025-10-13-listened-to-this-week/tunes-cover-2025-10-13-listened-to-this-week-small.png": {
+    "primary": "#a02000",
+    "secondary": "#ff2000",
+    "accent": "#e00060",
     "tertiary": "#e04020",
-    "primaryDark": "#003a60",
-    "secondaryDark": "#601313",
-    "accentDark": "#15537d",
+    "primaryDark": "#601300",
+    "secondaryDark": "#991300",
+    "accentDark": "#92003e",
     "tertiaryDark": "#922a15"
   },
+  "2025-10-13-listened-to-this-week/tunes-cover-2025-10-13-listened-to-this-week.png": {
+    "primary": "#c02000",
+    "secondary": "#e00040",
+    "accent": "#ff2020",
+    "tertiary": "#e06020",
+    "primaryDark": "#731300",
+    "secondaryDark": "#860026",
+    "accentDark": "#a61515",
+    "tertiaryDark": "#923e15"
+  },
+  "2025-10-20-listened-to-this-week/tunes-cover-2025-10-20-listened-to-this-week-small.png": {
+    "primary": "#c02000",
+    "secondary": "#e06000",
+    "accent": "#a08000",
+    "tertiary": "#804000",
+    "primaryDark": "#731300",
+    "secondaryDark": "#863a00",
+    "accentDark": "#685300",
+    "tertiaryDark": "#532a00"
+  },
+  "2025-10-20-listened-to-this-week/tunes-cover-2025-10-20-listened-to-this-week.png": {
+    "primary": "#c00000",
+    "secondary": "#e06000",
+    "accent": "#a04000",
+    "tertiary": "#e02020",
+    "primaryDark": "#730000",
+    "secondaryDark": "#863a00",
+    "accentDark": "#682a00",
+    "tertiaryDark": "#921515"
+  },
+  "2025-10-27-listened-to-this-week/tunes-cover-2025-10-27-listened-to-this-week-small.png": {
+    "primary": "#a02000",
+    "secondary": "#c04020",
+    "accent": "#ffa020",
+    "tertiary": "#e08040",
+    "primaryDark": "#601300",
+    "secondaryDark": "#732613",
+    "accentDark": "#a66815",
+    "tertiaryDark": "#92532a"
+  },
+  "2025-10-27-listened-to-this-week/tunes-cover-2025-10-27-listened-to-this-week.png": {
+    "primary": "#a02000",
+    "secondary": "#e06020",
+    "accent": "#804020",
+    "tertiary": "#e0c020",
+    "primaryDark": "#601300",
+    "secondaryDark": "#863a13",
+    "accentDark": "#532a15",
+    "tertiaryDark": "#927d15"
+  },
+  "2025-11-03-listened-to-this-week/tunes-cover-2025-11-03-listened-to-this-week-small.png": {
+    "primary": "#a00020",
+    "secondary": "#0080c0",
+    "accent": "#e02020",
+    "tertiary": "#2060a0",
+    "primaryDark": "#600013",
+    "secondaryDark": "#004d73",
+    "accentDark": "#921515",
+    "tertiaryDark": "#153e68"
+  },
+  "2025-11-03-listened-to-this-week/tunes-cover-2025-11-03-listened-to-this-week.png": {
+    "primary": "#a00020",
+    "secondary": "#0060a0",
+    "accent": "#e02020",
+    "tertiary": "#2080c0",
+    "primaryDark": "#600013",
+    "secondaryDark": "#003a60",
+    "accentDark": "#921515",
+    "tertiaryDark": "#15537d"
+  },
+  "2025-11-10-listened-to-this-week/tunes-cover-2025-11-10-listened-to-this-week-small.png": {
+    "primary": "#0060a0",
+    "secondary": "#2080c0",
+    "accent": "#a02040",
+    "tertiary": "#a06020",
+    "primaryDark": "#003a60",
+    "secondaryDark": "#134d73",
+    "accentDark": "#68152a",
+    "tertiaryDark": "#683e15"
+  },
   "2025-11-10-listened-to-this-week/tunes-cover-2025-11-10-listened-to-this-week.png": {
-    "primary": "#604020",
-    "secondary": "#806040",
-    "accent": "#a08060",
-    "tertiary": "#c0a080",
-    "primaryDark": "#3a2613",
-    "secondaryDark": "#4d3a26",
-    "accentDark": "#68533e",
-    "tertiaryDark": "#7d6853"
+    "primary": "#0060a0",
+    "secondary": "#a02040",
+    "accent": "#2080c0",
+    "tertiary": "#a06020",
+    "primaryDark": "#003a60",
+    "secondaryDark": "#601326",
+    "accentDark": "#15537d",
+    "tertiaryDark": "#683e15"
+  },
+  "2025-11-17-listened-to-this-week/tunes-cover-2025-11-17-listened-to-this-week-small.png": {
+    "primary": "#c02000",
+    "secondary": "#e0a000",
+    "accent": "#c06020",
+    "tertiary": "#206080",
+    "primaryDark": "#731300",
+    "secondaryDark": "#866000",
+    "accentDark": "#7d3e15",
+    "tertiaryDark": "#153e53"
   },
   "2025-11-17-listened-to-this-week/tunes-cover-2025-11-17-listened-to-this-week.png": {
-    "primary": "#c08000",
-    "secondary": "#a02000",
-    "accent": "#e0a020",
-    "tertiary": "#c04020",
-    "primaryDark": "#734d00",
-    "secondaryDark": "#601300",
-    "accentDark": "#926815",
-    "tertiaryDark": "#7d2a15"
+    "primary": "#c02000",
+    "secondary": "#e08000",
+    "accent": "#ffa020",
+    "tertiary": "#c06020",
+    "primaryDark": "#731300",
+    "secondaryDark": "#864d00",
+    "accentDark": "#a66815",
+    "tertiaryDark": "#7d3e15"
   },
   "2025-11-24-listened-to-this-week/tunes-cover-2025-11-24-listened-to-this-week-old.png": {
     "primary": "#c02000",
@@ -4169,14 +4339,24 @@
     "accentDark": "#536800",
     "tertiaryDark": "#a60000"
   },
+  "2025-11-24-listened-to-this-week/tunes-cover-2025-11-24-listened-to-this-week-small.png": {
+    "primary": "#c00000",
+    "secondary": "#00c0e0",
+    "accent": "#ff2000",
+    "tertiary": "#a0c000",
+    "primaryDark": "#730000",
+    "secondaryDark": "#007386",
+    "accentDark": "#a61500",
+    "tertiaryDark": "#687d00"
+  },
   "2025-11-24-listened-to-this-week/tunes-cover-2025-11-24-listened-to-this-week.png": {
-    "primary": "#e0a000",
-    "secondary": "#ff2000",
-    "accent": "#e00020",
-    "tertiary": "#a08000",
-    "primaryDark": "#866000",
-    "secondaryDark": "#991300",
-    "accentDark": "#920015",
-    "tertiaryDark": "#685300"
+    "primary": "#c00000",
+    "secondary": "#00a0c0",
+    "accent": "#80a000",
+    "tertiary": "#e02020",
+    "primaryDark": "#730000",
+    "secondaryDark": "#006073",
+    "accentDark": "#536800",
+    "tertiaryDark": "#921515"
   }
 }
