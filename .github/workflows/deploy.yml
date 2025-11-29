@@ -22,10 +22,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+
+      - name: 🌸 Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: 📦 Install dependencies
-        run: npm ci || (npm install --package-lock-only && npm ci)
+        run: pnpm install --frozen-lockfile
 
       - name: 🎨 Restore OpenGraph image cache
         uses: actions/cache@v4
@@ -42,7 +46,7 @@ jobs:
       - name: 🏗️ Build site
         run: |
           mkdir -p node_modules/.astro-og-canvas
-          npm run build
+          pnpm run build
         env:
           NODE_ENV: production
 

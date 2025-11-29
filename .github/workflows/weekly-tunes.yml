@@ -17,7 +17,11 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: '20'
-          cache: 'npm'
+
+      - name: 🌸 Setup PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: "💾 Restore research cache"
         uses: actions/cache@v4
@@ -31,7 +35,7 @@ jobs:
         # Cache TTL: 30 days (managed by search-cache.js)
 
       - name: "🦾 Install dependencies"
-        run: npm ci || (npm install --package-lock-only && npm ci)
+        run: pnpm install --frozen-lockfile
 
       - name: "🏃‍♂️ Run the script to generate blog post"
         env:
@@ -43,14 +47,14 @@ jobs:
           EXA_API_KEY: "${{ secrets.EXA_API_KEY }}"
           TAVILY_API_KEY: "${{ secrets.TAVILY_API_KEY }}"
           FAL_KEY: "${{ secrets.FAL_KEY }}"
-        run: npm run tunes
+        run: pnpm run tunes
 
       - name: "🖼️ Optimize images"
         run: |
           WEEK_FOLDER=$(ls -td public/assets/*-listened-to-this-week 2>/dev/null | head -1)
           if [ -n "$WEEK_FOLDER" ]; then
             echo "Optimizing images in $WEEK_FOLDER"
-            npm run optimize "$WEEK_FOLDER"
+            pnpm run optimize "$WEEK_FOLDER"
           else
             echo "No weekly folder found to optimize"
           fi
