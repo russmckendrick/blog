@@ -15,11 +15,11 @@ This post covers what the attack is, how it works, exactly how I got caught, and
 
 ## How I Found Out
 
-On November 27th, I received an email from Omar Hammou, a security researcher who monitors GitHub for exposed secrets:
+On November 27th, I received an email from [Omar Hammou](https://github.com/r4monsys), a security researcher who monitors GitHub for exposed secrets:
 
 > I have identified several leaked credentials associated with your accounts, including OpenAI and Perplexity tokens. I operate a GitHub monitoring system that continuously flags exposed secrets, and although some repositories were deleted, the leaked data is still present in GitHub's historical snapshots.
 
-The credentials had been exfiltrated to a repository at `github.com/dp5iveme/zf0jxl7wqn14g9enav` (since deleted by GitHub). Omar was kind enough to share the full payload that was captured - a JSON dump of my entire shell environment, including every environment variable that was set at the time of the attack.
+The credentials had been exfiltrated to a repository at `github.com/dp5iveme/zf0jxl7wqn14g9enav` (since deleted by GitHub). As Omar explained, even when repositories are deleted, forks and clones preserve the repository state as archived snapshots - meaning the leaked data can persist indefinitely. Omar was kind enough to share the full payload that was captured - a JSON dump of my entire shell environment, including every environment variable that was set at the time of the attack.
 
 ## What is Shai-Hulud 2.0?
 
@@ -116,7 +116,7 @@ After rotating all my compromised credentials (a fun few hours, I must say), I'v
 
 Beyond being faster and more disk-efficient, pnpm has better security defaults. I've updated all my GitHub Actions workflows to use pnpm with the `--frozen-lockfile` flag:
 
-```yaml
+```yaml title="Github Action"
 - name: 🌸 Setup PNPM
   uses: pnpm/action-setup@v4
 
@@ -230,7 +230,7 @@ This attack is a stark reminder of several realities in modern development:
 
 ## Acknowledgments
 
-Thanks to Omar Hammou for the heads-up and for sharing the exfiltrated payload so I could identify the attack vector. Security researchers who responsibly disclose findings like this are invaluable to the community.
+Thanks to [Omar Hammou](https://github.com/r4monsys) for the heads-up and for sharing the exfiltrated payload so I could identify the attack vector. Security researchers who responsibly disclose findings like this are invaluable to the community.
 
 ## Further Reading
 
