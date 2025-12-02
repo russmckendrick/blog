@@ -12,6 +12,7 @@ This is the code for https://www.russ.cloud/
   - [astro-og-canvas](https://github.com/delucis/astro-og-canvas) for OpenGraph image generation
   - [Pagefind](https://pagefind.app/) for search
   - Icons by [Tabler Icons](https://tabler.io/icons)
+  - [lightGallery](https://www.lightgalleryjs.com) for images and galleries
 
 ## Features
 
