@@ -1,0 +1,230 @@
+---
+title: "Azure Soft Delete: Recovering Resources and Preventing Accidental Deletions"
+description: "A practical guide to recovering accidentally deleted Azure resources that support soft delete, covering API Management, Key Vault, Storage Accounts, and more. Plus, how to use delete locks to prevent these situations in the first place."
+date: 2025-12-05T09:37:37.854Z
+cover:
+  image: "../../assets/2025-12-05-azure-soft-delete-recovering-resources-and-preventing-accidental-deletions/blog-cover-2025-12-05-azure-soft-delete-recovering-resources-and-preventing-accidental-deletions.png"
+draft: false
+showToc: true
+tags:
+  - "azure"
+  - "cloud"
+---
+
+Earlier this week, I had one of those moments that makes your stomach drop – an Azure API Management instance had been deleted. These things happen; someone clicks the wrong button, a Terraform state gets out of sync, or an automated cleanup script gets a bit too enthusiastic. Whatever the cause, the result is the same: a critical resource is gone, and you need it back.
+
+Fortunately, some Azure services, including API Management, support soft delete. Many Azure services retain deleted resources for a period before permanently removing them, giving you a window to recover from these situations. This post covers my experience recovering the APIM instance and provides a broader look at which Azure services support soft delete and how to use it.
+
+## Recovering a Deleted Azure API Management Instance
+
+When an Azure API Management instance is deleted (via the Azure Portal or REST API version 2020-06-01-preview or later), it enters a soft-deleted state for 48 hours before being permanently purged. This gives you a window to recover it.
+
+### Finding the Deleted Service
+
+First, let's confirm the service is in a soft-deleted state and get the details we need. Using the Azure CLI:
+
+```text frame="terminal" title="Check the soft-deleted APIM service"
+az apim deletedservice show \
+  --location uksouth \
+  --service-name apim-that-was-deleted-uks
+```
+
+This returns something like:
+
+```json frame="code" title="Soft-deleted service details (JSON)" showLineNumbers
+{
+  "deletionDate": "2025-12-01T15:04:29.570042+00:00",
+  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.ApiManagement/locations/uksouth/deletedservices/apim-that-was-deleted-uks",
+  "location": "UK South",
+  "name": "apim-that-was-deleted-uks",
+  "scheduledPurgeDate": "2025-12-03T15:02:32.189403+00:00",
+  "serviceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg-apim-production-uks/providers/Microsoft.ApiManagement/service/apim-that-was-deleted-uks",
+  "type": "Microsoft.ApiManagement/deletedservices"
+}
+```
+
+The key things to note here are the `scheduledPurgeDate` (you have until then to recover) and the `serviceId` which tells us the original resource group. In my case, the resource group had also been deleted, so I needed to recreate that first.
+
+### Restoring the Service
+
+To restore the APIM instance, you need to use the Azure REST API directly – there's no native Azure CLI command for this yet. Set up your variables:
+
+```text frame="terminal" title="Set restoration variables"
+apimName="apim-that-was-deleted-uks"
+subscriptionId=$(az account show --query id --output tsv)
+location="uksouth"
+resourceGroupName="rg-apim-production-uks"
+```
+
+If your resource group was also deleted, recreate it first:
+
+```text frame="terminal" title="Recreate the resource group (if needed)"
+az group create \
+  --name $resourceGroupName \
+  --location $location
+```
+
+Now restore the APIM service using the REST API:
+
+```text frame="terminal" title="Restore the APIM service"
+az rest \
+  --method PUT \
+  --header "Accept=application/json" \
+  --uri "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.ApiManagement/service/${apimName}?api-version=2021-08-01" \
+  --body "{\"location\":\"${location}\",\"properties\": {\"restore\" : true} }"
+```
+
+The restoration process will take several minutes. You'll see the `provisioningState` change from `Deleted` to `Activating` and eventually to `Succeeded`. Once complete, your APIM instance is back, complete with all its APIs, policies, and configurations.
+
+<LinkPreview id="https://learn.microsoft.com/en-us/azure/api-management/soft-delete" />
+
+## Other Azure Services with Soft Delete
+
+My APIM adventure got me thinking about what other Azure services support soft delete. Turns out, quite a few do – and it's worth knowing about them before you need them.
+
+### Azure Key Vault
+
+Key Vault is probably the most well-known example. Soft delete is enabled by default and cannot be disabled. When you delete a secret, key, or certificate, it's retained for a configurable period (minimum 7 days, up to 90 days) before permanent deletion.
+
+```text frame="terminal" title="List soft-deleted secrets"
+az keyvault secret list-deleted --vault-name my-keyvault
+```
+
+```text frame="terminal" title="Recover a deleted secret"
+az keyvault secret recover --vault-name my-keyvault --name my-secret
+```
+
+You can also enable purge protection to prevent even administrators from permanently deleting items before the retention period expires – useful in production environments where you really can't afford to lose things.
+
+### Azure Storage
+
+Azure Blob Storage supports soft delete for both blobs and containers, with configurable retention periods from 1 to 365 days.
+
+```text frame="terminal" title="Enable blob soft delete"
+az storage account blob-service-properties update \
+  --account-name mystorageaccount \
+  --enable-delete-retention true \
+  --delete-retention-days 30
+```
+
+Azure File Shares also support soft delete, allowing you to recover entire file shares and their contents:
+
+```text frame="terminal" title="List deleted file shares"
+az storage share-rm list \
+  --storage-account mystorageaccount \
+  --include-deleted
+```
+
+### Azure SQL Database
+
+Deleted Azure SQL databases can be restored within the backup retention period (up to 35 days depending on your tier). Deleted SQL servers themselves can also be recovered if the backup is still available.
+
+```text frame="terminal" title="List deleted databases"
+az sql db list-deleted \
+  --resource-group myresourcegroup \
+  --server myserver
+```
+
+### Azure Backup
+
+Azure Backup enforces soft delete by default as part of its "secure by default" posture. When you stop backup and delete data, the recovery points are retained for 14 days (configurable up to 180 days). This applies to VM backups, SQL Server in Azure VM backups, and SAP HANA backups.
+
+### Azure Container Registry
+
+Currently in preview, ACR supports soft delete for accidentally deleted container images and tags with retention periods from 1 to 90 days.
+
+### Azure Log Analytics Workspace
+
+Deleted workspaces are retained in a soft-deleted state for 14 days, during which they can be recovered with all their data intact.
+
+### Microsoft Entra ID (Azure AD)
+
+The Recycle Bin feature retains deleted users, groups, and other directory objects for 30 days before permanent deletion.
+
+### Quick Reference Table
+
+| Service | Default Retention | Configurable | Recovery Method |
+|---------|------------------|--------------|-----------------|
+| API Management | 48 hours | No | REST API |
+| Key Vault | 7-90 days | Yes | CLI/Portal |
+| Blob Storage | 1-365 days | Yes | CLI/Portal |
+| File Shares | 1-365 days | Yes | CLI/Portal |
+| SQL Database | Up to 35 days | Service tier | CLI/Portal |
+| Azure Backup | 14-180 days | Yes | Portal |
+| Container Registry | 1-90 days | Yes | CLI/Portal |
+| Log Analytics | 14 days | No | CLI |
+| Entra ID | 30 days | No | Portal |
+
+## Prevention is Better Than Cure: Delete Locks
+
+While soft delete is a great safety net, it's better to prevent accidental deletions in the first place. Azure Resource Locks allow you to protect resources from accidental modification or deletion.
+
+There are two types of locks:
+
+- **CanNotDelete**: Resources can be read and modified, but not deleted
+- **ReadOnly**: Resources can only be read, not modified or deleted
+
+### Applying a Delete Lock
+
+To protect a critical resource from deletion:
+
+```text frame="terminal" title="Apply a delete lock to a resource"
+az lock create \
+  --name "PreventDeletion" \
+  --lock-type CanNotDelete \
+  --resource-group rg-production-uks \
+  --resource-name apim-production-uks \
+  --resource-type Microsoft.ApiManagement/service
+```
+
+Or protect an entire resource group:
+
+```text frame="terminal" title="Apply a delete lock to a resource group"
+az lock create \
+  --name "PreventDeletion" \
+  --lock-type CanNotDelete \
+  --resource-group rg-production-uks
+```
+
+<WarningCallout title="Important">
+Locks are inherited by child resources, so a lock on a resource group applies to all resources within it. Also, remember that locks don't prevent all operations – for example, a `CanNotDelete` lock on a storage account won't prevent someone from deleting blobs within it.
+</WarningCallout>
+
+### Managing Locks with Infrastructure as Code
+
+If you're using Terraform, you can apply locks as part of your deployment:
+
+```hcl frame="code" title="Terraform resource lock (HCL)" showLineNumbers
+resource "azurerm_management_lock" "apim_lock" {
+  name       = "PreventDeletion"
+  scope      = azurerm_api_management.main.id
+  lock_level = "CanNotDelete"
+  notes      = "Protected production resource"
+}
+```
+
+For ARM templates or Bicep:
+
+```bicep frame="code" title="Bicep resource lock" showLineNumbers
+resource apimLock 'Microsoft.Authorization/locks@2020-05-01' = {
+  name: 'PreventDeletion'
+  scope: apimService
+  properties: {
+    level: 'CanNotDelete'
+    notes: 'Protected production resource'
+  }
+}
+```
+
+<LinkPreview id="https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources" />
+
+## Summary
+
+Getting that sinking feeling when a critical resource disappears is never pleasant, but knowing that Azure has soft delete capabilities across many services can turn a potential disaster into a minor inconvenience. The key takeaways:
+
+1. **Know your retention periods**: Different services have different soft delete windows. API Management gives you 48 hours, while Key Vault can give you up to 90 days.
+2. **Test recovery procedures before you need them**: It's much less stressful to learn the recovery process in a dev environment than during an incident.
+3. **Use delete locks on production resources**: A few minutes setting up locks can save hours of recovery work and stress.
+4. **Document your critical resources**: Keep a list of resources that would cause significant impact if deleted, along with their soft delete capabilities and recovery procedures.
+
+The next time someone accidentally deletes something important, you'll know exactly where to look and what to do. And if you put those delete locks in place, hopefully you won't need to deal with it at all.
