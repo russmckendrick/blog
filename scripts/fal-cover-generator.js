@@ -125,6 +125,43 @@ function askQuestion(rl, query) {
 }
 
 /**
+ * Create a spinner for long-running operations
+ */
+function createSpinner(message) {
+  const frames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
+  let i = 0
+  let interval = null
+
+  return {
+    start() {
+      process.stdout.write(`\n${frames[0]} ${message}`)
+      interval = setInterval(() => {
+        i = (i + 1) % frames.length
+        process.stdout.write(`\r${frames[i]} ${message}`)
+      }, 80)
+    },
+    update(newMessage) {
+      message = newMessage
+      process.stdout.write(`\r${frames[i]} ${message}`)
+    },
+    stop(finalMessage) {
+      if (interval) {
+        clearInterval(interval)
+        interval = null
+      }
+      process.stdout.write(`\r✓ ${finalMessage || message}\n`)
+    },
+    fail(errorMessage) {
+      if (interval) {
+        clearInterval(interval)
+        interval = null
+      }
+      process.stdout.write(`\r✗ ${errorMessage || message}\n`)
+    }
+  }
+}
+
+/**
  * Refine a prompt based on user feedback using GPT-4
  */
 async function refinePrompt(originalPrompt, userFeedback, debug = false) {
@@ -312,21 +349,32 @@ async function generateCoverImage(options) {
     console.log(`  API payload:`, JSON.stringify(apiInput, null, 2))
   }
 
+  const spinner = createSpinner('Generating image with FAL.ai...')
+
   try {
+    spinner.start()
 
     const result = await fal.subscribe(modelName, {
       input: apiInput,
       logs: debug,
       onQueueUpdate: (update) => {
-        if (debug && update.status === 'IN_PROGRESS') {
-          update.logs?.map(log => log.message).forEach(msg => console.log(`  [FAL] ${msg}`))
+        if (update.status === 'IN_QUEUE') {
+          spinner.update(`Queued - waiting for FAL.ai...`)
+        } else if (update.status === 'IN_PROGRESS') {
+          spinner.update(`Generating image...`)
+          if (debug) {
+            update.logs?.map(log => log.message).forEach(msg => console.log(`\n  [FAL] ${msg}`))
+          }
         }
       }
     })
 
     if (!result.data || !result.data.images || result.data.images.length === 0) {
+      spinner.fail('FAL.ai returned no images')
       throw new Error('FAL.ai returned no images')
     }
+
+    spinner.stop('Image generated')
 
     const imageUrl = result.data.images[0].url
 
@@ -335,13 +383,18 @@ async function generateCoverImage(options) {
     }
 
     // Download the image
+    const downloadSpinner = createSpinner('Downloading image...')
+    downloadSpinner.start()
+
     const response = await fetch(imageUrl)
     if (!response.ok) {
+      downloadSpinner.fail('Failed to download image')
       throw new Error(`Failed to download image: ${response.statusText}`)
     }
 
     const arrayBuffer = await response.arrayBuffer()
     const buffer = Buffer.from(arrayBuffer)
+    downloadSpinner.stop('Image downloaded')
 
     // Get original image dimensions
     const originalMetadata = await sharp(buffer).metadata()
@@ -352,13 +405,16 @@ async function generateCoverImage(options) {
     const outputDir = path.dirname(outputPath)
     await fs.mkdir(outputDir, { recursive: true })
 
+    const saveSpinner = createSpinner('Saving images...')
+    saveSpinner.start()
+
     // Save the original full-resolution image
     await sharp(buffer)
       .png({ compressionLevel: 6, quality: 100 })
       .toFile(outputPath)
 
     if (debug) {
-      console.log(`  ✓ Saved original resolution: ${originalWidth}×${originalHeight} → ${outputPath}`)
+      console.log(`\n  ✓ Saved original resolution: ${originalWidth}×${originalHeight} → ${outputPath}`)
     }
 
     // Save resized version with -small suffix (matching tunes post format)
@@ -366,14 +422,17 @@ async function generateCoverImage(options) {
     const baseName = path.basename(outputPath, ext)
     const smallOutputPath = path.join(outputDir, `${baseName}-small${ext}`)
 
+    saveSpinner.update('Resizing and saving small version...')
+
     await sharp(buffer)
       .resize(width, height, { fit: 'cover' })
       .png({ compressionLevel: 6, quality: 100 })
       .toFile(smallOutputPath)
 
-    console.log(`  ✓ Created AI-generated cover image`)
-    console.log(`    Original: ${originalWidth}×${originalHeight} → ${outputPath}`)
-    console.log(`    Small:    ${width}×${height} → ${smallOutputPath}`)
+    saveSpinner.stop('Images saved')
+
+    console.log(`    Original: ${originalWidth}×${originalHeight} → ${path.basename(outputPath)}`)
+    console.log(`    Small:    ${width}×${height} → ${path.basename(smallOutputPath)}`)
 
     return {
       outputPath,
