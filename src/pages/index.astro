@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
-import { getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/blog/PostCard.astro';
 import Pagination from '../components/layout/Pagination.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, CF_IMAGE_PRESETS } from '../consts';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../utils/hero-colors';
+import { getCFImageUrl } from '../utils/cloudflare-images';
 const postsPerPage = 5;
 
 const allPosts = (await getCollection('blog'))
@@ -16,18 +16,15 @@ const posts = allPosts.slice(0, postsPerPage);
 const totalPages = Math.ceil(allPosts.length / postsPerPage);
 
 // Get first post hero image for LCP preload optimization
-// Generate optimized AVIF at desktop size for fastest LCP
+// Use Cloudflare image transformation to match what PostCard uses
 const firstPost = posts[0];
 const firstPostHeroImage = firstPost?.data.heroImage || firstPost?.data.cover?.image;
-let optimizedHeroImage;
-if (firstPostHeroImage) {
-	optimizedHeroImage = await getImage({
-		src: firstPostHeroImage,
-		width: 728,
-		format: 'avif',
-		quality: 50
-	});
-}
+const preloadImageUrl = firstPostHeroImage ? getCFImageUrl(firstPostHeroImage, {
+	width: CF_IMAGE_PRESETS.thumbnailPriority.widths[CF_IMAGE_PRESETS.thumbnailPriority.widths.length - 1],
+	quality: CF_IMAGE_PRESETS.thumbnailPriority.quality,
+	format: CF_IMAGE_PRESETS.thumbnailPriority.format,
+	fit: CF_IMAGE_PRESETS.thumbnailPriority.fit
+}) : null;
 
 // Get gradient colors from first post's hero image
 const heroColors = getHeroColors(firstPostHeroImage);
@@ -35,12 +32,12 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	{optimizedHeroImage && (
+	{preloadImageUrl && (
 		<link
 			slot="head"
 			rel="preload"
 			as="image"
-			href={optimizedHeroImage.src}
+			href={preloadImageUrl}
 			type="image/avif"
 			fetchpriority="high"
 		/>
