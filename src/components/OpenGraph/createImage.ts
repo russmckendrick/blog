@@ -28,9 +28,9 @@ export async function SVG(component: JSX.Element) {
 export async function PNG(component: JSX.Element) {
   return await sharp(Buffer.from(await SVG(component)))
     .png({
-      compressionLevel: 9, // Maximum compression
-      quality: 80,          // Good quality with smaller file size
-      effort: 10            // Maximum effort for best compression
+      compressionLevel: 8, // Slightly reduced from 9
+      quality: 80,         // Good balance
+      effort: 3            // Lower effort = much faster generation (1-10 range)
     })
     .toBuffer();
 }

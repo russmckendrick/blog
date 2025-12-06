@@ -66,7 +66,14 @@ export default defineConfig({
 				(file) => file.includes('/pagefind/'),
 				(file) => file.endsWith('.wasm'),
 				(file) => file.endsWith('.pf_fragment'),
-				(file) => file.endsWith('.DS_Store')
+				(file) => file.endsWith('.DS_Store'),
+				// Exclude images as we use Cloudflare
+				(file) => file.endsWith('.jpg'),
+				(file) => file.endsWith('.jpeg'),
+				(file) => file.endsWith('.png'),
+				(file) => file.endsWith('.webp'),
+				(file) => file.endsWith('.avif'),
+				(file) => file.endsWith('.svg')
 			]
 		})
 	],

@@ -32,13 +32,14 @@ jobs:
       - name: 🔒 Security audit
         run: pnpm audit
 
-      - name: 🎨 Restore OpenGraph image cache
+      - name: 💾 Build Cache
         uses: actions/cache@v4
         with:
-          path: node_modules/.astro-og-canvas
-          key: og-canvas-${{ hashFiles('src/content/**/*.md', 'src/content/**/*.mdx') }}
+          path: node_modules/.cache
+          key: build-cache-${{ runner.os }}-${{ hashFiles('src/assets/**/*', 'src/content/**/*') }}
           restore-keys: |
-            og-canvas-
+            build-cache-${{ runner.os }}-
+
 
       # Note: Main Astro image processing cache removed - no longer needed!
       # Blog post images now use Cloudflare Image Transformations (on-demand CDN processing).

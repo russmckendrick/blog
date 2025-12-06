@@ -79,12 +79,48 @@ export async function getStaticPaths() {
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
+import crypto from 'node:crypto';
+
+// Ensure cache directory exists
+const CACHE_DIR = path.join(process.cwd(), 'node_modules/.cache/og-images');
+if (!fs.existsSync(CACHE_DIR)) {
+  fs.mkdirSync(CACHE_DIR, { recursive: true });
+}
+
 export const GET: APIRoute = async function get({ props }) {
   const { title, description, coverImagePath } = props as Props;
-  const png = await PNG(OG(title, description, coverImagePath));
-  return new Response(png, {
+
+  // Generate a hash based on the content
+  const hash = crypto.createHash('md5');
+  hash.update(JSON.stringify({ title, description }));
+
+  // Add cover image content hash if it exists
+  if (coverImagePath && fs.existsSync(coverImagePath)) {
+    const fileBuffer = fs.readFileSync(coverImagePath);
+    hash.update(fileBuffer);
+  } else if (coverImagePath) {
+    // If path exists but file doesn't (weird case), just hash the path
+    hash.update(coverImagePath);
+  }
+
+  const digest = hash.digest('hex');
+  const cacheFile = path.join(CACHE_DIR, `${digest}.png`);
+
+  let pngBuffer: Buffer;
+
+  if (fs.existsSync(cacheFile)) {
+    console.log(`OG - Serving cached image for: ${title}`);
+    pngBuffer = fs.readFileSync(cacheFile);
+  } else {
+    console.log(`OG - Generating new image for: ${title}`);
+    pngBuffer = await PNG(OG(title, description, coverImagePath));
+    fs.writeFileSync(cacheFile, pngBuffer);
+  }
+
+  return new Response(pngBuffer, {
     headers: {
       "Content-Type": "image/png",
+      "Cache-Control": "public, max-age=31536000, immutable"
     },
   });
 };
