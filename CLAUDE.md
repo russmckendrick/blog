@@ -40,7 +40,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Image Optimization
 - `pnpm run optimize` - Optimize all images in `src/assets/` and `public/assets/` in place
   - Compresses JPG, PNG, WebP, and AVIF formats
-  - Uses quality 85 with progressive JPEGs
+  - Compresses JPG, PNG, WebP, and AVIF formats
+  - Uses quality 60 (default) with progressive JPEGs
   - Only replaces originals if optimization saves space
   - Shows progress and savings for each image
   - Displays total space saved summary
@@ -115,7 +116,7 @@ The site uses **Cloudflare Image Transformations** for on-demand image optimizat
 **Implementation**:
 - Helper utility: `src/utils/cloudflare-images.ts`
 - URL pattern: `/cdn-cgi/image/width=800,quality=85,format=auto/assets/image.jpg`
-- Quality presets: `CF_IMAGE_PRESETS` (hero, thumbnail, gallery, avatar)
+- Quality presets: `CF_IMAGE_PRESETS` (hero, thumbnail, thumbnailPriority, gallery, avatar)
 - **No adapter needed**: Works with fully static sites
 
 **Benefits**:
@@ -728,7 +729,16 @@ Additional repository guidelines are documented in `AGENTS.md`, including:
 - Testing approach (manual verification + `npx astro check`)
 - Priority Card (First Post) Optimization:
   - src width: 640px → 480px (matches regular cards)
-  - sizes attribute: Changed from 640px at desktop to 400px at desktop
-  - srcset widths: Removed 640w, now uses [320w, 400w, 480w] (same as regular cards)
+  - src width: 640px → 480px (matches regular cards)
+  - sizes attribute: Changed to `(min-width: 768px) 720px, calc(100vw - 40px)` for precise card sizing
+  - srcset widths: Granular steps (320, 360, ... 1600)
+  - Quality: Aggressively tuned for AVIF (Thumbnail Priority: 45, Thumbnail: 35)
+  - Preloading: Switched to responsive `imagesrcset` preloading in `index.astro`
 - Add details about the sizing
 - Use pnpm rather than npm
+
+### Security Best Practices
+- **HTML Sanitization**: NEVER use regex to strip HTML tags from untrusted input (leads to "Incomplete multi-character sanitization" vulnerabilities).
+  - **Use**: `import sanitizeHtml from 'sanitize-html'`
+  - **Example**: `sanitizeHtml(content, { allowedTags: [], allowedAttributes: {}, disallowedTagsMode: 'discard' })`
+  - **Context**: Fixed critical alert in `regenerate-cover.js` by replacing regex `<[^>]+>` with `sanitize-html`.

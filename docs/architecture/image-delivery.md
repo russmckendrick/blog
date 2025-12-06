@@ -174,12 +174,20 @@ export const CF_IMAGE_PRESETS = {
     widths: [640, 1024, 1536, 2048]
   },
 
-  // Post card thumbnails
+  // PostCard thumbnails
   thumbnail: {
-    quality: 80,
-    format: 'auto' as const,
+    quality: 35,
+    format: 'avif' as const,
     fit: 'cover' as const,
-    widths: [320, 400, 640, 728]
+    widths: [320, 360, 480, 540, 600, 640, 720, 800, 960, 1080, 1200, 1600]
+  },
+
+  // PostCard thumbnails (priority/LCP)
+  thumbnailPriority: {
+    quality: 45,
+    format: 'avif' as const,
+    fit: 'cover' as const,
+    widths: [320, 360, 480, 540, 600, 640, 720, 800, 960, 1080, 1200, 1600]
   },
 
   // Gallery/lightbox images (high quality)
@@ -215,7 +223,7 @@ const heroSrcSet = generateCFSrcSet(heroImage, preset.widths, preset.quality);
 <img
   src={getCFImageUrl(heroImage, { width: 728, quality: preset.quality })}
   srcset={heroSrcSet}
-  sizes="(min-width: 768px) 400px, 320px"
+  sizes="(min-width: 768px) 720px, calc(100vw - 40px)"
   alt={alt}
   loading={priority ? "eager" : "lazy"}
   fetchpriority={priority ? "high" : "low"}

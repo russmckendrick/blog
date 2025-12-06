@@ -5,6 +5,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import { spawn } from 'child_process'
+import sanitizeHtml from 'sanitize-html'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -76,7 +77,15 @@ function extractContentSummary(content, maxLength = 500) {
   // Remove MDX components and imports
   let text = content
     .replace(/import\s+.*?from\s+['"].*?['"]/g, '')
-    .replace(/<[^>]+>/g, '')
+
+  // Use sanitize-html to securely remove all HTML tags (fixes CodeQL alert)
+  text = sanitizeHtml(text, {
+    allowedTags: [],
+    allowedAttributes: {},
+    disallowedTagsMode: 'discard'
+  })
+
+  text = text
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Convert links to text
     .replace(/```[\s\S]*?```/g, '') // Remove code blocks
     .replace(/`[^`]+`/g, '') // Remove inline code
