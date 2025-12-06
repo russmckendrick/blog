@@ -730,9 +730,9 @@ Additional repository guidelines are documented in `AGENTS.md`, including:
 - Priority Card (First Post) Optimization:
   - src width: 640px → 480px (matches regular cards)
   - src width: 640px → 480px (matches regular cards)
-  - sizes attribute: Changed to `(min-width: 768px) 720px, calc(100vw - 40px)` for precise card sizing
+  - sizes attribute: Changed to `(min-width: 768px) 720px, calc(100vw - 60px)` (conservative)
   - srcset widths: Granular steps (320, 360, ... 1600)
-  - Quality: Aggressively tuned for AVIF (Thumbnail Priority: 45, Thumbnail: 35)
+  - Quality: Aggressively tuned for AVIF (Thumbnail Priority: 35, Thumbnail: 20)
   - Preloading: Switched to responsive `imagesrcset` preloading in `index.astro`
 - Add details about the sizing
 - Use pnpm rather than npm
