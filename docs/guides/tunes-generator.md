@@ -465,6 +465,203 @@ jobs:
           commit_message: "🎵 Add weekly tunes post"
 ```
 
+## Year Wrapped Generator
+
+Generate comprehensive year-end "Wrapped" posts inspired by [Spotify Wrapped](https://newsroom.spotify.com/2025-12-03/how-your-wrapped-is-made/), using Last.fm data and AI content generation.
+
+### Quick Start
+
+```bash
+# Generate wrapped for current year
+pnpm run wrapped
+
+# Generate for specific year
+pnpm run wrapped -- --year=2025
+
+# Quick preview (skip AI research)
+pnpm run wrapped -- --year=2025 --skip-research
+
+# Debug mode (1 featured album only)
+pnpm run wrapped -- --year=2025 --debug
+
+# Use cached Last.fm data (faster for re-runs)
+pnpm run wrapped -- --year=2025 --use-cache
+```
+
+### Features (Inspired by Spotify Wrapped)
+
+**Statistics Dashboard:**
+- Total scrobbles, hours listened, unique artists/albums
+- Days of music, average plays per day
+- Peak listening month
+
+**Year-End Awards:**
+- Artist of the Year with play counts and dominant months
+- Album of the Year with detailed statistics
+- Top 25 Artists and Top 50 Albums with russ.fm links
+
+**Insights:**
+- **Monthly Breakdown**: Visual activity chart showing listening patterns per month
+- **Listening Age**: Which decade resonates most (based on album release years from collection)
+- **Genre Breakdown**: Top 10 genres from collection metadata with percentages
+- **Hidden Gems**: Albums that "overperformed" - high play counts relative to their ranking
+- **New Discoveries**: Albums released in the target year that made it into rotation
+
+**Featured Albums (Deep Dives):**
+- Top 15 albums get AI-researched detailed sections
+- Same content generation pipeline as weekly posts
+- LightGallery integration for album/artist artwork
+- Links to russ.fm collection
+
+### Output Structure
+
+```
+src/content/tunes/
+  2025-year-in-music.mdx          # Main MDX post
+
+public/assets/2025-year-in-music/
+  albums/                          # Album artwork
+  artists/                         # Artist photos
+
+src/assets/2025-year-in-music/
+  wrapped-cover-2025.png          # Strip collage cover
+```
+
+### How It Works
+
+1. **Aggregate Weekly Charts**: Fetches all 48-52 weekly charts for the calendar year
+   - More accurate than Last.fm's `12month` rolling period
+   - Provides exact January 1 - December 31 data
+   - Builds monthly breakdown for listening patterns
+
+2. **Calculate Statistics**:
+   - Total scrobbles, unique artists/albums
+   - Estimated listening hours (3.5 min avg per track)
+   - Monthly breakdown with peak/quiet months
+   - Quarterly analysis
+
+3. **Generate Insights**: Spotify Wrapped-style calculations
+   - Artist/Album of the Year with dominant months
+   - Listening Age from collection release years
+   - Hidden Gems using overperformance scoring
+   - Genre breakdown from collection metadata
+
+4. **Download Artwork**: Fetches from russ.fm collection
+   - Top 20 artist images
+   - Top 15 album covers (for featured sections)
+
+5. **AI Research**: Uses existing ContentGenerator
+   - Same two-phase classification + research pipeline
+   - Search caching for efficiency
+   - Fallback sections if research fails
+
+6. **Render MDX**: Comprehensive year-end post
+   - Stats dashboard with Tailwind styling
+   - Monthly activity table with visual bars
+   - Top 25/50 lists with russ.fm links
+   - Featured album sections with galleries
+
+### Architecture
+
+**New Components:**
+
+- `scripts/generate-year-wrapped.js` - Main orchestrator
+- `scripts/lib/lastfm-year-client.js` - Extended Last.fm client
+  - `getTopArtists(period, limit)` / `getTopAlbums(period, limit)` - Period-based queries
+  - `getUserInfo()` - Total scrobbles, registration date
+  - `getWeeklyChartList()` - Available chart ranges
+  - `getYearlyArtistData(year)` / `getYearlyAlbumData(year)` - Aggregates weekly charts
+  - `getYearWrappedData(year)` - Comprehensive year-end data
+- `scripts/lib/year-stats-calculator.js` - Insights calculator
+  - `getBasicStats()` - Total scrobbles, hours, averages
+  - `getArtistOfTheYear()` / `getAlbumOfTheYear()` - Top items with analysis
+  - `getListeningPatterns()` - Monthly/quarterly breakdown
+  - `getListeningAge()` - Decade analysis from release years
+  - `getHiddenGems()` - Overperforming albums
+  - `getGenreBreakdown()` - Genre statistics
+  - `getNewDiscoveries()` - Albums released in target year
+- `scripts/year-wrapped-template.mdx` - MDX template
+
+**Reused Components:**
+- `ContentGenerator` - AI album research
+- `ImageHandler` - Image downloads
+- `CollectionManager` - russ.fm metadata
+- `createStripCollage()` - Cover image generation
+
+### Data Caching
+
+The script caches Last.fm data to avoid re-fetching 48+ weekly charts:
+
+```bash
+# Cache file location
+scripts/.year-wrapped-cache-2025.json
+
+# Use cached data (much faster)
+pnpm run wrapped -- --year=2025 --use-cache
+
+# Force fresh fetch (delete cache)
+rm scripts/.year-wrapped-cache-2025.json
+pnpm run wrapped -- --year=2025
+```
+
+### Configuration
+
+The year wrapped generator uses the same environment variables as the weekly generator:
+
+```bash
+# Required
+LASTFM_USER=your-username
+LASTFM_API_KEY=your-api-key
+COLLECTION_URL=https://www.russ.fm
+
+# AI Provider (choose one)
+OPENAI_API_KEY=your-key
+# OR
+ANTHROPIC_API_KEY=your-key
+
+# Optional: Web search for album research
+PERPLEXITY_API_KEY=your-key
+# OR
+EXA_API_KEY=your-key
+# OR
+TAVILY_API_KEY=your-key
+```
+
+### Customization
+
+**Adjust counts** in `scripts/generate-year-wrapped.js`:
+
+```javascript
+const CONFIG = {
+  featuredAlbums: 15,        // Albums to get AI deep dives
+  topArtistsToShow: 25,      // Top artists in list
+  topAlbumsToShow: 50,       // Top albums in list
+  hiddenGemsToShow: 5,       // Hidden gems to highlight
+  newDiscoveriesToShow: 10   // New releases to show
+}
+```
+
+**Modify template** in `scripts/year-wrapped-template.mdx`:
+- Adjust stats dashboard layout
+- Change section ordering
+- Add/remove sections
+- Customize styling
+
+### Troubleshooting
+
+**Script takes too long:**
+- Use `--use-cache` to reuse Last.fm data
+- Use `--skip-research` to skip AI content generation
+- Use `--debug` to process only 1 featured album
+
+**Missing monthly data:**
+- Last.fm API may not have complete data for current year
+- December data may be incomplete if run before month ends
+
+**No collection metadata:**
+- Some albums may not be in russ.fm collection
+- Genre/release year data only available for collection items
+
 ## Migration from Python
 
 This is a JavaScript port of the original Python/CrewAI implementation. Key changes:

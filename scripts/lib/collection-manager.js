@@ -84,8 +84,14 @@ export class CollectionManager {
           const artistKey = this.normalizeText(artistName)
           const artistUri = `${this.baseUrl}${artistUriPath}`
 
-          const artistSlug = artistUriPath.trim().split('/').filter(Boolean).pop()
-          const artistImageUrl = `${imageBaseUrl}/artist/${artistSlug}/${artistSlug}-hi-res.jpg`
+          // Use the artist image from the data if available
+          let artistImageUrl = null
+          if (artistData.images_uri_artist?.['hi-res']) {
+            artistImageUrl = `${imageBaseUrl}${artistData.images_uri_artist['hi-res']}`
+          } else if (release.images_uri_artist?.['hi-res']) {
+            // Fallback to release-level artist image
+            artistImageUrl = `${imageBaseUrl}${release.images_uri_artist['hi-res']}`
+          }
 
           // Only update if not already set (preserve first occurrence with most data)
           if (!info[artistKey]) {

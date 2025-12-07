@@ -37,6 +37,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - Creates MDX post with galleries in `src/content/tunes/`
   - Options: `--week_start=YYYY-MM-DD` (custom week), `--debug` (single album)
 
+- `pnpm run wrapped` - Generate year-end "Wrapped" music blog post (see [Year Wrapped Generator](#year-wrapped-generator))
+  - Aggregates all weekly Last.fm charts for accurate calendar year data
+  - Spotify Wrapped-style statistics and insights
+  - AI-powered album research for top 15 featured albums
+  - Downloads artist/album artwork from russ.fm
+  - Creates comprehensive MDX post with stats, lists, and analysis
+  - Options: `--year=2025` (specify year), `--debug` (single album), `--skip-research` (no AI), `--use-cache` (reuse Last.fm data)
+
 ### Image Optimization
 - `pnpm run optimize` - Optimize all images in `src/assets/` and `public/assets/` in place
   - Compresses JPG, PNG, WebP, and AVIF formats
@@ -720,6 +728,79 @@ See `docs/guides/tunes-generator.md` for detailed collage documentation.
 - `scripts/lib/blog-post-renderer.js` - MDX rendering
 - `scripts/strip-collage.js` - Cover collage generation with torn-paper effect (default)
 - `scripts/fal-collage.js` - AI-powered collage using FAL.ai WAN 2.5 (alternative)
+
+## Year Wrapped Generator
+
+Generate comprehensive year-end "Wrapped" posts inspired by Spotify Wrapped, using Last.fm data and AI content generation.
+
+### Quick Start
+```bash
+# Generate wrapped for current year
+pnpm run wrapped
+
+# Generate for specific year
+pnpm run wrapped -- --year=2025
+
+# Quick preview (skip AI research)
+pnpm run wrapped -- --year=2025 --skip-research
+
+# Debug mode (1 featured album only)
+pnpm run wrapped -- --year=2025 --debug
+
+# Use cached Last.fm data (faster for re-runs)
+pnpm run wrapped -- --year=2025 --use-cache
+```
+
+### Features (Inspired by Spotify Wrapped)
+
+**Statistics Dashboard:**
+- Total scrobbles, hours listened, unique artists/albums
+- Days of music, average plays per day
+- Peak listening month
+
+**Year-End Awards:**
+- Artist of the Year with play counts and dominant months
+- Album of the Year with detailed statistics
+- Top 25 Artists and Top 50 Albums with russ.fm links
+
+**Insights:**
+- **Monthly Breakdown**: Visual activity chart showing listening patterns
+- **Listening Age**: Which decade resonates most (based on album release years)
+- **Genre Breakdown**: Top genres from collection metadata
+- **Hidden Gems**: Albums that "overperformed" based on their ranking
+- **New Discoveries**: Albums released in the target year
+
+**Featured Albums:**
+- Top 15 albums get AI-researched deep dive sections
+- LightGallery integration for album/artist artwork
+- Links to russ.fm collection
+
+### Output Structure
+- **Content**: `src/content/tunes/YYYY-year-in-music.mdx`
+- **Images**: `public/assets/YYYY-year-in-music/{artists,albums}/`
+- **Cover**: `src/assets/YYYY-year-in-music/wrapped-cover-YYYY.png`
+
+### How It Works
+
+1. **Aggregate Weekly Charts**: Fetches all 48-52 weekly charts for the calendar year (more accurate than `12month` rolling period)
+2. **Calculate Statistics**: Total plays, monthly breakdown, listening patterns
+3. **Generate Insights**: Spotify Wrapped-style insights (listening age, hidden gems, etc.)
+4. **Download Artwork**: Artist and album images from russ.fm
+5. **AI Research**: Generate detailed sections for top 15 albums
+6. **Render MDX**: Create comprehensive year-end blog post
+
+### Key Files
+- `scripts/generate-year-wrapped.js` - Main orchestrator
+- `scripts/lib/lastfm-year-client.js` - Extended Last.fm client with year aggregation
+- `scripts/lib/year-stats-calculator.js` - Spotify Wrapped-style insights calculator
+- `scripts/year-wrapped-template.mdx` - MDX template for year-end posts
+
+### Data Caching
+
+The script caches Last.fm data to avoid re-fetching 48+ weekly charts:
+- Cache file: `scripts/.year-wrapped-cache-YYYY.json`
+- Use `--use-cache` flag to reuse cached data
+- Delete cache file to force fresh data fetch
 
 ## Existing Guidelines
 Additional repository guidelines are documented in `AGENTS.md`, including:

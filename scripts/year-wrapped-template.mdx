@@ -1,0 +1,104 @@
+---
+title: "{{title}}"
+description: "{{description}}"
+pubDate: {{pubDate}}
+heroImage: "../../assets/{{year}}-year-in-music/wrapped-cover-{{year}}.png"
+showToc: true
+draft: false
+tags: ["listened", "year-end"]
+---
+
+import { Icon } from "astro-icon/components"
+
+## My {{year}} Wrapped
+
+{{introSection}}
+
+---
+
+## By the Numbers
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-8 not-prose">
+  <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center">
+    <div class="text-3xl font-bold text-primary-600 dark:text-primary-400">{{totalScrobbles}}</div>
+    <div class="text-sm text-gray-600 dark:text-gray-400">Total Scrobbles</div>
+  </div>
+  <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center">
+    <div class="text-3xl font-bold text-primary-600 dark:text-primary-400">{{estimatedHours}}</div>
+    <div class="text-sm text-gray-600 dark:text-gray-400">Hours Listened</div>
+  </div>
+  <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center">
+    <div class="text-3xl font-bold text-primary-600 dark:text-primary-400">{{uniqueArtists}}</div>
+    <div class="text-sm text-gray-600 dark:text-gray-400">Unique Artists</div>
+  </div>
+  <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center">
+    <div class="text-3xl font-bold text-primary-600 dark:text-primary-400">{{uniqueAlbums}}</div>
+    <div class="text-sm text-gray-600 dark:text-gray-400">Unique Albums</div>
+  </div>
+</div>
+
+Thats **{{estimatedDays}} days** of music, or roughly **{{avgPerDay}} tracks per day**. {{peakMonthText}}
+
+---
+
+## Artist of the Year
+
+{{artistOfTheYearSection}}
+
+---
+
+## Album of the Year
+
+{{albumOfTheYearSection}}
+
+---
+
+## Top 25 Artists
+
+{{top25ArtistsSection}}
+
+---
+
+## Top 50 Albums
+
+{{top50AlbumsSection}}
+
+---
+
+## Monthly Breakdown
+
+Heres how my listening habits shifted throughout the year:
+
+{{monthlyBreakdownSection}}
+
+---
+
+## Genre Breakdown
+
+{{genreBreakdownSection}}
+
+---
+
+## Hidden Gems
+
+These albums might not have topped the charts, but they earned a special place in my rotation:
+
+{{hiddenGemsSection}}
+
+---
+
+## New Discoveries (Released in {{year}})
+
+{{newDiscoveriesSection}}
+
+---
+
+## Featured Albums
+
+{{albumSections}}
+
+---
+
+<NoteCallout title="Note">
+This year-end wrapped post was generated using Last.fm data and AI-assisted content. Statistics are based on scrobbles from January through December {{year}}. Album research is AI-generated and may not be 100% factual.
+</NoteCallout>

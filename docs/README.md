@@ -17,7 +17,7 @@ User-facing guides for common tasks and workflows:
 - **[Creating Posts](./guides/creating-posts.md)** - Write and publish blog posts
 - **[Using Tags](./guides/using-tags.md)** - Complete tag system reference (30+ tags)
 - **[Using Embed Components](./guides/using-embeds.md)** - Add media, callouts, and interactive elements
-- **[Tunes Generator](./guides/tunes-generator.md)** - Generate automated weekly music posts
+- **[Tunes Generator](./guides/tunes-generator.md)** - Generate automated weekly music posts and year-end wrapped
 
 ### 🏗️ Architecture
 
@@ -66,6 +66,7 @@ npm run preview          # Preview production build
 # Content
 npm run post             # Create new blog post
 npm run tunes            # Generate weekly music post
+npm run wrapped          # Generate year-end wrapped post
 
 # Images
 npm run optimize         # Optimize all images
@@ -116,4 +117,4 @@ This documentation is maintained alongside the codebase. When making significant
 3. Update guides if workflows change
 4. Keep examples in sync with actual code
 
-**Last Updated**: November 2025
+**Last Updated**: December 2025
