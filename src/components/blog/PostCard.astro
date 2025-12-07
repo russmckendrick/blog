@@ -104,7 +104,7 @@ const avatarGlowColor = getAvatarGlowColor();
 							loading={priority ? "eager" : "lazy"}
 							decoding={priority ? "sync" : "async"}
 							fetchpriority={priority ? "high" : "low"}
-							class="w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+							class={`w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover ${priority ? '' : 'transition-transform duration-700 group-hover:scale-[1.03]'}`}
 						/>
 					</figure>
 				)}
