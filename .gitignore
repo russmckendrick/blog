@@ -35,6 +35,9 @@ hugo/
 collection.json
 pr_body.md
 
+# year wrapped cache
+scripts/.year-wrapped-cache*
+
 # scripts cache
 scripts/.research-cache/
 test-output/

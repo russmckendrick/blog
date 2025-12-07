@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { LastFMClient } from './lastfm-client.js'
+import { removeBracketedSuffix, normalizeText } from './text-utils.js'
 
 /**
  * Extended Last.fm client with year-end wrapped functionality
@@ -236,19 +237,26 @@ export class LastFMYearClient extends LastFMClient {
         for (const album of albums) {
           const artist = album.artist['#text']
           const albumName = album.name
-          const key = `${artist}|||${albumName}`
+          // Normalize album name by removing bracketed suffixes for deduplication
+          // e.g., "Attack Of The Grey Lantern" and "Attack of the Grey Lantern (Remastered - 21st Anniversary Edition)"
+          // should be treated as the same album
+          const normalizedAlbum = removeBracketedSuffix(albumName)
+          const key = `${normalizeText(artist)}|||${normalizeText(normalizedAlbum)}`
           const playcount = parseInt(album.playcount) || 0
 
-          // Aggregate total
+          // Aggregate total - use the shorter/cleaner album name when merging
           if (!albumCounts[key]) {
-            albumCounts[key] = { artist, album: albumName, playcount: 0 }
+            albumCounts[key] = { artist, album: normalizedAlbum, playcount: 0 }
+          } else if (normalizedAlbum.length < albumCounts[key].album.length) {
+            // Prefer shorter album name (usually the cleaner one without suffixes)
+            albumCounts[key].album = normalizedAlbum
           }
           albumCounts[key].playcount += playcount
 
           // Aggregate monthly
           if (monthlyData[month]) {
             if (!monthlyData[month].albums[key]) {
-              monthlyData[month].albums[key] = { artist, album: albumName, playcount: 0 }
+              monthlyData[month].albums[key] = { artist, album: normalizedAlbum, playcount: 0 }
             }
             monthlyData[month].albums[key].playcount += playcount
             monthlyData[month].totalPlays += playcount

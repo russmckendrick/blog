@@ -30,6 +30,21 @@ export function removeArticle(text) {
 }
 
 /**
+ * Remove bracketed suffixes from album names
+ * e.g., "A Momentary Lapse of Reason (2019 Remix)" -> "A Momentary Lapse of Reason"
+ * e.g., "The Sound of the Smiths (Deluxe; 2008 Remaster)" -> "The Sound of the Smiths"
+ */
+export function removeBracketedSuffix(text) {
+  if (!text) return ''
+  // Remove content in parentheses, square brackets, or curly braces at the end
+  // Also handles multiple brackets like "Album (Deluxe) (Remastered)"
+  return text
+    .replace(/\s*[\(\[\{][^\)\]\}]*[\)\]\}]\s*$/g, '')
+    .replace(/\s*[\(\[\{][^\)\]\}]*[\)\]\}]\s*$/g, '') // Run twice for nested/multiple
+    .trim()
+}
+
+/**
  * Check if an artist name is a variation of "Various Artists"
  */
 export function isVariousArtists(artist) {
@@ -121,6 +136,8 @@ export function lookupAlbumData(artist, album, collectionInfo) {
   const normalizedArtist = normalizeText(artist)
   const normalizedArtistWithoutThe = normalizeText(removeArticle(artist))
   const normalizedAlbum = normalizeText(album)
+  // Also try without bracketed suffixes like "(2019 Remix)", "(Deluxe; 2008 Remaster)"
+  const normalizedAlbumWithoutBrackets = normalizeText(removeBracketedSuffix(album))
 
   for (const [key, data] of Object.entries(collectionInfo)) {
     if (key.includes('|||')) {
@@ -128,6 +145,7 @@ export function lookupAlbumData(artist, album, collectionInfo) {
       const normalizedKeyArtist = normalizeText(keyArtist)
       const normalizedKeyArtistWithoutThe = normalizeText(removeArticle(keyArtist))
       const normalizedKeyAlbum = normalizeText(keyAlbum)
+      const normalizedKeyAlbumWithoutBrackets = normalizeText(removeBracketedSuffix(keyAlbum))
 
       // Try exact artist match first, then match without articles
       const artistMatch = normalizedKeyArtist === normalizedArtist ||
@@ -135,7 +153,13 @@ export function lookupAlbumData(artist, album, collectionInfo) {
                          normalizedKeyArtistWithoutThe === normalizedArtist ||
                          normalizedKeyArtistWithoutThe === normalizedArtistWithoutThe
 
-      if (artistMatch && normalizedKeyAlbum === normalizedAlbum) {
+      // Try album match: exact, without brackets on search term, without brackets on key, or both without brackets
+      const albumMatch = normalizedKeyAlbum === normalizedAlbum ||
+                        normalizedKeyAlbum === normalizedAlbumWithoutBrackets ||
+                        normalizedKeyAlbumWithoutBrackets === normalizedAlbum ||
+                        normalizedKeyAlbumWithoutBrackets === normalizedAlbumWithoutBrackets
+
+      if (artistMatch && albumMatch) {
         return {
           link: data.album_link,
           image: data.album_image

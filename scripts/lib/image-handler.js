@@ -5,12 +5,23 @@ import { normalizeForFilename, lookupArtistData, lookupAlbumData, isVariousArtis
 
 export class ImageHandler {
 
-  async downloadImage(url, folder, name) {
+  async downloadImage(url, folder, name, skipIfExists = false) {
     try {
-      const response = await axios.get(url, { responseType: 'arraybuffer' })
       const cleanName = normalizeForFilename(name)
       const imagePath = path.join(folder, `${cleanName}.jpg`)
       const metaPath = path.join(folder, `${cleanName}.jpg.meta`)
+
+      // Skip if already downloaded
+      if (skipIfExists) {
+        try {
+          await fs.access(imagePath)
+          return // Already exists, skip silently
+        } catch {
+          // File doesn't exist, continue with download
+        }
+      }
+
+      const response = await axios.get(url, { responseType: 'arraybuffer' })
 
       await fs.writeFile(imagePath, response.data)
 
@@ -23,31 +34,37 @@ export class ImageHandler {
     }
   }
 
-  async downloadArtistImages(topArtists, collectionInfo, artistsFolder) {
-    console.log('Downloading artist images...')
+  async downloadArtistImages(topArtists, collectionInfo, artistsFolder, skipIfExists = false) {
+    if (!skipIfExists) {
+      console.log('Downloading artist images...')
+    }
     for (const [artist] of topArtists) {
       // Skip "Various Artists" entries
       if (isVariousArtists(artist)) {
-        console.log(`  ⊘ Skipping "Various Artists": ${artist}`)
+        if (!skipIfExists) {
+          console.log(`  ⊘ Skipping "Various Artists": ${artist}`)
+        }
         continue
       }
 
       const artistData = lookupArtistData(artist, collectionInfo)
       if (artistData?.image) {
-        await this.downloadImage(artistData.image, artistsFolder, artist)
-      } else {
+        await this.downloadImage(artistData.image, artistsFolder, artist, skipIfExists)
+      } else if (!skipIfExists) {
         console.log(`  ⚠ No image found for artist: ${artist}`)
       }
     }
   }
 
-  async downloadAlbumImages(topAlbums, collectionInfo, albumsFolder) {
-    console.log('Downloading album images...')
+  async downloadAlbumImages(topAlbums, collectionInfo, albumsFolder, skipIfExists = false) {
+    if (!skipIfExists) {
+      console.log('Downloading album images...')
+    }
     for (const [[artist, album]] of topAlbums) {
       const albumData = lookupAlbumData(artist, album, collectionInfo)
       if (albumData?.image) {
-        await this.downloadImage(albumData.image, albumsFolder, album)
-      } else {
+        await this.downloadImage(albumData.image, albumsFolder, album, skipIfExists)
+      } else if (!skipIfExists) {
         console.log(`  ⚠ No image found for album: ${album} by ${artist}`)
       }
     }

@@ -108,39 +108,49 @@ async function generateYearEndPrompt(imageUrls, year) {
       messages: [
         {
           role: 'system',
-          content: `You are a creative director creating prompts for AI image generation.
-You specialize in creating vibrant, celebratory year-end music retrospective imagery.
-Generate prompts that blend musical elements with New Year celebration themes.
-Focus on abstract, artistic interpretations - no text, no specific faces.
-The image should feel like a celebration of a year in music.`
+          content: `You are an expert at analyzing images and creating detailed image generation prompts.
+Your task is to CAREFULLY LOOK AT each image provided and describe what you see in detail.
+You must reference SPECIFIC visual elements, colors, subjects, and styles from the actual images.
+Do NOT generate generic prompts - your output must prove you analyzed the images.`
         },
         {
           role: 'user',
           content: [
             {
               type: 'text',
-              text: `These are the top artists and albums from my ${year} music listening.
-Create a single, detailed image generation prompt that:
-1. Captures the visual essence and mood of these images
-2. Incorporates year-end celebration themes (fireworks, confetti, champagne gold, midnight blue)
-3. Blends musical elements (vinyl, headphones, sound waves, speakers)
-4. Creates an abstract, artistic composition - NO TEXT or words in the image
-5. Uses rich, vibrant colors inspired by the artwork
-6. Has a celebratory, nostalgic, end-of-year atmosphere
-7. Fuses and blends these images into a seamless artistic collage
+              text: `Look carefully at these ${imageUrls.length} album and artist images from my ${year} music listening.
 
-Return ONLY the prompt, no explanation. Keep it under 200 words.`
+FIRST, analyze each image and note:
+- The dominant colors and color palette
+- The main subjects (people, objects, abstract elements)
+- The artistic style (photographic, illustrated, abstract, etc.)
+- Any distinctive visual elements or motifs
+
+THEN, create a detailed image generation prompt that:
+1. SPECIFICALLY describes how to blend these exact images together
+2. References the actual colors you see (e.g., "deep blues from image 1 bleeding into the warm oranges of image 3")
+3. Describes the actual subjects/people/elements from the images and how they should merge
+4. Creates artistic transitions between the specific visual styles present
+
+IMPORTANT: The text "${year}" MUST appear prominently in the final image. Integrate it naturally into the composition - perhaps formed from light, smoke, paint, or as stylized typography that complements the artwork.
+
+Your prompt MUST mention specific visual elements from at least 6 of the 10 images.
+Your prompt MUST explicitly include instructions to display "${year}" in the image.
+The prompt should read like you're describing a specific artwork, not a generic template.
+
+Return ONLY the image generation prompt (no analysis or explanation).
+Keep it under 250 words to avoid API errors.`
             },
             ...imageContent
           ]
         }
       ],
-      max_tokens: 300,
-      temperature: 0.9
+      max_tokens: 400,
+      temperature: 0.8
     })
 
     const prompt = response.choices[0].message.content.trim()
-    console.log(`  Generated prompt: "${prompt.substring(0, 100)}..."`)
+    console.log(`  Generated prompt:\n    "${prompt}"`)
     return prompt
   } catch (error) {
     console.error(`  Warning: GPT-4 Vision failed: ${error.message}`)
@@ -152,14 +162,16 @@ Return ONLY the prompt, no explanation. Keep it under 200 words.`
  * Get default year-end prompt
  */
 function getDefaultPrompt(year) {
-  return `Fuse and blend these artist and album images into a seamless artistic music collage for ${year}.
+  return `Fuse and blend these artist and album images into a seamless artistic music collage.
 The images should flow together organically with their colors, imagery, and textures merging and overlapping naturally.
 Create smooth, painterly transitions between images where they meet - think watercolor bleeding or double exposure photography.
-Incorporate subtle year-end celebration themes like golden sparkles, midnight blue gradients, and warm celebratory tones.
-Add musical elements like vinyl textures, sound waves, and speaker grilles woven throughout.
-Remove all text and typography.
-The final result should look like a dreamy, cohesive artistic piece celebrating a year in music.
-Professional album artwork style, highly detailed, cinematic lighting.`
+Integrate the text "${year}" organically into the artwork - formed from paint strokes, light trails, smoke, or emerging naturally from the visual elements. The year should feel like part of the art, not an overlay.
+Add subtle musical elements like vinyl textures and sound waves woven throughout.
+Preserve the visual essence and color palettes from the original album artwork.
+The final result should look like a dreamy, cohesive artistic piece celebrating this year in music.
+Professional album artwork style, highly detailed, cinematic lighting.
+Do NOT include celebration themes like fireworks, confetti, or champagne.
+Do NOT place the year as simple text on top - it must be integrated into the imagery.`
 }
 
 /**
@@ -258,11 +270,11 @@ export async function generateWrappedCover(artistImagePaths, albumImagePaths, ou
 
   console.log(`  Creating year-end wrapped cover for ${year}...`)
 
-  // Take up to 5 of each type
+  // Select top 5 of each type (10 total) for best AI generation results
   const selectedArtists = artistImagePaths.slice(0, 5)
   const selectedAlbums = albumImagePaths.slice(0, 5)
 
-  console.log(`  Selected ${selectedArtists.length} artist images and ${selectedAlbums.length} album images`)
+  console.log(`  Using ${selectedArtists.length} artist images and ${selectedAlbums.length} album images (from ${artistImagePaths.length} artists, ${albumImagePaths.length} albums available)`)
 
   // Upload all images to FAL.ai
   console.log('  Uploading images to FAL.ai...')

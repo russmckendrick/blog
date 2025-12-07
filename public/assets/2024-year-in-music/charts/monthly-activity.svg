@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 220" class="monthly-chart">
+  <style>
+    .monthly-chart text.month-label { fill: #6b7280; }
+    .monthly-chart text.value-label { fill: #374151; }
+    .monthly-chart line.grid { stroke: #e5e7eb; }
+    @media (prefers-color-scheme: dark) {
+      .monthly-chart text.month-label { fill: #9ca3af; }
+      .monthly-chart text.value-label { fill: #e5e7eb; }
+      .monthly-chart line.grid { stroke: #374151; }
+    }
+    .dark .monthly-chart text.month-label { fill: #9ca3af; }
+    .dark .monthly-chart text.value-label { fill: #e5e7eb; }
+    .dark .monthly-chart line.grid { stroke: #374151; }
+  </style>
+  <line class="grid" x1="40" y1="40" x2="660" y2="40" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <line class="grid" x1="40" y1="75" x2="660" y2="75" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <line class="grid" x1="40" y1="110" x2="660" y2="110" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <line class="grid" x1="40" y1="145" x2="660" y2="145" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <line class="grid" x1="40" y1="180" x2="660" y2="180" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <rect x="40" y="75.71917808219177" width="44.333333333333336" height="104.28082191780823" rx="3" fill="#10b981" opacity="0.85">
+    <animate attributeName="height" from="0" to="104.28082191780823" dur="0.4s" fill="freeze" begin="0s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y" from="180" to="75.71917808219177" dur="0.4s" fill="freeze" begin="0s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text class="month-label" x="62.16666666666667" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11">Jan</text>
+  <title>January: 870 plays</title>
+  <rect x="92.33333333333334" y="103.16780821917808" width="44.333333333333336" height="76.83219178082192" rx="3" fill="#6366f1" opacity="0.85">
+    <animate attributeName="height" from="0" to="76.83219178082192" dur="0.4s" fill="freeze" begin="0.05s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y" from="180" to="103.16780821917808" dur="0.4s" fill="freeze" begin="0.05s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text class="month-label" x="114.50000000000001" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11">Feb</text>
+  <title>February: 641 plays</title>
+  <rect x="144.66666666666669" y="95.37671232876711" width="44.333333333333336" height="84.62328767123289" rx="3" fill="#6366f1" opacity="0.85">
+    <animate attributeName="height" from="0" to="84.62328767123289" dur="0.4s" fill="freeze" begin="0.1s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y" from="180" to="95.37671232876711" dur="0.4s" fill="freeze" begin="0.1s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text class="month-label" x="166.83333333333334" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11">Mar</text>
+  <title>March: 706 plays</title>
+  <rect x="197" y="116.47260273972603" width="44.333333333333336" height="63.52739726027397" rx="3" fill="#6366f1" opacity="0.85">
+    <animate attributeName="height" from="0" to="63.52739726027397" dur="0.4s" fill="freeze" begin="0.15000000000000002s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y" from="180" to="116.47260273972603" dur="0.4s" fill="freeze" begin="0.15000000000000002s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text class="month-label" x="219.16666666666666" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11">Apr</text>
+  <title>April: 530 plays</title>
+  <rect x="249.33333333333334" y="83.75" width="44.333333333333336" height="96.25" rx="3" fill="#10b981" opacity="0.85">
+    <animate attributeName="height" from="0" to="96.25" dur="0.4s" fill="freeze" begin="0.2s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y" from="180" to="83.75" dur="0.4s" fill="freeze" begin="0.2s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text class="month-label" x="271.5" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11">May</text>
+  <title>May: 803 plays</title>
+  <rect x="301.6666666666667" y="120.7876712328767" width="44.333333333333336" height="59.21232876712329" rx="3" fill="#6366f1" opacity="0.85">
+    <animate attributeName="height" from="0" to="59.21232876712329" dur="0.4s" fill="freeze" begin="0.25s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y" from="180" to="120.7876712328767" dur="0.4s" fill="freeze" begin="0.25s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text class="month-label" x="323.83333333333337" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11">Jun</text>
+  <title>June: 494 plays</title>
+  <rect x="354" y="109.88013698630138" width="44.333333333333336" height="70.11986301369862" rx="3" fill="#6366f1" opacity="0.85">
+    <animate attributeName="height" from="0" to="70.11986301369862" dur="0.4s" fill="freeze" begin="0.30000000000000004s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y" from="180" to="109.88013698630138" dur="0.4s" fill="freeze" begin="0.30000000000000004s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text class="month-label" x="376.1666666666667" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11">Jul</text>
+  <title>July: 585 plays</title>
+  <rect x="406.33333333333337" y="40" width="44.333333333333336" height="140" rx="3" fill="#10b981" opacity="0.85">
+    <animate attributeName="height" from="0" to="140" dur="0.4s" fill="freeze" begin="0.35000000000000003s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y" from="180" to="40" dur="0.4s" fill="freeze" begin="0.35000000000000003s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text class="month-label" x="428.50000000000006" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11">Aug</text>
+  <title>August: 1,168 plays</title>
+  <rect x="458.6666666666667" y="99.21232876712328" width="44.333333333333336" height="80.78767123287672" rx="3" fill="#6366f1" opacity="0.85">
+    <animate attributeName="height" from="0" to="80.78767123287672" dur="0.4s" fill="freeze" begin="0.4s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y" from="180" to="99.21232876712328" dur="0.4s" fill="freeze" begin="0.4s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text class="month-label" x="480.83333333333337" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11">Sep</text>
+  <title>September: 674 plays</title>
+  <rect x="511" y="87.94520547945206" width="44.333333333333336" height="92.05479452054794" rx="3" fill="#10b981" opacity="0.85">
+    <animate attributeName="height" from="0" to="92.05479452054794" dur="0.4s" fill="freeze" begin="0.45s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y" from="180" to="87.94520547945206" dur="0.4s" fill="freeze" begin="0.45s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text class="month-label" x="533.1666666666666" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11">Oct</text>
+  <title>October: 768 plays</title>
+  <rect x="563.3333333333334" y="73.4417808219178" width="44.333333333333336" height="106.5582191780822" rx="3" fill="#10b981" opacity="0.85">
+    <animate attributeName="height" from="0" to="106.5582191780822" dur="0.4s" fill="freeze" begin="0.5s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y" from="180" to="73.4417808219178" dur="0.4s" fill="freeze" begin="0.5s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text class="month-label" x="585.5" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11">Nov</text>
+  <title>November: 889 plays</title>
+  <rect x="615.6666666666667" y="75.83904109589042" width="44.333333333333336" height="104.16095890410958" rx="3" fill="#10b981" opacity="0.85">
+    <animate attributeName="height" from="0" to="104.16095890410958" dur="0.4s" fill="freeze" begin="0.55s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="y" from="180" to="75.83904109589042" dur="0.4s" fill="freeze" begin="0.55s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text class="month-label" x="637.8333333333334" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11">Dec</text>
+  <title>December: 869 plays</title>
+</svg>

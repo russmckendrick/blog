@@ -132,23 +132,37 @@ async function main() {
 
     // Download images
     console.log('\n🖼️  Downloading images...')
-    await imageHandler.downloadArtistImages(topArtists.slice(0, 20), collectionInfo.info, artistsFolder)
-    await imageHandler.downloadAlbumImages(featuredAlbums, collectionInfo.info, albumsFolder)
+    // Download top 12 artist images for gallery
+    await imageHandler.downloadArtistImages(topArtists.slice(0, 12), collectionInfo.info, artistsFolder)
+    // Download top 12 album images for gallery (separate from featured albums)
+    const top12Albums = topAlbums.slice(0, 12)
+    await imageHandler.downloadAlbumImages(top12Albums, collectionInfo.info, albumsFolder)
+    // Also download featured albums (may overlap with top 12)
+    await imageHandler.downloadAlbumImages(featuredAlbums, collectionInfo.info, albumsFolder, true)
 
-    // Download hidden gems album images
+    // Also download artist images for featured albums (in case they're not in top 20)
+    console.log('Downloading featured album artist images...')
+    const featuredArtists = featuredAlbums.map(([[artist]]) => [artist])
+    await imageHandler.downloadArtistImages(featuredArtists, collectionInfo.info, artistsFolder, true)
+
+    // Download hidden gems album and artist images
     const hiddenGems = insights.hiddenGems || []
     if (hiddenGems.length > 0) {
-      console.log('Downloading hidden gems album images...')
+      console.log('Downloading hidden gems images...')
       const hiddenGemsAlbums = hiddenGems.map(gem => [[gem.artist, gem.album], gem.playcount])
-      await imageHandler.downloadAlbumImages(hiddenGemsAlbums, collectionInfo.info, albumsFolder)
+      await imageHandler.downloadAlbumImages(hiddenGemsAlbums, collectionInfo.info, albumsFolder, true)
+      const hiddenGemsArtists = hiddenGems.map(gem => [gem.artist])
+      await imageHandler.downloadArtistImages(hiddenGemsArtists, collectionInfo.info, artistsFolder, true)
     }
 
-    // Download new discoveries album images
+    // Download new discoveries album and artist images
     const newDiscoveries = insights.newDiscoveries || []
     if (newDiscoveries.length > 0) {
-      console.log('Downloading new discoveries album images...')
+      console.log('Downloading new discoveries images...')
       const newDiscoveriesAlbums = newDiscoveries.map(album => [[album.artist, album.album], album.playcount])
-      await imageHandler.downloadAlbumImages(newDiscoveriesAlbums, collectionInfo.info, albumsFolder)
+      await imageHandler.downloadAlbumImages(newDiscoveriesAlbums, collectionInfo.info, albumsFolder, true)
+      const newDiscoveriesArtists = newDiscoveries.map(album => [album.artist])
+      await imageHandler.downloadArtistImages(newDiscoveriesArtists, collectionInfo.info, artistsFolder, true)
     }
 
     // Generate AI content for featured albums (unless skipped)
@@ -170,18 +184,18 @@ async function main() {
     console.log('\n🎨 Generating AI cover...')
     const coverOutputPath = path.join(srcAssetsFolder, `wrapped-cover-${year}.png`)
 
-    // Get top 6 artist and album image paths
+    // Get all artist and album image paths
     const artistFiles = await fs.readdir(artistsFolder)
     const artistImagePaths = artistFiles
       .filter(file => file.endsWith('.jpg') && !file.endsWith('.meta'))
-      .slice(0, 6)
       .map(file => path.join(artistsFolder, file))
 
     const albumFiles = await fs.readdir(albumsFolder)
     const albumImagePaths = albumFiles
       .filter(file => file.endsWith('.jpg') && !file.endsWith('.meta'))
-      .slice(0, 6)
       .map(file => path.join(albumsFolder, file))
+
+    console.log(`  Found ${artistImagePaths.length} artist images and ${albumImagePaths.length} album images`)
 
     if (artistImagePaths.length >= 5 && albumImagePaths.length >= 5 && process.env.FAL_KEY) {
       // Use AI-generated cover
@@ -246,7 +260,9 @@ async function main() {
       blogSections,
       collectionInfo: collectionInfo.info,
       postSlug,
-      chartsFolder
+      chartsFolder,
+      artistsFolder,
+      albumsFolder
     })
 
     console.log('\n' + '='.repeat(50))
@@ -461,7 +477,9 @@ async function renderWrappedPost({
   blogSections,
   collectionInfo,
   postSlug,
-  chartsFolder
+  chartsFolder,
+  artistsFolder,
+  albumsFolder
 }) {
   // Load template
   const templatePath = path.join(__dirname, 'year-wrapped-template.mdx')
@@ -470,6 +488,10 @@ async function renderWrappedPost({
   // Generate and save SVG charts
   console.log('  📊 Generating SVG charts...')
   const chartPaths = await generateAndSaveCharts(insights, chartsFolder, postSlug)
+
+  // Get list of actually downloaded image files
+  const downloadedArtistFiles = (await fs.readdir(artistsFolder)).filter(f => f.endsWith('.jpg'))
+  const downloadedAlbumFiles = (await fs.readdir(albumsFolder)).filter(f => f.endsWith('.jpg'))
 
   // Generate intro section
   const introSection = generateIntroSection(insights)
@@ -481,10 +503,10 @@ async function renderWrappedPost({
   const albumOfTheYearSection = generateAlbumOfTheYearSection(insights, collectionInfo, postSlug)
 
   // Generate top 25 artists section
-  const top25ArtistsSection = generateTopArtistsSection(topArtists.slice(0, 25), collectionInfo)
+  const top25ArtistsSection = generateTopArtistsSection(topArtists.slice(0, 25), collectionInfo, year, downloadedArtistFiles)
 
   // Generate top 50 albums section
-  const top50AlbumsSection = generateTopAlbumsSection(topAlbums.slice(0, 50), collectionInfo)
+  const top50AlbumsSection = generateTopAlbumsSection(topAlbums.slice(0, 50), collectionInfo, year, downloadedAlbumFiles)
 
   // Generate monthly breakdown
   const monthlyBreakdownSection = generateMonthlyBreakdownSection(insights, chartPaths.monthly)
@@ -630,7 +652,7 @@ This album earned the top spot with **${album.playcount.toLocaleString()} plays*
   return section
 }
 
-function generateTopArtistsSection(topArtists, collectionInfo) {
+function generateTopArtistsSection(topArtists, collectionInfo, year, downloadedArtistFiles) {
   const formatArtist = ([artist, count], index) => {
     const artistData = lookupArtistData(artist, collectionInfo)
     const rank = index + 1
@@ -646,14 +668,34 @@ function generateTopArtistsSection(topArtists, collectionInfo) {
   const first10 = topArtists.slice(0, 10).map(formatArtist).join('\n')
   const rest = topArtists.slice(10)
 
+  // Generate gallery only for artists with downloaded images
+  const galleryImages = topArtists.slice(0, 12)
+    .filter(([artist]) => {
+      const filename = normalizeForFilename(artist) + '.jpg'
+      return downloadedArtistFiles.includes(filename)
+    })
+    .map(([artist]) => {
+      const filename = normalizeForFilename(artist)
+      return `      { src: "/assets/${year}-year-in-music/artists/${filename}.jpg", alt: "${escapeQuotes(artist)}" }`
+    }).join(',\n')
+
+  // Only include gallery if we have images
+  const gallery = galleryImages ? `<LightGallery
+  layout={{
+    imgs: [
+${galleryImages}
+    ]
+  }}
+/>` : ''
+
   if (rest.length === 0) {
-    return first10
+    return gallery ? `${first10}\n\n${gallery}` : first10
   }
 
   const restFormatted = rest.map((item, idx) => formatArtist(item, idx + 10)).join('\n')
 
   return `${first10}
-
+${gallery ? `\n${gallery}\n` : ''}
 <details>
 <summary>View artists 11-${topArtists.length}</summary>
 
@@ -662,7 +704,7 @@ ${restFormatted}
 </details>`
 }
 
-function generateTopAlbumsSection(topAlbums, collectionInfo) {
+function generateTopAlbumsSection(topAlbums, collectionInfo, year, downloadedAlbumFiles) {
   const formatAlbum = ([[artist, album], count], index) => {
     const albumData = lookupAlbumData(artist, album, collectionInfo)
     const artistData = lookupArtistData(artist, collectionInfo)
@@ -682,14 +724,34 @@ function generateTopAlbumsSection(topAlbums, collectionInfo) {
   const first10 = topAlbums.slice(0, 10).map(formatAlbum).join('\n')
   const rest = topAlbums.slice(10)
 
+  // Generate gallery only for albums with downloaded images
+  const galleryImages = topAlbums.slice(0, 12)
+    .filter(([[artist, album]]) => {
+      const filename = normalizeForFilename(album) + '.jpg'
+      return downloadedAlbumFiles.includes(filename)
+    })
+    .map(([[artist, album]]) => {
+      const filename = normalizeForFilename(album)
+      return `      { src: "/assets/${year}-year-in-music/albums/${filename}.jpg", alt: "${escapeQuotes(album)} by ${escapeQuotes(artist)}" }`
+    }).join(',\n')
+
+  // Only include gallery if we have images
+  const gallery = galleryImages ? `<LightGallery
+  layout={{
+    imgs: [
+${galleryImages}
+    ]
+  }}
+/>` : ''
+
   if (rest.length === 0) {
-    return first10
+    return gallery ? `${first10}\n\n${gallery}` : first10
   }
 
   const restFormatted = rest.map((item, idx) => formatAlbum(item, idx + 10)).join('\n')
 
   return `${first10}
-
+${gallery ? `\n${gallery}\n` : ''}
 <details>
 <summary>View albums 11-${topAlbums.length}</summary>
 

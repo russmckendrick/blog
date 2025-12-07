@@ -389,14 +389,13 @@ Edit `scripts/tunes-template.mdx` to change the MDX layout:
 title: "{{title}}"
 description: "{{description}}"
 pubDate: {{pubDate}}
-heroImage: "./covers/weekly-tunes-{{coverImage}}.png"
+heroImage: "../../assets/{{pubDate}}-listened-to-this-week/tunes-cover-{{pubDate}}-listened-to-this-week.png"
+showToc: true
 draft: false
 tags: []
 ---
 
-<NoteCallout title="Note">
-...content...
-</NoteCallout>
+{{albumSections}}
 
 <!-- Customize layout here -->
 ```
