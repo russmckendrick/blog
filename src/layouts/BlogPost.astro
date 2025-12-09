@@ -171,7 +171,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 					fit: CF_IMAGE_PRESETS.hero.fit
 				})}
 				imagesrcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
-				imagesizes="100vw"
+				imagesizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) calc(100vw - 48px), 1100px"
 				fetchpriority="high"
 			/>
 		)}
@@ -207,11 +207,11 @@ const breadcrumbSchema = createBreadcrumbSchema(
 										fit: 'scale-down'
 									})}
 									srcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
-									sizes="(max-width: 1152px) 100vw, 1100px"
+									sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) calc(100vw - 48px), 1100px"
 									alt={cover?.alt || title}
 									loading="eager"
 									fetchpriority="high"
-									decoding="async"
+									decoding="sync"
 									class="hero-image-card w-full h-auto rounded-t-3xl"
 								/>
 								{/* Shadow at bottom of image only */}
