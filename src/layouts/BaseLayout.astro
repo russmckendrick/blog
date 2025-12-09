@@ -9,6 +9,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { YouTube } from '@astro-community/astro-embed-youtube';
 import { LinkPreview } from '@astro-community/astro-embed-link-preview';
 
+import { WebVitals } from '@casoon/astro-webvitals';
+
 interface Props {
 	title?: string;
 	description?: string;
@@ -40,6 +42,7 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 			<slot />
 		</main>
 		<Footer />
+		<WebVitals debug={import.meta.env.DEV} />
 		<script>
 			// Global cleanup for LightGallery when navigating away from pages
 			function cleanupLightGallery() {

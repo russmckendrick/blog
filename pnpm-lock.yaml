@@ -29,6 +29,9 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.6.0
         version: 3.6.0
+      '@casoon/astro-webvitals':
+        specifier: ^0.1.5
+        version: 0.1.5(astro@5.16.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.53.3)(terser@5.42.0)(typescript@5.9.3)(yaml@2.8.2))
       '@fal-ai/client':
         specifier: ^1.7.2
         version: 1.7.2
@@ -352,6 +355,12 @@ packages:
   '@capsizecss/unpack@3.0.1':
     resolution: {integrity: sha512-8XqW8xGn++Eqqbz3e9wKuK7mxryeRjs4LOHLxbh2lwKeSbuNR4NFifDZT4KzvjU6HMOPbiNTsWpniK5EJfTWkg==}
     engines: {node: '>=18'}
+
+  '@casoon/astro-webvitals@0.1.5':
+    resolution: {integrity: sha512-yxgqIsMHWxPuP5PL/3hgmIWPHk+LOKOqhH4RWhrHtfQ9MNbmdKFVYJDer1p/YrepDLTOc6sS1TBKP1QsJnjehA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      astro: ^4.0.0 || ^5.0.0
 
   '@cfworker/json-schema@4.1.1':
     resolution: {integrity: sha512-gAmrUZSGtKc3AiBL71iNWxDsyUC5uMaKKGdvzYsBoTW/xi42JQHl7eKV2OYzCUqvc+D2RCcf7EXY2iCyFIk6og==}
@@ -5043,6 +5052,10 @@ snapshots:
   '@capsizecss/unpack@3.0.1':
     dependencies:
       fontkit: 2.0.4
+
+  '@casoon/astro-webvitals@0.1.5(astro@5.16.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.53.3)(terser@5.42.0)(typescript@5.9.3)(yaml@2.8.2))':
+    dependencies:
+      astro: 5.16.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.53.3)(terser@5.42.0)(typescript@5.9.3)(yaml@2.8.2)
 
   '@cfworker/json-schema@4.1.1': {}
 
