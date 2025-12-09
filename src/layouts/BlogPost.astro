@@ -23,11 +23,6 @@ import { getHeroColors, gradientStylesToString, getGradientStyles } from '../uti
 import { YouTube } from '@astro-community/astro-embed-youtube';
 import { LinkPreview } from '@astro-community/astro-embed-link-preview';
 
-// Import LightGallery CSS
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-thumbnail.css';
-
 export interface Heading {
 	depth: number;
 	text: string;
@@ -358,6 +353,11 @@ const breadcrumbSchema = createBreadcrumbSchema(
 							const { default: lightGallery } = await import('lightgallery');
 							const { default: lgThumbnail } = await import('lightgallery/plugins/thumbnail');
 							const { default: lgZoom } = await import('lightgallery/plugins/zoom');
+
+							// Import styles dynamically to avoid render blocking
+							await import('lightgallery/css/lightgallery.css');
+							await import('lightgallery/css/lg-zoom.css');
+							await import('lightgallery/css/lg-thumbnail.css');
 
 							// Batch all DOM reads first to avoid layout thrashing
 							const galleryData: Array<{
