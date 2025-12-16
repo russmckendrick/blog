@@ -132,6 +132,36 @@ export function lookupArtistData(artist, collectionInfo) {
   return null
 }
 
+/**
+ * Check if one artist name is a component of another (handles "Artist & Artist2" formats)
+ * e.g., "Gary Numan" should match "Gary Numan & Tubeway Army"
+ */
+function isArtistComponent(searchArtist, collectionArtist) {
+  // Split collection artist by common separators (already normalized, so "&" is "and")
+  const separators = [' and ', ' with ', ' featuring ', ' feat ', ' ft ', ', ']
+
+  for (const sep of separators) {
+    if (collectionArtist.includes(sep)) {
+      const parts = collectionArtist.split(sep).map(p => p.trim())
+      if (parts.some(part => part === searchArtist || removeArticle(part) === removeArticle(searchArtist))) {
+        return true
+      }
+    }
+  }
+
+  // Also check if search artist contains collection artist as a component
+  for (const sep of separators) {
+    if (searchArtist.includes(sep)) {
+      const parts = searchArtist.split(sep).map(p => p.trim())
+      if (parts.some(part => part === collectionArtist || removeArticle(part) === removeArticle(collectionArtist))) {
+        return true
+      }
+    }
+  }
+
+  return false
+}
+
 export function lookupAlbumData(artist, album, collectionInfo) {
   const normalizedArtist = normalizeText(artist)
   const normalizedArtistWithoutThe = normalizeText(removeArticle(artist))
@@ -148,10 +178,16 @@ export function lookupAlbumData(artist, album, collectionInfo) {
       const normalizedKeyAlbumWithoutBrackets = normalizeText(removeBracketedSuffix(keyAlbum))
 
       // Try exact artist match first, then match without articles
-      const artistMatch = normalizedKeyArtist === normalizedArtist ||
+      const exactArtistMatch = normalizedKeyArtist === normalizedArtist ||
                          normalizedKeyArtist === normalizedArtistWithoutThe ||
                          normalizedKeyArtistWithoutThe === normalizedArtist ||
                          normalizedKeyArtistWithoutThe === normalizedArtistWithoutThe
+
+      // Try partial artist match for "Artist & Artist2" formats
+      const partialArtistMatch = isArtistComponent(normalizedArtist, normalizedKeyArtist) ||
+                                  isArtistComponent(normalizedArtistWithoutThe, normalizedKeyArtistWithoutThe)
+
+      const artistMatch = exactArtistMatch || partialArtistMatch
 
       // Try album match: exact, without brackets on search term, without brackets on key, or both without brackets
       const albumMatch = normalizedKeyAlbum === normalizedAlbum ||
