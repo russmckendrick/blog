@@ -59,17 +59,18 @@ const imageCount = transformedLayout.imgs.length;
 >
   <div class="astro-lightgallery-adaptive-container">
     {transformedLayout.imgs.map((img) => (
-      <a 
-        href={img.src} 
+      <a
+        href={img.src}
         class="astro-lightgallery-adaptive-item"
         data-lg-id="true"
         data-src={img.src}
         data-sub-html={img.alt ? `<h4>${img.alt}</h4>` : ''}
+        aria-label={img.alt ? `View ${img.alt}` : 'View image in gallery'}
       >
-        <img 
-          src={img.thumbnail} 
-          alt={img.alt || ''} 
-          loading="lazy" 
+        <img
+          src={img.thumbnail}
+          alt={img.alt || ''}
+          loading="lazy"
           decoding="async"
         />
       </a>

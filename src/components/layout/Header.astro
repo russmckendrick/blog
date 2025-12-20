@@ -47,11 +47,12 @@ const { transparent = false } = Astro.props;
 									rel="noopener noreferrer"
 									class="header-nav-item flex items-center justify-center p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
 									title={item.name}
+									aria-label={item.name}
 								>
 									<Icon name={item.icon} />
 								</a>
 							) : (
-								<a href={item.url} class="header-nav-item flex items-center justify-center p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors" title={item.name}>
+								<a href={item.url} class="header-nav-item flex items-center justify-center p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors" title={item.name} aria-label={item.name}>
 									<Icon name={item.icon} />
 								</a>
 							)}

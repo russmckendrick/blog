@@ -46,7 +46,7 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
         class="lightgallery-component" 
         data-options={JSON.stringify({ thumbnail: false, download: false })}
       >
-        <a href={highResSrc} data-lg-id="true">
+        <a href={highResSrc} data-lg-id="true" aria-label={alt ? `View ${alt}` : 'View image in full size'}>
           <img
             src={imgSrc}
             srcset={srcsetString}
@@ -61,7 +61,7 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
       </div>
     </div>
   ) : link ? (
-    <a href={link} target="_blank" rel="noopener noreferrer" class={fullWidth ? 'w-full' : ''}>
+    <a href={link} target="_blank" rel="noopener noreferrer" class={fullWidth ? 'w-full' : ''} aria-label={alt ? `${alt} (opens in new tab)` : 'View image (opens in new tab)'}>
       <img
         src={imgSrc}
         srcset={srcsetString}

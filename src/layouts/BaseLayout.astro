@@ -44,6 +44,100 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 		<Footer />
 		<WebVitals debug={import.meta.env.DEV} />
 		<script>
+			// Fix accessibility: Add aria-labels to buttons missing them
+			function fixButtonAccessibility() {
+				// Find buttons without aria-label
+				const buttons = document.querySelectorAll('button:not([aria-label])');
+				buttons.forEach(btn => {
+					// Skip if button has meaningful text content (but not just whitespace/icons)
+					const textContent = btn.textContent?.trim().replace(/[\u200B-\u200D\uFEFF]/g, '');
+					if (textContent && textContent.length > 1 && textContent.length < 50 && !/^[●○•◦]+$/.test(textContent)) {
+						return; // Has visible text, should be accessible
+					}
+
+					// Use title attribute if available
+					const title = btn.getAttribute('title');
+					if (title) {
+						btn.setAttribute('aria-label', title);
+						return;
+					}
+
+					// Check for Expressive Code copy button (has data-copied attribute or is in .copy wrapper)
+					if (btn.hasAttribute('data-copied') || btn.closest('.copy') || btn.querySelector('[data-code]')) {
+						btn.setAttribute('aria-label', 'Copy code to clipboard');
+						return;
+					}
+
+					// Check for common copy button patterns
+					const classList = btn.className || '';
+					if (classList.includes('copy')) {
+						btn.setAttribute('aria-label', 'Copy to clipboard');
+					} else if (classList.includes('close')) {
+						btn.setAttribute('aria-label', 'Close');
+					} else if (classList.includes('expand')) {
+						btn.setAttribute('aria-label', 'Expand');
+					} else if (classList.includes('collapse')) {
+						btn.setAttribute('aria-label', 'Collapse');
+					} else if (classList.includes('tab')) {
+						// Tab buttons - use text content or data attribute
+						const tabText = btn.textContent?.trim() || btn.getAttribute('data-tab') || 'Tab';
+						btn.setAttribute('aria-label', tabText);
+					} else if (btn.closest('.expressive-code') || btn.closest('[data-language]') || btn.closest('figure.frame')) {
+						// Expressive Code buttons - check for common patterns
+						if (btn.querySelector('svg') && !textContent) {
+							// SVG icon button - likely copy button
+							btn.setAttribute('aria-label', 'Copy code to clipboard');
+						}
+					}
+				});
+
+				// Fix links without accessible text (icon-only links)
+				const links = document.querySelectorAll('a:not([aria-label])');
+				links.forEach(link => {
+					const textContent = link.textContent?.trim();
+					if (textContent && textContent.length > 0) {
+						return; // Has visible text
+					}
+
+					// Use title if available
+					const title = link.getAttribute('title');
+					if (title) {
+						link.setAttribute('aria-label', title);
+					}
+				});
+			}
+
+			// Run on initial page load
+			fixButtonAccessibility();
+
+			// Re-run after View Transitions and DOM updates
+			document.addEventListener('astro:page-load', fixButtonAccessibility);
+
+			// Run after delays to catch dynamically loaded content
+			setTimeout(fixButtonAccessibility, 500);
+			setTimeout(fixButtonAccessibility, 1500);
+
+			// Use MutationObserver to catch dynamically added elements
+			const observer = new MutationObserver((mutations) => {
+				let shouldFix = false;
+				for (const mutation of mutations) {
+					if (mutation.addedNodes.length > 0) {
+						shouldFix = true;
+						break;
+					}
+				}
+				if (shouldFix) {
+					// Debounce the fix
+					clearTimeout((window as any).__a11yFixTimeout);
+					(window as any).__a11yFixTimeout = setTimeout(fixButtonAccessibility, 100);
+				}
+			});
+
+			observer.observe(document.body, {
+				childList: true,
+				subtree: true
+			});
+
 			// Global cleanup for LightGallery when navigating away from pages
 			function cleanupLightGallery() {
 				// Remove unified gallery container

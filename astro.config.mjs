@@ -8,6 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import astroIcon from 'astro-icon';
 import { rehypeExternalLinks } from './src/utils/rehype-external-links.ts';
+import { expressiveCodeA11yPlugin } from './src/utils/expressive-code-a11y-plugin.ts';
 import pagefind from 'astro-pagefind';
 import robotsTxt from 'astro-robots-txt';
 import compress from '@playform/compress';
@@ -28,6 +29,7 @@ export default defineConfig({
 				borderRadius: '0.5rem',
 				codeFontFamily: 'Fira Code, Consolas, Monaco, monospace',
 			},
+			plugins: [expressiveCodeA11yPlugin()],
 		}),
 		mdx(),
 		astroIcon(),
