@@ -4,7 +4,19 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'CLAUDE.md'
+      - 'README.md'
+      - 'docs/**'
+      - '*.md'
+      - 'LICENSE'
   pull_request:
+    paths-ignore:
+      - 'CLAUDE.md'
+      - 'README.md'
+      - 'docs/**'
+      - '*.md'
+      - 'LICENSE'
 
 jobs:
   build-and-deploy:

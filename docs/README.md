@@ -18,6 +18,7 @@ User-facing guides for common tasks and workflows:
 - **[Using Tags](./guides/using-tags.md)** - Complete tag system reference (30+ tags)
 - **[Using Embed Components](./guides/using-embeds.md)** - Add media, callouts, and interactive elements
 - **[Tunes Generator](./guides/tunes-generator.md)** - Generate automated weekly music posts and year-end wrapped
+- **[Accessibility](./guides/accessibility.md)** - WCAG 2.1 Level AA compliance and aria-label implementation
 
 ### 🏗️ Architecture
 

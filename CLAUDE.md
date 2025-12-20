@@ -355,6 +355,7 @@ The LightGallery component includes a custom plugin that automatically loads ima
 - Set `data-theme` attribute for Expressive Code integration when needed
 - Keep components responsive with max-width constraints
 - Use `my-6` for consistent vertical spacing
+- **Accessibility**: Always add `aria-label` to image links and icon-only buttons (see Accessibility section)
 
 ### Styling System
 - Tailwind CSS 4.x via `@tailwindcss/vite` plugin (configured in `astro.config.mjs`)
@@ -371,6 +372,67 @@ The LightGallery component includes a custom plugin that automatically loads ima
 - Custom styling: Fira Code font, 0.5rem border radius
 - Code blocks automatically styled with `my-6` spacing via global CSS
 - **Note**: Expressive Code must be placed before `mdx()` in integrations array
+- **Accessibility**: Custom plugin adds `aria-label` to copy buttons (see Accessibility section)
+
+### Accessibility (WCAG 2.1 Level AA)
+
+The site implements comprehensive accessibility features to ensure WCAG 2.1 Level AA compliance:
+
+**Expressive Code Copy Buttons:**
+- Custom plugin: `src/utils/expressive-code-a11y-plugin.ts`
+- Adds `aria-label="Copy to clipboard"` to all copy buttons at build time
+- Configured in `astro.config.mjs` via `plugins: [expressiveCodeA11yPlugin()]`
+
+**Image Gallery Links (LightGallery):**
+- `LightGalleryNew.astro`: Gallery links include `aria-label={img.alt ? \`View ${img.alt}\` : 'View image in gallery'}`
+- `Img.astro`: Zoom links include `aria-label` based on image alt text
+- External image links indicate they open in new tab
+
+**Navigation Icons:**
+- `Header.astro`: All icon-only navigation links have `aria-label={item.name}`
+- Mobile menu button includes proper aria-label
+
+**Runtime Fallback:**
+- `BaseLayout.astro` includes JavaScript that adds aria-labels to dynamically loaded content
+- Uses MutationObserver to catch elements added after initial render
+- Handles buttons with title attributes, copy buttons, and icon-only links
+
+**When Creating New Components:**
+1. **Links with images**: Always add `aria-label` describing the link action
+   ```astro
+   <a href={url} aria-label={alt ? `View ${alt}` : 'View image'}>
+     <img src={src} alt={alt} />
+   </a>
+   ```
+
+2. **Icon-only buttons**: Include descriptive aria-label
+   ```astro
+   <button aria-label="Toggle menu">
+     <Icon name="menu" />
+   </button>
+   ```
+
+3. **External links**: Indicate they open in new tab
+   ```astro
+   <a href={url} target="_blank" aria-label={`${title} (opens in new tab)`}>
+   ```
+
+4. **Interactive elements**: Ensure all buttons and links have accessible text
+   - If using `title` attribute, also add `aria-label`
+   - For dynamic content, the BaseLayout fallback will help but prefer build-time solutions
+
+**Testing Accessibility:**
+- Use `@casoon/astro-webvitals` component (visible in dev mode)
+- Click "Accessibility" tab to see issues
+- Target: "No accessibility issues detected - WCAG 2.1 Level AA compliant"
+- Test on pages with code blocks, galleries, and navigation
+
+**Key Files:**
+- `src/utils/expressive-code-a11y-plugin.ts` - Expressive Code accessibility plugin
+- `src/components/embeds/LightGalleryNew.astro` - Gallery with aria-labels
+- `src/components/embeds/Img.astro` - Image component with aria-labels
+- `src/components/layout/Header.astro` - Navigation with aria-labels
+- `src/layouts/BaseLayout.astro` - Runtime accessibility fallback
 
 ### Site Configuration
 - Site URL and integrations in `astro.config.mjs`
@@ -594,6 +656,7 @@ avatar: "terminal"  # Override automatic selection
 - Add `cover.alt` text for hero images to improve accessibility and image SEO
 - Use `lastModified` or `updatedDate` when updating posts to help search engines understand content freshness
 - LightGallery images support `alt` attribute - use it for better accessibility
+- All image links automatically get `aria-label` from alt text (see Accessibility section)
 
 After changing the schema in `src/content.config.ts`, run `pnpm run astro -- sync` to regenerate TypeScript types.
 
