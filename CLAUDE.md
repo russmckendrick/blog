@@ -1,888 +1,158 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code when working with this Astro blog repository.
 
 ## Commands
 
 ### Development
-- `pnpm run dev` - Start Astro development server (http://localhost:4321) with hot reloading
-- `pnpm run build` - Build production site to `./dist/`
-- `pnpm run preview` - Preview production build locally
-- `npx astro check` - Run type-safe Astro diagnostics (run before PRs)
-- `pnpm run astro -- sync` - Regenerate types after adding/changing frontmatter fields
+- `pnpm run dev` - Start dev server (http://localhost:4321)
+- `pnpm run build` - Build to `./dist/`
+- `pnpm run preview` - Preview production build
+- `npx astro check` - Run type-safe diagnostics (run before PRs)
+- `pnpm run astro -- sync` - Regenerate types after frontmatter changes
 
 ### Content Creation
-- `pnpm run post` - Interactive script to create a new blog post with proper structure
-  - Prompts for title, description, tags, and ToC preference
-  - Optionally generates AI-powered cover image using FAL.ai (if `FAL_KEY` is configured)
-  - Interactive prompt review: accept, edit, regenerate, or skip
-  - Automatically creates MDX file with frontmatter in `src/content/blog/`
-  - Creates corresponding assets directory in `src/assets/`
-  - Generates filename in format: `YYYY-MM-DD-slug.mdx`
-  - Sets `draft: true` by default
+- `pnpm run post` - Create new blog post (prompts for title, description, tags, optional AI cover via FAL.ai)
+- `node scripts/fal-cover-generator.js` - Standalone AI cover generator (requires `FAL_KEY`, `OPENAI_API_KEY`)
+- `pnpm run tunes` - Generate weekly music post from Last.fm (see [Tunes Generator](#tunes-blog-post-generator))
+- `pnpm run wrapped` - Generate year-end Wrapped post (see [Year Wrapped Generator](#year-wrapped-generator))
 
-- `node scripts/fal-cover-generator.js` - Standalone AI cover image generator
-  - Uses GPT-4 to generate creative image prompts from post metadata
-  - Interactive prompt review loop with edit/regenerate options
-  - Generates images using FAL.ai's Gemini 3 Pro Image model
-  - Outputs both full resolution (2K) and resized (1400×800) versions
-  - Configuration in `scripts/fal-cover-config.json`
-  - Options: `--title`, `--description`, `--tags`, `--output`, `-y` (skip interactive)
-  - Requires: `FAL_KEY` and `OPENAI_API_KEY` environment variables
-
-- `pnpm run tunes` - Generate weekly music blog post from Last.fm data (see [Tunes Generator](#tunes-blog-post-generator))
-  - Fetches Last.fm listening stats for the previous week
-  - AI-powered album research and content generation
-  - Downloads artist/album artwork from russ.fm
-  - Creates MDX post with galleries in `src/content/tunes/`
-  - Options: `--week_start=YYYY-MM-DD` (custom week), `--debug` (single album)
-
-- `pnpm run wrapped` - Generate year-end "Wrapped" music blog post (see [Year Wrapped Generator](#year-wrapped-generator))
-  - Aggregates all weekly Last.fm charts for accurate calendar year data
-  - Spotify Wrapped-style statistics and insights
-  - AI-powered album research for top 15 featured albums
-  - Downloads artist/album artwork from russ.fm
-  - Creates comprehensive MDX post with stats, lists, and analysis
-  - Options: `--year=2025` (specify year), `--debug` (single album), `--skip-research` (no AI), `--use-cache` (reuse Last.fm data)
-
-### Image Optimization
-- `pnpm run optimize` - Optimize all images in `src/assets/` and `public/assets/` in place
-  - Compresses JPG, PNG, WebP, and AVIF formats
-  - Compresses JPG, PNG, WebP, and AVIF formats
-  - Uses quality 60 (default) with progressive JPEGs
-  - Only replaces originals if optimization saves space
-  - Shows progress and savings for each image
-  - Displays total space saved summary
-- `pnpm run optimize <path>` - Optimize images in a specific directory
-  - Supports both relative (to project root) and absolute paths
-  - Example: `pnpm run optimize src/assets/2025-10-01-my-post`
-
-### Hero Color Extraction
-- `pnpm run extract-colors` - Extract dominant colors from all hero images for dynamic gradients
-  - Processes all hero/cover images in `src/assets/`
-  - Generates `src/data/hero-colors.json` with color palettes
-  - Caches results in `node_modules/.cache/hero-colors-cache.json` for incremental builds
-  - Automatically runs before builds via `pnpm run prebuild`
-  - Re-run manually after adding new hero images or to regenerate colors
-
-### Content Migration
-- `scripts/convert-to-mdx.sh` - Script for migrating legacy posts to MDX format
+### Image & Build Tools
+- `pnpm run optimize [path]` - Optimize images (JPG, PNG, WebP, AVIF) with quality 60
+- `pnpm run extract-colors` - Extract hero colors for dynamic gradients (auto-runs in prebuild)
 
 ## Build & Deployment
 
-### GitHub Actions Workflow
-The site uses GitHub Actions for optimized builds and deployment to Cloudflare Pages:
-- **Workflow**: `.github/workflows/deploy.yml` - Main build and deploy workflow
-- **Trigger**: Runs on push to `main` and on pull requests
-- **Performance**: First build ~20min, subsequent builds ~2-5min (with caching)
-- **Caching Strategy**:
-  - Caches `node_modules/` for faster dependency installation
-  - Caches `node_modules/.astro/` for processed images (prevents reprocessing 9,320+ image variations)
-  - Cache key based on `src/**` and `public/**` file hashes
-- **Deployment**: Uses Wrangler CLI to deploy to Cloudflare Pages
-
-### Build Performance
-- **Source images**: 173 images in `src/assets/`
-- **Generated variations**: ~9,320 image operations (53 per source image)
-- **Formats**: webp, avif, png at multiple responsive sizes
-- **Optimization**: Smart caching dramatically reduces subsequent build times
-
-### Setup Requirements
-To use the GitHub Actions workflow, configure these repository secrets:
-- `CLOUDFLARE_API_TOKEN` - API token with Cloudflare Pages edit permissions
-- `CLOUDFLARE_ACCOUNT_ID` - Your Cloudflare account ID
-
-See `BUILD_OPTIMIZATION.md` for detailed setup instructions and performance analysis.
+GitHub Actions (`.github/workflows/deploy.yml`) deploys to Cloudflare Pages on push to `main`.
+- **Caching**: `node_modules/` and `node_modules/.astro/` for faster builds
+- **Secrets required**: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
 
 ## Architecture Overview
 
-### OpenGraph Image Generation
-
-The site automatically generates custom OpenGraph (OG) images for all blog posts using `astro-og-canvas`:
-- **Endpoint**: `src/pages/[year]/[month]/[day]/[slug]-og.png.ts` - Dynamic route that generates OG images
-- **Images**: Generated at build time and saved to `dist/[year]/[month]/[day]/[slug]-og.png`
-- **Dimensions**: 1200x630 (standard OG image size)
-- **Design**: Features site logo, gradient background (gray-900 to gray-800), blue accent border, and Inter font family
-- **Component**: `src/components/OpenGraph/OG.tsx` - React component that renders the OG image
-- **Integration**: Blog posts automatically reference their OG image in meta tags via the `ogImagePath` prop
-- **Caching**: Images are cached in `node_modules/.astro-og-canvas` across builds for performance (GitHub Actions cache enabled)
-
-**Important**: OG images use `astro-og-canvas` with Sharp processing at build time. This is separate from blog post images which use Cloudflare Image Transformations. The GitHub Actions workflow caches only the OG canvas output (`node_modules/.astro-og-canvas`), not the main Astro image processing.
-
-The OG images are automatically linked in the HTML meta tags for both OpenGraph and Twitter Card metadata.
-
-### Image Processing & Delivery
-
-The site uses **Cloudflare Image Transformations** for on-demand image optimization and delivery:
-
-**Architecture**:
-- **No build-time processing**: Images are NOT processed during `pnpm run build`
-- **CDN-level transformations**: Cloudflare intercepts `/cdn-cgi/image/` URLs automatically
-- **On-demand optimization**: Images are resized/optimized on first request, then cached globally
-- **Automatic format selection**: Serves AVIF → WebP → original based on browser support
-
-**Implementation**:
-- Helper utility: `src/utils/cloudflare-images.ts`
+### Image Processing
+Uses **Cloudflare Image Transformations** (not build-time processing):
 - URL pattern: `/cdn-cgi/image/width=800,quality=85,format=auto/assets/image.jpg`
-- Quality presets: `CF_IMAGE_PRESETS` (hero, thumbnail, thumbnailPriority, gallery, avatar)
-- **No adapter needed**: Works with fully static sites
+- Helper: `src/utils/cloudflare-images.ts` (`getCFImageUrl()`, `generateCFSrcSet()`)
+- Presets: hero, thumbnail, thumbnailPriority, gallery, avatar
 
-**Benefits**:
-- Build time reduced from 20+ minutes to 2-3 minutes
-- No Sharp processing (9,320+ image operations eliminated)
-- Global CDN delivery (280+ Cloudflare edge locations)
-- Free tier: 5,000 unique transformations/month
-
-**Components using Cloudflare Images**:
-- `PostCard.astro`: Card thumbnails with responsive srcset
-- `BlogPost.astro`: Hero images for blog posts
-- `Img.astro`: Embed component for inline images with LightGallery zoom
-- All components use `getCFImageUrl()` and `generateCFSrcSet()` helpers
-
-**Transformation options**: width, height, quality (1-100), format (auto/webp/avif/jpeg), fit (scale-down/contain/cover/crop/pad), gravity (auto/left/right/top/bottom/center), sharpen (0-10), blur (0-250), metadata (keep/copyright/none)
-
-**Docs**: https://developers.cloudflare.com/images/transform-images/transform-via-url/
+### OpenGraph Images
+Auto-generated via `astro-og-canvas`:
+- Endpoint: `src/pages/[year]/[month]/[day]/[slug]-og.png.ts`
+- Dimensions: 1200x630, cached in `node_modules/.astro-og-canvas`
 
 ### Dynamic Hero Gradients
+- `scripts/extract-hero-colors.js` extracts colors using Sharp
+- `src/data/hero-colors.json` stores palettes
+- `src/utils/hero-colors.ts` provides runtime utilities
+- CSS uses `color-mix()` for soft gradient washes
 
-Blog posts feature a dynamic gradient background extracted from each post's hero image colors:
-
-**How It Works**:
-1. `scripts/extract-hero-colors.js` analyzes hero images using Sharp at build time
-2. Extracts 4 dominant, vibrant colors (primary, secondary, accent, tertiary) plus dark mode variants
-3. Saves color palettes to `src/data/hero-colors.json`
-4. `src/utils/hero-colors.ts` provides utilities to retrieve colors and generate CSS custom properties
-5. `BlogPost.astro` applies colors as inline CSS variables on the gradient section
-6. CSS uses `color-mix()` to create soft, muted gradient washes
-
-**Color Extraction Algorithm**:
-- Samples 128x128 pixels from each hero image
-- Scores colors by saturation (vibrance) and frequency
-- Ensures selected colors are visually distinct (minimum color distance)
-- Generates darkened variants for dark mode (40% darker)
-
-**Files**:
-- `scripts/extract-hero-colors.js` - Build-time color extraction script
-- `src/utils/hero-colors.ts` - Runtime utilities (`getHeroColors()`, `getGradientStyles()`)
-- `src/data/hero-colors.json` - Generated color data (343 images)
-- `src/styles/global.css` - `.hero-gradient-bg` CSS with `color-mix()` for soft washes
-
-**Gradient Styling**:
-- Light mode: 15% extracted color mixed with white, fading to page background
-- Dark mode: 40% extracted color mixed with gray-950, fading to page background
-- Uses CSS `color-mix(in srgb, ...)` for precise color blending
-- Covers 70vh of viewport height behind the post card
-
-**Caching**:
-- Color extraction results cached by file modification time
-- Cache location: `node_modules/.cache/hero-colors-cache.json`
-- Incremental builds only process new/modified images
-- First extraction: ~10 seconds for 340+ images
-- Subsequent builds: <1 second (cached)
-
-**Regenerating Colors**:
-```bash
-# Clear cache and regenerate all colors
-rm node_modules/.cache/hero-colors-cache.json
-pnpm run extract-colors
-
-# Or just run extraction (uses cache for unchanged images)
-pnpm run extract-colors
-```
-
-### SEO Management
-
-The site uses `astro-seo-plugin` for comprehensive SEO optimization:
-- **Component**: `AstroSEO` component imported in `src/components/layout/BaseHead.astro`
-- **Features**: Manages meta tags, OpenGraph tags, Twitter Card tags, canonical URLs, and robots directives
-- **Social**: Configured with Twitter handle `@russmckendrick` for creator attribution
-- **Verification**: Includes Mastodon verification link (`rel="me"`)
-- **Sitemap**: Automatically generated via `@astrojs/sitemap` integration, excludes `/draft/` pages
-- **robots.txt**: Generated via `astro-robots-txt` integration with proper disallow rules
-- **RSS Feed**: Available at `/rss.xml` with correct date-based URLs matching site structure
-
-#### Structured Data (Schema.org)
-
-The site implements rich structured data for enhanced search engine visibility:
-
-**Automatic Schema (All Blog Posts):**
-- **BlogPosting**: Automatically added to every blog post with title, description, dates, author, and keywords
-- **BreadcrumbList**: Automatically generated from the breadcrumb navigation (Home → Year → Post)
-- **Person**: Author information with social links and expertise areas
-- **Organization**: Publisher information for the blog
-
-**Optional Schema (Add Manually to Posts):**
-- **FAQ Schema** (`createFAQSchema`): For posts with Q&A sections - generates rich snippets with expandable questions
-- **HowTo Schema** (`createHowToSchema`): For tutorial posts - generates step-by-step rich snippets with images
-
-**Usage Example - Adding FAQ Schema:**
-```astro
----
-import { Schema } from 'astro-seo-schema';
-import { createFAQSchema } from '../utils/schema';
-
-const faqSchema = createFAQSchema([
-  {
-    question: "How do I install Docker on Ubuntu?",
-    answer: "First update your package index with 'sudo apt update', then install prerequisites..."
-  },
-  {
-    question: "What is Cloudflare Tunnel?",
-    answer: "Cloudflare Tunnel is a secure way to connect your web services to Cloudflare..."
-  }
-], Astro.url.toString());
----
-<Schema item={faqSchema} />
-```
-
-**Usage Example - Adding HowTo Schema:**
-```astro
----
-import { createHowToSchema } from '../utils/schema';
-
-const howToSchema = createHowToSchema({
-  name: "Install n8n locally using Cloudflare",
-  description: "Complete guide to setting up n8n with Docker and Cloudflare Tunnel",
-  url: Astro.url.toString(),
-  totalTime: "PT30M", // ISO 8601 duration format (30 minutes)
-  image: ogImage,
-  steps: [
-    { name: "Install Docker", text: "Update apt and install Docker prerequisites..." },
-    { name: "Setup Cloudflare Tunnel", text: "Create a new tunnel in Cloudflare Zero Trust..." },
-    { name: "Configure n8n", text: "Create docker-compose.yml with PostgreSQL and n8n..." }
-  ]
-});
----
-<Schema item={howToSchema} />
-```
-
-**Schema.org Resources:**
-- All schema utilities are in `src/utils/schema.ts`
-- Uses `schema-dts` for TypeScript type safety
-- Validate schemas with [Google Rich Results Test](https://search.google.com/test/rich-results)
-- Test structured data with [Schema.org Validator](https://validator.schema.org/)
+### SEO & Structured Data
+- `astro-seo-plugin` manages meta/OG tags in `src/components/layout/BaseHead.astro`
+- Schema.org utilities in `src/utils/schema.ts`: `createFAQSchema()`, `createHowToSchema()`
+- Sitemap via `@astrojs/sitemap`, RSS at `/rss.xml`
 
 ### Content Collections
-This site uses Astro's content collections system for type-safe content management:
-- **Blog collection** (`src/content/blog/`): Main blog posts in `.md` or `.mdx` format
-  - Configured in `src/content.config.ts` with Zod schema for frontmatter validation
-  - Supports both Astro-native and Hugo-style frontmatter fields (e.g., `date`/`pubDate`, `cover` object)
-  - Automatically transforms dates and normalizes field names for backward compatibility
-- **Tunes collection** (`src/content/tunes/`): Music-related content with album metadata
+- **Blog**: `src/content/blog/` (.md/.mdx) with Zod schema in `src/content.config.ts`
+- **Tunes**: `src/content/tunes/` for music posts
+- URL pattern: `/[year]/[month]/[day]/[slug]`
 
-### URL Structure and Routing
-Blog posts use a date-based URL pattern: `/[year]/[month]/[day]/[slug]`
-- Dynamic route implemented in `src/pages/[year]/[month]/[day]/[slug].astro`
-- Slugs are generated from post titles via `createUrlFriendlySlug()` in `src/utils/url.ts`
-- The `getStaticPaths()` function extracts date components and generates all static routes at build time
-
-### MDX Component System
-Global MDX components are available in all blog posts without imports:
-- Components defined in `mdx-components.ts` (root level) are automatically available
-- Embed components live in `src/components/embeds/`
-- Callout components in `src/components/embeds/callouts/`: Info, Note, Tip, Warning, Important, Caution, General
-- All components are injected via the `components` prop in the dynamic blog post route (`src/pages/[year]/[month]/[day]/[slug].astro`)
-- See `EMBED_USAGE.md` for detailed component usage examples
-
-**Available Embed Components:**
+### MDX Components
+Global components in `mdx-components.ts` auto-injected to all posts:
 - **Media**: YouTube, Instagram, Giphy, Reddit, Img, LightGallery
-- **Audio/Music**: Audio (MP3/OGG/WAV), AppleMusic
-- **Content**: LinkPreview, ChatMessage
-- **Diagrams**: Mermaid (interactive diagrams with zoom/pan/export)
-- **Callouts**: 8 types (Note, Tip, Info, Important, Warning, Caution, General, Callout)
+- **Audio**: Audio (MP3/OGG/WAV), AppleMusic
+- **Content**: LinkPreview, ChatMessage, Mermaid (interactive diagrams)
+- **Callouts**: Note, Tip, Info, Important, Warning, Caution, General
 
-**Mermaid Diagram Component:**
-The Mermaid component renders interactive diagrams with zoom, pan, and export capabilities (based on Mermaider):
-- **Usage**: `<Mermaid code={\`graph TD\nA --> B\`} />` or `<Mermaid code={\`...\`} title="Diagram description" minimapPosition="TL" />`
-- **Features**:
-  - **Interactive minimap**: Bottom-right overlay showing diagram overview with viewport indicator, drag to pan, click to jump
-  - **Zoom/pan controls**: Mouse wheel zoom (0.2x-5x range), click-drag panning, minimap controls (+/-/reset buttons)
-  - **Auto theme-switching**: Diagrams automatically re-render when dark mode toggles (watches `<html>` class changes)
-  - **Export capabilities**: PNG (2x resolution) and SVG export, always exports in light mode regardless of theme
-  - **Error handling**: Graceful fallback with user-friendly error messages for invalid Mermaid syntax
-  - **Responsive**: Diagrams auto-size to container with proper SVG dimension fixes
-- **Props**:
-  - `code` (required): The Mermaid diagram code as a string
-  - `title` (optional): Accessibility label and export filename (default: "Mermaid diagram")
-  - `minimapPosition` (optional): Minimap position - `"TL"` (top-left), `"TR"` (top-right), `"BL"` (bottom-left), `"BR"` (bottom-right, default), `"off"` (disabled)
-- **Implementation**:
-  - Component: `src/components/embeds/Mermaid.astro`
-  - Export utility: `src/utils/exportMermaidPNG.ts`
-  - Uses `mermaid@11.12.1` with manual rendering (`startOnLoad: false`)
-  - SVG sizing fixes remove hardcoded dimensions for responsive behavior
-  - MutationObserver watches for theme changes and triggers re-render
-- **View Transitions**: Cleanup logic in `BaseLayout.astro` removes orphaned Mermaid elements on navigation
-- **Styling**: Border, controls bar, dark mode support, matches blog component patterns
+**Adding components**: Create in `src/components/embeds/`, export from `index.ts`, add to `mdx-components.ts` and `[slug].astro`. See `EMBED_USAGE.md`.
 
-**Example Usage:**
-```mdx
-<Mermaid code={`
-stateDiagram-v2
-    [*] --> Idle
-    Idle --> Processing
-    Processing --> Success
-    Processing --> Error
-    Success --> [*]
-    Error --> Idle
-`} title="State machine diagram" />
-```
+### Styling
+- Tailwind CSS 4.x via `@tailwindcss/vite`
+- Dark mode via `.dark` class + `data-theme` attribute
+- Code highlighting: `astro-expressive-code` with GitHub themes
+- Global styles: `src/styles/global.css`
 
-**LightGallery Meta File Plugin:**
-The LightGallery component includes a custom plugin that automatically loads image captions from `.meta` files:
-- **Format**: `.meta` files are JSON files with the structure `{"Title": "Caption text"}`
-- **Location**: Place `.meta` files alongside images (e.g., `/assets/image.jpg` + `/assets/image.jpg.meta`)
-- **Auto-enabled**: Plugin is enabled by default on all LightGallery instances
-- **Hugo-compatible**: Maintains compatibility with Hugo's `.meta` file system from the previous site architecture
-- **Props**:
-  - `enableMetaPlugin={true}` - Enable/disable the plugin (default: `true`)
-  - `debugMeta={false}` - Enable console logging for debugging (default: `false`)
-- **Implementation**: Plugin fetches `.meta` files via `fetch()` and sets `data-sub-html` attributes on gallery items
-- **File location**: `src/utils/lightgallery-meta-plugin.ts` (standalone module) and inline in `src/components/embeds/LightGalleryNew.astro`
+### Accessibility (WCAG 2.1 AA)
+- Expressive Code plugin: `src/utils/expressive-code-a11y-plugin.ts`
+- All image links get `aria-label` from alt text
+- Icon-only buttons require `aria-label`
+- Runtime fallback in `BaseLayout.astro` for dynamic content
 
-**Adding New Embed Components:**
-1. Create component in `src/components/embeds/YourComponent.astro`
-2. Export from `src/components/embeds/index.ts`
-3. Add to imports in `mdx-components.ts` (root) and export in `components` object
-4. Add to imports in `src/pages/[year]/[month]/[day]/[slug].astro` and add to `components` object
-5. Update `EMBED_USAGE.md` with usage examples and features
-6. Add example to `src/content/blog/2025-09-29-kitchen-sink.mdx`
-
-**Embed Component Guidelines:**
-- Use Tailwind classes directly (no `@apply` in Tailwind v4)
-- Support dark mode via `.dark` class selector
-- Use `is:global` for styles that need to affect markdown content
-- For theme-aware embeds, watch `document.documentElement` for class changes
-- Set `data-theme` attribute for Expressive Code integration when needed
-- Keep components responsive with max-width constraints
-- Use `my-6` for consistent vertical spacing
-- **Accessibility**: Always add `aria-label` to image links and icon-only buttons (see Accessibility section)
-
-### Styling System
-- Tailwind CSS 4.x via `@tailwindcss/vite` plugin (configured in `astro.config.mjs`)
-- Tailwind Typography plugin (`@tailwindcss/typography`) for prose styling
-- Global styles in `src/styles/global.css`
-- Dark mode via `.dark` class on `<html>` element (toggled by theme switcher in Header)
-- Theme also sets `data-theme="dark"` or `data-theme="light"` for Expressive Code integration
-- **Important**: Tailwind v4 has strict `@apply` rules - prefer standard CSS properties or inline Tailwind classes
-
-### Code Highlighting
-- Uses `astro-expressive-code` with GitHub Dark/Light themes
-- Syntax highlighting disabled in markdown (`syntaxHighlight: false`) - handled by Expressive Code
-- Theme selection via `data-theme` CSS selector (`[data-theme='dark']` or `[data-theme='light']`)
-- Custom styling: Fira Code font, 0.5rem border radius
-- Code blocks automatically styled with `my-6` spacing via global CSS
-- **Note**: Expressive Code must be placed before `mdx()` in integrations array
-- **Accessibility**: Custom plugin adds `aria-label` to copy buttons (see Accessibility section)
-
-### Accessibility (WCAG 2.1 Level AA)
-
-The site implements comprehensive accessibility features to ensure WCAG 2.1 Level AA compliance:
-
-**Expressive Code Copy Buttons:**
-- Custom plugin: `src/utils/expressive-code-a11y-plugin.ts`
-- Adds `aria-label="Copy to clipboard"` to all copy buttons at build time
-- Configured in `astro.config.mjs` via `plugins: [expressiveCodeA11yPlugin()]`
-
-**Image Gallery Links (LightGallery):**
-- `LightGalleryNew.astro`: Gallery links include `aria-label={img.alt ? \`View ${img.alt}\` : 'View image in gallery'}`
-- `Img.astro`: Zoom links include `aria-label` based on image alt text
-- External image links indicate they open in new tab
-
-**Navigation Icons:**
-- `Header.astro`: All icon-only navigation links have `aria-label={item.name}`
-- Mobile menu button includes proper aria-label
-
-**Runtime Fallback:**
-- `BaseLayout.astro` includes JavaScript that adds aria-labels to dynamically loaded content
-- Uses MutationObserver to catch elements added after initial render
-- Handles buttons with title attributes, copy buttons, and icon-only links
-
-**When Creating New Components:**
-1. **Links with images**: Always add `aria-label` describing the link action
-   ```astro
-   <a href={url} aria-label={alt ? `View ${alt}` : 'View image'}>
-     <img src={src} alt={alt} />
-   </a>
-   ```
-
-2. **Icon-only buttons**: Include descriptive aria-label
-   ```astro
-   <button aria-label="Toggle menu">
-     <Icon name="menu" />
-   </button>
-   ```
-
-3. **External links**: Indicate they open in new tab
-   ```astro
-   <a href={url} target="_blank" aria-label={`${title} (opens in new tab)`}>
-   ```
-
-4. **Interactive elements**: Ensure all buttons and links have accessible text
-   - If using `title` attribute, also add `aria-label`
-   - For dynamic content, the BaseLayout fallback will help but prefer build-time solutions
-
-**Testing Accessibility:**
-- Use `@casoon/astro-webvitals` component (visible in dev mode)
-- Click "Accessibility" tab to see issues
-- Target: "No accessibility issues detected - WCAG 2.1 Level AA compliant"
-- Test on pages with code blocks, galleries, and navigation
-
-**Key Files:**
-- `src/utils/expressive-code-a11y-plugin.ts` - Expressive Code accessibility plugin
-- `src/components/embeds/LightGalleryNew.astro` - Gallery with aria-labels
-- `src/components/embeds/Img.astro` - Image component with aria-labels
-- `src/components/layout/Header.astro` - Navigation with aria-labels
-- `src/layouts/BaseLayout.astro` - Runtime accessibility fallback
-
-### Site Configuration
-- Site URL and integrations in `astro.config.mjs`
-- Site metadata, social links, and navigation in `src/consts.ts`
-- Tag metadata with colors and emojis defined in `TAG_METADATA` constant in `src/consts.ts`
-- Sitemap automatically excludes `/draft/` pages
-- Search functionality via Pagefind integration
-
-### Page Transitions (Astro View Transitions)
-The site uses Astro's native View Transitions API for smooth page navigation:
-
-**Implementation** (`src/layouts/BaseLayout.astro`):
-- **Component**: `<ViewTransitions />` added in the `<head>` section
-- **Animation**: Uses default fade transition (customizable via `transition:animate` directives)
-- **Fallback**: Automatic fallback for browsers without View Transitions API support
-- **Accessibility**: Respects `prefers-reduced-motion` automatically
-- **Performance**: Faster than JavaScript-based solutions, uses browser-native APIs
-
-**Available Transition Animations**:
-- `fade` - Default smooth crossfade (currently in use)
-- `slide` - Content slides in from right/left based on navigation direction
-- `initial` - Uses browser's default View Transition styling
-- `none` - Disables animations entirely
-
-**Customizing Transitions**:
-Add `transition:animate` directive to elements for custom animations:
-```astro
-<main transition:animate="slide">
-  <slot />
-</main>
-```
-
-For custom animations, define keyframes in `src/styles/global.css`:
-```css
-@keyframes custom-fade {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-```
-
-**Critical Pattern - DOM Cleanup for Third-Party Libraries**:
-When using JavaScript libraries that append elements to `document.body` (like LightGallery), you MUST implement cleanup using View Transitions lifecycle events:
-
+### Page Transitions
+Astro View Transitions with cleanup for third-party libraries (LightGallery):
 ```javascript
-// In BaseLayout.astro (global cleanup for all pages)
-function cleanupLibrary() {
-  // Remove persisted DOM elements
-  document.querySelectorAll('.library-element').forEach(el => el.remove());
-}
-
-document.addEventListener('astro:before-swap', cleanupLibrary);
-```
-
-**Why This Matters**:
-- Astro View Transitions only replace the page content (typically `<main>`)
-- Elements appended to `document.body` are NOT automatically removed
-- Without cleanup, artifacts from previous pages will persist and cause visual bugs
-- Always place cleanup logic in `BaseLayout.astro` so it runs for all transitions
-
-**LightGallery Cleanup Implementation**:
-The site implements comprehensive LightGallery cleanup in `BaseLayout.astro`:
-- Removes `.lg-outer`, `.lg-backdrop`, `.lg-container` elements
-- Removes the unified gallery container (`#unified-lightgallery`)
-- Cleans up all elements with `lg-` class/ID prefixes
-- Resets gallery initialization flags
-- Uses `astro:before-swap` event for cleanup timing
-
-**Lifecycle Events**:
-- `astro:before-preparation` - Before fetching new page
-- `astro:after-preparation` - After new page HTML loaded
-- `astro:before-swap` - Before old page replaced (use for cleanup)
-- `astro:after-swap` - After new page inserted
-- `astro:page-load` - After navigation complete (use for re-initialization)
-
-**Best Practices**:
-1. Place global cleanup hooks in `BaseLayout.astro`
-2. Use `astro:before-swap` for cleanup (runs before old content removed)
-3. Use `astro:page-load` for re-initialization (runs after new page ready)
-4. Add `transition:persist` to elements that should maintain state across navigations
-5. Test navigation between pages with different content to verify cleanup
-6. Check browser console for orphaned DOM elements during development
-
-**Persisting State Across Transitions**:
-Use `transition:persist` to maintain component state (e.g., video players, forms):
-```astro
-<video transition:persist controls>
-  <source src="video.mp4" />
-</video>
-```
-
-**Script Behavior**:
-- Inline scripts re-execute on every page navigation
-- Bundled module scripts only execute once (on initial load)
-- Use `astro:page-load` event to re-run initialization code:
-```javascript
-document.addEventListener('astro:page-load', () => {
-  // Re-initialize components here
+document.addEventListener('astro:before-swap', () => {
+  document.querySelectorAll('.lg-outer, .lg-backdrop').forEach(el => el.remove());
 });
 ```
 
 ### Build Optimization
-The site uses `@playform/compress` for production build optimization:
-- **Integration**: `@playform/compress` compresses all static assets in the build output
-- **Position**: Added last in the integrations array for optimal compression
-- **Asset Types Compressed**:
-  - CSS (via csso/lightningcss)
-  - HTML (via html-minifier-terser)
-  - JavaScript (via terser)
-  - JSON (via native JSON.stringify)
-  - Images (via sharp): avif, gif, heic, heif, jpeg, jpg, png, raw, tiff, webp
-  - SVG (via svgo)
-- **Configuration**: Uses default settings for all compression types
-- **Note**: Only compresses statically generated build output and pre-rendered routes, not runtime requests
+`@playform/compress` compresses CSS, HTML, JS, JSON, images, and SVG.
 
-### Layout Structure
-- `BaseLayout.astro`: Base HTML structure with head and footer
-- `BlogPost.astro`: Blog-specific layout with hero images, date display, and tag styling
-- Header/Footer components in `src/components/layout/`
+## Frontmatter Fields
 
-### Tags System
-- Tags page at `/tags/` displays all tags with post counts
-- Animated tag cloud using Web Animations API with staggered fade-in effects
-- Each tag has custom colors defined in `TAG_METADATA` (src/consts.ts)
-- Tag colors: light/dark mode variants with inset rings
-- Tag pages at `/tags/[tag]/[page]/` for browsing posts by tag
-- Pagination built-in for tag archives
-
-### Table of Contents
-- Automatically generated from markdown headings (h2 and h3)
-- Enabled per-post via `showToc: true` in frontmatter
-- Collapsible component with smooth scrolling
-- Displays at the top of post content, before the article body
-- Component: `src/components/blog/TableOfContents.astro`
-- Supports both `showToc` and `ShowToc` frontmatter fields (Hugo compatibility)
-- Headings automatically get scroll margin to account for fixed header
-- Dark mode support with theme-aware styling
-
-## Important Frontmatter Fields
-
-Blog posts support both native Astro and Hugo-style frontmatter:
-- `title` (required): Post title
-- `description` (required): Post description - ensure each post has a unique, SEO-optimized description
-- `date` or `pubDate`: Publication date (date takes precedence for Hugo compatibility)
-- `updatedDate`: Date when the post was last updated
-- `lastModified`: Alternative field for last modified date (takes precedence over updatedDate)
-- `tags`: Array of tag strings
-- `heroImage`: Astro image import for hero banner
-- `cover.image`: Hugo-style cover image path
-- `cover.alt`: Alt text for cover image (falls back to title if not provided)
-- `draft`: Boolean to exclude from production builds
-- `showToc` or `ShowToc`: Display table of contents
-- `avatar`: Avatar name for post author (optional)
-
-### Avatar System
-
-The blog supports custom avatars for posts with **automatic tag-based selection** when no avatar is specified in frontmatter.
-
-**Automatic Avatar Selection:**
-When no `avatar` field is provided in frontmatter, the system automatically selects an appropriate avatar based on the post's primary tag (first tag in the tags array). This mapping is defined in `TAG_AVATAR_MAP` in `src/consts.ts`.
-
-**Tag-to-Avatar Mappings:**
-- `ai` → ai.svg
-- `ansible` → ansible.svg
-- `author`, `book` → book.svg
-- `automation`, `devops` → devops.svg
-- `aws`, `cloud` → cloud.svg
-- `azure` → azure.svg
-- `blog`, `life` → coffee.svg / coffee-02.svg
-- `code`, `linux`, `terraform` → terminal.svg
-- `conference` → speaker.svg
-- `containers`, `docker`, `kubernetes`, `podman` → docker.svg
-- `github` → github.svg
-- `infrastructure-as-code`, `packer` → data.svg
-- `listened` → headphones.svg
-- `macos` → laptop-01.svg
-- `python` → python.svg
-- `security` → hacker.svg
-- `tools` → keyboard.svg
-- `vinyl` → record-01.svg
-- `web` → network.svg
-
-**Available Avatars:**
-50+ avatars in both PNG and SVG formats, including:
-- **Tech**: terminal, keyboard, laptop-01, laptop-02, hacker, matrix, devops, data, network, network-02, cables, phone, tablet, watch
-- **Music**: headphones, headphones-off, speaker, record-01, record-02, record-03, band-01 through band-05
-- **Professional**: arms-folded, arms-folded-02, founder, suit, jobs, speaker
-- **Casual**: coffee, coffee-02, arms-to-side, snug, hipster
-- **Tech-specific**: ai, ansible, azure, book, cloud, docker, github, python
-- **Other**: glitch, noir, pixil, 3am, thumbs-up, thumbs-down
-
-**Manual Avatar Override:**
 ```yaml
----
-title: "My Docker Tutorial"
-description: "Learn Docker the easy way"
+title: "Required"
+description: "Required - unique, SEO-optimized"
+date: 2024-12-27  # or pubDate
 tags: ["docker", "devops"]
-avatar: "terminal"  # Override automatic selection
----
+cover:
+  image: "./cover.png"
+  alt: "Description"
+draft: true  # excludes from production
+showToc: true  # enable table of contents
+avatar: "terminal"  # optional, auto-selected from primary tag
 ```
 
-**Format Support:**
-- Specify avatar name without extension (defaults to `.svg`)
-- Or include extension: `avatar: "coffee.png"` or `avatar: "coffee.svg"`
-- Avatars are loaded from `/public/images/avatars/`
-- Falls back to tag-based selection if no avatar specified
-- Falls back to `/images/avatar.svg` if no matching tag
-
-**Visual Features:**
-- **Blog posts**: Large 64-80px avatar with colored ring matching primary tag
-- **Post cards**: Medium 40-56px avatar in metadata section
-- **Effects**: Gradient glow matching primary tag color, smooth scale transitions
-- **Schema.org**: Avatar automatically included in author structured data
-
-**Implementation:**
-- Avatar selection logic in `PostCard.astro` (line 38-46) and `BlogPost.astro` (line 75-83)
-- Uses `getDefaultAvatar()` function to check primary tag and return appropriate avatar
-- AI-generated posts (tunes) automatically use the glitch avatar
-
-**SEO Best Practices**:
-- Always provide unique `description` for each post (used in meta tags and OpenGraph)
-- Add `cover.alt` text for hero images to improve accessibility and image SEO
-- Use `lastModified` or `updatedDate` when updating posts to help search engines understand content freshness
-- LightGallery images support `alt` attribute - use it for better accessibility
-- All image links automatically get `aria-label` from alt text (see Accessibility section)
-
-After changing the schema in `src/content.config.ts`, run `pnpm run astro -- sync` to regenerate TypeScript types.
-
-## File Naming Conventions
-- Components: PascalCase (`Header.astro`, `PostCard.astro`)
-- Routes: kebab-case (`about.astro`) or bracketed for dynamic segments (`[slug].astro`)
-- Blog posts: lowercase with hyphens (`2024-12-27-post-title.md`)
-- Keep blog post filenames consistent with URL slug format
-
-## Content Workflow
-1. Create new posts in `src/content/blog/` as `.md` or `.mdx`
-2. Use lowercase filenames with hyphens for consistent URL slugs
-3. Run `pnpm run astro -- sync` after adding new frontmatter fields
-4. For embeds, use components from `src/components/embeds/` (see `EMBED_USAGE.md`)
-5. Test in dev mode across light/dark themes and responsive breakpoints
-6. Verify with `npx astro check` before committing
-
-## External Links
-External links in markdown are automatically enhanced via `rehypeExternalLinks` plugin (`src/utils/rehype-external-links.ts`):
-- Adds `target="_blank"` and `rel="nofollow noopener noreferrer"` attributes
-- Adds arrow icon (↗) after link text
-- Supports `[noExternalIcon]` marker to suppress icon
-- Supports `[noSpace]` marker to remove spacing before icon
-- Markers are automatically stripped from displayed text
-- Icon styling in `src/styles/global.css` with hover animation
+### Avatar System
+Auto-selected from primary tag via `TAG_AVATAR_MAP` in `src/consts.ts`:
+- `docker`/`containers` → docker.svg
+- `code`/`linux` → terminal.svg
+- `listened` → headphones.svg
+- Falls back to `/images/avatar.svg`
 
 ## Tunes Blog Post Generator
 
-Automated weekly music blog post generation using Last.fm data and AI content generation. See `scripts/TUNES_README.md` for full documentation.
+Generates weekly music posts from Last.fm data with AI content.
 
-### Quick Start
 ```bash
-# Generate post for previous week
-pnpm run tunes
-
-# Custom week
-pnpm run tunes -- --week_start=2025-09-25
-
-# Debug mode (single album only)
-pnpm run tunes -- --debug
+pnpm run tunes                        # Previous week
+pnpm run tunes -- --week_start=2025-09-25  # Custom week
+pnpm run tunes -- --debug             # Single album
 ```
 
-### Environment Variables Required
-```bash
-# Last.fm
-LASTFM_USER=your-username
-LASTFM_API_KEY=your-api-key
+**Required env vars**: `LASTFM_USER`, `LASTFM_API_KEY`, `COLLECTION_URL`, `OPENAI_API_KEY` or `ANTHROPIC_API_KEY`
+**Optional**: `TAVILY_API_KEY` (web search), `FAL_KEY` (AI collages)
 
-# Collection metadata
-COLLECTION_URL=https://www.russ.fm
+**Output**:
+- Content: `src/content/tunes/YYYY-MM-DD-listened-to-this-week/index.mdx`
+- Images: `public/assets/YYYY-MM-DD-listened-to-this-week/{artists,albums}/`
+- Cover: Strip collage (default) or FAL.ai collage
 
-# AI Provider (choose one)
-OPENAI_API_KEY=your-key
-# OR
-ANTHROPIC_API_KEY=your-key
-
-# Optional: Web search for album facts
-TAVILY_API_KEY=your-key
-
-# Optional: FAL.ai for AI-generated collages
-FAL_KEY=your-key
-```
-
-### What It Does
-1. Fetches weekly listening stats from Last.fm (top 11 artists/albums)
-2. Retrieves album/artist metadata (images, links) from russ.fm collection
-3. AI researches each album and writes engaging blog sections
-4. Downloads high-res artwork to `public/assets/[date]-listened-to-this-week/{artists,albums}/`
-5. Generates custom cover collage from album artwork (1400×800 PNG)
-6. Generates MDX post with LightGallery components in `src/content/tunes/`
-
-### Output Structure
-- **Content**: `src/content/tunes/YYYY-MM-DD-listened-to-this-week/index.mdx`
-- **Images**: `public/assets/YYYY-MM-DD-listened-to-this-week/{artists,albums}/`
-- **Cover**: `src/assets/YYYY-MM-DD-listened-to-this-week/tunes-cover-YYYY-MM-DD-listened-to-this-week.png`
-- **Features**: Frontmatter, artist/album galleries, AI-generated sections, Top N lists with play counts
-
-### Cover Collage Generation
-Each tunes post automatically gets a unique cover collage. Two generators are available:
-
-#### Strip Collage (Default - `scripts/strip-collage.js`)
-Local Sharp-based torn-paper strip collage generator:
-- **Dimensions**: 1400×800 PNG (native render, no upscaling)
-- **Style**: Vertical strips with torn edges, slight rotation (±4°), high overlap
-- **Source**: Album artwork only (no tinting, original colors preserved)
-- **Deduplication**: Each album appears exactly once per collage
-- **Deterministic**: Uses post date as seed for consistent regeneration
-- **Dynamic**: Strip width adapts to album count (2-3 albums: wider strips, 9+ albums: narrower strips)
-- **Coverage**: Full edge-to-edge coverage with intelligent seam guards (no black/transparent edges)
-- **Performance**: Fast, runs locally without API calls
-
-#### FAL.ai Collage (Alternative - `scripts/fal-collage.js`)
-AI-powered collage using FAL.ai Gemini 3 Pro Image model:
-- **Dimensions**: 2K resolution (2048px) PNG
-- **Style**: AI-generated artistic fusion of album covers
-- **Selection**: Analyzes all albums and selects 2-6 most vibrant/colorful covers
-- **Algorithm**: Color variance analysis (saturation 40% + variance 30% + text penalty 30%)
-- **Blacklist**: Configurable album/artist blacklist to avoid content policy violations
-- **Smart Prompts**: Uses GPT-4 Vision to analyze covers and generate context-aware prompts
-- **Output**: Seamless AI-blended collage without text/typography
-- **API**: Requires `FAL_KEY` and `OPENAI_API_KEY` environment variables
-- **Configuration**: `scripts/fal-collage-config.json` - models, prompts, blacklist, scoring weights
-- **Cost**: Uses FAL.ai and OpenAI API credits
-- **Error handling**: Automatic retry with different images on content policy violations
-
-**Usage**:
-```javascript
-// Default: Strip collage
-import { createStripCollage } from './strip-collage.js'
-await createStripCollage(albumImagePaths, coverOutputPath, { seed: dateSeed, width: 1400, height: 800 })
-
-// Alternative: FAL.ai collage
-import { createFALCollage } from './fal-collage.js'
-await createFALCollage(albumImagePaths, coverOutputPath, { seed: dateSeed, width: 1400, height: 800 })
-```
-
-See `docs/guides/tunes-generator.md` for detailed collage documentation.
-
-### Tech Stack
-- **LangChain.js** - AI orchestration
-- **OpenAI GPT-4 / Anthropic Claude** - Content generation
-- **Tavily API** - Optional web search for factual research
-- **Last.fm API** - Listening statistics
-- **russ.fm** - Collection metadata and images
-
-### Key Files
-- `scripts/generate-tunes-post.js` - Main orchestrator
-- `scripts/lib/lastfm-client.js` - Last.fm API
-- `scripts/lib/collection-manager.js` - russ.fm metadata
-- `scripts/lib/content-generator.js` - AI content (LangChain)
-- `scripts/lib/image-handler.js` - Image downloads
-- `scripts/lib/blog-post-renderer.js` - MDX rendering
-- `scripts/strip-collage.js` - Cover collage generation with torn-paper effect (default)
-- `scripts/fal-collage.js` - AI-powered collage using FAL.ai WAN 2.5 (alternative)
+**Key files**: `scripts/generate-tunes-post.js`, `scripts/strip-collage.js`, `scripts/fal-collage.js`
 
 ## Year Wrapped Generator
 
-Generate comprehensive year-end "Wrapped" posts inspired by Spotify Wrapped, using Last.fm data and AI content generation.
+Spotify Wrapped-style year-end posts from Last.fm data.
 
-### Quick Start
 ```bash
-# Generate wrapped for current year
-pnpm run wrapped
-
-# Generate for specific year
-pnpm run wrapped -- --year=2025
-
-# Quick preview (skip AI research)
-pnpm run wrapped -- --year=2025 --skip-research
-
-# Debug mode (1 featured album only)
-pnpm run wrapped -- --year=2025 --debug
-
-# Use cached Last.fm data (faster for re-runs)
-pnpm run wrapped -- --year=2025 --use-cache
+pnpm run wrapped                      # Current year
+pnpm run wrapped -- --year=2025       # Specific year
+pnpm run wrapped -- --skip-research   # No AI
+pnpm run wrapped -- --use-cache       # Reuse Last.fm data
 ```
 
-### Features (Inspired by Spotify Wrapped)
+**Features**: Stats dashboard, Artist/Album of the Year, Top 25/50 lists, monthly breakdown, listening age, hidden gems, new discoveries.
 
-**Statistics Dashboard:**
-- Total scrobbles, hours listened, unique artists/albums
-- Days of music, average plays per day
-- Peak listening month
+**Output**: `src/content/tunes/YYYY-year-in-music.mdx`
 
-**Year-End Awards:**
-- Artist of the Year with play counts and dominant months
-- Album of the Year with detailed statistics
-- Top 25 Artists and Top 50 Albums with russ.fm links
+**Key files**: `scripts/generate-year-wrapped.js`, `scripts/lib/year-stats-calculator.js`
 
-**Insights:**
-- **Monthly Breakdown**: Visual activity chart showing listening patterns
-- **Listening Age**: Which decade resonates most (based on album release years)
-- **Genre Breakdown**: Top genres from collection metadata
-- **Hidden Gems**: Albums that "overperformed" based on their ranking
-- **New Discoveries**: Albums released in the target year
+## Guidelines
 
-**Featured Albums:**
-- Top 15 albums get AI-researched deep dive sections
-- LightGallery integration for album/artist artwork
-- Links to russ.fm collection
+- **Style**: 2-space indent, no semicolons, PascalCase components
+- **Files**: Components in PascalCase, routes in kebab-case, posts as `YYYY-MM-DD-slug.md`
+- **Testing**: `npx astro check` before commits
+- **External links**: Auto-enhanced via `src/utils/rehype-external-links.ts` (adds `target="_blank"`, arrow icon)
+- **Security**: Use `sanitize-html` for HTML sanitization, never regex
 
-### Output Structure
-- **Content**: `src/content/tunes/YYYY-year-in-music.mdx`
-- **Images**: `public/assets/YYYY-year-in-music/{artists,albums}/`
-- **Cover**: `src/assets/YYYY-year-in-music/wrapped-cover-YYYY.png`
-
-### How It Works
-
-1. **Aggregate Weekly Charts**: Fetches all 48-52 weekly charts for the calendar year (more accurate than `12month` rolling period)
-2. **Calculate Statistics**: Total plays, monthly breakdown, listening patterns
-3. **Generate Insights**: Spotify Wrapped-style insights (listening age, hidden gems, etc.)
-4. **Download Artwork**: Artist and album images from russ.fm
-5. **AI Research**: Generate detailed sections for top 15 albums
-6. **Render MDX**: Create comprehensive year-end blog post
-
-### Key Files
-- `scripts/generate-year-wrapped.js` - Main orchestrator
-- `scripts/lib/lastfm-year-client.js` - Extended Last.fm client with year aggregation
-- `scripts/lib/year-stats-calculator.js` - Spotify Wrapped-style insights calculator
-- `scripts/year-wrapped-template.mdx` - MDX template for year-end posts
-
-### Data Caching
-
-The script caches Last.fm data to avoid re-fetching 48+ weekly charts:
-- Cache file: `scripts/.year-wrapped-cache-YYYY.json`
-- Use `--use-cache` flag to reuse cached data
-- Delete cache file to force fresh data fetch
-
-## Existing Guidelines
-Additional repository guidelines are documented in `AGENTS.md`, including:
-- Module organization (pages in `src/pages`, components in `src/components`, utils in `src/utils`)
-- Coding style (2-space indentation, semicolon-free, PascalCase components)
-- Commit message conventions (imperative, single-sentence)
-- Testing approach (manual verification + `npx astro check`)
-- Priority Card (First Post) Optimization:
-  - src width: 640px → 480px (matches regular cards)
-  - src width: 640px → 480px (matches regular cards)
-  - sizes attribute: Changed to `(min-width: 768px) 720px, calc(100vw - 60px)` (conservative)
-  - srcset widths: Granular steps (320, 360, ... 1600)
-  - Quality: Aggressively tuned for AVIF (Thumbnail Priority: 35, Thumbnail: 20)
-  - Preloading: Switched to responsive `imagesrcset` preloading in `index.astro`
-- Add details about the sizing
-- Use pnpm rather than npm
-
-### Security Best Practices
-- **HTML Sanitization**: NEVER use regex to strip HTML tags from untrusted input (leads to "Incomplete multi-character sanitization" vulnerabilities).
-  - **Use**: `import sanitizeHtml from 'sanitize-html'`
-  - **Example**: `sanitizeHtml(content, { allowedTags: [], allowedAttributes: {}, disallowedTagsMode: 'discard' })`
-  - **Context**: Fixed critical alert in `regenerate-cover.js` by replacing regex `<[^>]+>` with `sanitize-html`.
+See `docs/README.md` for additional guidelines.

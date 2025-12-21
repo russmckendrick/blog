@@ -67,14 +67,14 @@ const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 			{previousHref ? (
 				<a
 					href={previousHref}
-					class="inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-500 visited:text-gray-500 hover:border-gray-300 hover:text-gray-700 visited:hover:text-gray-700 dark:text-gray-400 dark:visited:text-gray-400 dark:hover:border-white/20 dark:hover:text-gray-200 transition-colors"
+					class="inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium !text-gray-500 visited:!text-gray-500 hover:border-gray-300 hover:!text-gray-700 visited:hover:!text-gray-700 dark:!text-gray-400 dark:visited:!text-gray-400 dark:hover:border-white/20 dark:hover:!text-gray-200 transition-colors"
 				>
 					<Icon name="arrowLongLeft" size={20} class="mr-3 text-gray-400 dark:text-gray-500" aria-hidden="true" />
 					<span>Previous</span>
 				</a>
 			) : (
-				<span class="inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-blue-900 dark:text-blue-300 cursor-not-allowed">
-					<Icon name="arrowLongLeft" size={20} class="mr-3 text-blue-900 dark:text-blue-300" aria-hidden="true" />
+				<span class="inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-400 dark:text-gray-500 cursor-not-allowed">
+					<Icon name="arrowLongLeft" size={20} class="mr-3 text-gray-400 dark:text-gray-500" aria-hidden="true" />
 					Previous
 				</span>
 			)}
@@ -88,8 +88,8 @@ const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 						href={getHref(item)}
 						class={`inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium transition-colors ${
 							item === currentPage
-								? 'border-indigo-500 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400 visited:text-indigo-600 dark:visited:text-indigo-400'
-								: 'border-transparent text-gray-500 visited:text-gray-500 hover:border-gray-300 hover:text-gray-700 visited:hover:text-gray-700 dark:text-gray-400 dark:visited:text-gray-400 dark:hover:border-white/20 dark:hover:text-gray-200'
+								? 'border-gray-700 !text-gray-900 dark:border-gray-300 dark:!text-gray-100 visited:!text-gray-900 dark:visited:!text-gray-100'
+								: 'border-transparent !text-gray-500 visited:!text-gray-500 hover:border-gray-300 hover:!text-gray-700 visited:hover:!text-gray-700 dark:!text-gray-400 dark:visited:!text-gray-400 dark:hover:border-white/20 dark:hover:!text-gray-200'
 						}`}
 						aria-current={item === currentPage ? 'page' : undefined}
 					>
@@ -102,15 +102,15 @@ const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 			{nextHref ? (
 				<a
 					href={nextHref}
-					class="inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 visited:text-gray-500 hover:border-gray-300 hover:text-gray-700 visited:hover:text-gray-700 dark:text-gray-400 dark:visited:text-gray-400 dark:hover:border-white/20 dark:hover:text-gray-200 transition-colors"
+					class="inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium !text-gray-500 visited:!text-gray-500 hover:border-gray-300 hover:!text-gray-700 visited:hover:!text-gray-700 dark:!text-gray-400 dark:visited:!text-gray-400 dark:hover:border-white/20 dark:hover:!text-gray-200 transition-colors"
 				>
 					<span>Next</span>
 					<Icon name="arrowLongRight" size={20} class="ml-3 text-gray-400 dark:text-gray-500" aria-hidden="true" />
 				</a>
 			) : (
-				<span class="inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-blue-900 dark:text-blue-300 cursor-not-allowed">
+				<span class="inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-400 dark:text-gray-500 cursor-not-allowed">
 					Next
-					<Icon name="arrowLongRight" size={20} class="ml-3 text-blue-900 dark:text-blue-300" aria-hidden="true" />
+					<Icon name="arrowLongRight" size={20} class="ml-3 text-gray-400 dark:text-gray-500" aria-hidden="true" />
 				</span>
 			)}
 		</div>

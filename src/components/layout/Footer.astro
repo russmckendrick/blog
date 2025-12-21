@@ -12,20 +12,18 @@ const today = new Date();
 				<p class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
 					<span>&copy; {today.getFullYear()} {AUTHOR_NAME}. All rights reserved.</span>
 					<span class="hidden sm:inline">|</span>
-					<span class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-						{NAVIGATION_ITEMS.map((item, index) => (
-							<>
-								<a
-									href={item.url}
-									class="flex items-center gap-1 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
-									target={item.external ? '_blank' : undefined}
-									rel={item.external ? 'noopener noreferrer' : undefined}
-								>
-									<Icon name={item.icon} size={14} />
-									{item.name}
-								</a>
-								{index < NAVIGATION_ITEMS.length - 1 && <span class="text-gray-400">•</span>}
-							</>
+					<span class="flex flex-wrap items-center justify-center gap-x-1 gap-y-1">
+						{NAVIGATION_ITEMS.map((item) => (
+							<a
+								href={item.url}
+								class="flex items-center justify-center p-2 !text-gray-700 dark:!text-gray-300 hover:!text-gray-900 dark:hover:!text-gray-100 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
+								target={item.external ? '_blank' : undefined}
+								rel={item.external ? 'noopener noreferrer' : undefined}
+								title={item.name}
+								aria-label={item.name}
+							>
+								<Icon name={item.icon} size={18} />
+							</a>
 						))}
 					</span>
 				</p>
