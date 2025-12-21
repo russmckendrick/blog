@@ -1,0 +1,251 @@
+---
+title: "Save money by pausing Microsoft Fabric Capacities with Azure Logic Apps"
+description: "Learn how to automatically pause Microsoft Fabric capacities outside of working hours using Azure Logic Apps. This step-by-step guide shows you how to deploy a cost-saving automation that can significantly reduce your Fabric spend."
+date: 2025-12-21T11:37:26.402Z
+cover:
+  image: "../../assets/2025-12-21-pausing-microsoft-fabric-capacities-with-azure-logic-apps/blog-cover-2025-12-21-pausing-microsoft-fabric-capacities-with-azure-logic-apps.jpg"
+draft: false
+showToc: true
+tags:
+  - "azure"
+  - "cloud"
+---
+
+Back in April 2024, I wrote a post about [Saving money with Azure Logic Apps](/2024/04/01/saving-money-with-azure-logic-apps/) where I covered automating the stop/start of Azure Virtual Machines and Application Gateways. Since then, I've had a few requests to add support for Microsoft Fabric capacities to the repo, so here we are.
+
+If you're not familiar with Microsoft Fabric, it's Microsoft's unified analytics platform that brings together data engineering, data science, real-time analytics, and business intelligence. It's a powerful platform, but like many Azure services, it can get expensive if you're not careful about managing your capacity.
+
+## Why Pause Fabric Capacities?
+
+Microsoft Fabric uses a capacity-based pricing model where you pay for Capacity Units (CUs) by the hour. The costs add up quickly:
+
+- An F2 capacity runs about $0.36 per hour, or roughly $262 per month if left running 24/7
+- An F64 capacity can set you back around $5,000+ per month on a reserved instance
+
+The good news is that with pay-as-you-go (PAYG) capacities, you can pause them when they're not in use. If your team only uses Fabric during working hours, pausing the capacity overnight and at weekends could save you around 65% of your costs. That's a significant saving, especially for dev and test environments where you may not want to pay for a reserved capacity that's running 24/7.
+
+## The Logic App
+
+The Logic App I've added to the repo follows the same pattern as the existing Virtual Machine and Application Gateway workflows. It uses a user-managed identity to authenticate against the Azure REST API and targets resources based on tags.
+
+You can find the Logic App definition in the GitHub repo:
+
+<LinkPreview id="https://github.com/russmckendrick/money-saving-azure-logic-apps" />
+
+### What It Does
+
+The workflow is straightforward:
+
+1. **Recurrence Trigger**: By default, it runs at 6pm GMT, Monday to Friday
+2. **Get Tagged Resources**: Queries the subscription for resources tagged with `fabricCapacityPause=included`
+3. **Filter to Fabric Capacities**: Filters the results to only include `Microsoft.Fabric/capacities` resources
+4. **Check Status**: For each capacity, it checks if the state is "Active"
+5. **Suspend**: If active, it suspends the capacity
+
+Unlike the VM and Application Gateway Logic Apps which toggle between start and stop, this one is designed specifically to pause capacities at the end of the working day.
+
+<NoteCallout title="Note">
+In this case, we would typically trigger a resume manually when the capacity is required, this Logic App is there to help you save money when the person who starts the capacity forgets to pause when they have finished with it, which 100% will happen at some point.
+</NoteCallout>
+
+## Deploying the Logic App
+
+Let's walk through deploying the Logic App. If you've followed the original post, this will feel very familiar.
+
+### Cloning the Repo
+
+First, clone the repo containing the Logic App definitions:
+
+```text frame="terminal" title="Cloning the repo"
+git clone https://github.com/russmckendrick/money-saving-azure-logic-apps.git
+cd money-saving-azure-logic-apps
+```
+
+### Setting Up the Environment
+
+Set some environment variables for the deployment:
+
+```text frame="terminal" title="Setting environment variables"
+export RESOURCE_GROUP_NAME="rg-logicapps-fabric-uks"
+export REGION="uksouth"
+export SUBSCRIPTION_ID=$(az account show --query id --output tsv)
+export MANAGED_ID_NAME="mi-logicapps-fabric-uks"
+export LOGIC_APP_NAME="la-fabricCapacityPause-uks"
+```
+
+### Creating the Resources
+
+Create the resource group:
+
+```text frame="terminal" title="Creating the resource group"
+az group create \
+    --name $RESOURCE_GROUP_NAME \
+    --location $REGION
+```
+
+Create the user-managed identity:
+
+```text frame="terminal" title="Creating the managed identity"
+az identity create \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --name $MANAGED_ID_NAME
+```
+
+### Tagging Your Fabric Capacities
+
+Before we grant permissions, we need to tag the Fabric capacities we want to manage. The Logic App targets resources based on tags, and we can also use those same tags to discover which resources need permissions.
+
+Add the following tag to any capacity you want to be automatically paused:
+
+- **Tag Name**: `fabricCapacityPause`
+- **Tag Value**: `included`
+
+You can do this through the Azure Portal or using the Azure CLI:
+
+```text frame="terminal" title="Tagging a Fabric capacity"
+az resource tag \
+    --tags fabricCapacityPause=included \
+    --ids "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/YOUR_FABRIC_RESOURCE_GROUP/providers/Microsoft.Fabric/capacities/YOUR_CAPACITY_NAME"
+```
+
+### Granting Permissions
+
+The managed identity needs Reader access to list resources across the subscription, and permissions to manage the Fabric capacities. According to [Microsoft's documentation](https://learn.microsoft.com/en-us/fabric/enterprise/pause-resume), the following permissions are required to pause and resume capacities:
+
+- `Microsoft.Fabric/capacities/read`
+- `Microsoft.Fabric/capacities/write`
+- `Microsoft.Fabric/capacities/suspend/action`
+- `Microsoft.Fabric/capacities/resume/action`
+
+Unfortunately, there isn't a dedicated Fabric-specific built-in role that provides just these permissions, so Contributor is the minimum required role. However, we can scope it to just the Fabric capacity resources rather than the entire subscription.
+
+First, grant Reader access to the subscription so the Logic App can query for tagged resources:
+
+```text frame="terminal" title="Granting Reader access to the subscription"
+az role assignment create \
+    --assignee-principal-type "ServicePrincipal" \
+    --assignee-object "$(az identity show --resource-group $RESOURCE_GROUP_NAME --name $MANAGED_ID_NAME --query principalId --output tsv)" \
+    --role "Reader" \
+    --scope "/subscriptions/$SUBSCRIPTION_ID"
+```
+
+Now, we can loop through all the tagged Fabric capacities and grant Contributor access to each one:
+
+```text frame="terminal" title="Granting Contributor access to tagged Fabric capacities"
+for CAPACITY_ID in $(az resource list \
+    --tag fabricCapacityPause=included \
+    --query "[?type=='Microsoft.Fabric/capacities'].id" \
+    --output tsv); do
+    echo "Granting Contributor access to: $CAPACITY_ID"
+    az role assignment create \
+        --assignee-principal-type "ServicePrincipal" \
+        --assignee-object "$(az identity show --resource-group $RESOURCE_GROUP_NAME --name $MANAGED_ID_NAME --query principalId --output tsv)" \
+        --role "Contributor" \
+        --scope "$CAPACITY_ID"
+done
+```
+
+This approach means you only grant permissions to the specific capacities you've tagged, following the principle of least privilege.
+
+### Deploying the Logic App
+
+Now deploy the Logic App itself:
+
+```text frame="terminal" title="Deploying the Logic App"
+az logic workflow create \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --location $REGION \
+    --name $LOGIC_APP_NAME \
+    --mi-user-assigned "$(az identity show --resource-group $RESOURCE_GROUP_NAME --name $MANAGED_ID_NAME --query id --output tsv)" \
+    --state "Disabled" \
+    --definition "fabricCapacityPause.json"
+```
+
+### Updating the Parameters
+
+Update the Logic App parameters with your managed identity and subscription IDs:
+
+```text frame="terminal" title="Setting the managedId parameter"
+az logic workflow update \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --name $LOGIC_APP_NAME \
+    --set "definition.parameters.managedId.defaultValue=$(az identity show --resource-group $RESOURCE_GROUP_NAME --name $MANAGED_ID_NAME --query id --output tsv)"
+```
+
+```text frame="terminal" title="Setting the subscriptionId parameter"
+az logic workflow update \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --name $LOGIC_APP_NAME \
+    --set "definition.parameters.subscriptionId.defaultValue=$SUBSCRIPTION_ID"
+```
+
+## Enabling the Logic App
+
+Once everything is configured, enable the Logic App:
+
+```text frame="terminal" title="Enabling the Logic App"
+az logic workflow update \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --name $LOGIC_APP_NAME \
+    --state "Enabled"
+```
+
+You can also trigger a manual run from the Azure Portal to test that everything is working as expected before waiting for the scheduled run.
+
+## Customising the Schedule
+
+The default schedule pauses capacities at 6pm GMT, Monday to Friday. If you need a different schedule, you can update the recurrence trigger in the Logic App designer or by modifying the JSON directly.
+
+For example, if you wanted to pause at 7pm instead, you would update the `hours` array in the trigger:
+
+```json frame="code" title="Modifying the schedule"
+"recurrence": {
+    "frequency": "Week",
+    "interval": 1,
+    "schedule": {
+        "hours": [
+            "19"
+        ],
+        "minutes": [
+            0
+        ],
+        "weekDays": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+        ]
+    },
+    "timeZone": "GMT Standard Time"
+}
+```
+
+## Resuming Capacities
+
+This Logic App only pauses capacities; it doesn't resume them. For resuming, you have a few options:
+
+1. **Manual Resume**: Start the capacity manually from the Azure Portal when you need it
+2. **Separate Logic App**: Create a similar Logic App that runs in the morning and calls the resume endpoint instead of suspend
+3. **On-Demand**: Use Azure Automation or a simple script to resume capacities as needed
+
+The resume endpoint follows the same pattern as the suspend endpoint, just swap `/suspend` for `/resume` in the API call.
+
+## Cleanup
+
+To remove the Logic App and supporting resources:
+
+```text frame="terminal" title="Removing the resources"
+export RESOURCE_GROUP_NAME="rg-logicapps-fabric-uks"
+az group delete --name $RESOURCE_GROUP_NAME
+```
+
+Don't forget to clean up any lingering RBAC assignments in the Azure Portal.
+
+## Summary
+
+Adding Fabric capacity management to the money-saving Logic Apps collection was a natural extension. The pricing model makes it an obvious candidate for automation, especially for development and test environments where 24/7 availability isn't required.
+
+If you're running Fabric capacities and not already pausing them outside of working hours, you're potentially leaving significant savings on the table. A few minutes of setup could save you hundreds (or thousands) of pounds each month.
+
+As always, the full Logic App definition is available in the GitHub repo, and I'll continue adding new resource types as I encounter them in the wild.
