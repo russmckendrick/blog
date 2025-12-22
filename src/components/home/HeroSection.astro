@@ -1,0 +1,15 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostCard from '../blog/PostCard.astro';
+
+interface Props {
+	featuredPost: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
+}
+
+const { featuredPost } = Astro.props;
+---
+
+<section>
+	{/* Featured Post - Side-by-side layout */}
+	<PostCard post={featuredPost} variant="featured" priority={true} headingLevel="2" />
+</section>

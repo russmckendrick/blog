@@ -2,21 +2,30 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
+import HeroSection from '../../components/home/HeroSection.astro';
 import Pagination from '../../components/layout/Pagination.astro';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../utils/hero-colors';
 
-const postsPerPage = 20;
+// Tunes homepage shows 1 featured + 6 grid cards = 7 total
+const firstPagePosts = 7;
+// Subsequent pages show 9 posts each (3 rows of 3)
+const subsequentPagePosts = 9;
 
 const allTunes = (await getCollection('tunes'))
 	.filter(tune => !tune.data.draft)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const tunes = allTunes.slice(0, postsPerPage);
-const totalPages = Math.ceil(allTunes.length / postsPerPage);
+const tunes = allTunes.slice(0, firstPagePosts);
+// Calculate total pages accounting for different first page size
+const remainingPosts = allTunes.length - firstPagePosts;
+const totalPages = 1 + Math.ceil(Math.max(0, remainingPosts) / subsequentPagePosts);
+
+// Split posts: first for hero, rest for grid
+const featuredTune = tunes[0];
+const gridTunes = tunes.slice(1);
 
 // Get gradient colors from first tunes post's hero image
-const firstPost = tunes[0];
-const firstPostHeroImage = firstPost?.data.heroImage || firstPost?.data.cover?.image;
+const firstPostHeroImage = featuredTune?.data.heroImage || featuredTune?.data.cover?.image;
 const heroColors = getHeroColors(firstPostHeroImage);
 const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors));
 ---
@@ -29,23 +38,24 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
 	>
 		<div class="hero-gradient-bg absolute inset-0"></div>
 	</section>
-	<section class="max-w-3xl mx-auto px-5">
-		<div class="mb-12 text-center">
-			<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-gray-100 mb-4">
-				Listened to This Week
-			</h1>
-			<p class="text-lg text-gray-600 dark:text-gray-400">
-				My weekly music discoveries and favorites
-			</p>
-		</div>
 
-		<ul class="space-y-12">
-			{tunes.map((tune) => (
-				<li>
-					<PostCard post={tune} />
-				</li>
-			))}
-		</ul>
+	<section class="max-w-6xl mx-auto px-5">
+		<h1 class="sr-only">Listened to This Week</h1>
+
+		{/* Hero Section with Featured Tune */}
+		<HeroSection featuredPost={featuredTune} />
+
+		{/* Grid of remaining tunes */}
+		{gridTunes.length > 0 && (
+			<div class="mt-8 sm:mt-10">
+				<h2 class="sr-only">More Tunes</h2>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+					{gridTunes.map((tune) => (
+						<PostCard post={tune} variant="grid" headingLevel="3" />
+					))}
+				</div>
+			</div>
+		)}
 
 		<Pagination
 			currentPage={1}

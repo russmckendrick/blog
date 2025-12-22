@@ -2,11 +2,14 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/blog/PostCard.astro';
+import HeroSection from '../components/home/HeroSection.astro';
 import Pagination from '../components/layout/Pagination.astro';
 import { SITE_TITLE, SITE_DESCRIPTION, CF_IMAGE_PRESETS } from '../consts';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../utils/hero-colors';
 import { getCFImageUrl, generateCFSrcSet } from '../utils/cloudflare-images';
-const postsPerPage = 5;
+
+// Homepage shows 1 featured + 6 grid cards = 7 total
+const postsPerPage = 7;
 
 const allPosts = (await getCollection('blog'))
 	.filter(post => import.meta.env.DEV || !post.data.draft)
@@ -15,15 +18,18 @@ const allPosts = (await getCollection('blog'))
 const posts = allPosts.slice(0, postsPerPage);
 const totalPages = Math.ceil(allPosts.length / postsPerPage);
 
+// Split posts: first for hero, rest for grid
+const featuredPost = posts[0];
+const gridPosts = posts.slice(1);
+
 // Get first post hero image for LCP preload optimization
 // Use Cloudflare image transformation to match what PostCard uses
-const firstPost = posts[0];
-const firstPostHeroImage = firstPost?.data.heroImage || firstPost?.data.cover?.image;
+const firstPostHeroImage = featuredPost?.data.heroImage || featuredPost?.data.cover?.image;
 const preloadSrcSet = firstPostHeroImage ? generateCFSrcSet(
 	firstPostHeroImage,
-	CF_IMAGE_PRESETS.thumbnailPriority.widths,
-	CF_IMAGE_PRESETS.thumbnailPriority.quality,
-	CF_IMAGE_PRESETS.thumbnailPriority.format
+	[400, 600, 800, 1000], // Match featured variant srcset
+	85,
+	'auto'
 ) : null;
 
 // Get gradient colors from first post's hero image
@@ -38,7 +44,7 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
 			rel="preload"
 			as="image"
 			imagesrcset={preloadSrcSet}
-			imagesizes="(min-width: 768px) 720px, calc(100vw - 48px)"
+			imagesizes="(min-width: 1024px) 50vw, 100vw"
 			fetchpriority="high"
 		/>
 	)}
@@ -49,20 +55,29 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
 	>
 		<div class="hero-gradient-bg absolute inset-0"></div>
 	</section>
-	<section class="max-w-3xl mx-auto px-5">
-		<h1 class="sr-only">{SITE_TITLE}</h1>
-		<ul class="space-y-12">
-			{posts.map((post, index) => (
-				<li>
-					<PostCard post={post} priority={index === 0} />
-				</li>
-			))}
-		</ul>
 
-			<Pagination
-				currentPage={1}
-				totalPages={totalPages}
-				getHref={(pageNum) => (pageNum === 1 ? '/' : `/page/${pageNum}/`)}
-			/>
-		</section>
+	<section class="max-w-6xl mx-auto px-5">
+		<h1 class="sr-only">{SITE_TITLE}</h1>
+
+		{/* Hero Section with Featured Post */}
+		<HeroSection featuredPost={featuredPost} />
+
+		{/* Grid of remaining posts */}
+		{gridPosts.length > 0 && (
+			<div class="mt-8 sm:mt-10">
+				<h2 class="sr-only">More Posts</h2>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+					{gridPosts.map((post) => (
+						<PostCard post={post} variant="grid" headingLevel="3" />
+					))}
+				</div>
+			</div>
+		)}
+
+		<Pagination
+			currentPage={1}
+			totalPages={totalPages}
+			getHref={(pageNum) => (pageNum === 1 ? '/' : `/page/${pageNum}/`)}
+		/>
+	</section>
 </BaseLayout>

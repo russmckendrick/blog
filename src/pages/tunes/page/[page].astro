@@ -7,18 +7,23 @@ import Pagination from '../../../components/layout/Pagination.astro';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../../utils/hero-colors';
 
 export const getStaticPaths = (async ({ paginate }) => {
-	const postsPerPage = 20;
+	// 9 posts per page fills 3 rows nicely in the grid
+	const postsPerPage = 9;
+	// First page shows 7 (1 featured + 6 grid)
+	const firstPagePosts = 7;
 
 	const allTunes = (await getCollection('tunes'))
 		.filter(tune => !tune.data.draft)
 		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-	const totalPages = Math.ceil(allTunes.length / postsPerPage);
+	// Calculate total pages accounting for different first page size
+	const remainingPosts = allTunes.length - firstPagePosts;
+	const totalPages = 1 + Math.ceil(Math.max(0, remainingPosts) / postsPerPage);
 
 	// Generate paths for pages 2 and onwards (page 1 is handled by /tunes/index.astro)
-	return Array.from({ length: totalPages - 1 }, (_, i) => {
+	return Array.from({ length: Math.max(0, totalPages - 1) }, (_, i) => {
 		const pageNum = i + 2;
-		const start = (pageNum - 1) * postsPerPage;
+		const start = firstPagePosts + (pageNum - 2) * postsPerPage;
 		const end = start + postsPerPage;
 
 		return {
@@ -49,28 +54,24 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
 	>
 		<div class="hero-gradient-bg absolute inset-0"></div>
 	</section>
-	<section class="max-w-3xl mx-auto px-5">
-		<div class="mb-12 text-center">
-			<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-gray-100 mb-4">
-				Listened to This Week
-			</h1>
-			<p class="text-lg text-gray-600 dark:text-gray-400">
-				My weekly music discoveries and favorites
-			</p>
+
+	<section class="max-w-6xl mx-auto px-5">
+		<h1 class="sr-only">Listened to This Week - Page {currentPage}</h1>
+
+		{/* 3-column grid of tunes */}
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+			{tunes.map((tune) => (
+				<PostCard post={tune} variant="grid" headingLevel="2" />
+			))}
 		</div>
 
-		<ul class="space-y-12">
-			{tunes.map((tune) => (
-				<li>
-					<PostCard post={tune} />
-				</li>
-			))}
-		</ul>
-
-		<Pagination
-			currentPage={currentPage}
-			totalPages={totalPages}
-			getHref={(pageNum) => (pageNum === 1 ? '/tunes/' : `/tunes/page/${pageNum}/`)}
-		/>
+		{totalPages > 1 && (
+			<Pagination
+				currentPage={currentPage}
+				totalPages={totalPages}
+				getHref={(pageNum) => (pageNum === 1 ? '/tunes/' : `/tunes/page/${pageNum}/`)}
+				hideIfSingle={false}
+			/>
+		)}
 	</section>
 </BaseLayout>
