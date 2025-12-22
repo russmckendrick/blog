@@ -315,7 +315,7 @@ export const CF_IMAGE_PRESETS = {
     quality: 45,
     format: 'avif' as const,
     fit: 'cover' as const,
-    widths: [400, 600, 800, 1200, 1600] // Optimized: 5 strategic widths for faster browser selection
+    widths: [320, 400, 600, 800, 1200] // Mobile-first: smaller widths for better mobile LCP
   },
 
   // PostCard thumbnails (vertical layout)
@@ -323,7 +323,7 @@ export const CF_IMAGE_PRESETS = {
     quality: 20,
     format: 'avif' as const,
     fit: 'cover' as const,
-    widths: [400, 600, 800, 1200, 1600] // Optimized: 5 strategic widths
+    widths: [320, 400, 600, 800, 1200] // Mobile-first: smaller widths
   },
 
   // Post card thumbnails (horizontal layout)
