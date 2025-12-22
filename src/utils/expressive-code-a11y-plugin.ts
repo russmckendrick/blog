@@ -12,11 +12,21 @@ export const expressiveCodeA11yPlugin = () => {
 	return {
 		name: 'expressive-code-a11y',
 		hooks: {
-			postprocessRenderedBlock: ({ codeBlock, renderData }: { codeBlock: { language: string }; renderData: { blockAst: any } }) => {
-				// Get the language for labeling
+			postprocessRenderedBlock: ({ codeBlock, renderData }: { codeBlock: { language: string; title?: string }; renderData: { blockAst: any } }) => {
+				// Get title if available (from meta string like ```js title="example.js")
+				const title = codeBlock.title;
 				const language = codeBlock.language || 'text';
-				// For text/plain code blocks, just use "Code block", otherwise "JSON code block" etc.
-				const languageLabel = (language === 'text' || language === 'plaintext') ? '' : language.toUpperCase() + ' ';
+
+				// Build descriptive aria-label for code blocks
+				let ariaLabel: string;
+				if (title) {
+					// Use title directly for titled blocks (terminals, named files)
+					ariaLabel = title;
+				} else {
+					// Always include language, capitalize first letter
+					const langDisplay = language.charAt(0).toUpperCase() + language.slice(1);
+					ariaLabel = `${langDisplay} code`;
+				}
 
 				// Process the rendered HTML to add accessibility attributes
 				const processNode = (node: any) => {
@@ -43,7 +53,11 @@ export const expressiveCodeA11yPlugin = () => {
 						if (node.tagName === 'pre') {
 							// Add aria-label for when role="region" is dynamically applied
 							if (!props['aria-label']) {
-								props['aria-label'] = `${languageLabel}code block`;
+								props['aria-label'] = ariaLabel;
+							}
+							// Add tabindex="0" for keyboard accessibility on scrollable content
+							if (!props.tabindex && props.tabindex !== 0) {
+								props.tabindex = 0;
 							}
 						}
 					}

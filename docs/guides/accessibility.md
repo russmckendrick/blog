@@ -12,11 +12,13 @@ The site achieves full WCAG 2.1 Level AA compliance through:
 
 ## Implemented Solutions
 
-### 1. Expressive Code Copy Buttons
+### 1. Expressive Code Accessibility
 
-**Problem**: Expressive Code's copy buttons only have `title` attributes, not `aria-label`, causing accessibility violations.
+**Problems**:
+- Copy buttons only have `title` attributes, not `aria-label`
+- Multiple code blocks have identical `role="region"` landmarks with same aria-label
 
-**Solution**: Custom Expressive Code plugin that adds aria-labels at build time.
+**Solution**: Custom Expressive Code plugin that adds unique, descriptive aria-labels at build time.
 
 **File**: `src/utils/expressive-code-a11y-plugin.ts`
 
@@ -25,20 +27,28 @@ export const expressiveCodeA11yPlugin = () => {
   return {
     name: 'expressive-code-a11y',
     hooks: {
-      postprocessRenderedBlock: ({ renderData }) => {
+      postprocessRenderedBlock: ({ codeBlock, renderData }) => {
+        // Use title if available, otherwise capitalize language
+        const title = codeBlock.title;
+        const language = codeBlock.language || 'text';
+        let ariaLabel: string;
+        if (title) {
+          ariaLabel = title;  // e.g., "Terminal", "app.js"
+        } else {
+          const langDisplay = language.charAt(0).toUpperCase() + language.slice(1);
+          ariaLabel = `${langDisplay} code`;  // e.g., "Javascript code"
+        }
+
         const processNode = (node: any) => {
-          if (!node) return;
-          if (node.type === 'element' && node.tagName === 'button') {
-            const props = node.properties || {};
+          // Add aria-label to buttons from title attribute
+          if (node.tagName === 'button') {
             if (props.title && !props['aria-label']) {
               props['aria-label'] = props.title;
             }
-            if (props['data-copied'] && !props['aria-label']) {
-              props['aria-label'] = 'Copy to clipboard';
-            }
           }
-          if (node.children && Array.isArray(node.children)) {
-            node.children.forEach(processNode);
+          // Add unique aria-label to pre elements for landmark uniqueness
+          if (node.tagName === 'pre' && !props['aria-label']) {
+            props['aria-label'] = ariaLabel;
           }
         };
         processNode(renderData.blockAst);
@@ -204,6 +214,9 @@ Test accessibility on pages with different content types:
 | Issue | Component | Solution |
 |-------|-----------|----------|
 | "Button has no accessible text" | Expressive Code | Ensure a11y plugin is loaded |
+| "Landmarks should have unique labels" | Expressive Code | Plugin uses title/language for unique labels |
+| "Scrollable content not keyboard accessible" | Expressive Code | Plugin adds tabindex="0" to pre elements |
+| "Links not distinguishable from text" | Prose content | CSS adds subtle underline to all prose links |
 | "Link has no accessible text" | LightGallery | Check aria-label on `<a>` tags |
 | "Link has no accessible text" | Navigation | Verify aria-label on icon links |
 
