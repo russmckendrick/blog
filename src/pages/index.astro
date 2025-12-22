@@ -27,9 +27,9 @@ const gridPosts = posts.slice(1);
 const firstPostHeroImage = featuredPost?.data.heroImage || featuredPost?.data.cover?.image;
 const preloadSrcSet = firstPostHeroImage ? generateCFSrcSet(
 	firstPostHeroImage,
-	[400, 600, 800, 1000], // Match featured variant srcset
-	85,
-	'auto'
+	CF_IMAGE_PRESETS.thumbnailPriority.widths,
+	CF_IMAGE_PRESETS.thumbnailPriority.quality,
+	CF_IMAGE_PRESETS.thumbnailPriority.format
 ) : null;
 
 // Get gradient colors from first post's hero image

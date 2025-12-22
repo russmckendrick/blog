@@ -252,11 +252,11 @@ const lqipUrl = heroImage ? getLQIPUrl(heroImage) : null;
 						<img
 							src={getCFImageUrl(heroImage, {
 								width: priority ? 600 : 800,
-								quality: 85,
-								format: 'auto',
-								fit: 'cover'
+								quality: CF_IMAGE_PRESETS.thumbnailPriority.quality,
+								format: CF_IMAGE_PRESETS.thumbnailPriority.format,
+								fit: CF_IMAGE_PRESETS.thumbnailPriority.fit
 							})}
-							srcset={generateCFSrcSet(heroImage, [400, 600, 800, 1000], 85, 'auto')}
+							srcset={generateCFSrcSet(heroImage, CF_IMAGE_PRESETS.thumbnailPriority.widths, CF_IMAGE_PRESETS.thumbnailPriority.quality, CF_IMAGE_PRESETS.thumbnailPriority.format)}
 							sizes="(min-width: 1024px) 50vw, 100vw"
 							alt={alt}
 							width="1000"
@@ -294,11 +294,11 @@ const lqipUrl = heroImage ? getLQIPUrl(heroImage) : null;
 					<img
 						src={getCFImageUrl(heroImage, {
 							width: 400,
-							quality: 80,
-							format: 'auto',
-							fit: 'cover'
+							quality: CF_IMAGE_PRESETS.thumbnail.quality,
+							format: CF_IMAGE_PRESETS.thumbnail.format,
+							fit: CF_IMAGE_PRESETS.thumbnail.fit
 						})}
-						srcset={generateCFSrcSet(heroImage, [300, 400, 500], 80, 'auto')}
+						srcset={generateCFSrcSet(heroImage, CF_IMAGE_PRESETS.thumbnail.widths, CF_IMAGE_PRESETS.thumbnail.quality, CF_IMAGE_PRESETS.thumbnail.format)}
 						sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
 						alt={alt}
 						width="500"
