@@ -312,7 +312,7 @@ export const CF_IMAGE_PRESETS = {
 
   // PostCard thumbnails (vertical layout, priority/high quality for LCP)
   thumbnailPriority: {
-    quality: 35,
+    quality: 40,
     format: 'avif' as const,
     fit: 'cover' as const,
     widths: [320, 400, 600, 800, 1200] // Mobile-first: smaller widths for better mobile LCP
@@ -320,7 +320,7 @@ export const CF_IMAGE_PRESETS = {
 
   // PostCard thumbnails (vertical layout)
   thumbnail: {
-    quality: 20,
+    quality: 25,
     format: 'avif' as const,
     fit: 'cover' as const,
     widths: [320, 400, 600, 800, 1200] // Mobile-first: smaller widths
