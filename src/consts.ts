@@ -107,7 +107,7 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
   "blog": {
     title: "Blog 🤷‍♂️",
     description: "Some general Posts",
-    colorLight: "bg-gray-50 text-gray-600 inset-ring inset-ring-gray-500/10",
+    colorLight: "bg-gray-50 text-gray-700 inset-ring inset-ring-gray-500/10",
     colorDark: "dark:bg-gray-400/10 dark:text-gray-400 dark:inset-ring-gray-400/20"
   },
   "book": {

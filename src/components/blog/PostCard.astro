@@ -100,7 +100,7 @@ const lqipUrl = heroImage ? getLQIPUrl(heroImage) : null;
 						)}
 						<img
 							src={getCFImageUrl(heroImage, {
-								width: 800,
+								width: 600,
 								quality: priority ? CF_IMAGE_PRESETS.thumbnailPriority.quality : CF_IMAGE_PRESETS.thumbnail.quality,
 								format: priority ? CF_IMAGE_PRESETS.thumbnailPriority.format : CF_IMAGE_PRESETS.thumbnail.format,
 								fit: priority ? CF_IMAGE_PRESETS.thumbnailPriority.fit : CF_IMAGE_PRESETS.thumbnail.fit
@@ -129,7 +129,7 @@ const lqipUrl = heroImage ? getLQIPUrl(heroImage) : null;
 					</HeadingTag>
 				</header>
 				{description && (
-					<p class="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+					<p class="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
 						{description}
 					</p>
 				)}
@@ -146,7 +146,7 @@ const lqipUrl = heroImage ? getLQIPUrl(heroImage) : null;
 						</div>
 						<div class="flex flex-col">
 							<span class="text-gray-700 dark:text-gray-300 font-medium">{author}</span>
-							<div class="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
+							<div class="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-400">
 								<span class="text-blue-600 dark:text-blue-400">
 									<FormattedDate date={post.data.pubDate} />
 								</span>
@@ -222,7 +222,7 @@ const lqipUrl = heroImage ? getLQIPUrl(heroImage) : null;
 						</HeadingTag>
 					</header>
 					{description && (
-						<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-2">
+						<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-2">
 							{description}
 						</p>
 					)}
@@ -238,7 +238,7 @@ const lqipUrl = heroImage ? getLQIPUrl(heroImage) : null;
 						</div>
 						<div class="flex flex-col">
 							<span class="text-gray-700 dark:text-gray-300 font-medium text-xs">{author}</span>
-							<div class="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
+							<div class="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-400">
 								<span class="text-blue-600 dark:text-blue-400">
 									<FormattedDate date={post.data.pubDate} />
 								</span>
