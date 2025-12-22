@@ -215,7 +215,7 @@ Test accessibility on pages with different content types:
 |-------|-----------|----------|
 | "Button has no accessible text" | Expressive Code | Ensure a11y plugin is loaded |
 | "Landmarks should have unique labels" | Expressive Code | Plugin uses title/language for unique labels |
-| "Scrollable content not keyboard accessible" | Expressive Code | Plugin adds tabindex="0" to pre elements |
+| "Scrollable content not keyboard accessible" | Expressive Code | Plugin adds tabindex="0" + client-side script re-adds after EC dynamic removal |
 | "Links not distinguishable from text" | Prose content | CSS adds subtle underline to all prose links |
 | "Link has no accessible text" | LightGallery | Check aria-label on `<a>` tags |
 | "Link has no accessible text" | Navigation | Verify aria-label on icon links |

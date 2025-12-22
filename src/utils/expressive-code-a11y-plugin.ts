@@ -33,7 +33,11 @@ export const expressiveCodeA11yPlugin = () => {
 					if (!node) return;
 
 					if (node.type === 'element') {
-						const props = node.properties || {};
+						// Ensure node.properties exists and we're modifying it directly
+						if (!node.properties) {
+							node.properties = {};
+						}
+						const props = node.properties;
 
 						// Handle button elements
 						if (node.tagName === 'button') {
@@ -56,8 +60,9 @@ export const expressiveCodeA11yPlugin = () => {
 								props['aria-label'] = ariaLabel;
 							}
 							// Add tabindex="0" for keyboard accessibility on scrollable content
-							if (!props.tabindex && props.tabindex !== 0) {
-								props.tabindex = 0;
+							// Always set to 0 unless explicitly set to a different value
+							if (props.tabIndex === undefined && props.tabindex === undefined) {
+								props.tabIndex = 0;
 							}
 						}
 					}

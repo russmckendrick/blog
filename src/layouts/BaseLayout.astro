@@ -107,15 +107,38 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 				});
 			}
 
+			// Fix accessibility: Ensure scrollable code blocks have tabindex
+			// Expressive Code removes tabindex dynamically if content isn't scrollable at check time
+			// We re-add it after a delay to ensure keyboard accessibility
+			function fixCodeBlockTabindex() {
+				const preElements = document.querySelectorAll('.expressive-code pre');
+				preElements.forEach(pre => {
+					// Check if content is scrollable (width overflow)
+					if (pre.scrollWidth > pre.clientWidth && !pre.hasAttribute('tabindex')) {
+						pre.setAttribute('tabindex', '0');
+						pre.setAttribute('role', 'region');
+					}
+				});
+			}
+
 			// Run on initial page load
 			fixButtonAccessibility();
 
 			// Re-run after View Transitions and DOM updates
 			document.addEventListener('astro:page-load', fixButtonAccessibility);
+			document.addEventListener('astro:page-load', () => {
+				// Run after Expressive Code's debounced observer (250ms + idle callback)
+				setTimeout(fixCodeBlockTabindex, 500);
+			});
 
 			// Run after delays to catch dynamically loaded content
 			setTimeout(fixButtonAccessibility, 500);
 			setTimeout(fixButtonAccessibility, 1500);
+
+			// Fix code block tabindex after fonts and content are fully loaded
+			setTimeout(fixCodeBlockTabindex, 600);
+			setTimeout(fixCodeBlockTabindex, 1500);
+			window.addEventListener('load', () => setTimeout(fixCodeBlockTabindex, 300));
 
 			// Use MutationObserver to catch dynamically added elements
 			const observer = new MutationObserver((mutations) => {
