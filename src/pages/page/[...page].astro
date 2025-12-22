@@ -5,7 +5,7 @@ import PostCard from '../../components/blog/PostCard.astro';
 import Pagination from '../../components/layout/Pagination.astro';
 import { SITE_TITLE, SITE_DESCRIPTION, CF_IMAGE_PRESETS } from '../../consts';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../utils/hero-colors';
-import { getCFImageUrl } from '../../utils/cloudflare-images';
+import { getCFImageUrl, generateCFSrcSet } from '../../utils/cloudflare-images';
 
 export async function getStaticPaths({ paginate }) {
 	const allPosts = (await getCollection('blog'))
@@ -21,12 +21,12 @@ const { page } = Astro.props;
 // Use Cloudflare image transformation to match what PostCard uses
 const firstPost = page.data[0];
 const firstPostHeroImage = firstPost?.data.heroImage || firstPost?.data.cover?.image;
-const preloadImageUrl = firstPostHeroImage ? getCFImageUrl(firstPostHeroImage, {
-	width: CF_IMAGE_PRESETS.thumbnailPriority.widths[CF_IMAGE_PRESETS.thumbnailPriority.widths.length - 1],
-	quality: CF_IMAGE_PRESETS.thumbnailPriority.quality,
-	format: CF_IMAGE_PRESETS.thumbnailPriority.format,
-	fit: CF_IMAGE_PRESETS.thumbnailPriority.fit
-}) : null;
+const preloadSrcSet = firstPostHeroImage ? generateCFSrcSet(
+	firstPostHeroImage,
+	CF_IMAGE_PRESETS.thumbnailPriority.widths,
+	CF_IMAGE_PRESETS.thumbnailPriority.quality,
+	CF_IMAGE_PRESETS.thumbnailPriority.format
+) : null;
 
 // Get gradient colors from first post's hero image
 const heroColors = getHeroColors(firstPostHeroImage);
@@ -34,13 +34,13 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
 ---
 
 <BaseLayout title={`${SITE_TITLE} - Page ${page.currentPage}`} description={SITE_DESCRIPTION}>
-	{preloadImageUrl && (
+	{preloadSrcSet && (
 		<link
 			slot="head"
 			rel="preload"
 			as="image"
-			href={preloadImageUrl}
-			type="image/avif"
+			imagesrcset={preloadSrcSet}
+			imagesizes="(min-width: 768px) 720px, calc(100vw - 48px)"
 			fetchpriority="high"
 		/>
 	)}

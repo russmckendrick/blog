@@ -88,5 +88,20 @@ export function generateCFSrcSet(
     .join(', ');
 }
 
+/**
+ * Generate LQIP (Low Quality Image Placeholder) URL
+ * Returns a tiny, highly compressed image URL for instant placeholder display
+ * @param src - Image path
+ * @returns LQIP URL string
+ */
+export function getLQIPUrl(src: string | { src: string }): string {
+  return getCFImageUrl(src, {
+    width: CF_IMAGE_PRESETS.lqip.width,
+    quality: CF_IMAGE_PRESETS.lqip.quality,
+    format: CF_IMAGE_PRESETS.lqip.format,
+    fit: CF_IMAGE_PRESETS.lqip.fit
+  });
+}
+
 // Re-export CF_IMAGE_PRESETS from consts for backward compatibility
 export { CF_IMAGE_PRESETS };

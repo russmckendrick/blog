@@ -312,10 +312,10 @@ export const CF_IMAGE_PRESETS = {
 
   // PostCard thumbnails (vertical layout, priority/high quality for LCP)
   thumbnailPriority: {
-    quality: 35,
+    quality: 45,
     format: 'avif' as const,
     fit: 'cover' as const,
-    widths: [320, 360, 480, 540, 600, 640, 720, 800, 960, 1080, 1200, 1600] // More granular for better selection
+    widths: [400, 600, 800, 1200, 1600] // Optimized: 5 strategic widths for faster browser selection
   },
 
   // PostCard thumbnails (vertical layout)
@@ -323,7 +323,7 @@ export const CF_IMAGE_PRESETS = {
     quality: 20,
     format: 'avif' as const,
     fit: 'cover' as const,
-    widths: [320, 360, 480, 540, 600, 640, 720, 800, 960, 1080, 1200, 1600]
+    widths: [400, 600, 800, 1200, 1600] // Optimized: 5 strategic widths
   },
 
   // Post card thumbnails (horizontal layout)
@@ -348,5 +348,13 @@ export const CF_IMAGE_PRESETS = {
     format: 'auto' as const,
     fit: 'cover' as const,
     widths: [40, 48, 80, 96, 160, 192]
+  },
+
+  // LQIP (Low Quality Image Placeholder) - tiny blurred preview
+  lqip: {
+    quality: 20,
+    width: 32,
+    format: 'avif' as const,
+    fit: 'cover' as const
   }
 };

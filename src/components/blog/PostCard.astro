@@ -4,7 +4,7 @@ import FormattedDate from './FormattedDate.astro';
 import { getPostUrl } from '../../utils/url.ts';
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
 import { getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } from '../../utils/tags';
-import { getCFImageUrl, generateCFSrcSet } from '../../utils/cloudflare-images';
+import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudflare-images';
 import { AI_AUTHOR, TAG_METADATA, TAG_AVATAR_MAP, CF_IMAGE_PRESETS } from '../../consts';
 
 interface Props {
@@ -73,6 +73,9 @@ const getAvatarGlowColor = () => {
 };
 
 const avatarGlowColor = getAvatarGlowColor();
+
+// Generate LQIP placeholder URL for blur-up effect
+const lqipUrl = heroImage ? getLQIPUrl(heroImage) : null;
 ---
 
 {variant === 'vertical' ? (
@@ -83,7 +86,18 @@ const avatarGlowColor = getAvatarGlowColor();
 		<article
 			class={`relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-[28px] shadow-lg dark:shadow-black/30 overflow-hidden ${priority ? '' : 'transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl'}`}>
 				{heroImage && (
-					<figure class="relative overflow-hidden">
+					<figure
+						class="relative overflow-hidden bg-cover bg-center bg-no-repeat"
+						style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
+					>
+						{/* LQIP blur overlay - shows while main image loads */}
+						{lqipUrl && (
+							<div
+								class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
+								style={`background-image: url('${lqipUrl}')`}
+								aria-hidden="true"
+							/>
+						)}
 						<img
 							src={getCFImageUrl(heroImage, {
 								width: 800,
@@ -171,7 +185,18 @@ const avatarGlowColor = getAvatarGlowColor();
 			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:shadow-2xl">
 			<div class="flex flex-col sm:flex-row">
 				{heroImage && (
-					<figure class="relative overflow-hidden sm:w-48 md:w-56 lg:w-64 flex-shrink-0">
+					<figure
+						class="relative overflow-hidden sm:w-48 md:w-56 lg:w-64 flex-shrink-0 bg-cover bg-center bg-no-repeat"
+						style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
+					>
+						{/* LQIP blur overlay */}
+						{lqipUrl && (
+							<div
+								class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
+								style={`background-image: url('${lqipUrl}')`}
+								aria-hidden="true"
+							/>
+						)}
 						<img
 							src={getCFImageUrl(heroImage, {
 								width: 384,
