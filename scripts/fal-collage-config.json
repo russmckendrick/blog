@@ -11,7 +11,9 @@
   },
   "images": {
     "minCount": 2,
-    "maxCount": 8,
+    "maxCount": 12,
+    "strategies": ["vibrant", "balanced", "random"],
+    "strategySelection": "random",
     "cropRegions": {
       "top": 0.15,
       "bottom": 0.15,

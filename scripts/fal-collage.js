@@ -263,10 +263,194 @@ async function calculateImageScore(imagePath, debug = false) {
 }
 
 /**
- * Selects the best images based on color vibrancy and low text content
+ * Calculates the dominant color of an image
+ * Returns RGB values and color temperature classification
+ */
+async function calculateDominantColor(imagePath) {
+  try {
+    const image = sharp(imagePath).resize(64, 64, { fit: 'cover' })
+    const { data, info } = await image.raw().toBuffer({ resolveWithObject: true })
+
+    let rSum = 0, gSum = 0, bSum = 0
+    const pixelCount = info.width * info.height
+
+    for (let i = 0; i < data.length; i += info.channels) {
+      rSum += data[i]
+      gSum += data[i + 1]
+      bSum += data[i + 2]
+    }
+
+    const r = Math.round(rSum / pixelCount)
+    const g = Math.round(gSum / pixelCount)
+    const b = Math.round(bSum / pixelCount)
+
+    // Classify as warm or cool based on red vs blue dominance
+    const warmth = (r * 1.2 + g * 0.5) - (b * 1.5 + g * 0.3)
+    const temperature = warmth > 0 ? 'warm' : 'cool'
+
+    return { r, g, b, temperature, path: imagePath }
+  } catch (error) {
+    console.error(`  Error calculating dominant color for ${path.basename(imagePath)}:`, error.message)
+    return { r: 128, g: 128, b: 128, temperature: 'neutral', path: imagePath }
+  }
+}
+
+/**
+ * Calculates Euclidean distance between two RGB colors
+ */
+function colorDistance(color1, color2) {
+  const dr = color1.r - color2.r
+  const dg = color1.g - color2.g
+  const db = color1.b - color2.b
+  return Math.sqrt(dr * dr + dg * dg + db * db)
+}
+
+/**
+ * Selects images to maximize color diversity
+ * Uses greedy selection: picks the image most different from already selected
+ */
+async function selectDiverseImages(imagePaths, scores, count, debug = false) {
+  if (debug) console.log('  Strategy: DIVERSE (maximizing color variety)')
+
+  // Calculate dominant colors for all images
+  const colors = await Promise.all(imagePaths.map(p => calculateDominantColor(p)))
+
+  const selected = []
+  const remaining = [...colors]
+
+  // Start with the most vibrant image
+  const sortedByScore = [...scores].sort((a, b) => b.score - a.score)
+  const firstImage = sortedByScore[0]
+  const firstColor = colors.find(c => c.path === firstImage.path)
+  selected.push(firstColor)
+  remaining.splice(remaining.findIndex(c => c.path === firstColor.path), 1)
+
+  // Greedily select images that maximize color distance from already selected
+  while (selected.length < count && remaining.length > 0) {
+    let maxMinDistance = -1
+    let bestCandidate = null
+    let bestIndex = -1
+
+    for (let i = 0; i < remaining.length; i++) {
+      const candidate = remaining[i]
+      // Find minimum distance to any already selected image
+      const minDistance = Math.min(...selected.map(s => colorDistance(candidate, s)))
+
+      if (minDistance > maxMinDistance) {
+        maxMinDistance = minDistance
+        bestCandidate = candidate
+        bestIndex = i
+      }
+    }
+
+    if (bestCandidate) {
+      selected.push(bestCandidate)
+      remaining.splice(bestIndex, 1)
+    }
+  }
+
+  if (debug) {
+    console.log(`  Selected ${selected.length} images with maximum color diversity:`)
+    selected.forEach((c, i) => {
+      console.log(`    ${i + 1}. ${path.basename(c.path)} (RGB: ${c.r},${c.g},${c.b} - ${c.temperature})`)
+    })
+  }
+
+  return selected.map(c => c.path)
+}
+
+/**
+ * Selects a balanced mix of warm and cool toned images
+ */
+async function selectBalancedImages(imagePaths, scores, count, debug = false) {
+  if (debug) console.log('  Strategy: BALANCED (mixing warm and cool tones)')
+
+  // Calculate dominant colors and classify by temperature
+  const colors = await Promise.all(imagePaths.map(p => calculateDominantColor(p)))
+
+  const warm = colors.filter(c => c.temperature === 'warm')
+  const cool = colors.filter(c => c.temperature === 'cool')
+
+  // Sort each group by vibrancy score
+  const getScore = (colorObj) => scores.find(s => s.path === colorObj.path)?.score || 0
+  warm.sort((a, b) => getScore(b) - getScore(a))
+  cool.sort((a, b) => getScore(b) - getScore(a))
+
+  if (debug) {
+    console.log(`    Found ${warm.length} warm and ${cool.length} cool images`)
+  }
+
+  // Alternate between warm and cool, picking best from each
+  const selected = []
+  const halfCount = Math.ceil(count / 2)
+
+  // Take roughly equal from each group
+  const warmCount = Math.min(halfCount, warm.length)
+  const coolCount = Math.min(count - warmCount, cool.length)
+
+  // If one group is short, take more from the other
+  const actualWarmCount = Math.min(warmCount + Math.max(0, coolCount - cool.length), warm.length)
+  const actualCoolCount = Math.min(count - actualWarmCount, cool.length)
+
+  for (let i = 0; i < actualWarmCount; i++) {
+    selected.push(warm[i])
+  }
+  for (let i = 0; i < actualCoolCount; i++) {
+    selected.push(cool[i])
+  }
+
+  // Shuffle to mix warm and cool together
+  for (let i = selected.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [selected[i], selected[j]] = [selected[j], selected[i]]
+  }
+
+  if (debug) {
+    console.log(`  Selected ${selected.length} images (${actualWarmCount} warm, ${actualCoolCount} cool):`)
+    selected.forEach((c, i) => {
+      console.log(`    ${i + 1}. ${path.basename(c.path)} (${c.temperature})`)
+    })
+  }
+
+  return selected.map(c => c.path)
+}
+
+/**
+ * Randomly selects from top 75% of scored images
+ */
+function selectRandomImages(scores, count, debug = false) {
+  if (debug) console.log('  Strategy: RANDOM (weighted random from top 75%)')
+
+  // Take top 75% of candidates
+  const sortedScores = [...scores].sort((a, b) => b.score - a.score)
+  const cutoff = Math.ceil(sortedScores.length * 0.75)
+  const candidates = sortedScores.slice(0, cutoff)
+
+  // Shuffle candidates
+  for (let i = candidates.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [candidates[i], candidates[j]] = [candidates[j], candidates[i]]
+  }
+
+  // Take requested count
+  const selected = candidates.slice(0, Math.min(count, candidates.length))
+
+  if (debug) {
+    console.log(`  Selected ${selected.length} random images from top ${cutoff} candidates:`)
+    selected.forEach((s, i) => {
+      console.log(`    ${i + 1}. ${path.basename(s.path)} [score: ${s.score.toFixed(1)}]`)
+    })
+  }
+
+  return selected.map(s => s.path)
+}
+
+/**
+ * Selects the best images using a randomly chosen strategy
+ * Strategies: vibrant (default), diverse, balanced, random
  * Filters out blacklisted albums/artists
  */
-async function selectMostInterestingImages(imagePaths, count = 4, debug = false) {
+async function selectMostInterestingImages(imagePaths, count = 4, debug = false, forceStrategy = null) {
   if (debug) {
     console.log(`  Analyzing ${imagePaths.length} images (color vibrancy + text detection + blacklist filtering)...`)
   }
@@ -293,19 +477,16 @@ async function selectMostInterestingImages(imagePaths, count = 4, debug = false)
     throw new Error('All images are blacklisted! Update fal-collage-config.json')
   }
 
+  // Score all images first (needed by all strategies)
   const scores = await Promise.all(
     filteredPaths.map(imagePath => calculateImageScore(imagePath, debug))
   )
 
-  // Sort by score descending (high score = vibrant + minimal text)
-  scores.sort((a, b) => b.score - a.score)
-
-  // Take top N
-  const selected = scores.slice(0, Math.min(count, scores.length))
-
+  // Log all scores if debug enabled
   if (debug || config.debug?.logScores) {
-    console.log(`  Top ${selected.length} best images (vibrant + low text):`)
-    selected.forEach((item, idx) => {
+    const sortedScores = [...scores].sort((a, b) => b.score - a.score)
+    console.log(`  All ${sortedScores.length} images ranked by vibrancy:`)
+    sortedScores.forEach((item, idx) => {
       const details = item.textScore !== undefined
         ? ` [color: ${item.colorScore.toFixed(1)}, text: ${item.textScore.toFixed(1)}%, final: ${item.score.toFixed(1)}]`
         : ` [score: ${item.score.toFixed(1)}]`
@@ -313,7 +494,56 @@ async function selectMostInterestingImages(imagePaths, count = 4, debug = false)
     })
   }
 
-  return selected.map(item => item.path)
+  // Select strategy
+  const strategies = config.images?.strategies || ['vibrant']
+  const strategySelection = config.images?.strategySelection || 'random'
+
+  let strategy = forceStrategy
+  if (!strategy) {
+    if (strategySelection === 'random') {
+      strategy = strategies[Math.floor(Math.random() * strategies.length)]
+    } else {
+      strategy = strategies[0] // Default to first strategy
+    }
+  }
+
+  console.log(`  🎲 Selected strategy: ${strategy.toUpperCase()}`)
+
+  // Dispatch to appropriate selection function
+  let selectedPaths
+  try {
+    switch (strategy) {
+      case 'diverse':
+        selectedPaths = await selectDiverseImages(filteredPaths, scores, count, debug)
+        break
+      case 'balanced':
+        selectedPaths = await selectBalancedImages(filteredPaths, scores, count, debug)
+        break
+      case 'random':
+        selectedPaths = selectRandomImages(scores, count, debug)
+        break
+      case 'vibrant':
+      default:
+        // Original vibrant strategy - top N by score
+        if (debug) console.log('  Strategy: VIBRANT (most colorful/saturated)')
+        const sortedScores = [...scores].sort((a, b) => b.score - a.score)
+        const selected = sortedScores.slice(0, Math.min(count, sortedScores.length))
+        if (debug) {
+          console.log(`  Selected ${selected.length} most vibrant images:`)
+          selected.forEach((item, idx) => {
+            console.log(`    ${idx + 1}. ${path.basename(item.path)} [score: ${item.score.toFixed(1)}]`)
+          })
+        }
+        selectedPaths = selected.map(item => item.path)
+        break
+    }
+  } catch (error) {
+    console.error(`  ⚠ Strategy ${strategy} failed: ${error.message}, falling back to vibrant`)
+    const sortedScores = [...scores].sort((a, b) => b.score - a.score)
+    selectedPaths = sortedScores.slice(0, Math.min(count, sortedScores.length)).map(item => item.path)
+  }
+
+  return selectedPaths
 }
 
 /**
@@ -435,6 +665,7 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
     width = 1400,
     height = 800,
     seed,
+    strategy = null,
     debug = process.env.DEBUG_COLLAGE === '1'
   } = options
 
@@ -483,7 +714,7 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
   }
 
   const maxRetries = config.retry?.maxAttempts || 3
-  const allCandidates = await selectMostInterestingImages(uniqueImagePaths, uniqueImagePaths.length, debug)
+  const allCandidates = await selectMostInterestingImages(uniqueImagePaths, totalAlbumsNeeded, debug, strategy)
 
   if (debug) {
     console.log(`  Strategy: Send ${totalAlbumsNeeded} individual album covers to Gemini 3 Pro model (${minAlbums}-${maxAlbums} range)`)
@@ -756,6 +987,7 @@ function parseArgs(args) {
     width: 1400,
     height: 800,
     seed: null,
+    strategy: null,
     debug: false,
     help: false
   }
@@ -775,6 +1007,8 @@ function parseArgs(args) {
       options.height = parseInt(arg.split('=')[1], 10)
     } else if (arg.startsWith('--seed=')) {
       options.seed = parseInt(arg.split('=')[1], 10)
+    } else if (arg.startsWith('--strategy=')) {
+      options.strategy = arg.split('=')[1]
     } else if (!arg.startsWith('--') && !options.input) {
       // First positional arg is input
       options.input = arg
@@ -804,8 +1038,14 @@ Options:
   --width=<number>    Output width in pixels (default: 1400)
   --height=<number>   Output height in pixels (default: 800)
   --seed=<number>     Random seed for reproducibility
+  --strategy=<name>   Selection strategy: vibrant, balanced, random (default: random choice)
   --debug, -d         Enable debug output
   --help, -h          Show this help message
+
+Selection Strategies:
+  vibrant   - Top images by color vibrancy (most colorful/saturated)
+  balanced  - Mix of warm (red/orange) and cool (blue/purple) tones
+  random    - Shuffled selection from top 75% of scored images
 
 Positional Arguments:
   <input-folder>      Same as --input
@@ -817,11 +1057,15 @@ Output Files:
   2. <output>-small.png     - Resized to --width×--height (default 1400×800)
 
 Examples:
-  # Use default test folder
+  # Use default test folder (random strategy)
   node scripts/fal-collage.js
 
   # Custom input folder
   node scripts/fal-collage.js --input=public/assets/my-albums
+
+  # Force a specific strategy
+  node scripts/fal-collage.js --input=./albums --strategy=vibrant --debug
+  node scripts/fal-collage.js --input=./albums --strategy=balanced --debug
 
   # Custom input and output
   node scripts/fal-collage.js --input=./albums --output=./my-collage.png
@@ -914,6 +1158,7 @@ async function testFALCollage(cliArgs = []) {
         width: options.width,
         height: options.height,
         seed: options.seed || 54321,
+        strategy: options.strategy,
         debug: options.debug || process.env.DEBUG_COLLAGE === '1'
       }
     )

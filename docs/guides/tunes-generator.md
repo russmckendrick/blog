@@ -162,21 +162,31 @@ await createStripCollage(albumImagePaths, coverOutputPath, {
 
 An AI-powered generator using FAL.ai's Gemini 3 Pro Image model:
 - **Style**: AI-generated artistic fusion of album covers
-- **Selection**: Analyzes all albums and selects 2-6 most vibrant/colorful covers
-- **Algorithm**: Color variance analysis (saturation 40% + variance 30% + text penalty 30%)
+- **Selection**: Analyzes all albums and selects up to 12 covers using configurable strategies
+- **Strategies**: Three selection strategies (randomly chosen per run for variety)
 - **Smart Prompts**: Uses GPT-4 Vision to analyze covers and generate context-aware prompts
 - **Blacklist**: Configurable album/artist filtering to avoid content policy violations
 - **Output**: 2K resolution (2048px) PNG with seamless blending
 - **API**: Requires `FAL_KEY` and `OPENAI_API_KEY` environment variables
 - **Cost**: Uses FAL.ai and OpenAI API credits
 
+**Selection Strategies:**
+
+Each collage randomly selects one of three strategies for variety:
+
+| Strategy | Description |
+|----------|-------------|
+| `vibrant` | Selects top images by color vibrancy score (saturation + variance - text penalty) |
+| `balanced` | Mixes warm-toned (red/orange/yellow) and cool-toned (blue/green/purple) images evenly |
+| `random` | Shuffles and picks randomly from the top 75% of scored images |
+
 **Selection Process:**
 1. Filters out blacklisted albums/artists (from config)
 2. Analyzes each image (resized to 256×256 for performance)
 3. Detects text using edge detection (top/bottom 20% of cover)
-4. Calculates color vibrancy (RGB variance + saturation)
-5. Scores: `(saturation × 0.4) + (√variance × 0.3) + (textPenalty × 0.3)`
-6. Selects top 2-6 highest-scoring images
+4. Calculates color vibrancy: `(saturation × 0.4) + (√variance × 0.3) + (textPenalty × 0.3)`
+5. Randomly selects a strategy (or uses `--strategy` flag if specified)
+6. Selects up to 12 images based on the chosen strategy
 7. Preprocesses images to crop text regions (top 15%, bottom 15%, sides 5%)
 8. Uses GPT-4 Vision to analyze covers and generate custom blend prompt
 9. Sends to FAL.ai Gemini 3 Pro Image model for AI blending
@@ -193,6 +203,12 @@ An AI-powered generator using FAL.ai's Gemini 3 Pro Image model:
     "numImages": 1,
     "format": "png",
     "resolution": "2K"
+  },
+  "images": {
+    "minCount": 2,
+    "maxCount": 12,
+    "strategies": ["vibrant", "balanced", "random"],
+    "strategySelection": "random"
   },
   "blacklist": {
     "albums": ["Is This It", "Album Name"],
@@ -221,19 +237,26 @@ await createFALCollage(albumImagePaths, coverOutputPath, {
   seed: dateSeed,
   width: 1400,
   height: 800,
+  strategy: 'vibrant', // optional: force a specific strategy
   debug: true
 })
 ```
 
 **Test the FAL.ai collage:**
 ```bash
-# Set FAL_KEY in .env first
-DEBUG_COLLAGE=1 node scripts/fal-collage.js
+# Random strategy (default)
+DEBUG_COLLAGE=1 node scripts/fal-collage.js --input=public/assets/2025-12-22-listened-to-this-week/albums
+
+# Force a specific strategy
+node scripts/fal-collage.js --input=./albums --strategy=vibrant --debug
+node scripts/fal-collage.js --input=./albums --strategy=balanced --debug
+node scripts/fal-collage.js --input=./albums --strategy=random --debug
 ```
 
 **Error Handling:**
 - Throws errors on API failures (no fallback to strip-collage by default)
 - Validates FAL_KEY presence before making API calls
+- Falls back to vibrant strategy if selected strategy fails
 - Provides detailed error messages for debugging
 
 **When to Use:**
