@@ -10,13 +10,15 @@ import { getCFImageUrl, generateCFSrcSet } from '../utils/cloudflare-images';
 
 // Homepage shows 1 featured + 6 grid cards = 7 total
 const postsPerPage = 7;
+// Pagination pages use 9 posts per page - must match [...page].astro pageSize
+const paginationPageSize = 9;
 
 const allPosts = (await getCollection('blog'))
 	.filter(post => import.meta.env.DEV || !post.data.draft)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const posts = allPosts.slice(0, postsPerPage);
-const totalPages = Math.ceil(allPosts.length / postsPerPage);
+const totalPages = Math.ceil(allPosts.length / paginationPageSize);
 
 // Split posts: first for hero, rest for grid
 const featuredPost = posts[0];
