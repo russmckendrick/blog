@@ -54,7 +54,7 @@ export const ERROR_404 = {
 
 export const AI_AUTHOR = {
   name: 'AI Generated',
-  avatar: '/images/avatars/glitch.svg',
+  avatar: '/images/avatars/anon.svg',
   avatarFallback: '/images/avatar-192x192.png'
 };
 
