@@ -44,6 +44,16 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 		<Footer />
 		<WebVitals debug={import.meta.env.DEV} />
 		<script>
+			// Defer non-critical work until after LCP using requestIdleCallback
+			function scheduleIdleWork(callback: () => void, timeout = 2000) {
+				if ('requestIdleCallback' in window) {
+					requestIdleCallback(callback, { timeout });
+				} else {
+					// Fallback: schedule after paint + small delay
+					requestAnimationFrame(() => setTimeout(callback, 50));
+				}
+			}
+
 			// Fix accessibility: Add aria-labels to buttons missing them
 			function fixButtonAccessibility() {
 				// Find buttons without aria-label
@@ -108,39 +118,50 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 			}
 
 			// Fix accessibility: Ensure scrollable code blocks have tabindex
-			// Expressive Code removes tabindex dynamically if content isn't scrollable at check time
-			// We re-add it after a delay to ensure keyboard accessibility
+			// Only runs on pages with code blocks, batches layout reads to avoid forced reflow
 			function fixCodeBlockTabindex() {
 				const preElements = document.querySelectorAll('.expressive-code pre');
+				// Skip if no code blocks on page (e.g., homepage)
+				if (preElements.length === 0) return;
+
+				// Batch all layout reads first to avoid forced reflow
+				const elementsToFix: HTMLElement[] = [];
 				preElements.forEach(pre => {
-					// Check if content is scrollable (width overflow)
-					if (pre.scrollWidth > pre.clientWidth && !pre.hasAttribute('tabindex')) {
-						pre.setAttribute('tabindex', '0');
-						pre.setAttribute('role', 'region');
+					if (!pre.hasAttribute('tabindex')) {
+						// Read all dimensions in one batch
+						const scrollWidth = pre.scrollWidth;
+						const clientWidth = pre.clientWidth;
+						if (scrollWidth > clientWidth) {
+							elementsToFix.push(pre as HTMLElement);
+						}
 					}
+				});
+
+				// Then batch all writes
+				elementsToFix.forEach(pre => {
+					pre.setAttribute('tabindex', '0');
+					pre.setAttribute('role', 'region');
 				});
 			}
 
-			// Run on initial page load
-			fixButtonAccessibility();
+			// Defer accessibility fixes until after LCP (don't block initial render)
+			scheduleIdleWork(fixButtonAccessibility, 1500);
 
 			// Re-run after View Transitions and DOM updates
-			document.addEventListener('astro:page-load', fixButtonAccessibility);
 			document.addEventListener('astro:page-load', () => {
-				// Run after Expressive Code's debounced observer (250ms + idle callback)
-				setTimeout(fixCodeBlockTabindex, 500);
+				scheduleIdleWork(fixButtonAccessibility, 1500);
+				// Run code block fix after Expressive Code's debounced observer
+				scheduleIdleWork(fixCodeBlockTabindex, 2000);
 			});
 
-			// Run after delays to catch dynamically loaded content
-			setTimeout(fixButtonAccessibility, 500);
-			setTimeout(fixButtonAccessibility, 1500);
+			// Single deferred check for dynamically loaded content
+			scheduleIdleWork(() => {
+				fixButtonAccessibility();
+				fixCodeBlockTabindex();
+			}, 2500);
 
-			// Fix code block tabindex after fonts and content are fully loaded
-			setTimeout(fixCodeBlockTabindex, 600);
-			setTimeout(fixCodeBlockTabindex, 1500);
-			window.addEventListener('load', () => setTimeout(fixCodeBlockTabindex, 300));
-
-			// Use MutationObserver to catch dynamically added elements
+			// Use MutationObserver but with longer debounce and idle scheduling
+			let mutationTimeout: number | undefined;
 			const observer = new MutationObserver((mutations) => {
 				let shouldFix = false;
 				for (const mutation of mutations) {
@@ -150,16 +171,21 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 					}
 				}
 				if (shouldFix) {
-					// Debounce the fix
-					clearTimeout((window as any).__a11yFixTimeout);
-					(window as any).__a11yFixTimeout = setTimeout(fixButtonAccessibility, 100);
+					// Longer debounce to batch mutations
+					clearTimeout(mutationTimeout);
+					mutationTimeout = window.setTimeout(() => {
+						scheduleIdleWork(fixButtonAccessibility, 500);
+					}, 250);
 				}
 			});
 
-			observer.observe(document.body, {
-				childList: true,
-				subtree: true
-			});
+			// Delay observer attachment until after initial render
+			scheduleIdleWork(() => {
+				observer.observe(document.body, {
+					childList: true,
+					subtree: true
+				});
+			}, 1000);
 
 			// Global cleanup for LightGallery when navigating away from pages
 			function cleanupLightGallery() {
