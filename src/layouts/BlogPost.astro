@@ -177,6 +177,12 @@ const breadcrumbSchema = createBreadcrumbSchema(
 				fetchpriority="high"
 			/>
 		)}
+		<!-- Preconnect to Giscus for faster comment loading (only on blog posts) -->
+		<link rel="dns-prefetch" href="https://giscus.app">
+		<link rel="preconnect" href="https://giscus.app" crossorigin>
+		<!-- Preconnect to GitHub for faster asset/embed loading -->
+		<link rel="dns-prefetch" href="https://github.githubassets.com">
+		<link rel="dns-prefetch" href="https://opengraph.githubassets.com">
 		<Schema item={blogPostingSchema} />
 		<Schema item={breadcrumbSchema} />
 	</head>
