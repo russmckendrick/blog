@@ -85,6 +85,10 @@ const imageURL = image?.startsWith('http')
 	]}
 />
 
+<!-- Preconnect to self for faster font loading (critical for first-time visitors) -->
+<link rel="preconnect" href="https://www.russ.cloud" crossorigin>
+<link rel="dns-prefetch" href="https://www.russ.cloud">
+
 <!-- Preload critical self-hosted fonts -->
 <link rel="preload" href="/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -102,7 +106,6 @@ const imageURL = image?.startsWith('http')
 <link rel="dns-prefetch" href="https://plausible.io">
 <link rel="preconnect" href="https://plausible.io" crossorigin>
 
-<!-- Note: Same-origin preconnect removed as browser already has connection -->
 <!-- Note: Giscus and GitHub preconnects moved to BlogPost.astro (only needed on post pages) -->
 
 <!-- Plausible Analytics - Load during idle time for optimal performance -->
