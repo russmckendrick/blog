@@ -75,7 +75,8 @@ const getAvatarGlowColor = () => {
 const avatarGlowColor = getAvatarGlowColor();
 
 // Generate LQIP placeholder URL for blur-up effect
-const lqipUrl = heroImage ? getLQIPUrl(heroImage) : null;
+// Skip LQIP for priority images to eliminate critical request chain (LCP optimization)
+const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 ---
 
 {variant === 'vertical' ? (
