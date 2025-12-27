@@ -365,15 +365,15 @@ export const CF_IMAGE_PRESETS = {
   // Hero images for blog posts
   hero: {
     quality: 60,
-    format: "auto" as const,
+    format: "avif" as const,
     fit: "cover" as const,
     widths: [640, 1024, 1536, 2048],
   },
 
   // PostCard thumbnails (vertical layout, priority/high quality for LCP)
   thumbnailPriority: {
-    quality: 40,
-    format: "avif" as const,
+    quality: 38,
+    format: "auto" as const,
     fit: "cover" as const,
     widths: [400, 600, 800, 1200], // Mobile-first: smaller widths for better mobile LCP
   },
