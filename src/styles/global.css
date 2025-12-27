@@ -6,14 +6,14 @@
 
 /* Custom Tailwind theme extensions */
 @theme {
-  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
   --font-serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
 }
 
 /* Base styling */
 body {
-  @apply font-inter text-gray-900 dark:text-gray-100 bg-gray-50 dark:bg-gray-950;
+  @apply font-sans text-gray-900 dark:text-gray-100 bg-gray-50 dark:bg-gray-950;
   font-size: 17px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -35,7 +35,7 @@ body {
 
 /* Enhanced typography */
 h1, h2, h3, h4, h5, h6 {
-  @apply font-inter font-semibold tracking-tight;
+  @apply font-sans font-semibold tracking-tight;
 }
 
 h1 {

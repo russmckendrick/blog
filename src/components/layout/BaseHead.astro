@@ -89,9 +89,7 @@ const imageURL = image?.startsWith('http')
 <link rel="preconnect" href="https://www.russ.cloud" crossorigin>
 <link rel="dns-prefetch" href="https://www.russ.cloud">
 
-<!-- Preload critical self-hosted fonts -->
-<link rel="preload" href="/fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/inter-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Preload critical self-hosted fonts (using system-ui for body, only mono needs preload) -->
 <link rel="preload" href="/fonts/jetbrains-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 
 <!--
