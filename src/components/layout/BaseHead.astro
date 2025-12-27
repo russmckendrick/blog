@@ -85,11 +85,7 @@ const imageURL = image?.startsWith('http')
 	]}
 />
 
-<!-- Preconnect to self for faster font loading (critical for first-time visitors) -->
-<link rel="preconnect" href="https://www.russ.cloud" crossorigin>
-<link rel="dns-prefetch" href="https://www.russ.cloud">
-
-<!-- Preload critical self-hosted fonts (using system-ui for body, only mono needs preload) -->
+<!-- Preload JetBrains Mono for code blocks (body uses system-ui, no preload needed) -->
 <link rel="preload" href="/fonts/jetbrains-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 
 <!--
