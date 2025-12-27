@@ -57,8 +57,10 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 
 			// Fix accessibility: Add aria-labels to buttons missing them
 			function fixButtonAccessibility() {
-				// Find buttons without aria-label
 				const buttons = document.querySelectorAll('button:not([aria-label])');
+				const updates: { element: Element, label: string }[] = [];
+
+				// READ PHASE
 				buttons.forEach(btn => {
 					// Skip if button has meaningful text content (but not just whitespace/icons)
 					const textContent = btn.textContent?.trim().replace(/[\u200B-\u200D\uFEFF]/g, '');
@@ -69,35 +71,35 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 					// Use title attribute if available
 					const title = btn.getAttribute('title');
 					if (title) {
-						btn.setAttribute('aria-label', title);
+						updates.push({ element: btn, label: title });
 						return;
 					}
 
 					// Check for Expressive Code copy button (has data-copied attribute or is in .copy wrapper)
 					if (btn.hasAttribute('data-copied') || btn.closest('.copy') || btn.querySelector('[data-code]')) {
-						btn.setAttribute('aria-label', 'Copy code to clipboard');
+						updates.push({ element: btn, label: 'Copy code to clipboard' });
 						return;
 					}
 
 					// Check for common copy button patterns
 					const classList = btn.className || '';
 					if (classList.includes('copy')) {
-						btn.setAttribute('aria-label', 'Copy to clipboard');
+						updates.push({ element: btn, label: 'Copy to clipboard' });
 					} else if (classList.includes('close')) {
-						btn.setAttribute('aria-label', 'Close');
+						updates.push({ element: btn, label: 'Close' });
 					} else if (classList.includes('expand')) {
-						btn.setAttribute('aria-label', 'Expand');
+						updates.push({ element: btn, label: 'Expand' });
 					} else if (classList.includes('collapse')) {
-						btn.setAttribute('aria-label', 'Collapse');
+						updates.push({ element: btn, label: 'Collapse' });
 					} else if (classList.includes('tab')) {
 						// Tab buttons - use text content or data attribute
 						const tabText = btn.textContent?.trim() || btn.getAttribute('data-tab') || 'Tab';
-						btn.setAttribute('aria-label', tabText);
+						updates.push({ element: btn, label: tabText });
 					} else if (btn.closest('.expressive-code') || btn.closest('[data-language]') || btn.closest('figure.frame')) {
 						// Expressive Code buttons - check for common patterns
 						if (btn.querySelector('svg') && !textContent) {
 							// SVG icon button - likely copy button
-							btn.setAttribute('aria-label', 'Copy code to clipboard');
+							updates.push({ element: btn, label: 'Copy code to clipboard' });
 						}
 					}
 				});
@@ -113,8 +115,13 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 					// Use title if available
 					const title = link.getAttribute('title');
 					if (title) {
-						link.setAttribute('aria-label', title);
+						updates.push({ element: link, label: title });
 					}
+				});
+
+				// WRITE PHASE
+				updates.forEach(({ element, label }) => {
+					element.setAttribute('aria-label', label);
 				});
 			}
 

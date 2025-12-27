@@ -528,12 +528,20 @@ const breadcrumbSchema = createBreadcrumbSchema(
 			// We re-add it after a delay to ensure keyboard accessibility
 			function fixCodeBlockTabindex() {
 				const preElements = document.querySelectorAll('.expressive-code pre');
+				const elementsToFix: HTMLElement[] = [];
+
+				// Batch reads
 				preElements.forEach(pre => {
 					// Check if content is scrollable (width overflow)
 					if (pre.scrollWidth > pre.clientWidth && !pre.hasAttribute('tabindex')) {
-						pre.setAttribute('tabindex', '0');
-						pre.setAttribute('role', 'region');
+						elementsToFix.push(pre as HTMLElement);
 					}
+				});
+
+				// Batch writes
+				elementsToFix.forEach(pre => {
+					pre.setAttribute('tabindex', '0');
+					pre.setAttribute('role', 'region');
 				});
 			}
 
