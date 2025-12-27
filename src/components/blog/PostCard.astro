@@ -184,17 +184,17 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 		aria-label={`Read blog post: ${post.data.title}`}
 		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-3xl">
 		<article
-			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-3xl shadow-xl dark:shadow-black/40 overflow-hidden transition-all duration-500 group-hover:shadow-2xl lg:h-[520px]">
-			<div class="flex flex-col lg:flex-row lg:items-stretch lg:h-full">
+			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-3xl shadow-xl dark:shadow-black/40 overflow-hidden transition-all duration-500 group-hover:shadow-2xl">
+			<div class="flex flex-col lg:flex-row">
 				{/* Content side */}
-				<div class="relative p-8 lg:p-10 xl:p-12 flex flex-col gap-6 lg:w-1/2 order-2 lg:order-1 lg:h-full lg:overflow-hidden">
+				<div class="relative p-8 lg:p-10 xl:p-12 flex flex-col gap-6 lg:w-1/2 order-2 lg:order-1">
 					<header class="space-y-4">
 						<HeadingTag class="text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 leading-tight">
 							{post.data.title}
 						</HeadingTag>
 					</header>
 					{description && (
-						<p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed lg:line-clamp-4">
+						<p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
 							{description}
 						</p>
 					)}
@@ -240,7 +240,7 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 				{/* Image side */}
 				{heroImage && (
 					<figure
-						class="relative overflow-hidden lg:w-1/2 order-1 lg:order-2 bg-cover bg-center bg-no-repeat lg:h-full"
+						class="relative overflow-hidden lg:w-1/2 order-1 lg:order-2 bg-cover bg-center bg-no-repeat"
 						style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
 					>
 						{lqipUrl && (
@@ -265,7 +265,7 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 							loading={priority ? "eager" : "lazy"}
 							decoding={priority ? "sync" : "async"}
 							fetchpriority={priority ? "high" : "low"}
-							class="w-full h-64 sm:h-80 lg:absolute lg:inset-0 lg:w-full lg:h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+							class="w-full h-64 sm:h-80 lg:h-full lg:min-h-[400px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
 						/>
 					</figure>
 				)}
