@@ -365,7 +365,7 @@ export const CF_IMAGE_PRESETS = {
   // Hero images for blog posts
   hero: {
     quality: 60,
-    format: "avif" as const,
+    format: "auto" as const,
     fit: "cover" as const,
     widths: [640, 1024, 1536, 2048],
   },
