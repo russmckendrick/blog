@@ -1,61 +1,77 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = 'Russ McKendrick';
-export const SITE_DESCRIPTION = 'Russ.Cloud - The personal blog of Russ McKendrick';
-export const SITE_LONG_DESCRIPTION = 'The ramblings of a nerd about random things that interest me.';
-export const SITE_KEYWORDS = ['Blog', 'Technical', 'Automation', 'DevOps', 'Cloud'];
-export const AUTHOR_NAME = 'Russ McKendrick';
-export const AUTHOR_EMAIL = 'r@russ.email';
-export const AUTHOR_GITHUB = '@russmckendrick';
-export const AUTHOR_LOCATION = 'Nottingham, UK';
-export const AUTHOR_HOMEPAGE = 'https://www.russ.cloud/about/';
+export const SITE_TITLE = "Russ McKendrick";
+export const SITE_DESCRIPTION =
+  "Russ.Cloud - The personal blog of Russ McKendrick";
+export const SITE_LONG_DESCRIPTION =
+  "The ramblings of a nerd about random things that interest me.";
+export const SITE_KEYWORDS = [
+  "Blog",
+  "Technical",
+  "Automation",
+  "DevOps",
+  "Cloud",
+];
+export const AUTHOR_NAME = "Russ McKendrick";
+export const AUTHOR_EMAIL = "r@russ.email";
+export const AUTHOR_GITHUB = "@russmckendrick";
+export const AUTHOR_LOCATION = "Nottingham, UK";
+export const AUTHOR_HOMEPAGE = "https://www.russ.cloud/about/";
 
 export const SOCIAL_LINKS = [
-  { name: 'github', url: 'https://github.com/russmckendrick' },
-  { name: 'mastodon', url: 'https://social.mckendrick.io/@russ' },
-  { name: 'twitter', url: 'https://twitter.com/russmckendrick/' },
-  { name: 'linkedin', url: 'https://www.linkedin.com/in/russmckendrick/' },
-  { name: 'amazon', url: 'https://www.amazon.com/author/russmckendrick' },
-  { name: 'docker', url: 'https://hub.docker.com/u/russmckendrick/' },
-  { name: 'instagram', url: 'https://www.instagram.com/russmckendrick/' },
-  { name: 'medium', url: 'https://russmckendrick.medium.com/' },
-  { name: 'instapaper', url: 'https://www.instapaper.com/p/russmckendrick' },
-  { name: 'reddit', url: 'https://www.reddit.com/user/russmckendrick/' },
-  { name: 'discogs', url: 'https://www.discogs.com/user/russmck/collection?header=1' },
-  { name: 'applemusic', url: 'https://music.apple.com/profile/russmckendrick' },
-  { name: 'spotify', url: 'https://open.spotify.com/user/russmckendrick' },
-  { name: 'lastfm', url: 'https://www.last.fm/user/RussMckendrick' }
+  { name: "github", url: "https://github.com/russmckendrick" },
+  { name: "mastodon", url: "https://social.mckendrick.io/@russ" },
+  { name: "twitter", url: "https://twitter.com/russmckendrick/" },
+  { name: "linkedin", url: "https://www.linkedin.com/in/russmckendrick/" },
+  { name: "amazon", url: "https://www.amazon.com/author/russmckendrick" },
+  { name: "docker", url: "https://hub.docker.com/u/russmckendrick/" },
+  { name: "instagram", url: "https://www.instagram.com/russmckendrick/" },
+  { name: "medium", url: "https://russmckendrick.medium.com/" },
+  { name: "instapaper", url: "https://www.instapaper.com/p/russmckendrick" },
+  { name: "reddit", url: "https://www.reddit.com/user/russmckendrick/" },
+  {
+    name: "discogs",
+    url: "https://www.discogs.com/user/russmck/collection?header=1",
+  },
+  { name: "applemusic", url: "https://music.apple.com/profile/russmckendrick" },
+  { name: "spotify", url: "https://open.spotify.com/user/russmckendrick" },
+  { name: "lastfm", url: "https://www.last.fm/user/RussMckendrick" },
 ];
 
 export const NAVIGATION_ITEMS = [
-  { name: 'Search', url: '/search/', icon: 'search' },
-  { name: 'Tags', url: '/tags/', icon: 'tag' },
-  { name: 'Tunes', url: '/tunes/', icon: 'headphones' },
-  { name: 'About', url: '/about/', icon: 'user' },
-  { name: 'Archives', url: '/archives/', icon: 'archive' },
-  { name: 'Source', url: 'https://github.com/russmckendrick/blog/', icon: 'github', external: true }
+  { name: "Search", url: "/search/", icon: "search" },
+  { name: "Tags", url: "/tags/", icon: "tag" },
+  { name: "Tunes", url: "/tunes/", icon: "headphones" },
+  { name: "About", url: "/about/", icon: "user" },
+  { name: "Archives", url: "/archives/", icon: "archive" },
+  {
+    name: "Source",
+    url: "https://github.com/russmckendrick/blog/",
+    icon: "github",
+    external: true,
+  },
 ];
 
 export const EDIT_POST = {
-  url: 'https://github.com/russmckendrick/blog/blob/main',
-  text: 'Suggest Changes',
-  appendFilePath: true
+  url: "https://github.com/russmckendrick/blog/blob/main",
+  text: "Suggest Changes",
+  appendFilePath: true,
 };
 
 export const ERROR_404 = {
-  title: '404 - Page Not Found',
-  description: 'The page you are looking for does not exist',
-  heading: 'Signal Lost',
-  message: 'The page you\'re searching for has vanished into the digital void',
-  submessage: 'It may have been deleted, moved, or never existed',
-  buttonText: 'Return Home'
+  title: "404 - Page Not Found",
+  description: "The page you are looking for does not exist",
+  heading: "Signal Lost",
+  message: "The page you're searching for has vanished into the digital void",
+  submessage: "It may have been deleted, moved, or never existed",
+  buttonText: "Return Home",
 };
 
 export const AI_AUTHOR = {
-  name: 'AI Generated',
-  avatar: '/images/avatars/anon.svg',
-  avatarFallback: '/images/avatar-192x192.png'
+  name: "AI Generated",
+  avatar: "/images/avatars/anon.svg",
+  avatarFallback: "/images/avatar-192x192.png",
 };
 
 // Tag metadata extracted from Hugo tag index files
@@ -68,230 +84,274 @@ export interface TagMetadata {
 }
 
 export const TAG_METADATA: Record<string, TagMetadata> = {
-  "ai": {
+  ai: {
     title: "AI 🤖",
     description: "All my posts about AI",
-    colorLight: "bg-purple-50 text-purple-700 inset-ring inset-ring-purple-600/10",
-    colorDark: "dark:bg-purple-400/10 dark:text-purple-400 dark:inset-ring-purple-400/20"
+    colorLight:
+      "bg-purple-50 text-purple-700 inset-ring inset-ring-purple-600/10",
+    colorDark:
+      "dark:bg-purple-400/10 dark:text-purple-400 dark:inset-ring-purple-400/20",
   },
-  "ansible": {
+  ansible: {
     title: "Ansible 👨‍💻",
     description: "All my posts about Ansible",
     colorLight: "bg-red-50 text-red-700 inset-ring inset-ring-red-600/10",
-    colorDark: "dark:bg-red-400/10 dark:text-red-400 dark:inset-ring-red-400/20"
+    colorDark:
+      "dark:bg-red-400/10 dark:text-red-400 dark:inset-ring-red-400/20",
   },
-  "author": {
+  author: {
     title: "Author 📚",
     description: "All the posts about the books I have written.",
     colorLight: "bg-amber-50 text-amber-700 inset-ring inset-ring-amber-600/10",
-    colorDark: "dark:bg-amber-400/10 dark:text-amber-400 dark:inset-ring-amber-400/20"
+    colorDark:
+      "dark:bg-amber-400/10 dark:text-amber-400 dark:inset-ring-amber-400/20",
   },
-  "automation": {
+  automation: {
     title: "Automation 🤖",
     description: "All my posts about Automation",
-    colorLight: "bg-indigo-50 text-indigo-700 inset-ring inset-ring-indigo-700/10",
-    colorDark: "dark:bg-indigo-400/10 dark:text-indigo-400 dark:inset-ring-indigo-400/30"
+    colorLight:
+      "bg-indigo-50 text-indigo-700 inset-ring inset-ring-indigo-700/10",
+    colorDark:
+      "dark:bg-indigo-400/10 dark:text-indigo-400 dark:inset-ring-indigo-400/30",
   },
-  "aws": {
+  aws: {
     title: "AWS ☁️",
     description: "All my posts about Amazon Web Services",
-    colorLight: "bg-orange-50 text-orange-700 inset-ring inset-ring-orange-600/10",
-    colorDark: "dark:bg-orange-400/10 dark:text-orange-400 dark:inset-ring-orange-400/20"
+    colorLight:
+      "bg-orange-50 text-orange-700 inset-ring inset-ring-orange-600/10",
+    colorDark:
+      "dark:bg-orange-400/10 dark:text-orange-400 dark:inset-ring-orange-400/20",
   },
-  "azure": {
+  azure: {
     title: "Azure ☁️",
     description: "All my posts about Microsoft Azure",
     colorLight: "bg-blue-50 text-blue-700 inset-ring inset-ring-blue-700/10",
-    colorDark: "dark:bg-blue-400/10 dark:text-blue-400 dark:inset-ring-blue-400/30"
+    colorDark:
+      "dark:bg-blue-400/10 dark:text-blue-400 dark:inset-ring-blue-400/30",
   },
-  "blog": {
+  blog: {
     title: "Blog 🤷‍♂️",
     description: "Some general Posts",
     colorLight: "bg-gray-50 text-gray-700 inset-ring inset-ring-gray-500/10",
-    colorDark: "dark:bg-gray-400/10 dark:text-gray-400 dark:inset-ring-gray-400/20"
+    colorDark:
+      "dark:bg-gray-400/10 dark:text-gray-400 dark:inset-ring-gray-400/20",
   },
-  "book": {
+  book: {
     title: "Book 📚",
     description: "All the posts about the books I have written and am reading.",
-    colorLight: "bg-emerald-50 text-emerald-700 inset-ring inset-ring-emerald-600/20",
-    colorDark: "dark:bg-emerald-400/10 dark:text-emerald-400 dark:inset-ring-emerald-500/20"
+    colorLight:
+      "bg-emerald-50 text-emerald-700 inset-ring inset-ring-emerald-600/20",
+    colorDark:
+      "dark:bg-emerald-400/10 dark:text-emerald-400 dark:inset-ring-emerald-500/20",
   },
-  "cloud": {
+  cloud: {
     title: "Cloud ⛅️",
     description: "All my posts about various Cloud technologies",
     colorLight: "bg-sky-50 text-sky-700 inset-ring inset-ring-sky-600/10",
-    colorDark: "dark:bg-sky-400/10 dark:text-sky-400 dark:inset-ring-sky-400/20"
+    colorDark:
+      "dark:bg-sky-400/10 dark:text-sky-400 dark:inset-ring-sky-400/20",
   },
-  "code": {
+  code: {
     title: "Code 🐛",
     description: "All my posts about various bits of code and projects",
     colorLight: "bg-green-50 text-green-700 inset-ring inset-ring-green-600/20",
-    colorDark: "dark:bg-green-400/10 dark:text-green-400 dark:inset-ring-green-500/20"
+    colorDark:
+      "dark:bg-green-400/10 dark:text-green-400 dark:inset-ring-green-500/20",
   },
-  "conference": {
+  conference: {
     title: "Conference 📢",
     description: "All my posts about attending conferences",
-    colorLight: "bg-violet-50 text-violet-700 inset-ring inset-ring-violet-600/10",
-    colorDark: "dark:bg-violet-400/10 dark:text-violet-400 dark:inset-ring-violet-400/20"
+    colorLight:
+      "bg-violet-50 text-violet-700 inset-ring inset-ring-violet-600/10",
+    colorDark:
+      "dark:bg-violet-400/10 dark:text-violet-400 dark:inset-ring-violet-400/20",
   },
-  "containers": {
+  containers: {
     title: "Containers 🐳",
-    description: "All my posts about Containers, which don't necessarily fit into the Docker posts.",
+    description:
+      "All my posts about Containers, which don't necessarily fit into the Docker posts.",
     colorLight: "bg-cyan-50 text-cyan-700 inset-ring inset-ring-cyan-600/10",
-    colorDark: "dark:bg-cyan-400/10 dark:text-cyan-400 dark:inset-ring-cyan-400/20"
+    colorDark:
+      "dark:bg-cyan-400/10 dark:text-cyan-400 dark:inset-ring-cyan-400/20",
   },
-  "devops": {
+  devops: {
     title: "DevOps 🦾",
     description: "All my posts about DevOps",
     colorLight: "bg-teal-50 text-teal-700 inset-ring inset-ring-teal-600/10",
-    colorDark: "dark:bg-teal-400/10 dark:text-teal-400 dark:inset-ring-teal-400/20"
+    colorDark:
+      "dark:bg-teal-400/10 dark:text-teal-400 dark:inset-ring-teal-400/20",
   },
-  "docker": {
+  docker: {
     title: "Docker 🐳",
     description: "All my posts about Docker",
     colorLight: "bg-blue-50 text-blue-700 inset-ring inset-ring-blue-700/10",
-    colorDark: "dark:bg-blue-400/10 dark:text-blue-400 dark:inset-ring-blue-400/30"
+    colorDark:
+      "dark:bg-blue-400/10 dark:text-blue-400 dark:inset-ring-blue-400/30",
   },
-  "github": {
+  github: {
     title: "GitHub 👨‍💻",
     description: "All my posts about GitHub related services and technologies",
     colorLight: "bg-slate-50 text-slate-700 inset-ring inset-ring-slate-600/10",
-    colorDark: "dark:bg-slate-400/10 dark:text-slate-400 dark:inset-ring-slate-400/20"
+    colorDark:
+      "dark:bg-slate-400/10 dark:text-slate-400 dark:inset-ring-slate-400/20",
   },
   "infrastructure-as-code": {
     title: "Infrastructure as Code 🤖",
     description: "All my posts about Infrastructure as Code",
-    colorLight: "bg-purple-50 text-purple-700 inset-ring inset-ring-purple-700/10",
-    colorDark: "dark:bg-purple-400/10 dark:text-purple-400 dark:inset-ring-purple-400/30"
+    colorLight:
+      "bg-purple-50 text-purple-700 inset-ring inset-ring-purple-700/10",
+    colorDark:
+      "dark:bg-purple-400/10 dark:text-purple-400 dark:inset-ring-purple-400/30",
   },
-  "kubernetes": {
+  kubernetes: {
     title: "Kubernetes 🐳",
     description: "All my posts about Kubernetes",
     colorLight: "bg-blue-50 text-blue-700 inset-ring inset-ring-blue-600/10",
-    colorDark: "dark:bg-blue-400/10 dark:text-blue-400 dark:inset-ring-blue-400/20"
+    colorDark:
+      "dark:bg-blue-400/10 dark:text-blue-400 dark:inset-ring-blue-400/20",
   },
-  "life": {
+  life: {
     title: "Life 👨‍🏫",
     description: "Some general Posts",
     colorLight: "bg-pink-50 text-pink-700 inset-ring inset-ring-pink-700/10",
-    colorDark: "dark:bg-pink-400/10 dark:text-pink-400 dark:inset-ring-pink-400/20"
+    colorDark:
+      "dark:bg-pink-400/10 dark:text-pink-400 dark:inset-ring-pink-400/20",
   },
-  "linux": {
+  linux: {
     title: "Linux 🐧",
     description: "All my posts about various Linux technologies",
-    colorLight: "bg-yellow-50 text-yellow-800 inset-ring inset-ring-yellow-600/20",
-    colorDark: "dark:bg-yellow-400/10 dark:text-yellow-500 dark:inset-ring-yellow-400/20"
+    colorLight:
+      "bg-yellow-50 text-yellow-800 inset-ring inset-ring-yellow-600/20",
+    colorDark:
+      "dark:bg-yellow-400/10 dark:text-yellow-500 dark:inset-ring-yellow-400/20",
   },
-  "listened": {
+  listened: {
     title: "Listened 🎧",
-    description: "What did I listen to in a week? For more information, see [here](https://www.russ.fm/)",
-    colorLight: "bg-fuchsia-50 text-fuchsia-700 inset-ring inset-ring-fuchsia-600/10",
-    colorDark: "dark:bg-fuchsia-400/10 dark:text-fuchsia-400 dark:inset-ring-fuchsia-400/20"
+    description:
+      "What did I listen to in a week? For more information, see [here](https://www.russ.fm/)",
+    colorLight:
+      "bg-fuchsia-50 text-fuchsia-700 inset-ring inset-ring-fuchsia-600/10",
+    colorDark:
+      "dark:bg-fuchsia-400/10 dark:text-fuchsia-400 dark:inset-ring-fuchsia-400/20",
   },
-  "macos": {
+  macos: {
     title: "macOS 🍏",
     description: "All my posts about various macOS technologies",
     colorLight: "bg-gray-50 text-gray-700 inset-ring inset-ring-gray-600/10",
-    colorDark: "dark:bg-gray-400/10 dark:text-gray-400 dark:inset-ring-gray-400/20"
+    colorDark:
+      "dark:bg-gray-400/10 dark:text-gray-400 dark:inset-ring-gray-400/20",
   },
-  "packer": {
+  packer: {
     title: "Packer 📦",
     description: "All my posts about Packer",
     colorLight: "bg-amber-50 text-amber-700 inset-ring inset-ring-amber-600/10",
-    colorDark: "dark:bg-amber-400/10 dark:text-amber-400 dark:inset-ring-amber-400/20"
+    colorDark:
+      "dark:bg-amber-400/10 dark:text-amber-400 dark:inset-ring-amber-400/20",
   },
-  "podman": {
+  podman: {
     title: "Podman 🦭",
     description: "All my posts about Podman",
-    colorLight: "bg-purple-50 text-purple-700 inset-ring inset-ring-purple-600/10",
-    colorDark: "dark:bg-purple-400/10 dark:text-purple-400 dark:inset-ring-purple-400/20"
+    colorLight:
+      "bg-purple-50 text-purple-700 inset-ring inset-ring-purple-600/10",
+    colorDark:
+      "dark:bg-purple-400/10 dark:text-purple-400 dark:inset-ring-purple-400/20",
   },
-  "python": {
+  python: {
     title: "Python 🐍",
     description: "All my posts about Python",
-    colorLight: "bg-yellow-50 text-yellow-700 inset-ring inset-ring-yellow-600/10",
-    colorDark: "dark:bg-yellow-400/10 dark:text-yellow-500 dark:inset-ring-yellow-400/20"
+    colorLight:
+      "bg-yellow-50 text-yellow-700 inset-ring inset-ring-yellow-600/10",
+    colorDark:
+      "dark:bg-yellow-400/10 dark:text-yellow-500 dark:inset-ring-yellow-400/20",
   },
-  "security": {
+  security: {
     title: "Security 🔐",
     description: "All my posts about security",
     colorLight: "bg-red-50 text-red-700 inset-ring inset-ring-red-600/10",
-    colorDark: "dark:bg-red-400/10 dark:text-red-400 dark:inset-ring-red-400/20"
+    colorDark:
+      "dark:bg-red-400/10 dark:text-red-400 dark:inset-ring-red-400/20",
   },
-  "terraform": {
+  terraform: {
     title: "Terraform 👨‍💻",
     description: "All my posts about Terraform",
-    colorLight: "bg-violet-50 text-violet-700 inset-ring inset-ring-violet-600/10",
-    colorDark: "dark:bg-violet-400/10 dark:text-violet-400 dark:inset-ring-violet-400/20"
+    colorLight:
+      "bg-violet-50 text-violet-700 inset-ring inset-ring-violet-600/10",
+    colorDark:
+      "dark:bg-violet-400/10 dark:text-violet-400 dark:inset-ring-violet-400/20",
   },
-  "tools": {
+  tools: {
     title: "Tools 🧰",
     description: "All my posts about various tools",
-    colorLight: "bg-orange-50 text-orange-700 inset-ring inset-ring-orange-600/10",
-    colorDark: "dark:bg-orange-400/10 dark:text-orange-400 dark:inset-ring-orange-400/20"
+    colorLight:
+      "bg-orange-50 text-orange-700 inset-ring inset-ring-orange-600/10",
+    colorDark:
+      "dark:bg-orange-400/10 dark:text-orange-400 dark:inset-ring-orange-400/20",
   },
-  "vinyl": {
+  vinyl: {
     title: "Vinyl 🎧",
     description: "All my posts about Vinyl records I am listening to",
     colorLight: "bg-rose-50 text-rose-700 inset-ring inset-ring-rose-600/10",
-    colorDark: "dark:bg-rose-400/10 dark:text-rose-400 dark:inset-ring-rose-400/20"
+    colorDark:
+      "dark:bg-rose-400/10 dark:text-rose-400 dark:inset-ring-rose-400/20",
   },
-  "web": {
+  web: {
     title: "Web 🌍",
     description: "All my posts about this and other web sites",
-    colorLight: "bg-emerald-50 text-emerald-700 inset-ring inset-ring-emerald-600/10",
-    colorDark: "dark:bg-emerald-400/10 dark:text-emerald-400 dark:inset-ring-emerald-400/20"
-  }
+    colorLight:
+      "bg-emerald-50 text-emerald-700 inset-ring inset-ring-emerald-600/10",
+    colorDark:
+      "dark:bg-emerald-400/10 dark:text-emerald-400 dark:inset-ring-emerald-400/20",
+  },
 };
 
 // Avatars to exclude from random selection (e.g., special purpose avatars)
 // Add any avatar filenames here that you don't want to appear in random selection
 export const EXCLUDED_AVATARS = [
-  'anon.svg',
-  'glitch.svg',
-  'ai.svg',
-  'jobs.svg',
-  'arms-folded-02.svg',
-  'dark-mode.svg',
-  'hipster.svg',
-  'matrix.svg',
-  'laptop-01.svg',
-  'noir.svg',
-  'record-02.svg'
+  "anon.svg",
+  "glitch.svg",
+  "ai.svg",
+  "jobs.svg",
+  "arms-folded-02.svg",
+  "dark-mode.svg",
+  "hipster.svg",
+  "matrix.svg",
+  "laptop-01.svg",
+  "noir.svg",
+  "record-02.svg",
 ];
 
 // Default avatar mappings for tags
 // Used when no avatar is specified in post frontmatter
 export const TAG_AVATAR_MAP: Record<string, string> = {
-  "ai": "ai.svg",
-  "ansible": "ansible.svg",
-  "author": "book.svg",
-  "automation": "devops.svg",
-  "aws": "cloud.svg",
-  "azure": "azure.svg",
-  "blog": "coffee-02.svg",
-  "book": "book.svg",
-  "cloud": "cloud.svg",
-  "code": "terminal.svg",
-  "conference": "speaker.svg",
-  "containers": "docker.svg",
-  "devops": "devops.svg",
-  "docker": "docker.svg",
-  "github": "github.svg",
+  ai: "ai.svg",
+  ansible: "ansible.svg",
+  author: "book.svg",
+  automation: "devops.svg",
+  aws: "cloud.svg",
+  azure: "azure.svg",
+  blog: "coffee-02.svg",
+  book: "book.svg",
+  cloud: "cloud.svg",
+  code: "terminal.svg",
+  conference: "speaker.svg",
+  containers: "docker.svg",
+  devops: "devops.svg",
+  docker: "docker.svg",
+  github: "github.svg",
   "infrastructure-as-code": "founder.svg",
-  "kubernetes": "docker.svg",
-  "life": "watch.svg",
-  "linux": "linux.svg",
-  "listened": "headphones.svg",
-  "macos": "laptop-02.svg",
-  "packer": "hoodie-down.svg",
-  "podman": "docker.svg",
-  "python": "python.svg",
-  "security": "hacker.svg",
-  "terraform": "terminal.svg",
-  "tools": "cables.svg",
-  "vinyl": "record-01.svg",
-  "web": "keyboard.svg"
+  kubernetes: "docker.svg",
+  life: "watch.svg",
+  linux: "linux.svg",
+  listened: "headphones.svg",
+  macos: "laptop-02.svg",
+  packer: "hoodie-down.svg",
+  podman: "docker.svg",
+  python: "python.svg",
+  security: "hacker.svg",
+  terraform: "terminal.svg",
+  tools: "cables.svg",
+  vinyl: "record-01.svg",
+  web: "keyboard.svg",
 };
 
 // Cloudflare Image Transformation Presets
@@ -299,62 +359,62 @@ export const TAG_AVATAR_MAP: Record<string, string> = {
 export const CF_IMAGE_PRESETS = {
   // Default quality for all images
   default: {
-    quality: 60
+    quality: 60,
   },
 
   // Hero images for blog posts
   hero: {
     quality: 60,
-    format: 'avif' as const,
-    fit: 'cover' as const,
-    widths: [640, 1024, 1536, 2048]
+    format: "avif" as const,
+    fit: "cover" as const,
+    widths: [640, 1024, 1536, 2048],
   },
 
   // PostCard thumbnails (vertical layout, priority/high quality for LCP)
   thumbnailPriority: {
-    quality: 30,
-    format: 'avif' as const,
-    fit: 'cover' as const,
-    widths: [320, 400, 600, 800, 1200] // Mobile-first: smaller widths for better mobile LCP
+    quality: 40,
+    format: "avif" as const,
+    fit: "cover" as const,
+    widths: [400, 600, 800, 1200], // Mobile-first: smaller widths for better mobile LCP
   },
 
   // PostCard thumbnails (vertical layout)
   thumbnail: {
     quality: 25,
-    format: 'avif' as const,
-    fit: 'cover' as const,
-    widths: [256, 320, 400, 600, 800, 1200] // Mobile-first: smaller widths
+    format: "avif" as const,
+    fit: "cover" as const,
+    widths: [256, 320, 400, 600, 800, 1200], // Mobile-first: smaller widths
   },
 
   // Post card thumbnails (horizontal layout)
   thumbnailHorizontal: {
     quality: 25,
-    format: 'avif' as const,
-    fit: 'cover' as const,
-    widths: [256, 320, 384, 512]
+    format: "avif" as const,
+    fit: "cover" as const,
+    widths: [256, 320, 384, 512],
   },
 
   // Gallery/lightbox images (high quality)
   gallery: {
     quality: 60,
-    format: 'avif' as const,
-    fit: 'scale-down' as const,
-    widths: [1024, 1536, 2048, 2560]
+    format: "avif" as const,
+    fit: "scale-down" as const,
+    widths: [1024, 1536, 2048, 2560],
   },
 
   // Avatar images
   avatar: {
     quality: 60,
-    format: 'auto' as const,
-    fit: 'cover' as const,
-    widths: [40, 48, 80, 96, 160, 192]
+    format: "auto" as const,
+    fit: "cover" as const,
+    widths: [40, 48, 80, 96, 160, 192],
   },
 
   // LQIP (Low Quality Image Placeholder) - tiny blurred preview
   lqip: {
     quality: 20,
     width: 32,
-    format: 'avif' as const,
-    fit: 'cover' as const
-  }
+    format: "avif" as const,
+    fit: "cover" as const,
+  },
 };
