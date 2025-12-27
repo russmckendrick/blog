@@ -1,4 +1,5 @@
 ---
+import { Head } from '@felixicaza/astro-capo';
 import type { CollectionEntry } from 'astro:content';
 import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../utils/cloudflare-images';
 import BaseHead from '../components/layout/BaseHead.astro';
@@ -150,7 +151,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 ---
 
 <html lang="en">
-	<head>
+	<Head>
 		<BaseHead
 			title={title}
 			description={description}
@@ -185,7 +186,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 		<link rel="dns-prefetch" href="https://opengraph.githubassets.com">
 		<Schema item={blogPostingSchema} />
 		<Schema item={breadcrumbSchema} />
-	</head>
+	</Head>
 
 	<body class="bg-gray-50 dark:bg-gray-950">
 		<HeaderWrapper autoHide={false}>

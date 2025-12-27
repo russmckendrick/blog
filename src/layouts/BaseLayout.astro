@@ -1,4 +1,5 @@
 ---
+import { Head } from '@felixicaza/astro-capo';
 import BaseHead from '../components/layout/BaseHead.astro';
 import Header from '../components/layout/Header.astro';
 import HeaderWrapper from '../components/layout/HeaderWrapper.astro';
@@ -30,10 +31,10 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 
 <!doctype html>
 <html lang="en">
-	<head>
+	<Head>
 		<BaseHead title={pageTitle} description={description} image={image} keywords={keywords} />
 		<slot name="head" />
-	</head>
+	</Head>
 	<body class="bg-gray-50 dark:bg-gray-950">
 		<HeaderWrapper autoHide={false}>
 			<Header />
