@@ -302,6 +302,13 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorDark:
       "dark:bg-emerald-400/10 dark:text-emerald-400 dark:inset-ring-emerald-400/20",
   },
+  yearend: {
+    title: "Year End 🎉",
+    description: "All the posts about my year in listening to vinyl",
+    colorLight: "bg-rose-50 text-rose-700 inset-ring inset-ring-rose-600/10",
+    colorDark:
+      "dark:bg-rose-400/10 dark:text-rose-400 dark:inset-ring-rose-400/20",
+  },
 };
 
 // Avatars to exclude from random selection (e.g., special purpose avatars)
