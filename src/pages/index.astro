@@ -6,7 +6,7 @@ import HeroSection from '../components/home/HeroSection.astro';
 import Pagination from '../components/layout/Pagination.astro';
 import { SITE_TITLE, SITE_DESCRIPTION, CF_IMAGE_PRESETS } from '../consts';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../utils/hero-colors';
-import { getCFImageUrl, generateCFSrcSet } from '../utils/cloudflare-images';
+import { generateCFSrcSet } from '../utils/cloudflare-images';
 
 // Homepage shows 1 featured + 6 grid cards = 7 total
 const postsPerPage = 7;

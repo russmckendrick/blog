@@ -20,9 +20,6 @@ import { Schema } from 'astro-seo-schema';
 import { createBlogPostingSchema, createBreadcrumbSchema } from '../utils/schema';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../utils/hero-colors';
 
-// Import embed components to make them available in blog posts
-import { YouTube } from '@astro-community/astro-embed-youtube';
-import { LinkPreview } from '@astro-community/astro-embed-link-preview';
 
 // Import LightGallery CSS
 import 'lightgallery/css/lightgallery.css';
@@ -37,10 +34,12 @@ export interface Heading {
 	slug: string;
 }
 
-interface Props extends CollectionEntry<'blog'>['data'] {
-	entry?: CollectionEntry<'blog'>;
-	previousPost?: CollectionEntry<'blog'>;
-	nextPost?: CollectionEntry<'blog'>;
+type BlogData = CollectionEntry<'blog'>['data'];
+
+interface Props extends BlogData {
+	entry?: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
+	previousPost?: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
+	nextPost?: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
 	ogImagePath?: string;
 	isTune?: boolean;
 	headings?: Heading[];
@@ -73,8 +72,8 @@ const editUrl = filePath && EDIT_POST.appendFilePath
 const authorName = isTune ? AI_AUTHOR.name : AUTHOR_NAME;
 
 // Build avatar path - support both formats: "coffee" or "coffee.svg" or "coffee.png"
-const buildAvatarPath = (avatarName: string | undefined) => {
-	if (!avatarName) return null;
+const buildAvatarPath = (avatarName: string | undefined): string | undefined => {
+	if (!avatarName) return undefined;
 
 	// If it already has an extension, use as-is
 	if (avatarName.includes('.')) {
@@ -234,7 +233,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 							<Breadcrumbs items={breadcrumbItems} />
 
 						<header class="text-center mb-10 space-y-6">
-							<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-gray-100">
+							<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-gray-100" style="font-size: clamp(2.25rem, 5vw, 3.75rem);">
 								{title}
 							</h1>
 
@@ -248,7 +247,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 											src={avatarSrc}
 											alt={authorName}
 											class="relative w-16 h-16 rounded-full ring-3 ring-white dark:ring-gray-900 shadow-md object-cover"
-											onError={`this.onerror=null; this.src='${avatarFallback}';`}
+											onerror={`this.onerror=null; this.src='${avatarFallback}';`}
 										/>
 									</div>
 

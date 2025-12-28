@@ -87,9 +87,9 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-	entry: CollectionEntry<'blog'>;
-	previousPost?: CollectionEntry<'blog'>;
-	nextPost?: CollectionEntry<'blog'>;
+	entry: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
+	previousPost?: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
+	nextPost?: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
 	ogImagePath: string;
 	isTune?: boolean;
 	filePath?: string;
@@ -99,7 +99,7 @@ const { entry, previousPost, nextPost, ogImagePath, isTune, filePath } = Astro.p
 const { Content, headings } = await render(entry);
 
 // Calculate reading time from raw content
-const readingTime = calculateReadingTime(entry.body);
+const readingTime = calculateReadingTime(entry.body ?? '');
 
 // Components to be available globally in MDX
 const components = {

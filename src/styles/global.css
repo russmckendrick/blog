@@ -121,8 +121,12 @@ h1 {
   letter-spacing: -0.035em;
 }
 
-/* Explicit font-size for h1 in article context to prevent browser default sizing in sectioning elements */
-article h1 {
+/* Explicit font-size for h1 in sectioning contexts to prevent browser UA stylesheet sizing (H1UserAgentFontSizeInSection deprecation) */
+article h1,
+section h1,
+aside h1,
+nav h1,
+:where(article, section, aside, nav) h1 {
   font-size: clamp(2.25rem, 5vw, 3.75rem);
 }
 

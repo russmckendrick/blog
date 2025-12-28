@@ -93,7 +93,7 @@ export default defineConfig({
 			// Optimize module preloading to reduce critical request chains
 			modulePreload: {
 				polyfill: false, // Modern browsers support ES modules, no polyfill needed
-				resolveDependencies: (filename, deps, { hostId, hostType }) => {
+				resolveDependencies: (_filename, deps) => {
 					// Preload all dependencies to avoid chained requests
 					return deps;
 				}

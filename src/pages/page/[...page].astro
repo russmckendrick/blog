@@ -1,19 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import Pagination from '../../components/layout/Pagination.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../utils/hero-colors';
 
-export async function getStaticPaths({ paginate }) {
+export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = (await getCollection('blog'))
 		.filter(post => import.meta.env.DEV || !post.data.draft)
 		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 	// 9 posts per page fills 3 rows nicely in the grid
 	return paginate(allPosts, { pageSize: 9 });
-}
+}) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
 

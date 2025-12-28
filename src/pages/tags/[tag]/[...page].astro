@@ -1,14 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PostCard from '../../../components/blog/PostCard.astro';
 import Pagination from '../../../components/layout/Pagination.astro';
-import { getTagMetadata, getTagUrl, normalizeTagSlug } from '../../../utils/tags';
+import { getTagMetadata, normalizeTagSlug } from '../../../utils/tags';
 import { TAG_METADATA, TAG_AVATAR_MAP } from '../../../consts';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../../utils/hero-colors';
 
-export async function getStaticPaths({ paginate }) {
+export const getStaticPaths = (async ({ paginate }) => {
   const posts = (await getCollection('blog'))
     .filter(post => import.meta.env.DEV || !post.data.draft)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -36,7 +37,7 @@ export async function getStaticPaths({ paginate }) {
   }
 
   return paths;
-}
+}) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
 const { tag } = Astro.params;

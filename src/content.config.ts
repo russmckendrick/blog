@@ -38,8 +38,9 @@ const blog = defineCollection({
 			...data,
 			// Normalize date fields - prefer date over pubDate for Hugo compatibility
 			pubDate: data.date || data.pubDate || new Date(),
-			// Normalize ToC field
-			showToc: data.showToc || data.ShowToc
+			// Normalize ToC fields
+			showToc: data.showToc || data.ShowToc,
+			TocOpen: data.TocOpen
 		})),
 });
 
@@ -74,6 +75,7 @@ const tunes = defineCollection({
 			// Support both ShowToc and showToc variants
 			ShowToc: z.boolean().default(false),
 			showToc: z.boolean().default(false),
+			TocOpen: z.boolean().default(false),
 			// Optional album metadata
 			album: z.string().optional(),
 			artist: z.string().optional(),
@@ -84,8 +86,9 @@ const tunes = defineCollection({
 			...data,
 			// Normalize date fields - prefer date over pubDate
 			pubDate: data.date || data.pubDate || new Date(),
-			// Normalize ToC field
-			showToc: data.showToc || data.ShowToc
+			// Normalize ToC fields
+			showToc: data.showToc || data.ShowToc,
+			TocOpen: data.TocOpen
 		})),
 });
 

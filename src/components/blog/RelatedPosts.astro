@@ -4,9 +4,9 @@ import type { CollectionEntry } from 'astro:content';
 import PostCard from './PostCard.astro';
 
 interface Props {
-  currentPost: CollectionEntry<'blog'>;
-  previousPost?: CollectionEntry<'blog'>;
-  nextPost?: CollectionEntry<'blog'>;
+  currentPost: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
+  previousPost?: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
+  nextPost?: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
   limit?: number;
 }
 

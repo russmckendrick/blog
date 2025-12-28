@@ -133,7 +133,7 @@ export interface FAQItem {
 
 export function createFAQSchema(
   faqs: FAQItem[],
-  url: string
+  _url: string
 ): WithContext<FAQPage> {
   return {
     '@context': 'https://schema.org',
@@ -163,14 +163,14 @@ export function createHowToSchema({
   description,
   steps,
   totalTime,
-  url,
+  _url,
   image
 }: {
   name: string
   description: string
   steps: HowToStep[]
   totalTime?: string
-  url: string
+  _url: string
   image?: string
 }): WithContext<HowTo> {
   return {

@@ -5,18 +5,20 @@ import FormattedDate from './FormattedDate.astro';
 import { getPostUrl } from '../../utils/url.ts';
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
 
+type PostEntry = CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
+
 interface Props {
-	previousPost?: CollectionEntry<'blog'>;
-	nextPost?: CollectionEntry<'blog'>;
+	previousPost?: PostEntry;
+	nextPost?: PostEntry;
 }
 
 const { previousPost, nextPost } = Astro.props;
 
-function getPostData(post: CollectionEntry<'blog'>) {
+function getPostData(post: PostEntry) {
 	const href = getPostUrl(post.data.pubDate, post.data.title);
 	const heroImage = post.data.heroImage || post.data.cover?.image;
 	const alt = post.data.cover?.alt || post.data.title;
-	const minutes = calculateReadingTime(post.body);
+	const minutes = calculateReadingTime(post.body ?? '');
 	const readingTime = formatReadingTime(minutes);
 
 	return { href, heroImage, alt, readingTime };

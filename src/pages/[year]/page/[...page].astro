@@ -1,12 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PostCard from '../../../components/blog/PostCard.astro';
 import Pagination from '../../../components/layout/Pagination.astro';
 import { SITE_TITLE } from '../../../consts';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../../utils/hero-colors';
 
-export async function getStaticPaths({ paginate }) {
+export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = await getCollection('blog');
 	const allTunes = await getCollection('tunes');
 	const allContent = [...allPosts, ...allTunes];
@@ -32,7 +34,7 @@ export async function getStaticPaths({ paginate }) {
 	}
 
 	return paths;
-}
+}) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
 const { year } = Astro.params;
@@ -62,7 +64,7 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
 		</p>
 
 		<ul class="space-y-12">
-			{page.data.map((item, index) => (
+			{page.data.map((item: CollectionEntry<'blog'> | CollectionEntry<'tunes'>, index: number) => (
 				<li>
 					<PostCard post={item} priority={index === 0 && page.currentPage === 1} />
 				</li>
