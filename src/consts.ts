@@ -424,4 +424,12 @@ export const CF_IMAGE_PRESETS = {
     format: "avif" as const,
     fit: "cover" as const,
   },
+
+  // Link preview OG images
+  linkPreview: {
+    quality: 60,
+    format: "avif" as const,
+    fit: "cover" as const,
+    widths: [300, 600, 800, 1200],
+  },
 };

@@ -1,5 +1,5 @@
 ---
-import { LinkPreview as LinkPreviewEmbed } from '@astro-community/astro-embed-link-preview';
+import { getLinkPreviewData, getLinkPreviewImage, getLinkPreviewSrcSet } from '../../utils/link-preview';
 
 interface Props {
   id: string;
@@ -7,20 +7,75 @@ interface Props {
 }
 
 const { id, hideMedia } = Astro.props;
+
+// Get cached data (downloaded at build time by cache-link-preview-images.js)
+const cachedData = getLinkPreviewData(id);
+
+// Determine image source: prefer local cached image with CF transformations
+const localImage = getLinkPreviewImage(id);
+const srcSet = getLinkPreviewSrcSet(id);
+const imageUrl = localImage || cachedData?.originalImage || null;
+const imageAlt = cachedData?.imageAlt || cachedData?.title || '';
+
+// Extract domain for display
+const domain = (() => {
+  try {
+    return new URL(id).hostname.replace(/^www\./, '');
+  } catch {
+    return id;
+  }
+})();
+
+const title = cachedData?.title || domain;
+const description = cachedData?.description || '';
+const linkUrl = id;
 ---
 
-<div class="my-6 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-  <LinkPreviewEmbed id={id} hideMedia={hideMedia} />
+<div class="my-6 rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800 overflow-hidden">
+  <a
+    href={linkUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="link-preview block no-underline text-inherit hover:no-underline"
+  >
+    {!hideMedia && imageUrl && (
+      <div class="link-preview-image aspect-[1200/630] overflow-hidden bg-gray-100 dark:bg-gray-700">
+        <img
+          src={imageUrl}
+          srcset={srcSet || undefined}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 800px"
+          alt={imageAlt}
+          width="1200"
+          height="630"
+          loading="lazy"
+          decoding="async"
+          class="h-full w-full object-cover"
+        />
+      </div>
+    )}
+    <div class="p-4">
+      <div class="link-preview-title font-semibold text-gray-900 dark:text-gray-100 line-clamp-2">
+        {title}
+      </div>
+      {description && (
+        <div class="link-preview-description mt-1 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+          {description}
+        </div>
+      )}
+      <div class="link-preview-domain mt-2 text-xs text-gray-500 dark:text-gray-500">
+        {domain}
+      </div>
+    </div>
+  </a>
 </div>
 
 <style>
-  div :global(a) {
+  .link-preview {
     width: 100% !important;
     max-width: 100% !important;
   }
 
-  div :global(.link-preview) {
-    width: 100% !important;
-    max-width: 100% !important;
+  .link-preview:hover .link-preview-title {
+    color: var(--color-primary, #3b82f6);
   }
 </style>

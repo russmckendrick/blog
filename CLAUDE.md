@@ -20,6 +20,8 @@ Guidance for Claude Code when working with this Astro blog repository.
 ### Image & Build Tools
 - `pnpm run optimize [path]` - Optimize images (JPG, PNG, WebP, AVIF) with quality 60
 - `pnpm run extract-colors` - Extract hero colors for dynamic gradients (auto-runs in prebuild)
+- `pnpm run cache-link-previews` - Download OG images for LinkPreview components (auto-runs in prebuild)
+- `pnpm run refresh-link-previews` - Re-download stale images (older than 7 days)
 
 ## Build & Deployment
 
@@ -33,12 +35,20 @@ GitHub Actions (`.github/workflows/deploy.yml`) deploys to Cloudflare Pages on p
 Uses **Cloudflare Image Transformations** (not build-time processing):
 - URL pattern: `/cdn-cgi/image/width=800,quality=85,format=auto/assets/image.jpg`
 - Helper: `src/utils/cloudflare-images.ts` (`getCFImageUrl()`, `generateCFSrcSet()`)
-- Presets: hero, thumbnail, thumbnailPriority, gallery, avatar
+- Presets: hero, thumbnail, thumbnailPriority, gallery, avatar, linkPreview
 
 ### OpenGraph Images
 Auto-generated via `astro-og-canvas`:
 - Endpoint: `src/pages/[year]/[month]/[day]/[slug]-og.png.ts`
 - Dimensions: 1200x630, cached in `node_modules/.astro-og-canvas`
+
+### Link Preview Image Caching
+OG images for `<LinkPreview>` components are downloaded at build time:
+- Script: `scripts/cache-link-preview-images.js` (runs in prebuild)
+- Images: `public/assets/link-previews/` (committed to repo)
+- Manifest: `src/data/link-preview-cache.json`
+- Helper: `src/utils/link-preview.ts`
+- Weekly refresh via `.github/workflows/refresh-link-previews.yml`
 
 ### Dynamic Hero Gradients
 - `scripts/extract-hero-colors.js` extracts colors using Sharp

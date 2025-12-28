@@ -18,7 +18,9 @@
     "optimize": "node scripts/optimize-images.js",
     "analyze-links": "node scripts/analyze-internal-links.js",
     "extract-colors": "node scripts/extract-hero-colors.js",
-    "prebuild": "pnpm run extract-colors",
+    "prebuild": "pnpm run extract-colors && node scripts/cache-link-preview-images.js",
+    "cache-link-previews": "node scripts/cache-link-preview-images.js",
+    "refresh-link-previews": "node scripts/cache-link-preview-images.js --refresh-stale",
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
@@ -52,6 +54,7 @@
     "fuzzball": "^2.2.3",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.1",
+    "linkedom": "^0.18.9",
     "langchain": "^1.2.3",
     "lightgallery": "^2.9.0",
     "medium-zoom": "^1.1.0",
