@@ -359,7 +359,7 @@ const minimapPositionClass = positionClasses[minimapPosition];
                 const style = el.getAttribute('style') || '';
                 let newStyle = style;
 
-                Object.keys(colorMap).forEach(lightColor => {
+                (Object.keys(colorMap) as Array<keyof typeof colorMap>).forEach(lightColor => {
                   if (style.includes(lightColor)) {
                     newStyle = newStyle.replace(new RegExp(lightColor, 'gi'), colorMap[lightColor]);
                   }
@@ -373,7 +373,7 @@ const minimapPositionClass = positionClasses[minimapPosition];
               // Also update fill attributes directly
               svgEl.querySelectorAll('[fill]').forEach(el => {
                 const fill = el.getAttribute('fill') || '';
-                Object.keys(colorMap).forEach(lightColor => {
+                (Object.keys(colorMap) as Array<keyof typeof colorMap>).forEach(lightColor => {
                   if (fill.toLowerCase() === lightColor.toLowerCase()) {
                     el.setAttribute('fill', colorMap[lightColor]);
                   }

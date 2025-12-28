@@ -1,8 +1,9 @@
 import fs from "fs/promises";
 import satori from "satori";
 import sharp from "sharp";
+import type { ReactNode } from "react";
 
-export async function SVG(component: JSX.Element) {
+export async function SVG(component: ReactNode) {
   return await satori(component, {
     width: 1200,
     height: 630,
@@ -25,7 +26,7 @@ export async function SVG(component: JSX.Element) {
   });
 }
 
-export async function PNG(component: JSX.Element) {
+export async function PNG(component: ReactNode) {
   return await sharp(Buffer.from(await SVG(component)))
     .png({
       compressionLevel: 8, // Slightly reduced from 9

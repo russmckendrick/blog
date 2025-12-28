@@ -16,8 +16,8 @@ interface Window {
     };
   };
 
-  // Reddit embed library
-  rembeddit?: {
-    init: () => void;
+  // Reddit embed library (callable function)
+  rembeddit?: (() => void) & {
+    init?: () => void;
   };
 }

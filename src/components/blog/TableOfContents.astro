@@ -63,7 +63,7 @@ const tocHeadings = headings.filter(h => h.depth <= 3);
   function initTocState() {
     // Use requestAnimationFrame to batch DOM reads and avoid forced reflow
     requestAnimationFrame(() => {
-      const details = document.getElementById('toc-details');
+      const details = document.getElementById('toc-details') as HTMLDetailsElement | null;
       if (!details) return;
 
       const savedState = localStorage.getItem('toc-open');

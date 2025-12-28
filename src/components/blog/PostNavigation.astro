@@ -37,7 +37,7 @@ function getPostData(post: PostEntry) {
 						{getPostData(previousPost).heroImage && (
 							<figure class="relative overflow-hidden h-40">
 								<Image
-									src={getPostData(previousPost).heroImage}
+									src={getPostData(previousPost).heroImage!}
 									alt={getPostData(previousPost).alt}
 									width={640}
 									height={360}
@@ -96,7 +96,7 @@ function getPostData(post: PostEntry) {
 						{getPostData(nextPost).heroImage && (
 							<figure class="relative overflow-hidden h-40">
 								<Image
-									src={getPostData(nextPost).heroImage}
+									src={getPostData(nextPost).heroImage!}
 									alt={getPostData(nextPost).alt}
 									width={640}
 									height={360}

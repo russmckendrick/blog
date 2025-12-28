@@ -114,8 +114,9 @@ const imageURL = image?.startsWith('http')
 	}
 
 	// Load analytics during browser idle time for best performance
-	if ('requestIdleCallback' in window) {
-		requestIdleCallback(loadPlausible, { timeout: 2000 });
+	const win = window as Window & { requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => void };
+	if (win.requestIdleCallback) {
+		win.requestIdleCallback(loadPlausible, { timeout: 2000 });
 	} else if (document.readyState === 'complete') {
 		// Fallback for browsers without requestIdleCallback
 		setTimeout(loadPlausible, 1);

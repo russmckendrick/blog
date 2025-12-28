@@ -22,9 +22,9 @@
 	}
 
 	function setGiscusTheme() {
-		function sendMessage(message) {
-			const iframe = document.querySelector('iframe.giscus-frame');
-			if (!iframe) return;
+		function sendMessage(message: { setConfig: { theme: string } }) {
+			const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
+			if (!iframe?.contentWindow) return;
 			iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
 		}
 		sendMessage({
