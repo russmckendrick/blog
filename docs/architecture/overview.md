@@ -145,6 +145,7 @@ graph LR
 | **Public Assets** | `public/assets/` | Direct CDN delivery |
 | **Avatars** | `public/images/avatars/` | Direct CDN delivery |
 | **Cover Images** | `src/assets/YYYY-MM-DD-slug/cover.jpg` | Via Cloudflare Image Transformations |
+| **LinkPreview Images** | `public/assets/link-previews/` | Via Cloudflare Image Transformations |
 
 ## Content Types
 
@@ -249,15 +250,19 @@ graph LR
 
 ```mermaid
 graph TD
-    A[npm run build] --> B[Content Collection Processing]
-    B --> C[Component Rendering]
-    C --> D[Route Generation]
-    D --> E[OG Image Generation]
-    E --> F[Static HTML/CSS/JS]
-    F --> G[Asset Compression]
-    G --> H[dist/ Output]
+    A[npm run build] --> B[Prebuild]
+    B --> B1[Extract Hero Colors]
+    B --> B2[Cache LinkPreview Images]
+    B1 --> C[Content Collection Processing]
+    B2 --> C
+    C --> D[Component Rendering]
+    D --> E[Route Generation]
+    E --> F[OG Image Generation]
+    F --> G[Static HTML/CSS/JS]
+    G --> H[Asset Compression]
+    H --> I[dist/ Output]
 
-    style H fill:#f96,stroke:#333
+    style I fill:#f96,stroke:#333
 ```
 
 **Build Time**: ~2-3 minutes
@@ -279,11 +284,14 @@ graph TD
     style F fill:#f96,stroke:#333
 ```
 
-**Workflow**: `.github/workflows/deploy.yml`
+**Workflows**:
+- `.github/workflows/deploy.yml` - Main deployment
+- `.github/workflows/refresh-link-previews.yml` - Weekly OG image refresh
 
 **Triggers**:
 - Push to `main` branch
 - Pull request builds (preview)
+- Weekly schedule (Sundays) for link preview refresh
 
 **Deployment Time**: ~3-5 minutes total
 
@@ -511,4 +519,4 @@ See [seo-implementation.md](./seo-implementation.md) for details.
 
 ---
 
-**Last Updated**: November 2025
+**Last Updated**: December 2025

@@ -670,6 +670,77 @@ getCFImageUrl(src, { width: 800, height: 600 }) // May distort
 - Use higher resolution source images
 - Check original image quality
 
+## Link Preview Image Caching
+
+External Open Graph images from `<LinkPreview>` components are downloaded at build time and served locally through Cloudflare Image Transformations.
+
+### Why Cache OG Images?
+
+```mermaid
+graph LR
+    subgraph "Before (External)"
+        A[User Request] --> B[Page Load]
+        B --> C[Fetch External OG Image]
+        C --> D[No CDN Optimization]
+        D --> E[Variable Load Times]
+    end
+
+    subgraph "After (Cached)"
+        F[User Request] --> G[Page Load]
+        G --> H[Local Image]
+        H --> I[Cloudflare CDN]
+        I --> J[Optimized Delivery]
+    end
+```
+
+**Benefits**:
+- Cloudflare CDN optimization (quality, format, sizing)
+- Faster page loads (no external image fetches)
+- Reliable builds (no network dependency)
+- Responsive srcset support
+
+### How It Works
+
+1. **Prebuild**: `cache-link-preview-images.js` scans MDX files for `<LinkPreview>` components
+2. **Download**: OG images are downloaded to `public/assets/link-previews/`
+3. **Manifest**: URL-to-path mappings stored in `src/data/link-preview-cache.json`
+4. **Render**: Component uses local images with CF transformations
+
+### Files Involved
+
+| File | Purpose |
+|------|---------|
+| `scripts/cache-link-preview-images.js` | Prebuild script to download images |
+| `src/data/link-preview-cache.json` | Manifest of cached URLs |
+| `src/utils/link-preview.ts` | Helper utilities |
+| `public/assets/link-previews/` | Downloaded images |
+| `.github/workflows/refresh-link-previews.yml` | Weekly refresh workflow |
+
+### Commands
+
+```bash
+# Download new images only (runs automatically in prebuild)
+pnpm run cache-link-previews
+
+# Re-download stale images (older than 7 days)
+pnpm run refresh-link-previews
+
+# Force re-download all images
+node scripts/cache-link-preview-images.js --force
+```
+
+### Preset
+
+```typescript
+// src/consts.ts
+linkPreview: {
+  quality: 60,
+  format: 'avif' as const,
+  fit: 'cover' as const,
+  widths: [300, 600, 800, 1200],
+}
+```
+
 ## Related Documentation
 
 - [Architecture Overview](./overview.md)
@@ -679,4 +750,4 @@ getCFImageUrl(src, { width: 800, height: 600 }) // May distort
 
 ---
 
-**Last Updated**: November 2025
+**Last Updated**: December 2025

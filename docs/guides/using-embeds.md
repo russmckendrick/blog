@@ -261,6 +261,8 @@ Don't use `sudo npm install` - it can cause permission issues.
 }
 ```
 
+**Note:** OG images are cached locally at build time and served via Cloudflare Image Transformations. New URLs are automatically downloaded during `pnpm run build`. Run `pnpm run refresh-link-previews` to update stale images.
+
 ## Tips & Best Practices
 
 ### 1. Always Provide Alt Text
@@ -338,4 +340,4 @@ If migrating from Hugo, here's the conversion:
 
 ---
 
-**Last Updated**: November 2025
+**Last Updated**: December 2025

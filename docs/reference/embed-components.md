@@ -102,7 +102,7 @@ Embed Giphy GIFs with responsive aspect ratios.
 - ✅ Custom aspect ratios
 
 ### LinkPreview
-Generate rich link previews automatically.
+Generate rich link previews automatically with locally cached images.
 
 ```mdx
 <!-- Basic link preview -->
@@ -118,12 +118,20 @@ Generate rich link previews automatically.
 
 **Features:**
 - ✅ Automatic metadata extraction
-- ✅ Fallback for missing images
+- ✅ OG images cached locally at build time (`public/assets/link-previews/`)
+- ✅ Images served via Cloudflare Image Transformations for optimization
+- ✅ Responsive srcset for different screen sizes
 - ✅ Optional media hiding for text-only previews
-- ✅ Responsive design
-- ✅ Open Graph and Twitter Card support
-- ✅ Video player support for og:video metadata
-- ✅ Metadata caching for performance
+- ✅ Fallback to external URL if local image unavailable
+- ✅ Weekly refresh via GitHub Actions workflow
+
+**Image Caching:**
+OG images are downloaded during the prebuild step and stored locally. This enables:
+- Cloudflare CDN image optimization (quality, format, sizing)
+- Faster page loads (no external image fetches)
+- Reliable builds (no network dependency for existing images)
+
+Run `pnpm run cache-link-previews` to manually download images, or `pnpm run refresh-link-previews` to update stale images (older than 7 days).
 
 ### Reddit
 Embed Reddit posts, comments, or threads.
