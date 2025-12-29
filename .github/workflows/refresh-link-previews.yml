@@ -19,29 +19,33 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout code
+      - name: 👨‍💻 Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup PNPM
+      - name: 🌸 Setup PNPM
         uses: pnpm/action-setup@v4
 
-      - name: Set up Node.js
+      - name: 🟢 Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Refresh stale link preview images
+      # Default behavior: incremental update
+      # Only process links that are new or have missing images
+      - name: 🔄 Refresh stale link preview images
         if: ${{ github.event.inputs.force != 'true' }}
         run: node scripts/cache-link-preview-images.js --refresh-stale
 
-      - name: Force refresh all link preview images
+      # Manual override: full refresh
+      # Re-fetch all images (useful if cache gets corrupted or for deep cleaning)
+      - name: ⚡ Force refresh all link preview images
         if: ${{ github.event.inputs.force == 'true' }}
         run: node scripts/cache-link-preview-images.js --force
 
-      - name: Check for changes
+      - name: 🔍 Check for changes
         id: changes
         run: |
           if git diff --quiet public/assets/link-previews src/data/link-preview-cache.json 2>/dev/null; then
@@ -50,7 +54,8 @@ jobs:
             echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Commit and push changes
+      # Commit changes back to the repo so they are available for the site build
+      - name: 💾 Commit and push changes
         if: steps.changes.outputs.has_changes == 'true'
         run: |
           git config user.name "github-actions[bot]"
@@ -63,7 +68,7 @@ jobs:
           Co-Authored-By: github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
           git push
 
-      - name: Summary
+      - name: 📝 Summary
         run: |
           echo "### Link Preview Refresh Complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
