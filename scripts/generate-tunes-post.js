@@ -127,6 +127,7 @@ async function main() {
       seed: dateSeed,
       width: 1400,
       height: 800,
+      strategy: 'balanced',
       debug: debugMode
     })
 
