@@ -12,6 +12,32 @@ import { removeBracketedSuffix, normalizeText } from './text-utils.js'
 export class LastFMYearClient extends LastFMClient {
   constructor(username, apiKey) {
     super(username, apiKey)
+    this.trackCountCache = new Map()
+  }
+
+  /**
+   * Get track count for an album with caching
+   * @param {string} artist - Artist name
+   * @param {string} album - Album name
+   * @returns {number|null} Track count or null if unavailable
+   */
+  async getAlbumTrackCount(artist, album) {
+    const cacheKey = `${artist.toLowerCase()}|||${album.toLowerCase()}`
+
+    if (this.trackCountCache.has(cacheKey)) {
+      return this.trackCountCache.get(cacheKey)
+    }
+
+    const albumInfo = await this.getAlbumInfo(artist, album)
+    let trackCount = null
+
+    if (albumInfo?.tracks?.track) {
+      const tracks = albumInfo.tracks.track
+      trackCount = Array.isArray(tracks) ? tracks.length : 1
+    }
+
+    this.trackCountCache.set(cacheKey, trackCount)
+    return trackCount
   }
 
   /**
@@ -203,13 +229,13 @@ export class LastFMYearClient extends LastFMClient {
   }
 
   /**
-   * Aggregate all weekly album charts for a specific year
+   * Aggregate album data by counting unique days each album was played
+   * Uses getRecentTracks to get individual scrobbles with timestamps
    * @param {number} year - The year to aggregate
    * @param {function} progressCallback - Optional callback for progress updates
    */
   async getYearlyAlbumData(year, progressCallback = null) {
-    const ranges = await this.getYearChartRanges(year)
-    const albumCounts = {}
+    const albumData = {} // key -> { artist, album, days: Set, scrobbles, monthlyDays: { month: Set } }
     const monthlyData = {}
 
     // Initialize monthly data
@@ -217,56 +243,111 @@ export class LastFMYearClient extends LastFMClient {
       monthlyData[month] = { albums: {}, totalPlays: 0 }
     }
 
-    console.log(`Fetching ${ranges.length} weekly album charts for ${year}...`)
+    // Define year boundaries
+    const yearStart = Math.floor(new Date(year, 0, 1).getTime() / 1000)
+    const yearEnd = Math.floor(new Date(year + 1, 0, 1).getTime() / 1000)
 
-    for (let i = 0; i < ranges.length; i++) {
-      const range = ranges[i]
-      if (progressCallback) {
-        progressCallback(i + 1, ranges.length)
-      }
+    // Fetch all scrobbles for the year with pagination
+    console.log(`Fetching all scrobbles for ${year}...`)
+    let page = 1
+    let totalPages = 1
+    let totalTracks = 0
 
+    while (page <= totalPages) {
       try {
-        const data = await this.getWeeklyAlbumChart(range.from, range.to)
-        const albums = data.weeklyalbumchart?.album || []
+        const data = await this.getRecentTracks(yearStart, yearEnd, page, 200)
+        const tracks = data?.track || []
+        const attrs = data?.['@attr'] || {}
 
-        // Determine which month this week falls into
-        const weekMidpoint = (parseInt(range.from) + parseInt(range.to)) / 2
-        const weekDate = new Date(weekMidpoint * 1000)
-        const month = weekDate.getMonth()
+        totalPages = parseInt(attrs.totalPages) || 1
+        const total = parseInt(attrs.total) || 0
 
-        for (const album of albums) {
-          const artist = album.artist['#text']
-          const albumName = album.name
-          // Normalize album name by removing bracketed suffixes for deduplication
-          // e.g., "Attack Of The Grey Lantern" and "Attack of the Grey Lantern (Remastered - 21st Anniversary Edition)"
-          // should be treated as the same album
-          const normalizedAlbum = removeBracketedSuffix(albumName)
-          const key = `${normalizeText(artist)}|||${normalizeText(normalizedAlbum)}`
-          const playcount = parseInt(album.playcount) || 0
-
-          // Aggregate total - use the shorter/cleaner album name when merging
-          if (!albumCounts[key]) {
-            albumCounts[key] = { artist, album: normalizedAlbum, playcount: 0 }
-          } else if (normalizedAlbum.length < albumCounts[key].album.length) {
-            // Prefer shorter album name (usually the cleaner one without suffixes)
-            albumCounts[key].album = normalizedAlbum
-          }
-          albumCounts[key].playcount += playcount
-
-          // Aggregate monthly
-          if (monthlyData[month]) {
-            if (!monthlyData[month].albums[key]) {
-              monthlyData[month].albums[key] = { artist, album: normalizedAlbum, playcount: 0 }
-            }
-            monthlyData[month].albums[key].playcount += playcount
-            monthlyData[month].totalPlays += playcount
-          }
+        if (page === 1) {
+          console.log(`  Found ${total.toLocaleString()} scrobbles across ${totalPages} pages`)
         }
 
-        // Small delay to avoid rate limiting
+        process.stdout.write(`\r  Progress: page ${page}/${totalPages}`)
+
+        for (const track of tracks) {
+          // Skip currently playing track (no date)
+          if (!track.date) continue
+
+          const rawArtist = track.artist['#text']
+          const albumName = track.album['#text']
+
+          // Skip tracks with no album
+          if (!albumName) continue
+
+          // Normalize artist name (remove Last.fm disambiguation like "(3)")
+          const artist = removeBracketedSuffix(rawArtist)
+          // Normalize album name
+          const normalizedAlbum = removeBracketedSuffix(albumName)
+          const key = `${normalizeText(artist)}|||${normalizeText(normalizedAlbum)}`
+
+          // Get the date (YYYY-MM-DD) from timestamp
+          const timestamp = parseInt(track.date.uts)
+          const trackDate = new Date(timestamp * 1000)
+          const dateStr = trackDate.toISOString().split('T')[0]
+          const month = trackDate.getMonth()
+
+          // Initialize album entry if needed
+          if (!albumData[key]) {
+            albumData[key] = {
+              artist,
+              album: normalizedAlbum,
+              days: new Set(),
+              scrobbles: 0,
+              monthlyDays: {}
+            }
+            for (let m = 0; m < 12; m++) {
+              albumData[key].monthlyDays[m] = new Set()
+            }
+          } else if (normalizedAlbum.length < albumData[key].album.length) {
+            // Prefer shorter album name
+            albumData[key].album = normalizedAlbum
+          }
+
+          // Track unique days and scrobbles
+          albumData[key].days.add(dateStr)
+          albumData[key].scrobbles++
+          albumData[key].monthlyDays[month].add(dateStr)
+
+          totalTracks++
+        }
+
+        // Rate limiting
         await this.delay(100)
+        page++
       } catch (error) {
-        console.warn(`Warning: Could not fetch album chart for range ${range.from}-${range.to}`)
+        console.warn(`\nWarning: Could not fetch page ${page}: ${error.message}`)
+        page++
+      }
+    }
+
+    console.log(`\n  Processed ${totalTracks.toLocaleString()} tracks`)
+
+    // Convert Sets to counts (playcount = unique days)
+    const albumCounts = {}
+    for (const [key, data] of Object.entries(albumData)) {
+      albumCounts[key] = {
+        artist: data.artist,
+        album: data.album,
+        playcount: data.days.size, // Unique days = album plays
+        scrobbles: data.scrobbles
+      }
+
+      // Update monthly data
+      for (let month = 0; month < 12; month++) {
+        const monthDays = data.monthlyDays[month].size
+        if (monthDays > 0) {
+          monthlyData[month].albums[key] = {
+            artist: data.artist,
+            album: data.album,
+            playcount: monthDays,
+            scrobbles: data.scrobbles
+          }
+          monthlyData[month].totalPlays += monthDays
+        }
       }
     }
 

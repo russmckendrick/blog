@@ -84,7 +84,7 @@ async function uploadImages(imagePaths, debug = false) {
 
 /**
  * Generate a year-end themed prompt using GPT-4 Vision
- * @param {string[]} imageUrls - Array of uploaded image URLs
+ * @param {string[]} imageUrls - Array of uploaded album image URLs
  * @param {number} year - The year for the wrapped
  * @returns {Promise<string>} Generated prompt
  */
@@ -108,44 +108,41 @@ async function generateYearEndPrompt(imageUrls, year) {
       messages: [
         {
           role: 'system',
-          content: `You are an expert at analyzing images and creating detailed image generation prompts.
-Your task is to CAREFULLY LOOK AT each image provided and describe what you see in detail.
-You must reference SPECIFIC visual elements, colors, subjects, and styles from the actual images.
-Do NOT generate generic prompts - your output must prove you analyzed the images.`
+          content: `You are a professional photo compositor creating a prompt for a cinematic music blog header. Analyze the visual elements in these album covers (people, faces, buildings, objects, colors, patterns), then write a prompt that creates ONE unified photographic scene using these elements.
+
+CRITICAL CONCEPT:
+- Do NOT describe positioning album covers themselves
+- INSTEAD: Extract subjects/elements from the covers and blend them into a new unified scene
+- Think: "Take the people from cover A, the building from cover B, the colors from cover C, and composite them into one cinematic image"
+- The result should be a single cohesive photograph, not visible album covers
+
+Your prompt MUST:
+- Identify specific visual elements (e.g., 'the portrait from the yellow cover', 'the building from the blue cover')
+- Describe how to composite these ELEMENTS into one unified scene
+- Use photographic techniques: double-exposure, color grading, composite layers, blend modes
+- Create a cohesive color palette across the entire scene
+- Result should look like a movie poster or editorial photo, not album covers
+
+Your prompt MUST NOT:
+- Reference positioning album covers ('the first cover', 'stack the covers')
+- Use grid/arrangement language
+- Use painterly terms: watercolor, brushstrokes, mural
+- Describe album covers as objects - describe their CONTENTS as subjects`
         },
         {
           role: 'user',
           content: [
             {
               type: 'text',
-              text: `Look carefully at these ${imageUrls.length} album and artist images from my ${year} music listening.
+              text: `Analyze these ${imageUrls.length} album covers and create a prompt for compositing them into a cinematic music blog header.
 
-FIRST, analyze each image and note:
-- The dominant colors and color palette
-- The main subjects (people, objects, abstract elements)
-- The artistic style (photographic, illustrated, abstract, etc.)
-- Any distinctive visual elements or motifs
-
-THEN, create a detailed image generation prompt that:
-1. SPECIFICALLY describes how to blend these exact images together
-2. References the actual colors you see (e.g., "deep blues from image 1 bleeding into the warm oranges of image 3")
-3. Describes the actual subjects/people/elements from the images and how they should merge
-4. Creates artistic transitions between the specific visual styles present
-
-IMPORTANT: The text "${year}" MUST appear prominently in the final image. Integrate it naturally into the composition - perhaps formed from light, smoke, paint, or as stylized typography that complements the artwork.
-
-Your prompt MUST mention specific visual elements from at least 6 of the 10 images.
-Your prompt MUST explicitly include instructions to display "${year}" in the image.
-The prompt should read like you're describing a specific artwork, not a generic template.
-
-Return ONLY the image generation prompt (no analysis or explanation).
-Keep it under 250 words to avoid API errors.`
+Format: Write 2-3 sentences. Identify the key visual elements from each cover, describe how to composite them into ONE unified cinematic scene, specify color treatment. End with 'Remove all text and typography except "${year}" which should appear as large centered text that is stylistically integrated into the artwork - using colors, lighting effects, or subtle glow that matches the overall composition.'`
             },
             ...imageContent
           ]
         }
       ],
-      max_tokens: 400,
+      max_tokens: 500,
       temperature: 0.8
     })
 
@@ -162,16 +159,7 @@ Keep it under 250 words to avoid API errors.`
  * Get default year-end prompt
  */
 function getDefaultPrompt(year) {
-  return `Fuse and blend these artist and album images into a seamless artistic music collage.
-The images should flow together organically with their colors, imagery, and textures merging and overlapping naturally.
-Create smooth, painterly transitions between images where they meet - think watercolor bleeding or double exposure photography.
-Integrate the text "${year}" organically into the artwork - formed from paint strokes, light trails, smoke, or emerging naturally from the visual elements. The year should feel like part of the art, not an overlay.
-Add subtle musical elements like vinyl textures and sound waves woven throughout.
-Preserve the visual essence and color palettes from the original album artwork.
-The final result should look like a dreamy, cohesive artistic piece celebrating this year in music.
-Professional album artwork style, highly detailed, cinematic lighting.
-Do NOT include celebration themes like fireworks, confetti, or champagne.
-Do NOT place the year as simple text on top - it must be integrated into the imagery.`
+  return `Extract the key visual elements from these album covers - the people, faces, buildings, objects, and patterns - and composite them into a single cinematic scene. Blend these elements together using photographic double-exposure and color grading to create one unified image, not separate album covers. The result should be a cohesive photographic composition where all the subjects and visual elements coexist in the same scene, similar to a movie poster or editorial photo montage. Remove all text and typography except "${year}" which should appear as large centered text that is stylistically integrated into the artwork - using colors, lighting effects, or subtle glow that matches the overall composition.`
 }
 
 /**
@@ -251,12 +239,11 @@ async function generateAICover(prompt, imageUrls, outputPath, options = {}) {
 
 /**
  * Main function to generate wrapped cover
- * @param {string[]} artistImagePaths - Paths to top artist images
  * @param {string[]} albumImagePaths - Paths to top album images
  * @param {string} outputPath - Where to save the final cover
  * @param {Object} options - Generation options
  */
-export async function generateWrappedCover(artistImagePaths, albumImagePaths, outputPath, options = {}) {
+export async function generateWrappedCover(albumImagePaths, outputPath, options = {}) {
   const { year = new Date().getFullYear(), debug = false } = options
 
   if (!process.env.FAL_KEY) {
@@ -270,30 +257,26 @@ export async function generateWrappedCover(artistImagePaths, albumImagePaths, ou
 
   console.log(`  Creating year-end wrapped cover for ${year}...`)
 
-  // Select top 5 of each type (10 total) for best AI generation results
-  const selectedArtists = artistImagePaths.slice(0, 5)
-  const selectedAlbums = albumImagePaths.slice(0, 5)
+  // Select top 12 album images (matches weekly tunes config)
+  const selectedAlbums = albumImagePaths.slice(0, 12)
 
-  console.log(`  Using ${selectedArtists.length} artist images and ${selectedAlbums.length} album images (from ${artistImagePaths.length} artists, ${albumImagePaths.length} albums available)`)
+  console.log(`  Using ${selectedAlbums.length} album images (from ${albumImagePaths.length} available)`)
 
   // Upload all images to FAL.ai
   console.log('  Uploading images to FAL.ai...')
-  const artistUrls = await uploadImages(selectedArtists, debug)
   const albumUrls = await uploadImages(selectedAlbums, debug)
 
-  const allUrls = [...artistUrls, ...albumUrls]
-
-  if (allUrls.length === 0) {
+  if (albumUrls.length === 0) {
     throw new Error('No images were successfully uploaded')
   }
 
-  console.log(`  Uploaded ${allUrls.length} images total`)
+  console.log(`  Uploaded ${albumUrls.length} album images`)
 
   // Generate year-end prompt using GPT-4 Vision
-  const prompt = await generateYearEndPrompt(allUrls, year)
+  const prompt = await generateYearEndPrompt(albumUrls, year)
 
   // Generate AI cover
-  await generateAICover(prompt, allUrls, outputPath, { debug })
+  await generateAICover(prompt, albumUrls, outputPath, { debug })
 
   return outputPath
 }

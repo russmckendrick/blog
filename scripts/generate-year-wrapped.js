@@ -134,9 +134,9 @@ async function main() {
     console.log('\n🖼️  Downloading images...')
     // Download top 12 artist images for gallery
     await imageHandler.downloadArtistImages(topArtists.slice(0, 12), collectionInfo.info, artistsFolder)
-    // Download top 12 album images for gallery (separate from featured albums)
-    const top12Albums = topAlbums.slice(0, 12)
-    await imageHandler.downloadAlbumImages(top12Albums, collectionInfo.info, albumsFolder)
+    // Download top 20 album images for gallery and AI cover
+    const top20Albums = topAlbums.slice(0, 20)
+    await imageHandler.downloadAlbumImages(top20Albums, collectionInfo.info, albumsFolder)
     // Also download featured albums (may overlap with top 12)
     await imageHandler.downloadAlbumImages(featuredAlbums, collectionInfo.info, albumsFolder, true)
 
@@ -184,23 +184,25 @@ async function main() {
     console.log('\n🎨 Generating AI cover...')
     const coverOutputPath = path.join(srcAssetsFolder, `wrapped-cover-${year}.png`)
 
-    // Get all artist and album image paths
-    const artistFiles = await fs.readdir(artistsFolder)
-    const artistImagePaths = artistFiles
-      .filter(file => file.endsWith('.jpg') && !file.endsWith('.meta'))
-      .map(file => path.join(artistsFolder, file))
-
-    const albumFiles = await fs.readdir(albumsFolder)
-    const albumImagePaths = albumFiles
-      .filter(file => file.endsWith('.jpg') && !file.endsWith('.meta'))
-      .map(file => path.join(albumsFolder, file))
-
-    console.log(`  Found ${artistImagePaths.length} artist images and ${albumImagePaths.length} album images`)
-
-    if (artistImagePaths.length >= 5 && albumImagePaths.length >= 5 && process.env.FAL_KEY) {
-      // Use AI-generated cover
+    // Get top 12 album image paths in ranked order for AI cover
+    const albumImagePaths = []
+    for (const [[artist, album]] of topAlbums.slice(0, 12)) {
+      const expectedFilename = `${normalizeForFilename(album)}.jpg`
+      const imagePath = path.join(albumsFolder, expectedFilename)
       try {
-        await generateWrappedCover(artistImagePaths, albumImagePaths, coverOutputPath, {
+        await fs.access(imagePath)
+        albumImagePaths.push(imagePath)
+      } catch {
+        // Image doesn't exist, skip
+      }
+    }
+
+    console.log(`  Found ${albumImagePaths.length} top album images for cover generation`)
+
+    if (albumImagePaths.length >= 5 && process.env.FAL_KEY) {
+      // Use AI-generated cover with album images only
+      try {
+        await generateWrappedCover(albumImagePaths, coverOutputPath, {
           year,
           debug: debugMode
         })
@@ -223,14 +225,23 @@ async function main() {
       } else {
         console.log('  Not enough images for AI cover, using strip collage...')
       }
-      const allAlbumFiles = await fs.readdir(albumsFolder)
-      const allAlbumPaths = allAlbumFiles
-        .filter(file => file.endsWith('.jpg') && !file.endsWith('.meta'))
-        .map(file => path.join(albumsFolder, file))
 
-      if (allAlbumPaths.length > 0) {
+      // Get top 20 album images in ranked order for strip collage
+      const rankedAlbumPaths = []
+      for (const [[artist, album]] of topAlbums.slice(0, 20)) {
+        const expectedFilename = `${normalizeForFilename(album)}.jpg`
+        const imagePath = path.join(albumsFolder, expectedFilename)
+        try {
+          await fs.access(imagePath)
+          rankedAlbumPaths.push(imagePath)
+        } catch {
+          // Image doesn't exist, skip
+        }
+      }
+
+      if (rankedAlbumPaths.length > 0) {
         const dateSeed = new Date(year, 0, 1).getTime()
-        await createStripCollage(allAlbumPaths, coverOutputPath, {
+        await createStripCollage(rankedAlbumPaths, coverOutputPath, {
           seed: dateSeed,
           width: 1400,
           height: 800

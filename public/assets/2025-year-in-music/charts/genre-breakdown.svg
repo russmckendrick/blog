@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 460" class="genre-chart">
+  <style>
+    .genre-chart text.label { fill: #374151; }
+    .genre-chart text.value { fill: #6b7280; }
+    .genre-chart rect.bar-bg { fill: #e5e7eb; }
+    @media (prefers-color-scheme: dark) {
+      .genre-chart text.label { fill: #e5e7eb; }
+      .genre-chart text.value { fill: #9ca3af; }
+      .genre-chart rect.bar-bg { fill: #374151; }
+    }
+    .dark .genre-chart text.label { fill: #e5e7eb; }
+    .dark .genre-chart text.value { fill: #9ca3af; }
+    .dark .genre-chart rect.bar-bg { fill: #374151; }
+  </style>
+  <text x="20" y="41" class="label" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500">Rock</text>
+  <rect class="bar-bg" x="160" y="20" width="340" height="32" rx="4" />
+  <rect x="160" y="20" width="340" height="32" rx="4" fill="#6366f1" opacity="0.9">
+    <animate attributeName="width" from="0" to="340" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="510" y="41" class="value" font-family="system-ui, -apple-system, sans-serif" font-size="12">6%</text>
+  <text x="20" y="83" class="label" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500">Alternative</text>
+  <rect class="bar-bg" x="160" y="62" width="340" height="32" rx="4" />
+  <rect x="160" y="62" width="186.99999999999997" height="32" rx="4" fill="#8b5cf6" opacity="0.9">
+    <animate attributeName="width" from="0" to="186.99999999999997" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="510" y="83" class="value" font-family="system-ui, -apple-system, sans-serif" font-size="12">3.3%</text>
+  <text x="20" y="125" class="label" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500">Pop</text>
+  <rect class="bar-bg" x="160" y="104" width="340" height="32" rx="4" />
+  <rect x="160" y="104" width="158.66666666666666" height="32" rx="4" fill="#a855f7" opacity="0.9">
+    <animate attributeName="width" from="0" to="158.66666666666666" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="510" y="125" class="value" font-family="system-ui, -apple-system, sans-serif" font-size="12">2.8%</text>
+  <text x="20" y="167" class="label" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500">Adult Alternative</text>
+  <rect class="bar-bg" x="160" y="146" width="340" height="32" rx="4" />
+  <rect x="160" y="146" width="136" height="32" rx="4" fill="#d946ef" opacity="0.9">
+    <animate attributeName="width" from="0" to="136" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="510" y="167" class="value" font-family="system-ui, -apple-system, sans-serif" font-size="12">2.4%</text>
+  <text x="20" y="209" class="label" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500">Alternative Rock</text>
+  <rect class="bar-bg" x="160" y="188" width="340" height="32" rx="4" />
+  <rect x="160" y="188" width="107.66666666666666" height="32" rx="4" fill="#ec4899" opacity="0.9">
+    <animate attributeName="width" from="0" to="107.66666666666666" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="510" y="209" class="value" font-family="system-ui, -apple-system, sans-serif" font-size="12">1.9%</text>
+  <text x="20" y="251" class="label" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500">Electronic</text>
+  <rect class="bar-bg" x="160" y="230" width="340" height="32" rx="4" />
+  <rect x="160" y="230" width="96.33333333333333" height="32" rx="4" fill="#f43f5e" opacity="0.9">
+    <animate attributeName="width" from="0" to="96.33333333333333" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="510" y="251" class="value" font-family="system-ui, -apple-system, sans-serif" font-size="12">1.7%</text>
+  <text x="20" y="293" class="label" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500">Indie Rock</text>
+  <rect class="bar-bg" x="160" y="272" width="340" height="32" rx="4" />
+  <rect x="160" y="272" width="85" height="32" rx="4" fill="#ef4444" opacity="0.9">
+    <animate attributeName="width" from="0" to="85" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="510" y="293" class="value" font-family="system-ui, -apple-system, sans-serif" font-size="12">1.5%</text>
+  <text x="20" y="335" class="label" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500">Pop Rock</text>
+  <rect class="bar-bg" x="160" y="314" width="340" height="32" rx="4" />
+  <rect x="160" y="314" width="73.66666666666667" height="32" rx="4" fill="#f97316" opacity="0.9">
+    <animate attributeName="width" from="0" to="73.66666666666667" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="510" y="335" class="value" font-family="system-ui, -apple-system, sans-serif" font-size="12">1.3%</text>
+  <text x="20" y="377" class="label" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500">Pop/Rock</text>
+  <rect class="bar-bg" x="160" y="356" width="340" height="32" rx="4" />
+  <rect x="160" y="356" width="73.66666666666667" height="32" rx="4" fill="#f59e0b" opacity="0.9">
+    <animate attributeName="width" from="0" to="73.66666666666667" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="510" y="377" class="value" font-family="system-ui, -apple-system, sans-serif" font-size="12">1.3%</text>
+  <text x="20" y="419" class="label" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="500">Prog-Rock/Art Rock</text>
+  <rect class="bar-bg" x="160" y="398" width="340" height="32" rx="4" />
+  <rect x="160" y="398" width="62.333333333333336" height="32" rx="4" fill="#eab308" opacity="0.9">
+    <animate attributeName="width" from="0" to="62.333333333333336" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="510" y="419" class="value" font-family="system-ui, -apple-system, sans-serif" font-size="12">1.1%</text>
+</svg>

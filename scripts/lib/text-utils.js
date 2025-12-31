@@ -108,8 +108,10 @@ export function normalizeForFilename(text) {
 }
 
 export function lookupArtistData(artist, collectionInfo) {
-  const normalizedArtist = normalizeText(artist)
-  const normalizedArtistWithoutThe = normalizeText(removeArticle(artist))
+  // Remove Last.fm disambiguation suffixes like "(3)" before matching
+  const cleanArtist = removeBracketedSuffix(artist)
+  const normalizedArtist = normalizeText(cleanArtist)
+  const normalizedArtistWithoutThe = normalizeText(removeArticle(cleanArtist))
 
   for (const [key, data] of Object.entries(collectionInfo)) {
     // Skip album entries (those with |||)
@@ -163,8 +165,10 @@ function isArtistComponent(searchArtist, collectionArtist) {
 }
 
 export function lookupAlbumData(artist, album, collectionInfo) {
-  const normalizedArtist = normalizeText(artist)
-  const normalizedArtistWithoutThe = normalizeText(removeArticle(artist))
+  // Remove Last.fm disambiguation suffixes like "(3)" before matching
+  const cleanArtist = removeBracketedSuffix(artist)
+  const normalizedArtist = normalizeText(cleanArtist)
+  const normalizedArtistWithoutThe = normalizeText(removeArticle(cleanArtist))
   const normalizedAlbum = normalizeText(album)
   // Also try without bracketed suffixes like "(2019 Remix)", "(Deluxe; 2008 Remaster)"
   const normalizedAlbumWithoutBrackets = normalizeText(removeBracketedSuffix(album))
