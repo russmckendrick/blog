@@ -17,6 +17,7 @@ export async function getStaticPaths() {
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
     const day = date.getDate().toString().padStart(2, "0");
     const slug = createUrlFriendlySlug(post.data.title);
+    const isTune = post.collection === 'tunes';
 
     // Get cover image - we need the filesystem path, not the optimized URL
     let coverImagePath: string | undefined;
@@ -24,10 +25,10 @@ export async function getStaticPaths() {
 
     if (coverImage) {
       if (typeof coverImage === 'string') {
-        // Tunes collection has string paths
+        // Legacy string paths (if any)
         coverImagePath = coverImage;
       } else if (typeof coverImage === 'object') {
-        // Blog collection has image objects
+        // Image objects from image() schema
         // The image object has fsPath property in newer Astro versions
         // Or we reconstruct from the pattern
         const imageSrc = (coverImage as any).fsPath || (coverImage as any).src;
@@ -41,10 +42,11 @@ export async function getStaticPaths() {
             coverImagePath = imageSrc.split('?')[0].replace('/@fs', '');
           } else if (imageSrc.startsWith('/_astro')) {
             // Build mode - reconstruct original path from post slug
-            // Pattern: src/assets/YYYY-MM-DD-slug/blog-cover-YYYY-MM-DD-slug.[ext]
+            // Pattern: src/assets/YYYY-MM-DD-slug/{blog|tunes}-cover-YYYY-MM-DD-slug.[ext]
             const postSlug = `${year}-${month}-${day}-${slug}`;
             const assetsDir = path.join(process.cwd(), 'src/assets', postSlug);
-            const baseName = `blog-cover-${postSlug}`;
+            const coverPrefix = isTune ? 'tunes-cover' : 'blog-cover';
+            const baseName = `${coverPrefix}-${postSlug}`;
 
             // Try common extensions
             const extensions = ['.png', '.jpg', '.jpeg', '.webp'];
