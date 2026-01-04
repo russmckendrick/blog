@@ -20,8 +20,9 @@ export async function getStaticPaths() {
     const isTune = post.collection === 'tunes';
 
     // Get cover image - we need the filesystem path, not the optimized URL
+    // Check both cover.image and heroImage (tunes posts may use either)
     let coverImagePath: string | undefined;
-    const coverImage = post.data.cover?.image;
+    const coverImage = post.data.cover?.image || post.data.heroImage;
 
     if (coverImage) {
       if (typeof coverImage === 'string') {
@@ -41,12 +42,13 @@ export async function getStaticPaths() {
             // Older Astro dev mode format
             coverImagePath = imageSrc.split('?')[0].replace('/@fs', '');
           } else if (imageSrc.startsWith('/_astro')) {
-            // Build mode - reconstruct original path from post slug
-            // Pattern: src/assets/YYYY-MM-DD-slug/{blog|tunes}-cover-YYYY-MM-DD-slug.[ext]
-            const postSlug = `${year}-${month}-${day}-${slug}`;
-            const assetsDir = path.join(process.cwd(), 'src/assets', postSlug);
+            // Build mode - reconstruct original path using post.id which matches folder name
+            // post.id is like "2025-12-29-listened-to-this-week" for tunes
+            // or "2024-12-27-some-blog-title" for blog posts
+            const folderName = post.id;
+            const assetsDir = path.join(process.cwd(), 'src/assets', folderName);
             const coverPrefix = isTune ? 'tunes-cover' : 'blog-cover';
-            const baseName = `${coverPrefix}-${postSlug}`;
+            const baseName = `${coverPrefix}-${folderName}`;
 
             // Try common extensions
             const extensions = ['.png', '.jpg', '.jpeg', '.webp'];
