@@ -330,7 +330,7 @@ export const EXCLUDED_AVATARS = [
 // Default avatar mappings for tags
 // Used when no avatar is specified in post frontmatter
 export const TAG_AVATAR_MAP: Record<string, string> = {
-  ai: "ai.svg",
+  ai: "ai-coffee.svg",
   ansible: "ansible.svg",
   author: "book.svg",
   automation: "devops.svg",
