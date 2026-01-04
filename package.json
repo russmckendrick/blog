@@ -15,6 +15,7 @@
     "post": "node scripts/new-post.js",
     "tunes": "node scripts/generate-tunes-post.js",
     "wrapped": "node scripts/generate-year-wrapped.js",
+    "medium": "node scripts/publish-to-medium.js",
     "optimize": "node scripts/optimize-images.js",
     "analyze-links": "node scripts/analyze-internal-links.js",
     "extract-colors": "node scripts/extract-hero-colors.js",

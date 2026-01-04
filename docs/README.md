@@ -18,6 +18,7 @@ User-facing guides for common tasks and workflows:
 - **[Using Tags](./guides/using-tags.md)** - Complete tag system reference (30+ tags)
 - **[Using Embed Components](./guides/using-embeds.md)** - Add media, callouts, and interactive elements
 - **[Tunes Generator](./guides/tunes-generator.md)** - Generate automated weekly music posts and year-end wrapped
+- **[Medium Publisher](./guides/medium-publisher.md)** - Cross-publish blog posts to Medium
 - **[Accessibility](./guides/accessibility.md)** - WCAG 2.1 Level AA compliance and aria-label implementation
 
 ### 🏗️ Architecture
@@ -68,6 +69,7 @@ npm run preview          # Preview production build
 npm run post             # Create new blog post
 npm run tunes            # Generate weekly music post
 npm run wrapped          # Generate year-end wrapped post
+npm run medium           # Cross-publish to Medium
 
 # Images
 npm run optimize         # Optimize all images
@@ -118,4 +120,4 @@ This documentation is maintained alongside the codebase. When making significant
 3. Update guides if workflows change
 4. Keep examples in sync with actual code
 
-**Last Updated**: December 2025
+**Last Updated**: January 2026

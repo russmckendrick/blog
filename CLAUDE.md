@@ -16,6 +16,7 @@ Guidance for Claude Code when working with this Astro blog repository.
 - `node scripts/fal-cover-generator.js` - Standalone AI cover generator (requires `FAL_KEY`, `OPENAI_API_KEY`)
 - `pnpm run tunes` - Generate weekly music post from Last.fm (see [Tunes Generator](#tunes-blog-post-generator))
 - `pnpm run wrapped` - Generate year-end Wrapped post (see [Year Wrapped Generator](#year-wrapped-generator))
+- `pnpm run medium` - Cross-publish blog post to Medium (see [Medium Publisher](#medium-publisher))
 
 ### Image & Build Tools
 - `pnpm run optimize [path]` - Optimize images (JPG, PNG, WebP, AVIF) with quality 60
@@ -156,6 +157,40 @@ pnpm run wrapped -- --use-cache       # Reuse Last.fm data
 **Output**: `src/content/tunes/YYYY-year-in-music.mdx`
 
 **Key files**: `scripts/generate-year-wrapped.js`, `scripts/lib/year-stats-calculator.js`
+
+## Medium Publisher
+
+Cross-publish blog posts to Medium with automatic MDX component transformation.
+
+```bash
+pnpm run medium                       # Interactive post selector
+pnpm run medium <slug>                # Publish specific post
+pnpm run medium <slug> --dry-run      # Preview without publishing
+```
+
+**Features**:
+- Interactive post selector with pagination (arrow keys to navigate)
+- Transforms MDX components (YouTube, Callouts, LinkPreview, Images, etc.)
+- Sets canonical URL for SEO backlinks
+- Adds original publish date in footer
+- Opens original post in browser for easy image copying
+- Publishes as draft for review before going live
+
+**Component Transformations**:
+| Component | Medium Output |
+|-----------|---------------|
+| YouTube | Auto-embedded URL |
+| Instagram | Auto-embedded URL |
+| LinkPreview | Rich text link with description |
+| Callouts | Blockquote with emoji |
+| Mermaid | Link to original (not supported) |
+| Images | Absolute URLs |
+| LightGallery | Extracted images |
+
+**Required env vars**: `MEDIUM_TOKEN` (get from https://medium.com/me/settings/security)
+**Optional**: `BLOG_URL` (default: https://www.russ.cloud), `GITHUB_TOKEN` (for Gist code blocks)
+
+**Key files**: `scripts/publish-to-medium.js`, `scripts/lib/medium-client.js`, `scripts/lib/mdx-to-medium.js`
 
 ## Guidelines
 
