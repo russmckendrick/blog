@@ -67,6 +67,7 @@ function delay(ms) {
 /**
  * Fetch page and parse Open Graph metadata
  * Uses the same approach as @astro-community/astro-embed-link-preview
+ * Returns both metadata and the parsed document for favicon discovery
  */
 async function fetchOGMetadata(url) {
   try {
@@ -128,10 +129,143 @@ async function fetchOGMetadata(url) {
       image,
       imageAlt,
       url: getMeta('og:url') || url,
+      document, // Return document for favicon discovery
     };
   } catch (error) {
     console.warn(`  Warning: Failed to fetch OG data for ${url}: ${error.message}`);
     return null;
+  }
+}
+
+/**
+ * Discover favicons from HTML document
+ * Returns array of candidates sorted by priority
+ */
+function discoverFavicons(baseUrl, document) {
+  const candidates = [];
+  const urlObj = new URL(baseUrl);
+
+  // Helper to resolve relative URLs
+  const resolveUrl = (url) => {
+    if (!url) return null;
+    if (url.startsWith('data:')) return null; // Skip data URIs
+    if (url.startsWith('https://')) return url;
+    if (url.startsWith('http://')) return url.replace('http://', 'https://');
+    if (url.startsWith('//')) return 'https:' + url;
+    if (url.startsWith('/')) return `${urlObj.origin}${url}`;
+    return `${urlObj.origin}/${url}`;
+  };
+
+  // Helper to extract size from sizes attribute
+  const parseSize = (sizes) => {
+    if (!sizes) return 0;
+    const match = sizes.match(/(\d+)x\d+/);
+    return match ? parseInt(match[1]) : 0;
+  };
+
+  // 1. Apple Touch Icon (usually 180x180)
+  const appleTouchIcons = document.querySelectorAll('link[rel="apple-touch-icon"]');
+  appleTouchIcons.forEach(link => {
+    const href = link.getAttribute('href');
+    const url = resolveUrl(href);
+    if (url) {
+      const size = parseSize(link.getAttribute('sizes')) || 180;
+      candidates.push({ url, size, priority: 1, type: 'apple-touch-icon' });
+    }
+  });
+
+  // 2. SVG favicons (vector, scalable)
+  const svgIcons = document.querySelectorAll('link[rel*="icon"][type="image/svg+xml"]');
+  svgIcons.forEach(link => {
+    const href = link.getAttribute('href');
+    const url = resolveUrl(href);
+    if (url) {
+      candidates.push({ url, size: 999, priority: 2, type: 'svg' });
+    }
+  });
+
+  // 3. Large PNG favicons
+  const pngIcons = document.querySelectorAll('link[rel*="icon"][type="image/png"]');
+  pngIcons.forEach(link => {
+    const href = link.getAttribute('href');
+    const url = resolveUrl(href);
+    if (url) {
+      const size = parseSize(link.getAttribute('sizes')) || 32;
+      if (size >= 32) { // Only accept 32x32 or larger
+        candidates.push({ url, size, priority: 3, type: 'png' });
+      }
+    }
+  });
+
+  // 4. Generic icon links
+  const genericIcons = document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]');
+  genericIcons.forEach(link => {
+    const href = link.getAttribute('href');
+    const url = resolveUrl(href);
+    if (url && !candidates.some(c => c.url === url)) {
+      const size = parseSize(link.getAttribute('sizes')) || 32;
+      candidates.push({ url, size, priority: 4, type: 'generic' });
+    }
+  });
+
+  // 5. Standard /favicon.ico
+  const faviconIcoUrl = `${urlObj.origin}/favicon.ico`;
+  if (!candidates.some(c => c.url === faviconIcoUrl)) {
+    candidates.push({ url: faviconIcoUrl, size: 32, priority: 5, type: 'ico' });
+  }
+
+  // Sort by priority first, then by size (larger is better)
+  return candidates.sort((a, b) => {
+    if (a.priority !== b.priority) return a.priority - b.priority;
+    return b.size - a.size;
+  });
+}
+
+/**
+ * Download favicon to local filesystem
+ * Returns the file extension based on content type
+ */
+async function downloadFavicon(faviconUrl, baseFilename) {
+  try {
+    const response = await fetch(faviconUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; RussCloudBot/1.0; +https://russ.cloud)',
+        'Accept': 'image/*',
+      },
+      signal: AbortSignal.timeout(30000), // 30 second timeout
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const contentType = response.headers.get('content-type') || '';
+    if (!contentType.startsWith('image/')) {
+      throw new Error(`Not an image: ${contentType}`);
+    }
+
+    // Determine file extension from content type
+    let ext = '.png';
+    if (contentType.includes('svg')) ext = '.svg';
+    else if (contentType.includes('x-icon') || contentType.includes('vnd.microsoft.icon')) ext = '.ico';
+    else if (contentType.includes('png')) ext = '.png';
+    else if (contentType.includes('jpeg') || contentType.includes('jpg')) ext = '.jpg';
+    else if (contentType.includes('webp')) ext = '.webp';
+
+    const localPath = path.join(OUTPUT_DIR, `${baseFilename}-favicon${ext}`);
+    const buffer = Buffer.from(await response.arrayBuffer());
+
+    // Ensure directory exists
+    await fs.mkdir(path.dirname(localPath), { recursive: true });
+
+    // Write image
+    await fs.writeFile(localPath, buffer);
+
+    // Get file size for logging
+    const stats = await fs.stat(localPath);
+    return { success: true, size: stats.size, localPath, ext };
+  } catch (error) {
+    return { success: false, error: error.message };
   }
 }
 
@@ -361,6 +495,7 @@ async function main() {
         manifest[url] = {
           localImage: null,
           originalImage: null,
+          imageType: null,
           title: '',
           description: '',
           fetchedAt: new Date().toISOString(),
@@ -368,12 +503,40 @@ async function main() {
         return;
       }
 
-      if (!ogData.image) {
-        console.log(`    No OG image found`);
+      // Try to download OG image first
+      if (ogData.image) {
+        const result = await downloadImage(ogData.image, localPath);
+
+        if (result.success) {
+          console.log(`    Downloaded OG image: ${formatBytes(result.size)}`);
+          downloaded++;
+          totalBytes += result.size;
+
+          manifest[url] = {
+            localImage: publicPath,
+            originalImage: ogData.image,
+            imageType: 'og-image',
+            title: ogData.title,
+            description: ogData.description,
+            imageAlt: ogData.imageAlt,
+            fetchedAt: new Date().toISOString(),
+          };
+          cache.entries[url] = manifest[url];
+          return;
+        }
+      }
+
+      // No OG image or OG image download failed - try favicon fallback
+      console.log(`    No OG image found, trying favicons...`);
+      const favicons = discoverFavicons(url, ogData.document);
+
+      if (favicons.length === 0) {
+        console.log(`    No favicons found either`);
         skipped++;
         manifest[url] = {
           localImage: null,
           originalImage: null,
+          imageType: null,
           title: ogData.title,
           description: ogData.description,
           fetchedAt: new Date().toISOString(),
@@ -382,29 +545,40 @@ async function main() {
         return;
       }
 
-      // Download the image
-      const result = await downloadImage(ogData.image, localPath);
+      // Try each favicon candidate until one succeeds
+      let faviconSuccess = false;
+      for (const favicon of favicons) {
+        console.log(`    Trying ${favicon.type} favicon (${favicon.size}px)...`);
+        const result = await downloadFavicon(favicon.url, filename);
 
-      if (result.success) {
-        console.log(`    Downloaded: ${formatBytes(result.size)}`);
-        downloaded++;
-        totalBytes += result.size;
+        if (result.success) {
+          const faviconPublicPath = `/assets/link-previews/${filename}-favicon${result.ext}`;
+          console.log(`    Downloaded favicon: ${formatBytes(result.size)}`);
+          downloaded++;
+          totalBytes += result.size;
 
-        manifest[url] = {
-          localImage: publicPath,
-          originalImage: ogData.image,
-          title: ogData.title,
-          description: ogData.description,
-          imageAlt: ogData.imageAlt,
-          fetchedAt: new Date().toISOString(),
-        };
-        cache.entries[url] = manifest[url];
-      } else {
+          manifest[url] = {
+            localImage: faviconPublicPath,
+            originalImage: null,
+            faviconUrl: favicon.url,
+            imageType: 'favicon',
+            title: ogData.title,
+            description: ogData.description,
+            fetchedAt: new Date().toISOString(),
+          };
+          cache.entries[url] = manifest[url];
+          faviconSuccess = true;
+          break;
+        }
+      }
+
+      if (!faviconSuccess) {
+        console.log(`    All favicon attempts failed`);
         failed++;
-        // Still save metadata, but without local image
         manifest[url] = {
           localImage: null,
-          originalImage: ogData.image,
+          originalImage: ogData.image || null,
+          imageType: null,
           title: ogData.title,
           description: ogData.description,
           fetchedAt: new Date().toISOString(),

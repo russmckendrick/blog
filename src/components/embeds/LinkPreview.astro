@@ -1,5 +1,5 @@
 ---
-import { getLinkPreviewData, getLinkPreviewImage, getLinkPreviewSrcSet } from '../../utils/link-preview';
+import { getLinkPreviewData, getLinkPreviewImage, getLinkPreviewSrcSet, isFaviconImage } from '../../utils/link-preview';
 
 interface Props {
   id: string;
@@ -16,6 +16,7 @@ const localImage = getLinkPreviewImage(id);
 const srcSet = getLinkPreviewSrcSet(id);
 const imageUrl = localImage || cachedData?.originalImage || null;
 const imageAlt = cachedData?.imageAlt || cachedData?.title || '';
+const isFavicon = isFaviconImage(id);
 
 // Extract domain for display
 const domain = (() => {
@@ -38,7 +39,7 @@ const linkUrl = id;
     rel="noopener noreferrer"
     class="link-preview block no-underline text-inherit hover:no-underline"
   >
-    {!hideMedia && imageUrl && (
+    {!hideMedia && imageUrl && !isFavicon && (
       <div class="link-preview-image aspect-[1200/630] overflow-hidden bg-gray-100 dark:bg-gray-700">
         <img
           src={imageUrl}
@@ -54,7 +55,18 @@ const linkUrl = id;
       </div>
     )}
     <div class="p-4">
-      <div class="link-preview-title font-semibold text-gray-900 dark:text-gray-100 line-clamp-2">
+      <div class="link-preview-title font-semibold text-gray-900 dark:text-gray-100 line-clamp-2 flex items-center gap-2">
+        {isFavicon && imageUrl && (
+          <img
+            src={imageUrl}
+            alt=""
+            width="20"
+            height="20"
+            loading="lazy"
+            decoding="async"
+            class="w-5 h-5 object-contain flex-shrink-0"
+          />
+        )}
         {title}
       </div>
       {description && (

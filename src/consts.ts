@@ -432,4 +432,12 @@ export const CF_IMAGE_PRESETS = {
     fit: "cover" as const,
     widths: [300, 600, 800, 1200],
   },
+
+  // Favicon fallback for link previews
+  favicon: {
+    quality: 85,
+    format: "auto" as const,
+    fit: "contain" as const,
+    widths: [64, 96, 128],
+  },
 };

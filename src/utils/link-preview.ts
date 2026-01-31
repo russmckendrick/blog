@@ -14,6 +14,8 @@ import linkPreviewCache from '../data/link-preview-cache.json';
 export interface LinkPreviewCacheEntry {
   localImage: string | null;
   originalImage: string | null;
+  faviconUrl?: string | null;
+  imageType?: 'og-image' | 'favicon' | null;
   title: string;
   description: string;
   imageAlt?: string;
@@ -38,6 +40,14 @@ export function hasLocalImage(url: string): boolean {
 }
 
 /**
+ * Check if an image is a favicon (not an OG image)
+ */
+export function isFaviconImage(url: string): boolean {
+  const entry = getLinkPreviewData(url);
+  return entry?.imageType === 'favicon';
+}
+
+/**
  * Get the image URL for a LinkPreview, with optional Cloudflare transformations
  *
  * Returns the local image with CF transformations if available,
@@ -52,7 +62,22 @@ export function getLinkPreviewImage(
   if (!entry) return null;
 
   if (entry.localImage) {
-    // Apply Cloudflare transformations to local image
+    // For SVG favicons, serve directly without CF transformations
+    if (entry.imageType === 'favicon' && entry.localImage.endsWith('.svg')) {
+      return entry.localImage;
+    }
+
+    // For favicons, use contain fit and smaller size
+    if (entry.imageType === 'favicon') {
+      return getCFImageUrl(entry.localImage, options || {
+        width: 128,
+        quality: CF_IMAGE_PRESETS.favicon.quality,
+        format: CF_IMAGE_PRESETS.favicon.format,
+        fit: CF_IMAGE_PRESETS.favicon.fit,
+      });
+    }
+
+    // For OG images, use cover fit and larger size
     return getCFImageUrl(entry.localImage, options || {
       width: 1200,
       quality: CF_IMAGE_PRESETS.linkPreview.quality,
@@ -66,11 +91,15 @@ export function getLinkPreviewImage(
 
 /**
  * Get responsive srcset for a LinkPreview image
+ * Only generates srcset for OG images (not favicons)
  */
 export function getLinkPreviewSrcSet(url: string): string | null {
   const entry = getLinkPreviewData(url);
 
   if (!entry?.localImage) return null;
+
+  // Don't generate srcset for favicons
+  if (entry.imageType === 'favicon') return null;
 
   const widths = CF_IMAGE_PRESETS.linkPreview.widths;
   const quality = CF_IMAGE_PRESETS.linkPreview.quality;

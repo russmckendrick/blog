@@ -467,11 +467,12 @@ a {
   @apply bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-2 py-1 rounded text-sm font-mono;
 }
 
-.prose pre {
+/* Only style pre elements that are NOT part of Expressive Code */
+.prose pre:not(.expressive-code pre):not([data-language]) {
   @apply bg-gray-900 dark:bg-gray-950 text-gray-100 p-6 rounded-lg overflow-x-auto my-6 border border-gray-200 dark:border-gray-800;
 }
 
-.prose pre code {
+.prose pre:not(.expressive-code pre):not([data-language]) code {
   @apply bg-transparent text-gray-100 p-0 text-sm;
 }
 
