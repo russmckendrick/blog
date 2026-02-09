@@ -96,33 +96,13 @@ const imageURL = image?.startsWith('http')
   Priority order: 1) View Transitions, 2) React runtime, 3) Component bundles
 -->
 
-<!-- DNS Prefetch for analytics -->
-<link rel="dns-prefetch" href="https://plausible.io">
-<link rel="preconnect" href="https://plausible.io" crossorigin>
-
 <!-- Note: Giscus and GitHub preconnects moved to BlogPost.astro (only needed on post pages) -->
 
-<!-- Plausible Analytics - Load during idle time for optimal performance -->
-<script>
-	function loadPlausible() {
-		const script = document.createElement('script');
-		script.defer = true;
-		script.dataset.domain = 'russ.cloud';
-		script.dataset.api = 'https://plausible.io/api/event';
-		script.src = '/js/plausible.js';
-		document.head.appendChild(script);
-	}
-
-	// Load analytics during browser idle time for best performance
-	const win = window as Window & { requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => void };
-	if (win.requestIdleCallback) {
-		win.requestIdleCallback(loadPlausible, { timeout: 2000 });
-	} else if (document.readyState === 'complete') {
-		// Fallback for browsers without requestIdleCallback
-		setTimeout(loadPlausible, 1);
-	} else {
-		window.addEventListener('load', () => setTimeout(loadPlausible, 1));
-	}
+<!-- Plausible Analytics -->
+<script is:inline async src="https://plausible.io/js/pa-1kQuB-9i3FNq-UW5DZix5.js"></script>
+<script is:inline>
+	window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+	plausible.init()
 </script>
 
 <!-- Critical CSS to ensure header is immediately visible -->

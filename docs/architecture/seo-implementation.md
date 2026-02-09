@@ -452,8 +452,20 @@ For more on Docker networking, see [Docker Networking Guide](/2024/03/15/docker-
 **Features**:
 - Privacy-focused (no cookies)
 - GDPR compliant
-- Lightweight (<1KB script)
+- Lightweight script
 - Real-time data
+
+**Integration**:
+Uses Plausible's new hashed script embed format in `BaseHead.astro`:
+```html
+<script is:inline async src="https://plausible.io/js/pa-1kQuB-9i3FNq-UW5DZix5.js"></script>
+<script is:inline>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+```
+
+The `is:inline` directive ensures Astro renders the tags exactly as-is without bundling or converting to modules.
 
 **Metrics**:
 - Page views
