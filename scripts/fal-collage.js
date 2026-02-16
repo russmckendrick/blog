@@ -584,11 +584,8 @@ async function createGridComposition(imagePaths, columns = 3, cellSize = 400, de
       const left = col * cellSize
       const top = row * cellSize
 
-      // Pre-process image (crop text regions)
-      const processedBuffer = await preprocessImageForCollage(imagePaths[i], false)
-
-      // Resize to cell size
-      const resizedBuffer = await sharp(processedBuffer)
+      // Resize to cell size (no cropping)
+      const resizedBuffer = await sharp(imagePaths[i])
         .resize(cellSize, cellSize, { fit: 'cover', kernel: sharp.kernel.lanczos3 })
         .toBuffer()
 
@@ -714,11 +711,30 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
   }
 
   const maxRetries = config.retry?.maxAttempts || 3
-  const allCandidates = await selectMostInterestingImages(uniqueImagePaths, totalAlbumsNeeded, debug, strategy)
+
+  // Filter blacklisted images
+  const nonBlacklistedPaths = uniqueImagePaths.filter(imagePath => {
+    const filename = path.basename(imagePath, path.extname(imagePath))
+    if (isBlacklisted(filename)) {
+      if (debug) console.log(`  ⚠ Blacklisted (skipping): ${filename}`)
+      return false
+    }
+    return true
+  })
+
+  // Skip selection when all images fit within maxAlbums
+  let allCandidates
+  if (nonBlacklistedPaths.length <= maxAlbums) {
+    if (debug) {
+      console.log(`  All ${nonBlacklistedPaths.length} images fit within maxAlbums (${maxAlbums}), using all directly`)
+    }
+    allCandidates = nonBlacklistedPaths
+  } else {
+    allCandidates = await selectMostInterestingImages(uniqueImagePaths, totalAlbumsNeeded, debug, strategy)
+  }
 
   if (debug) {
-    console.log(`  Strategy: Send ${totalAlbumsNeeded} individual album covers to Gemini 3 Pro model (${minAlbums}-${maxAlbums} range)`)
-    console.log(`  Ranked ${allCandidates.length} images by vibrancy + text score`)
+    console.log(`  Strategy: Send ${allCandidates.length} individual album covers to Gemini 3 Pro model (${minAlbums}-${maxAlbums} range)`)
     console.log(`  Will retry up to ${maxRetries} times if content policy issues occur`)
   }
 
@@ -740,8 +756,11 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
           console.log(`    Processing ${path.basename(imagePath)}...`)
         }
 
-        // Pre-process to remove text regions
-        const processedBuffer = await preprocessImageForCollage(imagePath, debug)
+        // Resize to 800x800 for upload (no cropping)
+        const processedBuffer = await sharp(imagePath)
+          .resize(800, 800, { fit: 'cover', kernel: sharp.kernel.lanczos3 })
+          .jpeg({ quality: 95 })
+          .toBuffer()
 
         // Upload to FAL.ai
         const file = new File([processedBuffer], path.basename(imagePath), { type: 'image/jpeg' })
