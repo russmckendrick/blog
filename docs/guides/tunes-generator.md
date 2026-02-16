@@ -186,10 +186,11 @@ Each collage randomly selects one of three strategies for variety:
 3. Detects text using edge detection (top/bottom 20% of cover)
 4. Calculates color vibrancy: `(saturation × 0.4) + (√variance × 0.3) + (textPenalty × 0.3)`
 5. Randomly selects a strategy (or uses `--strategy` flag if specified)
-6. Selects up to 12 images based on the chosen strategy
-7. Preprocesses images to crop text regions (top 15%, bottom 15%, sides 5%)
-8. Uses GPT-4 Vision to analyze covers and generate custom blend prompt
-9. Sends to FAL.ai Gemini 3 Pro Image model for AI blending
+6. If all images fit within `maxCount`, uses them all directly (skips strategy selection)
+7. Otherwise, selects up to 13 images based on the chosen strategy
+8. Resizes images to 800×800 for upload
+9. Uses GPT-4 Vision to analyze covers and generate custom blend prompt
+10. Sends to FAL.ai Gemini 3 Pro Image model for AI blending
 
 **Configuration (`scripts/fal-collage-config.json`):**
 ```json
@@ -206,7 +207,7 @@ Each collage randomly selects one of three strategies for variety:
   },
   "images": {
     "minCount": 2,
-    "maxCount": 12,
+    "maxCount": 13,
     "strategies": ["vibrant", "balanced", "random"],
     "strategySelection": "random"
   },
