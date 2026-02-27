@@ -175,7 +175,7 @@ async function generateAICover(prompt, imageUrls, outputPath, options = {}) {
   console.log('  Generating AI cover with FAL.ai...')
 
   // Use the image-to-image model
-  const modelName = 'fal-ai/nano-banana-pro/edit'
+  const modelName = 'fal-ai/nano-banana-2/edit'
 
   if (debug) {
     console.log(`  Using model: ${modelName}`)

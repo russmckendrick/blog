@@ -340,7 +340,7 @@ async function generateCoverImage(options) {
   }
 
   // Use model from config
-  const modelName = config.model?.name || 'fal-ai/nano-banana-pro'
+  const modelName = config.model?.name || 'fal-ai/nano-banana-2'
 
   if (debug) {
     console.log(`  Using model: ${modelName}`)
@@ -519,7 +519,7 @@ function showHelp() {
   console.log(`
 FAL.ai Blog Cover Generator
 
-Generates AI-powered blog cover images using FAL.ai's Gemini 3 Pro Image model.
+Generates AI-powered blog cover images using FAL.ai's Gemini 3.1 Flash Image model.
 Uses OpenAI GPT-4 to create enhanced image prompts from your post metadata.
 
 Usage:

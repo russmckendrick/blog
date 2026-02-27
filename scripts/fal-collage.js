@@ -734,7 +734,7 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
   }
 
   if (debug) {
-    console.log(`  Strategy: Send ${allCandidates.length} individual album covers to Gemini 3 Pro model (${minAlbums}-${maxAlbums} range)`)
+    console.log(`  Strategy: Send ${allCandidates.length} individual album covers to Gemini 3.1 Flash model (${minAlbums}-${maxAlbums} range)`)
     console.log(`  Will retry up to ${maxRetries} times if content policy issues occur`)
   }
 
@@ -803,7 +803,7 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
   const prompt = smartPrompt || defaultPrompt
 
   if (debug) {
-    console.log(`  Generating collage with ${uploadedUrls.length} images using Gemini 3 Pro Image...`)
+    console.log(`  Generating collage with ${uploadedUrls.length} images using Gemini 3.1 Flash Image...`)
     console.log(`  Using ${smartPrompt ? 'AI-generated' : 'default'} prompt`)
     console.log(`  Prompt: "${prompt}"`)
   }
@@ -831,7 +831,8 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
     aspect_ratio: config.output?.aspectRatio || aspectRatio,
     num_images: config.output?.numImages || 1,
     output_format: config.output?.format || 'png',
-    resolution: config.output?.resolution || '2K'
+    resolution: config.output?.resolution || '2K',
+    enable_web_search: true
   }
 
   if (debug) {
@@ -840,7 +841,7 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
   }
 
   // Retry loop for content policy violations
-  const modelName = config.model?.name || "fal-ai/nano-banana-pro/edit"
+  const modelName = config.model?.name || "fal-ai/nano-banana-2/edit"
 
   while (attempt < maxRetries) {
     try {
@@ -860,7 +861,7 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
       })
 
       if (!result.data || !result.data.images || result.data.images.length === 0) {
-        throw new Error('FAL.ai Gemini 3 Pro returned no images')
+        throw new Error('FAL.ai Gemini 3.1 Flash returned no images')
       }
 
       const imageUrl = result.data.images[0].url
