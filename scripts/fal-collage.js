@@ -428,7 +428,7 @@ function buildPromptFromBlueprint(blueprint, style = 'editorial_photoshoot', sou
     `Color direction: dominant ${normalized.palette.dominant}; vivid accent ${normalized.palette.accent}.`,
     `Subject lock: use only visible subjects from the uploaded source images. Allowed subjects: ${allowedSubjects}.`,
     normalized.people_present
-      ? 'Human subject rule: if people are present, only depict people/faces that are directly visible in the uploaded source images; do not create extra people. Use multiple people from the uploaded images when available (target 2-4 people in-frame for group-rich sets).'
+      ? 'Human subject rule: if people are present, only depict people/faces that are directly visible in the uploaded source images; do not create extra people. Use multiple people from the uploaded images when available (target 2-10 people in-frame for group-rich sets).'
       : 'Human subject rule: do not generate any people, faces, or human figures unless they are clearly visible in the uploaded source images.',
     'Exposure requirements: keep most of the frame in mid and high exposure with visible shadow detail; avoid black void backgrounds.',
     'Render the hero subject with illuminated surfaces and color reflections, not as a matte-black silhouette.',
