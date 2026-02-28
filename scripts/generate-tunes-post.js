@@ -127,7 +127,8 @@ async function main() {
       seed: dateSeed,
       width: 1400,
       height: 800,
-      strategy: 'balanced',
+      strategy: 'pop-mix',
+      style: 'editorial_photoshoot',
       debug: debugMode
     })
 

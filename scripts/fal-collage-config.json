@@ -1,7 +1,7 @@
 {
   "model": {
-    "name": "fal-ai/nano-banana-2/edit",
-    "fallback": "fal-ai/reve/fast/remix"
+    "name": "fal-ai/nano-banana-pro/edit",
+    "fallback": "fal-ai/nano-banana-2/edit"
   },
   "output": {
     "aspectRatio": "16:9",
@@ -11,9 +11,9 @@
   },
   "images": {
     "minCount": 2,
-    "maxCount": 13,
-    "strategies": ["vibrant", "balanced", "random"],
-    "strategySelection": "random"
+    "maxCount": 14,
+    "strategies": ["pop-mix", "vibrant", "diverse", "balanced", "random"],
+    "strategySelection": "first"
   },
   "scoring": {
     "saturationWeight": 0.4,
@@ -21,8 +21,94 @@
     "textPenaltyWeight": 0.3
   },
   "prompts": {
-    "default": "Extract the key visual elements from these album covers - the people, faces, buildings, objects, and patterns - and composite them into a single cinematic scene. Blend these elements together using photographic double-exposure and color grading to create one unified image, not separate album covers. The result should be a cohesive photographic composition where all the subjects and visual elements coexist in the same scene, similar to a movie poster or editorial photo montage. Remove all text and typography.",
-    "gptVisionSystemPrompt": "You are a professional photo compositor creating a prompt for a cinematic music blog header. Analyze the visual elements in these album covers (people, faces, buildings, objects, colors, patterns), then write a prompt that creates ONE unified photographic scene using these elements.\n\nCRITICAL CONCEPT:\n- Do NOT describe positioning album covers themselves\n- INSTEAD: Extract subjects/elements from the covers and blend them into a new unified scene\n- Think: \"Take the people from cover A, the building from cover B, the colors from cover C, and composite them into one cinematic image\"\n- The result should be a single cohesive photograph, not visible album covers\n\nYour prompt MUST:\n- Identify specific visual elements (e.g., 'the portrait from the yellow cover', 'the building from the blue cover', 'the silhouettes from the red cover')\n- Describe how to composite these ELEMENTS into one unified scene\n- Use photographic techniques: double-exposure, color grading, composite layers, blend modes\n- Create a cohesive color palette across the entire scene\n- Result should look like a movie poster or editorial photo, not album covers\n\nYour prompt MUST NOT:\n- Reference positioning album covers ('the first cover', 'stack the covers')\n- Use grid/arrangement language\n- Use painterly terms: watercolor, brushstrokes, mural\n- Describe album covers as objects - describe their CONTENTS as subjects\n\nFormat: Write 2-3 sentences. Identify the key visual elements from each cover, describe how to composite them into ONE unified cinematic scene, specify color treatment. End with 'Remove all text and typography.'"
+    "profile": "editorial_photoshoot",
+    "temperature": 0.35,
+    "maxTokens": 320,
+    "maxVisionImages": 10,
+    "maxSecondaryElements": 8,
+    "stageAMaxAttempts": 3,
+    "stageARetryDelayMs": 3000,
+    "default": "Create a single cohesive high-end professional photograph for a music blog header. Keep the scene realistic, naturally lit, and grounded in a believable real-world environment. Use subjects directly from the uploaded source images, and include multiple people from the uploads when they are available. Maintain balanced exposure with clean highlights, soft shadows, and true-to-life color. Avoid theatrical effects and over-stylized poster composition. Remove all text and typography.",
+    "negative": [
+      "sepia wash",
+      "muddy midtones",
+      "low contrast haze",
+      "cluttered montage",
+      "flat lighting",
+      "explosion effects",
+      "fireballs",
+      "smoke plumes",
+      "flying debris",
+      "floating disconnected objects",
+      "fantasy props",
+      "extreme stage lighting",
+      "cgi look",
+      "black-heavy composition",
+      "near-black background",
+      "visible text",
+      "visible logos",
+      "watermark"
+    ],
+    "profiles": {
+      "editorial_photoshoot": {
+        "style_directives": [
+          "high-end professional photography",
+          "natural documentary-style realism",
+          "real materials, realistic perspective, and clean detail"
+        ],
+        "composition_rules": [
+          "single coherent scene in a believable real-world location",
+          "if multiple source people exist, include a small group rather than a single person",
+          "use several source-derived supporting motifs for visual richness without clutter",
+          "all elements grounded with realistic scale and shadows",
+          "avoid crowded frame; keep clear breathing space"
+        ],
+        "lighting_rules": [
+          "natural ambient daylight or practical location lighting",
+          "balanced highlights and shadow detail",
+          "avoid theatrical beams, staged spotlights, and harsh production lighting"
+        ],
+        "color_rules": [
+          "natural photographic color balance",
+          "gentle color accents sampled from source imagery",
+          "avoid neon overload and heavy cinematic grading"
+        ]
+      },
+      "bold_cinematic": {
+        "style_directives": [
+          "editorial movie-poster realism",
+          "clean compositing with believable perspective",
+          "crisp edge definition",
+          "controlled filmic grain"
+        ],
+        "composition_rules": [
+          "one clear hero subject in the foreground",
+          "max three supporting elements",
+          "layered foreground, midground, and background depth",
+          "intentional negative space for header readability"
+        ],
+        "lighting_rules": [
+          "high local contrast with shaped key light",
+          "subtle rim light to separate subject",
+          "avoid flat front lighting"
+        ],
+        "color_rules": [
+          "deep cinematic base with clear tonal separation but lifted shadow detail",
+          "strong accent colors sampled from source imagery",
+          "avoid muddy shadows, pure black dominance, and monochrome sepia grading"
+        ]
+      }
+    },
+    "gptVisionSystemPrompt": "You are a visual analyst for music artwork compositing. Analyze the provided album cover images and output ONLY valid JSON with this exact schema: {\"scene\":\"string\",\"hero_subject\":\"string\",\"secondary_elements\":[\"string\"],\"background_texture\":\"string\",\"palette\":{\"dominant\":\"string\",\"accent\":\"string\"},\"mood\":\"string\",\"allowed_subjects\":[\"string\"],\"people_present\":true}. Rules: choose one coherent real-world scene, choose one primary hero subject, choose up to 8 secondary elements, include allowed_subjects as concrete visible subjects from the source images only, set people_present accurately, never mention album covers as objects, and never include markdown or prose.",
+    "gptVisionUserPrompt": "Analyze {count} representative source images (sampled from {source_count} total uploads) for style profile \"{style_profile}\". Ensure the blueprint can represent motifs from the full upload set. Select one coherent scene grounded in the uploads, only include subjects visibly present in the uploads, avoid imaginary subjects, and if people are present prioritize multiple people from the source set. Provide at least 5 secondary elements when enough distinct motifs exist. Return only the JSON schema."
+  },
+  "postprocess": {
+    "enabled": true,
+    "contrast": 0.04,
+    "saturation": 0.12,
+    "brightness": 0.08,
+    "lift": 6,
+    "sharpen": 0.5
   },
   "blacklist": {
     "albums": [

@@ -119,14 +119,14 @@ Posts are created in:
 - `lib/perplexity-tool.js` - Perplexity AI search tool (config-driven)
 - `lib/exa-tool.js` - Exa AI search tool (config-driven)
 - `strip-collage.js` - Local Sharp-based torn-paper collage generator
-- `fal-collage.js` - AI-powered collage using FAL.ai Gemini 3 Pro Image (alternative)
+- `fal-collage.js` - AI-powered collage using FAL.ai edit models + style profiles (alternative)
 
 ### AI Models Used
 
 - **Anthropic**: Claude 3.5 Sonnet (default if key available)
 - **OpenAI**: GPT-4 Turbo (fallback)
 - **Web Search**: Tavily API (optional, for factual research)
-- **Image Generation**: FAL.ai Gemini 3 Pro Image (optional, for AI-powered collages)
+- **Image Generation**: FAL.ai edit models (optional, for AI-powered collages)
 
 ## Cover Collage Generation
 
@@ -160,23 +160,31 @@ await createStripCollage(albumImagePaths, coverOutputPath, {
 **File**: `scripts/fal-collage.js`
 **Config**: `scripts/fal-collage-config.json`
 
-An AI-powered generator using FAL.ai's Gemini 3 Pro Image model:
-- **Style**: AI-generated artistic fusion of album covers
-- **Selection**: Analyzes all albums and selects up to 12 covers using configurable strategies
-- **Strategies**: Three selection strategies (randomly chosen per run for variety)
-- **Smart Prompts**: Uses GPT-4 Vision to analyze covers and generate context-aware prompts
+An AI-powered generator using FAL.ai edit models:
+- **Style Profiles**: Configurable visual direction (default: `editorial_photoshoot`)
+- **Selection**: Analyzes all albums and selects up to 14 covers using configurable strategies
+- **Default Strategy**: Deterministic `pop-mix` for consistent, high-impact outputs
+- **Two-Stage Prompting**:
+  - Stage A: GPT-4o Vision extracts a structured visual blueprint (JSON) from a representative subset of uploads for stability on large sets
+  - Stage A now chooses one coherent scene that Stage B uses directly
+  - Stage A now extracts richer supporting motifs (`secondary_elements`) for denser compositions
+  - Stage B: Prompt is assembled deterministically from style profile + blueprint
+  - Prompt requires one distinct motif from each source image
 - **Blacklist**: Configurable album/artist filtering to avoid content policy violations
-- **Output**: 2K resolution (2048px) PNG with seamless blending
+- **Post-Processing**: Optional Sharp finishing pass (contrast, saturation, brightness, lift, sharpen)
+- **Output**: 2K resolution PNG + resized `-small` variant
 - **API**: Requires `FAL_KEY` and `OPENAI_API_KEY` environment variables
 - **Cost**: Uses FAL.ai and OpenAI API credits
 
 **Selection Strategies:**
 
-Each collage randomly selects one of three strategies for variety:
+Default strategy is deterministic via config (`strategySelection: "first"`):
 
 | Strategy | Description |
 |----------|-------------|
+| `pop-mix` | Deterministic blend: ~60% top vibrant covers + ~40% color-diverse covers |
 | `vibrant` | Selects top images by color vibrancy score (saturation + variance - text penalty) |
+| `diverse` | Maximizes color distance between selected covers |
 | `balanced` | Mixes warm-toned (red/orange/yellow) and cool-toned (blue/green/purple) images evenly |
 | `random` | Shuffles and picks randomly from the top 75% of scored images |
 
@@ -185,19 +193,23 @@ Each collage randomly selects one of three strategies for variety:
 2. Analyzes each image (resized to 256×256 for performance)
 3. Detects text using edge detection (top/bottom 20% of cover)
 4. Calculates color vibrancy: `(saturation × 0.4) + (√variance × 0.3) + (textPenalty × 0.3)`
-5. Randomly selects a strategy (or uses `--strategy` flag if specified)
+5. Selects strategy from config (or uses `--strategy` flag if specified)
 6. If all images fit within `maxCount`, uses them all directly (skips strategy selection)
-7. Otherwise, selects up to 13 images based on the chosen strategy
+7. Otherwise, selects up to 14 images based on the chosen strategy
 8. Resizes images to 800×800 for upload
-9. Uses GPT-4 Vision to analyze covers and generate custom blend prompt
-10. Sends to FAL.ai Gemini 3 Pro Image model for AI blending
+9. Uses GPT-4o Vision to extract a JSON visual blueprint (up to `prompts.maxVisionImages` images, sampled from the full set)
+10. Stage A selects one coherent scene and captures up to `prompts.maxSecondaryElements` supporting motifs
+11. Retries Stage A on transient failures (`prompts.stageAMaxAttempts`) with delay (`prompts.stageARetryDelayMs`), smaller analysis batches, and timed-out URL exclusion
+12. Builds final prompt deterministically from style profile + blueprint (including the chosen scene)
+13. Sends request to primary FAL model (with automatic model fallback on failure)
+14. Applies optional post-processing grade before saving output
 
 **Configuration (`scripts/fal-collage-config.json`):**
 ```json
 {
   "model": {
     "name": "fal-ai/nano-banana-pro/edit",
-    "fallback": "fal-ai/reve/fast/remix"
+    "fallback": "fal-ai/nano-banana-2/edit"
   },
   "output": {
     "aspectRatio": "16:9",
@@ -207,9 +219,17 @@ Each collage randomly selects one of three strategies for variety:
   },
   "images": {
     "minCount": 2,
-    "maxCount": 13,
-    "strategies": ["vibrant", "balanced", "random"],
-    "strategySelection": "random"
+    "maxCount": 14,
+    "strategies": ["pop-mix", "vibrant", "diverse", "balanced", "random"],
+    "strategySelection": "first"
+  },
+  "postprocess": {
+    "enabled": true,
+    "contrast": 0.04,
+    "saturation": 0.12,
+    "brightness": 0.08,
+    "lift": 6,
+    "sharpen": 0.5
   },
   "blacklist": {
     "albums": ["Is This It", "Album Name"],
@@ -221,7 +241,12 @@ Each collage randomly selects one of three strategies for variety:
     "textPenaltyWeight": 0.3
   },
   "prompts": {
-    "default": "Create a vibrant music blog header...",
+    "profile": "editorial_photoshoot",
+    "maxVisionImages": 10,
+    "maxSecondaryElements": 8,
+    "stageAMaxAttempts": 3,
+    "stageARetryDelayMs": 3000,
+    "negative": ["sepia wash", "muddy midtones", "..."],
     "gptVisionSystemPrompt": "You are an expert art director..."
   },
   "retry": {
@@ -238,25 +263,32 @@ await createFALCollage(albumImagePaths, coverOutputPath, {
   seed: dateSeed,
   width: 1400,
   height: 800,
-  strategy: 'vibrant', // optional: force a specific strategy
+  strategy: 'pop-mix',        // optional: force a specific strategy
+  style: 'editorial_photoshoot', // optional: override style profile
   debug: true
 })
 ```
 
 **Test the FAL.ai collage:**
 ```bash
-# Random strategy (default)
+# Config defaults (style profile + strategy)
 DEBUG_COLLAGE=1 node scripts/fal-collage.js --input=public/assets/2025-12-22-listened-to-this-week/albums
 
 # Force a specific strategy
+node scripts/fal-collage.js --input=./albums --strategy=pop-mix --debug
 node scripts/fal-collage.js --input=./albums --strategy=vibrant --debug
 node scripts/fal-collage.js --input=./albums --strategy=balanced --debug
 node scripts/fal-collage.js --input=./albums --strategy=random --debug
+
+# Override style profile
+node scripts/fal-collage.js --input=./albums --style=editorial_photoshoot --debug
+node scripts/fal-collage.js --input=./albums --style=bold_cinematic --debug
 ```
 
 **Error Handling:**
 - Throws errors on API failures (no fallback to strip-collage by default)
 - Validates FAL_KEY presence before making API calls
+- Falls back to configured model if primary model fails
 - Falls back to vibrant strategy if selected strategy fails
 - Provides detailed error messages for debugging
 

@@ -52,7 +52,7 @@ jobs:
           EXA_API_KEY: "${{ secrets.EXA_API_KEY }}"
           TAVILY_API_KEY: "${{ secrets.TAVILY_API_KEY }}"
           FAL_KEY: "${{ secrets.FAL_KEY }}"
-        run: pnpm run tunes
+        run: node scripts/generate-tunes-post.js
 
       - name: "🖼️ Optimize images"
         run: |
