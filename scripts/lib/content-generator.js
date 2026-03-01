@@ -1,5 +1,7 @@
 import { ChatOpenAI } from '@langchain/openai'
 import { ChatAnthropic } from '@langchain/anthropic'
+import { promises as fs } from 'fs'
+import path from 'path'
 import { ConfigLoader } from './config-loader.js'
 import { normalizeForFilename, lookupArtistData, lookupAlbumData, escapeQuotes } from './text-utils.js'
 import { SearchCache } from './search-cache.js'
@@ -78,17 +80,20 @@ export class ContentGenerator {
   async generateTitleAndSummary(dateStr, weekNumber, topArtists, topAlbums) {
     const artistNames = topArtists.map(([name]) => name).join(', ')
     const albumNames = topAlbums.map(([[artist, album]]) => album).join(', ')
+    const recentTitles = await this.getRecentTunesTitles(12, dateStr)
 
     const context = {
       artists: artistNames,
       albums: albumNames,
       week_number: weekNumber,
-      date_str: dateStr
+      date_str: dateStr,
+      recent_titles: recentTitles.length > 0 ? recentTitles.join('\n') : 'None'
     }
 
-    const titlePrompt = this.config
+    const baseTitlePrompt = this.config
       ? this.config.getTitlePrompt(context)
       : this.getDefaultTitlePrompt(context)
+    const titlePrompt = `${baseTitlePrompt}\n\n${this.getTitleDiversityGuard(recentTitles)}`
 
     const summaryPrompt = this.config
       ? this.config.getSummaryPrompt(context)
@@ -100,8 +105,13 @@ export class ContentGenerator {
         this.llm.invoke(summaryPrompt)
       ])
 
-      const title = this.sanitizeOutput(titleResponse.content)
+      let title = this.sanitizeOutput(titleResponse.content)
       const summary = this.sanitizeOutput(summaryResponse.content)
+
+      if (!this.isTitleDiverse(title, recentTitles)) {
+        console.log('Generated title failed diversity checks, retrying...')
+        title = await this.regenerateTitleWithDiversityGuard(titlePrompt, recentTitles, title)
+      }
 
       console.log(`Generated title: ${title}`)
       console.log(`Generated summary: ${summary}`)
@@ -445,8 +455,159 @@ Remember: FIRST use the search tool to research, THEN write your section based o
     return parts.length > 0 ? parts.join(', ') : 'notable release'
   }
 
+  async getRecentTunesTitles(limit = 12, currentDateStr = null) {
+    const tunesDir = path.join(process.cwd(), 'src', 'content', 'tunes')
+
+    try {
+      const files = await fs.readdir(tunesDir)
+      const weeklyFiles = files
+        .filter(file => file.endsWith('-listened-to-this-week.mdx'))
+        .sort((a, b) => b.localeCompare(a))
+
+      const titles = []
+      for (const file of weeklyFiles) {
+        if (currentDateStr && file.startsWith(currentDateStr)) {
+          continue
+        }
+
+        const content = await fs.readFile(path.join(tunesDir, file), 'utf8')
+        const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/m)
+        if (!frontmatterMatch) {
+          continue
+        }
+
+        const titleMatch = frontmatterMatch[1].match(/^title:\s*["']?(.+?)["']?\s*$/m)
+        if (titleMatch && titleMatch[1]) {
+          titles.push(titleMatch[1].trim())
+        }
+
+        if (titles.length >= limit) {
+          break
+        }
+      }
+
+      return titles
+    } catch (error) {
+      console.log(`Could not load recent tunes titles: ${error.message}`)
+      return []
+    }
+  }
+
+  getTitleDiversityGuard(recentTitles) {
+    const recentTitlesList = recentTitles.length > 0
+      ? recentTitles.map(title => `- ${title}`).join('\n')
+      : '- None available'
+
+    return `Diversity requirements (strict):
+- Never use these phrases: "a musical journey", "musical odyssey", "journey through", "melodies unbound", "exploring soundscapes"
+- Never use the pattern "From X to Y" or "From [artist] to [artist]"
+- Do not start with "A", "An", "The", or "This Week"
+- Do not reuse the first two words from any recent title
+- Keep the structure fresh and specific to this week's artists/albums
+- Maximum 70 characters
+- Return ONLY the title
+
+Recent titles to avoid:
+${recentTitlesList}`
+  }
+
+  normalizeTitleForComparison(title) {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+  }
+
+  getTitleOpening(title, wordCount = 2) {
+    const words = this.normalizeTitleForComparison(title).split(' ').filter(Boolean)
+    return words.slice(0, wordCount).join(' ')
+  }
+
+  calculateTokenOverlapRatio(titleA, titleB) {
+    const tokensA = new Set(this.normalizeTitleForComparison(titleA).split(' ').filter(token => token.length > 2))
+    const tokensB = new Set(this.normalizeTitleForComparison(titleB).split(' ').filter(token => token.length > 2))
+
+    if (tokensA.size === 0 || tokensB.size === 0) {
+      return 0
+    }
+
+    let overlap = 0
+    for (const token of tokensA) {
+      if (tokensB.has(token)) {
+        overlap += 1
+      }
+    }
+
+    return overlap / Math.min(tokensA.size, tokensB.size)
+  }
+
+  isTitleDiverse(title, recentTitles = []) {
+    if (!title) {
+      return false
+    }
+
+    const cleanedTitle = title.trim()
+    const normalized = this.normalizeTitleForComparison(cleanedTitle)
+    const forbiddenPhrases = [
+      'a musical journey',
+      'musical odyssey',
+      'journey through',
+      'melodies unbound',
+      'exploring soundscapes'
+    ]
+
+    if (cleanedTitle.length > 70) {
+      return false
+    }
+
+    if (/^from\s.+\sto\s.+/i.test(cleanedTitle)) {
+      return false
+    }
+
+    if (/^(a|an|the|this week)\b/i.test(cleanedTitle)) {
+      return false
+    }
+
+    if (forbiddenPhrases.some(phrase => normalized.includes(phrase))) {
+      return false
+    }
+
+    const opening = this.getTitleOpening(cleanedTitle, 2)
+    return !recentTitles.some(previousTitle => {
+      const previousOpening = this.getTitleOpening(previousTitle, 2)
+      if (opening && previousOpening && opening === previousOpening) {
+        return true
+      }
+
+      return this.calculateTokenOverlapRatio(cleanedTitle, previousTitle) >= 0.8
+    })
+  }
+
+  async regenerateTitleWithDiversityGuard(basePrompt, recentTitles, previousTitle) {
+    let candidate = previousTitle
+
+    for (let i = 0; i < 2; i++) {
+      const retryPrompt = `${basePrompt}
+
+Previous title failed diversity checks: ${candidate}
+
+Generate a title with a different opening words and structure from the failed title and recent titles.
+Return ONLY the title.`
+
+      const retryResponse = await this.llm.invoke(retryPrompt)
+      candidate = this.sanitizeOutput(retryResponse.content)
+
+      if (this.isTitleDiverse(candidate, recentTitles)) {
+        return candidate
+      }
+    }
+
+    return candidate
+  }
+
   getDefaultTitlePrompt(context) {
-    return `Create a creative title for a weekly music blog post.
+    return `Create a creative, varied title for a weekly music blog post.
 Artists: ${context.artists}
 Albums: ${context.albums}
 Maximum 70 characters, avoid special characters.

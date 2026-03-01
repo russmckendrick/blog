@@ -497,26 +497,31 @@ prompts:
       that capture the essence and connections between diverse artists and albums.
 
     instruction: |
-      Create an engaging, creative title for a weekly music blog post.
+      Create an engaging, creative, and VARIED title for a weekly music blog post.
 
       Featured Artists: {artists}
       Featured Albums: {albums}
       Week: {week_number}
       Date: {date_str}
+      Recent Titles (avoid matching wording/structure):
+      {recent_titles}
 
       Guidelines:
-      - Create a DESCRIPTIVE title that tells a story or theme
-      - Connect the artists/albums through a common thread (era, genre, mood, style)
-      - Make it poetic and evocative, not just a list
-      - Use creative phrasing like "Journey Through...", "Exploring...", "A Musical Odyssey..."
+      - Create a DESCRIPTIVE title with concrete imagery or contrast
+      - Connect artists/albums through a specific thread (era, genre, mood, scene, production style)
+      - Vary syntax each week (avoid repeating openings and sentence patterns)
+      - Prefer fresh phrasing over generic "journey" language
+      - Avoid starting with articles ("A", "An", "The")
       - Maximum 70 characters
-      - Avoid special characters (:, -, |, quotes, emojis)
-      - Focus on the musical journey or connections between artists
+      - Avoid special characters (:, -, |, quotes, emojis, slash)
+      - Never use these phrases: "A Musical Journey", "Musical Odyssey", "Journey Through", "Melodies Unbound", "Exploring Soundscapes"
+      - Never use the pattern "From X to Y"
+      - Do not reuse the first two words from recent titles
 
       Examples of GOOD titles:
-      - "A Musical Odyssey: Legends and New Voices Across Eras of Sound"
-      - "Exploring Soundscapes: It Bites to Depeche Modes Musical Journey"
-      - "Journey Through the Sounds of Pink Floyd and Fleetwood Mac to Radiohead"
+      - "Neon Choirs and Late Night Guitars Across Decades"
+      - "Art Pop Collides with Grime and Golden Era Soul"
+      - "Tape Hiss Cathedral Meets Club Floor Electricity"
 
       Examples of BAD titles (just lists):
       - "Genesis Duke Zombies Odessey and Oracle Mother Love Bone Shine"

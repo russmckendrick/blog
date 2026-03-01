@@ -5,18 +5,22 @@ on:
     branches:
       - main
     paths-ignore:
+      - 'AGENTS.md'
       - 'CLAUDE.md'
       - 'README.md'
       - 'docs/**'
       - '*.md'
       - 'LICENSE'
+      - 'scripts/**'
   pull_request:
     paths-ignore:
+      - 'AGENTS.md'
       - 'CLAUDE.md'
       - 'README.md'
       - 'docs/**'
       - '*.md'
       - 'LICENSE'
+      - 'scripts/**'
 
 jobs:
   build-and-deploy:
