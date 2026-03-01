@@ -428,7 +428,7 @@ function buildPromptFromBlueprint(blueprint, style = 'editorial_photoshoot', sou
     `Color direction: dominant ${normalized.palette.dominant}; vivid accent ${normalized.palette.accent}.`,
     `Subject lock: use only visible subjects from the uploaded source images. Allowed subjects: ${allowedSubjects}.`,
     normalized.people_present
-      ? 'Human subject rule: if people are present, only depict people/faces that are directly visible in the uploaded source images; do not create extra people. Use multiple people from the uploaded images when available (target 2-10 people in-frame for group-rich sets).'
+      ? 'Human subject rule: if people are present, only depict people/faces that are directly visible in the uploaded source images; do not create extra people. Use multiple people from the uploaded images when available (target 2-10 people in-frame for group-rich sets). Every depicted person must be unique and appear only once; do not clone, mirror, duplicate, or repeat the same face. If fewer unique people are visible in the uploads, use fewer people rather than inventing or repeating faces.'
       : 'Human subject rule: do not generate any people, faces, or human figures unless they are clearly visible in the uploaded source images.',
     'Exposure requirements: keep most of the frame in mid and high exposure with visible shadow detail; avoid black void backgrounds.',
     'Render the hero subject with illuminated surfaces and color reflections, not as a matte-black silhouette.',
@@ -1279,7 +1279,7 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
     num_images: config.output?.numImages || 1,
     output_format: config.output?.format || 'png',
     resolution: config.output?.resolution || '2K',
-    enable_web_search: true
+    enable_web_search: config.output?.enableWebSearch ?? false
   }
 
   if (typeof seed === 'number' && !Number.isNaN(seed)) {

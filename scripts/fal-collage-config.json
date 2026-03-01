@@ -7,7 +7,8 @@
     "aspectRatio": "16:9",
     "numImages": 1,
     "format": "png",
-    "resolution": "2K"
+    "resolution": "2K",
+    "enableWebSearch": false
   },
   "images": {
     "minCount": 2,
@@ -45,6 +46,11 @@
       "cgi look",
       "black-heavy composition",
       "near-black background",
+      "duplicate faces",
+      "repeated face",
+      "cloned person",
+      "mirrored duplicate person",
+      "invented person",
       "visible text",
       "visible logos",
       "watermark"
@@ -99,8 +105,8 @@
         ]
       }
     },
-    "gptVisionSystemPrompt": "You are a visual analyst for music artwork compositing. Analyze the provided album cover images and output ONLY valid JSON with this exact schema: {\"scene\":\"string\",\"hero_subject\":\"string\",\"secondary_elements\":[\"string\"],\"background_texture\":\"string\",\"palette\":{\"dominant\":\"string\",\"accent\":\"string\"},\"mood\":\"string\",\"allowed_subjects\":[\"string\"],\"people_present\":true}. Rules: choose one coherent real-world scene, choose one primary hero subject, choose up to 8 secondary elements, include allowed_subjects as concrete visible subjects from the source images only, set people_present accurately, never mention album covers as objects, and never include markdown or prose.",
-    "gptVisionUserPrompt": "Analyze {count} representative source images (sampled from {source_count} total uploads) for style profile \"{style_profile}\". Ensure the blueprint can represent motifs from the full upload set. Select one coherent scene grounded in the uploads, only include subjects visibly present in the uploads, avoid imaginary subjects, and if people are present prioritize multiple people from the source set. Provide at least 5 secondary elements when enough distinct motifs exist. Return only the JSON schema."
+    "gptVisionSystemPrompt": "You are a visual analyst for music artwork compositing. Analyze the provided album cover images and output ONLY valid JSON with this exact schema: {\"scene\":\"string\",\"hero_subject\":\"string\",\"secondary_elements\":[\"string\"],\"background_texture\":\"string\",\"palette\":{\"dominant\":\"string\",\"accent\":\"string\"},\"mood\":\"string\",\"allowed_subjects\":[\"string\"],\"people_present\":true}. Rules: choose one coherent real-world scene, choose one primary hero subject, choose up to 8 secondary elements, include allowed_subjects as concrete visible subjects from the source images only (not generic terms when details are visible), set people_present accurately, never mention album covers as objects, and never include markdown or prose.",
+    "gptVisionUserPrompt": "Analyze {count} representative source images (sampled from {source_count} total uploads) for style profile \"{style_profile}\". Ensure the blueprint can represent motifs from the full upload set. Select one coherent scene grounded in the uploads, only include subjects visibly present in the uploads, avoid imaginary subjects, and if people are present prioritize multiple distinct people from the source set with concrete descriptors. Provide at least 5 secondary elements when enough distinct motifs exist. Return only the JSON schema."
   },
   "postprocess": {
     "enabled": true,
