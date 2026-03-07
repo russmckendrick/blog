@@ -188,10 +188,11 @@ const breadcrumbSchema = createBreadcrumbSchema(
 	</Head>
 
 	<body class="bg-gray-50 dark:bg-gray-950">
+		<a href="#main-content" class="skip-link">Skip to content</a>
 		<HeaderWrapper autoHide={false}>
 			<Header transparent={false} />
 		</HeaderWrapper>
-		<main class="relative">
+		<main id="main-content" tabindex="-1" class="relative">
 			{/* Dynamic gradient section - soft color wash behind content */}
 			<section
 				class="hero-gradient-section absolute inset-x-0 top-0 -mt-16 h-[70vh] min-h-[450px]"
@@ -551,6 +552,22 @@ const breadcrumbSchema = createBreadcrumbSchema(
 			setTimeout(fixCodeBlockTabindex, 1500);
 			window.addEventListener('load', () => setTimeout(fixCodeBlockTabindex, 300));
 			document.addEventListener('astro:page-load', () => setTimeout(fixCodeBlockTabindex, 500));
+
+			function initializeSkipLinks() {
+				document.querySelectorAll<HTMLAnchorElement>('.skip-link').forEach((link) => {
+					if (link.dataset.skipBound === 'true') return;
+
+					link.dataset.skipBound = 'true';
+					link.addEventListener('click', () => {
+						requestAnimationFrame(() => {
+							document.getElementById('main-content')?.focus();
+						});
+					});
+				});
+			}
+
+			initializeSkipLinks();
+			document.addEventListener('astro:page-load', initializeSkipLinks);
 		</script>
 	</body>
 </html>

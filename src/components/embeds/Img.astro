@@ -1,17 +1,30 @@
 ---
 import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../../utils/cloudflare-images';
+import { getImageDimensions } from '../../utils/image-dimensions';
 
 interface Props {
   src: string;
   alt?: string;
-  width?: string;
+  width?: string | number;
+  height?: string | number;
+  aspectRatio?: string;
   link?: string;
   zoom?: string | boolean;
   sizes?: string;
   fullWidth?: boolean;
 }
 
-const { src, alt = '', width, link, zoom = true, sizes, fullWidth = false } = Astro.props;
+const {
+  src,
+  alt = '',
+  width,
+  height,
+  aspectRatio,
+  link,
+  zoom = true,
+  sizes,
+  fullWidth = false
+} = Astro.props;
 
 // Check if src is external URL
 const isExternal = src.startsWith('http://') || src.startsWith('https://');
@@ -37,9 +50,68 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
   CF_IMAGE_PRESETS.gallery.quality,
   CF_IMAGE_PRESETS.gallery.format
 );
+
+const localImageDimensions = isExternal ? null : await getImageDimensions(src);
+
+function parseNumericDimension(value: string | number | undefined) {
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return value;
+  }
+
+  if (typeof value === 'string' && /^\d+(\.\d+)?$/.test(value.trim())) {
+    return Number(value);
+  }
+
+  return undefined;
+}
+
+function parseAspectRatio(value: string | undefined) {
+  if (!value) return undefined;
+
+  const match = value.trim().match(/^(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)$/);
+  if (!match) return undefined;
+
+  const [, widthPart, heightPart] = match;
+  const widthRatio = Number(widthPart);
+  const heightRatio = Number(heightPart);
+
+  if (!Number.isFinite(widthRatio) || !Number.isFinite(heightRatio) || widthRatio <= 0 || heightRatio <= 0) {
+    return undefined;
+  }
+
+  return widthRatio / heightRatio;
+}
+
+const numericWidth = parseNumericDimension(width);
+const numericHeight = parseNumericDimension(height);
+const numericAspectRatio = parseAspectRatio(aspectRatio);
+
+const intrinsicWidth = localImageDimensions?.width;
+const intrinsicHeight = localImageDimensions?.height;
+const intrinsicAspectRatio = intrinsicWidth && intrinsicHeight ? intrinsicWidth / intrinsicHeight : undefined;
+const resolvedAspectRatio = numericAspectRatio || intrinsicAspectRatio;
+
+let resolvedWidth = numericWidth || intrinsicWidth;
+let resolvedHeight = numericHeight || intrinsicHeight;
+
+if (!resolvedHeight && resolvedWidth && resolvedAspectRatio) {
+  resolvedHeight = Math.round(resolvedWidth / resolvedAspectRatio);
+}
+
+if (!resolvedWidth && resolvedHeight && resolvedAspectRatio) {
+  resolvedWidth = Math.round(resolvedHeight * resolvedAspectRatio);
+}
+
+const wrapperStyle = !resolvedWidth && !resolvedHeight && aspectRatio
+  ? `aspect-ratio: ${aspectRatio};`
+  : undefined;
+
+if (import.meta.env.DEV && !isExternal && !localImageDimensions && !resolvedWidth && !resolvedHeight && !aspectRatio) {
+  console.warn(`[Img] Unable to determine intrinsic dimensions for ${src}. Add height and/or aspectRatio to prevent layout shift.`);
+}
 ---
 
-<div class={`img-wrapper mb-1 flex ${fullWidth ? '' : 'justify-center'}`}>
+<div class={`img-wrapper mb-1 flex ${fullWidth ? '' : 'justify-center'}`} style={wrapperStyle}>
   {enableZoom ? (
     <div class={fullWidth ? 'w-full' : ''}>
       <div 
@@ -55,7 +127,8 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
             decoding="async"
             class={`rounded-lg h-auto hover:opacity-90 transition-opacity cursor-zoom-in ${fullWidth ? 'w-full' : 'max-w-full'}`}
             sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
-            {...(width && { width })}
+            {...(resolvedWidth && { width: resolvedWidth })}
+            {...(resolvedHeight && { height: resolvedHeight })}
           />
         </a>
       </div>
@@ -70,7 +143,8 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
         decoding="async"
         class={`rounded-lg h-auto hover:opacity-90 transition-opacity ${fullWidth ? 'w-full' : 'max-w-full'}`}
         sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
-        {...(width && { width })}
+        {...(resolvedWidth && { width: resolvedWidth })}
+        {...(resolvedHeight && { height: resolvedHeight })}
       />
     </a>
   ) : (
@@ -82,7 +156,8 @@ const srcsetString = isExternal ? '' : generateCFSrcSet(
       decoding="async"
       class={`rounded-lg h-auto ${fullWidth ? 'w-full' : 'max-w-full'}`}
       sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
-      {...(width && { width })}
+      {...(resolvedWidth && { width: resolvedWidth })}
+      {...(resolvedHeight && { height: resolvedHeight })}
     />
   )}
 </div>

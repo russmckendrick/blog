@@ -59,35 +59,37 @@ const tocHeadings = headings.filter(h => h.depth <= 3);
 )}
 
 <script>
-  // Restore TOC state from localStorage
-  function initTocState() {
-    // Use requestAnimationFrame to batch DOM reads and avoid forced reflow
-    requestAnimationFrame(() => {
-      const details = document.getElementById('toc-details') as HTMLDetailsElement | null;
-      if (!details) return;
+  let cleanupToc: (() => void) | undefined
 
-      const savedState = localStorage.getItem('toc-open');
+  function initTocState() {
+    cleanupToc?.()
+
+    requestAnimationFrame(() => {
+      const details = document.getElementById('toc-details') as HTMLDetailsElement | null
+      if (!details) return
+
+      const controller = new AbortController()
+      const { signal } = controller
+
+      const savedState = localStorage.getItem('toc-open')
       if (savedState === 'true') {
-        details.setAttribute('open', '');
+        details.setAttribute('open', '')
       }
 
-      // Save state when toggled
       details.addEventListener('toggle', () => {
-        localStorage.setItem('toc-open', details.open.toString());
-      });
-    });
+        localStorage.setItem('toc-open', details.open.toString())
+      }, { signal })
+
+      cleanupToc = () => {
+        controller.abort()
+      }
+    })
   }
 
-  // Initialize on page load
-  initTocState();
-
-  // Re-initialize after SWUP page transitions
-  document.addEventListener('swup:page:view', initTocState);
+  initTocState()
+  document.addEventListener('astro:page-load', initTocState)
+  document.addEventListener('astro:before-swap', () => {
+    cleanupToc?.()
+    cleanupToc = undefined
+  })
 </script>
-
-<style>
-  /* Smooth scroll for anchor links */
-  :global(html) {
-    scroll-behavior: smooth;
-  }
-</style>

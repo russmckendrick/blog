@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE, NAVIGATION_ITEMS, SOCIAL_LINKS } from '../../consts';
+import { SITE_TITLE, NAVIGATION_ITEMS } from '../../consts';
 import Icon from '../ui/Icon.astro';
 
 interface Props {
@@ -7,12 +7,14 @@ interface Props {
 }
 
 const { transparent = false } = Astro.props;
+const mobileMenuId = 'mobile-menu';
+const mobileMenuLabelId = 'mobile-menu-label';
 ---
 
 <header
 	id="site-header"
 	class:list={[
-		"transition-all duration-300",
+		"relative z-40 transition-all duration-300",
 		transparent
 			? "header-transparent border-b border-transparent"
 			: "border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80"
@@ -27,8 +29,14 @@ const { transparent = false } = Astro.props;
 			</a>
 
 			<!-- Mobile menu button -->
-			<button id="menu-trigger" class="header-nav-item md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-label="Toggle menu">
-				<span class="sr-only">Open main menu</span>
+			<button
+				id="menu-trigger"
+				class="header-nav-item md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+				type="button"
+				aria-controls={mobileMenuId}
+				aria-expanded="false"
+			>
+				<span id={mobileMenuLabelId} class="sr-only">Open main menu</span>
 				<!-- Hamburger icon -->
 				<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -36,8 +44,8 @@ const { transparent = false } = Astro.props;
 			</button>
 
 			<!-- Desktop menu -->
-			<div class="hidden md:flex md:items-center md:space-x-6">
-				<ul class="flex items-center space-x-4">
+			<div class="hidden md:flex md:items-center md:gap-2">
+				<ul class="flex items-center gap-1">
 					{NAVIGATION_ITEMS.map(item =>
 						<li>
 							{item.external ? (
@@ -45,15 +53,18 @@ const { transparent = false } = Astro.props;
 									href={item.url}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="header-nav-item flex items-center justify-center p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
-									title={item.name}
+									class="header-nav-item group relative flex items-center justify-center p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
 									aria-label={item.name}
 								>
-									<Icon name={item.icon} />
+									<Icon name={item.icon} size={18} />
 								</a>
 							) : (
-								<a href={item.url} class="header-nav-item flex items-center justify-center p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors" title={item.name} aria-label={item.name}>
-									<Icon name={item.icon} />
+								<a
+									href={item.url}
+									class="header-nav-item group relative flex items-center justify-center p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
+									aria-label={item.name}
+								>
+									<Icon name={item.icon} size={18} />
 								</a>
 							)}
 						</li>
@@ -70,7 +81,7 @@ const { transparent = false } = Astro.props;
 		</div>
 
 		<!-- Mobile menu, hidden by default -->
-		<div class="md:hidden mobile-hidden" id="mobile-menu">
+		<div class="md:hidden mobile-hidden" id={mobileMenuId}>
 			<div class="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
 					{NAVIGATION_ITEMS.map(item =>
 						<div>
@@ -80,21 +91,21 @@ const { transparent = false } = Astro.props;
 									target="_blank"
 									rel="noopener noreferrer"
 									class="flex items-center px-3 py-2 !text-gray-600 dark:!text-gray-400 visited:!text-gray-600 dark:visited:!text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
-								title={item.name}
-							>
-								<Icon name={item.icon} />
-								<span class="ml-3">{item.name}</span>
-							</a>
-						) : (
+									title={item.name}
+								>
+									<Icon name={item.icon} />
+									<span class="ml-3">{item.name}</span>
+								</a>
+							) : (
 								<a href={item.url} class="flex items-center px-3 py-2 !text-gray-600 dark:!text-gray-400 visited:!text-gray-600 dark:visited:!text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors" title={item.name}>
-								<Icon name={item.icon} />
-								<span class="ml-3">{item.name}</span>
-							</a>
-						)}
+									<Icon name={item.icon} />
+									<span class="ml-3">{item.name}</span>
+								</a>
+							)}
 					</div>
 				)}
 				<div class="border-t border-gray-200 dark:border-gray-700 pt-4">
-					<button id="mobile-theme-toggle" class="flex items-center w-full px-3 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors" aria-label="Toggle theme">
+					<button id="mobile-theme-toggle" class="flex items-center w-full px-3 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors" type="button" aria-label="Toggle theme">
 						<Icon name="sun" class="theme-icon light-icon h-5 w-5 hidden dark:block" />
 						<Icon name="moon" class="theme-icon dark-icon h-5 w-5 block dark:hidden" />
 						<span class="ml-3">Toggle theme</span>
@@ -106,13 +117,34 @@ const { transparent = false } = Astro.props;
 </header>
 
 <script>
+	let cleanupHeader: (() => void) | undefined;
+
 	function initializeHeader() {
+		cleanupHeader?.();
+
+		const controller = new AbortController();
+		const { signal } = controller;
+
 		// Theme switching functionality
 		const themeToggle = document.getElementById('theme-toggle');
 		const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
 		const html = document.documentElement;
 		const header = document.getElementById('site-header');
+		const menuTrigger = document.getElementById('menu-trigger') as HTMLButtonElement | null;
+		const mobileMenu = document.getElementById('mobile-menu');
+		const mobileMenuLabel = document.getElementById('mobile-menu-label');
 		const isTransparent = header?.getAttribute('data-transparent') === 'true';
+
+		let isMenuOpen = mobileMenu ? !mobileMenu.classList.contains('mobile-hidden') : false;
+
+		const setMenuState = (open: boolean) => {
+			if (!mobileMenu || !menuTrigger || !mobileMenuLabel) return;
+
+			isMenuOpen = open;
+			mobileMenu.classList.toggle('mobile-hidden', !open);
+			menuTrigger.setAttribute('aria-expanded', String(open));
+			mobileMenuLabel.textContent = open ? 'Close main menu' : 'Open main menu';
+		};
 
 		// Transparent header scroll handling
 		if (isTransparent && header) {
@@ -141,13 +173,8 @@ const { transparent = false } = Astro.props;
 				}
 			};
 
-			window.addEventListener('scroll', onScroll, { passive: true });
+			window.addEventListener('scroll', onScroll, { passive: true, signal });
 			updateHeaderBackground(); // Initial state
-
-			// Cleanup on page navigation
-			document.addEventListener('astro:before-swap', () => {
-				window.removeEventListener('scroll', onScroll);
-			}, { once: true });
 		}
 
 		// Initialize theme following Tailwind docs pattern
@@ -184,36 +211,43 @@ const { transparent = false } = Astro.props;
 		};
 
 		if (themeToggle) {
-			themeToggle.addEventListener('click', toggleTheme);
+			themeToggle.addEventListener('click', toggleTheme, { signal });
 		}
 
 		if (mobileThemeToggle) {
-			mobileThemeToggle.addEventListener('click', toggleTheme);
+			mobileThemeToggle.addEventListener('click', toggleTheme, { signal });
 		}
-
-		// Mobile menu functionality
-		const menuTrigger = document.getElementById('menu-trigger');
-		const mobileMenu = document.getElementById('mobile-menu');
 
 		if (menuTrigger && mobileMenu) {
-			menuTrigger.addEventListener('click', function() {
-				mobileMenu.classList.toggle('mobile-hidden');
-			});
+			setMenuState(isMenuOpen);
 
-			// Hide menu when clicking outside
+			menuTrigger.addEventListener('click', function() {
+				setMenuState(!isMenuOpen);
+			}, { signal });
+
 			document.addEventListener('click', function(event) {
 				if (!menuTrigger.contains(event.target as Node) && !mobileMenu.contains(event.target as Node)) {
-					mobileMenu.classList.add('mobile-hidden');
+					setMenuState(false);
 				}
-			});
+			}, { signal });
 
-			// Close menu on escape key
 			document.addEventListener('keydown', function(event) {
 				if (event.key === 'Escape') {
-					mobileMenu.classList.add('mobile-hidden');
+					setMenuState(false);
+					menuTrigger.focus();
 				}
+			}, { signal });
+
+			mobileMenu.querySelectorAll('a').forEach((link) => {
+				link.addEventListener('click', () => {
+					setMenuState(false);
+				}, { signal });
 			});
 		}
+
+		cleanupHeader = () => {
+			controller.abort();
+		};
 	}
 
 	// Initialize on first load
@@ -221,4 +255,8 @@ const { transparent = false } = Astro.props;
 
 	// Re-initialize after View Transitions navigation
 	document.addEventListener('astro:page-load', initializeHeader);
+	document.addEventListener('astro:before-swap', () => {
+		cleanupHeader?.();
+		cleanupHeader = undefined;
+	});
 </script>

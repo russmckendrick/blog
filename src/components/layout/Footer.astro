@@ -12,17 +12,16 @@ const today = new Date();
 				<p class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
 					<span>&copy; {today.getFullYear()} {AUTHOR_NAME}. All rights reserved.</span>
 					<span class="hidden sm:inline">|</span>
-					<span class="flex flex-wrap items-center justify-center gap-x-1 gap-y-1">
+					<span class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
 						{NAVIGATION_ITEMS.map((item) => (
 							<a
 								href={item.url}
-								class="flex items-center justify-center p-2 !text-gray-700 dark:!text-gray-300 hover:!text-gray-900 dark:hover:!text-gray-100 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
+								class="inline-flex items-center gap-1.5 px-1 py-0.5 !text-gray-700 dark:!text-gray-300 hover:!text-gray-900 dark:hover:!text-gray-100 underline-offset-4 hover:underline transition-colors"
 								target={item.external ? '_blank' : undefined}
 								rel={item.external ? 'noopener noreferrer' : undefined}
-								title={item.name}
-								aria-label={item.name}
 							>
-								<Icon name={item.icon} size={18} />
+								<Icon name={item.icon} size={14} />
+								{item.name}
 							</a>
 						))}
 					</span>

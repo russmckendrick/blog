@@ -36,10 +36,11 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 		<slot name="head" />
 	</Head>
 	<body class="bg-gray-50 dark:bg-gray-950">
+		<a href="#main-content" class="skip-link">Skip to content</a>
 		<HeaderWrapper autoHide={false}>
 			<Header />
 		</HeaderWrapper>
-		<main class="mt-10 sm:mt-14">
+		<main id="main-content" tabindex="-1" class="mt-10 sm:mt-14">
 			<slot />
 		</main>
 		<Footer />
@@ -239,6 +240,22 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 			document.addEventListener('astro:before-swap', () => {
 				cleanupLightGallery();
 			});
+
+			function initializeSkipLinks() {
+				document.querySelectorAll<HTMLAnchorElement>('.skip-link').forEach((link) => {
+					if (link.dataset.skipBound === 'true') return;
+
+					link.dataset.skipBound = 'true';
+					link.addEventListener('click', () => {
+						requestAnimationFrame(() => {
+							document.getElementById('main-content')?.focus();
+						});
+					});
+				});
+			}
+
+			initializeSkipLinks();
+			document.addEventListener('astro:page-load', initializeSkipLinks);
 		</script>
 	</body>
 </html>

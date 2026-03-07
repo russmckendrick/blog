@@ -98,6 +98,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Screen reader only utility - visually hides content but keeps it accessible */
 .sr-only {
   position: absolute;
@@ -154,13 +158,48 @@ a {
 }
 
 /* Focus states */
-*:focus {
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
   @apply outline-none ring-2 ring-blue-500/50;
 }
 
-/* Smooth transitions */
-* {
-  @apply transition-colors duration-200;
+.skip-link {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  border-radius: 0.75rem;
+  background: rgb(17 24 39);
+  color: rgb(255 255 255);
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (prefers-color-scheme: dark) {
+  .skip-link {
+    background: rgb(243 244 246);
+    color: rgb(17 24 39);
+  }
+}
+
+.dark .skip-link {
+  background: rgb(243 244 246);
+  color: rgb(17 24 39);
+}
+
+/* Scoped transitions */
+:where(a, button, input, textarea, select, summary, [role="button"]) {
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
 }
 
 /* CSS animations for ShareButtons (replaces framer-motion) */
@@ -221,6 +260,24 @@ a {
 
 ::view-transition-new(root) {
   animation: 220ms cubic-bezier(0, 0, 0.2, 1) 90ms both slide-fade-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-in-up,
+  .animate-wave,
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+
+  .skip-link,
+  :where(a, button, input, textarea, select, summary, [role="button"]) {
+    transition: none !important;
+  }
 }
 
 /* Mobile menu utility */
