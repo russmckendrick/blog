@@ -269,6 +269,7 @@ Add to `.vscode/settings.json`:
 
 - **[Creating Posts](./creating-posts.md)** - Detailed guide to writing blog posts
 - **[Using Embeds](./using-embeds.md)** - How to use embed components
+- **[Style Guide](./style-guide.md)** - UI and interaction conventions
 - **[Tunes Generator](./tunes-generator.md)** - Generate music posts
 - **[Architecture Overview](../architecture/overview.md)** - Understand the system
 
@@ -279,7 +280,7 @@ Add to `.vscode/settings.json`:
 ```bash
 # Clear cache and rebuild
 rm -rf node_modules/.astro dist
-npm run build
+pnpm run build
 ```
 
 ### Type Errors

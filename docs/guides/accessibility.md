@@ -118,7 +118,7 @@ export default defineConfig({
 
 **Problem**: Header navigation uses icon-only links without text labels.
 
-**Solution**: Add aria-labels using the navigation item name.
+**Solution**: Keep `aria-label` on icon-only links and use a disclosure pattern for the mobile menu.
 
 **File**: `src/components/layout/Header.astro`
 
@@ -127,7 +127,6 @@ export default defineConfig({
 <a
   href={item.url}
   class="header-nav-item ..."
-  title={item.name}
   aria-label={item.name}
 >
   <Icon name={item.icon} />
@@ -137,9 +136,10 @@ export default defineConfig({
 <button
   id="menu-trigger"
   class="..."
-  aria-label="Toggle menu"
+  aria-controls="mobile-menu"
+  aria-expanded="false"
 >
-  <span class="sr-only">Open main menu</span>
+  <span id="mobile-menu-label" class="sr-only">Open main menu</span>
   <svg>...</svg>
 </button>
 ```

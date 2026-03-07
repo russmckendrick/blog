@@ -211,7 +211,7 @@ graph TD
 **Layout Components** (`src/components/layout/`):
 - `BaseHead.astro` - SEO, meta tags, schema
 - `Header.astro` - Navigation and theme switcher
-- `Footer.astro` - Footer with social links
+- `Footer.astro` - Footer navigation and site metadata
 - `Breadcrumbs.astro` - Breadcrumb navigation
 
 **Blog Components** (`src/components/blog/`):

@@ -213,7 +213,9 @@ Don't use `sudo npm install` - it can cause permission issues.
 {
   src: string;         // Image path (required)
   alt?: string;        // Alt text
-  width?: string;      // Custom width
+  width?: string | number;   // Custom width
+  height?: string | number;  // Custom height
+  aspectRatio?: string;      // Reserve layout space, e.g. "16 / 9"
   link?: string;       // Wrap in link
   zoom?: boolean;      // Enable zoom (default: true)
   sizes?: string;      // Responsive sizes

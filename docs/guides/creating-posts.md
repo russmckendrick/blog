@@ -208,6 +208,17 @@ Use the `Img` component:
 />
 ```
 
+For local images in `public/assets/`, intrinsic dimensions are usually detected automatically. For external images or unusual sources, add `height` and/or `aspectRatio` to reserve space and avoid layout shift:
+
+```mdx
+<Img
+  src="https://example.com/image.jpg"
+  alt="Remote screenshot"
+  width={1200}
+  aspectRatio="16 / 9"
+/>
+```
+
 **With zoom disabled**:
 ```mdx
 <Img

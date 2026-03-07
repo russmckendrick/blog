@@ -17,6 +17,7 @@ User-facing guides for common tasks and workflows:
 - **[Creating Posts](./guides/creating-posts.md)** - Write and publish blog posts
 - **[Using Tags](./guides/using-tags.md)** - Complete tag system reference (30+ tags)
 - **[Using Embed Components](./guides/using-embeds.md)** - Add media, callouts, and interactive elements
+- **[Style Guide](./guides/style-guide.md)** - UI, navigation, spacing, and interaction conventions
 - **[Tunes Generator](./guides/tunes-generator.md)** - Generate automated weekly music posts and year-end wrapped
 - **[Medium Publisher](./guides/medium-publisher.md)** - Cross-publish blog posts to Medium
 - **[Accessibility](./guides/accessibility.md)** - WCAG 2.1 Level AA compliance and aria-label implementation
@@ -61,23 +62,23 @@ See the development guides in [architecture/](./architecture/) and [../CLAUDE.md
 
 ```bash
 # Development
-npm run dev              # Start dev server at localhost:4321
-npm run build            # Build production site
-npm run preview          # Preview production build
+pnpm run dev             # Start dev server at localhost:4321
+pnpm run build           # Build production site
+pnpm run preview         # Preview production build
 
 # Content
-npm run post             # Create new blog post
-npm run tunes            # Generate weekly music post
-npm run wrapped          # Generate year-end wrapped post
-npm run medium           # Cross-publish to Medium
+pnpm run post            # Create new blog post
+pnpm run tunes           # Generate weekly music post
+pnpm run wrapped         # Generate year-end wrapped post
+pnpm run medium          # Cross-publish to Medium
 
 # Images
-npm run optimize         # Optimize all images
-npm run optimize <path>  # Optimize specific directory
+pnpm run optimize        # Optimize all images
+pnpm run optimize <path> # Optimize specific directory
 
 # Quality
 npx astro check          # Run TypeScript and Astro checks
-npm run astro -- sync    # Regenerate content types
+pnpm run astro -- sync   # Regenerate content types
 ```
 
 ### Project Stack
@@ -120,4 +121,4 @@ This documentation is maintained alongside the codebase. When making significant
 3. Update guides if workflows change
 4. Keep examples in sync with actual code
 
-**Last Updated**: January 2026
+**Last Updated**: March 2026

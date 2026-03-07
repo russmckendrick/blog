@@ -180,16 +180,33 @@ Embed responsive images with medium-zoom functionality for click-to-enlarge.
   width="800"
   sizes="(min-width: 768px) 800px, 100vw"
 />
+
+<!-- External image with reserved aspect ratio -->
+<Img
+  src="https://example.com/image.jpg"
+  alt="External image with fixed aspect ratio"
+  width="1200"
+  aspectRatio="16 / 9"
+/>
+
+<!-- Explicit width and height -->
+<Img
+  src="/assets/image.png"
+  alt="Image with fixed dimensions"
+  width={1200}
+  height={675}
+/>
 ```
 
 **Features:**
 - ✅ Responsive design with automatic srcset generation
 - ✅ Medium-zoom click-to-enlarge functionality
 - ✅ Support for external URLs and local images
+- ✅ Automatic intrinsic sizing for local/public assets when dimensions can be detected
 - ✅ Optional link wrapper
 - ✅ Dark mode support with themed zoom overlay
 - ✅ Lazy loading by default
-- ✅ Customizable sizes and width
+- ✅ Customizable sizes, width, height, and aspect ratio
 - ✅ Smooth hover animation
 
 ### LightGallery

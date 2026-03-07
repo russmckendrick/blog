@@ -255,10 +255,14 @@ const heroSrcSet = generateCFSrcSet(displayImage, preset.widths, preset.quality)
 ```astro
 ---
 const isExternal = src.startsWith('http://') || src.startsWith('https://');
+const dimensions = !isExternal ? await getImageDimensions(src) : null;
 
 const imageSrcSet = !isExternal
   ? [640, 1024, 1536, 2048].map(w => `${getCFImageUrl(src, { width: w })} ${w}w`).join(', ')
   : '';
+
+const resolvedWidth = width ?? dimensions?.width;
+const resolvedHeight = height ?? dimensions?.height;
 ---
 
 <img
@@ -266,10 +270,14 @@ const imageSrcSet = !isExternal
   srcset={imageSrcSet}
   alt={alt}
   loading="lazy"
+  width={resolvedWidth}
+  height={resolvedHeight}
   sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
   class="rounded-lg max-w-full h-auto"
 />
 ```
+
+For local assets in `public/`, the component now attempts to detect intrinsic dimensions at build time. If dimensions cannot be inferred, authors can provide `height` and/or `aspectRatio` to reserve space and reduce CLS.
 
 ## Transformation Parameters
 
