@@ -5,7 +5,7 @@ Quick guide to setting up your development environment and working with the Russ
 ## Prerequisites
 
 - **Node.js**: 20.x or later ([Download](https://nodejs.org/))
-- **npm**: 10.x or later (comes with Node.js)
+- **pnpm**: 10.x or later
 - **Git**: For version control
 - **Code Editor**: VS Code recommended with Astro extension
 
@@ -21,7 +21,7 @@ cd blog
 ### 2. Install Dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 This will install all required packages including:
@@ -33,7 +33,7 @@ This will install all required packages including:
 ### 3. Start Development Server
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Visit `http://localhost:4321` in your browser.
@@ -71,39 +71,39 @@ blog/
 
 ```bash
 # Start dev server (http://localhost:4321)
-npm run dev
+pnpm run dev
 
 # Build production site to ./dist/
-npm run build
+pnpm run build
 
 # Preview production build locally
-npm run preview
+pnpm run preview
 ```
 
 ### Content Creation
 
 ```bash
 # Create new blog post (interactive)
-npm run post
+pnpm run post
 
 # Generate weekly music post from Last.fm
-npm run tunes
+pnpm run tunes
 
 # Generate for specific week
-npm run tunes -- --week_start=2025-09-25
+pnpm run tunes -- --week_start=2025-09-25
 
 # Debug mode (single album)
-npm run tunes -- --debug
+pnpm run tunes -- --debug
 ```
 
 ### Image Optimization
 
 ```bash
 # Optimize all images in src/assets/ and public/assets/
-npm run optimize
+pnpm run optimize
 
 # Optimize specific directory
-npm run optimize src/assets/2025-10-01-my-post
+pnpm run optimize src/assets/2025-10-01-my-post
 ```
 
 ### Quality Checks
@@ -113,7 +113,7 @@ npm run optimize src/assets/2025-10-01-my-post
 npx astro check
 
 # Regenerate content types after frontmatter changes
-npm run astro -- sync
+pnpm run astro -- sync
 ```
 
 ## Configuration Files
@@ -169,7 +169,7 @@ Get API keys:
 ### 1. Create a New Post
 
 ```bash
-npm run post
+pnpm run post
 ```
 
 This will:
@@ -223,7 +223,7 @@ Use in content:
 ### 4. Preview
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Navigate to your post at:
@@ -287,7 +287,7 @@ pnpm run build
 
 ```bash
 # Regenerate types
-npm run astro -- sync
+pnpm run astro -- sync
 npx astro check
 ```
 
@@ -303,7 +303,7 @@ npx astro check
 lsof -ti:4321 | xargs kill
 
 # Or use different port
-npm run dev -- --port 3000
+pnpm run dev -- --port 3000
 ```
 
 ## Getting Help

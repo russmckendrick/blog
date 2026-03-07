@@ -130,7 +130,7 @@ draft: true
 ### 3. Run Dev Server
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ### 4. Verify

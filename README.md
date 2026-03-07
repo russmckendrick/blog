@@ -66,9 +66,14 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm run preview`         | Preview your build locally, before deploying     |
 | `pnpm run post`            | Create a new blog post with AI cover generation  |
 | `pnpm run tunes`           | Generate weekly music blog post from Last.fm     |
+| `pnpm run wrapped`         | Generate year-end wrapped music post             |
 | `pnpm run medium`          | Cross-publish blog post to Medium                |
 | `pnpm run optimize`        | Optimize all images in `src/assets/` and `public/assets/` |
 | `pnpm run optimize <path>` | Optimize images in a specific directory          |
+| `pnpm run analyze-links`   | Audit internal linking between posts             |
+| `pnpm run extract-colors`  | Refresh hero gradient color data                 |
+| `pnpm run cache-link-previews` | Cache OG images for `LinkPreview` embeds    |
+| `pnpm run refresh-link-previews` | Refresh stale cached link preview images |
 | `pnpm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `pnpm run astro -- --help` | Get help using the Astro CLI                     |
 
@@ -135,6 +140,7 @@ Comprehensive documentation is available in the [docs/](./docs/) folder:
 - **[Creating Posts](./docs/guides/creating-posts.md)** - How to write and publish blog posts
 - **[Using Tags](./docs/guides/using-tags.md)** - Complete tag system reference (30+ tags)
 - **[Using Embeds](./docs/guides/using-embeds.md)** - Embed components quick reference
+- **[Style Guide](./docs/guides/style-guide.md)** - UI and interaction conventions
 - **[Tunes Generator](./docs/guides/tunes-generator.md)** - Automated weekly music posts
 - **[Medium Publisher](./docs/guides/medium-publisher.md)** - Cross-publish posts to Medium
 
@@ -149,6 +155,7 @@ Comprehensive documentation is available in the [docs/](./docs/) folder:
 - **[Embed Components](./docs/reference/embed-components.md)** - Complete embed component API
 - **[Frontmatter Fields](./docs/reference/frontmatter-fields.md)** - Blog post schema reference
 - **[LightGallery Meta](./docs/reference/lightgallery-meta.md)** - Image caption system
+- **[Scripts Reference](./docs/reference/scripts.md)** - Scripts, templates, caches, and helper modules
 
 ## 👀 Want to learn more?
 

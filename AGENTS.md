@@ -49,3 +49,4 @@ Agent guidance for the Russ.Cloud blog repository.
 - `docs/architecture/build-deployment.md` - build and deployment details
 - `docs/reference/frontmatter-fields.md` - frontmatter schema
 - `docs/reference/embed-components.md` - embed component reference
+- `docs/reference/scripts.md` - scripts, templates, caches, and helper modules

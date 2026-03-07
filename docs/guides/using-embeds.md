@@ -127,7 +127,7 @@ How do I deploy to production?
 <ChatMessage position="right" name="Claude">
 Here's a step-by-step guide:
 
-1. Run `npm run build`
+1. Run `pnpm run build`
 2. Commit and push to main
 3. GitHub Actions will deploy automatically
 </ChatMessage>
@@ -145,15 +145,15 @@ Ensure you have Node.js 20.x or later installed.
 Run the following command:
 
 \`\`\`bash
-npm install
+pnpm install
 \`\`\`
 
 <TipCallout title="Pro Tip">
-Use `npm ci` for faster, deterministic installs in CI/CD.
+Use `pnpm install --frozen-lockfile` for deterministic installs in CI/CD.
 </TipCallout>
 
 <WarningCallout title="Warning">
-Don't use `sudo npm install` - it can cause permission issues.
+Don't use `sudo pnpm install` - it can cause permission issues.
 </WarningCallout>
 ```
 
@@ -317,7 +317,7 @@ How do I debug this error?
 Start by checking the console logs:
 
 \`\`\`bash
-npm run dev
+pnpm run dev
 \`\`\`
 </ChatMessage>
 ```

@@ -17,7 +17,7 @@ Automatically generates weekly music blog posts based on Last.fm listening data,
 
 1. **Install Dependencies**
    ```bash
-   npm install
+   pnpm install
    ```
 
 2. **Configure Environment Variables**
@@ -54,7 +54,7 @@ Automatically generates weekly music blog posts based on Last.fm listening data,
 ### Generate Weekly Post
 
 ```bash
-npm run tunes
+pnpm run tunes
 ```
 
 This generates a post for the previous week (7 days ago to now).
@@ -62,13 +62,13 @@ This generates a post for the previous week (7 days ago to now).
 ### Custom Week
 
 ```bash
-npm run tunes -- --week_start=2025-09-25
+pnpm run tunes -- --week_start=2025-09-25
 ```
 
 ### Debug Mode (Single Album)
 
 ```bash
-npm run tunes -- --debug
+pnpm run tunes -- --debug
 ```
 
 ## Output Structure
@@ -104,6 +104,8 @@ Posts are created in:
 5. **Render MDX**: Creates formatted blog post with galleries and links
 
 ## Architecture
+
+For the full `scripts/` inventory, including helper modules, templates, and maintenance utilities, see [Scripts Reference](../reference/scripts.md).
 
 ### Core Components
 
@@ -507,8 +509,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
-      - run: npm ci
-      - run: npm run tunes
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run tunes
         env:
           LASTFM_USER: ${{ secrets.LASTFM_USER }}
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}

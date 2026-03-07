@@ -97,7 +97,7 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    participant CLI as npm run tunes
+    participant CLI as pnpm run tunes
     participant LastFM as Last.fm API
     participant Collection as russ.fm
     participant AI as OpenAI/Anthropic
@@ -231,7 +231,7 @@ graph TD
 
 ```mermaid
 graph LR
-    A[npm run dev] --> B[Astro Dev Server]
+    A[pnpm run dev] --> B[Astro Dev Server]
     B --> C[Hot Module Reload]
     C --> D[localhost:4321]
 
@@ -250,7 +250,7 @@ graph LR
 
 ```mermaid
 graph TD
-    A[npm run build] --> B[Prebuild]
+    A[pnpm run build] --> B[Prebuild]
     B --> B1[Extract Hero Colors]
     B --> B2[Cache LinkPreview Images]
     B1 --> C[Content Collection Processing]

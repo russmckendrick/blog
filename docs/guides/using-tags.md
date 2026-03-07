@@ -284,7 +284,7 @@ export const TAG_AVATAR_MAP: Record<string, string> = {
 ### 3. Regenerate Types
 
 ```bash
-npm run astro -- sync
+pnpm run astro -- sync
 ```
 
 ### 4. Use in Posts
@@ -413,7 +413,7 @@ avatar: "docker"  # Force Docker avatar
 **Solution**: Tag page is generated at build time. Rebuild the site:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ## Related Documentation

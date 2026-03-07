@@ -38,6 +38,7 @@ Component and API reference documentation:
 - **[Embed Components](./reference/embed-components.md)** - Complete embed component reference
 - **[Frontmatter Fields](./reference/frontmatter-fields.md)** - Blog post frontmatter schema
 - **[LightGallery Meta Plugin](./reference/lightgallery-meta.md)** - Image caption system
+- **[Scripts Reference](./reference/scripts.md)** - Inventory of `scripts/`, helper modules, templates, and caches
 
 ### 🗄️ Archive
 
@@ -75,6 +76,12 @@ pnpm run medium          # Cross-publish to Medium
 # Images
 pnpm run optimize        # Optimize all images
 pnpm run optimize <path> # Optimize specific directory
+pnpm run extract-colors  # Refresh hero gradient color data
+pnpm run cache-link-previews     # Cache LinkPreview OG images
+pnpm run refresh-link-previews   # Refresh stale cached OG images
+
+# Analysis
+pnpm run analyze-links   # Audit internal links between posts
 
 # Quality
 npx astro check          # Run TypeScript and Astro checks

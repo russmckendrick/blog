@@ -312,7 +312,7 @@ avatar: "docker"
 Frontmatter is validated at build time via Zod schema:
 
 ```bash
-npm run astro -- sync  # Regenerate types
+pnpm run astro -- sync  # Regenerate types
 npx astro check         # Validate all posts
 ```
 
