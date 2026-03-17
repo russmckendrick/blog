@@ -7,13 +7,30 @@ import Pagination from '../../components/layout/Pagination.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../utils/hero-colors';
 
-export const getStaticPaths = (async ({ paginate }) => {
+export const getStaticPaths = (async () => {
 	const allPosts = (await getCollection('blog'))
 		.filter(post => import.meta.env.DEV || !post.data.draft)
 		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-	// 9 posts per page fills 3 rows nicely in the grid
-	return paginate(allPosts, { pageSize: 9 });
+	// Homepage shows 7 posts (1 featured + 6 grid), so exclude them from pagination
+	const homepagePostCount = 7;
+	const pageSize = 9;
+	const paginatedPosts = allPosts.slice(homepagePostCount);
+	const totalPaginatedPages = Math.ceil(paginatedPosts.length / pageSize);
+
+	// Generate paths starting at page 2 (homepage is page 1)
+	return Array.from({ length: totalPaginatedPages }, (_, i) => ({
+		params: { page: String(i + 2) },
+		props: {
+			page: {
+				data: paginatedPosts.slice(i * pageSize, (i + 1) * pageSize),
+				currentPage: i + 2,
+				lastPage: totalPaginatedPages + 1,
+				size: pageSize,
+				total: paginatedPosts.length,
+			}
+		}
+	}));
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
