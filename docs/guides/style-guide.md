@@ -40,19 +40,24 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 
 ## Typography
 
-- Preserve the existing high-contrast editorial feel:
+- Use **Plus Jakarta Sans** (`font-display`) for headings and card titles.
+- Use **Inter** (`font-sans`) for body text and UI elements.
+- Preserve the high-contrast editorial feel:
   - large, bold page and card titles
-  - quieter supporting metadata and summaries
+  - quieter supporting metadata and summaries using `text-on-surface-variant`
 - Avoid introducing additional decorative type styles unless a page has a clear campaign-style purpose.
 - Use text labels sparingly in high-traffic chrome. Prefer them in content and support areas.
+- See [Design System](./design-system.md) for the full font and token reference.
 
 ## Color And Surfaces
 
-- Reuse the existing neutral shell with soft blue/gray hero gradients.
-- Cards should remain readable in both themes:
-  - light mode: soft white surfaces with subtle borders/shadows
-  - dark mode: deep neutral surfaces without oversaturated accents
+- Colors are defined as CSS custom properties in `src/styles/global.css` with automatic light/dark adaptation.
+- Use the **tonal layering** approach — separate sections with background shifts (`.surface`, `.surface-container-low`, etc.), not borders.
+- Do not use 1px borders for sectioning. Use `.ghost-border` only when accessibility requires a visible boundary.
+- Cards use `.surface-container-lowest` with `.shadow-ambient` and `.ghost-border`.
+- Hero gradients are dynamically extracted from post images and blend into `var(--color-surface)`.
 - Hover states should be visible but restrained. Avoid loud accent fills in navigation.
+- See [Design System](./design-system.md) for the full color token reference.
 
 ## Motion And Interaction
 
@@ -80,8 +85,9 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 
 ## Implementation References
 
+- Design tokens and utility classes: `src/styles/global.css`
+- Design system documentation: [Design System](./design-system.md)
 - Header: `src/components/layout/Header.astro`
 - Footer: `src/components/layout/Footer.astro`
-- Global interaction styles: `src/styles/global.css`
 - Inline image embed: `src/components/embeds/Img.astro`
 - Comments embed: `src/components/blog/Comments.astro`

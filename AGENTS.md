@@ -40,6 +40,7 @@ Agent guidance for the Russ.Cloud blog repository.
 - `docs/README.md` - documentation index
 - `docs/guides/creating-posts.md` - post creation workflow
 - `docs/guides/using-embeds.md` - MDX embed usage
+- `docs/guides/design-system.md` - design system tokens, typography, and patterns
 - `docs/guides/style-guide.md` - UI and interaction conventions
 - `docs/guides/accessibility.md` - accessibility patterns and current navigation behavior
 - `docs/guides/tunes-generator.md` - weekly tunes and wrapped flows

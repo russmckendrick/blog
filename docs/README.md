@@ -17,6 +17,7 @@ User-facing guides for common tasks and workflows:
 - **[Creating Posts](./guides/creating-posts.md)** - Write and publish blog posts
 - **[Using Tags](./guides/using-tags.md)** - Complete tag system reference (30+ tags)
 - **[Using Embed Components](./guides/using-embeds.md)** - Add media, callouts, and interactive elements
+- **[Design System](./guides/design-system.md)** - "The Curated Journal" design tokens, typography, and component patterns
 - **[Style Guide](./guides/style-guide.md)** - UI, navigation, spacing, and interaction conventions
 - **[Tunes Generator](./guides/tunes-generator.md)** - Generate automated weekly music posts and year-end wrapped
 - **[Medium Publisher](./guides/medium-publisher.md)** - Cross-publish blog posts to Medium
