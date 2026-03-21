@@ -31,9 +31,9 @@ function getPostData(post: PostEntry) {
 			{previousPost ? (
 				<a
 					href={getPostData(previousPost).href}
-					class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 rounded-2xl"
+					class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-2xl"
 				>
-					<article class="relative h-full bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
+					<article class="relative h-full surface-container-lowest ghost-border rounded-2xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]">
 						{getPostData(previousPost).heroImage && (
 							<figure class="relative overflow-hidden h-40">
 								<Image
@@ -48,20 +48,20 @@ function getPostData(post: PostEntry) {
 							</figure>
 						)}
 						<div class="p-5">
-							<div class="text-xs font-medium text-gray-950 dark:text-gray-100 mb-2 flex items-center gap-1">
+							<div class="text-xs font-medium text-on-surface mb-2 flex items-center gap-1">
 								<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
 								</svg>
 								Previous Post
 							</div>
-							<h3 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-100 mb-2 line-clamp-2">
+							<h3 class="font-display text-lg font-semibold tracking-tight text-on-surface mb-2 line-clamp-2">
 								{previousPost.data.title}
 							</h3>
-							<div class="text-xs text-gray-950 dark:text-gray-100 flex items-center gap-2">
+							<div class="text-xs text-on-surface-variant flex items-center gap-2">
 								<FormattedDate date={previousPost.data.pubDate} />
 								{getPostData(previousPost).readingTime && (
 									<>
-										<span aria-hidden="true">·</span>
+										<span aria-hidden="true">&middot;</span>
 										<span>{getPostData(previousPost).readingTime}</span>
 									</>
 								)}
@@ -71,17 +71,17 @@ function getPostData(post: PostEntry) {
 				</a>
 			) : (
 				<div class="hidden md:block">
-					<article class="relative h-full bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden">
-						<div class="h-40 bg-gray-200 dark:bg-gray-700"></div>
+					<article class="relative h-full surface-container-low ghost-border rounded-2xl overflow-hidden">
+						<div class="h-40 surface-container"></div>
 						<div class="p-5">
-							<div class="text-xs font-medium text-gray-800 dark:text-gray-200 mb-2 flex items-center gap-1">
+							<div class="text-xs font-medium text-on-surface-variant mb-2 flex items-center gap-1">
 								<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
 								</svg>
 								No Previous Post
 							</div>
-							<div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
-							<div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+							<div class="h-4 surface-container rounded w-3/4 mb-2"></div>
+							<div class="h-3 surface-container rounded w-1/2"></div>
 						</div>
 					</article>
 				</div>
@@ -90,9 +90,9 @@ function getPostData(post: PostEntry) {
 			{nextPost ? (
 				<a
 					href={getPostData(nextPost).href}
-					class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-50 dark:focus-visible:ring-offset-gray-950 rounded-2xl"
+					class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-2xl"
 				>
-					<article class="relative h-full bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg shadow-gray-300/50 dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl">
+					<article class="relative h-full surface-container-lowest ghost-border rounded-2xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]">
 						{getPostData(nextPost).heroImage && (
 							<figure class="relative overflow-hidden h-40">
 								<Image
@@ -107,20 +107,20 @@ function getPostData(post: PostEntry) {
 							</figure>
 						)}
 						<div class="p-5">
-							<div class="text-xs font-medium text-gray-950 dark:text-gray-100 mb-2 flex items-center justify-end gap-1">
+							<div class="text-xs font-medium text-on-surface mb-2 flex items-center justify-end gap-1">
 								Next Post
 								<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
 								</svg>
 							</div>
-							<h3 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-gray-100 mb-2 line-clamp-2">
+							<h3 class="font-display text-lg font-semibold tracking-tight text-on-surface mb-2 line-clamp-2">
 								{nextPost.data.title}
 							</h3>
-							<div class="text-xs text-gray-950 dark:text-gray-100 flex items-center gap-2">
+							<div class="text-xs text-on-surface-variant flex items-center gap-2">
 								<FormattedDate date={nextPost.data.pubDate} />
 								{getPostData(nextPost).readingTime && (
 									<>
-										<span aria-hidden="true">·</span>
+										<span aria-hidden="true">&middot;</span>
 										<span>{getPostData(nextPost).readingTime}</span>
 									</>
 								)}
@@ -130,17 +130,17 @@ function getPostData(post: PostEntry) {
 				</a>
 			) : (
 				<div class="hidden md:block">
-					<article class="relative h-full bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl overflow-hidden">
-						<div class="h-40 bg-gray-200 dark:bg-gray-700"></div>
+					<article class="relative h-full surface-container-low ghost-border rounded-2xl overflow-hidden">
+						<div class="h-40 surface-container"></div>
 						<div class="p-5">
-							<div class="text-xs font-medium text-gray-800 dark:text-gray-200 mb-2 flex items-center justify-end gap-1">
+							<div class="text-xs font-medium text-on-surface-variant mb-2 flex items-center justify-end gap-1">
 								No Next Post
 								<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
 								</svg>
 							</div>
-							<div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-2"></div>
-							<div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+							<div class="h-4 surface-container rounded w-3/4 mb-2"></div>
+							<div class="h-3 surface-container rounded w-1/2"></div>
 						</div>
 					</article>
 				</div>

@@ -62,34 +62,34 @@ const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 ---
 
 <nav class="mt-16" aria-label="Pagination Navigation">
-	<div class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0 dark:border-white/10">
-		<div class="-mt-px flex w-0 flex-1">
+	<div class="flex items-center justify-between surface-container-low rounded-xl px-4 sm:px-6 py-4">
+		<div class="flex w-0 flex-1">
 			{previousHref ? (
 				<a
 					href={previousHref}
-					class="inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium !text-gray-500 visited:!text-gray-500 hover:border-gray-300 hover:!text-gray-700 visited:hover:!text-gray-700 dark:!text-gray-400 dark:visited:!text-gray-400 dark:hover:border-white/20 dark:hover:!text-gray-200 transition-colors"
+					class="inline-flex items-center px-3 py-2 text-sm font-medium text-on-surface-variant hover:text-on-surface hover:surface-container-high rounded-lg transition-colors"
 				>
-					<Icon name="arrowLongLeft" size={20} class="mr-3 text-gray-400 dark:text-gray-500" aria-hidden="true" />
+					<Icon name="arrowLongLeft" size={20} class="mr-3 text-on-surface-variant" aria-hidden="true" />
 					<span>Previous</span>
 				</a>
 			) : (
-				<span class="inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-500 dark:text-gray-400 cursor-not-allowed">
-					<Icon name="arrowLongLeft" size={20} class="mr-3 text-gray-500 dark:text-gray-400" aria-hidden="true" />
+				<span class="inline-flex items-center px-3 py-2 text-sm font-medium text-on-surface-variant opacity-50 cursor-not-allowed">
+					<Icon name="arrowLongLeft" size={20} class="mr-3" aria-hidden="true" />
 					Previous
 				</span>
 			)}
 		</div>
-		<div class="hidden md:-mt-px md:flex">
+		<div class="hidden md:flex items-center gap-1">
 			{pageItems.map((item, index) => (
 				item === 'ellipsis' ? (
-					<span class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-400" aria-hidden="true">…</span>
+					<span class="inline-flex items-center px-3 py-2 text-sm font-medium text-on-surface-variant" aria-hidden="true">&hellip;</span>
 				) : (
 					<a
 						href={getHref(item)}
-						class={`inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium transition-colors ${
+						class={`inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
 							item === currentPage
-								? 'border-gray-700 !text-gray-900 dark:border-gray-300 dark:!text-gray-100 visited:!text-gray-900 dark:visited:!text-gray-100'
-								: 'border-transparent !text-gray-500 visited:!text-gray-500 hover:border-gray-300 hover:!text-gray-700 visited:hover:!text-gray-700 dark:!text-gray-400 dark:visited:!text-gray-400 dark:hover:border-white/20 dark:hover:!text-gray-200'
+								? 'surface-container-highest text-on-surface font-semibold'
+								: 'text-on-surface-variant hover:text-on-surface hover:surface-container-high'
 						}`}
 						aria-current={item === currentPage ? 'page' : undefined}
 					>
@@ -98,24 +98,24 @@ const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 				)
 			))}
 		</div>
-		<div class="-mt-px flex w-0 flex-1 justify-end">
+		<div class="flex w-0 flex-1 justify-end">
 			{nextHref ? (
 				<a
 					href={nextHref}
-					class="inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium !text-gray-500 visited:!text-gray-500 hover:border-gray-300 hover:!text-gray-700 visited:hover:!text-gray-700 dark:!text-gray-400 dark:visited:!text-gray-400 dark:hover:border-white/20 dark:hover:!text-gray-200 transition-colors"
+					class="inline-flex items-center px-3 py-2 text-sm font-medium text-on-surface-variant hover:text-on-surface hover:surface-container-high rounded-lg transition-colors"
 				>
 					<span>Next</span>
-					<Icon name="arrowLongRight" size={20} class="ml-3 text-gray-400 dark:text-gray-500" aria-hidden="true" />
+					<Icon name="arrowLongRight" size={20} class="ml-3 text-on-surface-variant" aria-hidden="true" />
 				</a>
 			) : (
-				<span class="inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 dark:text-gray-400 cursor-not-allowed">
+				<span class="inline-flex items-center px-3 py-2 text-sm font-medium text-on-surface-variant opacity-50 cursor-not-allowed">
 					Next
-					<Icon name="arrowLongRight" size={20} class="ml-3 text-gray-500 dark:text-gray-400" aria-hidden="true" />
+					<Icon name="arrowLongRight" size={20} class="ml-3" aria-hidden="true" />
 				</span>
 			)}
 		</div>
 	</div>
-	<div class="mt-4 text-center text-sm text-gray-700 dark:text-gray-400">
+	<div class="mt-4 text-center text-sm text-on-surface-variant">
 		Page {currentPage} of {totalPages}
 	</div>
 </nav>

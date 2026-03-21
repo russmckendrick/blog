@@ -35,7 +35,8 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 		<BaseHead title={pageTitle} description={description} image={image} keywords={keywords} />
 		<slot name="head" />
 	</Head>
-	<body class="bg-gray-50 dark:bg-gray-950">
+	<body class="surface">
+		<div id="reading-progress" class="reading-progress" style="width: 0%" aria-hidden="true"></div>
 		<a href="#main-content" class="skip-link">Skip to content</a>
 		<HeaderWrapper autoHide={false}>
 			<Header />
@@ -46,6 +47,35 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 		<Footer />
 		<WebVitals debug={import.meta.env.DEV} />
 		<script>
+			// Reading progress bar
+			function initReadingProgress() {
+				const progressBar = document.getElementById('reading-progress')
+				if (!progressBar) return
+
+				const updateProgress = () => {
+					const scrollTop = window.scrollY
+					const docHeight = document.documentElement.scrollHeight - window.innerHeight
+					const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+					progressBar.style.width = `${Math.min(progress, 100)}%`
+				}
+
+				let ticking = false
+				window.addEventListener('scroll', () => {
+					if (!ticking) {
+						requestAnimationFrame(() => {
+							updateProgress()
+							ticking = false
+						})
+						ticking = true
+					}
+				}, { passive: true })
+
+				updateProgress()
+			}
+
+			initReadingProgress()
+			document.addEventListener('astro:page-load', initReadingProgress)
+
 			// Defer non-critical work until after LCP using requestIdleCallback
 			function scheduleIdleWork(callback: () => void, timeout = 2000) {
 				if ('requestIdleCallback' in window) {

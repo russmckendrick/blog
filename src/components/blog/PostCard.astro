@@ -57,7 +57,7 @@ const avatarFallback = '/images/avatar-192x192.png';
 const primaryTag = tags[0];
 const getAvatarGlowColor = () => {
 	if (!primaryTag || !TAG_METADATA[primaryTag]) {
-		return 'text-blue-600 dark:text-blue-400';
+		return 'text-[var(--color-secondary)]';
 	}
 
 	const tagColorLight = TAG_METADATA[primaryTag].colorLight;
@@ -69,7 +69,7 @@ const getAvatarGlowColor = () => {
 		return `text-${color}-${shade} dark:text-${color}-400`;
 	}
 
-	return 'text-blue-600 dark:text-blue-400';
+	return 'text-[var(--color-secondary)]';
 };
 
 const avatarGlowColor = getAvatarGlowColor();
@@ -83,9 +83,9 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-[28px]">
+		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-[28px]">
 		<article
-			class={`relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-[28px] shadow-lg dark:shadow-black/30 overflow-hidden ${priority ? '' : 'transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-2xl'}`}>
+			class={`relative surface-container-lowest ghost-border rounded-[28px] shadow-ambient overflow-hidden ${priority ? '' : 'transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]'}`}>
 				{heroImage && (
 					<figure
 						class="relative overflow-hidden bg-cover bg-center bg-no-repeat"
@@ -125,12 +125,12 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 				)}
 			<div class="relative p-6 md:p-8 flex flex-col gap-6">
 				<header class="space-y-3">
-					<HeadingTag class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
+					<HeadingTag class="font-display text-2xl font-semibold tracking-tight text-on-surface">
 						{post.data.title}
 					</HeadingTag>
 				</header>
 				{description && (
-					<p class="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+					<p class="text-base text-on-surface-variant leading-relaxed">
 						{description}
 					</p>
 				)}
@@ -146,9 +146,9 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 							/>
 						</div>
 						<div class="flex flex-col">
-							<span class="text-gray-700 dark:text-gray-300 font-medium">{author}</span>
-							<div class="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-400">
-								<span class="text-blue-600 dark:text-blue-400">
+							<span class="text-on-surface-variant font-medium">{author}</span>
+							<div class="flex items-center gap-2 text-xs text-on-surface-variant">
+								<span class="text-[var(--color-secondary)]">
 									<FormattedDate date={post.data.pubDate} />
 								</span>
 								{readingTime && (
@@ -182,19 +182,19 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-3xl">
+		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-3xl">
 		<article
-			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-3xl shadow-xl dark:shadow-black/40 overflow-hidden transition-all duration-500 group-hover:shadow-2xl">
+			class="relative surface-container-lowest ghost-border rounded-3xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]">
 			<div class="flex flex-col lg:flex-row">
 				{/* Content side */}
 				<div class="relative p-8 lg:p-10 xl:p-12 flex flex-col gap-6 lg:w-1/2 order-2 lg:order-1">
 					<header class="space-y-4">
-						<HeadingTag class="text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 leading-tight">
+						<HeadingTag class="font-display text-3xl lg:text-4xl font-bold tracking-tight text-on-surface leading-tight">
 							{post.data.title}
 						</HeadingTag>
 					</header>
 					{description && (
-						<p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+						<p class="text-lg text-on-surface-variant leading-relaxed">
 							{description}
 						</p>
 					)}
@@ -210,9 +210,9 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 								/>
 							</div>
 							<div class="flex flex-col">
-								<span class="text-gray-800 dark:text-gray-200 font-semibold">{author}</span>
-								<div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-									<span class="text-blue-600 dark:text-blue-400">
+								<span class="text-on-surface font-semibold">{author}</span>
+								<div class="flex items-center gap-2 text-sm text-on-surface-variant">
+									<span class="text-[var(--color-secondary)]">
 										<FormattedDate date={post.data.pubDate} />
 									</span>
 									{readingTime && (
@@ -277,9 +277,9 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-4 focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-2xl h-full">
+		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-surface)] rounded-2xl h-full">
 		<article
-			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl h-full flex flex-col">
+			class="relative surface-container-lowest ghost-border rounded-2xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl h-full flex flex-col">
 			{heroImage && (
 				<figure
 					class="relative overflow-hidden bg-cover bg-center bg-no-repeat"
@@ -339,17 +339,17 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 					</div>
 				)}
 				<header>
-					<HeadingTag class="text-base font-semibold tracking-tight text-gray-900 dark:text-gray-100 leading-snug">
+					<HeadingTag class="font-display text-base font-semibold tracking-tight text-on-surface leading-snug">
 						{post.data.title}
 					</HeadingTag>
 				</header>
 				{description && (
-					<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2">
+					<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">
 						{description}
 					</p>
 				)}
-				<footer class="mt-auto pt-2 text-xs flex items-center gap-2 text-gray-500 dark:text-gray-400">
-					<span class="text-blue-600 dark:text-blue-400 font-medium">
+				<footer class="mt-auto pt-2 text-xs flex items-center gap-2 text-on-surface-variant">
+					<span class="text-[var(--color-secondary)] font-medium">
 						<FormattedDate date={post.data.pubDate} />
 					</span>
 					{readingTime && (
@@ -367,9 +367,9 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-gray-100 dark:focus-visible:ring-offset-gray-900 rounded-2xl">
+		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-2xl">
 		<article
-			class="relative bg-white/95 dark:bg-gray-900/70 border border-gray-200/60 dark:border-gray-700 rounded-2xl shadow-lg dark:shadow-black/30 overflow-hidden transition-all duration-500 group-hover:shadow-2xl">
+			class="relative surface-container-lowest ghost-border rounded-2xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]">
 			<div class="flex flex-col sm:flex-row">
 				{heroImage && (
 					<figure
@@ -404,12 +404,12 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 				)}
 				<div class="relative p-6 flex flex-col gap-3 flex-1 min-w-0">
 					<header>
-						<HeadingTag class="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-100 line-clamp-2">
+						<HeadingTag class="font-display text-xl font-semibold tracking-tight text-on-surface line-clamp-2">
 							{post.data.title}
 						</HeadingTag>
 					</header>
 					{description && (
-						<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-2">
+						<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">
 							{description}
 						</p>
 					)}
@@ -424,9 +424,9 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 							/>
 						</div>
 						<div class="flex flex-col">
-							<span class="text-gray-700 dark:text-gray-300 font-medium text-xs">{author}</span>
-							<div class="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-400">
-								<span class="text-blue-600 dark:text-blue-400">
+							<span class="text-on-surface-variant font-medium text-xs">{author}</span>
+							<div class="flex items-center gap-2 text-xs text-on-surface-variant">
+								<span class="text-[var(--color-secondary)]">
 									<FormattedDate date={post.data.pubDate} />
 								</span>
 								{readingTime && (

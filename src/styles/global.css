@@ -1,11 +1,169 @@
 @import "tailwindcss";
-/* Self-hosted fonts - using system-ui for body text to eliminate CLS */
 
-/* Inter fonts removed - using system-ui stack instead for zero CLS.
-   system-ui provides San Francisco (macOS/iOS), Segoe UI (Windows),
-   Roboto (Android) - all similar to Inter with instant loading. */
+/* ================================================
+   Design Tokens — "The Curated Journal"
+   ================================================ */
 
-/* JetBrains Mono - Latin subset */
+:root {
+  /* Brand */
+  --color-primary: #00288e;
+  --color-primary-container: #1e40af;
+  --color-secondary: #0058be;
+  --color-on-primary: #ffffff;
+  --color-on-secondary: #ffffff;
+
+  /* Surface hierarchy (light) */
+  --color-surface: #f8f9fa;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container: #edeeef;
+  --color-surface-container-high: #e2e3e5;
+  --color-surface-container-highest: #d6d8db;
+  --color-surface-variant: #e1e2ec;
+
+  /* Text */
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #44474f;
+  --color-outline-variant: #c4c5d5;
+
+  /* Elevation */
+  --shadow-ambient: 0 12px 40px rgba(25, 28, 29, 0.04);
+  --shadow-ambient-hover: 0 16px 48px rgba(25, 28, 29, 0.08);
+
+  /* Ghost border */
+  --ghost-border: 1px solid rgba(196, 197, 213, 0.15);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-blur: blur(16px);
+
+  /* Gradients */
+  --gradient-primary-cta: linear-gradient(135deg, #00288e, #1e40af);
+
+  /* Reading progress */
+  --reading-progress-color: #0058be;
+}
+
+.dark {
+  /* Brand (inverted for dark surfaces) */
+  --color-primary: #a4c8ff;
+  --color-primary-container: #00408f;
+  --color-secondary: #8ecaff;
+  --color-on-primary: #003063;
+  --color-on-secondary: #00315f;
+
+  /* Surface hierarchy (dark) */
+  --color-surface: #111418;
+  --color-surface-container-lowest: #0b0e12;
+  --color-surface-container-low: #191c20;
+  --color-surface-container: #1d2024;
+  --color-surface-container-high: #272a2f;
+  --color-surface-container-highest: #32353a;
+  --color-surface-variant: #44474f;
+
+  /* Text */
+  --color-on-surface: #e2e2e6;
+  --color-on-surface-variant: #c4c6d0;
+  --color-outline-variant: #44474f;
+
+  /* Elevation */
+  --shadow-ambient: 0 12px 40px rgba(0, 0, 0, 0.2);
+  --shadow-ambient-hover: 0 16px 48px rgba(0, 0, 0, 0.3);
+
+  /* Ghost border */
+  --ghost-border: 1px solid rgba(68, 71, 79, 0.25);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(11, 14, 18, 0.7);
+
+  /* Gradients */
+  --gradient-primary-cta: linear-gradient(135deg, #a4c8ff, #8ecaff);
+
+  /* Reading progress */
+  --reading-progress-color: #8ecaff;
+}
+
+/* ================================================
+   Design System Utility Classes
+   ================================================ */
+
+.surface { background-color: var(--color-surface); }
+.surface-container-lowest { background-color: var(--color-surface-container-lowest); }
+.surface-container-low { background-color: var(--color-surface-container-low); }
+.surface-container { background-color: var(--color-surface-container); }
+.surface-container-high { background-color: var(--color-surface-container-high); }
+.surface-container-highest { background-color: var(--color-surface-container-highest); }
+.text-on-surface { color: var(--color-on-surface); }
+.text-on-surface-variant { color: var(--color-on-surface-variant); }
+.glass {
+  background-color: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+.shadow-ambient { box-shadow: var(--shadow-ambient); }
+.ghost-border { outline: var(--ghost-border); }
+
+/* ================================================
+   Self-hosted Fonts
+   ================================================ */
+
+/* Plus Jakarta Sans — Display / Headlines */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/plus-jakarta-sans-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/plus-jakarta-sans-500-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/plus-jakarta-sans-600-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/plus-jakarta-sans-700-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/plus-jakarta-sans-800-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Inter — Body / Title */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-variable-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* JetBrains Mono — Code */
 @font-face {
   font-family: 'JetBrains Mono';
   font-style: normal;
@@ -33,7 +191,7 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Crimson Pro - Latin subset */
+/* Crimson Pro — Serif / Decorative */
 @font-face {
   font-family: 'Crimson Pro';
   font-style: normal;
@@ -84,14 +242,20 @@
 
 /* Custom Tailwind theme extensions */
 @theme {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
   --font-serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
 }
 
-/* Base styling */
+/* ================================================
+   Base Styling
+   ================================================ */
+
 body {
-  @apply font-sans text-gray-900 dark:text-gray-100 bg-gray-50 dark:bg-gray-950;
+  @apply font-sans;
+  color: var(--color-on-surface);
+  background-color: var(--color-surface);
   font-size: 17px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -102,7 +266,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Screen reader only utility - visually hides content but keeps it accessible */
+/* Screen reader only utility */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -115,9 +279,14 @@ html {
   border-width: 0;
 }
 
-/* Enhanced typography */
+/* ================================================
+   Typography
+   ================================================ */
+
 h1, h2, h3, h4, h5, h6 {
-  @apply font-sans font-semibold tracking-tight;
+  font-family: var(--font-display);
+  @apply font-semibold tracking-tight;
+  color: var(--color-on-surface);
 }
 
 h1 {
@@ -125,7 +294,7 @@ h1 {
   letter-spacing: -0.035em;
 }
 
-/* Explicit font-size for h1 in sectioning contexts to prevent browser UA stylesheet sizing (H1UserAgentFontSizeInSection deprecation) */
+/* Explicit font-size for h1 in sectioning contexts (H1UserAgentFontSizeInSection deprecation) */
 article h1,
 section h1,
 aside h1,
@@ -145,7 +314,9 @@ h3 {
 
 /* Code styling */
 code {
-  @apply font-mono bg-gray-200 dark:bg-gray-900 px-1.5 py-0.5 rounded text-sm text-gray-900 dark:text-gray-100;
+  @apply font-mono px-1.5 py-0.5 rounded text-sm;
+  background-color: var(--color-surface-container);
+  color: var(--color-on-surface);
 }
 
 pre code {
@@ -154,7 +325,12 @@ pre code {
 
 /* Link styling */
 a {
-  @apply text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors;
+  color: var(--color-secondary);
+  @apply transition-colors;
+}
+
+a:hover {
+  color: var(--color-primary);
 }
 
 /* Focus states */
@@ -169,8 +345,8 @@ a {
   z-index: 100;
   transform: translateY(-200%);
   border-radius: 0.75rem;
-  background: rgb(17 24 39);
-  color: rgb(255 255 255);
+  background: var(--color-on-surface);
+  color: var(--color-surface);
   padding: 0.75rem 1rem;
   text-decoration: none;
   transition: transform 0.2s ease;
@@ -178,18 +354,6 @@ a {
 
 .skip-link:focus-visible {
   transform: translateY(0);
-}
-
-@media (prefers-color-scheme: dark) {
-  .skip-link {
-    background: rgb(243 244 246);
-    color: rgb(17 24 39);
-  }
-}
-
-.dark .skip-link {
-  background: rgb(243 244 246);
-  color: rgb(17 24 39);
 }
 
 /* Scoped transitions */
@@ -202,7 +366,10 @@ a {
     opacity 0.2s ease;
 }
 
-/* CSS animations for ShareButtons (replaces framer-motion) */
+/* ================================================
+   Animations
+   ================================================ */
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -218,7 +385,6 @@ a {
   animation: fade-in-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-/* Waving hand animation */
 @keyframes wave {
   0% { transform: rotate(0deg); }
   10% { transform: rotate(14deg); }
@@ -235,23 +401,15 @@ a {
   display: inline-block;
 }
 
-/* View Transitions custom animations */
+/* View Transitions */
 @keyframes slide-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slide-fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 ::view-transition-old(root) {
@@ -285,34 +443,24 @@ a {
   @apply hidden;
 }
 
-/* Header default styles */
+/* ================================================
+   Header Styles
+   ================================================ */
+
 #site-header .header-logo,
 #site-header .header-logo span {
-  color: rgb(17 24 39); /* gray-900 */
-}
-
-.dark #site-header .header-logo,
-.dark #site-header .header-logo span {
-  color: rgb(243 244 246); /* gray-100 */
+  color: var(--color-on-surface);
 }
 
 #site-header .header-nav-item {
-  color: rgb(75 85 99); /* gray-600 */
-}
-
-.dark #site-header .header-nav-item {
-  color: rgb(156 163 175); /* gray-400 */
+  color: var(--color-on-surface-variant);
 }
 
 #site-header .header-nav-item:hover {
-  color: rgb(17 24 39); /* gray-900 */
+  color: var(--color-on-surface);
 }
 
-.dark #site-header .header-nav-item:hover {
-  color: rgb(243 244 246); /* gray-100 */
-}
-
-/* Transparent header styles for blog posts with hero images */
+/* Transparent header for blog posts with hero images */
 .header-transparent {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
   border-color: transparent !important;
@@ -340,63 +488,41 @@ a {
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }
 
-/* For stroke-based icons (search, tag, headphones, etc.) */
 .header-transparent .header-nav-item svg[stroke="currentColor"] {
   stroke: white !important;
 }
 
-/* For fill-based icons (github, social icons) */
 .header-transparent .header-nav-item svg[fill="currentColor"] {
   fill: white !important;
 }
 
-/* Theme toggle icons */
 .header-transparent .header-nav-item .theme-icon {
   stroke: white !important;
 }
 
-/* Scrolled state - solid background */
+/* Scrolled state — glassmorphic with ambient shadow */
 .header-scrolled {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-color: rgb(229 231 235) !important; /* gray-200 */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.dark .header-scrolled {
-  background-color: rgba(17, 24, 39, 0.95) !important; /* gray-900 */
-  border-color: rgb(55 65 81) !important; /* gray-700 */
+  background-color: var(--glass-bg) !important;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-color: transparent !important;
+  box-shadow: var(--shadow-ambient);
 }
 
 .header-scrolled .header-logo,
 .header-scrolled .header-logo span {
-  color: rgb(17 24 39) !important; /* gray-900 */
+  color: var(--color-on-surface) !important;
   text-shadow: none;
-}
-
-.dark .header-scrolled .header-logo,
-.dark .header-scrolled .header-logo span {
-  color: rgb(243 244 246) !important; /* gray-100 */
 }
 
 .header-scrolled .header-nav-item {
-  color: rgb(75 85 99) !important; /* gray-600 */
+  color: var(--color-on-surface-variant) !important;
   text-shadow: none;
 }
 
-.dark .header-scrolled .header-nav-item {
-  color: rgb(156 163 175) !important; /* gray-400 */
-}
-
 .header-scrolled .header-nav-item:hover {
-  color: rgb(17 24 39) !important; /* gray-900 */
-  background-color: rgba(243, 244, 246, 0.5) !important; /* gray-100/50 */
-}
-
-.dark .header-scrolled .header-nav-item:hover {
-  color: rgb(243 244 246) !important; /* gray-100 */
-  background-color: rgba(31, 41, 55, 0.5) !important; /* gray-800/50 */
+  color: var(--color-on-surface) !important;
+  background-color: var(--color-surface-container-low) !important;
 }
 
 .header-scrolled .header-nav-item svg {
@@ -420,76 +546,93 @@ a {
   /* Uses CSS custom properties set inline from extracted colors */
 }
 
-/* Light mode gradient - soft, muted wash effect like russ.fm */
+/* Light mode gradient — soft, muted wash */
 .hero-gradient-bg {
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--gradient-primary, #3B82F6) 15%, white 85%) 0%,
-    color-mix(in srgb, var(--gradient-secondary, #1E40AF) 10%, #f9fafb 90%) 40%,
-    #f9fafb 100%
+    color-mix(in srgb, var(--gradient-primary, #3B82F6) 15%, var(--color-surface-container-lowest) 85%) 0%,
+    color-mix(in srgb, var(--gradient-secondary, #1E40AF) 10%, var(--color-surface) 90%) 40%,
+    var(--color-surface) 100%
   );
   transition: background 0.3s ease-in-out;
 }
 
-/* Dark mode gradient - more visible color wash */
+/* Dark mode gradient — more visible color wash */
 .dark .hero-gradient-bg {
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--gradient-primary-dark, #1E3A5F) 40%, #030712 60%) 0%,
-    color-mix(in srgb, var(--gradient-secondary-dark, #0F172A) 25%, #030712 75%) 40%,
-    #030712 100%
+    color-mix(in srgb, var(--gradient-primary-dark, #1E3A5F) 40%, var(--color-surface) 60%) 0%,
+    color-mix(in srgb, var(--gradient-secondary-dark, #0F172A) 25%, var(--color-surface) 75%) 40%,
+    var(--color-surface) 100%
   );
 }
 
-/* Hero image inside card - no constraints, natural size */
 .hero-image-card {
   display: block;
 }
 
-/* Custom prose styling for blog posts */
+/* ================================================
+   Prose Styling (Blog Post Content)
+   ================================================ */
+
 .prose {
-  @apply text-gray-900 dark:text-gray-100 max-w-none;
+  @apply max-w-none;
+  color: var(--color-on-surface);
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  font-family: var(--font-display);
+  color: var(--color-on-surface);
 }
 
 .prose h1 {
-  @apply text-4xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4 leading-tight tracking-tight;
+  @apply text-4xl font-bold mt-8 mb-4 leading-tight tracking-tight;
 }
 
 .prose h2 {
-  @apply text-3xl font-semibold text-gray-900 dark:text-gray-100 mt-12 mb-6 leading-tight tracking-tight;
+  @apply text-3xl font-semibold mt-12 mb-6 leading-tight tracking-tight;
   outline: none;
 }
 
 .prose h3 {
-  @apply text-2xl font-semibold text-gray-900 dark:text-gray-100 mt-10 mb-4 leading-tight;
+  @apply text-2xl font-semibold mt-10 mb-4 leading-tight;
   outline: none;
 }
 
 .prose h4 {
-  @apply text-xl font-semibold text-gray-900 dark:text-gray-100 mt-8 mb-3 leading-tight;
+  @apply text-xl font-semibold mt-8 mb-3 leading-tight;
   outline: none;
 }
 
 .prose h5 {
-  @apply text-lg font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-2;
+  @apply text-lg font-semibold mt-6 mb-2;
   outline: none;
 }
 
 .prose h6 {
-  @apply text-base font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-2;
+  @apply text-base font-semibold mt-6 mb-2;
   outline: none;
 }
 
 .prose p {
-  @apply text-lg leading-relaxed mb-6 text-gray-700 dark:text-gray-300;
+  @apply text-lg leading-relaxed mb-6;
+  color: var(--color-on-surface-variant);
 }
 
 .prose a {
-  @apply text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline decoration-blue-600/40 dark:decoration-blue-400/40 hover:decoration-blue-600 dark:hover:decoration-blue-400 underline-offset-2 transition-colors;
+  color: var(--color-secondary);
+  @apply underline underline-offset-2 transition-colors;
+  text-decoration-color: color-mix(in srgb, var(--color-secondary) 40%, transparent);
+}
+
+.prose a:hover {
+  color: var(--color-primary);
+  text-decoration-color: var(--color-primary);
 }
 
 .prose strong {
-  @apply font-semibold text-gray-900 dark:text-gray-100;
+  @apply font-semibold;
+  color: var(--color-on-surface);
 }
 
 .prose em {
@@ -505,7 +648,8 @@ a {
 }
 
 .prose li {
-  @apply text-lg leading-relaxed text-gray-700 dark:text-gray-300 pl-2;
+  @apply text-lg leading-relaxed pl-2;
+  color: var(--color-on-surface-variant);
 }
 
 .prose li ul, .prose li ol {
@@ -513,24 +657,33 @@ a {
 }
 
 .prose blockquote {
-  @apply border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-950/20 pl-6 py-4 my-6 italic rounded-r;
+  @apply pl-6 py-4 my-6 italic rounded-r;
+  border-left: 4px solid var(--color-primary);
+  background-color: var(--color-surface-container-low);
 }
 
 .prose blockquote p {
-  @apply mb-0 text-gray-700 dark:text-gray-300;
+  @apply mb-0;
+  color: var(--color-on-surface-variant);
 }
 
 .prose code {
-  @apply bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-2 py-1 rounded text-sm font-mono;
+  @apply px-2 py-1 rounded text-sm font-mono;
+  background-color: var(--color-surface-container);
+  color: var(--color-on-surface);
 }
 
 /* Only style pre elements that are NOT part of Expressive Code */
 .prose pre:not(.expressive-code pre):not([data-language]) {
-  @apply bg-gray-900 dark:bg-gray-950 text-gray-100 p-6 rounded-lg overflow-x-auto my-6 border border-gray-200 dark:border-gray-800;
+  @apply p-6 rounded-lg overflow-x-auto my-6;
+  background-color: var(--color-surface-container-highest);
+  color: var(--color-on-surface);
+  outline: var(--ghost-border);
 }
 
 .prose pre:not(.expressive-code pre):not([data-language]) code {
-  @apply bg-transparent text-gray-100 p-0 text-sm;
+  @apply bg-transparent p-0 text-sm;
+  color: inherit;
 }
 
 /* Expressive Code blocks spacing */
@@ -541,23 +694,31 @@ a {
 }
 
 .prose img {
-  @apply rounded-lg shadow-lg mb-1 max-w-full h-auto;
+  @apply rounded-lg mb-1 max-w-full h-auto;
+  box-shadow: var(--shadow-ambient);
 }
 
 .prose table {
-  @apply w-full border-collapse border border-gray-300 dark:border-gray-700 my-6;
+  @apply w-full border-collapse my-6;
+  outline: var(--ghost-border);
 }
 
 .prose th {
-  @apply border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-2 text-left font-semibold;
+  @apply px-4 py-2 text-left font-semibold;
+  background-color: var(--color-surface-container-low);
+  border-bottom: var(--ghost-border);
 }
 
 .prose td {
-  @apply border border-gray-300 dark:border-gray-700 px-4 py-2;
+  @apply px-4 py-2;
+  border-bottom: var(--ghost-border);
 }
 
 .prose hr {
-  @apply border-gray-300 dark:border-gray-700 my-12;
+  border: none;
+  height: 1px;
+  background-color: var(--color-surface-container);
+  @apply my-12;
 }
 
 /* External link styling */
@@ -566,7 +727,8 @@ a {
 }
 
 .external-link-icon {
-  @apply inline-block text-blue-400 dark:text-blue-500 text-sm font-normal ml-0.5 transition-transform duration-200 opacity-60;
+  @apply inline-block text-sm font-normal ml-0.5 transition-transform duration-200 opacity-60;
+  color: var(--color-secondary);
 }
 
 .external-link-icon.no-space {
@@ -577,7 +739,10 @@ a {
   @apply transform translate-x-0.5 -translate-y-0.5 opacity-100;
 }
 
-/* LightGallery z-index fixes - use very high values to ensure it's above everything */
+/* ================================================
+   LightGallery Fixes
+   ================================================ */
+
 .lg-backdrop {
   z-index: 99998 !important;
   background-color: rgba(0, 0, 0, 0.95) !important;
@@ -592,12 +757,10 @@ a {
   z-index: 100000 !important;
 }
 
-/* Ensure LightGallery content is above everything */
 body.lg-on {
   overflow: hidden !important;
 }
 
-/* Additional lightgallery fixes */
 #lg-backdrop,
 .lg-backdrop.in {
   z-index: 99998 !important;
@@ -612,7 +775,6 @@ body.lg-on {
   z-index: 100001 !important;
 }
 
-/* Astro LightGallery specific - ensure proper block layout */
 astro-lightgallery {
   display: block;
   position: relative;
@@ -621,7 +783,6 @@ astro-lightgallery {
   clear: both;
 }
 
-/* Ensure gallery images don't overlap with text */
 .astro-lightgallery-adaptive-container {
   display: block;
   width: 100%;
@@ -634,15 +795,17 @@ astro-lightgallery {
   margin: 0.5rem;
 }
 
-/* Add spacing in prose context */
 .prose astro-lightgallery {
   margin: 0.25rem 0;
   clear: both;
 }
 
-/* Share buttons styling */
+/* ================================================
+   Share Buttons
+   ================================================ */
+
 .share-buttons {
-  @apply flex flex-wrap justify-center gap-3 mt-8 pt-8 border-t border-gray-200 dark:border-gray-800;
+  @apply flex flex-wrap justify-center gap-3 mt-8 pt-8;
 }
 
 .resp-sharing-button__link {
@@ -690,7 +853,7 @@ astro-lightgallery {
   @apply bg-[#1877f2] hover:bg-[#0c63d4] text-white ring-1 ring-[#1877f2]/20;
 }
 
-/* Dark mode adjustments */
+/* Dark mode share button adjustments */
 .dark .resp-sharing-button--twitter {
   @apply bg-[#1a91da] hover:bg-[#1580c7] ring-[#1a91da]/30;
 }
@@ -717,4 +880,19 @@ astro-lightgallery {
 
 .dark .resp-sharing-button--facebook {
   @apply bg-[#0c63d4] hover:bg-[#0952b5] ring-[#0c63d4]/30;
+}
+
+/* ================================================
+   Reading Progress Bar
+   ================================================ */
+
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background-color: var(--reading-progress-color);
+  z-index: 9999;
+  transition: width 50ms linear;
+  will-change: width;
 }

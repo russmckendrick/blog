@@ -5,10 +5,10 @@ import Icon from '../ui/Icon.astro';
 const today = new Date();
 ---
 
-<footer class="bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 mt-20" transition:name="site-footer">
+<footer class="surface-container-low mt-20" transition:name="site-footer">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 		<div class="flex flex-col items-center">
-			<div class="text-center text-sm text-gray-600 dark:text-gray-400">
+			<div class="text-center text-sm text-on-surface-variant">
 				<p class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
 					<span>&copy; {today.getFullYear()} {AUTHOR_NAME}. All rights reserved.</span>
 					<span class="hidden sm:inline">|</span>
@@ -16,7 +16,7 @@ const today = new Date();
 						{NAVIGATION_ITEMS.map((item) => (
 							<a
 								href={item.url}
-								class="inline-flex items-center gap-1.5 px-1 py-0.5 !text-gray-700 dark:!text-gray-300 hover:!text-gray-900 dark:hover:!text-gray-100 underline-offset-4 hover:underline transition-colors"
+								class="inline-flex items-center gap-1.5 px-1 py-0.5 text-on-surface-variant hover:text-on-surface underline-offset-4 hover:underline transition-colors"
 								target={item.external ? '_blank' : undefined}
 								rel={item.external ? 'noopener noreferrer' : undefined}
 							>

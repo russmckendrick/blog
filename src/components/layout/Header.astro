@@ -16,8 +16,8 @@ const mobileMenuLabelId = 'mobile-menu-label';
 	class:list={[
 		"relative z-40 transition-all duration-300",
 		transparent
-			? "header-transparent border-b border-transparent"
-			: "border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 backdrop-blur-sm bg-white/80 dark:bg-gray-900/80"
+			? "header-transparent"
+			: "glass shadow-ambient"
 	]}
 	data-transparent={transparent}
 >
@@ -82,7 +82,7 @@ const mobileMenuLabelId = 'mobile-menu-label';
 
 		<!-- Mobile menu, hidden by default -->
 		<div class="md:hidden mobile-hidden" id={mobileMenuId}>
-			<div class="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+			<div class="px-2 pt-2 pb-3 space-y-1 surface-container-low">
 					{NAVIGATION_ITEMS.map(item =>
 						<div>
 							{item.external ? (
@@ -104,7 +104,7 @@ const mobileMenuLabelId = 'mobile-menu-label';
 							)}
 					</div>
 				)}
-				<div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+				<div class="surface-container pt-4">
 					<button id="mobile-theme-toggle" class="flex items-center w-full px-3 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors" type="button" aria-label="Toggle theme">
 						<Icon name="sun" class="theme-icon light-icon h-5 w-5 hidden dark:block" />
 						<Icon name="moon" class="theme-icon dark-icon h-5 w-5 block dark:hidden" />
