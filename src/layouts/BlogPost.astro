@@ -174,7 +174,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 					<div class="surface-container-lowest rounded-xl shadow-ambient overflow-hidden">
 						{/* Hero image inside the card - edge to edge with rounded top corners */}
 						{displayImage && (
-							<div class="relative">
+							<div class="relative animate-fade-in">
 								<img
 									src={getCFImageUrl(displayImage, {
 										width: 1920,
@@ -199,12 +199,12 @@ const breadcrumbSchema = createBreadcrumbSchema(
 							<Breadcrumbs items={breadcrumbItems} />
 
 						<header class="text-center mb-8 space-y-4">
-							<h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-on-surface" style="font-size: clamp(2.25rem, 5vw, 3.5rem);">
+							<h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-on-surface animate-fade-in animate-delay-1" style="font-size: clamp(2.25rem, 5vw, 3.5rem);">
 								{title}
 							</h1>
 
 							<!-- Enhanced Author Info Box -->
-							<div class="surface-container-low rounded-xl p-5">
+							<div class="surface-container-low rounded-xl p-5 animate-fade-in animate-delay-2">
 								<div class="flex items-start gap-4">
 									<!-- Avatar Section -->
 									<div class="relative flex-shrink-0">
@@ -286,7 +286,9 @@ const breadcrumbSchema = createBreadcrumbSchema(
 						</header>
 
 						{showToc && headings.length > 0 && (
-							<TableOfContents headings={headings} />
+							<div class="reveal-fade">
+								<TableOfContents headings={headings} />
+							</div>
 						)}
 
 						<div class="prose mx-auto">
@@ -295,22 +297,51 @@ const breadcrumbSchema = createBreadcrumbSchema(
 
 						{!isTune && <ShareButtons title={title} url={Astro.url.href} tags={tags} />}
 
-						{!isTune && entry && <RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={3} />}
+						{!isTune && entry && (
+							<div class="reveal">
+								<RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={3} />
+							</div>
+						)}
 						</div>
 					</div>
 
-					<PostNavigation previousPost={previousPost} nextPost={nextPost} />
+					<div class="reveal">
+						<PostNavigation previousPost={previousPost} nextPost={nextPost} />
+					</div>
 
-					{!isTune && <Comments />}
+					{!isTune && (
+						<div class="reveal-fade">
+							<Comments />
+						</div>
+					)}
 				</div>
 			</article>
 		</main>
 		<Footer />
 		<WebVitals debug={import.meta.env.DEV} />
 		<script>
+			// Prose content element reveal animations
+			function initProseReveal() {
+				const prose = document.querySelector('.prose')
+				if (!prose) return
+				if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+				const images = prose.querySelectorAll(':scope > p > img, :scope > img, :scope > astro-lightgallery')
+				const blockquotes = prose.querySelectorAll(':scope > blockquote')
+				const codeBlocks = prose.querySelectorAll(':scope > .expressive-code, :scope > pre')
+
+				images.forEach(el => el.classList.add('reveal-scale'))
+				blockquotes.forEach(el => el.classList.add('reveal-slide'))
+				codeBlocks.forEach(el => el.classList.add('reveal-fade'))
+			}
+
+			initProseReveal()
+			document.addEventListener('astro:page-load', initProseReveal)
+		</script>
+		<script>
 			// Scroll-reveal animations via Intersection Observer
 			function initRevealAnimations() {
-				const elements = document.querySelectorAll('.reveal, .reveal-fade, .reveal-scale');
+				const elements = document.querySelectorAll('.reveal, .reveal-fade, .reveal-scale, .reveal-slide');
 				if (elements.length === 0) return;
 
 				requestAnimationFrame(() => {

@@ -379,6 +379,28 @@ a:hover {
   animation: fade-in-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
+/* Gentle fade-in (no scale) for above-the-fold content */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fade-in 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+/* Stagger delay utilities for page-load animations */
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.35s; }
+
 /* Scroll-triggered reveal animations */
 .reveal {
   opacity: 0;
@@ -429,6 +451,20 @@ a:hover {
   transform: scale(1);
 }
 
+/* Slide-in from left variant */
+.reveal-slide {
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-slide.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 @keyframes wave {
   0% { transform: rotate(0deg); }
   10% { transform: rotate(14deg); }
@@ -470,15 +506,19 @@ a:hover {
   }
 
   .animate-fade-in-up,
+  .animate-fade-in,
   .animate-wave,
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .reveal,
   .reveal-fade,
-  .reveal-scale {
+  .reveal-scale,
+  .reveal-slide {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

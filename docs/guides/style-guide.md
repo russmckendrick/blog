@@ -62,11 +62,14 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 
 - Limit transitions to interactive elements and cards.
 - Do not apply global transitions to every element.
-- Use scroll-reveal animations (`.reveal`, `.reveal-stagger`) for card grids and secondary content that scrolls into view. Do **not** apply reveal to above-the-fold content (hero sections, blog post articles).
+- **Above-the-fold page-load animations**: Use `.animate-fade-in` (gentle translateY + opacity) with `.animate-delay-1` / `.animate-delay-2` / `.animate-delay-3` for staggered cascades. These are CSS-only and fire on page load without JS.
+- **Scroll-reveal animations**: Use `.reveal` (slide up + fade), `.reveal-fade` (fade only), `.reveal-scale` (scale + fade), or `.reveal-slide` (slide from left + fade) for content that scrolls into view. Combine with `.reveal-stagger` on a parent for cascading child reveals.
+- Do **not** apply scroll-reveal to above-the-fold content (hero sections, blog post articles) — use `.animate-fade-in` instead.
+- **Prose content reveals**: On blog post pages, images get `.reveal-scale`, blockquotes get `.reveal-slide`, and code blocks get `.reveal-fade` — applied via JS. Paragraphs, headings, and lists are never animated to preserve reading flow.
 - Respect `prefers-reduced-motion` by disabling:
   - smooth scrolling
-  - decorative animations
-  - scroll-reveal animations
+  - decorative animations (including `.animate-fade-in`)
+  - scroll-reveal animations (all variants)
   - view-transition animations where possible
 - Focus states should use `:focus-visible` and appear only on interactive elements.
 
