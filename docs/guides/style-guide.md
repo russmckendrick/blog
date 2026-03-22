@@ -66,7 +66,7 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 - **Scroll-reveal animations**: Use `.reveal` (slide up + fade), `.reveal-fade` (fade only), `.reveal-scale` (scale + fade), or `.reveal-slide` (slide from left + fade) for content that scrolls into view. Combine with `.reveal-stagger` on a parent for cascading child reveals.
 - Do **not** apply scroll-reveal to above-the-fold content (hero sections, blog post articles) — use `.animate-fade-in` instead.
 - **Prose content reveals**: On blog post pages, images get `.reveal-scale`, blockquotes get `.reveal-slide`, and code blocks get `.reveal-fade` — applied via JS. Paragraphs, headings, and lists are never animated to preserve reading flow.
-- **Gallery reveals**: Gallery components use `.reveal-stagger` on the grid container with `.reveal-scale` on each thumbnail item, producing a cascading scale+fade effect as the gallery scrolls into view. These classes are applied via the prose reveal JS (not baked into the template) to avoid above-the-fold galleries starting invisible.
+- **Gallery reveals**: Gallery components have a self-contained stagger reveal — items start visible, JS adds `.gallery-reveal-ready` (hiding them) and observes the wrapper, then `.gallery-revealed` triggers a cascading scale+fade via nth-child delays. This avoids race conditions with the global reveal system.
 - Respect `prefers-reduced-motion` by disabling:
   - smooth scrolling
   - decorative animations (including `.animate-fade-in`)

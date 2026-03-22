@@ -333,17 +333,6 @@ const breadcrumbSchema = createBreadcrumbSchema(
 				images.forEach(el => el.classList.add('reveal-scale'))
 				blockquotes.forEach(el => el.classList.add('reveal-slide'))
 				codeBlocks.forEach(el => el.classList.add('reveal-fade'))
-
-				const galleries = prose.querySelectorAll(':scope > .lightgallery-component')
-				galleries.forEach(gallery => {
-					const container = gallery.querySelector('.astro-lightgallery-adaptive-container')
-					if (container) {
-						container.classList.add('reveal-stagger')
-						container.querySelectorAll('.astro-lightgallery-adaptive-item').forEach(item => {
-							item.classList.add('reveal-scale')
-						})
-					}
-				})
 			}
 
 			initProseReveal()

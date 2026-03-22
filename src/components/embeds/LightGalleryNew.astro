@@ -78,6 +78,36 @@ const imageCount = transformedLayout.imgs.length;
   </div>
 </div>
 
+<script>
+  // Self-contained gallery reveal animation
+  function initGalleryReveals() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const galleries = document.querySelectorAll('.lightgallery-wrapper:not(.gallery-reveal-ready)')
+    if (galleries.length === 0) return
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('gallery-revealed')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    })
+
+    galleries.forEach(gallery => {
+      gallery.classList.add('gallery-reveal-ready')
+      observer.observe(gallery)
+    })
+  }
+
+  initGalleryReveals()
+  document.addEventListener('astro:page-load', initGalleryReveals)
+</script>
+
 {enableMetaPlugin && (
   <script define:vars={{ debugMeta }}>
     /**
@@ -244,5 +274,38 @@ const imageCount = transformedLayout.imgs.length;
 
   .lightgallery-wrapper .astro-lightgallery-adaptive-item:hover img {
     transform: scale(1.05);
+  }
+
+  /* Gallery stagger reveal — items start visible and only hide once JS is ready */
+  .lightgallery-wrapper.gallery-reveal-ready .astro-lightgallery-adaptive-item {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+                transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .lightgallery-wrapper.gallery-revealed .astro-lightgallery-adaptive-item {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Stagger delays for gallery items */
+  .lightgallery-wrapper.gallery-revealed .astro-lightgallery-adaptive-item:nth-child(1) { transition-delay: 0ms; }
+  .lightgallery-wrapper.gallery-revealed .astro-lightgallery-adaptive-item:nth-child(2) { transition-delay: 80ms; }
+  .lightgallery-wrapper.gallery-revealed .astro-lightgallery-adaptive-item:nth-child(3) { transition-delay: 160ms; }
+  .lightgallery-wrapper.gallery-revealed .astro-lightgallery-adaptive-item:nth-child(4) { transition-delay: 240ms; }
+  .lightgallery-wrapper.gallery-revealed .astro-lightgallery-adaptive-item:nth-child(5) { transition-delay: 320ms; }
+  .lightgallery-wrapper.gallery-revealed .astro-lightgallery-adaptive-item:nth-child(6) { transition-delay: 400ms; }
+  .lightgallery-wrapper.gallery-revealed .astro-lightgallery-adaptive-item:nth-child(7) { transition-delay: 480ms; }
+  .lightgallery-wrapper.gallery-revealed .astro-lightgallery-adaptive-item:nth-child(8) { transition-delay: 560ms; }
+  .lightgallery-wrapper.gallery-revealed .astro-lightgallery-adaptive-item:nth-child(9) { transition-delay: 640ms; }
+  .lightgallery-wrapper.gallery-revealed .astro-lightgallery-adaptive-item:nth-child(n+10) { transition-delay: 700ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lightgallery-wrapper.gallery-reveal-ready .astro-lightgallery-adaptive-item {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
   }
 </style>
