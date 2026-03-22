@@ -2,24 +2,13 @@
 import { SITE_TITLE, NAVIGATION_ITEMS } from '../../consts';
 import Icon from '../ui/Icon.astro';
 
-interface Props {
-	transparent?: boolean;
-}
-
-const { transparent = false } = Astro.props;
 const mobileMenuId = 'mobile-menu';
 const mobileMenuLabelId = 'mobile-menu-label';
 ---
 
 <header
 	id="site-header"
-	class:list={[
-		"relative z-40 transition-all duration-300",
-		transparent
-			? "header-transparent"
-			: "glass shadow-ambient"
-	]}
-	data-transparent={transparent}
+	class="relative z-40 transition-all duration-300 glass shadow-ambient"
 >
 	<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
 		<div class="flex justify-between items-center h-16">
@@ -53,18 +42,20 @@ const mobileMenuLabelId = 'mobile-menu-label';
 									href={item.url}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="header-nav-item group relative flex items-center justify-center p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
+									class="header-nav-item group relative flex items-center gap-1.5 px-3 py-1.5 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
 									aria-label={item.name}
 								>
-									<Icon name={item.icon} size={18} />
+									<Icon name={item.icon} size={16} />
+									<span class="text-sm font-medium">{item.name}</span>
 								</a>
 							) : (
 								<a
 									href={item.url}
-									class="header-nav-item group relative flex items-center justify-center p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
+									class="header-nav-item group relative flex items-center gap-1.5 px-3 py-1.5 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
 									aria-label={item.name}
 								>
-									<Icon name={item.icon} size={18} />
+									<Icon name={item.icon} size={16} />
+									<span class="text-sm font-medium">{item.name}</span>
 								</a>
 							)}
 						</li>
@@ -129,11 +120,9 @@ const mobileMenuLabelId = 'mobile-menu-label';
 		const themeToggle = document.getElementById('theme-toggle');
 		const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
 		const html = document.documentElement;
-		const header = document.getElementById('site-header');
 		const menuTrigger = document.getElementById('menu-trigger') as HTMLButtonElement | null;
 		const mobileMenu = document.getElementById('mobile-menu');
 		const mobileMenuLabel = document.getElementById('mobile-menu-label');
-		const isTransparent = header?.getAttribute('data-transparent') === 'true';
 
 		let isMenuOpen = mobileMenu ? !mobileMenu.classList.contains('mobile-hidden') : false;
 
@@ -145,37 +134,6 @@ const mobileMenuLabelId = 'mobile-menu-label';
 			menuTrigger.setAttribute('aria-expanded', String(open));
 			mobileMenuLabel.textContent = open ? 'Close main menu' : 'Open main menu';
 		};
-
-		// Transparent header scroll handling
-		if (isTransparent && header) {
-			let ticking = false;
-
-			const updateHeaderBackground = () => {
-				const scrollY = window.scrollY;
-				const threshold = 50; // Start transition after 50px scroll
-
-				if (scrollY > threshold) {
-					// Scrolled - show solid background
-					header.classList.add('header-scrolled');
-					header.classList.remove('header-transparent');
-				} else {
-					// At top - transparent
-					header.classList.remove('header-scrolled');
-					header.classList.add('header-transparent');
-				}
-				ticking = false;
-			};
-
-			const onScroll = () => {
-				if (!ticking) {
-					window.requestAnimationFrame(updateHeaderBackground);
-					ticking = true;
-				}
-			};
-
-			window.addEventListener('scroll', onScroll, { passive: true, signal });
-			updateHeaderBackground(); // Initial state
-		}
 
 		// Initialize theme following Tailwind docs pattern
 		const initializeTheme = () => {

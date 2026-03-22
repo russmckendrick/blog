@@ -18,7 +18,6 @@ import { getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } fr
 import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, TAG_METADATA, TAG_AVATAR_MAP } from '../consts';
 import { Schema } from 'astro-seo-schema';
 import { createBlogPostingSchema, createBreadcrumbSchema } from '../utils/schema';
-import { getHeroColors, gradientStylesToString, getGradientStyles } from '../utils/hero-colors';
 
 
 // Import LightGallery CSS
@@ -59,10 +58,6 @@ const ogImage = ogImagePath;
 // cover.image can be a string (public URL) or an imported image
 const displayImage = cover?.image || heroImage;
 
-// Get color palette for hero gradient
-const heroColors = getHeroColors(displayImage);
-const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors));
-
 // Build edit URL
 const editUrl = filePath && EDIT_POST.appendFilePath
 	? `${EDIT_POST.url}/${filePath}`
@@ -98,27 +93,6 @@ const avatarSrc = avatar
 	? buildAvatarPath(avatar)
 	: getDefaultAvatar();
 const avatarFallback = isTune ? AI_AUTHOR.avatarFallback : '/images/avatar-192x192.png';
-
-// Get the primary tag color for avatar glow
-const primaryTag = tags[0];
-const getAvatarGlowColor = () => {
-	if (!primaryTag || !TAG_METADATA[primaryTag]) {
-		return 'text-blue-600 dark:text-blue-400';
-	}
-
-	const tagColorLight = TAG_METADATA[primaryTag].colorLight;
-
-	// Extract the text color class from tag metadata (e.g., "text-purple-700")
-	const textColorMatch = tagColorLight.match(/text-(\w+)-(\d+)/);
-	if (textColorMatch) {
-		const [, color, shade] = textColorMatch;
-		return `text-${color}-${shade} dark:text-${color}-400`;
-	}
-
-	return 'text-blue-600 dark:text-blue-400';
-};
-
-const avatarGlowColor = getAvatarGlowColor();
 
 // Create BlogPosting schema for SEO
 const blogPostingSchema = createBlogPostingSchema({
@@ -191,24 +165,16 @@ const breadcrumbSchema = createBreadcrumbSchema(
 		<div id="reading-progress" class="reading-progress" style="width: 0%" aria-hidden="true"></div>
 		<a href="#main-content" class="skip-link">Skip to content</a>
 		<HeaderWrapper autoHide={false}>
-			<Header transparent={false} />
+			<Header />
 		</HeaderWrapper>
 		<main id="main-content" tabindex="-1" class="relative">
-			{/* Dynamic gradient section - soft color wash behind content */}
-			<section
-				class="hero-gradient-section absolute inset-x-0 top-0 -mt-16 h-[70vh] min-h-[450px]"
-				style={gradientStyleString}
-			>
-				<div class="hero-gradient-bg absolute inset-0"></div>
-			</section>
-
-			{/* Post card - positioned below nav with gap */}
-			<article class="relative z-10 pt-20 sm:pt-24">
-				<div class="max-w-4xl 2xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
-					<div class="surface-container-lowest rounded-3xl shadow-ambient ghost-border overflow-hidden">
+			{/* Post card */}
+			<article class="relative pt-8 sm:pt-12">
+				<div class="max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+					<div class="surface-container-lowest rounded-xl shadow-ambient overflow-hidden">
 						{/* Hero image inside the card - edge to edge with rounded top corners */}
 						{displayImage && (
-							<div class="relative mb-2">
+							<div class="relative">
 								<img
 									src={getCFImageUrl(displayImage, {
 										width: 1920,
@@ -224,27 +190,24 @@ const breadcrumbSchema = createBreadcrumbSchema(
 									decoding="sync"
 									width="2048"
 									height="1143"
-									class="hero-image-card w-full h-auto rounded-t-3xl"
+									class="w-full h-auto rounded-t-xl"
 								/>
-								{/* Shadow at bottom of image only */}
-								<div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/25 to-transparent pointer-events-none"></div>
-							</div>
+								</div>
 						)}
 
-						<div class="px-6 sm:px-10 xl:px-16 py-8 sm:py-10 xl:py-12">
+						<div class="px-6 sm:px-8 xl:px-12 pt-3 pb-6 sm:pt-4 sm:pb-8 xl:pt-5 xl:pb-10">
 							<Breadcrumbs items={breadcrumbItems} />
 
-						<header class="text-center mb-10 space-y-6">
+						<header class="text-center mb-8 space-y-4">
 							<h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-on-surface" style="font-size: clamp(2.25rem, 5vw, 3.5rem);">
 								{title}
 							</h1>
 
 							<!-- Enhanced Author Info Box -->
-							<div class="surface-container-low backdrop-blur-sm ghost-border rounded-2xl p-5">
+							<div class="surface-container-low rounded-xl p-5">
 								<div class="flex items-start gap-4">
 									<!-- Avatar Section -->
 									<div class="relative flex-shrink-0">
-										<div class={`absolute -inset-0.5 bg-gradient-to-r from-current to-current rounded-full opacity-60 blur-sm ${avatarGlowColor}`}></div>
 										<img
 											src={avatarSrc}
 											alt={authorName}
@@ -344,6 +307,34 @@ const breadcrumbSchema = createBreadcrumbSchema(
 		</main>
 		<Footer />
 		<WebVitals debug={import.meta.env.DEV} />
+		<script>
+			// Scroll-reveal animations via Intersection Observer
+			function initRevealAnimations() {
+				const elements = document.querySelectorAll('.reveal, .reveal-fade, .reveal-scale');
+				if (elements.length === 0) return;
+
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						const observer = new IntersectionObserver((entries) => {
+							entries.forEach(entry => {
+								if (entry.isIntersecting) {
+									entry.target.classList.add('revealed');
+									observer.unobserve(entry.target);
+								}
+							});
+						}, {
+							threshold: 0.1,
+							rootMargin: '0px 0px -40px 0px'
+						});
+
+						elements.forEach(el => observer.observe(el));
+					});
+				});
+			}
+
+			initRevealAnimations();
+			document.addEventListener('astro:page-load', initRevealAnimations);
+		</script>
 		<script>
 			// Reading progress bar
 			function initReadingProgress() {

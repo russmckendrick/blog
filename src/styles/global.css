@@ -27,18 +27,15 @@
   --color-outline-variant: #c4c5d5;
 
   /* Elevation */
-  --shadow-ambient: 0 12px 40px rgba(25, 28, 29, 0.04);
-  --shadow-ambient-hover: 0 16px 48px rgba(25, 28, 29, 0.08);
+  --shadow-ambient: 0 8px 24px rgba(25, 28, 29, 0.05);
+  --shadow-ambient-hover: 0 12px 32px rgba(25, 28, 29, 0.08);
 
   /* Ghost border */
   --ghost-border: 1px solid rgba(196, 197, 213, 0.15);
 
   /* Glassmorphism */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-blur: blur(16px);
-
-  /* Gradients */
-  --gradient-primary-cta: linear-gradient(135deg, #00288e, #1e40af);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-blur: blur(12px);
 
   /* Reading progress */
   --reading-progress-color: #0058be;
@@ -67,17 +64,14 @@
   --color-outline-variant: #44474f;
 
   /* Elevation */
-  --shadow-ambient: 0 12px 40px rgba(0, 0, 0, 0.2);
-  --shadow-ambient-hover: 0 16px 48px rgba(0, 0, 0, 0.3);
+  --shadow-ambient: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-ambient-hover: 0 12px 32px rgba(0, 0, 0, 0.3);
 
   /* Ghost border */
   --ghost-border: 1px solid rgba(68, 71, 79, 0.25);
 
   /* Glassmorphism */
-  --glass-bg: rgba(11, 14, 18, 0.7);
-
-  /* Gradients */
-  --gradient-primary-cta: linear-gradient(135deg, #a4c8ff, #8ecaff);
+  --glass-bg: rgba(11, 14, 18, 0.85);
 
   /* Reading progress */
   --reading-progress-color: #8ecaff;
@@ -385,6 +379,56 @@ a:hover {
   animation: fade-in-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
+/* Scroll-triggered reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children — each child delays slightly more */
+.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger > .reveal:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger > .reveal:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger > .reveal:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
+.reveal-stagger > .reveal:nth-child(6) { transition-delay: 400ms; }
+.reveal-stagger > .reveal:nth-child(7) { transition-delay: 480ms; }
+.reveal-stagger > .reveal:nth-child(8) { transition-delay: 560ms; }
+.reveal-stagger > .reveal:nth-child(9) { transition-delay: 640ms; }
+
+/* Fade-in only (no vertical movement) */
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity;
+}
+
+.reveal-fade.revealed {
+  opacity: 1;
+}
+
+/* Scale-in variant */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
 @keyframes wave {
   0% { transform: rotate(0deg); }
   10% { transform: rotate(14deg); }
@@ -432,6 +476,14 @@ a:hover {
     animation: none !important;
   }
 
+  .reveal,
+  .reveal-fade,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
   .skip-link,
   :where(a, button, input, textarea, select, summary, [role="button"]) {
     transition: none !important;
@@ -460,116 +512,6 @@ a:hover {
   color: var(--color-on-surface);
 }
 
-/* Transparent header for blog posts with hero images */
-.header-transparent {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
-  border-color: transparent !important;
-}
-
-.header-transparent .header-logo,
-.header-transparent .header-logo span {
-  color: white !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.header-transparent .header-nav-item,
-.header-transparent .header-nav-item:visited {
-  color: white !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-}
-
-.header-transparent .header-nav-item:hover {
-  color: white !important;
-  background-color: rgba(255, 255, 255, 0.15) !important;
-}
-
-.header-transparent .header-nav-item svg {
-  color: white !important;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
-}
-
-.header-transparent .header-nav-item svg[stroke="currentColor"] {
-  stroke: white !important;
-}
-
-.header-transparent .header-nav-item svg[fill="currentColor"] {
-  fill: white !important;
-}
-
-.header-transparent .header-nav-item .theme-icon {
-  stroke: white !important;
-}
-
-/* Scrolled state — glassmorphic with ambient shadow */
-.header-scrolled {
-  background-color: var(--glass-bg) !important;
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-color: transparent !important;
-  box-shadow: var(--shadow-ambient);
-}
-
-.header-scrolled .header-logo,
-.header-scrolled .header-logo span {
-  color: var(--color-on-surface) !important;
-  text-shadow: none;
-}
-
-.header-scrolled .header-nav-item {
-  color: var(--color-on-surface-variant) !important;
-  text-shadow: none;
-}
-
-.header-scrolled .header-nav-item:hover {
-  color: var(--color-on-surface) !important;
-  background-color: var(--color-surface-container-low) !important;
-}
-
-.header-scrolled .header-nav-item svg {
-  filter: none;
-  color: inherit;
-}
-
-.header-scrolled .header-nav-item svg[stroke="currentColor"] {
-  stroke: currentColor;
-}
-
-.header-scrolled .header-nav-item svg[fill="currentColor"] {
-  fill: currentColor;
-}
-
-/* ================================================
-   Hero Gradient Section
-   ================================================ */
-
-.hero-gradient-section {
-  /* Uses CSS custom properties set inline from extracted colors */
-}
-
-/* Light mode gradient — soft, muted wash */
-.hero-gradient-bg {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--gradient-primary, #3B82F6) 15%, var(--color-surface-container-lowest) 85%) 0%,
-    color-mix(in srgb, var(--gradient-secondary, #1E40AF) 10%, var(--color-surface) 90%) 40%,
-    var(--color-surface) 100%
-  );
-  transition: background 0.3s ease-in-out;
-}
-
-/* Dark mode gradient — more visible color wash */
-.dark .hero-gradient-bg {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--gradient-primary-dark, #1E3A5F) 40%, var(--color-surface) 60%) 0%,
-    color-mix(in srgb, var(--gradient-secondary-dark, #0F172A) 25%, var(--color-surface) 75%) 40%,
-    var(--color-surface) 100%
-  );
-}
-
-.hero-image-card {
-  display: block;
-}
 
 /* ================================================
    Prose Styling (Blog Post Content)
@@ -590,12 +532,12 @@ a:hover {
 }
 
 .prose h2 {
-  @apply text-3xl font-semibold mt-12 mb-6 leading-tight tracking-tight;
+  @apply text-3xl font-semibold mt-10 mb-4 leading-tight tracking-tight;
   outline: none;
 }
 
 .prose h3 {
-  @apply text-2xl font-semibold mt-10 mb-4 leading-tight;
+  @apply text-2xl font-semibold mt-8 mb-3 leading-tight;
   outline: none;
 }
 
@@ -615,7 +557,7 @@ a:hover {
 }
 
 .prose p {
-  @apply text-lg leading-relaxed mb-6;
+  @apply text-lg leading-relaxed mb-5;
   color: var(--color-on-surface-variant);
 }
 
@@ -640,11 +582,11 @@ a:hover {
 }
 
 .prose ul {
-  @apply list-disc list-inside mb-6 space-y-2;
+  @apply list-disc list-inside mb-5 space-y-2;
 }
 
 .prose ol {
-  @apply list-decimal list-outside mb-6 space-y-2 pl-6;
+  @apply list-decimal list-outside mb-5 space-y-2 pl-6;
 }
 
 .prose li {
@@ -718,7 +660,7 @@ a:hover {
   border: none;
   height: 1px;
   background-color: var(--color-surface-container);
-  @apply my-12;
+  @apply my-8;
 }
 
 /* External link styling */

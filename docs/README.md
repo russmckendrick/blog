@@ -77,7 +77,7 @@ pnpm run medium          # Cross-publish to Medium
 # Images
 pnpm run optimize        # Optimize all images
 pnpm run optimize <path> # Optimize specific directory
-pnpm run extract-colors  # Refresh hero gradient color data
+pnpm run extract-colors  # Refresh hero color data (currently unused but retained)
 pnpm run cache-link-previews     # Cache LinkPreview OG images
 pnpm run refresh-link-previews   # Refresh stale cached OG images
 

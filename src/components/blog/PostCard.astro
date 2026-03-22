@@ -53,27 +53,6 @@ const avatarSrc = post.data.avatar
 	: getDefaultAvatar();
 const avatarFallback = '/images/avatar-192x192.png';
 
-// Get the primary tag color for avatar glow
-const primaryTag = tags[0];
-const getAvatarGlowColor = () => {
-	if (!primaryTag || !TAG_METADATA[primaryTag]) {
-		return 'text-[var(--color-secondary)]';
-	}
-
-	const tagColorLight = TAG_METADATA[primaryTag].colorLight;
-
-	// Extract the text color class from tag metadata (e.g., "text-purple-700")
-	const textColorMatch = tagColorLight.match(/text-(\w+)-(\d+)/);
-	if (textColorMatch) {
-		const [, color, shade] = textColorMatch;
-		return `text-${color}-${shade} dark:text-${color}-400`;
-	}
-
-	return 'text-[var(--color-secondary)]';
-};
-
-const avatarGlowColor = getAvatarGlowColor();
-
 // Generate LQIP placeholder URL for blur-up effect
 // Skip LQIP for priority images to eliminate critical request chain (LCP optimization)
 const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
@@ -83,9 +62,9 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-[28px]">
+		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-xl">
 		<article
-			class={`relative surface-container-lowest ghost-border rounded-[28px] shadow-ambient overflow-hidden ${priority ? '' : 'transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]'}`}>
+			class={`relative surface-container-lowest rounded-xl shadow-ambient overflow-hidden ${priority ? '' : 'transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]'}`}>
 				{heroImage && (
 					<figure
 						class="relative overflow-hidden bg-cover bg-center bg-no-repeat"
@@ -123,7 +102,7 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 						/>
 					</figure>
 				)}
-			<div class="relative p-6 md:p-8 flex flex-col gap-6">
+			<div class="relative p-5 md:p-6 flex flex-col gap-6">
 				<header class="space-y-3">
 					<HeadingTag class="font-display text-2xl font-semibold tracking-tight text-on-surface">
 						{post.data.title}
@@ -137,7 +116,6 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 				<footer class="mt-1 text-sm flex flex-wrap items-center gap-x-2 gap-y-3">
 					<div class="flex items-center gap-2">
 						<div class="relative flex-shrink-0">
-							<div class={`absolute -inset-0.5 bg-gradient-to-r from-current to-current rounded-full opacity-60 blur-sm will-change-transform ${avatarGlowColor}`}></div>
 							<img
 								src={avatarSrc}
 								alt={author}
@@ -182,12 +160,12 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-3xl">
+		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-xl">
 		<article
-			class="relative surface-container-lowest ghost-border rounded-3xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]">
+			class="relative surface-container-lowest rounded-xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]">
 			<div class="flex flex-col lg:flex-row">
 				{/* Content side */}
-				<div class="relative p-8 lg:p-10 xl:p-12 flex flex-col gap-6 lg:w-1/2 order-2 lg:order-1">
+				<div class="relative p-6 lg:p-8 xl:p-10 flex flex-col gap-6 lg:w-1/2 order-2 lg:order-1">
 					<header class="space-y-4">
 						<HeadingTag class="font-display text-3xl lg:text-4xl font-bold tracking-tight text-on-surface leading-tight">
 							{post.data.title}
@@ -201,7 +179,6 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 					<footer class="mt-auto pt-4 text-sm flex flex-wrap items-center gap-x-4 gap-y-3">
 						<div class="flex items-center gap-3">
 							<div class="relative flex-shrink-0">
-								<div class={`absolute -inset-0.5 bg-gradient-to-r from-current to-current rounded-full opacity-60 blur-sm will-change-transform ${avatarGlowColor}`}></div>
 								<img
 									src={avatarSrc}
 									alt={author}
@@ -277,9 +254,9 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-surface)] rounded-2xl h-full">
+		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-surface)] rounded-xl h-full">
 		<article
-			class="relative surface-container-lowest ghost-border rounded-2xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl h-full flex flex-col">
+			class="relative surface-container-lowest rounded-xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl h-full flex flex-col">
 			{heroImage && (
 				<figure
 					class="relative overflow-hidden bg-cover bg-center bg-no-repeat"
@@ -311,13 +288,11 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 					/>
 				</figure>
 			)}
-			<div class="relative p-5 flex flex-col gap-3 flex-1">
-				{/* Avatar with glow effect */}
+			<div class="relative p-4 flex flex-col gap-3 flex-1">
+				{/* Avatar */}
 				{heroImage && (
 					<div class="absolute -top-5 right-4 z-10">
 						<div class="relative flex-shrink-0">
-							{/* Glow only on bottom half - clips the top portion */}
-							<div class={`absolute -inset-1 rounded-full opacity-60 blur-md will-change-transform ${avatarGlowColor}`} style="background: currentColor; clip-path: inset(40% -50% -50% -50%);"></div>
 							<img
 								src={avatarSrc}
 								alt={author}
@@ -367,9 +342,9 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-2xl">
+		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-xl">
 		<article
-			class="relative surface-container-lowest ghost-border rounded-2xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]">
+			class="relative surface-container-lowest rounded-xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]">
 			<div class="flex flex-col sm:flex-row">
 				{heroImage && (
 					<figure
@@ -415,7 +390,6 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 					)}
 					<footer class="mt-auto text-xs flex items-center gap-2">
 						<div class="relative flex-shrink-0">
-							<div class={`absolute -inset-0.5 bg-gradient-to-r from-current to-current rounded-full opacity-60 blur-sm will-change-transform ${avatarGlowColor}`}></div>
 							<img
 								src={avatarSrc}
 								alt={author}

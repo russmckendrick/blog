@@ -114,22 +114,23 @@ export default defineConfig({
 </a>
 ```
 
-### 4. Navigation Icon Links
+### 4. Navigation Links
 
-**Problem**: Header navigation uses icon-only links without text labels.
+**Previous state**: Header navigation used icon-only links without text labels.
 
-**Solution**: Keep `aria-label` on icon-only links and use a disclosure pattern for the mobile menu.
+**Current state**: Desktop navigation uses icon + text labels for better clarity. Each link still retains an `aria-label` for consistency.
 
 **File**: `src/components/layout/Header.astro`
 
 ```astro
-<!-- Desktop navigation -->
+<!-- Desktop navigation (icon + text) -->
 <a
   href={item.url}
-  class="header-nav-item ..."
+  class="header-nav-item ... flex items-center gap-1.5"
   aria-label={item.name}
 >
-  <Icon name={item.icon} />
+  <Icon name={item.icon} size={16} />
+  <span class="text-sm font-medium">{item.name}</span>
 </a>
 
 <!-- Mobile menu trigger -->

@@ -6,29 +6,29 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 
 - Keep the site content-first. Chrome should support reading, not compete with it.
 - Prefer compact navigation and strong content hierarchy over dense UI labels.
-- Use soft gradients, large rounded surfaces, and restrained motion instead of heavy decoration.
+- Use clean surfaces, consistent rounded corners, and restrained motion instead of heavy decoration.
 - Preserve the existing light-first visual language unless a page has a clear reason to diverge.
 
 ## Layout Conventions
 
 - Keep page content inside the established width containers:
-  - primary content: `max-w-6xl`
+  - homepage / tags / tunes: `max-w-7xl`
+  - blog posts: `max-w-5xl 2xl:max-w-6xl`
+  - blog list / archives / search / about: `max-w-5xl`
   - site shell/header/footer: `max-w-7xl`
-- Favor generous vertical spacing around hero cards, post grids, and section transitions.
 - Use rounded cards consistently:
-  - featured surfaces: `rounded-3xl`
-  - standard cards: `rounded-2xl`
-  - smaller pills/chips: fully rounded or subtle rounded corners
+  - all cards and containers: `rounded-xl`
+  - smaller pills/chips: fully rounded
 
 ## Header And Footer
 
 ### Header
 
-- Desktop navigation stays icon-only to keep the header visually light.
-- Every desktop icon link must keep an `aria-label`.
-- Do not add custom hover tooltips to desktop nav by default.
+- Desktop navigation uses icon + text labels for clarity.
+- Every nav link keeps an `aria-label`.
 - Keep the theme toggle icon-only on desktop.
-- Mobile navigation should use icon + text labels and follow a disclosure pattern with:
+- The header always uses a semi-transparent glass background (no transparent mode).
+- Mobile navigation uses icon + text labels and follows a disclosure pattern with:
   - `aria-controls`
   - `aria-expanded`
   - a screen-reader-only label that reflects open/closed state
@@ -53,9 +53,8 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 
 - Colors are defined as CSS custom properties in `src/styles/global.css` with automatic light/dark adaptation.
 - Use the **tonal layering** approach — separate sections with background shifts (`.surface`, `.surface-container-low`, etc.), not borders.
-- Do not use 1px borders for sectioning. Use `.ghost-border` only when accessibility requires a visible boundary.
-- Cards use `.surface-container-lowest` with `.shadow-ambient` and `.ghost-border`.
-- Hero gradients are dynamically extracted from post images and blend into `var(--color-surface)`.
+- Do not use 1px borders for sectioning. Use `.ghost-border` only in prose tables and code blocks.
+- Cards use `.surface-container-lowest` with `.shadow-ambient` (no ghost-border on cards).
 - Hover states should be visible but restrained. Avoid loud accent fills in navigation.
 - See [Design System](./design-system.md) for the full color token reference.
 
@@ -63,9 +62,11 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 
 - Limit transitions to interactive elements and cards.
 - Do not apply global transitions to every element.
+- Use scroll-reveal animations (`.reveal`, `.reveal-stagger`) for card grids and secondary content that scrolls into view. Do **not** apply reveal to above-the-fold content (hero sections, blog post articles).
 - Respect `prefers-reduced-motion` by disabling:
   - smooth scrolling
   - decorative animations
+  - scroll-reveal animations
   - view-transition animations where possible
 - Focus states should use `:focus-visible` and appear only on interactive elements.
 

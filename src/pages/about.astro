@@ -19,12 +19,11 @@ const defaultAvatarPath = `/images/avatars/avatar.svg`;
 		<Schema item={personSchema} />
 		<Schema item={organizationSchema} />
 	</Fragment>
-	<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+	<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 		<!-- Mobile: Avatar centered above header -->
 		<div class="flex justify-center mb-6 sm:hidden">
 			<div class="relative">
-				<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-600 rounded-full opacity-40 blur-md dark:from-blue-400 dark:to-blue-400"></div>
-				<div class="relative w-32 h-32 rounded-full overflow-hidden ring-4 ring-white dark:ring-gray-800 shadow-xl bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900">
+				<div class="relative w-32 h-32 rounded-full overflow-hidden ring-4 ring-white dark:ring-gray-800 shadow-xl bg-gray-200 dark:bg-gray-800">
 					<img
 						src={defaultAvatarPath}
 						alt="Russ McKendrick avatar"
@@ -37,8 +36,7 @@ const defaultAvatarPath = `/images/avatars/avatar.svg`;
 		<!-- Desktop: Avatar floated left -->
 		<div class="hidden sm:block sm:float-left sm:mr-6 sm:mb-4 sm:mt-2">
 			<div class="relative">
-				<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-600 rounded-full opacity-40 blur-md dark:from-blue-400 dark:to-blue-400"></div>
-				<div class="relative w-36 h-36 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden ring-4 ring-white dark:ring-gray-800 shadow-xl bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900">
+				<div class="relative w-36 h-36 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden ring-4 ring-white dark:ring-gray-800 shadow-xl bg-gray-200 dark:bg-gray-800">
 					<img
 						src={defaultAvatarPath}
 						alt="Russ McKendrick avatar"

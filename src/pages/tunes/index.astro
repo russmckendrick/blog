@@ -4,7 +4,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import HeroSection from '../../components/home/HeroSection.astro';
 import Pagination from '../../components/layout/Pagination.astro';
-import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../utils/hero-colors';
 
 // Tunes homepage shows 1 featured + 6 grid cards = 7 total
 const firstPagePosts = 7;
@@ -24,22 +23,10 @@ const totalPages = 1 + Math.ceil(Math.max(0, remainingPosts) / subsequentPagePos
 const featuredTune = tunes[0];
 const gridTunes = tunes.slice(1);
 
-// Get gradient colors from first tunes post's hero image
-const firstPostHeroImage = featuredTune?.data.heroImage || featuredTune?.data.cover?.image;
-const heroColors = getHeroColors(firstPostHeroImage);
-const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors));
 ---
 
 <BaseLayout title="Listened to This Week" description="My weekly music listening posts - what I've been enjoying on repeat">
-	<!-- Hero gradient background from first post -->
-	<section
-		class="hero-gradient-section absolute inset-x-0 top-0 -z-10 h-[70vh] min-h-[450px]"
-		style={gradientStyleString}
-	>
-		<div class="hero-gradient-bg absolute inset-0"></div>
-	</section>
-
-	<section class="max-w-6xl mx-auto px-5">
+	<section class="max-w-7xl mx-auto px-5">
 		<h1 class="sr-only">Listened to This Week</h1>
 
 		{/* Hero Section with Featured Tune */}
@@ -47,11 +34,13 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
 
 		{/* Grid of remaining tunes */}
 		{gridTunes.length > 0 && (
-			<div class="mt-8 sm:mt-10">
+			<div class="mt-6 sm:mt-8">
 				<h2 class="sr-only">More Tunes</h2>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch reveal-stagger">
 					{gridTunes.map((tune) => (
-						<PostCard post={tune} variant="grid" headingLevel="3" />
+						<div class="reveal">
+							<PostCard post={tune} variant="grid" headingLevel="3" />
+						</div>
 					))}
 				</div>
 			</div>

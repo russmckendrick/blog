@@ -51,7 +51,7 @@ const maxCount = sortedTags[0]?.count || 1;
     </p>
   </section>
 
-  <section class="max-w-6xl mx-auto px-5 py-12">
+  <section class="max-w-7xl mx-auto px-5 py-12">
     <div id="tags-container" class="flex flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-10">
       {sortedTags.map((tag, index) => {
         const sizeClass = getTagSizeClass(tag.count, maxCount);

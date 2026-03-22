@@ -5,7 +5,6 @@ import PostCard from '../components/blog/PostCard.astro';
 import HeroSection from '../components/home/HeroSection.astro';
 import Pagination from '../components/layout/Pagination.astro';
 import { SITE_TITLE, SITE_DESCRIPTION, CF_IMAGE_PRESETS } from '../consts';
-import { getHeroColors, gradientStylesToString, getGradientStyles } from '../utils/hero-colors';
 import { generateCFSrcSet } from '../utils/cloudflare-images';
 
 // Homepage shows 1 featured + 6 grid cards = 7 total
@@ -34,9 +33,6 @@ const preloadSrcSet = firstPostHeroImage ? generateCFSrcSet(
 	CF_IMAGE_PRESETS.thumbnailPriority.format
 ) : null;
 
-// Get gradient colors from first post's hero image
-const heroColors = getHeroColors(firstPostHeroImage);
-const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors));
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -50,15 +46,7 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
 			fetchpriority="high"
 		/>
 	)}
-	<!-- Hero gradient background from first post -->
-	<section
-		class="hero-gradient-section absolute inset-x-0 top-0 -z-10 h-[70vh] min-h-[450px]"
-		style={gradientStyleString}
-	>
-		<div class="hero-gradient-bg absolute inset-0"></div>
-	</section>
-
-	<section class="max-w-6xl mx-auto px-5">
+	<section class="max-w-7xl mx-auto px-5">
 		<h1 class="sr-only">{SITE_TITLE}</h1>
 
 		{/* Hero Section with Featured Post */}
@@ -66,11 +54,13 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
 
 		{/* Grid of remaining posts */}
 		{gridPosts.length > 0 && (
-			<div class="mt-8 sm:mt-10">
+			<div class="mt-6 sm:mt-8">
 				<h2 class="sr-only">More Posts</h2>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch reveal-stagger">
 					{gridPosts.map((post) => (
-						<PostCard post={post} variant="grid" headingLevel="3" />
+						<div class="reveal">
+							<PostCard post={post} variant="grid" headingLevel="3" />
+						</div>
 					))}
 				</div>
 			</div>

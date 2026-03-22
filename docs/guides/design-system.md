@@ -42,7 +42,7 @@ See `src/styles/global.css` for the complete dark mode token set.
 
 **1px solid borders are not used for sectioning.** Separation between regions (header, content, footer, pagination) is achieved through background color shifts. For example, the footer uses `.surface-container-low` against the page `.surface` background.
 
-When accessibility requires a visible container boundary, use the **ghost border**: `outline: var(--ghost-border)` — a 15% opacity outline that is felt, not seen.
+When accessibility requires a visible container boundary, use the **ghost border**: `outline: var(--ghost-border)` — a 15% opacity outline that is felt, not seen. Ghost borders are used in prose tables and code blocks but **not** on cards.
 
 ## Elevation & Depth
 
@@ -50,11 +50,11 @@ Shadows are used sparingly for floating elements, not for general card elevation
 
 | Token | Value | Usage |
 |---|---|---|
-| `--shadow-ambient` | `0 12px 40px rgba(25,28,29,0.04)` | Cards, header |
-| `--shadow-ambient-hover` | `0 16px 48px rgba(25,28,29,0.08)` | Card hover states |
-| `--ghost-border` | `1px solid rgba(196,197,213,0.15)` | Subtle container boundaries |
-| `--glass-bg` | `rgba(255,255,255,0.7)` | Glassmorphic header |
-| `--glass-blur` | `blur(16px)` | Backdrop blur for glass elements |
+| `--shadow-ambient` | `0 8px 24px rgba(25,28,29,0.05)` | Cards, header |
+| `--shadow-ambient-hover` | `0 12px 32px rgba(25,28,29,0.08)` | Card hover states |
+| `--ghost-border` | `1px solid rgba(196,197,213,0.15)` | Prose tables, code blocks |
+| `--glass-bg` | `rgba(255,255,255,0.85)` | Semi-transparent header |
+| `--glass-blur` | `blur(12px)` | Backdrop blur for glass elements |
 
 ## Typography
 
@@ -99,9 +99,8 @@ These classes are defined in `src/styles/global.css` and map directly to design 
 ## Component Patterns
 
 ### Header (`src/components/layout/Header.astro`)
-- Non-transparent state: `.glass .shadow-ambient` (no border)
-- Transparent state (blog posts): gradient overlay for readability over hero images
-- Scrolled state: glassmorphic with ambient shadow, defined in `.header-scrolled` CSS
+- Always uses `.glass .shadow-ambient` (semi-transparent background with subtle blur)
+- Desktop navigation uses icon + text labels for clarity
 - Mobile menu: `.surface-container-low` background shift (no `border-t`)
 
 ### Footer (`src/components/layout/Footer.astro`)
@@ -111,18 +110,18 @@ These classes are defined in `src/styles/global.css` and map directly to design 
 ### Post Cards (`src/components/blog/PostCard.astro`)
 Four variants (vertical, featured, grid, horizontal), all sharing:
 - `.surface-container-lowest` background
-- `.ghost-border` outline
 - `.shadow-ambient` elevation
-- Hover: `shadow-[0_16px_48px_rgba(25,28,29,0.08)]` + translate
+- `rounded-xl` border radius
+- Hover: enhanced shadow + translate
 - Headings: `.font-display`
 - Date accent: `color: var(--color-secondary)`
 - Tag colors: per-tag system from `consts.ts` (preserved, not overridden by design tokens)
 
 ### Blog Post Layout (`src/layouts/BlogPost.astro`)
-- Article card: `.surface-container-lowest .shadow-ambient .ghost-border`
-- Author info box: `.surface-container-low .ghost-border` (no colored border)
+- Article card: `.surface-container-lowest .shadow-ambient .rounded-xl`
+- Author info box: `.surface-container-low .rounded-xl`
 - Title: `.font-display` with `clamp(2.25rem, 5vw, 3.5rem)`
-- Hero gradient: dynamic colors from `hero-colors.json`, terminal color uses `var(--color-surface)`
+- Content width: `max-w-5xl 2xl:max-w-6xl`
 
 ### Pagination (`src/components/layout/Pagination.astro`)
 - `.surface-container-low` background with rounded corners (no `border-t`)
@@ -156,11 +155,23 @@ Four variants (vertical, featured, grid, horizontal), all sharing:
 - **Don't use dividers** — increase padding or change background tone instead
 - **Don't crowd margins** — maintain wide gutters on desktop
 
+## Scroll-Reveal Animations
+
+Elements can animate in as they scroll into view using CSS classes and an Intersection Observer script.
+
+| Class | Effect |
+|---|---|
+| `.reveal` | Fade in + slide up (24px) |
+| `.reveal-fade` | Fade in only |
+| `.reveal-scale` | Fade in + scale from 95% |
+| `.reveal-stagger` | Parent class that staggers `.reveal` children (80ms delay each) |
+
+All reveal animations respect `prefers-reduced-motion` and are disabled when the user prefers reduced motion. The Intersection Observer script is in both `BaseLayout.astro` and `BlogPost.astro`.
+
 ## Preserved Systems
 
 These existing systems are not overridden by the design tokens:
 
 - **Tag colors** — per-tag color pairs defined in `src/consts.ts` (`TAG_METADATA`)
-- **Hero gradients** — dynamic color extraction from post images (`src/data/hero-colors.json`)
 - **Dark mode toggle** — class-based (`.dark` on `<html>`), localStorage persistence
 - **Focus rings** — Tailwind `ring-blue-500/50` (functional, not decorative)
