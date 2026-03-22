@@ -426,6 +426,18 @@ a:hover {
 .reveal-stagger > .reveal:nth-child(8) { transition-delay: 560ms; }
 .reveal-stagger > .reveal:nth-child(9) { transition-delay: 640ms; }
 
+/* Stagger children — scale variant (for gallery grids) */
+.reveal-stagger > .reveal-scale:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger > .reveal-scale:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger > .reveal-scale:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger > .reveal-scale:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger > .reveal-scale:nth-child(5) { transition-delay: 320ms; }
+.reveal-stagger > .reveal-scale:nth-child(6) { transition-delay: 400ms; }
+.reveal-stagger > .reveal-scale:nth-child(7) { transition-delay: 480ms; }
+.reveal-stagger > .reveal-scale:nth-child(8) { transition-delay: 560ms; }
+.reveal-stagger > .reveal-scale:nth-child(9) { transition-delay: 640ms; }
+.reveal-stagger > .reveal-scale:nth-child(n+10) { transition-delay: 700ms; }
+
 /* Fade-in only (no vertical movement) */
 .reveal-fade {
   opacity: 0;

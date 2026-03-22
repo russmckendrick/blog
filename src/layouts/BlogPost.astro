@@ -326,13 +326,24 @@ const breadcrumbSchema = createBreadcrumbSchema(
 				if (!prose) return
 				if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-				const images = prose.querySelectorAll(':scope > p > img, :scope > img, :scope > astro-lightgallery')
+				const images = prose.querySelectorAll(':scope > p > img, :scope > img')
 				const blockquotes = prose.querySelectorAll(':scope > blockquote')
 				const codeBlocks = prose.querySelectorAll(':scope > .expressive-code, :scope > pre')
 
 				images.forEach(el => el.classList.add('reveal-scale'))
 				blockquotes.forEach(el => el.classList.add('reveal-slide'))
 				codeBlocks.forEach(el => el.classList.add('reveal-fade'))
+
+				const galleries = prose.querySelectorAll(':scope > .lightgallery-component')
+				galleries.forEach(gallery => {
+					const container = gallery.querySelector('.astro-lightgallery-adaptive-container')
+					if (container) {
+						container.classList.add('reveal-stagger')
+						container.querySelectorAll('.astro-lightgallery-adaptive-item').forEach(item => {
+							item.classList.add('reveal-scale')
+						})
+					}
+				})
 			}
 
 			initProseReveal()
