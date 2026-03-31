@@ -21,7 +21,9 @@ async function main() {
     // Parse command line arguments
     const args = process.argv.slice(2)
     const weekStartArg = args.find(arg => arg.startsWith('--week_start='))
+    const styleArg = args.find(arg => arg.startsWith('--style='))
     const debugMode = args.includes('--debug')
+    const styleOverride = styleArg ? styleArg.split('=')[1] : 'rotate'
 
     // Calculate week dates
     const weekStart = weekStartArg
@@ -127,8 +129,7 @@ async function main() {
       seed: dateSeed,
       width: 1400,
       height: 800,
-      strategy: 'pop-mix',
-      style: 'editorial_photoshoot',
+      style: styleOverride,
       debug: debugMode
     })
 

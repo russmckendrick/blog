@@ -203,7 +203,7 @@ function inferPeoplePresent(subjects) {
   return (subjects || []).some(subject => hasKeyword(subject, HUMAN_KEYWORDS))
 }
 
-function sanitizePalette(dominant, accent) {
+function sanitizePalette(dominant, accent, allowDark = false) {
   let safeDominant = String(dominant || '').trim()
   let safeAccent = String(accent || '').trim()
 
@@ -214,11 +214,13 @@ function sanitizePalette(dominant, accent) {
     safeAccent = 'hot magenta with warm amber highlights'
   }
 
-  if (hasKeyword(safeDominant, DARK_OR_MONO_KEYWORDS)) {
-    safeDominant = 'luminous cobalt and cyan'
-  }
-  if (hasKeyword(safeAccent, DARK_OR_MONO_KEYWORDS)) {
-    safeAccent = 'hot magenta with warm amber highlights'
+  if (!allowDark) {
+    if (hasKeyword(safeDominant, DARK_OR_MONO_KEYWORDS)) {
+      safeDominant = 'luminous cobalt and cyan'
+    }
+    if (hasKeyword(safeAccent, DARK_OR_MONO_KEYWORDS)) {
+      safeAccent = 'hot magenta with warm amber highlights'
+    }
   }
 
   if (safeAccent.toLowerCase() === safeDominant.toLowerCase()) {
@@ -228,7 +230,37 @@ function sanitizePalette(dominant, accent) {
   return { dominant: safeDominant, accent: safeAccent }
 }
 
-function normalizeBlueprint(rawBlueprint) {
+/**
+ * Simple deterministic hash for seed-based selection.
+ * Mixes bits so that similar seeds (e.g. consecutive weekly timestamps) produce varied indices.
+ */
+function hashSeed(seed) {
+  let h = Math.abs(seed) | 0
+  h = ((h >>> 16) ^ h) * 0x45d9f3b | 0
+  h = ((h >>> 16) ^ h) * 0x45d9f3b | 0
+  h = (h >>> 16) ^ h
+  return Math.abs(h)
+}
+
+/**
+ * Resolve the style profile name. If 'rotate', deterministically pick from
+ * available profiles using the provided seed.
+ */
+function resolveStyleProfile(style, seed) {
+  if (style && style !== 'rotate') {
+    return style
+  }
+  const allProfiles = Object.keys(config.prompts?.profiles || {})
+  const excluded = config.prompts?.excludeFromRotation || []
+  const profiles = allProfiles.filter(p => !excluded.includes(p))
+  if (profiles.length === 0) return allProfiles[0] || 'bold_cinematic'
+  const index = typeof seed === 'number' && !Number.isNaN(seed)
+    ? hashSeed(seed) % profiles.length
+    : Math.floor(Math.random() * profiles.length)
+  return profiles[index]
+}
+
+function normalizeBlueprint(rawBlueprint, allowDark = false) {
   const maxSecondaryElements = config.prompts?.maxSecondaryElements || 8
   const secondaryElements = Array.isArray(rawBlueprint?.secondary_elements)
     ? rawBlueprint.secondary_elements
@@ -237,7 +269,7 @@ function normalizeBlueprint(rawBlueprint) {
       .slice(0, maxSecondaryElements)
     : []
 
-  const palette = sanitizePalette(rawBlueprint?.palette?.dominant, rawBlueprint?.palette?.accent)
+  const palette = sanitizePalette(rawBlueprint?.palette?.dominant, rawBlueprint?.palette?.accent, allowDark)
   const mood = sanitizeVisualDescriptor(rawBlueprint?.mood, 'dramatic and energetic')
   const scene = sanitizeVisualDescriptor(
     rawBlueprint?.scene,
@@ -355,7 +387,8 @@ async function extractVisualBlueprint(imageUrls, style = 'editorial_photoshoot',
 
       const rawContent = response.choices?.[0]?.message?.content || ''
       const parsed = parseBlueprintResponse(rawContent)
-      const blueprint = normalizeBlueprint(parsed)
+      const profileConfig = config.prompts?.profiles?.[style] || {}
+      const blueprint = normalizeBlueprint(parsed, profileConfig.allow_dark_palette === true)
 
       if (debug || config.debug?.logPrompts) {
         console.log(`  ✓ Blueprint: ${JSON.stringify(blueprint)}`)
@@ -398,7 +431,7 @@ function buildPromptFromBlueprint(blueprint, style = 'editorial_photoshoot', sou
   const promptsConfig = config.prompts || {}
   const profileName = style || promptsConfig.profile || 'editorial_photoshoot'
   const profile = promptsConfig.profiles?.[profileName] || {}
-  const normalized = normalizeBlueprint(blueprint || {})
+  const normalized = normalizeBlueprint(blueprint || {}, profile.allow_dark_palette === true)
   const maxSecondaryElements = promptsConfig.maxSecondaryElements || 8
 
   const styleDirectives = (profile.style_directives || []).join(', ')
@@ -893,7 +926,10 @@ async function selectMostInterestingImages(imagePaths, count = 4, debug = false,
 
   let strategy = forceStrategy
   if (!strategy) {
-    if (strategySelection === 'random') {
+    if (strategySelection === 'seed' && typeof selectMostInterestingImages._seed === 'number') {
+      const idx = hashSeed(selectMostInterestingImages._seed + 7) % strategies.length
+      strategy = strategies[idx]
+    } else if (strategySelection === 'random') {
       strategy = strategies[Math.floor(Math.random() * strategies.length)]
     } else {
       strategy = strategies[0] // Default to first strategy
@@ -1105,9 +1141,18 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
     height = 800,
     seed,
     strategy = null,
-    style = config.prompts?.profile || 'bold_cinematic',
+    style: rawStyle = config.prompts?.profile || 'bold_cinematic',
     debug = process.env.DEBUG_COLLAGE === '1'
   } = options
+
+  // Resolve 'rotate' to a concrete profile using the seed
+  const style = resolveStyleProfile(rawStyle, seed)
+  if (rawStyle === 'rotate' || rawStyle !== style) {
+    console.log(`  🎨 Style rotation selected: ${style}`)
+  }
+
+  // Pass seed to strategy selector
+  selectMostInterestingImages._seed = seed
 
   // Validate FAL_KEY
   const falKey = process.env.FAL_KEY
@@ -1540,9 +1585,20 @@ Options:
   --height=<number>   Output height in pixels (default: 800)
   --seed=<number>     Random seed for reproducibility
   --strategy=<name>   Selection strategy: pop-mix, vibrant, diverse, balanced, random
-  --style=<name>      Prompt style profile (default: ${config.prompts?.profile || 'editorial_photoshoot'})
+  --style=<name>      Prompt style profile or 'rotate' for auto-selection (default: ${config.prompts?.profile || 'rotate'})
   --debug, -d         Enable debug output
   --help, -h          Show this help message
+
+Style Profiles:
+  rotate               - Auto-select based on seed (different each week)
+  studio_session       - Professional music photography (Leibovitz/Corbijn)
+  bold_cinematic       - Movie-poster realism with shaped lighting
+  collage_cutout       - DIY punk zine mixed-media collage
+  miniature_diorama    - Tilt-shift miniature world (Wes Anderson vibes)
+  retro_vinyl          - 70s-80s analog album cover aesthetic
+  surreal_dreamscape   - Surreal fantastical scene (Dali meets album art)
+  pop_art              - Bold graphic pop-art (Warhol/Lichtenstein)
+  painted_mural        - Painted street mural / gallery art (Basquiat/Fairey)
 
 Selection Strategies:
   pop-mix   - Deterministic blend of top vibrant images + color-diverse support
@@ -1691,7 +1747,8 @@ async function testFALCollage(cliArgs = []) {
 export { createFALCollage, selectMostInterestingImages, createGridComposition, detectTextScore }
 
 // Run test if executed directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+const __resolvedArgv1 = process.argv[1] ? new URL(process.argv[1], `file://${process.cwd()}/`).href : ''
+if (import.meta.url === __resolvedArgv1) {
   const args = process.argv.slice(2)
   testFALCollage(args).catch(error => {
     console.error('Test failed:', error)

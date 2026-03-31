@@ -14,7 +14,7 @@
     "minCount": 2,
     "maxCount": 14,
     "strategies": ["pop-mix", "vibrant", "diverse", "balanced", "random"],
-    "strategySelection": "first"
+    "strategySelection": "seed"
   },
   "scoring": {
     "saturationWeight": 0.4,
@@ -22,14 +22,15 @@
     "textPenaltyWeight": 0.3
   },
   "prompts": {
-    "profile": "editorial_photoshoot",
-    "temperature": 0.35,
-    "maxTokens": 320,
+    "profile": "rotate",
+    "excludeFromRotation": ["studio_session", "painted_mural"],
+    "temperature": 0.7,
+    "maxTokens": 400,
     "maxVisionImages": 10,
     "maxSecondaryElements": 8,
     "stageAMaxAttempts": 3,
     "stageARetryDelayMs": 3000,
-    "default": "Create a single cohesive high-end professional photograph for a music blog header. Keep the scene realistic, naturally lit, and grounded in a believable real-world environment. Use subjects directly from the uploaded source images, and include multiple people from the uploads when they are available. Maintain balanced exposure with clean highlights, soft shadows, and true-to-life color. Avoid theatrical effects and over-stylized poster composition. Remove all text and typography.",
+    "default": "Create a single cohesive high-end visual composition for a music blog header. Use subjects directly from the uploaded source images, and include multiple people from the uploads when they are available. The overall feel should be distinctive and visually striking. Remove all text and typography.",
     "negative": [
       "sepia wash",
       "muddy midtones",
@@ -42,10 +43,7 @@
       "flying debris",
       "floating disconnected objects",
       "fantasy props",
-      "extreme stage lighting",
       "cgi look",
-      "black-heavy composition",
-      "near-black background",
       "duplicate faces",
       "repeated face",
       "cloned person",
@@ -56,29 +54,30 @@
       "watermark"
     ],
     "profiles": {
-      "editorial_photoshoot": {
+      "studio_session": {
         "style_directives": [
-          "high-end professional photography",
-          "natural documentary-style realism",
-          "real materials, realistic perspective, and clean detail"
+          "professional music photography studio session",
+          "clean polished look with intentional styling",
+          "Annie Leibovitz or Anton Corbijn inspired portraiture",
+          "subjects look like they belong on a magazine spread or album inner sleeve"
         ],
         "composition_rules": [
-          "single coherent scene in a believable real-world location",
-          "if multiple source people exist, include a small group rather than a single person",
-          "use several source-derived supporting motifs for visual richness without clutter",
-          "all elements grounded with realistic scale and shadows",
-          "avoid crowded frame; keep clear breathing space"
+          "subjects as the clear focus with simple but striking environment",
+          "interesting location or minimal studio backdrop — never a generic street",
+          "confident poses and arrangements with editorial intent",
+          "rule of thirds framing with generous breathing room"
         ],
         "lighting_rules": [
-          "natural ambient daylight or practical location lighting",
-          "balanced highlights and shadow detail",
-          "avoid theatrical beams, staged spotlights, and harsh production lighting"
+          "professional two or three-point lighting setup",
+          "strong key light with controlled fill and subtle hair light",
+          "golden hour warmth or cool studio flash — pick one and commit"
         ],
         "color_rules": [
-          "natural photographic color balance",
-          "gentle color accents sampled from source imagery",
-          "avoid neon overload and heavy cinematic grading"
-        ]
+          "rich natural skin tones and true-to-life color",
+          "one or two accent colors from the source imagery woven into wardrobe or backdrop",
+          "avoid heavy grading; let the lighting do the work"
+        ],
+        "allow_dark_palette": false
       },
       "bold_cinematic": {
         "style_directives": [
@@ -102,11 +101,162 @@
           "deep cinematic base with clear tonal separation but lifted shadow detail",
           "strong accent colors sampled from source imagery",
           "avoid muddy shadows, pure black dominance, and monochrome sepia grading"
-        ]
+        ],
+        "allow_dark_palette": false
+      },
+      "collage_cutout": {
+        "style_directives": [
+          "DIY punk zine mixed-media collage aesthetic",
+          "torn paper edges, visible tape, and layered textures",
+          "hand-assembled look with intentional imperfections",
+          "inspired by Jamie Reid, Raymond Pettibon, and indie gig posters"
+        ],
+        "composition_rules": [
+          "overlapping torn and cut-out elements arranged on a textured background",
+          "subjects appear as clipped photographs layered over painted or printed surfaces",
+          "mix photography with hand-drawn marks, stamps, and texture",
+          "deliberate asymmetry and off-kilter angles"
+        ],
+        "lighting_rules": [
+          "mixed lighting from different source photographs creates intentional mismatch",
+          "harsh photocopied or overexposed quality on some elements",
+          "no unified lighting direction; each collage piece has its own light"
+        ],
+        "color_rules": [
+          "high contrast with limited color palette per layer",
+          "mix of black-and-white elements with selective vivid color pieces",
+          "xerox grain, halftone dots, and ink splatter textures"
+        ],
+        "allow_dark_palette": true
+      },
+      "miniature_diorama": {
+        "style_directives": [
+          "tilt-shift miniature world effect",
+          "subjects appear as detailed tiny figures in a handcrafted model",
+          "toy-like scale with exaggerated depth of field blur",
+          "inspired by Wes Anderson set design and architectural model photography"
+        ],
+        "composition_rules": [
+          "overhead or high-angle birds-eye perspective looking down on the scene",
+          "subjects arranged as miniature figures in a detailed tabletop world",
+          "visible craft materials: painted wood, felt, paper, and model-making supplies",
+          "the entire frame is the diorama; no real-world edges visible"
+        ],
+        "lighting_rules": [
+          "soft even overhead lighting as if from a desk lamp above a model",
+          "warm incandescent quality with gentle shadows",
+          "shallow depth of field with extreme bokeh blur at edges"
+        ],
+        "color_rules": [
+          "warm pastel and candy tones with high saturation",
+          "whimsical and cheerful palette",
+          "matte painted surfaces and craft-material textures"
+        ],
+        "allow_dark_palette": false
+      },
+      "retro_vinyl": {
+        "style_directives": [
+          "1970s-80s analog album cover photography aesthetic",
+          "warm film grain and soft halation on highlights",
+          "vintage Kodachrome or Ektachrome color rendering",
+          "slightly faded look with lifted blacks"
+        ],
+        "composition_rules": [
+          "classic album cover framing and proportions",
+          "subjects in relaxed, candid, or iconic poses",
+          "environmental portraiture in characterful locations",
+          "embrace visual imperfections and analog charm"
+        ],
+        "lighting_rules": [
+          "warm practical lighting or late-afternoon sunlight",
+          "soft diffused light with warm color temperature",
+          "allow lens flare and light leaks as stylistic elements"
+        ],
+        "color_rules": [
+          "warm amber and golden tones dominating the palette",
+          "desaturated cool tones with saturated warm accents",
+          "vintage cross-processed color shifts are welcome"
+        ],
+        "allow_dark_palette": true
+      },
+      "surreal_dreamscape": {
+        "style_directives": [
+          "surreal fantastical scene blending reality and imagination",
+          "unexpected juxtapositions of scale, setting, and subject",
+          "dreamlike atmosphere with hyperreal detail",
+          "inspired by Magritte, Dali, or album art like Pink Floyd and Yes"
+        ],
+        "composition_rules": [
+          "impossible or fantastical environment as the setting",
+          "subjects placed in unexpected contexts or scales",
+          "blend natural and surreal elements seamlessly",
+          "wide establishing shots showing the full dreamscape"
+        ],
+        "lighting_rules": [
+          "ethereal otherworldly lighting from impossible sources",
+          "luminous glowing elements within the scene",
+          "dramatic light-dark contrasts to enhance surreal mood"
+        ],
+        "color_rules": [
+          "vivid saturated colors in unexpected combinations",
+          "psychedelic or fantastical color palette",
+          "bold color contrasts between real and surreal elements"
+        ],
+        "allow_dark_palette": true
+      },
+      "pop_art": {
+        "style_directives": [
+          "bold graphic pop-art inspired composition",
+          "high contrast with flat color fields and strong outlines",
+          "inspired by Warhol, Lichtenstein, and comic book aesthetics",
+          "confident and punchy visual impact"
+        ],
+        "composition_rules": [
+          "graphic bold framing with strong geometric shapes",
+          "subjects rendered with flat color and high contrast",
+          "repetition or pattern elements for visual rhythm",
+          "simple direct composition with maximum impact"
+        ],
+        "lighting_rules": [
+          "flat even lighting to emphasize graphic quality",
+          "strong shadows used as graphic design elements",
+          "avoid subtle gradients; embrace hard edges"
+        ],
+        "color_rules": [
+          "primary and secondary colors at maximum saturation",
+          "bold complementary color pairs",
+          "flat color fields with minimal tonal variation"
+        ],
+        "allow_dark_palette": false
+      },
+      "painted_mural": {
+        "style_directives": [
+          "large-scale painted street mural or gallery painting aesthetic",
+          "visible brushstrokes, palette knife texture, and painterly quality",
+          "bold expressive mark-making rather than photographic realism",
+          "inspired by Basquiat, Shepard Fairey, and painted album covers like Bowie's Heroes"
+        ],
+        "composition_rules": [
+          "subjects rendered as painted portraits or figures, not photographs",
+          "raw canvas or brick wall texture visible beneath the paint",
+          "mix of tight detailed areas and loose expressive abstract passages",
+          "bold graphic shapes framing the painted subjects"
+        ],
+        "lighting_rules": [
+          "lighting implied through painted highlight and shadow rather than photographic light",
+          "strong contrast between light and dark painted areas",
+          "no photographic lighting effects; everything is paint on surface"
+        ],
+        "color_rules": [
+          "bold impasto color with visible paint mixing and texture",
+          "limited but punchy palette — three or four strong colors dominating",
+          "raw pigment intensity; colors look mixed on the surface not digitally blended"
+        ],
+        "allow_dark_palette": true
       }
     },
-    "gptVisionSystemPrompt": "You are a visual analyst for music artwork compositing. Analyze the provided album cover images and output ONLY valid JSON with this exact schema: {\"scene\":\"string\",\"hero_subject\":\"string\",\"secondary_elements\":[\"string\"],\"background_texture\":\"string\",\"palette\":{\"dominant\":\"string\",\"accent\":\"string\"},\"mood\":\"string\",\"allowed_subjects\":[\"string\"],\"people_present\":true}. Rules: choose one coherent real-world scene, choose one primary hero subject, choose up to 8 secondary elements, include allowed_subjects as concrete visible subjects from the source images only (not generic terms when details are visible), set people_present accurately, never mention album covers as objects, and never include markdown or prose.",
-    "gptVisionUserPrompt": "Analyze {count} representative source images (sampled from {source_count} total uploads) for style profile \"{style_profile}\". Ensure the blueprint can represent motifs from the full upload set. Select one coherent scene grounded in the uploads, only include subjects visibly present in the uploads, avoid imaginary subjects, and if people are present prioritize multiple distinct people from the source set with concrete descriptors. Provide at least 5 secondary elements when enough distinct motifs exist. Return only the JSON schema."
+    "gptVisionSystemPrompt": "You are a creative visual director for music artwork compositing. Analyze the provided album cover images and output ONLY valid JSON with this exact schema: {\"scene\":\"string\",\"hero_subject\":\"string\",\"secondary_elements\":[\"string\"],\"background_texture\":\"string\",\"palette\":{\"dominant\":\"string\",\"accent\":\"string\"},\"mood\":\"string\",\"allowed_subjects\":[\"string\"],\"people_present\":true}. Rules: choose one distinctive and visually striking scene (can be real-world, fantastical, surreal, or stylized depending on the style profile), choose one primary hero subject, choose up to 8 secondary elements, include allowed_subjects as concrete visible subjects from the source images only (not generic terms when details are visible), set people_present accurately, never mention album covers as objects, and never include markdown or prose.",
+    "gptVisionUserPrompt": "Analyze {count} representative source images (sampled from {source_count} total uploads) for style profile \"{style_profile}\". Be creative and adventurous with your scene selection — match the energy and spirit of the style profile rather than defaulting to safe choices. For surreal or fantastical profiles, embrace impossible scenes. For cinematic profiles, think big and dramatic. For editorial profiles, find striking and unexpected angles. Ensure the blueprint represents motifs from the full upload set. Only include subjects visibly present in the uploads, and if people are present prioritize multiple distinct people from the source set with concrete descriptors. Provide at least 5 secondary elements when enough distinct motifs exist. Return only the JSON schema."
   },
   "postprocess": {
     "enabled": true,
