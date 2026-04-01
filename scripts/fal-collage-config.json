@@ -131,26 +131,26 @@
       },
       "miniature_diorama": {
         "style_directives": [
-          "tilt-shift miniature world effect",
-          "subjects appear as detailed tiny figures in a handcrafted model",
-          "toy-like scale with exaggerated depth of field blur",
-          "inspired by Wes Anderson set design and architectural model photography"
+          "tilt-shift photography effect applied to a real-world scene",
+          "genuine photograph of a real location made to look miniature through selective focus",
+          "crisp sharp band of focus with smooth creamy bokeh above and below",
+          "inspired by tilt-shift photography by Vincent Laforet and Olivo Barbieri"
         ],
         "composition_rules": [
-          "overhead or high-angle birds-eye perspective looking down on the scene",
-          "subjects arranged as miniature figures in a detailed tabletop world",
-          "visible craft materials: painted wood, felt, paper, and model-making supplies",
-          "the entire frame is the diorama; no real-world edges visible"
+          "elevated or aerial viewpoint looking down at a real street, venue, or landscape",
+          "real people and real objects — not toys, models, or craft materials",
+          "the tilt-shift lens effect is what creates the miniature illusion, not the subjects",
+          "wide scene showing activity and life from above"
         ],
         "lighting_rules": [
-          "soft even overhead lighting as if from a desk lamp above a model",
-          "warm incandescent quality with gentle shadows",
-          "shallow depth of field with extreme bokeh blur at edges"
+          "bright natural daylight or warm golden hour sun",
+          "strong shadows that emphasize the miniature illusion",
+          "shallow depth of field with extreme bokeh blur at top and bottom edges"
         ],
         "color_rules": [
-          "warm pastel and candy tones with high saturation",
-          "whimsical and cheerful palette",
-          "matte painted surfaces and craft-material textures"
+          "boosted saturation to enhance the miniature effect",
+          "vivid punchy colors that look almost too perfect",
+          "warm color temperature with strong contrast"
         ],
         "allow_dark_palette": false
       },
