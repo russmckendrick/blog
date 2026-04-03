@@ -25,8 +25,7 @@ Copilot Cowork is currently only available through the Frontier programme, which
 
 The custom skill system builds on Cowork's built-in capabilities, so it helps to know what you're starting with.
 
-Cowork ships with 13 built-in skills: Word, Excel, PowerPoint, PDF, Email, Scheduling, Calendar Management, Meetings, Daily Briefing, Enterprise Search, Communications, Deep Research, and Adaptive Cards. Describe what you need in natural language, and Cowork creates a plan, loads the relevant skills, and works through the task step by step. It shows what it's doing at each stage and asks for approval before taking any irreversible actions, like sending an email or posting to Teams.
-
+Cowork ships with 13 built-in skills: Word, Excel, PowerPoint, PDF, Email, Scheduling, Calendar Management, Meetings, Daily Briefing, Enterprise Search, Communications, Deep Research, and Adaptive Cards. Describe what you need in natural language, and Cowork creates a plan, loads the relevant skills, and works through the task step by step. It shows what it's doing at each stage and asks for approval before taking irreversible actions, such as sending an email or posting on Teams.
 Cowork only works with files in OneDrive and SharePoint. If you're hoping to point it at something on your local machine, you'll be disappointed - that's by design, not an oversight.
 
 ## Where Custom Skills Come In
@@ -100,16 +99,14 @@ When asked to create a Word document, follow these conventions:
 
 The example above is deliberately simple. In practice, you'd tailor the instructions to match how your team actually works.
 
-### 3. Save and you're done
+### 3. Save, and you're done
 
-That's it (it's worryingly simple). Cowork discovers custom skills automatically at the start of each conversation. No registration, no restart. Save the file to OneDrive and the next conversation picks it up.
+That's it (it's worryingly simple). Cowork discovers custom skills automatically at the start of each conversation. No registration, no restart. Save the file to OneDrive, and the next conversation picks it up.
 
 ## How Cowork Uses Your Skills
 
-When you start a conversation, Cowork evaluates which skills are relevant and loads them, built-in and custom alike. The side panel updates in real time to show which are active, so you can confirm your custom skill has loaded before work starts.
-
-The description in the frontmatter drives this selection, so it's worth getting right. A vague description like "helps with documents" is much less useful than something specific: "generates consistently formatted branded Word documents - use this when creating formal reports or handover notes." The more specific you are, the more reliably Cowork picks the right skill.
-
+When you start a conversation, Cowork evaluates which skills are relevant and loads them, both built-in and custom. The side panel updates in real time to show which are active, so you can confirm your custom skill has loaded before work starts.
+The description in the front matter drives this selection, so it's worth getting right. A vague description like "helps with documents" is much less useful than something specific: "generates consistently formatted branded Word documents - use this when creating formal reports or handover notes." The more specific you are, the more reliably Cowork picks the right skill.
 ## A Few Things Worth Knowing
 
 - **It's a preview feature.** Frontier previews can and do change, so don't be surprised if the behaviour or format shifts over time. Microsoft's documentation is kept reasonably up to date, but worth checking back against the [official docs](https://learn.microsoft.com/en-us/copilot/microsoft-365/cowork/use-cowork) if something stops working as expected.
@@ -119,7 +116,7 @@ The description in the frontmatter drives this selection, so it's worth getting 
 
 ## Summary
 
-Custom skills in Copilot Cowork are straightforward to set up. A SKILL.md file in an OneDrive folder and Cowork picks it up automatically. The real value is being able to bake your team's working conventions directly into the model's context.
+Custom skills in Copilot Cowork are straightforward to set up. A SKILL.md file in a OneDrive folder, and Cowork picks it up automatically. The real value is being able to bake your team's working conventions directly into the model's context.
 
 I'll be honest, I was expecting more friction. No registration, no admin configuration required - it just works, which is more than you can say for some of the previous Copilot previews.
 
