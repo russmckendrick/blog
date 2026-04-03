@@ -32,30 +32,15 @@ const description = cachedData?.description || '';
 const linkUrl = id;
 ---
 
-<div class="my-6 rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800 overflow-hidden">
+<div class="link-preview-card my-6 rounded-xl overflow-hidden">
   <a
     href={linkUrl}
     target="_blank"
     rel="noopener noreferrer"
-    class="link-preview block no-underline text-inherit hover:no-underline"
+    class="link-preview flex flex-row items-stretch no-underline text-inherit hover:no-underline"
   >
-    {!hideMedia && imageUrl && !isFavicon && (
-      <div class="link-preview-image aspect-[1200/630] overflow-hidden bg-gray-100 dark:bg-gray-700">
-        <img
-          src={imageUrl}
-          srcset={srcSet || undefined}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 800px"
-          alt={imageAlt}
-          width="1200"
-          height="630"
-          loading="lazy"
-          decoding="async"
-          class="h-full w-full object-cover"
-        />
-      </div>
-    )}
-    <div class="p-4">
-      <div class="link-preview-title font-semibold text-gray-900 dark:text-gray-100 line-clamp-2 flex items-center gap-2">
+    <div class="flex-1 p-4 flex flex-col justify-center min-w-0">
+      <div class="link-preview-title font-bold line-clamp-2 flex items-center gap-2">
         {isFavicon && imageUrl && (
           <img
             src={imageUrl}
@@ -70,24 +55,87 @@ const linkUrl = id;
         {title}
       </div>
       {description && (
-        <div class="link-preview-description mt-1 text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+        <div class="link-preview-description mt-1 text-sm line-clamp-2">
           {description}
         </div>
       )}
-      <div class="link-preview-domain mt-2 text-xs text-gray-500 dark:text-gray-500">
+      <div class="link-preview-domain mt-2 text-xs">
         {domain}
       </div>
     </div>
+    {!hideMedia && imageUrl && !isFavicon && (
+      <div class="link-preview-image relative w-48 sm:w-56 flex-shrink-0">
+        <img
+          src={imageUrl}
+          srcset={srcSet || undefined}
+          sizes="224px"
+          alt={imageAlt}
+          width="1200"
+          height="630"
+          loading="lazy"
+          decoding="async"
+          class="absolute inset-0 h-full w-full object-cover !m-0"
+        />
+      </div>
+    )}
   </a>
 </div>
 
 <style>
+  .link-preview-card {
+    border: 1px solid var(--color-outline-variant, rgba(25, 28, 29, 0.2));
+    background: var(--color-surface-container-lowest, #ffffff);
+    box-shadow: var(--shadow-ambient, 0 8px 24px rgba(25, 28, 29, 0.05));
+    transition: box-shadow 0.2s ease;
+  }
+
+  .link-preview-card:hover {
+    box-shadow: var(--shadow-ambient-hover, 0 12px 32px rgba(25, 28, 29, 0.08));
+  }
+
   .link-preview {
     width: 100% !important;
     max-width: 100% !important;
+    text-decoration: none !important;
+    display: flex !important;
+    min-height: 0;
+  }
+
+  .link-preview:hover {
+    text-decoration: none !important;
+  }
+
+  .link-preview-image {
+    display: flex;
+    min-height: 100%;
+  }
+
+  .link-preview-image img {
+    margin: 0 !important;
+    aspect-ratio: auto !important;
+    height: 100% !important;
+    max-width: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  .link-preview-title {
+    color: var(--color-on-surface, #191c1d);
+    font-size: 1rem;
+    line-height: 1.4;
   }
 
   .link-preview:hover .link-preview-title {
-    color: var(--color-primary, #3b82f6);
+    color: var(--color-primary, #00288e);
+  }
+
+  .link-preview-description {
+    color: var(--color-on-surface-variant, #44474f);
+    line-height: 1.5;
+  }
+
+  .link-preview-domain {
+    color: var(--color-on-surface-variant, #44474f);
+    opacity: 0.6;
   }
 </style>
