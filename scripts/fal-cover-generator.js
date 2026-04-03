@@ -263,6 +263,7 @@ async function interactivePromptReview(initialPrompt, title, description, tags, 
  * @param {string} options.outputPath - Path to save the generated image
  * @param {number} options.width - Output width (default: 1400)
  * @param {number} options.height - Output height (default: 800)
+ * @param {string} options.prompt - Custom image prompt (skips auto-generation if provided)
  * @param {boolean} options.debug - Enable debug logging
  * @param {boolean} options.interactive - Enable interactive prompt review (default: true for CLI)
  * @returns {Promise<Object>} Result with output paths and metadata
@@ -272,6 +273,7 @@ async function generateCoverImage(options) {
     title,
     description,
     tags = [],
+    prompt: customPrompt,
     outputPath,
     width = 1400,
     height = 800,
@@ -297,8 +299,16 @@ async function generateCoverImage(options) {
     console.log(`  Tags: ${tags.join(', ') || 'none'}`)
   }
 
-  // Generate enhanced prompt
-  let prompt = await generateEnhancedPrompt(title, description, tags, debug)
+  // Use custom prompt or generate one
+  let prompt
+  if (customPrompt) {
+    if (debug) {
+      console.log(`  Using custom prompt: "${customPrompt}"`)
+    }
+    prompt = customPrompt
+  } else {
+    prompt = await generateEnhancedPrompt(title, description, tags, debug)
+  }
 
   // Interactive prompt review if enabled
   if (interactive) {
@@ -479,6 +489,7 @@ function parseArgs(args) {
     title: null,
     description: null,
     tags: [],
+    prompt: null,
     output: null,
     width: 1400,
     height: 800,
@@ -500,6 +511,8 @@ function parseArgs(args) {
       options.description = arg.split('=').slice(1).join('=')
     } else if (arg.startsWith('--tags=')) {
       options.tags = arg.split('=').slice(1).join('=').split(',').map(t => t.trim())
+    } else if (arg.startsWith('--prompt=')) {
+      options.prompt = arg.split('=').slice(1).join('=')
     } else if (arg.startsWith('--output=')) {
       options.output = arg.split('=').slice(1).join('=')
     } else if (arg.startsWith('--width=')) {
@@ -529,6 +542,7 @@ Options:
   --title=<string>        Blog post title (required)
   --description=<string>  Blog post description (required)
   --tags=<string>         Comma-separated tags (optional)
+  --prompt=<string>       Custom image prompt (skips auto-generation)
   --output=<path>         Output path for the image (default: ./test-output/cover.png)
   --width=<number>        Output width in pixels (default: 1400)
   --height=<number>       Output height in pixels (default: 800)
@@ -627,6 +641,7 @@ async function main(cliArgs = []) {
       title: options.title,
       description: options.description,
       tags: options.tags,
+      prompt: options.prompt,
       outputPath,
       width: options.width,
       height: options.height,

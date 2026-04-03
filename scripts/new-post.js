@@ -57,9 +57,16 @@ async function createBlogPost() {
 
   // Check if FAL.ai cover generation is available
   let generateAICover = false
+  let customPrompt = null
   if (isFALAvailable()) {
     const aiCoverInput = await question('Generate AI cover image? (y/n) [y]: ')
     generateAICover = aiCoverInput.toLowerCase() !== 'n'
+    if (generateAICover) {
+      const promptInput = await question('Image prompt (leave blank to auto-generate): ')
+      if (promptInput.trim()) {
+        customPrompt = promptInput.trim()
+      }
+    }
   } else {
     console.log('💡 Tip: Set FAL_KEY environment variable to enable AI cover generation')
   }
@@ -104,6 +111,7 @@ async function createBlogPost() {
         title,
         description,
         tags,
+        prompt: customPrompt,
         outputPath: coverImagePath,
         width: 1400,
         height: 800,
