@@ -38,7 +38,7 @@ Generate AI cover image? (y/n) [y]: y
 
 **Interactive options:**
 - **(y)es** - Accept the prompt and generate the image
-- **(e)dit** - Describe changes and GPT-4 will refine the prompt
+- **(e)dit** - Describe changes and GPT-5.4 will refine the prompt
 - **(r)egenerate** - Generate a completely new prompt from scratch
 - **(q)uit** - Skip AI generation and use placeholder
 

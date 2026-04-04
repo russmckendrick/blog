@@ -83,7 +83,7 @@ async function uploadImages(imagePaths, debug = false) {
 }
 
 /**
- * Generate a year-end themed prompt using GPT-4 Vision
+ * Generate a year-end themed prompt using GPT-5.4 Vision (Responses API)
  * @param {string[]} imageUrls - Array of uploaded album image URLs
  * @param {number} year - The year for the wrapped
  * @returns {Promise<string>} Generated prompt
@@ -95,30 +95,27 @@ async function generateYearEndPrompt(imageUrls, year) {
   }
 
   try {
-    console.log('  Analyzing images with GPT-4 Vision...')
+    console.log('  Analyzing images with GPT-5.4 Vision...')
 
-    // Prepare image content for GPT-4 Vision
     const imageContent = imageUrls.map(url => ({
-      type: 'image_url',
-      image_url: { url }
+      type: 'input_image',
+      image_url: url,
+      detail: 'auto'
     }))
 
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o',
-      messages: [
-        {
-          role: 'system',
-          content: `You are a professional photo compositor creating a prompt for a cinematic music blog header. Analyze the visual elements in these album covers (people, faces, buildings, objects, colors, patterns), then write a prompt that creates ONE unified photographic scene using these elements.
+    const response = await openai.responses.create({
+      model: 'gpt-5.4',
+      instructions: `You are a professional photo compositor creating a natural-language prompt for a cinematic music blog header image. Analyze the visual elements in these album covers (people, faces, buildings, objects, colors, patterns), then write a prompt that creates ONE unified photographic scene using these elements.
+
+Write the prompt as a vivid flowing scene description — every token should carry visual meaning. No labels, no structured sections, no JSON.
 
 CRITICAL CONCEPT:
 - Do NOT describe positioning album covers themselves
 - INSTEAD: Extract subjects/elements from the covers and blend them into a new unified scene
-- Think: "Take the people from cover A, the building from cover B, the colors from cover C, and composite them into one cinematic image"
 - The result should be a single cohesive photograph, not visible album covers
 
 Your prompt MUST:
-- Identify specific visual elements (e.g., 'the portrait from the yellow cover', 'the building from the blue cover')
-- Describe how to composite these ELEMENTS into one unified scene
+- Identify specific visual elements from the covers and describe how they composite into one unified scene
 - Use photographic techniques: double-exposure, color grading, composite layers, blend modes
 - Create a cohesive color palette across the entire scene
 - Result should look like a movie poster or editorial photo, not album covers
@@ -127,30 +124,31 @@ Your prompt MUST NOT:
 - Reference positioning album covers ('the first cover', 'stack the covers')
 - Use grid/arrangement language
 - Use painterly terms: watercolor, brushstrokes, mural
-- Describe album covers as objects - describe their CONTENTS as subjects`
-        },
+- Describe album covers as objects — describe their CONTENTS as subjects
+- Use labels like 'Scene:', 'Style:', 'Composition:' — just describe the image`,
+      input: [
         {
+          type: 'message',
           role: 'user',
           content: [
             {
-              type: 'text',
-              text: `Analyze these ${imageUrls.length} album covers and create a prompt for compositing them into a cinematic music blog header.
+              type: 'input_text',
+              text: `Analyze these ${imageUrls.length} album covers and create a natural-language prompt for compositing them into a cinematic music blog header.
 
-Format: Write 2-3 sentences. Identify the key visual elements from each cover, describe how to composite them into ONE unified cinematic scene, specify color treatment. End with 'Remove all text and typography except "${year}" which should appear as large centered text that is stylistically integrated into the artwork - using colors, lighting effects, or subtle glow that matches the overall composition.'`
+Write 2-3 vivid sentences as a flowing scene description. Identify the key visual elements from each cover, describe how to composite them into ONE unified cinematic scene, specify color treatment. End with 'Remove all text and typography except "${year}" which should appear as large centered text stylistically integrated into the artwork — using colors, lighting effects, or subtle glow that matches the overall composition.'`
             },
             ...imageContent
           ]
         }
       ],
-      max_tokens: 500,
       temperature: 0.8
     })
 
-    const prompt = response.choices[0].message.content.trim()
+    const prompt = (response.output_text || '').trim()
     console.log(`  Generated prompt:\n    "${prompt}"`)
     return prompt
   } catch (error) {
-    console.error(`  Warning: GPT-4 Vision failed: ${error.message}`)
+    console.error(`  Warning: GPT-5.4 Vision failed: ${error.message}`)
     return getDefaultPrompt(year)
   }
 }
@@ -272,7 +270,7 @@ export async function generateWrappedCover(albumImagePaths, outputPath, options 
 
   console.log(`  Uploaded ${albumUrls.length} album images`)
 
-  // Generate year-end prompt using GPT-4 Vision
+  // Generate year-end prompt using GPT-5.4 Vision
   const prompt = await generateYearEndPrompt(albumUrls, year)
 
   // Generate AI cover

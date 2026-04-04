@@ -25,7 +25,7 @@ try {
   process.exit(1)
 }
 
-// Initialize OpenAI client (optional - for enhanced prompts)
+// Initialize OpenAI client (optional - GPT-5.4 via Responses API for enhanced prompts)
 let openai = null
 if (process.env.OPENAI_API_KEY) {
   openai = new OpenAI({
@@ -34,7 +34,7 @@ if (process.env.OPENAI_API_KEY) {
 }
 
 /**
- * Generate an enhanced image prompt using OpenAI GPT-4
+ * Generate an enhanced image prompt using OpenAI GPT-5.4 (Responses API)
  * @param {string} title - Blog post title
  * @param {string} description - Blog post description
  * @param {string[]} tags - Blog post tags
@@ -51,27 +51,24 @@ async function generateEnhancedPrompt(title, description, tags = [], debug = fal
 
   try {
     if (debug) {
-      console.log('  Generating enhanced prompt with GPT-4...')
+      console.log('  Generating enhanced prompt with GPT-5.4...')
     }
 
-    const systemPrompt = config.prompts.gptSystemPrompt
+    const instructions = config.prompts.systemPrompt || config.prompts.gptSystemPrompt
 
-    const userPrompt = config.prompts.gptUserPromptTemplate
+    const userPrompt = (config.prompts.userPromptTemplate || config.prompts.gptUserPromptTemplate)
       .replace('${title}', title)
       .replace('${description}', description)
       .replace('${tags}', tags.length > 0 ? tags.join(', ') : 'general')
 
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o',
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userPrompt }
-      ],
-      max_tokens: 300,
+    const response = await openai.responses.create({
+      model: 'gpt-5.4',
+      instructions,
+      input: userPrompt,
       temperature: 0.8
     })
 
-    const enhancedPrompt = response.choices[0].message.content.trim()
+    const enhancedPrompt = (response.output_text || '').trim()
 
     if (debug) {
       console.log(`  ✓ Generated enhanced prompt: "${enhancedPrompt}"`)
@@ -162,7 +159,7 @@ function createSpinner(message) {
 }
 
 /**
- * Refine a prompt based on user feedback using GPT-4
+ * Refine a prompt based on user feedback using GPT-5.4
  */
 async function refinePrompt(originalPrompt, userFeedback, debug = false) {
   if (!openai) {
@@ -172,15 +169,12 @@ async function refinePrompt(originalPrompt, userFeedback, debug = false) {
 
   try {
     if (debug) {
-      console.log('  Refining prompt with GPT-4...')
+      console.log('  Refining prompt with GPT-5.4...')
     }
 
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o',
-      messages: [
-        {
-          role: 'system',
-          content: `You are helping refine an AI image generation prompt. The user will provide the current prompt and their feedback on what to change.
+    const response = await openai.responses.create({
+      model: 'gpt-5.4',
+      instructions: `You are helping refine an AI image generation prompt. The user will provide the current prompt and their feedback on what to change.
 
 CRITICAL RULES:
 1. ABSOLUTELY NO text, words, letters, numbers, code, or typography in the image
@@ -188,18 +182,12 @@ CRITICAL RULES:
 3. NO books with visible text
 4. NO signs, labels, or UI elements
 
-Apply the user's feedback while maintaining these rules. Output ONLY the refined prompt, nothing else. Keep it under 150 words.`
-        },
-        {
-          role: 'user',
-          content: `Current prompt:\n"${originalPrompt}"\n\nUser feedback:\n${userFeedback}\n\nGenerate the refined prompt.`
-        }
-      ],
-      max_tokens: 300,
+Apply the user's feedback while maintaining these rules. Output ONLY the refined prompt, nothing else. Keep it under 150 words.`,
+      input: `Current prompt:\n"${originalPrompt}"\n\nUser feedback:\n${userFeedback}\n\nGenerate the refined prompt.`,
       temperature: 0.7
     })
 
-    const refinedPrompt = response.choices[0].message.content.trim()
+    const refinedPrompt = (response.output_text || '').trim()
 
     if (debug) {
       console.log(`  ✓ Refined prompt generated`)
@@ -532,8 +520,8 @@ function showHelp() {
   console.log(`
 FAL.ai Blog Cover Generator
 
-Generates AI-powered blog cover images using FAL.ai's Gemini 3.1 Flash Image model.
-Uses OpenAI GPT-4 to create enhanced image prompts from your post metadata.
+Generates AI-powered blog cover images using FAL.ai's nano-banana-2 model.
+Uses OpenAI GPT-5.4 to create enhanced natural-language image prompts from your post metadata.
 
 Usage:
   node scripts/fal-cover-generator.js [options]
@@ -553,7 +541,7 @@ Options:
 Interactive Mode (default):
   By default, the script shows you the generated prompt and lets you:
   - (y)es: Accept the prompt and generate the image
-  - (e)dit: Describe changes and GPT-4 will refine the prompt
+  - (e)dit: Describe changes and GPT-5.4 will refine the prompt
   - (r)egenerate: Generate a completely new prompt
   - (q)uit: Cancel without generating
 
