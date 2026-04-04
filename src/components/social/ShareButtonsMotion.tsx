@@ -15,18 +15,18 @@ interface Props {
 export default function ShareButtonsMotion({ buttons }: Props) {
   return (
     <div className="surface-container-low rounded-xl px-6 py-5 mt-8">
-      <div className="flex items-center justify-center gap-4 flex-wrap">
+      <div className="flex flex-col items-center gap-3">
         <span className="text-sm text-on-surface-variant font-medium tracking-wide">
-          Share
+          Share Post
         </span>
-        <div className="flex items-center gap-3 flex-wrap">
+        <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-3 justify-items-center">
           {buttons.map((button) => (
             <motion.a
               key={button.name}
               href={button.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Share on ${button.name}`}
+              aria-label={`Share Post on ${button.name}`}
               className="share-icon surface-container-lowest ghost-border rounded-full p-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
               style={{
                 '--brand-light': button.brandColor,
