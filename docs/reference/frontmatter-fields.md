@@ -178,8 +178,9 @@ showToc: true
 ```
 
 **Behavior**:
-- Automatically generates from h2 and h3 headings
-- Collapsible component
+- Automatically generates from h2 and h3 headings (h2 only on tunes pages)
+- Inline collapsible component on smaller screens
+- Sticky sidebar with active section highlighting on wide screens (2xl+)
 - Smooth scrolling navigation
 
 ---

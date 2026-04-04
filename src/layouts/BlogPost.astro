@@ -11,6 +11,7 @@ import PostNavigation from '../components/blog/PostNavigation.astro';
 import Comments from '../components/blog/Comments.astro';
 import ShareButtons from '../components/social/ShareButtons.astro';
 import TableOfContents from '../components/blog/TableOfContents.astro';
+import StickyTableOfContents from '../components/blog/StickyTableOfContents.astro';
 import ReadingTime from '../components/blog/ReadingTime.astro';
 import RelatedPosts from '../components/blog/RelatedPosts.astro';
 import Breadcrumbs from '../components/navigation/Breadcrumbs.astro';
@@ -170,8 +171,9 @@ const breadcrumbSchema = createBreadcrumbSchema(
 		<main id="main-content" tabindex="-1" class="relative">
 			{/* Post card */}
 			<article class="relative pt-8 sm:pt-12">
-				<div class="max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
-					<div class="surface-container-lowest rounded-xl shadow-ambient overflow-hidden">
+				<div class="max-w-5xl 2xl:max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+					<div class:list={[showToc && headings.length > 0 ? '2xl:grid 2xl:grid-cols-[1fr_220px] 2xl:gap-8 2xl:items-start' : '']}>
+					<div class="surface-container-lowest rounded-xl shadow-ambient overflow-hidden min-w-0">
 						{/* Hero image inside the card - edge to edge with rounded top corners */}
 						{displayImage && (
 							<div class="relative animate-fade-in">
@@ -286,7 +288,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 						</header>
 
 						{showToc && headings.length > 0 && (
-							<div class="reveal-fade">
+							<div class="reveal-fade 2xl:hidden">
 								<TableOfContents headings={headings} />
 							</div>
 						)}
@@ -303,6 +305,13 @@ const breadcrumbSchema = createBreadcrumbSchema(
 							</div>
 						)}
 						</div>
+					</div>
+
+					{showToc && headings.length > 0 && (
+						<aside class="hidden 2xl:block sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
+							<StickyTableOfContents headings={headings} maxDepth={isTune ? 2 : 3} />
+						</aside>
+					)}
 					</div>
 
 					<div class="reveal">

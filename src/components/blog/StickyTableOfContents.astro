@@ -1,0 +1,195 @@
+---
+export interface Heading {
+  depth: number
+  text: string
+  slug: string
+}
+
+interface Props {
+  headings: Heading[]
+  maxDepth?: number
+}
+
+const { headings, maxDepth = 3 } = Astro.props
+const tocHeadings = headings.filter(h => h.depth <= maxDepth)
+---
+
+{tocHeadings.length > 0 && (
+  <nav class="sticky-toc" aria-label="Table of contents">
+    <p class="sticky-toc-label">On this page</p>
+    <ul class="sticky-toc-list">
+      {tocHeadings.map((heading) => (
+        <li>
+          <a
+            href={`#${heading.slug}`}
+            class:list={[
+              'sticky-toc-link',
+              { 'sticky-toc-link--nested': heading.depth === 3 }
+            ]}
+            data-toc-link
+            data-heading-slug={heading.slug}
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .sticky-toc {
+    padding-top: 0.25rem;
+  }
+
+  .sticky-toc-label {
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-on-surface-variant);
+    margin-bottom: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  .sticky-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 1px solid var(--color-surface-container-high);
+  }
+
+  .sticky-toc-link {
+    display: block;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    padding: 0.3rem 0.75rem;
+    color: var(--color-on-surface-variant);
+    opacity: 0.65;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+    transition: color 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .sticky-toc-link:hover {
+    opacity: 1;
+    color: var(--color-on-surface);
+  }
+
+  .sticky-toc-link--nested {
+    padding-left: 1.25rem;
+    font-size: 0.75rem;
+  }
+
+  .sticky-toc-link.active {
+    opacity: 1;
+    color: var(--color-primary);
+    border-left-color: var(--color-secondary);
+    font-weight: 500;
+  }
+
+  /* Thin scrollbar for long TOCs */
+  .sticky-toc-list::-webkit-scrollbar {
+    width: 3px;
+  }
+  .sticky-toc-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .sticky-toc-list::-webkit-scrollbar-thumb {
+    background: var(--color-surface-container-high);
+    border-radius: 3px;
+  }
+</style>
+
+<script>
+  let cleanupStickyToc: (() => void) | undefined
+
+  function initStickyToc() {
+    cleanupStickyToc?.()
+
+    requestAnimationFrame(() => {
+      const tocLinks = document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]')
+      if (!tocLinks.length) return
+
+      const slugs = Array.from(tocLinks).map(link => link.dataset.headingSlug!)
+      const headingElements = slugs
+        .map(slug => document.getElementById(slug))
+        .filter((el): el is HTMLElement => el !== null)
+
+      if (!headingElements.length) return
+
+      const controller = new AbortController()
+      const { signal } = controller
+      let activeSlug: string | null = null
+
+      function setActive(slug: string | null) {
+        if (slug === activeSlug) return
+        activeSlug = slug
+        tocLinks.forEach(link => {
+          link.classList.toggle('active', link.dataset.headingSlug === slug)
+        })
+      }
+
+      // IntersectionObserver: heading becomes active when it enters the top 30% of viewport
+      const observer = new IntersectionObserver(
+        (entries) => {
+          // Find the topmost intersecting heading
+          const intersecting = entries
+            .filter(e => e.isIntersecting)
+            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+
+          if (intersecting.length > 0) {
+            setActive(intersecting[0].target.id)
+          }
+        },
+        { rootMargin: '0px 0px -70% 0px', threshold: 0 }
+      )
+
+      headingElements.forEach(el => observer.observe(el))
+
+      // Scroll fallback: when scrolled to bottom, activate last heading
+      // Also handles the case where user scrolls up past all headings
+      function handleScroll() {
+        const scrollY = window.scrollY
+        const docHeight = document.documentElement.scrollHeight
+        const winHeight = window.innerHeight
+
+        // Near bottom of page — activate last heading
+        if (scrollY + winHeight >= docHeight - 50) {
+          const lastSlug = slugs[slugs.length - 1]
+          if (lastSlug) setActive(lastSlug)
+          return
+        }
+
+        // Near top — find the last heading above viewport top
+        if (scrollY < 100) {
+          setActive(null)
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll, { signal, passive: true })
+
+      // Set initial active state
+      handleScroll()
+
+      cleanupStickyToc = () => {
+        observer.disconnect()
+        controller.abort()
+      }
+    })
+  }
+
+  initStickyToc()
+  document.addEventListener('astro:page-load', initStickyToc)
+  document.addEventListener('astro:before-swap', () => {
+    cleanupStickyToc?.()
+    cleanupStickyToc = undefined
+  })
+</script>

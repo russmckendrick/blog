@@ -217,7 +217,8 @@ graph TD
 **Blog Components** (`src/components/blog/`):
 - `PostCard.astro` - Blog post preview cards
 - `RelatedPosts.astro` - Tag-based related posts
-- `TableOfContents.astro` - Auto-generated ToC
+- `TableOfContents.astro` - Inline collapsible ToC
+- `StickyTableOfContents.astro` - Sticky sidebar ToC with scroll-aware active highlighting (2xl+)
 - `ReadingTime.astro` - Reading time estimate
 
 **Embed Components** (`src/components/embeds/`):

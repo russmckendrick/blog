@@ -389,6 +389,8 @@ Automatically generates ToC from h2 and h3 headings:
 #### Details         # Not included
 ```
 
+On wide screens (2xl / 1536px+), a sticky sidebar ToC appears to the right of the content with active section highlighting on scroll. The inline collapsible ToC is hidden at this breakpoint. On tunes pages, the sticky sidebar only shows h2 headings to keep the list manageable.
+
 ## Avatars
 
 ### Automatic Selection
