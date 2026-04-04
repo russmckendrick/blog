@@ -17,38 +17,30 @@ const tocHeadings = headings.filter(h => h.depth <= 3);
 
 {tocHeadings.length > 0 && (
   <nav class="toc-wrapper mb-10">
-    <details class="group bg-blue-50/50 dark:bg-blue-950/30 rounded-xl border border-blue-200/60 dark:border-blue-800/40 shadow-sm" id="toc-details">
-      <summary class="cursor-pointer select-none px-6 py-4 font-semibold text-gray-900 dark:text-gray-100 flex items-center justify-between hover:bg-blue-100/50 dark:hover:bg-blue-900/30 rounded-xl transition-colors">
+    <details class="group surface-container-low rounded-xl shadow-ambient" id="toc-details">
+      <summary class="toc-summary cursor-pointer select-none px-6 py-4 font-semibold flex items-center justify-between rounded-xl transition-colors">
         <span class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="toc-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
           </svg>
           Table of Contents
         </span>
-        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="toc-chevron w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
         </svg>
       </summary>
-      <div class="px-6 pb-4 pt-2">
-        <ol class="space-y-2 text-sm">
+      <div class="px-6 pb-5 pt-1">
+        <ol class="toc-list">
           {tocHeadings.map((heading) => (
-            <li
-              class:list={[
-                'leading-relaxed',
-                {
-                  'ml-0': heading.depth === 2,
-                  'ml-4': heading.depth === 3,
-                }
-              ]}
-            >
+            <li>
               <a
                 href={`#${heading.slug}`}
-                class="group/link inline-flex items-start gap-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                class:list={[
+                  'toc-link',
+                  { 'toc-link--nested': heading.depth === 3 }
+                ]}
               >
-                <span class="text-blue-400/60 dark:text-blue-500/60 group-hover/link:text-blue-600 dark:group-hover/link:text-blue-400 transition-colors">
-                  {heading.depth === 2 ? '•' : '◦'}
-                </span>
-                <span>{heading.text}</span>
+                {heading.text}
               </a>
             </li>
           ))}
@@ -57,6 +49,53 @@ const tocHeadings = headings.filter(h => h.depth <= 3);
     </details>
   </nav>
 )}
+
+<style>
+  .toc-summary {
+    color: var(--color-on-surface);
+  }
+
+  .toc-summary:hover {
+    background: var(--color-surface-container);
+  }
+
+  .toc-icon {
+    color: var(--color-secondary);
+  }
+
+  .toc-chevron {
+    color: var(--color-on-surface-variant);
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 1px solid var(--color-surface-container-high);
+  }
+
+  .toc-link {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    padding: 0.3rem 0.75rem;
+    color: var(--color-on-surface-variant);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .toc-link:hover {
+    color: var(--color-primary);
+    border-left-color: var(--color-secondary);
+  }
+
+  .toc-link--nested {
+    padding-left: 1.5rem;
+    font-size: 0.8125rem;
+  }
+</style>
 
 <script>
   let cleanupToc: (() => void) | undefined
