@@ -37,7 +37,7 @@ const linkUrl = id;
     href={linkUrl}
     target="_blank"
     rel="noopener noreferrer"
-    class="link-preview flex flex-row items-stretch no-underline text-inherit hover:no-underline"
+    class="link-preview flex flex-col-reverse sm:flex-row items-stretch no-underline text-inherit hover:no-underline"
   >
     <div class="flex-1 p-4 flex flex-col justify-center min-w-0">
       <div class="link-preview-title font-bold line-clamp-2 flex items-center gap-2">
@@ -64,17 +64,17 @@ const linkUrl = id;
       </div>
     </div>
     {!hideMedia && imageUrl && !isFavicon && (
-      <div class="link-preview-image relative w-48 sm:w-56 flex-shrink-0">
+      <div class="link-preview-image relative aspect-[1200/630] sm:aspect-auto sm:flex-[0_0_35%]">
         <img
           src={imageUrl}
           srcset={srcSet || undefined}
-          sizes="224px"
+          sizes="(max-width: 640px) 100vw, 35vw"
           alt={imageAlt}
           width="1200"
           height="630"
           loading="lazy"
           decoding="async"
-          class="absolute inset-0 h-full w-full object-cover !m-0"
+          class="sm:absolute sm:inset-0 h-full w-full object-cover !m-0"
         />
       </div>
     )}

@@ -116,11 +116,16 @@ Generate rich link previews automatically with locally cached images.
 - `id` - URL to preview (required)
 - `hideMedia` - Hide image/video, show only text metadata (optional boolean)
 
+**Layout:**
+- **Desktop**: Medium-style horizontal card — text on the left (~65%), image thumbnail on the right (~35%)
+- **Mobile**: Stacked vertically with image on top, text below
+
 **Features:**
 - ✅ Automatic metadata extraction
 - ✅ OG images cached locally at build time (`public/assets/link-previews/`)
 - ✅ Images served via Cloudflare Image Transformations for optimization
 - ✅ Responsive srcset for different screen sizes
+- ✅ Responsive layout (horizontal on desktop, stacked on mobile)
 - ✅ Optional media hiding for text-only previews
 - ✅ Fallback to external URL if local image unavailable
 - ✅ Weekly refresh via GitHub Actions workflow
