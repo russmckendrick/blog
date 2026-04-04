@@ -10,7 +10,7 @@ import OpenAI from 'openai'
 // Load environment variables
 dotenv.config()
 
-// Initialize OpenAI client
+// Initialize OpenAI client (Responses API for GPT-5.4)
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 })
@@ -192,7 +192,9 @@ function sleep(ms) {
 
 function extractTimedOutUrl(error) {
   const message = String(error?.message || '')
-  const match = message.match(/Timeout while downloading\s+(https?:\/\/\S+)/i)
+  // Match OpenAI timeout messages or any error containing a URL after timeout/download keywords
+  const match = message.match(/(?:Timeout|timed?\s*out|download|fetch)\S*\s+(https?:\/\/\S+)/i)
+    || message.match(/(https?:\/\/\S+)\S*\s+(?:timeout|timed?\s*out|failed|error)/i)
   if (!match || !match[1]) {
     return null
   }
@@ -317,7 +319,7 @@ async function extractVisualBlueprint(imageUrls, style = 'editorial_photoshoot',
   const promptsConfig = config.prompts || {}
   const maxAttempts = promptsConfig.stageAMaxAttempts || 3
   const retryDelayMs = promptsConfig.stageARetryDelayMs || 3000
-  const userTemplate = promptsConfig.gptVisionUserPrompt
+  const userTemplate = promptsConfig.visionUserPrompt || promptsConfig.gptVisionUserPrompt
     || 'Analyze these {count} source images for style profile "{style_profile}" and return only the JSON schema.'
   const excludedUrls = new Set()
 
@@ -329,7 +331,7 @@ async function extractVisualBlueprint(imageUrls, style = 'editorial_photoshoot',
   }
 
   if (debug || config.debug?.logPrompts) {
-    console.log('  Stage A: extracting structured visual blueprint with GPT-4o...')
+    console.log('  Stage A: extracting structured visual blueprint with GPT-5.4...')
   }
 
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
@@ -357,35 +359,35 @@ async function extractVisualBlueprint(imageUrls, style = 'editorial_photoshoot',
         .replaceAll('{style_profile}', style)
 
       const imageContent = analysisImageUrls.map(url => ({
-        type: 'image_url',
-        image_url: { url }
+        type: 'input_image',
+        image_url: url,
+        detail: 'auto'
       }))
 
-      const response = await openai.chat.completions.create({
-        model: 'gpt-4o',
-        response_format: { type: 'json_object' },
-        messages: [
+      const systemPrompt = promptsConfig.visionSystemPrompt || promptsConfig.gptVisionSystemPrompt
+        || 'Return only valid JSON for hero_subject, secondary_elements, background_texture, palette, and mood.'
+
+      const response = await openai.responses.create({
+        model: 'gpt-5.4',
+        instructions: systemPrompt,
+        input: [
           {
-            role: 'system',
-            content: promptsConfig.gptVisionSystemPrompt
-              || 'Return only valid JSON for hero_subject, secondary_elements, background_texture, palette, and mood.'
-          },
-          {
+            type: 'message',
             role: 'user',
             content: [
               {
-                type: 'text',
+                type: 'input_text',
                 text: userText
               },
               ...imageContent
             ]
           }
         ],
-        max_tokens: promptsConfig.maxTokens || 320,
+        text: { format: { type: 'json_object' } },
         temperature: promptsConfig.temperature ?? 0.35
       })
 
-      const rawContent = response.choices?.[0]?.message?.content || ''
+      const rawContent = response.output_text || ''
       const parsed = parseBlueprintResponse(rawContent)
       const profileConfig = config.prompts?.profiles?.[style] || {}
       const blueprint = normalizeBlueprint(parsed, profileConfig.allow_dark_palette === true)
@@ -432,7 +434,6 @@ function buildPromptFromBlueprint(blueprint, style = 'editorial_photoshoot', sou
   const profileName = style || promptsConfig.profile || 'editorial_photoshoot'
   const profile = promptsConfig.profiles?.[profileName] || {}
   const normalized = normalizeBlueprint(blueprint || {}, profile.allow_dark_palette === true)
-  const maxSecondaryElements = promptsConfig.maxSecondaryElements || 8
 
   const styleDirectives = (profile.style_directives || []).join(', ')
   const compositionRules = (profile.composition_rules || []).join(', ')
@@ -441,39 +442,44 @@ function buildPromptFromBlueprint(blueprint, style = 'editorial_photoshoot', sou
   const secondaryElements = normalized.secondary_elements.length > 0
     ? normalized.secondary_elements.join(', ')
     : 'subtle silhouettes and geometric forms'
-  const allowedSubjects = normalized.allowed_subjects.length > 0
-    ? normalized.allowed_subjects.join(', ')
-    : `${normalized.hero_subject}, ${secondaryElements}`
   const negativeTerms = (promptsConfig.negative || []).join(', ')
 
+  const peopleRule = normalized.people_present
+    ? 'Only depict people visible in the source images; each person appears once — never clone, mirror, or invent faces.'
+    : 'Do not generate any people or faces unless clearly visible in the source images.'
+
   const promptParts = [
-    promptsConfig.default
-      || 'Create a single cohesive cinematic music blog header from the source images.',
-    `Style profile: ${profileName}.`,
-    sourceImageCount > 0
-      ? `Incorporate a distinct visual motif from all ${sourceImageCount} source images; do not ignore any source image.`
-      : '',
-    `Hero subject in foreground: ${normalized.hero_subject}.`,
-    `Scene selected from Stage A: ${normalized.scene}. Keep a single coherent scene and do not switch environments.`,
-    `Secondary elements (supporting motifs, max ${maxSecondaryElements}): ${secondaryElements}.`,
-    `Background texture: ${normalized.background_texture}.`,
+    // Scene description — the core creative direction
+    normalized.scene,
+
+    // Style and aesthetic
+    `${styleDirectives || 'editorial realism, crisp details, clean compositing'}.`,
+
+    // Hero and supporting elements
+    `Hero subject: ${normalized.hero_subject}.`,
+    `Supporting elements: ${secondaryElements}.`,
+    `Background: ${normalized.background_texture}.`,
+
+    // Mood and color
     `Mood: ${normalized.mood}.`,
-    `Color direction: dominant ${normalized.palette.dominant}; vivid accent ${normalized.palette.accent}.`,
-    `Subject lock: use only visible subjects from the uploaded source images. Allowed subjects: ${allowedSubjects}.`,
-    normalized.people_present
-      ? 'Human subject rule: if people are present, only depict people/faces that are directly visible in the uploaded source images; do not create extra people. Use multiple people from the uploaded images when available (target 2-10 people in-frame for group-rich sets). Every depicted person must be unique and appear only once; do not clone, mirror, duplicate, or repeat the same face. If fewer unique people are visible in the uploads, use fewer people rather than inventing or repeating faces.'
-      : 'Human subject rule: do not generate any people, faces, or human figures unless they are clearly visible in the uploaded source images.',
-    'Exposure requirements: keep most of the frame in mid and high exposure with visible shadow detail; avoid black void backgrounds.',
-    'Render the hero subject with illuminated surfaces and color reflections, not as a matte-black silhouette.',
-    `Composition requirements: ${compositionRules || 'one clear focal subject, layered depth, intentional negative space'}.`,
-    `Lighting requirements: ${lightingRules || 'natural ambient location lighting, soft contrast, no staged spotlights'}.`,
-    `Color requirements: ${colorRules || 'neutral base and controlled vivid accent, avoid monochrome grading'}.`,
-    `Style directives: ${styleDirectives || 'editorial realism, crisp details, clean compositing'}.`,
-    'Remove all text and typography.',
+    `Dominant color: ${normalized.palette.dominant}; accent: ${normalized.palette.accent}.`,
+
+    // Composition and lighting from style profile
+    `${compositionRules || 'one clear focal subject, layered depth, intentional negative space'}.`,
+    `${lightingRules || 'natural ambient location lighting, soft contrast'}.`,
+    `${colorRules || 'neutral base and controlled vivid accent, avoid monochrome grading'}.`,
+
+    // Constraints
+    sourceImageCount > 0
+      ? `Incorporate visual motifs from all ${sourceImageCount} source images.`
+      : '',
+    peopleRule,
+    'Mid-to-high exposure with visible shadow detail; illuminated surfaces, not matte-black silhouettes.',
+    'No text, typography, logos, or watermarks.',
     negativeTerms ? `Avoid: ${negativeTerms}.` : ''
   ]
 
-  return promptParts.join(' ').replace(/\s+/g, ' ').trim()
+  return promptParts.filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
 }
 
 async function buildCollagePrompt(imageUrls, style = 'editorial_photoshoot', debug = false) {

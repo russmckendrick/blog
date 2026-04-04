@@ -167,7 +167,7 @@ An AI-powered generator using FAL.ai edit models:
 - **Selection**: Analyzes all albums and selects up to 14 covers using configurable strategies
 - **Default Strategy**: Deterministic `pop-mix` for consistent, high-impact outputs
 - **Two-Stage Prompting**:
-  - Stage A: GPT-4o Vision extracts a structured visual blueprint (JSON) from a representative subset of uploads for stability on large sets
+  - Stage A: GPT-5.4 Vision (via Responses API) extracts a structured visual blueprint (JSON) from a representative subset of uploads for stability on large sets
   - Stage A now chooses one coherent scene that Stage B uses directly
   - Stage A now extracts richer supporting motifs (`secondary_elements`) for denser compositions
   - Stage B: Prompt is assembled deterministically from style profile + blueprint
@@ -176,7 +176,7 @@ An AI-powered generator using FAL.ai edit models:
 - **Post-Processing**: Optional Sharp finishing pass (contrast, saturation, brightness, lift, sharpen)
 - **Output**: 2K resolution PNG + resized `-small` variant
 - **API**: Requires `FAL_KEY` and `OPENAI_API_KEY` environment variables
-- **Cost**: Uses FAL.ai and OpenAI API credits
+- **Cost**: Uses FAL.ai and OpenAI (GPT-5.4) API credits
 
 **Selection Strategies:**
 
@@ -199,7 +199,7 @@ Default strategy is deterministic via config (`strategySelection: "first"`):
 6. If all images fit within `maxCount`, uses them all directly (skips strategy selection)
 7. Otherwise, selects up to 14 images based on the chosen strategy
 8. Resizes images to 800×800 for upload
-9. Uses GPT-4o Vision to extract a JSON visual blueprint (up to `prompts.maxVisionImages` images, sampled from the full set)
+9. Uses GPT-5.4 Vision (Responses API) to extract a JSON visual blueprint (up to `prompts.maxVisionImages` images, sampled from the full set)
 10. Stage A selects one coherent scene and captures up to `prompts.maxSecondaryElements` supporting motifs
 11. Retries Stage A on transient failures (`prompts.stageAMaxAttempts`) with delay (`prompts.stageARetryDelayMs`), smaller analysis batches, and timed-out URL exclusion
 12. Builds final prompt deterministically from style profile + blueprint (including the chosen scene)
@@ -249,7 +249,7 @@ Default strategy is deterministic via config (`strategySelection: "first"`):
     "stageAMaxAttempts": 3,
     "stageARetryDelayMs": 3000,
     "negative": ["sepia wash", "muddy midtones", "..."],
-    "gptVisionSystemPrompt": "You are an expert art director..."
+    "visionSystemPrompt": "You are an expert art director..."
   },
   "retry": {
     "maxAttempts": 3
