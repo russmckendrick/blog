@@ -125,10 +125,10 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 
 ### AI Models Used
 
-- **Anthropic**: Claude 3.5 Sonnet (default if key available)
-- **OpenAI**: GPT-4 Turbo (fallback)
-- **Web Search**: Tavily API (optional, for factual research)
-- **Image Generation**: FAL.ai edit models (optional, for AI-powered collages)
+- **Content generation**: Anthropic Claude 3.5 Sonnet (default) or OpenAI GPT-4o-mini (fallback)
+- **Visual blueprint (Stage A)**: OpenAI GPT-5.4 via Responses API (vision analysis of album covers)
+- **Image generation**: FAL.ai nano-banana-2/edit (collage generation from prompt + source images)
+- **Web search**: Tavily, Perplexity, or Exa API (optional, for factual album research)
 
 ## Cover Collage Generation
 
@@ -163,24 +163,76 @@ await createStripCollage(albumImagePaths, coverOutputPath, {
 **Config**: `scripts/fal-collage-config.json`
 
 An AI-powered generator using FAL.ai edit models:
-- **Style Profiles**: Configurable visual direction (default: `editorial_photoshoot`)
+- **Style Profiles**: 8 configurable visual directions (default rotates between them)
 - **Selection**: Analyzes all albums and selects up to 14 covers using configurable strategies
 - **Default Strategy**: Deterministic `pop-mix` for consistent, high-impact outputs
-- **Two-Stage Prompting**:
-  - Stage A: GPT-5.4 Vision (via Responses API) extracts a structured visual blueprint (JSON) from a representative subset of uploads for stability on large sets
-  - Stage A now chooses one coherent scene that Stage B uses directly
-  - Stage A now extracts richer supporting motifs (`secondary_elements`) for denser compositions
-  - Stage B: Prompt is assembled deterministically from style profile + blueprint
-  - Prompt requires one distinct motif from each source image
+- **Two-Stage Prompting**: See [Prompt Pipeline](#prompt-pipeline) below
 - **Blacklist**: Configurable album/artist filtering to avoid content policy violations
 - **Post-Processing**: Optional Sharp finishing pass (contrast, saturation, brightness, lift, sharpen)
 - **Output**: 2K resolution PNG + resized `-small` variant
 - **API**: Requires `FAL_KEY` and `OPENAI_API_KEY` environment variables
 - **Cost**: Uses FAL.ai and OpenAI (GPT-5.4) API credits
 
+#### Prompt Pipeline
+
+The collage prompt is built in two stages to produce a focused natural-language prompt for the FAL.ai model.
+
+**Stage A — Visual Blueprint (GPT-5.4 Vision)**
+
+GPT-5.4 analyzes a representative subset of the uploaded album covers via the OpenAI Responses API and returns a structured JSON blueprint containing:
+- `scene` — a single coherent scene description (the most important field)
+- `hero_subject` — primary foreground subject
+- `secondary_elements` — up to 8 supporting motifs from the source images
+- `background_texture` — background treatment
+- `palette` — dominant and accent colors
+- `mood` — overall atmosphere
+- `allowed_subjects` — concrete visible subjects (not generic terms)
+- `people_present` — whether people appear in the source images
+
+The blueprint is normalized to sanitize descriptors, validate colors, and cap element counts.
+
+Retries on transient failures with smaller analysis batches and timed-out URL exclusion. Falls back to a default blueprint if all attempts fail.
+
+**Stage B — Natural Language Prompt Assembly**
+
+The blueprint is merged with the selected style profile to produce the final prompt sent to FAL.ai. The prompt is written in **natural language, not JSON or labelled sections** — this is deliberate.
+
+**Why natural language over JSON or structured labels:**
+- Image generation models like nano-banana are trained on billions of natural-language image captions, not structured data formats
+- Every token in a natural language prompt carries visual signal; JSON syntax (`{`, `"`, `:`, brackets) wastes the model's attention budget on tokens with zero visual meaning
+- Labelled sections ("Scene selected from Stage A:", "Subject lock:", "Composition requirements:") are internal pipeline jargon that the image model cannot interpret — they dilute the creative direction
+- A/B testing by [Chase Jarvis](https://chasejarvis.com/blog/does-json-prompting-actually-work-tested-with-nano-banana/) confirmed JSON prompting produces no improvement over natural language for nano-banana models and can actually reduce output quality
+
+The Stage B prompt follows this structure:
+1. **Scene description** — leads the prompt (highest weight position) with the full creative scene from Stage A
+2. **Style directives** — aesthetic inspiration from the style profile
+3. **Hero and supporting elements** — concise subject descriptions
+4. **Mood and color** — atmosphere and palette direction
+5. **Composition, lighting, and color rules** — from the style profile
+6. **Constraints** — source image incorporation, people rules, exposure, negative terms
+
+This produces a ~250 word prompt where nearly every token is a visual cue, compared to the previous ~500 word version that was heavy on labels and redundant descriptions.
+
+**Style Profiles (8 available):**
+
+Each profile defines `style_directives`, `composition_rules`, `lighting_rules`, `color_rules`, and `allow_dark_palette`:
+
+| Profile | Aesthetic |
+|---------|-----------|
+| `studio_session` | Annie Leibovitz / Anton Corbijn studio portraiture |
+| `bold_cinematic` | Editorial movie-poster realism, shaped key lighting |
+| `collage_cutout` | DIY punk zine, Jamie Reid / Raymond Pettibon |
+| `miniature_diorama` | Tilt-shift photography, Vincent Laforet / Olivo Barbieri |
+| `retro_vinyl` | 1970s-80s analog album cover, Kodachrome color |
+| `surreal_dreamscape` | Magritte / Dali, impossible juxtapositions |
+| `pop_art` | Warhol / Lichtenstein, high contrast flat color |
+| `painted_mural` | Basquiat / Shepard Fairey, visible brushstrokes |
+
+Default behaviour rotates through profiles (excluding `studio_session` and `painted_mural` from rotation). Override with `--style=profile_name`.
+
 **Selection Strategies:**
 
-Default strategy is deterministic via config (`strategySelection: "first"`):
+Default strategy is deterministic via config (`strategySelection: "seed"`):
 
 | Strategy | Description |
 |----------|-------------|
@@ -192,25 +244,23 @@ Default strategy is deterministic via config (`strategySelection: "first"`):
 
 **Selection Process:**
 1. Filters out blacklisted albums/artists (from config)
-2. Analyzes each image (resized to 256×256 for performance)
+2. Analyzes each image (resized to 256x256 for performance)
 3. Detects text using edge detection (top/bottom 20% of cover)
-4. Calculates color vibrancy: `(saturation × 0.4) + (√variance × 0.3) + (textPenalty × 0.3)`
+4. Calculates color vibrancy: `(saturation x 0.4) + (sqrt(variance) x 0.3) + (textPenalty x 0.3)`
 5. Selects strategy from config (or uses `--strategy` flag if specified)
 6. If all images fit within `maxCount`, uses them all directly (skips strategy selection)
 7. Otherwise, selects up to 14 images based on the chosen strategy
-8. Resizes images to 800×800 for upload
-9. Uses GPT-5.4 Vision (Responses API) to extract a JSON visual blueprint (up to `prompts.maxVisionImages` images, sampled from the full set)
-10. Stage A selects one coherent scene and captures up to `prompts.maxSecondaryElements` supporting motifs
-11. Retries Stage A on transient failures (`prompts.stageAMaxAttempts`) with delay (`prompts.stageARetryDelayMs`), smaller analysis batches, and timed-out URL exclusion
-12. Builds final prompt deterministically from style profile + blueprint (including the chosen scene)
-13. Sends request to primary FAL model (with automatic model fallback on failure)
-14. Applies optional post-processing grade before saving output
+8. Resizes images to 800x800 for upload
+9. **Stage A**: GPT-5.4 Vision extracts a JSON blueprint (up to `prompts.maxVisionImages` images, sampled evenly from the full set)
+10. **Stage B**: Assembles natural-language prompt from blueprint + style profile
+11. Sends request to primary FAL model (with automatic model fallback on failure)
+12. Applies optional post-processing grade before saving output
 
 **Configuration (`scripts/fal-collage-config.json`):**
 ```json
 {
   "model": {
-    "name": "fal-ai/nano-banana-pro/edit",
+    "name": "fal-ai/nano-banana-2/edit",
     "fallback": "fal-ai/nano-banana-2/edit"
   },
   "output": {
@@ -223,7 +273,7 @@ Default strategy is deterministic via config (`strategySelection: "first"`):
     "minCount": 2,
     "maxCount": 14,
     "strategies": ["pop-mix", "vibrant", "diverse", "balanced", "random"],
-    "strategySelection": "first"
+    "strategySelection": "seed"
   },
   "postprocess": {
     "enabled": true,
@@ -234,8 +284,8 @@ Default strategy is deterministic via config (`strategySelection: "first"`):
     "sharpen": 0.5
   },
   "blacklist": {
-    "albums": ["Is This It", "Album Name"],
-    "artists": ["Artist Name"]
+    "albums": ["Is This It"],
+    "artists": []
   },
   "scoring": {
     "saturationWeight": 0.4,
@@ -243,13 +293,17 @@ Default strategy is deterministic via config (`strategySelection: "first"`):
     "textPenaltyWeight": 0.3
   },
   "prompts": {
-    "profile": "editorial_photoshoot",
+    "profile": "rotate",
+    "excludeFromRotation": ["studio_session", "painted_mural"],
+    "temperature": 0.7,
+    "maxTokens": 400,
     "maxVisionImages": 10,
     "maxSecondaryElements": 8,
     "stageAMaxAttempts": 3,
     "stageARetryDelayMs": 3000,
     "negative": ["sepia wash", "muddy midtones", "..."],
-    "visionSystemPrompt": "You are an expert art director..."
+    "visionSystemPrompt": "You are a creative visual director...",
+    "visionUserPrompt": "Analyze {count} representative source images..."
   },
   "retry": {
     "maxAttempts": 3
