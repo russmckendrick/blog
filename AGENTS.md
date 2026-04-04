@@ -4,7 +4,7 @@ Agent guidance for the Russ.Cloud blog repository.
 
 ## Project
 
-- Astro 5 blog and music site deployed to Cloudflare Pages
+- Astro 6 blog and music site deployed to Cloudflare Pages
 - Uses `pnpm` (`package.json` enforces it with `only-allow pnpm`)
 - Requires Node.js 20+ and `pnpm` 10+
 
@@ -25,7 +25,7 @@ Agent guidance for the Russ.Cloud blog repository.
 - Blog posts belong in `src/content/blog/` as `YYYY-MM-DD-slug.mdx`.
 - Tunes posts belong in `src/content/tunes/`, usually as directory-based entries with `index.mdx`.
 - Use `sanitize-html` for HTML sanitization. Do not add regex-based sanitization.
-- If you change a workflow or architecture that is already documented in `docs/`, update the relevant doc in the same change.
+- After completing any code, component, schema, or content-model changes, review the Documentation Map below and update every affected doc in `docs/` in the same change. This applies to all runs, not just when you know a doc already covers the topic — if your change introduces, removes, or alters behaviour that any doc references, update that doc.
 
 ## High-Value Project Context
 
