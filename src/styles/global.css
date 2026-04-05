@@ -38,7 +38,11 @@
   --glass-blur: blur(12px);
 
   /* Reading progress */
-  --reading-progress-color: #0058be;
+  --reading-progress-from: var(--color-primary);
+  --reading-progress-via: var(--color-secondary);
+  --reading-progress-to: #8ecaff;
+  --reading-progress-glow: rgba(0, 88, 190, 0.4);
+  --reading-progress-glow-spread: rgba(0, 88, 190, 0.15);
 }
 
 .dark {
@@ -74,7 +78,11 @@
   --glass-bg: rgba(11, 14, 18, 0.85);
 
   /* Reading progress */
-  --reading-progress-color: #8ecaff;
+  --reading-progress-from: #a4c8ff;
+  --reading-progress-via: #8ecaff;
+  --reading-progress-to: #c8e2ff;
+  --reading-progress-glow: rgba(142, 202, 255, 0.35);
+  --reading-progress-glow-spread: rgba(142, 202, 255, 0.12);
 }
 
 /* ================================================
@@ -811,8 +819,17 @@ astro-lightgallery {
   position: fixed;
   top: 0;
   left: 0;
-  height: 2px;
-  background-color: var(--reading-progress-color);
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--reading-progress-from) 0%,
+    var(--reading-progress-via) 60%,
+    var(--reading-progress-to) 100%
+  );
+  border-radius: 0 1.5px 1.5px 0;
+  box-shadow:
+    0 0 8px var(--reading-progress-glow),
+    0 0 20px var(--reading-progress-glow-spread);
   z-index: 9999;
   transition: width 50ms linear;
   will-change: width;
