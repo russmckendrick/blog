@@ -33,6 +33,8 @@ const REQUEST_DELAY = 500
 const args = process.argv.slice(2)
 const FORCE_REFRESH = args.includes('--force')
 const REFRESH_STALE = args.includes('--refresh-stale')
+const limitIdx = args.indexOf('--limit')
+const URL_LIMIT = limitIdx !== -1 ? parseInt(args[limitIdx + 1], 10) : null
 
 /**
  * Generate deterministic filename from URL
@@ -190,7 +192,9 @@ function formatBytes(bytes) {
 async function main() {
   console.log('Reading List Image Cache\n')
 
-  if (FORCE_REFRESH) {
+  if (URL_LIMIT) {
+    console.log(`Mode: Limited (processing first ${URL_LIMIT} uncached URLs)\n`)
+  } else if (FORCE_REFRESH) {
     console.log('Mode: Force refresh (re-downloading all images)\n')
   } else if (REFRESH_STALE) {
     console.log(`Mode: Refresh stale (re-downloading images older than ${STALE_DAYS} days)\n`)
@@ -213,12 +217,22 @@ async function main() {
     return
   }
 
-  // Extract unique URLs
-  const urls = [...new Set(readingData.map(item => item.url))]
-  console.log(`Found ${urls.length} unique URLs in reading list\n`)
+  // Extract unique URLs (reading.json is sorted newest first)
+  const allUrls = [...new Set(readingData.map(item => item.url))]
+  console.log(`Found ${allUrls.length} unique URLs in reading list`)
 
   const cache = await loadCache()
   const manifest = await loadManifest()
+
+  // When using --limit, filter to only uncached URLs first
+  let urls = allUrls
+  if (URL_LIMIT) {
+    urls = allUrls.filter(url => !cache.entries[url])
+    console.log(`${urls.length} uncached, processing up to ${URL_LIMIT}\n`)
+    urls = urls.slice(0, URL_LIMIT)
+  } else {
+    console.log('')
+  }
 
   let downloaded = 0
   let cached = 0
