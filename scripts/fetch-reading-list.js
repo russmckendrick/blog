@@ -37,8 +37,15 @@ const {
 } = process.env
 
 if (!INSTAPAPER_CONSUMER_KEY || !INSTAPAPER_CONSUMER_SECRET || !INSTAPAPER_USERNAME) {
-  console.error('Missing required INSTAPAPER_* env variables. See .env.example.')
-  process.exit(1)
+  console.warn('Missing INSTAPAPER_* env variables — skipping reading list fetch.')
+  console.warn('Set INSTAPAPER_CONSUMER_KEY, INSTAPAPER_CONSUMER_SECRET, and INSTAPAPER_USERNAME to enable.')
+  // Write empty array if no data file exists yet, so the build doesn't break
+  const { existsSync } = await import('fs')
+  if (!existsSync(OUTPUT_PATH)) {
+    writeFileSync(OUTPUT_PATH, '[]')
+    console.warn('Created empty reading.json placeholder.')
+  }
+  process.exit(0)
 }
 
 // ── OAuth 1.0a setup ────────────────────────────────────────────────────────

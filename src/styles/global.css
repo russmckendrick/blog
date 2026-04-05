@@ -552,6 +552,26 @@ a:hover {
   color: var(--color-on-surface);
 }
 
+/* Desktop nav: icon-only, label slides out on hover */
+@media (min-width: 768px) {
+  .header-nav-item .nav-label {
+    display: inline-block;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.3s ease, opacity 0.3s ease, margin-left 0.3s ease;
+    opacity: 0;
+    margin-left: 0;
+  }
+
+  .header-nav-item:hover .nav-label,
+  .header-nav-item:focus-visible .nav-label {
+    max-width: 6rem;
+    opacity: 1;
+    margin-left: 0.375rem;
+  }
+}
+
 
 /* ================================================
    Prose Styling (Blog Post Content)

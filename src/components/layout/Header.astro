@@ -42,20 +42,20 @@ const mobileMenuLabelId = 'mobile-menu-label';
 									href={item.url}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="header-nav-item group relative flex items-center gap-1.5 px-3 py-1.5 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
+									class="header-nav-item group relative flex items-center px-3 py-1.5 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
 									aria-label={item.name}
 								>
 									<Icon name={item.icon} size={16} />
-									<span class="text-sm font-medium">{item.name}</span>
+									<span class="nav-label text-sm font-medium">{item.name}</span>
 								</a>
 							) : (
 								<a
 									href={item.url}
-									class="header-nav-item group relative flex items-center gap-1.5 px-3 py-1.5 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
+									class="header-nav-item group relative flex items-center px-3 py-1.5 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
 									aria-label={item.name}
 								>
 									<Icon name={item.icon} size={16} />
-									<span class="text-sm font-medium">{item.name}</span>
+									<span class="nav-label text-sm font-medium">{item.name}</span>
 								</a>
 							)}
 						</li>
