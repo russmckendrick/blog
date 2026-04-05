@@ -122,6 +122,26 @@ function askQuestion(rl, query) {
 }
 
 /**
+ * Read multiline input until the user types END on its own line
+ */
+function askMultiline(rl, query) {
+  return new Promise(resolve => {
+    process.stdout.write(`${query}\n  (type END on its own line when done)\n  > `)
+    const lines = []
+    const onLine = (line) => {
+      if (line.trim().toUpperCase() === 'END') {
+        rl.removeListener('line', onLine)
+        resolve(lines.join('\n'))
+      } else {
+        lines.push(line)
+        process.stdout.write('  > ')
+      }
+    }
+    rl.on('line', onLine)
+  })
+}
+
+/**
  * Create a spinner for long-running operations
  */
 function createSpinner(message) {
@@ -213,10 +233,19 @@ async function interactivePromptReview(initialPrompt, title, description, tags, 
 
   while (true) {
     console.log('\n🎨 Current image prompt:\n')
-    console.log(`   "${currentPrompt}"`)
+    const promptLines = currentPrompt.split('\n')
+    if (promptLines.length === 1) {
+      console.log(`   "${currentPrompt}"`)
+    } else {
+      console.log('   """')
+      for (const line of promptLines) {
+        console.log(`   ${line}`)
+      }
+      console.log('   """')
+    }
     console.log('')
 
-    const response = await askQuestion(rl, '✓ Accept prompt? (y)es / (e)dit / (r)egenerate / (q)uit: ')
+    const response = await askQuestion(rl, '✓ Accept prompt? (y)es / (e)dit / (d)irect replace / (r)egenerate / (q)uit: ')
     const choice = response.toLowerCase().trim()
 
     if (choice === 'y' || choice === 'yes' || choice === '') {
@@ -230,6 +259,12 @@ async function interactivePromptReview(initialPrompt, title, description, tags, 
         console.log('  Refining prompt...')
         currentPrompt = await refinePrompt(currentPrompt, feedback, debug)
       }
+    } else if (choice === 'd' || choice === 'direct') {
+      const newPrompt = await askMultiline(rl, '\n  Enter your replacement prompt:')
+      if (newPrompt.trim()) {
+        currentPrompt = newPrompt.trim()
+        console.log('  ✓ Prompt replaced')
+      }
     } else if (choice === 'r' || choice === 'regenerate') {
       console.log('  Regenerating prompt from scratch...')
       currentPrompt = await generateEnhancedPrompt(title, description, tags, debug)
@@ -237,7 +272,7 @@ async function interactivePromptReview(initialPrompt, title, description, tags, 
       rl.close()
       throw new Error('User cancelled prompt review')
     } else {
-      console.log('  Invalid choice. Please enter y, e, r, or q.')
+      console.log('  Invalid choice. Please enter y, e, d, r, or q.')
     }
   }
 }
@@ -542,6 +577,7 @@ Interactive Mode (default):
   By default, the script shows you the generated prompt and lets you:
   - (y)es: Accept the prompt and generate the image
   - (e)dit: Describe changes and GPT-5.4 will refine the prompt
+  - (d)irect replace: Paste your own prompt directly (supports multiline)
   - (r)egenerate: Generate a completely new prompt
   - (q)uit: Cancel without generating
 

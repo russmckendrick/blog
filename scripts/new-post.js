@@ -62,7 +62,7 @@ async function createBlogPost() {
     const aiCoverInput = await question('Generate AI cover image? (y/n) [y]: ')
     generateAICover = aiCoverInput.toLowerCase() !== 'n'
     if (generateAICover) {
-      const promptInput = await question('Image prompt (leave blank to auto-generate): ')
+      const promptInput = await question('Image prompt (leave blank to auto-generate, multiline prompts can be entered during review): ')
       if (promptInput.trim()) {
         customPrompt = promptInput.trim()
       }
