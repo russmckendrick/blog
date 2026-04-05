@@ -1,5 +1,5 @@
 ---
-import { getReadingPreviewImage, getReadingPreviewSrcSet } from '../../utils/reading-preview'
+import { getReadingPreviewImage, getReadingPreviewSrcSet, getReadingPreviewData } from '../../utils/reading-preview'
 
 interface ReadingItem {
   bookmark_id: number
@@ -75,7 +75,7 @@ function isMediumUrl(url: string): boolean {
     {[...grouped.entries()].map(([monthYear, monthItems]) => (
       <div class="reveal" data-month-group>
         <div class="flex items-baseline gap-3 mb-5">
-          <h2 class="text-2xl font-bold text-on-surface font-display">{monthYear}</h2>
+          <h2 class="text-lg font-bold text-on-surface font-display">{monthYear}</h2>
           <span class="text-sm text-on-surface-variant">{monthItems.length} {monthItems.length === 1 ? 'article' : 'articles'}</span>
           <div class="flex-1 border-b border-outline-variant translate-y-[-4px]"></div>
         </div>
@@ -83,6 +83,8 @@ function isMediumUrl(url: string): boolean {
           {monthItems.map((item) => {
             const ogImage = getReadingPreviewImage(item.url)
             const ogSrcSet = getReadingPreviewSrcSet(item.url)
+            const previewData = getReadingPreviewData(item.url)
+            const description = previewData?.description || ''
 
             return (
               <a
@@ -135,6 +137,9 @@ function isMediumUrl(url: string): boolean {
                       <h3 class="text-sm font-semibold text-on-surface group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug line-clamp-2">
                         {item.title}
                       </h3>
+                      {description && (
+                        <p class="text-xs text-on-surface-variant mt-1 leading-relaxed line-clamp-2">{description}</p>
+                      )}
                       <div class="flex items-center gap-2 mt-1.5 text-xs text-on-surface-variant">
                         <span class="truncate">{getDomain(item.url)}</span>
                         <span class="shrink-0">·</span>
