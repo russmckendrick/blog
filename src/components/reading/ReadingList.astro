@@ -1,0 +1,108 @@
+---
+interface ReadingItem {
+  bookmark_id: number
+  title: string
+  url: string
+  description: string
+  time: string
+  starred: boolean
+  progress: number
+  tags: string[]
+  folder: string
+}
+
+interface Props {
+  items: ReadingItem[]
+}
+
+const { items } = Astro.props
+
+// Group items by month/year
+const grouped = items.reduce((acc, item) => {
+  const date = new Date(item.time)
+  const key = `${date.toLocaleString('en-GB', { month: 'long' })} ${date.getFullYear()}`
+  if (!acc.has(key)) acc.set(key, [])
+  acc.get(key)!.push(item)
+  return acc
+}, new Map<string, ReadingItem[]>())
+
+function getDomain(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '')
+  } catch {
+    return ''
+  }
+}
+
+function getFaviconUrl(url: string): string {
+  try {
+    const hostname = new URL(url).hostname
+    return `https://www.google.com/s2/favicons?domain=${hostname}&sz=32`
+  } catch {
+    return ''
+  }
+}
+
+function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  })
+}
+---
+
+{items.length === 0 ? (
+  <p class="text-on-surface-variant text-lg py-12 text-center">
+    No articles yet. Run <code class="text-sm surface-container-high px-2 py-1 rounded">node scripts/fetch-reading-list.js</code> to populate.
+  </p>
+) : (
+  <div class="space-y-12 reveal-stagger">
+    {[...grouped.entries()].map(([monthYear, monthItems]) => (
+      <div class="reveal" data-month-group>
+        <div class="flex items-baseline gap-3 mb-5">
+          <h2 class="text-2xl font-bold text-on-surface font-display">{monthYear}</h2>
+          <span class="text-sm text-on-surface-variant">{monthItems.length} {monthItems.length === 1 ? 'article' : 'articles'}</span>
+          <div class="flex-1 border-b border-outline-variant translate-y-[-4px]"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {monthItems.map((item) => (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-reading-tags={item.tags.join(',')}
+              class="group flex items-start gap-3 surface-container-lowest rounded-xl p-4 ghost-border transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)] dark:hover:shadow-[0_16px_48px_rgba(0,0,0,0.3)]"
+            >
+              <img
+                src={getFaviconUrl(item.url)}
+                alt=""
+                width="20"
+                height="20"
+                loading="lazy"
+                class="mt-0.5 rounded-sm shrink-0 opacity-70 group-hover:opacity-100 transition-opacity"
+              />
+              <div class="flex-1 min-w-0">
+                <h3 class="text-sm font-semibold text-on-surface group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug line-clamp-2">
+                  {item.title}
+                </h3>
+                <div class="flex items-center gap-2 mt-1.5 text-xs text-on-surface-variant">
+                  <span class="truncate">{getDomain(item.url)}</span>
+                  <span class="shrink-0">·</span>
+                  <span class="shrink-0">{formatDate(item.time)}</span>
+                  {item.tags.length > 0 && item.tags.map(tag => (
+                    <span class="shrink-0 surface-container-high px-1.5 py-0.5 rounded-full text-[11px] font-medium">{tag}</span>
+                  ))}
+                </div>
+              </div>
+              <svg class="w-4 h-4 shrink-0 mt-0.5 text-on-surface-variant opacity-0 group-hover:opacity-60 transition-opacity -rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+)}

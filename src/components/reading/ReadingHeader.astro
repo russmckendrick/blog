@@ -1,0 +1,143 @@
+---
+interface Props {
+  totalArticles: number
+  tagCounts: Map<string, number>
+}
+
+const { totalArticles, tagCounts } = Astro.props
+const sortedTags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1])
+---
+
+<div class="mb-10">
+  <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-2">
+    <h1 class="text-3xl font-bold text-on-surface font-display">Reading List</h1>
+    <p class="text-sm text-on-surface-variant">
+      <span id="reading-count">{totalArticles}</span> articles saved on <a href="https://www.instapaper.com/p/russmckendrick" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer">Instapaper</a>
+    </p>
+  </div>
+  <div class="border-b border-outline-variant mb-5"></div>
+
+  {sortedTags.length > 0 && (
+    <div class="flex flex-wrap items-center gap-2" id="reading-tag-cloud">
+      <span class="text-xs font-medium text-on-surface-variant uppercase tracking-wider mr-1">Filter:</span>
+      <a
+        href="/reading/"
+        data-tag="all"
+        class="reading-tag-btn active inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium surface-container-high text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer no-underline"
+      >
+        All
+      </a>
+      {sortedTags.map(([tag, count]) => (
+        <a
+          href={`/reading/?tag=${encodeURIComponent(tag)}`}
+          data-tag={tag}
+          class="reading-tag-btn inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium surface-container-high text-on-surface-variant hover:text-on-surface transition-all duration-200 cursor-pointer no-underline"
+        >
+          {tag}
+          <span class="opacity-60">({count})</span>
+        </a>
+      ))}
+    </div>
+  )}
+</div>
+
+<style>
+  .reading-tag-btn.active {
+    background-color: var(--color-secondary, #0058be);
+    color: white;
+  }
+  .reading-tag-btn.active span {
+    opacity: 0.8;
+  }
+</style>
+
+<script>
+  function initTagFilter() {
+    const cloud = document.getElementById('reading-tag-cloud')
+    if (!cloud) return
+
+    const params = new URLSearchParams(window.location.search)
+    const activeTag = params.get('tag')
+
+    if (!activeTag) return
+
+    const buttons = cloud.querySelectorAll<HTMLAnchorElement>('.reading-tag-btn')
+    const cards = document.querySelectorAll<HTMLElement>('[data-reading-tags]')
+    const monthGroups = document.querySelectorAll<HTMLElement>('[data-month-group]')
+    const countEl = document.getElementById('reading-count')
+    const pagination = document.querySelector('nav[aria-label="Pagination Navigation"]')
+
+    // Set active state on the right button
+    buttons.forEach(b => {
+      b.classList.remove('active')
+      if (b.dataset.tag === activeTag) b.classList.add('active')
+    })
+
+    // Filter cards
+    let visibleCount = 0
+    cards.forEach(card => {
+      const cardTags = (card.dataset.readingTags || '').split(',').map(t => t.trim())
+      const show = cardTags.includes(activeTag)
+      card.style.display = show ? '' : 'none'
+      if (show) visibleCount++
+    })
+
+    // Hide empty month groups
+    monthGroups.forEach(group => {
+      const visible = group.querySelectorAll<HTMLElement>('[data-reading-tags]:not([style*="display: none"])')
+      group.style.display = visible.length > 0 ? '' : 'none'
+    })
+
+    // Update count
+    if (countEl) countEl.textContent = visibleCount.toString()
+
+    // Hide pagination when filtering (we're only showing current page's matches)
+    if (pagination) pagination.style.display = 'none'
+
+    // Prevent navigation — filter in place on current page
+    buttons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault()
+        const tag = btn.dataset.tag!
+        const url = tag === 'all' ? '/reading/' : `/reading/?tag=${encodeURIComponent(tag)}`
+        // Navigate to page 1 with the tag param so all items are available
+        if (window.location.pathname !== '/reading/') {
+          window.location.href = url
+        } else {
+          // Already on page 1 — filter in place
+          history.replaceState(null, '', url)
+
+          buttons.forEach(b => b.classList.remove('active'))
+          btn.classList.add('active')
+
+          let count = 0
+          if (tag === 'all') {
+            cards.forEach(c => { c.style.display = ''; count++ })
+            monthGroups.forEach(g => g.style.display = '')
+            if (pagination) pagination.style.display = ''
+          } else {
+            cards.forEach(card => {
+              const cardTags = (card.dataset.readingTags || '').split(',').map(t => t.trim())
+              const show = cardTags.includes(tag)
+              card.style.display = show ? '' : 'none'
+              if (show) count++
+            })
+            monthGroups.forEach(group => {
+              const visible = group.querySelectorAll<HTMLElement>('[data-reading-tags]:not([style*="display: none"])')
+              group.style.display = visible.length > 0 ? '' : 'none'
+            })
+            if (pagination) pagination.style.display = 'none'
+          }
+          if (countEl) countEl.textContent = tag === 'all' ? countEl.dataset.total || count.toString() : count.toString()
+        }
+      })
+    })
+  }
+
+  // Store original total
+  const countEl = document.getElementById('reading-count')
+  if (countEl) countEl.dataset.total = countEl.textContent || ''
+
+  initTagFilter()
+  document.addEventListener('astro:after-swap', initTagFilter)
+</script>

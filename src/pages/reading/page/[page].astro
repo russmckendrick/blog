@@ -1,0 +1,55 @@
+---
+import type { GetStaticPaths } from 'astro'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import Pagination from '../../../components/layout/Pagination.astro'
+import ReadingList from '../../../components/reading/ReadingList.astro'
+import ReadingHeader from '../../../components/reading/ReadingHeader.astro'
+import readingData from '../../../data/reading.json'
+
+export const getStaticPaths = (() => {
+  const itemsPerPage = 30
+  const totalPages = Math.max(1, Math.ceil(readingData.length / itemsPerPage))
+
+  // Collect all unique tags with counts across the full dataset
+  const tagCounts = new Map<string, number>()
+  for (const item of readingData) {
+    for (const tag of (item as any).tags || []) {
+      tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1)
+    }
+  }
+
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, i) => {
+    const pageNum = i + 2
+    const start = (pageNum - 1) * itemsPerPage
+    const end = start + itemsPerPage
+
+    return {
+      params: { page: pageNum.toString() },
+      props: {
+        items: readingData.slice(start, end),
+        currentPage: pageNum,
+        totalPages,
+        tagCounts,
+      },
+    }
+  })
+}) satisfies GetStaticPaths
+
+const { items, currentPage, totalPages, tagCounts } = Astro.props
+---
+
+<BaseLayout title={`Reading List - Page ${currentPage}`} description="Articles and links I've saved and read on Instapaper">
+  <section class="max-w-7xl mx-auto px-5">
+    <ReadingHeader totalArticles={readingData.length} tagCounts={tagCounts} />
+    <ReadingList items={items} />
+
+    {totalPages > 1 && (
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        getHref={(pageNum) => (pageNum === 1 ? '/reading/' : `/reading/page/${pageNum}/`)}
+        hideIfSingle={false}
+      />
+    )}
+  </section>
+</BaseLayout>

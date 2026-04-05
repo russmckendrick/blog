@@ -128,6 +128,9 @@ importers:
       mermaid:
         specifier: ^11.14.0
         version: 11.14.0
+      oauth-1.0a:
+        specifier: ^2.2.6
+        version: 2.2.6
       openai:
         specifier: ^6.33.0
         version: 6.33.0(ws@8.18.0)(zod@4.3.6)
@@ -3285,6 +3288,9 @@ packages:
 
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
+
+  oauth-1.0a@2.2.6:
+    resolution: {integrity: sha512-6bkxv3N4Gu5lty4viIcIAnq5GbxECviMBeKR3WX/q87SPQ8E8aursPZUtsXDnxCs787af09WPRBLqYrf/lwoYQ==}
 
   obug@2.1.1:
     resolution: {integrity: sha512-uTqF9MuPraAQ+IsnPf366RG4cP9RtUi7MLO1N3KEc+wb0a6yKpeL0lmk2IB1jY5KHPAlTc6T/JRdC/YqxHNwkQ==}
@@ -7925,6 +7931,8 @@ snapshots:
   nth-check@2.1.1:
     dependencies:
       boolbase: 1.0.0
+
+  oauth-1.0a@2.2.6: {}
 
   obug@2.1.1: {}
 

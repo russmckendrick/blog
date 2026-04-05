@@ -43,6 +43,7 @@ export const NAVIGATION_ITEMS = [
   { name: "Search", url: "/search/", icon: "search" },
   { name: "Tags", url: "/tags/", icon: "tag" },
   { name: "Tunes", url: "/tunes/", icon: "headphones" },
+  { name: "Reading", url: "/reading/", icon: "bookOpen" },
   { name: "About", url: "/about/", icon: "user" },
   { name: "Archives", url: "/archives/", icon: "archive" },
   {

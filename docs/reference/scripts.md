@@ -12,6 +12,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `pnpm run tunes` | `scripts/generate-tunes-post.js` | Generate the weekly tunes post from Last.fm data |
 | `pnpm run wrapped` | `scripts/generate-year-wrapped.js` | Generate the annual wrapped post |
 | `pnpm run medium` | `scripts/publish-to-medium.js` | Publish an existing post to Medium |
+| `pnpm run reading` | `scripts/fetch-reading-list.js` | Fetch bookmarks from Instapaper into `src/data/reading.json` |
 | `pnpm run optimize` | `scripts/optimize-images.js` | Optimize source and public image assets |
 | `pnpm run analyze-links` | `scripts/analyze-internal-links.js` | Audit internal linking between posts |
 | `pnpm run extract-colors` | `scripts/extract-hero-colors.js` | Rebuild `src/data/hero-colors.json` from hero images |
@@ -29,6 +30,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `scripts/generate-tunes-post.js` | primary | Weekly tunes orchestrator; uses Last.fm, collection metadata, AI research, templates, and cover generation |
 | `scripts/generate-year-wrapped.js` | primary | Year-end wrapped orchestrator with statistics, charts, and cover generation |
 | `scripts/publish-to-medium.js` | primary | Medium publishing CLI with optional Gist extraction for code blocks |
+| `scripts/fetch-reading-list.js` | primary | Fetches bookmarks from Instapaper API and writes `src/data/reading.json` |
 
 ### Image And Asset Pipelines
 
