@@ -117,7 +117,7 @@ This workflow refreshes cached Open Graph images for reading list cards, ensurin
 
 ### Files Updated
 - `public/assets/reading-previews/*.jpg` - Cached OG images
-- `src/data/reading-image-cache.json` - URL-to-path manifest
+- `src/data/reading-image-cache.json` - URL-to-path manifest (includes `localImage`, `originalImage`, `imageType`, `title`, `description`, `imageAlt`, and `fetchedAt` per entry)
 
 ### Secrets Required
 - `INSTAPAPER_CONSUMER_KEY` / `INSTAPAPER_CONSUMER_SECRET` / `INSTAPAPER_USERNAME` / `INSTAPAPER_PASSWORD`: For fetching bookmarks.

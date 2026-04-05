@@ -221,6 +221,10 @@ graph TD
 - `StickyTableOfContents.astro` - Sticky sidebar ToC with scroll-aware active highlighting (2xl+)
 - `ReadingTime.astro` - Reading time estimate
 
+**Reading Components** (`src/components/reading/`):
+- `ReadingHeader.astro` - Page title, article count, and tag filter buttons
+- `ReadingList.astro` - Card grid grouped by month; each card shows OG image, title, cached description (from `reading-image-cache.json`), domain favicon, date, and tags
+
 **Embed Components** (`src/components/embeds/`):
 - Media: YouTube, Instagram, Giphy, Audio, AppleMusic
 - Content: LinkPreview, ChatMessage, Img, LightGallery

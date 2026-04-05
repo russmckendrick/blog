@@ -7,15 +7,18 @@
  * Stores images locally to enable Cloudflare image transformations.
  *
  * Usage:
- *   node scripts/cache-reading-images.js                  # Download new images only
- *   node scripts/cache-reading-images.js --force          # Re-download all images
- *   node scripts/cache-reading-images.js --refresh-stale  # Re-download images older than 7 days
+ *   node scripts/cache-reading-images.js                                  # Download new images only
+ *   node scripts/cache-reading-images.js --force                          # Re-fetch entries missing title/description/image
+ *   node scripts/cache-reading-images.js --force --force-really-no-cache  # Re-download everything from scratch
+ *   node scripts/cache-reading-images.js --refresh-stale                  # Re-download images older than 7 days
  */
 
+import 'dotenv/config'
 import { promises as fs } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import crypto from 'crypto'
+import OAuth from 'oauth-1.0a'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -27,14 +30,78 @@ const CACHE_FILE = path.join(PROJECT_ROOT, 'node_modules/.cache/reading-image-ca
 const READING_DATA = path.join(PROJECT_ROOT, 'src/data/reading.json')
 
 const STALE_DAYS = 7
-const CONCURRENCY = 4
-const REQUEST_DELAY = 500
+const CONCURRENCY = 2
+const REQUEST_DELAY = 1000
 
 const args = process.argv.slice(2)
 const FORCE_REFRESH = args.includes('--force')
+const FORCE_NO_CACHE = FORCE_REFRESH && args.includes('--force-really-no-cache')
 const REFRESH_STALE = args.includes('--refresh-stale')
 const limitIdx = args.indexOf('--limit')
 const URL_LIMIT = limitIdx !== -1 ? parseInt(args[limitIdx + 1], 10) : null
+
+// ── Instapaper API (for deleting 404'd bookmarks) ──────────────────────────
+
+const {
+  INSTAPAPER_CONSUMER_KEY,
+  INSTAPAPER_CONSUMER_SECRET,
+  INSTAPAPER_USERNAME,
+  INSTAPAPER_PASSWORD,
+  MEDIUM_COOKIE,
+} = process.env
+
+const instapaperEnabled = !!(INSTAPAPER_CONSUMER_KEY && INSTAPAPER_CONSUMER_SECRET && INSTAPAPER_USERNAME)
+
+let instapaperToken = null
+
+function getOAuth() {
+  return OAuth({
+    consumer: {
+      key: INSTAPAPER_CONSUMER_KEY,
+      secret: INSTAPAPER_CONSUMER_SECRET,
+    },
+    signature_method: 'HMAC-SHA1',
+    hash_function(baseString, key) {
+      return crypto.createHmac('sha1', key).update(baseString).digest('base64')
+    },
+  })
+}
+
+async function instapaperAuth() {
+  if (!instapaperEnabled) return false
+  const oauthClient = getOAuth()
+  const url = 'https://www.instapaper.com/api/1/oauth/access_token'
+  const requestData = { url, method: 'POST', data: { x_auth_username: INSTAPAPER_USERNAME, x_auth_password: INSTAPAPER_PASSWORD || '', x_auth_mode: 'client_auth' } }
+  const headers = oauthClient.toHeader(oauthClient.authorize(requestData, null))
+  const res = await fetch(url, { method: 'POST', headers: { ...headers, 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(requestData.data).toString() })
+  if (!res.ok) return false
+  const parsed = new URLSearchParams(await res.text())
+  instapaperToken = { key: parsed.get('oauth_token'), secret: parsed.get('oauth_token_secret') }
+  return !!instapaperToken.key
+}
+
+async function instapaperDelete(bookmarkId) {
+  if (!instapaperToken) return false
+  const oauthClient = getOAuth()
+  const url = 'https://www.instapaper.com/api/1/bookmarks/delete'
+  const params = { bookmark_id: bookmarkId.toString() }
+  const requestData = { url, method: 'POST', data: params }
+  const headers = oauthClient.toHeader(oauthClient.authorize(requestData, instapaperToken))
+  const res = await fetch(url, { method: 'POST', headers: { ...headers, 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(params).toString() })
+  return res.ok
+}
+
+function isMediumUrl(url) {
+  try {
+    const hostname = new URL(url).hostname
+    return hostname === 'medium.com' || hostname.endsWith('.medium.com')
+      || hostname === 'betterprogramming.pub' || hostname === 'levelup.gitconnected.com'
+      || hostname === 'blog.devgenius.io' || hostname === 'towardsdatascience.com'
+      || hostname === 'faun.pub' || hostname === 'learningdaily.dev'
+  } catch {
+    return false
+  }
+}
 
 /**
  * Generate deterministic filename from URL
@@ -54,6 +121,25 @@ function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
+const MAX_RETRIES = 5
+
+async function fetchWithRetry(url, options, retries = MAX_RETRIES) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    const response = await fetch(url, options)
+    if (response.status === 429 || (response.status >= 500 && response.status < 600)) {
+      if (attempt === retries) return response
+      const retryAfter = response.headers.get('retry-after')
+      const baseWait = 2000 * 2 ** attempt // 2s, 4s, 8s, 16s, 32s
+      const waitMs = retryAfter ? Math.max(parseInt(retryAfter, 10) * 1000, baseWait) || baseWait : baseWait
+      const cappedMs = Math.min(waitMs, 30000)
+      console.warn(`  Rate limited (${response.status}), retrying in ${(cappedMs / 1000).toFixed(0)}s...`)
+      await delay(cappedMs)
+      continue
+    }
+    return response
+  }
+}
+
 /**
  * Fetch page and parse Open Graph metadata
  */
@@ -61,15 +147,32 @@ async function fetchOGMetadata(url) {
   try {
     const { parseHTML } = await import('linkedom')
 
-    const response = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; RussCloudBot/1.0; +https://russ.cloud)',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-      },
+    const headers = {
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+      'Accept-Language': 'en-GB,en;q=0.9',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Sec-Fetch-Dest': 'document',
+      'Sec-Fetch-Mode': 'navigate',
+      'Sec-Fetch-Site': 'none',
+      'Sec-Fetch-User': '?1',
+    }
+
+    // Medium uses Cloudflare JS challenges — skip retries, single attempt only
+    const medium = isMediumUrl(url)
+    if (MEDIUM_COOKIE && medium) {
+      headers['Cookie'] = MEDIUM_COOKIE
+    }
+
+    const response = await fetchWithRetry(url, {
+      headers,
       signal: AbortSignal.timeout(15000),
-    })
+    }, medium ? 0 : MAX_RETRIES)
 
     if (!response.ok) {
+      if (response.status === 404 || response.status === 410) {
+        return { notFound: true }
+      }
       throw new Error(`HTTP ${response.status}`)
     }
 
@@ -118,10 +221,14 @@ async function fetchOGMetadata(url) {
  */
 async function downloadImage(imageUrl, localPath) {
   try {
-    const response = await fetch(imageUrl, {
+    const response = await fetchWithRetry(imageUrl, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; RussCloudBot/1.0; +https://russ.cloud)',
-        'Accept': 'image/*',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+        'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+        'Accept-Language': 'en-GB,en;q=0.9',
+        'Sec-Fetch-Dest': 'image',
+        'Sec-Fetch-Mode': 'no-cors',
+        'Sec-Fetch-Site': 'cross-site',
       },
       signal: AbortSignal.timeout(30000),
     })
@@ -194,8 +301,10 @@ async function main() {
 
   if (URL_LIMIT) {
     console.log(`Mode: Limited (processing first ${URL_LIMIT} uncached URLs)\n`)
+  } else if (FORCE_NO_CACHE) {
+    console.log('Mode: Force (ignoring all cache, re-downloading everything)\n')
   } else if (FORCE_REFRESH) {
-    console.log('Mode: Force refresh (re-downloading all images)\n')
+    console.log('Mode: Force refresh (re-fetching entries with missing data, skipping complete ones)\n')
   } else if (REFRESH_STALE) {
     console.log(`Mode: Refresh stale (re-downloading images older than ${STALE_DAYS} days)\n`)
   } else {
@@ -224,15 +333,34 @@ async function main() {
   const cache = await loadCache()
   const manifest = await loadManifest()
 
-  // When using --limit, filter to only uncached URLs first
+  // When using --limit, filter URLs and cap the count
   let urls = allUrls
   if (URL_LIMIT) {
-    urls = allUrls.filter(url => !cache.entries[url])
-    console.log(`${urls.length} uncached, processing up to ${URL_LIMIT}\n`)
+    if (FORCE_REFRESH) {
+      console.log(`Force refreshing up to ${URL_LIMIT} URLs\n`)
+    } else {
+      urls = allUrls.filter(url => !cache.entries[url])
+      console.log(`${urls.length} uncached, processing up to ${URL_LIMIT}\n`)
+    }
     urls = urls.slice(0, URL_LIMIT)
   } else {
     console.log('')
   }
+
+  // Authenticate with Instapaper for 404 cleanup
+  let instapaperReady = false
+  if (instapaperEnabled) {
+    instapaperReady = await instapaperAuth()
+    if (instapaperReady) console.log('Instapaper authenticated (will remove 404d bookmarks)\n')
+  }
+
+  // Build URL → bookmark_id lookup
+  const urlToBookmarkId = new Map()
+  for (const item of readingData) {
+    urlToBookmarkId.set(item.url, item.bookmark_id)
+  }
+
+  const removedUrls = new Set()
 
   let downloaded = 0
   let cached = 0
@@ -252,19 +380,20 @@ async function main() {
       const publicPath = `/assets/reading-previews/${filename}.jpg`
 
       // Check if we should skip this URL
-      if (!FORCE_REFRESH) {
-        if (cacheEntry && !REFRESH_STALE) {
-          // Already processed (with or without image)
-          try {
-            if (cacheEntry.localImage) {
+      if (!FORCE_NO_CACHE && cacheEntry) {
+        // --force: skip if cache has title, description, and a valid local image
+        if (FORCE_REFRESH) {
+          if (cacheEntry.localImage && cacheEntry.title && cacheEntry.description) {
+            try {
               await fs.access(localPath)
+              cached++
+              return
+            } catch {
+              // File doesn't exist, need to re-download
             }
-            cached++
-            return
-          } catch {
-            // File doesn't exist, need to re-download
           }
-        } else if (cacheEntry && REFRESH_STALE && !isStale(cacheEntry)) {
+        } else if (!REFRESH_STALE || !isStale(cacheEntry)) {
+          // Normal / refresh-stale: skip if already cached
           try {
             if (cacheEntry.localImage) {
               await fs.access(localPath)
@@ -282,14 +411,37 @@ async function main() {
       await delay(REQUEST_DELAY)
 
       const ogData = await fetchOGMetadata(url)
+
+      // Handle 404/410 — remove dead bookmarks
+      if (ogData?.notFound) {
+        console.log(`    404 — removing dead bookmark`)
+        const bookmarkId = urlToBookmarkId.get(url)
+        if (instapaperReady && bookmarkId) {
+          const deleted = await instapaperDelete(bookmarkId)
+          console.log(deleted ? `    Deleted from Instapaper (${bookmarkId})` : `    Failed to delete from Instapaper`)
+        }
+        removedUrls.add(url)
+        delete manifest[url]
+        delete cache.entries[url]
+        // Clean up local image if it exists
+        try { await fs.unlink(localPath) } catch {}
+        failed++
+        return
+      }
+
       if (!ogData) {
+        // For Medium URLs blocked by Cloudflare, use title from Instapaper data
+        const readingItem = isMediumUrl(url) ? readingData.find(item => item.url === url) : null
+        if (readingItem) {
+          console.log(`    Cloudflare blocked — using Instapaper title: "${readingItem.title}"`)
+        }
         failed++
         manifest[url] = {
           localImage: null,
           originalImage: null,
           imageType: null,
-          title: '',
-          description: '',
+          title: readingItem?.title || '',
+          description: readingItem?.description || '',
           fetchedAt: new Date().toISOString(),
         }
         cache.entries[url] = manifest[url]
@@ -335,10 +487,18 @@ async function main() {
   await saveCache(cache)
   await saveManifest(manifest)
 
+  // Remove 404'd URLs from reading.json
+  if (removedUrls.size > 0) {
+    const cleaned = readingData.filter(item => !removedUrls.has(item.url))
+    await fs.writeFile(READING_DATA, JSON.stringify(cleaned, null, 2))
+    console.log(`\nRemoved ${removedUrls.size} dead bookmark(s) from reading.json`)
+  }
+
   console.log('\nResults:')
   console.log(`  Downloaded: ${downloaded} (${formatBytes(totalBytes)})`)
   console.log(`  Cached: ${cached}`)
   if (noImage > 0) console.log(`  No OG image: ${noImage}`)
+  if (removedUrls.size > 0) console.log(`  Removed (404): ${removedUrls.size}`)
   if (failed > 0) console.log(`  Failed: ${failed}`)
   console.log(`\nManifest: ${MANIFEST_FILE}`)
   console.log(`Images: ${OUTPUT_DIR}`)
