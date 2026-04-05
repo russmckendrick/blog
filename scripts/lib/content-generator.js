@@ -17,7 +17,7 @@ export class ContentGenerator {
 
     // Use whichever API key is available (prefer OpenAI if both are set)
     if (process.env.OPENAI_API_KEY) {
-      const modelName = process.env.OPENAI_MODEL || 'gpt-4o-mini'
+      const modelName = process.env.OPENAI_MODEL || 'gpt-5.4'
       const temperature = parseFloat(process.env.OPENAI_TEMPERATURE || '1')
       this.llm = new ChatOpenAI({
         modelName,

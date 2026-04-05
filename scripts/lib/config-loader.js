@@ -94,10 +94,11 @@ export class ConfigLoader {
     const agentConfig = this.agent
     if (!agentConfig.system_prompt) return null
 
-    // Include voice guidelines in the context
+    // Include voice and humaniser guidelines in the context
     const fullContext = {
       ...context,
-      voice_guidelines: agentConfig.voice_guidelines || ''
+      voice_guidelines: agentConfig.voice_guidelines || '',
+      humaniser_guidelines: agentConfig.humaniser_guidelines || ''
     }
 
     return this.interpolate(agentConfig.system_prompt, fullContext)

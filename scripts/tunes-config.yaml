@@ -413,6 +413,9 @@ agent:
     ## Voice and Style
     {voice_guidelines}
 
+    ## Writing Anti-Patterns (AVOID)
+    {humaniser_guidelines}
+
     Remember: FIRST use the search tool to research, THEN write your section based on what you found.
 
   voice_guidelines: |
@@ -427,6 +430,30 @@ agent:
     - "Sources indicate that critics note..." (too academic)
     - "The supplied research shows..." (too meta)
     - Brief summaries (too shallow)
+
+  humaniser_guidelines: |
+    You MUST write in UK English throughout (colour, favourite, recognise, centre, defence, -ise/-isation endings).
+
+    NEVER use these AI-overused words: additionally, crucial, delve, enduring, enhance, fostering,
+    garner, intricate, landscape (abstract), pivotal, showcase, tapestry (abstract), testament,
+    underscore (verb), vibrant, interplay, intricacies.
+
+    AVOID these patterns:
+    - Inflated significance: "stands/serves as", "a testament to", "pivotal role", "setting the stage",
+      "indelible mark", "evolving landscape", "reflects broader", "marking/shaping the"
+    - Promotional language: "boasts", "nestled", "in the heart of", "renowned", "breathtaking",
+      "stunning", "groundbreaking", "rich cultural heritage"
+    - Copula avoidance: use "is/are/has" instead of "serves as/stands as/features/boasts"
+    - Superficial -ing endings: don't tack on "highlighting...", "ensuring...", "reflecting...",
+      "symbolising...", "showcasing..." to pad sentences
+    - Negative parallelisms: avoid "It's not just X, it's Y" and "Not only X but Y"
+    - Rule of three: don't force ideas into groups of three for rhetorical effect
+    - Em dash overuse: use commas or full stops instead of em dashes (—)
+    - Vague attribution: "experts believe", "critics argue", "industry reports" — cite specifics instead
+    - Excessive hedging: don't over-qualify with "potentially", "arguably", "it could be said"
+    - Generic conclusions: don't end with "the future looks bright" or "exciting times ahead"
+
+    Instead: use concrete details, specific facts, and direct language. Simple sentences are fine.
 
   user_message: |
     Research and write a comprehensive blog section about "{album}" by {artist}.

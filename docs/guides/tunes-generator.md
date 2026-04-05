@@ -71,6 +71,38 @@ pnpm run tunes -- --week_start=2025-09-25
 pnpm run tunes -- --debug
 ```
 
+### Testing Mode
+
+Redirects all output to an `output/` folder (gitignored) instead of the normal `src/` and `public/` paths, useful for reviewing generated content without affecting the site:
+
+```bash
+# Testing with 5 items
+pnpm run tunes -- --testing --take=5
+
+# Testing with 10 items
+pnpm run tunes -- --testing --take=10
+
+# Combine with other flags
+pnpm run tunes -- --testing --take=3 --style=bold_cinematic
+```
+
+Output structure in testing mode:
+```
+output/YYYY-MM-DD-listened-to-this-week/
+  ├── YYYY-MM-DD-listened-to-this-week.mdx
+  ├── albums/
+  ├── artists/
+  └── tunes-cover-YYYY-MM-DD-listened-to-this-week.png
+```
+
+### Take Count
+
+Control how many items (artists/albums) to process, overriding both the config default and debug mode:
+
+```bash
+pnpm run tunes -- --take=5
+```
+
 ## Output Structure
 
 Posts are created in:
@@ -125,7 +157,7 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 
 ### AI Models Used
 
-- **Content generation**: Anthropic Claude 3.5 Sonnet (default) or OpenAI GPT-4o-mini (fallback)
+- **Content generation**: OpenAI GPT-5.4 (default) or Anthropic Claude 3.5 Sonnet (fallback), with humaniser anti-pattern guidelines to produce natural UK English output
 - **Visual blueprint (Stage A)**: OpenAI GPT-5.4 via Responses API (vision analysis of album covers)
 - **Image generation**: FAL.ai nano-banana-2/edit (collage generation from prompt + source images)
 - **Web search**: Tavily, Perplexity, or Exa API (optional, for factual album research)
@@ -424,6 +456,11 @@ agent:
     DO: "Released in 1975, this explores themes of..."
     DON'T: "Sources indicate..." (too academic)
 
+  humaniser_guidelines: |
+    UK English only. Avoid AI vocabulary (delve, pivotal, vibrant, testament...),
+    inflated significance, promotional language, em dash overuse, rule of three,
+    negative parallelisms, vague attribution. Use concrete details and direct language.
+
   user_message: |
     Research and write about "{album}" by {artist}.
     Focus on: {research_questions}
@@ -491,6 +528,21 @@ The classifier uses a hybrid approach:
 - **LLM Fallback**: when metadata confidence is below 70%
 
 Classifications are cached for 90 days (configurable) since album metadata rarely changes.
+
+### Humaniser Guidelines
+
+The content generation system prompt includes anti-pattern guidelines based on [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) to produce natural-sounding UK English output. These are defined in the `humaniser_guidelines` field under `agent:` in `scripts/tunes-config.yaml` and injected into the system prompt via the `{humaniser_guidelines}` placeholder.
+
+The guidelines instruct the LLM to:
+- Write in **UK English** throughout (colour, favourite, recognise, -ise/-isation endings)
+- Avoid AI-overused vocabulary (delve, pivotal, vibrant, testament, showcase, tapestry, landscape, etc.)
+- Avoid inflated significance ("serves as a testament to", "setting the stage for", "indelible mark")
+- Avoid promotional language ("boasts", "nestled", "breathtaking", "renowned")
+- Use simple copulas ("is/are/has") instead of elaborate substitutes ("serves as/stands as/features")
+- Avoid superficial `-ing` padding, negative parallelisms, rule of three, em dash overuse
+- Use concrete details and specific facts over vague attribution and excessive hedging
+
+Edit the `humaniser_guidelines` field in `scripts/tunes-config.yaml` to adjust these rules.
 
 ### Template File
 

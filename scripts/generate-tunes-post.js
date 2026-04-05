@@ -23,6 +23,9 @@ async function main() {
     const weekStartArg = args.find(arg => arg.startsWith('--week_start='))
     const styleArg = args.find(arg => arg.startsWith('--style='))
     const debugMode = args.includes('--debug')
+    const testingMode = args.includes('--testing')
+    const takeArg = args.find(arg => arg.startsWith('--take='))
+    const takeCount = takeArg ? parseInt(takeArg.split('=')[1], 10) : null
     const styleOverride = styleArg ? styleArg.split('=')[1] : 'rotate'
 
     // Calculate week dates
@@ -36,6 +39,12 @@ async function main() {
 
     if (debugMode) {
       console.log('Running in debug mode - only processing one album')
+    }
+    if (testingMode) {
+      console.log('Running in testing mode - output redirected to output/ folder')
+    }
+    if (takeCount) {
+      console.log(`Taking ${takeCount} items`)
     }
 
     // Load configuration
@@ -57,9 +66,18 @@ async function main() {
     // Setup folder structure
     const dateStr = weekEnd.toISOString().split('T')[0]
     const weekNumber = getWeekNumber(weekStart)
-    const postPath = path.join(process.cwd(), 'src', 'content', 'tunes', `${dateStr}-listened-to-this-week.mdx`)
-    const albumsFolder = path.join(process.cwd(), 'public', 'assets', `${dateStr}-listened-to-this-week`, 'albums')
-    const artistsFolder = path.join(process.cwd(), 'public', 'assets', `${dateStr}-listened-to-this-week`, 'artists')
+    const baseDir = testingMode
+      ? path.join(process.cwd(), 'output', `${dateStr}-listened-to-this-week`)
+      : process.cwd()
+    const postPath = testingMode
+      ? path.join(baseDir, `${dateStr}-listened-to-this-week.mdx`)
+      : path.join(baseDir, 'src', 'content', 'tunes', `${dateStr}-listened-to-this-week.mdx`)
+    const albumsFolder = testingMode
+      ? path.join(baseDir, 'albums')
+      : path.join(baseDir, 'public', 'assets', `${dateStr}-listened-to-this-week`, 'albums')
+    const artistsFolder = testingMode
+      ? path.join(baseDir, 'artists')
+      : path.join(baseDir, 'public', 'assets', `${dateStr}-listened-to-this-week`, 'artists')
 
     await fs.mkdir(albumsFolder, { recursive: true })
     await fs.mkdir(artistsFolder, { recursive: true })
@@ -77,8 +95,9 @@ async function main() {
 
     // Process data
     console.log('Processing artist and album data...')
-    let topArtists = processArtistData(artistData, collectionInfo.originalCases, debugMode ? 1 : numberOfItems)
-    const topAlbums = processAlbumData(albumData, collectionInfo.originalCases, debugMode ? 1 : numberOfItems)
+    const itemCount = takeCount || (debugMode ? 1 : numberOfItems)
+    let topArtists = processArtistData(artistData, collectionInfo.originalCases, itemCount)
+    const topAlbums = processAlbumData(albumData, collectionInfo.originalCases, itemCount)
 
     // Filter out "Various Artists" from the top artists list
     const beforeFilter = topArtists.length
@@ -112,7 +131,9 @@ async function main() {
 
     // Generate collage cover
     console.log('Generating cover collage...')
-    const srcAssetsFolder = path.join(process.cwd(), 'src', 'assets', `${dateStr}-listened-to-this-week`)
+    const srcAssetsFolder = testingMode
+      ? baseDir
+      : path.join(process.cwd(), 'src', 'assets', `${dateStr}-listened-to-this-week`)
     await fs.mkdir(srcAssetsFolder, { recursive: true })
 
     const albumFiles = await fs.readdir(albumsFolder)
