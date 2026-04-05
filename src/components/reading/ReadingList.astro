@@ -1,4 +1,6 @@
 ---
+import { getReadingPreviewImage, getReadingPreviewSrcSet } from '../../utils/reading-preview'
+
 interface ReadingItem {
   bookmark_id: number
   title: string
@@ -50,6 +52,18 @@ function formatDate(iso: string): string {
     year: 'numeric',
   })
 }
+
+function isMediumUrl(url: string): boolean {
+  try {
+    const hostname = new URL(url).hostname
+    return hostname === 'medium.com' || hostname.endsWith('.medium.com')
+      || hostname === 'betterprogramming.pub' || hostname === 'levelup.gitconnected.com'
+      || hostname === 'blog.devgenius.io' || hostname === 'towardsdatascience.com'
+      || hostname === 'faun.pub' || hostname === 'learningdaily.dev'
+  } catch {
+    return false
+  }
+}
 ---
 
 {items.length === 0 ? (
@@ -65,42 +79,76 @@ function formatDate(iso: string): string {
           <span class="text-sm text-on-surface-variant">{monthItems.length} {monthItems.length === 1 ? 'article' : 'articles'}</span>
           <div class="flex-1 border-b border-outline-variant translate-y-[-4px]"></div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {monthItems.map((item) => (
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-reading-tags={item.tags.join(',')}
-              class="group flex items-start gap-3 surface-container-lowest rounded-xl p-4 ghost-border transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)] dark:hover:shadow-[0_16px_48px_rgba(0,0,0,0.3)]"
-            >
-              <img
-                src={getFaviconUrl(item.url)}
-                alt=""
-                width="20"
-                height="20"
-                loading="lazy"
-                class="mt-0.5 rounded-sm shrink-0 opacity-70 group-hover:opacity-100 transition-opacity"
-              />
-              <div class="flex-1 min-w-0">
-                <h3 class="text-sm font-semibold text-on-surface group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug line-clamp-2">
-                  {item.title}
-                </h3>
-                <div class="flex items-center gap-2 mt-1.5 text-xs text-on-surface-variant">
-                  <span class="truncate">{getDomain(item.url)}</span>
-                  <span class="shrink-0">·</span>
-                  <span class="shrink-0">{formatDate(item.time)}</span>
-                  {item.tags.length > 0 && item.tags.map(tag => (
-                    <span class="shrink-0 surface-container-high px-1.5 py-0.5 rounded-full text-[11px] font-medium">{tag}</span>
-                  ))}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {monthItems.map((item) => {
+            const ogImage = getReadingPreviewImage(item.url)
+            const ogSrcSet = getReadingPreviewSrcSet(item.url)
+
+            return (
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-reading-tags={item.tags.join(',')}
+                class="group block surface-container-lowest rounded-xl overflow-hidden ghost-border transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)] dark:hover:shadow-[0_16px_48px_rgba(0,0,0,0.3)]"
+              >
+                {ogImage ? (
+                  <figure class="relative overflow-hidden">
+                    <img
+                      src={ogImage}
+                      srcset={ogSrcSet || undefined}
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      alt=""
+                      width="600"
+                      height="315"
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full aspect-[16/9] object-cover"
+                    />
+                  </figure>
+                ) : isMediumUrl(item.url) ? (
+                  <div class="w-full aspect-[16/9] bg-[#242424] flex items-center justify-center">
+                    <svg class="w-28 h-auto" viewBox="0 0 24 24" fill="white">
+                      <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                    </svg>
+                  </div>
+                ) : (
+                  <div class="w-full aspect-[16/9] bg-[var(--md-sys-color-surface-container-high)] flex items-center justify-center">
+                    <svg class="w-10 h-10 text-on-surface-variant opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                      <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                  </div>
+                )}
+                <div class="p-4">
+                  <div class="flex items-start gap-3">
+                    <img
+                      src={getFaviconUrl(item.url)}
+                      alt=""
+                      width="20"
+                      height="20"
+                      loading="lazy"
+                      class="mt-0.5 rounded-sm shrink-0 opacity-70 group-hover:opacity-100 transition-opacity"
+                    />
+                    <div class="flex-1 min-w-0">
+                      <h3 class="text-sm font-semibold text-on-surface group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug line-clamp-2">
+                        {item.title}
+                      </h3>
+                      <div class="flex items-center gap-2 mt-1.5 text-xs text-on-surface-variant">
+                        <span class="truncate">{getDomain(item.url)}</span>
+                        <span class="shrink-0">·</span>
+                        <span class="shrink-0">{formatDate(item.time)}</span>
+                        {item.tags.length > 0 && item.tags.map(tag => (
+                          <span class="shrink-0 surface-container-high px-1.5 py-0.5 rounded-full text-[11px] font-medium">{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <svg class="w-4 h-4 shrink-0 mt-0.5 text-on-surface-variant opacity-0 group-hover:opacity-60 transition-opacity -rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          ))}
+              </a>
+            )
+          })}
         </div>
       </div>
     ))}
