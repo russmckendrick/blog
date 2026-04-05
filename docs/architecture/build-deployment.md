@@ -18,7 +18,7 @@ This workflow handles building the Astro site and deploying it to Cloudflare Wor
 3.  **Audit**: Run `pnpm audit` to check for security vulnerabilities.
 4.  **Cache**: Restore `node_modules/.cache` to speed up builds (specifically for OpenGraph image generation).
 5.  **Build**: Run `pnpm run build` which includes:
-    - `prebuild`: Extract hero colors + cache LinkPreview images
+    - `prebuild`: Extract hero colors, cache LinkPreview images, fetch reading list, and cache up to 10 new reading list OG images
     - `astro build`: Generate static assets and worker script
 6.  **Deploy**:
     - Uses `cloudflare/wrangler-action`.
@@ -28,6 +28,7 @@ This workflow handles building the Astro site and deploying it to Cloudflare Wor
 ### Secrets Required
 - `CLOUDFLARE_API_TOKEN`: Token for authenticating with Cloudflare.
 - `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare Account ID.
+- `INSTAPAPER_CONSUMER_KEY` / `INSTAPAPER_CONSUMER_SECRET` / `INSTAPAPER_USERNAME` / `INSTAPAPER_PASSWORD`: For fetching the reading list during prebuild.
 
 ---
 
@@ -91,3 +92,38 @@ This workflow refreshes cached Open Graph images for `<LinkPreview>` components 
 - Images are committed to the repo, not stored in Actions cache
 - This ensures images are always available during builds without network dependency
 - Manual trigger with `force: true` re-downloads all images regardless of age
+
+---
+
+## Reading List Image Refresh
+
+**Workflow File**: `.github/workflows/refresh-reading-images.yml`
+
+This workflow refreshes cached Open Graph images for reading list cards, ensuring new bookmarks get images and stale ones are updated.
+
+### Triggers
+- **Schedule**: Sundays at 07:00 UTC (`0 7 * * 0`), one hour after link preview refresh.
+- **Manual**: Can be triggered manually via `workflow_dispatch` with optional `force` parameter.
+
+### Process
+1.  **Setup**: Check out code, setup PNPM, and setup Node.js v22.
+2.  **Dependencies**: Install dependencies using `pnpm install --frozen-lockfile`.
+3.  **Fetch Reading List**: Runs `node scripts/fetch-reading-list.js` to sync the latest bookmarks from Instapaper.
+4.  **Refresh**:
+    - Runs `node scripts/cache-reading-images.js --refresh-stale`.
+    - Re-downloads OG images older than 7 days.
+    - If `force` input is true, re-downloads all images.
+5.  **Commit**: If changes detected, commits updated images and manifest to `main`.
+
+### Files Updated
+- `public/assets/reading-previews/*.jpg` - Cached OG images
+- `src/data/reading-image-cache.json` - URL-to-path manifest
+
+### Secrets Required
+- `INSTAPAPER_CONSUMER_KEY` / `INSTAPAPER_CONSUMER_SECRET` / `INSTAPAPER_USERNAME` / `INSTAPAPER_PASSWORD`: For fetching bookmarks.
+
+### Notes
+- Images are committed to the repo, same as link preview images
+- During regular builds, `prebuild` only caches up to 10 new uncached URLs (`--limit 10`) to keep build times short
+- The weekly workflow handles the full refresh
+- The `--limit` flag filters to uncached URLs first, then caps at N, so existing images are never re-fetched

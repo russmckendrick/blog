@@ -18,7 +18,9 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `pnpm run extract-colors` | `scripts/extract-hero-colors.js` | Rebuild `src/data/hero-colors.json` from hero images |
 | `pnpm run cache-link-previews` | `scripts/cache-link-preview-images.js` | Download and cache OG images for `LinkPreview` embeds |
 | `pnpm run refresh-link-previews` | `scripts/cache-link-preview-images.js --refresh-stale` | Refresh stale cached OG images |
-| `pnpm run prebuild` | `pnpm run extract-colors && node scripts/cache-link-preview-images.js` | Prepare image metadata before production builds |
+| `pnpm run cache-reading-images` | `scripts/cache-reading-images.js` | Download and cache OG images for reading list cards |
+| `pnpm run refresh-reading-images` | `scripts/cache-reading-images.js --refresh-stale` | Refresh stale cached reading list OG images |
+| `pnpm run prebuild` | (see below) | Prepare image metadata before production builds |
 
 ## Top-Level Scripts
 
@@ -39,6 +41,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `scripts/optimize-images.js` | primary | Optimizes files in `src/assets/` and `public/assets/`, optionally for a single path |
 | `scripts/extract-hero-colors.js` | primary | Extracts dominant colors from hero images for gradient backgrounds |
 | `scripts/cache-link-preview-images.js` | primary | Scans MDX for `<LinkPreview>` usage and caches OG images locally |
+| `scripts/cache-reading-images.js` | primary | Fetches OG images for reading list bookmarks and caches them locally |
 | `scripts/fal-cover-generator.js` | manual | AI blog cover generator used by `new-post.js` and manual cover generation flows |
 | `scripts/regenerate-cover.js` | manual | Regenerate a blog cover for an existing MDX post |
 | `scripts/fal-collage.js` | manual/internal | FAL-based tunes collage generator with multiple composition strategies |
