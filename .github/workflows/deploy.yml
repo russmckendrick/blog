@@ -67,6 +67,10 @@ jobs:
           pnpm run build
         env:
           NODE_ENV: production
+          INSTAPAPER_CONSUMER_KEY: ${{ secrets.INSTAPAPER_CONSUMER_KEY }}
+          INSTAPAPER_CONSUMER_SECRET: ${{ secrets.INSTAPAPER_CONSUMER_SECRET }}
+          INSTAPAPER_USERNAME: ${{ secrets.INSTAPAPER_USERNAME }}
+          INSTAPAPER_PASSWORD: ${{ secrets.INSTAPAPER_PASSWORD }}
 
       - name: 📊 Build summary
         run: |
