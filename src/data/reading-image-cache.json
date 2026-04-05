@@ -86,7 +86,7 @@
     "imageType": null,
     "title": "artima - Flexibility and Complexity",
     "description": "",
-    "fetchedAt": "2026-04-05T12:18:12.331Z"
+    "fetchedAt": "2026-04-05T13:16:54.255Z"
   },
   "https://www.jefftk.com/p/history-of-https-usage": {
     "localImage": "/assets/reading-previews/jefftk.com-4e49ecf4e8ce.jpg",
@@ -148,7 +148,7 @@
     "imageType": null,
     "title": "Hacking my “smart” toothbrush",
     "description": "After buying a new Philips Sonicare toothbrush I was surprised to see that it reacts to the insertion of a brush head by blinking an LED.  A quick online search reveals that the head communicates with the toothbrush handle to remind you when it’s time to buy a new one.  From the Philips product page: seems to be REALLY smart!  Reverse Engineering  Looking at the base of the head shows that it contains an antenna and a tiny black box that is presumably an IC. The next hint can be found in the manual where it says that: “Radio Equipment in this product operates at 13.56 MHz”, which would indicate that it is an NFC tag.  And indeed when holding the brush head to my phone it opens a link to a product page: https://www.usa.philips.com/c-m-pe/toothbrush-heads.                                                                                                Using the NFC Tools app we can learn a lot about this tag:       It is an NTAG213   It uses NfcA   It is password protected   We can see the link to the Philips webpage   Also using NFC Tools, the memory and memory access conditions can be read:                 Address       Data       Type       Access                       0x00       04:EC:FC:9C       UID0-UID2/BCC0       Read-Only                 0x01       A2:94:10:90       UID3-UDI6       Read-Only                 0x02       B6:48:FF:FF       BCC1/INT./LOCK0-LOCK1       Read-Only                 0x03       E1:10:12:00       OTP0-OTP3       Read-Only                 0x04       03:20:D1:01       DATA       Read-Only                 0x05       1C:55:02:70       DATA       Read-Only                 0x06       68:69:6C:69       DATA       Read-Only                 0x07       70:73:2E:63       DATA       Read-Only                 0x08       6F:6D:2F:6E       DATA       Read-Only                 0x09       66:63:62:72       DATA       Read-Only                 0x0A       75:73:68:68       DATA       Read-Only                 0x0B       65:61:64:74       DATA       Read-Only                 0x0C       61:70:FE:00       DATA       Read-Only                 0x0D…       00:00:00:00       DATA       Read-Only                 0x1F       00:01:07:00       DATA       Readable, write protected by PW                 0x20       00:00:00:02       DATA       Read-Only                 0x21       60:54:32:32       DATA       Read-Only                 0x22       31:32:31:34       DATA       Read-Only                 0x23       20:31:32:4B       DATA       Read-Only                 0x24       B3:02:02:00       DATA       Readable,write protected by PW                 0x25       00:00:00:00       DATA       Readable,write protected by PW                 0x26       00:00:00:00       DATA       Readable,write protected by PW                 0x27       00:00:00:01       DATA       Readable,write protected by PW                 0x28       00:03:30:BD       LOCK2 - LOCK4       Readable,write protected by PW                 0x29       04:00:00:10       CFG 0       Read-Only                 0x2A       43:00:00:00       CFG 1       Read-Only                 0x2B       00:00:00:00       PWD0-PWD3       Write-Only                 0x2C       00:00:00:00       PACK0-PACK1       Write-Only           I repeated this process for one black and two white W DiamondClean brush heads and learned the following:    Address 0x00-0x02 contains a unique ID and its checksum   Address 0x04-0x0C contains the link to the Philips store   Address 0x22 is 31:32:31:34 for black and 31:31:31:31 for white heads respectively   Address 0x24 contains the total brush time   All other readable data is identical between all heads   Decoding the stored time Let’s do an experiment to see what changes happen to the tag when using the toothbrush:    Read the tag            When reading a new brush head that has never been in contact with the data at addr. 0x24 is 00:00:02:00.       Simply attaching it to the handle (without brushing) changes nothing           Brush for some time            In this case, I let the toothbrush run for 5s           Read the tag again            The data at addr. 0x24 is now 05:00:02:00           Observe the difference            Looks like addr. 0x24 saves the number of seconds that the brush head was in use           When the brush is used for more than 255s, this timer rolls over to the second bit (02:01:02:00 -> 258s).  Trying to overwrite the stored time is unfortunately unsuccessful, as this memory address is password protected.  Sniffing the password Luckily it turns out that the required password is sent over plain text! So all I need to do is to sniff the communication between the toothbrush and the head. After digging out my HackRF software defined radio and some trial and error, I came up with the following workflow.  Record RF signal   When opening gqrx and tuning it to 13.736 MHz while holding the toothbrush close to the antenna, it is visible that the head gets polled multiple times a second. It is a welcome surprise that my simple monopole antenna gets a signal that is strong enough for this purpose. You can download the relevant gqrx configuration file here.    While brushing, the NFC polling takes a brief pause and the first burst of packets that follows updates the time counter.  With the ability of gqrx to make I/Q recordings, we can capture the password RF signals like this:    Turn on the toothbrush   Start recording   Turn off the toothbrush   Stop the recording   The first packets in the file should now contain the password in plain text.  Convert recording   Before this raw I/Q file can be decoded it needs to be converted into a slightly different format to be read by the decoding program. I created a small gnuradio companion script that applies a lowpass filter and converts the data into a wav file with two channels that contain the real and imaginary components of the complex signal. Make sure to substitute the correct paths in the source/sink blocks and check the sampling frequency (I used 2MHz). You can download the script here.  Decode recording                                                 I found the perfect tool for this task called NFC-laboratory.  After opening the newly created WAV file, it should look something like the picture above. In this case, the recording is only good enough to see the communication that goes from host to tag (green arrow). But to sniff the password this is perfect. When looking at the datasheet for the NTAG213, we can see what is happening:    Line #0-#6: communication is established with the tags’ unique ID   Line #7: The toothbrush sends the password (command 0x1B = PWD_AUTH)   Line #9: The time counter is updated to the new value (command 0xA2 = WRITE)   All lines below are repeated polling without password authentication or writing anything   So the password for this brush head is 67:B3:8B:98 (underlined in the picture).  Writing to the brush With the password successfully acquired, it’s now possible to set the counter on the brush head to anything we want by sending the relevant bytes over NFC. NFC Tools comes to the rescue again:    Go to Other -> Advanced NFC commands   Set the I/O Class to NfcA   Set the data to 1B:67:B3:8B:98,A2:24:00:00:02:00   Enjoy a factory-new brush head (at least as far as the time counter is concerned)   Here is the breakdown of the command in step 3:                 Command       Explanation                       1B       PWD_AUTH                 67:B3:8B:98       The password                 ,       Package delimiter                 A2       WRITE                 24       To address 0x24                 00:00:02:00       Timer set to 0s           Below you can see the memory of the brush head before and after the custom NFC commands:                                                                                                                               Observe how the timer at address 0x24 changes       With this, the toothbrush is now successfully hacked and we can play around with the timer as we wish.  Here are some interesting observations:    Only the first two bytes at address 0x24 are used for timekeeping.  Once the counter reaches FF:FF:02:00 it stops going up (18 hours of continuous brushing).   When the stored time is greater than 0x5460 the toothbrush blinks the LED to notify you to change heads. This corresponds to 21’600s -> 180 x 2min -> 3 months of brushing twice a day, which is exactly in line with Philips recommendation to change heads every 3 months.   Final Remarks  Password verification protection You might have noticed the color of the brush head changing throughout of this post. This is because I had to run out and buy a new one after getting locked out of the first one. When having a close look at the contents of address 0x2A which is 43:00:00:00 and page 18 of the datasheet, we can see that the tag is configured to permanently disable all write access after three wrong password attempts. (Which I promptly exceeded when playing around) This means that not even the toothbrush handle itself can write to this head again.  Password generation Unfortunately, the password of every brush head is unique and this process of extracting it with an SDR is quite involved and requires special hardware.  At the bottom of page 30 in the datasheet, NXP recommends generating the password from the 7-byte UID. Below are all the UID - password pairs I obtained from my 3 heads:                 UID       Password                       04:79:CF:7A:89:10:90       FF:34:CE:4C                 04:EC:FC:A2:94:10:90       61:F0:A5:0F                 04:D7:29:0A:94:10:90       67:B3:8B:98           All my tries to guess to one-way function for generating the passwords failed. Depending on the care that the Philips engineers took, guessing this function could be almost impossible.  But if you manage to solve this puzzle, feel free to hit me up with an E-mail.  Update (August 16, 2023) After publishing this article, I was pleasantly surprised to see it picked up by some big news sites such as Hacker News and Hackaday. The resulting discussions and comments proved to be both enlightening and entertaining. Thanks to everyone who dropped positive comments and messages! A special shoutout has to go to Aaron Christophel who got inspired by this post to:    Dump and reverse engineer the Philips Sonicare firmware to extract the password generation algorithm: Video   Wrote a password generator: GitHub   And just for fun, he made the toothbrush bust out a  Rick Roll   Please go check his content if you are interested in the solution to the puzzle.",
-    "fetchedAt": "2026-04-05T12:18:13.348Z"
+    "fetchedAt": "2026-04-05T13:16:56.491Z"
   },
   "https://firehydrant.com/blog/your-guide-to-better-incident-status-pages/": {
     "localImage": "/assets/reading-previews/firehydrant.com-5156732f6321.jpg",
@@ -178,28 +178,31 @@
     "fetchedAt": "2026-04-05T12:18:13.253Z"
   },
   "https://learningdaily.dev/taylor-swift-ticketmaster-meltdown-a-system-design-analysis-cd326f7ed57b": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:44.601Z"
+    "localImage": "/assets/reading-previews/learningdaily.dev-90f4bb6fe775.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*TZZFInIb2rCHw69X5_jsoQ.png",
+    "imageType": "og-image",
+    "title": "Taylor Swift Ticketmaster Meltdown: A System Design Analysis",
+    "description": "While the final numbers are still being tallied, Taylor Swift’s North American Eras Tour is likely the highest-grossing concert tour ever…",
+    "imageAlt": "Taylor Swift Ticketmaster Meltdown",
+    "fetchedAt": "2026-04-05T13:11:56.087Z"
   },
   "https://medium.com/@folutilewritestech/7-simple-macos-apps-that-will-10x-your-productivity-5666a81cfa27": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:44.607Z"
+    "localImage": "/assets/reading-previews/medium.com-3f6050d09931.jpg",
+    "originalImage": "https://miro.medium.com/v2/da:true/resize:fit:1200/0*jEt1r3xTkjgP3idb",
+    "imageType": "og-image",
+    "title": "7 Simple macOS Apps that Will 10x Your Productivity",
+    "description": "If you could only use seven apps for the rest of your life, these would serve you best.",
+    "imageAlt": "Photo of a half-opened Macbook",
+    "fetchedAt": "2026-04-05T13:12:00.380Z"
   },
   "https://alanblackmore.medium.com/cloud-infrastructure-diagrams-for-github-163118106d2a": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:44.610Z"
+    "localImage": "/assets/reading-previews/alanblackmore.medium.com-0907b3478527.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:799/0*71nSsMWEkM2l3HDo.png",
+    "imageType": "og-image",
+    "title": "Cloud Infrastructure Diagrams for GitHub",
+    "description": "Hava cloud infrastructure diagrams are extremely useful for understanding how cloud environments are constructed. They show you what is…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:11:58.382Z"
   },
   "http://blog.cloudflare.com/post-mortem-on-cloudflare-control-plane-and-analytics-outage/": {
     "localImage": "/assets/reading-previews/blog.cloudflare.com-2f7266da448d.jpg",
@@ -211,28 +214,31 @@
     "fetchedAt": "2026-04-05T11:05:44.878Z"
   },
   "https://medium.com/spacelift/18-most-useful-terraform-tools-to-use-in-2023-dabcaa3fb5b1": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:45.436Z"
+    "localImage": "/assets/reading-previews/medium.com-619c44948661.jpg",
+    "originalImage": "https://miro.medium.com/v2/da:true/resize:fit:834/0*Exgfw3Eu6KrSoijf",
+    "imageType": "og-image",
+    "title": "Popular Tools to Use with Terraform",
+    "description": "Terraform is a strong IaC foundation, but once environments grow in complexity, it’s common to pair it with tooling for automation…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:00.291Z"
   },
   "https://james-berger.medium.com/say-goodbye-to-visio-the-future-of-diagram-design-is-here-a458ca45f6fb": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:45.436Z"
+    "localImage": "/assets/reading-previews/james-berger.medium.com-bfdb2be5b6e7.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*0x_55NUu66g6d-VBUIvZfg.png",
+    "imageType": "og-image",
+    "title": "Say Goodbye to Visio: The Future of Diagram Design is Here!",
+    "description": "Meet Azure Analytics Architecture Advisor – the latest architect tool that is set to revolutionise your approach to system architecture…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:03.008Z"
   },
   "https://medium.com/@danielfoo/software-architecture-and-design-trend-2023-f55ecfbcfcc0": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:45.436Z"
+    "localImage": "/assets/reading-previews/medium.com-bd78d31827af.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*e2JclDks2rY3ih3n8fbl6g.png",
+    "imageType": "og-image",
+    "title": "Software Architecture and Design Trend 2023",
+    "description": "2023 is almost coming to the end. It’s always a good idea to reflect back on what has been the popular topic on Software Architecture and…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:03.817Z"
   },
   "https://www.theverge.com/23899461/discogs-sellers-vinyl-cds-community-fees": {
     "localImage": "/assets/reading-previews/theverge.com-f1974137d897.jpg",
@@ -249,23 +255,25 @@
     "imageType": null,
     "title": "LastPass: ‘Horse Gone Barn Bolted’ is Strong Password – Krebs on Security",
     "description": "",
-    "fetchedAt": "2026-04-05T11:05:49.126Z"
+    "fetchedAt": "2026-04-05T13:16:59.103Z"
   },
   "https://medium.com/microsoftazure/building-a-chatgpt-powered-and-voice-enabled-assistant-using-react-and-express-46823d3098b0": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:49.127Z"
+    "localImage": "/assets/reading-previews/medium.com-06697532e8b5.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*9vrAyIh7pu-QJAIPlujDDQ.png",
+    "imageType": "og-image",
+    "title": "Building a ChatGPT-Powered and Voice-Enabled Assistant using React and Express",
+    "description": "With Large Language Models becoming more and more popular in today’s world, interest in their usage for development is also increasing…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:09.422Z"
   },
   "https://blog.devgenius.io/enterprise-architecture-with-togaf-and-well-architected-frameworks-aws-azure-and-google-4cb16875a33b": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:49.127Z"
+    "localImage": "/assets/reading-previews/blog.devgenius.io-1c531f31e8ea.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*7LhhijyJ-w5wEFskbPXtMA.png",
+    "imageType": "og-image",
+    "title": "Enterprise Architecture with TOGAF and Well-Architected Frameworks (AWS, Azure and Google)",
+    "description": "Introduction",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:07.453Z"
   },
   "https://grizzlyreports.com/we-believe-pdd-is-a-dying-fraudulent-company-and-its-shopping-app-temu-is-cleverly-hidden-spyware-that-poses-an-urgent-security-threat-to-u-s-national-interests/": {
     "localImage": null,
@@ -273,31 +281,34 @@
     "imageType": null,
     "title": "We believe PDD is a Dying Fraudulent Company and its Shopping App TEMU is Cleverly Hidden Spyware that Poses an Urgent Security Threat to U.S. National Interests – Grizzly Research LLC",
     "description": "",
-    "fetchedAt": "2026-04-05T11:05:49.148Z"
+    "fetchedAt": "2026-04-05T13:17:01.255Z"
   },
   "https://iopshub.medium.com/terraform-best-practices-everyone-should-know-a7c76ba9f085": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:49.689Z"
+    "localImage": "/assets/reading-previews/iopshub.medium.com-fa84e3656cf3.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:354/1*RovoK9RLlHOEue9GtD2tTg.png",
+    "imageType": "og-image",
+    "title": "Terraform Best Practices Everyone Should Know",
+    "description": "Continuing the Journey: Unveiling Terraform Best Practices for Speed and Modularity. Building upon our exploration of Streamlining GitOps…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:12.521Z"
   },
   "https://medium.com/platform-engineer/26-terraform-hacks-for-effective-infrastructure-automation-with-examples-d6d721c3d5e0": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:49.691Z"
+    "localImage": "/assets/reading-previews/medium.com-7d2fea2af5a1.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*NLQ2wDRM_MSZjSEDS1UvzA.png",
+    "imageType": "og-image",
+    "title": "26 Terraform Hacks for Effective Infrastructure Automation (With Examples)",
+    "description": "A checklist for Cloud Engineers to live by",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:12.652Z"
   },
   "https://betterprogramming.pub/graphic-design-for-software-engineers-and-architects-c616bb6c3366": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:49.692Z"
+    "localImage": "/assets/reading-previews/betterprogramming.pub-7aede6fbe8ca.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*1oK4kNkoys6PlkfsWN7I-w.png",
+    "imageType": "og-image",
+    "title": "Graphic Design for Software Engineers and Architects",
+    "description": "It’s no secret that engineers have a certain “style” for their graphic designs, including technical diagrams",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:10.427Z"
   },
   "https://www.bing.com/search?pglt=161&q=Instapaper+crhome&cvid=0a1f53e0c3c1407792f6913f23fdb2d4&aqs=edge..69i57j0l4j69i64j69i11004.2482j0j1&FORM=ANAB01&PC=U531": {
     "localImage": "/assets/reading-previews/bing.com-2eb61618a2a0.jpg",
@@ -309,28 +320,31 @@
     "fetchedAt": "2026-04-05T11:05:49.807Z"
   },
   "https://medium.com/azure-architects/cloud-adoption-framework-and-using-heat-maps-to-track-project-progress-c0e0816d447b": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:50.350Z"
+    "localImage": "/assets/reading-previews/medium.com-4b815c521e88.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*0f8CaT3KuLqe3_1Hzr5zDg.png",
+    "imageType": "og-image",
+    "title": "Cloud Adoption Framework and using heat maps to track project progress",
+    "description": "Using heat maps to track project progress on cloud projects, specifically Azure.",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:35.736Z"
   },
   "https://medium.com/@jankammerath/how-kubernetes-and-kafka-will-get-you-fired-a6dccbd36c77": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:50.360Z"
+    "localImage": "/assets/reading-previews/medium.com-a15ec5f6ef71.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*xSFbT0esxt0lD-N5snbh6A.png",
+    "imageType": "og-image",
+    "title": "How Kubernetes And Kafka Will Get You Fired",
+    "description": "Kubernetes and Kafka: dream team or horror show? Not every business can afford running Kubernetes and Kafka. Think twice before…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:41.465Z"
   },
   "https://levelup.gitconnected.com/i-spent-30-days-studying-a-programmer-who-built-a-230-billion-company-after-quitting-his-9-5-8ff4ebbe0346": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:50.555Z"
+    "localImage": "/assets/reading-previews/levelup.gitconnected.com-ae4fa7af54ee.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:654/1*_hPyhnVkbUU-2CCAVOw3dQ.png",
+    "imageType": "og-image",
+    "title": "I Spent 30 Days Studying A Programmer Who Built a $230 Billion Company After Quitting His 9–5 —…",
+    "description": "Steal This Programmer Blueprint",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:39.662Z"
   },
   "https://sfconservancy.org/blog/2023/jun/23/rhel-gpl-analysis/": {
     "localImage": "/assets/reading-previews/sfconservancy.org-8782289557fa.jpg",
@@ -342,12 +356,13 @@
     "fetchedAt": "2026-04-05T11:05:51.283Z"
   },
   "https://medium.com/@DiggerHQ/the-story-behind-digger-v4-0-the-open-source-gitops-tool-for-terraform-275338dae290": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:51.831Z"
+    "localImage": "/assets/reading-previews/medium.com-8a3324f0e41d.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*qmHRSPkzv7-8jq3RZCZvOA.png",
+    "imageType": "og-image",
+    "title": "The story behind Digger v4.0: The Open Source GitOps Tool for Terraform.",
+    "description": "Hello, my name is Igor Zalutski, and I am one of the founders of Digger . We have been building Digger for over 2 years with multiple…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:43.538Z"
   },
   "https://status.dev.azure.com/_event/392143683/post-mortem": {
     "localImage": null,
@@ -376,12 +391,13 @@
     "fetchedAt": "2026-04-05T11:05:52.933Z"
   },
   "https://medium.com/devrain/generating-azure-resource-names-according-to-naming-convention-with-chatgpt-a5f02fb380a1": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:53.495Z"
+    "localImage": "/assets/reading-previews/medium.com-05324fa377b0.jpg",
+    "originalImage": "https://miro.medium.com/v2/da:true/resize:fit:1024/0*-2LmMrIFiXz8unuP",
+    "imageType": "og-image",
+    "title": "Generating Azure Resource Names According to Naming Convention with #ChatGPT",
+    "description": "If you are working with Microsoft Azure, the common task is creating a set of Azure services within resource group.",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:45.782Z"
   },
   "https://www.theverge.com/23653556/tweetbot-twitter-api-elon-musk-mastodon": {
     "localImage": "/assets/reading-previews/theverge.com-3f5cae834a13.jpg",
@@ -411,28 +427,31 @@
     "fetchedAt": "2026-04-05T11:05:54.517Z"
   },
   "https://medium.com/microsoftazure/microsoft-365-adoption-documents-and-guides-726a50e84fd5": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:55.057Z"
+    "localImage": "/assets/reading-previews/medium.com-d85c085e5cff.jpg",
+    "originalImage": "https://miro.medium.com/v2/da:true/resize:fit:596/0*qV2JWP71r0y44H6a",
+    "imageType": "og-image",
+    "title": "Microsoft 365 Adoption Documents and Guides",
+    "description": "A collection of the best resources I’ve seen on the subject 😉",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:48.626Z"
   },
   "https://medium.com/@danielaaronw/guardrails-for-terraform-8b2c5d711936": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:55.063Z"
+    "localImage": "/assets/reading-previews/medium.com-e8cded6f77f9.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*e8jinZdwr3WsP-Or8ZALfQ.jpeg",
+    "imageType": "og-image",
+    "title": "Guardrails for Terraform",
+    "description": "3 Tips to Protect Your Cloud Infrastructure",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:47.680Z"
   },
   "https://medium.com/microsoftazure/what-is-azure-synapse-e56f2a8b8d31": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:55.099Z"
+    "localImage": "/assets/reading-previews/medium.com-302404507d38.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:872/1*PQj1_lausUVsL-pxsJSbqQ.png",
+    "imageType": "og-image",
+    "title": "What is Azure Synapse ?",
+    "description": "Azure Synapse is a limitless analytics service that brings together enterprise data warehousing and Big Data analytics. It gives you the…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:12:45.849Z"
   },
   "https://www.semafor.com/article/01/27/2023/openai-has-hired-an-army-of-contractors-to-make-basic-coding-obsolete": {
     "localImage": "/assets/reading-previews/semafor.com-1c34a37a886d.jpg",
@@ -444,20 +463,22 @@
     "fetchedAt": "2026-04-05T11:05:55.673Z"
   },
   "https://medium.com/@tsarkon/the-intel-mac-transition-of-2006-how-vastly-different-it-was-from-the-m1-mac-launch-with-apple-fd93686b46f8": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:56.221Z"
+    "localImage": "/assets/reading-previews/medium.com-fbb74ccea8b0.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*P9oHocSF_uYGK--PSFuOHg@2x.jpeg",
+    "imageType": "og-image",
+    "title": "The Intel Mac transition of 2006: How vastly different it was from the M1 Mac launch with Apple…",
+    "description": "In January 2006 (17 years ago), Apple released the first Intel Macs on the market. It was the start of a new era after more than a decade…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:13:54.397Z"
   },
   "https://kylegenebrown.medium.com/gitarchitecture-a-better-way-to-capture-architectural-decisions-b3574a3d604": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:56.237Z"
+    "localImage": "/assets/reading-previews/kylegenebrown.medium.com-e5ed1522b75f.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*WBIDdrXf1PCh9EVZ8hshIA.png",
+    "imageType": "og-image",
+    "title": "GitArchitecture — a better way to capture Architectural decisions",
+    "description": "By Kyle Brown",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:13:56.370Z"
   },
   "https://learnk8s.io/terraform-aks": {
     "localImage": "/assets/reading-previews/learnk8s.io-9e1584f7ddf3.jpg",
@@ -478,20 +499,13 @@
     "fetchedAt": "2026-04-05T11:05:58.495Z"
   },
   "https://medium.com/@pawardipak120/terraform-dynamic-blocks-9f576f3ec69c": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:59.051Z"
-  },
-  "https://tomforb.es/i-scanned-every-package-on-pypi-and-found-57-live-aws-keys/": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:05:59.126Z"
+    "localImage": "/assets/reading-previews/medium.com-2c629d979f95.jpg",
+    "originalImage": "https://miro.medium.com/v2/da:true/bc1f8416df0cad099e43cda2872716e5864f18a73bda2a7547ea082aca9b5632",
+    "imageType": "og-image",
+    "title": "Terraform Dynamic Blocks",
+    "description": "Terraform provide the dynamic block to create repeatable nested blocks within a resource. A dynamic block is similar to the for expression…",
+    "imageAlt": "Medium",
+    "fetchedAt": "2026-04-05T13:13:58.123Z"
   },
   "https://surajincloud.com/terraform-cli-args-define-once-use-again-and-again-90356d1de787": {
     "localImage": null,
@@ -499,7 +513,7 @@
     "imageType": null,
     "title": "",
     "description": "",
-    "fetchedAt": "2026-04-05T11:05:59.501Z"
+    "fetchedAt": "2026-04-05T13:17:06.682Z"
   },
   "https://techcommunity.microsoft.com/t5/windows-os-platform-blog/azure-host-os-cloud-host/ba-p/3709528": {
     "localImage": "/assets/reading-previews/techcommunity.microsoft.com-0d148633f2c6.jpg",
@@ -511,12 +525,13 @@
     "fetchedAt": "2026-04-05T11:06:03.538Z"
   },
   "https://medium.com/pragmatic-programmers/using-the-c4-model-to-design-applications-c2e0944018ad": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:04.106Z"
+    "localImage": "/assets/reading-previews/medium.com-490d6a180d58.jpg",
+    "originalImage": "https://miro.medium.com/v2/da:true/resize:fit:1200/0*7fw7vX8d7HgPZY_H",
+    "imageType": "og-image",
+    "title": "Using the C4 Model to Design Applications",
+    "description": "How to Clearly Document Your Software Architecture",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:01.728Z"
   },
   "https://jessehouwing.net/security-state-of-the-azure-devops-marketplace/": {
     "localImage": "/assets/reading-previews/jessehouwing.net-b97d1f87acb9.jpg",
@@ -526,14 +541,6 @@
     "description": "This report focusses on the Azure Pipelines extensions in the Marketplace. At the time of compiling the report there are 1460 extensions in the \"Azure Pipelines\" category. More than 500 have one or more vulnerabilities or vulnerable dependencies.",
     "imageAlt": "",
     "fetchedAt": "2026-04-05T11:06:04.160Z"
-  },
-  "https://firehydrant.com/reports/incident-benchmarks/": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:04.514Z"
   },
   "https://www.infoworld.com/article/3663680/complexity-leads-to-cloud-outages-heres-the-proof.html": {
     "localImage": "/assets/reading-previews/infoworld.com-d7c8cd63b9bb.jpg",
@@ -545,20 +552,22 @@
     "fetchedAt": "2026-04-05T11:06:05.116Z"
   },
   "https://emily-mcdermott.medium.com/how-ive-made-280k-selling-spreadsheets-on-etsy-51b0759a9465": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:05.669Z"
+    "localImage": "/assets/reading-previews/emily-mcdermott.medium.com-17eedae7485e.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*MeEpdQL9D3pMNwKVAh7RUw.png",
+    "imageType": "og-image",
+    "title": "How I’ve Made $280k Selling Spreadsheets on Etsy",
+    "description": "In under 2 years, this is my income on Etsy selling spreadsheet templates (Google Sheets + Excel).",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:04.157Z"
   },
   "https://swwapnilp.medium.com/how-does-slack-use-terraform-104b1e96c97d": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:05.684Z"
+    "localImage": "/assets/reading-previews/swwapnilp.medium.com-54e30a792d88.jpg",
+    "originalImage": "https://miro.medium.com/v2/da:true/resize:fit:639/0*uTIgYD2JXYl7OtMc",
+    "imageType": "og-image",
+    "title": "How Does Slack Use Terraform?",
+    "description": "Originally published at https://slack.engineering on October 25, 2022.",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:06.473Z"
   },
   "https://leah.is/posts/scaling-the-mastodon/": {
     "localImage": null,
@@ -566,7 +575,7 @@
     "imageType": null,
     "title": "Scaling the Mastodon",
     "description": "",
-    "fetchedAt": "2026-04-05T11:06:05.864Z"
+    "fetchedAt": "2026-04-05T13:17:12.012Z"
   },
   "https://dev.to/nickytonline/have-you-moved-from-twitter-to-mastodon-for-social-media-4a37": {
     "localImage": "/assets/reading-previews/dev.to-c86602e48e80.jpg",
@@ -578,28 +587,22 @@
     "fetchedAt": "2026-04-05T11:06:06.504Z"
   },
   "https://medium.com/riskified-technology/how-to-roll-your-kafka-cluster-with-zero-downtime-and-no-data-loss-770fd0a35971": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:07.048Z"
+    "localImage": "/assets/reading-previews/medium.com-8a8314fbe83f.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*49CSdSStIlui3Tzshkqhcg@2x.png",
+    "imageType": "og-image",
+    "title": "How to Roll Your Kafka Cluster With Zero Downtime and No Data Loss",
+    "description": "Let’s get the balance right — build and design your infrastructure for flexibility",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:11.246Z"
   },
   "https://medium.com/azure-architects/understanding-azure-dns-private-resolver-7f4045a3b2fa": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:07.057Z"
-  },
-  "https://time.com/6229230/mastodon-eugen-rochko-interview/": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:07.154Z"
+    "localImage": "/assets/reading-previews/medium.com-8f17ed0f753a.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*LEt2ZJVZCxKf3WI1DTo-ig.png",
+    "imageType": "og-image",
+    "title": "Understanding Azure DNS Private Resolver",
+    "description": "Overview of Azure’s DNS Private Resolver service and common scenarios.",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:13.157Z"
   },
   "https://blog.symops.com/2022/10/28/just-in-time-access-least-privilege-cloud/": {
     "localImage": null,
@@ -607,7 +610,7 @@
     "imageType": null,
     "title": "",
     "description": "",
-    "fetchedAt": "2026-04-05T11:06:07.162Z"
+    "fetchedAt": "2026-04-05T13:17:18.474Z"
   },
   "https://seehad.tech/2021/10/07/avd-alerts-in-terraform/": {
     "localImage": null,
@@ -615,15 +618,16 @@
     "imageType": null,
     "title": "",
     "description": "",
-    "fetchedAt": "2026-04-05T11:06:07.687Z"
+    "fetchedAt": "2026-04-05T13:17:20.540Z"
   },
   "https://medium.com/microsoftazure/getting-started-with-azure-stack-hci-9a4c5a4a077d": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:07.715Z"
+    "localImage": "/assets/reading-previews/medium.com-ec7d4c070418.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/0*8uATrEYyYrThr1oE.jpg",
+    "imageType": "og-image",
+    "title": "Getting Started with Azure Stack HCI",
+    "description": "Originally published at https://adamtheautomator.com by Thomas Bründl on October 11, 2022.",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:13.775Z"
   },
   "https://towardsdatascience.com/disaster-recovery-scenarios-for-azure-storage-sql-cosmos-db-synapse-9bf5b561f858": {
     "localImage": "/assets/reading-previews/towardsdatascience.com-cda2f9db6062.jpg",
@@ -643,29 +647,23 @@
     "imageAlt": "",
     "fetchedAt": "2026-04-05T11:06:08.680Z"
   },
-  "https://medium.com/microsoftazure/azure-dns-private-resolver-c6e061bf1aec": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:09.223Z"
-  },
   "https://medium.com/@zakaid10/advanced-terraform-coding-methods-f9e8ae92fd24": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:09.226Z"
+    "localImage": "/assets/reading-previews/medium.com-9ace6683cb61.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:960/1*MqKvu5ZSr9KEYcDnlmc-eQ.png",
+    "imageType": "og-image",
+    "title": "Advanced Terraform Coding Methods",
+    "description": "This article will address several concepts and methods used when deploying Terraform in cloud automation processes. The article will follow…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:20.323Z"
   },
   "https://andreidascalu.medium.com/the-awfulness-of-aws-eks-d7700c1eccdc": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:09.251Z"
+    "localImage": "/assets/reading-previews/andreidascalu.medium.com-666643245845.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:895/1*zkbrQcADZKiaigwYhhde5w.png",
+    "imageType": "og-image",
+    "title": "The awfulness of AWS EKS",
+    "description": "A little bit of a background. I’ve been a Kubernetes user since early 2015 and have been using AWS since 2013 (on and off, with stints…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:17.157Z"
   },
   "https://dev.to/koenighotze/cloud-agnostic-architecture-2ojo": {
     "localImage": "/assets/reading-previews/dev.to-2e73f819cbc3.jpg",
@@ -677,28 +675,31 @@
     "fetchedAt": "2026-04-05T11:06:09.812Z"
   },
   "https://faun.pub/5-best-terraform-tools-that-you-need-in-2022-a3db2334c524": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:10.352Z"
+    "localImage": "/assets/reading-previews/faun.pub-e8bb931f4e7e.jpg",
+    "originalImage": "https://miro.medium.com/v2/da:true/resize:fit:1200/0*9KVdDrh2DNz49EMt",
+    "imageType": "og-image",
+    "title": "5 Best Terraform Tools That You Need in 2023",
+    "description": "Tools that can simplify your infrastructure code",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:23.074Z"
   },
   "https://medium.com/microsoftazure/why-azure-arc-is-a-big-deal-to-workload-operations-management-476766b4adc1": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:10.354Z"
+    "localImage": "/assets/reading-previews/medium.com-9f9e21b7edb6.jpg",
+    "originalImage": "https://miro.medium.com/v2/da:true/resize:fit:1200/0*QW03kX-0o6zAoMw4",
+    "imageType": "og-image",
+    "title": "Why Azure Arc is a big deal to Workload Operations Management",
+    "description": "A Hybrid and Multi-Cloud Management overview",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:25.584Z"
   },
   "https://medium.com/microsoftazure/how-to-automate-azure-with-low-code-and-robotic-process-automation-d8199ae9dff8": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:10.355Z"
+    "localImage": "/assets/reading-previews/medium.com-8366f6dbe616.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1027/1*YjpQW3rn5cehiMdcYGli6g.png",
+    "imageType": "og-image",
+    "title": "How to automate Azure with Low-Code and Robotic Process Automation",
+    "description": "Spoiler alert:",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:25.585Z"
   },
   "https://www.atlassian.com/engineering/post-incident-review-april-2022-outage": {
     "localImage": "/assets/reading-previews/atlassian.com-6a385dff01f8.jpg",
@@ -710,28 +711,31 @@
     "fetchedAt": "2026-04-05T11:06:11.378Z"
   },
   "https://medium.com/microsoftazure/how-to-scale-in-cloud-with-landing-zones-31a72de97492": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:11.920Z"
+    "localImage": "/assets/reading-previews/medium.com-52bd932fb7ed.jpg",
+    "originalImage": "https://miro.medium.com/v2/da:true/resize:fit:1200/0*uOJFbVf_kCdY1UuY",
+    "imageType": "og-image",
+    "title": "How to Scale in Cloud with Landing Zones",
+    "description": "This is a continuation of my “Cloud Adoption” Discussion.",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:28.077Z"
   },
   "https://medium.com/nerd-for-tech/terraforming-the-gitops-way-9417cf4abf58": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:11.939Z"
+    "localImage": "/assets/reading-previews/medium.com-e929ae118740.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*GmqF5wbagO3E0b-gNsznHw.png",
+    "imageType": "og-image",
+    "title": "Terraforming the GitOps Way !!!",
+    "description": "Terraform with GitOps using Atlantis (Pull request Automation)….",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:30.088Z"
   },
   "https://torstenvolk.medium.com/the-end-of-an-era-puppet-calls-it-a-day-383837e36167": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:11.940Z"
+    "localImage": "/assets/reading-previews/torstenvolk.medium.com-d3754e897cc8.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*TYRJufQbVB8_PwaagE5PNg.png",
+    "imageType": "og-image",
+    "title": "The End of an Era: Puppet Calls It a Day",
+    "description": "Today marks the true end of the era of configuration management platforms. Perforce acquired Puppet after the configuration management…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:14:27.857Z"
   },
   "https://rozemuller.com/avd-automation-cocktail-avd-automated-with-azure-cli/": {
     "localImage": "/assets/reading-previews/rozemuller.com-415ec5fac46f.jpg",
@@ -743,20 +747,22 @@
     "fetchedAt": "2026-04-05T11:06:12.885Z"
   },
   "https://medium.com/@louis_84491/terraform-modules-in-a-big-project-how-we-broke-it-down-9726852a196b": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:13.438Z"
+    "localImage": "/assets/reading-previews/medium.com-1bd2eb3e466a.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*zqSuRHozFcvM9bB0pN5sbw.png",
+    "imageType": "og-image",
+    "title": "Terraform modules in a big project : how we broke it down",
+    "description": "Before anything, I have to say that I love Terraform. This tool lets you define your application’s infrastructure entirely with code…",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:15:08.860Z"
   },
   "https://awstip.com/streamlining-your-terraform-modules-parameters-with-smart-defaults-dbe964f30344": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:13.453Z"
+    "localImage": "/assets/reading-previews/awstip.com-cacc9c533094.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:753/1*0FMiBDrlx0oNDTBGmffz-g.png",
+    "imageType": "og-image",
+    "title": "Streamlining your Terraform Modules Parameters with Smart Defaults",
+    "description": "We can have default values and nice data structures for our Terraform modules",
+    "imageAlt": "Terraform snippet showing a complex data structure defined in a local variable.",
+    "fetchedAt": "2026-04-05T13:15:06.778Z"
   },
   "https://stackoverflow.com/questions/63491707/deselect-stages-by-default": {
     "localImage": "/assets/reading-previews/stackoverflow.com-5a8872b4307c.jpg",
@@ -773,15 +779,16 @@
     "imageType": null,
     "title": "",
     "description": "",
-    "fetchedAt": "2026-04-05T11:06:13.716Z"
+    "fetchedAt": "2026-04-05T13:15:08.188Z"
   },
   "https://faun.pub/build-an-azure-application-gateway-with-terraform-8264fbd5fa42": {
-    "localImage": null,
-    "originalImage": null,
-    "imageType": null,
-    "title": "",
-    "description": "",
-    "fetchedAt": "2026-04-05T11:06:14.261Z"
+    "localImage": "/assets/reading-previews/faun.pub-dc30b7e2f983.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1200/1*afjF_MKdjON4_2nS8KOYIQ.png",
+    "imageType": "og-image",
+    "title": "Build an Azure Application Gateway with Terraform",
+    "description": "Log Analytics Workspace & Key Vault & Managed Service Identity",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-05T13:15:12.184Z"
   },
   "https://klinger.io/posts/managing-people-%F0%9F%A4%AF": {
     "localImage": null,
@@ -789,7 +796,7 @@
     "imageType": null,
     "title": "Managing people 🤯 | Andreas Klinger",
     "description": "I believe almost all first-time founders burn out their first employees – maybe this article helps you avoiding this",
-    "fetchedAt": "2026-04-05T11:06:14.499Z"
+    "fetchedAt": "2026-04-05T13:15:13.377Z"
   },
   "https://dev.to/carloscuesta/writing-architecture-decision-records-3582": {
     "localImage": "/assets/reading-previews/dev.to-808fac05af61.jpg",

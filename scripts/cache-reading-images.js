@@ -19,6 +19,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import crypto from 'crypto'
 import OAuth from 'oauth-1.0a'
+import puppeteer from 'puppeteer'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -30,8 +31,8 @@ const CACHE_FILE = path.join(PROJECT_ROOT, 'node_modules/.cache/reading-image-ca
 const READING_DATA = path.join(PROJECT_ROOT, 'src/data/reading.json')
 
 const STALE_DAYS = 7
-const CONCURRENCY = 2
-const REQUEST_DELAY = 1000
+const CONCURRENCY = 1
+const REQUEST_DELAY = 2000
 
 const args = process.argv.slice(2)
 const FORCE_REFRESH = args.includes('--force')
@@ -213,6 +214,110 @@ async function fetchOGMetadata(url) {
   } catch (error) {
     console.warn(`  Warning: Failed to fetch OG data for ${url}: ${error.message}`)
     return null
+  }
+}
+
+// ── Headless Chrome for Cloudflare-protected sites (Medium) ─────────────────
+
+let browser = null
+
+async function getBrowser() {
+  if (!browser) {
+    browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] })
+  }
+  return browser
+}
+
+async function closeBrowser() {
+  if (browser) {
+    await browser.close()
+    browser = null
+  }
+}
+
+async function fetchOGWithBrowser(url) {
+  try {
+    const b = await getBrowser()
+    const page = await b.newPage()
+    await page.setViewport({ width: 1280, height: 800 })
+
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: 45000 })
+
+    // Wait for Cloudflare challenge to resolve — poll until title changes
+    await page.waitForFunction(
+      () => !document.title.includes('Just a moment'),
+      { timeout: 30000 }
+    ).catch(() => {})
+
+    const ogData = await page.evaluate(() => {
+      const getMeta = (property) => {
+        const el = document.querySelector(`meta[property="${property}"], meta[name="${property}"]`)
+        return el?.getAttribute('content') || ''
+      }
+      return {
+        title: getMeta('og:title') || document.title || '',
+        description: getMeta('og:description') || getMeta('description') || '',
+        image: getMeta('og:image:secure_url') || getMeta('og:image:url') || getMeta('og:image') || '',
+        imageAlt: getMeta('og:image:alt') || '',
+      }
+    })
+
+    await page.close()
+
+    // If we still got the challenge page, bail
+    if (ogData.title.includes('Just a moment')) {
+      console.warn(`  Warning: Cloudflare challenge did not resolve for ${url}`)
+      return null
+    }
+
+    // Normalise image URL
+    if (ogData.image && !ogData.image.startsWith('https://')) {
+      if (ogData.image.startsWith('http://')) {
+        ogData.image = ogData.image.replace('http://', 'https://')
+      } else if (ogData.image.startsWith('//')) {
+        ogData.image = 'https:' + ogData.image
+      } else if (ogData.image.startsWith('/')) {
+        const urlObj = new URL(url)
+        ogData.image = `${urlObj.origin}${ogData.image}`
+      } else {
+        ogData.image = ''
+      }
+    }
+
+    ogData.title = ogData.title.trim()
+    ogData.description = ogData.description.trim()
+
+    console.log(`    Browser fetch OK: "${ogData.title.substring(0, 50)}..."`)
+    return ogData
+  } catch (error) {
+    console.warn(`  Warning: Browser fetch failed for ${url}: ${error.message}`)
+    return null
+  }
+}
+
+/**
+ * Download image via headless Chrome (bypasses Cloudflare on image CDN)
+ */
+async function downloadImageWithBrowser(imageUrl, localPath) {
+  try {
+    const b = await getBrowser()
+    const page = await b.newPage()
+
+    const response = await page.goto(imageUrl, { waitUntil: 'networkidle2', timeout: 30000 })
+    if (!response || !response.ok()) {
+      await page.close()
+      throw new Error(`HTTP ${response?.status() || 'unknown'}`)
+    }
+
+    const buffer = await response.buffer()
+    await fs.mkdir(path.dirname(localPath), { recursive: true })
+    await fs.writeFile(localPath, buffer)
+    await page.close()
+
+    return { success: true, size: buffer.length }
+  } catch (error) {
+    console.warn(`  Warning: Browser image download failed: ${error.message}`)
+    return { success: false }
   }
 }
 
@@ -410,7 +515,7 @@ async function main() {
 
       await delay(REQUEST_DELAY)
 
-      const ogData = await fetchOGMetadata(url)
+      let ogData = await fetchOGMetadata(url)
 
       // Handle 404/410 — remove dead bookmarks
       if (ogData?.notFound) {
@@ -429,19 +534,20 @@ async function main() {
         return
       }
 
+      if (!ogData && isMediumUrl(url)) {
+        // Medium is behind Cloudflare JS challenge — retry with headless Chrome
+        console.log(`    Cloudflare blocked — retrying with headless Chrome...`)
+        ogData = await fetchOGWithBrowser(url)
+      }
+
       if (!ogData) {
-        // For Medium URLs blocked by Cloudflare, use title from Instapaper data
-        const readingItem = isMediumUrl(url) ? readingData.find(item => item.url === url) : null
-        if (readingItem) {
-          console.log(`    Cloudflare blocked — using Instapaper title: "${readingItem.title}"`)
-        }
         failed++
         manifest[url] = {
           localImage: null,
           originalImage: null,
           imageType: null,
-          title: readingItem?.title || '',
-          description: readingItem?.description || '',
+          title: '',
+          description: '',
           fetchedAt: new Date().toISOString(),
         }
         cache.entries[url] = manifest[url]
@@ -449,7 +555,13 @@ async function main() {
       }
 
       if (ogData.image) {
-        const result = await downloadImage(ogData.image, localPath)
+        let result = await downloadImage(ogData.image, localPath)
+
+        // If regular download failed and it's a Medium image, try via browser
+        if (!result.success && isMediumUrl(url)) {
+          console.log(`    Image download blocked — retrying with headless Chrome...`)
+          result = await downloadImageWithBrowser(ogData.image, localPath)
+        }
 
         if (result.success) {
           console.log(`    Downloaded OG image: ${formatBytes(result.size)}`)
@@ -482,10 +594,13 @@ async function main() {
       }
       cache.entries[url] = manifest[url]
     }))
+
+    // Save after each batch so progress survives cancellation/re-runs
+    await saveCache(cache)
+    await saveManifest(manifest)
   }
 
-  await saveCache(cache)
-  await saveManifest(manifest)
+  await closeBrowser()
 
   // Remove 404'd URLs from reading.json
   if (removedUrls.size > 0) {
