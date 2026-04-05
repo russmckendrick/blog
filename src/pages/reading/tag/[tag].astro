@@ -1,0 +1,37 @@
+---
+import type { GetStaticPaths } from 'astro'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import ReadingList from '../../../components/reading/ReadingList.astro'
+import ReadingHeader from '../../../components/reading/ReadingHeader.astro'
+import readingData from '../../../data/reading.json'
+
+export const getStaticPaths = (() => {
+  // Collect all unique tags with counts across the full dataset
+  const tagCounts = new Map<string, number>()
+  for (const item of readingData) {
+    for (const tag of (item as any).tags || []) {
+      tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1)
+    }
+  }
+
+  return [...tagCounts.keys()].map(tag => {
+    const items = readingData.filter((item: any) =>
+      (item.tags || []).includes(tag)
+    )
+
+    return {
+      params: { tag },
+      props: { items, tagCounts, tag },
+    }
+  })
+}) satisfies GetStaticPaths
+
+const { items, tagCounts, tag } = Astro.props
+---
+
+<BaseLayout title={`Reading List — ${tag}`} description={`Articles tagged "${tag}" from my Instapaper reading list`}>
+  <section class="max-w-7xl mx-auto px-5">
+    <ReadingHeader totalArticles={readingData.length} tagCounts={tagCounts} activeTag={tag} filteredCount={items.length} />
+    <ReadingList items={items} />
+  </section>
+</BaseLayout>
