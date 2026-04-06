@@ -61,6 +61,11 @@
 /
   Cache-Control: public, max-age=0, must-revalidate, s-maxage=3600
 
+# Giscus custom theme CSS - allow cross-origin access
+/giscus/*
+  Access-Control-Allow-Origin: https://giscus.app
+  Cache-Control: public, max-age=86400
+
 # Security headers for all pages
 /*
   X-Content-Type-Options: nosniff
