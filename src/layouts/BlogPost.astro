@@ -171,7 +171,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 		<main id="main-content" tabindex="-1" class="relative">
 			{/* Post card */}
 			<article class="relative pt-8 sm:pt-12">
-				<div class="max-w-5xl 2xl:max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+				<div class:list={["mx-auto px-4 sm:px-6 lg:px-8 xl:px-10", showToc && headings.length > 0 ? 'max-w-5xl 2xl:max-w-[1340px]' : 'max-w-5xl']}>
 					<div class:list={[showToc && headings.length > 0 ? '2xl:grid 2xl:grid-cols-[1fr_220px] 2xl:gap-8 2xl:items-start' : '']}>
 					<div class="surface-container-lowest rounded-xl shadow-ambient overflow-hidden min-w-0">
 						{/* Hero image inside the card - edge to edge with rounded top corners */}
@@ -305,15 +305,15 @@ const breadcrumbSchema = createBreadcrumbSchema(
 							</div>
 						)}
 
-						<div class="reveal">
-							<PostNavigation previousPost={previousPost} nextPost={nextPost} />
-						</div>
-
 						{!isTune && (
 							<div class="reveal-fade">
 								<Comments />
 							</div>
 						)}
+
+						<div class="reveal">
+							<PostNavigation previousPost={previousPost} nextPost={nextPost} />
+						</div>
 						</div>
 					</div>
 
