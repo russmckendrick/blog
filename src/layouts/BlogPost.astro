@@ -304,6 +304,16 @@ const breadcrumbSchema = createBreadcrumbSchema(
 								<RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={3} />
 							</div>
 						)}
+
+						<div class="reveal">
+							<PostNavigation previousPost={previousPost} nextPost={nextPost} />
+						</div>
+
+						{!isTune && (
+							<div class="reveal-fade">
+								<Comments />
+							</div>
+						)}
 						</div>
 					</div>
 
@@ -313,16 +323,6 @@ const breadcrumbSchema = createBreadcrumbSchema(
 						</aside>
 					)}
 					</div>
-
-					<div class="reveal">
-						<PostNavigation previousPost={previousPost} nextPost={nextPost} />
-					</div>
-
-					{!isTune && (
-						<div class="reveal-fade">
-							<Comments />
-						</div>
-					)}
 				</div>
 			</article>
 		</main>

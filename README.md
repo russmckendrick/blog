@@ -131,7 +131,7 @@ Comprehensive documentation is available in the [docs/](./docs/) folder:
 
 ### Quick Links
 
-- **[CLAUDE.md](./CLAUDE.md)** - Development guide for Claude Code (detailed architecture and workflows)
+- **[AGENTS.md](./AGENTS.md)** - Development guide for AI coding agents (detailed architecture and workflows)
 - **[docs/README.md](./docs/README.md)** - Documentation index and navigation
 
 ### User Guides

@@ -338,20 +338,44 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 		</article>
 	</a>
 ) : (
-	/* Horizontal variant - Side-by-side for related posts */
+	/* Horizontal variant - Link preview style for related posts */
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
 		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-xl">
 		<article
-			class="relative surface-container-lowest rounded-xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]">
-			<div class="flex flex-col sm:flex-row">
+			class="relative rounded-xl overflow-hidden transition-shadow duration-200"
+			style="border: 1px solid var(--color-outline-variant, rgba(25, 28, 29, 0.2)); background: var(--color-surface-container-lowest, #ffffff); box-shadow: var(--shadow-ambient, 0 8px 24px rgba(25, 28, 29, 0.05));"
+			data-hover-shadow="true">
+			<div class="flex flex-col-reverse sm:flex-row items-stretch">
+				<div class="flex-1 p-4 flex flex-col justify-center min-w-0">
+					<header>
+						<HeadingTag class="font-display text-base font-bold tracking-tight text-on-surface line-clamp-2 leading-snug transition-colors duration-200 group-hover:text-[var(--color-primary)]">
+							{post.data.title}
+						</HeadingTag>
+					</header>
+					{description && (
+						<p class="mt-1 text-sm text-on-surface-variant leading-relaxed line-clamp-2">
+							{description}
+						</p>
+					)}
+					<footer class="mt-2 flex items-center gap-2 text-xs text-on-surface-variant" style="opacity: 0.6;">
+						<span class="text-[var(--color-secondary)]">
+							<FormattedDate date={post.data.pubDate} />
+						</span>
+						{readingTime && (
+							<>
+								<span aria-hidden="true">·</span>
+								<span>{readingTime}</span>
+							</>
+						)}
+					</footer>
+				</div>
 				{heroImage && (
 					<figure
-						class="relative overflow-hidden sm:w-48 md:w-56 lg:w-64 flex-shrink-0 bg-cover bg-center bg-no-repeat"
+						class="relative overflow-hidden sm:flex-[0_0_35%] bg-cover bg-center bg-no-repeat"
 						style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
 					>
-						{/* LQIP blur overlay */}
 						{lqipUrl && (
 							<div
 								class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
@@ -367,53 +391,23 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 								fit: CF_IMAGE_PRESETS.thumbnailHorizontal.fit
 							})}
 							srcset={generateCFSrcSet(heroImage, CF_IMAGE_PRESETS.thumbnailHorizontal.widths, CF_IMAGE_PRESETS.thumbnailHorizontal.quality, CF_IMAGE_PRESETS.thumbnailHorizontal.format)}
-							sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 192px, 100vw"
+							sizes="(min-width: 640px) 35vw, 100vw"
 							alt={alt}
 							width="512"
 							height="384"
 							loading="lazy"
 							fetchpriority="low"
-							class="w-full h-48 sm:h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+							class="w-full h-48 sm:absolute sm:inset-0 sm:h-full object-cover"
 						/>
 					</figure>
 				)}
-				<div class="relative p-6 flex flex-col gap-3 flex-1 min-w-0">
-					<header>
-						<HeadingTag class="font-display text-xl font-semibold tracking-tight text-on-surface line-clamp-2">
-							{post.data.title}
-						</HeadingTag>
-					</header>
-					{description && (
-						<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">
-							{description}
-						</p>
-					)}
-					<footer class="mt-auto text-xs flex items-center gap-2">
-						<div class="relative flex-shrink-0">
-							<img
-								src={avatarSrc}
-								alt={author}
-								class="relative w-8 h-8 rounded-full ring-2 ring-white dark:ring-gray-900 shadow-md object-cover"
-								onerror={`this.onerror=null; this.src='${avatarFallback}';`}
-							/>
-						</div>
-						<div class="flex flex-col">
-							<span class="text-on-surface-variant font-medium text-xs">{author}</span>
-							<div class="flex items-center gap-2 text-xs text-on-surface-variant">
-								<span class="text-[var(--color-secondary)]">
-									<FormattedDate date={post.data.pubDate} />
-								</span>
-								{readingTime && (
-									<>
-										<span aria-hidden="true">·</span>
-										<span>{readingTime}</span>
-									</>
-								)}
-							</div>
-						</div>
-					</footer>
-				</div>
 			</div>
 		</article>
 	</a>
 )}
+
+<style>
+	article[data-hover-shadow]:hover {
+		box-shadow: var(--shadow-ambient-hover, 0 12px 32px rgba(25, 28, 29, 0.08)) !important;
+	}
+</style>
