@@ -174,6 +174,9 @@ async function fetchOGMetadata(url) {
       if (response.status === 404 || response.status === 410) {
         return { notFound: true }
       }
+      if (response.status === 403) {
+        return { forbidden: true }
+      }
       throw new Error(`HTTP ${response.status}`)
     }
 
@@ -239,6 +242,7 @@ async function fetchOGWithBrowser(url) {
   try {
     const b = await getBrowser()
     const page = await b.newPage()
+    await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36')
     await page.setViewport({ width: 1280, height: 800 })
 
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 45000 })
@@ -288,6 +292,11 @@ async function fetchOGWithBrowser(url) {
     ogData.description = ogData.description.trim()
 
     console.log(`    Browser fetch OK: "${ogData.title.substring(0, 50)}..."`)
+    if (ogData.image) {
+      console.log(`    Browser found OG image: ${ogData.image.substring(0, 80)}...`)
+    } else {
+      console.log(`    Browser found no OG image`)
+    }
     return ogData
   } catch (error) {
     console.warn(`  Warning: Browser fetch failed for ${url}: ${error.message}`)
@@ -534,10 +543,12 @@ async function main() {
         return
       }
 
-      if (!ogData && isMediumUrl(url)) {
-        // Medium is behind Cloudflare JS challenge — retry with headless Chrome
-        console.log(`    Cloudflare blocked — retrying with headless Chrome...`)
+      let usedBrowserFallback = false
+      if (ogData?.forbidden || (!ogData && isMediumUrl(url))) {
+        // 403 or Cloudflare JS challenge — retry with headless Chrome
+        console.log(`    ${ogData?.forbidden ? '403 Forbidden' : 'Cloudflare blocked'} — retrying with headless Chrome...`)
         ogData = await fetchOGWithBrowser(url)
+        usedBrowserFallback = true
       }
 
       if (!ogData) {
@@ -557,8 +568,8 @@ async function main() {
       if (ogData.image) {
         let result = await downloadImage(ogData.image, localPath)
 
-        // If regular download failed and it's a Medium image, try via browser
-        if (!result.success && isMediumUrl(url)) {
+        // If regular download failed and we know this site blocks requests, try via browser
+        if (!result.success && (usedBrowserFallback || isMediumUrl(url))) {
           console.log(`    Image download blocked — retrying with headless Chrome...`)
           result = await downloadImageWithBrowser(ogData.image, localPath)
         }
