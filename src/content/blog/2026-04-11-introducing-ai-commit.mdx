@@ -16,13 +16,13 @@ tags:
 
 I'll be honest: my commit messages have a history of being terrible. Not "wip" or "fix stuff" levels of terrible (usually), but certainly not the kind of clean, conventional, descriptive messages that make a project's history actually useful six months later. I'd write something passable and move on, telling myself I'd go back and clean things up before opening the PR. I never did.
 
-So I used AI to build an AI tool to fix that. **aicommit** is a Rust CLI that reads your staged diff and generates a commit message for you. The binary is `aic`, it supports several AI providers including local ones, and it's been in daily use here since the early builds.
+So I used AI to build an AI tool to fix that. AI Commit is a Rust CLI that reads your staged diff and generates a commit message for you. The binary is `aic`, it supports several AI providers including local ones, and it's been in daily use here since the early builds.
 
 <LinkPreview id="https://github.com/russmckendrick/aicommit" />
 
 ## Built with AI, for AI-assisted git
 
-Like [ssl-toolkit](/2026/02/01/introducing-ssl-toolkit/) and [HostsButler](/2026/04/05/introducing-hostsbutler/) before it, aicommit was vibe-coded in Rust using Claude Code and Codex. I'm not a Rust developer by trade — my background is infrastructure and DevOps work — but tools like Claude Code has made it genuinely practical for me to build and maintain projects in a language I wouldn't otherwise have reached for.
+Like [ssl-toolkit](/2026/02/01/introducing-ssl-toolkit/) and [HostsButler](/2026/04/05/introducing-hosts-butler/) before it, aicommit was vibe-coded in Rust using Claude Code and Codex. I'm not a Rust developer by trade — my background is infrastructure and DevOps work — but tools like Claude Code has made it genuinely practical for me to build and maintain projects in a language I wouldn't otherwise have reached for.
 
 There's an obvious meta quality to building an AI-powered tool with an AI coding assistant, and I won't pretend that wasn't part of the appeal. But it's also just how I work now. Claude Code handles the parts of Rust that would otherwise send me down documentation rabbit holes, and I get to focus on the design and behaviour of the thing rather than fighting the borrow checker.
 
