@@ -1,0 +1,227 @@
+---
+title: "Introducing AI Commit"
+description: "A Rust CLI I built to stop writing terrible commit messages — aic generates AI-powered commit messages, PR drafts, and diff reviews from your staged changes."
+date: 2026-04-11T08:48:37.403Z
+cover:
+  image: "../../assets/2026-04-11-introducing-ai-commit/blog-cover-2026-04-11-introducing-ai-commit.png"
+draft: false
+showToc: true
+tags:
+  - "tools"
+  - "ai"
+  - "code"
+  - "linux"
+  - "macos"
+---
+
+I'll be honest: my commit messages have a history of being terrible. Not "wip" or "fix stuff" levels of terrible (usually), but certainly not the kind of clean, conventional, descriptive messages that make a project's history actually useful six months later. I'd write something passable and move on, telling myself I'd go back and clean things up before opening the PR. I never did.
+
+So I used AI to build an AI tool to fix that. **aicommit** is a Rust CLI that reads your staged diff and generates a commit message for you. The binary is `aic`, it supports several AI providers including local ones, and it's been in daily use here since the early builds.
+
+<LinkPreview id="https://github.com/russmckendrick/aicommit" />
+
+## Built with AI, for AI-assisted git
+
+Like [ssl-toolkit](/2026/02/01/introducing-ssl-toolkit/) and [HostsButler](/2026/04/05/introducing-hostsbutler/) before it, aicommit was vibe-coded in Rust using Claude Code and Codex. I'm not a Rust developer by trade — my background is infrastructure and DevOps work — but tools like Claude Code has made it genuinely practical for me to build and maintain projects in a language I wouldn't otherwise have reached for.
+
+There's an obvious meta quality to building an AI-powered tool with an AI coding assistant, and I won't pretend that wasn't part of the appeal. But it's also just how I work now. Claude Code handles the parts of Rust that would otherwise send me down documentation rabbit holes, and I get to focus on the design and behaviour of the thing rather than fighting the borrow checker.
+
+If you're curious about the vibe-coding workflow, I covered it in more detail in [Doom or Vibe Coding](/2025/05/26/doom-or-vibe-coding/).
+
+## What it does
+
+The core loop is simple: stage your changes, run `aic`, review the generated message, and either accept it, ask for a regeneration, or drop into your editor to tweak it. The tool reads the diff, feeds it to whichever AI provider you've configured, and comes back with a conventional commit message — complete with a type, optional scope derived from your changed file paths, a description, and an explanatory body.
+
+Beyond the basic commit flow, there are a few other commands I've found genuinely useful:
+
+- **`aic review`** — runs your staged diff through a review-focused prompt and comes back with findings grouped by severity (Critical, Warning, Suggestion). Good for a sanity check before committing something you're unsure about.
+- **`aic pr`** — generates a pull request title and Markdown description from your branch's commits and cumulative diff. I've been using this every time I open a PR.
+- **`aic log`** — rewrites the last N commit messages on a branch using AI. Useful for cleaning up a scrappy local history before pushing.
+- **`aic history`** — a local log of every generated message, review, and PR draft, browsable in an interactive picker.
+
+## Installation
+
+On macOS, Homebrew is the easiest path:
+
+```bash frame="terminal" title="Installing - macOS"
+brew install russmckendrick/tap/aicommit
+```
+
+On Linux, grab the binary directly — the following one-liner detects your architecture and installs it to `/usr/local/bin`:
+
+```bash frame="terminal" title="Installing - Linux"
+ARCH=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
+curl -sL "https://github.com/russmckendrick/aicommit/releases/latest/download/aic-linux-${ARCH}" -o aic
+chmod +x aic
+sudo mv aic /usr/local/bin/
+```
+
+On Windows, download with PowerShell:
+
+```powershell frame="terminal" title="Installing - Windows"
+Invoke-WebRequest -Uri "https://github.com/russmckendrick/aicommit/releases/latest/download/aic-windows-amd64.exe" -OutFile "aic.exe"
+```
+
+All releases are on the [GitHub releases page](https://github.com/russmckendrick/aicommit/releases).
+
+## Setup
+
+Once installed, run the guided setup:
+
+```bash frame="terminal" title="Initial setup"
+aic setup
+```
+
+This walks you through selecting a provider and configuring your API key. If you plan to use the `claude-code` or `codex` local providers, install and authenticate those CLIs first — `aic` will reuse their existing login state rather than managing credentials itself.
+
+## Providers
+
+The current version ships with four provider paths: `openai`, `azure-openai`, `claude-code`, and `codex`.
+
+The OpenAI and Azure OpenAI providers use the standard chat completions API. Configure OpenAI like this:
+
+```bash frame="terminal" title="Configuring OpenAI"
+aic config set AIC_AI_PROVIDER=openai AIC_API_KEY=<key> AIC_MODEL=gpt-5.4-mini
+```
+
+For Azure OpenAI, you need your v1 endpoint URL and deployment name:
+
+```bash frame="terminal" title="Configuring Azure OpenAI"
+aic config set AIC_AI_PROVIDER=azure-openai AIC_API_KEY=<key> AIC_API_URL=https://<resource>.openai.azure.com/openai/v1 AIC_MODEL=<deployment-name>
+```
+
+The local CLI providers are a bit different — they use your already-installed `claude` or `codex` binary from `PATH`, so there's no API key to configure:
+
+```bash frame="terminal" title="Configuring Claude Code as provider"
+aic config set AIC_AI_PROVIDER=claude-code AIC_MODEL=default
+```
+
+You can also override the provider for a single run without touching your config:
+
+```bash frame="terminal" title="Per-run provider override"
+aic --provider claude-code
+aic review --provider codex
+aic pr --provider openai
+```
+
+Any OpenAI-compatible endpoint also works by setting `AIC_API_URL` alongside `AIC_AI_PROVIDER=openai`.
+
+## The basic workflow
+ 
+<Mermaid code={`
+flowchart TD
+    A["Install aic"] --> B["Run aic setup"]
+    B --> C["Stage files with git add (optional)"]
+    C --> D["Run aic"]
+    D --> STAGE{"Anything staged?"}
+    STAGE -->|No| PICK["Stage all, choose files, or cancel"]
+    STAGE -->|Yes| E["Review generated message"]
+    PICK --> E
+    E --> DRY{"--dry-run?"}
+    DRY -->|Yes| PRINT["Print message and exit"]
+    DRY -->|No| F{"Accept message?"}
+    F -->|Yes| G["Create commit"]
+    F -->|No| H["Regenerate, edit, or abort"]
+    G --> I{"Push enabled?"}
+    I -->|Yes| J["git push"]
+    I -->|No| K["Done"]
+    G --> PR["Run aic pr"]
+    PR --> PRD["Draft PR title + description"]
+    AMEND["Run aic --amend"] --> E
+`} title="aic workflow" minimapPosition="off" />
+ 
+Stage your files as normal, then run `aic`:
+
+```bash frame="terminal" title="Basic commit workflow"
+git add src/
+aic
+```
+
+If you haven't staged anything, `aic` presents a menu to stage all changed files, pick files interactively, or bail out. Once it has a diff to work with, it generates a message and shows it to you for review — accept, regenerate, edit, or abort.
+
+For a quick check of what it would generate without actually committing:
+
+```bash frame="terminal" title="Dry run"
+aic --dry-run
+```
+
+And if you want to clean up the last commit:
+
+```bash frame="terminal" title="Amend last commit"
+aic --amend
+```
+
+## Reviewing your diff before committing
+
+I've started running `aic review` before committing anything I'm not completely confident about. It reads the staged diff and groups findings by severity:
+
+```bash frame="terminal" title="Review staged changes"
+aic review
+aic review --context "focus on security"
+```
+
+Large diffs get chunked automatically and synthesised into a single review. It's not a replacement for a proper code review, but it's caught a few things I'd have missed.
+
+## Generating PR descriptions
+
+Once you've got a branch ready to push, `aic pr` will generate a title and Markdown description based on the branch's commits and diff against the base:
+
+```bash frame="terminal" title="Generate a PR draft"
+aic pr
+aic pr --base origin/main
+aic pr --context "call out the migration risk"
+```
+
+The base branch is detected automatically when possible (it checks `refs/remotes/origin/HEAD`, then `origin/main`, then `main`, then `master`), or you can specify it with `--base`. The output is copy-ready, and the draft gets saved to your local history.
+
+<NoteCallout title="Platform API integration">
+In the current version, `aic pr` generates the description text only — it doesn't open a PR through the GitHub, GitLab, or Bitbucket APIs. That's on the roadmap.
+</NoteCallout>
+
+## Git hooks
+
+If you'd rather have commit messages generated automatically every time you run `git commit`, you can install a `prepare-commit-msg` hook:
+
+```bash frame="terminal" title="Install the Git hook"
+aic hook set
+```
+
+By default, the hook writes the generated message as a comment so you can review and uncomment it in your editor. If you want it written directly as the active message:
+
+```bash frame="terminal" title="Auto-uncomment hook output"
+aic config set AIC_HOOK_AUTO_UNCOMMENT=true
+```
+
+To remove the hook:
+
+```bash frame="terminal" title="Remove the Git hook"
+aic hook unset
+```
+
+## Configuration
+
+Configuration lives in `~/.aicommit` and follows a simple precedence: built-in defaults, then the global config file, then process environment variables. The `aic config` subcommand handles reading and writing:
+
+```bash frame="terminal" title="Config management"
+aic config set AIC_MODEL=gpt-5.4-mini
+aic config get AIC_MODEL AIC_AI_PROVIDER
+aic config describe
+```
+
+A couple of settings worth knowing about: `AIC_EMOJI` and `AIC_DESCRIPTION` both default to `true`, which means generated messages include an emoji prefix and a longer body. Turn them off if your project's convention doesn't use either. You can also point `AIC_PROMPT_FILE` at a custom prompt template if the default behaviour doesn't suit your workflow.
+
+For repositories with large generated files, lock files, or assets you don't want included in the diff, add a `.aicommitignore` alongside your `.gitignore`:
+
+```bash frame="code" title=".aicommitignore"
+**/*.lock
+dist/**
+**/*.jpg
+```
+
+## Summary
+ 
+aicommit has made me stop dreading the "write a good commit message" part of the workflow. And yes, the command being `aic` is an entirely deliberate Alice In Chains reference — if you're going to type something dozens of times a day, it might as well be named after a great band. The project is open source and on GitHub:
+ 
+<LinkPreview id="https://github.com/russmckendrick/aicommit" />
+ 
+It's at v0.0.5 right now, so there are still rough edges — native Anthropic API support and Ollama integration are both on the roadmap, as is interactive diff splitting and config profiles. If you give it a go and hit anything odd, or have a feature you'd like to see, issues and pull requests are very welcome.
