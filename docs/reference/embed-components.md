@@ -320,6 +320,30 @@ Example usage:
 - ✅ Full-screen viewing mode
 - ✅ Automatic caption loading from `.meta` files (Hugo-compatible)
 
+### ThemeSvg
+Embed SVG images with automatic light/dark theme switching. Provide a base path and the component renders both `-light` and `-dark` variants, showing the correct one based on the active theme.
+
+```mdx
+<!-- Basic theme-aware SVG -->
+<ThemeSvg src="/assets/2026-04-11-introducing-ai-commit/aic-activity" alt="Activity graph" />
+
+<!-- Non-SVG file extension -->
+<ThemeSvg src="/assets/diagrams/architecture" alt="Architecture diagram" ext="png" />
+```
+
+**Props:**
+- `src` - Base path without the `-light`/`-dark` suffix (required)
+- `alt` - Alt text (optional, default: `""`)
+- `ext` - File extension (optional, default: `"svg"`)
+
+The component constructs `{src}-light.{ext}` and `{src}-dark.{ext}` and uses CSS visibility (`block dark:hidden` / `hidden dark:block`) so the swap is instant with no flash of the wrong variant.
+
+**Features:**
+- No client-side JavaScript required
+- Instant theme switching via Tailwind `dark:` variant
+- Lazy loaded
+- Works with any image format (SVG, PNG, etc.)
+
 ### ChatMessage
 Display chat-style messages with optional avatars, names, timestamps, and custom colors - perfect for showing conversations, prompts, or chat interfaces.
 

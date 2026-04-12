@@ -53,6 +53,13 @@ Embed components are available globally in all MDX files without imports. Simply
 />
 ```
 
+### Theme-Aware SVGs
+
+```mdx
+<!-- SVG with light/dark variants (expects aic-activity-light.svg and aic-activity-dark.svg) -->
+<ThemeSvg src="/assets/2026-04-11-introducing-ai-commit/aic-activity" alt="Activity graph" />
+```
+
 ### Content Components
 
 ```mdx
@@ -176,6 +183,7 @@ Don't use `sudo pnpm install` - it can cause permission issues.
 |-----------|-------------|
 | `<Img>` | Single image with optional zoom |
 | `<LightGallery>` | Image gallery with lightbox |
+| `<ThemeSvg>` | Theme-aware SVG (light/dark variants) |
 
 ### Content Embeds
 
@@ -251,6 +259,16 @@ Don't use `sudo pnpm install` - it can cause permission issues.
   time?: string;                // Timestamp
   color?: string;               // Custom Tailwind color classes
   children: ReactNode;          // Message content (supports markdown)
+}
+```
+
+### ThemeSvg
+
+```typescript
+{
+  src: string;         // Base path without -light/-dark suffix (required)
+  alt?: string;        // Alt text (default: "")
+  ext?: string;        // File extension (default: "svg")
 }
 ```
 

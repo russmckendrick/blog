@@ -11,4 +11,5 @@ export { default as Img } from './Img.astro';
 export { default as LightGallery } from './LightGalleryNew.astro';
 export { default as Mermaid } from './Mermaid.astro';
 export * from './callouts';
+export { default as ThemeSvg } from './ThemeSvg.astro';
 export { default as YouTube } from './YouTube.astro';

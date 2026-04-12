@@ -1,0 +1,72 @@
+---
+interface Props {
+  src: string
+  alt?: string
+  ext?: string
+  zoom?: string | boolean
+}
+
+const { src, alt = '', ext = 'svg', zoom = true } = Astro.props
+const lightSrc = `${src}-light.${ext}`
+const darkSrc = `${src}-dark.${ext}`
+const enableZoom = zoom === 'true' || zoom === true
+---
+
+<div class="img-wrapper mb-1 flex justify-center">
+  {enableZoom ? (
+    <div
+      class="lightgallery-component theme-svg-gallery"
+      data-options={JSON.stringify({ thumbnail: false, download: false })}
+      data-light-src={lightSrc}
+      data-dark-src={darkSrc}
+    >
+      <a href={lightSrc} data-lg-id="true" aria-label={alt ? `View ${alt}` : 'View image in full size'}>
+        <img
+          src={lightSrc}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          class="rounded-lg max-w-full h-auto hover:opacity-90 transition-opacity cursor-zoom-in"
+        />
+      </a>
+    </div>
+  ) : (
+    <div
+      class="theme-svg-gallery"
+      data-light-src={lightSrc}
+      data-dark-src={darkSrc}
+    >
+      <img
+        src={lightSrc}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        class="rounded-lg max-w-full h-auto"
+      />
+    </div>
+  )}
+</div>
+
+<script>
+  function updateThemeSvgs() {
+    const isDark = document.documentElement.classList.contains('dark')
+    document.querySelectorAll<HTMLElement>('.theme-svg-gallery').forEach(el => {
+      const src = isDark ? el.dataset.darkSrc : el.dataset.lightSrc
+      if (!src) return
+      const img = el.querySelector('img')
+      if (img) img.src = src
+      const link = el.querySelector('a[data-lg-id]')
+      if (link) link.setAttribute('href', src)
+    })
+  }
+
+  // Run on initial load and after Astro page transitions
+  updateThemeSvgs()
+  document.addEventListener('astro:page-load', updateThemeSvgs)
+
+  // Watch for theme toggles (the dark class changing on <html>)
+  new MutationObserver(updateThemeSvgs).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  })
+</script>
