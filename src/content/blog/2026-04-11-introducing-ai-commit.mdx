@@ -1,6 +1,6 @@
 ---
 title: "Introducing AI Commit"
-description: "A Rust CLI I built to stop writing terrible commit messages — aic generates AI-powered commit messages, PR drafts, and diff reviews from your staged changes."
+description: "A Rust CLI I built to stop writing terrible commit messages — aic generates AI-powered commit messages, PR drafts, diff reviews, and repo visualisations from your staged changes."
 date: 2026-04-11T08:48:37.403Z
 cover:
   image: "../../assets/2026-04-11-introducing-ai-commit/blog-cover-2026-04-11-introducing-ai-commit.png"
@@ -14,7 +14,7 @@ tags:
   - "macos"
 ---
 
-I'll be honest: my commit messages have a history of being terrible. Not "wip" or "fix stuff" levels of terrible (usually), but certainly not the kind of clean, conventional, descriptive messages that make a project's history actually useful six months later. I'd write something passable and move on, telling myself I'd go back and clean things up before opening the PR. I never did.
+I'll be honest: my commit messages have a history of being terrible. Not "wip" or "fix stuff" levels of terrible (usually), but certainly not the kind of clean, conventional, descriptive messages that make a project's history useful six months later. I'd write something passable and move on, telling myself I'd go back and clean things up before opening the PR. I never did.
 
 So I used AI to build an AI tool to fix that. AI Commit is a Rust CLI that reads your staged diff and generates a commit message for you. The binary is `aic`, it supports several AI providers including local ones, and it's been in daily use here since the early builds.
 
@@ -22,7 +22,7 @@ So I used AI to build an AI tool to fix that. AI Commit is a Rust CLI that reads
 
 ## Built with AI, for AI-assisted git
 
-Like [ssl-toolkit](/2026/02/01/introducing-ssl-toolkit/) and [HostsButler](/2026/04/05/introducing-hosts-butler/) before it, AI Commit was vibe-coded in Rust using Claude Code and Codex. I'm not a Rust developer by trade — my background is infrastructure and DevOps work — but tools like Claude Code has made it genuinely practical for me to build and maintain projects in a language I wouldn't otherwise have reached for.
+Like [ssl-toolkit](/2026/02/01/introducing-ssl-toolkit/) and [HostsButler](/2026/04/05/introducing-hosts-butler/) before it, AI Commit was vibe-coded in Rust using Claude Code and Codex. I'm not a Rust developer by trade — my background is infrastructure and DevOps — but tools like Claude Code have made it practical for me to build and maintain projects in a language I wouldn't otherwise have reached for.
 
 There's an obvious meta quality to building an AI-powered tool with an AI coding assistant, and I won't pretend that wasn't part of the appeal. But it's also just how I work now. Claude Code handles the parts of Rust that would otherwise send me down documentation rabbit holes, and I get to focus on the design and behaviour of the thing rather than fighting the borrow checker.
 
@@ -32,12 +32,13 @@ If you're curious about the vibe-coding workflow, I covered it in more detail in
 
 The core loop is simple: stage your changes, run `aic`, review the generated message, and either accept it, ask for a regeneration, or drop into your editor to tweak it. The tool reads the diff, feeds it to whichever AI provider you've configured, and comes back with a conventional commit message — complete with a type, optional scope derived from your changed file paths, a description, and an explanatory body.
 
-Beyond the basic commit flow, there are a few other commands I've found genuinely useful:
+Beyond the basic commit flow, there are a few other commands worth knowing about:
 
 - **`aic review`** — runs your staged diff through a review-focused prompt and comes back with findings grouped by severity (Critical, Warning, Suggestion). Good for a sanity check before committing something you're unsure about.
 - **`aic pr`** — generates a pull request title and Markdown description from your branch's commits and cumulative diff. I've been using this every time I open a PR.
 - **`aic log`** — rewrites the last N commit messages on a branch using AI. Useful for cleaning up a scrappy local history before pushing.
 - **`aic history`** — a local log of every generated message, review, and PR draft, browsable in an interactive picker.
+- **`aic map`** — generates SVG visualisations of your codebase and commit history. More on this below.
 
 ## Installation
 
@@ -62,7 +63,9 @@ On Windows, download with PowerShell:
 Invoke-WebRequest -Uri "https://github.com/russmckendrick/aicommit/releases/latest/download/aic-windows-amd64.exe" -OutFile "aic.exe"
 ```
 
-All releases are on the [GitHub releases page](https://github.com/russmckendrick/aicommit/releases).
+WinGet support is on the way — a [PR has been submitted](https://github.com/microsoft/winget-pkgs/pull/358049) to the community repository and is currently in review. Once that's merged you'll be able to install with `winget install --id RussMcKendrick.Aicommit -e`.
+
+All current releases are on the [GitHub releases page](https://github.com/russmckendrick/aicommit/releases).
 
 ## Setup
 
@@ -76,21 +79,29 @@ This walks you through selecting a provider and configuring your API key. If you
 
 ## Providers
 
-The current version ships with four provider paths: `openai`, `azure-openai`, `claude-code`, and `codex`.
+v0.0.6 ships with seven provider paths: `openai`, `azure-openai`, `anthropic`, `groq`, `ollama`, `claude-code`, and `codex`.
 
-The OpenAI and Azure OpenAI providers use the standard chat completions API. Configure OpenAI like this:
+OpenAI, Azure OpenAI, Groq, and Ollama all use the standard chat completions wire format. Anthropic uses its Messages API directly. The `claude-code` and `codex` providers are a bit different — they talk to the locally installed `claude` or `codex` binary from your `PATH`, so authentication is handled by those tools rather than `aic`.
 
 ```bash frame="terminal" title="Configuring OpenAI"
 aic config set AIC_AI_PROVIDER=openai AIC_API_KEY=<key> AIC_MODEL=gpt-5.4-mini
 ```
 
-For Azure OpenAI, you need your v1 endpoint URL and deployment name:
-
 ```bash frame="terminal" title="Configuring Azure OpenAI"
 aic config set AIC_AI_PROVIDER=azure-openai AIC_API_KEY=<key> AIC_API_URL=https://<resource>.openai.azure.com/openai/v1 AIC_MODEL=<deployment-name>
 ```
 
-The local CLI providers are a bit different — they use your already-installed `claude` or `codex` binary from `PATH`, so there's no API key to configure:
+```bash frame="terminal" title="Configuring Anthropic"
+aic config set AIC_AI_PROVIDER=anthropic AIC_API_KEY=<key> AIC_MODEL=claude-sonnet-4-20250514
+```
+
+```bash frame="terminal" title="Configuring Groq"
+aic config set AIC_AI_PROVIDER=groq AIC_API_KEY=<key> AIC_MODEL=llama-3.1-8b-instant
+```
+
+```bash frame="terminal" title="Configuring Ollama"
+aic config set AIC_AI_PROVIDER=ollama AIC_MODEL=llama3.2
+```
 
 ```bash frame="terminal" title="Configuring Claude Code as provider"
 aic config set AIC_AI_PROVIDER=claude-code AIC_MODEL=default
@@ -99,15 +110,17 @@ aic config set AIC_AI_PROVIDER=claude-code AIC_MODEL=default
 You can also override the provider for a single run without touching your config:
 
 ```bash frame="terminal" title="Per-run provider override"
+aic --provider anthropic
+aic review --provider groq
+aic --provider ollama
 aic --provider claude-code
 aic review --provider codex
-aic pr --provider openai
 ```
 
 Any OpenAI-compatible endpoint also works by setting `AIC_API_URL` alongside `AIC_AI_PROVIDER=openai`.
 
 ## The basic workflow
- 
+
 <Mermaid code={`
 flowchart TD
     A["Install aic"] --> B["Run aic setup"]
@@ -115,21 +128,25 @@ flowchart TD
     C --> D["Run aic"]
     D --> STAGE{"Anything staged?"}
     STAGE -->|No| PICK["Stage all, choose files, or cancel"]
-    STAGE -->|Yes| E["Review generated message"]
-    PICK --> E
+    STAGE -->|Yes| SPLIT{"Split into multiple commits?"}
+    PICK --> SPLIT
+    SPLIT -->|No| E["Review generated message"]
+    SPLIT -->|Yes| SG["Preview split groups + messages"]
+    SG --> GC["Create grouped commits"]
     E --> DRY{"--dry-run?"}
     DRY -->|Yes| PRINT["Print message and exit"]
     DRY -->|No| F{"Accept message?"}
     F -->|Yes| G["Create commit"]
     F -->|No| H["Regenerate, edit, or abort"]
     G --> I{"Push enabled?"}
+    GC --> I
     I -->|Yes| J["git push"]
     I -->|No| K["Done"]
     G --> PR["Run aic pr"]
     PR --> PRD["Draft PR title + description"]
     AMEND["Run aic --amend"] --> E
 `} title="aic workflow" minimapPosition="off" />
- 
+
 Stage your files as normal, then run `aic`:
 
 ```bash frame="terminal" title="Basic commit workflow"
@@ -150,9 +167,23 @@ And if you want to clean up the last commit:
 ```bash frame="terminal" title="Amend last commit"
 aic --amend
 ```
-Here is what committing and pushing this blog post looked like:
+
+Here's what committing and pushing this blog post looked like:
 
 <Img src="/assets/2026-04-11-introducing-ai-commit/commit.png" alt="Using aic to commit this post" />
+
+## Splitting commits
+
+When you've staged changes across several unrelated files, `aic` can split them into separate commits rather than lumping everything together. When at least two files are staged, the interactive flow will offer to split the change set:
+
+```bash frame="terminal" title="Triggering the split flow"
+git add .
+aic
+```
+
+If you choose to split, `aic` analyses the staged changes, suggests 2–4 file-based commit groups, generates a message for each one, and shows you a preview of the full sequence before creating anything. You can accept the suggested groups, rebuild them manually, or fall back to a single commit.
+
+A few current limitations worth knowing: splitting is file-based rather than hunk-based, and it's only available in the normal interactive flow — `--yes`, `--dry-run`, and `--amend` stay as single-commit operations.
 
 ## Reviewing your diff before committing
 
@@ -180,6 +211,40 @@ The base branch is detected automatically when possible (it checks `refs/remotes
 <NoteCallout title="Platform API integration">
 In the current version, `aic pr` generates the description text only — it doesn't open a PR through the GitHub, GitLab, or Bitbucket APIs. That's on the roadmap.
 </NoteCallout>
+
+## Visualising your repo
+
+`aic map` generates standalone SVG visualisations of your codebase structure and commit history. There are four subcommands:
+
+```bash frame="terminal" title="Generating visualisations"
+aic map tree        # squarified treemap of the file hierarchy, sized by line count
+aic map history     # vertical zigzag timeline of recent commits
+aic map heat        # bar chart of files sorted by modification frequency
+aic map activity    # GitHub-style contribution grid from commit timestamps
+```
+
+All four write standalone SVG files that open in any browser. You can control the commit range, output path, and colour theme:
+
+```bash frame="terminal" title="Map options"
+aic map history -n 30 -o timeline.svg
+aic map heat -n 200
+aic map activity --theme dracula
+```
+
+Available themes include `github-light`, `github-dark`, `solarized-dark`, `monokai`, and `dracula`, among others. If you want consistent defaults across a repo, drop a `.aicommit-map` file in the root:
+
+```bash frame="code" title=".aicommit-map"
+theme = "dracula"
+history_commits = 30
+heat_commits = 100
+activity_commits = 1000
+```
+
+Here are a couple of examples generated from this blog's repository — an activity graph and a commit timeline:
+
+<ThemeSvg src="/assets/2026-04-11-introducing-ai-commit/aic-activity" alt="AI Commit activity graph for the russ.cloud repository" />
+
+<ThemeSvg src="/assets/2026-04-11-introducing-ai-commit/aic-timeline" alt="AI Commit timeline for the russ.cloud repository" />
 
 ## Git hooks
 
@@ -222,9 +287,9 @@ dist/**
 ```
 
 ## Summary
- 
+
 aicommit has made me stop dreading the "write a good commit message" part of the workflow. And yes, the command being `aic` is an entirely deliberate [Alice In Chains](https://www.youtube.com/watch?v=TAqZb52sgpU) reference — if you're going to type something dozens of times a day, it might as well be named after a great band. The project is open source and on GitHub:
- 
+
 <LinkPreview id="https://github.com/russmckendrick/aicommit" />
- 
-It's at [v0.0.5](https://github.com/russmckendrick/aicommit/releases/tag/v0.0.5) right now, so there are still rough edges — native Anthropic API support and Ollama integration are both on the roadmap, as is interactive diff splitting and config profiles. If you give it a go and hit anything odd, or have a feature you'd like to see, issues and pull requests are very welcome.
+
+It's at [v0.0.6](https://github.com/russmckendrick/aicommit/releases/tag/v0.0.6) now, with commit splitting, repo visualisations, and native Anthropic, Groq, and Ollama support all landed in this release. There are still rough edges — config profiles and platform PR API integration are both on the roadmap. If you give it a go and hit anything odd, or have a feature you'd like to see, issues and pull requests are very welcome.
