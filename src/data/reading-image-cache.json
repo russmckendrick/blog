@@ -8931,7 +8931,7 @@
     "imageType": null,
     "title": "Porting Mac OS X to the Nintendo Wii",
     "description": "Mac OS X 10.0 (Cheetah) running natively on the Nintendo Wii",
-    "fetchedAt": "2026-04-09T11:53:45.365Z"
+    "fetchedAt": "2026-04-13T17:50:03.009Z"
   },
   "https://leehanchung.github.io/blogs/2026/04/05/the-ai-great-leap-forward/": {
     "localImage": "/assets/reading-previews/leehanchung.github.io-27af03f5917e.jpg",
@@ -8941,5 +8941,23 @@
     "description": "In 1958, Mao ordered every village to produce steel. The steel was useless. The crops rotted. Today's top-down AI mandates are producing the same pattern: ba...",
     "imageAlt": "The AI Great Leap Forward",
     "fetchedAt": "2026-04-09T11:53:47.570Z"
+  },
+  "https://www.youtube.com/watch?v=I82j7AzMU80": {
+    "localImage": "/assets/reading-previews/youtube.com-401a882116ec.jpg",
+    "originalImage": "https://i.ytimg.com/vi/I82j7AzMU80/maxresdefault.jpg",
+    "imageType": "og-image",
+    "title": "How does Claude Code *actually* work?",
+    "description": "We keep talking about Codex, Claude Code, Cursor, etc. But how do they actually work?Thank you Macroscope for sponsoring! Check them out at: https://soydev.l...",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-13T17:49:58.113Z"
+  },
+  "https://medium.com/@davidvesely.cz/claude-code-has-an-internal-skill-nobody-knew-about-skillify-915efff67f27": {
+    "localImage": "/assets/reading-previews/medium.com-66fd8c79cd7f.jpg",
+    "originalImage": "https://miro.medium.com/v2/resize:fit:1168/1*dbherOuVtYaJe5N99yh24w.jpeg",
+    "imageType": "og-image",
+    "title": "Claude Code Has an Internal Skill Nobody Knew About: /skillify",
+    "description": "TL;DR: npx skills@latest add Vesely/skills/skillify and then just use it /skillify",
+    "imageAlt": "",
+    "fetchedAt": "2026-04-13T17:50:00.925Z"
   }
 }
