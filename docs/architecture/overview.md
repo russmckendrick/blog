@@ -424,14 +424,16 @@ Paste the hex output into the `digest` field as `sha256:<hex>`.
 
 ### Markdown delivery (Free-plan approach)
 
-Cloudflare's zone-level "Markdown for Agents" (Dashboard → AI Crawl Control) only works on Pro+ plans. This site is on Free, so agents are served markdown via a build-time twin instead of edge content negotiation:
+Cloudflare's zone-level "Markdown for Agents" (Dashboard → AI Crawl Control) requires Pro+. This site is on Free, so equivalent behaviour is built in two layers:
 
-- `scripts/generate-llms-markdown.js` runs after `astro build` (wired into the `build` npm script). It walks `src/content/blog/` and `src/content/tunes/`, parses frontmatter with `gray-matter`, and writes an `index.md` alongside each post at the same URL path. It also writes `/llms.txt` at the site root listing every post with its markdown URL.
-- `public/_headers` serves `*.md` and `/llms.txt` with `Content-Type: text/markdown; charset=utf-8`.
-- A `Link: <.../llms.txt>; rel="llms-txt"` header on `/` and `/*.html` advertises the index.
-- The markdown body is the raw MDX source (frontmatter stripped); inline JSX embed components remain — agents generally cope.
+1. **Build-time twin.** `scripts/generate-llms-markdown.js` runs after `astro build` (wired into the `build` npm script). It walks `src/content/blog/` and `src/content/tunes/`, parses frontmatter with `gray-matter`, and writes an `index.md` alongside each post at the same URL path. It also writes `/llms.txt` at the site root.
+2. **Runtime content negotiation.** `worker/index.js` is a minimal Cloudflare Worker wired into `wrangler.jsonc` as `main`. On each request it:
+   - Falls through to `env.ASSETS.fetch(request)` by default (static assets behave as before).
+   - If `Accept: text/markdown` is present, it rewrites the request to the co-located `.md` twin (or `/llms.txt` for `/`) and returns it with `Content-Type: text/markdown; charset=utf-8` and `Vary: Accept`.
 
-If the site is ever upgraded to Cloudflare Pro, the build-time twin can be removed and `Accept: text/markdown` negotiation enabled via the dashboard instead.
+The markdown body is the raw MDX source with frontmatter stripped; inline JSX embed components remain inline — agents generally cope.
+
+Per-post `.md` files and `/llms.txt` also stay directly reachable (useful for `llmstxt.org` consumers that don't do content negotiation). If the zone is ever upgraded to Cloudflare Pro, both the worker and the build-time twin can be removed and the dashboard toggle enabled instead.
 
 ## Performance Characteristics
 

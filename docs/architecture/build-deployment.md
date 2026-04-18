@@ -20,10 +20,12 @@ This workflow handles building the Astro site and deploying it to Cloudflare Wor
 5.  **Build**: Run `pnpm run build` which includes:
     - `prebuild`: Extract hero colors and cache LinkPreview images
     - `astro build`: Generate static assets and worker script
-6.  **Deploy**:
+    - `scripts/generate-llms-markdown.js` (postbuild): Emit per-post markdown twins and `/llms.txt`
+6.  **Worker**: `worker/index.js` (entry in `wrangler.jsonc` `main`) serves static assets via the `ASSETS` binding and handles `Accept: text/markdown` content negotiation for the Markdown-for-Agents check.
+7.  **Deploy**:
     - Uses `cloudflare/wrangler-action`.
     - Deploys to Cloudflare Workers using the API token and Account ID secrets.
-7.  **Notification**: If triggered by a PR, it posts a comment with the build summary.
+8.  **Notification**: If triggered by a PR, it posts a comment with the build summary.
 
 ### Secrets Required
 - `CLOUDFLARE_API_TOKEN`: Token for authenticating with Cloudflare.
