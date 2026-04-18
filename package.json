@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/generate-llms-markdown.js",
     "preview": "astro preview",
     "astro": "astro",
     "post": "node scripts/new-post.js",
@@ -51,7 +51,6 @@
     "astro-icon": "^1.1.5",
     "astro-lightgallery": "^2.3.0",
     "astro-pagefind": "^1.8.6",
-    "astro-robots-txt": "^1.0.0",
     "astro-seo-plugin": "^1.3.5",
     "astro-seo-schema": "^5.2.0",
     "axios": "^1.15.0",

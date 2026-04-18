@@ -10,7 +10,6 @@ import astroIcon from 'astro-icon';
 import { rehypeExternalLinks } from './src/utils/rehype-external-links.ts';
 import { expressiveCodeA11yPlugin } from './src/utils/expressive-code-a11y-plugin.ts';
 import pagefind from 'astro-pagefind';
-import robotsTxt from 'astro-robots-txt';
 import compress from '@playform/compress';
 
 // https://astro.build/config
@@ -47,15 +46,6 @@ export default defineConfig({
 				}
 				return item;
 			}
-		}),
-		robotsTxt({
-			policy: [
-				{
-					userAgent: '*',
-					allow: '/',
-					disallow: ['/draft/', '/_astro/'],
-				},
-			],
 		}),
 		compress({
 			Logger: 2,

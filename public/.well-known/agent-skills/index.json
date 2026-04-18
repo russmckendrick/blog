@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "read-blog-content",
+      "type": "skill-md",
+      "description": "How to discover, read, and cite posts and music notes from russ.cloud (RSS, sitemap, URL patterns).",
+      "url": "https://www.russ.cloud/.well-known/agent-skills/read-blog-content/SKILL.md",
+      "digest": "sha256:bd9b7c88eeee83cd816ba8b8ee94ce4c27018bb62ba4f456372e465503a30d74"
+    }
+  ]
+}

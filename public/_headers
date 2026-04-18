@@ -57,8 +57,25 @@
 # HTML pages - no cache for content, but allow CDN caching
 /*.html
   Cache-Control: public, max-age=0, must-revalidate, s-maxage=3600
+  Link: <https://www.russ.cloud/sitemap-index.xml>; rel="sitemap"; type="application/xml"
+  Link: <https://www.russ.cloud/rss.xml>; rel="alternate"; type="application/rss+xml"; title="Russ.Cloud RSS"
+  Link: <https://www.russ.cloud/llms.txt>; rel="llms-txt"; type="text/markdown"
+  Link: <https://www.russ.cloud/.well-known/agent-skills/index.json>; rel="agent-skills"
 
 /
+  Cache-Control: public, max-age=0, must-revalidate, s-maxage=3600
+  Link: <https://www.russ.cloud/sitemap-index.xml>; rel="sitemap"; type="application/xml"
+  Link: <https://www.russ.cloud/rss.xml>; rel="alternate"; type="application/rss+xml"; title="Russ.Cloud RSS"
+  Link: <https://www.russ.cloud/llms.txt>; rel="llms-txt"; type="text/markdown"
+  Link: <https://www.russ.cloud/.well-known/agent-skills/index.json>; rel="agent-skills"
+
+# Serve generated plain-markdown twins of posts as text/markdown
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate, s-maxage=3600
+
+/llms.txt
+  Content-Type: text/markdown; charset=utf-8
   Cache-Control: public, max-age=0, must-revalidate, s-maxage=3600
 
 # Giscus custom theme CSS - allow cross-origin access

@@ -394,6 +394,45 @@ graph TD
 
 See [seo-implementation.md](./seo-implementation.md) for details.
 
+## Agent Discovery
+
+The site exposes machine-readable discovery signals for AI agents and crawlers, per emerging RFCs from `isitagentready.com` / `contentsignals.org`.
+
+### Static files
+
+| Path | Purpose |
+|------|---------|
+| `public/robots.txt` | Classic crawl policy plus `Content-Signal: search=yes, ai-input=yes, ai-train=yes` (contentsignals.org). Static — edit by hand; the `astro-robots-txt` integration was removed. |
+| `public/.well-known/agent-skills/index.json` | Agent Skills Discovery RFC v0.2.0 index listing available SKILL.md artefacts with `sha256` digests. |
+| `public/.well-known/agent-skills/read-blog-content/SKILL.md` | Skill describing feeds, sitemap, and URL patterns for consuming the blog. |
+| `dist/llms.txt` (generated) | llmstxt.org index — lists every post with its markdown URL. Written by `scripts/generate-llms-markdown.js` after `astro build`. |
+| `dist/YYYY/MM/DD/<slug>/index.md` (generated) | Plain-markdown twin of each HTML post, same path with `.md` basename. Same script. |
+
+### Response headers
+
+`public/_headers` attaches `Link:` headers (RFC 8288) to `/` and `/*.html` pointing to the sitemap index, RSS feed, and agent-skills index so agents can discover resources without parsing HTML.
+
+### Updating SKILL.md
+
+After editing any `SKILL.md` file, regenerate its digest and update `index.json`:
+
+```bash
+shasum -a 256 public/.well-known/agent-skills/read-blog-content/SKILL.md
+```
+
+Paste the hex output into the `digest` field as `sha256:<hex>`.
+
+### Markdown delivery (Free-plan approach)
+
+Cloudflare's zone-level "Markdown for Agents" (Dashboard → AI Crawl Control) only works on Pro+ plans. This site is on Free, so agents are served markdown via a build-time twin instead of edge content negotiation:
+
+- `scripts/generate-llms-markdown.js` runs after `astro build` (wired into the `build` npm script). It walks `src/content/blog/` and `src/content/tunes/`, parses frontmatter with `gray-matter`, and writes an `index.md` alongside each post at the same URL path. It also writes `/llms.txt` at the site root listing every post with its markdown URL.
+- `public/_headers` serves `*.md` and `/llms.txt` with `Content-Type: text/markdown; charset=utf-8`.
+- A `Link: <.../llms.txt>; rel="llms-txt"` header on `/` and `/*.html` advertises the index.
+- The markdown body is the raw MDX source (frontmatter stripped); inline JSX embed components remain — agents generally cope.
+
+If the site is ever upgraded to Cloudflare Pro, the build-time twin can be removed and `Accept: text/markdown` negotiation enabled via the dashboard instead.
+
 ## Performance Characteristics
 
 ### Build Performance

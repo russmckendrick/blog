@@ -1,0 +1,9 @@
+# https://contentsignals.org/
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: *
+Allow: /
+Disallow: /draft/
+Disallow: /_astro/
+
+Sitemap: https://www.russ.cloud/sitemap-index.xml

@@ -55,6 +55,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | File | Status | Notes |
 |------|--------|-------|
 | `scripts/analyze-internal-links.js` | primary | SEO-focused internal link analysis for orphan and low-link posts |
+| `scripts/generate-llms-markdown.js` | primary | Postbuild: emits plain-markdown twins of every post under `dist/` and a `dist/llms.txt` index for AI agents. Invoked automatically by `pnpm run build`. |
 | `scripts/migrate-tunes-lightgallery.js` | migration | One-off migration from paired `<Img>` usage to `LightGallery` |
 | `scripts/migrate-tunes-to-integrated-format.js` | migration | One-off migration from gallery-based tunes posts to integrated image/link format |
 | `scripts/test-cloudflare-token.sh` | manual/admin | Verifies Cloudflare Pages token and account access |
