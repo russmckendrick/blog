@@ -15,18 +15,18 @@ jobs:
 
     steps:
       - name: "👨‍💻 Check out code"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: "🌸 Setup PNPM"
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: "🟢 Set up Node.js"
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '22'
 
       - name: "💾 Restore research cache"
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: scripts/.research-cache
           key: research-cache-${{ hashFiles('scripts/.research-cache/**') }}

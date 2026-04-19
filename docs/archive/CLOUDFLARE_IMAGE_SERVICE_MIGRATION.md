@@ -508,7 +508,7 @@ const heroSrcSet = generateCFSrcSet(heroImage, CF_IMAGE_PRESETS.hero.widths, CF_
 **Before**:
 ```yaml
 - name: 🎨 Restore Astro build cache
-  uses: actions/cache@v4
+  uses: actions/cache@v5
   with:
     path: |
       node_modules/.astro

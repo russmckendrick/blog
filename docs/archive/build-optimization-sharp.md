@@ -31,7 +31,7 @@ Caches processed images in `node_modules/.astro/` directory:
 - Restores partial cache even if files changed
 
 ### 2. **npm Dependency Cache**
-Uses `actions/setup-node@v4` built-in caching:
+Uses `actions/setup-node@v6` built-in caching:
 - Caches `node_modules/` based on `package-lock.json`
 - Reduces `npm ci` time from 50s to ~10s
 

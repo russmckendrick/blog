@@ -32,15 +32,15 @@ jobs:
 
     steps:
       - name: 👨‍💻 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: 🌸 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: 🟢 Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: 📦 Install dependencies
         run: pnpm install --frozen-lockfile
@@ -49,7 +49,7 @@ jobs:
         run: pnpm audit
 
       - name: 💾 Build Cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: node_modules/.cache
           key: build-cache-${{ runner.os }}-${{ hashFiles('src/assets/**/*', 'src/content/**/*') }}
