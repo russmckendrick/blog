@@ -117,7 +117,7 @@ export const GET: APIRoute = async function get({ props }) {
     pngBuffer = fs.readFileSync(cacheFile);
   } else {
     console.log(`OG - Generating new image for: ${title}`);
-    pngBuffer = await PNG(OG(title, description, coverImagePath));
+    pngBuffer = await PNG(await OG(title, description, coverImagePath));
     fs.writeFileSync(cacheFile, pngBuffer);
   }
 

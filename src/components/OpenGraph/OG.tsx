@@ -1,8 +1,9 @@
 import React from "react";
 import fs from "fs";
 import path from "path";
+import sharp from "sharp";
 
-export default function OG(
+export default async function OG(
   title: string = "Russ McKendrick - Blog",
   description?: string,
   coverImagePath?: string,
@@ -35,14 +36,15 @@ export default function OG(
       console.log('OG - Loading image from:', imagePath);
       console.log('OG - File exists:', fs.existsSync(imagePath));
 
-      const imageBuffer = fs.readFileSync(imagePath);
-      const base64Image = imageBuffer.toString('base64');
-      // Detect image format from extension
-      const ext = path.extname(imagePath).toLowerCase();
-      const mimeType = ext === '.png' ? 'image/png' : ext === '.jpg' || ext === '.jpeg' ? 'image/jpeg' : 'image/png';
-      coverImageBase64 = `data:${mimeType};base64,${base64Image}`;
-      console.log('OG - Image loaded, base64 length:', base64Image.length);
-      console.log('OG - Has coverImageBase64:', !!coverImageBase64);
+      // Resize and re-encode as JPEG to keep the embedded base64 well below
+      // libxml2's 10MB parse limit. The OG canvas is 1200x630, so there's no
+      // point shipping anything larger.
+      const resized = await sharp(imagePath)
+        .resize(1200, 630, { fit: "cover", position: "attention" })
+        .jpeg({ quality: 80, mozjpeg: true })
+        .toBuffer();
+      coverImageBase64 = `data:image/jpeg;base64,${resized.toString('base64')}`;
+      console.log('OG - Image loaded, base64 length:', resized.toString('base64').length);
     } catch (error) {
       // If image fails to load, no cover image
       console.error('OG Image - Failed to load:', coverImagePath, error);
