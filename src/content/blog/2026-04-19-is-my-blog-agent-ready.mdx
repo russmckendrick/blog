@@ -1,0 +1,139 @@
+---
+title: "Is my blog Agent-Ready?"
+description: "Running russ.cloud through isitagentready.com and wiring up the checks that actually make sense for a static blog — Link headers, Content Signals, agent-skills discovery, llms.txt, and a tiny Cloudflare Worker to serve markdown on demand."
+date: 2026-04-19T07:18:46.915Z
+cover:
+  image: "../../assets/2026-04-19-is-my-blog-agent-ready/blog-cover-2026-04-19-is-my-blog-agent-ready.png"
+draft: false
+showToc: true
+tags:
+  - "ai"
+  - "blog"
+---
+
+A few days ago I stumbled across [isitagentready.com](https://isitagentready.com/) by Cloudflare while browsing [Reddit](https://www.reddit.com/r/CloudFlare/comments/1so2eh2/introducing_the_agent_readiness_score_is_your/), which is exactly what it sounds like: you give it a URL, it runs a checklist of emerging "AI-agent-friendly" standards against your site, and it tells you what's missing. I pointed it at https://www.russ.cloud/ expecting a gentle green checklist and got a fairly red one instead.
+
+<LinkPreview id="https://isitagentready.com/www.russ.cloud" />
+
+The report flagged nine things. Some of them made perfect sense for a blog; others were aimed at sites that publish APIs, host identity providers, or expose browser-side tool-calling. This post walks through what I actually changed, what I deliberately didn't, and why.
+
+## What "Is It Agent Ready?" actually checks
+
+It's a single-page tool that sends a handful of requests to your domain and looks for specific files, response headers, and behaviours. The checks cluster into a few buckets:
+
+- **Discovery signals** - can an AI agent find your sitemap, feeds, and capabilities without scraping HTML?
+- **Content negotiation** - if an agent asks for `Accept: text/markdown`, do you hand back a clean markdown version?
+- **Content preferences** - does your `robots.txt` declare whether you consent to training, search, and live answer generation?
+- **Authentication and APIs** - if you run an OAuth server or an MCP server, are they published at the expected well-known URLs?
+- **Browser-side tools** - do you expose `navigator.modelContext.provideContext()` tools via WebMCP?
+
+The last two buckets don't apply to a static blog. This blog has no APIs, no auth, no MCP server, and no interactive tool surface. Publishing discovery documents for services that don't exist is worse than not publishing them - it sends agents down dead ends and misrepresents the site. So I scoped the work to the buckets that do apply.
+
+## The changes
+
+The blog is an [Astro](https://astro.build/) static site deployed to Cloudflare Workers' static-assets runtime. That shaped the implementation: no server-side code at runtime (mostly), no edge Pro plan. Everything below is on Cloudflare Free.
+
+### Content-Signal in robots.txt
+
+[Content Signals](https://contentsignals.org/) is a draft spec for declaring how you want your content used. It adds a single line to `robots.txt`:
+
+```
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+```
+
+Three axes: `search` (classic indexing), `ai-input` (live agent answers with attribution), `ai-train` (model training). I went with yes-to-all, which is my honest preference - if an agent is going to answer a question about Terraform or Azure with a paraphrase of something I wrote, I'd rather the source material be accurate than half-remembered.
+
+I had been using the `astro-robots-txt` integration, which doesn't support arbitrary directives. Simpler to drop it, write a static `public/robots.txt`, and edit it by hand. One less dependency.
+
+### Link response headers (RFC 8288)
+
+[RFC 8288](https://www.rfc-editor.org/rfc/rfc8288) lets you attach `Link:` headers to any HTTP response pointing at related resources. Browsers ignore them; agents that respect the spec follow them. Cloudflare Pages merges these in via `public/_headers`:
+
+```text title="RFC 8288"
+/
+  Link: <https://www.russ.cloud/sitemap-index.xml>; rel="sitemap"; type="application/xml"
+  Link: <https://www.russ.cloud/rss.xml>; rel="alternate"; type="application/rss+xml"
+  Link: <https://www.russ.cloud/llms.txt>; rel="llms-txt"; type="text/markdown"
+  Link: <https://www.russ.cloud/.well-known/agent-skills/index.json>; rel="agent-skills"
+```
+
+It's free real estate - the agent doesn't have to parse your HTML to find the feed or the sitemap.
+
+### Agent Skills discovery index
+
+The [Agent Skills Discovery RFC](https://github.com/cloudflare/agent-skills-discovery-rfc) defines a JSON index at `/.well-known/agent-skills/index.json` listing `SKILL.md` files that describe what an agent can do with your site. For a blog, "skills" is a stretch - there's nothing to invoke - but the spec is flexible enough to describe how to *consume* content.
+
+I published one skill called `read-blog-content` that documents the feed URL, the sitemap, the URL pattern (`/YYYY/MM/DD/<slug>/`), and the convention that every post has a markdown twin. The index references it with a sha256 digest of the file contents, which the spec requires so agents can detect drift.
+
+```json title="Agent Skills"
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "read-blog-content",
+      "type": "skill-md",
+      "description": "How to discover, read, and cite posts from russ.cloud.",
+      "url": "https://www.russ.cloud/.well-known/agent-skills/read-blog-content/SKILL.md",
+      "digest": "sha256:bd9b7c88…"
+    }
+  ]
+}
+```
+
+### Markdown on demand
+
+The most interesting check is markdown content negotiation: send `Accept: text/markdown` to a blog post URL and get markdown back, without the URL changing.
+
+Cloudflare has a feature for this called [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/). It's a toggle in the dashboard under AI Crawl Control and it converts HTML to markdown at the edge, per-request. There's one catch: it requires Pro plan or higher. Russ.cloud is on Free.
+
+On Free, I went with a two-layer approach:
+
+**Build-time markdown twins.** Every post already starts life as MDX in `src/content/blog/` or `src/content/tunes/`. A postbuild script (`scripts/generate-llms-markdown.js`) walks those, strips the frontmatter, and writes an `index.md` next to each rendered HTML page. So `/2026/04/11/introducing-ai-commit/` has a sibling at `/2026/04/11/introducing-ai-commit/index.md`. The same script writes an [llms.txt](https://llmstxt.org/) at the site root listing every post with its markdown URL. That's useful for agents that don't bother with content negotiation and just look for llms.txt.
+
+**Runtime negotiation via a tiny Worker.** To satisfy the actual `Accept: text/markdown` check, a fifty-line Cloudflare Worker sits in front of the static assets. On every request it looks at the `Accept` header. If markdown is requested, it serves the pre-generated `.md` twin with `Content-Type: text/markdown; charset=utf-8` and `Vary: Accept`. Otherwise it falls through to `env.ASSETS.fetch(request)` and behaves exactly like before.
+
+```js title="Worker"
+export default {
+  async fetch(request, env) {
+    if (request.method === 'GET' && wantsMarkdown(request)) {
+      const md = await serveMarkdown(new URL(request.url), env, request)
+      if (md) return md
+    }
+    return env.ASSETS.fetch(request)
+  },
+}
+```
+
+One gotcha: by default, Cloudflare Workers with a Static Assets binding will short-circuit and serve matching assets directly without ever running your Worker. To force the Worker to run first so it can check `Accept`, you need `"run_worker_first": true` on the `assets` config in `wrangler.jsonc`. Without that, the scanner will keep reporting the site as HTML-only and you'll keep muttering at your terminal for longer than you'd like to admit.
+
+### What I deliberately skipped
+
+The remaining five checks on the "Is It Agent Ready?" list are:
+
+- **API Catalog** (RFC 9727) - for sites that publish APIs
+- **OAuth/OIDC discovery metadata** - for sites that are OAuth providers
+- **OAuth Protected Resource Metadata** - for sites with protected APIs
+- **MCP Server Card** - for sites hosting Model Context Protocol servers
+- **WebMCP** - for sites exposing in-browser tools via `navigator.modelContext`
+
+A personal blog has none of these. You *could* publish stub versions to turn the checklist green - an empty API linkset, a dummy MCP card - but that just lies to agents. If an agent follows an OIDC discovery document and tries to hit a token endpoint that returns 404, nobody wins. Better for the scanner to correctly say "this site doesn't have an identity provider" than for me to fake one.
+
+The one exception I considered was an empty API catalog (`{"linkset": []}` at `/.well-known/api-catalog`), which at least honestly signals "zero APIs published here." I decided against it - the spec is really about listing APIs you do have, and publishing an empty linkset felt like gaming the test.
+
+## Takeaways
+
+The rescan of of the site now passes four out of nine checks, and the remaining five are genuinely not applicable. That's the correct state for a blog.
+
+A few things struck me while doing this:
+
+- **Most of the "agent readiness" story is just good old web hygiene.** A sitemap, an RSS feed, a `robots.txt` that says what you mean - agents want the same things a thoughtful human crawler would.
+- **Content Signals is the one that might matter most.** The HTML metadata and robots directives we've been using for 25 years weren't designed for "may I train a model on this?" questions. An explicit signal is better than arguing about the implicit one.
+- **Markdown-on-demand is surprisingly nice to build.** Agents get cleaner parsing, browsers get the same HTML, and the build already knew how to produce markdown because that's what MDX starts as. Shipping the twin on Free instead of paying for the edge feature was a reasonable trade.
+- **Not every check should pass.** If the tooling treats "green on everything" as the goal, you'll end up with a lot of sites pretending to be OAuth providers. The useful reading of these scanners is as a prompt to ask "should this apply to me?" - and the answer is often no.
+
+You can read the announcement post from Cloudflare at the link below: 
+
+<LinkPreview id="https://blog.cloudflare.com/agent-readiness/" />
+
+If you want to see the actual output, [the live scan for the site is here](https://isitagentready.com/www.russ.cloud). And if you run your own blog, give it a go - the worst case is you learn that your `robots.txt` has had a typo in it since 2019.
+
