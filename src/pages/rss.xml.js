@@ -3,7 +3,18 @@ import rss from '@astrojs/rss';
 import { experimental_AstroContainer as AstroContainer } from 'astro/container';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { createUrlFriendlySlug } from '../utils/url';
+import { getCFImageUrl } from '../utils/cloudflare-images';
+import { calculateReadingTime } from '../utils/reading-time';
 import sanitizeHtml from 'sanitize-html';
+
+function escapeXml(value) {
+	return String(value)
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&apos;');
+}
 import {
 	AppleMusic,
 	Audio,
@@ -75,6 +86,16 @@ export async function GET(context) {
 		const slug = createUrlFriendlySlug(post.data.title);
 		const link = `/${year}/${month}/${day}/${slug}/`;
 
+		const coverSource = post.data.cover?.image || post.data.heroImage;
+		const coverPath = coverSource
+			? getCFImageUrl(coverSource, { width: 1600, quality: 80, format: 'jpeg', fit: 'scale-down' })
+			: null;
+		const coverImageUrl = coverPath ? new URL(coverPath, context.site).toString() : null;
+
+		const ogImageUrl = new URL(`${year}/${month}/${day}/${slug}-og.png`, context.site).toString();
+
+		const readingTime = calculateReadingTime(post.body ?? '');
+
 		// Render the MDX content to HTML
 		const { Content } = await render(post);
 		const html = await container.renderToString(Content, {
@@ -102,6 +123,10 @@ export async function GET(context) {
 			allowedSchemes: ['http', 'https', 'mailto'],
 		});
 
+		const coverXml = coverImageUrl
+			? `\n\t\t<blog:coverImage>${escapeXml(coverImageUrl)}</blog:coverImage>`
+			: '';
+
 		return {
 			title: post.data.title,
 			description: post.data.description,
@@ -111,7 +136,9 @@ export async function GET(context) {
 			categories: post.data.tags || [],
 			author: 'web.site@mckendrick.email (Russ McKendrick)',
 			// Use full URL as GUID for uniqueness
-			customData: `<guid isPermaLink="true">${context.site}${link}</guid>`,
+			customData: `<guid isPermaLink="true">${context.site}${link}</guid>${coverXml}
+		<blog:ogImage>${escapeXml(ogImageUrl)}</blog:ogImage>
+		<blog:readingTime>${readingTime}</blog:readingTime>`,
 		};
 	}));
 
@@ -126,6 +153,7 @@ export async function GET(context) {
 		<webMaster>web.site@mckendrick.email (Russ McKendrick)</webMaster>`,
 		xmlns: {
 			atom: 'http://www.w3.org/2005/Atom',
+			blog: 'https://www.russ.cloud/rss/ns',
 		},
 	});
 }
