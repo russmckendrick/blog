@@ -20,6 +20,7 @@ import { fileURLToPath } from 'url'
 import crypto from 'crypto'
 import OAuth from 'oauth-1.0a'
 import puppeteer from 'puppeteer'
+import sharp from 'sharp'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -319,15 +320,30 @@ async function downloadImageWithBrowser(imageUrl, localPath) {
     }
 
     const buffer = await response.buffer()
+    const jpeg = await bufferToJpeg(buffer)
     await fs.mkdir(path.dirname(localPath), { recursive: true })
-    await fs.writeFile(localPath, buffer)
+    await fs.writeFile(localPath, jpeg)
     await page.close()
 
-    return { success: true, size: buffer.length }
+    return { success: true, size: jpeg.length }
   } catch (error) {
     console.warn(`  Warning: Browser image download failed: ${error.message}`)
     return { success: false }
   }
+}
+
+/**
+ * Re-encode any decoded image buffer to JPEG so files saved with a .jpg
+ * extension actually contain JPEG bytes. Cloudflare Image Transformations
+ * inspect the file signature, so PNG/WebP/AVIF/SVG bytes inside a .jpg
+ * filename break downstream transforms.
+ */
+async function bufferToJpeg(buffer) {
+  return sharp(buffer, { failOn: 'none' })
+    .rotate()
+    .flatten({ background: '#ffffff' })
+    .jpeg({ quality: 85, mozjpeg: true })
+    .toBuffer()
 }
 
 /**
@@ -357,9 +373,10 @@ async function downloadImage(imageUrl, localPath) {
     }
 
     const buffer = Buffer.from(await response.arrayBuffer())
+    const jpeg = await bufferToJpeg(buffer)
 
     await fs.mkdir(path.dirname(localPath), { recursive: true })
-    await fs.writeFile(localPath, buffer)
+    await fs.writeFile(localPath, jpeg)
 
     const stats = await fs.stat(localPath)
     return { success: true, size: stats.size }
