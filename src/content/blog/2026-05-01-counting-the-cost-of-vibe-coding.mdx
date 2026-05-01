@@ -1,0 +1,198 @@
+---
+title: "Counting the Cost of Vibe Coding"
+description: "A local-first dashboard for tracking AI coding tool spend across Claude Code, Codex, Cursor, and Copilot - with a TUI, a desktop app, and zero API keys required."
+date: 2026-05-01T07:53:04.190Z
+cover:
+  image: "../../assets/2026-05-01-counting-the-cost-of-vibe-coding/blog-cover-2026-05-01-counting-the-cost-of-vibe-coding.png"
+draft: false
+showToc: true
+tags:
+  - "ai"
+  - "tools"
+  - "macos"
+  - "linux"
+  - "code"
+---
+
+Over the last year or so, every AI coding provider seems to have settled on the same pricing direction: token-based billing. Claude Code, Codex, Cursor, and Copilot all now meter you on input, output, cache reads, cache writes, and (in some cases) reasoning tokens, and the bill at the end of the month reflects how chatty you've been with the model rather than a flat subscription.
+
+Which is fine, until you start wondering where the money actually went.
+
+Vibe coding makes that worse, not better. When you're cheerfully throwing prompts at the model and pasting in screenshots, the per-turn cost is the last thing on your mind, but it does add up.
+
+I'd been using a couple of existing tools to keep an eye on this, and they did the job for the basics (totals per day, totals per project) but I kept hitting limitations. I wanted to see costs in pounds rather than always having to do the conversion in my head. I wanted to drill into a specific session and see the prompt that triggered a particularly expensive turn. I wanted to compare Claude Code and Codex side by side on the same project, because I tend to use both depending on the task. None of the existing tools quite did all of that, so I built **Token Use**.
+
+<LinkPreview id="https://github.com/russmckendrick/tokenuse" />
+
+## What it does
+
+Token Use reads the session files that AI coding tools already write to your local disk, normalises the data into a single archive, and shows you what you're spending. There's no API key, no proxy, no telemetry endpoint, and no daemon - it just parses the JSONL (and one SQLite database, in Cursor's case) that your tools have already written, then renders the results.
+
+It currently supports four sources:
+
+| Tool | Source format | Token quality |
+| --- | --- | --- |
+| Claude Code | JSONL session files under `~/.claude/projects/` | Exact, including cache reads and writes |
+| Codex | JSONL rollouts under `~/.codex/sessions/` | Exact per-turn token deltas |
+| Cursor | SQLite `state.vscdb` | Exact when present, estimated otherwise |
+| GitHub Copilot | Legacy CLI events and VS Code Copilot Chat transcripts | Exact for legacy, estimated for transcripts |
+
+It comes in two flavours: a Rust-based TUI for the terminal, and a Tauri desktop app for when you'd rather have a window with a sidebar and clickable rows. Both share the same local archive, so whichever you launch shows the same data.
+
+## The meta moment
+
+Before we get into installing and using it, I want to show you the obvious thing: I built Token Use using Claude Code and Codex, which means Token Use has a very detailed record of what Token Use cost to build.
+
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/001.png" alt="The Token Use desktop app filtered to the tokens project, showing the cost of building Token Use itself" />
+
+The dashboard above shows the project filtered to `tokens` (which is the name of the folder on my local machine), with the breakdown split across the three tools I used while building it. That 95.9% cache hit rate is doing a lot of the heavy lifting on the Claude Code side. Anthropic prices cache reads at roughly 10% of the input rate, so without that ratio the Claude column would be considerably more eye-watering.
+
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/002.png" alt="Session drill-down showing per-call costs for a Token Use development session" />
+
+Drilling into a single session shows every call: when it happened, which model handled it, how many tokens went in and out, what tools were used, and the start of the prompt. That single session cost just shy of £58 across 151 calls. Look at the input column: most calls added a single fresh input token because everything else was a cache read.
+ 
+I'll leave the absolute number for the GitHub README (the cover image above isn't entirely satirical), but seeing it broken down by day, by tool, and by session was the thing that finally convinced me the tool was actually useful rather than just an interesting weekend project.
+
+## Installation
+
+### macOS
+
+Both the TUI and the desktop app are available through my [Homebrew tap](https://github.com/russmckendrick/homebrew-tap):
+
+```bash frame="terminal" title="Installing the TUI - macOS"
+brew install russmckendrick/tap/tokenuse
+```
+
+```bash frame="terminal" title="Installing the desktop app - macOS"
+brew install --cask russmckendrick/tap/tokenuse
+open -a "Token Use"
+```
+
+The desktop DMG is signed with a Developer ID Application certificate and notarised through App Store Connect, so it should open without any Gatekeeper drama.
+
+### Linux
+
+The TUI works on AMD64 and ARM64. The script below detects your architecture and grabs the right binary:
+
+```bash frame="terminal" title="Installing the TUI - Linux"
+ARCH=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
+curl -sL "https://github.com/russmckendrick/tokenuse/releases/latest/download/tokenuse-linux-${ARCH}" -o tokenuse
+chmod +x tokenuse
+sudo mv tokenuse /usr/local/bin/
+```
+
+The desktop app for Linux is published as unsigned AppImage, deb, and rpm assets for both architectures. Verify the matching `.sha256` file before running. For the AppImage:
+
+```bash frame="terminal" title="Installing the desktop app - Linux"
+curl -L -O https://github.com/russmckendrick/tokenuse/releases/latest/download/tokenuse-desktop-linux-amd64.AppImage
+curl -L -O https://github.com/russmckendrick/tokenuse/releases/latest/download/tokenuse-desktop-linux-amd64.AppImage.sha256
+sha256sum -c tokenuse-desktop-linux-amd64.AppImage.sha256
+chmod +x tokenuse-desktop-linux-amd64.AppImage
+./tokenuse-desktop-linux-amd64.AppImage
+```
+
+### Windows
+
+The Windows TUI is a single executable:
+
+```powershell frame="terminal" title="Installing the TUI - Windows"
+Invoke-WebRequest -Uri "https://github.com/russmckendrick/tokenuse/releases/latest/download/tokenuse-windows-amd64.exe" -OutFile "tokenuse.exe"
+```
+
+The desktop app ships as both an NSIS installer and an MSI for environments that prefer Windows Installer. Both are unsigned for now, so verify the `.sha256` before installing:
+
+```powershell frame="terminal" title="Installing the desktop app - Windows"
+Invoke-WebRequest -Uri "https://github.com/russmckendrick/tokenuse/releases/latest/download/tokenuse-desktop-windows-amd64-setup.exe" -OutFile "tokenuse-setup.exe"
+Get-FileHash .\tokenuse-setup.exe -Algorithm SHA256
+Start-Process .\tokenuse-setup.exe
+```
+
+All releases are on the [GitHub releases page](https://github.com/russmckendrick/tokenuse/releases).
+
+## The TUI
+ 
+Run `tokenuse` and it'll scan your local session files, build the archive, and drop you into the Overview page:
+ 
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/003.png" alt="The Token Use TUI Overview page showing summary tiles, daily activity, and project spend" />
+The summary tiles up top cover cost, calls, sessions, cache hit rate, and input/output token totals. Below that, the panels break the same data down by day, by model, by project-and-tool, by shell command, and by MCP server.
+ 
+The filters work the way you'd expect:
+ 
+| Key | Action |
+|-----|--------|
+| `1` – `5` | Period: today, 7 days, 30 days, this month, all time |
+| `t` | Cycle the tool filter |
+| `p` | Open the project picker |
+| `s` | Open the session picker |
+| `g` | Cycle sort mode: spend, latest date, token use |
+| `Tab` / `Shift-Tab` | Cycle between Overview, Deep Dive, and Usage |
+| `r` | Resync the archive |
+| `e` | Export the current view |
+| `q` | Quit |
+ 
+The Deep Dive page adds two panels that aren't on Overview: Top Sessions, ranking the most expensive sessions in the active filter, and Core Tools, which counts every AI tool call (Bash, Edit, Read, update_plan, and so on).
+ 
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/004.png" alt="The Deep Dive page showing dense tables of sessions, models, and tool usage" />
+## Sessions and call detail
+ 
+The session page is the bit I find myself in most often. Press `s` to open a searchable picker of every session in the active filter; start typing to narrow it down by date, tool, or project name:
+ 
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/005.png" alt="Session picker overlay showing every session in the filter, with live search at the top" />
+Pick one and the drill-down opens, showing every turn in the session along with its timestamp, model, cost, tokens, tools, and the start of the prompt:
+ 
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/006.png" alt="TUI session drill-down showing the per-call breakdown for a Codex session" />
+Pressing `Enter` on any row opens a detail modal with the full stored prompt and metadata for that turn. It's useful for tracking down which question produced the expensive answer, and occasionally a lesson in writing tighter requests.
+ 
+## Usage and rate limits
+ 
+The Usage page is a rolling 24-hour view across every supported tool, ignoring the period and tool filters so each tool gets its own section. Each section shows total calls, tokens, and cost for the last day, plus the top three models for that tool's slice.
+ 
+If you're using Codex, the Usage page also shows the rate-limit snapshots Codex writes to its session files, so you can see how close you are to the 5-hour and weekly windows without having to do the maths yourself:
+ 
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/007.png" alt="The Usage page showing rolling 24-hour activity per tool plus Codex rate-limit windows" />
+Token Use doesn't make any live API calls to fetch limits, it just surfaces the values your tools have already written locally. That's a deliberate trade-off: the figures lag slightly behind whatever the tool is showing in real time, but there's no extra surface area to worry about.
+ 
+## Currency and pricing
+ 
+Costs are calculated and stored as USD at import time, then converted for display. The Config page lets you pick a different display currency:
+ 
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/008.png" alt="The Config page with the currency picker overlay open, showing GBP selected from 159 currencies" />
+The currency snapshot is fetched from [Frankfurter](https://frankfurter.dev) and the pricing table is derived from [LiteLLM](https://github.com/BerriAI/litellm). Both are embedded in the binary so the tool works completely offline by default. If you want fresher rates, the Config page has explicit "download latest" buttons that need confirmation each time - there are no background fetches.
+ 
+## The desktop app
+ 
+The desktop app is a Svelte frontend over the same Rust core. It reads the same archive, writes the same config, and exposes the same dashboard pages, with clickable tabs and dropdowns alongside the keyboard shortcuts.
+ 
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/009.png" alt="The Token Use desktop app on the Overview tab in a today view" />
+The Usage tab is the same view as in the TUI, with the Codex rate-limit windows visible alongside the 24-hour totals:
+ 
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/010.png" alt="The Token Use desktop app on the Usage tab showing Codex rate-limit windows" />
+If you have both installed, you can use whichever suits the moment. I tend to leave the desktop app open on a second monitor when I'm doing a lot of AI-assisted work, and reach for the TUI when I'm already in a terminal and want to spot-check spend on a specific project.
+
+## Exports
+
+Press `e` on the Overview or Deep Dive page (or click the export button in the desktop app) and you can dump the current filtered view to JSON, CSV, SVG, or PNG. The output is timestamped and slugged with the active period, tool, and project filter, so re-exporting doesn't overwrite the previous run.
+
+The CSV format is one directory containing one CSV per dashboard panel - projects, models, sessions, daily activity, and so on - which makes it easy to pull into a spreadsheet if you want to do your own analysis.
+
+<NoteCallout title="Where the data lives">
+The local archive is stored at `~/Library/Application Support/tokenuse/archive.db` on macOS, `~/.config/tokenuse/archive.db` on Linux, and `%APPDATA%\tokenuse\archive.db` on Windows. The desktop app and TUI share this same database, so whichever you launch first sees the latest sync.
+</NoteCallout>
+
+## Privacy
+
+Token Use is local-only by design. There is no telemetry or analytics, and no API keys to provide for any of the supported tools. The only outbound network requests are the explicit Config-page downloads for currency rates and the pricing snapshot, both of which need confirmation before they fire.
+
+If you're security-conscious about a tool that reads your session transcripts, the source is on GitHub. The parsers live under `src/tools/<name>/` if you want to verify exactly what's being read, and the documentation on [tokenuse.app](https://www.tokenuse.app) has a parser-by-parser breakdown covering each tool's quirks.
+
+<LinkPreview id="https://www.tokenuse.app" />
+
+## Summary
+
+Token Use is open source and lives at:
+
+<LinkPreview id="https://github.com/russmckendrick/tokenuse" />
+
+It's at the start of its life, so there are bound to be edge cases I haven't hit yet, particularly across the four different tool formats. If you spot something off in the parsing, or if there's a feature that would make the tool more useful for your workflow, issues and pull requests are welcome.
+
+If nothing else, having the data has changed how I think about my AI tool usage. Knowing that a particular kind of refactoring task tends to cost a few quid, while a quick code review costs almost nothing, is the sort of thing that's hard to internalise without seeing the numbers laid out next to each other. Whether you end up doing more of the cheap things or fewer of the expensive ones is up to you.
