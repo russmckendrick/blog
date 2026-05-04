@@ -1,7 +1,8 @@
 ---
 title: "Counting the Cost of Vibe Coding"
-description: "A local-first dashboard for tracking AI coding tool spend across Claude Code, Codex, Cursor, and Copilot - with a TUI, a desktop app, and zero API keys required."
+description: "A local-first dashboard for tracking AI coding tool spend across Claude Code, Codex, Cursor, Copilot, and Gemini CLI - with a TUI, a desktop app, and zero API keys required."
 date: 2026-05-01T07:53:04.190Z
+lastModified: 2026-05-04
 cover:
   image: "../../assets/2026-05-01-counting-the-cost-of-vibe-coding/blog-cover-2026-05-01-counting-the-cost-of-vibe-coding.png"
 draft: false
@@ -14,7 +15,7 @@ tags:
   - "code"
 ---
 
-Over the last year or so, every AI coding provider seems to have settled on the same pricing direction: token-based billing. Claude Code, Codex, Cursor, and Copilot all now meter you on input, output, cache reads, cache writes, and (in some cases) reasoning tokens, and the bill at the end of the month reflects how chatty you've been with the model rather than a flat subscription.
+Over the last year or so, every AI coding provider seems to have settled on the same pricing direction: token-based billing. Claude Code, Codex, Cursor, Copilot, and Gemini all now meter you on input, output, cache reads, cache writes, and (in some cases) reasoning tokens, and the bill at the end of the month reflects how chatty you've been with the model rather than a flat subscription.
 
 Which is fine, until you start wondering where the money actually went.
 
@@ -22,22 +23,27 @@ Vibe coding makes that worse, not better. When you're cheerfully throwing prompt
 
 I'd been using a couple of existing tools to keep an eye on this, and they did the job for the basics (totals per day, totals per project) but I kept hitting limitations. I wanted to see costs in pounds rather than always having to do the conversion in my head. I wanted to drill into a specific session and see the prompt that triggered a particularly expensive turn. I wanted to compare Claude Code and Codex side by side on the same project, because I tend to use both depending on the task. None of the existing tools quite did all of that, so I built **Token Use**.
 
-<LinkPreview id="https://github.com/russmckendrick/tokenuse" />
+<LinkPreview id="https://www.tokenuse.app" />
+
+<NoteCallout title="Updated for v0.0.8">
+This post originally went out alongside the first public release. Token Use has moved on a fair bit since then, so I've updated the screenshots and prose to match what's currently shipping. The biggest changes are Gemini CLI support, the Activity Pulse graphs, the tray popover and background alerts on the desktop app, and the Reports workflow that replaced the older snapshot exports.
+</NoteCallout>
 
 ## What it does
 
-Token Use reads the session files that AI coding tools already write to your local disk, normalises the data into a single archive, and shows you what you're spending. There's no API key, no proxy, no telemetry endpoint, and no daemon - it just parses the JSONL (and one SQLite database, in Cursor's case) that your tools have already written, then renders the results.
+Token Use reads the session files that AI coding tools already write to your local disk, normalises the data into a single archive, and shows you what you're spending. There's no API key, no proxy, no telemetry endpoint, no daemon, and no live file watcher. It just parses the JSONL (and one SQLite database, in Cursor's case) that your tools have already written, then renders the results.
 
-It currently supports four sources:
+It currently supports five sources:
 
 | Tool | Source format | Token quality |
 | --- | --- | --- |
 | Claude Code | JSONL session files under `~/.claude/projects/` | Exact, including cache reads and writes |
-| Codex | JSONL rollouts under `~/.codex/sessions/` | Exact per-turn token deltas |
-| Cursor | SQLite `state.vscdb` | Exact when present, estimated otherwise |
+| Codex | JSONL rollouts under `~/.codex/sessions/` | Exact per-turn token deltas, plus rate-limit snapshots |
+| Cursor | SQLite `state.vscdb` and Agent transcripts under `~/.cursor/projects/` | Exact when present, estimated otherwise |
 | GitHub Copilot | Legacy CLI events and VS Code Copilot Chat transcripts | Exact for legacy, estimated for transcripts |
+| Gemini CLI | Chat files under `~/.gemini/tmp/<project_hash>/chats/` | Exact, including cached input reads and thought tokens |
 
-It comes in two flavours: a Rust-based TUI for the terminal, and a Tauri desktop app for when you'd rather have a window with a sidebar and clickable rows. Both share the same local archive, so whichever you launch shows the same data.
+It comes in two flavours: a Rust-based TUI for the terminal, and a Tauri desktop app for when you'd rather have a window with a sidebar and clickable rows. Both share the same local archive, so whichever you launch shows the same data, and they share the same embedded keymap so the shortcuts work the same in either place.
 
 ## The meta moment
 
@@ -45,12 +51,14 @@ Before we get into installing and using it, I want to show you the obvious thing
 
 <Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/001.png" alt="The Token Use desktop app filtered to the tokens project, showing the cost of building Token Use itself" />
 
-The dashboard above shows the project filtered to `tokens` (which is the name of the folder on my local machine), with the breakdown split across the three tools I used while building it. That 95.9% cache hit rate is doing a lot of the heavy lifting on the Claude Code side. Anthropic prices cache reads at roughly 10% of the input rate, so without that ratio the Claude column would be considerably more eye-watering.
+The dashboard above shows the project filtered to `tokens` (which is the name of the folder on my local machine), with the breakdown split across the tools I used while building it. That 96.3% cache hit rate is doing a lot of the heavy lifting on the Claude Code side. Anthropic prices cache reads at roughly 10% of the input rate, so without that ratio the Claude column would be considerably more eye-watering.
+
+The orange and cyan chart in the middle is the **Activity Pulse**: the orange bars are spend per bucket, the cyan area is call volume over the same window. Hovering a bucket shows the period label, cost, and call count. Short windows like 24 Hours and 7 Days use hourly buckets; 30 Days and All Time use daily buckets. This Month is a hybrid that stays hourly for the first two weeks and switches to daily from the 15th onward, which avoids the start of a month collapsing into one or two oversized bars.
 
 <Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/002.png" alt="Session drill-down showing per-call costs for a Token Use development session" />
 
-Drilling into a single session shows every call: when it happened, which model handled it, how many tokens went in and out, what tools were used, and the start of the prompt. That single session cost just shy of £58 across 151 calls. Look at the input column: most calls added a single fresh input token because everything else was a cache read.
- 
+Drilling into a single session shows every call: when it happened, which model handled it, how many tokens went in and out, what tools were used, and the start of the prompt. The Codex session above cost £55.37 across 616 calls, with 86.9M of the 91.4M input tokens served from cache.
+
 I'll leave the absolute number for the GitHub README (the cover image above isn't entirely satirical), but seeing it broken down by day, by tool, and by session was the thing that finally convinced me the tool was actually useful rather than just an interesting weekend project.
 
 ## Installation
@@ -68,7 +76,7 @@ brew install --cask russmckendrick/tap/tokenuse-desktop
 open -a "Token Use"
 ```
 
-The desktop DMG is signed with a Developer ID Application certificate and notarised through App Store Connect, so it should open without any Gatekeeper drama.
+The desktop DMG is Apple Silicon only, signed with a Developer ID Application certificate, and notarised through App Store Connect, so it should open without any Gatekeeper drama.
 
 ### Linux
 
@@ -91,6 +99,8 @@ chmod +x tokenuse-desktop-linux-amd64.AppImage
 ./tokenuse-desktop-linux-amd64.AppImage
 ```
 
+AppImage installs can check for newer desktop releases from the Config tab. If you used the `.deb` or `.rpm` package, update manually with the matching asset from GitHub Releases.
+
 ### Windows
 
 The Windows TUI is a single executable:
@@ -107,73 +117,137 @@ Get-FileHash .\tokenuse-setup.exe -Algorithm SHA256
 Start-Process .\tokenuse-setup.exe
 ```
 
-All releases are on the [GitHub releases page](https://github.com/russmckendrick/tokenuse/releases).
+Like the AppImage build, the installed Windows desktop app can check for later NSIS installer releases from the Config tab. All releases are on the [GitHub releases page](https://github.com/russmckendrick/tokenuse/releases).
 
 ## The TUI
- 
+
 Run `tokenuse` and it'll scan your local session files, build the archive, and drop you into the Overview page:
- 
-<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/003.png" alt="The Token Use TUI Overview page showing summary tiles, daily activity, and project spend" />
-The summary tiles up top cover cost, calls, sessions, cache hit rate, and input/output token totals. Below that, the panels break the same data down by day, by model, by project-and-tool, by shell command, and by MCP server.
- 
+
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/003.png" alt="The Token Use TUI Overview page showing summary tiles, the Activity Pulse graph, and ranked spend tables" />
+
+The summary tiles up top cover cost, calls, sessions, cache hit rate, and input/output token totals. Below that, the Activity Pulse is chronological and ignores whatever sort mode you've picked, so the line keeps showing usage over time even when the ranked tables underneath are sorted by spend, latest date, or token use. The ranked tables themselves cover project and project/tool spend, model spend, shell commands, and MCP servers.
+
 The filters work the way you'd expect:
- 
+
 | Key | Action |
 |-----|--------|
-| `1` – `5` | Period: today, 7 days, 30 days, this month, all time |
+| `1` – `5` | Period: rolling 24 hours, 7 days, 30 days, this month, all time |
 | `t` | Cycle the tool filter |
 | `p` | Open the project picker |
 | `s` | Open the session picker |
 | `g` | Cycle sort mode: spend, latest date, token use |
 | `Tab` / `Shift-Tab` | Cycle between Overview, Deep Dive, and Usage |
+| `Shift-D` | Toggle between live and bundled sample data |
 | `r` | Resync the archive |
-| `e` | Export the current view |
+| `e` | Generate a report |
 | `q` | Quit |
- 
-The Deep Dive page adds two panels that aren't on Overview: Top Sessions, ranking the most expensive sessions in the active filter, and Core Tools, which counts every AI tool call (Bash, Edit, Read, update_plan, and so on).
- 
-<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/004.png" alt="The Deep Dive page showing dense tables of sessions, models, and tool usage" />
+
+The `1` period is rolling from the current time rather than a calendar-day midnight cutoff, which I find more useful when you've just finished a session and want to see what it actually cost.
+
+The Deep Dive page swaps the compact Activity Pulse for a larger Activity Trend graph, and adds two panels that aren't on Overview: Top Sessions, ranking the most expensive sessions in the active filter, and Core Tools, which counts every AI tool call (Bash, Edit, Read, update_plan, and so on).
+
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/004.png" alt="The Deep Dive page showing the Activity Trend graph and dense ranking tables for sessions, models, and tool usage" />
+
 ## Sessions and call detail
- 
+
 The session page is the bit I find myself in most often. Press `s` to open a searchable picker of every session in the active filter; start typing to narrow it down by date, tool, or project name:
- 
+
 <Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/005.png" alt="Session picker overlay showing every session in the filter, with live search at the top" />
+
 Pick one and the drill-down opens, showing every turn in the session along with its timestamp, model, cost, tokens, tools, and the start of the prompt:
- 
+
 <Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/006.png" alt="TUI session drill-down showing the per-call breakdown for a Codex session" />
-Pressing `Enter` on any row opens a detail modal with the full stored prompt and metadata for that turn. It's useful for tracking down which question produced the expensive answer, and occasionally a lesson in writing tighter requests.
- 
+
+Pressing `Enter` on any row opens a detail modal with the full stored prompt and metadata for that turn. It's useful for tracking down which question produced the expensive answer.
+
 ## Usage and rate limits
- 
-The Usage page is a rolling 24-hour view across every supported tool, ignoring the period and tool filters so each tool gets its own section. Each section shows total calls, tokens, and cost for the last day, plus the top three models for that tool's slice.
- 
-If you're using Codex, the Usage page also shows the rate-limit snapshots Codex writes to its session files, so you can see how close you are to the 5-hour and weekly windows without having to do the maths yourself:
- 
+
+The Usage page is a rolling 24-hour view across every supported tool. Opening the page automatically selects the 24 Hours period so the visible filter matches what each per-tool console is showing, and the page ignores the project filter so each tool gets its own section regardless of where you've been working.
+
+Each tool console shows a 24-hour pulse graph, totals for calls, tokens, cost, and last seen, plus the top three models for that tool's slice. If you're using Codex, the Usage page also shows the rate-limit snapshots Codex writes to its session files, so you can see how close you are to the 5-hour and weekly windows without having to do the maths yourself:
+
 <Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/007.png" alt="The Usage page showing rolling 24-hour activity per tool plus Codex rate-limit windows" />
+
 Token Use doesn't make any live API calls to fetch limits, it just surfaces the values your tools have already written locally. That's a deliberate trade-off: the figures lag slightly behind whatever the tool is showing in real time, but there's no extra surface area to worry about.
- 
+
 ## Currency and pricing
- 
+
 Costs are calculated and stored as USD at import time, then converted for display. The Config page lets you pick a different display currency:
- 
+
 <Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/008.png" alt="The Config page with the currency picker overlay open, showing GBP selected from 159 currencies" />
-The currency snapshot is fetched from [Frankfurter](https://frankfurter.dev) and the pricing table is derived from [LiteLLM](https://github.com/BerriAI/litellm). Both are embedded in the binary so the tool works completely offline by default. If you want fresher rates, the Config page has explicit "download latest" buttons that need confirmation each time - there are no background fetches.
- 
+
+The currency snapshot is fetched from [Frankfurter](https://frankfurter.dev) and the pricing table is derived from [LiteLLM](https://github.com/BerriAI/litellm). Both are embedded in the binary so the tool works completely offline by default. If you want fresher rates, the Config page has explicit "download latest" buttons that need confirmation each time. There are no background fetches.
+
+The Config page also has a clear-data action that asks for confirmation, deletes the local `archive.db`, and immediately reimports from your tool history. Your config, downloaded rates, pricing snapshots, and previously generated reports are kept. It's handy if you want to rebuild the archive against a fresher pricing snapshot, or just to check the importer is doing what you expect.
+
 ## The desktop app
- 
-The desktop app is a Svelte frontend over the same Rust core. It reads the same archive, writes the same config, and exposes the same dashboard pages, with clickable tabs and dropdowns alongside the keyboard shortcuts.
- 
-<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/009.png" alt="The Token Use desktop app on the Overview tab in a today view" />
-The Usage tab is the same view as in the TUI, with the Codex rate-limit windows visible alongside the 24-hour totals:
- 
-<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/010.png" alt="The Token Use desktop app on the Usage tab showing Codex rate-limit windows" />
+
+The desktop app is a Tauri v2 + Svelte frontend over the same Rust core. It reads the same archive, writes the same config, and exposes the same dashboard pages, with clickable tabs and dropdowns alongside the keyboard shortcuts. Here's the Deep Dive view, which mirrors the layout of the TUI Deep Dive page:
+
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/009.png" alt="The Token Use desktop app on the Deep Dive tab showing the Activity Trend, top sessions, project rankings, and ranked tool tables" />
+
+The Usage tab is the same view as in the TUI, with per-tool consoles for each of the five supported tools and the Codex rate-limit windows visible alongside the 24-hour totals:
+
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/010.png" alt="The Token Use desktop app on the Usage tab showing the per-tool consoles and Codex rate-limit windows" />
+
 If you have both installed, you can use whichever suits the moment. I tend to leave the desktop app open on a second monitor when I'm doing a lot of AI-assisted work, and reach for the TUI when I'm already in a terminal and want to spot-check spend on a specific project.
 
-## Exports
+### Tray popover and background alerts
 
-Press `e` on the Overview or Deep Dive page (or click the export button in the desktop app) and you can dump the current filtered view to JSON, CSV, SVG, or PNG. The output is timestamped and slugged with the active period, tool, and project filter, so re-exporting doesn't overwrite the previous run.
+Closing the desktop window doesn't quit the app: Token Use keeps running in the background, and on macOS the Dock icon will reopen the main window if you click it again. Left-clicking the tray or menu-bar icon opens a compact 24-hour popover with KPI tiles for cost, calls, tokens, and cache hit rate, an Activity sparkline, and a top-models breakdown. There's an **Open** button if you want the full dashboard, a **Refresh** button if you want to force a sync, and right-clicking the icon gives you the native menu with **Show Token Use** and **Quit Token Use**.
 
-The CSV format is one directory containing one CSV per dashboard panel - projects, models, sessions, daily activity, and so on - which makes it easy to pull into a spreadsheet if you want to do your own analysis.
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/011.png" alt="The Token Use menu-bar popover showing 24-hour KPI tiles, an activity sparkline, and a breakdown of the top models including GPT-5, Opus 4.7, and Gemini 3 Flash" />
+
+While it's running in the background, the desktop app keeps polling the archive for new usage. If an automatic refresh imports a chunk of new activity that crosses configurable thresholds, you get a native desktop notification. The defaults are conservative (notify after at least \$1.00, 100k tokens, or 25 calls of new usage, with a 30-minute cooldown) and they live in the same `config.json` the TUI reads:
+
+```json frame="terminal" title="config.json"
+{
+  "currency": "GBP",
+  "background_alerts": {
+    "enabled": true,
+    "min_cost_usd": 1.0,
+    "min_tokens": 100000,
+    "min_calls": 25,
+    "cooldown_minutes": 30
+  },
+  "desktop": {
+    "open_at_login": false,
+    "show_dock_or_taskbar_icon": true
+  }
+}
+```
+
+The desktop-only **Open at Login** and **Dock/taskbar icon** toggles are also exposed in the Config tab, so you can opt into a tray-first setup without hand-editing JSON if you'd rather. On Windows and Linux, the Config tab additionally includes an explicit update check against GitHub Releases, which is the supported path for those platforms; macOS desktop updates continue to come through Homebrew Cask.
+
+## Reports
+
+This is the bit that's changed the most since the first release. The earlier snapshot exports have been replaced with a richer **Reports** workflow. Press `e` on Overview, Deep Dive, Usage, or Session (or click the report button in the desktop app) and you'll get a modal that asks for the period, project scope, format, and whether to redact prompts, commands, raw paths, session IDs, and dedup keys before generation. Reports always include all tools for the chosen scope, regardless of whatever tool filter you have set on the dashboard.
+
+The available formats cover most use cases:
+
+| Format | Output |
+|---|---|
+| HTML | One self-contained executive report deck |
+| PDF | One A4 landscape render of the same deck (browserless) |
+| SVG | One 16:9 visual summary with KPI strip, heatmap, and top highlights |
+| PNG | Same one-page visual summary, rasterised |
+| JSON | One pretty-printed full report dataset |
+| Excel | One multi-sheet `.xlsx` workbook with summary and raw data sheets |
+| CSV | One folder with one CSV per report area |
+
+The HTML and PDF decks are intended to be client-ready, with cover metadata, KPI ribbons, insight tiles, activity pages, and breakdown pages.
+
+<Img src="/assets/2026-05-01-counting-the-cost-of-vibe-coding/012.png" alt="The cover page of an HTML report deck showing KPI tiles for cost, calls, sessions, total tokens, cache hit, and web search, alongside generation metadata and insight tiles for the tokens project over 7 days" />
+
+The SVG and PNG outputs are the one-page version for when you just want a single visual summary. JSON, Excel, and CSV are the raw data formats for if you want to do your own analysis. Output defaults to your Downloads folder, falling back to `~/Downloads` and then the local config directory, with timestamped, slugged filenames so re-running doesn't overwrite the previous report.
+
+There's also a guided CLI for when you want a report without opening the dashboard:
+
+```bash frame="terminal" title="Generating reports from the CLI"
+tokenuse report
+```
+
+This walks through the same period, project, format, output folder, redaction, and confirmation steps as the modal, then exits. It only writes from live local sessions, so it bails out cleanly if there's nothing to report on.
 
 <NoteCallout title="Where the data lives">
 The local archive is stored at `~/Library/Application Support/tokenuse/archive.db` on macOS, `~/.config/tokenuse/archive.db` on Linux, and `%APPDATA%\tokenuse\archive.db` on Windows. The desktop app and TUI share this same database, so whichever you launch first sees the latest sync.
@@ -181,7 +255,7 @@ The local archive is stored at `~/Library/Application Support/tokenuse/archive.d
 
 ## Privacy
 
-Token Use is local-only by design. There is no telemetry or analytics, and no API keys to provide for any of the supported tools. The only outbound network requests are the explicit Config-page downloads for currency rates and the pricing snapshot, both of which need confirmation before they fire.
+Token Use is local-only by design. There is no telemetry or analytics, and no API keys to provide for any of the supported tools. The only outbound network requests are the explicit Config-page downloads for currency rates and the pricing snapshot, the optional update checks on the Windows and Linux desktop apps, and (on tagged builds) the maintainer release paths. Each of those needs confirmation before it fires.
 
 If you're security-conscious about a tool that reads your session transcripts, the source is on GitHub. The parsers live under `src/tools/<name>/` if you want to verify exactly what's being read, and the documentation on [tokenuse.app](https://www.tokenuse.app) has a parser-by-parser breakdown covering each tool's quirks.
 
@@ -189,10 +263,10 @@ If you're security-conscious about a tool that reads your session transcripts, t
 
 ## Summary
 
-Token Use is open source and lives at:
+The source code for Token Use lives at:
 
 <LinkPreview id="https://github.com/russmckendrick/tokenuse" />
 
-It's at the start of its life, so there are bound to be edge cases I haven't hit yet, particularly across the four different tool formats. If you spot something off in the parsing, or if there's a feature that would make the tool more useful for your workflow, issues and pull requests are welcome.
+It's still early in its life, so there are bound to be edge cases I haven't hit yet, particularly across the five different tool formats now that Gemini CLI has joined the lineup. If you spot something off in the parsing, or if there's a feature that would make the tool more useful for your workflow, issues and pull requests are welcome.
 
 If nothing else, having the data has changed how I think about my AI tool usage. Knowing that a particular kind of refactoring task tends to cost a few quid, while a quick code review costs almost nothing, is the sort of thing that's hard to internalise without seeing the numbers laid out next to each other. Whether you end up doing more of the cheap things or fewer of the expensive ones is up to you.
