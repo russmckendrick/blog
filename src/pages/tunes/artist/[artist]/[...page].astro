@@ -108,7 +108,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 )
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={`/tunes/artist/${artist.slug}-og.png`}>
   <Schema slot="head" item={collectionSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
 

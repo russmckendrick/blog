@@ -12,7 +12,7 @@ import {
   getAlbumTuneUrl
 } from '../../../utils/tunes-index'
 import {
-  createMusicRecordingSchema,
+  createMusicAlbumSchema,
   createBreadcrumbSchema
 } from '../../../utils/schema'
 
@@ -54,11 +54,11 @@ const description = `${album.name} by ${album.artist} appears in ${featuredCount
   featuredCount !== 1 ? 's' : ''
 } on russ.cloud. See when it landed in rotation, what else was on the turntable that week, and links to the original write-ups.`
 
-const musicSchema = createMusicRecordingSchema({
+const musicSchema = createMusicAlbumSchema({
   name: album.name,
   byArtist: album.artist,
-  inAlbum: album.name,
   url: pageUrl,
+  image: album.image ? new URL(album.image, siteUrl).toString() : undefined,
   description
 })
 
@@ -73,7 +73,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 )
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={`/tunes/album/${album.slug}-og.png`}>
   <Schema slot="head" item={musicSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
 

@@ -1,5 +1,6 @@
 ---
 import { Head } from '@felixicaza/astro-capo';
+import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../utils/cloudflare-images';
 import BaseHead from '../components/layout/BaseHead.astro';
@@ -124,6 +125,16 @@ const breadcrumbSchema = createBreadcrumbSchema(
 	breadcrumbItems.map(item => ({ name: item.label, url: item.url })),
 	Astro.site?.toString() || 'https://www.russ.cloud/'
 );
+
+// Surface glossary terms whose tags overlap this post's tags (skip on tunes posts)
+const postTagSlugs = new Set((tags || []).map(normalizeTagSlug));
+const relatedGlossary = (!isTune && postTagSlugs.size > 0)
+	? (await getCollection('glossary'))
+		.filter((g: CollectionEntry<'glossary'>) => import.meta.env.DEV || !g.data.draft)
+		.filter((g: CollectionEntry<'glossary'>) => (g.data.tags || []).some((t: string) => postTagSlugs.has(normalizeTagSlug(t))))
+		.sort((a: CollectionEntry<'glossary'>, b: CollectionEntry<'glossary'>) => a.data.term.localeCompare(b.data.term, 'en', { sensitivity: 'base' }))
+		.slice(0, 6)
+	: [];
 
 const faqSchema = faqs && faqs.length > 0
 	? createFAQSchema(faqs, Astro.url.toString())
@@ -289,6 +300,22 @@ const howToSchema = howto && howto.steps?.length > 0
 														onclick="event.stopPropagation()"
 													>
 														{getTagDisplayName(tag)}
+													</a>
+												))}
+											</div>
+										)}
+
+										<!-- Related glossary terms -->
+										{relatedGlossary.length > 0 && (
+											<div class="flex flex-wrap items-center gap-2">
+												<span class="text-xs text-on-surface-variant">Glossary:</span>
+												{relatedGlossary.map((g: CollectionEntry<'glossary'>) => (
+													<a
+														href={`/glossary/${g.id}/`}
+														class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium surface-container-lowest text-on-surface-variant transition-all hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+														onclick="event.stopPropagation()"
+													>
+														{g.data.term}
 													</a>
 												))}
 											</div>

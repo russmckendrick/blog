@@ -3,12 +3,14 @@ import { getCollection, render } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import PostCard from '../../components/blog/PostCard.astro'
 import { Schema } from 'astro-seo-schema'
 import {
   createDefinedTermSchema,
   createBreadcrumbSchema
 } from '../../utils/schema'
 import { SITE_TITLE } from '../../consts'
+import { normalizeTagSlug } from '../../utils/tags'
 
 export const getStaticPaths = (async () => {
   const entries = await getCollection('glossary')
@@ -31,6 +33,15 @@ const allEntries = await getCollection('glossary')
 const related = (entry.data.relatedTerms || [])
   .map((slug) => allEntries.find((e) => e.id === slug))
   .filter((e): e is CollectionEntry<'glossary'> => Boolean(e))
+
+const entryTagSlugs = new Set((entry.data.tags || []).map(normalizeTagSlug))
+const relatedPosts = entryTagSlugs.size === 0
+  ? []
+  : (await getCollection('blog'))
+    .filter((post) => import.meta.env.DEV || !post.data.draft)
+    .filter((post) => (post.data.tags || []).some((tag) => entryTagSlugs.has(normalizeTagSlug(tag))))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 8)
 
 const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
@@ -57,7 +68,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 )
 ---
 
-<BaseLayout title={title} description={entry.data.description}>
+<BaseLayout title={title} description={entry.data.description} image={`/glossary/${entry.id}-og.png`}>
   <Schema slot="head" item={definedTermSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
 
@@ -104,6 +115,17 @@ const breadcrumbSchema = createBreadcrumbSchema(
             </li>
           ))}
         </ul>
+      </aside>
+    )}
+
+    {relatedPosts.length > 0 && (
+      <aside class="mt-12 pt-6 border-t border-[var(--color-outline-variant)]/40">
+        <p class="text-xs text-on-surface-variant mb-4">Posts on this topic</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {relatedPosts.map((post) => (
+            <PostCard post={post} variant="grid" headingLevel="3" />
+          ))}
+        </div>
       </aside>
     )}
   </article>

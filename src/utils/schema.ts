@@ -6,6 +6,7 @@ import type {
   FAQPage,
   HowTo,
   MusicRecording,
+  MusicAlbum,
   CollectionPage,
   DefinedTerm,
   WithContext
@@ -250,6 +251,47 @@ export function createMusicRecordingSchema({
     ...(image && { image }),
     ...(description && { description }),
     url
+  }
+}
+
+/**
+ * Creates a MusicAlbum schema for album browse pages
+ */
+interface MusicAlbumSchemaProps {
+  name: string
+  byArtist: string
+  url: string
+  numTracks?: number
+  datePublished?: string | number
+  genre?: string[]
+  image?: string
+  description?: string
+}
+
+export function createMusicAlbumSchema({
+  name,
+  byArtist,
+  url,
+  numTracks,
+  datePublished,
+  genre = [],
+  image,
+  description
+}: MusicAlbumSchemaProps): WithContext<MusicAlbum> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MusicAlbum',
+    name,
+    byArtist: {
+      '@type': 'MusicGroup',
+      name: byArtist
+    },
+    url,
+    ...(numTracks && { numTracks }),
+    ...(datePublished && { datePublished: String(datePublished) }),
+    ...(genre.length > 0 && { genre }),
+    ...(image && { image }),
+    ...(description && { description })
   }
 }
 
