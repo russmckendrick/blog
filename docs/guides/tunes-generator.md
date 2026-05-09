@@ -151,9 +151,10 @@ pnpm run backfill-tunes-images --older
 ```
 
 Default behaviour:
-- Image and generated-section backfill targets weekly posts without existing `LightGallery` blocks.
+- Image and generated-gallery backfill targets weekly posts without existing `LightGallery` blocks.
 - Link repair scans all weekly tunes posts and updates resolvable `Top Artists` and `Top Albums` russ.fm links.
-- Generated sections are image/link only and wrapped in stable markers so reruns replace the generated block.
+- Generated galleries are image-only `LightGallery` blocks wrapped in stable markers so reruns replace them cleanly.
+- Album galleries are inserted near the top of older posts, and artist galleries are appended near the bottom.
 - The script reads local `collection.json`; it does not refresh the russ.fm collection cache.
 
 Useful flags:
@@ -161,7 +162,7 @@ Useful flags:
 - `--assets-only` downloads missing album/artist images without editing MDX.
 - `--all` checks assets across every weekly tunes post.
 - `--from=YYYY-MM-DD` and `--to=YYYY-MM-DD` limit the selected date range.
-- `--no-link-repair` skips list link repair while still backfilling older sections/assets.
+- `--no-link-repair` skips list link repair while still backfilling older galleries/assets.
 
 ## Architecture
 

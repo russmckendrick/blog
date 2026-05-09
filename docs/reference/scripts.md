@@ -32,7 +32,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `scripts/new-post.js` | primary | Interactive blog post creator used by `pnpm run post` |
 | `scripts/generate-tunes-post.js` | primary | Weekly tunes orchestrator; uses Last.fm, collection metadata, AI research, templates, and cover generation |
 | `scripts/generate-year-wrapped.js` | primary | Year-end wrapped orchestrator with statistics, charts, and cover generation |
-| `scripts/backfill-tunes-images.js` | manual/maintenance | Uses local `collection.json` to download missing older tunes album/artist artwork, generate image-only album sections for no-gallery weekly posts, and repair resolvable russ.fm links across weekly tunes posts |
+| `scripts/backfill-tunes-images.js` | manual/maintenance | Uses local `collection.json` to download missing older tunes album/artist artwork, generate compact album and artist galleries for no-gallery weekly posts, and repair resolvable russ.fm links across weekly tunes posts |
 | `scripts/publish-to-medium.js` | primary | Medium publishing CLI with optional Gist extraction for code blocks |
 | `scripts/fetch-reading-list.js` | primary | Fetches bookmarks from Instapaper API and writes `src/data/reading.json` |
 | `scripts/build-tunes-index.js` | primary | Parses each weekly tunes post's "Top Albums" section and writes a sorted album/artist index to `src/data/tunes-index.json` - powers the `/tunes/artist/*` and `/tunes/album/*` programmatic SEO pages. The index includes matching local artist/album image paths from `public/assets/`, preserving the real filename casing, and merges album variants that share the same artist/title or russ.fm album slug. Runs as part of `pnpm run prebuild` and after every `pnpm run tunes`. |
@@ -133,10 +133,10 @@ Options:
 - `--file=<path>` limits both image backfill and link repair to one weekly MDX file
 - `--from=YYYY-MM-DD` / `--to=YYYY-MM-DD` limits the selected date range
 - `--assets-only` downloads missing assets without editing MDX
-- `--links-only` repairs links without downloading assets or generating sections
-- `--no-link-repair` skips list link repair while still backfilling images/sections
+- `--links-only` repairs links without downloading assets or generating galleries
+- `--no-link-repair` skips list link repair while still backfilling images/galleries
 
-The script reads the existing local `collection.json`; it does not refresh the collection cache. By default, link repair scans every weekly tunes post, while image and generated-section backfill only touches older posts without existing `LightGallery` blocks.
+The script reads the existing local `collection.json`; it does not refresh the collection cache. By default, link repair scans every weekly tunes post, while image and generated-gallery backfill only touches older posts without existing `LightGallery` blocks. The generated album gallery is inserted near the top of the post, and the generated artist gallery is appended near the bottom.
 
 ### `scripts/migrate-tunes-lightgallery.js`
 

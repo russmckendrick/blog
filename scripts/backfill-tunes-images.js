@@ -31,14 +31,14 @@ Usage:
 
 Options:
   --dry-run              Show planned changes without writing files or downloading images
-  --older                Backfill image sections/assets for no-gallery weekly posts (default)
+  --older                Backfill image galleries/assets for no-gallery weekly posts (default)
   --all                  Backfill assets across all weekly tunes posts
   --file=<path>          Limit both link repair and image backfill to one MDX file
   --from=YYYY-MM-DD      Limit image backfill, and link repair when paired with --from/--to
   --to=YYYY-MM-DD        Limit image backfill, and link repair when paired with --from/--to
   --assets-only          Download missing assets only; do not edit MDX
   --links-only           Repair resolvable Top Artists/Top Albums links only
-  --no-link-repair       Skip list link repair while still backfilling older sections/assets
+  --no-link-repair       Skip list link repair while still backfilling older galleries/assets
   --help                 Show this help
 `)
 }
@@ -454,89 +454,151 @@ async function backfillAssets(post, content, collectionInfo, options, stats) {
   }
 }
 
-function buildGeneratedSections(post, content, collectionInfo) {
+function renderLightGallery(images) {
+  if (images.length === 0) return ''
+
+  const lines = [
+    '<LightGallery',
+    '  layout={{',
+    '    imgs: ['
+  ]
+
+  images.forEach((image, index) => {
+    const comma = index < images.length - 1 ? ',' : ''
+    lines.push(`      { src: "${image.src}", alt: "${escapeQuotes(image.alt)}" }${comma}`)
+  })
+
+  lines.push('    ]')
+  lines.push('  }}')
+  lines.push('/>')
+  return lines.join('\n')
+}
+
+function wrapGeneratedGallery(gallery) {
+  return [
+    GENERATED_START,
+    '',
+    gallery,
+    '',
+    GENERATED_END
+  ].join('\n')
+}
+
+function buildAlbumGalleryImages(post, content, collectionInfo) {
   const albums = extractAlbums(content)
-  const sections = []
+  const images = []
+  const seen = new Set()
 
   for (const item of albums) {
     const albumData = lookupAlbumData(item.artist, item.album, collectionInfo)
-    const artistData = isVariousArtists(item.artist) ? null : lookupArtistData(item.artist, collectionInfo)
+    if (!albumData?.image) continue
 
-    const galleryImages = []
-    if (albumData?.image) {
-      const albumImage = imagePath(post.assetSlug, 'albums', item.album)
-      galleryImages.push({
-        src: albumImage.publicPath,
-        alt: `${item.album} by ${item.artist}`
-      })
-    }
+    const albumImage = imagePath(post.assetSlug, 'albums', item.album)
+    if (seen.has(albumImage.publicPath)) continue
 
-    if (artistData?.image) {
-      const artistImage = imagePath(post.assetSlug, 'artists', item.artist)
-      galleryImages.push({
-        src: artistImage.publicPath,
-        alt: item.artist
-      })
-    }
-
-    const links = []
-    if (albumData?.link) links.push(`- View ${item.album} on [russ.fm](${albumData.link})`)
-    if (artistData?.link) links.push(`- View ${item.artist} on [russ.fm](${artistData.link})`)
-
-    if (galleryImages.length === 0 && links.length === 0) continue
-
-    const section = [`## ${item.album} by ${item.artist}`]
-    if (galleryImages.length > 0) {
-      section.push('')
-      section.push('<LightGallery')
-      section.push('  layout={{')
-      section.push('    imgs: [')
-      galleryImages.forEach((image, index) => {
-        const comma = index < galleryImages.length - 1 ? ',' : ''
-        section.push(`      { src: "${image.src}", alt: "${escapeQuotes(image.alt)}" }${comma}`)
-      })
-      section.push('    ]')
-      section.push('  }}')
-      section.push('/>')
-    }
-
-    if (links.length > 0) {
-      section.push('')
-      section.push(...links)
-    }
-
-    sections.push(section.join('\n'))
+    seen.add(albumImage.publicPath)
+    images.push({
+      src: albumImage.publicPath,
+      alt: `${item.album} by ${item.artist}`
+    })
   }
 
-  if (sections.length === 0) return ''
-
-  return [
-    GENERATED_START,
-    ...sections,
-    GENERATED_END
-  ].join('\n\n')
+  return images
 }
 
-function insertGeneratedSections(post, content, collectionInfo, stats) {
-  const contentWithoutGenerated = stripGeneratedBlock(content)
-  if (contentWithoutGenerated.includes('<LightGallery')) return content
+function buildArtistGalleryImages(post, content, collectionInfo) {
+  const artists = []
+  const seenNames = new Set()
+  const seenImages = new Set()
 
-  const generated = buildGeneratedSections(post, contentWithoutGenerated, collectionInfo)
-  if (!generated) return contentWithoutGenerated
+  for (const item of extractArtists(content)) {
+    const key = item.artist.toLowerCase()
+    if (seenNames.has(key)) continue
+    seenNames.add(key)
+    artists.push(item.artist)
+  }
 
-  const lines = contentWithoutGenerated.split('\n')
-  const topArtistsIndex = lines.findIndex((line) => /^##\s+Top\s+Artists\b/i.test(line))
-  if (topArtistsIndex === -1) return contentWithoutGenerated
+  for (const item of extractAlbums(content)) {
+    const key = item.artist.toLowerCase()
+    if (seenNames.has(key)) continue
+    seenNames.add(key)
+    artists.push(item.artist)
+  }
 
-  const nextLines = [
-    ...lines.slice(0, topArtistsIndex),
-    generated,
+  const images = []
+  for (const artist of artists) {
+    if (isVariousArtists(artist)) continue
+
+    const artistData = lookupArtistData(artist, collectionInfo)
+    if (!artistData?.image) continue
+
+    const artistImage = imagePath(post.assetSlug, 'artists', artist)
+    if (seenImages.has(artistImage.publicPath)) continue
+
+    seenImages.add(artistImage.publicPath)
+    images.push({
+      src: artistImage.publicPath,
+      alt: artist
+    })
+  }
+
+  return images
+}
+
+function findTopGalleryInsertIndex(lines) {
+  const noteStart = lines.findIndex((line) => /^<NoteCallout\b/.test(line.trim()))
+  if (noteStart !== -1) {
+    const noteEnd = lines.findIndex((line, index) => index > noteStart && /^<\/NoteCallout>/.test(line.trim()))
+    if (noteEnd !== -1) return noteEnd + 1
+  }
+
+  if (lines[0] === '---') {
+    const frontmatterEnd = lines.findIndex((line, index) => index > 0 && line === '---')
+    if (frontmatterEnd !== -1) return frontmatterEnd + 1
+  }
+
+  return 0
+}
+
+function insertLines(lines, index, block) {
+  return [
+    ...lines.slice(0, index),
     '',
-    ...lines.slice(topArtistsIndex)
+    block,
+    '',
+    ...lines.slice(index)
   ]
-  stats.generatedSections += (generated.match(/^##\s+/gm) || []).length
-  stats.details.push(`generate album sections: ${stats.generatedSections}`)
-  return nextLines.join('\n').replace(/\n{4,}/g, '\n\n\n')
+}
+
+function insertGeneratedGalleries(post, content, collectionInfo, stats) {
+  const contentWithoutGenerated = stripGeneratedBlock(content)
+  if (contentWithoutGenerated.includes('<LightGallery')) return contentWithoutGenerated
+
+  const albumImages = buildAlbumGalleryImages(post, contentWithoutGenerated, collectionInfo)
+  const artistImages = buildArtistGalleryImages(post, contentWithoutGenerated, collectionInfo)
+
+  if (albumImages.length === 0 && artistImages.length === 0) return contentWithoutGenerated
+
+  let nextContent = contentWithoutGenerated
+  let galleryCount = 0
+
+  if (albumImages.length > 0) {
+    const albumGallery = wrapGeneratedGallery(renderLightGallery(albumImages))
+    const lines = nextContent.split('\n')
+    nextContent = insertLines(lines, findTopGalleryInsertIndex(lines), albumGallery).join('\n')
+    galleryCount += 1
+    stats.details.push(`generate album gallery: ${albumImages.length} images`)
+  }
+
+  if (artistImages.length > 0) {
+    const artistGallery = wrapGeneratedGallery(renderLightGallery(artistImages))
+    nextContent = `${nextContent.trimEnd()}\n\n${artistGallery}\n`
+    galleryCount += 1
+    stats.details.push(`generate artist gallery: ${artistImages.length} images`)
+  }
+
+  stats.generatedGalleries += galleryCount
+  return nextContent.replace(/\n{4,}/g, '\n\n\n')
 }
 
 function changedStats(before, after) {
@@ -568,7 +630,7 @@ async function main() {
   console.log('Tunes image/link backfill')
   console.log('='.repeat(40))
   console.log(`Mode: ${options.dryRun ? 'dry run' : 'live'}`)
-  console.log(`Image/section posts: ${imagePosts.length}`)
+  console.log(`Image/gallery posts: ${imagePosts.length}`)
   console.log(`Link repair posts: ${linkPosts.length}`)
   console.log('')
 
@@ -585,7 +647,7 @@ async function main() {
     unresolvedArtistLinks: 0,
     unresolvedAlbumLinks: 0,
     unresolvedAlbumArtistLinks: 0,
-    generatedSections: 0,
+    generatedGalleries: 0,
     plannedDownloads: 0,
     downloadedImages: 0,
     existingImages: 0,
@@ -606,7 +668,7 @@ async function main() {
       unresolvedArtistLinks: 0,
       unresolvedAlbumLinks: 0,
       unresolvedAlbumArtistLinks: 0,
-      generatedSections: 0,
+      generatedGalleries: 0,
       plannedDownloads: 0,
       downloadedImages: 0,
       existingImages: 0,
@@ -623,7 +685,7 @@ async function main() {
     if (imagePathSet.has(filePath)) {
       await backfillAssets(post, content, collectionInfo, options, stats)
       if (!options.assetsOnly) {
-        content = insertGeneratedSections(post, content, collectionInfo, stats)
+        content = insertGeneratedGalleries(post, content, collectionInfo, stats)
       }
     }
 
@@ -640,8 +702,8 @@ async function main() {
     const relativePath = path.relative(PROJECT_ROOT, filePath)
     const linkChanges = stats.artistLinks + stats.albumLinks + stats.albumArtistLinks
     const imageChanges = stats.plannedDownloads + stats.downloadedImages
-    if (content !== original || linkChanges > 0 || imageChanges > 0 || stats.generatedSections > 0) {
-      console.log(`- ${relativePath}: ${changedStats(original, content)}, links ${linkChanges}, sections ${stats.generatedSections}, downloads ${imageChanges}`)
+    if (content !== original || linkChanges > 0 || imageChanges > 0 || stats.generatedGalleries > 0) {
+      console.log(`- ${relativePath}: ${changedStats(original, content)}, links ${linkChanges}, galleries ${stats.generatedGalleries}, downloads ${imageChanges}`)
       if (options.dryRun && processingPaths.size <= 5) {
         for (const detail of stats.details.slice(0, 20)) {
           console.log(`  - ${detail}`)
@@ -660,7 +722,7 @@ async function main() {
   console.log(`Artist links repaired: ${totals.artistLinks}`)
   console.log(`Album links repaired: ${totals.albumLinks}`)
   console.log(`Top album artist links repaired: ${totals.albumArtistLinks}`)
-  console.log(`Generated album sections: ${totals.generatedSections}`)
+  console.log(`Generated galleries: ${totals.generatedGalleries}`)
   console.log(`Images ${options.dryRun ? 'planned for download' : 'downloaded'}: ${options.dryRun ? totals.plannedDownloads : totals.downloadedImages}`)
   console.log(`Existing images skipped: ${totals.existingImages}`)
   console.log(`Images without collection source: ${totals.unresolvedImages}`)
