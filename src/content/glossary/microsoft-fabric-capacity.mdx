@@ -1,0 +1,14 @@
+---
+term: "Microsoft Fabric Capacity"
+description: "A Microsoft Fabric capacity is a reserved compute pool used to run Fabric workloads such as Power BI, data engineering, data warehousing, and real-time analytics."
+category: "Service"
+relatedTerms: ["finops", "azure-logic-apps", "automation", "azure-devops"]
+tags: ["azure", "cloud", "automation"]
+---
+
+**Microsoft Fabric capacity** is the compute behind Microsoft Fabric workloads. Instead of each workload being a completely separate service bill, Fabric uses capacity units that can be scaled, paused, and resumed.
+
+That pause button matters. If a non-production capacity only needs to run during working hours, automation can stop it outside those windows and reduce spend.
+
+The catch is coordination. Pausing a capacity saves money only if people know it will be unavailable. Tagging, naming, and schedules need to be clear enough that a cost-saving workflow does not become a support ticket generator.
+

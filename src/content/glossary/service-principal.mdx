@@ -1,0 +1,14 @@
+---
+term: "Service Principal"
+description: "A service principal is an identity used by an application, script, or pipeline to authenticate to Microsoft Entra ID and access Azure resources."
+category: "Security"
+relatedTerms: ["azure-devops", "azure-pipelines", "secrets-management", "ssh-key"]
+tags: ["azure", "security", "devops", "automation"]
+---
+
+**Service principal** is Microsoft's term for a non-human identity. Instead of a person logging in with a browser, a pipeline or script uses the service principal to request a token and call Azure APIs.
+
+In Azure DevOps, a service connection often wraps this up for you. Under the covers there is still an identity with permissions in a subscription, resource group, or management group.
+
+Keep the permissions tight. A service principal used to deploy one resource group does not need owner rights over a whole subscription. Rotate credentials, prefer federated credentials where they fit, and be careful when printing environment variables in pipeline logs.
+

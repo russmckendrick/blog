@@ -1,0 +1,14 @@
+---
+term: "Checkov"
+description: "Checkov is a static analysis tool that scans Infrastructure as Code files for security and compliance problems before they are deployed."
+category: "Tool"
+relatedTerms: ["policy-as-code", "terraform", "ci-cd", "azure-pipelines", "security"]
+tags: ["security", "terraform", "infrastructure-as-code", "devops"]
+---
+
+**Checkov** scans infrastructure code and reports risky configuration. It can read Terraform, CloudFormation, Kubernetes manifests, Helm charts, Dockerfiles, and several other formats.
+
+In a pipeline, Checkov is useful before `terraform plan`. It catches obvious mistakes while the change is still cheap: open security groups, missing encryption, permissive IAM, public storage, and similar "please do not ship that" problems.
+
+Like any scanner, it needs tuning. Some findings will not apply to your environment. Skip rules deliberately and leave a reason in version control, otherwise the ignore list becomes the place where risk goes to hide.
+

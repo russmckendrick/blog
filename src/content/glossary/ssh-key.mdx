@@ -1,0 +1,14 @@
+---
+term: "SSH Key"
+description: "An SSH key is a public/private key pair used to authenticate securely to remote systems and Git services without sending a password."
+category: "Security"
+relatedTerms: ["azure-devops", "github", "secrets-management", "security"]
+tags: ["security", "devops", "tools"]
+---
+
+**SSH key** authentication uses a private key on your machine and a matching public key on the service you want to access.
+
+For Git hosting, SSH keys let you push and pull without typing a password. For servers, they are usually safer than password logins, especially when protected with a passphrase and limited to the right accounts.
+
+Keys still need maintenance. Remove old keys, rotate them when a provider changes host keys or a machine is replaced, and use `~/.ssh/config` to keep multiple services and identities from becoming a guessing game.
+

@@ -1,0 +1,14 @@
+---
+term: "Azure Firewall"
+description: "Azure Firewall is a managed network firewall service for controlling and logging traffic between Azure networks, the internet, and on-premises environments."
+category: "Service"
+relatedTerms: ["kql", "vnet", "observability", "security"]
+tags: ["azure", "cloud", "security"]
+---
+
+**Azure Firewall** is a managed firewall that sits inside Azure networking. It can filter traffic using network rules, application rules, NAT rules, threat intelligence, and policies shared across environments.
+
+The logs are often as useful as the firewall itself. With [KQL](/glossary/kql/), you can query denied flows, noisy clients, destination patterns, and rule matches without digging through raw diagnostic output by hand.
+
+As with any firewall, clarity matters. A rule base that nobody can read will eventually become a museum of old exceptions. Name rules well, keep policies grouped by purpose, and review what is still needed.
+

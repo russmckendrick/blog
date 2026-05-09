@@ -1,0 +1,20 @@
+---
+term: "Azure Pipelines"
+description: "Azure Pipelines is the CI/CD service in Azure DevOps, used to run build, test, validation, approval, and deployment jobs from YAML or classic pipeline definitions."
+category: "Service"
+relatedTerms: ["azure-devops", "ci-cd", "terraform", "ansible", "checkov", "infracost"]
+tags: ["devops", "automation", "azure", "infrastructure-as-code"]
+---
+
+**Azure Pipelines** runs automated jobs for a project. A pipeline can build code, test it, publish an artefact, scan infrastructure code, or deploy a change into Azure.
+
+For infrastructure repos, a common pattern is:
+
+- validate the configuration
+- run a security or policy check
+- create a plan
+- pause for approval if the plan destroys resources
+- apply the plan
+
+That is just [CI/CD](/glossary/ci-cd/) with more guard rails. The hard part is not writing the YAML. The hard part is keeping secrets out of logs, making failures obvious, and stopping the pipeline from becoming the only place anyone understands how deployments work.
+

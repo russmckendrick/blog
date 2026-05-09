@@ -3,7 +3,7 @@ term: "Infrastructure as Code"
 abbreviation: "IaC"
 description: "Infrastructure as Code (IaC) is the practice of defining cloud and on-premises infrastructure in machine-readable configuration files, then provisioning and changing it through automated tools rather than clicking through a console."
 category: "Practice"
-relatedTerms: ["devops", "ci-cd", "immutable-infrastructure"]
+relatedTerms: ["devops", "automation", "ci-cd", "terraform", "terraform-state", "ansible", "bicep", "packer", "policy-as-code", "immutable-infrastructure"]
 tags: ["infrastructure-as-code", "automation", "devops"]
 ---
 
@@ -11,7 +11,7 @@ tags: ["infrastructure-as-code", "automation", "devops"]
 
 Two broad styles exist:
 
-- **Declarative**: you describe the target state and the tool figures out the plan. Examples: Terraform, OpenTofu, Bicep, CloudFormation, Pulumi (mostly), Kubernetes manifests.
-- **Imperative**: you describe the steps, and the tool runs them in order. Examples: Ansible playbooks, shell scripts wrapping cloud CLIs.
+- **Declarative**: you describe the target state and the tool figures out the plan. Examples: [Terraform](/glossary/terraform/), OpenTofu, [Bicep](/glossary/bicep/), CloudFormation, Pulumi (mostly), Kubernetes manifests.
+- **Imperative**: you describe the steps, and the tool runs them in order. Examples: [Ansible](/glossary/ansible/) playbooks and shell scripts wrapping cloud CLIs.
 
 The practical wins are auditability, reproducibility, and the ability to spin up a near-identical environment for staging, disaster recovery, or a customer-specific deployment. The cost is that infrastructure now has the same maintenance burden as application code: linting, testing, refactoring, and the occasional rewrite.

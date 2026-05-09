@@ -1,0 +1,14 @@
+---
+term: "Supply Chain Attack"
+description: "A supply chain attack compromises software indirectly by targeting dependencies, build systems, package registries, maintainers, or deployment workflows."
+category: "Security"
+relatedTerms: ["security", "secrets-management", "github", "ci-cd", "policy-as-code"]
+tags: ["security", "github", "devops"]
+---
+
+**Supply chain attack** is the uncomfortable case where your own code is not the first thing compromised. The attacker goes after something your code depends on or something that builds and ships it.
+
+That might be a malicious package update, a stolen maintainer token, a poisoned GitHub Action, a compromised build script, or a registry account takeover.
+
+Defence is mostly unglamorous work: pin dependencies where it matters, review install scripts, reduce token permissions, use lockfiles, audit changes, and keep secrets out of build logs. It will never be perfect, but it can be much harder to make one stolen token ruin everything.
+

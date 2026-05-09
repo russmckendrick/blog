@@ -1,0 +1,14 @@
+---
+term: "Packer"
+description: "Packer is a HashiCorp tool for building repeatable machine images for virtual machines, cloud platforms, and local development environments."
+category: "Tool"
+relatedTerms: ["immutable-infrastructure", "infrastructure-as-code", "terraform", "automation"]
+tags: ["tools", "automation", "infrastructure-as-code", "linux"]
+---
+
+**Packer** builds machine images from a template. A build might start from a Rocky Linux base image, install packages, copy files, run hardening steps, and publish the finished image to a cloud account or image catalogue.
+
+It fits well with [immutable infrastructure](/glossary/immutable-infrastructure/). Instead of patching a server by hand, you build a new image and replace the old instance.
+
+Packer is often paired with Terraform. Packer creates the image; Terraform launches infrastructure from it. That split keeps image build logic out of deployment code, which makes both sides easier to reason about.
+

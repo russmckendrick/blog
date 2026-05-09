@@ -1,0 +1,14 @@
+---
+term: "Virtual Environment"
+description: "A virtual environment is an isolated project environment that keeps language runtimes and packages separate from the system install and other projects."
+category: "Concept"
+relatedTerms: ["conda", "ansible", "ci-cd", "azure-pipelines"]
+tags: ["python", "code", "automation"]
+---
+
+**Virtual environment** usually means an isolated Python environment, although the idea exists in other ecosystems too.
+
+The goal is simple: a project gets its own interpreter and packages instead of borrowing whatever happens to be installed on the machine. That avoids one project upgrading a dependency and breaking another.
+
+In CI/CD, virtual environments also make pipeline runs more predictable. Create the environment, install the requirements, run the job, throw the runner away. Caching can speed this up, but the cache should never become the only reason a build works.
+

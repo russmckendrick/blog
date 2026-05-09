@@ -1,0 +1,15 @@
+---
+term: "Shared Access Signature"
+abbreviation: "SAS"
+description: "A Shared Access Signature is a time-limited token that grants scoped access to Azure Storage without sharing the account key."
+category: "Security"
+relatedTerms: ["azure-functions", "azure-logic-apps", "secrets-management", "service-principal"]
+tags: ["azure", "security", "cloud", "automation"]
+---
+
+**Shared Access Signature** (SAS) tokens grant limited access to Azure Storage. A token can allow read, write, list, or delete operations on a storage account, container, blob, queue, table, or file share.
+
+The useful part is scope. Instead of giving someone the storage account key, you can issue a token that only works for a specific resource and expires after a set time.
+
+The risky part is the same thing in reverse: anyone with the token can use it until it expires. Keep expiry windows short, avoid logging tokens, and prefer managed identities or service principals for workloads that can use Azure identity directly.
+

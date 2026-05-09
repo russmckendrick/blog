@@ -1,0 +1,14 @@
+---
+term: "Model Context Protocol"
+abbreviation: "MCP"
+description: "Model Context Protocol is a standard way for AI tools to connect models to external context, tools, data sources, and services."
+category: "Protocol"
+relatedTerms: ["agent", "ai-coding-assistant", "large-language-model", "agent-skills", "claude-code", "codex"]
+tags: ["ai", "tools", "automation"]
+---
+
+**Model Context Protocol** (MCP) gives AI applications a common way to talk to external tools and data sources.
+
+Without something like MCP, every assistant ends up with its own custom integration for files, GitHub, databases, documentation, calendars, or internal APIs. MCP turns those integrations into servers that a compatible client can discover and call.
+
+That is useful, but it also moves the trust boundary. If a model can call a tool, that tool needs sensible permissions. Read-only context is one thing. A tool that can write files, send messages, or deploy infrastructure deserves a much harder look.

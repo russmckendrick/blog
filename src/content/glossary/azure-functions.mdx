@@ -1,0 +1,14 @@
+---
+term: "Azure Functions"
+description: "Azure Functions is Microsoft's serverless compute service for running small pieces of code in response to events, schedules, HTTP requests, or messages."
+category: "Service"
+relatedTerms: ["azure-logic-apps", "sas-token", "automation", "serverless"]
+tags: ["azure", "cloud", "automation", "code"]
+---
+
+**Azure Functions** runs code without you managing a server. A function can be triggered by HTTP, a timer, a queue message, an Event Grid event, or several other sources.
+
+It is a good place for small bits of logic that are too specific for a no-code workflow but not large enough to justify a full application. For example, a Logic App might call a function to generate a [SAS token](/glossary/sas-token/) because the signing logic is easier and safer in code.
+
+Serverless does not mean "no operations". You still need to think about identity, logging, retries, cold starts, dependencies, and who can call the function.
+

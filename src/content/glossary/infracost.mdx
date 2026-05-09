@@ -1,0 +1,14 @@
+---
+term: "Infracost"
+description: "Infracost estimates the cost impact of Infrastructure as Code changes, usually by reading Terraform plan output and showing the expected monthly difference."
+category: "Tool"
+relatedTerms: ["terraform", "terraform-state", "finops", "azure-pipelines", "ci-cd"]
+tags: ["terraform", "tools", "infrastructure-as-code", "devops"]
+---
+
+**Infracost** adds cost feedback to infrastructure changes. It reads a Terraform plan and estimates how much the proposed resources will cost each month.
+
+That makes it useful in pull requests and deployment pipelines. A change from a small VM to a large one is no longer buried inside a plan file; the cost difference can be shown before anyone clicks approve.
+
+It is still an estimate. Discounts, reserved instances, credits, region-specific pricing, and odd billing rules can all move the real bill. The point is not perfect accounting. The point is to catch expensive surprises while they are still code.
+

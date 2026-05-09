@@ -9,7 +9,6 @@ on:
       force:
         description: 'Force refresh all images'
         required: false
-        default: 'false'
         type: boolean
 
 jobs:

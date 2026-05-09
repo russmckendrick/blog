@@ -1,0 +1,21 @@
+---
+term: "Kusto Query Language"
+abbreviation: "KQL"
+description: "KQL is Microsoft's query language for exploring logs, metrics, and telemetry in services such as Azure Monitor, Log Analytics, and Microsoft Sentinel."
+category: "Language"
+relatedTerms: ["observability", "azure-virtual-desktop", "azure-firewall", "devops"]
+tags: ["azure", "devops", "security"]
+---
+
+**Kusto Query Language** (KQL) is used to query event and telemetry data in Azure. If you are looking through Log Analytics, Azure Monitor, Microsoft Sentinel, Azure Firewall logs, or Azure Virtual Desktop connection data, there is a fair chance you will end up writing KQL.
+
+A KQL query usually starts with a table, then pipes data through filters, projections, joins, and summaries:
+
+```kusto
+AzureDiagnostics
+| where TimeGenerated > ago(24h)
+| summarize count() by Resource
+```
+
+It feels a little like SQL after a few minutes, but the pipe style is closer to shell work. The practical skill is knowing which table contains the data you need.
+

@@ -1,0 +1,14 @@
+---
+term: "Policy as Code"
+description: "Policy as Code means writing security, compliance, or operational rules as version-controlled code that can be tested automatically before changes are deployed."
+category: "Practice"
+relatedTerms: ["infrastructure-as-code", "checkov", "ci-cd", "terraform", "devops"]
+tags: ["security", "devops", "automation", "infrastructure-as-code"]
+---
+
+**Policy as Code** turns rules into code. Instead of asking someone to remember that storage accounts need encryption or that public IPs require approval, a tool checks those rules during a pipeline run.
+
+For infrastructure repos, this usually means scanning Terraform, CloudFormation, Bicep, Kubernetes manifests, or container images before they reach production. The best checks are boring and specific: block public buckets, require tags, reject overly broad IAM policies, or stop a database being exposed to the internet.
+
+Policy as Code works when failures are explainable. A rule that says "denied" without a useful reason will be bypassed as soon as people are under pressure.
+

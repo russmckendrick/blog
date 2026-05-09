@@ -1,0 +1,14 @@
+---
+term: "Terraform State"
+description: "Terraform state is the data Terraform keeps about the infrastructure it manages, mapping configuration resources to real cloud or platform objects."
+category: "Concept"
+relatedTerms: ["terraform", "infrastructure-as-code", "azure-devops", "ci-cd"]
+tags: ["terraform", "infrastructure-as-code", "automation", "devops"]
+---
+
+**Terraform state** is Terraform's memory. It maps the resources in your `.tf` files to the real objects that exist in a cloud account or platform API.
+
+For a single local experiment, state can live in a local `terraform.tfstate` file. For team work, it normally belongs in a remote backend such as Azure Storage, S3, Terraform Cloud, or another backend with locking. Locking matters because two people applying changes at the same time can damage the state or deploy half a plan each.
+
+State can contain sensitive values. Treat it like production data: store it somewhere private, enable versioning if the backend supports it, and avoid passing it around in chat or attaching it to tickets.
+

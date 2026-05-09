@@ -1,0 +1,14 @@
+---
+term: "Kubernetes"
+description: "Kubernetes is a container orchestration platform that schedules containers across a cluster and manages rollout, service discovery, scaling, and recovery."
+category: "Platform"
+relatedTerms: ["container", "container-registry", "docker-compose", "immutable-infrastructure", "observability"]
+tags: ["kubernetes", "containers", "devops"]
+---
+
+**Kubernetes** runs containerised workloads across a cluster of machines. You give it manifests that describe pods, deployments, services, secrets, config, and storage. Kubernetes then works to keep the running system close to that description.
+
+It handles useful but fiddly work: restarting failed containers, rolling out new versions, placing workloads on nodes, exposing services, and scaling replicas.
+
+The cost is complexity. Kubernetes gives you a lot of control, but it also gives you new failure modes. A small app that fits comfortably in [Docker Compose](/glossary/docker-compose/) does not become better just because it has YAML with `apiVersion` at the top.
+

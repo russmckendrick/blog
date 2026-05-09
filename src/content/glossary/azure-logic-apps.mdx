@@ -1,0 +1,14 @@
+---
+term: "Azure Logic Apps"
+description: "Azure Logic Apps is a workflow service for connecting APIs, schedules, Azure resources, and approval or automation steps with low-code building blocks."
+category: "Service"
+relatedTerms: ["automation", "azure-functions", "sas-token", "finops", "microsoft-fabric-capacity"]
+tags: ["azure", "automation", "cloud"]
+---
+
+**Azure Logic Apps** runs workflows. A workflow might start on a schedule, respond to an HTTP request, watch for an event, or call another service.
+
+Logic Apps are useful for glue work: stop virtual machines overnight, call an Azure Function, post to a webhook, process a message, or loop over tagged resources. You can do the same things with code, but Logic Apps are often quick to build and easy for other people to inspect.
+
+The trade-off is that complex workflows can become hard to debug. Keep steps named clearly, log the values you will need later, and move anything awkward into an [Azure Function](/glossary/azure-functions/) instead of building a maze in the designer.
+

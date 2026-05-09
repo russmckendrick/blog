@@ -2,7 +2,7 @@
 term: "Container"
 description: "A container is a lightweight, isolated runtime for an application - packaging the code, dependencies, and configuration into a single image that runs the same way on any host with a compatible runtime."
 category: "Concept"
-relatedTerms: ["immutable-infrastructure", "infrastructure-as-code", "devops"]
+relatedTerms: ["docker-compose", "podman", "container-registry", "kubernetes", "immutable-infrastructure", "infrastructure-as-code", "devops"]
 tags: ["containers", "docker", "devops"]
 ---
 
@@ -18,4 +18,4 @@ The practical benefits:
 - **Fast startup** - suitable for autoscaling and short-lived workloads.
 - **Composable** - orchestrators like Kubernetes and Nomad treat containers as the unit of scheduling.
 
-The Open Container Initiative (OCI) standardised the image format and runtime interface, so Docker, Podman, containerd, and CRI-O all speak the same language at the layer that matters.
+The Open Container Initiative (OCI) standardised the image format and runtime interface, so Docker, [Podman](/glossary/podman/), containerd, and CRI-O all speak the same language at the layer that matters.

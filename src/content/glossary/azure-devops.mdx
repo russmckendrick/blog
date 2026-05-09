@@ -1,0 +1,14 @@
+---
+term: "Azure DevOps"
+description: "Azure DevOps is Microsoft's suite for source control, work tracking, build pipelines, release workflows, package feeds, and test management."
+category: "Platform"
+relatedTerms: ["azure-pipelines", "ci-cd", "terraform", "ansible", "ssh-key", "service-principal"]
+tags: ["devops", "azure", "automation"]
+---
+
+**Azure DevOps** is a set of services for building and shipping software. The parts people most often mean are Azure Repos for Git hosting and Azure Pipelines for build and deployment automation.
+
+In infrastructure work, Azure DevOps often acts as the control plane for [Terraform](/glossary/terraform/) or [Ansible](/glossary/ansible/). A pipeline checks out a repo, authenticates to Azure through a service connection or [service principal](/glossary/service-principal/), runs validation, then plans or applies a change.
+
+The product can look old-fashioned next to GitHub Actions, but it is still common in Microsoft-heavy organisations. The sharp edges are usually around permissions, service connections, and YAML that grows faster than anyone planned.
+

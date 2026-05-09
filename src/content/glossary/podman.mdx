@@ -1,0 +1,14 @@
+---
+term: "Podman"
+description: "Podman is a daemonless container engine that can build and run OCI containers, often using Docker-compatible commands."
+category: "Tool"
+relatedTerms: ["container", "docker-compose", "container-registry", "kubernetes"]
+tags: ["podman", "containers", "docker", "macos"]
+---
+
+**Podman** is a container engine for building and running OCI containers. It is often described as a Docker alternative because many day-to-day commands look familiar: `podman run`, `podman build`, `podman pull`.
+
+The main difference is architecture. Podman does not require a central daemon running as root. On Linux that can make rootless container workflows cleaner. On macOS and Windows, Podman still needs a lightweight virtual machine because containers rely on Linux kernel features.
+
+Podman is a good fit when you want Docker-style workflows without Docker Desktop. It is not magic, though. Compose compatibility, networking, and desktop integration still need testing against your actual projects.
+

@@ -1,0 +1,15 @@
+---
+term: "Azure Virtual Desktop"
+abbreviation: "AVD"
+description: "Azure Virtual Desktop is Microsoft's cloud desktop and app virtualisation service, used to deliver Windows desktops or remote apps from Azure."
+category: "Service"
+relatedTerms: ["kql", "observability", "azure-devops", "vnet"]
+tags: ["azure", "cloud", "devops"]
+---
+
+**Azure Virtual Desktop** (AVD) runs Windows desktops and applications in Azure. Users connect to session hosts, usually through host pools, rather than running everything on a local machine.
+
+Operationally, AVD creates a lot of useful log data: who connected, where they came from, which host pool handled the session, how long it lasted, and what failed. That is where [KQL](/glossary/kql/) becomes handy.
+
+The service is simple enough to explain and fiddly enough to run. Networking, identity, profiles, image management, and cost all need attention if the environment is going to behave well for real users.
+

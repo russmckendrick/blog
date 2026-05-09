@@ -1,0 +1,14 @@
+---
+term: "GitHub Container Registry"
+abbreviation: "GHCR"
+description: "GitHub Container Registry is GitHub's container image registry, commonly used to publish OCI images next to the source repositories that build them."
+category: "Service"
+relatedTerms: ["container-registry", "container", "github", "ci-cd"]
+tags: ["github", "containers", "docker", "devops"]
+---
+
+**GitHub Container Registry** (GHCR) stores OCI container images under GitHub namespaces. A project can build an image with GitHub Actions, publish it to GHCR, and keep the source code, packages, and permissions in one place.
+
+Images are usually named under `ghcr.io`, for example `ghcr.io/owner/project:tag`.
+
+The permission model is the part to check. Packages can inherit repository permissions, but they do not always behave the way people expect after a repository moves or visibility changes. Test pulls from the account or cluster that will use the image; your own laptop is not enough proof.

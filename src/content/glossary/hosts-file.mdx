@@ -1,0 +1,14 @@
+---
+term: "Hosts File"
+description: "A hosts file maps hostnames to IP addresses locally, overriding DNS lookups on that machine."
+category: "Concept"
+relatedTerms: ["dns", "automation", "dotfiles", "security"]
+tags: ["macos", "linux", "tools"]
+---
+
+**Hosts file** is a local name lookup file. On Unix-like systems it usually lives at `/etc/hosts`; on Windows it lives under `System32\\drivers\\etc`.
+
+Entries are simple: an IP address followed by one or more hostnames. The operating system checks the file before asking DNS, so it is useful for local development, testing migrations, blocking known names, or pointing a hostname at a temporary server.
+
+That power cuts both ways. A stale hosts entry can make a site look broken long after DNS is correct. Keep comments clear, group related entries, and remove temporary overrides when the job is done.
+

@@ -1,0 +1,14 @@
+---
+term: "Cloudflare Zero Trust"
+description: "Cloudflare Zero Trust is Cloudflare's access and security platform for putting identity-aware policies in front of applications, networks, and private services."
+category: "Service"
+relatedTerms: ["cloudflare-tunnel", "security", "secrets-management", "n8n"]
+tags: ["cloud", "security"]
+---
+
+**Cloudflare Zero Trust** can put a login and policy layer in front of an application before traffic reaches the service itself.
+
+For a self-hosted tool exposed with [Cloudflare Tunnel](/glossary/cloudflare-tunnel/), that might mean only allowing specific email domains, groups, countries, or identity providers. The application still needs its own authentication, but Zero Trust gives you another gate before the request gets there.
+
+It is useful for home labs and internal tools because the policy is outside the app. If the app has weak login controls, an external access layer can buy you time while you fix the real problem.
+

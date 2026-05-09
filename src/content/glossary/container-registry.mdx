@@ -1,0 +1,14 @@
+---
+term: "Container Registry"
+description: "A container registry stores and distributes container images so they can be pulled by developers, CI systems, and runtime platforms."
+category: "Concept"
+relatedTerms: ["container", "github-container-registry", "kubernetes", "docker-compose", "secrets-management"]
+tags: ["containers", "docker", "devops"]
+---
+
+**Container registry** is the place container images live after they are built. Developers push images to it, and CI runners, Kubernetes clusters, or servers pull images from it when they need to run an application.
+
+Common registries include Docker Hub, GitHub Container Registry, Azure Container Registry, Amazon Elastic Container Registry, and Google Artifact Registry.
+
+A registry is part of the deployment path, so treat it that way. Use private repositories for private code, scan images where you can, pin versions for production, and avoid relying on `latest` unless you enjoy guessing what changed.
+

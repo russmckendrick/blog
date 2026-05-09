@@ -1,0 +1,14 @@
+---
+term: "TLS Certificate"
+description: "A TLS certificate proves the identity of a service and allows clients to establish encrypted HTTPS or TLS connections."
+category: "Security"
+relatedTerms: ["security", "ci-cd", "automation", "secrets-management"]
+tags: ["security", "devops", "tools"]
+---
+
+**TLS certificate** is what a browser or client checks before it trusts an HTTPS connection.
+
+A certificate says which names it is valid for, who issued it, when it expires, and which public key belongs to the service. If the name is wrong, the issuer is not trusted, or the certificate has expired, clients should complain.
+
+Certificate work is mostly routine until it is suddenly urgent. Automate renewal where possible, monitor expiry, and test the full chain rather than only checking that a file exists on disk.
+

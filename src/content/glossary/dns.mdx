@@ -1,0 +1,14 @@
+---
+term: "DNS"
+description: "DNS is the naming system that translates domain names such as example.com into addresses and records that computers can use."
+category: "Protocol"
+relatedTerms: ["hosts-file", "tls-certificate", "cloudflare-tunnel", "security"]
+tags: ["web", "cloud", "security"]
+---
+
+**DNS** is the internet's naming system. It turns a name such as `www.example.com` into records that tell clients where to connect or how to handle mail, verification, and other services.
+
+The common record types are `A`, `AAAA`, `CNAME`, `MX`, `TXT`, and `NS`. For web work, the mistake is usually not the record type itself but time: cached records and TTLs mean a change may not appear everywhere at once.
+
+DNS is quiet infrastructure. Nobody thinks about it when it works, and everyone blames it when a migration gets weird.
+

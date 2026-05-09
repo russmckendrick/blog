@@ -1,0 +1,14 @@
+---
+term: "Azure Soft Delete"
+description: "Azure Soft Delete is a protection feature that keeps deleted Azure resources recoverable for a retention period instead of removing them immediately."
+category: "Feature"
+relatedTerms: ["security", "secrets-management", "azure-devops", "finops"]
+tags: ["azure", "cloud", "security"]
+---
+
+**Azure Soft Delete** gives you a recovery window after a supported resource is deleted. Instead of disappearing immediately, the resource is retained for a period and can be restored.
+
+The exact behaviour depends on the service. Key Vault, Storage, API Management, SQL, Backup, Container Registry, and other Azure services each have their own rules, retention periods, and restore steps.
+
+Soft delete is useful, but it is not a backup strategy by itself. It protects against some accidental deletes. It does not replace tested recovery plans, access control, locks, or a careful look at who can delete production resources.
+

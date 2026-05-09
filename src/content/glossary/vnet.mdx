@@ -1,0 +1,15 @@
+---
+term: "Azure Virtual Network"
+abbreviation: "VNet"
+description: "An Azure Virtual Network is a private network boundary in Azure where resources can communicate through subnets, routing, peering, and security controls."
+category: "Concept"
+relatedTerms: ["azure-firewall", "azure-virtual-desktop", "ansible", "terraform"]
+tags: ["azure", "cloud", "devops"]
+---
+
+**Azure Virtual Network** (VNet) is the basic private networking unit in Azure. A VNet contains address ranges and subnets, and Azure resources attach to those subnets.
+
+Most real Azure designs end up caring about VNets quickly. You need them for private connectivity, firewall routing, peering, private endpoints, VPNs, ExpressRoute, and many managed services.
+
+The trap is address planning. A quick `/24` looks harmless until you need more subnets, peering, or a connection back to an on-premises range that overlaps. Work out the CIDR ranges before the portal clicks begin.
+

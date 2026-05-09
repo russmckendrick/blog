@@ -1,0 +1,14 @@
+---
+term: "Cloudflare Tunnel"
+description: "Cloudflare Tunnel exposes a private service to the internet through an outbound connector, avoiding direct inbound firewall rules to the local network."
+category: "Service"
+relatedTerms: ["cloudflare-zero-trust", "n8n", "docker-compose", "security"]
+tags: ["cloud", "security", "automation"]
+---
+
+**Cloudflare Tunnel** lets a local service be reached through Cloudflare without opening an inbound port on your router or firewall.
+
+A small connector, `cloudflared`, runs near the service and makes an outbound connection to Cloudflare. Public traffic goes to Cloudflare first, then down the tunnel to the local service.
+
+It is handy for home labs and small private tools, but it still exposes something. Put access controls in front of anything sensitive, keep the connector token private, and remember that "reachable through Cloudflare" is not the same as "safe".
+
