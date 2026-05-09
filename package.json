@@ -15,6 +15,7 @@
     "post": "node scripts/new-post.js",
     "tunes": "node scripts/generate-tunes-post.js",
     "wrapped": "node scripts/generate-year-wrapped.js",
+    "backfill-tunes-images": "node scripts/backfill-tunes-images.js",
     "medium": "node scripts/publish-to-medium.js",
     "reading": "node scripts/fetch-reading-list.js",
     "reading-images": "node scripts/fetch-reading-list.js && node scripts/cache-reading-images.js --force --limit 3",

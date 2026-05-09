@@ -135,6 +135,34 @@ Posts are created in:
 4. **Download Images**: Fetches high-res artist/album artwork
 5. **Render MDX**: Creates formatted blog post with galleries and links
 
+## Backfilling Older Posts
+
+Older weekly tunes posts were created before album/artist galleries were consistently embedded. Use the sidecar backfill script to repair those posts from the local `collection.json` file:
+
+```bash
+# Preview the default older-post backfill
+pnpm run backfill-tunes-images -- --dry-run --older
+
+# Preview one post and check exactly which links/images would be repaired
+pnpm run backfill-tunes-images -- --dry-run --file=src/content/tunes/2023-06-26-listened-to-this-week.mdx
+
+# Apply the older-post backfill
+pnpm run backfill-tunes-images -- --older
+```
+
+Default behaviour:
+- Image and generated-section backfill targets weekly posts without existing `LightGallery` blocks.
+- Link repair scans all weekly tunes posts and updates resolvable `Top Artists` and `Top Albums` russ.fm links.
+- Generated sections are image/link only and wrapped in stable markers so reruns replace the generated block.
+- The script reads local `collection.json`; it does not refresh the russ.fm collection cache.
+
+Useful flags:
+- `--links-only` repairs resolvable list links without downloading images.
+- `--assets-only` downloads missing album/artist images without editing MDX.
+- `--all` checks assets across every weekly tunes post.
+- `--from=YYYY-MM-DD` and `--to=YYYY-MM-DD` limit the selected date range.
+- `--no-link-repair` skips list link repair while still backfilling older sections/assets.
+
 ## Architecture
 
 For the full `scripts/` inventory, including helper modules, templates, and maintenance utilities, see [Scripts Reference](../reference/scripts.md).
@@ -586,6 +614,7 @@ tags: []
 - Check that `COLLECTION_URL` is correct
 - Verify russ.fm collection.json is accessible
 - Images are cached locally in `collection.json` for 1 hour
+- For older posts, run `pnpm run backfill-tunes-images -- --dry-run --older` to preview missing local artwork and unresolved collection matches
 
 ### AI generation fails
 - Ensure either `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` is set
@@ -595,6 +624,7 @@ tags: []
 ### Missing album links
 - Some albums may not be in your russ.fm collection
 - The script uses fuzzy matching - check console output for warnings
+- Run `pnpm run backfill-tunes-images -- --links-only --dry-run` to preview resolvable missing russ.fm links across weekly tunes posts
 
 ## GitHub Actions Integration
 
