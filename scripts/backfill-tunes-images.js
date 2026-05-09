@@ -18,14 +18,16 @@ const PROJECT_ROOT = path.resolve(__dirname, '..')
 const TUNES_DIR = path.join(PROJECT_ROOT, 'src', 'content', 'tunes')
 const PUBLIC_ASSETS_DIR = path.join(PROJECT_ROOT, 'public', 'assets')
 const COLLECTION_URL = process.env.COLLECTION_URL || 'https://www.russ.fm'
-const GENERATED_START = '<!-- tunes-backfill:start -->'
-const GENERATED_END = '<!-- tunes-backfill:end -->'
+const GENERATED_START = '{/* tunes-backfill:start */}'
+const GENERATED_END = '{/* tunes-backfill:end */}'
+const LEGACY_GENERATED_START = '<!-- tunes-backfill:start -->'
+const LEGACY_GENERATED_END = '<!-- tunes-backfill:end -->'
 
 function printHelp() {
   console.log(`Backfill older tunes images and repair russ.fm links.
 
 Usage:
-  pnpm run backfill-tunes-images -- [options]
+  pnpm run backfill-tunes-images [options]
 
 Options:
   --dry-run              Show planned changes without writing files or downloading images
@@ -141,13 +143,28 @@ function selectPosts(posts, options, contentsByFile) {
 
 function linkRepairPosts(posts, imagePosts, options) {
   if (options.assetsOnly || options.noLinkRepair) return []
-  if (options.file || options.from || options.to) return imagePosts
+  if (options.file) {
+    const target = posts.find((post) => post.filePath === options.file)
+    if (!target) throw new Error(`File is not a weekly tunes post: ${options.file}`)
+    return [target]
+  }
+  if (options.from || options.to) return posts.filter((post) => matchesDateRange(post, options))
   return posts
 }
 
 function stripGeneratedBlock(content) {
-  const pattern = new RegExp(`\\n?${escapeRegExp(GENERATED_START)}[\\s\\S]*?${escapeRegExp(GENERATED_END)}\\n?`, 'g')
-  return content.replace(pattern, '\n')
+  let nextContent = content
+  const markerPairs = [
+    [GENERATED_START, GENERATED_END],
+    [LEGACY_GENERATED_START, LEGACY_GENERATED_END]
+  ]
+
+  for (const [start, end] of markerPairs) {
+    const pattern = new RegExp(`\\n?${escapeRegExp(start)}[\\s\\S]*?${escapeRegExp(end)}\\n?`, 'g')
+    nextContent = nextContent.replace(pattern, '\n')
+  }
+
+  return nextContent
 }
 
 function escapeRegExp(value) {
@@ -156,13 +173,33 @@ function escapeRegExp(value) {
 
 function parseMarkdownLink(input) {
   const trimmed = input.trim()
-  const linkMatch = trimmed.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
-  if (linkMatch) return { text: linkMatch[1].trim(), url: linkMatch[2].trim() }
+  const separatorIndex = trimmed.startsWith('[') && trimmed.endsWith(')')
+    ? trimmed.lastIndexOf('](')
+    : -1
+
+  if (separatorIndex > 0) {
+    return {
+      text: unescapeMarkdownLinkText(trimmed.slice(1, separatorIndex).trim()),
+      url: trimmed.slice(separatorIndex + 2, -1).trim()
+    }
+  }
+
   return { text: trimmed, url: null }
 }
 
 function formatMarkdownLink(text, url) {
-  return url ? `[${text}](${url})` : text
+  return url ? `[${escapeMarkdownLinkText(text)}](${url})` : text
+}
+
+function escapeMarkdownLinkText(text) {
+  return text
+    .replace(/\\/g, '\\\\')
+    .replace(/\[/g, '\\[')
+    .replace(/\]/g, '\\]')
+}
+
+function unescapeMarkdownLinkText(text) {
+  return text.replace(/\\([\[\]\\])/g, '$1')
 }
 
 function findBySeparators(input) {
