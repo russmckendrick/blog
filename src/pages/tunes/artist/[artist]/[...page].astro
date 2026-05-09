@@ -1,0 +1,186 @@
+---
+import { getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
+import BaseLayout from '../../../../layouts/BaseLayout.astro'
+import PostCard from '../../../../components/blog/PostCard.astro'
+import Pagination from '../../../../components/layout/Pagination.astro'
+import { Schema } from 'astro-seo-schema'
+import {
+  tunesIndex,
+  getArtistBySlug,
+  getAlbumsByArtist,
+  getArtistTuneUrl,
+  getAlbumTuneUrl
+} from '../../../../utils/tunes-index'
+import {
+  createCollectionPageSchema,
+  createBreadcrumbSchema
+} from '../../../../utils/schema'
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const allTunes = (await getCollection('tunes'))
+    .filter((tune) => import.meta.env.DEV || !tune.data.draft)
+
+  const paths = []
+  for (const artist of tunesIndex.artists) {
+    const postUrls = new Set(artist.posts.map((p) => p.url))
+    const tunes = allTunes
+      .filter((tune) => {
+        const date = tune.data.pubDate
+        const year = date.getFullYear().toString()
+        const month = String(date.getMonth() + 1).padStart(2, '0')
+        const day = String(date.getDate()).padStart(2, '0')
+        const slug = tune.data.title
+          .toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-')
+          .trim()
+          .replace(/^-+|-+$/g, '')
+        return postUrls.has(`/${year}/${month}/${day}/${slug}/`)
+      })
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+
+    if (tunes.length === 0) continue
+
+    paths.push(
+      ...paginate(tunes, {
+        params: { artist: artist.slug },
+        pageSize: 9
+      })
+    )
+  }
+  return paths
+}) satisfies GetStaticPaths
+
+const { page } = Astro.props
+const { artist: artistSlug } = Astro.params
+
+const artist = getArtistBySlug(artistSlug!)
+if (!artist) {
+  return new Response(null, { status: 404, statusText: 'Artist not found' })
+}
+
+const albums = getAlbumsByArtist(artist.slug)
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
+
+const title = `Tunes featuring ${artist.name}`
+const description = `${artist.name} appears in ${artist.postCount} weekly Listened to This Week post${
+  artist.postCount !== 1 ? 's' : ''
+} on russ.cloud across ${artist.albumCount} album${
+  artist.albumCount !== 1 ? 's' : ''
+}. Browse the posts and the records that featured them.`
+
+const collectionSchema = createCollectionPageSchema({
+  name: title,
+  description,
+  url: pageUrl,
+  items: page.data.map((tune: CollectionEntry<'tunes'>) => {
+    const date = tune.data.pubDate
+    const year = date.getFullYear().toString()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    const slug = tune.data.title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .trim()
+      .replace(/^-+|-+$/g, '')
+    return {
+      name: tune.data.title,
+      url: new URL(`/${year}/${month}/${day}/${slug}/`, siteUrl).toString()
+    }
+  }),
+  numberOfItems: page.total
+})
+
+const breadcrumbSchema = createBreadcrumbSchema(
+  [
+    { name: 'Home', url: '/' },
+    { name: 'Tunes', url: '/tunes/' },
+    { name: 'Artists', url: '/tunes/artist/' },
+    { name: artist.name, url: getArtistTuneUrl(artist.slug) }
+  ],
+  siteUrl
+)
+---
+
+<BaseLayout title={title} description={description}>
+  <Schema slot="head" item={collectionSchema} />
+  <Schema slot="head" item={breadcrumbSchema} />
+
+  <section class="surface-container-low py-8 pb-10 mb-8">
+    <div class="max-w-5xl mx-auto px-5">
+      <div class="text-center mb-4 animate-fade-in">
+        <a
+          href="/tunes/artist/"
+          class="inline-flex items-center text-sm text-on-surface-variant hover:text-[var(--color-secondary)] transition-colors"
+        >
+          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          All artists
+        </a>
+      </div>
+
+      <div class="text-center animate-fade-in animate-delay-1">
+        <h1 class="text-3xl lg:text-5xl font-bold text-on-surface font-display mb-3">
+          {artist.name} 🎤
+        </h1>
+        <p class="text-base text-on-surface-variant max-w-3xl mx-auto">
+          {artist.postCount} weekly post{artist.postCount !== 1 ? 's' : ''} · {artist.albumCount} album{artist.albumCount !== 1 ? 's' : ''} featured
+        </p>
+        {artist.artistUrl && (
+          <p class="text-sm text-on-surface-variant mt-3">
+            More on the music site:
+            {' '}<a class="text-[var(--color-secondary)] hover:underline" href={artist.artistUrl} rel="noopener noreferrer" target="_blank">{artist.artistUrl.replace(/^https?:\/\//, '')}</a>
+          </p>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {albums.length > 0 && (
+    <section class="max-w-5xl mx-auto px-5 mb-10">
+      <h2 class="font-display text-xl font-semibold text-on-surface mb-3">
+        Albums by {artist.name}
+      </h2>
+      <ul class="flex flex-wrap gap-2">
+        {albums.map((album) => (
+          <li>
+            <a
+              href={getAlbumTuneUrl(album.slug)}
+              class="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium surface-container-lowest transition-all hover:-translate-y-[1px] hover:shadow-md"
+            >
+              {album.name}
+              <span class="ml-2 text-xs text-on-surface-variant">{album.posts.length}×</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="max-w-7xl mx-auto px-5">
+    <h2 class="sr-only">Posts featuring {artist.name}</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch reveal-stagger">
+      {page.data.map((tune: CollectionEntry<'tunes'>) => (
+        <div class="reveal">
+          <PostCard post={tune} variant="grid" />
+        </div>
+      ))}
+    </div>
+
+    {page.total > page.size && (
+      <Pagination
+        currentPage={page.currentPage}
+        totalPages={page.lastPage}
+        getHref={(pageNum) => (pageNum === 1 ? `/tunes/artist/${artist.slug}/` : `/tunes/artist/${artist.slug}/${pageNum}/`)}
+        hideIfSingle={false}
+      />
+    )}
+  </section>
+</BaseLayout>

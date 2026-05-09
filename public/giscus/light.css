@@ -69,18 +69,18 @@ main {
   --color-fg-muted: #44474f;
   --color-fg-subtle: #636770;
 
-  /* Canvas — transparent to inherit wrapper bg */
+  /* Canvas - transparent to inherit wrapper bg */
   --color-canvas-default: transparent;
   --color-canvas-overlay: #ffffff;
   --color-canvas-inset: #f3f4f5;
   --color-canvas-subtle: #f3f4f5;
 
-  /* Borders — subtle ghost borders */
+  /* Borders - subtle ghost borders */
   --color-border-default: rgba(196, 197, 213, 0.25);
   --color-border-muted: rgba(196, 197, 213, 0.2);
   --color-neutral-muted: rgba(196, 197, 213, 0.2);
 
-  /* Accent — site secondary blue */
+  /* Accent - site secondary blue */
   --color-accent-fg: #0058be;
   --color-accent-emphasis: #0058be;
   --color-accent-muted: rgba(0, 88, 190, 0.4);
@@ -121,7 +121,7 @@ main .gsc-comment-content {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Reaction buttons — pill shape */
+/* Reaction buttons - pill shape */
 main .gsc-reactions button,
 main .gsc-direct-reaction-button-group button {
   border-radius: 9999px;

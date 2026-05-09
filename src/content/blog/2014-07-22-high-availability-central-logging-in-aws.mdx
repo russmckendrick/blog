@@ -109,13 +109,13 @@ More log files to configure? [Y]: n
 
 Step 5 of 5: Setting up agent as a daemon …DONE
 
-— — — — — — — — — — — — — — — — — — — — — — — — — — — 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - 
 - Configuration file successfully saved at: /var/awslogs/etc/awslogs.conf
 - You can begin accessing new log events after a few moments at https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:
 - You can use ‘sudo service awslogs start|stop|status|restart’ to control the daemon.
 - To see diagnostic information for the CloudWatch Logs Agent, see /var/log/awslogs.log
-- You can rerun interactive setup using ‘sudo ./awslogs-agent-setup.py — region us-east-1 — only-generate-config’
- — — — — — — — — — — — — — — — — — — — — — — — — — — —
+- You can rerun interactive setup using ‘sudo ./awslogs-agent-setup.py - region us-east-1 - only-generate-config’
+ - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ```
 
 and thats it, if you goto your AWS Console you should now see the /var/log/messages and /var/log/secure logs being captured.

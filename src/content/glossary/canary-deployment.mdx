@@ -1,0 +1,19 @@
+---
+term: "Canary Deployment"
+description: "A canary deployment rolls out a new version of a service to a small percentage of traffic first, monitors for problems, then gradually shifts more traffic until the rollout completes - or aborts if metrics regress."
+category: "Pattern"
+relatedTerms: ["blue-green-deployment", "ci-cd", "observability"]
+tags: ["devops", "automation"]
+---
+
+A **canary deployment** ships a new version to a small slice of users - say 5% - and watches the metrics that matter (error rate, latency, business KPIs) before increasing the share. If anything regresses, traffic is rolled back to the previous version. If it does not, the rollout proceeds in steps until 100% of users are on the new version.
+
+Compared to [blue/green](/glossary/blue-green-deployment/), canary trades a clean cutover for finer-grained risk control. Bugs that only show up under real production load - slow queries, lock contention, third-party rate limits - surface against a tiny user population instead of the whole fleet.
+
+To do canary well you need three things:
+
+- **A traffic-shaping layer** (load balancer, service mesh, ingress controller, feature flag).
+- **Useful metrics on a per-version basis** so you can compare the canary against the baseline.
+- **Automated rollback** when the comparison goes the wrong way.
+
+Without those, "canary" usually means "we deployed it and hoped."

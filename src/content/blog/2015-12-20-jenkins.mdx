@@ -20,7 +20,7 @@ Once I had that in order I grabbed the repo file for the Jenkins RPM repository 
 
 ```bash frame="terminal" title="Jenkins 1/7"
 wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
-rpm — import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+rpm - import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 yum install nginx httpd-tools java-1.7.0-openjdk jenkins
 ```
 
@@ -88,7 +88,7 @@ cd letsencrypt/
 As I wasn’t going to directly expose Jenkins to the world, I configured it to listen on localhost, that way we don’t have a Java service bond directly publicly available NIC. To do this run the following command;
 
 ```bash frame="terminal" title="Jenkins 5/7"
-echo ‘JENKINS_ARGS=” — webroot=/var/cache/jenkins/war — httpListenAddress=127.0.0.1 — httpPort=$HTTP_PORT -ajp13Port=$AJP_PORT’ > /etc/default/jenkins
+echo ‘JENKINS_ARGS=” - webroot=/var/cache/jenkins/war - httpListenAddress=127.0.0.1 - httpPort=$HTTP_PORT -ajp13Port=$AJP_PORT’ > /etc/default/jenkins
 ```
 
 
@@ -96,9 +96,9 @@ Finally, it’s time to enable the firewall, by default Firewalld has the ssh po
 
 ```bash frame="terminal" title="Jenkins 6/7"
 systemctl enable firewalld && systemctl restart firewalld
-firewall-cmd — zone=public — add-port=80/tcp — permanent
-firewall-cmd — zone=public — add-port=443/tcp — permanent
-firewall-cmd — reload
+firewall-cmd - zone=public - add-port=80/tcp - permanent
+firewall-cmd - zone=public - add-port=443/tcp - permanent
+firewall-cmd - reload
 ```
 
 

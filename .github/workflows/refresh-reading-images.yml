@@ -1,6 +1,6 @@
 name: Refresh Reading List Images
 
-# Disabled — reading images are now cached locally using headless Chrome
+# Disabled - reading images are now cached locally using headless Chrome
 # (required for Medium/Cloudflare-protected sites) and committed to the repo.
 # Run `node scripts/cache-reading-images.js --force` locally instead.
 on:

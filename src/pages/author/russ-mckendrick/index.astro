@@ -1,0 +1,148 @@
+---
+import { getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import PostCard from '../../../components/blog/PostCard.astro'
+import { Schema } from 'astro-seo-schema'
+import { createPersonSchema, createBreadcrumbSchema, createCollectionPageSchema } from '../../../utils/schema'
+import { AUTHOR_NAME, SOCIAL_LINKS } from '../../../consts'
+import { createUrlFriendlySlug } from '../../../utils/url'
+
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
+
+const posts = (await getCollection('blog'))
+  .filter((post) => import.meta.env.DEV || !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+
+const recentPosts = posts.slice(0, 12)
+
+const tagCounts = new Map<string, number>()
+for (const post of posts) {
+  for (const tag of post.data.tags || []) {
+    const slug = tag.toLowerCase().replace(/\s+/g, '-')
+    tagCounts.set(slug, (tagCounts.get(slug) || 0) + 1)
+  }
+}
+const topTags = Array.from(tagCounts.entries())
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 12)
+
+const personSchema = createPersonSchema(siteUrl)
+const breadcrumbSchema = createBreadcrumbSchema(
+  [
+    { name: 'Home', url: '/' },
+    { name: 'Author', url: '/author/russ-mckendrick/' }
+  ],
+  siteUrl
+)
+const collectionSchema = createCollectionPageSchema({
+  name: `Posts by ${AUTHOR_NAME}`,
+  description: `${recentPosts.length} most recent posts written by ${AUTHOR_NAME} on russ.cloud - DevOps, cloud, containers, and infrastructure as code.`,
+  url: pageUrl,
+  items: recentPosts.map((post) => {
+    const date = post.data.pubDate
+    const year = date.getFullYear().toString()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    const slug = createUrlFriendlySlug(post.data.title)
+    return {
+      name: post.data.title,
+      url: new URL(`/${year}/${month}/${day}/${slug}/`, siteUrl).toString()
+    }
+  }),
+  numberOfItems: posts.length
+})
+
+const title = `${AUTHOR_NAME} - author profile`
+const description = `${AUTHOR_NAME}: 14+ books on Docker, Kubernetes, Ansible, Terraform and Infrastructure as Code, plus ${posts.length} long-form posts on DevOps and cloud platforms here on russ.cloud.`
+
+const featuredSocials = SOCIAL_LINKS.filter((link) =>
+  ['github', 'mastodon', 'linkedin', 'amazon', 'medium', 'twitter'].includes(link.name)
+)
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <Schema item={personSchema} />
+    <Schema item={breadcrumbSchema} />
+    <Schema item={collectionSchema} />
+  </Fragment>
+
+  <section class="surface-container-low text-center py-12 pb-16 mb-8">
+    <div class="max-w-3xl mx-auto px-5 animate-fade-in">
+      <p class="text-sm uppercase tracking-wide text-on-surface-variant mb-2">Author profile</p>
+      <h1 class="text-4xl lg:text-5xl font-bold mb-4 text-on-surface font-display">
+        {AUTHOR_NAME}
+      </h1>
+      <p class="text-lg text-on-surface-variant">
+        DevOps and cloud author. {posts.length} posts published on russ.cloud, plus {' '}
+        <a class="text-[var(--color-secondary)] hover:underline" href="/about/">14+ technical books</a> on
+        Docker, Kubernetes, Ansible, Terraform, and Infrastructure as Code.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-5 mb-12">
+    <div class="surface-container-lowest rounded-xl p-6 sm:p-8 reveal">
+      <h2 class="font-display text-2xl font-semibold text-on-surface mb-4">
+        Where else to find me
+      </h2>
+      <ul class="flex flex-wrap gap-3">
+        {featuredSocials.map((link) => (
+          <li>
+            <a
+              href={link.url}
+              rel="me noopener noreferrer"
+              class="inline-flex items-center rounded-full px-4 py-2 surface-container text-sm font-medium hover:-translate-y-[1px] hover:shadow-md transition-all"
+            >
+              {link.name}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a
+            href="/about/"
+            class="inline-flex items-center rounded-full px-4 py-2 surface-container text-sm font-medium hover:-translate-y-[1px] hover:shadow-md transition-all"
+          >
+            Full bio
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  {topTags.length > 0 && (
+    <section class="max-w-5xl mx-auto px-5 mb-12">
+      <h2 class="font-display text-2xl font-semibold text-on-surface mb-4">
+        What I write about
+      </h2>
+      <ul class="flex flex-wrap gap-2">
+        {topTags.map(([slug, count]) => (
+          <li>
+            <a
+              href={`/tags/${slug}/`}
+              class="inline-flex items-center rounded-full px-3 py-1 surface-container-lowest text-sm transition-all hover:-translate-y-[1px] hover:shadow-md"
+            >
+              <span class="font-medium">{slug}</span>
+              <span class="ml-2 text-xs text-on-surface-variant">{count}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="max-w-7xl mx-auto px-5 pb-12">
+    <h2 class="font-display text-2xl font-semibold text-on-surface mb-6">
+      Recent posts
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch reveal-stagger">
+      {recentPosts.map((post: CollectionEntry<'blog'>) => (
+        <div class="reveal">
+          <PostCard post={post} variant="grid" />
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

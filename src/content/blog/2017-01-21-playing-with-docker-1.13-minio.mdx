@@ -84,7 +84,7 @@ Minio also has support for [Erasure Code](https://en.wikipedia.org/wiki/Erasure_
 
 For my deployment, I am going to launch six Minio containers across my three Docker hosts. As I will be attaching a local volume to each container, I will be binding them to a single host within the cluster.
 
-While this deploy will give me distributed storage, I will only be able to lose a single container — but this is in no way production ready, so I am not too bothered about that for this post.
+While this deploy will give me distributed storage, I will only be able to lose a single container - but this is in no way production ready, so I am not too bothered about that for this post.
 
 For more information on the Minio server compoent I will be launching see the following video;
 
@@ -415,7 +415,7 @@ Having spent hours cursing at [Ceph](https://ceph.com/) and [Swift](https://wiki
 
 While the example in this post is not really production ready, it isn’t too far off. I would have launched a production in an environment where I can attach external block storage directly to my containers using a volume plugin.
 
-For example, launching a Swarm cluster in Amazon Web Services means I would be able to use Elastic Block Storage (EBS). Volumes could move alongside containers which would mean that I didn’t need to pin containers to hosts — coupled with restart conditions and more hosts I could quite quickly have fully redundant object store up and running.
+For example, launching a Swarm cluster in Amazon Web Services means I would be able to use Elastic Block Storage (EBS). Volumes could move alongside containers which would mean that I didn’t need to pin containers to hosts - coupled with restart conditions and more hosts I could quite quickly have fully redundant object store up and running.
 
 Add it to your list of things to check out :)
 

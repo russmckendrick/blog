@@ -16,17 +16,17 @@ I launched two hosts in [Digital Ocean](https://m.do.co/c/52ec4dc3647e), one in 
 
 ```bash frame="terminal" title="Docker Networking Magic 1/9"
 docker-machine create \
- — driver digitalocean \
- — digitalocean-access-token your-digital-ocean-api-token-goes-here \
- — digitalocean-region lon1 \
- — digitalocean-size 1gb \
+ - driver digitalocean \
+ - digitalocean-access-token your-digital-ocean-api-token-goes-here \
+ - digitalocean-region lon1 \
+ - digitalocean-size 1gb \
 mesh-london
 
 docker-machine create \
- — driver digitalocean \
- — digitalocean-access-token your-digital-ocean-api-token-goes-here \
- — digitalocean-region nyc2 \
- — digitalocean-size 1gb \
+ - driver digitalocean \
+ - digitalocean-access-token your-digital-ocean-api-token-goes-here \
+ - digitalocean-region nyc2 \
+ - digitalocean-size 1gb \
 mesh-nyc
 ```
 
@@ -42,8 +42,8 @@ docker-machine ssh mesh-nyc ‘curl -L git.io/weave -o /usr/local/bin/weave; chm
 Once the binary was on each host, I launched Weave on each host making sure I provided a password so that traffic between the host machines would be encrypted;
 
 ```bash frame="terminal" title="Docker Networking Magic 3/9"
-docker-machine ssh mesh-london weave launch — password m3ga_5ecret_pa55w0rd
-docker-machine ssh mesh-nyc weave launch — password m3ga_5ecret_pa55w0rd
+docker-machine ssh mesh-london weave launch - password m3ga_5ecret_pa55w0rd
+docker-machine ssh mesh-nyc weave launch - password m3ga_5ecret_pa55w0rd
 ```
 
 
@@ -67,11 +67,11 @@ This is where it gets interesting. Launching a [NGINX](https://hub.docker.com/r/
 
 ```bash frame="terminal" title="Docker Networking Magic 6/9"
 docker $(docker-machine config mesh-nyc) run -itd \
- — name=nginx \
- — net=weave \
- — hostname=”nginx.weave.local” \
- — dns=”172.17.0.1" \
- — dns-search=”weave.local” \
+ - name=nginx \
+ - net=weave \
+ - hostname=”nginx.weave.local” \
+ - dns=”172.17.0.1" \
+ - dns-search=”weave.local” \
 russmckendrick/nginx
 ```
 
@@ -80,10 +80,10 @@ and then on the London host, try wgetting the page being served by NGINX (its ju
 
 ```bash frame="terminal" title="Docker Networking Magic 7/9"
 docker $(docker-machine config mesh-london) run -it \
- — rm \
- — net=weave \
- — dns=”172.17.0.1" \
- — dns-search=”weave.local” \
+ - rm \
+ - net=weave \
+ - dns=”172.17.0.1" \
+ - dns-search=”weave.local” \
 russmckendrick/base wget -q -O- http://nginx.weave.local
 ```
 
@@ -92,10 +92,10 @@ and then finally ping the NGINX container;
 
 ```bash frame="terminal" title="Docker Networking Magic 8/9"
 docker $(docker-machine config mesh-london) run -it \
- — rm \
- — net=weave \
- — dns=”172.17.0.1" \
- — dns-search=”weave.local” \
+ - rm \
+ - net=weave \
+ - dns=”172.17.0.1" \
+ - dns-search=”weave.local” \
 russmckendrick/base ping -c 3 nginx.weave.local
 ```
 

@@ -1,0 +1,18 @@
+---
+term: "Blue/Green Deployment"
+description: "Blue/green deployment is a release strategy that runs two identical production environments - one live (blue), one idle (green) - and switches traffic between them to ship a new version with near-zero downtime and a fast rollback path."
+category: "Pattern"
+relatedTerms: ["canary-deployment", "ci-cd", "immutable-infrastructure"]
+tags: ["devops", "automation"]
+---
+
+In a **blue/green deployment**, two production environments run side by side. One - call it **blue** - handles all user traffic. The other - **green** - is identical in shape but idle, or running an older version.
+
+To ship a new release:
+
+1. Deploy the new version to the idle environment (green).
+2. Smoke test it without affecting users.
+3. Flip the load balancer so green is now live and blue is idle.
+4. If something is wrong, flip back. Rollback is a single config change rather than a redeploy.
+
+The trade-off is cost - for the duration of a release you are running double the compute. In return you get a fast, scripted rollback and a clean separation between deployment and release. It pairs well with [immutable infrastructure](/glossary/immutable-infrastructure/) and is the conceptual cousin of [canary deployment](/glossary/canary-deployment/), which shifts traffic gradually rather than all at once.

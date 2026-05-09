@@ -209,39 +209,39 @@ An AI-powered generator using FAL.ai edit models:
 
 The collage prompt is built in two stages to produce a focused natural-language prompt for the FAL.ai model.
 
-**Stage A — Visual Blueprint (GPT-5.4 Vision)**
+**Stage A - Visual Blueprint (GPT-5.4 Vision)**
 
 GPT-5.4 analyzes a representative subset of the uploaded album covers via the OpenAI Responses API and returns a structured JSON blueprint containing:
-- `scene` — a single coherent scene description (the most important field)
-- `hero_subject` — primary foreground subject
-- `secondary_elements` — up to 8 supporting motifs from the source images
-- `background_texture` — background treatment
-- `palette` — dominant and accent colors
-- `mood` — overall atmosphere
-- `allowed_subjects` — concrete visible subjects (not generic terms)
-- `people_present` — whether people appear in the source images
+- `scene` - a single coherent scene description (the most important field)
+- `hero_subject` - primary foreground subject
+- `secondary_elements` - up to 8 supporting motifs from the source images
+- `background_texture` - background treatment
+- `palette` - dominant and accent colors
+- `mood` - overall atmosphere
+- `allowed_subjects` - concrete visible subjects (not generic terms)
+- `people_present` - whether people appear in the source images
 
 The blueprint is normalized to sanitize descriptors, validate colors, and cap element counts.
 
 Retries on transient failures with smaller analysis batches and timed-out URL exclusion. Falls back to a default blueprint if all attempts fail.
 
-**Stage B — Natural Language Prompt Assembly**
+**Stage B - Natural Language Prompt Assembly**
 
-The blueprint is merged with the selected style profile to produce the final prompt sent to FAL.ai. The prompt is written in **natural language, not JSON or labelled sections** — this is deliberate.
+The blueprint is merged with the selected style profile to produce the final prompt sent to FAL.ai. The prompt is written in **natural language, not JSON or labelled sections** - this is deliberate.
 
 **Why natural language over JSON or structured labels:**
 - Image generation models like nano-banana are trained on billions of natural-language image captions, not structured data formats
 - Every token in a natural language prompt carries visual signal; JSON syntax (`{`, `"`, `:`, brackets) wastes the model's attention budget on tokens with zero visual meaning
-- Labelled sections ("Scene selected from Stage A:", "Subject lock:", "Composition requirements:") are internal pipeline jargon that the image model cannot interpret — they dilute the creative direction
+- Labelled sections ("Scene selected from Stage A:", "Subject lock:", "Composition requirements:") are internal pipeline jargon that the image model cannot interpret - they dilute the creative direction
 - A/B testing by [Chase Jarvis](https://chasejarvis.com/blog/does-json-prompting-actually-work-tested-with-nano-banana/) confirmed JSON prompting produces no improvement over natural language for nano-banana models and can actually reduce output quality
 
 The Stage B prompt follows this structure:
-1. **Scene description** — leads the prompt (highest weight position) with the full creative scene from Stage A
-2. **Style directives** — aesthetic inspiration from the style profile
-3. **Hero and supporting elements** — concise subject descriptions
-4. **Mood and color** — atmosphere and palette direction
-5. **Composition, lighting, and color rules** — from the style profile
-6. **Constraints** — source image incorporation, people rules, exposure, negative terms
+1. **Scene description** - leads the prompt (highest weight position) with the full creative scene from Stage A
+2. **Style directives** - aesthetic inspiration from the style profile
+3. **Hero and supporting elements** - concise subject descriptions
+4. **Mood and color** - atmosphere and palette direction
+5. **Composition, lighting, and color rules** - from the style profile
+6. **Constraints** - source image incorporation, people rules, exposure, negative terms
 
 This produces a ~250 word prompt where nearly every token is a visual cue, compared to the previous ~500 word version that was heavy on labels and redundant descriptions.
 

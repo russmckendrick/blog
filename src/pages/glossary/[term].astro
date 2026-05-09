@@ -1,0 +1,110 @@
+---
+import { getCollection, render } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { Schema } from 'astro-seo-schema'
+import {
+  createDefinedTermSchema,
+  createBreadcrumbSchema
+} from '../../utils/schema'
+import { SITE_TITLE } from '../../consts'
+
+export const getStaticPaths = (async () => {
+  const entries = await getCollection('glossary')
+  return entries
+    .filter((entry) => import.meta.env.DEV || !entry.data.draft)
+    .map((entry) => ({
+      params: { term: entry.id },
+      props: { entry }
+    }))
+}) satisfies GetStaticPaths
+
+interface Props {
+  entry: CollectionEntry<'glossary'>
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+
+const allEntries = await getCollection('glossary')
+const related = (entry.data.relatedTerms || [])
+  .map((slug) => allEntries.find((e) => e.id === slug))
+  .filter((e): e is CollectionEntry<'glossary'> => Boolean(e))
+
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
+
+const title = entry.data.abbreviation
+  ? `${entry.data.term} (${entry.data.abbreviation})`
+  : entry.data.term
+
+const definedTermSchema = createDefinedTermSchema({
+  name: entry.data.term,
+  description: entry.data.description,
+  url: pageUrl,
+  termCode: entry.data.abbreviation,
+  inDefinedTermSet: `${SITE_TITLE} - DevOps and cloud glossary`
+})
+
+const breadcrumbSchema = createBreadcrumbSchema(
+  [
+    { name: 'Home', url: '/' },
+    { name: 'Glossary', url: '/glossary/' },
+    { name: entry.data.term, url: `/glossary/${entry.id}/` }
+  ],
+  siteUrl
+)
+---
+
+<BaseLayout title={title} description={entry.data.description}>
+  <Schema slot="head" item={definedTermSchema} />
+  <Schema slot="head" item={breadcrumbSchema} />
+
+  <article class="max-w-3xl mx-auto px-5 py-10">
+    <p class="text-sm uppercase tracking-wide text-on-surface-variant mb-2">
+      <a href="/glossary/" class="hover:text-[var(--color-secondary)] transition-colors">Glossary</a>
+      {entry.data.category && (
+        <>
+          <span aria-hidden="true"> · </span>
+          {entry.data.category}
+        </>
+      )}
+    </p>
+
+    <h1 class="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-on-surface mb-3">
+      {entry.data.term}
+      {entry.data.abbreviation && (
+        <span class="ml-2 text-2xl font-normal text-on-surface-variant align-middle">
+          ({entry.data.abbreviation})
+        </span>
+      )}
+    </h1>
+
+    <p class="text-lg text-on-surface-variant mb-8 leading-relaxed">
+      {entry.data.description}
+    </p>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {related.length > 0 && (
+      <aside class="mt-12 pt-6 border-t border-[var(--color-outline-variant)]/40">
+        <p class="text-xs text-on-surface-variant mb-3">Related terms</p>
+        <ul class="flex flex-wrap gap-2">
+          {related.map((rel) => (
+            <li>
+              <a
+                href={`/glossary/${rel.id}/`}
+                class="inline-flex items-center rounded-full px-3 py-1 surface-container-lowest text-sm transition-all hover:-translate-y-[1px] hover:shadow-md"
+              >
+                {rel.data.term}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    )}
+  </article>
+</BaseLayout>

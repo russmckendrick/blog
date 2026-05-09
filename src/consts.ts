@@ -18,6 +18,10 @@ export const AUTHOR_EMAIL = "r@russ.email";
 export const AUTHOR_GITHUB = "@russmckendrick";
 export const AUTHOR_LOCATION = "Nottingham, UK";
 export const AUTHOR_HOMEPAGE = "https://www.russ.cloud/about/";
+// Programmatic author hub - Person schema lives here, used for `BlogPosting.author.url`
+// in JSON-LD where a stable canonical author entity is preferable to the about page.
+export const AUTHOR_PAGE = "https://www.russ.cloud/author/russ-mckendrick/";
+export const AUTHOR_SLUG = "russ-mckendrick";
 
 export const SOCIAL_LINKS = [
   { name: "github", url: "https://github.com/russmckendrick" },
@@ -77,11 +81,14 @@ export const AI_AUTHOR = {
 
 // Tag metadata extracted from Hugo tag index files
 // Provides consistent display names, emojis, descriptions, and colors for all tags
+// `intro` is an optional 1-2 paragraph block rendered at the top of the tag page
+// (purely additive - keep `description` short for meta tags).
 export interface TagMetadata {
   title: string;
   description: string;
   colorLight: string;
   colorDark: string;
+  intro?: string;
 }
 
 export const TAG_METADATA: Record<string, TagMetadata> = {
@@ -99,6 +106,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-red-50 text-red-700 inset-ring inset-ring-red-600/10",
     colorDark:
       "dark:bg-red-400/10 dark:text-red-400 dark:inset-ring-red-400/20",
+    intro:
+      "Walk-throughs and field notes on Ansible - playbooks, roles, dynamic inventories, and using it to drive provisioning across cloud and on-prem fleets. Most of these posts come from production-shaped problems I hit while writing or reviewing my Ansible books, so they lean towards 'here is what actually worked' rather than greenfield demos.",
   },
   author: {
     title: "Author 📚",
@@ -122,6 +131,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-orange-50 text-orange-700 inset-ring inset-ring-orange-600/10",
     colorDark:
       "dark:bg-orange-400/10 dark:text-orange-400 dark:inset-ring-orange-400/20",
+    intro:
+      "AWS posts collected over years of running workloads on Amazon Web Services - EC2, ECS, EKS, IAM, S3, Lambda, networking, and the bits of CDK and CloudFormation that show up alongside them. Expect a mix of hands-on tutorials, deeper architecture notes, and post-mortems where things did not go to plan.",
   },
   azure: {
     title: "Azure ☁️",
@@ -129,6 +140,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-blue-50 text-blue-700 inset-ring inset-ring-blue-700/10",
     colorDark:
       "dark:bg-blue-400/10 dark:text-blue-400 dark:inset-ring-blue-400/30",
+    intro:
+      "Microsoft Azure posts spanning AKS, App Service, networking, identity, Bicep and ARM templates, and a fair amount of Terraform-on-Azure. A lot of it lines up with my Azure books - so the focus is on getting useful things running end-to-end rather than feature-by-feature reference reading.",
   },
   blog: {
     title: "Blog 🤷‍♂️",
@@ -181,6 +194,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-teal-50 text-teal-700 inset-ring inset-ring-teal-600/10",
     colorDark:
       "dark:bg-teal-400/10 dark:text-teal-400 dark:inset-ring-teal-400/20",
+    intro:
+      "DevOps posts covering the practices and tooling that hold modern software delivery together - pipelines, containers, infrastructure as code, observability, and the cultural side that decides whether any of it actually lands. Drawn from a couple of decades of running and shipping platforms, with the warts.",
   },
   docker: {
     title: "Docker 🐳",
@@ -188,6 +203,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-blue-50 text-blue-700 inset-ring inset-ring-blue-700/10",
     colorDark:
       "dark:bg-blue-400/10 dark:text-blue-400 dark:inset-ring-blue-400/30",
+    intro:
+      "Docker tutorials, image-building patterns, Compose recipes, and the operational details that come with running containers in anger. Several of these posts started life as research for the Docker books I have written, then grew up as the ecosystem changed.",
   },
   github: {
     title: "GitHub 👨‍💻",
@@ -203,6 +220,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-purple-50 text-purple-700 inset-ring inset-ring-purple-700/10",
     colorDark:
       "dark:bg-purple-400/10 dark:text-purple-400 dark:inset-ring-purple-400/30",
+    intro:
+      "Infrastructure-as-Code posts - choosing a tool, structuring modules, dealing with state, integrating with CI, and the team patterns that decide whether an IaC effort sticks. Covers Terraform, Bicep, ARM, Pulumi, and Ansible flavours of the same problem.",
   },
   kubernetes: {
     title: "Kubernetes 🐳",
@@ -210,6 +229,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-blue-50 text-blue-700 inset-ring inset-ring-blue-600/10",
     colorDark:
       "dark:bg-blue-400/10 dark:text-blue-400 dark:inset-ring-blue-400/20",
+    intro:
+      "Kubernetes posts ranging from getting a cluster up the first time to the hard bits - networking, storage, ingress, autoscaling, and the failure modes you only meet at 2am. Mostly grounded in real workloads on AKS, EKS, and self-managed clusters.",
   },
   life: {
     title: "Life 👨‍🏫",
@@ -225,6 +246,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-yellow-50 text-yellow-800 inset-ring inset-ring-yellow-600/20",
     colorDark:
       "dark:bg-yellow-400/10 dark:text-yellow-500 dark:inset-ring-yellow-400/20",
+    intro:
+      "Linux posts covering distributions, init systems, networking, hardening, packaging, and the small day-to-day tools that make a sysadmin's life less painful. Two-plus decades of running Linux in production, distilled into things I actually use.",
   },
   listened: {
     title: "Listened 🎧",
@@ -264,6 +287,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-yellow-50 text-yellow-700 inset-ring inset-ring-yellow-600/10",
     colorDark:
       "dark:bg-yellow-400/10 dark:text-yellow-500 dark:inset-ring-yellow-400/20",
+    intro:
+      "Python posts - automation scripts, small CLIs, glue code that talks to clouds and APIs, and the occasional larger project. Skewed toward operations and platform work rather than data science.",
   },
   security: {
     title: "Security 🔐",
@@ -271,6 +296,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-red-50 text-red-700 inset-ring inset-ring-red-600/10",
     colorDark:
       "dark:bg-red-400/10 dark:text-red-400 dark:inset-ring-red-400/20",
+    intro:
+      "Practical security posts - hardening, secrets handling, audit trails, network segmentation, and reviewing infrastructure for the obvious mistakes before someone else does. No FUD, no checklists for their own sake.",
   },
   terraform: {
     title: "Terraform 👨‍💻",
@@ -279,6 +306,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-violet-50 text-violet-700 inset-ring inset-ring-violet-600/10",
     colorDark:
       "dark:bg-violet-400/10 dark:text-violet-400 dark:inset-ring-violet-400/20",
+    intro:
+      "Terraform posts on writing modules that survive contact with reality - workspace patterns, remote state, providers across AWS and Azure, drift, and the messy middle of moving an organisation onto infrastructure as code. Heavily informed by writing the Terraform book and reviewing other people's terror-form.",
   },
   tools: {
     title: "Tools 🧰",

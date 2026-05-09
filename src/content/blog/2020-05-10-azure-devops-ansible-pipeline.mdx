@@ -16,7 +16,7 @@ aliases:
 
 I thought it was was about time that I started to have a play with Azure DevOps a little more than I have been doing, one of the things I have always meant to look at in the past is using DevOps to run Ansible playbooks.
 
-However the [Ansible Task](https://www.azuredevopslabs.com/labs/vstsextend/ansible/) recommended by Microsoft has always put me off, the reason for this is that this task requires a Virtual Machine to run Ansible — this to me always seemed a little overkill.
+However the [Ansible Task](https://www.azuredevopslabs.com/labs/vstsextend/ansible/) recommended by Microsoft has always put me off, the reason for this is that this task requires a Virtual Machine to run Ansible - this to me always seemed a little overkill.
 
 As I had some time I thought I would sit down and have a look at coming up with a pipeline which executes an Ansible playbook which doesn’t use the Ansible Task. As I had already done some work with Python based command line tools on Azure DevOps I thought it best to take the same approach as I took with those to my Ansible pipeline.
 
@@ -64,7 +64,7 @@ After a little trial and error I settled on the task below:
       echo "##vso[task.setvariable variable=ARM_TENANT_ID]${tenantId}"
 ```
 
-As you can see, I am using the AzureCLI Task — this takes a few inputs:
+As you can see, I am using the AzureCLI Task - this takes a few inputs:
 
 - **azureSubscription**: This will be the name of the service connection, as I don’t want to hardcode any values here I am using the variable `$(SUBSCRIPTION_NAME)`
 - **addSpnToEnvironment**: When set to `true` this will add service principal id and key of the service endpoint as variables.
@@ -106,7 +106,7 @@ Now that we have our SPN credentials defined as variables within the pipeline an
     AZURE_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
 ```
 
-As the Azure Ansible modules expect the Azure credentials, tenant and subscription IDs as environment variables we are passing this at run time in the format which Ansible expects, AZURE_CLIENT_ID, AZURE_SECRET, AZURE_TENANT and AZURE_SUBSCRIPTION_ID — all of which are populated using the pipeline variables which were set in the Azure CLI task.
+As the Azure Ansible modules expect the Azure credentials, tenant and subscription IDs as environment variables we are passing this at run time in the format which Ansible expects, AZURE_CLIENT_ID, AZURE_SECRET, AZURE_TENANT and AZURE_SUBSCRIPTION_ID - all of which are populated using the pipeline variables which were set in the Azure CLI task.
 
 Running the Pipeline give me the following output:
 
@@ -118,7 +118,7 @@ Running the Pipeline give me the following output:
 
 As you can see from the pipeline output above, the whole pipeline took just over a minute to run, and 50 seconds of that was installing Ansible itself.
 
-Admittedly the playbook didn’t do much other than create a resource group called “azuredevops-rg” — however it wasn’t the playbook I was concerned about in this post — I just want a good boilerplate `azure-pipelines.yml` file for future projects.
+Admittedly the playbook didn’t do much other than create a resource group called “azuredevops-rg” - however it wasn’t the playbook I was concerned about in this post - I just want a good boilerplate `azure-pipelines.yml` file for future projects.
 
 If you follow along with this post, make sure that when creating the Pipeline in Azure DevOps you create a varible called `SUBSCRIPTION_NAME` and populate with the name of the Azure Resource Manager service connection your project uses.
 

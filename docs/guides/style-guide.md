@@ -52,7 +52,7 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 ## Color And Surfaces
 
 - Colors are defined as CSS custom properties in `src/styles/global.css` with automatic light/dark adaptation.
-- Use the **tonal layering** approach — separate sections with background shifts (`.surface`, `.surface-container-low`, etc.), not borders.
+- Use the **tonal layering** approach - separate sections with background shifts (`.surface`, `.surface-container-low`, etc.), not borders.
 - Do not use 1px borders for sectioning. Use `.ghost-border` only in prose tables and code blocks.
 - Cards use `.surface-container-lowest` with `.shadow-ambient` (no ghost-border on cards).
 - Hover states should be visible but restrained. Avoid loud accent fills in navigation.
@@ -64,9 +64,9 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 - Do not apply global transitions to every element.
 - **Above-the-fold page-load animations**: Use `.animate-fade-in` (gentle translateY + opacity) with `.animate-delay-1` / `.animate-delay-2` / `.animate-delay-3` for staggered cascades. These are CSS-only and fire on page load without JS.
 - **Scroll-reveal animations**: Use `.reveal` (slide up + fade), `.reveal-fade` (fade only), `.reveal-scale` (scale + fade), or `.reveal-slide` (slide from left + fade) for content that scrolls into view. Combine with `.reveal-stagger` on a parent for cascading child reveals.
-- Do **not** apply scroll-reveal to above-the-fold content (hero sections, blog post articles) — use `.animate-fade-in` instead.
-- **Prose content reveals**: On blog post pages, images get `.reveal-scale`, blockquotes get `.reveal-slide`, and code blocks get `.reveal-fade` — applied via JS. Paragraphs, headings, and lists are never animated to preserve reading flow.
-- **Gallery reveals**: Gallery components have a self-contained stagger reveal — items start visible, JS adds `.gallery-reveal-ready` (hiding them) and observes the wrapper, then `.gallery-revealed` triggers a cascading scale+fade via nth-child delays. This avoids race conditions with the global reveal system.
+- Do **not** apply scroll-reveal to above-the-fold content (hero sections, blog post articles) - use `.animate-fade-in` instead.
+- **Prose content reveals**: On blog post pages, images get `.reveal-scale`, blockquotes get `.reveal-slide`, and code blocks get `.reveal-fade` - applied via JS. Paragraphs, headings, and lists are never animated to preserve reading flow.
+- **Gallery reveals**: Gallery components have a self-contained stagger reveal - items start visible, JS adds `.gallery-reveal-ready` (hiding them) and observes the wrapper, then `.gallery-revealed` triggers a cascading scale+fade via nth-child delays. This avoids race conditions with the global reveal system.
 - Respect `prefers-reduced-motion` by disabling:
   - smooth scrolling
   - decorative animations (including `.animate-fade-in`)

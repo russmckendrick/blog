@@ -176,7 +176,7 @@ This time the JSON body contains the following;
 ```
 
 
-As you can see, the body contains more information — one bit of which is a little troublesome. The ID of virtual network requires a little bit of information, we already know the virtual network name and which resource group the virtual network is in, however, we also need to provide the subscription ID.
+As you can see, the body contains more information - one bit of which is a little troublesome. The ID of virtual network requires a little bit of information, we already know the virtual network name and which resource group the virtual network is in, however, we also need to provide the subscription ID.
 
 So far, Ansible has been supplying this for us but now we actually need to include it as a variable within the task, as we want our playbook to be as dynamic as possible we really should be getting this information on the fly.
 
@@ -230,7 +230,7 @@ Checking the Azure portal shows that the resource has been created as expected;
 
 <Img src="/assets/2020-04-03-ansible-and-the-azure-rest-api/images/01.png" alt="graphical user interface, text" />
 
-That is only half of the story though, remember the task which registers the internal DNS zone with the virtual network — the JSON body which was sent was starting to get a little complicated …
+That is only half of the story though, remember the task which registers the internal DNS zone with the virtual network - the JSON body which was sent was starting to get a little complicated …
 
 ```bash frame="terminal"
 ``` yaml

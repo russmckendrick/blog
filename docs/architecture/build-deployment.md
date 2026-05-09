@@ -99,7 +99,7 @@ This workflow refreshes cached Open Graph images for `<LinkPreview>` components 
 
 ## Reading List Image Refresh
 
-Reading list images are cached **locally** and committed to the repo. The CI build does not fetch or refresh reading images — this avoids overwriting locally-cached data from Medium and other Cloudflare-protected sites that require headless Chrome to fetch.
+Reading list images are cached **locally** and committed to the repo. The CI build does not fetch or refresh reading images - this avoids overwriting locally-cached data from Medium and other Cloudflare-protected sites that require headless Chrome to fetch.
 
 ### Local Workflow
 1.  Fetch latest bookmarks: `node scripts/fetch-reading-list.js`
@@ -123,4 +123,4 @@ Reading list images are cached **locally** and committed to the repo. The CI bui
 ### GitHub Workflow (Disabled)
 **Workflow File**: `.github/workflows/refresh-reading-images.yml`
 
-The scheduled weekly run has been disabled. The workflow can still be triggered manually via `workflow_dispatch` but is not recommended — it lacks headless Chrome and will produce degraded results for Medium URLs.
+The scheduled weekly run has been disabled. The workflow can still be triggered manually via `workflow_dispatch` but is not recommended - it lacks headless Chrome and will produce degraded results for Medium URLs.

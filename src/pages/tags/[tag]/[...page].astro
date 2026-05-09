@@ -5,9 +5,12 @@ import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PostCard from '../../../components/blog/PostCard.astro';
 import Pagination from '../../../components/layout/Pagination.astro';
-import { getTagMetadata, normalizeTagSlug } from '../../../utils/tags';
+import { Schema } from 'astro-seo-schema';
+import { getTagMetadata, getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } from '../../../utils/tags';
 import { TAG_METADATA, TAG_AVATAR_MAP } from '../../../consts';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../../utils/hero-colors';
+import { createCollectionPageSchema, createBreadcrumbSchema } from '../../../utils/schema';
+import { createUrlFriendlySlug } from '../../../utils/url';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts = (await getCollection('blog'))
@@ -50,6 +53,53 @@ const totalTagPosts = allPosts.filter(post =>
   (post.data.tags || []).map(t => normalizeTagSlug(t)).includes(tag)
 ).length;
 
+// Co-occurring tags: count how often other tags appear on posts that also carry this tag.
+const coOccurrenceCounts = new Map<string, number>();
+for (const post of allPosts) {
+  const normalized = (post.data.tags || []).map(t => normalizeTagSlug(t));
+  if (!normalized.includes(tag)) continue;
+  for (const other of normalized) {
+    if (other === tag) continue;
+    coOccurrenceCounts.set(other, (coOccurrenceCounts.get(other) || 0) + 1);
+  }
+}
+const relatedTags = Array.from(coOccurrenceCounts.entries())
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 8)
+  .map(([slug, count]) => ({ slug, count, metadata: getTagMetadata(slug) }));
+
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+const collectionSchema = createCollectionPageSchema({
+  name: `${metadata.title} - posts`,
+  description: metadata.description.replace(/<[^>]+>/g, ''),
+  url: pageUrl,
+  items: page.data.map((post: CollectionEntry<'blog'>) => {
+    const date = post.data.pubDate;
+    const year = date.getFullYear().toString();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const slug = createUrlFriendlySlug(post.data.title);
+    return {
+      name: post.data.title,
+      url: new URL(`/${year}/${month}/${day}/${slug}/`, siteUrl).toString()
+    };
+  }),
+  numberOfItems: totalTagPosts
+});
+
+const breadcrumbSchema = createBreadcrumbSchema(
+  [
+    { name: 'Home', url: '/' },
+    { name: 'Tags', url: '/tags/' },
+    { name: metadata.title, url: getTagUrl(tag) }
+  ],
+  siteUrl
+);
+
+const tagOgImage = `/tags/${tag}-og.png`;
+
 // Get avatar for this tag
 const avatarSrc = TAG_AVATAR_MAP[tag] ? `/images/avatars/${TAG_AVATAR_MAP[tag]}` : null;
 const avatarFallback = '/images/avatar-192x192.png';
@@ -82,7 +132,10 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
 <BaseLayout
   title={metadata.title}
   description={metadata.description}
+  image={tagOgImage}
 >
+  <Schema slot="head" item={collectionSchema} />
+  <Schema slot="head" item={breadcrumbSchema} />
   <!-- Hero gradient background from first post -->
   <section
     class="hero-gradient-section absolute inset-x-0 top-0 -z-10 h-[70vh] min-h-[450px]"
@@ -131,6 +184,36 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
       </div>
     </div>
   </section>
+
+  {(metadata.intro || relatedTags.length > 0) && (
+    <section class="max-w-7xl mx-auto px-5 mb-8">
+      <div class="surface-container-lowest rounded-xl p-6 sm:p-8 reveal">
+        {metadata.intro && (
+          <p class="text-base sm:text-lg text-on-surface leading-relaxed">
+            {metadata.intro}
+          </p>
+        )}
+        {relatedTags.length > 0 && (
+          <div class={metadata.intro ? 'mt-5 pt-4 border-t border-[var(--color-outline-variant)]/40' : ''}>
+            <p class="text-xs text-on-surface-variant mb-2">Often appears with</p>
+            <ul class="flex flex-wrap gap-2">
+              {relatedTags.map((related) => (
+                <li>
+                  <a
+                    href={getTagUrl(related.slug)}
+                    class={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getTagColorClasses(related.slug)} transition-all hover:scale-105 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50`}
+                  >
+                    {getTagDisplayName(related.slug)}
+                    <span class="ml-1.5 text-[10px] opacity-70">{related.count}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
 
   <section class="max-w-7xl mx-auto px-5">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch reveal-stagger">

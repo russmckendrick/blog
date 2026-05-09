@@ -1,0 +1,21 @@
+---
+term: "Container"
+description: "A container is a lightweight, isolated runtime for an application - packaging the code, dependencies, and configuration into a single image that runs the same way on any host with a compatible runtime."
+category: "Concept"
+relatedTerms: ["immutable-infrastructure", "infrastructure-as-code", "devops"]
+tags: ["containers", "docker", "devops"]
+---
+
+A **container** wraps an application and its dependencies - language runtime, libraries, system tools, configuration - into a single immutable image, then runs that image as an isolated process on a host kernel.
+
+The isolation comes from Linux primitives that long predate Docker: **namespaces** (the container sees its own process tree, network interfaces, and filesystem) and **cgroups** (the host caps how much CPU, memory, and I/O the container can use). The packaging - and the developer experience around it - is what made the model take off.
+
+Containers are not virtual machines. They share the host kernel, so they start in milliseconds rather than minutes and have far less memory overhead, but isolation is weaker. For multi-tenant workloads where tenants do not trust each other, you still want VM-level isolation underneath.
+
+The practical benefits:
+
+- **Reproducible environments** - the image runs identically on a laptop, CI runner, and production node.
+- **Fast startup** - suitable for autoscaling and short-lived workloads.
+- **Composable** - orchestrators like Kubernetes and Nomad treat containers as the unit of scheduling.
+
+The Open Container Initiative (OCI) standardised the image format and runtime interface, so Docker, Podman, containerd, and CRI-O all speak the same language at the layer that matters.

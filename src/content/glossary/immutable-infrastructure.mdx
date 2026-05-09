@@ -1,0 +1,19 @@
+---
+term: "Immutable Infrastructure"
+description: "Immutable infrastructure is a deployment pattern where servers and other infrastructure components are never modified after they are created - instead, changes are deployed by replacing them with a new version."
+category: "Pattern"
+relatedTerms: ["infrastructure-as-code", "blue-green-deployment", "container", "devops"]
+tags: ["devops", "infrastructure-as-code", "containers"]
+---
+
+**Immutable infrastructure** is the principle that once a server, container, or VM image is built and deployed, it is not patched or reconfigured in place. If something needs to change - a security patch, a new application version, a tweak to nginx - you build a new image and replace the running instance. The old one is destroyed.
+
+This is the opposite of the long-standing "pet server" model, where production hosts accumulated months or years of manual fixes that nobody fully remembered.
+
+The benefits:
+
+- **No configuration drift.** Two servers built from the same image are identical; you can reason about behaviour without `ssh`-ing in to check.
+- **Faster recovery.** Instead of debugging why a host is sick, you replace it.
+- **Cleaner audit trails.** Every change is a build artefact in a registry, not a series of commands in someone's terminal history.
+
+Containers and Kubernetes make this approach the default. With VMs it requires more deliberate effort - Packer for image building, an autoscaling group or equivalent for replacement, and IaC for the surrounding plumbing.

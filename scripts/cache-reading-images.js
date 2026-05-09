@@ -160,7 +160,7 @@ async function fetchOGMetadata(url) {
       'Sec-Fetch-User': '?1',
     }
 
-    // Medium uses Cloudflare JS challenges — skip retries, single attempt only
+    // Medium uses Cloudflare JS challenges - skip retries, single attempt only
     const medium = isMediumUrl(url)
     if (MEDIUM_COOKIE && medium) {
       headers['Cookie'] = MEDIUM_COOKIE
@@ -248,7 +248,7 @@ async function fetchOGWithBrowser(url) {
 
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 45000 })
 
-    // Wait for Cloudflare challenge to resolve — poll until title changes
+    // Wait for Cloudflare challenge to resolve - poll until title changes
     await page.waitForFunction(
       () => !document.title.includes('Just a moment'),
       { timeout: 30000 }
@@ -543,9 +543,9 @@ async function main() {
 
       let ogData = await fetchOGMetadata(url)
 
-      // Handle 404/410 — remove dead bookmarks
+      // Handle 404/410 - remove dead bookmarks
       if (ogData?.notFound) {
-        console.log(`    404 — removing dead bookmark`)
+        console.log(`    404 - removing dead bookmark`)
         const bookmarkId = urlToBookmarkId.get(url)
         if (instapaperReady && bookmarkId) {
           const deleted = await instapaperDelete(bookmarkId)
@@ -562,8 +562,8 @@ async function main() {
 
       let usedBrowserFallback = false
       if (ogData?.forbidden || (!ogData && isMediumUrl(url))) {
-        // 403 or Cloudflare JS challenge — retry with headless Chrome
-        console.log(`    ${ogData?.forbidden ? '403 Forbidden' : 'Cloudflare blocked'} — retrying with headless Chrome...`)
+        // 403 or Cloudflare JS challenge - retry with headless Chrome
+        console.log(`    ${ogData?.forbidden ? '403 Forbidden' : 'Cloudflare blocked'} - retrying with headless Chrome...`)
         ogData = await fetchOGWithBrowser(url)
         usedBrowserFallback = true
       }
@@ -587,7 +587,7 @@ async function main() {
 
         // If regular download failed and we know this site blocks requests, try via browser
         if (!result.success && (usedBrowserFallback || isMediumUrl(url))) {
-          console.log(`    Image download blocked — retrying with headless Chrome...`)
+          console.log(`    Image download blocked - retrying with headless Chrome...`)
           result = await downloadImageWithBrowser(ogData.image, localPath)
         }
 

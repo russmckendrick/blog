@@ -55,9 +55,9 @@ subnet_elb:
  - { az: ‘b’, subnet: ‘192.168.1.0/24’ }
  - { az: ‘c’, subnet: ‘192.168.2.0/24’
 subnet_ec2:
- — { az: ‘a’, subnet: ‘192.168.3.0/24’ }
- — { az: ‘b’, subnet: ‘192.168.4.0/24’ }
- — { az: ‘c’, subnet: ‘192.168.5.0/24’ }
+ - { az: ‘a’, subnet: ‘192.168.3.0/24’ }
+ - { az: ‘b’, subnet: ‘192.168.4.0/24’ }
+ - { az: ‘c’, subnet: ‘192.168.5.0/24’ }
 ```
 
 
@@ -110,7 +110,7 @@ This means when it comes to using doing something with the subnets, such as sett
    vpc_id: “`{{ vpc.vpc_id }}`”
    subnets: “`{{ subnet_elb_ids + subnet_ec2_ids }}`”
    routes:
-    — dest: 0.0.0.0/0
+    - dest: 0.0.0.0/0
       gateway_id: “`{{ igw.gateway_id }}`”
       region: “`{{ ec2_region }}`”
   register: public_route_table
@@ -137,7 +137,7 @@ firewall_elb:
    vpc_id: “`{{ vpc.vpc_id }}`”
    region: “`{{ ec2_region }}`
    rules:
-    — proto: tcp
+    - proto: tcp
       from_port: `{{ item.port }}`
       to_port: `{{ item.port }}`
       cidr_ip: `{{ item.source }}`
@@ -146,7 +146,7 @@ firewall_elb:
 ```
 
 
-I would only ever have a single rule created once the playbook had run through. After much head scratching I realised that unlike other Ansible modules the ec2_group module required you to explicitly define the rules rather than loop over — which kind of makes sense after I had thought about it.
+I would only ever have a single rule created once the playbook had run through. After much head scratching I realised that unlike other Ansible modules the ec2_group module required you to explicitly define the rules rather than loop over - which kind of makes sense after I had thought about it.
 
 It turns out the [boto libary](http://docs.pythonboto.org/en/latest/), which is used by nearly all of the AWS module in Ansible, requires you to pass in all of the rules in one. If you pass them in one at a time it will simply think you are trying to update the existing rule set and overwrite the rule which is there.
 
@@ -156,11 +156,11 @@ In the end I just went with defining the entire rule set as a variable !!!
 
 ```bash frame="terminal" title="Amazon Web Services with Ansible 5/9"
 firewall_elb:
- — proto: tcp
+ - proto: tcp
    from_port: 443
    to_port: 443
    cidr_ip: “0.0.0.0/0”
- — proto: tcp
+ - proto: tcp
    from_port: 80
    to_port: 80
    cidr_ip: “0.0.0.0/0”

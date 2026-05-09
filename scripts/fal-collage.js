@@ -445,11 +445,11 @@ function buildPromptFromBlueprint(blueprint, style = 'editorial_photoshoot', sou
   const negativeTerms = (promptsConfig.negative || []).join(', ')
 
   const peopleRule = normalized.people_present
-    ? 'Only depict people visible in the source images; each person appears once — never clone, mirror, or invent faces.'
+    ? 'Only depict people visible in the source images; each person appears once - never clone, mirror, or invent faces.'
     : 'Do not generate any people or faces unless clearly visible in the source images.'
 
   const promptParts = [
-    // Scene description — the core creative direction
+    // Scene description - the core creative direction
     normalized.scene,
 
     // Style and aesthetic

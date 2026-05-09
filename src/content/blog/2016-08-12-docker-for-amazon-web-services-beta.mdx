@@ -100,7 +100,7 @@ The full release notes for this version [can be found here](https://github.com/d
 Now we have our cluster up and running, we can launch a container service, like in my [previous posts](/2016/06/25/docker-load-balancing-application-bundles/) we will launch [a simple container which just gives you the container ID](https://hub.docker.com/r/russmckendrick/cluster/). To launch a single container simply run the following command;
 
 ```bash frame="terminal" title="Docker for Amazon Web Services Beta 5/7"
-docker service create — name cluster -p:80:80/tcp russmckendrick/cluster
+docker service create - name cluster -p:80:80/tcp russmckendrick/cluster
 ```
 
 
@@ -140,7 +140,7 @@ Load Balancing
 
 There is only a single elastic load balancer launched, while you can map different ports to the ELB it would be good to be able to launch more one load balancer so I have have multiple applications running the same external ports or support for Amazons new Application Load Balancer …
 
-- [New — AWS Application Load Balancer](https://aws.amazon.com/blogs/aws/new-aws-application-load-balancer/)
+- [New - AWS Application Load Balancer](https://aws.amazon.com/blogs/aws/new-aws-application-load-balancer/)
 - [Application Load Balancer Details](https://aws.amazon.com/elasticloadbalancing/applicationloadbalancer/)
 - [Launch Video](https://www.youtube.com/watch?v=4976_8JIWT4&index=2&list=PLhr1KZpdzukfsuHJK5mv40wVsMMhgOZ-Q)
 

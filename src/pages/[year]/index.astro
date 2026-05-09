@@ -5,6 +5,9 @@ import PostCard from '../../components/blog/PostCard.astro';
 import Pagination from '../../components/layout/Pagination.astro';
 import { SITE_TITLE } from '../../consts';
 import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../utils/hero-colors';
+import { Schema } from 'astro-seo-schema';
+import { createCollectionPageSchema, createBreadcrumbSchema } from '../../utils/schema';
+import { createUrlFriendlySlug } from '../../utils/url';
 
 const postsPerPage = 9;
 
@@ -52,9 +55,40 @@ const firstPost = yearContent[0];
 const firstPostHeroImage = firstPost?.data.heroImage || firstPost?.data.cover?.image;
 const heroColors = getHeroColors(firstPostHeroImage);
 const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors));
+
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+const collectionSchema = createCollectionPageSchema({
+  name: `${year} archive`,
+  description,
+  url: pageUrl,
+  items: yearContent.map((item) => {
+    const date = item.data.pubDate;
+    const yearStr = date.getFullYear().toString();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const slug = createUrlFriendlySlug(item.data.title);
+    return {
+      name: item.data.title,
+      url: new URL(`/${yearStr}/${month}/${day}/${slug}/`, siteUrl).toString()
+    };
+  }),
+  numberOfItems: totalItems
+});
+
+const breadcrumbSchema = createBreadcrumbSchema(
+  [
+    { name: 'Home', url: '/' },
+    { name: year, url: `/${year}/` }
+  ],
+  siteUrl
+);
 ---
 
 <BaseLayout title={title} description={description}>
+	<Schema slot="head" item={collectionSchema} />
+	<Schema slot="head" item={breadcrumbSchema} />
 	<!-- Hero gradient background from first post -->
 	<section
 		class="hero-gradient-section absolute inset-x-0 top-0 -z-10 h-[70vh] min-h-[450px]"

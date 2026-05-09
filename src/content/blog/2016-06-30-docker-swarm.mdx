@@ -33,7 +33,7 @@ docker network create -d overlay clusternetwork
 and finally created the service called “cluster”, which was made up of 3 replicas all bound to port 80, by running;
 
 ```bash frame="terminal" title="Docker Swarm 3/4"
-docker service create — name cluster — replicas 3 -p:80:80/tcp — network clusternetwork russmckendrick/cluster
+docker service create - name cluster - replicas 3 -p:80:80/tcp - network clusternetwork russmckendrick/cluster
 ```
 
 
@@ -64,7 +64,7 @@ To remove the service and leave the swarm run the following commands;
 ```bash frame="terminal" title="Docker Swarm 4/4"
 docker service rm cluster
 docker network rm clusternetwork
-docker swarm leave — force
+docker swarm leave - force
 ```
 
 

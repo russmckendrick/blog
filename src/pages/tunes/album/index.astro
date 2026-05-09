@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { tunesIndex, getAlbumTuneUrl, getArtistTuneUrl } from '../../../utils/tunes-index'
+import { Schema } from 'astro-seo-schema'
+import { createCollectionPageSchema, createBreadcrumbSchema } from '../../../utils/schema'
+
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
+
+const albums = tunesIndex.albums
+
+const title = 'Albums I have written about'
+const description = `Every record featured in the weekly Listened to This Week series on russ.cloud - ${albums.length} albums by ${tunesIndex.totals.artists} artists, sorted by artist.`
+
+const collectionSchema = createCollectionPageSchema({
+  name: title,
+  description,
+  url: pageUrl,
+  items: albums.slice(0, 100).map((album) => ({
+    name: `${album.name} - ${album.artist}`,
+    url: new URL(getAlbumTuneUrl(album.slug), siteUrl).toString()
+  })),
+  numberOfItems: albums.length
+})
+
+const breadcrumbSchema = createBreadcrumbSchema(
+  [
+    { name: 'Home', url: '/' },
+    { name: 'Tunes', url: '/tunes/' },
+    { name: 'Albums', url: '/tunes/album/' }
+  ],
+  siteUrl
+)
+---
+
+<BaseLayout title={title} description={description}>
+  <Schema slot="head" item={collectionSchema} />
+  <Schema slot="head" item={breadcrumbSchema} />
+
+  <section class="surface-container-low text-center py-12 pb-16 mb-8">
+    <div class="max-w-3xl mx-auto px-5 animate-fade-in">
+      <p class="text-sm uppercase tracking-wide text-on-surface-variant mb-2">
+        <a href="/tunes/" class="hover:text-[var(--color-secondary)] transition-colors">Tunes</a>
+        <span aria-hidden="true"> · </span>
+        Albums
+      </p>
+      <h1 class="text-4xl lg:text-5xl font-bold mb-4 text-on-surface font-display">
+        {title} 💿
+      </h1>
+      <p class="text-lg text-on-surface-variant">
+        {albums.length} albums covered across {tunesIndex.totals.posts} weekly posts.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-5 pb-12">
+    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      {albums.map((album) => (
+        <li class="surface-container-lowest rounded-lg p-3 transition-all hover:-translate-y-[2px] hover:shadow-[0_12px_32px_rgba(25,28,29,0.08)]">
+          <a
+            href={getAlbumTuneUrl(album.slug)}
+            class="block font-medium text-on-surface text-sm leading-snug focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded"
+          >
+            {album.name}
+          </a>
+          <p class="text-xs text-on-surface-variant mt-1">
+            <a href={getArtistTuneUrl(album.artistSlug)} class="hover:underline">
+              {album.artist}
+            </a>
+            {album.posts.length > 1 && (
+              <> · {album.posts.length} posts</>
+            )}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

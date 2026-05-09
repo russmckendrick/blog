@@ -14,7 +14,7 @@ const ROOT = path.resolve(__dirname, '..')
 const DIST = path.join(ROOT, 'dist')
 const SITE = 'https://www.russ.cloud'
 
-// Mirrors src/utils/url.ts — keep in sync if that changes.
+// Mirrors src/utils/url.ts - keep in sync if that changes.
 function createUrlFriendlySlug(title) {
 	return title
 		.toLowerCase()
@@ -98,7 +98,7 @@ function renderLlmsTxt(blog, tunes) {
 	const lines = []
 	lines.push('# russ.cloud')
 	lines.push('')
-	lines.push('> Technical blog by Russ McKendrick — cloud, DevOps, homelab, automation, and weekly music notes. All content licensed for search, agent answers, and training (see /robots.txt).')
+	lines.push('> Technical blog by Russ McKendrick - cloud, DevOps, homelab, automation, and weekly music notes. All content licensed for search, agent answers, and training (see /robots.txt).')
 	lines.push('')
 	lines.push('Each post below links to a plain-markdown version at `<canonical-url>index.md`. The HTML version lives at the canonical URL.')
 	lines.push('')

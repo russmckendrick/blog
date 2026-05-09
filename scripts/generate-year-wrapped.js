@@ -670,9 +670,9 @@ function generateTopArtistsSection(topArtists, collectionInfo, year, downloadedA
     const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `**${rank}.**`
 
     if (artistData?.link) {
-      return `- ${medal} [${artist}](${artistData.link}) — ${count.toLocaleString()} plays`
+      return `- ${medal} [${artist}](${artistData.link}) - ${count.toLocaleString()} plays`
     }
-    return `- ${medal} ${artist} — ${count.toLocaleString()} plays`
+    return `- ${medal} ${artist} - ${count.toLocaleString()} plays`
   }
 
   // Show first 10, rest in expandable section
@@ -728,7 +728,7 @@ function generateTopAlbumsSection(topAlbums, collectionInfo, year, downloadedAlb
     if (albumData?.link) albumPart = `[${album}](${albumData.link})`
     if (artistData?.link) artistPart = `[${artist}](${artistData.link})`
 
-    return `- ${medal} ${albumPart} by ${artistPart} — ${count.toLocaleString()} plays`
+    return `- ${medal} ${albumPart} by ${artistPart} - ${count.toLocaleString()} plays`
   }
 
   // Show first 10, rest in expandable section
@@ -816,7 +816,7 @@ function generateGenreBreakdownSection(insights, chartPath) {
   // Also include a text list for accessibility
   section += '<details>\n<summary>View as text list</summary>\n\n'
   for (const genre of genres) {
-    section += `- **${genre.rank}. ${genre.genre}** — ${genre.plays.toLocaleString()} plays (${genre.percentage}%)\n`
+    section += `- **${genre.rank}. ${genre.genre}** - ${genre.plays.toLocaleString()} plays (${genre.percentage}%)\n`
   }
   section += '\n</details>'
 

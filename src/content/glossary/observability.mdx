@@ -1,0 +1,19 @@
+---
+term: "Observability"
+description: "Observability is the ability to understand the internal state of a running system from the data it emits - logs, metrics, and traces - without having to change the system or attach a debugger."
+category: "Practice"
+relatedTerms: ["devops", "ci-cd", "canary-deployment"]
+tags: ["devops"]
+---
+
+**Observability** asks a simple question: when something goes wrong, can you figure out *why* using only the data the system already produces?
+
+It is usually framed as the "three pillars":
+
+- **Logs** - structured events, timestamped, searchable.
+- **Metrics** - numerical time series for things like request rate, error rate, queue depth, latency percentiles.
+- **Traces** - the path a single request takes through every service and database it touches, with timing attached.
+
+Monitoring tells you a known thing is broken. Observability lets you investigate the unknown - the failure mode you did not predict in advance. The distinction matters because distributed systems generate failure modes faster than anyone can write alerts for them.
+
+A practical observability setup is opinionated about cardinality (do not blow up the bill), correlation (every log line and trace span carries the same request ID), and the human-facing side: dashboards that are skimmable at 3am, and alerts that fire on user pain rather than CPU usage.

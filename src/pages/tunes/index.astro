@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import HeroSection from '../../components/home/HeroSection.astro';
 import Pagination from '../../components/layout/Pagination.astro';
+import { tunesIndex } from '../../utils/tunes-index';
 
 // Tunes homepage shows 1 featured + 6 grid cards = 7 total
 const firstPagePosts = 7;
@@ -23,11 +24,38 @@ const totalPages = 1 + Math.ceil(Math.max(0, remainingPosts) / subsequentPagePos
 const featuredTune = tunes[0];
 const gridTunes = tunes.slice(1);
 
+const browseHubs = [
+	{
+		href: '/tunes/artist/',
+		label: 'By artist',
+		count: tunesIndex.totals.artists,
+		emoji: '🎤'
+	},
+	{
+		href: '/tunes/album/',
+		label: 'By album',
+		count: tunesIndex.totals.albums,
+		emoji: '💿'
+	}
+];
 ---
 
 <BaseLayout title="Listened to This Week" description="My weekly music listening posts - what I've been enjoying on repeat">
 	<section class="max-w-7xl mx-auto px-5">
 		<h1 class="sr-only">Listened to This Week</h1>
+
+		<nav aria-label="Browse tunes" class="mb-6 sm:mb-8 flex flex-wrap gap-3 justify-center">
+			{browseHubs.map((hub) => (
+				<a
+					href={hub.href}
+					class="inline-flex items-center gap-2 surface-container-lowest rounded-full px-4 py-2 text-sm font-medium text-on-surface transition-all hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50"
+				>
+					<span aria-hidden="true">{hub.emoji}</span>
+					<span>{hub.label}</span>
+					<span class="text-xs text-on-surface-variant">{hub.count}</span>
+				</a>
+			))}
+		</nav>
 
 		{/* Hero Section with Featured Tune */}
 		<HeroSection featuredPost={featuredTune} />

@@ -35,7 +35,7 @@ module "application-rg" {  source   = "modules/vnet"  name     = "${var.resource
 
 While it worked, it did error a lot of the time from a standing start, this was because by Terraform was trying to create the vNet before the Resource Group had been created.
 
-No problem I thought to myself — I remembered from the last time I used Terraform that there are resource dependencies in the form of . However, after much reading, I discovered that **depends_on** isn’t yet supported for modules — it is on the road map though.
+No problem I thought to myself - I remembered from the last time I used Terraform that there are resource dependencies in the form of . However, after much reading, I discovered that **depends_on** isn’t yet supported for modules - it is on the road map though.
 
 Because of this I had to rejig my **main.tf** file to look like the following;
 
@@ -61,7 +61,7 @@ See [this GitHub issue for more detail](https://github.com/hashicorp/terraform/i
 
 Most of the problems I came across while I have been revisiting Terraform appear to be either being fixed or having the ground-work laid for a fix in Terraform 0.12 which should be released very soon.
 
-Until it is, I will be waiting — thinking about all of the work arounds I will have to undo.
+Until it is, I will be waiting - thinking about all of the work arounds I will have to undo.
 
 For more information on Terraform 0.12 the following video is a good place to start;
 

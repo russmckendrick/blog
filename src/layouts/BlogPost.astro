@@ -18,7 +18,7 @@ import Breadcrumbs from '../components/navigation/Breadcrumbs.astro';
 import { getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } from '../utils/tags';
 import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, TAG_METADATA, TAG_AVATAR_MAP } from '../consts';
 import { Schema } from 'astro-seo-schema';
-import { createBlogPostingSchema, createBreadcrumbSchema } from '../utils/schema';
+import { createBlogPostingSchema, createBreadcrumbSchema, createFAQSchema, createHowToSchema } from '../utils/schema';
 
 
 // Import LightGallery CSS
@@ -48,6 +48,8 @@ interface Props extends BlogData {
 }
 
 const { entry, title, description, pubDate, updatedDate, lastModified, heroImage, cover, tags = [], previousPost, nextPost, ogImagePath, isTune = false, showToc = false, headings = [], filePath, readingTime, avatar } = Astro.props;
+const faqs = (Astro.props as Props & { faqs?: { question: string; answer: string }[] }).faqs;
+const howto = (Astro.props as Props & { howto?: { totalTime?: string; steps: { name: string; text: string; image?: string }[] } }).howto;
 
 // Default fallback image
 const defaultImage = '/images/blog-cover.png';
@@ -122,6 +124,20 @@ const breadcrumbSchema = createBreadcrumbSchema(
 	breadcrumbItems.map(item => ({ name: item.label, url: item.url })),
 	Astro.site?.toString() || 'https://www.russ.cloud/'
 );
+
+const faqSchema = faqs && faqs.length > 0
+	? createFAQSchema(faqs, Astro.url.toString())
+	: null;
+const howToSchema = howto && howto.steps?.length > 0
+	? createHowToSchema({
+		name: title,
+		description,
+		steps: howto.steps,
+		totalTime: howto.totalTime,
+		_url: Astro.url.toString(),
+		image: ogImage
+	})
+	: null;
 ---
 
 <html lang="en">
@@ -160,6 +176,8 @@ const breadcrumbSchema = createBreadcrumbSchema(
 		<link rel="dns-prefetch" href="https://opengraph.githubassets.com">
 		<Schema item={blogPostingSchema} />
 		<Schema item={breadcrumbSchema} />
+		{faqSchema && <Schema item={faqSchema} />}
+		{howToSchema && <Schema item={howToSchema} />}
 	</Head>
 
 	<body class="surface">

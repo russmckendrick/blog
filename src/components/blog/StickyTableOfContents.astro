@@ -161,14 +161,14 @@ const tocHeadings = headings.filter(h => h.depth <= maxDepth)
         const docHeight = document.documentElement.scrollHeight
         const winHeight = window.innerHeight
 
-        // Near bottom of page — activate last heading
+        // Near bottom of page - activate last heading
         if (scrollY + winHeight >= docHeight - 50) {
           const lastSlug = slugs[slugs.length - 1]
           if (lastSlug) setActive(lastSlug)
           return
         }
 
-        // Near top — find the last heading above viewport top
+        // Near top - find the last heading above viewport top
         if (scrollY < 100) {
           setActive(null)
         }

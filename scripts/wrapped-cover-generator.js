@@ -107,7 +107,7 @@ async function generateYearEndPrompt(imageUrls, year) {
       model: 'gpt-5.4',
       instructions: `You are a professional photo compositor creating a natural-language prompt for a cinematic music blog header image. Analyze the visual elements in these album covers (people, faces, buildings, objects, colors, patterns), then write a prompt that creates ONE unified photographic scene using these elements.
 
-Write the prompt as a vivid flowing scene description — every token should carry visual meaning. No labels, no structured sections, no JSON.
+Write the prompt as a vivid flowing scene description - every token should carry visual meaning. No labels, no structured sections, no JSON.
 
 CRITICAL CONCEPT:
 - Do NOT describe positioning album covers themselves
@@ -124,8 +124,8 @@ Your prompt MUST NOT:
 - Reference positioning album covers ('the first cover', 'stack the covers')
 - Use grid/arrangement language
 - Use painterly terms: watercolor, brushstrokes, mural
-- Describe album covers as objects — describe their CONTENTS as subjects
-- Use labels like 'Scene:', 'Style:', 'Composition:' — just describe the image`,
+- Describe album covers as objects - describe their CONTENTS as subjects
+- Use labels like 'Scene:', 'Style:', 'Composition:' - just describe the image`,
       input: [
         {
           type: 'message',
@@ -135,7 +135,7 @@ Your prompt MUST NOT:
               type: 'input_text',
               text: `Analyze these ${imageUrls.length} album covers and create a natural-language prompt for compositing them into a cinematic music blog header.
 
-Write 2-3 vivid sentences as a flowing scene description. Identify the key visual elements from each cover, describe how to composite them into ONE unified cinematic scene, specify color treatment. End with 'Remove all text and typography except "${year}" which should appear as large centered text stylistically integrated into the artwork — using colors, lighting effects, or subtle glow that matches the overall composition.'`
+Write 2-3 vivid sentences as a flowing scene description. Identify the key visual elements from each cover, describe how to composite them into ONE unified cinematic scene, specify color treatment. End with 'Remove all text and typography except "${year}" which should appear as large centered text stylistically integrated into the artwork - using colors, lighting effects, or subtle glow that matches the overall composition.'`
             },
             ...imageContent
           ]

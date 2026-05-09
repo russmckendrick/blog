@@ -8,7 +8,7 @@
 function wantsMarkdown(request) {
 	const accept = request.headers.get('Accept') || ''
 	// Match only when text/markdown is explicitly present in the Accept header.
-	// Browsers send text/html,application/xhtml+xml,... — never text/markdown.
+	// Browsers send text/html,application/xhtml+xml,... - never text/markdown.
 	return /(^|,)\s*text\/markdown(\s*;|\s*,|\s*$)/i.test(accept)
 }
 

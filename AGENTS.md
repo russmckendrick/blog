@@ -25,7 +25,7 @@ Agent guidance for the Russ.Cloud blog repository.
 - Blog posts belong in `src/content/blog/` as `YYYY-MM-DD-slug.mdx`.
 - Tunes posts belong in `src/content/tunes/`, usually as directory-based entries with `index.mdx`.
 - Use `sanitize-html` for HTML sanitization. Do not add regex-based sanitization.
-- After completing any code, component, schema, or content-model changes, review the Documentation Map below and update every affected doc in `docs/` in the same change. This applies to all runs, not just when you know a doc already covers the topic — if your change introduces, removes, or alters behaviour that any doc references, update that doc.
+- After completing any code, component, schema, or content-model changes, review the Documentation Map below and update every affected doc in `docs/` in the same change. This applies to all runs, not just when you know a doc already covers the topic - if your change introduces, removes, or alters behaviour that any doc references, update that doc.
 
 ## High-Value Project Context
 

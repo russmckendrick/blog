@@ -185,6 +185,34 @@ showToc: true
 
 ---
 
+### faqs
+
+Optional array of question/answer pairs. When present, the page emits a `FAQPage` JSON-LD schema in addition to the normal `BlogPosting` schema. The questions are not rendered visually - they live in the body markdown - so this is purely a structured-data signal for search engines.
+
+```yaml
+faqs:
+  - question: "Do I need root to install Docker on Ubuntu?"
+    answer: "Yes - installing the Docker engine itself requires sudo, but day-to-day commands can run rootless after you add your user to the docker group."
+  - question: "Which Ubuntu LTS versions are supported?"
+    answer: "Docker supports the two most recent LTS releases. As of 2026 that is 22.04 and 24.04."
+```
+
+### howto
+
+Optional structured how-to definition. When present, the page emits a `HowTo` JSON-LD schema. Use for tutorial posts that have a clear ordered set of steps.
+
+```yaml
+howto:
+  totalTime: "PT30M"
+  steps:
+    - name: "Install the Docker engine"
+      text: "Add Docker's apt repository and install the docker-ce package."
+    - name: "Configure user permissions"
+      text: "Add your user to the docker group so you can run commands without sudo."
+```
+
+`totalTime` uses ISO 8601 duration format. Both fields are optional in the rest of the post - the schema is purely additive.
+
 ### avatar
 
 **Type**: `string`
@@ -333,6 +361,22 @@ Error: Expected date, received string
 ```
 Warning: Tag "xyz" not found in TAG_METADATA
 ```
+
+## Glossary collection
+
+Glossary entries live at `src/content/glossary/{term-slug}.mdx` and use a separate, simpler schema:
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `term` | string | yes | Display name of the term (e.g. `"Infrastructure as Code"`). |
+| `description` | string | yes | One-sentence definition used for meta description and the entry's intro. |
+| `abbreviation` | string | no | Acronym, rendered alongside the term. |
+| `category` | string | no | Free-form classification - `"Pattern"`, `"Methodology"`, etc. |
+| `relatedTerms` | string[] | no | Slugs of other glossary entries (matched against the file id). Renders a related-terms list at the bottom of the page. |
+| `tags` | string[] | no | Tags shared with the blog/tunes taxonomy. |
+| `pubDate`, `updatedDate`, `heroImage`, `draft` | various | no | Behave the same as on the blog collection. |
+
+Each entry emits `DefinedTerm` JSON-LD schema. The body of the file is the long-form definition, rendered as MDX.
 
 ## Schema Source
 

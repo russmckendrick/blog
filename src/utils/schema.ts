@@ -1,4 +1,15 @@
-import type { BlogPosting, Person, Organization, BreadcrumbList, FAQPage, HowTo, WithContext } from 'schema-dts'
+import type {
+  BlogPosting,
+  Person,
+  Organization,
+  BreadcrumbList,
+  FAQPage,
+  HowTo,
+  MusicRecording,
+  CollectionPage,
+  DefinedTerm,
+  WithContext
+} from 'schema-dts'
 import { SITE_TITLE, AUTHOR_NAME, AUTHOR_HOMEPAGE, SOCIAL_LINKS } from '../consts'
 
 /**
@@ -187,5 +198,136 @@ export function createHowToSchema({
       text: step.text,
       ...(step.image && { image: step.image })
     }))
+  }
+}
+
+/**
+ * Creates a MusicRecording schema for tunes posts featuring a specific track/album
+ */
+interface MusicRecordingSchemaProps {
+  name: string
+  byArtist: string
+  inAlbum?: string
+  datePublished?: number
+  genre?: string[]
+  url: string
+  image?: string
+  description?: string
+}
+
+export function createMusicRecordingSchema({
+  name,
+  byArtist,
+  inAlbum,
+  datePublished,
+  genre = [],
+  url,
+  image,
+  description
+}: MusicRecordingSchemaProps): WithContext<MusicRecording> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MusicRecording',
+    name,
+    byArtist: {
+      '@type': 'MusicGroup',
+      name: byArtist
+    },
+    ...(inAlbum && {
+      inAlbum: {
+        '@type': 'MusicAlbum',
+        name: inAlbum,
+        ...(byArtist && {
+          byArtist: {
+            '@type': 'MusicGroup',
+            name: byArtist
+          }
+        }),
+        ...(datePublished && { datePublished: String(datePublished) })
+      }
+    }),
+    ...(genre.length > 0 && { genre }),
+    ...(image && { image }),
+    ...(description && { description }),
+    url
+  }
+}
+
+/**
+ * Creates a CollectionPage schema for browse / archive / tag pages
+ */
+interface CollectionPageItem {
+  name: string
+  url: string
+}
+
+interface CollectionPageSchemaProps {
+  name: string
+  description: string
+  url: string
+  items?: CollectionPageItem[]
+  numberOfItems?: number
+}
+
+export function createCollectionPageSchema({
+  name,
+  description,
+  url,
+  items = [],
+  numberOfItems
+}: CollectionPageSchemaProps): WithContext<CollectionPage> {
+  const total = numberOfItems ?? items.length
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name,
+    description,
+    url,
+    ...(total > 0 && {
+      mainEntity: {
+        '@type': 'ItemList',
+        numberOfItems: total,
+        itemListElement: items.map((item, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: item.name,
+          url: item.url
+        }))
+      }
+    })
+  }
+}
+
+/**
+ * Creates a DefinedTerm schema for glossary entries
+ */
+interface DefinedTermSchemaProps {
+  name: string
+  description: string
+  url: string
+  termCode?: string
+  inDefinedTermSet?: string
+}
+
+export function createDefinedTermSchema({
+  name,
+  description,
+  url,
+  termCode,
+  inDefinedTermSet
+}: DefinedTermSchemaProps): WithContext<DefinedTerm> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name,
+    description,
+    url,
+    ...(termCode && { termCode }),
+    ...(inDefinedTermSet && {
+      inDefinedTermSet: {
+        '@type': 'DefinedTermSet',
+        name: inDefinedTermSet
+      }
+    })
   }
 }

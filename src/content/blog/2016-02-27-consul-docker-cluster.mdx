@@ -25,27 +25,27 @@ However, thats not really recommended so here is how you stat a cluster using th
 
 ```bash frame="terminal" title="Consul Docker Cluster 2/10"
 docker-machine create \
- — driver digitalocean \
- — digitalocean-access-token your-digital-ocean-api-token-goes-here \
- — digitalocean-region lon1 \
- — digitalocean-size 512mb \
- — digitalocean-private-networking \
+ - driver digitalocean \
+ - digitalocean-access-token your-digital-ocean-api-token-goes-here \
+ - digitalocean-region lon1 \
+ - digitalocean-size 512mb \
+ - digitalocean-private-networking \
 service-discovery01
 
 docker-machine create \
- — driver digitalocean \
- — digitalocean-access-token your-digital-ocean-api-token-goes-here \
- — digitalocean-region lon1 \
- — digitalocean-size 512mb \
- — digitalocean-private-networking \
+ - driver digitalocean \
+ - digitalocean-access-token your-digital-ocean-api-token-goes-here \
+ - digitalocean-region lon1 \
+ - digitalocean-size 512mb \
+ - digitalocean-private-networking \
 service-discovery02
 
 docker-machine create \
- — driver digitalocean \
- — digitalocean-access-token your-digital-ocean-api-token-goes-here \
- — digitalocean-region lon1 \
- — digitalocean-size 512mb \
- — digitalocean-private-networking \
+ - driver digitalocean \
+ - digitalocean-access-token your-digital-ocean-api-token-goes-here \
+ - digitalocean-region lon1 \
+ - digitalocean-size 512mb \
+ - digitalocean-private-networking \
 service-discovery03
 ```
 
@@ -75,7 +75,7 @@ docker $(docker-machine config service-discovery01) run -d \
 -p “$SD1:8600:8600” \
 -p “$SD1:8600:8600/udp” \
 -h “consul01” \
- — name=”consul01" \
+ - name=”consul01" \
 russmckendrick/consul agent -data-dir /data -server -bootstrap-expect 3 -ui-dir /ui -client=0.0.0.0 -advertise=$SD1
 ```
 
@@ -94,7 +94,7 @@ docker $(docker-machine config service-discovery02) run -d \
 -p “$SD2:8600:8600” \
 -p “$SD2:8600:8600/udp” \
 -h “consul02” \
- — name=”consul02" \
+ - name=”consul02" \
 russmckendrick/consul agent -data-dir /data -server -bootstrap-expect 3 -ui-dir /ui -client=0.0.0.0 -advertise=$SD2
 ```
 
@@ -113,7 +113,7 @@ docker $(docker-machine config service-discovery03) run -d \
 -p “$SD3:8600:8600” \
 -p “$SD3:8600:8600/udp” \
 -h “consul03” \
- — name=”consul03" \
+ - name=”consul03" \
 russmckendrick/consul agent -data-dir /data -server -bootstrap-expect 3 -ui-dir /ui -client=0.0.0.0 -advertise=$SD3
 ```
 

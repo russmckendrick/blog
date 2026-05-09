@@ -1,0 +1,17 @@
+---
+term: "CI/CD"
+description: "CI/CD stands for Continuous Integration and Continuous Delivery (or Deployment) - the practice of automatically building, testing, and releasing software changes whenever code is pushed."
+category: "Practice"
+relatedTerms: ["devops", "infrastructure-as-code", "blue-green-deployment", "canary-deployment"]
+tags: ["devops", "automation"]
+---
+
+**CI/CD** chains together two related practices:
+
+- **Continuous Integration (CI)** - every push to a shared branch triggers an automated build and test run, so problems surface within minutes of being introduced rather than at the end of a release cycle.
+- **Continuous Delivery (CD)** - every commit that passes CI is built into a deployable artefact and held ready to ship. A human approves the actual release.
+- **Continuous Deployment** - the same as Continuous Delivery, except passing tests are enough; releases happen automatically.
+
+The distinction between Delivery and Deployment is small but important. Continuous Deployment requires a level of test coverage, observability, and rollback automation most teams do not have. Continuous Delivery is achievable for almost any team and gives you most of the benefit.
+
+Common CI/CD platforms include GitHub Actions, GitLab CI, Jenkins, CircleCI, Buildkite, and Argo Workflows. The platform matters less than the discipline of keeping the pipeline fast, deterministic, and trustworthy.

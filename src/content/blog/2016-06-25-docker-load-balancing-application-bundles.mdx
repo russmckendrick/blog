@@ -50,7 +50,7 @@ This will show all of the Droplets in the cluster and their current status. Now 
 
 ```bash frame="terminal" title="Docker Load Balancing & Application Bundles 2/13"
 docker network create -d overlay clusternetwork
-docker service create — name cluster -p:80:80/tcp — network clusternetwork russmckendrick/cluster
+docker service create - name cluster -p:80:80/tcp - network clusternetwork russmckendrick/cluster
 docker service ls
 docker service tasks cluster
 ```
@@ -98,25 +98,25 @@ services:
  cover:
     image: wordpress
  ports:
- — “80:80”
+ - “80:80”
  environment:
- — “WORDPRESS_DB_HOST=mysql:3306”
- — “WORDPRESS_DB_PASSWORD=password”
+ - “WORDPRESS_DB_HOST=mysql:3306”
+ - “WORDPRESS_DB_PASSWORD=password”
  mysql:
  container_name: my-wordpress-database
  cover:
     image: mysql
  expose:
- — “3306”
+ - “3306”
  environment:
- — “MYSQL_ROOT_PASSWORD=password”
+ - “MYSQL_ROOT_PASSWORD=password”
 ```
 
 
 As you can see the docker-compose.yml file runs a WordPress and MySQL container as well configures networking. On your local machine, check that you are running Docker Compose 1.8rc1, this is included in the latest Docker for Mac beta, by running;
 
 ```bash frame="terminal" title="Docker Load Balancing & Application Bundles 6/13"
-docker-compose — version
+docker-compose - version
 ```
 
 

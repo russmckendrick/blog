@@ -1,6 +1,6 @@
 ---
 title: "Introducing AI Commit"
-description: "A Rust CLI I built to stop writing terrible commit messages — aic generates AI-powered commit messages, PR drafts, diff reviews, and repo visualisations from your staged changes."
+description: "A Rust CLI I built to stop writing terrible commit messages - aic generates AI-powered commit messages, PR drafts, diff reviews, and repo visualisations from your staged changes."
 date: 2026-04-11T08:48:37.403Z
 cover:
   image: "../../assets/2026-04-11-introducing-ai-commit/blog-cover-2026-04-11-introducing-ai-commit.png"
@@ -22,7 +22,7 @@ So I used AI to build an AI tool to fix that. AI Commit is a Rust CLI that reads
 
 ## Built with AI, for AI-assisted git
 
-Like [ssl-toolkit](/2026/02/01/introducing-ssl-toolkit/) and [HostsButler](/2026/04/05/introducing-hosts-butler/) before it, AI Commit was vibe-coded in Rust using Claude Code and Codex. I'm not a Rust developer by trade — my background is infrastructure and DevOps — but tools like Claude Code have made it practical for me to build and maintain projects in a language I wouldn't otherwise have reached for.
+Like [ssl-toolkit](/2026/02/01/introducing-ssl-toolkit/) and [HostsButler](/2026/04/05/introducing-hosts-butler/) before it, AI Commit was vibe-coded in Rust using Claude Code and Codex. I'm not a Rust developer by trade - my background is infrastructure and DevOps - but tools like Claude Code have made it practical for me to build and maintain projects in a language I wouldn't otherwise have reached for.
 
 There's an obvious meta quality to building an AI-powered tool with an AI coding assistant, and I won't pretend that wasn't part of the appeal. But it's also just how I work now. Claude Code handles the parts of Rust that would otherwise send me down documentation rabbit holes, and I get to focus on the design and behaviour of the thing rather than fighting the borrow checker.
 
@@ -30,15 +30,15 @@ If you're curious about the vibe-coding workflow, I covered it in more detail in
 
 ## What it does
 
-The core loop is simple: stage your changes, run `aic`, review the generated message, and either accept it, ask for a regeneration, or drop into your editor to tweak it. The tool reads the diff, feeds it to whichever AI provider you've configured, and comes back with a conventional commit message — complete with a type, optional scope derived from your changed file paths, a description, and an explanatory body.
+The core loop is simple: stage your changes, run `aic`, review the generated message, and either accept it, ask for a regeneration, or drop into your editor to tweak it. The tool reads the diff, feeds it to whichever AI provider you've configured, and comes back with a conventional commit message - complete with a type, optional scope derived from your changed file paths, a description, and an explanatory body.
 
 Beyond the basic commit flow, there are a few other commands worth knowing about:
 
-- **`aic review`** — runs your staged diff through a review-focused prompt and comes back with findings grouped by severity (Critical, Warning, Suggestion). Good for a sanity check before committing something you're unsure about.
-- **`aic pr`** — generates a pull request title and Markdown description from your branch's commits and cumulative diff. I've been using this every time I open a PR.
-- **`aic log`** — rewrites the last N commit messages on a branch using AI. Useful for cleaning up a scrappy local history before pushing.
-- **`aic history`** — a local log of every generated message, review, and PR draft, browsable in an interactive picker.
-- **`aic map`** — generates SVG visualisations of your codebase and commit history. More on this below.
+- **`aic review`** - runs your staged diff through a review-focused prompt and comes back with findings grouped by severity (Critical, Warning, Suggestion). Good for a sanity check before committing something you're unsure about.
+- **`aic pr`** - generates a pull request title and Markdown description from your branch's commits and cumulative diff. I've been using this every time I open a PR.
+- **`aic log`** - rewrites the last N commit messages on a branch using AI. Useful for cleaning up a scrappy local history before pushing.
+- **`aic history`** - a local log of every generated message, review, and PR draft, browsable in an interactive picker.
+- **`aic map`** - generates SVG visualisations of your codebase and commit history. More on this below.
 
 ## Installation
 
@@ -48,7 +48,7 @@ On macOS, Homebrew is the easiest path:
 brew install russmckendrick/tap/aicommit
 ```
 
-On Linux, grab the binary directly — the following one-liner detects your architecture and installs it to `/usr/local/bin`:
+On Linux, grab the binary directly - the following one-liner detects your architecture and installs it to `/usr/local/bin`:
 
 ```bash frame="terminal" title="Installing - Linux"
 ARCH=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
@@ -63,7 +63,7 @@ On Windows, download with PowerShell:
 Invoke-WebRequest -Uri "https://github.com/russmckendrick/aicommit/releases/latest/download/aic-windows-amd64.exe" -OutFile "aic.exe"
 ```
 
-WinGet support is on the way — a [PR has been submitted](https://github.com/microsoft/winget-pkgs/pull/358049) to the community repository and is currently in review. Once that's merged you'll be able to install with `winget install --id RussMcKendrick.Aicommit -e`.
+WinGet support is on the way - a [PR has been submitted](https://github.com/microsoft/winget-pkgs/pull/358049) to the community repository and is currently in review. Once that's merged you'll be able to install with `winget install --id RussMcKendrick.Aicommit -e`.
 
 All current releases are on the [GitHub releases page](https://github.com/russmckendrick/aicommit/releases).
 
@@ -75,13 +75,13 @@ Once installed, run the guided setup:
 aic setup
 ```
 
-This walks you through selecting a provider and configuring your API key. If you plan to use the `claude-code` or `codex` local providers, install and authenticate those CLIs first — `aic` will reuse their existing login state rather than managing credentials itself.
+This walks you through selecting a provider and configuring your API key. If you plan to use the `claude-code` or `codex` local providers, install and authenticate those CLIs first - `aic` will reuse their existing login state rather than managing credentials itself.
 
 ## Providers
 
 v0.0.6 ships with seven provider paths: `openai`, `azure-openai`, `anthropic`, `groq`, `ollama`, `claude-code`, and `codex`.
 
-OpenAI, Azure OpenAI, Groq, and Ollama all use the standard chat completions wire format. Anthropic uses its Messages API directly. The `claude-code` and `codex` providers are a bit different — they talk to the locally installed `claude` or `codex` binary from your `PATH`, so authentication is handled by those tools rather than `aic`.
+OpenAI, Azure OpenAI, Groq, and Ollama all use the standard chat completions wire format. Anthropic uses its Messages API directly. The `claude-code` and `codex` providers are a bit different - they talk to the locally installed `claude` or `codex` binary from your `PATH`, so authentication is handled by those tools rather than `aic`.
 
 ```bash frame="terminal" title="Configuring OpenAI"
 aic config set AIC_AI_PROVIDER=openai AIC_API_KEY=<key> AIC_MODEL=gpt-5.4-mini
@@ -154,7 +154,7 @@ git add src/
 aic
 ```
 
-If you haven't staged anything, `aic` presents a menu to stage all changed files, pick files interactively, or bail out. Once it has a diff to work with, it generates a message and shows it to you for review — accept, regenerate, edit, or abort.
+If you haven't staged anything, `aic` presents a menu to stage all changed files, pick files interactively, or bail out. Once it has a diff to work with, it generates a message and shows it to you for review - accept, regenerate, edit, or abort.
 
 For a quick check of what it would generate without actually committing:
 
@@ -183,7 +183,7 @@ aic
 
 If you choose to split, `aic` analyses the staged changes, suggests 2–4 file-based commit groups, generates a message for each one, and shows you a preview of the full sequence before creating anything. You can accept the suggested groups, rebuild them manually, or fall back to a single commit.
 
-A few current limitations worth knowing: splitting is file-based rather than hunk-based, and it's only available in the normal interactive flow — `--yes`, `--dry-run`, and `--amend` stay as single-commit operations.
+A few current limitations worth knowing: splitting is file-based rather than hunk-based, and it's only available in the normal interactive flow - `--yes`, `--dry-run`, and `--amend` stay as single-commit operations.
 
 ## Reviewing your diff before committing
 
@@ -209,7 +209,7 @@ aic pr --context "call out the migration risk"
 The base branch is detected automatically when possible (it checks `refs/remotes/origin/HEAD`, then `origin/main`, then `main`, then `master`), or you can specify it with `--base`. The output is copy-ready, and the draft gets saved to your local history.
 
 <NoteCallout title="Platform API integration">
-In the current version, `aic pr` generates the description text only — it doesn't open a PR through the GitHub, GitLab, or Bitbucket APIs. That's on the roadmap.
+In the current version, `aic pr` generates the description text only - it doesn't open a PR through the GitHub, GitLab, or Bitbucket APIs. That's on the roadmap.
 </NoteCallout>
 
 ## Visualising your repo
@@ -240,7 +240,7 @@ heat_commits = 100
 activity_commits = 1000
 ```
 
-Here are a couple of examples generated from this blog's repository — an activity graph and a commit timeline:
+Here are a couple of examples generated from this blog's repository - an activity graph and a commit timeline:
 
 <ThemeSvg src="/assets/2026-04-11-introducing-ai-commit/aic-activity" alt="AI Commit activity graph for the russ.cloud repository" />
 
@@ -288,8 +288,8 @@ dist/**
 
 ## Summary
 
-aicommit has made me stop dreading the "write a good commit message" part of the workflow. And yes, the command being `aic` is an entirely deliberate [Alice In Chains](https://www.youtube.com/watch?v=TAqZb52sgpU) reference — if you're going to type something dozens of times a day, it might as well be named after a great band. The project is open source and on GitHub:
+aicommit has made me stop dreading the "write a good commit message" part of the workflow. And yes, the command being `aic` is an entirely deliberate [Alice In Chains](https://www.youtube.com/watch?v=TAqZb52sgpU) reference - if you're going to type something dozens of times a day, it might as well be named after a great band. The project is open source and on GitHub:
 
 <LinkPreview id="https://github.com/russmckendrick/aicommit" />
 
-It's at [v0.0.6](https://github.com/russmckendrick/aicommit/releases/tag/v0.0.6) now, with commit splitting, repo visualisations, and native Anthropic, Groq, and Ollama support all landed in this release. There are still rough edges — config profiles and platform PR API integration are both on the roadmap. If you give it a go and hit anything odd, or have a feature you'd like to see, issues and pull requests are very welcome.
+It's at [v0.0.6](https://github.com/russmckendrick/aicommit/releases/tag/v0.0.6) now, with commit splitting, repo visualisations, and native Anthropic, Groq, and Ollama support all landed in this release. There are still rough edges - config profiles and platform PR API integration are both on the roadmap. If you give it a go and hit anything odd, or have a feature you'd like to see, issues and pull requests are very welcome.

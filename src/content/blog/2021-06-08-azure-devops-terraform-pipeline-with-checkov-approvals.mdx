@@ -37,7 +37,7 @@ The Whole workflow can be found below (click on it for a larger view);
 
 As well as the addition of the stages detailed above, the pipeline has moved to using the [Terraform Azure DevOps extension from Microsoft DevLabs](https://marketplace.visualstudio.com/items?itemName=ms-devlabs.custom-terraform-tasks&ssr=false#overview) to the [Terraform Azure DevOps extension by Charles Zipp](https://marketplace.visualstudio.com/items?itemName=charleszipp.azure-pipelines-tasks-terraform).
 
-The reasoning for this is that the extension by [Charles Zipp](https://github.com/charleszipp/azure-pipelines-tasks-terraform) enables a lot of the functionality I needed to enable the two different approval stages without having to code the logic myself — which I am always a fan of 😉
+The reasoning for this is that the extension by [Charles Zipp](https://github.com/charleszipp/azure-pipelines-tasks-terraform) enables a lot of the functionality I needed to enable the two different approval stages without having to code the logic myself - which I am always a fan of 😉
 
 ## The Stages
 
@@ -489,9 +489,9 @@ Clicking on either the two results will give a more information;
 {/* TODO: End shortcode: {{/oldgallery}} */}
 
 
-As you can see, we are allow full access to both SSH and RDP to the whole internet — not a great idea so we will need to update the code to lock those two rules down to an IP address. Thankfully, the Checkov stage errored before any of the Terraform stages were executed meaning that our mistake never made it as far as being deployed.
+As you can see, we are allow full access to both SSH and RDP to the whole internet - not a great idea so we will need to update the code to lock those two rules down to an IP address. Thankfully, the Checkov stage errored before any of the Terraform stages were executed meaning that our mistake never made it as far as being deployed.
 
-A quick code change & commit later and we have the tests passing and the changes being automatically deployed — which is expected as there is only the addition of the network security group;
+A quick code change & commit later and we have the tests passing and the changes being automatically deployed - which is expected as there is only the addition of the network security group;
 
 {/* Old gallery removed - please add images manually if needed */}
    <Img src="/assets/2021-06-08-azure-devops-terraform-pipeline-with-checkov-approvals/images/tf09.png" />
@@ -525,6 +525,6 @@ As I find myself collaborating on more and more complex Terraform deployments it
 
 This means having checks in place which not only make sure that simple mistakes, like opening up management ports to the internet, but also to check that the code is valid before it gets executed is a good safety net.
 
-An even bigger safety net is triggering the `terraform apply` command based on the results of a `terraform plan` so that checks can be made to ensure that nothing bad or unexpected is going to happen as a result of the changes you are applying —after all, stoping an outage before it becomes an outage is always the best option 👍
+An even bigger safety net is triggering the `terraform apply` command based on the results of a `terraform plan` so that checks can be made to ensure that nothing bad or unexpected is going to happen as a result of the changes you are applying -after all, stoping an outage before it becomes an outage is always the best option 👍
 
 You can find the full pipeline along with the Terraform code at [https://github.com/russmckendrick/DevOpsTerraformPipeline](https://github.com/russmckendrick/DevOpsTerraformPipeline).

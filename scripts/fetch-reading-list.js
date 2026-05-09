@@ -37,7 +37,7 @@ const {
 } = process.env
 
 if (!INSTAPAPER_CONSUMER_KEY || !INSTAPAPER_CONSUMER_SECRET || !INSTAPAPER_USERNAME) {
-  console.warn('Missing INSTAPAPER_* env variables — skipping reading list fetch.')
+  console.warn('Missing INSTAPAPER_* env variables - skipping reading list fetch.')
   console.warn('Set INSTAPAPER_CONSUMER_KEY, INSTAPAPER_CONSUMER_SECRET, and INSTAPAPER_USERNAME to enable.')
   // Write empty array if no data file exists yet, so the build doesn't break
   const { existsSync } = await import('fs')

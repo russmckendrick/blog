@@ -42,14 +42,14 @@ Now it’s time to start [firewalld](https://fedoraproject.org/wiki/FirewallD "f
 Before setting firewalld & fail2ban to start on boot now is probably the best time to make sure everything is working as expected. If it’s not you can add firewall rules using the following commands to, for example open http & https;
 
 ```bash frame="terminal" title="Fail2Ban on CentOS 7 4/8"
- [root@server ~]# firewall-cmd — list-services
+ [root@server ~]# firewall-cmd - list-services
  dhcpv6-client ssh
- [root@server ~]# firewall-cmd — permanent — zone=public — add-service=http
+ [root@server ~]# firewall-cmd - permanent - zone=public - add-service=http
  success
- [root@server ~]# firewall-cmd — permanent — zone=public — add-service=https
+ [root@server ~]# firewall-cmd - permanent - zone=public - add-service=https
  success
  [root@server ~]# systemctl restart firewalld
- [root@server ~]# firewall-cmd — list-services
+ [root@server ~]# firewall-cmd - list-services
  dhcpv6-client http https ssh
  [root@server ~]# 
 ```

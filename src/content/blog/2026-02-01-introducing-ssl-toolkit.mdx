@@ -15,7 +15,7 @@ tags:
   - "code"
 ---
 
-During the day job, I spend a fair amount of time checking SSL certificates — validating chains, comparing certs across different IPs, checking expiry dates, and generally troubleshooting TLS issues. Over the years, I'd built up a long document filled with random notes, one-liners, and half-remembered OpenSSL incantations. It worked, but it wasn't exactly elegant.
+During the day job, I spend a fair amount of time checking SSL certificates - validating chains, comparing certs across different IPs, checking expiry dates, and generally troubleshooting TLS issues. Over the years, I'd built up a long document filled with random notes, one-liners, and half-remembered OpenSSL incantations. It worked, but it wasn't exactly elegant.
 
 So I decided to consolidate all of that into a vibe-coded tool. The result is **ssl-toolkit**, a comprehensive SSL/TLS diagnostic tool built in Rust.
 
@@ -77,7 +77,7 @@ This presents a top-level menu with options to check a domain, inspect certifica
   }}
 />
 
-I went with a Tokyo Night Storm colour scheme for the interface because, well, it looks nice and matches my terminal setup. The pager supports the usual navigation keys — arrow keys, `j`/`k` for vim users, `Space` for page down, and `g`/`G` to jump to the start or end.
+I went with a Tokyo Night Storm colour scheme for the interface because, well, it looks nice and matches my terminal setup. The pager supports the usual navigation keys - arrow keys, `j`/`k` for vim users, `Space` for page down, and `g`/`G` to jump to the start or end.
 
 ## Checking a domain
 
@@ -91,7 +91,7 @@ This runs through all the checks and outputs a detailed report covering DNS reso
 
 <Img src="/assets/2026-02-01-introducing-ssl-toolkit/07.png" alt="Just the basics" />
 
-The tool compares certificates across all resolved IPs to flag any inconsistencies — useful when you're dealing with load balancers or CDNs where different endpoints might be serving different certificates.
+The tool compares certificates across all resolved IPs to flag any inconsistencies - useful when you're dealing with load balancers or CDNs where different endpoints might be serving different certificates.
 
 If you just want the grade without all the detail:
 

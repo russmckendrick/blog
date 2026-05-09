@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { tunesIndex, getArtistTuneUrl } from '../../../utils/tunes-index'
+import { Schema } from 'astro-seo-schema'
+import { createCollectionPageSchema, createBreadcrumbSchema } from '../../../utils/schema'
+
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
+
+const artists = tunesIndex.artists.slice().sort((a, b) =>
+  a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })
+)
+
+// Group A-Z to give the directory some structure (and unique on-page content).
+const groups = new Map<string, typeof artists>()
+for (const artist of artists) {
+  const firstChar = artist.name.replace(/^the\s+/i, '').trim().charAt(0).toUpperCase()
+  const bucket = /[A-Z]/.test(firstChar) ? firstChar : '#'
+  if (!groups.has(bucket)) groups.set(bucket, [])
+  groups.get(bucket)!.push(artist)
+}
+const orderedGroups = Array.from(groups.entries()).sort(([a], [b]) => a.localeCompare(b))
+
+const title = 'Artists I have written about'
+const description = `Browse all ${artists.length} artists featured in the weekly Listened to This Week posts on russ.cloud - from ABBA to Zwan, with the albums and posts each one appears in.`
+
+const collectionSchema = createCollectionPageSchema({
+  name: title,
+  description,
+  url: pageUrl,
+  items: artists.slice(0, 100).map((artist) => ({
+    name: artist.name,
+    url: new URL(getArtistTuneUrl(artist.slug), siteUrl).toString()
+  })),
+  numberOfItems: artists.length
+})
+
+const breadcrumbSchema = createBreadcrumbSchema(
+  [
+    { name: 'Home', url: '/' },
+    { name: 'Tunes', url: '/tunes/' },
+    { name: 'Artists', url: '/tunes/artist/' }
+  ],
+  siteUrl
+)
+---
+
+<BaseLayout title={title} description={description}>
+  <Schema slot="head" item={collectionSchema} />
+  <Schema slot="head" item={breadcrumbSchema} />
+
+  <section class="surface-container-low text-center py-12 pb-16 mb-8">
+    <div class="max-w-3xl mx-auto px-5 animate-fade-in">
+      <p class="text-sm uppercase tracking-wide text-on-surface-variant mb-2">
+        <a href="/tunes/" class="hover:text-[var(--color-secondary)] transition-colors">Tunes</a>
+        <span aria-hidden="true"> · </span>
+        Artists
+      </p>
+      <h1 class="text-4xl lg:text-5xl font-bold mb-4 text-on-surface font-display">
+        {title} 🎤
+      </h1>
+      <p class="text-lg text-on-surface-variant">
+        {artists.length} artists across {tunesIndex.totals.albums} albums and {tunesIndex.totals.posts} weekly posts.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-5 pb-12">
+    <nav aria-label="Jump to letter" class="surface-container-lowest rounded-xl p-4 mb-8 flex flex-wrap gap-2 justify-center">
+      {orderedGroups.map(([letter]) => (
+        <a
+          href={`#letter-${letter}`}
+          class="font-display text-sm font-semibold rounded-full px-3 py-1 surface-container hover:bg-[var(--color-secondary-container)] transition-colors"
+        >
+          {letter}
+        </a>
+      ))}
+    </nav>
+
+    {orderedGroups.map(([letter, list]) => (
+      <section id={`letter-${letter}`} class="mb-10 scroll-mt-24">
+        <h2 class="font-display text-3xl font-bold mb-4 text-on-surface">{letter}</h2>
+        <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+          {list.map((artist) => (
+            <li>
+              <a
+                href={getArtistTuneUrl(artist.slug)}
+                class="block surface-container-lowest rounded-lg p-3 transition-all hover:-translate-y-[2px] hover:shadow-[0_12px_32px_rgba(25,28,29,0.08)] focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50"
+              >
+                <span class="block font-medium text-on-surface text-sm leading-snug">{artist.name}</span>
+                <span class="block text-xs text-on-surface-variant mt-1">
+                  {artist.albumCount} album{artist.albumCount !== 1 ? 's' : ''} · {artist.postCount} post{artist.postCount !== 1 ? 's' : ''}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </section>
+</BaseLayout>

@@ -45,14 +45,14 @@ To save any problems with peoples work being removed before the environment gets
 After tagging those parts of the playbook and then running …
 
 ```bash frame="terminal" title="Annoying Ansible Quirk 2/5"
-ansible-playbook -i hosts stage-launch.yml — extra-vars “ami_name=$(date +%Y-%m-%d-%H%M)” — ask-vault-pass
+ansible-playbook -i hosts stage-launch.yml - extra-vars “ami_name=$(date +%Y-%m-%d-%H%M)” - ask-vault-pass
 ```
 
 
 Everything worked as expected, now I had my environment up and running I tried to do a deploy using …
 
 ```bash frame="terminal" title="Annoying Ansible Quirk 3/5"
-ansible-playbook -i hosts stage-launch.yml — skip-tags “morning” — extra-vars “ami_name=$(date +%Y-%m-%d-%H%M)” — ask-vault-pass
+ansible-playbook -i hosts stage-launch.yml - skip-tags “morning” - extra-vars “ami_name=$(date +%Y-%m-%d-%H%M)” - ask-vault-pass
 ```
 
 
@@ -105,7 +105,7 @@ tags:
 And then ran;
 
 ```bash frame="terminal" title="Annoying Ansible Quirk 5/5"
-ansible-playbook -i hosts stage-launch.yml — skip-tags “morning” — extra-vars “ami_name=$(date +%Y-%m-%d-%H%M)” — ask-vault-pass
+ansible-playbook -i hosts stage-launch.yml - skip-tags “morning” - extra-vars “ami_name=$(date +%Y-%m-%d-%H%M)” - ask-vault-pass
 ```
 
 

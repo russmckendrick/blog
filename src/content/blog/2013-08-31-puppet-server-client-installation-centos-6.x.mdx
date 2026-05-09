@@ -17,7 +17,7 @@ This post assumes that you are starting with a clean minimal CentOS 6.4 64bit se
 Puppet Server Installation ……
 
 ```bash frame="terminal" title="Puppet Server & Client Installation CentOS 6.x 1/4"
-# Hostname — Make sure the host name it set to puppet.yourdomain.com and that you replace references in this file
+# Hostname - Make sure the host name it set to puppet.yourdomain.com and that you replace references in this file
 
 # Install puppet & epel repos
 yum install -y http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-6.noarch.rpm http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
@@ -101,7 +101,7 @@ yum install -y http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6
 sed -i ‘s/enabled=1/enabled=0/g’ /etc/yum.repos.d/puppetlabs.repo
 
 # Install the agent
-yum install -y puppet — enablerepo=puppetlabs*
+yum install -y puppet - enablerepo=puppetlabs*
 
 # Configure the agent
 cat >> /etc/puppet/puppet.conf << CONFIG
@@ -112,7 +112,7 @@ CONFIG
 
 # Daemonize it and make it start on boot
 chkconfig puppet on
-puppet agent — daemonize
+puppet agent - daemonize
 ```
 
 
@@ -120,13 +120,13 @@ This will have sent the client certificate to the master server, all you have to
 
 ```bash frame="terminal" title="Puppet Server & Client Installation CentOS 6.x 3/4"
 puppet cert list
-puppet cert sign — all
+puppet cert sign - all
 ```
 
 
 and then test on the Puppet client ……
 
 ```bash frame="terminal" title="Puppet Server & Client Installation CentOS 6.x 4/4"
-puppet agent — test
+puppet agent - test
 ```
 

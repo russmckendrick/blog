@@ -24,7 +24,7 @@ yum update -y
 yum install -y http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 cat > /etc/yum.repos.d/openshift-origin-deps.repo <<”EOF”
 [openshift-origin-deps]
-name=OpenShift Origin Dependencies — EL6
+name=OpenShift Origin Dependencies - EL6
 baseurl=http://mirror.openshift.com/pub/origin-server/release/3/rhel-6/dependencies/x86_64
 gpgcheck=0
 EOF

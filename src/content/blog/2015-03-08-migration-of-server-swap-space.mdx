@@ -50,8 +50,8 @@ echo “vm.vfs_cache_pressure = 50” >> /etc/sysctl.conf
 
 These two options do the following;
 
-- swappiness — this control is used to define how aggressively the kernel swaps out anonymous memory relative to pagecache and other caches. Increasing the value increases the amount of swapping.
-- vfs_cache_pressure — this variable controls the tendency of the kernel to reclaim the memory which is used for caching of VFS caches, versus pagecache and swap. Increasing this value increases the rate at which VFS caches are reclaimed.
+- swappiness - this control is used to define how aggressively the kernel swaps out anonymous memory relative to pagecache and other caches. Increasing the value increases the amount of swapping.
+- vfs_cache_pressure - this variable controls the tendency of the kernel to reclaim the memory which is used for caching of VFS caches, versus pagecache and swap. Increasing this value increases the rate at which VFS caches are reclaimed.
 
 ```bash frame="terminal" title="Migration of Server & Swap Space 4/4"
 [root@server ~]# sysctl vm.swappiness

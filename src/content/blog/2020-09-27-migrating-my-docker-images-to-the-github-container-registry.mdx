@@ -13,7 +13,7 @@ aliases:
 
 A few weeks after the final draft of the [fourth edition of Mastering Docker ](https://www.packtpub.com/product/mastering-docker-fourth-edition/9781839216572)was submitted Docker made the announcement that they would be making changes to the retention of images in Docker Hub as well as the introduction of rate limits.
 
-These changes make complete sense given that at the time of writing this post there are over 150 million images taking up over 15 PB of storage, of that 10 PB of the images haven’t been accessed in over 6 months and 4.5 PB are associated with free Docker Hub accounts — so removing these inactive images is going to give them a hell of cost-saving.
+These changes make complete sense given that at the time of writing this post there are over 150 million images taking up over 15 PB of storage, of that 10 PB of the images haven’t been accessed in over 6 months and 4.5 PB are associated with free Docker Hub accounts - so removing these inactive images is going to give them a hell of cost-saving.
 
 A few weeks after Docker’s announcement, GitHub made their own announcement, the public beta of GitHub Container Registry. This is the natural evolution of how container images are handled in GitHub Packages as you can now publish public images for free.
 
@@ -118,7 +118,7 @@ on:
 ```
 
 
-This section defines when the workflow should be triggered, here I am doing it whenever the main branch is pushed to — but only if any of the files in the `ab` folder changes. To do this I am using two paths, the first `!**` tells the workflow to ignore all changes to everything apart from the include folder which is defined as `ab/**`, unfortunately I can't use the `${{ github.workflow }}` here as at this point in the workflow the it hasn't been started so I can use variables meaning I have to hardcode the path.
+This section defines when the workflow should be triggered, here I am doing it whenever the main branch is pushed to - but only if any of the files in the `ab` folder changes. To do this I am using two paths, the first `!**` tells the workflow to ignore all changes to everything apart from the include folder which is defined as `ab/**`, unfortunately I can't use the `${{ github.workflow }}` here as at this point in the workflow the it hasn't been started so I can use variables meaning I have to hardcode the path.
 
 Moving on to the actual build, there is a single job called `login-build-and-push`, as you may have guessed - this does all of the work:
 
@@ -262,7 +262,7 @@ The announcement for GitHub Container Registry is at:
 
 - [https://github.blog/2020-09-01-introducing-github-container-registry/](https://github.blog/2020-09-01-introducing-github-container-registry/)
 
-Finally, Mastering Docker — Fourth Edition:
+Finally, Mastering Docker - Fourth Edition:
 
 <Img src="/assets/2020-09-27-migrating-my-docker-images-to-the-github-container-registry/images/03.png" alt="diagram" />
 

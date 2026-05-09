@@ -117,7 +117,7 @@ Generate rich link previews automatically with locally cached images.
 - `hideMedia` - Hide image/video, show only text metadata (optional boolean)
 
 **Layout:**
-- **Desktop**: Medium-style horizontal card — text on the left (~65%), image thumbnail on the right (~35%)
+- **Desktop**: Medium-style horizontal card - text on the left (~65%), image thumbnail on the right (~35%)
 - **Mobile**: Stacked vertically with image on top, text below
 
 **Features:**

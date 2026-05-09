@@ -1,4 +1,4 @@
-# Design System — "The Curated Journal"
+# Design System - "The Curated Journal"
 
 The blog uses a design system called "The Curated Journal," an editorial aesthetic inspired by high-end print magazines. It prioritises tonal layering over borders, generous whitespace, and a typographic hierarchy that gives content room to breathe.
 
@@ -6,7 +6,7 @@ All design tokens are defined as CSS custom properties in `src/styles/global.css
 
 ## Colors & Surface Hierarchy
 
-Depth is achieved through **tonal layering** — shifting background colors rather than drawing borders.
+Depth is achieved through **tonal layering** - shifting background colors rather than drawing borders.
 
 ### Light Mode (`:root`)
 
@@ -42,7 +42,7 @@ See `src/styles/global.css` for the complete dark mode token set.
 
 **1px solid borders are not used for sectioning.** Separation between regions (header, content, footer, pagination) is achieved through background color shifts. For example, the footer uses `.surface-container-low` against the page `.surface` background.
 
-When accessibility requires a visible container boundary, use the **ghost border**: `outline: var(--ghost-border)` — a 15% opacity outline that is felt, not seen. Ghost borders are used in prose tables and code blocks but **not** on cards.
+When accessibility requires a visible container boundary, use the **ghost border**: `outline: var(--ghost-border)` - a 15% opacity outline that is felt, not seen. Ghost borders are used in prose tables and code blocks but **not** on cards.
 
 ## Elevation & Depth
 
@@ -80,21 +80,21 @@ Body text uses 17px / 1.7 line-height. Headings use `font-display` with tight tr
 These classes are defined in `src/styles/global.css` and map directly to design tokens:
 
 ### Surfaces
-- `.surface` — page background
-- `.surface-container-lowest` — cards
-- `.surface-container-low` — footer, author box, mobile menu
-- `.surface-container` — section breaks, theme toggle area
-- `.surface-container-high` — hover states
-- `.surface-container-highest` — active states
+- `.surface` - page background
+- `.surface-container-lowest` - cards
+- `.surface-container-low` - footer, author box, mobile menu
+- `.surface-container` - section breaks, theme toggle area
+- `.surface-container-high` - hover states
+- `.surface-container-highest` - active states
 
 ### Text
-- `.text-on-surface` — primary text
-- `.text-on-surface-variant` — secondary/metadata text
+- `.text-on-surface` - primary text
+- `.text-on-surface-variant` - secondary/metadata text
 
 ### Effects
-- `.glass` — glassmorphic background + backdrop blur
-- `.shadow-ambient` — diffused ambient shadow
-- `.ghost-border` — subtle outline boundary
+- `.glass` - glassmorphic background + backdrop blur
+- `.shadow-ambient` - diffused ambient shadow
+- `.ghost-border` - subtle outline boundary
 
 ## Component Patterns
 
@@ -145,15 +145,15 @@ Four variants (vertical, featured, grid, horizontal), all sharing:
 ## Do's and Don'ts
 
 ### Do
-- **Use tonal layering** — separate sections by shifting background colors, not adding borders
-- **Embrace whitespace** — generous padding and section gaps
-- **Image-first design** — every article card should be anchored by a curated hero image
-- **Use `--color-on-surface`** for text — never pure `#000000`
+- **Use tonal layering** - separate sections by shifting background colors, not adding borders
+- **Embrace whitespace** - generous padding and section gaps
+- **Image-first design** - every article card should be anchored by a curated hero image
+- **Use `--color-on-surface`** for text - never pure `#000000`
 
 ### Don't
-- **Don't use 1px borders** for sectioning — use background shifts or ghost borders
-- **Don't use dividers** — increase padding or change background tone instead
-- **Don't crowd margins** — maintain wide gutters on desktop
+- **Don't use 1px borders** for sectioning - use background shifts or ghost borders
+- **Don't use dividers** - increase padding or change background tone instead
+- **Don't crowd margins** - maintain wide gutters on desktop
 
 ## Scroll-Reveal Animations
 
@@ -172,6 +172,6 @@ All reveal animations respect `prefers-reduced-motion` and are disabled when the
 
 These existing systems are not overridden by the design tokens:
 
-- **Tag colors** — per-tag color pairs defined in `src/consts.ts` (`TAG_METADATA`)
-- **Dark mode toggle** — class-based (`.dark` on `<html>`), localStorage persistence
-- **Focus rings** — Tailwind `ring-blue-500/50` (functional, not decorative)
+- **Tag colors** - per-tag color pairs defined in `src/consts.ts` (`TAG_METADATA`)
+- **Dark mode toggle** - class-based (`.dark` on `<html>`), localStorage persistence
+- **Focus rings** - Tailwind `ring-blue-500/50` (functional, not decorative)

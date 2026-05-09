@@ -21,9 +21,9 @@ Which basically means decent persistent storage, which is one thing I think Dock
 
 For this test we are going to be launching three instances;
 
-- control.mydomain.com — Controller — This will be our cluster controller
-- flocker01.mydomain.com — Storage — Does what it says on the tin
-- flocker02.mydomain.com — Storage — Does what it says on the tin
+- control.mydomain.com - Controller - This will be our cluster controller
+- flocker01.mydomain.com - Storage - Does what it says on the tin
+- flocker02.mydomain.com - Storage - Does what it says on the tin
 
 and [share keys between the root user on all three machines](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2) allowing me password-less SSH access within the cluster.
 
@@ -37,7 +37,7 @@ brew tap ClusterHQ/tap
 brew update
 brew install flocker-1.8.0
 brew test flocker-1.8.0
-flocker-deploy — version
+flocker-deploy - version
 ```
 
 
@@ -47,9 +47,9 @@ With the last two commands you should see something like the following output;
 ⚡ brew test flocker-1.8.0
 Testing clusterhq/tap/flocker-1.8.0
 ==&gt; Using the sandbox
-==&gt; /usr/local/Cellar/flocker-1.8.0/1.8.0/bin/flocker-deploy — version
+==&gt; /usr/local/Cellar/flocker-1.8.0/1.8.0/bin/flocker-deploy - version
 russ in ~
-⚡ flocker-deploy — version
+⚡ flocker-deploy - version
 1.8.0
 ```
 
@@ -67,7 +67,7 @@ If you are running Linux there are instructions for installing the command line 
 
 #### Node Preparation
 
-**Please note — You should also transfer SSH keys between all of the nodes as mentioned at the top of this post.**
+**Please note - You should also transfer SSH keys between all of the nodes as mentioned at the top of this post.**
 
 The following commands need to the run on all three cluster nodes;
 
@@ -152,7 +152,7 @@ Now on each of the **storage nodes** its time to create the ZFS pool, we will be
 
 ```bash frame="terminal" title="Flocker on CentOS 7 12/41"
 mkdir -p /var/opt/flocker
-truncate — size 10G /var/opt/flocker/pool-vdev
+truncate - size 10G /var/opt/flocker/pool-vdev
 ZFS_MODULE_LOADING=yes zpool create flocker /var/opt/flocker/pool-vdev
 ```
 
@@ -182,12 +182,12 @@ and for firewalld;
 ```bash frame="terminal" title="Flocker on CentOS 7 15/41"
 systemctl enable firewalld.service
 systemctl start firewalld.service
-firewall-cmd — reload
-firewall-cmd — permanent — add-service flocker-control-api
-firewall-cmd — add-service flocker-control-api
-firewall-cmd — reload
-firewall-cmd — permanent — add-service flocker-control-agent
-firewall-cmd — add-service flocker-control-agent
+firewall-cmd - reload
+firewall-cmd - permanent - add-service flocker-control-api
+firewall-cmd - add-service flocker-control-api
+firewall-cmd - reload
+firewall-cmd - permanent - add-service flocker-control-agent
+firewall-cmd - add-service flocker-control-agent
 ```
 
 
@@ -413,7 +413,7 @@ Now everything is rebooted we should have a working Flocker cluster.
 First of all lets make a connection to the Flocker Control API and list the nodes. The following command will connect using the API certificate we imported into the Keychain, this is called by using the CN which was user-flocker-russ;
 
 ```bash frame="terminal" title="Flocker on CentOS 7 36/41"
-curl — cacert ~/Documents/Projects/Flocker/cluster.crt — cert “user-flocker-russ” https://control.mydomain.com:4523/v1/state/nodes
+curl - cacert ~/Documents/Projects/Flocker/cluster.crt - cert “user-flocker-russ” https://control.mydomain.com:4523/v1/state/nodes
 ```
 
 
@@ -421,7 +421,7 @@ You should see something like the following output;
 
 ```bash frame="terminal" title="Flocker on CentOS 7 37/41"
 russ in ~/Documents/Projects/Flocker
-⚡ curl — cacert ~/Documents/Projects/Flocker/cluster.crt — cert “user-flocker-russ” https://control.mydomain.com:4523/v1/state/nodes
+⚡ curl - cacert ~/Documents/Projects/Flocker/cluster.crt - cert “user-flocker-russ” https://control.mydomain.com:4523/v1/state/nodes
 [{“host”: “123.123.123.1”, “uuid”: “0ed63f10–7065–4d37-af7c-6128cb5c072f”}, {“host”: “123.123.123.2”, “uuid”: “f939152e-0ec0–4d7c-ae74–37c899648dca”}]
 ```
 
@@ -433,14 +433,14 @@ As you can see both nodes, with the UIDs of the node certificates are showing.
 Now you have the nodes talking to the control node its time to try and launch a container;
 
 ```bash frame="terminal" title="Flocker on CentOS 7 38/41"
-docker run -v wibble:/data — volume-driver flocker busybox sh -c “echo Hello from Flocker > /data/file.txt”
+docker run -v wibble:/data - volume-driver flocker busybox sh -c “echo Hello from Flocker > /data/file.txt”
 ```
 
 
 You should see something like the following output;
 
 ```bash frame="terminal" title="Flocker on CentOS 7 39/41"
-[root@flocker02 ~]# docker run -v wibble:/data — volume-driver flocker busybox sh -c “echo Hello from Flocker > /data/file.txt”
+[root@flocker02 ~]# docker run -v wibble:/data - volume-driver flocker busybox sh -c “echo Hello from Flocker > /data/file.txt”
 Unable to find image ‘busybox:latest’ locally
 latest: Pulling from library/busybox
 
@@ -455,14 +455,14 @@ Status: Downloaded newer image for busybox:latest
 Now you have written to “wibble:/data” you can launch another cotainer which remounts “wibble:/data” and prints the content of “/data/file.txt” to the screen;
 
 ```bash frame="terminal" title="Flocker on CentOS 7 40/41"
-docker run -v wibble:/data — volume-driver flocker busybox sh -c “cat /data/file.txt”
+docker run -v wibble:/data - volume-driver flocker busybox sh -c “cat /data/file.txt”
 ```
 
 
 You should see the following;
 
 ```bash frame="terminal" title="Flocker on CentOS 7 41/41"
-[root@flocker02 ~]# docker run -v wibble:/data — volume-driver flocker busybox sh -c “cat /data/file.txt”
+[root@flocker02 ~]# docker run -v wibble:/data - volume-driver flocker busybox sh -c “cat /data/file.txt”
 Hello from Flocker
 [root@flocker02 ~]#
 ```

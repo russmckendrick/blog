@@ -12,6 +12,7 @@ import { BlogPostRenderer } from './lib/blog-post-renderer.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { normalizeText, lookupArtistData, lookupAlbumData, isVariousArtists } from './lib/text-utils.js'
 import { createFALCollage } from './fal-collage.js'
+import { spawnSync } from 'child_process'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -179,6 +180,14 @@ async function main() {
 
     console.log(`✅ Successfully generated blog post for week ${weekNumber}`)
     console.log(`📁 Post location: ${postPath}`)
+
+    // Refresh the sorted album/artist index that powers the /tunes/artist/* and
+    // /tunes/album/* programmatic SEO pages.
+    const indexerScript = path.join(__dirname, 'build-tunes-index.js')
+    const result = spawnSync(process.execPath, [indexerScript], { stdio: 'inherit' })
+    if (result.status !== 0) {
+      console.warn('⚠️  build-tunes-index.js exited with a non-zero status; index may be stale.')
+    }
 
   } catch (error) {
     console.error('Error generating blog post:', error)

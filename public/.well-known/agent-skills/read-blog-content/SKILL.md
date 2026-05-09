@@ -1,6 +1,6 @@
 ---
 name: read-blog-content
-description: Discover, read, and cite posts from russ.cloud — a DevOps, cloud, and music blog by Russ McKendrick.
+description: Discover, read, and cite posts from russ.cloud - a DevOps, cloud, and music blog by Russ McKendrick.
 ---
 
 # Reading russ.cloud
@@ -21,7 +21,7 @@ This site publishes long-form tech writing (cloud, DevOps, automation, homelab) 
 - Posts (plain markdown): `https://www.russ.cloud/YYYY/MM/DD/<slug>/index.md`
 - Tag pages: `https://www.russ.cloud/tags/<tag>/`
 
-Both blog posts and weekly music notes ("tunes") live under the `/YYYY/MM/DD/<slug>/` pattern — they're distinguished by `tags` / front matter, not by URL prefix.
+Both blog posts and weekly music notes ("tunes") live under the `/YYYY/MM/DD/<slug>/` pattern - they're distinguished by `tags` / front matter, not by URL prefix.
 
 ## For agents
 
@@ -29,8 +29,8 @@ Prefer `index.md` over the HTML page when parsing content. Every post has a mark
 
 ## Content types
 
-- **Blog posts** (`/YYYY/MM/DD/...`) — technical writing, tutorials, opinion.
-- **Tunes** (`/tunes/...`) — weekly listening notes and music reflection.
+- **Blog posts** (`/YYYY/MM/DD/...`) - technical writing, tutorials, opinion.
+- **Tunes** (`/tunes/...`) - weekly listening notes and music reflection.
 
 ## Content signals
 

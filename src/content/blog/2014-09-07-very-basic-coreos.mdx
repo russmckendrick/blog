@@ -27,7 +27,7 @@ This philosophy makes things interesting when it comes to installing Fig, nsente
 
 ```bash frame="terminal" title="Very basic CoreOS 1/3"
 mkdir -p tools/bin
-docker run — rm jpetazzo/nsenter cat /nsenter > tools/bin/nsenter
+docker run - rm jpetazzo/nsenter cat /nsenter > tools/bin/nsenter
 curl -L https://raw.githubusercontent.com/jpetazzo/nsenter/master/docker-enter > tools/bin/docker-enter
 curl -L https://github.com/docker/fig/releases/download/0.5.2/linux > tools/bin/fig
 chmod +x tools/bin/*

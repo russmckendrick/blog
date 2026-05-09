@@ -57,7 +57,7 @@ Loading mirror speeds from cached hostfile
  * updates: mirror.awanti.com
 Resolving Dependencies
  → Running transaction check
- — -> Package httpd.x86_64 0:2.4.6–17.el7.centos.1 will be installed
+ - -> Package httpd.x86_64 0:2.4.6–17.el7.centos.1 will be installed
  → Finished Dependency Resolution
 
 Dependencies Resolved
@@ -97,7 +97,7 @@ Redirecting to /bin/systemctl restart httpd.service
 
 ```bash frame="terminal" title="First play with CentOS 7.0 4/5"
 [root@server ~]# systemctl status httpd
-httpd.service — The Apache HTTP Server
+httpd.service - The Apache HTTP Server
  Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled)
  Active: active (running) since Sun 2014–07–13 13:24:45 EDT; 4s ago
  Process: 21656 ExecStop=/bin/kill -WINCH ${MAINPID} (code=exited, status=0/SUCCESS)

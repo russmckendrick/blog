@@ -30,19 +30,19 @@ webserver:
  cover:
     image: russmckendrick/nginx-php
  volumes:
-   — /home/containers/web:/var/www/html/
+   - /home/containers/web:/var/www/html/
  ports:
-   — 80
+   - 80
  environment:
  PHP_POOL: testapp
  VIRTUAL_HOST: myawesometest.app.mckendrick.eu
  links:
-   — databaseserver:db
+   - databaseserver:db
 databaseserver:
  cover:
     image: russmckendrick/mariadb
  volumes:
-   — /home/containers/database:/var/lib/mysql/
+   - /home/containers/database:/var/lib/mysql/
 ```
 
 
@@ -62,13 +62,13 @@ Punctual, lightweight development environments using Docker.
 
 Usage:
  fig [options] [COMMAND] [ARGS…]
- fig -h| — help
+ fig -h| - help
 
 Options:
- — verbose Show more output
- — version Print version and exit
- -f, — file FILE Specify an alternate fig file (default: fig.yml)
- -p, — project-name NAME Specify an alternate project name (default: directory name)
+ - verbose Show more output
+ - version Print version and exit
+ -f, - file FILE Specify an alternate fig file (default: fig.yml)
+ -p, - project-name NAME Specify an alternate project name (default: directory name)
 
 Commands:
  build Build or rebuild services

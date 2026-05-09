@@ -2,6 +2,22 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { AI_AUTHOR } from './consts';
 
+// Optional structured data fields shared by blog and tunes collections.
+// Setting `faqs` enables FAQPage JSON-LD; setting `howto` enables HowTo JSON-LD.
+const faqsSchema = z.array(z.object({
+	question: z.string(),
+	answer: z.string()
+})).optional();
+
+const howtoSchema = z.object({
+	totalTime: z.string().optional(),
+	steps: z.array(z.object({
+		name: z.string(),
+		text: z.string(),
+		image: z.string().optional()
+	}))
+}).optional();
+
 const blog = defineCollection({
 	// Load Markdown and MDX files in the `src/content/blog/` directory.
 	loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
@@ -32,7 +48,9 @@ const blog = defineCollection({
 			// Support both ShowToc and showToc variants
 			ShowToc: z.boolean().default(false),
 			showToc: z.boolean().default(false),
-			TocOpen: z.boolean().default(false)
+			TocOpen: z.boolean().default(false),
+			faqs: faqsSchema,
+			howto: howtoSchema
 		})
 		.transform((data) => ({
 			...data,
@@ -80,7 +98,9 @@ const tunes = defineCollection({
 			album: z.string().optional(),
 			artist: z.string().optional(),
 			year: z.number().optional(),
-			genre: z.array(z.string()).default([])
+			genre: z.array(z.string()).default([]),
+			faqs: faqsSchema,
+			howto: howtoSchema
 		})
 		.transform((data) => ({
 			...data,
@@ -92,4 +112,21 @@ const tunes = defineCollection({
 		})),
 });
 
-export const collections = { blog, tunes };
+const glossary = defineCollection({
+	loader: glob({ base: './src/content/glossary', pattern: '**/*.{md,mdx}' }),
+	schema: ({ image }) =>
+		z.object({
+			term: z.string(),
+			description: z.string(),
+			pubDate: z.coerce.date().optional(),
+			updatedDate: z.coerce.date().optional(),
+			category: z.string().optional(),
+			abbreviation: z.string().optional(),
+			relatedTerms: z.array(z.string()).default([]),
+			tags: z.array(z.string()).default([]),
+			heroImage: image().optional(),
+			draft: z.boolean().default(false)
+		})
+});
+
+export const collections = { blog, tunes, glossary };

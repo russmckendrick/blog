@@ -22,7 +22,7 @@ curl -fsS https://raw.githubusercontent.com/russmckendrick/DOBootstrap/master/do
 Once the Droplet was configured I installed Falco using the repo provided by sysdig by running the following commands;
 
 ```bash frame="terminal" title="Falco by sysdig 2/6"
-rpm — import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
+rpm - import https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public
 curl -s -o /etc/yum.repos.d/draios.repo http://download.draios.com/stable/rpm/draios.repo
 yum -y install kernel-devel-$(uname -r)
 yum -y install falco
@@ -40,13 +40,13 @@ and checked that everything was running as expected;
 
 ```bash frame="terminal" title="Falco by sysdig 4/6"
 [root@server ~]# service falco status
-falco.service — LSB: Falco syscall monitoring agent
+falco.service - LSB: Falco syscall monitoring agent
 Loaded: loaded (/etc/rc.d/init.d/falco)
 Active: active (running) since Sun 2016–05–22 12:27:29 BST; 22s ago
 Docs: man:systemd-sysv-generator(8)
 Process: 22019 ExecStart=/etc/rc.d/init.d/falco start (code=exited, status=0/SUCCESS)
 CGroup: /system.slice/falco.service
-└─22024 /usr/bin/falco — daemon — pidfile=/var/run/falco.pid
+└─22024 /usr/bin/falco - daemon - pidfile=/var/run/falco.pid
 
 May 22 12:27:28 server.mckendrick.io systemd[1]: Starting LSB: Falco syscall monitoring agent…
 May 22 12:27:29 server.mckendrick.io falco[22021]: Falco initialized with configuration file /etc/falco.yaml
@@ -66,7 +66,7 @@ As you can, it was really straight forward to install. Next up I wanted to trigg
 - macro: adduser_binaries
 condition: proc.name in (adduser, deluser, addgroup, delgroup)
 - rule: user_mgmt_binaries
-desc: activity by any programs that can manage users, passwords, or permissions. sudo and su are excluded. Activity in containers is also excluded — some containers create custom users on top of a base linux distribution at startup.
+desc: activity by any programs that can manage users, passwords, or permissions. sudo and su are excluded. Activity in containers is also excluded - some containers create custom users on top of a base linux distribution at startup.
 condition: spawn_process and not proc.name in (su, sudo) and not container and (adduser_binaries or login_binaries or passwd_binaries or shadowutils_binaries)
 output: “User management binary command run outside of container (user=%user.name command=%proc.cmdline)”
 priority: WARNING
