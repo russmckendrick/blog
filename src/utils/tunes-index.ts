@@ -14,6 +14,7 @@ export interface TuneIndexArtist {
   slug: string
   name: string
   artistUrl: string | null
+  image: string | null
   albumCount: number
   postCount: number
   albums: string[]
@@ -27,6 +28,7 @@ export interface TuneIndexAlbum {
   artistSlug: string
   albumUrl: string | null
   artistUrl: string | null
+  image: string | null
   posts: TuneIndexPostRef[]
 }
 

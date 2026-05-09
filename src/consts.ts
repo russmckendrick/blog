@@ -469,6 +469,14 @@ export const CF_IMAGE_PRESETS = {
     widths: [256, 320, 384, 512],
   },
 
+  // Small square thumbnails for tunes artist/album directory cards
+  tunesDirectory: {
+    quality: 25,
+    format: "avif" as const,
+    fit: "cover" as const,
+    widths: [96, 128, 160, 224, 256],
+  },
+
   // Gallery/lightbox images (high quality)
   gallery: {
     quality: 60,

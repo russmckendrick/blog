@@ -1,16 +1,51 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro'
-import { tunesIndex, getAlbumTuneUrl, getArtistTuneUrl } from '../../../utils/tunes-index'
+import { tunesIndex, getAlbumTuneUrl } from '../../../utils/tunes-index'
+import TunesDirectory from '../../../components/tunes/TunesDirectory.astro'
 import { Schema } from 'astro-seo-schema'
 import { createCollectionPageSchema, createBreadcrumbSchema } from '../../../utils/schema'
 
 const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
 
-const albums = tunesIndex.albums
+const albums = tunesIndex.albums.slice().sort((a, b) =>
+  a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })
+)
 
-const title = 'Albums I have written about'
-const description = `Every record featured in the weekly Listened to This Week series on russ.cloud - ${albums.length} albums by ${tunesIndex.totals.artists} artists, sorted by artist.`
+const pluralize = (count: number, singular: string) =>
+  `${count} ${singular}${count === 1 ? '' : 's'}`
+
+const getDirectoryBucket = (name: string) => {
+  const firstChar = name.replace(/^the\s+/i, '').trim().charAt(0).toUpperCase()
+  return /[A-Z]/.test(firstChar) ? firstChar : '#'
+}
+
+const groups = new Map<string, Array<{
+  href: string
+  name: string
+  image: string | null
+  imageAlt: string
+  kicker: string
+  meta: string
+}>>()
+
+for (const album of albums) {
+  const bucket = getDirectoryBucket(album.name)
+  if (!groups.has(bucket)) groups.set(bucket, [])
+  groups.get(bucket)!.push({
+    href: getAlbumTuneUrl(album.slug),
+    name: album.name,
+    image: album.image,
+    imageAlt: `${album.name} by ${album.artist}`,
+    kicker: album.artist,
+    meta: pluralize(album.posts.length, 'post')
+  })
+}
+
+const orderedGroups = Array.from(groups.entries()).sort(([a], [b]) => a.localeCompare(b))
+
+const title = 'Albums I have listened to ...'
+const description = `Every record featured in the weekly Listened to This Week series on russ.cloud - ${albums.length} albums by ${tunesIndex.totals.artists} artists, sorted A to Z.`
 
 const collectionSchema = createCollectionPageSchema({
   name: title,
@@ -54,25 +89,6 @@ const breadcrumbSchema = createBreadcrumbSchema(
   </section>
 
   <section class="max-w-7xl mx-auto px-5 pb-12">
-    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-      {albums.map((album) => (
-        <li class="surface-container-lowest rounded-lg p-3 transition-all hover:-translate-y-[2px] hover:shadow-[0_12px_32px_rgba(25,28,29,0.08)]">
-          <a
-            href={getAlbumTuneUrl(album.slug)}
-            class="block font-medium text-on-surface text-sm leading-snug focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded"
-          >
-            {album.name}
-          </a>
-          <p class="text-xs text-on-surface-variant mt-1">
-            <a href={getArtistTuneUrl(album.artistSlug)} class="hover:underline">
-              {album.artist}
-            </a>
-            {album.posts.length > 1 && (
-              <> · {album.posts.length} posts</>
-            )}
-          </p>
-        </li>
-      ))}
-    </ul>
+    <TunesDirectory groups={orderedGroups} />
   </section>
 </BaseLayout>

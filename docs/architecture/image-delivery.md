@@ -166,41 +166,62 @@ export function generateCFSrcSet(
 
 ```typescript
 export const CF_IMAGE_PRESETS = {
+  // Default quality for all images
+  default: {
+    quality: 60
+  },
+
   // Hero images for blog posts
   hero: {
-    quality: 85,
+    quality: 60,
+    format: 'avif' as const,
+    fit: 'cover' as const,
+    widths: [640, 720, 1024, 1536, 2048]
+  },
+
+  // PostCard thumbnails (vertical layout, priority/high quality for LCP)
+  thumbnailPriority: {
+    quality: 38,
     format: 'auto' as const,
     fit: 'cover' as const,
-    widths: [640, 1024, 1536, 2048]
+    widths: [400, 600, 800, 1200]
   },
 
-  // PostCard thumbnails
+  // PostCard thumbnails (vertical layout)
   thumbnail: {
-    quality: 20,
+    quality: 25,
     format: 'avif' as const,
     fit: 'cover' as const,
-    widths: [320, 360, 480, 540, 600, 640, 720, 800, 960, 1080, 1200, 1600]
+    widths: [256, 320, 400, 600, 800, 1200]
   },
 
-  // PostCard thumbnails (priority/LCP)
-  thumbnailPriority: {
-    quality: 35,
+  // Post card thumbnails (horizontal layout)
+  thumbnailHorizontal: {
+    quality: 25,
     format: 'avif' as const,
     fit: 'cover' as const,
-    widths: [320, 360, 480, 540, 600, 640, 720, 800, 960, 1080, 1200, 1600]
+    widths: [256, 320, 384, 512]
+  },
+
+  // Small square thumbnails for tunes artist/album directory cards
+  tunesDirectory: {
+    quality: 25,
+    format: 'avif' as const,
+    fit: 'cover' as const,
+    widths: [96, 128, 160, 224, 256]
   },
 
   // Gallery/lightbox images (high quality)
   gallery: {
-    quality: 90,
-    format: 'auto' as const,
+    quality: 60,
+    format: 'avif' as const,
     fit: 'scale-down' as const,
     widths: [1024, 1536, 2048, 2560]
   },
 
   // Avatar images
   avatar: {
-    quality: 85,
+    quality: 60,
     format: 'auto' as const,
     fit: 'cover' as const,
     widths: [40, 48, 80, 96, 160, 192]
@@ -228,6 +249,37 @@ const heroSrcSet = generateCFSrcSet(heroImage, preset.widths, preset.quality);
   loading={priority ? "eager" : "lazy"}
   fetchpriority={priority ? "high" : "low"}
   class="w-full h-full object-cover"
+/>
+```
+
+#### TunesDirectory.astro (Artist/Album Browse Cards)
+
+Directory cards use very small square transformations because the thumbnails render at roughly 84-96 CSS pixels.
+
+```astro
+---
+import { getCFImageUrl, CF_IMAGE_PRESETS } from '../../utils/cloudflare-images';
+
+const preset = CF_IMAGE_PRESETS.tunesDirectory;
+const imageSrcSet = preset.widths
+  .map((width) => `${getCFImageUrl(src, {
+    width,
+    height: width,
+    quality: preset.quality,
+    format: preset.format,
+    fit: preset.fit,
+    gravity: 'auto'
+  })} ${width}w`)
+  .join(', ');
+---
+
+<img
+  src={getCFImageUrl(src, { width: 160, height: 160, quality: preset.quality, format: preset.format, fit: preset.fit })}
+  srcset={imageSrcSet}
+  sizes="(min-width: 640px) 96px, 84px"
+  alt={alt}
+  loading="lazy"
+  decoding="async"
 />
 ```
 

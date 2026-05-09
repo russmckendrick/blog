@@ -8,6 +8,7 @@ output/
 
 # packages
 .package-lock.json
+.pnpm-store
 
 # dependencies
 node_modules/
