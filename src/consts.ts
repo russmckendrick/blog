@@ -99,6 +99,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-purple-50 text-purple-700 inset-ring inset-ring-purple-600/10",
     colorDark:
       "dark:bg-purple-400/10 dark:text-purple-400 dark:inset-ring-purple-400/20",
+    intro:
+      "AI posts covering local models, image generation, coding assistants, agents, and the practical places these tools fit into an everyday technical workflow. I am more interested in what survives contact with terminals, editors, blogs, and real projects than in the hype cycle around the next shiny demo.",
   },
   ansible: {
     title: "Ansible 👨‍💻",
@@ -115,6 +117,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-amber-50 text-amber-700 inset-ring inset-ring-amber-600/10",
     colorDark:
       "dark:bg-amber-400/10 dark:text-amber-400 dark:inset-ring-amber-400/20",
+    intro:
+      "Posts from the author side of things — book announcements, edition updates, preorder notes, release-day write-ups, and the occasional reflection on what it takes to turn a pile of technical notes into something someone else can actually use. Mostly Docker, Kubernetes, Ansible, and infrastructure books, with the odd lesson learned the hard way.",
   },
   automation: {
     title: "Automation 🤖",
@@ -123,6 +127,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-indigo-50 text-indigo-700 inset-ring inset-ring-indigo-700/10",
     colorDark:
       "dark:bg-indigo-400/10 dark:text-indigo-400 dark:inset-ring-indigo-400/30",
+    intro:
+      "Automation posts from the long road between shell scripts and fully managed platforms — Puppet, SaltStack, Cobbler, Ansible, Packer, CI/CD, Logic Apps, and the glue that keeps repetitive work from becoming a career. The common thread is simple: make the machine do the boring bit, then check that it did it properly.",
   },
   aws: {
     title: "AWS ☁️",
@@ -149,6 +155,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-gray-50 text-gray-700 inset-ring inset-ring-gray-500/10",
     colorDark:
       "dark:bg-gray-400/10 dark:text-gray-400 dark:inset-ring-gray-400/20",
+    intro:
+      "Meta posts about this site, the publishing workflow behind it, and the experiments that end up shaping how Russ.Cloud works. Expect migration notes, design changes, background-image rabbit holes, agent-readiness experiments, and the occasional reading-list or housekeeping post that did not fit neatly anywhere else.",
   },
   book: {
     title: "Book 📚",
@@ -157,6 +165,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-emerald-50 text-emerald-700 inset-ring inset-ring-emerald-600/20",
     colorDark:
       "dark:bg-emerald-400/10 dark:text-emerald-400 dark:inset-ring-emerald-500/20",
+    intro:
+      "Book-related posts, mainly around the technical titles I have written or helped into the world — release notes, preorder links, new editions, ebook updates, and the bits of context that do not fit on a publisher page. A small shelf of announcements, process notes, and reminders of what I was working on at the time.",
   },
   cloud: {
     title: "Cloud ⛅️",
@@ -164,6 +174,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-sky-50 text-sky-700 inset-ring inset-ring-sky-600/10",
     colorDark:
       "dark:bg-sky-400/10 dark:text-sky-400 dark:inset-ring-sky-400/20",
+    intro:
+      "Cloud posts that sit across providers and eras — AWS, Azure, DigitalOcean, OpenShift, Rancher, hosted Kubernetes, migration jobs, cost control, and the operational habits that follow you from one platform to the next. Less brand loyalty, more notes from keeping useful things running somewhere that is not under the desk.",
   },
   code: {
     title: "Code 🐛",
@@ -171,6 +183,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-green-50 text-green-700 inset-ring inset-ring-green-600/20",
     colorDark:
       "dark:bg-green-400/10 dark:text-green-400 dark:inset-ring-green-500/20",
+    intro:
+      "Code posts about small tools, shell functions, Python helpers, AI-assisted experiments, and project write-ups where the interesting bit is how the pieces fit together. These are usually practical notes from building something for myself first, then tidying up the trail enough for someone else to follow.",
   },
   conference: {
     title: "Conference 📢",
@@ -179,6 +193,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-violet-50 text-violet-700 inset-ring inset-ring-violet-600/10",
     colorDark:
       "dark:bg-violet-400/10 dark:text-violet-400 dark:inset-ring-violet-400/20",
+    intro:
+      "Conference posts and event notes from days spent away from the normal keyboard routine — talks, vendor announcements, hallway conversations, and the ideas that were worth writing down afterwards. These are snapshots of what felt interesting at the time, before the slides and swag disappeared into a folder.",
   },
   containers: {
     title: "Containers 🐳",
@@ -187,6 +203,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-cyan-50 text-cyan-700 inset-ring inset-ring-cyan-600/10",
     colorDark:
       "dark:bg-cyan-400/10 dark:text-cyan-400 dark:inset-ring-cyan-400/20",
+    intro:
+      "Container posts that do not sit squarely in the Docker bucket — Podman, Docker Desktop alternatives, immutable infrastructure, local development environments, and the wider ecosystem around packaging and running applications. Useful when the question is about containers as a pattern rather than one specific tool.",
   },
   devops: {
     title: "DevOps 🦾",
@@ -212,6 +230,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-slate-50 text-slate-700 inset-ring inset-ring-slate-600/10",
     colorDark:
       "dark:bg-slate-400/10 dark:text-slate-400 dark:inset-ring-slate-400/20",
+    intro:
+      "GitHub posts covering the bits around source control, automation, package publishing, container registries, Codespaces, and supply-chain surprises. Some are simple workflow notes, others are reminders that the place where the code lives is also part of the production system.",
   },
   "infrastructure-as-code": {
     title: "Infrastructure as Code 🤖",
@@ -238,6 +258,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-pink-50 text-pink-700 inset-ring inset-ring-pink-700/10",
     colorDark:
       "dark:bg-pink-400/10 dark:text-pink-400 dark:inset-ring-pink-400/20",
+    intro:
+      "The personal side of the archive — site updates, music posts, book milestones, day-to-day tools, and the occasional look back at what has changed since the last checkpoint. Still mostly technical around the edges, but with more of the person left in.",
   },
   linux: {
     title: "Linux 🐧",
@@ -257,6 +279,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-fuchsia-50 text-fuchsia-700 inset-ring inset-ring-fuchsia-600/10",
     colorDark:
       "dark:bg-fuchsia-400/10 dark:text-fuchsia-400 dark:inset-ring-fuchsia-400/20",
+    intro:
+      "Listening posts and music roundups, mostly pulled from the overlap between this site and Russ.fm. The archive leans into weekly listening habits, end-of-year summaries, albums that stuck around, and the little patterns you only notice once the records have been spinning for a while.",
   },
   macos: {
     title: "macOS 🍏",
@@ -264,6 +288,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-gray-50 text-gray-700 inset-ring inset-ring-gray-600/10",
     colorDark:
       "dark:bg-gray-400/10 dark:text-gray-400 dark:inset-ring-gray-400/20",
+    intro:
+      "macOS posts from using Apple machines as a daily platform for automation, containers, development, music workflows, and local AI experiments. Expect Homebrew, shell setup, Docker and Podman on Macs, Python environments, dotfiles, and the occasional note from rebuilding the toolbox after another OS upgrade.",
   },
   packer: {
     title: "Packer 📦",
@@ -271,6 +297,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-amber-50 text-amber-700 inset-ring inset-ring-amber-600/10",
     colorDark:
       "dark:bg-amber-400/10 dark:text-amber-400 dark:inset-ring-amber-400/20",
+    intro:
+      "Packer posts about baking repeatable machine images, from early Vagrant box workflows through to cloud-ready templates. The theme is the same one that keeps turning up in automation work: build it once, build it the same way again, and make the result easy to hand to the next tool in the chain.",
   },
   podman: {
     title: "Podman 🦭",
@@ -279,6 +307,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-purple-50 text-purple-700 inset-ring inset-ring-purple-600/10",
     colorDark:
       "dark:bg-purple-400/10 dark:text-purple-400 dark:inset-ring-purple-400/20",
+    intro:
+      "Podman posts tracking life outside the Docker Desktop default — getting Podman running on macOS, checking how the CLI and Compose-style workflows hold up, and seeing where daemonless containers make day-to-day development simpler or more awkward. Practical notes first, container philosophy second.",
   },
   python: {
     title: "Python 🐍",
@@ -316,6 +346,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-orange-50 text-orange-700 inset-ring inset-ring-orange-600/10",
     colorDark:
       "dark:bg-orange-400/10 dark:text-orange-400 dark:inset-ring-orange-400/20",
+    intro:
+      "Tooling posts from the messy, useful layer between idea and shipped thing — editors, command-line utilities, local services, helper apps, developer workflows, and the periodic day-to-day toolbox refresh. These are the notes I wish I had already written when setting something up for the second or third time.",
   },
   vinyl: {
     title: "Vinyl 🎧",
@@ -323,6 +355,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-rose-50 text-rose-700 inset-ring inset-ring-rose-600/10",
     colorDark:
       "dark:bg-rose-400/10 dark:text-rose-400 dark:inset-ring-rose-400/20",
+    intro:
+      "Vinyl posts about records, listening habits, album lists, music documentaries, scrobbling, and the small rituals around keeping a collection alive. Some posts are straightforward top-tens or weekly notes; others wander into the tooling I use to connect shelves, turntables, and websites together.",
   },
   web: {
     title: "Web 🌍",
@@ -331,6 +365,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
       "bg-emerald-50 text-emerald-700 inset-ring inset-ring-emerald-600/10",
     colorDark:
       "dark:bg-emerald-400/10 dark:text-emerald-400 dark:inset-ring-emerald-400/20",
+    intro:
+      "Web posts about running, tuning, and occasionally rebuilding sites — NGINX, performance, hosting decisions, publishing workflows, and the little operational details that sit between a page rendering locally and a site behaving properly in public. Usually practical, occasionally nostalgic.",
   },
   yearend: {
     title: "Year End 🎉",
@@ -338,6 +374,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
     colorLight: "bg-rose-50 text-rose-700 inset-ring inset-ring-rose-600/10",
     colorDark:
       "dark:bg-rose-400/10 dark:text-rose-400 dark:inset-ring-rose-400/20",
+    intro:
+      "Year-end music posts collecting the albums, artists, and listening stats that shaped each December look back. These are part diary, part record-shelf audit: what got played, what kept resurfacing, and which albums earned a place in the annual list.",
   },
 };
 
