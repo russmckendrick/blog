@@ -117,13 +117,13 @@ Runs strip-collage generation over existing tunes folders in `public/assets/`.
 
 ```bash
 # Preview older image/section backfill and all weekly link repairs
-pnpm run backfill-tunes-images -- --dry-run --older
+pnpm run backfill-tunes-images --dry-run --older
 
 # Preview one post, useful for checking specific missing links
-pnpm run backfill-tunes-images -- --dry-run --file=src/content/tunes/2023-06-26-listened-to-this-week.mdx
+pnpm run backfill-tunes-images --dry-run --file=src/content/tunes/2023-06-26-listened-to-this-week.mdx
 
 # Repair only resolvable Top Artists / Top Albums links
-pnpm run backfill-tunes-images -- --links-only
+pnpm run backfill-tunes-images --links-only
 ```
 
 Options:

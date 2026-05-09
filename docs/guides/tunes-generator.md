@@ -141,13 +141,13 @@ Older weekly tunes posts were created before album/artist galleries were consist
 
 ```bash
 # Preview the default older-post backfill
-pnpm run backfill-tunes-images -- --dry-run --older
+pnpm run backfill-tunes-images --dry-run --older
 
 # Preview one post and check exactly which links/images would be repaired
-pnpm run backfill-tunes-images -- --dry-run --file=src/content/tunes/2023-06-26-listened-to-this-week.mdx
+pnpm run backfill-tunes-images --dry-run --file=src/content/tunes/2023-06-26-listened-to-this-week.mdx
 
 # Apply the older-post backfill
-pnpm run backfill-tunes-images -- --older
+pnpm run backfill-tunes-images --older
 ```
 
 Default behaviour:
@@ -614,7 +614,7 @@ tags: []
 - Check that `COLLECTION_URL` is correct
 - Verify russ.fm collection.json is accessible
 - Images are cached locally in `collection.json` for 1 hour
-- For older posts, run `pnpm run backfill-tunes-images -- --dry-run --older` to preview missing local artwork and unresolved collection matches
+- For older posts, run `pnpm run backfill-tunes-images --dry-run --older` to preview missing local artwork and unresolved collection matches
 
 ### AI generation fails
 - Ensure either `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` is set
@@ -624,7 +624,7 @@ tags: []
 ### Missing album links
 - Some albums may not be in your russ.fm collection
 - The script uses fuzzy matching - check console output for warnings
-- Run `pnpm run backfill-tunes-images -- --links-only --dry-run` to preview resolvable missing russ.fm links across weekly tunes posts
+- Run `pnpm run backfill-tunes-images --links-only --dry-run` to preview resolvable missing russ.fm links across weekly tunes posts
 
 ## GitHub Actions Integration
 
