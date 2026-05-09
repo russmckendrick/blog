@@ -15,7 +15,8 @@ import {
 } from '../../../../utils/tunes-index'
 import {
   createCollectionPageSchema,
-  createBreadcrumbSchema
+  createBreadcrumbSchema,
+  createMusicGroupSchema
 } from '../../../../utils/schema'
 
 export const getStaticPaths = (async ({ paginate }) => {
@@ -106,11 +107,19 @@ const breadcrumbSchema = createBreadcrumbSchema(
   ],
   siteUrl
 )
+
+const musicGroupSchema = createMusicGroupSchema({
+  name: artist.name,
+  url: pageUrl,
+  image: artist.image ? new URL(artist.image, siteUrl).toString() : undefined,
+  sameAs: artist.artistUrl ? [artist.artistUrl] : undefined
+})
 ---
 
 <BaseLayout title={title} description={description} image={`/tunes/artist/${artist.slug}-og.png`}>
   <Schema slot="head" item={collectionSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
+  <Schema slot="head" item={musicGroupSchema} />
 
   <section class="surface-container-low py-8 pb-10 mb-8">
     <div class="max-w-5xl mx-auto px-5">

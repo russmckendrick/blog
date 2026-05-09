@@ -83,8 +83,11 @@ Helpers exported by `src/utils/schema.ts`:
 | `createOrganizationSchema` | `Organization` | `/about/` |
 | `createCollectionPageSchema` | `CollectionPage` (with embedded `ItemList`) | Tag pages, year archives, reading-list tag pages, glossary index, author hub, `/tunes/artist/`, `/tunes/album/` |
 | `createMusicAlbumSchema` | `MusicAlbum` | `/tunes/album/[album]/` |
+| `createMusicGroupSchema` | `MusicGroup` | `/tunes/artist/[artist]/` |
 | `createMusicRecordingSchema` | `MusicRecording` | (Available; not currently wired) |
 | `createDefinedTermSchema` | `DefinedTerm` | `/glossary/[term]/` |
+| `createBookSchema` | `Book` | `/books/` (one per book; ~14 entries) |
+| `createWebSiteSchema` | `WebSite` + `SearchAction` | `/` (homepage only — sitelinks search box) |
 | `createFAQSchema` | `FAQPage` | Posts that set `faqs` in frontmatter |
 | `createHowToSchema` | `HowTo` | Posts that set `howto` in frontmatter |
 
@@ -182,6 +185,7 @@ Added to all blog posts:
 - Tags: `src/pages/tags/[tag]-og.png.ts`
 - Tunes artists: `src/pages/tunes/artist/[artist]-og.png.ts`
 - Tunes albums: `src/pages/tunes/album/[album]-og.png.ts`
+- Tunes years: `src/pages/tunes/year/[year]-og.png.ts`
 - Glossary terms: `src/pages/glossary/[term]-og.png.ts`
 - Component: `src/components/OpenGraph/OG.tsx`
 
@@ -258,6 +262,8 @@ The site builds programmatic browse hubs from proprietary data instead of just p
 | `/glossary/` and `/glossary/{term}/` | `glossary` content collection | `DefinedTerm` + `CollectionPage` |
 | `/author/russ-mckendrick/` | All blog posts | `Person` + `CollectionPage` + `BreadcrumbList` |
 | `/tags/{tag}/[page]/` (enriched) | `blog` collection + `TAG_METADATA.intro` | `CollectionPage` + `BreadcrumbList`, plus a tag-specific OG image |
+| `/books/` | `src/data/books.ts` | `CollectionPage` + `BreadcrumbList` + per-book `Book` |
+| `/tunes/year/` and `/tunes/year/{year}/` | `tunes` collection grouped by `pubDate` year; year-in-music essays detected by `{year}-year-in-music` slug | `CollectionPage` + `BreadcrumbList`, plus a tunes-year OG image |
 
 `scripts/build-tunes-index.js` parses the "## Top Albums" section out of each weekly tunes post and writes a sorted index of artists and albums. It records matching image paths from `public/assets/`, preserves actual filename casing for static serving, and merges album variants that resolve to the same artist/title or russ.fm album slug. It runs as part of `pnpm run prebuild` and is also invoked at the end of `pnpm run tunes` so a fresh post immediately appears on the browse hubs.
 
@@ -267,6 +273,7 @@ Glossary entries and blog posts share the `tags` axis. Two-way related-content l
 
 - `/glossary/{term}/` (`src/pages/glossary/[term].astro`) renders a "Posts on this topic" block listing up to 8 most-recent blog posts whose tags intersect the entry's tags.
 - Blog posts (`src/layouts/BlogPost.astro`) surface up to 6 glossary terms whose tags intersect the post's tags as a "Glossary" pill rail in the author info box. Tunes posts skip the rail.
+- A rehype plugin (`src/utils/rehype-glossary-links.ts`, registered in `astro.config.mjs`) auto-links the **first occurrence** of any glossary term inside MDX body text on every page. Code blocks, headings, existing links, and asides are skipped. The term map is loaded synchronously at config time by `src/utils/glossary-terms.ts`.
 
 Both blocks render only when there is a match — empty intersections produce no UI.
 

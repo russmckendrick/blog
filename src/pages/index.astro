@@ -6,6 +6,8 @@ import HeroSection from '../components/home/HeroSection.astro';
 import Pagination from '../components/layout/Pagination.astro';
 import { SITE_TITLE, SITE_DESCRIPTION, CF_IMAGE_PRESETS } from '../consts';
 import { generateCFSrcSet } from '../utils/cloudflare-images';
+import { Schema } from 'astro-seo-schema';
+import { createWebSiteSchema } from '../utils/schema';
 
 // Homepage shows 1 featured + 6 grid cards = 7 total
 const postsPerPage = 7;
@@ -33,9 +35,12 @@ const preloadSrcSet = firstPostHeroImage ? generateCFSrcSet(
 	CF_IMAGE_PRESETS.thumbnailPriority.format
 ) : null;
 
+const webSiteSchema = createWebSiteSchema(Astro.site?.toString() || 'https://www.russ.cloud/');
+
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<Schema slot="head" item={webSiteSchema} />
 	{preloadSrcSet && (
 		<link
 			slot="head"

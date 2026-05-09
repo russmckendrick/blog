@@ -24,6 +24,12 @@ const totalPages = 1 + Math.ceil(Math.max(0, remainingPosts) / subsequentPagePos
 const featuredTune = tunes[0];
 const gridTunes = tunes.slice(1);
 
+const tunesYearSet = new Set<number>()
+for (const tune of allTunes) {
+	tunesYearSet.add(tune.data.pubDate.getFullYear())
+}
+const tunesYearCount = tunesYearSet.size
+
 const browseHubs = [
 	{
 		href: '/tunes/artist/',
@@ -36,6 +42,12 @@ const browseHubs = [
 		label: 'By album',
 		count: tunesIndex.totals.albums,
 		emoji: '💿'
+	},
+	{
+		href: '/tunes/year/',
+		label: 'By year',
+		count: tunesYearCount,
+		emoji: '📅'
 	}
 ];
 ---

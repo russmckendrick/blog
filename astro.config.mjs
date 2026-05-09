@@ -8,16 +8,23 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import astroIcon from 'astro-icon';
 import { rehypeExternalLinks } from './src/utils/rehype-external-links.ts';
+import { rehypeGlossaryLinks } from './src/utils/rehype-glossary-links.ts';
+import { getGlossaryTermMap } from './src/utils/glossary-terms.ts';
 import { expressiveCodeA11yPlugin } from './src/utils/expressive-code-a11y-plugin.ts';
 import pagefind from 'astro-pagefind';
 import compress from '@playform/compress';
+
+const glossaryTermMap = getGlossaryTermMap();
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://www.russ.cloud/',
 	markdown: {
 		syntaxHighlight: false,
-		rehypePlugins: [rehypeExternalLinks],
+		rehypePlugins: [
+			rehypeExternalLinks,
+			[rehypeGlossaryLinks, { termMap: glossaryTermMap }],
+		],
 	},
 	integrations: [
 		react(),

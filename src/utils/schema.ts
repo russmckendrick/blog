@@ -7,8 +7,11 @@ import type {
   HowTo,
   MusicRecording,
   MusicAlbum,
+  MusicGroup,
   CollectionPage,
   DefinedTerm,
+  Book,
+  WebSite,
   WithContext
 } from 'schema-dts'
 import { SITE_TITLE, AUTHOR_NAME, AUTHOR_HOMEPAGE, SOCIAL_LINKS } from '../consts'
@@ -371,5 +374,103 @@ export function createDefinedTermSchema({
         name: inDefinedTermSet
       }
     })
+  }
+}
+
+/**
+ * Creates a MusicGroup schema for tunes artist browse pages
+ */
+interface MusicGroupSchemaProps {
+  name: string
+  url: string
+  image?: string
+  sameAs?: string[]
+  genre?: string[]
+}
+
+export function createMusicGroupSchema({
+  name,
+  url,
+  image,
+  sameAs,
+  genre = []
+}: MusicGroupSchemaProps): WithContext<MusicGroup> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MusicGroup',
+    name,
+    url,
+    ...(image && { image }),
+    ...(sameAs && sameAs.length > 0 && { sameAs }),
+    ...(genre.length > 0 && { genre })
+  }
+}
+
+/**
+ * Creates a Book schema for the books hub
+ */
+interface BookSchemaProps {
+  name: string
+  author: string
+  url?: string
+  image?: string
+  sameAs?: string[]
+  publisher?: string
+  datePublished?: string
+  isbn?: string
+}
+
+export function createBookSchema({
+  name,
+  author,
+  url,
+  image,
+  sameAs,
+  publisher,
+  datePublished,
+  isbn
+}: BookSchemaProps): WithContext<Book> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Book',
+    name,
+    author: {
+      '@type': 'Person',
+      name: author
+    },
+    ...(url && { url }),
+    ...(image && { image }),
+    ...(sameAs && sameAs.length > 0 && { sameAs }),
+    ...(publisher && {
+      publisher: {
+        '@type': 'Organization',
+        name: publisher
+      }
+    }),
+    ...(datePublished && { datePublished }),
+    ...(isbn && { isbn })
+  }
+}
+
+/**
+ * Creates a WebSite schema with a SearchAction so Google can render a sitelinks
+ * search box. Emit on the homepage only.
+ */
+export function createWebSiteSchema(siteUrl: string): WithContext<WebSite> {
+  const normalised = siteUrl.endsWith('/') ? siteUrl : `${siteUrl}/`
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_TITLE,
+    url: normalised,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${normalised}search/?q={search_term_string}`
+      },
+      // schema-dts requires a string here; Google parses the named query input.
+      'query-input': 'required name=search_term_string'
+    } as unknown as WithContext<WebSite>['potentialAction']
   }
 }
