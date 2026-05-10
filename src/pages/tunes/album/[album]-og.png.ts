@@ -16,7 +16,7 @@ export async function getStaticPaths() {
     return {
       params: { album: album.slug },
       props: {
-        title: `${album.name} — ${album.artist}`,
+        title: `${album.name} - ${album.artist}`,
         description
       }
     }

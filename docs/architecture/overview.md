@@ -189,7 +189,7 @@ The site builds several taxonomy and browse hubs from the content collections an
 
 **Location**: `src/content/tunes/`
 
-**Schema**: Extended blog schema with music metadata. Uses flat `heroImage` only — `cover` is no longer accepted on tunes (blog posts still use `cover` for richer caption/alt support).
+**Schema**: Extended blog schema with music metadata. Uses flat `heroImage` only - `cover` is no longer accepted on tunes (blog posts still use `cover` for richer caption/alt support).
 
 **Key Features**:
 - AI-generated content

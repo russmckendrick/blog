@@ -32,7 +32,7 @@ Graph queries return precise results in a single tool call (~500 tokens) vs file
 - **Read source**: `get_code_snippet(qualified_name="...")` after finding functions via search
 - **Complex patterns**: `query_graph` with Cypher for multi-hop graph traversals
  
-Use grep/Glob for text search (string literals, error messages, config values) — the graph doesn't index text content.
+Use grep/Glob for text search (string literals, error messages, config values) - the graph doesn't index text content.
 
 ## Always Relevant Rules
 
@@ -41,7 +41,7 @@ Use grep/Glob for text search (string literals, error messages, config values) �
 - Run `pnpm run astro -- sync` after changing content collections or frontmatter schema in `src/content.config.ts`.
 - Keep code style consistent with the repo: 2-space indent, no semicolons, PascalCase components, kebab-case route files.
 - Blog posts belong in `src/content/blog/` as `YYYY-MM-DD-slug.mdx`.
-- Tunes posts belong in `src/content/tunes/`, usually as directory-based entries with `index.mdx`. Tunes use flat `heroImage:` only — the `cover` object is no longer accepted.
+- Tunes posts belong in `src/content/tunes/`, usually as directory-based entries with `index.mdx`. Tunes use flat `heroImage:` only - the `cover` object is no longer accepted.
 - Glossary entries live in `src/content/glossary/{term-slug}.mdx`; books live in `src/content/books/{book-slug}.mdx` (each book becomes `/books/{slug}/`).
 - Use `sanitize-html` for HTML sanitization. Do not add regex-based sanitization.
 - After completing any code, component, schema, or content-model changes, review the Documentation Map below and update every affected doc in `docs/` in the same change. This applies to all runs, not just when you know a doc already covers the topic - if your change introduces, removes, or alters behaviour that any doc references, update that doc.

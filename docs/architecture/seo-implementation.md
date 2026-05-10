@@ -87,7 +87,7 @@ Helpers exported by `src/utils/schema.ts`:
 | `createMusicRecordingSchema` | `MusicRecording` | (Available; not currently wired) |
 | `createDefinedTermSchema` | `DefinedTerm` | `/glossary/[term]/` |
 | `createBookSchema` | `Book` | `/books/` (one per book; ~14 entries) |
-| `createWebSiteSchema` | `WebSite` + `SearchAction` | `/` (homepage only — sitelinks search box) |
+| `createWebSiteSchema` | `WebSite` + `SearchAction` | `/` (homepage only - sitelinks search box) |
 | `createFAQSchema` | `FAQPage` | Posts that set `faqs` in frontmatter |
 | `createHowToSchema` | `HowTo` | Posts that set `howto` in frontmatter |
 
@@ -275,7 +275,7 @@ Glossary entries and blog posts share the `tags` axis. Two-way related-content l
 - Blog posts (`src/layouts/BlogPost.astro`) surface up to 6 glossary terms whose tags intersect the post's tags as a "Glossary" pill rail in the author info box. Tunes posts skip the rail.
 - A rehype plugin (`src/utils/rehype-glossary-links.ts`, registered in `astro.config.mjs`) auto-links the **first occurrence** of any glossary term inside MDX body text on every page. Code blocks, headings, existing links, and asides are skipped. The term map is loaded synchronously at config time by `src/utils/glossary-terms.ts`.
 
-Both blocks render only when there is a match — empty intersections produce no UI.
+Both blocks render only when there is a match - empty intersections produce no UI.
 
 ## Content Freshness Signals
 
@@ -357,7 +357,7 @@ See [Image Delivery Architecture](./image-delivery.md)
 
 ### Build Compression
 
-Build-time minification is intentionally not used. Astro/Vite already minify JS and CSS for production, and Cloudflare applies Brotli/gzip at the edge for HTML, JS, and CSS — which delivers far higher savings than whitespace stripping at build time. A `@playform/compress` pass was previously used but added ~10 minutes to CI for negligible byte savings once edge compression was applied.
+Build-time minification is intentionally not used. Astro/Vite already minify JS and CSS for production, and Cloudflare applies Brotli/gzip at the edge for HTML, JS, and CSS - which delivers far higher savings than whitespace stripping at build time. A `@playform/compress` pass was previously used but added ~10 minutes to CI for negligible byte savings once edge compression was applied.
 
 ## Validation & Testing
 

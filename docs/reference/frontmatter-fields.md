@@ -121,7 +121,7 @@ draft: true  # Post won't appear on live site
 
 **Default**: `undefined`
 
-**Description**: Cover/hero image configuration. **Blog collection only** — the tunes collection no longer accepts `cover`; tunes posts must use the flat `heroImage` field instead.
+**Description**: Cover/hero image configuration. **Blog collection only** - the tunes collection no longer accepts `cover`; tunes posts must use the flat `heroImage` field instead.
 
 **Structure**:
 ```yaml
@@ -294,7 +294,7 @@ ShowToc: true  # Same as showToc
 
 **Description**: Flat hero image path. Used by all tunes posts and accepted as an alternative to `cover` on blog posts.
 
-**Example (tunes — canonical form)**:
+**Example (tunes - canonical form)**:
 ```yaml
 heroImage: "../../assets/2026-02-23-listened-to-this-week/cover.png"
 ```
@@ -378,9 +378,9 @@ Books live at `src/content/books/{slug}.mdx`, where `{slug}` becomes the URL at 
 | `cover` | string | yes | Path to the cover image, e.g. `"/assets/about/images/12.jpg"` (served from `public/`). |
 | `alt` | string | yes | Alt text for the cover. |
 | `publisher` | string | yes | E.g. `"Packt Publishing"` or `"The New Stack"`. Appears in the metadata table and the buy button. |
-| `buyLink` | URL | no | External purchase link. Omit for out-of-print titles — the page renders "No longer in print." instead of a button. |
+| `buyLink` | URL | no | External purchase link. Omit for out-of-print titles - the page renders "No longer in print." instead of a button. |
 | `year` | number | no | Publication year shown in the metadata table. |
-| `topic` | string | no | Free-form classification — `"Docker"`, `"Kubernetes"`, etc. Used in the breadcrumb sub-line. |
+| `topic` | string | no | Free-form classification - `"Docker"`, `"Kubernetes"`, etc. Used in the breadcrumb sub-line. |
 | `tags` | string[] | no | Lowercase tags. Used to find related blog posts via tag-overlap (normalised through `normalizeTagSlug`). |
 | `pubDate` | date | yes | Used for sorting on the index and `datePublished` in the Book schema. |
 | `order` | number | yes | Explicit display order on the `/books/` index. Lower first. |

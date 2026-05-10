@@ -21,7 +21,7 @@ const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
 
 const title = 'Tunes by year'
-const description = `Browse weekly Listened to This Week posts by calendar year — ${years.length} year${years.length !== 1 ? 's' : ''} of music journals on russ.cloud.`
+const description = `Browse weekly Listened to This Week posts by calendar year - ${years.length} year${years.length !== 1 ? 's' : ''} of music journals on russ.cloud.`
 
 const collectionSchema = createCollectionPageSchema({
   name: title,
