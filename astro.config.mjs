@@ -12,7 +12,6 @@ import { rehypeGlossaryLinks } from './src/utils/rehype-glossary-links.ts';
 import { getGlossaryTermMap } from './src/utils/glossary-terms.ts';
 import { expressiveCodeA11yPlugin } from './src/utils/expressive-code-a11y-plugin.ts';
 import pagefind from 'astro-pagefind';
-import compress from '@playform/compress';
 
 const glossaryTermMap = getGlossaryTermMap();
 
@@ -53,27 +52,6 @@ export default defineConfig({
 				}
 				return item;
 			}
-		}),
-		compress({
-			Logger: 2,
-			Image: false, // Disable image optimization - use npm run optimize instead
-			Exclude: [
-				(file) => file.endsWith('.mp3'),
-				(file) => file.endsWith('.wav'),
-				(file) => file.endsWith('.ogg'),
-				(file) => file.endsWith('.m4a'),
-				(file) => file.includes('/pagefind/'),
-				(file) => file.endsWith('.wasm'),
-				(file) => file.endsWith('.pf_fragment'),
-				(file) => file.endsWith('.DS_Store'),
-				// Exclude images as we use Cloudflare
-				(file) => file.endsWith('.jpg'),
-				(file) => file.endsWith('.jpeg'),
-				(file) => file.endsWith('.png'),
-				(file) => file.endsWith('.webp'),
-				(file) => file.endsWith('.avif'),
-				(file) => file.endsWith('.svg')
-			]
 		})
 	],
 	image: {

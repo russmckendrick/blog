@@ -357,17 +357,7 @@ See [Image Delivery Architecture](./image-delivery.md)
 
 ### Build Compression
 
-**Package**: `@playform/compress`
-
-**File**: `astro.config.mjs`
-
-**Assets Compressed**:
-- CSS (via csso/lightningcss)
-- HTML (via html-minifier-terser)
-- JavaScript (via terser)
-- JSON
-- Images (via sharp)
-- SVG (via svgo)
+Build-time minification is intentionally not used. Astro/Vite already minify JS and CSS for production, and Cloudflare applies Brotli/gzip at the edge for HTML, JS, and CSS — which delivers far higher savings than whitespace stripping at build time. A `@playform/compress` pass was previously used but added ~10 minutes to CI for negligible byte savings once edge compression was applied.
 
 ## Validation & Testing
 
