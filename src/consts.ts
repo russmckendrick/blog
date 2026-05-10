@@ -13,6 +13,8 @@ export const SITE_KEYWORDS = [
   "DevOps",
   "Cloud",
 ];
+export const GA_MEASUREMENT_ID = "G-3KVP49NDDT";
+
 export const AUTHOR_NAME = "Russ McKendrick";
 export const AUTHOR_EMAIL = "r@russ.email";
 export const AUTHOR_GITHUB = "@russmckendrick";
