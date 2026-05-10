@@ -1,0 +1,149 @@
+---
+import { getCollection, render } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import PostCard from '../../components/blog/PostCard.astro'
+import { Schema } from 'astro-seo-schema'
+import { createBookSchema, createBreadcrumbSchema } from '../../utils/schema'
+import { AUTHOR_NAME } from '../../consts'
+import { normalizeTagSlug } from '../../utils/tags'
+
+export const getStaticPaths = (async () => {
+  const entries = await getCollection('books', ({ data }) => !data.draft)
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry }
+  }))
+}) satisfies GetStaticPaths
+
+interface Props {
+  entry: CollectionEntry<'books'>
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
+const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
+
+const bookTagSlugs = new Set((entry.data.tags || []).map(normalizeTagSlug))
+const relatedPosts = bookTagSlugs.size === 0
+  ? []
+  : (await getCollection('blog'))
+    .filter((post) => import.meta.env.DEV || !post.data.draft)
+    .filter((post) => (post.data.tags || []).some((tag) => bookTagSlugs.has(normalizeTagSlug(tag))))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 6)
+
+const bookSchema = createBookSchema({
+  name: entry.data.title,
+  author: AUTHOR_NAME,
+  url: pageUrl,
+  image: new URL(entry.data.cover, siteUrl).toString(),
+  sameAs: entry.data.buyLink ? [entry.data.buyLink] : undefined,
+  publisher: entry.data.publisher,
+  datePublished: entry.data.pubDate.toISOString().slice(0, 10)
+})
+
+const breadcrumbSchema = createBreadcrumbSchema(
+  [
+    { name: 'Home', url: '/' },
+    { name: 'Books', url: '/books/' },
+    { name: entry.data.title, url: `/books/${entry.id}/` }
+  ],
+  siteUrl
+)
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  image={`/books/${entry.id}-og.png`}
+>
+  <Schema slot="head" item={bookSchema} />
+  <Schema slot="head" item={breadcrumbSchema} />
+
+  <article class="max-w-6xl mx-auto px-5 py-10">
+    <p class="text-sm uppercase tracking-wide text-on-surface-variant mb-4">
+      <a href="/books/" class="hover:text-[var(--color-secondary)] transition-colors">Books</a>
+      {entry.data.topic && (
+        <>
+          <span aria-hidden="true"> · </span>
+          {entry.data.topic}
+        </>
+      )}
+    </p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-12">
+      <aside class="lg:sticky lg:top-24 self-start">
+        <div class="surface-container-lowest rounded-xl shadow-ambient ghost-border overflow-hidden aspect-[3/4]">
+          <img
+            src={entry.data.cover}
+            alt={entry.data.alt}
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+
+        {entry.data.buyLink ? (
+          <a
+            href={entry.data.buyLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-5 inline-flex w-full items-center justify-center rounded-lg px-4 py-3 font-medium transition-all hover:-translate-y-[1px] hover:shadow-md"
+            style="background: var(--color-secondary); color: var(--color-on-secondary);"
+          >
+            Buy from {entry.data.publisher}
+          </a>
+        ) : (
+          <p class="mt-5 text-sm text-on-surface-variant text-center">
+            No longer in print.
+          </p>
+        )}
+
+        <dl class="mt-6 text-sm space-y-2 text-on-surface-variant">
+          <div class="flex justify-between">
+            <dt>Published</dt>
+            <dd class="text-on-surface">{entry.data.year}</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt>Publisher</dt>
+            <dd class="text-on-surface text-right">{entry.data.publisher}</dd>
+          </div>
+          {entry.data.topic && (
+            <div class="flex justify-between">
+              <dt>Topic</dt>
+              <dd class="text-on-surface text-right">{entry.data.topic}</dd>
+            </div>
+          )}
+        </dl>
+      </aside>
+
+      <div>
+        <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-on-surface mb-4">
+          {entry.data.title}
+        </h1>
+
+        <p class="text-lg text-on-surface-variant mb-8 leading-relaxed">
+          {entry.data.description}
+        </p>
+
+        <div class="prose">
+          <Content />
+        </div>
+
+        {relatedPosts.length > 0 && (
+          <aside class="mt-12 pt-6 border-t border-[var(--color-outline-variant)]/40">
+            <p class="text-xs text-on-surface-variant mb-4">Posts on this topic</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {relatedPosts.map((post) => (
+                <PostCard post={post} variant="grid" headingLevel="3" />
+              ))}
+            </div>
+          </aside>
+        )}
+      </div>
+    </div>
+  </article>
+</BaseLayout>

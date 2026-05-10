@@ -52,7 +52,7 @@ const description = `All posts and tunes from ${year}`;
 
 // Get gradient colors from first post's hero image
 const firstPost = yearContent[0];
-const firstPostHeroImage = firstPost?.data.heroImage || firstPost?.data.cover?.image;
+const firstPostHeroImage = firstPost?.data.heroImage || (firstPost && 'cover' in firstPost.data ? firstPost.data.cover?.image : undefined);
 const heroColors = getHeroColors(firstPostHeroImage);
 const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors));
 

@@ -111,7 +111,9 @@ blog/
 │   │   └── layout/    # Layout components
 │   ├── content/       # Content collections
 │   │   ├── blog/      # Blog posts (MDX)
-│   │   └── tunes/     # Music posts (MDX)
+│   │   ├── tunes/     # Music posts (MDX)
+│   │   ├── glossary/  # Glossary terms (MDX)
+│   │   └── books/     # Bookshelf entries (MDX)
 │   ├── layouts/       # Page layouts
 │   ├── pages/         # Route pages
 │   ├── styles/        # Global styles

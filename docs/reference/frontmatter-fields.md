@@ -121,7 +121,7 @@ draft: true  # Post won't appear on live site
 
 **Default**: `undefined`
 
-**Description**: Cover/hero image configuration.
+**Description**: Cover/hero image configuration. **Blog collection only** — the tunes collection no longer accepts `cover`; tunes posts must use the flat `heroImage` field instead.
 
 **Structure**:
 ```yaml
@@ -290,11 +290,16 @@ ShowToc: true  # Same as showToc
 
 ### heroImage
 
-**Type**: `ImageMetadata`
+**Type**: `ImageMetadata` or `string`
 
-**Description**: Astro-native image import (alternative to `cover`).
+**Description**: Flat hero image path. Used by all tunes posts and accepted as an alternative to `cover` on blog posts.
 
-**Example**:
+**Example (tunes — canonical form)**:
+```yaml
+heroImage: "../../assets/2026-02-23-listened-to-this-week/cover.png"
+```
+
+**Example (blog with import)**:
 ```astro
 ---
 import heroImg from '../assets/hero.jpg';
@@ -305,7 +310,7 @@ export const frontmatter = {
 ---
 ```
 
-**Note**: Most users prefer the `cover` object approach.
+**Note**: All tunes posts use `heroImage`. Blog posts can use either `heroImage` or the richer `cover` object (which adds `alt` and `caption`).
 
 ---
 
@@ -361,6 +366,27 @@ Error: Expected date, received string
 ```
 Warning: Tag "xyz" not found in TAG_METADATA
 ```
+
+## Books collection
+
+Books live at `src/content/books/{slug}.mdx`, where `{slug}` becomes the URL at `/books/{slug}/`. Each entry powers both the `/books/` index grid and a per-book detail page.
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `title` | string | yes | Display title used in the page header, OG image, and Book JSON-LD. |
+| `description` | string | yes | One-sentence summary used for meta description, cards, and the OG image subtitle. |
+| `cover` | string | yes | Path to the cover image, e.g. `"/assets/about/images/12.jpg"` (served from `public/`). |
+| `alt` | string | yes | Alt text for the cover. |
+| `publisher` | string | yes | E.g. `"Packt Publishing"` or `"The New Stack"`. Appears in the metadata table and the buy button. |
+| `buyLink` | URL | no | External purchase link. Omit for out-of-print titles — the page renders "No longer in print." instead of a button. |
+| `year` | number | no | Publication year shown in the metadata table. |
+| `topic` | string | no | Free-form classification — `"Docker"`, `"Kubernetes"`, etc. Used in the breadcrumb sub-line. |
+| `tags` | string[] | no | Lowercase tags. Used to find related blog posts via tag-overlap (normalised through `normalizeTagSlug`). |
+| `pubDate` | date | yes | Used for sorting on the index and `datePublished` in the Book schema. |
+| `order` | number | yes | Explicit display order on the `/books/` index. Lower first. |
+| `draft` | boolean | no | Defaults to `false`. Drafts are excluded from the index and detail routes in production. |
+
+The body of the file is rendered as MDX in the right column of the detail page. Each entry emits `Book` and `BreadcrumbList` JSON-LD, plus a per-book OG image at `/books/{slug}-og.png`.
 
 ## Glossary collection
 

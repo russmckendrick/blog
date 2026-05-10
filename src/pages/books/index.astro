@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { Schema } from 'astro-seo-schema'
 import {
@@ -6,11 +7,13 @@ import {
   createCollectionPageSchema,
   createBreadcrumbSchema
 } from '../../utils/schema'
-import { books } from '../../data/books'
 import { AUTHOR_NAME } from '../../consts'
 
 const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
+
+const allBooks = await getCollection('books', ({ data }) => !data.draft)
+const books = allBooks.sort((a, b) => a.data.order - b.data.order)
 
 const title = `Books by ${AUTHOR_NAME}`
 const description = `${books.length} technical books written or co-authored by ${AUTHOR_NAME}, covering Docker, Kubernetes, Ansible, Infrastructure as Code, and serverless on Packt Publishing and The New Stack.`
@@ -20,8 +23,8 @@ const collectionSchema = createCollectionPageSchema({
   description,
   url: pageUrl,
   items: books.map((book) => ({
-    name: book.name,
-    url: book.href ?? pageUrl
+    name: book.data.title,
+    url: new URL(`/books/${book.id}/`, siteUrl).toString()
   })),
   numberOfItems: books.length
 })
@@ -36,12 +39,12 @@ const breadcrumbSchema = createBreadcrumbSchema(
 
 const bookSchemas = books.map((book) =>
   createBookSchema({
-    name: book.name,
+    name: book.data.title,
     author: AUTHOR_NAME,
-    url: book.href ?? undefined,
-    image: new URL(book.img, siteUrl).toString(),
-    sameAs: book.href ? [book.href] : undefined,
-    publisher: book.publisher
+    url: new URL(`/books/${book.id}/`, siteUrl).toString(),
+    image: new URL(book.data.cover, siteUrl).toString(),
+    sameAs: book.data.buyLink ? [book.data.buyLink] : undefined,
+    publisher: book.data.publisher
   })
 )
 ---
@@ -68,22 +71,13 @@ const bookSchemas = books.map((book) =>
 
   <section class="max-w-6xl mx-auto px-5 pb-16">
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-6 reveal-stagger">
-      {books.map((book) => {
-        const inner = (
+      {books.map((book) => (
+        <a href={`/books/${book.id}/`} class="reveal" aria-label={book.data.title}>
           <div class="surface-container-lowest rounded-xl shadow-ambient ghost-border overflow-hidden aspect-[3/4] transition-all duration-300 hover:-translate-y-[3px] hover:shadow-[var(--shadow-ambient-hover)]">
-            <img src={book.img} alt={book.alt} class="w-full h-full object-cover" loading="lazy" />
+            <img src={book.data.cover} alt={book.data.alt} class="w-full h-full object-cover" loading="lazy" />
           </div>
-        )
-        return book.href ? (
-          <a href={book.href} target="_blank" rel="noopener noreferrer" class="reveal" aria-label={book.name}>
-            {inner}
-          </a>
-        ) : (
-          <div class="reveal" aria-label={book.name}>
-            {inner}
-          </div>
-        )
-      })}
+        </a>
+      ))}
     </div>
 
     <p class="text-sm text-on-surface-variant text-center mt-10">

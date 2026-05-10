@@ -289,7 +289,6 @@ The first of the two new tasks we are adding simply installs Infracost:
   name: "installinfracost"
   displayName: "Install > Infrascost"
 ```
-{/* TODO: End shortcode: {{/terminal}} */}
 
 As you can see, there is a little logic in there which skips this step if the `$(INFRACOST_API_KEY)` is not defined and we are just left with a message which looks like the following:
 
@@ -338,7 +337,6 @@ There is quite a bit of logic in the this task, here it is in its entirety:
   name: "runinfracost"
   displayName: "Run > Infrascost"
 ```
-{/* TODO: End shortcode: {{/terminal}} */}
 
 The first few of the steps in the task roughly follow what we ran locally:
 
@@ -467,7 +465,6 @@ The final task in this stage is not much different than before, just some of the
   name: "setvar"
   displayName: "Vars > Set Variables for next stage"
 ```
-{/* TODO: End shortcode: {{/terminal}} */}
 
 There are also some tweaks to the rest of the pipeline, but nothing outside of changing some of the wording.
 

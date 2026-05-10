@@ -23,7 +23,8 @@ Agent guidance for the Russ.Cloud blog repository.
 - Run `pnpm run astro -- sync` after changing content collections or frontmatter schema in `src/content.config.ts`.
 - Keep code style consistent with the repo: 2-space indent, no semicolons, PascalCase components, kebab-case route files.
 - Blog posts belong in `src/content/blog/` as `YYYY-MM-DD-slug.mdx`.
-- Tunes posts belong in `src/content/tunes/`, usually as directory-based entries with `index.mdx`.
+- Tunes posts belong in `src/content/tunes/`, usually as directory-based entries with `index.mdx`. Tunes use flat `heroImage:` only — the `cover` object is no longer accepted.
+- Glossary entries live in `src/content/glossary/{term-slug}.mdx`; books live in `src/content/books/{book-slug}.mdx` (each book becomes `/books/{slug}/`).
 - Use `sanitize-html` for HTML sanitization. Do not add regex-based sanitization.
 - After completing any code, component, schema, or content-model changes, review the Documentation Map below and update every affected doc in `docs/` in the same change. This applies to all runs, not just when you know a doc already covers the topic - if your change introduces, removes, or alters behaviour that any doc references, update that doc.
 

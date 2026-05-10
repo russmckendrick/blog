@@ -20,9 +20,9 @@ export async function getStaticPaths() {
     const isTune = post.collection === 'tunes';
 
     // Get cover image - we need the filesystem path, not the optimized URL
-    // Check both cover.image and heroImage (tunes posts may use either)
+    // Tunes use heroImage; blog may use either heroImage or cover.image.
     let coverImagePath: string | undefined;
-    const coverImage = post.data.cover?.image || post.data.heroImage;
+    const coverImage = ('cover' in post.data ? post.data.cover?.image : undefined) || post.data.heroImage;
 
     if (coverImage) {
       if (typeof coverImage === 'string') {

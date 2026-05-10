@@ -588,6 +588,49 @@ pnpm run astro -- sync
 3. Required props provided
 4. No unclosed tags
 
+## Adding a Book
+
+Books live in their own collection at `src/content/books/`. Each book is a single MDX file whose name (without the extension) becomes the URL slug at `/books/{slug}/`.
+
+### 1. Create the file
+
+```bash
+touch src/content/books/my-new-book.mdx
+```
+
+### 2. Fill in the frontmatter
+
+```yaml
+---
+title: "Mastering Whatever, Fifth Edition"
+description: "One-sentence summary used for cards, meta description, and the OG image."
+cover: "/assets/about/images/15.jpg"   # served from public/
+alt: "Mastering Whatever, Fifth Edition"
+publisher: "Packt Publishing"
+buyLink: "https://www.packtpub.com/..."  # omit for out-of-print titles
+year: 2026
+topic: "Docker"                          # free-form, surfaces in the breadcrumb
+tags: ["docker", "devops", "containers", "book"]   # lowercase; matches blog tags via normalizeTagSlug
+pubDate: 2026-05-01
+order: 15                                # explicit display order on /books/
+---
+```
+
+### 3. Write the body
+
+The MDX body becomes the right-column content on the detail page. Aim for one to two short paragraphs covering what the book teaches and who it is for. The buy button, metadata table, and related-posts list are added automatically.
+
+### 4. Verify
+
+```bash
+pnpm run astro -- sync
+npx astro check
+pnpm run dev
+# Visit /books/ and /books/my-new-book/
+```
+
+The Book and BreadcrumbList JSON-LD plus the OG image at `/books/my-new-book-og.png` are generated automatically. Out-of-print titles (no `buyLink`) render "No longer in print." in place of the buy button.
+
 ## Next Steps
 
 - **[Using Tags](./using-tags.md)** - Complete tag system reference (30+ tags)
@@ -597,4 +640,4 @@ pnpm run astro -- sync
 
 ---
 
-**Last Updated**: November 2025
+**Last Updated**: May 2026
