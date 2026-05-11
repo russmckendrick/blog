@@ -5,6 +5,7 @@ import PostCard from '../../components/blog/PostCard.astro';
 import HeroSection from '../../components/home/HeroSection.astro';
 import Pagination from '../../components/layout/Pagination.astro';
 import { tunesIndex } from '../../utils/tunes-index';
+import { Icon } from 'astro-icon/components';
 
 // Tunes homepage shows 1 featured + 6 grid cards = 7 total
 const firstPagePosts = 7;
@@ -35,19 +36,19 @@ const browseHubs = [
 		href: '/tunes/artist/',
 		label: 'By artist',
 		count: tunesIndex.totals.artists,
-		emoji: '🎤'
+		icon: 'tabler:microphone-2'
 	},
 	{
 		href: '/tunes/album/',
 		label: 'By album',
 		count: tunesIndex.totals.albums,
-		emoji: '💿'
+		icon: 'tabler:disc'
 	},
 	{
 		href: '/tunes/year/',
 		label: 'By year',
 		count: tunesYearCount,
-		emoji: '📅'
+		icon: 'tabler:calendar-week'
 	}
 ];
 ---
@@ -56,17 +57,19 @@ const browseHubs = [
 	<section class="max-w-7xl mx-auto px-5">
 		<h1 class="sr-only">Listened to This Week</h1>
 
-		<nav aria-label="Browse tunes" class="mb-6 sm:mb-8 flex flex-wrap gap-3 justify-center">
-			{browseHubs.map((hub) => (
-				<a
-					href={hub.href}
-					class="inline-flex items-center gap-2 surface-container-lowest rounded-full px-4 py-2 text-sm font-medium text-on-surface transition-all hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50"
-				>
-					<span aria-hidden="true">{hub.emoji}</span>
-					<span>{hub.label}</span>
-					<span class="text-xs text-on-surface-variant">{hub.count}</span>
-				</a>
-			))}
+		<nav aria-label="Browse tunes" class="mb-5 sm:mb-6">
+			<div class="grid w-full grid-cols-1 gap-1 surface-container-lowest rounded-xl p-1 shadow-ambient sm:grid-cols-3">
+				{browseHubs.map((hub) => (
+					<a
+						href={hub.href}
+						class="group inline-flex min-h-10 min-w-0 items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-on-surface transition-colors duration-200 hover:surface-container focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50 sm:px-4"
+					>
+						<Icon name={hub.icon} class="h-4 w-4 shrink-0 text-on-surface-variant transition-colors duration-200 group-hover:text-on-surface" aria-hidden="true" />
+						<span>{hub.label}</span>
+						<span class="rounded-full surface-container px-1.5 py-0.5 text-[0.7rem] font-semibold leading-none text-on-surface-variant transition-colors duration-200 group-hover:surface-container-high group-hover:text-on-surface">{hub.count}</span>
+					</a>
+				))}
+			</div>
 		</nav>
 
 		{/* Hero Section with Featured Tune */}
