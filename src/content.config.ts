@@ -132,6 +132,7 @@ const glossary = defineCollection({
 			updatedDate: z.coerce.date().optional(),
 			category: z.string().optional(),
 			abbreviation: z.string().optional(),
+			aliases: z.array(z.string()).default([]),
 			relatedTerms: z.array(z.string()).default([]),
 			tags: z.array(z.string()).default([]),
 			heroImage: image().optional(),

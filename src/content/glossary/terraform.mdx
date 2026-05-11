@@ -2,7 +2,7 @@
 term: "Terraform"
 description: "Terraform is an Infrastructure as Code tool that reads declarative configuration, builds an execution plan, and changes infrastructure through provider APIs."
 category: "Tool"
-relatedTerms: ["infrastructure-as-code", "terraform-state", "policy-as-code", "checkov", "infracost", "azure-devops"]
+relatedTerms: ["infrastructure-as-code", "terraform-state", "azure", "aws", "digitalocean", "policy-as-code", "checkov", "infracost", "azure-devops"]
 tags: ["terraform", "infrastructure-as-code", "automation", "devops"]
 ---
 
@@ -15,4 +15,3 @@ The usual flow is:
 - `terraform apply` makes the changes.
 
 Terraform's strength is its provider ecosystem. The same workflow can manage AWS, Azure, Cloudflare, GitHub, Kubernetes, and plenty more. The part that deserves care is [Terraform state](/glossary/terraform-state/). State tells Terraform what it already manages, so losing or corrupting it can turn a tidy change into a long afternoon.
-

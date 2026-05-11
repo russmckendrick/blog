@@ -1,0 +1,13 @@
+---
+term: "YAML"
+description: "YAML is a human-readable data format often used for configuration, infrastructure definitions, CI/CD pipelines, and content frontmatter."
+category: "Format"
+relatedTerms: ["json", "ci-cd", "ansible", "docker-compose", "azure-pipelines", "markdown"]
+tags: ["code", "automation", "tools"]
+---
+
+**YAML** is a text format for structured data. People often meet it in configuration files: [Ansible](/glossary/ansible/) playbooks, [Docker Compose](/glossary/docker-compose/) files, CI/CD pipelines, Kubernetes manifests, and blog frontmatter.
+
+Compared with [JSON](/glossary/json/), YAML is easier to write by hand. It supports comments and usually looks less noisy. The trade-off is that indentation matters and some values can be interpreted in surprising ways if you are not explicit.
+
+Treat YAML as code when it controls real systems. Keep it in version control, review changes, validate it with tools, and avoid copying huge blocks nobody understands just because the pipeline turned green once.

@@ -2,7 +2,7 @@
 term: "Ansible"
 description: "Ansible is an agentless automation tool used to configure servers, run repeatable tasks, and provision infrastructure through YAML playbooks."
 category: "Tool"
-relatedTerms: ["automation", "infrastructure-as-code", "devops", "azure-pipelines", "service-principal"]
+relatedTerms: ["automation", "infrastructure-as-code", "devops", "azure-pipelines", "service-principal", "yaml"]
 tags: ["ansible", "automation", "devops", "infrastructure-as-code"]
 ---
 
@@ -11,4 +11,3 @@ tags: ["ansible", "automation", "devops", "infrastructure-as-code"]
 It is often used for configuration management: install packages, write config files, restart services, and make sure a machine is in the shape you expect. It can also drive cloud provisioning through collections such as `azure.azcollection`, which is why it sits somewhere between classic server automation and [Infrastructure as Code](/glossary/infrastructure-as-code/).
 
 The nice part is the lack of an agent. There is no daemon to install on every target host. The trade-off is that you need clean inventories, good idempotent tasks, and enough discipline to avoid turning playbooks into long shell scripts with YAML around them.
-

@@ -397,6 +397,7 @@ Glossary entries live at `src/content/glossary/{term-slug}.mdx` and use a separa
 | `term` | string | yes | Display name of the term (e.g. `"Infrastructure as Code"`). |
 | `description` | string | yes | One-sentence definition used for meta description and the entry's intro. |
 | `abbreviation` | string | no | Acronym, rendered alongside the term. |
+| `aliases` | string[] | no | Alternate spellings that should auto-link to the same entry, such as `"Digital Ocean"` for `"DigitalOcean"`. |
 | `category` | string | no | Free-form classification - `"Pattern"`, `"Methodology"`, etc. |
 | `relatedTerms` | string[] | no | Slugs of other glossary entries (matched against the file id). Renders a related-terms list at the bottom of the page. |
 | `tags` | string[] | no | Tags shared with the blog/tunes taxonomy. |

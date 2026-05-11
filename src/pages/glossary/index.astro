@@ -20,8 +20,8 @@ const orderedGroups = Array.from(groups.entries()).sort(([a], [b]) => a.localeCo
 const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
 
-const title = 'DevOps and cloud glossary'
-const description = `Plain-language definitions of the DevOps, cloud, and infrastructure terms that show up across russ.cloud - ${entries.length} entr${entries.length === 1 ? 'y' : 'ies'} and growing.`
+const title = 'Technology glossary'
+const description = `Plain-language definitions for the cloud, AI, automation, code, security, and tool terms that show up across russ.cloud - ${entries.length} entr${entries.length === 1 ? 'y' : 'ies'} and growing.`
 
 const collectionSchema = createCollectionPageSchema({
   name: title,
@@ -49,9 +49,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 
   <section class="surface-container-low text-center py-12 pb-16 mb-8">
     <div class="max-w-3xl mx-auto px-5 animate-fade-in">
-      <h1 class="text-4xl lg:text-5xl font-bold mb-4 text-on-surface font-display">
-        DevOps glossary 📖
-      </h1>
+      <h1 class="text-4xl lg:text-5xl font-bold mb-4 text-on-surface font-display">Technology glossary</h1>
       <p class="text-lg text-on-surface-variant">
         {description}
       </p>
