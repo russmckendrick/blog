@@ -44,12 +44,12 @@ const LEGACY_STYLE_TO_LANE = {
 
 const LANE_DIRECTIVES = {
   hero_object: 'one unforgettable central object, talisman, machine, shrine, or sculptural prop assembled from source-image elements; strong silhouette, generous breathing room, instantly readable at card size',
-  cover_shoot: 'a bold magazine-cover/editorial shoot with one striking person, pair, or character-like subject; source elements appear in styling, props, backdrop, reflections, and set dressing',
+  cover_shoot: 'a bold fashion-editorial shoot with one striking person, pair, or character-like subject; source elements appear in styling, props, backdrop, reflections, and set dressing',
   tilt_shift: 'a miniature diorama or tilt-shift editorial world where source-image elements become tiny physical props, model scenery, paper cutouts, toy-scale figures, stage dressing, and tactile set pieces; playful depth of field and clear focal scale',
-  graphic_punch: 'a punchy poster-like composition with oversized shapes, hard colour blocks, crisp silhouettes, and source artwork transformed into graphic objects or physical set pieces; no readable text',
-  noir_gloss: 'cinematic late-night gloss with rain, glass, chrome, shadow, reflections, and tension; source motifs appear as signs, murals, windows, props, clothing, or reflected details',
+  graphic_punch: 'a punchy graphic composition with oversized shapes, hard colour blocks, crisp silhouettes, and source artwork transformed into graphic objects or physical set pieces; no letters, captions, logos, or text-like marks',
+  noir_gloss: 'cinematic late-night gloss with rain, glass, chrome, shadow, reflections, and tension; source motifs appear as light panels, murals, windows, props, clothing, or reflected details',
   fever_dream: 'a source-anchored dream image with impossible scale, charged symbolism, and one bold focal idea; strange, but visibly built from source-image subjects and textures',
-  maximal_pop: 'a controlled high-energy spectacle with many source-derived elements layered into one scene; loud, rhythmic, colourful, headline-grabbing, but still coherent'
+  maximal_pop: 'a controlled high-energy spectacle with many source-derived elements layered into one scene; loud, rhythmic, colourful, attention-grabbing, and coherent, using pattern, props, colour, scale, and movement instead of typography'
 }
 
 const NEGATIVE_TERMS = [
@@ -61,6 +61,14 @@ const NEGATIVE_TERMS = [
   'cluttered scrapbook montage',
   'floating disconnected objects',
   'readable text',
+  'text-like marks',
+  'letters',
+  'numbers',
+  'captions',
+  'labels',
+  'signage',
+  'album titles',
+  'artist names',
   'typography',
   'logos',
   'watermarks',
@@ -523,6 +531,7 @@ Create one unified scene from the uploaded files. The uploaded images are source
 Do not invent a generic concept unless the source images clearly support it.
 Use recognisable source elements from at least six uploaded images when possible. Integrate them into one coherent scene rather than placing raw square covers in a grid.
 Avoid repeating recent cover grammar, especially empty buildings, central glowing portals, generic concert crowds, busy surreal stages, and floating disconnected objects.
+If source artwork contains text, lettering, artist names, or album titles, ignore the glyphs and preserve only the non-text visual material: colour blocks, shapes, figures, textures, objects, and layout energy.
 Be specific, concise, and practical for image generation.`
 
   try {
@@ -596,8 +605,8 @@ function buildGenerationPrompt(brief, sourceImageCount, sourceReferences) {
     `Lighting: ${brief.lighting}.`,
     `Mood: ${brief.mood}.`,
     'Do not simply make a tasteful generic scene from the metadata. Build the image from the uploaded visual material.',
-    'Do not show unmodified album covers, raw record sleeves, square thumbnail panels, or a grid. Integrated fragments are acceptable when transformed into posters, murals, projections, windows, paintings, props, reflections, clothing, or set pieces within the scene.',
-    'No readable text, typography, logos, watermarks, duplicated faces, or cloned people.',
+    'Do not show unmodified album covers, raw record sleeves, square thumbnail panels, or a grid. Integrated fragments are acceptable when transformed into murals, projections, windows, paintings, props, reflections, clothing, patterns, colour fields, or set pieces within the scene.',
+    'If any source artwork includes text, artist names, album titles, logos, labels, or letterforms, convert those areas into abstract shapes, colour blocks, fabric, paint, light, or texture. No readable text, fake text, text-like marks, typography, captions, numbers, signage, logos, watermarks, duplicated faces, or cloned people.',
     `Avoid: ${avoid}.`,
     'High quality, crisp, polished, visually memorable, with enough negative space to work as a responsive blog card crop.'
   ].join(' ').replace(/\s+/g, ' ').trim()
