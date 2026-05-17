@@ -1,7 +1,6 @@
 import 'dotenv/config'
 import { promises as fs } from 'fs'
 import path from 'path'
-import axios from 'axios'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import { LastFMClient } from './lib/lastfm-client.js'
@@ -10,7 +9,7 @@ import { ContentGenerator } from './lib/content-generator.js'
 import { ImageHandler } from './lib/image-handler.js'
 import { BlogPostRenderer } from './lib/blog-post-renderer.js'
 import { ConfigLoader } from './lib/config-loader.js'
-import { normalizeText, lookupArtistData, lookupAlbumData, isVariousArtists } from './lib/text-utils.js'
+import { normalizeText, lookupArtistData, lookupAlbumData, isVariousArtists, normalizeForFilename } from './lib/text-utils.js'
 import { createFALCollage } from './fal-collage.js'
 import { spawnSync } from 'child_process'
 
@@ -22,12 +21,15 @@ async function main() {
     // Parse command line arguments
     const args = process.argv.slice(2)
     const weekStartArg = args.find(arg => arg.startsWith('--week_start='))
+    const laneArg = args.find(arg => arg.startsWith('--lane='))
     const styleArg = args.find(arg => arg.startsWith('--style='))
     const debugMode = args.includes('--debug')
     const testingMode = args.includes('--testing')
     const takeArg = args.find(arg => arg.startsWith('--take='))
     const takeCount = takeArg ? parseInt(takeArg.split('=')[1], 10) : null
-    const styleOverride = styleArg ? styleArg.split('=')[1] : 'rotate'
+    const laneOverride = laneArg
+      ? laneArg.split('=')[1]
+      : (styleArg ? styleArg.split('=')[1] : 'auto')
 
     // Calculate week dates
     const weekStart = weekStartArg
@@ -46,6 +48,9 @@ async function main() {
     }
     if (takeCount) {
       console.log(`Taking ${takeCount} items`)
+    }
+    if (styleArg && !laneArg) {
+      console.log(`Deprecated --style alias received; using it as cover lane "${laneOverride}"`)
     }
 
     // Load configuration
@@ -130,32 +135,48 @@ async function main() {
     await imageHandler.downloadArtistImages(topArtists, collectionInfo.info, artistsFolder)
     await imageHandler.downloadAlbumImages(topAlbums, collectionInfo.info, albumsFolder)
 
-    // Generate collage cover
-    console.log('Generating cover collage...')
+    // Generate interpreted cover assets.
+    console.log('Generating cover image...')
     const srcAssetsFolder = testingMode
       ? baseDir
       : path.join(process.cwd(), 'src', 'assets', `${dateStr}-listened-to-this-week`)
     await fs.mkdir(srcAssetsFolder, { recursive: true })
 
     const albumFiles = await fs.readdir(albumsFolder)
-    const albumImagePaths = albumFiles
-      .filter(file => file.endsWith('.jpg') && !file.endsWith('.meta'))
-      .map(file => path.join(albumsFolder, file))
+    const albumImagePathByFile = new Map(
+      albumFiles
+        .filter(file => file.endsWith('.jpg') && !file.endsWith('.meta'))
+        .map(file => [file, path.join(albumsFolder, file)])
+    )
+    const rankedAlbumImagePaths = topAlbums
+      .map(([[, album]]) => albumImagePathByFile.get(`${normalizeForFilename(album)}.jpg`))
+      .filter(Boolean)
+    const remainingAlbumImagePaths = [...albumImagePathByFile.values()]
+      .filter(imagePath => !rankedAlbumImagePaths.includes(imagePath))
+      .sort((a, b) => a.localeCompare(b))
+    const albumImagePaths = [...rankedAlbumImagePaths, ...remainingAlbumImagePaths]
 
     const coverOutputPath = path.join(srcAssetsFolder, `tunes-cover-${dateStr}-listened-to-this-week.png`)
 
-    // Use FAL.ai collage with smart prompt generation
-    console.log('Generating AI-powered collage with smart prompt...')
+    // Use FAL.ai cover generation with interpreted-scene prompt direction.
+    console.log('Generating AI-powered interpreted cover...')
     const dateSeed = new Date(dateStr).getTime()
     await createFALCollage(albumImagePaths, coverOutputPath, {
       seed: dateSeed,
       width: 1400,
       height: 800,
-      style: styleOverride,
+      lane: laneOverride,
+      title,
+      summary,
+      dateStr,
+      weekNumber,
+      topArtists,
+      topAlbums,
+      collectionInfo: collectionInfo.info,
       debug: debugMode
     })
 
-    console.log(`✅ Cover collage generated: ${coverOutputPath}`)
+    console.log(`✅ Cover image generated: ${coverOutputPath}`)
 
     // Render blog post
     console.log('Rendering blog post...')
@@ -203,7 +224,7 @@ function getWeekNumber(date) {
   return Math.ceil((((d - yearStart) / 86400000) + 1) / 7)
 }
 
-function processArtistData(artistData, originalCases, limit) {
+function processArtistData(artistData, _originalCases, limit) {
   const artists = {}
   const originalEntries = {}
 
@@ -220,7 +241,7 @@ function processArtistData(artistData, originalCases, limit) {
     .map(([key, count]) => [originalEntries[key] || key, count])
 }
 
-function processAlbumData(albumData, originalCases, limit) {
+function processAlbumData(albumData, _originalCases, limit) {
   const albums = {}
   const originalEntries = {}
 

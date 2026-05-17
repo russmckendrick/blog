@@ -15,6 +15,7 @@ function parseArgs(args) {
   const options = {
     from: null,
     to: null,
+    lane: 'auto',
     debug: false,
     dryRun: false,
     help: false
@@ -31,6 +32,10 @@ function parseArgs(args) {
       options.from = arg.split('=')[1]
     } else if (arg.startsWith('--to=')) {
       options.to = arg.split('=')[1]
+    } else if (arg.startsWith('--lane=')) {
+      options.lane = arg.split('=')[1]
+    } else if (arg.startsWith('--style=')) {
+      options.lane = arg.split('=')[1]
     }
   }
 
@@ -42,7 +47,7 @@ function parseArgs(args) {
  */
 function showHelp() {
   console.log(`
-Bulk FAL.ai Collage Generator for Listened Posts
+Bulk Tunes Cover Generator for Listened Posts
 
 Usage:
   node scripts/bulk-listen.js --from=YYYY-MM-DD --to=YYYY-MM-DD [options]
@@ -50,7 +55,9 @@ Usage:
 Options:
   --from=<date>       Start date (required, format: YYYY-MM-DD)
   --to=<date>         End date (required, format: YYYY-MM-DD)
-  --debug, -d         Enable debug output for fal-collage.js
+  --lane=<name>       Creative lane for cover generation (default: auto)
+  --style=<name>      Deprecated alias for --lane
+  --debug, -d         Enable debug output for the cover generator
   --dry-run, -n       Show what would be processed without running
   --help, -h          Show this help message
 
@@ -63,6 +70,9 @@ Examples:
 
   # With debug output
   node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --debug
+
+  # Force one creative lane
+  node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --lane=still_life
 
 Notes:
   - Processes weekly intervals (7 days apart)
@@ -104,20 +114,21 @@ async function dirExists(dirPath) {
 }
 
 /**
- * Run fal-collage.js for a specific date
+ * Run the tunes cover generator for a specific date
  */
-function runFalCollage(date, debug = false) {
-  return new Promise((resolve, reject) => {
+function runTunesCoverGenerator(date, options) {
+  return new Promise((resolve) => {
     const inputPath = `public/assets/${date}-listened-to-this-week/albums`
     const outputPath = `src/assets/${date}-listened-to-this-week/tunes-cover-${date}-listened-to-this-week.png`
 
     const args = [
       path.join(__dirname, 'fal-collage.js'),
       `--input=${inputPath}`,
-      `--output=${outputPath}`
+      `--output=${outputPath}`,
+      `--lane=${options.lane}`
     ]
 
-    if (debug) {
+    if (options.debug) {
       args.push('--debug')
     }
 
@@ -184,10 +195,11 @@ async function main() {
     process.exit(1)
   }
 
-  console.log('Bulk FAL.ai Collage Generator')
-  console.log('=============================')
+  console.log('Bulk Tunes Cover Generator')
+  console.log('==========================')
   console.log(`From: ${options.from}`)
   console.log(`To:   ${options.to}`)
+  console.log(`Lane: ${options.lane}`)
   console.log(`Debug: ${options.debug}`)
   console.log(`Dry run: ${options.dryRun}`)
 
@@ -226,7 +238,7 @@ async function main() {
   // Process each date
   const results = []
   for (const date of validDates) {
-    const result = await runFalCollage(date, options.debug)
+    const result = await runTunesCoverGenerator(date, options)
     results.push(result)
   }
 

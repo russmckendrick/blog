@@ -47,11 +47,10 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `scripts/cache-reading-images.js` | primary | Fetches OG images and metadata (title, description) for reading list bookmarks and caches them locally; downloaded images are re-encoded to JPEG via `sharp` so they are compatible with Cloudflare image transformations regardless of source format |
 | `scripts/fal-cover-generator.js` | manual | AI blog cover generator used by `new-post.js` and manual cover generation flows |
 | `scripts/regenerate-cover.js` | manual | Regenerate a blog cover for an existing MDX post |
-| `scripts/fal-collage.js` | manual/internal | FAL-based tunes collage generator with multiple composition strategies |
-| `scripts/strip-collage.js` | internal/manual | Deterministic strip-collage generator used for tunes and wrapped covers |
+| `scripts/fal-collage.js` | manual/internal | Lane-based interpreted AI tunes cover generator; saves full and `-small` cover images |
+| `scripts/regenerate-tunes-cover.js` | manual | Regenerate one weekly tunes cover without changing MDX frontmatter |
 | `scripts/wrapped-cover-generator.js` | internal | AI-assisted wrapped cover compositor |
-| `scripts/generate-covers-batch.js` | manual | Batch-generate strip collages for existing tunes asset folders |
-| `scripts/bulk-listen.js` | manual | Run `fal-collage.js` over a date range of weekly tunes folders |
+| `scripts/bulk-listen.js` | manual | Run the tunes cover generator over a date range of weekly tunes folders |
 
 ### Analysis, Migration, And Admin
 
@@ -92,7 +91,33 @@ Use this for direct AI cover generation outside the `new-post` workflow.
 node scripts/fal-collage.js --help
 ```
 
-Use this for direct FAL-based tunes collage generation and strategy testing.
+Use this for direct interpreted tunes cover generation. The historical filename is retained for compatibility, but the script now uses creative lanes rather than composition strategies.
+
+Options:
+- `--lane=<name>` chooses `auto`, `documentary`, `still_life`, `architecture`, `portrait`, `abstract`, or `surreal`
+- `--style=<name>` is a deprecated alias for `--lane`
+- `--output=<path>` writes that file and the matching `-small` derivative
+- `--debug`, `-d` enables verbose input selection and prompt output
+
+Example:
+```bash
+node scripts/fal-collage.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --lane=auto --debug
+```
+
+### `scripts/regenerate-tunes-cover.js`
+
+```bash
+node scripts/regenerate-tunes-cover.js --week=YYYY-MM-DD --lane=auto [options]
+```
+
+Regenerates the cover for an older weekly tunes post using its album images and MDX context. If `--output` is omitted, the existing week asset is replaced; if `--output` is supplied, the script writes there instead. In both cases it writes a full image plus the matching `-small` image.
+
+Options:
+- `--week=<date>` selects a weekly post, for example `2026-04-20`
+- `--lane=<name>` chooses the creative lane, defaulting to `auto`
+- `--style=<name>` is a deprecated alias for `--lane`
+- `--output=<path>` writes a test cover outside the normal asset path
+- `--debug`, `-d` enables verbose output
 
 ### `scripts/bulk-listen.js`
 
@@ -101,17 +126,11 @@ node scripts/bulk-listen.js --from=YYYY-MM-DD --to=YYYY-MM-DD [options]
 ```
 
 Options:
-- `--debug`, `-d` enable debug output for `fal-collage.js`
+- `--lane=<name>` choose the creative lane for each generated cover
+- `--style=<name>` deprecated alias for `--lane`
+- `--debug`, `-d` enable debug output for the cover generator
 - `--dry-run`, `-n` preview work without generating files
 - `--help`, `-h` show usage
-
-### `scripts/generate-covers-batch.js`
-
-```bash
-node scripts/generate-covers-batch.js [batch-number]
-```
-
-Runs strip-collage generation over existing tunes folders in `public/assets/`.
 
 ### `scripts/backfill-tunes-images.js`
 
@@ -170,7 +189,6 @@ Checks token validity and account access for Cloudflare Pages workflows.
 | `scripts/tunes-template.mdx` | MDX scaffold for weekly tunes posts |
 | `scripts/year-wrapped-template.mdx` | MDX scaffold for wrapped posts |
 | `scripts/fal-cover-config.json` | Prompt/model configuration for AI blog cover generation |
-| `scripts/fal-collage-config.json` | Prompt/model/strategy configuration for FAL tunes collages |
 | `scripts/SEARCH_INTEGRATION.md` | Internal design note for the tunes research agent/search-provider architecture |
 
 ## Generated Caches And Local Artifacts

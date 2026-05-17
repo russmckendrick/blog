@@ -48,25 +48,6 @@ Detailed migration plan for moving to Cloudflare Image Transformations.
 
 ---
 
-### Collage Implementation Status
-
-**[COLLAGE_STATUS.md](./COLLAGE_STATUS.md)** - Tunes cover collage implementation notes
-
-Status document tracking the implementation of the torn-paper strip collage generator for Tunes posts.
-
-**Status**: Completed in 2025
-
-**Features Implemented**:
-- Native 1400×800 PNG collages
-- Torn-edge effect with rotation
-- Deterministic seeding
-- Dynamic strip widths
-- Full edge coverage (no transparency/black pixels)
-
-**Current Location**: See [../guides/tunes-generator.md](../guides/tunes-generator.md) for usage
-
----
-
 ### SEO Implementation Notes
 
 **[seo-implementation-notes.md](./seo-implementation-notes.md)** - Historical SEO implementation plan

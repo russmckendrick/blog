@@ -38,7 +38,7 @@ Automatically generates weekly music blog posts based on Last.fm listening data,
    # Optional: Enhanced album research
    TAVILY_API_KEY=your-tavily-api-key
 
-   # Optional: FAL.ai for AI-generated collages
+   # Required for AI-generated tunes covers
    FAL_KEY=your-fal-ai-api-key
    ```
 
@@ -83,7 +83,7 @@ pnpm run tunes -- --testing --take=5
 pnpm run tunes -- --testing --take=10
 
 # Combine with other flags
-pnpm run tunes -- --testing --take=3 --style=bold_cinematic
+pnpm run tunes -- --testing --take=3 --lane=auto
 ```
 
 Output structure in testing mode:
@@ -92,7 +92,8 @@ output/YYYY-MM-DD-listened-to-this-week/
   ├── YYYY-MM-DD-listened-to-this-week.mdx
   ├── albums/
   ├── artists/
-  └── tunes-cover-YYYY-MM-DD-listened-to-this-week.png
+  ├── tunes-cover-YYYY-MM-DD-listened-to-this-week.png
+  └── tunes-cover-YYYY-MM-DD-listened-to-this-week-small.png
 ```
 
 ### Take Count
@@ -106,8 +107,9 @@ pnpm run tunes -- --take=5
 ## Output Structure
 
 Posts are created in:
-- **Content**: `src/content/tunes/YYYY-MM-DD-listened-to-this-week/index.mdx`
-- **Images**: `src/assets/YYYY-MM-DD-listened-to-this-week/artists/` and `albums/`
+- **Content**: `src/content/tunes/YYYY-MM-DD-listened-to-this-week.mdx`
+- **Downloaded album/artist images**: `public/assets/YYYY-MM-DD-listened-to-this-week/`
+- **Generated cover images**: `src/assets/YYYY-MM-DD-listened-to-this-week/`
 
 ### Generated Post Includes
 
@@ -133,7 +135,8 @@ Posts are created in:
    - **Phase 3 - Research**: Uses search tools with contextual focus areas to gather information
    - AI generates engaging blog section (350-450 words) tailored to the album's characteristics
 4. **Download Images**: Fetches high-res artist/album artwork
-5. **Render MDX**: Creates formatted blog post with galleries and links
+5. **Generate Cover**: Creates paired full-size and `-small` interpreted AI cover images from ranked album art and metadata
+6. **Render MDX**: Creates formatted blog post with galleries and links
 
 ## Backfilling Older Posts
 
@@ -181,237 +184,86 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 - `lib/blog-post-renderer.js` - MDX template renderer
 - `lib/perplexity-tool.js` - Perplexity AI search tool (config-driven)
 - `lib/exa-tool.js` - Exa AI search tool (config-driven)
-- `strip-collage.js` - Local Sharp-based torn-paper collage generator
-- `fal-collage.js` - AI-powered collage using FAL.ai edit models + style profiles (alternative)
+- `fal-collage.js` - Lane-based interpreted AI tunes cover generator using FAL.ai edit models
+- `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly cover without changing MDX
 
 ### AI Models Used
 
 - **Content generation**: OpenAI GPT-5.4 (default) or Anthropic Claude 3.5 Sonnet (fallback), with humaniser anti-pattern guidelines to produce natural UK English output
 - **Visual blueprint (Stage A)**: OpenAI GPT-5.4 via Responses API (vision analysis of album covers)
-- **Image generation**: FAL.ai nano-banana-2/edit (collage generation from prompt + source images)
+- **Image generation**: FAL.ai nano-banana-2/edit (interpreted cover scene from prompt + source images)
 - **Web search**: Tavily, Perplexity, or Exa API (optional, for factual album research)
 
-## Cover Collage Generation
+## Cover Image Generation
 
-The tunes generator creates custom cover images for each weekly post. Two collage generators are available:
-
-### Strip Collage (Default)
-
-**File**: `scripts/strip-collage.js`
-
-A local Sharp-based generator that creates torn-paper strip collages:
-- **Style**: Vertical strips with torn edges and slight rotation (±4°)
-- **Source**: Uses original album artwork colors (no tinting)
-- **Coverage**: Full edge-to-edge with intelligent seam guards
-- **Deduplication**: Each album appears exactly once
-- **Performance**: Fast, runs locally without API calls
-- **Deterministic**: Uses post date as seed for consistent regeneration
-
-**Usage in generate-tunes-post.js:**
-```javascript
-import { createStripCollage } from './strip-collage.js'
-
-await createStripCollage(albumImagePaths, coverOutputPath, {
-  seed: dateSeed,
-  width: 1400,
-  height: 800
-})
-```
-
-### FAL.ai Collage (AI-Powered Alternative)
+The weekly tunes workflow generates interpreted AI cover images, not visible album-cover montages. Album artwork is treated as research material: the generator studies the images, week title, summary, artists, albums, genres, years, and recent cover memory, then asks the image model for one distinctive editorial scene.
 
 **File**: `scripts/fal-collage.js`
-**Config**: `scripts/fal-collage-config.json`
 
-An AI-powered generator using FAL.ai edit models:
-- **Style Profiles**: 8 configurable visual directions (default rotates between them)
-- **Selection**: Analyzes all albums and selects up to 14 covers using configurable strategies
-- **Default Strategy**: Deterministic `pop-mix` for consistent, high-impact outputs
-- **Two-Stage Prompting**: See [Prompt Pipeline](#prompt-pipeline) below
-- **Blacklist**: Configurable album/artist filtering to avoid content policy violations
-- **Post-Processing**: Optional Sharp finishing pass (contrast, saturation, brightness, lift, sharpen)
-- **Output**: 2K resolution PNG + resized `-small` variant
-- **API**: Requires `FAL_KEY` and `OPENAI_API_KEY` environment variables
-- **Cost**: Uses FAL.ai and OpenAI (GPT-5.4) API credits
+The file keeps its historical name for compatibility, but it is now the only weekly tunes cover workflow.
 
-#### Prompt Pipeline
+### Outputs
 
-The collage prompt is built in two stages to produce a focused natural-language prompt for the FAL.ai model.
+Each run saves two PNGs:
 
-**Stage A - Visual Blueprint (GPT-5.4 Vision)**
+- Full generated image: `src/assets/YYYY-MM-DD-listened-to-this-week/tunes-cover-YYYY-MM-DD-listened-to-this-week.png`
+- Small site-sized image: `src/assets/YYYY-MM-DD-listened-to-this-week/tunes-cover-YYYY-MM-DD-listened-to-this-week-small.png`
 
-GPT-5.4 analyzes a representative subset of the uploaded album covers via the OpenAI Responses API and returns a structured JSON blueprint containing:
-- `scene` - a single coherent scene description (the most important field)
-- `hero_subject` - primary foreground subject
-- `secondary_elements` - up to 8 supporting motifs from the source images
-- `background_texture` - background treatment
-- `palette` - dominant and accent colors
-- `mood` - overall atmosphere
-- `allowed_subjects` - concrete visible subjects (not generic terms)
-- `people_present` - whether people appear in the source images
+The small image defaults to `1400x800`. The MDX `heroImage` path continues to point at the non-`small` file.
 
-The blueprint is normalized to sanitize descriptors, validate colors, and cap element counts.
+### Creative Lanes
 
-Retries on transient failures with smaller analysis batches and timed-out URL exclusion. Falls back to a default blueprint if all attempts fail.
+Use `--lane` to guide the art direction:
 
-**Stage B - Natural Language Prompt Assembly**
+| Lane | Direction |
+|------|-----------|
+| `auto` | AI director chooses a lane while avoiding recent-cover repetition |
+| `documentary` | Grounded editorial photography and real-world music-adjacent detail |
+| `still_life` | Objects, surfaces, paper, instruments, fabric, light, and texture |
+| `architecture` | Built environments, interiors, venues, streets, or impossible spaces |
+| `portrait` | One distinctive person or small group as the clear focal subject |
+| `abstract` | Graphic rhythm, materials, colour, and texture over literal subjects |
+| `surreal` | Dreamlike but coherent scene with controlled weirdness |
 
-The blueprint is merged with the selected style profile to produce the final prompt sent to FAL.ai. The prompt is written in **natural language, not JSON or labelled sections** - this is deliberate.
+`--style` remains as a deprecated alias so old commands do not fail, but new usage should use `--lane`.
 
-**Why natural language over JSON or structured labels:**
-- Image generation models like nano-banana are trained on billions of natural-language image captions, not structured data formats
-- Every token in a natural language prompt carries visual signal; JSON syntax (`{`, `"`, `:`, brackets) wastes the model's attention budget on tokens with zero visual meaning
-- Labelled sections ("Scene selected from Stage A:", "Subject lock:", "Composition requirements:") are internal pipeline jargon that the image model cannot interpret - they dilute the creative direction
-- A/B testing by [Chase Jarvis](https://chasejarvis.com/blog/does-json-prompting-actually-work-tested-with-nano-banana/) confirmed JSON prompting produces no improvement over natural language for nano-banana models and can actually reduce output quality
+### How Cover Direction Works
 
-The Stage B prompt follows this structure:
-1. **Scene description** - leads the prompt (highest weight position) with the full creative scene from Stage A
-2. **Style directives** - aesthetic inspiration from the style profile
-3. **Hero and supporting elements** - concise subject descriptions
-4. **Mood and color** - atmosphere and palette direction
-5. **Composition, lighting, and color rules** - from the style profile
-6. **Constraints** - source image incorporation, people rules, exposure, negative terms
+1. Ranks album inputs from the week's top albums first.
+2. Adds visually diverse alternates using lightweight local colour and text-density analysis.
+3. Builds compact album and artist context from the post metadata and collection data.
+4. Reads recent weekly cover titles/summaries so the AI director can avoid repeating the same visual grammar.
+5. Uses OpenAI vision, when `OPENAI_API_KEY` is available, to produce a compact internal art brief.
+6. Converts that brief into a natural-language FAL prompt with explicit constraints against visible cover grids, square panels, readable text, logos, and pasted cutouts.
+7. Saves the full generated output plus the `-small` derivative.
 
-This produces a ~250 word prompt where nearly every token is a visual cue, compared to the previous ~500 word version that was heavy on labels and redundant descriptions.
+If `OPENAI_API_KEY` is not available, the script uses a deterministic fallback art brief. `FAL_KEY` is required because there is no local image-generation fallback.
 
-**Style Profiles (8 available):**
+### Commands
 
-Each profile defines `style_directives`, `composition_rules`, `lighting_rules`, `color_rules`, and `allow_dark_palette`:
-
-| Profile | Aesthetic |
-|---------|-----------|
-| `studio_session` | Annie Leibovitz / Anton Corbijn studio portraiture |
-| `bold_cinematic` | Editorial movie-poster realism, shaped key lighting |
-| `collage_cutout` | DIY punk zine, Jamie Reid / Raymond Pettibon |
-| `miniature_diorama` | Tilt-shift photography, Vincent Laforet / Olivo Barbieri |
-| `retro_vinyl` | 1970s-80s analog album cover, Kodachrome color |
-| `surreal_dreamscape` | Magritte / Dali, impossible juxtapositions |
-| `pop_art` | Warhol / Lichtenstein, high contrast flat color |
-| `painted_mural` | Basquiat / Shepard Fairey, visible brushstrokes |
-
-Default behaviour rotates through profiles (excluding `studio_session` and `painted_mural` from rotation). Override with `--style=profile_name`.
-
-**Selection Strategies:**
-
-Default strategy is deterministic via config (`strategySelection: "seed"`):
-
-| Strategy | Description |
-|----------|-------------|
-| `pop-mix` | Deterministic blend: ~60% top vibrant covers + ~40% color-diverse covers |
-| `vibrant` | Selects top images by color vibrancy score (saturation + variance - text penalty) |
-| `diverse` | Maximizes color distance between selected covers |
-| `balanced` | Mixes warm-toned (red/orange/yellow) and cool-toned (blue/green/purple) images evenly |
-| `random` | Shuffles and picks randomly from the top 75% of scored images |
-
-**Selection Process:**
-1. Filters out blacklisted albums/artists (from config)
-2. Analyzes each image (resized to 256x256 for performance)
-3. Detects text using edge detection (top/bottom 20% of cover)
-4. Calculates color vibrancy: `(saturation x 0.4) + (sqrt(variance) x 0.3) + (textPenalty x 0.3)`
-5. Selects strategy from config (or uses `--strategy` flag if specified)
-6. If all images fit within `maxCount`, uses them all directly (skips strategy selection)
-7. Otherwise, selects up to 14 images based on the chosen strategy
-8. Resizes images to 800x800 for upload
-9. **Stage A**: GPT-5.4 Vision extracts a JSON blueprint (up to `prompts.maxVisionImages` images, sampled evenly from the full set)
-10. **Stage B**: Assembles natural-language prompt from blueprint + style profile
-11. Sends request to primary FAL model (with automatic model fallback on failure)
-12. Applies optional post-processing grade before saving output
-
-**Configuration (`scripts/fal-collage-config.json`):**
-```json
-{
-  "model": {
-    "name": "fal-ai/nano-banana-2/edit",
-    "fallback": "fal-ai/nano-banana-2/edit"
-  },
-  "output": {
-    "aspectRatio": "16:9",
-    "numImages": 1,
-    "format": "png",
-    "resolution": "2K"
-  },
-  "images": {
-    "minCount": 2,
-    "maxCount": 14,
-    "strategies": ["pop-mix", "vibrant", "diverse", "balanced", "random"],
-    "strategySelection": "seed"
-  },
-  "postprocess": {
-    "enabled": true,
-    "contrast": 0.04,
-    "saturation": 0.12,
-    "brightness": 0.08,
-    "lift": 6,
-    "sharpen": 0.5
-  },
-  "blacklist": {
-    "albums": ["Is This It"],
-    "artists": []
-  },
-  "scoring": {
-    "saturationWeight": 0.4,
-    "varianceWeight": 0.3,
-    "textPenaltyWeight": 0.3
-  },
-  "prompts": {
-    "profile": "rotate",
-    "excludeFromRotation": ["studio_session", "painted_mural"],
-    "temperature": 0.7,
-    "maxTokens": 400,
-    "maxVisionImages": 10,
-    "maxSecondaryElements": 8,
-    "stageAMaxAttempts": 3,
-    "stageARetryDelayMs": 3000,
-    "negative": ["sepia wash", "muddy midtones", "..."],
-    "visionSystemPrompt": "You are a creative visual director...",
-    "visionUserPrompt": "Analyze {count} representative source images..."
-  },
-  "retry": {
-    "maxAttempts": 3
-  }
-}
-```
-
-**Usage in generate-tunes-post.js:**
-```javascript
-import { createFALCollage } from './fal-collage.js'
-
-await createFALCollage(albumImagePaths, coverOutputPath, {
-  seed: dateSeed,
-  width: 1400,
-  height: 800,
-  strategy: 'pop-mix',        // optional: force a specific strategy
-  style: 'editorial_photoshoot', // optional: override style profile
-  debug: true
-})
-```
-
-**Test the FAL.ai collage:**
 ```bash
-# Config defaults (style profile + strategy)
-DEBUG_COLLAGE=1 node scripts/fal-collage.js --input=public/assets/2025-12-22-listened-to-this-week/albums
+# Future weekly posts use the interpreted cover path automatically
+pnpm run tunes -- --lane=auto
 
-# Force a specific strategy
-node scripts/fal-collage.js --input=./albums --strategy=pop-mix --debug
-node scripts/fal-collage.js --input=./albums --strategy=vibrant --debug
-node scripts/fal-collage.js --input=./albums --strategy=balanced --debug
-node scripts/fal-collage.js --input=./albums --strategy=random --debug
+# Testing mode keeps all generated files under output/
+pnpm run tunes -- --testing --take=5 --lane=auto
 
-# Override style profile
-node scripts/fal-collage.js --input=./albums --style=editorial_photoshoot --debug
-node scripts/fal-collage.js --input=./albums --style=bold_cinematic --debug
+# Regenerate one older week for local review without changing MDX frontmatter
+node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=auto --debug
+
+# Send a one-off test image somewhere else
+node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=still_life --output=/tmp/tunes-test.png
+
+# Direct low-level generator usage
+node scripts/fal-collage.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --lane=architecture --debug
 ```
 
-**Error Handling:**
-- Throws errors on API failures (no fallback to strip-collage by default)
-- Validates FAL_KEY presence before making API calls
-- Falls back to configured model if primary model fails
-- Falls back to vibrant strategy if selected strategy fails
-- Provides detailed error messages for debugging
+### Error Handling
 
-**When to Use:**
-- **Strip Collage**: Default choice, fast, free, consistent style
-- **FAL.ai Collage**: Experimental AI-generated look, requires API credits, varies each time
+- Validates `FAL_KEY` before making image-generation calls.
+- Uses optional `FAL_TUNES_COVER_FALLBACK_MODEL` if the primary FAL model fails.
+- Retries with alternate album input sets on content-policy failures.
+- Fails clearly rather than falling back to a local cover compositor.
 
 ## Customization
 
@@ -718,7 +570,7 @@ public/assets/2025-year-in-music/
   artists/                         # Artist photos
 
 src/assets/2025-year-in-music/
-  wrapped-cover-2025.png          # Strip collage cover
+  wrapped-cover-2025.png          # AI-generated wrapped cover
 ```
 
 ### How It Works
@@ -749,7 +601,9 @@ src/assets/2025-year-in-music/
    - Search caching for efficiency
    - Fallback sections if research fails
 
-6. **Render MDX**: Comprehensive year-end post
+6. **Generate Cover**: Uses the wrapped AI cover path with the top album images
+
+7. **Render MDX**: Comprehensive year-end post
    - Stats dashboard with Tailwind styling
    - Monthly activity table with visual bars
    - Top 25/50 lists with russ.fm links
@@ -780,7 +634,7 @@ src/assets/2025-year-in-music/
 - `ContentGenerator` - AI album research
 - `ImageHandler` - Image downloads
 - `CollectionManager` - russ.fm metadata
-- `createStripCollage()` - Cover image generation
+- `generateWrappedCover()` - AI cover image generation
 
 ### Data Caching
 

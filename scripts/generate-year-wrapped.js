@@ -9,8 +9,7 @@ import { CollectionManager } from './lib/collection-manager.js'
 import { ContentGenerator } from './lib/content-generator.js'
 import { ImageHandler } from './lib/image-handler.js'
 import { ConfigLoader } from './lib/config-loader.js'
-import { normalizeText, normalizeForFilename, lookupArtistData, lookupAlbumData, isVariousArtists, escapeQuotes } from './lib/text-utils.js'
-import { createStripCollage } from './strip-collage.js'
+import { normalizeForFilename, lookupArtistData, lookupAlbumData, isVariousArtists, escapeQuotes } from './lib/text-utils.js'
 import { generateWrappedCover } from './wrapped-cover-generator.js'
 import { generateGenreBarChart, generateMonthlyChart, saveSvgChart } from './lib/svg-chart-generator.js'
 
@@ -186,7 +185,7 @@ async function main() {
 
     // Get top 12 album image paths in ranked order for AI cover
     const albumImagePaths = []
-    for (const [[artist, album]] of topAlbums.slice(0, 12)) {
+    for (const [[, album]] of topAlbums.slice(0, 12)) {
       const expectedFilename = `${normalizeForFilename(album)}.jpg`
       const imagePath = path.join(albumsFolder, expectedFilename)
       try {
@@ -199,57 +198,22 @@ async function main() {
 
     console.log(`  Found ${albumImagePaths.length} top album images for cover generation`)
 
-    if (albumImagePaths.length >= 5 && process.env.FAL_KEY) {
-      // Use AI-generated cover with album images only
-      try {
-        await generateWrappedCover(albumImagePaths, coverOutputPath, {
-          year,
-          debug: debugMode
-        })
-        console.log(`✅ AI cover generated: ${coverOutputPath}`)
-      } catch (error) {
-        console.error(`  ⚠️ AI cover generation failed: ${error.message}`)
-        console.log('  Falling back to strip collage...')
-        const dateSeed = new Date(year, 0, 1).getTime()
-        await createStripCollage(albumImagePaths, coverOutputPath, {
-          seed: dateSeed,
-          width: 1400,
-          height: 800
-        })
-        console.log(`✅ Fallback cover generated: ${coverOutputPath}`)
-      }
-    } else {
-      // Fallback to strip collage if not enough images or no FAL_KEY
-      if (!process.env.FAL_KEY) {
-        console.log('  No FAL_KEY found, using strip collage...')
-      } else {
-        console.log('  Not enough images for AI cover, using strip collage...')
-      }
+    if (!process.env.FAL_KEY) {
+      throw new Error('FAL_KEY is required for year wrapped cover generation; the old local fallback has been removed.')
+    }
 
-      // Get top 20 album images in ranked order for strip collage
-      const rankedAlbumPaths = []
-      for (const [[artist, album]] of topAlbums.slice(0, 20)) {
-        const expectedFilename = `${normalizeForFilename(album)}.jpg`
-        const imagePath = path.join(albumsFolder, expectedFilename)
-        try {
-          await fs.access(imagePath)
-          rankedAlbumPaths.push(imagePath)
-        } catch {
-          // Image doesn't exist, skip
-        }
-      }
+    if (albumImagePaths.length < 5) {
+      throw new Error(`Year wrapped cover generation requires at least 5 album images; found ${albumImagePaths.length}.`)
+    }
 
-      if (rankedAlbumPaths.length > 0) {
-        const dateSeed = new Date(year, 0, 1).getTime()
-        await createStripCollage(rankedAlbumPaths, coverOutputPath, {
-          seed: dateSeed,
-          width: 1400,
-          height: 800
-        })
-        console.log(`✅ Cover collage generated: ${coverOutputPath}`)
-      } else {
-        console.log('⚠️  No album images found for collage')
-      }
+    try {
+      await generateWrappedCover(albumImagePaths, coverOutputPath, {
+        year,
+        debug: debugMode
+      })
+      console.log(`✅ AI cover generated: ${coverOutputPath}`)
+    } catch (error) {
+      throw new Error(`Year wrapped AI cover generation failed and no local fallback is supported: ${error.message}`)
     }
 
     // Generate title and intro
