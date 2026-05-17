@@ -11,38 +11,54 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const PROJECT_ROOT = path.resolve(__dirname, '..')
 
-const LANES = ['auto', 'documentary', 'still_life', 'architecture', 'portrait', 'abstract', 'surreal']
+const LANES = [
+  'auto',
+  'hero_object',
+  'cover_shoot',
+  'stage_world',
+  'graphic_punch',
+  'noir_gloss',
+  'fever_dream',
+  'maximal_pop'
+]
 const GENERATION_LANES = LANES.filter(lane => lane !== 'auto')
 
 const LEGACY_STYLE_TO_LANE = {
   rotate: 'auto',
-  editorial_photoshoot: 'documentary',
-  bold_cinematic: 'documentary',
-  studio_session: 'portrait',
-  retro_vinyl: 'still_life',
-  miniature_diorama: 'architecture',
-  collage_cutout: 'abstract',
-  pop_art: 'abstract',
-  painted_mural: 'abstract',
-  surreal_dreamscape: 'surreal'
+  documentary: 'cover_shoot',
+  editorial_photoshoot: 'cover_shoot',
+  portrait: 'cover_shoot',
+  studio_session: 'cover_shoot',
+  bold_cinematic: 'noir_gloss',
+  still_life: 'hero_object',
+  retro_vinyl: 'hero_object',
+  architecture: 'stage_world',
+  miniature_diorama: 'stage_world',
+  abstract: 'graphic_punch',
+  collage_cutout: 'graphic_punch',
+  pop_art: 'graphic_punch',
+  painted_mural: 'graphic_punch',
+  surreal: 'fever_dream',
+  surreal_dreamscape: 'fever_dream'
 }
 
 const LANE_DIRECTIVES = {
-  documentary: 'grounded editorial photography, a believable real-world music-adjacent location, observed detail, natural human scale, restrained drama',
-  still_life: 'a composed studio still life of objects, surfaces, fabrics, instruments, paper, light, and texture, no people unless essential',
-  architecture: 'a striking built environment, interior, venue, street, or impossible architectural space shaped by the week music mood',
-  portrait: 'one distinctive portrait or small group portrait with editorial styling, strong character, and controlled lighting',
-  abstract: 'graphic abstraction using color, rhythm, texture, shapes, and material cues rather than literal album-cover objects',
-  surreal: 'one dreamlike but coherent scene with impossible scale or atmosphere, controlled weirdness, and a clear focal idea'
+  hero_object: 'one unforgettable central object, talisman, machine, shrine, or sculptural prop assembled from source-image elements; strong silhouette, generous breathing room, instantly readable at card size',
+  cover_shoot: 'a bold magazine-cover/editorial shoot with one striking person, pair, or character-like subject; source elements appear in styling, props, backdrop, reflections, and set dressing',
+  stage_world: 'a theatrical music-video set or impossible performance world; source elements become scenery, lighting, projections, props, floor patterns, and atmospheric set pieces',
+  graphic_punch: 'a punchy poster-like composition with oversized shapes, hard colour blocks, crisp silhouettes, and source artwork transformed into graphic objects or physical set pieces; no readable text',
+  noir_gloss: 'cinematic late-night gloss with rain, glass, chrome, shadow, reflections, and tension; source motifs appear as signs, murals, windows, props, clothing, or reflected details',
+  fever_dream: 'a source-anchored dream image with impossible scale, charged symbolism, and one bold focal idea; strange, but visibly built from source-image subjects and textures',
+  maximal_pop: 'a controlled high-energy spectacle with many source-derived elements layered into one scene; loud, rhythmic, colourful, headline-grabbing, but still coherent'
 }
 
 const NEGATIVE_TERMS = [
-  'album covers',
-  'record sleeves',
-  'square cover panels',
+  'unmodified album-cover thumbnails',
+  'raw record sleeves',
+  'square cover panel grid',
   'grid layout',
-  'pasted cutouts',
-  'cluttered montage',
+  'lazy pasted cutouts',
+  'cluttered scrapbook montage',
   'floating disconnected objects',
   'readable text',
   'typography',
@@ -60,6 +76,15 @@ const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
   : null
 
+function normalizeLane(rawLane = 'auto') {
+  const normalized = String(rawLane || 'auto').trim().toLowerCase().replace(/-/g, '_')
+  const lane = LEGACY_STYLE_TO_LANE[normalized] || normalized
+  if (!LANES.includes(lane)) {
+    throw new Error(`Unknown cover lane "${rawLane}". Available lanes: ${LANES.join(', ')}`)
+  }
+  return lane
+}
+
 function hashSeed(seed) {
   let h = Math.abs(Number(seed) || 0) | 0
   h = ((h >>> 16) ^ h) * 0x45d9f3b | 0
@@ -68,13 +93,12 @@ function hashSeed(seed) {
   return Math.abs(h)
 }
 
-function normalizeLane(rawLane = 'auto') {
-  const normalized = String(rawLane || 'auto').trim().toLowerCase().replace(/-/g, '_')
-  const lane = LEGACY_STYLE_TO_LANE[normalized] || normalized
-  if (!LANES.includes(lane)) {
-    throw new Error(`Unknown cover lane "${rawLane}". Available lanes: ${LANES.join(', ')}`)
-  }
-  return lane
+function fallbackLane(seed) {
+  return GENERATION_LANES[hashSeed(seed || Date.now()) % GENERATION_LANES.length]
+}
+
+function laneDirective(lane) {
+  return LANE_DIRECTIVES[lane] || LANE_DIRECTIVES.hero_object
 }
 
 function colorDistance(a, b) {
@@ -328,18 +352,48 @@ function parseJSONResponse(text) {
   }
 }
 
-function normalizeBrief(rawBrief, fallbackLane) {
-  const lane = normalizeLane(rawBrief?.lane || fallbackLane)
-  const resolvedLane = lane === 'auto' ? fallbackLane : lane
+function normalizeSourceElements(rawElements = [], sourceReferences = []) {
+  const elements = Array.isArray(rawElements) ? rawElements : []
+  const normalized = elements
+    .map((item, index) => {
+      const source = Number(item?.source || item?.source_index || item?.image || index + 1)
+      const element = String(item?.element || item?.use || item?.description || '').trim()
+      const treatment = String(item?.treatment || item?.transformation || '').trim()
+      const placement = String(item?.placement || item?.role || '').trim()
+
+      if (!element) return null
+
+      return {
+        source: Number.isFinite(source) && source > 0 ? source : index + 1,
+        element,
+        treatment,
+        placement
+      }
+    })
+    .filter(Boolean)
+    .slice(0, 10)
+
+  if (normalized.length > 0) return normalized
+
+  return sourceReferences.slice(0, 8).map(reference => ({
+    source: reference.source,
+    element: `recognisable visual element from ${reference.album || reference.filename}`,
+    treatment: 'integrated as a transformed object, figure, texture, or background detail',
+    placement: reference.source <= 3 ? 'foreground or hero area' : 'supporting scene detail'
+  }))
+}
+
+function normalizeBrief(rawBrief, sourceReferences = [], fallbackLaneName = 'hero_object', forcedLane = null) {
+  const rawLane = forcedLane || rawBrief?.lane || fallbackLaneName
+  const lane = normalizeLane(rawLane === 'auto' ? fallbackLaneName : rawLane)
 
   return {
-    lane: resolvedLane,
-    concept: String(rawBrief?.concept || 'a distinctive music-led editorial scene').trim(),
-    setting: String(rawBrief?.setting || 'an atmospheric music-adjacent location shaped by the uploaded source art').trim(),
+    lane,
+    headline_hook: String(rawBrief?.headline_hook || rawBrief?.hook || 'a bold source-driven header image with one immediate visual hook').trim(),
+    scene: String(rawBrief?.scene || rawBrief?.concept || 'a unified music-led scene built from the uploaded source artwork').trim(),
+    setting: String(rawBrief?.setting || 'a cohesive environment assembled from source-image subjects, materials, colours, and textures').trim(),
     hero_subject: String(rawBrief?.hero_subject || 'one clear visual focal point').trim(),
-    visual_motifs: Array.isArray(rawBrief?.visual_motifs)
-      ? rawBrief.visual_motifs.map(item => String(item).trim()).filter(Boolean).slice(0, 6)
-      : [],
+    source_elements: normalizeSourceElements(rawBrief?.source_elements || rawBrief?.visual_motifs, sourceReferences),
     palette: Array.isArray(rawBrief?.palette)
       ? rawBrief.palette.map(item => String(item).trim()).filter(Boolean).slice(0, 5)
       : [],
@@ -383,11 +437,30 @@ async function readRecentCoverMemory(dateStr, limit = 8) {
     .slice(0, limit)
 }
 
-function fallbackLane(seed) {
-  return GENERATION_LANES[hashSeed(seed || Date.now()) % GENERATION_LANES.length]
+function compactKey(value) {
+  return String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '')
 }
 
-function buildFallbackBrief(context, selectedAnalyses, requestedLane, seed) {
+function humanizeImageName(imagePath) {
+  return path.basename(imagePath, path.extname(imagePath)).replace(/[-_]+/g, ' ').trim()
+}
+
+function buildSourceReferences(imagePaths, albums = []) {
+  return imagePaths.map((imagePath, index) => {
+    const filename = path.basename(imagePath)
+    const guessedAlbum = humanizeImageName(imagePath)
+    const matchedAlbum = albums.find(album => compactKey(album.album) === compactKey(guessedAlbum))
+
+    return {
+      source: index + 1,
+      filename,
+      artist: matchedAlbum?.artist || null,
+      album: matchedAlbum?.album || guessedAlbum
+    }
+  })
+}
+
+function buildFallbackBrief(context, selectedAnalyses, sourceReferences, requestedLane, seed) {
   const lane = requestedLane === 'auto' ? fallbackLane(seed) : requestedLane
   const albumNames = context.albums.slice(0, 4).map(item => item.album).filter(Boolean)
   const palette = selectedAnalyses
@@ -396,29 +469,38 @@ function buildFallbackBrief(context, selectedAnalyses, requestedLane, seed) {
 
   return normalizeBrief({
     lane,
-    concept: `an interpreted scene for a week led by ${albumNames.join(', ') || 'the selected albums'}`,
-    setting: 'a music-adjacent editorial environment that borrows colour, texture, and mood from the source artwork without showing the covers',
-    hero_subject: 'one clear symbolic focal subject drawn from the strongest shared mood in the albums',
-    visual_motifs: albumNames,
+    headline_hook: 'one memorable source-built focal image that can carry the post as a header',
+    scene: `a unified scene assembled from recognisable elements in ${albumNames.join(', ') || 'the selected album artwork'}`,
+    setting: 'a music-adjacent editorial environment where source-image objects, figures, textures, and symbols are recomposed into one shared space',
+    hero_subject: 'one clear focal construction made from the strongest source-image subjects',
+    source_elements: sourceReferences.slice(0, 8).map(reference => ({
+      source: reference.source,
+      element: `a recognisable element from ${reference.album || reference.filename}`,
+      treatment: 'transformed and integrated into the shared scene',
+      placement: reference.source <= 3 ? 'hero or foreground detail' : 'supporting scene detail'
+    })),
     palette,
-    composition: 'wide 16:9 frame, one focal subject, asymmetrical supporting details, no visible album-cover layout',
+    composition: 'wide 16:9 frame, one focal subject, source-derived details distributed through foreground, middle ground, and background',
     lighting: 'clean directional light with readable detail and a polished editorial finish',
     mood: context.summary || context.title || 'distinctive, musical, and visually specific',
-    avoid: ['album-cover grid', 'pasted montage', 'readable typography']
-  }, lane)
+    avoid: ['album-cover grid', 'lazy pasted montage', 'readable typography']
+  }, sourceReferences, lane)
 }
 
-async function createArtBrief({ imageUrls, context, requestedLane, selectedAnalyses, seed, debug }) {
+async function createArtBrief({ imageUrls, context, requestedLane, selectedAnalyses, sourceReferences, seed, debug }) {
+  const fallbackLaneName = requestedLane === 'auto' ? fallbackLane(seed) : requestedLane
+  const forcedLane = requestedLane === 'auto' ? null : requestedLane
+
   if (!openai) {
     if (debug) {
       console.log('  No OPENAI_API_KEY found; using deterministic art brief')
     }
-    return buildFallbackBrief(context, selectedAnalyses, requestedLane, seed)
+    return buildFallbackBrief(context, selectedAnalyses, sourceReferences, requestedLane, seed)
   }
 
-  const directorLane = requestedLane === 'auto'
-    ? 'Choose the best lane from documentary, still_life, architecture, portrait, abstract, surreal.'
-    : `Use the "${requestedLane}" lane.`
+  const laneDirection = requestedLane === 'auto'
+    ? `Choose the strongest headline-image lane from: ${GENERATION_LANES.join(', ')}. Avoid repeating recent cover grammar.`
+    : `Use the "${requestedLane}" headline-image lane.`
 
   const metadata = {
     date: context.dateStr || null,
@@ -427,14 +509,20 @@ async function createArtBrief({ imageUrls, context, requestedLane, selectedAnaly
     summary: context.summary || null,
     top_artists: context.artists,
     top_albums: context.albums,
-    recent_covers: context.recentCoverMemory
+    source_images: sourceReferences,
+    recent_covers: context.recentCoverMemory,
+    lane_options: Object.fromEntries(GENERATION_LANES.map(lane => [lane, laneDirective(lane)])),
+    requested_lane: requestedLane
   }
 
   const instructions = `You are the art director for weekly music blog covers.
-Return only valid JSON with this schema: {"lane":"documentary|still_life|architecture|portrait|abstract|surreal","concept":"string","setting":"string","hero_subject":"string","visual_motifs":["string"],"palette":["string"],"composition":"string","lighting":"string","mood":"string","avoid":["string"]}.
-${directorLane}
-Create an interpreted scene, not a collage. Analyze the uploaded album artwork for mood, palette, materials, subjects, era cues, and visual rhythm, but do not ask the image model to display album covers as objects.
-Avoid repeating recent cover grammar, especially central glowing portals, generic concert crowds, pasted panels, busy surreal stages, and floating disconnected objects.
+Return only valid JSON with this schema: {"lane":"${GENERATION_LANES.join('|')}","headline_hook":"string","scene":"string","setting":"string","hero_subject":"string","source_elements":[{"source":1,"element":"string","treatment":"string","placement":"string"}],"palette":["string"],"composition":"string","lighting":"string","mood":"string","avoid":["string"]}.
+${laneDirection}
+The lane is a headline/header treatment, not a subject category. It should make the image feel like a scroll-stopping magazine header.
+Create one unified scene from the uploaded files. The uploaded images are source material, not vague inspiration: identify concrete objects, figures, symbols, textures, colour structures, and background cues that should remain recognisable after transformation.
+Do not invent a generic concept unless the source images clearly support it.
+Use recognisable source elements from at least six uploaded images when possible. Integrate them into one coherent scene rather than placing raw square covers in a grid.
+Avoid repeating recent cover grammar, especially empty buildings, central glowing portals, generic concert crowds, busy surreal stages, and floating disconnected objects.
 Be specific, concise, and practical for image generation.`
 
   try {
@@ -448,7 +536,7 @@ Be specific, concise, and practical for image generation.`
           content: [
             {
               type: 'input_text',
-              text: `Return JSON only. Weekly tunes metadata:\n${JSON.stringify(metadata, null, 2)}`
+              text: `Return JSON only. Use the uploaded images as source files for a single unified scene. Weekly tunes metadata:\n${JSON.stringify(metadata, null, 2)}`
             },
             ...imageUrls.map(url => ({
               type: 'input_image',
@@ -463,7 +551,7 @@ Be specific, concise, and practical for image generation.`
       temperature: 0.65
     })
 
-    const brief = normalizeBrief(parseJSONResponse(response.output_text || ''), requestedLane === 'auto' ? fallbackLane(seed) : requestedLane)
+    const brief = normalizeBrief(parseJSONResponse(response.output_text || ''), sourceReferences, fallbackLaneName, forcedLane)
 
     if (debug) {
       console.log(`  Art brief: ${JSON.stringify(brief, null, 2)}`)
@@ -472,29 +560,43 @@ Be specific, concise, and practical for image generation.`
     return brief
   } catch (error) {
     console.warn(`  OpenAI art brief failed: ${error.message}`)
-    return buildFallbackBrief(context, selectedAnalyses, requestedLane, seed)
+    return buildFallbackBrief(context, selectedAnalyses, sourceReferences, requestedLane, seed)
   }
 }
 
-function buildGenerationPrompt(brief, sourceImageCount) {
-  const laneDirective = LANE_DIRECTIVES[brief.lane] || LANE_DIRECTIVES.documentary
-  const motifs = brief.visual_motifs.length > 0 ? brief.visual_motifs.join(', ') : 'subtle visual motifs from the uploaded source art'
+function formatSourceElement(element) {
+  const details = [
+    `source ${element.source}: ${element.element}`,
+    element.treatment ? `treatment: ${element.treatment}` : '',
+    element.placement ? `placement: ${element.placement}` : ''
+  ].filter(Boolean)
+
+  return details.join(', ')
+}
+
+function buildGenerationPrompt(brief, sourceImageCount, sourceReferences) {
+  const elements = brief.source_elements.length > 0
+    ? brief.source_elements.map(formatSourceElement).join('; ')
+    : sourceReferences.map(reference => `source ${reference.source}: recognisable element from ${reference.album || reference.filename}`).join('; ')
   const palette = brief.palette.length > 0 ? brief.palette.join(', ') : 'a palette sampled from the uploaded artwork'
   const avoid = [...NEGATIVE_TERMS, ...brief.avoid].filter(Boolean).join(', ')
 
   return [
-    'Create one distinctive 16:9 editorial music blog header as an interpreted scene.',
-    `${brief.concept}.`,
-    `Use the ${brief.lane} lane: ${laneDirective}.`,
+    'Create one distinctive 16:9 editorial music blog header by compositing and transforming the uploaded source images into a single unified scene.',
+    `Headline hook: ${brief.headline_hook}.`,
+    `Use the ${brief.lane} lane: ${laneDirective(brief.lane)}.`,
+    `${brief.scene}.`,
     `Set it in ${brief.setting}.`,
     `The clear focal subject is ${brief.hero_subject}.`,
-    `Borrow these transformed visual cues from the uploaded album art: ${motifs}.`,
+    `Use the ${sourceImageCount} uploaded album images as source files, not as loose mood references.`,
+    `Required source-derived elements: ${elements}.`,
+    'These source-derived elements must be visibly present after transformation; the viewer should be able to recognise that important objects, figures, symbols, textures, or colour structures came from the uploaded artwork.',
     `Use ${palette} as the color direction.`,
     `Composition: ${brief.composition}.`,
     `Lighting: ${brief.lighting}.`,
     `Mood: ${brief.mood}.`,
-    `Use the ${sourceImageCount} uploaded album images as research material only: interpret their mood, era, palette, shapes, materials, and a few motifs into a new unified scene.`,
-    'Do not show album covers, record sleeves, square panels, a grid, pasted cutouts, or a visible collage layout.',
+    'Do not simply make a tasteful generic scene from the metadata. Build the image from the uploaded visual material.',
+    'Do not show unmodified album covers, raw record sleeves, square thumbnail panels, or a grid. Integrated fragments are acceptable when transformed into posters, murals, projections, windows, paintings, props, reflections, clothing, or set pieces within the scene.',
     'No readable text, typography, logos, watermarks, duplicated faces, or cloned people.',
     `Avoid: ${avoid}.`,
     'High quality, crisp, polished, visually memorable, with enough negative space to work as a responsive blog card crop.'
@@ -587,6 +689,9 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
   if (options.style && !options.lane) {
     console.log(`  Deprecated --style alias received; mapped "${options.style}" to lane "${requestedLane}"`)
   }
+  if (options.lane && debug) {
+    console.log(`  Requested cover lane: ${requestedLane}`)
+  }
 
   const falKey = process.env.FAL_KEY
   if (!falKey) {
@@ -630,20 +735,22 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
 
     try {
       if (debug) {
-        console.log(`  Attempt ${attempt + 1}: generating interpreted cover with ${attemptPaths.length} album inputs`)
+        console.log(`  Attempt ${attempt + 1}: generating source-blended cover with ${attemptPaths.length} album inputs`)
       }
 
       const imageUrls = await uploadAlbumImages(attemptPaths, debug)
       const selectedAnalyses = analyses.filter(item => attemptPaths.includes(item.path))
+      const sourceReferences = buildSourceReferences(attemptPaths, context.albums)
       const brief = await createArtBrief({
         imageUrls,
         context,
         requestedLane,
         selectedAnalyses,
+        sourceReferences,
         seed,
         debug
       })
-      const prompt = buildGenerationPrompt(brief, imageUrls.length)
+      const prompt = buildGenerationPrompt(brief, imageUrls.length, sourceReferences)
 
       if (debug) {
         console.log(`  Lane: ${brief.lane}`)
@@ -677,7 +784,7 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
       }
 
       const saved = await saveGeneratedImage(imageUrl, outputPath, width, height, debug)
-      console.log(`  Created interpreted tunes cover using lane "${brief.lane}"`)
+      console.log(`  Created source-blended tunes cover using lane "${brief.lane}"`)
       console.log(`    Full:  ${saved.outputPath}`)
       console.log(`    Small: ${saved.smallOutputPath}`)
 
@@ -686,6 +793,7 @@ async function createFALCollage(imagePaths, outputPath, options = {}) {
         selectedImages: attemptPaths,
         imageUrl,
         model: activeModelName,
+        mode: 'source_blend',
         lane: brief.lane,
         prompt
       }
@@ -772,14 +880,14 @@ function showHelp() {
   console.log(`
 Tunes Cover Generator
 
-Creates interpreted AI cover images for weekly tunes posts.
+Creates source-blended AI cover images for weekly tunes posts.
 
 Usage:
   node scripts/fal-collage.js --input=<albums-folder> --output=<cover.png> [options]
   node scripts/fal-collage.js <albums-folder> <cover.png> [options]
 
 Options:
-  --lane=<name>       Creative lane: ${LANES.join(', ')} (default: auto)
+  --lane=<name>       Headline lane: ${LANES.join(', ')} (default: auto)
   --style=<name>      Deprecated alias for --lane; old profile names are mapped
   --output=<path>     Output PNG path (also writes <name>-small.png)
   --width=<px>        Small output width (default: 1400)
@@ -792,8 +900,8 @@ Options:
 
 Notes:
   - Requires FAL_KEY.
-  - Uses OPENAI_API_KEY when available to build an art brief from album art and metadata.
-  - The output is an interpreted scene, not an album-cover collage.
+  - Uses OPENAI_API_KEY when available to build a source-element brief from album art and metadata.
+  - Lanes vary the header treatment; source-image elements remain mandatory.
 `)
 }
 
@@ -816,10 +924,13 @@ async function main() {
     throw new Error(`No album images found in ${inputFolder}`)
   }
 
-  console.log('Generating interpreted tunes cover')
+  console.log('Generating source-blended tunes cover')
   console.log(`  Input: ${inputFolder}`)
   console.log(`  Output: ${outputPath}`)
-  console.log(`  Lane: ${options.lane || options.style || 'auto'}`)
+  console.log('  Source mode: source_blend')
+  if (options.lane || options.style) {
+    console.log(`  Lane: ${normalizeLane(options.lane || options.style)}`)
+  }
 
   await createFALCollage(imagePaths, outputPath, {
     width: options.width,

@@ -83,7 +83,7 @@ pnpm run tunes -- --testing --take=5
 pnpm run tunes -- --testing --take=10
 
 # Combine with other flags
-pnpm run tunes -- --testing --take=3 --lane=auto
+pnpm run tunes -- --testing --take=3 --debug
 ```
 
 Output structure in testing mode:
@@ -135,7 +135,7 @@ Posts are created in:
    - **Phase 3 - Research**: Uses search tools with contextual focus areas to gather information
    - AI generates engaging blog section (350-450 words) tailored to the album's characteristics
 4. **Download Images**: Fetches high-res artist/album artwork
-5. **Generate Cover**: Creates paired full-size and `-small` interpreted AI cover images from ranked album art and metadata
+5. **Generate Cover**: Creates paired full-size and `-small` AI cover images by blending recognisable source elements from the ranked album artwork into one scene
 6. **Render MDX**: Creates formatted blog post with galleries and links
 
 ## Backfilling Older Posts
@@ -184,19 +184,19 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 - `lib/blog-post-renderer.js` - MDX template renderer
 - `lib/perplexity-tool.js` - Perplexity AI search tool (config-driven)
 - `lib/exa-tool.js` - Exa AI search tool (config-driven)
-- `fal-collage.js` - Lane-based interpreted AI tunes cover generator using FAL.ai edit models
+- `fal-collage.js` - Source-blended AI tunes cover generator using FAL.ai edit models
 - `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly cover without changing MDX
 
 ### AI Models Used
 
 - **Content generation**: OpenAI GPT-5.4 (default) or Anthropic Claude 3.5 Sonnet (fallback), with humaniser anti-pattern guidelines to produce natural UK English output
-- **Visual blueprint (Stage A)**: OpenAI GPT-5.4 via Responses API (vision analysis of album covers)
-- **Image generation**: FAL.ai nano-banana-2/edit (interpreted cover scene from prompt + source images)
+- **Source-element brief (Stage A)**: OpenAI GPT-5.4 via Responses API (vision analysis of album covers)
+- **Image generation**: FAL.ai nano-banana-2/edit (one unified cover scene built from source-image elements)
 - **Web search**: Tavily, Perplexity, or Exa API (optional, for factual album research)
 
 ## Cover Image Generation
 
-The weekly tunes workflow generates interpreted AI cover images, not visible album-cover montages. Album artwork is treated as research material: the generator studies the images, week title, summary, artists, albums, genres, years, and recent cover memory, then asks the image model for one distinctive editorial scene.
+The weekly tunes workflow generates source-blended AI cover images. Album artwork is not treated as vague mood-board inspiration: the uploaded files are the visual source material. The generator identifies concrete objects, figures, symbols, textures, colour structures, and background cues from the covers, then asks the image model to recombine those elements into one unified scene.
 
 **File**: `scripts/fal-collage.js`
 
@@ -211,21 +211,13 @@ Each run saves two PNGs:
 
 The small image defaults to `1400x800`. The MDX `heroImage` path continues to point at the non-`small` file.
 
-### Creative Lanes
+### Source Blending
 
-Use `--lane` to guide the art direction:
+The cover prompt is built around a source-element plan. The AI director must name recognisable elements from the uploaded album images and describe how each should be transformed into the final scene. Those elements are treated as required building blocks, not optional mood notes.
 
-| Lane | Direction |
-|------|-----------|
-| `auto` | AI director chooses a lane while avoiding recent-cover repetition |
-| `documentary` | Grounded editorial photography and real-world music-adjacent detail |
-| `still_life` | Objects, surfaces, paper, instruments, fabric, light, and texture |
-| `architecture` | Built environments, interiors, venues, streets, or impossible spaces |
-| `portrait` | One distinctive person or small group as the clear focal subject |
-| `abstract` | Graphic rhythm, materials, colour, and texture over literal subjects |
-| `surreal` | Dreamlike but coherent scene with controlled weirdness |
+The generator avoids raw album-cover grids, unmodified square thumbnails, readable text, and logos. Integrated source fragments are allowed when they become part of the scene as props, murals, projections, windows, paintings, reflections, clothing, set pieces, textures, or background details.
 
-`--style` remains as a deprecated alias so old commands do not fail, but new usage should use `--lane`.
+`--lane` and `--style` are now deprecated compatibility hints. They are accepted so older commands do not break, but they do not choose the concept. Source-image elements outrank those hints.
 
 ### How Cover Direction Works
 
@@ -233,8 +225,8 @@ Use `--lane` to guide the art direction:
 2. Adds visually diverse alternates using lightweight local colour and text-density analysis.
 3. Builds compact album and artist context from the post metadata and collection data.
 4. Reads recent weekly cover titles/summaries so the AI director can avoid repeating the same visual grammar.
-5. Uses OpenAI vision, when `OPENAI_API_KEY` is available, to produce a compact internal art brief.
-6. Converts that brief into a natural-language FAL prompt with explicit constraints against visible cover grids, square panels, readable text, logos, and pasted cutouts.
+5. Uses OpenAI vision, when `OPENAI_API_KEY` is available, to produce a compact internal source-element brief.
+6. Converts that brief into a natural-language FAL prompt that explicitly requires recognisable source-derived elements in one coherent scene.
 7. Saves the full generated output plus the `-small` derivative.
 
 If `OPENAI_API_KEY` is not available, the script uses a deterministic fallback art brief. `FAL_KEY` is required because there is no local image-generation fallback.
@@ -242,20 +234,20 @@ If `OPENAI_API_KEY` is not available, the script uses a deterministic fallback a
 ### Commands
 
 ```bash
-# Future weekly posts use the interpreted cover path automatically
-pnpm run tunes -- --lane=auto
+# Future weekly posts use the source-blended cover path automatically
+pnpm run tunes
 
 # Testing mode keeps all generated files under output/
-pnpm run tunes -- --testing --take=5 --lane=auto
+pnpm run tunes -- --testing --take=5
 
 # Regenerate one older week for local review without changing MDX frontmatter
-node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=auto --debug
+node scripts/regenerate-tunes-cover.js --week=2026-04-20 --debug
 
 # Send a one-off test image somewhere else
-node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=still_life --output=/tmp/tunes-test.png
+node scripts/regenerate-tunes-cover.js --week=2026-04-20 --output=/tmp/tunes-test.png
 
 # Direct low-level generator usage
-node scripts/fal-collage.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --lane=architecture --debug
+node scripts/fal-collage.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --debug
 ```
 
 ### Error Handling

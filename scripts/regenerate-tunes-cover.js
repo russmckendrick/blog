@@ -72,7 +72,7 @@ function showHelp() {
   console.log(`
 Regenerate Tunes Cover Image
 
-Regenerates the interpreted AI cover image for a weekly tunes post. This is the
+Regenerates the source-blended AI cover image for a weekly tunes post. This is the
 manual test harness for trying old weeks without changing MDX frontmatter.
 
 Usage:
@@ -80,7 +80,7 @@ Usage:
 
 Options:
   --week=<date>       Week date, e.g. 2026-04-20 (interactive picker if omitted)
-  --lane=<name>       Creative lane: ${LANES.join(', ')} (default: auto)
+  --lane=<name>       Headline lane: ${LANES.join(', ')} (default: auto)
   --style=<name>      Deprecated alias for --lane; old style names are mapped
   --output=<path>     Optional output PNG path; also writes <name>-small.png
   --debug, -d         Enable debug output
@@ -88,7 +88,7 @@ Options:
 
 Examples:
   node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=auto --debug
-  node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=still_life --output=/tmp/tunes-test.png
+  node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=hero_object --output=/tmp/tunes-test.png
 `)
 }
 
@@ -278,7 +278,8 @@ async function main() {
   const collectionInfo = await maybeLoadCollectionInfo()
   const dateSeed = new Date(dateStr).getTime()
 
-  console.log(`\nRegenerating interpreted cover for: ${dateStr}`)
+  console.log(`\nRegenerating source-blended cover for: ${dateStr}`)
+  console.log('Source mode: source_blend')
   console.log(`Lane: ${lane}`)
   console.log(`Albums: ${albumImages.length} images`)
   console.log(`Output: ${outputPath}`)

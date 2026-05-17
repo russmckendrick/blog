@@ -27,7 +27,7 @@ async function main() {
     const testingMode = args.includes('--testing')
     const takeArg = args.find(arg => arg.startsWith('--take='))
     const takeCount = takeArg ? parseInt(takeArg.split('=')[1], 10) : null
-    const laneOverride = laneArg
+    const coverLane = laneArg
       ? laneArg.split('=')[1]
       : (styleArg ? styleArg.split('=')[1] : 'auto')
 
@@ -50,7 +50,7 @@ async function main() {
       console.log(`Taking ${takeCount} items`)
     }
     if (styleArg && !laneArg) {
-      console.log(`Deprecated --style alias received; using it as cover lane "${laneOverride}"`)
+      console.log(`Deprecated --style alias received; using it as cover lane "${coverLane}"`)
     }
 
     // Load configuration
@@ -135,7 +135,7 @@ async function main() {
     await imageHandler.downloadArtistImages(topArtists, collectionInfo.info, artistsFolder)
     await imageHandler.downloadAlbumImages(topAlbums, collectionInfo.info, albumsFolder)
 
-    // Generate interpreted cover assets.
+    // Generate source-blended cover assets.
     console.log('Generating cover image...')
     const srcAssetsFolder = testingMode
       ? baseDir
@@ -158,14 +158,14 @@ async function main() {
 
     const coverOutputPath = path.join(srcAssetsFolder, `tunes-cover-${dateStr}-listened-to-this-week.png`)
 
-    // Use FAL.ai cover generation with interpreted-scene prompt direction.
-    console.log('Generating AI-powered interpreted cover...')
+    // Use FAL.ai cover generation with source-image elements preserved in one scene.
+    console.log('Generating AI-powered source-blended cover...')
     const dateSeed = new Date(dateStr).getTime()
     await createFALCollage(albumImagePaths, coverOutputPath, {
       seed: dateSeed,
       width: 1400,
       height: 800,
-      lane: laneOverride,
+      lane: coverLane,
       title,
       summary,
       dateStr,
