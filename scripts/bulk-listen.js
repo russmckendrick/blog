@@ -122,7 +122,7 @@ function runTunesCoverGenerator(date, options) {
     const outputPath = `src/assets/${date}-listened-to-this-week/tunes-cover-${date}-listened-to-this-week.png`
 
     const args = [
-      path.join(__dirname, 'fal-collage.js'),
+      path.join(__dirname, 'fal-tunes-cover.js'),
       `--input=${inputPath}`,
       `--output=${outputPath}`,
       `--lane=${options.lane}`

@@ -184,7 +184,7 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 - `lib/blog-post-renderer.js` - MDX template renderer
 - `lib/perplexity-tool.js` - Perplexity AI search tool (config-driven)
 - `lib/exa-tool.js` - Exa AI search tool (config-driven)
-- `fal-collage.js` - Source-blended AI tunes cover generator using FAL.ai edit models
+- `fal-tunes-cover.js` - Source-blended AI tunes cover generator using FAL.ai edit models
 - `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly cover without changing MDX
 
 ### AI Models Used
@@ -198,7 +198,7 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 
 The weekly tunes workflow generates source-blended AI cover images. Album artwork is not treated as vague mood-board inspiration: the uploaded files are the visual source material. The generator identifies concrete objects, figures, symbols, textures, colour structures, and background cues from the covers, then asks the image model to recombine those elements into one unified scene.
 
-**File**: `scripts/fal-collage.js`
+**File**: `scripts/fal-tunes-cover.js`
 
 The file keeps its historical name for compatibility, but it is now the only weekly tunes cover workflow.
 
@@ -265,7 +265,7 @@ node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=auto --debug
 node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=hero_object --output=/tmp/tunes-test.png
 
 # Direct low-level generator usage
-node scripts/fal-collage.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --lane=tilt_shift --debug
+node scripts/fal-tunes-cover.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --lane=tilt_shift --debug
 ```
 
 ### Error Handling

@@ -10,7 +10,7 @@ import { ImageHandler } from './lib/image-handler.js'
 import { BlogPostRenderer } from './lib/blog-post-renderer.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { normalizeText, lookupArtistData, lookupAlbumData, isVariousArtists, normalizeForFilename } from './lib/text-utils.js'
-import { createFALCollage } from './fal-collage.js'
+import { createFALTunesCover } from './fal-tunes-cover.js'
 import { spawnSync } from 'child_process'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -161,7 +161,7 @@ async function main() {
     // Use FAL.ai cover generation with source-image elements preserved in one scene.
     console.log('Generating AI-powered source-blended cover...')
     const dateSeed = new Date(dateStr).getTime()
-    await createFALCollage(albumImagePaths, coverOutputPath, {
+    await createFALTunesCover(albumImagePaths, coverOutputPath, {
       seed: dateSeed,
       width: 1400,
       height: 800,

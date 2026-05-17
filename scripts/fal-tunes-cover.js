@@ -669,7 +669,7 @@ function buildAttemptSets(selectedPaths, analyses, maxCount, minCount) {
   })
 }
 
-async function createFALCollage(imagePaths, outputPath, options = {}) {
+async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   const {
     width = 1400,
     height = 800,
@@ -883,8 +883,8 @@ Tunes Cover Generator
 Creates source-blended AI cover images for weekly tunes posts.
 
 Usage:
-  node scripts/fal-collage.js --input=<albums-folder> --output=<cover.png> [options]
-  node scripts/fal-collage.js <albums-folder> <cover.png> [options]
+  node scripts/fal-tunes-cover.js --input=<albums-folder> --output=<cover.png> [options]
+  node scripts/fal-tunes-cover.js <albums-folder> <cover.png> [options]
 
 Options:
   --lane=<name>       Headline lane: ${LANES.join(', ')} (default: auto)
@@ -932,7 +932,7 @@ async function main() {
     console.log(`  Lane: ${normalizeLane(options.lane || options.style)}`)
   }
 
-  await createFALCollage(imagePaths, outputPath, {
+  await createFALTunesCover(imagePaths, outputPath, {
     width: options.width,
     height: options.height,
     seed: options.seed || Date.now(),
@@ -953,7 +953,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
 export {
   LANES,
-  createFALCollage,
+  createFALTunesCover,
   detectTextScore,
   normalizeLane,
   selectCoverInputs,

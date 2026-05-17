@@ -3,7 +3,7 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import readline from 'readline'
 import { fileURLToPath } from 'url'
-import { createFALCollage, LANES, normalizeLane, smallOutputPathFor } from './fal-collage.js'
+import { createFALTunesCover, LANES, normalizeLane, smallOutputPathFor } from './fal-tunes-cover.js'
 import { CollectionManager } from './lib/collection-manager.js'
 import { normalizeForFilename } from './lib/text-utils.js'
 
@@ -285,7 +285,7 @@ async function main() {
   console.log(`Output: ${outputPath}`)
   console.log(`Small:  ${smallOutputPathFor(outputPath)}\n`)
 
-  const result = await createFALCollage(albumImages, outputPath, {
+  const result = await createFALTunesCover(albumImages, outputPath, {
     seed: dateSeed,
     width: 1400,
     height: 800,

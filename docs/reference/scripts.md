@@ -47,7 +47,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `scripts/cache-reading-images.js` | primary | Fetches OG images and metadata (title, description) for reading list bookmarks and caches them locally; downloaded images are re-encoded to JPEG via `sharp` so they are compatible with Cloudflare image transformations regardless of source format |
 | `scripts/fal-cover-generator.js` | manual | AI blog cover generator used by `new-post.js` and manual cover generation flows |
 | `scripts/regenerate-cover.js` | manual | Regenerate a blog cover for an existing MDX post |
-| `scripts/fal-collage.js` | manual/internal | Source-blended AI tunes cover generator; saves full and `-small` cover images |
+| `scripts/fal-tunes-cover.js` | manual/internal | Source-blended AI tunes cover generator; saves full and `-small` cover images |
 | `scripts/regenerate-tunes-cover.js` | manual | Regenerate one weekly tunes cover without changing MDX frontmatter |
 | `scripts/wrapped-cover-generator.js` | internal | AI-assisted wrapped cover compositor |
 | `scripts/bulk-listen.js` | manual | Run the tunes cover generator over a date range of weekly tunes folders |
@@ -85,10 +85,10 @@ node scripts/fal-cover-generator.js --help
 
 Use this for direct AI cover generation outside the `new-post` workflow.
 
-### `scripts/fal-collage.js`
+### `scripts/fal-tunes-cover.js`
 
 ```bash
-node scripts/fal-collage.js --help
+node scripts/fal-tunes-cover.js --help
 ```
 
 Use this for direct source-blended tunes cover generation. The historical filename is retained for compatibility, but the script now builds a source-element plan from the uploaded album art and applies a headline lane for weekly visual variety.
@@ -101,7 +101,7 @@ Options:
 
 Example:
 ```bash
-node scripts/fal-collage.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --lane=tilt_shift --debug
+node scripts/fal-tunes-cover.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --lane=tilt_shift --debug
 ```
 
 ### `scripts/regenerate-tunes-cover.js`
