@@ -217,7 +217,22 @@ The cover prompt is built around a source-element plan. The AI director must nam
 
 The generator avoids raw album-cover grids, unmodified square thumbnails, readable text, and logos. Integrated source fragments are allowed when they become part of the scene as props, murals, projections, windows, paintings, reflections, clothing, set pieces, textures, or background details.
 
-`--lane` and `--style` are now deprecated compatibility hints. They are accepted so older commands do not break, but they do not choose the concept. Source-image elements outrank those hints.
+### Headline Lanes
+
+Lanes add weekly variety by changing the header treatment, not by replacing the source artwork. `auto` lets the AI director choose, while explicit lanes are useful for testing.
+
+| Lane | Direction |
+|------|-----------|
+| `auto` | Choose the strongest lane for the source images and recent-cover memory |
+| `hero_object` | One unforgettable central object, talisman, machine, shrine, or sculptural prop |
+| `cover_shoot` | Bold magazine/editorial shoot with source elements in styling, props, backdrop, and reflections |
+| `tilt_shift` | Miniature diorama or toy-scale editorial world with source elements as tactile props and scenery |
+| `graphic_punch` | Poster-like colour, oversized shapes, crisp silhouettes, and strong card-size readability |
+| `noir_gloss` | Late-night cinematic gloss with rain, glass, chrome, shadow, reflections, and tension |
+| `fever_dream` | Source-anchored dream logic, impossible scale, charged symbols, and one bold focal idea |
+| `maximal_pop` | Controlled high-energy spectacle with many source-derived elements in one coherent scene |
+
+Old lane/style names still map to the new lanes for compatibility. Source-image elements remain mandatory in every lane.
 
 ### How Cover Direction Works
 
@@ -237,17 +252,20 @@ If `OPENAI_API_KEY` is not available, the script uses a deterministic fallback a
 # Future weekly posts use the source-blended cover path automatically
 pnpm run tunes
 
+# Force a headline lane
+pnpm run tunes -- --lane=maximal_pop
+
 # Testing mode keeps all generated files under output/
 pnpm run tunes -- --testing --take=5
 
 # Regenerate one older week for local review without changing MDX frontmatter
-node scripts/regenerate-tunes-cover.js --week=2026-04-20 --debug
+node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=auto --debug
 
 # Send a one-off test image somewhere else
-node scripts/regenerate-tunes-cover.js --week=2026-04-20 --output=/tmp/tunes-test.png
+node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=hero_object --output=/tmp/tunes-test.png
 
 # Direct low-level generator usage
-node scripts/fal-collage.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --debug
+node scripts/fal-collage.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --lane=tilt_shift --debug
 ```
 
 ### Error Handling

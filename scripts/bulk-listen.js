@@ -55,7 +55,7 @@ Usage:
 Options:
   --from=<date>       Start date (required, format: YYYY-MM-DD)
   --to=<date>         End date (required, format: YYYY-MM-DD)
-  --lane=<name>       Deprecated compatibility hint for cover generation (default: auto)
+  --lane=<name>       Headline lane for cover generation (default: auto)
   --style=<name>      Deprecated alias for --lane
   --debug, -d         Enable debug output for the cover generator
   --dry-run, -n       Show what would be processed without running
@@ -71,8 +71,8 @@ Examples:
   # With debug output
   node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --debug
 
-  # Pass an old compatibility hint through to the generator
-  node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --lane=auto
+  # Force one headline lane
+  node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --lane=hero_object
 
 Notes:
   - Processes weekly intervals (7 days apart)
@@ -199,7 +199,7 @@ async function main() {
   console.log('==========================')
   console.log(`From: ${options.from}`)
   console.log(`To:   ${options.to}`)
-  console.log(`Compatibility hint: ${options.lane}`)
+  console.log(`Lane: ${options.lane}`)
   console.log(`Debug: ${options.debug}`)
   console.log(`Dry run: ${options.dryRun}`)
 

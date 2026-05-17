@@ -91,17 +91,17 @@ Use this for direct AI cover generation outside the `new-post` workflow.
 node scripts/fal-collage.js --help
 ```
 
-Use this for direct source-blended tunes cover generation. The historical filename is retained for compatibility, but the script now builds a source-element plan from the uploaded album art rather than choosing a separate style bucket.
+Use this for direct source-blended tunes cover generation. The historical filename is retained for compatibility, but the script now builds a source-element plan from the uploaded album art and applies a headline lane for weekly visual variety.
 
 Options:
-- `--lane=<name>` deprecated compatibility hint; omit it or use `auto` for new runs
+- `--lane=<name>` choose `auto`, `hero_object`, `cover_shoot`, `tilt_shift`, `graphic_punch`, `noir_gloss`, `fever_dream`, or `maximal_pop`
 - `--style=<name>` is a deprecated alias for `--lane`
 - `--output=<path>` writes that file and the matching `-small` derivative
 - `--debug`, `-d` enables verbose input selection and prompt output
 
 Example:
 ```bash
-node scripts/fal-collage.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --debug
+node scripts/fal-collage.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --lane=tilt_shift --debug
 ```
 
 ### `scripts/regenerate-tunes-cover.js`
@@ -114,7 +114,7 @@ Regenerates the cover for an older weekly tunes post using its album images and 
 
 Options:
 - `--week=<date>` selects a weekly post, for example `2026-04-20`
-- `--lane=<name>` deprecated compatibility hint, defaulting to `auto`
+- `--lane=<name>` chooses the headline lane, defaulting to `auto`
 - `--style=<name>` is a deprecated alias for `--lane`
 - `--output=<path>` writes a test cover outside the normal asset path
 - `--debug`, `-d` enables verbose output
@@ -126,7 +126,7 @@ node scripts/bulk-listen.js --from=YYYY-MM-DD --to=YYYY-MM-DD [options]
 ```
 
 Options:
-- `--lane=<name>` pass a deprecated compatibility hint to each generated cover
+- `--lane=<name>` choose the headline lane for each generated cover
 - `--style=<name>` deprecated alias for `--lane`
 - `--debug`, `-d` enable debug output for the cover generator
 - `--dry-run`, `-n` preview work without generating files
