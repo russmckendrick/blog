@@ -91,7 +91,7 @@ Use this for direct AI cover generation outside the `new-post` workflow.
 node scripts/fal-tunes-cover.js --help
 ```
 
-Use this for direct source-blended tunes cover generation. The historical filename is retained for compatibility, but the script now builds a source-element plan from the uploaded album art and applies a headline lane for weekly visual variety.
+Use this for direct source-blended tunes cover generation. The script builds a source-element plan from the uploaded album art and applies a headline lane for weekly visual variety. Source artwork text is treated as non-text visual material and should be transformed into abstract colour, shape, light, fabric, paint, or texture.
 
 Options:
 - `--lane=<name>` choose `auto`, `hero_object`, `cover_shoot`, `tilt_shift`, `graphic_punch`, `noir_gloss`, `fever_dream`, or `maximal_pop`

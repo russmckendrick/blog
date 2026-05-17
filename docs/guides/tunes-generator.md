@@ -215,7 +215,7 @@ The small image defaults to `1400x800`. The MDX `heroImage` path continues to po
 
 The cover prompt is built around a source-element plan. The AI director must name recognisable elements from the uploaded album images and describe how each should be transformed into the final scene. Those elements are treated as required building blocks, not optional mood notes.
 
-The generator avoids raw album-cover grids, unmodified square thumbnails, readable text, and logos. Integrated source fragments are allowed when they become part of the scene as props, murals, projections, windows, paintings, reflections, clothing, set pieces, textures, or background details.
+The generator avoids raw album-cover grids, unmodified square thumbnails, readable text, fake text-like marks, and logos. If source artwork contains artist names or album titles, those areas should become abstract colour blocks, shapes, light, fabric, paint, or texture. Integrated source fragments are allowed when they become part of the scene as props, murals, projections, windows, paintings, reflections, clothing, set pieces, textures, or background details.
 
 ### Headline Lanes
 
@@ -225,12 +225,12 @@ Lanes add weekly variety by changing the header treatment, not by replacing the 
 |------|-----------|
 | `auto` | Choose the strongest lane for the source images and recent-cover memory |
 | `hero_object` | One unforgettable central object, talisman, machine, shrine, or sculptural prop |
-| `cover_shoot` | Bold magazine/editorial shoot with source elements in styling, props, backdrop, and reflections |
+| `cover_shoot` | Bold fashion-editorial shoot with source elements in styling, props, backdrop, and reflections |
 | `tilt_shift` | Miniature diorama or toy-scale editorial world with source elements as tactile props and scenery |
-| `graphic_punch` | Poster-like colour, oversized shapes, crisp silhouettes, and strong card-size readability |
+| `graphic_punch` | Graphic colour, oversized shapes, crisp silhouettes, and strong card-size readability without text |
 | `noir_gloss` | Late-night cinematic gloss with rain, glass, chrome, shadow, reflections, and tension |
 | `fever_dream` | Source-anchored dream logic, impossible scale, charged symbols, and one bold focal idea |
-| `maximal_pop` | Controlled high-energy spectacle with many source-derived elements in one coherent scene |
+| `maximal_pop` | Controlled high-energy spectacle using colour, scale, props, pattern, and motion rather than typography |
 
 Old lane/style names still map to the new lanes for compatibility. Source-image elements remain mandatory in every lane.
 
