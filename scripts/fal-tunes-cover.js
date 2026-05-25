@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import OpenAI from 'openai'
 import { fal } from '@fal-ai/client'
+import { COVER_BLOCKLIST } from './tunes-cover-blocklist.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -224,6 +225,38 @@ function buildSourceReferences(imagePaths) {
     filename: path.basename(imagePath),
     album: humanizeImageName(imagePath)
   }))
+}
+
+function filterBlocklistedCovers(imagePaths, debug = false) {
+  if (!Array.isArray(COVER_BLOCKLIST) || COVER_BLOCKLIST.length === 0) return imagePaths
+
+  const blockedKeys = new Set(
+    COVER_BLOCKLIST.map(entry => compactKey(entry?.album || entry)).filter(Boolean)
+  )
+  if (blockedKeys.size === 0) return imagePaths
+
+  const allowed = []
+  const removed = []
+  for (const imagePath of imagePaths) {
+    const key = compactKey(path.basename(imagePath, path.extname(imagePath)))
+    if (blockedKeys.has(key)) removed.push(imagePath)
+    else allowed.push(imagePath)
+  }
+
+  if (removed.length > 0) {
+    console.log(`  Skipping ${removed.length} blocklisted album cover(s): ${removed.map(item => path.basename(item)).join(', ')}`)
+  }
+
+  if (allowed.length === 0) {
+    console.warn('  Every album cover was blocklisted; using the full set so a cover can still be generated')
+    return imagePaths
+  }
+
+  if (debug && removed.length > 0) {
+    console.log(`  ${allowed.length} cover(s) remain after the blocklist`)
+  }
+
+  return allowed
 }
 
 function stripCodeFence(text) {
@@ -509,7 +542,9 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   }
   fal.config({ credentials: falKey })
 
-  const { selectedPaths, analyses } = await selectCoverInputs(imagePaths, {
+  const sourceImagePaths = filterBlocklistedCovers(imagePaths, debug)
+
+  const { selectedPaths, analyses } = await selectCoverInputs(sourceImagePaths, {
     maxCount: Number(process.env.TUNES_COVER_MAX_INPUTS || 6),
     primaryCount: Number(process.env.TUNES_COVER_PRIMARY_INPUTS || 5),
     debug

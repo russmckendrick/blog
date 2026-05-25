@@ -183,6 +183,7 @@ Checks token validity and account access for Cloudflare Pages workflows.
 | File | Purpose |
 |------|---------|
 | `scripts/tunes-config.yaml` | Main configuration for weekly and wrapped tunes generation |
+| `scripts/tunes-cover-blocklist.js` | Manual list of album covers to keep out of cover-art source images (still shown in the post) |
 | `scripts/tunes-template.mdx` | MDX scaffold for weekly tunes posts |
 | `scripts/year-wrapped-template.mdx` | MDX scaffold for wrapped posts |
 | `scripts/fal-cover-config.json` | Prompt/model configuration for AI blog cover generation |

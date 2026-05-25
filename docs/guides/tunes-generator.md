@@ -219,14 +219,27 @@ The prompt carries two deliberate steers: everything must belong to the same coh
 
 There are no lanes. The `--lane` / `--style` flags are deprecated and silently ignored so older commands still run.
 
+### Cover Blocklist
+
+Some sleeves consistently spoil the header — most often covers dominated by large lettering (e.g. Prince's *1999*) whose text leaks into the result. List these in `scripts/tunes-cover-blocklist.js` and they are kept out of the cover source images while still appearing in the post itself (gallery and top-albums list).
+
+```js
+export const COVER_BLOCKLIST = [
+  { artist: 'Prince', album: '1999', reason: 'large "PRINCE 1999" lettering leaks into the cover as text' }
+]
+```
+
+Matching is on the album name only and is loose (case, spacing, and punctuation are ignored), so use the album title roughly as it appears in the `albums/` folder. `artist` and `reason` are human notes and are not used for matching. If every cover for a week happens to be blocklisted, the filter is skipped so a cover can still be generated.
+
 ### How Cover Direction Works
 
 1. Ranks album inputs from the week's top albums first.
-2. Selects the ~5-6 strongest covers using lightweight local colour and text-density analysis.
-3. Uploads those covers to FAL storage as source material.
-4. Uses OpenAI vision, when `OPENAI_API_KEY` is available, to describe each cover and design one cohesive scene from their combined contents.
-5. Converts that brief into a natural-language FAL prompt that weaves the described elements into a single connected scene, with only text and grid negatives.
-6. Saves the full generated output plus the `-small` derivative.
+2. Drops any albums listed in the cover blocklist (`scripts/tunes-cover-blocklist.js`).
+3. Selects the ~5-6 strongest covers using lightweight local colour and text-density analysis.
+4. Uploads those covers to FAL storage as source material.
+5. Uses OpenAI vision, when `OPENAI_API_KEY` is available, to describe each cover and design one cohesive scene from their combined contents.
+6. Converts that brief into a natural-language FAL prompt that weaves the described elements into a single connected scene, with only text and grid negatives.
+7. Saves the full generated output plus the `-small` derivative.
 
 If `OPENAI_API_KEY` is not available, the script uses a deterministic fallback brief that asks for one cohesive scene combining elements from every cover. `FAL_KEY` is required because there is no local image-generation fallback.
 
