@@ -21,15 +21,10 @@ async function main() {
     // Parse command line arguments
     const args = process.argv.slice(2)
     const weekStartArg = args.find(arg => arg.startsWith('--week_start='))
-    const laneArg = args.find(arg => arg.startsWith('--lane='))
-    const styleArg = args.find(arg => arg.startsWith('--style='))
     const debugMode = args.includes('--debug')
     const testingMode = args.includes('--testing')
     const takeArg = args.find(arg => arg.startsWith('--take='))
     const takeCount = takeArg ? parseInt(takeArg.split('=')[1], 10) : null
-    const coverLane = laneArg
-      ? laneArg.split('=')[1]
-      : (styleArg ? styleArg.split('=')[1] : 'auto')
 
     // Calculate week dates
     const weekStart = weekStartArg
@@ -48,9 +43,6 @@ async function main() {
     }
     if (takeCount) {
       console.log(`Taking ${takeCount} items`)
-    }
-    if (styleArg && !laneArg) {
-      console.log(`Deprecated --style alias received; using it as cover lane "${coverLane}"`)
     }
 
     // Load configuration
@@ -135,7 +127,7 @@ async function main() {
     await imageHandler.downloadArtistImages(topArtists, collectionInfo.info, artistsFolder)
     await imageHandler.downloadAlbumImages(topAlbums, collectionInfo.info, albumsFolder)
 
-    // Generate source-blended cover assets.
+    // Generate the cover scene assets.
     console.log('Generating cover image...')
     const srcAssetsFolder = testingMode
       ? baseDir
@@ -158,21 +150,13 @@ async function main() {
 
     const coverOutputPath = path.join(srcAssetsFolder, `tunes-cover-${dateStr}-listened-to-this-week.png`)
 
-    // Use FAL.ai cover generation with source-image elements preserved in one scene.
-    console.log('Generating AI-powered source-blended cover...')
+    // Build one cohesive scene from recognisable elements across the week's album covers.
+    console.log('Generating AI cover scene...')
     const dateSeed = new Date(dateStr).getTime()
     await createFALTunesCover(albumImagePaths, coverOutputPath, {
       seed: dateSeed,
       width: 1400,
       height: 800,
-      lane: coverLane,
-      title,
-      summary,
-      dateStr,
-      weekNumber,
-      topArtists,
-      topAlbums,
-      collectionInfo: collectionInfo.info,
       debug: debugMode
     })
 

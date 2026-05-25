@@ -3,8 +3,7 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import readline from 'readline'
 import { fileURLToPath } from 'url'
-import { createFALTunesCover, LANES, normalizeLane, smallOutputPathFor } from './fal-tunes-cover.js'
-import { CollectionManager } from './lib/collection-manager.js'
+import { createFALTunesCover, smallOutputPathFor } from './fal-tunes-cover.js'
 import { normalizeForFilename } from './lib/text-utils.js'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -72,23 +71,23 @@ function showHelp() {
   console.log(`
 Regenerate Tunes Cover Image
 
-Regenerates the source-blended AI cover image for a weekly tunes post. This is the
-manual test harness for trying old weeks without changing MDX frontmatter.
+Regenerates the AI cover scene for a weekly tunes post. This is the manual test
+harness for trying old weeks without changing MDX frontmatter.
 
 Usage:
   node scripts/regenerate-tunes-cover.js [options]
 
 Options:
   --week=<date>       Week date, e.g. 2026-04-20 (interactive picker if omitted)
-  --lane=<name>       Headline lane: ${LANES.join(', ')} (default: auto)
-  --style=<name>      Deprecated alias for --lane; old style names are mapped
   --output=<path>     Optional output PNG path; also writes <name>-small.png
   --debug, -d         Enable debug output
   --help, -h          Show this help message
 
+  --lane / --style are deprecated and ignored (kept so older commands still run).
+
 Examples:
-  node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=auto --debug
-  node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=hero_object --output=/tmp/tunes-test.png
+  node scripts/regenerate-tunes-cover.js --week=2026-04-20 --debug
+  node scripts/regenerate-tunes-cover.js --week=2026-04-20 --output=/tmp/tunes-test.png
 `)
 }
 
@@ -207,17 +206,6 @@ async function orderedAlbumImages(topAlbums, albumsFolder) {
   return [...ranked, ...remaining]
 }
 
-async function maybeLoadCollectionInfo() {
-  try {
-    const manager = new CollectionManager(process.env.COLLECTION_URL)
-    const data = await manager.getCollectionData()
-    return data.info
-  } catch (error) {
-    console.warn(`Could not load collection metadata: ${error.message}`)
-    return null
-  }
-}
-
 async function main() {
   const args = parseArgs(process.argv.slice(2))
 
@@ -249,9 +237,8 @@ async function main() {
   }
 
   const dateStr = extractDate(selectedWeek)
-  const lane = normalizeLane(args.lane || args.style || 'auto')
-  if (args.style && !args.lane) {
-    console.log(`Deprecated --style alias received; mapped to lane "${lane}"`)
+  if (args.lane || args.style) {
+    console.log('Note: --lane / --style are deprecated and ignored')
   }
 
   const albumsFolder = path.join(rootDir, 'public', 'assets', selectedWeek, 'albums')
@@ -275,12 +262,9 @@ async function main() {
     process.exit(1)
   }
 
-  const collectionInfo = await maybeLoadCollectionInfo()
   const dateSeed = new Date(dateStr).getTime()
 
-  console.log(`\nRegenerating source-blended cover for: ${dateStr}`)
-  console.log('Source mode: source_blend')
-  console.log(`Lane: ${lane}`)
+  console.log(`\nRegenerating tunes cover scene for: ${dateStr}`)
   console.log(`Albums: ${albumImages.length} images`)
   console.log(`Output: ${outputPath}`)
   console.log(`Small:  ${smallOutputPathFor(outputPath)}\n`)
@@ -289,14 +273,6 @@ async function main() {
     seed: dateSeed,
     width: 1400,
     height: 800,
-    lane,
-    title: postContext.title,
-    summary: postContext.summary,
-    dateStr,
-    weekNumber: null,
-    topArtists: postContext.topArtists,
-    topAlbums: postContext.topAlbums,
-    collectionInfo,
     debug: args.debug
   })
 

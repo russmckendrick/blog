@@ -47,7 +47,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `scripts/cache-reading-images.js` | primary | Fetches OG images and metadata (title, description) for reading list bookmarks and caches them locally; downloaded images are re-encoded to JPEG via `sharp` so they are compatible with Cloudflare image transformations regardless of source format |
 | `scripts/fal-cover-generator.js` | manual | AI blog cover generator used by `new-post.js` and manual cover generation flows |
 | `scripts/regenerate-cover.js` | manual | Regenerate a blog cover for an existing MDX post |
-| `scripts/fal-tunes-cover.js` | manual/internal | Source-blended AI tunes cover generator; saves full and `-small` cover images |
+| `scripts/fal-tunes-cover.js` | manual/internal | AI tunes cover generator; reads each album cover and weaves them into one cohesive scene; saves full and `-small` cover images |
 | `scripts/regenerate-tunes-cover.js` | manual | Regenerate one weekly tunes cover without changing MDX frontmatter |
 | `scripts/wrapped-cover-generator.js` | internal | AI-assisted wrapped cover compositor |
 | `scripts/bulk-listen.js` | manual | Run the tunes cover generator over a date range of weekly tunes folders |
@@ -91,17 +91,16 @@ Use this for direct AI cover generation outside the `new-post` workflow.
 node scripts/fal-tunes-cover.js --help
 ```
 
-Use this for direct source-blended tunes cover generation. The script builds a source-element plan from the uploaded album art and applies a headline lane for weekly visual variety. Source artwork text is treated as non-text visual material and should be transformed into abstract colour, shape, light, fabric, paint, or texture.
+Use this for direct tunes cover generation. The script reads the ~5-6 strongest album covers, describes the visual contents of each one, then designs a single cohesive, photorealistic scene that weaves recognisable elements from all of them into one shared world (illustrated cover motifs are reimagined as real, physical, photographable things). The negatives applied are text, grid/montage layouts, and non-photographic styles (illustration, painting, cartoon); otherwise the art director has creative freedom.
 
 Options:
-- `--lane=<name>` choose `auto`, `hero_object`, `cover_shoot`, `tilt_shift`, `graphic_punch`, `noir_gloss`, `fever_dream`, or `maximal_pop`
-- `--style=<name>` is a deprecated alias for `--lane`
 - `--output=<path>` writes that file and the matching `-small` derivative
 - `--debug`, `-d` enables verbose input selection and prompt output
+- `--lane=<name>` / `--style=<name>` are deprecated and silently ignored (kept so older commands still run)
 
 Example:
 ```bash
-node scripts/fal-tunes-cover.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --lane=tilt_shift --debug
+node scripts/fal-tunes-cover.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --debug
 ```
 
 ### `scripts/regenerate-tunes-cover.js`
@@ -114,10 +113,9 @@ Regenerates the cover for an older weekly tunes post using its album images and 
 
 Options:
 - `--week=<date>` selects a weekly post, for example `2026-04-20`
-- `--lane=<name>` chooses the headline lane, defaulting to `auto`
-- `--style=<name>` is a deprecated alias for `--lane`
 - `--output=<path>` writes a test cover outside the normal asset path
 - `--debug`, `-d` enables verbose output
+- `--lane=<name>` / `--style=<name>` are deprecated and silently ignored
 
 ### `scripts/bulk-listen.js`
 
@@ -126,8 +124,7 @@ node scripts/bulk-listen.js --from=YYYY-MM-DD --to=YYYY-MM-DD [options]
 ```
 
 Options:
-- `--lane=<name>` choose the headline lane for each generated cover
-- `--style=<name>` deprecated alias for `--lane`
+- `--lane=<name>` / `--style=<name>` are deprecated and silently ignored by the cover generator
 - `--debug`, `-d` enable debug output for the cover generator
 - `--dry-run`, `-n` preview work without generating files
 - `--help`, `-h` show usage

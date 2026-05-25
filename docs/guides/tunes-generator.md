@@ -190,13 +190,13 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 ### AI Models Used
 
 - **Content generation**: OpenAI GPT-5.4 (default) or Anthropic Claude 3.5 Sonnet (fallback), with humaniser anti-pattern guidelines to produce natural UK English output
-- **Source-element brief (Stage A)**: OpenAI GPT-5.4 via Responses API (vision analysis of album covers)
-- **Image generation**: FAL.ai nano-banana-2/edit (one unified cover scene built from source-image elements)
+- **Cover art brief (Stage A)**: OpenAI GPT-5.4 via Responses API (describes each album cover, then designs one cohesive scene from their contents)
+- **Image generation**: FAL.ai nano-banana-2/edit (one unified, photorealistic scene that weaves recognisable elements from the covers together)
 - **Web search**: Tavily, Perplexity, or Exa API (optional, for factual album research)
 
 ## Cover Image Generation
 
-The weekly tunes workflow generates source-blended AI cover images. Album artwork is not treated as vague mood-board inspiration: the uploaded files are the visual source material. The generator identifies concrete objects, figures, symbols, textures, colour structures, and background cues from the covers, then asks the image model to recombine those elements into one unified scene.
+The weekly tunes workflow generates one original, cohesive, **photorealistic** AI scene built from the week's album covers. The art director reads the artwork directly — describing what each cover actually depicts — and then invents a single unified scene that weaves recognisable elements from all of them into one shared world, imagined as a real photograph. Where a cover's motif is itself an illustration, painting, or symbol, the prompt asks for it to be reimagined as a real, physical, photographable thing (a sculpture, prop, projection, mural, costume, person, or animal) so it stays recognisable while the whole frame reads as a genuine photo. The covers stay recognisable in the result, but the image reads as one connected scene rather than a montage. The things steered against are text, grid/montage layouts, and non-photographic (illustration/painting/cartoon) styles; otherwise the model is given creative freedom.
 
 **File**: `scripts/fal-tunes-cover.js`
 
@@ -211,61 +211,42 @@ Each run saves two PNGs:
 
 The small image defaults to `1400x800`. The MDX `heroImage` path continues to point at the non-`small` file.
 
-### Source Blending
+### Reading the Covers, Then Building One Scene
 
-The cover prompt is built around a source-element plan. The AI director must name recognisable elements from the uploaded album images and describe how each should be transformed into the final scene. Those elements are treated as required building blocks, not optional mood notes.
+The brief is produced in two steps inside a single OpenAI call. First the model looks at each uploaded cover and describes its concrete visual contents — subjects, figures, objects, symbols, settings, art style, and colours — while ignoring any printed text or logos. Then it invents one original scene that weaves recognisable elements from all of the covers into a single shared world, choosing a setting, light, and art style that tie them together.
 
-The generator avoids raw album-cover grids, unmodified square thumbnails, readable text, fake text-like marks, and logos. If source artwork contains artist names or album titles, those areas should become abstract colour blocks, shapes, light, fabric, paint, or texture. Integrated source fragments are allowed when they become part of the scene as props, murals, projections, windows, paintings, reflections, clothing, set pieces, textures, or background details.
+The prompt carries two deliberate steers: everything must belong to the same cohesive scene (connected by environment and story rather than floating as separate cut-outs), and the whole image must be a believable photorealistic photograph. Beyond that the model has creative freedom — rich, detailed, imaginative scenes are welcome. The negatives applied are **text** (letters, words, numbers, captions, logos, watermarks, signage), **grids/montages** (contact sheets, tiled squares, raw album-cover thumbnails, panels), and **non-photographic styles** (illustration, painting, drawing, cartoon, comic, anime, vector art, sketch).
 
-### Headline Lanes
-
-Lanes add weekly variety by changing the header treatment, not by replacing the source artwork. `auto` lets the AI director choose, while explicit lanes are useful for testing.
-
-| Lane | Direction |
-|------|-----------|
-| `auto` | Choose the strongest lane for the source images and recent-cover memory |
-| `hero_object` | One unforgettable central object, talisman, machine, shrine, or sculptural prop |
-| `cover_shoot` | Bold fashion-editorial shoot with source elements in styling, props, backdrop, and reflections |
-| `tilt_shift` | Miniature diorama or toy-scale editorial world with source elements as tactile props and scenery |
-| `graphic_punch` | Graphic colour, oversized shapes, crisp silhouettes, and strong card-size readability without text |
-| `noir_gloss` | Late-night cinematic gloss with rain, glass, chrome, shadow, reflections, and tension |
-| `fever_dream` | Source-anchored dream logic, impossible scale, charged symbols, and one bold focal idea |
-| `maximal_pop` | Controlled high-energy spectacle using colour, scale, props, pattern, and motion rather than typography |
-
-Old lane/style names still map to the new lanes for compatibility. Source-image elements remain mandatory in every lane.
+There are no lanes. The `--lane` / `--style` flags are deprecated and silently ignored so older commands still run.
 
 ### How Cover Direction Works
 
 1. Ranks album inputs from the week's top albums first.
-2. Adds visually diverse alternates using lightweight local colour and text-density analysis.
-3. Builds compact album and artist context from the post metadata and collection data.
-4. Reads recent weekly cover titles/summaries so the AI director can avoid repeating the same visual grammar.
-5. Uses OpenAI vision, when `OPENAI_API_KEY` is available, to produce a compact internal source-element brief.
-6. Converts that brief into a natural-language FAL prompt that explicitly requires recognisable source-derived elements in one coherent scene.
-7. Saves the full generated output plus the `-small` derivative.
+2. Selects the ~5-6 strongest covers using lightweight local colour and text-density analysis.
+3. Uploads those covers to FAL storage as source material.
+4. Uses OpenAI vision, when `OPENAI_API_KEY` is available, to describe each cover and design one cohesive scene from their combined contents.
+5. Converts that brief into a natural-language FAL prompt that weaves the described elements into a single connected scene, with only text and grid negatives.
+6. Saves the full generated output plus the `-small` derivative.
 
-If `OPENAI_API_KEY` is not available, the script uses a deterministic fallback art brief. `FAL_KEY` is required because there is no local image-generation fallback.
+If `OPENAI_API_KEY` is not available, the script uses a deterministic fallback brief that asks for one cohesive scene combining elements from every cover. `FAL_KEY` is required because there is no local image-generation fallback.
 
 ### Commands
 
 ```bash
-# Future weekly posts use the source-blended cover path automatically
+# Future weekly posts use the cover path automatically
 pnpm run tunes
 
-# Force a headline lane
-pnpm run tunes -- --lane=maximal_pop
+# Regenerate a past week's cover without touching its MDX
+node scripts/regenerate-tunes-cover.js --week=2026-04-20 --debug
 
 # Testing mode keeps all generated files under output/
 pnpm run tunes -- --testing --take=5
 
-# Regenerate one older week for local review without changing MDX frontmatter
-node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=auto --debug
-
 # Send a one-off test image somewhere else
-node scripts/regenerate-tunes-cover.js --week=2026-04-20 --lane=hero_object --output=/tmp/tunes-test.png
+node scripts/regenerate-tunes-cover.js --week=2026-04-20 --output=/tmp/tunes-test.png
 
 # Direct low-level generator usage
-node scripts/fal-tunes-cover.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --lane=tilt_shift --debug
+node scripts/fal-tunes-cover.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --debug
 ```
 
 ### Error Handling
