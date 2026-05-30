@@ -63,6 +63,14 @@ export class ConfigLoader {
     }
   }
 
+  getArtistPortraitBackend() {
+    return this.settings.artist_portrait_backend || 'nano-banana'
+  }
+
+  getCoverBackend() {
+    return this.settings.cover_backend || 'nano-banana'
+  }
+
   getTitlePrompt(context) {
     const prompt = this.prompts.title
     if (!prompt) return ''

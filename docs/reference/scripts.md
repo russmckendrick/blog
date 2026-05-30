@@ -92,7 +92,7 @@ Use this for direct AI cover generation outside the `new-post` workflow.
 node scripts/fal-tunes-cover.js --help
 ```
 
-Use this for direct tunes cover generation. The script reads the ~5-6 strongest album covers, describes the visual contents of each one, then designs a single cohesive, photorealistic scene that weaves recognisable elements from all of them into one shared world (illustrated cover motifs are reimagined as real, physical, photographable things). The negatives applied are text, grid/montage layouts, and non-photographic styles (illustration, painting, cartoon); otherwise the art director has creative freedom.
+Use this for direct tunes cover generation. The script reads the ~5-6 strongest album covers, describes the visual contents of each one, then designs a single cohesive, photorealistic scene that weaves recognisable elements from all of them into one shared world (illustrated cover motifs are reimagined as real, physical, photographable things). The negatives applied are text, grid/montage layouts, and non-photographic styles (illustration, painting, cartoon); otherwise the art director has creative freedom. The actual image call is delegated to a swappable backend in `scripts/lib/image-backends/`, chosen by `settings.cover_backend` in `scripts/tunes-config.yaml` (`nano-banana` default | `gpt-image-2`; unknown/missing falls back to `nano-banana`).
 
 Options:
 - `--output=<path>` writes that file and the matching `-small` derivative
@@ -118,7 +118,7 @@ Options:
 - `--seed=<number>` sets a deterministic seed
 - `--debug`, `-d` enables verbose input selection, brief, and prompt output
 
-The number of artists is capped by `TUNES_ARTIST_PORTRAIT_INPUTS` (default 6). Requires `FAL_KEY`; uses `OPENAI_API_KEY` when present, otherwise falls back to a deterministic studio brief. The weekly `pnpm run tunes` flow calls this generator (best-effort) and writes the portrait to `public/assets/<week>/tunes-artists-<week>.png`, then embeds it in the post body above the Top Artists/Albums lists; because it is a body image it lives under `public/assets/` (referenced by a `/assets/...` path), not `src/assets/` like the hero cover.
+The number of artists is capped by `TUNES_ARTIST_PORTRAIT_INPUTS` (default 6). Requires `FAL_KEY`; uses `OPENAI_API_KEY` when present, otherwise falls back to a deterministic studio brief. The actual image call is delegated to a swappable backend in `scripts/lib/image-backends/` (`gpt-image-2` or `nano-banana`), chosen by `settings.artist_portrait_backend` in `scripts/tunes-config.yaml` (default `gpt-image-2`; unknown/missing falls back to `nano-banana`). The weekly `pnpm run tunes` flow calls this generator (best-effort) and writes the portrait to `public/assets/<week>/tunes-artists-<week>.png`, then embeds it in the post body above the Top Artists/Albums lists; because it is a body image it lives under `public/assets/` (referenced by a `/assets/...` path), not `src/assets/` like the hero cover.
 
 Example:
 ```bash
@@ -236,6 +236,10 @@ These modules support the top-level CLIs and are not intended to be run directly
 | `scripts/lib/content-generator.js` | AI writing pipeline for tunes and wrapped sections; normalises each section's headings (collapses doubled markers like `### ###` to a single `###`) before embedding images |
 | `scripts/lib/exa-tool.js` | Exa search integration for research agents |
 | `scripts/lib/github-gist-client.js` | GitHub Gist publishing for Medium exports |
+| `scripts/lib/fal-content-policy.js` | Dependency-free `isContentPolicyViolation()` helper shared by the cover/artist generators and the image backends (avoids an import cycle) |
+| `scripts/lib/image-backends/index.js` | Registry of generic, swappable image-generation backends (`{ id, label, generate }`); `getBackend()` / `normalizeBackendId()`. Shared by both the cover header and the artist portrait |
+| `scripts/lib/image-backends/nano-banana.js` | Generic FAL `nano-banana-2/edit` image backend (env: `NANO_BANANA_MODEL`, `NANO_BANANA_FALLBACK_MODEL`) |
+| `scripts/lib/image-backends/gpt-image-2.js` | Generic OpenAI `gpt-image-2/edit` image backend via fal (env: `GPT_IMAGE_2_MODEL`, `GPT_IMAGE_2_SIZE`, `GPT_IMAGE_2_QUALITY`) |
 | `scripts/lib/image-handler.js` | Downloads, stores, and organizes album/artist images |
 | `scripts/lib/lastfm-client.js` | Last.fm client for weekly listening data |
 | `scripts/lib/lastfm-year-client.js` | Last.fm client for annual wrapped data |

@@ -6,10 +6,37 @@ import sharp from 'sharp'
 import OpenAI from 'openai'
 import { fal } from '@fal-ai/client'
 import { COVER_BLOCKLIST } from './tunes-cover-blocklist.js'
+import { isContentPolicyViolation } from './lib/fal-content-policy.js'
+import { ConfigLoader } from './lib/config-loader.js'
+import { getBackend, BACKENDS } from './lib/image-backends/index.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const PROJECT_ROOT = path.resolve(__dirname, '..')
+
+const DEFAULT_COVER_BACKEND = 'nano-banana'
+
+// Resolve the cover image backend: explicit option first, then the tunes-config.yaml switch
+// (settings.cover_backend), then the default. Unknown ids warn and fall back. The backends in
+// lib/image-backends/ are generic and shared with the artist portrait flow.
+async function resolveCoverBackend(explicit) {
+  let requested = explicit
+  if (!requested) {
+    try {
+      const config = new ConfigLoader()
+      await config.load()
+      requested = config.getCoverBackend()
+    } catch {
+      requested = DEFAULT_COVER_BACKEND
+    }
+  }
+
+  const backend = getBackend(requested)
+  if (backend) return backend
+
+  console.warn(`  Unknown image backend "${requested}"; falling back to ${DEFAULT_COVER_BACKEND}`)
+  return BACKENDS[DEFAULT_COVER_BACKEND]
+}
 
 // We steer away from text, grid/montage layouts, and non-photographic styles. The
 // goal is one photorealistic scene, so illustration/painting looks are excluded too.
@@ -465,9 +492,6 @@ function smallOutputPathFor(outputPath) {
   return `${base}-small${ext}`
 }
 
-function isContentPolicyViolation(error) {
-  return Boolean(error?.body?.detail?.some?.(detail => detail.type === 'content_policy_violation'))
-}
 
 async function saveGeneratedImage(imageUrl, outputPath, width, height, debug = false) {
   const response = await fetch(imageUrl)
@@ -558,10 +582,10 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     minCount
   )
 
-  const modelName = process.env.FAL_TUNES_COVER_MODEL || 'fal-ai/nano-banana-2/edit'
-  const fallbackModelName = process.env.FAL_TUNES_COVER_FALLBACK_MODEL || ''
-  let activeModelName = modelName
-  let usedFallbackModel = false
+  const backend = await resolveCoverBackend(options.backend)
+  if (debug) {
+    console.log(`  Image backend: ${backend.label} (${backend.id})`)
+  }
 
   for (let attempt = 0; attempt < attemptSets.length; attempt++) {
     const attemptPaths = attemptSets[attempt]
@@ -580,34 +604,10 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
         console.log(`  Prompt: ${prompt}`)
       }
 
-      const input = {
-        prompt,
-        image_urls: imageUrls,
-        aspect_ratio: '16:9',
-        num_images: 1,
-        output_format: 'png',
-        resolution: '2K',
-        enable_web_search: false,
-        seed
-      }
-
-      const result = await fal.subscribe(activeModelName, {
-        input,
-        logs: debug,
-        onQueueUpdate: update => {
-          if (debug && update.status === 'IN_PROGRESS') {
-            update.logs?.map(log => log.message).forEach(message => console.log(`  [FAL] ${message}`))
-          }
-        }
-      })
-
-      const imageUrl = result.data?.images?.[0]?.url
-      if (!imageUrl) {
-        throw new Error('FAL.ai returned no image URL')
-      }
+      const { imageUrl, model } = await backend.generate({ imageUrls, prompt, seed, debug })
 
       const saved = await saveGeneratedImage(imageUrl, outputPath, width, height, debug)
-      console.log(`  Created tunes cover scene from ${attemptPaths.length} album covers`)
+      console.log(`  Created tunes cover scene (${backend.label}) from ${attemptPaths.length} album covers`)
       console.log(`    Full:  ${saved.outputPath}`)
       console.log(`    Small: ${saved.smallOutputPath}`)
 
@@ -615,7 +615,8 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
         ...saved,
         selectedImages: attemptPaths,
         imageUrl,
-        model: activeModelName,
+        model,
+        backend: backend.id,
         mode: 'source_scene',
         prompt
       }
@@ -625,18 +626,9 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
         continue
       }
 
-      const canFallback = !usedFallbackModel && fallbackModelName && fallbackModelName !== activeModelName
-      if (canFallback) {
-        usedFallbackModel = true
-        activeModelName = fallbackModelName
-        console.warn(`  Primary FAL model failed; retrying with fallback model ${fallbackModelName}`)
-        attempt = -1
-        continue
-      }
-
       let message = error.message
       if (error.body) message += `\nResponse body: ${JSON.stringify(error.body, null, 2)}`
-      throw new Error(`Tunes cover generation failed using ${activeModelName}: ${message}`)
+      throw new Error(`Tunes cover generation failed using ${backend.label}: ${message}`)
     }
   }
 

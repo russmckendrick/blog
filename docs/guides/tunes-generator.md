@@ -185,15 +185,16 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 - `lib/blog-post-renderer.js` - MDX template renderer
 - `lib/perplexity-tool.js` - Perplexity AI search tool (config-driven)
 - `lib/exa-tool.js` - Exa AI search tool (config-driven)
-- `fal-tunes-cover.js` - Source-blended AI tunes cover generator using FAL.ai edit models
-- `fal-tunes-artists.js` - Group-portrait generator that composes the week's artist photos into one photorealistic photo (reuses the cover pipeline's helpers)
+- `fal-tunes-cover.js` - Source-blended AI tunes cover generator; delegates the image call to a configurable backend (`lib/image-backends/`)
+- `fal-tunes-artists.js` - Group-portrait generator that composes the week's artist photos into one photorealistic photo; same configurable image backends, reuses the cover pipeline's helpers
+- `lib/image-backends/` - Generic, swappable image-generation backends (`nano-banana`, `gpt-image-2`) shared by both generators
 - `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly image (header or artist) without changing MDX
 
 ### AI Models Used
 
 - **Content generation**: OpenAI GPT-5.4 (default) or Anthropic Claude 3.5 Sonnet (fallback), with humaniser anti-pattern guidelines to produce natural UK English output
 - **Cover art brief (Stage A)**: OpenAI GPT-5.4 via Responses API (describes each album cover, then designs one cohesive scene from their contents)
-- **Image generation**: FAL.ai nano-banana-2/edit (one unified, photorealistic scene that weaves recognisable elements from the covers together)
+- **Image generation**: a swappable backend (`scripts/lib/image-backends/`) — FAL.ai `nano-banana-2/edit` or OpenAI `gpt-image-2/edit` — selected per image type via `settings.cover_backend` and `settings.artist_portrait_backend` in `scripts/tunes-config.yaml`
 - **Web search**: Tavily, Perplexity, or Exa API (optional, for factual album research)
 
 ## Cover Image Generation
@@ -203,6 +204,8 @@ The weekly tunes workflow generates one original, cohesive, **photorealistic** A
 **File**: `scripts/fal-tunes-cover.js`
 
 The file keeps its historical name for compatibility, but it is now the only weekly tunes cover workflow.
+
+**Image backend switch:** like the artist portrait, the actual image call is delegated to a pluggable backend in `scripts/lib/image-backends/` — **Nano Banana** (`fal-ai/nano-banana-2/edit`) or **GPT Image 2** (`openai/gpt-image-2/edit`). Choose one with `settings.cover_backend` in `scripts/tunes-config.yaml` (`nano-banana` | `gpt-image-2`; unknown/missing falls back to `nano-banana`). The default is `nano-banana`, which is tuned for the cohesive album-cover scene described above. The per-backend env overrides are the same generic ones used by the artist flow (`NANO_BANANA_MODEL` etc.) — note these replace the former cover-specific `FAL_TUNES_COVER_MODEL` / `FAL_TUNES_COVER_FALLBACK_MODEL`.
 
 ### Outputs
 
@@ -247,9 +250,11 @@ If `OPENAI_API_KEY` is not available, the script uses a deterministic fallback b
 
 ### Artist Group Portrait
 
-Alongside the album-cover header there is a second image type: a **literal group portrait of the week's artists**, built from the artist photos already downloaded to `public/assets/YYYY-MM-DD-listened-to-this-week/artists/`. It reuses the same two-stage approach and the same FAL model as the cover, but is tuned for real people instead of album art.
+Alongside the album-cover header there is a second image type: a **literal group portrait of the week's artists**, built from the artist photos already downloaded to `public/assets/YYYY-MM-DD-listened-to-this-week/artists/`. It reuses the same two-stage approach as the cover, but is tuned for real people instead of album art.
 
-**File**: `scripts/fal-tunes-artists.js` (exports `createFALArtistPortrait`).
+**File**: `scripts/fal-tunes-artists.js` (exports `createFALArtistPortrait`). It orchestrates image selection, the OpenAI brief, the prompt, the retry loop, and saving, then delegates the actual image call to a pluggable backend.
+
+**Image backend switch:** the portrait can be produced by either **GPT Image 2** (`openai/gpt-image-2/edit`) or **Nano Banana** (`fal-ai/nano-banana-2/edit`). Pick one with `settings.artist_portrait_backend` in `scripts/tunes-config.yaml` (`gpt-image-2` | `nano-banana`); an unknown or missing value falls back to `nano-banana`. The backends are generic, reusable modules in `scripts/lib/image-backends/` (`nano-banana.js`, `gpt-image-2.js`, plus an `index.js` registry) — each exports `{ id, label, generate }` and can be reused by any image-generation flow. Both run through fal with `FAL_KEY`. Note: GPT Image 2 (OpenAI) moderates real-person likenesses more strictly, so group portraits of named musicians may be refused more often; it also has no seed and uses `image_size`/`quality` rather than nano-banana's `aspect_ratio`/`resolution`. Per-backend overrides: `NANO_BANANA_MODEL` / `NANO_BANANA_FALLBACK_MODEL`, and `GPT_IMAGE_2_MODEL` / `GPT_IMAGE_2_SIZE` / `GPT_IMAGE_2_QUALITY` (GPT Image 2 defaults to a 2560×1440 16:9 image at `high` quality).
 
 How it differs from the cover pipeline:
 

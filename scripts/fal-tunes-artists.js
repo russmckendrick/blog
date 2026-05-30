@@ -12,10 +12,36 @@ import {
   humanizeImageName,
   NEGATIVE_TERMS
 } from './fal-tunes-cover.js'
+import { ConfigLoader } from './lib/config-loader.js'
+import { getBackend, BACKENDS } from './lib/image-backends/index.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const PROJECT_ROOT = path.resolve(__dirname, '..')
+
+const DEFAULT_BACKEND = 'nano-banana'
+
+// Resolve the image backend: explicit option first, then the tunes-config.yaml switch, then the
+// default. Unknown ids warn and fall back. The backends themselves live in lib/image-backends/
+// and are generic - only the config key and default below are artist-portrait specific.
+async function resolveBackend(explicit) {
+  let requested = explicit
+  if (!requested) {
+    try {
+      const config = new ConfigLoader()
+      await config.load()
+      requested = config.getArtistPortraitBackend()
+    } catch {
+      requested = DEFAULT_BACKEND
+    }
+  }
+
+  const backend = getBackend(requested)
+  if (backend) return backend
+
+  console.warn(`  Unknown image backend "${requested}"; falling back to ${DEFAULT_BACKEND}`)
+  return BACKENDS[DEFAULT_BACKEND]
+}
 
 // The artist photos are already real portraits of real people. We want one believable
 // group photograph, so on top of the shared negatives (text, grids, illustration) we steer
@@ -234,10 +260,10 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
     })
   }
 
-  const modelName = process.env.FAL_TUNES_COVER_MODEL || 'fal-ai/nano-banana-2/edit'
-  const fallbackModelName = process.env.FAL_TUNES_COVER_FALLBACK_MODEL || ''
-  let activeModelName = modelName
-  let usedFallbackModel = false
+  const backend = await resolveBackend(options.backend)
+  if (debug) {
+    console.log(`  Image backend: ${backend.label} (${backend.id})`)
+  }
 
   // Each attempt drops one more low-ranked artist, so a content-policy refusal can retry
   // with a smaller, simpler group rather than failing outright.
@@ -263,34 +289,10 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
         console.log(`  Prompt: ${prompt}`)
       }
 
-      const input = {
-        prompt,
-        image_urls: imageUrls,
-        aspect_ratio: '16:9',
-        num_images: 1,
-        output_format: 'png',
-        resolution: '2K',
-        enable_web_search: false,
-        seed
-      }
-
-      const result = await fal.subscribe(activeModelName, {
-        input,
-        logs: debug,
-        onQueueUpdate: update => {
-          if (debug && update.status === 'IN_PROGRESS') {
-            update.logs?.map(log => log.message).forEach(message => console.log(`  [FAL] ${message}`))
-          }
-        }
-      })
-
-      const imageUrl = result.data?.images?.[0]?.url
-      if (!imageUrl) {
-        throw new Error('FAL.ai returned no image URL')
-      }
+      const { imageUrl, model } = await backend.generate({ imageUrls, prompt, seed, debug })
 
       const saved = await saveGeneratedImage(imageUrl, outputPath, width, height, debug)
-      console.log(`  Created tunes artist portrait from ${attemptPaths.length} artist photos`)
+      console.log(`  Created tunes artist portrait (${backend.label}) from ${attemptPaths.length} artist photos`)
       console.log(`    Full:  ${saved.outputPath}`)
       console.log(`    Small: ${saved.smallOutputPath}`)
 
@@ -298,7 +300,8 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
         ...saved,
         selectedImages: attemptPaths,
         imageUrl,
-        model: activeModelName,
+        model,
+        backend: backend.id,
         mode: 'artist_portrait',
         prompt
       }
@@ -308,18 +311,9 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
         continue
       }
 
-      const canFallback = !usedFallbackModel && fallbackModelName && fallbackModelName !== activeModelName
-      if (canFallback) {
-        usedFallbackModel = true
-        activeModelName = fallbackModelName
-        console.warn(`  Primary FAL model failed; retrying with fallback model ${fallbackModelName}`)
-        attempt = -1
-        continue
-      }
-
       let message = error.message
       if (error.body) message += `\nResponse body: ${JSON.stringify(error.body, null, 2)}`
-      throw new Error(`Artist portrait generation failed using ${activeModelName}: ${message}`)
+      throw new Error(`Artist portrait generation failed using ${backend.label}: ${message}`)
     }
   }
 
@@ -397,6 +391,8 @@ Notes:
   - Uses OPENAI_API_KEY when available to describe each artist and design one cohesive
     group portrait setting. Falls back to a deterministic brief without it.
   - Includes the top TUNES_ARTIST_PORTRAIT_INPUTS artists (default 6) by input order.
+  - The image backend (gpt-image-2 or nano-banana) is chosen by settings.artist_portrait_backend
+    in scripts/tunes-config.yaml.
 `)
 }
 
