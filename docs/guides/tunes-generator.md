@@ -136,7 +136,8 @@ Posts are created in:
    - AI generates engaging blog section (350-450 words) tailored to the album's characteristics
 4. **Download Images**: Fetches high-res artist/album artwork
 5. **Generate Cover**: Creates paired full-size and `-small` AI cover images by blending recognisable source elements from the ranked album artwork into one scene
-6. **Render MDX**: Creates formatted blog post with galleries and links
+6. **Generate Artist Portrait**: Creates a photorealistic group portrait from the week's artist photos (best-effort) and embeds it in the post body above the Top Artists/Albums lists — see [Artist Group Portrait](#artist-group-portrait)
+7. **Render MDX**: Creates formatted blog post with galleries and links
 
 ## Backfilling Older Posts
 
@@ -185,7 +186,8 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 - `lib/perplexity-tool.js` - Perplexity AI search tool (config-driven)
 - `lib/exa-tool.js` - Exa AI search tool (config-driven)
 - `fal-tunes-cover.js` - Source-blended AI tunes cover generator using FAL.ai edit models
-- `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly cover without changing MDX
+- `fal-tunes-artists.js` - Group-portrait generator that composes the week's artist photos into one photorealistic photo (reuses the cover pipeline's helpers)
+- `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly image (header or artist) without changing MDX
 
 ### AI Models Used
 
@@ -243,14 +245,37 @@ Matching is on the album name only and is loose (case, spacing, and punctuation 
 
 If `OPENAI_API_KEY` is not available, the script uses a deterministic fallback brief that asks for one cohesive scene combining elements from every cover. `FAL_KEY` is required because there is no local image-generation fallback.
 
+### Artist Group Portrait
+
+Alongside the album-cover header there is a second image type: a **literal group portrait of the week's artists**, built from the artist photos already downloaded to `public/assets/YYYY-MM-DD-listened-to-this-week/artists/`. It reuses the same two-stage approach and the same FAL model as the cover, but is tuned for real people instead of album art.
+
+**File**: `scripts/fal-tunes-artists.js` (exports `createFALArtistPortrait`).
+
+How it differs from the cover pipeline:
+
+- Takes the top `TUNES_ARTIST_PORTRAIT_INPUTS` artists (default **6**) in play-rank order — no colour/text scoring, since faces should not be dropped on colour and "Various Artists" is already filtered out when the photos are downloaded.
+- Uploads each photo scaled to fit inside 1024px (no centre-crop, so heads are not sliced off).
+- The OpenAI brief describes each person's visible appearance to aid likeness, then designs one cohesive setting, lighting, and styling where the group is photographed together. Returns `{ artists, setting, wardrobe, palette, mood }`; falls back to a deterministic studio brief without `OPENAI_API_KEY`.
+- The prompt asks for one photorealistic 16:9 group photo with every artist recognisable and appearing exactly once, adding identity-preserving negatives (no extra people, no duplicated/merged/distorted faces) on top of the shared text/grid/illustration negatives.
+- Outputs `tunes-artists-YYYY-MM-DD-listened-to-this-week.png` (+ `-small`, 1400×800) into `public/assets/YYYY-MM-DD-listened-to-this-week/` — it is a **body** image referenced by a `/assets/...` public path, unlike the hero cover which lives in `src/assets/`.
+
+**In the post:** the weekly `pnpm run tunes` flow generates the portrait after downloading the artist photos and embeds it in the post body — after the album write-ups and above the Top Artists / Top Albums lists — as a bare full-width `<Img>` (16:9, click-to-zoom, no caption, no heading so it stays out of the table of contents). Generation is **best-effort**: if it fails or no artist photos are available, the post is rendered with no portrait (the `{{artistPortrait}}` placeholder collapses to nothing) rather than failing. The placement seam is the `{{artistPortrait}}` placeholder in `scripts/tunes-template.mdx`, filled by `scripts/lib/blog-post-renderer.js`. The regenerate harness (`--type=artist`) writes to the same `public/assets/{week}/` location, so re-running it refreshes the in-post image.
+
 ### Commands
 
 ```bash
 # Future weekly posts use the cover path automatically
 pnpm run tunes
 
-# Regenerate a past week's cover without touching its MDX
-node scripts/regenerate-tunes-cover.js --week=2026-04-20 --debug
+# Regenerate a past week's image without touching its MDX
+# (prompts for header vs artist, then the week, when flags are omitted)
+node scripts/regenerate-tunes-cover.js
+
+# Regenerate the album-cover header for a specific week
+node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --debug
+
+# Regenerate the artist group portrait for a specific week
+node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --debug
 
 # Testing mode keeps all generated files under output/
 pnpm run tunes -- --testing --take=5
@@ -260,6 +285,7 @@ node scripts/regenerate-tunes-cover.js --week=2026-04-20 --output=/tmp/tunes-tes
 
 # Direct low-level generator usage
 node scripts/fal-tunes-cover.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --debug
+node scripts/fal-tunes-artists.js --input=public/assets/2026-04-20-listened-to-this-week/artists --output=/tmp/tunes-artists.png --debug
 ```
 
 ### Error Handling

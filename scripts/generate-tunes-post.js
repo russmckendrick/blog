@@ -11,6 +11,7 @@ import { BlogPostRenderer } from './lib/blog-post-renderer.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { normalizeText, lookupArtistData, lookupAlbumData, isVariousArtists, normalizeForFilename } from './lib/text-utils.js'
 import { createFALTunesCover } from './fal-tunes-cover.js'
+import { createFALArtistPortrait } from './fal-tunes-artists.js'
 import { spawnSync } from 'child_process'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -162,6 +163,48 @@ async function main() {
 
     console.log(`✅ Cover image generated: ${coverOutputPath}`)
 
+    // Generate the artist group portrait (body image). Best-effort: a failure here must not
+    // break the post, so on error we carry on with no portrait and the placeholder collapses.
+    console.log('Generating artist group portrait...')
+    const artistFiles = await fs.readdir(artistsFolder)
+    const artistImagePathByFile = new Map(
+      artistFiles
+        .filter(file => file.endsWith('.jpg') && !file.endsWith('.meta'))
+        .map(file => [file, path.join(artistsFolder, file)])
+    )
+    const rankedArtistImagePaths = topArtists
+      .map(([artist]) => artistImagePathByFile.get(`${normalizeForFilename(artist)}.jpg`))
+      .filter(Boolean)
+    const remainingArtistImagePaths = [...artistImagePathByFile.values()]
+      .filter(imagePath => !rankedArtistImagePaths.includes(imagePath))
+      .sort((a, b) => a.localeCompare(b))
+    const artistImagePaths = [...rankedArtistImagePaths, ...remainingArtistImagePaths]
+
+    // The portrait is a body image referenced by a /assets/... public path, so it lives in
+    // public/assets/{week}/ alongside the album/artist galleries (not src/assets).
+    const portraitOutputDir = testingMode
+      ? baseDir
+      : path.join(process.cwd(), 'public', 'assets', `${dateStr}-listened-to-this-week`)
+    const portraitOutputPath = path.join(portraitOutputDir, `tunes-artists-${dateStr}-listened-to-this-week.png`)
+
+    let artistPortrait = null
+    if (artistImagePaths.length > 0) {
+      try {
+        await createFALArtistPortrait(artistImagePaths, portraitOutputPath, {
+          seed: dateSeed,
+          width: 1400,
+          height: 800,
+          debug: debugMode
+        })
+        artistPortrait = `/assets/${dateStr}-listened-to-this-week/tunes-artists-${dateStr}-listened-to-this-week.png`
+        console.log(`✅ Artist portrait generated: ${portraitOutputPath}`)
+      } catch (error) {
+        console.warn(`⚠ Artist portrait generation failed, continuing without it: ${error.message}`)
+      }
+    } else {
+      console.warn('⚠ No artist images available; skipping artist portrait')
+    }
+
     // Render blog post
     console.log('Rendering blog post...')
     const randomNumber = String(
@@ -180,7 +223,8 @@ async function main() {
       blogSections,
       randomNumber,
       albumsFolder,
-      artistsFolder
+      artistsFolder,
+      artistPortrait
     })
 
     console.log(`✅ Successfully generated blog post for week ${weekNumber}`)

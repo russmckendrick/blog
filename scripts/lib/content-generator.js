@@ -157,7 +157,17 @@ export class ContentGenerator {
     return sections.join('\n\n')
   }
 
+  // The model occasionally emits a heading with the marker doubled up, e.g.
+  // "### ### A bruising recording journey 🎛️". Collapse any run of leading "#" groups on a
+  // line down to the first one so it renders as a single, correctly-levelled heading.
+  normalizeHeadings(section) {
+    return section.replace(/^(#{1,6})[ \t]+(?:#{1,6}[ \t]+)+/gm, '$1 ')
+  }
+
   addImagesAndLinks(section, artist, album, collectionInfo, dateStr) {
+    // Clean up any doubled heading markers before we parse headings below.
+    section = this.normalizeHeadings(section)
+
     // Get album and artist data
     const albumData = lookupAlbumData(artist, album, collectionInfo)
     const artistData = lookupArtistData(artist, collectionInfo)

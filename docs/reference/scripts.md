@@ -48,7 +48,8 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `scripts/fal-cover-generator.js` | manual | AI blog cover generator used by `new-post.js` and manual cover generation flows |
 | `scripts/regenerate-cover.js` | manual | Regenerate a blog cover for an existing MDX post |
 | `scripts/fal-tunes-cover.js` | manual/internal | AI tunes cover generator; reads each album cover and weaves them into one cohesive scene; saves full and `-small` cover images |
-| `scripts/regenerate-tunes-cover.js` | manual | Regenerate one weekly tunes cover without changing MDX frontmatter |
+| `scripts/fal-tunes-artists.js` | manual/internal | AI tunes artist group-portrait generator; composes the week's artist photos into one photorealistic group photo; saves full and `-small` images |
+| `scripts/regenerate-tunes-cover.js` | manual | Regenerate one weekly tunes image (header cover or artist portrait) without changing MDX frontmatter |
 | `scripts/wrapped-cover-generator.js` | internal | AI-assisted wrapped cover compositor |
 | `scripts/bulk-listen.js` | manual | Run the tunes cover generator over a date range of weekly tunes folders |
 
@@ -103,17 +104,39 @@ Example:
 node scripts/fal-tunes-cover.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --debug
 ```
 
+### `scripts/fal-tunes-artists.js`
+
+```bash
+node scripts/fal-tunes-artists.js --help
+```
+
+Use this for direct artist group-portrait generation. The script takes the week's downloaded artist photos (input order = play rank), describes each person to aid likeness, then designs one cohesive setting where they are photographed together and renders a single photorealistic 16:9 group portrait with every artist recognisable and appearing exactly once. It reuses the cover pipeline's upload/save/JSON helpers and the same FAL model env vars.
+
+Options:
+- `--output=<path>` writes that file and the matching `-small` derivative
+- `--width=<px>` / `--height=<px>` set the `-small` dimensions (default 1400×800)
+- `--seed=<number>` sets a deterministic seed
+- `--debug`, `-d` enables verbose input selection, brief, and prompt output
+
+The number of artists is capped by `TUNES_ARTIST_PORTRAIT_INPUTS` (default 6). Requires `FAL_KEY`; uses `OPENAI_API_KEY` when present, otherwise falls back to a deterministic studio brief. The weekly `pnpm run tunes` flow calls this generator (best-effort) and writes the portrait to `public/assets/<week>/tunes-artists-<week>.png`, then embeds it in the post body above the Top Artists/Albums lists; because it is a body image it lives under `public/assets/` (referenced by a `/assets/...` path), not `src/assets/` like the hero cover.
+
+Example:
+```bash
+node scripts/fal-tunes-artists.js --input=public/assets/2026-04-20-listened-to-this-week/artists --output=/tmp/tunes-artists.png --debug
+```
+
 ### `scripts/regenerate-tunes-cover.js`
 
 ```bash
-node scripts/regenerate-tunes-cover.js --week=YYYY-MM-DD [options]
+node scripts/regenerate-tunes-cover.js [--type=header|artist] [--week=YYYY-MM-DD] [options]
 ```
 
-Regenerates the cover for an older weekly tunes post using its album images and MDX context. If `--output` is omitted, the existing week asset is replaced; if `--output` is supplied, the script writes there instead. In both cases it writes a full image plus the matching `-small` image.
+Regenerates an image for an older weekly tunes post without changing its MDX. It can make either the **header** album-cover scene (`scripts/fal-tunes-cover.js`) or an **artist** group portrait (`scripts/fal-tunes-artists.js`). When `--type` or `--week` is omitted, the script prompts for them interactively. If `--output` is omitted, the default week asset is written — `src/assets/<week>/tunes-cover-<week>.png` for the header (hero), or `public/assets/<week>/tunes-artists-<week>.png` for the artist portrait (body image); if `--output` is supplied, the script writes there instead. In both cases it writes a full image plus the matching `-small` image.
 
 Options:
+- `--type=<kind>` selects `header` or `artist`; `--header` / `--artist` are shorthands
 - `--week=<date>` selects a weekly post, for example `2026-04-20`
-- `--output=<path>` writes a test cover outside the normal asset path
+- `--output=<path>` writes a test image outside the normal asset path
 - `--debug`, `-d` enables verbose output
 - `--lane=<name>` / `--style=<name>` are deprecated and silently ignored
 
@@ -210,7 +233,7 @@ These modules support the top-level CLIs and are not intended to be run directly
 | `scripts/lib/blog-post-renderer.js` | Renders generated tunes content into MDX templates |
 | `scripts/lib/collection-manager.js` | Fetches and normalizes collection data from `russ.fm` |
 | `scripts/lib/config-loader.js` | Loads and validates tunes generator configuration |
-| `scripts/lib/content-generator.js` | AI writing pipeline for tunes and wrapped sections |
+| `scripts/lib/content-generator.js` | AI writing pipeline for tunes and wrapped sections; normalises each section's headings (collapses doubled markers like `### ###` to a single `###`) before embedding images |
 | `scripts/lib/exa-tool.js` | Exa search integration for research agents |
 | `scripts/lib/github-gist-client.js` | GitHub Gist publishing for Medium exports |
 | `scripts/lib/image-handler.js` | Downloads, stores, and organizes album/artist images |

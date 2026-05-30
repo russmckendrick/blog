@@ -2,7 +2,7 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
-import { lookupArtistData, lookupAlbumData } from './text-utils.js'
+import { lookupArtistData, lookupAlbumData, escapeQuotes } from './text-utils.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -33,8 +33,19 @@ export class BlogPostRenderer {
     blogSections,
     randomNumber,
     albumsFolder,
-    artistsFolder
+    artistsFolder,
+    artistPortrait = null
   }) {
+    // Build the artist group-portrait block. `artistPortrait` is the public /assets/... src
+    // when a portrait was generated, or null when it was skipped or failed - in which case the
+    // placeholder collapses to nothing.
+    let artistPortraitSection = ''
+    if (artistPortrait) {
+      const names = topArtists.slice(0, 6).map(([artist]) => artist).join(', ')
+      const alt = escapeQuotes(`Group portrait of this week's top artists: ${names}`)
+      artistPortraitSection = `<Img src="${artistPortrait}" alt="${alt}" aspectRatio="16/9" fullWidth="true" />`
+    }
+
     // Build top artists section
     const topArtistsSection = topArtists.map(([artist, count]) => {
       const artistData = lookupArtistData(artist, collectionInfo)
@@ -72,6 +83,7 @@ export class BlogPostRenderer {
       .replace(/\{\{pubDate\}\}/g, dateStr)
       .replace(/\{\{coverImage\}\}/g, randomNumber)
       .replace(/\{\{albumSections\}\}/g, blogSections)
+      .replace(/\{\{artistPortrait\}\}/g, artistPortraitSection)
       .replace(/\{\{weekNumber\}\}/g, weekNumber)
       .replace(/\{\{topArtists\}\}/g, topArtistsSection)
       .replace(/\{\{topAlbums\}\}/g, topAlbumsSection)

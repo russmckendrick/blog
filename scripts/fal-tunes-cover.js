@@ -762,5 +762,10 @@ export {
   createFALTunesCover,
   detectTextScore,
   selectCoverInputs,
-  smallOutputPathFor
+  smallOutputPathFor,
+  saveGeneratedImage,
+  parseJSONResponse,
+  isContentPolicyViolation,
+  humanizeImageName,
+  NEGATIVE_TERMS
 }
