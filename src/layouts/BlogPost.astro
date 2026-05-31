@@ -46,9 +46,10 @@ interface Props extends BlogData {
 	headings?: Heading[];
 	filePath?: string;
 	readingTime?: number;
+	wordCount?: number;
 }
 
-const { entry, title, description, pubDate, updatedDate, lastModified, heroImage, cover, tags = [], previousPost, nextPost, ogImagePath, isTune = false, showToc = false, headings = [], filePath, readingTime, avatar } = Astro.props;
+const { entry, title, description, pubDate, updatedDate, lastModified, heroImage, cover, tags = [], previousPost, nextPost, ogImagePath, isTune = false, showToc = false, headings = [], filePath, readingTime, wordCount, avatar } = Astro.props;
 const faqs = (Astro.props as Props & { faqs?: { question: string; answer: string }[] }).faqs;
 const howto = (Astro.props as Props & { howto?: { totalTime?: string; steps: { name: string; text: string; image?: string }[] } }).howto;
 
@@ -109,7 +110,10 @@ const blogPostingSchema = createBlogPostingSchema({
 	author: authorName,
 	authorAvatar: avatarSrc,
 	keywords: tags,
-	siteUrl: Astro.site?.toString() || 'https://www.russ.cloud/'
+	siteUrl: Astro.site?.toString() || 'https://www.russ.cloud/',
+	wordCount,
+	readingTimeMinutes: readingTime,
+	articleSection: tags[0] ? getTagDisplayName(tags[0]) : undefined
 });
 
 // Build breadcrumb items

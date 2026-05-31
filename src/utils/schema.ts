@@ -66,6 +66,10 @@ interface BlogPostingSchemaProps {
   authorAvatar?: string
   keywords?: string[]
   siteUrl: string
+  wordCount?: number
+  readingTimeMinutes?: number
+  articleSection?: string
+  inLanguage?: string
 }
 
 export function createBlogPostingSchema({
@@ -78,7 +82,11 @@ export function createBlogPostingSchema({
   author,
   authorAvatar,
   keywords = [],
-  siteUrl
+  siteUrl,
+  wordCount,
+  readingTimeMinutes,
+  articleSection,
+  inLanguage = 'en-GB'
 }: BlogPostingSchemaProps): WithContext<BlogPosting> {
   const authorImageUrl = authorAvatar
     ? new URL(authorAvatar, siteUrl).toString()
@@ -92,6 +100,7 @@ export function createBlogPostingSchema({
     image: image,
     datePublished: datePublished.toISOString(),
     dateModified: (dateModified || datePublished).toISOString(),
+    inLanguage,
     author: {
       '@type': 'Person',
       name: author,
@@ -110,7 +119,17 @@ export function createBlogPostingSchema({
       '@type': 'WebPage',
       '@id': url
     },
-    keywords: keywords.join(', ')
+    isPartOf: {
+      '@type': 'Blog',
+      '@id': new URL('/blog/', siteUrl).toString(),
+      name: SITE_TITLE
+    },
+    keywords: keywords.join(', '),
+    ...(typeof wordCount === 'number' && wordCount > 0 && { wordCount }),
+    ...(typeof readingTimeMinutes === 'number' && readingTimeMinutes > 0 && {
+      timeRequired: `PT${readingTimeMinutes}M`
+    }),
+    ...(articleSection && { articleSection })
   }
 }
 

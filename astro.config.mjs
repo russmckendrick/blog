@@ -10,10 +10,12 @@ import astroIcon from 'astro-icon';
 import { rehypeExternalLinks } from './src/utils/rehype-external-links.ts';
 import { rehypeGlossaryLinks } from './src/utils/rehype-glossary-links.ts';
 import { getGlossaryTermMap } from './src/utils/glossary-terms.ts';
+import { getPostModifiedDateMap } from './src/utils/post-dates.ts';
 import { expressiveCodeA11yPlugin } from './src/utils/expressive-code-a11y-plugin.ts';
 import pagefind from 'astro-pagefind';
 
 const glossaryTermMap = getGlossaryTermMap();
+const postModifiedDateMap = getPostModifiedDateMap();
 
 // https://astro.build/config
 export default defineConfig({
@@ -44,7 +46,14 @@ export default defineConfig({
 			changefreq: 'weekly',
 			priority: 0.5,
 			serialize: (item) => {
-				// Extract date from URL pattern /YYYY/MM/DD/ and use as lastmod
+				// Prefer the post's actual modified date (lastModified/updatedDate/pubDate)
+				// so revised posts signal freshness to crawlers.
+				const pathname = new URL(item.url).pathname;
+				if (postModifiedDateMap[pathname]) {
+					item.lastmod = postModifiedDateMap[pathname];
+					return item;
+				}
+				// Fallback: extract publish date from URL pattern /YYYY/MM/DD/
 				const match = item.url.match(/\/(\d{4})\/(\d{2})\/(\d{2})\//);
 				if (match) {
 					const [, year, month, day] = match;

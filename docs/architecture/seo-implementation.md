@@ -104,6 +104,7 @@ Automatically added to all blog posts:
   "image": "https://www.russ.cloud/og-image.png",
   "datePublished": "2024-04-14T00:00:00.000Z",
   "dateModified": "2024-04-14T00:00:00.000Z",
+  "inLanguage": "en-GB",
   "author": {
     "@type": "Person",
     "name": "Russ McKendrick",
@@ -121,9 +122,19 @@ Automatically added to all blog posts:
     "@type": "WebPage",
     "@id": "https://www.russ.cloud/2024/04/14/post/"
   },
-  "keywords": "docker, kubernetes, devops"
+  "isPartOf": {
+    "@type": "Blog",
+    "@id": "https://www.russ.cloud/blog/",
+    "name": "Russ McKendrick"
+  },
+  "keywords": "docker, kubernetes, devops",
+  "wordCount": 1234,
+  "timeRequired": "PT7M",
+  "articleSection": "Docker"
 }
 ```
+
+`wordCount`, `timeRequired` (ISO-8601 duration derived from reading time), and `articleSection` (the post's primary tag display name) are emitted only when their inputs are present, so tunes and tag-less posts omit them. `wordCount` and reading time share one definition via `countWords()` in `src/utils/reading-time.ts`. `inLanguage` defaults to `en-GB` to match the OpenGraph locale.
 
 #### Person Schema
 
@@ -211,10 +222,12 @@ The browse-page OG generators all share the same `OG()` + `PNG()` pipeline and a
 
 **Features**:
 - Auto-generated at build time
-- Excludes `/draft/` pages
-- Includes `lastmod` dates (extracted from URL)
+- Excludes `/draft/` and `/avatars/` pages
+- Includes accurate `lastmod` dates: the `serialize` callback looks each post URL up in a precomputed map (`getPostModifiedDateMap()` in `src/utils/post-dates.ts`) and uses the post's real `lastModified ?? updatedDate ?? pubDate`, so revised posts signal freshness. URLs not in the map (or non-post routes) fall back to the publish date parsed from the `/YYYY/MM/DD/` URL pattern.
 - Weekly changefreq
 - Priority 0.5
+
+The map is built synchronously at config-load time (the same pattern `getGlossaryTermMap()` uses) by reading blog and tunes frontmatter and reconstructing each post's pathname via `getPostUrl()` from `src/utils/url.ts`.
 
 **Example Entry**:
 ```xml
@@ -622,4 +635,4 @@ const howToSchema = createHowToSchema({
 
 ---
 
-**Last Updated**: November 2025
+**Last Updated**: May 2026
