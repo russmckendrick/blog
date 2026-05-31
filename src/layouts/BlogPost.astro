@@ -166,6 +166,12 @@ const howToSchema = howto && howto.steps?.length > 0
 			lastModified={lastModified}
 			author={authorName}
 			keywords={tags}
+			analytics={{
+				content_type: entry?.collection ?? (isTune ? 'tunes' : 'blog'),
+				primary_tag: tags[0] ?? 'none',
+				author: authorName,
+				published_year: String(pubDate.getFullYear()),
+			}}
 		/>
 		<!-- Preload hero image for LCP optimization -->
 		{displayImage && (

@@ -21,3 +21,14 @@ const { id, params, playlabel, posterQuality = 'max' } = Astro.props;
     width: 100% !important;
   }
 </style>
+
+<script>
+  // Track YouTube play (lite-youtube swaps in the iframe on first click).
+  // Delegated + bundled once, so it survives multiple embeds and View Transitions.
+  document.addEventListener('click', (e) => {
+    const player = (e.target as HTMLElement).closest('lite-youtube') as HTMLElement | null;
+    if (!player || player.dataset.plausibleTracked) return;
+    player.dataset.plausibleTracked = 'true';
+    window.plausible?.('Video Play', { props: { provider: 'YouTube' } });
+  });
+</script>

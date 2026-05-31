@@ -59,6 +59,20 @@ const isDev = import.meta.env.DEV;
 
 	// Re-initialize after View Transitions navigation
 	document.addEventListener('astro:page-load', initPagefind);
+
+	// Track search usage as a Plausible goal (debounced, query not sent for privacy).
+	// Delegated so it survives Pagefind re-initialisation and View Transitions.
+	let searchTimer: ReturnType<typeof setTimeout>;
+	document.addEventListener('input', (e) => {
+		const target = e.target as HTMLElement;
+		if (!target.classList.contains('pagefind-ui__search-input')) return;
+		clearTimeout(searchTimer);
+		searchTimer = setTimeout(() => {
+			if ((target as HTMLInputElement).value.trim().length >= 2) {
+				window.plausible?.('Search', { interactive: false });
+			}
+		}, 1200);
+	});
 </script>
 
 <style is:global>

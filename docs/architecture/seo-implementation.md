@@ -510,22 +510,50 @@ For more on Docker networking, see [Docker Networking Guide](/2024/03/15/docker-
 - Real-time data
 
 **Integration**:
-Uses Plausible's new hashed script embed format in `BaseHead.astro`:
+Uses Plausible's new hashed script embed format in `BaseHead.astro`. `init()` enables outbound-link
+and file-download tracking, and reads pageview custom properties from `<meta name="plausible:*">`
+tags via a function (a function is required because View Transitions reuse the loaded script across
+client-side navigations, so a static props object would go stale):
 ```html
+<!-- One <meta> per analytics prop, emitted from the layout (see below) -->
+<meta name="plausible:content_type" content="blog" />
 <script is:inline async src="https://plausible.io/js/pa-1kQuB-9i3FNq-UW5DZix5.js"></script>
 <script is:inline>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
+  plausible.init({
+    outboundLinks: true,
+    fileDownloads: true,
+    customProperties: () => Object.fromEntries(
+      [...document.querySelectorAll('meta[name^="plausible:"]')]
+        .map((m) => [m.getAttribute('name').slice(9), m.getAttribute('content')])
+    )
+  })
 </script>
 ```
 
 The `is:inline` directive ensures Astro renders the tags exactly as-is without bundling or converting to modules.
 
+**Pageview custom properties**: `BaseHead.astro` accepts an `analytics?: Record<string,string>` prop
+and renders each key as a `<meta name="plausible:KEY">` tag (defaulting to `content_type: 'page'`).
+`BlogPost.astro` passes `content_type` (`blog`/`tunes`), `primary_tag`, `author`, and
+`published_year`, so traffic can be segmented by these in the Plausible *Properties* breakdown.
+
+**Custom event goals** (create matching goals in the Plausible dashboard, and enable Outbound Links /
+File Downloads / Custom Events under Site Settings):
+- `Share` (prop `method`) — share-button clicks, tagged via `plausible-event-*` classes in
+  `ShareButtons.astro` and `ShareButtonsMotion.tsx`.
+- `Search` — fired (debounced, no query string) from `src/pages/search.astro`.
+- `Comments Viewed` — fired when Giscus scrolls into view in `Comments.astro`.
+- `Video Play` (prop `provider`) — fired on first click of a YouTube embed in `embeds/YouTube.astro`.
+- `404` — fired from `src/pages/404.astro` with the missing `path`.
+
 **Metrics**:
-- Page views
+- Page views (with content-type / tag / author / year properties)
 - Traffic sources
 - Top pages
 - Bounce rate
+- Outbound link clicks and file downloads
+- Custom goals: Share, Search, Comments Viewed, Video Play, 404
 
 **Dashboard**: https://plausible.io/www.russ.cloud
 

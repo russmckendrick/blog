@@ -46,6 +46,11 @@ Astro.response.status = 404;
 		</div>
 	</section>
 
+	<!-- Track 404s as a Plausible goal -->
+	<script is:inline>
+		window.plausible && window.plausible('404', { props: { path: location.pathname }, interactive: false })
+	</script>
+
 	<style>
 		/* Glitch Effect for 404 */
 		.glitch {

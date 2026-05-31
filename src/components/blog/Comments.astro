@@ -38,6 +38,9 @@
 		if (giscusLoaded) return;
 		giscusLoaded = true;
 
+		// Track that a reader scrolled to the comments section
+		window.plausible?.('Comments Viewed', { interactive: false });
+
 		const attrs = {
 			"src": "https://giscus.app/client.js",
 			"data-repo": "russmckendrick/blog",

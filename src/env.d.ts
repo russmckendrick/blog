@@ -2,6 +2,16 @@
 
 // Extend Window interface for third-party libraries
 interface Window {
+  // Plausible Analytics (custom events / goals)
+  plausible?: (
+    event: string,
+    options?: {
+      props?: Record<string, string | number | boolean>;
+      interactive?: boolean;
+      callback?: () => void;
+    }
+  ) => void;
+
   // Pagefind search UI
   PagefindUI: new (options: {
     element: Element | string;

@@ -92,7 +92,7 @@ const buttons = [
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Share on ${button.name}`}
-            class="share-icon surface-container-lowest ghost-border rounded-full p-3 transition-all duration-200 hover:shadow-ambient active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 reveal-scale"
+            class={`share-icon surface-container-lowest ghost-border rounded-full p-3 transition-all duration-200 hover:shadow-ambient active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 reveal-scale plausible-event-name=Share plausible-event-method=${button.name.replace(/ /g, '+')}`}
             style={`--brand-light: ${button.brandColor}; --brand-dark: ${button.darkBrandColor}; --tw-ring-color: ${button.brandColor}`}
             set:html={button.icon}
           />

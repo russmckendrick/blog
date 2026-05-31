@@ -14,13 +14,14 @@ interface Props {
 	dateModified?: Date;
 	lastModified?: Date;
 	author?: string;
+	analytics?: Record<string, string>;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Default fallback image (public URL)
 const defaultImage = '/images/blog-cover.png';
-const { title, description, image = defaultImage, keywords = SITE_KEYWORDS, datePublished, dateModified, lastModified, author } = Astro.props;
+const { title, description, image = defaultImage, keywords = SITE_KEYWORDS, datePublished, dateModified, lastModified, author, analytics = { content_type: 'page' } } = Astro.props;
 
 // Use lastModified if available, otherwise fall back to dateModified
 const effectiveModifiedDate = lastModified || dateModified;
@@ -99,10 +100,20 @@ const imageURL = image?.startsWith('http')
 <!-- Note: Giscus and GitHub preconnects moved to BlogPost.astro (only needed on post pages) -->
 
 <!-- Plausible Analytics -->
+{Object.entries(analytics).map(([key, value]) => (
+	<meta name={`plausible:${key}`} content={value} />
+))}
 <script is:inline async src="https://plausible.io/js/pa-1kQuB-9i3FNq-UW5DZix5.js"></script>
 <script is:inline>
 	window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-	plausible.init()
+	plausible.init({
+		outboundLinks: true,
+		fileDownloads: true,
+		customProperties: () => Object.fromEntries(
+			[...document.querySelectorAll('meta[name^="plausible:"]')]
+				.map((m) => [m.getAttribute('name').slice(9), m.getAttribute('content')])
+		)
+	})
 </script>
 
 <!-- Critical CSS to ensure header is immediately visible -->

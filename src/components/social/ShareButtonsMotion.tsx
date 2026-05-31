@@ -27,7 +27,7 @@ export default function ShareButtonsMotion({ buttons }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Share Post on ${button.name}`}
-              className="share-icon surface-container-lowest ghost-border rounded-full p-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+              className={`share-icon surface-container-lowest ghost-border rounded-full p-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 plausible-event-name=Share plausible-event-method=${button.name.replace(/ /g, '+')}`}
               style={{
                 '--brand-light': button.brandColor,
                 '--brand-dark': button.darkBrandColor,
