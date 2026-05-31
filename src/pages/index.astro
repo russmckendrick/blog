@@ -47,7 +47,7 @@ const webSiteSchema = createWebSiteSchema(Astro.site?.toString() || 'https://www
 			rel="preload"
 			as="image"
 			imagesrcset={preloadSrcSet}
-			imagesizes="(min-width: 1024px) 50vw, 100vw"
+			imagesizes="(min-width: 1280px) 620px, (min-width: 1024px) calc(50vw - 20px), calc(100vw - 40px)"
 			fetchpriority="high"
 		/>
 	)}

@@ -6,6 +6,7 @@ import react from '@astrojs/react';
 import expressiveCode from 'astro-expressive-code';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, fontProviders } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import astroIcon from 'astro-icon';
 import { rehypeExternalLinks } from './src/utils/rehype-external-links.ts';
 import { rehypeGlossaryLinks } from './src/utils/rehype-glossary-links.ts';
@@ -76,10 +77,12 @@ export default defineConfig({
 	],
 	markdown: {
 		syntaxHighlight: false,
-		rehypePlugins: [
-			rehypeExternalLinks,
-			[rehypeGlossaryLinks, { termMap: glossaryTermMap }],
-		],
+		processor: unified({
+			rehypePlugins: [
+				rehypeExternalLinks,
+				[rehypeGlossaryLinks, { termMap: glossaryTermMap }],
+			],
+		}),
 	},
 	integrations: [
 		react(),

@@ -236,7 +236,7 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 								fit: CF_IMAGE_PRESETS.thumbnailPriority.fit
 							})}
 							srcset={generateCFSrcSet(heroImage, CF_IMAGE_PRESETS.thumbnailPriority.widths, CF_IMAGE_PRESETS.thumbnailPriority.quality, CF_IMAGE_PRESETS.thumbnailPriority.format)}
-							sizes="(min-width: 1024px) 50vw, 100vw"
+							sizes="(min-width: 1280px) 620px, (min-width: 1024px) calc(50vw - 20px), calc(100vw - 40px)"
 							alt={alt}
 							width="1000"
 							height="700"

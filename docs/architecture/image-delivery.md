@@ -252,6 +252,21 @@ const heroSrcSet = generateCFSrcSet(heroImage, preset.widths, preset.quality);
 />
 ```
 
+The **featured** variant (the homepage hero card rendered by `HeroSection`) uses
+the `thumbnailPriority` preset and a `sizes` descriptor that mirrors the real
+layout so the browser doesn't over-serve on mobile:
+
+```astro
+sizes="(min-width: 1280px) 620px, (min-width: 1024px) calc(50vw - 20px), calc(100vw - 40px)"
+```
+
+The card sits inside the homepage container (`max-w-7xl mx-auto px-5`, a 40px
+gutter), so its true width is `100vw - 40px` on mobile and `calc(50vw - 20px)`
+(half the card) from `lg` up, capped at `620px` once the container reaches its
+1280px max. The homepage preload `<link>` in `index.astro` must keep its
+`imagesizes` identical to this string, or it will fetch a different candidate
+than the `<img>` and cause a double-download.
+
 #### TunesDirectory.astro (Artist/Album Browse Cards)
 
 Directory cards use very small square transformations because the thumbnails render at roughly 84-96 CSS pixels.
