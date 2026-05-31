@@ -44,7 +44,7 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 			<slot />
 		</main>
 		<Footer />
-		<WebVitals debug={import.meta.env.DEV} />
+		{import.meta.env.DEV && <WebVitals debug={true} />}
 		<script>
 			// Scroll-reveal animations via Intersection Observer
 			function initRevealAnimations() {

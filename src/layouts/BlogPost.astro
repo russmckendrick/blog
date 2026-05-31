@@ -376,7 +376,7 @@ const howToSchema = howto && howto.steps?.length > 0
 			</article>
 		</main>
 		<Footer />
-		<WebVitals debug={import.meta.env.DEV} />
+		{import.meta.env.DEV && <WebVitals debug={true} />}
 		<script>
 			// Prose content element reveal animations
 			function initProseReveal() {
