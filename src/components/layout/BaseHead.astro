@@ -88,9 +88,16 @@ const imageURL = image?.startsWith('http')
 />
 
 <!-- Self-hosted fonts via Astro's Fonts API (auto @font-face + CLS-safe fallback metrics). -->
-<!-- Preload only above-the-fold families (Inter body, Plus Jakarta Sans headings). -->
-<Font cssVariable="--font-inter" preload />
-<Font cssVariable="--font-plus-jakarta" preload />
+<!--
+  No font is preloaded: the LCP element on every page is an image (the hero
+  cover), so preloading fonts only steals high-priority bandwidth from the LCP
+  image on slow connections. All faces use `font-display: swap` with Astro's
+  fallback metrics, so text paints immediately in the fallback (FCP unaffected)
+  and swaps in with zero layout shift (CLS stays 0). If a future design makes
+  text the LCP element above the fold, re-add `preload` to the relevant family.
+-->
+<Font cssVariable="--font-inter" />
+<Font cssVariable="--font-plus-jakarta" />
 <Font cssVariable="--font-jetbrains" />
 <Font cssVariable="--font-crimson" />
 
