@@ -3,7 +3,7 @@
 // all pages through the use of the <BaseHead /> component.
 import '../../styles/global.css';
 import { AstroSEO } from 'astro-seo-plugin';
-import { SITE_TITLE, SITE_KEYWORDS, GA_MEASUREMENT_ID } from '../../consts';
+import { SITE_TITLE, SITE_KEYWORDS } from '../../consts';
 
 interface Props {
 	title: string;
@@ -138,16 +138,3 @@ const imageURL = image?.startsWith('http')
 		e.newDocument.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
 	});
 </script>
-
-{import.meta.env.PROD && (
-	<>
-		<!-- Google tag (gtag.js) -->
-		<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
-		<script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', GA_MEASUREMENT_ID);
-		</script>
-	</>
-)}
