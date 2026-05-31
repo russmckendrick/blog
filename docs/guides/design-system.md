@@ -67,11 +67,14 @@ Two font families provide a high-contrast pairing:
 | Code | JetBrains Mono | `font-mono` | `--font-mono` |
 | Decorative / Serif | Crimson Pro | `font-serif` | `--font-serif` |
 
-Font files are self-hosted in `public/fonts/`:
-- Plus Jakarta Sans: weights 400, 500, 600, 700, 800 (latin woff2)
-- Inter: variable font (latin woff2)
+Fonts are self-hosted through **Astro's native Fonts API** (`fonts:` in `astro.config.mjs`, emitted by the `<Font>` components in `BaseHead.astro`). Astro auto-generates the `@font-face` rules, hashes the files into `/_astro/fonts/`, and adds CLS-safe fallback metrics (`size-adjust`/`ascent-override`). Source woff2 files live in `src/assets/fonts/`. Above-the-fold families (Inter, Plus Jakarta Sans) are `preload`ed; JetBrains Mono and Crimson Pro are not.
+
+- Plus Jakarta Sans: weights 600, 700, 800 (latin woff2)
+- Inter: variable font, weight range 100–900 (latin woff2)
 - JetBrains Mono: weights 400, 500, 600
 - Crimson Pro: weights 400, 500, 600 + italic 400, 500
+
+The `--font-*` Tailwind tokens map to Astro's per-family `cssVariable`s via a `@theme inline` block in `global.css`. Do not hand-write `@font-face` rules — add or change fonts in the `fonts:` config instead.
 
 Body text uses 17px / 1.7 line-height. Headings use `font-display` with tight tracking.
 

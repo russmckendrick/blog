@@ -2,6 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../../styles/global.css';
+import { Font } from 'astro:assets';
 import { AstroSEO } from 'astro-seo-plugin';
 import { SITE_TITLE, SITE_KEYWORDS } from '../../consts';
 
@@ -86,7 +87,12 @@ const imageURL = image?.startsWith('http')
 	]}
 />
 
-<!-- Fonts are self-hosted via @font-face in global.css and load with font-display: swap (no preload) -->
+<!-- Self-hosted fonts via Astro's Fonts API (auto @font-face + CLS-safe fallback metrics). -->
+<!-- Preload only above-the-fold families (Inter body, Plus Jakarta Sans headings). -->
+<Font cssVariable="--font-inter" preload />
+<Font cssVariable="--font-plus-jakarta" preload />
+<Font cssVariable="--font-jetbrains" />
+<Font cssVariable="--font-crimson" />
 
 
 <!--

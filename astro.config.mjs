@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import expressiveCode from 'astro-expressive-code';
 import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import astroIcon from 'astro-icon';
 import { rehypeExternalLinks } from './src/utils/rehype-external-links.ts';
 import { rehypeGlossaryLinks } from './src/utils/rehype-glossary-links.ts';
@@ -20,6 +20,60 @@ const postModifiedDateMap = getPostModifiedDateMap();
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://www.russ.cloud/',
+	fonts: [
+		{
+			provider: fontProviders.local(),
+			name: 'Inter',
+			cssVariable: '--font-inter',
+			fallbacks: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+			options: {
+				variants: [
+					{ weight: '100 900', style: 'normal', src: ['./src/assets/fonts/inter-variable-latin.woff2'] }
+				]
+			}
+		},
+		{
+			provider: fontProviders.local(),
+			name: 'Plus Jakarta Sans',
+			cssVariable: '--font-plus-jakarta',
+			fallbacks: ['Inter', 'system-ui', 'sans-serif'],
+			options: {
+				variants: [
+					{ weight: 600, style: 'normal', src: ['./src/assets/fonts/plus-jakarta-sans-600-latin.woff2'] },
+					{ weight: 700, style: 'normal', src: ['./src/assets/fonts/plus-jakarta-sans-700-latin.woff2'] },
+					{ weight: 800, style: 'normal', src: ['./src/assets/fonts/plus-jakarta-sans-800-latin.woff2'] }
+				]
+			}
+		},
+		{
+			provider: fontProviders.local(),
+			name: 'JetBrains Mono',
+			cssVariable: '--font-jetbrains',
+			fallbacks: ['Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', 'Consolas', 'Courier New', 'monospace'],
+			options: {
+				variants: [
+					{ weight: 400, style: 'normal', src: ['./src/assets/fonts/jetbrains-mono-400-latin.woff2'] },
+					{ weight: 500, style: 'normal', src: ['./src/assets/fonts/jetbrains-mono-500-latin.woff2'] },
+					{ weight: 600, style: 'normal', src: ['./src/assets/fonts/jetbrains-mono-600-latin.woff2'] }
+				]
+			}
+		},
+		{
+			provider: fontProviders.local(),
+			name: 'Crimson Pro',
+			cssVariable: '--font-crimson',
+			fallbacks: ['Georgia', 'Times New Roman', 'serif'],
+			options: {
+				variants: [
+					{ weight: 400, style: 'normal', src: ['./src/assets/fonts/crimson-pro-400-latin.woff2'] },
+					{ weight: 500, style: 'normal', src: ['./src/assets/fonts/crimson-pro-500-latin.woff2'] },
+					{ weight: 600, style: 'normal', src: ['./src/assets/fonts/crimson-pro-600-latin.woff2'] },
+					{ weight: 400, style: 'italic', src: ['./src/assets/fonts/crimson-pro-400-italic-latin.woff2'] },
+					{ weight: 500, style: 'italic', src: ['./src/assets/fonts/crimson-pro-500-italic-latin.woff2'] }
+				]
+			}
+		}
+	],
 	markdown: {
 		syntaxHighlight: false,
 		rehypePlugins: [
