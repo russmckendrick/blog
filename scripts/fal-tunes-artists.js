@@ -82,9 +82,18 @@ const SHOOT_DIRECTIONS = [
   'a graffiti-covered back alley, gritty urban texture, directional daylight'
 ]
 
+const MS_PER_WEEK = 604800000
+
+// The seed is the post date as epoch-milliseconds. Weekly post dates are exactly one
+// MS_PER_WEEK apart, and MS_PER_WEEK is divisible by 14, so a plain `seed % length` maps
+// EVERY week to the same scene (they all share the same residue). Bucketing by
+// weeks-since-epoch instead advances the index by one each week, so the direction cycles
+// through the whole list. Small non-timestamp seeds (e.g. a CLI --seed for testing) fall
+// back to a direct modulo so they still vary.
 function pickShootDirection(seed) {
-  const index = Math.abs(Number.isFinite(seed) ? seed : 0) % SHOOT_DIRECTIONS.length
-  return SHOOT_DIRECTIONS[index]
+  const value = Math.abs(Math.trunc(Number.isFinite(seed) ? seed : 0))
+  const bucket = value >= MS_PER_WEEK ? Math.floor(value / MS_PER_WEEK) : value
+  return SHOOT_DIRECTIONS[bucket % SHOOT_DIRECTIONS.length]
 }
 
 const openai = process.env.OPENAI_API_KEY
