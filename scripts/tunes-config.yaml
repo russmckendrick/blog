@@ -14,7 +14,7 @@ settings:
 
   # Image backend for the weekly album-cover header: gpt-image-2 | nano-banana
   # (unknown/missing values fall back to nano-banana)
-  cover_backend: nano-banana
+  cover_backend: gpt-image-2
 
   # Image backend for the weekly artist group portrait: gpt-image-2 | nano-banana
   # (unknown/missing values fall back to nano-banana)
