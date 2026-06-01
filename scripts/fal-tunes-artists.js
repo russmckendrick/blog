@@ -61,6 +61,32 @@ const ARTIST_NEGATIVE_TERMS = [
   'extra limbs'
 ]
 
+// Left to its own devices the model keeps designing the same warm industrial-loft band
+// promo every week. We pick one of these realistic shoot directions by the week's seed and
+// hand it to the art director, so each week commits to a genuinely different kind of photo
+// (location, light, era, framing) while still reading as a believable group photograph.
+const SHOOT_DIRECTIONS = [
+  'a candid city-street editorial at golden hour, shot wide with long evening shadows',
+  'a sunlit rooftop overlooking a skyline, open sky behind the group, bright natural light',
+  'a backstage documentary moment before a show - corridors, flight cases, hard practical lighting',
+  'a daytime rehearsal room with amps and cables, flat honest daylight from a side window',
+  'inside a record shop surrounded by crates and racks of vinyl, warm interior light',
+  'a windswept coastal seafront under an overcast sky, muted natural light, sea behind them',
+  'a neon-lit night street, wet pavement reflections, mixed colourful artificial light',
+  'a minimal high-key studio against a clean white background, soft even light, modern fashion-editorial framing',
+  '1970s film-grain interior with wood panelling and warm tungsten light, vintage styling',
+  'a glass greenhouse or conservatory full of plants, soft diffused daylight, green tones',
+  'a warehouse performance stage lit by coloured concert lighting, atmospheric haze',
+  'a park or woodland clearing in flat green daylight, relaxed outdoor framing',
+  'a retro diner or cafe booth, large windows, warm afternoon light spilling across the table',
+  'a graffiti-covered back alley, gritty urban texture, directional daylight'
+]
+
+function pickShootDirection(seed) {
+  const index = Math.abs(Number.isFinite(seed) ? seed : 0) % SHOOT_DIRECTIONS.length
+  return SHOOT_DIRECTIONS[index]
+}
+
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
   : null
@@ -119,15 +145,25 @@ function normalizeArtistDescriptions(rawArtists = [], sourceReferences = []) {
   }))
 }
 
-function normalizeArtistBrief(rawBrief, sourceReferences = []) {
+function normalizeArtistBrief(rawBrief, sourceReferences = [], varietyHint = '') {
+  const fallbackScene = varietyHint
+    ? `the group photographed together in ${varietyHint}, each artist in their own everyday stage-or-street style`
+    : 'the group photographed together in a warm, softly lit room, each artist in their own everyday stage-or-street style'
+
+  const rawSelection = rawBrief?.selection || rawBrief?.cast || rawBrief?.choose
+  const selection = Array.isArray(rawSelection)
+    ? [...new Set(rawSelection.map(item => Number(item?.source ?? item)).filter(n => Number.isInteger(n) && n > 0))]
+    : []
+
   return {
     artists: normalizeArtistDescriptions(rawBrief?.artists || rawBrief?.people, sourceReferences),
-    setting: String(
-      rawBrief?.setting ||
+    selection,
+    scene: String(
       rawBrief?.scene ||
-      'a warm, softly lit photographer\'s studio with a simple backdrop'
+      rawBrief?.setting ||
+      rawBrief?.concept ||
+      fallbackScene
     ).trim(),
-    wardrobe: String(rawBrief?.wardrobe || rawBrief?.styling || '').trim(),
     palette: Array.isArray(rawBrief?.palette)
       ? rawBrief.palette.map(item => String(item).trim()).filter(Boolean).slice(0, 5)
       : [],
@@ -135,30 +171,30 @@ function normalizeArtistBrief(rawBrief, sourceReferences = []) {
   }
 }
 
-function buildFallbackArtistBrief(sourceReferences) {
-  return normalizeArtistBrief({
-    setting: 'a warm, softly lit photographer\'s studio with a simple textured backdrop, arranged like a relaxed group portrait',
-    wardrobe: 'each artist in their own everyday stage-or-street style',
-    palette: [],
-    mood: 'relaxed, confident, music-led'
-  }, sourceReferences)
+function buildFallbackArtistBrief(sourceReferences, varietyHint = '') {
+  return normalizeArtistBrief({ palette: [], mood: 'relaxed, confident, music-led' }, sourceReferences, varietyHint)
 }
 
-async function createArtistBrief({ imageUrls, sourceReferences, debug }) {
+async function createArtistBrief({ imageUrls, sourceReferences, debug, varietyHint = '', featureCount = 6 }) {
   if (!openai) {
     if (debug) {
       console.log('  No OPENAI_API_KEY found; using deterministic artist brief')
     }
-    return buildFallbackArtistBrief(sourceReferences)
+    return buildFallbackArtistBrief(sourceReferences, varietyHint)
   }
 
-  const instructions = `You are a portrait photographer's art director planning ONE group portrait photograph for a music blog.
-You will receive several reference photos, each showing one musician. Work in two steps and return only valid JSON.
-Step 1 - read each photo: for EACH reference describe the person's concrete, photographable appearance so they stay recognisable - approximate age, build, skin tone, hair (length, colour, style), facial hair, glasses, and signature wardrobe vibe or era. Describe only what is visible. Never invent identities and never mention names or text.
-Step 2 - design the shoot: choose ONE believable physical setting, lighting, and overall styling where these specific musicians would plausibly be photographed together as a single relaxed group portrait - all in the same room, same light, same moment. They should look posed or candid together like a real group photo, not cut out and pasted side by side.
+  const directionLine = varietyHint
+    ? `This week, lean into this shoot direction and commit to it fully: ${varietyHint}. Adapt it so it suits this particular group, but do not fall back to a generic studio or industrial-loft band promo.`
+    : 'Pick a fresh, specific kind of shoot - vary the location type, era, time of day, lighting, and framing. Avoid defaulting to a generic studio or industrial-loft band promo.'
+
+  const instructions = `You are a portrait photographer's art director and casting director planning ONE group photograph for a music blog.
+You will receive ${imageUrls.length} numbered reference photos; each shows one musical act (a solo artist or a band). Work in three steps and return only valid JSON.
+Step 1 - read each photo: for EACH reference give a SHORT one-sentence description of the recognisable people in it - approximate age, build, skin tone, hair, facial hair, glasses, and wardrobe vibe. Describe only what is visible. Never invent identities and never mention names or text.
+Step 2 - cast the shoot: choose the most visually interesting and varied people to actually feature, so the final photo is an intimate, well-composed group of about ${featureCount} people - NOT a crowd. Strongly favour solo artists and single striking individuals; where you do pick a band, mentally feature only its one or two most recognisable members. Return the chosen reference numbers in "selection" (about ${featureCount} of them, in the order they should read across the frame).
+Step 3 - author the shoot: write ONE vivid paragraph describing a single shared real-world scene where ONLY the selected people are photographed together - same place, same light, same moment, like a real posed or candid group photo, not cut out and pasted side by side. ${directionLine} Cover the location, framing, time of day, lighting, and how the group is styled. Keep the cast small and uncrowded.
 The final image is a real PHOTOREALISTIC photograph. Do not describe it as an illustration, painting, or render.
-Return JSON exactly as: {"artists":[{"source":1,"description":"string"}],"setting":"string","wardrobe":"string","palette":["string"],"mood":"string"}.
-"setting" is a vivid sentence or two describing the location, framing, and lighting of the group portrait. "wardrobe" is a short note on how the group is styled. "palette" is 3-5 colours. "mood" is the emotional tone.`
+Return JSON exactly as: {"artists":[{"source":1,"description":"string"}],"selection":[1,2],"scene":"string","palette":["string"],"mood":"string"}.
+"selection" is the reference numbers you cast (about ${featureCount}). "scene" is a vivid paragraph describing the photograph of just those people. "palette" is 3-5 colours. "mood" is the emotional tone.`
 
   try {
     const response = await openai.responses.create({
@@ -171,7 +207,7 @@ Return JSON exactly as: {"artists":[{"source":1,"description":"string"}],"settin
           content: [
             {
               type: 'input_text',
-              text: `Return JSON only. First describe each of the ${imageUrls.length} musicians in the reference photos, then design one cohesive group portrait setting where they are all photographed together.`
+              text: `Return JSON only. There are ${imageUrls.length} reference photos. Describe each, cast about ${featureCount} of the most interesting people into "selection", then author one cohesive scene featuring only those selected people.`
             },
             ...imageUrls.map(url => ({
               type: 'input_image',
@@ -183,10 +219,10 @@ Return JSON exactly as: {"artists":[{"source":1,"description":"string"}],"settin
       ],
       text: { format: { type: 'json_object' } },
       max_output_tokens: 1300,
-      temperature: 0.7
+      temperature: 0.8
     })
 
-    const brief = normalizeArtistBrief(parseJSONResponse(response.output_text || ''), sourceReferences)
+    const brief = normalizeArtistBrief(parseJSONResponse(response.output_text || ''), sourceReferences, varietyHint)
 
     if (debug) {
       console.log(`  Artist brief: ${JSON.stringify(brief, null, 2)}`)
@@ -195,28 +231,27 @@ Return JSON exactly as: {"artists":[{"source":1,"description":"string"}],"settin
     return brief
   } catch (error) {
     console.warn(`  OpenAI artist brief failed: ${error.message}`)
-    return buildFallbackArtistBrief(sourceReferences)
+    return buildFallbackArtistBrief(sourceReferences, varietyHint)
   }
 }
 
 function buildArtistPrompt(brief, sourceImageCount) {
-  const wardrobe = brief.wardrobe ? ` Styling: ${brief.wardrobe}.` : ''
-  const palette = brief.palette.length > 0 ? brief.palette.join(', ') : 'a natural, true-to-life palette'
   const avoid = ARTIST_NEGATIVE_TERMS.join(', ')
 
   return [
-    `Create one original, photorealistic 16:9 group portrait photograph of exactly the ${sourceImageCount} people shown in the reference images, together in a single shared setting.`,
-    `Setting: ${brief.setting}.${wardrobe}`,
-    'Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness. Each reference person must appear exactly once.',
-    'Arrange them naturally as one cohesive group - standing or seated close together in the same room, same moment, same light, like a real posed or candid group photo. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares.',
-    'Render photorealistically: real skin texture, natural cinematic studio lighting, true-to-life depth of field, captured as if shot on a professional full-frame camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render.',
-    `Colour direction: ${palette}.`,
-    `Mood: ${brief.mood}.`,
+    `Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the ${sourceImageCount} reference images into a single shared real-world scene.`,
+    `Scene: ${brief.scene}`,
+    'Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness. Do not invent anyone who is not in the reference photos.',
+    'Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its one or two most recognisable members rather than every member.',
+    'Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares.',
+    'Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render.',
+    brief.palette.length > 0 ? `Colour direction: ${brief.palette.join(', ')}.` : '',
+    brief.mood ? `Mood: ${brief.mood}.` : '',
     'Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces.',
     'Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image.',
     `Avoid: ${avoid}.`,
-    'Photorealistic, sharp, cinematic, high quality, flattering, with real depth and a strong sense of place.'
-  ].join(' ').replace(/\s+/g, ' ').trim()
+    'Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.'
+  ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
 }
 
 async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
@@ -233,10 +268,14 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
   }
   fal.config({ credentials: falKey })
 
-  const maxInputs = Number(process.env.TUNES_ARTIST_PORTRAIT_INPUTS || 6)
+  const featureCount = Number(process.env.TUNES_ARTIST_PORTRAIT_INPUTS || options.inputs || 6)
+  const candidateCount = Number(process.env.TUNES_ARTIST_PORTRAIT_CANDIDATES || options.candidates || 12)
+  const varietyHint = pickShootDirection(seed)
+  if (debug) {
+    console.log(`  Lean into this direction: ${varietyHint}`)
+  }
 
-  // De-duplicate, keep play-rank order, then take the strongest N. No colour/text scoring -
-  // artist order is play-rank and faces should not be dropped on colour.
+  // De-duplicate, keep play-rank order.
   const seen = new Set()
   const uniquePaths = []
   for (const imagePath of imagePaths) {
@@ -251,38 +290,55 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
     throw new Error('No artist images provided for portrait generation')
   }
 
-  const selectedPaths = uniquePaths.slice(0, Math.max(1, maxInputs))
-
-  if (debug) {
-    console.log(`  Selected ${selectedPaths.length} artist photo(s):`)
-    selectedPaths.forEach((item, index) => {
-      console.log(`    ${index + 1}. ${path.basename(item)}`)
-    })
-  }
-
   const backend = await resolveBackend(options.backend)
+
+  // Upload a wider candidate pool, then let the brief cast the most interesting subset. The
+  // image backend anchors on every reference it is handed, so only the cast is rendered -
+  // this keeps the group small and stops it crowding into a band-photo of everyone.
+  const candidatePaths = uniquePaths.slice(0, Math.max(1, candidateCount))
   if (debug) {
+    console.log(`  Casting from ${candidatePaths.length} candidate photo(s); featuring about ${featureCount}`)
     console.log(`  Image backend: ${backend.label} (${backend.id})`)
   }
 
-  // Each attempt drops one more low-ranked artist, so a content-policy refusal can retry
-  // with a smaller, simpler group rather than failing outright.
+  const candidateUrls = await uploadArtistImages(candidatePaths, debug)
+  const sourceReferences = buildSourceReferences(candidatePaths)
+  const brief = await createArtistBrief({ imageUrls: candidateUrls, sourceReferences, debug, varietyHint, featureCount })
+
+  // Resolve the cast: map the brief's selected reference numbers back to candidates, cap at
+  // featureCount, and fall back to the top play-ranked candidates if nothing usable came back.
+  const bySource = new Map(candidatePaths.map((p, i) => [i + 1, { path: p, url: candidateUrls[i] }]))
+  let cast = brief.selection
+    .map(source => bySource.get(source))
+    .filter(Boolean)
+    .slice(0, Math.max(1, featureCount))
+  if (cast.length === 0) {
+    cast = candidatePaths.slice(0, Math.max(1, featureCount)).map((p, i) => ({ path: p, url: candidateUrls[i] }))
+  }
+
+  if (debug) {
+    console.log(`  Cast ${cast.length} artist photo(s):`)
+    cast.forEach((item, index) => {
+      console.log(`    ${index + 1}. ${path.basename(item.path)}`)
+    })
+  }
+
+  // Each attempt drops one more cast member, so a content-policy refusal can retry with a
+  // smaller, simpler group rather than failing outright. Upload and casting are already done.
   const attemptSets = []
-  for (let count = selectedPaths.length; count >= Math.min(2, selectedPaths.length); count--) {
-    attemptSets.push(selectedPaths.slice(0, count))
+  for (let count = cast.length; count >= Math.min(2, cast.length); count--) {
+    attemptSets.push(cast.slice(0, count))
   }
 
   for (let attempt = 0; attempt < attemptSets.length; attempt++) {
-    const attemptPaths = attemptSets[attempt]
+    const attemptCast = attemptSets[attempt]
 
     try {
       if (debug) {
-        console.log(`  Attempt ${attempt + 1}: generating group portrait from ${attemptPaths.length} artist photos`)
+        console.log(`  Attempt ${attempt + 1}: generating group portrait from ${attemptCast.length} cast photos`)
       }
 
-      const imageUrls = await uploadArtistImages(attemptPaths, debug)
-      const sourceReferences = buildSourceReferences(attemptPaths)
-      const brief = await createArtistBrief({ imageUrls, sourceReferences, debug })
+      const imageUrls = attemptCast.map(item => item.url)
       const prompt = buildArtistPrompt(brief, imageUrls.length)
 
       if (debug) {
@@ -292,13 +348,13 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
       const { imageUrl, model } = await backend.generate({ imageUrls, prompt, seed, debug })
 
       const saved = await saveGeneratedImage(imageUrl, outputPath, width, height, debug)
-      console.log(`  Created tunes artist portrait (${backend.label}) from ${attemptPaths.length} artist photos`)
+      console.log(`  Created tunes artist portrait (${backend.label}) from ${attemptCast.length} artist photos`)
       console.log(`    Full:  ${saved.outputPath}`)
       console.log(`    Small: ${saved.smallOutputPath}`)
 
       return {
         ...saved,
-        selectedImages: attemptPaths,
+        selectedImages: attemptCast.map(item => item.path),
         imageUrl,
         model,
         backend: backend.id,
@@ -388,9 +444,13 @@ Options:
 
 Notes:
   - Requires FAL_KEY.
-  - Uses OPENAI_API_KEY when available to describe each artist and design one cohesive
-    group portrait setting. Falls back to a deterministic brief without it.
-  - Includes the top TUNES_ARTIST_PORTRAIT_INPUTS artists (default 6) by input order.
+  - Uses OPENAI_API_KEY when available to describe each artist, cast the most interesting
+    subset, and author the full scene for that week's photo. Falls back without it.
+  - Each week leans into a different shoot direction (location, light, era, framing),
+    chosen by the seed, so the portraits vary week to week.
+  - Uploads the top TUNES_ARTIST_PORTRAIT_CANDIDATES artists (default 12) as casting
+    options, then features about TUNES_ARTIST_PORTRAIT_INPUTS of them (default 6) - only
+    the cast is rendered, keeping the group uncrowded.
   - The image backend (gpt-image-2 or nano-banana) is chosen by settings.artist_portrait_backend
     in scripts/tunes-config.yaml.
 `)

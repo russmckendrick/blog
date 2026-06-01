@@ -20,6 +20,16 @@ settings:
   # (unknown/missing values fall back to nano-banana)
   artist_portrait_backend: gpt-image-2
 
+  # Number of top artist photos uploaded as casting options for the weekly group portrait;
+  # the AI picks the most interesting subset to actually feature
+  # (env TUNES_ARTIST_PORTRAIT_CANDIDATES overrides this when set)
+  artist_portrait_candidates: 12
+
+  # How many of the candidates to feature in the rendered portrait (the cast size the AI
+  # selects down to) - only the cast is sent to the image model, keeping it uncrowded
+  # (env TUNES_ARTIST_PORTRAIT_INPUTS overrides this when set)
+  artist_portrait_inputs: 8
+
 # =============================================================================
 # CLASSIFICATION CONFIGURATION
 # =============================================================================

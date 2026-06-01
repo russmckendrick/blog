@@ -67,6 +67,14 @@ export class ConfigLoader {
     return this.settings.artist_portrait_backend || 'nano-banana'
   }
 
+  getArtistPortraitInputs() {
+    return this.settings.artist_portrait_inputs || 6
+  }
+
+  getArtistPortraitCandidates() {
+    return this.settings.artist_portrait_candidates || 12
+  }
+
   getCoverBackend() {
     return this.settings.cover_backend || 'nano-banana'
   }

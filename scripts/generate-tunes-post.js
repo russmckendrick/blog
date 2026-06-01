@@ -196,6 +196,8 @@ async function main() {
           width: 1400,
           height: 800,
           backend: configLoader.getArtistPortraitBackend(),
+          inputs: configLoader.getArtistPortraitInputs(),
+          candidates: configLoader.getArtistPortraitCandidates(),
           debug: debugMode
         })
         artistPortrait = `/assets/${dateStr}-listened-to-this-week/tunes-artists-${dateStr}-listened-to-this-week.png`

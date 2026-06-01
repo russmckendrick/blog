@@ -110,7 +110,7 @@ node scripts/fal-tunes-cover.js --input=public/assets/2026-04-20-listened-to-thi
 node scripts/fal-tunes-artists.js --help
 ```
 
-Use this for direct artist group-portrait generation. The script takes the week's downloaded artist photos (input order = play rank), describes each person to aid likeness, then designs one cohesive setting where they are photographed together and renders a single photorealistic 16:9 group portrait with every artist recognisable and appearing exactly once. It reuses the cover pipeline's upload/save/JSON helpers and the same FAL model env vars.
+Use this for direct artist group-portrait generation. The script uploads the week's top downloaded artist photos (input order = play rank) as casting options, has OpenAI describe each, **cast** the most interesting subset, and author the full scene for that week (location, composition, lens, lighting, styling), then renders a single photorealistic 16:9 group photo of just the cast — keeping the group intimate rather than cramming in every band member. Each week leans into a different shoot direction (rooftop, record shop, seaside, high-key studio, etc.) chosen from the seed, so the portraits vary week to week instead of converging on the same studio/loft. It reuses the cover pipeline's upload/save/JSON helpers and the same FAL model env vars.
 
 Options:
 - `--output=<path>` writes that file and the matching `-small` derivative
@@ -118,7 +118,7 @@ Options:
 - `--seed=<number>` sets a deterministic seed
 - `--debug`, `-d` enables verbose input selection, brief, and prompt output
 
-The number of artists is capped by `TUNES_ARTIST_PORTRAIT_INPUTS` (default 6). Requires `FAL_KEY`; uses `OPENAI_API_KEY` when present, otherwise falls back to a deterministic studio brief. The actual image call is delegated to a swappable backend in `scripts/lib/image-backends/` (`gpt-image-2` or `nano-banana`), chosen by `settings.artist_portrait_backend` in `scripts/tunes-config.yaml` (default `gpt-image-2`; unknown/missing falls back to `nano-banana`). The weekly `pnpm run tunes` flow calls this generator (best-effort) and writes the portrait to `public/assets/<week>/tunes-artists-<week>.png`, then embeds it in the post body above the Top Artists/Albums lists; because it is a body image it lives under `public/assets/` (referenced by a `/assets/...` path), not `src/assets/` like the hero cover.
+The casting pool is set by `settings.artist_portrait_candidates` (defaults to 12 when unset, env `TUNES_ARTIST_PORTRAIT_CANDIDATES`) and the AI features about `settings.artist_portrait_inputs` of them (defaults to 6 when unset, env `TUNES_ARTIST_PORTRAIT_INPUTS`) — only the cast is rendered, so a few band photos no longer crowd the frame. Requires `FAL_KEY`; uses `OPENAI_API_KEY` when present, otherwise falls back to a deterministic seed-varied brief (no casting). The actual image call is delegated to a swappable backend in `scripts/lib/image-backends/` (`gpt-image-2` or `nano-banana`), chosen by `settings.artist_portrait_backend` in `scripts/tunes-config.yaml`; unknown/missing falls back to `nano-banana`. The weekly `pnpm run tunes` flow calls this generator (best-effort) and writes the portrait to `public/assets/<week>/tunes-artists-<week>.png`, then embeds it in the post body above the Top Artists/Albums lists; because it is a body image it lives under `public/assets/` (referenced by a `/assets/...` path), not `src/assets/` like the hero cover.
 
 Example:
 ```bash
