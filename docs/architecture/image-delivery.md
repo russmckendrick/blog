@@ -181,10 +181,11 @@ export const CF_IMAGE_PRESETS = {
 
   // PostCard thumbnails (vertical layout, priority/high quality for LCP)
   thumbnailPriority: {
-    quality: 38,
-    format: 'auto' as const,
+    quality: 28,
+    format: 'avif' as const,
     fit: 'cover' as const,
-    widths: [400, 600, 800, 1200]
+    // 320/1000 added so high-DPR mobile (Lighthouse DPR 2.625) picks 1000w not 1200w
+    widths: [320, 480, 640, 800, 1000, 1200]
   },
 
   // PostCard thumbnails (vertical layout)
