@@ -74,7 +74,7 @@ const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 					<span class="hidden sm:inline">Previous</span>
 				</a>
 			) : (
-				<span class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-full surface-container text-on-surface-variant opacity-40 cursor-not-allowed">
+				<span class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-full surface-container text-on-surface-variant cursor-not-allowed" aria-disabled="true">
 					<Icon name="arrowLongLeft" size={20} aria-hidden="true" />
 					<span class="hidden sm:inline">Previous</span>
 				</span>
@@ -117,7 +117,7 @@ const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 					<Icon name="arrowLongRight" size={20} class="text-on-surface-variant transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
 				</a>
 			) : (
-				<span class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-full surface-container text-on-surface-variant opacity-40 cursor-not-allowed">
+				<span class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-full surface-container text-on-surface-variant cursor-not-allowed" aria-disabled="true">
 					<span class="hidden sm:inline">Next</span>
 					<Icon name="arrowLongRight" size={20} aria-hidden="true" />
 				</span>
