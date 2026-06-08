@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-06-02T18:51:25.017Z",
+  "generatedAt": "2026-06-08T07:06:22.320Z",
   "totals": {
-    "posts": 158,
-    "artists": 501,
-    "albums": 921
+    "posts": 159,
+    "artists": 502,
+    "albums": 923
   },
   "artists": [
     {
@@ -8295,9 +8295,10 @@
       "name": "Pink Floyd",
       "artistUrl": "https://www.russ.fm/artist/pink-floyd/",
       "image": "/assets/2023-06-26-listened-to-this-week/artists/Pink-Floyd.jpg",
-      "albumCount": 14,
-      "postCount": 32,
+      "albumCount": 15,
+      "postCount": 33,
       "albums": [
+        "8-tracks",
         "a-foot-in-the-door-the-best-of-pink-floyd",
         "a-momentary-lapse-of-reason",
         "a-momentary-lapse-of-reason-remixed-updated",
@@ -8314,6 +8315,11 @@
         "wish-you-were-here"
       ],
       "posts": [
+        {
+          "title": "Trip Hop Shadows and Cosmic Echoes on a Four Track Glow",
+          "url": "/2026/06/08/trip-hop-shadows-and-cosmic-echoes-on-a-four-track-glow/",
+          "date": "2026-06-08T00:00:00.000Z"
+        },
         {
           "title": "Labyrinth Lullabies and Parking Lot Hooks in Tape Haze",
           "url": "/2026/06/01/labyrinth-lullabies-and-parking-lot-hooks-in-tape-haze/",
@@ -10183,6 +10189,24 @@
           "title": "Telekon to Underwater Moonlight Stranglers Pet Shop Boys Roxy Music",
           "url": "/2025/08/25/telekon-to-underwater-moonlight-stranglers-pet-shop-boys-roxy-music/",
           "date": "2025-08-25T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "sneaker-pimps",
+      "name": "Sneaker Pimps",
+      "artistUrl": "https://www.russ.fm/artist/sneaker-pimps/",
+      "image": "/assets/2026-06-08-listened-to-this-week/artists/Sneaker-Pimps.jpg",
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "becoming-x"
+      ],
+      "posts": [
+        {
+          "title": "Trip Hop Shadows and Cosmic Echoes on a Four Track Glow",
+          "url": "/2026/06/08/trip-hop-shadows-and-cosmic-echoes-on-a-four-track-glow/",
+          "date": "2026-06-08T00:00:00.000Z"
         }
       ]
     },
@@ -24981,6 +25005,22 @@
       ]
     },
     {
+      "slug": "8-tracks",
+      "name": "8-Tracks",
+      "artist": "Pink Floyd",
+      "artistSlug": "pink-floyd",
+      "albumUrl": "https://www.russ.fm/album/8-tracks-37519692/",
+      "artistUrl": "https://www.russ.fm/artist/pink-floyd/",
+      "image": "/assets/2026-06-08-listened-to-this-week/albums/8-Tracks.jpg",
+      "posts": [
+        {
+          "title": "Trip Hop Shadows and Cosmic Echoes on a Four Track Glow",
+          "url": "/2026/06/08/trip-hop-shadows-and-cosmic-echoes-on-a-four-track-glow/",
+          "date": "2026-06-08T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "a-foot-in-the-door-the-best-of-pink-floyd",
       "name": "A Foot In The Door (The Best Of Pink Floyd)",
       "artist": "Pink Floyd",
@@ -27537,6 +27577,22 @@
           "title": "Telekon to Underwater Moonlight Stranglers Pet Shop Boys Roxy Music",
           "url": "/2025/08/25/telekon-to-underwater-moonlight-stranglers-pet-shop-boys-roxy-music/",
           "date": "2025-08-25T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "becoming-x",
+      "name": "Becoming X",
+      "artist": "Sneaker Pimps",
+      "artistSlug": "sneaker-pimps",
+      "albumUrl": "https://www.russ.fm/album/becoming-x-15763685/",
+      "artistUrl": "https://www.russ.fm/artist/sneaker-pimps/",
+      "image": "/assets/2026-06-08-listened-to-this-week/albums/Becoming-X.jpg",
+      "posts": [
+        {
+          "title": "Trip Hop Shadows and Cosmic Echoes on a Four Track Glow",
+          "url": "/2026/06/08/trip-hop-shadows-and-cosmic-echoes-on-a-four-track-glow/",
+          "date": "2026-06-08T00:00:00.000Z"
         }
       ]
     },
