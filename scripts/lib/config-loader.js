@@ -79,6 +79,12 @@ export class ConfigLoader {
     return this.settings.cover_backend || 'nano-banana'
   }
 
+  // Backend to fall back to when the primary cover backend refuses on a content-policy
+  // violation. Returns undefined when unset so the caller can pick a sensible default.
+  getCoverFallbackBackend() {
+    return this.settings.cover_fallback_backend
+  }
+
   getTitlePrompt(context) {
     const prompt = this.prompts.title
     if (!prompt) return ''

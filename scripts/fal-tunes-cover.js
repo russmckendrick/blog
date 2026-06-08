@@ -38,6 +38,40 @@ async function resolveCoverBackend(explicit) {
   return BACKENDS[DEFAULT_COVER_BACKEND]
 }
 
+// Resolve the backend to switch to when the primary refuses on a content-policy violation.
+// Precedence: explicit option -> env (TUNES_COVER_FALLBACK_BACKEND) -> tunes-config.yaml
+// (settings.cover_fallback_backend) -> default (nano-banana, the more permissive backend, but
+// only when it isn't already the primary). "none"/"off"/"" disables the fallback. Returns the
+// backend object, or null when there is no usable fallback distinct from the primary.
+async function resolveCoverFallbackBackend(primaryBackend, explicit) {
+  let requested = explicit ?? process.env.TUNES_COVER_FALLBACK_BACKEND
+  if (requested == null) {
+    try {
+      const config = new ConfigLoader()
+      await config.load()
+      requested = config.getCoverFallbackBackend()
+    } catch {
+      requested = undefined
+    }
+  }
+
+  if (requested == null) {
+    // No explicit choice: default to nano-banana unless it is already the primary backend.
+    requested = primaryBackend.id === DEFAULT_COVER_BACKEND ? '' : DEFAULT_COVER_BACKEND
+  }
+
+  const normalized = String(requested).trim().toLowerCase()
+  if (!normalized || normalized === 'none' || normalized === 'off') return null
+
+  const backend = getBackend(requested)
+  if (!backend) {
+    console.warn(`  Unknown cover fallback backend "${requested}"; disabling fallback`)
+    return null
+  }
+
+  return backend.id === primaryBackend.id ? null : backend
+}
+
 // We steer away from text, grid/montage layouts, and non-photographic styles. The
 // goal is one photorealistic scene, so illustration/painting looks are excluded too.
 const NEGATIVE_TERMS = [
@@ -416,6 +450,7 @@ You will receive several album covers as images. Work in two steps and return on
 Step 1 - read the artwork: look closely at EACH uploaded album cover and describe its concrete visual contents: the subjects, figures, creatures, objects, symbols, settings, art style, and dominant colours that are actually depicted. Ignore and never mention any text, lettering, titles, or logos printed on the covers.
 Step 2 - invent the scene: design ONE original, unique scene that weaves recognisable elements from ALL of the covers into a single cohesive world they could all plausibly share. The final image will be a PHOTOREALISTIC photograph, so imagine it as a real photographed scene: choose a believable physical setting, real-world lighting, and a clear camera viewpoint. Where a cover's motif is an illustration, painting, symbol, or graphic, reimagine it as a real, physical, photographable thing in the scene - a sculpture, prop, costume, set piece, projection, mural, printed poster, real person, animal, or object - so it stays recognisable while the whole frame still reads as a genuine photograph.
 Everything must feel connected by one environment, light, and story - not separate objects floating side by side, and never arranged as a grid, row, or panel of squares.
+Keep it safe for an image generator: never depict or reconstruct children, infants, babies, or minors (recast any youthful figure as an adult, a mannequin, a statue, or an abstract shape); avoid gore, wounds, body horror, surgical or medical imagery, foetal or anatomical motifs, blank or milky eyes, distress, nudity, sexual content, weapons, and real-world hate or brand symbols. When a cover features any of these, reinterpret the motif abstractly - as a sculpture, silhouette, pattern, prop, or play of light - so it stays evocative without recreating the sensitive subject. Do not aim to recreate the exact likeness of any identifiable real person; suggest the look instead.
 Be imaginative and go bold; richly detailed and surprising scenes are welcome as long as everything reads as one connected, believable photograph. Do not describe the scene as an illustration, painting, drawing, cartoon, or mural - describe it as a real photograph.
 Return JSON exactly as: {"covers":[{"source":1,"description":"string"}],"scene":"string","elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string"}.
 "scene" is a vivid paragraph describing the unified photographic scene and how the borrowed elements appear as real things inside it. "elements" names the single most recognisable thing taken from each cover that must appear in the scene. "palette" is 3-5 colours pulled from the artwork.`
@@ -479,6 +514,7 @@ function buildGenerationPrompt(brief, sourceImageCount, sourceReferences) {
     'Everything must feel like it genuinely belongs in the same scene - connected by environment and story, not separate cut-outs floating side by side, and never laid out as a grid, row, or panel of squares.',
     `Colour direction: ${palette}.`,
     `Mood: ${brief.mood}.`,
+    'Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly as a sculpture, prop, silhouette, or play of light, and suggest rather than exactly replicate the likeness of any identifiable real person.',
     'Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image.',
     `Avoid: ${avoid}.`,
     'Photorealistic, sharp, cinematic, high quality, visually striking, with real depth and a strong sense of place.'
@@ -582,53 +618,70 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     minCount
   )
 
-  const backend = await resolveCoverBackend(options.backend)
+  const primaryBackend = await resolveCoverBackend(options.backend)
+  const fallbackBackend = await resolveCoverFallbackBackend(primaryBackend, options.fallbackBackend)
+  const backendChain = fallbackBackend ? [primaryBackend, fallbackBackend] : [primaryBackend]
   if (debug) {
-    console.log(`  Image backend: ${backend.label} (${backend.id})`)
+    console.log(`  Image backend: ${backendChain.map(b => b.label).join(' -> ')}`)
   }
 
-  for (let attempt = 0; attempt < attemptSets.length; attempt++) {
-    const attemptPaths = attemptSets[attempt]
+  // Try each backend in turn. Within a backend, content-policy refusals retry with alternate
+  // album inputs; once those are exhausted we drop to the next backend (typically the more
+  // permissive nano-banana) rather than failing the whole post. Non-policy errors throw at once.
+  for (let b = 0; b < backendChain.length; b++) {
+    const backend = backendChain[b]
+    const isLastBackend = b === backendChain.length - 1
+    if (b > 0) {
+      console.warn(`  ${backendChain[b - 1].label} refused all attempts; falling back to ${backend.label}`)
+    }
 
-    try {
-      if (debug) {
-        console.log(`  Attempt ${attempt + 1}: generating cover scene from ${attemptPaths.length} album covers`)
+    for (let attempt = 0; attempt < attemptSets.length; attempt++) {
+      const attemptPaths = attemptSets[attempt]
+
+      try {
+        if (debug) {
+          console.log(`  Attempt ${attempt + 1} (${backend.label}): generating cover scene from ${attemptPaths.length} album covers`)
+        }
+
+        const imageUrls = await uploadAlbumImages(attemptPaths, debug)
+        const sourceReferences = buildSourceReferences(attemptPaths)
+        const brief = await createArtBrief({ imageUrls, sourceReferences, debug })
+        const prompt = buildGenerationPrompt(brief, imageUrls.length, sourceReferences)
+
+        if (debug) {
+          console.log(`  Prompt: ${prompt}`)
+        }
+
+        const { imageUrl, model } = await backend.generate({ imageUrls, prompt, seed, debug })
+
+        const saved = await saveGeneratedImage(imageUrl, outputPath, width, height, debug)
+        console.log(`  Created tunes cover scene (${backend.label}) from ${attemptPaths.length} album covers`)
+        console.log(`    Full:  ${saved.outputPath}`)
+        console.log(`    Small: ${saved.smallOutputPath}`)
+
+        return {
+          ...saved,
+          selectedImages: attemptPaths,
+          imageUrl,
+          model,
+          backend: backend.id,
+          mode: 'source_scene',
+          prompt
+        }
+      } catch (error) {
+        if (isContentPolicyViolation(error)) {
+          if (attempt < attemptSets.length - 1) {
+            console.warn(`  Content policy violation on attempt ${attempt + 1} (${backend.label}); retrying with alternate album inputs`)
+            continue
+          }
+          // Exhausted the attempt sets on this backend - hand off to the next one if we have it.
+          if (!isLastBackend) break
+        }
+
+        let message = error.message
+        if (error.body) message += `\nResponse body: ${JSON.stringify(error.body, null, 2)}`
+        throw new Error(`Tunes cover generation failed using ${backend.label}: ${message}`)
       }
-
-      const imageUrls = await uploadAlbumImages(attemptPaths, debug)
-      const sourceReferences = buildSourceReferences(attemptPaths)
-      const brief = await createArtBrief({ imageUrls, sourceReferences, debug })
-      const prompt = buildGenerationPrompt(brief, imageUrls.length, sourceReferences)
-
-      if (debug) {
-        console.log(`  Prompt: ${prompt}`)
-      }
-
-      const { imageUrl, model } = await backend.generate({ imageUrls, prompt, seed, debug })
-
-      const saved = await saveGeneratedImage(imageUrl, outputPath, width, height, debug)
-      console.log(`  Created tunes cover scene (${backend.label}) from ${attemptPaths.length} album covers`)
-      console.log(`    Full:  ${saved.outputPath}`)
-      console.log(`    Small: ${saved.smallOutputPath}`)
-
-      return {
-        ...saved,
-        selectedImages: attemptPaths,
-        imageUrl,
-        model,
-        backend: backend.id,
-        mode: 'source_scene',
-        prompt
-      }
-    } catch (error) {
-      if (isContentPolicyViolation(error) && attempt < attemptSets.length - 1) {
-        console.warn(`  Content policy violation on attempt ${attempt + 1}; retrying with alternate album inputs`)
-        continue
-      }
-
-      let message = error.message
-      if (error.body) message += `\nResponse body: ${JSON.stringify(error.body, null, 2)}`
-      throw new Error(`Tunes cover generation failed using ${backend.label}: ${message}`)
     }
   }
 
@@ -708,6 +761,10 @@ Notes:
   - Requires FAL_KEY.
   - Uses OPENAI_API_KEY when available to describe each album cover and design one
     cohesive scene from their contents. The only negatives applied are text and grids.
+  - The image backend comes from settings.cover_backend in tunes-config.yaml. On a
+    content-policy refusal the generator retries with alternate inputs, then drops to
+    settings.cover_fallback_backend (env TUNES_COVER_FALLBACK_BACKEND; defaults to
+    nano-banana while gpt-image-2 is primary, "none" to disable).
   - --lane / --style are deprecated and ignored (kept only so older commands still run).
 `)
 }
