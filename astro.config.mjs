@@ -48,14 +48,14 @@ export default defineConfig({
 		},
 		{
 			provider: fontProviders.local(),
-			name: 'JetBrains Mono',
-			cssVariable: '--font-jetbrains',
-			fallbacks: ['Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', 'Consolas', 'Courier New', 'monospace'],
+			name: 'IBM Plex Mono',
+			cssVariable: '--font-ibm-plex-mono',
+			fallbacks: ['ui-monospace', 'Cascadia Code', 'Consolas', 'Courier New', 'monospace'],
 			options: {
 				variants: [
-					{ weight: 400, style: 'normal', src: ['./src/assets/fonts/jetbrains-mono-400-latin.woff2'] },
-					{ weight: 500, style: 'normal', src: ['./src/assets/fonts/jetbrains-mono-500-latin.woff2'] },
-					{ weight: 600, style: 'normal', src: ['./src/assets/fonts/jetbrains-mono-600-latin.woff2'] }
+					{ weight: 400, style: 'normal', src: ['./src/assets/fonts/ibm-plex-mono-400-latin.woff2'] },
+					{ weight: 500, style: 'normal', src: ['./src/assets/fonts/ibm-plex-mono-500-latin.woff2'] },
+					{ weight: 600, style: 'normal', src: ['./src/assets/fonts/ibm-plex-mono-600-latin.woff2'] }
 				]
 			}
 		},
@@ -91,7 +91,7 @@ export default defineConfig({
 			themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
 			styleOverrides: {
 				borderRadius: '0.5rem',
-				codeFontFamily: 'Fira Code, Consolas, Monaco, monospace',
+				codeFontFamily: 'IBM Plex Mono, ui-monospace, Consolas, monospace',
 			},
 			plugins: [expressiveCodeA11yPlugin()],
 		}),

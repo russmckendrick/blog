@@ -72,7 +72,7 @@ typography:
     fontWeight: 600
     lineHeight: 1.4
   code-sm:
-    fontFamily: "JetBrains Mono, Fira Code, Monaco, Consolas, monospace"
+    fontFamily: "IBM Plex Mono, ui-monospace, Cascadia Code, Consolas, monospace"
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.6
@@ -242,7 +242,7 @@ Use Plus Jakarta Sans for display typography and Inter for body/UI. This pairing
 - **Section and card headings:** Use `headline-lg`, `headline-md`, and `headline-sm` with tight tracking and generous surrounding whitespace.
 - **Body copy:** Use `body-md` for the global 17px baseline and `body-lg` for prose paragraphs.
 - **Metadata and controls:** Use `body-sm` or `label-md`; keep supporting text calm and scannable.
-- **Code:** Use JetBrains Mono through `code-sm`, with tonal backgrounds instead of high-contrast code chips.
+- **Code:** Use IBM Plex Mono through `code-sm`, with tonal backgrounds instead of high-contrast code chips.
 
 Crimson Pro exists as a decorative serif family in the CSS theme, but it should remain rare and intentional rather than becoming a default post or UI style.
 

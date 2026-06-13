@@ -64,14 +64,14 @@ Two font families provide a high-contrast pairing:
 |---|---|---|---|
 | Display / Headlines | Plus Jakarta Sans | `font-display` | `--font-display` |
 | Body / UI | Inter | `font-sans` | `--font-sans` |
-| Code | JetBrains Mono | `font-mono` | `--font-mono` |
+| Code | IBM Plex Mono | `font-mono` | `--font-mono` |
 | Decorative / Serif | Crimson Pro | `font-serif` | `--font-serif` |
 
 Fonts are self-hosted through **Astro's native Fonts API** (`fonts:` in `astro.config.mjs`, emitted by the `<Font>` components in `BaseHead.astro`). Astro auto-generates the `@font-face` rules, hashes the files into `/_astro/fonts/`, and adds CLS-safe fallback metrics (`size-adjust`/`ascent-override`). Source woff2 files live in `src/assets/fonts/`. **No font is `preload`ed** — the LCP element on every page is the hero cover image, so font preloads would only steal high-priority bandwidth from the LCP image on slow connections. Because every face uses `font-display: swap` with the fallback metrics above, text paints immediately in the fallback (no FCP impact) and swaps in with zero layout shift. If a future layout makes above-the-fold text the LCP element, re-add `preload` to that family in `BaseHead.astro`.
 
 - Plus Jakarta Sans: weights 600, 700, 800 (latin woff2)
 - Inter: variable font, weight range 100–900 (latin woff2)
-- JetBrains Mono: weights 400, 500, 600
+- IBM Plex Mono: weights 400, 500, 600
 - Crimson Pro: weights 400, 500, 600 + italic 400, 500
 
 The `--font-*` Tailwind tokens map to Astro's per-family `cssVariable`s via a `@theme inline` block in `global.css`. Do not hand-write `@font-face` rules — add or change fonts in the `fonts:` config instead.
