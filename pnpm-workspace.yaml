@@ -26,3 +26,5 @@ overrides:
   uuid@<14.0.0: '>=14.0.0'
   yaml@>=2.0.0 <2.8.3: '>=2.8.3'
   yauzl@<3.2.1: '>=3.2.1'
+patchedDependencies:
+  gray-matter@4.0.3: patches/gray-matter@4.0.3.patch
