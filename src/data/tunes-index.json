@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-06-21T11:48:39.747Z",
+  "generatedAt": "2026-06-22T03:24:36.583Z",
   "totals": {
-    "posts": 160,
-    "artists": 504,
-    "albums": 928
+    "posts": 161,
+    "artists": 506,
+    "albums": 932
   },
   "artists": [
     {
@@ -731,13 +731,19 @@
       "slug": "basic",
       "name": "Basic",
       "artistUrl": "https://www.russ.fm/artist/basic/",
-      "image": null,
-      "albumCount": 1,
-      "postCount": 1,
+      "image": "/assets/2026-06-22-listened-to-this-week/artists/Basic.jpg",
+      "albumCount": 2,
+      "postCount": 2,
       "albums": [
+        "basic",
         "this-is-basic"
       ],
       "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        },
         {
           "title": "This Weeks Top Music Hits: From Pink Floyd to Kate Bush",
           "url": "/2024/09/09/this-weeks-top-music-hits-from-pink-floyd-to-kate-bush/",
@@ -1903,7 +1909,7 @@
       "artistUrl": "https://www.russ.fm/artist/crowded-house/",
       "image": "/assets/2023-07-03-listened-to-this-week/artists/Crowded-House.jpg",
       "albumCount": 6,
-      "postCount": 23,
+      "postCount": 24,
       "albums": [
         "crowded-house",
         "gravity-stairs",
@@ -1913,6 +1919,11 @@
         "woodface"
       ],
       "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        },
         {
           "title": "Labyrinth Lullabies and Parking Lot Hooks in Tape Haze",
           "url": "/2026/06/01/labyrinth-lullabies-and-parking-lot-hooks-in-tape-haze/",
@@ -2461,12 +2472,18 @@
       "name": "Def Leppard",
       "artistUrl": "https://www.russ.fm/artist/def-leppard/",
       "image": "/assets/2023-07-31-listened-to-this-week/artists/Def-Leppard.jpg",
-      "albumCount": 1,
-      "postCount": 5,
+      "albumCount": 2,
+      "postCount": 6,
       "albums": [
+        "def-leppard-greatest-hits",
         "hysteria"
       ],
       "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        },
         {
           "title": "Euphoric Echoes and Gritty Anthems: A Collision of Generations",
           "url": "/2026/03/09/euphoric-echoes-and-gritty-anthems-a-collision-of-generations/",
@@ -5720,6 +5737,24 @@
       ]
     },
     {
+      "slug": "judas-priest",
+      "name": "Judas Priest",
+      "artistUrl": "https://www.russ.fm/artist/judas-priest/",
+      "image": "/assets/2026-06-22-listened-to-this-week/artists/Judas-Priest.jpg",
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "the-best-of-judas-priest"
+      ],
+      "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "jurassic-5",
       "name": "Jurassic 5",
       "artistUrl": "https://www.russ.fm/artist/jurassic-5/",
@@ -7233,13 +7268,18 @@
       "artistUrl": "https://www.russ.fm/artist/new-order/",
       "image": "/assets/2023-05-22-listened-to-this-week/artists/New-Order.jpg",
       "albumCount": 3,
-      "postCount": 15,
+      "postCount": 16,
       "albums": [
         "new-order-the-best-of-new-order",
         "singles",
         "substance"
       ],
       "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        },
         {
           "title": "Exploring Echoes of the Past: A Journey Through Rocks Timeless Pulse",
           "url": "/2025/10/13/exploring-echoes-of-the-past-a-journey-through-rocks-timeless-pulse/",
@@ -8630,6 +8670,24 @@
           "title": "Pixies Dominate: Alternative Rock Icons Fuel My Weekly Musical Rebellion",
           "url": "/2023/07/03/pixies-dominate-alternative-rock-icons-fuel-my-weekly-musical-rebellion/",
           "date": "2023-07-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "placebo",
+      "name": "Placebo",
+      "artistUrl": "https://www.russ.fm/artist/placebo/",
+      "image": "/assets/2026-06-22-listened-to-this-week/artists/Placebo.jpg",
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "recreated"
+      ],
+      "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
         }
       ]
     },
@@ -11864,11 +11922,16 @@
       "artistUrl": "https://www.russ.fm/artist/the-beach-boys/",
       "image": "/assets/2023-06-12-listened-to-this-week/artists/The-Beach-Boys.jpg",
       "albumCount": 1,
-      "postCount": 4,
+      "postCount": 5,
       "albums": [
         "pet-sounds"
       ],
       "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        },
         {
           "title": "A Sonic Tapestry: Threads of Legacy from Bowie to Beach Boys",
           "url": "/2026/01/19/a-sonic-tapestry-threads-of-legacy-from-bowie-to-beach-boys/",
@@ -13040,12 +13103,17 @@
       "artistUrl": "https://www.russ.fm/artist/the-rolling-stones/",
       "image": "/assets/2023-11-13-listened-to-this-week/artists/The-Rolling-Stones.jpg",
       "albumCount": 2,
-      "postCount": 3,
+      "postCount": 4,
       "albums": [
         "exile-on-main-st",
         "hot-rocks-1964-1971"
       ],
       "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        },
         {
           "title": "Exploring Musical Legends from Pumpkins to Pet Sounds This Week",
           "url": "/2024/11/11/exploring-musical-legends-from-pumpkins-to-pet-sounds-this-week/",
@@ -13229,7 +13297,7 @@
       "artistUrl": "https://www.russ.fm/artist/the-smashing-pumpkins/",
       "image": "/assets/2023-09-18-listened-to-this-week/artists/The-Smashing-Pumpkins.jpg",
       "albumCount": 6,
-      "postCount": 22,
+      "postCount": 23,
       "albums": [
         "gish",
         "machina-the-machines-of-god",
@@ -13239,6 +13307,11 @@
         "siamese-dream"
       ],
       "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        },
         {
           "title": "Labyrinth Lullabies and Parking Lot Hooks in Tape Haze",
           "url": "/2026/06/01/labyrinth-lullabies-and-parking-lot-hooks-in-tape-haze/",
@@ -15922,6 +15995,22 @@
       ]
     },
     {
+      "slug": "basic",
+      "name": "Basic",
+      "artist": "Basic",
+      "artistSlug": "basic",
+      "albumUrl": "https://www.russ.fm/album/basic-37609485/",
+      "artistUrl": "https://www.russ.fm/artist/basic/",
+      "image": "/assets/2026-06-22-listened-to-this-week/albums/Basic.jpg",
+      "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "this-is-basic",
       "name": "This Is BASIC",
       "artist": "Basic",
@@ -17389,6 +17478,11 @@
       "image": "/assets/2023-07-03-listened-to-this-week/albums/The-Very-Very-Best-of-Crowded-House.jpg",
       "posts": [
         {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        },
+        {
           "title": "Exploring Soundscapes from the 80s to Today with Pure Reason Revolution and More",
           "url": "/2025/06/02/exploring-soundscapes-from-the-80s-to-today-with-pure-reason-revolution-and-more/",
           "date": "2025-06-02T00:00:00.000Z"
@@ -18032,6 +18126,22 @@
           "title": "A Musical Odyssey: From The Pogues’ Whimsy to Steely Dan’s Sophistication",
           "url": "/2025/12/22/a-musical-odyssey-from-the-pogues-whimsy-to-steely-dans-sophistication/",
           "date": "2025-12-22T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "def-leppard-greatest-hits",
+      "name": "Greatest Hits",
+      "artist": "Def Leppard",
+      "artistSlug": "def-leppard",
+      "albumUrl": "https://www.russ.fm/album/greatest-hits-37651155/",
+      "artistUrl": "https://www.russ.fm/artist/def-leppard/",
+      "image": "/assets/2026-06-22-listened-to-this-week/albums/Greatest-Hits.jpg",
+      "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
         }
       ]
     },
@@ -21839,6 +21949,22 @@
       ]
     },
     {
+      "slug": "the-best-of-judas-priest",
+      "name": "The Best of Judas Priest",
+      "artist": "Judas Priest",
+      "artistSlug": "judas-priest",
+      "albumUrl": "https://www.russ.fm/album/the-best-of-judas-priest-37676151/",
+      "artistUrl": "https://www.russ.fm/artist/judas-priest/",
+      "image": "/assets/2026-06-22-listened-to-this-week/albums/The-Best-of-Judas-Priest.jpg",
+      "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "quality-control",
       "name": "Quality Control",
       "artist": "Jurassic 5",
@@ -23755,6 +23881,11 @@
       "image": "/assets/2023-11-13-listened-to-this-week/albums/Substance.jpg",
       "posts": [
         {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        },
+        {
           "title": "Exploring Echoes of the Past: A Journey Through Rocks Timeless Pulse",
           "url": "/2025/10/13/exploring-echoes-of-the-past-a-journey-through-rocks-timeless-pulse/",
           "date": "2025-10-13T00:00:00.000Z"
@@ -25623,6 +25754,22 @@
           "title": "Pixies Dominate: Alternative Rock Icons Fuel My Weekly Musical Rebellion",
           "url": "/2023/07/03/pixies-dominate-alternative-rock-icons-fuel-my-weekly-musical-rebellion/",
           "date": "2023-07-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "recreated",
+      "name": "Re:Created",
+      "artist": "Placebo",
+      "artistSlug": "placebo",
+      "albumUrl": "https://www.russ.fm/album/recreated-37652838/",
+      "artistUrl": "https://www.russ.fm/artist/placebo/",
+      "image": "/assets/2026-06-22-listened-to-this-week/albums/Re-Created.jpg",
+      "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
         }
       ]
     },
@@ -29783,6 +29930,11 @@
       "image": "/assets/2023-06-12-listened-to-this-week/albums/Pet-Sounds.jpg",
       "posts": [
         {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        },
+        {
           "title": "A Sonic Tapestry: Threads of Legacy from Bowie to Beach Boys",
           "url": "/2026/01/19/a-sonic-tapestry-threads-of-legacy-from-bowie-to-beach-boys/",
           "date": "2026-01-19T00:00:00.000Z"
@@ -31143,6 +31295,11 @@
       "image": "/assets/2024-01-29-listened-to-this-week/albums/Exile-on-Main-St.jpg",
       "posts": [
         {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        },
+        {
           "title": "They Might Be Giants: Quirky Brilliance with Catchy Melodies and Cerebral Lyrics",
           "url": "/2024/01/29/they-might-be-giants-quirky-brilliance-with-catchy-melodies-and-cerebral-lyrics/",
           "date": "2024-01-29T00:00:00.000Z"
@@ -31384,6 +31541,11 @@
       "artistUrl": "https://www.russ.fm/artist/the-smashing-pumpkins/",
       "image": "/assets/2024-11-11-listened-to-this-week/albums/Mellon-Collie-and-the-Infinite-Sadness.jpg",
       "posts": [
+        {
+          "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
+          "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
+          "date": "2026-06-22T00:00:00.000Z"
+        },
         {
           "title": "A Musical Odyssey Through Shadows and Echoes of Timeless Sound",
           "url": "/2026/01/05/a-musical-odyssey-through-shadows-and-echoes-of-timeless-sound/",
