@@ -176,12 +176,12 @@ function normalizeArtistBrief(rawBrief, sourceReferences = [], varietyHint = '')
     palette: Array.isArray(rawBrief?.palette)
       ? rawBrief.palette.map(item => String(item).trim()).filter(Boolean).slice(0, 5)
       : [],
-    mood: String(rawBrief?.mood || 'relaxed, confident, music-led').trim()
+    mood: String(rawBrief?.mood || 'relaxed, confident, music-led, with bright saturated colour').trim()
   }
 }
 
 function buildFallbackArtistBrief(sourceReferences, varietyHint = '') {
-  return normalizeArtistBrief({ palette: [], mood: 'relaxed, confident, music-led' }, sourceReferences, varietyHint)
+  return normalizeArtistBrief({ palette: [], mood: 'relaxed, confident, music-led, with bright saturated colour' }, sourceReferences, varietyHint)
 }
 
 async function createArtistBrief({ imageUrls, sourceReferences, debug, varietyHint = '', featureCount = 6 }) {
@@ -203,7 +203,7 @@ Step 2 - cast the shoot: choose the most visually interesting and varied people 
 Step 3 - author the shoot: write ONE vivid paragraph describing a single shared real-world scene where ONLY the selected people are photographed together - same place, same light, same moment, like a real posed or candid group photo, not cut out and pasted side by side. ${directionLine} Cover the location, framing, time of day, lighting, and how the group is styled. Keep the cast small and uncrowded.
 The final image is a real PHOTOREALISTIC photograph. Do not describe it as an illustration, painting, or render.
 Return JSON exactly as: {"artists":[{"source":1,"description":"string"}],"selection":[1,2],"scene":"string","palette":["string"],"mood":"string"}.
-"selection" is the reference numbers you cast (about ${featureCount}). "scene" is a vivid paragraph describing the photograph of just those people. "palette" is 3-5 colours. "mood" is the emotional tone.`
+"selection" is the reference numbers you cast (about ${featureCount}). "scene" is a vivid paragraph describing the photograph of just those people. "palette" is 3-5 colours, pushed bright and saturated - favour vivid, luminous colour over muted or washed-out tones. "mood" is the emotional tone.`
 
   try {
     const response = await openai.responses.create({
@@ -254,12 +254,12 @@ function buildArtistPrompt(brief, sourceImageCount) {
     'Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its one or two most recognisable members rather than every member.',
     'Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares.',
     'Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render.',
-    brief.palette.length > 0 ? `Colour direction: ${brief.palette.join(', ')}.` : '',
+    brief.palette.length > 0 ? `Colour direction: ${brief.palette.join(', ')} - rendered bright, vivid, and richly saturated with luminous highlights and punchy contrast, never muted, dull, or washed out.` : '',
     brief.mood ? `Mood: ${brief.mood}.` : '',
     'Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces.',
     'Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image.',
     `Avoid: ${avoid}.`,
-    'Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.'
+    'Photorealistic, sharp, high quality, flattering, vibrant and colour-rich, with real depth and a strong sense of place.'
   ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
 }
 

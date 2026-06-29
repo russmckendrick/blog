@@ -101,6 +101,35 @@ const NEGATIVE_TERMS = [
   'flat graphic style'
 ]
 
+// Left to itself the art director almost always sets the unified scene at night - the source
+// sleeves skew dark and "cinematic/atmospheric" reads as nighttime to the model. We hand it a
+// deterministic time-of-day / lighting direction per week (mostly daylight, one night for
+// variety) so the headers stop converging on the same after-dark look. Mirrors the artist
+// portrait's SHOOT_DIRECTIONS approach.
+const LIGHTING_DIRECTIONS = [
+  'bright midday sunlight under a clear blue sky, crisp hard shadows and vivid daylight colour',
+  'warm golden-hour light just before sunset, long shadows and a glowing amber sidelight',
+  'soft bright overcast daylight, gentle even shadows and rich, true-to-life colour',
+  'fresh early-morning light with a low sun, clean cool highlights and long soft shadows',
+  'bright interior daylight pouring through large windows, airy and naturally lit',
+  'a vivid sunny afternoon with strong directional sun, saturated colour and sparkling highlights',
+  'deep blue-hour twilight just after sunset, a saturated blue sky with warm artificial lights starting to glow',
+  'dramatic stormlight with sun breaking through, bright shafts of light against dark cloud',
+  'a luminous neon-lit night with wet reflective surfaces and bold, saturated artificial colour'
+]
+
+const MS_PER_WEEK = 604800000
+
+// Weekly post dates are exactly one MS_PER_WEEK apart, so bucketing the seed (the post date as
+// epoch-ms) by weeks-since-epoch advances the index by one each week and cycles through the
+// whole list. Small non-timestamp seeds (e.g. a CLI --seed for testing) fall back to a direct
+// modulo so they still vary. Matches pickShootDirection in fal-tunes-artists.js.
+function pickLightingDirection(seed) {
+  const value = Math.abs(Math.trunc(Number.isFinite(seed) ? seed : 0))
+  const bucket = value >= MS_PER_WEEK ? Math.floor(value / MS_PER_WEEK) : value
+  return LIGHTING_DIRECTIONS[bucket % LIGHTING_DIRECTIONS.length]
+}
+
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
   : null
@@ -200,7 +229,7 @@ async function analyzeImage(imagePath, rank) {
 }
 
 async function selectCoverInputs(imagePaths, options = {}) {
-  const { maxCount = 6, primaryCount = 5, debug = false } = options
+  const { maxCount = 8, primaryCount = 7, debug = false } = options
   const uniquePaths = []
   const seen = new Set()
 
@@ -421,7 +450,7 @@ function normalizeBrief(rawBrief, sourceReferences = []) {
     palette: Array.isArray(rawBrief?.palette)
       ? rawBrief.palette.map(item => String(item).trim()).filter(Boolean).slice(0, 5)
       : [],
-    mood: String(rawBrief?.mood || 'imaginative, atmospheric, and music-led').trim()
+    mood: String(rawBrief?.mood || 'imaginative, vivid, and music-led, with bright saturated colour').trim()
   }
 }
 
@@ -433,11 +462,11 @@ function buildFallbackBrief(sourceReferences) {
       element: `a recognisable element from ${reference.album || reference.filename}`
     })),
     palette: [],
-    mood: 'imaginative, atmospheric, and music-led'
+    mood: 'imaginative, vivid, and music-led, with bright saturated colour'
   }, sourceReferences)
 }
 
-async function createArtBrief({ imageUrls, sourceReferences, debug }) {
+async function createArtBrief({ imageUrls, sourceReferences, debug, lightingDirection = '' }) {
   if (!openai) {
     if (debug) {
       console.log('  No OPENAI_API_KEY found; using deterministic art brief')
@@ -445,15 +474,20 @@ async function createArtBrief({ imageUrls, sourceReferences, debug }) {
     return buildFallbackBrief(sourceReferences)
   }
 
+  const lightingLine = lightingDirection
+    ? `Set the scene in this specific lighting and time of day, and commit to it fully: ${lightingDirection}. Adapt it so it suits the scene, but do NOT default to a generic night-time setting unless this direction calls for it.`
+    : 'Vary the time of day and lighting; do not default to a generic night-time setting.'
+
   const instructions = `You are a visual art director creating one original illustrated header image for a music blog.
 You will receive several album covers as images. Work in two steps and return only valid JSON.
 Step 1 - read the artwork: look closely at EACH uploaded album cover and describe its concrete visual contents: the subjects, figures, creatures, objects, symbols, settings, art style, and dominant colours that are actually depicted. Ignore and never mention any text, lettering, titles, or logos printed on the covers.
 Step 2 - invent the scene: design ONE original, unique scene that weaves recognisable elements from ALL of the covers into a single cohesive world they could all plausibly share. The final image will be a PHOTOREALISTIC photograph, so imagine it as a real photographed scene: choose a believable physical setting, real-world lighting, and a clear camera viewpoint. Where a cover's motif is an illustration, painting, symbol, or graphic, reimagine it as a real, physical, photographable thing in the scene - a sculpture, prop, costume, set piece, projection, mural, printed poster, real person, animal, or object - so it stays recognisable while the whole frame still reads as a genuine photograph.
+${lightingLine}
 Everything must feel connected by one environment, light, and story - not separate objects floating side by side, and never arranged as a grid, row, or panel of squares.
 Keep it safe for an image generator: never depict or reconstruct children, infants, babies, or minors (recast any youthful figure as an adult, a mannequin, a statue, or an abstract shape); avoid gore, wounds, body horror, surgical or medical imagery, foetal or anatomical motifs, blank or milky eyes, distress, nudity, sexual content, weapons, and real-world hate or brand symbols. When a cover features any of these, reinterpret the motif abstractly - as a sculpture, silhouette, pattern, prop, or play of light - so it stays evocative without recreating the sensitive subject. Do not aim to recreate the exact likeness of any identifiable real person; suggest the look instead.
-Be imaginative and go bold; richly detailed and surprising scenes are welcome as long as everything reads as one connected, believable photograph. Do not describe the scene as an illustration, painting, drawing, cartoon, or mural - describe it as a real photograph.
+Be imaginative and go bold; richly detailed and surprising scenes are welcome as long as everything reads as one connected, believable photograph. Lean into bold, bright lighting and rich, vivid, saturated colour - a luminous, high-energy frame rather than a muted, dim, or washed-out one - while still reading as a real photograph. Do not describe the scene as an illustration, painting, drawing, cartoon, or mural - describe it as a real photograph.
 Return JSON exactly as: {"covers":[{"source":1,"description":"string"}],"scene":"string","elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string"}.
-"scene" is a vivid paragraph describing the unified photographic scene and how the borrowed elements appear as real things inside it. "elements" names the single most recognisable thing taken from each cover that must appear in the scene. "palette" is 3-5 colours pulled from the artwork.`
+"scene" is a vivid paragraph describing the unified photographic scene and how the borrowed elements appear as real things inside it. "elements" names the single most recognisable thing taken from each cover that must appear in the scene. "palette" is 3-5 colours pulled from the artwork, then pushed brighter and more saturated - favour vivid, luminous, high-energy colour over muted or washed-out tones.`
 
   try {
     const response = await openai.responses.create({
@@ -498,7 +532,7 @@ function formatElement(element) {
   return `source ${element.source}: ${element.element}`
 }
 
-function buildGenerationPrompt(brief, sourceImageCount, sourceReferences) {
+function buildGenerationPrompt(brief, sourceImageCount, sourceReferences, lightingDirection = '') {
   const elements = brief.elements.length > 0
     ? brief.elements.map(formatElement).join('; ')
     : sourceReferences.map(reference => `source ${reference.source}: recognisable element from ${reference.album || reference.filename}`).join('; ')
@@ -510,14 +544,15 @@ function buildGenerationPrompt(brief, sourceImageCount, sourceReferences) {
     `Compose a single unified scene: ${brief.scene}.`,
     `Weave in recognisable elements taken from the ${sourceImageCount} uploaded album covers: ${elements}.`,
     'Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light.',
-    'Render everything photorealistically: real materials and textures, natural cinematic lighting, true-to-life depth of field, captured as if shot on a professional full-frame camera. Where a source motif was originally a drawing, painting, symbol, or graphic, reimagine it as a real physical object, sculpture, set piece, projection, mural, costume, person, or animal within the photograph so it stays recognisable. This is a real photograph, not an illustration, drawing, painting, cartoon, or comic.',
+    'Render everything photorealistically: real materials and textures, bright, natural cinematic lighting, true-to-life depth of field, captured as if shot on a professional full-frame camera. Where a source motif was originally a drawing, painting, symbol, or graphic, reimagine it as a real physical object, sculpture, set piece, projection, mural, costume, person, or animal within the photograph so it stays recognisable. This is a real photograph, not an illustration, drawing, painting, cartoon, or comic.',
     'Everything must feel like it genuinely belongs in the same scene - connected by environment and story, not separate cut-outs floating side by side, and never laid out as a grid, row, or panel of squares.',
-    `Colour direction: ${palette}.`,
+    `Colour direction: ${palette} - rendered bright, vivid, and richly saturated with luminous highlights and punchy contrast, never muted, dull, or washed out.`,
+    lightingDirection ? `Time of day and light: ${lightingDirection}.` : '',
     `Mood: ${brief.mood}.`,
     'Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly as a sculpture, prop, silhouette, or play of light, and suggest rather than exactly replicate the likeness of any identifiable real person.',
     'Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image.',
     `Avoid: ${avoid}.`,
-    'Photorealistic, sharp, cinematic, high quality, visually striking, with real depth and a strong sense of place.'
+    'Photorealistic, sharp, cinematic, high quality, visually striking, vibrant and colour-rich, with real depth and a strong sense of place.'
   ].join(' ').replace(/\s+/g, ' ').trim()
 }
 
@@ -605,8 +640,8 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   const sourceImagePaths = filterBlocklistedCovers(imagePaths, debug)
 
   const { selectedPaths, analyses } = await selectCoverInputs(sourceImagePaths, {
-    maxCount: Number(process.env.TUNES_COVER_MAX_INPUTS || 6),
-    primaryCount: Number(process.env.TUNES_COVER_PRIMARY_INPUTS || 5),
+    maxCount: Number(process.env.TUNES_COVER_MAX_INPUTS || 8),
+    primaryCount: Number(process.env.TUNES_COVER_PRIMARY_INPUTS || 7),
     debug
   })
 
@@ -614,15 +649,18 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   const attemptSets = buildAttemptSets(
     selectedPaths,
     analyses,
-    Number(process.env.TUNES_COVER_MAX_INPUTS || 6),
+    Number(process.env.TUNES_COVER_MAX_INPUTS || 8),
     minCount
   )
+
+  const lightingDirection = pickLightingDirection(seed)
 
   const primaryBackend = await resolveCoverBackend(options.backend)
   const fallbackBackend = await resolveCoverFallbackBackend(primaryBackend, options.fallbackBackend)
   const backendChain = fallbackBackend ? [primaryBackend, fallbackBackend] : [primaryBackend]
   if (debug) {
     console.log(`  Image backend: ${backendChain.map(b => b.label).join(' -> ')}`)
+    console.log(`  Lighting direction: ${lightingDirection}`)
   }
 
   // Try each backend in turn. Within a backend, content-policy refusals retry with alternate
@@ -645,8 +683,8 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
 
         const imageUrls = await uploadAlbumImages(attemptPaths, debug)
         const sourceReferences = buildSourceReferences(attemptPaths)
-        const brief = await createArtBrief({ imageUrls, sourceReferences, debug })
-        const prompt = buildGenerationPrompt(brief, imageUrls.length, sourceReferences)
+        const brief = await createArtBrief({ imageUrls, sourceReferences, debug, lightingDirection })
+        const prompt = buildGenerationPrompt(brief, imageUrls.length, sourceReferences, lightingDirection)
 
         if (debug) {
           console.log(`  Prompt: ${prompt}`)
