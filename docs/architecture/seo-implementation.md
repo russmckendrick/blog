@@ -357,16 +357,18 @@ See [Image Delivery Architecture](./image-delivery.md)
 
 **File**: `src/components/layout/BaseHead.astro`
 
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+Fonts are self-hosted via Astro's Fonts API (no Google Fonts requests). The three families - Fraunces (display), Source Serif 4 (body), and IBM Plex Mono (code/metadata) - are loaded as CSS variables:
+
+```astro
+<Font cssVariable="--font-fraunces" />
+<Font cssVariable="--font-source-serif" />
+<Font cssVariable="--font-ibm-plex-mono" />
 ```
 
 **Benefits**:
-- Async font loading
-- No render-blocking CSS
-- DNS prefetch for faster connections
+- Self-hosted, no third-party font requests
+- `font-display: swap` with Astro's fallback metrics (zero CLS)
+- No font preload - the LCP element is the hero image, so fonts stay off the critical path
 
 ### Build Compression
 
@@ -541,7 +543,7 @@ and renders each key as a `<meta name="plausible:KEY">` tag (defaulting to `cont
 **Custom event goals** (create matching goals in the Plausible dashboard, and enable Outbound Links /
 File Downloads / Custom Events under Site Settings):
 - `Share` (prop `method`) — share-button clicks, tagged via `plausible-event-*` classes in
-  `ShareButtons.astro` and `ShareButtonsMotion.tsx`.
+  `ShareButtons.astro`.
 - `Search` — fired (debounced, no query string) from `src/pages/search.astro`.
 - `Comments Viewed` — fired when Giscus scrolls into view in `Comments.astro`.
 - `Video Play` (prop `provider`) — fired on first click of a YouTube embed in `embeds/YouTube.astro`.

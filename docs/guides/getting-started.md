@@ -125,12 +125,12 @@ Main Astro configuration:
 - Integrations (sitemap, RSS, MDX, etc.)
 - Build settings
 
-### tailwind.config.mjs
+### src/styles/global.css
 
-Tailwind CSS configuration:
-- Custom colors
-- Typography settings
-- Dark mode config
+Tailwind CSS 4 configuration lives in CSS:
+- Design tokens (paper/ink palette, hairline rules, accent colors)
+- Font stacks (Fraunces display, Source Serif 4 body, IBM Plex Mono)
+- Dark mode overrides
 
 ### src/content.config.ts
 

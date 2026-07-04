@@ -1,78 +1,65 @@
 # Russ.Cloud Style Guide
 
-This guide documents the visual and interaction conventions used across Russ.Cloud so future UI changes stay consistent with the current site direction.
+This guide documents the visual and interaction conventions used across Russ.Cloud so future UI changes stay consistent with the current site direction: "The Print Edition", a high-end print journal on screen.
 
 ## Design Principles
 
-- Keep the site content-first. Chrome should support reading, not compete with it.
-- Prefer compact navigation and strong content hierarchy over dense UI labels.
-- Use clean surfaces, consistent rounded corners, and restrained motion instead of heavy decoration.
-- Preserve the existing light-first visual language unless a page has a clear reason to diverge.
+- Keep the site content-first and image-led. Chrome should read like quiet magazine furniture; the cover imagery and type carry the personality.
+- Separate content with hairline rules, not cards, shadows, or background shifts.
+- Square corners everywhere; circular avatar portraits are the only exception.
+- Motion is choreographed but calm — "the magazine, filmed". No springs, bounces, or hover lifts.
+- Preserve the light-first paper/ink language; dark mode swaps ink and paper, it is not a separate theme.
 
 ## Layout Conventions
 
 - Keep page content inside the established width containers:
   - homepage / tags / tunes: `max-w-7xl`
-  - blog posts: `max-w-5xl 2xl:max-w-6xl`
+  - blog posts: `max-w-5xl` (prose constrained to `max-w-[72ch]`, hero full container width)
   - blog list / archives / search / about: `max-w-5xl`
   - site shell/header/footer: `max-w-7xl`
-- Use rounded cards consistently:
-  - all cards and containers: `rounded-xl`
-  - smaller pills/chips: fully rounded
+- Page headers follow one pattern: `.rubric` kicker → Fraunces heading → standfirst paragraph → heavy closing rule (`border-b-2` with `--rule-strong`).
+- Listings are index entries: dateline, hairline-framed cover, Fraunces headline, standfirst, hairline separator.
 
 ## Header And Footer
 
-### Header
+### Header (masthead)
 
-- Desktop navigation uses icon + text labels for clarity.
-- Every nav link keeps an `aria-label`.
+- Opaque paper background with a 1px bottom rule — no glass or blur.
+- Desktop navigation is text-only `.rubric` labels with `.nav-underline` draw-in hovers.
 - Keep the theme toggle icon-only on desktop.
-- The header always uses a semi-transparent glass background (no transparent mode).
-- Mobile navigation uses icon + text labels and follows a disclosure pattern with:
-  - `aria-controls`
-  - `aria-expanded`
-  - a screen-reader-only label that reflects open/closed state
+- Mobile navigation uses icon + text labels and follows a disclosure pattern with `aria-controls`, `aria-expanded`, and a screen-reader-only label that reflects open/closed state.
 
-### Footer
+### Footer (colophon)
 
-- Footer navigation should use icon + text labels for better scanability.
-- Footer links can be more explicit than header links because they do not compete with hero content.
+- Hairline top rule, centred small-caps nav, italic copyright/colophon line.
 
 ## Typography
 
-- Use **Plus Jakarta Sans** (`font-display`) for headings and card titles.
-- Use **Inter** (`font-sans`) for body text and UI elements.
-- Preserve the high-contrast editorial feel:
-  - large, bold page and card titles
-  - quieter supporting metadata and summaries using `text-on-surface-variant`
-- Avoid introducing additional decorative type styles unless a page has a clear campaign-style purpose.
-- Use text labels sparingly in high-traffic chrome. Prefer them in content and support areas.
+- Use **Fraunces** (`font-display`) for the masthead, headings, and card titles — weight ~560 for display, ~540 for headings, no negative letter-spacing.
+- Use **Source Serif 4** (`font-serif`) for body text (1.125rem/1.75).
+- Use **IBM Plex Mono** (`font-mono`) for code and all metadata: datelines, reading time, rubrics.
+- Use `.rubric` for any label or dateline; `.tag-editorial` for tag-like links.
+- Dates render day-first ("13 Jun 2026") via `FormattedDate.astro` and uppercase inside rubrics.
 - See [Design System](./design-system.md) for the full font and token reference.
 
-## Color And Surfaces
+## Color And Rules
 
-- Colors are defined as CSS custom properties in `src/styles/global.css` with automatic light/dark adaptation.
-- Use the **tonal layering** approach - separate sections with background shifts (`.surface`, `.surface-container-low`, etc.), not borders.
-- Do not use 1px borders for sectioning. Use `.ghost-border` only in prose tables and code blocks.
-- Cards use `.surface-container-lowest` with `.shadow-ambient` (no ghost-border on cards).
-- Hover states should be visible but restrained. Avoid loud accent fills in navigation.
-- See [Design System](./design-system.md) for the full color token reference.
+- Colors are defined as CSS custom properties in `src/styles/global.css` with automatic light/dark adaptation. Never use raw hex values or Tailwind palette colours (`gray-*`, `blue-*`).
+- The single accent is brick red (`--color-secondary` for links/active, `--color-primary` for hover/filled). There is no blue.
+- Separate sections with hairline rules (`--color-outline-variant`); use heavy rules (`--rule-strong`) only for page headers and featured spreads.
+- Frame all images with a 1px hairline.
+- Hover states are colour shifts (ink → accent) and underline draw-ins, never shadows or translation.
 
 ## Motion And Interaction
 
-- Limit transitions to interactive elements and cards.
-- Do not apply global transitions to every element.
-- **Above-the-fold page-load animations**: Use `.animate-fade-in` (gentle translateY + opacity) with `.animate-delay-1` / `.animate-delay-2` / `.animate-delay-3` for staggered cascades. These are CSS-only and fire on page load without JS.
-- **Scroll-reveal animations**: Use `.reveal` (slide up + fade), `.reveal-fade` (fade only), `.reveal-scale` (scale + fade), or `.reveal-slide` (slide from left + fade) for content that scrolls into view. Combine with `.reveal-stagger` on a parent for cascading child reveals.
-- Do **not** apply scroll-reveal to above-the-fold content (hero sections, blog post articles) - use `.animate-fade-in` instead.
-- **Prose content reveals**: On blog post pages, images get `.reveal-scale`, blockquotes get `.reveal-slide`, and code blocks get `.reveal-fade` - applied via JS. Paragraphs, headings, and lists are never animated to preserve reading flow.
-- **Gallery reveals**: Gallery components have a self-contained stagger reveal - items start visible, JS adds `.gallery-reveal-ready` (hiding them) and observes the wrapper, then `.gallery-revealed` triggers a cascading scale+fade via nth-child delays. This avoids race conditions with the global reveal system.
-- Respect `prefers-reduced-motion` by disabling:
-  - smooth scrolling
-  - decorative animations (including `.animate-fade-in`)
-  - scroll-reveal animations (all variants)
-  - view-transition animations where possible
-- Focus states should use `:focus-visible` and appear only on interactive elements.
+- All motion runs through `src/scripts/motion.ts` (vanilla Motion) and the timing tokens `--ease-settle` / `--dur-quick` / `--dur-hover` / `--dur-page`.
+- **Page-load entrances**: mark elements with `data-entrance` for the staggered fade/rise cascade (used on page headers and the article journal header).
+- **Hero settle**: mark the article hero figure with `data-settle` (scale 1.03 → 1 with fade).
+- **Scroll reveals**: mark below-the-fold entries with `data-reveal` (fade up once); `data-reveal="rule"` draws a rule in horizontally. The legacy `.reveal*` classes are neutered no-ops — do not use them in new code.
+- **Shared-element transitions**: listing images/titles and the article hero/title carry matching `transition:name` values derived from the post URL, so the cover morphs into the article hero on navigation.
+- **Image hovers**: slow zoom (`scale(1.04)`, ~700ms, ease-out) inside the hairline frame.
+- Respect `prefers-reduced-motion`: the Motion helpers no-op, the `[data-entrance]`/`[data-settle]` hidden states are lifted, and smooth scrolling/view-transition animations are disabled.
+- Focus states use `:focus-visible` with a 2px accent outline.
 
 ## Accessibility Baseline
 
@@ -91,8 +78,11 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 ## Implementation References
 
 - Design tokens and utility classes: `src/styles/global.css`
+- Motion helpers: `src/scripts/motion.ts`
 - Design system documentation: [Design System](./design-system.md)
 - Header: `src/components/layout/Header.astro`
 - Footer: `src/components/layout/Footer.astro`
+- Post cards: `src/components/blog/PostCard.astro`
+- Article layout: `src/layouts/BlogPost.astro`
 - Inline image embed: `src/components/embeds/Img.astro`
 - Comments embed: `src/components/blog/Comments.astro`

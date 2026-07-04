@@ -16,7 +16,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `pnpm run reading` | `scripts/fetch-reading-list.js` | Fetch bookmarks from Instapaper into `src/data/reading.json` |
 | `pnpm run optimize` | `scripts/optimize-images.js` | Optimize source and public image assets |
 | `pnpm run analyze-links` | `scripts/analyze-internal-links.js` | Audit internal linking between posts |
-| `pnpm run extract-colors` | `scripts/extract-hero-colors.js` | Rebuild `src/data/hero-colors.json` from hero images |
+| `pnpm run extract-colors` | `scripts/extract-hero-colors.js` | Rebuild `src/data/hero-colors.json` from hero images (still part of prebuild; pages no longer render gradients from it) |
 | `pnpm run cache-link-previews` | `scripts/cache-link-preview-images.js` | Download and cache OG images for `LinkPreview` embeds |
 | `pnpm run refresh-link-previews` | `scripts/cache-link-preview-images.js --refresh-stale` | Refresh stale cached OG images |
 | `pnpm run cache-reading-images` | `scripts/cache-reading-images.js` | Download and cache OG images for reading list cards |
@@ -42,7 +42,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | File | Status | Notes |
 |------|--------|-------|
 | `scripts/optimize-images.js` | primary | Optimizes files in `src/assets/` and `public/assets/`, optionally for a single path |
-| `scripts/extract-hero-colors.js` | primary | Extracts dominant colors from hero images for gradient backgrounds |
+| `scripts/extract-hero-colors.js` | primary | Extracts dominant colors from hero images into `src/data/hero-colors.json`; still wired into `pnpm run prebuild`, though the tag/year hub pages no longer render gradient headers from the data |
 | `scripts/cache-link-preview-images.js` | primary | Scans MDX for `<LinkPreview>` usage and caches OG images locally |
 | `scripts/cache-reading-images.js` | primary | Fetches OG images and metadata (title, description) for reading list bookmarks and caches them locally; downloaded images are re-encoded to JPEG via `sharp` so they are compatible with Cloudflare image transformations regardless of source format |
 | `scripts/fal-cover-generator.js` | manual | AI blog cover generator used by `new-post.js` and manual cover generation flows |

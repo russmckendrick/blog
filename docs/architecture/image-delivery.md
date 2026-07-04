@@ -341,7 +341,7 @@ const resolvedHeight = height ?? dimensions?.height;
   width={resolvedWidth}
   height={resolvedHeight}
   sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
-  class="rounded-lg max-w-full h-auto"
+  class="max-w-full h-auto"
 />
 ```
 

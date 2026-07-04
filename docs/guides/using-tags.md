@@ -7,9 +7,10 @@ Complete guide to the tag system in Russ.Cloud blog.
 The blog uses a comprehensive tag system with 30+ predefined tags. Each tag has:
 
 - **Custom emoji** 🎨
-- **Color scheme** (light/dark mode)
 - **Description** for tag pages
 - **Avatar mapping** for post cards
+
+All tags share a single editorial visual treatment (small mono caps with a hairline underline) - there are no per-tag colors.
 
 Tags are defined in `src/consts.ts` and used throughout the site for categorization, navigation, and visual styling.
 
@@ -17,67 +18,67 @@ Tags are defined in `src/consts.ts` and used throughout the site for categorizat
 
 ### Technology & Cloud
 
-| Tag | Display | Description | Color |
-|-----|---------|-------------|-------|
-| `ai` | AI 🤖 | All my posts about AI | Purple |
-| `aws` | AWS ☁️ | All my posts about Amazon Web Services | Orange |
-| `azure` | Azure ☁️ | All my posts about Microsoft Azure | Blue |
-| `cloud` | Cloud ⛅️ | All my posts about various Cloud technologies | Sky Blue |
+| Tag | Display | Description |
+|-----|---------|-------------|
+| `ai` | AI 🤖 | All my posts about AI |
+| `aws` | AWS ☁️ | All my posts about Amazon Web Services |
+| `azure` | Azure ☁️ | All my posts about Microsoft Azure |
+| `cloud` | Cloud ⛅️ | All my posts about various Cloud technologies |
 
 ### DevOps & Automation
 
-| Tag | Display | Description | Color |
-|-----|---------|-------------|-------|
-| `ansible` | Ansible 👨‍💻 | All my posts about Ansible | Red |
-| `automation` | Automation 🤖 | All my posts about Automation | Indigo |
-| `devops` | DevOps 🦾 | All my posts about DevOps | Teal |
-| `github` | GitHub 👨‍💻 | All my posts about GitHub related services | Slate |
-| `infrastructure-as-code` | Infrastructure as Code 🤖 | All my posts about Infrastructure as Code | Purple |
-| `packer` | Packer 📦 | All my posts about Packer | Amber |
-| `terraform` | Terraform 👨‍💻 | All my posts about Terraform | Violet |
+| Tag | Display | Description |
+|-----|---------|-------------|
+| `ansible` | Ansible 👨‍💻 | All my posts about Ansible |
+| `automation` | Automation 🤖 | All my posts about Automation |
+| `devops` | DevOps 🦾 | All my posts about DevOps |
+| `github` | GitHub 👨‍💻 | All my posts about GitHub related services |
+| `infrastructure-as-code` | Infrastructure as Code 🤖 | All my posts about Infrastructure as Code |
+| `packer` | Packer 📦 | All my posts about Packer |
+| `terraform` | Terraform 👨‍💻 | All my posts about Terraform |
 
 ### Containers & Orchestration
 
-| Tag | Display | Description | Color |
-|-----|---------|-------------|-------|
-| `containers` | Containers 🐳 | All my posts about Containers | Cyan |
-| `docker` | Docker 🐳 | All my posts about Docker | Blue |
-| `kubernetes` | Kubernetes 🐳 | All my posts about Kubernetes | Blue |
-| `podman` | Podman 🦭 | All my posts about Podman | Purple |
+| Tag | Display | Description |
+|-----|---------|-------------|
+| `containers` | Containers 🐳 | All my posts about Containers |
+| `docker` | Docker 🐳 | All my posts about Docker |
+| `kubernetes` | Kubernetes 🐳 | All my posts about Kubernetes |
+| `podman` | Podman 🦭 | All my posts about Podman |
 
 ### Programming & Development
 
-| Tag | Display | Description | Color |
-|-----|---------|-------------|-------|
-| `code` | Code 🐛 | All my posts about various bits of code and projects | Green |
-| `python` | Python 🐍 | All my posts about Python | Yellow |
-| `web` | Web 🌍 | All my posts about this and other web sites | Emerald |
+| Tag | Display | Description |
+|-----|---------|-------------|
+| `code` | Code 🐛 | All my posts about various bits of code and projects |
+| `python` | Python 🐍 | All my posts about Python |
+| `web` | Web 🌍 | All my posts about this and other web sites |
 
 ### Operating Systems
 
-| Tag | Display | Description | Color |
-|-----|---------|-------------|-------|
-| `linux` | Linux 🐧 | All my posts about various Linux technologies | Yellow |
-| `macos` | macOS 🍏 | All my posts about various macOS technologies | Gray |
+| Tag | Display | Description |
+|-----|---------|-------------|
+| `linux` | Linux 🐧 | All my posts about various Linux technologies |
+| `macos` | macOS 🍏 | All my posts about various macOS technologies |
 
 ### Content & Media
 
-| Tag | Display | Description | Color |
-|-----|---------|-------------|-------|
-| `author` | Author 📚 | All the posts about the books I have written | Amber |
-| `book` | Book 📚 | All the posts about the books I have written and am reading | Emerald |
-| `listened` | Listened 🎧 | What did I listen to in a week? | Fuchsia |
-| `vinyl` | Vinyl 🎧 | All my posts about Vinyl records I am listening to | Rose |
+| Tag | Display | Description |
+|-----|---------|-------------|
+| `author` | Author 📚 | All the posts about the books I have written |
+| `book` | Book 📚 | All the posts about the books I have written and am reading |
+| `listened` | Listened 🎧 | What did I listen to in a week? |
+| `vinyl` | Vinyl 🎧 | All my posts about Vinyl records I am listening to |
 
 ### Other Topics
 
-| Tag | Display | Description | Color |
-|-----|---------|-------------|-------|
-| `blog` | Blog 🤷‍♂️ | Some general Posts | Gray |
-| `conference` | Conference 📢 | All my posts about attending conferences | Violet |
-| `life` | Life 👨‍🏫 | Some general Posts | Pink |
-| `security` | Security 🔐 | All my posts about security | Red |
-| `tools` | Tools 🧰 | All my posts about various tools | Orange |
+| Tag | Display | Description |
+|-----|---------|-------------|
+| `blog` | Blog 🤷‍♂️ | Some general Posts |
+| `conference` | Conference 📢 | All my posts about attending conferences |
+| `life` | Life 👨‍🏫 | Some general Posts |
+| `security` | Security 🔐 | All my posts about security |
+| `tools` | Tools 🧰 | All my posts about various tools |
 
 ## Using Tags in Posts
 
@@ -214,43 +215,11 @@ Tag pages show:
 
 ### 4. Visual Styling
 
-Tags have custom colors that appear:
+Every tag renders with the same editorial treatment wherever it appears (index entries, the tag index, post headers): small monospace capitals with a hairline underline that shifts to the accent color on hover. `getTagColorClasses()` in `src/utils/tags.ts` returns the single `tag-editorial` class for all tags.
 
-**Post Cards:**
-```
-Tag badges with color-coded backgrounds
-```
+## Tag Styling Reference
 
-**Tag Cloud** (`/tags/`):
-```
-Animated tag cloud with custom colors
-Post counts for each tag
-```
-
-**Post Headers:**
-```
-Colored tag badges below post title
-```
-
-## Tag Colors Reference
-
-Tags use Tailwind color schemes with light/dark mode support:
-
-| Color Family | Tags | Example |
-|--------------|------|---------|
-| **Purple** | ai, infrastructure-as-code, podman | Purple badge |
-| **Blue** | azure, docker, kubernetes | Blue badge |
-| **Sky** | cloud | Sky blue badge |
-| **Orange** | aws, tools | Orange badge |
-| **Teal** | devops | Teal badge |
-| **Green** | code | Green badge |
-| **Yellow** | linux, python | Yellow badge |
-| **Red** | ansible, security | Red badge |
-| **Pink** | life | Pink badge |
-| **Fuchsia** | listened | Fuchsia badge |
-| **Rose** | vinyl | Rose badge |
-| **Emerald** | book, web | Emerald badge |
-| **Gray** | blog, macos | Gray badge |
+The per-tag pastel color palette is retired. The `colorLight` / `colorDark` fields still exist on `TAG_METADATA` in `src/consts.ts` but are no longer rendered - all tags share the `.tag-editorial` style defined in `src/styles/global.css`.
 
 ## Adding New Tags (Advanced)
 
@@ -270,6 +239,8 @@ export const TAG_METADATA: Record<string, TagMetadata> = {
   }
 };
 ```
+
+The `colorLight` / `colorDark` fields are still required by the `TagMetadata` interface but are no longer rendered - every tag gets the same editorial styling.
 
 ### 2. Add to TAG_AVATAR_MAP (optional)
 
@@ -380,15 +351,15 @@ All tag archives follow the pattern:
 
 ## Troubleshooting
 
-### Tag Not Showing Color
+### Tag Missing Emoji or Description
 
-**Problem**: Tag appears with default styling
+**Problem**: Tag appears without its emoji title or has no description on its tag page
 
 **Solution**: Tag must be defined in `TAG_METADATA` in `src/consts.ts`
 
 ```yaml
-# If tag is not in TAG_METADATA, it won't have custom colors
-tags: ["undefined-tag"]  # Will use default gray
+# If tag is not in TAG_METADATA, it falls back to the raw slug
+tags: ["undefined-tag"]  # No emoji title or tag-page description
 ```
 
 ### Wrong Avatar Displaying
@@ -426,7 +397,7 @@ pnpm run build
 
 **File**: `src/consts.ts`
 
-- `TAG_METADATA` - Tag names, emojis, descriptions, colors
+- `TAG_METADATA` - Tag names, emojis, descriptions (plus retired `colorLight`/`colorDark` fields)
 - `TAG_AVATAR_MAP` - Tag-to-avatar mappings
 
 ---
