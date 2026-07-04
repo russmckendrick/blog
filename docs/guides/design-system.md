@@ -1,180 +1,79 @@
-# Design System - "The Curated Journal"
+# Design System — "The Print Edition"
 
-The blog uses a design system called "The Curated Journal," an editorial aesthetic inspired by high-end print magazines. It prioritises tonal layering over borders, generous whitespace, and a typographic hierarchy that gives content room to breathe.
+The site is styled as a high-end print journal: paper tones, serif typography, hairline rules instead of cards, mono metadata, and image-led layouts. The canonical token reference is [DESIGN.md](../../DESIGN.md) at the repo root; this guide covers how the system is implemented in code.
 
-All design tokens are defined as CSS custom properties in `src/styles/global.css` and automatically adapt between light and dark modes via the `.dark` class on `<html>`.
+## Where things live
 
-## Colors & Surface Hierarchy
+- **Tokens:** `src/styles/global.css` — CSS custom properties in `:root` (light/"paper") and `.dark` (ink and paper swapped).
+- **Fonts:** registered in `astro.config.mjs` via Astro's Fonts API (`fontProviders.local()`), woff2 files in `src/assets/fonts/`, `<Font>` tags in `src/components/layout/BaseHead.astro`, Tailwind mapping in the `@theme inline` block of `global.css`.
+- **Motion helpers:** `src/scripts/motion.ts` (vanilla [Motion](https://motion.dev) — no React islands).
+- **Expressive Code theming:** `styleOverrides` in `astro.config.mjs` only; late CSS cannot override its build-time styles.
 
-Depth is achieved through **tonal layering** - shifting background colors rather than drawing borders.
+## Tokens
 
-### Light Mode (`:root`)
+Primitives (preferred in new code):
 
-| Token | Value | Usage |
-|---|---|---|
-| `--color-primary` | `#00288e` | High-impact brand moments, blockquote borders |
-| `--color-primary-container` | `#1e40af` | CTA gradient endpoint |
-| `--color-secondary` | `#0058be` | Links, interactive accents, reading progress bar |
-| `--color-surface` | `#f8f9fa` | Page background (`<body>`) |
-| `--color-surface-container-lowest` | `#ffffff` | Cards, article containers |
-| `--color-surface-container-low` | `#f3f4f5` | Footer, author info box, mobile menu, pagination |
-| `--color-surface-container` | `#edeeef` | Section breaks, inline code bg, `<hr>` |
-| `--color-surface-container-high` | `#e2e3e5` | Hover states |
-| `--color-surface-container-highest` | `#d6d8db` | Active pagination page |
-| `--color-on-surface` | `#191c1d` | Primary text (never pure black) |
-| `--color-on-surface-variant` | `#44474f` | Secondary text, metadata, descriptions |
+| Token | Light | Dark | Use |
+|---|---|---|---|
+| `--paper` | `#F6F6F6` | `#16130E` | page background |
+| `--paper-bright` | `#FFFFFF` | `#100E0A` | code frames, link previews |
+| `--paper-shade` → `--paper-deepest` | `#EDEDED`…`#C9C9C9` | `#1D1912`…`#363023` | quiet fills, hovers |
+| `--ink` | `#1A1A1A` | `#E9E2D2` | headings, primary copy |
+| `--ink-muted` | `#555555` | `#B5AC97` | prose, metadata |
+| `--rule` | `rgba(0,0,0,.14)` | `rgba(233,226,210,.16)` | hairline rules, frames |
+| `--rule-strong` | `rgba(0,0,0,.5)` | `rgba(233,226,210,.5)` | heavy editorial rules |
+| `--accent` | `#BF3B00` | `#D99C82` | links, active states |
+| `--accent-strong` | `#8F2D00` | `#E5B29C` | hovers, filled buttons |
+| `--accent-highlight` | `#8A6D1F` | `#C9A94E` | text highlights only |
 
-### Dark Mode (`.dark`)
-
-All tokens are redefined for dark surfaces. The surface scale inverts so "higher" containers become lighter:
-
-| Token | Value |
-|---|---|
-| `--color-surface` | `#111418` |
-| `--color-surface-container-lowest` | `#0b0e12` |
-| `--color-on-surface` | `#e2e2e6` |
-| `--color-primary` | `#a4c8ff` |
-| `--color-secondary` | `#8ecaff` |
-
-See `src/styles/global.css` for the complete dark mode token set.
-
-### The "No-Line" Rule
-
-**1px solid borders are not used for sectioning.** Separation between regions (header, content, footer, pagination) is achieved through background color shifts. For example, the footer uses `.surface-container-low` against the page `.surface` background.
-
-When accessibility requires a visible container boundary, use the **ghost border**: `outline: var(--ghost-border)` - a 15% opacity outline that is felt, not seen. Ghost borders are used in prose tables and code blocks but **not** on cards.
-
-## Elevation & Depth
-
-Shadows are used sparingly for floating elements, not for general card elevation.
-
-| Token | Value | Usage |
-|---|---|---|
-| `--shadow-ambient` | `0 8px 24px rgba(25,28,29,0.05)` | Cards, header |
-| `--shadow-ambient-hover` | `0 12px 32px rgba(25,28,29,0.08)` | Card hover states |
-| `--ghost-border` | `1px solid rgba(196,197,213,0.15)` | Prose tables, code blocks |
-| `--glass-bg` | `rgba(255,255,255,0.85)` | Semi-transparent header |
-| `--glass-blur` | `blur(12px)` | Backdrop blur for glass elements |
+**Legacy aliases:** the Material-style names (`--color-surface`, `--color-surface-container-*`, `--color-on-surface`, `--color-on-surface-variant`, `--color-primary`, `--color-secondary`, `--color-outline-variant`) are aliases of the primitives so older components keep working. `--shadow-ambient` is `none`, `--glass-bg` is opaque paper, and `--ghost-border` is a hairline — the utilities that consume them are inert by design. Never add raw hex values or Tailwind palette colours (`gray-*`, `blue-*`).
 
 ## Typography
 
-Two font families provide a high-contrast pairing:
+| Face | Variable | Role |
+|---|---|---|
+| Source Serif 4 | `--font-serif` + `--font-display` | one serif for everything, newspaper-style: body at 400 (1.125rem/1.75, ~72ch measure); headlines bold — 700 display/h1 (tracking -0.015em), 660 headings/card titles (-0.01em), 620 h3 |
+| IBM Plex Mono | `--font-mono` (`font-mono`) | code + metadata: datelines, rubrics |
 
-| Role | Font | Tailwind Class | CSS Variable |
-|---|---|---|---|
-| Display / Headlines | Plus Jakarta Sans | `font-display` | `--font-display` |
-| Body / UI | Inter | `font-sans` | `--font-sans` |
-| Code | IBM Plex Mono | `font-mono` | `--font-mono` |
-| Decorative / Serif | Crimson Pro | `font-serif` | `--font-serif` |
+Dates are day-first ("13 Jun 2026") via `FormattedDate.astro`.
 
-Fonts are self-hosted through **Astro's native Fonts API** (`fonts:` in `astro.config.mjs`, emitted by the `<Font>` components in `BaseHead.astro`). Astro auto-generates the `@font-face` rules, hashes the files into `/_astro/fonts/`, and adds CLS-safe fallback metrics (`size-adjust`/`ascent-override`). Source woff2 files live in `src/assets/fonts/`. **No font is `preload`ed** — the LCP element on every page is the hero cover image, so font preloads would only steal high-priority bandwidth from the LCP image on slow connections. Because every face uses `font-display: swap` with the fallback metrics above, text paints immediately in the fallback (no FCP impact) and swaps in with zero layout shift. If a future layout makes above-the-fold text the LCP element, re-add `preload` to that family in `BaseHead.astro`.
+### Utility classes
 
-- Plus Jakarta Sans: weights 600, 700, 800 (latin woff2)
-- Inter: variable font, weight range 100–900 (latin woff2)
-- IBM Plex Mono: weights 400, 500, 600
-- Crimson Pro: weights 400, 500, 600 + italic 400, 500
+- `.rubric` — the standard label treatment: mono, 0.8125rem, uppercase, 0.08em tracking, muted ink. Used for datelines, section rubrics, nav items, and "Previous/Next" labels.
+- `.tag-editorial` — tag-like links: small mono caps in a square hairline box (a quiet classification stamp), accent border/text on hover. `getTagColorClasses()` in `src/utils/tags.ts` returns this for every tag (the per-tag pastel palette is retired visually).
+- `.nav-underline` — underline draw-in on hover/focus (scaleX from the left).
 
-The `--font-*` Tailwind tokens map to Astro's per-family `cssVariable`s via a `@theme inline` block in `global.css`. Do not hand-write `@font-face` rules — add or change fonts in the `fonts:` config instead.
+## Rules instead of cards
 
-Body text uses 17px / 1.7 line-height. Headings use `font-display` with tight tracking.
+No cards, shadows, glass, gradients, or border radius (circular avatar portraits are the sole exception). Separation comes from:
 
-## Utility Classes
+- hairline rules between list entries and around every image (`border` + `--color-outline-variant`)
+- heavy rules (`border-t-2`/`border-b-2` + `--rule-strong`) closing page headers (the featured spread is rule-free)
+- the page-header pattern: rubric line → Source Serif heading → standfirst → heavy rule
 
-These classes are defined in `src/styles/global.css` and map directly to design tokens:
+Listings are index entries: dateline, framed cover, Source Serif headline, standfirst, hairline below.
 
-### Surfaces
-- `.surface` - page background
-- `.surface-container-lowest` - cards
-- `.surface-container-low` - footer, author box, mobile menu
-- `.surface-container` - section breaks, theme toggle area
-- `.surface-container-high` - hover states
-- `.surface-container-highest` - active states
+## Motion
 
-### Text
-- `.text-on-surface` - primary text
-- `.text-on-surface-variant` - secondary/metadata text
+All motion runs through `src/scripts/motion.ts` and the timing tokens `--ease-settle`, `--dur-quick` (150ms), `--dur-hover` (400ms), `--dur-page` (600ms). No springs or lift hovers.
 
-### Effects
-- `.glass` - glassmorphic background + backdrop blur
-- `.shadow-ambient` - diffused ambient shadow
-- `.ghost-border` - subtle outline boundary
-
-## Component Patterns
-
-### Header (`src/components/layout/Header.astro`)
-- Always uses `.glass .shadow-ambient` (semi-transparent background with subtle blur)
-- Desktop navigation uses icon + text labels for clarity
-- Mobile menu: `.surface-container-low` background shift (no `border-t`)
-
-### Footer (`src/components/layout/Footer.astro`)
-- `.surface-container-low` background shift (no `border-t`)
-- Text uses `.text-on-surface-variant`
-
-### Post Cards (`src/components/blog/PostCard.astro`)
-Four variants (vertical, featured, grid, horizontal), all sharing:
-- `.surface-container-lowest` background
-- `.shadow-ambient` elevation
-- `rounded-xl` border radius
-- Hover: enhanced shadow + translate
-- Headings: `.font-display`
-- Date accent: `color: var(--color-secondary)`
-- Tag colors: per-tag system from `consts.ts` (preserved, not overridden by design tokens)
-
-### Blog Post Layout (`src/layouts/BlogPost.astro`)
-- Article card: `.surface-container-lowest .shadow-ambient .rounded-xl`
-- Author info box: `.surface-container-low .rounded-xl`
-- Title: `.font-display` with `clamp(2.25rem, 5vw, 3.5rem)`
-- Content width: `max-w-5xl 2xl:max-w-6xl`
-
-### Pagination (`src/components/layout/Pagination.astro`)
-- `.surface-container-low` background with rounded corners (no `border-t`)
-- Active page: `.surface-container-highest` background
-- Hover: `.surface-container-high` background
-
-### Reading Progress Bar
-- 2px fixed bar at viewport top, `z-index: 9999`
-- Color: `var(--reading-progress-color)` (secondary in light, lighter blue in dark)
-- Scroll-tracking script in both `BaseLayout.astro` and `BlogPost.astro`
-
-### Prose Content (`src/styles/global.css` `.prose` block)
-- Headings: `var(--font-display)`, `var(--color-on-surface)`
-- Body text: `var(--color-on-surface-variant)`
-- Links: `var(--color-secondary)` with 40% opacity underline
-- Blockquotes: `var(--color-primary)` left border, `var(--color-surface-container-low)` background
-- Tables: ghost-border outlines (no solid cell borders)
-- `<hr>`: 1px background-based separator, no border
-- Inline code: `var(--color-surface-container)` background
-
-## Do's and Don'ts
-
-### Do
-- **Use tonal layering** - separate sections by shifting background colors, not adding borders
-- **Embrace whitespace** - generous padding and section gaps
-- **Image-first design** - every article card should be anchored by a curated hero image
-- **Use `--color-on-surface`** for text - never pure `#000000`
-
-### Don't
-- **Don't use 1px borders** for sectioning - use background shifts or ghost borders
-- **Don't use dividers** - increase padding or change background tone instead
-- **Don't crowd margins** - maintain wide gutters on desktop
-
-## Scroll-Reveal Animations
-
-Elements can animate in as they scroll into view using CSS classes and an Intersection Observer script.
-
-| Class | Effect |
+| Attribute | Effect |
 |---|---|
-| `.reveal` | Fade in + slide up (24px) |
-| `.reveal-fade` | Fade in only |
-| `.reveal-scale` | Fade in + scale from 95% |
-| `.reveal-stagger` | Parent class that staggers `.reveal` children (80ms delay each) |
+| `data-entrance` | staggered fade + 14px rise on page load (dateline → title → byline → hero) |
+| `data-settle` | image settles from scale 1.03 with fade (article heroes) |
+| `data-reveal` | fades up once when scrolled into view |
+| `data-reveal="rule"` | rule draws in horizontally |
 
-All reveal animations respect `prefers-reduced-motion` and are disabled when the user prefers reduced motion. The Intersection Observer script is in both `BaseLayout.astro` and `BlogPost.astro`.
+`initPageMotion()` is called from `BaseLayout.astro` and `BlogPost.astro` on load and `astro:page-load`; elements are claimed with `data-motion-claimed` so client-side navigations don't double-animate. `[data-entrance]`/`[data-settle]` start hidden only under `@media (scripting: enabled)` and are forced visible under `prefers-reduced-motion`.
 
-## Preserved Systems
+Shared-element view transitions: `PostCard` and `BlogPost.astro` derive matching `transition:name` values (`post-img-<slug>`, `post-title-<slug>`) from the post URL, so the listing cover morphs into the article hero on navigation.
 
-These existing systems are not overridden by the design tokens:
+## Callouts
 
-- **Tag colors** - per-tag color pairs defined in `src/consts.ts` (`TAG_METADATA`)
-- **Dark mode toggle** - class-based (`.dark` on `<html>`), localStorage persistence
-- **Focus rings** - Tailwind `ring-blue-500/50` (functional, not decorative)
+One definition in `global.css` (`.callout`, `.callout-heading`, variant classes `.callout-note/tip/important/caution/warning`). Each variant sets `--callout-accent` from a per-variant ink (defined light + dark): 2px accent left rule, 5% `color-mix` tint background, small-caps mono heading. `Callout.astro` maps `general`/`info` to the note treatment.
+
+## Third-party surfaces
+
+- **Expressive Code:** editor/code-file frames are square with hairline borders and paper-tinted chrome, via `styleOverrides` in `astro.config.mjs`. **Terminal frames** (`.frame.is-terminal`) are the deliberate exception — restyled in `global.css` as macOS windows: 10px radius, soft shadow, real red/amber/green traffic lights drawn as pure CSS circles. Terminals always render as a **dark slate-navy profile (Catppuccin Macchiato — matching the author's real terminal)** in *both* site themes: `catppuccin-macchiato` is registered as a third EC theme whose selector never matches page-wide, and terminal frames force its token layer (`var(--2)`) over a `#24273a` body and `#2c3047` titlebar.
+- **Giscus:** custom paper/ink themes in `public/giscus/light.css` / `dark.css`, loaded with a `?v=` cache-busting query from `Comments.astro`.
+- **Pagefind:** `--pagefind-ui-*` variables + square-corner overrides in `src/pages/search.astro`.

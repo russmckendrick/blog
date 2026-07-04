@@ -101,15 +101,12 @@ const breadcrumbSchema = createBreadcrumbSchema(
     </div>
 
     {related.length > 0 && (
-      <aside class="mt-12 pt-6 border-t border-[var(--color-outline-variant)]/40">
-        <p class="text-xs text-on-surface-variant mb-3">Related terms</p>
+      <aside class="mt-12 pt-6 border-t" style="border-color: var(--color-outline-variant);">
+        <p class="rubric mb-3">Related terms</p>
         <ul class="flex flex-wrap gap-2">
           {related.map((rel) => (
             <li>
-              <a
-                href={`/glossary/${rel.id}/`}
-                class="inline-flex items-center rounded-full px-3 py-1 surface-container-lowest text-sm transition-all hover:-translate-y-[1px] hover:shadow-md"
-              >
+              <a href={`/glossary/${rel.id}/`} class="tag-editorial">
                 {rel.data.term}
               </a>
             </li>

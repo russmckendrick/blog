@@ -47,22 +47,21 @@ const breadcrumbSchema = createBreadcrumbSchema(
   <Schema slot="head" item={collectionSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
 
-  <section class="surface-container-low text-center py-12 pb-16 mb-8">
-    <div class="max-w-3xl mx-auto px-5 animate-fade-in">
-      <h1 class="text-4xl lg:text-5xl font-bold mb-4 text-on-surface font-display">Technology glossary</h1>
-      <p class="text-lg text-on-surface-variant">
-        {description}
-      </p>
-    </div>
+  <section class="max-w-4xl mx-auto px-5 pt-4 pb-10 mb-10 border-b-2" style="border-color: var(--rule-strong);">
+    <p class="rubric mb-3" data-entrance>Reference</p>
+    <h1 class="text-4xl lg:text-5xl mb-4 text-on-surface font-display" data-entrance>Technology glossary</h1>
+    <p class="text-lg text-on-surface-variant" data-entrance>
+      {description}
+    </p>
   </section>
 
   <section class="max-w-4xl mx-auto px-5 pb-16">
     {orderedGroups.length > 1 && (
-      <nav aria-label="Jump to letter" class="surface-container-lowest rounded-xl p-4 mb-8 flex flex-wrap gap-2 justify-center">
+      <nav aria-label="Jump to letter" class="mb-10 pb-4 border-b flex flex-wrap gap-x-4 gap-y-2" style="border-color: var(--color-outline-variant);">
         {orderedGroups.map(([letter]) => (
           <a
             href={`#letter-${letter}`}
-            class="font-display text-sm font-semibold rounded-full px-3 py-1 surface-container hover:bg-[var(--color-secondary-container)] transition-colors"
+            class="rubric nav-underline no-underline hover:text-on-surface"
           >
             {letter}
           </a>
@@ -71,13 +70,13 @@ const breadcrumbSchema = createBreadcrumbSchema(
     )}
 
     {orderedGroups.map(([letter, list]) => (
-      <section id={`letter-${letter}`} class="mb-10 scroll-mt-24">
-        <h2 class="font-display text-3xl font-bold mb-4 text-on-surface">{letter}</h2>
-        <ul class="space-y-3">
+      <section id={`letter-${letter}`} class="mb-12 scroll-mt-24">
+        <h2 class="font-display text-3xl mb-2 pb-2 border-b text-on-surface" style="border-color: var(--color-outline-variant);">{letter}</h2>
+        <ul>
           {list.map((entry) => (
-            <li class="surface-container-lowest rounded-xl p-4 sm:p-5 transition-all hover:-translate-y-[1px] hover:shadow-md">
-              <a href={`/glossary/${entry.id}/`} class="block">
-                <h3 class="font-display text-xl font-semibold text-on-surface">
+            <li class="border-b last:border-b-0" style="border-color: var(--color-outline-variant);">
+              <a href={`/glossary/${entry.id}/`} class="group block py-4 no-underline">
+                <h3 class="font-display text-xl text-on-surface transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 660;">
                   {entry.data.term}
                   {entry.data.abbreviation && (
                     <span class="ml-2 text-sm font-normal text-on-surface-variant">

@@ -13,46 +13,34 @@ const { previousPost, nextPost } = Astro.props
 ---
 
 {(previousPost || nextPost) && (
-  <nav aria-label="Post navigation" class="pt-8">
-    <div class="surface-container-low rounded-xl px-6 py-5">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-        {previousPost && (
-          <a
-            href={getPostUrl(previousPost.data.pubDate, previousPost.data.title)}
-            class="group flex items-center gap-3 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 rounded-lg p-2 -m-2 transition-colors"
-          >
-            <svg class="w-5 h-5 flex-shrink-0 text-on-surface-variant transition-transform duration-300 group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-            <div class="min-w-0">
-              <div class="text-xs font-medium text-on-surface-variant mb-0.5">Previous Post</div>
-              <div class="font-display text-base font-semibold text-on-surface line-clamp-1 transition-colors duration-300 group-hover:text-[var(--color-secondary)]">
-                {previousPost.data.title}
-              </div>
-            </div>
-          </a>
-        )}
+  <nav aria-label="Post navigation" class="mt-10 pt-5 border-t" style="border-color: var(--color-outline-variant);">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+      {previousPost && (
+        <a
+          href={getPostUrl(previousPost.data.pubDate, previousPost.data.title)}
+          class="group flex flex-col gap-1 no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4"
+        >
+          <span class="rubric">&larr; Previous</span>
+          <span class="font-display text-lg text-on-surface line-clamp-1 transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 660;">
+            {previousPost.data.title}
+          </span>
+        </a>
+      )}
 
-        {nextPost && (
-          <a
-            href={getPostUrl(nextPost.data.pubDate, nextPost.data.title)}
-            class:list={[
-              "group flex items-center gap-3 justify-end text-right focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 rounded-lg p-2 -m-2 transition-colors",
-              !previousPost && "md:col-start-2"
-            ]}
-          >
-            <div class="min-w-0">
-              <div class="text-xs font-medium text-on-surface-variant mb-0.5">Next Post</div>
-              <div class="font-display text-base font-semibold text-on-surface line-clamp-1 transition-colors duration-300 group-hover:text-[var(--color-secondary)]">
-                {nextPost.data.title}
-              </div>
-            </div>
-            <svg class="w-5 h-5 flex-shrink-0 text-on-surface-variant transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        )}
-      </div>
+      {nextPost && (
+        <a
+          href={getPostUrl(nextPost.data.pubDate, nextPost.data.title)}
+          class:list={[
+            "group flex flex-col gap-1 items-end text-right no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4",
+            !previousPost && "md:col-start-2"
+          ]}
+        >
+          <span class="rubric">Next &rarr;</span>
+          <span class="font-display text-lg text-on-surface line-clamp-1 transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 660;">
+            {nextPost.data.title}
+          </span>
+        </a>
+      )}
     </div>
   </nav>
 )}

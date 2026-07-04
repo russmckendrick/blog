@@ -115,16 +115,17 @@ const breadcrumbSchema = createBreadcrumbSchema(
     <section class="max-w-3xl mx-auto px-5 mb-12">
       <a
         href={wrappedHref}
-        class="block surface-container-lowest rounded-xl shadow-ambient ghost-border p-6 transition-all duration-300 hover:-translate-y-[1px] hover:shadow-[var(--shadow-ambient-hover)]"
+        class="group block py-5 border-t-2 border-b no-underline"
+        style="border-top-color: var(--rule-strong); border-bottom-color: var(--color-outline-variant);"
       >
-        <p class="text-xs uppercase tracking-wide text-on-surface-variant mb-1">Year in review</p>
-        <h2 class="font-display text-2xl font-bold text-on-surface mb-2">
+        <p class="rubric mb-2" style="color: var(--color-secondary);">Year in review</p>
+        <h2 class="font-display text-2xl text-on-surface mb-2 transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 660;">
           {wrappedEntry.data.title}
         </h2>
         <p class="text-on-surface-variant">
           {wrappedEntry.data.description}
         </p>
-        <p class="text-sm text-[var(--color-secondary)] mt-3">Read the full essay →</p>
+        <p class="rubric mt-3">Read the full essay &rarr;</p>
       </a>
     </section>
   )}

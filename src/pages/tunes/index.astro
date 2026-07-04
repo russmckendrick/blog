@@ -57,19 +57,18 @@ const browseHubs = [
 	<section class="max-w-7xl mx-auto px-5">
 		<h1 class="sr-only">Listened to This Week</h1>
 
-		<nav aria-label="Browse tunes" class="mb-5 sm:mb-6">
-			<div class="grid w-full grid-cols-1 gap-1 surface-container-lowest rounded-xl p-1 shadow-ambient sm:grid-cols-3">
-				{browseHubs.map((hub) => (
-					<a
-						href={hub.href}
-						class="group inline-flex min-h-10 min-w-0 items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-on-surface transition-colors duration-200 hover:surface-container focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50 sm:px-4"
-					>
-						<Icon name={hub.icon} class="h-4 w-4 shrink-0 text-on-surface-variant transition-colors duration-200 group-hover:text-on-surface" aria-hidden="true" />
-						<span>{hub.label}</span>
-						<span class="rounded-full surface-container px-1.5 py-0.5 text-[0.7rem] font-semibold leading-none text-on-surface-variant transition-colors duration-200 group-hover:surface-container-high group-hover:text-on-surface">{hub.count}</span>
-					</a>
-				))}
-			</div>
+		<nav aria-label="Browse tunes" class="mb-6 pb-3 border-b flex flex-wrap items-center gap-x-6 gap-y-2" style="border-color: var(--color-outline-variant);">
+			<span class="rubric" style="color: var(--color-secondary);">Browse</span>
+			{browseHubs.map((hub) => (
+				<a
+					href={hub.href}
+					class="group inline-flex items-center gap-2 rubric nav-underline no-underline py-1 hover:text-on-surface"
+				>
+					<Icon name={hub.icon} class="h-4 w-4 shrink-0" aria-hidden="true" />
+					<span>{hub.label}</span>
+					<span class="opacity-70">{hub.count}</span>
+				</a>
+			))}
 		</nav>
 
 		{/* Hero Section with Featured Tune */}
@@ -77,11 +76,11 @@ const browseHubs = [
 
 		{/* Grid of remaining tunes */}
 		{gridTunes.length > 0 && (
-			<div class="mt-6 sm:mt-8">
+			<div class="mt-10 sm:mt-14">
 				<h2 class="sr-only">More Tunes</h2>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch reveal-stagger">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
 					{gridTunes.map((tune) => (
-						<div class="reveal">
+						<div data-reveal>
 							<PostCard post={tune} variant="grid" headingLevel="3" />
 						</div>
 					))}

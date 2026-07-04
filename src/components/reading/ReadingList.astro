@@ -71,13 +71,13 @@ function isMediumUrl(url: string): boolean {
     No articles yet. Run <code class="text-sm surface-container-high px-2 py-1 rounded">node scripts/fetch-reading-list.js</code> to populate.
   </p>
 ) : (
-  <div class="space-y-12 reveal-stagger">
+  <div class="space-y-12">
     {[...grouped.entries()].map(([monthYear, monthItems]) => (
-      <div class="reveal" data-month-group>
+      <div data-reveal data-month-group>
         <div class="flex items-baseline gap-3 mb-5">
-          <h2 class="text-lg font-bold text-on-surface font-display">{monthYear}</h2>
-          <span class="text-sm text-on-surface-variant">{monthItems.length}&nbsp;{monthItems.length === 1 ? 'article' : 'articles'}</span>
-          <div class="flex-1 border-b border-outline-variant translate-y-[-4px]"></div>
+          <h2 class="text-lg text-on-surface font-display" style="font-weight: 660;">{monthYear}</h2>
+          <span class="rubric">{monthItems.length}&nbsp;{monthItems.length === 1 ? 'article' : 'articles'}</span>
+          <div class="flex-1 border-b translate-y-[-4px]" style="border-color: var(--color-outline-variant);"></div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {monthItems.map((item) => {
@@ -92,7 +92,8 @@ function isMediumUrl(url: string): boolean {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-reading-tags={item.tags.join(',')}
-                class="group block surface-container-lowest rounded-xl overflow-hidden ghost-border transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)] dark:hover:shadow-[0_16px_48px_rgba(0,0,0,0.3)]"
+                class="group block overflow-hidden border no-underline"
+                style="border-color: var(--color-outline-variant);"
               >
                 {ogImage ? (
                   <figure class="relative overflow-hidden">
@@ -131,10 +132,10 @@ function isMediumUrl(url: string): boolean {
                       width="20"
                       height="20"
                       loading="lazy"
-                      class="mt-0.5 rounded-sm shrink-0 opacity-70 group-hover:opacity-100 transition-opacity"
+                      class="mt-0.5 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity"
                     />
                     <div class="flex-1 min-w-0">
-                      <h3 class="text-sm font-semibold text-on-surface group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug line-clamp-2">
+                      <h3 class="text-sm font-semibold text-on-surface group-hover:text-[var(--color-secondary)] transition-colors leading-snug line-clamp-2">
                         {item.title}
                       </h3>
                       {description && (
@@ -145,7 +146,7 @@ function isMediumUrl(url: string): boolean {
                         <span class="shrink-0">·</span>
                         <span class="shrink-0">{formatDate(item.time)}</span>
                         {item.tags.length > 0 && item.tags.map(tag => (
-                          <span class="shrink-0 surface-container-high px-1.5 py-0.5 rounded-full text-[11px] font-medium">{tag}</span>
+                          <span class="shrink-0 font-mono uppercase tracking-wider text-[10px]">{tag}</span>
                         ))}
                       </div>
                     </div>

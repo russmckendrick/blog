@@ -205,9 +205,9 @@ The browse-page OG generators all share the same `OG()` + `PNG()` pipeline and a
 **Features**:
 - Auto-generated for all blog posts
 - Dimensions: 1200×630 (standard OG size)
-- Design: Site logo, gradient background, blue accent border
-- Font: Inter
-- Cached: `node_modules/.astro-og-canvas/`
+- Design: "Print Edition" card — neutral paper background, heavy ink rule across the top, logo + burnt-orange `RUSS.CLOUD` mono masthead, bold Source Serif headline with muted standfirst and a closing short rule; post covers render as an edge-to-edge plate on the right behind a hairline divider. Emoji are stripped from titles/descriptions (satori ships no emoji font).
+- Fonts: Source Serif 4 (400/700) + IBM Plex Mono (500) as static TTFs in `src/images/opengraph/fonts/` (satori cannot read the site's woff2 files)
+- Cached: `node_modules/.cache/og-images/`, keyed by content **plus a design-version salt** in every `*-og.png.ts` route (`og-design:print-edition-v1`) — bump the salt after any OG redesign, or CI's cached `node_modules` will keep serving old renders
 
 **Generated URLs**:
 ```
@@ -357,16 +357,18 @@ See [Image Delivery Architecture](./image-delivery.md)
 
 **File**: `src/components/layout/BaseHead.astro`
 
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+Fonts are self-hosted via Astro's Fonts API (no Google Fonts requests). The two families - Source Serif 4 (display and body) and IBM Plex Mono (code/metadata) - are loaded as CSS variables:
+
+```astro
+<Font cssVariable="--font-fraunces" />
+<Font cssVariable="--font-source-serif" />
+<Font cssVariable="--font-ibm-plex-mono" />
 ```
 
 **Benefits**:
-- Async font loading
-- No render-blocking CSS
-- DNS prefetch for faster connections
+- Self-hosted, no third-party font requests
+- `font-display: swap` with Astro's fallback metrics (zero CLS)
+- No font preload - the LCP element is the hero image, so fonts stay off the critical path
 
 ### Build Compression
 
@@ -541,7 +543,7 @@ and renders each key as a `<meta name="plausible:KEY">` tag (defaulting to `cont
 **Custom event goals** (create matching goals in the Plausible dashboard, and enable Outbound Links /
 File Downloads / Custom Events under Site Settings):
 - `Share` (prop `method`) — share-button clicks, tagged via `plausible-event-*` classes in
-  `ShareButtons.astro` and `ShareButtonsMotion.tsx`.
+  `ShareButtons.astro`.
 - `Search` — fired (debounced, no query string) from `src/pages/search.astro`.
 - `Comments Viewed` — fired when Giscus scrolls into view in `Comments.astro`.
 - `Video Play` (prop `provider`) — fired on first click of a YouTube embed in `embeds/YouTube.astro`.

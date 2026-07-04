@@ -41,9 +41,9 @@ const { page } = Astro.props;
 		<h1 class="sr-only">{SITE_TITLE} - Page {page.currentPage}</h1>
 
 		{/* 3-column grid of posts */}
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch reveal-stagger">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
 			{page.data.map((post) => (
-				<div class="reveal">
+				<div data-reveal>
 					<PostCard post={post} variant="grid" headingLevel="2" />
 				</div>
 			))}

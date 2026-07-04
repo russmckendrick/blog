@@ -32,6 +32,7 @@ export const GET: APIRoute = async function get({ props }) {
   const { title, description } = props as Props
 
   const hash = crypto.createHash('md5')
+  hash.update('og-design:print-edition-v1') // bump to invalidate cached renders after a redesign
   hash.update(JSON.stringify({ kind: 'tunes-album', title, description }))
   const digest = hash.digest('hex')
   const cacheFile = path.join(CACHE_DIR, `${digest}.png`)

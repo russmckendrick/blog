@@ -160,12 +160,9 @@ const musicGroupSchema = createMusicGroupSchema({
       <ul class="flex flex-wrap gap-2">
         {albums.map((album) => (
           <li>
-            <a
-              href={getAlbumTuneUrl(album.slug)}
-              class="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium surface-container-lowest transition-all hover:-translate-y-[1px] hover:shadow-md"
-            >
+            <a href={getAlbumTuneUrl(album.slug)} class="tag-editorial">
               {album.name}
-              <span class="ml-2 text-xs text-on-surface-variant">{album.posts.length}×</span>
+              <span class="opacity-70">{album.posts.length}×</span>
             </a>
           </li>
         ))}

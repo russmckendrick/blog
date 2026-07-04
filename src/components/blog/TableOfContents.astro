@@ -17,19 +17,14 @@ const tocHeadings = headings.filter(h => h.depth <= 3);
 
 {tocHeadings.length > 0 && (
   <nav class="toc-wrapper mb-10">
-    <details class="group surface-container-low rounded-xl shadow-ambient" id="toc-details">
-      <summary class="toc-summary cursor-pointer select-none px-6 py-4 font-semibold flex items-center justify-between rounded-xl transition-colors">
-        <span class="flex items-center gap-2">
-          <svg class="toc-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
-          </svg>
-          Table of Contents
-        </span>
-        <svg class="toc-chevron w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <details class="group toc-details" id="toc-details">
+      <summary class="toc-summary cursor-pointer select-none py-3 flex items-center justify-between transition-colors">
+        <span class="rubric text-on-surface">Contents</span>
+        <svg class="toc-chevron w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
         </svg>
       </summary>
-      <div class="px-6 pb-5 pt-1">
+      <div class="pb-4 pt-1">
         <ol class="toc-list">
           {tocHeadings.map((heading) => (
             <li>
@@ -51,15 +46,16 @@ const tocHeadings = headings.filter(h => h.depth <= 3);
 )}
 
 <style>
+  .toc-details {
+    border-top: 1px solid var(--color-outline-variant);
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
   .toc-summary {
     color: var(--color-on-surface);
   }
 
-  .toc-summary:hover {
-    background: var(--color-surface-container);
-  }
-
-  .toc-icon {
+  .toc-summary:hover .rubric {
     color: var(--color-secondary);
   }
 
@@ -71,7 +67,7 @@ const tocHeadings = headings.filter(h => h.depth <= 3);
     list-style: none;
     padding: 0;
     margin: 0;
-    border-left: 1px solid var(--color-surface-container-high);
+    border-left: 1px solid var(--color-outline-variant);
   }
 
   .toc-link {

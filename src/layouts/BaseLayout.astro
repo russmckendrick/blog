@@ -46,34 +46,11 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 		<Footer />
 		{import.meta.env.DEV && <WebVitals debug={true} />}
 		<script>
-			// Scroll-reveal animations via Intersection Observer
-			function initRevealAnimations() {
-				const elements = document.querySelectorAll('.reveal, .reveal-fade, .reveal-scale, .reveal-slide');
-				if (elements.length === 0) return;
+			// Page motion: staggered entrances, hero settles, and in-view reveals
+			import { initPageMotion } from '../scripts/motion';
 
-				// Wait for the browser to paint the hidden state first,
-				// then start observing so transitions are visible
-				requestAnimationFrame(() => {
-					requestAnimationFrame(() => {
-						const observer = new IntersectionObserver((entries) => {
-							entries.forEach(entry => {
-								if (entry.isIntersecting) {
-									entry.target.classList.add('revealed');
-									observer.unobserve(entry.target);
-								}
-							});
-						}, {
-							threshold: 0.1,
-							rootMargin: '0px 0px -40px 0px'
-						});
-
-						elements.forEach(el => observer.observe(el));
-					});
-				});
-			}
-
-			initRevealAnimations();
-			document.addEventListener('astro:page-load', initRevealAnimations);
+			initPageMotion();
+			document.addEventListener('astro:page-load', () => initPageMotion());
 		</script>
 		<script>
 			// Defer non-critical work until after LCP using requestIdleCallback

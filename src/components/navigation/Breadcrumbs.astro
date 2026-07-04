@@ -24,14 +24,14 @@ const breadcrumbSchema = {
 ---
 
 <nav aria-label="Breadcrumb" class="mb-3">
-  <ol class="flex items-center gap-2 text-xs">
+  <ol class="flex items-center gap-2 rubric">
     {items.map((item, index) => (
-      <li class="flex items-center gap-2">
-        {index > 0 && <span class="text-gray-400 dark:text-gray-600">/</span>}
+      <li class="flex items-center gap-2 min-w-0">
+        {index > 0 && <span aria-hidden="true" style="color: var(--color-outline-variant);">/</span>}
         {index === items.length - 1 ? (
-          <span class="text-gray-600 dark:text-gray-400">{item.label}</span>
+          <span class="truncate text-on-surface-variant">{item.label}</span>
         ) : (
-          <a href={item.url} class="text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+          <a href={item.url} class="nav-underline no-underline text-on-surface-variant hover:text-on-surface transition-colors">
             {item.label}
           </a>
         )}

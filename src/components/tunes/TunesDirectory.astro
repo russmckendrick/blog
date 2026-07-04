@@ -36,12 +36,13 @@ const getImageSrcSet = (src: string) =>
 
 <nav
   aria-label="Jump to letter"
-  class="surface-container-lowest rounded-xl p-4 mb-8 flex flex-wrap gap-2 justify-center shadow-ambient"
+  class="mb-10 pb-4 border-b flex flex-wrap gap-x-4 gap-y-2"
+  style="border-color: var(--color-outline-variant);"
 >
   {groups.map(([letter]) => (
     <a
       href={`#letter-${letter}`}
-      class="font-display text-sm font-semibold rounded-full px-3 py-1 surface-container hover:bg-[var(--color-surface-container-high)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+      class="rubric nav-underline no-underline hover:text-on-surface"
     >
       {letter}
     </a>
@@ -49,17 +50,17 @@ const getImageSrcSet = (src: string) =>
 </nav>
 
 {groups.map(([letter, list]) => (
-  <section id={`letter-${letter}`} class="mb-10 scroll-mt-24">
-    <h2 class="font-display text-3xl font-bold mb-4 text-on-surface">{letter}</h2>
-    <ul class="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4">
+  <section id={`letter-${letter}`} class="mb-12 scroll-mt-24">
+    <h2 class="font-display text-3xl mb-2 pb-2 border-b text-on-surface" style="border-color: var(--color-outline-variant);">{letter}</h2>
+    <ul class="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
       {list.map((item) => (
-        <li class="min-w-0">
+        <li class="min-w-0 border-b" style="border-color: var(--color-outline-variant);">
           <a
             href={item.href}
-            class="group flex min-w-0 min-h-[96px] overflow-hidden surface-container-lowest rounded-xl shadow-ambient transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_12px_32px_rgba(25,28,29,0.08)] focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50"
+            class="group flex min-w-0 min-h-[96px] overflow-hidden py-3 no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4"
           >
-            <div class="relative w-[84px] sm:w-[96px] shrink-0 overflow-hidden surface-container">
-              <div class="absolute inset-0 flex items-center justify-center bg-[linear-gradient(135deg,var(--color-surface-container),var(--color-surface-container-high))] font-display text-3xl font-bold text-on-surface-variant opacity-50" aria-hidden="true">
+            <div class="relative w-[84px] sm:w-[96px] shrink-0 overflow-hidden border" style="border-color: var(--color-outline-variant);">
+              <div class="absolute inset-0 flex items-center justify-center surface-container font-display text-3xl text-on-surface-variant opacity-50" aria-hidden="true">
                 {getInitial(item.name)}
               </div>
               {item.image && (
@@ -87,11 +88,11 @@ const getImageSrcSet = (src: string) =>
             </div>
             <div class="min-w-0 flex flex-1 flex-col justify-center p-4">
               {item.kicker && (
-                <span class="mb-1 block truncate text-xs font-semibold uppercase tracking-wide text-[var(--color-secondary)]">
+                <span class="rubric mb-1 block truncate text-xs" style="color: var(--color-secondary);">
                   {item.kicker}
                 </span>
               )}
-              <span class="font-display text-base font-semibold leading-snug text-on-surface line-clamp-2 transition-colors group-hover:text-[var(--color-primary)]">
+              <span class="font-display text-base leading-snug text-on-surface line-clamp-2 transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 660;">
                 {item.name}
               </span>
               <span class="mt-1 text-sm text-on-surface-variant leading-snug">

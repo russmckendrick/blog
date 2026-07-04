@@ -147,7 +147,7 @@ The site builds several taxonomy and browse hubs from the content collections an
 
 | Route | Purpose | Source |
 |-------|---------|--------|
-| `/tags/{tag}/[page]/` | Posts filtered by tag, with related-tag chips and tag-specific OG image | `blog` collection + `TAG_METADATA` |
+| `/tags/{tag}/[page]/` | Posts filtered by tag, with related-tag links and tag-specific OG image | `blog` collection + `TAG_METADATA` |
 | `/tags/{tag}-og.png` | Per-tag OpenGraph image | Generated from tag title + description |
 | `/tags/{tag}/rss.xml` | Per-tag RSS feed | `blog` collection |
 | `/tunes/artist/` and `/tunes/artist/{slug}/[page]/` | Browse weekly posts by featured artist, with local artist images on the index page | `src/data/tunes-index.json` |
@@ -250,7 +250,7 @@ graph TD
 - `Breadcrumbs.astro` - Breadcrumb navigation
 
 **Blog Components** (`src/components/blog/`):
-- `PostCard.astro` - Blog post preview cards
+- `PostCard.astro` - Rule-separated post index entries (featured/vertical/grid/horizontal variants)
 - `RelatedPosts.astro` - Tag-based related posts
 - `TableOfContents.astro` - Inline collapsible ToC
 - `StickyTableOfContents.astro` - Sticky sidebar ToC with scroll-aware active highlighting (2xl+)
@@ -258,7 +258,7 @@ graph TD
 
 **Reading Components** (`src/components/reading/`):
 - `ReadingHeader.astro` - Page title, article count, and tag filter buttons
-- `ReadingList.astro` - Card grid grouped by month; each card shows OG image, title, cached description (from `reading-image-cache.json`), domain favicon, date, and tags
+- `ReadingList.astro` - Hairline-framed grid grouped by month; each entry shows OG image, title, cached description (from `reading-image-cache.json`), domain favicon, date, and tags
 
 **Embed Components** (`src/components/embeds/`):
 - Media: YouTube, Instagram, Giphy, Audio, AppleMusic

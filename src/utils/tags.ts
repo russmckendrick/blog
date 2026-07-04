@@ -55,9 +55,10 @@ export function getTagUrl(slug: string): string {
 }
 
 /**
- * Get tag color classes (combined light and dark mode)
+ * Get tag classes — one editorial treatment for every tag.
+ * The per-tag pastel palette (colorLight/colorDark in TAG_METADATA)
+ * is retired visually; metadata titles/emojis/descriptions still apply.
  */
-export function getTagColorClasses(slug: string): string {
-  const metadata = getTagMetadata(slug);
-  return `${metadata.colorLight} ${metadata.colorDark}`;
+export function getTagColorClasses(_slug?: string): string {
+  return 'tag-editorial';
 }

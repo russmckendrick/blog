@@ -3,9 +3,9 @@ import type { CollectionEntry } from 'astro:content';
 import FormattedDate from './FormattedDate.astro';
 import { getPostUrl } from '../../utils/url.ts';
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
-import { getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } from '../../utils/tags';
+import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../../utils/tags';
 import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudflare-images';
-import { AI_AUTHOR, TAG_METADATA, TAG_AVATAR_MAP, CF_IMAGE_PRESETS } from '../../consts';
+import { AI_AUTHOR, CF_IMAGE_PRESETS } from '../../consts';
 
 interface Props {
 	post: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
@@ -26,33 +26,11 @@ const readingTime = formatReadingTime(minutes);
 const author = post.data.author || AI_AUTHOR.name;
 const tags = post.data.tags ?? [];
 
-// Check if this is an AI-generated post
-const isAIAuthor = author === AI_AUTHOR.name;
-
-// Build avatar path
-const buildAvatarPath = (avatarName: string | undefined) => {
-	if (!avatarName) return null;
-	if (avatarName.includes('.')) {
-		return `/images/avatars/${avatarName}`;
-	}
-	return `/images/avatars/${avatarName}.svg`;
-};
-
-// Get avatar from primary tag if no avatar specified
-const getDefaultAvatar = () => {
-	if (isAIAuthor) return AI_AUTHOR.avatar;
-	const primaryTag = tags[0];
-	if (primaryTag && TAG_AVATAR_MAP[normalizeTagSlug(primaryTag)]) {
-		return `/images/avatars/${TAG_AVATAR_MAP[normalizeTagSlug(primaryTag)]}`;
-	}
-	return '/images/avatar.svg';
-};
-
-// Determine avatar source
-const avatarSrc = post.data.avatar
-	? buildAvatarPath(post.data.avatar)
-	: getDefaultAvatar();
-const avatarFallback = '/images/avatar-192x192.png';
+// Shared-element view transition names: the listing image/title morph
+// into the article hero/title on navigation.
+const transitionKey = href.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
+const imageTransition = `post-img-${transitionKey}`;
+const titleTransition = `post-title-${transitionKey}`;
 
 // Generate LQIP placeholder URL for blur-up effect
 // Skip LQIP for priority images to eliminate critical request chain (LCP optimization)
@@ -63,112 +41,111 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-xl">
-		<article
-			class={`relative surface-container-lowest rounded-xl shadow-ambient overflow-hidden ${priority ? '' : 'transition-all duration-500 group-hover:-translate-y-[3px] group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]'}`}>
-				{heroImage && (
-					<figure
-						class="relative overflow-hidden bg-cover bg-center bg-no-repeat"
-						style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
-					>
-						{/* LQIP blur overlay - shows while main image loads */}
-						{lqipUrl && (
-							<div
-								class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
-								style={`background-image: url('${lqipUrl}')`}
-								aria-hidden="true"
-							/>
-						)}
-						<img
-							src={getCFImageUrl(heroImage, {
-								width: priority ? 400 : 600,
-								quality: priority ? CF_IMAGE_PRESETS.thumbnailPriority.quality : CF_IMAGE_PRESETS.thumbnail.quality,
-								format: priority ? CF_IMAGE_PRESETS.thumbnailPriority.format : CF_IMAGE_PRESETS.thumbnail.format,
-								fit: priority ? CF_IMAGE_PRESETS.thumbnailPriority.fit : CF_IMAGE_PRESETS.thumbnail.fit
-							})}
-							srcset={generateCFSrcSet(
-								heroImage,
-								priority ? CF_IMAGE_PRESETS.thumbnailPriority.widths : CF_IMAGE_PRESETS.thumbnail.widths,
-								priority ? CF_IMAGE_PRESETS.thumbnailPriority.quality : CF_IMAGE_PRESETS.thumbnail.quality,
-								priority ? CF_IMAGE_PRESETS.thumbnailPriority.format : CF_IMAGE_PRESETS.thumbnail.format
-							)}
-							sizes="(min-width: 768px) 720px, calc(100vw - 40px)"
-							alt={alt}
-							width="1600"
-							height="900"
-							loading={priority ? "eager" : "lazy"}
-							decoding={priority ? "sync" : "async"}
-							fetchpriority={priority ? "high" : "low"}
-							class={`w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover ${priority ? '' : 'transition-transform duration-700 group-hover:scale-[1.03]'}`}
+		class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4">
+		<article class="border-b pb-10" style="border-color: var(--color-outline-variant);">
+			{heroImage && (
+				<figure
+					class="relative overflow-hidden border bg-cover bg-center bg-no-repeat"
+					style={`border-color: var(--color-outline-variant);${lqipUrl ? ` background-image: url('${lqipUrl}')` : ''}`}
+					transition:name={imageTransition}
+				>
+					{/* LQIP blur overlay - shows while main image loads */}
+					{lqipUrl && (
+						<div
+							class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
+							style={`background-image: url('${lqipUrl}')`}
+							aria-hidden="true"
 						/>
-					</figure>
-				)}
-			<div class="relative p-5 md:p-6 flex flex-col gap-6">
-				<header class="space-y-3">
-					<HeadingTag class="font-display text-2xl font-semibold tracking-tight text-on-surface">
+					)}
+					<img
+						src={getCFImageUrl(heroImage, {
+							width: priority ? 400 : 600,
+							quality: priority ? CF_IMAGE_PRESETS.thumbnailPriority.quality : CF_IMAGE_PRESETS.thumbnail.quality,
+							format: priority ? CF_IMAGE_PRESETS.thumbnailPriority.format : CF_IMAGE_PRESETS.thumbnail.format,
+							fit: priority ? CF_IMAGE_PRESETS.thumbnailPriority.fit : CF_IMAGE_PRESETS.thumbnail.fit
+						})}
+						srcset={generateCFSrcSet(
+							heroImage,
+							priority ? CF_IMAGE_PRESETS.thumbnailPriority.widths : CF_IMAGE_PRESETS.thumbnail.widths,
+							priority ? CF_IMAGE_PRESETS.thumbnailPriority.quality : CF_IMAGE_PRESETS.thumbnail.quality,
+							priority ? CF_IMAGE_PRESETS.thumbnailPriority.format : CF_IMAGE_PRESETS.thumbnail.format
+						)}
+						sizes="(min-width: 768px) 720px, calc(100vw - 40px)"
+						alt={alt}
+						width="1600"
+						height="900"
+						loading={priority ? "eager" : "lazy"}
+						decoding={priority ? "sync" : "async"}
+						fetchpriority={priority ? "high" : "low"}
+						class={`w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover ${priority ? '' : 'transition-transform duration-700 ease-out group-hover:scale-[1.04]'}`}
+					/>
+				</figure>
+			)}
+			<div class="pt-6 flex flex-col gap-4">
+				<p class="rubric flex flex-wrap items-center gap-x-2">
+					<FormattedDate date={post.data.pubDate} />
+					{readingTime && (
+						<>
+							<span aria-hidden="true">&middot;</span>
+							<span>{readingTime}</span>
+						</>
+					)}
+					<span aria-hidden="true">&middot;</span>
+					<span>{author}</span>
+				</p>
+				<header>
+					<HeadingTag
+						class="font-display text-2xl sm:text-3xl text-on-surface transition-colors group-hover:text-[var(--color-secondary)]"
+						style="font-weight: 660;"
+						transition:name={titleTransition}
+					>
 						{post.data.title}
 					</HeadingTag>
 				</header>
 				{description && (
-					<p class="text-base text-on-surface-variant leading-relaxed">
+					<p class="text-base sm:text-lg text-on-surface-variant leading-relaxed">
 						{description}
 					</p>
 				)}
-				<footer class="mt-1 text-sm flex flex-wrap items-center gap-x-2 gap-y-3">
-					<div class="flex items-center gap-2">
-						<div class="relative flex-shrink-0">
-							<img
-								src={avatarSrc}
-								alt={author}
-								class="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full ring-2 ring-white dark:ring-gray-900 shadow-md object-cover"
-								onerror={`this.onerror=null; this.src='${avatarFallback}';`}
-							/>
-						</div>
-						<div class="flex flex-col">
-							<span class="text-on-surface-variant font-medium">{author}</span>
-							<div class="flex items-center gap-2 text-xs text-on-surface-variant">
-								<span class="text-[var(--color-secondary)]">
-									<FormattedDate date={post.data.pubDate} />
-								</span>
-								{readingTime && (
-									<>
-										<span aria-hidden="true">·</span>
-										<span>{readingTime}</span>
-									</>
-								)}
-							</div>
-						</div>
-					</div>
-					{tags.length > 0 && (
-						<div class="flex flex-wrap gap-2 ml-auto">
-							{tags.slice(0, 6).map((tag) => (
-								<a
-									href={getTagUrl(tag)}
-									class={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${getTagColorClasses(tag)} transition-all hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500/50`}
-									onclick="event.stopPropagation()"
-								>
-									{getTagDisplayName(tag)}
-								</a>
-							))}
-						</div>
-					)}
-				</footer>
+				{tags.length > 0 && (
+					<footer class="flex flex-wrap gap-2">
+						{tags.slice(0, 6).map((tag) => (
+							<span class={getTagColorClasses(tag)}>
+								{getTagDisplayName(tag)}
+							</span>
+						))}
+					</footer>
+				)}
 			</div>
 		</article>
 	</a>
 ) : variant === 'featured' ? (
-	/* Featured variant - Side-by-side asymmetric layout for hero section */
+	/* Featured variant - lead-story editorial spread */
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-xl">
-		<article
-			class="relative surface-container-lowest rounded-xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:shadow-[0_16px_48px_rgba(25,28,29,0.08)]">
-			<div class="flex flex-col lg:flex-row">
+		class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4">
+		<article class="pt-2 pb-6">
+			<div class="flex flex-col lg:flex-row lg:gap-10">
 				{/* Content side */}
-				<div class="relative p-6 lg:p-8 xl:p-10 flex flex-col gap-6 lg:w-1/2 order-2 lg:order-1">
-					<header class="space-y-4">
-						<HeadingTag class="font-display text-3xl lg:text-4xl font-bold tracking-tight text-on-surface leading-tight">
+				<div class="relative py-6 lg:py-2 flex flex-col gap-5 lg:w-1/2 order-2 lg:order-1">
+					<p class="rubric flex flex-wrap items-center gap-x-2" style="color: var(--color-secondary);">
+						<span>Featured</span>
+						<span aria-hidden="true" class="text-on-surface-variant">&middot;</span>
+						<span class="text-on-surface-variant"><FormattedDate date={post.data.pubDate} /></span>
+						{readingTime && (
+							<>
+								<span aria-hidden="true" class="text-on-surface-variant">&middot;</span>
+								<span class="text-on-surface-variant">{readingTime}</span>
+							</>
+						)}
+					</p>
+					<header>
+						<HeadingTag
+							class="font-display text-3xl lg:text-[2.75rem] text-on-surface leading-[1.12] transition-colors group-hover:text-[var(--color-secondary)]"
+							style="font-weight: 700;"
+							transition:name={titleTransition}
+						>
 							{post.data.title}
 						</HeadingTag>
 					</header>
@@ -177,49 +154,25 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 							{description}
 						</p>
 					)}
-					<footer class="mt-auto pt-4 text-sm flex flex-wrap items-center gap-x-4 gap-y-3">
-						<div class="flex items-center gap-3">
-							<div class="relative flex-shrink-0">
-								<img
-									src={avatarSrc}
-									alt={author}
-									class="relative w-12 h-12 rounded-full ring-2 ring-white dark:ring-gray-900 shadow-md object-cover"
-									onerror={`this.onerror=null; this.src='${avatarFallback}';`}
-								/>
-							</div>
-							<div class="flex flex-col">
-								<span class="text-on-surface font-semibold">{author}</span>
-								<div class="flex items-center gap-2 text-sm text-on-surface-variant">
-									<span class="text-[var(--color-secondary)]">
-										<FormattedDate date={post.data.pubDate} />
-									</span>
-									{readingTime && (
-										<>
-											<span aria-hidden="true">·</span>
-											<span>{readingTime}</span>
-										</>
-									)}
-								</div>
-							</div>
-						</div>
+					<footer class="mt-auto pt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+						<span class="rubric">{author}</span>
 						{tags.length > 0 && (
-							<div class="flex flex-wrap gap-2 lg:ml-auto">
+							<span class="flex flex-wrap gap-2">
 								{tags.slice(0, 4).map((tag) => (
-									<span
-										class={`inline-flex items-center rounded-full px-3 py-1.5 text-sm font-medium ${getTagColorClasses(tag)}`}
-									>
+									<span class={getTagColorClasses(tag)}>
 										{getTagDisplayName(tag)}
 									</span>
 								))}
-							</div>
+							</span>
 						)}
 					</footer>
 				</div>
 				{/* Image side */}
 				{heroImage && (
 					<figure
-						class="relative overflow-hidden lg:w-1/2 order-1 lg:order-2 bg-cover bg-center bg-no-repeat"
-						style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
+						class="relative overflow-hidden border lg:w-1/2 order-1 lg:order-2 bg-cover bg-center bg-no-repeat"
+						style={`border-color: var(--color-outline-variant);${lqipUrl ? ` background-image: url('${lqipUrl}')` : ''}`}
+						transition:name={imageTransition}
 					>
 						{lqipUrl && (
 							<div
@@ -243,7 +196,7 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 							loading={priority ? "eager" : "lazy"}
 							decoding={priority ? "sync" : "async"}
 							fetchpriority={priority ? "high" : "low"}
-							class="w-full h-64 sm:h-80 lg:h-full lg:min-h-[400px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+							class="w-full h-64 sm:h-80 lg:h-full lg:min-h-[400px] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
 						/>
 					</figure>
 				)}
@@ -251,17 +204,20 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 		</article>
 	</a>
 ) : variant === 'grid' ? (
-	/* Grid variant - Compact card for 3-column layouts */
+	/* Grid variant - numbered index entry for 3-column layouts */
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-surface)] rounded-xl h-full">
-		<article
-			class="relative surface-container-lowest rounded-xl shadow-ambient overflow-hidden transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl h-full flex flex-col">
+		class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 h-full">
+		<article class="border-t pt-4 h-full flex flex-col gap-3" style="border-color: var(--color-outline-variant);">
+			<p class="rubric">
+				<FormattedDate date={post.data.pubDate} />
+			</p>
 			{heroImage && (
 				<figure
-					class="relative overflow-hidden bg-cover bg-center bg-no-repeat"
-					style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
+					class="relative overflow-hidden border bg-cover bg-center bg-no-repeat"
+					style={`border-color: var(--color-outline-variant);${lqipUrl ? ` background-image: url('${lqipUrl}')` : ''}`}
+					transition:name={imageTransition}
 				>
 					{lqipUrl && (
 						<div
@@ -285,97 +241,71 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 						loading="lazy"
 						decoding="async"
 						fetchpriority="low"
-						class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+						class="w-full aspect-[4/3] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
 					/>
 				</figure>
 			)}
-			<div class="relative p-4 flex flex-col gap-3 flex-1">
-				{/* Avatar */}
-				{heroImage && (
-					<div class="absolute -top-5 right-4 z-10">
-						<div class="relative flex-shrink-0">
-							<img
-								src={avatarSrc}
-								alt={author}
-								class="relative w-10 h-10 rounded-full ring-2 ring-white dark:ring-gray-900 shadow-md object-cover bg-white dark:bg-gray-800"
-								onerror={`this.onerror=null; this.src='${avatarFallback}';`}
-							/>
-						</div>
-					</div>
-				)}
+			<header>
+				<HeadingTag
+					class="font-display text-xl text-on-surface leading-snug transition-colors group-hover:text-[var(--color-secondary)]"
+					style="font-weight: 660;"
+					transition:name={titleTransition}
+				>
+					{post.data.title}
+				</HeadingTag>
+			</header>
+			{description && (
+				<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">
+					{description}
+				</p>
+			)}
+			<footer class="mt-auto pt-1 rubric flex flex-wrap items-center gap-x-2 text-xs">
+				{readingTime && <span>{readingTime}</span>}
 				{tags.length > 0 && (
-					<div class="flex flex-wrap gap-1.5">
-						{tags.slice(0, 2).map((tag) => (
-							<span
-								class={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${getTagColorClasses(tag)}`}
-							>
-								{getTagDisplayName(tag)}
-							</span>
-						))}
-					</div>
+					<>
+						<span aria-hidden="true">&middot;</span>
+						<span>{getTagDisplayName(tags[0])}</span>
+					</>
 				)}
-				<header>
-					<HeadingTag class="font-display text-base font-semibold tracking-tight text-on-surface leading-snug">
-						{post.data.title}
-					</HeadingTag>
-				</header>
-				{description && (
-					<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">
-						{description}
-					</p>
-				)}
-				<footer class="mt-auto pt-2 text-xs flex items-center gap-2 text-on-surface-variant">
-					<span class="text-[var(--color-secondary)] font-medium">
-						<FormattedDate date={post.data.pubDate} />
-					</span>
-					{readingTime && (
-						<>
-							<span aria-hidden="true">·</span>
-							<span>{readingTime}</span>
-						</>
-					)}
-				</footer>
-			</div>
+			</footer>
 		</article>
 	</a>
 ) : (
-	/* Horizontal variant - Link preview style for related posts */
+	/* Horizontal variant - compact rule-separated row for related posts */
 	<a
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 focus-visible:ring-offset-[16px] focus-visible:ring-offset-[var(--color-surface)] rounded-xl">
-		<article
-			class="relative rounded-xl overflow-hidden transition-shadow duration-200"
-			style="border: 1px solid var(--color-outline-variant, rgba(25, 28, 29, 0.2)); background: var(--color-surface-container-lowest, #ffffff); box-shadow: var(--shadow-ambient, 0 8px 24px rgba(25, 28, 29, 0.05));"
-			data-hover-shadow="true">
-			<div class="flex flex-col-reverse sm:flex-row items-stretch">
-				<div class="flex-1 p-4 flex flex-col justify-center min-w-0">
+		class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4">
+		<article class="border-t py-4" style="border-color: var(--color-outline-variant);">
+			<div class="flex flex-col-reverse sm:flex-row items-stretch gap-4">
+				<div class="flex-1 flex flex-col justify-center gap-2 min-w-0">
+					<p class="rubric text-xs flex items-center gap-2">
+						<FormattedDate date={post.data.pubDate} />
+						{readingTime && (
+							<>
+								<span aria-hidden="true">&middot;</span>
+								<span>{readingTime}</span>
+							</>
+						)}
+					</p>
 					<header>
-						<HeadingTag class="font-display text-base font-bold tracking-tight text-on-surface line-clamp-2 leading-snug transition-colors duration-200 group-hover:text-[var(--color-primary)]">
+						<HeadingTag
+							class="font-display text-lg text-on-surface line-clamp-2 leading-snug transition-colors group-hover:text-[var(--color-secondary)]"
+							style="font-weight: 660;"
+						>
 							{post.data.title}
 						</HeadingTag>
 					</header>
 					{description && (
-						<p class="mt-1 text-sm text-on-surface-variant leading-relaxed line-clamp-2">
+						<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">
 							{description}
 						</p>
 					)}
-					<footer class="mt-2 flex items-center gap-2 text-xs text-on-surface-variant" style="opacity: 0.6;">
-						<span class="text-[var(--color-secondary)]">
-							<FormattedDate date={post.data.pubDate} />
-						</span>
-						{readingTime && (
-							<>
-								<span aria-hidden="true">·</span>
-								<span>{readingTime}</span>
-							</>
-						)}
-					</footer>
 				</div>
 				{heroImage && (
 					<figure
-						class="relative overflow-hidden sm:flex-[0_0_35%] bg-cover bg-center bg-no-repeat"
-						style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
+						class="relative overflow-hidden border sm:flex-[0_0_30%] bg-cover bg-center bg-no-repeat"
+						style={`border-color: var(--color-outline-variant);${lqipUrl ? ` background-image: url('${lqipUrl}')` : ''}`}
 					>
 						{lqipUrl && (
 							<div
@@ -392,13 +322,13 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 								fit: CF_IMAGE_PRESETS.thumbnailHorizontal.fit
 							})}
 							srcset={generateCFSrcSet(heroImage, CF_IMAGE_PRESETS.thumbnailHorizontal.widths, CF_IMAGE_PRESETS.thumbnailHorizontal.quality, CF_IMAGE_PRESETS.thumbnailHorizontal.format)}
-							sizes="(min-width: 640px) 35vw, 100vw"
+							sizes="(min-width: 640px) 30vw, 100vw"
 							alt={alt}
 							width="512"
 							height="384"
 							loading="lazy"
 							fetchpriority="low"
-							class="w-full h-48 sm:absolute sm:inset-0 sm:h-full object-cover"
+							class="w-full h-40 sm:absolute sm:inset-0 sm:h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
 						/>
 					</figure>
 				)}
@@ -406,9 +336,3 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 		</article>
 	</a>
 )}
-
-<style>
-	article[data-hover-shadow]:hover {
-		box-shadow: var(--shadow-ambient-hover, 0 12px 32px rgba(25, 28, 29, 0.08)) !important;
-	}
-</style>

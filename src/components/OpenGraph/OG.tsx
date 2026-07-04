@@ -3,11 +3,28 @@ import fs from "fs";
 import path from "path";
 import sharp from "sharp";
 
+// Print Edition palette (light theme values from src/styles/global.css)
+const PAPER = "#F6F6F6";
+const INK = "#1A1A1A";
+const INK_MUTED = "#555555";
+const ACCENT = "#BF3B00";
+const RULE = "rgba(0, 0, 0, 0.14)";
+
+// Satori ships no emoji font, so pictographs render as tofu — and they
+// don't belong on the print-style card anyway.
+const stripEmoji = (text: string) =>
+  text
+    .replace(/[\p{Extended_Pictographic}\u{FE0F}\u{200D}]/gu, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+
 export default async function OG(
-  title: string = "Russ McKendrick - Blog",
-  description?: string,
+  rawTitle: string = "Russ McKendrick - Blog",
+  rawDescription?: string,
   coverImagePath?: string,
 ) {
+  const title = stripEmoji(rawTitle);
+  const description = rawDescription ? stripEmoji(rawDescription) : undefined;
   console.log('OG function called with:', { title, description, coverImagePath });
 
   // Convert cover image to base64 if it exists
@@ -36,11 +53,10 @@ export default async function OG(
       console.log('OG - Loading image from:', imagePath);
       console.log('OG - File exists:', fs.existsSync(imagePath));
 
-      // Resize and re-encode as JPEG to keep the embedded base64 well below
-      // libxml2's 10MB parse limit. The OG canvas is 1200x630, so there's no
-      // point shipping anything larger.
+      // Resize to the right-hand plate size and re-encode as JPEG to keep the
+      // embedded base64 well below libxml2's 10MB parse limit.
       const resized = await sharp(imagePath)
-        .resize(1200, 630, { fit: "cover", position: "attention" })
+        .resize(560, 630, { fit: "cover", position: "centre" })
         .jpeg({ quality: 80, mozjpeg: true })
         .toBuffer();
       coverImageBase64 = `data:image/jpeg;base64,${resized.toString('base64')}`;
@@ -58,109 +74,100 @@ export default async function OG(
     return `data:image/png;base64,${logoBuffer.toString('base64')}`;
   })();
 
+  // Scale the headline down as titles get longer
+  const titleSize = title.length > 90 ? 42 : title.length > 60 ? 48 : title.length > 35 ? 56 : 64;
+  const shortDescription = description && description.length > 180
+    ? `${description.slice(0, 177).trimEnd()}…`
+    : description;
+
   return (
     <div
       style={{
         display: "flex",
+        flexDirection: "column",
         width: "100%",
         height: "100%",
-        position: "relative",
+        backgroundColor: PAPER,
+        fontFamily: "Source Serif 4",
       }}
     >
-      {/* Cover image if available */}
-      {coverImageBase64 && (
-        <img
-          src={coverImageBase64}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
-      )}
-
-      {/* Dark overlay */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background: coverImageBase64
-            ? "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.75))"
-            : "linear-gradient(135deg, #111827 0%, #1f2937 100%)",
-        }}
-      />
-
-      {/* Content layer */}
+      {/* Heavy editorial rule across the top of the page */}
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
           width: "100%",
-          height: "100%",
-          padding: "60px",
-          position: "relative",
+          height: "12px",
+          backgroundColor: INK,
+          flexShrink: 0,
+        }}
+      />
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          flex: 1,
+          width: "100%",
         }}
       >
-        {/* Logo at top */}
+        {/* Text column on paper */}
         <div
           style={{
             display: "flex",
-            marginBottom: "auto",
+            flexDirection: "column",
+            flex: 1,
+            padding: "48px 52px 44px 56px",
+            minWidth: 0,
           }}
         >
-          <img
-            src={logoBase64}
-            width={120}
-            height={120}
-            style={{
-              objectFit: "contain",
-            }}
-          />
-        </div>
-
-        {/* Title and blue accent bar */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "24px",
-            alignItems: "flex-start",
-          }}
-        >
-          {/* Vertical blue accent bar */}
+          {/* Masthead rubric */}
           <div
             style={{
-              width: "12px",
-              minHeight: "200px",
-              background: "#3b82f6",
-              borderRadius: "6px",
-              flexShrink: 0,
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "18px",
             }}
-          />
+          >
+            <img
+              src={logoBase64}
+              width={56}
+              height={56}
+              style={{
+                objectFit: "contain",
+              }}
+            />
+            <span
+              style={{
+                fontFamily: "IBM Plex Mono",
+                fontSize: "24px",
+                fontWeight: 500,
+                letterSpacing: "3px",
+                color: ACCENT,
+              }}
+            >
+              RUSS.CLOUD
+            </span>
+          </div>
 
-          {/* Text content */}
+          {/* Headline + standfirst */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "0px",
+              justifyContent: "center",
               flex: 1,
+              paddingTop: "24px",
+              paddingBottom: "24px",
             }}
           >
-            {/* Title */}
             <h1
               style={{
-                fontSize: "56px",
-                fontWeight: "bold",
-                color: "white",
-                fontFamily: "Inter",
-                lineHeight: 1.15,
+                fontSize: `${titleSize}px`,
+                fontWeight: 700,
+                color: INK,
+                lineHeight: 1.12,
+                letterSpacing: "-0.5px",
                 margin: 0,
                 padding: 0,
                 maxWidth: "100%",
@@ -170,26 +177,59 @@ export default async function OG(
               {title}
             </h1>
 
-            {/* Description */}
-            {description && (
+            {shortDescription && (
               <p
                 style={{
-                  fontSize: "28px",
-                  fontWeight: "normal",
-                  color: "#f3f4f6",
-                  fontFamily: "Inter",
-                  lineHeight: 1.4,
-                  margin: "24px 0 0 0",
+                  fontSize: "25px",
+                  fontWeight: 400,
+                  color: INK_MUTED,
+                  lineHeight: 1.45,
+                  margin: "26px 0 0 0",
                   padding: 0,
                   maxWidth: "100%",
                   wordBreak: "break-word",
                 }}
               >
-                {description}
+                {shortDescription}
               </p>
             )}
           </div>
+
+          {/* Closing rule, print-style */}
+          <div
+            style={{
+              display: "flex",
+              width: "88px",
+              height: "4px",
+              backgroundColor: INK,
+              flexShrink: 0,
+            }}
+          />
         </div>
+
+        {/* Cover plate, hairline-framed, edge to edge */}
+        {coverImageBase64 && (
+          <div
+            style={{
+              display: "flex",
+              width: "480px",
+              height: "100%",
+              flexShrink: 0,
+              borderLeft: `1px solid ${RULE}`,
+            }}
+          >
+            <img
+              src={coverImageBase64}
+              width={480}
+              height={618}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

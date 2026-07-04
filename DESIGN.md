@@ -1,76 +1,79 @@
 ---
 version: "alpha"
-name: "Russ.Cloud Curated Journal"
-description: "Editorial, content-first design system for the Russ.Cloud Astro blog and music site."
+name: "Russ.Cloud Print Edition"
+description: "Editorial paper-and-ink design system for the Russ.Cloud Astro blog and music site."
 colors:
-  primary: "#00288E"
-  primary-container: "#1E40AF"
-  secondary: "#0058BE"
+  primary: "#8F2D00"
+  primary-container: "#BF3B00"
+  secondary: "#BF3B00"
   on-primary: "#FFFFFF"
-  surface: "#F8F9FA"
+  surface: "#F6F6F6"
   surface-container-lowest: "#FFFFFF"
-  surface-container-low: "#F3F4F5"
-  surface-container: "#EDEEEF"
-  surface-container-high: "#E2E3E5"
-  surface-container-highest: "#D6D8DB"
-  on-surface: "#191C1D"
-  on-surface-variant: "#44474F"
-  dark-primary: "#A4C8FF"
-  dark-primary-container: "#00408F"
-  dark-secondary: "#8ECAFF"
-  dark-on-primary: "#003063"
-  dark-surface: "#111418"
-  dark-surface-container-lowest: "#0B0E12"
-  dark-surface-container-low: "#191C20"
-  dark-surface-container: "#1D2024"
-  dark-surface-container-high: "#272A2F"
-  dark-surface-container-highest: "#32353A"
-  dark-on-surface: "#E2E2E6"
-  dark-on-surface-variant: "#C4C6D0"
+  surface-container-low: "#EDEDED"
+  surface-container: "#E4E4E4"
+  surface-container-high: "#D8D8D8"
+  surface-container-highest: "#C9C9C9"
+  on-surface: "#1A1A1A"
+  on-surface-variant: "#555555"
+  accent-highlight: "#8A6D1F"
+  dark-primary: "#E5B29C"
+  dark-primary-container: "#D99C82"
+  dark-secondary: "#D99C82"
+  dark-on-primary: "#2A1109"
+  dark-surface: "#16130E"
+  dark-surface-container-lowest: "#100E0A"
+  dark-surface-container-low: "#1D1912"
+  dark-surface-container: "#221E16"
+  dark-surface-container-high: "#2A251B"
+  dark-surface-container-highest: "#363023"
+  dark-on-surface: "#E9E2D2"
+  dark-on-surface-variant: "#B5AC97"
+  dark-accent-highlight: "#C9A94E"
 typography:
   headline-display:
-    fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif"
+    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
     fontSize: 56px
-    fontWeight: 800
-    lineHeight: 1.1
-    letterSpacing: "-0.035em"
-  headline-lg:
-    fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif"
-    fontSize: 40px
     fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: "-0.01em"
+  headline-lg:
+    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
+    fontSize: 40px
+    fontWeight: 660
     lineHeight: 1.15
-    letterSpacing: "-0.025em"
+    letterSpacing: "-0.01em"
   headline-md:
-    fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif"
+    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
     fontSize: 30px
-    fontWeight: 600
+    fontWeight: 660
     lineHeight: 1.2
-    letterSpacing: "-0.015em"
+    letterSpacing: "-0.01em"
   headline-sm:
-    fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif"
+    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
     fontSize: 24px
-    fontWeight: 600
+    fontWeight: 620
     lineHeight: 1.25
   body-lg:
-    fontFamily: "Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
     fontSize: 18px
     fontWeight: 400
-    lineHeight: 1.7
+    lineHeight: 1.75
   body-md:
-    fontFamily: "Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
-    fontSize: 17px
+    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
+    fontSize: 18px
     fontWeight: 400
-    lineHeight: 1.7
+    lineHeight: 1.75
   body-sm:
-    fontFamily: "Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.5
-  label-md:
-    fontFamily: "Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
-    fontSize: 14px
-    fontWeight: 600
+  rubric:
+    fontFamily: "IBM Plex Mono, ui-monospace, Cascadia Code, Consolas, monospace"
+    fontSize: 13px
+    fontWeight: 500
     lineHeight: 1.4
+    letterSpacing: "0.08em"
   code-sm:
     fontFamily: "IBM Plex Mono, ui-monospace, Cascadia Code, Consolas, monospace"
     fontSize: 14px
@@ -78,10 +81,6 @@ typography:
     lineHeight: 1.6
 rounded:
   none: 0px
-  sm: 4px
-  md: 6px
-  lg: 8px
-  xl: 12px
   full: 9999px
 spacing:
   xxs: 4px
@@ -98,40 +97,26 @@ components:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.on-surface}"
     typography: "{typography.body-md}"
-  article-card:
-    backgroundColor: "{colors.surface-container-lowest}"
+  index-entry:
+    backgroundColor: "{colors.surface}"
     textColor: "{colors.on-surface}"
     typography: "{typography.body-md}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.lg}"
-  prose-muted:
-    backgroundColor: "{colors.surface-container-lowest}"
+    rounded: "{rounded.none}"
+  section-head:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.on-surface}"
+    typography: "{typography.headline-lg}"
+    rounded: "{rounded.none}"
+  dateline:
+    backgroundColor: "{colors.surface}"
     textColor: "{colors.on-surface-variant}"
-    typography: "{typography.body-lg}"
-  section-band:
-    backgroundColor: "{colors.surface-container-low}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.lg}"
+    typography: "{typography.rubric}"
   inline-code:
     backgroundColor: "{colors.surface-container}"
     textColor: "{colors.on-surface}"
     typography: "{typography.code-sm}"
-    rounded: "{rounded.md}"
-    padding: "{spacing.xs}"
-  control-hover:
-    backgroundColor: "{colors.surface-container-high}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.md}"
-    padding: "{spacing.sm}"
-  active-tonal-state:
-    backgroundColor: "{colors.surface-container-highest}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.full}"
-    padding: "{spacing.sm}"
+    rounded: "{rounded.none}"
+    padding: "{spacing.xxs}"
   link:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.secondary}"
@@ -143,144 +128,87 @@ components:
   button-primary:
     backgroundColor: "{colors.primary}"
     textColor: "{colors.on-primary}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.full}"
-    padding: "{spacing.sm}"
-  button-primary-hover:
-    backgroundColor: "{colors.primary-container}"
-    textColor: "{colors.on-primary}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.full}"
+    typography: "{typography.rubric}"
+    rounded: "{rounded.none}"
     padding: "{spacing.sm}"
   skip-link:
     backgroundColor: "{colors.on-surface}"
     textColor: "{colors.surface}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.sm}"
-  dark-page-surface:
-    backgroundColor: "{colors.dark-surface}"
-    textColor: "{colors.dark-on-surface}"
-    typography: "{typography.body-md}"
-  dark-article-card:
-    backgroundColor: "{colors.dark-surface-container-lowest}"
-    textColor: "{colors.dark-on-surface}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.lg}"
-  dark-prose-muted:
-    backgroundColor: "{colors.dark-surface-container-lowest}"
-    textColor: "{colors.dark-on-surface-variant}"
-    typography: "{typography.body-lg}"
-  dark-section-band:
-    backgroundColor: "{colors.dark-surface-container-low}"
-    textColor: "{colors.dark-on-surface}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.lg}"
-  dark-inline-code:
-    backgroundColor: "{colors.dark-surface-container}"
-    textColor: "{colors.dark-on-surface}"
-    typography: "{typography.code-sm}"
-    rounded: "{rounded.md}"
-    padding: "{spacing.xs}"
-  dark-control-hover:
-    backgroundColor: "{colors.dark-surface-container-high}"
-    textColor: "{colors.dark-on-surface}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.md}"
-    padding: "{spacing.sm}"
-  dark-active-tonal-state:
-    backgroundColor: "{colors.dark-surface-container-highest}"
-    textColor: "{colors.dark-on-surface}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.full}"
-    padding: "{spacing.sm}"
-  dark-link:
-    backgroundColor: "{colors.dark-surface}"
-    textColor: "{colors.dark-secondary}"
-    typography: "{typography.body-md}"
-  dark-button-primary:
-    backgroundColor: "{colors.dark-primary}"
-    textColor: "{colors.dark-on-primary}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.full}"
-    padding: "{spacing.sm}"
-  dark-button-primary-hover:
-    backgroundColor: "{colors.dark-primary-container}"
-    textColor: "{colors.dark-on-surface}"
-    typography: "{typography.label-md}"
-    rounded: "{rounded.full}"
+    typography: "{typography.rubric}"
+    rounded: "{rounded.none}"
     padding: "{spacing.sm}"
 ---
 
-# Russ.Cloud Curated Journal Design System
+# Russ.Cloud Print Edition Design System
 
 ## Overview
 
-Russ.Cloud uses "The Curated Journal," an editorial design system inspired by high-end print magazines and adapted for a technical blog and music archive. The interface should feel calm, literate, image-led, and easy to read for long sessions. Chrome stays compact and useful; content, imagery, headings, and metadata carry the personality.
+Russ.Cloud is set as "The Print Edition": a high-end print journal adapted for a technical blog and music archive. The interface should read like a well-set magazine — paper tones, serif typography, hairline rules instead of cards, dated-journal metadata, and image-led layouts where the AI-generated cover art is the artwork. Chrome stays quiet; type, rules, and imagery carry the personality.
 
-The site is light-first, with a class-based dark mode that preserves the same hierarchy instead of becoming a separate theme. When extending the UI, keep the design content-first: generous whitespace, strong typographic rhythm, tonal separation, and restrained motion.
+The site is light-first ("paper") with a class-based dark mode that swaps ink and paper rather than becoming a separate theme. Motion is choreographed but calm — "the magazine, filmed".
 
-## Colors
+## Tokens and naming
 
-The palette is built around tonal layering. Use background shifts between surface levels instead of hard lines for sectioning.
+The CSS custom properties in `src/styles/global.css` define paper/ink primitives (`--paper`, `--paper-bright`…`--paper-deepest`, `--ink`, `--ink-muted`, `--rule`, `--rule-strong`, `--accent`, `--accent-strong`, `--accent-highlight`). **The legacy Material-style names (`--color-surface`, `--color-surface-container-*`, `--color-on-surface*`, `--color-primary`, `--color-secondary`, `--color-outline-variant`) are kept as aliases of those primitives** so existing components keep working. Prefer the primitives (or the aliases) in new code; never introduce raw hex values or Tailwind palette colours (`gray-*`, `blue-*`).
 
-- **Primary (`#00288E` light, `#A4C8FF` dark):** High-impact brand moments, primary action fills, blockquote rules, and active states.
-- **Primary container (`#1E40AF` light, `#00408F` dark):** CTA gradient endpoints and stronger hover states.
-- **Secondary (`#0058BE` light, `#8ECAFF` dark):** Links, metadata accents, reading-progress color, and subtle interactive emphasis.
-- **Surface hierarchy:** `surface` is the page background. `surface-container-lowest` is for cards and article shells. `surface-container-low` supports footer, author boxes, menus, and quiet bands. Higher container tones are for hover and active states.
-- **Text:** `on-surface` is primary copy and headings; `on-surface-variant` is metadata, descriptions, and quiet prose.
-
-Dark mode is implemented by redefining the same CSS custom properties under `.dark`. Keep new color usage token-based so the theme adapts automatically.
+- **Paper hierarchy:** `surface` is the page. `surface-container-lowest` is bright paper (code frames, link previews). The deeper paper tones are for quiet fills and hovers only — most separation comes from rules, not background shifts.
+- **Ink:** `on-surface` for headings and primary copy, `on-surface-variant` for body prose and metadata.
+- **Rules:** `--color-outline-variant` (alias of `--rule`) is the hairline; `--rule-strong` is the heavy editorial rule used above section heads and page headers (`border-t-2`).
+- **Accent:** a single burnt orange — `secondary` (#BF3B00) for links and active states, `primary` (#8F2D00) for hovers and filled buttons; dark mode lifts it to a muted salmon. Muted ochre `--accent-highlight` is reserved for text highlights/marks. There is no blue.
 
 ## Typography
 
-Use Plus Jakarta Sans for display typography and Inter for body/UI. This pairing gives the site its editorial contrast: assertive, tightly tracked headlines with quieter, highly legible long-form text.
+Two faces, all self-hosted through Astro's Fonts API (`astro.config.mjs`) — one sturdy text serif does everything, differentiated by weight, like a real newspaper:
 
-- **Display headlines:** Use `headline-display` for post titles and major page titles. In code, these often resolve to responsive clamp sizes rather than one fixed size.
-- **Section and card headings:** Use `headline-lg`, `headline-md`, and `headline-sm` with tight tracking and generous surrounding whitespace.
-- **Body copy:** Use `body-md` for the global 17px baseline and `body-lg` for prose paragraphs.
-- **Metadata and controls:** Use `body-sm` or `label-md`; keep supporting text calm and scannable.
-- **Code:** Use IBM Plex Mono through `code-sm`, with tonal backgrounds instead of high-contrast code chips.
+- **Source Serif 4** (`--font-serif`, also `--font-display`) — body copy at 1.125rem/1.75 (weight 400), prose measure ~72ch; headlines bold via the variable axis: 700 for display/h1 (letter-spacing -0.015em), 660 for section and card headings (-0.01em), 620 for h3.
+- **IBM Plex Mono** (`--font-mono`) — code, and promoted to metadata duty: datelines, reading time, rubrics.
 
-Crimson Pro exists as a decorative serif family in the CSS theme, but it should remain rare and intentional rather than becoming a default post or UI style.
+The `.rubric` utility (mono, 0.8125rem, uppercase, 0.08em tracking, muted ink) is the standard treatment for labels, datelines, and section rubrics. Dates render day-first ("13 Jun 2026") via `FormattedDate` and uppercase inside rubrics.
+
+`--font-sans` is a bare system-ui stack kept only as a fallback for tiny chrome; do not reintroduce webfont sans-serifs.
 
 ## Layout
 
-Layouts use stable max-width containers and generous gutters. Keep the shell and broad listing pages at `max-w-7xl`; blog posts use `max-w-5xl`, expanding to a wider layout only when the table of contents is present.
+Stable max-width containers with generous gutters: shell and listing pages at `max-w-7xl`, article pages at `max-w-5xl` with prose constrained to `max-w-[72ch]` (heroes run the full container width). Page headers follow one pattern: rubric line, Source Serif heading, standfirst paragraph, closed by a heavy `border-b-2` rule (`--rule-strong`).
 
-Spacing follows a 4px-derived scale, with the common working rhythm landing on 16px, 24px, 32px, 40px, 48px, and 64px. Cards and article sections should have enough internal padding to let images, titles, summaries, and metadata breathe. Avoid dense dashboard-like grouping unless the page is explicitly a tool.
+## Rules instead of cards
 
-## Elevation & Depth
+There are no cards, shadows, glass, or gradients. Separation comes from:
 
-Depth comes first from tonal layers, then from soft ambient shadows. Cards and the header use diffused shadows, but general section hierarchy should not rely on stacked shadows.
+- **Hairline rules** (`1px solid var(--color-outline-variant)`) between list entries, under the masthead, above footers and article appendices.
+- **Heavy rules** (`2px solid var(--rule-strong)`, or `border-t-2`) closing page headers; the homepage featured spread is rule-free.
+- **Hairline frames** around all images (listing covers, article heroes, book covers, prose images).
+- **Radius 0 everywhere.** Two intentional exceptions: circular avatar portraits (a print convention — article byline, tag hub, about page), and terminal code blocks, which are drawn as macOS windows (rounded corners, soft drop shadow, red/amber/green traffic lights, always a dark slate-navy Catppuccin Macchiato profile in both site themes — matching the author's real terminal). A terminal frame depicts a real app window, so it reads as a figure, not chrome.
 
-Use the glass treatment for the site header: semi-transparent surface color, backdrop blur, and ambient shadow. Use the ghost border only when a boundary must be perceivable for structured content such as prose tables and code blocks.
+Listings are index entries: dateline, framed cover image, Source Serif headline, standfirst, rule below. Tags render through `getTagColorClasses()` → the single `.tag-editorial` treatment (small mono caps in a square hairline box — a quiet classification stamp — accent on hover); the per-tag pastel palette in `TAG_METADATA` is retired visually but the titles/emojis/descriptions remain in use.
 
-## Shapes
+## Motion — "the magazine, filmed"
 
-The shape language is rounded but controlled. Cards, article shells, author boxes, pagination wrappers, and large media use `rounded-xl` (12px). Smaller controls use `rounded-md` or `rounded-full` depending on whether they are rectangular nav items or pills/chips.
+Built on the vanilla **Motion** library via `src/scripts/motion.ts`; no React islands for animation. Timing vocabulary lives in tokens: `--ease-settle` (cubic-bezier(0.22, 0.61, 0.36, 1)), `--dur-quick` 150ms, `--dur-hover` 400ms, `--dur-page` 600ms. No springs, bounces, or translate-lift hovers.
 
-Do not add extra decorative framing around cards. A card gets a tonal surface, one radius, and its own content rhythm.
+- **Entrances:** elements marked `data-entrance` stagger in (fade + 14px rise) on page load — dateline → title → byline → hero.
+- **Hero settle:** `data-settle` images ease from scale 1.03 to 1, like a plate settling onto the page.
+- **Scroll reveals:** `data-reveal` fades entries up once in view; `data-reveal="rule"` draws rules in horizontally. (The old `.reveal*` classes are neutered no-ops.)
+- **Shared-element view transitions:** listing images/titles carry `transition:name` (`post-img-*` / `post-title-*`) matched by the article layout, so the cover you click becomes the article hero.
+- **Hovers:** underline draw-ins (`.nav-underline`), slow image zooms (scale 1.04 over 700ms), headline colour shifts to accent.
+- All motion respects `prefers-reduced-motion`, including the `[data-entrance]`/`[data-settle]` hidden initial states.
 
 ## Components
 
-- **Header:** Always use glass background plus ambient shadow. Desktop navigation is compact, icon-led, and reveals labels on hover/focus. Mobile navigation uses a disclosure pattern with icon and text labels.
-- **Footer:** Use `surface-container-low` as a full-width tonal band with quiet variant text.
-- **Post cards:** Use `surface-container-lowest`, `rounded-xl`, ambient shadow, image-first layout, display typography, and a restrained hover lift.
-- **Article layout:** Use a single article card with an edge-to-edge hero image, centered display title, and a tonal author information box.
-- **Pagination:** Use a rounded tonal wrapper. Page controls are pill-shaped; active states may use the primary color or highest tonal container depending on prominence.
-- **Prose:** Use display headings, variant body text, secondary-color links with subtle underlines, tonal blockquotes with primary left rules, tonal inline code, and ghost-bordered tables/code blocks.
-- **Tags:** Preserve the per-tag color system defined in `src/consts.ts`; do not flatten tag colors into the global palette.
+- **Masthead:** opaque paper, 1px bottom rule, bold Source Serif wordmark, always-visible small-caps mono nav with underline draw-in hovers. No glass, no icons on desktop.
+- **Footer:** colophon — hairline top rule, centred small-caps nav, italic copyright line.
+- **Pagination:** a rule-topped line of plain mono numerals with rubric Previous/Next; current page in accent.
+- **Article:** sits directly on paper. Journal header (dateline rubric, left-aligned bold Source Serif title, one-line byline with small round avatar, editorial tag line, heavy rule), hairline-framed hero, drop cap on the opening paragraph (`.article-body`, `initial-letter` with float fallback; not applied to tunes posts).
+- **Prose:** h2 carries a hairline rule above; h4+ use small-caps serif. Blockquotes are bare italic pull-quotes with a 2px ink rule. Tables use strong rules top/bottom, small-caps headers, hairline rows, no fills. `hr` renders as a centred asterism dinkus. Code frames (Expressive Code) are square with hairline borders and paper-tinted chrome, themed via `styleOverrides` in `astro.config.mjs` only.
+- **Callouts:** one definition (`.callout`), seven variants via per-variant accent inks (`--callout-note/tip/important/caution/warning`, light + dark): 2px accent left rule, 5% `color-mix` tint, small-caps mono heading.
+- **Reading progress:** a 2px accent rule. No gradient, no glow.
 
 ## Do's and Don'ts
 
-- Do use tonal layering for visual separation; use background shifts before borders or dividers.
-- Do keep article and card layouts image-led when source content provides a meaningful image.
-- Do use `on-surface` and `on-surface-variant` for text; avoid pure black and pure gray one-offs.
-- Do keep motion restrained: hover lifts, fade-ins, and scroll reveals should support reading, not compete with it.
-- Do respect `prefers-reduced-motion` for all decorative animation.
-- Don't use 1px solid borders for sectioning; use tonal surfaces or the ghost border for structured content only.
-- Don't put ghost borders on normal cards.
-- Don't introduce new decorative type styles unless the page has a clear campaign-style purpose.
+- Do use hairline rules for separation; a background shift is the exception, not the default.
+- Do keep layouts image-led — the covers are the artwork; frame them with hairlines and let them breathe on paper.
+- Do use `.rubric` for any label or dateline; use `.tag-editorial` for tag-like links.
+- Do route all colour through tokens; light and dark must both come free.
+- Don't reintroduce border radius, shadows, glass, gradients, pastel chips, or Tailwind grey/blue utilities.
+- Don't add new fonts or tight negative letter-spacing.
+- Don't animate with springs or scale-bounces; use `--ease-settle` and the Motion helpers, and always honour `prefers-reduced-motion`.

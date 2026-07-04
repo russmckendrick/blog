@@ -8,19 +8,19 @@ const mobileMenuLabelId = 'mobile-menu-label';
 
 <header
 	id="site-header"
-	class="relative z-40 transition-all duration-300 glass shadow-ambient"
+	class="masthead relative z-40 surface"
 >
 	<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
 		<div class="flex justify-between items-center h-16">
-				<a href="/" class="header-logo flex items-center space-x-3 hover:text-blue-600 dark:hover:text-blue-400 transition-colors no-underline" aria-label="home">
+				<a href="/" class="header-logo flex items-center gap-3 no-underline" aria-label="home">
 				<img src="/images/logo.svg" alt="Logo" height="40" width="50" class="h-8 w-10" />
-				<span class="font-bold text-xl">{SITE_TITLE}</span>
+				<span class="masthead-wordmark font-display text-xl">{SITE_TITLE}</span>
 			</a>
 
 			<!-- Mobile menu button -->
 			<button
 				id="menu-trigger"
-				class="header-nav-item md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+				class="header-nav-item md:hidden inline-flex items-center justify-center p-2"
 				type="button"
 				aria-controls={mobileMenuId}
 				aria-expanded="false"
@@ -33,37 +33,25 @@ const mobileMenuLabelId = 'mobile-menu-label';
 			</button>
 
 			<!-- Desktop menu -->
-			<div class="hidden md:flex md:items-center md:gap-2">
-				<ul class="flex items-center gap-1">
+			<div class="hidden md:flex md:items-center md:gap-4">
+				<ul class="flex items-center gap-4 lg:gap-5">
 					{NAVIGATION_ITEMS.map(item =>
 						<li>
-							{item.external ? (
-								<a
-									href={item.url}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="header-nav-item group relative flex items-center px-3 py-1.5 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
-									aria-label={item.name}
-								>
-									<Icon name={item.icon} size={16} />
-									<span class="nav-label text-sm font-medium">{item.name}</span>
-								</a>
-							) : (
-								<a
-									href={item.url}
-									class="header-nav-item group relative flex items-center px-3 py-1.5 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors"
-									aria-label={item.name}
-								>
-									<Icon name={item.icon} size={16} />
-									<span class="nav-label text-sm font-medium">{item.name}</span>
-								</a>
-							)}
+							<a
+								href={item.url}
+								target={item.external ? '_blank' : undefined}
+								rel={item.external ? 'noopener noreferrer' : undefined}
+								class="header-nav-item nav-underline rubric no-underline py-1.5 inline-flex items-center gap-1.5"
+							>
+								<Icon name={item.icon} size={15} aria-hidden="true" />
+								{item.name}
+							</a>
 						</li>
 					)}
 				</ul>
 
-				<div class="flex items-center">
-					<button id="theme-toggle" class="header-nav-item p-2 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Toggle theme">
+				<div class="flex items-center border-l pl-4" style="border-color: var(--color-outline-variant);">
+					<button id="theme-toggle" class="header-nav-item p-1.5" aria-label="Toggle theme">
 						<Icon name="sun" class="theme-icon light-icon h-5 w-5 hidden dark:block" />
 						<Icon name="moon" class="theme-icon dark-icon h-5 w-5 block dark:hidden" />
 					</button>
@@ -73,33 +61,26 @@ const mobileMenuLabelId = 'mobile-menu-label';
 
 		<!-- Mobile menu, hidden by default -->
 		<div class="md:hidden mobile-hidden" id={mobileMenuId}>
-			<div class="px-2 pt-2 pb-3 space-y-1 surface-container-low">
-					{NAVIGATION_ITEMS.map(item =>
-						<div>
-							{item.external ? (
-								<a
-									href={item.url}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="flex items-center px-3 py-2 !text-gray-600 dark:!text-gray-400 visited:!text-gray-600 dark:visited:!text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors"
-									title={item.name}
-								>
-									<Icon name={item.icon} />
-									<span class="ml-3">{item.name}</span>
-								</a>
-							) : (
-								<a href={item.url} class="flex items-center px-3 py-2 !text-gray-600 dark:!text-gray-400 visited:!text-gray-600 dark:visited:!text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors" title={item.name}>
-									<Icon name={item.icon} />
-									<span class="ml-3">{item.name}</span>
-								</a>
-							)}
+			<div class="px-2 pt-2 pb-3 border-t" style="border-color: var(--color-outline-variant);">
+				{NAVIGATION_ITEMS.map(item =>
+					<div>
+						<a
+							href={item.url}
+							target={item.external ? '_blank' : undefined}
+							rel={item.external ? 'noopener noreferrer' : undefined}
+							class="header-nav-item flex items-center gap-3 px-3 py-2.5 rubric no-underline"
+							title={item.name}
+						>
+							<Icon name={item.icon} size={16} />
+							<span>{item.name}</span>
+						</a>
 					</div>
 				)}
-				<div class="surface-container pt-4">
-					<button id="mobile-theme-toggle" class="flex items-center w-full px-3 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors" type="button" aria-label="Toggle theme">
+				<div class="mt-2 pt-2 border-t" style="border-color: var(--color-outline-variant);">
+					<button id="mobile-theme-toggle" class="header-nav-item flex items-center gap-3 w-full px-3 py-2.5 rubric" type="button" aria-label="Toggle theme">
 						<Icon name="sun" class="theme-icon light-icon h-5 w-5 hidden dark:block" />
 						<Icon name="moon" class="theme-icon dark-icon h-5 w-5 block dark:hidden" />
-						<span class="ml-3">Toggle theme</span>
+						<span>Toggle theme</span>
 					</button>
 				</div>
 			</div>
