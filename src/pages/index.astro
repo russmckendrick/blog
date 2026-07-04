@@ -59,12 +59,12 @@ const webSiteSchema = createWebSiteSchema(Astro.site?.toString() || 'https://www
 
 		{/* Grid of remaining posts */}
 		{gridPosts.length > 0 && (
-			<div class="mt-6 sm:mt-8">
+			<div class="mt-10 sm:mt-14">
 				<h2 class="sr-only">More Posts</h2>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch reveal-stagger">
-					{gridPosts.map((post) => (
-						<div class="reveal">
-							<PostCard post={post} variant="grid" headingLevel="3" />
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
+					{gridPosts.map((post, index) => (
+						<div data-reveal>
+							<PostCard post={post} variant="grid" headingLevel="3" folio={String(index + 2).padStart(2, '0')} />
 						</div>
 					))}
 				</div>

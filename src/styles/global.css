@@ -209,6 +209,26 @@ pre code {
   color: var(--color-on-surface-variant);
 }
 
+/* Editorial tag treatment: quiet small-caps with a hairline underline,
+   accent on hover. Replaces the retired per-tag pastel chips. */
+.tag-editorial {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1px;
+  transition: color var(--dur-quick) ease, border-color var(--dur-quick) ease;
+}
+
+a.tag-editorial:hover {
+  color: var(--color-secondary);
+  border-bottom-color: var(--color-secondary);
+}
+
 /* Link styling */
 a {
   color: var(--color-secondary);

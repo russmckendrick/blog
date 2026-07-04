@@ -18,15 +18,16 @@ const { page } = Astro.props;
 ---
 
 <BaseLayout title="Blog" description="All blog posts from Russ McKendrick">
-	<section class="text-center py-8 pb-12 mb-8 border-b border-gray-200 dark:border-gray-700">
-		<h1 class="text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">Blog</h1>
-		<p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Technical posts, thoughts, and ramblings about DevOps, automation, and cloud technologies.</p>
+	<section class="max-w-5xl mx-auto px-5 pt-4 pb-10 mb-10 border-b-2" style="border-color: var(--rule-strong);">
+		<p class="rubric mb-3" data-entrance>The Journal</p>
+		<h1 class="text-4xl lg:text-5xl mb-4 text-on-surface" data-entrance>Blog</h1>
+		<p class="text-lg text-on-surface-variant max-w-2xl" data-entrance>Technical posts, thoughts, and ramblings about DevOps, automation, and cloud technologies.</p>
 	</section>
 
 	<section class="max-w-5xl mx-auto px-5">
-			<ul class="space-y-8">
+			<ul class="space-y-10">
 				{page.data.map((post) => (
-					<li class="reveal">
+					<li data-reveal>
 						<PostCard post={post} />
 					</li>
 				))}
