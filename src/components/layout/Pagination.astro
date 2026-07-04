@@ -1,6 +1,4 @@
 ---
-import Icon from '../ui/Icon.astro';
-
 interface Props {
 	currentPage: number;
 	totalPages: number;
@@ -61,38 +59,36 @@ const previousHref = currentPage > 1 ? getHref(currentPage - 1) : null;
 const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 ---
 
-<nav class="mt-16" aria-label="Pagination Navigation">
-	<div class="flex items-center justify-between surface-container-lowest rounded-xl shadow-ambient ghost-border px-3 sm:px-5 py-3">
+<nav class="mt-16 border-t pt-4" style="border-color: var(--color-outline-variant);" aria-label="Pagination Navigation">
+	<div class="flex items-center justify-between gap-4">
 		<div class="flex-shrink-0">
 			{previousHref ? (
 				<a
 					href={previousHref}
-					class="group inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold font-display rounded-full surface-container-low text-on-surface transition-all duration-300 hover:surface-container-high hover:-translate-y-[1px] hover:shadow-ambient focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60"
+					class="rubric nav-underline no-underline py-1 hover:text-on-surface"
 					aria-label="Go to previous page"
 				>
-					<Icon name="arrowLongLeft" size={20} class="text-on-surface-variant transition-transform duration-300 group-hover:-translate-x-0.5" aria-hidden="true" />
-					<span class="hidden sm:inline">Previous</span>
+					&larr;<span class="hidden sm:inline"> Previous</span>
 				</a>
 			) : (
-				<span class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-full surface-container text-on-surface-variant cursor-not-allowed" aria-disabled="true">
-					<Icon name="arrowLongLeft" size={20} aria-hidden="true" />
-					<span class="hidden sm:inline">Previous</span>
+				<span class="rubric opacity-40 cursor-not-allowed" aria-disabled="true">
+					&larr;<span class="hidden sm:inline"> Previous</span>
 				</span>
 			)}
 		</div>
-		<div class="hidden md:flex items-center gap-1.5">
+		<div class="hidden md:flex items-baseline gap-4 font-mono text-sm">
 			{pageItems.map((item) => (
 				item === 'ellipsis' ? (
-					<span class="inline-flex items-center justify-center w-10 h-10 text-sm text-on-surface-variant" aria-hidden="true">&hellip;</span>
+					<span class="text-on-surface-variant" aria-hidden="true">&hellip;</span>
 				) : (
 					<a
 						href={getHref(item)}
-						class={`inline-flex items-center justify-center w-10 h-10 text-sm font-medium rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60 ${
+						class={`nav-underline no-underline py-1 transition-colors ${
 							item === currentPage
-								? 'font-bold text-white shadow-md'
-								: 'text-on-surface-variant hover:text-on-surface hover:surface-container-high hover:scale-105'
+								? 'font-semibold'
+								: 'text-on-surface-variant hover:text-on-surface'
 						}`}
-						style={item === currentPage ? 'background-color: var(--color-primary); color: var(--color-on-primary);' : undefined}
+						style={item === currentPage ? 'color: var(--color-secondary);' : undefined}
 						aria-current={item === currentPage ? 'page' : undefined}
 						aria-label={`Go to page ${item}`}
 					>
@@ -101,8 +97,8 @@ const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 				)
 			))}
 		</div>
-		<div class="flex md:hidden items-center gap-1.5 text-sm font-medium text-on-surface-variant">
-			<span class="inline-flex items-center justify-center w-8 h-8 text-xs font-bold rounded-full shadow-sm" style="background-color: var(--color-primary); color: var(--color-on-primary);">{currentPage}</span>
+		<div class="flex md:hidden items-baseline gap-2 font-mono text-sm text-on-surface-variant">
+			<span class="font-semibold" style="color: var(--color-secondary);">{currentPage}</span>
 			<span>of</span>
 			<span>{totalPages}</span>
 		</div>
@@ -110,16 +106,14 @@ const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 			{nextHref ? (
 				<a
 					href={nextHref}
-					class="group inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold font-display rounded-full surface-container-low text-on-surface transition-all duration-300 hover:surface-container-high hover:-translate-y-[1px] hover:shadow-ambient focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/60"
+					class="rubric nav-underline no-underline py-1 hover:text-on-surface"
 					aria-label="Go to next page"
 				>
-					<span class="hidden sm:inline">Next</span>
-					<Icon name="arrowLongRight" size={20} class="text-on-surface-variant transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
+					<span class="hidden sm:inline">Next </span>&rarr;
 				</a>
 			) : (
-				<span class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-full surface-container text-on-surface-variant cursor-not-allowed" aria-disabled="true">
-					<span class="hidden sm:inline">Next</span>
-					<Icon name="arrowLongRight" size={20} aria-hidden="true" />
+				<span class="rubric opacity-40 cursor-not-allowed" aria-disabled="true">
+					<span class="hidden sm:inline">Next </span>&rarr;
 				</span>
 			)}
 		</div>

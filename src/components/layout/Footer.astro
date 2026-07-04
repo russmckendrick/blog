@@ -1,32 +1,31 @@
 ---
 import { NAVIGATION_ITEMS, AUTHOR_NAME } from '../../consts';
-import Icon from '../ui/Icon.astro';
 
 const today = new Date();
 ---
 
-<footer class="surface-container-low mt-12" transition:name="site-footer">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-		<div class="flex flex-col items-center">
-			<div class="text-center text-sm text-on-surface-variant">
-				<p class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-					<span>&copy; {today.getFullYear()} {AUTHOR_NAME}. All rights reserved.</span>
-					<span class="hidden sm:inline">|</span>
-					<span class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-						{NAVIGATION_ITEMS.map((item) => (
+<footer class="mt-16 border-t" style="border-color: var(--color-outline-variant);" transition:name="site-footer">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+		<div class="flex flex-col items-center gap-4">
+			<nav aria-label="Footer navigation">
+				<ul class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+					{NAVIGATION_ITEMS.map((item) => (
+						<li>
 							<a
 								href={item.url}
-								class="inline-flex items-center gap-1.5 px-1 py-0.5 text-on-surface-variant hover:text-on-surface underline-offset-4 hover:underline transition-colors"
+								class="rubric nav-underline no-underline py-0.5 hover:text-on-surface"
 								target={item.external ? '_blank' : undefined}
 								rel={item.external ? 'noopener noreferrer' : undefined}
 							>
-								<Icon name={item.icon} size={14} />
 								{item.name}
 							</a>
-						))}
-					</span>
-				</p>
-			</div>
+						</li>
+					))}
+				</ul>
+			</nav>
+			<p class="text-center text-sm text-on-surface-variant italic">
+				&copy; {today.getFullYear()} {AUTHOR_NAME} &middot; Set in Fraunces &amp; Source Serif
+			</p>
 		</div>
 	</div>
 </footer>

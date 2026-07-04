@@ -5,12 +5,20 @@ const EASE_SETTLE: [number, number, number, number] = [0.22, 0.61, 0.36, 1]
 export const prefersReducedMotion = () =>
   window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+/* astro:page-load also fires on the initial load, so every init below
+   claims its elements with a data flag to avoid animating twice. */
+const claim = (el: HTMLElement) => {
+  if (el.dataset.motionClaimed === 'true') return false
+  el.dataset.motionClaimed = 'true'
+  return true
+}
+
 /**
  * Staggered page-load entrance: dateline → title → standfirst → byline → hero.
  * Elements opt in with [data-entrance]; order follows DOM order within root.
  */
 export function runEntrance(root: ParentNode = document) {
-  const elements = Array.from(root.querySelectorAll<HTMLElement>('[data-entrance]'))
+  const elements = Array.from(root.querySelectorAll<HTMLElement>('[data-entrance]')).filter(claim)
   if (!elements.length) return
   if (prefersReducedMotion()) {
     elements.forEach((el) => {
@@ -31,7 +39,7 @@ export function runEntrance(root: ParentNode = document) {
  * Applies to [data-settle] elements, typically the hero figure.
  */
 export function runImageSettle(root: ParentNode = document) {
-  const elements = Array.from(root.querySelectorAll<HTMLElement>('[data-settle]'))
+  const elements = Array.from(root.querySelectorAll<HTMLElement>('[data-settle]')).filter(claim)
   if (!elements.length) return
   if (prefersReducedMotion()) {
     elements.forEach((el) => {
@@ -53,7 +61,7 @@ export function runImageSettle(root: ParentNode = document) {
  * Replaces the old .reveal/.revealed IntersectionObserver system.
  */
 export function initInViewReveals(root: ParentNode = document) {
-  const elements = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'))
+  const elements = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]')).filter(claim)
   if (!elements.length) return
   if (prefersReducedMotion()) {
     elements.forEach((el) => {

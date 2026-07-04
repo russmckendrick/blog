@@ -310,68 +310,16 @@ a:hover {
 .animate-delay-2 { animation-delay: 0.2s; }
 .animate-delay-3 { animation-delay: 0.35s; }
 
-/* Scroll-triggered reveal animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
-              transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform;
-}
-
-.reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Stagger children - each child delays slightly more */
-.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
-.reveal-stagger > .reveal:nth-child(2) { transition-delay: 80ms; }
-.reveal-stagger > .reveal:nth-child(3) { transition-delay: 160ms; }
-.reveal-stagger > .reveal:nth-child(4) { transition-delay: 240ms; }
-.reveal-stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
-.reveal-stagger > .reveal:nth-child(6) { transition-delay: 400ms; }
-.reveal-stagger > .reveal:nth-child(7) { transition-delay: 480ms; }
-.reveal-stagger > .reveal:nth-child(8) { transition-delay: 560ms; }
-.reveal-stagger > .reveal:nth-child(9) { transition-delay: 640ms; }
-
-/* Fade-in only (no vertical movement) */
-.reveal-fade {
-  opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity;
-}
-
-.reveal-fade.revealed {
-  opacity: 1;
-}
-
-/* Scale-in variant */
-.reveal-scale {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
-              transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform;
-}
-
-.reveal-scale.revealed {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Slide-in from left variant */
+/* Legacy scroll-reveal classes: neutered no-ops.
+   Scroll reveals now run through src/scripts/motion.ts using
+   [data-reveal] attributes; these classes remain only so markup
+   not yet migrated renders visibly. */
+.reveal,
+.reveal-fade,
+.reveal-scale,
 .reveal-slide {
-  opacity: 0;
-  transform: translateX(-16px);
-  transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
-              transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform;
-}
-
-.reveal-slide.revealed {
   opacity: 1;
-  transform: translateX(0);
+  transform: none;
 }
 
 @keyframes wave {
@@ -446,12 +394,20 @@ a:hover {
 }
 
 /* ================================================
-   Header Styles
+   Header Styles — masthead
    ================================================ */
+
+.masthead {
+  border-bottom: 1px solid var(--color-outline-variant);
+}
 
 #site-header .header-logo,
 #site-header .header-logo span {
   color: var(--color-on-surface);
+}
+
+.masthead-wordmark {
+  font-weight: 600;
 }
 
 #site-header .header-nav-item {
@@ -462,23 +418,33 @@ a:hover {
   color: var(--color-on-surface);
 }
 
-/* Desktop nav: icon-only, label slides out on hover */
-@media (min-width: 768px) {
-  .header-nav-item .nav-label {
-    display: inline-block;
-    max-width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    transition: max-width 0.3s ease, opacity 0.3s ease, margin-left 0.3s ease;
-    opacity: 0;
-    margin-left: 0;
-  }
+/* Underline draw-in for nav and editorial links */
+.nav-underline {
+  position: relative;
+}
 
-  .header-nav-item:hover .nav-label,
-  .header-nav-item:focus-visible .nav-label {
-    max-width: 6rem;
-    opacity: 1;
-    margin-left: 0.375rem;
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-hover) var(--ease-settle);
+}
+
+.nav-underline:hover::after,
+.nav-underline:focus-visible::after,
+.nav-underline[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-underline::after {
+    transition: none;
   }
 }
 
