@@ -692,6 +692,13 @@ a:hover {
   border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
 }
 
+/* EC paints its own titlebar divider on .header::after (a light grey
+   1.5px line from the active theme) — remove it; the header's subtle
+   hairline above does the job */
+.expressive-code .frame.is-terminal .header::after {
+  border-bottom: none !important;
+}
+
 /* Terminal body: Macchiato base, both themes */
 .expressive-code .frame.is-terminal pre {
   background: #24273a !important;
