@@ -14,20 +14,20 @@ Astro.response.status = 404;
 		<div class="text-center max-w-2xl">
 			<!-- Glitchy 404 -->
 			<div class="mb-8">
-				<h1 class="glitch text-9xl sm:text-[12rem] font-black text-gray-900 dark:text-gray-100" data-text="404">
+				<h1 class="glitch text-9xl sm:text-[12rem] text-on-surface" data-text="404" style="font-weight: 900;">
 					404
 				</h1>
 			</div>
 
 			<!-- Main Message -->
 			<div class="mb-12">
-				<h2 class="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100 glitch-text">
+				<h2 class="text-4xl sm:text-5xl mb-6 text-on-surface glitch-text">
 					{ERROR_404.heading}
 				</h2>
-				<p class="text-xl text-gray-600 dark:text-gray-400 mb-3">
+				<p class="text-xl text-on-surface-variant mb-3">
 					{ERROR_404.message}
 				</p>
-				<p class="text-lg text-gray-500 dark:text-gray-500">
+				<p class="text-lg text-on-surface-variant opacity-80">
 					{ERROR_404.submessage}
 				</p>
 			</div>
@@ -35,7 +35,8 @@ Astro.response.status = 404;
 			<!-- Button -->
 			<a
 				href="/"
-				class="glitch-button inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:border-blue-500 dark:hover:border-blue-300 hover:text-blue-500 dark:hover:text-blue-300 text-lg rounded-lg transition-all font-semibold shadow-lg hover:shadow-blue-500/50"
+				class="glitch-button inline-flex items-center justify-center gap-3 px-8 py-4 border-2 text-lg transition-all no-underline"
+				style="border-color: var(--color-secondary); color: var(--color-secondary);"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 					<path d="M20 12H4"></path>

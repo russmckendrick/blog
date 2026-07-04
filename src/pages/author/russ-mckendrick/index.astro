@@ -69,42 +69,33 @@ const featuredSocials = SOCIAL_LINKS.filter((link) =>
     <Schema item={collectionSchema} />
   </Fragment>
 
-  <section class="surface-container-low text-center py-12 pb-16 mb-8">
-    <div class="max-w-3xl mx-auto px-5 animate-fade-in">
-      <p class="text-sm uppercase tracking-wide text-on-surface-variant mb-2">Author profile</p>
-      <h1 class="text-4xl lg:text-5xl font-bold mb-4 text-on-surface font-display">
-        {AUTHOR_NAME}
-      </h1>
-      <p class="text-lg text-on-surface-variant">
-        DevOps and cloud author. {posts.length} posts published on russ.cloud, plus {' '}
-        <a class="text-[var(--color-secondary)] hover:underline" href="/books/">14+ technical books</a> on
-        Docker, Kubernetes, Ansible, Terraform, and Infrastructure as Code.
-      </p>
-    </div>
+  <section class="max-w-5xl mx-auto px-5 pt-4 pb-10 mb-10 border-b-2" style="border-color: var(--rule-strong);">
+    <p class="rubric mb-3" data-entrance>Author profile</p>
+    <h1 class="text-4xl lg:text-5xl mb-4 text-on-surface font-display" data-entrance>
+      {AUTHOR_NAME}
+    </h1>
+    <p class="text-lg text-on-surface-variant max-w-3xl" data-entrance>
+      DevOps and cloud author. {posts.length} posts published on russ.cloud, plus {' '}
+      <a class="text-[var(--color-secondary)] hover:underline" href="/books/">14+ technical books</a> on
+      Docker, Kubernetes, Ansible, Terraform, and Infrastructure as Code.
+    </p>
   </section>
 
   <section class="max-w-5xl mx-auto px-5 mb-12">
-    <div class="surface-container-lowest rounded-xl p-6 sm:p-8 reveal">
-      <h2 class="font-display text-2xl font-semibold text-on-surface mb-4">
+    <div class="pt-5 border-t" style="border-color: var(--color-outline-variant);" data-reveal>
+      <p class="rubric mb-3">
         Where else to find me
-      </h2>
-      <ul class="flex flex-wrap gap-3">
+      </p>
+      <ul class="flex flex-wrap gap-x-5 gap-y-2">
         {featuredSocials.map((link) => (
           <li>
-            <a
-              href={link.url}
-              rel="me noopener noreferrer"
-              class="inline-flex items-center rounded-full px-4 py-2 surface-container text-sm font-medium hover:-translate-y-[1px] hover:shadow-md transition-all"
-            >
+            <a href={link.url} rel="me noopener noreferrer" class="tag-editorial">
               {link.name}
             </a>
           </li>
         ))}
         <li>
-          <a
-            href="/about/"
-            class="inline-flex items-center rounded-full px-4 py-2 surface-container text-sm font-medium hover:-translate-y-[1px] hover:shadow-md transition-all"
-          >
+          <a href="/about/" class="tag-editorial">
             Full bio
           </a>
         </li>
@@ -114,33 +105,34 @@ const featuredSocials = SOCIAL_LINKS.filter((link) =>
 
   {topTags.length > 0 && (
     <section class="max-w-5xl mx-auto px-5 mb-12">
-      <h2 class="font-display text-2xl font-semibold text-on-surface mb-4">
-        What I write about
-      </h2>
-      <ul class="flex flex-wrap gap-2">
-        {topTags.map(([slug, count]) => (
-          <li>
-            <a
-              href={`/tags/${slug}/`}
-              class="inline-flex items-center rounded-full px-3 py-1 surface-container-lowest text-sm transition-all hover:-translate-y-[1px] hover:shadow-md"
-            >
-              <span class="font-medium">{slug}</span>
-              <span class="ml-2 text-xs text-on-surface-variant">{count}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div class="pt-5 border-t" style="border-color: var(--color-outline-variant);">
+        <p class="rubric mb-3">
+          What I write about
+        </p>
+        <ul class="flex flex-wrap gap-x-5 gap-y-2">
+          {topTags.map(([slug, count]) => (
+            <li>
+              <a href={`/tags/${slug}/`} class="tag-editorial">
+                {slug}
+                <span class="ml-1 opacity-70">{count}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   )}
 
   <section class="max-w-7xl mx-auto px-5 pb-12">
-    <h2 class="font-display text-2xl font-semibold text-on-surface mb-6">
-      Recent posts
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch reveal-stagger">
-      {recentPosts.map((post: CollectionEntry<'blog'>) => (
-        <div class="reveal">
-          <PostCard post={post} variant="grid" />
+    <div class="pt-5 border-t mb-6" style="border-color: var(--color-outline-variant);">
+      <p class="rubric">
+        Recent posts
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
+      {recentPosts.map((post: CollectionEntry<'blog'>, index: number) => (
+        <div data-reveal>
+          <PostCard post={post} variant="grid" folio={String(index + 1).padStart(2, '0')} />
         </div>
       ))}
     </div>

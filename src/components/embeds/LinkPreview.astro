@@ -32,7 +32,7 @@ const description = cachedData?.description || '';
 const linkUrl = id;
 ---
 
-<div class="link-preview-card my-6 rounded-xl overflow-hidden">
+<div class="link-preview-card my-6 overflow-hidden">
   <a
     href={linkUrl}
     target="_blank"
@@ -83,14 +83,13 @@ const linkUrl = id;
 
 <style>
   .link-preview-card {
-    border: 1px solid var(--color-outline-variant, rgba(25, 28, 29, 0.2));
-    background: var(--color-surface-container-lowest, #ffffff);
-    box-shadow: var(--shadow-ambient, 0 8px 24px rgba(25, 28, 29, 0.05));
-    transition: box-shadow 0.2s ease;
+    border: 1px solid var(--color-outline-variant);
+    background: var(--color-surface-container-lowest);
+    transition: border-color 0.2s ease;
   }
 
   .link-preview-card:hover {
-    box-shadow: var(--shadow-ambient-hover, 0 12px 32px rgba(25, 28, 29, 0.08));
+    border-color: var(--rule-strong);
   }
 
   .link-preview {

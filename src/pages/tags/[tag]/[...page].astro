@@ -7,8 +7,7 @@ import PostCard from '../../../components/blog/PostCard.astro';
 import Pagination from '../../../components/layout/Pagination.astro';
 import { Schema } from 'astro-seo-schema';
 import { getTagMetadata, getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } from '../../../utils/tags';
-import { TAG_METADATA, TAG_AVATAR_MAP } from '../../../consts';
-import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../../utils/hero-colors';
+import { TAG_AVATAR_MAP } from '../../../consts';
 import { createCollectionPageSchema, createBreadcrumbSchema } from '../../../utils/schema';
 import { createUrlFriendlySlug } from '../../../utils/url';
 
@@ -103,30 +102,6 @@ const tagOgImage = `/tags/${tag}-og.png`;
 // Get avatar for this tag
 const avatarSrc = TAG_AVATAR_MAP[tag] ? `/images/avatars/${TAG_AVATAR_MAP[tag]}` : null;
 const avatarFallback = '/images/avatar-192x192.png';
-
-// Get avatar glow color from tag metadata
-const getAvatarGlowColor = () => {
-	if (!TAG_METADATA[tag]) {
-		return 'text-blue-600 dark:text-blue-400';
-	}
-
-	const tagColorLight = TAG_METADATA[tag].colorLight;
-	const textColorMatch = tagColorLight.match(/text-(\w+)-(\d+)/);
-	if (textColorMatch) {
-		const [, color, shade] = textColorMatch;
-		return `text-${color}-${shade} dark:text-${color}-400`;
-	}
-
-	return 'text-blue-600 dark:text-blue-400';
-};
-
-const avatarGlowColor = getAvatarGlowColor();
-
-// Get gradient colors from first post's hero image
-const firstPost = page.data[0];
-const firstPostHeroImage = firstPost?.data.heroImage || firstPost?.data.cover?.image;
-const heroColors = getHeroColors(firstPostHeroImage);
-const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors));
 ---
 
 <BaseLayout
@@ -136,90 +111,61 @@ const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors)
 >
   <Schema slot="head" item={collectionSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
-  <!-- Hero gradient background from first post -->
-  <section
-    class="hero-gradient-section absolute inset-x-0 top-0 -z-10 h-[70vh] min-h-[450px]"
-    style={gradientStyleString}
-  >
-    <div class="hero-gradient-bg absolute inset-0"></div>
-  </section>
-  <section class="surface-container-low py-6 pb-8 mb-8">
-    <div class="max-w-7xl mx-auto px-5">
-      <div class="mb-4 text-center animate-fade-in">
-        <a
-          href="/tags/"
-          class="inline-flex items-center text-sm text-on-surface-variant hover:text-[var(--color-secondary)] transition-colors"
-        >
-          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          All tags
-        </a>
-      </div>
+  <section class="max-w-7xl mx-auto px-5 pt-4 pb-10 mb-10 border-b-2" style="border-color: var(--rule-strong);">
+    <p class="mb-4" data-entrance>
+      <a href="/tags/" class="rubric nav-underline no-underline hover:text-on-surface">&larr; All tags</a>
+    </p>
 
-      <div class="flex items-center justify-center gap-5 sm:gap-6 animate-fade-in animate-delay-1">
-        {avatarSrc && (
-          <div class="flex-shrink-0">
-            <div class="relative">
-              <div class={`absolute -inset-1 bg-gradient-to-r from-current to-current rounded-full opacity-60 blur-md ${avatarGlowColor}`}></div>
-              <img
-                src={avatarSrc}
-                alt={metadata.title}
-                class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full ring-4 ring-[var(--color-surface-container-low)] shadow-lg object-cover"
-                onerror={`this.onerror=null; this.src='${avatarFallback}';`}
-              />
-            </div>
-          </div>
-        )}
+    <div class="flex items-center gap-5 sm:gap-6" data-entrance>
+      {avatarSrc && (
+        <img
+          src={avatarSrc}
+          alt={metadata.title}
+          class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full border object-cover"
+          style="border-color: var(--color-outline-variant);"
+          onerror={`this.onerror=null; this.src='${avatarFallback}';`}
+        />
+      )}
 
-        <div class="min-w-0">
-          <h1 class="text-3xl lg:text-4xl font-bold text-on-surface font-display">
-            {metadata.title}
-          </h1>
-          <p class="text-base text-on-surface-variant mt-1" set:html={metadata.description} />
-          <p class="text-sm text-on-surface-variant mt-1">
-            {totalTagPosts} post{totalTagPosts !== 1 ? 's' : ''}
-          </p>
-        </div>
+      <div class="min-w-0">
+        <h1 class="text-3xl lg:text-4xl text-on-surface font-display">
+          {metadata.title}
+        </h1>
+        <p class="text-base text-on-surface-variant mt-1" set:html={metadata.description} />
+        <p class="rubric mt-2">
+          {totalTagPosts} post{totalTagPosts !== 1 ? 's' : ''}
+        </p>
       </div>
     </div>
+
+    {metadata.intro && (
+      <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed mt-6 max-w-3xl" data-entrance>
+        {metadata.intro}
+      </p>
+    )}
+
+    {relatedTags.length > 0 && (
+      <div class="mt-6" data-entrance>
+        <p class="rubric mb-2">Often appears with</p>
+        <ul class="flex flex-wrap gap-x-4 gap-y-2">
+          {relatedTags.map((related) => (
+            <li>
+              <a href={getTagUrl(related.slug)} class={getTagColorClasses(related.slug)}>
+                {getTagDisplayName(related.slug)}
+                <span class="ml-1 opacity-70">{related.count}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
   </section>
 
-  {(metadata.intro || relatedTags.length > 0) && (
-    <section class="max-w-7xl mx-auto px-5 mb-8">
-      <div class="surface-container-lowest rounded-xl p-6 sm:p-8 reveal">
-        {metadata.intro && (
-          <p class="text-base sm:text-lg text-on-surface leading-relaxed">
-            {metadata.intro}
-          </p>
-        )}
-        {relatedTags.length > 0 && (
-          <div class={metadata.intro ? 'mt-5 pt-4 border-t border-[var(--color-outline-variant)]/40' : ''}>
-            <p class="text-xs text-on-surface-variant mb-2">Often appears with</p>
-            <ul class="flex flex-wrap gap-2">
-              {relatedTags.map((related) => (
-                <li>
-                  <a
-                    href={getTagUrl(related.slug)}
-                    class={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getTagColorClasses(related.slug)} transition-all hover:scale-105 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50`}
-                  >
-                    {getTagDisplayName(related.slug)}
-                    <span class="ml-1.5 text-[10px] opacity-70">{related.count}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    </section>
-  )}
-
   <section class="max-w-7xl mx-auto px-5">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch reveal-stagger">
-      {page.data.map((post: CollectionEntry<'blog'>) => (
-        <div class="reveal">
-          <PostCard post={post} variant="grid" />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
+      {page.data.map((post: CollectionEntry<'blog'>, index: number) => (
+        <div data-reveal>
+          <PostCard post={post} variant="grid" folio={String((page.currentPage - 1) * page.size + index + 1).padStart(2, '0')} />
         </div>
       ))}
     </div>

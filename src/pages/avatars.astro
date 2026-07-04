@@ -22,17 +22,17 @@ const siteUrl = 'https://www.russ.cloud';
 
 <BaseLayout title={`Avatar Contact Sheet - ${SITE_TITLE}`} description="Avatar reference sheet with all available avatars">
   <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-    <div class="mb-12 text-center">
-      <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Avatar Contact Sheet</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400">Click avatar to copy name, click URL to copy full path</p>
+    <div class="mb-12 pt-4 pb-10 border-b-2" style="border-color: var(--rule-strong);">
+      <h1 class="text-4xl mb-4 text-on-surface">Avatar Contact Sheet</h1>
+      <p class="text-lg text-on-surface-variant">Click avatar to copy name, click URL to copy full path</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       {avatarNames.map((name) => (
-        <div class="avatar-card flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+        <div class="avatar-card flex flex-col items-center p-6 border" style="border-color: var(--color-outline-variant);">
           <button
             type="button"
-            class="copy-name-btn mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg transition-transform hover:scale-105"
+            class="copy-name-btn mb-4 focus:outline-none"
             data-name={name}
             aria-label={`Copy ${name} to clipboard`}
           >
@@ -45,12 +45,13 @@ const siteUrl = 'https://www.russ.cloud';
           </button>
 
           <div class="text-center w-full space-y-2">
-            <p class="text-sm font-semibold text-gray-900 dark:text-gray-100 break-words">{name}</p>
+            <p class="text-sm font-semibold text-on-surface break-words">{name}</p>
 
             <div class="space-y-1">
               <button
                 type="button"
-                class="copy-url-btn text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline break-all w-full text-left px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="copy-url-btn text-xs hover:underline break-all w-full text-left px-2 py-1 focus:outline-none"
+                style="color: var(--color-secondary);"
                 data-url={`${siteUrl}/images/avatars/${name}.svg`}
               >
                 {`${siteUrl}/images/avatars/${name}.svg`}
@@ -58,7 +59,8 @@ const siteUrl = 'https://www.russ.cloud';
 
               <button
                 type="button"
-                class="copy-url-btn text-xs text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline break-all w-full text-left px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="copy-url-btn text-xs hover:underline break-all w-full text-left px-2 py-1 focus:outline-none"
+                style="color: var(--color-secondary);"
                 data-url={`${siteUrl}/images/avatars/${name}.png`}
               >
                 {`${siteUrl}/images/avatars/${name}.png`}
@@ -72,7 +74,8 @@ const siteUrl = 'https://www.russ.cloud';
     <!-- Toast notification -->
     <div
       id="copy-toast"
-      class="fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none z-50"
+      class="fixed bottom-4 right-4 px-6 py-3 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none z-50"
+      style="background: var(--color-primary); color: var(--color-on-primary);"
       role="alert"
       aria-live="polite"
     >

@@ -7,22 +7,24 @@ const isDev = import.meta.env.DEV;
 
 <BaseLayout title="Search" description="Search Russ.Cloud blog posts and content">
 	<div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-		<section class="border-b border-gray-200 pb-8 pt-8 text-center dark:border-gray-700 md:pb-12 md:pt-12">
-			<h1 class="mb-2 text-3xl font-bold text-gray-900 dark:text-gray-100 md:text-4xl">
+		<section class="pt-4 pb-10 border-b-2" style="border-color: var(--rule-strong);">
+			<p class="rubric mb-3" data-entrance>The Index</p>
+			<h1 class="mb-2 text-4xl lg:text-5xl text-on-surface" data-entrance>
 				Search
 			</h1>
-			<p class="text-lg text-gray-600 dark:text-gray-400 md:text-xl">
+			<p class="text-lg text-on-surface-variant" data-entrance>
 				Find articles, tutorials, and insights
 			</p>
 		</section>
 
 		{isDev && (
-			<div class="mt-6 rounded-lg border border-amber-400 bg-amber-50 px-4 py-3 text-amber-800 dark:border-amber-500 dark:bg-amber-950 dark:text-amber-200">
+			<div class="callout callout-warning mt-6">
+				<p class="callout-heading">Development Mode</p>
 				<p>
-					<strong>Development Mode:</strong> Search requires a production build to index content. Run{' '}
-					<code class="rounded bg-amber-200/50 px-1.5 py-0.5 font-mono text-sm dark:bg-amber-800/50">npm run build</code>{' '}
+					Search requires a production build to index content. Run{' '}
+					<code>npm run build</code>{' '}
 					and{' '}
-					<code class="rounded bg-amber-200/50 px-1.5 py-0.5 font-mono text-sm dark:bg-amber-800/50">npm run preview</code>{' '}
+					<code>npm run preview</code>{' '}
 					to test search functionality.
 				</p>
 			</div>
@@ -76,24 +78,34 @@ const isDev = import.meta.env.DEV;
 </script>
 
 <style is:global>
-	/* Pagefind UI Theme Variables - Light Mode */
+	/* Pagefind UI Theme Variables - paper and ink (light) */
 	:root {
 		--pagefind-ui-scale: 1;
-		--pagefind-ui-primary: #1f2937;      /* gray-800 */
-		--pagefind-ui-text: #374151;          /* gray-700 */
-		--pagefind-ui-background: #ffffff;
-		--pagefind-ui-border: #e5e7eb;        /* gray-200 */
-		--pagefind-ui-tag: #f3f4f6;           /* gray-100 */
-		--pagefind-ui-border-radius: 0.5rem;
+		--pagefind-ui-primary: #1f1c17;
+		--pagefind-ui-text: #5a5348;
+		--pagefind-ui-background: #fbf8f1;
+		--pagefind-ui-border: rgba(31, 28, 23, 0.18);
+		--pagefind-ui-tag: #e9e2d2;
+		--pagefind-ui-border-radius: 0;
+		--pagefind-ui-font: var(--font-serif), Georgia, serif;
 	}
 
-	/* Pagefind UI Theme Variables - Dark Mode */
+	/* Pagefind UI Theme Variables - ink and paper (dark) */
 	.dark {
-		--pagefind-ui-primary: #f3f4f6;       /* gray-100 */
-		--pagefind-ui-text: #d1d5db;          /* gray-300 */
-		--pagefind-ui-background: #111827;    /* gray-900 */
-		--pagefind-ui-border: #374151;        /* gray-700 */
-		--pagefind-ui-tag: #1f2937;           /* gray-800 */
+		--pagefind-ui-primary: #e9e2d2;
+		--pagefind-ui-text: #b5ac97;
+		--pagefind-ui-background: #100e0a;
+		--pagefind-ui-border: rgba(233, 226, 210, 0.16);
+		--pagefind-ui-tag: #221e16;
+	}
+
+	/* Square everything the vars don't reach */
+	.pagefind-ui__search-input,
+	.pagefind-ui__search-clear,
+	.pagefind-ui__button,
+	.pagefind-ui__result-thumb,
+	.pagefind-ui__result-tag {
+		border-radius: 0 !important;
 	}
 
 	/* Search Input Focus States */
@@ -102,14 +114,10 @@ const isDev = import.meta.env.DEV;
 	}
 
 	.pagefind-ui__search-input:focus {
-		border-color: #3b82f6 !important;     /* blue-500 */
-		box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-		outline: none;
-	}
-
-	.dark .pagefind-ui__search-input:focus {
-		border-color: #60a5fa !important;     /* blue-400 */
-		box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+		border-color: var(--color-secondary) !important;
+		box-shadow: none;
+		outline: 2px solid var(--color-secondary);
+		outline-offset: 2px;
 	}
 
 	/* Result Link Hover Effects */
@@ -118,24 +126,15 @@ const isDev = import.meta.env.DEV;
 	}
 
 	.pagefind-ui__result-link:hover {
-		color: #2563eb !important;            /* blue-600 */
-	}
-
-	.dark .pagefind-ui__result-link:hover {
-		color: #60a5fa !important;            /* blue-400 */
+		color: var(--color-secondary) !important;
 	}
 
 	/* Search Term Highlight Styling */
 	.pagefind-ui mark {
-		background-color: #fef08a;            /* yellow-200 */
+		background-color: color-mix(in srgb, var(--accent-highlight) 25%, transparent);
 		color: inherit;
 		padding: 0.1em 0.2em;
-		border-radius: 0.125rem;
-	}
-
-	.dark .pagefind-ui mark {
-		background-color: #854d0e;            /* yellow-800 */
-		color: #fef9c3;                       /* yellow-100 */
+		border-radius: 0;
 	}
 
 	/* Clear Button Styling */
@@ -144,11 +143,7 @@ const isDev = import.meta.env.DEV;
 	}
 
 	.pagefind-ui__search-clear:hover {
-		color: #1f2937 !important;            /* gray-800 */
-	}
-
-	.dark .pagefind-ui__search-clear:hover {
-		color: #f3f4f6 !important;            /* gray-100 */
+		color: var(--color-on-surface) !important;
 	}
 
 	/* Load More Button Styling */
@@ -157,13 +152,8 @@ const isDev = import.meta.env.DEV;
 	}
 
 	.pagefind-ui__button:hover {
-		border-color: #3b82f6 !important;     /* blue-500 */
-		color: #2563eb !important;            /* blue-600 */
-	}
-
-	.dark .pagefind-ui__button:hover {
-		border-color: #60a5fa !important;     /* blue-400 */
-		color: #60a5fa !important;            /* blue-400 */
+		border-color: var(--color-secondary) !important;
+		color: var(--color-secondary) !important;
 	}
 
 	/* Mobile Responsive Adjustments */

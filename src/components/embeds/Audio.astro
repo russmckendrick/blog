@@ -14,7 +14,8 @@ const { wav, ogg, mp3 } = Astro.props;
 <div class="audio-container my-6">
 	<audio
 		controls
-		class="w-full rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
+		class="w-full surface-container border"
+		style="border-color: var(--color-outline-variant);"
 	>
 		{wav && <source type="audio/wav" src={wav} />}
 		{ogg && <source type="audio/ogg" src={ogg} />}
@@ -29,7 +30,7 @@ const { wav, ogg, mp3 } = Astro.props;
 	}
 
 	.audio-container audio:focus {
-		outline: 2px solid rgb(59 130 246 / 0.5);
+		outline: 2px solid var(--color-secondary);
 		outline-offset: 2px;
 	}
 </style>

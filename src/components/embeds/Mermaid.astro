@@ -22,9 +22,9 @@ const positionClasses = {
 const minimapPositionClass = positionClasses[minimapPosition];
 ---
 
-<div class="mermaid-wrapper not-prose my-6 border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-900" data-diagram-id={diagramId} data-diagram-title={title}>
+<div class="mermaid-wrapper not-prose my-6 border overflow-hidden bg-white dark:bg-gray-900" style="border-color: var(--color-outline-variant);" data-diagram-id={diagramId} data-diagram-title={title}>
   <!-- Controls bar -->
-  <div class="controls-bar flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
+  <div class="controls-bar flex items-center justify-between px-4 py-2 surface-container-low border-b" style="border-color: var(--color-outline-variant);">
     <div class="flex items-center gap-3">
       {title && title !== "Mermaid diagram" && (
         <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{title}</span>

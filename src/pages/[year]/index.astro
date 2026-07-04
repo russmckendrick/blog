@@ -4,7 +4,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import Pagination from '../../components/layout/Pagination.astro';
 import { SITE_TITLE } from '../../consts';
-import { getHeroColors, gradientStylesToString, getGradientStyles } from '../../utils/hero-colors';
 import { Schema } from 'astro-seo-schema';
 import { createCollectionPageSchema, createBreadcrumbSchema } from '../../utils/schema';
 import { createUrlFriendlySlug } from '../../utils/url';
@@ -50,12 +49,6 @@ const totalPages = Math.ceil(totalItems / postsPerPage);
 const title = `${year} Archive - ${SITE_TITLE}`;
 const description = `All posts and tunes from ${year}`;
 
-// Get gradient colors from first post's hero image
-const firstPost = yearContent[0];
-const firstPostHeroImage = firstPost?.data.heroImage || (firstPost && 'cover' in firstPost.data ? firstPost.data.cover?.image : undefined);
-const heroColors = getHeroColors(firstPostHeroImage);
-const gradientStyleString = gradientStylesToString(getGradientStyles(heroColors));
-
 const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
 
@@ -89,27 +82,19 @@ const breadcrumbSchema = createBreadcrumbSchema(
 <BaseLayout title={title} description={description}>
 	<Schema slot="head" item={collectionSchema} />
 	<Schema slot="head" item={breadcrumbSchema} />
-	<!-- Hero gradient background from first post -->
-	<section
-		class="hero-gradient-section absolute inset-x-0 top-0 -z-10 h-[70vh] min-h-[450px]"
-		style={gradientStyleString}
-	>
-		<div class="hero-gradient-bg absolute inset-0"></div>
-	</section>
-	<section class="surface-container-low py-6 pb-8 mb-8">
-		<div class="max-w-7xl mx-auto px-5 text-center animate-fade-in">
-			<h1 class="text-3xl lg:text-4xl font-bold text-on-surface font-display">{year}</h1>
-			<p class="text-base text-on-surface-variant mt-1">
-				{totalItems} {totalItems === 1 ? 'post' : 'posts'} published in {year}
-			</p>
-		</div>
+	<section class="max-w-7xl mx-auto px-5 pt-4 pb-10 mb-10 border-b-2" style="border-color: var(--rule-strong);">
+		<p class="rubric mb-3" data-entrance>The Archive</p>
+		<h1 class="text-4xl lg:text-5xl text-on-surface font-display" data-entrance>{year}</h1>
+		<p class="text-base text-on-surface-variant mt-2" data-entrance>
+			{totalItems} {totalItems === 1 ? 'post' : 'posts'} published in {year}
+		</p>
 	</section>
 
 	<section class="max-w-7xl mx-auto px-5">
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch reveal-stagger">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
 			{yearContent.map((item, index) => (
-				<div class="reveal">
-					<PostCard post={item} variant="grid" priority={index === 0} />
+				<div data-reveal>
+					<PostCard post={item} variant="grid" priority={index === 0} folio={String(index + 1).padStart(2, '0')} />
 				</div>
 			))}
 		</div>

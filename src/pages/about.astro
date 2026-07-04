@@ -37,15 +37,14 @@ const socials = [
 		<Schema item={personSchema} />
 		<Schema item={organizationSchema} />
 	</Fragment>
-	<section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+	<section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
 		<!-- Intro section -->
-		<div class="surface-container-lowest rounded-2xl shadow-ambient ghost-border p-6 sm:p-8 lg:p-10 mb-10 reveal">
-
-			<!-- Avatar centered (click to randomize) -->
-			<div class="flex justify-center mb-6">
-				<button type="button" class="avatar-button relative cursor-pointer group" aria-label="Click to change avatar">
-					<div class="avatar-inner w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden ring-4 ring-white dark:ring-gray-900 shadow-ambient surface-container-low transition-transform duration-200 group-hover:scale-105">
+		<div class="pt-4 pb-10 mb-10 border-b-2" style="border-color: var(--rule-strong);">
+			<div class="flex flex-col sm:flex-row sm:items-start gap-8">
+				<!-- Avatar (click to randomize) -->
+				<button type="button" class="avatar-button relative cursor-pointer group flex-shrink-0" aria-label="Click to change avatar" data-entrance>
+					<div class="avatar-inner w-32 h-32 sm:w-36 sm:h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden border" style="border-color: var(--color-outline-variant);">
 						<img
 							src={defaultAvatarPath}
 							alt="Russ McKendrick avatar"
@@ -53,51 +52,53 @@ const socials = [
 						/>
 					</div>
 				</button>
+
+				<div class="min-w-0">
+					<p class="rubric mb-3" data-entrance>The Author</p>
+					<h1 class="font-display text-3xl sm:text-4xl md:text-5xl text-on-surface mb-6" data-entrance>
+						<span class="inline-block animate-wave" style="transform-origin: 70% 70%;">👋</span> Hi there, my name is Russ.
+					</h1>
+
+					<div class="max-w-none space-y-4" data-entrance>
+						<p class="text-lg text-on-surface-variant leading-relaxed">
+							Hello! I'm Russ, an IT professional with a strong background in DevOps and system administration. I've spent the last 30 years working in various IT roles across multiple industries.
+						</p>
+
+						<p class="text-lg text-on-surface-variant leading-relaxed">
+							I have a deep passion for Linux, open-source systems, automation, and containers. I currently serve as the Practice Manager of SRE & DevOps at <a href="https://www.node4.co.uk/" target="_blank" rel="noopener noreferrer" class="about-link">Node4</a>, managing projects across public and private clouds.
+						</p>
+
+						<p class="text-lg text-on-surface-variant leading-relaxed">
+							Apart from my work, I have written and contributed to <a href="/books/" class="about-link">fourteen technical books</a> primarily revolving around container technologies and automation. In my downtime, I enjoy expanding <a href="https://www.russ.fm/" target="_blank" rel="noopener noreferrer" class="about-link">my vinyl record collection</a>.
+						</p>
+					</div>
+				</div>
 			</div>
 
 			<!-- Avatar data for client-side random selection -->
 			<script is:inline define:vars={{ availableAvatars }}>
 				window.__availableAvatars = availableAvatars;
 			</script>
-
-			<h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-on-surface mb-6 flex items-center gap-3">
-				<span class="inline-block text-5xl sm:text-6xl md:text-7xl animate-wave" style="transform-origin: 70% 70%;">👋</span> Hi there, my name is Russ.
-			</h1>
-
-			<div class="max-w-none space-y-4">
-				<p class="text-lg text-on-surface-variant leading-relaxed">
-					Hello! I'm Russ, an IT professional with a strong background in DevOps and system administration. I've spent the last 30 years working in various IT roles across multiple industries.
-				</p>
-
-				<p class="text-lg text-on-surface-variant leading-relaxed">
-					I have a deep passion for Linux, open-source systems, automation, and containers. I currently serve as the Practice Manager of SRE & DevOps at <a href="https://www.node4.co.uk/" target="_blank" rel="noopener noreferrer" class="about-link">Node4</a>, managing projects across public and private clouds.
-				</p>
-
-				<p class="text-lg text-on-surface-variant leading-relaxed">
-					Apart from my work, I have written and contributed to <a href="/books/" class="about-link">fourteen technical books</a> primarily revolving around container technologies and automation. In my downtime, I enjoy expanding <a href="https://www.russ.fm/" target="_blank" rel="noopener noreferrer" class="about-link">my vinyl record collection</a>.
-				</p>
-			</div>
 		</div>
 
 		<!-- Contact section -->
-		<div class="reveal">
-			<h2 class="font-display text-2xl sm:text-3xl font-bold text-on-surface mb-3">Contact me</h2>
+		<div data-reveal>
+			<p class="rubric mb-2">Contact</p>
+			<h2 class="font-display text-2xl sm:text-3xl text-on-surface mb-3">Find me online</h2>
 
-			<p class="text-on-surface-variant mb-6">Here is where you can find me online ...</p>
-
-			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 reveal-stagger">
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8">
 				{socials.map((s) => (
 					<a
 						href={s.href}
 						target={s.href.startsWith('mailto:') ? undefined : '_blank'}
 						rel={s.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-						class="social-link reveal"
+						class="social-link"
 						style={`--social-color: ${s.color};`}
 					>
-						<span class="social-link-icon" style={`background-color: ${s.color};`}>
+						<span class="social-link-icon">
 							<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" set:html={s.icon} />
 						</span>
-						<span class="font-display font-semibold text-on-surface">{s.label}</span>
+						<span class="font-display text-on-surface" style="font-weight: 540;">{s.label}</span>
 					</a>
 				))}
 			</div>
@@ -123,32 +124,35 @@ const socials = [
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.625rem 1rem;
-    border-radius: 0.75rem;
-    background-color: var(--color-surface-container-lowest);
-    box-shadow: var(--shadow-ambient);
-    outline: var(--ghost-border);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-outline-variant);
     text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: color 0.2s;
   }
-  .social-link:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-ambient-hover);
+  .social-link:hover span:last-child {
+    color: var(--color-secondary);
   }
 
   .social-link-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 0.5rem;
+    width: 28px;
+    height: 28px;
     flex-shrink: 0;
   }
   .social-link-icon svg {
     width: 18px;
     height: 18px;
-    fill: white;
+    fill: var(--color-on-surface-variant);
+    transition: fill 0.2s;
+  }
+  .social-link:hover .social-link-icon svg {
+    fill: var(--social-color);
+  }
+  /* Dark brand colours (GitHub, Medium) vanish on ink — use the accent instead */
+  :global(.dark) .social-link:hover .social-link-icon svg {
+    fill: var(--color-secondary);
   }
 
   .avatar-button {

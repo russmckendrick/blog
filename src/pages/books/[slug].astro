@@ -77,7 +77,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 
     <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-12">
       <aside class="lg:sticky lg:top-24 self-start">
-        <div class="surface-container-lowest rounded-xl shadow-ambient ghost-border overflow-hidden aspect-[3/4]">
+        <div class="border overflow-hidden aspect-[3/4]" style="border-color: var(--color-outline-variant);">
           <img
             src={entry.data.cover}
             alt={entry.data.alt}
@@ -91,8 +91,8 @@ const breadcrumbSchema = createBreadcrumbSchema(
             href={entry.data.buyLink}
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-5 inline-flex w-full items-center justify-center rounded-lg px-4 py-3 font-medium transition-all hover:-translate-y-[1px] hover:shadow-md"
-            style="background: var(--color-secondary); color: var(--color-on-secondary);"
+            class="mt-5 inline-flex w-full items-center justify-center px-4 py-3 rubric no-underline transition-colors"
+            style="background: var(--color-primary); color: var(--color-on-primary);"
           >
             Buy from {entry.data.publisher}
           </a>
