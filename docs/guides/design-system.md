@@ -48,7 +48,7 @@ Dates are day-first ("13 Jun 2026") via `FormattedDate.astro`.
 No cards, shadows, glass, gradients, or border radius (circular avatar portraits are the sole exception). Separation comes from:
 
 - hairline rules between list entries and around every image (`border` + `--color-outline-variant`)
-- heavy rules (`border-t-2`/`border-b-2` + `--rule-strong`) above featured spreads and closing page headers
+- heavy rules (`border-t-2`/`border-b-2` + `--rule-strong`) closing page headers (the featured spread is rule-free)
 - the page-header pattern: rubric line → Source Serif heading → standfirst → heavy rule
 
 Listings are index entries: dateline, framed cover, Source Serif headline, standfirst, hairline below.

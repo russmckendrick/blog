@@ -45,7 +45,7 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 
 - Colors are defined as CSS custom properties in `src/styles/global.css` with automatic light/dark adaptation. Never use raw hex values or Tailwind palette colours (`gray-*`, `blue-*`).
 - The single accent is burnt orange (`--color-secondary` for links/active, `--color-primary` for hover/filled), lifting to muted salmon in dark mode. There is no blue.
-- Separate sections with hairline rules (`--color-outline-variant`); use heavy rules (`--rule-strong`) only for page headers and featured spreads.
+- Separate sections with hairline rules (`--color-outline-variant`); use heavy rules (`--rule-strong`) only for page headers; the featured spread sits rule-free under the masthead.
 - Frame all images with a 1px hairline.
 - Hover states are colour shifts (ink → accent) and underline draw-ins, never shadows or translation.
 

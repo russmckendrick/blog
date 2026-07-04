@@ -125,10 +125,7 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 		href={href}
 		aria-label={`Read blog post: ${post.data.title}`}
 		class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4">
-		<article
-			class="border-t-2 border-b pt-6 pb-10"
-			style="border-top-color: var(--rule-strong); border-bottom-color: var(--color-outline-variant);"
-		>
+		<article class="pt-2 pb-6">
 			<div class="flex flex-col lg:flex-row lg:gap-10">
 				{/* Content side */}
 				<div class="relative py-6 lg:py-2 flex flex-col gap-5 lg:w-1/2 order-2 lg:order-1">
