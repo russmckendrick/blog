@@ -17,8 +17,8 @@ This guide documents the visual and interaction conventions used across Russ.Clo
   - blog posts: `max-w-5xl` (prose constrained to `max-w-[72ch]`, hero full container width)
   - blog list / archives / search / about: `max-w-5xl`
   - site shell/header/footer: `max-w-7xl`
-- Page headers follow one pattern: `.rubric` kicker → Fraunces heading → standfirst paragraph → heavy closing rule (`border-b-2` with `--rule-strong`).
-- Listings are index entries: dateline, hairline-framed cover, Fraunces headline, standfirst, hairline separator.
+- Page headers follow one pattern: `.rubric` kicker → Source Serif heading → standfirst paragraph → heavy closing rule (`border-b-2` with `--rule-strong`).
+- Listings are index entries: dateline, hairline-framed cover, Source Serif headline, standfirst, hairline separator.
 
 ## Header And Footer
 
@@ -35,8 +35,7 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 
 ## Typography
 
-- Use **Fraunces** (`font-display`) for the masthead, headings, and card titles — weight ~560 for display, ~540 for headings, no negative letter-spacing.
-- Use **Source Serif 4** (`font-serif`) for body text (1.125rem/1.75).
+- One serif does everything, newspaper-style: **Source Serif 4** for body text (weight 400, 1.125rem/1.75) and for the masthead, headings, and card titles at bold weights — 700 for display/h1, 660 for headings, 620 for h3, with slight negative tracking on the biggest sizes only.
 - Use **IBM Plex Mono** (`font-mono`) for code and all metadata: datelines, reading time, rubrics.
 - Use `.rubric` for any label or dateline; `.tag-editorial` for tag-like links.
 - Dates render day-first ("13 Jun 2026") via `FormattedDate.astro` and uppercase inside rubrics.

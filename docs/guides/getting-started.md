@@ -129,7 +129,7 @@ Main Astro configuration:
 
 Tailwind CSS 4 configuration lives in CSS:
 - Design tokens (paper/ink palette, hairline rules, accent colors)
-- Font stacks (Fraunces display, Source Serif 4 body, IBM Plex Mono)
+- Font stacks (Source Serif 4 display+body, IBM Plex Mono)
 - Dark mode overrides
 
 ### src/content.config.ts

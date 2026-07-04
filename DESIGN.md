@@ -31,27 +31,27 @@ colors:
   dark-accent-highlight: "#C9A94E"
 typography:
   headline-display:
-    fontFamily: "Fraunces, Georgia, Times New Roman, serif"
+    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
     fontSize: 56px
-    fontWeight: 560
+    fontWeight: 700
     lineHeight: 1.1
-    letterSpacing: "0"
+    letterSpacing: "-0.01em"
   headline-lg:
-    fontFamily: "Fraunces, Georgia, Times New Roman, serif"
+    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
     fontSize: 40px
-    fontWeight: 540
+    fontWeight: 660
     lineHeight: 1.15
-    letterSpacing: "0"
+    letterSpacing: "-0.01em"
   headline-md:
-    fontFamily: "Fraunces, Georgia, Times New Roman, serif"
+    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
     fontSize: 30px
-    fontWeight: 540
+    fontWeight: 660
     lineHeight: 1.2
-    letterSpacing: "0"
+    letterSpacing: "-0.01em"
   headline-sm:
-    fontFamily: "Fraunces, Georgia, Times New Roman, serif"
+    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
     fontSize: 24px
-    fontWeight: 500
+    fontWeight: 620
     lineHeight: 1.25
   body-lg:
     fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
@@ -158,10 +158,9 @@ The CSS custom properties in `src/styles/global.css` define paper/ink primitives
 
 ## Typography
 
-Three faces, all self-hosted through Astro's Fonts API (`astro.config.mjs`):
+Two faces, all self-hosted through Astro's Fonts API (`astro.config.mjs`) — one sturdy text serif does everything, differentiated by weight, like a real newspaper:
 
-- **Fraunces** (`--font-display`) — display serif for the masthead, headlines, and drop caps. Weights via the variable axis: 560 for display/h1, 540 for section and card headings, 500 for h3. No negative letter-spacing.
-- **Source Serif 4** (`--font-serif`) — body copy at 1.125rem/1.75, prose measure ~72ch.
+- **Source Serif 4** (`--font-serif`, also `--font-display`) — body copy at 1.125rem/1.75 (weight 400), prose measure ~72ch; headlines bold via the variable axis: 700 for display/h1 (letter-spacing -0.015em), 660 for section and card headings (-0.01em), 620 for h3.
 - **IBM Plex Mono** (`--font-mono`) — code, and promoted to metadata duty: datelines, reading time, rubrics.
 
 The `.rubric` utility (mono, 0.8125rem, uppercase, 0.08em tracking, muted ink) is the standard treatment for labels, datelines, and section rubrics. Dates render day-first ("13 Jun 2026") via `FormattedDate` and uppercase inside rubrics.
@@ -170,7 +169,7 @@ The `.rubric` utility (mono, 0.8125rem, uppercase, 0.08em tracking, muted ink) i
 
 ## Layout
 
-Stable max-width containers with generous gutters: shell and listing pages at `max-w-7xl`, article pages at `max-w-5xl` with prose constrained to `max-w-[72ch]` (heroes run the full container width). Page headers follow one pattern: rubric line, Fraunces heading, standfirst paragraph, closed by a heavy `border-b-2` rule (`--rule-strong`).
+Stable max-width containers with generous gutters: shell and listing pages at `max-w-7xl`, article pages at `max-w-5xl` with prose constrained to `max-w-[72ch]` (heroes run the full container width). Page headers follow one pattern: rubric line, Source Serif heading, standfirst paragraph, closed by a heavy `border-b-2` rule (`--rule-strong`).
 
 ## Rules instead of cards
 
@@ -181,7 +180,7 @@ There are no cards, shadows, glass, or gradients. Separation comes from:
 - **Hairline frames** around all images (listing covers, article heroes, book covers, prose images).
 - **Radius 0 everywhere.** The only exception is circular avatar portraits (a print convention) — article byline, tag hub, about page.
 
-Listings are index entries: dateline, framed cover image, Fraunces headline, standfirst, rule below. Tags render through `getTagColorClasses()` → the single `.tag-editorial` treatment (small-caps mono with a hairline underline, accent on hover); the per-tag pastel palette in `TAG_METADATA` is retired visually but the titles/emojis/descriptions remain in use.
+Listings are index entries: dateline, framed cover image, Source Serif headline, standfirst, rule below. Tags render through `getTagColorClasses()` → the single `.tag-editorial` treatment (small-caps mono with a hairline underline, accent on hover); the per-tag pastel palette in `TAG_METADATA` is retired visually but the titles/emojis/descriptions remain in use.
 
 ## Motion — "the magazine, filmed"
 
@@ -196,10 +195,10 @@ Built on the vanilla **Motion** library via `src/scripts/motion.ts`; no React is
 
 ## Components
 
-- **Masthead:** opaque paper, 1px bottom rule, Fraunces wordmark, always-visible small-caps mono nav with underline draw-in hovers. No glass, no icons on desktop.
+- **Masthead:** opaque paper, 1px bottom rule, bold Source Serif wordmark, always-visible small-caps mono nav with underline draw-in hovers. No glass, no icons on desktop.
 - **Footer:** colophon — hairline top rule, centred small-caps nav, italic copyright line.
 - **Pagination:** a rule-topped line of plain mono numerals with rubric Previous/Next; current page in accent.
-- **Article:** sits directly on paper. Journal header (dateline rubric, left-aligned Fraunces title, one-line byline with small round avatar, editorial tag line, heavy rule), hairline-framed hero, drop cap on the opening paragraph (`.article-body`, `initial-letter` with float fallback; not applied to tunes posts).
+- **Article:** sits directly on paper. Journal header (dateline rubric, left-aligned bold Source Serif title, one-line byline with small round avatar, editorial tag line, heavy rule), hairline-framed hero, drop cap on the opening paragraph (`.article-body`, `initial-letter` with float fallback; not applied to tunes posts).
 - **Prose:** h2 carries a hairline rule above; h4+ use small-caps serif. Blockquotes are bare italic pull-quotes with a 2px ink rule. Tables use strong rules top/bottom, small-caps headers, hairline rows, no fills. `hr` renders as a centred asterism dinkus. Code frames (Expressive Code) are square with hairline borders and paper-tinted chrome, themed via `styleOverrides` in `astro.config.mjs` only.
 - **Callouts:** one definition (`.callout`), seven variants via per-variant accent inks (`--callout-note/tip/important/caution/warning`, light + dark): 2px accent left rule, 5% `color-mix` tint, small-caps mono heading.
 - **Reading progress:** a 2px accent rule. No gradient, no glow.

@@ -32,11 +32,10 @@ Primitives (preferred in new code):
 
 | Face | Variable | Role |
 |---|---|---|
-| Fraunces | `--font-display` (`font-display`) | masthead, headlines, drop caps — weight 560 display / 540 headings / 500 h3 |
-| Source Serif 4 | `--font-serif` (`font-serif`) | body at 1.125rem/1.75, prose measure ~72ch |
+| Source Serif 4 | `--font-serif` + `--font-display` | one serif for everything, newspaper-style: body at 400 (1.125rem/1.75, ~72ch measure); headlines bold — 700 display/h1 (tracking -0.015em), 660 headings/card titles (-0.01em), 620 h3 |
 | IBM Plex Mono | `--font-mono` (`font-mono`) | code + metadata: datelines, rubrics |
 
-No negative letter-spacing on headings. Dates are day-first ("13 Jun 2026") via `FormattedDate.astro`.
+Dates are day-first ("13 Jun 2026") via `FormattedDate.astro`.
 
 ### Utility classes
 
@@ -50,9 +49,9 @@ No cards, shadows, glass, gradients, or border radius (circular avatar portraits
 
 - hairline rules between list entries and around every image (`border` + `--color-outline-variant`)
 - heavy rules (`border-t-2`/`border-b-2` + `--rule-strong`) above featured spreads and closing page headers
-- the page-header pattern: rubric line → Fraunces heading → standfirst → heavy rule
+- the page-header pattern: rubric line → Source Serif heading → standfirst → heavy rule
 
-Listings are index entries: dateline, framed cover, Fraunces headline, standfirst, hairline below.
+Listings are index entries: dateline, framed cover, Source Serif headline, standfirst, hairline below.
 
 ## Motion
 

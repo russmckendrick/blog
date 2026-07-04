@@ -24,18 +24,6 @@ export default defineConfig({
 	fonts: [
 		{
 			provider: fontProviders.local(),
-			name: 'Fraunces',
-			cssVariable: '--font-fraunces',
-			fallbacks: ['Georgia', 'Times New Roman', 'serif'],
-			options: {
-				variants: [
-					{ weight: '100 900', style: 'normal', src: ['./src/assets/fonts/fraunces-variable-latin.woff2'] },
-					{ weight: '100 900', style: 'italic', src: ['./src/assets/fonts/fraunces-variable-italic-latin.woff2'] }
-				]
-			}
-		},
-		{
-			provider: fontProviders.local(),
 			name: 'Source Serif 4',
 			cssVariable: '--font-source-serif',
 			fallbacks: ['Georgia', 'Times New Roman', 'serif'],

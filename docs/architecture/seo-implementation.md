@@ -357,7 +357,7 @@ See [Image Delivery Architecture](./image-delivery.md)
 
 **File**: `src/components/layout/BaseHead.astro`
 
-Fonts are self-hosted via Astro's Fonts API (no Google Fonts requests). The three families - Fraunces (display), Source Serif 4 (body), and IBM Plex Mono (code/metadata) - are loaded as CSS variables:
+Fonts are self-hosted via Astro's Fonts API (no Google Fonts requests). The two families - Source Serif 4 (display and body) and IBM Plex Mono (code/metadata) - are loaded as CSS variables:
 
 ```astro
 <Font cssVariable="--font-fraunces" />
