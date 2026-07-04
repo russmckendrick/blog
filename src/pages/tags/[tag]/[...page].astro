@@ -163,9 +163,9 @@ const avatarFallback = '/images/avatar-192x192.png';
 
   <section class="max-w-7xl mx-auto px-5">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
-      {page.data.map((post: CollectionEntry<'blog'>, index: number) => (
+      {page.data.map((post: CollectionEntry<'blog'>) => (
         <div data-reveal>
-          <PostCard post={post} variant="grid" folio={String((page.currentPage - 1) * page.size + index + 1).padStart(2, '0')} />
+          <PostCard post={post} variant="grid" />
         </div>
       ))}
     </div>

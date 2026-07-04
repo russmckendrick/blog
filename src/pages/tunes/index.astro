@@ -79,9 +79,9 @@ const browseHubs = [
 			<div class="mt-10 sm:mt-14">
 				<h2 class="sr-only">More Tunes</h2>
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
-					{gridTunes.map((tune, index) => (
+					{gridTunes.map((tune) => (
 						<div data-reveal>
-							<PostCard post={tune} variant="grid" headingLevel="3" folio={String(index + 2).padStart(2, '0')} />
+							<PostCard post={tune} variant="grid" headingLevel="3" />
 						</div>
 					))}
 				</div>

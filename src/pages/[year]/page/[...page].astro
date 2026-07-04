@@ -55,7 +55,7 @@ const description = `All posts and tunes from ${year} - Page ${page.currentPage}
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
 			{page.data.map((item: CollectionEntry<'blog'> | CollectionEntry<'tunes'>, index: number) => (
 				<div data-reveal>
-					<PostCard post={item} variant="grid" priority={index === 0 && page.currentPage === 1} folio={String((page.currentPage - 1) * page.size + index + 1).padStart(2, '0')} />
+					<PostCard post={item} variant="grid" priority={index === 0 && page.currentPage === 1} />
 				</div>
 			))}
 		</div>

@@ -12,10 +12,9 @@ interface Props {
 	priority?: boolean; // For LCP optimization on first card
 	variant?: 'vertical' | 'horizontal' | 'featured' | 'grid'; // Layout variant
 	headingLevel?: '2' | '3'; // Heading level for accessibility
-	folio?: string; // Index number rendered as a mono folio, e.g. "01"
 }
 
-const { post, priority = false, variant = 'vertical', headingLevel = '2', folio } = Astro.props;
+const { post, priority = false, variant = 'vertical', headingLevel = '2' } = Astro.props;
 const HeadingTag = `h${headingLevel}` as 'h2' | 'h3';
 const href = getPostUrl(post.data.pubDate, post.data.title);
 const cover = 'cover' in post.data ? post.data.cover : undefined;
@@ -214,13 +213,8 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
 		aria-label={`Read blog post: ${post.data.title}`}
 		class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 h-full">
 		<article class="border-t pt-4 h-full flex flex-col gap-3" style="border-color: var(--color-outline-variant);">
-			<p class="rubric flex items-baseline justify-between">
-				{folio ? (
-					<span class="transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 600;">{folio}</span>
-				) : (
-					<span />
-				)}
-				<span><FormattedDate date={post.data.pubDate} /></span>
+			<p class="rubric">
+				<FormattedDate date={post.data.pubDate} />
 			</p>
 			{heroImage && (
 				<figure
