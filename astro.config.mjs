@@ -60,13 +60,14 @@ export default defineConfig({
 	integrations: [
 		react(),
 		expressiveCode({
-			// solarized-dark is never activated page-wide: it exists as a third
-			// token layer (--2) that terminal frames read in global.css so
-			// terminals always render as a Solarized Dark window in both themes.
-			themes: ['github-dark', 'github-light', 'solarized-dark'],
+			// catppuccin-macchiato is never activated page-wide: it exists as a
+			// third token layer (--2) that terminal frames read in global.css so
+			// terminals always render as a dark slate-navy window (matching the
+			// author's actual terminal profile) in both site themes.
+			themes: ['github-dark', 'github-light', 'catppuccin-macchiato'],
 			themeCssSelector: (theme) =>
-				theme.name === 'solarized-dark'
-					? "[data-theme='solarized-terminal-only']"
+				theme.name === 'catppuccin-macchiato'
+					? "[data-theme='terminal-profile-only']"
 					: `[data-theme='${theme.type}']`,
 			styleOverrides: {
 				borderRadius: '0',

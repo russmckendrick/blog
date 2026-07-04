@@ -659,9 +659,10 @@ a:hover {
    These are the one intentional exception to the flat, square, shadowless
    rule language: a terminal frame depicts a real macOS app window, so it
    gets rounded corners, a soft drop shadow, and real traffic-light dots.
-   The window always renders as a Solarized Dark terminal profile — in
-   light mode too — by reading Expressive Code's third token layer (--2,
-   solarized-dark; see the themes config in astro.config.mjs). */
+   The window always renders as a dark slate-navy terminal profile
+   (Catppuccin Macchiato, matching the author's own terminal) — in light
+   mode too — by reading Expressive Code's third token layer (--2; see
+   the themes config in astro.config.mjs). */
 
 .expressive-code .frame.is-terminal {
   border-radius: 10px;
@@ -679,28 +680,28 @@ a:hover {
     0 16px 36px rgba(0, 0, 0, 0.55);
 }
 
-/* Title bar: Solarized base02 in both themes */
+/* Title bar: slightly lifted slate over the body, both themes */
 .expressive-code .frame.is-terminal .header {
   height: 2.35rem;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.01em;
-  background: #073642 !important;
-  color: #93a1a1 !important;
+  background: #2c3047 !important;
+  color: #cad3f5 !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
 }
 
-/* Terminal body: Solarized base03, both themes */
+/* Terminal body: Macchiato base, both themes */
 .expressive-code .frame.is-terminal pre {
-  background: #002b36 !important;
+  background: #24273a !important;
 }
 
-/* Content always uses the solarized-dark token layer (--2), with the
-   Solarized body colour as the plain-text fallback */
+/* Content always uses the terminal-profile token layer (--2), with the
+   Macchiato text colour as the plain-text fallback */
 .expressive-code .frame.is-terminal pre,
 .expressive-code .frame.is-terminal pre > code {
-  color: #93a1a1;
+  color: #cad3f5;
 }
 
 .expressive-code .frame.is-terminal span[style*="--2:"] {
@@ -709,12 +710,12 @@ a:hover {
 
 /* Copy button on the dark window */
 .expressive-code .frame.is-terminal .copy button {
-  background: #073642 !important;
+  background: #363a4f !important;
   opacity: 0.75;
 }
 
 .expressive-code .frame.is-terminal .copy button::after {
-  background: #93a1a1 !important;
+  background: #cad3f5 !important;
 }
 
 /* Traffic lights: kill EC's monochrome dot mask and draw the three
