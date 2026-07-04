@@ -41,8 +41,9 @@ const mobileMenuLabelId = 'mobile-menu-label';
 								href={item.url}
 								target={item.external ? '_blank' : undefined}
 								rel={item.external ? 'noopener noreferrer' : undefined}
-								class="header-nav-item nav-underline rubric no-underline py-1.5"
+								class="header-nav-item nav-underline rubric no-underline py-1.5 inline-flex items-center gap-1.5"
 							>
+								<Icon name={item.icon} size={15} aria-hidden="true" />
 								{item.name}
 							</a>
 						</li>
