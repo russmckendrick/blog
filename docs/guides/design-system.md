@@ -15,15 +15,15 @@ Primitives (preferred in new code):
 
 | Token | Light | Dark | Use |
 |---|---|---|---|
-| `--paper` | `#F5F1E8` | `#16130E` | page background |
-| `--paper-bright` | `#FBF8F1` | `#100E0A` | code frames, link previews |
-| `--paper-shade` → `--paper-deepest` | `#EFE9DB`…`#D4CAB2` | `#1D1912`…`#363023` | quiet fills, hovers |
-| `--ink` | `#1F1C17` | `#E9E2D2` | headings, primary copy |
-| `--ink-muted` | `#5A5348` | `#B5AC97` | prose, metadata |
-| `--rule` | `rgba(31,28,23,.18)` | `rgba(233,226,210,.16)` | hairline rules, frames |
-| `--rule-strong` | `rgba(31,28,23,.55)` | `rgba(233,226,210,.5)` | heavy editorial rules |
-| `--accent` | `#96432F` | `#D99C82` | links, active states |
-| `--accent-strong` | `#7A2E20` | `#E5B29C` | hovers, filled buttons |
+| `--paper` | `#F6F6F6` | `#16130E` | page background |
+| `--paper-bright` | `#FFFFFF` | `#100E0A` | code frames, link previews |
+| `--paper-shade` → `--paper-deepest` | `#EDEDED`…`#C9C9C9` | `#1D1912`…`#363023` | quiet fills, hovers |
+| `--ink` | `#1A1A1A` | `#E9E2D2` | headings, primary copy |
+| `--ink-muted` | `#555555` | `#B5AC97` | prose, metadata |
+| `--rule` | `rgba(0,0,0,.14)` | `rgba(233,226,210,.16)` | hairline rules, frames |
+| `--rule-strong` | `rgba(0,0,0,.5)` | `rgba(233,226,210,.5)` | heavy editorial rules |
+| `--accent` | `#BF3B00` | `#D99C82` | links, active states |
+| `--accent-strong` | `#8F2D00` | `#E5B29C` | hovers, filled buttons |
 | `--accent-highlight` | `#8A6D1F` | `#C9A94E` | text highlights only |
 
 **Legacy aliases:** the Material-style names (`--color-surface`, `--color-surface-container-*`, `--color-on-surface`, `--color-on-surface-variant`, `--color-primary`, `--color-secondary`, `--color-outline-variant`) are aliases of the primitives so older components keep working. `--shadow-ambient` is `none`, `--glass-bg` is opaque paper, and `--ghost-border` is a hairline — the utilities that consume them are inert by design. Never add raw hex values or Tailwind palette colours (`gray-*`, `blue-*`).

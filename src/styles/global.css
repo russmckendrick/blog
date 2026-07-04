@@ -9,19 +9,19 @@
    ================================================ */
 
 :root {
-  /* Paper & ink primitives (light) */
-  --paper: #f5f1e8;
-  --paper-bright: #fbf8f1;
-  --paper-shade: #efe9db;
-  --paper-tint: #e9e2d2;
-  --paper-deep: #e0d7c3;
-  --paper-deepest: #d4cab2;
-  --ink: #1f1c17;
-  --ink-muted: #5a5348;
-  --rule: rgba(31, 28, 23, 0.18);
-  --rule-strong: rgba(31, 28, 23, 0.55);
-  --accent: #96432f;
-  --accent-strong: #7a2e20;
+  /* Paper & ink primitives (light: neutral newsprint, no warmth) */
+  --paper: #f6f6f6;
+  --paper-bright: #ffffff;
+  --paper-shade: #ededed;
+  --paper-tint: #e4e4e4;
+  --paper-deep: #d8d8d8;
+  --paper-deepest: #c9c9c9;
+  --ink: #1a1a1a;
+  --ink-muted: #555555;
+  --rule: rgba(0, 0, 0, 0.14);
+  --rule-strong: rgba(0, 0, 0, 0.5);
+  --accent: #bf3b00;
+  --accent-strong: #8f2d00;
   --accent-highlight: #8a6d1f;
 
   /* Brand aliases */
@@ -721,10 +721,10 @@ a:hover {
    ================================================ */
 
 :root {
-  --callout-note: #5a5348;
-  --callout-tip: #4a5d3a;
-  --callout-important: #33475b;
-  --callout-caution: #7a2e20;
+  --callout-note: #555555;
+  --callout-tip: #3d5c33;
+  --callout-important: #2f4a63;
+  --callout-caution: #8f2d00;
   --callout-warning: #8a6d1f;
 }
 

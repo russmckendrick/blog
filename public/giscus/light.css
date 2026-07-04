@@ -35,16 +35,16 @@ main {
   --color-prettylights-syntax-constant-other-reference-link: #0a3069;
 
   /* Buttons */
-  --color-btn-text: #1f1c17;
-  --color-btn-bg: #efe9db;
-  --color-btn-border: rgba(31, 28, 23, 0.18);
+  --color-btn-text: #1a1a1a;
+  --color-btn-bg: #ededed;
+  --color-btn-border: rgba(0, 0, 0, 0.14);
   --color-btn-shadow: 0 0 transparent;
   --color-btn-inset-shadow: 0 0 transparent;
-  --color-btn-hover-bg: #e9e2d2;
-  --color-btn-hover-border: rgba(31, 28, 23, 0.25);
-  --color-btn-active-bg: #e0d7c3;
-  --color-btn-active-border: rgba(31, 28, 23, 0.25);
-  --color-btn-selected-bg: #e9e2d2;
+  --color-btn-hover-bg: #e4e4e4;
+  --color-btn-hover-border: rgba(0, 0, 0, 0.22);
+  --color-btn-active-bg: #d8d8d8;
+  --color-btn-active-border: rgba(0, 0, 0, 0.22);
+  --color-btn-selected-bg: #e4e4e4;
   --color-btn-primary-text: #fff;
   --color-btn-primary-bg: #1f883d;
   --color-btn-primary-border: #1f232826;
@@ -59,32 +59,32 @@ main {
   --color-btn-primary-disabled-border: #1f232826;
 
   /* UI chrome */
-  --color-action-list-item-default-hover-bg: rgba(224, 215, 195, 0.4);
-  --color-segmented-control-bg: #e9e2d2;
-  --color-segmented-control-button-bg: #fbf8f1;
-  --color-segmented-control-button-selected-border: #5a5348;
+  --color-action-list-item-default-hover-bg: rgba(216, 216, 216, 0.4);
+  --color-segmented-control-bg: #e4e4e4;
+  --color-segmented-control-button-bg: #ffffff;
+  --color-segmented-control-button-selected-border: #555555;
 
   /* Foreground */
-  --color-fg-default: #1f1c17;
-  --color-fg-muted: #5a5348;
-  --color-fg-subtle: #7a7263;
+  --color-fg-default: #1a1a1a;
+  --color-fg-muted: #555555;
+  --color-fg-subtle: #767676;
 
   /* Canvas - transparent to inherit wrapper bg */
   --color-canvas-default: transparent;
-  --color-canvas-overlay: #fbf8f1;
-  --color-canvas-inset: #efe9db;
-  --color-canvas-subtle: #efe9db;
+  --color-canvas-overlay: #ffffff;
+  --color-canvas-inset: #ededed;
+  --color-canvas-subtle: #ededed;
 
   /* Borders - hairline rules */
-  --color-border-default: rgba(31, 28, 23, 0.18);
-  --color-border-muted: rgba(31, 28, 23, 0.12);
-  --color-neutral-muted: rgba(31, 28, 23, 0.08);
+  --color-border-default: rgba(0, 0, 0, 0.14);
+  --color-border-muted: rgba(0, 0, 0, 0.1);
+  --color-neutral-muted: rgba(0, 0, 0, 0.06);
 
-  /* Accent - editorial brick red */
-  --color-accent-fg: #96432f;
-  --color-accent-emphasis: #96432f;
-  --color-accent-muted: rgba(150, 67, 47, 0.4);
-  --color-accent-subtle: rgba(150, 67, 47, 0.08);
+  /* Accent - editorial burnt orange */
+  --color-accent-fg: #bf3b00;
+  --color-accent-emphasis: #bf3b00;
+  --color-accent-muted: rgba(191, 59, 0, 0.4);
+  --color-accent-subtle: rgba(191, 59, 0, 0.08);
 
   /* Status colors */
   --color-success-fg: #1a7f37;
@@ -97,8 +97,8 @@ main {
   --color-primer-shadow-inset: inset 0 1px 0 rgba(208, 215, 222, 0.2);
 
   /* Reactions */
-  --color-scale-gray-1: #e9e2d2;
-  --color-scale-blue-1: #e7cdc0;
+  --color-scale-gray-1: #e4e4e4;
+  --color-scale-blue-1: #f3d5c5;
   --color-social-reaction-bg-hover: var(--color-scale-gray-1);
   --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
 }
@@ -131,11 +131,11 @@ main button {
 }
 
 main .gsc-comment {
-  border-color: rgba(31, 28, 23, 0.14);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 main .gsc-timeline {
-  border-color: rgba(31, 28, 23, 0.1);
+  border-color: rgba(0, 0, 0, 0.08);
 }
 
 main .gsc-reply-box {

@@ -3,18 +3,18 @@ version: "alpha"
 name: "Russ.Cloud Print Edition"
 description: "Editorial paper-and-ink design system for the Russ.Cloud Astro blog and music site."
 colors:
-  primary: "#7A2E20"
-  primary-container: "#96432F"
-  secondary: "#96432F"
-  on-primary: "#FBF8F1"
-  surface: "#F5F1E8"
-  surface-container-lowest: "#FBF8F1"
-  surface-container-low: "#EFE9DB"
-  surface-container: "#E9E2D2"
-  surface-container-high: "#E0D7C3"
-  surface-container-highest: "#D4CAB2"
-  on-surface: "#1F1C17"
-  on-surface-variant: "#5A5348"
+  primary: "#8F2D00"
+  primary-container: "#BF3B00"
+  secondary: "#BF3B00"
+  on-primary: "#FFFFFF"
+  surface: "#F6F6F6"
+  surface-container-lowest: "#FFFFFF"
+  surface-container-low: "#EDEDED"
+  surface-container: "#E4E4E4"
+  surface-container-high: "#D8D8D8"
+  surface-container-highest: "#C9C9C9"
+  on-surface: "#1A1A1A"
+  on-surface-variant: "#555555"
   accent-highlight: "#8A6D1F"
   dark-primary: "#E5B29C"
   dark-primary-container: "#D99C82"
@@ -154,7 +154,7 @@ The CSS custom properties in `src/styles/global.css` define paper/ink primitives
 - **Paper hierarchy:** `surface` is the page. `surface-container-lowest` is bright paper (code frames, link previews). The deeper paper tones are for quiet fills and hovers only — most separation comes from rules, not background shifts.
 - **Ink:** `on-surface` for headings and primary copy, `on-surface-variant` for body prose and metadata.
 - **Rules:** `--color-outline-variant` (alias of `--rule`) is the hairline; `--rule-strong` is the heavy editorial rule used above section heads and page headers (`border-t-2`).
-- **Accent:** a single brick red — `secondary` (#96432F) for links and active states, `primary` (#7A2E20) for hovers and filled buttons. Muted ochre `--accent-highlight` is reserved for text highlights/marks. There is no blue.
+- **Accent:** a single burnt orange — `secondary` (#BF3B00) for links and active states, `primary` (#8F2D00) for hovers and filled buttons; dark mode lifts it to a muted salmon. Muted ochre `--accent-highlight` is reserved for text highlights/marks. There is no blue.
 
 ## Typography
 
