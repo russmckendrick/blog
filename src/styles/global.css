@@ -652,6 +652,70 @@ a:hover {
   @apply my-6;
 }
 
+/* ================================================
+   Terminal frames — macOS window treatment
+   ================================================
+   Expressive Code marks shell/terminal blocks with .frame.is-terminal.
+   These are the one intentional exception to the flat, square, shadowless
+   rule language: a terminal frame depicts a real macOS app window, so it
+   gets rounded corners, a soft drop shadow, and real traffic-light dots. */
+
+.expressive-code .frame.is-terminal {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.08),
+    0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+.dark .expressive-code .frame.is-terminal {
+  border-color: rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 16px 36px rgba(0, 0, 0, 0.55);
+}
+
+/* Title bar */
+.expressive-code .frame.is-terminal .header {
+  height: 2.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  background: #ededed;
+  color: #4a4a4a;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .expressive-code .frame.is-terminal .header {
+  background: #262c3b;
+  color: #c9d1d9;
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Terminal body: white paper in light, cool navy in dark (like a real
+   terminal profile, independent of the warm site theme) */
+.dark .expressive-code .frame.is-terminal pre {
+  background: #1a2030 !important;
+}
+
+/* Traffic lights: repaint EC's monochrome dot mask with the real
+   red / amber / green macOS window controls */
+.expressive-code .frame.is-terminal .header::before {
+  content: '';
+  left: 1rem !important;
+  top: 50% !important;
+  bottom: auto !important;
+  width: 52px !important;
+  height: 12px !important;
+  transform: translateY(-50%);
+  opacity: 1 !important;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='52'%20height='12'%20viewBox='0%200%2052%2012'%3E%3Ccircle%20cx='6'%20cy='6'%20r='6'%20fill='%23ff5f57'/%3E%3Ccircle%20cx='26'%20cy='6'%20r='6'%20fill='%23febc2e'/%3E%3Ccircle%20cx='46'%20cy='6'%20r='6'%20fill='%2328c840'/%3E%3C/svg%3E") no-repeat left center / 52px 12px !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
 .prose img {
   @apply mb-1 max-w-full h-auto;
   border: 1px solid var(--color-outline-variant);

@@ -70,9 +70,9 @@ export default defineConfig({
 				codeBackground: 'var(--color-surface-container-lowest)',
 				frames: {
 					editorBackground: 'var(--color-surface-container-lowest)',
-					terminalBackground: 'var(--color-surface-container-lowest)',
-					terminalTitlebarBackground: 'var(--color-surface-container-low)',
 					editorTabBarBackground: 'var(--color-surface-container-low)',
+					// Terminal frames are fully restyled as macOS windows in
+					// global.css (see "Terminal frames"); no config values needed.
 					frameBoxShadowCssValue: 'none',
 				},
 			},

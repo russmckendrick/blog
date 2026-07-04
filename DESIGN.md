@@ -178,7 +178,7 @@ There are no cards, shadows, glass, or gradients. Separation comes from:
 - **Hairline rules** (`1px solid var(--color-outline-variant)`) between list entries, under the masthead, above footers and article appendices.
 - **Heavy rules** (`2px solid var(--rule-strong)`, or `border-t-2`) above featured spreads and page headers.
 - **Hairline frames** around all images (listing covers, article heroes, book covers, prose images).
-- **Radius 0 everywhere.** The only exception is circular avatar portraits (a print convention) — article byline, tag hub, about page.
+- **Radius 0 everywhere.** Two intentional exceptions: circular avatar portraits (a print convention — article byline, tag hub, about page), and terminal code blocks, which are drawn as macOS windows (rounded corners, soft drop shadow, red/amber/green traffic lights). A terminal frame depicts a real app window, so it reads as a figure, not chrome.
 
 Listings are index entries: dateline, framed cover image, Source Serif headline, standfirst, rule below. Tags render through `getTagColorClasses()` → the single `.tag-editorial` treatment (small-caps mono with a hairline underline, accent on hover); the per-tag pastel palette in `TAG_METADATA` is retired visually but the titles/emojis/descriptions remain in use.
 

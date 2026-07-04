@@ -6,7 +6,7 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 
 - Keep the site content-first and image-led. Chrome should read like quiet magazine furniture; the cover imagery and type carry the personality.
 - Separate content with hairline rules, not cards, shadows, or background shifts.
-- Square corners everywhere; circular avatar portraits are the only exception.
+- Square corners everywhere; the only exceptions are circular avatar portraits and terminal code blocks (styled as macOS windows — rounded, shadowed, with real traffic lights).
 - Motion is choreographed but calm — "the magazine, filmed". No springs, bounces, or hover lifts.
 - Preserve the light-first paper/ink language; dark mode swaps ink and paper, it is not a separate theme.
 
