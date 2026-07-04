@@ -1,6 +1,4 @@
 ---
-import ShareButtonsMotion from './ShareButtonsMotion'
-
 interface Props {
   title: string;
   url: string;
@@ -80,68 +78,40 @@ const buttons = [
 ];
 ---
 
-<!-- Static fallback: always visible even without JS -->
-<div class="share-buttons-static" data-share-buttons>
-  <div class="surface-container-low rounded-xl px-6 py-5 mt-8">
-    <div class="flex flex-col items-center gap-3">
-      <span class="text-sm text-on-surface-variant font-medium tracking-wide">Share Post</span>
-      <div class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-3 justify-items-center reveal-stagger">
-        {buttons.map((button) => (
-          <a
-            href={button.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Share on ${button.name}`}
-            class={`share-icon surface-container-lowest ghost-border rounded-full p-3 transition-all duration-200 hover:shadow-ambient active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 reveal-scale plausible-event-name=Share plausible-event-method=${button.name.replace(/ /g, '+')}`}
-            style={`--brand-light: ${button.brandColor}; --brand-dark: ${button.darkBrandColor}; --tw-ring-color: ${button.brandColor}`}
-            set:html={button.icon}
-          />
-        ))}
-      </div>
-    </div>
+<div class="mt-12 pt-5 border-t" style="border-color: var(--color-outline-variant);" data-share-buttons>
+  <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
+    <span class="rubric">Share</span>
+    {buttons.map((button) => (
+      <a
+        href={button.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Share on ${button.name}`}
+        class={`share-icon p-1 transition-colors duration-200 focus:outline-none plausible-event-name=Share plausible-event-method=${button.name.replace(/ /g, '+')}`}
+        style={`--brand-light: ${button.brandColor}; --brand-dark: ${button.darkBrandColor}`}
+        set:html={button.icon}
+      />
+    ))}
   </div>
-</div>
-
-<!-- Framer Motion enhancement: replaces static version when JS hydrates -->
-<div class="share-buttons-motion" data-share-buttons>
-  <ShareButtonsMotion client:visible buttons={buttons} />
 </div>
 
 <style is:global>
   a.share-icon {
-    color: var(--brand-light);
-    --tw-ring-color: var(--brand-light);
+    color: var(--color-on-surface-variant);
   }
 
-  .dark a.share-icon {
+  a.share-icon:hover,
+  a.share-icon:focus-visible {
+    color: var(--brand-light);
+  }
+
+  .dark a.share-icon:hover,
+  .dark a.share-icon:focus-visible {
     color: var(--brand-dark);
-    --tw-ring-color: var(--brand-dark);
+  }
+
+  a.share-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
   }
 </style>
-
-<script>
-  // When the Framer Motion version hydrates, hide the static fallback
-  function initShareButtons() {
-    const motionEl = document.querySelector('.share-buttons-motion') as HTMLElement | null
-    const staticEl = document.querySelector('.share-buttons-static') as HTMLElement | null
-    if (!motionEl || !staticEl) return
-
-    const observer = new MutationObserver(() => {
-      const hasHydrated = motionEl.querySelector('.surface-container-low')
-      if (hasHydrated) {
-        staticEl.style.display = 'none'
-        observer.disconnect()
-      }
-    })
-
-    observer.observe(motionEl, { childList: true, subtree: true })
-
-    if (motionEl.querySelector('.surface-container-low')) {
-      staticEl.style.display = 'none'
-    }
-  }
-
-  // Run on initial load and Astro page transitions
-  initShareButtons()
-  document.addEventListener('astro:page-load', initShareButtons)
-</script>

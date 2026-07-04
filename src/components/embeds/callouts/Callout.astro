@@ -23,134 +23,12 @@ const {
   ...rest
 } = Astro.props as CalloutProps;
 
-const variants: Record<BaseVariant, {
-  label: string;
-  iconName: string;
-  container: string[];
-  heading: string[];
-  text: string[];
-  icon: string[];
-}> = {
-  note: {
-    label: 'Note',
-    iconName: 'tabler:info-circle',
-    container: [
-      'border-violet-200',
-      'bg-violet-50',
-      'text-slate-900',
-      'dark:border-violet-500/60',
-      'dark:bg-violet-950/40',
-      'dark:text-violet-100',
-    ],
-    heading: [
-      'text-violet-700',
-      'dark:text-violet-200',
-    ],
-    text: [
-      'text-slate-700',
-      'dark:text-violet-50',
-    ],
-    icon: [
-      'text-violet-600',
-      'dark:text-violet-100',
-    ],
-  },
-  tip: {
-    label: 'Tip',
-    iconName: 'tabler:bulb',
-    container: [
-      'border-emerald-200',
-      'bg-emerald-50',
-      'text-slate-900',
-      'dark:border-emerald-500/60',
-      'dark:bg-emerald-950/40',
-      'dark:text-emerald-100',
-    ],
-    heading: [
-      'text-emerald-700',
-      'dark:text-emerald-200',
-    ],
-    text: [
-      'text-slate-700',
-      'dark:text-emerald-50',
-    ],
-    icon: [
-      'text-emerald-600',
-      'dark:text-emerald-100',
-    ],
-  },
-  important: {
-    label: 'Important',
-    iconName: 'tabler:alert-circle',
-    container: [
-      'border-sky-200',
-      'bg-sky-50',
-      'text-slate-900',
-      'dark:border-sky-500/60',
-      'dark:bg-sky-950/40',
-      'dark:text-sky-100',
-    ],
-    heading: [
-      'text-sky-700',
-      'dark:text-sky-200',
-    ],
-    text: [
-      'text-slate-700',
-      'dark:text-sky-50',
-    ],
-    icon: [
-      'text-sky-600',
-      'dark:text-sky-100',
-    ],
-  },
-  caution: {
-    label: 'Caution',
-    iconName: 'tabler:circle-x',
-    container: [
-      'border-rose-200',
-      'bg-rose-50',
-      'text-slate-900',
-      'dark:border-rose-500/60',
-      'dark:bg-rose-950/40',
-      'dark:text-rose-100',
-    ],
-    heading: [
-      'text-rose-800',
-      'dark:text-rose-200',
-    ],
-    text: [
-      'text-slate-700',
-      'dark:text-rose-50',
-    ],
-    icon: [
-      'text-rose-600',
-      'dark:text-rose-100',
-    ],
-  },
-  warning: {
-    label: 'Warning',
-    iconName: 'tabler:alert-triangle',
-    container: [
-      'border-amber-300',
-      'bg-amber-50',
-      'text-slate-900',
-      'dark:border-amber-500/60',
-      'dark:bg-amber-950/40',
-      'dark:text-amber-100',
-    ],
-    heading: [
-      'text-amber-700',
-      'dark:text-amber-200',
-    ],
-    text: [
-      'text-slate-700',
-      'dark:text-amber-50',
-    ],
-    icon: [
-      'text-amber-600',
-      'dark:text-amber-100',
-    ],
-  },
+const variants: Record<BaseVariant, { label: string; iconName: string }> = {
+  note: { label: 'Note', iconName: 'tabler:info-circle' },
+  tip: { label: 'Tip', iconName: 'tabler:bulb' },
+  important: { label: 'Important', iconName: 'tabler:alert-circle' },
+  caution: { label: 'Caution', iconName: 'tabler:circle-x' },
+  warning: { label: 'Warning', iconName: 'tabler:alert-triangle' },
 };
 
 const variantKey: BaseVariant = (() => {
@@ -172,42 +50,24 @@ const isIconName = resolvedIcon.includes(':');
   {...rest}
   role="note"
   aria-label={label}
-  class:list={[
-    'relative my-6 rounded-lg border p-4 transition-colors',
-    ...current.container,
-    className,
-  ]}
+  class:list={['callout', `callout-${variantKey}`, className]}
 >
-  <div class="flex flex-col gap-1">
-    <div class="flex items-center gap-2">
+  <div class="flex flex-col gap-1.5">
+    <div class="callout-heading flex items-center gap-2">
       {isIconName ? (
         <Icon
           name={resolvedIcon}
-          class:list={['h-5 w-5 shrink-0', ...current.icon]}
+          class="h-4 w-4 shrink-0"
           aria-hidden="true"
         />
       ) : (
-        <span class:list={['text-base font-semibold', ...current.icon]}>
+        <span class="text-sm font-semibold">
           {resolvedIcon}
         </span>
       )}
-      {label && (
-        <span
-          class:list={[
-            'text-base font-semibold',
-            ...current.heading,
-          ]}
-        >
-          {label}
-        </span>
-      )}
+      {label && <span>{label}</span>}
     </div>
-    <div
-      class:list={[
-        'callout-content not-prose text-base leading-relaxed',
-        ...current.text,
-      ]}
-    >
+    <div class="callout-content not-prose text-base leading-relaxed">
       <slot />
     </div>
   </div>

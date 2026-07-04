@@ -17,7 +17,7 @@ import ReadingTime from '../components/blog/ReadingTime.astro';
 import RelatedPosts from '../components/blog/RelatedPosts.astro';
 import Breadcrumbs from '../components/navigation/Breadcrumbs.astro';
 import { getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } from '../utils/tags';
-import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, TAG_METADATA, TAG_AVATAR_MAP } from '../consts';
+import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, TAG_AVATAR_MAP } from '../consts';
 import { Schema } from 'astro-seo-schema';
 import { createBlogPostingSchema, createBreadcrumbSchema, createFAQSchema, createHowToSchema } from '../utils/schema';
 
@@ -67,6 +67,12 @@ const displayImage = cover?.image || heroImage;
 const editUrl = filePath && EDIT_POST.appendFilePath
 	? `${EDIT_POST.url}/${filePath}`
 	: EDIT_POST.url;
+
+// Shared-element view transition names — must mirror PostCard's derivation
+// so the listing image/title morph into this hero/title on navigation.
+const transitionKey = Astro.url.pathname.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
+const imageTransition = `post-img-${transitionKey}`;
+const titleTransition = `post-title-${transitionKey}`;
 
 // Determine author info based on whether this is a tune
 const authorName = isTune ? AI_AUTHOR.name : AUTHOR_NAME;
@@ -208,14 +214,96 @@ const howToSchema = howto && howto.steps?.length > 0
 			<Header />
 		</HeaderWrapper>
 		<main id="main-content" tabindex="-1" class="relative">
-			{/* Post card */}
-			<article class="relative pt-8 sm:pt-12">
+			<article class="relative pt-6 sm:pt-10 pb-4">
 				<div class:list={["mx-auto px-4 sm:px-6 lg:px-8 xl:px-10", showToc && headings.length > 0 ? 'max-w-5xl 2xl:max-w-[1340px]' : 'max-w-5xl']}>
 					<div class:list={[showToc && headings.length > 0 ? '2xl:grid 2xl:grid-cols-[1fr_220px] 2xl:gap-8 2xl:items-start' : '']}>
-					<div class="surface-container-lowest rounded-xl shadow-ambient overflow-hidden min-w-0">
-						{/* Hero image inside the card - edge to edge with rounded top corners */}
+					<div class="min-w-0">
+						<Breadcrumbs items={breadcrumbItems} />
+
+						{/* Journal header: dateline → title → byline, then the plate */}
+						<header class="mt-6 mb-8">
+							<p class="rubric flex flex-wrap items-center gap-x-2" data-entrance>
+								<span style="color: var(--color-secondary);">Russ.Cloud</span>
+								<span aria-hidden="true">&middot;</span>
+								<FormattedDate date={pubDate} />
+								{readingTime && (
+									<>
+										<span aria-hidden="true">&middot;</span>
+										<ReadingTime minutes={readingTime} />
+									</>
+								)}
+							</p>
+
+							<h1
+								class="font-display mt-4 text-on-surface"
+								style="font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 560; line-height: 1.1;"
+								data-entrance
+								transition:name={titleTransition}
+							>
+								{title}
+							</h1>
+
+							<div class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2" data-entrance>
+								<img
+									src={avatarSrc}
+									alt={authorName}
+									class="w-8 h-8 rounded-full object-cover border"
+									style="border-color: var(--color-outline-variant);"
+									onerror={`this.onerror=null; this.src='${avatarFallback}';`}
+								/>
+								<span class="rubric text-on-surface">{authorName}</span>
+								{filePath && (
+									<>
+										<span class="rubric" aria-hidden="true">&middot;</span>
+										<a
+											href={editUrl}
+											rel="noopener noreferrer edit"
+											target="_blank"
+											class="rubric nav-underline no-underline hover:text-on-surface"
+										>
+											{EDIT_POST.text}
+										</a>
+									</>
+								)}
+								{updatedDate && (
+									<>
+										<span class="rubric" aria-hidden="true">&middot;</span>
+										<span class="rubric italic normal-case tracking-normal">Updated <FormattedDate date={updatedDate} /></span>
+									</>
+								)}
+							</div>
+
+							{(tags.length > 0 || relatedGlossary.length > 0) && (
+								<div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2" data-entrance>
+									{tags.slice(0, 8).map((tag) => (
+										<a href={getTagUrl(tag)} class={getTagColorClasses(tag)}>
+											{getTagDisplayName(tag)}
+										</a>
+									))}
+									{relatedGlossary.length > 0 && (
+										<>
+											<span class="rubric" aria-hidden="true">&#8212;</span>
+											{relatedGlossary.map((g: CollectionEntry<'glossary'>) => (
+												<a href={`/glossary/${g.id}/`} class="tag-editorial" style="border-bottom-style: dotted;">
+													{g.data.term}
+												</a>
+											))}
+										</>
+									)}
+								</div>
+							)}
+
+							<div class="mt-8 border-t-2" style="border-color: var(--rule-strong);" aria-hidden="true"></div>
+						</header>
+
+						{/* Hero image: the plate, edge to edge, framed with a hairline */}
 						{displayImage && (
-							<div class="relative animate-fade-in">
+							<figure
+								class="mb-10 border"
+								style="border-color: var(--color-outline-variant);"
+								data-settle
+								transition:name={imageTransition}
+							>
 								<img
 									src={getCFImageUrl(displayImage, {
 										width: 1920,
@@ -231,144 +319,37 @@ const howToSchema = howto && howto.steps?.length > 0
 									decoding="sync"
 									width="2048"
 									height="1143"
-									class="w-full h-auto rounded-t-xl"
+									class="w-full h-auto"
 								/>
-								</div>
+							</figure>
 						)}
 
-						<div class="px-6 sm:px-8 xl:px-12 pt-3 pb-6 sm:pt-4 sm:pb-8 xl:pt-5 xl:pb-10">
-							<Breadcrumbs items={breadcrumbItems} />
-
-						<header class="text-center mb-8 space-y-4">
-							<h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-on-surface animate-fade-in animate-delay-1" style="font-size: clamp(2.25rem, 5vw, 3.5rem);">
-								{title}
-							</h1>
-
-							<!-- Enhanced Author Info Box -->
-							<div class="surface-container-low rounded-xl p-5 animate-fade-in animate-delay-2">
-								<div class="flex items-start gap-4">
-									<!-- Avatar Section -->
-									<div class="relative flex-shrink-0">
-										<img
-											src={avatarSrc}
-											alt={authorName}
-											class="relative w-16 h-16 rounded-full ring-3 ring-white dark:ring-gray-900 shadow-md object-cover"
-											onerror={`this.onerror=null; this.src='${avatarFallback}';`}
-										/>
-									</div>
-
-									<!-- Info Section -->
-									<div class="flex-1 min-w-0 space-y-2.5">
-										<!-- Author Name & Meta Info (same line) -->
-										<div class="flex flex-wrap items-center gap-x-3 gap-y-1">
-											<span class="font-bold text-lg text-on-surface">
-												{authorName}
-											</span>
-											<span class="flex items-center gap-1.5 text-sm text-on-surface-variant">
-												<svg class="w-3.5 h-3.5" style="color: var(--color-secondary)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-												</svg>
-												<FormattedDate date={pubDate} />
-											</span>
-											{readingTime && (
-												<>
-													<span class="text-on-surface-variant text-sm">•</span>
-													<span class="flex items-center gap-1.5 text-sm text-on-surface-variant">
-														<svg class="w-3.5 h-3.5" style="color: var(--color-secondary)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-														</svg>
-														<ReadingTime minutes={readingTime} />
-													</span>
-												</>
-											)}
-											{filePath && (
-												<>
-													<span class="text-on-surface-variant text-sm">•</span>
-													<a
-														href={editUrl}
-														rel="noopener noreferrer edit"
-														target="_blank"
-														class="transition-colors inline-flex items-center gap-1.5 text-sm font-medium text-on-surface-variant"
-														style="--tw-text-opacity: 1"
-													>
-														<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-														</svg>
-														{EDIT_POST.text}
-													</a>
-												</>
-											)}
-										</div>
-
-										<!-- Tags -->
-										{tags.length > 0 && (
-											<div class="flex flex-wrap gap-2">
-												{tags.slice(0, 8).map((tag) => (
-													<a
-														href={getTagUrl(tag)}
-														class={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${getTagColorClasses(tag)} transition-all hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500/50`}
-														onclick="event.stopPropagation()"
-													>
-														{getTagDisplayName(tag)}
-													</a>
-												))}
-											</div>
-										)}
-
-										<!-- Related glossary terms -->
-										{relatedGlossary.length > 0 && (
-											<div class="flex flex-wrap items-center gap-2">
-												<span class="text-xs text-on-surface-variant">Glossary:</span>
-												{relatedGlossary.map((g: CollectionEntry<'glossary'>) => (
-													<a
-														href={`/glossary/${g.id}/`}
-														class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium surface-container-lowest text-on-surface-variant transition-all hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-														onclick="event.stopPropagation()"
-													>
-														{g.data.term}
-													</a>
-												))}
-											</div>
-										)}
-
-										<!-- Updated Date -->
-										{updatedDate && (
-											<div class="text-xs text-on-surface-variant italic">
-												Last updated: <FormattedDate date={updatedDate} />
-											</div>
-										)}
-									</div>
-								</div>
-							</div>
-						</header>
-
 						{showToc && headings.length > 0 && (
-							<div class="reveal-fade 2xl:hidden">
+							<div class="2xl:hidden">
 								<TableOfContents headings={headings} />
 							</div>
 						)}
 
-						<div class="prose mx-auto">
+						<div class:list={["prose mx-auto max-w-[72ch]", !isTune && 'article-body']}>
 							<slot />
 						</div>
 
 						{!isTune && <ShareButtons title={title} url={Astro.url.href} tags={tags} />}
 
 						{!isTune && entry && (
-							<div class="reveal">
+							<div data-reveal>
 								<RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={3} />
 							</div>
 						)}
 
 						{!isTune && (
-							<div class="reveal-fade">
+							<div>
 								<Comments />
 							</div>
 						)}
 
-						<div class="reveal">
+						<div data-reveal>
 							<PostNavigation previousPost={previousPost} nextPost={nextPost} />
-						</div>
 						</div>
 					</div>
 
@@ -384,51 +365,11 @@ const howToSchema = howto && howto.steps?.length > 0
 		<Footer />
 		{import.meta.env.DEV && <WebVitals debug={true} />}
 		<script>
-			// Prose content element reveal animations
-			function initProseReveal() {
-				const prose = document.querySelector('.prose')
-				if (!prose) return
-				if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+			// Page motion: staggered journal-header entrance, hero settle, reveals
+			import { initPageMotion } from '../scripts/motion';
 
-				const images = prose.querySelectorAll(':scope > p > img, :scope > img')
-				const blockquotes = prose.querySelectorAll(':scope > blockquote')
-				const codeBlocks = prose.querySelectorAll(':scope > .expressive-code, :scope > pre')
-
-				images.forEach(el => el.classList.add('reveal-scale'))
-				blockquotes.forEach(el => el.classList.add('reveal-slide'))
-				codeBlocks.forEach(el => el.classList.add('reveal-fade'))
-			}
-
-			initProseReveal()
-			document.addEventListener('astro:page-load', initProseReveal)
-		</script>
-		<script>
-			// Scroll-reveal animations via Intersection Observer
-			function initRevealAnimations() {
-				const elements = document.querySelectorAll('.reveal, .reveal-fade, .reveal-scale, .reveal-slide');
-				if (elements.length === 0) return;
-
-				requestAnimationFrame(() => {
-					requestAnimationFrame(() => {
-						const observer = new IntersectionObserver((entries) => {
-							entries.forEach(entry => {
-								if (entry.isIntersecting) {
-									entry.target.classList.add('revealed');
-									observer.unobserve(entry.target);
-								}
-							});
-						}, {
-							threshold: 0.1,
-							rootMargin: '0px 0px -40px 0px'
-						});
-
-						elements.forEach(el => observer.observe(el));
-					});
-				});
-			}
-
-			initRevealAnimations();
-			document.addEventListener('astro:page-load', initRevealAnimations);
+			initPageMotion();
+			document.addEventListener('astro:page-load', () => initPageMotion());
 		</script>
 		<script>
 			// Reading progress bar

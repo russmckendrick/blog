@@ -2,14 +2,12 @@
 // Giscus comments component with dark/light mode support
 ---
 
-<div class="giscus-wrapper pt-8">
-	<div class="surface-container-low rounded-xl shadow-ambient p-6 md:p-8">
-		<p class="text-sm text-on-surface-variant font-medium tracking-wide text-center mb-4" role="heading" aria-level="2">Comments</p>
-		<div class="giscus min-h-96 md:min-h-[32rem]" aria-live="polite"></div>
-		<noscript>
-			<p class="text-sm text-on-surface-variant">Please enable JavaScript to view the comments</p>
-		</noscript>
-	</div>
+<div class="giscus-wrapper mt-12 pt-5 border-t" style="border-color: var(--color-outline-variant);">
+	<p class="rubric mb-4" role="heading" aria-level="2">Comments</p>
+	<div class="giscus min-h-96 md:min-h-[32rem]" aria-live="polite"></div>
+	<noscript>
+		<p class="text-sm text-on-surface-variant">Please enable JavaScript to view the comments</p>
+	</noscript>
 </div>
 
 <script>
@@ -18,7 +16,8 @@
 	function getGiscusTheme() {
 		const isDark = document.documentElement.classList.contains('dark');
 		const base = 'https://www.russ.cloud';
-		return isDark ? `${base}/giscus/dark.css` : `${base}/giscus/light.css`;
+		// Version query busts Giscus's aggressive theme cache after redesigns
+		return isDark ? `${base}/giscus/dark.css?v=print-1` : `${base}/giscus/light.css?v=print-1`;
 	}
 
 	function setGiscusTheme() {

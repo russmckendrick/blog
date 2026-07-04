@@ -16,7 +16,7 @@ const tocHeadings = headings.filter(h => h.depth <= maxDepth)
 
 {tocHeadings.length > 0 && (
   <nav class="sticky-toc" aria-label="Table of contents">
-    <p class="sticky-toc-label">On this page</p>
+    <p class="sticky-toc-label">Contents</p>
     <ul class="sticky-toc-list">
       {tocHeadings.map((heading) => (
         <li>
@@ -43,7 +43,7 @@ const tocHeadings = headings.filter(h => h.depth <= maxDepth)
   }
 
   .sticky-toc-label {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: 0.6875rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -57,7 +57,7 @@ const tocHeadings = headings.filter(h => h.depth <= maxDepth)
     list-style: none;
     padding: 0;
     margin: 0;
-    border-left: 1px solid var(--color-surface-container-high);
+    border-left: 1px solid var(--color-outline-variant);
   }
 
   .sticky-toc-link {

@@ -330,6 +330,22 @@ a:hover {
 .animate-delay-2 { animation-delay: 0.2s; }
 .animate-delay-3 { animation-delay: 0.35s; }
 
+/* Motion system initial states: hidden only when scripting is available
+   (motion.ts animates them in), always visible under reduced motion. */
+@media (scripting: enabled) {
+  [data-entrance],
+  [data-settle] {
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-entrance],
+    [data-settle] {
+      opacity: 1;
+    }
+  }
+}
+
 /* Legacy scroll-reveal classes: neutered no-ops.
    Scroll reveals now run through src/scripts/motion.ts using
    [data-reveal] attributes; these classes remain only so markup
@@ -482,40 +498,77 @@ a:hover {
   font-family: var(--font-display);
   color: var(--color-on-surface);
   scroll-margin-top: 5rem;
+  letter-spacing: normal;
 }
 
 .prose h1 {
-  @apply text-4xl font-bold mt-8 mb-4 leading-tight tracking-tight;
+  @apply text-4xl mt-8 mb-4 leading-tight;
+  font-weight: 560;
 }
 
+/* Section heads carry a hairline rule above, like a new column in print */
 .prose h2 {
-  @apply text-3xl font-semibold mt-10 mb-4 leading-tight tracking-tight;
+  @apply text-3xl mb-4 leading-tight;
+  font-weight: 540;
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-outline-variant);
   outline: none;
 }
 
 .prose h3 {
-  @apply text-2xl font-semibold mt-8 mb-3 leading-tight;
+  @apply text-2xl mt-8 mb-3 leading-snug;
+  font-weight: 500;
   outline: none;
 }
 
 .prose h4 {
-  @apply text-xl font-semibold mt-8 mb-3 leading-tight;
+  @apply text-lg mt-8 mb-3 leading-snug;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.04em;
   outline: none;
 }
 
 .prose h5 {
-  @apply text-lg font-semibold mt-6 mb-2;
+  @apply text-base mt-6 mb-2;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.04em;
   outline: none;
 }
 
 .prose h6 {
   @apply text-base font-semibold mt-6 mb-2;
+  font-family: var(--font-serif);
   outline: none;
 }
 
 .prose p {
-  @apply text-lg leading-relaxed mb-5;
+  @apply text-lg mb-5;
+  line-height: 1.75;
   color: var(--color-on-surface-variant);
+}
+
+/* Drop cap on the opening paragraph of an article body */
+.article-body > p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-weight: 500;
+  initial-letter: 3;
+  -webkit-initial-letter: 3;
+  margin-right: 0.5rem;
+  color: var(--color-on-surface);
+}
+
+@supports not (initial-letter: 3) {
+  .article-body > p:first-of-type::first-letter {
+    float: left;
+    font-size: 3.4em;
+    line-height: 0.85;
+    padding: 0.05em 0.08em 0 0;
+  }
 }
 
 .prose a {
@@ -547,7 +600,8 @@ a:hover {
 }
 
 .prose li {
-  @apply text-lg leading-relaxed pl-2;
+  @apply text-lg pl-2;
+  line-height: 1.75;
   color: var(--color-on-surface-variant);
 }
 
@@ -555,10 +609,12 @@ a:hover {
   @apply mt-2 mb-2 ml-6;
 }
 
+/* Pull-quote treatment: bare, italic, a single ink rule */
 .prose blockquote {
-  @apply pl-6 py-4 my-6 italic rounded-r;
-  border-left: 4px solid var(--color-primary);
-  background-color: var(--color-surface-container-low);
+  @apply pl-6 my-8 italic;
+  border-left: 2px solid var(--color-on-surface);
+  font-family: var(--font-serif);
+  font-size: 1.2em;
 }
 
 .prose blockquote p {
@@ -567,17 +623,17 @@ a:hover {
 }
 
 .prose code {
-  @apply px-2 py-1 rounded text-sm font-mono;
+  @apply px-1.5 py-0.5 text-sm font-mono;
   background-color: var(--color-surface-container);
   color: var(--color-on-surface);
 }
 
 /* Only style pre elements that are NOT part of Expressive Code */
 .prose pre:not(.expressive-code pre):not([data-language]) {
-  @apply p-6 rounded-lg overflow-x-auto my-6;
-  background-color: var(--color-surface-container-highest);
+  @apply p-6 overflow-x-auto my-6;
+  background-color: var(--color-surface-container-lowest);
   color: var(--color-on-surface);
-  outline: var(--ghost-border);
+  border: 1px solid var(--color-outline-variant);
 }
 
 .prose pre:not(.expressive-code pre):not([data-language]) code {
@@ -597,27 +653,49 @@ a:hover {
   border: 1px solid var(--color-outline-variant);
 }
 
+.prose figcaption {
+  @apply text-sm italic text-center mt-2;
+  font-family: var(--font-serif);
+  color: var(--color-on-surface-variant);
+}
+
+/* Print-style table: strong rules top and bottom, hairlines between rows */
 .prose table {
   @apply w-full border-collapse my-6;
-  outline: var(--ghost-border);
+  border-top: 2px solid var(--rule-strong);
+  border-bottom: 2px solid var(--rule-strong);
 }
 
 .prose th {
-  @apply px-4 py-2 text-left font-semibold;
-  background-color: var(--color-surface-container-low);
-  border-bottom: var(--ghost-border);
+  @apply px-4 py-2 text-left;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--rule-strong);
 }
 
 .prose td {
   @apply px-4 py-2;
-  border-bottom: var(--ghost-border);
+  border-bottom: 1px solid var(--color-outline-variant);
 }
 
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+/* Section break: a centred dinkus */
 .prose hr {
   border: none;
-  height: 1px;
-  background-color: var(--color-surface-container);
-  @apply my-8;
+  @apply my-10 text-center;
+}
+
+.prose hr::after {
+  content: '\2042';
+  display: block;
+  color: var(--color-on-surface-variant);
+  font-size: 1rem;
+  letter-spacing: 0.5em;
 }
 
 /* External link styling */
@@ -636,6 +714,53 @@ a:hover {
 
 .external-link-wrapper:hover .external-link-icon {
   @apply transform translate-x-0.5 -translate-y-0.5 opacity-100;
+}
+
+/* ================================================
+   Callouts — one editorial definition, tinted per variant
+   ================================================ */
+
+:root {
+  --callout-note: #5a5348;
+  --callout-tip: #4a5d3a;
+  --callout-important: #33475b;
+  --callout-caution: #7a2e20;
+  --callout-warning: #8a6d1f;
+}
+
+.dark {
+  --callout-note: #b5ac97;
+  --callout-tip: #a4bd8c;
+  --callout-important: #93b2ce;
+  --callout-caution: #e5a48c;
+  --callout-warning: #d4b968;
+}
+
+.callout {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 2px solid var(--callout-accent);
+  background-color: color-mix(in srgb, var(--callout-accent) 5%, transparent);
+  color: var(--color-on-surface);
+}
+
+.callout-note { --callout-accent: var(--callout-note); }
+.callout-tip { --callout-accent: var(--callout-tip); }
+.callout-important { --callout-accent: var(--callout-important); }
+.callout-caution { --callout-accent: var(--callout-caution); }
+.callout-warning { --callout-accent: var(--callout-warning); }
+
+.callout-heading {
+  color: var(--callout-accent);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.callout .callout-content {
+  color: var(--color-on-surface-variant);
 }
 
 /* ================================================

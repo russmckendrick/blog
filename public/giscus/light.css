@@ -35,16 +35,16 @@ main {
   --color-prettylights-syntax-constant-other-reference-link: #0a3069;
 
   /* Buttons */
-  --color-btn-text: #24292f;
-  --color-btn-bg: #f3f4f5;
-  --color-btn-border: rgba(196, 197, 213, 0.25);
-  --color-btn-shadow: 0 1px 0 rgba(31, 35, 40, 0.02);
-  --color-btn-inset-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  --color-btn-hover-bg: #e2e3e5;
-  --color-btn-hover-border: rgba(196, 197, 213, 0.35);
-  --color-btn-active-bg: #d6d8db;
-  --color-btn-active-border: rgba(196, 197, 213, 0.35);
-  --color-btn-selected-bg: #e2e3e5;
+  --color-btn-text: #1f1c17;
+  --color-btn-bg: #efe9db;
+  --color-btn-border: rgba(31, 28, 23, 0.18);
+  --color-btn-shadow: 0 0 transparent;
+  --color-btn-inset-shadow: 0 0 transparent;
+  --color-btn-hover-bg: #e9e2d2;
+  --color-btn-hover-border: rgba(31, 28, 23, 0.25);
+  --color-btn-active-bg: #e0d7c3;
+  --color-btn-active-border: rgba(31, 28, 23, 0.25);
+  --color-btn-selected-bg: #e9e2d2;
   --color-btn-primary-text: #fff;
   --color-btn-primary-bg: #1f883d;
   --color-btn-primary-border: #1f232826;
@@ -59,32 +59,32 @@ main {
   --color-btn-primary-disabled-border: #1f232826;
 
   /* UI chrome */
-  --color-action-list-item-default-hover-bg: rgba(208, 215, 222, 0.32);
-  --color-segmented-control-bg: #eaeef2;
-  --color-segmented-control-button-bg: #fff;
-  --color-segmented-control-button-selected-border: #8c959f;
+  --color-action-list-item-default-hover-bg: rgba(224, 215, 195, 0.4);
+  --color-segmented-control-bg: #e9e2d2;
+  --color-segmented-control-button-bg: #fbf8f1;
+  --color-segmented-control-button-selected-border: #5a5348;
 
   /* Foreground */
-  --color-fg-default: #191c1d;
-  --color-fg-muted: #44474f;
-  --color-fg-subtle: #636770;
+  --color-fg-default: #1f1c17;
+  --color-fg-muted: #5a5348;
+  --color-fg-subtle: #7a7263;
 
   /* Canvas - transparent to inherit wrapper bg */
   --color-canvas-default: transparent;
-  --color-canvas-overlay: #ffffff;
-  --color-canvas-inset: #f3f4f5;
-  --color-canvas-subtle: #f3f4f5;
+  --color-canvas-overlay: #fbf8f1;
+  --color-canvas-inset: #efe9db;
+  --color-canvas-subtle: #efe9db;
 
-  /* Borders - subtle ghost borders */
-  --color-border-default: rgba(196, 197, 213, 0.25);
-  --color-border-muted: rgba(196, 197, 213, 0.2);
-  --color-neutral-muted: rgba(196, 197, 213, 0.2);
+  /* Borders - hairline rules */
+  --color-border-default: rgba(31, 28, 23, 0.18);
+  --color-border-muted: rgba(31, 28, 23, 0.12);
+  --color-neutral-muted: rgba(31, 28, 23, 0.08);
 
-  /* Accent - site secondary blue */
-  --color-accent-fg: #0058be;
-  --color-accent-emphasis: #0058be;
-  --color-accent-muted: rgba(0, 88, 190, 0.4);
-  --color-accent-subtle: #ddf4ff;
+  /* Accent - editorial brick red */
+  --color-accent-fg: #96432f;
+  --color-accent-emphasis: #96432f;
+  --color-accent-muted: rgba(150, 67, 47, 0.4);
+  --color-accent-subtle: rgba(150, 67, 47, 0.08);
 
   /* Status colors */
   --color-success-fg: #1a7f37;
@@ -97,8 +97,8 @@ main {
   --color-primer-shadow-inset: inset 0 1px 0 rgba(208, 215, 222, 0.2);
 
   /* Reactions */
-  --color-scale-gray-1: #eaeef2;
-  --color-scale-blue-1: #b6e3ff;
+  --color-scale-gray-1: #e9e2d2;
+  --color-scale-blue-1: #e7cdc0;
   --color-social-reaction-bg-hover: var(--color-scale-gray-1);
   --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
 }
@@ -118,25 +118,26 @@ main .gsc-comments > .gsc-header,
 main .gsc-reply-box,
 main textarea,
 main .gsc-comment-content {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: Georgia, 'Times New Roman', serif;
 }
 
-/* Reaction buttons - pill shape */
+/* Editorial: square corners, hairline borders */
 main .gsc-reactions button,
-main .gsc-direct-reaction-button-group button {
-  border-radius: 9999px;
+main .gsc-direct-reaction-button-group button,
+main .gsc-comment,
+main .gsc-reply-box,
+main button {
+  border-radius: 0;
 }
 
-/* Softer comment borders */
 main .gsc-comment {
-  border-color: rgba(196, 197, 213, 0.2);
+  border-color: rgba(31, 28, 23, 0.14);
 }
 
 main .gsc-timeline {
-  border-color: rgba(196, 197, 213, 0.15);
+  border-color: rgba(31, 28, 23, 0.1);
 }
 
 main .gsc-reply-box {
-  border-radius: 12px;
   overflow: hidden;
 }
