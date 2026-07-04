@@ -1,88 +1,90 @@
 @import "tailwindcss";
 
 /* ================================================
-   Design Tokens - "The Curated Journal"
+   Design Tokens - "The Print Edition"
+   Editorial paper-and-ink system. The Material-style
+   --color-* names are kept as aliases of the paper/ink
+   primitives so existing components keep working;
+   prefer the primitives in new code.
    ================================================ */
 
 :root {
-  /* Brand */
-  --color-primary: #00288e;
-  --color-primary-container: #1e40af;
-  --color-secondary: #0058be;
-  --color-on-primary: #ffffff;
-  --color-on-secondary: #ffffff;
+  /* Paper & ink primitives (light) */
+  --paper: #f5f1e8;
+  --paper-bright: #fbf8f1;
+  --paper-shade: #efe9db;
+  --paper-tint: #e9e2d2;
+  --paper-deep: #e0d7c3;
+  --paper-deepest: #d4cab2;
+  --ink: #1f1c17;
+  --ink-muted: #5a5348;
+  --rule: rgba(31, 28, 23, 0.18);
+  --rule-strong: rgba(31, 28, 23, 0.55);
+  --accent: #96432f;
+  --accent-strong: #7a2e20;
+  --accent-highlight: #8a6d1f;
+
+  /* Brand aliases */
+  --color-primary: var(--accent-strong);
+  --color-primary-container: var(--accent);
+  --color-secondary: var(--accent);
+  --color-on-primary: var(--paper-bright);
+  --color-on-secondary: var(--paper-bright);
 
   /* Surface hierarchy (light) */
-  --color-surface: #f8f9fa;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f3f4f5;
-  --color-surface-container: #edeeef;
-  --color-surface-container-high: #e2e3e5;
-  --color-surface-container-highest: #d6d8db;
-  --color-surface-variant: #e1e2ec;
+  --color-surface: var(--paper);
+  --color-surface-container-lowest: var(--paper-bright);
+  --color-surface-container-low: var(--paper-shade);
+  --color-surface-container: var(--paper-tint);
+  --color-surface-container-high: var(--paper-deep);
+  --color-surface-container-highest: var(--paper-deepest);
+  --color-surface-variant: var(--paper-tint);
 
   /* Text */
-  --color-on-surface: #191c1d;
-  --color-on-surface-variant: #44474f;
-  --color-outline-variant: #c4c5d5;
+  --color-on-surface: var(--ink);
+  --color-on-surface-variant: var(--ink-muted);
+  --color-outline-variant: var(--rule);
 
-  /* Elevation */
-  --shadow-ambient: 0 8px 24px rgba(25, 28, 29, 0.05);
-  --shadow-ambient-hover: 0 12px 32px rgba(25, 28, 29, 0.08);
+  /* Elevation: none — depth comes from rules and tonal paper */
+  --shadow-ambient: none;
+  --shadow-ambient-hover: none;
 
-  /* Ghost border */
-  --ghost-border: 1px solid rgba(196, 197, 213, 0.15);
+  /* Ghost border → hairline rule */
+  --ghost-border: 1px solid var(--rule);
 
-  /* Glassmorphism */
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  --glass-blur: blur(12px);
+  /* Glass → opaque paper */
+  --glass-bg: var(--color-surface);
+  --glass-blur: none;
+
+  /* Motion vocabulary */
+  --ease-settle: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-quick: 150ms;
+  --dur-hover: 400ms;
+  --dur-page: 600ms;
 
   /* Reading progress */
-  --reading-progress-from: var(--color-primary);
-  --reading-progress-via: var(--color-secondary);
-  --reading-progress-to: #8ecaff;
-  --reading-progress-glow: rgba(0, 88, 190, 0.4);
-  --reading-progress-glow-spread: rgba(0, 88, 190, 0.15);
+  --reading-progress-color: var(--accent);
 }
 
 .dark {
-  /* Brand (inverted for dark surfaces) */
-  --color-primary: #a4c8ff;
-  --color-primary-container: #00408f;
-  --color-secondary: #8ecaff;
-  --color-on-primary: #003063;
-  --color-on-secondary: #00315f;
+  /* Paper & ink primitives (dark: ink and paper swapped) */
+  --paper: #16130e;
+  --paper-bright: #100e0a;
+  --paper-shade: #1d1912;
+  --paper-tint: #221e16;
+  --paper-deep: #2a251b;
+  --paper-deepest: #363023;
+  --ink: #e9e2d2;
+  --ink-muted: #b5ac97;
+  --rule: rgba(233, 226, 210, 0.16);
+  --rule-strong: rgba(233, 226, 210, 0.5);
+  --accent: #d99c82;
+  --accent-strong: #e5b29c;
+  --accent-highlight: #c9a94e;
 
-  /* Surface hierarchy (dark) */
-  --color-surface: #111418;
-  --color-surface-container-lowest: #0b0e12;
-  --color-surface-container-low: #191c20;
-  --color-surface-container: #1d2024;
-  --color-surface-container-high: #272a2f;
-  --color-surface-container-highest: #32353a;
-  --color-surface-variant: #44474f;
-
-  /* Text */
-  --color-on-surface: #e2e2e6;
-  --color-on-surface-variant: #c4c6d0;
-  --color-outline-variant: #44474f;
-
-  /* Elevation */
-  --shadow-ambient: 0 8px 24px rgba(0, 0, 0, 0.2);
-  --shadow-ambient-hover: 0 12px 32px rgba(0, 0, 0, 0.3);
-
-  /* Ghost border */
-  --ghost-border: 1px solid rgba(68, 71, 79, 0.25);
-
-  /* Glassmorphism */
-  --glass-bg: rgba(11, 14, 18, 0.85);
-
-  /* Reading progress */
-  --reading-progress-from: #a4c8ff;
-  --reading-progress-via: #8ecaff;
-  --reading-progress-to: #c8e2ff;
-  --reading-progress-glow: rgba(142, 202, 255, 0.35);
-  --reading-progress-glow-spread: rgba(142, 202, 255, 0.12);
+  /* Brand aliases */
+  --color-on-primary: #2a1109;
+  --color-on-secondary: #2a1109;
 }
 
 /* ================================================
@@ -113,10 +115,10 @@
    which already include CLS-safe fallback metrics. `inline` is required so Tailwind
    substitutes the var() values into utilities rather than re-wrapping them. */
 @theme inline {
-  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-display: var(--font-plus-jakarta), var(--font-inter), system-ui, sans-serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, 'Times New Roman', serif;
   --font-mono: var(--font-ibm-plex-mono), 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
-  --font-serif: var(--font-crimson), Georgia, 'Times New Roman', serif;
+  --font-serif: var(--font-source-serif), Georgia, 'Times New Roman', serif;
 }
 
 /* ================================================
@@ -124,11 +126,11 @@
    ================================================ */
 
 body {
-  @apply font-sans;
+  @apply font-serif;
   color: var(--color-on-surface);
   background-color: var(--color-surface);
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 1.125rem;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -156,13 +158,15 @@ html {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  @apply font-semibold tracking-tight;
+  @apply font-medium;
   color: var(--color-on-surface);
+  letter-spacing: normal;
 }
 
 h1 {
-  @apply text-4xl lg:text-5xl font-extrabold leading-tight;
-  letter-spacing: -0.035em;
+  @apply text-4xl lg:text-5xl leading-tight;
+  font-weight: 560;
+  line-height: 1.12;
 }
 
 /* Explicit font-size for h1 in sectioning contexts (H1UserAgentFontSizeInSection deprecation) */
@@ -171,27 +175,38 @@ section h1,
 aside h1,
 nav h1,
 :where(article, section, aside, nav) h1 {
-  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-size: clamp(2.5rem, 6vw, 4rem);
 }
 
 h2 {
-  @apply text-3xl lg:text-4xl font-bold leading-tight;
-  letter-spacing: -0.025em;
+  @apply text-3xl lg:text-4xl leading-tight;
+  font-weight: 540;
 }
 
 h3 {
-  @apply text-2xl lg:text-3xl font-semibold leading-tight;
+  @apply text-2xl lg:text-3xl leading-snug;
+  font-weight: 500;
 }
 
 /* Code styling */
 code {
-  @apply font-mono px-1.5 py-0.5 rounded text-sm;
+  @apply font-mono px-1.5 py-0.5 text-sm;
   background-color: var(--color-surface-container);
   color: var(--color-on-surface);
 }
 
 pre code {
   @apply bg-transparent p-0;
+}
+
+/* Small-caps editorial label (rubrics, datelines, folios) */
+.rubric {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
 }
 
 /* Link styling */
@@ -206,7 +221,9 @@ a:hover {
 
 /* Focus states */
 :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
-  @apply outline-none ring-2 ring-blue-500/50;
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+  box-shadow: none;
 }
 
 .skip-link {
@@ -215,7 +232,6 @@ a:hover {
   left: 1rem;
   z-index: 100;
   transform: translateY(-200%);
-  border-radius: 0.75rem;
   background: var(--color-on-surface);
   color: var(--color-surface);
   padding: 0.75rem 1rem;
@@ -244,19 +260,19 @@ a:hover {
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.9);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: fade-in-up var(--dur-page) var(--ease-settle) forwards;
 }
 
-/* Gentle fade-in (no scale) for above-the-fold content */
+/* Gentle fade-in for above-the-fold content */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -270,7 +286,23 @@ a:hover {
 
 .animate-fade-in {
   opacity: 0;
-  animation: fade-in 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  animation: fade-in var(--dur-page) var(--ease-settle) forwards;
+}
+
+/* Hero image settle: a plate easing onto the page */
+@keyframes image-settle {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-image-settle {
+  animation: image-settle 0.9s var(--ease-settle) forwards;
 }
 
 /* Stagger delay utilities for page-load animations */
@@ -384,6 +416,7 @@ a:hover {
 
   .animate-fade-in-up,
   .animate-fade-in,
+  .animate-image-settle,
   .animate-wave,
   ::view-transition-old(root),
   ::view-transition-new(root) {
@@ -574,8 +607,8 @@ a:hover {
 }
 
 .prose img {
-  @apply rounded-lg mb-1 max-w-full h-auto;
-  box-shadow: var(--shadow-ambient);
+  @apply mb-1 max-w-full h-auto;
+  border: 1px solid var(--color-outline-variant);
 }
 
 .prose table {
@@ -688,17 +721,8 @@ astro-lightgallery {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--reading-progress-from) 0%,
-    var(--reading-progress-via) 60%,
-    var(--reading-progress-to) 100%
-  );
-  border-radius: 0 1.5px 1.5px 0;
-  box-shadow:
-    0 0 8px var(--reading-progress-glow),
-    0 0 20px var(--reading-progress-glow-spread);
+  height: 2px;
+  background: var(--reading-progress-color);
   z-index: 9999;
   transition: width 50ms linear;
   will-change: width;

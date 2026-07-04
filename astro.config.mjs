@@ -24,25 +24,25 @@ export default defineConfig({
 	fonts: [
 		{
 			provider: fontProviders.local(),
-			name: 'Inter',
-			cssVariable: '--font-inter',
-			fallbacks: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+			name: 'Fraunces',
+			cssVariable: '--font-fraunces',
+			fallbacks: ['Georgia', 'Times New Roman', 'serif'],
 			options: {
 				variants: [
-					{ weight: '100 900', style: 'normal', src: ['./src/assets/fonts/inter-variable-latin.woff2'] }
+					{ weight: '100 900', style: 'normal', src: ['./src/assets/fonts/fraunces-variable-latin.woff2'] },
+					{ weight: '100 900', style: 'italic', src: ['./src/assets/fonts/fraunces-variable-italic-latin.woff2'] }
 				]
 			}
 		},
 		{
 			provider: fontProviders.local(),
-			name: 'Plus Jakarta Sans',
-			cssVariable: '--font-plus-jakarta',
-			fallbacks: ['Inter', 'system-ui', 'sans-serif'],
+			name: 'Source Serif 4',
+			cssVariable: '--font-source-serif',
+			fallbacks: ['Georgia', 'Times New Roman', 'serif'],
 			options: {
 				variants: [
-					{ weight: 600, style: 'normal', src: ['./src/assets/fonts/plus-jakarta-sans-600-latin.woff2'] },
-					{ weight: 700, style: 'normal', src: ['./src/assets/fonts/plus-jakarta-sans-700-latin.woff2'] },
-					{ weight: 800, style: 'normal', src: ['./src/assets/fonts/plus-jakarta-sans-800-latin.woff2'] }
+					{ weight: '200 900', style: 'normal', src: ['./src/assets/fonts/source-serif-4-variable-latin.woff2'] },
+					{ weight: '200 900', style: 'italic', src: ['./src/assets/fonts/source-serif-4-variable-italic-latin.woff2'] }
 				]
 			}
 		},
@@ -56,21 +56,6 @@ export default defineConfig({
 					{ weight: 400, style: 'normal', src: ['./src/assets/fonts/ibm-plex-mono-400-latin.woff2'] },
 					{ weight: 500, style: 'normal', src: ['./src/assets/fonts/ibm-plex-mono-500-latin.woff2'] },
 					{ weight: 600, style: 'normal', src: ['./src/assets/fonts/ibm-plex-mono-600-latin.woff2'] }
-				]
-			}
-		},
-		{
-			provider: fontProviders.local(),
-			name: 'Crimson Pro',
-			cssVariable: '--font-crimson',
-			fallbacks: ['Georgia', 'Times New Roman', 'serif'],
-			options: {
-				variants: [
-					{ weight: 400, style: 'normal', src: ['./src/assets/fonts/crimson-pro-400-latin.woff2'] },
-					{ weight: 500, style: 'normal', src: ['./src/assets/fonts/crimson-pro-500-latin.woff2'] },
-					{ weight: 600, style: 'normal', src: ['./src/assets/fonts/crimson-pro-600-latin.woff2'] },
-					{ weight: 400, style: 'italic', src: ['./src/assets/fonts/crimson-pro-400-italic-latin.woff2'] },
-					{ weight: 500, style: 'italic', src: ['./src/assets/fonts/crimson-pro-500-italic-latin.woff2'] }
 				]
 			}
 		}
@@ -90,8 +75,18 @@ export default defineConfig({
 			themes: ['github-dark', 'github-light'],
 			themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
 			styleOverrides: {
-				borderRadius: '0.5rem',
+				borderRadius: '0',
+				borderColor: 'var(--color-outline-variant)',
 				codeFontFamily: 'IBM Plex Mono, ui-monospace, Consolas, monospace',
+				uiFontFamily: 'IBM Plex Mono, ui-monospace, Consolas, monospace',
+				codeBackground: 'var(--color-surface-container-lowest)',
+				frames: {
+					editorBackground: 'var(--color-surface-container-lowest)',
+					terminalBackground: 'var(--color-surface-container-lowest)',
+					terminalTitlebarBackground: 'var(--color-surface-container-low)',
+					editorTabBarBackground: 'var(--color-surface-container-low)',
+					frameBoxShadowCssValue: 'none',
+				},
 			},
 			plugins: [expressiveCodeA11yPlugin()],
 		}),
