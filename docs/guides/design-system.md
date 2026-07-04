@@ -74,6 +74,6 @@ One definition in `global.css` (`.callout`, `.callout-heading`, variant classes 
 
 ## Third-party surfaces
 
-- **Expressive Code:** editor/code-file frames are square with hairline borders and paper-tinted chrome, via `styleOverrides` in `astro.config.mjs`. **Terminal frames** (`.frame.is-terminal`) are the deliberate exception — restyled in `global.css` as macOS windows: 10px radius, soft shadow, real red/amber/green traffic lights (repainting EC's monochrome dot mask), a light titlebar in light mode and a cool-navy body/titlebar in dark mode.
+- **Expressive Code:** editor/code-file frames are square with hairline borders and paper-tinted chrome, via `styleOverrides` in `astro.config.mjs`. **Terminal frames** (`.frame.is-terminal`) are the deliberate exception — restyled in `global.css` as macOS windows: 10px radius, soft shadow, real red/amber/green traffic lights drawn as pure CSS circles. Terminals always render as a **Solarized Dark** profile in *both* site themes: `solarized-dark` is registered as a third EC theme whose selector never matches page-wide, and terminal frames force its token layer (`var(--2)`) plus base03/base02 backgrounds.
 - **Giscus:** custom paper/ink themes in `public/giscus/light.css` / `dark.css`, loaded with a `?v=` cache-busting query from `Comments.astro`.
 - **Pagefind:** `--pagefind-ui-*` variables + square-corner overrides in `src/pages/search.astro`.

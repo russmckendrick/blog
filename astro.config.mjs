@@ -60,8 +60,14 @@ export default defineConfig({
 	integrations: [
 		react(),
 		expressiveCode({
-			themes: ['github-dark', 'github-light'],
-			themeCssSelector: (theme) => `[data-theme='${theme.type}']`,
+			// solarized-dark is never activated page-wide: it exists as a third
+			// token layer (--2) that terminal frames read in global.css so
+			// terminals always render as a Solarized Dark window in both themes.
+			themes: ['github-dark', 'github-light', 'solarized-dark'],
+			themeCssSelector: (theme) =>
+				theme.name === 'solarized-dark'
+					? "[data-theme='solarized-terminal-only']"
+					: `[data-theme='${theme.type}']`,
 			styleOverrides: {
 				borderRadius: '0',
 				borderColor: 'var(--color-outline-variant)',
