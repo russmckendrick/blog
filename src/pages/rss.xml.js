@@ -48,7 +48,7 @@ export async function GET(context) {
 	const container = await AstroContainer.create();
 
 	// Load the MDX renderer
-	await container.addServerRenderer({
+	container.addServerRenderer({
 		name: '@astrojs/mdx',
 		renderer: (await import('@astrojs/mdx/server.js')).default,
 	});

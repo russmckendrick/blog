@@ -197,7 +197,6 @@ export function createHowToSchema({
   description,
   steps,
   totalTime,
-  _url,
   image
 }: {
   name: string
