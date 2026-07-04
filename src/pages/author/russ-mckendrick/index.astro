@@ -86,7 +86,7 @@ const featuredSocials = SOCIAL_LINKS.filter((link) =>
       <p class="rubric mb-3">
         Where else to find me
       </p>
-      <ul class="flex flex-wrap gap-x-5 gap-y-2">
+      <ul class="flex flex-wrap gap-2">
         {featuredSocials.map((link) => (
           <li>
             <a href={link.url} rel="me noopener noreferrer" class="tag-editorial">
@@ -109,12 +109,12 @@ const featuredSocials = SOCIAL_LINKS.filter((link) =>
         <p class="rubric mb-3">
           What I write about
         </p>
-        <ul class="flex flex-wrap gap-x-5 gap-y-2">
+        <ul class="flex flex-wrap gap-2">
           {topTags.map(([slug, count]) => (
             <li>
               <a href={`/tags/${slug}/`} class="tag-editorial">
                 {slug}
-                <span class="ml-1 opacity-70">{count}</span>
+                <span class="opacity-70">{count}</span>
               </a>
             </li>
           ))}

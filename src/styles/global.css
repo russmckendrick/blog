@@ -211,24 +211,31 @@ pre code {
   color: var(--color-on-surface-variant);
 }
 
-/* Editorial tag treatment: quiet small-caps with a hairline underline,
-   accent on hover. Replaces the retired per-tag pastel chips. */
+/* Editorial tag treatment: a quiet classification stamp — mono caps in
+   a square hairline box, accent on hover. Replaces the retired per-tag
+   pastel chips. */
 .tag-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 500;
+  line-height: 1;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--color-on-surface-variant);
   text-decoration: none;
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 1px;
-  transition: color var(--dur-quick) ease, border-color var(--dur-quick) ease;
+  border: 1px solid var(--rule);
+  padding: 0.3rem 0.55rem;
+  transition: color var(--dur-quick) ease, border-color var(--dur-quick) ease, background-color var(--dur-quick) ease;
 }
 
-a.tag-editorial:hover {
+a.tag-editorial:hover,
+a.tag-editorial:focus-visible {
   color: var(--color-secondary);
-  border-bottom-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  background-color: color-mix(in srgb, var(--color-secondary) 6%, transparent);
 }
 
 /* Link styling */

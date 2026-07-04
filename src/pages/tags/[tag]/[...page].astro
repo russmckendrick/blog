@@ -147,12 +147,12 @@ const avatarFallback = '/images/avatar-192x192.png';
     {relatedTags.length > 0 && (
       <div class="mt-6" data-entrance>
         <p class="rubric mb-2">Often appears with</p>
-        <ul class="flex flex-wrap gap-x-4 gap-y-2">
+        <ul class="flex flex-wrap gap-2">
           {relatedTags.map((related) => (
             <li>
               <a href={getTagUrl(related.slug)} class={getTagColorClasses(related.slug)}>
                 {getTagDisplayName(related.slug)}
-                <span class="ml-1 opacity-70">{related.count}</span>
+                <span class="opacity-70">{related.count}</span>
               </a>
             </li>
           ))}

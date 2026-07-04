@@ -180,7 +180,7 @@ There are no cards, shadows, glass, or gradients. Separation comes from:
 - **Hairline frames** around all images (listing covers, article heroes, book covers, prose images).
 - **Radius 0 everywhere.** Two intentional exceptions: circular avatar portraits (a print convention — article byline, tag hub, about page), and terminal code blocks, which are drawn as macOS windows (rounded corners, soft drop shadow, red/amber/green traffic lights, always a dark slate-navy Catppuccin Macchiato profile in both site themes — matching the author's real terminal). A terminal frame depicts a real app window, so it reads as a figure, not chrome.
 
-Listings are index entries: dateline, framed cover image, Source Serif headline, standfirst, rule below. Tags render through `getTagColorClasses()` → the single `.tag-editorial` treatment (small-caps mono with a hairline underline, accent on hover); the per-tag pastel palette in `TAG_METADATA` is retired visually but the titles/emojis/descriptions remain in use.
+Listings are index entries: dateline, framed cover image, Source Serif headline, standfirst, rule below. Tags render through `getTagColorClasses()` → the single `.tag-editorial` treatment (small mono caps in a square hairline box — a quiet classification stamp — accent on hover); the per-tag pastel palette in `TAG_METADATA` is retired visually but the titles/emojis/descriptions remain in use.
 
 ## Motion — "the magazine, filmed"
 

@@ -40,7 +40,7 @@ Dates are day-first ("13 Jun 2026") via `FormattedDate.astro`.
 ### Utility classes
 
 - `.rubric` — the standard label treatment: mono, 0.8125rem, uppercase, 0.08em tracking, muted ink. Used for datelines, section rubrics, nav items, and "Previous/Next" labels.
-- `.tag-editorial` — tag-like links: small mono caps with a hairline underline, accent on hover. `getTagColorClasses()` in `src/utils/tags.ts` returns this for every tag (the per-tag pastel palette is retired visually).
+- `.tag-editorial` — tag-like links: small mono caps in a square hairline box (a quiet classification stamp), accent border/text on hover. `getTagColorClasses()` in `src/utils/tags.ts` returns this for every tag (the per-tag pastel palette is retired visually).
 - `.nav-underline` — underline draw-in on hover/focus (scaleX from the left).
 
 ## Rules instead of cards
