@@ -205,9 +205,9 @@ The browse-page OG generators all share the same `OG()` + `PNG()` pipeline and a
 **Features**:
 - Auto-generated for all blog posts
 - Dimensions: 1200×630 (standard OG size)
-- Design: Site logo, gradient background, blue accent border
-- Font: Inter
-- Cached: `node_modules/.astro-og-canvas/`
+- Design: "Print Edition" card — neutral paper background, heavy ink rule across the top, logo + burnt-orange `RUSS.CLOUD` mono masthead, bold Source Serif headline with muted standfirst and a closing short rule; post covers render as an edge-to-edge plate on the right behind a hairline divider. Emoji are stripped from titles/descriptions (satori ships no emoji font).
+- Fonts: Source Serif 4 (400/700) + IBM Plex Mono (500) as static TTFs in `src/images/opengraph/fonts/` (satori cannot read the site's woff2 files)
+- Cached: `node_modules/.cache/og-images/`, keyed by content **plus a design-version salt** in every `*-og.png.ts` route (`og-design:print-edition-v1`) — bump the salt after any OG redesign, or CI's cached `node_modules` will keep serving old renders
 
 **Generated URLs**:
 ```

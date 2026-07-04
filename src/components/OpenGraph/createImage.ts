@@ -9,18 +9,25 @@ export async function SVG(component: ReactNode) {
     height: 630,
     fonts: [
       {
-        name: "Inter",
+        name: "Source Serif 4",
         data: await fs.readFile(
-          "./src/images/opengraph/fonts/Inter-Regular.ttf",
+          "./src/images/opengraph/fonts/SourceSerif4-Regular.ttf",
         ),
         weight: 400,
       },
       {
-        name: "Inter",
+        name: "Source Serif 4",
         data: await fs.readFile(
-          "./src/images/opengraph/fonts/Inter-ExtraBold.ttf",
+          "./src/images/opengraph/fonts/SourceSerif4-Bold.ttf",
         ),
-        weight: 800,
+        weight: 700,
+      },
+      {
+        name: "IBM Plex Mono",
+        data: await fs.readFile(
+          "./src/images/opengraph/fonts/IBMPlexMono-Medium.ttf",
+        ),
+        weight: 500,
       },
     ],
   });
