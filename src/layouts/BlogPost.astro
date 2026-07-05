@@ -13,6 +13,7 @@ import Comments from '../components/blog/Comments.astro';
 import ShareButtons from '../components/social/ShareButtons.astro';
 import TableOfContents from '../components/blog/TableOfContents.astro';
 import StickyTableOfContents from '../components/blog/StickyTableOfContents.astro';
+import StickyGlossary from '../components/blog/StickyGlossary.astro';
 import ReadingTime from '../components/blog/ReadingTime.astro';
 import RelatedPosts from '../components/blog/RelatedPosts.astro';
 import Breadcrumbs from '../components/navigation/Breadcrumbs.astro';
@@ -146,6 +147,10 @@ const relatedGlossary = (!isTune && postTagSlugs.size > 0)
 		.slice(0, 6)
 	: [];
 
+// Right-hand sidebar holds the sticky TOC and, below it, related glossary terms
+const hasToc = showToc && headings.length > 0;
+const hasSidebar = hasToc || relatedGlossary.length > 0;
+
 const faqSchema = faqs && faqs.length > 0
 	? createFAQSchema(faqs, Astro.url.toString())
 	: null;
@@ -195,9 +200,8 @@ const howToSchema = howto && howto.steps?.length > 0
 				fetchpriority="high"
 			/>
 		)}
-		<!-- Preconnect to Giscus for faster comment loading (only on blog posts) -->
+		<!-- Giscus loads lazily on scroll, so only hint DNS here; Comments.astro preconnects just before injecting the script -->
 		<link rel="dns-prefetch" href="https://giscus.app">
-		<link rel="preconnect" href="https://giscus.app" crossorigin>
 		<!-- Preconnect to GitHub for faster asset/embed loading -->
 		<link rel="dns-prefetch" href="https://github.githubassets.com">
 		<link rel="dns-prefetch" href="https://opengraph.githubassets.com">
@@ -215,27 +219,15 @@ const howToSchema = howto && howto.steps?.length > 0
 		</HeaderWrapper>
 		<main id="main-content" tabindex="-1" class="relative">
 			<article class="relative pt-6 sm:pt-10 pb-4">
-				<div class:list={["mx-auto px-4 sm:px-6 lg:px-8 xl:px-10", showToc && headings.length > 0 ? 'max-w-5xl 2xl:max-w-[1340px]' : 'max-w-5xl']}>
-					<div class:list={[showToc && headings.length > 0 ? '2xl:grid 2xl:grid-cols-[1fr_220px] 2xl:gap-8 2xl:items-start' : '']}>
+				<div class:list={["mx-auto px-4 sm:px-6 lg:px-8 xl:px-10", hasSidebar ? 'max-w-5xl 2xl:max-w-[1340px]' : 'max-w-5xl']}>
+					<div class:list={[hasSidebar ? '2xl:grid 2xl:grid-cols-[1fr_220px] 2xl:gap-8 2xl:items-start' : '']}>
 					<div class="min-w-0">
 						<Breadcrumbs items={breadcrumbItems} />
 
-						{/* Journal header: dateline → title → byline, then the plate */}
+						{/* Journal header: title → byline, then the plate */}
 						<header class="mt-6 mb-8">
-							<p class="rubric flex flex-wrap items-center gap-x-2" data-entrance>
-								<span style="color: var(--color-secondary);">Russ.Cloud</span>
-								<span aria-hidden="true">&middot;</span>
-								<FormattedDate date={pubDate} />
-								{readingTime && (
-									<>
-										<span aria-hidden="true">&middot;</span>
-										<ReadingTime minutes={readingTime} />
-									</>
-								)}
-							</p>
-
 							<h1
-								class="font-display mt-4 text-on-surface"
+								class="font-display text-on-surface"
 								style="font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.1;"
 								data-entrance
 								transition:name={titleTransition}
@@ -252,6 +244,14 @@ const howToSchema = howto && howto.steps?.length > 0
 									onerror={`this.onerror=null; this.src='${avatarFallback}';`}
 								/>
 								<span class="rubric text-on-surface">{authorName}</span>
+								<span class="rubric" aria-hidden="true">&middot;</span>
+								<span class="rubric"><FormattedDate date={pubDate} /></span>
+								{readingTime && (
+									<>
+										<span class="rubric" aria-hidden="true">&middot;</span>
+										<span class="rubric"><ReadingTime minutes={readingTime} /></span>
+									</>
+								)}
 								{filePath && (
 									<>
 										<span class="rubric" aria-hidden="true">&middot;</span>
@@ -271,33 +271,12 @@ const howToSchema = howto && howto.steps?.length > 0
 										<span class="rubric italic normal-case tracking-normal">Updated <FormattedDate date={updatedDate} /></span>
 									</>
 								)}
+								{tags.slice(0, 8).map((tag) => (
+									<a href={getTagUrl(tag)} class={getTagColorClasses(tag)}>
+										{getTagDisplayName(tag)}
+									</a>
+								))}
 							</div>
-
-							{tags.length > 0 && (
-								<div class="mt-5 flex flex-wrap items-center gap-2" data-entrance>
-									{tags.slice(0, 8).map((tag) => (
-										<a href={getTagUrl(tag)} class={getTagColorClasses(tag)}>
-											{getTagDisplayName(tag)}
-										</a>
-									))}
-								</div>
-							)}
-
-							{relatedGlossary.length > 0 && (
-								<p class="mt-4 rubric flex flex-wrap items-baseline gap-x-2 gap-y-1" data-entrance>
-									<span style="color: var(--color-secondary);">Glossary</span>
-									{relatedGlossary.map((g: CollectionEntry<'glossary'>, index: number) => (
-										<>
-											{index > 0 && <span aria-hidden="true">&middot;</span>}
-											<a href={`/glossary/${g.id}/`} class="nav-underline no-underline hover:text-on-surface">
-												{g.data.term}
-											</a>
-										</>
-									))}
-								</p>
-							)}
-
-							<div class="mt-8 border-t-2" style="border-color: var(--rule-strong);" aria-hidden="true"></div>
 						</header>
 
 						{/* Hero image: the plate, edge to edge, framed with a hairline */}
@@ -328,7 +307,7 @@ const howToSchema = howto && howto.steps?.length > 0
 							</figure>
 						)}
 
-						{showToc && headings.length > 0 && (
+						{hasToc && (
 							<div class="2xl:hidden">
 								<TableOfContents headings={headings} />
 							</div>
@@ -357,9 +336,10 @@ const howToSchema = howto && howto.steps?.length > 0
 						</div>
 					</div>
 
-					{showToc && headings.length > 0 && (
+					{hasSidebar && (
 						<aside class="hidden 2xl:block sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
-							<StickyTableOfContents headings={headings} maxDepth={isTune ? 2 : 3} />
+							{hasToc && <StickyTableOfContents headings={headings} maxDepth={isTune ? 2 : 3} />}
+							<StickyGlossary entries={relatedGlossary} />
 						</aside>
 					)}
 					</div>

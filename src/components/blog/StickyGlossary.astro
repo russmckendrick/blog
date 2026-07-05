@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  entries: CollectionEntry<'glossary'>[]
+}
+
+const { entries } = Astro.props
+---
+
+{entries.length > 0 && (
+  <nav class="sticky-glossary" aria-label="Related glossary terms">
+    <p class="sticky-glossary-label">Glossary</p>
+    <ul class="sticky-glossary-list">
+      {entries.map((entry) => (
+        <li>
+          <a href={`/glossary/${entry.id}/`} class="sticky-glossary-link">
+            {entry.data.term}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .sticky-glossary {
+    margin-top: 2rem;
+    padding-top: 0.25rem;
+  }
+
+  .sticky-glossary-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-on-surface-variant);
+    margin-bottom: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  .sticky-glossary-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-left: 1px solid var(--color-outline-variant);
+  }
+
+  .sticky-glossary-link {
+    display: block;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    padding: 0.3rem 0.75rem;
+    color: var(--color-on-surface-variant);
+    opacity: 0.65;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+    transition: color 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+  }
+
+  .sticky-glossary-link:hover {
+    opacity: 1;
+    color: var(--color-on-surface);
+  }
+</style>

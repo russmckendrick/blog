@@ -126,7 +126,7 @@ if (import.meta.env.DEV && !isExternal && !localImageDimensions && !resolvedWidt
             loading="lazy"
             decoding="async"
             class={`h-auto hover:opacity-90 transition-opacity cursor-zoom-in ${fullWidth ? 'w-full' : 'max-w-full'}`}
-            sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
+            sizes={sizes || '(min-width: 66em) 1010px, (min-width: 40em) calc(100vw - 48px), calc(100vw - 32px)'}
             {...(resolvedWidth && { width: resolvedWidth })}
             {...(resolvedHeight && { height: resolvedHeight })}
           />
@@ -142,7 +142,7 @@ if (import.meta.env.DEV && !isExternal && !localImageDimensions && !resolvedWidt
         loading="lazy"
         decoding="async"
         class={`h-auto hover:opacity-90 transition-opacity ${fullWidth ? 'w-full' : 'max-w-full'}`}
-        sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
+        sizes={sizes || '(min-width: 66em) 1010px, (min-width: 40em) calc(100vw - 48px), calc(100vw - 32px)'}
         {...(resolvedWidth && { width: resolvedWidth })}
         {...(resolvedHeight && { height: resolvedHeight })}
       />
@@ -155,7 +155,7 @@ if (import.meta.env.DEV && !isExternal && !localImageDimensions && !resolvedWidt
       loading="lazy"
       decoding="async"
       class={`h-auto ${fullWidth ? 'w-full' : 'max-w-full'}`}
-      sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
+      sizes={sizes || '(min-width: 66em) 1010px, (min-width: 40em) calc(100vw - 48px), calc(100vw - 32px)'}
       {...(resolvedWidth && { width: resolvedWidth })}
       {...(resolvedHeight && { height: resolvedHeight })}
     />

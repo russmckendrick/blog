@@ -486,7 +486,9 @@ export const CF_IMAGE_PRESETS = {
     quality: 60,
     format: "avif" as const,
     fit: "scale-down" as const,
-    widths: [1024, 1536, 2048, 2560],
+    // 640/720 cover the ~680px prose column on 1x/1.75x-DPR phones;
+    // larger steps serve retina desktop and the lightbox srcset
+    widths: [640, 720, 1024, 1536, 2048, 2560],
   },
 
   // Avatar images

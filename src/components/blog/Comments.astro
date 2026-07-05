@@ -37,6 +37,14 @@
 		if (giscusLoaded) return;
 		giscusLoaded = true;
 
+		// Open the connection now rather than via a head preconnect, which
+		// Lighthouse flags as unused because the iframe only loads on scroll
+		const preconnect = document.createElement('link');
+		preconnect.rel = 'preconnect';
+		preconnect.href = 'https://giscus.app';
+		preconnect.crossOrigin = 'anonymous';
+		document.head.appendChild(preconnect);
+
 		// Track that a reader scrolled to the comments section
 		window.plausible?.('Comments Viewed', { interactive: false });
 

@@ -217,7 +217,7 @@ export const CF_IMAGE_PRESETS = {
     quality: 60,
     format: 'avif' as const,
     fit: 'scale-down' as const,
-    widths: [1024, 1536, 2048, 2560]
+    widths: [640, 720, 1024, 1536, 2048, 2560]
   },
 
   // Avatar images
@@ -340,7 +340,7 @@ const resolvedHeight = height ?? dimensions?.height;
   loading="lazy"
   width={resolvedWidth}
   height={resolvedHeight}
-  sizes={sizes || '(min-width: 35em) 1200px, 100vw'}
+  sizes={sizes || '(min-width: 66em) 1010px, (min-width: 40em) calc(100vw - 48px), calc(100vw - 32px)'}
   class="max-w-full h-auto"
 />
 ```

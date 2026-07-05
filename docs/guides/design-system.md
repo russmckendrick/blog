@@ -48,7 +48,7 @@ Dates are day-first ("13 Jun 2026") via `FormattedDate.astro`.
 No cards, shadows, glass, gradients, or border radius (circular avatar portraits are the sole exception). Separation comes from:
 
 - hairline rules between list entries and around every image (`border` + `--color-outline-variant`)
-- heavy rules (`border-t-2`/`border-b-2` + `--rule-strong`) closing page headers (the featured spread is rule-free)
+- heavy rules (`border-t-2`/`border-b-2` + `--rule-strong`) closing page headers (the featured spread and the article journal header are rule-free)
 - the page-header pattern: rubric line → Source Serif heading → standfirst → heavy rule
 
 Listings are index entries: dateline, framed cover, Source Serif headline, standfirst, hairline below.
@@ -59,7 +59,7 @@ All motion runs through `src/scripts/motion.ts` and the timing tokens `--ease-se
 
 | Attribute | Effect |
 |---|---|
-| `data-entrance` | staggered fade + 14px rise on page load (dateline → title → byline → hero) |
+| `data-entrance` | staggered fade + 14px rise on page load (title → byline → hero) |
 | `data-settle` | image settles from scale 1.03 with fade (article heroes) |
 | `data-reveal` | fades up once when scrolled into view |
 | `data-reveal="rule"` | rule draws in horizontally |

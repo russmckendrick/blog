@@ -61,7 +61,7 @@ tags: ["docker", "kubernetes", "devops"]     # Required (array, 2-5 recommended)
 
 **Note**: See **[Using Tags](./using-tags.md)** for complete tag reference with all 30+ available tags.
 
-**Tip**: Tags are also the join key for the glossary cross-linking feature - posts automatically surface a "Glossary" pill rail of any glossary entries whose tags overlap, and glossary pages list the matching posts. Accurate, consistent tagging is all that is needed; no extra frontmatter fields are required.
+**Tip**: Tags are also the join key for the glossary cross-linking feature - posts automatically surface related glossary entries (any whose tags overlap) as a "Glossary" list in the right-hand sidebar below the table of contents on wide screens, and glossary pages list the matching posts. Accurate, consistent tagging is all that is needed; no extra frontmatter fields are required.
 
 ### Optional Fields
 

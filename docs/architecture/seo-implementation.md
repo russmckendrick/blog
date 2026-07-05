@@ -285,7 +285,7 @@ The site builds programmatic browse hubs from proprietary data instead of just p
 Glossary entries and blog posts share the `tags` axis. Two-way related-content links are derived at build time from that overlap (matched via `normalizeTagSlug` from `src/utils/tags.ts`):
 
 - `/glossary/{term}/` (`src/pages/glossary/[term].astro`) renders a "Posts on this topic" block listing up to 8 most-recent blog posts whose tags intersect the entry's tags.
-- Blog posts (`src/layouts/BlogPost.astro`) surface up to 6 glossary terms whose tags intersect the post's tags as a "Glossary" pill rail in the author info box. Tunes posts skip the rail.
+- Blog posts (`src/layouts/BlogPost.astro`) surface up to 6 glossary terms whose tags intersect the post's tags as a "Glossary" list in the right-hand sidebar, below the sticky table of contents (`StickyGlossary.astro`, shown on 2xl viewports and up). Tunes posts skip the list.
 - A rehype plugin (`src/utils/rehype-glossary-links.ts`, registered in `astro.config.mjs`) auto-links the **first occurrence** of any glossary term inside MDX body text on every page. Code blocks, headings, existing links, and asides are skipped. The term map is loaded synchronously at config time by `src/utils/glossary-terms.ts`.
 
 Both blocks render only when there is a match - empty intersections produce no UI.
