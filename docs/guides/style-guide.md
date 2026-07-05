@@ -25,7 +25,7 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 ### Header (masthead)
 
 - Opaque paper background with a 1px bottom rule — no glass or blur.
-- Desktop navigation is text-only `.rubric` labels with `.nav-underline` draw-in hovers.
+- Desktop navigation is icon-only links (`.nav-icon-link`); the `.rubric` label sits in a collapsed `.nav-label` span that slides out on hover/focus, combined with the `.nav-underline` draw-in.
 - Keep the theme toggle icon-only on desktop.
 - Mobile navigation uses icon + text labels and follows a disclosure pattern with `aria-controls`, `aria-expanded`, and a screen-reader-only label that reflects open/closed state.
 

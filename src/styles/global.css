@@ -493,6 +493,33 @@ a:hover {
   }
 }
 
+/* Icon-only nav links — label slides out on hover/focus */
+.nav-icon-link .nav-label {
+  display: inline-block;
+  max-width: 0;
+  margin-left: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition:
+    max-width var(--dur-hover) var(--ease-settle),
+    margin-left var(--dur-hover) var(--ease-settle),
+    opacity var(--dur-hover) var(--ease-settle);
+}
+
+.nav-icon-link:hover .nav-label,
+.nav-icon-link:focus-visible .nav-label {
+  max-width: 8em;
+  margin-left: 0.45em;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-icon-link .nav-label {
+    transition: none;
+  }
+}
+
 
 /* ================================================
    Prose Styling (Blog Post Content)

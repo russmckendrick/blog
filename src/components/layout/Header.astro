@@ -33,7 +33,7 @@ const mobileMenuLabelId = 'mobile-menu-label';
 			</button>
 
 			<!-- Desktop menu -->
-			<div class="hidden md:flex md:items-center md:gap-4">
+			<div class="hidden md:flex md:items-center gap-4 lg:gap-5">
 				<ul class="flex items-center gap-4 lg:gap-5">
 					{NAVIGATION_ITEMS.map(item =>
 						<li>
@@ -41,21 +41,19 @@ const mobileMenuLabelId = 'mobile-menu-label';
 								href={item.url}
 								target={item.external ? '_blank' : undefined}
 								rel={item.external ? 'noopener noreferrer' : undefined}
-								class="header-nav-item nav-underline rubric no-underline py-1.5 inline-flex items-center gap-1.5"
+								class="header-nav-item nav-underline nav-icon-link rubric no-underline py-1.5 inline-flex items-center"
 							>
-								<Icon name={item.icon} size={15} aria-hidden="true" />
-								{item.name}
+								<Icon name={item.icon} size={18} aria-hidden="true" />
+								<span class="nav-label">{item.name}</span>
 							</a>
 						</li>
 					)}
 				</ul>
 
-				<div class="flex items-center border-l pl-4" style="border-color: var(--color-outline-variant);">
-					<button id="theme-toggle" class="header-nav-item p-1.5" aria-label="Toggle theme">
-						<Icon name="sun" class="theme-icon light-icon h-5 w-5 hidden dark:block" />
-						<Icon name="moon" class="theme-icon dark-icon h-5 w-5 block dark:hidden" />
-					</button>
-				</div>
+				<button id="theme-toggle" class="header-nav-item inline-flex items-center py-1.5" aria-label="Toggle theme">
+					<Icon name="sun" size={18} class="theme-icon light-icon hidden dark:block" />
+					<Icon name="moon" size={18} class="theme-icon dark-icon block dark:hidden" />
+				</button>
 			</div>
 		</div>
 

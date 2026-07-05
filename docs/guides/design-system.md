@@ -42,6 +42,7 @@ Dates are day-first ("13 Jun 2026") via `FormattedDate.astro`.
 - `.rubric` — the standard label treatment: mono, 0.8125rem, uppercase, 0.08em tracking, muted ink. Used for datelines, section rubrics, nav items, and "Previous/Next" labels.
 - `.tag-editorial` — tag-like links: small mono caps in a square hairline box (a quiet classification stamp), accent border/text on hover. `getTagColorClasses()` in `src/utils/tags.ts` returns this for every tag (the per-tag pastel palette is retired visually).
 - `.nav-underline` — underline draw-in on hover/focus (scaleX from the left).
+- `.nav-icon-link` / `.nav-label` — icon-only header nav link whose text label expands out on hover/focus (max-width + opacity transition on Motion tokens, disabled under reduced motion; label stays in the DOM for screen readers).
 
 ## Rules instead of cards
 

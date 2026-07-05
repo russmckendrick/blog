@@ -116,21 +116,18 @@ export default defineConfig({
 
 ### 4. Navigation Links
 
-**Previous state**: Header navigation used icon-only links without text labels.
-
-**Current state**: Desktop navigation uses icon + text labels for better clarity. Each link still retains an `aria-label` for consistency.
+**Current state**: Desktop navigation shows icon-only links; the text label is kept in the DOM inside `.nav-label` (collapsed to zero width, so screen readers still announce it) and slides out visually on `:hover` and `:focus-visible`. The expansion transition is disabled under `prefers-reduced-motion`. The mobile menu always shows icon + text.
 
 **File**: `src/components/layout/Header.astro`
 
 ```astro
-<!-- Desktop navigation (icon + text) -->
+<!-- Desktop navigation (icon-only, label expands on hover/focus) -->
 <a
   href={item.url}
-  class="header-nav-item ... flex items-center gap-1.5"
-  aria-label={item.name}
+  class="header-nav-item nav-underline nav-icon-link ... inline-flex items-center"
 >
-  <Icon name={item.icon} size={16} />
-  <span class="text-sm font-medium">{item.name}</span>
+  <Icon name={item.icon} size={18} aria-hidden="true" />
+  <span class="nav-label">{item.name}</span>
 </a>
 
 <!-- Mobile menu trigger -->
