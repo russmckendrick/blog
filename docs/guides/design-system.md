@@ -55,7 +55,7 @@ Listings are index entries: dateline, framed cover, Source Serif headline, stand
 
 ## Motion
 
-All motion runs through `src/scripts/motion.ts` and the timing tokens `--ease-settle`, `--dur-quick` (150ms), `--dur-hover` (400ms), `--dur-page` (600ms). No springs or lift hovers.
+All motion runs through `src/scripts/motion.ts` and the timing tokens `--ease-settle`, `--dur-quick` (150ms), `--dur-hover` (400ms), `--dur-page` (600ms). No springs or lift hovers. `animate` is imported from `motion/mini` (the WAAPI engine) with `inView`/`stagger` from `motion` — this keeps the shared motion chunk around 10 KB instead of 63 KB, which matters because the chunk sits on the critical request chain (entrance elements are CSS-hidden until it runs). Don't switch back to the full `motion` import without checking the PageSpeed network dependency tree.
 
 | Attribute | Effect |
 |---|---|

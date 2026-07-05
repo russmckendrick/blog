@@ -320,6 +320,10 @@ Example usage:
 - ✅ Full-screen viewing mode
 - ✅ Automatic caption loading from `.meta` files (Hugo-compatible)
 
+**Loading behavior:**
+
+The lightgallery library (and its thumbnail/zoom plugins) is not part of the critical request chain. `BlogPost.astro` defers initialization until after the window `load` event plus an idle callback, then fetches the three chunks in parallel — and only on pages that actually contain galleries. A capture-phase click listener acts as a safety net: clicking a gallery image before idle init completes triggers initialization on demand and opens the lightbox instead of navigating to the raw image.
+
 ### ThemeSvg
 Embed SVG images with automatic light/dark theme switching. Provide a base path and the component renders both `-light` and `-dark` variants, showing the correct one based on the active theme.
 

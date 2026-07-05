@@ -391,14 +391,18 @@ const howToSchema = howto && howto.steps?.length > 0
 			import type { LightGallerySettings } from 'lightgallery/lg-settings';
 			import type { AstroLightGalleryPluginStrType } from 'astro-lightgallery';
 
-			// Guard to prevent concurrent initializations
-			let isInitializing = false;
+			// Guard to prevent concurrent initializations while letting callers await in-flight work
+			let currentInit: Promise<void> | null = null;
+
+			function initLightGallery(): Promise<void> {
+				if (!currentInit) {
+					currentInit = doInitLightGallery();
+				}
+				return currentInit;
+			}
 
 			// Initialize LightGallery for blog post pages with optimized DOM operations
-			async function initLightGallery() {
-				if (isInitializing) return;
-				isInitializing = true;
-
+			async function doInitLightGallery() {
 				try {
 					// Use requestAnimationFrame to batch DOM reads and avoid forced reflows
 					await new Promise<void>(resolve => {
@@ -411,10 +415,12 @@ const howToSchema = howto && howto.steps?.length > 0
 								return;
 							}
 
-							// Dynamic import - only load LightGallery when galleries exist
-							const { default: lightGallery } = await import('lightgallery');
-							const { default: lgThumbnail } = await import('lightgallery/plugins/thumbnail');
-							const { default: lgZoom } = await import('lightgallery/plugins/zoom');
+							// Dynamic import - only load LightGallery when galleries exist; fetch in parallel
+							const [{ default: lightGallery }, { default: lgThumbnail }, { default: lgZoom }] = await Promise.all([
+								import('lightgallery'),
+								import('lightgallery/plugins/thumbnail'),
+								import('lightgallery/plugins/zoom'),
+							]);
 
 							// Batch all DOM reads first to avoid layout thrashing
 							const galleryData: Array<{
@@ -528,10 +534,11 @@ const howToSchema = howto && howto.steps?.length > 0
 								// CRITICAL: Clone and replace items to strip any existing event listeners (e.g. from astro-lightgallery auto-init)
 								allGalleryItems.forEach((item, index) => {
 									const newItem = item.cloneNode(true) as HTMLElement;
+									newItem.setAttribute('data-lg-bound', 'true');
 									if (item.parentNode) {
 										item.parentNode.replaceChild(newItem, item);
 									}
-									
+
 									newItem.addEventListener('click', (e) => {
 										e.preventDefault();
 										e.stopPropagation(); // Stop propagation to be safe
@@ -552,22 +559,50 @@ const howToSchema = howto && howto.steps?.length > 0
 						});
 					});
 				} finally {
-					isInitializing = false;
+					currentInit = null;
+				}
+			}
+
+			// Defer init until after the load event + idle so the lightgallery chunks
+			// stay out of the critical request chain (PageSpeed network dependency tree)
+			function scheduleIdleInit() {
+				const idle = () => {
+					if ('requestIdleCallback' in window) {
+						requestIdleCallback(() => initLightGallery(), { timeout: 2000 });
+					} else {
+						setTimeout(() => initLightGallery(), 300);
+					}
+				};
+				if (document.readyState === 'complete') {
+					idle();
+				} else {
+					window.addEventListener('load', idle, { once: true });
 				}
 			}
 
 			// Initialize on first load
-			initLightGallery();
+			scheduleIdleInit();
 
-			// Re-initialize after View Transitions navigation (cleanup is handled globally in BaseLayout)
-			document.addEventListener('astro:page-load', () => {
-				// Use requestIdleCallback for better performance, fallback to microtask
-				if ('requestIdleCallback' in window) {
-					requestIdleCallback(() => initLightGallery(), { timeout: 2000 });
-				} else {
-					Promise.resolve().then(() => initLightGallery());
-				}
-			});
+			// Re-initialize after View Transitions navigation (cleanup is handled globally in BaseLayout);
+			// this also fires on the initial load, where scheduleIdleInit keeps it behind the load event
+			document.addEventListener('astro:page-load', () => scheduleIdleInit());
+
+			// First-click safety net: a gallery image clicked before idle init would otherwise
+			// navigate to the raw image href. Init on demand and re-dispatch the click.
+			const GALLERY_ITEM_SELECTOR = 'astro-lightgallery a[data-lg-id], .lightgallery-component a[data-lg-id]';
+			document.addEventListener('click', (e) => {
+				const item = (e.target as Element | null)?.closest?.(GALLERY_ITEM_SELECTOR);
+				if (!item || item.hasAttribute('data-lg-bound')) return; // initialized clones handle their own clicks
+				e.preventDefault();
+				e.stopPropagation();
+				const index = Array.from(document.querySelectorAll(GALLERY_ITEM_SELECTOR)).indexOf(item);
+				initLightGallery().then(() => {
+					const items = document.querySelectorAll<HTMLElement>(GALLERY_ITEM_SELECTOR);
+					const target = items[Math.max(index, 0)];
+					// Only re-dispatch to items init has bound, otherwise we'd loop back here
+					if (target?.hasAttribute('data-lg-bound')) target.click();
+				});
+			}, true);
 		</script>
 		<script>
 			// Fix accessibility: Ensure scrollable code blocks have tabindex

@@ -1,4 +1,5 @@
-import { animate, inView, stagger } from 'motion'
+import { animate } from 'motion/mini'
+import { inView, stagger } from 'motion'
 
 const EASE_SETTLE: [number, number, number, number] = [0.22, 0.61, 0.36, 1]
 
