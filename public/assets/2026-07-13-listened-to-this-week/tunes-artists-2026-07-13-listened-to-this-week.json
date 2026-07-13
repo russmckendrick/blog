@@ -1,0 +1,31 @@
+{
+  "date": "2026-07-13",
+  "type": "artist",
+  "lane": null,
+  "lighting": null,
+  "shootDirection": "a greenhouse full of plants, members half-hidden behind leaves at different depths, soft diffused daylight",
+  "colourTreatment": "kodachrome",
+  "concept": "Greenhouse group portrait caught through layered foliage",
+  "scene": "Inside a humid Victorian greenhouse in late morning, the selected six are arranged loosely along a narrow path between dense ferns, monstera, and hanging vines, photographed at medium distance so some faces appear clearly while others are half-veiled by leaves at different depths. The long-haired man from 3 stands slightly elevated near the back under the curved glass roof in a dark coat and warm scarf, while the suited, goateed man from 2 leans near a terracotta planter in the midground, his patterned tie catching the warm Kodachrome reds. One of the severe older men from 6 is turned in three-quarter profile beside broad glossy leaves, his round glasses flashing soft window light; the spiky-haired man from 1 is closer to camera with folded arms, partly obscured by foreground fronds; the cap-wearing young man from 5 crouches low near the path edge, reaching through split leaves toward the lens; and the bald older man from 7 stands relaxed off to one side with a faint smile, half-hidden behind tall stems. Nobody is lined up evenly; their eyelines drift in different directions as if interrupted mid-conversation, and the diffused daylight through the greenhouse glass gives golden skin tones, rich plant greens, gentle contrast, and subtle grain for a warm, intimate photorealistic group portrait.",
+  "palette": [
+    "fern green",
+    "terracotta red",
+    "golden amber",
+    "charcoal black",
+    "weathered cream"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the 6 reference images into a single shared real-world scene. Scene: Inside a humid Victorian greenhouse in late morning, the selected six are arranged loosely along a narrow path between dense ferns, monstera, and hanging vines, photographed at medium distance so some faces appear clearly while others are half-veiled by leaves at different depths. The long-haired man from 3 stands slightly elevated near the back under the curved glass roof in a dark coat and warm scarf, while the suited, goateed man from 2 leans near a terracotta planter in the midground, his patterned tie catching the warm Kodachrome reds. One of the severe older men from 6 is turned in three-quarter profile beside broad glossy leaves, his round glasses flashing soft window light; the spiky-haired man from 1 is closer to camera with folded arms, partly obscured by foreground fronds; the cap-wearing young man from 5 crouches low near the path edge, reaching through split leaves toward the lens; and the bald older man from 7 stands relaxed off to one side with a faint smile, half-hidden behind tall stems. Nobody is lined up evenly; their eyelines drift in different directions as if interrupted mid-conversation, and the diffused daylight through the greenhouse glass gives golden skin tones, rich plant greens, gentle contrast, and subtle grain for a warm, intimate photorealistic group portrait. Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness. Do not invent anyone who is not in the reference photos. Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its one or two most recognisable members rather than every member. Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Vary posture, depth, and where people are looking - this is a caught moment, not a band-publicity lineup evenly spaced and facing the camera. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares. Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render. Colour treatment: warm Kodachrome film colour - rich reds, golden skin tones, gentle contrast and subtle grain, drawing on fern green, terracotta red, golden amber, charcoal black, weathered cream. Mood: intimate, curious, warm. Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, extra people, background crowd, duplicated faces, cloned faces, merged faces, blended faces, morphed features, distorted faces, deformed hands, extra limbs. Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Pink-Floyd.jpg",
+    "Scritti-Politti.jpg",
+    "Sparks.jpg",
+    "Radiohead.jpg",
+    "Jesus-Jones.jpg",
+    "Genesis.jpg"
+  ]
+}

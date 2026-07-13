@@ -1,0 +1,31 @@
+{
+  "date": "2026-07-13",
+  "type": "artist",
+  "lane": null,
+  "lighting": null,
+  "shootDirection": "a greenhouse full of plants, the group gathered close at a potting bench facing the camera, soft diffused daylight on their faces",
+  "colourTreatment": "kodachrome",
+  "concept": "Greenhouse potting-bench group portrait in soft daylight",
+  "scene": "Inside a humid glasshouse at mid-morning, the six selected figures are gathered tightly around a worn wooden potting bench crowded with terracotta pots, seed trays, trailing ivy, and damp soil, photographed close enough that every face fills the frame with crisp detail. The man from 5 leans in nearest the lens from the left front corner, one hand still half-extended over the bench as if caught mid-gesture, while the suited, goateed man from 2 stands just behind him with his jacket slightly open and one elbow resting on the tabletop. The older man with round glasses from 6 is turned in three-quarter profile near center, studying a small potted fern while his partner from the same reference looks up calmly toward the camera from just behind his shoulder. The long-haired man from 3 in a dark coat and scarf is set a little farther back amid tall leaves and hanging plants, giving the frame height and a romantic silhouette, while the bald man from 7, in a plain dark tee, stands close on the right with an easy smile, shoulder nearly touching the younger dark-haired man from 1 who folds into the group at the bench edge. Nobody is arranged in a flat lineup; shoulders overlap, hands rest among pots and stems, and a few gazes drift between each other and the camera so the image feels like a real shared pause in conversation. Soft diffused daylight filters through the greenhouse roof and fogged panes, wrapping their faces in warm Kodachrome color with rich reds from clay pots and scarves, golden skin tones, gentle contrast, and subtle grain.",
+  "palette": [
+    "terracotta red",
+    "leaf green",
+    "golden honey",
+    "charcoal black",
+    "weathered wood"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the 6 reference images into a single shared real-world scene. Scene: Inside a humid glasshouse at mid-morning, the six selected figures are gathered tightly around a worn wooden potting bench crowded with terracotta pots, seed trays, trailing ivy, and damp soil, photographed close enough that every face fills the frame with crisp detail. The man from 5 leans in nearest the lens from the left front corner, one hand still half-extended over the bench as if caught mid-gesture, while the suited, goateed man from 2 stands just behind him with his jacket slightly open and one elbow resting on the tabletop. The older man with round glasses from 6 is turned in three-quarter profile near center, studying a small potted fern while his partner from the same reference looks up calmly toward the camera from just behind his shoulder. The long-haired man from 3 in a dark coat and scarf is set a little farther back amid tall leaves and hanging plants, giving the frame height and a romantic silhouette, while the bald man from 7, in a plain dark tee, stands close on the right with an easy smile, shoulder nearly touching the younger dark-haired man from 1 who folds into the group at the bench edge. Nobody is arranged in a flat lineup; shoulders overlap, hands rest among pots and stems, and a few gazes drift between each other and the camera so the image feels like a real shared pause in conversation. Soft diffused daylight filters through the greenhouse roof and fogged panes, wrapping their faces in warm Kodachrome color with rich reds from clay pots and scarves, golden skin tones, gentle contrast, and subtle grain. Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness exactly as shown. Do not invent anyone who is not in the reference photos. Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its single most recognisable member rather than every member. Frame the group tightly - close or medium-close - so every face is large in the frame, sharp, and richly detailed, never small or distant. Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Vary posture, depth, and where people are looking - this is a caught moment, not a band-publicity lineup evenly spaced and facing the camera. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares. Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render. Colour treatment: warm Kodachrome film colour - rich reds, golden skin tones, gentle contrast and subtle grain, drawing on terracotta red, leaf green, golden honey, charcoal black, weathered wood. Mood: intimate, thoughtful, quietly charismatic. Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, extra people, background crowd, duplicated faces, cloned faces, merged faces, blended faces, morphed features, distorted faces, deformed hands, extra limbs. Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Jesus-Jones.jpg",
+    "Scritti-Politti.jpg",
+    "Sparks.jpg",
+    "Pink-Floyd.jpg",
+    "Genesis.jpg",
+    "Radiohead.jpg"
+  ]
+}

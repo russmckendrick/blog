@@ -14,6 +14,8 @@ import {
 } from './fal-tunes-cover.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { getBackend, BACKENDS } from './lib/image-backends/index.js'
+import { MS_PER_WEEK, pickShootDirection, pickColourTreatment } from './lib/tunes-lanes.js'
+import { appendHistory, recentConcepts, writeSidecar } from './lib/tunes-image-history.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -37,10 +39,46 @@ async function resolveBackend(explicit) {
   }
 
   const backend = getBackend(requested)
-  if (backend) return backend
+  if (backend && (backend.maxInputImages ?? 1) > 1) return backend
 
-  console.warn(`  Unknown image backend "${requested}"; falling back to ${DEFAULT_BACKEND}`)
+  if (backend) {
+    console.warn(`  Backend "${backend.id}" only accepts one input image and cannot compose a group; falling back to ${DEFAULT_BACKEND}`)
+  } else {
+    console.warn(`  Unknown image backend "${requested}"; falling back to ${DEFAULT_BACKEND}`)
+  }
   return BACKENDS[DEFAULT_BACKEND]
+}
+
+async function resolveHistorySize() {
+  try {
+    const config = new ConfigLoader()
+    await config.load()
+    return config.getCoverHistorySize()
+  } catch {
+    return 8
+  }
+}
+
+// Resolve how many artists to cast (featureCount) and how many candidates to upload.
+// Precedence: env -> explicit option -> tunes-config.yaml -> code default. The config tier
+// matters: the weekly generator passes options explicitly, but the regenerate harness and
+// direct CLI runs do not, and they must still honour settings.artist_portrait_inputs.
+async function resolveCastCounts(options) {
+  let configInputs
+  let configCandidates
+  try {
+    const config = new ConfigLoader()
+    await config.load()
+    configInputs = config.getArtistPortraitInputs()
+    configCandidates = config.getArtistPortraitCandidates()
+  } catch {
+    // fall through to code defaults
+  }
+
+  return {
+    featureCount: Number(process.env.TUNES_ARTIST_PORTRAIT_INPUTS || options.inputs || configInputs || 6),
+    candidateCount: Number(process.env.TUNES_ARTIST_PORTRAIT_CANDIDATES || options.candidates || configCandidates || 12)
+  }
 }
 
 // The artist photos are already real portraits of real people. We want one believable
@@ -61,44 +99,21 @@ const ARTIST_NEGATIVE_TERMS = [
   'extra limbs'
 ]
 
-// Left to its own devices the model keeps designing the same warm industrial-loft band
-// promo every week. We pick one of these realistic shoot directions by the week's seed and
-// hand it to the art director, so each week commits to a genuinely different kind of photo
-// (location, light, era, framing) while still reading as a believable group photograph.
-const SHOOT_DIRECTIONS = [
-  'a candid city-street editorial at golden hour, shot wide with long evening shadows',
-  'a sunlit rooftop overlooking a skyline, open sky behind the group, bright natural light',
-  'a backstage documentary moment before a show - corridors, flight cases, hard practical lighting',
-  'a daytime rehearsal room with amps and cables, flat honest daylight from a side window',
-  'inside a record shop surrounded by crates and racks of vinyl, warm interior light',
-  'a windswept coastal seafront under an overcast sky, muted natural light, sea behind them',
-  'a neon-lit night street, wet pavement reflections, mixed colourful artificial light',
-  'a minimal high-key studio against a clean white background, soft even light, modern fashion-editorial framing',
-  '1970s film-grain interior with wood panelling and warm tungsten light, vintage styling',
-  'a glass greenhouse or conservatory full of plants, soft diffused daylight, green tones',
-  'a warehouse performance stage lit by coloured concert lighting, atmospheric haze',
-  'a park or woodland clearing in flat green daylight, relaxed outdoor framing',
-  'a retro diner or cafe booth, large windows, warm afternoon light spilling across the table',
-  'a graffiti-covered back alley, gritty urban texture, directional daylight'
-]
-
-const MS_PER_WEEK = 604800000
-
-// The seed is the post date as epoch-milliseconds. Weekly post dates are exactly one
-// MS_PER_WEEK apart, and MS_PER_WEEK is divisible by 14, so a plain `seed % length` maps
-// EVERY week to the same scene (they all share the same residue). Bucketing by
-// weeks-since-epoch instead advances the index by one each week, so the direction cycles
-// through the whole list. Small non-timestamp seeds (e.g. a CLI --seed for testing) fall
-// back to a direct modulo so they still vary.
-function pickShootDirection(seed) {
-  const value = Math.abs(Math.trunc(Number.isFinite(seed) ? seed : 0))
-  const bucket = value >= MS_PER_WEEK ? Math.floor(value / MS_PER_WEEK) : value
-  return SHOOT_DIRECTIONS[bucket % SHOOT_DIRECTIONS.length]
-}
-
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
   : null
+
+// The portrait PNG lives in public/assets/, which Astro deploys verbatim - a sidecar next
+// to it would publish the run metadata (prompts, casting inputs) at a live URL. Mirror it
+// into src/assets/<same subpath> instead, beside the cover's sidecar; outputs anywhere else
+// keep the sidecar alongside the image.
+function sidecarTargetFor(outputPath) {
+  const publicAssets = path.join(PROJECT_ROOT, 'public', 'assets') + path.sep
+  if (outputPath.startsWith(publicAssets)) {
+    return path.join(PROJECT_ROOT, 'src', 'assets', outputPath.slice(publicAssets.length))
+  }
+  return outputPath
+}
 
 function buildSourceReferences(imagePaths) {
   return imagePaths.map((imagePath, index) => ({
@@ -154,6 +169,12 @@ function normalizeArtistDescriptions(rawArtists = [], sourceReferences = []) {
   }))
 }
 
+function firstSentence(text) {
+  const trimmed = String(text || '').trim()
+  const match = trimmed.match(/^[^.!?]+[.!?]?/)
+  return (match ? match[0] : trimmed).trim()
+}
+
 function normalizeArtistBrief(rawBrief, sourceReferences = [], varietyHint = '') {
   const fallbackScene = varietyHint
     ? `the group photographed together in ${varietyHint}, each artist in their own everyday stage-or-street style`
@@ -164,27 +185,29 @@ function normalizeArtistBrief(rawBrief, sourceReferences = [], varietyHint = '')
     ? [...new Set(rawSelection.map(item => Number(item?.source ?? item)).filter(n => Number.isInteger(n) && n > 0))]
     : []
 
+  const scene = String(
+    rawBrief?.scene ||
+    rawBrief?.setting ||
+    fallbackScene
+  ).trim()
+
   return {
     artists: normalizeArtistDescriptions(rawBrief?.artists || rawBrief?.people, sourceReferences),
     selection,
-    scene: String(
-      rawBrief?.scene ||
-      rawBrief?.setting ||
-      rawBrief?.concept ||
-      fallbackScene
-    ).trim(),
+    scene,
+    concept: String(rawBrief?.concept || '').trim() || firstSentence(scene),
     palette: Array.isArray(rawBrief?.palette)
       ? rawBrief.palette.map(item => String(item).trim()).filter(Boolean).slice(0, 5)
       : [],
-    mood: String(rawBrief?.mood || 'relaxed, confident, music-led, with bright saturated colour').trim()
+    mood: String(rawBrief?.mood || 'relaxed, confident, music-led').trim()
   }
 }
 
 function buildFallbackArtistBrief(sourceReferences, varietyHint = '') {
-  return normalizeArtistBrief({ palette: [], mood: 'relaxed, confident, music-led, with bright saturated colour' }, sourceReferences, varietyHint)
+  return normalizeArtistBrief({ palette: [], mood: 'relaxed, confident, music-led' }, sourceReferences, varietyHint)
 }
 
-async function createArtistBrief({ imageUrls, sourceReferences, debug, varietyHint = '', featureCount = 6 }) {
+async function createArtistBrief({ imageUrls, sourceReferences, debug, varietyHint = '', featureCount = 6, colourTreatment = null, avoidConcepts = [] }) {
   if (!openai) {
     if (debug) {
       console.log('  No OPENAI_API_KEY found; using deterministic artist brief')
@@ -196,14 +219,25 @@ async function createArtistBrief({ imageUrls, sourceReferences, debug, varietyHi
     ? `This week, lean into this shoot direction and commit to it fully: ${varietyHint}. Adapt it so it suits this particular group, but do not fall back to a generic studio or industrial-loft band promo.`
     : 'Pick a fresh, specific kind of shoot - vary the location type, era, time of day, lighting, and framing. Avoid defaulting to a generic studio or industrial-loft band promo.'
 
+  const colourLine = colourTreatment
+    ? `Colour treatment for the week: ${colourTreatment.direction}. Author the scene to suit it.`
+    : ''
+
+  const avoidBlock = avoidConcepts.length > 0
+    ? `These shoot concepts were used in recent weeks and must NOT be repeated - choose a different location and a different kind of shot:\n${avoidConcepts.map(concept => `- ${concept}`).join('\n')}`
+    : ''
+
   const instructions = `You are a portrait photographer's art director and casting director planning ONE group photograph for a music blog.
 You will receive ${imageUrls.length} numbered reference photos; each shows one musical act (a solo artist or a band). Work in three steps and return only valid JSON.
 Step 1 - read each photo: for EACH reference give a SHORT one-sentence description of the recognisable people in it - approximate age, build, skin tone, hair, facial hair, glasses, and wardrobe vibe. Describe only what is visible. Never invent identities and never mention names or text.
-Step 2 - cast the shoot: choose the most visually interesting and varied people to actually feature, so the final photo is an intimate, well-composed group of about ${featureCount} people - NOT a crowd. Strongly favour solo artists and single striking individuals; where you do pick a band, mentally feature only its one or two most recognisable members. Return the chosen reference numbers in "selection" (about ${featureCount} of them, in the order they should read across the frame).
+Step 2 - cast the shoot: choose the most visually interesting and varied people to actually feature, so the final photo is an intimate, well-composed group of exactly ${featureCount} people - NOT a crowd. Strongly favour solo artists and single striking individuals; where you do pick a band, mentally feature only its single most recognisable member. Return the chosen reference numbers in "selection" (exactly ${featureCount} of them, in the order they should read across the frame).
 Step 3 - author the shoot: write ONE vivid paragraph describing a single shared real-world scene where ONLY the selected people are photographed together - same place, same light, same moment, like a real posed or candid group photo, not cut out and pasted side by side. ${directionLine} Cover the location, framing, time of day, lighting, and how the group is styled. Keep the cast small and uncrowded.
+Never design a band-publicity lineup of people evenly spaced and all facing the camera - vary posture, depth, and attention so the photo reads as a real caught moment.
+${avoidBlock}
 The final image is a real PHOTOREALISTIC photograph. Do not describe it as an illustration, painting, or render.
-Return JSON exactly as: {"artists":[{"source":1,"description":"string"}],"selection":[1,2],"scene":"string","palette":["string"],"mood":"string"}.
-"selection" is the reference numbers you cast (about ${featureCount}). "scene" is a vivid paragraph describing the photograph of just those people. "palette" is 3-5 colours, pushed bright and saturated - favour vivid, luminous colour over muted or washed-out tones. "mood" is the emotional tone.`
+${colourLine}
+Return JSON exactly as: {"artists":[{"source":1,"description":"string"}],"selection":[1,2],"scene":"string","concept":"string","palette":["string"],"mood":"string"}.
+"selection" is the reference numbers you cast (exactly ${featureCount}). "scene" is a vivid paragraph describing the photograph of just those people, framed close enough that every face is large, sharp, and detailed. "concept" is one line of at most 15 words naming the location and the kind of shot. "palette" is 3-5 colours suited to the colour treatment. "mood" is the emotional tone.`
 
   try {
     const response = await openai.responses.create({
@@ -216,7 +250,7 @@ Return JSON exactly as: {"artists":[{"source":1,"description":"string"}],"select
           content: [
             {
               type: 'input_text',
-              text: `Return JSON only. There are ${imageUrls.length} reference photos. Describe each, cast about ${featureCount} of the most interesting people into "selection", then author one cohesive scene featuring only those selected people.`
+              text: `Return JSON only. There are ${imageUrls.length} reference photos. Describe each, cast exactly ${featureCount} of the most interesting people into "selection", then author one cohesive scene featuring only those selected people.`
             },
             ...imageUrls.map(url => ({
               type: 'input_image',
@@ -244,22 +278,30 @@ Return JSON exactly as: {"artists":[{"source":1,"description":"string"}],"select
   }
 }
 
-function buildArtistPrompt(brief, sourceImageCount) {
+function buildArtistPrompt(brief, sourceImageCount, colourTreatment = null) {
   const avoid = ARTIST_NEGATIVE_TERMS.join(', ')
+
+  // The colour treatment replaces the old fixed "bright, vivid, richly saturated" clause so
+  // a black-and-white or pastel week is not simultaneously told to be punchy and saturated.
+  const includePalette = brief.palette.length > 0 && colourTreatment?.id !== 'bw-filmgrain'
+  const colourLine = colourTreatment
+    ? `Colour treatment: ${colourTreatment.direction}${includePalette ? `, drawing on ${brief.palette.join(', ')}` : ''}.`
+    : (brief.palette.length > 0 ? `Colour direction: ${brief.palette.join(', ')}.` : '')
 
   return [
     `Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the ${sourceImageCount} reference images into a single shared real-world scene.`,
     `Scene: ${brief.scene}`,
-    'Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness. Do not invent anyone who is not in the reference photos.',
-    'Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its one or two most recognisable members rather than every member.',
-    'Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares.',
+    'Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness exactly as shown. Do not invent anyone who is not in the reference photos.',
+    'Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its single most recognisable member rather than every member.',
+    'Frame the group tightly - close or medium-close - so every face is large in the frame, sharp, and richly detailed, never small or distant.',
+    'Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Vary posture, depth, and where people are looking - this is a caught moment, not a band-publicity lineup evenly spaced and facing the camera. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares.',
     'Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render.',
-    brief.palette.length > 0 ? `Colour direction: ${brief.palette.join(', ')} - rendered bright, vivid, and richly saturated with luminous highlights and punchy contrast, never muted, dull, or washed out.` : '',
+    colourLine,
     brief.mood ? `Mood: ${brief.mood}.` : '',
     'Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces.',
     'Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image.',
     `Avoid: ${avoid}.`,
-    'Photorealistic, sharp, high quality, flattering, vibrant and colour-rich, with real depth and a strong sense of place.'
+    'Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.'
   ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
 }
 
@@ -268,7 +310,8 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
     width = 1400,
     height = 800,
     seed = Date.now(),
-    debug = process.env.DEBUG_COLLAGE === '1'
+    debug = process.env.DEBUG_COLLAGE === '1',
+    recordHistory = false
   } = options
 
   const falKey = process.env.FAL_KEY
@@ -277,11 +320,15 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
   }
   fal.config({ credentials: falKey })
 
-  const featureCount = Number(process.env.TUNES_ARTIST_PORTRAIT_INPUTS || options.inputs || 6)
-  const candidateCount = Number(process.env.TUNES_ARTIST_PORTRAIT_CANDIDATES || options.candidates || 12)
+  const { featureCount, candidateCount } = await resolveCastCounts(options)
   const varietyHint = pickShootDirection(seed)
+  const colourTreatment = pickColourTreatment(seed)
+  const historySize = await resolveHistorySize()
+  const avoidConcepts = await recentConcepts('artist', historySize)
   if (debug) {
     console.log(`  Lean into this direction: ${varietyHint}`)
+    console.log(`  Colour treatment: ${colourTreatment.id} (${colourTreatment.direction})`)
+    if (avoidConcepts.length > 0) console.log(`  Avoiding recent concepts: ${avoidConcepts.join(' | ')}`)
   }
 
   // De-duplicate, keep play-rank order.
@@ -306,13 +353,21 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
   // this keeps the group small and stops it crowding into a band-photo of everyone.
   const candidatePaths = uniquePaths.slice(0, Math.max(1, candidateCount))
   if (debug) {
-    console.log(`  Casting from ${candidatePaths.length} candidate photo(s); featuring about ${featureCount}`)
+    console.log(`  Casting from ${candidatePaths.length} candidate photo(s); featuring exactly ${featureCount}`)
     console.log(`  Image backend: ${backend.label} (${backend.id})`)
   }
 
   const candidateUrls = await uploadArtistImages(candidatePaths, debug)
   const sourceReferences = buildSourceReferences(candidatePaths)
-  const brief = await createArtistBrief({ imageUrls: candidateUrls, sourceReferences, debug, varietyHint, featureCount })
+  const brief = await createArtistBrief({
+    imageUrls: candidateUrls,
+    sourceReferences,
+    debug,
+    varietyHint,
+    featureCount,
+    colourTreatment,
+    avoidConcepts
+  })
 
   // Resolve the cast: map the brief's selected reference numbers back to candidates, cap at
   // featureCount, and fall back to the top play-ranked candidates if nothing usable came back.
@@ -348,7 +403,7 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
       }
 
       const imageUrls = attemptCast.map(item => item.url)
-      const prompt = buildArtistPrompt(brief, imageUrls.length)
+      const prompt = buildArtistPrompt(brief, imageUrls.length, colourTreatment)
 
       if (debug) {
         console.log(`  Prompt: ${prompt}`)
@@ -361,12 +416,42 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
       console.log(`    Full:  ${saved.outputPath}`)
       console.log(`    Small: ${saved.smallOutputPath}`)
 
+      const runRecord = {
+        date: options.dateLabel || (Number.isFinite(seed) && seed >= MS_PER_WEEK ? new Date(seed).toISOString().slice(0, 10) : ''),
+        type: 'artist',
+        lane: null,
+        lighting: null,
+        shootDirection: varietyHint,
+        colourTreatment: colourTreatment.id,
+        concept: brief.concept,
+        scene: brief.scene,
+        palette: brief.palette,
+        composeBackend: backend.id,
+        restyleBackend: null,
+        restyled: false,
+        model,
+        prompt,
+        restylePrompt: null,
+        inputs: attemptCast.map(item => path.basename(item.path))
+      }
+
+      try {
+        const sidecarPath = await writeSidecar(sidecarTargetFor(outputPath), runRecord)
+        if (debug) console.log(`  Wrote run sidecar: ${sidecarPath}`)
+        if (recordHistory) await appendHistory(runRecord)
+      } catch (error) {
+        console.warn(`  Could not record portrait metadata: ${error.message}`)
+      }
+
       return {
         ...saved,
         selectedImages: attemptCast.map(item => item.path),
         imageUrl,
         model,
         backend: backend.id,
+        shootDirection: varietyHint,
+        colourTreatment: colourTreatment.id,
+        concept: brief.concept,
         mode: 'artist_portrait',
         prompt
       }
@@ -392,6 +477,7 @@ function parseArgs(args) {
     width: 1400,
     height: 800,
     seed: null,
+    record: false,
     debug: false,
     help: false
   }
@@ -399,6 +485,7 @@ function parseArgs(args) {
   for (const arg of args) {
     if (arg === '--help' || arg === '-h') options.help = true
     else if (arg === '--debug' || arg === '-d') options.debug = true
+    else if (arg === '--record') options.record = true
     else if (arg.startsWith('--input=')) options.input = arg.slice('--input='.length)
     else if (arg.startsWith('--output=')) options.output = arg.slice('--output='.length)
     else if (arg.startsWith('--width=')) options.width = Number(arg.slice('--width='.length))
@@ -444,10 +531,12 @@ Usage:
   node scripts/fal-tunes-artists.js <artists-folder> <portrait.png> [options]
 
 Options:
-  --output=<path>     Output PNG path (also writes <name>-small.png)
+  --output=<path>     Output PNG path (also writes <name>-small.png and <name>.json)
   --width=<px>        Small output width (default: 1400)
   --height=<px>       Small output height (default: 800)
   --seed=<number>     Deterministic seed
+  --record            Append this run to scripts/.tunes-image-history.json (the
+                      weekly generator records automatically; manual runs opt in)
   --debug, -d         Verbose output
   --help, -h          Show this help
 
@@ -455,8 +544,9 @@ Notes:
   - Requires FAL_KEY.
   - Uses OPENAI_API_KEY when available to describe each artist, cast the most interesting
     subset, and author the full scene for that week's photo. Falls back without it.
-  - Each week leans into a different shoot direction (location, light, era, framing),
-    chosen by the seed, so the portraits vary week to week.
+  - Each week leans into a different shoot grammar (candid, walking, silhouette, huddle -
+    not just a new backdrop) and a different colour treatment (film stocks, pastel, b&w),
+    both chosen by the seed; recent concepts are passed as do-not-repeat instructions.
   - Uploads the top TUNES_ARTIST_PORTRAIT_CANDIDATES artists (default 12) as casting
     options, then features about TUNES_ARTIST_PORTRAIT_INPUTS of them (default 6) - only
     the cast is rendered, keeping the group uncrowded.
@@ -492,6 +582,7 @@ async function main() {
     width: options.width,
     height: options.height,
     seed: options.seed || Date.now(),
+    recordHistory: options.record,
     debug: options.debug
   })
 }

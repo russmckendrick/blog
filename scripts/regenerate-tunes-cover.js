@@ -16,8 +16,9 @@ function parseArgs(args) {
     week: null,
     type: null,
     lane: null,
-    style: null,
     output: null,
+    restyle: true,
+    record: false,
     debug: false,
     help: false
   }
@@ -27,10 +28,13 @@ function parseArgs(args) {
     else if (arg === '--help' || arg === '-h') options.help = true
     else if (arg === '--artist') options.type = 'artist'
     else if (arg === '--header') options.type = 'header'
+    else if (arg === '--no-restyle') options.restyle = false
+    else if (arg === '--record') options.record = true
     else if (arg.startsWith('--type=')) options.type = arg.slice('--type='.length)
     else if (arg.startsWith('--week=')) options.week = arg.slice('--week='.length)
     else if (arg.startsWith('--lane=')) options.lane = arg.slice('--lane='.length)
-    else if (arg.startsWith('--style=')) options.style = arg.slice('--style='.length)
+    // --style is the historical alias for --lane.
+    else if (arg.startsWith('--style=')) options.lane = arg.slice('--style='.length)
     else if (arg.startsWith('--output=')) options.output = arg.slice('--output='.length)
     else throw new Error(`Unknown option: ${arg}`)
   }
@@ -107,11 +111,16 @@ Options:
   --header            Shorthand for --type=header
   --artist            Shorthand for --type=artist
   --week=<date>       Week date, e.g. 2026-04-20 (interactive picker if omitted)
+  --lane=<id>         Header only: force a creative-direction lane instead of the
+                      week's rotation (--style is an alias). See
+                      \`node scripts/fal-tunes-cover.js --list-lanes\` for ids.
+  --no-restyle        Header only: skip the lane's optional restyle stage
+  --record            Append the run to scripts/.tunes-image-history.json (off by
+                      default here so regenerating old weeks does not pollute the
+                      do-not-repeat memory)
   --output=<path>     Optional output PNG path; also writes <name>-small.png
   --debug, -d         Enable debug output
   --help, -h          Show this help message
-
-  --lane / --style are deprecated and ignored (kept so older commands still run).
 
 Outputs (default):
   header  -> src/assets/<week>/tunes-cover-<week>.png      (+ -small, hero)
@@ -119,6 +128,7 @@ Outputs (default):
 
 Examples:
   node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --debug
+  node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --lane=risograph --debug
   node scripts/regenerate-tunes-cover.js --week=2026-04-20 --output=/tmp/tunes-test.png
 `)
 }
@@ -294,15 +304,16 @@ async function main() {
   }
 
   const dateStr = extractDate(selectedWeek)
-  if (args.lane || args.style) {
-    console.log('Note: --lane / --style are deprecated and ignored')
-  }
 
   const outputDir = path.join(rootDir, 'src', 'assets', selectedWeek)
   const postContext = await readPostContext(dateStr)
   const dateSeed = new Date(dateStr).getTime()
 
   if (imageType === 'artist') {
+    if (args.lane) {
+      console.error('--lane only applies to --type=header (the artist portrait has no lanes)')
+      process.exit(1)
+    }
     const artistsFolder = path.join(rootDir, 'public', 'assets', selectedWeek, 'artists')
     // The portrait is a body image referenced by a /assets/... public path, so it lives in
     // public/assets/{week}/ (not src/assets, where the hero cover lives).
@@ -333,6 +344,8 @@ async function main() {
       seed: dateSeed,
       width: 1400,
       height: 800,
+      recordHistory: args.record,
+      dateLabel: dateStr,
       debug: args.debug
     })
 
@@ -370,6 +383,10 @@ async function main() {
     seed: dateSeed,
     width: 1400,
     height: 800,
+    lane: args.lane,
+    restyle: args.restyle,
+    recordHistory: args.record,
+    dateLabel: dateStr,
     debug: args.debug
   })
 

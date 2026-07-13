@@ -22,6 +22,19 @@ settings:
   # overrides this.
   cover_fallback_backend: nano-banana
 
+  # Creative-direction lanes for the weekly cover rotation. "all" rotates through every
+  # lane defined in scripts/lib/tunes-lanes.js; set a YAML list of lane ids to restrict it
+  # (run `node scripts/fal-tunes-cover.js --list-lanes` for the catalogue).
+  cover_lanes: all
+
+  # Whether print lanes may run their optional second restyle stage (Recraft / Ideogram
+  # via fal) after composing. "off" ships the composed image as-is everywhere.
+  cover_restyle: on
+
+  # How many recent weekly concepts are fed back to the art director as do-not-repeat
+  # instructions (from scripts/.tunes-image-history.json).
+  cover_history_size: 8
+
   # Image backend for the weekly artist group portrait: gpt-image-2 | nano-banana
   # (unknown/missing values fall back to nano-banana)
   artist_portrait_backend: gpt-image-2
@@ -32,9 +45,10 @@ settings:
   artist_portrait_candidates: 12
 
   # How many of the candidates to feature in the rendered portrait (the cast size the AI
-  # selects down to) - only the cast is sent to the image model, keeping it uncrowded
+  # selects down to) - only the cast is sent to the image model. Kept small: with more
+  # reference faces the model splits its attention and likenesses drift
   # (env TUNES_ARTIST_PORTRAIT_INPUTS overrides this when set)
-  artist_portrait_inputs: 8
+  artist_portrait_inputs: 4
 
 # =============================================================================
 # CLASSIFICATION CONFIGURATION

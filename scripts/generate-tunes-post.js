@@ -154,11 +154,15 @@ async function main() {
     // Build one cohesive scene from recognisable elements across the week's album covers.
     console.log('Generating AI cover scene...')
     const dateSeed = new Date(dateStr).getTime()
+    // The compose backend now comes from the week's lane (falling back to the config
+    // defaults inside the generator), so no backend is forced here. Testing runs stay out
+    // of the do-not-repeat history.
     await createFALTunesCover(albumImagePaths, coverOutputPath, {
       seed: dateSeed,
       width: 1400,
       height: 800,
-      backend: configLoader.getCoverBackend(),
+      recordHistory: !testingMode,
+      dateLabel: dateStr,
       debug: debugMode
     })
 
@@ -198,6 +202,8 @@ async function main() {
           backend: configLoader.getArtistPortraitBackend(),
           inputs: configLoader.getArtistPortraitInputs(),
           candidates: configLoader.getArtistPortraitCandidates(),
+          recordHistory: !testingMode,
+          dateLabel: dateStr,
           debug: debugMode
         })
         artistPortrait = `/assets/${dateStr}-listened-to-this-week/tunes-artists-${dateStr}-listened-to-this-week.png`

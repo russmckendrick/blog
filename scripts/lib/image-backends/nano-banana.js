@@ -6,6 +6,9 @@ import { isContentPolicyViolation } from '../fal-content-policy.js'
 export const id = 'nano-banana'
 export const label = 'Nano Banana'
 
+// nano-banana-2/edit accepts up to ~14 reference images.
+export const maxInputImages = 14
+
 function runModel(modelName, input, debug) {
   return fal.subscribe(modelName, {
     input,

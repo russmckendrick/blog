@@ -6,6 +6,9 @@ import { fal } from '@fal-ai/client'
 export const id = 'gpt-image-2'
 export const label = 'GPT Image 2'
 
+// gpt-image-2/edit accepts multiple reference images.
+export const maxInputImages = 16
+
 // Default to a high-resolution 16:9 size (both dimensions are multiples of 16, max edge < 3840,
 // total pixels within the model's 655,360-8,294,400 range).
 const DEFAULT_IMAGE_SIZE = { width: 2560, height: 1440 }

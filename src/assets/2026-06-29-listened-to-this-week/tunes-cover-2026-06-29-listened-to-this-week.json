@@ -1,0 +1,33 @@
+{
+  "date": "2026-06-29",
+  "type": "cover",
+  "lane": "neon-noir",
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Neon castle-diner alley where memory, rain, and symbols haunt the midnight city",
+  "scene": "From a low curbside angle in a rain-slick neon city alley, a dark out-of-focus foreground shape resembles the curved snout of a reptilian gargoyle jutting in from the bottom edge, its wet wrinkled surface catching stray blue light. In the clear midground, an adult waitress in a retro orange uniform leans from a rounded late-night diner hatch built into the ground floor of a crumbling ivy-draped stone facade that feels like a castle ruin absorbed into the city; she lifts a tray with a glowing glass of orange drink while facing a lone adult in a black suit beneath skewed window frames, his face partly shadowed and his head haloed by steam, projected paint-like smoke, and fluttering paper scraps pinned by rain. Across the wall behind them, a huge sepia photomural of layered eyes and faces merges with a heraldic shield sign whose rain-streaked quadrant sparkles in neon, flanked by antenna-like metal fixtures. Reflected in the puddles, and faintly in a dark shop window, stands an ethereal adult woman in a long white dress with a blurred double image, as if caught by a slow shutter. In the background, the street opens toward an elevated overlook where the city grid of lights recedes into darkness, while above the rooftops a bright clouded glow silhouettes a small hovering shape like a bird or craft. Everything is soaked, reflective, and unified by electric blue, hot pink, and sodium amber light, turning every borrowed motif into a believable nocturnal photograph.",
+  "palette": [
+    "electric blue",
+    "neon pink",
+    "sodium amber",
+    "sepia bronze",
+    "deep black"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one cinematic neon-noir night photograph - wet streets, glowing wordless signs, deep shadow and electric colour. The image is a 16:9 music blog header. Scene: From a low curbside angle in a rain-slick neon city alley, a dark out-of-focus foreground shape resembles the curved snout of a reptilian gargoyle jutting in from the bottom edge, its wet wrinkled surface catching stray blue light. In the clear midground, an adult waitress in a retro orange uniform leans from a rounded late-night diner hatch built into the ground floor of a crumbling ivy-draped stone facade that feels like a castle ruin absorbed into the city; she lifts a tray with a glowing glass of orange drink while facing a lone adult in a black suit beneath skewed window frames, his face partly shadowed and his head haloed by steam, projected paint-like smoke, and fluttering paper scraps pinned by rain. Across the wall behind them, a huge sepia photomural of layered eyes and faces merges with a heraldic shield sign whose rain-streaked quadrant sparkles in neon, flanked by antenna-like metal fixtures. Reflected in the puddles, and faintly in a dark shop window, stands an ethereal adult woman in a long white dress with a blurred double image, as if caught by a slow shutter. In the background, the street opens toward an elevated overlook where the city grid of lights recedes into darkness, while above the rooftops a bright clouded glow silhouettes a small hovering shape like a bird or craft. Everything is soaked, reflective, and unified by electric blue, hot pink, and sodium amber light, turning every borrowed motif into a believable nocturnal photograph.. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: wrinkled reptilian eye and gaping head form as a wet gargoyle-like foreground shape; source 2: glowing aerial city grid beneath a bright cloud with a small black hovering silhouette; source 3: large layered face made from overlapping memory photographs as a wall mural; source 4: black-suited man beneath skewed windows with a smoke-splashed dissolving head effect; source 5: heraldic shield with rain lines and spark stars, flanked by antenna-like forms; source 6: retro waitress in orange uniform raising a tray with a glowing orange drink; source 7: ivy-covered stone castle ruin integrated into the street architecture; source 8: adult woman in a long white dress appearing as a blurred doubled reflection. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Reimagine each album motif as something real in the night city - a neon shape, a reflection in the wet street, a figure under a lamp, a lit shopfront display, a shadow thrown on brick. Composition: A low cinematic angle with layered depth: a dark foreground shape, a clear midground subject, and glowing colour behind. Colour direction: electric blue, neon pink, sodium amber, sepia bronze, deep black - saturated artificial colour - neon pinks, electric blues, sodium ambers - cutting through deep black shadow. Mood: haunting, cinematic, rain-soaked, nostalgic. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Complete-B-Sides.jpg",
+    "The-Last-Broadcast.jpg",
+    "Metropolis-Pt-2-Scenes-From-a-Memory.jpg",
+    "Everyone-Into-Position.jpg",
+    "Sparkle-in-the-Rain.jpg",
+    "Breakfast-in-America.jpg",
+    "The-Unforgettable-Fire.jpg",
+    "The-Ground-Above.jpg"
+  ]
+}

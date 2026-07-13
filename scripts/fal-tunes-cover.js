@@ -9,6 +9,15 @@ import { COVER_BLOCKLIST } from './tunes-cover-blocklist.js'
 import { isContentPolicyViolation } from './lib/fal-content-policy.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { getBackend, BACKENDS } from './lib/image-backends/index.js'
+import {
+  MS_PER_WEEK,
+  getLane,
+  listLanes,
+  pickLane,
+  pickLightingDirection,
+  pipelineStage
+} from './lib/tunes-lanes.js'
+import { appendHistory, recentConcepts, writeSidecar } from './lib/tunes-image-history.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -16,9 +25,10 @@ const PROJECT_ROOT = path.resolve(__dirname, '..')
 
 const DEFAULT_COVER_BACKEND = 'nano-banana'
 
-// Resolve the cover image backend: explicit option first, then the tunes-config.yaml switch
-// (settings.cover_backend), then the default. Unknown ids warn and fall back. The backends in
-// lib/image-backends/ are generic and shared with the artist portrait flow.
+// Resolve the cover compose backend: explicit option first, then the lane's compose stage,
+// then the tunes-config.yaml switch (settings.cover_backend), then the default. Unknown ids
+// warn and fall back, and single-image restyle backends are refused (composing needs the
+// week's full set of covers as references).
 async function resolveCoverBackend(explicit) {
   let requested = explicit
   if (!requested) {
@@ -32,19 +42,24 @@ async function resolveCoverBackend(explicit) {
   }
 
   const backend = getBackend(requested)
-  if (backend) return backend
+  if (backend && (backend.maxInputImages ?? 1) > 1) return backend
 
-  console.warn(`  Unknown image backend "${requested}"; falling back to ${DEFAULT_COVER_BACKEND}`)
+  if (backend) {
+    console.warn(`  Backend "${backend.id}" only accepts one input image and cannot compose; falling back to ${DEFAULT_COVER_BACKEND}`)
+  } else {
+    console.warn(`  Unknown image backend "${requested}"; falling back to ${DEFAULT_COVER_BACKEND}`)
+  }
   return BACKENDS[DEFAULT_COVER_BACKEND]
 }
 
 // Resolve the backend to switch to when the primary refuses on a content-policy violation.
-// Precedence: explicit option -> env (TUNES_COVER_FALLBACK_BACKEND) -> tunes-config.yaml
-// (settings.cover_fallback_backend) -> default (nano-banana, the more permissive backend, but
-// only when it isn't already the primary). "none"/"off"/"" disables the fallback. Returns the
-// backend object, or null when there is no usable fallback distinct from the primary.
-async function resolveCoverFallbackBackend(primaryBackend, explicit) {
-  let requested = explicit ?? process.env.TUNES_COVER_FALLBACK_BACKEND
+// Precedence: explicit option -> env (TUNES_COVER_FALLBACK_BACKEND) -> the lane's compose
+// stage -> tunes-config.yaml (settings.cover_fallback_backend) -> default (nano-banana, the
+// more permissive backend, but only when it isn't already the primary). "none"/"off"/""
+// disables the fallback. Returns the backend object, or null when there is no usable
+// fallback distinct from the primary.
+async function resolveCoverFallbackBackend(primaryBackend, explicit, laneFallback) {
+  let requested = explicit ?? process.env.TUNES_COVER_FALLBACK_BACKEND ?? laneFallback
   if (requested == null) {
     try {
       const config = new ConfigLoader()
@@ -68,13 +83,71 @@ async function resolveCoverFallbackBackend(primaryBackend, explicit) {
     console.warn(`  Unknown cover fallback backend "${requested}"; disabling fallback`)
     return null
   }
+  if ((backend.maxInputImages ?? 1) <= 1) {
+    console.warn(`  Cover fallback backend "${backend.id}" cannot compose multiple inputs; disabling fallback`)
+    return null
+  }
 
   return backend.id === primaryBackend.id ? null : backend
 }
 
-// We steer away from text, grid/montage layouts, and non-photographic styles. The
-// goal is one photorealistic scene, so illustration/painting looks are excluded too.
-const NEGATIVE_TERMS = [
+// Resolve the week's creative-direction lane. Precedence: explicit option (--lane / --style)
+// -> env TUNES_COVER_LANE -> deterministic weekly rotation over settings.cover_lanes (or all
+// lanes). "auto" means rotation and is collapsed at EACH tier - bulk-listen.js passes
+// --lane=auto by default, and the env var must still work behind it. An unknown explicit
+// lane is an error so a typo cannot silently change the look.
+async function resolveLane(explicit, seed) {
+  const isAuto = value => ['auto', 'rotate', 'rotation'].includes(String(value || '').trim().toLowerCase())
+  let requested = isAuto(explicit) ? null : explicit
+  if (!requested) requested = isAuto(process.env.TUNES_COVER_LANE) ? null : process.env.TUNES_COVER_LANE
+  if (requested) {
+    const lane = getLane(requested)
+    if (!lane) {
+      throw new Error(`Unknown lane "${requested}". Valid lanes: ${listLanes().map(item => item.id).join(', ')}`)
+    }
+    return lane
+  }
+
+  let laneIds = null
+  try {
+    const config = new ConfigLoader()
+    await config.load()
+    laneIds = config.getCoverLanes()
+  } catch {
+    laneIds = null
+  }
+
+  return pickLane(seed, { laneIds })
+}
+
+// Whether the lane's optional restyle stage runs. Precedence: explicit option (--no-restyle)
+// -> tunes-config.yaml settings.cover_restyle -> on.
+async function resolveRestyleEnabled(explicit) {
+  if (explicit === false) return false
+  try {
+    const config = new ConfigLoader()
+    await config.load()
+    return config.getCoverRestyleEnabled()
+  } catch {
+    return true
+  }
+}
+
+async function resolveHistorySize() {
+  try {
+    const config = new ConfigLoader()
+    await config.load()
+    return config.getCoverHistorySize()
+  } catch {
+    return 8
+  }
+}
+
+// Negative steers, split by concern so each lane bans the RIGHT media. Text and layout
+// negatives always apply; photo lanes ban illustration looks; print lanes ban photo/3D looks
+// instead (the old behaviour banned every non-photo medium globally, which is exactly why
+// months of covers converged on one photoreal formula).
+const TEXT_NEGATIVE_TERMS = [
   'readable text',
   'letters',
   'words',
@@ -83,12 +156,19 @@ const NEGATIVE_TERMS = [
   'titles',
   'logos',
   'watermarks',
-  'signage',
+  'signage'
+]
+
+const LAYOUT_NEGATIVE_TERMS = [
   'grid layout',
   'contact sheet',
   'evenly tiled squares',
-  'raw album-cover thumbnails',
-  'collage of separate panels',
+  'raw album-cover thumbnails'
+]
+
+const PANEL_COLLAGE_TERM = 'collage of separate panels'
+
+const ANTI_ILLUSTRATION_TERMS = [
   'illustration',
   'illustrated',
   'drawing',
@@ -101,33 +181,36 @@ const NEGATIVE_TERMS = [
   'flat graphic style'
 ]
 
-// Left to itself the art director almost always sets the unified scene at night - the source
-// sleeves skew dark and "cinematic/atmospheric" reads as nighttime to the model. We hand it a
-// deterministic time-of-day / lighting direction per week (mostly daylight, one night for
-// variety) so the headers stop converging on the same after-dark look. Mirrors the artist
-// portrait's SHOOT_DIRECTIONS approach.
-const LIGHTING_DIRECTIONS = [
-  'bright midday sunlight under a clear blue sky, crisp hard shadows and vivid daylight colour',
-  'warm golden-hour light just before sunset, long shadows and a glowing amber sidelight',
-  'soft bright overcast daylight, gentle even shadows and rich, true-to-life colour',
-  'fresh early-morning light with a low sun, clean cool highlights and long soft shadows',
-  'bright interior daylight pouring through large windows, airy and naturally lit',
-  'a vivid sunny afternoon with strong directional sun, saturated colour and sparkling highlights',
-  'deep blue-hour twilight just after sunset, a saturated blue sky with warm artificial lights starting to glow',
-  'dramatic stormlight with sun breaking through, bright shafts of light against dark cloud',
-  'a luminous neon-lit night with wet reflective surfaces and bold, saturated artificial colour'
+const ANTI_PHOTO_TERMS = [
+  'photorealistic photograph',
+  'DSLR photo',
+  '3D render',
+  'CGI',
+  'octane render',
+  'glossy 3D rendering',
+  'camera depth of field',
+  'lens bokeh',
+  'realistic skin texture'
 ]
 
-const MS_PER_WEEK = 604800000
+// Back-compat export: the artist portrait flow builds on the photo-lane set.
+const NEGATIVE_TERMS = [
+  ...TEXT_NEGATIVE_TERMS,
+  ...LAYOUT_NEGATIVE_TERMS,
+  PANEL_COLLAGE_TERM,
+  ...ANTI_ILLUSTRATION_TERMS
+]
 
-// Weekly post dates are exactly one MS_PER_WEEK apart, so bucketing the seed (the post date as
-// epoch-ms) by weeks-since-epoch advances the index by one each week and cycles through the
-// whole list. Small non-timestamp seeds (e.g. a CLI --seed for testing) fall back to a direct
-// modulo so they still vary. Matches pickShootDirection in fal-tunes-artists.js.
-function pickLightingDirection(seed) {
-  const value = Math.abs(Math.trunc(Number.isFinite(seed) ? seed : 0))
-  const bucket = value >= MS_PER_WEEK ? Math.floor(value / MS_PER_WEEK) : value
-  return LIGHTING_DIRECTIONS[bucket % LIGHTING_DIRECTIONS.length]
+function negativeTermsForLane(lane) {
+  const kindTerms = lane.kind === 'print' ? ANTI_PHOTO_TERMS : ANTI_ILLUSTRATION_TERMS
+  return [
+    ...TEXT_NEGATIVE_TERMS,
+    ...LAYOUT_NEGATIVE_TERMS,
+    ...(lane.collageMedium ? [] : [PANEL_COLLAGE_TERM]),
+    ...kindTerms,
+    ...(lane.negatives || []),
+    ...(lane.antiCliche || [])
+  ]
 }
 
 const openai = process.env.OPENAI_API_KEY
@@ -438,56 +521,82 @@ function normalizeElements(rawElements = [], sourceReferences = []) {
   }))
 }
 
+function firstSentence(text) {
+  const trimmed = String(text || '').trim()
+  const match = trimmed.match(/^[^.!?]+[.!?]?/)
+  return (match ? match[0] : trimmed).trim()
+}
+
 function normalizeBrief(rawBrief, sourceReferences = []) {
+  const scene = String(
+    rawBrief?.scene ||
+    'one cohesive, imaginative scene set in a single shared world that combines recognisable elements drawn from every uploaded album cover'
+  ).trim()
+
   return {
     covers: normalizeCoverDescriptions(rawBrief?.covers),
-    scene: String(
-      rawBrief?.scene ||
-      rawBrief?.concept ||
-      'one cohesive, imaginative scene set in a single shared world that combines recognisable elements drawn from every uploaded album cover'
-    ).trim(),
+    scene,
+    // The one-line concept is what gets remembered and fed back as a do-not-repeat next
+    // week, so it always exists even when the model omits it.
+    concept: String(rawBrief?.concept || '').trim() || firstSentence(scene),
     elements: normalizeElements(rawBrief?.elements || rawBrief?.source_elements, sourceReferences),
     palette: Array.isArray(rawBrief?.palette)
       ? rawBrief.palette.map(item => String(item).trim()).filter(Boolean).slice(0, 5)
       : [],
-    mood: String(rawBrief?.mood || 'imaginative, vivid, and music-led, with bright saturated colour').trim()
+    mood: String(rawBrief?.mood || 'imaginative and music-led').trim()
   }
 }
 
-function buildFallbackBrief(sourceReferences) {
+function buildFallbackBrief(sourceReferences, lane) {
   return normalizeBrief({
-    scene: 'one cohesive, imaginative scene set in a single shared world that combines recognisable elements drawn from every uploaded album cover, tied together by consistent light, atmosphere, and one art style',
+    scene: `one cohesive, imaginative scene rendered as ${lane.medium}, combining recognisable elements drawn from every uploaded album cover, tied together by one setting, one light, and one consistent treatment`,
+    concept: `${lane.label} weaving together the week's album motifs`,
     elements: sourceReferences.slice(0, 6).map(reference => ({
       source: reference.source,
       element: `a recognisable element from ${reference.album || reference.filename}`
     })),
     palette: [],
-    mood: 'imaginative, vivid, and music-led, with bright saturated colour'
+    mood: 'imaginative and music-led'
   }, sourceReferences)
 }
 
-async function createArtBrief({ imageUrls, sourceReferences, debug, lightingDirection = '' }) {
+async function createArtBrief({ imageUrls, sourceReferences, debug, lane, lightingDirection = '', avoidConcepts = [] }) {
   if (!openai) {
     if (debug) {
       console.log('  No OPENAI_API_KEY found; using deterministic art brief')
     }
-    return buildFallbackBrief(sourceReferences)
+    return buildFallbackBrief(sourceReferences, lane)
   }
 
-  const lightingLine = lightingDirection
-    ? `Set the scene in this specific lighting and time of day, and commit to it fully: ${lightingDirection}. Adapt it so it suits the scene, but do NOT default to a generic night-time setting unless this direction calls for it.`
-    : 'Vary the time of day and lighting; do not default to a generic night-time setting.'
+  // Photo lanes keep the original "make it photographable" flip; print lanes design motifs
+  // natively in the medium instead.
+  const motifLine = lane.kind === 'photo'
+    ? "Where a cover's motif is an illustration, painting, symbol, or graphic, reimagine it as a real, physical, photographable thing in the scene - a sculpture, prop, costume, set piece, projection, mural, printed poster, real person, animal, or object - so it stays recognisable while the whole frame still reads as a genuine photograph."
+    : lane.motifTreatment
 
-  const instructions = `You are a visual art director creating one original illustrated header image for a music blog.
+  const lightingLine = lane.lighting && lightingDirection
+    ? `Set the scene in this specific lighting and time of day, and commit to it fully: ${lightingDirection}. Adapt it so it suits the scene, but do NOT default to a generic night-time setting unless this direction calls for it.`
+    : ''
+
+  const avoidBlock = avoidConcepts.length > 0
+    ? `These concepts were used in recent weeks and must NOT be repeated - choose a different setting, a different central idea, and a different composition:\n${avoidConcepts.map(concept => `- ${concept}`).join('\n')}`
+    : ''
+
+  const instructions = `You are a visual art director creating one original header image for a music blog.
 You will receive several album covers as images. Work in two steps and return only valid JSON.
 Step 1 - read the artwork: look closely at EACH uploaded album cover and describe its concrete visual contents: the subjects, figures, creatures, objects, symbols, settings, art style, and dominant colours that are actually depicted. Ignore and never mention any text, lettering, titles, or logos printed on the covers.
-Step 2 - invent the scene: design ONE original, unique scene that weaves recognisable elements from ALL of the covers into a single cohesive world they could all plausibly share. The final image will be a PHOTOREALISTIC photograph, so imagine it as a real photographed scene: choose a believable physical setting, real-world lighting, and a clear camera viewpoint. Where a cover's motif is an illustration, painting, symbol, or graphic, reimagine it as a real, physical, photographable thing in the scene - a sculpture, prop, costume, set piece, projection, mural, printed poster, real person, animal, or object - so it stays recognisable while the whole frame still reads as a genuine photograph.
+Step 2 - invent the scene: design ONE original, unique scene that weaves recognisable elements from ALL of the covers into a single cohesive world they could all plausibly share. The final image will be ${lane.medium}. Design the scene natively in that medium and imagine every borrowed element the way that medium would render it. ${motifLine}
+Compose it as: ${lane.composition}
 ${lightingLine}
-Everything must feel connected by one environment, light, and story - not separate objects floating side by side, and never arranged as a grid, row, or panel of squares.
+${lane.collageMedium
+    ? 'Everything must feel like one deliberate page - fragments composed together with intent, unified by the paper, print texture, and palette - never arranged as a grid, row, or panel of squares.'
+    : 'Everything must feel connected by one environment, light, and story - not separate objects floating side by side, and never arranged as a grid, row, or panel of squares.'}
+Never design: ${(lane.antiCliche || []).join('; ')}.
+${avoidBlock}
 Keep it safe for an image generator: never depict or reconstruct children, infants, babies, or minors (recast any youthful figure as an adult, a mannequin, a statue, or an abstract shape); avoid gore, wounds, body horror, surgical or medical imagery, foetal or anatomical motifs, blank or milky eyes, distress, nudity, sexual content, weapons, and real-world hate or brand symbols. When a cover features any of these, reinterpret the motif abstractly - as a sculpture, silhouette, pattern, prop, or play of light - so it stays evocative without recreating the sensitive subject. Do not aim to recreate the exact likeness of any identifiable real person; suggest the look instead.
-Be imaginative and go bold; richly detailed and surprising scenes are welcome as long as everything reads as one connected, believable photograph. Lean into bold, bright lighting and rich, vivid, saturated colour - a luminous, high-energy frame rather than a muted, dim, or washed-out one - while still reading as a real photograph. Do not describe the scene as an illustration, painting, drawing, cartoon, or mural - describe it as a real photograph.
-Return JSON exactly as: {"covers":[{"source":1,"description":"string"}],"scene":"string","elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string"}.
-"scene" is a vivid paragraph describing the unified photographic scene and how the borrowed elements appear as real things inside it. "elements" names the single most recognisable thing taken from each cover that must appear in the scene. "palette" is 3-5 colours pulled from the artwork, then pushed brighter and more saturated - favour vivid, luminous, high-energy colour over muted or washed-out tones.`
+Be imaginative and go bold; richly detailed and surprising scenes are welcome as long as everything reads as one connected piece in this medium. Colour: ${lane.paletteTreatment}.
+Return JSON exactly as: {"covers":[{"source":1,"description":"string"}],"scene":"string","concept":"string","elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string"}.
+"scene" is a vivid paragraph describing the unified scene in this medium and how the borrowed elements appear inside it. "concept" is one line of at most 15 words naming the setting and the central idea. "elements" names the single most recognisable thing taken from each cover that must appear in the scene. "palette" lists the exact colours the image should use, pulled from the artwork and chosen to suit this treatment - respect any ink-count limit it sets: ${lane.paletteTreatment}. "mood" is the emotional tone.`
 
   try {
     const response = await openai.responses.create({
@@ -500,7 +609,7 @@ Return JSON exactly as: {"covers":[{"source":1,"description":"string"}],"scene":
           content: [
             {
               type: 'input_text',
-              text: `Return JSON only. First describe each of the ${imageUrls.length} uploaded album covers, then design one cohesive original scene that uses recognisable elements from all of them.`
+              text: `Return JSON only. First describe each of the ${imageUrls.length} uploaded album covers, then design one cohesive original scene, rendered as ${lane.medium}, that uses recognisable elements from all of them.`
             },
             ...imageUrls.map(url => ({
               type: 'input_image',
@@ -524,7 +633,7 @@ Return JSON exactly as: {"covers":[{"source":1,"description":"string"}],"scene":
     return brief
   } catch (error) {
     console.warn(`  OpenAI art brief failed: ${error.message}`)
-    return buildFallbackBrief(sourceReferences)
+    return buildFallbackBrief(sourceReferences, lane)
   }
 }
 
@@ -532,28 +641,83 @@ function formatElement(element) {
   return `source ${element.source}: ${element.element}`
 }
 
-function buildGenerationPrompt(brief, sourceImageCount, sourceReferences, lightingDirection = '') {
-  const elements = brief.elements.length > 0
+function formatElements(brief, sourceReferences) {
+  return brief.elements.length > 0
     ? brief.elements.map(formatElement).join('; ')
     : sourceReferences.map(reference => `source ${reference.source}: recognisable element from ${reference.album || reference.filename}`).join('; ')
+}
+
+// Style-first prompt (Style -> Subject -> Setting -> Composition -> Colour), because the
+// image models otherwise drift back to their default vivid cinematic photoreal look when
+// the medium arrives late or hedged.
+function buildGenerationPrompt(brief, sourceImageCount, sourceReferences, lane, lightingDirection = '') {
+  const elements = formatElements(brief, sourceReferences)
   const palette = brief.palette.length > 0 ? brief.palette.join(', ') : 'a palette pulled from the uploaded artwork'
-  const avoid = NEGATIVE_TERMS.join(', ')
+  const avoid = negativeTermsForLane(lane).join(', ')
+
+  const qualityLine = lane.kind === 'photo'
+    ? 'Sharp, high quality, visually striking, with real depth and a strong sense of place.'
+    : 'Bold, confident, gallery-quality print design with a strong sense of place.'
+
+  // Collage lanes are, by definition, pasted fragments - demanding "one shared setting and
+  // consistent light" there would argue with the medium, so they get a page-unity line instead.
+  const cohesionLine = lane.collageMedium
+    ? 'Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and compose them all onto one deliberate page unified by the paper texture, print treatment, and palette.'
+    : 'Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light.'
 
   return [
-    'Create one original, richly detailed 16:9 photograph to use as a music blog header - a single, believable, photorealistic scene.',
-    `Compose a single unified scene: ${brief.scene}.`,
+    lane.styleDirective,
+    'The image is a 16:9 music blog header.',
+    `Scene: ${String(brief.scene).trim().replace(/\.+$/, '')}.`,
     `Weave in recognisable elements taken from the ${sourceImageCount} uploaded album covers: ${elements}.`,
-    'Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light.',
-    'Render everything photorealistically: real materials and textures, bright, natural cinematic lighting, true-to-life depth of field, captured as if shot on a professional full-frame camera. Where a source motif was originally a drawing, painting, symbol, or graphic, reimagine it as a real physical object, sculpture, set piece, projection, mural, costume, person, or animal within the photograph so it stays recognisable. This is a real photograph, not an illustration, drawing, painting, cartoon, or comic.',
-    'Everything must feel like it genuinely belongs in the same scene - connected by environment and story, not separate cut-outs floating side by side, and never laid out as a grid, row, or panel of squares.',
-    `Colour direction: ${palette} - rendered bright, vivid, and richly saturated with luminous highlights and punchy contrast, never muted, dull, or washed out.`,
-    lightingDirection ? `Time of day and light: ${lightingDirection}.` : '',
+    cohesionLine,
+    lane.motifTreatment,
+    `Composition: ${lane.composition}`,
+    `Colour direction: ${palette} - ${lane.paletteTreatment}.`,
+    lane.lighting && lightingDirection ? `Time of day and light: ${lightingDirection}.` : '',
     `Mood: ${brief.mood}.`,
-    'Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly as a sculpture, prop, silhouette, or play of light, and suggest rather than exactly replicate the likeness of any identifiable real person.',
+    'Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person.',
     'Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image.',
     `Avoid: ${avoid}.`,
-    'Photorealistic, sharp, cinematic, high quality, visually striking, vibrant and colour-rich, with real depth and a strong sense of place.'
+    qualityLine
+  ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
+}
+
+// The restyle prompt re-lists every motif so the second pass reinforces the lane's medium
+// without sanding the recognisable album elements away.
+function buildRestylePrompt(brief, sourceReferences, lane) {
+  const elements = formatElements(brief, sourceReferences)
+
+  return [
+    `Restyle this image as ${lane.medium}.`,
+    lane.styleDirective,
+    `Keep the existing composition, and keep every one of these motifs clearly recognisable: ${elements}.`,
+    'Keep the image safe and tasteful: no children or minors, no gore, nudity, or sexual content.',
+    'Do not add any text, letters, words, numbers, captions, logos, watermarks, or signage.'
   ].join(' ').replace(/\s+/g, ' ').trim()
+}
+
+// Recraft's image-to-image input must be under 5 MB (and within 4096px); the compose stage
+// emits detailed 2K/1440p PNGs that routinely blow past that, silently costing print lanes
+// their restyle. Re-encode the composed image to a bounded JPEG and upload it as the restyle
+// source; on any failure fall back to the original URL and let the backend try anyway.
+async function prepareRestyleInputUrl(composeImageUrl, debug) {
+  try {
+    const response = await fetch(composeImageUrl)
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`)
+    const buffer = Buffer.from(await response.arrayBuffer())
+    const jpeg = await sharp(buffer)
+      .resize(2048, 2048, { fit: 'inside', withoutEnlargement: true })
+      .jpeg({ quality: 90 })
+      .toBuffer()
+    const file = new File([jpeg], 'restyle-input.jpg', { type: 'image/jpeg' })
+    return await fal.storage.upload(file)
+  } catch (error) {
+    if (debug) {
+      console.log(`  Could not re-encode the restyle input (${error.message}); using the original URL`)
+    }
+    return composeImageUrl
+  }
 }
 
 function smallOutputPathFor(outputPath) {
@@ -619,23 +783,61 @@ function buildAttemptSets(selectedPaths, analyses, maxCount, minCount) {
   })
 }
 
+// Run the lane's optional restyle stage over the composed image. Strictly additive: the
+// compose output is already prompted in the lane's style, so any failure here logs a
+// warning and ships the compose result rather than failing the post.
+async function applyRestyleStage({ lane, brief, sourceReferences, composeImageUrl, seed, debug }) {
+  const restyleStage = pipelineStage(lane, 'restyle')
+  if (!restyleStage) return null
+
+  const backend = getBackend(restyleStage.backend)
+  if (!backend) {
+    console.warn(`  Unknown restyle backend "${restyleStage.backend}"; keeping the composed image`)
+    return null
+  }
+
+  const prompt = buildRestylePrompt(brief, sourceReferences, lane)
+  if (debug) {
+    console.log(`  Restyle (${backend.label}): ${prompt}`)
+  }
+
+  try {
+    const inputUrl = await prepareRestyleInputUrl(composeImageUrl, debug)
+    const { imageUrl, model } = await backend.generate({
+      imageUrls: [inputUrl],
+      prompt,
+      seed,
+      debug,
+      negativePrompt: TEXT_NEGATIVE_TERMS.join(', '),
+      ...(restyleStage.params || {})
+    })
+    return { imageUrl, model, backend: backend.id, prompt }
+  } catch (error) {
+    console.warn(`  Restyle stage failed (${backend.label}); keeping the composed image: ${error.message}`)
+    return null
+  }
+}
+
 async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   const {
     width = 1400,
     height = 800,
     seed = Date.now(),
-    debug = process.env.DEBUG_COLLAGE === '1'
+    debug = process.env.DEBUG_COLLAGE === '1',
+    recordHistory = false
   } = options
-
-  if ((options.lane || options.style) && debug) {
-    console.log(`  Note: lane/style options are deprecated and ignored ("${options.lane || options.style}")`)
-  }
 
   const falKey = process.env.FAL_KEY
   if (!falKey) {
     throw new Error('FAL_KEY environment variable is required for tunes cover generation')
   }
   fal.config({ credentials: falKey })
+
+  const lane = await resolveLane(options.lane || options.style, seed)
+  const lightingDirection = lane.lighting ? pickLightingDirection(seed) : ''
+  const restyleEnabled = await resolveRestyleEnabled(options.restyle)
+  const historySize = await resolveHistorySize()
+  const avoidConcepts = await recentConcepts('cover', historySize)
 
   const sourceImagePaths = filterBlocklistedCovers(imagePaths, debug)
 
@@ -653,14 +855,16 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     minCount
   )
 
-  const lightingDirection = pickLightingDirection(seed)
-
-  const primaryBackend = await resolveCoverBackend(options.backend)
-  const fallbackBackend = await resolveCoverFallbackBackend(primaryBackend, options.fallbackBackend)
+  const composeStage = pipelineStage(lane, 'compose')
+  const primaryBackend = await resolveCoverBackend(options.backend || composeStage?.backend)
+  const fallbackBackend = await resolveCoverFallbackBackend(primaryBackend, options.fallbackBackend, composeStage?.fallback)
   const backendChain = fallbackBackend ? [primaryBackend, fallbackBackend] : [primaryBackend]
+
+  console.log(`  Creative direction: ${lane.label} (${lane.id})`)
   if (debug) {
     console.log(`  Image backend: ${backendChain.map(b => b.label).join(' -> ')}`)
-    console.log(`  Lighting direction: ${lightingDirection}`)
+    if (lightingDirection) console.log(`  Lighting direction: ${lightingDirection}`)
+    if (avoidConcepts.length > 0) console.log(`  Avoiding recent concepts: ${avoidConcepts.join(' | ')}`)
   }
 
   // Try each backend in turn. Within a backend, content-policy refusals retry with alternate
@@ -678,31 +882,86 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
 
       try {
         if (debug) {
-          console.log(`  Attempt ${attempt + 1} (${backend.label}): generating cover scene from ${attemptPaths.length} album covers`)
+          console.log(`  Attempt ${attempt + 1} (${backend.label}): generating ${lane.id} cover from ${attemptPaths.length} album covers`)
         }
 
         const imageUrls = await uploadAlbumImages(attemptPaths, debug)
         const sourceReferences = buildSourceReferences(attemptPaths)
-        const brief = await createArtBrief({ imageUrls, sourceReferences, debug, lightingDirection })
-        const prompt = buildGenerationPrompt(brief, imageUrls.length, sourceReferences, lightingDirection)
+        const brief = await createArtBrief({ imageUrls, sourceReferences, debug, lane, lightingDirection, avoidConcepts })
+        const prompt = buildGenerationPrompt(brief, imageUrls.length, sourceReferences, lane, lightingDirection)
 
         if (debug) {
           console.log(`  Prompt: ${prompt}`)
         }
 
-        const { imageUrl, model } = await backend.generate({ imageUrls, prompt, seed, debug })
+        const composed = await backend.generate({ imageUrls, prompt, seed, debug })
 
-        const saved = await saveGeneratedImage(imageUrl, outputPath, width, height, debug)
-        console.log(`  Created tunes cover scene (${backend.label}) from ${attemptPaths.length} album covers`)
+        let restyled = restyleEnabled
+          ? await applyRestyleStage({
+              lane,
+              brief,
+              sourceReferences,
+              composeImageUrl: composed.imageUrl,
+              seed,
+              debug
+            })
+          : null
+
+        // The restyle stage is strictly additive, and that includes the download: if the
+        // restyled URL fails to fetch, fall back to saving the composed image rather than
+        // failing the whole post.
+        let saved
+        try {
+          saved = await saveGeneratedImage(restyled?.imageUrl || composed.imageUrl, outputPath, width, height, debug)
+        } catch (error) {
+          if (!restyled) throw error
+          console.warn(`  Could not download the restyled image (${error.message}); saving the composed image instead`)
+          restyled = null
+          saved = await saveGeneratedImage(composed.imageUrl, outputPath, width, height, debug)
+        }
+        const finalImageUrl = restyled?.imageUrl || composed.imageUrl
+        console.log(`  Created tunes cover (${lane.label}, ${backend.label}${restyled ? ` + ${restyled.backend}` : ''}) from ${attemptPaths.length} album covers`)
         console.log(`    Full:  ${saved.outputPath}`)
         console.log(`    Small: ${saved.smallOutputPath}`)
+
+        const runRecord = {
+          date: options.dateLabel || (Number.isFinite(seed) && seed >= MS_PER_WEEK ? new Date(seed).toISOString().slice(0, 10) : ''),
+          type: 'cover',
+          lane: lane.id,
+          lighting: lightingDirection || null,
+          shootDirection: null,
+          colourTreatment: null,
+          concept: brief.concept,
+          scene: brief.scene,
+          palette: brief.palette,
+          composeBackend: backend.id,
+          restyleBackend: restyled?.backend || null,
+          restyled: Boolean(restyled),
+          model: restyled?.model || composed.model,
+          prompt,
+          restylePrompt: restyled?.prompt || null,
+          inputs: attemptPaths.map(item => path.basename(item))
+        }
+
+        try {
+          const sidecarPath = await writeSidecar(outputPath, runRecord)
+          if (debug) console.log(`  Wrote run sidecar: ${sidecarPath}`)
+          if (recordHistory) await appendHistory(runRecord)
+        } catch (error) {
+          console.warn(`  Could not record cover metadata: ${error.message}`)
+        }
 
         return {
           ...saved,
           selectedImages: attemptPaths,
-          imageUrl,
-          model,
+          imageUrl: finalImageUrl,
+          model: runRecord.model,
           backend: backend.id,
+          lane: lane.id,
+          lighting: lightingDirection || null,
+          concept: brief.concept,
+          restyled: Boolean(restyled),
+          restyleBackend: restyled?.backend || null,
           mode: 'source_scene',
           prompt
         }
@@ -733,6 +992,10 @@ function parseArgs(args) {
     width: 1400,
     height: 800,
     seed: null,
+    lane: null,
+    restyle: true,
+    record: false,
+    listLanes: false,
     debug: false,
     help: false
   }
@@ -740,13 +1003,17 @@ function parseArgs(args) {
   for (const arg of args) {
     if (arg === '--help' || arg === '-h') options.help = true
     else if (arg === '--debug' || arg === '-d') options.debug = true
+    else if (arg === '--list-lanes') options.listLanes = true
+    else if (arg === '--no-restyle') options.restyle = false
+    else if (arg === '--record') options.record = true
     else if (arg.startsWith('--input=')) options.input = arg.slice('--input='.length)
     else if (arg.startsWith('--output=')) options.output = arg.slice('--output='.length)
     else if (arg.startsWith('--width=')) options.width = Number(arg.slice('--width='.length))
     else if (arg.startsWith('--height=')) options.height = Number(arg.slice('--height='.length))
     else if (arg.startsWith('--seed=')) options.seed = Number(arg.slice('--seed='.length))
-    // --lane / --style are deprecated and accepted only so older commands do not error.
-    else if (arg.startsWith('--lane=') || arg.startsWith('--style=')) continue
+    else if (arg.startsWith('--lane=')) options.lane = arg.slice('--lane='.length)
+    // --style is the historical alias for --lane.
+    else if (arg.startsWith('--style=')) options.lane = arg.slice('--style='.length)
     else if (!arg.startsWith('--') && !options.input) options.input = arg
     else if (!arg.startsWith('--') && !options.output) options.output = arg
     else throw new Error(`Unknown argument: ${arg}`)
@@ -775,35 +1042,56 @@ async function readInputImages(inputFolder) {
     .map(file => path.join(inputFolder, file))
 }
 
+function printLanes() {
+  console.log('\nAvailable lanes:\n')
+  for (const lane of listLanes()) {
+    const restyleStage = pipelineStage(lane, 'restyle')
+    const composeStage = pipelineStage(lane, 'compose')
+    const compose = composeStage?.backend || 'config default'
+    const pipeline = restyleStage ? `${compose} -> ${restyleStage.backend}` : compose
+    console.log(`  ${lane.id.padEnd(24)} ${lane.kind.padEnd(6)} ${pipeline.padEnd(28)} ${lane.label}`)
+  }
+  console.log()
+}
+
 function showHelp() {
   console.log(`
 Tunes Cover Generator
 
-Creates one original, cohesive AI scene for weekly tunes posts by reading the
-uploaded album covers and weaving recognisable elements from them into a single
-unified artwork.
+Creates one original AI cover for weekly tunes posts by reading the uploaded album
+covers and weaving recognisable elements from them into a single artwork. Each week
+rotates through a different creative-direction lane (photo and print media), so the
+covers stop converging on one look.
 
 Usage:
   node scripts/fal-tunes-cover.js --input=<albums-folder> --output=<cover.png> [options]
   node scripts/fal-tunes-cover.js <albums-folder> <cover.png> [options]
 
 Options:
-  --output=<path>     Output PNG path (also writes <name>-small.png)
+  --output=<path>     Output PNG path (also writes <name>-small.png and <name>.json)
   --width=<px>        Small output width (default: 1400)
   --height=<px>       Small output height (default: 800)
-  --seed=<number>     Deterministic seed
+  --seed=<number>     Deterministic seed (weekly runs use the post date)
+  --lane=<id>         Force a creative-direction lane (--style is an alias);
+                      env TUNES_COVER_LANE also works. Default: weekly rotation.
+  --list-lanes        Print the available lanes and exit
+  --no-restyle        Skip the lane's optional restyle stage (compose only)
+  --record            Append this run to scripts/.tunes-image-history.json (the
+                      weekly generator records automatically; manual runs opt in)
   --debug, -d         Verbose output
   --help, -h          Show this help
 
 Notes:
   - Requires FAL_KEY.
   - Uses OPENAI_API_KEY when available to describe each album cover and design one
-    cohesive scene from their contents. The only negatives applied are text and grids.
-  - The image backend comes from settings.cover_backend in tunes-config.yaml. On a
-    content-policy refusal the generator retries with alternate inputs, then drops to
-    settings.cover_fallback_backend (env TUNES_COVER_FALLBACK_BACKEND; defaults to
-    nano-banana while gpt-image-2 is primary, "none" to disable).
-  - --lane / --style are deprecated and ignored (kept only so older commands still run).
+    cohesive scene in the week's lane; recent concepts from the history file are
+    passed as do-not-repeat instructions.
+  - The compose backend comes from the lane, falling back to settings.cover_backend
+    in tunes-config.yaml. On a content-policy refusal the generator retries with
+    alternate inputs, then drops to the fallback backend
+    (env TUNES_COVER_FALLBACK_BACKEND, "none" to disable).
+  - Print lanes may run a second restyle stage (Recraft / Ideogram via fal) to lock
+    in the medium; disable with --no-restyle or settings.cover_restyle: off.
 `)
 }
 
@@ -811,6 +1099,10 @@ async function main() {
   const options = parseArgs(process.argv.slice(2))
   if (options.help) {
     showHelp()
+    return
+  }
+  if (options.listLanes) {
+    printLanes()
     return
   }
 
@@ -834,6 +1126,9 @@ async function main() {
     width: options.width,
     height: options.height,
     seed: options.seed || Date.now(),
+    lane: options.lane,
+    restyle: options.restyle,
+    recordHistory: options.record,
     debug: options.debug
   })
 }
@@ -854,5 +1149,7 @@ export {
   parseJSONResponse,
   isContentPolicyViolation,
   humanizeImageName,
-  NEGATIVE_TERMS
+  NEGATIVE_TERMS,
+  TEXT_NEGATIVE_TERMS,
+  negativeTermsForLane
 }

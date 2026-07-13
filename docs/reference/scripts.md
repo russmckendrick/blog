@@ -47,8 +47,8 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `scripts/cache-reading-images.js` | primary | Fetches OG images and metadata (title, description) for reading list bookmarks and caches them locally; downloaded images are re-encoded to JPEG via `sharp` so they are compatible with Cloudflare image transformations regardless of source format |
 | `scripts/fal-cover-generator.js` | manual | AI blog cover generator used by `new-post.js` and manual cover generation flows |
 | `scripts/regenerate-cover.js` | manual | Regenerate a blog cover for an existing MDX post |
-| `scripts/fal-tunes-cover.js` | manual/internal | AI tunes cover generator; reads each album cover and weaves them into one cohesive scene; saves full and `-small` cover images |
-| `scripts/fal-tunes-artists.js` | manual/internal | AI tunes artist group-portrait generator; composes the week's artist photos into one photorealistic group photo; saves full and `-small` images |
+| `scripts/fal-tunes-cover.js` | manual/internal | AI tunes cover generator; reads each album cover and weaves them into one cohesive scene in the week's rotating creative-direction lane (photo or print media); saves full and `-small` cover images plus a `.json` run sidecar |
+| `scripts/fal-tunes-artists.js` | manual/internal | AI tunes artist group-portrait generator; composes the week's artist photos into one photorealistic group photo with rotating shoot grammar and colour treatment; saves full and `-small` images plus a `.json` run sidecar |
 | `scripts/regenerate-tunes-cover.js` | manual | Regenerate one weekly tunes image (header cover or artist portrait) without changing MDX frontmatter |
 | `scripts/wrapped-cover-generator.js` | internal | AI-assisted wrapped cover compositor |
 | `scripts/bulk-listen.js` | manual | Run the tunes cover generator over a date range of weekly tunes folders |
@@ -92,14 +92,21 @@ Use this for direct AI cover generation outside the `new-post` workflow.
 node scripts/fal-tunes-cover.js --help
 ```
 
-Use this for direct tunes cover generation. The script reads the ~7-8 strongest album covers, describes the visual contents of each one, then designs a single cohesive, photorealistic scene that weaves recognisable elements from all of them into one shared world (illustrated cover motifs are reimagined as real, physical, photographable things). The art-brief and final image prompt are softened for safety: youthful figures are recast as adults/statues and sensitive motifs (gore, body horror, medical/foetal imagery, blank eyes, nudity) are reinterpreted abstractly, so the scene stays evocative without tripping image-model moderators. The negatives applied are text, grid/montage layouts, and non-photographic styles (illustration, painting, cartoon); otherwise the art director has creative freedom. The actual image call is delegated to a swappable backend in `scripts/lib/image-backends/`, chosen by `settings.cover_backend` in `scripts/tunes-config.yaml` (`nano-banana` default | `gpt-image-2`; unknown/missing falls back to `nano-banana`).
+Use this for direct tunes cover generation. The script reads the ~7-8 strongest album covers, describes the visual contents of each one, then designs a single cohesive scene that weaves recognisable elements from all of them into one shared world — rendered in that week's **creative-direction lane**. Lanes are defined in `scripts/lib/tunes-lanes.js` (5 photographic, 7 print/illustration — risograph, screenprint gig poster, cut-paper collage, gouache, linocut, vintage travel poster, zine photo-collage) and rotate deterministically from the post-date seed, so consecutive weeks land in genuinely different media, compositions, and palettes instead of converging on one photoreal formula. The art-brief and final image prompt are softened for safety: youthful figures are recast as adults/statues and sensitive motifs (gore, body horror, medical/foetal imagery, blank eyes, nudity) are reinterpreted abstractly, so the scene stays evocative without tripping image-model moderators. Text and grid/montage negatives always apply; photo lanes additionally ban illustration looks while print lanes ban photoreal/3D looks, and every lane bans the old posed-ensemble/props-on-plinths/giant-sculpture formula. Recent weekly concepts (from `scripts/.tunes-image-history.json`) are passed to the art director as do-not-repeat instructions.
 
-If the primary backend refuses on a content-policy violation, the generator first retries with alternate album inputs, then drops to a fallback backend rather than failing the whole post. The fallback is `settings.cover_fallback_backend` in `scripts/tunes-config.yaml` (env `TUNES_COVER_FALLBACK_BACKEND`); when unset it defaults to `nano-banana` (the more permissive backend) while `gpt-image-2` is primary, and is disabled with `none` or when it would equal the primary. This matters because GPT Image 2 moderates real-person likenesses more strictly than nano-banana, so weeks with portrait-heavy covers degrade gracefully instead of breaking.
+The image calls are delegated to swappable backends in `scripts/lib/image-backends/`. The **compose** backend comes from the lane (print lanes prefer `nano-banana`, which follows style-first prompting more faithfully), falling back to `settings.cover_backend` in `scripts/tunes-config.yaml`. Some print lanes then run an optional **restyle** stage (`recraft-i2i` or `ideogram-remix`) over the composed image to lock the medium in, with conservative strengths so the album motifs stay recognisable; a restyle failure logs a warning and ships the composed image. Disable restyling with `--no-restyle` or `settings.cover_restyle: off`.
+
+If the primary backend refuses on a content-policy violation, the generator first retries with alternate album inputs, then drops to a fallback backend rather than failing the whole post. The fallback precedence is explicit option → env `TUNES_COVER_FALLBACK_BACKEND` → the lane's compose stage → `settings.cover_fallback_backend`; when unset it defaults to `nano-banana` (the more permissive backend) while `gpt-image-2` is primary, and is disabled with `none` or when it would equal the primary. This matters because GPT Image 2 moderates real-person likenesses more strictly than nano-banana, so weeks with portrait-heavy covers degrade gracefully instead of breaking.
+
+Every run writes a JSON sidecar (`<output>.json`) with the lane, brief, and exact prompts next to the PNGs, so past images stay auditable without `--debug` scraping.
 
 Options:
-- `--output=<path>` writes that file and the matching `-small` derivative
+- `--output=<path>` writes that file, the matching `-small` derivative, and a `.json` run sidecar
+- `--lane=<id>` forces a lane (`--style` is an alias; env `TUNES_COVER_LANE`); `auto` means weekly rotation
+- `--list-lanes` prints the lane catalogue and exits
+- `--no-restyle` skips the lane's optional restyle stage
+- `--record` appends the run to `scripts/.tunes-image-history.json` (the weekly generator records automatically; manual runs opt in)
 - `--debug`, `-d` enables verbose input selection and prompt output
-- `--lane=<name>` / `--style=<name>` are deprecated and silently ignored (kept so older commands still run)
 
 Example:
 ```bash
@@ -112,15 +119,16 @@ node scripts/fal-tunes-cover.js --input=public/assets/2026-04-20-listened-to-thi
 node scripts/fal-tunes-artists.js --help
 ```
 
-Use this for direct artist group-portrait generation. The script uploads the week's top downloaded artist photos (input order = play rank) as casting options, has OpenAI describe each, **cast** the most interesting subset, and author the full scene for that week (location, composition, lens, lighting, styling), then renders a single photorealistic 16:9 group photo of just the cast — keeping the group intimate rather than cramming in every band member. Each week leans into a different shoot direction (rooftop, record shop, seaside, high-key studio, etc.) chosen from the seed, so the portraits vary week to week instead of converging on the same studio/loft. It reuses the cover pipeline's upload/save/JSON helpers and the same FAL model env vars.
+Use this for direct artist group-portrait generation. The script uploads the week's top downloaded artist photos (input order = play rank) as casting options, has OpenAI describe each, **cast** the most interesting subset, and author the full scene for that week (location, composition, lens, lighting, styling), then renders a single photorealistic 16:9 group photo of just the cast — keeping the group intimate rather than cramming in every band member. Each week leans into a different **shoot grammar** (candid mid-action, walking shot, over-the-shoulder backstage, silhouette against stage backlight, fisheye huddle — most entries explicitly not a publicity lineup) and a different **colour treatment** (natural daylight, Kodachrome, cross-process, overcast pastel, punchy editorial, black-and-white film grain), both chosen deterministically from the seed via `scripts/lib/tunes-lanes.js`. Recent shoot concepts are passed as do-not-repeat instructions, and each run writes a `.json` sidecar with the brief and prompt. It reuses the cover pipeline's upload/save/JSON helpers and the same FAL model env vars.
 
 Options:
-- `--output=<path>` writes that file and the matching `-small` derivative
+- `--output=<path>` writes that file, the matching `-small` derivative, and a `.json` run sidecar
 - `--width=<px>` / `--height=<px>` set the `-small` dimensions (default 1400×800)
 - `--seed=<number>` sets a deterministic seed
+- `--record` appends the run to `scripts/.tunes-image-history.json` (the weekly generator records automatically; manual runs opt in)
 - `--debug`, `-d` enables verbose input selection, brief, and prompt output
 
-The casting pool is set by `settings.artist_portrait_candidates` (defaults to 12 when unset, env `TUNES_ARTIST_PORTRAIT_CANDIDATES`) and the AI features about `settings.artist_portrait_inputs` of them (defaults to 6 when unset, env `TUNES_ARTIST_PORTRAIT_INPUTS`) — only the cast is rendered, so a few band photos no longer crowd the frame. Requires `FAL_KEY`; uses `OPENAI_API_KEY` when present, otherwise falls back to a deterministic seed-varied brief (no casting). The actual image call is delegated to a swappable backend in `scripts/lib/image-backends/` (`gpt-image-2` or `nano-banana`), chosen by `settings.artist_portrait_backend` in `scripts/tunes-config.yaml`; unknown/missing falls back to `nano-banana`. The weekly `pnpm run tunes` flow calls this generator (best-effort) and writes the portrait to `public/assets/<week>/tunes-artists-<week>.png`, then embeds it in the post body above the Top Artists/Albums lists; because it is a body image it lives under `public/assets/` (referenced by a `/assets/...` path), not `src/assets/` like the hero cover.
+The casting pool is set by `settings.artist_portrait_candidates` (defaults to 12 when unset, env `TUNES_ARTIST_PORTRAIT_CANDIDATES`) and the AI features exactly `settings.artist_portrait_inputs` of them (set to 4 in config — small casts keep faces large and likenesses faithful; code default 6 when unset, env `TUNES_ARTIST_PORTRAIT_INPUTS`) — only the cast is rendered, so a few band photos no longer crowd the frame. The run's `.json` sidecar is mirrored into `src/assets/<week>/` (never next to the portrait in `public/`, which deploys verbatim). Requires `FAL_KEY`; uses `OPENAI_API_KEY` when present, otherwise falls back to a deterministic seed-varied brief (no casting). The actual image call is delegated to a swappable backend in `scripts/lib/image-backends/` (`gpt-image-2` or `nano-banana`), chosen by `settings.artist_portrait_backend` in `scripts/tunes-config.yaml`; unknown/missing falls back to `nano-banana`. The weekly `pnpm run tunes` flow calls this generator (best-effort) and writes the portrait to `public/assets/<week>/tunes-artists-<week>.png`, then embeds it in the post body above the Top Artists/Albums lists; because it is a body image it lives under `public/assets/` (referenced by a `/assets/...` path), not `src/assets/` like the hero cover.
 
 Example:
 ```bash
@@ -138,9 +146,11 @@ Regenerates an image for an older weekly tunes post without changing its MDX. It
 Options:
 - `--type=<kind>` selects `header` or `artist`; `--header` / `--artist` are shorthands
 - `--week=<date>` selects a weekly post, for example `2026-04-20`
+- `--lane=<id>` (header only) forces a creative-direction lane instead of the week's rotation; `--style` is an alias
+- `--no-restyle` (header only) skips the lane's optional restyle stage
+- `--record` appends the run to `scripts/.tunes-image-history.json` (off by default here so regenerating old weeks does not pollute the do-not-repeat memory)
 - `--output=<path>` writes a test image outside the normal asset path
 - `--debug`, `-d` enables verbose output
-- `--lane=<name>` / `--style=<name>` are deprecated and silently ignored
 
 ### `scripts/bulk-listen.js`
 
@@ -149,7 +159,7 @@ node scripts/bulk-listen.js --from=YYYY-MM-DD --to=YYYY-MM-DD [options]
 ```
 
 Options:
-- `--lane=<name>` / `--style=<name>` are deprecated and silently ignored by the cover generator
+- `--lane=<id>` forces one creative-direction lane for every week; `auto` (default) uses each week's deterministic rotation (the post-date seed is passed through, so bulk runs match what the weekly generator would pick). `--style` is an alias.
 - `--debug`, `-d` enable debug output for the cover generator
 - `--dry-run`, `-n` preview work without generating files
 - `--help`, `-h` show usage
@@ -239,9 +249,13 @@ These modules support the top-level CLIs and are not intended to be run directly
 | `scripts/lib/exa-tool.js` | Exa search integration for research agents |
 | `scripts/lib/github-gist-client.js` | GitHub Gist publishing for Medium exports |
 | `scripts/lib/fal-content-policy.js` | Dependency-free `isContentPolicyViolation()` helper shared by the cover/artist generators and the image backends (avoids an import cycle) |
-| `scripts/lib/image-backends/index.js` | Registry of generic, swappable image-generation backends (`{ id, label, generate }`); `getBackend()` / `normalizeBackendId()`. Shared by both the cover header and the artist portrait |
+| `scripts/lib/image-backends/index.js` | Registry of generic, swappable image-generation backends (`{ id, label, generate, maxInputImages }`); `getBackend()` / `normalizeBackendId()`. Shared by both the cover header and the artist portrait |
 | `scripts/lib/image-backends/nano-banana.js` | Generic FAL `nano-banana-2/edit` image backend (env: `NANO_BANANA_MODEL`, `NANO_BANANA_FALLBACK_MODEL`) |
 | `scripts/lib/image-backends/gpt-image-2.js` | Generic OpenAI `gpt-image-2/edit` image backend via fal (env: `GPT_IMAGE_2_MODEL`, `GPT_IMAGE_2_SIZE`, `GPT_IMAGE_2_QUALITY`) |
+| `scripts/lib/image-backends/ideogram-remix.js` | Single-image FAL `ideogram/v3/remix` restyle backend for print lanes (env: `IDEOGRAM_REMIX_MODEL`). Its `strength` is the weight of the INPUT image — higher preserves more source |
+| `scripts/lib/image-backends/recraft-i2i.js` | Single-image FAL `recraft/v3/image-to-image` restyle backend for print lanes (env: `RECRAFT_I2I_MODEL`). Its `strength` is the amount of CHANGE — the opposite of Ideogram's |
+| `scripts/lib/tunes-lanes.js` | Weekly creative-direction lanes for the cover (photo + print media) plus the deterministic rotation helpers (`pickLane`, `pickLightingDirection`, `pickShootDirection`, `pickColourTreatment`, `epochShuffledPick`) shared by both image generators |
+| `scripts/lib/tunes-image-history.js` | Rolling record of weekly image runs in `scripts/.tunes-image-history.json` (committed, capped) plus per-run `.json` sidecars; feeds do-not-repeat concepts back to the art director |
 | `scripts/lib/image-handler.js` | Downloads, stores, and organizes album/artist images |
 | `scripts/lib/lastfm-client.js` | Last.fm client for weekly listening data |
 | `scripts/lib/lastfm-year-client.js` | Last.fm client for annual wrapped data |

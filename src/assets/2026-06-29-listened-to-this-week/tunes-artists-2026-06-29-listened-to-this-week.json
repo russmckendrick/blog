@@ -1,0 +1,29 @@
+{
+  "date": "2026-06-29",
+  "type": "artist",
+  "lane": null,
+  "lighting": null,
+  "shootDirection": "a warehouse stage under coloured concert light and haze, the group shot close from the front row, faces clearly lit",
+  "colourTreatment": "bw-filmgrain",
+  "concept": "Warehouse stage front-row group portrait under haze",
+  "scene": "In the front row of a live set inside a cavernous warehouse venue after dark, the four selected figures are caught in one tight, intimate photograph from just below stage height, with the camera so close that every face fills the frame sharply through drifting haze. At frame left, the hat-wearing woman from 8 leans on the stage barrier in three-quarter profile, pale fedora tipped low and dark coat collar raised, turning slightly toward the others as a bright overhead spot cuts a silver rim along her cheek and brim. Beside her, the dark-skinned woman from 5 stands a half-step forward with one shoulder angled toward camera, wide-brim hat, bold tailored layers, and long earrings catching hard white highlights; just behind her right shoulder, the bald suited man from 1 has stepped into the conversation, glasses flashing, tie and lapels crisp, one hand mid-gesture as if saying something dry and funny. At the far right, the sunglassed man from 7 stands closest to the lens in a dark high-collared coat, chin lifted, body turned inward rather than square to camera, his face still clearly lit by a frontal follow spot that punches through the haze. The warehouse stage lights blaze as pure white beams and deep black shadows in the monochrome treatment, with silver film grain, blown highlights on skin and fabric edges, and the background falling into smoky darkness so the image feels like a real front-row concert moment rather than a lineup.",
+  "palette": [
+    "jet black",
+    "silver",
+    "bright white",
+    "charcoal",
+    "smoke gray"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the 4 reference images into a single shared real-world scene. Scene: In the front row of a live set inside a cavernous warehouse venue after dark, the four selected figures are caught in one tight, intimate photograph from just below stage height, with the camera so close that every face fills the frame sharply through drifting haze. At frame left, the hat-wearing woman from 8 leans on the stage barrier in three-quarter profile, pale fedora tipped low and dark coat collar raised, turning slightly toward the others as a bright overhead spot cuts a silver rim along her cheek and brim. Beside her, the dark-skinned woman from 5 stands a half-step forward with one shoulder angled toward camera, wide-brim hat, bold tailored layers, and long earrings catching hard white highlights; just behind her right shoulder, the bald suited man from 1 has stepped into the conversation, glasses flashing, tie and lapels crisp, one hand mid-gesture as if saying something dry and funny. At the far right, the sunglassed man from 7 stands closest to the lens in a dark high-collared coat, chin lifted, body turned inward rather than square to camera, his face still clearly lit by a frontal follow spot that punches through the haze. The warehouse stage lights blaze as pure white beams and deep black shadows in the monochrome treatment, with silver film grain, blown highlights on skin and fabric edges, and the background falling into smoky darkness so the image feels like a real front-row concert moment rather than a lineup. Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness exactly as shown. Do not invent anyone who is not in the reference photos. Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its single most recognisable member rather than every member. Frame the group tightly - close or medium-close - so every face is large in the frame, sharp, and richly detailed, never small or distant. Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Vary posture, depth, and where people are looking - this is a caught moment, not a band-publicity lineup evenly spaced and facing the camera. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares. Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render. Colour treatment: black-and-white photography with silver film grain, deep blacks and bright highlights, no colour at all. Mood: cool, intense, intimate. Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, extra people, background crowd, duplicated faces, cloned faces, merged faces, blended faces, morphed features, distorted faces, deformed hands, extra limbs. Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Beth-Orton.jpg",
+    "Simple-Minds.jpg",
+    "Pixies.jpg",
+    "U2.jpg"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "date": "2026-07-06",
+  "type": "artist",
+  "lane": null,
+  "lighting": null,
+  "shootDirection": "a windswept seafront, the group huddled together on the sea wall facing the camera, hair and coats blowing",
+  "colourTreatment": "cross-process",
+  "concept": "Windswept sea-wall huddle at winter dusk",
+  "scene": "On a concrete sea wall at the edge of a rough winter shoreline, the four selected figures are pressed into a tight, asymmetrical huddle as a hard onshore wind whips hair, collars, and ties sideways; the slim blond older man from 6 anchors the left foreground in a black high-collared coat, turned three-quarters toward camera with a cool, steady gaze, while the pale dark-haired woman from 7 leans in just behind him, white shirt bright against the stormy backdrop, black tie flicking across her shoulder and curls blown outward. To the right, the cleaner-cut dark-haired man from 4 sits slightly lower on the sea wall ledge, shoulders tucked into a charcoal knit vest and patterned shirt, looking straight into the lens, while the other man from 4 stands half a step behind him with arms loosely folded inside a textured grey overcoat, beard catching the side light. The man from 9 is closest to the right edge and slightly recessed, in a dark sweater under a weatherproof coat, his expression thoughtful as he glances past the camera, giving the frame a caught, human imbalance rather than a lineup. The shot is framed chest-up and close so every face is large and razor-sharp, with the cold late-afternoon sky blown warm near the horizon and the sea behind them shifting cyan-green in cross-processed slide-film colour, wet concrete reflecting punchy contrast and adding a salty, intimate realism.",
+  "palette": [
+    "cyan green",
+    "blown gold",
+    "wet concrete grey",
+    "ink black",
+    "chalk white"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the 4 reference images into a single shared real-world scene. Scene: On a concrete sea wall at the edge of a rough winter shoreline, the four selected figures are pressed into a tight, asymmetrical huddle as a hard onshore wind whips hair, collars, and ties sideways; the slim blond older man from 6 anchors the left foreground in a black high-collared coat, turned three-quarters toward camera with a cool, steady gaze, while the pale dark-haired woman from 7 leans in just behind him, white shirt bright against the stormy backdrop, black tie flicking across her shoulder and curls blown outward. To the right, the cleaner-cut dark-haired man from 4 sits slightly lower on the sea wall ledge, shoulders tucked into a charcoal knit vest and patterned shirt, looking straight into the lens, while the other man from 4 stands half a step behind him with arms loosely folded inside a textured grey overcoat, beard catching the side light. The man from 9 is closest to the right edge and slightly recessed, in a dark sweater under a weatherproof coat, his expression thoughtful as he glances past the camera, giving the frame a caught, human imbalance rather than a lineup. The shot is framed chest-up and close so every face is large and razor-sharp, with the cold late-afternoon sky blown warm near the horizon and the sea behind them shifting cyan-green in cross-processed slide-film colour, wet concrete reflecting punchy contrast and adding a salty, intimate realism. Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness exactly as shown. Do not invent anyone who is not in the reference photos. Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its single most recognisable member rather than every member. Frame the group tightly - close or medium-close - so every face is large in the frame, sharp, and richly detailed, never small or distant. Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Vary posture, depth, and where people are looking - this is a caught moment, not a band-publicity lineup evenly spaced and facing the camera. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares. Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render. Colour treatment: cross-processed slide-film colour - shifted greens and cyans, blown warm highlights, punchy contrast, drawing on cyan green, blown gold, wet concrete grey, ink black, chalk white. Mood: intimate, bracing, cinematic. Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, extra people, background crowd, duplicated faces, cloned faces, merged faces, blended faces, morphed features, distorted faces, deformed hands, extra limbs. Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "David-Bowie.jpg",
+    "Regina-Spektor.jpg",
+    "Air.jpg",
+    "Zero-7.jpg"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "date": "2026-06-01",
+  "type": "artist",
+  "lane": null,
+  "lighting": null,
+  "shootDirection": "the group at the front of a stage during soundcheck, lit warmly from the side, shot close from the empty floor looking up at them",
+  "colourTreatment": "overcast-pastel",
+  "concept": "Warm side-lit soundcheck portrait at the stage edge",
+  "scene": "At the lip of a small club stage during late-afternoon soundcheck, the four selected figures cluster naturally in a loose diagonal as seen from the empty floor, the camera close and slightly low so every face fills the frame with crisp detail while the stage edge and a few blurred monitor wedges anchor the foreground. Warm amber side light from stage left grazes their cheeks and hands, softened by the room’s haze into a calm pastel wash: the long-haired young man in the swirling patterned shirt from 11 sits on the very edge of the stage nearest camera with one knee up, the blonde woman from 11 stands just behind him half-turned toward the others, the man from 12 leans in from center with his wrists lifted in that open-palmed gesture as if testing the light, and the bearded Black man in the knit cap and oversized sunglasses from 4 stands slightly back to the right, relaxed and grounded, his dark shirt and pendant catching a faint glow. The man in the pale suit from 1 is closest to the right side of frame, crouched a little and angling one hand outward mid-conversation rather than posing straight on, so the group reads like a real paused moment between cues—four distinct styles meeting in one shared space, dressed as themselves, with muted peach, smoke-blue, and dusty cream tones keeping the image intimate and photoreal.",
+  "palette": [
+    "dusty peach",
+    "smoke blue",
+    "faded cream",
+    "soft charcoal",
+    "muted teal"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the 4 reference images into a single shared real-world scene. Scene: At the lip of a small club stage during late-afternoon soundcheck, the four selected figures cluster naturally in a loose diagonal as seen from the empty floor, the camera close and slightly low so every face fills the frame with crisp detail while the stage edge and a few blurred monitor wedges anchor the foreground. Warm amber side light from stage left grazes their cheeks and hands, softened by the room’s haze into a calm pastel wash: the long-haired young man in the swirling patterned shirt from 11 sits on the very edge of the stage nearest camera with one knee up, the blonde woman from 11 stands just behind him half-turned toward the others, the man from 12 leans in from center with his wrists lifted in that open-palmed gesture as if testing the light, and the bearded Black man in the knit cap and oversized sunglasses from 4 stands slightly back to the right, relaxed and grounded, his dark shirt and pendant catching a faint glow. The man in the pale suit from 1 is closest to the right side of frame, crouched a little and angling one hand outward mid-conversation rather than posing straight on, so the group reads like a real paused moment between cues—four distinct styles meeting in one shared space, dressed as themselves, with muted peach, smoke-blue, and dusty cream tones keeping the image intimate and photoreal. Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness exactly as shown. Do not invent anyone who is not in the reference photos. Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its single most recognisable member rather than every member. Frame the group tightly - close or medium-close - so every face is large in the frame, sharp, and richly detailed, never small or distant. Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Vary posture, depth, and where people are looking - this is a caught moment, not a band-publicity lineup evenly spaced and facing the camera. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares. Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render. Colour treatment: soft muted pastel grade, gentle and calm rather than saturated, drawing on dusty peach, smoke blue, faded cream, soft charcoal, muted teal. Mood: intimate, curious, quietly electric. Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, extra people, background crowd, duplicated faces, cloned faces, merged faces, blended faces, morphed features, distorted faces, deformed hands, extra limbs. Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "The-Smashing-Pumpkins.jpg",
+    "Ed-OBrien.jpg",
+    "They-Might-Be-Giants.jpg",
+    "Easy-Star-All-Stars.jpg"
+  ]
+}

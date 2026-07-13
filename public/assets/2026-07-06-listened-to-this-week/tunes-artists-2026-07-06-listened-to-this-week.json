@@ -1,0 +1,31 @@
+{
+  "date": "2026-07-06",
+  "type": "artist",
+  "lane": null,
+  "lighting": null,
+  "shootDirection": "a windswept seafront, the group walking away from the camera along the sea wall, one member turning back to look",
+  "colourTreatment": "cross-process",
+  "concept": "Windswept sea-wall walk, candid group receding shot",
+  "scene": "On a windy seafront promenade at the edge of dusk, the selected group moves away from the camera along a broad concrete sea wall above choppy water, their coats and hair tugged hard by the salt wind as the low sun burns through thin cloud and blows warm highlights across the scene. The frame is shot from a few paces behind at waist height, wide enough to hold the group loosely but intimately: the polka-dot-shirted young man from 10 drifts nearest the left rail, the fair woman in the white shirt and black tie from 7 walks just ahead of center with her dark curls lifting, the sharp-boned older man in black from 6 is slightly separated in the middle distance, and the more tailored man from 4 keeps his hands in his coat pockets while falling half a step behind. The introspective man from 9 is nearest the camera on the right, shoulders slightly hunched into the wind, while the blonde woman from 5 is the one turning back over her shoulder toward us, scarf and hair streaming, giving the picture its human hook. Everyone is styled in real layered clothing that coheres naturally—black coats, slim trousers, a white shirt flashing against darker outerwear, one patterned shirt, one tie—so it feels like a chance meeting of distinct musicians rather than a lineup, with cross-processed slide-film colour pushing the sea greens and cyan shadows while the sky and skin catch hot amber overexposure.",
+  "palette": [
+    "seafoam green",
+    "cyan shadow",
+    "blown amber",
+    "charcoal black",
+    "chalk white"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the 6 reference images into a single shared real-world scene. Scene: On a windy seafront promenade at the edge of dusk, the selected group moves away from the camera along a broad concrete sea wall above choppy water, their coats and hair tugged hard by the salt wind as the low sun burns through thin cloud and blows warm highlights across the scene. The frame is shot from a few paces behind at waist height, wide enough to hold the group loosely but intimately: the polka-dot-shirted young man from 10 drifts nearest the left rail, the fair woman in the white shirt and black tie from 7 walks just ahead of center with her dark curls lifting, the sharp-boned older man in black from 6 is slightly separated in the middle distance, and the more tailored man from 4 keeps his hands in his coat pockets while falling half a step behind. The introspective man from 9 is nearest the camera on the right, shoulders slightly hunched into the wind, while the blonde woman from 5 is the one turning back over her shoulder toward us, scarf and hair streaming, giving the picture its human hook. Everyone is styled in real layered clothing that coheres naturally—black coats, slim trousers, a white shirt flashing against darker outerwear, one patterned shirt, one tie—so it feels like a chance meeting of distinct musicians rather than a lineup, with cross-processed slide-film colour pushing the sea greens and cyan shadows while the sky and skin catch hot amber overexposure. Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness. Do not invent anyone who is not in the reference photos. Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its one or two most recognisable members rather than every member. Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Vary posture, depth, and where people are looking - this is a caught moment, not a band-publicity lineup evenly spaced and facing the camera. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares. Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render. Colour treatment: cross-processed slide-film colour - shifted greens and cyans, blown warm highlights, punchy contrast, drawing on seafoam green, cyan shadow, blown amber, charcoal black, chalk white. Mood: restless, romantic, quietly iconic. Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, extra people, background crowd, duplicated faces, cloned faces, merged faces, blended faces, morphed features, distorted faces, deformed hands, extra limbs. Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "The-B-52s.jpg",
+    "Regina-Spektor.jpg",
+    "David-Bowie.jpg",
+    "Air.jpg",
+    "Zero-7.jpg",
+    "Crippled-Black-Phoenix.jpg"
+  ]
+}

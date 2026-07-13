@@ -55,8 +55,10 @@ Usage:
 Options:
   --from=<date>       Start date (required, format: YYYY-MM-DD)
   --to=<date>         End date (required, format: YYYY-MM-DD)
-  --lane=<name>       Headline lane for cover generation (default: auto)
-  --style=<name>      Deprecated alias for --lane
+  --lane=<id>         Creative-direction lane for cover generation; "auto" (default)
+                      uses the deterministic weekly rotation. See
+                      \`node scripts/fal-tunes-cover.js --list-lanes\` for ids.
+  --style=<id>        Alias for --lane
   --debug, -d         Enable debug output for the cover generator
   --dry-run, -n       Show what would be processed without running
   --help, -h          Show this help message
@@ -71,8 +73,8 @@ Examples:
   # With debug output
   node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --debug
 
-  # Force one headline lane
-  node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --lane=hero_object
+  # Force one creative-direction lane
+  node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --lane=risograph
 
 Notes:
   - Processes weekly intervals (7 days apart)
@@ -125,7 +127,10 @@ function runTunesCoverGenerator(date, options) {
       path.join(__dirname, 'fal-tunes-cover.js'),
       `--input=${inputPath}`,
       `--output=${outputPath}`,
-      `--lane=${options.lane}`
+      `--lane=${options.lane}`,
+      // The post-date seed keeps the lane/lighting rotation deterministic per week, matching
+      // what the weekly generator would have picked.
+      `--seed=${new Date(date).getTime()}`
     ]
 
     if (options.debug) {
