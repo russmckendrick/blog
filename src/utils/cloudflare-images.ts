@@ -24,6 +24,17 @@ export interface CFImageOptions {
 }
 
 /**
+ * Check whether a source path points at an SVG.
+ * SVGs must be served verbatim: routing them through /cdn-cgi/image/ lets
+ * Cloudflare rewrite/sanitize the markup, and vectors gain nothing from
+ * resizing or format conversion.
+ */
+function isSvgPath(imagePath: string): boolean {
+  const withoutQuery = imagePath.split('?')[0]?.split('#')[0] ?? imagePath;
+  return withoutQuery.toLowerCase().endsWith('.svg');
+}
+
+/**
  * Generate Cloudflare Image Transformation URL
  * @param src - Image path (string or Astro ImageMetadata)
  * @param options - Cloudflare transformation options
@@ -38,6 +49,11 @@ export function getCFImageUrl(
 
   // Skip transformation for external URLs
   if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    return imagePath;
+  }
+
+  // Serve SVGs untouched as static assets
+  if (isSvgPath(imagePath)) {
     return imagePath;
   }
 
@@ -83,6 +99,11 @@ export function generateCFSrcSet(
   quality: number = CF_IMAGE_PRESETS.default.quality,
   format: 'auto' | 'webp' | 'avif' | 'jpeg' | 'baseline-jpeg' | 'json' = 'auto'
 ): string {
+  // SVGs scale natively; no responsive variants
+  if (isSvgPath(typeof src === 'string' ? src : src.src)) {
+    return '';
+  }
+
   return widths
     .map(w => `${getCFImageUrl(src, { width: w, quality, format })} ${w}w`)
     .join(', ');

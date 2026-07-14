@@ -6,6 +6,8 @@ This document explains how images are processed and delivered in the Russ.Cloud 
 
 The blog uses **Cloudflare Image Transformations** for on-demand image optimization and delivery. This approach eliminates build-time image processing, reduces build times from 20+ minutes to 2-3 minutes, and provides automatic format selection (AVIF/WebP) based on browser support.
 
+**SVG exception**: SVG files are never routed through Cloudflare Image Transformations. `getCFImageUrl()` returns the raw asset path for any `.svg` source and `generateCFSrcSet()` returns no responsive variants, so SVGs are delivered byte-for-byte as static assets with no compression, sanitization, or format conversion anywhere in the pipeline (`scripts/optimize-images.js` also excludes SVGs).
+
 ## Architecture Comparison
 
 ### Traditional Approach (Not Used)
@@ -133,6 +135,11 @@ export function getCFImageUrl(
 
   // Skip transformation for external URLs
   if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    return imagePath;
+  }
+
+  // Serve SVGs untouched as static assets
+  if (isSvgPath(imagePath)) {
     return imagePath;
   }
 

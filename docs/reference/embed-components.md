@@ -207,6 +207,7 @@ Embed responsive images with medium-zoom functionality for click-to-enlarge.
 - ✅ Responsive design with automatic srcset generation
 - ✅ Medium-zoom click-to-enlarge functionality
 - ✅ Support for external URLs and local images
+- ✅ SVG sources bypass Cloudflare Image Transformations and are served verbatim (no srcset, no format conversion)
 - ✅ Automatic intrinsic sizing for local/public assets when dimensions can be detected
 - ✅ Optional link wrapper
 - ✅ Dark mode support with themed zoom overlay

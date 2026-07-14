@@ -101,6 +101,9 @@ export function getLinkPreviewSrcSet(url: string): string | null {
   // Don't generate srcset for favicons
   if (entry.imageType === 'favicon') return null;
 
+  // SVGs are served verbatim and scale without responsive variants
+  if (entry.localImage.endsWith('.svg')) return null;
+
   const widths = CF_IMAGE_PRESETS.linkPreview.widths;
   const quality = CF_IMAGE_PRESETS.linkPreview.quality;
   const format = CF_IMAGE_PRESETS.linkPreview.format;
