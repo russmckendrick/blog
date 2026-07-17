@@ -8,12 +8,17 @@ export const label = 'Recraft Image-to-Image'
 
 // Single-image endpoint: callers must not hand this backend more than one reference.
 export const maxInputImages = 1
+export const maxPromptLength = 1000
 
 // IMPORTANT - strength semantics: Recraft's `strength` is the amount of CHANGE (0 = almost
 // identical to the source, 1 = barely related). This is the OPPOSITE of Ideogram's remix
 // strength in ideogram-remix.js. Keep lane values low (0.3-0.4) so the album motifs in the
 // composed image survive the restyle.
 export async function generate({ imageUrls, prompt, debug, strength = 0.35, style = 'digital_illustration', negativePrompt = '' }) {
+  if (prompt.length > maxPromptLength) {
+    throw new Error(`Recraft prompt exceeds its ${maxPromptLength}-character limit`)
+  }
+
   const input = {
     prompt,
     image_url: imageUrls[0],

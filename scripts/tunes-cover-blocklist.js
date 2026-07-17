@@ -10,5 +10,6 @@
 // are notes for humans only; they are not used for matching.
 
 export const COVER_BLOCKLIST = [
-  { artist: 'Prince', album: '1999', reason: 'large "PRINCE 1999" lettering leaks into the cover as text' }
+  { artist: 'Prince', album: '1999', reason: 'large "PRINCE 1999" lettering leaks into the cover as text' },
+  { artist: 'They Might Be Giants', album: 'Flood', reason: 'central band-name lettering was copied into a generated cover' }
 ]

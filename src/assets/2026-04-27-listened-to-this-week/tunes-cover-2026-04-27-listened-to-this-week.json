@@ -1,0 +1,27 @@
+{
+  "date": "2026-04-27",
+  "type": "cover",
+  "lane": "long-exposure-light",
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Long-exposure light photography weaving together the week's album motifs",
+  "scene": "one cohesive, imaginative scene rendered as a real long-exposure night photograph made in-camera with moving light, illuminated architecture, and reflections, combining recognisable elements drawn from every uploaded album cover, tied together by one setting, one light, and one consistent treatment",
+  "palette": [],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one genuine long-exposure night photograph - a locked-off camera, real environmental depth, continuous moving light trails, luminous reflections, and crisp stationary surfaces anchoring the frame. The image is a 16:9 music blog header. Scene: one cohesive, imaginative scene rendered as a real long-exposure night photograph made in-camera with moving light, illuminated architecture, and reflections, combining recognisable elements drawn from every uploaded album cover, tied together by one setting, one light, and one consistent treatment. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: a recognisable element from Best Of Pixies Wave Of Mutilation; source 2: a recognisable element from Drums and Wires; source 3: a recognisable element from His n Hers; source 4: a recognisable element from Live From the Los Angeles Sports Arena April 26th 1975; source 5: a recognisable element from Teenage Drug; source 6: a recognisable element from SLY LIVES Aka The Burden Of Black Genius. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Build each album motif into the same physical night-time location: express suitable shapes through deliberate continuous light trails, projections, illuminated structures, reflections, or moving figures, while keeping solid subjects tangible and recognisable. Composition: One deep-perspective night scene anchored by a strong real location, with connected light paths sweeping through foreground, middle ground, and distance rather than isolated glowing symbols floating on black. Colour direction: a palette pulled from the uploaded artwork - deep natural night tones with two or three luminous colours drawn from the sleeves, bright light trails, controlled highlights, and reflective colour. Mood: imaginative and music-led. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, daylight scene, flat black background, floating neon icons, random light scribbles, laser-show stage, digital glow effects, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Best-Of-Pixies-Wave-Of-Mutilation.jpg",
+    "Drums-and-Wires.jpg",
+    "His-n-Hers.jpg",
+    "Live-From-the-Los-Angeles-Sports-Arena-April-26th-1975.jpg",
+    "Teenage-Drug.jpg",
+    "SLY-LIVES-Aka-The-Burden-Of-Black-Genius.jpg",
+    "Sparkle-in-the-Rain.jpg",
+    "The-Best-of-The-Pogues.jpg"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "date": "2026-01-12",
+  "type": "cover",
+  "lane": "screenprint-gigposter",
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Crowned hilltop spectacle where pop blasts, folk riders, and new-wave icons converge",
+  "scene": "A hand-pulled screenprinted gig poster shows a surreal hilltop pageant under a huge halftone sky: at the center stands a tall adult seen from behind in a long red-and-navy patchwork coat, planted on a rolling green ridge like a ringmaster surveying the world. Above their head hovers a chunky red crown, enlarged into the main emblem, its points catching a white sunburst rendered as crisp comic-book explosion rays. From the crown erupts a smaller jagged blast cloud, tying the whole sky together in pop-art energy. Orbiting this central figure, a white horse with a simplified folk-art rider gallops across the slope in bold flat shapes, its spears translated into diagonal graphic beams. On one side, a minimalist duo appears as monochrome cutout silhouettes anchored by a strong horizontal blue band that becomes part of the landscape horizon. On the other, an open briefcase spills stylized rings, chains, and watches into the grass as oversized icon-like shapes, becoming treasure scattered across the hill. In the sky, black abstract note-forms from the geometric cover drift like patterned clouds over a red-purple checker field that fades into the atmosphere, while a trumpet-bearing adult silhouette is recast safely as a radiant brass herald, backlit so the metallic object becomes an abstract chrome flare rather than a weapon. Everything is fused by thick flat inks, cream paper showing through as highlights, and halftone shading that turns the borrowed motifs into one punchy, connected concert-poster world.",
+  "palette": [
+    "bright sky blue",
+    "saturated pop red",
+    "deep navy",
+    "warm cream"
+  ],
+  "composeBackend": "nano-banana",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "fal-ai/nano-banana-2/edit",
+  "prompt": "Create one heavy-ink screenprinted gig poster - thick flat colour, hard confident shapes, halftone dots for shading, and absolutely no lettering. The image is a 16:9 music blog header. Scene: A hand-pulled screenprinted gig poster shows a surreal hilltop pageant under a huge halftone sky: at the center stands a tall adult seen from behind in a long red-and-navy patchwork coat, planted on a rolling green ridge like a ringmaster surveying the world. Above their head hovers a chunky red crown, enlarged into the main emblem, its points catching a white sunburst rendered as crisp comic-book explosion rays. From the crown erupts a smaller jagged blast cloud, tying the whole sky together in pop-art energy. Orbiting this central figure, a white horse with a simplified folk-art rider gallops across the slope in bold flat shapes, its spears translated into diagonal graphic beams. On one side, a minimalist duo appears as monochrome cutout silhouettes anchored by a strong horizontal blue band that becomes part of the landscape horizon. On the other, an open briefcase spills stylized rings, chains, and watches into the grass as oversized icon-like shapes, becoming treasure scattered across the hill. In the sky, black abstract note-forms from the geometric cover drift like patterned clouds over a red-purple checker field that fades into the atmosphere, while a trumpet-bearing adult silhouette is recast safely as a radiant brass herald, backlit so the metallic object becomes an abstract chrome flare rather than a weapon. Everything is fused by thick flat inks, cream paper showing through as highlights, and halftone shading that turns the borrowed motifs into one punchy, connected concert-poster world. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: back-view adult in a tattered Union Jack-style long coat on a green hill; source 2: hand-drawn red crown with concentric radiating rings; source 3: backlit trumpet-bearing adult silhouette with intense sun flare; source 4: stark monochrome duo with hat, sunglasses, and suit beside a blue horizontal bar; source 5: black abstract musical note shapes over a red-purple geometric grid; source 6: stylized folk-art rider on a white horse with diagonal spears; source 7: open briefcase densely packed with rings, chains, watches, and bracelets; source 8: jagged comic-book explosion burst with halftone dots and speed lines. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Turn each album motif into a bold screenprinted graphic element - chunky shapes, halftone tone, crisp knockouts - each one readable at a glance. Composition: One dominant central motif with the others orbiting it, tight and punchy like a classic gig poster. Colour direction: bright sky blue, saturated pop red, deep navy, warm cream - three or four flat saturated ink colours on paper. Mood: bold, theatrical, kinetic. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths. Bold, confident, gallery-quality print design with a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Earthling.jpg",
+    "Fashion-Nugget.jpg",
+    "Getting-Killed.jpg",
+    "Discography-The-Complete-Singles-Collection-1985-1991.jpg",
+    "History-Never-Repeats-The-Best-Of-Split-Enz.jpg",
+    "Graceland.jpg",
+    "Everything-Must-Go.jpg",
+    "Bang.jpg"
+  ]
+}

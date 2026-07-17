@@ -231,10 +231,16 @@ async function detectTextScore(imagePath) {
     const height = metadata.height || 512
     const bandHeight = Math.max(1, Math.floor(height * 0.2))
 
-    const regions = [
-      { left: 0, top: 0, width, height: bandHeight },
-      { left: 0, top: Math.max(0, height - bandHeight), width, height: bandHeight }
-    ]
+    // Album lettering is not confined to title/artist bands at the top and bottom: the
+    // Flood sleeve that leaked "They Might Be Giants" into a generated cover carries its
+    // lettering in the middle. Sample the whole height in five strips so central badges,
+    // logos, and type-heavy designs affect selection too.
+    const regions = [0, 0.2, 0.4, 0.6, 0.8].map(position => ({
+      left: 0,
+      top: Math.min(height - bandHeight, Math.floor(height * position)),
+      width,
+      height: bandHeight
+    }))
 
     let edgePixels = 0
     let totalPixels = 0
@@ -298,7 +304,9 @@ async function analyzeImage(imagePath, rank) {
   const contrast = contrastSum / pixelCount
   const textScore = await detectTextScore(imagePath)
   const rankScore = Math.max(0, 60 - (rank * 4))
-  const imageScore = rankScore + (saturation * 0.3) + (contrast * 0.08) - (textScore * 0.2)
+  // Text-like edge density must outweigh a small play-rank advantage; otherwise a
+  // lettering-heavy top album is guaranteed into the primary set before scoring matters.
+  const imageScore = rankScore + (saturation * 0.3) + (contrast * 0.08) - (textScore * 1.1)
 
   return {
     path: imagePath,
@@ -329,8 +337,16 @@ async function selectCoverInputs(imagePaths, options = {}) {
   }
 
   const analyses = await Promise.all(uniquePaths.map((imagePath, index) => analyzeImage(imagePath, index)))
-  const selected = analyses.slice(0, Math.min(primaryCount, maxCount, analyses.length))
-  const remaining = analyses.slice(selected.length)
+  const selectedCount = Math.min(primaryCount, maxCount, analyses.length)
+  const textHeavyThreshold = 24
+  const ranked = [...analyses].sort((a, b) => b.score - a.score)
+  // Prefer cleaner covers for the primary set, but retain text-heavy candidates as a
+  // fallback when a small week would otherwise run short of usable source material.
+  const preferred = ranked.filter(item => item.textScore < textHeavyThreshold)
+  const textHeavy = ranked.filter(item => item.textScore >= textHeavyThreshold)
+  const candidates = [...preferred, ...textHeavy]
+  const selected = candidates.slice(0, selectedCount)
+  const remaining = candidates.slice(selected.length)
 
   while (selected.length < Math.min(maxCount, analyses.length) && remaining.length > 0) {
     let bestIndex = 0
@@ -351,6 +367,9 @@ async function selectCoverInputs(imagePaths, options = {}) {
   }
 
   if (debug) {
+    if (textHeavy.length > 0) {
+      console.log(`  Deprioritized ${textHeavy.length} text-heavy cover candidate(s): ${textHeavy.map(item => path.basename(item.path)).join(', ')}`)
+    }
     console.log(`  Selected ${selected.length} cover inputs:`)
     selected.forEach((item, index) => {
       console.log(`    ${index + 1}. ${path.basename(item.path)} [rank: ${item.rank + 1}, text: ${item.textScore.toFixed(1)}%, rgb: ${item.color.r},${item.color.g},${item.color.b}]`)
@@ -568,10 +587,11 @@ async function createArtBrief({ imageUrls, sourceReferences, debug, lane, lighti
     return buildFallbackBrief(sourceReferences, lane)
   }
 
-  // Photo lanes keep the original "make it photographable" flip; print lanes design motifs
-  // natively in the medium instead.
+  // Photo lanes keep the original "make it photographable" flip and also receive their
+  // lane-specific treatment here. The final prompt repeats it, but Stage A must know it
+  // before inventing the scene (especially for aerial and long-exposure photography).
   const motifLine = lane.kind === 'photo'
-    ? "Where a cover's motif is an illustration, painting, symbol, or graphic, reimagine it as a real, physical, photographable thing in the scene - a sculpture, prop, costume, set piece, projection, mural, printed poster, real person, animal, or object - so it stays recognisable while the whole frame still reads as a genuine photograph."
+    ? `Where a cover's motif is an illustration, painting, symbol, or graphic, reimagine it as a real, physical, photographable thing in the scene - a sculpture, prop, costume, set piece, projection, mural, printed poster, real person, animal, or object - so it stays recognisable while the whole frame still reads as a genuine photograph. Apply this lane-specific treatment while designing the scene: ${lane.motifTreatment}`
     : lane.motifTreatment
 
   const lightingLine = lane.lighting && lightingDirection
@@ -683,18 +703,82 @@ function buildGenerationPrompt(brief, sourceImageCount, sourceReferences, lane, 
   ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
 }
 
-// The restyle prompt re-lists every motif so the second pass reinforces the lane's medium
-// without sanding the recognisable album elements away.
-function buildRestylePrompt(brief, sourceReferences, lane) {
-  const elements = formatElements(brief, sourceReferences)
+function truncatePromptPart(value, maxLength) {
+  const normalized = String(value || '').replace(/\s+/g, ' ').trim()
+  if (normalized.length <= maxLength) return normalized
+
+  const shortened = normalized.slice(0, maxLength + 1)
+  const lastSpace = shortened.lastIndexOf(' ')
+  return shortened.slice(0, lastSpace > maxLength * 0.6 ? lastSpace : maxLength).replace(/[,:;\s-]+$/, '')
+}
+
+function promptSentence(value) {
+  return `${String(value || '').replace(/\s+/g, ' ').trim().replace(/[.!?]+$/, '')}.`
+}
+
+function compactRestyleAvoid(lane) {
+  const mediumMismatch = lane.kind === 'photo'
+    ? 'illustration, cartoon, vector art'
+    : 'photorealism, DSLR, 3D, CGI, bokeh'
 
   return [
+    ...(lane.negatives || []),
+    'grid, contact sheet, tiled album covers, separate panels',
+    mediumMismatch,
+    'posed lineup, objects on plinths, giant central sculpture'
+  ].join(', ')
+}
+
+// The full restyle prompt re-lists every motif. Backends with a hard prompt ceiling receive a
+// compact version that preserves the style, composition, palette, motif, safety, and no-text
+// instructions instead of blindly truncating the most important guardrails from the end.
+function buildRestylePrompt(brief, sourceReferences, lane, maxLength = Infinity) {
+  const elements = formatElements(brief, sourceReferences)
+  const palette = brief.palette.length > 0 ? brief.palette.join(', ') : 'the existing palette drawn from the source artwork'
+  const avoid = negativeTermsForLane(lane).join(', ')
+
+  const fullPrompt = [
     `Restyle this image as ${lane.medium}.`,
     lane.styleDirective,
     `Keep the existing composition, and keep every one of these motifs clearly recognisable: ${elements}.`,
+    lane.motifTreatment,
+    `Preserve this composition grammar: ${lane.composition}`,
+    `Preserve the colour direction: ${palette} - ${lane.paletteTreatment}.`,
     'Keep the image safe and tasteful: no children or minors, no gore, nudity, or sexual content.',
-    'Do not add any text, letters, words, numbers, captions, logos, watermarks, or signage.'
+    'Do not add any text, letters, words, numbers, captions, logos, watermarks, or signage.',
+    `Avoid: ${avoid}.`
   ].join(' ').replace(/\s+/g, ' ').trim()
+
+  if (fullPrompt.length <= maxLength) return fullPrompt
+
+  const guardrailParts = [
+    'Adults only; no gore, nudity, or sexual content.',
+    'No text, letters, words, numbers, captions, logos, watermarks, or signage.',
+    `Avoid: ${compactRestyleAvoid(lane)}.`
+  ]
+  const guardrails = guardrailParts.join(' ')
+  const compactCoreParts = [
+    promptSentence(`Restyle as ${lane.medium}`),
+    'Preserve the existing scene, subject placement, and every recognisable motif; do not add, remove, or rearrange subjects.',
+    promptSentence(`Motif treatment: ${lane.motifTreatment}`),
+    promptSentence(`Composition: ${lane.composition}`),
+    promptSentence(`Palette: ${palette}; ${lane.paletteTreatment}`)
+  ]
+  const compactPrompt = [...compactCoreParts, ...guardrailParts].join(' ').replace(/\s+/g, ' ').trim()
+
+  if (compactPrompt.length <= maxLength) return compactPrompt
+
+  // If a future lane has unusually long prose, the input image already contains the motifs;
+  // drop only the verbose lane-specific motif explanation and keep every hard guardrail.
+  const essentialCore = compactCoreParts.filter(part => !part.startsWith('Motif treatment:')).join(' ')
+
+  if (guardrails.length > maxLength) {
+    throw new Error(`Restyle guardrails exceed the backend prompt limit of ${maxLength} characters`)
+  }
+
+  const coreBudget = Math.max(0, maxLength - guardrails.length - 1)
+  const prompt = `${truncatePromptPart(essentialCore, coreBudget)} ${guardrails}`.trim()
+  return prompt
 }
 
 // Recraft's image-to-image input must be under 5 MB (and within 4096px); the compose stage
@@ -796,7 +880,7 @@ async function applyRestyleStage({ lane, brief, sourceReferences, composeImageUr
     return null
   }
 
-  const prompt = buildRestylePrompt(brief, sourceReferences, lane)
+  const prompt = buildRestylePrompt(brief, sourceReferences, lane, backend.maxPromptLength)
   if (debug) {
     console.log(`  Restyle (${backend.label}): ${prompt}`)
   }
@@ -1151,5 +1235,7 @@ export {
   humanizeImageName,
   NEGATIVE_TERMS,
   TEXT_NEGATIVE_TERMS,
-  negativeTermsForLane
+  negativeTermsForLane,
+  buildGenerationPrompt,
+  buildRestylePrompt
 }

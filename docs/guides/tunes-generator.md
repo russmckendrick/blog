@@ -208,26 +208,26 @@ The weekly tunes workflow generates one original, cohesive AI scene built from t
 
 ### Creative-Direction Lanes
 
-Lanes live in `scripts/lib/tunes-lanes.js` (run `node scripts/fal-tunes-cover.js --list-lanes` for the catalogue). Five are photographic and seven are print/illustration media — the print lanes deliberately echo the site's paper-and-ink Print Edition design language:
+Lanes live in `scripts/lib/tunes-lanes.js` (run `node scripts/fal-tunes-cover.js --list-lanes` for the catalogue). Six are photographic and six are print/illustration media — the print lanes deliberately echo the site's paper-and-ink Print Edition design language:
 
 | Lane | Kind | Look |
 |------|------|------|
 | `documentary-street` | photo | candid 35mm reportage, motifs found in a lived-in place, nothing posed |
 | `macro-detail` | photo | extreme macro, motifs as a miniature tabletop world |
-| `aerial-birdseye` | photo | straight-down aerial, motifs at landscape scale |
+| `analog-rehearsal-room` | photo | candid grainy 35mm documentary of musicians actively rehearsing |
 | `neon-noir` | photo | cinematic neon night (the one after-dark lane) |
 | `miniature-diorama` | photo | handmade model world shot with tilt-shift |
+| `long-exposure-light` | photo | real night photography shaped by moving light trails and reflections |
 | `risograph` | print | 2-3 ink riso print, grain and misregistration |
 | `screenprint-gigposter` | print | heavy-ink gig poster, halftone shading |
-| `cut-paper-collage` | print | layered card-stock collage with real drop shadows |
+| `retro-sci-fi-paperback` | print | richly painted 1960s/70s speculative paperback art, without lettering |
 | `painterly-gouache` | print | matte gouache painting, visible brushwork |
-| `linocut` | print | hand-carved linocut, one or two inks |
 | `vintage-travel-poster` | print | mid-century travel-poster illustration |
 | `zine-photocollage` | print | xeroxed halftone zine paste-up, b/w plus one spot colour |
 
 Each lane bundles a medium, a style-first prompt opening, a motif treatment (how the album elements are rendered while staying recognisable), a composition grammar, a palette treatment, per-lane negatives, and its image pipeline. Text and grid/montage negatives always apply; photo lanes additionally ban illustration looks while print lanes ban photoreal/3D looks; and every lane bans the old weekly formula (posed ensemble, props on plinths, one giant central sculpture). The lane rotates deterministically from the post-date seed — every lane appears exactly once per 12 weeks, with the order re-dealt each cycle so lane/lighting pairings never repeat (see `epochShuffledPick` in `scripts/lib/tunes-lanes.js`). Force a lane with `--lane=<id>` (alias `--style`), env `TUNES_COVER_LANE`, or restrict the rotation with `settings.cover_lanes` in `scripts/tunes-config.yaml`.
 
-**Image backends:** the actual image calls are delegated to pluggable backends in `scripts/lib/image-backends/`. The **compose** step needs a multi-reference editor — **Nano Banana** (`fal-ai/nano-banana-2/edit`) or **GPT Image 2** (`openai/gpt-image-2/edit`) — and comes from the lane (print lanes prefer nano-banana, which follows style-first prompting more faithfully), falling back to `settings.cover_backend` in `scripts/tunes-config.yaml`. Some print lanes then run an optional **restyle** stage over the composed image — **Recraft** (`fal-ai/recraft/v3/image-to-image`, named illustration/vector styles) or **Ideogram** (`fal-ai/ideogram/v3/remix`) — with conservative strengths so the motifs survive; a restyle failure logs a warning and ships the composed image. Kill switches: `--no-restyle` per run, `settings.cover_restyle: off` globally. Per-backend env overrides: `NANO_BANANA_MODEL`, `GPT_IMAGE_2_MODEL`, `RECRAFT_I2I_MODEL`, `IDEOGRAM_REMIX_MODEL` etc.
+**Image backends:** the actual image calls are delegated to pluggable backends in `scripts/lib/image-backends/`. The **compose** step needs a multi-reference editor — **Nano Banana** (`fal-ai/nano-banana-2/edit`) or **GPT Image 2** (`openai/gpt-image-2/edit`) — and comes from the lane (print lanes prefer nano-banana, which follows style-first prompting more faithfully), falling back to `settings.cover_backend` in `scripts/tunes-config.yaml`. Some print lanes then run an optional **restyle** stage over the composed image — **Recraft** (`fal-ai/recraft/v3/image-to-image`, named illustration/vector styles) or **Ideogram** (`fal-ai/ideogram/v3/remix`) — with conservative strengths so the motifs survive. The restyle prompt repeats the lane's motif treatment, composition, palette, no-text rule, negative terms, and anti-cliché rules so the second pass cannot silently discard the original guardrails. When Recraft's 1,000-character ceiling would be exceeded, the prompt is compacted structurally rather than chopped at the end, preserving those guardrails while removing verbose motif enumeration; a restyle failure logs a warning and ships the composed image. Kill switches: `--no-restyle` per run, `settings.cover_restyle: off` globally. Per-backend env overrides: `NANO_BANANA_MODEL`, `GPT_IMAGE_2_MODEL`, `RECRAFT_I2I_MODEL`, `IDEOGRAM_REMIX_MODEL` etc.
 
 ### Run History and Do-Not-Repeat Memory
 
@@ -256,7 +256,8 @@ Some sleeves consistently spoil the header — most often covers dominated by la
 
 ```js
 export const COVER_BLOCKLIST = [
-  { artist: 'Prince', album: '1999', reason: 'large "PRINCE 1999" lettering leaks into the cover as text' }
+  { artist: 'Prince', album: '1999', reason: 'large "PRINCE 1999" lettering leaks into the cover as text' },
+  { artist: 'They Might Be Giants', album: 'Flood', reason: 'central band-name lettering was copied into a generated cover' }
 ]
 ```
 
@@ -267,11 +268,11 @@ Matching is on the album name only and is loose (case, spacing, and punctuation 
 1. Resolves the week's creative-direction lane (flag > env > config > deterministic rotation) and, for photo lanes, the lighting direction.
 2. Ranks album inputs from the week's top albums first.
 3. Drops any albums listed in the cover blocklist (`scripts/tunes-cover-blocklist.js`).
-4. Selects the ~7-8 strongest covers using lightweight local colour and text-density analysis (configurable via `TUNES_COVER_PRIMARY_INPUTS` / `TUNES_COVER_MAX_INPUTS`).
+4. Selects the ~7-8 strongest covers using lightweight local colour and full-height text-density analysis (configurable via `TUNES_COVER_PRIMARY_INPUTS` / `TUNES_COVER_MAX_INPUTS`). Text-likelihood affects the entire primary ranking, and strongly text-heavy candidates are held back unless a small week needs them as fallbacks.
 5. Uploads those covers to FAL storage as source material.
 6. Uses OpenAI vision, when `OPENAI_API_KEY` is available, to describe each cover and design one cohesive scene from their combined contents in the lane's medium, avoiding the recent concepts recorded in the history file.
 7. Converts that brief into a style-first natural-language FAL prompt (medium, scene, motifs, composition, colour, lighting) with the lane's negative set, and composes the image with the lane's multi-reference backend.
-8. Print lanes with a restyle stage then run the composed image through Recraft or Ideogram to lock the medium in; failures fall back to the composed image.
+8. Print lanes with a restyle stage then run the composed image through Recraft or Ideogram to lock the medium in, repeating the lane's composition, palette, negative terms, anti-cliché rules, and no-text instruction; failures fall back to the composed image.
 9. Saves the full generated output, the `-small` derivative, and the `.json` run sidecar; the weekly flow also appends the run to the history file.
 
 If `OPENAI_API_KEY` is not available, the script uses a deterministic fallback brief that asks for one cohesive scene in the lane's medium combining elements from every cover. `FAL_KEY` is required because there is no local image-generation fallback.

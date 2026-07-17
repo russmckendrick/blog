@@ -1,0 +1,31 @@
+{
+  "date": "2026-05-18",
+  "type": "cover",
+  "lane": "documentary-street",
+  "lighting": "fresh early-morning light with a low sun, clean cool highlights and long soft shadows",
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Sunrise street corner where sacred, industrial, and nocturnal symbols collide in everyday life",
+  "scene": "A candid 35mm early-morning street photograph on a slightly scruffy city block just after sunrise: the camera catches the sidewalk off-centre as a busker trio comes into view mid-song near an old glass phone booth, one adult singer half-turned from a microphone while a trumpet player and violinist drift in and out of the frame, echoing the silhouetted trio from the poster-like cover but rendered as real people in dark coats. Behind them, a corrugated shop shutter is painted with a large weathered red radiation symbol on sun-faded yellow, its industrial graphic bold in the low cool light. In the phone booth, taped flyers and reflective metal takeaway cups glint beside a few translucent red and green dice abandoned on the booth shelf and on the pavement gutter, while a nearby bakery window is covered with white painted line drawings of hearts, clubs, spades, and diamonds. Above the street, a realistic owl with blue-grey feathers and startling amber eyes lifts from a traffic light arm, wings spread across the top edge of the frame, caught mid-beat. On the wall farther back, a chipped devotional mural shows a haloed winged figure in brown and blue robes, making the angel motif feel native to the neighbourhood rather than staged. Cars pass, one pedestrian cuts through the foreground slightly blurred, long shadows rake across the concrete, and the whole scene feels discovered in one connected morning city moment.",
+  "palette": [
+    "sun-faded yellow",
+    "signal red",
+    "brass gold",
+    "amber",
+    "teal green"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one candid 35mm documentary street photograph - honest reportage with natural imperfection, subtle film grain, and real life caught mid-moment. The image is a 16:9 music blog header. Scene: A candid 35mm early-morning street photograph on a slightly scruffy city block just after sunrise: the camera catches the sidewalk off-centre as a busker trio comes into view mid-song near an old glass phone booth, one adult singer half-turned from a microphone while a trumpet player and violinist drift in and out of the frame, echoing the silhouetted trio from the poster-like cover but rendered as real people in dark coats. Behind them, a corrugated shop shutter is painted with a large weathered red radiation symbol on sun-faded yellow, its industrial graphic bold in the low cool light. In the phone booth, taped flyers and reflective metal takeaway cups glint beside a few translucent red and green dice abandoned on the booth shelf and on the pavement gutter, while a nearby bakery window is covered with white painted line drawings of hearts, clubs, spades, and diamonds. Above the street, a realistic owl with blue-grey feathers and startling amber eyes lifts from a traffic light arm, wings spread across the top edge of the frame, caught mid-beat. On the wall farther back, a chipped devotional mural shows a haloed winged figure in brown and blue robes, making the angel motif feel native to the neighbourhood rather than staged. Cars pass, one pedestrian cuts through the foreground slightly blurred, long shadows rake across the concrete, and the whole scene feels discovered in one connected morning city moment. Weave in recognisable elements taken from the 6 uploaded album covers: source 1: a large red radiation symbol painted on a yellow shutter; source 2: translucent dice among reflective metal cups; source 3: a wide-winged owl with glowing yellow eyes; source 4: a trio of street musicians: singer, trumpeter, and violinist; source 5: a haloed winged angel figure as a mural; source 6: an old glass phone booth on a city sidewalk. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Let each album motif appear as a real thing genuinely found in the location - painted on a shutter, carried by a passer-by, stacked outside a shop, perched on a wire - discovered by the camera, never staged for it. Composition: An off-centre, imperfect frame caught mid-moment: subjects moving through the shot, half-glimpsed details, layered foreground and background life. Colour direction: sun-faded yellow, signal red, brass gold, amber, teal green - true-to-life colour with the natural palette of the place, accented by the boldest colours from the sleeves. Time of day and light: fresh early-morning light with a low sun, clean cool highlights and long soft shadows. Mood: mysterious, lively, reverent, and slightly uncanny. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Radio-Activity.jpg",
+    "King.jpg",
+    "Fly-by-Night.jpg",
+    "Motorcade-of-Generosity.jpg",
+    "Pilgrimage.jpg",
+    "Pocket-Full-of-Kryptonite.jpg"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "date": "2026-03-02",
+  "type": "cover",
+  "lane": "analog-rehearsal-room",
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Analog rehearsal-room documentary weaving together the week's album motifs",
+  "scene": "one cohesive, imaginative scene rendered as a candid analog 35mm documentary photograph of adult musicians actively rehearsing in a real working room, combining recognisable elements drawn from every uploaded album cover, tied together by one setting, one light, and one consistent treatment",
+  "palette": [],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one candid analog 35mm photograph of adult musicians caught mid-rehearsal in a lived-in practice room - genuine musical concentration, natural interaction, fine film grain, mixed practical light, and subtle movement in hands or drumsticks while faces and instruments remain crisp; nobody is posing or looking at the camera. The image is a 16:9 music blog header. Scene: one cohesive, imaginative scene rendered as a candid analog 35mm documentary photograph of adult musicians actively rehearsing in a real working room, combining recognisable elements drawn from every uploaded album cover, tied together by one setting, one light, and one consistent treatment. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: a recognisable element from How to Clean Everything; source 2: a recognisable element from Angel Dust; source 3: a recognisable element from Siamese Dream; source 4: a recognisable element from Betty; source 5: a recognisable element from Dos Dedos Mis Amigos; source 6: a recognisable element from The House of Love. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Translate the album motifs into believable parts of the same rehearsal: the musicians and their styling, instrument finishes and shapes, the room architecture, worn furnishings, cables, cases, lighting, and atmosphere. Blend the motifs across the whole scene instead of assigning each one a separate displayed object, poster, or emblem. Composition: One continuous wide rehearsal room photographed unobtrusively from a doorway or back corner, with layered foreground equipment, musicians playing together through the middle ground, and room depth behind them; active, asymmetric, and loosely framed like a real moment rather than a band portrait. Colour direction: a palette pulled from the uploaded artwork - muted analog colour drawn from the sleeves, with warm tungsten and cool fluorescent practical light, soft highlight bloom, subdued blacks, and natural skin tones. Mood: imaginative and music-led. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, posed band portrait, publicity photo, live concert stage, musicians looking at camera, symmetrical lineup, empty recording studio, pristine equipment showroom, album-cover posters, separate displayed symbols, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "How-to-Clean-Everything.jpg",
+    "Angel-Dust.jpg",
+    "Siamese-Dream.jpg",
+    "Betty.jpg",
+    "Dos-Dedos-Mis-Amigos.jpg",
+    "The-House-of-Love.jpg",
+    "Mansun-Retold.jpg",
+    "The-Seeds-of-Love.jpg"
+  ]
+}

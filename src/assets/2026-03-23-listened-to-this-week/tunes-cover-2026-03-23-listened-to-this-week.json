@@ -1,0 +1,31 @@
+{
+  "date": "2026-03-23",
+  "type": "cover",
+  "lane": "risograph",
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "A dream meadow where diner relics, beasts, glamour, and ornament share one horizon",
+  "scene": "An asymmetric risograph poster shows a surreal dawn meadow-diner where a woven pack horse climbs diagonally from lower left toward upper right along a sloping field, carrying basket panniers filled with oversized flowers and a single tall glass on a tray. Behind and above it, the land rises into a fan of peacock feathers that doubles as the canopy of the world, each eye-spot simplified into bold concentric ink rings with grainy overprint. Mid-slope, a black-and-white patched cow turns its head beneath the feather canopy while, farther up the diagonal, a glam-rock silhouette in platform boots leans against a blocky amplifier shaped from stacked cups and bottles, as if part of a breakfast-city ruin. Nestled into the hillside fabric of the scene is a reclining adult figure with flowing hair rendered as lavender wave-shapes, accompanied by two hound silhouettes that echo the curves of the grass. In the open negative space near the top left, a large sculptural adult face with wild curls emerges softly from cloud and paper grain like a mural or moon, watching over the landscape. Everything is flattened into two to three bold inks with visible misregistration: the peacock fan, flowers, diner vessels, animal forms, and hair all interlock as one continuous environment rather than separate objects.",
+  "palette": [
+    "sunflower yellow",
+    "cobalt blue",
+    "lavender purple"
+  ],
+  "composeBackend": "nano-banana",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "fal-ai/nano-banana-2/edit",
+  "prompt": "Create one bold risograph print - flat layered shapes, coarse riso grain, overlapping translucent inks slightly out of register, paper texture showing through. The image is a 16:9 music blog header. Scene: An asymmetric risograph poster shows a surreal dawn meadow-diner where a woven pack horse climbs diagonally from lower left toward upper right along a sloping field, carrying basket panniers filled with oversized flowers and a single tall glass on a tray. Behind and above it, the land rises into a fan of peacock feathers that doubles as the canopy of the world, each eye-spot simplified into bold concentric ink rings with grainy overprint. Mid-slope, a black-and-white patched cow turns its head beneath the feather canopy while, farther up the diagonal, a glam-rock silhouette in platform boots leans against a blocky amplifier shaped from stacked cups and bottles, as if part of a breakfast-city ruin. Nestled into the hillside fabric of the scene is a reclining adult figure with flowing hair rendered as lavender wave-shapes, accompanied by two hound silhouettes that echo the curves of the grass. In the open negative space near the top left, a large sculptural adult face with wild curls emerges softly from cloud and paper grain like a mural or moon, watching over the landscape. Everything is flattened into two to three bold inks with visible misregistration: the peacock fan, flowers, diner vessels, animal forms, and hair all interlock as one continuous environment rather than separate objects. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: woven straw horse with red ribbon and side baskets; source 2: raised tray with a tall glass amid a city of cups and bottles; source 3: black-and-white cow turning its head in a grassy field; source 4: close-up curly-haired adult face with direct gaze; source 5: glam-rock silhouette leaning beside an amplifier; source 6: reclining woman with two hounds in flowing fabric; source 7: flower-adorned stylized adult faces around open space; source 8: front-facing peacock with fully fanned tail. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Redraw each album motif as bold flat printed shapes in the limited ink colours - simplified but instantly recognisable silhouettes and forms. Composition: An asymmetric poster composition with one strong diagonal flow, motifs at varied scales, and generous negative space. Colour direction: sunflower yellow, cobalt blue, lavender purple - strictly two or three ink colours pulled from the sleeves, overprinting where they overlap, on off-white paper. Mood: ornamental, surreal, theatrical, wistful. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Straw-Donkey-The-Singles.jpg",
+    "Breakfast-in-America.jpg",
+    "Atom-Heart-Mother.jpg",
+    "Amen-So-Be-It.jpg",
+    "Electric-Warrior.jpg",
+    "Hounds-of-Love.jpg",
+    "Let-It-Bee.jpg",
+    "Expecting-To-Fly.jpg"
+  ]
+}

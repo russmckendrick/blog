@@ -1,0 +1,33 @@
+{
+  "date": "2026-01-05",
+  "type": "cover",
+  "lane": "neon-noir",
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Rainy neon arts district where cosmic relics and synth-era symbols share one street",
+  "scene": "From a low rain-slick street angle in a neon-soaked city at night, a dark out-of-focus curbside shape anchors the foreground while the midground holds a lone adult in a pale pink suit beside another adult in a dark tailored coat under a cobalt streetlamp, echoing the poised dual figures and intimate portrait mood without staging a group. Behind them, a chrome resonator guitar hangs vertically as a glowing pawnshop sign, its metal body catching electric blue and amber reflections in the wet pavement. Across the street, a shattered concrete peace-sign arch is built into a ruined overpass, its exposed rebar lit by ember-red signage, and a giant crescent neon mounted on the facade curves through smoky mist above the skyline. In a flooded gutter, a black swan-shaped storefront display sits in a nest of silver wire and rain-soaked branches under a veil of translucent plastic, mirrored in the street like liquid crimson glass. High on a building corner, a gilded five-point star supports a theatrical mannequin of an adult woman in draped jewel-toned fabric, posed like an old celestial figure in a vintage shop window, while nearby planets and comet streaks appear as projections across wet brick. On a shadowy wall, four faceted blue mannequin heads emerge as a luminous digital mural with red lips and sharp planes, and farther back a grand sun-face relief crowns an arcade entrance surrounded by umbrellas, sunflowers, leaves, orbit-like metal spheres, heart signage, and chalky swirling light trails, tying the whole block into one surreal nocturnal district. Everything is unified by rain, reflections, steam, saturated neon pinks and blues, and deep black shadow.",
+  "palette": [
+    "deep black",
+    "electric blue",
+    "neon pink",
+    "sodium amber",
+    "crimson red"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one cinematic neon-noir night photograph - wet streets, glowing wordless signs, deep shadow and electric colour. The image is a 16:9 music blog header. Scene: From a low rain-slick street angle in a neon-soaked city at night, a dark out-of-focus curbside shape anchors the foreground while the midground holds a lone adult in a pale pink suit beside another adult in a dark tailored coat under a cobalt streetlamp, echoing the poised dual figures and intimate portrait mood without staging a group. Behind them, a chrome resonator guitar hangs vertically as a glowing pawnshop sign, its metal body catching electric blue and amber reflections in the wet pavement. Across the street, a shattered concrete peace-sign arch is built into a ruined overpass, its exposed rebar lit by ember-red signage, and a giant crescent neon mounted on the facade curves through smoky mist above the skyline. In a flooded gutter, a black swan-shaped storefront display sits in a nest of silver wire and rain-soaked branches under a veil of translucent plastic, mirrored in the street like liquid crimson glass. High on a building corner, a gilded five-point star supports a theatrical mannequin of an adult woman in draped jewel-toned fabric, posed like an old celestial figure in a vintage shop window, while nearby planets and comet streaks appear as projections across wet brick. On a shadowy wall, four faceted blue mannequin heads emerge as a luminous digital mural with red lips and sharp planes, and farther back a grand sun-face relief crowns an arcade entrance surrounded by umbrellas, sunflowers, leaves, orbit-like metal spheres, heart signage, and chalky swirling light trails, tying the whole block into one surreal nocturnal district. Everything is unified by rain, reflections, steam, saturated neon pinks and blues, and deep black shadow. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: chrome resonator guitar; source 2: black swan in a twig nest under translucent veil; source 3: cracked concrete peace-sign with crescent; source 4: adult woman posed on a golden star; source 5: two stylish adults against blue-pink glow; source 6: intimate close-up mood of two adult faces; source 7: four faceted blue mannequin heads with red lips; source 8: large golden sun face with umbrellas and symbolic objects. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Reimagine each album motif as something real in the night city - a neon shape, a reflection in the wet street, a figure under a lamp, a lit shopfront display, a shadow thrown on brick. Composition: A low cinematic angle with layered depth: a dark foreground shape, a clear midground subject, and glowing colour behind. Colour direction: deep black, electric blue, neon pink, sodium amber, crimson red - saturated artificial colour - neon pinks, electric blues, sodium ambers - cutting through deep black shadow. Mood: melancholic, futuristic, dreamlike. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Brothers-in-Arms.jpg",
+    "Speak-Spell.jpg",
+    "eMOTIVe.jpg",
+    "Mellon-Collie-and-the-Infinite-Sadness.jpg",
+    "Swimmer.jpg",
+    "Songs-from-the-Big-Chair.jpg",
+    "Techno-Pop.jpg",
+    "The-Seeds-of-Love.jpg"
+  ]
+}

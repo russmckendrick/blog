@@ -193,16 +193,16 @@ export const LANES = [
     pipeline: [{ role: 'compose' }]
   },
   {
-    id: 'aerial-birdseye',
-    label: 'Aerial bird\'s-eye',
+    id: 'analog-rehearsal-room',
+    label: 'Analog rehearsal-room documentary',
     kind: 'photo',
-    medium: 'a top-down aerial photograph shot straight down from high above',
-    styleDirective: 'Create one striking aerial photograph shot straight down from directly overhead, like a drone at altitude.',
-    motifTreatment: 'Render each album motif at landscape scale so it reads from the air - field patterns, rooftops, pools, painted courts, winding paths, wakes in water.',
-    composition: 'Bold map-like geometry seen from directly above: strong shapes, paths and edges dividing the frame, no horizon anywhere.',
-    paletteTreatment: 'bold blocks of natural colour laid out like a living map',
-    lighting: true,
-    negatives: ['horizon line', 'eye-level view'],
+    medium: 'a candid analog 35mm documentary photograph of adult musicians actively rehearsing in a real working room',
+    styleDirective: 'Create one candid analog 35mm photograph of adult musicians caught mid-rehearsal in a lived-in practice room - genuine musical concentration, natural interaction, fine film grain, mixed practical light, and subtle movement in hands or drumsticks while faces and instruments remain crisp; nobody is posing or looking at the camera.',
+    motifTreatment: 'Translate the album motifs into believable parts of the same rehearsal: the musicians and their styling, instrument finishes and shapes, the room architecture, worn furnishings, cables, cases, lighting, and atmosphere. Blend the motifs across the whole scene instead of assigning each one a separate displayed object, poster, or emblem.',
+    composition: 'One continuous wide rehearsal room photographed unobtrusively from a doorway or back corner, with layered foreground equipment, musicians playing together through the middle ground, and room depth behind them; active, asymmetric, and loosely framed like a real moment rather than a band portrait.',
+    paletteTreatment: 'muted analog colour drawn from the sleeves, with warm tungsten and cool fluorescent practical light, soft highlight bloom, subdued blacks, and natural skin tones',
+    lighting: false,
+    negatives: ['posed band portrait', 'publicity photo', 'live concert stage', 'musicians looking at camera', 'symmetrical lineup', 'empty recording studio', 'pristine equipment showroom', 'album-cover posters', 'separate displayed symbols'],
     antiCliche: ANTI_CLICHE,
     pipeline: [{ role: 'compose' }]
   },
@@ -270,23 +270,18 @@ export const LANES = [
     ]
   },
   {
-    id: 'cut-paper-collage',
-    label: 'Cut-paper collage',
+    id: 'retro-sci-fi-paperback',
+    label: 'Retro science-fiction paperback',
     kind: 'print',
-    medium: 'a layered cut-paper collage photographed flat, with real depth between the layers',
-    styleDirective: 'Create one layered cut-paper collage - hard scissor-cut edges, occasional torn fringes, coloured card stock stacked with soft drop shadows between the layers.',
-    motifTreatment: 'Cut each album motif from coloured paper - simplified, hard-edged shapes layered over one another, every motif readable at a glance.',
-    composition: 'Overlapping planes of paper building one scene together, depth coming from the shadows between layers.',
-    paletteTreatment: 'matte, chalky construction-paper colours drawn from the sleeves',
+    medium: 'a richly painted 1960s or 1970s science-fiction paperback illustration with vintage airbrush texture and aged print grain',
+    styleDirective: 'Create one richly detailed retro science-fiction paperback painting from the 1960s or 1970s - hand-painted gouache, oils, and soft airbrush gradients, strange cosmic scale, aged print grain, and absolutely no lettering or border.',
+    motifTreatment: 'Reimagine each album motif as something that belongs in the same speculative world - alien terrain, colossal machinery, celestial phenomena, unusual flora, explorers, or distant structures - painted consistently and still recognisable.',
+    composition: 'One panoramic otherworldly scene with a dramatic foreground anchor, a clear horizon, immense environmental scale, and layered depth into a strange sky; never a book-cover frame or a collection of separate vignettes.',
+    paletteTreatment: 'luminous vintage-pulp colour drawn from the sleeves - deep indigo shadows, radiant horizon light, and a few saturated cosmic accents softened by aged print',
     lighting: false,
-    // The medium IS a collage, so the shared anti-collage negative is skipped for this lane.
-    collageMedium: true,
-    negatives: [],
+    negatives: ['book mockup', 'book-cover border', 'blank title area', 'modern glossy concept art', 'flat vector shapes'],
     antiCliche: ANTI_CLICHE,
-    pipeline: [
-      { role: 'compose', backend: 'nano-banana', fallback: 'gpt-image-2' },
-      { role: 'restyle', backend: 'recraft-i2i', params: { style: 'vector_illustration/cutout', strength: 0.3 } }
-    ]
+    pipeline: [{ role: 'compose', backend: 'nano-banana', fallback: 'gpt-image-2' }]
   },
   {
     id: 'painterly-gouache',
@@ -303,21 +298,18 @@ export const LANES = [
     pipeline: [{ role: 'compose', backend: 'nano-banana', fallback: 'gpt-image-2' }]
   },
   {
-    id: 'linocut',
-    label: 'Linocut print',
-    kind: 'print',
-    medium: 'a linocut print with bold hand-carved linework and solid ink on textured paper',
-    styleDirective: 'Create one linocut print - bold hand-carved lines, chunky interlocking positive and negative shapes, ink rolled onto textured paper.',
-    motifTreatment: 'Carve each album motif into the block - strong simplified forms built from gouged lines and solid areas of ink, each still recognisable.',
-    composition: 'High-contrast interlocking shapes patterning the whole frame like a woodblock illustration.',
-    paletteTreatment: 'one or two ink colours on warm paper - black plus a single accent colour from the sleeves',
+    id: 'long-exposure-light',
+    label: 'Long-exposure light photography',
+    kind: 'photo',
+    medium: 'a real long-exposure night photograph made in-camera with moving light, illuminated architecture, and reflections',
+    styleDirective: 'Create one genuine long-exposure night photograph - a locked-off camera, real environmental depth, continuous moving light trails, luminous reflections, and crisp stationary surfaces anchoring the frame.',
+    motifTreatment: 'Build each album motif into the same physical night-time location: express suitable shapes through deliberate continuous light trails, projections, illuminated structures, reflections, or moving figures, while keeping solid subjects tangible and recognisable.',
+    composition: 'One deep-perspective night scene anchored by a strong real location, with connected light paths sweeping through foreground, middle ground, and distance rather than isolated glowing symbols floating on black.',
+    paletteTreatment: 'deep natural night tones with two or three luminous colours drawn from the sleeves, bright light trails, controlled highlights, and reflective colour',
     lighting: false,
-    negatives: [],
+    negatives: ['daylight scene', 'flat black background', 'floating neon icons', 'random light scribbles', 'laser-show stage', 'digital glow effects'],
     antiCliche: ANTI_CLICHE,
-    pipeline: [
-      { role: 'compose', backend: 'nano-banana', fallback: 'gpt-image-2' },
-      { role: 'restyle', backend: 'recraft-i2i', params: { style: 'vector_illustration/linocut', strength: 0.4 } }
-    ]
+    pipeline: [{ role: 'compose' }]
   },
   {
     id: 'vintage-travel-poster',

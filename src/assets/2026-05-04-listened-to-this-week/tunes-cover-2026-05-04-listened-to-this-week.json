@@ -1,0 +1,33 @@
+{
+  "date": "2026-05-04",
+  "type": "cover",
+  "lane": "macro-detail",
+  "lighting": "a vivid sunny afternoon with strong directional sun, saturated colour and sparkling highlights",
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Sunlit miniature cosmos blooming inside a boot",
+  "scene": "An extreme close-up macro photograph peers into a tiny sunlit terrarium built inside the hollow toe of a weathered miniature lace-up boot, its orange-red leather filling most of the frame with cracked grain, dusty stitches, and sparkling highlights from a vivid afternoon sun. From the boot’s opening rises the dominant subject: a delicate translucent lavender silk flower whose petals curl like flowing fabric around a tiny porcelain-like adult face, while two miniature sleek hound figurines nestle against its base. The flower’s stamens branch into fine red ink-like filaments suspended in clear resin droplets, as if scarlet dye were blooming through water. Behind this sharp foreground, the boot interior becomes a fantastical landscape in creamy white dust and pale green moss: a teal-coated mannequin stands tiny and still on a chalky ridge, while dragon silhouettes appear as cut-paper shadows cast across the boot lining. Farther back, soft bokeh reveals a small yellow orb like a planet, a red dancer-shaped figurine arched beside toy amplifier blocks and a dark retro robot piece, a bright blue star glinting above a curved translucent blue screen of glass, and a thin cobalt line incised across a white enamel shard with a tiny embossed circular token half-buried nearby. Black-and-yellow striped paper wraps the distant ground like hazard dunes, unified by saturated sunlight, crisp shadows, and luminous reflections so the whole miniature world feels discovered rather than arranged.",
+  "palette": [
+    "electric blue",
+    "deep black",
+    "pale cyan",
+    "crimson red",
+    "cream white"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one extreme macro photograph - a single tabletop-scale world seen from inches away with razor-thin depth of field. The image is a 16:9 music blog header. Scene: An extreme close-up macro photograph peers into a tiny sunlit terrarium built inside the hollow toe of a weathered miniature lace-up boot, its orange-red leather filling most of the frame with cracked grain, dusty stitches, and sparkling highlights from a vivid afternoon sun. From the boot’s opening rises the dominant subject: a delicate translucent lavender silk flower whose petals curl like flowing fabric around a tiny porcelain-like adult face, while two miniature sleek hound figurines nestle against its base. The flower’s stamens branch into fine red ink-like filaments suspended in clear resin droplets, as if scarlet dye were blooming through water. Behind this sharp foreground, the boot interior becomes a fantastical landscape in creamy white dust and pale green moss: a teal-coated mannequin stands tiny and still on a chalky ridge, while dragon silhouettes appear as cut-paper shadows cast across the boot lining. Farther back, soft bokeh reveals a small yellow orb like a planet, a red dancer-shaped figurine arched beside toy amplifier blocks and a dark retro robot piece, a bright blue star glinting above a curved translucent blue screen of glass, and a thin cobalt line incised across a white enamel shard with a tiny embossed circular token half-buried nearby. Black-and-yellow striped paper wraps the distant ground like hazard dunes, unified by saturated sunlight, crisp shadows, and luminous reflections so the whole miniature world feels discovered rather than arranged. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: a bright blue star beside a glowing translucent blue screen-like form; source 2: red ink-like tendrils blooming through clear droplets; source 3: an upstretched female reaching pose reimagined as the flower’s raised petal-arms; source 4: a tiny red cosmic dancer with a yellow planet and retro machine pieces; source 5: a teal-coated mannequin with dragon shadows behind it; source 6: a lavender-draped feminine bloom accompanied by two hounds; source 7: a thin blue line on white enamel with a small embossed circular token; source 8: a worn lace-up boot with black-yellow stripes and a blue plug cord. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Shrink each album motif into a tiny, exquisitely detailed object or texture inside this one miniature world - carved, folded, grown, or resting among the others. Composition: One dominant close subject filling the frame, the remaining motifs dissolving into soft bokeh layers behind it. Colour direction: electric blue, deep black, pale cyan, crimson red, cream white - rich naturalistic colour with luminous highlights where the light catches edges and textures. Time of day and light: a vivid sunny afternoon with strong directional sun, saturated colour and sparkling highlights. Mood: dreamlike, strange, radiant, and mythic. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Distant-Satellites.jpg",
+    "Effloresce.jpg",
+    "Free-Your-Mind-and-Your-Ass-Will-Follow.jpg",
+    "Dopes-to-Infinity.jpg",
+    "In-Times-of-Dragons.jpg",
+    "Hounds-of-Love.jpg",
+    "Songs-To-Remember.jpg",
+    "Live-Boots-Emerald-City-Cherry-Hill-New-Jersey-17th-April-1981.jpg"
+  ]
+}

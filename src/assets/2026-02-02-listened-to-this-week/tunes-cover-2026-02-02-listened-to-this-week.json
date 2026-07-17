@@ -1,0 +1,32 @@
+{
+  "date": "2026-02-02",
+  "type": "cover",
+  "lane": "zine-photocollage",
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Photocopied midnight street where portraits, motion, and fragments spill from the walls",
+  "scene": "A chaotic but balanced black-and-white photocopied zine spread centers on a torn halftone fragment of a marquee-lit street corner, its glowing bulb border reimagined as a jagged ring of repeated spot-red dots around the page’s anchor scene: a nighttime sidewalk where a white car nose, café chairs, and a cinema entrance collide into one urban stage. From the left, a rough cut-out of the forward-stepping dog strides across wet pavement, enlarged enough to feel like a guardian of the corner. Behind it, two blue-photo-style adults in long coats become stark black-and-white candid silhouettes mid-stride between bent café chairs. Rising at an odd angle from the curb, a wireframe adult figure made of patchwork paper scraps leans into an invisible wind, its trailing geometric pieces whipping across the composition as torn rectangles and ribbons. Near the center, a serene braided adult face appears as a pasted portrait shard with closed eyes, fused into the body of the street like a mural, while a horizontal guitar neck becomes a fence-like strip running under the crowd. On the right, a cropped halftone face with one intense eye and a white stripe across the cheeks looms as a poster fragment pasted over the theater wall. Below it, a tiny open wooden box sits cracked into the sidewalk, and from it emerges a crouched adult rendered as a small cut-out silhouette, as if the pavement itself contains hidden rooms. The whole page is unified by xerox grain, deep blacks, paper whites, and one loud red spot color splashed across the marquee bulbs, cheek stripe, scattered geometric scraps, and a hazy photocopied glow that echoes the abstract red field as an atmospheric backdrop rather than a separate panel.",
+  "palette": [
+    "black",
+    "white",
+    "photocopy gray",
+    "spot red"
+  ],
+  "composeBackend": "nano-banana",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "fal-ai/nano-banana-2/edit",
+  "prompt": "Create one DIY zine photo-collage - xeroxed halftone fragments, torn edges, tape marks, high-contrast photocopy grain, punk cut-and-paste energy. The image is a 16:9 music blog header. Scene: A chaotic but balanced black-and-white photocopied zine spread centers on a torn halftone fragment of a marquee-lit street corner, its glowing bulb border reimagined as a jagged ring of repeated spot-red dots around the page’s anchor scene: a nighttime sidewalk where a white car nose, café chairs, and a cinema entrance collide into one urban stage. From the left, a rough cut-out of the forward-stepping dog strides across wet pavement, enlarged enough to feel like a guardian of the corner. Behind it, two blue-photo-style adults in long coats become stark black-and-white candid silhouettes mid-stride between bent café chairs. Rising at an odd angle from the curb, a wireframe adult figure made of patchwork paper scraps leans into an invisible wind, its trailing geometric pieces whipping across the composition as torn rectangles and ribbons. Near the center, a serene braided adult face appears as a pasted portrait shard with closed eyes, fused into the body of the street like a mural, while a horizontal guitar neck becomes a fence-like strip running under the crowd. On the right, a cropped halftone face with one intense eye and a white stripe across the cheeks looms as a poster fragment pasted over the theater wall. Below it, a tiny open wooden box sits cracked into the sidewalk, and from it emerges a crouched adult rendered as a small cut-out silhouette, as if the pavement itself contains hidden rooms. The whole page is unified by xerox grain, deep blacks, paper whites, and one loud red spot color splashed across the marquee bulbs, cheek stripe, scattered geometric scraps, and a hazy photocopied glow that echoes the abstract red field as an atmospheric backdrop rather than a separate panel. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: a hazy red atmospheric field; source 2: the forward-stepping dog; source 3: the braided woman with closed eyes; source 4: a long-coated adult mid-stride among café chairs; source 5: the wireframe figure shedding geometric fragments; source 6: the close-up face with a white stripe across it; source 7: the tiny wooden box with a crouched adult inside; source 8: the cinema marquee and chaotic sidewalk crowd. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and compose them all onto one deliberate page unified by the paper texture, print treatment, and palette. Paste each album motif in as a torn photocopied fragment or hand-cut shape - degraded, rough, but clearly recognisable. Composition: A chaotic but balanced paste-up around one anchor image, fragments overlapping at odd angles. Colour direction: black, white, photocopy gray, spot red - high-contrast black-and-white photocopy with one loud spot colour. Mood: restless, urban, handmade, dreamlike. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Frames.jpg",
+    "Alice-in-Chains.jpg",
+    "Genuine-Negro-Jig-15th-Anniversary-Edition.jpg",
+    "Cafe-Bleu.jpg",
+    "Flying-Colors.jpg",
+    "The-Singles.jpg",
+    "Little-Earthquakes.jpg",
+    "Easy-Stars-Thrillah.jpg"
+  ]
+}

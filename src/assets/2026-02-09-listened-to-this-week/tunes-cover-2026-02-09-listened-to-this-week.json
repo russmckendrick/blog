@@ -1,0 +1,33 @@
+{
+  "date": "2026-02-09",
+  "type": "cover",
+  "lane": "macro-detail",
+  "lighting": "dramatic stormlight with sun breaking through, bright shafts of light against dark cloud",
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Stormlit backyard micro-world of music relics gathered around a floral shrine",
+  "scene": "An extreme macro photograph peers into a rain-damp miniature world built inside a tuft of lawn grass just after a storm, with one dominant subject filling the frame: a tiny yellow flower-sculpture shaped like a curved stem and bloom, edged in dew and enclosed by a low rectangular hedge of mustard blossoms. Draped over this floral monument is a doll-sized red cap, its wet fabric and stitched eyelets sharply in focus, while the cap rests against a scrap of blue denim used as a tiny hillside tarp, complete with a glinting studded belt buckle like metal fencing. Behind it, dissolving into luminous stormlit bokeh, a shell-laden black willow rises from a shallow tide pool, its branches hung with scallops, conches, and a perched black-and-white bird; a silver toy glider banks through a shaft of sun above the tree; a miniature cream living-room set spills across a plank path with a tiny guitar, wine glass, houseplant, television glow, and hanging globe; farther back, the rusted grille of an old van forms a shelter wall with four blurred adult silhouettes reflected in its windshield; tucked near the roadside of the miniature scene stands a small hand-painted folk sculpture of a gaunt traveler with exaggerated feet beside a ribbon of black asphalt with yellow dashes; and near the shell tree, half-lost in blur, a rhinestone tiara and crinkled bouquet catch sudden sunlight like pageant relics washed into the grass. Dark cloud shadows keep the world dramatic, while bright shafts of sun ignite the dew, chrome, cellophane, shell edges, and flower petals with rich naturalistic highlights.",
+  "palette": [
+    "grass green",
+    "mustard yellow",
+    "daisy white",
+    "lavender",
+    "denim blue"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one extreme macro photograph - a single tabletop-scale world seen from inches away with razor-thin depth of field. The image is a 16:9 music blog header. Scene: An extreme macro photograph peers into a rain-damp miniature world built inside a tuft of lawn grass just after a storm, with one dominant subject filling the frame: a tiny yellow flower-sculpture shaped like a curved stem and bloom, edged in dew and enclosed by a low rectangular hedge of mustard blossoms. Draped over this floral monument is a doll-sized red cap, its wet fabric and stitched eyelets sharply in focus, while the cap rests against a scrap of blue denim used as a tiny hillside tarp, complete with a glinting studded belt buckle like metal fencing. Behind it, dissolving into luminous stormlit bokeh, a shell-laden black willow rises from a shallow tide pool, its branches hung with scallops, conches, and a perched black-and-white bird; a silver toy glider banks through a shaft of sun above the tree; a miniature cream living-room set spills across a plank path with a tiny guitar, wine glass, houseplant, television glow, and hanging globe; farther back, the rusted grille of an old van forms a shelter wall with four blurred adult silhouettes reflected in its windshield; tucked near the roadside of the miniature scene stands a small hand-painted folk sculpture of a gaunt traveler with exaggerated feet beside a ribbon of black asphalt with yellow dashes; and near the shell tree, half-lost in blur, a rhinestone tiara and crinkled bouquet catch sudden sunlight like pageant relics washed into the grass. Dark cloud shadows keep the world dramatic, while bright shafts of sun ignite the dew, chrome, cellophane, shell edges, and flower petals with rich naturalistic highlights. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: red baseball cap against blue denim and studded belt; source 2: sparkling tiara with bouquet; source 3: living-room floor scene with guitar and hanging globe; source 4: front grille and windshield of an old van; source 5: glider aircraft in open sky; source 6: gaunt roadside figure beside a dark highway; source 7: shell-hung tree with black-and-white bird; source 8: rectangular yellow flower border with stylised bloom. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Shrink each album motif into a tiny, exquisitely detailed object or texture inside this one miniature world - carved, folded, grown, or resting among the others. Composition: One dominant close subject filling the frame, the remaining motifs dissolving into soft bokeh layers behind it. Colour direction: grass green, mustard yellow, daisy white, lavender, denim blue - rich naturalistic colour with luminous highlights where the light catches edges and textures. Time of day and light: dramatic stormlight with sun breaking through, bright shafts of light against dark cloud. Mood: nostalgic, uncanny, radiant after the storm. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Born-in-the-U-S-A.jpg",
+    "Live-Through-This.jpg",
+    "Definitely-Maybe.jpg",
+    "New-Miserable-Experience.jpg",
+    "Scatter-Lost-Not-Lost-Volume-Two-1991-1997.jpg",
+    "Where-You-Been.jpg",
+    "Spirit-of-Eden.jpg",
+    "Nothing-But-Love-The-Definitive-Best-Of.jpg"
+  ]
+}

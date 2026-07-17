@@ -1,0 +1,32 @@
+{
+  "date": "2026-04-06",
+  "type": "cover",
+  "lane": "screenprint-gigposter",
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Mythic desert lagoon pilgrimage around a giant letter-monolith",
+  "scene": "A bold screenprinted poster scene shows a moonlit lagoon at the edge of sweeping dunes, where one colossal white monolith rises from the water as the dominant central motif, its face shaped like a giant block letterform and mirrored in rippling ink below. Wrapped around the base of this monolith is a thick circular wreath of thorny vine and two oversized red roses, reimagining the metallic crest as organic poster geometry. From the lagoon surface leaps an adult mannequin-like swimmer, rendered as a simplified blue silhouette with outstretched arms, reaching toward a hooked paper note that swings from the monolith like bait; the sensitive original is transformed into a symbolic statue-like figure. On the dune ridge behind, a single-file procession snakes toward the water, while at the shoreline a dreamlike woman with streaming hair reclines in lavender cloth, flanked by two hounds whose bodies curve into the composition. Above her, a serene bespectacled blue face appears like a giant cutout moon or theatrical mask in the sky, balanced on the opposite side by a smiling dreadlocked face emerging from shadows and high collar folds. At the top of the dune, a simplified folk-art rider on a white horse carries a long spear, silhouetted against clouds, tying the whole world together as a mythic pilgrimage oasis. Everything is reduced to chunky shapes, crisp knockouts, and halftone shadows in saturated inks, with water, dune, sky, roses, and figures all sharing one dramatic nocturnal glow.",
+  "palette": [
+    "turquoise blue",
+    "deep midnight navy",
+    "warm cream",
+    "oxide red"
+  ],
+  "composeBackend": "nano-banana",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "fal-ai/nano-banana-2/edit",
+  "prompt": "Create one heavy-ink screenprinted gig poster - thick flat colour, hard confident shapes, halftone dots for shading, and absolutely no lettering. The image is a 16:9 music blog header. Scene: A bold screenprinted poster scene shows a moonlit lagoon at the edge of sweeping dunes, where one colossal white monolith rises from the water as the dominant central motif, its face shaped like a giant block letterform and mirrored in rippling ink below. Wrapped around the base of this monolith is a thick circular wreath of thorny vine and two oversized red roses, reimagining the metallic crest as organic poster geometry. From the lagoon surface leaps an adult mannequin-like swimmer, rendered as a simplified blue silhouette with outstretched arms, reaching toward a hooked paper note that swings from the monolith like bait; the sensitive original is transformed into a symbolic statue-like figure. On the dune ridge behind, a single-file procession snakes toward the water, while at the shoreline a dreamlike woman with streaming hair reclines in lavender cloth, flanked by two hounds whose bodies curve into the composition. Above her, a serene bespectacled blue face appears like a giant cutout moon or theatrical mask in the sky, balanced on the opposite side by a smiling dreadlocked face emerging from shadows and high collar folds. At the top of the dune, a simplified folk-art rider on a white horse carries a long spear, silhouetted against clouds, tying the whole world together as a mythic pilgrimage oasis. Everything is reduced to chunky shapes, crisp knockouts, and halftone shadows in saturated inks, with water, dune, sky, roses, and figures all sharing one dramatic nocturnal glow. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: hooked paper note above a blue swimmer figure; source 2: blue-lit bespectacled face with closed eyes; source 3: folk-art rider on a white horse with spear; source 4: smiling dreadlocked face framed by a high dark collar; source 5: reclining woman with two hounds and flowing hair; source 6: circular rose-and-vine crest around a central form; source 7: giant white letter-like monolith rising from reflective water; source 8: single-file procession across dune ridges. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Turn each album motif into a bold screenprinted graphic element - chunky shapes, halftone tone, crisp knockouts - each one readable at a glance. Composition: One dominant central motif with the others orbiting it, tight and punchy like a classic gig poster. Colour direction: turquoise blue, deep midnight navy, warm cream, oxide red - three or four flat saturated ink colours on paper. Mood: mystical, windswept, cinematic. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths. Bold, confident, gallery-quality print design with a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Nevermind.jpg",
+    "To-the-Bone.jpg",
+    "Graceland.jpg",
+    "Distracted.jpg",
+    "Hounds-of-Love.jpg",
+    "Greatest-Hits.jpg",
+    "Nixon.jpg",
+    "Together-Were-Heavy.jpg"
+  ]
+}

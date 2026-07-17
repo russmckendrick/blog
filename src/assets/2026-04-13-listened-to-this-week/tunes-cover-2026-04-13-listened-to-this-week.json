@@ -1,0 +1,33 @@
+{
+  "date": "2026-04-13",
+  "type": "cover",
+  "lane": "painterly-gouache",
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Seaside bluff house where pop symbols and haunted figures share one dusk world",
+  "scene": "A gouache painting of a windswept seaside bluff at dusk, where a weathered modernist house with tall open windows looks out over a misty coast. In the foreground, the clear focal point is the back of an adult in blue jeans and a white sleeveless shirt, standing at the cliff edge with a red cap hanging from one hand, painted in broad matte strokes against bands of sunset-lit sea and pale surf that echo red-and-white striping in the landscape. Around this figure, yellow wildflowers fill the grass and a small dark car waits near the house. From an upstairs window steps an elegant adult in a black suit whose face dissolves into loose gouache smears of white and ember red, as if wind and light are erasing it into the evening. Curling overhead, a giant feather quill becomes vine-like scrollwork that tangles through the sky and around the window frames, while a pale haloed monkey crouches ghostlike within faint chalky geometric guide-lines painted onto the house wall like an old mural. Inside the lit rooms, a few theatrical adults in angular bright suits lean and gesture through the horizontal window bands, their poses integrated into the architecture rather than posed together. Across the darkening sky, a black seabird cuts through looping rainbow ribbons and small cloud forms that arc toward a red guitar-head weather vane near the roof. In the deepest shadow beneath the bluff, a subtle coiled snake shape emerges from the rocks, binding the whole scene with a quiet menace. The gouache surface is opaque and velvety, with warm window light and sunset oranges set against cool sea-greens, indigo shadows, and chalky mist.",
+  "palette": [
+    "titanium white",
+    "cadmium red",
+    "faded denim blue",
+    "indigo",
+    "lamp black"
+  ],
+  "composeBackend": "nano-banana",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "fal-ai/nano-banana-2/edit",
+  "prompt": "Create one gouache painting - matte opaque paint, confident visible brushstrokes, soft blends and chalky texture, like a mid-century book illustration. The image is a 16:9 music blog header. Scene: A gouache painting of a windswept seaside bluff at dusk, where a weathered modernist house with tall open windows looks out over a misty coast. In the foreground, the clear focal point is the back of an adult in blue jeans and a white sleeveless shirt, standing at the cliff edge with a red cap hanging from one hand, painted in broad matte strokes against bands of sunset-lit sea and pale surf that echo red-and-white striping in the landscape. Around this figure, yellow wildflowers fill the grass and a small dark car waits near the house. From an upstairs window steps an elegant adult in a black suit whose face dissolves into loose gouache smears of white and ember red, as if wind and light are erasing it into the evening. Curling overhead, a giant feather quill becomes vine-like scrollwork that tangles through the sky and around the window frames, while a pale haloed monkey crouches ghostlike within faint chalky geometric guide-lines painted onto the house wall like an old mural. Inside the lit rooms, a few theatrical adults in angular bright suits lean and gesture through the horizontal window bands, their poses integrated into the architecture rather than posed together. Across the darkening sky, a black seabird cuts through looping rainbow ribbons and small cloud forms that arc toward a red guitar-head weather vane near the roof. In the deepest shadow beneath the bluff, a subtle coiled snake shape emerges from the rocks, binding the whole scene with a quiet menace. The gouache surface is opaque and velvety, with warm window light and sunset oranges set against cool sea-greens, indigo shadows, and chalky mist. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: adult in blue jeans holding a red cap from behind; source 2: black-suited figure with face obscured by painterly smears; source 3: coastal meadow with yellow flowers and a distant dark car; source 4: feather quill transforming into curling ornamental vines; source 5: theatrical adults in angular bright suits seen through horizontal bands; source 6: haloed monkey within a geometric diagram; source 7: black bird flying through looping rainbow bands with cloud forms; source 8: subtle coiled snake in deep shadow. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Paint each album motif into the scene as a naturally belonging painted element - loose and gestural but unmistakable. Composition: A classic painterly composition - a landscape, interior, or figure study with a clear focal hierarchy. Colour direction: titanium white, cadmium red, faded denim blue, indigo, lamp black - mixed painterly colour drawn from the sleeves, warm lights against cool shadows. Mood: windswept, uncanny, theatrical. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Born-in-the-U-S-A.jpg",
+    "Everyone-Into-Position.jpg",
+    "20-Jazz-Funk-Greats.jpg",
+    "Funeral.jpg",
+    "Dizrythmia.jpg",
+    "Doolittle.jpg",
+    "Mary-Star-of-the-Sea.jpg",
+    "Metallica.jpg"
+  ]
+}

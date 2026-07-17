@@ -1,0 +1,33 @@
+{
+  "date": "2026-02-16",
+  "type": "cover",
+  "lane": "neon-noir",
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Rainy neon alley where spa glamour, masks, and pop portraits share one block",
+  "scene": "From a low curb-level angle in a rain-slick neon alley, a dark out-of-focus foreground shape—part parked car tire, part pooled shadow—frames a reflective street where the clear midground subject is a red leather diner booth set just inside an open chrome-edged night café. Reclining there is an adult in a sharp white suit with a large pink flower on the lapel, lit by electric blue and sodium amber spill; fallen petals have washed onto the wet pavement. Behind the booth, the café window glows with a surreal spa tableau: five adult women in aqua towels and powdered makeup sit in hazy peach light, while next to them a mannequin head wears a collage-style facial mask with real cucumber slices over the eyes, making the painted face motif physical and photographable. Above the storefront, a bent yellow neon sign takes the shape of a wavy banner with a black ribbon graphic rendered as a dark inset, its warped outline reflected across the street like liquid gold. On the brick wall farther back, a huge mural of a wild-haired adult male face emerges in violet-blue highlights against orange light, while across the alley a carved wooden mask façade with hollow eye and mouth openings reveals a starry dark interior beyond. Turquoise mist from a vent rolls through the scene in soft circular eddies, echoing the abstract cover as vapor, puddle ripples, and lensy reflections. Under a lone lamp near the alley mouth stands not a child but an empty bee costume on a dress form in a shop display, its black-and-yellow stripes and heart antennae catching pink neon, tying the whole block into one uncanny, glamorous nocturnal story.",
+  "palette": [
+    "neon yellow",
+    "deep black",
+    "electric cyan",
+    "turquoise blue",
+    "peach pink"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one cinematic neon-noir night photograph - wet streets, glowing wordless signs, deep shadow and electric colour. The image is a 16:9 music blog header. Scene: From a low curb-level angle in a rain-slick neon alley, a dark out-of-focus foreground shape—part parked car tire, part pooled shadow—frames a reflective street where the clear midground subject is a red leather diner booth set just inside an open chrome-edged night café. Reclining there is an adult in a sharp white suit with a large pink flower on the lapel, lit by electric blue and sodium amber spill; fallen petals have washed onto the wet pavement. Behind the booth, the café window glows with a surreal spa tableau: five adult women in aqua towels and powdered makeup sit in hazy peach light, while next to them a mannequin head wears a collage-style facial mask with real cucumber slices over the eyes, making the painted face motif physical and photographable. Above the storefront, a bent yellow neon sign takes the shape of a wavy banner with a black ribbon graphic rendered as a dark inset, its warped outline reflected across the street like liquid gold. On the brick wall farther back, a huge mural of a wild-haired adult male face emerges in violet-blue highlights against orange light, while across the alley a carved wooden mask façade with hollow eye and mouth openings reveals a starry dark interior beyond. Turquoise mist from a vent rolls through the scene in soft circular eddies, echoing the abstract cover as vapor, puddle ripples, and lensy reflections. Under a lone lamp near the alley mouth stands not a child but an empty bee costume on a dress form in a shop display, its black-and-yellow stripes and heart antennae catching pink neon, tying the whole block into one uncanny, glamorous nocturnal story. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: wavy yellow banner-shaped neon sign with black ribbon motif; source 2: five towel-wrapped women with white-powdered faces; source 3: turquoise swirling mist and bubble-like ripples; source 4: face with cucumber slices over the eyes; source 5: wild-haired intense male face in violet-blue against orange; source 6: white-suited reclining figure in a red leather booth with pink flower; source 7: black-and-yellow bee costume with heart-shaped antennae; source 8: large carved wooden mask face with hollow dark features. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Reimagine each album motif as something real in the night city - a neon shape, a reflection in the wet street, a figure under a lamp, a lit shopfront display, a shadow thrown on brick. Composition: A low cinematic angle with layered depth: a dark foreground shape, a clear midground subject, and glowing colour behind. Colour direction: neon yellow, deep black, electric cyan, turquoise blue, peach pink - saturated artificial colour - neon pinks, electric blues, sodium ambers - cutting through deep black shadow. Mood: dreamy, stylish, uncanny, rain-soaked nocturnal glamour. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Out-of-Time.jpg",
+    "Beauty-and-the-Beat.jpg",
+    "Meddle.jpg",
+    "Going-Blank-Again.jpg",
+    "Tim-Finn.jpg",
+    "Everybodys-Gotta-Gotta-Learn-Sometime.jpg",
+    "Blind-Melon.jpg",
+    "Woodface.jpg"
+  ]
+}
