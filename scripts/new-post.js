@@ -4,7 +4,6 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import readline from 'readline'
-import { generateCoverImage, isFALAvailable } from './fal-cover-generator.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -55,22 +54,6 @@ async function createBlogPost() {
   const showTocInput = await question('Show table of contents? (y/n) [y]: ')
   const showToc = showTocInput.toLowerCase() !== 'n'
 
-  // Check if FAL.ai cover generation is available
-  let generateAICover = false
-  let customPrompt = null
-  if (isFALAvailable()) {
-    const aiCoverInput = await question('Generate AI cover image? (y/n) [y]: ')
-    generateAICover = aiCoverInput.toLowerCase() !== 'n'
-    if (generateAICover) {
-      const promptInput = await question('Image prompt (leave blank to auto-generate, multiline prompts can be entered during review): ')
-      if (promptInput.trim()) {
-        customPrompt = promptInput.trim()
-      }
-    }
-  } else {
-    console.log('💡 Tip: Set FAL_KEY environment variable to enable AI cover generation')
-  }
-
   rl.close()
 
   // Generate file details
@@ -103,42 +86,14 @@ async function createBlogPost() {
     console.log(`✅ Created assets directory: ${path.relative(process.cwd(), assetsDir)}`)
   }
 
-  // Generate or copy cover image
-  if (generateAICover) {
-    console.log('\n🎨 Generating AI cover image...')
-    try {
-      const result = await generateCoverImage({
-        title,
-        description,
-        tags,
-        prompt: customPrompt,
-        outputPath: coverImagePath,
-        width: 1400,
-        height: 800,
-        debug: process.env.DEBUG_COLLAGE === '1',
-        interactive: true // Enable interactive prompt review
-      })
-      console.log(`✅ Generated AI cover image: ${path.relative(process.cwd(), coverImagePath)}`)
-      console.log(`   Original resolution: ${result.originalWidth}×${result.originalHeight}`)
-    } catch (error) {
-      console.warn(`⚠️  AI cover generation failed: ${error.message}`)
-      console.log('   Falling back to placeholder image...')
-      // Fall back to placeholder
-      const placeholderImagePath = path.join(__dirname, '..', 'public', 'images', 'blog-cover.png')
-      if (fs.existsSync(placeholderImagePath)) {
-        fs.copyFileSync(placeholderImagePath, coverImagePath)
-        console.log(`✅ Copied placeholder cover image: ${path.relative(process.cwd(), coverImagePath)}`)
-      }
-    }
+  // Copy placeholder cover image - the real cover is generated from the
+  // finished post with scripts/generate-cover.js
+  const placeholderImagePath = path.join(__dirname, '..', 'public', 'images', 'blog-cover.png')
+  if (fs.existsSync(placeholderImagePath)) {
+    fs.copyFileSync(placeholderImagePath, coverImagePath)
+    console.log(`✅ Copied placeholder cover image: ${path.relative(process.cwd(), coverImagePath)}`)
   } else {
-    // Copy placeholder cover image
-    const placeholderImagePath = path.join(__dirname, '..', 'public', 'images', 'blog-cover.png')
-    if (fs.existsSync(placeholderImagePath)) {
-      fs.copyFileSync(placeholderImagePath, coverImagePath)
-      console.log(`✅ Copied placeholder cover image: ${path.relative(process.cwd(), coverImagePath)}`)
-    } else {
-      console.warn(`⚠️  Placeholder image not found: ${placeholderImagePath}`)
-    }
+    console.warn(`⚠️  Placeholder image not found: ${placeholderImagePath}`)
   }
 
   // Create frontmatter
@@ -174,17 +129,11 @@ More content...
   // Summary
   console.log('\n✨ Blog post created successfully!\n')
   console.log('📄 Post file:', path.relative(process.cwd(), postPath))
-  console.log('🖼️  Cover image:', path.relative(process.cwd(), coverImagePath))
+  console.log('🖼️  Cover image:', path.relative(process.cwd(), coverImagePath), '(placeholder)')
   console.log('\n📋 Next steps:')
-  if (!generateAICover) {
-    console.log('  1. Replace placeholder cover image if desired:', path.relative(process.cwd(), coverImagePath))
-    console.log('  2. Write your blog post content')
-    console.log('  3. Set draft: false when ready to publish')
-  } else {
-    console.log('  1. Write your blog post content')
-    console.log('  2. Review the AI-generated cover image and regenerate if needed')
-    console.log('  3. Set draft: false when ready to publish')
-  }
+  console.log('  1. Write your blog post content')
+  console.log(`  2. Generate a cover from the finished post: node scripts/generate-cover.js ${filename}`)
+  console.log('  3. Set draft: false when ready to publish')
   console.log(`  4. Post URL: /${year}/${month}/${day}/${slug}\n`)
 }
 

@@ -8,7 +8,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 
 | Command | Entry point | Purpose |
 |---------|-------------|---------|
-| `pnpm run post` | `scripts/new-post.js` | Create a new blog post and optionally generate an AI cover |
+| `pnpm run post` | `scripts/new-post.js` | Create a new blog post scaffold with a placeholder cover |
 | `pnpm run tunes` | `scripts/generate-tunes-post.js` | Generate the weekly tunes post from Last.fm data |
 | `pnpm run wrapped` | `scripts/generate-year-wrapped.js` | Generate the annual wrapped post |
 | `pnpm run backfill-tunes-images` | `scripts/backfill-tunes-images.js` | Backfill older weekly tunes artwork and repair resolvable russ.fm links from local `collection.json` |
@@ -29,7 +29,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 
 | File | Status | Notes |
 |------|--------|-------|
-| `scripts/new-post.js` | primary | Interactive blog post creator used by `pnpm run post` |
+| `scripts/new-post.js` | primary | Interactive blog post creator used by `pnpm run post`; scaffolds with a placeholder cover for `generate-cover.js` to replace |
 | `scripts/generate-tunes-post.js` | primary | Weekly tunes orchestrator; uses Last.fm, collection metadata, AI research, templates, and cover generation |
 | `scripts/generate-year-wrapped.js` | primary | Year-end wrapped orchestrator with statistics, charts, and cover generation |
 | `scripts/backfill-tunes-images.js` | manual/maintenance | Uses local `collection.json` to download missing older tunes album/artist artwork, generate compact album and artist galleries for no-gallery weekly posts, and repair resolvable russ.fm links across weekly tunes posts |
@@ -45,8 +45,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `scripts/extract-hero-colors.js` | primary | Extracts dominant colors from hero images into `src/data/hero-colors.json`; still wired into `pnpm run prebuild`, though the tag/year hub pages no longer render gradient headers from the data |
 | `scripts/cache-link-preview-images.js` | primary | Scans MDX for `<LinkPreview>` usage and caches OG images locally |
 | `scripts/cache-reading-images.js` | primary | Fetches OG images and metadata (title, description) for reading list bookmarks and caches them locally; downloaded images are re-encoded to JPEG via `sharp` so they are compatible with Cloudflare image transformations regardless of source format |
-| `scripts/fal-cover-generator.js` | manual | AI blog cover generator used by `new-post.js` and manual cover generation flows |
-| `scripts/regenerate-cover.js` | manual | Regenerate a blog cover for an existing MDX post |
+| `scripts/generate-cover.js` | manual | Content-driven AI blog cover generator; reads the full post (or draft text), designs a representative prompt with no imposed style, and writes the full and `-small` covers into `src/assets/<slug>/` |
 | `scripts/fal-tunes-cover.js` | manual/internal | AI tunes cover generator; reads each album cover and weaves them into one cohesive scene in the week's rotating creative-direction lane (photo or print media); saves full and `-small` cover images plus a `.json` run sidecar |
 | `scripts/fal-tunes-artists.js` | manual/internal | AI tunes artist group-portrait generator; composes the week's artist photos into one photorealistic group photo with rotating shoot grammar and colour treatment; saves full and `-small` images plus a `.json` run sidecar |
 | `scripts/regenerate-tunes-cover.js` | manual | Regenerate one weekly tunes image (header cover or artist portrait) without changing MDX frontmatter |
@@ -67,24 +66,48 @@ These are the scripts exposed through `package.json` and intended for regular us
 
 These scripts are not exposed as `pnpm run` commands but are kept in the repository for maintenance or batch operations.
 
-### `scripts/regenerate-cover.js`
+### `scripts/generate-cover.js`
 
 ```bash
-node scripts/regenerate-cover.js <filename.mdx> ["scenario"] [options]
+node scripts/generate-cover.js <filename.mdx> [options]
+node scripts/generate-cover.js --bulk [options]
+node scripts/generate-cover.js --text=<file|-> --output=<path> [options]
 ```
 
+Generates (or regenerates) the cover for a blog post from its actual content.
+The post body is reduced to prose (frontmatter, embeds, imports, and code
+fences stripped), GPT-5.4 designs an image prompt from it, and OpenAI
+`gpt-image-2` (via FAL, 2560×1440 at high quality) renders the image. **No style constraints are imposed** - the
+prompt model has creative freedom over style, medium, and concept, with a
+default lean toward photographic realism, and nothing is appended to its
+output. The only hard rules are defect guards: no text or lettering of any
+kind and no text-bearing props (signs, labels, documents - any essential
+one is described as blank, since image models write gibberish on anything
+that usually carries text), no software interfaces, no branding real or
+invented, and no watermarks. Covers are pure visual interpretation of the
+post. Writes the full-size cover
+plus a 1400×800 `-small` variant, and inserts a `cover:` frontmatter block if
+the post lacks one.
+
 Options:
+- `--bulk[=N|all]` list the N most recent posts (default 20), interactively pick which to regenerate (`1,3,5-8` / `all`), and run each through the normal flow; one failure doesn't stop the run, and each post sees the batch's earlier prompts as do-not-repeat context so covers stay varied
+- `--text=<file|->` use draft text instead of a post body (`-` = stdin); without a post file, `--output` is required
+- `--prompt="..."` use a prompt verbatim and skip the LLM step
+- `--hint="..."` one-line steer for the prompt model
+- `--output=<path>` override the output path
+- `--extract-only` print the content that would be sent to the prompt model (needs no API keys)
+- `--dry-run` stop after printing the designed prompt
 - `--no-interactive`, `-y` skip prompt review
 - `--debug`, `-d` enable debug logging
 - `--help`, `-h` show usage
 
-### `scripts/fal-cover-generator.js`
+Example:
 
 ```bash
-node scripts/fal-cover-generator.js --help
+node scripts/generate-cover.js 2026-07-12-a-catch-up-terminal-svg-and-token-use-v1.mdx --dry-run
 ```
 
-Use this for direct AI cover generation outside the `new-post` workflow.
+Requires `FAL_KEY`; `OPENAI_API_KEY` is needed unless `--prompt` is given.
 
 ### `scripts/fal-tunes-cover.js`
 
@@ -223,8 +246,18 @@ Checks token validity and account access for Cloudflare Pages workflows.
 | `scripts/tunes-cover-blocklist.js` | Manual list of album covers to keep out of cover-art source images (still shown in the post) |
 | `scripts/tunes-template.mdx` | MDX scaffold for weekly tunes posts |
 | `scripts/year-wrapped-template.mdx` | MDX scaffold for wrapped posts |
-| `scripts/fal-cover-config.json` | Prompt/model configuration for AI blog cover generation |
 | `scripts/SEARCH_INTEGRATION.md` | Internal design note for the tunes research agent/search-provider architecture |
+
+## Archived Scripts
+
+`scripts/archive/` holds retired scripts kept for reference only - they are not
+maintained and their relative paths no longer resolve:
+
+| File | Superseded by |
+|------|---------------|
+| `scripts/archive/fal-cover-generator.js` | `scripts/generate-cover.js` (content-driven, no style guardrails) |
+| `scripts/archive/fal-cover-config.json` | In-script constants in `scripts/generate-cover.js` |
+| `scripts/archive/regenerate-cover.js` | `scripts/generate-cover.js` run against an existing post |
 
 ## Generated Caches And Local Artifacts
 

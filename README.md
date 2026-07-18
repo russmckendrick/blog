@@ -64,7 +64,7 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm run dev`             | Starts local dev server at `localhost:4321`      |
 | `pnpm run build`           | Build your production site to `./dist/`          |
 | `pnpm run preview`         | Preview your build locally, before deploying     |
-| `pnpm run post`            | Create a new blog post with AI cover generation  |
+| `pnpm run post`            | Create a new blog post scaffold                  |
 | `pnpm run tunes`           | Generate weekly music blog post from Last.fm     |
 | `pnpm run wrapped`         | Generate year-end wrapped music post             |
 | `pnpm run medium`          | Cross-publish blog post to Medium                |
@@ -79,51 +79,49 @@ All commands are run from the root of the project, from a terminal:
 
 ### Creating a New Blog Post
 
-Run `pnpm run post` to create a new blog post. The interactive script will:
+Creating a post is a two-step workflow: scaffold first, then generate the
+cover from the finished content.
 
-1. Prompt you for:
-   - Post title
-   - Description
-   - Tags (comma-separated)
-   - Table of contents preference (y/n)
-   - AI cover generation (if `FAL_KEY` is configured)
+**1. Scaffold the post** with `pnpm run post`. The interactive script prompts
+for title, description, tags, and ToC preference, then creates:
 
-2. If AI cover generation is enabled:
-   - Generate a creative image prompt using GPT-4
-   - Show you the prompt for review/refinement
-   - Generate a unique cover image using FAL.ai
+- MDX file in `src/content/blog/` with format: `YYYY-MM-DD-slug.mdx`
+- Assets directory in `src/assets/YYYY-MM-DD-slug/`
+- A placeholder cover image
+- Complete frontmatter with all required fields, `draft: true` for safety
 
-3. Automatically generate:
-   - MDX file in `src/content/blog/` with format: `YYYY-MM-DD-slug.mdx`
-   - Assets directory in `src/assets/YYYY-MM-DD-slug/`
-   - AI-generated or placeholder cover image
-   - Complete frontmatter with all required fields
-   - Draft status set to `true` for safety
+**2. Generate the cover** once the post is written:
 
-**Example:**
 ```bash
-pnpm run post
-
-# Prompts:
-# Post title: My Awesome Post
-# Description: A description of my post
-# Tags: docker, kubernetes, devops
-# Show table of contents? (y/n): y
-# Generate AI cover image? (y/n): y
-#
-# 📝 PROMPT REVIEW
-# 🎨 Current image prompt: "..."
-# ✓ Accept prompt? (y)es / (e)dit / (r)egenerate / (q)uit: y
-
-# Creates:
-# - src/content/blog/2025-10-01-my-awesome-post.mdx
-# - src/assets/2025-10-01-my-awesome-post/blog-cover-*.png (AI-generated)
-# - Post URL: /2025/10/01/my-awesome-post
+node scripts/generate-cover.js YYYY-MM-DD-slug.mdx
 ```
 
-**Environment variables for AI cover generation:**
+The script reads the full post content, has GPT-5.4 design an image prompt
+that represents that specific post (creative freedom over style and concept
+with a default lean toward photographic realism - the only hard rules are no
+text of any kind, no software UIs, no branding, and no watermarks; covers
+are pure visual interpretation), shows you the prompt for review/refinement,
+and generates the cover with OpenAI `gpt-image-2` via FAL:
+
+```bash
+# 📝 PROMPT REVIEW
+# 🎨 Current image prompt: "..."
+# ✓ Accept prompt? (y)es / (c)hat / (d)irect replace / (r)egenerate / (q)uit: y
+
+# Writes:
+# - src/assets/2025-10-01-my-awesome-post/blog-cover-2025-10-01-my-awesome-post.png
+# - src/assets/2025-10-01-my-awesome-post/blog-cover-2025-10-01-my-awesome-post-small.png
+```
+
+Useful flags: `--dry-run` (print the prompt only), `--prompt="..."` (bring
+your own prompt, skips the LLM step), `--hint="..."` (steer the prompt model),
+`--text=<file|->` (use draft text for a post not written yet), and
+`--bulk[=N|all]` (pick from the most recent posts and regenerate covers for
+the selected ones in one run).
+
+**Environment variables for cover generation:**
 - `FAL_KEY` - FAL.ai API key (required)
-- `OPENAI_API_KEY` - OpenAI API key (required for prompt generation)
+- `OPENAI_API_KEY` - OpenAI API key (required unless `--prompt` is given)
 
 ## 📚 Documentation
 

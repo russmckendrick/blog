@@ -11,40 +11,83 @@ pnpm run post
 
 This will:
 1. Prompt for title, description, tags, and ToC preference
-2. Optionally generate an AI-powered cover image (if `FAL_KEY` is configured)
+2. Copy the placeholder cover image into the assets directory
 3. Generate MDX file: `src/content/blog/YYYY-MM-DD-slug.mdx`
 4. Create assets directory: `src/assets/YYYY-MM-DD-slug/`
 5. Set `draft: true` for safety
 
+The real cover is generated **after** the post is written, from the post itself.
+
 ### AI Cover Generation
 
-When `FAL_KEY` environment variable is set, the script will offer to generate an AI cover image:
+Once the post content exists, generate a cover from it:
+
+```bash
+node scripts/generate-cover.js YYYY-MM-DD-slug.mdx
+```
+
+The script reads the full post body (frontmatter, embeds, and code blocks are
+stripped down to the prose), has GPT-5.4 design an image prompt that represents
+that specific post, and generates the image with OpenAI `gpt-image-2` (via
+FAL, at 2560×1440). No
+style constraints are imposed - the model has creative freedom over style,
+medium, mood, and concept, with a default lean toward photographic realism
+(illustration only when the post calls for it), and nothing is appended to
+its prompt. The only hard rules are defect guards: no text or lettering of
+any kind and no text-bearing props - signs, shopfronts, labels, documents -
+unless described as blank (image models write gibberish on anything that
+usually carries text), no software interfaces (fake app windows, dashboards,
+terminal screens), no branding real or invented, and no watermarks. Covers
+are pure visual interpretation of the post.
+
+The proposed prompt is shown for review before any image is generated:
 
 ```
-Generate AI cover image? (y/n) [y]: y
-
-🎨 Generating AI cover image...
-
 ────────────────────────────────────────────────────────────
 📝 PROMPT REVIEW
 ────────────────────────────────────────────────────────────
 
 🎨 Current image prompt:
 
-   "A dramatic close-up of sleek aluminum surfaces..."
+   "A hand-inked etching of a terminal window unfolding into..."
 
-✓ Accept prompt? (y)es / (e)dit / (r)egenerate / (q)uit:
+✓ Accept prompt? (y)es / (c)hat / (d)irect replace / (r)egenerate / (q)uit:
 ```
 
 **Interactive options:**
 - **(y)es** - Accept the prompt and generate the image
-- **(e)dit** - Describe changes and GPT-5.4 will refine the prompt
-- **(r)egenerate** - Generate a completely new prompt from scratch
-- **(q)uit** - Skip AI generation and use placeholder
+- **(c)hat** - Guide the image in conversation: ask to add, remove, or
+  replace elements one message at a time (e.g. "replace the engineer with a
+  traditional english butler"), with the revised prompt shown after each
+  turn. The chat sees the post and the whole conversation, so requests can
+  build on each other. Type `done` to keep the result or `cancel` to revert
+  everything from the chat. (`e` still works as an alias.)
+- **(d)irect replace** - Paste your own prompt (supports multiline)
+- **(r)egenerate** - Design a completely new prompt from the post
+- **(q)uit** - Cancel without generating
+
+**Useful flags:**
+- `--dry-run` - print the designed prompt without generating an image
+- `--prompt="..."` - bring your own prompt and skip the LLM step entirely
+- `--hint="..."` - one-line steer for the prompt model (e.g. `--hint="focus on the recording feature"`)
+- `--text=<file|->` - use draft text instead of a post file (for posts not written yet; requires `--output`)
+- `--bulk[=N|all]` - list the N most recent posts (default 20), pick which to regenerate (e.g. `1,3,5-8` or `all`), and run each through the normal flow
+- `--no-interactive`, `-y` - auto-accept the first prompt
+
+**Bulk regeneration** composes with the other flags - `--bulk --dry-run -y`
+previews the prompts a batch would produce without generating any images, and
+one post failing (or being skipped with `q`) doesn't stop the rest of the run.
+Prompts already used in the batch are passed to each subsequent post as
+do-not-repeat context, so a run can't converge on one setting or composition.
+
+The full-size image and a 1400×800 `-small` variant are written to
+`src/assets/YYYY-MM-DD-slug/`, and a `cover:` block is added to the
+frontmatter if one is missing. Re-running the script regenerates the cover for
+a post in place.
 
 **Requirements:**
-- `FAL_KEY` - FAL.ai API key (required)
-- `OPENAI_API_KEY` - OpenAI API key (required for prompt generation)
+- `FAL_KEY` - FAL.ai API key (required to generate the image)
+- `OPENAI_API_KEY` - OpenAI API key (required unless `--prompt` is given)
 
 ## Frontmatter Reference
 
@@ -479,11 +522,19 @@ pnpm run post
 
 Edit `src/content/blog/YYYY-MM-DD-slug.mdx`
 
-### 3. Add Images
+### 3. Generate the Cover
+
+```bash
+node scripts/generate-cover.js YYYY-MM-DD-slug.mdx
+```
+
+Generates a cover from the finished post content (see [AI Cover Generation](#ai-cover-generation)).
+
+### 4. Add Images
 
 Place in `src/assets/YYYY-MM-DD-slug/`
 
-### 4. Preview Locally
+### 5. Preview Locally
 
 ```bash
 pnpm run dev
@@ -491,7 +542,7 @@ pnpm run dev
 
 Visit: `http://localhost:4321/YYYY/MM/DD/slug/`
 
-### 5. Check Quality
+### 6. Check Quality
 
 ```bash
 npx astro check
@@ -499,13 +550,13 @@ npx astro check
 
 Fix any TypeScript or Astro errors.
 
-### 6. Set Draft False
+### 7. Set Draft False
 
 ```yaml
 draft: false
 ```
 
-### 7. Commit and Push
+### 8. Commit and Push
 
 ```bash
 git add .
@@ -513,7 +564,7 @@ git commit -m "Add post: Title"
 git push
 ```
 
-### 8. Verify Deployment
+### 9. Verify Deployment
 
 - Wait for GitHub Actions to complete (~3-5 min)
 - Visit: `https://www.russ.cloud/YYYY/MM/DD/slug/`
