@@ -1,0 +1,120 @@
+---
+title: "Token Use: Coach Mode and a Week of Releases"
+description: "A week after Token Use hit 1.0.0 by cutting features, it's on 1.2.2. Coach mode, a Rust port of Microsoft's AI-Engineering-Coach rules, full-text scrollback, an MCP server, and a 3D graph."
+date: 2026-07-19T09:14:00.782Z
+cover:
+  image: "../../assets/2026-07-19-token-use-coach-mode-and-a-week-of-releases/blog-cover-2026-07-19-token-use-coach-mode-and-a-week-of-releases.png"
+draft: false
+showToc: true
+tags:
+  - "tools"
+  - "ai"
+  - "code"
+---
+
+
+Last week I [wrote about Token Use reaching 1.0.0](/2026/07/12/a-catch-up-terminal-svg-and-token-use-v1/), and the point of that post was mostly about what I'd taken out. The Insights area was gone, the Agent Setup page was gone, and the tool had settled into a single sentence: it reads your local usage records, normalises them, prices them, and shows you the result.
+
+That lasted about four days. Since then there have been five releases and Token Use is on 1.2.2. In my defence, the thing I added back is nothing like the thing I removed.
+
+<LinkPreview id="https://github.com/russmckendrick/tokenuse" />
+
+<Img src="/assets/2026-07-19-token-use-coach-mode-and-a-week-of-releases/001.png" alt="The Token Use desktop Overview page showing seven days of usage: £1538 across 8,308 calls and 61 sessions, plan utilisation bars for Claude Code, Codex, and Copilot, and the Activity Pulse spend and call charts" />
+
+That's the last seven days. £1538, 8,308 calls, 61 sessions. Graph, Coach, and Scrollback in the sidebar are all new since the 1.0.0 post.
+
+## Coach mode, and the extension that started it
+
+A colleague at work pointed me at [AI-Engineering-Coach](https://github.com/microsoft/AI-Engineering-Coach), a VS Code extension from Microsoft that watches how you work with AI coding tools and grades you on it. Not on your code, on your *practice*: are your prompts specific enough, are your sessions running long past the point where context has gone stale, are you reviewing what the model writes before you accept it. It's MIT licensed, and the rules are readable.
+
+The reason it stuck with me is that it's answering a question Token Use was already sitting on the data for and never asking. I had every prompt, every response, every edited file, every timestamp, sat in a local archive being summed into a cost figure. Cost tells you what you spent. It tells you nothing about whether you spent it well.
+
+So Coach is a report card for how you work with your AI tools. It landed in **1.1.0 "Report Card"** as a desktop sidebar page, and the TUI got the same grade, findings, and Setup panel a couple of releases later under `k`.
+
+The detection is a Rust-native port of the extension's rule catalogue, vibe-coded in Rust using Claude Code like the rest of Token Use. Worth being clear about the split, given what the rest of this post is about: Claude Code wrote the port, and the calls about what to carry over, what to leave out, and where to deviate were mine.
+
+It's all evaluated locally. No network calls, no model in the loop, which is the same line I drew when I cut Insights: I'm happy for the tool to count things, I'm not happy for it to start another model to tell you what the count means. There are 28 rules now across four groups (prompt quality, session hygiene, code review, tool mastery), each with a severity that costs you points when it fires, and the composite grade maps onto A+ through F. Attribution is in `NOTICE` at the repo root and in `docs/development/coach.md`. The port is rules-as-code rather than the reference's user-editable markdown DSL, and thresholds are Microsoft's defaults unless there's a documented deviation.
+
+<Img src="/assets/2026-07-19-token-use-coach-mode-and-a-week-of-releases/002.png" alt="The desktop Coach Report tab showing an overall grade of C at 77 out of 100, 19 of 28 rules clean, and score cards for Prompt Quality 73, Session Hygiene 66, Code Review 80, and Tool Mastery 100" />
+
+Below the grade there's a Findings tab that turns each triggered rule into a filterable evidence list, an AI Output tab counting what the models actually produced, and an Activity tab with work hours, a calendar strip, and per-project breakdowns. The Flow and Pace panels sit at the bottom of the Report tab, and mine puts my average longest unbroken block at 222 minutes.
+
+### What I deliberately skipped
+
+Sixteen of the reference rules don't work here, and the reason is worth saying out loud because it's the whole shape of the port. Rules like yolo-mode, no-plan-mode, no-slash-commands and auto-approve-terminal are all detectable from VS Code's own chat logs. Token Use reads the usage files that Claude Code, Codex, Cursor, Copilot, and Gemini write to disk, and those signals simply aren't in there. Rather than approximate them and hand you a grade built on guesses, they're skipped.
+
+The reference also has a `profanity` rule. That one I skipped on a judgement call: scanning someone's prompts for swearing reads as surveillance in a usage dashboard, whatever the intent. And the extension's LLM-backed features (Skill Finder, Learning Center, the Context Health review) are permanently out of scope under the no-network rule.
+
+Going the other way, there's one rule that isn't in the reference set at all. **Retry Loops** borrows codeburn's one-shot/retry idea and points it at the archive: it flags periods where a high share of edited files needed a re-edit after a shell run, which is the pattern where a change didn't survive its own verification. It only fires for tools that actually report edited files, so Claude Code, Codex, and Cursor.
+
+The other thing I care about here is that rows with missing history stay `NULL` and are excluded from rule denominators. If half your archive predates the enrichment columns, that half doesn't get to skew your grade. A grading tool that quietly marks you down for data it never had is worse than useless.
+
+### The Setup panel
+
+A couple of releases later, in 1.2.0, Coach picked up an advisory panel alongside the grade that's kept separate from it, deliberately. It looks at your local Claude Code configuration and flags configured MCP servers you never call, `CLAUDE.md` files over 200 lines once `@import`s are expanded, files being re-read repeatedly inside a single session, and reads under `node_modules` and friends. Each one comes with a rough token-savings estimate.
+
+None of it affects your practice grade, because none of it is really about practice. It's the stuff that's quietly costing you input tokens on every single turn.
+
+## Everything else that shipped
+
+Coach was the headline, but four more releases went out in the same week.
+
+**1.1.1 "Ground Truth"** was a correction. Cursor changed where it stores things, and Token Use had been reading a shape of the data that no longer reflected what Cursor actually does. Ingestion now goes through the current Agent `store.db` alongside the older state bubbles, rebuilt around a single canonical reconstruction of each user turn. Cursor's first-party model pricing went in too, and model lookups became tool-aware so Cursor models get Cursor rates instead of falling through to a global table. Codex Desktop was also silently dropping usage events where the credit balance arrived as a string rather than a number, which is fixed and backfilled. The archive now carries provenance labels for interaction mode, token quality, and timestamp quality, and Coach's timing rules only trust exact timestamps.
+
+**1.2.0 "Total Recall"** is the big one after Coach. **Scrollback** is full-text search across every archived transcript, backed by an SQLite FTS5 index, available as a TUI tab on `/` and a desktop page. There's a new MCP server (`tokenuse mcp`) exposing read-only `status`, `overview`, `projects`, and `scrollback` tools over stdio, and it will also serve over a loopback HTTP endpoint so it can run alongside the desktop app rather than fighting it for the archive. **By Activity** classifies every call into one of thirteen task categories using deterministic rules rather than a model. And there's `tokenuse doctor` for per-tool diagnostics, plus `tokenuse status` and `tokenuse overview` for scriptable summaries with `--json`.
+
+Buried in that release is a parser fix I'm quietly pleased with. Claude Code writes streamed JSONL where a single assistant turn can span multiple lines, and the old parser took the first line and dropped the rest, which silently lost tool calls. Incremental sync also went byte-level, so on a ~50MB project a one-file append now resyncs in about 0.04s rather than about 0.4s.
+
+`doctor` is the one I keep going back to. It walks every probed location for every tool and tells you what it found, what's missing, and how many calls it managed to parse, which turns "why is Cursor showing nothing" from a guess into a list.
+
+<Img src="/assets/2026-07-19-token-use-coach-mode-and-a-week-of-releases/003.png" alt="The desktop Config Data Sources panel showing per-tool diagnostics for Claude Code, Cursor, Codex, and Copilot with FOUND and MISSING paths and parsed call counts" />
+
+The Projects page also became a two-level thing in this release: an index, then a page per project. This is the Token Use repo itself over the same seven days. £1098, and 45,749 lines of Rust that Claude Code wrote rather than me, which is the honest accounting behind a post otherwise full of "I added".
+
+<Img src="/assets/2026-07-19-token-use-coach-mode-and-a-week-of-releases/004.png" alt="The tokens project page showing £1098 across 5,596 calls and 25 sessions, 45,749 AI-written lines of Rust, an estimated 22.8 active hours, and an AI code output breakdown by language" />
+
+**1.2.1 "Model Citizen"** made the Models catalogue clickable. Selecting a row opens a page for that model with its own KPIs, session list, token-composition split, per-tool donut, and an effective-pricing panel. That last one says so explicitly when a model is being billed through the pricing book's fallback row, rather than presenting a guess as a price. The TUI got `m` for a typeable model picker, mirroring the existing `p` project picker.
+
+<Img src="/assets/2026-07-19-token-use-coach-mode-and-a-week-of-releases/005.png" alt="The desktop Models catalogue grouped by provider, showing Anthropic and OpenAI models with cost and call counts across five time periods and a cache hit rate column" />
+
+It's also where the shared model registry from 1.0.0 earns its keep. Every dated pin, vendor prefix, and router alias in the raw logs folds down into one row per model, which is why that table reads as a list rather than the same model three times under slightly different names.
+
+**1.2.2 "Constellation"** shipped yesterday and adds a 3D Graph page: projects wired to the tools and models they use, or the same thing from the other end. Node size and edge strength follow whichever measure you pick (calls, spend, or tokens), and selected nodes drill straight into their detail pages. Large graphs get capped, and when that happens the view tells you how many entities it left out instead of pretending it's showing you everything.
+
+<Img src="/assets/2026-07-19-token-use-coach-mode-and-a-week-of-releases/006.png" alt="The desktop Graph page showing projects as green nodes connected to Claude Code and Codex tool nodes and model nodes, with a header stating 16 of 62 entities and 33 relationships are visible" />
+
+Note the line above the canvas: 16 of 62 entities, 33 relationships. Drawing the top slice and letting you assume that's everything would have been easier, and I've used enough dashboards that do exactly that.
+
+## Installing
+
+```bash frame="terminal" title="Installing - Token Use"
+# The terminal UI
+brew install russmckendrick/tap/tokenuse
+tokenuse
+
+# The macOS desktop app
+brew install --cask russmckendrick/tap/tokenuse-desktop
+open -a "Token Use"
+```
+
+<NoteCallout title="Schema migrations">
+1.1.0 moves the call archive to schema v4 and 1.2.0 takes it to v7, so the first launch after upgrading will be slower while it backfills from the history already on disk. Older binaries will refuse to open a newer archive, so upgrade both the TUI and the desktop app together.
+</NoteCallout>
+
+Linux, Windows, and manual desktop downloads are on [GitHub Releases](https://github.com/russmckendrick/tokenuse/releases), and there's more at [tokenuse.app](https://www.tokenuse.app/).
+
+## Wrapping up
+
+Adding a report card, a search index, an MCP server, and a 3D graph a week after a post about cutting features is not a great look. But Coach still passes the test I set for 1.0.0: it counts what's already in your data and shows you the count, rather than starting a model to tell you what the count means.
+
+My grade is a C. 77 out of 100, 19 of the 28 rules clean. Session hygiene came out at 66, which is a D, mostly down to 51 runaway agent loops and an average unbroken block of nearly four hours.
+
+Coach has also flagged me for Vibe Coding eight times, with the advice to write a small spec first and review the output line by line. A tool I vibe-coded, telling me off for vibe-coding. I did briefly wonder about retuning that threshold.
+
+Thanks to the team at Microsoft who wrote those rules and put them out under MIT, and to my colleague for pointing the extension out. Coach exists because someone else had already done the thinking about what good looks like.
+
+<LinkPreview id="https://github.com/russmckendrick/tokenuse" />
+
+<LinkPreview id="https://github.com/microsoft/AI-Engineering-Coach" />
+
+If you give it a go and the grading feels wrong for how you work, that's worth an issue. The rules are code, and thresholds tuned against VS Code chat logs won't be right for everyone. Pull requests and issues are welcome.
