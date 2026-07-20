@@ -208,7 +208,7 @@ The weekly tunes workflow generates one original, cohesive AI scene built from t
 
 ### Creative-Direction Lanes
 
-Lanes live in `scripts/lib/tunes-lanes.js` (run `node scripts/fal-tunes-cover.js --list-lanes` for the catalogue). Six are photographic and six are print/illustration media — the print lanes deliberately echo the site's paper-and-ink Print Edition design language:
+Lanes live in `scripts/lib/tunes-lanes.js` (run `node scripts/fal-tunes-cover.js --list-lanes` for the catalogue). Seven are photographic and five are print/illustration media — the print lanes deliberately echo the site's paper-and-ink Print Edition design language:
 
 | Lane | Kind | Look |
 |------|------|------|
@@ -219,7 +219,7 @@ Lanes live in `scripts/lib/tunes-lanes.js` (run `node scripts/fal-tunes-cover.js
 | `miniature-diorama` | photo | handmade model world shot with tilt-shift |
 | `long-exposure-light` | photo | real night photography shaped by moving light trails and reflections |
 | `risograph` | print | 2-3 ink riso print, grain and misregistration |
-| `screenprint-gigposter` | print | heavy-ink gig poster, halftone shading |
+| `surreal-album-sleeve` | photo | high-concept practical-effects photography in a real location, with source-cover people retained as recognisable candid extras |
 | `retro-sci-fi-paperback` | print | richly painted 1960s/70s speculative paperback art, without lettering |
 | `painterly-gouache` | print | matte gouache painting, visible brushwork |
 | `vintage-travel-poster` | print | mid-century travel-poster illustration |

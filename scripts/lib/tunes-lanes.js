@@ -154,8 +154,8 @@ export function pickColourTreatment(seed) {
 
 // The old weekly formula, banned in every lane: it is exactly what made months of covers
 // read as the same image (posed ensemble + giant sculpture + props on plinths). Lanes whose
-// own composition legitimately needs one of these terms (macro's tabletop world, the gig
-// poster's dominant central motif) get a trimmed list so the prompt never argues with itself.
+// own composition legitimately needs one of these terms (such as macro's tabletop world)
+// get a trimmed list so the prompt never argues with itself.
 const ANTI_CLICHE_POSED = 'a posed group of people arranged for the camera'
 const ANTI_CLICHE_TABLES = 'objects displayed on tables, trays, or plinths'
 const ANTI_CLICHE_SCULPTURE = 'one giant central sculpture as the centrepiece of the scene'
@@ -252,22 +252,18 @@ export const LANES = [
     ]
   },
   {
-    id: 'screenprint-gigposter',
-    label: 'Screenprint gig poster',
-    kind: 'print',
-    medium: 'a hand-pulled screenprinted gig poster with thick flat inks and halftone shading',
-    styleDirective: 'Create one heavy-ink screenprinted gig poster - thick flat colour, hard confident shapes, halftone dots for shading, and absolutely no lettering.',
-    motifTreatment: 'Turn each album motif into a bold screenprinted graphic element - chunky shapes, halftone tone, crisp knockouts - each one readable at a glance.',
-    composition: 'One dominant central motif with the others orbiting it, tight and punchy like a classic gig poster.',
-    paletteTreatment: 'three or four flat saturated ink colours on paper',
-    lighting: false,
-    negatives: [],
-    // The gig poster wants one dominant central motif, so the central-sculpture ban is dropped.
-    antiCliche: [ANTI_CLICHE_POSED, ANTI_CLICHE_TABLES],
-    pipeline: [
-      { role: 'compose', backend: 'nano-banana', fallback: 'gpt-image-2' },
-      { role: 'restyle', backend: 'recraft-i2i', params: { style: 'digital_illustration/2d_art_poster', strength: 0.4 } }
-    ]
+    id: 'surreal-album-sleeve',
+    label: 'Surreal album-sleeve photography',
+    kind: 'photo',
+    medium: 'a high-concept surreal album-sleeve photograph built full-scale with practical effects in a real location',
+    styleDirective: 'Create one high-concept widescreen album-sleeve photograph - a real landscape, interior, or architectural location transformed by one physically staged impossible idea, captured in-camera with tactile full-scale construction, restrained cinematic light, and subtle film grain.',
+    motifTreatment: 'Fuse the album motifs into the same practical concept and environment through altered scale, architecture, reflections, fabric, weather, terrain, or full-scale structures. Include people depicted on the source covers as adult background extras naturally inhabiting or interacting with the location. Keep each person individually recognisable through their facial features, hair, clothing, silhouette, and characteristic body language rather than replacing them with generic figures; they remain candid, secondary, clearly visible, and never posed for the camera. Make every motif a causally connected part of one photographic idea, never a separate icon, emblem, sticker, or displayed object.',
+    composition: 'One panoramic editorial photograph with a single clear visual thesis, bold negative space, strong foreground-to-background depth, and a few small human extras distributed naturally through the scene; the location itself carries the surreal idea rather than a central figure, sculpture, or collection of props.',
+    paletteTreatment: 'a controlled photographic palette drawn from the sleeves, grounded in natural materials and light with one or two deliberate accent colours',
+    lighting: true,
+    negatives: ['poster design', 'screenprint', 'flat graphic art', 'clip art', 'sticker collage', 'floating icons', 'disconnected symbols', 'ornamental emblem layout', 'giant disembodied face', 'giant hands', 'digital surrealist collage', 'miniature diorama', 'concert stage', 'rehearsal room', 'posed band portrait'],
+    antiCliche: ANTI_CLICHE,
+    pipeline: [{ role: 'compose' }]
   },
   {
     id: 'retro-sci-fi-paperback',
