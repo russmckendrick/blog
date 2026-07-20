@@ -1,0 +1,32 @@
+{
+  "date": "2026-07-20",
+  "type": "cover",
+  "lane": "screenprint-gigposter",
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Retro mountain soundscape with a microphone sun and boxed pop icon",
+  "scene": "A hand-pulled screenprinted gig poster shows one dominant central motif: a giant circular vintage microphone transformed into a striped eclipse-like sun rising from a mountain meadow. Its ring frame becomes the main halo, and inside the disc the mesh is simplified into bold horizontal bands, with black bird silhouettes cutting across it. Nestled at the base of the microphone-sun is a small open wooden box, cracked wide like a stage hatch, with a stylized adult figure unfolding from it in a fluid crouch; the figure’s face is rendered in punchy pop-art planes with dark hair, black sunglasses, and magenta lips. Orbiting this center are chunky screenprinted graphics: a deep blue biomorphic shape and a hot pink twin shape sweeping like mirrored comet shards through the sky; a continuous-line embracing couple reinterpreted as a glowing contour cut into the clouds and meadow stream; and scattered oversized keyboard-key blocks embedded like stepping stones across the foreground grid-meets-landscape plain. The whole world merges alpine valley, retro grid horizon, and poster-flat studio space into one connected environment, using thick inks, crisp knockouts, and halftone shadows so every motif reads instantly as one bold concert poster image.",
+  "palette": [
+    "olive green",
+    "hot pink",
+    "deep violet-blue",
+    "black"
+  ],
+  "composeBackend": "nano-banana",
+  "restyleBackend": "recraft-i2i",
+  "restyled": true,
+  "model": "fal-ai/recraft/v3/image-to-image",
+  "prompt": "Create one heavy-ink screenprinted gig poster - thick flat colour, hard confident shapes, halftone dots for shading, and absolutely no lettering. The image is a 16:9 music blog header. Scene: A hand-pulled screenprinted gig poster shows one dominant central motif: a giant circular vintage microphone transformed into a striped eclipse-like sun rising from a mountain meadow. Its ring frame becomes the main halo, and inside the disc the mesh is simplified into bold horizontal bands, with black bird silhouettes cutting across it. Nestled at the base of the microphone-sun is a small open wooden box, cracked wide like a stage hatch, with a stylized adult figure unfolding from it in a fluid crouch; the figure’s face is rendered in punchy pop-art planes with dark hair, black sunglasses, and magenta lips. Orbiting this center are chunky screenprinted graphics: a deep blue biomorphic shape and a hot pink twin shape sweeping like mirrored comet shards through the sky; a continuous-line embracing couple reinterpreted as a glowing contour cut into the clouds and meadow stream; and scattered oversized keyboard-key blocks embedded like stepping stones across the foreground grid-meets-landscape plain. The whole world merges alpine valley, retro grid horizon, and poster-flat studio space into one connected environment, using thick inks, crisp knockouts, and halftone shadows so every motif reads instantly as one bold concert poster image. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: Pop-art adult face with black sunglasses and magenta lips; source 2: Blue glossy biomorphic emblem; source 3: Hot pink glossy biomorphic emblem; source 4: Continuous-line embracing adult couple; source 5: Striped green oval with flying bird silhouettes over a grid; source 6: Large circular vintage microphone; source 7: Adult figure emerging from a small wooden box; source 8: Mountain meadow with winding stream and oversized keyboard keys. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Turn each album motif into a bold screenprinted graphic element - chunky shapes, halftone tone, crisp knockouts - each one readable at a glance. Composition: One dominant central motif with the others orbiting it, tight and punchy like a classic gig poster. Colour direction: olive green, hot pink, deep violet-blue, black - three or four flat saturated ink colours on paper. Mood: dreamy, bold, retro-futurist, intimate. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths. Bold, confident, gallery-quality print design with a strong sense of place.",
+  "restylePrompt": "Restyle as a hand-pulled screenprinted gig poster with thick flat inks and halftone shading. Preserve the existing scene, subject placement, and every recognisable motif; do not add, remove, or rearrange subjects. Motif treatment: Turn each album motif into a bold screenprinted graphic element - chunky shapes, halftone tone, crisp knockouts - each one readable at a glance. Composition: One dominant central motif with the others orbiting it, tight and punchy like a classic gig poster. Palette: olive green, hot pink, deep violet-blue, black; three or four flat saturated ink colours on paper. Adults only; no gore, nudity, or sexual content. No text, letters, words, numbers, captions, logos, watermarks, or signage. Avoid: grid, contact sheet, tiled album covers, separate panels, photorealism, DSLR, 3D, CGI, bokeh, posed lineup, objects on plinths, giant central sculpture.",
+  "inputs": [
+    "Its-Great-When-Youre-Straight-Yeah.jpg",
+    "the-best-of-NewOrder.jpg",
+    "the-rest-of-NewOrder.jpg",
+    "A-Model-Life.jpg",
+    "Affinity.jpg",
+    "YEARNALISM.jpg",
+    "Little-Earthquakes.jpg",
+    "The-Sophtware-Slump.jpg"
+  ]
+}
