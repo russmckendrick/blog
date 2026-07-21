@@ -339,19 +339,41 @@ a:hover {
 .animate-delay-2 { animation-delay: 0.2s; }
 .animate-delay-3 { animation-delay: 0.35s; }
 
-/* Motion system initial states: hidden only when scripting is available
-   (motion.ts animates them in), always visible under reduced motion. */
-@media (scripting: enabled) {
-  [data-entrance],
-  [data-settle] {
+/* Motion system: entrance and hero settle run as pure CSS animations from
+   the first paint. Never gate these on JS — an opacity:0 pre-hide waiting
+   for a script chunk delays LCP by seconds on slow devices and hides the
+   page when scripts fail. Stagger uses sibling order; non-sibling entrance
+   elements simply share the base timing. */
+@keyframes entrance-rise {
+  from {
     opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-entrance] {
+    animation: entrance-rise 0.6s var(--ease-settle) backwards;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    [data-entrance],
-    [data-settle] {
-      opacity: 1;
-    }
+  [data-entrance] ~ [data-entrance] {
+    animation-delay: 0.09s;
+  }
+
+  [data-entrance] ~ [data-entrance] ~ [data-entrance] {
+    animation-delay: 0.18s;
+  }
+
+  [data-entrance] ~ [data-entrance] ~ [data-entrance] ~ [data-entrance] {
+    animation-delay: 0.27s;
+  }
+
+  [data-settle] {
+    animation: image-settle 0.9s var(--ease-settle) backwards;
   }
 }
 

@@ -1,5 +1,4 @@
 ---
-import { Head } from '@felixicaza/astro-capo';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../utils/cloudflare-images';
@@ -63,6 +62,10 @@ const ogImage = ogImagePath;
 // Use cover.image if available, otherwise fall back to heroImage
 // cover.image can be a string (public URL) or an imported image
 const displayImage = cover?.image || heroImage;
+// Real intrinsic dimensions when the cover is an imported image; wrong values
+// here make the reserved box height snap when the image loads (layout shift).
+const heroWidth = (typeof displayImage === 'object' && displayImage?.width) || 2560;
+const heroHeight = (typeof displayImage === 'object' && displayImage?.height) || 1440;
 
 // Build edit URL
 const editUrl = filePath && EDIT_POST.appendFilePath
@@ -167,7 +170,11 @@ const howToSchema = howto && howto.steps?.length > 0
 ---
 
 <html lang="en">
-	<Head>
+	{/* Plain <head>, not astro-capo's <Head>: wrapping the head in a component
+	    hides it from Astro's static head detection, so the page's inlined
+	    stylesheet lands in the <body> and the top of the page paints unstyled
+	    on slow connections (CLS ~1.0 in Lighthouse). */}
+	<head>
 		<BaseHead
 			title={title}
 			description={description}
@@ -209,7 +216,7 @@ const howToSchema = howto && howto.steps?.length > 0
 		<Schema item={breadcrumbSchema} />
 		{faqSchema && <Schema item={faqSchema} />}
 		{howToSchema && <Schema item={howToSchema} />}
-	</Head>
+	</head>
 
 	<body class="surface">
 		<div id="reading-progress" class="reading-progress" style="width: 0%" aria-hidden="true"></div>
@@ -302,8 +309,8 @@ const howToSchema = howto && howto.steps?.length > 0
 									loading="eager"
 									fetchpriority="high"
 									decoding="sync"
-									width="2048"
-									height="1143"
+									width={heroWidth}
+									height={heroHeight}
 									class="w-full h-auto"
 								/>
 							</figure>

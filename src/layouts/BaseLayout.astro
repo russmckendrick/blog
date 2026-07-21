@@ -1,5 +1,4 @@
 ---
-import { Head } from '@felixicaza/astro-capo';
 import BaseHead from '../components/layout/BaseHead.astro';
 import Header from '../components/layout/Header.astro';
 import HeaderWrapper from '../components/layout/HeaderWrapper.astro';
@@ -31,10 +30,14 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 
 <!doctype html>
 <html lang="en">
-	<Head>
+	{/* Plain <head>, not astro-capo's <Head>: wrapping the head in a component
+	    hides it from Astro's static head detection, so the page's inlined
+	    stylesheet lands in the <body> and the top of the page paints unstyled
+	    on slow connections (CLS ~1.0 in Lighthouse). */}
+	<head>
 		<BaseHead title={pageTitle} description={description} image={image} keywords={keywords} />
 		<slot name="head" />
-	</Head>
+	</head>
 	<body class="surface">
 		<a href="#main-content" class="skip-link">Skip to content</a>
 		<HeaderWrapper autoHide={false}>

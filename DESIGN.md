@@ -184,14 +184,14 @@ Listings are index entries: dateline, framed cover image, Source Serif headline,
 
 ## Motion — "the magazine, filmed"
 
-Built on the vanilla **Motion** library via `src/scripts/motion.ts`; no React islands for animation. Timing vocabulary lives in tokens: `--ease-settle` (cubic-bezier(0.22, 0.61, 0.36, 1)), `--dur-quick` 150ms, `--dur-hover` 400ms, `--dur-page` 600ms. No springs, bounces, or translate-lift hovers.
+Page-load animations (`data-entrance` / `data-settle`) are pure CSS keyframes in `global.css` so they start at first paint; scroll reveals use the vanilla **Motion** library via `src/scripts/motion.ts`; no React islands for animation. Timing vocabulary lives in tokens: `--ease-settle` (cubic-bezier(0.22, 0.61, 0.36, 1)), `--dur-quick` 150ms, `--dur-hover` 400ms, `--dur-page` 600ms. No springs, bounces, or translate-lift hovers.
 
-- **Entrances:** elements marked `data-entrance` stagger in (fade + 14px rise) on page load — dateline → title → byline → hero.
+- **Entrances:** elements marked `data-entrance` stagger in (fade + 14px rise) on page load — dateline → title → byline → hero. Stagger comes from sibling-order CSS delays.
 - **Hero settle:** `data-settle` images ease from scale 1.03 to 1, like a plate settling onto the page.
 - **Scroll reveals:** `data-reveal` fades entries up once in view; `data-reveal="rule"` draws rules in horizontally. (The old `.reveal*` classes are neutered no-ops.)
 - **Shared-element view transitions:** listing images/titles carry `transition:name` (`post-img-*` / `post-title-*`) matched by the article layout, so the cover you click becomes the article hero.
 - **Hovers:** underline draw-ins (`.nav-underline`), slow image zooms (scale 1.04 over 700ms), headline colour shifts to accent.
-- All motion respects `prefers-reduced-motion`, including the `[data-entrance]`/`[data-settle]` hidden initial states.
+- All motion respects `prefers-reduced-motion`: the entrance/settle animations only apply under `no-preference`, so reduced-motion users get static, fully visible content.
 
 ## Components
 
