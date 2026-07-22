@@ -323,7 +323,7 @@ Example usage:
 
 **Loading behavior:**
 
-The lightgallery library (and its thumbnail/zoom plugins) is not part of the critical request chain. `BlogPost.astro` defers initialization until after the window `load` event plus an idle callback, then fetches the three chunks in parallel — and only on pages that actually contain galleries. A capture-phase click listener acts as a safety net: clicking a gallery image before idle init completes triggers initialization on demand and opens the lightbox instead of navigating to the raw image.
+The lightgallery library (and its thumbnail/zoom plugins) never loads during page load — the three chunks stay out of the network dependency tree entirely. `BlogPost.astro` fetches them (in parallel) only on the first user interaction with a gallery item: a capture-phase `pointerover`/`focusin`/`touchstart` warm-up starts the import as soon as a gallery image is hovered, focused, or touched, and a capture-phase click listener is the primary open path — clicking a gallery image initializes on demand and opens the lightbox instead of navigating to the raw image. Pages without galleries never load anything.
 
 ### ThemeSvg
 Embed SVG images with automatic light/dark theme switching. Provide a base path and the component renders both `-light` and `-dark` variants, showing the correct one based on the active theme.

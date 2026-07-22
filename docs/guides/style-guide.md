@@ -51,13 +51,13 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 
 ## Motion And Interaction
 
-- Motion timing uses the tokens `--ease-settle` / `--dur-quick` / `--dur-hover` / `--dur-page`. Page-load animations are pure CSS in `global.css`; scroll reveals run through `src/scripts/motion.ts` (vanilla Motion).
+- Motion timing uses the tokens `--ease-settle` / `--dur-quick` / `--dur-hover` / `--dur-page`. Page-load animations are pure CSS in `global.css`; scroll reveals are CSS transitions in `global.css` driven by a tiny inline IntersectionObserver (`src/components/layout/RevealInit.astro`) — no animation library.
 - **Page-load entrances**: mark elements with `data-entrance` for the staggered fade/rise cascade (used on page headers and the article journal header). CSS-only — starts at first paint, never gated on a script chunk (an opacity pre-hide waiting for JS delays LCP).
 - **Hero settle**: mark the article hero figure with `data-settle` (scale 1.03 → 1 with fade). Also CSS-only.
 - **Scroll reveals**: mark below-the-fold entries with `data-reveal` (fade up once); `data-reveal="rule"` draws a rule in horizontally. The legacy `.reveal*` classes are neutered no-ops — do not use them in new code.
 - **Shared-element transitions**: listing images/titles and the article hero/title carry matching `transition:name` values derived from the post URL, so the cover morphs into the article hero on navigation.
 - **Image hovers**: slow zoom (`scale(1.04)`, ~700ms, ease-out) inside the hairline frame.
-- Respect `prefers-reduced-motion`: the entrance/settle CSS animations only apply under `no-preference`, the Motion helpers no-op, and smooth scrolling/view-transition animations are disabled.
+- Respect `prefers-reduced-motion`: the entrance/settle CSS animations and scroll-reveal transitions only apply under `no-preference` (reveals additionally require `scripting: enabled`, so no-JS users always see content), and smooth scrolling/view-transition animations are disabled.
 - Focus states use `:focus-visible` with a 2px accent outline.
 
 ## Accessibility Baseline
@@ -77,7 +77,7 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 ## Implementation References
 
 - Design tokens and utility classes: `src/styles/global.css`
-- Motion helpers: `src/scripts/motion.ts`
+- Scroll-reveal observer: `src/components/layout/RevealInit.astro`
 - Design system documentation: [Design System](./design-system.md)
 - Header: `src/components/layout/Header.astro`
 - Footer: `src/components/layout/Footer.astro`

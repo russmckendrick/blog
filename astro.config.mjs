@@ -121,14 +121,11 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 		build: {
-			// Optimize module preloading to reduce critical request chains
-			modulePreload: {
-				polyfill: false, // Modern browsers support ES modules, no polyfill needed
-				resolveDependencies: (_filename, deps) => {
-					// Preload all dependencies to avoid chained requests
-					return deps;
-				}
-			},
+			// No module-preload machinery: the only dynamic imports (lightgallery
+			// core + plugins) are three independent chunks fetched in a single
+			// Promise.all, so Vite's preload-helper chunk would add a request to
+			// every post page without parallelising anything
+			modulePreload: false,
 			// Optimize chunking strategy
 			rollupOptions: {
 				output: {

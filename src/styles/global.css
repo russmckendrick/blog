@@ -377,10 +377,36 @@ a:hover {
   }
 }
 
+/* Scroll reveals ([data-reveal]): a tiny inline IntersectionObserver
+   (src/components/layout/RevealInit.astro) adds .is-revealed on viewport
+   entry; the transition itself runs here. Pre-hide is gated on both
+   scripting and motion preference, so no-JS and reduced-motion users
+   always see content immediately. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    transition:
+      opacity 0.55s var(--ease-settle),
+      transform 0.55s var(--ease-settle);
+  }
+
+  [data-reveal]:not(.is-revealed) {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  [data-reveal="rule"] {
+    transform-origin: left center;
+    transition-duration: 0.7s;
+  }
+
+  [data-reveal="rule"]:not(.is-revealed) {
+    transform: scaleX(0);
+  }
+}
+
 /* Legacy scroll-reveal classes: neutered no-ops.
-   Scroll reveals now run through src/scripts/motion.ts using
-   [data-reveal] attributes; these classes remain only so markup
-   not yet migrated renders visibly. */
+   Scroll reveals now run through [data-reveal] attributes above;
+   these classes remain only so markup not yet migrated renders visibly. */
 .reveal,
 .reveal-fade,
 .reveal-scale,

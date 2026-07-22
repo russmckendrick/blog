@@ -1,5 +1,6 @@
 ---
 import BaseHead from '../components/layout/BaseHead.astro';
+import RevealInit from '../components/layout/RevealInit.astro';
 import Header from '../components/layout/Header.astro';
 import HeaderWrapper from '../components/layout/HeaderWrapper.astro';
 import Footer from '../components/layout/Footer.astro';
@@ -48,13 +49,7 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 		</main>
 		<Footer />
 		{import.meta.env.DEV && <WebVitals debug={true} />}
-		<script>
-			// Page motion: staggered entrances, hero settles, and in-view reveals
-			import { initPageMotion } from '../scripts/motion';
-
-			initPageMotion();
-			document.addEventListener('astro:page-load', () => initPageMotion());
-		</script>
+		<RevealInit />
 		<script>
 			// Defer non-critical work until after LCP using requestIdleCallback
 			function scheduleIdleWork(callback: () => void, timeout = 2000) {

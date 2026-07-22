@@ -490,7 +490,7 @@ Per-post `.md` files and `/llms.txt` also stay directly reachable (useful for `l
 | **Largest Contentful Paint** | <2.5s | <2.0s |
 | **Time to Interactive** | <3.8s | <3.0s |
 
-Critical request chains are kept flat on post pages: the motion helpers use the WAAPI `motion/mini` engine (~10 KB chunk instead of 63 KB), and lightgallery initialization is deferred until after the load event + idle, with its three chunks fetched in parallel and a first-click fallback (see `docs/reference/embed-components.md`).
+Critical request chains are kept flat on post pages: there is no animation library at all (scroll reveals are CSS transitions driven by an inline IntersectionObserver in `RevealInit.astro`), and the lightgallery chunks are fetched only on first user interaction with a gallery item (hover/focus/touch warm-up or click) — never during page load, so no JS request chains appear in the network dependency tree (see `docs/reference/embed-components.md`).
 
 ### CDN Performance
 

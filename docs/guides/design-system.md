@@ -6,7 +6,7 @@ The site is styled as a high-end print journal: paper tones, serif typography, h
 
 - **Tokens:** `src/styles/global.css` — CSS custom properties in `:root` (light/"paper") and `.dark` (ink and paper swapped).
 - **Fonts:** registered in `astro.config.mjs` via Astro's Fonts API (`fontProviders.local()`), woff2 files in `src/assets/fonts/`, `<Font>` tags in `src/components/layout/BaseHead.astro`, Tailwind mapping in the `@theme inline` block of `global.css`.
-- **Motion helpers:** `src/scripts/motion.ts` (vanilla [Motion](https://motion.dev) — no React islands).
+- **Scroll reveals:** `src/components/layout/RevealInit.astro` (inline IntersectionObserver + CSS transitions — no animation library, no React islands).
 - **Expressive Code theming:** `styleOverrides` in `astro.config.mjs` only; late CSS cannot override its build-time styles.
 
 ## Tokens
@@ -56,7 +56,7 @@ Listings are index entries: dateline, framed cover, Source Serif headline, stand
 
 ## Motion
 
-Motion splits by when it must start. Page-load entrances (`data-entrance`) and the hero settle (`data-settle`) are pure CSS animations in `global.css` (`entrance-rise`, `image-settle`) that begin at first paint — never gate these on JS: an opacity pre-hide waiting for a script chunk delays LCP by seconds and flags the page in PageSpeed. Scroll reveals run through `src/scripts/motion.ts` (`animate` from `motion/mini`, `inView` from `motion` — keeps the chunk small). Shared timing tokens: `--ease-settle`, `--dur-quick` (150ms), `--dur-hover` (400ms), `--dur-page` (600ms). No springs or lift hovers.
+Motion splits by when it must start. Page-load entrances (`data-entrance`) and the hero settle (`data-settle`) are pure CSS animations in `global.css` (`entrance-rise`, `image-settle`) that begin at first paint — never gate these on JS: an opacity pre-hide waiting for a script chunk delays LCP by seconds and flags the page in PageSpeed. Scroll reveals are CSS transitions in `global.css` triggered by a tiny inline IntersectionObserver in `src/components/layout/RevealInit.astro`, which adds `.is-revealed` on viewport entry (elements it has claimed are marked `data-reveal-bound`) — no animation library ships at all, and the pre-hide is gated on `@media (scripting: enabled) and (prefers-reduced-motion: no-preference)`. Shared timing tokens: `--ease-settle`, `--dur-quick` (150ms), `--dur-hover` (400ms), `--dur-page` (600ms). No springs or lift hovers.
 
 | Attribute | Effect |
 |---|---|
@@ -65,7 +65,7 @@ Motion splits by when it must start. Page-load entrances (`data-entrance`) and t
 | `data-reveal` | fades up once when scrolled into view |
 | `data-reveal="rule"` | rule draws in horizontally |
 
-`data-entrance` staggers via sibling-order CSS delays (0.09s steps); both CSS animations are wrapped in `@media (prefers-reduced-motion: no-preference)`, so reduced-motion users get static, fully visible content. `initPageMotion()` (scroll reveals only) is called from `BaseLayout.astro` and `BlogPost.astro` on load and `astro:page-load`; reveal elements are claimed with `data-motion-claimed` so client-side navigations don't double-animate.
+`data-entrance` staggers via sibling-order CSS delays (0.09s steps); both CSS animations are wrapped in `@media (prefers-reduced-motion: no-preference)`, so reduced-motion users get static, fully visible content. `<RevealInit />` (scroll reveals only) is rendered by `BaseLayout.astro` and `BlogPost.astro`; reveal elements are claimed with `data-reveal-bound` so re-runs (e.g. `astro:page-load`) don't double-observe.
 
 Shared-element view transitions: `PostCard` and `BlogPost.astro` derive matching `transition:name` values (`post-img-<slug>`, `post-title-<slug>`) from the post URL, so the listing cover morphs into the article hero on navigation.
 

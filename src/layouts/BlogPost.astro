@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../utils/cloudflare-images';
 import BaseHead from '../components/layout/BaseHead.astro';
+import RevealInit from '../components/layout/RevealInit.astro';
 import Footer from '../components/layout/Footer.astro';
 import FormattedDate from '../components/blog/FormattedDate.astro';
 import Header from '../components/layout/Header.astro';
@@ -357,13 +358,7 @@ const howToSchema = howto && howto.steps?.length > 0
 		</main>
 		<Footer />
 		{import.meta.env.DEV && <WebVitals debug={true} />}
-		<script>
-			// Page motion: staggered journal-header entrance, hero settle, reveals
-			import { initPageMotion } from '../scripts/motion';
-
-			initPageMotion();
-			document.addEventListener('astro:page-load', () => initPageMotion());
-		</script>
+		<RevealInit />
 		<script>
 			// Reading progress bar
 			function initReadingProgress() {
@@ -408,195 +403,183 @@ const howToSchema = howto && howto.steps?.length > 0
 				return currentInit;
 			}
 
-			// Initialize LightGallery for blog post pages with optimized DOM operations
+			// Initialize LightGallery for blog post pages with optimized DOM operations.
+			// Runs directly (no requestAnimationFrame): init is interaction-triggered,
+			// and rAF can be suspended in throttled/background tabs, stalling the open.
 			async function doInitLightGallery() {
 				try {
-					// Use requestAnimationFrame to batch DOM reads and avoid forced reflows
-					await new Promise<void>(resolve => {
-						requestAnimationFrame(async () => {
-							const galleries = document.querySelectorAll('astro-lightgallery, .lightgallery-component');
+					const galleries = document.querySelectorAll('astro-lightgallery, .lightgallery-component');
 
-							// Early exit if no galleries - don't load the library at all
-							if (galleries.length === 0) {
-								resolve();
-								return;
-							}
+					// Early exit if no galleries - don't load the library at all
+					if (galleries.length === 0) {
+						return;
+					}
 
-							// Dynamic import - only load LightGallery when galleries exist; fetch in parallel
-							const [{ default: lightGallery }, { default: lgThumbnail }, { default: lgZoom }] = await Promise.all([
-								import('lightgallery'),
-								import('lightgallery/plugins/thumbnail'),
-								import('lightgallery/plugins/zoom'),
-							]);
+					// Dynamic import - only load LightGallery when galleries exist; fetch in parallel
+					const [{ default: lightGallery }, { default: lgThumbnail }, { default: lgZoom }] = await Promise.all([
+						import('lightgallery'),
+						import('lightgallery/plugins/thumbnail'),
+						import('lightgallery/plugins/zoom'),
+					]);
 
-							// Batch all DOM reads first to avoid layout thrashing
-							const galleryData: Array<{
-								htmlGallery: HTMLElement;
-								items: HTMLElement[];
-								options?: LightGallerySettings;
-							}> = [];
+					// Batch all DOM reads first to avoid layout thrashing
+					const galleryData: Array<{
+						htmlGallery: HTMLElement;
+						items: HTMLElement[];
+						options?: LightGallerySettings;
+					}> = [];
 
-							let firstGalleryOptions: LightGallerySettings = {};
-							let foundFullGalleryOptions = false;
+					let firstGalleryOptions: LightGallerySettings = {};
+					let foundFullGalleryOptions = false;
 
-							for (const gallery of galleries) {
-								const htmlGallery = gallery as HTMLElement;
+					for (const gallery of galleries) {
+						const htmlGallery = gallery as HTMLElement;
 
-								// Skip if already initialized by THIS script
-								if (htmlGallery.hasAttribute('data-unified-initialized')) {
-									continue;
-								}
+						// Skip if already initialized by THIS script
+						if (htmlGallery.hasAttribute('data-unified-initialized')) {
+							continue;
+						}
 
-								// Read options logic:
-								// 1. If we haven't found options from a "full gallery" yet, check this one.
-								// 2. If this IS a full gallery (has lightgallery-wrapper), it overrides any previous options (even if we already found some from a single image).
-								const isFullGallery = htmlGallery.classList.contains('lightgallery-wrapper');
-								
-								if (!foundFullGalleryOptions) {
-									// If we haven't found a full gallery yet, we can take options from this one
-									// But if THIS one is a full gallery, we mark it so we don't get overridden by a later single image
+						// Read options logic:
+						// 1. If we haven't found options from a "full gallery" yet, check this one.
+						// 2. If this IS a full gallery (has lightgallery-wrapper), it overrides any previous options (even if we already found some from a single image).
+						const isFullGallery = htmlGallery.classList.contains('lightgallery-wrapper');
+						
+						if (!foundFullGalleryOptions) {
+							// If we haven't found a full gallery yet, we can take options from this one
+							// But if THIS one is a full gallery, we mark it so we don't get overridden by a later single image
+							if (galleryData.length === 0 || isFullGallery) {
+								const optionsStr = htmlGallery.getAttribute('data-options') || htmlGallery.dataset.options || '{}';
+								try {
+									const parsedOptions = JSON.parse(optionsStr);
+									// Only update if it's the first one OR if it's a full gallery overriding a previous one
 									if (galleryData.length === 0 || isFullGallery) {
-										const optionsStr = htmlGallery.getAttribute('data-options') || htmlGallery.dataset.options || '{}';
-										try {
-											const parsedOptions = JSON.parse(optionsStr);
-											// Only update if it's the first one OR if it's a full gallery overriding a previous one
-											if (galleryData.length === 0 || isFullGallery) {
-												firstGalleryOptions = parsedOptions;
-											}
-											if (isFullGallery) {
-												foundFullGalleryOptions = true;
-											}
-										} catch (e) {
-											console.warn('Failed to parse gallery options', e);
-										}
+										firstGalleryOptions = parsedOptions;
 									}
-								}
-
-								// Collect all items
-								const items = Array.from(htmlGallery.querySelectorAll<HTMLElement>('a[data-lg-id]'));
-
-								galleryData.push({
-									htmlGallery,
-									items,
-									options: firstGalleryOptions // This might be slightly stale for the pushed item if a later gallery overrides it, but we only use `firstGalleryOptions` at the end for the unified instance anyway.
-								});
-							}
-
-							// Now do all DOM writes in a single batch
-							if (galleryData.length > 0) {
-								// Flatten all items
-								const allGalleryItems = galleryData.flatMap(g => g.items);
-
-								if (allGalleryItems.length === 0) {
-									resolve();
-									return;
-								}
-
-								// Create unified gallery container
-								const unifiedGalleryId = 'unified-lightgallery';
-								let unifiedGallery = document.getElementById(unifiedGalleryId);
-
-								if (unifiedGallery) {
-									// If it exists, clear it out to be safe
-									unifiedGallery.innerHTML = '';
-								} else {
-									unifiedGallery = document.createElement('div');
-									unifiedGallery.id = unifiedGalleryId;
-									// Use visibility hidden instead of display none to ensure events/dimensions work if needed
-									unifiedGallery.style.position = 'absolute';
-									unifiedGallery.style.top = '0';
-									unifiedGallery.style.left = '0';
-									unifiedGallery.style.width = '0';
-									unifiedGallery.style.height = '0';
-									unifiedGallery.style.visibility = 'hidden';
-									unifiedGallery.style.overflow = 'hidden';
-									document.body.appendChild(unifiedGallery);
-								}
-
-								// Populate unified gallery
-								const fragment = document.createDocumentFragment();
-								allGalleryItems.forEach(item => {
-									const clone = item.cloneNode(true) as HTMLElement;
-									fragment.appendChild(clone);
-								});
-								unifiedGallery.appendChild(fragment);
-
-								// Mark galleries as initialized
-								galleryData.forEach(({ htmlGallery }) => {
-									htmlGallery.setAttribute('data-unified-initialized', 'true');
-								});
-
-								// Initialize unified gallery
-								// Merge plugins into options
-								const lgOptions = {
-									...firstGalleryOptions,
-									plugins: [lgThumbnail, lgZoom],
-									selector: 'a[data-lg-id]', // Explicitly select items
-									licenseKey: '0000-0000-000-0000' // Open source license
-								};
-
-								const galleryInstance = lightGallery(unifiedGallery, lgOptions);
-
-								// Redirect clicks from original galleries to unified gallery
-								// CRITICAL: Clone and replace items to strip any existing event listeners (e.g. from astro-lightgallery auto-init)
-								allGalleryItems.forEach((item, index) => {
-									const newItem = item.cloneNode(true) as HTMLElement;
-									newItem.setAttribute('data-lg-bound', 'true');
-									if (item.parentNode) {
-										item.parentNode.replaceChild(newItem, item);
+									if (isFullGallery) {
+										foundFullGalleryOptions = true;
 									}
-
-									newItem.addEventListener('click', (e) => {
-										e.preventDefault();
-										e.stopPropagation(); // Stop propagation to be safe
-										
-										if (galleryInstance && typeof galleryInstance.openGallery === 'function') {
-											galleryInstance.openGallery(index);
-										} else {
-											console.warn('[LightGallery] Instance not found or openGallery missing, falling back to click simulation');
-											const unifiedItems = unifiedGallery!.querySelectorAll('a[data-lg-id]');
-											if (unifiedItems[index]) {
-												(unifiedItems[index] as HTMLElement).click();
-											}
-										}
-									});
-								});
+								} catch (e) {
+									console.warn('Failed to parse gallery options', e);
+								}
 							}
-							resolve();
+						}
+
+						// Collect all items
+						const items = Array.from(htmlGallery.querySelectorAll<HTMLElement>('a[data-lg-id]'));
+
+						galleryData.push({
+							htmlGallery,
+							items,
+							options: firstGalleryOptions // This might be slightly stale for the pushed item if a later gallery overrides it, but we only use `firstGalleryOptions` at the end for the unified instance anyway.
 						});
-					});
+					}
+
+					// Now do all DOM writes in a single batch
+					if (galleryData.length > 0) {
+						// Flatten all items
+						const allGalleryItems = galleryData.flatMap(g => g.items);
+
+						if (allGalleryItems.length === 0) {
+							return;
+						}
+
+						// Create unified gallery container
+						const unifiedGalleryId = 'unified-lightgallery';
+						let unifiedGallery = document.getElementById(unifiedGalleryId);
+
+						if (unifiedGallery) {
+							// If it exists, clear it out to be safe
+							unifiedGallery.innerHTML = '';
+						} else {
+							unifiedGallery = document.createElement('div');
+							unifiedGallery.id = unifiedGalleryId;
+							// Use visibility hidden instead of display none to ensure events/dimensions work if needed
+							unifiedGallery.style.position = 'absolute';
+							unifiedGallery.style.top = '0';
+							unifiedGallery.style.left = '0';
+							unifiedGallery.style.width = '0';
+							unifiedGallery.style.height = '0';
+							unifiedGallery.style.visibility = 'hidden';
+							unifiedGallery.style.overflow = 'hidden';
+							document.body.appendChild(unifiedGallery);
+						}
+
+						// Populate unified gallery
+						const fragment = document.createDocumentFragment();
+						allGalleryItems.forEach(item => {
+							const clone = item.cloneNode(true) as HTMLElement;
+							fragment.appendChild(clone);
+						});
+						unifiedGallery.appendChild(fragment);
+
+						// Mark galleries as initialized
+						galleryData.forEach(({ htmlGallery }) => {
+							htmlGallery.setAttribute('data-unified-initialized', 'true');
+						});
+
+						// Initialize unified gallery
+						// Merge plugins into options
+						const lgOptions = {
+							...firstGalleryOptions,
+							plugins: [lgThumbnail, lgZoom],
+							selector: 'a[data-lg-id]', // Explicitly select items
+							licenseKey: '0000-0000-000-0000' // Open source license
+						};
+
+						const galleryInstance = lightGallery(unifiedGallery, lgOptions);
+
+						// Redirect clicks from original galleries to unified gallery
+						// CRITICAL: Clone and replace items to strip any existing event listeners (e.g. from astro-lightgallery auto-init)
+						allGalleryItems.forEach((item, index) => {
+							const newItem = item.cloneNode(true) as HTMLElement;
+							newItem.setAttribute('data-lg-bound', 'true');
+							if (item.parentNode) {
+								item.parentNode.replaceChild(newItem, item);
+							}
+
+							newItem.addEventListener('click', (e) => {
+								e.preventDefault();
+								e.stopPropagation(); // Stop propagation to be safe
+								
+								if (galleryInstance && typeof galleryInstance.openGallery === 'function') {
+									galleryInstance.openGallery(index);
+								} else {
+									console.warn('[LightGallery] Instance not found or openGallery missing, falling back to click simulation');
+									const unifiedItems = unifiedGallery!.querySelectorAll('a[data-lg-id]');
+									if (unifiedItems[index]) {
+										(unifiedItems[index] as HTMLElement).click();
+									}
+								}
+							});
+						});
+					}
 				} finally {
 					currentInit = null;
 				}
 			}
 
-			// Defer init until after the load event + idle so the lightgallery chunks
-			// stay out of the critical request chain (PageSpeed network dependency tree)
-			function scheduleIdleInit() {
-				const idle = () => {
-					if ('requestIdleCallback' in window) {
-						requestIdleCallback(() => initLightGallery(), { timeout: 2000 });
-					} else {
-						setTimeout(() => initLightGallery(), 300);
-					}
-				};
-				if (document.readyState === 'complete') {
-					idle();
-				} else {
-					window.addEventListener('load', idle, { once: true });
-				}
-			}
-
-			// Initialize on first load
-			scheduleIdleInit();
-
-			// Re-initialize after View Transitions navigation (cleanup is handled globally in BaseLayout);
-			// this also fires on the initial load, where scheduleIdleInit keeps it behind the load event
-			document.addEventListener('astro:page-load', () => scheduleIdleInit());
-
-			// First-click safety net: a gallery image clicked before idle init would otherwise
-			// navigate to the raw image href. Init on demand and re-dispatch the click.
+			// LightGallery loads only on first interaction: the chunks never fetch
+			// during page load, so they stay out of the network dependency tree
+			// entirely. The click handler below is the primary init path; the
+			// hover/focus/touch warm-up usually has the chunks ready before the
+			// click lands, so opening feels instant.
 			const GALLERY_ITEM_SELECTOR = 'astro-lightgallery a[data-lg-id], .lightgallery-component a[data-lg-id]';
+
+			// Warm up on the first pointerover/focusin/touchstart of a gallery item.
+			const warmUp = (e: Event) => {
+				if (!(e.target instanceof Element) || !e.target.closest(GALLERY_ITEM_SELECTOR)) return;
+				document.removeEventListener('pointerover', warmUp, true);
+				document.removeEventListener('focusin', warmUp, true);
+				document.removeEventListener('touchstart', warmUp, true);
+				initLightGallery();
+			};
+			document.addEventListener('pointerover', warmUp, true);
+			document.addEventListener('focusin', warmUp, true);
+			document.addEventListener('touchstart', warmUp, { capture: true, passive: true });
+
+			// Primary init path: a gallery image clicked before init would otherwise
+			// navigate to the raw image href. Init on demand and re-dispatch the click.
 			document.addEventListener('click', (e) => {
 				const item = (e.target as Element | null)?.closest?.(GALLERY_ITEM_SELECTOR);
 				if (!item || item.hasAttribute('data-lg-bound')) return; // initialized clones handle their own clicks

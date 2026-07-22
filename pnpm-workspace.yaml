@@ -1,3 +1,8 @@
+allowBuilds:
+  esbuild: true
+  puppeteer: false
+  sharp: true
+  workerd: true
 minimumReleaseAge: 1440
 onlyBuiltDependencies:
   - esbuild
