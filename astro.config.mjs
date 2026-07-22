@@ -29,8 +29,11 @@ export default defineConfig({
 			fallbacks: ['Georgia', 'Times New Roman', 'serif'],
 			options: {
 				variants: [
-					{ weight: '200 900', style: 'normal', src: ['./src/assets/fonts/source-serif-4-variable-latin.woff2'] },
-					{ weight: '200 900', style: 'italic', src: ['./src/assets/fonts/source-serif-4-variable-italic-latin.woff2'] }
+					// Variable fonts instanced to wght 400-800 (fonttools varLib.instancer):
+					// the site uses 400-700 body/headings and 800 on book/glossary h1s,
+					// so the unused 200-399/801-900 ranges were dead weight (~30% smaller)
+					{ weight: '400 800', style: 'normal', src: ['./src/assets/fonts/source-serif-4-variable-latin.woff2'] },
+					{ weight: '400 800', style: 'italic', src: ['./src/assets/fonts/source-serif-4-variable-italic-latin.woff2'] }
 				]
 			}
 		},
@@ -121,11 +124,12 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 		build: {
-			// No module-preload machinery: the only dynamic imports (lightgallery
-			// core + plugins) are three independent chunks fetched in a single
-			// Promise.all, so Vite's preload-helper chunk would add a request to
-			// every post page without parallelising anything
-			modulePreload: false,
+			// Note: dynamic imports (the lightgallery chunks, fetched on first
+			// interaction) are always wrapped in Vite's preload-helper on client
+			// builds — Vite 8 injects it unconditionally and no config removes it.
+			// The helper's dep arrays are empty here, so the wrapper is inert; the
+			// BlogPost.js -> preload-helper.js hop in PageSpeed's dependency tree
+			// is a 1.5 KiB framework floor, not a tuning opportunity.
 			// Optimize chunking strategy
 			rollupOptions: {
 				output: {
