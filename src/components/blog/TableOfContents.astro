@@ -13,11 +13,15 @@ const { headings } = Astro.props;
 
 // Filter to only show h2 and h3 headings
 const tocHeadings = headings.filter(h => h.depth <= 3);
+
+// A long post is the case where the map matters most, so it opens by default;
+// short posts stay collapsed. A reader's own toggle still wins (per-post, below).
+const defaultOpen = tocHeadings.length >= 4;
 ---
 
 {tocHeadings.length > 0 && (
   <nav class="toc-wrapper mb-10">
-    <details class="group toc-details" id="toc-details">
+    <details class="group toc-details" id="toc-details" open={defaultOpen}>
       <summary class="toc-summary cursor-pointer select-none py-3 flex items-center justify-between transition-colors">
         <span class="rubric text-on-surface">Contents</span>
         <svg class="toc-chevron w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,13 +110,28 @@ const tocHeadings = headings.filter(h => h.depth <= 3);
       const controller = new AbortController()
       const { signal } = controller
 
-      const savedState = localStorage.getItem('toc-open')
+      // Key the remembered state per post. A single global key meant closing the
+      // TOC once hid the structure on every article, with no visible cause.
+      const storageKey = `toc-open:${window.location.pathname}`
+
+      let savedState: string | null = null
+      try {
+        savedState = localStorage.getItem(storageKey)
+      } catch {
+        // Storage unavailable (private mode, blocked cookies) — keep the server default
+      }
       if (savedState === 'true') {
         details.setAttribute('open', '')
+      } else if (savedState === 'false') {
+        details.removeAttribute('open')
       }
 
       details.addEventListener('toggle', () => {
-        localStorage.setItem('toc-open', details.open.toString())
+        try {
+          localStorage.setItem(storageKey, details.open.toString())
+        } catch {
+          // Nothing to persist to; the toggle still works for this page view
+        }
       }, { signal })
 
       cleanupToc = () => {

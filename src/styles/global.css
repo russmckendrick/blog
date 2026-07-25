@@ -573,9 +573,14 @@ a:hover {
    Prose Styling (Blog Post Content)
    ================================================ */
 
-.prose {
-  @apply max-w-none;
-  color: var(--color-on-surface);
+/* Base `.prose` sits in the components layer so a per-surface width utility
+   (e.g. the article's `max-w-[72ch]`) wins. As a plain rule it beat the utility
+   on source order and every post rendered at ~99ch instead of the specified 72ch. */
+@layer components {
+  .prose {
+    @apply max-w-none;
+    color: var(--color-on-surface);
+  }
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
@@ -636,6 +641,31 @@ a:hover {
   @apply text-lg mb-5;
   line-height: 1.75;
   color: var(--color-on-surface-variant);
+}
+
+/* The article's text column. Header, contents and prose share one measure and
+   one left edge; only the hero plate runs the full container width. */
+.article-column {
+  margin-inline: auto;
+  max-width: 72ch;
+}
+
+/* Source link in the article byline: icon only, label carried by title/aria-label.
+   Padded out to a usable hit target without adding height to the byline row. */
+.byline-source {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: -6px 0;
+  color: var(--color-on-surface-variant);
+  transition: color 0.2s ease;
+}
+
+.byline-source:hover,
+.byline-source:focus-visible {
+  color: var(--color-secondary);
 }
 
 /* Drop cap on the opening paragraph of an article body */
@@ -1009,13 +1039,18 @@ astro-lightgallery {
    Reading Progress Bar
    ================================================ */
 
+/* Full-width and scaled on the compositor. Animating `width` relayouts the page
+   on every scroll frame; `transform` does not. */
 .reading-progress {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   height: 2px;
   background: var(--reading-progress-color);
   z-index: 9999;
-  transition: width 50ms linear;
-  will-change: width;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 50ms linear;
+  will-change: transform;
 }
