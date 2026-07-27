@@ -18,9 +18,10 @@
 //   lighting              - true when the weekly LIGHTING_DIRECTIONS rotation applies
 //                           (photo lanes only; print lanes carry their own treatment)
 //   negatives             - extra lane-specific negative terms
-//   pipeline              - [{ role: 'compose', backend?, fallback? }, optional
-//                           { role: 'restyle', backend, params }]. A compose stage without
-//                           a backend resolves to the tunes-config.yaml defaults.
+//   pipeline              - [{ role: 'compose', backend?, fallback? }]. A compose stage
+//                           without a backend resolves to the tunes-config.yaml defaults.
+//                           Composing is the only stage: second image-to-image passes were
+//                           tried and consistently degraded the album motifs.
 
 export const MS_PER_WEEK = 604800000
 

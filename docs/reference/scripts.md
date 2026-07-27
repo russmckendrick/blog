@@ -117,7 +117,7 @@ node scripts/fal-tunes-cover.js --help
 
 Use this for direct tunes cover generation. The script reads the ~7-8 strongest album covers, describes the visual contents of each one, then designs a single cohesive scene that weaves recognisable elements from all of them into one shared world — rendered in that week's **creative-direction lane**. Lanes are defined in `scripts/lib/tunes-lanes.js` (7 photographic and 4 print/illustration, including surreal album-sleeve photography, analog rehearsal-room documentary, long-exposure light photography, and retro science-fiction paperback painting) and rotate deterministically from the post-date seed, so consecutive weeks land in genuinely different media, compositions, and palettes instead of converging on one photoreal formula. The art-brief and final image prompt are softened for safety: youthful figures are recast as adults/statues and sensitive motifs (gore, body horror, medical/foetal imagery, blank eyes, nudity) are reinterpreted abstractly, so the scene stays evocative without tripping image-model moderators. Text and grid/montage negatives always apply; photo lanes additionally ban illustration looks while print lanes ban photoreal/3D looks, and every lane bans the old posed-ensemble/props-on-plinths/giant-sculpture formula. Recent weekly concepts (from `scripts/.tunes-image-history.json`) are passed to the art director as do-not-repeat instructions.
 
-The image calls are delegated to swappable backends in `scripts/lib/image-backends/`. The **compose** backend comes from the lane (print lanes prefer `nano-banana`, which follows style-first prompting more faithfully), falling back to `settings.cover_backend` in `scripts/tunes-config.yaml`. One print lane (`vintage-travel-poster`) then runs an optional **restyle** stage (`ideogram-remix`) over the composed image to lock the medium in, with a conservative strength so the album motifs stay recognisable. The restyle prompt repeats the full lane treatment — composition, palette, negative terms, anti-cliché rules, and no-text instruction — so the second pass cannot flatten away those constraints. Prompts that would exceed a restyle backend's declared character limit are rebuilt in a compact form that retains those constraints but omits the redundant per-source motif list; a restyle failure logs a warning and ships the composed image. Disable restyling with `--no-restyle` or `settings.cover_restyle: off`.
+The image calls are delegated to swappable backends in `scripts/lib/image-backends/`. The **compose** backend comes from the lane (print lanes prefer `nano-banana`, which follows style-first prompting more faithfully), falling back to `settings.cover_backend` in `scripts/tunes-config.yaml`. Composing is the only image stage: print lanes previously ran a second image-to-image restyle pass (Recraft, then Ideogram) to reinforce the medium, but it consistently degraded the album motifs, so the composed image now ships as-is.
 
 Input selection ranks every candidate using play rank, colour, contrast, and full-height text-likelihood rather than automatically admitting the first seven albums. Strongly text-heavy sleeves are held behind cleaner alternatives and remain available only as fallbacks for weeks with very few covers. Known repeat offenders can also be excluded in `scripts/tunes-cover-blocklist.js` without removing them from the post itself.
 
@@ -129,7 +129,6 @@ Options:
 - `--output=<path>` writes that file, the matching `-small` derivative, and a `.json` run sidecar
 - `--lane=<id>` forces a lane (`--style` is an alias; env `TUNES_COVER_LANE`); `auto` means weekly rotation
 - `--list-lanes` prints the lane catalogue and exits
-- `--no-restyle` skips the lane's optional restyle stage
 - `--record` appends the run to `scripts/.tunes-image-history.json` (the weekly generator records automatically; manual runs opt in)
 - `--debug`, `-d` enables verbose input selection and prompt output
 
@@ -172,7 +171,6 @@ Options:
 - `--type=<kind>` selects `header` or `artist`; `--header` / `--artist` are shorthands
 - `--week=<date>` selects a weekly post, for example `2026-04-20`
 - `--lane=<id>` (header only) forces a creative-direction lane instead of the week's rotation; `--style` is an alias
-- `--no-restyle` (header only) skips the lane's optional restyle stage
 - `--record` appends the run to `scripts/.tunes-image-history.json` (off by default here so regenerating old weeks does not pollute the do-not-repeat memory)
 - `--output=<path>` writes a test image outside the normal asset path
 - `--debug`, `-d` enables verbose output
@@ -287,7 +285,6 @@ These modules support the top-level CLIs and are not intended to be run directly
 | `scripts/lib/image-backends/index.js` | Registry of generic, swappable image-generation backends (`{ id, label, generate, maxInputImages }`); `getBackend()` / `normalizeBackendId()`. Shared by both the cover header and the artist portrait |
 | `scripts/lib/image-backends/nano-banana.js` | Generic FAL `nano-banana-2/edit` image backend (env: `NANO_BANANA_MODEL`, `NANO_BANANA_FALLBACK_MODEL`) |
 | `scripts/lib/image-backends/gpt-image-2.js` | Generic OpenAI `gpt-image-2/edit` image backend via fal (env: `GPT_IMAGE_2_MODEL`, `GPT_IMAGE_2_SIZE`, `GPT_IMAGE_2_QUALITY`) |
-| `scripts/lib/image-backends/ideogram-remix.js` | Single-image FAL `ideogram/v3/remix` restyle backend for print lanes (env: `IDEOGRAM_REMIX_MODEL`). Its `strength` is the weight of the INPUT image — higher preserves more source |
 | `scripts/lib/tunes-lanes.js` | Weekly creative-direction lanes for the cover (photo + print media) plus the deterministic rotation helpers (`pickLane`, `pickLightingDirection`, `pickShootDirection`, `pickColourTreatment`, `epochShuffledPick`) shared by both image generators |
 | `scripts/lib/tunes-image-history.js` | Rolling record of weekly image runs in `scripts/.tunes-image-history.json` (committed, capped) plus per-run `.json` sidecars; feeds do-not-repeat concepts back to the art director |
 | `scripts/lib/image-handler.js` | Downloads, stores, and organizes album/artist images |

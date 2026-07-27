@@ -189,7 +189,7 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 - `fal-tunes-artists.js` - Group-portrait generator that composes the week's artist photos into one photorealistic photo; same configurable image backends, reuses the cover pipeline's helpers
 - `lib/tunes-lanes.js` - The creative-direction lane catalogue (photo + print media) and the deterministic weekly rotation helpers (lanes, lighting, shoot grammar, colour treatments)
 - `lib/tunes-image-history.js` - Rolling committed history of weekly image runs (`scripts/.tunes-image-history.json`) plus per-run `.json` sidecars; feeds do-not-repeat concepts back to the art director
-- `lib/image-backends/` - Generic, swappable image-generation backends shared by both generators: multi-reference compose backends (`nano-banana`, `gpt-image-2`) and the single-image restyle backend (`ideogram-remix`)
+- `lib/image-backends/` - Generic, swappable multi-reference compose backends shared by both generators (`nano-banana`, `gpt-image-2`)
 - `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly image (header or artist) without changing MDX; supports `--lane` for the header
 
 ### AI Models Used
@@ -197,7 +197,6 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 - **Content generation**: OpenAI GPT-5.4 (default) or Anthropic Claude 3.5 Sonnet (fallback), with humaniser anti-pattern guidelines to produce natural UK English output
 - **Cover art brief (Stage A)**: OpenAI GPT-5.4 via Responses API (describes each album cover, then designs one cohesive scene in the week's creative-direction lane)
 - **Image composition**: a swappable multi-reference backend (`scripts/lib/image-backends/`) — FAL.ai `nano-banana-2/edit` or OpenAI `gpt-image-2/edit` — chosen by the week's lane, falling back to `settings.cover_backend` / `settings.artist_portrait_backend` in `scripts/tunes-config.yaml`
-- **Cover restyling (print lanes, optional)**: FAL.ai `ideogram/v3/remix` reinforces the lane's medium over the composed image while keeping the album motifs recognisable
 - **Web search**: Tavily, Perplexity, or Exa API (optional, for factual album research)
 
 ## Cover Image Generation
@@ -226,7 +225,7 @@ Lanes live in `scripts/lib/tunes-lanes.js` (run `node scripts/fal-tunes-cover.js
 
 Each lane bundles a medium, a style-first prompt opening, a motif treatment (how the album elements are rendered while staying recognisable), a composition grammar, a palette treatment, per-lane negatives, and its image pipeline. Text and grid/montage negatives always apply; photo lanes additionally ban illustration looks while print lanes ban photoreal/3D looks; and every lane bans the old weekly formula (posed ensemble, props on plinths, one giant central sculpture). The lane rotates deterministically from the post-date seed — every lane appears exactly once per 11 weeks, with the order re-dealt each cycle so lane/lighting pairings never repeat (see `epochShuffledPick` in `scripts/lib/tunes-lanes.js`). Force a lane with `--lane=<id>` (alias `--style`), env `TUNES_COVER_LANE`, or restrict the rotation with `settings.cover_lanes` in `scripts/tunes-config.yaml`.
 
-**Image backends:** the actual image calls are delegated to pluggable backends in `scripts/lib/image-backends/`. The **compose** step needs a multi-reference editor — **Nano Banana** (`fal-ai/nano-banana-2/edit`) or **GPT Image 2** (`openai/gpt-image-2/edit`) — and comes from the lane (print lanes prefer nano-banana, which follows style-first prompting more faithfully), falling back to `settings.cover_backend` in `scripts/tunes-config.yaml`. One print lane (`vintage-travel-poster`) then runs an optional **restyle** stage over the composed image — **Ideogram** (`fal-ai/ideogram/v3/remix`) — with a conservative strength so the motifs survive. The restyle prompt repeats the lane's motif treatment, composition, palette, no-text rule, negative terms, and anti-cliché rules so the second pass cannot silently discard the original guardrails. If a restyle backend declares a prompt ceiling, the prompt is compacted structurally rather than chopped at the end, preserving those guardrails while removing verbose motif enumeration; a restyle failure logs a warning and ships the composed image. Kill switches: `--no-restyle` per run, `settings.cover_restyle: off` globally. Per-backend env overrides: `NANO_BANANA_MODEL`, `GPT_IMAGE_2_MODEL`, `IDEOGRAM_REMIX_MODEL` etc.
+**Image backends:** the actual image calls are delegated to pluggable backends in `scripts/lib/image-backends/`. The **compose** step needs a multi-reference editor — **Nano Banana** (`fal-ai/nano-banana-2/edit`) or **GPT Image 2** (`openai/gpt-image-2/edit`) — and comes from the lane (print lanes prefer nano-banana, which follows style-first prompting more faithfully), falling back to `settings.cover_backend` in `scripts/tunes-config.yaml`. Composing is the only image stage — the composed image is what ships. Print lanes used to run a second image-to-image **restyle** pass (Recraft, later Ideogram) to reinforce the medium, but it reliably degraded the album motifs the covers exist to show off, so the whole stage was removed. Per-backend env overrides: `NANO_BANANA_MODEL`, `GPT_IMAGE_2_MODEL` etc.
 
 ### Run History and Do-Not-Repeat Memory
 
@@ -271,8 +270,7 @@ Matching is on the album name only and is loose (case, spacing, and punctuation 
 5. Uploads those covers to FAL storage as source material.
 6. Uses OpenAI vision, when `OPENAI_API_KEY` is available, to describe each cover and design one cohesive scene from their combined contents in the lane's medium, avoiding the recent concepts recorded in the history file.
 7. Converts that brief into a style-first natural-language FAL prompt (medium, scene, motifs, composition, colour, lighting) with the lane's negative set, and composes the image with the lane's multi-reference backend.
-8. A print lane with a restyle stage then runs the composed image through Ideogram to lock the medium in, repeating the lane's composition, palette, negative terms, anti-cliché rules, and no-text instruction; failures fall back to the composed image.
-9. Saves the full generated output, the `-small` derivative, and the `.json` run sidecar; the weekly flow also appends the run to the history file.
+8. Saves the full generated output, the `-small` derivative, and the `.json` run sidecar; the weekly flow also appends the run to the history file.
 
 If `OPENAI_API_KEY` is not available, the script uses a deterministic fallback brief that asks for one cohesive scene in the lane's medium combining elements from every cover. `FAL_KEY` is required because there is no local image-generation fallback.
 
@@ -333,7 +331,6 @@ node scripts/fal-tunes-artists.js --input=public/assets/2026-04-20-listened-to-t
 
 - Validates `FAL_KEY` before making image-generation calls.
 - Retries with alternate album input sets on content-policy failures, then drops to the fallback compose backend (env `TUNES_COVER_FALLBACK_BACKEND` / `settings.cover_fallback_backend`).
-- A failed restyle stage logs a warning and ships the composed image instead of failing the post.
 - Fails clearly rather than falling back to a local cover compositor.
 
 ## Customization
@@ -350,7 +347,6 @@ settings:
   cover_image_max: 23
   classification_cache_days: 90    # How long to cache album classifications
   cover_lanes: all                 # Lane rotation: "all" or a list of lane ids
-  cover_restyle: on                # Allow print lanes' optional restyle stage
   cover_history_size: 8            # Do-not-repeat concepts fed to the art director
 
 # Classification Configuration (for dynamic questions)

@@ -17,7 +17,6 @@ function parseArgs(args) {
     type: null,
     lane: null,
     output: null,
-    restyle: true,
     record: false,
     debug: false,
     help: false
@@ -28,7 +27,6 @@ function parseArgs(args) {
     else if (arg === '--help' || arg === '-h') options.help = true
     else if (arg === '--artist') options.type = 'artist'
     else if (arg === '--header') options.type = 'header'
-    else if (arg === '--no-restyle') options.restyle = false
     else if (arg === '--record') options.record = true
     else if (arg.startsWith('--type=')) options.type = arg.slice('--type='.length)
     else if (arg.startsWith('--week=')) options.week = arg.slice('--week='.length)
@@ -114,7 +112,6 @@ Options:
   --lane=<id>         Header only: force a creative-direction lane instead of the
                       week's rotation (--style is an alias). See
                       \`node scripts/fal-tunes-cover.js --list-lanes\` for ids.
-  --no-restyle        Header only: skip the lane's optional restyle stage
   --record            Append the run to scripts/.tunes-image-history.json (off by
                       default here so regenerating old weeks does not pollute the
                       do-not-repeat memory)
@@ -384,7 +381,6 @@ async function main() {
     width: 1400,
     height: 800,
     lane: args.lane,
-    restyle: args.restyle,
     recordHistory: args.record,
     dateLabel: dateStr,
     debug: args.debug

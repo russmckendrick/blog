@@ -427,11 +427,8 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
         scene: brief.scene,
         palette: brief.palette,
         composeBackend: backend.id,
-        restyleBackend: null,
-        restyled: false,
         model,
         prompt,
-        restylePrompt: null,
         inputs: attemptCast.map(item => path.basename(item.path))
       }
 

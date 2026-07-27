@@ -27,10 +27,6 @@ settings:
   # (run `node scripts/fal-tunes-cover.js --list-lanes` for the catalogue).
   cover_lanes: all
 
-  # Whether print lanes may run their optional second restyle stage (Ideogram via fal)
-  # after composing. "off" ships the composed image as-is everywhere.
-  cover_restyle: on
-
   # How many recent weekly concepts are fed back to the art director as do-not-repeat
   # instructions (from scripts/.tunes-image-history.json).
   cover_history_size: 8

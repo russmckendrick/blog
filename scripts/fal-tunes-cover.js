@@ -27,8 +27,8 @@ const DEFAULT_COVER_BACKEND = 'nano-banana'
 
 // Resolve the cover compose backend: explicit option first, then the lane's compose stage,
 // then the tunes-config.yaml switch (settings.cover_backend), then the default. Unknown ids
-// warn and fall back, and single-image restyle backends are refused (composing needs the
-// week's full set of covers as references).
+// warn and fall back, and single-image backends are refused (composing needs the week's full
+// set of covers as references).
 async function resolveCoverBackend(explicit) {
   let requested = explicit
   if (!requested) {
@@ -118,19 +118,6 @@ async function resolveLane(explicit, seed) {
   }
 
   return pickLane(seed, { laneIds })
-}
-
-// Whether the lane's optional restyle stage runs. Precedence: explicit option (--no-restyle)
-// -> tunes-config.yaml settings.cover_restyle -> on.
-async function resolveRestyleEnabled(explicit) {
-  if (explicit === false) return false
-  try {
-    const config = new ConfigLoader()
-    await config.load()
-    return config.getCoverRestyleEnabled()
-  } catch {
-    return true
-  }
 }
 
 async function resolveHistorySize() {
@@ -703,107 +690,6 @@ function buildGenerationPrompt(brief, sourceImageCount, sourceReferences, lane, 
   ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
 }
 
-function truncatePromptPart(value, maxLength) {
-  const normalized = String(value || '').replace(/\s+/g, ' ').trim()
-  if (normalized.length <= maxLength) return normalized
-
-  const shortened = normalized.slice(0, maxLength + 1)
-  const lastSpace = shortened.lastIndexOf(' ')
-  return shortened.slice(0, lastSpace > maxLength * 0.6 ? lastSpace : maxLength).replace(/[,:;\s-]+$/, '')
-}
-
-function promptSentence(value) {
-  return `${String(value || '').replace(/\s+/g, ' ').trim().replace(/[.!?]+$/, '')}.`
-}
-
-function compactRestyleAvoid(lane) {
-  const mediumMismatch = lane.kind === 'photo'
-    ? 'illustration, cartoon, vector art'
-    : 'photorealism, DSLR, 3D, CGI, bokeh'
-
-  return [
-    ...(lane.negatives || []),
-    'grid, contact sheet, tiled album covers, separate panels',
-    mediumMismatch,
-    'posed lineup, objects on plinths, giant central sculpture'
-  ].join(', ')
-}
-
-// The full restyle prompt re-lists every motif. Backends with a hard prompt ceiling receive a
-// compact version that preserves the style, composition, palette, motif, safety, and no-text
-// instructions instead of blindly truncating the most important guardrails from the end.
-function buildRestylePrompt(brief, sourceReferences, lane, maxLength = Infinity) {
-  const elements = formatElements(brief, sourceReferences)
-  const palette = brief.palette.length > 0 ? brief.palette.join(', ') : 'the existing palette drawn from the source artwork'
-  const avoid = negativeTermsForLane(lane).join(', ')
-
-  const fullPrompt = [
-    `Restyle this image as ${lane.medium}.`,
-    lane.styleDirective,
-    `Keep the existing composition, and keep every one of these motifs clearly recognisable: ${elements}.`,
-    lane.motifTreatment,
-    `Preserve this composition grammar: ${lane.composition}`,
-    `Preserve the colour direction: ${palette} - ${lane.paletteTreatment}.`,
-    'Keep the image safe and tasteful: no children or minors, no gore, nudity, or sexual content.',
-    'Do not add any text, letters, words, numbers, captions, logos, watermarks, or signage.',
-    `Avoid: ${avoid}.`
-  ].join(' ').replace(/\s+/g, ' ').trim()
-
-  if (fullPrompt.length <= maxLength) return fullPrompt
-
-  const guardrailParts = [
-    'Adults only; no gore, nudity, or sexual content.',
-    'No text, letters, words, numbers, captions, logos, watermarks, or signage.',
-    `Avoid: ${compactRestyleAvoid(lane)}.`
-  ]
-  const guardrails = guardrailParts.join(' ')
-  const compactCoreParts = [
-    promptSentence(`Restyle as ${lane.medium}`),
-    'Preserve the existing scene, subject placement, and every recognisable motif; do not add, remove, or rearrange subjects.',
-    promptSentence(`Motif treatment: ${lane.motifTreatment}`),
-    promptSentence(`Composition: ${lane.composition}`),
-    promptSentence(`Palette: ${palette}; ${lane.paletteTreatment}`)
-  ]
-  const compactPrompt = [...compactCoreParts, ...guardrailParts].join(' ').replace(/\s+/g, ' ').trim()
-
-  if (compactPrompt.length <= maxLength) return compactPrompt
-
-  // If a future lane has unusually long prose, the input image already contains the motifs;
-  // drop only the verbose lane-specific motif explanation and keep every hard guardrail.
-  const essentialCore = compactCoreParts.filter(part => !part.startsWith('Motif treatment:')).join(' ')
-
-  if (guardrails.length > maxLength) {
-    throw new Error(`Restyle guardrails exceed the backend prompt limit of ${maxLength} characters`)
-  }
-
-  const coreBudget = Math.max(0, maxLength - guardrails.length - 1)
-  const prompt = `${truncatePromptPart(essentialCore, coreBudget)} ${guardrails}`.trim()
-  return prompt
-}
-
-// Image-to-image endpoints cap their input size (typically a few MB and 4096px); the compose
-// stage emits detailed 2K/1440p PNGs that routinely blow past that, silently costing print
-// lanes their restyle. Re-encode the composed image to a bounded JPEG and upload it as the
-// restyle source; on any failure fall back to the original URL and let the backend try anyway.
-async function prepareRestyleInputUrl(composeImageUrl, debug) {
-  try {
-    const response = await fetch(composeImageUrl)
-    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`)
-    const buffer = Buffer.from(await response.arrayBuffer())
-    const jpeg = await sharp(buffer)
-      .resize(2048, 2048, { fit: 'inside', withoutEnlargement: true })
-      .jpeg({ quality: 90 })
-      .toBuffer()
-    const file = new File([jpeg], 'restyle-input.jpg', { type: 'image/jpeg' })
-    return await fal.storage.upload(file)
-  } catch (error) {
-    if (debug) {
-      console.log(`  Could not re-encode the restyle input (${error.message}); using the original URL`)
-    }
-    return composeImageUrl
-  }
-}
-
 function smallOutputPathFor(outputPath) {
   const actualExt = path.extname(outputPath)
   const ext = actualExt || '.png'
@@ -867,41 +753,6 @@ function buildAttemptSets(selectedPaths, analyses, maxCount, minCount) {
   })
 }
 
-// Run the lane's optional restyle stage over the composed image. Strictly additive: the
-// compose output is already prompted in the lane's style, so any failure here logs a
-// warning and ships the compose result rather than failing the post.
-async function applyRestyleStage({ lane, brief, sourceReferences, composeImageUrl, seed, debug }) {
-  const restyleStage = pipelineStage(lane, 'restyle')
-  if (!restyleStage) return null
-
-  const backend = getBackend(restyleStage.backend)
-  if (!backend) {
-    console.warn(`  Unknown restyle backend "${restyleStage.backend}"; keeping the composed image`)
-    return null
-  }
-
-  const prompt = buildRestylePrompt(brief, sourceReferences, lane, backend.maxPromptLength)
-  if (debug) {
-    console.log(`  Restyle (${backend.label}): ${prompt}`)
-  }
-
-  try {
-    const inputUrl = await prepareRestyleInputUrl(composeImageUrl, debug)
-    const { imageUrl, model } = await backend.generate({
-      imageUrls: [inputUrl],
-      prompt,
-      seed,
-      debug,
-      negativePrompt: TEXT_NEGATIVE_TERMS.join(', '),
-      ...(restyleStage.params || {})
-    })
-    return { imageUrl, model, backend: backend.id, prompt }
-  } catch (error) {
-    console.warn(`  Restyle stage failed (${backend.label}); keeping the composed image: ${error.message}`)
-    return null
-  }
-}
-
 async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   const {
     width = 1400,
@@ -919,7 +770,6 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
 
   const lane = await resolveLane(options.lane || options.style, seed)
   const lightingDirection = lane.lighting ? pickLightingDirection(seed) : ''
-  const restyleEnabled = await resolveRestyleEnabled(options.restyle)
   const historySize = await resolveHistorySize()
   const avoidConcepts = await recentConcepts('cover', historySize)
 
@@ -980,31 +830,8 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
 
         const composed = await backend.generate({ imageUrls, prompt, seed, debug })
 
-        let restyled = restyleEnabled
-          ? await applyRestyleStage({
-              lane,
-              brief,
-              sourceReferences,
-              composeImageUrl: composed.imageUrl,
-              seed,
-              debug
-            })
-          : null
-
-        // The restyle stage is strictly additive, and that includes the download: if the
-        // restyled URL fails to fetch, fall back to saving the composed image rather than
-        // failing the whole post.
-        let saved
-        try {
-          saved = await saveGeneratedImage(restyled?.imageUrl || composed.imageUrl, outputPath, width, height, debug)
-        } catch (error) {
-          if (!restyled) throw error
-          console.warn(`  Could not download the restyled image (${error.message}); saving the composed image instead`)
-          restyled = null
-          saved = await saveGeneratedImage(composed.imageUrl, outputPath, width, height, debug)
-        }
-        const finalImageUrl = restyled?.imageUrl || composed.imageUrl
-        console.log(`  Created tunes cover (${lane.label}, ${backend.label}${restyled ? ` + ${restyled.backend}` : ''}) from ${attemptPaths.length} album covers`)
+        const saved = await saveGeneratedImage(composed.imageUrl, outputPath, width, height, debug)
+        console.log(`  Created tunes cover (${lane.label}, ${backend.label}) from ${attemptPaths.length} album covers`)
         console.log(`    Full:  ${saved.outputPath}`)
         console.log(`    Small: ${saved.smallOutputPath}`)
 
@@ -1019,11 +846,8 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           scene: brief.scene,
           palette: brief.palette,
           composeBackend: backend.id,
-          restyleBackend: restyled?.backend || null,
-          restyled: Boolean(restyled),
-          model: restyled?.model || composed.model,
+          model: composed.model,
           prompt,
-          restylePrompt: restyled?.prompt || null,
           inputs: attemptPaths.map(item => path.basename(item))
         }
 
@@ -1038,14 +862,12 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
         return {
           ...saved,
           selectedImages: attemptPaths,
-          imageUrl: finalImageUrl,
+          imageUrl: composed.imageUrl,
           model: runRecord.model,
           backend: backend.id,
           lane: lane.id,
           lighting: lightingDirection || null,
           concept: brief.concept,
-          restyled: Boolean(restyled),
-          restyleBackend: restyled?.backend || null,
           mode: 'source_scene',
           prompt
         }
@@ -1077,7 +899,6 @@ function parseArgs(args) {
     height: 800,
     seed: null,
     lane: null,
-    restyle: true,
     record: false,
     listLanes: false,
     debug: false,
@@ -1088,7 +909,6 @@ function parseArgs(args) {
     if (arg === '--help' || arg === '-h') options.help = true
     else if (arg === '--debug' || arg === '-d') options.debug = true
     else if (arg === '--list-lanes') options.listLanes = true
-    else if (arg === '--no-restyle') options.restyle = false
     else if (arg === '--record') options.record = true
     else if (arg.startsWith('--input=')) options.input = arg.slice('--input='.length)
     else if (arg.startsWith('--output=')) options.output = arg.slice('--output='.length)
@@ -1129,11 +949,8 @@ async function readInputImages(inputFolder) {
 function printLanes() {
   console.log('\nAvailable lanes:\n')
   for (const lane of listLanes()) {
-    const restyleStage = pipelineStage(lane, 'restyle')
-    const composeStage = pipelineStage(lane, 'compose')
-    const compose = composeStage?.backend || 'config default'
-    const pipeline = restyleStage ? `${compose} -> ${restyleStage.backend}` : compose
-    console.log(`  ${lane.id.padEnd(24)} ${lane.kind.padEnd(6)} ${pipeline.padEnd(28)} ${lane.label}`)
+    const compose = pipelineStage(lane, 'compose')?.backend || 'config default'
+    console.log(`  ${lane.id.padEnd(24)} ${lane.kind.padEnd(6)} ${compose.padEnd(16)} ${lane.label}`)
   }
   console.log()
 }
@@ -1159,7 +976,6 @@ Options:
   --lane=<id>         Force a creative-direction lane (--style is an alias);
                       env TUNES_COVER_LANE also works. Default: weekly rotation.
   --list-lanes        Print the available lanes and exit
-  --no-restyle        Skip the lane's optional restyle stage (compose only)
   --record            Append this run to scripts/.tunes-image-history.json (the
                       weekly generator records automatically; manual runs opt in)
   --debug, -d         Verbose output
@@ -1174,8 +990,7 @@ Notes:
     in tunes-config.yaml. On a content-policy refusal the generator retries with
     alternate inputs, then drops to the fallback backend
     (env TUNES_COVER_FALLBACK_BACKEND, "none" to disable).
-  - Print lanes may run a second restyle stage (Ideogram via fal) to lock in the
-    medium; disable with --no-restyle or settings.cover_restyle: off.
+  - The composed image ships as-is; there is no second image-to-image pass.
 `)
 }
 
@@ -1211,7 +1026,6 @@ async function main() {
     height: options.height,
     seed: options.seed || Date.now(),
     lane: options.lane,
-    restyle: options.restyle,
     recordHistory: options.record,
     debug: options.debug
   })
@@ -1236,6 +1050,5 @@ export {
   NEGATIVE_TERMS,
   TEXT_NEGATIVE_TERMS,
   negativeTermsForLane,
-  buildGenerationPrompt,
-  buildRestylePrompt
+  buildGenerationPrompt
 }

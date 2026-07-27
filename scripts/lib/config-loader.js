@@ -94,16 +94,6 @@ export class ConfigLoader {
     return Array.isArray(value) ? value.map(String) : [String(value)]
   }
 
-  // Whether print lanes may run their optional second restyle stage. YAML `on`/`off` parse
-  // to booleans; string values are accepted too.
-  getCoverRestyleEnabled() {
-    const value = this.settings.cover_restyle
-    if (value === undefined || value === null) return true
-    if (typeof value === 'boolean') return value
-    const normalized = String(value).trim().toLowerCase()
-    return !['off', 'false', 'no', '0'].includes(normalized)
-  }
-
   // How many recent cover/portrait concepts are fed back to the art director as
   // do-not-repeat instructions.
   getCoverHistorySize() {
