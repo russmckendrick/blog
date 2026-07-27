@@ -235,23 +235,6 @@ export const LANES = [
     pipeline: [{ role: 'compose', backend: 'nano-banana', fallback: 'gpt-image-2' }]
   },
   {
-    id: 'risograph',
-    label: 'Risograph poster',
-    kind: 'print',
-    medium: 'a two- or three-colour risograph print with visible grain and slight misregistration',
-    styleDirective: 'Create one bold risograph print - flat layered shapes, coarse riso grain, overlapping translucent inks slightly out of register, paper texture showing through.',
-    motifTreatment: 'Redraw each album motif as bold flat printed shapes in the limited ink colours - simplified but instantly recognisable silhouettes and forms.',
-    composition: 'An asymmetric poster composition with one strong diagonal flow, motifs at varied scales, and generous negative space.',
-    paletteTreatment: 'strictly two or three ink colours pulled from the sleeves, overprinting where they overlap, on off-white paper',
-    lighting: false,
-    negatives: [],
-    antiCliche: ANTI_CLICHE,
-    pipeline: [
-      { role: 'compose', backend: 'nano-banana', fallback: 'gpt-image-2' },
-      { role: 'restyle', backend: 'recraft-i2i', params: { style: 'digital_illustration/grain', strength: 0.35 } }
-    ]
-  },
-  {
     id: 'surreal-album-sleeve',
     label: 'Surreal album-sleeve photography',
     kind: 'photo',
@@ -319,10 +302,7 @@ export const LANES = [
     lighting: false,
     negatives: [],
     antiCliche: ANTI_CLICHE,
-    pipeline: [
-      { role: 'compose', backend: 'nano-banana', fallback: 'gpt-image-2' },
-      { role: 'restyle', backend: 'ideogram-remix', params: { style: 'DESIGN', strength: 0.75 } }
-    ]
+    pipeline: [{ role: 'compose', backend: 'nano-banana', fallback: 'gpt-image-2' }]
   },
   {
     id: 'zine-photocollage',
@@ -348,7 +328,7 @@ export function listLanes() {
   return LANES
 }
 
-// Loose lookup: case-insensitive, ignores punctuation, so --lane=RisoGraph works.
+// Loose lookup: case-insensitive, ignores punctuation, so --lane=NeonNoir works.
 export function getLane(value) {
   const key = String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '')
   if (!key) return null

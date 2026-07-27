@@ -128,7 +128,7 @@ Outputs (default):
 
 Examples:
   node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --debug
-  node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --lane=risograph --debug
+  node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --lane=neon-noir --debug
   node scripts/regenerate-tunes-cover.js --week=2026-04-20 --output=/tmp/tunes-test.png
 `)
 }

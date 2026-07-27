@@ -74,7 +74,7 @@ Examples:
   node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --debug
 
   # Force one creative-direction lane
-  node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --lane=risograph
+  node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --lane=neon-noir
 
 Notes:
   - Processes weekly intervals (7 days apart)

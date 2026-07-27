@@ -87,7 +87,7 @@ export class ConfigLoader {
 
   // Lane ids the weekly cover rotation may use. Returns null for "all"/missing so the
   // caller rotates over the full lane list in scripts/lib/tunes-lanes.js. A single scalar
-  // id (cover_lanes: risograph) is accepted as a one-lane list.
+  // id (cover_lanes: neon-noir) is accepted as a one-lane list.
   getCoverLanes() {
     const value = this.settings.cover_lanes
     if (!value || value === 'all') return null

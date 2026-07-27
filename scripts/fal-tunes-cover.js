@@ -781,10 +781,10 @@ function buildRestylePrompt(brief, sourceReferences, lane, maxLength = Infinity)
   return prompt
 }
 
-// Recraft's image-to-image input must be under 5 MB (and within 4096px); the compose stage
-// emits detailed 2K/1440p PNGs that routinely blow past that, silently costing print lanes
-// their restyle. Re-encode the composed image to a bounded JPEG and upload it as the restyle
-// source; on any failure fall back to the original URL and let the backend try anyway.
+// Image-to-image endpoints cap their input size (typically a few MB and 4096px); the compose
+// stage emits detailed 2K/1440p PNGs that routinely blow past that, silently costing print
+// lanes their restyle. Re-encode the composed image to a bounded JPEG and upload it as the
+// restyle source; on any failure fall back to the original URL and let the backend try anyway.
 async function prepareRestyleInputUrl(composeImageUrl, debug) {
   try {
     const response = await fetch(composeImageUrl)
@@ -1174,8 +1174,8 @@ Notes:
     in tunes-config.yaml. On a content-policy refusal the generator retries with
     alternate inputs, then drops to the fallback backend
     (env TUNES_COVER_FALLBACK_BACKEND, "none" to disable).
-  - Print lanes may run a second restyle stage (Recraft / Ideogram via fal) to lock
-    in the medium; disable with --no-restyle or settings.cover_restyle: off.
+  - Print lanes may run a second restyle stage (Ideogram via fal) to lock in the
+    medium; disable with --no-restyle or settings.cover_restyle: off.
 `)
 }
 
