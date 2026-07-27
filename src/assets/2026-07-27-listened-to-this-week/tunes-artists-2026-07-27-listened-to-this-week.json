@@ -1,0 +1,29 @@
+{
+  "date": "2026-07-27",
+  "type": "artist",
+  "lane": null,
+  "lighting": null,
+  "shootDirection": "the group crossing a zebra crossing toward the camera, shot square-on from across the road",
+  "colourTreatment": "natural-daylight",
+  "concept": "Blue-hour city zebra crossing outside an old cinema",
+  "scene": "At blue hour on a broad zebra crossing outside an old cinema corner in a quiet city center, the four selected figures move toward the camera as the photographer stands square-on from the opposite curb, framed tight enough from mid-thigh up that every face stays large, crisp, and fully readable while the white stripes rush beneath them; the dark-haired man in the severe coat with fur collar leads slightly from the left with his chin turned off to one side, the young man in the red-white-blue top is half a step nearer the lens and glances back directly with one arm swinging into the foreground, the silver-haired man in the blazer walks a touch behind with his profile catching the cool ambient sky glow, and the central moustached figure in the dark suit and white tie cuts through the middle stripe line with a poised, almost theatrical stride. Storefront glass and a glowing marquee reflect soft streetlights behind them, the road still faintly damp so it picks up honest highlights, and their styling feels naturally mixed rather than coordinated: tailored dark outerwear beside sportier knitwear, all held together by the clean, true-to-life evening colour and the sense of a real caught crossing rather than a posed lineup.",
+  "palette": [
+    "charcoal",
+    "slate blue",
+    "cream",
+    "oxblood",
+    "soft white"
+  ],
+  "composeBackend": "gpt-image-2",
+  "restyleBackend": null,
+  "restyled": false,
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the 4 reference images into a single shared real-world scene. Scene: At blue hour on a broad zebra crossing outside an old cinema corner in a quiet city center, the four selected figures move toward the camera as the photographer stands square-on from the opposite curb, framed tight enough from mid-thigh up that every face stays large, crisp, and fully readable while the white stripes rush beneath them; the dark-haired man in the severe coat with fur collar leads slightly from the left with his chin turned off to one side, the young man in the red-white-blue top is half a step nearer the lens and glances back directly with one arm swinging into the foreground, the silver-haired man in the blazer walks a touch behind with his profile catching the cool ambient sky glow, and the central moustached figure in the dark suit and white tie cuts through the middle stripe line with a poised, almost theatrical stride. Storefront glass and a glowing marquee reflect soft streetlights behind them, the road still faintly damp so it picks up honest highlights, and their styling feels naturally mixed rather than coordinated: tailored dark outerwear beside sportier knitwear, all held together by the clean, true-to-life evening colour and the sense of a real caught crossing rather than a posed lineup. Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness exactly as shown. Do not invent anyone who is not in the reference photos. Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its single most recognisable member rather than every member. Frame the group tightly - close or medium-close - so every face is large in the frame, sharp, and richly detailed, never small or distant. Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Vary posture, depth, and where people are looking - this is a caught moment, not a band-publicity lineup evenly spaced and facing the camera. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares. Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render. Colour treatment: natural true-to-life colour, clean, honest, and unforced, drawing on charcoal, slate blue, cream, oxblood, soft white. Mood: cool, cinematic, self-possessed. Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, extra people, background crowd, duplicated faces, cloned faces, merged faces, blended faces, morphed features, distorted faces, deformed hands, extra limbs. Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.",
+  "restylePrompt": null,
+  "inputs": [
+    "Gary-Numan.jpg",
+    "Jalen-NGonda.jpg",
+    "Paul-Weller.jpg",
+    "The-Time.jpg"
+  ]
+}
