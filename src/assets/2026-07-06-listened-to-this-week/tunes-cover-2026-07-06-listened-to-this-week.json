@@ -1,31 +1,195 @@
 {
+  "version": 2,
   "date": "2026-07-06",
   "type": "cover",
-  "lane": "zine-photocollage",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Night parade intersection with glowing screen at the heart of a torn-pop dream",
-  "scene": "A photocopied zine spread shows a stormy nocturnal city-park crossroads built around one anchor image: a tall adult silhouette in a long dark coat standing on a traffic island, holding a glowing rectangular screen cut from rough paper so it becomes the page’s bright white core. Around that anchor, torn fragments overlap at odd angles: a large black-and-white cutout of a curly-haired woman’s face drifts in from the upper left like a pasted poster peeled from a wall, with tiny dangling stars and a heart-tipped string hovering beside her; behind the figure, a smoky halftone blaze of yellow-orange heat blooms like a xeroxed fire cloud; a hand-cut rainbow-loop graphic snakes through the composition as a single spot-colour ribbon, morphing into a guitar headstock, rounded clouds, a target, and a black bird silhouette flying across the page. Along one side, a ragged strip of adult performers with a guitar, tall drum, and microphones appears like a ripped gig flyer, partially swallowed by the urban scene. The lower half opens into a rainy parade path between birch-like tree trunks, where umbrellas and a few balloons bob through grainy mist, while three tiny adult silhouettes stride across a washed-out reflective patch near the bottom edge. On a building fragment to the right, a grayscale suited man appears as a pasted billboard portrait, his uncanny eyes reinterpreted as blank glowing paper cutouts rather than realistic eyes. Everything is unified as black toner, blown-out whites, dense halftone shadows, photocopy dirt, torn edges, and one loud acid-yellow spot colour carrying the stars, heat, light trails, balloons, and looping graphic accents across the whole page.",
-  "palette": [
-    "black",
-    "white",
-    "acid yellow"
+  "concept": "Midnight atelier of sound relics",
+  "creativeDirection": "A handcrafted shadow-box diorama photographed like a theatrical still, mixing paper cutouts, translucent resin miniatures, painted backdrops, and long-exposure light effects.",
+  "scene": "Inside a dark museum-like atelier at night, viewed straight on as if peering into a deep shadow-box room with an open front, where a central worktable faces the viewer and a city-window glows behind it.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "A large hanging cut-paper medallion portrait of the dark-haired woman in stark black and white, suspended against a saturated yellow panel with tiny stars and a dangling heart thread."
+    },
+    {
+      "source": 2,
+      "element": "A fiery orange-red translucent resin slab or backlit glass panel embedded in the worktable like a molten core, providing the room’s warm inner glow."
+    },
+    {
+      "source": 3,
+      "element": "Rainbow-striped geometric mobiles and paper inlays scattered around the room, including a bird silhouette, cloud forms, concentric circles, looping ribbons, a small star, and a guitar-headstock shape extending from the table edge."
+    },
+    {
+      "source": 4,
+      "element": "Through the rear window, a lone figure in a long coat stands on the empty street holding a glowing laptop, with horizontal long-exposure light trails slicing across the night outside."
+    },
+    {
+      "source": 5,
+      "element": "Two small frosted translucent figurines standing on the tabletop near the foreground edge like delicate sculptures lit from below."
+    },
+    {
+      "source": 6,
+      "element": "A narrow frieze of four neon-tinted performer silhouettes rendered as stained-glass lantern panels hanging high across the room."
+    },
+    {
+      "source": 7,
+      "element": "A silver monochrome bust portrait of the suited man with pale glowing eyes mounted in an oval frame on a side wall, angled upward like a haunted patron saint."
+    },
+    {
+      "source": 8,
+      "element": "A washed-out white floor reflection near the room’s threshold where three faint pastel runner-like silhouettes ghost across the brightness."
+    }
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": null,
-  "restyled": false,
-  "model": "fal-ai/nano-banana-2/edit",
-  "prompt": "Create one DIY zine photo-collage - xeroxed halftone fragments, torn edges, tape marks, high-contrast photocopy grain, punk cut-and-paste energy. The image is a 16:9 music blog header. Scene: A photocopied zine spread shows a stormy nocturnal city-park crossroads built around one anchor image: a tall adult silhouette in a long dark coat standing on a traffic island, holding a glowing rectangular screen cut from rough paper so it becomes the page’s bright white core. Around that anchor, torn fragments overlap at odd angles: a large black-and-white cutout of a curly-haired woman’s face drifts in from the upper left like a pasted poster peeled from a wall, with tiny dangling stars and a heart-tipped string hovering beside her; behind the figure, a smoky halftone blaze of yellow-orange heat blooms like a xeroxed fire cloud; a hand-cut rainbow-loop graphic snakes through the composition as a single spot-colour ribbon, morphing into a guitar headstock, rounded clouds, a target, and a black bird silhouette flying across the page. Along one side, a ragged strip of adult performers with a guitar, tall drum, and microphones appears like a ripped gig flyer, partially swallowed by the urban scene. The lower half opens into a rainy parade path between birch-like tree trunks, where umbrellas and a few balloons bob through grainy mist, while three tiny adult silhouettes stride across a washed-out reflective patch near the bottom edge. On a building fragment to the right, a grayscale suited man appears as a pasted billboard portrait, his uncanny eyes reinterpreted as blank glowing paper cutouts rather than realistic eyes. Everything is unified as black toner, blown-out whites, dense halftone shadows, photocopy dirt, torn edges, and one loud acid-yellow spot colour carrying the stars, heat, light trails, balloons, and looping graphic accents across the whole page. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: the close-up curly-haired woman with tiny dangling stars; source 2: the adult band fragment with guitar, drum, and microphones; source 3: the fiery abstract heat cloud; source 4: the rainbow loop graphic with black bird and guitar headstock; source 5: the rainy parade of umbrellas and balloons among pale trees; source 6: the grayscale suited man with glowing paper-cut eyes; source 7: the solitary figure holding a glowing rectangular screen in a city intersection; source 8: the three tiny silhouettes crossing a bright reflective surface. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and compose them all onto one deliberate page unified by the paper texture, print treatment, and palette. Paste each album motif in as a torn photocopied fragment or hand-cut shape - degraded, rough, but clearly recognisable. Composition: A chaotic but balanced paste-up around one anchor image, fragments overlapping at odd angles. Colour direction: black, white, acid yellow - high-contrast black-and-white photocopy with one loud spot colour. Mood: restless, dreamy, electric. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
-  "restylePrompt": null,
+  "palette": [
+    "saturated yellow",
+    "molten orange-red",
+    "ink black",
+    "silver gray",
+    "electric pink",
+    "soft white"
+  ],
+  "mood": "mysterious, musical, handcrafted, nocturnal, reverent",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Begin-to-Hope.jpg",
+      "album": "Begin to Hope",
+      "artist": "",
+      "description": "A high-contrast portrait of a woman with dark curly hair, shown from the shoulders up against a flat bright yellow background. Small star shapes are scattered around her, and a thin dangling line with a tiny heart hangs near the upper left. The woman is rendered mostly in black and white, wearing a dark top and a small pendant necklace.",
+      "signatureMotif": "black-and-white portrait of a dark-haired woman on a yellow background",
+      "medium": "photography with graphic design elements",
+      "palette": [
+        "yellow",
+        "black",
+        "white",
+        "red"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Reload.jpg",
+      "album": "Reload",
+      "artist": "",
+      "description": "An abstract image dominated by a wide rectangular field of fiery orange, yellow, and red swirling together, bordered by black bands at the top and bottom. The central form looks fluid and smoky, with soft gradients and blurred edges.",
+      "signatureMotif": "fiery abstract orange-red fluid field",
+      "medium": "abstract photograph or scan-based artwork",
+      "palette": [
+        "black",
+        "orange",
+        "yellow",
+        "red"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Mary-Star-of-the-Sea.jpg",
+      "album": "Mary Star of the Sea",
+      "artist": "",
+      "description": "A clean white background with a bold, colorful central graphic made of rainbow-like stripes and rounded geometric shapes. Elements include a black bird silhouette with wings raised, cloud shapes, a guitar headstock extending to the right, concentric circles, a small star, and looping ribbon-like forms layered into a compact collage.",
+      "signatureMotif": "rainbow-striped geometric collage with bird and guitar headstock",
+      "medium": "vector-style graphic illustration",
+      "palette": [
+        "white",
+        "red",
+        "orange",
+        "yellow",
+        "pink"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "marillion-com.jpg",
+      "album": "marillion com",
+      "artist": "",
+      "description": "A nighttime or dusk city street scene photographed with long exposure. A pale young person stands centered on a traffic island or curb, wearing a long dark coat and boots, holding an open laptop or small screen that glows brightly. Buildings line both sides of the street, cars are visible, and horizontal streaks of yellow and red light pass across the frame.",
+      "signatureMotif": "person holding a glowing laptop in the middle of a city street",
+      "medium": "long-exposure photography",
+      "palette": [
+        "blue",
+        "purple",
+        "black",
+        "yellow",
+        "red"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Pocket-Symphony.jpg",
+      "album": "Pocket Symphony",
+      "artist": "",
+      "description": "Two translucent human figurines stand on a dark tabletop in an interior setting. They resemble glowing frosted sculptures of men in casual shirts and trousers. Behind them are a black vertical panel, a pale wall, and part of a dark leather chair or sofa, creating a minimalist room scene.",
+      "signatureMotif": "two glowing translucent human figurines on a tabletop",
+      "medium": "photography of sculptural objects",
+      "palette": [
+        "white",
+        "pale blue",
+        "black",
+        "gray"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Cosmic-Thing.jpg",
+      "album": "Cosmic Thing",
+      "artist": "",
+      "description": "A stylized band portrait shows four people standing side by side in a performance-like setup. One holds a guitar, one stands behind a drum, one sings into a microphone, and one appears mid-vocal pose. The image is tinted with vivid gradients of pink, orange, yellow, green, and blue, with a bright colored border and hanging lantern-like objects above.",
+      "signatureMotif": "four band members in neon-tinted performance portrait",
+      "medium": "color-treated photography",
+      "palette": [
+        "pink",
+        "orange",
+        "yellow",
+        "green",
+        "blue"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Heathen.jpg",
+      "album": "Heathen",
+      "artist": "",
+      "description": "A close-up monochrome portrait of a man in a suit jacket, shirt, and tie, turned slightly to the side while looking upward. His eyes appear pale and glowing, giving an eerie effect. The background is softly shaded gray, and the overall image has a muted, silvery tone.",
+      "signatureMotif": "close-up portrait of a man with glowing pale eyes",
+      "medium": "studio photography",
+      "palette": [
+        "gray",
+        "black",
+        "white",
+        "peach"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Simple-Things.jpg",
+      "album": "Simple Things",
+      "artist": "",
+      "description": "A very minimal, overexposed image with a mostly white background. Near the bottom are three faint pastel silhouettes of people walking or running across a reflective surface, with a bright flare of light around the central figure. The composition leaves a large amount of empty space above.",
+      "signatureMotif": "three faint pastel silhouettes moving across a bright white field",
+      "medium": "high-key photography",
+      "palette": [
+        "white",
+        "pale pink",
+        "pale blue",
+        "pale green",
+        "light gray"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "A nocturnal shadow-box atelier interior seen straight on, like a miniature stage set with a central worktable in the foreground and a rear window opening onto a city street at night; the primary subject is a large suspended cut-paper medallion portrait of a dark-haired woman in stark black and white, hanging before a saturated yellow panel, tiny stars scattered around her and a thin dangling thread ending in a small heart near the upper left. In the table’s center, embed a fiery translucent slab glowing with orange, red, and yellow smoky fluid swirls as if molten under glass; place rainbow-striped geometric paper forms throughout the room as supporting motifs, including a black bird silhouette with raised wings, small cloud shapes, concentric circles, a tiny star, looping ribbon forms, and a guitar headstock extending sideways from the table edge. Through the back window, show a lone person in a long dark coat standing in the middle of the street holding an open glowing laptop, with yellow and red long-exposure light trails crossing the scene outside. On the tabletop near the viewer, include two small frosted translucent human figurines lit from below. High above, hang a narrow row of lantern-like stained-glass panels containing four neon-tinted performer silhouettes, one with guitar, one at drums, one at microphone, one mid-vocal pose. On a side wall, mount a silver oval framed bust portrait of a suited man gazing upward with pale glowing eyes. At the threshold and lower floor, let a bright overexposed white reflection bloom outward with three faint pastel silhouettes moving across it. Handcrafted mixed-media diorama, paper cut collage, painted board, translucent resin, stained glass accents, miniature sculpture, photographed with theatrical depth and subtle long exposure. Strong central hierarchy, deep layered space, crisp frontal composition, warm core lighting from the molten table, cool blue-violet night light from the window, selective glows and soft shadows. Palette of saturated yellow, molten orange-red, ink black, silver gray, electric pink accents, soft white, and pale pastel blue-green; mood mysterious, musical, reverent, and dreamlike. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Begin-to-Hope.jpg",
-    "Cosmic-Thing.jpg",
     "Reload.jpg",
     "Mary-Star-of-the-Sea.jpg",
-    "Grand-Parade.jpg",
-    "Heathen.jpg",
     "marillion-com.jpg",
+    "Pocket-Symphony.jpg",
+    "Cosmic-Thing.jpg",
+    "Heathen.jpg",
     "Simple-Things.jpg"
   ]
 }

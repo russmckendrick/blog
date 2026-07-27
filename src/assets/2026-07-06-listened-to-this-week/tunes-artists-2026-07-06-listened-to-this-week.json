@@ -1,29 +1,245 @@
 {
+  "version": 2,
   "date": "2026-07-06",
   "type": "artist",
   "lane": null,
   "lighting": null,
-  "shootDirection": "a windswept seafront, the group huddled together on the sea wall facing the camera, hair and coats blowing",
-  "colourTreatment": "cross-process",
-  "concept": "Windswept sea-wall huddle at winter dusk",
-  "scene": "On a concrete sea wall at the edge of a rough winter shoreline, the four selected figures are pressed into a tight, asymmetrical huddle as a hard onshore wind whips hair, collars, and ties sideways; the slim blond older man from 6 anchors the left foreground in a black high-collared coat, turned three-quarters toward camera with a cool, steady gaze, while the pale dark-haired woman from 7 leans in just behind him, white shirt bright against the stormy backdrop, black tie flicking across her shoulder and curls blown outward. To the right, the cleaner-cut dark-haired man from 4 sits slightly lower on the sea wall ledge, shoulders tucked into a charcoal knit vest and patterned shirt, looking straight into the lens, while the other man from 4 stands half a step behind him with arms loosely folded inside a textured grey overcoat, beard catching the side light. The man from 9 is closest to the right edge and slightly recessed, in a dark sweater under a weatherproof coat, his expression thoughtful as he glances past the camera, giving the frame a caught, human imbalance rather than a lineup. The shot is framed chest-up and close so every face is large and razor-sharp, with the cold late-afternoon sky blown warm near the horizon and the sea behind them shifting cyan-green in cross-processed slide-film colour, wet concrete reflecting punchy contrast and adding a salty, intimate realism.",
-  "palette": [
-    "cyan green",
-    "blown gold",
-    "wet concrete grey",
-    "ink black",
-    "chalk white"
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "After-hours cluster across theater seats",
+  "creativeDirection": "A naturalistic, medium-wide environmental portrait in an occupied auditorium, blending direct engagement with loose between-conversation body language.",
+  "scene": "An after-hours gathering scattered across the front rows of a red-seat theater auditorium, using the seat backs and aisle edges as levels so the group feels nested into the architecture rather than lined up.",
+  "locationSource": 1,
+  "locationSetting": "Auditorium or theater interior with rows of red upholstered seats, dark walls, warm ceiling lights, and balcony-like seating visible in the background.",
+  "locationEvidence": "Rows of red upholstered theater seats, dark auditorium walls, warm ceiling lights, and a visible balcony-style seating level clearly establish an interior theater auditorium.",
+  "locationReference": 1,
+  "locationInput": "Marillion.jpg",
+  "cast": [
+    {
+      "source": 1,
+      "person": "light-skinned dark-haired man with a broad smile, wearing a dark velvet jacket over a colorful patterned shirt",
+      "placement": "front-center, leaning over the back of a seat toward camera as the visual anchor"
+    },
+    {
+      "source": 4,
+      "person": "light-skinned clean-shaven man with straight medium-length brown hair, patterned shirt, dark tie, and dark sweater vest",
+      "placement": "left side, seated sideways in a seat and turned toward the group"
+    },
+    {
+      "source": 6,
+      "person": "light-skinned man with swept-back blond hair, blue eyes, and a raised dark collar",
+      "placement": "right side, half-standing in the aisle beside a row, looking across toward center"
+    },
+    {
+      "source": 7,
+      "person": "light-skinned woman with shoulder-length dark curly hair, large light eyes, white collared shirt, and slim dark tie",
+      "placement": "mid-left, perched on a seat back, facing camera with calm alertness"
+    },
+    {
+      "source": 8,
+      "person": "light-skinned tall fair-haired man in a button-up shirt with a serious expression",
+      "placement": "back-center, standing one row higher behind the front cluster"
+    },
+    {
+      "source": 10,
+      "person": "light-skinned woman with a voluminous updo, large hoop earrings, and a bold black-and-white color-block dress",
+      "placement": "mid-right, seated upright in a theater seat, composed and steady"
+    }
   ],
+  "selection": [
+    1,
+    4,
+    6,
+    7,
+    8,
+    10
+  ],
+  "palette": [
+    "deep red",
+    "warm amber",
+    "charcoal",
+    "cream white",
+    "muted gold",
+    "soft skin tones"
+  ],
+  "mood": "warm, intimate, self-possessed",
+  "artistSummaries": [
+    {
+      "source": 1,
+      "filename": "Marillion.jpg",
+      "artist": "Marillion",
+      "description": "Five light-skinned adult men pose among red theater seats. The most prominent man is centered in front, leaning toward the camera with dark medium-length hair, a broad smile, and a dark velvet jacket over a colorful patterned shirt. To his left is a slim man with shaggy curly brown hair and a lined face, wearing a dark blazer over a graphic T-shirt. Behind them stands a heavier man with a receding hairline and short beard in a dark jacket and light shirt. Another tall bald man with a stern expression stands at the back in a dark jacket. At right is an older white-haired man in a dark T-shirt with sunglasses hanging from the collar.",
+      "primarySubject": "Center-front light-skinned man with medium-length dark hair, smiling, leaning forward in a dark jacket over a colorful patterned shirt",
+      "visiblePeople": [
+        "Center-front light-skinned man with medium-length dark hair and a smile, leaning forward",
+        "Left-front light-skinned man with shaggy curly brown hair and a slim face",
+        "Back-center light-skinned heavier man with receding hairline and short beard",
+        "Back-right light-skinned tall bald man with a serious expression",
+        "Right-front light-skinned older man with short white hair"
+      ],
+      "wardrobe": "Mostly dark jackets and T-shirts; center man wears a colorful patterned shirt; right man has sunglasses hanging at the collar.",
+      "photoStyle": "Color group portrait, medium-wide framing, direct camera engagement, evenly lit with shallow depth of field.",
+      "setting": "Auditorium or theater interior with rows of red upholstered seats, dark walls, warm ceiling lights, and balcony-like seating visible in the background.",
+      "settingStrength": "strong"
+    },
+    {
+      "source": 2,
+      "filename": "Zwan.jpg",
+      "artist": "Zwan",
+      "description": "Five light-skinned adults lie close together on a white bed or padded surface, photographed from above. The central figure is a man with short facial hair wearing a dark cap, plaid scarf, blazer, and printed shirt, looking up at the camera. Above him, a woman in a pale fitted top lies upside down with eyes closed and fingers near her mouth, long dark hair spread out. At left are two men, one pale man with closely cropped dark hair in a dark top staring upward, and one man with straight dark hair in a jacket looking off frame. At right is a man in a dark knit cap and sweater, only partly visible, facing upward.",
+      "primarySubject": "Center light-skinned man in a dark cap and plaid scarf with short facial hair, lying on his back and looking up at the camera",
+      "visiblePeople": [
+        "Center light-skinned man with short facial hair, cap, and scarf",
+        "Top-center light-skinned woman with long dark hair, eyes closed, upside down",
+        "Upper-left light-skinned man with closely cropped dark hair",
+        "Lower-left light-skinned man with straight dark hair",
+        "Right-edge light-skinned man in a knit cap"
+      ],
+      "wardrobe": "Casual layered clothing: scarves, blazer, jackets, knit cap, fitted pale top, dark sweaters and shirts.",
+      "photoStyle": "Color overhead group portrait with soft light and intimate, tightly packed composition.",
+      "setting": "White bedspread or cushioned surface filling most of the frame, with minimal room detail visible.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 3,
+      "filename": "Metallica.jpg",
+      "artist": "Metallica",
+      "description": "Four adult men stand as dark silhouettes against intense yellow backlighting inside a tunnel-like space. The central tallest man stands with legs apart, mostly in shadow. To his left stands a shorter man in a backward cap. At far left is a long-haired figure with a slimmer build. At right is a man with straight shoulder-length hair. Bright linear light beams radiate behind them across the curved tunnel walls.",
+      "primarySubject": "Tall center man standing with legs apart in silhouette against bright yellow light beams",
+      "visiblePeople": [
+        "Far-left adult with long hair and slim build in silhouette",
+        "Left-center adult man in a backward cap in silhouette",
+        "Center tall adult man in silhouette",
+        "Right adult man with shoulder-length straight hair in silhouette"
+      ],
+      "wardrobe": "Dark clothing throughout; details mostly obscured by silhouette.",
+      "photoStyle": "Highly stylized color silhouette portrait with dramatic backlighting and graphic light rays.",
+      "setting": "Curved tunnel or large cylindrical passage with textured walls, filled with strong yellow backlight and radiating linear beams.",
+      "settingStrength": "strong"
+    },
+    {
+      "source": 4,
+      "filename": "Air.jpg",
+      "artist": "Air",
+      "description": "Two light-skinned adult men stand indoors in a softly blurred hall. The man at left is slightly forward, clean-shaven, with straight medium-length brown hair framing his face, wearing a patterned button-up shirt, dark tie, and dark sweater vest, looking directly at the camera. The man at right has wavy light brown hair, a short beard, and a serious expression, wearing a gray blazer over a light shirt with a dark scarf or narrow wrap at the neck, arms crossed.",
+      "primarySubject": "Left-front light-skinned clean-shaven man with straight medium-length brown hair, wearing a patterned shirt, tie, and dark sweater vest",
+      "visiblePeople": [
+        "Left-front light-skinned clean-shaven man with straight medium-length brown hair",
+        "Right light-skinned man with wavy light brown hair and short beard, arms crossed"
+      ],
+      "wardrobe": "Smart, tailored clothing: patterned shirt, tie, sweater vest, gray blazer, light shirt, dark neck scarf, wristwatch.",
+      "photoStyle": "Color posed portrait, waist-up framing, shallow depth of field, soft natural or diffused light.",
+      "setting": "Large interior hall or corridor with polished floor, columns or wall edges, and repeating architectural lines fading into blur.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 5,
+      "filename": "Crippled-Black-Phoenix.jpg",
+      "artist": "Crippled Black Phoenix",
+      "description": "Seven adults stand in a narrow outdoor alley between brick and plaster walls in a black-and-white photo. The most prominent figure is at right in profile, a light-skinned man with a full beard, cap, ear gauge, and leather jacket. At left-front stands a light-skinned man in glasses and a dark hoodie with hands in pockets. Near center-left is a bearded man in a beanie. Behind him stands an older long-haired man in a dark cap. Further back are a man in a headwrap or beanie and a tall man with long dreadlocks and crossed arms. Near center-right stands a light-skinned blonde woman in a dark coat, looking directly at the camera.",
+      "primarySubject": "Right-foreground light-skinned bearded man in profile wearing a cap, ear gauge, and leather jacket",
+      "visiblePeople": [
+        "Right-foreground light-skinned bearded man in cap and leather jacket, in profile",
+        "Left-front light-skinned man with glasses and hood up",
+        "Center-left light-skinned bearded man in a beanie",
+        "Back-left older light-skinned man with long hair under a dark cap",
+        "Back-center light-skinned man wearing a head covering",
+        "Back-center-right light-skinned tall man with long dreadlocks and crossed arms",
+        "Center-right light-skinned blonde woman in a dark coat"
+      ],
+      "wardrobe": "Dark layered outerwear including hoodie, beanies, caps, coat, and leather jacket.",
+      "photoStyle": "Black-and-white environmental group portrait with deep focus and gritty street aesthetic.",
+      "setting": "Narrow alleyway with brick walls, worn plaster surfaces, pavement underfoot, and building facades closing in on both sides.",
+      "settingStrength": "strong"
+    },
+    {
+      "source": 6,
+      "filename": "David-Bowie.jpg",
+      "artist": "David Bowie",
+      "description": "A close portrait of a light-skinned adult man with sharp cheekbones, blue eyes, and styled blond hair swept up and back in a voluminous cut. He is clean-shaven or with very faint stubble, wearing a dark open-collared garment with a raised collar. He turns slightly toward camera with an intense gaze. A crisp shadow falls on the plain light background.",
+      "primarySubject": "Light-skinned man with swept-back blond hair, blue eyes, and a raised dark collar, shown in close-up",
+      "visiblePeople": [
+        "One light-skinned man with styled blond hair and blue eyes"
+      ],
+      "wardrobe": "Dark open-collared top or jacket with a raised collar; thin chain barely visible at the neck.",
+      "photoStyle": "Color studio portrait, close-up framing, controlled lighting with defined shadow on background.",
+      "setting": "Plain light studio backdrop with little environmental detail beyond the cast shadow.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 7,
+      "filename": "Regina-Spektor.jpg",
+      "artist": "Regina Spektor",
+      "description": "A single light-skinned woman is shown from the chest up against a pale background with a cool blue cast. She has large light eyes, full lips with dark lipstick, and shoulder-length dark curly hair framing her face. She wears a white collared shirt and a slim dark tie, facing the camera directly with a calm, alert expression.",
+      "primarySubject": "Light-skinned woman with dark shoulder-length curly hair, large light eyes, white shirt, and slim dark tie",
+      "visiblePeople": [
+        "One light-skinned woman with dark curly hair and bright eyes"
+      ],
+      "wardrobe": "White collared shirt with a slim dark tie.",
+      "photoStyle": "Color studio portrait with cool-toned treatment, soft even lighting, and clean minimal composition.",
+      "setting": "Plain pale studio background with no visible environmental features.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 8,
+      "filename": "The-Frank-and-Walters.jpg",
+      "artist": "The Frank and Walters",
+      "description": "Three light-skinned adult men stand close together in a warm yellow-tinted image. The central figure is most prominent, a tall fair-haired man in a button-up shirt, facing the camera with a serious expression. At left, a dark-haired man in a lighter shirt stands slightly behind, turned partly sideways. At right, a curly-haired man in a dark high-neck top leans in from the side. The background is softly blurred with indistinct interior lights and dark shapes.",
+      "primarySubject": "Center light-skinned tall fair-haired man in a button-up shirt, facing the camera with a serious expression",
+      "visiblePeople": [
+        "Center light-skinned fair-haired man in a button-up shirt",
+        "Left light-skinned dark-haired man in a light shirt",
+        "Right light-skinned curly-haired man in a dark top"
+      ],
+      "wardrobe": "Simple collared shirts and a dark high-neck top.",
+      "photoStyle": "Color band portrait with heavy warm/yellow tint, soft focus background, and tight medium framing.",
+      "setting": "Dim interior with blurred lights and indistinct dark furnishings or fixtures in the background.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 9,
+      "filename": "Zero-7.jpg",
+      "artist": "Zero 7",
+      "description": "An artistic black-and-white double-exposure portrait shows two light-skinned adult men layered over each other against a plain interior background. One man, more visible on the left, has short hair and wears a collared dark shirt, facing forward with a neutral expression. The overlapping man on the right has short hair and a slight smile, his face semi-transparent and offset. Their torsos overlap, creating a ghosted composite effect.",
+      "primarySubject": "Left-side light-skinned man with short hair in a dark collared shirt, facing forward within a double-exposure portrait",
+      "visiblePeople": [
+        "Left-side light-skinned man with short hair in a collared shirt",
+        "Overlapping right-side light-skinned man with short hair and a faint smile"
+      ],
+      "wardrobe": "Dark simple shirts, one clearly collared.",
+      "photoStyle": "Black-and-white double-exposure portrait with layered semi-transparent faces and soft tonal contrast.",
+      "setting": "Plain indoor wall with minimal detail, largely obscured by the exposure effect.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 10,
+      "filename": "The-B-52s.jpg",
+      "artist": "The B 52s",
+      "description": "Five light-skinned adults pose closely in a black-and-white candid-style photo in front of a wall panel decorated with a guitar-shaped artwork. At left, a man in dark sunglasses leans against a doorway, holding a cigarette and wearing a light button-up shirt and trousers. Next to him, a woman with long hair and bangs, hair styled high at the crown, holds a cup and a coat over a sleeveless dress with dark tights, glancing sideways. Center is a shorter man in dark glasses and a dark top. Beside him stands a woman with a sculpted voluminous updo, large hoop earrings, and a bold black-and-white color-block dress, looking directly at camera. At right, a man with curly hair wears a short-sleeve polka-dot shirt and jeans, looking toward the group.",
+      "primarySubject": "Center-right light-skinned woman with a voluminous updo, large hoop earrings, and a bold black-and-white dress, facing the camera",
+      "visiblePeople": [
+        "Left light-skinned man in dark sunglasses holding a cigarette",
+        "Left-center light-skinned woman with long hair and bangs, holding a cup",
+        "Center light-skinned shorter man in dark glasses",
+        "Center-right light-skinned woman with voluminous updo and large hoop earrings",
+        "Right light-skinned curly-haired man in a polka-dot shirt"
+      ],
+      "wardrobe": "Vintage casual clothing: light button-up shirt and trousers, sleeveless dress with tights, dark top, bold black-and-white dress, polka-dot short-sleeve shirt, jeans.",
+      "photoStyle": "Black-and-white candid group portrait with documentary feel and medium full-body framing.",
+      "setting": "Interior or entryway area with a doorframe, wall-mounted framed picture, dark vertical paneling, and a large guitar-shaped decorative element behind the group.",
+      "settingStrength": "moderate"
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the 4 reference images into a single shared real-world scene. Scene: On a concrete sea wall at the edge of a rough winter shoreline, the four selected figures are pressed into a tight, asymmetrical huddle as a hard onshore wind whips hair, collars, and ties sideways; the slim blond older man from 6 anchors the left foreground in a black high-collared coat, turned three-quarters toward camera with a cool, steady gaze, while the pale dark-haired woman from 7 leans in just behind him, white shirt bright against the stormy backdrop, black tie flicking across her shoulder and curls blown outward. To the right, the cleaner-cut dark-haired man from 4 sits slightly lower on the sea wall ledge, shoulders tucked into a charcoal knit vest and patterned shirt, looking straight into the lens, while the other man from 4 stands half a step behind him with arms loosely folded inside a textured grey overcoat, beard catching the side light. The man from 9 is closest to the right edge and slightly recessed, in a dark sweater under a weatherproof coat, his expression thoughtful as he glances past the camera, giving the frame a caught, human imbalance rather than a lineup. The shot is framed chest-up and close so every face is large and razor-sharp, with the cold late-afternoon sky blown warm near the horizon and the sea behind them shifting cyan-green in cross-processed slide-film colour, wet concrete reflecting punchy contrast and adding a salty, intimate realism. Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness exactly as shown. Do not invent anyone who is not in the reference photos. Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its single most recognisable member rather than every member. Frame the group tightly - close or medium-close - so every face is large in the frame, sharp, and richly detailed, never small or distant. Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Vary posture, depth, and where people are looking - this is a caught moment, not a band-publicity lineup evenly spaced and facing the camera. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares. Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render. Colour treatment: cross-processed slide-film colour - shifted greens and cyans, blown warm highlights, punchy contrast, drawing on cyan green, blown gold, wet concrete grey, ink black, chalk white. Mood: intimate, bracing, cinematic. Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, extra people, background crowd, duplicated faces, cloned faces, merged faces, blended faces, morphed features, distorted faces, deformed hands, extra limbs. Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Auditorium or theater interior with rows of red upholstered seats, dark walls, warm ceiling lights, and balcony-like seating visible in the background.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. In the front section of an empty theater auditorium with rows of red upholstered seats, dark walls, warm ceiling practicals, and a balcony seating level receding behind, photograph a small group gathered informally across two or three rows, viewed from a few seats away at eye level. A dark-haired light-skinned man in a dark velvet jacket over a colorful patterned shirt leans forward over a seat back at front center with an easy smile; at left, a slim clean-shaven light-skinned man with straight medium-length brown hair in a patterned shirt, dark tie, and sweater vest sits sideways in a seat turned toward the others; mid-left, a light-skinned woman with shoulder-length dark curly hair, bright light eyes, a white collared shirt, and slim dark tie perches lightly on a seat back; back-center, a tall fair-haired light-skinned man in a button-up shirt stands one row higher with a serious stillness; mid-right, a light-skinned woman with a sculpted voluminous updo, large hoop earrings, and a bold black-and-white dress sits upright in a seat looking steadily forward; at right, a light-skinned man with swept-back blond hair, blue eyes, and a raised dark collar half-stands in the aisle, angled toward the group. Keep their spacing asymmetrical with overlapping depth and subtle interaction, as if caught in a quiet pause before settling into conversation. Medium-wide 16:9 composition, natural perspective around 35mm, shallow-to-moderate depth of field that keeps the full group clear while the deeper balcony softens. Use the auditorium's warm practical lighting logic with gentle frontal fill, soft shadows, and realistic reflections on seat fabric. Natural color with rich reds and warm amber highlights, restrained contrast, intimate and poised mood. Attached cast plan: Attached reference image 1: portray only light-skinned dark-haired man with a broad smile, wearing a dark velvet jacket over a colorful patterned shirt; front-center, leaning over the back of a seat toward camera as the visual anchor. Attached reference image 2: portray only light-skinned clean-shaven man with straight medium-length brown hair, patterned shirt, dark tie, and dark sweater vest; left side, seated sideways in a seat and turned toward the group. Attached reference image 3: portray only light-skinned man with swept-back blond hair, blue eyes, and a raised dark collar; right side, half-standing in the aisle beside a row, looking across toward center. Attached reference image 4: portray only light-skinned woman with shoulder-length dark curly hair, large light eyes, white collared shirt, and slim dark tie; mid-left, perched on a seat back, facing camera with calm alertness. Attached reference image 5: portray only light-skinned tall fair-haired man in a button-up shirt with a serious expression; back-center, standing one row higher behind the front cluster. Attached reference image 6: portray only light-skinned woman with a voluminous updo, large hoop earrings, and a bold black-and-white color-block dress; mid-right, seated upright in a theater seat, composed and steady. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. This generation has 6 attached cast reference images; omit any person described in the creative direction who does not have an attached reference.",
   "inputs": [
+    "Marillion.jpg",
+    "Air.jpg",
     "David-Bowie.jpg",
     "Regina-Spektor.jpg",
-    "Air.jpg",
-    "Zero-7.jpg"
+    "The-Frank-and-Walters.jpg",
+    "The-B-52s.jpg"
   ]
 }

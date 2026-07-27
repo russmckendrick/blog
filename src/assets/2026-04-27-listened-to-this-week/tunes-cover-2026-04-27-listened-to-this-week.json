@@ -1,27 +1,197 @@
 {
+  "version": 2,
   "date": "2026-04-27",
   "type": "cover",
-  "lane": "long-exposure-light",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Long-exposure light photography weaving together the week's album motifs",
-  "scene": "one cohesive, imaginative scene rendered as a real long-exposure night photograph made in-camera with moving light, illuminated architecture, and reflections, combining recognisable elements drawn from every uploaded album cover, tied together by one setting, one light, and one consistent treatment",
-  "palette": [],
+  "concept": "Celestial listening chamber with sculptural audience",
+  "creativeDirection": "A surreal hand-built diorama photographed like a stage set, combining painted backdrops, metallic sculpture, cut-paper portraiture, and luminous resin forms.",
+  "scene": "Inside a futuristic amphitheater viewed from a slightly elevated central position, facing a small glowing stage framed by towering sculptural forms and cosmic set pieces.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "A large iridescent bent resin form hovers above the stage like a liquid comet, with a rough black slab interrupting its upper edge."
+    },
+    {
+      "source": 2,
+      "element": "A monumental cut-paper mural of a stylized yellow face with green hair and red accents occupies one side wall as the dominant graphic portrait element."
+    },
+    {
+      "source": 3,
+      "element": "The overall setting borrows the symmetrical arena seating and distant-stage perspective, translated into a theatrical interior."
+    },
+    {
+      "source": 4,
+      "element": "A single space-warrior woman appears as a glowing statue at the edge of the stage, aiming her toy-like ray gun upward into the set."
+    },
+    {
+      "source": 5,
+      "element": "A shadowed monochrome bust with a huge afro becomes a dramatic audience-side sculpture, crossed by a soft rainbow light streak."
+    },
+    {
+      "source": 6,
+      "element": "Two giant metallic heads form the proscenium arch, facing each other with a narrow gap above the stage."
+    },
+    {
+      "source": 7,
+      "element": "Five small painted figures in formal dress are arranged together in one seating box as a clustered onlooking ensemble."
+    },
+    {
+      "source": 8,
+      "element": "A lone black-and-white musician holding an upright acoustic guitar stands on the distant center stage as the focal performer."
+    }
+  ],
+  "palette": [
+    "electric yellow",
+    "silver",
+    "midnight blue",
+    "black",
+    "acid green",
+    "crimson"
+  ],
+  "mood": "ceremonial, uncanny, musical, cosmic",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Best-Of-Pixies-Wave-Of-Mutilation.jpg",
+      "album": "Best Of Pixies Wave Of Mutilation",
+      "artist": "",
+      "description": "A bright yellow background with a central abstract, glossy, iridescent blob or bent tube-like form that looks liquid or metallic, reflecting rainbow colours. A rough black rectangular strip overlaps the upper right area.",
+      "signatureMotif": "iridescent bent blob",
+      "medium": "digital abstract graphic",
+      "palette": [
+        "yellow",
+        "black",
+        "green",
+        "purple",
+        "blue"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Drums-and-Wires.jpg",
+      "album": "Drums and Wires",
+      "artist": "",
+      "description": "A bold, flat-color illustrated portrait of a human face fills most of the frame. The face is yellow with simplified features drawn in dark angular strokes, green hair, a red ear, and a small red circular eye detail. Torn-paper-like blocks of red, green, white, and dark blue surround the face.",
+      "signatureMotif": "stylized yellow face",
+      "medium": "graphic illustration",
+      "palette": [
+        "yellow",
+        "dark blue",
+        "red",
+        "green",
+        "white"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Live-From-the-Los-Angeles-Sports-Arena-April-26th-1975.jpg",
+      "album": "Live From the Los Angeles Sports Arena April 26th 1975",
+      "artist": "",
+      "description": "A tinted photograph of a large sports arena interior seen from high in the seating, looking toward a distant stage. Rows of seats and aisles create strong symmetry, and the image is overlaid with translucent bands of pink, green, yellow, and blue, giving it a posterized, layered look.",
+      "signatureMotif": "arena interior with distant stage",
+      "medium": "color-treated photograph",
+      "palette": [
+        "pink",
+        "green",
+        "yellow",
+        "blue",
+        "purple"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Teenage-Drug.jpg",
+      "album": "Teenage Drug",
+      "artist": "",
+      "description": "A woman posed against a starry outer-space background points a large toy-like ray gun upward. She wears a dark helmet, black gloves, and bandoliers of green-tipped ammunition across her bare torso, with red face paint on one cheek and a soft glow around her figure.",
+      "signatureMotif": "woman aiming ray gun",
+      "medium": "staged photograph",
+      "palette": [
+        "dark blue",
+        "black",
+        "skin tone",
+        "red",
+        "green"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "SLY-LIVES-Aka-The-Burden-Of-Black-Genius.jpg",
+      "album": "SLY LIVES Aka The Burden Of Black Genius",
+      "artist": "",
+      "description": "A monochrome portrait of a person with a very large afro dominates the frame. The hair obscures the eyes in shadow, while the nose and lips are sharply lit. A chain necklace and jacket are visible, and a blurred rainbow-like light streak curves down the right side against a pale gray background.",
+      "signatureMotif": "shadowed face beneath large afro",
+      "medium": "stylized photograph",
+      "palette": [
+        "black",
+        "gray",
+        "white",
+        "red",
+        "orange"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "The-Division-Bell.jpg",
+      "album": "The Division Bell",
+      "artist": "",
+      "description": "Two large metallic head sculptures stand face to face in an open field under a blue sky with clouds. Their profiles nearly meet, creating a narrow gap between them. Small red flags and a distant building appear in the background.",
+      "signatureMotif": "two facing metal heads",
+      "medium": "photograph of sculpture installation",
+      "palette": [
+        "silver",
+        "blue",
+        "green",
+        "brown",
+        "gray"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "His-n-Hers.jpg",
+      "album": "His n Hers",
+      "artist": "",
+      "description": "A painted or airbrushed group portrait of five people against a white background. Four men and one woman stand closely together, dressed in formal or semi-formal clothing, including a bright yellow suit, dark jackets, and a mustard sleeveless top. A pale reflective band spans the lower portion of the image.",
+      "signatureMotif": "five-person painted portrait",
+      "medium": "painted illustration",
+      "palette": [
+        "white",
+        "yellow",
+        "black",
+        "brown",
+        "blue"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "The-Best-of-The-Pogues.jpg",
+      "album": "The Best of The Pogues",
+      "artist": "",
+      "description": "A black-and-white portrait photograph of a young man in a dark jacket holding an acoustic guitar upright in front of him. The guitar neck runs vertically near the center, partially dividing his face, while his hands with rings rest across the instrument.",
+      "signatureMotif": "man holding guitar upright",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "white",
+        "gray"
+      ]
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one genuine long-exposure night photograph - a locked-off camera, real environmental depth, continuous moving light trails, luminous reflections, and crisp stationary surfaces anchoring the frame. The image is a 16:9 music blog header. Scene: one cohesive, imaginative scene rendered as a real long-exposure night photograph made in-camera with moving light, illuminated architecture, and reflections, combining recognisable elements drawn from every uploaded album cover, tied together by one setting, one light, and one consistent treatment. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: a recognisable element from Best Of Pixies Wave Of Mutilation; source 2: a recognisable element from Drums and Wires; source 3: a recognisable element from His n Hers; source 4: a recognisable element from Live From the Los Angeles Sports Arena April 26th 1975; source 5: a recognisable element from Teenage Drug; source 6: a recognisable element from SLY LIVES Aka The Burden Of Black Genius. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Build each album motif into the same physical night-time location: express suitable shapes through deliberate continuous light trails, projections, illuminated structures, reflections, or moving figures, while keeping solid subjects tangible and recognisable. Composition: One deep-perspective night scene anchored by a strong real location, with connected light paths sweeping through foreground, middle ground, and distance rather than isolated glowing symbols floating on black. Colour direction: a palette pulled from the uploaded artwork - deep natural night tones with two or three luminous colours drawn from the sleeves, bright light trails, controlled highlights, and reflective colour. Mood: imaginative and music-led. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, daylight scene, flat black background, floating neon icons, random light scribbles, laser-show stage, digital glow effects, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "A futuristic indoor amphitheater seen from a slightly elevated centered viewpoint, looking down symmetrical seating aisles toward a small luminous distant stage; at center stage a lone black-and-white young musician stands holding an acoustic guitar upright in front of him, the guitar neck dividing his figure and establishing the main vertical axis; above him hovers a giant glossy iridescent bent resin blob like a liquid comet, partly interrupted by a rough black rectangular slab, while two enormous metallic head sculptures face each other to form a proscenium arch around the stage, a monumental cut-paper mural of a stylized yellow face with green hair, angular dark features, red ear and small red eye detail fills one side wall, a single glowing woman in a dark helmet with black gloves and green-tipped bandoliers appears as a statue at stage left aiming a toy-like ray gun upward, a dramatic monochrome bust with a huge afro and shadowed eyes rises from the opposite audience side with a curved rainbow light streak beside it, and a small painted group of five formally dressed figures watches together from one theater box; surreal hand-built diorama photographed as a theatrical installation, mixing painted set walls, metallic sculpture, resin, airbrushed portrait panels, cut-paper collage surfaces, and subtle photographic grain; strong central hierarchy with the guitarist smallest but brightest at the vanishing point, arena seating and aisles creating depth and symmetry, layered translucent color bands washing parts of the chamber, spotlight on the stage with dim atmospheric glow elsewhere; palette of electric yellow, silver, midnight blue, black, acid green, crimson, soft gray, and iridescent rainbow, mood ceremonial, uncanny, cosmic, and musical. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Best-Of-Pixies-Wave-Of-Mutilation.jpg",
     "Drums-and-Wires.jpg",
-    "His-n-Hers.jpg",
     "Live-From-the-Los-Angeles-Sports-Arena-April-26th-1975.jpg",
     "Teenage-Drug.jpg",
     "SLY-LIVES-Aka-The-Burden-Of-Black-Genius.jpg",
-    "Sparkle-in-the-Rain.jpg",
+    "The-Division-Bell.jpg",
+    "His-n-Hers.jpg",
     "The-Best-of-The-Pogues.jpg"
   ]
 }

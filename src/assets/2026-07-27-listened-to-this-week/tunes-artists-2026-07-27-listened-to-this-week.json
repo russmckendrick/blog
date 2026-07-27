@@ -1,29 +1,258 @@
 {
+  "version": 2,
   "date": "2026-07-27",
   "type": "artist",
   "lane": null,
   "lighting": null,
-  "shootDirection": "the group crossing a zebra crossing toward the camera, shot square-on from across the road",
-  "colourTreatment": "natural-daylight",
-  "concept": "Blue-hour city zebra crossing outside an old cinema",
-  "scene": "At blue hour on a broad zebra crossing outside an old cinema corner in a quiet city center, the four selected figures move toward the camera as the photographer stands square-on from the opposite curb, framed tight enough from mid-thigh up that every face stays large, crisp, and fully readable while the white stripes rush beneath them; the dark-haired man in the severe coat with fur collar leads slightly from the left with his chin turned off to one side, the young man in the red-white-blue top is half a step nearer the lens and glances back directly with one arm swinging into the foreground, the silver-haired man in the blazer walks a touch behind with his profile catching the cool ambient sky glow, and the central moustached figure in the dark suit and white tie cuts through the middle stripe line with a poised, almost theatrical stride. Storefront glass and a glowing marquee reflect soft streetlights behind them, the road still faintly damp so it picks up honest highlights, and their styling feels naturally mixed rather than coordinated: tailored dark outerwear beside sportier knitwear, all held together by the clean, true-to-life evening colour and the sense of a real caught crossing rather than a posed lineup.",
-  "palette": [
-    "charcoal",
-    "slate blue",
-    "cream",
-    "oxblood",
-    "soft white"
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Stoop pause before going inside",
+  "creativeDirection": "A relaxed editorial group portrait on a residential stoop, framed as a layered in-between moment rather than a formal lineup.",
+  "scene": "Use the brick residential stoop from the selected photo as the only setting: concrete sidewalk in front, a short run of worn concrete steps, dark metal railings on both sides, recessed entry doors, brick walls, and stoop windows. Keep the group loosely gathered across the lower steps and landing as if they have paused mid-conversation before entering.",
+  "locationSource": 11,
+  "locationSetting": "Urban residential stoop with concrete steps, railings, brick building facade, windows, and recessed doorways behind the group.",
+  "locationEvidence": "Concrete front steps with metal railings lead to recessed doorways in a brick residential facade, with visible windows and stoop layout clearly defining an urban building entrance.",
+  "locationReference": 1,
+  "locationInput": "The-Time.jpg",
+  "cast": [
+    {
+      "source": 11,
+      "person": "Black man with a mustache in a dark suit, light narrow tie, and light shoes",
+      "placement": "front center on the lowest step, angled slightly off-center as the visual anchor"
+    },
+    {
+      "source": 8,
+      "person": "Dark-skinned man with close-cropped hair, neat mustache, and a red-white-blue striped top",
+      "placement": "seated sideways on the right-hand step, turned back toward camera over his shoulder"
+    },
+    {
+      "source": 7,
+      "person": "Pale man with dark tousled hair, heavy eye makeup, and a black double-breasted coat with a dark fur collar",
+      "placement": "standing on the upper left landing near the doorway, half in shadow"
+    },
+    {
+      "source": 5,
+      "person": "Older light-skinned man with tousled gray hair in a short-sleeved plaid shirt",
+      "placement": "leaning casually against the left railing midway up the steps"
+    },
+    {
+      "source": 3,
+      "person": "Light-skinned man with a tall swept quiff wearing a pale ribbed sweater",
+      "placement": "right side of the middle step, one hand lightly resting on the railing"
+    },
+    {
+      "source": 1,
+      "person": "Light-skinned man with medium-length dark hair brushed up, wearing a dark mod suit, white shirt, and narrow tie",
+      "placement": "seated on the left lower step, upright and facing outward"
+    }
   ],
+  "selection": [
+    11,
+    8,
+    7,
+    5,
+    3,
+    1
+  ],
+  "palette": [
+    "muted brick red",
+    "weathered concrete gray",
+    "aged black metal",
+    "soft cream",
+    "deep black",
+    "faded navy"
+  ],
+  "mood": "quiet, intimate, slightly enigmatic",
+  "artistSummaries": [
+    {
+      "source": 1,
+      "filename": "The-Jam.jpg",
+      "artist": "The Jam",
+      "description": "Black-and-white group portrait of three light-skinned adult men seated against a wall of square white tiles. All three wear dark suits with white shirts and narrow dark ties. The man at left has a slim face, short dark spiky hair, and leans his head left while looking directly at the camera. The center man has short light hair, rectangular dark sunglasses, and reclines slightly with one hand resting forward. The man at right has a longer face, medium-length dark hair brushed up and back, and sits upright facing forward. Framing is medium-wide with a large amount of blank tiled wall above them; lighting is even and flat.",
+      "primarySubject": "The light-skinned man on the right with medium-length dark hair brushed up, wearing a dark suit and narrow tie, seated upright and facing the camera.",
+      "visiblePeople": [
+        "Light-skinned adult man with short dark spiky hair, slim face, dark suit and tie, leaning left",
+        "Light-skinned adult man with short light hair, rectangular dark sunglasses, dark suit and tie, reclining slightly",
+        "Light-skinned adult man with medium-length dark hair brushed up, long face, dark suit and tie, seated upright"
+      ],
+      "wardrobe": "Matching mod-style dark suits, white dress shirts, narrow dark ties; small lapel pins visible on two jackets.",
+      "photoStyle": "Black-and-white posed band portrait, medium-wide framing, straightforward documentary/editorial treatment.",
+      "setting": "Interior wall covered in small square tiles, with no visible furniture or fixtures besides the tiled surface behind the seated subjects.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 2,
+      "filename": "Paul-Weller.jpg",
+      "artist": "Paul Weller",
+      "description": "Color studio portrait of one light-skinned older adult man shown in close-up profile from chest up against a black background. He has short straight silver-gray hair, no facial hair, and a lean angular face with pronounced cheekbones and jawline. He looks to the left of frame with a serious expression. He wears a textured gray blazer over a dark green V-neck top, with layered silver chain necklaces visible at the collar. Dramatic directional lighting highlights the left side of his face and leaves the background fully dark.",
+      "primarySubject": "The light-skinned older man with short silver-gray hair and an angular face, shown in left-facing profile against a black background.",
+      "visiblePeople": [
+        "Light-skinned older adult man with short silver-gray hair, clean-shaven, angular face, wearing a gray blazer and dark V-neck top"
+      ],
+      "wardrobe": "Gray textured blazer, dark green V-neck shirt or sweater, layered silver chain necklaces.",
+      "photoStyle": "Color studio close-up portrait with black backdrop, sharp detail, dramatic side lighting.",
+      "setting": "Plain black studio-like background with no visible environmental features.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 3,
+      "filename": "The-Smiths.jpg",
+      "artist": "The Smiths",
+      "description": "Black-and-white outdoor portrait of two light-skinned adult men standing among dense hanging tree branches and long narrow leaves. The man on the left has dark wavy hair, wears dark rectangular sunglasses and a dark jacket over a lighter top, and faces the camera with a neutral expression. The man on the right has a tall swept quiff hairstyle, a pale ribbed sweater, and lightly grips a branch while turning toward the camera. The foliage fills nearly the entire frame, creating a textured natural backdrop.",
+      "primarySubject": "The light-skinned man on the right with a tall swept quiff and light ribbed sweater, standing among hanging branches and looking toward the camera.",
+      "visiblePeople": [
+        "Light-skinned adult man with dark wavy hair, dark rectangular sunglasses, dark jacket, facing forward",
+        "Light-skinned adult man with swept-up quiff hairstyle, clean-shaven, light ribbed sweater, holding a branch"
+      ],
+      "wardrobe": "Dark jacket over a lighter shirt on the left; light ribbed knit sweater on the right.",
+      "photoStyle": "Black-and-white outdoor band portrait with natural foliage framing and slightly grainy tonal range.",
+      "setting": "Dense leafy tree canopy with long drooping branches surrounding the subjects outdoors; no built structures visible.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 4,
+      "filename": "The-Who.jpg",
+      "artist": "The Who",
+      "description": "Black-and-white live performance photo of four light-skinned adult men on a large stage. At far left, a bearded guitarist stands near stacked amplifier cabinets. Center front, a curly-haired singer in an open shirt and light trousers swings a microphone stand overhead with one foot lifted. Behind him, a drummer sits at a drum kit. At far right, a guitarist in a light outfit is captured midair in a jump with legs spread while playing. The stage floor, drum set, microphone cable, and multiple large speaker stacks are visible against a dark empty background.",
+      "primarySubject": "The curly-haired singer at center, shirt open and arms raised while swinging a microphone stand onstage.",
+      "visiblePeople": [
+        "Light-skinned adult man with beard, playing guitar at left near amp stacks",
+        "Light-skinned adult man with curly hair, open shirt, swinging microphone stand at center",
+        "Light-skinned adult man seated at drum kit behind center",
+        "Light-skinned adult man at right playing guitar while jumping midair in a light outfit"
+      ],
+      "wardrobe": "Performance clothing including an open shirt and light trousers on the singer, dark shirt and trousers on the left guitarist, light outfit on the jumping guitarist, and a light top on the drummer.",
+      "photoStyle": "Black-and-white concert action photograph, wide framing, high contrast, motion frozen mid-performance.",
+      "setting": "Large stage with drum kit centered, microphone stand and cable on the floor, and tall stacks of amplifier cabinets flanking both sides; background falls to black.",
+      "settingStrength": "strong"
+    },
+    {
+      "source": 5,
+      "filename": "Tim-Finn.jpg",
+      "artist": "Tim Finn",
+      "description": "Color live performance photo of one light-skinned older adult man singing into a microphone while playing an acoustic guitar. He has tousled gray hair, no visible facial hair, and is shown from about waist up in three-quarter view. He wears a short-sleeved plaid button-up shirt and a dark guitar strap. The natural wood acoustic guitar fills the lower foreground. Out-of-focus stage rigging and lights hang above against a dark stage backdrop.",
+      "primarySubject": "The light-skinned older man with tousled gray hair singing into a microphone while holding a natural wood acoustic guitar.",
+      "visiblePeople": [
+        "Light-skinned older adult man with tousled gray hair, clean-shaven, singing into a microphone and playing acoustic guitar"
+      ],
+      "wardrobe": "Short-sleeved plaid button-up shirt, dark guitar strap.",
+      "photoStyle": "Color concert photograph, medium close framing, shallow depth of field, candid performance moment.",
+      "setting": "Outdoor or festival-style stage area with microphone stand, overhead truss or rigging, stage lights, and a dark performance backdrop.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 6,
+      "filename": "Airhead.jpg",
+      "artist": "Airhead",
+      "description": "Warm-toned, soft-focus group photo of four light-skinned young adult men posed outside or in a semi-covered architectural space. One stands in shadow at left near a metal grid. A taller man near center-left with longer hair looks downward with arms crossed, wearing a striped or textured dark jacket. A seated man at center front wears a white shirt and dark jacket draped open, legs extended in shorts and sneakers. At right, a slim man in a dark vest over a light shirt stands with one hand in his pocket and the other arm raised near his face. The image has a faded, grainy, snapshot-like treatment with rounded frame edges.",
+      "primarySubject": "The taller light-skinned man near center-left with longer hair, head lowered, arms crossed, and a dark striped jacket.",
+      "visiblePeople": [
+        "Light-skinned adult man in dark clothing standing in shadow at left near a metal grid",
+        "Light-skinned adult man with medium-length hair, arms crossed, wearing a dark striped jacket, standing near center-left",
+        "Light-skinned adult man seated at center in a white shirt and dark open jacket, shorts, and sneakers",
+        "Light-skinned slim adult man at right wearing a dark vest over a light shirt, one hand in pocket and one arm raised"
+      ],
+      "wardrobe": "Dark tailored and casual layers including a striped jacket, dark suit-like outfit, white shirt with dark jacket, dark vest over a light shirt, shorts, and sneakers.",
+      "photoStyle": "Color image with warm cast, soft focus, film grain, and vintage snapshot or Polaroid-like border treatment.",
+      "setting": "Architectural passage or exterior building edge with concrete step, columns or wall recesses, a metal grid panel at left, and a paved floor; background is softly obscured.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 7,
+      "filename": "Gary-Numan.jpg",
+      "artist": "Gary Numan",
+      "description": "Dark moody color portrait of one light-skinned adult man from about waist up against a distressed brown wall. He has pale skin, dark tousled voluminous hair, no facial hair, and heavy eye makeup emphasizing the eyes. He turns his head left with a distant expression. He wears a structured black double-breasted coat with large metallic buttons and a thick dark fur-like collar or scarf. Low-key lighting creates deep shadows and a painterly atmosphere.",
+      "primarySubject": "The pale light-skinned man with dark tousled hair, heavy eye makeup, and a black double-breasted coat with a dark fur collar, turned to the left.",
+      "visiblePeople": [
+        "Light-skinned adult man with dark tousled hair, clean-shaven, heavy eye makeup, wearing a black double-breasted coat with fur-like collar"
+      ],
+      "wardrobe": "Black double-breasted coat with large round buttons and a thick dark fur-like collar or scarf.",
+      "photoStyle": "Color studio/editorial portrait with low-key lighting, muted tones, and painterly moody treatment.",
+      "setting": "Textured distressed brown wall backdrop with peeling or mottled surface; no other objects visible.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 8,
+      "filename": "Jalen-NGonda.jpg",
+      "artist": "Jalen NGonda",
+      "description": "Soft, dimly lit color portrait of one dark-skinned adult man looking back over his shoulder toward the camera. He has short close-cropped hair, a neat mustache, and smooth skin. He appears seated or leaning forward with one arm extended toward the foreground edge. He wears a top with broad red, white, and blue stripes and a white collar. The background is dark and out of focus, with a horizontal bar and bright blurred lights near the top.",
+      "primarySubject": "The dark-skinned man with short close-cropped hair and a neat mustache, turning back toward the camera in a striped red, white, and blue top.",
+      "visiblePeople": [
+        "Dark-skinned adult man with short close-cropped hair, neat mustache, no eyewear, turning over his shoulder toward camera"
+      ],
+      "wardrobe": "Striped top with broad red, white, and blue sections and a white collar.",
+      "photoStyle": "Color portrait with shallow depth of field, low light, soft cinematic focus, and intimate framing.",
+      "setting": "Dark interior with indistinct background, a horizontal rail or bar, and blurred overhead lights; surroundings are mostly obscured.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 9,
+      "filename": "The-War-on-Drugs.jpg",
+      "artist": "The War on Drugs",
+      "description": "Color outdoor group portrait of seven adults standing close together on grass beneath a large leafy tree. Six appear to be men and one appears to be a woman at center. From left to right: a tall light-skinned man with long wavy hair and beard in a purple patterned jacket; a slim light-skinned man with straight dark hair in a white T-shirt; a light-skinned man with curly dark hair and mustache in a brown jacket and neck scarf; a light-skinned woman with long straight hair in a dark top and ripped jeans; a light-skinned man with long dark hair in a dark jacket over a patterned shirt; a bald light-skinned bearded man in a dark shirt; and a light-skinned bearded man with glasses and a red beanie in a tie-dye shirt. They face the camera in relaxed poses with arms around shoulders. A stone building and park setting are visible behind them.",
+      "primarySubject": "The light-skinned man third from left with curly dark hair, a thick mustache, brown jacket, and patterned neck scarf, standing near the center of the group.",
+      "visiblePeople": [
+        "Tall light-skinned adult man with long wavy hair and beard, wearing a purple patterned jacket",
+        "Light-skinned slim adult man with straight dark hair, wearing a white T-shirt and jeans",
+        "Light-skinned adult man with curly dark hair and mustache, wearing a brown jacket and neck scarf",
+        "Light-skinned adult woman with long straight hair, wearing a dark top and ripped jeans",
+        "Light-skinned adult man with long dark hair, wearing a dark jacket over a patterned shirt",
+        "Light-skinned bald adult man with beard, wearing a dark button-up shirt",
+        "Light-skinned adult man with glasses, full beard, and red beanie, wearing a tie-dye T-shirt"
+      ],
+      "wardrobe": "Mixed casual clothing including patterned jacket, white T-shirt, brown jacket with scarf, dark top and jeans, dark jacket over patterned shirt, dark button-up shirt, and tie-dye T-shirt with red knit beanie.",
+      "photoStyle": "Color environmental band portrait, natural daylight, medium-wide framing, casual documentary feel.",
+      "setting": "Park or lawn under a broad tree canopy, with grass in foreground and a stone building, paths, and urban park elements visible in the background.",
+      "settingStrength": "strong"
+    },
+    {
+      "source": 10,
+      "filename": "The-Strokes.jpg",
+      "artist": "The Strokes",
+      "description": "Black-and-white group portrait of five light-skinned young adult men standing in a line against a nearly black background. The leftmost man raises a hand toward the camera and wears a bulky jacket. The second has shoulder-length dark hair and a layered shirt-and-jacket look. The center figure wears dark sunglasses, a hooded layer under a leather-like jacket, and stands most prominently. The fourth has short lighter hair and a plain light shirt under a jacket. The rightmost man has short dark hair, slight stubble, and lifts one arm behind his head. Hard directional light illuminates faces and upper bodies while the background remains black.",
+      "primarySubject": "The central light-skinned man wearing dark sunglasses and layered dark outerwear, standing slightly forward in the lineup.",
+      "visiblePeople": [
+        "Light-skinned young adult man at left with short dark hair, raising one hand, wearing a bulky jacket",
+        "Light-skinned young adult man with shoulder-length dark hair, layered shirt and jacket, facing forward",
+        "Light-skinned young adult man at center with dark sunglasses and layered dark jacket, standing prominently",
+        "Light-skinned young adult man with short lighter hair, wearing a light shirt under a jacket",
+        "Light-skinned young adult man at right with short dark hair and light stubble, arm raised behind head, wearing a jacket"
+      ],
+      "wardrobe": "Dark indie-rock outerwear including puffer or bulky jacket, layered shirts, leather-like jacket, hoodie, and casual jackets; one subject wears sunglasses.",
+      "photoStyle": "Black-and-white studio or backstage portrait with stark directional light and deep black negative space.",
+      "setting": "Plain dark background with no discernible environmental features.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 11,
+      "filename": "The-Time.jpg",
+      "artist": "The Time",
+      "description": "Black-and-white group portrait of six Black adult men posed on the front steps of a brick residential building. A mustached man stands in front center wearing a dark suit with a light tie and light shoes. At left, a man in a light double-breasted suit and hat stands with hands in pockets. Behind and around them are four more men in dark suits: one bearded man seated or leaning on the steps, one tall man standing high on the stoop in a suit and tie, one man in a hat and light tie seated or standing on the right side of the steps, and one man at far right with voluminous curly hair in a dark outfit. The stoop railings, doorways, windows, and brick facade frame the group.",
+      "primarySubject": "The Black man standing front center with a mustache, dark suit, light narrow tie, and light shoes, positioned closest to the camera on the steps.",
+      "visiblePeople": [
+        "Black adult man at left in a light double-breasted suit and brimmed hat, hands in pockets",
+        "Black adult man behind left-center with beard, wearing a dark suit",
+        "Black adult man standing high at center rear in a dark suit and tie",
+        "Black adult man front center with mustache, wearing a dark suit, light tie, and light shoes",
+        "Black adult man right-center wearing a dark hat, dark jacket, light shirt, and light tie",
+        "Black adult man at far right with voluminous curly hair, wearing a dark outfit"
+      ],
+      "wardrobe": "Formal and stylish suits in light and dark tones, ties, brimmed hats, and contrasting light shoes on the central figure.",
+      "photoStyle": "Black-and-white posed group portrait with slightly soft, grainy tonal quality and urban editorial feel.",
+      "setting": "Urban residential stoop with concrete steps, railings, brick building facade, windows, and recessed doorways behind the group.",
+      "settingStrength": "strong"
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the 4 reference images into a single shared real-world scene. Scene: At blue hour on a broad zebra crossing outside an old cinema corner in a quiet city center, the four selected figures move toward the camera as the photographer stands square-on from the opposite curb, framed tight enough from mid-thigh up that every face stays large, crisp, and fully readable while the white stripes rush beneath them; the dark-haired man in the severe coat with fur collar leads slightly from the left with his chin turned off to one side, the young man in the red-white-blue top is half a step nearer the lens and glances back directly with one arm swinging into the foreground, the silver-haired man in the blazer walks a touch behind with his profile catching the cool ambient sky glow, and the central moustached figure in the dark suit and white tie cuts through the middle stripe line with a poised, almost theatrical stride. Storefront glass and a glowing marquee reflect soft streetlights behind them, the road still faintly damp so it picks up honest highlights, and their styling feels naturally mixed rather than coordinated: tailored dark outerwear beside sportier knitwear, all held together by the clean, true-to-life evening colour and the sense of a real caught crossing rather than a posed lineup. Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness exactly as shown. Do not invent anyone who is not in the reference photos. Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its single most recognisable member rather than every member. Frame the group tightly - close or medium-close - so every face is large in the frame, sharp, and richly detailed, never small or distant. Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Vary posture, depth, and where people are looking - this is a caught moment, not a band-publicity lineup evenly spaced and facing the camera. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares. Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render. Colour treatment: natural true-to-life colour, clean, honest, and unforced, drawing on charcoal, slate blue, cream, oxblood, soft white. Mood: cool, cinematic, self-possessed. Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, extra people, background crowd, duplicated faces, cloned faces, merged faces, blended faces, morphed features, distorted faces, deformed hands, extra limbs. Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Urban residential stoop with concrete steps, railings, brick building facade, windows, and recessed doorways behind the group.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A photorealistic 16:9 group portrait on the front stoop of an older brick residential building, viewed from sidewalk height facing the steps straight on; worn concrete steps, dark metal railings, recessed doorways, brick facade, and stoop windows clearly visible, with only a plausible continuation of the same stoop and facade beyond the original frame. Six adults share an in-between moment: a Black man with a mustache in a dark suit and light tie stands front center on the lowest step as the anchor; a dark-skinned man with close-cropped hair and a neat mustache in a bold red, white, and blue striped top sits sideways on the right step and looks back over his shoulder toward camera; a pale man with dark tousled hair, heavy eye makeup, and a black double-breasted coat with a dark fur collar stands on the upper left landing near the doorway, reserved and half in shadow; an older silver-gray-haired man in a short-sleeved plaid shirt leans casually on the left railing; a young light-skinned man with a tall swept quiff in a pale ribbed sweater stands on the right middle step with one hand lightly on the railing; a light-skinned man with medium dark hair brushed up in a dark mod suit, white shirt, and narrow tie sits upright on the left lower step. Avoid a straight lineup; stagger them across steps and landing with varied posture, depth, and eyelines, as if conversation has just paused. Medium-wide editorial composition, 35mm lens character, natural perspective, subtle depth but all faces readable, slightly soft grainy realism. Soft ambient daylight consistent with an overcast outdoor stoop, gentle shadows under the entry recess, no theatrical lighting. Muted natural color with subdued brick reds, concrete grays, dark tailoring, and a faintly filmic finish; intimate, cool, understated, urban mood. Attached cast plan: Attached reference image 1: portray only Black man with a mustache in a dark suit, light narrow tie, and light shoes; front center on the lowest step, angled slightly off-center as the visual anchor. Attached reference image 2: portray only Dark-skinned man with close-cropped hair, neat mustache, and a red-white-blue striped top; seated sideways on the right-hand step, turned back toward camera over his shoulder. Attached reference image 3: portray only Pale man with dark tousled hair, heavy eye makeup, and a black double-breasted coat with a dark fur collar; standing on the upper left landing near the doorway, half in shadow. Attached reference image 4: portray only Older light-skinned man with tousled gray hair in a short-sleeved plaid shirt; leaning casually against the left railing midway up the steps. Attached reference image 5: portray only Light-skinned man with a tall swept quiff wearing a pale ribbed sweater; right side of the middle step, one hand lightly resting on the railing. Attached reference image 6: portray only Light-skinned man with medium-length dark hair brushed up, wearing a dark mod suit, white shirt, and narrow tie; seated on the left lower step, upright and facing outward. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. This generation has 6 attached cast reference images; omit any person described in the creative direction who does not have an attached reference.",
   "inputs": [
-    "Gary-Numan.jpg",
+    "The-Time.jpg",
     "Jalen-NGonda.jpg",
-    "Paul-Weller.jpg",
-    "The-Time.jpg"
+    "Gary-Numan.jpg",
+    "Tim-Finn.jpg",
+    "The-Smiths.jpg",
+    "The-Jam.jpg"
   ]
 }

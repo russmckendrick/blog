@@ -1,25 +1,187 @@
 {
+  "version": 2,
   "date": "2026-07-20",
   "type": "cover",
-  "lane": "surreal-album-sleeve",
-  "lighting": "dramatic stormlight with sun breaking through, bright shafts of light against dark cloud",
+  "lane": null,
+  "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Storm-broken alpine listening station shaped by music, memory, and aftershocks",
-  "scene": "A panoramic stormlit photograph looks across a high alpine flood meadow after rain, where shallow braided streams cut through green grass toward distant slate-blue mountains. Sun breaks through black storm cloud in hard shafts, igniting one flooded channel and the wet faces of several enormous beige keycap-like concrete stepping blocks that have partially sunk into the marsh and now function as a strange causeway. At mid-distance, the meadow has been subtly engineered into a dark gridded field station apron, and from it rises a full-scale striped green oval pavilion made of horizontal slats, like a retro observatory or aviary, with real birds wheeling through its open bands. A pale circular sun-disc breaks through cloud beside it. In the foreground, two glossy biomorphic resin shelters, one violet-blue and one magenta, protrude from the saturated ground like wind-polished emergency pods or sculptural boulders, their wet surfaces catching the sun. Near one streambank, a small square wooden hut is half embedded in the earth, its front open; inside, a curly red-haired adult woman in blue crouches and braces herself as if emerging after the tremor. On the left, a black-haired woman in a dark blazer leans under a temporary weather canopy and lifts a large vintage ring microphone into the charged air as though recording the storm, while farther back a couple embrace in passing beneath the oval structure, recognisable from their close wrapped silhouette but absorbed naturally into the scene. Reflected in a rain pool near the front is the unmistakable face of a stylish adult with short dark hair, purple lips, and oversized black cat-eye sunglasses, seen not as a floating graphic but as a huge painted mural on the side wall of the field station just outside frame, its acid yellow-green tones softened by water and weather. The composition keeps broad open sky and meadow as negative space, with all borrowed motifs fused into one plausible seismic-weather listening outpost in the mountains.",
+  "concept": "Moonstage greenhouse of signal and shelter",
+  "creativeDirection": "A handcrafted paper-cut shadowbox collage combining pop screenprint, line drawing, miniature set design, and glossy resin objects.",
+  "scene": "Inside a cavernous nighttime greenhouse viewed straight on like a theatrical stage, with a shallow reflective floor and glass roof fading into darkness.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "A giant suspended mask-like face reduced to its black sunglasses, pink lips, and yellow-green skin tones becomes the dominant moonlike presence overhead."
+    },
+    {
+      "source": 2,
+      "element": "One glossy purple biomorphic form hangs as a floating resin fruit or lantern near the center-right."
+    },
+    {
+      "source": 3,
+      "element": "One glossy pink biomorphic form hangs as a companion resin fruit or lantern near the center-left."
+    },
+    {
+      "source": 4,
+      "element": "The embracing figures appear once as a thin black wire sculpture standing on the floor beneath the main focal area."
+    },
+    {
+      "source": 5,
+      "element": "A green striped sphere becomes a large planet-like conservatory orb in the back, crossed by small bird silhouettes, with hints of retro interface framing worked into greenhouse ribs and floor lines."
+    },
+    {
+      "source": 6,
+      "element": "A single vintage microphone on a tall stand occupies the foreground as the performance relic anchoring the scene, without depicting the woman."
+    },
+    {
+      "source": 7,
+      "element": "A small wooden crate-like box at lower left contains a crouched red-haired woman in blue, as if part of the installation."
+    },
+    {
+      "source": 8,
+      "element": "The floor transitions into meadow grass with shallow winding streams, interrupted by oversized keyboard keys used as stepping stones toward the microphone."
+    }
+  ],
   "palette": [
     "acid yellow-green",
-    "olive green",
     "charcoal",
-    "storm blue",
-    "cloud white"
+    "cream white",
+    "glossy purple",
+    "glossy pink",
+    "meadow green"
   ],
+  "mood": "dreamlike, intimate, slightly surreal",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Its-Great-When-Youre-Straight-Yeah.jpg",
+      "album": "Its Great When Youre Straight Yeah",
+      "artist": "",
+      "description": "A tightly cropped pop-art portrait of a person’s face fills the frame. The skin is rendered in bright yellow-green, with dark hair, black sunglasses, and pink-purple lips. The sunglasses dominate the center, with white shapes filling both lenses. Bits of a reddish jacket and white collar appear at the bottom corners. The background is split between blue on the left and green on the right.",
+      "signatureMotif": "black sunglasses on a brightly coloured face",
+      "medium": "pop-art style illustration/screenprint-like graphic portrait",
+      "palette": [
+        "yellow-green",
+        "black",
+        "white",
+        "pink-purple",
+        "blue"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "the-best-of-NewOrder.jpg",
+      "album": "the best of NewOrder",
+      "artist": "",
+      "description": "A minimalist cover with a single glossy abstract purple shape centered on a plain white background. The form is smooth, rounded, and biomorphic, with soft shading that gives it a plastic or liquid appearance. Small grey text sits below but the image is otherwise sparse.",
+      "signatureMotif": "glossy abstract purple biomorphic shape",
+      "medium": "digital graphic design with 3D-rendered object",
+      "palette": [
+        "white",
+        "purple",
+        "grey"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "the-rest-of-NewOrder.jpg",
+      "album": "the rest of NewOrder",
+      "artist": "",
+      "description": "A minimalist cover featuring a single glossy abstract pink shape centered on a plain white background. The shape is smooth, rounded, and biomorphic, closely matching the previous cover’s form, with subtle shading suggesting a plastic or liquid surface. Small pale text appears below.",
+      "signatureMotif": "glossy abstract pink biomorphic shape",
+      "medium": "digital graphic design with 3D-rendered object",
+      "palette": [
+        "white",
+        "pink",
+        "magenta",
+        "light grey"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "A-Model-Life.jpg",
+      "album": "A Model Life",
+      "artist": "",
+      "description": "A sparse white cover with a black continuous-line drawing of two human figures embracing near the upper center. The figures are simplified and faceless, outlined only by thin black lines, with arms wrapped around each other. Below the drawing is a line of stylized text.",
+      "signatureMotif": "continuous-line drawing of two people hugging",
+      "medium": "minimalist line illustration",
+      "palette": [
+        "white",
+        "black",
+        "dark blue",
+        "magenta"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Affinity.jpg",
+      "album": "Affinity",
+      "artist": "",
+      "description": "A retro-futuristic graphic design framed by a beige border. In the center is a large green striped oval or sphere against a dark charcoal background, with several black bird silhouettes flying across it. A pale circular moon or sun sits to the left. Beneath the sphere is a perspective grid floor, giving a synthetic landscape feel. Multiple bands and panels of interface-like graphics surround the main image.",
+      "signatureMotif": "green striped sphere with bird silhouettes",
+      "medium": "retro graphic illustration/poster-style design",
+      "palette": [
+        "beige",
+        "charcoal",
+        "green",
+        "black",
+        "off-white"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "YEARNALISM.jpg",
+      "album": "YEARNALISM",
+      "artist": "",
+      "description": "A photographic portrait of a woman with long dark hair against a softly lit pale background. She rests her face on one hand while holding a large vintage-style microphone toward the camera with the other, making the microphone prominent in the foreground. She wears a dark jacket and several rings, and her expression appears thoughtful or distant.",
+      "signatureMotif": "vintage microphone held in front of a woman’s face",
+      "medium": "studio photograph",
+      "palette": [
+        "cream",
+        "black",
+        "gold",
+        "silver",
+        "brown"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Little-Earthquakes.jpg",
+      "album": "Little Earthquakes",
+      "artist": "",
+      "description": "A mostly white cover with a small square box centered slightly above the middle. Inside the box, a woman with long reddish hair crouches barefoot in a confined space, wearing blue clothing and bracing herself with her hands against the sides. A small blue object sits near her feet inside the box. Large wood-textured block shapes span the top margin.",
+      "signatureMotif": "woman crouching inside a small box",
+      "medium": "photographic cover with minimalist layout",
+      "palette": [
+        "white",
+        "brown",
+        "blue",
+        "beige",
+        "red-brown"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "The-Sophtware-Slump.jpg",
+      "album": "The Sophtware Slump",
+      "artist": "",
+      "description": "A landscape photograph of a grassy alpine meadow with winding streams in the foreground and mountains under a cloudy blue sky in the background. Across the middle of the scene are oversized computer keyboard keys arranged in staggered rows, appearing physically placed on the grass. A white rectangular label with rough black lettering floats near the top center.",
+      "signatureMotif": "oversized keyboard keys placed across a mountain meadow",
+      "medium": "photographic collage",
+      "palette": [
+        "green",
+        "blue",
+        "white",
+        "grey",
+        "black"
+      ]
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one high-concept widescreen album-sleeve photograph - a real landscape, interior, or architectural location transformed by one physically staged impossible idea, captured in-camera with tactile full-scale construction, restrained cinematic light, and subtle film grain. The image is a 16:9 music blog header. Scene: A panoramic stormlit photograph looks across a high alpine flood meadow after rain, where shallow braided streams cut through green grass toward distant slate-blue mountains. Sun breaks through black storm cloud in hard shafts, igniting one flooded channel and the wet faces of several enormous beige keycap-like concrete stepping blocks that have partially sunk into the marsh and now function as a strange causeway. At mid-distance, the meadow has been subtly engineered into a dark gridded field station apron, and from it rises a full-scale striped green oval pavilion made of horizontal slats, like a retro observatory or aviary, with real birds wheeling through its open bands. A pale circular sun-disc breaks through cloud beside it. In the foreground, two glossy biomorphic resin shelters, one violet-blue and one magenta, protrude from the saturated ground like wind-polished emergency pods or sculptural boulders, their wet surfaces catching the sun. Near one streambank, a small square wooden hut is half embedded in the earth, its front open; inside, a curly red-haired adult woman in blue crouches and braces herself as if emerging after the tremor. On the left, a black-haired woman in a dark blazer leans under a temporary weather canopy and lifts a large vintage ring microphone into the charged air as though recording the storm, while farther back a couple embrace in passing beneath the oval structure, recognisable from their close wrapped silhouette but absorbed naturally into the scene. Reflected in a rain pool near the front is the unmistakable face of a stylish adult with short dark hair, purple lips, and oversized black cat-eye sunglasses, seen not as a floating graphic but as a huge painted mural on the side wall of the field station just outside frame, its acid yellow-green tones softened by water and weather. The composition keeps broad open sky and meadow as negative space, with all borrowed motifs fused into one plausible seismic-weather listening outpost in the mountains. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: adult face with oversized black cat-eye sunglasses and purple lips; source 2: glossy violet-blue biomorphic shape; source 3: glossy magenta biomorphic shape; source 4: embracing adult couple; source 5: large green striped oval with birds crossing it above a grid; source 6: vintage circular microphone held by a dark-haired woman; source 7: adult woman crouched inside a small wooden box; source 8: oversized computer keycaps scattered across a mountain meadow. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Fuse the album motifs into the same practical concept and environment through altered scale, architecture, reflections, fabric, weather, terrain, or full-scale structures. Include people depicted on the source covers as adult background extras naturally inhabiting or interacting with the location. Keep each person individually recognisable through their facial features, hair, clothing, silhouette, and characteristic body language rather than replacing them with generic figures; they remain candid, secondary, clearly visible, and never posed for the camera. Make every motif a causally connected part of one photographic idea, never a separate icon, emblem, sticker, or displayed object. Composition: One panoramic editorial photograph with a single clear visual thesis, bold negative space, strong foreground-to-background depth, and a few small human extras distributed naturally through the scene; the location itself carries the surreal idea rather than a central figure, sculpture, or collection of props. Colour direction: acid yellow-green, olive green, charcoal, storm blue, cloud white - a controlled photographic palette drawn from the sleeves, grounded in natural materials and light with one or two deliberate accent colours. Time of day and light: dramatic stormlight with sun breaking through, bright shafts of light against dark cloud. Mood: charged, surreal, windswept, intimate, and quietly triumphant. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, poster design, screenprint, flat graphic art, clip art, sticker collage, floating icons, disconnected symbols, ornamental emblem layout, giant disembodied face, giant hands, digital surrealist collage, miniature diorama, concert stage, rehearsal room, posed band portrait, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "Inside a cavernous nighttime greenhouse viewed straight on like a theatrical stage, with a shallow reflective floor, glass roof fading into darkness, and a distant back wall dominated by a planet-like green striped orb crossed by tiny bird silhouettes; in the foreground center stands a tall vintage microphone on a slender stand, approached by oversized computer keyboard keys used as stepping stones across patches of meadow grass and winding shallow streams. Overhead hangs the primary subject: a giant mask-like pop-art face fragment, mainly black sunglasses suspended like a moon with yellow-green skin planes and pink-purple lips below, cropped and monumental rather than a full portrait. Add one glossy purple biomorphic resin lantern hanging center-right and one glossy pink biomorphic resin lantern hanging center-left; place a delicate black continuous-line wire sculpture of two people embracing beneath the microphone area; at lower left include a small wooden crate-like box containing a barefoot red-haired woman in blue crouched inside and bracing against the sides; subtly echo retro interface bands and grid perspective from the striped-orb source in the greenhouse ribs, edge framing, and floor geometry. Handcrafted paper-cut shadowbox collage with screenprinted color fields, miniature set design, thin wire sculpture, glossy poured-resin objects, and photographic texture fragments fused into one original mixed-media tableau. Strong central hierarchy with the sunglasses-face overhead and microphone below, supporting elements stepping inward from the edges, balanced negative space, and layered depth; soft moonlike backlight from the striped orb, dim spot illumination on the microphone and wire embrace, gentle reflections in the wet floor. Palette of acid yellow-green, charcoal, cream white, glossy purple, glossy pink, meadow green, sky blue, and wood brown; mood dreamlike, intimate, and slightly surreal. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Its-Great-When-Youre-Straight-Yeah.jpg",
     "the-best-of-NewOrder.jpg",

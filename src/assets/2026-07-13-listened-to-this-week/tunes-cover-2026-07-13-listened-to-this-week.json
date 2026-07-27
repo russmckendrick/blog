@@ -1,26 +1,198 @@
 {
+  "version": 2,
   "date": "2026-07-13",
   "type": "cover",
-  "lane": "macro-detail",
-  "lighting": "bright midday sunlight under a clear blue sky, crisp hard shadows and vivid daylight colour",
+  "lane": null,
+  "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Extreme macro weaving together the week's album motifs",
-  "scene": "one cohesive, imaginative scene rendered as an extreme close-up macro photograph of one small, intricate world, combining recognisable elements drawn from every uploaded album cover, tied together by one setting, one light, and one consistent treatment",
-  "palette": [],
+  "concept": "Burnt proscenium over tidal paper dream",
+  "creativeDirection": "A handcrafted stage-like mixed-media diorama combining torn print collage, painted water, and graphic illustration with theatrical negative space.",
+  "scene": "A wide frontal view into a surreal paper theater set over shallow blue water, as if looking at a proscenium stage built from burned, pasted, and painted album fragments.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "the proscenium arch and stage banners become distressed red-orange paper panels with black circular stamp marks layered over cream collage surfaces"
+    },
+    {
+      "source": 2,
+      "element": "the water and backdrop sky carry a soft blue-mauve organic texture with a dark oval void high in the set like an opening in the scenery"
+    },
+    {
+      "source": 3,
+      "element": "the center stage floor is ruptured by a large charred burn hole revealing brown notes and diagram-like marks beneath the white surface"
+    },
+    {
+      "source": 4,
+      "element": "a small cluster of eight suited men stand together at lower right on the stage edge, looking upward as if awaiting a cue"
+    },
+    {
+      "source": 5,
+      "element": "the two kimono-clad women appear as the main performers at left-center, one with white-painted face and hands to cheeks, the other smiling with an open red fan"
+    },
+    {
+      "source": 6,
+      "element": "rainbow bands with green heartbeat lines and a purple handshake motif appear as a narrow scenic frieze and floating collage emblems around the set"
+    },
+    {
+      "source": 7,
+      "element": "a grinning cartoon devil face becomes a hanging theatrical mask above the stage, backed by a subtle orange-white burst against purple patterning"
+    },
+    {
+      "source": 8,
+      "element": "beyond and below the stage, painted blue water holds a fox-headed figure in a red dress on a tiny dock at far right with a fish head surfacing midwater"
+    }
+  ],
+  "palette": [
+    "off-white",
+    "cream",
+    "red-orange",
+    "turquoise blue",
+    "mauve",
+    "charcoal black"
+  ],
+  "mood": "enigmatic, theatrical, playful, slightly ominous",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Cupid-Psyche-85.jpg",
+      "album": "Cupid Psyche 85",
+      "artist": "",
+      "description": "A graphic collage on an off-white background with two horizontal red-orange rectangular panels, one near the top and one near the bottom, both distressed and torn at the edges. Two circular black stamp-like marks overlap the panels, one in the upper right and one near the center-right. A broad cream brushstroke-like band runs across the middle, creating a layered paper-and-print effect.",
+      "signatureMotif": "circular stamp-like marks over red-orange panels",
+      "medium": "printed graphic collage with distressed paper textures",
+      "palette": [
+        "off-white",
+        "cream",
+        "red-orange",
+        "black",
+        "tan"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Meddle.jpg",
+      "album": "Meddle",
+      "artist": "",
+      "description": "An abstract close-up image dominated by soft blue and mauve tones, resembling liquid, skin, or an underwater surface. Near the top center is a dark oval opening or cavity surrounded by fuzzy texture. The lower half contains circular ripple-like forms and translucent bubble shapes, with a large curved blue area on the right edge.",
+      "signatureMotif": "dark oval opening within a blue and mauve abstract surface",
+      "medium": "abstract photographic image",
+      "palette": [
+        "turquoise",
+        "cyan",
+        "mauve",
+        "pink-brown",
+        "black"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "OK-Computer-OKNOTOK-1997-2017.jpg",
+      "album": "OK Computer OKNOTOK 1997 2017",
+      "artist": "",
+      "description": "A mixed-media cover with a mostly white background. On the left is a blurred blue-toned image of a road interchange and a building, rendered with streaky vertical smears. On the right is a large irregular burned hole exposing brown paper beneath, with charred black edges and faint handwritten notes and diagram-like marks visible inside. Small pasted fragments and scorch marks appear near the top right.",
+      "signatureMotif": "large charred burn hole exposing notes beneath the surface",
+      "medium": "mixed-media collage combining photography, paint-like smears, and burned paper",
+      "palette": [
+        "white",
+        "light blue",
+        "black",
+        "brown",
+        "beige"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Lets-Face-It.jpg",
+      "album": "Lets Face It",
+      "artist": "",
+      "description": "A studio photograph on a stark white background. Eight men in suits stand clustered in the lower right quadrant, viewed from a slightly elevated angle and looking upward. Their clothing is mostly dark, with ties and dress shoes adding small accents. The rest of the cover is largely empty white space, with large red outlined graphic elements above them.",
+      "signatureMotif": "group of suited men standing together on a white background",
+      "medium": "studio photograph with graphic text elements",
+      "palette": [
+        "white",
+        "red",
+        "black",
+        "dark gray",
+        "blue"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Kimono-My-House.jpg",
+      "album": "Kimono My House",
+      "artist": "",
+      "description": "A color photograph of two women standing against a flat yellow-green backdrop. Both wear patterned kimonos with floral motifs. The woman on the left wears a pale blue kimono and holds her face with both hands, with white theatrical-style makeup. The woman on the right wears a light kimono with a dark sash and floral details, smiling while holding an open red folding fan near her shoulder. Their dark hair is styled up.",
+      "signatureMotif": "two women in patterned kimonos, one holding a red fan",
+      "medium": "color studio photograph",
+      "palette": [
+        "yellow-green",
+        "pale blue",
+        "white",
+        "red",
+        "black"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "8-Tracks.jpg",
+      "album": "8 Tracks",
+      "artist": "",
+      "description": "A collage-style composition on a light cream background featuring multiple floating images and symbols. Visible elements include a black circle, a desert scene with pyramids, a pink pig, a pink circular anatomical-looking image, a blue circular sky image, angular blue architectural forms, a red-toned industrial ruin, two men shaking hands in silhouette-like purple tones, and horizontal rainbow bands crossed by green heartbeat-like lines.",
+      "signatureMotif": "two men shaking hands over rainbow bands in a surreal collage",
+      "medium": "printed photo collage with graphic overlays",
+      "palette": [
+        "cream",
+        "blue",
+        "pink",
+        "rainbow multicolor",
+        "green"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Doubt.jpg",
+      "album": "Doubt",
+      "artist": "",
+      "description": "A cartoon-style cover with a repeating purple patterned background filled with mischievous face motifs. At the center is a larger stylized devilish face with pointed ears or horns, oversized circular eyes, and a wide jagged grin. White and orange radial bursts spread outward behind the central face, creating a starburst effect.",
+      "signatureMotif": "central grinning cartoon devil face with large eyes",
+      "medium": "digital or printed cartoon illustration",
+      "palette": [
+        "purple",
+        "lavender",
+        "orange",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Foxtrot.jpg",
+      "album": "Foxtrot",
+      "artist": "",
+      "description": "A painted surreal coastal scene with blue water filling most of the image and pale land and hills in the distance under a light sky. In the right foreground, a fox-headed figure in a long red dress stands on a small dock or platform over the water. In the midwater, a large fish or whale head breaks the surface. Small dark boats and posts are scattered across the water and shoreline.",
+      "signatureMotif": "fox-headed figure in a red dress standing on a dock",
+      "medium": "painted illustration",
+      "palette": [
+        "blue",
+        "red",
+        "pale yellow",
+        "green",
+        "white"
+      ]
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one extreme macro photograph - a single tabletop-scale world seen from inches away with razor-thin depth of field. The image is a 16:9 music blog header. Scene: one cohesive, imaginative scene rendered as an extreme close-up macro photograph of one small, intricate world, combining recognisable elements drawn from every uploaded album cover, tied together by one setting, one light, and one consistent treatment. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: a recognisable element from 8 Tracks; source 2: a recognisable element from Cupid Psyche 85; source 3: a recognisable element from Meddle; source 4: a recognisable element from Kimono My House; source 5: a recognisable element from Lets Face It; source 6: a recognisable element from OK Computer OKNOTOK 1997 2017. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Shrink each album motif into a tiny, exquisitely detailed object or texture inside this one miniature world - carved, folded, grown, or resting among the others. Composition: One dominant close subject filling the frame, the remaining motifs dissolving into soft bokeh layers behind it. Colour direction: a palette pulled from the uploaded artwork - rich naturalistic colour with luminous highlights where the light catches edges and textures. Time of day and light: bright midday sunlight under a clear blue sky, crisp hard shadows and vivid daylight colour. Mood: imaginative and music-led. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "A wide frontal view into a surreal paper theater set floating over shallow blue water, like a handcrafted proscenium stage seen straight on in 16:9. The primary subjects are two performers at left-center: two women in patterned kimonos, one in pale blue with white theatrical makeup holding her face with both hands, the other in a light floral kimono smiling and raising an open red folding fan near her shoulder. Build the stage from distressed collage materials: off-white and cream paper surfaces, two torn red-orange horizontal panels as proscenium banners, black circular stamp marks overlapping them, and a broad cream band across the middle. At center stage, open a large irregular charred burn hole through the white floor, exposing brown paper beneath with faint handwritten notes and diagram marks inside the cavity. Let the surrounding set and water be infused with soft blue and mauve organic textures, with translucent ripple and bubble forms, and place a dark oval opening high in the backdrop like a mysterious void in the scenery. In the lower right, keep a small cluster of eight suited men standing together on the stage edge, viewed slightly from above and looking upward, surrounded by ample white negative space. Above the stage, suspend a single large grinning cartoon devil mask with huge circular eyes and pointed ears, backed by a subtle orange and white radial burst against a purple patterned field. Work in surreal collage accents from a printed montage: a narrow frieze of horizontal rainbow bands crossed by green heartbeat lines, a small purple handshake emblem, scattered black and blue circular tokens, and a few angular blue architectural scraps near the upper sides. Beyond and below the stage, extend painted blue coastal water with small boats and posts; at the far right place a fox-headed figure in a long red dress standing on a tiny dock, and let a large fish head break the surface in midwater. Mixed-media diorama, cut paper collage, gouache and ink painting, scorched paper edges, screenprint textures, graphic illustration details, tactile handmade construction. Clear hierarchy with the kimono performers dominant, the burn hole second, and the other motifs supporting around them; balanced asymmetry, crisp silhouette shapes, layered depth, soft studio light with gentle shadows from the paper edges. Palette of off-white, cream, red-orange, turquoise and cyan blues, mauve, brown, black, deep purple, with small rainbow and yellow-green accents; mood enigmatic, theatrical, playful, and slightly ominous. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
-    "8-Tracks.jpg",
     "Cupid-Psyche-85.jpg",
     "Meddle.jpg",
-    "Kimono-My-House.jpg",
-    "Lets-Face-It.jpg",
     "OK-Computer-OKNOTOK-1997-2017.jpg",
+    "Lets-Face-It.jpg",
+    "Kimono-My-House.jpg",
+    "8-Tracks.jpg",
     "Doubt.jpg",
     "Foxtrot.jpg"
   ]

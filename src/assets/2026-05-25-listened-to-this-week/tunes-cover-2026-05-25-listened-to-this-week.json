@@ -1,33 +1,191 @@
 {
+  "version": 2,
   "date": "2026-05-25",
   "type": "cover",
-  "lane": "vintage-travel-poster",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Poster coast where pop geometry, masked sun, and marbled tide become one pilgrimage.",
-  "scene": "A mid-century travel-poster vista shows a surreal coastal plateau at dusk, unified by warm faded lithograph inks: in the foreground, a promenade of cream stone follows the edge of a moon-shaped tidal pool whose water curls in marbled black, grey, and pearl patterns, dotted with a few floating rock-islets. Along the promenade stand a rhythmic row of stylised profile statues carved as zigzag black-and-cream silhouettes edged in coral, facing the horizon like wayfinding markers. To one side, a crouching adult traveller in a broad hat appears as a simplified black silhouette stepping down toward the pool, while behind them rise tiled terraces patterned with red-and-violet checker geometry and repeating oval motifs, suggesting a modernist hillside town. In the middle ground, a grove of tall dark trees shelters draped adult figures and a sleek spotted cat rendered as elegant poster shapes, their dramatic Renaissance motion transformed into a festival scene rather than a tableau; a sinuous serpent becomes a decorative ribbon winding around a path. At the center of the bay, a bright yellow sun-emblem with jagged rays and a blue mask-like face hangs low over the water like the region’s heraldic sunset. In the background, a narrow lighthouse or sail-tower is striped in cream and red, echoing the vertical ribbon from the dark cover, and the cliffs are punctuated with mural-like facades where partial adult faces appear through violet painted blocks, as if the town itself carries weathered devotional frescoes. A vast sky of cream fading to plum ties everything together with long stylised light and a clear horizon line.",
-  "palette": [
-    "cream",
-    "teal",
-    "coral",
-    "ochre",
-    "faded red"
+  "concept": "Marbled stage with watchful sun relic",
+  "creativeDirection": "A theatrical mixed-media paper-cut and screenprint tableau, combining marbled ink textures, collage strips, and painted classical fragments into a surreal proscenium scene.",
+  "scene": "A frontal view into a dark surreal theater stage where a large white marbled void opens like a spotlighted performance floor, bordered by swirling black-and-gray ink textures as if curtains of smoke are parting.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "A distressed yellow spiked sun-mask with a rough blue center and two oversized eye-like ovals hangs above the stage as the dominant watchful emblem."
+    },
+    {
+      "source": 2,
+      "element": "A row of alternating black and white side-profile cutouts with hot pink edges forms a frieze along one side of the proscenium, with the tiny female figure reduced to a small poster-like accent in an upper corner."
+    },
+    {
+      "source": 3,
+      "element": "Vertical torn white paper strips with bold black marks descend stage right over a red-purple checker pattern, intersected by sharp yellow bands like set pieces."
+    },
+    {
+      "source": 4,
+      "element": "Classical pastoral bodies and animals appear as painted fragmentary performers and props around the stage edge: a leaping draped figure, a snake-bound torso, and hints of dog, donkey, and spotted cat."
+    },
+    {
+      "source": 5,
+      "element": "A large crouching black silhouette in a hat reaches from the lower foreground into the white void, acting as the main human-scale figure."
+    },
+    {
+      "source": 6,
+      "element": "Four partially obscured faces become dim audience-box apparitions in the surrounding darkness, blocked by purple paint rectangles and magenta scuffs."
+    },
+    {
+      "source": 7,
+      "element": "A slender red-and-white striped vertical figure stands deep center in the void, with only a faint pale face and red lips emerging from shadow nearby."
+    },
+    {
+      "source": 8,
+      "element": "The entire stage opening and atmosphere are built from black-gray marbled swirls surrounding a stark white center."
+    }
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": "ideogram-remix",
-  "restyled": true,
-  "model": "fal-ai/ideogram/v3/remix",
-  "prompt": "Create one mid-century travel poster illustration - simplified geometry, stylised light, smooth gradient skies, flat confident shapes, and absolutely no lettering. The image is a 16:9 music blog header. Scene: A mid-century travel-poster vista shows a surreal coastal plateau at dusk, unified by warm faded lithograph inks: in the foreground, a promenade of cream stone follows the edge of a moon-shaped tidal pool whose water curls in marbled black, grey, and pearl patterns, dotted with a few floating rock-islets. Along the promenade stand a rhythmic row of stylised profile statues carved as zigzag black-and-cream silhouettes edged in coral, facing the horizon like wayfinding markers. To one side, a crouching adult traveller in a broad hat appears as a simplified black silhouette stepping down toward the pool, while behind them rise tiled terraces patterned with red-and-violet checker geometry and repeating oval motifs, suggesting a modernist hillside town. In the middle ground, a grove of tall dark trees shelters draped adult figures and a sleek spotted cat rendered as elegant poster shapes, their dramatic Renaissance motion transformed into a festival scene rather than a tableau; a sinuous serpent becomes a decorative ribbon winding around a path. At the center of the bay, a bright yellow sun-emblem with jagged rays and a blue mask-like face hangs low over the water like the region’s heraldic sunset. In the background, a narrow lighthouse or sail-tower is striped in cream and red, echoing the vertical ribbon from the dark cover, and the cliffs are punctuated with mural-like facades where partial adult faces appear through violet painted blocks, as if the town itself carries weathered devotional frescoes. A vast sky of cream fading to plum ties everything together with long stylised light and a clear horizon line. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: jagged yellow sunburst with blue wide-eyed face; source 2: red-and-purple checker grid with repeating oval motifs; source 3: slender vertical red-and-cream ribbon form; source 4: marching side-profile silhouettes; source 5: dramatic pastoral figures with spotted cat and winding serpent; source 6: crouching hatted silhouette before a circular disc; source 7: marbled moon-like pool with floating droplets; source 8: adult faces obscured by rough purple painted blocks. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Stylise each album motif into the poster world - as landmarks, vehicles, figures, flora, or emblems drawn in the same simplified poster language. Composition: One heroic vista with a strong horizon, a big sky, and clear foreground, middle-ground, and background bands. Colour direction: cream, teal, coral, ochre, faded red - warm faded lithograph colours - cream, teal, coral, ochre - tuned to the sleeves. Mood: mysterious, ecstatic, nocturnal, and adventurous. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
-  "restylePrompt": "Restyle this image as a mid-century travel-poster illustration with simplified geometry and stylised light. Create one mid-century travel poster illustration - simplified geometry, stylised light, smooth gradient skies, flat confident shapes, and absolutely no lettering. Keep the existing composition, and keep every one of these motifs clearly recognisable: source 1: jagged yellow sunburst with blue wide-eyed face; source 2: red-and-purple checker grid with repeating oval motifs; source 3: slender vertical red-and-cream ribbon form; source 4: marching side-profile silhouettes; source 5: dramatic pastoral figures with spotted cat and winding serpent; source 6: crouching hatted silhouette before a circular disc; source 7: marbled moon-like pool with floating droplets; source 8: adult faces obscured by rough purple painted blocks. Stylise each album motif into the poster world - as landmarks, vehicles, figures, flora, or emblems drawn in the same simplified poster language. Preserve this composition grammar: One heroic vista with a strong horizon, a big sky, and clear foreground, middle-ground, and background bands. Preserve the colour direction: cream, teal, coral, ochre, faded red - warm faded lithograph colours - cream, teal, coral, ochre - tuned to the sleeves. Keep the image safe and tasteful: no children or minors, no gore, nudity, or sexual content. Do not add any text, letters, words, numbers, captions, logos, watermarks, or signage. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene.",
+  "palette": [
+    "black",
+    "white",
+    "gray",
+    "yellow",
+    "red",
+    "hot pink"
+  ],
+  "mood": "enigmatic, dramatic, watchful",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Screamadelica.jpg",
+      "album": "Screamadelica",
+      "artist": "",
+      "description": "A bold abstract image fills the square: a bright yellow sunburst-like shape with uneven radiating spikes sits on a red background. At the center is a rough blue oval or face-like form containing two large white-rimmed black oval shapes resembling eyes. The image has a distressed, screen-printed look with splattered edges.",
+      "signatureMotif": "sunburst with two oversized eye-like ovals",
+      "medium": "abstract painted or screen-printed graphic",
+      "palette": [
+        "red",
+        "yellow",
+        "blue",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "I-Just-Cant-Stop-It.jpg",
+      "album": "I Just Cant Stop It",
+      "artist": "",
+      "description": "A high-contrast graphic design with multiple side-profile silhouettes of faces arranged in a row across the cover. The profiles alternate between black and white shapes with hot pink outlines and background areas. A small cartoon-like standing female figure appears in a narrow panel at the upper left. The composition is flat, angular, and poster-like.",
+      "signatureMotif": "row of alternating side-profile faces",
+      "medium": "graphic illustration",
+      "palette": [
+        "black",
+        "white",
+        "hot pink"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "History-Never-Repeats-The-Best-Of-Split-Enz.jpg",
+      "album": "History Never Repeats The Best Of Split Enz",
+      "artist": "",
+      "description": "An abstract geometric cover made of a repeating checkerboard-like pattern in red and purple, overlaid with black oval and bar shapes clustered toward the upper left. Along the right side, a vertical stack of torn white paper pieces carries large black characters, creating a collage effect. Bright yellow horizontal bands cut across the composition.",
+      "signatureMotif": "vertical stack of torn white paper pieces on a geometric patterned background",
+      "medium": "geometric collage graphic",
+      "palette": [
+        "red",
+        "purple",
+        "black",
+        "white",
+        "yellow"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "God-Shuffled-His-Feet.jpg",
+      "album": "God Shuffled His Feet",
+      "artist": "",
+      "description": "A Renaissance-style painted scene with several human figures in a pastoral outdoor setting. In the foreground and center, partially nude figures pose dynamically around a stone structure; one long-haired figure strides or leaps with draped fabric, another muscular figure has a snake wrapped around the body, and others gesture with raised arms. Animals including a spotted big cat, a dark dog, and a donkey appear around them. Trees, distant hills, and a blue sky form the background.",
+      "signatureMotif": "group of dramatic nude and semi-nude figures in a classical pastoral scene",
+      "medium": "classical oil painting reproduction with photomontage-like altered faces",
+      "palette": [
+        "brown",
+        "tan",
+        "green",
+        "blue",
+        "gold"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Energy.jpg",
+      "album": "Energy",
+      "artist": "",
+      "description": "A stark black-and-white cover showing a large central silhouette of a crouching or lunging human figure with one hand extended toward the viewer. The figure wears a brimmed hat, bulky clothing, and a chain necklace. Behind the silhouette is a circular halftone pattern, and the background is divided into horizontal black and white bands.",
+      "signatureMotif": "crouching black silhouette with outstretched hand and hat",
+      "medium": "high-contrast stencil-like graphic",
+      "palette": [
+        "black",
+        "white"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Songs-of-Faith-and-Devotion.jpg",
+      "album": "Songs of Faith and Devotion",
+      "artist": "",
+      "description": "A dark collage-like portrait cover with four male faces partially visible against a black painted field. Broad purple brushstroke rectangles obscure parts of each face, creating a fragmented arrangement around the center. The outer border has rough magenta-red painted edges, and the overall look is moody and distressed.",
+      "signatureMotif": "four partially obscured faces covered by purple paint blocks",
+      "medium": "mixed-media collage with painted overlays",
+      "palette": [
+        "black",
+        "purple",
+        "magenta",
+        "white",
+        "gray"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Aja.jpg",
+      "album": "Aja",
+      "artist": "",
+      "description": "A minimalist, mostly black cover with a narrow vertical figure or draped form near the center, defined by slim red and white stripes. In the upper left area, part of a pale face with red lips emerges from the darkness. The composition is sparse, elegant, and heavily shadowed.",
+      "signatureMotif": "slender central striped figure emerging from blackness",
+      "medium": "stylized studio photograph or photographic graphic",
+      "palette": [
+        "black",
+        "red",
+        "white",
+        "flesh tone"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "A-Moon-Shaped-Pool.jpg",
+      "album": "A Moon Shaped Pool",
+      "artist": "",
+      "description": "A monochrome abstract image resembling marbled liquid or ink swirling around the edges of the frame. The center is a large irregular white void, while black, gray, and white organic textures form a ring around it. Small floating blot-like shapes appear within the central open area.",
+      "signatureMotif": "large white central void surrounded by marbled black-and-gray swirls",
+      "medium": "abstract fluid painting or ink marbling",
+      "palette": [
+        "white",
+        "black",
+        "gray"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Frontal view into a surreal theater stage, where a large irregular white void forms the performance floor at center and black-and-gray marbled swirls curl around it like ink curtains parting; a distressed yellow spiked sun-mask with a rough blue center and two oversized white-rimmed black eyes hangs above as the dominant emblem, while a large crouching black silhouette in a brimmed hat reaches one hand into the bright void from the lower foreground; along stage left, a row of alternating black and white side-profile faces edged in hot pink forms a sharp poster-like proscenium frieze, with a tiny standing female figure tucked into a narrow upper-corner panel; stage right is built from a red-and-purple checker geometry overlaid by a vertical stack of torn white paper strips with bold black marks and crossed by bright yellow bands; around the edges of the white floor, fragmentary Renaissance painted figures and animals appear as theatrical set pieces and performers, including one draped leaping body, one muscular snake-wrapped torso, and subtle dog, donkey, and spotted big-cat details; deep in the center stands a slender narrow figure defined by red and white stripes, nearly swallowed by darkness, with only a faint pale face and red lips nearby; in the surrounding blackness, four dim audience-box faces emerge in collage fragments, each partially obscured by broad purple paint blocks and rough magenta edging; mixed-media paper-cut collage, screenprint textures, marbled ink, torn-paper assemblage, and painted classical fragments, visibly handmade and distressed; strong central hierarchy with the white void and sun-mask leading, the crouching silhouette anchoring the foreground, asymmetrical but balanced composition, dramatic spotlight effect from the void against velvety darkness; palette of black, white, gray, yellow, red, hot pink, purple, and a touch of blue, moody, theatrical, enigmatic, and watchful. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Screamadelica.jpg",
-    "History-Never-Repeats-The-Best-Of-Split-Enz.jpg",
-    "Aja.jpg",
     "I-Just-Cant-Stop-It.jpg",
+    "History-Never-Repeats-The-Best-Of-Split-Enz.jpg",
     "God-Shuffled-His-Feet.jpg",
     "Energy.jpg",
-    "A-Moon-Shaped-Pool.jpg",
-    "Songs-of-Faith-and-Devotion.jpg"
+    "Songs-of-Faith-and-Devotion.jpg",
+    "Aja.jpg",
+    "A-Moon-Shaped-Pool.jpg"
   ]
 }

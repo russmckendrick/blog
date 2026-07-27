@@ -1,33 +1,196 @@
 {
+  "version": 2,
   "date": "2026-05-04",
   "type": "cover",
-  "lane": "macro-detail",
-  "lighting": "a vivid sunny afternoon with strong directional sun, saturated colour and sparkling highlights",
+  "lane": null,
+  "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Sunlit miniature cosmos blooming inside a boot",
-  "scene": "An extreme close-up macro photograph peers into a tiny sunlit terrarium built inside the hollow toe of a weathered miniature lace-up boot, its orange-red leather filling most of the frame with cracked grain, dusty stitches, and sparkling highlights from a vivid afternoon sun. From the boot’s opening rises the dominant subject: a delicate translucent lavender silk flower whose petals curl like flowing fabric around a tiny porcelain-like adult face, while two miniature sleek hound figurines nestle against its base. The flower’s stamens branch into fine red ink-like filaments suspended in clear resin droplets, as if scarlet dye were blooming through water. Behind this sharp foreground, the boot interior becomes a fantastical landscape in creamy white dust and pale green moss: a teal-coated mannequin stands tiny and still on a chalky ridge, while dragon silhouettes appear as cut-paper shadows cast across the boot lining. Farther back, soft bokeh reveals a small yellow orb like a planet, a red dancer-shaped figurine arched beside toy amplifier blocks and a dark retro robot piece, a bright blue star glinting above a curved translucent blue screen of glass, and a thin cobalt line incised across a white enamel shard with a tiny embossed circular token half-buried nearby. Black-and-yellow striped paper wraps the distant ground like hazard dunes, unified by saturated sunlight, crisp shadows, and luminous reflections so the whole miniature world feels discovered rather than arranged.",
-  "palette": [
-    "electric blue",
-    "deep black",
-    "pale cyan",
-    "crimson red",
-    "cream white"
+  "concept": "Astral atelier with dragon shadow and suspended emblems",
+  "creativeDirection": "A surreal mixed-media stage diorama combining painted flats, silkscreen graphics, suspended cutouts, and luminous ink-in-water textures.",
+  "scene": "A shallow proscenium-like atelier seen straight on, as if looking into a handcrafted cosmic stage set with layered flats, hanging symbols, and a reflective pale floor.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "Red ink plumes become translucent marbled curtains and vapor pooling around the edges of the set, framing the center with organic crimson tendrils."
+    },
+    {
+      "source": 2,
+      "element": "A single front-facing woman with long red hair in a teal structured outfit stands at center as the main figure, with large dragon-like shadow forms cast behind her on the backdrop."
+    },
+    {
+      "source": 3,
+      "element": "A geometric circular armillary prop at left contains a blue starburst and extends a lavender beam-like band across part of the stage."
+    },
+    {
+      "source": 4,
+      "element": "A small freestanding triptych panel near the lower midground displays a muted figurative painting, treated as an art object within the atelier."
+    },
+    {
+      "source": 5,
+      "element": "A glowing blue draped rectangular monolith rises in the rear right, topped by a tiny star-like point of light."
+    },
+    {
+      "source": 6,
+      "element": "A white octopus emblem appears as a suspended ornamental filigree hanging above, crisp against the dark upper space."
+    },
+    {
+      "source": 7,
+      "element": "A curled red female figure becomes a small celestial cutout floating in the upper right distance near a yellow planet disc, with dark mechanical shapes along the bottom edge as set machinery."
+    },
+    {
+      "source": 8,
+      "element": "Two oversized pop-art combat boots rest in the foreground like sculptural props on the stage floor, with diagonal stripe panels and a plugged blue cable snaking in from the lower left."
+    }
   ],
+  "palette": [
+    "cream white",
+    "crimson",
+    "teal",
+    "sage green",
+    "black",
+    "electric blue"
+  ],
+  "mood": "mysterious, theatrical, cosmic, handcrafted",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Effloresce.jpg",
+      "album": "Effloresce",
+      "artist": "",
+      "description": "An abstract image of red liquid or ink dispersing through a pale cream-white background. Dense red plumes and threadlike tendrils gather around the edges and corners, leaving a brighter open area near the center. The composition feels fluid and organic, with soft blur and translucent layering.",
+      "signatureMotif": "red ink-like plumes swirling in liquid",
+      "medium": "abstract fluid photography",
+      "palette": [
+        "red",
+        "crimson",
+        "cream",
+        "white",
+        "dark maroon"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "In-Times-of-Dragons.jpg",
+      "album": "In Times of Dragons",
+      "artist": "",
+      "description": "A full-length portrait of a woman standing front-facing in a misty, desaturated green interior or backdrop. She has long straight red hair and wears a structured teal jacket over a long matching skirt or dress. Behind her, large dark shadow shapes form dragon-like silhouettes on the wall, and a soft shadow pools beneath her feet.",
+      "signatureMotif": "woman standing before dragon-shaped shadows",
+      "medium": "stylized portrait photography",
+      "palette": [
+        "sage green",
+        "teal",
+        "dark green",
+        "black",
+        "pale gray"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "The-Orbs-Adventures-Beyond-the-Ultraworld.jpg",
+      "album": "The Orbs Adventures Beyond the Ultraworld",
+      "artist": "",
+      "description": "A graphic, abstract design on a black background featuring a large circular form at left with a blue starburst or compass-like shape inside it. Pink curved accents wrap around parts of the circle, and a long horizontal lavender-blue band extends from the circle toward the right. The composition is clean, geometric, and flat.",
+      "signatureMotif": "blue starburst inside a circular graphic",
+      "medium": "vector-style graphic illustration",
+      "palette": [
+        "black",
+        "blue",
+        "lavender",
+        "pink",
+        "white"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "The-Holy-Bible-20.jpg",
+      "album": "The Holy Bible 20",
+      "artist": "",
+      "description": "A mostly white cover with a rectangular triptych painting centered in the lower half. The painting shows three views of a heavyset person in white undergarments, rendered in muted flesh tones and gray background panels. The surrounding space is stark and minimal, emphasizing the framed artwork.",
+      "signatureMotif": "triptych painting of a heavyset figure",
+      "medium": "reproduced figurative painting on minimalist layout",
+      "palette": [
+        "white",
+        "flesh pink",
+        "beige",
+        "gray",
+        "black"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Distant-Satellites.jpg",
+      "album": "Distant Satellites",
+      "artist": "",
+      "description": "A dark, minimal image dominated by a large softly glowing blue rectangular or draped form against a black background. Near the upper right of the blue glow is a small bright star-like point of light with a subtle flare. The edges are soft and atmospheric, with the blue light fading into darkness.",
+      "signatureMotif": "small star-like light over a glowing blue form",
+      "medium": "minimalist photographic light image",
+      "palette": [
+        "black",
+        "deep blue",
+        "electric blue",
+        "cyan",
+        "white"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "The-Octopus.jpg",
+      "album": "The Octopus",
+      "artist": "",
+      "description": "A stark black background with a centered white octopus-like emblem. The creature is highly stylized and symmetrical, with a long oval head and curling tentacles looping into decorative spirals and interwoven lines. The image is clean and icon-like.",
+      "signatureMotif": "white stylized octopus emblem",
+      "medium": "symbolic line illustration",
+      "palette": [
+        "black",
+        "white"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Dopes-to-Infinity.jpg",
+      "album": "Dopes to Infinity",
+      "artist": "",
+      "description": "A psychedelic sci-fi illustration set against black space with scattered white specks. At left is a large yellow planet-like sphere; at right floats a red nude female figure with long flowing hair in a curled pose. Along the bottom are dark mechanical or robotic forms and control-box shapes with cables and colored details, creating a collage of cosmic and industrial imagery.",
+      "signatureMotif": "red floating female figure in space",
+      "medium": "psychedelic sci-fi illustration",
+      "palette": [
+        "black",
+        "red",
+        "yellow",
+        "orange",
+        "blue"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Live-Boots-Emerald-City-Cherry-Hill-New-Jersey-17th-April-1981.jpg",
+      "album": "Live Boots Emerald City Cherry Hill New Jersey 17th April 1981",
+      "artist": "",
+      "description": "A bold pop-art graphic with diagonal black stripes over a bright yellow background. In the center are two large combat boots rendered in overlapping halftone colors, one red-orange in front and one green behind. A blue cable with a plug enters from the lower left, and a yellow circular sticker-like shape sits in the upper right area.",
+      "signatureMotif": "pair of brightly colored combat boots",
+      "medium": "pop-art poster-style graphic design",
+      "palette": [
+        "yellow",
+        "black",
+        "red-orange",
+        "green",
+        "blue"
+      ]
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one extreme macro photograph - a single tabletop-scale world seen from inches away with razor-thin depth of field. The image is a 16:9 music blog header. Scene: An extreme close-up macro photograph peers into a tiny sunlit terrarium built inside the hollow toe of a weathered miniature lace-up boot, its orange-red leather filling most of the frame with cracked grain, dusty stitches, and sparkling highlights from a vivid afternoon sun. From the boot’s opening rises the dominant subject: a delicate translucent lavender silk flower whose petals curl like flowing fabric around a tiny porcelain-like adult face, while two miniature sleek hound figurines nestle against its base. The flower’s stamens branch into fine red ink-like filaments suspended in clear resin droplets, as if scarlet dye were blooming through water. Behind this sharp foreground, the boot interior becomes a fantastical landscape in creamy white dust and pale green moss: a teal-coated mannequin stands tiny and still on a chalky ridge, while dragon silhouettes appear as cut-paper shadows cast across the boot lining. Farther back, soft bokeh reveals a small yellow orb like a planet, a red dancer-shaped figurine arched beside toy amplifier blocks and a dark retro robot piece, a bright blue star glinting above a curved translucent blue screen of glass, and a thin cobalt line incised across a white enamel shard with a tiny embossed circular token half-buried nearby. Black-and-yellow striped paper wraps the distant ground like hazard dunes, unified by saturated sunlight, crisp shadows, and luminous reflections so the whole miniature world feels discovered rather than arranged. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: a bright blue star beside a glowing translucent blue screen-like form; source 2: red ink-like tendrils blooming through clear droplets; source 3: an upstretched female reaching pose reimagined as the flower’s raised petal-arms; source 4: a tiny red cosmic dancer with a yellow planet and retro machine pieces; source 5: a teal-coated mannequin with dragon shadows behind it; source 6: a lavender-draped feminine bloom accompanied by two hounds; source 7: a thin blue line on white enamel with a small embossed circular token; source 8: a worn lace-up boot with black-yellow stripes and a blue plug cord. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Shrink each album motif into a tiny, exquisitely detailed object or texture inside this one miniature world - carved, folded, grown, or resting among the others. Composition: One dominant close subject filling the frame, the remaining motifs dissolving into soft bokeh layers behind it. Colour direction: electric blue, deep black, pale cyan, crimson red, cream white - rich naturalistic colour with luminous highlights where the light catches edges and textures. Time of day and light: a vivid sunny afternoon with strong directional sun, saturated colour and sparkling highlights. Mood: dreamlike, strange, radiant, and mythic. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "A shallow proscenium-like atelier viewed straight on, like a handcrafted cosmic stage set with layered flats, suspended ornaments, and a pale reflective floor; at the center stands a single woman front-facing with long straight red hair, wearing a structured teal jacket and long matching skirt, calm and monumental, while large dragon-shaped shadows spread across the misty sage backdrop behind her; red ink-in-water plumes form translucent marbled curtains and vapor around the edges, leaving a brighter open center, a geometric circular armillary prop at left contains a blue starburst and sends a long lavender band horizontally into the scene, a small freestanding triptych painting panel sits in the lower midground, a glowing blue draped rectangular monolith rises at rear right with a tiny star-like flare above it, a white stylized octopus filigree hangs overhead, in the upper right distance a small curled red female celestial cutout floats near a yellow planet disc, dark mechanical set machinery lines the bottom edge, and two oversized pop-art combat boots anchor the foreground with diagonal black stripe panels behind them and a blue cable entering from the lower left; surreal mixed-media stage diorama, combining painted flats, silkscreen poster graphics, suspended cut paper, luminous resin light forms, and fluid-photography marbling textures; strong central hierarchy with the woman dominant, boots secondary in the foreground, celestial and graphic elements supporting, balanced asymmetry, crisp silhouette shapes against deep dark space, soft glow and directional stage lighting with subtle reflections; palette of cream white, crimson, teal, sage, black, electric blue, lavender, and acid yellow, mysterious theatrical cosmic mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
-    "Distant-Satellites.jpg",
     "Effloresce.jpg",
-    "Free-Your-Mind-and-Your-Ass-Will-Follow.jpg",
-    "Dopes-to-Infinity.jpg",
     "In-Times-of-Dragons.jpg",
-    "Hounds-of-Love.jpg",
-    "Songs-To-Remember.jpg",
+    "The-Orbs-Adventures-Beyond-the-Ultraworld.jpg",
+    "The-Holy-Bible-20.jpg",
+    "Distant-Satellites.jpg",
+    "The-Octopus.jpg",
+    "Dopes-to-Infinity.jpg",
     "Live-Boots-Emerald-City-Cherry-Hill-New-Jersey-17th-April-1981.jpg"
   ]
 }

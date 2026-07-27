@@ -1,33 +1,194 @@
 {
+  "version": 2,
   "date": "2026-06-01",
   "type": "cover",
-  "lane": "retro-sci-fi-paperback",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Crown beacon above a labyrinth world at bulb-sun dusk",
-  "scene": "A sweeping alien plain opens beneath deep indigo shadows and a radiant apricot horizon, painted like a 1970s science-fiction paperback with velvety airbrush gradients and worn print grain. In the foreground, a lone hanging ceremonial robe, transformed into a wind-caught banner on a bent metal frame, trails down a rocky outcrop; along its front runs a vertical line of glowing crimson heart emblems. Behind it rises a ruined crown-shaped signal tower, its red prongs tipped with circular beacons that pulse concentric rings through the dusk like a planetary broadcast. Across the middle distance stretches a colossal labyrinth city of soft gold and mauve terraces, stairways, and maze walls, inhabited by tiny strange beast-shapes and puppet-like silhouettes. A crystal orb hovers above the city like a second moon, while below it a blazing bulb-sun blooms through amber vapor, its filament light spilling across the land. Scattered through the valley are immense striped cylinders reimagined as fallen airbrushed monoliths and pipeline fragments, each banded in saturated vintage colours and casting long diagonal shadows. At the left horizon, smoky woodland forms and blurred adult explorer silhouettes emerge through orange haze, as if crossing from a burnt forest into this maze-world. High in the sky, two gigantic translucent blue profile-forms appear as overlapping cliff-faces or atmospheric apparitions, watching over the scene. Near the orb, a pair of pale upraised hand-shapes becomes a winged constellation or energy glyph, tying the sky to the city below so every borrowed motif feels part of one mysterious planetary civilization.",
-  "palette": [
-    "deep indigo",
-    "cobalt blue",
-    "icy white",
-    "cream",
-    "faded gold"
+  "concept": "Crown in the rehearsal crater",
+  "creativeDirection": "A hand-built theatrical diorama rendered as a mixed-media miniature stage, combining painted landscape backdrops, suspended sculptural objects, and photographic haze.",
+  "scene": "A frontal view into an indoor rehearsal hall transformed into a surreal proscenium canyon, as if a stage set opens onto a mountainous valley.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "A blurred pair of distant standing figures becomes a smoky tree-line-and-embers scrim along the bottom of the stage, suggesting heat and memory beneath the scene."
+    },
+    {
+      "source": 2,
+      "element": "Multicoloured segmented cylinders hang diagonally overhead like suspended acoustic baffles or tuning pipes, casting soft shadows across the white upper space."
+    },
+    {
+      "source": 3,
+      "element": "A sketchy red crown serves as the central emblem, suspended above the stage opening with faint circular ripples radiating behind it."
+    },
+    {
+      "source": 4,
+      "element": "The blue double portrait is transformed into two oversized translucent side-curtains or scrims bearing the same man's hazy face once, split across left and right."
+    },
+    {
+      "source": 5,
+      "element": "The main backdrop is a painted mountain valley with towering cliffs and a bright waterfall descending at stage right."
+    },
+    {
+      "source": 6,
+      "element": "A single school-uniformed figure stands center stage near a window-frame flat, with a glowing bulb blended over the torso like an illuminated prop-heart."
+    },
+    {
+      "source": 7,
+      "element": "The cream dress with red hearts hangs stage left from a wire, like a costume awaiting performance in the empty wings."
+    },
+    {
+      "source": 8,
+      "element": "A large circular fisheye mirror on the floor or rear wall reflects a small band and studio stands, adding depth and a secondary performance space."
+    }
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": null,
-  "restyled": false,
-  "model": "fal-ai/nano-banana-2/edit",
-  "prompt": "Create one richly detailed retro science-fiction paperback painting from the 1960s or 1970s - hand-painted gouache, oils, and soft airbrush gradients, strange cosmic scale, aged print grain, and absolutely no lettering or border. The image is a 16:9 music blog header. Scene: A sweeping alien plain opens beneath deep indigo shadows and a radiant apricot horizon, painted like a 1970s science-fiction paperback with velvety airbrush gradients and worn print grain. In the foreground, a lone hanging ceremonial robe, transformed into a wind-caught banner on a bent metal frame, trails down a rocky outcrop; along its front runs a vertical line of glowing crimson heart emblems. Behind it rises a ruined crown-shaped signal tower, its red prongs tipped with circular beacons that pulse concentric rings through the dusk like a planetary broadcast. Across the middle distance stretches a colossal labyrinth city of soft gold and mauve terraces, stairways, and maze walls, inhabited by tiny strange beast-shapes and puppet-like silhouettes. A crystal orb hovers above the city like a second moon, while below it a blazing bulb-sun blooms through amber vapor, its filament light spilling across the land. Scattered through the valley are immense striped cylinders reimagined as fallen airbrushed monoliths and pipeline fragments, each banded in saturated vintage colours and casting long diagonal shadows. At the left horizon, smoky woodland forms and blurred adult explorer silhouettes emerge through orange haze, as if crossing from a burnt forest into this maze-world. High in the sky, two gigantic translucent blue profile-forms appear as overlapping cliff-faces or atmospheric apparitions, watching over the scene. Near the orb, a pair of pale upraised hand-shapes becomes a winged constellation or energy glyph, tying the sky to the city below so every borrowed motif feels part of one mysterious planetary civilization. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: overlapping blue adult profile faces; source 2: red crown with circular tips; source 3: long pale dress marked with red hearts; source 4: blurred figures in a smoky forest glow; source 5: upraised wing-like hands in a purple fisheye aura; source 6: multicoloured striped cylinders; source 7: glowing incandescent lightbulb with haze; source 8: crystal orb over a fantastical labyrinth city. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Reimagine each album motif as something that belongs in the same speculative world - alien terrain, colossal machinery, celestial phenomena, unusual flora, explorers, or distant structures - painted consistently and still recognisable. Composition: One panoramic otherworldly scene with a dramatic foreground anchor, a clear horizon, immense environmental scale, and layered depth into a strange sky; never a book-cover frame or a collection of separate vignettes. Colour direction: deep indigo, cobalt blue, icy white, cream, faded gold - luminous vintage-pulp colour drawn from the sleeves - deep indigo shadows, radiant horizon light, and a few saturated cosmic accents softened by aged print. Mood: mystical, cinematic, uncanny, adventurous. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, book mockup, book-cover border, blank title area, modern glossy concept art, flat vector shapes, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
-  "restylePrompt": null,
+  "palette": [
+    "off-white",
+    "pale yellow",
+    "cobalt blue",
+    "ember red",
+    "orange glow",
+    "cream"
+  ],
+  "mood": "enigmatic, ceremonial, slightly haunted",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Inferno.jpg",
+      "album": "Inferno",
+      "artist": "",
+      "description": "A blurred, grainy photographic collage with two human figures standing outdoors or near a wooded area. One figure is more visible on the right, while another darker silhouette stands nearer the center. The lower portion is overlaid with fiery red-orange imagery resembling flames or a burning landscape, with a dark tree-line silhouette along the bottom edge. Large blocky graphic shapes in yellow and white overlay the image.",
+      "signatureMotif": "fiery red-orange blaze beneath blurred standing figures",
+      "medium": "photographic collage with graphic text overlay",
+      "palette": [
+        "yellow",
+        "orange",
+        "red",
+        "black",
+        "dark green"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "From-a-Hole-in-the-Floor-to-a-Fountain-of-Youth.jpg",
+      "album": "From a Hole in the Floor to a Fountain of Youth",
+      "artist": "",
+      "description": "A clean minimalist image showing many smooth cylindrical rods floating diagonally across a white background. Each cylinder is segmented into bands of different colours, and each casts a soft shadow down and to the side, creating a sense of depth and spacing. The composition is orderly but varied, with rods angled in different directions.",
+      "signatureMotif": "multicoloured segmented cylinders",
+      "medium": "digital illustration or 3D-rendered graphic",
+      "palette": [
+        "white",
+        "light blue",
+        "cyan",
+        "red",
+        "orange"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Fashion-Nugget.jpg",
+      "album": "Fashion Nugget",
+      "artist": "",
+      "description": "A simple graphic design on a pale yellow background with faint concentric circular rings radiating from the center. In the middle is a hand-drawn red crown with five rounded points and sketch-like linework. Dark blue decorative lettering appears above and below the crown.",
+      "signatureMotif": "red hand-drawn crown",
+      "medium": "graphic illustration",
+      "palette": [
+        "pale yellow",
+        "red",
+        "dark blue"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Blue-Morpho.jpg",
+      "album": "Blue Morpho",
+      "artist": "",
+      "description": "A monochrome blue-toned photographic image of a man's face shown twice in close-up, one larger view on the left and another on the right, both partially cropped. The image has a soft, hazy, high-contrast look with a worn surface texture. The central area contains small overlaid lettering.",
+      "signatureMotif": "double blue portrait of a man's face",
+      "medium": "treated photograph",
+      "palette": [
+        "blue",
+        "white",
+        "navy",
+        "pale peach"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "The-World-Is-to-Dig.jpg",
+      "album": "The World Is to Dig",
+      "artist": "",
+      "description": "A classical-style landscape painting of a broad valley with towering cliffs and mountains under a dramatic cloudy sky. A tall waterfall descends along the right cliff face, and sunbeams break through the clouds. In the foreground are trees, rocks, a river or pool, and a path with tiny riders on horseback. A small framed label-like box sits near the upper right.",
+      "signatureMotif": "towering mountain valley with waterfall",
+      "medium": "landscape painting reproduction",
+      "palette": [
+        "blue",
+        "gray",
+        "green",
+        "brown",
+        "cream"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Lightbulb-Sun.jpg",
+      "album": "Lightbulb Sun",
+      "artist": "",
+      "description": "A layered photographic composition featuring a young person in a dark school-style blazer and striped tie, standing indoors near a window. The face is partially obscured by bright haze or smoke-like light effects. Over the torso area is a glowing light bulb shape blended into the image, and a reddish-orange overlay covers much of the right half. A building exterior is faintly visible in the background through the window.",
+      "signatureMotif": "glowing light bulb superimposed over a school-uniformed figure",
+      "medium": "photographic double exposure or layered photo collage",
+      "palette": [
+        "gray",
+        "black",
+        "white",
+        "red",
+        "orange"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "American-Thighs.jpg",
+      "album": "American Thighs",
+      "artist": "",
+      "description": "A sparse, off-white cover showing a long cream-coloured dress hanging from a thin wire hanger. Down the center of the dress runs a vertical row of red heart shapes. The dress is placed left of center with large empty space around it.",
+      "signatureMotif": "cream dress with a vertical row of red hearts",
+      "medium": "photograph or painted photographic reproduction",
+      "palette": [
+        "off-white",
+        "cream",
+        "red",
+        "gray",
+        "black"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Rearviewmirror-Greatest-Hits-1991-2003-Volume-1.jpg",
+      "album": "Rearviewmirror Greatest Hits 1991 2003 Volume 1",
+      "artist": "",
+      "description": "A black-and-white fisheye-style photograph centered on a large circular mirror or reflective surface. Reflected inside it are several band members in a studio-like room, with one person stepping forward prominently toward the camera. The room contains visible stands and equipment, and the circular frame dominates the composition.",
+      "signatureMotif": "circular mirror reflection of a band in fisheye view",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "white",
+        "gray"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Frontal view into an indoor rehearsal hall remade as a surreal proscenium canyon, a theatrical stage opening onto a vast painted mountain valley with towering cliffs and a bright waterfall at stage right; a single young figure in a dark school blazer and striped tie stands center stage near a simple window-frame flat, their face partly veiled by haze and a glowing light bulb shape fused over the torso like a luminous inner lantern; above them hangs a sketchy hand-drawn red crown as the main emblem, set against a pale yellow field with faint concentric rings, while diagonally suspended multicoloured segmented cylinders drift across the upper air like acoustic pipes or tuning rods; the left and right sides are framed by oversized translucent blue scrims carrying one split hazy male face across both curtains, worn and monochrome, creating a doubled presence without adding another figure; stage left, a cream dress with a vertical row of red hearts hangs from a thin wire hanger in open negative space; below, the front edge of the set dissolves into a blurred photographic band of black treeline silhouettes and fiery red-orange embers with two ghostlike distant standing forms embedded in the smoke; a large circular fisheye mirror rests upstage or leans at the rear, reflecting a small band, studio stands, and one person stepping forward in black and white; mixed-media miniature diorama, hand-painted backdrop, suspended sculpture, translucent printed scrims, collage textures, soft photographic haze, slightly tactile handcrafted surfaces; strong central hierarchy with the uniformed figure and crown leading, waterfall and mirror balancing the right, dress and blue scrims balancing the left, ample breathing room around key motifs; cool diffused stage light from above with a warm ember glow from below and a concentrated halo inside the bulb, soft shadows from the hanging cylinders; palette of off-white, pale yellow, cobalt blue, ember red, orange glow, cream, mist gray, and forest black, mood ceremonial, enigmatic, dreamlike, slightly haunted. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
-    "Blue-Morpho.jpg",
-    "Fashion-Nugget.jpg",
-    "American-Thighs.jpg",
     "Inferno.jpg",
-    "Gish.jpg",
     "From-a-Hole-in-the-Floor-to-a-Fountain-of-Youth.jpg",
+    "Fashion-Nugget.jpg",
+    "Blue-Morpho.jpg",
+    "The-World-Is-to-Dig.jpg",
     "Lightbulb-Sun.jpg",
-    "Labyrinth-From-the-Original-Soundtrack-of-the-Jim-Henson-Film.jpg"
+    "American-Thighs.jpg",
+    "Rearviewmirror-Greatest-Hits-1991-2003-Volume-1.jpg"
   ]
 }

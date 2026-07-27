@@ -1,29 +1,236 @@
 {
+  "version": 2,
   "date": "2026-06-22",
   "type": "artist",
   "lane": null,
   "lighting": null,
-  "shootDirection": "a long-lens candid across a busy street, the group facing the camera compressed against shopfronts, strangers blurring past in the foreground",
-  "colourTreatment": "punchy-editorial",
-  "concept": "Busy high street telephoto candid against vivid shopfronts",
-  "scene": "Shot from across a busy shopping street just before sunset with a long lens, the four selected figures are compressed tightly against a run of saturated storefronts and glossy blue metal shutters, every face large and tack-sharp while out-of-focus commuters streak through the foreground as smears of color and motion. At far left, the pale blonde woman from 1 is half-leaning back into a shop window, black top and vivid lipstick catching a warm neon reflection; beside her, the long-haired moustached figure from 2 stands slightly forward in loose black, hands open at waist height as if mid-conversation. Near the center-right, the woman from 7 in her dark bob and speckled jacket turns three-quarters toward the others with one shoulder tucked to the shutter, while at the far right the bald man from 9, still in his dramatic studded black coat and dark glasses, anchors the frame with folded arms and a cool, unreadable stare. The light is luminous and punchy, mixing low golden sun with electric shop signage so skin glows and blacks stay rich; their styling feels intentionally clashing yet cohesive—psychedelic pattern, severe black minimalism, sharp new-wave tailoring, and full metal grandeur—captured as a real caught moment rather than a lineup, with staggered posture, slight overlap, and different eyelines giving the group a charged street-level chemistry.",
-  "palette": [
-    "electric blue",
-    "lipstick red",
-    "golden amber",
-    "jet black",
-    "violet"
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Gathering beneath the theater dome",
+  "creativeDirection": "A low-angle, intimate environmental portrait that uses the grand theater architecture for depth while arranging the six adults in a loose conversational cluster rather than a lineup.",
+  "scene": "Inside the ornate theater from source 3, near the front seating area beneath the domed ceiling, with the balcony curve and central ceiling fixture visible above; the group gathers in a staggered semicircle around one seated figure, as if pausing mid-conversation before moving on.",
+  "locationSource": 3,
+  "locationSetting": "Interior of an ornate theater or grand hall with a circular decorated dome ceiling, painted or molded panels, balcony edge, many small lights, and a central floral chandelier-like ceiling fixture.",
+  "locationEvidence": "The photo clearly shows a distinctive ornate theater or grand hall interior with a decorated circular dome ceiling, balcony edge, many small house lights, and a central floral chandelier-like fixture overhead.",
+  "locationReference": 1,
+  "locationInput": "Crowded-House.jpg",
+  "cast": [
+    {
+      "source": 3,
+      "person": "older fair-skinned man with shaggy light hair and a serious expression",
+      "placement": "center foreground, seated slightly forward with arms loosely folded"
+    },
+    {
+      "source": 1,
+      "person": "East Asian man with long straight dark hair in a bold blue-and-gold paisley shirt",
+      "placement": "front right, leaning lightly against the back of a seat and facing inward"
+    },
+    {
+      "source": 5,
+      "person": "older fair-skinned man with a long white beard, blue cap, and glasses",
+      "placement": "left midground, standing near the aisle with hands relaxed behind his back"
+    },
+    {
+      "source": 7,
+      "person": "fair-skinned woman with a dark bob haircut in a speckled dark jacket over a white top",
+      "placement": "right midground, turned three-quarters toward the seated center figure"
+    },
+    {
+      "source": 2,
+      "person": "medium-skinned man with long straight dark hair and a mustache in a loose black shirt",
+      "placement": "front left, slightly closer to camera with lowered hands open in a natural gesture"
+    },
+    {
+      "source": 9,
+      "person": "bald light-skinned man in dark aviator sunglasses and a studded long leather coat",
+      "placement": "rear center-left, standing under the dome with a still, watchful posture"
+    }
   ],
+  "selection": [
+    3,
+    1,
+    5,
+    7,
+    2,
+    9
+  ],
+  "palette": [
+    "charcoal",
+    "aged gold",
+    "deep blue",
+    "cream",
+    "black",
+    "muted skin tones"
+  ],
+  "mood": "moody, intimate, quietly theatrical",
+  "artistSummaries": [
+    {
+      "source": 1,
+      "filename": "The-Smashing-Pumpkins.jpg",
+      "artist": "The Smashing Pumpkins",
+      "description": "Studio group portrait of four adults against a wrinkled light backdrop. A pale-skinned adult with shoulder-length dark curly hair dominates the front left, leaning back with chin raised, wearing a wavy patterned button-up shirt and layered necklaces. Behind left stands a fair-skinned blonde woman with straight side-parted hair and red lipstick in a dark top. Center rear is a fair-skinned man with brown mullet-style hair in a pastel patterned shirt. Front right is an East Asian man with long straight dark hair in a bold blue-and-gold paisley shirt. Soft frontal studio lighting.",
+      "primarySubject": "Front-left pale-skinned adult with shoulder-length dark curly hair, clean-shaven face, raised chin, patterned button-up shirt, and layered necklaces",
+      "visiblePeople": [
+        "front-left pale-skinned adult with shoulder-length dark curly hair, clean-shaven, no eyewear",
+        "rear-left fair-skinned blonde woman with long straight side-parted hair and lipstick, no eyewear",
+        "center fair-skinned man with brown mullet-style hair, clean-shaven, no eyewear",
+        "front-right East Asian man with long straight dark hair, clean-shaven, no eyewear"
+      ],
+      "wardrobe": "Patterned psychedelic-style button-up shirt with necklaces; dark top; pastel patterned button-up shirt; blue-and-gold paisley button-up shirt.",
+      "photoStyle": "Color studio portrait, tight group framing, soft light, clean backdrop.",
+      "setting": "Plain studio setup with a wrinkled light fabric backdrop and no visible furniture or props.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 2,
+      "filename": "Placebo.jpg",
+      "artist": "Placebo",
+      "description": "Two adults stand full-length behind a vertically ribbed translucent screen that creates linear distortion. Left figure has medium skin tone, long straight dark hair, and a mustache, wearing a loose black shirt and dark pants with hands lowered and fingers spread. Right figure has medium skin tone, close-cropped dark hair with a short beard, wearing a sleeveless black V-neck top and dark pants, standing upright with arms at sides. Bright even backlighting and a white background flatten the space.",
+      "primarySubject": "Right-side medium-skinned adult with close-cropped dark hair, short beard, sleeveless black V-neck top, standing rigidly upright",
+      "visiblePeople": [
+        "left adult with long straight dark hair, mustache, no eyewear",
+        "right adult with close-cropped dark hair, short beard, no eyewear"
+      ],
+      "wardrobe": "Loose black long-sleeve shirt and dark pants; sleeveless black V-neck top and dark pants.",
+      "photoStyle": "Minimalist color studio portrait with translucent ribbed screen causing vertical blur and distortion.",
+      "setting": "White studio background seen through a vertically ribbed translucent panel; no other visible objects.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 3,
+      "filename": "Crowded-House.jpg",
+      "artist": "Crowded House",
+      "description": "Black-and-white low-angle group portrait of five adult men inside an ornate theater or hall. The central seated man, most prominent, has shaggy light hair and crossed arms, wearing a dark jacket and dark pants. Around him stand or sit four other men: leftmost tall man with very short light hair; second from left man with wavy dark hair and beard in a textured sweater; second from right taller man with medium dark hair and short beard in layered casual tops; rightmost man with curly light hair and glasses in a workwear-style jacket. A large decorative domed ceiling with a central chandelier-like fixture fills the background.",
+      "primarySubject": "Center seated older man with shaggy light hair, serious expression, arms crossed, dark jacket, and dark pants",
+      "visiblePeople": [
+        "leftmost tall fair-skinned man with very short light hair, clean-shaven, no eyewear",
+        "second-left fair-skinned man with wavy dark hair and full beard, no eyewear",
+        "center fair-skinned older man with shaggy light hair, clean-shaven, no eyewear",
+        "second-right fair-skinned man with medium dark hair and short beard, no eyewear",
+        "rightmost fair-skinned man with curly light hair, glasses, clean-shaven"
+      ],
+      "wardrobe": "Dark jackets, sweater, T-shirt, and casual pants in monochrome tones.",
+      "photoStyle": "Black-and-white wide-angle low-angle portrait with dramatic architectural background.",
+      "setting": "Interior of an ornate theater or grand hall with a circular decorated dome ceiling, painted or molded panels, balcony edge, many small lights, and a central floral chandelier-like ceiling fixture.",
+      "settingStrength": "strong"
+    },
+    {
+      "source": 4,
+      "filename": "The-Rolling-Stones.jpg",
+      "artist": "The Rolling Stones",
+      "description": "Black-and-white studio portrait of five adult men posed against a seamless white background. Leftmost tall slim man with shaggy dark hair stands with one leg extended. Next to him, a slim man with spiky dark hair leans inward in a striped shirt and light pants. At center front, a man with shaggy dark hair kneels in a floral shirt and light trousers. Behind him crouches a man in sunglasses and a light button-up shirt. Rightmost tall slim man with a dark bowl-cut hairstyle stands with arms crossed in a dark jacket and very wide-leg light trousers. High-key lighting leaves a large blank background.",
+      "primarySubject": "Center-front kneeling man with shaggy dark hair, floral open-collar shirt, and light trousers, posed with one knee bent forward",
+      "visiblePeople": [
+        "leftmost slim fair-skinned man with shaggy dark hair, clean-shaven, no eyewear",
+        "second-left slim fair-skinned man with spiky dark hair, clean-shaven, no eyewear",
+        "center-front fair-skinned man with shaggy dark hair, clean-shaven, no eyewear",
+        "rear-right fair-skinned man with short dark hair, sunglasses, clean-shaven",
+        "rightmost slim fair-skinned man with dark bowl-cut hair, clean-shaven, no eyewear"
+      ],
+      "wardrobe": "Patterned jacket over open-collar shirt and jeans; striped short-sleeve top with light pants; floral shirt with light trousers; light button-up shirt with trousers; dark jacket with wide-leg light trousers.",
+      "photoStyle": "Black-and-white high-key studio group portrait with playful asymmetrical posing.",
+      "setting": "Seamless white studio backdrop and floor with no visible props.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 5,
+      "filename": "Basic.jpg",
+      "artist": "Basic",
+      "description": "Outdoor color portrait of three adult men standing on grass beside a black metal fence, surrounded by dense green shrubs and trees. Center figure is most prominent: fair-skinned, wearing a light wide-brim hat, dark glasses, tan T-shirt, and jeans, standing with arms crossed. Left figure is older, fair-skinned, with a long white beard, blue cap, glasses, short-sleeve checked shirt, and dark trousers, hands behind back. Right figure has medium-to-dark skin tone, bald or closely shaved head, full dark beard, glasses, dark jacket, and light shirt hem visible, leaning slightly forward. Natural daylight with a slightly soft, film-like look.",
+      "primarySubject": "Center fair-skinned man in a light wide-brim hat and dark glasses, tan T-shirt, jeans, and crossed arms",
+      "visiblePeople": [
+        "left older fair-skinned man with long white beard, cap, glasses",
+        "center fair-skinned man with hat, dark glasses, short facial hair",
+        "right medium-to-dark-skinned man with bald or closely shaved head, full dark beard, glasses"
+      ],
+      "wardrobe": "Checked short-sleeve shirt and dark trousers; tan T-shirt and jeans with brimmed hat; dark jacket over light shirt and dark trousers.",
+      "photoStyle": "Casual outdoor color portrait with natural light and slightly soft, snapshot-like treatment.",
+      "setting": "Garden or park-like edge with grass, dense leafy shrubs, tall trees, and a black metal fence running behind the group.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 6,
+      "filename": "The-Beach-Boys.jpg",
+      "artist": "The Beach Boys",
+      "description": "Color studio portrait of five young adult men closely grouped against a smooth blue backdrop. All have fair skin, clean-shaven faces, and neatly groomed side-parted or swept hairstyles. Two men in front, especially the blond man at front left, are most prominent, both smiling with arms crossed. Three others lean from behind with their chins resting on their hands. Everyone wears matching short-sleeve blue-and-white vertically striped button-up shirts. Bright even lighting and polished mid-century studio styling.",
+      "primarySubject": "Front-left smiling fair-skinned blond man with side-swept hair, clean-shaven face, and crossed arms in a blue-and-white striped shirt",
+      "visiblePeople": [
+        "rear-left fair-skinned man with brown side-parted hair, clean-shaven, no eyewear",
+        "front-left fair-skinned blond man with side-swept hair, clean-shaven, no eyewear",
+        "center-rear fair-skinned man with short light brown hair, clean-shaven, no eyewear",
+        "front-right fair-skinned blond man with short side-parted hair, clean-shaven, no eyewear",
+        "rear-right fair-skinned man with brown swept hair, clean-shaven, no eyewear"
+      ],
+      "wardrobe": "Matching blue-and-white vertically striped short-sleeve button-up shirts.",
+      "photoStyle": "Bright color studio portrait with coordinated wardrobe and clean commercial lighting.",
+      "setting": "Simple studio backdrop in solid blue with no visible props beyond the group arrangement.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 7,
+      "filename": "New-Order.jpg",
+      "artist": "New Order",
+      "description": "Color full-length group portrait of five adults standing in front of a large blue corrugated metal wall with white structural braces. From left to right: a man in dark sunglasses, black jacket, graphic color-block shirt, and dark pants; a taller man in glasses, dark coat, striped shirt, and dark pants; a blond man in dark sunglasses and a dark coat turned partly in profile; a woman with a dark bob haircut in a speckled dark jacket, white top, and black pants; and a man in dark sunglasses, dark blazer, and dark pants. The blond man near center is most visually prominent because of his placement and profile pose. Bright daylight with crisp detail.",
+      "primarySubject": "Near-center blond fair-skinned man in dark sunglasses and a dark coat, standing partly in profile in front of the blue metal wall",
+      "visiblePeople": [
+        "left fair-skinned man with short dark hair, sunglasses",
+        "left-center fair-skinned taller man with short dark hair, glasses",
+        "center fair-skinned blond man, sunglasses",
+        "right-center fair-skinned woman with dark bob haircut, no eyewear",
+        "right fair-skinned man with short light brown hair, sunglasses"
+      ],
+      "wardrobe": "Dark jackets and coats, striped shirt, color-block T-shirt, white blouse, black pants, and sunglasses on four of the five adults.",
+      "photoStyle": "Color environmental portrait with full-length framing and clean daylight.",
+      "setting": "Exterior industrial wall made of blue corrugated metal panels with white diagonal and vertical braces; flat ground area in front of the building facade.",
+      "settingStrength": "strong"
+    },
+    {
+      "source": 8,
+      "filename": "Def-Leppard.jpg",
+      "artist": "Def Leppard",
+      "description": "Black-and-white studio portrait of five adult men in dark suits and thin ties on a seamless light background. The central figure, most prominent, has long straight light hair, dark sunglasses, and stands slightly forward in a black suit. Leftmost man has long curly or mullet-style hair and wears sneakers with his suit. Second from left is shorter with close-cropped hair. Second from right wears a dark brimmed hat and adjusts his jacket. Rightmost man has short curly hair and stands with one leg angled. Even studio lighting and roomy full-body framing.",
+      "primarySubject": "Center adult with long straight light hair, dark sunglasses, black suit, and tie, standing slightly forward",
+      "visiblePeople": [
+        "leftmost fair-skinned man with long curly or mullet-style hair, clean-shaven, no eyewear",
+        "second-left fair-skinned man with close-cropped hair, clean-shaven, no eyewear",
+        "center fair-skinned man with long straight light hair, sunglasses",
+        "second-right fair-skinned man with short hair, clean-shaven, dark brimmed hat",
+        "rightmost fair-skinned man with short curly hair, clean-shaven, no eyewear"
+      ],
+      "wardrobe": "Black suits, white shirts, thin black ties, dark shoes, one brimmed hat, and one pair of casual sneakers.",
+      "photoStyle": "Black-and-white minimalist studio portrait with full-length formal styling.",
+      "setting": "Seamless light studio backdrop and floor with no visible props.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 9,
+      "filename": "Judas-Priest.jpg",
+      "artist": "Judas Priest",
+      "description": "Dramatic color group portrait of five adult men in black leather stagewear against a smoky dark backdrop. Center figure is bald, light-skinned, wearing dark aviator-style sunglasses and a heavily studded long leather coat, hands clasped in front. Leftmost man has long dark hair and a sleeveless leather vest over a dark shirt. Second from left has long light hair and a leather coat. Second from right has long light-brown hair, sunglasses, and a studded leather jacket with one hand on hip. Rightmost man has long dark hair, mustache and goatee, oval dark glasses, and studded leather pieces. Moody lighting highlights metal studs and faces.",
+      "primarySubject": "Center bald light-skinned man in dark aviator sunglasses and a long heavily studded leather coat, standing with hands clasped",
+      "visiblePeople": [
+        "leftmost light-skinned man with long dark hair, clean-shaven, no eyewear",
+        "second-left light-skinned man with long light hair, clean-shaven, no eyewear",
+        "center light-skinned bald man, short facial hair, dark sunglasses",
+        "second-right light-skinned man with long light-brown hair, sunglasses",
+        "rightmost light-skinned man with long dark hair, mustache and goatee, dark glasses"
+      ],
+      "wardrobe": "Black leather vests, coats, and jackets with heavy studs and metallic details, dark shirts, leather pants, and sunglasses on three men.",
+      "photoStyle": "Dark, high-contrast color studio portrait with smoky background and theatrical metal-styled wardrobe.",
+      "setting": "Studio setup with a dark smoky backdrop and no visible environmental objects.",
+      "settingStrength": "weak"
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the 4 reference images into a single shared real-world scene. Scene: Shot from across a busy shopping street just before sunset with a long lens, the four selected figures are compressed tightly against a run of saturated storefronts and glossy blue metal shutters, every face large and tack-sharp while out-of-focus commuters streak through the foreground as smears of color and motion. At far left, the pale blonde woman from 1 is half-leaning back into a shop window, black top and vivid lipstick catching a warm neon reflection; beside her, the long-haired moustached figure from 2 stands slightly forward in loose black, hands open at waist height as if mid-conversation. Near the center-right, the woman from 7 in her dark bob and speckled jacket turns three-quarters toward the others with one shoulder tucked to the shutter, while at the far right the bald man from 9, still in his dramatic studded black coat and dark glasses, anchors the frame with folded arms and a cool, unreadable stare. The light is luminous and punchy, mixing low golden sun with electric shop signage so skin glows and blacks stay rich; their styling feels intentionally clashing yet cohesive—psychedelic pattern, severe black minimalism, sharp new-wave tailoring, and full metal grandeur—captured as a real caught moment rather than a lineup, with staggered posture, slight overlap, and different eyelines giving the group a charged street-level chemistry. Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness exactly as shown. Do not invent anyone who is not in the reference photos. Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its single most recognisable member rather than every member. Frame the group tightly - close or medium-close - so every face is large in the frame, sharp, and richly detailed, never small or distant. Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Vary posture, depth, and where people are looking - this is a caught moment, not a band-publicity lineup evenly spaced and facing the camera. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares. Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render. Colour treatment: bright, vivid, richly saturated editorial colour with luminous highlights and punchy contrast, drawing on electric blue, lipstick red, golden amber, jet black, violet. Mood: cool, charged, urban. Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, extra people, background crowd, duplicated faces, cloned faces, merged faces, blended faces, morphed features, distorted faces, deformed hands, extra limbs. Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Interior of an ornate theater or grand hall with a circular decorated dome ceiling, painted or molded panels, balcony edge, many small lights, and a central floral chandelier-like ceiling fixture.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. Photorealistic 16:9 group portrait inside an ornate historic theater, shot from a low angle near the front seating area so the decorated circular dome, curved balcony edge, scattered small house lights, and central floral chandelier-like ceiling fixture rise prominently above the group; the visible environment should feel like a plausible extension of the original hall, with dark seating, aisle edges, and richly detailed interior surfaces continuing naturally beyond the frame. Six adults gather in a loose, staggered cluster around one seated central figure: an older fair-skinned man with shaggy light hair sits slightly forward with arms loosely folded and a steady expression; at front left, a medium-skinned man with long straight dark hair and a mustache in a loose black shirt gestures subtly with lowered open hands; at front right, an East Asian man with long straight dark hair in a bold blue-and-gold paisley shirt leans lightly on a seat back; at left midground, an older fair-skinned man with a long white beard, blue cap, and glasses stands calmly with hands behind his back; at right midground, a fair-skinned woman with a dark bob haircut in a speckled dark jacket over a white top turns three-quarters toward the seated man; at rear center-left, a bald light-skinned man in dark aviator sunglasses and a heavily studded long leather coat stands still and watchful. Avoid an evenly spaced lineup; vary posture, depth, and eyelines so some engage each other and others look toward camera. Wide environmental composition with intimate spacing, low viewpoint, moderate wide-angle lens character around 28mm, strong vertical and overhead perspective, crisp architectural detail with natural depth falloff. Lighting follows the theater’s practical overhead glow and dim ambient house lights, with soft frontal fill on faces and gentle contrast, no stage spotlights. Rich but restrained color with charcoal and aged-gold architecture, deep blue accents, cream highlights, and natural skin tones; moody, quietly theatrical, candid but composed. Attached cast plan: Attached reference image 1: portray only older fair-skinned man with shaggy light hair and a serious expression; center foreground, seated slightly forward with arms loosely folded. Attached reference image 2: portray only East Asian man with long straight dark hair in a bold blue-and-gold paisley shirt; front right, leaning lightly against the back of a seat and facing inward. Attached reference image 3: portray only older fair-skinned man with a long white beard, blue cap, and glasses; left midground, standing near the aisle with hands relaxed behind his back. Attached reference image 4: portray only fair-skinned woman with a dark bob haircut in a speckled dark jacket over a white top; right midground, turned three-quarters toward the seated center figure. Attached reference image 5: portray only medium-skinned man with long straight dark hair and a mustache in a loose black shirt; front left, slightly closer to camera with lowered hands open in a natural gesture. Attached reference image 6: portray only bald light-skinned man in dark aviator sunglasses and a studded long leather coat; rear center-left, standing under the dome with a still, watchful posture. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. This generation has 6 attached cast reference images; omit any person described in the creative direction who does not have an attached reference.",
   "inputs": [
+    "Crowded-House.jpg",
     "The-Smashing-Pumpkins.jpg",
-    "Placebo.jpg",
+    "Basic.jpg",
     "New-Order.jpg",
+    "Placebo.jpg",
     "Judas-Priest.jpg"
   ]
 }

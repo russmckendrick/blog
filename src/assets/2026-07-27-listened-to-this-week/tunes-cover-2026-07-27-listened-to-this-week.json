@@ -1,25 +1,186 @@
 {
+  "version": 2,
   "date": "2026-07-27",
   "type": "cover",
-  "lane": "neon-noir",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Neon mod alley where archive ghosts and late-night soul collide",
-  "scene": "From a low cinematic angle in a rain-slick neon alley that opens onto a cobbled midnight square, a dark out-of-focus scooter wheel and curbside puddle occupy the foreground, reflecting broken bands of amber and yellow light like horizontal stripes across the wet street. In the midground, the clear subject is a lone adult rider paused beside a real vintage scooter under a buzzing streetlamp, wearing a parka with a glowing circular target patch and surrounded by several chrome mirrors that catch tiny reflected faces and diner lights. To one side, a late-night cafe window reveals a black-and-white styled interior with a dark-haired woman leaning at the counter and, farther along, a tattooed pompadour man in another booth, both rendered as grainy monochrome figures inside the warm shopfront. Crossing the square behind the scooter, three sharply dressed adults stride through rain on shining cobblestones, their coats rim-lit in blue and pink. Above them, a giant billboard shows a doubled photographic close-up of a curly-haired man’s face as a split-panel ad, while another illuminated fashion poster features an adult man in a floral jacket shot from below against a cloud image, with real reeds planted in rooftop planters nearby. A second figure in a bright yellow sweater vest stands half in shadow near the alley mouth, echoing the poised retro portrait. Over the entire block, pale translucent recording-sheet graphics are integrated into the architecture as backlit window decals and projected guide lines, with a blue wireframe suited figure traced across frosted glass, making the whole street feel like a city of music memories translated into physical signage, reflections, smoke, and neon.",
-  "palette": [
-    "neon amber",
-    "golden yellow",
-    "burnt orange",
-    "electric blue",
-    "deep indigo"
+  "concept": "Night laundromat of drifting album ghosts",
+  "creativeDirection": "A hand-pulled screenprint and paper-collage scene that turns the album motifs into a stylized nocturnal laundromat tableau.",
+  "scene": "Inside a nearly empty laundromat at night, viewed straight on from just above table height, with rows of machines and a central folding table creating a shallow theatrical stage.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "A single full-body man in a striped shirt and bright sweater vest stands left of center beside the machines, his relaxed crossed-leg pose echoed against wide horizontal wall stripes in warm yellow and orange."
+    },
+    {
+      "source": 2,
+      "element": "The upper back wall becomes an oversized panel of deep blue sky with soft white cloud bands and a few thin grass stems rising from machine edges, giving the room an open, airy horizon."
+    },
+    {
+      "source": 3,
+      "element": "Three men walking on cobblestones are transformed into small figures crossing a patterned black floor of square tiles and geometric color insets, moving toward the viewer from the rear aisle."
+    },
+    {
+      "source": 4,
+      "element": "A pair of adjacent dryer windows display the same young man's downward close-up as mirrored fabric-transfer faces, separated by a narrow divider and accented with thin red trim."
+    },
+    {
+      "source": 5,
+      "element": "The central dominant object is a scooter parked indoors between washer rows, surrounded by rolling white steam like lint-clouds, with a bold circular target emblem visible on the rider's back."
+    },
+    {
+      "source": 6,
+      "element": "The shirtless tattooed man appears only once as a grayscale figure leaning over the folding table at mid-right, rendered like a pasted photographic clipping among diner-like countertop objects."
+    },
+    {
+      "source": 7,
+      "element": "The dark-haired woman with a cigarette sits alone at a small waiting chair and side table near the back, her bowl and condiments adapted into laundromat vending-counter details."
+    },
+    {
+      "source": 8,
+      "element": "Technical guide lines, dashed arrows, small black squares, and a blue line-drawn suited figure are integrated as schematic graphics across machine doors, wall signage, and a rounded border framing the whole image."
+    }
   ],
+  "palette": [
+    "deep blue",
+    "warm yellow",
+    "orange",
+    "cream",
+    "black",
+    "grey"
+  ],
+  "mood": "moody, urban, surreal, reflective",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Doctrine-Of-Love.jpg",
+      "album": "Doctrine Of Love",
+      "artist": "",
+      "description": "A full-body studio portrait of a man standing in a relaxed pose with one leg bent and crossed, looking to his left. He wears a light striped shirt with rolled sleeves, a bright sleeveless sweater vest, dark trousers, and dark shoes. The background is filled with wide horizontal stripes spanning the entire cover. The figure is placed left of center, with open space on the right occupied by layout elements.",
+      "signatureMotif": "full-body man against horizontal stripes",
+      "medium": "photographic portrait with graphic striped background",
+      "palette": [
+        "yellow",
+        "orange",
+        "brown",
+        "black",
+        "cream"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Modern-Classics-The-Greatest-Hits.jpg",
+      "album": "Modern Classics The Greatest Hits",
+      "artist": "",
+      "description": "A low-angle outdoor photograph of a man centered in the lower half of the frame, shown from the chest up against a large sky. His face is partly in shadow, and he wears a patterned floral jacket or shirt with a high collar. Soft white clouds stretch across the middle, and thin plant stems or tall grasses rise from the lower edges. The composition is dominated by the deep sky above him.",
+      "signatureMotif": "man silhouetted against a blue sky",
+      "medium": "colour photograph",
+      "palette": [
+        "deep blue",
+        "white",
+        "black",
+        "red",
+        "cream"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Snap.jpg",
+      "album": "Snap",
+      "artist": "",
+      "description": "A black cover design framing a rectangular colour photograph of three men walking toward the camera on a cobblestone street or plaza. Bare trees, railings, lampposts, water, and buildings appear in the background. The man on the left wears a jacket, slim trousers, and bright shoes; the center man wears a dark overcoat, scarf, patterned trousers, and loafers; the man on the right wears a dark coat and dark shoes. Bold blocks and lines of red, blue, yellow, and green accent the layout around the photo.",
+      "signatureMotif": "three men walking on cobblestones",
+      "medium": "colour photograph with graphic border elements",
+      "palette": [
+        "black",
+        "grey",
+        "red",
+        "blue",
+        "yellow"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Before-After.jpg",
+      "album": "Before After",
+      "artist": "",
+      "description": "A diptych-style cover showing two nearly identical close-up portraits of the same young man side by side. Both images show his face angled downward with curly hair and a serious expression. The portraits are tightly cropped, filling most of the frame, with a narrow vertical division between them and thin red bands along the top and bottom edges.",
+      "signatureMotif": "duplicated side-by-side close-up male portrait",
+      "medium": "colour photographic diptych",
+      "palette": [
+        "brown",
+        "tan",
+        "cream",
+        "red",
+        "black"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Quadrophenia.jpg",
+      "album": "Quadrophenia",
+      "artist": "",
+      "description": "A black-and-white image of a young man seated sideways on a scooter or motorbike amid heavy smoke or mist. He faces away from the viewer, wearing a jacket with a large circular target-like emblem on the back. Several round mirrors on the scooter reflect small faces. The vehicle is loaded at the rear, and the scene has a moody studio-like atmosphere with the figure and scooter centered.",
+      "signatureMotif": "man on a scooter surrounded by smoke",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "grey",
+        "white"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Best-II.jpg",
+      "album": "Best II",
+      "artist": "",
+      "description": "A black-and-white diner or café scene focused on a shirtless man leaning forward at a table or counter. He has styled hair, facial hair, tattoos on both upper arms, and a pendant necklace. Blurred people and booths recede in the background. Small tabletop items sit in the foreground, and the man occupies the center-right of the composition.",
+      "signatureMotif": "shirtless tattooed man seated in a diner",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "white",
+        "grey",
+        "pink"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Best-I.jpg",
+      "album": "Best I",
+      "artist": "",
+      "description": "A black-and-white diner or café scene focused on a dark-haired woman seated at a table, holding a cigarette near her face. She looks downward with a calm expression and wears a dark top. A bowl or plate sits in front of her, with condiments and small table items nearby. In the background are blurred seated figures and a standing person, while the cropped arm and shoulder of another person appear at the right edge.",
+      "signatureMotif": "woman holding a cigarette at a diner table",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "white",
+        "grey",
+        "pink"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "The-Pleasure-Principle.jpg",
+      "album": "The Pleasure Principle",
+      "artist": "",
+      "description": "A minimalist grey cover built from layered paper and technical-sheet imagery. At center is a white rectangular sheet with form lines and handwritten marks, overlaid by a blue line-drawn figure of a man in a suit. Thin dashed and solid guide lines with small black squares and arrowheads cross the composition. A rounded rectangular border frames the cover, and a curved cutout or sleeve-like shape intrudes from the right edge.",
+      "signatureMotif": "blue line-drawn suited figure over layered paperwork",
+      "medium": "graphic design collage with line illustration",
+      "palette": [
+        "light grey",
+        "white",
+        "blue",
+        "black"
+      ]
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one cinematic neon-noir night photograph - wet streets, glowing wordless signs, deep shadow and electric colour. The image is a 16:9 music blog header. Scene: From a low cinematic angle in a rain-slick neon alley that opens onto a cobbled midnight square, a dark out-of-focus scooter wheel and curbside puddle occupy the foreground, reflecting broken bands of amber and yellow light like horizontal stripes across the wet street. In the midground, the clear subject is a lone adult rider paused beside a real vintage scooter under a buzzing streetlamp, wearing a parka with a glowing circular target patch and surrounded by several chrome mirrors that catch tiny reflected faces and diner lights. To one side, a late-night cafe window reveals a black-and-white styled interior with a dark-haired woman leaning at the counter and, farther along, a tattooed pompadour man in another booth, both rendered as grainy monochrome figures inside the warm shopfront. Crossing the square behind the scooter, three sharply dressed adults stride through rain on shining cobblestones, their coats rim-lit in blue and pink. Above them, a giant billboard shows a doubled photographic close-up of a curly-haired man’s face as a split-panel ad, while another illuminated fashion poster features an adult man in a floral jacket shot from below against a cloud image, with real reeds planted in rooftop planters nearby. A second figure in a bright yellow sweater vest stands half in shadow near the alley mouth, echoing the poised retro portrait. Over the entire block, pale translucent recording-sheet graphics are integrated into the architecture as backlit window decals and projected guide lines, with a blue wireframe suited figure traced across frosted glass, making the whole street feel like a city of music memories translated into physical signage, reflections, smoke, and neon. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: adult man in a bright yellow sweater vest against horizontal warm stripes; source 2: low-angle floral-jacket portrait against blue sky and clouds with tall reeds; source 3: three men walking across wet cobblestones; source 4: doubled side-by-side close-up of a curly-haired man's face; source 5: vintage scooter with multiple round mirrors and a target patch on the rider's parka; source 6: tattooed pompadour man leaning at a diner counter; source 7: dark-haired woman seated at a diner counter in a cigarette-like pose; source 8: blue line-drawn suited figure over translucent recording-sheet graphics. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Reimagine each album motif as something real in the night city - a neon shape, a reflection in the wet street, a figure under a lamp, a lit shopfront display, a shadow thrown on brick. Composition: A low cinematic angle with layered depth: a dark foreground shape, a clear midground subject, and glowing colour behind. Colour direction: neon amber, golden yellow, burnt orange, electric blue, deep indigo - saturated artificial colour - neon pinks, electric blues, sodium ambers - cutting through deep black shadow. Mood: stylish, nocturnal, reflective, smoky, romantic, urban. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "Inside a nearly empty laundromat at night, viewed straight on from just above folding-table height, with washer and dryer rows forming a shallow stage and a rounded rectangular frame around the whole scene; a scooter parked between the machines is the dominant centerpiece, surrounded by drifting white steam and lint-like smoke, its rider seen from behind with a large circular target emblem on the jacket; left of center, a full-body man stands in a relaxed crossed-leg pose beside the machines, wearing a light striped shirt, bright sleeveless sweater vest, dark trousers, and dark shoes, set against wide horizontal wall stripes; across the upper back wall, open the room into an oversized deep blue sky panel with soft white cloud bands and a few thin grass stems rising subtly from the lower edges; on the back aisle floor, three small men walk toward the viewer across cobblestone-like black tiles with geometric blocks of red, blue, yellow, and green embedded into the pattern; use two adjacent dryer windows to contain a duplicated downward close-up of the same curly-haired young man as mirrored fabric-transfer faces, divided by a narrow vertical seam and thin red bands; at mid-right, include a grayscale shirtless tattooed man leaning forward over a folding table with small bottles and tabletop items; farther back, place a dark-haired woman seated at a waiting chair with a cigarette near her face, a bowl or plate and condiment-like items on a tiny side surface; weave in layered paperwork textures, dashed and solid guide lines, arrowheads, small black squares, and one blue line-drawn suited figure across machine fronts and wall graphics; hand-pulled screenprint, paper collage, risograph-like halftones, matte ink textures, cut-paper edges, slightly misregistered layers; strong central hierarchy on the scooter and smoke, supporting figures spaced rhythmically left to right, graphic symmetry softened by human poses, moody fluorescent glow mixed with dreamy sky illumination; palette of deep blue, warm yellow, orange, cream, black, grey, and white with restrained red accents, nocturnal, surreal, reflective. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Doctrine-Of-Love.jpg",
     "Modern-Classics-The-Greatest-Hits.jpg",

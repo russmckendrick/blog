@@ -39,7 +39,7 @@ settings:
   # selects down to) - only the cast is sent to the image model. Kept small: with more
   # reference faces the model splits its attention and likenesses drift
   # (env TUNES_ARTIST_PORTRAIT_INPUTS overrides this when set)
-  artist_portrait_inputs: 4
+  artist_portrait_inputs: 6
 
 # =============================================================================
 # CLASSIFICATION CONFIGURATION

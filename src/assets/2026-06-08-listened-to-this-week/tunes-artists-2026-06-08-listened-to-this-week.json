@@ -1,27 +1,85 @@
 {
+  "version": 2,
   "date": "2026-06-08",
   "type": "artist",
   "lane": null,
   "lighting": null,
-  "shootDirection": "the group at the front of a stage during soundcheck, lit warmly from the side, shot close from the empty floor looking up at them",
-  "colourTreatment": "punchy-editorial",
-  "concept": "Front-of-stage soundcheck portrait from the empty floor",
-  "scene": "At the very front edge of a small theatre stage during late-afternoon soundcheck, four chosen figures cluster naturally in a tight, upward-looking composition from the empty floor: closest to camera, the woman from the first reference leans on one hand at the lip of the stage, her braids, cross earring and dark lipstick catching a warm amber sidelight; just behind her, the long-haired man in the black turtleneck from the second reference turns slightly toward her with a calm half-smile, while deeper in frame the tall tattooed man from the first reference stands half in haze near a mic stand, head lifted into the light; anchoring the opposite side, the moustached man in the wide-brim hat from the second reference crouches near a monitor wedge, red scarf vivid against dark clothing as he glances off toward the wings. The whole image feels like one real paused moment between songs, with stage smoke, coiled cables, lacquered floor reflections and glowing side light making every face large, sharp and luminous in saturated editorial colour.",
-  "palette": [
-    "amber",
-    "crimson",
-    "midnight black",
-    "electric cyan",
-    "smoky silver"
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Low-angle duet beneath the ribbed glass dome",
+  "creativeDirection": "A slightly posed but natural outdoor portrait using a low viewpoint, bright daylight, and a soft vintage rendering anchored by the dramatic domed architecture.",
+  "scene": "On the paved open area directly in front of the ribbed glass-and-metal dome, using the base of the structure and its sweeping white ribs as the full backdrop in bright daytime.",
+  "locationSource": 2,
+  "locationSetting": "Open outdoor area beneath blue sky, dominated by a large symmetrical domed or arched glass-and-metal structure with repeating white ribs rising behind the group; no other furnishings or landscape elements are prominent.",
+  "locationEvidence": "A large outdoor glass-and-metal domed structure with repeating white ribs is clearly visible behind the subjects under open blue sky.",
+  "locationReference": 1,
+  "locationInput": "Pink-Floyd.jpg",
+  "cast": [
+    {
+      "source": 2,
+      "person": "light-skinned man with shoulder-length wavy brown hair, clean-shaven face, and a dark turtleneck",
+      "placement": "front right, closest to camera, turned partly toward the other subject"
+    },
+    {
+      "source": 1,
+      "person": "light-skinned woman with long dark hair, dramatic eyeliner, dark lipstick, and a long cross earring",
+      "placement": "left foreground, a half-step lower and slightly nearer the center, meeting his space while glancing toward camera"
+    }
   ],
+  "selection": [
+    2,
+    1
+  ],
+  "palette": [
+    "sky blue",
+    "white ribs",
+    "black",
+    "deep teal",
+    "rust red",
+    "soft skin tones"
+  ],
+  "mood": "airy, intimate, quietly self-possessed",
+  "artistSummaries": [
+    {
+      "source": 1,
+      "filename": "Sneaker-Pimps.jpg",
+      "artist": "Sneaker Pimps",
+      "description": "Three adults are shown in a soft, hazy portrait with strong backlighting and lens flare. At left foreground, a light-skinned woman with long dark hair styled partly back and partly over one shoulder faces the camera with heavy eyeliner, dark lipstick, and a long cross earring visible. Behind her stands a tall light-skinned man with short hair, clean-shaven face, and a large dark chest tattoo visible above a low neckline, looking off to the side. At right foreground, another light-skinned adult with long straight hair is shown in side profile, face partly obscured by glow and shadow, wearing a necklace and looking to the right. Clothing is mostly dark and minimally visible due to the misty exposure.",
+      "primarySubject": "The light-skinned woman at left foreground with long dark hair, dark eye makeup, dark lipstick, and a long cross earring, facing the camera.",
+      "visiblePeople": [
+        "Light-skinned woman with long dark hair, dramatic eye makeup, dark lipstick, and cross earring",
+        "Tall light-skinned man with short hair and visible chest tattoo",
+        "Light-skinned long-haired adult in right-facing side profile with necklace"
+      ],
+      "wardrobe": "Mostly dark low-visibility clothing; the woman appears bare-shouldered or in a very low-cut dark top, the man has an open neckline revealing a chest tattoo, and the right figure wears a necklace with dark clothing.",
+      "photoStyle": "Soft-focus, high-key, heavily backlit studio-style group portrait with haze, blown highlights, and lens flare.",
+      "setting": "Dark, indeterminate interior or studio-like space with the background almost completely obscured by haze and bright backlight; no clear furniture or architectural details are visible.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 2,
+      "filename": "Pink-Floyd.jpg",
+      "artist": "Pink Floyd",
+      "description": "Four light-skinned adult men pose outdoors in front of a large ribbed glass-and-metal domed structure. The most prominent man stands at front right, close to the camera, with shoulder-length wavy brown hair, clean-shaven face, and a dark turtleneck sweater, looking directly toward the camera. At front left is a man in a wide-brim black hat with medium-length dark hair, a moustache, and a reddish scarf over a teal jacket. Between them and slightly behind is a man with shaggy medium-length hair, a beard, and a red scarf, squinting slightly. At the back center, elevated above the others, stands a tall man with straight shoulder-length hair wearing a dark double-breasted coat and a patterned orange scarf. The image is shot from a low angle in bright daylight with a slightly soft, vintage look.",
+      "primarySubject": "The man at front right closest to the camera, with shoulder-length wavy brown hair, a clean-shaven face, and a dark turtleneck sweater.",
+      "visiblePeople": [
+        "Front-right man with shoulder-length wavy brown hair and dark turtleneck",
+        "Front-left man with wide-brim black hat, moustache, reddish scarf, and teal jacket",
+        "Center-rear man with shaggy medium-length hair, beard, and red scarf",
+        "Back-center tall man with straight shoulder-length hair, dark coat, and orange scarf"
+      ],
+      "wardrobe": "Dark turtleneck on the front-right man; wide-brim black hat, reddish scarf, and teal jacket on the front-left man; red scarf on the bearded center man; dark double-breasted coat and orange patterned scarf on the back-center man.",
+      "photoStyle": "Outdoor color group portrait shot from a low angle with bright natural light and a slightly soft, vintage photographic treatment.",
+      "setting": "Open outdoor area beneath blue sky, dominated by a large symmetrical domed or arched glass-and-metal structure with repeating white ribs rising behind the group; no other furnishings or landscape elements are prominent.",
+      "settingStrength": "strong"
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one original, photorealistic 16:9 group photograph that brings together the musicians shown across the 2 reference images into a single shared real-world scene. Scene: At the very front edge of a small theatre stage during late-afternoon soundcheck, four chosen figures cluster naturally in a tight, upward-looking composition from the empty floor: closest to camera, the woman from the first reference leans on one hand at the lip of the stage, her braids, cross earring and dark lipstick catching a warm amber sidelight; just behind her, the long-haired man in the black turtleneck from the second reference turns slightly toward her with a calm half-smile, while deeper in frame the tall tattooed man from the first reference stands half in haze near a mic stand, head lifted into the light; anchoring the opposite side, the moustached man in the wide-brim hat from the second reference crouches near a monitor wedge, red scarf vivid against dark clothing as he glances off toward the wings. The whole image feels like one real paused moment between songs, with stage smoke, coiled cables, lacquered floor reflections and glowing side light making every face large, sharp and luminous in saturated editorial colour. Keep every person clearly recognisable and faithful to their reference photo - preserve each face, skin tone, hair, facial hair, glasses, and overall likeness exactly as shown. Do not invent anyone who is not in the reference photos. Keep this an intimate, well-composed group, not a crowd. Where a reference photo shows a band, feature only its single most recognisable member rather than every member. Frame the group tightly - close or medium-close - so every face is large in the frame, sharp, and richly detailed, never small or distant. Arrange them naturally within the scene as one connected group sharing the same moment and light, like a real posed or candid group photo. Vary posture, depth, and where people are looking - this is a caught moment, not a band-publicity lineup evenly spaced and facing the camera. Not separate cut-outs floating side by side, and never a grid, row, or panel of squares. Render photorealistically: real skin texture, true-to-life lighting and depth of field, captured as if shot on a professional camera. This is a real photograph, not an illustration, drawing, painting, cartoon, or render. Colour treatment: bright, vivid, richly saturated editorial colour with luminous highlights and punchy contrast, drawing on amber, crimson, midnight black, electric cyan, smoky silver. Mood: intimate, magnetic, poised. Do not add any extra people beyond the reference subjects. Do not duplicate, merge, blend, or distort faces. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, extra people, background crowd, duplicated faces, cloned faces, merged faces, blended faces, morphed features, distorted faces, deformed hands, extra limbs. Photorealistic, sharp, high quality, flattering, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Open outdoor area beneath blue sky, dominated by a large symmetrical domed or arched glass-and-metal structure with repeating white ribs rising behind the group; no other furnishings or landscape elements are prominent.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. In an open paved area directly before a towering ribbed glass-and-metal dome, shoot upward so the sweeping white structural ribs rise symmetrically into blue sky and fill the background; recreate the real outdoor setting with no extra venue elements, just the dome base, open forecourt, daylight, and airy space. A light-skinned man with shoulder-length wavy brown hair in a dark turtleneck stands at front right closest to camera, angled slightly toward a light-skinned woman with long dark hair, heavy eyeliner, dark lipstick, and a long cross earring at left foreground; she stands a half-step lower and nearer center, one shoulder subtly forward, glancing toward camera while he looks past her with calm focus, creating a shared quiet moment rather than a lineup. Compose them at different depths with asymmetrical spacing and negative space above, using a low-angle 35mm environmental portrait feel, moderate depth of field, and the dome’s ribs as strong leading lines. Use bright natural daylight with soft vintage bloom and gentle contrast, preserving realistic outdoor shadows and luminous skin. Keep color slightly softened and filmic with sky blue, white, black, deep teal, and rust accents, for an airy intimate mood. Attached cast plan: Attached reference image 1: portray only light-skinned man with shoulder-length wavy brown hair, clean-shaven face, and a dark turtleneck; front right, closest to camera, turned partly toward the other subject. Attached reference image 2: portray only light-skinned woman with long dark hair, dramatic eyeliner, dark lipstick, and a long cross earring; left foreground, a half-step lower and slightly nearer the center, meeting his space while glancing toward camera. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. This generation has 2 attached cast reference images; omit any person described in the creative direction who does not have an attached reference.",
   "inputs": [
-    "Sneaker-Pimps.jpg",
-    "Pink-Floyd.jpg"
+    "Pink-Floyd.jpg",
+    "Sneaker-Pimps.jpg"
   ]
 }

@@ -1,30 +1,151 @@
 {
+  "version": 2,
   "date": "2026-05-18",
   "type": "cover",
-  "lane": "documentary-street",
-  "lighting": "fresh early-morning light with a low sun, clean cool highlights and long soft shadows",
+  "lane": null,
+  "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Sunrise street corner where sacred, industrial, and nocturnal symbols collide in everyday life",
-  "scene": "A candid 35mm early-morning street photograph on a slightly scruffy city block just after sunrise: the camera catches the sidewalk off-centre as a busker trio comes into view mid-song near an old glass phone booth, one adult singer half-turned from a microphone while a trumpet player and violinist drift in and out of the frame, echoing the silhouetted trio from the poster-like cover but rendered as real people in dark coats. Behind them, a corrugated shop shutter is painted with a large weathered red radiation symbol on sun-faded yellow, its industrial graphic bold in the low cool light. In the phone booth, taped flyers and reflective metal takeaway cups glint beside a few translucent red and green dice abandoned on the booth shelf and on the pavement gutter, while a nearby bakery window is covered with white painted line drawings of hearts, clubs, spades, and diamonds. Above the street, a realistic owl with blue-grey feathers and startling amber eyes lifts from a traffic light arm, wings spread across the top edge of the frame, caught mid-beat. On the wall farther back, a chipped devotional mural shows a haloed winged figure in brown and blue robes, making the angel motif feel native to the neighbourhood rather than staged. Cars pass, one pedestrian cuts through the foreground slightly blurred, long shadows rake across the concrete, and the whole scene feels discovered in one connected morning city moment.",
-  "palette": [
-    "sun-faded yellow",
-    "signal red",
-    "brass gold",
-    "amber",
-    "teal green"
+  "concept": "Midnight shrine at the phone booth",
+  "creativeDirection": "A layered linocut-and-gouache collage turns the urban street into a nocturnal folk-mystic stage set.",
+  "scene": "Street-level view down a dim city sidewalk at night, centered on a glass phone booth transformed into a glowing roadside shrine.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "The red radiation symbol becomes a bold halo-like emblem mounted inside the booth, read as a sacred warning sigil against a yellow inner panel."
+    },
+    {
+      "source": 2,
+      "element": "Translucent dice and reflective metal cups become votive offerings scattered at the booth threshold, catching warm amber highlights."
+    },
+    {
+      "source": 3,
+      "element": "Four dark band silhouettes appear as a small poster-like procession along the lower side panel and pavement edge, with orange sweeping lines echoing sound or wind."
+    },
+    {
+      "source": 4,
+      "element": "A large owl with spread wings perches over the phone booth roof, glowing eyes dominating the upper focal area like a guardian apparition."
+    },
+    {
+      "source": 5,
+      "element": "The haloed angel is depicted once inside the booth as the central icon figure, angled slightly and framed by the glass panes."
+    },
+    {
+      "source": 6,
+      "element": "The black-and-white city street, phone booth, trash can, storefronts, and overhead purple graphic mark provide the urban setting and compositional skeleton."
+    }
   ],
+  "palette": [
+    "midnight blue",
+    "violet",
+    "soot black",
+    "paper white",
+    "warning yellow",
+    "oxide red"
+  ],
+  "mood": "ominous, reverent, theatrical",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Radio-Activity.jpg",
+      "album": "Radio Activity",
+      "artist": "",
+      "description": "A minimalist graphic design on a solid bright yellow background, centered on a large red radiation hazard symbol with three triangular blades around a circular core. The composition is sparse and symmetrical with wide empty space around the symbol.",
+      "signatureMotif": "red radiation hazard symbol",
+      "medium": "flat graphic design",
+      "palette": [
+        "yellow",
+        "red",
+        "black"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "King.jpg",
+      "album": "King",
+      "artist": "",
+      "description": "A warm-toned photographic still life showing several translucent dice scattered on and around reflective metal cups and a metal tray. White outlined playing-card suit shapes and card-like symbols are layered across the upper half of the image. The scene is glossy and reflective, dominated by amber lighting.",
+      "signatureMotif": "scattered translucent dice on reflective metal surfaces",
+      "medium": "color photograph with graphic overlay",
+      "palette": [
+        "gold",
+        "amber",
+        "silver",
+        "red",
+        "green"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Motorcade-of-Generosity.jpg",
+      "album": "Motorcade of Generosity",
+      "artist": "",
+      "description": "A simplified print-style illustration on a white background with an orange rectangular field filled with sweeping curved lines. In front stand four dark silhouetted figures, including musicians holding instruments and a central singer at a microphone. The layout is poster-like with strong contrast and minimal detail.",
+      "signatureMotif": "silhouetted band figures over orange abstract lines",
+      "medium": "screenprint-style illustration",
+      "palette": [
+        "white",
+        "orange",
+        "dark brown"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Fly-by-Night.jpg",
+      "album": "Fly by Night",
+      "artist": "",
+      "description": "A painted fantasy image of a large owl facing forward with wings spread wide, glowing yellow eyes, and extended talons. The owl stands over a dark opening in a blue ground, with a deep purple night sky behind and sparse barren tree silhouettes near the horizon. The composition is centered and dramatic.",
+      "signatureMotif": "front-facing owl with spread wings and glowing eyes",
+      "medium": "painted illustration",
+      "palette": [
+        "blue",
+        "purple",
+        "teal",
+        "black",
+        "yellow"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Pilgrimage.jpg",
+      "album": "Pilgrimage",
+      "artist": "",
+      "description": "A stylized religious icon-like painting of an angel shown from the waist up at a diagonal angle. The figure has a golden halo, curly dark hair, large wings, and layered robes in brown, blue, and white against a blue background. The face is softly modeled while the outlines and forms are bold and graphic.",
+      "signatureMotif": "haloed angel with large wings",
+      "medium": "icon-style painting",
+      "palette": [
+        "blue",
+        "gold",
+        "brown",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Pocket-Full-of-Kryptonite.jpg",
+      "album": "Pocket Full of Kryptonite",
+      "artist": "",
+      "description": "A black-and-white urban street photograph at dusk or night, showing a sidewalk with a glass phone booth near the center and a cylindrical mesh trash can in the foreground at right. Cars, storefronts, streetlights, and a few distant pedestrians line the street under a cloudy sky. A large purple hand-drawn style graphic element overlays the upper portion of the image.",
+      "signatureMotif": "street-side phone booth",
+      "medium": "black-and-white photograph with colored graphic overlay",
+      "palette": [
+        "black",
+        "white",
+        "gray",
+        "purple"
+      ]
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one candid 35mm documentary street photograph - honest reportage with natural imperfection, subtle film grain, and real life caught mid-moment. The image is a 16:9 music blog header. Scene: A candid 35mm early-morning street photograph on a slightly scruffy city block just after sunrise: the camera catches the sidewalk off-centre as a busker trio comes into view mid-song near an old glass phone booth, one adult singer half-turned from a microphone while a trumpet player and violinist drift in and out of the frame, echoing the silhouetted trio from the poster-like cover but rendered as real people in dark coats. Behind them, a corrugated shop shutter is painted with a large weathered red radiation symbol on sun-faded yellow, its industrial graphic bold in the low cool light. In the phone booth, taped flyers and reflective metal takeaway cups glint beside a few translucent red and green dice abandoned on the booth shelf and on the pavement gutter, while a nearby bakery window is covered with white painted line drawings of hearts, clubs, spades, and diamonds. Above the street, a realistic owl with blue-grey feathers and startling amber eyes lifts from a traffic light arm, wings spread across the top edge of the frame, caught mid-beat. On the wall farther back, a chipped devotional mural shows a haloed winged figure in brown and blue robes, making the angel motif feel native to the neighbourhood rather than staged. Cars pass, one pedestrian cuts through the foreground slightly blurred, long shadows rake across the concrete, and the whole scene feels discovered in one connected morning city moment. Weave in recognisable elements taken from the 6 uploaded album covers: source 1: a large red radiation symbol painted on a yellow shutter; source 2: translucent dice among reflective metal cups; source 3: a wide-winged owl with glowing yellow eyes; source 4: a trio of street musicians: singer, trumpeter, and violinist; source 5: a haloed winged angel figure as a mural; source 6: an old glass phone booth on a city sidewalk. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Let each album motif appear as a real thing genuinely found in the location - painted on a shutter, carried by a passer-by, stacked outside a shop, perched on a wire - discovered by the camera, never staged for it. Composition: An off-centre, imperfect frame caught mid-moment: subjects moving through the shot, half-glimpsed details, layered foreground and background life. Colour direction: sun-faded yellow, signal red, brass gold, amber, teal green - true-to-life colour with the natural palette of the place, accented by the boldest colours from the sleeves. Time of day and light: fresh early-morning light with a low sun, clean cool highlights and long soft shadows. Mood: mysterious, lively, reverent, and slightly uncanny. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "Street-level view down a deserted city sidewalk at night, centered on a glass phone booth transformed into a glowing roadside shrine; inside the booth, one haloed angel icon is the primary subject, shown waist-up at a slight diagonal with bold wings and graphic robes, framed by the booth’s glass panes; above the booth roof a large front-facing owl spreads its wings wide, glowing yellow eyes fixed outward as a guardian presence; mount a red radiation hazard symbol inside the booth behind the angel on a bright yellow panel so it reads like a sacred warning sigil; scatter translucent dice, reflective metal cups, and a shallow metal tray at the booth threshold as votive offerings with glossy amber reflections; along one side panel and across the pavement edge, integrate a small poster-like band of four dark musician silhouettes with sweeping orange lines behind them, secondary in scale like printed ephemera or shadow-performance; include the cylindrical mesh trash can in the foreground at right, with storefronts, parked cars, distant pedestrians, and cloudy sky receding in monochrome; let a loose purple hand-drawn graphic sweep across the upper sky area; create it as a layered linocut-and-gouache collage with screenprinted textures, cut-paper edges, bold silhouette shapes, painted glow, and inked urban details; compose with the booth and angel as the clear center, owl as dominant crown, offerings low in the foreground, and supporting street details tapering outward; use dramatic nocturnal lighting with cool blue-violet street darkness contrasted by warm amber shrine light from within the booth; palette of midnight blue, purple, black, white, warning yellow, oxide red, and amber gold, with an ominous, reverent, theatrical mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Radio-Activity.jpg",
     "King.jpg",
-    "Fly-by-Night.jpg",
     "Motorcade-of-Generosity.jpg",
+    "Fly-by-Night.jpg",
     "Pilgrimage.jpg",
     "Pocket-Full-of-Kryptonite.jpg"
   ]

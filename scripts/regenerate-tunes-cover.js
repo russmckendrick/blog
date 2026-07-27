@@ -11,6 +11,7 @@ import { readTunesPostContext } from './lib/tunes-post-context.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const rootDir = path.join(__dirname, '..')
+export const DEFAULT_RECENT_WEEK_LIMIT = 20
 
 function parseArgs(args) {
   const options = {
@@ -43,8 +44,10 @@ function parseArgs(args) {
   return options
 }
 
-async function getRecentWeeks(limit = 10) {
-  const assetsDir = path.join(rootDir, 'public', 'assets')
+export async function getRecentWeeks(
+  limit = DEFAULT_RECENT_WEEK_LIMIT,
+  assetsDir = path.join(rootDir, 'public', 'assets')
+) {
   const entries = await fs.readdir(assetsDir, { withFileTypes: true })
   return entries
     .filter(entry => entry.isDirectory() && entry.name.endsWith('-listened-to-this-week'))
@@ -107,7 +110,8 @@ Options:
                       portrait). Interactive picker if omitted.
   --header            Shorthand for --type=header
   --artist            Shorthand for --type=artist
-  --week=<date>       Week date, e.g. 2026-04-20 (interactive picker if omitted)
+  --week=<date>       Week date, e.g. 2026-04-20 (picker shows the most recent 20
+                      weeks when omitted)
   --hint=<string>     Optional steer for the selected image's AI art director
   --record            Append the run to scripts/.tunes-image-history.json (off by
                       default here so regenerating old weeks does not pollute the
@@ -290,7 +294,9 @@ async function main() {
   console.log(`  Small: ${result.smallOutputPath}`)
 }
 
-main().catch(error => {
-  console.error(`Error: ${error.message}`)
-  process.exit(1)
-})
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch(error => {
+    console.error(`Error: ${error.message}`)
+    process.exit(1)
+  })
+}

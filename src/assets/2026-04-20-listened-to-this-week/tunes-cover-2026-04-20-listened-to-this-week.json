@@ -1,32 +1,175 @@
 {
+  "version": 2,
   "date": "2026-04-20",
   "type": "cover",
-  "lane": "miniature-diorama",
-  "lighting": "dramatic stormlight with sun breaking through, bright shafts of light against dark cloud",
+  "lane": null,
+  "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Stormlit miniature space-coast fairground where music icons merge into one world",
-  "scene": "An elevated three-quarter view reveals a stormlit handmade miniature fairground-on-the-edge-of-space built from stained wood, felt, paper, clay, and chrome-painted card: at the center-left a tiny winding coastal road carries a meticulously crafted mod-style scooter model through swirling cotton-wool fog, its little mirrors catching miniature printed portrait fragments; above the road, a marionette-like adult mannequin with tousled dark hair leans forward from a blue-violet paper proscenium, oversized clay hands outstretched toward dangling white paper stars. To the right, a toy concert terrace rises from foam rock, packed with simplified adult crowd figurines with raised arms, all turned toward the same unfolding spectacle rather than posed for camera. Emerging from behind the terrace, a silver serving platter becomes a hilltop platform planted with felt sunflowers, daisies, pink blossoms, a tiny globe, a white dove, a butterfly, and a small golden sun emblem, as if a cosmic garden has landed in the town. A retro rocket with a smiling painted pilot arcs low across the scene on a wire, leaving a spark trail that points toward a toppled amber glass vacuum tube reimagined as a giant industrial tunnel or power core embedded in the landscape, its metal pins jutting like smokestacks where the skyline has collapsed. Overhead, dark storm clouds made from dyed batting part to let warm shafts of sunlight rake across the miniature world, igniting checkerboard details, chrome edges, halftone poster murals in cyan and red on retaining walls, and the hanging stars, while tilt-shift blur softens the outer edges so the whole connected world feels toy-sized yet epic.",
-  "palette": [
-    "deep blue-violet",
-    "amber yellow",
-    "warm black",
-    "chrome silver",
-    "burnt orange"
+  "concept": "Celestial banquet inside a broken radio tube",
+  "creativeDirection": "A hand-built mixed-media shadowbox collage combines vintage scientific objects, screenprint textures, and theatrical miniature stagecraft.",
+  "scene": "Cutaway view into a giant horizontal vacuum tube transformed into a miniature cosmic proscenium, seen slightly from the left so the metal pins anchor the foreground and the glass chamber opens into a deep star-filled interior.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "The entire setting is built inside an enlarged amber vacuum tube, with its pins, dark base, and curved glass defining the architecture."
+    },
+    {
+      "source": 2,
+      "element": "One central figure reaches both hands forward from midstage, palms enlarged in perspective, surrounded by dangling glowing star ornaments."
+    },
+    {
+      "source": 3,
+      "element": "A scooter sits off to the lower left like a backstage prop, with its cluster of round mirrors catching tiny abstract reflections and the rider implied from behind by a jacket marked with a target emblem."
+    },
+    {
+      "source": 4,
+      "element": "A pale blue halftone human silhouette becomes a torn screenprinted backdrop panel hovering behind the main figure."
+    },
+    {
+      "source": 5,
+      "element": "A formal sleeve-held serving tray floats to the right carrying Earth, oversized flowers, a white dove, butterfly, and sun ornament as a surreal secondary still life."
+    },
+    {
+      "source": 6,
+      "element": "A toy rocket with a grinning devil rider streaks diagonally through the upper background like a mischievous marquee ornament, with checkerboard details and spark bursts."
+    },
+    {
+      "source": 7,
+      "element": "At the far end of the tube, a dense monochrome crowd forms the audience wall, with a single performer silhouette from behind raising both arms toward them."
+    }
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": null,
-  "restyled": false,
-  "model": "fal-ai/nano-banana-2/edit",
-  "prompt": "Create one photograph of a handcrafted miniature diorama - a tiny physical model world built by hand and photographed with tilt-shift focus. The image is a 16:9 music blog header. Scene: An elevated three-quarter view reveals a stormlit handmade miniature fairground-on-the-edge-of-space built from stained wood, felt, paper, clay, and chrome-painted card: at the center-left a tiny winding coastal road carries a meticulously crafted mod-style scooter model through swirling cotton-wool fog, its little mirrors catching miniature printed portrait fragments; above the road, a marionette-like adult mannequin with tousled dark hair leans forward from a blue-violet paper proscenium, oversized clay hands outstretched toward dangling white paper stars. To the right, a toy concert terrace rises from foam rock, packed with simplified adult crowd figurines with raised arms, all turned toward the same unfolding spectacle rather than posed for camera. Emerging from behind the terrace, a silver serving platter becomes a hilltop platform planted with felt sunflowers, daisies, pink blossoms, a tiny globe, a white dove, a butterfly, and a small golden sun emblem, as if a cosmic garden has landed in the town. A retro rocket with a smiling painted pilot arcs low across the scene on a wire, leaving a spark trail that points toward a toppled amber glass vacuum tube reimagined as a giant industrial tunnel or power core embedded in the landscape, its metal pins jutting like smokestacks where the skyline has collapsed. Overhead, dark storm clouds made from dyed batting part to let warm shafts of sunlight rake across the miniature world, igniting checkerboard details, chrome edges, halftone poster murals in cyan and red on retaining walls, and the hanging stars, while tilt-shift blur softens the outer edges so the whole connected world feels toy-sized yet epic. Weave in recognisable elements taken from the 7 uploaded album covers: source 1: dangling white stars around oversized outstretched hands; source 2: amber glass vacuum tube with protruding metal pins; source 3: retro rocket with grinning toy pilot; source 4: mod scooter with multiple mirrors in fog; source 5: cyan-and-red halftone adult figure mural; source 6: silver platter carrying Earth, flowers, dove, butterfly, and sun emblem; source 7: dense cheering crowd with raised arms behind a central performer. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Build each album motif as a tiny handmade model - hand-built foam hills, paper trees, clay figures, matchstick structures - clearly crafted and clearly miniature, yet instantly recognisable. Composition: An elevated three-quarter view over one small self-contained world, tilt-shift blur softening the edges of the frame. Colour direction: deep blue-violet, amber yellow, warm black, chrome silver, burnt orange - warm toy-like colour, like stained wood, felt, and modelling clay. Time of day and light: dramatic stormlight with sun breaking through, bright shafts of light against dark cloud. Mood: exultant, surreal, storm-charged, nostalgic. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "palette": [
+    "amber",
+    "deep blue",
+    "violet",
+    "black",
+    "cream",
+    "pale blue"
+  ],
+  "mood": "surreal, electric, theatrical",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "We-Lost-the-Skyline.jpg",
+      "album": "We Lost the Skyline",
+      "artist": "",
+      "description": "A close-up photograph of a glass electronic vacuum tube lying horizontally across a pale background. The metal pins and dark base are on the left, with the cylindrical glass body extending to the right. The image is softly lit and slightly blurred at the edges, with a minimal composition and large empty space around the object.",
+      "signatureMotif": "vacuum tube",
+      "medium": "photograph",
+      "palette": [
+        "amber",
+        "gold",
+        "brown",
+        "black",
+        "cream"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Greatest-Hits.jpg",
+      "album": "Greatest Hits",
+      "artist": "",
+      "description": "A distorted, wide-angle photograph of a person facing the camera with both hands thrust forward, palms open and dominating the foreground. Bright glowing star shapes are scattered across the image and hang on strings from above around the figure. The person has dark tousled hair and wears dark clothing, set against a deep blue and purple studio-like background.",
+      "signatureMotif": "outstretched hands surrounded by glowing stars",
+      "medium": "photograph with graphic light effects",
+      "palette": [
+        "blue",
+        "purple",
+        "black",
+        "white",
+        "orange"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Quadrophenia.jpg",
+      "album": "Quadrophenia",
+      "artist": "",
+      "description": "A black-and-white photograph of a young man standing beside or straddling a scooter, viewed mostly from behind in a smoky setting. He wears a jacket with a circular target-like emblem on the back, and the scooter has multiple round mirrors reflecting small faces. The composition is framed by empty smoky space and the vehicle occupies the lower left portion.",
+      "signatureMotif": "man with scooter and multiple mirrors",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "grey",
+        "white"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Stacked-Up.jpg",
+      "album": "Stacked Up",
+      "artist": "",
+      "description": "A high-contrast graphic image showing an abstract, posterized human figure in pale blue and white against a dark speckled background. Thick black shapes cut across the top, and the figure appears partially obscured and blurred, with a rough halftone texture throughout. The composition feels layered and screen-printed.",
+      "signatureMotif": "abstract blue human figure",
+      "medium": "graphic halftone illustration",
+      "palette": [
+        "light blue",
+        "navy",
+        "black",
+        "white",
+        "red"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Rule-The-World.jpg",
+      "album": "Rule The World",
+      "artist": "",
+      "description": "A collage-style image set against a starry black space background. A hand in a dark suit sleeve holds up a silver serving tray, on which sit the Earth, large colorful flowers, a white dove, a butterfly, and a small golden sun-like ornament. The objects are arranged like a surreal still life floating in space.",
+      "signatureMotif": "serving tray holding Earth and flowers",
+      "medium": "digital collage",
+      "palette": [
+        "black",
+        "blue",
+        "green",
+        "yellow",
+        "white"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Porno-for-Pyros.jpg",
+      "album": "Porno for Pyros",
+      "artist": "",
+      "description": "A colorful illustrated space scene with a toy-like rocket ship flying diagonally across a black starry background. A grinning devilish figure rides in the rocket, which has a pointed nose, checkerboard pattern, and flame shooting from the rear. Around it are bright fireworks-like bursts, stars, and a comet-like streak.",
+      "signatureMotif": "toy rocket with grinning devil figure",
+      "medium": "illustration",
+      "palette": [
+        "black",
+        "orange",
+        "red",
+        "blue",
+        "purple"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "The-Best-Of-Suede-Beautiful-Ones-1992-2018.jpg",
+      "album": "The Best Of Suede Beautiful Ones 1992 2018",
+      "artist": "",
+      "description": "A monochrome concert photograph showing a performer from behind at center foreground with both arms raised toward a dense crowd. The audience fills the entire frame, many people clapping, reaching upward, or holding phones and cameras. The image is tightly packed and energetic, with the performer silhouetted against the sea of faces.",
+      "signatureMotif": "performer with raised arms facing a crowd",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "grey",
+        "white",
+        "sepia"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Cutaway view into a giant horizontal vacuum tube transformed into a miniature cosmic proscenium, seen slightly from the left so the metal pins and dark base sit in the near foreground and the curved glass chamber opens into a deep stage-like interior; a single dark-haired figure at center reaches both hands dramatically toward the viewer, the palms enlarged by perspective, with glowing star ornaments hanging on strings around them; the tube itself is amber glass with soft cream highlights and lots of negative space at the front edge, a scooter rests in the lower left like a backstage relic with several round mirrors catching tiny abstract reflections and a back-turned rider suggested only by a jacket with a target emblem, a torn pale blue halftone human silhouette hangs behind the central figure as a screenprinted backdrop, to the right a suited arm presents a silver tray carrying a miniature Earth, bold flowers, a white dove, a butterfly, and a small golden sun, in the upper background a toy rocket with a grinning devil rider flies diagonally with checkerboard pattern, flame trail, comet streak, and celebratory spark bursts, and at the far end of the tube a tightly packed monochrome crowd fills the rear wall while one performer silhouette from behind raises both arms toward them; hand-built mixed-media shadowbox collage, combining cut paper, screenprint halftone textures, painted wood miniatures, translucent resin, vintage photo fragments, and theatrical diorama craft; strong left-to-right depth, clear hierarchy with the reaching figure first and the tray second, asymmetrical composition, soft internal glow through the tube glass, pinprick star lighting, moody rim light, subtle haze; palette of amber, deep blue, violet, black, cream, pale blue, silver, and charcoal, surreal electric theatrical mood Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
-    "Greatest-Hits.jpg",
     "We-Lost-the-Skyline.jpg",
-    "Porno-for-Pyros.jpg",
+    "Greatest-Hits.jpg",
     "Quadrophenia.jpg",
     "Stacked-Up.jpg",
     "Rule-The-World.jpg",
+    "Porno-for-Pyros.jpg",
     "The-Best-Of-Suede-Beautiful-Ones-1992-2018.jpg"
   ]
 }

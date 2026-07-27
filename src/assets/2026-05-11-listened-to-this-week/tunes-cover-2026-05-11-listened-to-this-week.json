@@ -1,33 +1,195 @@
 {
+  "version": 2,
   "date": "2026-05-11",
   "type": "cover",
-  "lane": "miniature-diorama",
-  "lighting": "deep blue-hour twilight just after sunset, a saturated blue sky with warm artificial lights starting to glow",
+  "lane": null,
+  "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Blue-hour miniature ritual landscape where psychedelic album worlds meet on basalt steps",
-  "scene": "An elevated three-quarter photograph of a handmade miniature twilight dreamscape: a tiny rocky amphitheater of hand-carved hexagonal foam stones and shallow resin pools climbs toward a glowing circular tunnel built from stacked torn-paper rings in amber, rust, and cream, its center lit like a tiny sunset lamp. Nestled among the stones is a plush valley of pale pink feather-like felt, where a small blurred black-and-white soft sculpture peeks out. On one ridge stands a miniature red clay devil-costume mannequin with little horns and purple paper bat wings, posed as if listening toward the radiant tunnel, while behind it a deep blue painted sky panel is speckled with tiny stars and wrapped by swirling yellow-orange translucent resin arcs like cosmic flames. Nearby, a weathered mural panel leans against the rocks showing a smudged sideways adult face in green, blue, and cream pastel washes with a dark handprint-like burst beneath it. A tiny bespectacled guitarist figurine in navy and rose tones crosses a stone path carrying a black-and-cream model guitar, heading toward a shrine made from the symmetrical abstract motif reimagined as a glowing stained-acrylic insect-mask lantern, its colored droplets suspended on thin wires above the path. The ground and backdrop are patched with dusty blue and blush painted canvas textures, with little clusters of white clay seeds embedded like wildflowers. Warm pin lights glow from cracks in the stones and inside the ring tunnel, while the saturated blue-hour sky cools the shadows; tilt-shift focus keeps the center crisp and lets the edges melt softly, emphasizing the toy-sized handmade world.",
-  "palette": [
-    "saturated twilight blue",
-    "amber orange",
-    "golden yellow",
-    "rust red",
-    "clay crimson"
+  "concept": "Moonlit tide altar of feathers and fire",
+  "creativeDirection": "A hand-built theatrical mixed-media diorama photographed like a surreal stage set, combining sculpted forms, painted backdrops, feather textures, and woodcut relief elements.",
+  "scene": "A low, slightly wide view across a shallow reflective tidal flat toward a glowing altar-like formation at center, as if looking into a dream ritual assembled on a shoreline at night.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "A radiant central halo made of concentric torn-paper rings, glowing like a small sun or portal above the waterline."
+    },
+    {
+      "source": 2,
+      "element": "Symmetrical translucent blob forms become stacked glassy shrine ornaments flanking the center, with a subtle decorative vertical trim worked into one side structure."
+    },
+    {
+      "source": 3,
+      "element": "A small red winged devil figure stands as the central idol on the altar, glowing against a blue starry oval niche."
+    },
+    {
+      "source": 4,
+      "element": "The setting is a reflective tidal expanse with a lone silhouetted person standing waist-deep in water in the foreground, facing the distant structure; a tall sailing ship sits on the horizon."
+    },
+    {
+      "source": 5,
+      "element": "A snarling black-and-white animal head appears as a carved relief mask at the base of the shrine, with sharp architectural slashes framing parts of the set."
+    },
+    {
+      "source": 6,
+      "element": "A blurred painted face is worked into the clouds and mist as a ghostly atmospheric apparition rather than a separate portrait object."
+    },
+    {
+      "source": 7,
+      "element": "Dense pink feathers form draped banners and shoreline textures around the altar, with a dark sprayed mark smudged across one feather mass."
+    },
+    {
+      "source": 8,
+      "element": "The sky panels and tidal set floor carry rough blue-pink painted texture with faint embedded marks, plus two small white grain clusters placed in the lower midground like ritual offerings."
+    }
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": null,
-  "restyled": false,
-  "model": "fal-ai/nano-banana-2/edit",
-  "prompt": "Create one photograph of a handcrafted miniature diorama - a tiny physical model world built by hand and photographed with tilt-shift focus. The image is a 16:9 music blog header. Scene: An elevated three-quarter photograph of a handmade miniature twilight dreamscape: a tiny rocky amphitheater of hand-carved hexagonal foam stones and shallow resin pools climbs toward a glowing circular tunnel built from stacked torn-paper rings in amber, rust, and cream, its center lit like a tiny sunset lamp. Nestled among the stones is a plush valley of pale pink feather-like felt, where a small blurred black-and-white soft sculpture peeks out. On one ridge stands a miniature red clay devil-costume mannequin with little horns and purple paper bat wings, posed as if listening toward the radiant tunnel, while behind it a deep blue painted sky panel is speckled with tiny stars and wrapped by swirling yellow-orange translucent resin arcs like cosmic flames. Nearby, a weathered mural panel leans against the rocks showing a smudged sideways adult face in green, blue, and cream pastel washes with a dark handprint-like burst beneath it. A tiny bespectacled guitarist figurine in navy and rose tones crosses a stone path carrying a black-and-cream model guitar, heading toward a shrine made from the symmetrical abstract motif reimagined as a glowing stained-acrylic insect-mask lantern, its colored droplets suspended on thin wires above the path. The ground and backdrop are patched with dusty blue and blush painted canvas textures, with little clusters of white clay seeds embedded like wildflowers. Warm pin lights glow from cracks in the stones and inside the ring tunnel, while the saturated blue-hour sky cools the shadows; tilt-shift focus keeps the center crisp and lets the edges melt softly, emphasizing the toy-sized handmade world. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: red horned winged devil figure framed by swirling fiery cosmic bands; source 2: glowing concentric ring tunnel with a small face in the bright center; source 3: bed of pale pink feathers with a blurred black-and-white object nestled inside; source 4: smudged sideways painted face with green-black hair and a dark burst below; source 5: round-glasses guitarist holding an electric guitar diagonally; source 6: symmetrical multicolored glowing abstract totem or insect-mask form; source 7: hexagonal basalt-like stone field under a vivid warm sky with mannequin-like crawling figures reimagined safely; source 8: dusty blue and blush textured painted surface with small white seed clusters. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Build each album motif as a tiny handmade model - hand-built foam hills, paper trees, clay figures, matchstick structures - clearly crafted and clearly miniature, yet instantly recognisable. Composition: An elevated three-quarter view over one small self-contained world, tilt-shift blur softening the edges of the frame. Colour direction: saturated twilight blue, amber orange, golden yellow, rust red, clay crimson - warm toy-like colour, like stained wood, felt, and modelling clay. Time of day and light: deep blue-hour twilight just after sunset, a saturated blue sky with warm artificial lights starting to glow. Mood: surreal, playful, mystical. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "palette": [
+    "ember orange",
+    "sulfur yellow",
+    "crimson red",
+    "midnight blue",
+    "soft pink",
+    "black"
+  ],
+  "mood": "mystical, ominous, ceremonial",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Songs-in-the-Key-of-Life.jpg",
+      "album": "Songs in the Key of Life",
+      "artist": "",
+      "description": "Concentric irregular rings radiate outward from a bright white center, resembling torn paper or glowing ripples. In the middle is a small monochrome line portrait of a face. The composition is centered and circular, filling the square frame.",
+      "signatureMotif": "concentric glowing rings",
+      "medium": "graphic illustration",
+      "palette": [
+        "orange",
+        "red",
+        "yellow",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Precreation-Percolation.jpg",
+      "album": "Precreation Percolation",
+      "artist": "",
+      "description": "A symmetrical abstract composition of translucent rounded shapes and blobs is stacked around a central vertical axis. The forms overlap in layers, creating a mirrored, kaleidoscopic effect against a dark gradient background. A decorative vertical border runs along the left edge.",
+      "signatureMotif": "symmetrical multicoloured abstract blob formation",
+      "medium": "digital abstract art",
+      "palette": [
+        "red",
+        "green",
+        "teal",
+        "yellow",
+        "orange"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Devil-Hopping.jpg",
+      "album": "Devil Hopping",
+      "artist": "",
+      "description": "A red humanoid devil figure stands in the center with small horns and one visible bat-like wing, posed with one hand raised near its head. Behind it is a blue, starry, space-like oval area, surrounded by swirling hot yellow, orange, and red shapes at the edges. The figure is outlined with a bright glow.",
+      "signatureMotif": "red winged devil figure",
+      "medium": "collage-like digital illustration",
+      "palette": [
+        "red",
+        "yellow",
+        "orange",
+        "blue",
+        "black"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "The-Tall-Ships.jpg",
+      "album": "The Tall Ships",
+      "artist": "",
+      "description": "A silhouetted person stands waist-deep in reflective water in the foreground, facing toward the distance. Far ahead, a tall sailing ship appears on the horizon. Dramatic clouds and bright light fill the sky, mirrored in the water, while the right side of the cover is dominated by a large dark area.",
+      "signatureMotif": "silhouetted figure standing in reflective water",
+      "medium": "photographic composite",
+      "palette": [
+        "black",
+        "dark brown",
+        "red",
+        "orange",
+        "white"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "King-For-a-Day-Fool-For-a-Lifetime.jpg",
+      "album": "King For a Day Fool For a Lifetime",
+      "artist": "",
+      "description": "A stark high-contrast illustration shows a snarling cat or wolf-like animal in the foreground with bared fangs and spiral eyes. Behind it stands a uniformed man in a cap and long coat, seen from a low angle. Angular architectural lines fill the background. The image uses a limited red, black, and white scheme.",
+      "signatureMotif": "snarling black-and-white animal head",
+      "medium": "woodcut-style illustration",
+      "palette": [
+        "red",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "1-Outside-The-Nathan-Adler-Diaries-A-Hyper-Cycle.jpg",
+      "album": "1 Outside The Nathan Adler Diaries A Hyper Cycle",
+      "artist": "",
+      "description": "A soft, hazy painted image of a tilted human face emerges from a pale background. The features are partially obscured by smudges and washes of green, pink, blue, brown, and black, giving the portrait a ghostly, distressed appearance. The composition is loose and atmospheric.",
+      "signatureMotif": "blurred painted face",
+      "medium": "mixed-media painting",
+      "palette": [
+        "cream",
+        "green",
+        "pink",
+        "blue",
+        "brown"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Garbage.jpg",
+      "album": "Garbage",
+      "artist": "",
+      "description": "The entire cover is filled with soft pink feathers layered densely across the frame. Near the center is a blurred dark spray-painted mark or symbol over the feathers. The composition is simple and texture-focused.",
+      "signatureMotif": "pink feather background",
+      "medium": "photograph with overlaid spray-paint effect",
+      "palette": [
+        "pink",
+        "light pink",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Remember-The-Humans.jpg",
+      "album": "Remember The Humans",
+      "artist": "",
+      "description": "A textured painted canvas in muted blue and pink fills the cover, with visible brushwork and rough surface detail. Faint line drawings and abstract marks are embedded in the background. Two small clusters of white rice-like grains appear near the lower half, one left of center and one right of center.",
+      "signatureMotif": "textured blue-pink painted canvas with two white grain clusters",
+      "medium": "mixed-media painting on canvas",
+      "palette": [
+        "blue",
+        "pink",
+        "white",
+        "gray"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "A low, slightly wide view across a shallow mirror-like tidal flat at night toward a surreal altar on the distant waterline; in the foreground a lone silhouetted person stands waist-deep in reflective water facing the structure, while far on the horizon a tall sailing ship is barely visible. At the center, a small red winged devil figure stands as an idol inside a blue starry oval niche, crowned by concentric irregular glowing rings made from torn paper radiating from a bright white core; flanking it are symmetrical translucent multicoloured blob formations like stacked glass shrine ornaments, with a subtle decorative vertical border integrated into one side. At the base of the altar, a snarling black-and-white animal head appears as a carved relief mask, backed by angular architectural slashes; pink feathers are draped densely as banners and shoreline accumulations around the structure, one carrying a blurred black spray-painted smear; a ghostly blurred painted face emerges softly within the clouds and mist overhead; the sky backdrop and wet ground are textured with rough blue-and-pink painted canvas brushwork and faint linear markings, with two small clusters of white rice-like grains placed in the lower midground as offerings. Hand-built theatrical mixed-media diorama, photographed as a surreal stage set, combining sculpted paper rings, feather assemblage, translucent resin-like forms, painted canvas backdrops, woodcut-style relief carving, and atmospheric airbrushed haze. Strong central hierarchy with the glowing altar dominant, the silhouetted figure secondary in the foreground, supporting motifs embedded around the shrine; expansive negative darkness on one side, mirror reflections stretching downward, dramatic backlight from the central halo and low moonlit rim light across the water. Palette of ember orange, sulfur yellow, crimson, midnight blue, soft pink, black, and chalk white; mood mystical, ominous, ceremonial. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
-    "Devil-Hopping.jpg",
     "Songs-in-the-Key-of-Life.jpg",
-    "Garbage.jpg",
-    "1-Outside-The-Nathan-Adler-Diaries-A-Hyper-Cycle.jpg",
-    "1974-Penn-State-University.jpg",
     "Precreation-Percolation.jpg",
-    "Houses-of-the-Holy.jpg",
+    "Devil-Hopping.jpg",
+    "The-Tall-Ships.jpg",
+    "King-For-a-Day-Fool-For-a-Lifetime.jpg",
+    "1-Outside-The-Nathan-Adler-Diaries-A-Hyper-Cycle.jpg",
+    "Garbage.jpg",
     "Remember-The-Humans.jpg"
   ]
 }

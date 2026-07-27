@@ -186,11 +186,20 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
   const artDirection = await designArtistArtDirection({
     artistSummaries,
     sourceReferences,
+    imageUrls: candidateUrls,
     featureCount: castSize,
     hint: options.hint,
     avoidConcepts,
     debug
   })
+  if (debug) {
+    const locationPath = candidatePaths[artDirection.locationSource - 1]
+    console.log(
+      `  Location anchor: source ${artDirection.locationSource} (${path.basename(locationPath || 'unknown')})`
+    )
+    console.log(`    Setting: ${artDirection.locationSetting}`)
+    console.log(`    Evidence: ${artDirection.locationEvidence}`)
+  }
 
   // Resolve the cast: map selected source numbers back to candidates and retain only those
   // original photos for the final multi-reference generation call.
@@ -259,6 +268,11 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
         concept: artDirection.concept,
         creativeDirection: artDirection.creativeDirection,
         scene: artDirection.scene,
+        locationSource: artDirection.locationSource,
+        locationSetting: artDirection.locationSetting,
+        locationEvidence: artDirection.locationEvidence,
+        locationReference: selectedSources.indexOf(artDirection.locationSource) + 1,
+        locationInput: path.basename(bySource.get(artDirection.locationSource)?.path || ''),
         cast: artDirection.cast,
         selection: artDirection.selection,
         palette: artDirection.palette,
@@ -287,6 +301,10 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
         backend: backend.id,
         creativeDirection: artDirection.creativeDirection,
         concept: artDirection.concept,
+        locationSource: artDirection.locationSource,
+        locationSetting: artDirection.locationSetting,
+        locationEvidence: artDirection.locationEvidence,
+        locationInput: bySource.get(artDirection.locationSource)?.path || '',
         artistSummaries,
         mode: 'summaries_to_prompt',
         prompt
@@ -381,9 +399,12 @@ Options:
 
 Notes:
   - Requires FAL_KEY.
+  - Requires OPENAI_API_KEY for factual photo research. Artist research fails closed
+    after one retry; set TUNES_ARTIST_ALLOW_DEGRADED_SUMMARIES=1 only to explicitly
+    allow filename-based fallback summaries.
   - Uses two separate OpenAI passes when OPENAI_API_KEY is available: factual photo
-    summaries first, then autonomous casting and photographic art direction from those
-    summaries alone. Recent concepts are passed as do-not-repeat instructions.
+    summaries first, then casting and photographic art direction using those findings
+    plus the candidate photos to anchor the scene to their strongest visible location.
   - OPENAI_TUNES_ARTIST_SUMMARY_MODEL and OPENAI_TUNES_ARTIST_DIRECTION_MODEL can
     override the two prompt stages; OPENAI_TUNES_ARTIST_MODEL is their shared fallback.
   - Uploads the top TUNES_ARTIST_PORTRAIT_CANDIDATES artists (default 12) as casting

@@ -1,33 +1,195 @@
 {
+  "version": 2,
   "date": "2026-06-22",
   "type": "cover",
-  "lane": "painterly-gouache",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Cosmic caravan menagerie at twilight",
-  "scene": "A gouache painting of a twilight caravan courtyard that opens onto a cosmic pasture: the clear focal point is a warmly lit cutaway caravan interior whose doorway frames an adult celestial woman in flowing blue-green robes seated on a golden star as if it has drifted down to rest beside the threshold. Around her, several goats wander in and out of the sandy yard, their coats painted with loose modernist stripe-and-arc markings in mustard, teal, orange, red, and blue, echoing abstract signage on the caravan wall; a single thin black dash appears as a minimalist hanging bar above the doorway. Inside, the caravan keeps its enchanted clutter—checkerboard floor, chandelier, fireplace, red chair, ladder, indoor tree with autumn leaves, red rotary phone, lizard, model sailboat, and spotted dog—while in the cool shadows beyond the firelight stands a towering blue winged armoured statue with feather-like metallic spines, rendered as a protective guardian rather than a threat. Overhead, the night deepens into indigo space with soft planets and a ringed world, while along the roofline and fence appear angular red-and-gold shard motifs like painted trim. The gouache surface is matte and tactile, with visible brushwork binding the cosmic sky, pastoral animals, geometric patterns, and eccentric interior into one storybook world of warm firelight against cool celestial shadow.",
+  "concept": "Celestial rehearsal inside a cutaway caravan",
+  "creativeDirection": "A richly layered editorial gouache-and-collage illustration merges cosmic fantasy with graphic minimalism inside a theatrical trailer interior.",
+  "scene": "Wide 16:9 cutaway view into a weathered caravan parked in a dark open field at night, seen straight-on like a stage set with the roof peeled away and the surrounding sky visible.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "A golden five-pointed star floats as the main seat near the center, with a young woman in a draped blue-green, red, and cream dress posed sideways on it; small painted planets and a comet trail appear through the caravan windows and open roof."
+    },
+    {
+      "source": 2,
+      "element": "One pale figure in an oversized bright red garment appears at left, pressing both hands to their cheeks; their portrait is transformed into staggered vertical paper-strip slices, like hanging cut collage panels."
+    },
+    {
+      "source": 3,
+      "element": "A large white goat stands prominently in the caravan doorway with two smaller goats nearby, while five dark-clad young men are reduced to supporting silhouettes and gestures outside the trailer, as if tending the animals in the field."
+    },
+    {
+      "source": 4,
+      "element": "The square of striped geometric forms becomes wall art and built-in panels inside the caravan, integrated into cupboards, a folding screen, and rug-like decorative shapes."
+    },
+    {
+      "source": 5,
+      "element": "The sharp red-and-yellow angular emblem appears as a small illuminated badge above the interior, set against a broad black leather-textured night sky."
+    },
+    {
+      "source": 6,
+      "element": "A single short horizontal black line is used as a spare graphic accent on a white cabinet door or small interior panel, preserving its stark minimal presence."
+    },
+    {
+      "source": 7,
+      "element": "A blue biomechanical winged humanoid looms outside behind the caravan as a distant guardian figure, its spiked wings framing the roofline against turbulent cosmic clouds."
+    },
+    {
+      "source": 8,
+      "element": "The caravan structure, checkered floor, chandelier, fireplace, red chair, dog, rotary telephone, pineapple, lizard, mannequin torso, ladder, stacked chairs, clock, framed pictures, floating leaves, and tree growing through the room provide the dense theatrical environment."
+    }
+  ],
   "palette": [
     "midnight blue",
-    "indigo",
-    "golden ochre",
-    "mustard yellow",
-    "brick red"
+    "gold",
+    "cream",
+    "crimson red",
+    "teal",
+    "mustard yellow"
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": null,
-  "restyled": false,
-  "model": "fal-ai/nano-banana-2/edit",
-  "prompt": "Create one gouache painting - matte opaque paint, confident visible brushstrokes, soft blends and chalky texture, like a mid-century book illustration. The image is a 16:9 music blog header. Scene: A gouache painting of a twilight caravan courtyard that opens onto a cosmic pasture: the clear focal point is a warmly lit cutaway caravan interior whose doorway frames an adult celestial woman in flowing blue-green robes seated on a golden star as if it has drifted down to rest beside the threshold. Around her, several goats wander in and out of the sandy yard, their coats painted with loose modernist stripe-and-arc markings in mustard, teal, orange, red, and blue, echoing abstract signage on the caravan wall; a single thin black dash appears as a minimalist hanging bar above the doorway. Inside, the caravan keeps its enchanted clutter—checkerboard floor, chandelier, fireplace, red chair, ladder, indoor tree with autumn leaves, red rotary phone, lizard, model sailboat, and spotted dog—while in the cool shadows beyond the firelight stands a towering blue winged armoured statue with feather-like metallic spines, rendered as a protective guardian rather than a threat. Overhead, the night deepens into indigo space with soft planets and a ringed world, while along the roofline and fence appear angular red-and-gold shard motifs like painted trim. The gouache surface is matte and tactile, with visible brushwork binding the cosmic sky, pastoral animals, geometric patterns, and eccentric interior into one storybook world of warm firelight against cool celestial shadow. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: adult woman seated on a golden star in a planetary night sky; source 2: bold striped geometric arcs and bars in mustard, red, teal, orange, and blue; source 3: angular red-and-gold shard motif on a black ground; source 4: a cluster of goats in a sandy outdoor pen; source 5: vertically fragmented adult portrait in a voluminous red garment; source 6: blue winged biomechanical guardian figure with glowing eyes; source 7: a single thin black horizontal line; source 8: whimsical cutaway caravan interior with fireplace, chandelier, tree, red chair, phone, lizard, and dog. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Paint each album motif into the scene as a naturally belonging painted element - loose and gestural but unmistakable. Composition: A classic painterly composition - a landscape, interior, or figure study with a clear focal hierarchy. Colour direction: midnight blue, indigo, golden ochre, mustard yellow, brick red - mixed painterly colour drawn from the sleeves, warm lights against cool shadows. Mood: whimsical, dreamlike, theatrical. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
-  "restylePrompt": null,
+  "mood": "Whimsical, nocturnal, theatrical, and slightly surreal",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Mellon-Collie-and-the-Infinite-Sadness.jpg",
+      "album": "Mellon Collie and the Infinite Sadness",
+      "artist": "",
+      "description": "A vintage-style illustrated scene of a young woman seated sideways on a large golden five-pointed star floating in outer space. She has curled light-brown hair and wears a draped dress in blue-green, red, and cream tones. The background is a deep blue star field with several softly rendered planets and a comet-like streak scattered around the composition.",
+      "signatureMotif": "a woman sitting on a golden star in space",
+      "medium": "illustration/collage in a vintage painted style",
+      "palette": [
+        "deep blue",
+        "gold",
+        "cream",
+        "red",
+        "green"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Re-Created.jpg",
+      "album": "Re Created",
+      "artist": "",
+      "description": "A centered portrait of a person with pale skin and tousled light blond-gray hair, wearing an oversized bright red garment. Their face and body are fragmented into many narrow vertical strips, creating a sliced and staggered effect against a plain white background. The person presses both hands to their cheeks with eyes mostly closed and mouth slightly open.",
+      "signatureMotif": "a vertically sliced portrait in a red garment",
+      "medium": "digitally manipulated photograph",
+      "palette": [
+        "white",
+        "red",
+        "light blue",
+        "beige",
+        "gray"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Pet-Sounds.jpg",
+      "album": "Pet Sounds",
+      "artist": "",
+      "description": "A color photograph of five young men standing outdoors in a petting-zoo-like enclosure surrounded by several goats. One large white goat dominates the foreground, with brown and black goats around it. Trees, fencing, and a sandy ground fill the background, and the men wear dark jackets and casual clothing while interacting with the animals.",
+      "signatureMotif": "five men feeding and standing among goats",
+      "medium": "photograph",
+      "palette": [
+        "green",
+        "brown",
+        "white",
+        "tan",
+        "black"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Basic.jpg",
+      "album": "Basic",
+      "artist": "",
+      "description": "A minimalist graphic design on a white background made of four large geometric letter-like forms arranged in a square. Each form is built from parallel curved or straight stripes: mustard yellow at top left, red at top right, teal at bottom left, orange in the center bottom, and blue at bottom right. The composition is clean, flat, and symmetrical.",
+      "signatureMotif": "striped geometric letterforms arranged in a square",
+      "medium": "flat graphic design",
+      "palette": [
+        "white",
+        "mustard yellow",
+        "red",
+        "teal",
+        "orange"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Greatest-Hits.jpg",
+      "album": "Greatest Hits",
+      "artist": "",
+      "description": "A very minimal cover with a nearly full black background that has a subtle leather-like texture. Near the top center is a sharp angular red-and-yellow emblem-like band mark, with a small line of gold text beneath it. Most of the image remains empty black space.",
+      "signatureMotif": "an angular red-and-yellow emblem on a black textured field",
+      "medium": "graphic design",
+      "palette": [
+        "black",
+        "red",
+        "yellow",
+        "gold"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Substance.jpg",
+      "album": "Substance",
+      "artist": "",
+      "description": "An extremely minimal white cover with centered black serif typography and a single short horizontal black line in the middle area. There are no figures, objects, or scenery beyond the text and line, leaving a large amount of negative space.",
+      "signatureMotif": "a single short horizontal black line on a white field",
+      "medium": "typographic minimalist design",
+      "palette": [
+        "white",
+        "black"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "The-Best-of-Judas-Priest.jpg",
+      "album": "The Best of Judas Priest",
+      "artist": "",
+      "description": "A dramatic fantasy illustration of a blue metallic humanoid creature with an elongated helmet-like head, glowing eyes, and intricate biomechanical armor. Large spiked feather-like wings fan out behind it. The background is dark with explosive clouds and streaks of magenta, purple, orange, and blue light, creating a fiery cosmic atmosphere.",
+      "signatureMotif": "a blue armored winged humanoid creature",
+      "medium": "digital fantasy illustration",
+      "palette": [
+        "blue",
+        "purple",
+        "magenta",
+        "orange",
+        "black"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "The-Very-Very-Best-of-Crowded-House.jpg",
+      "album": "The Very Very Best of Crowded House",
+      "artist": "",
+      "description": "A whimsical illustrated cutaway of a caravan or trailer interior packed with eclectic objects. Inside are a chandelier, fireplace with flames, framed pictures, a red chair with a person hidden behind an open newspaper, a Dalmatian, a red rotary telephone, a pineapple, a lizard, a mannequin torso, a ladder, stacked chairs, a wall clock, leaves, and a large tree growing through the room. The floor is black-and-white checkered, and autumn leaves float around the exterior against a warm red-to-orange sky.",
+      "signatureMotif": "a crowded caravan interior filled with eclectic objects and a tree",
+      "medium": "illustrated collage",
+      "palette": [
+        "red",
+        "orange",
+        "cream",
+        "brown",
+        "green"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Straight-on wide cutaway view of a weathered caravan in an open dark field at night, the roof peeled away like a stage set and the sky visible beyond; at the center, a young woman with curled light-brown hair sits sideways on a floating golden five-pointed star as if it were a chair, calm and luminous; inside the caravan, include a chandelier, lit fireplace, framed pictures, red chair, Dalmatian, red rotary telephone, pineapple, lizard, mannequin torso, ladder, stacked chairs, wall clock, black-and-white checkered floor, and a large tree trunk growing up through the room with leaves drifting through the air; place one pale figure in an oversized bright red garment at the left interior pressing both hands to their cheeks, their body and face fragmented into narrow staggered vertical paper-strip slices; in the doorway and just outside, a large white goat leads with two smaller goats nearby, while five young men in dark casual clothing remain secondary in the field, tending and feeding the animals; integrate the striped geometric square motifs as built-in decorative wall panels, cupboard fronts, and a folding screen; use a small sharp red-and-yellow angular emblem as a glowing sign near the upper interior against a broad black leather-textured night area; add one stark short horizontal black line on a small white cabinet panel; beyond and above the caravan, a distant blue metallic winged humanoid guardian with glowing eyes and spiked feather-like wings rises against explosive magenta, purple, orange, and blue storm clouds; scatter small planets and a comet streak through the open roof and windows. Gouache, painted collage, cut paper textures, and ink details with editorial illustration precision. Clear hierarchy with the star-seated woman central, goats and red sliced figure secondary, guardian and men tertiary; spacious 16:9 composition with dense interior detail balanced by dark negative sky. Dramatic moonlike side lighting and warm firelight inside. Palette of midnight blue, gold, cream, crimson, teal, mustard, ember orange, black, electric blue, and magenta; mood whimsical, uncanny, celestial, and theatrical. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Mellon-Collie-and-the-Infinite-Sadness.jpg",
+    "Re-Created.jpg",
+    "Pet-Sounds.jpg",
     "Basic.jpg",
     "Greatest-Hits.jpg",
-    "Pet-Sounds.jpg",
-    "Re-Created.jpg",
-    "The-Best-of-Judas-Priest.jpg",
     "Substance.jpg",
+    "The-Best-of-Judas-Priest.jpg",
     "The-Very-Very-Best-of-Crowded-House.jpg"
   ]
 }

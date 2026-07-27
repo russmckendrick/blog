@@ -1,25 +1,71 @@
 {
+  "version": 2,
   "date": "2026-06-08",
   "type": "cover",
-  "lane": "long-exposure-light",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Canal-side power station where synth portrait haze meets surreal rock collage in light trails",
-  "scene": "A long-exposure night photograph unfolds through a deserted canal-side industrial district, where a real concrete power station and angular modernist structures rise in deep blue darkness and reflect in still water below. In the foreground, a short-haired adult woman in a pale blue halter top walks along the wet quay, her face briefly sharp while her movement leaves a soft ghosted trail, echoing the hazy portrait mood of the first cover. Farther back, two suited adult figures meet on a bridge and shake hands under sodium-dim architecture, their silhouettes crisp but edged with motion blur; one figure’s sleeve is traced by a delicate pink light effect suggesting a surreal transformation without becoming graphic. Continuous light-painting sweeps through the whole scene: a rainbow band runs low along the canal railings and bends into green heartbeat zigzags that travel from foreground puddles to the bridge and into the distance, tying the composition together. Above the power station, a pig-shaped illuminated balloon drifts on a tether, mirrored in the water, while projection-mapped pyramids glow faint amber on a warehouse wall and a large rose-pink circular projection hangs on a silo like a moon. Blue circular cloud imagery appears as a reflected projection in the canal, and the chunky angular device from the first cover is reimagined as a real metallic light sculpture carried by a blurred background figure near the station entrance. The entire frame feels like one connected nocturnal environment of reflections, moving figures, projected symbols, and luminous industrial memory.",
-  "palette": [
-    "deep midnight blue",
-    "cyan",
-    "rainbow red-yellow-green-blue",
-    "rose pink",
-    "warm amber"
+  "concept": "Handshake Observatory in Blue Static",
+  "creativeDirection": "A handcrafted paper-collage diorama with soft-focus photographic cutouts, translucent acetate overlays, and screenprinted graphic marks.",
+  "scene": "A wide 16:9 view into a shallow tabletop diorama that feels like a dreamlike observatory stage, seen straight on at slight eye level, with layered paper scenery receding into a blue atmospheric backdrop.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "The short-haired woman becomes the single dominant figure, a large soft-focus cutout in a pale blue halter top positioned slightly left of center, emerging from the blue haze with faint circuitry tracings drifting around her."
+    },
+    {
+      "source": 1,
+      "element": "The two men are reduced to secondary, blurred background presences embedded in the blue layers, one central dark figure and one right-side figure whose angular metallic object becomes a folded reflective paper form."
+    }
   ],
+  "palette": [
+    "powder blue",
+    "cyan haze",
+    "off-white paper",
+    "dusty pink",
+    "rust red",
+    "black"
+  ],
+  "mood": "enigmatic, airy, slightly surreal",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Becoming-X.jpg",
+      "album": "Becoming X",
+      "artist": "",
+      "description": "A soft-focus photographic portrait of three people against a blue background. A woman with short dark spiky hair stands in the foreground, facing forward, wearing a light blue halter-style top. Behind her are two men, both slightly blurred; one stands centrally in darker clothing, and the other at right wears a blue shirt and holds a large angular metallic-looking object. Faint abstract circuitry-like lines and a small circular symbol appear in the background, giving the image a hazy electronic overlay.",
+      "signatureMotif": "foreground woman with short spiky hair",
+      "medium": "soft-focus studio photograph with graphic overlay",
+      "palette": [
+        "blue",
+        "cyan",
+        "pale yellow",
+        "black",
+        "red"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "8-Tracks.jpg",
+      "album": "8 Tracks",
+      "artist": "",
+      "description": "A collage-style composition on an off-white paper background featuring multiple cutout images and geometric elements. At upper left is a black circle. Nearby is a rectangular image of pyramids in warm orange and yellow tones with a small pink pig floating above it. At upper right is a pink circular image resembling a fetus or embryo scan. A blue circular image of clouds appears left of center. To the right is an angular blue-toned architectural or industrial structure. Across the lower half is a reddish industrial landscape with rubble and smokestacks. Two silhouetted men in suits shake hands near the center-bottom. Horizontal rainbow bands run across the lower area, intersected by green heartbeat-like zigzag lines.",
+      "signatureMotif": "two suited figures shaking hands",
+      "medium": "paper collage with photographic cutouts and graphic shapes",
+      "palette": [
+        "off-white",
+        "black",
+        "pink",
+        "blue",
+        "red"
+      ]
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one genuine long-exposure night photograph - a locked-off camera, real environmental depth, continuous moving light trails, luminous reflections, and crisp stationary surfaces anchoring the frame. The image is a 16:9 music blog header. Scene: A long-exposure night photograph unfolds through a deserted canal-side industrial district, where a real concrete power station and angular modernist structures rise in deep blue darkness and reflect in still water below. In the foreground, a short-haired adult woman in a pale blue halter top walks along the wet quay, her face briefly sharp while her movement leaves a soft ghosted trail, echoing the hazy portrait mood of the first cover. Farther back, two suited adult figures meet on a bridge and shake hands under sodium-dim architecture, their silhouettes crisp but edged with motion blur; one figure’s sleeve is traced by a delicate pink light effect suggesting a surreal transformation without becoming graphic. Continuous light-painting sweeps through the whole scene: a rainbow band runs low along the canal railings and bends into green heartbeat zigzags that travel from foreground puddles to the bridge and into the distance, tying the composition together. Above the power station, a pig-shaped illuminated balloon drifts on a tether, mirrored in the water, while projection-mapped pyramids glow faint amber on a warehouse wall and a large rose-pink circular projection hangs on a silo like a moon. Blue circular cloud imagery appears as a reflected projection in the canal, and the chunky angular device from the first cover is reimagined as a real metallic light sculpture carried by a blurred background figure near the station entrance. The entire frame feels like one connected nocturnal environment of reflections, moving figures, projected symbols, and luminous industrial memory. Weave in recognisable elements taken from the 2 uploaded album covers: source 1: Short-haired woman in a pale blue halter top with a hazy futuristic portrait look; source 2: Two suited men shaking hands beside an industrial power station with rainbow and heartbeat motifs. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Build each album motif into the same physical night-time location: express suitable shapes through deliberate continuous light trails, projections, illuminated structures, reflections, or moving figures, while keeping solid subjects tangible and recognisable. Composition: One deep-perspective night scene anchored by a strong real location, with connected light paths sweeping through foreground, middle ground, and distance rather than isolated glowing symbols floating on black. Colour direction: deep midnight blue, cyan, rainbow red-yellow-green-blue, rose pink, warm amber - deep natural night tones with two or three luminous colours drawn from the sleeves, bright light trails, controlled highlights, and reflective colour. Mood: dreamlike, urban, nostalgic, surreal. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, daylight scene, flat black background, floating neon icons, random light scribbles, laser-show stage, digital glow effects, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "A wide 16:9 view into a shallow tabletop observatory diorama, seen straight on at slight eye level, with layered paper scenery receding into a soft blue atmospheric backdrop; a large soft-focus cutout of a woman with short dark spiky hair in a pale blue halter top dominates slightly left of center, facing forward as the clear focal point; behind her, two blurred male presences are embedded in the blue layers, one a dark central silhouette and one at right associated with a folded reflective angular metallic-paper form, while faint circuitry-like lines and a small circular symbol drift through the haze around them; below, on a lower platform near center, two small silhouetted suited men shake hands; an eclipse-like black disc hangs upper left, a warm orange-yellow pyramid postcard sits in the middle distance with a tiny floating pink pig above it, a translucent pink embryo-like medallion glows upper right, a blue circular cloud window floats left of center, a faceted blue industrial-architectural platform rises at right, and a reddish industrial horizon with rubble and smokestacks runs across the base, crossed by horizontal rainbow bands and green heartbeat zigzag marks; handcrafted paper-collage diorama, cut photographic fragments, torn off-white paper, translucent acetate overlays, screenprinted graphic lines, soft airbrushed blur, subtle shadow-box depth; clear hierarchy with the woman monumental in the foreground, handshake figures small but legible below, supporting motifs distributed in layered planes, spacious negative area around the main figure, gentle studio lighting with diffuse glow and faint edge shadows; palette of powder blue, cyan haze, off-white, dusty pink, rust red, black, and pale yellow, mood enigmatic, airy, surreal, and quietly electronic Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Becoming-X.jpg",
     "8-Tracks.jpg"

@@ -1,33 +1,197 @@
 {
+  "version": 2,
   "date": "2026-06-15",
   "type": "cover",
-  "lane": "analog-rehearsal-room",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Lakeside rehearsal room where stormy folk surrealism meets raw communal rock energy",
-  "scene": "An unobtrusive wide 35mm photograph looks into a cluttered rehearsal room from a back doorway, with coiled cables, a road case, and a scratched amp in the foreground and the band spread loosely across the middle ground in active rehearsal. The room feels like a converted lakeside hall: one back wall is lined with fogged windows looking onto pale water and a dark treeline, while over the windows hangs a sagging hand-painted yellow fabric banner whose wavy shape echoes a roadside sign and includes a stitched black fish form. Warm tungsten lamps and a cold fluorescent tube mix with a harsh work light aimed upward, creating a blown starburst and hexagonal lens flare that streaks through light cigarette smoke near the ceiling. The musicians are all adults and unposed: a barefoot singer in a faded red band-jacket with gold braid leans into the mic mid-phrase, a black-and-white magpie perched calmly on a nearby stand; a guitarist in a black outfit wears a horned, skull-like papier-mache stage mask pushed up like a rehearsal prop; the drummer’s kit is customized with muted polka-dot wraps and geometric mustard triangles inspired by ceremonial hoods, while tasselled fabric strips hang from a floor tom. On the magenta-stained practice-room wall, a mural blends storm clouds, a low rainbow, and dark forest silhouettes into one continuous backdrop, and a single red poppy in a cracked pot sits by an amp. In a candid burst of camaraderie, two bandmates and a tech briefly stack their hands overhead beside the drum riser while still holding picks and sticks, and the blurred motion of another long-haired player crossing frame leaves a reddish ghostly smear that recalls figures moving through firelit woods. Everything is worn, connected, and photographic rather than symbolic display: analog grain, soft bloom, subdued blacks, and natural skin tones hold the surreal borrowed motifs together as one believable rehearsal moment.",
-  "palette": [
-    "mustard yellow",
-    "amber orange",
-    "magenta pink",
-    "storm-cloud purple",
-    "lake grey-blue"
+  "concept": "Neon shrine beneath a fractured dawn triptych",
+  "creativeDirection": "A hand-built mixed-media shadowbox diorama photographed head-on, combining painted figures, cut paper signage, translucent panels, and glowing theatrical light.",
+  "scene": "A shallow proscenium-like night street shrine viewed straight on, where a luminous triptych sky rises behind a small stage of urban debris and reflective paneling.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "A large yellow banner-shaped sign becomes the dominant shrine canopy, hanging overhead with a bold black swoosh across one lower corner and slightly wrinkled glossy surfaces."
+    },
+    {
+      "source": 2,
+      "element": "Two blurred ghostlike adult figures appear only once as distant fiery presences behind translucent side scrims, their orange-red haze suggesting heat and memory."
+    },
+    {
+      "source": 3,
+      "element": "A barefoot child in a red military-style jacket stands center stage holding a black-and-white bird, with a single red flower and a small bullet-like object near their feet."
+    },
+    {
+      "source": 4,
+      "element": "A clustered thicket of raised hands rises from the foreground like offerings or carved votive forms at the base of the shrine."
+    },
+    {
+      "source": 5,
+      "element": "Three tall vertical sky panels form the backdrop, filled with pale violet dawn light and a sharp sun flare breaking through the center-left panel."
+    },
+    {
+      "source": 6,
+      "element": "Entertainment-district neon becomes the crowded side architecture, while the spray-can child is transformed into paint drips, stencil marks, and glowing sign clutter rather than another person."
+    },
+    {
+      "source": 7,
+      "element": "A calm lake and treeline are miniaturized into the distant horizon visible through the lower portions of the triptych, with dark branches subtly framing the upper edges."
+    },
+    {
+      "source": 8,
+      "element": "The two spotted mask-like figures become ceremonial objects mounted asymmetrically on the side walls, one angular and tasselled, one rounded and domed, accented with yellow marks."
+    }
   ],
+  "palette": [
+    "acid yellow",
+    "magenta",
+    "violet-grey",
+    "ember orange",
+    "black",
+    "weathered beige"
+  ],
+  "mood": "ritualistic, nocturnal, uncanny, hopeful",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Out-of-Time.jpg",
+      "album": "Out of Time",
+      "artist": "",
+      "description": "A large bright yellow banner-like sign with a thick black outline fills most of the image, set against a glossy brown and beige background that looks like wood or laminated panels. A black abstract swoosh or ribbon shape runs across the lower left portion of the sign. The composition is centered and graphic, with slight reflections and wrinkles visible in the background surface.",
+      "signatureMotif": "yellow banner-shaped sign",
+      "medium": "graphic design with photographed background",
+      "palette": [
+        "yellow",
+        "black",
+        "brown",
+        "beige",
+        "cream"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Inferno.jpg",
+      "album": "Inferno",
+      "artist": "",
+      "description": "A blurred, grainy photographic scene with two human figures standing in a dim outdoor setting. One figure is darker and more central, while another stands to the right with long hair and a lighter face. The lower half glows with fiery red and orange tones, and a dark treeline silhouette runs along the bottom edge. The image has a hazy, double-exposed feel.",
+      "signatureMotif": "blurred standing figures in a fiery haze",
+      "medium": "grainy blurred photograph",
+      "palette": [
+        "orange",
+        "red",
+        "black",
+        "dark green",
+        "yellow"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Misplaced-Childhood.jpg",
+      "album": "Misplaced Childhood",
+      "artist": "",
+      "description": "A painted fantasy scene showing a barefoot child standing front-facing on a plain ground, wearing a red military-style jacket with gold trim and dark trousers. A black-and-white bird perches on the child's gloved hand. Behind the figure are dramatic swirling clouds in purple, grey, and white, with a rainbow emerging from a cloud bank on the left. A red flower with stems stands near the child's feet, and a small bullet-like object lies on the ground nearby.",
+      "signatureMotif": "barefoot child in a red military jacket holding a bird",
+      "medium": "surreal painting",
+      "palette": [
+        "red",
+        "purple",
+        "gold",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Ten.jpg",
+      "album": "Ten",
+      "artist": "",
+      "description": "Several human arms and hands reach upward from the bottom center, stacked together in a unified gesture. Some wrists wear bracelets or a watch. The background is a textured magenta and dark pink field with vertical darker bands, giving a rough poster-like appearance. The composition is tightly cropped, focusing on the raised hands.",
+      "signatureMotif": "cluster of raised hands and arms",
+      "medium": "photographic collage or treated photograph",
+      "palette": [
+        "magenta",
+        "pink",
+        "black",
+        "white",
+        "brown"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Amplifier.jpg",
+      "album": "Amplifier",
+      "artist": "",
+      "description": "A minimalist design divided into three tall vertical rectangular panels outlined in white against a black border. Inside the panels is a pale purple sky with a bright sun flare near the lower center-left, producing starburst light and hexagonal lens flare shapes. Small wisps of white cloud appear near the bottom of the left panel and faintly in the right panel.",
+      "signatureMotif": "three vertical sky panels with sun flare",
+      "medium": "minimalist photograph-based graphic layout",
+      "palette": [
+        "purple",
+        "white",
+        "black",
+        "pale blue",
+        "grey"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Extreme-II-Pornograffitti.jpg",
+      "album": "Extreme II Pornograffitti",
+      "artist": "",
+      "description": "A busy illustrated nighttime street scene filled with glowing marquee signs and neon-like lights on both sides. In the center foreground stands a small cartoon-like child with curly dark hair, wearing shorts, socks, and a backpack, holding a spray can with paint dripping onto the ground. Surrounding signs include a stylized woman in lingerie, a suited figure, and many illuminated panels, creating a crowded urban entertainment-district atmosphere.",
+      "signatureMotif": "small child holding a spray can amid neon signs",
+      "medium": "illustrated collage",
+      "palette": [
+        "black",
+        "yellow",
+        "red",
+        "pink",
+        "blue"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Deadwing.jpg",
+      "album": "Deadwing",
+      "artist": "",
+      "description": "A dark silhouette of a person seen from behind stands in the foreground facing a calm lake. Across the water is a distant line of trees under a pale, overcast sky. Dark leafy branches frame the image from the left and right edges. The overall image is muted and slightly distressed, with a moody, misty atmosphere.",
+      "signatureMotif": "silhouetted figure facing a lake",
+      "medium": "moody photograph",
+      "palette": [
+        "black",
+        "grey",
+        "beige",
+        "pale blue",
+        "dark green"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Vol-1.jpg",
+      "album": "Vol 1",
+      "artist": "",
+      "description": "A stark white background with two stylized black-and-white spotted mask-like or helmet-like figures centered beneath a line of text. The left figure is tall and angular with a triangular yellow mark and long tassel-like strands hanging below; it also has a protruding snout-like form and small yellow facial details. The right figure is rounded and domed with white spots, yellow diamond shapes, and a narrow eye-like opening. The composition is sparse and symmetrical.",
+      "signatureMotif": "pair of spotted mask-like figures",
+      "medium": "graphic illustration",
+      "palette": [
+        "white",
+        "black",
+        "yellow"
+      ]
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one candid analog 35mm photograph of adult musicians caught mid-rehearsal in a lived-in practice room - genuine musical concentration, natural interaction, fine film grain, mixed practical light, and subtle movement in hands or drumsticks while faces and instruments remain crisp; nobody is posing or looking at the camera. The image is a 16:9 music blog header. Scene: An unobtrusive wide 35mm photograph looks into a cluttered rehearsal room from a back doorway, with coiled cables, a road case, and a scratched amp in the foreground and the band spread loosely across the middle ground in active rehearsal. The room feels like a converted lakeside hall: one back wall is lined with fogged windows looking onto pale water and a dark treeline, while over the windows hangs a sagging hand-painted yellow fabric banner whose wavy shape echoes a roadside sign and includes a stitched black fish form. Warm tungsten lamps and a cold fluorescent tube mix with a harsh work light aimed upward, creating a blown starburst and hexagonal lens flare that streaks through light cigarette smoke near the ceiling. The musicians are all adults and unposed: a barefoot singer in a faded red band-jacket with gold braid leans into the mic mid-phrase, a black-and-white magpie perched calmly on a nearby stand; a guitarist in a black outfit wears a horned, skull-like papier-mache stage mask pushed up like a rehearsal prop; the drummer’s kit is customized with muted polka-dot wraps and geometric mustard triangles inspired by ceremonial hoods, while tasselled fabric strips hang from a floor tom. On the magenta-stained practice-room wall, a mural blends storm clouds, a low rainbow, and dark forest silhouettes into one continuous backdrop, and a single red poppy in a cracked pot sits by an amp. In a candid burst of camaraderie, two bandmates and a tech briefly stack their hands overhead beside the drum riser while still holding picks and sticks, and the blurred motion of another long-haired player crossing frame leaves a reddish ghostly smear that recalls figures moving through firelit woods. Everything is worn, connected, and photographic rather than symbolic display: analog grain, soft bloom, subdued blacks, and natural skin tones hold the surreal borrowed motifs together as one believable rehearsal moment. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: blurred reddish figures moving through a wooded, firelit haze; source 2: wavy yellow banner with a black fish silhouette; source 3: bright sunlike work light producing starburst and hexagonal lens flare; source 4: barefoot singer in a red braided military-style jacket with a magpie and rainbow-poppy motifs; source 5: lakefront view with a silhouetted figure framed by dark branches; source 6: cluster of raised hands meeting overhead in a communal gesture; source 7: horned skull-like black-and-white stage mask with fangs; source 8: polka-dotted ceremonial hood forms translated into costume and drum-wrap patterns. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Translate the album motifs into believable parts of the same rehearsal: the musicians and their styling, instrument finishes and shapes, the room architecture, worn furnishings, cables, cases, lighting, and atmosphere. Blend the motifs across the whole scene instead of assigning each one a separate displayed object, poster, or emblem. Composition: One continuous wide rehearsal room photographed unobtrusively from a doorway or back corner, with layered foreground equipment, musicians playing together through the middle ground, and room depth behind them; active, asymmetric, and loosely framed like a real moment rather than a band portrait. Colour direction: mustard yellow, amber orange, magenta pink, storm-cloud purple, lake grey-blue - muted analog colour drawn from the sleeves, with warm tungsten and cool fluorescent practical light, soft highlight bloom, subdued blacks, and natural skin tones. Mood: mysterious, communal, dreamlike, and charged with rehearsal-room intensity. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, posed band portrait, publicity photo, live concert stage, musicians looking at camera, symmetrical lineup, empty recording studio, pristine equipment showroom, album-cover posters, separate displayed symbols, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "A shallow proscenium-like night street shrine viewed straight on, with a luminous three-panel sky backdrop rising behind a compact stage of reflective wood-laminate surfaces and urban debris; at the center stands a barefoot child in a red military-style jacket with gold trim, dark trousers, and one gloved hand extended to hold a black-and-white bird, the clear focal point beneath an oversized yellow banner-shaped canopy with a thick black outline and a bold black swoosh crossing one lower corner. Three tall vertical backdrop panels show a pale violet dawn sky with a bright starburst sun flare breaking through the center-left panel, while a miniature calm lake and dark treeline sit low on the horizon within the panels and sparse dark branches frame the upper edges. At the child’s feet place one red flower and a small bullet-like object on the ground. Build the foreground from a clustered rise of upward-reaching hands and arms like votive sculptures or cutout offerings. Along both sides, create crowded neon-entertainment architecture from glowing signs, painted drips, stencil textures, and marquee fragments; include two mounted ceremonial mask objects on the side walls, one angular with tassel strands and yellow accents, one rounded and spotted with yellow diamond details. Behind translucent side scrims, suggest two distant blurred adult figures only as fiery orange-red ghost presences in haze, never sharp or dominant. Hand-built mixed-media shadowbox diorama, combining gouache-painted figure work, cut paper graphics, collage, translucent vellum, miniature set construction, glossy laminated textures, and practical theatrical lighting, photographed head-on. Strong central hierarchy with the child and bird under the yellow canopy, side elements supporting like chapel architecture; layered depth, crisp silhouette shapes, and luminous contrasts between neon edges and soft mist. Palette of acid yellow, magenta, violet-grey, ember orange, black, weathered beige, and cool white; mood ritualistic, nocturnal, uncanny, and quietly hopeful. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
-    "Inferno.jpg",
     "Out-of-Time.jpg",
-    "Amplifier.jpg",
+    "Inferno.jpg",
     "Misplaced-Childhood.jpg",
-    "Deadwing.jpg",
     "Ten.jpg",
-    "Danzig.jpg",
+    "Amplifier.jpg",
+    "Extreme-II-Pornograffitti.jpg",
+    "Deadwing.jpg",
     "Vol-1.jpg"
   ]
 }

@@ -1,33 +1,197 @@
 {
+  "version": 2,
   "date": "2026-04-13",
   "type": "cover",
-  "lane": "painterly-gouache",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Seaside bluff house where pop symbols and haunted figures share one dusk world",
-  "scene": "A gouache painting of a windswept seaside bluff at dusk, where a weathered modernist house with tall open windows looks out over a misty coast. In the foreground, the clear focal point is the back of an adult in blue jeans and a white sleeveless shirt, standing at the cliff edge with a red cap hanging from one hand, painted in broad matte strokes against bands of sunset-lit sea and pale surf that echo red-and-white striping in the landscape. Around this figure, yellow wildflowers fill the grass and a small dark car waits near the house. From an upstairs window steps an elegant adult in a black suit whose face dissolves into loose gouache smears of white and ember red, as if wind and light are erasing it into the evening. Curling overhead, a giant feather quill becomes vine-like scrollwork that tangles through the sky and around the window frames, while a pale haloed monkey crouches ghostlike within faint chalky geometric guide-lines painted onto the house wall like an old mural. Inside the lit rooms, a few theatrical adults in angular bright suits lean and gesture through the horizontal window bands, their poses integrated into the architecture rather than posed together. Across the darkening sky, a black seabird cuts through looping rainbow ribbons and small cloud forms that arc toward a red guitar-head weather vane near the roof. In the deepest shadow beneath the bluff, a subtle coiled snake shape emerges from the rocks, binding the whole scene with a quiet menace. The gouache surface is opaque and velvety, with warm window light and sunset oranges set against cool sea-greens, indigo shadows, and chalky mist.",
-  "palette": [
-    "titanium white",
-    "cadmium red",
-    "faded denim blue",
-    "indigo",
-    "lamp black"
+  "concept": "Midnight pool reliquary with quill-born constellations",
+  "creativeDirection": "A surreal mixed-media diorama rendered like a hand-tinted screenprint and painted collage, combining theatrical poolside imagery with distressed geometric overlays and decorative ink flourishes.",
+  "scene": "A nocturnal courtyard pool seen from a slightly elevated frontal viewpoint, with deep black water occupying most of the foreground and a shrine-like platform beyond it.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "A rainbow abstract emblem floats above the shrine as the main sky-form, with its black bird silhouette and guitar headstock integrated into the collage cluster."
+    },
+    {
+      "source": 2,
+      "element": "Distressed geometric construction lines, numerals, and the haloed monkey-like figure appear as weathered mural imagery behind the shrine, adding occult structure."
+    },
+    {
+      "source": 3,
+      "element": "A single back-view man in blue jeans stands at the far left pool edge holding a red cap behind his back, acting as a quiet witness."
+    },
+    {
+      "source": 4,
+      "element": "A soft sepia profile with one wing becomes a large hazy relief or ghost-image emerging from the hedge and smoke behind the platform."
+    },
+    {
+      "source": 5,
+      "element": "A thin grey coiled snake outline glints from the lower right corner of the dark pool surround."
+    },
+    {
+      "source": 6,
+      "element": "The central subject is the smiling woman waist-deep in blue water in a white dress and daisy swim cap, with an alligator head surfacing beside her and clustered statues on the platform behind."
+    },
+    {
+      "source": 7,
+      "element": "A hand with striped sleeve at lower left writes with a quill whose line unfurls into ornate vine-like curls across the upper air."
+    },
+    {
+      "source": 8,
+      "element": "Horizontal white banding and a few fragmented pale-faced colorful-suited cutout figures are reduced into poster-like strips embedded in the architecture behind the shrine."
+    }
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": null,
-  "restyled": false,
-  "model": "fal-ai/nano-banana-2/edit",
-  "prompt": "Create one gouache painting - matte opaque paint, confident visible brushstrokes, soft blends and chalky texture, like a mid-century book illustration. The image is a 16:9 music blog header. Scene: A gouache painting of a windswept seaside bluff at dusk, where a weathered modernist house with tall open windows looks out over a misty coast. In the foreground, the clear focal point is the back of an adult in blue jeans and a white sleeveless shirt, standing at the cliff edge with a red cap hanging from one hand, painted in broad matte strokes against bands of sunset-lit sea and pale surf that echo red-and-white striping in the landscape. Around this figure, yellow wildflowers fill the grass and a small dark car waits near the house. From an upstairs window steps an elegant adult in a black suit whose face dissolves into loose gouache smears of white and ember red, as if wind and light are erasing it into the evening. Curling overhead, a giant feather quill becomes vine-like scrollwork that tangles through the sky and around the window frames, while a pale haloed monkey crouches ghostlike within faint chalky geometric guide-lines painted onto the house wall like an old mural. Inside the lit rooms, a few theatrical adults in angular bright suits lean and gesture through the horizontal window bands, their poses integrated into the architecture rather than posed together. Across the darkening sky, a black seabird cuts through looping rainbow ribbons and small cloud forms that arc toward a red guitar-head weather vane near the roof. In the deepest shadow beneath the bluff, a subtle coiled snake shape emerges from the rocks, binding the whole scene with a quiet menace. The gouache surface is opaque and velvety, with warm window light and sunset oranges set against cool sea-greens, indigo shadows, and chalky mist. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: adult in blue jeans holding a red cap from behind; source 2: black-suited figure with face obscured by painterly smears; source 3: coastal meadow with yellow flowers and a distant dark car; source 4: feather quill transforming into curling ornamental vines; source 5: theatrical adults in angular bright suits seen through horizontal bands; source 6: haloed monkey within a geometric diagram; source 7: black bird flying through looping rainbow bands with cloud forms; source 8: subtle coiled snake in deep shadow. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Paint each album motif into the scene as a naturally belonging painted element - loose and gestural but unmistakable. Composition: A classic painterly composition - a landscape, interior, or figure study with a clear focal hierarchy. Colour direction: titanium white, cadmium red, faded denim blue, indigo, lamp black - mixed painterly colour drawn from the sleeves, warm lights against cool shadows. Mood: windswept, uncanny, theatrical. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
-  "restylePrompt": null,
+  "palette": [
+    "midnight black",
+    "pool blue",
+    "chalk white",
+    "sepia brown",
+    "distressed olive",
+    "peach"
+  ],
+  "mood": "enigmatic, theatrical, devotional",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Mary-Star-of-the-Sea.jpg",
+      "album": "Mary Star of the Sea",
+      "artist": "",
+      "description": "A clean white background with a large central collage of brightly coloured graphic shapes and symbols. A black bird silhouette rises from the upper left of the cluster. Rainbow bands loop and weave through circular targets, a black disc with a small white star, cloud shapes, a guitar headstock with tuning pegs extending to the right, a heart-like loop at lower left, and an angular arrow-like form at lower right. The composition is bold, flat, and centered, with oversized red block shapes spanning the top edge.",
+      "signatureMotif": "a rainbow-coloured abstract collage with a black bird and guitar headstock",
+      "medium": "graphic vector-style illustration",
+      "palette": [
+        "white",
+        "red",
+        "black",
+        "yellow",
+        "pink"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Doolittle.jpg",
+      "album": "Doolittle",
+      "artist": "",
+      "description": "A distressed, textured cover in brown and dark green tones featuring a pale monkey-like figure positioned inside a dense overlay of white geometric construction lines, rectangles, circles, and diagonals. The animal’s face is mask-like and light, with a thin halo hovering above its head inside a dark circular field. Additional large numerals and circular symbols are scattered around the composition. The overall layout feels layered, worn, and screen-printed.",
+      "signatureMotif": "a monkey-like figure with a halo inside geometric linework",
+      "medium": "mixed-media collage with distressed print texture",
+      "palette": [
+        "brown",
+        "dark green",
+        "off-white",
+        "grey",
+        "black"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Born-in-the-U-S-A.jpg",
+      "album": "Born in the U S A",
+      "artist": "",
+      "description": "A cropped photographic view of a man seen from behind, framed from shoulders to thighs. He wears a white sleeveless shirt tucked into blue jeans with a decorative black belt. In his right hand behind his back he holds a red cap. The background is filled by broad horizontal red and white stripes. The figure is centered and tightly cropped, emphasizing the denim and cap.",
+      "signatureMotif": "the back view of a man in blue jeans holding a red cap",
+      "medium": "color photography",
+      "palette": [
+        "red",
+        "white",
+        "blue",
+        "black",
+        "skin tone"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "No-More-Tears.jpg",
+      "album": "No More Tears",
+      "artist": "",
+      "description": "A soft-focus sepia-toned portrait of a long-haired person in left-facing profile, shown from the shoulders up. The face is partially shadowed by dark hair. Behind the right shoulder appears a single feathered wing, giving the figure an angelic silhouette. The image is hazy and atmospheric with a smoky, blurred background and warm brown tones throughout.",
+      "signatureMotif": "a soft-focus profile portrait with a wing behind the shoulder",
+      "medium": "soft-focus studio photography",
+      "palette": [
+        "sepia",
+        "brown",
+        "tan",
+        "black",
+        "gold"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Metallica.jpg",
+      "album": "Metallica",
+      "artist": "",
+      "description": "An almost entirely black cover with extremely low-contrast details. In the lower right corner is a coiled snake drawn in thin grey outline, head raised and mouth open. Faint dark embossed shapes are barely visible in the upper left area, but the composition is dominated by darkness and negative space.",
+      "signatureMotif": "a coiled snake outline in the lower right",
+      "medium": "minimal dark graphic design",
+      "palette": [
+        "black",
+        "dark grey",
+        "charcoal"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Tiny-Music-Songs-From-The-Vatican-Gift-Shop.jpg",
+      "album": "Tiny Music Songs From The Vatican Gift Shop",
+      "artist": "",
+      "description": "A bright, surreal poolside scene with a smiling woman standing waist-deep in blue water. She wears a white strapless dress and a white swim cap decorated with small daisy flowers. At the right side of the pool, the head of a crocodile or alligator emerges from the water. Behind her, on a platform between two pale columns, is a crowded display of statues, figurines, and shrine-like objects, including gold-toned and dark sculptural pieces, arranged against a green hedge and pale sky.",
+      "signatureMotif": "a smiling woman in a white dress standing in a pool beside an alligator",
+      "medium": "photographic collage",
+      "palette": [
+        "blue",
+        "white",
+        "green",
+        "gold",
+        "beige"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Funeral.jpg",
+      "album": "Funeral",
+      "artist": "",
+      "description": "An illustrated cover with a warm peach background and a thin border line near the edges. From the lower left rises a pale hand in a striped sleeve, holding a large feather quill. The quill transforms into ornate curling vine-like flourishes that spread across the upper center. Along the bottom sit blocky three-dimensional letterforms as objects, casting shadows on a dark band. The style resembles vintage decorative drawing and print design.",
+      "signatureMotif": "a hand holding a quill that turns into ornate curling flourishes",
+      "medium": "illustration with vintage print styling",
+      "palette": [
+        "peach",
+        "cream",
+        "olive green",
+        "brown",
+        "black"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Dizrythmia.jpg",
+      "album": "Dizrythmia",
+      "artist": "",
+      "description": "A high-key, mostly white composition divided by horizontal bands, with multiple repeated cutout-like portraits of pale-faced figures in colorful suits placed in separate strips. The figures have theatrical makeup and exaggerated hairstyles, including one central figure with tall spiked hair and an orange jacket. Others wear green, blue, and red jackets and strike angular poses while looking in different directions. The layout feels fragmented and collage-like, with strong negative space and a fashion-photo aesthetic.",
+      "signatureMotif": "repeated pale-faced figures in colorful suits separated by horizontal bands",
+      "medium": "stylized photographic collage",
+      "palette": [
+        "white",
+        "red",
+        "orange",
+        "green",
+        "blue"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "A nocturnal courtyard pool seen from a slightly elevated frontal viewpoint, deep black water filling the foreground and a shrine-like platform beyond; at the center, a smiling woman stands waist-deep in luminous blue water wearing a white strapless dress and a white swim cap dotted with tiny daisies, while an alligator head breaks the surface near her right side. Above and behind her rises a crowded altar of statues and figurines between pale columns and dark hedge, crowned by a floating rainbow-colored abstract collage emblem with looping bands, circular targets, a black disc with a white star, cloud forms, a black bird silhouette lifting from its upper left, and a guitar headstock extending to the right. Behind the platform, layer a distressed mural of white geometric construction lines, circles, rectangles, diagonals, scattered numerals, and a pale haloed monkey-like figure inside a dark round field; let a large hazy sepia profile with long hair and a single wing emerge ghostlike from smoke and hedge at one side. At the far left pool edge place one cropped back-view man in a white sleeveless shirt and blue jeans, holding a red cap behind his back as a witness figure. In the lower left foreground, include a pale hand in a striped sleeve writing with a feather quill whose ink line transforms into ornate curling vine flourishes spreading across the upper air. Reduce the repeated pale-faced colorful-suited figures into fragmented poster strips embedded in horizontal architectural bands behind the shrine, not dominant. In the lower right, a thin grey outline of a coiled snake catches a faint glint against the darkness. Surreal mixed-media diorama, hand-tinted screenprint, painted collage, distressed print textures, soft airbrushed haze, crisp ornamental ink lines. Strong central hierarchy on the woman and pool, broad negative space in the black water, balanced asymmetry with witness figure left and snake right, luminous spotlight on the pool subject, dim shrine backlight, subtle reflections. Palette of midnight black, electric pool blue, chalk white, sepia brown, distressed olive, peach, muted gold, and sharp accents of signal red; mood enigmatic, theatrical, devotional. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
-    "Born-in-the-U-S-A.jpg",
-    "Everyone-Into-Position.jpg",
-    "20-Jazz-Funk-Greats.jpg",
-    "Funeral.jpg",
-    "Dizrythmia.jpg",
-    "Doolittle.jpg",
     "Mary-Star-of-the-Sea.jpg",
-    "Metallica.jpg"
+    "Doolittle.jpg",
+    "Born-in-the-U-S-A.jpg",
+    "No-More-Tears.jpg",
+    "Metallica.jpg",
+    "Tiny-Music-Songs-From-The-Vatican-Gift-Shop.jpg",
+    "Funeral.jpg",
+    "Dizrythmia.jpg"
   ]
 }
