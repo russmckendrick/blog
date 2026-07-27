@@ -65,12 +65,13 @@ This generates a post for the previous week (7 days ago to now).
 pnpm run tunes -- --week_start=2025-09-25
 ```
 
-### Optional Cover Steer
+### Optional Image Steers
 
-The pipeline is fully non-interactive. If a run needs a preconfigured steer, pass it up front; it is sent only to the cover art-director stage:
+The pipeline is fully non-interactive. If a run needs preconfigured guidance, pass it up front to the relevant art-director stage:
 
 ```bash
 pnpm run tunes -- --cover-hint="lean abstract"
+pnpm run tunes -- --artist-hint="candid backstage"
 ```
 
 ### Debug Mode (Single Album)
@@ -194,19 +195,21 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 - `lib/perplexity-tool.js` - Perplexity AI search tool (config-driven)
 - `lib/exa-tool.js` - Exa AI search tool (config-driven)
 - `fal-tunes-cover.js` - Source-blended AI tunes cover generator; selects artwork, orchestrates summary and art-direction passes, and delegates image calls to configurable backends (`lib/image-backends/`)
-- `fal-tunes-artists.js` - Group-portrait generator that composes the week's artist photos into one photorealistic photo; same configurable image backends, reuses the cover pipeline's helpers
+- `fal-tunes-artists.js` - Group-portrait generator that selects photos, orchestrates factual summary and autonomous casting/art-direction passes, and delegates the final photorealistic image call to the same configurable backends
 - `lib/tunes-cover-art-direction.js` - Two-stage cover intelligence: factual per-image summaries followed by freeform AI art direction and final prompt construction
+- `lib/tunes-artist-art-direction.js` - Two-stage artist intelligence: factual appearance summaries followed by autonomous casting, photographic art direction, and identity-preserving prompt guardrails
 - `lib/tunes-post-context.js` - Parses ranked artist/album lists only for the manual regeneration harness to reproduce source ordering; its findings are not sent to cover art direction
-- `lib/tunes-portrait-directions.js` - Deterministic shoot grammar and colour-treatment rotations used only by the artist portrait
 - `lib/tunes-image-history.js` - Rolling committed history of weekly image runs (`scripts/.tunes-image-history.json`) plus per-run `.json` sidecars; feeds do-not-repeat concepts back to the art director
 - `lib/image-backends/` - Generic, swappable multi-reference compose backends shared by both generators (`nano-banana`, `gpt-image-2`)
-- `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly image (header or artist) without changing MDX; supports an optional header `--hint`
+- `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly image (header or artist) without changing MDX; supports an optional `--hint` for either image type
 
 ### AI Models Used
 
 - **Content generation**: OpenAI GPT-5.4 (default) or Anthropic Claude 3.5 Sonnet (fallback), with humaniser anti-pattern guidelines to produce natural UK English output
 - **Cover summary pass**: OpenAI GPT-5.4 via Responses API, using vision to record factual non-text observations for every selected album cover
 - **Cover art-direction pass**: OpenAI GPT-5.4 via Responses API, choosing the medium, scene, composition, lighting, palette, and final prompt from the factual image summaries alone
+- **Artist summary pass**: OpenAI GPT-5.4 via Responses API, recording factual appearance and photographic observations for every candidate photo
+- **Artist art-direction pass**: OpenAI GPT-5.4 via Responses API, choosing the cast, location, composition, lens, lighting, colour treatment, and final prompt from those summaries alone
 - **Image composition**: a swappable multi-reference backend (`scripts/lib/image-backends/`) — FAL.ai `nano-banana-2/edit` or OpenAI `gpt-image-2/edit` — selected by `settings.cover_backend` / `settings.artist_portrait_backend` in `scripts/tunes-config.yaml`
 - **Web search**: Tavily, Perplexity, or Exa API (optional, for factual album research)
 
@@ -273,18 +276,19 @@ If `OPENAI_API_KEY` is not available, filename-based summaries and a determinist
 
 Alongside the album-cover header there is a second image type: a **literal group portrait of the week's artists**, built from the artist photos already downloaded to `public/assets/YYYY-MM-DD-listened-to-this-week/artists/`. It reuses the same two-stage approach as the cover, but is tuned for real people instead of album art.
 
-**File**: `scripts/fal-tunes-artists.js` (exports `createFALArtistPortrait`). It orchestrates image selection, the OpenAI brief, the prompt, the retry loop, and saving, then delegates the actual image call to a pluggable backend.
+**Files**: `scripts/fal-tunes-artists.js` (orchestration) and `scripts/lib/tunes-artist-art-direction.js` (factual summaries, autonomous casting/art direction, normalization, fallbacks, and prompt guardrails).
 
 **Image backend switch:** the portrait can be produced by either **GPT Image 2** (`openai/gpt-image-2/edit`) or **Nano Banana** (`fal-ai/nano-banana-2/edit`). Pick one with `settings.artist_portrait_backend` in `scripts/tunes-config.yaml` (`gpt-image-2` | `nano-banana`); an unknown or missing value falls back to `nano-banana`. The backends are generic, reusable modules in `scripts/lib/image-backends/` (`nano-banana.js`, `gpt-image-2.js`, plus an `index.js` registry) — each exports `{ id, label, generate }` and can be reused by any image-generation flow. Both run through fal with `FAL_KEY`. Note: GPT Image 2 (OpenAI) moderates real-person likenesses more strictly, so group portraits of named musicians may be refused more often; it also has no seed and uses `image_size`/`quality` rather than nano-banana's `aspect_ratio`/`resolution`. Per-backend overrides: `NANO_BANANA_MODEL` / `NANO_BANANA_FALLBACK_MODEL`, and `GPT_IMAGE_2_MODEL` / `GPT_IMAGE_2_SIZE` / `GPT_IMAGE_2_QUALITY` (GPT Image 2 defaults to a 2560×1440 16:9 image at `high` quality).
 
-How it differs from the cover pipeline:
+The flow mirrors the cover pipeline:
 
-- **Casts from a wider pool.** It uploads the top `settings.artist_portrait_candidates` artists (`scripts/tunes-config.yaml`; defaults to 12 when unset, env `TUNES_ARTIST_PORTRAIT_CANDIDATES`) in play-rank order as casting options, then the OpenAI brief picks the most interesting subset to actually feature — exactly `settings.artist_portrait_inputs` of them (set to **4** in config; code default 6 when unset, env `TUNES_ARTIST_PORTRAIT_INPUTS`). Only the cast is sent to the image model. The cast is kept small deliberately: with more reference faces the model splits its attention and likenesses drift, so fewer, larger faces preserve detail. There's no colour/text scoring, since faces should not be dropped on colour, and "Various Artists" is already filtered out when the photos are downloaded.
+- **Casts from a wider pool.** It uploads the top `settings.artist_portrait_candidates` artists (`scripts/tunes-config.yaml`; defaults to 12 when unset, env `TUNES_ARTIST_PORTRAIT_CANDIDATES`) in play-rank order as casting options. A factual vision call records the visible adults, primary subject, facial and physical features, wardrobe, pose, setting, and original photographic treatment for every candidate without casting or inventing a scene.
+- A separate art-director call receives only those factual summaries, an optional preconfigured hint, and recent do-not-repeat concepts. It selects exactly `settings.artist_portrait_inputs` sources (set to **4** in config; code default 6) and freely chooses the location, behaviour, viewpoint, lens, composition, depth, time of day, lighting, colour treatment, styling, mood, and final prompt. There is no seeded shoot-style or colour-treatment catalogue.
+- Only the selected original photos are attached to the final image call. The cast remains small deliberately: with more reference faces the model splits its attention and likenesses drift, so fewer, larger faces preserve detail. Where a selected source is a band, the factual primary-subject description tells the generator which single adult to feature.
 - Uploads each photo scaled to fit inside 1024px (no centre-crop, so heads are not sliced off).
-- Each week leans into a different **shoot grammar** chosen deterministically from the week's seed — not just a backdrop but the kind of photograph: candid mid-action rehearsal, walking-toward-camera street stride, over-the-shoulder backstage, silhouettes against stage backlight, fisheye huddle, long-lens candid, and so on. Most entries explicitly break the evenly-spaced-lineup-facing-camera publicity formula, and the brief carries a standing instruction against it. The chosen direction is fed to the OpenAI brief and also seeds the no-API fallback.
-- Each week also rotates through a **colour treatment** (natural daylight, warm Kodachrome, cross-processed slide film, overcast pastel, punchy saturated editorial, black-and-white film grain). The treatment replaces the old fixed "bright, vivid, richly saturated" clause in both the brief and the final prompt, so a b&w or pastel week is not simultaneously told to be punchy.
-- The OpenAI brief describes each candidate's visible appearance to aid likeness, **casts** the most interesting subset (returned as `selection`), then **authors the full scene** for that week's photo (location, composition, lens, lighting, styling, arrangement) rather than slot-filling a fixed template. Returns `{ artists, selection, scene, concept, palette, mood }`; falls back to a deterministic seed-varied brief (no casting — uses the top play-ranked photos) without `OPENAI_API_KEY`. Recent shoot concepts from the history file are passed as do-not-repeat instructions, and each run writes a `.json` sidecar — mirrored into `src/assets/<week>/` rather than next to the portrait, because `public/` deploys verbatim and the run metadata should not be published (the weekly flow also appends to `scripts/.tunes-image-history.json`).
-- The prompt wraps the authored `scene` with fixed guardrails: one photorealistic 16:9 group photo with each cast member recognisable, kept to an intimate group (for bands, only the one or two most recognisable members), plus identity-preserving negatives (no extra people, no duplicated/merged/distorted faces) on top of the shared text/grid/illustration negatives.
+- The final AI-authored photography prompt receives fixed guardrails: exactly one adult from each attached reference, every selected person shown exactly once, no reflections/posters/screens/background copies, no extra people, no merged or distorted faces, close framing, faithful likenesses, no text, and no grid or montage.
+- Every run writes a version-2 `.json` sidecar containing the factual summaries, selection, cast plan, creative direction, scene, palette, mood, exact prompt, backend, model, and attached inputs. It is mirrored into `src/assets/<week>/` rather than next to the portrait because `public/` deploys verbatim; the weekly flow also appends to `scripts/.tunes-image-history.json`.
+- Without `OPENAI_API_KEY`, filename-based summaries and a deterministic naturalistic photography fallback preserve the generation path with less source-specific direction.
 - Outputs `tunes-artists-YYYY-MM-DD-listened-to-this-week.png` (+ `-small`, 1400×800) into `public/assets/YYYY-MM-DD-listened-to-this-week/` — it is a **body** image referenced by a `/assets/...` public path, unlike the hero cover which lives in `src/assets/`.
 
 **In the post:** the weekly `pnpm run tunes` flow generates the portrait after downloading the artist photos and embeds it in the post body — after the album write-ups and above the Top Artists / Top Albums lists — as a bare full-width `<Img>` (16:9, click-to-zoom, no caption, no heading so it stays out of the table of contents). Generation is **best-effort**: if it fails or no artist photos are available, the post is rendered with no portrait (the `{{artistPortrait}}` placeholder collapses to nothing) rather than failing. The placement seam is the `{{artistPortrait}}` placeholder in `scripts/tunes-template.mdx`, filled by `scripts/lib/blog-post-renderer.js`. The regenerate harness (`--type=artist`) writes to the same `public/assets/{week}/` location, so re-running it refreshes the in-post image.
@@ -307,6 +311,9 @@ node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --hint="l
 
 # Regenerate the artist group portrait for a specific week
 node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --debug
+
+# Give the artist art director a one-off steer
+node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --hint="candid backstage" --debug
 
 # Testing mode keeps all generated files under output/
 pnpm run tunes -- --testing --take=5

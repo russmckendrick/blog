@@ -28,6 +28,8 @@ async function main() {
     const takeCount = takeArg ? parseInt(takeArg.split('=')[1], 10) : null
     const coverHintArg = args.find(arg => arg.startsWith('--cover-hint='))
     const coverHint = coverHintArg ? coverHintArg.slice('--cover-hint='.length) : ''
+    const artistHintArg = args.find(arg => arg.startsWith('--artist-hint='))
+    const artistHint = artistHintArg ? artistHintArg.slice('--artist-hint='.length) : ''
 
     // Calculate week dates
     const weekStart = weekStartArg
@@ -203,6 +205,7 @@ async function main() {
           backend: configLoader.getArtistPortraitBackend(),
           inputs: configLoader.getArtistPortraitInputs(),
           candidates: configLoader.getArtistPortraitCandidates(),
+          hint: artistHint,
           recordHistory: !testingMode,
           dateLabel: dateStr,
           debug: debugMode

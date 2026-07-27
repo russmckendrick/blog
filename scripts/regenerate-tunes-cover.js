@@ -108,7 +108,7 @@ Options:
   --header            Shorthand for --type=header
   --artist            Shorthand for --type=artist
   --week=<date>       Week date, e.g. 2026-04-20 (interactive picker if omitted)
-  --hint=<string>     Header only: optional steer for the AI art director
+  --hint=<string>     Optional steer for the selected image's AI art director
   --record            Append the run to scripts/.tunes-image-history.json (off by
                       default here so regenerating old weeks does not pollute the
                       do-not-repeat memory)
@@ -122,6 +122,7 @@ Outputs (default):
 
 Examples:
   node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --debug
+  node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --hint="candid backstage" --debug
   node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --hint="lean abstract" --debug
   node scripts/regenerate-tunes-cover.js --week=2026-04-20 --output=/tmp/tunes-test.png
 `)
@@ -208,10 +209,6 @@ async function main() {
   const dateSeed = new Date(dateStr).getTime()
 
   if (imageType === 'artist') {
-    if (args.hint) {
-      console.error('--hint only applies to --type=header')
-      process.exit(1)
-    }
     const artistsFolder = path.join(rootDir, 'public', 'assets', selectedWeek, 'artists')
     // The portrait is a body image referenced by a /assets/... public path, so it lives in
     // public/assets/{week}/ (not src/assets, where the hero cover lives).
@@ -242,6 +239,7 @@ async function main() {
       seed: dateSeed,
       width: 1400,
       height: 800,
+      hint: args.hint,
       recordHistory: args.record,
       dateLabel: dateStr,
       debug: args.debug

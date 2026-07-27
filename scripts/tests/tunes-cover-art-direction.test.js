@@ -12,10 +12,6 @@ import {
   normalizeTunesPostContext,
   parseTunesPostContext
 } from '../lib/tunes-post-context.js'
-import {
-  pickColourTreatment,
-  pickShootDirection
-} from '../lib/tunes-portrait-directions.js'
 
 const sourceReferences = [
   {
@@ -119,10 +115,4 @@ test('normalizes freeform art direction and appends only hard generation constra
   assert.match(prompt, /each identifiable reference person only once/i)
   assert.match(prompt, /reflection, mirror portrait, poster, billboard/i)
   assert.doesNotMatch(prompt, /creative-direction lane/i)
-})
-
-test('artist portrait rotations remain deterministic after being split from cover lanes', () => {
-  const seed = new Date('2026-07-27').getTime()
-  assert.equal(pickShootDirection(seed), pickShootDirection(seed))
-  assert.deepEqual(pickColourTreatment(seed), pickColourTreatment(seed))
 })
