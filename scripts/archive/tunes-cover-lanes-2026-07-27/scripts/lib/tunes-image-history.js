@@ -5,9 +5,8 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// Rolling record of what the weekly images actually were - creative direction, concept,
-// prompts - so the art director can be told "do not repeat these" and past prompts stay
-// auditable. The file
+// Rolling record of what the weekly images actually were - lane, concept, prompts - so the
+// art director can be told "do not repeat these" and past prompts stay auditable. The file
 // is COMMITTED (not gitignored) on purpose: the weekly GitHub Action runs on a fresh
 // checkout, so a gitignored cache would be empty every run; the weekly commit carries the
 // update along with the post. Only the weekly generator appends (the regenerate harness is

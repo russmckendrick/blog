@@ -3,29 +3,32 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
+import OpenAI from 'openai'
 import { fal } from '@fal-ai/client'
 import { COVER_BLOCKLIST } from './tunes-cover-blocklist.js'
 import { isContentPolicyViolation } from './lib/fal-content-policy.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { getBackend, BACKENDS } from './lib/image-backends/index.js'
-import { appendHistory, recentConcepts, writeSidecar } from './lib/tunes-image-history.js'
-import { extractTunesDate } from './lib/tunes-post-context.js'
 import {
-  buildGenerationPrompt as buildFreeformGenerationPrompt,
-  designCoverArtDirection,
-  summarizeAlbumCovers
-} from './lib/tunes-cover-art-direction.js'
+  MS_PER_WEEK,
+  getLane,
+  listLanes,
+  pickLane,
+  pickLightingDirection,
+  pipelineStage
+} from './lib/tunes-lanes.js'
+import { appendHistory, recentConcepts, writeSidecar } from './lib/tunes-image-history.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const PROJECT_ROOT = path.resolve(__dirname, '..')
 
 const DEFAULT_COVER_BACKEND = 'nano-banana'
-const MIN_TIMESTAMP_SEED = 604800000
 
-// Resolve the cover compose backend: explicit option first, then tunes-config.yaml, then the
-// default. Unknown ids warn and fall back, and single-image backends are refused because the
-// original album artwork remains attached to every generation call.
+// Resolve the cover compose backend: explicit option first, then the lane's compose stage,
+// then the tunes-config.yaml switch (settings.cover_backend), then the default. Unknown ids
+// warn and fall back, and single-image backends are refused (composing needs the week's full
+// set of covers as references).
 async function resolveCoverBackend(explicit) {
   let requested = explicit
   if (!requested) {
@@ -50,10 +53,13 @@ async function resolveCoverBackend(explicit) {
 }
 
 // Resolve the backend to switch to when the primary refuses on a content-policy violation.
-// Precedence: explicit option -> env -> tunes-config.yaml -> default (nano-banana, when it
-// is not already primary). "none"/"off"/"" disables it.
-async function resolveCoverFallbackBackend(primaryBackend, explicit) {
-  let requested = explicit ?? process.env.TUNES_COVER_FALLBACK_BACKEND
+// Precedence: explicit option -> env (TUNES_COVER_FALLBACK_BACKEND) -> the lane's compose
+// stage -> tunes-config.yaml (settings.cover_fallback_backend) -> default (nano-banana, the
+// more permissive backend, but only when it isn't already the primary). "none"/"off"/""
+// disables the fallback. Returns the backend object, or null when there is no usable
+// fallback distinct from the primary.
+async function resolveCoverFallbackBackend(primaryBackend, explicit, laneFallback) {
+  let requested = explicit ?? process.env.TUNES_COVER_FALLBACK_BACKEND ?? laneFallback
   if (requested == null) {
     try {
       const config = new ConfigLoader()
@@ -85,6 +91,35 @@ async function resolveCoverFallbackBackend(primaryBackend, explicit) {
   return backend.id === primaryBackend.id ? null : backend
 }
 
+// Resolve the week's creative-direction lane. Precedence: explicit option (--lane / --style)
+// -> env TUNES_COVER_LANE -> deterministic weekly rotation over settings.cover_lanes (or all
+// lanes). "auto" means rotation and is collapsed at EACH tier - bulk-listen.js passes
+// --lane=auto by default, and the env var must still work behind it. An unknown explicit
+// lane is an error so a typo cannot silently change the look.
+async function resolveLane(explicit, seed) {
+  const isAuto = value => ['auto', 'rotate', 'rotation'].includes(String(value || '').trim().toLowerCase())
+  let requested = isAuto(explicit) ? null : explicit
+  if (!requested) requested = isAuto(process.env.TUNES_COVER_LANE) ? null : process.env.TUNES_COVER_LANE
+  if (requested) {
+    const lane = getLane(requested)
+    if (!lane) {
+      throw new Error(`Unknown lane "${requested}". Valid lanes: ${listLanes().map(item => item.id).join(', ')}`)
+    }
+    return lane
+  }
+
+  let laneIds = null
+  try {
+    const config = new ConfigLoader()
+    await config.load()
+    laneIds = config.getCoverLanes()
+  } catch {
+    laneIds = null
+  }
+
+  return pickLane(seed, { laneIds })
+}
+
 async function resolveHistorySize() {
   try {
     const config = new ConfigLoader()
@@ -95,8 +130,10 @@ async function resolveHistorySize() {
   }
 }
 
-// These are defects rather than creative direction. The art director chooses the medium,
-// composition, palette, and scene from factual image summaries.
+// Negative steers, split by concern so each lane bans the RIGHT media. Text and layout
+// negatives always apply; photo lanes ban illustration looks; print lanes ban photo/3D looks
+// instead (the old behaviour banned every non-photo medium globally, which is exactly why
+// months of covers converged on one photoreal formula).
 const TEXT_NEGATIVE_TERMS = [
   'readable text',
   'letters',
@@ -113,9 +150,10 @@ const LAYOUT_NEGATIVE_TERMS = [
   'grid layout',
   'contact sheet',
   'evenly tiled squares',
-  'raw album-cover thumbnails',
-  'collage of separate panels'
+  'raw album-cover thumbnails'
 ]
+
+const PANEL_COLLAGE_TERM = 'collage of separate panels'
 
 const ANTI_ILLUSTRATION_TERMS = [
   'illustration',
@@ -130,14 +168,41 @@ const ANTI_ILLUSTRATION_TERMS = [
   'flat graphic style'
 ]
 
-// The artist portrait remains intentionally photographic and imports this back-compatible
-// set. Header covers do not use it because illustration, print, photography, and mixed media
-// are all valid AI-selected directions.
+const ANTI_PHOTO_TERMS = [
+  'photorealistic photograph',
+  'DSLR photo',
+  '3D render',
+  'CGI',
+  'octane render',
+  'glossy 3D rendering',
+  'camera depth of field',
+  'lens bokeh',
+  'realistic skin texture'
+]
+
+// Back-compat export: the artist portrait flow builds on the photo-lane set.
 const NEGATIVE_TERMS = [
   ...TEXT_NEGATIVE_TERMS,
   ...LAYOUT_NEGATIVE_TERMS,
+  PANEL_COLLAGE_TERM,
   ...ANTI_ILLUSTRATION_TERMS
 ]
+
+function negativeTermsForLane(lane) {
+  const kindTerms = lane.kind === 'print' ? ANTI_PHOTO_TERMS : ANTI_ILLUSTRATION_TERMS
+  return [
+    ...TEXT_NEGATIVE_TERMS,
+    ...LAYOUT_NEGATIVE_TERMS,
+    ...(lane.collageMedium ? [] : [PANEL_COLLAGE_TERM]),
+    ...kindTerms,
+    ...(lane.negatives || []),
+    ...(lane.antiCliche || [])
+  ]
+}
+
+const openai = process.env.OPENAI_API_KEY
+  ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+  : null
 
 function colorDistance(a, b) {
   const dr = a.r - b.r
@@ -334,16 +399,11 @@ function humanizeImageName(imagePath) {
 }
 
 function buildSourceReferences(imagePaths) {
-  return imagePaths.map((imagePath, index) => {
-    const filename = path.basename(imagePath)
-    return {
-      source: index + 1,
-      filename,
-      album: humanizeImageName(imagePath),
-      artist: '',
-      plays: null
-    }
-  })
+  return imagePaths.map((imagePath, index) => ({
+    source: index + 1,
+    filename: path.basename(imagePath),
+    album: humanizeImageName(imagePath)
+  }))
 }
 
 function filterBlocklistedCovers(imagePaths, debug = false) {
@@ -428,6 +488,208 @@ function parseJSONResponse(text) {
   }
 }
 
+function normalizeCoverDescriptions(rawCovers = []) {
+  const covers = Array.isArray(rawCovers) ? rawCovers : []
+  return covers
+    .map((item, index) => {
+      const source = Number(item?.source || item?.source_index || item?.image || index + 1)
+      const description = String(item?.description || item?.summary || item?.contents || '').trim()
+      if (!description) return null
+      return {
+        source: Number.isFinite(source) && source > 0 ? source : index + 1,
+        description
+      }
+    })
+    .filter(Boolean)
+    .slice(0, 8)
+}
+
+function normalizeElements(rawElements = [], sourceReferences = []) {
+  const elements = Array.isArray(rawElements) ? rawElements : []
+  const normalized = elements
+    .map((item, index) => {
+      const source = Number(item?.source || item?.source_index || item?.image || index + 1)
+      const element = String(item?.element || item?.use || item?.description || '').trim()
+      if (!element) return null
+      return {
+        source: Number.isFinite(source) && source > 0 ? source : index + 1,
+        element
+      }
+    })
+    .filter(Boolean)
+    .slice(0, 8)
+
+  if (normalized.length > 0) return normalized
+
+  return sourceReferences.slice(0, 6).map(reference => ({
+    source: reference.source,
+    element: `a recognisable element from ${reference.album || reference.filename}`
+  }))
+}
+
+function firstSentence(text) {
+  const trimmed = String(text || '').trim()
+  const match = trimmed.match(/^[^.!?]+[.!?]?/)
+  return (match ? match[0] : trimmed).trim()
+}
+
+function normalizeBrief(rawBrief, sourceReferences = []) {
+  const scene = String(
+    rawBrief?.scene ||
+    'one cohesive, imaginative scene set in a single shared world that combines recognisable elements drawn from every uploaded album cover'
+  ).trim()
+
+  return {
+    covers: normalizeCoverDescriptions(rawBrief?.covers),
+    scene,
+    // The one-line concept is what gets remembered and fed back as a do-not-repeat next
+    // week, so it always exists even when the model omits it.
+    concept: String(rawBrief?.concept || '').trim() || firstSentence(scene),
+    elements: normalizeElements(rawBrief?.elements || rawBrief?.source_elements, sourceReferences),
+    palette: Array.isArray(rawBrief?.palette)
+      ? rawBrief.palette.map(item => String(item).trim()).filter(Boolean).slice(0, 5)
+      : [],
+    mood: String(rawBrief?.mood || 'imaginative and music-led').trim()
+  }
+}
+
+function buildFallbackBrief(sourceReferences, lane) {
+  return normalizeBrief({
+    scene: `one cohesive, imaginative scene rendered as ${lane.medium}, combining recognisable elements drawn from every uploaded album cover, tied together by one setting, one light, and one consistent treatment`,
+    concept: `${lane.label} weaving together the week's album motifs`,
+    elements: sourceReferences.slice(0, 6).map(reference => ({
+      source: reference.source,
+      element: `a recognisable element from ${reference.album || reference.filename}`
+    })),
+    palette: [],
+    mood: 'imaginative and music-led'
+  }, sourceReferences)
+}
+
+async function createArtBrief({ imageUrls, sourceReferences, debug, lane, lightingDirection = '', avoidConcepts = [] }) {
+  if (!openai) {
+    if (debug) {
+      console.log('  No OPENAI_API_KEY found; using deterministic art brief')
+    }
+    return buildFallbackBrief(sourceReferences, lane)
+  }
+
+  // Photo lanes keep the original "make it photographable" flip and also receive their
+  // lane-specific treatment here. The final prompt repeats it, but Stage A must know it
+  // before inventing the scene (especially for aerial and long-exposure photography).
+  const motifLine = lane.kind === 'photo'
+    ? `Where a cover's motif is an illustration, painting, symbol, or graphic, reimagine it as a real, physical, photographable thing in the scene - a sculpture, prop, costume, set piece, projection, mural, printed poster, real person, animal, or object - so it stays recognisable while the whole frame still reads as a genuine photograph. Apply this lane-specific treatment while designing the scene: ${lane.motifTreatment}`
+    : lane.motifTreatment
+
+  const lightingLine = lane.lighting && lightingDirection
+    ? `Set the scene in this specific lighting and time of day, and commit to it fully: ${lightingDirection}. Adapt it so it suits the scene, but do NOT default to a generic night-time setting unless this direction calls for it.`
+    : ''
+
+  const avoidBlock = avoidConcepts.length > 0
+    ? `These concepts were used in recent weeks and must NOT be repeated - choose a different setting, a different central idea, and a different composition:\n${avoidConcepts.map(concept => `- ${concept}`).join('\n')}`
+    : ''
+
+  const instructions = `You are a visual art director creating one original header image for a music blog.
+You will receive several album covers as images. Work in two steps and return only valid JSON.
+Step 1 - read the artwork: look closely at EACH uploaded album cover and describe its concrete visual contents: the subjects, figures, creatures, objects, symbols, settings, art style, and dominant colours that are actually depicted. Ignore and never mention any text, lettering, titles, or logos printed on the covers.
+Step 2 - invent the scene: design ONE original, unique scene that weaves recognisable elements from ALL of the covers into a single cohesive world they could all plausibly share. The final image will be ${lane.medium}. Design the scene natively in that medium and imagine every borrowed element the way that medium would render it. ${motifLine}
+Compose it as: ${lane.composition}
+${lightingLine}
+${lane.collageMedium
+    ? 'Everything must feel like one deliberate page - fragments composed together with intent, unified by the paper, print texture, and palette - never arranged as a grid, row, or panel of squares.'
+    : 'Everything must feel connected by one environment, light, and story - not separate objects floating side by side, and never arranged as a grid, row, or panel of squares.'}
+Never design: ${(lane.antiCliche || []).join('; ')}.
+${avoidBlock}
+Keep it safe for an image generator: never depict or reconstruct children, infants, babies, or minors (recast any youthful figure as an adult, a mannequin, a statue, or an abstract shape); avoid gore, wounds, body horror, surgical or medical imagery, foetal or anatomical motifs, blank or milky eyes, distress, nudity, sexual content, weapons, and real-world hate or brand symbols. When a cover features any of these, reinterpret the motif abstractly - as a sculpture, silhouette, pattern, prop, or play of light - so it stays evocative without recreating the sensitive subject. Do not aim to recreate the exact likeness of any identifiable real person; suggest the look instead.
+Be imaginative and go bold; richly detailed and surprising scenes are welcome as long as everything reads as one connected piece in this medium. Colour: ${lane.paletteTreatment}.
+Return JSON exactly as: {"covers":[{"source":1,"description":"string"}],"scene":"string","concept":"string","elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string"}.
+"scene" is a vivid paragraph describing the unified scene in this medium and how the borrowed elements appear inside it. "concept" is one line of at most 15 words naming the setting and the central idea. "elements" names the single most recognisable thing taken from each cover that must appear in the scene. "palette" lists the exact colours the image should use, pulled from the artwork and chosen to suit this treatment - respect any ink-count limit it sets: ${lane.paletteTreatment}. "mood" is the emotional tone.`
+
+  try {
+    const response = await openai.responses.create({
+      model: process.env.OPENAI_TUNES_COVER_MODEL || process.env.OPENAI_MODEL || 'gpt-5.4',
+      instructions,
+      input: [
+        {
+          type: 'message',
+          role: 'user',
+          content: [
+            {
+              type: 'input_text',
+              text: `Return JSON only. First describe each of the ${imageUrls.length} uploaded album covers, then design one cohesive original scene, rendered as ${lane.medium}, that uses recognisable elements from all of them.`
+            },
+            ...imageUrls.map(url => ({
+              type: 'input_image',
+              image_url: url,
+              detail: 'auto'
+            }))
+          ]
+        }
+      ],
+      text: { format: { type: 'json_object' } },
+      max_output_tokens: 1300,
+      temperature: 0.8
+    })
+
+    const brief = normalizeBrief(parseJSONResponse(response.output_text || ''), sourceReferences)
+
+    if (debug) {
+      console.log(`  Art brief: ${JSON.stringify(brief, null, 2)}`)
+    }
+
+    return brief
+  } catch (error) {
+    console.warn(`  OpenAI art brief failed: ${error.message}`)
+    return buildFallbackBrief(sourceReferences, lane)
+  }
+}
+
+function formatElement(element) {
+  return `source ${element.source}: ${element.element}`
+}
+
+function formatElements(brief, sourceReferences) {
+  return brief.elements.length > 0
+    ? brief.elements.map(formatElement).join('; ')
+    : sourceReferences.map(reference => `source ${reference.source}: recognisable element from ${reference.album || reference.filename}`).join('; ')
+}
+
+// Style-first prompt (Style -> Subject -> Setting -> Composition -> Colour), because the
+// image models otherwise drift back to their default vivid cinematic photoreal look when
+// the medium arrives late or hedged.
+function buildGenerationPrompt(brief, sourceImageCount, sourceReferences, lane, lightingDirection = '') {
+  const elements = formatElements(brief, sourceReferences)
+  const palette = brief.palette.length > 0 ? brief.palette.join(', ') : 'a palette pulled from the uploaded artwork'
+  const avoid = negativeTermsForLane(lane).join(', ')
+
+  const qualityLine = lane.kind === 'photo'
+    ? 'Sharp, high quality, visually striking, with real depth and a strong sense of place.'
+    : 'Bold, confident, gallery-quality print design with a strong sense of place.'
+
+  // Collage lanes are, by definition, pasted fragments - demanding "one shared setting and
+  // consistent light" there would argue with the medium, so they get a page-unity line instead.
+  const cohesionLine = lane.collageMedium
+    ? 'Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and compose them all onto one deliberate page unified by the paper texture, print treatment, and palette.'
+    : 'Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light.'
+
+  return [
+    lane.styleDirective,
+    'The image is a 16:9 music blog header.',
+    `Scene: ${String(brief.scene).trim().replace(/\.+$/, '')}.`,
+    `Weave in recognisable elements taken from the ${sourceImageCount} uploaded album covers: ${elements}.`,
+    cohesionLine,
+    lane.motifTreatment,
+    `Composition: ${lane.composition}`,
+    `Colour direction: ${palette} - ${lane.paletteTreatment}.`,
+    lane.lighting && lightingDirection ? `Time of day and light: ${lightingDirection}.` : '',
+    `Mood: ${brief.mood}.`,
+    'Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person.',
+    'Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image.',
+    `Avoid: ${avoid}.`,
+    qualityLine
+  ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
+}
+
 function smallOutputPathFor(outputPath) {
   const actualExt = path.extname(outputPath)
   const ext = actualExt || '.png'
@@ -506,6 +768,8 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   }
   fal.config({ credentials: falKey })
 
+  const lane = await resolveLane(options.lane || options.style, seed)
+  const lightingDirection = lane.lighting ? pickLightingDirection(seed) : ''
   const historySize = await resolveHistorySize()
   const avoidConcepts = await recentConcepts('cover', historySize)
 
@@ -525,14 +789,15 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     minCount
   )
 
-  const primaryBackend = await resolveCoverBackend(options.backend)
-  const fallbackBackend = await resolveCoverFallbackBackend(primaryBackend, options.fallbackBackend)
+  const composeStage = pipelineStage(lane, 'compose')
+  const primaryBackend = await resolveCoverBackend(options.backend || composeStage?.backend)
+  const fallbackBackend = await resolveCoverFallbackBackend(primaryBackend, options.fallbackBackend, composeStage?.fallback)
   const backendChain = fallbackBackend ? [primaryBackend, fallbackBackend] : [primaryBackend]
 
-  console.log('  Creative direction: AI-selected from factual album-cover summaries')
+  console.log(`  Creative direction: ${lane.label} (${lane.id})`)
   if (debug) {
     console.log(`  Image backend: ${backendChain.map(b => b.label).join(' -> ')}`)
-    if (options.hint) console.log(`  Author's steer: ${options.hint}`)
+    if (lightingDirection) console.log(`  Lighting direction: ${lightingDirection}`)
     if (avoidConcepts.length > 0) console.log(`  Avoiding recent concepts: ${avoidConcepts.join(' | ')}`)
   }
 
@@ -551,24 +816,13 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
 
       try {
         if (debug) {
-          console.log(`  Attempt ${attempt + 1} (${backend.label}): generating a freeform cover from ${attemptPaths.length} album covers`)
+          console.log(`  Attempt ${attempt + 1} (${backend.label}): generating ${lane.id} cover from ${attemptPaths.length} album covers`)
         }
 
         const imageUrls = await uploadAlbumImages(attemptPaths, debug)
         const sourceReferences = buildSourceReferences(attemptPaths)
-        const coverSummaries = await summarizeAlbumCovers({
-          imageUrls,
-          sourceReferences,
-          debug
-        })
-        const artDirection = await designCoverArtDirection({
-          coverSummaries,
-          sourceReferences,
-          hint: options.hint,
-          avoidConcepts,
-          debug
-        })
-        const prompt = buildFreeformGenerationPrompt(artDirection)
+        const brief = await createArtBrief({ imageUrls, sourceReferences, debug, lane, lightingDirection, avoidConcepts })
+        const prompt = buildGenerationPrompt(brief, imageUrls.length, sourceReferences, lane, lightingDirection)
 
         if (debug) {
           console.log(`  Prompt: ${prompt}`)
@@ -577,27 +831,20 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
         const composed = await backend.generate({ imageUrls, prompt, seed, debug })
 
         const saved = await saveGeneratedImage(composed.imageUrl, outputPath, width, height, debug)
-        console.log(`  Created tunes cover (${backend.label}) from ${attemptPaths.length} album covers`)
-        console.log(`    Direction: ${artDirection.creativeDirection}`)
+        console.log(`  Created tunes cover (${lane.label}, ${backend.label}) from ${attemptPaths.length} album covers`)
         console.log(`    Full:  ${saved.outputPath}`)
         console.log(`    Small: ${saved.smallOutputPath}`)
 
         const runRecord = {
-          version: 2,
-          date: options.dateLabel || (Number.isFinite(seed) && seed >= MIN_TIMESTAMP_SEED ? new Date(seed).toISOString().slice(0, 10) : ''),
+          date: options.dateLabel || (Number.isFinite(seed) && seed >= MS_PER_WEEK ? new Date(seed).toISOString().slice(0, 10) : ''),
           type: 'cover',
-          lane: null,
-          lighting: null,
+          lane: lane.id,
+          lighting: lightingDirection || null,
           shootDirection: null,
           colourTreatment: null,
-          concept: artDirection.concept,
-          creativeDirection: artDirection.creativeDirection,
-          scene: artDirection.scene,
-          elements: artDirection.elements,
-          palette: artDirection.palette,
-          mood: artDirection.mood,
-          coverSummaries,
-          hint: options.hint || null,
+          concept: brief.concept,
+          scene: brief.scene,
+          palette: brief.palette,
           composeBackend: backend.id,
           model: composed.model,
           prompt,
@@ -618,10 +865,10 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           imageUrl: composed.imageUrl,
           model: runRecord.model,
           backend: backend.id,
-          creativeDirection: artDirection.creativeDirection,
-          concept: artDirection.concept,
-          coverSummaries,
-          mode: 'summaries_to_prompt',
+          lane: lane.id,
+          lighting: lightingDirection || null,
+          concept: brief.concept,
+          mode: 'source_scene',
           prompt
         }
       } catch (error) {
@@ -651,9 +898,9 @@ function parseArgs(args) {
     width: 1400,
     height: 800,
     seed: null,
-    date: null,
-    hint: null,
+    lane: null,
     record: false,
+    listLanes: false,
     debug: false,
     help: false
   }
@@ -661,14 +908,16 @@ function parseArgs(args) {
   for (const arg of args) {
     if (arg === '--help' || arg === '-h') options.help = true
     else if (arg === '--debug' || arg === '-d') options.debug = true
+    else if (arg === '--list-lanes') options.listLanes = true
     else if (arg === '--record') options.record = true
     else if (arg.startsWith('--input=')) options.input = arg.slice('--input='.length)
     else if (arg.startsWith('--output=')) options.output = arg.slice('--output='.length)
     else if (arg.startsWith('--width=')) options.width = Number(arg.slice('--width='.length))
     else if (arg.startsWith('--height=')) options.height = Number(arg.slice('--height='.length))
     else if (arg.startsWith('--seed=')) options.seed = Number(arg.slice('--seed='.length))
-    else if (arg.startsWith('--date=')) options.date = arg.slice('--date='.length)
-    else if (arg.startsWith('--hint=')) options.hint = arg.slice('--hint='.length)
+    else if (arg.startsWith('--lane=')) options.lane = arg.slice('--lane='.length)
+    // --style is the historical alias for --lane.
+    else if (arg.startsWith('--style=')) options.lane = arg.slice('--style='.length)
     else if (!arg.startsWith('--') && !options.input) options.input = arg
     else if (!arg.startsWith('--') && !options.output) options.output = arg
     else throw new Error(`Unknown argument: ${arg}`)
@@ -697,14 +946,23 @@ async function readInputImages(inputFolder) {
     .map(file => path.join(inputFolder, file))
 }
 
+function printLanes() {
+  console.log('\nAvailable lanes:\n')
+  for (const lane of listLanes()) {
+    const compose = pipelineStage(lane, 'compose')?.backend || 'config default'
+    console.log(`  ${lane.id.padEnd(24)} ${lane.kind.padEnd(6)} ${compose.padEnd(16)} ${lane.label}`)
+  }
+  console.log()
+}
+
 function showHelp() {
   console.log(`
 Tunes Cover Generator
 
 Creates one original AI cover for weekly tunes posts by reading the uploaded album
-covers, summarising their non-text visual contents, and asking an AI art director to
-choose the medium, scene, composition, and palette from that visual research alone.
-The original album images remain attached to the final multi-reference image call.
+covers and weaving recognisable elements from them into a single artwork. Each week
+rotates through a different creative-direction lane (photo and print media), so the
+covers stop converging on one look.
 
 Usage:
   node scripts/fal-tunes-cover.js --input=<albums-folder> --output=<cover.png> [options]
@@ -714,9 +972,10 @@ Options:
   --output=<path>     Output PNG path (also writes <name>-small.png and <name>.json)
   --width=<px>        Small output width (default: 1400)
   --height=<px>       Small output height (default: 800)
-  --seed=<number>     Image backend seed (weekly runs use the post date)
-  --date=<date>       Run date for sidecar/history; inferred from standard paths
-  --hint=<string>     Optional author steer for the AI art director
+  --seed=<number>     Deterministic seed (weekly runs use the post date)
+  --lane=<id>         Force a creative-direction lane (--style is an alias);
+                      env TUNES_COVER_LANE also works. Default: weekly rotation.
+  --list-lanes        Print the available lanes and exit
   --record            Append this run to scripts/.tunes-image-history.json (the
                       weekly generator records automatically; manual runs opt in)
   --debug, -d         Verbose output
@@ -724,15 +983,13 @@ Options:
 
 Notes:
   - Requires FAL_KEY.
-  - Uses two separate OpenAI passes when OPENAI_API_KEY is available: factual image
-    summaries first, then freeform art direction from those summaries alone.
-  - Recent concepts from the history file are passed as do-not-repeat instructions.
-  - The compose backend comes from settings.cover_backend in tunes-config.yaml. On a
-    content-policy refusal the generator retries with alternate inputs, then drops
-    to the fallback backend
+  - Uses OPENAI_API_KEY when available to describe each album cover and design one
+    cohesive scene in the week's lane; recent concepts from the history file are
+    passed as do-not-repeat instructions.
+  - The compose backend comes from the lane, falling back to settings.cover_backend
+    in tunes-config.yaml. On a content-policy refusal the generator retries with
+    alternate inputs, then drops to the fallback backend
     (env TUNES_COVER_FALLBACK_BACKEND, "none" to disable).
-  - OPENAI_TUNES_COVER_SUMMARY_MODEL and OPENAI_TUNES_COVER_DIRECTION_MODEL can
-    override the two prompt stages; OPENAI_TUNES_COVER_MODEL remains a shared fallback.
   - The composed image ships as-is; there is no second image-to-image pass.
 `)
 }
@@ -741,6 +998,10 @@ async function main() {
   const options = parseArgs(process.argv.slice(2))
   if (options.help) {
     showHelp()
+    return
+  }
+  if (options.listLanes) {
+    printLanes()
     return
   }
 
@@ -755,7 +1016,6 @@ async function main() {
   if (imagePaths.length === 0) {
     throw new Error(`No album images found in ${inputFolder}`)
   }
-  const dateLabel = options.date || extractTunesDate(inputFolder) || extractTunesDate(outputPath)
 
   console.log('Generating tunes cover scene')
   console.log(`  Input: ${inputFolder}`)
@@ -764,9 +1024,8 @@ async function main() {
   await createFALTunesCover(imagePaths, outputPath, {
     width: options.width,
     height: options.height,
-    seed: options.seed || (dateLabel ? new Date(dateLabel).getTime() : Date.now()),
-    dateLabel,
-    hint: options.hint,
+    seed: options.seed || Date.now(),
+    lane: options.lane,
     recordHistory: options.record,
     debug: options.debug
   })
@@ -790,5 +1049,6 @@ export {
   humanizeImageName,
   NEGATIVE_TERMS,
   TEXT_NEGATIVE_TERMS,
-  buildFreeformGenerationPrompt as buildGenerationPrompt
+  negativeTermsForLane,
+  buildGenerationPrompt
 }

@@ -85,6 +85,15 @@ export class ConfigLoader {
     return this.settings.cover_fallback_backend
   }
 
+  // Lane ids the weekly cover rotation may use. Returns null for "all"/missing so the
+  // caller rotates over the full lane list in scripts/lib/tunes-lanes.js. A single scalar
+  // id (cover_lanes: neon-noir) is accepted as a one-lane list.
+  getCoverLanes() {
+    const value = this.settings.cover_lanes
+    if (!value || value === 'all') return null
+    return Array.isArray(value) ? value.map(String) : [String(value)]
+  }
+
   // How many recent cover/portrait concepts are fed back to the art director as
   // do-not-repeat instructions.
   getCoverHistorySize() {

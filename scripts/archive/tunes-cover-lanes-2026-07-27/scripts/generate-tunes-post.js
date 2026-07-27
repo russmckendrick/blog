@@ -26,8 +26,6 @@ async function main() {
     const testingMode = args.includes('--testing')
     const takeArg = args.find(arg => arg.startsWith('--take='))
     const takeCount = takeArg ? parseInt(takeArg.split('=')[1], 10) : null
-    const coverHintArg = args.find(arg => arg.startsWith('--cover-hint='))
-    const coverHint = coverHintArg ? coverHintArg.slice('--cover-hint='.length) : ''
 
     // Calculate week dates
     const weekStart = weekStartArg
@@ -153,15 +151,16 @@ async function main() {
 
     const coverOutputPath = path.join(srcAssetsFolder, `tunes-cover-${dateStr}-listened-to-this-week.png`)
 
-    // Summarise the selected album covers, then let the AI art director choose a complete
-    // creative direction from those visual observations alone.
+    // Build one cohesive scene from recognisable elements across the week's album covers.
     console.log('Generating AI cover scene...')
     const dateSeed = new Date(dateStr).getTime()
+    // The compose backend now comes from the week's lane (falling back to the config
+    // defaults inside the generator), so no backend is forced here. Testing runs stay out
+    // of the do-not-repeat history.
     await createFALTunesCover(albumImagePaths, coverOutputPath, {
       seed: dateSeed,
       width: 1400,
       height: 800,
-      hint: coverHint,
       recordHistory: !testingMode,
       dateLabel: dateStr,
       debug: debugMode

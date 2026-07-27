@@ -65,6 +65,14 @@ This generates a post for the previous week (7 days ago to now).
 pnpm run tunes -- --week_start=2025-09-25
 ```
 
+### Optional Cover Steer
+
+The pipeline is fully non-interactive. If a run needs a preconfigured steer, pass it up front; it is sent only to the cover art-director stage:
+
+```bash
+pnpm run tunes -- --cover-hint="lean abstract"
+```
+
 ### Debug Mode (Single Album)
 
 ```bash
@@ -135,7 +143,7 @@ Posts are created in:
    - **Phase 3 - Research**: Uses search tools with contextual focus areas to gather information
    - AI generates engaging blog section (350-450 words) tailored to the album's characteristics
 4. **Download Images**: Fetches high-res artist/album artwork
-5. **Generate Cover**: Creates paired full-size and `-small` AI cover images by blending recognisable source elements from the ranked album artwork into one scene, rendered in that week's rotating creative-direction lane (photo or print media)
+5. **Generate Cover**: Creates paired full-size and `-small` AI cover images by summarising the ranked album artwork and asking an AI art director to choose the complete visual direction from those findings
 6. **Generate Artist Portrait**: Creates a photorealistic group portrait from the week's artist photos (best-effort) and embeds it in the post body above the Top Artists/Albums lists — see [Artist Group Portrait](#artist-group-portrait)
 7. **Render MDX**: Creates formatted blog post with galleries and links
 
@@ -185,51 +193,40 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 - `lib/blog-post-renderer.js` - MDX template renderer
 - `lib/perplexity-tool.js` - Perplexity AI search tool (config-driven)
 - `lib/exa-tool.js` - Exa AI search tool (config-driven)
-- `fal-tunes-cover.js` - Source-blended AI tunes cover generator; renders the week's creative-direction lane and delegates the image calls to configurable backends (`lib/image-backends/`)
+- `fal-tunes-cover.js` - Source-blended AI tunes cover generator; selects artwork, orchestrates summary and art-direction passes, and delegates image calls to configurable backends (`lib/image-backends/`)
 - `fal-tunes-artists.js` - Group-portrait generator that composes the week's artist photos into one photorealistic photo; same configurable image backends, reuses the cover pipeline's helpers
-- `lib/tunes-lanes.js` - The creative-direction lane catalogue (photo + print media) and the deterministic weekly rotation helpers (lanes, lighting, shoot grammar, colour treatments)
+- `lib/tunes-cover-art-direction.js` - Two-stage cover intelligence: factual per-image summaries followed by freeform AI art direction and final prompt construction
+- `lib/tunes-post-context.js` - Parses ranked artist/album lists only for the manual regeneration harness to reproduce source ordering; its findings are not sent to cover art direction
+- `lib/tunes-portrait-directions.js` - Deterministic shoot grammar and colour-treatment rotations used only by the artist portrait
 - `lib/tunes-image-history.js` - Rolling committed history of weekly image runs (`scripts/.tunes-image-history.json`) plus per-run `.json` sidecars; feeds do-not-repeat concepts back to the art director
 - `lib/image-backends/` - Generic, swappable multi-reference compose backends shared by both generators (`nano-banana`, `gpt-image-2`)
-- `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly image (header or artist) without changing MDX; supports `--lane` for the header
+- `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly image (header or artist) without changing MDX; supports an optional header `--hint`
 
 ### AI Models Used
 
 - **Content generation**: OpenAI GPT-5.4 (default) or Anthropic Claude 3.5 Sonnet (fallback), with humaniser anti-pattern guidelines to produce natural UK English output
-- **Cover art brief (Stage A)**: OpenAI GPT-5.4 via Responses API (describes each album cover, then designs one cohesive scene in the week's creative-direction lane)
-- **Image composition**: a swappable multi-reference backend (`scripts/lib/image-backends/`) — FAL.ai `nano-banana-2/edit` or OpenAI `gpt-image-2/edit` — chosen by the week's lane, falling back to `settings.cover_backend` / `settings.artist_portrait_backend` in `scripts/tunes-config.yaml`
+- **Cover summary pass**: OpenAI GPT-5.4 via Responses API, using vision to record factual non-text observations for every selected album cover
+- **Cover art-direction pass**: OpenAI GPT-5.4 via Responses API, choosing the medium, scene, composition, lighting, palette, and final prompt from the factual image summaries alone
+- **Image composition**: a swappable multi-reference backend (`scripts/lib/image-backends/`) — FAL.ai `nano-banana-2/edit` or OpenAI `gpt-image-2/edit` — selected by `settings.cover_backend` / `settings.artist_portrait_backend` in `scripts/tunes-config.yaml`
 - **Web search**: Tavily, Perplexity, or Exa API (optional, for factual album research)
 
 ## Cover Image Generation
 
-The weekly tunes workflow generates one original, cohesive AI scene built from the week's album covers — rendered in that week's **creative-direction lane**. The art director reads the artwork directly — describing what each cover actually depicts — and then invents a single unified scene that weaves recognisable elements from all of them into one shared world, designed natively in the lane's medium. The covers stay recognisable in the result (spot-the-albums is the point), but the medium, composition, and palette genuinely change week to week instead of converging on one photoreal formula.
+The weekly Tunes workflow generates one original AI header from the week's album covers. Creative-direction lanes and post-content dependencies are no longer used. A factual vision pass describes the non-text contents of each selected cover; a separate art-director pass receives only those summaries, optional preconfigured author guidance, and recent do-not-repeat concepts. It then chooses the medium, scene, composition, lighting, palette, and final image prompt freely.
 
 **File**: `scripts/fal-tunes-cover.js`
 
-### Creative-Direction Lanes
+### AI-Selected Creative Direction
 
-Lanes live in `scripts/lib/tunes-lanes.js` (run `node scripts/fal-tunes-cover.js --list-lanes` for the catalogue). Seven are photographic and four are print/illustration media — the print lanes deliberately echo the site's paper-and-ink Print Edition design language:
+The art director has no preset medium catalogue and no default photographic bias. Photography, illustration, painting, printmaking, collage, textiles, sculpture, and mixed media are all available when the week's cover research supports them. It is explicitly asked to use a visual hierarchy: one or two motifs can lead while the remaining sources contribute through supporting objects, forms, palette, texture, atmosphere, or environmental detail. This avoids both equal-weight visual clutter and a recurring house formula.
 
-| Lane | Kind | Look |
-|------|------|------|
-| `documentary-street` | photo | candid 35mm reportage, motifs found in a lived-in place, nothing posed |
-| `macro-detail` | photo | extreme macro, motifs as a miniature tabletop world |
-| `analog-rehearsal-room` | photo | candid grainy 35mm documentary of musicians actively rehearsing |
-| `neon-noir` | photo | cinematic neon night (the one after-dark lane) |
-| `miniature-diorama` | photo | handmade model world shot with tilt-shift |
-| `long-exposure-light` | photo | real night photography shaped by moving light trails and reflections |
-| `surreal-album-sleeve` | photo | high-concept practical-effects photography in a real location, with source-cover people retained as recognisable candid extras |
-| `retro-sci-fi-paperback` | print | richly painted 1960s/70s speculative paperback art, without lettering |
-| `painterly-gouache` | print | matte gouache painting, visible brushwork |
-| `vintage-travel-poster` | print | mid-century travel-poster illustration |
-| `zine-photocollage` | print | xeroxed halftone zine paste-up, b/w plus one spot colour |
+The generated creative prompt is passed to the image backend with only fixed defect and safety guards appended: one cohesive 16:9 composition, no grid/contact-sheet/raw-cover layout, no text or branding, safe reinterpretation of sensitive imagery, and adults only. When a source includes a person, the generator is instructed to closely match their visible appearance and likeness to the reference, including recognisable facial features, hair, skin tone, clothing, and styling. Each identifiable reference person may appear only once across the entire composition—not again as a reflection, poster, billboard, screen, portrait, silhouette, or background figure—unless repeated likenesses are visibly intrinsic to one source cover. The original album images remain attached as numbered references, so the factual summaries guide the prompt without replacing the visual evidence.
 
-Each lane bundles a medium, a style-first prompt opening, a motif treatment (how the album elements are rendered while staying recognisable), a composition grammar, a palette treatment, per-lane negatives, and its image pipeline. Text and grid/montage negatives always apply; photo lanes additionally ban illustration looks while print lanes ban photoreal/3D looks; and every lane bans the old weekly formula (posed ensemble, props on plinths, one giant central sculpture). The lane rotates deterministically from the post-date seed — every lane appears exactly once per 11 weeks, with the order re-dealt each cycle so lane/lighting pairings never repeat (see `epochShuffledPick` in `scripts/lib/tunes-lanes.js`). Force a lane with `--lane=<id>` (alias `--style`), env `TUNES_COVER_LANE`, or restrict the rotation with `settings.cover_lanes` in `scripts/tunes-config.yaml`.
-
-**Image backends:** the actual image calls are delegated to pluggable backends in `scripts/lib/image-backends/`. The **compose** step needs a multi-reference editor — **Nano Banana** (`fal-ai/nano-banana-2/edit`) or **GPT Image 2** (`openai/gpt-image-2/edit`) — and comes from the lane (print lanes prefer nano-banana, which follows style-first prompting more faithfully), falling back to `settings.cover_backend` in `scripts/tunes-config.yaml`. Composing is the only image stage — the composed image is what ships. Print lanes used to run a second image-to-image **restyle** pass (Recraft, later Ideogram) to reinforce the medium, but it reliably degraded the album motifs the covers exist to show off, so the whole stage was removed. Per-backend env overrides: `NANO_BANANA_MODEL`, `GPT_IMAGE_2_MODEL` etc.
+**Image backends:** the actual image call is delegated to a pluggable multi-reference backend in `scripts/lib/image-backends/`: **Nano Banana** (`fal-ai/nano-banana-2/edit`) or **GPT Image 2** (`openai/gpt-image-2/edit`). The primary comes from `settings.cover_backend`; content-policy refusals try alternate input sets and then `settings.cover_fallback_backend` / `TUNES_COVER_FALLBACK_BACKEND`. The composed image ships as-is; there is no second image-to-image pass. Per-backend overrides include `NANO_BANANA_MODEL` and `GPT_IMAGE_2_MODEL`.
 
 ### Run History and Do-Not-Repeat Memory
 
-Every run writes a `.json` sidecar next to the PNGs with the lane, brief, and exact prompts, so past images stay auditable. The weekly generator also appends each run to `scripts/.tunes-image-history.json` — a **committed**, capped rolling file (the GitHub Action runs on a fresh checkout, so it must ride along in the repo). The most recent concepts from that file are fed back to the art director as explicit do-not-repeat instructions (`settings.cover_history_size`, default 8). Manual runs stay out of the history unless passed `--record`.
+Every run writes a `.json` sidecar next to the PNGs with per-cover summaries, chosen creative direction, source-element plan, scene, palette, exact prompt, backend, model, and input files. The weekly generator also appends each run to `scripts/.tunes-image-history.json` — a **committed**, capped rolling file (the GitHub Action runs on a fresh checkout, so it must ride along in the repo). The most recent concepts from that file are fed back to the art director as explicit do-not-repeat instructions (`settings.cover_history_size`, default 8). Manual runs stay out of the history unless passed `--record`.
 
 ### Outputs
 
@@ -240,13 +237,11 @@ Each run saves two PNGs:
 
 The small image defaults to `1400x800`. The MDX `heroImage` path continues to point at the non-`small` file.
 
-### Reading the Covers, Then Building One Scene
+### Reading the Covers, Then Designing the Prompt
 
-The brief is produced in two steps inside a single OpenAI call. First the model looks at each uploaded cover and describes its concrete visual contents — subjects, figures, objects, symbols, settings, art style, and colours — while ignoring any printed text or logos. Then it invents one original scene that weaves recognisable elements from all of the covers into a single shared world, designed natively in the week's lane: a photo lane reimagines illustrated motifs as real, physical, photographable things, while a print lane redraws, carves, cuts, or paints them in its own medium. The brief returns a one-line `concept` alongside the scene — that line is what gets recorded in the history file and fed back as a do-not-repeat the following weeks.
+The process uses two separate OpenAI calls. The first is deliberately factual and low-temperature: it looks at every selected cover and records a description, signature non-text motif, original medium, and palette. It is forbidden from inventing a combined scene or offering art direction.
 
-Two steers apply to every lane: everything must belong to the same cohesive scene (connected by environment and story rather than floating as separate cut-outs, never a grid or montage), and no text anywhere. The rest — medium, composition, palette, lighting — comes from the lane, including which negative set applies (photo lanes ban illustration looks, print lanes ban photoreal/3D looks) and a shared ban on the old posed-ensemble/props-on-plinths/giant-sculpture formula.
-
-Photo lanes also commit to a different **time-of-day / lighting direction** (bright midday, golden hour, overcast, early morning, interior daylight, sunny afternoon, blue-hour, stormlight) chosen deterministically from the week's seed by `pickLightingDirection`. The list is daylight-only because the after-dark look now has a whole lane of its own (`neon-noir`); left to itself the art director almost always drifted to night. Print lanes skip the lighting rotation — their light is part of the lane's own treatment.
+The second call receives those summaries rather than the images, keeping observation and invention separate. It receives no post title, description, body, artist list, or album-ranking context; the cover research must carry the visual idea. An optional preconfigured `--hint` and recent concepts that must not be repeated are the only additional guidance. It returns a short history concept, a named creative direction, scene, per-source contribution plan, palette, mood, and the complete creative image prompt. The raw covers are then attached again when that prompt is sent to the image backend.
 
 ### Cover Blocklist
 
@@ -263,16 +258,16 @@ Matching is on the album name only and is loose (case, spacing, and punctuation 
 
 ### How Cover Direction Works
 
-1. Resolves the week's creative-direction lane (flag > env > config > deterministic rotation) and, for photo lanes, the lighting direction.
-2. Ranks album inputs from the week's top albums first.
-3. Drops any albums listed in the cover blocklist (`scripts/tunes-cover-blocklist.js`).
-4. Selects the ~7-8 strongest covers using lightweight local colour and full-height text-density analysis (configurable via `TUNES_COVER_PRIMARY_INPUTS` / `TUNES_COVER_MAX_INPUTS`). Text-likelihood affects the entire primary ranking, and strongly text-heavy candidates are held back unless a small week needs them as fallbacks.
-5. Uploads those covers to FAL storage as source material.
-6. Uses OpenAI vision, when `OPENAI_API_KEY` is available, to describe each cover and design one cohesive scene from their combined contents in the lane's medium, avoiding the recent concepts recorded in the history file.
-7. Converts that brief into a style-first natural-language FAL prompt (medium, scene, motifs, composition, colour, lighting) with the lane's negative set, and composes the image with the lane's multi-reference backend.
-8. Saves the full generated output, the `-small` derivative, and the `.json` run sidecar; the weekly flow also appends the run to the history file.
+1. Ranks album inputs from the week's top albums first.
+2. Drops any albums listed in the cover blocklist (`scripts/tunes-cover-blocklist.js`).
+3. Selects the ~7-8 strongest covers using lightweight local colour and full-height text-density analysis (configurable via `TUNES_COVER_PRIMARY_INPUTS` / `TUNES_COVER_MAX_INPUTS`). Text-likelihood affects the entire primary ranking, and strongly text-heavy candidates are held back unless a small week needs them as fallbacks.
+4. Uploads those covers to FAL storage as source material.
+5. Uses OpenAI vision to create structured factual summaries for every selected cover.
+6. Gives those summaries, an optional preconfigured author hint, and recent do-not-repeat concepts to a separate AI art-director call; no post content is required or read.
+7. Appends only the fixed defect/safety constraints to the returned creative prompt and composes the image with the configured multi-reference backend while retaining the original covers as references.
+8. Saves the full generated output, the `-small` derivative, and a version-2 `.json` sidecar containing the summaries and creative direction; the weekly flow also appends the run to the history file.
 
-If `OPENAI_API_KEY` is not available, the script uses a deterministic fallback brief that asks for one cohesive scene in the lane's medium combining elements from every cover. `FAL_KEY` is required because there is no local image-generation fallback.
+If `OPENAI_API_KEY` is not available, filename-based summaries and a deterministic freeform prompt preserve the generation path, although the result has less source-specific art direction. `FAL_KEY` is required because there is no local image-generation fallback.
 
 ### Artist Group Portrait
 
@@ -307,11 +302,8 @@ node scripts/regenerate-tunes-cover.js
 # Regenerate the album-cover header for a specific week
 node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --debug
 
-# Regenerate the header in a specific creative-direction lane
-node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --lane=neon-noir --debug
-
-# List the available lanes
-node scripts/fal-tunes-cover.js --list-lanes
+# Give the header art director a one-off steer
+node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --hint="lean abstract" --debug
 
 # Regenerate the artist group portrait for a specific week
 node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --debug
@@ -346,7 +338,6 @@ settings:
   cover_image_min: 1               # Cover image range
   cover_image_max: 23
   classification_cache_days: 90    # How long to cache album classifications
-  cover_lanes: all                 # Lane rotation: "all" or a list of lane ids
   cover_history_size: 8            # Do-not-repeat concepts fed to the art director
 
 # Classification Configuration (for dynamic questions)

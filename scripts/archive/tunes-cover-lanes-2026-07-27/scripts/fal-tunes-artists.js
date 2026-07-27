@@ -14,7 +14,7 @@ import {
 } from './fal-tunes-cover.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { getBackend, BACKENDS } from './lib/image-backends/index.js'
-import { MS_PER_WEEK, pickShootDirection, pickColourTreatment } from './lib/tunes-portrait-directions.js'
+import { MS_PER_WEEK, pickShootDirection, pickColourTreatment } from './lib/tunes-lanes.js'
 import { appendHistory, recentConcepts, writeSidecar } from './lib/tunes-image-history.js'
 
 const __filename = fileURLToPath(import.meta.url)

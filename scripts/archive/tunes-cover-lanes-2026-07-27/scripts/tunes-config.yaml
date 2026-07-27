@@ -22,6 +22,11 @@ settings:
   # overrides this.
   cover_fallback_backend: nano-banana
 
+  # Creative-direction lanes for the weekly cover rotation. "all" rotates through every
+  # lane defined in scripts/lib/tunes-lanes.js; set a YAML list of lane ids to restrict it
+  # (run `node scripts/fal-tunes-cover.js --list-lanes` for the catalogue).
+  cover_lanes: all
+
   # How many recent weekly concepts are fed back to the art director as do-not-repeat
   # instructions (from scripts/.tunes-image-history.json).
   cover_history_size: 8

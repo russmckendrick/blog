@@ -6,7 +6,6 @@ import { fileURLToPath } from 'url'
 import { createFALTunesCover, smallOutputPathFor } from './fal-tunes-cover.js'
 import { createFALArtistPortrait } from './fal-tunes-artists.js'
 import { normalizeForFilename } from './lib/text-utils.js'
-import { readTunesPostContext } from './lib/tunes-post-context.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -16,7 +15,7 @@ function parseArgs(args) {
   const options = {
     week: null,
     type: null,
-    hint: null,
+    lane: null,
     output: null,
     record: false,
     debug: false,
@@ -31,7 +30,9 @@ function parseArgs(args) {
     else if (arg === '--record') options.record = true
     else if (arg.startsWith('--type=')) options.type = arg.slice('--type='.length)
     else if (arg.startsWith('--week=')) options.week = arg.slice('--week='.length)
-    else if (arg.startsWith('--hint=')) options.hint = arg.slice('--hint='.length)
+    else if (arg.startsWith('--lane=')) options.lane = arg.slice('--lane='.length)
+    // --style is the historical alias for --lane.
+    else if (arg.startsWith('--style=')) options.lane = arg.slice('--style='.length)
     else if (arg.startsWith('--output=')) options.output = arg.slice('--output='.length)
     else throw new Error(`Unknown option: ${arg}`)
   }
@@ -108,7 +109,9 @@ Options:
   --header            Shorthand for --type=header
   --artist            Shorthand for --type=artist
   --week=<date>       Week date, e.g. 2026-04-20 (interactive picker if omitted)
-  --hint=<string>     Header only: optional steer for the AI art director
+  --lane=<id>         Header only: force a creative-direction lane instead of the
+                      week's rotation (--style is an alias). See
+                      \`node scripts/fal-tunes-cover.js --list-lanes\` for ids.
   --record            Append the run to scripts/.tunes-image-history.json (off by
                       default here so regenerating old weeks does not pollute the
                       do-not-repeat memory)
@@ -122,9 +125,105 @@ Outputs (default):
 
 Examples:
   node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --debug
-  node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --hint="lean abstract" --debug
+  node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --lane=neon-noir --debug
   node scripts/regenerate-tunes-cover.js --week=2026-04-20 --output=/tmp/tunes-test.png
 `)
+}
+
+async function findPostPath(dateStr) {
+  const flatPath = path.join(rootDir, 'src', 'content', 'tunes', `${dateStr}-listened-to-this-week.mdx`)
+  const indexPath = path.join(rootDir, 'src', 'content', 'tunes', `${dateStr}-listened-to-this-week`, 'index.mdx')
+
+  try {
+    await fs.access(flatPath)
+    return flatPath
+  } catch {
+    try {
+      await fs.access(indexPath)
+      return indexPath
+    } catch {
+      return null
+    }
+  }
+}
+
+function parseFrontmatterValue(content, key) {
+  const match = content.match(new RegExp(`^${key}:\\s*["']?(.+?)["']?\\s*$`, 'm'))
+  return match?.[1] || ''
+}
+
+function parseMarkdownLinkText(value) {
+  const trimmed = value.trim()
+  const match = trimmed.match(/^\[([^\]]+)\]\([^)]+\)$/)
+  return match ? match[1] : trimmed
+}
+
+function parseListItem(line) {
+  const match = line.match(/^\s*[-*]\s+(.+?)\s*$/)
+  return match?.[1] || null
+}
+
+function sectionLines(content, heading) {
+  const lines = content.split('\n')
+  const start = lines.findIndex(line => line.trim() === heading)
+  if (start === -1) return []
+
+  const out = []
+  for (let i = start + 1; i < lines.length; i++) {
+    if (lines[i].startsWith('## ')) break
+    out.push(lines[i])
+  }
+  return out
+}
+
+function parsePostContext(content) {
+  const topArtistLines = sectionLines(content, content.match(/^## Top Artists.*$/m)?.[0] || '')
+  const topAlbumLines = sectionLines(content, content.match(/^## Top Albums.*$/m)?.[0] || '')
+
+  const topArtists = topArtistLines
+    .map(parseListItem)
+    .filter(Boolean)
+    .map(item => {
+      const match = item.match(/^(.*?)\s+\((\d+)\s+plays?\)$/i)
+      if (!match) return null
+      return [parseMarkdownLinkText(match[1]), Number(match[2])]
+    })
+    .filter(Boolean)
+
+  const topAlbums = topAlbumLines
+    .map(parseListItem)
+    .filter(Boolean)
+    .map(item => {
+      const body = item.replace(/\s+\(\d+\s+plays?\)$/i, '')
+      const byIndex = body.toLowerCase().lastIndexOf(' by ')
+      if (byIndex === -1) return null
+      const album = parseMarkdownLinkText(body.slice(0, byIndex))
+      const artist = parseMarkdownLinkText(body.slice(byIndex + 4))
+      return [[artist, album], null]
+    })
+    .filter(Boolean)
+
+  return {
+    title: parseFrontmatterValue(content, 'title'),
+    summary: parseFrontmatterValue(content, 'description'),
+    topArtists,
+    topAlbums
+  }
+}
+
+async function readPostContext(dateStr) {
+  const postPath = await findPostPath(dateStr)
+  if (!postPath) {
+    return {
+      title: '',
+      summary: '',
+      topArtists: [],
+      topAlbums: []
+    }
+  }
+
+  const content = await fs.readFile(postPath, 'utf-8')
+  return parsePostContext(content)
 }
 
 async function orderedAlbumImages(topAlbums, albumsFolder) {
@@ -136,7 +235,7 @@ async function orderedAlbumImages(topAlbums, albumsFolder) {
   )
 
   const ranked = topAlbums
-    .map(({ album }) => imagePathByFile.get(`${normalizeForFilename(album)}.jpg`))
+    .map(([[, album]]) => imagePathByFile.get(`${normalizeForFilename(album)}.jpg`))
     .filter(Boolean)
 
   const remaining = [...imagePathByFile.values()]
@@ -155,7 +254,7 @@ async function orderedArtistImages(topArtists, artistsFolder) {
   )
 
   const ranked = topArtists
-    .map(({ artist }) => imagePathByFile.get(`${normalizeForFilename(artist)}.jpg`))
+    .map(([artist]) => imagePathByFile.get(`${normalizeForFilename(artist)}.jpg`))
     .filter(Boolean)
 
   const remaining = [...imagePathByFile.values()]
@@ -204,12 +303,12 @@ async function main() {
   const dateStr = extractDate(selectedWeek)
 
   const outputDir = path.join(rootDir, 'src', 'assets', selectedWeek)
-  const postContext = await readTunesPostContext(rootDir, dateStr)
+  const postContext = await readPostContext(dateStr)
   const dateSeed = new Date(dateStr).getTime()
 
   if (imageType === 'artist') {
-    if (args.hint) {
-      console.error('--hint only applies to --type=header')
+    if (args.lane) {
+      console.error('--lane only applies to --type=header (the artist portrait has no lanes)')
       process.exit(1)
     }
     const artistsFolder = path.join(rootDir, 'public', 'assets', selectedWeek, 'artists')
@@ -281,7 +380,7 @@ async function main() {
     seed: dateSeed,
     width: 1400,
     height: 800,
-    hint: args.hint,
+    lane: args.lane,
     recordHistory: args.record,
     dateLabel: dateStr,
     debug: args.debug

@@ -15,7 +15,7 @@ function parseArgs(args) {
   const options = {
     from: null,
     to: null,
-    hint: '',
+    lane: 'auto',
     debug: false,
     dryRun: false,
     help: false
@@ -32,8 +32,10 @@ function parseArgs(args) {
       options.from = arg.split('=')[1]
     } else if (arg.startsWith('--to=')) {
       options.to = arg.split('=')[1]
-    } else if (arg.startsWith('--hint=')) {
-      options.hint = arg.slice('--hint='.length)
+    } else if (arg.startsWith('--lane=')) {
+      options.lane = arg.split('=')[1]
+    } else if (arg.startsWith('--style=')) {
+      options.lane = arg.split('=')[1]
     }
   }
 
@@ -53,7 +55,10 @@ Usage:
 Options:
   --from=<date>       Start date (required, format: YYYY-MM-DD)
   --to=<date>         End date (required, format: YYYY-MM-DD)
-  --hint=<string>     Optional author steer applied to every AI-designed cover
+  --lane=<id>         Creative-direction lane for cover generation; "auto" (default)
+                      uses the deterministic weekly rotation. See
+                      \`node scripts/fal-tunes-cover.js --list-lanes\` for ids.
+  --style=<id>        Alias for --lane
   --debug, -d         Enable debug output for the cover generator
   --dry-run, -n       Show what would be processed without running
   --help, -h          Show this help message
@@ -68,8 +73,8 @@ Examples:
   # With debug output
   node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --debug
 
-  # Give the art director a steer for every generated cover
-  node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --hint="lean abstract"
+  # Force one creative-direction lane
+  node scripts/bulk-listen.js --from=2023-05-22 --to=2023-12-25 --lane=neon-noir
 
 Notes:
   - Processes weekly intervals (7 days apart)
@@ -122,14 +127,12 @@ function runTunesCoverGenerator(date, options) {
       path.join(__dirname, 'fal-tunes-cover.js'),
       `--input=${inputPath}`,
       `--output=${outputPath}`,
-      `--date=${date}`,
-      // The post-date seed keeps backends with seed support deterministic per week.
+      `--lane=${options.lane}`,
+      // The post-date seed keeps the lane/lighting rotation deterministic per week, matching
+      // what the weekly generator would have picked.
       `--seed=${new Date(date).getTime()}`
     ]
 
-    if (options.hint) {
-      args.push(`--hint=${options.hint}`)
-    }
     if (options.debug) {
       args.push('--debug')
     }
@@ -201,7 +204,7 @@ async function main() {
   console.log('==========================')
   console.log(`From: ${options.from}`)
   console.log(`To:   ${options.to}`)
-  console.log(`Hint: ${options.hint || '(none)'}`)
+  console.log(`Lane: ${options.lane}`)
   console.log(`Debug: ${options.debug}`)
   console.log(`Dry run: ${options.dryRun}`)
 
