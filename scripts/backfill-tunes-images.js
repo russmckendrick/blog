@@ -141,7 +141,7 @@ function selectPosts(posts, options, contentsByFile) {
   })
 }
 
-function linkRepairPosts(posts, imagePosts, options) {
+function linkRepairPosts(posts, _imagePosts, options) {
   if (options.assetsOnly || options.noLinkRepair) return []
   if (options.file) {
     const target = posts.find((post) => post.filePath === options.file)

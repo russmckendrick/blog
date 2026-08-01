@@ -258,7 +258,9 @@ Checks token validity and account access for Cloudflare Pages workflows.
 ## Archived Scripts
 
 `scripts/archive/` holds retired scripts kept for reference only - they are not
-maintained and their relative paths no longer resolve:
+maintained and their relative paths no longer resolve. The directory is listed in
+`tsconfig.json`'s `exclude`, so `npx astro check` skips it - the snapshot stays
+byte-exact rather than being kept lint-clean:
 
 | File | Superseded by |
 |------|---------------|

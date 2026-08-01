@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 import { AI_AUTHOR } from './consts';
 
@@ -112,7 +113,7 @@ const books = defineCollection({
 		cover: z.string(),
 		alt: z.string(),
 		publisher: z.string(),
-		buyLink: z.string().url().optional(),
+		buyLink: z.url().optional(),
 		year: z.number().optional(),
 		topic: z.string().optional(),
 		tags: z.array(z.string()).default([]),

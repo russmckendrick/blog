@@ -37,7 +37,7 @@ const isDev = import.meta.env.DEV
 		const closeButton = dialog.querySelector<HTMLButtonElement>('.search-sheet-close');
 		const triggers = document.querySelectorAll<HTMLAnchorElement>('[data-search-trigger]');
 
-		const isMac = /mac|iphone|ipad/i.test(navigator.platform);
+		const isMac = /mac|iphone|ipad/i.test(navigator.userAgent);
 		triggers.forEach((trigger) => {
 			trigger.title = `Search the archive (${isMac ? '⌘K' : 'Ctrl+K'})`;
 		});

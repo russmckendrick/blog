@@ -1,13 +1,8 @@
 import { promises as fs } from 'fs'
 import path from 'path'
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
 import { CollectionManager } from './lib/collection-manager.js'
 import { ImageHandler } from './lib/image-handler.js'
 import { escapeQuotes } from './lib/text-utils.js'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
 
 /**
  * Migration Script: Convert existing tunes posts to integrated image/link format
@@ -134,7 +129,7 @@ async function fileExists(filePath) {
   }
 }
 
-async function migratePost(content, dateStr, filename, filePath) {
+async function migratePost(content, dateStr, _filename, filePath) {
   // Step 1: Extract artist and album images from LightGallery components
   const artistImages = extractImagesFromGallery(content, 'artists')
   const albumImages = extractImagesFromGallery(content, 'albums')
@@ -245,7 +240,7 @@ function extractAlbumMapping(content) {
   return mapping
 }
 
-async function integrateImagesIntoSections(content, dateStr, artistImages, albumImages, albumMapping, filePath) {
+async function integrateImagesIntoSections(content, dateStr, artistImages, albumImages, _albumMapping, filePath) {
   // First pass: identify all H3 positions within each album section
   const sections = identifyAlbumSections(content)
 
@@ -407,35 +402,7 @@ function hasRussFmLinks(lines, album, artist) {
   return hasAlbumLink || hasArtistLink
 }
 
-function findImageForAlbum(albumImages, albumName, dateStr) {
-  const normalized = normalizeForFilename(albumName)
-
-  for (const img of albumImages) {
-    if (img.filename.toLowerCase().includes(normalized.toLowerCase()) ||
-        normalized.toLowerCase().includes(img.filename.replace('.jpg', '').toLowerCase())) {
-      return img.src
-    }
-  }
-
-  // Fallback: construct expected path
-  return `/assets/${dateStr}-listened-to-this-week/albums/${normalized}.jpg`
-}
-
-function findImageForArtist(artistImages, artistName, dateStr) {
-  const normalized = normalizeForFilename(artistName)
-
-  for (const img of artistImages) {
-    if (img.filename.toLowerCase().includes(normalized.toLowerCase()) ||
-        normalized.toLowerCase().includes(img.filename.replace('.jpg', '').toLowerCase())) {
-      return img.src
-    }
-  }
-
-  // Fallback: construct expected path
-  return `/assets/${dateStr}-listened-to-this-week/artists/${normalized}.jpg`
-}
-
-async function findOrFetchAlbumImage(albumImages, albumName, artistName, dateStr, filePath) {
+async function findOrFetchAlbumImage(albumImages, albumName, artistName, dateStr, _filePath) {
   // First try to find in extracted gallery images
   const normalized = normalizeForFilename(albumName)
 
@@ -484,7 +451,7 @@ async function findOrFetchAlbumImage(albumImages, albumName, artistName, dateStr
   return `/assets/${dateStr}-listened-to-this-week/albums/${normalized}.jpg`
 }
 
-async function findOrFetchArtistImage(artistImages, artistName, dateStr, filePath) {
+async function findOrFetchArtistImage(artistImages, artistName, dateStr, _filePath) {
   // First try to find in extracted gallery images
   const normalized = normalizeForFilename(artistName)
 
@@ -615,7 +582,7 @@ function lookupAlbumData(artist, album, collectionInfo) {
   return null
 }
 
-async function addRussFmLinks(lines, album, artist, content, dateStr, filePath) {
+async function addRussFmLinks(lines, album, artist, content, _dateStr, _filePath) {
   // First try to extract actual links from content
   let albumLink = null
   let artistLink = null
@@ -660,7 +627,7 @@ function escapeRegex(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
 
-async function updateTopAlbumsLinks(content, albumMapping) {
+async function updateTopAlbumsLinks(content, _albumMapping) {
   const lines = content.split('\n')
   const newLines = []
   let inTopAlbums = false

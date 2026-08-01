@@ -10,7 +10,7 @@ interface Props {
 
 const { url, height = '500px', theme = 'auto' } = Astro.props;
 // Generate unique ID for this embed
-const embedId = `reddit-${Math.random().toString(36).substr(2, 9)}`;
+const embedId = `reddit-${Math.random().toString(36).slice(2, 11)}`;
 ---
 
 <div class="reddit-container my-6">
@@ -36,7 +36,6 @@ const embedId = `reddit-${Math.random().toString(36).substr(2, 9)}`;
 			const script = document.createElement('script');
 			script.src = 'https://embed.reddit.com/widgets.js';
 			script.async = true;
-			script.charset = 'UTF-8';
 			script.onload = () => {
 				// Initialize embeds after script loads
 				if (window.rembeddit) {

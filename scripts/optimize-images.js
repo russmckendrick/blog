@@ -29,30 +29,35 @@ const OPTIMIZE_OPTIONS = {
   avif: { quality: 85 }
 }
 
-// Additional derivative profiles that get generated alongside the optimized original
-// DISABLED: These derivatives are not currently used by the site
+/* Additional derivative profiles that get generated alongside the optimized original.
+   DISABLED: These derivatives are not currently used by the site. Restore alongside the
+   disabled body of generateDerivatives() below.
+
 const DERIVATIVE_PROFILES = [
-  // {
-  //   name: 'card',
-  //   suffix: '-card',
-  //   width: 900,
-  //   height: 506,
-  //   format: 'avif',
-  //   quality: 72,
-  //   match: (filePath, metadata) =>
-  //     metadata.width >= 1000 || /blog-cover/i.test(path.basename(filePath))
-  // }
+  {
+    name: 'card',
+    suffix: '-card',
+    width: 900,
+    height: 506,
+    format: 'avif',
+    quality: 72,
+    match: (filePath, metadata) =>
+      metadata.width >= 1000 || /blog-cover/i.test(path.basename(filePath))
+  }
 ]
+*/
 
 /**
  * Generate derivative assets (like pre-cropped card art) alongside the primary image
  * DISABLED: Derivative generation is currently disabled as these files are not used by the site
  */
-async function generateDerivatives(imagePath, metadata) {
+async function generateDerivatives(_imagePath, _metadata) {
   // Return empty array - derivative generation disabled
   return []
 
-  /* DISABLED CODE - Uncomment if needed in future
+  /* DISABLED CODE - Uncomment if needed in future.
+     On restore, also uncomment DERIVATIVE_PROFILES above and drop the leading
+     underscores from this function's parameters.
   const outputs = []
 
   for (const profile of DERIVATIVE_PROFILES) {

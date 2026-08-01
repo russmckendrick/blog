@@ -38,7 +38,7 @@ export class LastFMClient {
    * Get album info including track count
    * @param {string} artist - Artist name
    * @param {string} album - Album name
-   * @returns {Object} Album info from Last.fm
+   * @returns {Promise<Object|null>} Album info from Last.fm, or null if the lookup failed
    */
   async getAlbumInfo(artist, album) {
     try {
@@ -64,7 +64,7 @@ export class LastFMClient {
    * @param {number} to - End timestamp (Unix)
    * @param {number} page - Page number (default 1)
    * @param {number} limit - Results per page (max 200)
-   * @returns {Object} Recent tracks data
+   * @returns {Promise<Object>} Recent tracks data
    */
   async getRecentTracks(from, to, page = 1, limit = 200) {
     try {

@@ -37,11 +37,13 @@ export class ExaMusicSearchTool extends Tool {
 
   async _call(query) {
     try {
-      const searchResults = await this.exa.searchAndContents(query, {
+      const searchResults = await this.exa.search(query, {
         type: 'auto',
         numResults: 5,
-        text: {
-          maxCharacters: 3000
+        contents: {
+          text: {
+            maxCharacters: 3000
+          }
         },
         // Prioritize music journalism sites from config
         includeDomains: this.domains

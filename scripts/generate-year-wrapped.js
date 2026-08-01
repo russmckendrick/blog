@@ -409,8 +409,8 @@ function addImagesAndLinksToSection(section, artist, album, collectionInfo, post
 /**
  * Generate and save all SVG charts to files
  */
-async function generateAndSaveCharts(insights, chartsFolder, postSlug) {
-  const { listeningPatterns, listeningAge, genreBreakdown } = insights
+async function generateAndSaveCharts(insights, chartsFolder, _postSlug) {
+  const { listeningPatterns, genreBreakdown } = insights
   const chartPaths = {}
 
   // Monthly chart
@@ -448,7 +448,6 @@ async function renderWrappedPost({
   insights,
   topArtists,
   topAlbums,
-  featuredAlbums,
   blogSections,
   collectionInfo,
   postSlug,
@@ -701,7 +700,7 @@ function generateTopAlbumsSection(topAlbums, collectionInfo, year, downloadedAlb
 
   // Generate gallery only for albums with downloaded images
   const galleryImages = topAlbums.slice(0, 12)
-    .filter(([[artist, album]]) => {
+    .filter(([[_artist, album]]) => {
       const filename = normalizeForFilename(album) + '.jpg'
       return downloadedAlbumFiles.includes(filename)
     })

@@ -2,7 +2,6 @@ import { ChatOpenAI } from '@langchain/openai'
 import { ChatAnthropic } from '@langchain/anthropic'
 import { promises as fs } from 'fs'
 import path from 'path'
-import { ConfigLoader } from './config-loader.js'
 import { normalizeForFilename, lookupArtistData, lookupAlbumData, escapeQuotes } from './text-utils.js'
 import { SearchCache } from './search-cache.js'
 import { ExaMusicSearchTool } from './exa-tool.js'
@@ -79,7 +78,7 @@ export class ContentGenerator {
 
   async generateTitleAndSummary(dateStr, weekNumber, topArtists, topAlbums) {
     const artistNames = topArtists.map(([name]) => name).join(', ')
-    const albumNames = topAlbums.map(([[artist, album]]) => album).join(', ')
+    const albumNames = topAlbums.map(([[_artist, album]]) => album).join(', ')
     const recentTitles = await this.getRecentTunesTitles(12, dateStr)
 
     const context = {

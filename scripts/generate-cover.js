@@ -152,7 +152,7 @@ function extractPostText(body) {
 
   // Unwrap inline code, escaping any tags inside it so sanitize-html keeps
   // the text (`<img>` should survive as prose); decoded again below
-  text = text.replace(/`([^`\n]*)`/g, (match, code) => code.replace(/</g, '&lt;').replace(/>/g, '&gt;'))
+  text = text.replace(/`([^`\n]*)`/g, (_match, code) => code.replace(/</g, '&lt;').replace(/>/g, '&gt;'))
 
   // Strip JSX/HTML tags; inner text of wrapping components is kept
   text = sanitizeHtml(text, { allowedTags: [], allowedAttributes: {} })
@@ -554,7 +554,7 @@ async function ensureCoverFrontmatter(postPath, slug) {
 function parseSelection(input, max) {
   const trimmed = input.trim().toLowerCase()
   if (trimmed === 'q' || trimmed === 'quit') return 'quit'
-  if (trimmed === 'all') return Array.from({ length: max }, (value, i) => i)
+  if (trimmed === 'all') return Array.from({ length: max }, (_value, i) => i)
   if (!trimmed) return 'invalid'
 
   const indices = new Set()

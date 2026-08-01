@@ -1,4 +1,4 @@
-import { GitHubGistClient, markdownTableToCSV } from './github-gist-client.js'
+import { markdownTableToCSV } from './github-gist-client.js'
 
 // Callout type emoji mapping
 const CALLOUT_EMOJIS = {
@@ -15,21 +15,21 @@ const CALLOUT_EMOJIS = {
 // Transform YouTube component
 function transformYouTube(content) {
   // Match <YouTube id="..." /> or <YouTube id="..." params="..." />
-  return content.replace(/<YouTube\s+id="([^"]+)"[^/]*\/>/g, (match, id) => {
+  return content.replace(/<YouTube\s+id="([^"]+)"[^/]*\/>/g, (_match, id) => {
     return `\n\nhttps://www.youtube.com/watch?v=${id}\n\n`
   })
 }
 
 // Transform Instagram component
 function transformInstagram(content) {
-  return content.replace(/<Instagram\s+permalink="([^"]+)"[^/]*\/>/g, (match, permalink) => {
+  return content.replace(/<Instagram\s+permalink="([^"]+)"[^/]*\/>/g, (_match, permalink) => {
     return `\n\n${permalink}\n\n`
   })
 }
 
 // Transform LinkPreview component - just output URL for Medium's native embed
 function transformLinkPreview(content) {
-  return content.replace(/<LinkPreview\s+id="([^"]+)"[^/]*\/>/g, (match, url) => {
+  return content.replace(/<LinkPreview\s+id="([^"]+)"[^/]*\/>/g, (_match, url) => {
     // Medium auto-generates previews for URLs on their own line
     return `\n\n${url}\n\n`
   })
@@ -38,7 +38,7 @@ function transformLinkPreview(content) {
 // Transform Mermaid diagrams (not supported by Medium)
 function transformMermaid(content, canonicalUrl) {
   // Match <Mermaid code={`...`} /> or <Mermaid code={`...`} title="..." />
-  return content.replace(/<Mermaid\s+code=\{`[^`]*`\}(?:\s+title="([^"]*)")?[^/]*\/>/gs, (match, title) => {
+  return content.replace(/<Mermaid\s+code=\{`[^`]*`\}(?:\s+title="([^"]*)")?[^/]*\/>/gs, (_match, title) => {
     const diagramName = title || 'diagram'
     return `\n\n> **Diagram**: ${diagramName} - [View interactive diagram](${canonicalUrl})\n\n`
   })
@@ -47,14 +47,14 @@ function transformMermaid(content, canonicalUrl) {
 // Transform Callout components
 function transformCallouts(content) {
   // Handle self-closing callouts first: <WarningCallout title="..." />
-  content = content.replace(/<(\w+Callout)\s+title="([^"]*)"[^/]*\/>/g, (match, type, title) => {
+  content = content.replace(/<(\w+Callout)\s+title="([^"]*)"[^/]*\/>/g, (_match, type, title) => {
     const emoji = CALLOUT_EMOJIS[type] || '📌'
     return `\n\n> ${emoji} **${title}**\n\n`
   })
 
   // Handle callouts with content: <WarningCallout title="...">content</WarningCallout>
   // or <NoteCallout>content</NoteCallout>
-  content = content.replace(/<(\w+Callout)(?:\s+title="([^"]*)")?>([\s\S]*?)<\/\1>/g, (match, type, title, innerContent) => {
+  content = content.replace(/<(\w+Callout)(?:\s+title="([^"]*)")?>([\s\S]*?)<\/\1>/g, (_match, type, title, innerContent) => {
     const emoji = CALLOUT_EMOJIS[type] || '📌'
     const label = title || type.replace('Callout', '')
     const formattedContent = innerContent.trim().replace(/\n/g, '\n> ')
@@ -96,7 +96,7 @@ function transformImg(content, blogUrl) {
 // Transform ChatMessage component
 function transformChatMessage(content) {
   // Match <ChatMessage position="left|right" avatar="...">content</ChatMessage>
-  return content.replace(/<ChatMessage\s+position="([^"]*)"(?:\s+avatar="[^"]*")?>([\s\S]*?)<\/ChatMessage>/g, (match, position, innerContent) => {
+  return content.replace(/<ChatMessage\s+position="([^"]*)"(?:\s+avatar="[^"]*")?>([\s\S]*?)<\/ChatMessage>/g, (_match, position, innerContent) => {
     const speaker = position === 'right' ? 'Me' : 'Other'
     const formattedContent = innerContent.trim().replace(/\n/g, '\n> ')
     return `\n\n> **${speaker}:** ${formattedContent}\n\n`
@@ -106,7 +106,7 @@ function transformChatMessage(content) {
 // Transform Audio component
 function transformAudio(content, blogUrl) {
   // Match <Audio mp3="..." /> or wav/ogg variants
-  return content.replace(/<Audio\s+(?:mp3|wav|ogg)="([^"]+)"[^/]*\/>/g, (match, src) => {
+  return content.replace(/<Audio\s+(?:mp3|wav|ogg)="([^"]+)"[^/]*\/>/g, (_match, src) => {
     let absoluteSrc = src
     if (!src.startsWith('http')) {
       absoluteSrc = src.startsWith('/') ? `${blogUrl}${src}` : `${blogUrl}/${src}`
@@ -117,21 +117,21 @@ function transformAudio(content, blogUrl) {
 
 // Transform AppleMusic component
 function transformAppleMusic(content) {
-  return content.replace(/<AppleMusic\s+url="([^"]+)"[^/]*\/>/g, (match, url) => {
+  return content.replace(/<AppleMusic\s+url="([^"]+)"[^/]*\/>/g, (_match, url) => {
     return `\n\n[Listen on Apple Music](${url})\n\n`
   })
 }
 
 // Transform Reddit component
 function transformReddit(content) {
-  return content.replace(/<Reddit\s+url="([^"]+)"[^/]*\/>/g, (match, url) => {
+  return content.replace(/<Reddit\s+url="([^"]+)"[^/]*\/>/g, (_match, url) => {
     return `\n\n${url}\n\n`
   })
 }
 
 // Transform Giphy component
 function transformGiphy(content) {
-  return content.replace(/<Giphy\s+id="([^"]+)"[^/]*\/>/g, (match, id) => {
+  return content.replace(/<Giphy\s+id="([^"]+)"[^/]*\/>/g, (_match, id) => {
     return `\n\n![GIF](https://media.giphy.com/media/${id}/giphy.gif)\n\n`
   })
 }
@@ -139,7 +139,7 @@ function transformGiphy(content) {
 // Transform LightGallery component (extract images)
 function transformLightGallery(content, blogUrl) {
   // Match LightGallery with layout prop containing image sources
-  return content.replace(/<LightGallery[\s\S]*?layout=\{\{[\s\S]*?imgs:\s*\[([\s\S]*?)\][\s\S]*?\}\}[\s\S]*?\/>/g, (match, imgsContent) => {
+  return content.replace(/<LightGallery[\s\S]*?layout=\{\{[\s\S]*?imgs:\s*\[([\s\S]*?)\][\s\S]*?\}\}[\s\S]*?\/>/g, (_match, imgsContent) => {
     // Extract all src values from the imgs array
     const srcMatches = imgsContent.matchAll(/src:\s*["']([^"']+)["']/g)
     const images = Array.from(srcMatches, m => m[1])
@@ -167,7 +167,7 @@ async function transformTables(content, gistClient = null) {
 
   // If no gist client, use simple bullet list transformation
   if (!gistClient) {
-    return content.replace(tableRegex, (match, headerRow, bodyRows) => {
+    return content.replace(tableRegex, (_match, headerRow, bodyRows) => {
       // Parse headers
       const headers = headerRow.split('|').map(h => h.trim()).filter(h => h)
 
@@ -243,7 +243,7 @@ async function transformTables(content, gistClient = null) {
 }
 
 // Convert markdown images to absolute URLs
-function convertMarkdownImages(content, blogUrl, postPath) {
+function convertMarkdownImages(content, blogUrl, _postPath) {
   // Match ![alt](src) patterns
   return content.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
     // Skip if already absolute
@@ -276,7 +276,7 @@ function convertMarkdownImages(content, blogUrl, postPath) {
 // Convert internal links to absolute URLs
 function convertInternalLinks(content, blogUrl) {
   // Match [text](/path) patterns (internal links starting with /)
-  return content.replace(/\[([^\]]+)\]\(\/([^)]+)\)/g, (match, text, path) => {
+  return content.replace(/\[([^\]]+)\]\(\/([^)]+)\)/g, (_match, text, path) => {
     return `[${text}](${blogUrl}/${path})`
   })
 }
@@ -341,7 +341,7 @@ export async function transformMDXToMedium(mdxContent, options = {}) {
 }
 
 // Log transformation stats (for debugging)
-export function getTransformationStats(original, transformed) {
+export function getTransformationStats(original, _transformed) {
   const stats = {
     youtube: (original.match(/<YouTube/g) || []).length,
     instagram: (original.match(/<Instagram/g) || []).length,

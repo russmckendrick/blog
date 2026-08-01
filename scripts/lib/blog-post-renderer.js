@@ -32,8 +32,6 @@ export class BlogPostRenderer {
     summary,
     blogSections,
     randomNumber,
-    albumsFolder,
-    artistsFolder,
     artistPortrait = null
   }) {
     // Build the artist group-portrait block. `artistPortrait` is the public /assets/... src
@@ -56,7 +54,7 @@ export class BlogPostRenderer {
     }).join('\n')
 
     // Build top albums section
-    const topAlbumsSection = topAlbums.map(([[artist, album], count]) => {
+    const topAlbumsSection = topAlbums.map(([[artist, album], _count]) => {
       const albumData = lookupAlbumData(artist, album, collectionInfo)
       const artistData = lookupArtistData(artist, collectionInfo)
 

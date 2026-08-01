@@ -139,7 +139,7 @@ export function buildArtDirectionRequestText(hintBlock, summaryBlock) {
   ].filter(Boolean).join('\n\n')
 }
 
-export function buildFallbackArtDirection(coverSummaries, sourceReferences) {
+export function buildFallbackArtDirection(coverSummaries, _sourceReferences) {
   const elements = coverSummaries.map(summary => ({
     source: summary.source,
     element: summary.signatureMotif

@@ -22,7 +22,7 @@ export class AlbumClassifier {
    * @param {string} artist - Artist name
    * @param {string} album - Album name
    * @param {Object} collectionData - Metadata from russ.fm collection (genres, release_year, biography)
-   * @returns {Object} Classification object
+   * @returns {Promise<Object>} Classification object
    */
   async classify(artist, album, collectionData = {}) {
     // Initialize cache

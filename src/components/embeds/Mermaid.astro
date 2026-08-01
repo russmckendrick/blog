@@ -115,7 +115,7 @@ const minimapPositionClass = positionClasses[minimapPosition];
   </div>
 
   <!-- Store diagram code in data attribute -->
-  <script type="application/json" class="diagram-code" set:html={JSON.stringify(code)}></script>
+  <script is:inline type="application/json" class="diagram-code" set:html={JSON.stringify(code)}></script>
 </div>
 
 <script>
@@ -209,11 +209,6 @@ const minimapPositionClass = positionClasses[minimapPosition];
       // Calculate minimap dimensions
       const minimapWidth = minimapCanvas.clientWidth;
       const minimapHeight = minimapCanvas.clientHeight;
-
-      // Calculate scale factor for minimap
-      const scaleX = minimapWidth / viewBox.width;
-      const scaleY = minimapHeight / viewBox.height;
-      const minimapScale = Math.min(scaleX, scaleY);
 
       // Calculate visible viewport in SVG coordinates
       const visibleWidth = previewRect.width / scale;

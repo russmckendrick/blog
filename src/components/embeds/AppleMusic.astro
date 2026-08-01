@@ -9,7 +9,7 @@ interface Props {
 const { url, height = '450px' } = Astro.props;
 const embedUrl = url.replace('music.apple.com', 'embed.music.apple.com');
 // Generate unique ID for this embed
-const embedId = `apple-music-${Math.random().toString(36).substr(2, 9)}`;
+const embedId = `apple-music-${Math.random().toString(36).slice(2, 11)}`;
 ---
 
 <div class="apple-music-container my-6">
@@ -18,7 +18,6 @@ const embedId = `apple-music-${Math.random().toString(36).substr(2, 9)}`;
 		class="apple-music-embed"
 		height={height}
 		data-embed-url={embedUrl}
-		frameborder="0"
 		sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
 		allow="autoplay *; encrypted-media *; clipboard-write"
 	>

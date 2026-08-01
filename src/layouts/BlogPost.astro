@@ -400,7 +400,6 @@ const howToSchema = howto && howto.steps?.length > 0
 		</script>
 		<script>
 			import type { LightGallerySettings } from 'lightgallery/lg-settings';
-			import type { AstroLightGalleryPluginStrType } from 'astro-lightgallery';
 
 			// Guard to prevent concurrent initializations while letting callers await in-flight work
 			let currentInit: Promise<void> | null = null;

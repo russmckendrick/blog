@@ -260,35 +260,9 @@ async function main() {
     }));
   }
 
-  // Prune cache: Start with empty object and populate with current valid keys
-  const newCache = {};
-  for (const [key, value] of Object.entries(results)) {
-    // We need to re-find the cache key used.
-    // Since results logic above doesn't store the cacheKey, we iterate the old cache
-    // OR we just assume we're adding all freshly processed/verified items.
-
-    // Actually, my cache update logic inside the loop `cache[cacheKey] = colors` works for *updates*,
-    // but to prune old entries properly (e.g. file deleted), we should theoretically only save 
-    // the cache entries that correspond to currently existing files.
-    // Re-hashing again here would be wasteful.
-
-    // Simpler approach: Trust the in-memory `cache` object which has accumulated everything we've ever seen?
-    // No, that grows indefinitely. 
-    // Better approach: We should construct `newCache` during the loop.
-  }
-
-  // Refined cache pruning strategy:
-  // The `cache` object currently holds all OLD entries plus any NEW entries we added.
-  // We want to keep only entries that match the current files.
-  // So let's filter `cache` to only keys that were "touched" or legitimate in this run.
-  // BUT we don't have the hashes easily available outside the loop without re-hashing or storing them.
-
-  // For simplicity and performance, we'll just save the `cache` object as is for now (appending new stuff).
-  // If strict pruning is needed, we'd need to track validCacheKeys in the loop.
-
-  // Let's optimize: We can just use the `cache` object we've been modifying in place?
-  // Yes, that works for now. It might accumulate garbage if files are deleted/renamed, but it's a build cache.
-  // We can periodically clear it or just let it be.
+  // The cache is append-only: it keeps every entry it has ever seen, keyed by content hash,
+  // and is written back below as-is. Entries for deleted or renamed images are never pruned,
+  // which is fine for a build cache - pruning would mean re-hashing every file a second time.
 
   // Ensure output directory exists for the data file
   await fs.mkdir(path.dirname(OUTPUT_FILE), { recursive: true });

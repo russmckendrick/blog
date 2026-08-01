@@ -3,11 +3,6 @@ import path from 'path';
 
 const tunesDir = path.join(process.cwd(), 'src/content/tunes');
 
-// Helper to escape special characters for regex if needed
-function escapeRegExp(string) {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
 async function migrate() {
     try {
         const files = fs.readdirSync(tunesDir).filter(file => file.endsWith('.mdx'));

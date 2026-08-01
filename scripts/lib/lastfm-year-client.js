@@ -19,7 +19,7 @@ export class LastFMYearClient extends LastFMClient {
    * Get track count for an album with caching
    * @param {string} artist - Artist name
    * @param {string} album - Album name
-   * @returns {number|null} Track count or null if unavailable
+   * @returns {Promise<number|null>} Track count or null if unavailable
    */
   async getAlbumTrackCount(artist, album) {
     const cacheKey = `${artist.toLowerCase()}|||${album.toLowerCase()}`
@@ -232,9 +232,10 @@ export class LastFMYearClient extends LastFMClient {
    * Aggregate album data by counting unique days each album was played
    * Uses getRecentTracks to get individual scrobbles with timestamps
    * @param {number} year - The year to aggregate
-   * @param {function} progressCallback - Optional callback for progress updates
+   * @param {function} _progressCallback - Accepted for signature parity with
+   *   getYearlyArtistData, but never invoked: this method logs its own progress.
    */
-  async getYearlyAlbumData(year, progressCallback = null) {
+  async getYearlyAlbumData(year, _progressCallback = null) {
     const albumData = {} // key -> { artist, album, days: Set, scrobbles, monthlyDays: { month: Set } }
     const monthlyData = {}
 

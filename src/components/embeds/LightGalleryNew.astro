@@ -1,6 +1,5 @@
 ---
-import { LightGallery as AstroLightGallery } from 'astro-lightgallery';
-import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../../utils/cloudflare-images';
+import { getCFImageUrl, CF_IMAGE_PRESETS } from '../../utils/cloudflare-images';
 
 interface GalleryImage {
   src: string;
@@ -109,7 +108,7 @@ const imageCount = transformedLayout.imgs.length;
 </script>
 
 {enableMetaPlugin && (
-  <script define:vars={{ debugMeta }}>
+  <script is:inline define:vars={{ debugMeta }}>
     /**
      * Fetches and parses a .meta file for a given image URL
      */

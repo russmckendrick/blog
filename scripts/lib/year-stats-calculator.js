@@ -262,7 +262,6 @@ export class YearStatsCalculator {
 
     for (const artist of top5Artists) {
       const monthlyPlays = this.data.monthlyBreakdown.map(month => {
-        const artistInMonth = Object.entries(month.topArtist || {})
         // Find plays for this artist in this month from the raw data
         const monthData = this.data.monthlyBreakdown.find(m => m.month === month.month)
         // This is a simplified version - ideally we'd have full monthly data
@@ -318,7 +317,7 @@ export class YearStatsCalculator {
     }
   }
 
-  generateAlbumDescription(album, percentage, dominantMonths) {
+  generateAlbumDescription(album, _percentage, dominantMonths) {
     if (dominantMonths.length >= 3) {
       return `"${album.album}" by ${album.artist} was on heavy rotation, especially in ${dominantMonths.slice(0, 3).join(', ')}.`
     } else {
