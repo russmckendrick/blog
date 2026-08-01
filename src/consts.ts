@@ -44,6 +44,14 @@ export const SOCIAL_LINKS = [
   { name: "lastfm", url: "https://www.last.fm/user/RussMckendrick" },
 ];
 
+// Homepage feed tabs: Latest + these tags (must exist as /tags/<slug>/ hubs).
+export const FEATURED_TAGS = ["ai", "tools", "code", "macos", "linux"];
+
+// Listing page sizes — the homepage shows HOME_PAGE_SIZE rows, /page/N/
+// shows PAGINATION_PAGE_SIZE. index.astro and page/[...page].astro must agree.
+export const HOME_PAGE_SIZE = 6;
+export const PAGINATION_PAGE_SIZE = 9;
+
 // Masthead: four quiet text links; everything else lives in the footer line.
 export const MASTHEAD_ITEMS = [
   { name: "Tunes", url: "/tunes/" },

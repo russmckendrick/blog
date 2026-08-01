@@ -3,29 +3,28 @@ import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
+import TagTabs from '../../components/home/TagTabs.astro';
 import Pagination from '../../components/layout/Pagination.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, HOME_PAGE_SIZE, PAGINATION_PAGE_SIZE } from '../../consts';
 
 export const getStaticPaths = (async () => {
 	const allPosts = (await getCollection('blog'))
 		.filter(post => import.meta.env.DEV || !post.data.draft)
 		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-	// Homepage shows 7 posts (1 featured + 6 grid), so exclude them from pagination
-	const homepagePostCount = 7;
-	const pageSize = 9;
-	const paginatedPosts = allPosts.slice(homepagePostCount);
-	const totalPaginatedPages = Math.ceil(paginatedPosts.length / pageSize);
+	// The homepage shows HOME_PAGE_SIZE rows, so exclude them from pagination
+	const paginatedPosts = allPosts.slice(HOME_PAGE_SIZE);
+	const totalPaginatedPages = Math.ceil(paginatedPosts.length / PAGINATION_PAGE_SIZE);
 
 	// Generate paths starting at page 2 (homepage is page 1)
 	return Array.from({ length: totalPaginatedPages }, (_, i) => ({
 		params: { page: String(i + 2) },
 		props: {
 			page: {
-				data: paginatedPosts.slice(i * pageSize, (i + 1) * pageSize),
+				data: paginatedPosts.slice(i * PAGINATION_PAGE_SIZE, (i + 1) * PAGINATION_PAGE_SIZE),
 				currentPage: i + 2,
 				lastPage: totalPaginatedPages + 1,
-				size: pageSize,
+				size: PAGINATION_PAGE_SIZE,
 				total: paginatedPosts.length,
 			}
 		}
@@ -33,18 +32,18 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
-
 ---
 
 <BaseLayout title={`${SITE_TITLE} - Page ${page.currentPage}`} description={SITE_DESCRIPTION}>
-	<section class="max-w-7xl mx-auto px-5">
+	<section class="max-w-[728px] mx-auto px-6">
 		<h1 class="sr-only">{SITE_TITLE} - Page {page.currentPage}</h1>
 
-		{/* 3-column grid of posts */}
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
+		<TagTabs active="latest" />
+
+		<div class="feed">
 			{page.data.map((post) => (
 				<div data-reveal>
-					<PostCard post={post} variant="grid" headingLevel="2" />
+					<PostCard post={post} headingLevel="2" />
 				</div>
 			))}
 		</div>
