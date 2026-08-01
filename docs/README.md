@@ -41,6 +41,12 @@ Component and API reference documentation:
 - **[LightGallery Meta Plugin](./reference/lightgallery-meta.md)** - Image caption system
 - **[Scripts Reference](./reference/scripts.md)** - Inventory of `scripts/`, helper modules, templates, and caches
 
+### 🧪 Proposals
+
+Design and feature proposals not yet implemented:
+
+- **[2026-07 Redesign](./2026-07-redesign/NOTES.md)** - "The Reading Room" Medium-calm redesign proposal: interactive mockup, proposed DESIGN.md, and decision notes
+
 ### 🗄️ Archive
 
 Historical documents and migration notes:

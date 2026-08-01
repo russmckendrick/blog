@@ -1,0 +1,75 @@
+[
+  {
+    "title": "Token Use: Coach Mode and a Week of Releases",
+    "description": "A week after Token Use hit 1.0.0 by cutting features, it's on 1.2.2. Coach mode, a Rust port of Microsoft's AI-Engineering-Coach rules, full-text scrollback, an MCP server, and a 3D graph.",
+    "date": "2026-07-19",
+    "tags": [
+      "tools",
+      "ai",
+      "code"
+    ],
+    "heroImagePath": "/Users/russ.mckendrick/Code/blog/src/assets/2026-07-19-token-use-coach-mode-and-a-week-of-releases/blog-cover-2026-07-19-token-use-coach-mode-and-a-week-of-releases.png",
+    "readMinutes": 9
+  },
+  {
+    "title": "A Catch-Up: terminal-svg and Token Use v1",
+    "description": "Two projects worth writing about: terminal-svg, a new Rust tool for pixel-perfect terminal screenshots, and Token Use finally reaching v1",
+    "date": "2026-07-12",
+    "tags": [
+      "tools",
+      "ai",
+      "code"
+    ],
+    "heroImagePath": "/Users/russ.mckendrick/Code/blog/src/assets/2026-07-12-a-catch-up-terminal-svg-and-token-use-v1/blog-cover-2026-07-12-a-catch-up-terminal-svg-and-token-use-v1.png",
+    "readMinutes": 7
+  },
+  {
+    "title": "Playing with Headroom: Compressing the Context Going to My AI Coding Agents",
+    "description": "I spent a few days running Headroom, a local proxy that promises to cut the tokens your AI coding agent sends to the provider. The savings are real, but they're not where the dashboard first makes you think they are.",
+    "date": "2026-06-13",
+    "tags": [
+      "ai",
+      "tools",
+      "macos"
+    ],
+    "heroImagePath": "/Users/russ.mckendrick/Code/blog/src/assets/2026-06-13-playing-with-headroom-compressing-the-context-going-to-my-ai-coding-agents/blog-cover-2026-06-13-playing-with-headroom-compressing-the-context-going-to-my-ai-coding-agents.png",
+    "readMinutes": 9
+  },
+  {
+    "title": "codebase-memory-mcp: Giving Claude Code (and Codex) a Map",
+    "description": "A short look at codebase-memory-mcp, an MCP server that indexes your codebase into a queryable knowledge graph so Claude Code or Codex can answer structural questions without grepping every file.",
+    "date": "2026-05-10",
+    "tags": [
+      "ai",
+      "code",
+      "tools"
+    ],
+    "heroImagePath": "/Users/russ.mckendrick/Code/blog/src/assets/2026-05-10-codebase-memory-mcp-giving-claude-code-and-codex-a-map/blog-cover-2026-05-10-codebase-memory-mcp-giving-claude-code-and-codex-a-map.png",
+    "readMinutes": 7
+  },
+  {
+    "title": "Counting the Cost of Vibe Coding",
+    "description": "A local-first dashboard for tracking AI coding tool spend across Claude Code, Codex, Cursor, Copilot, and Gemini CLI - with a TUI, a desktop app, and zero API keys required.",
+    "date": "2026-05-01",
+    "tags": [
+      "ai",
+      "tools",
+      "macos",
+      "linux",
+      "code"
+    ],
+    "heroImagePath": "/Users/russ.mckendrick/Code/blog/src/assets/2026-05-01-counting-the-cost-of-vibe-coding/blog-cover-2026-05-01-counting-the-cost-of-vibe-coding.png",
+    "readMinutes": 14
+  },
+  {
+    "title": "Is my blog Agent-Ready?",
+    "description": "Running russ.cloud through isitagentready.com and wiring up the checks that actually make sense for a static blog - Link headers, Content Signals, agent-skills discovery, llms.txt, and a tiny Cloudflare Worker to serve markdown on demand.",
+    "date": "2026-04-19",
+    "tags": [
+      "ai",
+      "blog"
+    ],
+    "heroImagePath": "/Users/russ.mckendrick/Code/blog/src/assets/2026-04-19-is-my-blog-agent-ready/blog-cover-2026-04-19-is-my-blog-agent-ready.png",
+    "readMinutes": 6
+  }
+]
