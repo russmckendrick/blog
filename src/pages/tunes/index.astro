@@ -1,15 +1,19 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
-import HeroSection from '../../components/home/HeroSection.astro';
+import FormattedDate from '../../components/blog/FormattedDate.astro';
 import Pagination from '../../components/layout/Pagination.astro';
 import { tunesIndex } from '../../utils/tunes-index';
-import { Icon } from 'astro-icon/components';
+import { getPostUrl } from '../../utils/url';
+import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudflare-images';
+import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
+import { CF_IMAGE_PRESETS, SOCIAL_LINKS } from '../../consts';
 
-// Tunes homepage shows 1 featured + 6 grid cards = 7 total
+// Tunes homepage: one lead week + 6 previous weeks as rows
 const firstPagePosts = 7;
-// Subsequent pages show 9 posts each (3 rows of 3)
 const subsequentPagePosts = 9;
 
 const allTunes = (await getCollection('tunes'))
@@ -17,81 +21,191 @@ const allTunes = (await getCollection('tunes'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const tunes = allTunes.slice(0, firstPagePosts);
-// Calculate total pages accounting for different first page size
 const remainingPosts = allTunes.length - firstPagePosts;
 const totalPages = 1 + Math.ceil(Math.max(0, remainingPosts) / subsequentPagePosts);
 
-// Split posts: first for hero, rest for grid
-const featuredTune = tunes[0];
-const gridTunes = tunes.slice(1);
+const leadTune = tunes[0];
+const previousWeeks = tunes.slice(1);
 
-const tunesYearSet = new Set<number>()
-for (const tune of allTunes) {
-	tunesYearSet.add(tune.data.pubDate.getFullYear())
-}
-const tunesYearCount = tunesYearSet.size
+const leadUrl = leadTune ? getPostUrl(leadTune.data.pubDate, leadTune.data.title) : '/tunes/';
+const leadImage = leadTune?.data.heroImage;
+const leadMinutes = leadTune ? formatReadingTime(calculateReadingTime(leadTune.body ?? '')) : null;
+const leadLqip = leadImage ? getLQIPUrl(leadImage) : null;
 
-const browseHubs = [
-	{
-		href: '/tunes/artist/',
-		label: 'By artist',
-		count: tunesIndex.totals.artists,
-		icon: 'tabler:microphone-2'
-	},
-	{
-		href: '/tunes/album/',
-		label: 'By album',
-		count: tunesIndex.totals.albums,
-		icon: 'tabler:disc'
-	},
-	{
-		href: '/tunes/year/',
-		label: 'By year',
-		count: tunesYearCount,
-		icon: 'tabler:calendar-week'
+// This week's records: up to eight covers from the entry's albums directory
+let leadCovers: string[] = [];
+if (leadTune) {
+	const albumsDir = path.join(process.cwd(), 'public', 'assets', leadTune.id, 'albums');
+	if (fs.existsSync(albumsDir)) {
+		leadCovers = fs.readdirSync(albumsDir)
+			.filter(f => /\.(jpe?g|png|webp)$/i.test(f))
+			.sort()
+			.slice(0, 8)
+			.map(f => `/assets/${leadTune.id}/albums/${f}`);
 	}
-];
+}
+
+const lastfmUrl = SOCIAL_LINKS.find(l => l.name === 'lastfm')?.url;
+const discogsUrl = SOCIAL_LINKS.find(l => l.name === 'discogs')?.url;
 ---
 
 <BaseLayout title="Listened to This Week" description="My weekly music listening posts - what I've been enjoying on repeat">
-	<section class="max-w-7xl mx-auto px-5">
+	<section class="max-w-[728px] mx-auto px-6">
 		<h1 class="sr-only">Listened to This Week</h1>
 
-		<nav aria-label="Browse tunes" class="mb-6 pb-3 border-b flex flex-wrap items-center gap-x-6 gap-y-2" style="border-color: var(--color-outline-variant);">
-			<span class="rubric" style="color: var(--color-secondary);">Browse</span>
-			{browseHubs.map((hub) => (
-				<a
-					href={hub.href}
-					class="group inline-flex items-center gap-2 rubric nav-underline no-underline py-1 hover:text-on-surface"
-				>
-					<Icon name={hub.icon} class="h-4 w-4 shrink-0" aria-hidden="true" />
-					<span>{hub.label}</span>
-					<span class="opacity-70">{hub.count}</span>
-				</a>
-			))}
+		<nav aria-label="Browse the tunes archive" class="tunes-tabs">
+			<a href="/tunes/" aria-current="page">Latest weeks</a>
+			<a href="/tunes/artist/">Artists<span class="tab-count">{tunesIndex.totals.artists}</span></a>
+			<a href="/tunes/album/">Albums<span class="tab-count">{tunesIndex.totals.albums}</span></a>
+			<a href="/tunes/year/">By year</a>
 		</nav>
 
-		{/* Hero Section with Featured Tune */}
-		<HeroSection featuredPost={featuredTune} />
+		{leadTune && (
+			<article class="pt-8 pb-8 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
+				{leadImage && (
+					<a href={leadUrl} class="block no-underline" aria-label={`Read: ${leadTune.data.title}`}>
+						<figure
+							class="relative overflow-hidden rounded-[4px] bg-cover bg-center bg-no-repeat"
+							style={leadLqip ? `background-image: url('${leadLqip}')` : undefined}
+						>
+							{leadLqip && (
+								<div
+									class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
+									style={`background-image: url('${leadLqip}')`}
+									aria-hidden="true"
+								/>
+							)}
+							<img
+								src={getCFImageUrl(leadImage, {
+									width: 1360,
+									quality: CF_IMAGE_PRESETS.hero.quality,
+									format: CF_IMAGE_PRESETS.hero.format,
+									fit: CF_IMAGE_PRESETS.hero.fit
+								})}
+								srcset={generateCFSrcSet(leadImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
+								sizes="(max-width: 728px) calc(100vw - 48px), 680px"
+								alt={leadTune.data.title}
+								width="1360"
+								height="583"
+								loading="eager"
+								fetchpriority="high"
+								decoding="sync"
+								class="w-full aspect-[21/9] object-cover"
+							/>
+						</figure>
+					</a>
+				)}
+				<h2 class="mt-6 text-[1.375rem] sm:text-[1.6875rem] leading-[1.24] font-bold" style="letter-spacing: -0.014em;">
+					<a href={leadUrl} class="no-underline text-on-surface hover:text-[var(--color-secondary)] transition-colors">
+						{leadTune.data.title}
+					</a>
+				</h2>
+				{leadTune.data.description && (
+					<p class="mt-2.5 text-base text-on-surface-variant leading-normal">
+						{leadTune.data.description}
+					</p>
+				)}
+				<p class="rubric mt-3.5 flex flex-wrap items-center gap-x-1.5">
+					<FormattedDate date={leadTune.data.pubDate} />
+					{leadMinutes && (
+						<>
+							<span aria-hidden="true">&middot;</span>
+							<span>{leadMinutes}</span>
+						</>
+					)}
+					<span aria-hidden="true">&middot;</span>
+					<span>AI-generated</span>
+				</p>
+				{leadCovers.length > 0 && (
+					<div class="mt-4 grid grid-cols-4 sm:grid-cols-8 gap-1.5">
+						{leadCovers.map(cover => (
+							<img
+								src={getCFImageUrl(cover, { width: 160, quality: 60 })}
+								alt=""
+								width="80"
+								height="80"
+								loading="lazy"
+								decoding="async"
+								class="w-full aspect-square object-cover rounded-[3px]"
+							/>
+						))}
+					</div>
+				)}
+				<p class="rubric mt-3">
+					The records themselves live at <a href="https://www.russ.fm/" class="no-underline text-on-surface hover:text-[var(--color-secondary)]">russ.fm</a>
+					{lastfmUrl && <> &middot; <a href={lastfmUrl} class="no-underline text-on-surface hover:text-[var(--color-secondary)]">Last.fm</a></>}
+					{discogsUrl && <> &middot; <a href={discogsUrl} class="no-underline text-on-surface hover:text-[var(--color-secondary)]">Discogs</a></>}
+				</p>
+			</article>
+		)}
 
-		{/* Grid of remaining tunes */}
-		{gridTunes.length > 0 && (
-			<div class="mt-10 sm:mt-14">
-				<h2 class="sr-only">More Tunes</h2>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
-					{gridTunes.map((tune) => (
+		{previousWeeks.length > 0 && (
+			<>
+				<p class="mt-8 text-[15px] font-semibold" style="letter-spacing: -0.01em;" role="heading" aria-level="2">Previous weeks</p>
+				<div class="feed">
+					{previousWeeks.map((tune) => (
 						<div data-reveal>
-							<PostCard post={tune} variant="grid" headingLevel="3" />
+							<PostCard post={tune} headingLevel="3" />
 						</div>
 					))}
 				</div>
-			</div>
+			</>
 		)}
 
 		<Pagination
 			currentPage={1}
 			totalPages={totalPages}
 			getHref={(pageNum) => (pageNum === 1 ? '/tunes/' : `/tunes/page/${pageNum}/`)}
+			olderLabel="Older weeks"
+			newerLabel="Newer weeks"
 		/>
 	</section>
 </BaseLayout>
+
+<style>
+	.tunes-tabs {
+		display: flex;
+		align-items: center;
+		gap: 1.75rem;
+		margin-top: 0.5rem;
+		border-bottom: 1px solid var(--color-outline-variant);
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+
+	.tunes-tabs::-webkit-scrollbar {
+		display: none;
+	}
+
+	.tunes-tabs a {
+		padding: 1.125rem 0 1rem;
+		font-size: 0.875rem;
+		color: var(--color-on-surface-variant);
+		border-bottom: 1px solid transparent;
+		margin-bottom: -1px;
+		white-space: nowrap;
+		text-decoration: none;
+	}
+
+	.tunes-tabs a:hover {
+		color: var(--color-on-surface);
+	}
+
+	.tunes-tabs a[aria-current='page'] {
+		color: var(--color-on-surface);
+		border-bottom-color: var(--color-on-surface);
+	}
+
+	.tab-count {
+		font-size: 0.75rem;
+		margin-left: 0.2rem;
+		opacity: 0.75;
+	}
+
+	@media (max-width: 640px) {
+		.tunes-tabs {
+			-webkit-mask-image: linear-gradient(to right, black 88%, transparent);
+			mask-image: linear-gradient(to right, black 88%, transparent);
+		}
+	}
+</style>
