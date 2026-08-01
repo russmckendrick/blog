@@ -22,29 +22,27 @@ const defaultOpen = tocHeadings.length >= 4;
 {tocHeadings.length > 0 && (
   <nav class="toc-wrapper mb-10">
     <details class="group toc-details" id="toc-details" open={defaultOpen}>
-      <summary class="toc-summary cursor-pointer select-none py-3 flex items-center justify-between transition-colors">
-        <span class="rubric text-on-surface">Contents</span>
-        <svg class="toc-chevron w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      <summary class="toc-summary cursor-pointer select-none py-4 flex items-center gap-2 transition-colors">
+        <svg class="toc-chevron w-3.5 h-3.5 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m9 6 6 6-6 6"></path>
         </svg>
+        <span class="toc-title">Contents</span>
       </summary>
-      <div class="pb-4 pt-1">
-        <ol class="toc-list">
-          {tocHeadings.map((heading) => (
-            <li>
-              <a
-                href={`#${heading.slug}`}
-                class:list={[
-                  'toc-link',
-                  { 'toc-link--nested': heading.depth === 3 }
-                ]}
-              >
-                {heading.text}
-              </a>
-            </li>
-          ))}
-        </ol>
-      </div>
+      <ol class="toc-list pb-4">
+        {tocHeadings.map((heading) => (
+          <li>
+            <a
+              href={`#${heading.slug}`}
+              class:list={[
+                'toc-link',
+                { 'toc-link--nested': heading.depth === 3 }
+              ]}
+            >
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ol>
     </details>
   </nav>
 )}
@@ -56,10 +54,21 @@ const defaultOpen = tocHeadings.length >= 4;
   }
 
   .toc-summary {
+    list-style: none;
+  }
+
+  .toc-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .toc-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--color-on-surface);
   }
 
-  .toc-summary:hover .rubric {
+  .toc-summary:hover .toc-title {
     color: var(--color-secondary);
   }
 
@@ -71,29 +80,25 @@ const defaultOpen = tocHeadings.length >= 4;
     list-style: none;
     padding: 0;
     margin: 0;
-    border-left: 1px solid var(--color-outline-variant);
   }
 
   .toc-link {
     display: block;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     line-height: 1.5;
-    padding: 0.3rem 0.75rem;
+    padding: 0.3rem 0;
     color: var(--color-on-surface-variant);
     text-decoration: none;
-    border-left: 2px solid transparent;
-    margin-left: -1px;
-    transition: color 0.2s ease, border-color 0.2s ease;
+    transition: color 0.2s ease;
   }
 
   .toc-link:hover {
-    color: var(--color-primary);
-    border-left-color: var(--color-secondary);
+    color: var(--color-on-surface);
   }
 
   .toc-link--nested {
-    padding-left: 1.5rem;
-    font-size: 0.8125rem;
+    padding-left: 1.125rem;
+    font-size: 0.875rem;
   }
 </style>
 

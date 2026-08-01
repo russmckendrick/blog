@@ -12,14 +12,10 @@ import PostNavigation from '../components/blog/PostNavigation.astro';
 import Comments from '../components/blog/Comments.astro';
 import ShareButtons from '../components/social/ShareButtons.astro';
 import TableOfContents from '../components/blog/TableOfContents.astro';
-import StickyTableOfContents from '../components/blog/StickyTableOfContents.astro';
-import StickyGlossary from '../components/blog/StickyGlossary.astro';
 import ReadingTime from '../components/blog/ReadingTime.astro';
 import RelatedPosts from '../components/blog/RelatedPosts.astro';
-import Breadcrumbs from '../components/navigation/Breadcrumbs.astro';
-import Icon from '../components/ui/Icon.astro';
-import { getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } from '../utils/tags';
-import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, AUTHOR_SLUG } from '../consts';
+import { getTagUrl, getTagDisplayName, getTagName, getTagColorClasses, normalizeTagSlug } from '../utils/tags';
+import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, AUTHOR_SLUG, TAG_AVATAR_MAP } from '../consts';
 import { Schema } from 'astro-seo-schema';
 import { createBlogPostingSchema, createBreadcrumbSchema, createFAQSchema, createHowToSchema } from '../utils/schema';
 
@@ -97,12 +93,13 @@ const buildAvatarPath = (avatarName: string | undefined): string | undefined => 
 	return `/images/avatars/${avatarName}.svg`;
 };
 
-// Byline avatar. Tunes posts keep the AI attribution; human posts default to the
-// real portrait so the byline carries authorship rather than a tag illustration.
-// A post can still opt into an illustrated avatar via `avatar:` in frontmatter.
+// Byline avatar. Tunes posts keep the AI attribution; human posts default to
+// the illustrated tag avatar (first mapped tag wins — TAG_AVATAR_MAP), so no
+// photo appears in the design. `avatar:` in frontmatter still overrides.
 const getDefaultAvatar = () => {
 	if (isTune) return AI_AUTHOR.avatar;
-	return '/images/avatar.png';
+	const mappedTag = (tags || []).map(normalizeTagSlug).find((slug) => TAG_AVATAR_MAP[slug]);
+	return mappedTag ? `/images/avatars/${TAG_AVATAR_MAP[mappedTag]}` : '/images/avatars/anon.svg';
 };
 
 const avatarSrc = avatar
@@ -151,9 +148,8 @@ const relatedGlossary = (!isTune && postTagSlugs.size > 0)
 		.slice(0, 6)
 	: [];
 
-// Right-hand sidebar holds the sticky TOC and, below it, related glossary terms
+// Contents block between hero and prose; related glossary terms close the article
 const hasToc = showToc && headings.length > 0;
-const hasSidebar = hasToc || relatedGlossary.length > 0;
 
 const faqSchema = faqs && faqs.length > 0
 	? createFAQSchema(faqs, Astro.url.toString())
@@ -198,13 +194,13 @@ const howToSchema = howto && howto.steps?.length > 0
 				rel="preload"
 				as="image"
 				href={getCFImageUrl(displayImage, {
-					width: 1920,
+					width: 1360,
 					quality: CF_IMAGE_PRESETS.hero.quality,
 					format: CF_IMAGE_PRESETS.hero.format,
 					fit: CF_IMAGE_PRESETS.hero.fit
 				})}
 				imagesrcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
-				imagesizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) calc(100vw - 48px), 1100px"
+				imagesizes="(max-width: 728px) calc(100vw - 48px), 680px"
 				fetchpriority="high"
 			/>
 		)}
@@ -226,132 +222,150 @@ const howToSchema = howto && howto.steps?.length > 0
 			<Header />
 		</HeaderWrapper>
 		<main id="main-content" tabindex="-1" class="relative">
-			<article class="relative pt-6 sm:pt-10 pb-4">
-				<div class:list={["mx-auto px-4 sm:px-6 lg:px-8 xl:px-10", hasSidebar ? 'max-w-5xl xl:max-w-[1340px]' : 'max-w-5xl']}>
-					<div class:list={[hasSidebar ? 'xl:grid xl:grid-cols-[1fr_220px] xl:gap-8 xl:items-start' : '']}>
-					<div class="min-w-0">
-						<div class="article-column">
-							<Breadcrumbs items={breadcrumbItems} />
-						</div>
-
-						{/* Journal header: title → one byline row carrying author, date and source → tag line */}
-						<header class="article-column mt-4 mb-8">
-							<h1
-								class="font-display text-on-surface"
-								style="font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.1;"
-								data-entrance
-								transition:name={titleTransition}
-							>
-								{title}
-							</h1>
-
-							{/* One row: identity, dateline, source, taxonomy. Separation is carried by
-							    the gap rather than middots, which orphan on the line above when this wraps. */}
-							<div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2" data-entrance>
-								<img
-									src={avatarSrc}
-									alt={isTune ? authorName : `${authorName}, author`}
-									width="32"
-									height="32"
-									class="w-8 h-8 rounded-full object-cover border"
-									style="border-color: var(--color-outline-variant);"
-									onerror={`this.onerror=null; this.src='${avatarFallback}';`}
-								/>
+			<article class="relative pt-8 sm:pt-12 pb-4">
+				<div class="mx-auto max-w-[728px] px-6">
+					{/* Story header: balanced title → standfirst → single-line byline */}
+					<header class="mb-7">
+						<h1
+							class="font-display text-on-surface"
+							data-entrance
+							transition:name={titleTransition}
+						>
+							{title}
+						</h1>
+						{description && (
+							<p class="mt-4 text-lg sm:text-[1.3125rem] leading-[1.38] text-on-surface-variant" data-entrance>
+								{description}
+							</p>
+						)}
+						<div class="mt-7 flex items-center gap-3" data-entrance>
+							<img
+								src={avatarSrc}
+								alt=""
+								width="36"
+								height="36"
+								class="w-9 h-9 rounded-full object-cover border flex-none"
+								style="border-color: var(--color-outline-variant); background-color: var(--paper-well);"
+								onerror={`this.onerror=null; this.src='${avatarFallback}';`}
+							/>
+							<p class="text-[15px] text-on-surface-variant leading-snug">
 								{isTune ? (
-									<span class="rubric text-on-surface">{authorName}</span>
+									<span class="font-medium text-on-surface">{authorName}</span>
 								) : (
-									<a href={AUTHOR_PAGE_PATH} class="rubric text-on-surface nav-underline no-underline">{authorName}</a>
+									<a href={AUTHOR_PAGE_PATH} class="font-medium text-on-surface no-underline hover:text-[var(--color-secondary)]">{authorName}</a>
 								)}
-								<span class="rubric"><FormattedDate date={pubDate} /></span>
 								{readingTime && (
-									<span class="rubric"><ReadingTime minutes={readingTime} /></span>
+									<> &middot; <ReadingTime minutes={readingTime} /></>
 								)}
+								{' '}&middot; <FormattedDate date={pubDate} />
 								{updatedDate && (
-									<span class="rubric">Updated <FormattedDate date={updatedDate} /></span>
+									<> &middot; Updated <FormattedDate date={updatedDate} /></>
 								)}
-								{filePath && (
-									<a
-										href={editUrl}
-										rel="noopener noreferrer edit"
-										target="_blank"
-										class="byline-source"
-										title={`${EDIT_POST.text} on GitHub`}
-										aria-label={`${EDIT_POST.text} on GitHub`}
-									>
-										<Icon name="github" size={16} />
-									</a>
-								)}
-								{tags.slice(0, 8).map((tag) => (
-									<a href={getTagUrl(tag)} class={getTagColorClasses(tag)}>
-										{getTagDisplayName(tag)}
-									</a>
-								))}
-							</div>
-						</header>
-
-						{/* Hero image: the plate, edge to edge, framed with a hairline */}
-						{displayImage && (
-							<figure
-								class="mb-10 border"
-								style="border-color: var(--color-outline-variant);"
-								data-settle
-								transition:name={imageTransition}
-							>
-								<img
-									src={getCFImageUrl(displayImage, {
-										width: 1920,
-										quality: CF_IMAGE_PRESETS.hero.quality,
-										format: CF_IMAGE_PRESETS.hero.format,
-										fit: 'scale-down'
-									})}
-									srcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
-									sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) calc(100vw - 48px), 1100px"
-									alt={cover?.alt || title}
-									loading="eager"
-									fetchpriority="high"
-									decoding="sync"
-									width={heroWidth}
-									height={heroHeight}
-									class="w-full h-auto"
-								/>
-							</figure>
-						)}
-
-						{hasToc && (
-							<div class="article-column xl:hidden">
-								<TableOfContents headings={headings} />
-							</div>
-						)}
-
-						<div class:list={["prose article-column", !isTune && 'article-body']}>
-							<slot />
+							</p>
 						</div>
+					</header>
 
-						{!isTune && <ShareButtons title={title} url={Astro.url.href} tags={tags} />}
-
-						{!isTune && entry && (
-							<div data-reveal>
-								<RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={3} />
-							</div>
-						)}
-
-						{!isTune && (
-							<div>
-								<Comments />
-							</div>
-						)}
-
-						<div data-reveal>
-							<PostNavigation previousPost={previousPost} nextPost={nextPost} />
-						</div>
+					{/* Storybar: taxonomy left, the article's actions right */}
+					<div class="mb-10 py-3 border-t border-b flex flex-wrap items-center justify-between gap-x-5 gap-y-2" style="border-color: var(--color-outline-variant);">
+						<p class="rubric flex flex-wrap items-center gap-x-1.5">
+							{tags.slice(0, 4).map((tag, index) => (
+								<>
+									{index > 0 && <span aria-hidden="true">&middot;</span>}
+									<a href={getTagUrl(tag)} class="no-underline hover:text-on-surface">{getTagName(tag)}</a>
+								</>
+							))}
+						</p>
+						<p class="rubric flex flex-wrap items-center gap-x-4">
+							<a href={`${Astro.url.pathname}index.md`} class="no-underline hover:text-on-surface">Read as Markdown</a>
+							{filePath && (
+								<a
+									href={editUrl}
+									rel="noopener noreferrer edit"
+									target="_blank"
+									class="no-underline hover:text-on-surface"
+									title={`${EDIT_POST.text} on GitHub`}
+								>
+									Suggest edits
+								</a>
+							)}
+							<a href={isTune ? '/tunes/rss.xml' : '/rss.xml'} class="no-underline hover:text-on-surface">RSS</a>
+						</p>
 					</div>
 
-					{hasSidebar && (
-						<aside class="hidden xl:block sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
-							{hasToc && <StickyTableOfContents headings={headings} maxDepth={isTune ? 2 : 3} />}
-							<StickyGlossary entries={relatedGlossary} />
-						</aside>
+					{/* Hero image: the artwork, at the column width */}
+					{displayImage && (
+						<figure
+							class="mb-10 rounded-[4px] overflow-hidden"
+							data-settle
+							transition:name={imageTransition}
+						>
+							<img
+								src={getCFImageUrl(displayImage, {
+									width: 1360,
+									quality: CF_IMAGE_PRESETS.hero.quality,
+									format: CF_IMAGE_PRESETS.hero.format,
+									fit: 'scale-down'
+								})}
+								srcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
+								sizes="(max-width: 728px) calc(100vw - 48px), 680px"
+								alt={cover?.alt || title}
+								loading="eager"
+								fetchpriority="high"
+								decoding="sync"
+								width={heroWidth}
+								height={heroHeight}
+								class="w-full h-auto"
+							/>
+						</figure>
 					)}
+
+					{hasToc && <TableOfContents headings={headings} />}
+
+					<div class="prose">
+						<slot />
+					</div>
+
+					{/* Three ink dots close the story */}
+					<p class="tombstone" aria-hidden="true">&#9679; &#9679; &#9679;</p>
+
+					{tags.length > 0 && (
+						<div class="mt-8 flex flex-wrap gap-2">
+							{tags.slice(0, 8).map((tag) => (
+								<a href={getTagUrl(tag)} class={getTagColorClasses(tag)}>
+									{getTagName(tag)}
+								</a>
+							))}
+						</div>
+					)}
+
+					{!isTune && <ShareButtons title={title} url={Astro.url.href} tags={tags} />}
+
+					{relatedGlossary.length > 0 && (
+						<p class="rubric mt-6">
+							Related terms:{' '}
+							{relatedGlossary.map((glossaryEntry, index) => (
+								<>
+									{index > 0 && <span aria-hidden="true"> &middot; </span>}
+									<a href={`/glossary/${glossaryEntry.id}/`} class="no-underline hover:text-on-surface">{glossaryEntry.data.term}</a>
+								</>
+							))}
+						</p>
+					)}
+
+					{!isTune && entry && (
+						<div data-reveal>
+							<RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={2} />
+						</div>
+					)}
+
+					{!isTune && (
+						<div>
+							<Comments />
+						</div>
+					)}
+
+					<div data-reveal>
+						<PostNavigation previousPost={previousPost} nextPost={nextPost} />
 					</div>
 				</div>
 			</article>

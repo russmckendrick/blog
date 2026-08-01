@@ -673,11 +673,21 @@ a:hover {
   margin-top: 0;
 }
 
-/* The article's text column. Header, contents and prose share one measure and
-   one left edge; only the hero plate runs the full container width. */
+/* The article's text column: everything — header, contents, hero, prose —
+   shares the 680px measure inside the 728px container. */
 .article-column {
   margin-inline: auto;
-  max-width: 72ch;
+  max-width: 680px;
+}
+
+/* Three accent dots close every article */
+.tombstone {
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
 }
 
 /* Source link in the article byline: icon only, label carried by title/aria-label.

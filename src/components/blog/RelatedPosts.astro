@@ -58,13 +58,13 @@ if (relatedPosts.length < limit) {
 ---
 
 {relatedPosts.length > 0 && (
-  <section class="mt-12">
-    <p class="rubric mb-2" role="heading" aria-level="2">
-      Further Reading
+  <section class="mt-14 pt-7 border-t" style="border-color: var(--color-outline-variant);">
+    <p class="text-[15px] font-semibold" style="letter-spacing: -0.01em;" role="heading" aria-level="2">
+      More from the archive
     </p>
     <div class="flex flex-col">
       {relatedPosts.map((post) => (
-        <PostCard post={post} variant="horizontal" headingLevel="3" />
+        <PostCard post={post} headingLevel="3" />
       ))}
     </div>
   </section>
