@@ -1,0 +1,83 @@
+---
+import { getTagUrl, getTagName, getTagColorClasses } from '../../utils/tags';
+
+/**
+ * Hairline storybar: tags left, actions right, sitting directly under the
+ * byline. It carries what the article rail shows in the right margin, so it
+ * only renders below 1200px — above that the rail is on screen and this would
+ * duplicate it. Contents stay rail-only; there is no inline table of contents.
+ */
+interface Props {
+	tags?: string[];
+	markdownHref: string;
+	editUrl?: string;
+	editTitle?: string;
+	rssHref: string;
+}
+
+const { tags = [], markdownHref, editUrl, editTitle, rssHref } = Astro.props;
+---
+
+<div class="storybar">
+	{tags.length > 0 && (
+		<p class="storybar-tags">
+			{tags.slice(0, 4).map((tag) => (
+				<a href={getTagUrl(tag)} class={`${getTagColorClasses(tag)} tag-editorial--sm`}>{getTagName(tag)}</a>
+			))}
+		</p>
+	)}
+	<p class="storybar-actions rubric">
+		<a href={markdownHref}>Read as Markdown</a>
+		{editUrl && (
+			<>
+				<span aria-hidden="true">&middot;</span>
+				<a href={editUrl} rel="noopener noreferrer edit" target="_blank" title={editTitle}>Suggest edits</a>
+			</>
+		)}
+		<span aria-hidden="true">&middot;</span>
+		<a href={rssHref}>RSS</a>
+	</p>
+</div>
+
+<style>
+	.storybar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem 1.25rem;
+		margin-top: 1.5rem;
+		padding: 0.875rem 0;
+		border-top: 1px solid var(--color-outline-variant);
+		border-bottom: 1px solid var(--color-outline-variant);
+	}
+
+	/* The rail owns this content once there is a margin to put it in. */
+	@media (min-width: 1200px) {
+		.storybar {
+			display: none;
+		}
+	}
+
+	.storybar-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.375rem;
+		min-width: 0;
+	}
+
+	.storybar-actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.storybar-actions a {
+		text-decoration: none;
+	}
+
+	.storybar-actions a:hover {
+		color: var(--color-on-surface);
+	}
+</style>

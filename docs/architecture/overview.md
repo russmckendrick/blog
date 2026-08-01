@@ -247,13 +247,16 @@ graph TD
 - `BaseHead.astro` - SEO, meta tags, schema
 - `Header.astro` - Navigation and theme switcher
 - `Footer.astro` - Footer navigation and site metadata
+
+**Navigation Components** (`src/components/navigation/`):
 - `Breadcrumbs.astro` - Breadcrumb navigation
+- `BackLink.astro` - Hub-page back link: renders a static section fallback, upgrades to a `history.back()` link when the referrer is same-origin and outside that section
 
 **Blog Components** (`src/components/blog/`):
 - `PostCard.astro` - Rule-separated post index entries (featured/vertical/grid/horizontal variants)
 - `RelatedPosts.astro` - Tag-based related posts
-- `TableOfContents.astro` - Inline collapsible ToC
-- `StickyTableOfContents.astro` - Sticky sidebar ToC with scroll-aware active highlighting (2xl+)
+- `ArticleRail.astro` - Sticky right-margin rail (Contents, Tags, Actions) on viewports ≥1200px
+- `StoryBar.astro` - Hairline tags/actions bar under the byline, below 1200px only
 - `ReadingTime.astro` - Reading time estimate
 
 **Reading Components** (`src/components/reading/`):

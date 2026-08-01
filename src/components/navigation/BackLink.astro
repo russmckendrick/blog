@@ -1,0 +1,90 @@
+---
+/**
+ * Back link for hub pages. Renders the static fallback ("← All tags") on the
+ * server so no-JS visitors and people arriving cold from search still get a
+ * working destination. When the referrer is a same-origin page outside this
+ * hub's own section, an inline script rewrites it into a real back link that
+ * calls history.back() — that keeps the browser's scroll restoration, so
+ * returning lands you where you were rather than at the top of a listing.
+ */
+interface Props {
+  /** Where the link points when there is no usable previous page. */
+  fallbackHref: string;
+  /** Label for that fallback, without the arrow. */
+  fallbackLabel: string;
+  class?: string;
+}
+
+const { fallbackHref, fallbackLabel, class: className = 'rubric no-underline hover:text-on-surface' } = Astro.props;
+---
+
+<a
+  href={fallbackHref}
+  class={className}
+  data-back-link
+  data-fallback-href={fallbackHref}
+>&larr; {fallbackLabel}</a>
+
+<script is:inline>
+  (() => {
+    // Short, quiet names for the places a reader arrives from. Anything not
+    // listed falls back to a bare "Back".
+    const labelFor = (path) => {
+      if (path === '/' || /^\/page\/\d+\/?$/.test(path)) return 'the feed'
+      if (/^\/\d{4}\/\d{2}\/\d{2}\//.test(path)) return 'the post'
+      if (/^\/\d{4}\//.test(path)) return 'the year'
+      if (path.startsWith('/tunes/')) return 'tunes'
+      if (path.startsWith('/books/')) return 'the books'
+      if (path.startsWith('/glossary/')) return 'the glossary'
+      if (path.startsWith('/reading/')) return 'the reading list'
+      if (path.startsWith('/archives/')) return 'the archive'
+      if (path.startsWith('/search/')) return 'search'
+      if (path.startsWith('/author/')) return 'the author page'
+      return null
+    }
+
+    const init = () => {
+      document.querySelectorAll('[data-back-link]').forEach((link) => {
+        if (link.dataset.backBound === 'true') return
+        link.dataset.backBound = 'true'
+
+        if (!document.referrer) return
+
+        let referrer
+        try {
+          referrer = new URL(document.referrer)
+        } catch {
+          return
+        }
+
+        if (referrer.origin !== location.origin) return
+        if (referrer.pathname === location.pathname) return
+
+        // Arriving from the hub itself or a sibling under it (another tag,
+        // the next page of one) — the static link is already the right
+        // destination, so leave it alone.
+        const fallback = link.dataset.fallbackHref
+        if (fallback && referrer.pathname.startsWith(fallback)) return
+
+        const label = labelFor(referrer.pathname)
+        link.href = referrer.href
+        link.textContent = label ? `← Back to ${label}` : '← Back'
+
+        link.addEventListener('click', (event) => {
+          // Leave modified clicks to the browser so "open in new tab" still
+          // works — those want the href, not a history move.
+          if (event.defaultPrevented) return
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+          // A tab opened straight onto this page has nothing to go back to;
+          // the href handles that case.
+          if (history.length <= 1) return
+          event.preventDefault()
+          history.back()
+        })
+      })
+    }
+
+    init()
+    document.addEventListener('astro:page-load', init)
+  })()
+</script>

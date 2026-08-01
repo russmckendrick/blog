@@ -434,7 +434,7 @@ Automatically generates ToC from h2 and h3 headings:
 #### Details         # Not included
 ```
 
-With `showToc: true`, the headings render as the **Contents rail** - an always-open, sticky list in the right margin beside the article column on wide viewports (≥1200px), with the section currently being read highlighted. On narrower screens no table of contents renders; there is no inline ToC.
+With `showToc: true`, the headings render as the **Contents rail** - an always-open, sticky list in the right margin beside the article column on wide viewports (≥1200px), with the section currently being read highlighted. On narrower screens no table of contents renders; there is no inline ToC. The rail's other two sections do follow you down: below 1200px the **storybar** (`StoryBar.astro`) renders under the byline with the post's tags on the left and `Read as Markdown · Suggest edits · RSS` on the right.
 
 ## Avatars
 

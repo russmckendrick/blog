@@ -5,6 +5,7 @@ import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PostCard from '../../../components/blog/PostCard.astro';
 import Pagination from '../../../components/layout/Pagination.astro';
+import BackLink from '../../../components/navigation/BackLink.astro';
 import { Schema } from 'astro-seo-schema';
 import { getTagMetadata, getTagUrl, getTagName, getTagColorClasses, normalizeTagSlug } from '../../../utils/tags';
 import { TAG_AVATAR_MAP } from '../../../consts';
@@ -114,7 +115,7 @@ const avatarFallback = '/images/avatar-192x192.png';
   <section class="max-w-[728px] mx-auto px-6">
     <header class="pt-8 pb-6 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
       <p class="mb-5">
-        <a href="/tags/" class="rubric no-underline hover:text-on-surface">&larr; All tags</a>
+        <BackLink fallbackHref="/tags/" fallbackLabel="All tags" />
       </p>
 
       <div class="flex items-center gap-5 sm:gap-6">

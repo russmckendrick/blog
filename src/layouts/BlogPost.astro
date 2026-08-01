@@ -12,6 +12,7 @@ import PostNavigation from '../components/blog/PostNavigation.astro';
 import Comments from '../components/blog/Comments.astro';
 import ShareButtons from '../components/social/ShareButtons.astro';
 import ArticleRail from '../components/blog/ArticleRail.astro';
+import StoryBar from '../components/blog/StoryBar.astro';
 import ReadingTime from '../components/blog/ReadingTime.astro';
 import RelatedPosts from '../components/blog/RelatedPosts.astro';
 import { getTagUrl, getTagDisplayName, getTagName, getTagColorClasses, normalizeTagSlug } from '../utils/tags';
@@ -296,6 +297,16 @@ const howToSchema = howto && howto.steps?.length > 0
 								)}
 							</p>
 					</div>
+
+					{/* Below 1200px the rail is gone, so tags and actions ride
+					    here instead — directly under the byline. */}
+					<StoryBar
+						tags={tags}
+						markdownHref={`${Astro.url.pathname}index.md`}
+						editUrl={filePath ? editUrl : undefined}
+						editTitle={`${EDIT_POST.text} on GitHub`}
+						rssHref={isTune ? '/tunes/rss.xml' : '/rss.xml'}
+					/>
 
 					<div class="prose mt-10">
 						<slot />

@@ -249,8 +249,10 @@ standfirst — the description belongs to feed rows and meta tags only): a
 `public/images/avatars/`, chosen per `TAG_AVATAR_MAP` in `src/consts.ts` —
 cartoons, so the no-photos rule holds — there is no photo anywhere in the
 design) beside `Russ McKendrick · 9 min read · 19 Jul 2026` (name in
-ink 500, the rest mist, one line). Then a hairline "storybar":
-tags left, `Read as Markdown · Suggest edits · RSS` right. Hero figure at
+ink 500, the rest mist, one line). Then a hairline **storybar**
+(`StoryBar.astro`): tags left, `Read as Markdown · Suggest edits · RSS`
+right, rendered below 1200px only — it carries what the rail would show if
+there were a margin to put it in, so the two never appear together. Hero figure at
 column width with a centred mist caption. A **reading-progress rule** — 2px
 of accent, fixed to the top viewport edge, no gradient, no glow — runs on
 article pages only. An **article rail** (`ArticleRail.astro`) sits open and sticky in the right
@@ -258,9 +260,10 @@ margin beside the centred column on viewports ≥1200px — hairline-left, three
 headed sections: **Contents** (13px mist entries, current section in ink 600
 via IntersectionObserver, only when `showToc`), **Tags** (small tinted pills,
 `.tag-editorial--sm`), and **Actions** (Read as Markdown · Suggest edits ·
-RSS). Below 1200px the rail disappears — tags stay at the article foot,
-headings and the progress rule carry wayfinding; there is no inline table of
-contents and no storybar. Feed-row metas show up to three small tag pills. Body in Literata with ink-coloured
+RSS). Below 1200px the rail disappears and the storybar takes over its tags
+and actions under the byline; Contents stays rail-only, so headings and the
+progress rule carry wayfinding and there is still no inline table of
+contents. Feed-row metas show up to three small tag pills. Body in Literata with ink-coloured
 underlined links (accent on hover only). Terminal code figures carry over
 from Print Edition unchanged — macOS window (10px radius), traffic lights in
 the Catppuccin Macchiato reds/ambers/greens documented in the token
