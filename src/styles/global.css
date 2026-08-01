@@ -509,24 +509,52 @@ a:hover {
   border-bottom: 1px solid var(--color-outline-variant);
 }
 
-#site-header .header-logo,
-#site-header .header-logo span {
+.masthead-wordmark {
+  font-weight: 700;
+  font-size: 1.3125rem;
+  letter-spacing: -0.02em;
   color: var(--color-on-surface);
 }
 
-.masthead-wordmark {
-  font-weight: 700;
+.masthead-wordmark .wordmark-dot {
+  color: var(--color-secondary);
+}
+
+/* Search pill: quiet well linking to /search/ */
+.masthead-search {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  height: 40px;
+  padding: 0 1rem;
+  border-radius: 20px;
+  background: var(--paper-well);
+  color: var(--color-on-surface-variant);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  transition: background-color var(--dur-quick) ease, color var(--dur-quick) ease;
+}
+
+.masthead-search:hover {
+  background: var(--paper-deep);
+  color: var(--color-on-surface);
 }
 
 #site-header .header-nav-item {
   color: var(--color-on-surface-variant);
+  font-size: 0.875rem;
 }
 
 #site-header .header-nav-item:hover {
   color: var(--color-on-surface);
 }
 
-/* Underline draw-in for nav and editorial links */
+/* Burger icon swaps to an X while the menu is open */
+#menu-trigger .icon-close { display: none; }
+#menu-trigger[aria-expanded="true"] .icon-close { display: block; }
+#menu-trigger[aria-expanded="true"] .icon-bars { display: none; }
+
+/* Legacy underline draw-in, kept for editorial links */
 .nav-underline {
   position: relative;
 }
@@ -552,33 +580,6 @@ a:hover {
 
 @media (prefers-reduced-motion: reduce) {
   .nav-underline::after {
-    transition: none;
-  }
-}
-
-/* Icon-only nav links — label slides out on hover/focus */
-.nav-icon-link .nav-label {
-  display: inline-block;
-  max-width: 0;
-  margin-left: 0;
-  opacity: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  transition:
-    max-width var(--dur-hover) var(--ease-settle),
-    margin-left var(--dur-hover) var(--ease-settle),
-    opacity var(--dur-hover) var(--ease-settle);
-}
-
-.nav-icon-link:hover .nav-label,
-.nav-icon-link:focus-visible .nav-label {
-  max-width: 8em;
-  margin-left: 0.45em;
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .nav-icon-link .nav-label {
     transition: none;
   }
 }

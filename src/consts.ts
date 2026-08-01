@@ -44,21 +44,46 @@ export const SOCIAL_LINKS = [
   { name: "lastfm", url: "https://www.last.fm/user/RussMckendrick" },
 ];
 
-export const NAVIGATION_ITEMS = [
-  { name: "Search", url: "/search/", icon: "search" },
-  { name: "Tags", url: "/tags/", icon: "tag" },
-  { name: "Tunes", url: "/tunes/", icon: "headphones" },
-  { name: "Reading", url: "/reading/", icon: "bookOpen" },
-  { name: "Books", url: "/books/", icon: "book" },
-  { name: "About", url: "/about/", icon: "user" },
-  { name: "Archives", url: "/archives/", icon: "archive" },
+// Masthead: four quiet text links; everything else lives in the footer line.
+export const MASTHEAD_ITEMS = [
+  { name: "Tunes", url: "/tunes/" },
+  { name: "Books", url: "/books/" },
+  { name: "Archive", url: "/archives/" },
+  { name: "About", url: "/about/" },
+];
+
+// The single wayfinding line that closes every page.
+export const FOOTER_NAV = [
+  { name: "About", url: "/about/" },
+  { name: "Archives", url: "/archives/" },
+  { name: "Reading list", url: "/reading/" },
+  { name: "Glossary", url: "/glossary/" },
+  { name: "Tags", url: "/tags/" },
   {
     name: "Source",
     url: "https://github.com/russmckendrick/blog/",
-    icon: "github",
     external: true,
   },
+  { name: "RSS", url: "/rss.xml" },
 ];
+
+// Display labels for SOCIAL_LINKS names (footer icon aria-labels/tooltips).
+export const SOCIAL_LABELS: Record<string, string> = {
+  github: "GitHub",
+  mastodon: "Mastodon",
+  twitter: "Twitter",
+  linkedin: "LinkedIn",
+  amazon: "Amazon author page",
+  docker: "Docker Hub",
+  instagram: "Instagram",
+  medium: "Medium",
+  instapaper: "Instapaper",
+  reddit: "Reddit",
+  discogs: "Discogs",
+  applemusic: "Apple Music",
+  spotify: "Spotify",
+  lastfm: "Last.fm",
+};
 
 export const EDIT_POST = {
   url: "https://github.com/russmckendrick/blog/blob/main",
