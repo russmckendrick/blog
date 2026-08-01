@@ -27,8 +27,10 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 ### Header (masthead)
 
 - One 60px row on opaque paper with a 1px bottom hairline — no glass or blur.
-- Logo + `russ.cloud` wordmark (the dot is the one accent character), then the search pill (a quiet `--paper-well` well linking to `/search/`), then four plain text links (Tunes · Books · Archive · About) in mist, ink on hover, and the icon-only theme toggle.
-- Below 640px the links collapse into a burger disclosure with `aria-controls`, `aria-expanded`, and a screen-reader-only label reflecting open/closed state; the burger swaps to an X while open, and the menu closes on `Escape` and outside clicks.
+- Logo + `russ.cloud` wordmark (the dot is the one accent character) on the left; on the right, four plain text links (Tunes · Books · Archive · About) in mist, ink on hover, then a 16px vertical hairline (`.masthead-divider`) separating the utility icons: the search trigger and the icon-only theme toggle.
+- The search trigger is an `<a href="/search/">` that JS upgrades to open the **search sheet** (`SearchOverlay.astro`) — a native `<dialog>` rendered as a full-width paper band under the top edge, closed by a hairline, with the rest of the page veiled in 78% paper (`::backdrop`). Inside sits a real Pagefind input (autofocused) and a results drawer that scrolls internally; the masthead itself contains no fake input.
+- The sheet opens on click, `⌘K`/`Ctrl+K`, or `/` (ignored while typing in a field), and closes on `Escape`, the X button, backdrop click, or `⌘K` again. Pagefind's JS/CSS lazy-load on first open, so pages cost nothing until search is used. On `/search/` itself the shortcuts focus the page's own input instead of opening the sheet.
+- Below 640px the links collapse into a burger disclosure with `aria-controls`, `aria-expanded`, and a screen-reader-only label reflecting open/closed state; the burger swaps to an X while open, and the menu closes on `Escape` and outside clicks. The search trigger stays out of the menu as an always-visible icon beside the burger.
 
 ### Footer (colophon)
 

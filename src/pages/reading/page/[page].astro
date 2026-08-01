@@ -49,6 +49,8 @@ const { items, currentPage, totalPages, tagCounts } = Astro.props
         totalPages={totalPages}
         getHref={(pageNum) => (pageNum === 1 ? '/reading/' : `/reading/page/${pageNum}/`)}
         hideIfSingle={false}
+        olderLabel="Older articles"
+        newerLabel="Newer articles"
       />
     )}
   </section>

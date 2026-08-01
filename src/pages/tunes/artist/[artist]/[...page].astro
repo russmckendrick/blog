@@ -171,6 +171,8 @@ const musicGroupSchema = createMusicGroupSchema({
         totalPages={page.lastPage}
         getHref={(pageNum) => (pageNum === 1 ? `/tunes/artist/${artist.slug}/` : `/tunes/artist/${artist.slug}/${pageNum}/`)}
         hideIfSingle={false}
+        olderLabel="Older weeks"
+        newerLabel="Newer weeks"
       />
     )}
   </section>

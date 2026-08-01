@@ -113,7 +113,7 @@ rounded:
   image: 3px
   figure: 4px
   terminal: 10px
-  search-pill: 20px
+  search-input: 20px
   pill: 9999px
   portrait: 9999px
 layout:
@@ -138,7 +138,7 @@ page, so even a search arrival deep in the archive ends on who writes here.
 ## Tokens and naming
 
 - **Paper** `#FBFAF7` is the page — warm off-white, never pure white.
-  `paper-well` is the only fill (search pill, inline code). The Night edition
+  `paper-well` is the only fill (search input, inline code). The Night edition
   is a second material — warm dark paper `#161411`, softened ink and accent —
   not an inversion.
 - **Ink** `#1E1C18` for titles and body; **mist** `#6F6A61` for *everything*
@@ -176,15 +176,27 @@ Two faces, self-hosted through Astro's Fonts API:
 One centred **680px column** for everything — feed, tunes, and article share
 the same measure (728px incl. 24px gutters), so browsing and reading feel
 like the same room. No sidebars, no rails. Masthead is one 60px row: iMac
-logo + `russ.cloud` wordmark (ink dot), search pill, four text links
-(Tunes · Books · Archive · About), theme toggle; burger menu below 640px.
-Then silence until the colophon footer.
+logo + `russ.cloud` wordmark (ink dot) left; four text links
+(Tunes · Books · Archive · About), a 16px vertical hairline, then the
+icon-only search trigger and theme toggle right; burger menu below 640px
+with the search icon staying beside it. Search is not a widget in the bar:
+the icon (a plain link to `/search/`, JS-upgraded) opens the **search
+sheet** — a native dialog rendered as a full-width paper band under the top
+edge, closed by a hairline, the page behind veiled in 78% paper. Inside the
+728px measure sit a 13px mist label, a real autofocused Pagefind input
+(20px radius, the `paper-well` fill), and an internally scrolling results
+drawer. `⌘K`/`Ctrl+K` or `/` opens it; `Esc`, the X, or the veil closes
+it; Pagefind's assets lazy-load on first open. No card, no shadow — the
+sheet reads as the masthead unfolding. Then silence until the colophon
+footer.
 
 ## The feed
 
-Rows, not cards: title (2-line clamp) → dek (2-line clamp, hidden on mobile)
-→ meta `date · read time · tags`, with a 160×107 thumbnail flush right,
-title-aligned, 3px radius. Hairline between rows, ~30px padding. Tab row
+Rows, not cards: full-width title (2-line clamp) over a two-column lower
+band — dek (2-line clamp, hidden on mobile) → meta `date · read time · tags`
+on the left, a 160×107 thumbnail flush right, bottom edge on the meta
+baseline, 3px radius. Mobile keeps the compact side-by-side row: 100×67
+thumbnail beside the title, top-aligned. Hairline between rows, ~30px padding. Tab row
 (`Latest · AI · Tools · Code …`) doubles as topic navigation — real tags,
 active state = ink underline on the baseline hairline. Tunes reuses the exact
 grammar with a 21:9 lead banner for the current week and `Artists 512 ·
@@ -195,9 +207,12 @@ week's records appear as an eight-cover **film strip** (square, 3px radius,
 Last.fm · Discogs` line beneath.
 
 Listings end in **pagination**, not a browse link: a quiet 14px sans row —
-numerals in mist, current page in ink 600 with a 1px ink underline (the
-active-tab idiom), an ellipsis to the last page, and `Older posts →`
-right-aligned. `← Newer` appears on pages past the first.
+numerals in mist centred in the column, current page in ink 600 with a 1px
+ink underline (the active-tab idiom), an ellipsis to the last page, `← Newer
+posts` flush left and `Older posts →` flush right. Both steps are always
+present; the one with no page in that direction renders as static mist at
+40% opacity rather than disappearing. Below 640px the Older/Newer labels
+collapse to bare arrows so the row keeps to one line.
 
 ## The colophon footer
 

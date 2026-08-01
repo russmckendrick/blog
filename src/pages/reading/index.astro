@@ -33,6 +33,8 @@ const description = 'Articles and links I\'ve saved and read on Instapaper'
         totalPages={totalPages}
         getHref={(pageNum) => (pageNum === 1 ? '/reading/' : `/reading/page/${pageNum}/`)}
         hideIfSingle={true}
+        olderLabel="Older articles"
+        newerLabel="Newer articles"
       />
     )}
   </section>

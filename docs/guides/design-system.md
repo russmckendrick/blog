@@ -16,7 +16,7 @@ Primitives (preferred in new code):
 | Token | Light | Dark | Use |
 |---|---|---|---|
 | `--paper` | `#FBFAF7` | `#161411` | the page — warm off-white, never pure white |
-| `--paper-well` | `#F3F1EB` | `#211E1A` | the only fill: search pill, inline code |
+| `--paper-well` | `#F3F1EB` | `#211E1A` | the only fill: search input, inline code |
 | `--ink` | `#1E1C18` | `#E8E3DA` | titles and body |
 | `--ink-muted` | `#6F6A61` | `#A69D8F` | "mist" — everything that is not content: deks, dates, read times, captions, inactive tabs |
 | `--rule` | `#ECE8E1` | `#2B2721` | the hairline — always 1px, the only separator |
@@ -27,7 +27,7 @@ There is no third text tint — a second grey is a bug. Both ink and mist pass 4
 
 **Legacy aliases:** the Material-style names (`--color-surface`, `--color-surface-container-*`, `--color-on-surface`, `--color-on-surface-variant`, `--color-primary`, `--color-secondary`, `--color-outline-variant`) are aliases of the paper/ink primitives so older components keep working — `--color-outline-variant` *is* the hairline, `--color-secondary` *is* the accent. `--rule-strong` now aliases the plain hairline (heavy rules are retired), `--shadow-ambient` is `none`, `--glass-bg` is opaque paper, and `--ghost-border` is a hairline — the utilities that consume them are inert by design. Never add raw hex values or Tailwind palette colours (`gray-*`, `blue-*`).
 
-**Radius:** 3px listing thumbnails and cover strips, 4px article/lead figures, full (`9999px`) pills and circular portraits, 20px search pill, 10px terminal frames. Nothing else is rounded.
+**Radius:** 3px listing thumbnails and cover strips, 4px article/lead figures, full (`9999px`) pills and circular portraits, 20px search input (the Pagefind field in the search sheet and on `/search/`), 10px terminal frames. Nothing else is rounded.
 
 ## Typography
 
@@ -60,18 +60,20 @@ No cards, shadows (terminal figures excepted), gradients, glass, or coloured sid
 
 `PostCard.astro` renders the one listing row (the legacy variants all collapse onto it):
 
-- title — sans 22px/700, −0.014em, 2-line clamp, accent on group hover
+- title — sans 22px/700, −0.014em, 2-line clamp, accent on group hover; spans the full row width above the dek/thumbnail band (`sm+`)
 - dek — 16px mist, 2-line clamp, hidden on mobile
-- meta — `.rubric` line: `date · read time · tags` (tag names hide below 480px), plus `· AI-generated` on tunes rows
-- thumbnail — 160×107 (100×67 mobile) flush right, title-aligned, 3px radius, LQIP blur-up
+- meta — `.rubric` line: `date · read time · tags` (tag names hide below 480px), plus `· AI-generated` on tunes rows; bottom-anchored so it sits on the thumbnail's bottom edge (`sm+`)
+- thumbnail — 160×107 flush right in the lower band, bottom-aligned with the meta line, 3px radius, LQIP blur-up; mobile keeps the compact side-by-side row (100×67 beside the title, top-aligned)
 
 A hairline separates rows. Listing pages compose rows inside the 728px column, with `headingLevel` set for the page's outline. The home tab row (`TagTabs.astro`) doubles as topic navigation — real tags, active state = 1px ink underline sitting on the baseline hairline. The tunes index reuses the same grammar with a 21:9 lead banner, the eight-cover film strip (square, 3px radius, 4-across on mobile), and the `russ.fm · Last.fm · Discogs` line; the AI-generated attribution stays in the lead meta line — non-negotiable.
 
-Listings end in **pagination** (`Pagination.astro`), not a browse link: a quiet 14px sans row — numerals in mist, current page in ink 600 with a 1px ink underline (the active-tab idiom), ellipses toward the ends, `Older posts →` right-aligned and `← Newer posts` on pages past the first (tunes swaps in "weeks").
+Listings end in **pagination** (`Pagination.astro`), not a browse link: a quiet 14px sans row laid out as a `1fr auto 1fr` grid — the numeral cluster centred in the column, current page in ink 600 with a 1px ink underline (the active-tab idiom), ellipses toward the ends, `← Newer posts` flush left and `Older posts →` flush right (tunes swaps in "weeks", the reading list in "articles"). Both steps render on every page: when there is no page in that direction the step is a static span dimmed to 40% opacity instead of a link. Below 640px the Older/Newer labels collapse to bare arrows (the full label stays as the link's accessible name) so the row keeps to one line; prev/next carry `rel="prev"`/`rel="next"`, and an ellipsis is only rendered when it hides more than one page.
 
 ## Masthead and colophon footer
 
-**Masthead** (`Header.astro`): one 60px row on opaque paper with a 1px bottom hairline — logo + `russ.cloud` wordmark (accent dot), the search pill (a `--paper-well` well linking to `/search/`), four text links (Tunes · Books · Archive · About) in mist, and the icon-only theme toggle. Below 640px the links collapse into a burger-menu disclosure. Then silence until the footer.
+**Masthead** (`Header.astro`): one 60px row on opaque paper with a 1px bottom hairline — logo + `russ.cloud` wordmark (accent dot) left; right, four text links (Tunes · Books · Archive · About) in mist, a 16px vertical hairline (`.masthead-divider`), then the icon-only search trigger and theme toggle. Below 640px the links collapse into a burger-menu disclosure with the search icon staying visible beside it. Then silence until the footer.
+
+**Search sheet** (`SearchOverlay.astro`, rendered by `Header.astro`): the search trigger is an `<a href="/search/">` that JS upgrades to a native `<dialog>` — a full-width paper band pinned to the top edge, closed by a hairline, the page behind veiled in 78% paper. A quiet 13px mist "Search the archive" label and X button head the column (728px, matching the site measure); beneath, the real Pagefind input (20px radius, `--paper-well`) stays pinned while the results drawer scrolls internally. Opens on click, `⌘K`/`Ctrl+K`, or `/`; closes on `Escape`, X, backdrop, or `⌘K`. Pagefind assets lazy-load on first open; Pagefind UI variables are themed on `body` in `global.css` (not `:root`, which pagefind-ui.css would override at runtime) so both the sheet and `/search/` follow the palette in both editions. No card, no shadow — the sheet is the masthead unfolding, not a floating box.
 
 **Colophon footer** (`Footer.astro`): every view ends the same way — a hairline, then two blocks in the 728px column (stacking on mobile): **Links** (the full `SOCIAL_LINKS` set as 17px monochrome `Icon.astro` icons — mist at rest, ink on hover, config order; never brand colours) beside **Listened to this week** (four 64px covers, latest entry title, `N weeks of listening →`). One `.rubric` line closes it: `About · Archives · Reading list · Glossary · Tags · Source · RSS · © year`. No bio, no location, no typeface credit — and no photo of Russ anywhere in the design.
 

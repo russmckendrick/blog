@@ -43,23 +43,23 @@ const preset = CF_IMAGE_PRESETS.thumbnailHorizontal
 	href={href}
 	aria-label={`Read post: ${post.data.title}`}
 	class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4">
-	<article class="flex items-start gap-5 sm:gap-10 border-b py-6 sm:py-7" style="border-color: var(--color-outline-variant);">
-		<div class="flex-1 min-w-0 flex flex-col gap-2">
-			<header>
-				<HeadingTag
-					class="font-display text-lg sm:text-[1.375rem] text-on-surface leading-[1.3] sm:leading-[1.27] line-clamp-2 transition-colors group-hover:text-[var(--color-secondary)]"
-					style="font-weight: 700; letter-spacing: -0.014em;"
-					transition:name={titleTransition}
-				>
-					{post.data.title}
-				</HeadingTag>
-			</header>
+	<article class="grid grid-cols-[minmax(0,1fr)_auto] gap-y-2 border-b py-6 sm:py-7" style="border-color: var(--color-outline-variant);">
+		<header class="col-start-1 row-start-1 min-w-0 sm:col-span-2">
+			<HeadingTag
+				class="font-display text-lg sm:text-[1.375rem] text-on-surface leading-[1.3] sm:leading-[1.27] line-clamp-2 transition-colors group-hover:text-[var(--color-secondary)]"
+				style="font-weight: 700; letter-spacing: -0.014em;"
+				transition:name={titleTransition}
+			>
+				{post.data.title}
+			</HeadingTag>
+		</header>
+		<div class="col-start-1 row-start-2 min-w-0 flex flex-col gap-2">
 			{description && (
 				<p class="hidden sm:line-clamp-2 text-base text-on-surface-variant leading-normal">
 					{description}
 				</p>
 			)}
-			<p class="rubric mt-1.5 flex flex-wrap items-center gap-x-1.5">
+			<p class="rubric mt-1.5 sm:mt-auto flex flex-wrap items-center gap-x-1.5">
 				<FormattedDate date={post.data.pubDate} />
 				{readingTime && (
 					<>
@@ -84,7 +84,7 @@ const preset = CF_IMAGE_PRESETS.thumbnailHorizontal
 		</div>
 		{heroImage && (
 			<figure
-				class="relative overflow-hidden rounded-[3px] flex-none w-[100px] h-[67px] sm:w-40 sm:h-[107px] mt-1 bg-cover bg-center bg-no-repeat"
+				class="relative overflow-hidden rounded-[3px] col-start-2 row-start-1 row-span-2 self-start mt-1 ml-5 sm:row-start-2 sm:row-span-1 sm:self-end sm:mt-0 sm:ml-10 w-[100px] h-[67px] sm:w-40 sm:h-[107px] bg-cover bg-center bg-no-repeat"
 				style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
 				transition:name={imageTransition}
 			>

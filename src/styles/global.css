@@ -534,24 +534,11 @@ a:hover {
   color: var(--color-secondary);
 }
 
-/* Search pill: quiet well linking to /search/ */
-.masthead-search {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  height: 40px;
-  padding: 0 1rem;
-  border-radius: 20px;
-  background: var(--paper-well);
-  color: var(--color-on-surface-variant);
-  font-size: 0.875rem;
-  white-space: nowrap;
-  transition: background-color var(--dur-quick) ease, color var(--dur-quick) ease;
-}
-
-.masthead-search:hover {
-  background: var(--paper-deep);
-  color: var(--color-on-surface);
+/* Hairline between the nav links and the utility icons */
+.masthead-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--rule);
 }
 
 #site-header .header-nav-item {
@@ -567,6 +554,201 @@ a:hover {
 #menu-trigger .icon-close { display: none; }
 #menu-trigger[aria-expanded="true"] .icon-close { display: block; }
 #menu-trigger[aria-expanded="true"] .icon-bars { display: none; }
+
+/* ================================================
+   Search sheet — full-width paper band in the top
+   layer, closed by a hairline, page veiled in paper.
+   No card, no shadow; the Reading Room grammar.
+   ================================================ */
+
+.search-sheet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  max-height: 85dvh;
+}
+
+.search-sheet::backdrop {
+  background: rgba(251, 250, 247, 0.78);
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
+}
+
+/* Keep the page from scrolling behind the sheet */
+html:has(.search-sheet[open]) {
+  overflow: hidden;
+}
+
+.search-sheet-column {
+  width: 100%;
+  max-width: 728px;
+  margin: 0 auto;
+  padding: 14px 24px 26px;
+}
+
+.search-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.search-sheet-title {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+.search-sheet-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  margin-right: -6px;
+  color: var(--ink-muted);
+  transition: color var(--dur-quick) ease;
+}
+
+.search-sheet-close:hover {
+  color: var(--ink);
+}
+
+/* Input stays pinned; only the results drawer scrolls */
+.search-sheet .pagefind-ui__drawer {
+  overflow-y: auto;
+  max-height: min(58dvh, 540px);
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--paper-deepest) transparent;
+}
+
+.search-sheet-dev {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .search-sheet[open] {
+    animation: search-sheet-in var(--dur-quick) var(--ease-settle);
+  }
+
+  .search-sheet[open]::backdrop {
+    animation: search-veil-in var(--dur-quick) ease;
+  }
+}
+
+@keyframes search-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes search-veil-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ================================================
+   Pagefind UI theming — shared by the search sheet
+   and /search/, routed through the design tokens so
+   both editions follow the palette automatically.
+   Declared on body, not :root: pagefind-ui.css loads
+   at runtime and its own :root defaults would win the
+   cascade, but a declaration directly on body always
+   beats values inherited from html.
+   ================================================ */
+
+body {
+  --pagefind-ui-scale: 1;
+  --pagefind-ui-primary: var(--ink);
+  --pagefind-ui-text: var(--ink-muted);
+  --pagefind-ui-background: var(--paper-well);
+  --pagefind-ui-border: var(--rule);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-tag: var(--pill);
+  --pagefind-ui-border-radius: 20px;
+  --pagefind-ui-font: var(--font-sans), sans-serif;
+}
+
+/* Soften shapes the vars don't reach */
+.pagefind-ui__search-clear,
+.pagefind-ui__button {
+  border-radius: 20px !important;
+}
+
+.pagefind-ui__result-thumb,
+.pagefind-ui__result-tag {
+  border-radius: 3px !important;
+}
+
+.pagefind-ui__search-input {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pagefind-ui__search-input:focus {
+  border-color: var(--color-secondary) !important;
+  box-shadow: none;
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.pagefind-ui__result-link {
+  transition: color 0.15s ease;
+}
+
+.pagefind-ui__result-link:hover {
+  color: var(--color-secondary) !important;
+}
+
+/* Double class beats pagefind-ui.css's own `.pagefind-ui--reset mark { all: revert }`,
+   which loads after this sheet at runtime */
+.pagefind-ui.pagefind-ui--reset mark {
+  background-color: color-mix(in srgb, var(--accent-highlight) 25%, transparent);
+  color: inherit;
+  padding: 0.1em 0.2em;
+  border-radius: 0;
+}
+
+.pagefind-ui__search-clear {
+  transition: color 0.15s ease;
+}
+
+.pagefind-ui__search-clear:hover {
+  color: var(--color-on-surface) !important;
+}
+
+.pagefind-ui__button {
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.pagefind-ui__button:hover {
+  border-color: var(--color-secondary) !important;
+  color: var(--color-secondary) !important;
+}
+
+@media (max-width: 640px) {
+  .pagefind-ui__search-input {
+    font-size: calc(18px * var(--pagefind-ui-scale)) !important;
+    height: calc(56px * var(--pagefind-ui-scale)) !important;
+  }
+
+  .pagefind-ui__result-title {
+    font-size: calc(18px * var(--pagefind-ui-scale)) !important;
+  }
+
+  .pagefind-ui__result-excerpt {
+    font-size: calc(14px * var(--pagefind-ui-scale)) !important;
+  }
+}
 
 /* Legacy underline draw-in, kept for editorial links */
 .nav-underline {

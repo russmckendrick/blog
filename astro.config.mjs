@@ -21,6 +21,10 @@ const postModifiedDateMap = getPostModifiedDateMap();
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://www.russ.cloud/',
+	// Applies to both `astro dev` and `astro preview`. PORT is set by the
+	// Claude Code preview launcher (autoPort in .claude/launch.json) when
+	// 4321 is already taken; defaults to 4321 otherwise.
+	server: { port: Number(process.env.PORT) || 4321 },
 	fonts: [
 		{
 			provider: fontProviders.local(),
