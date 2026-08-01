@@ -105,21 +105,33 @@ const imageURL = image?.startsWith('http')
 <!-- Note: Giscus and GitHub preconnects moved to BlogPost.astro (only needed on post pages) -->
 
 <!-- Plausible Analytics -->
+{/*
+  Served first-party: both /js/pa.js and /api/event are proxied by
+  worker/index.js. Those routes only exist in the Worker, so the tag is
+  production-only — `astro dev` would 404 on it, and captureOnLocalhost is off
+  regardless. Use `pnpm run preview:worker` to exercise the real proxy locally.
+  See the Plausible section of docs/architecture/seo-implementation.md.
+*/}
 {Object.entries(analytics).map(([key, value]) => (
 	<meta name={`plausible:${key}`} content={value} />
 ))}
-<script is:inline async src="https://plausible.io/js/pa-1kQuB-9i3FNq-UW5DZix5.js"></script>
-<script is:inline>
-	window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-	plausible.init({
-		outboundLinks: true,
-		fileDownloads: true,
-		customProperties: () => Object.fromEntries(
-			[...document.querySelectorAll('meta[name^="plausible:"]')]
-				.map((m) => [m.getAttribute('name').slice(9), m.getAttribute('content')])
-		)
-	})
-</script>
+{import.meta.env.PROD && (
+	<Fragment>
+	<script is:inline async src="/js/pa.js"></script>
+	<script is:inline>
+		window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+		plausible.init({
+			endpoint: '/api/event',
+			outboundLinks: true,
+			fileDownloads: true,
+			customProperties: () => Object.fromEntries(
+				[...document.querySelectorAll('meta[name^="plausible:"]')]
+					.map((m) => [m.getAttribute('name').slice(9), m.getAttribute('content')])
+			)
+		})
+	</script>
+	</Fragment>
+)}
 
 <!-- Critical CSS to ensure header is immediately visible -->
 <style is:inline>

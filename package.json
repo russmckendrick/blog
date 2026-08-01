@@ -11,6 +11,7 @@
     "dev": "astro dev",
     "build": "astro build && node scripts/generate-llms-markdown.js",
     "preview": "astro preview",
+  "preview:worker": "astro build && wrangler dev",
     "astro": "astro",
     "post": "node scripts/new-post.js",
     "tunes": "node scripts/generate-tunes-post.js",

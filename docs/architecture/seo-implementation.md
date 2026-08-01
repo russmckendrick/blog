@@ -511,18 +511,46 @@ For more on Docker networking, see [Docker Networking Guide](/2024/03/15/docker-
 - Lightweight script
 - Real-time data
 
-**Integration**:
-Uses Plausible's new hashed script embed format in `BaseHead.astro`. `init()` enables outbound-link
-and file-download tracking, and reads pageview custom properties from `<meta name="plausible:*">`
-tags via a function (a function is required because View Transitions reuse the loaded script across
-client-side navigations, so a static props object would go stale):
+**Script format** (the October 2025 change):
+Plausible replaced the shared `script.js` with a **per-site snippet** (`/js/pa-XXXX.js`, filename in
+Site Settings → Site Installation), and moved optional measurements from chained filenames
+(`script.tagged-events.outbound-links.js`) to **`plausible.init({ ... })`**. This site is already on
+that format — there is no migration outstanding. The legacy URLs still return 200, so older guides
+aren't *wrong*, just superseded. Two things the per-site script bakes in that are easy to trip over:
+
+- `domain` is compiled into the script (`russ.cloud`) and `Object.assign` forces it back afterwards,
+  so passing `domain` to `init()` does nothing.
+- `outboundLinks` already defaults to `true` in our build; the explicit flag below is redundant but
+  harmless, and keeps the intent readable.
+
+**First-party delivery**:
+Both halves are proxied through our own origin by `worker/index.js` — nothing in the page references
+`plausible.io`. Proxying only the script would be pointless: the script POSTs to the event endpoint,
+and *that* request is what content blockers actually drop.
+
+| Path | Proxied to | Notes |
+|------|-----------|-------|
+| `/js/pa.js` | `https://plausible.io/js/pa-1kQuB-9i3FNq-UW5DZix5.js` | Edge-cached 6h (`cacheEverything`) |
+| `/api/event` | `https://plausible.io/api/event` | POST only; 405 otherwise |
+
+The event proxy sends only the three headers the Events API reads — `Content-Type`, `User-Agent`
+(which drives the unique-visitor hash) and `X-Forwarded-For`. **`X-Forwarded-For` is set from
+`CF-Connecting-IP` and is not optional**: a Worker subrequest originates from Cloudflare, so without
+it Plausible sees an edge IP, its bot filter silently drops the event, *and it still answers 202* —
+the failure is invisible. Cookies and `Referer` are deliberately not forwarded.
+
+**Integration** in `BaseHead.astro`. `init()` enables outbound-link and file-download tracking, and
+reads pageview custom properties from `<meta name="plausible:*">` tags via a function (a function is
+required because View Transitions reuse the loaded script across client-side navigations, so a static
+props object would go stale):
 ```html
 <!-- One <meta> per analytics prop, emitted from the layout (see below) -->
 <meta name="plausible:content_type" content="blog" />
-<script is:inline async src="https://plausible.io/js/pa-1kQuB-9i3FNq-UW5DZix5.js"></script>
+<script is:inline async src="/js/pa.js"></script>
 <script is:inline>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init({
+    endpoint: '/api/event',
     outboundLinks: true,
     fileDownloads: true,
     customProperties: () => Object.fromEntries(
@@ -533,7 +561,15 @@ client-side navigations, so a static props object would go stale):
 </script>
 ```
 
-The `is:inline` directive ensures Astro renders the tags exactly as-is without bundling or converting to modules.
+`endpoint` is what points the script at the proxy. It's resolved with `fetch()`, so a root-relative
+path stays same-origin. The `is:inline` directive ensures Astro renders the tags exactly as-is
+without bundling or converting to modules.
+
+**Production-only**: the tags are wrapped in `import.meta.env.PROD`, because `/js/pa.js` and
+`/api/event` exist only in the Worker — `astro dev` would 404 on them. Nothing is lost, as Plausible's
+`captureOnLocalhost` defaults to `false`. To exercise the real proxy locally run
+`pnpm run preview:worker` (`astro build && wrangler dev`); `astro dev` and `astro preview` do not run
+the Worker. All `window.plausible?.(...)` call sites are optional-chained, so they no-op in dev.
 
 **Pageview custom properties**: `BaseHead.astro` accepts an `analytics?: Record<string,string>` prop
 and renders each key as a `<meta name="plausible:KEY">` tag (defaulting to `content_type: 'page'`).

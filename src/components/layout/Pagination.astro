@@ -86,10 +86,10 @@ const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 			<span class="hidden sm:inline">{newerLabel}</span>
 		</a>
 	) : (
-		<span class="justify-self-start -ml-2.5 inline-flex items-center gap-1 px-2.5 py-1 opacity-40">
-			<span aria-hidden="true">&larr;</span>
-			<span class="hidden sm:inline">{newerLabel}</span>
-		</span>
+		/* No newer page — hold the grid track so the numbers stay centred. A ghosted
+		   label would fail contrast: --ink-muted is only 5.15:1 on paper, so there is
+		   no headroom to dim it and still clear AA. */
+		<span></span>
 	)}
 	<span class="flex flex-wrap items-center justify-center gap-x-0.5 gap-y-2">
 		{pageItems.map((item) => (
@@ -121,10 +121,7 @@ const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 			<span aria-hidden="true">&rarr;</span>
 		</a>
 	) : (
-		<span class="justify-self-end inline-flex items-center gap-1 py-1 pl-2.5 opacity-40">
-			<span class="hidden sm:inline">{olderLabel}</span>
-			<span aria-hidden="true">&rarr;</span>
-		</span>
+		<span></span>
 	)}
 </nav>
 

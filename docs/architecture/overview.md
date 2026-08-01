@@ -468,7 +468,11 @@ Cloudflare's zone-level "Markdown for Agents" (Dashboard → AI Crawl Control) r
 
 The markdown body is the raw MDX source with frontmatter stripped; inline JSX embed components remain inline - agents generally cope.
 
-Per-post `.md` files and `/llms.txt` also stay directly reachable (useful for `llmstxt.org` consumers that don't do content negotiation). If the zone is ever upgraded to Cloudflare Pro, both the worker and the build-time twin can be removed and the dashboard toggle enabled instead.
+Per-post `.md` files and `/llms.txt` also stay directly reachable (useful for `llmstxt.org` consumers that don't do content negotiation). If the zone is ever upgraded to Cloudflare Pro, the markdown half of the worker and the build-time twin can be removed and the dashboard toggle enabled instead - note the worker also proxies Plausible (below), so it cannot be dropped entirely.
+
+### First-Party Analytics Proxy
+
+`worker/index.js` also serves Plausible from this origin: `/js/pa.js` proxies the tracking script and `/api/event` proxies the Events API, so no page references `plausible.io`. The event proxy must forward the visitor IP as `X-Forwarded-For` (from `CF-Connecting-IP`) or Plausible's bot filter drops events while still returning 202. Full detail in [seo-implementation.md](seo-implementation.md#plausible-analytics).
 
 ## Performance Characteristics
 

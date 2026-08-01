@@ -102,7 +102,7 @@ pnpm run astro -- sync   # Regenerate content types
 - **Hosting**: [Cloudflare Pages](https://pages.cloudflare.com/)
 - **Images**: [Cloudflare Image Transformations](https://developers.cloudflare.com/images/transform-images/)
 - **Search**: [Pagefind](https://pagefind.app/)
-- **Analytics**: [Plausible](https://plausible.io/)
+- **Analytics**: [Plausible](https://plausible.io/) (proxied first-party through `worker/index.js`)
 
 ### Directory Structure
 
