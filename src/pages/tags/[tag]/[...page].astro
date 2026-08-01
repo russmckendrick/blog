@@ -6,7 +6,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PostCard from '../../../components/blog/PostCard.astro';
 import Pagination from '../../../components/layout/Pagination.astro';
 import { Schema } from 'astro-seo-schema';
-import { getTagMetadata, getTagUrl, getTagDisplayName, getTagColorClasses, normalizeTagSlug } from '../../../utils/tags';
+import { getTagMetadata, getTagUrl, getTagName, getTagColorClasses, normalizeTagSlug } from '../../../utils/tags';
 import { TAG_AVATAR_MAP } from '../../../consts';
 import { createCollectionPageSchema, createBreadcrumbSchema } from '../../../utils/schema';
 import { createUrlFriendlySlug } from '../../../utils/url';
@@ -111,61 +111,59 @@ const avatarFallback = '/images/avatar-192x192.png';
 >
   <Schema slot="head" item={collectionSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
-  <section class="max-w-7xl mx-auto px-5 pt-4 pb-10 mb-10 border-b-2" style="border-color: var(--rule-strong);">
-    <p class="mb-4" data-entrance>
-      <a href="/tags/" class="rubric nav-underline no-underline hover:text-on-surface">&larr; All tags</a>
-    </p>
+  <section class="max-w-[728px] mx-auto px-6">
+    <header class="pt-8 pb-6 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
+      <p class="mb-5">
+        <a href="/tags/" class="rubric no-underline hover:text-on-surface">&larr; All tags</a>
+      </p>
 
-    <div class="flex items-center gap-5 sm:gap-6" data-entrance>
-      {avatarSrc && (
-        <img
-          src={avatarSrc}
-          alt={metadata.title}
-          class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full border object-cover"
-          style="border-color: var(--color-outline-variant);"
-          onerror={`this.onerror=null; this.src='${avatarFallback}';`}
-        />
+      <div class="flex items-center gap-5 sm:gap-6">
+        {avatarSrc && (
+          <img
+            src={avatarSrc}
+            alt={getTagName(tag)}
+            class="flex-none w-16 h-16 sm:w-20 sm:h-20 rounded-full border object-cover"
+            style="border-color: var(--color-outline-variant);"
+            onerror={`this.onerror=null; this.src='${avatarFallback}';`}
+          />
+        )}
+
+        <div class="min-w-0">
+          <h1>{getTagName(tag)}</h1>
+          <p class="mt-3 text-lg text-on-surface-variant leading-normal" set:html={metadata.description} />
+          <p class="rubric mt-2">
+            {totalTagPosts} post{totalTagPosts !== 1 ? 's' : ''}
+          </p>
+        </div>
+      </div>
+
+      {metadata.intro && (
+        <p class="mt-6 text-lg text-on-surface-variant leading-normal">
+          {metadata.intro}
+        </p>
       )}
 
-      <div class="min-w-0">
-        <h1 class="text-3xl lg:text-4xl text-on-surface font-display">
-          {metadata.title}
-        </h1>
-        <p class="text-base text-on-surface-variant mt-1" set:html={metadata.description} />
-        <p class="rubric mt-2">
-          {totalTagPosts} post{totalTagPosts !== 1 ? 's' : ''}
-        </p>
-      </div>
-    </div>
+      {relatedTags.length > 0 && (
+        <div class="mt-6">
+          <p class="text-[15px] font-semibold" style="letter-spacing: -0.01em;" role="heading" aria-level="2">Often appears with</p>
+          <ul class="mt-3 flex flex-wrap gap-2">
+            {relatedTags.map((related) => (
+              <li>
+                <a href={getTagUrl(related.slug)} class={getTagColorClasses(related.slug)}>
+                  {getTagName(related.slug)}
+                  <span class="opacity-70">{related.count}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </header>
 
-    {metadata.intro && (
-      <p class="text-base sm:text-lg text-on-surface-variant leading-relaxed mt-6 max-w-3xl" data-entrance>
-        {metadata.intro}
-      </p>
-    )}
-
-    {relatedTags.length > 0 && (
-      <div class="mt-6" data-entrance>
-        <p class="rubric mb-2">Often appears with</p>
-        <ul class="flex flex-wrap gap-2">
-          {relatedTags.map((related) => (
-            <li>
-              <a href={getTagUrl(related.slug)} class={getTagColorClasses(related.slug)}>
-                {getTagDisplayName(related.slug)}
-                <span class="opacity-70">{related.count}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )}
-  </section>
-
-  <section class="max-w-7xl mx-auto px-5">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
+    <div class="feed">
       {page.data.map((post: CollectionEntry<'blog'>) => (
         <div data-reveal>
-          <PostCard post={post} variant="grid" />
+          <PostCard post={post} headingLevel="2" />
         </div>
       ))}
     </div>

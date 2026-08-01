@@ -100,7 +100,7 @@ typography:
     fontWeight: 400
     lineHeight: 1.4
   code:
-    fontFamily: "ui-monospace, SF Mono, Menlo, Consolas, monospace"
+    fontFamily: "IBM Plex Mono, ui-monospace, Consolas, monospace"
     fontSize: 13.5px
     lineHeight: 1.7
 mobile:
@@ -112,7 +112,7 @@ mobile:
 rounded:
   image: 3px
   figure: 4px
-  terminal: 9px
+  terminal: 10px
   search-pill: 20px
   pill: 9999px
   portrait: 9999px
@@ -123,13 +123,7 @@ layout:
   mobile-gutter: 24px
 ---
 
-# The Reading Room — proposed design system
-
-> **Rollout in progress (Aug 2026).** This file describes the approved
-> "Reading Room" system being implemented on the `redesign/reading-room`
-> branch; pages not yet migrated may still render Print Edition idioms.
-> Reference mockup and decision history:
-> [`docs/2026-07-redesign/`](./docs/2026-07-redesign/NOTES.md).
+# The Reading Room — design system
 
 ## Overview
 
@@ -162,7 +156,7 @@ page, so even a search arrival deep in the archive ends on who writes here.
 
 ## Typography
 
-Two faces, to be self-hosted through Astro's Fonts API like the current pair:
+Two faces, self-hosted through Astro's Fonts API:
 
 - **Schibsted Grotesk** — display and all UI. Titles bold with negative
   tracking that scales with size (−0.011em at 42px, −0.014em at 22–27px);
@@ -174,8 +168,8 @@ Two faces, to be self-hosted through Astro's Fonts API like the current pair:
   page reads large-print (calibrated against Medium side-by-side, 1 Aug
   2026); ~65–70 characters per line in the 680px column is the target. Serif never appears in UI; sans never appears in body
   copy. Pull quotes are large italic Literata in mist, indented, no bar.
-- **Mono** stays system (`ui-monospace`) and appears only inside terminal
-  figures and inline code — never as metadata costume.
+- **IBM Plex Mono** appears only inside terminal figures and inline code —
+  never as metadata costume.
 
 ## Layout
 
@@ -211,8 +205,8 @@ Every view ends the same way: a hairline, then a two-block footer in the
 680px column (stacking on mobile) — **Links** (the full `SOCIAL_LINKS` set
 as 17px monochrome icons from `Icon.astro` — mist at rest, ink on hover,
 config order, wrapping to two tidy rows; never brand colours) beside
-**Listened to this week** (four 64px covers, entry title, `Week 30 · 171
-weeks of listening →`) — closed by one single line: `About · Archives ·
+**Listened to this week** (four 64px covers, entry title, `171 weeks of
+listening →`) — closed by one single line: `About · Archives ·
 Reading list · Glossary · Tags · Source · RSS · © 2026 Russ McKendrick`.
 No bio in the footer — the bio belongs to the About page only; no location,
 no typeface credit, nothing else. This footer is the
@@ -231,12 +225,13 @@ tags left, `Read as Markdown · Suggest edits · RSS` right. Hero figure at
 column width with a centred mist caption. A **reading-progress rule** — 2px
 of accent, fixed to the top viewport edge, no gradient, no glow — runs on
 article pages only. Between hero and prose sits the **Contents block**: a
-native `<details open>` with hairline rules top and bottom, a chevron +
-"Contents" summary (15px/600), and 15px mist entries (ink on hover) that
+native `<details>` (open by default on longer posts) with hairline rules top
+and bottom, a chevron + "Contents" summary (15px/600), and 15px mist entries
+(ink on hover) that
 anchor-link to the post's h2/h3s with smooth scrolling (reduced-motion
 aware). Both carry over features from the Print Edition in the new grammar. Body in Literata with ink-coloured
 underlined links (accent on hover only). Terminal code figures carry over
-from Print Edition unchanged — macOS window (9px radius), traffic lights in
+from Print Edition unchanged — macOS window (10px radius), traffic lights in
 the Catppuccin Macchiato reds/ambers/greens documented in the token
 frontmatter, in both editions; they are figures, not chrome, and the one
 permitted shadow (`terminal-shadow`). The mockup's floating view switcher is

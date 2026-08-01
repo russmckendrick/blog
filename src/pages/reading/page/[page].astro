@@ -39,7 +39,7 @@ const { items, currentPage, totalPages, tagCounts } = Astro.props
 ---
 
 <BaseLayout title={`Reading List - Page ${currentPage}`} description="Articles and links I've saved and read on Instapaper">
-  <section class="max-w-7xl mx-auto px-5">
+  <section class="max-w-[728px] mx-auto px-6">
     <ReadingHeader totalArticles={readingData.length} tagCounts={tagCounts} />
     <ReadingList items={items} />
 

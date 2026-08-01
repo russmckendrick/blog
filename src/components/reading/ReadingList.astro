@@ -1,5 +1,6 @@
 ---
 import { getReadingPreviewImage, getReadingPreviewSrcSet, getReadingPreviewData } from '../../utils/reading-preview'
+import { getTagColorClasses, getTagName } from '../../utils/tags'
 
 interface ReadingItem {
   bookmark_id: number
@@ -52,34 +53,21 @@ function formatDate(iso: string): string {
     year: 'numeric',
   })
 }
-
-function isMediumUrl(url: string): boolean {
-  try {
-    const hostname = new URL(url).hostname
-    return hostname === 'medium.com' || hostname.endsWith('.medium.com')
-      || hostname === 'betterprogramming.pub' || hostname === 'levelup.gitconnected.com'
-      || hostname === 'blog.devgenius.io' || hostname === 'towardsdatascience.com'
-      || hostname === 'faun.pub' || hostname === 'learningdaily.dev'
-  } catch {
-    return false
-  }
-}
 ---
 
 {items.length === 0 ? (
-  <p class="text-on-surface-variant text-lg py-12 text-center">
-    No articles yet. Run <code class="text-sm surface-container-high px-2 py-1 rounded">node scripts/fetch-reading-list.js</code> to populate.
+  <p class="text-on-surface-variant text-lg py-12">
+    No articles yet. Run <code class="text-sm">node scripts/fetch-reading-list.js</code> to populate.
   </p>
 ) : (
   <div class="space-y-12">
     {[...grouped.entries()].map(([monthYear, monthItems]) => (
       <div data-reveal data-month-group>
-        <div class="flex items-baseline gap-3 mb-5">
-          <h2 class="text-lg text-on-surface font-display" style="font-weight: 600;">{monthYear}</h2>
+        <div class="flex items-baseline gap-3">
+          <h2 class="text-[15px] text-on-surface" style="font-weight: 600; letter-spacing: -0.01em;">{monthYear}</h2>
           <span class="rubric">{monthItems.length}&nbsp;{monthItems.length === 1 ? 'article' : 'articles'}</span>
-          <div class="flex-1 border-b translate-y-[-4px]" style="border-color: var(--color-outline-variant);"></div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div>
           {monthItems.map((item) => {
             const ogImage = getReadingPreviewImage(item.url)
             const ogSrcSet = getReadingPreviewSrcSet(item.url)
@@ -92,66 +80,52 @@ function isMediumUrl(url: string): boolean {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-reading-tags={item.tags.join(',')}
-                class="group block overflow-hidden border no-underline"
-                style="border-color: var(--color-outline-variant);"
+                class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4"
               >
-                {ogImage ? (
-                  <figure class="relative overflow-hidden">
-                    <img
-                      src={ogImage}
-                      srcset={ogSrcSet || undefined}
-                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      alt=""
-                      width="600"
-                      height="315"
-                      loading="lazy"
-                      decoding="async"
-                      class="w-full aspect-[16/9] object-cover"
-                    />
-                  </figure>
-                ) : isMediumUrl(item.url) ? (
-                  <div class="w-full aspect-[16/9] bg-[#242424] flex items-center justify-center">
-                    <svg class="w-28 h-auto" viewBox="0 0 24 24" fill="white">
-                      <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-                    </svg>
+                <article class="flex items-start gap-5 sm:gap-10 border-b py-6" style="border-color: var(--color-outline-variant);">
+                  <div class="flex-1 min-w-0 flex flex-col gap-2">
+                    <h3
+                      class="font-display text-lg text-on-surface leading-[1.3] line-clamp-2 transition-colors group-hover:text-[var(--color-secondary)]"
+                      style="font-weight: 700; letter-spacing: -0.014em;"
+                    >
+                      {item.title}
+                    </h3>
+                    {description && (
+                      <p class="hidden sm:line-clamp-2 text-base text-on-surface-variant leading-normal">{description}</p>
+                    )}
+                    <p class="rubric mt-1.5 flex flex-wrap items-center gap-x-1.5 gap-y-2">
+                      <img
+                        src={getFaviconUrl(item.url)}
+                        alt=""
+                        width="16"
+                        height="16"
+                        loading="lazy"
+                        class="w-4 h-4 rounded-[3px] opacity-70 group-hover:opacity-100 transition-opacity"
+                      />
+                      <span class="truncate max-w-[12rem]">{getDomain(item.url)}</span>
+                      <span aria-hidden="true">&middot;</span>
+                      <span>{formatDate(item.time)}</span>
+                      {item.tags.length > 0 && item.tags.map(tag => (
+                        <span class={getTagColorClasses(tag)}>{getTagName(tag)}</span>
+                      ))}
+                    </p>
                   </div>
-                ) : (
-                  <div class="w-full aspect-[16/9] bg-[var(--md-sys-color-surface-container-high)] flex items-center justify-center">
-                    <svg class="w-10 h-10 text-on-surface-variant opacity-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                      <polyline points="21 15 16 10 5 21"></polyline>
-                    </svg>
-                  </div>
-                )}
-                <div class="p-4">
-                  <div class="flex items-start gap-3">
-                    <img
-                      src={getFaviconUrl(item.url)}
-                      alt=""
-                      width="20"
-                      height="20"
-                      loading="lazy"
-                      class="mt-0.5 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity"
-                    />
-                    <div class="flex-1 min-w-0">
-                      <h3 class="text-sm font-semibold text-on-surface group-hover:text-[var(--color-secondary)] transition-colors leading-snug line-clamp-2">
-                        {item.title}
-                      </h3>
-                      {description && (
-                        <p class="text-xs text-on-surface-variant mt-1 leading-relaxed line-clamp-2">{description}</p>
-                      )}
-                      <div class="flex items-center gap-2 mt-1.5 text-xs text-on-surface-variant">
-                        <span class="truncate">{getDomain(item.url)}</span>
-                        <span class="shrink-0">·</span>
-                        <span class="shrink-0">{formatDate(item.time)}</span>
-                        {item.tags.length > 0 && item.tags.map(tag => (
-                          <span class="shrink-0 font-mono uppercase tracking-wider text-[10px]">{tag}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  {ogImage && (
+                    <figure class="relative overflow-hidden rounded-[3px] flex-none w-[100px] h-[56px] sm:w-40 sm:h-[90px] mt-1">
+                      <img
+                        src={ogImage}
+                        srcset={ogSrcSet || undefined}
+                        sizes="(min-width: 640px) 160px, 100px"
+                        alt=""
+                        width="160"
+                        height="90"
+                        loading="lazy"
+                        decoding="async"
+                        class="w-full h-full object-cover"
+                      />
+                    </figure>
+                  )}
+                </article>
               </a>
             )
           })}

@@ -43,19 +43,18 @@ const description = `All posts and tunes from ${year} - Page ${page.currentPage}
 ---
 
 <BaseLayout title={title} description={description}>
-	<section class="max-w-7xl mx-auto px-5 pt-4 pb-10 mb-10 border-b-2" style="border-color: var(--rule-strong);">
-		<p class="rubric mb-3" data-entrance>The Archive</p>
-		<h1 class="text-4xl lg:text-5xl text-on-surface font-display" data-entrance>{year}</h1>
-		<p class="text-base text-on-surface-variant mt-2" data-entrance>
-			{page.total} {page.total === 1 ? 'post' : 'posts'} published in {year}
-		</p>
-	</section>
+	<section class="max-w-[728px] mx-auto px-6">
+		<header class="pt-8 pb-6 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
+			<h1>{year}</h1>
+			<p class="mt-3 text-lg text-on-surface-variant leading-normal">
+				{page.total} {page.total === 1 ? 'post' : 'posts'} published in {year}
+			</p>
+		</header>
 
-	<section class="max-w-7xl mx-auto px-5">
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 items-stretch">
+		<div class="feed">
 			{page.data.map((item: CollectionEntry<'blog'> | CollectionEntry<'tunes'>, index: number) => (
 				<div data-reveal>
-					<PostCard post={item} variant="grid" priority={index === 0 && page.currentPage === 1} />
+					<PostCard post={item} priority={index === 0 && page.currentPage === 1} headingLevel="2" />
 				</div>
 			))}
 		</div>

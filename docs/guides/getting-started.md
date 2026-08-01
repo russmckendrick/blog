@@ -128,8 +128,8 @@ Main Astro configuration:
 ### src/styles/global.css
 
 Tailwind CSS 4 configuration lives in CSS:
-- Design tokens (paper/ink palette, hairline rules, accent colors)
-- Font stacks (Source Serif 4 display+body, IBM Plex Mono)
+- Design tokens (paper/ink palette, hairline rules, accent colours)
+- Font stacks (Schibsted Grotesk UI/display, Literata body, IBM Plex Mono code)
 - Dark mode overrides
 
 ### src/content.config.ts
@@ -310,7 +310,7 @@ pnpm run dev -- --port 3000
 
 - **Issues**: [GitHub Issues](https://github.com/russmckendrick/blog/issues)
 - **Docs**: Check [CLAUDE.md](../../CLAUDE.md) for detailed info
-- **Examples**: See [kitchen-sink.mdx](../../src/content/blog/2025-09-29-kitchen-sink.mdx)
+- **Examples**: See [2024-10-28-vinyl-scrobbling-app.mdx](../../src/content/blog/2024-10-28-vinyl-scrobbling-app.mdx) for a post exercising many embed components
 
 ---
 

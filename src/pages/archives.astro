@@ -28,23 +28,22 @@ const description = 'Browse all posts by year';
 ---
 
 <BaseLayout title={title} description={description}>
-	<section class="max-w-5xl mx-auto px-5">
-		<div class="pt-4 pb-10 mb-10 border-b-2" style="border-color: var(--rule-strong);">
-			<p class="rubric mb-3" data-entrance>The Archive</p>
-			<h1 class="text-4xl lg:text-5xl mb-4 text-on-surface" data-entrance>Archives</h1>
-			<p class="text-lg text-on-surface-variant" data-entrance>
-				Browse all {publishedContent.length} posts organized by year
+	<section class="max-w-[728px] mx-auto px-6">
+		<header class="pt-8 pb-8 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
+			<h1>Archives</h1>
+			<p class="mt-3 text-lg text-on-surface-variant leading-normal">
+				All {publishedContent.length} posts, organised by year
 			</p>
-		</div>
+		</header>
 
-		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8">
+		<div data-reveal>
 			{years.map(year => (
 				<a
 					href={`/${year}/`}
 					class="group flex items-baseline justify-between gap-3 py-4 no-underline border-b focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4"
 					style="border-color: var(--color-outline-variant);"
 				>
-					<span class="font-display text-2xl text-on-surface transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 600;">
+					<span class="font-display text-xl text-on-surface transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 600; letter-spacing: -0.008em;">
 						{year}
 					</span>
 					<span class="rubric flex-shrink-0">

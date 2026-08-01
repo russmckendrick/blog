@@ -22,9 +22,9 @@ const siteUrl = 'https://www.russ.cloud';
 
 <BaseLayout title={`Avatar Contact Sheet - ${SITE_TITLE}`} description="Avatar reference sheet with all available avatars">
   <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-    <div class="mb-12 pt-4 pb-10 border-b-2" style="border-color: var(--rule-strong);">
-      <h1 class="text-4xl mb-4 text-on-surface">Avatar Contact Sheet</h1>
-      <p class="text-lg text-on-surface-variant">Click avatar to copy name, click URL to copy full path</p>
+    <div class="mb-12 pt-4 pb-10 border-b" style="border-color: var(--color-outline-variant);">
+      <h1 data-entrance>Avatar Contact Sheet</h1>
+      <p class="mt-3 text-lg text-on-surface-variant leading-normal" data-entrance>Click an avatar to copy its name, or a URL to copy the full path</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -148,11 +148,7 @@ const siteUrl = 'https://www.russ.cloud';
 
   <style>
     .avatar-card {
-      transition: transform 0.2s ease-in-out;
-    }
-
-    .avatar-card:hover {
-      transform: translateY(-4px);
+      border-radius: 4px;
     }
   </style>
 </BaseLayout>

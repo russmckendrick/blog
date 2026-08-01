@@ -18,28 +18,27 @@ const { page } = Astro.props;
 ---
 
 <BaseLayout title="Blog" description="All blog posts from Russ McKendrick">
-	<section class="max-w-5xl mx-auto px-5 pt-4 pb-10 mb-10 border-b-2" style="border-color: var(--rule-strong);">
-		<p class="rubric mb-3" data-entrance>The Journal</p>
-		<h1 class="text-4xl lg:text-5xl mb-4 text-on-surface" data-entrance>Blog</h1>
-		<p class="text-lg text-on-surface-variant max-w-2xl" data-entrance>Technical posts, thoughts, and ramblings about DevOps, automation, and cloud technologies.</p>
+	<section class="max-w-[728px] mx-auto px-6">
+		<header class="pt-8 pb-6 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
+			<h1>Blog</h1>
+			<p class="mt-3 text-lg text-on-surface-variant leading-normal">Technical posts, thoughts, and ramblings about DevOps, automation, and cloud technologies.</p>
+		</header>
+
+		<div class="feed">
+			{page.data.map((post) => (
+				<div data-reveal>
+					<PostCard post={post} headingLevel="2" />
+				</div>
+			))}
+		</div>
+
+		{page.total > page.size && (
+			<Pagination
+				currentPage={page.currentPage}
+				totalPages={page.lastPage}
+				getHref={(pageNum) => (pageNum === 1 ? '/blog/' : `/blog/${pageNum}/`)}
+				hideIfSingle={false}
+			/>
+		)}
 	</section>
-
-	<section class="max-w-5xl mx-auto px-5">
-			<ul class="space-y-10">
-				{page.data.map((post) => (
-					<li data-reveal>
-						<PostCard post={post} />
-					</li>
-				))}
-			</ul>
-
-			{page.total > page.size && (
-				<Pagination
-					currentPage={page.currentPage}
-					totalPages={page.lastPage}
-					getHref={(pageNum) => (pageNum === 1 ? '/blog/' : `/blog/${pageNum}/`)}
-					hideIfSingle={false}
-				/>
-			)}
-		</section>
 </BaseLayout>

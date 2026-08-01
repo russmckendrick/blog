@@ -54,7 +54,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
   <Schema slot="head" item={collectionSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
 
-  <section class="max-w-7xl mx-auto px-5">
+  <section class="max-w-[728px] mx-auto px-6">
     <ReadingHeader totalArticles={readingData.length} tagCounts={tagCounts} activeTag={tag} filteredCount={items.length} />
     <ReadingList items={items} />
   </section>

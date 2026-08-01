@@ -121,61 +121,46 @@ const musicGroupSchema = createMusicGroupSchema({
   <Schema slot="head" item={breadcrumbSchema} />
   <Schema slot="head" item={musicGroupSchema} />
 
-  <section class="surface-container-low py-8 pb-10 mb-8">
-    <div class="max-w-5xl mx-auto px-5">
-      <div class="text-center mb-4 animate-fade-in">
-        <a
-          href="/tunes/artist/"
-          class="inline-flex items-center text-sm text-on-surface-variant hover:text-[var(--color-secondary)] transition-colors"
-        >
-          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          All artists
-        </a>
-      </div>
-
-      <div class="text-center animate-fade-in animate-delay-1">
-        <h1 class="text-3xl lg:text-5xl font-bold text-on-surface font-display mb-3">
-          {artist.name} 🎤
-        </h1>
-        <p class="text-base text-on-surface-variant max-w-3xl mx-auto">
-          {artist.postCount} weekly post{artist.postCount !== 1 ? 's' : ''} · {artist.albumCount} album{artist.albumCount !== 1 ? 's' : ''} featured
+  <section class="max-w-[728px] mx-auto px-6">
+    <header class="pt-8 pb-8 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
+      <p class="mb-4">
+        <a href="/tunes/artist/" class="rubric nav-underline no-underline hover:text-on-surface">&larr; All artists</a>
+      </p>
+      <h1>{artist.name}</h1>
+      <p class="mt-3 text-lg text-on-surface-variant leading-normal">
+        {artist.postCount} weekly post{artist.postCount !== 1 ? 's' : ''} · {artist.albumCount} album{artist.albumCount !== 1 ? 's' : ''} featured
+      </p>
+      {artist.artistUrl && (
+        <p class="rubric mt-3">
+          More on the music site:
+          {' '}<a class="text-on-surface no-underline hover:text-[var(--color-secondary)]" href={artist.artistUrl} rel="noopener noreferrer" target="_blank">{artist.artistUrl.replace(/^https?:\/\//, '')}</a>
         </p>
-        {artist.artistUrl && (
-          <p class="text-sm text-on-surface-variant mt-3">
-            More on the music site:
-            {' '}<a class="text-[var(--color-secondary)] hover:underline" href={artist.artistUrl} rel="noopener noreferrer" target="_blank">{artist.artistUrl.replace(/^https?:\/\//, '')}</a>
-          </p>
-        )}
-      </div>
-    </div>
-  </section>
+      )}
+    </header>
 
-  {albums.length > 0 && (
-    <section class="max-w-5xl mx-auto px-5 mb-10">
-      <h2 class="font-display text-xl font-semibold text-on-surface mb-3">
-        Albums by {artist.name}
-      </h2>
-      <ul class="flex flex-wrap gap-2">
-        {albums.map((album) => (
-          <li>
-            <a href={getAlbumTuneUrl(album.slug)} class="tag-editorial">
-              {album.name}
-              <span class="opacity-70">{album.posts.length}×</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
-  )}
+    {albums.length > 0 && (
+      <section class="pt-8 pb-8 border-b" style="border-color: var(--color-outline-variant);">
+        <p class="text-[15px] font-semibold" style="letter-spacing: -0.01em;" role="heading" aria-level="2">
+          Albums by {artist.name}
+        </p>
+        <ul class="mt-3 flex flex-wrap gap-2">
+          {albums.map((album) => (
+            <li>
+              <a href={getAlbumTuneUrl(album.slug)} class="tag-editorial">
+                {album.name}
+                <span class="opacity-70">{album.posts.length}×</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
 
-  <section class="max-w-7xl mx-auto px-5">
     <h2 class="sr-only">Posts featuring {artist.name}</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 items-stretch reveal-stagger">
+    <div class="feed">
       {page.data.map((tune: CollectionEntry<'tunes'>) => (
-        <div class="reveal">
-          <PostCard post={tune} variant="grid" />
+        <div data-reveal>
+          <PostCard post={tune} headingLevel="3" />
         </div>
       ))}
     </div>
