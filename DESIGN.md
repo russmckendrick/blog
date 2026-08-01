@@ -1,214 +1,265 @@
 ---
-version: "alpha"
-name: "Russ.Cloud Print Edition"
-description: "Editorial paper-and-ink design system for the Russ.Cloud Astro blog and music site."
+version: "1.0"
+name: "Russ.Cloud — The Reading Room"
+description: "Medium-calm editorial design system for the Russ.Cloud Astro blog and music site."
 colors:
-  primary: "#8F2D00"
-  primary-container: "#BF3B00"
-  secondary: "#BF3B00"
-  on-primary: "#FFFFFF"
-  surface: "#F6F6F6"
-  surface-container-lowest: "#FFFFFF"
-  surface-container-low: "#EDEDED"
-  surface-container: "#E4E4E4"
-  surface-container-high: "#D8D8D8"
-  surface-container-highest: "#C9C9C9"
-  on-surface: "#1A1A1A"
-  on-surface-variant: "#555555"
-  accent-highlight: "#8A6D1F"
-  dark-primary: "#E5B29C"
-  dark-primary-container: "#D99C82"
-  dark-secondary: "#D99C82"
-  dark-on-primary: "#2A1109"
-  dark-surface: "#16130E"
-  dark-surface-container-lowest: "#100E0A"
-  dark-surface-container-low: "#1D1912"
-  dark-surface-container: "#221E16"
-  dark-surface-container-high: "#2A251B"
-  dark-surface-container-highest: "#363023"
-  dark-on-surface: "#E9E2D2"
-  dark-on-surface-variant: "#B5AC97"
-  dark-accent-highlight: "#C9A94E"
+  paper: "#FBFAF7"
+  paper-well: "#F3F1EB"
+  ink: "#1E1C18"
+  mist: "#6F6A61"
+  hairline: "#ECE8E1"
+  accent: "#2B559E"
+  pill: "#EDF1F8"
+  pill-hover: "#E2E9F5"
+  terminal: "#24273A"
+  terminal-bar: "#1E2030"
+  dark-paper: "#161411"
+  dark-paper-well: "#211E1A"
+  dark-ink: "#E8E3DA"
+  dark-mist: "#A69D8F"
+  dark-hairline: "#2B2721"
+  dark-accent: "#9FBCEB"
+  dark-pill: "#20242E"
+  dark-pill-hover: "#272D3B"
+  terminal-light-red: "#ED8796"
+  terminal-light-amber: "#EED49F"
+  terminal-light-green: "#A6DA95"
+  terminal-comment: "#939AB7"
+  terminal-shadow: "rgba(15, 14, 20, 0.55)"
 typography:
-  headline-display:
-    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
-    fontSize: 56px
+  article-title:
+    fontFamily: "Schibsted Grotesk, -apple-system, Helvetica Neue, Arial, sans-serif"
+    fontSize: 42px
     fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "-0.01em"
-  headline-lg:
-    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
-    fontSize: 40px
-    fontWeight: 660
-    lineHeight: 1.15
-    letterSpacing: "-0.01em"
-  headline-md:
-    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
-    fontSize: 30px
-    fontWeight: 660
-    lineHeight: 1.2
-    letterSpacing: "-0.01em"
-  headline-sm:
-    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
-    fontSize: 24px
-    fontWeight: 620
+    lineHeight: 1.19
+    letterSpacing: "-0.011em"
+  standfirst:
+    fontFamily: "Schibsted Grotesk, sans-serif"
+    fontSize: 21px
+    fontWeight: 400
+    lineHeight: 1.38
+  feed-title:
+    fontFamily: "Schibsted Grotesk, sans-serif"
+    fontSize: 22px
+    fontWeight: 700
+    lineHeight: 1.27
+    letterSpacing: "-0.014em"
+  lead-title:
+    fontFamily: "Schibsted Grotesk, sans-serif"
+    fontSize: 27px
+    fontWeight: 700
+    lineHeight: 1.24
+    letterSpacing: "-0.014em"
+  prose-h2:
+    fontFamily: "Schibsted Grotesk, sans-serif"
+    fontSize: 22px
+    fontWeight: 600
     lineHeight: 1.25
-  body-lg:
-    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
+    letterSpacing: "-0.012em"
+  body:
+    fontFamily: "Literata, Georgia, Times New Roman, serif"
     fontSize: 18px
     fontWeight: 400
-    lineHeight: 1.75
-  body-md:
-    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
-    fontSize: 18px
+    lineHeight: 1.67
+    letterSpacing: "-0.003em"
+  dek:
+    fontFamily: "Schibsted Grotesk, sans-serif"
+    fontSize: 16px
     fontWeight: 400
-    lineHeight: 1.75
-  body-sm:
-    fontFamily: "Source Serif 4, Georgia, Times New Roman, serif"
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.5
-  rubric:
-    fontFamily: "IBM Plex Mono, ui-monospace, Cascadia Code, Consolas, monospace"
-    fontSize: 13px
-    fontWeight: 500
     lineHeight: 1.4
-    letterSpacing: "0.08em"
-  code-sm:
-    fontFamily: "IBM Plex Mono, ui-monospace, Cascadia Code, Consolas, monospace"
+  meta:
+    fontFamily: "Schibsted Grotesk, sans-serif"
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.55
+  pull-quote:
+    fontFamily: "Literata, serif"
+    fontSize: 22px
+    fontWeight: 400
+    fontStyle: italic
+    lineHeight: 1.45
+  prose-h3:
+    fontFamily: "Schibsted Grotesk, sans-serif"
+    fontSize: 18px
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: "-0.008em"
+  ui-small:
+    fontFamily: "Schibsted Grotesk, sans-serif"
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.45
+  caption:
+    fontFamily: "Schibsted Grotesk, sans-serif"
     fontSize: 14px
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: 1.45
+  count:
+    fontFamily: "Schibsted Grotesk, sans-serif"
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.4
+  code:
+    fontFamily: "ui-monospace, SF Mono, Menlo, Consolas, monospace"
+    fontSize: 13.5px
+    lineHeight: 1.7
+mobile:
+  article-title: 32px
+  body: "17px / 1.65"
+  feed-title: 18px
+  wordmark: 19px
+  thumbnail: "100×67"
 rounded:
-  none: 0px
-  full: 9999px
-spacing:
-  xxs: 4px
-  xs: 8px
-  sm: 12px
-  md: 16px
-  lg: 24px
-  xl: 32px
-  xxl: 40px
-  xxxl: 48px
-  section: 64px
-components:
-  page-surface:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.body-md}"
-  index-entry:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.body-md}"
-    rounded: "{rounded.none}"
-  section-head:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.headline-lg}"
-    rounded: "{rounded.none}"
-  dateline:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.on-surface-variant}"
-    typography: "{typography.rubric}"
-  inline-code:
-    backgroundColor: "{colors.surface-container}"
-    textColor: "{colors.on-surface}"
-    typography: "{typography.code-sm}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.xxs}"
-  link:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.secondary}"
-    typography: "{typography.body-md}"
-  link-hover:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.primary}"
-    typography: "{typography.body-md}"
-  button-primary:
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.on-primary}"
-    typography: "{typography.rubric}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.sm}"
-  skip-link:
-    backgroundColor: "{colors.on-surface}"
-    textColor: "{colors.surface}"
-    typography: "{typography.rubric}"
-    rounded: "{rounded.none}"
-    padding: "{spacing.sm}"
+  image: 3px
+  figure: 4px
+  terminal: 9px
+  search-pill: 20px
+  pill: 9999px
+  portrait: 9999px
+layout:
+  column: 680px
+  masthead: 60px
+  thumbnail: "160×107 (100×67 mobile)"
+  mobile-gutter: 24px
 ---
 
-# Russ.Cloud Print Edition Design System
+# The Reading Room — proposed design system
+
+> **Rollout in progress (Aug 2026).** This file describes the approved
+> "Reading Room" system being implemented on the `redesign/reading-room`
+> branch; pages not yet migrated may still render Print Edition idioms.
+> Reference mockup and decision history:
+> [`docs/2026-07-redesign/`](./docs/2026-07-redesign/NOTES.md).
 
 ## Overview
 
-Russ.Cloud is set as "The Print Edition": a high-end print journal adapted for a technical blog and music archive. The interface should read like a well-set magazine — paper tones, serif typography, hairline rules instead of cards, dated-journal metadata, and image-led layouts where the AI-generated cover art is the artwork. Chrome stays quiet; type, rules, and imagery carry the personality.
-
-The site is light-first ("paper") with a class-based dark mode that swaps ink and paper rather than becoming a separate theme. Motion is choreographed but calm — "the magazine, filmed".
+Russ.Cloud set as a **single-author reading room**: Medium's measured calm —
+one column width for everything, two text colours, one hairline value, no
+cards — executed in a world that is unmistakably not Medium's. Text leads
+everywhere; cover art is subordinate in listings and artwork inside articles.
+There are **no sidebars anywhere** — the archive's depth (author, the week's
+records, wayfinding) lives in a shared colophon footer that closes every
+page, so even a search arrival deep in the archive ends on who writes here.
 
 ## Tokens and naming
 
-The CSS custom properties in `src/styles/global.css` define paper/ink primitives (`--paper`, `--paper-bright`…`--paper-deepest`, `--ink`, `--ink-muted`, `--rule`, `--rule-strong`, `--accent`, `--accent-strong`, `--accent-highlight`). **The legacy Material-style names (`--color-surface`, `--color-surface-container-*`, `--color-on-surface*`, `--color-primary`, `--color-secondary`, `--color-outline-variant`) are kept as aliases of those primitives** so existing components keep working. Prefer the primitives (or the aliases) in new code; never introduce raw hex values or Tailwind palette colours (`gray-*`, `blue-*`).
-
-- **Paper hierarchy:** `surface` is the page. `surface-container-lowest` is bright paper (code frames, link previews). The deeper paper tones are for quiet fills and hovers only — most separation comes from rules, not background shifts.
-- **Ink:** `on-surface` for headings and primary copy, `on-surface-variant` for body prose and metadata.
-- **Rules:** `--color-outline-variant` (alias of `--rule`) is the hairline; `--rule-strong` is the heavy editorial rule used above section heads and page headers (`border-t-2`).
-- **Accent:** a single burnt orange — `secondary` (#BF3B00) for links and active states, `primary` (#8F2D00) for hovers and filled buttons; dark mode lifts it to a muted salmon. Muted ochre `--accent-highlight` is reserved for text highlights/marks. There is no blue.
+- **Paper** `#FBFAF7` is the page — warm off-white, never pure white.
+  `paper-well` is the only fill (search pill, inline code). The Night edition
+  is a second material — warm dark paper `#161411`, softened ink and accent —
+  not an inversion.
+- **Ink** `#1E1C18` for titles and body; **mist** `#6F6A61` for *everything*
+  that is not content — deks, dates, read times, captions, inactive tabs,
+  subtitles. There is no third text tint. Both pass 4.5:1 on paper in both
+  editions.
+- **Hairline** `#ECE8E1`, always 1px, is the only separator: masthead edge,
+  feed-row dividers, the full-height sidebar rule, story action bars, tab
+  baseline. Never varied in weight.
+- **Accent** `#2B559E` — blue-black "pen ink" — appears only as: the wordmark
+  dot, title/link hovers, the tinted tag pills, and the article tombstone.
+  Nothing else. No burnt orange anywhere (clean break from Print Edition).
+- **Radius:** 3px listing thumbnails, 4px article figures, full pills, round
+  portrait. (A deliberate break from Print Edition's radius-0 rule.)
 
 ## Typography
 
-Two faces, all self-hosted through Astro's Fonts API (`astro.config.mjs`) — one sturdy text serif does everything, differentiated by weight, like a real newspaper:
+Two faces, to be self-hosted through Astro's Fonts API like the current pair:
 
-- **Source Serif 4** (`--font-serif`, also `--font-display`) — body copy at 1.125rem/1.75 (weight 400), prose measure ~72ch; headlines bold via the variable axis: 700 for display/h1 (letter-spacing -0.015em), 660 for section and card headings (-0.01em), 620 for h3.
-- **IBM Plex Mono** (`--font-mono`) — code, and promoted to metadata duty: datelines, reading time, rubrics.
-
-The `.rubric` utility (mono, 0.8125rem, uppercase, 0.08em tracking, muted ink) is the standard treatment for labels, datelines, and section rubrics. Dates render day-first ("13 Jun 2026") via `FormattedDate` and uppercase inside rubrics.
-
-`--font-sans` is a bare system-ui stack kept only as a fallback for tiny chrome; do not reintroduce webfont sans-serifs.
+- **Schibsted Grotesk** — display and all UI. Titles bold with negative
+  tracking that scales with size (−0.011em at 42px, −0.014em at 22–27px);
+  headings tight at lh ≈ 1.2–1.27; meta small (13px) and never tracked.
+  Commissioned for a newsroom, so the editorial DNA is native, not borrowed.
+- **Literata** — article body only, **18px/30px** (17px mobile), ~2em
+  paragraph gaps, no indents. Literata's large x-height means 18px here is
+  optically what Source Serif is at 20px — set it nominally larger and the
+  page reads large-print (calibrated against Medium side-by-side, 1 Aug
+  2026); ~65–70 characters per line in the 680px column is the target. Serif never appears in UI; sans never appears in body
+  copy. Pull quotes are large italic Literata in mist, indented, no bar.
+- **Mono** stays system (`ui-monospace`) and appears only inside terminal
+  figures and inline code — never as metadata costume.
 
 ## Layout
 
-Stable max-width containers with generous gutters: shell and listing pages at `max-w-7xl`, article pages at `max-w-5xl` with prose constrained to `max-w-[72ch]` (heroes run the full container width). Page headers follow one pattern: rubric line, Source Serif heading, standfirst paragraph, closed by a heavy `border-b-2` rule (`--rule-strong`).
+One centred **680px column** for everything — feed, tunes, and article share
+the same measure (728px incl. 24px gutters), so browsing and reading feel
+like the same room. No sidebars, no rails. Masthead is one 60px row: iMac
+logo + `russ.cloud` wordmark (ink dot), search pill, four text links
+(Tunes · Books · Archive · About), theme toggle; burger menu below 640px.
+Then silence until the colophon footer.
 
-## Rules instead of cards
+## The feed
 
-There are no cards, shadows, glass, or gradients. Separation comes from:
+Rows, not cards: title (2-line clamp) → dek (2-line clamp, hidden on mobile)
+→ meta `date · read time · tags`, with a 160×107 thumbnail flush right,
+title-aligned, 3px radius. Hairline between rows, ~30px padding. Tab row
+(`Latest · AI · Tools · Code …`) doubles as topic navigation — real tags,
+active state = ink underline on the baseline hairline. Tunes reuses the exact
+grammar with a 21:9 lead banner for the current week and `Artists 512 ·
+Albums 952 · By year` as its tab row; **AI-generated attribution stays in the
+lead meta line — non-negotiable brand commitment.** Under the lead meta, the
+week's records appear as an eight-cover **film strip** (square, 3px radius,
+4-across on mobile) with a quiet `The records themselves live at russ.fm ·
+Last.fm · Discogs` line beneath.
 
-- **Hairline rules** (`1px solid var(--color-outline-variant)`) between list entries, under the masthead, above footers and article appendices.
-- **Heavy rules** (`2px solid var(--rule-strong)`, or `border-t-2`) closing page headers; the homepage featured spread is rule-free.
-- **Hairline frames** around all images (listing covers, article heroes, book covers, prose images).
-- **Radius 0 everywhere.** Two intentional exceptions: circular avatar portraits (a print convention — article byline, tag hub, about page), and terminal code blocks, which are drawn as macOS windows (rounded corners, soft drop shadow, red/amber/green traffic lights, always a dark slate-navy Catppuccin Macchiato profile in both site themes — matching the author's real terminal). A terminal frame depicts a real app window, so it reads as a figure, not chrome.
+Listings end in **pagination**, not a browse link: a quiet 14px sans row —
+numerals in mist, current page in ink 600 with a 1px ink underline (the
+active-tab idiom), an ellipsis to the last page, and `Older posts →`
+right-aligned. `← Newer` appears on pages past the first.
 
-Listings are index entries: dateline, framed cover image, Source Serif headline, standfirst, rule below. Tags render through `getTagColorClasses()` → the single `.tag-editorial` treatment (small mono caps in a square hairline box — a quiet classification stamp — accent on hover); the per-tag pastel palette in `TAG_METADATA` is retired visually but the titles/emojis/descriptions remain in use.
+## The colophon footer
 
-## Motion — "the magazine, filmed"
+Every view ends the same way: a hairline, then a two-block footer in the
+680px column (stacking on mobile) — **Links** (the full `SOCIAL_LINKS` set
+as 17px monochrome icons from `Icon.astro` — mist at rest, ink on hover,
+config order, wrapping to two tidy rows; never brand colours) beside
+**Listened to this week** (four 64px covers, entry title, `Week 30 · 171
+weeks of listening →`) — closed by one single line: `About · Archives ·
+Reading list · Glossary · Tags · Source · RSS · © 2026 Russ McKendrick`.
+No bio in the footer — the bio belongs to the About page only; no location,
+no typeface credit, nothing else. This footer is the
+archive's identity block; there is no photo of Russ anywhere in the design
+(the byline avatars are the illustrated tag set).
 
-Page-load animations (`data-entrance` / `data-settle`) are pure CSS keyframes in `global.css` so they start at first paint; scroll reveals use the vanilla **Motion** library via `src/scripts/motion.ts`; no React islands for animation. Timing vocabulary lives in tokens: `--ease-settle` (cubic-bezier(0.22, 0.61, 0.36, 1)), `--dur-quick` 150ms, `--dur-hover` 400ms, `--dur-page` 600ms. No springs, bounces, or translate-lift hovers.
+## The article
 
-- **Entrances:** elements marked `data-entrance` stagger in (fade + 14px rise) on page load — dateline → title → byline → hero. Stagger comes from sibling-order CSS delays.
-- **Hero settle:** `data-settle` images ease from scale 1.03 to 1, like a plate settling onto the page.
-- **Scroll reveals:** `data-reveal` fades entries up once in view; `data-reveal="rule"` draws rules in horizontally. (The old `.reveal*` classes are neutered no-ops.)
-- **Shared-element view transitions:** listing images/titles carry `transition:name` (`post-img-*` / `post-title-*`) matched by the article layout, so the cover you click becomes the article hero.
-- **Hovers:** underline draw-ins (`.nav-underline`), slow image zooms (scale 1.04 over 700ms), headline colour shifts to accent.
-- All motion respects `prefers-reduced-motion`: the entrance/settle animations only apply under `no-preference`, so reduced-motion users get static, fully visible content.
+Balanced sans title (42px), mist standfirst, then a single-line byline: a
+36px circular **tag-based avatar** (the illustrated set in
+`public/images/avatars/`, chosen per `TAG_AVATAR_MAP` in `src/consts.ts` —
+cartoons, so the no-photos rule holds — there is no photo anywhere in the
+design) beside `Russ McKendrick · 9 min read · 19 Jul 2026` (name in
+ink 500, the rest mist, one line). Then a hairline "storybar":
+tags left, `Read as Markdown · Suggest edits · RSS` right. Hero figure at
+column width with a centred mist caption. A **reading-progress rule** — 2px
+of accent, fixed to the top viewport edge, no gradient, no glow — runs on
+article pages only. Between hero and prose sits the **Contents block**: a
+native `<details open>` with hairline rules top and bottom, a chevron +
+"Contents" summary (15px/600), and 15px mist entries (ink on hover) that
+anchor-link to the post's h2/h3s with smooth scrolling (reduced-motion
+aware). Both carry over features from the Print Edition in the new grammar. Body in Literata with ink-coloured
+underlined links (accent on hover only). Terminal code figures carry over
+from Print Edition unchanged — macOS window (9px radius), traffic lights in
+the Catppuccin Macchiato reds/ambers/greens documented in the token
+frontmatter, in both editions; they are figures, not chrome, and the one
+permitted shadow (`terminal-shadow`). The mockup's floating view switcher is
+tooling, not part of this system — its colours are exempt from the palette. Articles close with a **three-dot accent tombstone**, then
+tag pills, then two "More from the archive" rows.
 
-## Components
+## Motion
 
-- **Masthead:** opaque paper, 1px bottom rule, bold Source Serif wordmark, always-visible small-caps mono nav with underline draw-in hovers. No glass, no icons on desktop.
-- **Footer:** colophon — hairline top rule, centred small-caps nav, italic copyright line.
-- **Pagination:** a rule-topped line of plain mono numerals with rubric Previous/Next; current page in accent.
-- **Article:** sits directly on paper. Journal header (dateline rubric, left-aligned bold Source Serif title, one-line byline with small round avatar, editorial tag line, heavy rule), hairline-framed hero, drop cap on the opening paragraph (`.article-body`, `initial-letter` with float fallback; not applied to tunes posts).
-- **Prose:** h2 carries a hairline rule above; h4+ use small-caps serif. Blockquotes are bare italic pull-quotes with a 2px ink rule. Tables use strong rules top/bottom, small-caps headers, hairline rows, no fills. `hr` renders as a centred asterism dinkus. Code frames (Expressive Code) are square with hairline borders and paper-tinted chrome, themed via `styleOverrides` in `astro.config.mjs` only.
-- **Callouts:** one definition (`.callout`), seven variants via per-variant accent inks (`--callout-note/tip/important/caution/warning`, light + dark): 2px accent left rule, 5% `color-mix` tint, small-caps mono heading.
-- **Reading progress:** a 2px accent rule. No gradient, no glow.
+One authored moment: feed rows stagger in on load (8px rise, 450ms,
+`cubic-bezier(.22,.61,.36,1)`, 60ms steps), gated behind
+`prefers-reduced-motion: no-preference`. Hovers are colour shifts only — no
+zooms, no lifts, no springs.
 
-## Do's and Don'ts
+## Do's and don'ts
 
-- Do use hairline rules for separation; a background shift is the exception, not the default.
-- Do keep layouts image-led — the covers are the artwork; frame them with hairlines and let them breathe on paper.
-- Do use `.rubric` for any label or dateline; use `.tag-editorial` for tag-like links.
-- Do route all colour through tokens; light and dark must both come free.
-- Don't reintroduce border radius, shadows, glass, gradients, pastel chips, or Tailwind grey/blue utilities.
-- Don't add new fonts or tight negative letter-spacing.
-- Don't animate with springs or scale-bounces; use `--ease-settle` and the Motion helpers, and always honour `prefers-reduced-motion`.
+- Do keep everything that is not content in mist — a second grey is a bug.
+- Do spend the accent nowhere; its scarcity is the identity.
+- Do keep the feed text-led; the covers earn their scale inside articles and
+  the tunes lead only.
+- Don't reintroduce cards, shadows (terminal figures excepted), gradients,
+  glass, coloured side-bars, or eyebrow labels.
+- Don't let any UI face drift into the body serif or vice versa.
+- Don't hide the AI-generated byline on tunes, and don't add engagement
+  chrome (claps, share rows, subscriber counts) — the colophon footer carries
+  the archive instead.
+- Don't reintroduce sidebars or rails; the column is the whole page.
