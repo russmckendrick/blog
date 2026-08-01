@@ -215,7 +215,8 @@ archive's identity block; there is no photo of Russ anywhere in the design
 
 ## The article
 
-Balanced sans title (42px), mist standfirst, then a single-line byline: a
+Balanced sans title (42px), then directly a single-line byline (no
+standfirst — the description belongs to feed rows and meta tags only): a
 36px circular **tag-based avatar** (the illustrated set in
 `public/images/avatars/`, chosen per `TAG_AVATAR_MAP` in `src/consts.ts` —
 cartoons, so the no-photos rule holds — there is no photo anywhere in the
