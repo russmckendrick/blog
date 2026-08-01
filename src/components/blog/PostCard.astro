@@ -9,7 +9,7 @@ import { AI_AUTHOR, CF_IMAGE_PRESETS } from '../../consts'
 
 interface Props {
 	post: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
-	priority?: boolean; // For LCP optimization on first row
+	priority?: boolean; // Eager + fetchpriority=high. Set on every row inside the initial mobile viewport (first two), not just row one — a lazy above-the-fold image becomes the LCP element on mobile.
 	/** Legacy variants all collapse onto the single Reading Room row. */
 	variant?: 'vertical' | 'horizontal' | 'featured' | 'grid' | 'row';
 	headingLevel?: '2' | '3'; // Heading level for accessibility

@@ -243,37 +243,34 @@ export const CF_IMAGE_PRESETS = {
 
 ```astro
 ---
-import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../utils/cloudflare-images';
+import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudflare-images';
+import { CF_IMAGE_PRESETS } from '../../consts';
 
-const preset = CF_IMAGE_PRESETS.thumbnail;
-const heroSrcSet = generateCFSrcSet(heroImage, preset.widths, preset.quality);
+const preset = CF_IMAGE_PRESETS.thumbnailHorizontal;
 ---
 
 <img
-  src={getCFImageUrl(heroImage, { width: 728, quality: preset.quality })}
-  srcset={heroSrcSet}
-  sizes="(min-width: 768px) 720px, calc(100vw - 60px)"
+  src={getCFImageUrl(heroImage, { width: 320, quality: preset.quality, format: preset.format, fit: preset.fit })}
+  srcset={generateCFSrcSet(heroImage, preset.widths, preset.quality, preset.format)}
+  sizes="(min-width: 640px) 160px, calc(100vw - 48px)"
   alt={alt}
-  loading={priority ? "eager" : "lazy"}
-  fetchpriority={priority ? "high" : "low"}
+  width="160"
+  height="107"
+  loading={priority ? 'eager' : 'lazy'}
+  decoding={priority ? 'sync' : 'async'}
+  fetchpriority={priority ? 'high' : 'low'}
   class="w-full h-full object-cover"
 />
 ```
 
-The **featured** variant (the homepage hero card rendered by `HeroSection`) uses
-the `thumbnailPriority` preset and a `sizes` descriptor that mirrors the real
-layout so the browser doesn't over-serve on mobile:
-
-```astro
-sizes="(min-width: 1280px) 620px, (min-width: 1024px) calc(50vw - 20px), calc(100vw - 40px)"
-```
-
-The card sits inside the homepage container (`max-w-7xl mx-auto px-5`, a 40px
-gutter), so its true width is `100vw - 40px` on mobile and `calc(50vw - 20px)`
-(half the card) from `lg` up, capped at `620px` once the container reaches its
-1280px max. The homepage preload `<link>` in `index.astro` must keep its
-`imagesizes` identical to this string, or it will fetch a different candidate
-than the `<img>` and cause a double-download.
+The blog feed pages (`index.astro`, `page/[...page].astro`, `blog/[...page].astro`,
+`tags/[tag]/[...page].astro`, `[year]/index.astro`, `[year]/page/[...page].astro`)
+pass `priority={index < 2}`: on a mobile viewport the first **two** row images sit
+inside the initial viewport, and whichever of them is largest becomes the LCP
+element. A lazy/low-priority image there fails Lighthouse's "LCP request
+discovery" audit, so both rows load eagerly with `fetchpriority="high"`.
+Priority rows also skip the LQIP background (`getLQIPUrl`) so the LCP has no
+extra request in front of it; non-priority rows keep the LQIP blur-up.
 
 #### TunesDirectory.astro (Artist/Album Browse Cards)
 

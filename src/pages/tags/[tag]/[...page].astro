@@ -161,9 +161,9 @@ const avatarFallback = '/images/avatar-192x192.png';
     </header>
 
     <div class="feed">
-      {page.data.map((post: CollectionEntry<'blog'>) => (
+      {page.data.map((post: CollectionEntry<'blog'>, index: number) => (
         <div data-reveal>
-          <PostCard post={post} headingLevel="2" />
+          <PostCard post={post} priority={index < 2} headingLevel="2" />
         </div>
       ))}
     </div>

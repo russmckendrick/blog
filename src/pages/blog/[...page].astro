@@ -25,9 +25,9 @@ const { page } = Astro.props;
 		</header>
 
 		<div class="feed">
-			{page.data.map((post) => (
+			{page.data.map((post, index) => (
 				<div data-reveal>
-					<PostCard post={post} headingLevel="2" />
+					<PostCard post={post} priority={index < 2} headingLevel="2" />
 				</div>
 			))}
 		</div>

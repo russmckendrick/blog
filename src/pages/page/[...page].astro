@@ -41,9 +41,9 @@ const { page } = Astro.props;
 		<TagTabs active="latest" />
 
 		<div class="feed">
-			{page.data.map((post) => (
+			{page.data.map((post, index) => (
 				<div data-reveal>
-					<PostCard post={post} headingLevel="2" />
+					<PostCard post={post} priority={index < 2} headingLevel="2" />
 				</div>
 			))}
 		</div>

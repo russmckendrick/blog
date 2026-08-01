@@ -28,7 +28,7 @@ const webSiteSchema = createWebSiteSchema(Astro.site?.toString() || 'https://www
 		<div class="feed" data-entrance-group>
 			{posts.map((post, index) => (
 				<div data-entrance>
-					<PostCard post={post} priority={index === 0} headingLevel="2" />
+					<PostCard post={post} priority={index < 2} headingLevel="2" />
 				</div>
 			))}
 		</div>

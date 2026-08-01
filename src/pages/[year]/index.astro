@@ -93,7 +93,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
 		<div class="feed">
 			{yearContent.map((item, index) => (
 				<div data-reveal>
-					<PostCard post={item} priority={index === 0} headingLevel="2" />
+					<PostCard post={item} priority={index < 2} headingLevel="2" />
 				</div>
 			))}
 		</div>

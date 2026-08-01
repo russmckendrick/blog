@@ -54,7 +54,7 @@ const description = `All posts and tunes from ${year} - Page ${page.currentPage}
 		<div class="feed">
 			{page.data.map((item: CollectionEntry<'blog'> | CollectionEntry<'tunes'>, index: number) => (
 				<div data-reveal>
-					<PostCard post={item} priority={index === 0 && page.currentPage === 1} headingLevel="2" />
+					<PostCard post={item} priority={index < 2} headingLevel="2" />
 				</div>
 			))}
 		</div>
