@@ -1,28 +1,32 @@
 @import "tailwindcss";
 
 /* ================================================
-   Design Tokens - "The Print Edition"
-   Editorial paper-and-ink system. The Material-style
-   --color-* names are kept as aliases of the paper/ink
-   primitives so existing components keep working;
-   prefer the primitives in new code.
+   Design Tokens - "The Reading Room"
+   Warm paper, two text colours, one hairline, a pen-ink
+   accent spent almost nowhere. The Material-style --color-*
+   names are kept as aliases of the paper/ink primitives so
+   existing components keep working; prefer the primitives
+   in new code. See DESIGN.md.
    ================================================ */
 
 :root {
-  /* Paper & ink primitives (light: neutral newsprint, no warmth) */
-  --paper: #f6f6f6;
-  --paper-bright: #ffffff;
-  --paper-shade: #ededed;
-  --paper-tint: #e4e4e4;
-  --paper-deep: #d8d8d8;
-  --paper-deepest: #c9c9c9;
-  --ink: #1a1a1a;
-  --ink-muted: #555555;
-  --rule: rgba(0, 0, 0, 0.14);
-  --rule-strong: rgba(0, 0, 0, 0.5);
-  --accent: #bf3b00;
-  --accent-strong: #8f2d00;
+  /* Paper & ink primitives (light: warm off-white, never pure white) */
+  --paper: #fbfaf7;
+  --paper-well: #f3f1eb;
+  --paper-bright: #f3f1eb;
+  --paper-shade: #f3f1eb;
+  --paper-tint: #f3f1eb;
+  --paper-deep: #ece8e1;
+  --paper-deepest: #e2ded4;
+  --ink: #1e1c18;
+  --ink-muted: #6f6a61;
+  --rule: #ece8e1;
+  --rule-strong: #ece8e1;
+  --accent: #2b559e;
+  --accent-strong: #234a8c;
   --accent-highlight: #8a6d1f;
+  --pill: #edf1f8;
+  --pill-hover: #e2e9f5;
 
   /* Brand aliases */
   --color-primary: var(--accent-strong);
@@ -67,24 +71,27 @@
 }
 
 .dark {
-  /* Paper & ink primitives (dark: ink and paper swapped) */
-  --paper: #16130e;
-  --paper-bright: #100e0a;
-  --paper-shade: #1d1912;
-  --paper-tint: #221e16;
-  --paper-deep: #2a251b;
-  --paper-deepest: #363023;
-  --ink: #e9e2d2;
-  --ink-muted: #b5ac97;
-  --rule: rgba(233, 226, 210, 0.16);
-  --rule-strong: rgba(233, 226, 210, 0.5);
-  --accent: #d99c82;
-  --accent-strong: #e5b29c;
+  /* Paper & ink primitives (dark: a second edition — warm dark paper, not black) */
+  --paper: #161411;
+  --paper-well: #211e1a;
+  --paper-bright: #211e1a;
+  --paper-shade: #211e1a;
+  --paper-tint: #211e1a;
+  --paper-deep: #2b2721;
+  --paper-deepest: #332e26;
+  --ink: #e8e3da;
+  --ink-muted: #a69d8f;
+  --rule: #2b2721;
+  --rule-strong: #2b2721;
+  --accent: #9fbceb;
+  --accent-strong: #b3ccf2;
   --accent-highlight: #c9a94e;
+  --pill: #20242e;
+  --pill-hover: #272d3b;
 
   /* Brand aliases */
-  --color-on-primary: #2a1109;
-  --color-on-secondary: #2a1109;
+  --color-on-primary: #161411;
+  --color-on-secondary: #161411;
 }
 
 /* ================================================
@@ -200,6 +207,7 @@ code {
   @apply font-mono px-1.5 py-0.5 text-sm;
   background-color: var(--color-surface-container);
   color: var(--color-on-surface);
+  border-radius: 4px;
 }
 
 pre code {
@@ -218,9 +226,7 @@ pre code {
   color: var(--color-on-surface-variant);
 }
 
-/* Editorial tag treatment: a quiet classification stamp — mono caps in
-   a square hairline box, accent on hover. Replaces the retired per-tag
-   pastel chips. */
+/* Tag pill: ink-tinted rounded chip — the site's one tinted fill */
 .tag-editorial {
   display: inline-flex;
   align-items: center;
@@ -231,28 +237,30 @@ pre code {
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;
-  color: var(--color-on-surface-variant);
+  color: var(--color-on-surface);
   text-decoration: none;
-  border: 1px solid var(--rule);
-  padding: 0.3rem 0.55rem;
-  transition: color var(--dur-quick) ease, border-color var(--dur-quick) ease, background-color var(--dur-quick) ease;
+  background-color: var(--pill);
+  border: none;
+  border-radius: 9999px;
+  padding: 0.45rem 0.85rem;
+  transition: color var(--dur-quick) ease, background-color var(--dur-quick) ease;
 }
 
 a.tag-editorial:hover,
 a.tag-editorial:focus-visible {
-  color: var(--color-secondary);
-  border-color: var(--color-secondary);
-  background-color: color-mix(in srgb, var(--color-secondary) 6%, transparent);
+  color: var(--color-on-surface);
+  background-color: var(--pill-hover);
 }
 
-/* Link styling */
+/* Link styling: links inherit ink; the accent appears on hover only.
+   Prose links add underlines (see .prose a); chrome styles its own. */
 a {
-  color: var(--color-secondary);
+  color: inherit;
   @apply transition-colors;
 }
 
 a:hover {
-  color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 /* Focus states */
@@ -681,15 +689,18 @@ a:hover {
   color: var(--color-secondary);
 }
 
+/* Prose links: ink with a real underline; accent only on hover */
 .prose a {
-  color: var(--color-secondary);
-  @apply underline underline-offset-2 transition-colors;
-  text-decoration-color: color-mix(in srgb, var(--color-secondary) 40%, transparent);
+  color: var(--color-on-surface);
+  @apply underline transition-colors;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-on-surface);
 }
 
 .prose a:hover {
-  color: var(--color-primary);
-  text-decoration-color: var(--color-primary);
+  color: var(--color-secondary);
+  text-decoration-color: var(--color-secondary);
 }
 
 .prose strong {
@@ -931,7 +942,7 @@ a:hover {
    ================================================ */
 
 :root {
-  --callout-note: #555555;
+  --callout-note: #6f6a61;
   --callout-tip: #3d5c33;
   --callout-important: #2f4a63;
   --callout-caution: #8f2d00;
@@ -939,7 +950,7 @@ a:hover {
 }
 
 .dark {
-  --callout-note: #b5ac97;
+  --callout-note: #a69d8f;
   --callout-tip: #a4bd8c;
   --callout-important: #93b2ce;
   --callout-caution: #e5a48c;
