@@ -7,7 +7,7 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 - Text leads everywhere. Cover art is subordinate in listings (a small thumbnail flush right) and earns its scale only inside articles and the tunes lead.
 - Two text colours only: ink for content, mist for everything that is not content. A second grey is a bug.
 - Separate content with 1px hairline rules, never cards, shadows, background shifts, or heavy rules.
-- Spend the accent nowhere: the wordmark dot, hovers, tag-pill tint, tombstone, and reading-progress rule. Its scarcity is the identity.
+- Spend the accent nowhere: hovers, tag-pill tint, tombstone, and reading-progress rule. Its scarcity is the identity. (The logo's dot and cursor are the mark's own colours, not the accent.)
 - One column for everything — no sidebars, no rails. The archive's depth lives in the colophon footer.
 - Motion is one authored moment (the feed stagger) plus colour-shift hovers. No springs, bounces, zooms, or lifts.
 - The dark theme is a second material — warm dark paper with softened ink and accent — not an inversion.
@@ -27,14 +27,14 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 ### Header (masthead)
 
 - One 60px row on opaque paper with a 1px bottom hairline — no glass or blur.
-- Logo + `russ.cloud` wordmark (the dot is the one accent character) on the left; on the right, four plain text links (Tunes · Books · Archive · About) in mist, ink on hover, then a 16px vertical hairline (`.masthead-divider`) separating the utility icons: the search trigger and the icon-only theme toggle.
+- The brand lockup on the left — `Logo.astro`, one self-contained inline SVG: the iMac mark + `russ.cloud` in baked Poppins outlines (heavy ink "russ", light mist ".cloud") with a blinking block cursor on the baseline (1.1s square wave, steady under reduced motion). The dot and cursor take the mark's own colours — screen blue `#35495E` on paper, base grey `#BDC3C7` in the Night edition — and "russ"/".cloud" ride the ink/mist tokens, so the lockup follows the theme on its own. On the right, four plain text links (Tunes · Books · Archive · About) in mist, ink on hover, then a 16px vertical hairline (`.masthead-divider`) separating the utility icons: the search trigger and the icon-only theme toggle.
 - The search trigger is an `<a href="/search/">` that JS upgrades to open the **search sheet** (`SearchOverlay.astro`) — a native `<dialog>` rendered as a full-width paper band under the top edge, closed by a hairline, with the rest of the page veiled in 78% paper (`::backdrop`). Inside sits a real Pagefind input (autofocused) and a results drawer that scrolls internally; the masthead itself contains no fake input.
 - The sheet opens on click, `⌘K`/`Ctrl+K`, or `/` (ignored while typing in a field), and closes on `Escape`, the X button, backdrop click, or `⌘K` again. Pagefind's JS/CSS lazy-load on first open, so pages cost nothing until search is used. On `/search/` itself the shortcuts focus the page's own input instead of opening the sheet.
 - Below 640px the links collapse into a burger disclosure with `aria-controls`, `aria-expanded`, and a screen-reader-only label reflecting open/closed state; the burger swaps to an X while open, and the menu closes on `Escape` and outside clicks. The search trigger stays out of the menu as an always-visible icon beside the burger.
 
 ### Footer (colophon)
 
-- Every view ends the same way: a hairline, then two blocks in the 728px column (stacking on mobile) — **Links** (all `SOCIAL_LINKS` as 17px monochrome icons, mist at rest, ink on hover, config order; never brand colours) beside **Listened to this week** (four 64px covers, latest entry title, `N weeks of listening →`).
+- Every view ends the same way: a hairline, then two blocks in the 728px column (stacking on mobile) — **Links** (all `SOCIAL_LINKS` as 17px monochrome icons, mist at rest, ink on hover, config order; never brand colours; on mobile the icon rows centre in the column while the head stays left) beside **Listened to this week** (four 64px covers — a full-width four-across grid on mobile — latest entry title, `N weeks of listening →`).
 - One `.rubric` wayfinding line closes it: `About · Archives · Reading list · Glossary · Tags · Source · RSS · © year`. No bio (the bio belongs to the About page), no location, no typeface credit.
 
 ## Typography
@@ -42,6 +42,7 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 - **Schibsted Grotesk** is the site's voice: display and all UI. Titles bold with negative tracking that scales with size; meta small (13px) and never tracked or uppercased.
 - **Literata** is article body only: 18px/30px, ~2em paragraph gaps, no indents. Serif never appears in UI; sans never appears in body copy.
 - **IBM Plex Mono** is code only — terminal figures and inline code, never metadata.
+- The masthead wordmark is baked Poppins outlines inside the logo SVG (`scripts/generate-logo.js`) — Poppins is never loaded as a font, so the two-face rule holds for all live text.
 - Use `.rubric` for datelines, read times, and meta lines; `getTagColorClasses()` (which returns `.tag-editorial`) for tag links, with labels from `getTagName()` (no emoji).
 - Dates render day-first ("13 Jun 2026") via `FormattedDate.astro`.
 - See [Design System](./design-system.md) for the full token and type-role reference.

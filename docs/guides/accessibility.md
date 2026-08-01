@@ -116,11 +116,16 @@ export default defineConfig({
 
 ### 4. Navigation Links
 
-**Current state** (Reading Room): the masthead shows plain text links (`MASTHEAD_ITEMS` — Tunes · Books · Archive · About) plus two icon-only controls, each with an `aria-label`: the search trigger ("Search the archive", also carrying `aria-keyshortcuts="Meta+K"` and a JS-set platform-aware `title`) and the theme toggle. The search trigger is an `<a href="/search/">` upgraded by JS to open the search sheet — a native `<dialog>` (`SearchOverlay.astro`) labelled via `aria-labelledby`, so `showModal()` provides the focus trap, background inerting, and focus restoration to the trigger on close. Focus is moved into the Pagefind input once it renders; `Escape` is handled explicitly in the sheet's keydown listener because Pagefind's input consumes the key (blocking the dialog's native cancel), and the `/` shortcut is suppressed while focus is in an input, textarea, select, or contenteditable. Without JS the trigger simply navigates to `/search/`, where the input is autofocused. The mobile burger opens a full-width panel of text rows; the trigger keeps `aria-controls`/`aria-expanded` and a sr-only label that flips between Open/Close, and the hamburger icon swaps to an X via CSS on `aria-expanded` — both SVGs are `aria-hidden`. On mobile the search trigger sits beside the burger rather than inside the menu. The footer's social icons each carry an `aria-label` and `title` from `SOCIAL_LABELS`. Menu behaviour (outside click, Escape + refocus, close on link click) is unchanged.
+**Current state** (Reading Room): the brand link is `<a href="/" aria-label="russ.cloud home">` wrapping the `Logo.astro` lockup — one inline SVG marked `aria-hidden="true"`/`focusable="false"`, so the label is the accessible name (the wordmark is outline paths, invisible to assistive tech by design), and the cursor blink is disabled under `prefers-reduced-motion: reduce` in the component's own styles. Alongside it the masthead shows plain text links (`MASTHEAD_ITEMS` — Tunes · Books · Archive · About) plus two icon-only controls, each with an `aria-label`: the search trigger ("Search the archive", also carrying `aria-keyshortcuts="Meta+K"` and a JS-set platform-aware `title`) and the theme toggle. The search trigger is an `<a href="/search/">` upgraded by JS to open the search sheet — a native `<dialog>` (`SearchOverlay.astro`) labelled via `aria-labelledby`, so `showModal()` provides the focus trap, background inerting, and focus restoration to the trigger on close. Focus is moved into the Pagefind input once it renders; `Escape` is handled explicitly in the sheet's keydown listener because Pagefind's input consumes the key (blocking the dialog's native cancel), and the `/` shortcut is suppressed while focus is in an input, textarea, select, or contenteditable. Without JS the trigger simply navigates to `/search/`, where the input is autofocused. The mobile burger opens a full-width panel of text rows; the trigger keeps `aria-controls`/`aria-expanded` and a sr-only label that flips between Open/Close, and the hamburger icon swaps to an X via CSS on `aria-expanded` — both SVGs are `aria-hidden`. On mobile the search trigger sits beside the burger rather than inside the menu. The footer's social icons each carry an `aria-label` and `title` from `SOCIAL_LABELS`. Menu behaviour (outside click, Escape + refocus, close on link click) is unchanged.
 
 **File**: `src/components/layout/Header.astro`
 
 ```astro
+<!-- Brand link (Logo.astro renders one aria-hidden SVG) -->
+<a href="/" class="header-logo flex items-center no-underline" aria-label="russ.cloud home">
+  <Logo />
+</a>
+
 <!-- Desktop navigation (text links) -->
 <a href={item.url} class="header-nav-item no-underline py-1.5 inline-flex items-center">
   {item.name}
@@ -272,6 +277,7 @@ When creating new interactive components:
 | `src/components/embeds/LightGalleryNew.astro` | Gallery component with aria-labels |
 | `src/components/embeds/Img.astro` | Image component with aria-labels |
 | `src/components/layout/Header.astro` | Navigation with aria-labels |
+| `src/components/layout/Logo.astro` | Brand lockup as decorative SVG (aria-hidden, reduced-motion-aware cursor) |
 | `src/layouts/BaseLayout.astro` | Runtime accessibility fallback |
 | `astro.config.mjs` | Plugin configuration |
 

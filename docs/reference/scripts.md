@@ -17,6 +17,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `pnpm run optimize` | `scripts/optimize-images.js` | Optimize source and public image assets |
 | `pnpm run analyze-links` | `scripts/analyze-internal-links.js` | Audit internal linking between posts |
 | `pnpm run extract-colors` | `scripts/extract-hero-colors.js` | Rebuild `src/data/hero-colors.json` from hero images (still part of prebuild; pages no longer render gradients from it) |
+| `pnpm run generate-logo` | `scripts/generate-logo.js` | Rebake the header logo's wordmark outlines into `src/data/logo-lockup.json` and refresh the mark-only `public/favicon.svg` |
 | `pnpm run cache-link-previews` | `scripts/cache-link-preview-images.js` | Download and cache OG images for `LinkPreview` embeds |
 | `pnpm run refresh-link-previews` | `scripts/cache-link-preview-images.js --refresh-stale` | Refresh stale cached OG images |
 | `pnpm run cache-reading-images` | `scripts/cache-reading-images.js` | Download and cache OG images for reading list cards |
@@ -43,6 +44,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 |------|--------|-------|
 | `scripts/optimize-images.js` | primary | Optimizes files in `src/assets/` and `public/assets/`, optionally for a single path |
 | `scripts/extract-hero-colors.js` | primary | Extracts dominant colors from hero images into `src/data/hero-colors.json`; still wired into `pnpm run prebuild`, though the tag/year hub pages no longer render gradient headers from the data |
+| `scripts/generate-logo.js` | manual | Bakes the `russ.cloud` wordmark ("russ" Poppins ExtraBold, ".cloud" Poppins Light, plus the block-cursor geometry) into SVG outline path data in `src/data/logo-lockup.json` (rendered by `src/components/layout/Logo.astro`) and refreshes the mark-only `public/favicon.svg` from `public/images/logo.svg`. Downloads the two Poppins TTFs (SIL OFL) from the google/fonts repo on first run and caches them in `node_modules/.cache/logo-poppins/`. Both outputs are committed and never hand-edited; re-run only if the wordmark design changes |
 | `scripts/cache-link-preview-images.js` | primary | Scans MDX for `<LinkPreview>` usage and caches OG images locally |
 | `scripts/cache-reading-images.js` | primary | Fetches OG images and metadata (title, description) for reading list bookmarks and caches them locally; downloaded images are re-encoded to JPEG via `sharp` so they are compatible with Cloudflare image transformations regardless of source format |
 | `scripts/generate-cover.js` | manual | Content-driven AI blog cover generator; reads the full post (or draft text), designs a representative prompt with no imposed style, and writes the full and `-small` covers into `src/assets/<slug>/` |
@@ -273,6 +275,7 @@ maintained and their relative paths no longer resolve:
 | `scripts/.classification-cache/` | Cached album classification results |
 | `scripts/.classification-cache/.gitignore` | Keeps the cache directory in git without committing cache payloads |
 | `scripts/.year-wrapped-cache-YYYY.json` | Cached yearly wrapped source data per year |
+| `node_modules/.cache/logo-poppins/` | Poppins TTFs downloaded by `scripts/generate-logo.js` (re-fetched automatically if pruned) |
 | `scripts/.DS_Store` | Local macOS Finder metadata; not part of the application |
 
 ## `scripts/lib/` Modules

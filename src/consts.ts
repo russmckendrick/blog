@@ -503,7 +503,7 @@ export const CF_IMAGE_PRESETS = {
     quality: 25,
     format: "avif" as const,
     fit: "cover" as const,
-    widths: [256, 320, 384, 512],
+    widths: [256, 320, 384, 512, 640],
   },
 
   // Small square thumbnails for tunes artist/album directory cards

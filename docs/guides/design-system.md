@@ -6,6 +6,7 @@ The site is styled as a single-author reading room: warm paper, two text colours
 
 - **Tokens:** `src/styles/global.css` — CSS custom properties in `:root` (light, "paper") and `.dark` (the Night edition — a second material, not an inversion).
 - **Fonts:** registered in `astro.config.mjs` via Astro's Fonts API (`fontProviders.local()`), woff2 files in `src/assets/fonts/`, `<Font>` tags in `src/components/layout/BaseHead.astro`, Tailwind mapping in the `@theme inline` block of `global.css`.
+- **Brand lockup:** `src/components/layout/Logo.astro` renders one inline SVG from generated path data in `src/data/logo-lockup.json` (plus the mark-only `public/favicon.svg`) — both baked by `scripts/generate-logo.js`, never hand-edited.
 - **Scroll reveals:** `src/components/layout/RevealInit.astro` (inline IntersectionObserver + CSS transitions — no animation library, no React islands).
 - **Expressive Code theming:** `styleOverrides` in `astro.config.mjs` only; late CSS cannot override its build-time styles.
 
@@ -20,7 +21,7 @@ Primitives (preferred in new code):
 | `--ink` | `#1E1C18` | `#E8E3DA` | titles and body |
 | `--ink-muted` | `#6F6A61` | `#A69D8F` | "mist" — everything that is not content: deks, dates, read times, captions, inactive tabs |
 | `--rule` | `#ECE8E1` | `#2B2721` | the hairline — always 1px, the only separator |
-| `--accent` | `#2B559E` | `#9FBCEB` | pen ink — wordmark dot, hovers, tombstone, reading-progress rule |
+| `--accent` | `#2B559E` | `#9FBCEB` | pen ink — hovers, tombstone, reading-progress rule (the logo's dot and cursor use the mark's palette, not the accent) |
 | `--pill` / `--pill-hover` | `#EDF1F8` / `#E2E9F5` | `#20242E` / `#272D3B` | tag pill fill |
 
 There is no third text tint — a second grey is a bug. Both ink and mist pass 4.5:1 on paper in both editions.
@@ -38,6 +39,8 @@ There is no third text tint — a second grey is a bug. Both ink and mist pass 4
 | IBM Plex Mono | `--font-mono` | code only: terminal figures and inline code — never metadata |
 
 Serif never appears in UI; sans never appears in body copy; mono is never a metadata costume. Pull quotes (`.prose blockquote`) are large italic Literata in mist, indented, no bar. Dates are day-first ("13 Jun 2026") via `FormattedDate.astro`.
+
+The masthead wordmark is the one exception that proves the rule: "russ" (Poppins ExtraBold) and ".cloud" (Poppins Light) exist only as SVG outline paths baked by `scripts/generate-logo.js` — Poppins is never registered or loaded as a font.
 
 The global `h1` rule sets the page-title role (sans, `clamp(2rem, 5vw, 2.625rem)`, weight 700, −0.011em) — never add inline font-size or weight to an `<h1>`.
 
@@ -60,10 +63,10 @@ No cards, shadows (terminal figures excepted), gradients, glass, or coloured sid
 
 `PostCard.astro` renders the one listing row (the legacy variants all collapse onto it):
 
-- title — sans 22px/700, −0.014em, 2-line clamp, accent on group hover; spans the full row width above the dek/thumbnail band (`sm+`)
-- dek — 16px mist, 2-line clamp, hidden on mobile
-- meta — `.rubric` line: `date · read time · tags` (tag names hide below 480px), plus `· AI-generated` on tunes rows; bottom-anchored so it sits on the thumbnail's bottom edge (`sm+`)
-- thumbnail — 160×107 flush right in the lower band, bottom-aligned with the meta line, 3px radius, LQIP blur-up; mobile keeps the compact side-by-side row (100×67 beside the title, top-aligned)
+- title — sans 24px/700 (16px below `sm`), −0.014em, 2-line clamp, accent on group hover; spans the full row width at every breakpoint. Sizes live in the unlayered `.feed-title` rule in `global.css` — the global `h2` element rule outranks Tailwind's layered size utilities, so utility classes cannot set this size
+- dek — 16px mist, full text (no clamp), hidden on mobile
+- meta — `.rubric` line: `date · read time · tags` (tag names hide below 480px), plus `· AI-generated` on tunes rows; bottom-anchored so it sits on the thumbnail's bottom edge (`sm+`; below `sm` it sits directly under the title, above the banner)
+- thumbnail — 160×107 flush right in the lower band, bottom-aligned with the meta line, 3px radius, LQIP blur-up; below `sm` the row stacks vertically instead — full-width title, then the meta line, then a full-width centre-cropped 2:1 banner (`aspect-[2/1]`, 3/4 of the natural 3:2 height) closing the row (the image never sits beside the title)
 
 A hairline separates rows. Listing pages compose rows inside the 728px column, with `headingLevel` set for the page's outline. The home tab row (`TagTabs.astro`) doubles as topic navigation — real tags, active state = 1px ink underline sitting on the baseline hairline. The tunes index reuses the same grammar with a 21:9 lead banner, the eight-cover film strip (square, 3px radius, 4-across on mobile), and the `russ.fm · Last.fm · Discogs` line; the AI-generated attribution stays in the lead meta line — non-negotiable.
 
@@ -71,11 +74,11 @@ Listings end in **pagination** (`Pagination.astro`), not a browse link: a quiet 
 
 ## Masthead and colophon footer
 
-**Masthead** (`Header.astro`): one 60px row on opaque paper with a 1px bottom hairline — logo + `russ.cloud` wordmark (accent dot) left; right, four text links (Tunes · Books · Archive · About) in mist, a 16px vertical hairline (`.masthead-divider`), then the icon-only search trigger and theme toggle. Below 640px the links collapse into a burger-menu disclosure with the search icon staying visible beside it. Then silence until the footer.
+**Masthead** (`Header.astro`): one 60px row on opaque paper with a 1px bottom hairline — the brand lockup left, rendered by `Logo.astro` as a single self-contained inline SVG: the iMac mark plus `russ.cloud` in baked Poppins outlines (heavy "russ" in `--ink`, light ".cloud" in `--ink-muted`) and a blinking block cursor sitting on the baseline (`1.1s steps(1, end)`, held solid under `prefers-reduced-motion`). The dot and cursor borrow the mark's own palette via the component's `--logo-punct` variable — its screen blue `#35495E` on paper, its base grey `#BDC3C7` in the Night edition — while "russ"/".cloud" ride the ink/mist tokens, so the whole lockup flips with the theme; the mark keeps its own navy/grey fills (per-part classes are in place if a theme override is ever wanted). Right, four text links (Tunes · Books · Archive · About) in mist, a 16px vertical hairline (`.masthead-divider`), then the icon-only search trigger and theme toggle. Below 640px the links collapse into a burger-menu disclosure with the search icon staying visible beside it. Then silence until the footer.
 
 **Search sheet** (`SearchOverlay.astro`, rendered by `Header.astro`): the search trigger is an `<a href="/search/">` that JS upgrades to a native `<dialog>` — a full-width paper band pinned to the top edge, closed by a hairline, the page behind veiled in 78% paper. A quiet 13px mist "Search the archive" label and X button head the column (728px, matching the site measure); beneath, the real Pagefind input (20px radius, `--paper-well`) stays pinned while the results drawer scrolls internally. Opens on click, `⌘K`/`Ctrl+K`, or `/`; closes on `Escape`, X, backdrop, or `⌘K`. Pagefind assets lazy-load on first open; Pagefind UI variables are themed on `body` in `global.css` (not `:root`, which pagefind-ui.css would override at runtime) so both the sheet and `/search/` follow the palette in both editions. No card, no shadow — the sheet is the masthead unfolding, not a floating box.
 
-**Colophon footer** (`Footer.astro`): every view ends the same way — a hairline, then two blocks in the 728px column (stacking on mobile): **Links** (the full `SOCIAL_LINKS` set as 17px monochrome `Icon.astro` icons — mist at rest, ink on hover, config order; never brand colours) beside **Listened to this week** (four 64px covers, latest entry title, `N weeks of listening →`). One `.rubric` line closes it: `About · Archives · Reading list · Glossary · Tags · Source · RSS · © year`. No bio, no location, no typeface credit — and no photo of Russ anywhere in the design.
+**Colophon footer** (`Footer.astro`): every view ends the same way — a hairline, then two blocks in the 728px column (stacking on mobile): **Links** (the full `SOCIAL_LINKS` set as 17px monochrome `Icon.astro` icons — mist at rest, ink on hover, config order; never brand colours; on mobile the icon rows centre in the column while the head stays left) beside **Listened to this week** (four 64px covers — a full-width four-across grid on mobile — latest entry title, `N weeks of listening →`). One `.rubric` line closes it: `About · Archives · Reading list · Glossary · Tags · Source · RSS · © year`. No bio, no location, no typeface credit — and no photo of Russ anywhere in the design.
 
 ## The article
 

@@ -40,9 +40,9 @@ typography:
     lineHeight: 1.38
   feed-title:
     fontFamily: "Schibsted Grotesk, sans-serif"
-    fontSize: 22px
+    fontSize: 24px
     fontWeight: 700
-    lineHeight: 1.27
+    lineHeight: 1.375
     letterSpacing: "-0.014em"
   lead-title:
     fontFamily: "Schibsted Grotesk, sans-serif"
@@ -106,9 +106,8 @@ typography:
 mobile:
   article-title: 32px
   body: "17px / 1.65"
-  feed-title: 18px
-  wordmark: 19px
-  thumbnail: "100×67"
+  feed-title: 16px
+  thumbnail: "full-width 2:1 banner"
 rounded:
   image: 3px
   figure: 4px
@@ -119,7 +118,8 @@ rounded:
 layout:
   column: 680px
   masthead: 60px
-  thumbnail: "160×107 (100×67 mobile)"
+  logo-lockup: "28px-tall SVG, fixed at all widths"
+  thumbnail: "160×107 (full-width 2:1 banner mobile)"
   mobile-gutter: 24px
 ---
 
@@ -148,9 +148,10 @@ page, so even a search arrival deep in the archive ends on who writes here.
 - **Hairline** `#ECE8E1`, always 1px, is the only separator: masthead edge,
   feed-row dividers, the full-height sidebar rule, story action bars, tab
   baseline. Never varied in weight.
-- **Accent** `#2B559E` — blue-black "pen ink" — appears only as: the wordmark
-  dot, title/link hovers, the tinted tag pills, and the article tombstone.
-  Nothing else. No burnt orange anywhere (clean break from Print Edition).
+- **Accent** `#2B559E` — blue-black "pen ink" — appears only as: title/link
+  hovers, the tinted tag pills, and the article tombstone. Nothing else —
+  the wordmark's dot and cursor use the logo mark's own palette, not the
+  accent. No burnt orange anywhere (clean break from Print Edition).
 - **Radius:** 3px listing thumbnails, 4px article figures, full pills, round
   portrait. (A deliberate break from Print Edition's radius-0 rule.)
 
@@ -170,13 +171,22 @@ Two faces, self-hosted through Astro's Fonts API:
   copy. Pull quotes are large italic Literata in mist, indented, no bar.
 - **IBM Plex Mono** appears only inside terminal figures and inline code —
   never as metadata costume.
+- The masthead wordmark is **not a live face**: "russ" (Poppins ExtraBold)
+  and ".cloud" (Poppins Light) are baked to SVG outline paths by
+  `scripts/generate-logo.js`, so Poppins is never loaded and the two-face
+  rule holds for all live text.
 
 ## Layout
 
 One centred **680px column** for everything — feed, tunes, and article share
 the same measure (728px incl. 24px gutters), so browsing and reading feel
-like the same room. No sidebars, no rails. Masthead is one 60px row: iMac
-logo + `russ.cloud` wordmark (ink dot) left; four text links
+like the same room. No sidebars, no rails. Masthead is one 60px row: the
+brand lockup left — one self-contained SVG (`Logo.astro`): the iMac mark +
+`russ.cloud` in baked Poppins outlines (heavy ink "russ", light mist
+".cloud") with the dot and a blinking block cursor on the baseline in the
+mark's own colours — its screen blue `#35495E` on paper, its base grey
+`#BDC3C7` in the Night edition (1.1s square wave, steady under reduced
+motion); four text links
 (Tunes · Books · Archive · About), a 16px vertical hairline, then the
 icon-only search trigger and theme toggle right; burger menu below 640px
 with the search icon staying beside it. Search is not a widget in the bar:
@@ -193,10 +203,12 @@ footer.
 ## The feed
 
 Rows, not cards: full-width title (2-line clamp) over a two-column lower
-band — dek (2-line clamp, hidden on mobile) → meta `date · read time · tags`
+band — dek (full text, never truncated; hidden on mobile) → meta `date · read time · tags`
 on the left, a 160×107 thumbnail flush right, bottom edge on the meta
-baseline, 3px radius. Mobile keeps the compact side-by-side row: 100×67
-thumbnail beside the title, top-aligned. Hairline between rows, ~30px padding. Tab row
+baseline, 3px radius. Mobile stacks each row as three full-width lines —
+16px title, then the meta line, then a full-width centre-cropped 2:1
+banner (3/4 of the natural 3:2 height) closing the row; the title is
+never squeezed into a side column. Hairline between rows, ~30px padding. Tab row
 (`Latest · AI · Tools · Code …`) doubles as topic navigation — real tags,
 active state = ink underline on the baseline hairline. Tunes reuses the exact
 grammar with a 21:9 lead banner for the current week and `Artists 512 ·
@@ -219,9 +231,10 @@ collapse to bare arrows so the row keeps to one line.
 Every view ends the same way: a hairline, then a two-block footer in the
 680px column (stacking on mobile) — **Links** (the full `SOCIAL_LINKS` set
 as 17px monochrome icons from `Icon.astro` — mist at rest, ink on hover,
-config order, wrapping to two tidy rows; never brand colours) beside
-**Listened to this week** (four 64px covers, entry title, `171 weeks of
-listening →`) — closed by one single line: `About · Archives ·
+config order, wrapping to two tidy rows; never brand colours; on mobile
+the icon rows centre in the column while the Links head stays left) beside
+**Listened to this week** (four 64px covers — a full-width four-across
+grid on mobile — entry title, `171 weeks of listening →`) — closed by one single line: `About · Archives ·
 Reading list · Glossary · Tags · Source · RSS · © 2026 Russ McKendrick`.
 No bio in the footer — the bio belongs to the About page only; no location,
 no typeface credit, nothing else. This footer is the

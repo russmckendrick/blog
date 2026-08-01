@@ -1,6 +1,7 @@
 ---
 import { MASTHEAD_ITEMS } from '../../consts'
 import Icon from '../ui/Icon.astro'
+import Logo from './Logo.astro'
 import SearchOverlay from './SearchOverlay.astro'
 
 const mobileMenuId = 'mobile-menu'
@@ -13,9 +14,8 @@ const mobileMenuLabelId = 'mobile-menu-label'
 >
 	<nav class="max-w-[1192px] mx-auto px-4 sm:px-6" aria-label="Main navigation">
 		<div class="flex items-center gap-5 h-[60px]">
-			<a href="/" class="header-logo flex items-center gap-2.5 no-underline" aria-label="home">
-				<img src="/images/logo.svg" alt="" height="32" width="40" class="h-7 w-9" />
-				<span class="masthead-wordmark">russ<span class="wordmark-dot">.</span>cloud</span>
+			<a href="/" class="header-logo flex items-center no-underline" aria-label="russ.cloud home">
+				<Logo />
 			</a>
 
 			<!-- Desktop menu -->
