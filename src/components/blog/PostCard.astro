@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import FormattedDate from './FormattedDate.astro'
 import { getPostUrl } from '../../utils/url.ts'
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time'
-import { getTagName } from '../../utils/tags'
+import { getTagName, getTagColorClasses } from '../../utils/tags'
 import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudflare-images'
 import { AI_AUTHOR, CF_IMAGE_PRESETS } from '../../consts'
 
@@ -68,9 +68,10 @@ const preset = CF_IMAGE_PRESETS.thumbnailHorizontal
 					</>
 				)}
 				{tags.length > 0 && (
-					<span class="post-row-tags">
-						<span aria-hidden="true">&middot;&nbsp;</span>
-						{tags.slice(0, 4).map(getTagName).join(', ')}
+					<span class="post-row-tags flex flex-wrap items-center gap-1.5 ml-1">
+						{tags.slice(0, 3).map((tag) => (
+							<span class={`${getTagColorClasses(tag)} tag-editorial--sm`}>{getTagName(tag)}</span>
+						))}
 					</span>
 				)}
 				{isAIAuthored && (

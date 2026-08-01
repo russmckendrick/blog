@@ -11,7 +11,7 @@ import HeaderWrapper from '../components/layout/HeaderWrapper.astro';
 import PostNavigation from '../components/blog/PostNavigation.astro';
 import Comments from '../components/blog/Comments.astro';
 import ShareButtons from '../components/social/ShareButtons.astro';
-import TableOfContents from '../components/blog/TableOfContents.astro';
+import ArticleRail from '../components/blog/ArticleRail.astro';
 import ReadingTime from '../components/blog/ReadingTime.astro';
 import RelatedPosts from '../components/blog/RelatedPosts.astro';
 import { getTagUrl, getTagDisplayName, getTagName, getTagColorClasses, normalizeTagSlug } from '../utils/tags';
@@ -223,9 +223,18 @@ const howToSchema = howto && howto.steps?.length > 0
 		</HeaderWrapper>
 		<main id="main-content" tabindex="-1" class="relative">
 			<article class="relative pt-8 sm:pt-12 pb-4">
+				<ArticleRail
+					headings={hasToc ? headings : []}
+					maxDepth={isTune ? 2 : 3}
+					tags={tags}
+					markdownHref={`${Astro.url.pathname}index.md`}
+					editUrl={filePath ? editUrl : undefined}
+					editTitle={`${EDIT_POST.text} on GitHub`}
+					rssHref={isTune ? '/tunes/rss.xml' : '/rss.xml'}
+				/>
 				<div class="mx-auto max-w-[728px] px-6">
-					{/* Story header: balanced title → standfirst → single-line byline */}
-					<header class="mb-7">
+					{/* Story header: title → hero artwork → single-line byline → storybar */}
+					<header class="mb-6">
 						<h1
 							class="font-display text-on-surface"
 							data-entrance
@@ -233,64 +242,12 @@ const howToSchema = howto && howto.steps?.length > 0
 						>
 							{title}
 						</h1>
-						<div class="mt-6 flex items-center gap-3" data-entrance>
-							<img
-								src={avatarSrc}
-								alt=""
-								width="36"
-								height="36"
-								class="w-9 h-9 rounded-full object-cover border flex-none"
-								style="border-color: var(--color-outline-variant); background-color: var(--paper-well);"
-								onerror={`this.onerror=null; this.src='${avatarFallback}';`}
-							/>
-							<p class="text-[15px] text-on-surface-variant leading-snug">
-								{isTune ? (
-									<span class="font-medium text-on-surface">{authorName}</span>
-								) : (
-									<a href={AUTHOR_PAGE_PATH} class="font-medium text-on-surface no-underline hover:text-[var(--color-secondary)]">{authorName}</a>
-								)}
-								{readingTime && (
-									<> &middot; <ReadingTime minutes={readingTime} /></>
-								)}
-								{' '}&middot; <FormattedDate date={pubDate} />
-								{updatedDate && (
-									<> &middot; Updated <FormattedDate date={updatedDate} /></>
-								)}
-							</p>
-						</div>
 					</header>
 
-					{/* Storybar: taxonomy left, the article's actions right */}
-					<div class="mb-10 py-3 border-t border-b flex flex-wrap items-center justify-between gap-x-5 gap-y-2" style="border-color: var(--color-outline-variant);">
-						<p class="rubric flex flex-wrap items-center gap-x-1.5">
-							{tags.slice(0, 4).map((tag, index) => (
-								<>
-									{index > 0 && <span aria-hidden="true">&middot;</span>}
-									<a href={getTagUrl(tag)} class="no-underline hover:text-on-surface">{getTagName(tag)}</a>
-								</>
-							))}
-						</p>
-						<p class="rubric flex flex-wrap items-center gap-x-4">
-							<a href={`${Astro.url.pathname}index.md`} class="no-underline hover:text-on-surface">Read as Markdown</a>
-							{filePath && (
-								<a
-									href={editUrl}
-									rel="noopener noreferrer edit"
-									target="_blank"
-									class="no-underline hover:text-on-surface"
-									title={`${EDIT_POST.text} on GitHub`}
-								>
-									Suggest edits
-								</a>
-							)}
-							<a href={isTune ? '/tunes/rss.xml' : '/rss.xml'} class="no-underline hover:text-on-surface">RSS</a>
-						</p>
-					</div>
-
-					{/* Hero image: the artwork, at the column width */}
+					{/* Hero image: the artwork, directly below the title */}
 					{displayImage && (
 						<figure
-							class="mb-10 rounded-[4px] overflow-hidden"
+							class="mb-7 rounded-[4px] overflow-hidden"
 							data-settle
 							transition:name={imageTransition}
 						>
@@ -314,9 +271,33 @@ const howToSchema = howto && howto.steps?.length > 0
 						</figure>
 					)}
 
-					{hasToc && <TableOfContents headings={headings} />}
+					<div class="mb-6 flex items-center gap-3" data-entrance>
+							<img
+								src={avatarSrc}
+								alt=""
+								width="36"
+								height="36"
+								class="w-9 h-9 rounded-full object-cover border flex-none"
+								style="border-color: var(--color-outline-variant); background-color: var(--paper-well);"
+								onerror={`this.onerror=null; this.src='${avatarFallback}';`}
+							/>
+							<p class="text-[15px] text-on-surface-variant leading-snug">
+								{isTune ? (
+									<span class="font-medium text-on-surface">{authorName}</span>
+								) : (
+									<a href={AUTHOR_PAGE_PATH} class="font-medium text-on-surface no-underline hover:text-[var(--color-secondary)]">{authorName}</a>
+								)}
+								{readingTime && (
+									<> &middot; <ReadingTime minutes={readingTime} /></>
+								)}
+								{' '}&middot; <FormattedDate date={pubDate} />
+								{updatedDate && (
+									<> &middot; Updated <FormattedDate date={updatedDate} /></>
+								)}
+							</p>
+					</div>
 
-					<div class="prose">
+					<div class="prose mt-10">
 						<slot />
 					</div>
 

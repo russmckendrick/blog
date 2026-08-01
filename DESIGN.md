@@ -225,12 +225,14 @@ ink 500, the rest mist, one line). Then a hairline "storybar":
 tags left, `Read as Markdown · Suggest edits · RSS` right. Hero figure at
 column width with a centred mist caption. A **reading-progress rule** — 2px
 of accent, fixed to the top viewport edge, no gradient, no glow — runs on
-article pages only. Between hero and prose sits the **Contents block**: a
-native `<details>` (open by default on longer posts) with hairline rules top
-and bottom, a chevron + "Contents" summary (15px/600), and 15px mist entries
-(ink on hover) that
-anchor-link to the post's h2/h3s with smooth scrolling (reduced-motion
-aware). Both carry over features from the Print Edition in the new grammar. Body in Literata with ink-coloured
+article pages only. An **article rail** (`ArticleRail.astro`) sits open and sticky in the right
+margin beside the centred column on viewports ≥1200px — hairline-left, three
+headed sections: **Contents** (13px mist entries, current section in ink 600
+via IntersectionObserver, only when `showToc`), **Tags** (small tinted pills,
+`.tag-editorial--sm`), and **Actions** (Read as Markdown · Suggest edits ·
+RSS). Below 1200px the rail disappears — tags stay at the article foot,
+headings and the progress rule carry wayfinding; there is no inline table of
+contents and no storybar. Feed-row metas show up to three small tag pills. Body in Literata with ink-coloured
 underlined links (accent on hover only). Terminal code figures carry over
 from Print Edition unchanged — macOS window (10px radius), traffic lights in
 the Catppuccin Macchiato reds/ambers/greens documented in the token

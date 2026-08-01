@@ -434,7 +434,7 @@ Automatically generates ToC from h2 and h3 headings:
 #### Details         # Not included
 ```
 
-With `showToc: true`, the headings render as the **Contents block** - a native collapsible `<details>` between the hero image and the prose, framed by hairline rules - at every viewport width (there is no sidebar ToC). Posts with four or more entries open by default; shorter posts start collapsed, and a reader's own toggle is remembered per post.
+With `showToc: true`, the headings render as the **Contents rail** - an always-open, sticky list in the right margin beside the article column on wide viewports (≥1200px), with the section currently being read highlighted. On narrower screens no table of contents renders; there is no inline ToC.
 
 ## Avatars
 

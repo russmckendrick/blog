@@ -252,6 +252,12 @@ a.tag-editorial:focus-visible {
   background-color: var(--pill-hover);
 }
 
+/* Smaller pill for meta contexts (feed rows, the article rail) */
+.tag-editorial--sm {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.65rem;
+}
+
 /* Link styling: links inherit ink; the accent appears on hover only.
    Prose links add underlines (see .prose a); chrome styles its own. */
 a {
