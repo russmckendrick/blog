@@ -115,22 +115,24 @@
    which already include CLS-safe fallback metrics. `inline` is required so Tailwind
    substitutes the var() values into utilities rather than re-wrapping them. */
 @theme inline {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-display: var(--font-source-serif), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-schibsted), -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font-schibsted), -apple-system, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: var(--font-ibm-plex-mono), 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
-  --font-serif: var(--font-source-serif), Georgia, 'Times New Roman', serif;
+  --font-serif: var(--font-literata), Georgia, 'Times New Roman', serif;
 }
 
 /* ================================================
    Base Styling
    ================================================ */
 
+/* Sans is the site's voice: UI, chrome, metadata, headings. The serif
+   appears only inside article prose (.prose sets it explicitly). */
 body {
-  @apply font-serif;
+  @apply font-sans;
   color: var(--color-on-surface);
   background-color: var(--color-surface);
-  font-size: 1.125rem;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -158,16 +160,17 @@ html {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  @apply font-medium;
+  @apply font-semibold;
   color: var(--color-on-surface);
   letter-spacing: normal;
 }
 
 h1 {
-  @apply text-4xl lg:text-5xl leading-tight;
+  @apply leading-tight;
   font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.015em;
+  line-height: 1.19;
+  letter-spacing: -0.011em;
+  text-wrap: balance;
 }
 
 /* Explicit font-size for h1 in sectioning contexts (H1UserAgentFontSizeInSection deprecation) */
@@ -175,19 +178,21 @@ article h1,
 section h1,
 aside h1,
 nav h1,
+h1,
 :where(article, section, aside, nav) h1 {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2rem, 5vw, 2.625rem);
 }
 
 h2 {
-  @apply text-3xl lg:text-4xl leading-tight;
-  font-weight: 660;
-  letter-spacing: -0.01em;
+  @apply text-2xl leading-snug;
+  font-weight: 700;
+  letter-spacing: -0.014em;
 }
 
 h3 {
-  @apply text-2xl lg:text-3xl leading-snug;
-  font-weight: 620;
+  @apply text-xl leading-snug;
+  font-weight: 600;
+  letter-spacing: -0.008em;
 }
 
 /* Code styling */
@@ -201,13 +206,15 @@ pre code {
   @apply bg-transparent p-0;
 }
 
-/* Small-caps editorial label (rubrics, datelines, folios) */
+/* Meta line (datelines, read times, labels): quiet 13px sans in mist.
+   Keeps the legacy .rubric name — 59 call sites restyle through it. */
 .rubric {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  line-height: 1.55;
   color: var(--color-on-surface-variant);
 }
 
@@ -218,12 +225,12 @@ pre code {
   display: inline-flex;
   align-items: center;
   gap: 0.3em;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
   line-height: 1;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
+  letter-spacing: normal;
+  text-transform: none;
   color: var(--color-on-surface-variant);
   text-decoration: none;
   border: 1px solid var(--rule);
@@ -580,6 +587,10 @@ a:hover {
   .prose {
     @apply max-w-none;
     color: var(--color-on-surface);
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.67;
+    letter-spacing: -0.003em;
   }
 }
 
@@ -591,56 +602,58 @@ a:hover {
 }
 
 .prose h1 {
-  @apply text-4xl mt-8 mb-4 leading-tight;
+  @apply mt-8 mb-4 leading-tight;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.011em;
 }
 
-/* Section heads carry a hairline rule above, like a new column in print */
+/* In-body section heads: quiet sans steps, no rules */
 .prose h2 {
-  @apply text-3xl mb-4 leading-tight;
-  font-weight: 660;
-  letter-spacing: -0.01em;
-  margin-top: 3rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--color-outline-variant);
+  @apply mb-3 leading-snug;
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  margin-top: 1.9em;
   outline: none;
 }
 
 .prose h3 {
-  @apply text-2xl mt-8 mb-3 leading-snug;
-  font-weight: 620;
+  @apply mt-8 mb-2 leading-snug;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.008em;
   outline: none;
 }
 
 .prose h4 {
-  @apply text-lg mt-8 mb-3 leading-snug;
-  font-family: var(--font-serif);
+  @apply text-base mt-8 mb-2 leading-snug;
   font-weight: 600;
-  font-variant-caps: small-caps;
-  letter-spacing: 0.04em;
   outline: none;
 }
 
 .prose h5 {
   @apply text-base mt-6 mb-2;
-  font-family: var(--font-serif);
   font-weight: 600;
-  font-variant-caps: small-caps;
-  letter-spacing: 0.04em;
+  color: var(--color-on-surface-variant);
   outline: none;
 }
 
 .prose h6 {
-  @apply text-base font-semibold mt-6 mb-2;
-  font-family: var(--font-serif);
+  @apply text-sm font-semibold mt-6 mb-2;
+  color: var(--color-on-surface-variant);
   outline: none;
 }
 
 .prose p {
-  @apply text-lg mb-5;
-  line-height: 1.75;
-  color: var(--color-on-surface-variant);
+  @apply mb-0;
+  margin-top: 1.65em;
+  line-height: inherit;
+  color: var(--color-on-surface);
+}
+
+.prose > p:first-child {
+  margin-top: 0;
 }
 
 /* The article's text column. Header, contents and prose share one measure and
@@ -666,25 +679,6 @@ a:hover {
 .byline-source:hover,
 .byline-source:focus-visible {
   color: var(--color-secondary);
-}
-
-/* Drop cap on the opening paragraph of an article body */
-.article-body > p:first-of-type::first-letter {
-  font-family: var(--font-display);
-  font-weight: 500;
-  initial-letter: 3;
-  -webkit-initial-letter: 3;
-  margin-right: 0.5rem;
-  color: var(--color-on-surface);
-}
-
-@supports not (initial-letter: 3) {
-  .article-body > p:first-of-type::first-letter {
-    float: left;
-    font-size: 3.4em;
-    line-height: 0.85;
-    padding: 0.05em 0.08em 0 0;
-  }
 }
 
 .prose a {
@@ -716,26 +710,29 @@ a:hover {
 }
 
 .prose li {
-  @apply text-lg pl-2;
-  line-height: 1.75;
-  color: var(--color-on-surface-variant);
+  @apply pl-2;
+  line-height: 1.6;
+  color: var(--color-on-surface);
 }
 
 .prose li ul, .prose li ol {
   @apply mt-2 mb-2 ml-6;
 }
 
-/* Pull-quote treatment: bare, italic, a single ink rule */
+/* Pull quote: large italic serif in mist, indented, no bar */
 .prose blockquote {
-  @apply pl-6 my-8 italic;
-  border-left: 2px solid var(--color-on-surface);
+  @apply my-8 italic;
+  margin-left: 1.6em;
   font-family: var(--font-serif);
-  font-size: 1.2em;
+  font-size: 1.222em;
+  line-height: 1.45;
+  color: var(--color-on-surface-variant);
+  text-wrap: balance;
 }
 
 .prose blockquote p {
-  @apply mb-0;
-  color: var(--color-on-surface-variant);
+  @apply mb-0 mt-0;
+  color: inherit;
 }
 
 .prose code {
@@ -865,25 +862,26 @@ a:hover {
 }
 
 .prose figcaption {
-  @apply text-sm italic text-center mt-2;
-  font-family: var(--font-serif);
+  @apply text-sm text-center mt-3;
+  font-family: var(--font-sans);
+  font-style: normal;
   color: var(--color-on-surface-variant);
 }
 
-/* Print-style table: strong rules top and bottom, hairlines between rows */
+/* Quiet table: hairlines only, sans headers */
 .prose table {
   @apply w-full border-collapse my-6;
-  border-top: 2px solid var(--rule-strong);
-  border-bottom: 2px solid var(--rule-strong);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  border-top: 1px solid var(--color-outline-variant);
+  border-bottom: 1px solid var(--color-outline-variant);
 }
 
 .prose th {
   @apply px-4 py-2 text-left;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-weight: 600;
-  font-variant-caps: small-caps;
-  letter-spacing: 0.04em;
-  border-bottom: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--color-outline-variant);
 }
 
 .prose td {
@@ -895,18 +893,19 @@ a:hover {
   border-bottom: none;
 }
 
-/* Section break: a centred dinkus */
+/* Section break: three quiet accent dots */
 .prose hr {
   border: none;
-  @apply my-10 text-center;
+  @apply my-12 text-center;
 }
 
 .prose hr::after {
-  content: '\2042';
+  content: '\25CF \25CF \25CF';
   display: block;
-  color: var(--color-on-surface-variant);
-  font-size: 1rem;
-  letter-spacing: 0.5em;
+  color: var(--color-secondary);
+  font-size: 0.625rem;
+  letter-spacing: 0.75em;
+  margin-left: 0.75em;
 }
 
 /* External link styling */
