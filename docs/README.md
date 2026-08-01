@@ -17,7 +17,7 @@ User-facing guides for common tasks and workflows:
 - **[Creating Posts](./guides/creating-posts.md)** - Write and publish blog posts
 - **[Using Tags](./guides/using-tags.md)** - Complete tag system reference (30+ tags)
 - **[Using Embed Components](./guides/using-embeds.md)** - Add media, callouts, and interactive elements
-- **[Design System](./guides/design-system.md)** - "The Print Edition" design tokens, typography, and component patterns
+- **[Design System](./guides/design-system.md)** - "The Reading Room" design tokens, typography, and component patterns
 - **[Style Guide](./guides/style-guide.md)** - UI, navigation, spacing, and interaction conventions
 - **[Tunes Generator](./guides/tunes-generator.md)** - Generate automated weekly music posts and year-end wrapped
 - **[Medium Publisher](./guides/medium-publisher.md)** - Cross-publish blog posts to Medium
@@ -41,6 +41,12 @@ Component and API reference documentation:
 - **[LightGallery Meta Plugin](./reference/lightgallery-meta.md)** - Image caption system
 - **[Scripts Reference](./reference/scripts.md)** - Inventory of `scripts/`, helper modules, templates, and caches
 
+### 🧪 Proposals
+
+Design proposals and their decision history:
+
+- **[2026-07 Redesign](./2026-07-redesign/NOTES.md)** - "The Reading Room" Medium-calm redesign (now live): interactive mockup, proposed DESIGN.md, and decision notes
+
 ### 🗄️ Archive
 
 Historical documents and migration notes:
@@ -52,7 +58,7 @@ Historical documents and migration notes:
 
 - **Issues**: [GitHub Issues](https://github.com/russmckendrick/blog/issues)
 - **Questions**: Check [CLAUDE.md](../CLAUDE.md) for detailed development info
-- **Examples**: See [src/content/blog/2025-09-29-kitchen-sink.mdx](../src/content/blog/) for component examples
+- **Examples**: See [src/content/blog/2024-10-28-vinyl-scrobbling-app.mdx](../src/content/blog/2024-10-28-vinyl-scrobbling-app.mdx) for a post exercising many embed components (YouTube, ChatMessage, LightGallery, LinkPreview, callouts, Audio)
 
 ## Contributing
 

@@ -1,0 +1,62 @@
+---
+import { FEATURED_TAGS } from '../../consts'
+import { getTagName, getTagUrl } from '../../utils/tags'
+
+interface Props {
+	/** Tag slug of the active tab, or 'latest' for the home feed. */
+	active?: string;
+}
+
+const { active = 'latest' } = Astro.props
+---
+
+<nav aria-label="Browse by topic" class="feed-tabs">
+	<a href="/" aria-current={active === 'latest' ? 'page' : undefined}>Latest</a>
+	{FEATURED_TAGS.map(tag => (
+		<a href={getTagUrl(tag)} aria-current={active === tag ? 'page' : undefined}>
+			{getTagName(tag)}
+		</a>
+	))}
+</nav>
+
+<style>
+	.feed-tabs {
+		display: flex;
+		align-items: center;
+		gap: 1.75rem;
+		margin-top: 0.5rem;
+		border-bottom: 1px solid var(--color-outline-variant);
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+
+	.feed-tabs::-webkit-scrollbar {
+		display: none;
+	}
+
+	.feed-tabs a {
+		padding: 1.125rem 0 1rem;
+		font-size: 0.875rem;
+		color: var(--color-on-surface-variant);
+		border-bottom: 1px solid transparent;
+		margin-bottom: -1px;
+		white-space: nowrap;
+		text-decoration: none;
+	}
+
+	.feed-tabs a:hover {
+		color: var(--color-on-surface);
+	}
+
+	.feed-tabs a[aria-current='page'] {
+		color: var(--color-on-surface);
+		border-bottom-color: var(--color-on-surface);
+	}
+
+	@media (max-width: 640px) {
+		.feed-tabs {
+			-webkit-mask-image: linear-gradient(to right, black 88%, transparent);
+			mask-image: linear-gradient(to right, black 88%, transparent);
+		}
+	}
+</style>

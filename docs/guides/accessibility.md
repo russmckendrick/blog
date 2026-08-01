@@ -116,18 +116,14 @@ export default defineConfig({
 
 ### 4. Navigation Links
 
-**Current state**: Desktop navigation shows icon-only links; the text label is kept in the DOM inside `.nav-label` (collapsed to zero width, so screen readers still announce it) and slides out visually on `:hover` and `:focus-visible`. The expansion transition is disabled under `prefers-reduced-motion`. The mobile menu always shows icon + text.
+**Current state** (Reading Room): the masthead shows plain text links (`MASTHEAD_ITEMS` — Tunes · Books · Archive · About) plus two icon-only controls, each with an `aria-label`: the search trigger ("Search the archive", also carrying `aria-keyshortcuts="Meta+K"` and a JS-set platform-aware `title`) and the theme toggle. The search trigger is an `<a href="/search/">` upgraded by JS to open the search sheet — a native `<dialog>` (`SearchOverlay.astro`) labelled via `aria-labelledby`, so `showModal()` provides the focus trap, background inerting, and focus restoration to the trigger on close. Focus is moved into the Pagefind input once it renders; `Escape` is handled explicitly in the sheet's keydown listener because Pagefind's input consumes the key (blocking the dialog's native cancel), and the `/` shortcut is suppressed while focus is in an input, textarea, select, or contenteditable. Without JS the trigger simply navigates to `/search/`, where the input is autofocused. The mobile burger opens a full-width panel of text rows; the trigger keeps `aria-controls`/`aria-expanded` and a sr-only label that flips between Open/Close, and the hamburger icon swaps to an X via CSS on `aria-expanded` — both SVGs are `aria-hidden`. On mobile the search trigger sits beside the burger rather than inside the menu. The footer's social icons each carry an `aria-label` and `title` from `SOCIAL_LABELS`. Menu behaviour (outside click, Escape + refocus, close on link click) is unchanged.
 
 **File**: `src/components/layout/Header.astro`
 
 ```astro
-<!-- Desktop navigation (icon-only, label expands on hover/focus) -->
-<a
-  href={item.url}
-  class="header-nav-item nav-underline nav-icon-link ... inline-flex items-center"
->
-  <Icon name={item.icon} size={18} aria-hidden="true" />
-  <span class="nav-label">{item.name}</span>
+<!-- Desktop navigation (text links) -->
+<a href={item.url} class="header-nav-item no-underline py-1.5 inline-flex items-center">
+  {item.name}
 </a>
 
 <!-- Mobile menu trigger -->
@@ -138,7 +134,8 @@ export default defineConfig({
   aria-expanded="false"
 >
   <span id="mobile-menu-label" class="sr-only">Open main menu</span>
-  <svg>...</svg>
+  <svg class="icon-bars" aria-hidden="true">...</svg>
+  <svg class="icon-close" aria-hidden="true">...</svg>
 </button>
 ```
 

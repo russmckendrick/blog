@@ -21,19 +21,35 @@ const postModifiedDateMap = getPostModifiedDateMap();
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://www.russ.cloud/',
+	// Applies to both `astro dev` and `astro preview`. PORT is set by the
+	// Claude Code preview launcher (autoPort in .claude/launch.json) when
+	// 4321 is already taken; defaults to 4321 otherwise.
+	server: { port: Number(process.env.PORT) || 4321 },
 	fonts: [
 		{
 			provider: fontProviders.local(),
-			name: 'Source Serif 4',
-			cssVariable: '--font-source-serif',
+			name: 'Schibsted Grotesk',
+			cssVariable: '--font-schibsted',
+			fallbacks: ['-apple-system', 'Helvetica Neue', 'Arial', 'sans-serif'],
+			options: {
+				variants: [
+					// Variable font instanced to wght 400-700 (fonttools varLib.instancer):
+					// display/UI/meta face — the site never sets sans heavier than 700.
+					{ weight: '400 700', style: 'normal', src: ['./src/assets/fonts/schibsted-grotesk-variable-latin.woff2'] }
+				]
+			}
+		},
+		{
+			provider: fontProviders.local(),
+			name: 'Literata',
+			cssVariable: '--font-literata',
 			fallbacks: ['Georgia', 'Times New Roman', 'serif'],
 			options: {
 				variants: [
-					// Variable fonts instanced to wght 400-800 (fonttools varLib.instancer):
-					// the site uses 400-700 body/headings and 800 on book/glossary h1s,
-					// so the unused 200-399/801-900 ranges were dead weight (~30% smaller)
-					{ weight: '400 800', style: 'normal', src: ['./src/assets/fonts/source-serif-4-variable-latin.woff2'] },
-					{ weight: '400 800', style: 'italic', src: ['./src/assets/fonts/source-serif-4-variable-italic-latin.woff2'] }
+					// Variable font, wght 400-700 with the opsz axis pinned at 20 so the
+					// article body renders at Literata's 18-20px optical size everywhere.
+					{ weight: '400 700', style: 'normal', src: ['./src/assets/fonts/literata-variable-latin.woff2'] },
+					{ weight: '400 700', style: 'italic', src: ['./src/assets/fonts/literata-variable-italic-latin.woff2'] }
 				]
 			}
 		},

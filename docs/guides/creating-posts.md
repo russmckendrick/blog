@@ -104,7 +104,7 @@ tags: ["docker", "kubernetes", "devops"]     # Required (array, 2-5 recommended)
 
 **Note**: See **[Using Tags](./using-tags.md)** for complete tag reference with all 30+ available tags.
 
-**Tip**: Tags are also the join key for the glossary cross-linking feature - posts automatically surface related glossary entries (any whose tags overlap) as a "Glossary" list in the right-hand sidebar below the table of contents on wide screens, and glossary pages list the matching posts. Accurate, consistent tagging is all that is needed; no extra frontmatter fields are required.
+**Tip**: Tags are also the join key for the glossary cross-linking feature - posts automatically surface related glossary entries (any whose tags overlap) as a "Related terms" line at the end of the article, and glossary pages list the matching posts. Accurate, consistent tagging is all that is needed; no extra frontmatter fields are required.
 
 ### Optional Fields
 
@@ -434,26 +434,32 @@ Automatically generates ToC from h2 and h3 headings:
 #### Details         # Not included
 ```
 
-On wide screens (2xl / 1536px+), a sticky sidebar ToC appears to the right of the content with active section highlighting on scroll. The inline collapsible ToC is hidden at this breakpoint. On tunes pages, the sticky sidebar only shows h2 headings to keep the list manageable.
+With `showToc: true`, the headings render as the **Contents rail** - an always-open, sticky list in the right margin beside the article column on wide viewports (≥1200px), with the section currently being read highlighted. On narrower screens no table of contents renders; there is no inline ToC.
 
 ## Avatars
 
+The byline avatar is one of the illustrated cartoon avatars in `public/images/avatars/` - there is no photo anywhere in the design.
+
 ### Automatic Selection
 
-Avatars are automatically selected based on the first tag:
+By default the avatar is chosen from the post's tags via `TAG_AVATAR_MAP` in `src/consts.ts`: the first tag (in frontmatter order) that has a mapping wins. Posts with no mapped tag fall back to `anon.svg`. A sample of the mappings:
 
 | Tag | Avatar |
 |-----|--------|
-| docker, containers, kubernetes | docker.svg |
-| ai | ai.svg |
+| docker, containers, kubernetes, podman | docker.svg |
+| ai | ai-coffee.svg |
 | ansible | ansible.svg |
 | cloud, aws | cloud.svg |
 | azure | azure.svg |
 | devops, automation | devops.svg |
-| code, linux, terraform | terminal.svg |
+| code, terraform | terminal.svg |
+| linux | linux.svg |
 | python | python.svg |
 | security | hacker.svg |
+| vinyl | record-01.svg |
 | listened | headphones.svg |
+
+See `TAG_AVATAR_MAP` in `src/consts.ts` for the full, current list. Tunes posts always use the AI author's avatar instead.
 
 ### Manual Override
 
@@ -463,7 +469,7 @@ avatar: "terminal"  # Override automatic selection
 ---
 ```
 
-Available avatars: See [CLAUDE.md](../../CLAUDE.md#avatar-system) for full list.
+The `avatar:` field still wins over the tag-based default. Values can be a bare name (`"coffee"`, resolved to `/images/avatars/coffee.svg`) or a filename with extension (`"coffee.png"`). Available files: see `public/images/avatars/`.
 
 ## SEO Best Practices
 
@@ -691,4 +697,4 @@ The Book and BreadcrumbList JSON-LD plus the OG image at `/books/my-new-book-og.
 
 ---
 
-**Last Updated**: May 2026
+**Last Updated**: August 2026

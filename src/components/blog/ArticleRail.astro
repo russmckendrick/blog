@@ -1,0 +1,204 @@
+---
+import { getTagUrl, getTagName, getTagColorClasses } from '../../utils/tags';
+
+export interface Heading {
+	depth: number;
+	text: string;
+	slug: string;
+}
+
+interface Props {
+	headings?: Heading[];
+	maxDepth?: number;
+	tags?: string[];
+	markdownHref: string;
+	editUrl?: string;
+	editTitle?: string;
+	rssHref: string;
+}
+
+const { headings = [], maxDepth = 3, tags = [], markdownHref, editUrl, editTitle, rssHref } = Astro.props;
+
+const tocHeadings = headings.filter(h => h.depth <= maxDepth);
+---
+
+<aside class="article-rail" aria-label="Article tools">
+	<div class="article-rail-inner">
+		{tocHeadings.length > 0 && (
+			<nav id="toc-rail" aria-label="Contents">
+				<p class="article-rail-head">Contents</p>
+				<ol class="article-rail-list">
+					{tocHeadings.map((heading) => (
+						<li>
+							<a
+								href={`#${heading.slug}`}
+								class:list={['toc-rail-link article-rail-link', { 'article-rail-link--nested': heading.depth === 3 }]}
+							>
+								{heading.text}
+							</a>
+						</li>
+					))}
+				</ol>
+			</nav>
+		)}
+
+		{tags.length > 0 && (
+			<nav class:list={[tocHeadings.length > 0 && 'article-rail-section']} aria-label="Tags">
+				<p class="article-rail-head">Tags</p>
+				<p class="article-rail-tags">
+					{tags.slice(0, 4).map((tag) => (
+						<a href={getTagUrl(tag)} class={`${getTagColorClasses(tag)} tag-editorial--sm`}>{getTagName(tag)}</a>
+					))}
+				</p>
+			</nav>
+		)}
+
+		<nav class:list={[(tocHeadings.length > 0 || tags.length > 0) && 'article-rail-section']} aria-label="Actions">
+			<p class="article-rail-head">Actions</p>
+			<div class="article-rail-actions">
+				<a href={markdownHref} class="article-rail-link">Read as Markdown</a>
+				{editUrl && (
+					<a href={editUrl} rel="noopener noreferrer edit" target="_blank" class="article-rail-link" title={editTitle}>Suggest edits</a>
+				)}
+				<a href={rssHref} class="article-rail-link">RSS</a>
+			</div>
+		</nav>
+	</div>
+</aside>
+
+<style>
+	/* The rail lives in the right margin beside the centred 680px column,
+	   open and sticky. Below 1200px there is no margin to sit in, so it
+	   disappears — tags stay at the article foot, headings and the
+	   reading-progress rule carry wayfinding. */
+	.article-rail {
+		display: none;
+	}
+
+	@media (min-width: 1200px) {
+		.article-rail {
+			display: block;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: calc(50% + 360px);
+			width: 220px;
+		}
+
+		.article-rail-inner {
+			position: sticky;
+			top: 6rem;
+			max-height: calc(100vh - 8rem);
+			overflow-y: auto;
+			border-left: 1px solid var(--color-outline-variant);
+			padding-left: 1.25rem;
+		}
+	}
+
+	.article-rail-head {
+		font-size: 0.8125rem;
+		font-weight: 600;
+		letter-spacing: -0.01em;
+		color: var(--color-on-surface);
+	}
+
+	.article-rail-list {
+		list-style: none;
+		padding: 0;
+		margin: 0.625rem 0 0;
+	}
+
+	.article-rail-link {
+		display: block;
+		font-size: 0.8125rem;
+		line-height: 1.45;
+		padding: 0.25rem 0;
+		color: var(--color-on-surface-variant);
+		text-decoration: none;
+		transition: color 0.15s ease;
+	}
+
+	.article-rail-link:hover {
+		color: var(--color-on-surface);
+	}
+
+	.article-rail-link--nested {
+		padding-left: 0.875rem;
+	}
+
+	.article-rail-link.active {
+		color: var(--color-on-surface);
+		font-weight: 600;
+	}
+
+	.article-rail-section {
+		margin-top: 1.25rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--color-outline-variant);
+	}
+
+	.article-rail-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.375rem;
+		margin-top: 0.625rem;
+	}
+
+	.article-rail-actions {
+		margin-top: 0.625rem;
+	}
+</style>
+
+<script>
+	// Highlight the heading currently in view. Bottom margin keeps the
+	// active state on the section being read rather than the next one.
+	function initTocRail() {
+		const rail = document.getElementById('toc-rail')
+		if (!rail) return
+
+		const links = Array.from(rail.querySelectorAll<HTMLAnchorElement>('.toc-rail-link'))
+		if (links.length === 0) return
+
+		const bySlug = new Map<string, HTMLAnchorElement>()
+		for (const link of links) {
+			const slug = decodeURIComponent(link.hash.slice(1))
+			bySlug.set(slug, link)
+		}
+
+		const targets = Array.from(bySlug.keys())
+			.map(slug => document.getElementById(slug))
+			.filter((el): el is HTMLElement => el !== null)
+		if (targets.length === 0) return
+
+		const setActive = (slug: string | null) => {
+			for (const link of links) {
+				link.classList.toggle('active', slug !== null && decodeURIComponent(link.hash.slice(1)) === slug)
+			}
+		}
+
+		const visible = new Set<string>()
+		const observer = new IntersectionObserver((entries) => {
+			for (const entry of entries) {
+				const id = entry.target.id
+				if (entry.isIntersecting) visible.add(id)
+				else visible.delete(id)
+			}
+			// Prefer the first visible heading in document order; otherwise the
+			// last heading above the viewport keeps its section active.
+			const firstVisible = targets.find(t => visible.has(t.id))
+			if (firstVisible) {
+				setActive(firstVisible.id)
+				return
+			}
+			let lastAbove: HTMLElement | null = null
+			for (const target of targets) {
+				if (target.getBoundingClientRect().top < 120) lastAbove = target
+			}
+			setActive(lastAbove?.id ?? null)
+		}, { rootMargin: '0px 0px -60% 0px', threshold: 0 })
+
+		targets.forEach(target => observer.observe(target))
+	}
+
+	initTocRail()
+</script>

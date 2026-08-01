@@ -1,0 +1,182 @@
+---
+const isDev = import.meta.env.DEV
+---
+
+<dialog id="search-sheet" class="search-sheet" aria-labelledby="search-sheet-label">
+	<div class="search-sheet-column">
+		<div class="search-sheet-head">
+			<span id="search-sheet-label" class="search-sheet-title">Search the archive</span>
+			<button type="button" class="search-sheet-close" aria-label="Close search">
+				<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6l12 12M18 6L6 18" />
+				</svg>
+			</button>
+		</div>
+		<div class="search-sheet-mount"></div>
+		{isDev && (
+			<p class="search-sheet-dev">
+				Search needs a production build to index content — run <code>pnpm run build</code> then <code>pnpm run preview</code>.
+			</p>
+		)}
+	</div>
+</dialog>
+
+<script>
+	let cleanupSearchOverlay: (() => void) | undefined;
+
+	function initSearchOverlay() {
+		cleanupSearchOverlay?.();
+
+		const controller = new AbortController();
+		const { signal } = controller;
+
+		const dialog = document.getElementById('search-sheet') as HTMLDialogElement | null;
+		if (!dialog || typeof dialog.showModal !== 'function') return;
+
+		const mount = dialog.querySelector<HTMLElement>('.search-sheet-mount');
+		const closeButton = dialog.querySelector<HTMLButtonElement>('.search-sheet-close');
+		const triggers = document.querySelectorAll<HTMLAnchorElement>('[data-search-trigger]');
+
+		const isMac = /mac|iphone|ipad/i.test(navigator.platform);
+		triggers.forEach((trigger) => {
+			trigger.title = `Search the archive (${isMac ? '⌘K' : 'Ctrl+K'})`;
+		});
+
+		let uiReady = false;
+
+		const loadAsset = (create: () => HTMLElement & { onload: any; onerror: any }) =>
+			new Promise<void>((resolve, reject) => {
+				const el = create();
+				el.onload = () => resolve();
+				el.onerror = () => reject(new Error('pagefind asset failed to load'));
+				document.head.appendChild(el);
+			});
+
+		const ensureUi = async (): Promise<boolean> => {
+			if (uiReady) return true;
+			if (!mount) return false;
+
+			if (!window.PagefindUI) {
+				try {
+					await Promise.all([
+						loadAsset(() => {
+							const script = document.createElement('script');
+							script.src = '/pagefind/pagefind-ui.js';
+							return script;
+						}),
+						loadAsset(() => {
+							const link = document.createElement('link');
+							link.rel = 'stylesheet';
+							link.href = '/pagefind/pagefind-ui.css';
+							return link;
+						}),
+					]);
+				} catch {
+					return false;
+				}
+			}
+
+			if (!window.PagefindUI) return false;
+
+			mount.innerHTML = '';
+			new window.PagefindUI({
+				element: mount,
+				showImages: false,
+				excerptLength: 15,
+			});
+			uiReady = true;
+			return true;
+		};
+
+		// PagefindUI renders its input asynchronously, so poll briefly for it
+		const focusInput = (attempts = 30) => {
+			const input = dialog.querySelector<HTMLInputElement>('.pagefind-ui__search-input');
+			if (input) {
+				input.focus();
+				input.select();
+			} else if (attempts > 0) {
+				requestAnimationFrame(() => focusInput(attempts - 1));
+			}
+		};
+
+		const openSearch = () => {
+			// On /search/ the page already has a live input — focus that instead
+			const pageInput = document.querySelector<HTMLInputElement>('#search .pagefind-ui__search-input');
+			if (pageInput) {
+				pageInput.focus();
+				pageInput.select();
+				return;
+			}
+
+			if (dialog.open) return;
+			dialog.showModal();
+			ensureUi().then((ok) => {
+				if (ok) focusInput();
+			});
+		};
+
+		triggers.forEach((trigger) => {
+			trigger.addEventListener('click', (event) => {
+				event.preventDefault();
+				openSearch();
+			}, { signal });
+		});
+
+		closeButton?.addEventListener('click', () => dialog.close(), { signal });
+
+		// Clicks on ::backdrop are dispatched with the dialog itself as target
+		dialog.addEventListener('click', (event) => {
+			if (event.target === dialog) dialog.close();
+		}, { signal });
+
+		document.addEventListener('keydown', (event) => {
+			if ((event.metaKey || event.ctrlKey) && !event.altKey && event.key.toLowerCase() === 'k') {
+				event.preventDefault();
+				dialog.open ? dialog.close() : openSearch();
+				return;
+			}
+
+			// Pagefind's input swallows Escape (it clears the query), which also
+			// blocks the dialog's native cancel — close explicitly instead.
+			if (event.key === 'Escape' && dialog.open) {
+				event.preventDefault();
+				dialog.close();
+				return;
+			}
+
+			if (event.key === '/' && !event.metaKey && !event.ctrlKey && !event.altKey && !dialog.open) {
+				const target = event.target;
+				if (target instanceof Element && target.closest('input, textarea, select, [contenteditable]')) return;
+				event.preventDefault();
+				openSearch();
+			}
+		}, { signal });
+
+		cleanupSearchOverlay = () => {
+			if (dialog.open) dialog.close();
+			controller.abort();
+		};
+	}
+
+	initSearchOverlay();
+
+	document.addEventListener('astro:page-load', initSearchOverlay);
+	document.addEventListener('astro:before-swap', () => {
+		cleanupSearchOverlay?.();
+		cleanupSearchOverlay = undefined;
+	});
+
+	// Track search usage as a Plausible goal (debounced, query not sent for privacy).
+	// Delegated on document so it covers both the sheet and the /search/ page.
+	let searchTimer: ReturnType<typeof setTimeout>;
+	document.addEventListener('input', (e) => {
+		const target = e.target as HTMLElement;
+		if (!target.classList.contains('pagefind-ui__search-input')) return;
+		clearTimeout(searchTimer);
+		searchTimer = setTimeout(() => {
+			if ((target as HTMLInputElement).value.trim().length >= 2) {
+				window.plausible?.('Search', { interactive: false });
+			}
+		}, 1200);
+	});
+</script>

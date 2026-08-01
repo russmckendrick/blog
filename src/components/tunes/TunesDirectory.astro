@@ -51,7 +51,7 @@ const getImageSrcSet = (src: string) =>
 
 {groups.map(([letter, list]) => (
   <section id={`letter-${letter}`} class="mb-12 scroll-mt-24">
-    <h2 class="font-display text-3xl mb-2 pb-2 border-b text-on-surface" style="border-color: var(--color-outline-variant);">{letter}</h2>
+    <h2 class="text-[15px] font-semibold pb-2 mb-2 border-b text-on-surface" style="letter-spacing: -0.01em; border-color: var(--color-outline-variant);">{letter}</h2>
     <ul class="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
       {list.map((item) => (
         <li class="min-w-0 border-b" style="border-color: var(--color-outline-variant);">
@@ -59,7 +59,7 @@ const getImageSrcSet = (src: string) =>
             href={item.href}
             class="group flex min-w-0 min-h-[96px] overflow-hidden py-3 no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4"
           >
-            <div class="relative w-[84px] sm:w-[96px] shrink-0 overflow-hidden border" style="border-color: var(--color-outline-variant);">
+            <div class="relative w-[84px] sm:w-[96px] shrink-0 overflow-hidden rounded-[3px]">
               <div class="absolute inset-0 flex items-center justify-center surface-container font-display text-3xl text-on-surface-variant opacity-50" aria-hidden="true">
                 {getInitial(item.name)}
               </div>
@@ -82,17 +82,17 @@ const getImageSrcSet = (src: string) =>
                   decoding="async"
                   fetchpriority="low"
                   onerror="this.style.display = 'none'"
-                  class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  class="absolute inset-0 h-full w-full object-cover"
                 />
               )}
             </div>
             <div class="min-w-0 flex flex-1 flex-col justify-center p-4">
               {item.kicker && (
-                <span class="rubric mb-1 block truncate text-xs" style="color: var(--color-secondary);">
+                <span class="rubric mb-1 block truncate text-xs">
                   {item.kicker}
                 </span>
               )}
-              <span class="font-display text-base leading-snug text-on-surface line-clamp-2 transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 660;">
+              <span class="font-display text-base leading-snug text-on-surface line-clamp-2 transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 600;">
                 {item.name}
               </span>
               <span class="mt-1 text-sm text-on-surface-variant leading-snug">

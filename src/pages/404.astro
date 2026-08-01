@@ -14,20 +14,20 @@ Astro.response.status = 404;
 		<div class="text-center max-w-2xl">
 			<!-- Glitchy 404 -->
 			<div class="mb-8">
-				<h1 class="glitch text-9xl sm:text-[12rem] text-on-surface" data-text="404" style="font-weight: 900;">
+				<h1 class="glitch text-9xl sm:text-[12rem] text-on-surface" data-text="404">
 					404
 				</h1>
 			</div>
 
 			<!-- Main Message -->
 			<div class="mb-12">
-				<h2 class="text-4xl sm:text-5xl mb-6 text-on-surface glitch-text">
+				<h2 class="mb-6 text-on-surface glitch-text">
 					{ERROR_404.heading}
 				</h2>
-				<p class="text-xl text-on-surface-variant mb-3">
+				<p class="text-lg text-on-surface-variant leading-normal mb-3">
 					{ERROR_404.message}
 				</p>
-				<p class="text-lg text-on-surface-variant opacity-80">
+				<p class="text-lg text-on-surface-variant leading-normal">
 					{ERROR_404.submessage}
 				</p>
 			</div>
@@ -35,7 +35,7 @@ Astro.response.status = 404;
 			<!-- Button -->
 			<a
 				href="/"
-				class="glitch-button inline-flex items-center justify-center gap-3 px-8 py-4 border-2 text-lg transition-all no-underline"
+				class="glitch-button inline-flex items-center justify-center gap-3 px-8 py-4 border text-lg transition-all no-underline"
 				style="border-color: var(--color-secondary); color: var(--color-secondary);"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -72,14 +72,14 @@ Astro.response.status = 404;
 
 		.glitch::before {
 			left: 2px;
-			text-shadow: -2px 0 #ff00de;
+			text-shadow: -2px 0 var(--color-secondary);
 			clip: rect(44px, 450px, 56px, 0);
 			animation: glitch-anim 5s infinite linear alternate-reverse;
 		}
 
 		.glitch::after {
 			left: -2px;
-			text-shadow: -2px 0 #00fff9, 2px 2px #ff00de;
+			text-shadow: -2px 0 var(--color-on-surface-variant), 2px 2px var(--color-secondary);
 			animation: glitch-anim2 5s infinite linear alternate-reverse;
 		}
 
@@ -117,8 +117,8 @@ Astro.response.status = 404;
 
 		@keyframes glitch-text-anim {
 			0%, 100% { text-shadow: 0 0 0 transparent; }
-			25% { text-shadow: -2px 0 0 rgba(255, 0, 222, 0.5), 2px 0 0 rgba(0, 255, 249, 0.5); }
-			75% { text-shadow: 2px 0 0 rgba(255, 0, 222, 0.5), -2px 0 0 rgba(0, 255, 249, 0.5); }
+			25% { text-shadow: -2px 0 0 color-mix(in srgb, var(--color-secondary) 50%, transparent), 2px 0 0 color-mix(in srgb, var(--color-on-surface-variant) 50%, transparent); }
+			75% { text-shadow: 2px 0 0 color-mix(in srgb, var(--color-secondary) 50%, transparent), -2px 0 0 color-mix(in srgb, var(--color-on-surface-variant) 50%, transparent); }
 		}
 
 		/* Button hover effect */
@@ -133,15 +133,29 @@ Astro.response.status = 404;
 			60% { transform: translate(-2px, -2px); }
 			80% { transform: translate(2px, 2px); }
 		}
+
+		/* Hold the set still for readers who prefer reduced motion */
+		@media (prefers-reduced-motion: reduce) {
+			.glitch,
+			.glitch::before,
+			.glitch::after,
+			.glitch-text,
+			.glitch-button:hover {
+				animation: none;
+			}
+		}
 	</style>
 
 	<script>
 		const canvas = document.getElementById('static') as HTMLCanvasElement;
 		const ctx = canvas.getContext('2d');
+		const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 		if (ctx) {
 			canvas.width = window.innerWidth;
 			canvas.height = window.innerHeight;
+
+			let rafId = 0;
 
 			function drawStatic() {
 				const imageData = ctx!.createImageData(canvas.width, canvas.height);
@@ -153,10 +167,26 @@ Astro.response.status = 404;
 					imageData.data[i + 3] = 255;
 				}
 				ctx!.putImageData(imageData, 0, 0);
-				requestAnimationFrame(drawStatic);
+				rafId = requestAnimationFrame(drawStatic);
 			}
 
-			drawStatic();
+			function startStatic() {
+				if (motionQuery.matches) return;
+				rafId = requestAnimationFrame(drawStatic);
+			}
+
+			function stopStatic() {
+				cancelAnimationFrame(rafId);
+			}
+
+			startStatic();
+
+			motionQuery.addEventListener('change', () => {
+				stopStatic();
+				startStatic();
+			});
+
+			window.addEventListener('pagehide', stopStatic);
 
 			window.addEventListener('resize', () => {
 				canvas.width = window.innerWidth;

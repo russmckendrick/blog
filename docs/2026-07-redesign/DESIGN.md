@@ -1,7 +1,7 @@
 ---
-version: "1.0"
+version: "proposal"
 name: "Russ.Cloud — The Reading Room"
-description: "Medium-calm editorial design system for the Russ.Cloud Astro blog and music site."
+description: "Proposed Medium-calm editorial design system for russ.cloud. Not yet implemented — the live site's system is the root DESIGN.md (Print Edition). This file replaces it if the redesign is approved."
 colors:
   paper: "#FBFAF7"
   paper-well: "#F3F1EB"
@@ -100,7 +100,7 @@ typography:
     fontWeight: 400
     lineHeight: 1.4
   code:
-    fontFamily: "IBM Plex Mono, ui-monospace, Consolas, monospace"
+    fontFamily: "ui-monospace, SF Mono, Menlo, Consolas, monospace"
     fontSize: 13.5px
     lineHeight: 1.7
 mobile:
@@ -112,8 +112,8 @@ mobile:
 rounded:
   image: 3px
   figure: 4px
-  terminal: 10px
-  search-input: 20px
+  terminal: 9px
+  search-pill: 20px
   pill: 9999px
   portrait: 9999px
 layout:
@@ -123,7 +123,15 @@ layout:
   mobile-gutter: 24px
 ---
 
-# The Reading Room — design system
+# The Reading Room — proposed design system
+
+**Status: proposal (31 Jul 2026), sleeping on it.** The interactive mockup is
+[`russcloud-redesign-mockup.html`](./russcloud-redesign-mockup.html) in this
+folder — open it in any browser; the floating pill switches Feed / Story /
+Tunes views and the Night edition. Rationale and decision history are in
+[`NOTES.md`](./NOTES.md). If approved, this file is rewritten into the repo
+root `DESIGN.md` during implementation; until then the live system remains
+"The Print Edition".
 
 ## Overview
 
@@ -138,7 +146,7 @@ page, so even a search arrival deep in the archive ends on who writes here.
 ## Tokens and naming
 
 - **Paper** `#FBFAF7` is the page — warm off-white, never pure white.
-  `paper-well` is the only fill (search input, inline code). The Night edition
+  `paper-well` is the only fill (search pill, inline code). The Night edition
   is a second material — warm dark paper `#161411`, softened ink and accent —
   not an inversion.
 - **Ink** `#1E1C18` for titles and body; **mist** `#6F6A61` for *everything*
@@ -156,7 +164,7 @@ page, so even a search arrival deep in the archive ends on who writes here.
 
 ## Typography
 
-Two faces, self-hosted through Astro's Fonts API:
+Two faces, to be self-hosted through Astro's Fonts API like the current pair:
 
 - **Schibsted Grotesk** — display and all UI. Titles bold with negative
   tracking that scales with size (−0.011em at 42px, −0.014em at 22–27px);
@@ -168,35 +176,23 @@ Two faces, self-hosted through Astro's Fonts API:
   page reads large-print (calibrated against Medium side-by-side, 1 Aug
   2026); ~65–70 characters per line in the 680px column is the target. Serif never appears in UI; sans never appears in body
   copy. Pull quotes are large italic Literata in mist, indented, no bar.
-- **IBM Plex Mono** appears only inside terminal figures and inline code —
-  never as metadata costume.
+- **Mono** stays system (`ui-monospace`) and appears only inside terminal
+  figures and inline code — never as metadata costume.
 
 ## Layout
 
 One centred **680px column** for everything — feed, tunes, and article share
 the same measure (728px incl. 24px gutters), so browsing and reading feel
 like the same room. No sidebars, no rails. Masthead is one 60px row: iMac
-logo + `russ.cloud` wordmark (ink dot) left; four text links
-(Tunes · Books · Archive · About), a 16px vertical hairline, then the
-icon-only search trigger and theme toggle right; burger menu below 640px
-with the search icon staying beside it. Search is not a widget in the bar:
-the icon (a plain link to `/search/`, JS-upgraded) opens the **search
-sheet** — a native dialog rendered as a full-width paper band under the top
-edge, closed by a hairline, the page behind veiled in 78% paper. Inside the
-728px measure sit a 13px mist label, a real autofocused Pagefind input
-(20px radius, the `paper-well` fill), and an internally scrolling results
-drawer. `⌘K`/`Ctrl+K` or `/` opens it; `Esc`, the X, or the veil closes
-it; Pagefind's assets lazy-load on first open. No card, no shadow — the
-sheet reads as the masthead unfolding. Then silence until the colophon
-footer.
+logo + `russ.cloud` wordmark (ink dot), search pill, four text links
+(Tunes · Books · Archive · About), theme toggle; burger menu below 640px.
+Then silence until the colophon footer.
 
 ## The feed
 
-Rows, not cards: full-width title (2-line clamp) over a two-column lower
-band — dek (2-line clamp, hidden on mobile) → meta `date · read time · tags`
-on the left, a 160×107 thumbnail flush right, bottom edge on the meta
-baseline, 3px radius. Mobile keeps the compact side-by-side row: 100×67
-thumbnail beside the title, top-aligned. Hairline between rows, ~30px padding. Tab row
+Rows, not cards: title (2-line clamp) → dek (2-line clamp, hidden on mobile)
+→ meta `date · read time · tags`, with a 160×107 thumbnail flush right,
+title-aligned, 3px radius. Hairline between rows, ~30px padding. Tab row
 (`Latest · AI · Tools · Code …`) doubles as topic navigation — real tags,
 active state = ink underline on the baseline hairline. Tunes reuses the exact
 grammar with a 21:9 lead banner for the current week and `Artists 512 ·
@@ -207,12 +203,9 @@ week's records appear as an eight-cover **film strip** (square, 3px radius,
 Last.fm · Discogs` line beneath.
 
 Listings end in **pagination**, not a browse link: a quiet 14px sans row —
-numerals in mist centred in the column, current page in ink 600 with a 1px
-ink underline (the active-tab idiom), an ellipsis to the last page, `← Newer
-posts` flush left and `Older posts →` flush right. Both steps are always
-present; the one with no page in that direction renders as static mist at
-40% opacity rather than disappearing. Below 640px the Older/Newer labels
-collapse to bare arrows so the row keeps to one line.
+numerals in mist, current page in ink 600 with a 1px ink underline (the
+active-tab idiom), an ellipsis to the last page, and `Older posts →`
+right-aligned. `← Newer` appears on pages past the first.
 
 ## The colophon footer
 
@@ -220,8 +213,8 @@ Every view ends the same way: a hairline, then a two-block footer in the
 680px column (stacking on mobile) — **Links** (the full `SOCIAL_LINKS` set
 as 17px monochrome icons from `Icon.astro` — mist at rest, ink on hover,
 config order, wrapping to two tidy rows; never brand colours) beside
-**Listened to this week** (four 64px covers, entry title, `171 weeks of
-listening →`) — closed by one single line: `About · Archives ·
+**Listened to this week** (four 64px covers, entry title, `Week 30 · 171
+weeks of listening →`) — closed by one single line: `About · Archives ·
 Reading list · Glossary · Tags · Source · RSS · © 2026 Russ McKendrick`.
 No bio in the footer — the bio belongs to the About page only; no location,
 no typeface credit, nothing else. This footer is the
@@ -230,8 +223,7 @@ archive's identity block; there is no photo of Russ anywhere in the design
 
 ## The article
 
-Balanced sans title (42px), then directly a single-line byline (no
-standfirst — the description belongs to feed rows and meta tags only): a
+Balanced sans title (42px), mist standfirst, then a single-line byline: a
 36px circular **tag-based avatar** (the illustrated set in
 `public/images/avatars/`, chosen per `TAG_AVATAR_MAP` in `src/consts.ts` —
 cartoons, so the no-photos rule holds — there is no photo anywhere in the
@@ -240,16 +232,13 @@ ink 500, the rest mist, one line). Then a hairline "storybar":
 tags left, `Read as Markdown · Suggest edits · RSS` right. Hero figure at
 column width with a centred mist caption. A **reading-progress rule** — 2px
 of accent, fixed to the top viewport edge, no gradient, no glow — runs on
-article pages only. An **article rail** (`ArticleRail.astro`) sits open and sticky in the right
-margin beside the centred column on viewports ≥1200px — hairline-left, three
-headed sections: **Contents** (13px mist entries, current section in ink 600
-via IntersectionObserver, only when `showToc`), **Tags** (small tinted pills,
-`.tag-editorial--sm`), and **Actions** (Read as Markdown · Suggest edits ·
-RSS). Below 1200px the rail disappears — tags stay at the article foot,
-headings and the progress rule carry wayfinding; there is no inline table of
-contents and no storybar. Feed-row metas show up to three small tag pills. Body in Literata with ink-coloured
+article pages only. Between hero and prose sits the **Contents block**: a
+native `<details open>` with hairline rules top and bottom, a chevron +
+"Contents" summary (15px/600), and 15px mist entries (ink on hover) that
+anchor-link to the post's h2/h3s with smooth scrolling (reduced-motion
+aware). Both carry over features from the Print Edition in the new grammar. Body in Literata with ink-coloured
 underlined links (accent on hover only). Terminal code figures carry over
-from Print Edition unchanged — macOS window (10px radius), traffic lights in
+from Print Edition unchanged — macOS window (9px radius), traffic lights in
 the Catppuccin Macchiato reds/ambers/greens documented in the token
 frontmatter, in both editions; they are figures, not chrome, and the one
 permitted shadow (`terminal-shadow`). The mockup's floating view switcher is

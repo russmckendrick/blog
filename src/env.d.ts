@@ -12,8 +12,8 @@ interface Window {
     }
   ) => void;
 
-  // Pagefind search UI
-  PagefindUI: new (options: {
+  // Pagefind search UI (present only after /pagefind/pagefind-ui.js loads)
+  PagefindUI?: new (options: {
     element: Element | string;
     showImages?: boolean;
     excerptLength?: number;

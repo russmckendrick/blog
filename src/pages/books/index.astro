@@ -56,32 +56,31 @@ const bookSchemas = books.map((book) =>
     <Schema slot="head" item={schema} />
   ))}
 
-  <section class="max-w-6xl mx-auto px-5 pt-4 pb-10 mb-10 border-b-2" style="border-color: var(--rule-strong);">
-    <p class="rubric mb-3" data-entrance>Bookshelf</p>
-    <h1 class="text-4xl lg:text-5xl mb-4 text-on-surface font-display" data-entrance>
-      Books by {AUTHOR_NAME}
-    </h1>
-    <p class="text-lg text-on-surface-variant max-w-3xl" data-entrance>
-      {books.length} technical books on Docker, Kubernetes, Ansible, and Infrastructure as Code, mostly published by{' '}
-      <a class="text-[var(--color-secondary)] hover:underline" href="https://www.packtpub.com/" target="_blank" rel="noopener noreferrer">Packt Publishing</a>.
-    </p>
+  <section class="max-w-6xl mx-auto px-6">
+    <header class="pt-8 pb-8 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
+      <h1>Books by {AUTHOR_NAME}</h1>
+      <p class="mt-3 text-lg text-on-surface-variant leading-normal max-w-3xl">
+        {books.length} technical books on Docker, Kubernetes, Ansible, and Infrastructure as Code, mostly published by{' '}
+        <a class="underline" href="https://www.packtpub.com/" target="_blank" rel="noopener noreferrer">Packt Publishing</a>.
+      </p>
+    </header>
   </section>
 
-  <section class="max-w-6xl mx-auto px-5 pb-16">
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-10">
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-10" data-reveal>
       {books.map((book) => (
-        <a href={`/books/${book.id}/`} class="group block overflow-hidden" aria-label={book.data.title} data-reveal>
-          <div class="border overflow-hidden aspect-[3/4]" style="border-color: var(--color-outline-variant);">
-            <img src={book.data.cover} alt={book.data.alt} class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" loading="lazy" />
+        <a href={`/books/${book.id}/`} class="group block" aria-label={book.data.title}>
+          <div class="border rounded-[3px] overflow-hidden aspect-[3/4]" style="border-color: var(--color-outline-variant);">
+            <img src={book.data.cover} alt={book.data.alt} class="w-full h-full object-cover" loading="lazy" />
           </div>
         </a>
       ))}
     </div>
 
-    <p class="text-sm text-on-surface-variant text-center mt-10">
+    <p class="rubric mt-10">
       More on the author behind these books:{' '}
-      <a class="text-[var(--color-secondary)] hover:underline" href="/about/">about page</a>{' '}·{' '}
-      <a class="text-[var(--color-secondary)] hover:underline" href="/author/russ-mckendrick/">post archive</a>.
+      <a class="underline hover:text-on-surface" href="/about/">about page</a>{' '}·{' '}
+      <a class="underline hover:text-on-surface" href="/author/russ-mckendrick/">post archive</a>.
     </p>
   </section>
 </BaseLayout>

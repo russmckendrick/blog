@@ -1,4 +1,6 @@
 ---
+import { getTagColorClasses, getTagName } from '../../utils/tags'
+
 interface Props {
   totalArticles: number
   tagCounts: Map<string, number>
@@ -12,36 +14,32 @@ const isFiltered = !!activeTag
 ---
 
 <div class="mb-10">
-  <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 pt-4 mb-4">
-    <div>
-      <p class="rubric mb-3" data-entrance>The Clippings</p>
-      <h1 class="text-4xl lg:text-5xl text-on-surface font-display" data-entrance>Reading List</h1>
-    </div>
-    <p class="text-sm text-on-surface-variant" data-entrance>
+  <header class="pt-8 pb-8 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
+    <h1>Reading list</h1>
+    <p class="mt-3 text-lg text-on-surface-variant leading-normal">
       {isFiltered ? (
-        <span>{filteredCount} of {totalArticles} articles saved on <a href="https://www.instapaper.com/p/russmckendrick" class="hover:underline" style="color: var(--color-secondary);" target="_blank" rel="noopener noreferrer">Instapaper</a></span>
+        <span>{filteredCount} of {totalArticles} articles saved on <a href="https://www.instapaper.com/p/russmckendrick" class="underline" target="_blank" rel="noopener noreferrer">Instapaper</a></span>
       ) : (
-        <span>{totalArticles} articles saved on <a href="https://www.instapaper.com/p/russmckendrick" class="hover:underline" style="color: var(--color-secondary);" target="_blank" rel="noopener noreferrer">Instapaper</a></span>
+        <span>{totalArticles} articles saved on <a href="https://www.instapaper.com/p/russmckendrick" class="underline" target="_blank" rel="noopener noreferrer">Instapaper</a></span>
       )}
     </p>
-  </div>
-  <div class="border-b-2 mb-5" style="border-color: var(--rule-strong);"></div>
+  </header>
 
   {sortedTags.length > 0 && (
-    <div class="flex flex-wrap items-center gap-2">
+    <div class="mt-6 flex flex-wrap items-center gap-2">
       <span class="rubric mr-1">Filter:</span>
       <a
         href="/reading/"
-        class:list={["reading-tag-btn tag-editorial", { active: !isFiltered }]}
+        class:list={["reading-tag-btn", getTagColorClasses(), { active: !isFiltered }]}
       >
         All
       </a>
       {sortedTags.map(([tag, count]) => (
         <a
           href={`/reading/tag/${encodeURIComponent(tag)}/`}
-          class:list={["reading-tag-btn tag-editorial", { active: activeTag === tag }]}
+          class:list={["reading-tag-btn", getTagColorClasses(tag), { active: activeTag === tag }]}
         >
-          {tag}
+          {getTagName(tag)}
           <span class="opacity-60">({count})</span>
         </a>
       ))}
@@ -52,7 +50,6 @@ const isFiltered = !!activeTag
 <style>
   .reading-tag-btn.active {
     color: var(--color-secondary);
-    border-color: var(--color-secondary);
-    background-color: color-mix(in srgb, var(--color-secondary) 8%, transparent);
+    background-color: var(--pill-hover);
   }
 </style>

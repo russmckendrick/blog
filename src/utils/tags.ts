@@ -44,7 +44,8 @@ export function getTagEmoji(slug: string): string {
  */
 export function getTagName(slug: string): string {
   const title = getTagMetadata(slug).title;
-  return title.replace(/[\p{Emoji}\s]/gu, '').trim();
+  // Strip pictographic emoji only — \p{Emoji} also matches digits and spaces
+  return title.replace(/[\p{Extended_Pictographic}️]/gu, '').replace(/\s+/g, ' ').trim();
 }
 
 /**

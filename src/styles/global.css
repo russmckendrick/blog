@@ -1,28 +1,32 @@
 @import "tailwindcss";
 
 /* ================================================
-   Design Tokens - "The Print Edition"
-   Editorial paper-and-ink system. The Material-style
-   --color-* names are kept as aliases of the paper/ink
-   primitives so existing components keep working;
-   prefer the primitives in new code.
+   Design Tokens - "The Reading Room"
+   Warm paper, two text colours, one hairline, a pen-ink
+   accent spent almost nowhere. The Material-style --color-*
+   names are kept as aliases of the paper/ink primitives so
+   existing components keep working; prefer the primitives
+   in new code. See DESIGN.md.
    ================================================ */
 
 :root {
-  /* Paper & ink primitives (light: neutral newsprint, no warmth) */
-  --paper: #f6f6f6;
-  --paper-bright: #ffffff;
-  --paper-shade: #ededed;
-  --paper-tint: #e4e4e4;
-  --paper-deep: #d8d8d8;
-  --paper-deepest: #c9c9c9;
-  --ink: #1a1a1a;
-  --ink-muted: #555555;
-  --rule: rgba(0, 0, 0, 0.14);
-  --rule-strong: rgba(0, 0, 0, 0.5);
-  --accent: #bf3b00;
-  --accent-strong: #8f2d00;
+  /* Paper & ink primitives (light: warm off-white, never pure white) */
+  --paper: #fbfaf7;
+  --paper-well: #f3f1eb;
+  --paper-bright: #f3f1eb;
+  --paper-shade: #f3f1eb;
+  --paper-tint: #f3f1eb;
+  --paper-deep: #ece8e1;
+  --paper-deepest: #e2ded4;
+  --ink: #1e1c18;
+  --ink-muted: #6f6a61;
+  --rule: #ece8e1;
+  --rule-strong: #ece8e1;
+  --accent: #2b559e;
+  --accent-strong: #234a8c;
   --accent-highlight: #8a6d1f;
+  --pill: #edf1f8;
+  --pill-hover: #e2e9f5;
 
   /* Brand aliases */
   --color-primary: var(--accent-strong);
@@ -67,24 +71,27 @@
 }
 
 .dark {
-  /* Paper & ink primitives (dark: ink and paper swapped) */
-  --paper: #16130e;
-  --paper-bright: #100e0a;
-  --paper-shade: #1d1912;
-  --paper-tint: #221e16;
-  --paper-deep: #2a251b;
-  --paper-deepest: #363023;
-  --ink: #e9e2d2;
-  --ink-muted: #b5ac97;
-  --rule: rgba(233, 226, 210, 0.16);
-  --rule-strong: rgba(233, 226, 210, 0.5);
-  --accent: #d99c82;
-  --accent-strong: #e5b29c;
+  /* Paper & ink primitives (dark: a second edition — warm dark paper, not black) */
+  --paper: #161411;
+  --paper-well: #211e1a;
+  --paper-bright: #211e1a;
+  --paper-shade: #211e1a;
+  --paper-tint: #211e1a;
+  --paper-deep: #2b2721;
+  --paper-deepest: #332e26;
+  --ink: #e8e3da;
+  --ink-muted: #a69d8f;
+  --rule: #2b2721;
+  --rule-strong: #2b2721;
+  --accent: #9fbceb;
+  --accent-strong: #b3ccf2;
   --accent-highlight: #c9a94e;
+  --pill: #20242e;
+  --pill-hover: #272d3b;
 
   /* Brand aliases */
-  --color-on-primary: #2a1109;
-  --color-on-secondary: #2a1109;
+  --color-on-primary: #161411;
+  --color-on-secondary: #161411;
 }
 
 /* ================================================
@@ -115,22 +122,24 @@
    which already include CLS-safe fallback metrics. `inline` is required so Tailwind
    substitutes the var() values into utilities rather than re-wrapping them. */
 @theme inline {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-display: var(--font-source-serif), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-schibsted), -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font-schibsted), -apple-system, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: var(--font-ibm-plex-mono), 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
-  --font-serif: var(--font-source-serif), Georgia, 'Times New Roman', serif;
+  --font-serif: var(--font-literata), Georgia, 'Times New Roman', serif;
 }
 
 /* ================================================
    Base Styling
    ================================================ */
 
+/* Sans is the site's voice: UI, chrome, metadata, headings. The serif
+   appears only inside article prose (.prose sets it explicitly). */
 body {
-  @apply font-serif;
+  @apply font-sans;
   color: var(--color-on-surface);
   background-color: var(--color-surface);
-  font-size: 1.125rem;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -158,16 +167,17 @@ html {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  @apply font-medium;
+  @apply font-semibold;
   color: var(--color-on-surface);
   letter-spacing: normal;
 }
 
 h1 {
-  @apply text-4xl lg:text-5xl leading-tight;
+  @apply leading-tight;
   font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.015em;
+  line-height: 1.19;
+  letter-spacing: -0.011em;
+  text-wrap: balance;
 }
 
 /* Explicit font-size for h1 in sectioning contexts (H1UserAgentFontSizeInSection deprecation) */
@@ -175,19 +185,21 @@ article h1,
 section h1,
 aside h1,
 nav h1,
+h1,
 :where(article, section, aside, nav) h1 {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2rem, 5vw, 2.625rem);
 }
 
 h2 {
-  @apply text-3xl lg:text-4xl leading-tight;
-  font-weight: 660;
-  letter-spacing: -0.01em;
+  @apply text-2xl leading-snug;
+  font-weight: 700;
+  letter-spacing: -0.014em;
 }
 
 h3 {
-  @apply text-2xl lg:text-3xl leading-snug;
-  font-weight: 620;
+  @apply text-xl leading-snug;
+  font-weight: 600;
+  letter-spacing: -0.008em;
 }
 
 /* Code styling */
@@ -195,57 +207,66 @@ code {
   @apply font-mono px-1.5 py-0.5 text-sm;
   background-color: var(--color-surface-container);
   color: var(--color-on-surface);
+  border-radius: 4px;
 }
 
 pre code {
   @apply bg-transparent p-0;
 }
 
-/* Small-caps editorial label (rubrics, datelines, folios) */
+/* Meta line (datelines, read times, labels): quiet 13px sans in mist.
+   Keeps the legacy .rubric name — 59 call sites restyle through it. */
 .rubric {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  line-height: 1.55;
   color: var(--color-on-surface-variant);
 }
 
-/* Editorial tag treatment: a quiet classification stamp — mono caps in
-   a square hairline box, accent on hover. Replaces the retired per-tag
-   pastel chips. */
+/* Tag pill: ink-tinted rounded chip — the site's one tinted fill */
 .tag-editorial {
   display: inline-flex;
   align-items: center;
   gap: 0.3em;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
   line-height: 1;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--color-on-surface-variant);
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--color-on-surface);
   text-decoration: none;
-  border: 1px solid var(--rule);
-  padding: 0.3rem 0.55rem;
-  transition: color var(--dur-quick) ease, border-color var(--dur-quick) ease, background-color var(--dur-quick) ease;
+  background-color: var(--pill);
+  border: none;
+  border-radius: 9999px;
+  padding: 0.45rem 0.85rem;
+  transition: color var(--dur-quick) ease, background-color var(--dur-quick) ease;
 }
 
 a.tag-editorial:hover,
 a.tag-editorial:focus-visible {
-  color: var(--color-secondary);
-  border-color: var(--color-secondary);
-  background-color: color-mix(in srgb, var(--color-secondary) 6%, transparent);
+  color: var(--color-on-surface);
+  background-color: var(--pill-hover);
 }
 
-/* Link styling */
+/* Smaller pill for meta contexts (feed rows, the article rail) */
+.tag-editorial--sm {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.65rem;
+}
+
+/* Link styling: links inherit ink; the accent appears on hover only.
+   Prose links add underlines (see .prose a); chrome styles its own. */
 a {
-  color: var(--color-secondary);
+  color: inherit;
   @apply transition-colors;
 }
 
 a:hover {
-  color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 /* Focus states */
@@ -347,7 +368,7 @@ a:hover {
 @keyframes entrance-rise {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -357,19 +378,27 @@ a:hover {
 
 @media (prefers-reduced-motion: no-preference) {
   [data-entrance] {
-    animation: entrance-rise 0.6s var(--ease-settle) backwards;
+    animation: entrance-rise 0.45s var(--ease-settle) backwards;
   }
 
   [data-entrance] ~ [data-entrance] {
-    animation-delay: 0.09s;
+    animation-delay: 0.06s;
   }
 
   [data-entrance] ~ [data-entrance] ~ [data-entrance] {
-    animation-delay: 0.18s;
+    animation-delay: 0.12s;
   }
 
   [data-entrance] ~ [data-entrance] ~ [data-entrance] ~ [data-entrance] {
-    animation-delay: 0.27s;
+    animation-delay: 0.18s;
+  }
+
+  [data-entrance] ~ [data-entrance] ~ [data-entrance] ~ [data-entrance] ~ [data-entrance] {
+    animation-delay: 0.24s;
+  }
+
+  [data-entrance] ~ [data-entrance] ~ [data-entrance] ~ [data-entrance] ~ [data-entrance] ~ [data-entrance] {
+    animation-delay: 0.3s;
   }
 
   [data-settle] {
@@ -494,24 +523,234 @@ a:hover {
   border-bottom: 1px solid var(--color-outline-variant);
 }
 
-#site-header .header-logo,
-#site-header .header-logo span {
+.masthead-wordmark {
+  font-weight: 700;
+  font-size: 1.3125rem;
+  letter-spacing: -0.02em;
   color: var(--color-on-surface);
 }
 
-.masthead-wordmark {
-  font-weight: 700;
+.masthead-wordmark .wordmark-dot {
+  color: var(--color-secondary);
+}
+
+/* Hairline between the nav links and the utility icons */
+.masthead-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--rule);
 }
 
 #site-header .header-nav-item {
   color: var(--color-on-surface-variant);
+  font-size: 0.875rem;
 }
 
 #site-header .header-nav-item:hover {
   color: var(--color-on-surface);
 }
 
-/* Underline draw-in for nav and editorial links */
+/* Burger icon swaps to an X while the menu is open */
+#menu-trigger .icon-close { display: none; }
+#menu-trigger[aria-expanded="true"] .icon-close { display: block; }
+#menu-trigger[aria-expanded="true"] .icon-bars { display: none; }
+
+/* ================================================
+   Search sheet — full-width paper band in the top
+   layer, closed by a hairline, page veiled in paper.
+   No card, no shadow; the Reading Room grammar.
+   ================================================ */
+
+.search-sheet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  max-height: 85dvh;
+}
+
+.search-sheet::backdrop {
+  background: rgba(251, 250, 247, 0.78);
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
+}
+
+/* Keep the page from scrolling behind the sheet */
+html:has(.search-sheet[open]) {
+  overflow: hidden;
+}
+
+.search-sheet-column {
+  width: 100%;
+  max-width: 728px;
+  margin: 0 auto;
+  padding: 14px 24px 26px;
+}
+
+.search-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.search-sheet-title {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+.search-sheet-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  margin-right: -6px;
+  color: var(--ink-muted);
+  transition: color var(--dur-quick) ease;
+}
+
+.search-sheet-close:hover {
+  color: var(--ink);
+}
+
+/* Input stays pinned; only the results drawer scrolls */
+.search-sheet .pagefind-ui__drawer {
+  overflow-y: auto;
+  max-height: min(58dvh, 540px);
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--paper-deepest) transparent;
+}
+
+.search-sheet-dev {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .search-sheet[open] {
+    animation: search-sheet-in var(--dur-quick) var(--ease-settle);
+  }
+
+  .search-sheet[open]::backdrop {
+    animation: search-veil-in var(--dur-quick) ease;
+  }
+}
+
+@keyframes search-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes search-veil-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ================================================
+   Pagefind UI theming — shared by the search sheet
+   and /search/, routed through the design tokens so
+   both editions follow the palette automatically.
+   Declared on body, not :root: pagefind-ui.css loads
+   at runtime and its own :root defaults would win the
+   cascade, but a declaration directly on body always
+   beats values inherited from html.
+   ================================================ */
+
+body {
+  --pagefind-ui-scale: 1;
+  --pagefind-ui-primary: var(--ink);
+  --pagefind-ui-text: var(--ink-muted);
+  --pagefind-ui-background: var(--paper-well);
+  --pagefind-ui-border: var(--rule);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-tag: var(--pill);
+  --pagefind-ui-border-radius: 20px;
+  --pagefind-ui-font: var(--font-sans), sans-serif;
+}
+
+/* Soften shapes the vars don't reach */
+.pagefind-ui__search-clear,
+.pagefind-ui__button {
+  border-radius: 20px !important;
+}
+
+.pagefind-ui__result-thumb,
+.pagefind-ui__result-tag {
+  border-radius: 3px !important;
+}
+
+.pagefind-ui__search-input {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pagefind-ui__search-input:focus {
+  border-color: var(--color-secondary) !important;
+  box-shadow: none;
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.pagefind-ui__result-link {
+  transition: color 0.15s ease;
+}
+
+.pagefind-ui__result-link:hover {
+  color: var(--color-secondary) !important;
+}
+
+/* Double class beats pagefind-ui.css's own `.pagefind-ui--reset mark { all: revert }`,
+   which loads after this sheet at runtime */
+.pagefind-ui.pagefind-ui--reset mark {
+  background-color: color-mix(in srgb, var(--accent-highlight) 25%, transparent);
+  color: inherit;
+  padding: 0.1em 0.2em;
+  border-radius: 0;
+}
+
+.pagefind-ui__search-clear {
+  transition: color 0.15s ease;
+}
+
+.pagefind-ui__search-clear:hover {
+  color: var(--color-on-surface) !important;
+}
+
+.pagefind-ui__button {
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.pagefind-ui__button:hover {
+  border-color: var(--color-secondary) !important;
+  color: var(--color-secondary) !important;
+}
+
+@media (max-width: 640px) {
+  .pagefind-ui__search-input {
+    font-size: calc(18px * var(--pagefind-ui-scale)) !important;
+    height: calc(56px * var(--pagefind-ui-scale)) !important;
+  }
+
+  .pagefind-ui__result-title {
+    font-size: calc(18px * var(--pagefind-ui-scale)) !important;
+  }
+
+  .pagefind-ui__result-excerpt {
+    font-size: calc(14px * var(--pagefind-ui-scale)) !important;
+  }
+}
+
+/* Legacy underline draw-in, kept for editorial links */
 .nav-underline {
   position: relative;
 }
@@ -541,33 +780,6 @@ a:hover {
   }
 }
 
-/* Icon-only nav links — label slides out on hover/focus */
-.nav-icon-link .nav-label {
-  display: inline-block;
-  max-width: 0;
-  margin-left: 0;
-  opacity: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  transition:
-    max-width var(--dur-hover) var(--ease-settle),
-    margin-left var(--dur-hover) var(--ease-settle),
-    opacity var(--dur-hover) var(--ease-settle);
-}
-
-.nav-icon-link:hover .nav-label,
-.nav-icon-link:focus-visible .nav-label {
-  max-width: 8em;
-  margin-left: 0.45em;
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .nav-icon-link .nav-label {
-    transition: none;
-  }
-}
-
 
 /* ================================================
    Prose Styling (Blog Post Content)
@@ -580,6 +792,10 @@ a:hover {
   .prose {
     @apply max-w-none;
     color: var(--color-on-surface);
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.67;
+    letter-spacing: -0.003em;
   }
 }
 
@@ -591,63 +807,75 @@ a:hover {
 }
 
 .prose h1 {
-  @apply text-4xl mt-8 mb-4 leading-tight;
+  @apply mt-8 mb-4 leading-tight;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.011em;
 }
 
-/* Section heads carry a hairline rule above, like a new column in print */
+/* In-body section heads: quiet sans steps, no rules */
 .prose h2 {
-  @apply text-3xl mb-4 leading-tight;
-  font-weight: 660;
-  letter-spacing: -0.01em;
-  margin-top: 3rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--color-outline-variant);
+  @apply mb-3 leading-snug;
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  margin-top: 1.9em;
   outline: none;
 }
 
 .prose h3 {
-  @apply text-2xl mt-8 mb-3 leading-snug;
-  font-weight: 620;
+  @apply mt-8 mb-2 leading-snug;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.008em;
   outline: none;
 }
 
 .prose h4 {
-  @apply text-lg mt-8 mb-3 leading-snug;
-  font-family: var(--font-serif);
+  @apply text-base mt-8 mb-2 leading-snug;
   font-weight: 600;
-  font-variant-caps: small-caps;
-  letter-spacing: 0.04em;
   outline: none;
 }
 
 .prose h5 {
   @apply text-base mt-6 mb-2;
-  font-family: var(--font-serif);
   font-weight: 600;
-  font-variant-caps: small-caps;
-  letter-spacing: 0.04em;
+  color: var(--color-on-surface-variant);
   outline: none;
 }
 
 .prose h6 {
-  @apply text-base font-semibold mt-6 mb-2;
-  font-family: var(--font-serif);
+  @apply text-sm font-semibold mt-6 mb-2;
+  color: var(--color-on-surface-variant);
   outline: none;
 }
 
 .prose p {
-  @apply text-lg mb-5;
-  line-height: 1.75;
-  color: var(--color-on-surface-variant);
+  @apply mb-0;
+  margin-top: 1.65em;
+  line-height: inherit;
+  color: var(--color-on-surface);
 }
 
-/* The article's text column. Header, contents and prose share one measure and
-   one left edge; only the hero plate runs the full container width. */
+.prose > p:first-child {
+  margin-top: 0;
+}
+
+/* The article's text column: everything — header, contents, hero, prose —
+   shares the 680px measure inside the 728px container. */
 .article-column {
   margin-inline: auto;
-  max-width: 72ch;
+  max-width: 680px;
+}
+
+/* Three accent dots close every article */
+.tombstone {
+  margin-top: 3rem;
+  text-align: center;
+  color: var(--color-secondary);
+  font-size: 0.875rem;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
 }
 
 /* Source link in the article byline: icon only, label carried by title/aria-label.
@@ -668,34 +896,18 @@ a:hover {
   color: var(--color-secondary);
 }
 
-/* Drop cap on the opening paragraph of an article body */
-.article-body > p:first-of-type::first-letter {
-  font-family: var(--font-display);
-  font-weight: 500;
-  initial-letter: 3;
-  -webkit-initial-letter: 3;
-  margin-right: 0.5rem;
-  color: var(--color-on-surface);
-}
-
-@supports not (initial-letter: 3) {
-  .article-body > p:first-of-type::first-letter {
-    float: left;
-    font-size: 3.4em;
-    line-height: 0.85;
-    padding: 0.05em 0.08em 0 0;
-  }
-}
-
+/* Prose links: ink with a real underline; accent only on hover */
 .prose a {
-  color: var(--color-secondary);
-  @apply underline underline-offset-2 transition-colors;
-  text-decoration-color: color-mix(in srgb, var(--color-secondary) 40%, transparent);
+  color: var(--color-on-surface);
+  @apply underline transition-colors;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-on-surface);
 }
 
 .prose a:hover {
-  color: var(--color-primary);
-  text-decoration-color: var(--color-primary);
+  color: var(--color-secondary);
+  text-decoration-color: var(--color-secondary);
 }
 
 .prose strong {
@@ -716,26 +928,29 @@ a:hover {
 }
 
 .prose li {
-  @apply text-lg pl-2;
-  line-height: 1.75;
-  color: var(--color-on-surface-variant);
+  @apply pl-2;
+  line-height: 1.6;
+  color: var(--color-on-surface);
 }
 
 .prose li ul, .prose li ol {
   @apply mt-2 mb-2 ml-6;
 }
 
-/* Pull-quote treatment: bare, italic, a single ink rule */
+/* Pull quote: large italic serif in mist, indented, no bar */
 .prose blockquote {
-  @apply pl-6 my-8 italic;
-  border-left: 2px solid var(--color-on-surface);
+  @apply my-8 italic;
+  margin-left: 1.6em;
   font-family: var(--font-serif);
-  font-size: 1.2em;
+  font-size: 1.222em;
+  line-height: 1.45;
+  color: var(--color-on-surface-variant);
+  text-wrap: balance;
 }
 
 .prose blockquote p {
-  @apply mb-0;
-  color: var(--color-on-surface-variant);
+  @apply mb-0 mt-0;
+  color: inherit;
 }
 
 .prose code {
@@ -865,25 +1080,26 @@ a:hover {
 }
 
 .prose figcaption {
-  @apply text-sm italic text-center mt-2;
-  font-family: var(--font-serif);
+  @apply text-sm text-center mt-3;
+  font-family: var(--font-sans);
+  font-style: normal;
   color: var(--color-on-surface-variant);
 }
 
-/* Print-style table: strong rules top and bottom, hairlines between rows */
+/* Quiet table: hairlines only, sans headers */
 .prose table {
   @apply w-full border-collapse my-6;
-  border-top: 2px solid var(--rule-strong);
-  border-bottom: 2px solid var(--rule-strong);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  border-top: 1px solid var(--color-outline-variant);
+  border-bottom: 1px solid var(--color-outline-variant);
 }
 
 .prose th {
   @apply px-4 py-2 text-left;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-weight: 600;
-  font-variant-caps: small-caps;
-  letter-spacing: 0.04em;
-  border-bottom: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--color-outline-variant);
 }
 
 .prose td {
@@ -895,18 +1111,19 @@ a:hover {
   border-bottom: none;
 }
 
-/* Section break: a centred dinkus */
+/* Section break: three quiet accent dots */
 .prose hr {
   border: none;
-  @apply my-10 text-center;
+  @apply my-12 text-center;
 }
 
 .prose hr::after {
-  content: '\2042';
+  content: '\25CF \25CF \25CF';
   display: block;
-  color: var(--color-on-surface-variant);
-  font-size: 1rem;
-  letter-spacing: 0.5em;
+  color: var(--color-secondary);
+  font-size: 0.625rem;
+  letter-spacing: 0.75em;
+  margin-left: 0.75em;
 }
 
 /* External link styling */
@@ -932,7 +1149,7 @@ a:hover {
    ================================================ */
 
 :root {
-  --callout-note: #555555;
+  --callout-note: #6f6a61;
   --callout-tip: #3d5c33;
   --callout-important: #2f4a63;
   --callout-caution: #8f2d00;
@@ -940,7 +1157,7 @@ a:hover {
 }
 
 .dark {
-  --callout-note: #b5ac97;
+  --callout-note: #a69d8f;
   --callout-tip: #a4bd8c;
   --callout-important: #93b2ce;
   --callout-caution: #e5a48c;

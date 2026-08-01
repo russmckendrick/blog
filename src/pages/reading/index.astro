@@ -23,7 +23,7 @@ const description = 'Articles and links I\'ve saved and read on Instapaper'
 ---
 
 <BaseLayout title={title} description={description}>
-  <section class="max-w-7xl mx-auto px-5">
+  <section class="max-w-[728px] mx-auto px-6">
     <ReadingHeader totalArticles={readingData.length} tagCounts={tagCounts} />
     <ReadingList items={items} />
 
@@ -33,6 +33,8 @@ const description = 'Articles and links I\'ve saved and read on Instapaper'
         totalPages={totalPages}
         getHref={(pageNum) => (pageNum === 1 ? '/reading/' : `/reading/page/${pageNum}/`)}
         hideIfSingle={true}
+        olderLabel="Older articles"
+        newerLabel="Newer articles"
       />
     )}
   </section>

@@ -4,9 +4,20 @@ interface Props {
 	totalPages: number;
 	getHref: (page: number) => string;
 	hideIfSingle?: boolean;
+	/** Label for the forward (older content) link, e.g. "Older posts". */
+	olderLabel?: string;
+	/** Label for the backward (newer content) link, e.g. "Newer posts". */
+	newerLabel?: string;
 }
 
-const { currentPage, totalPages, getHref, hideIfSingle = true } = Astro.props;
+const {
+	currentPage,
+	totalPages,
+	getHref,
+	hideIfSingle = true,
+	olderLabel = 'Older posts',
+	newerLabel = 'Newer posts',
+} = Astro.props;
 
 if (hideIfSingle && totalPages <= 1) {
 	return;
@@ -20,7 +31,8 @@ const buildPageList = (current: number, total: number) => {
 
 	const safeTotal = Math.max(total, 1);
 
-	if (safeTotal <= 6) {
+	// Up to 7 pages an ellipsis could never hide more than one page — show them all.
+	if (safeTotal <= 7) {
 		return Array.from({ length: safeTotal }, (_, index) => index + 1);
 	}
 
@@ -35,7 +47,10 @@ const buildPageList = (current: number, total: number) => {
 	const start = clamp(current - showRange, 2, safeTotal - 1);
 	const end = clamp(current + showRange, 2, safeTotal - 1);
 
-	if (start > 2) {
+	// An ellipsis standing in for a single page is no shorter than the page itself.
+	if (start === 3) {
+		addPage(2);
+	} else if (start > 3) {
 		pages.push('ellipsis');
 	}
 
@@ -43,13 +58,13 @@ const buildPageList = (current: number, total: number) => {
 		addPage(page);
 	}
 
-	if (end < safeTotal - 1) {
+	if (end === safeTotal - 2) {
+		addPage(safeTotal - 1);
+	} else if (end < safeTotal - 2) {
 		pages.push('ellipsis');
 	}
 
-	if (safeTotal > 1) {
-		addPage(safeTotal);
-	}
+	addPage(safeTotal);
 
 	return pages;
 };
@@ -59,63 +74,66 @@ const previousHref = currentPage > 1 ? getHref(currentPage - 1) : null;
 const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 ---
 
-<nav class="mt-16 border-t pt-4" style="border-color: var(--color-outline-variant);" aria-label="Pagination Navigation">
-	<div class="flex items-center justify-between gap-4">
-		<div class="flex-shrink-0">
-			{previousHref ? (
-				<a
-					href={previousHref}
-					class="rubric nav-underline no-underline py-1 hover:text-on-surface"
-					aria-label="Go to previous page"
-				>
-					&larr;<span class="hidden sm:inline"> Previous</span>
-				</a>
+<nav class="pagination-row pt-7 grid grid-cols-[1fr_auto_1fr] items-center text-sm text-on-surface-variant" aria-label="Pagination">
+	{previousHref ? (
+		<a
+			href={previousHref}
+			rel="prev"
+			class="justify-self-start -ml-2.5 no-underline inline-flex items-center gap-1 px-2.5 py-1 hover:text-on-surface"
+			aria-label={newerLabel}
+		>
+			<span aria-hidden="true">&larr;</span>
+			<span class="hidden sm:inline">{newerLabel}</span>
+		</a>
+	) : (
+		<span class="justify-self-start -ml-2.5 inline-flex items-center gap-1 px-2.5 py-1 opacity-40">
+			<span aria-hidden="true">&larr;</span>
+			<span class="hidden sm:inline">{newerLabel}</span>
+		</span>
+	)}
+	<span class="flex flex-wrap items-center justify-center gap-x-0.5 gap-y-2">
+		{pageItems.map((item) => (
+			item === 'ellipsis' ? (
+				<span class="px-1 py-1" aria-hidden="true">&hellip;</span>
 			) : (
-				<span class="rubric opacity-40 cursor-not-allowed" aria-disabled="true">
-					&larr;<span class="hidden sm:inline"> Previous</span>
-				</span>
-			)}
-		</div>
-		<div class="hidden md:flex items-baseline gap-4 font-mono text-sm">
-			{pageItems.map((item) => (
-				item === 'ellipsis' ? (
-					<span class="text-on-surface-variant" aria-hidden="true">&hellip;</span>
-				) : (
-					<a
-						href={getHref(item)}
-						class={`nav-underline no-underline py-1 transition-colors ${
-							item === currentPage
-								? 'font-semibold'
-								: 'text-on-surface-variant hover:text-on-surface'
-						}`}
-						style={item === currentPage ? 'color: var(--color-secondary);' : undefined}
-						aria-current={item === currentPage ? 'page' : undefined}
-						aria-label={`Go to page ${item}`}
-					>
-						{item}
-					</a>
-				)
-			))}
-		</div>
-		<div class="flex md:hidden items-baseline gap-2 font-mono text-sm text-on-surface-variant">
-			<span class="font-semibold" style="color: var(--color-secondary);">{currentPage}</span>
-			<span>of</span>
-			<span>{totalPages}</span>
-		</div>
-		<div class="flex-shrink-0">
-			{nextHref ? (
 				<a
-					href={nextHref}
-					class="rubric nav-underline no-underline py-1 hover:text-on-surface"
-					aria-label="Go to next page"
+					href={getHref(item)}
+					class:list={[
+						'no-underline px-2.5 py-1 hover:text-on-surface',
+						item === currentPage && 'pagination-current',
+					]}
+					aria-current={item === currentPage ? 'page' : undefined}
+					aria-label={`Page ${item}`}
 				>
-					<span class="hidden sm:inline">Next </span>&rarr;
+					{item}
 				</a>
-			) : (
-				<span class="rubric opacity-40 cursor-not-allowed" aria-disabled="true">
-					<span class="hidden sm:inline">Next </span>&rarr;
-				</span>
-			)}
-		</div>
-	</div>
+			)
+		))}
+	</span>
+	{nextHref ? (
+		<a
+			href={nextHref}
+			rel="next"
+			class="justify-self-end no-underline inline-flex items-center gap-1 py-1 pl-2.5 hover:text-on-surface"
+			aria-label={olderLabel}
+		>
+			<span class="hidden sm:inline">{olderLabel}</span>
+			<span aria-hidden="true">&rarr;</span>
+		</a>
+	) : (
+		<span class="justify-self-end inline-flex items-center gap-1 py-1 pl-2.5 opacity-40">
+			<span class="hidden sm:inline">{olderLabel}</span>
+			<span aria-hidden="true">&rarr;</span>
+		</span>
+	)}
 </nav>
+
+<style>
+	/* 3px padding + 1px border equals the siblings' 4px py-1, so the row height never shifts. */
+	.pagination-current {
+		color: var(--color-on-surface);
+		font-weight: 600;
+		border-bottom: 1px solid var(--color-on-surface);
+		padding-bottom: 3px;
+	}
+</style>

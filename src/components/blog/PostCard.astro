@@ -1,338 +1,128 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import FormattedDate from './FormattedDate.astro';
-import { getPostUrl } from '../../utils/url.ts';
-import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
-import { getTagUrl, getTagDisplayName, getTagColorClasses } from '../../utils/tags';
-import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudflare-images';
-import { AI_AUTHOR, CF_IMAGE_PRESETS } from '../../consts';
+import type { CollectionEntry } from 'astro:content'
+import FormattedDate from './FormattedDate.astro'
+import { getPostUrl } from '../../utils/url.ts'
+import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time'
+import { getTagName, getTagColorClasses } from '../../utils/tags'
+import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudflare-images'
+import { AI_AUTHOR, CF_IMAGE_PRESETS } from '../../consts'
 
 interface Props {
 	post: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
-	priority?: boolean; // For LCP optimization on first card
-	variant?: 'vertical' | 'horizontal' | 'featured' | 'grid'; // Layout variant
+	priority?: boolean; // For LCP optimization on first row
+	/** Legacy variants all collapse onto the single Reading Room row. */
+	variant?: 'vertical' | 'horizontal' | 'featured' | 'grid' | 'row';
 	headingLevel?: '2' | '3'; // Heading level for accessibility
 }
 
-const { post, priority = false, variant = 'vertical', headingLevel = '2' } = Astro.props;
-const HeadingTag = `h${headingLevel}` as 'h2' | 'h3';
-const href = getPostUrl(post.data.pubDate, post.data.title);
-const cover = 'cover' in post.data ? post.data.cover : undefined;
-const heroImage = post.data.heroImage || cover?.image;
-const alt = cover?.alt || post.data.title;
-const description = ('summary' in post.data ? post.data.summary : undefined) || post.data.description;
-const minutes = calculateReadingTime(post.body ?? '');
-const readingTime = formatReadingTime(minutes);
-const author = post.data.author || AI_AUTHOR.name;
-const tags = post.data.tags ?? [];
+const { post, priority = false, headingLevel = '2' } = Astro.props
+const HeadingTag = `h${headingLevel}` as 'h2' | 'h3'
+const href = getPostUrl(post.data.pubDate, post.data.title)
+const cover = 'cover' in post.data ? post.data.cover : undefined
+const heroImage = post.data.heroImage || cover?.image
+const alt = cover?.alt || post.data.title
+const description = ('summary' in post.data ? post.data.summary : undefined) || post.data.description
+const minutes = calculateReadingTime(post.body ?? '')
+const readingTime = formatReadingTime(minutes)
+const isAIAuthored = (post.data.author || AI_AUTHOR.name) === AI_AUTHOR.name && post.collection === 'tunes'
+const tags = post.data.tags ?? []
 
 // Shared-element view transition names: the listing image/title morph
 // into the article hero/title on navigation.
-const transitionKey = href.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
-const imageTransition = `post-img-${transitionKey}`;
-const titleTransition = `post-title-${transitionKey}`;
+const transitionKey = href.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '')
+const imageTransition = `post-img-${transitionKey}`
+const titleTransition = `post-title-${transitionKey}`
 
 // Generate LQIP placeholder URL for blur-up effect
 // Skip LQIP for priority images to eliminate critical request chain (LCP optimization)
-const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null;
+const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null
+const preset = CF_IMAGE_PRESETS.thumbnailHorizontal
 ---
 
-{variant === 'vertical' ? (
-	<a
-		href={href}
-		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4">
-		<article class="border-b pb-10" style="border-color: var(--color-outline-variant);">
-			{heroImage && (
-				<figure
-					class="relative overflow-hidden border bg-cover bg-center bg-no-repeat"
-					style={`border-color: var(--color-outline-variant);${lqipUrl ? ` background-image: url('${lqipUrl}')` : ''}`}
-					transition:name={imageTransition}
-				>
-					{/* LQIP blur overlay - shows while main image loads */}
-					{lqipUrl && (
-						<div
-							class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
-							style={`background-image: url('${lqipUrl}')`}
-							aria-hidden="true"
-						/>
-					)}
-					<img
-						src={getCFImageUrl(heroImage, {
-							width: priority ? 400 : 600,
-							quality: priority ? CF_IMAGE_PRESETS.thumbnailPriority.quality : CF_IMAGE_PRESETS.thumbnail.quality,
-							format: priority ? CF_IMAGE_PRESETS.thumbnailPriority.format : CF_IMAGE_PRESETS.thumbnail.format,
-							fit: priority ? CF_IMAGE_PRESETS.thumbnailPriority.fit : CF_IMAGE_PRESETS.thumbnail.fit
-						})}
-						srcset={generateCFSrcSet(
-							heroImage,
-							priority ? CF_IMAGE_PRESETS.thumbnailPriority.widths : CF_IMAGE_PRESETS.thumbnail.widths,
-							priority ? CF_IMAGE_PRESETS.thumbnailPriority.quality : CF_IMAGE_PRESETS.thumbnail.quality,
-							priority ? CF_IMAGE_PRESETS.thumbnailPriority.format : CF_IMAGE_PRESETS.thumbnail.format
-						)}
-						sizes="(min-width: 768px) 720px, calc(100vw - 40px)"
-						alt={alt}
-						width="1600"
-						height="900"
-						loading={priority ? "eager" : "lazy"}
-						decoding={priority ? "sync" : "async"}
-						fetchpriority={priority ? "high" : "low"}
-						class={`w-full aspect-[16/9] sm:aspect-[5/2] min-h-[220px] object-cover ${priority ? '' : 'transition-transform duration-700 ease-out group-hover:scale-[1.04]'}`}
-					/>
-				</figure>
-			)}
-			<div class="pt-6 flex flex-col gap-4">
-				<p class="rubric flex flex-wrap items-center gap-x-2">
-					<FormattedDate date={post.data.pubDate} />
-					{readingTime && (
-						<>
-							<span aria-hidden="true">&middot;</span>
-							<span>{readingTime}</span>
-						</>
-					)}
-					<span aria-hidden="true">&middot;</span>
-					<span>{author}</span>
-				</p>
-				<header>
-					<HeadingTag
-						class="font-display text-2xl sm:text-3xl text-on-surface transition-colors group-hover:text-[var(--color-secondary)]"
-						style="font-weight: 660;"
-						transition:name={titleTransition}
-					>
-						{post.data.title}
-					</HeadingTag>
-				</header>
-				{description && (
-					<p class="text-base sm:text-lg text-on-surface-variant leading-relaxed">
-						{description}
-					</p>
-				)}
-				{tags.length > 0 && (
-					<footer class="flex flex-wrap gap-2">
-						{tags.slice(0, 6).map((tag) => (
-							<span class={getTagColorClasses(tag)}>
-								{getTagDisplayName(tag)}
-							</span>
-						))}
-					</footer>
-				)}
-			</div>
-		</article>
-	</a>
-) : variant === 'featured' ? (
-	/* Featured variant - lead-story editorial spread */
-	<a
-		href={href}
-		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4">
-		<article class="pt-2 pb-6">
-			<div class="flex flex-col lg:flex-row lg:gap-10">
-				{/* Content side */}
-				<div class="relative py-6 lg:py-2 flex flex-col gap-5 lg:w-1/2 order-2 lg:order-1">
-					<p class="rubric flex flex-wrap items-center gap-x-2" style="color: var(--color-secondary);">
-						<span>Featured</span>
-						<span aria-hidden="true" class="text-on-surface-variant">&middot;</span>
-						<span class="text-on-surface-variant"><FormattedDate date={post.data.pubDate} /></span>
-						{readingTime && (
-							<>
-								<span aria-hidden="true" class="text-on-surface-variant">&middot;</span>
-								<span class="text-on-surface-variant">{readingTime}</span>
-							</>
-						)}
-					</p>
-					<header>
-						<HeadingTag
-							class="font-display text-3xl lg:text-[2.75rem] text-on-surface leading-[1.12] transition-colors group-hover:text-[var(--color-secondary)]"
-							style="font-weight: 700;"
-							transition:name={titleTransition}
-						>
-							{post.data.title}
-						</HeadingTag>
-					</header>
-					{description && (
-						<p class="text-lg text-on-surface-variant leading-relaxed">
-							{description}
-						</p>
-					)}
-					<footer class="mt-auto pt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
-						<span class="rubric">{author}</span>
-						{tags.length > 0 && (
-							<span class="flex flex-wrap gap-2">
-								{tags.slice(0, 4).map((tag) => (
-									<span class={getTagColorClasses(tag)}>
-										{getTagDisplayName(tag)}
-									</span>
-								))}
-							</span>
-						)}
-					</footer>
-				</div>
-				{/* Image side */}
-				{heroImage && (
-					<figure
-						class="relative overflow-hidden border lg:w-1/2 order-1 lg:order-2 bg-cover bg-center bg-no-repeat"
-						style={`border-color: var(--color-outline-variant);${lqipUrl ? ` background-image: url('${lqipUrl}')` : ''}`}
-						transition:name={imageTransition}
-					>
-						{lqipUrl && (
-							<div
-								class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
-								style={`background-image: url('${lqipUrl}')`}
-								aria-hidden="true"
-							/>
-						)}
-						<img
-							src={getCFImageUrl(heroImage, {
-								width: priority ? 600 : 800,
-								quality: CF_IMAGE_PRESETS.thumbnailPriority.quality,
-								format: CF_IMAGE_PRESETS.thumbnailPriority.format,
-								fit: CF_IMAGE_PRESETS.thumbnailPriority.fit
-							})}
-							srcset={generateCFSrcSet(heroImage, CF_IMAGE_PRESETS.thumbnailPriority.widths, CF_IMAGE_PRESETS.thumbnailPriority.quality, CF_IMAGE_PRESETS.thumbnailPriority.format)}
-							sizes="(min-width: 1280px) 620px, (min-width: 1024px) calc(50vw - 20px), calc(100vw - 40px)"
-							alt={alt}
-							width="1000"
-							height="700"
-							loading={priority ? "eager" : "lazy"}
-							decoding={priority ? "sync" : "async"}
-							fetchpriority={priority ? "high" : "low"}
-							class="w-full h-64 sm:h-80 lg:h-full lg:min-h-[400px] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-						/>
-					</figure>
-				)}
-			</div>
-		</article>
-	</a>
-) : variant === 'grid' ? (
-	/* Grid variant - numbered index entry for 3-column layouts */
-	<a
-		href={href}
-		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 h-full">
-		<article class="border-t pt-4 h-full flex flex-col gap-3" style="border-color: var(--color-outline-variant);">
-			<p class="rubric">
-				<FormattedDate date={post.data.pubDate} />
-			</p>
-			{heroImage && (
-				<figure
-					class="relative overflow-hidden border bg-cover bg-center bg-no-repeat"
-					style={`border-color: var(--color-outline-variant);${lqipUrl ? ` background-image: url('${lqipUrl}')` : ''}`}
-					transition:name={imageTransition}
-				>
-					{lqipUrl && (
-						<div
-							class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
-							style={`background-image: url('${lqipUrl}')`}
-							aria-hidden="true"
-						/>
-					)}
-					<img
-						src={getCFImageUrl(heroImage, {
-							width: 400,
-							quality: CF_IMAGE_PRESETS.thumbnail.quality,
-							format: CF_IMAGE_PRESETS.thumbnail.format,
-							fit: CF_IMAGE_PRESETS.thumbnail.fit
-						})}
-						srcset={generateCFSrcSet(heroImage, CF_IMAGE_PRESETS.thumbnail.widths, CF_IMAGE_PRESETS.thumbnail.quality, CF_IMAGE_PRESETS.thumbnail.format)}
-						sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-						alt={alt}
-						width="500"
-						height="375"
-						loading="lazy"
-						decoding="async"
-						fetchpriority="low"
-						class="w-full aspect-[4/3] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-					/>
-				</figure>
-			)}
-			<header>
-				<HeadingTag
-					class="font-display text-xl text-on-surface leading-snug transition-colors group-hover:text-[var(--color-secondary)]"
-					style="font-weight: 660;"
-					transition:name={titleTransition}
-				>
-					{post.data.title}
-				</HeadingTag>
-			</header>
+<a
+	href={href}
+	aria-label={`Read post: ${post.data.title}`}
+	class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4">
+	<article class="grid grid-cols-[minmax(0,1fr)_auto] gap-y-2 border-b py-6 sm:py-7" style="border-color: var(--color-outline-variant);">
+		<header class="col-start-1 row-start-1 min-w-0 sm:col-span-2">
+			<HeadingTag
+				class="font-display text-lg sm:text-[1.375rem] text-on-surface leading-[1.3] sm:leading-[1.27] line-clamp-2 transition-colors group-hover:text-[var(--color-secondary)]"
+				style="font-weight: 700; letter-spacing: -0.014em;"
+				transition:name={titleTransition}
+			>
+				{post.data.title}
+			</HeadingTag>
+		</header>
+		<div class="col-start-1 row-start-2 min-w-0 flex flex-col gap-2">
 			{description && (
-				<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">
+				<p class="hidden sm:line-clamp-2 text-base text-on-surface-variant leading-normal">
 					{description}
 				</p>
 			)}
-			<footer class="mt-auto pt-1 rubric flex flex-wrap items-center gap-x-2 text-xs">
-				{readingTime && <span>{readingTime}</span>}
-				{tags.length > 0 && (
+			<p class="rubric mt-1.5 sm:mt-auto flex flex-wrap items-center gap-x-1.5">
+				<FormattedDate date={post.data.pubDate} />
+				{readingTime && (
 					<>
 						<span aria-hidden="true">&middot;</span>
-						<span>{getTagDisplayName(tags[0])}</span>
+						<span>{readingTime}</span>
 					</>
 				)}
-			</footer>
-		</article>
-	</a>
-) : (
-	/* Horizontal variant - compact rule-separated row for related posts */
-	<a
-		href={href}
-		aria-label={`Read blog post: ${post.data.title}`}
-		class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4">
-		<article class="border-t py-4" style="border-color: var(--color-outline-variant);">
-			<div class="flex flex-col-reverse sm:flex-row items-stretch gap-4">
-				<div class="flex-1 flex flex-col justify-center gap-2 min-w-0">
-					<p class="rubric text-xs flex items-center gap-2">
-						<FormattedDate date={post.data.pubDate} />
-						{readingTime && (
-							<>
-								<span aria-hidden="true">&middot;</span>
-								<span>{readingTime}</span>
-							</>
-						)}
-					</p>
-					<header>
-						<HeadingTag
-							class="font-display text-lg text-on-surface line-clamp-2 leading-snug transition-colors group-hover:text-[var(--color-secondary)]"
-							style="font-weight: 660;"
-						>
-							{post.data.title}
-						</HeadingTag>
-					</header>
-					{description && (
-						<p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">
-							{description}
-						</p>
-					)}
-				</div>
-				{heroImage && (
-					<figure
-						class="relative overflow-hidden border sm:flex-[0_0_30%] bg-cover bg-center bg-no-repeat"
-						style={`border-color: var(--color-outline-variant);${lqipUrl ? ` background-image: url('${lqipUrl}')` : ''}`}
-					>
-						{lqipUrl && (
-							<div
-								class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
-								style={`background-image: url('${lqipUrl}')`}
-								aria-hidden="true"
-							/>
-						)}
-						<img
-							src={getCFImageUrl(heroImage, {
-								width: 384,
-								quality: CF_IMAGE_PRESETS.thumbnailHorizontal.quality,
-								format: CF_IMAGE_PRESETS.thumbnailHorizontal.format,
-								fit: CF_IMAGE_PRESETS.thumbnailHorizontal.fit
-							})}
-							srcset={generateCFSrcSet(heroImage, CF_IMAGE_PRESETS.thumbnailHorizontal.widths, CF_IMAGE_PRESETS.thumbnailHorizontal.quality, CF_IMAGE_PRESETS.thumbnailHorizontal.format)}
-							sizes="(min-width: 640px) 30vw, 100vw"
-							alt={alt}
-							width="512"
-							height="384"
-							loading="lazy"
-							fetchpriority="low"
-							class="w-full h-40 sm:absolute sm:inset-0 sm:h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-						/>
-					</figure>
+				{tags.length > 0 && (
+					<span class="post-row-tags flex flex-wrap items-center gap-1.5 ml-1">
+						{tags.slice(0, 3).map((tag) => (
+							<span class={`${getTagColorClasses(tag)} tag-editorial--sm`}>{getTagName(tag)}</span>
+						))}
+					</span>
 				)}
-			</div>
-		</article>
-	</a>
-)}
+				{isAIAuthored && (
+					<>
+						<span aria-hidden="true">&middot;</span>
+						<span>AI-generated</span>
+					</>
+				)}
+			</p>
+		</div>
+		{heroImage && (
+			<figure
+				class="relative overflow-hidden rounded-[3px] col-start-2 row-start-1 row-span-2 self-start mt-1 ml-5 sm:row-start-2 sm:row-span-1 sm:self-end sm:mt-0 sm:ml-10 w-[100px] h-[67px] sm:w-40 sm:h-[107px] bg-cover bg-center bg-no-repeat"
+				style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
+				transition:name={imageTransition}
+			>
+				{/* LQIP blur overlay - shows while main image loads */}
+				{lqipUrl && (
+					<div
+						class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
+						style={`background-image: url('${lqipUrl}')`}
+						aria-hidden="true"
+					/>
+				)}
+				<img
+					src={getCFImageUrl(heroImage, {
+						width: 320,
+						quality: preset.quality,
+						format: preset.format,
+						fit: preset.fit
+					})}
+					srcset={generateCFSrcSet(heroImage, preset.widths, preset.quality, preset.format)}
+					sizes="(min-width: 640px) 160px, 100px"
+					alt={alt}
+					width="160"
+					height="107"
+					loading={priority ? 'eager' : 'lazy'}
+					decoding={priority ? 'sync' : 'async'}
+					fetchpriority={priority ? 'high' : 'low'}
+					class="w-full h-full object-cover"
+				/>
+			</figure>
+		)}
+	</article>
+</a>
+
+<style>
+	/* Tag names hide on the narrowest screens so the meta stays one line */
+	@media (max-width: 480px) {
+		.post-row-tags {
+			display: none;
+		}
+	}
+</style>
