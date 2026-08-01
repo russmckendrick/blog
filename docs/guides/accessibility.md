@@ -116,7 +116,7 @@ export default defineConfig({
 
 ### 4. Navigation Links
 
-**Current state** (Reading Room): the brand link is `<a href="/" aria-label="russ.cloud home">` wrapping the `Logo.astro` lockup — one inline SVG marked `aria-hidden="true"`/`focusable="false"`, so the label is the accessible name (the wordmark is outline paths, invisible to assistive tech by design), and the cursor blink is disabled under `prefers-reduced-motion: reduce` in the component's own styles. Alongside it the masthead shows plain text links (`MASTHEAD_ITEMS` — Tunes · Books · Archive · About) plus two icon-only controls, each with an `aria-label`: the search trigger ("Search the archive", also carrying `aria-keyshortcuts="Meta+K"` and a JS-set platform-aware `title`) and the theme toggle. The search trigger is an `<a href="/search/">` upgraded by JS to open the search sheet — a native `<dialog>` (`SearchOverlay.astro`) labelled via `aria-labelledby`, so `showModal()` provides the focus trap, background inerting, and focus restoration to the trigger on close. Focus is moved into the Pagefind input once it renders; `Escape` is handled explicitly in the sheet's keydown listener because Pagefind's input consumes the key (blocking the dialog's native cancel), and the `/` shortcut is suppressed while focus is in an input, textarea, select, or contenteditable. Without JS the trigger simply navigates to `/search/`, where the input is autofocused. The mobile burger opens a full-width panel of text rows; the trigger keeps `aria-controls`/`aria-expanded` and a sr-only label that flips between Open/Close, and the hamburger icon swaps to an X via CSS on `aria-expanded` — both SVGs are `aria-hidden`. On mobile the search trigger sits beside the burger rather than inside the menu. The footer's social icons each carry an `aria-label` and `title` from `SOCIAL_LABELS`. Menu behaviour (outside click, Escape + refocus, close on link click) is unchanged.
+**Current state** (Reading Room): the brand link is `<a href="/" aria-label="russ.cloud home">` wrapping the `Logo.astro` lockup — one inline SVG marked `aria-hidden="true"`/`focusable="false"`, so the label is the accessible name (the wordmark is outline paths, invisible to assistive tech by design), and the cursor blink is disabled under `prefers-reduced-motion: reduce` in the component's own styles. Alongside it the masthead shows five labelled links (`MASTHEAD_ITEMS` — Tunes · Books · Tags · Archive · About), each pairing a decorative `Icon.astro` glyph with its visible text, so the text alone is the accessible name; the glyphs carry `aria-hidden="true"` (`Icon.astro` forwards any extra attributes straight onto the `<svg>`, so the same applies to the search icon) and are never the only cue for a destination. Then two icon-only controls, each with an `aria-label`: the search trigger ("Search the archive", also carrying `aria-keyshortcuts="Meta+K"` and a JS-set platform-aware `title`) and the theme toggle. The search trigger is an `<a href="/search/">` upgraded by JS to open the search sheet — a native `<dialog>` (`SearchOverlay.astro`) labelled via `aria-labelledby`, so `showModal()` provides the focus trap, background inerting, and focus restoration to the trigger on close. Focus is moved into the Pagefind input once it renders; `Escape` is handled explicitly in the sheet's keydown listener because Pagefind's input consumes the key (blocking the dialog's native cancel), and the `/` shortcut is suppressed while focus is in an input, textarea, select, or contenteditable. Without JS the trigger simply navigates to `/search/`, where the input is autofocused. The mobile burger (below 768px) opens a full-width panel of glyph-plus-text rows; the trigger keeps `aria-controls`/`aria-expanded` and a sr-only label that flips between Open/Close, and the hamburger icon swaps to an X via CSS on `aria-expanded` — both SVGs are `aria-hidden`. On mobile the search trigger sits beside the burger rather than inside the menu. The footer's social icons each carry an `aria-label` and `title` from `SOCIAL_LABELS`. Menu behaviour (outside click, Escape + refocus, close on link click) is unchanged.
 
 **File**: `src/components/layout/Header.astro`
 
@@ -126,8 +126,9 @@ export default defineConfig({
   <Logo />
 </a>
 
-<!-- Desktop navigation (text links) -->
-<a href={item.url} class="header-nav-item no-underline py-1.5 inline-flex items-center">
+<!-- Desktop navigation (glyph + text; the text is the accessible name) -->
+<a href={item.url} class="header-nav-item no-underline py-1.5 inline-flex items-center gap-1.5">
+  <Icon name={item.icon} size={15} class="nav-glyph" aria-hidden="true" />
   {item.name}
 </a>
 
@@ -144,7 +145,25 @@ export default defineConfig({
 </button>
 ```
 
-### 5. Runtime Fallback
+### 5. Feed Rows (PostCard)
+
+**Problem**: a listing row should be one big click target, but the tag chips in its meta line must also link to their hubs — and `<a>` cannot be nested inside `<a>`.
+
+**Solution**: no wrapping anchor. The row carries `position: relative; isolation: isolate`, and the post link is an empty overlay covering it, named by `aria-label`; the tag chips sit above it on a higher `z-index` and stay ordinary links. Each row therefore exposes exactly one post link plus its tag links — the same shape the old wrapping anchor gave — with no unlabelled links and no nesting. The overlay must be a direct child of the row: as a `::after` on a link inside the heading it is trapped in the heading's `view-transition-name` stacking context, and the positioned thumbnail `<figure>` paints over it, swallowing clicks on the image.
+
+**File**: `src/components/blog/PostCard.astro`
+
+```astro
+<article class="post-row group ...">
+  <HeadingTag transition:name={titleTransition}>{post.data.title}</HeadingTag>
+  ...
+  <a href={getTagUrl(tag)} class="tag-editorial tag-editorial--sm">{getTagName(tag)}</a>
+  ...
+  <a href={href} class="post-row-link" aria-label={`Read post: ${post.data.title}`}></a>
+</article>
+```
+
+### 6. Runtime Fallback
 
 **Problem**: Some third-party libraries or dynamic content may add elements without proper accessibility.
 

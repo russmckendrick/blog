@@ -52,12 +52,14 @@ export const FEATURED_TAGS = ["ai", "tools", "code", "macos", "linux"];
 export const HOME_PAGE_SIZE = 6;
 export const PAGINATION_PAGE_SIZE = 9;
 
-// Masthead: four quiet text links; everything else lives in the footer line.
+// Masthead: five quiet links, each with a hairline glyph from Icon.astro;
+// everything else lives in the footer line.
 export const MASTHEAD_ITEMS = [
-  { name: "Tunes", url: "/tunes/" },
-  { name: "Books", url: "/books/" },
-  { name: "Archive", url: "/archives/" },
-  { name: "About", url: "/about/" },
+  { name: "Tunes", url: "/tunes/", icon: "headphones" },
+  { name: "Books", url: "/books/", icon: "book" },
+  { name: "Tags", url: "/tags/", icon: "tag" },
+  { name: "Archive", url: "/archives/", icon: "archive" },
+  { name: "About", url: "/about/", icon: "user" },
 ];
 
 // The single wayfinding line that closes every page.

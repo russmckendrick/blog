@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import FormattedDate from './FormattedDate.astro'
 import { getPostUrl } from '../../utils/url.ts'
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time'
-import { getTagName, getTagColorClasses } from '../../utils/tags'
+import { getTagName, getTagColorClasses, getTagUrl } from '../../utils/tags'
 import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudflare-images'
 import { AI_AUTHOR, CF_IMAGE_PRESETS } from '../../consts'
 
@@ -39,86 +39,113 @@ const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null
 const preset = CF_IMAGE_PRESETS.thumbnailHorizontal
 ---
 
-<a
-	href={href}
-	aria-label={`Read post: ${post.data.title}`}
-	class="group block no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4">
-	<article class="grid grid-cols-[minmax(0,1fr)_auto] gap-y-2 border-b py-6 sm:py-7" style="border-color: var(--color-outline-variant);">
-		<header class="col-span-2 row-start-1 min-w-0">
-			<HeadingTag
-				class="font-display feed-title text-on-surface line-clamp-2 transition-colors group-hover:text-[var(--color-secondary)]"
-				style="font-weight: 700; letter-spacing: -0.014em;"
-				transition:name={titleTransition}
-			>
-				{post.data.title}
-			</HeadingTag>
-		</header>
-		<div class="col-span-2 row-start-2 sm:col-span-1 sm:col-start-1 min-w-0 flex flex-col gap-2">
-			{description && (
-				<p class="hidden sm:block text-base text-on-surface-variant leading-normal">
-					{description}
-				</p>
-			)}
-			<p class="rubric mt-auto flex flex-wrap items-center gap-x-1.5">
-				<FormattedDate date={post.data.pubDate} />
-				{readingTime && (
-					<>
-						<span aria-hidden="true">&middot;</span>
-						<span>{readingTime}</span>
-					</>
-				)}
-				{tags.length > 0 && (
-					<span class="post-row-tags flex flex-wrap items-center gap-1.5 ml-1">
-						{tags.slice(0, 3).map((tag) => (
-							<span class={`${getTagColorClasses(tag)} tag-editorial--sm`}>{getTagName(tag)}</span>
-						))}
-					</span>
-				)}
-				{isAIAuthored && (
-					<>
-						<span aria-hidden="true">&middot;</span>
-						<span>AI-generated</span>
-					</>
-				)}
+<article class="post-row group grid grid-cols-[minmax(0,1fr)_auto] gap-y-2 border-b py-6 sm:py-7" style="border-color: var(--color-outline-variant);">
+	<header class="col-span-2 row-start-1 min-w-0">
+		<HeadingTag
+			class="font-display feed-title text-on-surface line-clamp-2 transition-colors group-hover:text-[var(--color-secondary)]"
+			style="font-weight: 700; letter-spacing: -0.014em;"
+			transition:name={titleTransition}
+		>
+			{post.data.title}
+		</HeadingTag>
+	</header>
+	<div class="col-span-2 row-start-2 sm:col-span-1 sm:col-start-1 min-w-0 flex flex-col gap-2">
+		{description && (
+			<p class="hidden sm:block text-base text-on-surface-variant leading-normal">
+				{description}
 			</p>
-		</div>
-		{heroImage && (
-			<figure
-				class="relative overflow-hidden rounded-[3px] col-span-2 row-start-3 self-start sm:col-span-1 sm:col-start-2 sm:row-start-2 sm:self-end sm:ml-10 w-full aspect-[2/1] sm:w-40 sm:h-[107px] sm:aspect-auto bg-cover bg-center bg-no-repeat"
-				style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
-				transition:name={imageTransition}
-			>
-				{/* LQIP blur overlay - shows while main image loads */}
-				{lqipUrl && (
-					<div
-						class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
-						style={`background-image: url('${lqipUrl}')`}
-						aria-hidden="true"
-					/>
-				)}
-				<img
-					src={getCFImageUrl(heroImage, {
-						width: 320,
-						quality: preset.quality,
-						format: preset.format,
-						fit: preset.fit
-					})}
-					srcset={generateCFSrcSet(heroImage, preset.widths, preset.quality, preset.format)}
-					sizes="(min-width: 640px) 160px, calc(100vw - 48px)"
-					alt={alt}
-					width="160"
-					height="107"
-					loading={priority ? 'eager' : 'lazy'}
-					decoding={priority ? 'sync' : 'async'}
-					fetchpriority={priority ? 'high' : 'low'}
-					class="w-full h-full object-cover"
-				/>
-			</figure>
 		)}
-	</article>
-</a>
+		<p class="rubric mt-auto flex flex-wrap items-center gap-x-1.5">
+			<FormattedDate date={post.data.pubDate} />
+			{readingTime && (
+				<>
+					<span aria-hidden="true">&middot;</span>
+					<span>{readingTime}</span>
+				</>
+			)}
+			{tags.length > 0 && (
+				<span class="post-row-tags flex flex-wrap items-center gap-1.5 ml-1">
+					{tags.slice(0, 3).map((tag) => (
+						<a href={getTagUrl(tag)} class={`${getTagColorClasses(tag)} tag-editorial--sm`}>{getTagName(tag)}</a>
+					))}
+				</span>
+			)}
+			{isAIAuthored && (
+				<>
+					<span aria-hidden="true">&middot;</span>
+					<span>AI-generated</span>
+				</>
+			)}
+		</p>
+	</div>
+	{heroImage && (
+		<figure
+			class="relative overflow-hidden rounded-[3px] col-span-2 row-start-3 self-start sm:col-span-1 sm:col-start-2 sm:row-start-2 sm:self-end sm:ml-10 w-full aspect-[2/1] sm:w-40 sm:h-[107px] sm:aspect-auto bg-cover bg-center bg-no-repeat"
+			style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
+			transition:name={imageTransition}
+		>
+			{/* LQIP blur overlay - shows while main image loads */}
+			{lqipUrl && (
+				<div
+					class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
+					style={`background-image: url('${lqipUrl}')`}
+					aria-hidden="true"
+				/>
+			)}
+			<img
+				src={getCFImageUrl(heroImage, {
+					width: 320,
+					quality: preset.quality,
+					format: preset.format,
+					fit: preset.fit
+				})}
+				srcset={generateCFSrcSet(heroImage, preset.widths, preset.quality, preset.format)}
+				sizes="(min-width: 640px) 160px, calc(100vw - 48px)"
+				alt={alt}
+				width="160"
+				height="107"
+				loading={priority ? 'eager' : 'lazy'}
+				decoding={priority ? 'sync' : 'async'}
+				fetchpriority={priority ? 'high' : 'low'}
+				class="w-full h-full object-cover"
+			/>
+		</figure>
+	)}
+
+	{/* The row's single link, laid over the whole row as a direct child so
+	    it clears the heading's view-transition stacking context. Tag chips
+	    sit above it on their own z-index and stay real links to their hubs —
+	    which a wrapping <a> could never allow. */}
+	<a href={href} class="post-row-link" aria-label={`Read post: ${post.data.title}`}></a>
+</article>
 
 <style>
+	/* The row is one click target without being one wrapping <a>, so the tag
+	   chips inside it can stay real links (nesting <a> in <a> is invalid).
+	   The link is an empty overlay covering the row, named by aria-label. */
+	.post-row {
+		position: relative;
+		isolation: isolate;
+	}
+
+	.post-row-link {
+		position: absolute;
+		inset: 0;
+		/* Above the thumbnail figure, which is positioned and would otherwise
+		   paint over the overlay; the tag chips sit above both. */
+		z-index: 1;
+	}
+
+	.post-row-link:focus-visible {
+		outline: 2px solid var(--color-secondary);
+		outline-offset: 4px;
+	}
+
+	.post-row-tags {
+		position: relative;
+		z-index: 2;
+	}
+
 	/* Tag names hide on the narrowest screens so the meta stays one line */
 	@media (max-width: 480px) {
 		.post-row-tags {

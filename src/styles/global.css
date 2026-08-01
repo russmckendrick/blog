@@ -554,6 +554,25 @@ a:hover {
   color: var(--color-on-surface);
 }
 
+/* Nav glyphs sit a shade behind their label — present, never shouting.
+   They catch up to the ink on hover so each item reads as one object. */
+#site-header .nav-glyph {
+  flex: none;
+  opacity: 0.62;
+  transition: opacity 150ms ease;
+}
+
+#site-header .header-nav-item:hover .nav-glyph,
+#site-header .header-nav-item:focus-visible .nav-glyph {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #site-header .nav-glyph {
+    transition: none;
+  }
+}
+
 /* Burger icon swaps to an X while the menu is open */
 #menu-trigger .icon-close { display: none; }
 #menu-trigger[aria-expanded="true"] .icon-close { display: block; }

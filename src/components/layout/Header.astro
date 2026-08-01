@@ -19,11 +19,12 @@ const mobileMenuLabelId = 'mobile-menu-label'
 			</a>
 
 			<!-- Desktop menu -->
-			<div class="hidden sm:flex items-center gap-6 ml-auto">
-				<ul class="flex items-center gap-6">
+			<div class="hidden md:flex items-center gap-4 lg:gap-6 ml-auto">
+				<ul class="flex items-center gap-4 lg:gap-6">
 					{MASTHEAD_ITEMS.map(item =>
 						<li>
-							<a href={item.url} class="header-nav-item no-underline py-1.5 inline-flex items-center">
+							<a href={item.url} class="header-nav-item no-underline py-1.5 inline-flex items-center gap-1.5">
+								<Icon name={item.icon} size={15} class="nav-glyph" aria-hidden="true" />
 								{item.name}
 							</a>
 						</li>
@@ -51,7 +52,7 @@ const mobileMenuLabelId = 'mobile-menu-label'
 			<!-- Mobile search trigger -->
 			<a
 				href="/search/"
-				class="header-nav-item sm:hidden ml-auto inline-flex items-center justify-center p-2"
+				class="header-nav-item md:hidden ml-auto inline-flex items-center justify-center p-2"
 				data-search-trigger
 				aria-label="Search the archive"
 			>
@@ -61,7 +62,7 @@ const mobileMenuLabelId = 'mobile-menu-label'
 			<!-- Mobile menu button -->
 			<button
 				id="menu-trigger"
-				class="header-nav-item sm:hidden inline-flex items-center justify-center p-2"
+				class="header-nav-item md:hidden inline-flex items-center justify-center p-2"
 				type="button"
 				aria-controls={mobileMenuId}
 				aria-expanded="false"
@@ -77,10 +78,11 @@ const mobileMenuLabelId = 'mobile-menu-label'
 		</div>
 
 		<!-- Mobile menu, hidden by default -->
-		<div class="sm:hidden mobile-hidden" id={mobileMenuId}>
+		<div class="md:hidden mobile-hidden" id={mobileMenuId}>
 			<div class="pt-1 pb-3 border-t" style="border-color: var(--color-outline-variant);">
 				{MASTHEAD_ITEMS.map(item =>
-					<a href={item.url} class="header-nav-item flex items-center px-1 py-3 no-underline border-b" style="border-color: var(--color-outline-variant);">
+					<a href={item.url} class="header-nav-item flex items-center gap-3 px-1 py-3 no-underline border-b" style="border-color: var(--color-outline-variant);">
+						<Icon name={item.icon} class="nav-glyph h-4 w-4" aria-hidden="true" />
 						{item.name}
 					</a>
 				)}

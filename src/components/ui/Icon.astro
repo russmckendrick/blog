@@ -1,11 +1,12 @@
 ---
-interface Props {
+interface Props extends astroHTML.JSX.SVGAttributes {
 	name: string;
 	size?: number;
 	class?: string;
 }
 
-const { name, size = 24, class: className = '' } = Astro.props;
+// Anything else (aria-hidden, role, data-*) lands on the <svg> untouched.
+const { name, size = 24, class: className = '', ...rest } = Astro.props;
 
 const icons = {
 	search: `<circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>`,
@@ -60,6 +61,7 @@ const isFilled = ['github', 'mastodon', 'twitter', 'linkedin', 'amazon', 'docker
 	stroke-linecap="round"
 	stroke-linejoin="round"
 	class={`feather feather-${name} ${className}`}
+	{...rest}
 	set:html={iconPath}
 >
 </svg>

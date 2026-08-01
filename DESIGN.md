@@ -186,10 +186,12 @@ brand lockup left — one self-contained SVG (`Logo.astro`): the iMac mark +
 ".cloud") with the dot and a blinking block cursor on the baseline in the
 mark's own colours — its screen blue `#35495E` on paper, its base grey
 `#BDC3C7` in the Night edition (1.1s square wave, steady under reduced
-motion); four text links
-(Tunes · Books · Archive · About), a 16px vertical hairline, then the
-icon-only search trigger and theme toggle right; burger menu below 640px
-with the search icon staying beside it. Search is not a widget in the bar:
+motion); five links
+(Tunes · Books · Tags · Archive · About), each a 15px hairline glyph at 62%
+opacity ahead of its label — the glyph comes up to full ink with the label
+on hover, so the pair reads as one object — then a 16px vertical hairline
+and the icon-only search trigger and theme toggle right; burger menu below
+768px with the search icon staying beside it. Search is not a widget in the bar:
 the icon (a plain link to `/search/`, JS-upgraded) opens the **search
 sheet** — a native dialog rendered as a full-width paper band under the top
 edge, closed by a hairline, the page behind veiled in 78% paper. Inside the
@@ -208,7 +210,10 @@ on the left, a 160×107 thumbnail flush right, bottom edge on the meta
 baseline, 3px radius. Mobile stacks each row as three full-width lines —
 16px title, then the meta line, then a full-width centre-cropped 2:1
 banner (3/4 of the natural 3:2 height) closing the row; the title is
-never squeezed into a side column. Hairline between rows, ~30px padding. Tab row
+never squeezed into a side column. The whole row is one click target — an
+empty labelled link laid over it, not a wrapping anchor, so the tag chips
+in the meta line stay real links to their hubs like everywhere else.
+Hairline between rows, ~30px padding. Tab row
 (`Latest · AI · Tools · Code …`) doubles as topic navigation — real tags,
 active state = ink underline on the baseline hairline. Tunes reuses the exact
 grammar with a 21:9 lead banner for the current week and `Artists 512 ·
