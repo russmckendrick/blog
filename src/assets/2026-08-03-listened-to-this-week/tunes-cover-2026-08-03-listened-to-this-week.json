@@ -1,0 +1,154 @@
+{
+  "version": 2,
+  "date": "2026-08-03",
+  "type": "cover",
+  "lane": null,
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Midnight shopwindow constellations in thawing winter",
+  "creativeDirection": "A layered cut-paper and screenprint collage turns urban night into a symbolic storefront diorama with hand-drawn celestial marks.",
+  "scene": "Street-corner viewpoint at night, looking slightly upward across a fisheye-bent shop window on a slushy winter block, with the glass acting like a stage and sky at once.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "a tiny bouquet of white daisies pinned near the top of the shop window like a fragile talisman against the night"
+    },
+    {
+      "source": 2,
+      "element": "a black-and-white dog seated on a snowbank at the curb in the foreground, beneath three bright floating emblems reimagined as window-hung signs: tiger head, bursting firecracker, and geometric star"
+    },
+    {
+      "source": 3,
+      "element": "a hand-drawn shooting star with trailing arcs scratched across the dark green-black sky reflection in the glass"
+    },
+    {
+      "source": 4,
+      "element": "a purple branching cloud of filaments and specks blooming from the left side of the storefront awning into the air like neon pollen or electrical frost"
+    },
+    {
+      "source": 5,
+      "element": "the four band members reduced to a single poster-like black-and-white silhouette grouping visible inside against an interior brick wall, appearing only once as one unified image"
+    },
+    {
+      "source": 6,
+      "element": "the overall fisheye corner-shop architecture, angled windows, receding sidewalk, and distorted urban perspective"
+    }
+  ],
+  "palette": [
+    "black",
+    "white",
+    "charcoal gray",
+    "dark olive green",
+    "cream",
+    "faded yellow"
+  ],
+  "mood": "wintry, enigmatic, handmade, nocturnal",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Meet-The-Eels-Essential-Eels-Vol-1-1996-2006.jpg",
+      "album": "Meet The Eels Essential Eels Vol 1 1996 2006",
+      "artist": "",
+      "description": "A minimal cover with a worn, aged paper background in cream and yellow tones. Near the top center is a small bouquet of white daisy-like flowers with yellow centers and green stems. The rest of the composition is mostly empty, with a centered layout and faint distressed texture across the surface.",
+      "signatureMotif": "small bouquet of white daisies",
+      "medium": "graphic design with distressed paper texture and small floral illustration",
+      "palette": [
+        "cream",
+        "beige",
+        "yellow",
+        "brown",
+        "black"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "The-Three-E-P-s.jpg",
+      "album": "The Three E P s",
+      "artist": "",
+      "description": "A grayscale snowy landscape with a frozen or partially frozen body of water and sloping snowbanks. In the lower right foreground sits a black-and-white dog facing the camera. Across the upper portion float three separate colorful illustrated symbols: a roaring tiger head, an exploding firecracker or dynamite-like object with a burst, and a five-pointed geometric star. The composition contrasts the muted winter scene with the bright symbols above.",
+      "signatureMotif": "black-and-white dog in a snowy landscape beneath floating colorful symbols",
+      "medium": "black-and-white photograph combined with collage-like illustrated emblems",
+      "palette": [
+        "gray",
+        "white",
+        "black",
+        "orange",
+        "red"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Recovering-The-Satellites.jpg",
+      "album": "Recovering The Satellites",
+      "artist": "",
+      "description": "A dark, grainy image dominated by green and black tones, resembling a night sky or dim urban scene framed by shadowy building edges on both sides. In the center-left is a hand-drawn outlined star with several curved trailing lines extending to the right like a shooting star. The image has a rough, distressed photographic texture.",
+      "signatureMotif": "outlined shooting star with trailing arcs",
+      "medium": "distressed photograph with drawn graphic element",
+      "palette": [
+        "black",
+        "dark green",
+        "olive",
+        "red"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Ask-Me-Tomorrow.jpg",
+      "album": "Ask Me Tomorrow",
+      "artist": "",
+      "description": "A sparse abstract composition on a pale gray-lavender background. From the left side extends a purple cloud-like burst of fine lines, dots, and looping strands, tapering outward toward the center and right. Small dark specks and fuzzy starburst-like particles scatter around the main form, giving it a drifting, airy appearance.",
+      "signatureMotif": "purple branching cloud of fine lines and scattered particles",
+      "medium": "abstract digital or photographic light-graphic image",
+      "palette": [
+        "pale gray",
+        "lavender",
+        "purple",
+        "violet",
+        "black"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Elastica.jpg",
+      "album": "Elastica",
+      "artist": "",
+      "description": "A black-and-white band portrait in front of a brick wall. Four people stand side by side wearing dark clothing. The two figures on the left have medium to shoulder-length dark hair; the third figure has short light hair and clasped hands; the rightmost figure has short dark hair and looks sideways. The image is high-contrast and straightforward, with the group filling the lower half of the frame.",
+      "signatureMotif": "four band members posed against a brick wall",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "white",
+        "gray",
+        "red"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Melting-Pot.jpg",
+      "album": "Melting Pot",
+      "artist": "",
+      "description": "A high-contrast black-and-white street photograph taken with a wide-angle or fisheye effect. A corner shop or café dominates the right side, with large front windows and angled building lines. On the left, a sidewalk recedes into the distance with a few pedestrians and vehicles visible. The storefront window reflects the street and contains signage and interior details, while the overall scene feels urban and slightly distorted by the lens.",
+      "signatureMotif": "fisheye view of a corner storefront on a city street",
+      "medium": "black-and-white wide-angle street photograph",
+      "palette": [
+        "black",
+        "white",
+        "gray",
+        "blue"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "A nighttime street-corner view seen from sidewalk level, slightly upward, centered on a fisheye-bent corner storefront in a slushy winter city block, the large shop window merging reflection and interior like a miniature stage; in the foreground at the curb sits a black-and-white dog on a low snowbank facing outward, becoming the main anchor of the scene; above and around it, a tiny bouquet of white daisies with yellow centers is pinned near the top of the glass, three bright hanging emblems float across the upper window area like symbolic shop signs — a roaring tiger head, a bursting firecracker, and a five-pointed geometric star — while a hand-drawn outlined shooting star with trailing arcs is scratched across the dark green-black reflected sky in the glass, and from the left edge of the awning a purple branching cloud of fine filaments, loops, dots, and drifting particles blooms into the air like electrical frost; inside the shop, only once, a black-and-white posterlike grouping of four band members stands against an interior brick wall, secondary and partially obscured by reflections; create this as an original layered cut-paper, screenprint, and ink collage with distressed paper grain, halftone blacks, rough edges, translucent overlays, and hand-drawn marks; compose with the dog and window as the clear focal hierarchy, wide negative space in the upper night, curved storefront lines framing the symbols, and receding sidewalk depth on the left; use moody directional streetlight, glowing interior dimness, and subtle reflected highlights on wet pavement and glass; palette of black, white, charcoal gray, dark olive green, cream, faded yellow, violet, and small accents of crimson orange, with a wintry, enigmatic, handmade nocturnal feeling. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "inputs": [
+    "Meet-The-Eels-Essential-Eels-Vol-1-1996-2006.jpg",
+    "The-Three-E-P-s.jpg",
+    "Recovering-The-Satellites.jpg",
+    "Ask-Me-Tomorrow.jpg",
+    "Elastica.jpg",
+    "Melting-Pot.jpg"
+  ]
+}

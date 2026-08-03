@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-01T15:22:43.828Z",
+  "generatedAt": "2026-08-03T03:20:31.245Z",
   "totals": {
-    "posts": 166,
-    "artists": 512,
-    "albums": 952
+    "posts": 167,
+    "artists": 521,
+    "albums": 962
   },
   "artists": [
     {
@@ -1868,12 +1868,18 @@
       "name": "Counting Crows",
       "artistUrl": "https://www.russ.fm/artist/counting-crows/",
       "image": "/assets/2025-05-26-listened-to-this-week/artists/Counting-Crows.jpg",
-      "albumCount": 1,
-      "postCount": 1,
+      "albumCount": 2,
+      "postCount": 2,
       "albums": [
-        "august-and-everything-after"
+        "august-and-everything-after",
+        "recovering-the-satellites"
       ],
       "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        },
         {
           "title": "Eclectic Soundscapes of the 90s: Jellyfish to U2s Timeless Hits",
           "url": "/2025/05/26/eclectic-soundscapes-of-the-90s-jellyfish-to-u2s-timeless-hits/",
@@ -2726,6 +2732,24 @@
       ]
     },
     {
+      "slug": "desmond-dekker",
+      "name": "Desmond Dekker",
+      "artistUrl": null,
+      "image": null,
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "desmond-dekker-the-harder-they-come-original-soundtrack-recording"
+      ],
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "deus",
       "name": "dEUS",
       "artistUrl": "https://www.russ.fm/artist/deus/",
@@ -3262,6 +3286,42 @@
           "title": "Labyrinth Lullabies and Parking Lot Hooks in Tape Haze",
           "url": "/2026/06/01/labyrinth-lullabies-and-parking-lot-hooks-in-tape-haze/",
           "date": "2026-06-01T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "eels",
+      "name": "Eels",
+      "artistUrl": "https://www.russ.fm/artist/eels/",
+      "image": "/assets/2026-08-03-listened-to-this-week/artists/Eels.jpg",
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "meet-the-eels-essential-eels-vol1-1996-2006"
+      ],
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "elastica",
+      "name": "Elastica",
+      "artistUrl": "https://www.russ.fm/artist/elastica/",
+      "image": "/assets/2026-08-03-listened-to-this-week/artists/Elastica.jpg",
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "elastica"
+      ],
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
         }
       ]
     },
@@ -5620,6 +5680,24 @@
       ]
     },
     {
+      "slug": "jimmy-cliff",
+      "name": "Jimmy Cliff",
+      "artistUrl": "https://www.russ.fm/artist/jimmy-cliff/",
+      "image": "/assets/2026-08-03-listened-to-this-week/artists/Jimmy-Cliff.jpg",
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "jimmy-cliff-the-harder-they-come-original-soundtrack-recording"
+      ],
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "jimmy-page",
       "name": "Jimmy Page",
       "artistUrl": "https://www.russ.fm/artist/jimmy-page/",
@@ -7097,6 +7175,24 @@
           "title": "Faith No More's Genre-Defying Brilliance: Rock Meets Funk and Experimental Beats",
           "url": "/2023/12/04/faith-no-mores-genre-defying-brilliance-rock-meets-funk-and-experimental-beats/",
           "date": "2023-12-04T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "mojave-3",
+      "name": "Mojave 3",
+      "artistUrl": "https://www.russ.fm/artist/mojave-3/",
+      "image": "/assets/2026-08-03-listened-to-this-week/artists/Mojave-3.jpg",
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "ask-me-tomorrow"
+      ],
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
         }
       ]
     },
@@ -10073,6 +10169,24 @@
       ]
     },
     {
+      "slug": "scotty",
+      "name": "Scotty",
+      "artistUrl": null,
+      "image": null,
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "scotty-the-harder-they-come-original-soundtrack-recording"
+      ],
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "scritti-politti",
       "name": "Scritti Politti",
       "artistUrl": "https://www.russ.fm/artist/scritti-politti/",
@@ -12257,12 +12371,17 @@
       "artistUrl": "https://www.russ.fm/artist/the-beta-band/",
       "image": "/assets/2023-08-21-listened-to-this-week/artists/The-Beta-Band.jpg",
       "albumCount": 2,
-      "postCount": 4,
+      "postCount": 5,
       "albums": [
         "hot-shots-ii",
         "the-three-e-p-s"
       ],
       "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        },
         {
           "title": "Echoes of Emotion: A Journey Through Lost Dreams and Sonic Waves",
           "url": "/2025/12/15/echoes-of-emotion-a-journey-through-lost-dreams-and-sonic-waves/",
@@ -12438,12 +12557,17 @@
       "artistUrl": "https://www.russ.fm/artist/the-charlatans/",
       "image": "/assets/2024-08-12-listened-to-this-week/artists/The-Charlatans.jpg",
       "albumCount": 2,
-      "postCount": 2,
+      "postCount": 3,
       "albums": [
         "melting-pot",
         "up-to-our-hips"
       ],
       "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        },
         {
           "title": "Exploring Musical Legends from Pumpkins to Pet Sounds This Week",
           "url": "/2024/11/11/exploring-musical-legends-from-pumpkins-to-pet-sounds-this-week/",
@@ -13041,6 +13165,42 @@
       ]
     },
     {
+      "slug": "the-maytals",
+      "name": "The Maytals",
+      "artistUrl": null,
+      "image": null,
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "the-maytals-the-harder-they-come-original-soundtrack-recording"
+      ],
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "the-melodians",
+      "name": "The Melodians",
+      "artistUrl": null,
+      "image": null,
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "the-melodians-the-harder-they-come-original-soundtrack-recording"
+      ],
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "the-mighty-mighty-bosstones",
       "name": "The Mighty Mighty Bosstones",
       "artistUrl": "https://www.russ.fm/artist/the-mighty-mighty-bosstones/",
@@ -13533,6 +13693,24 @@
           "title": "Radiohead's Sonic Dominance: Experimental Rock Shapes My Weekly Soundscape",
           "url": "/2023/07/24/radioheads-sonic-dominance-experimental-rock-shapes-my-weekly-soundscape/",
           "date": "2023-07-24T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "the-slickers",
+      "name": "The Slickers",
+      "artistUrl": null,
+      "image": null,
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "the-slickers-the-harder-they-come-original-soundtrack-recording"
+      ],
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
         }
       ]
     },
@@ -17698,6 +17876,22 @@
       ]
     },
     {
+      "slug": "recovering-the-satellites",
+      "name": "Recovering The Satellites",
+      "artist": "Counting Crows",
+      "artistSlug": "counting-crows",
+      "albumUrl": "https://www.russ.fm/album/recovering-the-satellites-38020338/",
+      "artistUrl": "https://www.russ.fm/artist/counting-crows/",
+      "image": "/assets/2026-08-03-listened-to-this-week/albums/Recovering-The-Satellites.jpg",
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "god-shuffled-his-feet",
       "name": "God Shuffled His Feet",
       "artist": "Crash Test Dummies",
@@ -18816,6 +19010,22 @@
       ]
     },
     {
+      "slug": "desmond-dekker-the-harder-they-come-original-soundtrack-recording",
+      "name": "The Harder They Come (Original Soundtrack Recording)",
+      "artist": "Desmond Dekker",
+      "artistSlug": "desmond-dekker",
+      "albumUrl": null,
+      "artistUrl": null,
+      "image": null,
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "worst-case-scenario",
       "name": "Worst Case Scenario",
       "artist": "dEUS",
@@ -19440,6 +19650,38 @@
           "title": "Labyrinth Lullabies and Parking Lot Hooks in Tape Haze",
           "url": "/2026/06/01/labyrinth-lullabies-and-parking-lot-hooks-in-tape-haze/",
           "date": "2026-06-01T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "meet-the-eels-essential-eels-vol1-1996-2006",
+      "name": "Meet The Eels (Essential Eels Vol.1 (1996 - 2006))",
+      "artist": "Eels",
+      "artistSlug": "eels",
+      "albumUrl": "https://www.russ.fm/album/meet-the-eels-essential-eels-vol1-1996-2006-35889862/",
+      "artistUrl": "https://www.russ.fm/artist/eels/",
+      "image": "/assets/2026-08-03-listened-to-this-week/albums/Meet-The-Eels-Essential-Eels-Vol-1-1996-2006.jpg",
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "elastica",
+      "name": "Elastica",
+      "artist": "Elastica",
+      "artistSlug": "elastica",
+      "albumUrl": "https://www.russ.fm/album/elastica-11175695/",
+      "artistUrl": "https://www.russ.fm/artist/elastica/",
+      "image": "/assets/2026-08-03-listened-to-this-week/albums/Elastica.jpg",
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
         }
       ]
     },
@@ -22180,6 +22422,22 @@
       ]
     },
     {
+      "slug": "jimmy-cliff-the-harder-they-come-original-soundtrack-recording",
+      "name": "The Harder They Come (Original Soundtrack Recording)",
+      "artist": "Jimmy Cliff",
+      "artistSlug": "jimmy-cliff",
+      "albumUrl": null,
+      "artistUrl": "https://www.russ.fm/artist/jimmy-cliff/",
+      "image": null,
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "live-at-the-greek",
       "name": "Live At The Greek",
       "artist": "Jimmy Page",
@@ -23958,6 +24216,22 @@
           "title": "Exploring Sonic Landscapes with Pure Reason Revolution and More",
           "url": "/2025/06/30/exploring-sonic-landscapes-with-pure-reason-revolution-and-more/",
           "date": "2025-06-30T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "ask-me-tomorrow",
+      "name": "Ask Me Tomorrow",
+      "artist": "Mojave 3",
+      "artistSlug": "mojave-3",
+      "albumUrl": "https://www.russ.fm/album/ask-me-tomorrow-37932294/",
+      "artistUrl": "https://www.russ.fm/artist/mojave-3/",
+      "image": "/assets/2026-08-03-listened-to-this-week/albums/Ask-Me-Tomorrow.jpg",
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
         }
       ]
     },
@@ -28000,6 +28274,22 @@
       ]
     },
     {
+      "slug": "scotty-the-harder-they-come-original-soundtrack-recording",
+      "name": "The Harder They Come (Original Soundtrack Recording)",
+      "artist": "Scotty",
+      "artistSlug": "scotty",
+      "albumUrl": null,
+      "artistUrl": null,
+      "image": null,
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "cupid-psyche-85",
       "name": "Cupid & Psyche 85",
       "artist": "Scritti Politti",
@@ -30697,6 +30987,11 @@
       "image": "/assets/2023-08-21-listened-to-this-week/albums/The-Three-E-P-s.jpg",
       "posts": [
         {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        },
+        {
           "title": "Echoes of Emotion: A Journey Through Lost Dreams and Sonic Waves",
           "url": "/2025/12/15/echoes-of-emotion-a-journey-through-lost-dreams-and-sonic-waves/",
           "date": "2025-12-15T00:00:00.000Z"
@@ -30897,6 +31192,11 @@
       "artistUrl": "https://www.russ.fm/artist/the-charlatans/",
       "image": "/assets/2024-08-12-listened-to-this-week/albums/Melting-Pot.jpg",
       "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        },
         {
           "title": "This Weeks Top Hits: Beatles to Blur and Beyond",
           "url": "/2024/08/12/this-weeks-top-hits-beatles-to-blur-and-beyond/",
@@ -31591,6 +31891,38 @@
       ]
     },
     {
+      "slug": "the-maytals-the-harder-they-come-original-soundtrack-recording",
+      "name": "The Harder They Come (Original Soundtrack Recording)",
+      "artist": "The Maytals",
+      "artistSlug": "the-maytals",
+      "albumUrl": null,
+      "artistUrl": null,
+      "image": null,
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "the-melodians-the-harder-they-come-original-soundtrack-recording",
+      "name": "The Harder They Come (Original Soundtrack Recording)",
+      "artist": "The Melodians",
+      "artistSlug": "the-melodians",
+      "albumUrl": null,
+      "artistUrl": null,
+      "image": null,
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "don-t-know-how-to-party",
       "name": "Don't Know How To Party",
       "artist": "The Mighty Mighty Bosstones",
@@ -32149,6 +32481,22 @@
           "title": "Radiohead's Sonic Dominance: Experimental Rock Shapes My Weekly Soundscape",
           "url": "/2023/07/24/radioheads-sonic-dominance-experimental-rock-shapes-my-weekly-soundscape/",
           "date": "2023-07-24T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "the-slickers-the-harder-they-come-original-soundtrack-recording",
+      "name": "The Harder They Come (Original Soundtrack Recording)",
+      "artist": "The Slickers",
+      "artistSlug": "the-slickers",
+      "albumUrl": null,
+      "artistUrl": null,
+      "image": null,
+      "posts": [
+        {
+          "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
+          "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
+          "date": "2026-08-03T00:00:00.000Z"
         }
       ]
     },
