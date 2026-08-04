@@ -24,8 +24,8 @@ graph TD
     H --> L[BreadcrumbList Schema]
 
     B --> M[OG Image]
-    M --> N[astro-og-canvas]
-    N --> O["Generated 1200x630 PNG"]
+    M --> N[satori + sharp]
+    N --> O["Generated 2400x1260 PNG"]
 
     B --> P[Sitemap]
     P --> Q["@astrojs/sitemap"]
@@ -189,7 +189,7 @@ Added to all blog posts:
 
 ### OpenGraph Image Generation
 
-**Package**: `astro-og-canvas`
+**Packages**: `satori` (JSX to SVG) + `sharp` (SVG to PNG)
 
 **Files**:
 - Posts: `src/pages/[year]/[month]/[day]/[slug]-og.png.ts`
@@ -198,16 +198,28 @@ Added to all blog posts:
 - Tunes albums: `src/pages/tunes/album/[album]-og.png.ts`
 - Tunes years: `src/pages/tunes/year/[year]-og.png.ts`
 - Glossary terms: `src/pages/glossary/[term]-og.png.ts`
+- Books: `src/pages/books/[slug]-og.png.ts`
 - Component: `src/components/OpenGraph/OG.tsx`
+- Rasteriser: `src/components/OpenGraph/createImage.ts`
+- Card geometry: `src/components/OpenGraph/dimensions.ts`
 
 The browse-page OG generators all share the same `OG()` + `PNG()` pipeline and an md5-keyed disk cache at `node_modules/.cache/og-images`. Each generator uses a distinct `kind` field in its cache key (`tag`, `tunes-artist`, `tunes-album`, `glossary-term`) so caches do not collide on identical title text. Consumer pages reference the generated PNG via `BaseLayout`'s `image` prop (forwarded into `og:image`).
 
+`OG(title, description, options)` renders one of two cards:
+
+- **Scrim** — when `options.coverImagePath` resolves. The cover fills the frame behind a vertical and a horizontal gradient in the Night edition's paper (`rgba(22, 20, 17, …)`), with the brand lockup reversed out top-left and the headline and rubric at the foot. Covers are 2560×1440, so a 1.91:1 frame keeps roughly 93% of the art.
+- **Plate** — when there is no cover (tag, book, glossary and tunes hub cards). Warm paper ground, lockup, ink headline, mist standfirst, and a hairline above the section rubric.
+
+**The description is only baked into the Plate.** Every platform prints `og:description` as text beneath the card, so repeating it over the artwork said the same thing twice. Post cards carry a rubric instead — date · reading time · lead tag — which is information the platforms do not duplicate. Hub routes pass their own one-word rubric (`Tag`, `Books`, `Glossary`, `Album`, `Artist`, `Tunes`) through `options.meta`.
+
 **Features**:
 - Auto-generated for all blog posts
-- Dimensions: 1200×630 (standard OG size)
-- Design: "Print Edition" card — neutral paper background, heavy ink rule across the top, logo + burnt-orange `RUSS.CLOUD` mono masthead, bold Source Serif headline with muted standfirst and a closing short rule; post covers render as an edge-to-edge plate on the right behind a hairline divider. Emoji are stripped from titles/descriptions (satori ships no emoji font).
-- Fonts: Source Serif 4 (400/700) + IBM Plex Mono (500) as static TTFs in `src/images/opengraph/fonts/` (satori cannot read the site's woff2 files)
-- Cached: `node_modules/.cache/og-images/`, keyed by content **plus a design-version salt** in every `*-og.png.ts` route (`og-design:print-edition-v1`) — bump the salt after any OG redesign, or CI's cached `node_modules` will keep serving old renders
+- Layout box: 1200×630 (standard OG size), rasterised at `OG_SCALE` (currently 2) for 2400×1260 output. `BaseHead.astro` reads the same constants for `og:image:width`/`height`, so the declared size cannot drift from the rendered one. Satori draws text as vector paths, so only the embedded cover is supplied at the scaled size. Cards are roughly 3.4x heavier at 2 than at 1 (photographic cards land ~1.4–2MB, inside the 5MB ceiling X applies to shared images); `dimensions.ts` is the single dial.
+- Design: Reading Room — paper `#FBFAF7`, ink `#1E1C18`, mist `#6F6A61`, hairline `#ECE8E1`. Emoji are stripped from titles and descriptions (satori ships no emoji font).
+- Brand: the masthead lockup is rebuilt as an inline SVG from `src/data/logo-lockup.json`, the same generated file `Logo.astro` reads. On paper the mark keeps its own palette; over photography it reverses to a flat white monitor — the cloud artwork is dropped there because at 32px any contrast between the two cloud shapes reads as a pair of spectacles.
+- Fonts: Schibsted Grotesk 400/500/700 as static TTFs in `src/images/opengraph/fonts/`. Satori reads TTF/OTF only, and renders a variable font at its default instance, so these are cut from `src/assets/fonts/schibsted-grotesk-variable-latin.woff2` with fontTools — see the recipe in `createImage.ts`. **`GPOS` is stripped**: satori misapplies kern pairs involving the space glyph, which opens a visible double gap after words ending in `n` ("Token Use" renders as "Token  Use"). Kerning is no loss at display sizes.
+- Encoding: truecolour PNG. Quantising saves under 5% on scrim cards while dithering the semi-transparent wordmark into visible speckle.
+- Cached: `node_modules/.cache/og-images/`, keyed by content **plus a design-version salt** in every `*-og.png.ts` route (`og-design:reading-room-scrim-v1`) — bump the salt after any OG redesign, or CI's cached `node_modules` will keep serving old renders
 
 **Generated URLs**:
 ```

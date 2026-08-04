@@ -3,6 +3,8 @@ import { getCollection } from "astro:content";
 import { createUrlFriendlySlug } from "../../../../utils/url";
 import OG from "../../../../components/OpenGraph/OG";
 import { PNG } from "../../../../components/OpenGraph/createImage";
+import { calculateReadingTime, formatReadingTime } from "../../../../utils/reading-time";
+import { getTagMetadata, normalizeTagSlug } from "../../../../utils/tags";
 import path from "path";
 import fs from "fs";
 
@@ -65,6 +67,23 @@ export async function getStaticPaths() {
       }
     }
 
+    // The rubric that replaces the description on the card: platforms already
+    // print og:description beneath it, so the image carries what they don't.
+    const meta = [
+      date.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      }),
+    ];
+    if (!isTune) {
+      meta.push(formatReadingTime(calculateReadingTime(post.body ?? "")));
+    }
+    const leadTag = post.data.tags?.[0];
+    if (leadTag) {
+      meta.push(getTagMetadata(normalizeTagSlug(leadTag)).title);
+    }
+
     return {
       params: {
         year,
@@ -76,6 +95,7 @@ export async function getStaticPaths() {
         title: post.data.title,
         description: post.data.description,
         coverImagePath: coverImagePath,
+        meta,
       },
     };
   });
@@ -92,12 +112,12 @@ if (!fs.existsSync(CACHE_DIR)) {
 }
 
 export const GET: APIRoute = async function get({ props }) {
-  const { title, description, coverImagePath } = props as Props;
+  const { title, description, coverImagePath, meta } = props as Props;
 
   // Generate a hash based on the content
   const hash = crypto.createHash('md5');
-  hash.update('og-design:print-edition-v1'); // bump to invalidate cached renders after a redesign
-  hash.update(JSON.stringify({ title, description }));
+  hash.update('og-design:reading-room-scrim-v1'); // bump to invalidate cached renders after a redesign
+  hash.update(JSON.stringify({ title, description, meta }));
 
   // Add cover image content hash if it exists
   if (coverImagePath && fs.existsSync(coverImagePath)) {
@@ -118,7 +138,7 @@ export const GET: APIRoute = async function get({ props }) {
     pngBuffer = fs.readFileSync(cacheFile);
   } else {
     console.log(`OG - Generating new image for: ${title}`);
-    pngBuffer = await PNG(await OG(title, description, coverImagePath));
+    pngBuffer = await PNG(await OG(title, description, { coverImagePath, meta }));
     fs.writeFileSync(cacheFile, pngBuffer);
   }
 

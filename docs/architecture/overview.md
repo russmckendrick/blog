@@ -67,7 +67,7 @@ graph TB
 | **Analytics** | Plausible | Privacy-focused analytics |
 | **Syntax Highlighting** | Expressive Code | Code block styling |
 | **Image Gallery** | LightGallery | Lightbox image viewer |
-| **OpenGraph Images** | astro-og-canvas | Auto-generated OG images |
+| **OpenGraph Images** | satori + sharp | Auto-generated OG images |
 
 ## Data Flow
 
@@ -397,8 +397,8 @@ graph TD
     C --> G[Canonical URL]
 
     A --> H[OG Image Generation]
-    H --> I[astro-og-canvas]
-    I --> J[1200x630 PNG]
+    H --> I[satori + sharp]
+    I --> J[2400x1260 PNG]
     J --> E
 
     style C fill:#9cf,stroke:#333
