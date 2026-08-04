@@ -151,6 +151,8 @@ export default defineConfig({
 
 **Solution**: no wrapping anchor. The row carries `position: relative; isolation: isolate`, and the post link is an empty overlay covering it, named by `aria-label`; the tag chips sit above it on a higher `z-index` and stay ordinary links. Each row therefore exposes exactly one post link plus its tag links — the same shape the old wrapping anchor gave — with no unlabelled links and no nesting. The overlay must be a direct child of the row: as a `::after` on a link inside the heading it is trapped in the heading's `view-transition-name` stacking context, and the positioned thumbnail `<figure>` paints over it, swallowing clicks on the image.
 
+**Consequence — the chips owe a 24px floor**: because a chip sits on top of a link covering the whole row, every pixel it is short of the WCAG 2.5.8 target minimum is a pixel where aiming at a tag hub sends you to the post instead. `.tag-editorial--sm` in `global.css` therefore pins `min-width`/`min-height: 24px` and centres its label, which the 12px type and `0.3rem` padding alone do not reach (21.6px). Keep the floor on any new chip or control dropped into a row — axe's `target-size` rule (Lighthouse's accessibility category, and so PageSpeed Insights) flags every instance individually, once per row.
+
 **File**: `src/components/blog/PostCard.astro`
 
 ```astro

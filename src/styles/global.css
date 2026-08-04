@@ -267,10 +267,16 @@ a.tag-editorial:focus-visible {
   background-color: var(--pill-hover);
 }
 
-/* Smaller pill for meta contexts (feed rows, the article rail) */
+/* Smaller pill for meta contexts (feed rows, the article rail).
+   The 24px floor is the WCAG 2.5.8 target minimum, not decoration: in a feed
+   row these chips sit on top of the link covering the whole row, so a chip
+   that is short of it turns a missed tag tap into a trip to the post. */
 .tag-editorial--sm {
   font-size: 0.75rem;
   padding: 0.3rem 0.65rem;
+  min-width: 24px;
+  min-height: 24px;
+  justify-content: center;
 }
 
 /* Link styling: links inherit ink; the accent appears on hover only.

@@ -48,6 +48,7 @@ The global `h1` rule sets the page-title role (sans, `clamp(2rem, 5vw, 2.625rem)
 
 - `.rubric` — the quiet meta line: 13px sans in mist, no uppercase, no tracking. Used for datelines, read times, feed-row meta, the storybar, and the footer wayfinding line. It is metadata treatment only — never an eyebrow heading above a title.
 - `.tag-editorial` — the tag pill: 13px sans on the tinted `--pill` fill, fully rounded, ink text, `--pill-hover` on hover. `getTagColorClasses()` in `src/utils/tags.ts` returns this for every tag (the per-tag pastel palette is retired visually); labels come from `getTagName()`, which strips emoji. Do not build new chip styles.
+- `.tag-editorial--sm` — the 12px variant for meta contexts (feed rows, the article rail, the storybar). It pins `min-width`/`min-height: 24px` and centres its label so the pill clears the WCAG 2.5.8 target minimum; its type and padding alone come to 21.6px. Do not trade that floor away for a tighter meta line — see [accessibility.md](accessibility.md) on why a chip riding over the feed row's full-row link has to hold it.
 - `.nav-underline` — legacy underline draw-in on hover/focus, kept for editorial links.
 - Section heads inside a page are plain sans: `text-[15px] font-semibold` with `letter-spacing: -0.01em` (see the "Links" head in `Footer.astro`).
 
