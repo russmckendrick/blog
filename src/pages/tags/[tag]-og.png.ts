@@ -2,6 +2,7 @@ import type { APIRoute, InferGetStaticPropsType } from 'astro'
 import { getCollection } from 'astro:content'
 import OG from '../../components/OpenGraph/OG'
 import { PNG } from '../../components/OpenGraph/createImage'
+import { sectionCover } from '../../components/OpenGraph/sectionCover'
 import { getTagMetadata, normalizeTagSlug } from '../../utils/tags'
 import path from 'node:path'
 import fs from 'node:fs'
@@ -42,12 +43,14 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>
 const CACHE_DIR = path.join(process.cwd(), 'node_modules/.cache/og-images')
 if (!fs.existsSync(CACHE_DIR)) fs.mkdirSync(CACHE_DIR, { recursive: true })
 
+const SECTION = sectionCover('tags')
+
 export const GET: APIRoute = async function get({ props }) {
   const { title, description } = props as Props
 
   const hash = crypto.createHash('md5')
-  hash.update('og-design:reading-room-scrim-v1') // bump to invalidate cached renders after a redesign
-  hash.update(JSON.stringify({ kind: 'tag', title, description }))
+  hash.update('og-design:reading-room-scrim-v2') // bump to invalidate cached renders after a redesign
+  hash.update(JSON.stringify({ kind: 'tag', title, description, art: SECTION.digest }))
   const digest = hash.digest('hex')
   const cacheFile = path.join(CACHE_DIR, `${digest}.png`)
 
@@ -55,7 +58,12 @@ export const GET: APIRoute = async function get({ props }) {
   if (fs.existsSync(cacheFile)) {
     pngBuffer = fs.readFileSync(cacheFile)
   } else {
-    pngBuffer = await PNG(await OG(title, description, { meta: ['Tag'] }))
+    pngBuffer = await PNG(
+      await OG(title, description, {
+        coverImagePath: SECTION.path,
+        meta: ['Tag']
+      })
+    )
     fs.writeFileSync(cacheFile, pngBuffer)
   }
 

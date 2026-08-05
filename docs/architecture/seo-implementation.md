@@ -199,18 +199,29 @@ Added to all blog posts:
 - Tunes years: `src/pages/tunes/year/[year]-og.png.ts`
 - Glossary terms: `src/pages/glossary/[term]-og.png.ts`
 - Books: `src/pages/books/[slug]-og.png.ts`
+- Archives: `src/pages/archives-og.png.ts`
+- Homepage: `src/pages/home-og.png.ts` — no rubric, since the homepage is not a section of the site. Its art riffs on the masthead mark: an all-in-one monitor wearing a pair of spectacles.
+
+The last two back single static pages rather than a dynamic route, so their title lives in the route file and the page points `BaseLayout`'s `image` prop at the generated URL (`/archives-og.png`, `/home-og.png`) instead of receiving it through `getStaticPaths` props.
 - Component: `src/components/OpenGraph/OG.tsx`
 - Rasteriser: `src/components/OpenGraph/createImage.ts`
 - Card geometry: `src/components/OpenGraph/dimensions.ts`
+- Section artwork: `src/images/opengraph/sections/*.png`
 
 The browse-page OG generators all share the same `OG()` + `PNG()` pipeline and an md5-keyed disk cache at `node_modules/.cache/og-images`. Each generator uses a distinct `kind` field in its cache key (`tag`, `tunes-artist`, `tunes-album`, `glossary-term`) so caches do not collide on identical title text. Consumer pages reference the generated PNG via `BaseLayout`'s `image` prop (forwarded into `og:image`).
 
 `OG(title, description, options)` renders one of two cards:
 
 - **Scrim** — when `options.coverImagePath` resolves. The cover fills the frame behind a vertical and a horizontal gradient in the Night edition's paper (`rgba(22, 20, 17, …)`), with the brand lockup reversed out top-left and the headline and rubric at the foot. Covers are 2560×1440, so a 1.91:1 frame keeps roughly 93% of the art.
-- **Plate** — when there is no cover (tag, book, glossary and tunes hub cards). Warm paper ground, lockup, ink headline, mist standfirst, and a hairline above the section rubric.
+- **Plate** — the coverless fallback. Warm paper ground, lockup, ink headline, mist standfirst, and a hairline above the section rubric. Nothing routes to it today; it stands as the graceful degradation if a cover file goes missing.
 
-**The description is only baked into the Plate.** Every platform prints `og:description` as text beneath the card, so repeating it over the artwork said the same thing twice. Post cards carry a rubric instead — date · reading time · lead tag — which is information the platforms do not duplicate. Hub routes pass their own one-word rubric (`Tag`, `Books`, `Glossary`, `Album`, `Artist`, `Tunes`) through `options.meta`.
+**Hub routes use section artwork.** Tag, book, glossary and tunes hubs have no cover of their own, and a wall of identical paper Plates made the browse pages the dullest thing shared off the site. Each section instead points at one shared image in `src/images/opengraph/sections/` — so all 28 tag hubs share `tags.png`, every book hub shares `books.png`, and so on — which puts them on the Scrim card alongside posts. The images are generated with `scripts/generate-cover.js --prompt=… --output=…` and committed (delete the `-small.png` variant the script also writes; nothing reads it).
+
+Routes resolve theirs through `sectionCover(name)` in `src/components/OpenGraph/sectionCover.ts`, which returns the absolute path plus an md5 of the file's bytes. **Fold that digest into the cache key** — every route does. Without it, regenerating a section image leaves the whole section's cards stale: they look identical to the old ones and nothing fails, so the mistake only surfaces once it ships.
+
+Section art is furniture, not post art, so it is briefed against the scrim rather than for its own sake: interest right of centre and mid-height, the left third dark and quiet under the headline, mid-to-dark tonality throughout, and nothing critical in the top or bottom 3% (a 16:9 source centre-crops to 1.905:1). The usual cover defect guards still apply — no text anywhere, and any prop that normally carries lettering must be described as blank and unmarked, since a card-catalogue drawer or a book spine is exactly what the image model will scrawl gibberish on. Source images that are already low-key come out as a murky rectangle once the scrim lands on them; brief for a lit subject and let the scrim do the darkening.
+
+**The description is only baked into the Plate.** Every platform prints `og:description` as text beneath the card, so repeating it over the artwork said the same thing twice. Post cards carry a rubric instead — date · reading time · lead tag — which is information the platforms do not duplicate. Hub routes pass their own one-word rubric (`Tag`, `Books`, `Glossary`, `Album`, `Artist`, `Tunes`, `Archive`) through `options.meta`. Now that hubs render as Scrim cards, their descriptions are dropped from the artwork too.
 
 **Features**:
 - Auto-generated for all blog posts
@@ -219,7 +230,7 @@ The browse-page OG generators all share the same `OG()` + `PNG()` pipeline and a
 - Brand: the masthead lockup is rebuilt as an inline SVG from `src/data/logo-lockup.json`, the same generated file `Logo.astro` reads. On paper the mark keeps its own palette; over photography it reverses to a flat white monitor — the cloud artwork is dropped there because at 32px any contrast between the two cloud shapes reads as a pair of spectacles.
 - Fonts: Schibsted Grotesk 400/500/700 as static TTFs in `src/images/opengraph/fonts/`. Satori reads TTF/OTF only, and renders a variable font at its default instance, so these are cut from `src/assets/fonts/schibsted-grotesk-variable-latin.woff2` with fontTools — see the recipe in `createImage.ts`. **`GPOS` is stripped**: satori misapplies kern pairs involving the space glyph, which opens a visible double gap after words ending in `n` ("Token Use" renders as "Token  Use"). Kerning is no loss at display sizes.
 - Encoding: truecolour PNG. Quantising saves under 5% on scrim cards while dithering the semi-transparent wordmark into visible speckle.
-- Cached: `node_modules/.cache/og-images/`, keyed by content **plus a design-version salt** in every `*-og.png.ts` route (`og-design:reading-room-scrim-v1`) — bump the salt after any OG redesign, or CI's cached `node_modules` will keep serving old renders
+- Cached: `node_modules/.cache/og-images/`, keyed by content **plus a design-version salt** in every `*-og.png.ts` route (`og-design:reading-room-scrim-v2`) — bump the salt after any OG redesign. Section image swaps invalidate themselves through `sectionCover`'s digest and need no bump, or CI's cached `node_modules` will keep serving old renders
 
 **Generated URLs**:
 ```

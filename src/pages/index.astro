@@ -18,7 +18,7 @@ const totalPages = 1 + Math.ceil((allPosts.length - HOME_PAGE_SIZE) / PAGINATION
 const webSiteSchema = createWebSiteSchema(Astro.site?.toString() || 'https://www.russ.cloud/');
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION} image="/home-og.png">
 	<Schema slot="head" item={webSiteSchema} />
 	<section class="max-w-[728px] mx-auto px-6">
 		<h1 class="sr-only">{SITE_TITLE}</h1>
