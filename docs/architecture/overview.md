@@ -152,6 +152,7 @@ The site builds several taxonomy and browse hubs from the content collections an
 | `/tags/{tag}/rss.xml` | Per-tag RSS feed | `blog` collection |
 | `/tunes/artist/` and `/tunes/artist/{slug}/[page]/` | Browse weekly posts by featured artist, with local artist images on the index page | `src/data/tunes-index.json` |
 | `/tunes/album/` and `/tunes/album/{slug}/` | Browse by featured album, with local album images and `MusicRecording` schema | `src/data/tunes-index.json` |
+| `/tunes/artist/{slug}-og.png` and `/tunes/album/{slug}-og.png` | Per-entity OpenGraph card — sleeve and record, built from the index's album art and artist portraits | `src/data/tunes-index.json` + `TunesRecord.tsx` |
 | `/tunes/rss.xml` | Tunes-only RSS feed | `tunes` collection |
 | `/glossary/` and `/glossary/{term}/` | Technical terminology across cloud, AI, automation, code, security, and tools with `DefinedTerm` schema | `glossary` collection |
 | `/books/` and `/books/{slug}/` | Bookshelf index and per-book detail pages with `Book` schema, related blog posts via tag overlap, and per-book OG images | `books` collection |
