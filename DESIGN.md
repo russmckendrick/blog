@@ -186,10 +186,13 @@ brand lockup left — one self-contained SVG (`Logo.astro`): the iMac mark +
 ".cloud") with the dot and a blinking block cursor on the baseline in the
 mark's own colours — its screen blue `#35495E` on paper, its base grey
 `#BDC3C7` in the Night edition (1.1s square wave, steady under reduced
-motion); five links
-(Tunes · Books · Tags · Archive · About), each a 15px hairline glyph at 62%
-opacity ahead of its label — the glyph comes up to full ink with the label
-on hover, so the pair reads as one object — then a 16px vertical hairline
+motion); seven links
+(Tunes · Books · Reading List · Tags · Archive · About · Source — the last
+off-site to the repo) resting as glyphs alone — a 15px
+hairline mark at 62% opacity, its label collapsed to nothing until hover or
+keyboard focus unfurls it to the right over 150ms and the glyph comes up to
+full ink with it (labels stay visible on touch, where there is no hover to
+give them) — then a 16px vertical hairline
 and the icon-only search trigger and theme toggle right; burger menu below
 768px with the search icon staying beside it. Search is not a widget in the bar:
 the icon (a plain link to `/search/`, JS-upgraded) opens the **search

@@ -57,9 +57,16 @@ export const PAGINATION_PAGE_SIZE = 9;
 export const MASTHEAD_ITEMS = [
   { name: "Tunes", url: "/tunes/", icon: "headphones" },
   { name: "Books", url: "/books/", icon: "book" },
+  { name: "Reading List", url: "/reading/", icon: "bookOpen" },
   { name: "Tags", url: "/tags/", icon: "tag" },
   { name: "Archive", url: "/archives/", icon: "archive" },
   { name: "About", url: "/about/", icon: "user" },
+  {
+    name: "Source",
+    url: "https://github.com/russmckendrick/blog/",
+    icon: "github",
+    external: true,
+  },
 ];
 
 // The single wayfinding line that closes every page.

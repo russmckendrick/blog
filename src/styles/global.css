@@ -573,8 +573,50 @@ a:hover {
   opacity: 1;
 }
 
+/* The GitHub mark is the one solid shape in a row of hairlines, so it needs
+   less ink to sit at the same optical weight as its neighbours. */
+#site-header .nav-glyph.feather-github {
+  opacity: 0.5;
+}
+
+#site-header .header-nav-item:hover .nav-glyph.feather-github,
+#site-header .header-nav-item:focus-visible .nav-glyph.feather-github {
+  opacity: 0.85;
+}
+
+/* Desktop nav rests as glyphs alone; the label unfurls to the right of its
+   own glyph on hover or keyboard focus. Width comes from --nav-label-w set
+   per item, so the slide eases to the exact word rather than a guessed max. */
+#site-header .nav-label {
+  display: inline-block;
+  max-width: var(--nav-label-w, 8ch);
+  padding-left: 0.375rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (hover: hover) {
+  #site-header .nav-label {
+    max-width: 0;
+    padding-left: 0;
+    opacity: 0;
+    transition:
+      max-width var(--dur-quick) var(--ease-settle),
+      padding-left var(--dur-quick) var(--ease-settle),
+      opacity var(--dur-quick) ease;
+  }
+
+  #site-header .header-nav-item:hover .nav-label,
+  #site-header .header-nav-item:focus-visible .nav-label {
+    max-width: var(--nav-label-w, 8ch);
+    padding-left: 0.375rem;
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  #site-header .nav-glyph {
+  #site-header .nav-glyph,
+  #site-header .nav-label {
     transition: none;
   }
 }
