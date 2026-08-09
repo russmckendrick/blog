@@ -1,0 +1,155 @@
+---
+title: "My Starship Prompt Revisited: Making Blocks Vanish Cleanly"
+description: "A follow-up to my Starship setup: how I got the status and AI blocks to appear only when they matter, without leaving a powerline stub behind."
+date: 2026-08-09T15:46:45.557Z
+cover:
+  image: "../../assets/2026-08-09-my-starship-prompt-revisited-making-blocks-vanish-cleanly/blog-cover-2026-08-09-my-starship-prompt-revisited-making-blocks-vanish-cleanly.png"
+draft: false
+showToc: true
+tags:
+  - "macos"
+  - "code"
+  - "tools"
+---
+
+
+Back in November I wrote up [my Starship prompt setup](/2025/11/15/my-starship-prompt-setup/) after finally moving off Powerlevel10k. I said at the time that it would "continue to be added to as time goes on," and it has. The config has roughly doubled in size since then, and most of that growth has gone into one problem I glossed over in the first post: making blocks disappear when I don't need them.
+
+That sounds trivial. It is not, and the reason why turned out to be the most interesting thing I've learned about how these prompts actually work. So this is the follow-up: how conditional blocks work in a powerline prompt, why the obvious approach leaves a mess behind, and the two patterns I ended up using to fix it.
+
+<Img src="/assets/2026-08-09-my-starship-prompt-revisited-making-blocks-vanish-cleanly/terminal.svg" alt="A screenshot of my Starship prompt, showing the AI badge and status tail in action" />
+
+## The problem with a powerline chain
+
+A powerline prompt is a row of coloured blocks with chevrons pointing into each other. The trick that makes the chevrons line up is that each separator is coloured with the block on its left as the foreground and the block on its right as the background:
+
+```toml frame="code" title="How a separator is coloured"
+# [SEP](fg:<colour of the block on the LEFT> bg:<colour of the block on the RIGHT>)
+```
+
+The important detail is that the separator is ordinary static text written straight into the `format` string. It renders whether or not the module next to it produced any output. That's fine for a block that always shows, like the directory. It's a problem for a block that's meant to be optional.
+
+Take the status block at the end of my bar, which shows the command duration, a non-zero exit code, and any background jobs. Most of the time none of those apply, so all three modules render nothing. But the chevron leading into the block is static text, so it renders anyway, and I'm left with a one-character coloured stub floating at the end of the prompt with no block attached to it. Every single line. It looks like a bug, because it basically is one.
+
+So the question became: how do I make the separators themselves conditional, when Starship gives me no way to say "only draw this chevron if the block after it rendered"?
+
+## Static separators, where they're fine
+
+Before the clever bit, the boring bit. For blocks that always render, or that I'm happy to leave stubbed, the separators just live in `format` and never move:
+
+```toml frame="code" title="Static separators in the format string"
+format = """
+[](color_orange)\
+$os\
+$username\
+[](bg:color_yellow fg:color_orange)\
+$directory\
+...
+"""
+```
+
+Identity, directory, battery and time are always there on a laptop, so their chevrons can be hardcoded and they'll never stub. The battery and the time in the middle of the bar do a second job too: because they're always present, they act as anchors that let the optional blocks either side of them vanish cleanly. That turns out to matter, and I'll come back to it.
+
+## Pattern one: the complement pair (the AI badge)
+
+The first optional block I added since the last post is a small one. When I'm sat in a folder that has an `AGENTS.md` or a `CLAUDE.md` in it, a little robot badge appears in the bar. It's a quick visual confirmation that I'm somewhere an agent has instructions to follow, which given how much of my week now involves Claude Code is more useful than it sounds.
+
+The badge sits between the directory and the battery, right in the middle of the bar, so a leftover stub would be very visible. I couldn't use a single conditional module, because whichever way the condition falls, the chevron leading into the battery block still has to be drawn. A single module can't do that, it can only draw the chevron when it itself renders.
+
+The fix is a pair of modules that are exact opposites of each other. One renders when the badge is present, the other renders when it isn't, and between them they always emit exactly one chevron into the battery block:
+
+```toml frame="code" title="The AI badge complement pair"
+[custom.ai]
+description = "Robot badge when the folder has AGENTS.md or CLAUDE.md"
+detect_files = ["AGENTS.md", "CLAUDE.md"]
+format = '[](fg:color_yellow bg:color_faded_green)[ 󰚩 ](fg:color_fg0 bg:color_faded_green)[](fg:color_faded_green bg:color_faded_purple)'
+
+[custom.ai_none]
+description = "Plain separator when the AI section is absent"
+when = "test ! -f AGENTS.md -a ! -f CLAUDE.md"
+format = '[](fg:color_yellow bg:color_faded_purple)'
+```
+
+When the agent file is there, `custom.ai` draws the chevron in from the yellow directory, the badge on its green background, and a chevron out into the purple battery. When it isn't, `custom.ai_none` draws a single bare chevron straight from yellow to purple, as if the badge block was never in the layout at all. The battery gets its incoming chevron either way, and there's no stub.
+
+<WarningCallout title="The `when` gotcha that cost me an evening">
+Starship's `when` condition only works if you leave the `shell` key off entirely. The moment I added `shell = ["sh", "-c"]` to be explicit about it, the condition silently stopped matching and the badge never appeared. No error, no warning, it just quietly never fired. There's a note about it buried in the docs, but I found it the hard way.
+</WarningCallout>
+
+There's a small cost to this. `custom.ai_none` forks a `test` on every prompt, because that's how it checks for the absence of the files. One `test` per prompt is cheap enough that I don't notice it, but it's worth knowing it's there.
+
+## Pattern two: the gated block (the status tail)
+
+The badge pattern works because directory and battery, either side of it, always render. The status block at the end of the bar is a harder case, and it's the one that pushed me into something I'm oddly pleased with.
+
+The status tail is actually three separate modules: command duration, exit status, and background jobs. They share one charcoal background and sit right next to each other with no separators between them, so however many of them fire at once, they read as a single block. That shared background is the whole trick, because it means the entire group needs only one chevron in and one cap out, no matter which of the three modules actually rendered.
+
+The complication is the condition. Starship can't test "did any of these three fire?" itself. The exit status, the command duration and the job count don't arrive as things a module can read. They come in as command-line arguments when the shell calls `starship prompt`. The zsh integration stashes them in `STARSHIP_CMD_STATUS`, `STARSHIP_DURATION` and `STARSHIP_JOBS_COUNT`, but those are plain shell variables that never get exported, so a `custom` module's `when` can't see them either.
+
+So I compute the decision in zsh, before the prompt renders, and hand Starship a single flag to read. A `precmd` hook works out whether the block should be there and sets exactly one of two environment variables:
+
+```bash frame="terminal" title="~/.dotfiles/.zshrc — the alert gate hook"
+# Set exactly one of STARSHIP_ALERT / STARSHIP_NOALERT before every prompt,
+# based on the command that just finished. The thresholds here MUST match
+# cmd_duration.min_time (2000) and jobs.threshold (1) in starship.toml.
+_starship_alert_gate() {
+  local last_status=${STARSHIP_CMD_STATUS:-0}
+  local duration=${STARSHIP_DURATION:-0}
+  local jobs=${STARSHIP_JOBS_COUNT:-0}
+
+  if (( last_status != 0 || duration >= 2000 || jobs >= 1 )); then
+    export STARSHIP_ALERT=1
+    unset STARSHIP_NOALERT
+  else
+    export STARSHIP_NOALERT=1
+    unset STARSHIP_ALERT
+  fi
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _starship_alert_gate
+```
+
+Then on the Starship side, three `env_var` modules supply the separators. An `env_var` module renders nothing at all when its variable is unset and you haven't given it a `default`, which is exactly the conditional behaviour I want, with no subshell fork:
+
+```toml frame="code" title="starship.toml — the gate reads the flag"
+[env_var.alert_open]
+variable = "STARSHIP_ALERT"
+format = '[](fg:color_muddy_green bg:color_bg1)'
+
+[env_var.alert_cap]
+variable = "STARSHIP_ALERT"
+format = '[](fg:color_bg1)'
+
+[env_var.alert_none]
+variable = "STARSHIP_NOALERT"
+format = '[](fg:color_muddy_green)'
+```
+
+When `STARSHIP_ALERT` is set, `alert_open` draws the chevron from the green container block into the charcoal status block, and `alert_cap` draws the closing cap after it. When `STARSHIP_NOALERT` is set instead, `alert_none` draws a closing cap straight off the green block and the whole charcoal section is gone. No stub, no gap, nothing to suggest there was ever a block there.
+
+It's the same complement-pair idea as the AI badge, but with the condition lifted out into the shell because Starship couldn't compute it on its own.
+
+<WarningCallout title="Never give these a `default`">
+It's tempting to add a `default` to those `env_var` modules to be safe. Don't. A `default` makes the module render unconditionally, which pins the stub back on permanently and can put two closing caps on the bar at once. Not printing `$env_value` is deliberate too: the variable is just a flag, and the format string is the entire payload.
+</WarningCallout>
+
+The other thing to watch is that the thresholds now live in two places. The `2000` and the `1` in the zsh hook have to match `cmd_duration.min_time` and `jobs.threshold` in the TOML. If they drift, the gate opens around nothing, or hides something it should have shown. I've left a comment in both files pointing at the other, because I know full well I'll forget.
+
+## What I tried first and threw away
+
+The obvious approach, and the one I started with, was to fold the separators into every module so each block carries its own chevron and closes itself off. It half works, but self-closing segments leave a visible sliver of terminal background between the block and the bar, which looks worse than the stub I was trying to get rid of. The complement-pair approach avoids that because the separators are still part of one continuous chain, they've just been split across two mutually exclusive modules.
+
+The gate only works cleanly for the status tail for one specific reason: those three modules share a single background and sit at the very end of the bar, so the group needs one colour transition in and one cap out, never a transition between its own members. A run of consecutive optional blocks that each wanted its own colour couldn't do this, because every separator hardcodes both of its neighbours and no module can see whether the one next to it rendered. The badge only works because directory and battery, either side of it, are always there to anchor it.
+
+## The bit nobody warns you about
+
+One last thing, because it bit me repeatedly. Almost every separator and icon in this config is a Unicode Private Use Area glyph, either a powerline chevron or a Nerd Font icon. They render as blank space or empty boxes in most tools, and if you retype one from memory or copy it through something that normalises text, you silently lose it. The config still parses fine, the chevron just quietly turns into a flat edge and you spend twenty minutes wondering what changed.
+
+A malformed format string doesn't fail loudly either. An unbalanced bracket makes Starship log a warning to stderr and skip that module entirely, which is easy to miss for a module that rarely renders in the first place, like a gated one. After editing any of these, force the module to render and confirm you actually see it, and check stderr rather than trusting the exit code, because `starship print-config` will happily exit 0 with unknown keys.
+
+If you want the full thing, separators and all, it's in my dotfiles repo:
+
+<LinkPreview id="https://github.com/russmckendrick/dotfiles/blob/main/starship.toml" />
+
+None of this is necessary, of course. The prompt worked fine with a stub on the end of it, and most people would never have noticed. But I take a lot of screenshots and do a fair bit of screen sharing, and a stray chevron floating in space is exactly the sort of thing that bugs me every time I look at it. Now it's gone, and I can go back to being annoyed at something else.
