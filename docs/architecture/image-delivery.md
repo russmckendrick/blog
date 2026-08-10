@@ -305,21 +305,35 @@ const imageSrcSet = preset.widths
 
 #### BlogPost.astro (Hero Images)
 
+The hero is also a lightbox item, so it carries a second, higher-resolution URL
+built from the **gallery** preset for the lightbox href while the on-page `<img>`
+keeps the **hero** preset srcset (see `docs/reference/embed-components.md`).
+
 ```astro
 ---
 const preset = CF_IMAGE_PRESETS.hero;
 const heroSrcSet = generateCFSrcSet(displayImage, preset.widths, preset.quality);
+const heroLightboxSrc = getCFImageUrl(displayImage, {
+  width: 2048,
+  quality: CF_IMAGE_PRESETS.gallery.quality,
+  format: CF_IMAGE_PRESETS.gallery.format,
+  fit: CF_IMAGE_PRESETS.gallery.fit
+});
 ---
 
-<img
-  src={getCFImageUrl(displayImage, { width: 1200, quality: preset.quality })}
-  srcset={heroSrcSet}
-  sizes="(min-width: 1024px) 1200px, (min-width: 640px) 1024px, 640px"
-  alt={cover?.alt || title}
-  loading="eager"
-  fetchpriority="high"
-  class="hero-image"
-/>
+<div class="lightgallery-component" data-options={JSON.stringify({ thumbnail: false, download: false })}>
+  <a href={heroLightboxSrc} data-lg-id="true" data-sub-html={`<h4>${title}</h4>`} class="block cursor-zoom-in">
+    <img
+      src={getCFImageUrl(displayImage, { width: 1200, quality: preset.quality })}
+      srcset={heroSrcSet}
+      sizes="(min-width: 1024px) 1200px, (min-width: 640px) 1024px, 640px"
+      alt={title}
+      loading="eager"
+      fetchpriority="high"
+      class="hero-image"
+    />
+  </a>
+</div>
 ```
 
 #### Img.astro (Embed Component)

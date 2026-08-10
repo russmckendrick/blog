@@ -325,6 +325,10 @@ Example usage:
 
 The lightgallery library (and its thumbnail/zoom plugins) never loads during page load — the three chunks stay out of the network dependency tree entirely. `BlogPost.astro` fetches them (in parallel) only on the first user interaction with a gallery item: a capture-phase `pointerover`/`focusin`/`touchstart` warm-up starts the import as soon as a gallery image is hovered, focused, or touched, and a capture-phase click listener is the primary open path — clicking a gallery image initializes on demand and opens the lightbox instead of navigating to the raw image. Pages without galleries never load anything.
 
+**Hero artwork as a gallery item:**
+
+`BlogPost.astro` wraps the hero image (the artwork under the title on every blog and tunes post) in the same `.lightgallery-component` / `a[data-lg-id]` markup that `Img` uses, so it is click-to-zoom like any in-post image. It joins the page's unified gallery in DOM order, which puts it first, ahead of any `Img` or `LightGallery` items — so the lightbox opens on the hero and arrow-keys through the rest of the post's images. The lightbox href is the gallery preset at 2048px wide (the on-page `<img>` keeps its own hero-preset srcset, preload hint and `fetchpriority="high"`, so LCP is unaffected). The post title supplies the `alt` text, the lightbox caption (`data-sub-html`) and the link's `aria-label`. Because every post has hero artwork, posts with no other images now load the lightgallery chunks too — still only on first interaction.
+
 ### ThemeSvg
 Embed SVG images with automatic light/dark theme switching. Provide a base path and the component renders both `-light` and `-dark` variants, showing the correct one based on the active theme.
 

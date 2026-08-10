@@ -141,6 +141,10 @@ cover:
 - Relative: `"./image.jpg"` (in same assets folder)
 - Absolute: `"/assets/2025-11-02-post/image.jpg"`
 
+**Note on `alt`**: `cover.alt` applies to the listing thumbnail (`PostCard.astro`). The
+hero on the post page uses the post `title` for its alt text, lightbox caption and link
+label, so `cover.alt` does not change it.
+
 ---
 
 ### lastModified

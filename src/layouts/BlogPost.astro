@@ -66,6 +66,19 @@ const displayImage = cover?.image || heroImage;
 const heroWidth = (typeof displayImage === 'object' && displayImage?.width) || 2560;
 const heroHeight = (typeof displayImage === 'object' && displayImage?.height) || 1440;
 
+// The hero doubles as the first item in the page's lightbox gallery, so it
+// needs a full-resolution href alongside the responsive display srcset.
+// The post title is the alt text, the lightbox caption and the link label.
+const heroAlt = title;
+const heroLightboxSrc = displayImage
+	? getCFImageUrl(displayImage, {
+		width: 2048,
+		quality: CF_IMAGE_PRESETS.gallery.quality,
+		format: CF_IMAGE_PRESETS.gallery.format,
+		fit: CF_IMAGE_PRESETS.gallery.fit
+	})
+	: undefined;
+
 // Build edit URL
 const editUrl = filePath && EDIT_POST.appendFilePath
 	? `${EDIT_POST.url}/${filePath}`
@@ -245,30 +258,45 @@ const howToSchema = howto && howto.steps?.length > 0
 						</h1>
 					</header>
 
-					{/* Hero image: the artwork, directly below the title */}
+					{/* Hero image: the artwork, directly below the title. Wrapped as a
+					    gallery item so it opens in the same lightbox as in-post images —
+					    it lands first because the unified gallery collects in DOM order. */}
 					{displayImage && (
 						<figure
 							class="mb-7 rounded-[4px] overflow-hidden"
 							data-settle
 							transition:name={imageTransition}
 						>
-							<img
-								src={getCFImageUrl(displayImage, {
-									width: 1360,
-									quality: CF_IMAGE_PRESETS.hero.quality,
-									format: CF_IMAGE_PRESETS.hero.format,
-									fit: 'scale-down'
-								})}
-								srcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
-								sizes="(max-width: 728px) calc(100vw - 48px), 680px"
-								alt={cover?.alt || title}
-								loading="eager"
-								fetchpriority="high"
-								decoding="sync"
-								width={heroWidth}
-								height={heroHeight}
-								class="w-full h-auto"
-							/>
+							<div
+								class="lightgallery-component"
+								data-options={JSON.stringify({ thumbnail: false, download: false })}
+							>
+								<a
+									href={heroLightboxSrc}
+									data-lg-id="true"
+									data-sub-html={`<h4>${heroAlt}</h4>`}
+									aria-label={`View ${heroAlt} in full size`}
+									class="block cursor-zoom-in"
+								>
+									<img
+										src={getCFImageUrl(displayImage, {
+											width: 1360,
+											quality: CF_IMAGE_PRESETS.hero.quality,
+											format: CF_IMAGE_PRESETS.hero.format,
+											fit: 'scale-down'
+										})}
+										srcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
+										sizes="(max-width: 728px) calc(100vw - 48px), 680px"
+										alt={heroAlt}
+										loading="eager"
+										fetchpriority="high"
+										decoding="sync"
+										width={heroWidth}
+										height={heroHeight}
+										class="w-full h-auto hover:opacity-90 transition-opacity"
+									/>
+								</a>
+							</div>
 						</figure>
 					)}
 
