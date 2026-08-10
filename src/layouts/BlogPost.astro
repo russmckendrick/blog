@@ -70,14 +70,13 @@ const heroHeight = (typeof displayImage === 'object' && displayImage?.height) ||
 // needs a full-resolution href alongside the responsive display srcset.
 // The post title is the alt text, the lightbox caption and the link label.
 const heroAlt = title;
-const heroLightboxSrc = displayImage
-	? getCFImageUrl(displayImage, {
-		width: 2048,
-		quality: CF_IMAGE_PRESETS.gallery.quality,
-		format: CF_IMAGE_PRESETS.gallery.format,
-		fit: CF_IMAGE_PRESETS.gallery.fit
-	})
-	: undefined;
+// Zoom opens the original asset, bypassing Cloudflare entirely: every CF
+// variant is capped at the preset widths and re-encoded lossily, so the
+// largest one is still smaller and softer than the file itself. The image
+// service is `noop`, so an imported hero is emitted to /_astro/ untouched.
+// The display <img> above keeps its own hero-preset srcset — nothing about
+// how the header renders changes.
+const heroLightboxSrc = typeof displayImage === 'string' ? displayImage : displayImage?.src;
 
 // Build edit URL
 const editUrl = filePath && EDIT_POST.appendFilePath
