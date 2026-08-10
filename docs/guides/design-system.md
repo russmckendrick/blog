@@ -101,6 +101,8 @@ Shared-element view transitions: `PostCard` and `BlogPost.astro` derive matching
 
 One definition in `global.css` (`.callout`, `.callout-heading`, variant classes `.callout-note/tip/important/caution/warning`). Each variant sets `--callout-accent` from a per-variant ink (defined light + dark): 2px accent left rule, 5% `color-mix` tint background, small-caps mono heading. `Callout.astro` maps `general`/`info` to the note treatment.
 
+The accent ink is also the heading colour, so each variant must clear **4.5:1 against its own 5%-tinted background** — not against bare paper. The heading is 13px, below the large-text threshold, so 3:1 does not apply. Light-mode `warning` is the tight one: it was `#8a6d1f` (4.41:1, a Lighthouse failure) and is now `#836617` (4.86:1). Re-check the ratio against the tinted blend when changing any accent.
+
 ## Third-party surfaces
 
 - **Expressive Code:** editor/code-file frames stay quiet with hairline borders and paper-tinted chrome, via `styleOverrides` in `astro.config.mjs`. **Terminal frames** (`.frame.is-terminal`) are the one deliberate exception to the flat, shadowless language — restyled in `global.css` as macOS windows: 10px radius, soft shadow (the only shadow in the system), real red/amber/green traffic lights drawn as pure CSS circles. Terminals always render as a **dark slate-navy profile (Catppuccin Macchiato — matching the author's real terminal)** in *both* site themes: `catppuccin-macchiato` is registered as a third EC theme whose selector never matches page-wide, and terminal frames force its token layer (`var(--2)`) over a `#24273a` body and `#2c3047` titlebar.

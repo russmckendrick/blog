@@ -11,6 +11,7 @@ import { getTagMetadata, getTagUrl, getTagName, getTagColorClasses, normalizeTag
 import { TAG_AVATAR_MAP } from '../../../consts';
 import { createCollectionPageSchema, createBreadcrumbSchema } from '../../../utils/schema';
 import { createUrlFriendlySlug } from '../../../utils/url';
+import { getAvatarImageUrl } from '../../../utils/avatars';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts = (await getCollection('blog'))
@@ -100,8 +101,10 @@ const breadcrumbSchema = createBreadcrumbSchema(
 
 const tagOgImage = `/tags/${tag}-og.png`;
 
-// Get avatar for this tag
-const avatarSrc = TAG_AVATAR_MAP[tag] ? `/images/avatars/${TAG_AVATAR_MAP[tag]}` : null;
+// Get avatar for this tag — rendered at 80px on sm and up
+const avatarSrc = TAG_AVATAR_MAP[tag]
+  ? getAvatarImageUrl(`/images/avatars/${TAG_AVATAR_MAP[tag]}`, 80)
+  : null;
 const avatarFallback = '/images/avatar-192x192.png';
 ---
 

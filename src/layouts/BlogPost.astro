@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { getCFImageUrl, generateCFSrcSet, CF_IMAGE_PRESETS } from '../utils/cloudflare-images';
+import { getAvatarImageUrl } from '../utils/avatars';
 import BaseHead from '../components/layout/BaseHead.astro';
 import RevealInit from '../components/layout/RevealInit.astro';
 import Footer from '../components/layout/Footer.astro';
@@ -115,9 +116,12 @@ const getDefaultAvatar = () => {
 	return mappedTag ? `/images/avatars/${TAG_AVATAR_MAP[mappedTag]}` : '/images/avatars/anon.svg';
 };
 
-const avatarSrc = avatar
+const avatarPath = avatar
 	? buildAvatarPath(avatar)
 	: getDefaultAvatar();
+// Byline renders at 36px — serve the PNG twin through Cloudflare rather than the
+// full-weight illustration SVG, which otherwise outweighs the hero image.
+const avatarSrc = avatarPath ? getAvatarImageUrl(avatarPath, 36) : undefined;
 const avatarFallback = isTune ? AI_AUTHOR.avatarFallback : '/images/avatar-192x192.png';
 
 // Create BlogPosting schema for SEO
@@ -129,7 +133,7 @@ const blogPostingSchema = createBlogPostingSchema({
 	dateModified: lastModified || updatedDate,
 	image: ogImage || new URL(defaultImage, Astro.site).toString(),
 	author: authorName,
-	authorAvatar: avatarSrc,
+	authorAvatar: avatarPath,
 	keywords: tags,
 	siteUrl: Astro.site?.toString() || 'https://www.russ.cloud/',
 	wordCount,

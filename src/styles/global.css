@@ -1224,7 +1224,9 @@ body {
   --callout-tip: #3d5c33;
   --callout-important: #2f4a63;
   --callout-caution: #8f2d00;
-  --callout-warning: #8a6d1f;
+  /* Darkened from #8a6d1f, which measured 4.41:1 against the callout's own
+     5%-tinted paper — just under the 4.5:1 the 13px heading needs. Now 4.86:1. */
+  --callout-warning: #836617;
 }
 
 .dark {

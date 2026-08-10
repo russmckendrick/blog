@@ -8,6 +8,8 @@ The blog uses **Cloudflare Image Transformations** for on-demand image optimizat
 
 **SVG exception**: SVG files are never routed through Cloudflare Image Transformations. `getCFImageUrl()` returns the raw asset path for any `.svg` source and `generateCFSrcSet()` returns no responsive variants, so SVGs are delivered byte-for-byte as static assets with no compression, sanitization, or format conversion anywhere in the pipeline (`scripts/optimize-images.js` also excludes SVGs).
 
+**Avatars are the exception to the exception**: the illustrated avatars in `public/images/avatars/` are detailed vector art — `laptop-02.svg` is ~90 KiB over the wire — so serving them raw meant a 36px byline avatar outweighed the hero image and competed with it for bandwidth during the LCP window. Every avatar ships with a same-name `.png` twin, so avatar call sites go through `getAvatarImageUrl()` in `src/utils/avatars.ts`, which swaps to the PNG and resizes it to the rendered box. See [Avatar delivery](#avatar-delivery).
+
 ## Architecture Comparison
 
 ### Traditional Approach (Not Used)
@@ -237,6 +239,41 @@ export const CF_IMAGE_PRESETS = {
 };
 ```
 
+### Avatar delivery
+
+Avatar call sites never reference the `.svg` directly. `getAvatarImageUrl(avatarPath, renderedSize)`
+in `src/utils/avatars.ts` swaps the `.svg` for its `.png` twin and asks Cloudflare for a
+square at `renderedSize * 2` (for high-DPI screens), using the `CF_IMAGE_PRESETS.avatar`
+quality, format, and `fit: 'cover'` — which mirrors the CSS `object-cover` the avatars are
+always drawn with, so framing is unchanged. The source illustrations are not square.
+
+```astro
+---
+import { getAvatarImageUrl } from '../utils/avatars';
+
+// Byline avatar renders in a 36px box
+const avatarSrc = getAvatarImageUrl('/images/avatars/laptop-02.svg', 36);
+// → /cdn-cgi/image/width=72,height=72,quality=60,format=auto,fit=cover/images/avatars/laptop-02.png
+---
+```
+
+Effect on the byline avatar: **89,797 bytes → 1,780 bytes** (AVIF), a 98% reduction.
+
+Current call sites:
+
+| Location | Rendered size | Notes |
+|---|---|---|
+| `src/layouts/BlogPost.astro` | 36px | Byline; passes the untransformed path to the `BlogPosting` schema so structured data keeps the full-size asset |
+| `src/pages/tags/[tag]/[...page].astro` | 80px | Tag hub header (64px below `sm`) |
+| `src/pages/about.astro` | 176px | Resolved server-side into `window.__availableAvatars` so the click-to-randomise swap uses transformed URLs too |
+
+`src/pages/avatars.astro` is deliberately excluded — that gallery exists to expose the raw
+`.svg` and `.png` URLs for copying.
+
+Every `.svg` in `public/images/avatars/` must keep its same-name `.png` twin (58 of each at
+time of writing); `getAvatarImageUrl()` assumes the twin exists, and the `onerror` fallback on
+each `<img>` catches it if not.
+
 ### Component Usage
 
 #### PostCard.astro (Blog Post Thumbnails)
@@ -305,20 +342,18 @@ const imageSrcSet = preset.widths
 
 #### BlogPost.astro (Hero Images)
 
-The hero is also a lightbox item, so it carries a second, higher-resolution URL
-built from the **gallery** preset for the lightbox href while the on-page `<img>`
-keeps the **hero** preset srcset (see `docs/reference/embed-components.md`).
+The hero is also a lightbox item. Zoom links the **original asset**, bypassing
+Cloudflare: every CF variant is capped at a preset width and re-encoded lossily,
+so the largest one is still smaller and softer than the source. Since the image
+service is `noop`, an imported hero lands in `/_astro/` byte-for-byte and
+`displayImage.src` is the full-resolution file. The on-page `<img>` is unchanged
+and keeps its **hero** preset srcset (see `docs/reference/embed-components.md`).
 
 ```astro
 ---
 const preset = CF_IMAGE_PRESETS.hero;
 const heroSrcSet = generateCFSrcSet(displayImage, preset.widths, preset.quality);
-const heroLightboxSrc = getCFImageUrl(displayImage, {
-  width: 2048,
-  quality: CF_IMAGE_PRESETS.gallery.quality,
-  format: CF_IMAGE_PRESETS.gallery.format,
-  fit: CF_IMAGE_PRESETS.gallery.fit
-});
+const heroLightboxSrc = typeof displayImage === 'string' ? displayImage : displayImage?.src;
 ---
 
 <div class="lightgallery-component" data-options={JSON.stringify({ thumbnail: false, download: false })}>
