@@ -471,6 +471,477 @@
         "Mojave-3.jpg",
         "Jimmy-Cliff.jpg"
       ]
+    },
+    {
+      "version": 2,
+      "date": "2026-08-10",
+      "type": "cover",
+      "lane": null,
+      "lighting": null,
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Moonlit puppet stage in a flooded jungle",
+      "creativeDirection": "A handcrafted theatrical shadow-box diorama combining painted scenery, cut-paper figures, suspended ornaments, and miniature props photographed as a surreal stage set.",
+      "scene": "A frontal view into a deep proscenium shadow-box stage where a flooded jungle clearing opens toward a glowing moon-disc backdrop, with shallow water across the floor and layered scenery receding into darkness.",
+      "elements": [
+        {
+          "source": 1,
+          "element": "A single seated man in a vivid red armchair placed slightly left of center as the dominant grounded figure, with a pale plank-wall fragment and hanging hat turned into part of the stage set behind him."
+        },
+        {
+          "source": 2,
+          "element": "A huge glowing white disc as the rear backdrop moon, with a tiny black island silhouette in the water near it and a flock of birds arcing up toward the upper right."
+        },
+        {
+          "source": 3,
+          "element": "Two small figures standing together on a rust-colored leaf-strewn path at the edge of the jungle midground beneath heavy stormlike cloud flats."
+        },
+        {
+          "source": 4,
+          "element": "Large foreshortened cut-paper hands reaching in from the right foreground, threaded among hanging white star ornaments."
+        },
+        {
+          "source": 5,
+          "element": "The main environment: dense tropical foliage, river water, a white wading bird, distant elephants, and a crocodile near the front waterline."
+        },
+        {
+          "source": 6,
+          "element": "A narrow glowing horizontal stage aperture high in the set containing a blurred woman under spotlights, like a secondary performance box."
+        },
+        {
+          "source": 7,
+          "element": "A pole of red loudspeaker horns rising from the left background, silhouetted against twilight as part of the theatrical machinery."
+        },
+        {
+          "source": 8,
+          "element": "A whimsical green-clad headless figure near pink open window frames on an upper side platform, framing a small crescent moon and stars."
+        }
+      ],
+      "palette": [
+        "midnight blue",
+        "jungle green",
+        "rust orange",
+        "crimson red",
+        "beige wood",
+        "soft white"
+      ],
+      "mood": "mysterious, musical, dreamlike",
+      "coverSummaries": [
+        {
+          "source": 1,
+          "filename": "Let-Me-Come-Over-25th-Anniversary-Edition.jpg",
+          "album": "Let Me Come Over 25th Anniversary Edition",
+          "artist": "",
+          "description": "A warm-toned photograph of a man sitting heavily in a bright red armchair in a sparse interior. He wears a hat, jacket, shirt, dark trousers, and shoes, and faces forward with a serious expression. Behind him is a pale wooden plank wall with a small framed picture on the upper left and another hat hanging on the upper right. A patterned circular rug is partly visible at the bottom right on a beige floor.",
+          "signatureMotif": "man seated in a red armchair",
+          "medium": "photograph",
+          "palette": [
+            "red",
+            "orange",
+            "beige",
+            "cream",
+            "brown"
+          ]
+        },
+        {
+          "source": 2,
+          "filename": "On-an-Island.jpg",
+          "album": "On an Island",
+          "artist": "",
+          "description": "A minimalist blue-toned cover showing a silhouetted person seated on a tiny rocky island or mound near the bottom center. A large glowing white circular disc dominates the background like a moon or sun, and a flock of black birds arcs upward across it toward the upper right. The composition is spacious with a soft gradient from deep blue to lighter blue.",
+          "signatureMotif": "silhouetted figure on a small island before a large glowing disc",
+          "medium": "digital illustration",
+          "palette": [
+            "blue",
+            "white",
+            "black",
+            "navy"
+          ]
+        },
+        {
+          "source": 3,
+          "filename": "WHO-ASKED.jpg",
+          "album": "WHO ASKED",
+          "artist": "",
+          "description": "A staged photograph of two young figures standing side by side in the center of an autumnal landscape. One has long light hair and wears a short dark outfit with sneakers; the other has dark hair and wears a long dark garment. They stand on a leaf-strewn path surrounded by reddish shrubs and trees, with hills in the distance and dramatic heavy clouds filling the sky. A small building edge appears on the left.",
+          "signatureMotif": "two figures standing in an autumn landscape under dramatic clouds",
+          "medium": "photograph",
+          "palette": [
+            "rust",
+            "brown",
+            "orange",
+            "red",
+            "tan"
+          ]
+        },
+        {
+          "source": 4,
+          "filename": "Greatest-Hits.jpg",
+          "album": "Greatest Hits",
+          "artist": "",
+          "description": "A high-contrast photograph of a person reaching both hands toward the camera, creating a foreshortened effect with the fingers spread wide in the foreground. Bright white star shapes hang on strings around the figure and overlap the hands and face. The background is dark with blue and purple lighting, and the person’s face is partly obscured by the hands and stars.",
+          "signatureMotif": "outstretched hands surrounded by hanging stars",
+          "medium": "photograph",
+          "palette": [
+            "black",
+            "blue",
+            "purple",
+            "white",
+            "orange"
+          ]
+        },
+        {
+          "source": 5,
+          "filename": "Tango-in-the-Night.jpg",
+          "album": "Tango in the Night",
+          "artist": "",
+          "description": "A framed painted jungle scene set within a dark border. Dense tropical foliage fills the right side, while a river or lagoon runs through the center-left. Visible animals include a white wading bird in the water, elephants in the distance, and a crocodile or alligator near the foreground waterline. The sky is dusky with a pale moon or sun low on the horizon, and the vegetation is lush and layered.",
+          "signatureMotif": "lush tropical jungle with river and animals",
+          "medium": "painting",
+          "palette": [
+            "green",
+            "black",
+            "purple",
+            "blue",
+            "pale yellow"
+          ]
+        },
+        {
+          "source": 6,
+          "filename": "Dummy.jpg",
+          "album": "Dummy",
+          "artist": "",
+          "description": "A mostly deep blue cover with a narrow horizontal rectangular image across the middle. Inside the strip, a woman in a shiny dress appears seated or standing under bright stage-like spotlights in a dark space. The image is grainy and blurred, with strong light blooms above and around her, while the surrounding border remains solid blue.",
+          "signatureMotif": "woman under stage spotlights in a narrow central frame",
+          "medium": "photograph",
+          "palette": [
+            "blue",
+            "black",
+            "white",
+            "gray",
+            "violet"
+          ]
+        },
+        {
+          "source": 7,
+          "filename": "Music-for-the-Masses.jpg",
+          "album": "Music for the Masses",
+          "artist": "",
+          "description": "A beige textured background with a wide horizontal photograph centered in the lower half. The photo shows several red loudspeaker horns mounted on a white pole against a twilight sky with blue, purple, and pink tones above a dark horizon line. The layout is clean and graphic, with the speakers as the focal point.",
+          "signatureMotif": "cluster of red loudspeakers on a pole",
+          "medium": "photograph with graphic layout",
+          "palette": [
+            "beige",
+            "red",
+            "blue",
+            "purple",
+            "white"
+          ]
+        },
+        {
+          "source": 8,
+          "filename": "Duke.jpg",
+          "album": "Duke",
+          "artist": "",
+          "description": "A simple hand-drawn illustration on a white background. In the center, a headless figure in loose green clothing stands facing an open pair of pink window frames that reveal a blue night sky with a small yellow crescent moon and tiny stars. The figure has small yellow shoes and tiny hands, and the composition is sparse and whimsical.",
+          "signatureMotif": "headless figure facing open windows and a crescent moon",
+          "medium": "hand-drawn illustration",
+          "palette": [
+            "white",
+            "green",
+            "pink",
+            "blue",
+            "yellow"
+          ]
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2",
+      "model": "openai/gpt-image-2/edit",
+      "prompt": "Frontal view into a deep proscenium shadow-box stage set in a flooded jungle clearing, looking straight into layered scenery that recedes toward a giant glowing moon disc at the back; a man seated heavily in a vivid red armchair slightly left of center is the primary subject, serious and still, with a pale wooden plank-wall fragment behind him that includes a tiny framed picture and a hanging hat, while shallow reflective water spreads across the stage floor. Use source-specific details throughout the set: a huge white circular moon backdrop with a tiny black island silhouette near its base and a flock of birds arcing upward to the upper right; two small young figures side by side on a rust-colored leaf path in the midground under dramatic storm-cloud flats; oversized foreshortened hands reaching in from the right foreground among suspended white star ornaments on strings; dense tropical foliage and river margins with a white wading bird in the water, distant elephants half-hidden in the background, and a crocodile near the front waterline; a narrow glowing horizontal aperture high in the set holding a blurred woman under bright spotlights like a miniature performance box; a pole topped with clustered red loudspeaker horns in the left background against twilight; and on an upper side platform a whimsical green-clothed headless figure facing open pink window frames that reveal a blue night sky with a small yellow crescent moon and tiny stars. Handcrafted theatrical diorama, mixed media with painted jungle backdrops, cut-paper silhouettes, miniature sculpture, suspended ornaments, collage textures, and photographic capture of the physical model. Clear hierarchy with the red armchair figure dominant, the moon disc second, supporting motifs distributed in depth; symmetrical stage framing with slight asymmetry in object placement, crisp foreground details and softer atmospheric recession, luminous moon backlight, cool blue-violet ambient light, and selective warm highlights on the chair, leaves, and speakers. Palette of midnight blue, jungle green, rust orange, crimson red, beige wood, soft white, violet glow, and dusky pink; mood mysterious, musical, dreamlike. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "inputs": [
+        "Let-Me-Come-Over-25th-Anniversary-Edition.jpg",
+        "On-an-Island.jpg",
+        "WHO-ASKED.jpg",
+        "Greatest-Hits.jpg",
+        "Tango-in-the-Night.jpg",
+        "Dummy.jpg",
+        "Music-for-the-Masses.jpg",
+        "Duke.jpg"
+      ]
+    },
+    {
+      "version": 2,
+      "date": "2026-08-10",
+      "type": "artist",
+      "lane": null,
+      "lighting": null,
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Underpass pause before moving on",
+      "creativeDirection": "Make a naturalistic environmental group portrait under the overpass, loosely posed but observed as a shared in-between moment rather than a formal lineup.",
+      "scene": "A 16:9 group portrait set beneath the same urban overpass walkway as source 6, extending the concrete columns, underside beams, orange safety netting, barricades, rough pavement, and distant towers into a wider frame.",
+      "locationSource": 6,
+      "locationSetting": "Urban underpass or overpass walkway with concrete supports overhead, orange safety netting and barricades, road infrastructure, and high-rise buildings in the background.",
+      "locationEvidence": "Concrete overpass beams and columns are clearly visible overhead, with orange construction netting, striped barricades, roadway infrastructure, and distant high-rise buildings establishing a specific underpass walkway.",
+      "locationReference": 1,
+      "locationInput": "DOMi-JD-Beck.jpg",
+      "cast": [
+        {
+          "source": 6,
+          "person": "very pale adult with extremely long platinum-blonde pigtails, dramatic eye makeup, hair clips, black top, and brown leaf-appliqué pinafore",
+          "placement": "front left, nearest camera, turned slightly inward"
+        },
+        {
+          "source": 12,
+          "person": "light-skinned man with short damp brown hair, light stubble, dark double-breasted coat, and thick dark scarf",
+          "placement": "front center, standing and anchoring the group"
+        },
+        {
+          "source": 11,
+          "person": "light-skinned man with slicked-back dark hair graying at the sides, dark sunglasses, and a dark tailored suit",
+          "placement": "mid-right, leaning lightly against a concrete column"
+        },
+        {
+          "source": 7,
+          "person": "older light-skinned man with short white hair, white beard, round black glasses, mustard corduroy overshirt, and white T-shirt",
+          "placement": "left midground, slightly behind the front pair"
+        },
+        {
+          "source": 10,
+          "person": "older light-skinned man with very short white hair in a loose dark shirt, without the guitar",
+          "placement": "rear center-left, relaxed and half-turned toward the others"
+        },
+        {
+          "source": 3,
+          "person": "light-skinned man with short messy hair, dark aviator sunglasses, and a light western-style shirt",
+          "placement": "front right, leaning forward slightly near the barricade"
+        }
+      ],
+      "selection": [
+        6,
+        12,
+        11,
+        7,
+        10,
+        3
+      ],
+      "palette": [
+        "concrete gray",
+        "safety orange",
+        "olive green",
+        "brown",
+        "black",
+        "muted winter blue"
+      ],
+      "mood": "urban, quiet, watchful",
+      "artistSummaries": [
+        {
+          "source": 1,
+          "filename": "Fleetwood-Mac.jpg",
+          "artist": "Fleetwood Mac",
+          "description": "Five adults posed against a black studio background. An older bald man with a white beard stands at far left in a dark jacket, open shirt, layered necklaces, and striped trousers. A blonde woman with long straight hair and bangs stands partly behind the central man. The central man, most forward, has short light hair and wears a black leather jacket over a dark shirt and jeans, with one hand near his chest. An older seated man with a short white beard wears a light flat cap and dark shirt. At far right, a blonde woman with long straight hair and bangs wears a dark jacket, white top, dark trousers, and a long scarf, with one hand resting on the seated man's shoulder.",
+          "primarySubject": "The middle standing man in front, with short light hair, light skin, a black leather jacket, dark shirt, and jeans, posed with one hand at his chest.",
+          "visiblePeople": [
+            "Older light-skinned bald man with white beard, standing at far left",
+            "Light-skinned blonde woman with long straight hair and bangs, standing behind center-left",
+            "Light-skinned middle-aged man with short light hair, standing front center",
+            "Older light-skinned seated man with short white beard and light flat cap",
+            "Light-skinned blonde woman with long straight hair and bangs, standing at far right"
+          ],
+          "wardrobe": "Dark tailored and casual clothing: jackets, leather jacket, dark shirt, jeans, striped trousers, scarf, flat cap, layered necklaces.",
+          "photoStyle": "Color studio group portrait, full to three-quarter length framing, high contrast with isolated black background.",
+          "setting": "Plain black backdrop with no visible environmental details.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 2,
+          "filename": "Dr-Feelgood.jpg",
+          "artist": "Dr Feelgood",
+          "description": "Four adult men stand closely together in a tightly cropped portrait against a pale, indistinct background. The leftmost tall slim man has tousled dark hair, a long face, and folded arms in a dark pinstriped jacket. Second from left is a man with slicked-back hair wearing dark sunglasses and a dark jacket with a tie. Third is a man with short dark hair in a dark suit jacket and loosened patterned tie, leaning slightly forward. The rightmost man has medium dark hair, a mustache and sideburns, and wears a leather jacket over a light patterned shirt with one hand in a pocket.",
+          "primarySubject": "The tall leftmost man with tousled dark hair, folded arms, and a dark pinstriped jacket.",
+          "visiblePeople": [
+            "Tall light-skinned man with tousled dark hair and folded arms at far left",
+            "Light-skinned man with slicked-back hair and dark sunglasses, second from left",
+            "Light-skinned man with short dark hair and loosened tie, third from left",
+            "Light-skinned man with medium dark hair, mustache, and sideburns at far right"
+          ],
+          "wardrobe": "Dark suits and jackets, one leather jacket, collared shirts, ties, and sunglasses.",
+          "photoStyle": "Color or lightly tinted vintage band portrait, waist-up crop, slightly soft and grainy.",
+          "setting": "Pale plain background with little detail, possibly outdoors or against a wall, but indeterminate.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 3,
+          "filename": "Buffalo-Tom.jpg",
+          "artist": "Buffalo Tom",
+          "description": "Three adult men pose outdoors in a black-and-white image. The center man leans forward and is closest to camera, with short messy hair and dark aviator sunglasses, wearing a light western-style shirt. At left, a man with medium-length dark hair wears a light open overshirt over a dark T-shirt. At right, a man with short curly dark hair wears a light button-up shirt. A palm tree trunk rises directly behind them, with bright open space, smaller palm trees, parked cars, and part of a building visible in the background.",
+          "primarySubject": "The center man leaning forward, wearing dark aviator sunglasses and a light western-style shirt.",
+          "visiblePeople": [
+            "Light-skinned man with medium-length dark hair at left",
+            "Light-skinned man with short messy hair and aviator sunglasses at center",
+            "Light-skinned man with short curly dark hair at right"
+          ],
+          "wardrobe": "Light casual shirts, one dark T-shirt underneath, and sunglasses on the center figure.",
+          "photoStyle": "Black-and-white outdoor band portrait, medium shot, bright daylight with slight wide-angle feel.",
+          "setting": "Outdoor urban or beachfront area with a palm tree trunk centered behind the group, bright paved open space, distant palm trees, parked cars, and a partial multi-story building.",
+          "settingStrength": "moderate"
+        },
+        {
+          "source": 4,
+          "filename": "Joe-Cocker.jpg",
+          "artist": "Joe Cocker",
+          "description": "A close black-and-white portrait of one older man fills the frame. He has a bald head with short hair at the sides, light stubble beard, deep forehead lines, and a serious direct gaze. He wears a dark jacket. The background is a softly blurred textured wall running along the right side of the frame.",
+          "primarySubject": "The only subject: an older bald light-skinned man with light stubble, wearing a dark jacket and looking directly at the camera.",
+          "visiblePeople": [
+            "Older light-skinned bald man with light stubble beard in close-up"
+          ],
+          "wardrobe": "Dark jacket or coat collar visible.",
+          "photoStyle": "Black-and-white close portrait, shallow depth of field, tight head-and-shoulders framing.",
+          "setting": "Close to a textured wall with the rest of the background softly blurred and indistinct.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 5,
+          "filename": "The-Cure.jpg",
+          "artist": "The Cure",
+          "description": "Five adult men stand in a color studio portrait against a bright yellow background. The central front man has very large teased black hair, pale skin, dark eye makeup, and red lipstick, wearing a white shirt with paint-like color splashes. Around him are four men with similarly messy or spiked dark or blond hair, pale complexions, and dark eye makeup. All wear white shirts with colorful splash-like marks; one at far right has a wristwatch and hand in pocket, and one second from left has longer curly hair and leans in with an arm around another member.",
+          "primarySubject": "The front center man with very large teased black hair, pale skin, dark eye makeup, red lipstick, and a white shirt, positioned closest to camera.",
+          "visiblePeople": [
+            "Light-skinned man with short dark curly hair at far left",
+            "Light-skinned man with longer curly hair and red lipstick, second from left",
+            "Light-skinned man with tall teased dark hair near center back",
+            "Light-skinned blond man with spiky hair near right-center",
+            "Light-skinned man with messy dark hair and eye makeup at far right",
+            "Light-skinned front center man with very large teased black hair and heavy eye makeup"
+          ],
+          "wardrobe": "White shirts with colorful painted or splash-like marks, dark trousers, minimal accessories including a wristwatch.",
+          "photoStyle": "Color studio band portrait with stylized makeup, bright seamless background, waist-up framing.",
+          "setting": "Plain bright yellow studio backdrop with no visible props or room details.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 6,
+          "filename": "DOMi-JD-Beck.jpg",
+          "artist": "DOMi JD Beck",
+          "description": "Two adults stand side by side outdoors beneath an elevated roadway. At left, a very pale-skinned person with extremely long platinum-blonde pigtails wears dramatic eye makeup, decorative hair clips, a black long-sleeve top, and a brown pinafore-style dress with leaf appliqués. At right, a light-skinned person with shaggy dark shoulder-length hair wears a dark top with a sheer floral high neck under an olive-green overall-style garment with leaf details. Behind them are concrete columns, the underside of the overpass, orange construction netting, barricades, a roadway, and tall buildings in the distance.",
+          "primarySubject": "The left figure with extremely long platinum-blonde pigtails, dramatic eye makeup, hair clips, and a brown dress with leaf appliqués.",
+          "visiblePeople": [
+            "Very pale-skinned person with platinum-blonde pigtails and dramatic eye makeup at left",
+            "Light-skinned person with shaggy dark shoulder-length hair at right"
+          ],
+          "wardrobe": "Fashion-forward layered outfits with black tops, pinafore or overall-style dresses in brown and olive tones, sheer floral neckline, and leaf appliqués.",
+          "photoStyle": "Color environmental portrait, waist-up framing, soft natural daylight with shallow depth of field.",
+          "setting": "Urban underpass or overpass walkway with concrete supports overhead, orange safety netting and barricades, road infrastructure, and high-rise buildings in the background.",
+          "settingStrength": "strong"
+        },
+        {
+          "source": 7,
+          "filename": "Billy-Bragg.jpg",
+          "artist": "Billy Bragg",
+          "description": "A single older man is shown in a color studio portrait against a vivid pink-red background. He has short swept-back white hair, a neatly trimmed white beard, light skin, and round black eyeglasses. He wears a mustard corduroy overshirt over a white T-shirt and looks directly at the camera with a slight tilt of the head.",
+          "primarySubject": "The only subject: an older light-skinned man with short white hair, white beard, black round glasses, and a mustard corduroy overshirt.",
+          "visiblePeople": [
+            "Older light-skinned man with short white hair, white beard, and black round glasses"
+          ],
+          "wardrobe": "Mustard corduroy overshirt or jacket over a white crew-neck T-shirt.",
+          "photoStyle": "Color studio head-and-shoulders portrait with clean solid backdrop and even lighting.",
+          "setting": "Plain saturated pink-red seamless background with no visible environmental cues.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 8,
+          "filename": "Genesis.jpg",
+          "artist": "Genesis",
+          "description": "Three adult men stand together against a dark background. The tall man at left has light brown hair, a mustache and goatee, and wears a dark short-sleeve button-up shirt. The central man is bald with light skin, a short beard or stubble, and a smile, wearing a dark T-shirt and light trousers with hands behind his back. The right man has short gray hair and wears a black T-shirt and dark trousers, turned slightly inward. Lighting is soft and frontal.",
+          "primarySubject": "The bald smiling man at center in a dark T-shirt and light trousers, positioned most prominently between the others.",
+          "visiblePeople": [
+            "Tall light-skinned man with light brown hair, mustache, and goatee at left",
+            "Light-skinned bald man with short stubble and smile at center",
+            "Light-skinned gray-haired man in black T-shirt at right"
+          ],
+          "wardrobe": "Simple dark casual clothing: short-sleeve button-up shirt, dark T-shirts, dark trousers, light trousers, minimal jewelry.",
+          "photoStyle": "Color group portrait, medium shot, subdued lighting against a dark backdrop.",
+          "setting": "Dark plain background with no visible location details.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 9,
+          "filename": "INXS.jpg",
+          "artist": "INXS",
+          "description": "Five adult men pose in a black-and-white studio portrait against a black background. The front center man is most prominent, with wavy medium-length dark hair, an open sleeveless vest exposing his chest, a pendant necklace, and patterned light trousers with dark star-like shapes. At left, a man with short dark hair wears a bold vertically striped jacket. Next to him, another man with short dark hair wears a layered jacket over a hooded top. In back center, a man with short curly hair wears a dark jacket. At far right, a man with slicked-back hair and round eyeglasses wears a dark jacket over a light shirt. Another man at front right leans in wearing a color-block jacket and light trousers.",
+          "primarySubject": "The front center man with wavy dark hair, open sleeveless vest, pendant necklace, and patterned light trousers, leaning toward the camera.",
+          "visiblePeople": [
+            "Light-skinned man with short dark hair in striped jacket at far left",
+            "Light-skinned man with short dark hair in layered jacket and hooded top, left front",
+            "Light-skinned man with short curly hair in back center",
+            "Light-skinned man with wavy medium-length dark hair and open sleeveless vest at front center",
+            "Light-skinned man with short dark hair leaning in at front right",
+            "Light-skinned man with slicked-back hair and round glasses at far right"
+          ],
+          "wardrobe": "Stylized late-20th-century clothing including striped jacket, layered casual tops, open sleeveless vest, pendant necklace, color-block jacket, and light patterned trousers.",
+          "photoStyle": "Black-and-white studio band portrait, medium-full framing, dramatic grouped composition.",
+          "setting": "Plain black studio background without environmental features.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 10,
+          "filename": "David-Gilmour.jpg",
+          "artist": "David Gilmour",
+          "description": "One older man stands on a dark stage holding an electric guitar. He has very short white hair, light skin, and a slight smile, wearing a loose dark long-sleeve shirt and dark trousers. A guitar strap crosses his shoulder, and the black guitar with a light neck is angled across his body. Blue stage lighting creates a halo-like gradient behind him, with the rest of the background falling to black.",
+          "primarySubject": "The only subject: an older light-skinned man with very short white hair, holding a black electric guitar under blue stage lighting.",
+          "visiblePeople": [
+            "Older light-skinned man with very short white hair playing an electric guitar"
+          ],
+          "wardrobe": "Loose dark long-sleeve shirt and dark trousers with guitar strap.",
+          "photoStyle": "Color live-performance portrait, wide negative space, dramatic blue spotlight on dark stage.",
+          "setting": "Concert stage or performance space with dark empty background and blue backlight glow, no other stage equipment visible.",
+          "settingStrength": "moderate"
+        },
+        {
+          "source": 11,
+          "filename": "Depeche-Mode.jpg",
+          "artist": "Depeche Mode",
+          "description": "Two adult men pose in a minimal studio setup with a pale background. The left man sits on a stool, with short curly gray hair, light skin, and a slim build, wearing a black pinstriped suit over a dark shirt. The right man stands leaning one arm on the seated man's shoulder, with slicked-back dark hair graying at the sides, light skin, dark sunglasses, and a dark tailored suit with an open-collar shirt. Both wear rings, and the framing shows most of their bodies including the stool.",
+          "primarySubject": "The standing man at right with slicked-back dark hair, dark sunglasses, and a dark tailored suit, leaning one arm on the seated man.",
+          "visiblePeople": [
+            "Light-skinned seated man with short curly gray hair in a black pinstriped suit",
+            "Light-skinned standing man with slicked-back dark hair, dark sunglasses, and a dark suit"
+          ],
+          "wardrobe": "Tailored dark suits, one pinstriped, dark shirts, sunglasses, rings, and minimal accessories.",
+          "photoStyle": "Color studio fashion portrait, full or three-quarter length, clean high-key background.",
+          "setting": "Plain pale studio backdrop with a simple metal stool as the only visible prop.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 12,
+          "filename": "Portishead.jpg",
+          "artist": "Portishead",
+          "description": "Three adults stand outdoors on a snowy tree-lined road. The central man is closest and most prominent, with light skin, short damp-looking brown hair, light facial stubble, and a serious expression, wearing a dark double-breasted coat and thick dark scarf or high collar. At left, a light-skinned woman with shoulder-length reddish hair looks downward, wearing large hoop earrings and a brown shearling-style coat over a dark turtleneck. At right, a light-skinned man with a receding hairline and short dark hair wears a dark coat and thick scarf, with a small hoop earring visible. Snow dusts their coats and the surrounding evergreen trees.",
+          "primarySubject": "The central man with short damp brown hair, light stubble, dark double-breasted coat, and thick dark scarf, facing the camera directly.",
+          "visiblePeople": [
+            "Light-skinned woman with shoulder-length reddish hair and hoop earrings at left",
+            "Light-skinned man with short brown hair and light stubble at center",
+            "Light-skinned man with receding short dark hair and hoop earring at right"
+          ],
+          "wardrobe": "Heavy winter clothing: dark double-breasted coat, thick scarves, brown shearling-style coat, dark turtleneck.",
+          "photoStyle": "Color outdoor portrait in overcast winter light, medium shot, muted tones.",
+          "setting": "Snowy straight road or path lined with tall evergreen trees, overcast sky, wintry atmosphere, and light snow resting on clothing and trees.",
+          "settingStrength": "strong"
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2",
+      "model": "openai/gpt-image-2/edit",
+      "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Urban underpass or overpass walkway with concrete supports overhead, orange safety netting and barricades, road infrastructure, and high-rise buildings in the background.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. Wide 16:9 environmental group portrait beneath a concrete overpass walkway, viewed at eye level from a few steps back; the underside beams and columns dominate overhead, orange construction netting and striped barricades run along the sides, rough pavement leads back toward distant high-rise buildings in soft focus. Six adults share a quiet in-between moment: a very pale adult with extremely long platinum-blonde pigtails, dramatic eye makeup, hair clips, and a brown leaf-appliqué pinafore stands nearest at front left looking slightly past camera; a light-skinned man with short damp brown hair, light stubble, a dark double-breasted coat, and thick scarf stands front center, grounded and serious; a light-skinned man with short messy hair in dark aviator sunglasses and a light western shirt leans forward at front right near the barricade; an older light-skinned man with short white hair, white beard, round black glasses, mustard corduroy overshirt, and white T-shirt stands left midground watching the others; an older light-skinned man with very short white hair in a loose dark shirt stands rear center-left, half-turned with a faint relaxed expression; a light-skinned man with slicked-back dark hair graying at the sides, dark sunglasses, and a dark tailored suit leans lightly against a concrete column at mid-right. Keep varied spacing and depth, no straight lineup, with subtle interaction through glances and body angles rather than overt performance. Shoot with a moderate wide lens around 35mm, natural perspective, medium-deep depth of field, crisp focus across the group with the distant towers slightly softened. Use soft natural daylight filtered by the overpass, preserving the real shadow pattern under the structure and the gentle contrast of the original setting. Color treatment should stay realistic and slightly subdued, emphasizing concrete gray, safety orange, olive, brown, and muted blue for a calm, watchful urban mood. Attached cast plan: Attached reference image 1: portray only very pale adult with extremely long platinum-blonde pigtails, dramatic eye makeup, hair clips, black top, and brown leaf-appliqué pinafore; front left, nearest camera, turned slightly inward. Attached reference image 2: portray only light-skinned man with short damp brown hair, light stubble, dark double-breasted coat, and thick dark scarf; front center, standing and anchoring the group. Attached reference image 3: portray only light-skinned man with slicked-back dark hair graying at the sides, dark sunglasses, and a dark tailored suit; mid-right, leaning lightly against a concrete column. Attached reference image 4: portray only older light-skinned man with short white hair, white beard, round black glasses, mustard corduroy overshirt, and white T-shirt; left midground, slightly behind the front pair. Attached reference image 5: portray only older light-skinned man with very short white hair in a loose dark shirt, without the guitar; rear center-left, relaxed and half-turned toward the others. Attached reference image 6: portray only light-skinned man with short messy hair, dark aviator sunglasses, and a light western-style shirt; front right, leaning forward slightly near the barricade. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. This generation has 6 attached cast reference images; omit any person described in the creative direction who does not have an attached reference.",
+      "inputs": [
+        "DOMi-JD-Beck.jpg",
+        "Portishead.jpg",
+        "Depeche-Mode.jpg",
+        "Billy-Bragg.jpg",
+        "David-Gilmour.jpg",
+        "Buffalo-Tom.jpg"
+      ]
     }
   ]
 }
