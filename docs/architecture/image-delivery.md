@@ -265,7 +265,7 @@ Current call sites:
 |---|---|---|
 | `src/layouts/BlogPost.astro` | 36px | Byline; passes the untransformed path to the `BlogPosting` schema so structured data keeps the full-size asset |
 | `src/pages/tags/[tag]/[...page].astro` | 80px | Tag hub header (64px below `sm`) |
-| `src/pages/about.astro` | 176px | Resolved server-side into `window.__availableAvatars` so the click-to-randomise swap uses transformed URLs too |
+| `src/pages/about.astro` | 80px | Resolved server-side into `window.__availableAvatars` so the click-to-randomise swap uses transformed URLs too |
 
 `src/pages/avatars.astro` is deliberately excluded — that gallery exists to expose the raw
 `.svg` and `.png` URLs for copying.

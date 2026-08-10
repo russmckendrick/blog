@@ -89,6 +89,16 @@ Listings end in **pagination** (`Pagination.astro`), not a browse link: a quiet 
 
 Body links are ink with a real underline, accent on hover only. Articles close with the **tombstone** — three accent dots (`.tombstone`), the same mark `.prose hr` uses for section breaks — then tag pills, the related-terms rubric, and two "More from the archive" rows.
 
+## The About page
+
+`about.astro` is the credibility surface — the one page carrying the bio (the colophon footer deliberately has none) and the depth the footer cannot fit. It leads with an identity block: the illustrated portrait (144px, round, click to randomise) paired on one row with the h1, stacking below `sm`. Then a **standfirst** in ink at 21px — `Writing here since <month year> — N posts, N weeks of listening, N glossary entries, N books`, each figure linking to its hub.
+
+**Every number is counted from the collections at build time, never hardcoded**, so the page cannot drift from the archive. The tag frequencies use the same derivation as `/author/russ-mckendrick/`, so the two pages can never disagree about what Russ writes.
+
+The bio itself is `.prose` — Literata, ink, the full 680px measure — not sans and not mist; it is the page's content, and mist is only ever for what isn't. Below the intro hairline sit three sections under 15px/600 heads (real `<h2>`s): **What I write about** (the eight most frequent tags as `.tag-editorial` pills with counts, linking to tag hubs), **The books** (all fourteen covers as a strip — 7-across, 4 on mobile, pinned to `aspect-ratio: 81/100` with `object-fit: cover` so rows stay level, since thirteen of the fourteen are natively 81:100), and **Get in touch**.
+
+The page does **not** re-list the social links — the colophon footer already carries the full `SOCIAL_LINKS` set on every page, and duplicating it here was the redesign's main deletion. The avatar randomiser re-states the reduced-motion contract in JS (`matchMedia`), because `element.animate()` ignores CSS media queries and would otherwise bypass the global block entirely.
+
 ## Motion
 
 One authored moment: feed rows stagger in on page load — `data-entrance` on each row wrapper gives an 8px rise over 450ms on `--ease-settle` (`cubic-bezier(.22,.61,.36,1)`) with 60ms sibling steps, pure CSS from first paint (never gated on JS: an opacity pre-hide waiting for a script chunk delays LCP). Article heads reuse the same attribute; article heroes may carry `data-settle` (scale 1.03 → 1). Below-the-fold list wrappers use `data-reveal`, a CSS transition triggered by the tiny inline IntersectionObserver in `RevealInit.astro` (`.is-revealed` on viewport entry, claimed with `data-reveal-bound`; the pre-hide is gated on `@media (scripting: enabled) and (prefers-reduced-motion: no-preference)`).
