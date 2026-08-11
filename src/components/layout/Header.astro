@@ -14,8 +14,12 @@ const mobileMenuLabelId = 'mobile-menu-label'
 >
 	<nav class="max-w-[1192px] mx-auto px-4 sm:px-6" aria-label="Main navigation">
 		<div class="flex items-center gap-5 h-[60px]">
-			<a href="/" class="header-logo flex items-center no-underline" aria-label="russ.cloud home">
+			{/* Icon-only links here name themselves with visually hidden text rather
+			    than an aria-label: identical for assistive tech, but it also gives
+			    crawlers anchor text for the site-wide link home and to search. */}
+			<a href="/" class="header-logo flex items-center no-underline">
 				<Logo />
+				<span class="sr-only">Russ.Cloud home</span>
 			</a>
 
 			<!-- Desktop menu -->
@@ -43,10 +47,10 @@ const mobileMenuLabelId = 'mobile-menu-label'
 					href="/search/"
 					class="header-nav-item no-underline inline-flex items-center py-1.5"
 					data-search-trigger
-					aria-label="Search the archive"
 					aria-keyshortcuts="Meta+K"
 				>
 					<Icon name="search" size={17} aria-hidden="true" />
+					<span class="sr-only">Search the archive</span>
 				</a>
 
 				<button id="theme-toggle" class="header-nav-item inline-flex items-center py-1.5" aria-label="Toggle theme">
@@ -60,9 +64,9 @@ const mobileMenuLabelId = 'mobile-menu-label'
 				href="/search/"
 				class="header-nav-item md:hidden ml-auto inline-flex items-center justify-center p-2"
 				data-search-trigger
-				aria-label="Search the archive"
 			>
 				<Icon name="search" size={18} aria-hidden="true" />
+				<span class="sr-only">Search the archive</span>
 			</a>
 
 			<!-- Mobile menu button -->

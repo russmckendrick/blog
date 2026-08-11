@@ -1,5 +1,5 @@
 // Cloudflare Worker entry. Static assets are served by the ASSETS binding
-// (configured in wrangler.jsonc). This Worker adds two features on top:
+// (configured in wrangler.jsonc). This Worker adds four features on top:
 //
 // 1. Content negotiation for text/markdown, satisfying the "Markdown for
 //    Agents" check. Cloudflare's zone-level Markdown for Agents requires Pro+;
@@ -8,6 +8,23 @@
 // 2. A first-party proxy for Plausible Analytics, so both the tracking script
 //    and the event endpoint are served from this origin instead of
 //    plausible.io. See the Plausible section of docs/architecture/seo-implementation.md.
+// 3. A 301 from the apex domain to the www canonical host.
+// 4. `charset=utf-8` on HTML responses, which the assets binding omits.
+
+// --- Canonical host --------------------------------------------------------
+// The zone answers on both russ.cloud and www.russ.cloud, and every canonical
+// link, sitemap entry and og:url points at www. Without a redirect the apex
+// serves a full duplicate of the site on every URL, so send it to www with a
+// 301 that keeps the path and query. Matched exactly, never by suffix, so
+// *.workers.dev preview deployments are left alone.
+const APEX_HOST = 'russ.cloud'
+const CANONICAL_HOST = 'www.russ.cloud'
+
+function redirectToCanonicalHost(url) {
+	const target = new URL(url)
+	target.hostname = CANONICAL_HOST
+	return Response.redirect(target.toString(), 301)
+}
 
 // --- Plausible first-party proxy -------------------------------------------
 // Proxying only the script would achieve nothing: the script POSTs its events
@@ -82,9 +99,26 @@ async function serveMarkdown(url, env, request) {
 	return new Response(res.body, { status: 200, headers })
 }
 
+// The assets binding sends bare `Content-Type: text/html` for pages. The
+// document declares <meta charset="utf-8">, but a charset in the header is
+// authoritative and cheaper for clients than sniffing the first bytes.
+async function serveAsset(request, env) {
+	const res = await env.ASSETS.fetch(request)
+	const type = res.headers.get('Content-Type') || ''
+	if (!type.startsWith('text/html') || type.includes('charset')) return res
+
+	const headers = new Headers(res.headers)
+	headers.set('Content-Type', 'text/html; charset=utf-8')
+	return new Response(res.body, { status: res.status, statusText: res.statusText, headers })
+}
+
 export default {
 	async fetch(request, env) {
 		const url = new URL(request.url)
+
+		if (url.hostname === APEX_HOST) {
+			return redirectToCanonicalHost(url)
+		}
 
 		if (url.pathname === PLAUSIBLE_SCRIPT_PATH && request.method === 'GET') {
 			return proxyPlausibleScript()
@@ -98,6 +132,6 @@ export default {
 			const md = await serveMarkdown(url, env, request)
 			if (md) return md
 		}
-		return env.ASSETS.fetch(request)
+		return serveAsset(request, env)
 	},
 }

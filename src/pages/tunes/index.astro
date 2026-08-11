@@ -1,6 +1,4 @@
 ---
-import fs from 'node:fs';
-import path from 'node:path';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
@@ -10,6 +8,7 @@ import { tunesIndex } from '../../utils/tunes-index';
 import { getPostUrl } from '../../utils/url';
 import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudflare-images';
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
+import { getTuneCovers } from '../../utils/tune-covers';
 import { CF_IMAGE_PRESETS, SOCIAL_LINKS } from '../../consts';
 
 // Tunes homepage: one lead week + 6 previous weeks as rows
@@ -33,17 +32,7 @@ const leadMinutes = leadTune ? formatReadingTime(calculateReadingTime(leadTune.b
 const leadLqip = leadImage ? getLQIPUrl(leadImage) : null;
 
 // This week's records: up to eight covers from the entry's albums directory
-let leadCovers: string[] = [];
-if (leadTune) {
-	const albumsDir = path.join(process.cwd(), 'public', 'assets', leadTune.id, 'albums');
-	if (fs.existsSync(albumsDir)) {
-		leadCovers = fs.readdirSync(albumsDir)
-			.filter(f => /\.(jpe?g|png|webp)$/i.test(f))
-			.sort()
-			.slice(0, 8)
-			.map(f => `/assets/${leadTune.id}/albums/${f}`);
-	}
-}
+const leadCovers = leadTune ? getTuneCovers(leadTune, 8) : [];
 
 const lastfmUrl = SOCIAL_LINKS.find(l => l.name === 'lastfm')?.url;
 const discogsUrl = SOCIAL_LINKS.find(l => l.name === 'discogs')?.url;
@@ -120,8 +109,8 @@ const discogsUrl = SOCIAL_LINKS.find(l => l.name === 'discogs')?.url;
 					<div class="mt-4 grid grid-cols-4 sm:grid-cols-8 gap-1.5">
 						{leadCovers.map(cover => (
 							<img
-								src={getCFImageUrl(cover, { width: 160, quality: 60 })}
-								alt=""
+								src={getCFImageUrl(cover.src, { width: 160, quality: 60 })}
+								alt={cover.alt}
 								width="80"
 								height="80"
 								loading="lazy"

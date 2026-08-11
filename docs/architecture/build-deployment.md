@@ -21,7 +21,7 @@ This workflow handles building the Astro site and deploying it to Cloudflare Wor
     - `prebuild`: Extract hero colors and cache LinkPreview images
     - `astro build`: Generate static assets and worker script
     - `scripts/generate-llms-markdown.js` (postbuild): Emit per-post markdown twins and `/llms.txt`
-6.  **Worker**: `worker/index.js` (entry in `wrangler.jsonc` `main`) serves static assets via the `ASSETS` binding, handles `Accept: text/markdown` content negotiation for the Markdown-for-Agents check, and proxies Plausible first-party at `/js/pa.js` and `/api/event` (see [seo-implementation.md](seo-implementation.md#plausible-analytics)). `run_worker_first: true` in `wrangler.jsonc` is what lets it claim those routes ahead of the asset lookup.
+6.  **Worker**: `worker/index.js` (entry in `wrangler.jsonc` `main`) serves static assets via the `ASSETS` binding, 301s the apex `russ.cloud` to `www.russ.cloud` (see [seo-implementation.md](seo-implementation.md#canonical-host)), adds `charset=utf-8` to HTML responses, handles `Accept: text/markdown` content negotiation for the Markdown-for-Agents check, and proxies Plausible first-party at `/js/pa.js` and `/api/event` (see [seo-implementation.md](seo-implementation.md#plausible-analytics)). `run_worker_first: true` in `wrangler.jsonc` is what lets it claim those routes ahead of the asset lookup.
 
     Test the Worker locally with `pnpm run preview:worker` (`astro build && wrangler dev`). `pnpm run dev` and `pnpm run preview` do **not** run the Worker, so the markdown negotiation and the analytics proxy are absent there.
 7.  **Deploy**:

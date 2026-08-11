@@ -467,12 +467,18 @@ Cloudflare's zone-level "Markdown for Agents" (Dashboard → AI Crawl Control) r
 
 1. **Build-time twin.** `scripts/generate-llms-markdown.js` runs after `astro build` (wired into the `build` npm script). It walks `src/content/blog/` and `src/content/tunes/`, parses frontmatter with `gray-matter`, and writes an `index.md` alongside each post at the same URL path. It also writes `/llms.txt` at the site root.
 2. **Runtime content negotiation.** `worker/index.js` is a minimal Cloudflare Worker wired into `wrangler.jsonc` as `main`. On each request it:
-   - Falls through to `env.ASSETS.fetch(request)` by default (static assets behave as before).
+   - Falls through to `env.ASSETS.fetch(request)` by default (static assets behave as before), adding `charset=utf-8` to HTML responses, which the assets binding omits.
    - If `Accept: text/markdown` is present, it rewrites the request to the co-located `.md` twin (or `/llms.txt` for `/`) and returns it with `Content-Type: text/markdown; charset=utf-8` and `Vary: Accept`.
+
+   Note the markdown and Plausible paths only trigger on `GET` - probing them with `curl -I` (a `HEAD`) falls through to the asset lookup and looks broken when it isn't.
 
 The markdown body is the raw MDX source with frontmatter stripped; inline JSX embed components remain inline - agents generally cope.
 
 Per-post `.md` files and `/llms.txt` also stay directly reachable (useful for `llmstxt.org` consumers that don't do content negotiation). If the zone is ever upgraded to Cloudflare Pro, the markdown half of the worker and the build-time twin can be removed and the dashboard toggle enabled instead - note the worker also proxies Plausible (below), so it cannot be dropped entirely.
+
+### Canonical host redirect
+
+`worker/index.js` 301s any request for the apex `russ.cloud` to the same path on `www.russ.cloud` - the host every canonical link, sitemap entry and `Link:` header already names - before any other routing. Without it the apex serves a full duplicate of the site. See [seo-implementation.md](seo-implementation.md#canonical-host).
 
 ### First-Party Analytics Proxy
 

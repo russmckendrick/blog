@@ -21,7 +21,7 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 - No uppercase eyebrow labels above titles, no emoji inside headings, no centred hero bands — heads are left-aligned on plain paper.
 - Hub pages open with `BackLink.astro` above the `<h1>`, never a hard-coded "← All X". It server-renders the section fallback (`fallbackHref="/tags/"`, `fallbackLabel="All tags"`) so cold arrivals and no-JS readers still get a destination, then rewrites itself to "← Back to the post" / "the feed" / "the archive" and calls `history.back()` when the referrer is a same-origin page outside that section. Going back through history rather than following an href is the point — it keeps the browser's scroll restoration, so a reader who tapped a tag mid-article lands where they left off. Referrers from inside the same section (tag → tag, page 2 → page 1) keep the plain fallback.
 - Listing pages that show posts use `<PostCard post={p} headingLevel="..." />` rows — the only listing variant — separated by hairlines, ending in the shared `Pagination.astro` row rather than a browse link.
-- A feed row is one click target, but never wrap it in a single `<a>`: the row's tag chips are real links to their hubs, and nesting `<a>` inside `<a>` is invalid. The row gets `position: relative; isolation: isolate` and an empty `<a class="post-row-link" aria-label="Read post: …">` overlaid at `inset: 0; z-index: 1`, with the chips above it at `z-index: 2`. Keep that overlay a direct child of the row — inside the heading it lands in the heading's `view-transition-name` stacking context and the thumbnail swallows clicks. Use the same shape for any new row-style listing.
+- A feed row is one click target, but never wrap it in a single `<a>`: the row's tag chips are real links to their hubs, and nesting `<a>` inside `<a>` is invalid. The row gets `position: relative; isolation: isolate` and an `<a class="post-row-link">` overlaid at `inset: 0; z-index: 1` holding the post title in a `sr-only` span (its accessible name and its anchor text — not an `aria-label`), with the chips above it at `z-index: 2`. Keep that overlay a direct child of the row — inside the heading it lands in the heading's `view-transition-name` stacking context and the thumbnail swallows clicks. Use the same shape for any new row-style listing.
 - Section heads inside a page are `text-[15px] font-semibold` with `letter-spacing: -0.01em` (see "Links" in `Footer.astro`). `.rubric` is metadata treatment, never a section heading.
 
 ## Header And Footer
@@ -71,7 +71,7 @@ This guide documents the visual and interaction conventions used across Russ.Clo
 
 - Every layout must expose a skip link to `#main-content`.
 - Main content regions should remain focusable with `tabindex="-1"` when needed for skip-link targeting.
-- Icon-only controls require accessible names; keep existing `aria-label`s and roles when restyling.
+- Icon-only controls require accessible names; keep existing names and roles when restyling. Name icon-only **links** with a `sr-only` span (accessible name *and* anchor text), and buttons with `aria-label` — see [accessibility.md](./accessibility.md#naming-icon-only-links).
 - Mobile menus and other toggles should be keyboard-operable and close on `Escape`.
 - Listing rows set `headingLevel` so the page outline stays sensible.
 

@@ -67,6 +67,14 @@ graph TD
 <link rel="canonical" href="https://www.russ.cloud/2024/04/14/post/">
 ```
 
+### Canonical Host
+
+The zone answers on both `russ.cloud` and `www.russ.cloud`, while every canonical link, sitemap entry, `og:url` and `Link:` header points at `www`. Left alone, the apex serves a byte-identical duplicate of the whole site, which is what Seobility reports as *"This website uses both www and non-www URLs"*. `worker/index.js` therefore 301s any request whose hostname is exactly `russ.cloud` to the same path and query on `www.russ.cloud`, before any other routing. The match is exact rather than by suffix so `*.workers.dev` preview deployments keep serving themselves.
+
+The same worker adds `charset=utf-8` to HTML responses: the assets binding sends a bare `Content-Type: text/html`, and while the document carries `<meta charset="utf-8">`, the header is authoritative and saves clients sniffing.
+
+**Page titles**: `BaseLayout.astro` builds `<title>` as `{page title} | {SITE_TITLE}`, but skips the suffix when the page title already contains the site name — otherwise the hubs that bake it in themselves render as `Archives - Russ McKendrick | Russ McKendrick`. The homepage is the one page whose title is neither a section name nor a post: it uses `HOME_TITLE` ("Russ.Cloud — The personal blog of Russ McKendrick") for both `<title>` and its `sr-only` `<h1>`, because the bare 15-character site title is a thin SERP entry for the site's most linked page.
+
 ### Structured Data (JSON-LD)
 
 **Package**: `astro-seo-schema` + `schema-dts`
@@ -492,6 +500,12 @@ Provide meaningful alt text for all images:
 - Accessibility for screen readers
 - Image SEO
 - Fallback when images fail to load
+
+`alt=""` is correct only where the image is decorative *and* adjacent text already says what it is — the favicon beside a domain name in the reading list, the author avatar beside the byline, a listing thumbnail beside its own headline. The record-cover strips are the exception that proves the rule: nothing next to them names the albums, so `getTuneCovers()` (`src/utils/tune-covers.ts`) reads each cover's alt out of the `<LightGallery>` entries in the tunes post body ("Duke by Genesis"), falling back to the filename. The footer strip and the tunes lead strip share that helper.
+
+### Anchor Text On Internal Links
+
+Icon-only and overlay links are named with a visually hidden text node, not `aria-label`, so crawlers see anchor text instead of an empty `<a>`. This covers the feed rows (the site's main path into every post), the masthead brand link, and the search triggers. Rationale and the button/link split: [accessibility.md](../guides/accessibility.md#naming-icon-only-links).
 
 ### Update Dates
 

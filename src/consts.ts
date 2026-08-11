@@ -2,6 +2,11 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = "Russ McKendrick";
+// The homepage <title> and its sr-only <h1>. The bare site title is only 15
+// characters, which reads as a thin, ambiguous SERP entry for the site's most
+// linked page; this states the brand and what the site is. It contains
+// SITE_TITLE, so BaseLayout leaves it unsuffixed.
+export const HOME_TITLE = "Russ.Cloud — The personal blog of Russ McKendrick";
 export const SITE_DESCRIPTION =
   "Russ.Cloud - The personal blog of Russ McKendrick";
 export const SITE_LONG_DESCRIPTION =

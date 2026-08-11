@@ -116,14 +116,15 @@ export default defineConfig({
 
 ### 4. Navigation Links
 
-**Current state** (Reading Room): the brand link is `<a href="/" aria-label="russ.cloud home">` wrapping the `Logo.astro` lockup — one inline SVG marked `aria-hidden="true"`/`focusable="false"`, so the label is the accessible name (the wordmark is outline paths, invisible to assistive tech by design), and the cursor blink is disabled under `prefers-reduced-motion: reduce` in the component's own styles. Alongside it the masthead shows seven labelled links (`MASTHEAD_ITEMS` — Tunes · Books · Reading List · Tags · Archive · About · Source, the last opening the repo in a new tab with `rel="noopener noreferrer"`), each pairing a decorative `Icon.astro` glyph with its label in a `.nav-label` span, so the text alone is the accessible name; the glyphs carry `aria-hidden="true"` (`Icon.astro` forwards any extra attributes straight onto the `<svg>`, so the same applies to the search icon) and are never the only cue for a destination. On pointer devices the label rests collapsed (`max-width: 0`, `opacity: 0`, clipped by `overflow: hidden` — never `display: none`, so it stays in the accessibility tree and remains the link's accessible name) and unfurls on `:hover` **and** `:focus-visible`, so keyboard tabbing reveals the same words a mouse does. The collapse is scoped to `@media (hover: hover)`: on touch (an iPad on the ≥768px desktop nav included) the labels are simply always visible, since there is no hover to reveal them. Under `prefers-reduced-motion: reduce` the reveal is instant rather than animated. Then two icon-only controls, each with an `aria-label`: the search trigger ("Search the archive", also carrying `aria-keyshortcuts="Meta+K"` and a JS-set platform-aware `title`) and the theme toggle. The search trigger is an `<a href="/search/">` upgraded by JS to open the search sheet — a native `<dialog>` (`SearchOverlay.astro`) labelled via `aria-labelledby`, so `showModal()` provides the focus trap, background inerting, and focus restoration to the trigger on close. Focus is moved into the Pagefind input once it renders; `Escape` is handled explicitly in the sheet's keydown listener because Pagefind's input consumes the key (blocking the dialog's native cancel), and the `/` shortcut is suppressed while focus is in an input, textarea, select, or contenteditable. Without JS the trigger simply navigates to `/search/`, where the input is autofocused. The mobile burger (below 768px) opens a full-width panel of glyph-plus-text rows; the trigger keeps `aria-controls`/`aria-expanded` and a sr-only label that flips between Open/Close, and the hamburger icon swaps to an X via CSS on `aria-expanded` — both SVGs are `aria-hidden`. On mobile the search trigger sits beside the burger rather than inside the menu. The footer's social icons each carry an `aria-label` and `title` from `SOCIAL_LABELS`. Menu behaviour (outside click, Escape + refocus, close on link click) is unchanged.
+**Current state** (Reading Room): the brand link is `<a href="/">` wrapping the `Logo.astro` lockup — one inline SVG marked `aria-hidden="true"`/`focusable="false"` — plus a `<span class="sr-only">Russ.Cloud home</span>`. Visually hidden text rather than an `aria-label` on purpose: it is the same accessible name, and it is also anchor text for the site-wide link home, which an `aria-label` is not (see [Naming icon-only links](#naming-icon-only-links)). The wordmark is outline paths, invisible to assistive tech by design, and the cursor blink is disabled under `prefers-reduced-motion: reduce` in the component's own styles. Alongside it the masthead shows seven labelled links (`MASTHEAD_ITEMS` — Tunes · Books · Reading List · Tags · Archive · About · Source, the last opening the repo in a new tab with `rel="noopener noreferrer"`), each pairing a decorative `Icon.astro` glyph with its label in a `.nav-label` span, so the text alone is the accessible name; the glyphs carry `aria-hidden="true"` (`Icon.astro` forwards any extra attributes straight onto the `<svg>`, so the same applies to the search icon) and are never the only cue for a destination. On pointer devices the label rests collapsed (`max-width: 0`, `opacity: 0`, clipped by `overflow: hidden` — never `display: none`, so it stays in the accessibility tree and remains the link's accessible name) and unfurls on `:hover` **and** `:focus-visible`, so keyboard tabbing reveals the same words a mouse does. The collapse is scoped to `@media (hover: hover)`: on touch (an iPad on the ≥768px desktop nav included) the labels are simply always visible, since there is no hover to reveal them. Under `prefers-reduced-motion: reduce` the reveal is instant rather than animated. Then two icon-only controls: the search trigger (named by a `sr-only` "Search the archive", also carrying `aria-keyshortcuts="Meta+K"` and a JS-set platform-aware `title`) and the theme toggle (a `<button>`, so `aria-label`). The search trigger is an `<a href="/search/">` upgraded by JS to open the search sheet — a native `<dialog>` (`SearchOverlay.astro`) labelled via `aria-labelledby`, so `showModal()` provides the focus trap, background inerting, and focus restoration to the trigger on close. Focus is moved into the Pagefind input once it renders; `Escape` is handled explicitly in the sheet's keydown listener because Pagefind's input consumes the key (blocking the dialog's native cancel), and the `/` shortcut is suppressed while focus is in an input, textarea, select, or contenteditable. Without JS the trigger simply navigates to `/search/`, where the input is autofocused. The mobile burger (below 768px) opens a full-width panel of glyph-plus-text rows; the trigger keeps `aria-controls`/`aria-expanded` and a sr-only label that flips between Open/Close, and the hamburger icon swaps to an X via CSS on `aria-expanded` — both SVGs are `aria-hidden`. On mobile the search trigger sits beside the burger rather than inside the menu. The footer's social icons each carry an `aria-label` and `title` from `SOCIAL_LABELS`. Menu behaviour (outside click, Escape + refocus, close on link click) is unchanged.
 
 **File**: `src/components/layout/Header.astro`
 
 ```astro
 <!-- Brand link (Logo.astro renders one aria-hidden SVG) -->
-<a href="/" class="header-logo flex items-center no-underline" aria-label="russ.cloud home">
+<a href="/" class="header-logo flex items-center no-underline">
   <Logo />
+  <span class="sr-only">Russ.Cloud home</span>
 </a>
 
 <!-- Desktop navigation (glyph + text; the text is the accessible name,
@@ -154,7 +155,7 @@ export default defineConfig({
 
 **Problem**: a listing row should be one big click target, but the tag chips in its meta line must also link to their hubs — and `<a>` cannot be nested inside `<a>`.
 
-**Solution**: no wrapping anchor. The row carries `position: relative; isolation: isolate`, and the post link is an empty overlay covering it, named by `aria-label`; the tag chips sit above it on a higher `z-index` and stay ordinary links. Each row therefore exposes exactly one post link plus its tag links — the same shape the old wrapping anchor gave — with no unlabelled links and no nesting. The overlay must be a direct child of the row: as a `::after` on a link inside the heading it is trapped in the heading's `view-transition-name` stacking context, and the positioned thumbnail `<figure>` paints over it, swallowing clicks on the image.
+**Solution**: no wrapping anchor. The row carries `position: relative; isolation: isolate`, and the post link is an overlay covering it, named by a `sr-only` span holding the post title (see [Naming icon-only links](#naming-icon-only-links)); the tag chips sit above it on a higher `z-index` and stay ordinary links. Each row therefore exposes exactly one post link plus its tag links — the same shape the old wrapping anchor gave — with no unlabelled links and no nesting. The overlay must be a direct child of the row: as a `::after` on a link inside the heading it is trapped in the heading's `view-transition-name` stacking context, and the positioned thumbnail `<figure>` paints over it, swallowing clicks on the image.
 
 **Consequence — the chips owe a 24px floor**: because a chip sits on top of a link covering the whole row, every pixel it is short of the WCAG 2.5.8 target minimum is a pixel where aiming at a tag hub sends you to the post instead. `.tag-editorial--sm` in `global.css` therefore pins `min-width`/`min-height: 24px` and centres its label, which the 12px type and `0.3rem` padding alone do not reach (21.6px). Keep the floor on any new chip or control dropped into a row — axe's `target-size` rule (Lighthouse's accessibility category, and so PageSpeed Insights) flags every instance individually, once per row.
 
@@ -166,9 +167,19 @@ export default defineConfig({
   ...
   <a href={getTagUrl(tag)} class="tag-editorial tag-editorial--sm">{getTagName(tag)}</a>
   ...
-  <a href={href} class="post-row-link" aria-label={`Read post: ${post.data.title}`}></a>
+  <a href={href} class="post-row-link"><span class="sr-only">{post.data.title}</span></a>
 </article>
 ```
+
+### Naming icon-only links
+
+A link whose only content is an SVG, or an overlay with no content at all, needs an accessible name. Both `aria-label` and a visually hidden text node satisfy that, and the runtime fallback below treats them the same. Prefer the `sr-only` span on **links**:
+
+- An `aria-label` leaves the `<a>` textless in the markup, so crawlers see a link with no anchor text — a Seobility "links don't have anchor text" finding, and a lost relevance signal on internal links (the feed rows are the site's main path into every post).
+- A `sr-only` span is real text: identical accessible name, plus anchor text. It is not hidden-text spam — it repeats the adjacent visible heading or the destination's own name, never keywords the page doesn't show.
+- `aria-label` still belongs on **buttons** (theme toggle, dialog close), on landmarks (`<nav aria-label>`), and wherever the accessible name must differ from the visible text.
+
+Applied to: the masthead brand link and both search triggers (`Header.astro`), and the feed-row overlay (`PostCard.astro`). The footer's social icons keep `aria-label` + `title` — they are external links, where anchor text buys nothing.
 
 ### 6. Runtime Fallback
 
@@ -244,7 +255,7 @@ Test accessibility on pages with different content types:
 | "Scrollable content not keyboard accessible" | Expressive Code | Plugin adds tabindex="0" + client-side script re-adds after EC dynamic removal |
 | "Links not distinguishable from text" | Prose content | CSS adds subtle underline to all prose links |
 | "Link has no accessible text" | LightGallery | Check aria-label on `<a>` tags |
-| "Link has no accessible text" | Navigation | Verify aria-label on icon links |
+| "Link has no accessible text" | Navigation | Verify the icon link's `sr-only` name ([Naming icon-only links](#naming-icon-only-links)) |
 
 ## Creating Accessible Components
 
@@ -253,7 +264,7 @@ Test accessibility on pages with different content types:
 When creating new interactive components:
 
 - [ ] All `<button>` elements have `aria-label` or visible text
-- [ ] All `<a>` elements with only images have `aria-label`
+- [ ] All `<a>` elements with only images or icons carry a `sr-only` name ([Naming icon-only links](#naming-icon-only-links))
 - [ ] Icon-only elements have descriptive labels
 - [ ] External links indicate they open in new tab
 - [ ] Form inputs have associated labels

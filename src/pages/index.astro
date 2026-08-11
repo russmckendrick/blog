@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/blog/PostCard.astro';
 import TagTabs from '../components/home/TagTabs.astro';
 import Pagination from '../components/layout/Pagination.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, HOME_PAGE_SIZE, PAGINATION_PAGE_SIZE } from '../consts';
+import { HOME_TITLE, SITE_DESCRIPTION, HOME_PAGE_SIZE, PAGINATION_PAGE_SIZE } from '../consts';
 import { Schema } from 'astro-seo-schema';
 import { createWebSiteSchema } from '../utils/schema';
 
@@ -18,10 +18,10 @@ const totalPages = 1 + Math.ceil((allPosts.length - HOME_PAGE_SIZE) / PAGINATION
 const webSiteSchema = createWebSiteSchema(Astro.site?.toString() || 'https://www.russ.cloud/');
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION} image="/home-og.png">
+<BaseLayout title={HOME_TITLE} description={SITE_DESCRIPTION} image="/home-og.png">
 	<Schema slot="head" item={webSiteSchema} />
 	<section class="max-w-[728px] mx-auto px-6">
-		<h1 class="sr-only">{SITE_TITLE}</h1>
+		<h1 class="sr-only">{HOME_TITLE}</h1>
 
 		<TagTabs active="latest" />
 

@@ -22,7 +22,10 @@ const {
 	keywords
 } = Astro.props;
 
-const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
+// Titles that already carry the site name - the homepage, the paginated feed,
+// the archive hubs - keep it once rather than ending up as
+// "Archives - Russ McKendrick | Russ McKendrick".
+const pageTitle = title.includes(SITE_TITLE) ? title : `${title} | ${SITE_TITLE}`;
 ---
 
 <!doctype html>

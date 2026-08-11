@@ -115,14 +115,18 @@ const preset = CF_IMAGE_PRESETS.thumbnailHorizontal
 	{/* The row's single link, laid over the whole row as a direct child so
 	    it clears the heading's view-transition stacking context. Tag chips
 	    sit above it on their own z-index and stay real links to their hubs —
-	    which a wrapping <a> could never allow. */}
-	<a href={href} class="post-row-link" aria-label={`Read post: ${post.data.title}`}></a>
+	    which a wrapping <a> could never allow.
+
+	    It carries the title as visually hidden text rather than an aria-label:
+	    that names the link identically for assistive tech, and it also gives
+	    crawlers real anchor text for the post instead of an empty <a>. */}
+	<a href={href} class="post-row-link"><span class="sr-only">{post.data.title}</span></a>
 </article>
 
 <style>
 	/* The row is one click target without being one wrapping <a>, so the tag
 	   chips inside it can stay real links (nesting <a> in <a> is invalid).
-	   The link is an empty overlay covering the row, named by aria-label. */
+	   The link is an overlay covering the row, named by its sr-only title. */
 	.post-row {
 		position: relative;
 		isolation: isolate;
