@@ -49,7 +49,7 @@ const preset = CF_IMAGE_PRESETS.thumbnailHorizontal
 			{post.data.title}
 		</HeadingTag>
 	</header>
-	<div class="col-span-2 row-start-2 sm:col-span-1 sm:col-start-1 min-w-0 flex flex-col gap-2">
+	<div class="post-row-body col-span-2 row-start-2 sm:col-span-1 sm:col-start-1 min-w-0 flex flex-col gap-2">
 		{description && (
 			<p class="hidden sm:block text-base text-on-surface-variant leading-normal">
 				{description}
@@ -80,7 +80,7 @@ const preset = CF_IMAGE_PRESETS.thumbnailHorizontal
 	</div>
 	{heroImage && (
 		<figure
-			class="relative overflow-hidden rounded-[3px] col-span-2 row-start-3 self-start sm:col-span-1 sm:col-start-2 sm:row-start-2 sm:self-end sm:ml-10 w-full aspect-[2/1] sm:w-40 sm:h-[107px] sm:aspect-auto bg-cover bg-center bg-no-repeat"
+			class="post-row-figure relative overflow-hidden rounded-[3px] col-span-2 row-start-3 self-start sm:col-span-1 sm:col-start-2 sm:row-start-2 sm:self-end sm:ml-10 w-full aspect-[2/1] sm:w-40 sm:h-[107px] sm:aspect-auto bg-cover bg-center bg-no-repeat"
 			style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
 			transition:name={imageTransition}
 		>

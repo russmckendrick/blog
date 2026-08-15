@@ -209,8 +209,10 @@ footer.
 
 Rows, not cards: full-width title (2-line clamp) over a two-column lower
 band — dek (full text, never truncated; hidden on mobile) → meta `date · read time · tags`
-on the left, a 160×107 thumbnail flush right, bottom edge on the meta
-baseline, 3px radius. Mobile stacks each row as three full-width lines —
+beside a 160×107 thumbnail, bottom edge on the meta baseline, 3px radius.
+The thumbnail alternates sides row by row — odd rows flush right, even rows
+flush left — so a long listing zig-zags instead of running one straight
+edge down the page. Mobile stacks each row as three full-width lines —
 16px title, then the meta line, then a full-width centre-cropped 2:1
 banner (3/4 of the natural 3:2 height) closing the row; the title is
 never squeezed into a side column. The whole row is one click target — an

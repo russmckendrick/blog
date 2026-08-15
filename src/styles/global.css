@@ -217,6 +217,28 @@ h3 {
   }
 }
 
+/* Feed rows alternate their thumbnail side so a long listing zig-zags instead
+   of running one straight edge down the page. Every single-column listing wraps
+   each PostCard in one child of `.feed`, so nth-child there is the row index —
+   the two-column related-post grids have no `.feed` and stay untouched. Like
+   .feed-title these rules are unlayered so they outrank Tailwind's utilities.
+   Mobile stacks the row (title, text, image), so the flip starts at sm. */
+@media (min-width: 640px) {
+  .feed > *:nth-child(even) .post-row {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .feed > *:nth-child(even) .post-row-body {
+    grid-column-start: 2;
+  }
+
+  .feed > *:nth-child(even) .post-row-figure {
+    grid-column-start: 1;
+    margin-left: 0;
+    margin-right: 2.5rem;
+  }
+}
+
 /* Code styling */
 code {
   @apply font-mono px-1.5 py-0.5 text-sm;
