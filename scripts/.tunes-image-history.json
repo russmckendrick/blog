@@ -942,6 +942,408 @@
         "David-Gilmour.jpg",
         "Buffalo-Tom.jpg"
       ]
+    },
+    {
+      "version": 2,
+      "date": "2026-08-17",
+      "type": "cover",
+      "lane": null,
+      "lighting": null,
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Backstage shrine in a cosmic rehearsal hall",
+      "creativeDirection": "A handcrafted mixed-media diorama photographed like an editorial stage set, combining sculptural assemblage, paper cut graphics, and vintage portrait tableaux.",
+      "scene": "A wide view into a theatrical rehearsal hall transformed into a surreal shrine-like set, seen straight on at slightly elevated eye level, with a central altar-platform and layered backstage space receding behind it.",
+      "elements": [
+        {
+          "source": 1,
+          "element": "A single soft, luminous woman in a long white vintage dress stands at the altar, lifting a small doll upward as if offering it to the room's strange machinery."
+        },
+        {
+          "source": 2,
+          "element": "A large minimal cat face appears as a painted emblem on a hanging circular panel high in the set, watching over the scene."
+        },
+        {
+          "source": 3,
+          "element": "The walls and platform edges are built from dense collage fragments of knobs, speakers, cables, and motion-blur photographs, creating a kinetic sound-engine environment."
+        },
+        {
+          "source": 4,
+          "element": "A smiling silver-haired woman in a bright striped sleeveless top appears once at stage right beside a green chair and mirror, caught mid-gesture like a lively backstage host."
+        },
+        {
+          "source": 5,
+          "element": "The impact motif becomes a torn-paper burst and dented percussion surface on the left side of the stage, suggesting explosive rhythm rather than literal violence."
+        },
+        {
+          "source": 6,
+          "element": "Three elegantly dressed women in monochrome are restaged as a formal black-and-white portrait tableau seated around a small table in the rear left, like a framed living photograph within the set."
+        },
+        {
+          "source": 7,
+          "element": "A spiked ritual mask forms the altar's central sculptural backdrop, looming behind the woman like a radiant sacred speaker icon."
+        },
+        {
+          "source": 8,
+          "element": "A retro UFO with a pink tractor beam hangs above, beaming down onto a tiny astronaut figurine suspended over the altar."
+        }
+      ],
+      "palette": [
+        "apricot",
+        "coral",
+        "olive green",
+        "charcoal black",
+        "cream",
+        "amber"
+      ],
+      "mood": "mysterious, playful, ceremonial, musically charged",
+      "coverSummaries": [
+        {
+          "source": 1,
+          "filename": "As-We-Once-Were.jpg",
+          "album": "As We Once Were",
+          "artist": "",
+          "description": "A soft-focus portrait of a woman in profile facing right, wearing a long white vintage-style dress with gathered sleeves and ruffled trim. She raises a dark doll or figurine with light hair in both hands. The background is a hazy warm gradient with a glowing, dreamlike atmosphere and no distinct setting details.",
+          "signatureMotif": "woman holding up a doll",
+          "medium": "soft-focus studio photograph",
+          "palette": [
+            "peach",
+            "apricot",
+            "cream",
+            "soft pink",
+            "brown"
+          ]
+        },
+        {
+          "source": 2,
+          "filename": "Tails.jpg",
+          "album": "Tails",
+          "artist": "",
+          "description": "A simple illustrated cat face centered on a flat green background. The cat has a pale cream head, pointed ears, narrow eyes, a pink triangular nose, whiskers, and rosy cheeks. The composition is minimal and graphic, with the face floating alone in the middle.",
+          "signatureMotif": "stylized cat face",
+          "medium": "naive illustration",
+          "palette": [
+            "olive green",
+            "cream",
+            "black",
+            "pink",
+            "peach"
+          ]
+        },
+        {
+          "source": 3,
+          "filename": "Vanishing-Point.jpg",
+          "album": "Vanishing Point",
+          "artist": "",
+          "description": "A dense collage of overlapping rectangular photo fragments showing close-up views of audio equipment, knobs, dials, speakers, cables, and blurred lights or roadway motion streaks. The arrangement is layered against a black background, with bold central text blocks cutting across the middle. The overall look is busy, fragmented, and kinetic.",
+          "signatureMotif": "collaged audio gear and motion-blur photos",
+          "medium": "photographic collage",
+          "palette": [
+            "black",
+            "amber",
+            "orange",
+            "brown",
+            "white"
+          ]
+        },
+        {
+          "source": 4,
+          "filename": "Temple-Songs.jpg",
+          "album": "Temple Songs",
+          "artist": "",
+          "description": "A color photograph of a smiling woman standing indoors, framed by a thick coral border. She has shoulder-length silver hair and wears a bright striped sleeveless top, jeans, necklaces, and earrings. Her arms are slightly blurred as if moving. Behind her are dark walls, mirrors, a tall decorative vase-like object, a green chair, and warm interior lighting.",
+          "signatureMotif": "smiling woman in a striped top",
+          "medium": "color photograph",
+          "palette": [
+            "coral",
+            "orange",
+            "black",
+            "denim blue",
+            "olive green"
+          ]
+        },
+        {
+          "source": 5,
+          "filename": "Vulgar-Display-of-Power.jpg",
+          "album": "Vulgar Display of Power",
+          "artist": "",
+          "description": "A grainy, high-contrast close-up image of a fist striking a man's face. The impact compresses the face dramatically, and the scene is cropped tightly so only the arm, fist, and part of the head are visible. The image has a rough printed texture and a dark background.",
+          "signatureMotif": "fist hitting a face",
+          "medium": "grainy photograph",
+          "palette": [
+            "black",
+            "gray",
+            "white",
+            "dark brown",
+            "red"
+          ]
+        },
+        {
+          "source": 6,
+          "filename": "The-Womack-Sisters.jpg",
+          "album": "The Womack Sisters",
+          "artist": "",
+          "description": "A black-and-white studio portrait of three women posed around a table in an elegant interior. Two are seated in the foreground and one stands or leans between them in back. They wear coordinated formal outfits with contrasting light collars or shoulders, dark ties, long gloves, patterned stockings, and prominent jewelry. The background includes a textured wall and a doorway or window area at right.",
+          "signatureMotif": "three women posed around a table",
+          "medium": "black-and-white photograph",
+          "palette": [
+            "black",
+            "white",
+            "gray",
+            "charcoal",
+            "silver"
+          ]
+        },
+        {
+          "source": 7,
+          "filename": "Stigma.jpg",
+          "album": "Stigma",
+          "artist": "",
+          "description": "A dramatic close-up of a carved mask or statue head with open mouth and closed or half-closed eyes, surrounded by many protruding nails or spikes. The figure is lit warmly against a darker background with diagonal striped light patterns and small blurred highlights. The composition centers the face and spiked structure.",
+          "signatureMotif": "spiked ritual mask",
+          "medium": "photograph of sculptural object",
+          "palette": [
+            "gold",
+            "brown",
+            "black",
+            "purple",
+            "white"
+          ]
+        },
+        {
+          "source": 8,
+          "filename": "73-Good-Luck.jpg",
+          "album": "73 Good Luck",
+          "artist": "",
+          "description": "A flat, retro-futuristic cartoon scene with a flying saucer at the top center shining a pink beam downward onto a small astronaut figure. Around them are rounded geometric buildings, circles, arcs, and abstract space-age shapes arranged in a symmetrical, poster-like composition. Thick black outlines define all forms on a pale blue background.",
+          "signatureMotif": "UFO beaming up an astronaut",
+          "medium": "vector-style illustration",
+          "palette": [
+            "light blue",
+            "navy",
+            "yellow",
+            "orange",
+            "pink"
+          ]
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2",
+      "model": "openai/gpt-image-2/edit",
+      "prompt": "A wide straight-on view into a surreal backstage rehearsal hall turned into a ceremonial shrine, seen at slightly elevated eye level, with a central altar platform in the foreground and layered theatrical space receding behind it; a luminous woman in profile wearing a long white vintage dress with gathered sleeves stands center stage, raising a small dark doll with pale hair in both hands toward the air; behind her rises a dramatic sculptural altar based on a carved mask head encircled with nails or spikes, transformed into a radiant sacred sound-icon, while above it a retro-futurist flying saucer hangs from visible wires and shines a pink beam onto a tiny suspended astronaut figurine; the set walls, risers, and floor edges are constructed from dense collage fragments of audio gear, knobs, speakers, cables, and amber motion-blur photo strips against deep black, creating a kinetic music-machine architecture; at upper center a simple cream cat face with narrow eyes and pink nose is painted on a circular hanging panel like a watchful emblem; at stage right, include one smiling silver-haired woman in a bright striped sleeveless top beside a green chair, mirror, and tall decorative vase form, her arms slightly blurred as if welcoming or dancing backstage; at rear left, include three women only once as a monochrome formal tableau around a small table, styled like an elegant black-and-white living portrait inset into the set; on the left foreground, reinterpret the fist-impact image as an abstract torn-paper burst and dented drumhead or percussion panel, conveying explosive rhythm without literal assault; handcrafted mixed-media diorama, sculptural assemblage, collage, painted flats, cut paper graphics, fabric details, miniature props, then photographed with shallow atmospheric haze; strong central hierarchy with the white-dressed woman and spiked altar dominant, supporting vignettes balanced on both sides, theatrical framing, layered depth, warm spotlights from below and side lighting with small glittering highlights; palette of apricot, cream, soft pink, coral, olive green, amber, gold, charcoal black, silver gray, and pale blue; mood mysterious, playful, ceremonial, and musically electric. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "inputs": [
+        "As-We-Once-Were.jpg",
+        "Tails.jpg",
+        "Vanishing-Point.jpg",
+        "Temple-Songs.jpg",
+        "Vulgar-Display-of-Power.jpg",
+        "The-Womack-Sisters.jpg",
+        "Stigma.jpg",
+        "73-Good-Luck.jpg"
+      ]
+    },
+    {
+      "version": 2,
+      "date": "2026-08-17",
+      "type": "artist",
+      "lane": null,
+      "lighting": null,
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Wallpaper-room quiet tension",
+      "creativeDirection": "A warm, softly focused editorial group portrait staged as a cramped candid pause inside the exact floral-wallpaper corner.",
+      "scene": "A small interior corner with the same dense yellow floral wallpaper wrapping across two walls and the metallic wall ornament still visible high on the right, photographed as if the room extends only slightly beyond the original frame with a narrow strip of floor at the bottom.",
+      "locationSource": 7,
+      "locationSetting": "Small interior corner with dense yellow floral wallpaper on two walls and a decorative metallic wall ornament partly visible at upper right.",
+      "locationEvidence": "Two adjoining walls are clearly covered in bold yellow floral wallpaper, forming a tight interior corner, with a decorative metallic wall ornament visible at upper right.",
+      "locationReference": 1,
+      "locationInput": "The-Womack-Sisters.jpg",
+      "cast": [
+        {
+          "source": 7,
+          "person": "medium-brown-skinned woman with long glossy dark wavy hair in a sleeveless dark denim top",
+          "placement": "foreground left, closest to camera, leaning back into the wallpapered wall and looking past the group"
+        },
+        {
+          "source": 1,
+          "person": "light-skinned man with shaggy shoulder-length dark hair and light stubble in a shiny black, white, and orange-red zip-front shirt",
+          "placement": "midground left, half-turned in the corner behind the foreground woman, one shoulder against the wall"
+        },
+        {
+          "source": 3,
+          "person": "very fair-skinned woman with wet shoulder-length red hair, strong eye makeup, and bright red lipstick in a black spaghetti-strap top",
+          "placement": "center, seated low on the floor beneath the corner seam, looking directly toward camera"
+        },
+        {
+          "source": 4,
+          "person": "adult figure with a television set for a head wearing a colorful geometric patterned jacket and holding a metal antenna",
+          "placement": "back right, partly tucked behind others near the wall ornament, antenna angled upward into open space"
+        },
+        {
+          "source": 5,
+          "person": "fair-skinned woman with shoulder-length wavy silver-grey hair, round glasses, and a dark floral high-neck top with layered necklaces",
+          "placement": "midground right, standing close to the right wall with a calm posture and hands gathered near her waist"
+        },
+        {
+          "source": 6,
+          "person": "light-skinned man with partially shaved hair, long braided strands hanging forward, visible tattoos, and a white T-shirt",
+          "placement": "foreground right, crouched with one elbow on a raised knee, slightly nearer camera than the others"
+        }
+      ],
+      "selection": [
+        7,
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "palette": [
+        "mustard yellow",
+        "warm cream",
+        "deep denim blue",
+        "black",
+        "silver-grey",
+        "muted red"
+      ],
+      "mood": "intimate, stylish, slightly surreal, hushed but charged",
+      "artistSummaries": [
+        {
+          "source": 1,
+          "filename": "Primal-Scream.jpg",
+          "artist": "Primal Scream",
+          "description": "One adult man is shown from the chest up holding a wired microphone near his mouth. He has light skin, shaggy shoulder-length dark hair, and light stubble. He faces slightly left of camera with a serious expression. Strong red-orange lighting covers his face and the background, with a large soft white circular light shape behind him.",
+          "primarySubject": "the light-skinned man with shaggy shoulder-length dark hair and light stubble holding a microphone",
+          "visiblePeople": [
+            "1 adult man: light skin, shaggy shoulder-length dark hair, light stubble, no eyewear"
+          ],
+          "wardrobe": "Shiny short-sleeved zip-front shirt with bold black, white, and orange-red sections.",
+          "photoStyle": "Tight performance portrait, dramatic colored stage lighting, high contrast, saturated color.",
+          "setting": "Indeterminate performance or studio-like backdrop dominated by red-orange light, with a large out-of-focus white circular light shape and no clear environmental details.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 2,
+          "filename": "Dodgy.jpg",
+          "artist": "Dodgy",
+          "description": "Three adult men stand closely together beneath a low dark overhead structure marked with diagonal yellow-and-black striping. The central man is the most prominent, standing slightly forward with one arm raised to touch the overhead beam; he has light skin, curly reddish hair, and wears a dark cap and dark blazer with jeans. The man at left is slim with short dark hair and light skin, wearing a dark blazer, dark vest, open-collar light shirt, and jeans, with one hand on his hip. The man at right is stockier with light skin, short hair, and a full grey beard, wearing a brown suit jacket and matching trousers.",
+          "primarySubject": "the light-skinned man in the center with curly reddish hair, a dark cap, dark blazer, and raised arm touching the overhead beam",
+          "visiblePeople": [
+            "1 adult man: light skin, short dark hair, clean-shaven, slim build, no eyewear",
+            "1 adult man: light skin, curly reddish hair, clean-shaven, dark cap, average build, no eyewear",
+            "1 adult man: light skin, short hair, full grey beard, stocky build, no eyewear"
+          ],
+          "wardrobe": "Dark blazer, vest, open-collar shirt, and jeans on the left; dark blazer, dark shirt, cap, and jeans in the center; brown textured suit jacket and trousers on the right.",
+          "photoStyle": "Group portrait with direct flash or strong frontal lighting, square framing, candid posed stance.",
+          "setting": "A dark underpass or tunnel-like entrance with a low black ceiling, striped hazard edging overhead, shadowy interior behind the group, and a bit of outdoor ground visible at the bottom edge.",
+          "settingStrength": "moderate"
+        },
+        {
+          "source": 3,
+          "filename": "The-Anchoress.jpg",
+          "artist": "The Anchoress",
+          "description": "One adult woman is shown in a tight head-and-shoulders portrait against a plain pale wall. She has very fair skin, wet shoulder-length red hair, defined eye makeup, and bright red lipstick. She faces the camera directly with a neutral expression. Thin black straps of her top are visible on her shoulders.",
+          "primarySubject": "the very fair-skinned woman with wet shoulder-length red hair, strong eye makeup, and bright red lipstick facing the camera",
+          "visiblePeople": [
+            "1 adult woman: very fair skin, wet shoulder-length red hair, no eyewear"
+          ],
+          "wardrobe": "Black spaghetti-strap top.",
+          "photoStyle": "Close-up beauty portrait, soft natural-looking light, minimal background, sharp facial detail.",
+          "setting": "Plain indoor wall with no visible furniture or architectural detail.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 4,
+          "filename": "Test-Card.jpg",
+          "artist": "Test Card",
+          "description": "One human figure stands outdoors with a television set covering the head and a raised hand holding a metal TV antenna. The figure wears a colorful patterned jacket with blocks and stripes of many colors. Behind the figure are tall evergreen trees, darker shrubs, and a bright sky.",
+          "primarySubject": "the person with a television set for a head, wearing a colorful geometric-patterned jacket and holding a raised metal antenna",
+          "visiblePeople": [
+            "1 adult person: face fully obscured by a television set, body visible, no visible hair or eyewear"
+          ],
+          "wardrobe": "Colorful multicolored patterned jacket or suit top with bold geometric shapes.",
+          "photoStyle": "Conceptual portrait, retro analog look, slightly grainy and soft, saturated color.",
+          "setting": "Outdoor area with dense evergreen trees, lower foliage, and open sky; the subject stands in front of a natural backdrop with no buildings visible.",
+          "settingStrength": "moderate"
+        },
+        {
+          "source": 5,
+          "filename": "Laura-Veirs.jpg",
+          "artist": "Laura Veirs",
+          "description": "One adult woman sits or stands facing the camera in a waist-up portrait against a teal fabric backdrop. She has fair skin, shoulder-length wavy silver-grey hair, and round eyeglasses. She wears a dark long-sleeved floral patterned dress or top and layered necklaces. Her expression is calm and neutral.",
+          "primarySubject": "the fair-skinned woman with shoulder-length wavy silver-grey hair, round glasses, and a dark floral high-neck top",
+          "visiblePeople": [
+            "1 adult woman: fair skin, shoulder-length wavy silver-grey hair, round eyeglasses"
+          ],
+          "wardrobe": "Dark high-neck long-sleeved floral patterned dress or top with layered metallic necklaces.",
+          "photoStyle": "Formal studio portrait, soft even lighting, centered composition, plain textile backdrop.",
+          "setting": "Studio-style setup with a plain teal cloth backdrop and no visible room elements.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 6,
+          "filename": "Pantera.jpg",
+          "artist": "Pantera",
+          "description": "Four adult men pose outdoors among cemetery headstones. The central man stands closest to camera and is the most prominent; he has light skin, a partially shaved hairstyle with long braided strands hanging forward, visible arm tattoos, and a white T-shirt. At left, a man with long dark hair under a black hood crouches near a grave marker. Behind center, another long-haired light-skinned man stands in a dark jacket. At right, a man with very large curly long hair and facial hair wears a black leather jacket. All look serious.",
+          "primarySubject": "the light-skinned man in front with a partially shaved hairstyle, long braided strands, visible arm tattoos, and a white T-shirt",
+          "visiblePeople": [
+            "1 adult man: light skin, long dark hair under hood, facial hair, no eyewear",
+            "1 adult man: light skin, partially shaved hair with long braided strands, clean-shaven or minimal facial hair, tattoos, no eyewear",
+            "1 adult man: light skin, long straight hair, facial hair, no eyewear",
+            "1 adult man: light skin, very large long curly hair, moustache and goatee, no eyewear"
+          ],
+          "wardrobe": "Black hooded outerwear on the left; white T-shirt on the central figure; dark jacket on the rear figure; black leather jacket on the right.",
+          "photoStyle": "Band portrait, slightly elevated angle, outdoor daylight, gritty older photo reproduction.",
+          "setting": "Cemetery with upright grave markers, grass, paved or stone pathways, fencing in the distance, and warm daylight across the scene.",
+          "settingStrength": "strong"
+        },
+        {
+          "source": 7,
+          "filename": "The-Womack-Sisters.jpg",
+          "artist": "The Womack Sisters",
+          "description": "Three adult women stand closely together in a room with bold yellow floral wallpaper. The left woman is most prominent, positioned closest to camera; she has medium-brown skin, long glossy dark wavy hair, and wears a sleeveless dark denim top. The center woman has medium-brown skin and long full curly dark hair, shown in partial side profile with one hand near her shoulder and gold bracelets. The right woman has medium-brown skin and long full curly dark hair, wearing a dark open-front outfit with a deep neckline and a pendant necklace. All have polished makeup and subdued expressions.",
+          "primarySubject": "the woman at left with medium-brown skin, long glossy dark wavy hair, and a sleeveless dark denim top closest to camera",
+          "visiblePeople": [
+            "1 adult woman: medium-brown skin, long dark wavy hair, no eyewear",
+            "1 adult woman: medium-brown skin, long full curly dark hair, no eyewear",
+            "1 adult woman: medium-brown skin, long full curly dark hair, no eyewear"
+          ],
+          "wardrobe": "Left: sleeveless dark denim top; center: dark sleeveless outfit with gold bracelets; right: dark open-front outfit with deep neckline and pendant necklace.",
+          "photoStyle": "Styled indoor group portrait, warm soft focus, fashion/editorial look.",
+          "setting": "Small interior corner with dense yellow floral wallpaper on two walls and a decorative metallic wall ornament partly visible at upper right.",
+          "settingStrength": "strong"
+        },
+        {
+          "source": 8,
+          "filename": "EMF.jpg",
+          "artist": "EMF",
+          "description": "Five adult men are grouped tightly in a studio-style portrait with pastel blue background tones. The most prominent subject is the man at lower center-right wearing a red cap, with short light hair visible at the sides and a serious expression. At lower left, a smiling man wears a white patterned bandana and layered casual tops. At upper left, a man with styled hair and a plaid shirt leans in. At center, another man with a red cap worn backward looks sideways. At upper right, a tall man with very short hair wears a black leather jacket. All appear light-skinned.",
+          "primarySubject": "the light-skinned man at lower center-right wearing a red cap and looking directly at the camera with a serious expression",
+          "visiblePeople": [
+            "1 adult man: light skin, white patterned bandana, clean-shaven, smiling, no eyewear",
+            "1 adult man: light skin, styled medium-length hair, clean-shaven, no eyewear",
+            "1 adult man: light skin, red cap worn backward, light hair, clean-shaven, no eyewear",
+            "1 adult man: light skin, very short hair, clean-shaven, no eyewear",
+            "1 adult man: light skin, red cap, clean-shaven, no eyewear"
+          ],
+          "wardrobe": "Bandana and layered hoodie/jacket on lower left; plaid shirt on upper left; dark top and backward red cap at center; black leather jacket at upper right; casual light top and red cap on lower right.",
+          "photoStyle": "Tightly framed band portrait, bright even lighting, slightly warm vintage color cast.",
+          "setting": "Studio or plain backdrop setting with softly colored blue background and no distinct environmental features.",
+          "settingStrength": "weak"
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2",
+      "model": "openai/gpt-image-2/edit",
+      "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Small interior corner with dense yellow floral wallpaper on two walls and a decorative metallic wall ornament partly visible at upper right.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. Photorealistic 16:9 group photograph inside a cramped interior corner lined with bold yellow floral wallpaper on both walls, with a decorative metallic wall ornament high on the right wall and only a narrow strip of floor visible; camera at standing eye level, close enough to feel boxed into the room. Six adults share a quiet tense pause: a medium-brown-skinned woman with long glossy dark wavy hair in a sleeveless dark denim top leans in the foreground left against the wall, looking past the others; a light-skinned man with shaggy shoulder-length dark hair and light stubble in a shiny black, white, and orange-red zip-front shirt stands midground left half-turned with one shoulder to the wall; a very fair-skinned woman with wet shoulder-length red hair, strong eye makeup, bright red lipstick, and a black spaghetti-strap top sits low at center beneath the corner seam, meeting the camera; a TV-headed adult in a colorful geometric patterned jacket stands back right partly obscured, raising a metal antenna upward; a fair-skinned woman with shoulder-length wavy silver-grey hair, round glasses, layered necklaces, and a dark floral high-neck top stands midground right close to the wallpaper; a light-skinned tattooed man with partially shaved hair and long braided strands in a white T-shirt crouches foreground right with one elbow on his knee. Compose them asymmetrically with overlapping bodies, varied heights, and no straight lineup; medium-wide framing, slight soft-focus editorial character, natural depth, roughly 35mm lens. Light the room with warm soft ambient interior light and gentle falloff, preserving the flattering warm glow and subtle haze suggested by the wallpaper portrait, with realistic shadows in the tight corner. Color treatment warm and slightly creamy with rich yellows, denim blues, black accents, and restrained contrast; mood intimate, stylish, hushed, and faintly surreal. Attached cast plan: Attached reference image 1: portray only medium-brown-skinned woman with long glossy dark wavy hair in a sleeveless dark denim top; foreground left, closest to camera, leaning back into the wallpapered wall and looking past the group. Attached reference image 2: portray only light-skinned man with shaggy shoulder-length dark hair and light stubble in a shiny black, white, and orange-red zip-front shirt; midground left, half-turned in the corner behind the foreground woman, one shoulder against the wall. Attached reference image 3: portray only very fair-skinned woman with wet shoulder-length red hair, strong eye makeup, and bright red lipstick in a black spaghetti-strap top; center, seated low on the floor beneath the corner seam, looking directly toward camera. Attached reference image 4: portray only adult figure with a television set for a head wearing a colorful geometric patterned jacket and holding a metal antenna; back right, partly tucked behind others near the wall ornament, antenna angled upward into open space. Attached reference image 5: portray only fair-skinned woman with shoulder-length wavy silver-grey hair, round glasses, and a dark floral high-neck top with layered necklaces; midground right, standing close to the right wall with a calm posture and hands gathered near her waist. Attached reference image 6: portray only light-skinned man with partially shaved hair, long braided strands hanging forward, visible tattoos, and a white T-shirt; foreground right, crouched with one elbow on a raised knee, slightly nearer camera than the others. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. This generation has 6 attached cast reference images; omit any person described in the creative direction who does not have an attached reference.",
+      "inputs": [
+        "The-Womack-Sisters.jpg",
+        "Primal-Scream.jpg",
+        "The-Anchoress.jpg",
+        "Test-Card.jpg",
+        "Laura-Veirs.jpg",
+        "Pantera.jpg"
+      ]
     }
   ]
 }
