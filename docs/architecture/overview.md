@@ -474,7 +474,16 @@ Cloudflare's zone-level "Markdown for Agents" (Dashboard → AI Crawl Control) r
 
 The markdown body is the raw MDX source with frontmatter stripped; inline JSX embed components remain inline - agents generally cope.
 
-Per-post `.md` files and `/llms.txt` also stay directly reachable (useful for `llmstxt.org` consumers that don't do content negotiation). If the zone is ever upgraded to Cloudflare Pro, the markdown half of the worker and the build-time twin can be removed and the dashboard toggle enabled instead - note the worker also proxies Plausible (below), so it cannot be dropped entirely.
+Per-post `.md` files and `/llms.txt` also stay directly reachable (useful for `llmstxt.org` consumers that don't do content negotiation).
+
+### Reader-facing hand-off
+
+The twins are also surfaced to readers. `src/components/blog/UseWithAI.astro` renders a **Use with AI** menu in both the storybar and the article rail of every post, offering Copy as Markdown (fetches the twin to the clipboard), View as Markdown, and one-click hand-offs to ChatGPT, Claude, Perplexity and Google AI Mode via a prefilled `?q=Read <canonical-url> and answer questions` prompt.
+
+Two provider quirks are baked in, both verified against the live site:
+
+- **The prompt points at the canonical URL, not the `.md` twin.** ChatGPT's web reader rejects `Content-Type: text/markdown` outright ("a format my web reader can't fetch") — and so would any reader that whitelists content types. This is not a crawl-policy problem: `robots.txt` allows all, and `ChatGPT-User`, `OAI-SearchBot`, `ClaudeBot` and `PerplexityBot` all get a clean `200` on the twin. Pointing at the canonical URL costs nothing, because the runtime negotiation above already serves markdown there to anything sending `Accept: text/markdown` — capable agents still get markdown, the rest get HTML. (Cloudmore's KB, the pattern's origin, serves `text/markdown` too and has the same limitation.)
+- **The Google row points at AI Mode, not Gemini.** The Gemini web app has no prompt URL parameter and silently ignores `?q=`, so linking there just opens an empty box — a [long-standing gap](https://news.ycombinator.com/item?id=46761567) that third-party extensions exist to patch. Google AI Mode is the same model reached through Search, which takes a query like any search: `https://www.google.com/search?udm=50&q=…`, where `udm=50` selects the AI Mode tab. Swap it back if Gemini ever ships a parameter. The absolute URL comes from `markdownUrl` in `BlogPost.astro`, derived once from `Astro.site` — it has to be off-site-fetchable, since a third-party assistant is the one retrieving it. Because the twins are written postbuild, every action in this menu 404s under `pnpm run dev`; test against `pnpm run build && pnpm run preview`. See [design-system.md](../guides/design-system.md#the-article) for the visual spec. If the zone is ever upgraded to Cloudflare Pro, the markdown half of the worker and the build-time twin can be removed and the dashboard toggle enabled instead - note the worker also proxies Plausible (below), so it cannot be dropped entirely.
 
 ### Canonical host redirect
 

@@ -1,0 +1,442 @@
+---
+import { Icon } from 'astro-icon/components';
+
+/**
+ * "Use with AI" menu: hands this post's markdown twin (<url>index.md) to the
+ * reader's assistant of choice, or to their clipboard. The twins are emitted
+ * postbuild by scripts/generate-llms-markdown.js, so these links 404 under
+ * `pnpm run dev` — build and preview to exercise them.
+ *
+ * Rendered twice per page (storybar below 1200px, article rail above), so
+ * every id is derived from the `id` prop and the script wires each instance
+ * independently.
+ */
+interface Props {
+	id: string;
+	/** Same-origin path to the markdown twin — what this page's reader fetches. */
+	markdownHref: string;
+	/** Absolute canonical URL — what a third-party assistant is pointed at. */
+	pageUrl: string;
+	align?: 'start' | 'end';
+}
+
+const { id, markdownHref, pageUrl, align = 'start' } = Astro.props;
+
+const menuId = `${id}-menu`;
+// Point assistants at the canonical URL, not the `.md` twin. ChatGPT's reader
+// refuses `Content-Type: text/markdown` outright, and the worker already hands
+// markdown to anything that sends `Accept: text/markdown` — so the canonical
+// URL is readable by every assistant *and* still serves markdown to the ones
+// that prefer it. The twin stays one click away as View/Copy as Markdown.
+const prompt = encodeURIComponent(`Read ${pageUrl} and answer questions`);
+
+const providers = [
+	{ name: 'ChatGPT', icon: 'simple-icons:openai', url: `https://chatgpt.com/?q=${prompt}`, sub: 'Ask ChatGPT about this page' },
+	{ name: 'Claude', icon: 'simple-icons:claude', url: `https://claude.ai/new?q=${prompt}`, sub: 'Ask Claude about this page' },
+	{ name: 'Perplexity', icon: 'simple-icons:perplexity', url: `https://www.perplexity.ai/search?q=${prompt}`, sub: 'Ask Perplexity about this page' },
+	// Gemini's web app has no prompt URL parameter and silently ignores ?q=,
+	// so linking there just opens an empty box. Google AI Mode is the same
+	// model reached through Search, which does take a query — `udm=50` selects
+	// the AI Mode tab. Swap this back if Gemini ever ships a parameter.
+	{ name: 'Google AI Mode', icon: 'simple-icons:googlegemini', url: `https://www.google.com/search?udm=50&q=${prompt}`, sub: 'Ask Google AI Mode about this page' },
+];
+---
+
+<div class="uwai" data-use-with-ai data-align={align}>
+	<button
+		type="button"
+		id={id}
+		class="uwai-trigger"
+		popovertarget={menuId}
+		aria-expanded="false"
+		aria-controls={menuId}
+		data-uwai-trigger
+	>
+		<Icon name="tabler:sparkles" class="uwai-spark" aria-hidden="true" />
+		<span>Use with AI</span>
+		<Icon name="tabler:chevron-down" class="uwai-chev" aria-hidden="true" />
+	</button>
+
+	<div id={menuId} class="uwai-menu" popover data-uwai-menu>
+		<button
+			type="button"
+			class="uwai-item plausible-event-name=UseWithAI plausible-event-method=Copy"
+			data-uwai-copy
+			data-markdown-url={markdownHref}
+		>
+			<span class="uwai-tile" aria-hidden="true"><Icon name="tabler:clipboard" /></span>
+			<span class="uwai-text">
+				<span class="uwai-title">Copy as Markdown</span>
+				<span class="uwai-sub" data-uwai-copy-status>Copy this page as Markdown</span>
+			</span>
+		</button>
+
+		<a
+			href={markdownHref}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="uwai-item plausible-event-name=UseWithAI plausible-event-method=Markdown"
+		>
+			<span class="uwai-tile" aria-hidden="true"><Icon name="tabler:markdown" /></span>
+			<span class="uwai-text">
+				<span class="uwai-title">View as Markdown <Icon name="tabler:arrow-up-right" class="uwai-out" aria-hidden="true" /></span>
+				<span class="uwai-sub">View this page as Markdown</span>
+			</span>
+		</a>
+
+		<hr class="uwai-sep" />
+
+		{providers.map((provider) => (
+			<a
+				href={provider.url}
+				target="_blank"
+				rel="noopener noreferrer"
+				class={`uwai-item plausible-event-name=UseWithAI plausible-event-method=${provider.name}`}
+			>
+				<span class="uwai-tile" aria-hidden="true"><Icon name={provider.icon} /></span>
+				<span class="uwai-text">
+					<span class="uwai-title">Open in {provider.name} <Icon name="tabler:arrow-up-right" class="uwai-out" aria-hidden="true" /></span>
+					<span class="uwai-sub">{provider.sub}</span>
+				</span>
+			</a>
+		))}
+	</div>
+
+	<span class="sr-only" aria-live="polite" data-uwai-live></span>
+</div>
+
+<style>
+	.uwai {
+		display: inline-flex;
+	}
+
+	/* Trigger: bordered pill, sparkle left, chevron right. */
+	.uwai-trigger {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-family: var(--font-sans);
+		font-size: 0.8125rem;
+		font-weight: 600;
+		line-height: 1.2;
+		color: var(--color-on-surface);
+		background-color: var(--color-surface);
+		border: 1px solid var(--color-outline-variant);
+		border-radius: 8px;
+		padding: 0.375rem 0.625rem;
+		cursor: pointer;
+		transition: background-color 0.15s ease, border-color 0.15s ease;
+	}
+
+	.uwai-trigger:hover {
+		background-color: var(--paper-well);
+		border-color: var(--color-on-surface-variant);
+	}
+
+	.uwai-spark {
+		width: 1rem;
+		height: 1rem;
+		color: var(--color-secondary);
+		flex: none;
+	}
+
+	.uwai-chev {
+		width: 0.875rem;
+		height: 0.875rem;
+		color: var(--color-on-surface-variant);
+		flex: none;
+		transition: transform 0.15s ease;
+	}
+
+	.uwai-trigger[aria-expanded='true'] .uwai-chev {
+		transform: rotate(180deg);
+	}
+
+	/* Menu card. Positioned from JS in viewport coordinates; `popover` puts it
+	   in the top layer so the article rail's overflow-y: auto can't clip it. */
+	.uwai-menu {
+		display: none;
+		position: fixed;
+		inset: auto;
+		top: 0;
+		left: 0;
+		margin: 0;
+		z-index: 60;
+		width: min(320px, calc(100vw - 1.5rem));
+		max-height: min(28rem, calc(100vh - 2rem));
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		background-color: var(--color-surface);
+		border: 2px solid var(--color-on-surface);
+		border-radius: 14px;
+		padding: 0.5rem;
+		opacity: 0;
+		transition: opacity 0.12s ease;
+	}
+
+	/* Set once JS has placed the card, so it never flashes at 0,0. */
+	.uwai-menu.is-placed {
+		opacity: 1;
+	}
+
+	/* Revealed by whichever mechanism is available. These stay as two separate
+	   rules on purpose: a browser without :popover-open would throw away a
+	   combined selector and leave the card permanently open. */
+	.uwai-menu:popover-open {
+		display: block;
+	}
+
+	/* Fallback for browsers without the Popover API — the class stands in for
+	   :popover-open. Still position: fixed, so it escapes the rail's overflow. */
+	.uwai-menu.is-open {
+		display: block;
+	}
+
+	.uwai-item {
+		display: flex;
+		align-items: center;
+		gap: 0.6875rem;
+		width: 100%;
+		text-align: left;
+		padding: 0.5rem;
+		border-radius: 10px;
+		text-decoration: none;
+		color: inherit;
+		background: none;
+		border: 0;
+		cursor: pointer;
+		transition: background-color 0.15s ease;
+	}
+
+	.uwai-item:hover {
+		background-color: var(--paper-well);
+	}
+
+	.uwai-tile {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		flex: none;
+		border: 1px solid var(--color-outline-variant);
+		border-radius: 9px;
+		color: var(--color-on-surface);
+	}
+
+	.uwai-tile :global(svg) {
+		width: 1.125rem;
+		height: 1.125rem;
+	}
+
+	.uwai-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.0625rem;
+		min-width: 0;
+	}
+
+	.uwai-title {
+		font-family: var(--font-sans);
+		font-size: 0.875rem;
+		font-weight: 600;
+		line-height: 1.3;
+		color: var(--color-on-surface);
+	}
+
+	.uwai-out {
+		display: inline-block;
+		width: 0.75rem;
+		height: 0.75rem;
+		vertical-align: -1px;
+		color: var(--color-on-surface-variant);
+	}
+
+	.uwai-sub {
+		font-family: var(--font-sans);
+		font-size: 0.8125rem;
+		font-weight: 400;
+		line-height: 1.35;
+		color: var(--color-on-surface-variant);
+	}
+
+	.uwai-sep {
+		height: 1px;
+		border: 0;
+		margin: 0.375rem 0.5rem;
+		background-color: var(--color-outline-variant);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.uwai-menu,
+		.uwai-chev,
+		.uwai-item,
+		.uwai-trigger {
+			transition: none;
+		}
+	}
+</style>
+
+<script>
+	// One controller per page render; aborted on the next view transition so
+	// listeners don't stack up (same shape as Header.astro).
+	let cleanupUseWithAI: AbortController | null = null
+
+	const supportsPopover = typeof HTMLElement !== 'undefined'
+		&& typeof HTMLElement.prototype.showPopover === 'function'
+
+	function initUseWithAI() {
+		cleanupUseWithAI?.abort()
+		const roots = Array.from(document.querySelectorAll<HTMLElement>('[data-use-with-ai]'))
+		if (roots.length === 0) {
+			cleanupUseWithAI = null
+			return
+		}
+
+		const controller = new AbortController()
+		const { signal } = controller
+		cleanupUseWithAI = controller
+
+		for (const root of roots) {
+			const trigger = root.querySelector<HTMLButtonElement>('[data-uwai-trigger]')
+			const menu = root.querySelector<HTMLElement>('[data-uwai-menu]')
+			if (!trigger || !menu) continue
+
+			const alignEnd = root.dataset.align === 'end'
+
+			// Place the card against the trigger in viewport coordinates: below by
+			// default, flipped above when there isn't room, always clamped inside
+			// the viewport so a 320px card beside the 220px rail stays on screen.
+			const place = () => {
+				const t = trigger.getBoundingClientRect()
+				const w = menu.offsetWidth
+				const h = menu.offsetHeight
+				const gap = 8
+				const pad = 12
+
+				let top = t.bottom + gap
+				if (top + h > window.innerHeight - pad && t.top - gap - h > pad) {
+					top = t.top - gap - h
+				}
+				top = Math.max(pad, Math.min(top, window.innerHeight - h - pad))
+
+				let left = alignEnd ? t.right - w : t.left
+				left = Math.max(pad, Math.min(left, window.innerWidth - w - pad))
+
+				menu.style.top = `${Math.round(top)}px`
+				menu.style.left = `${Math.round(left)}px`
+			}
+
+			const isOpen = () => supportsPopover
+				? menu.matches(':popover-open')
+				: menu.classList.contains('is-open')
+
+			const onOpen = () => {
+				trigger.setAttribute('aria-expanded', 'true')
+				place()
+				menu.classList.add('is-placed')
+			}
+
+			const onClose = () => {
+				trigger.setAttribute('aria-expanded', 'false')
+				menu.classList.remove('is-placed')
+			}
+
+			if (supportsPopover) {
+				// popovertarget already toggles the card and light-dismisses it; we
+				// only mirror the state.
+				menu.addEventListener('toggle', (event) => {
+					if ((event as ToggleEvent).newState === 'open') onOpen()
+					else onClose()
+				}, { signal })
+
+				// Escape is nominally the UA close watcher's job, but it doesn't
+				// always land — close explicitly. A no-op when the UA got there
+				// first, since isOpen() is already false by then.
+				document.addEventListener('keydown', (event) => {
+					if (event.key !== 'Escape' || !isOpen()) return
+					menu.hidePopover()
+					trigger.focus()
+				}, { signal })
+			} else {
+				const close = () => {
+					menu.classList.remove('is-open')
+					onClose()
+				}
+				trigger.addEventListener('click', () => {
+					if (isOpen()) {
+						close()
+						return
+					}
+					menu.classList.add('is-open')
+					onOpen()
+				}, { signal })
+				document.addEventListener('click', (event) => {
+					if (!isOpen()) return
+					const target = event.target as Node
+					if (!root.contains(target)) close()
+				}, { signal })
+				document.addEventListener('keydown', (event) => {
+					if (event.key === 'Escape' && isOpen()) {
+						close()
+						trigger.focus()
+					}
+				}, { signal })
+				menu.addEventListener('click', (event) => {
+					if ((event.target as HTMLElement).closest('a')) close()
+				}, { signal })
+			}
+
+			// The storybar instance scrolls with the article, so track it.
+			const reposition = () => { if (isOpen()) place() }
+			window.addEventListener('scroll', reposition, { signal, passive: true, capture: true })
+			window.addEventListener('resize', reposition, { signal, passive: true })
+
+			const copyButton = menu.querySelector<HTMLButtonElement>('[data-uwai-copy]')
+			const status = menu.querySelector<HTMLElement>('[data-uwai-copy-status]')
+			const live = root.querySelector<HTMLElement>('[data-uwai-live]')
+			if (!copyButton || !status) continue
+
+			const idleLabel = status.textContent ?? ''
+			let resetTimer = 0
+
+			const report = (message: string) => {
+				status.textContent = message
+				if (live) live.textContent = message
+				window.clearTimeout(resetTimer)
+				resetTimer = window.setTimeout(() => {
+					status.textContent = idleLabel
+					if (live) live.textContent = ''
+				}, 2000)
+			}
+
+			copyButton.addEventListener('click', async () => {
+				const url = copyButton.dataset.markdownUrl
+				if (!url) return
+
+				const markdown = fetch(url)
+					.then((response) => {
+						if (!response.ok) throw new Error(`HTTP ${response.status}`)
+						return response.text()
+					})
+
+				try {
+					// Safari drops transient activation across `await fetch`, so hand
+					// the clipboard the pending promise rather than the resolved text.
+					if (typeof ClipboardItem !== 'undefined' && navigator.clipboard?.write) {
+						const blob = markdown.then((text) => new Blob([text], { type: 'text/plain' }))
+						await navigator.clipboard.write([new ClipboardItem({ 'text/plain': blob })])
+					} else {
+						await navigator.clipboard.writeText(await markdown)
+					}
+					report('Copied to clipboard')
+				} catch {
+					report('Copy failed — try View as Markdown')
+				}
+			}, { signal })
+		}
+	}
+
+	initUseWithAI()
+	document.addEventListener('astro:page-load', initUseWithAI)
+</script>

@@ -84,6 +84,14 @@ const editUrl = filePath && EDIT_POST.appendFilePath
 	? `${EDIT_POST.url}/${filePath}`
 	: EDIT_POST.url;
 
+// Markdown twin of this post, emitted postbuild by
+// scripts/generate-llms-markdown.js — fetched same-origin by the reader's own
+// browser. The AI hand-off links point at the canonical URL instead: the
+// worker content-negotiates markdown there, and unlike the `.md` twin it is
+// readable by assistants that reject `Content-Type: text/markdown`.
+const markdownHref = `${Astro.url.pathname}index.md`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+
 // Shared-element view transition names — must mirror PostCard's derivation
 // so the listing image/title morph into this hero/title on navigation.
 const transitionKey = Astro.url.pathname.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -244,7 +252,8 @@ const howToSchema = howto && howto.steps?.length > 0
 					headings={hasToc ? headings : []}
 					maxDepth={isTune ? 2 : 3}
 					tags={tags}
-					markdownHref={`${Astro.url.pathname}index.md`}
+					markdownHref={markdownHref}
+					pageUrl={canonicalUrl}
 					editUrl={filePath ? editUrl : undefined}
 					editTitle={`${EDIT_POST.text} on GitHub`}
 					rssHref={isTune ? '/tunes/rss.xml' : '/rss.xml'}
@@ -333,7 +342,8 @@ const howToSchema = howto && howto.steps?.length > 0
 					    here instead — directly under the byline. */}
 					<StoryBar
 						tags={tags}
-						markdownHref={`${Astro.url.pathname}index.md`}
+						markdownHref={markdownHref}
+						pageUrl={canonicalUrl}
 						editUrl={filePath ? editUrl : undefined}
 						editTitle={`${EDIT_POST.text} on GitHub`}
 						rssHref={isTune ? '/tunes/rss.xml' : '/rss.xml'}

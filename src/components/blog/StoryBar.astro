@@ -1,5 +1,6 @@
 ---
 import { getTagUrl, getTagName, getTagColorClasses } from '../../utils/tags';
+import UseWithAI from './UseWithAI.astro';
 
 /**
  * Hairline storybar: tags left, actions right, sitting directly under the
@@ -10,12 +11,13 @@ import { getTagUrl, getTagName, getTagColorClasses } from '../../utils/tags';
 interface Props {
 	tags?: string[];
 	markdownHref: string;
+	pageUrl: string;
 	editUrl?: string;
 	editTitle?: string;
 	rssHref: string;
 }
 
-const { tags = [], markdownHref, editUrl, editTitle, rssHref } = Astro.props;
+const { tags = [], markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.props;
 ---
 
 <div class="storybar">
@@ -27,15 +29,18 @@ const { tags = [], markdownHref, editUrl, editTitle, rssHref } = Astro.props;
 		</p>
 	)}
 	<p class="storybar-actions rubric">
-		<a href={markdownHref}>Read as Markdown</a>
-		{editUrl && (
-			<>
-				<span aria-hidden="true">&middot;</span>
-				<a href={editUrl} rel="noopener noreferrer edit" target="_blank" title={editTitle}>Suggest edits</a>
-			</>
-		)}
-		<span aria-hidden="true">&middot;</span>
-		<a href={rssHref}>RSS</a>
+		<UseWithAI id="use-with-ai-bar" markdownHref={markdownHref} pageUrl={pageUrl} />
+		{/* The pill's own border separates it, so the dot-run starts after it —
+		    otherwise a narrow column wraps with a dangling separator. */}
+		<span class="storybar-links">
+			{editUrl && (
+				<>
+					<a href={editUrl} rel="noopener noreferrer edit" target="_blank" title={editTitle}>Suggest edits</a>
+					<span aria-hidden="true">&middot;</span>
+				</>
+			)}
+			<a href={rssHref}>RSS</a>
+		</span>
 	</p>
 </div>
 
@@ -68,6 +73,13 @@ const { tags = [], markdownHref, editUrl, editTitle, rssHref } = Astro.props;
 
 	.storybar-actions {
 		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem 0.75rem;
+	}
+
+	.storybar-links {
+		display: inline-flex;
 		flex-wrap: wrap;
 		align-items: center;
 		gap: 0.4rem;

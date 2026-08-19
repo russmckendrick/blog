@@ -1,5 +1,6 @@
 ---
 import { getTagUrl, getTagName, getTagColorClasses } from '../../utils/tags';
+import UseWithAI from './UseWithAI.astro';
 
 export interface Heading {
 	depth: number;
@@ -12,12 +13,13 @@ interface Props {
 	maxDepth?: number;
 	tags?: string[];
 	markdownHref: string;
+	pageUrl: string;
 	editUrl?: string;
 	editTitle?: string;
 	rssHref: string;
 }
 
-const { headings = [], maxDepth = 3, tags = [], markdownHref, editUrl, editTitle, rssHref } = Astro.props;
+const { headings = [], maxDepth = 3, tags = [], markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.props;
 
 const tocHeadings = headings.filter(h => h.depth <= maxDepth);
 ---
@@ -56,7 +58,7 @@ const tocHeadings = headings.filter(h => h.depth <= maxDepth);
 		<nav class:list={[(tocHeadings.length > 0 || tags.length > 0) && 'article-rail-section']} aria-label="Actions">
 			<p class="article-rail-head">Actions</p>
 			<div class="article-rail-actions">
-				<a href={markdownHref} class="article-rail-link">Read as Markdown</a>
+				<UseWithAI id="use-with-ai-rail" markdownHref={markdownHref} pageUrl={pageUrl} />
 				{editUrl && (
 					<a href={editUrl} rel="noopener noreferrer edit" target="_blank" class="article-rail-link" title={editTitle}>Suggest edits</a>
 				)}
@@ -146,6 +148,12 @@ const tocHeadings = headings.filter(h => h.depth <= maxDepth);
 
 	.article-rail-actions {
 		margin-top: 0.625rem;
+	}
+
+	/* The trigger is a pill in a stack of plain links, so it needs its own
+	   gap where the links rely on their padding. */
+	.article-rail-actions > :global(.uwai) {
+		margin-bottom: 0.375rem;
 	}
 </style>
 
