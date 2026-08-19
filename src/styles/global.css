@@ -301,6 +301,51 @@ a.tag-editorial:focus-visible {
   justify-content: center;
 }
 
+/* Bordered action pill for article tools - the Use with AI trigger, Suggest
+   edits and RSS. Shared so the trigger and the plain links beside it stay one
+   control family; defined here rather than in a component because all three
+   consumers (UseWithAI, ArticleRail, StoryBar) are scoped separately. */
+.action-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-on-surface);
+  text-decoration: none;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 8px;
+  padding: 0.375rem 0.625rem;
+  cursor: pointer;
+  transition: background-color var(--dur-quick) ease, border-color var(--dur-quick) ease;
+}
+
+/* Leading glyph. Muted by default so the sparkle on Use with AI - which keeps
+   the secondary accent - stays the one that draws the eye. */
+.action-pill-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+  color: var(--color-on-surface-variant);
+}
+
+a.action-pill:hover,
+a.action-pill:focus-visible,
+button.action-pill:hover {
+  color: var(--color-on-surface);
+  background-color: var(--paper-well);
+  border-color: var(--color-on-surface-variant);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action-pill {
+    transition: none;
+  }
+}
+
 /* Link styling: links inherit ink; the accent appears on hover only.
    Prose links add underlines (see .prose a); chrome styles its own. */
 a {

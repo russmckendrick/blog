@@ -46,7 +46,7 @@ const providers = [
 	<button
 		type="button"
 		id={id}
-		class="uwai-trigger"
+		class="action-pill uwai-trigger"
 		popovertarget={menuId}
 		aria-expanded="false"
 		aria-controls={menuId}
@@ -110,28 +110,9 @@ const providers = [
 		display: inline-flex;
 	}
 
-	/* Trigger: bordered pill, sparkle left, chevron right. */
-	.uwai-trigger {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4rem;
-		font-family: var(--font-sans);
-		font-size: 0.8125rem;
-		font-weight: 600;
-		line-height: 1.2;
-		color: var(--color-on-surface);
-		background-color: var(--color-surface);
-		border: 1px solid var(--color-outline-variant);
-		border-radius: 8px;
-		padding: 0.375rem 0.625rem;
-		cursor: pointer;
-		transition: background-color 0.15s ease, border-color 0.15s ease;
-	}
-
-	.uwai-trigger:hover {
-		background-color: var(--paper-well);
-		border-color: var(--color-on-surface-variant);
-	}
+	/* Trigger box comes from .action-pill in global.css, shared with the
+	   Suggest edits and RSS pills beside it. Only the sparkle and chevron
+	   are specific to this control. */
 
 	.uwai-spark {
 		width: 1rem;
@@ -270,8 +251,7 @@ const providers = [
 	@media (prefers-reduced-motion: reduce) {
 		.uwai-menu,
 		.uwai-chev,
-		.uwai-item,
-		.uwai-trigger {
+		.uwai-item {
 			transition: none;
 		}
 	}

@@ -1,6 +1,7 @@
 ---
 import { getTagUrl, getTagName, getTagColorClasses } from '../../utils/tags';
 import UseWithAI from './UseWithAI.astro';
+import { Icon } from 'astro-icon/components';
 
 /**
  * Hairline storybar: tags left, actions right, sitting directly under the
@@ -28,20 +29,19 @@ const { tags = [], markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.
 			))}
 		</p>
 	)}
-	<p class="storybar-actions rubric">
+	<div class="storybar-actions">
 		<UseWithAI id="use-with-ai-bar" markdownHref={markdownHref} pageUrl={pageUrl} />
-		{/* The pill's own border separates it, so the dot-run starts after it —
-		    otherwise a narrow column wraps with a dangling separator. */}
-		<span class="storybar-links">
-			{editUrl && (
-				<>
-					<a href={editUrl} rel="noopener noreferrer edit" target="_blank" title={editTitle}>Suggest edits</a>
-					<span aria-hidden="true">&middot;</span>
-				</>
-			)}
-			<a href={rssHref}>RSS</a>
-		</span>
-	</p>
+		{editUrl && (
+			<a href={editUrl} rel="noopener noreferrer edit" target="_blank" class="action-pill" title={editTitle}>
+				<Icon name="simple-icons:github" class="action-pill-icon" aria-hidden="true" />
+				<span>Suggest edits</span>
+			</a>
+		)}
+		<a href={rssHref} class="action-pill">
+			<Icon name="tabler:rss" class="action-pill-icon" aria-hidden="true" />
+			<span>RSS</span>
+		</a>
+	</div>
 </div>
 
 <style>
@@ -78,18 +78,40 @@ const { tags = [], markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.
 		gap: 0.5rem 0.75rem;
 	}
 
-	.storybar-links {
-		display: inline-flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 0.4rem;
-	}
+	/* Narrow screens give the actions a block of their own: the AI trigger
+	   across the top, the two links splitting the row beneath. Above 640px
+	   there is room for them to sit inline beside the tags. */
+	@media (max-width: 639px) {
+		.storybar {
+			flex-direction: column;
+			align-items: stretch;
+		}
 
-	.storybar-actions a {
-		text-decoration: none;
-	}
+		.storybar-actions {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 0.5rem;
+			width: 100%;
+		}
 
-	.storybar-actions a:hover {
-		color: var(--color-on-surface);
+		.storybar-actions :global(.uwai),
+		.storybar-actions :global(.action-pill) {
+			width: 100%;
+		}
+
+		.storybar-actions :global(.uwai) {
+			grid-column: 1 / -1;
+		}
+
+		/* Chevron to the far edge once the trigger spans the row. */
+		.storybar-actions :global(.uwai-chev) {
+			margin-left: auto;
+		}
+
+		/* A post with no editUrl leaves RSS on its own - let it span rather
+		   than sit at half width with a gap beside it. */
+		.storybar-actions .action-pill:last-child:nth-child(2) {
+			grid-column: 1 / -1;
+		}
 	}
 </style>

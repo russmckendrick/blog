@@ -1,6 +1,7 @@
 ---
 import { getTagUrl, getTagName, getTagColorClasses } from '../../utils/tags';
 import UseWithAI from './UseWithAI.astro';
+import { Icon } from 'astro-icon/components';
 
 export interface Heading {
 	depth: number;
@@ -60,9 +61,15 @@ const tocHeadings = headings.filter(h => h.depth <= maxDepth);
 			<div class="article-rail-actions">
 				<UseWithAI id="use-with-ai-rail" markdownHref={markdownHref} pageUrl={pageUrl} />
 				{editUrl && (
-					<a href={editUrl} rel="noopener noreferrer edit" target="_blank" class="article-rail-link" title={editTitle}>Suggest edits</a>
+					<a href={editUrl} rel="noopener noreferrer edit" target="_blank" class="action-pill" title={editTitle}>
+						<Icon name="simple-icons:github" class="action-pill-icon" aria-hidden="true" />
+						<span>Suggest edits</span>
+					</a>
 				)}
-				<a href={rssHref} class="article-rail-link">RSS</a>
+				<a href={rssHref} class="action-pill">
+					<Icon name="tabler:rss" class="action-pill-icon" aria-hidden="true" />
+					<span>RSS</span>
+				</a>
 			</div>
 		</nav>
 	</div>
@@ -146,8 +153,26 @@ const tocHeadings = headings.filter(h => h.depth <= maxDepth);
 		margin-top: 0.625rem;
 	}
 
+	/* Pills, not a link list. They fill the rail so the three actions read as
+	   one stack of equal-width controls rather than a ragged edge. */
 	.article-rail-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
 		margin-top: 0.625rem;
+	}
+
+	/* Use with AI is a child component, so its root and trigger need :global
+	   to be stretched from here. */
+	.article-rail-actions :global(.uwai),
+	.article-rail-actions :global(.action-pill) {
+		width: 100%;
+	}
+
+	/* Once the trigger fills the rail the chevron belongs at the far edge,
+	   not tucked against the label. */
+	.article-rail-actions :global(.uwai-chev) {
+		margin-left: auto;
 	}
 
 	/* The trigger is a pill in a stack of plain links, so it needs its own

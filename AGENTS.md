@@ -23,7 +23,7 @@
 ## When a Full Rebuild Is Needed
 
 - `pnpm run build` only for what the static output bakes in - routing, the sitemap, Pagefind indexing, `astro.config.mjs`. Pages, components, styles, and content all re-render on request under `pnpm run dev`.
-- `scripts/` edits need no rebuild - they are standalone tools whose output is committed. The exceptions are the five wired into the build: `extract-hero-colors.js`, `cache-link-preview-images.js`, `fetch-reading-list.js`, and `build-tunes-index.js` (via `prebuild`), plus `generate-llms-markdown.js` (after `astro build`); edits to those land on the next build.
+- `scripts/` edits need no rebuild - they are standalone tools whose output is committed. The exceptions are the five wired into the build: `extract-hero-colors.js`, `cache-link-preview-images.js`, `fetch-reading-list.js`, and `build-tunes-index.js` (via `prebuild`), plus `generate-llms-markdown.js` (after `astro build`); edits to those land on the next build. One consequence worth knowing: the per-post `index.md` twins and `llms.txt` exist only in built output, so they 404 under `pnpm run dev` - check them with `pnpm run build && pnpm run preview`.
 - OpenGraph cards (`src/components/OpenGraph/`, the `*-og.png.ts` endpoints under `src/pages/`) need no rebuild to iterate - `pnpm run dev` regenerates each per request, so just reload the `.png` URL. They use `getStaticPaths()` on a fully static site, so shipping new cards still needs a build.
 
 ## Using graphify
