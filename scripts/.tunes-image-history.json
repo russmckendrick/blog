@@ -1344,6 +1344,466 @@
         "Laura-Veirs.jpg",
         "Pantera.jpg"
       ]
+    },
+    {
+      "version": 2,
+      "date": "2026-08-24",
+      "type": "cover",
+      "lane": null,
+      "lighting": null,
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Open-air gallery around a sunken chair",
+      "creativeDirection": "A tactile mixed-media diorama rendered as painted collage and weathered assemblage, balancing folk illustration with surreal photographic perspective.",
+      "scene": "A wide 16:9 view across a shallow circular pit in an open park clearing, seen slightly from above so the pit reads like an outdoor gallery stage sunk into the ground.",
+      "elements": [
+        {
+          "source": 1,
+          "element": "A bold stack of overlapping blue and yellow circles becomes a vertical sculptural sign at the left edge, with black linear dividers echoed in nearby panel structures."
+        },
+        {
+          "source": 2,
+          "element": "A back-facing visitor stands at the rim of the pit studying a row of propped display panels arranged like an impromptu exhibition."
+        },
+        {
+          "source": 3,
+          "element": "The ground, pit walls, and display surfaces are built from distressed cream plaster textures with rust drips and embedded wire-like strands."
+        },
+        {
+          "source": 4,
+          "element": "Five long-haired men appear only once, leaning over the circular pit from above, their hands gripping the rim to create a dramatic ring of faces against the sky."
+        },
+        {
+          "source": 5,
+          "element": "At the bottom center of the pit sits a mustard-yellow chair on a green rug scattered with blue rectangular tiles, acting as the visual anchor."
+        },
+        {
+          "source": 6,
+          "element": "A young woman in a knit hat stands among the trees holding a blank wooden signboard like a quiet park attendant or guide."
+        },
+        {
+          "source": 7,
+          "element": "An ornate gold frame leans among the exhibition panels on the right, containing layered fragments of patterned costume and theatrical presence without introducing additional separate figures outside it."
+        },
+        {
+          "source": 8,
+          "element": "A monochrome close-up portrait on one display panel shows a smiling man presenting a melting ice cream cone toward the viewer."
+        }
+      ],
+      "palette": [
+        "cream plaster",
+        "rust brown",
+        "mustard yellow",
+        "leaf green",
+        "sky blue",
+        "deep black"
+      ],
+      "mood": "curious, handmade, slightly uncanny, sunlit yet archival",
+      "coverSummaries": [
+        {
+          "source": 1,
+          "filename": "It-Means-Everything.jpg",
+          "album": "It Means Everything",
+          "artist": "",
+          "description": "A geometric graphic design on a black background. Along the left side is a vertical stack of four large overlapping circles alternating light blue and bright yellow, crossed by two thin black diagonal lines. On the right is a large yellow rectangle beneath a smaller cyan-blue rectangle, divided by thick black borders, with an additional thin vertical black bar near the right edge. The composition is flat, clean, and poster-like.",
+          "signatureMotif": "stack of overlapping blue and yellow circles",
+          "medium": "graphic design",
+          "palette": [
+            "black",
+            "yellow",
+            "light blue",
+            "white"
+          ]
+        },
+        {
+          "source": 2,
+          "filename": "The-Singles-Collection-1979-2012.jpg",
+          "album": "The Singles Collection 1979 2012",
+          "artist": "",
+          "description": "A collage-style image with a vivid red sky-like background and yellow cloud-like patches. In the center, a person seen from behind stands facing a row of propped-up rectangular images or posters. Two cutout-style standing figures flank the central display, and additional smaller cover-like panels appear at both sides. The scene has a pasted, screen-printed look with strong contrast and a white border around the image.",
+          "signatureMotif": "back-facing person viewing a row of displayed images",
+          "medium": "collage / graphic illustration",
+          "palette": [
+            "red",
+            "yellow",
+            "black",
+            "white",
+            "green"
+          ]
+        },
+        {
+          "source": 3,
+          "filename": "The-Downward-Spiral.jpg",
+          "album": "The Downward Spiral",
+          "artist": "",
+          "description": "An abstract, heavily textured surface resembling aged plaster or canvas in pale cream tones. Rust-colored stains, drips, and scorched-looking patches appear across the image, with a dark rough horizontal cluster near the left-center threaded through with thin wire-like lines. The overall composition is sparse, distressed, and weathered.",
+          "signatureMotif": "rusted textured surface with embedded wire-like strands",
+          "medium": "mixed-media abstract artwork",
+          "palette": [
+            "cream",
+            "beige",
+            "rust brown",
+            "black",
+            "tan"
+          ]
+        },
+        {
+          "source": 4,
+          "filename": "Greatest-Hits.jpg",
+          "album": "Greatest Hits",
+          "artist": "",
+          "description": "A fisheye-lens photograph looking outward from inside a circular opening. Five men with long or shaggy hair lean over and look down into the opening against a blue sky. Large hands grip the rim at the left and right edges, and a blurred pale shape fills the lower foreground, enhancing the tunnel-like perspective. The image is dark around the circular border and brighter in the center.",
+          "signatureMotif": "band members viewed through a circular opening from below",
+          "medium": "photograph",
+          "palette": [
+            "blue",
+            "black",
+            "skin tone",
+            "yellow",
+            "red"
+          ]
+        },
+        {
+          "source": 5,
+          "filename": "Sometimes-I-Sit-and-Think-and-Sometimes-I-Just-Sit.jpg",
+          "album": "Sometimes I Sit and Think and Sometimes I Just Sit",
+          "artist": "",
+          "description": "A simple hand-drawn illustration on a white background with a thin irregular border line. In the center is a mustard-yellow chair placed on a green rug covered with scattered blue rectangular tiles or papers outlined in black. The drawing uses loose black lines and flat fills, with lots of empty white space around the central object.",
+          "signatureMotif": "yellow chair on a green rug with blue tiles",
+          "medium": "hand-drawn illustration",
+          "palette": [
+            "white",
+            "yellow",
+            "green",
+            "blue",
+            "black"
+          ]
+        },
+        {
+          "source": 6,
+          "filename": "Foxbase-Alpha.jpg",
+          "album": "Foxbase Alpha",
+          "artist": "",
+          "description": "A color photograph of a young woman standing outdoors in a park or tree-lined area. She wears a light knitted hat, a fitted striped short-sleeve top, and a dark green skirt. She holds a wooden signboard upright in one hand. The background is filled with sunlit trees and soft-focus foliage, while a white vertical margin occupies the left side of the cover.",
+          "signatureMotif": "woman holding a sign in a leafy park",
+          "medium": "photograph",
+          "palette": [
+            "green",
+            "white",
+            "brown",
+            "cream",
+            "black"
+          ]
+        },
+        {
+          "source": 7,
+          "filename": "Sabotage.jpg",
+          "album": "Sabotage",
+          "artist": "",
+          "description": "A studio photograph featuring a large ornate gold frame containing multiple band members posed both inside and around it. Some figures stand, one sits cross-legged at the bottom, and several appear duplicated or reflected within the framed area. Their clothing includes patterned robes, jackets, flared trousers, and red tights, set against a pale backdrop with a dark brown outer border. The composition is theatrical and crowded.",
+          "signatureMotif": "ornate picture frame containing and surrounding the band",
+          "medium": "photograph",
+          "palette": [
+            "brown",
+            "gold",
+            "red",
+            "blue",
+            "white"
+          ]
+        },
+        {
+          "source": 8,
+          "filename": "Ice-Cream-Genius.jpg",
+          "album": "Ice Cream Genius",
+          "artist": "",
+          "description": "A black-and-white portrait on a white background of a man with dark hair tied back, smiling slightly toward the camera. He wears dangling earrings and dark clothing, and he holds a melting ice cream cone or ice-cream-shaped object close to the viewer with both hands. The composition is close-cropped, with the face and the ice cream as the main focus.",
+          "signatureMotif": "smiling man holding a melting ice cream cone",
+          "medium": "black-and-white photograph",
+          "palette": [
+            "black",
+            "white",
+            "gray",
+            "light blue"
+          ]
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2",
+      "model": "openai/gpt-image-2/edit",
+      "prompt": "A wide 16:9 view across a shallow circular pit in an open park clearing, seen slightly from above so the pit reads like an outdoor gallery stage sunk into the ground; at the bottom center of the pit a mustard-yellow chair sits on a green rug scattered with small blue rectangular tiles, becoming the main focal point; around the rim a back-facing visitor studies a row of propped exhibition panels, while five long-haired men lean over the circular opening from above with hands gripping the edge, their faces forming a ring against bright sky; at the left edge place a tall sculptural sign made from a vertical stack of overlapping light-blue and bright-yellow circles with thin black diagonal and border-like divisions, and on the right let an ornate gold frame lean among the panels, containing theatrical patterned-costume fragments and layered presences within the frame only; include a young woman in a knit hat standing among leafy trees holding a blank wooden signboard, and one black-and-white display panel showing a smiling man offering a melting ice cream cone close to the viewer; build the pit walls, ground, and exhibition surfaces from pale weathered plaster with rust stains, scorched patches, dark rough clusters, and embedded wire-like strands; mixed-media diorama, painted collage, cut-paper shapes, distressed assemblage, hand-drawn outlines, matte gouache and ink over textured plaster surfaces, with selective photographic realism only in faces and hands; clear hierarchy centered on the chair in the pit, circular perspective pulling the eye inward, strong left-right balance between the circle sculpture and gold frame, generous negative space in the clearing, sunlit overhead lighting with soft tree shadows and a bright sky halo in the opening; palette of cream, beige, rust brown, mustard yellow, leaf green, sky blue, black, warm gold, and small red accents, mood curious, handmade, archival, and gently uncanny. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "inputs": [
+        "It-Means-Everything.jpg",
+        "The-Singles-Collection-1979-2012.jpg",
+        "The-Downward-Spiral.jpg",
+        "Greatest-Hits.jpg",
+        "Sometimes-I-Sit-and-Think-and-Sometimes-I-Just-Sit.jpg",
+        "Foxbase-Alpha.jpg",
+        "Sabotage.jpg",
+        "Ice-Cream-Genius.jpg"
+      ]
+    },
+    {
+      "version": 2,
+      "date": "2026-08-24",
+      "type": "artist",
+      "lane": null,
+      "lighting": null,
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Terrace regroup between conversations",
+      "creativeDirection": "Make it a loose flash-lit editorial snapshot on the tropical terrace, using layered candid body language and casual proximity rather than a formal lineup.",
+      "scene": "A shared pause on the terrace balcony just after sunset brightness, gathered near the railing with tropical foliage filling the background and a little open floor space in front; some standing, one leaning on the rail, one seated low, one half-turned mid-conversation.",
+      "locationSource": 8,
+      "locationSetting": "Outdoor balcony or terrace with metal railing, dense tropical foliage and palm trees beyond, and bright overcast or late-day sky.",
+      "locationEvidence": "A real terrace or balcony is clearly visible through the metal railing running across the frame, with dense tropical trees and palms immediately beyond and a bright pale sky above.",
+      "locationReference": 1,
+      "locationInput": "Happy-Mondays.jpg",
+      "cast": [
+        {
+          "source": 8,
+          "person": "the woman with long voluminous curly hair in a burgundy top",
+          "placement": "seated low in the left foreground near the railing, angled toward the group"
+        },
+        {
+          "source": 1,
+          "person": "the pale man with shoulder-length black hair and heavy dark eye makeup",
+          "placement": "center-left, standing closest to camera, half-turned with one hand lifted as if making a point"
+        },
+        {
+          "source": 4,
+          "person": "the blonde woman with straight shoulder-length hair in a dark textured sweater",
+          "placement": "right foreground, leaning lightly on the railing and looking toward camera"
+        },
+        {
+          "source": 5,
+          "person": "the dark-haired woman with wavy shoulder-length hair and bangs in an oversized dark blazer",
+          "placement": "mid-left, head tipped back in a spontaneous laugh"
+        },
+        {
+          "source": 6,
+          "person": "the woman with bright magenta shoulder-length hair and heavy eye makeup in a fitted black dress",
+          "placement": "center-right, standing confidently with weight on one leg, engaged with the others"
+        },
+        {
+          "source": 10,
+          "person": "the man with spiky salt-and-pepper hair and short gray stubble in a pale blue V-neck T-shirt",
+          "placement": "rear center, relaxed near the rail, looking directly at camera"
+        }
+      ],
+      "selection": [
+        8,
+        1,
+        4,
+        5,
+        6,
+        10
+      ],
+      "palette": [
+        "pale sky",
+        "tropical green",
+        "burgundy",
+        "black",
+        "magenta",
+        "washed blue"
+      ],
+      "mood": "relaxed, slightly electric, intimate and sociable",
+      "artistSummaries": [
+        {
+          "source": 1,
+          "filename": "Killing-Joke.jpg",
+          "artist": "Killing Joke",
+          "description": "Studio group portrait of four light-skinned adult men against a dark plain background. The central man is closest to camera, with shoulder-length black hair, heavy dark eye makeup, a pale face, and an outstretched hand reaching toward the lens. To his left stands a man in a dark cap, orange floral short-sleeve shirt, white tank top, layered bead necklaces, and a cross pendant. Behind center is a man in a brown cap and brown jacket. On the right is a closely shaven or balding man wearing a dark pinstriped jacket and a long red scarf. All face forward with serious expressions.",
+          "primarySubject": "The light-skinned man in the center foreground with shoulder-length black hair, stark dark eye makeup, pale face, and one hand extended toward the camera.",
+          "visiblePeople": [
+            "Four adult men",
+            "Center foreground: light-skinned man with shoulder-length black hair and heavy dark eye makeup",
+            "Left: light-skinned man in a cap with clean-shaven face",
+            "Rear center: light-skinned man in a brown cap",
+            "Right: light-skinned balding man with clean-shaven face"
+          ],
+          "wardrobe": "Dark coat on center figure; orange floral shirt over white tank with layered necklaces on left figure; brown jacket and cap on rear figure; dark pinstriped jacket with red scarf on right figure.",
+          "photoStyle": "Color studio portrait, dramatic front lighting, shallow depth effect from the reaching hand, tightly framed band portrait.",
+          "setting": "Plain dark studio backdrop with no visible environmental features.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 2,
+          "filename": "Tom-Petty-and-The-Heartbreakers.jpg",
+          "artist": "Tom Petty and The Heartbreakers",
+          "description": "Live performance photo of one light-skinned adult man playing an electric guitar onstage. He has shaggy blond hair falling over his eyes and face, and his mouth is open as if singing or reacting mid-performance. He wears a dark blazer over a light button-front shirt. A guitar strap crosses his torso, and bright rows of stage lights glow behind him in strong red and orange tones.",
+          "primarySubject": "The lone light-skinned blond man mid-performance, leaning into an electric guitar with hair covering much of his face.",
+          "visiblePeople": [
+            "One adult man with shaggy blond hair partially covering his face"
+          ],
+          "wardrobe": "Dark blazer over a light button-front shirt, guitar strap across chest.",
+          "photoStyle": "Color concert action shot with intense red stage lighting, motion energy, and slightly grainy vintage look.",
+          "setting": "Indoor concert stage with rows of bright stage bulbs and dark background; limited view of instruments and stage equipment.",
+          "settingStrength": "moderate"
+        },
+        {
+          "source": 3,
+          "filename": "Nine-Inch-Nails.jpg",
+          "artist": "Nine Inch Nails",
+          "description": "Black-and-white portrait of two light-skinned adult men standing indoors against a plain wall. Both have short dark hair and dark jackets. White scratch-like marks obscure both of their eye areas across the image. The man on the left faces slightly to the side with a long face and faint mustache or stubble; the man on the right turns toward camera with short stubble and a leather jacket. The composition is cropped from chest up.",
+          "primarySubject": "The light-skinned man on the right in a dark leather jacket, turned partly toward camera, with short dark hair and light stubble.",
+          "visiblePeople": [
+            "Two adult men",
+            "Left: light-skinned man with short dark hair and faint facial hair",
+            "Right: light-skinned man with short dark hair and light stubble"
+          ],
+          "wardrobe": "Both wear dark jackets; right figure wears a leather jacket over a dark shirt.",
+          "photoStyle": "Black-and-white portrait with distressed scratched overlay across the eyes, flat indoor lighting, medium close crop.",
+          "setting": "Plain interior wall with minimal visible detail and a dark vertical edge or corner line.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 4,
+          "filename": "Saint-Etienne.jpg",
+          "artist": "Saint Etienne",
+          "description": "Outdoor group portrait of three light-skinned adults on a pebbled beach or waterfront promenade. In the foreground right is a blonde woman with straight shoulder-length hair, wearing a dark textured sweater and lifting one hand near her hair while looking at the camera. Behind her stand two men in dark coats or jackets; both have short dark hair and neutral expressions. Sunlit buildings line the background beneath a clear blue sky.",
+          "primarySubject": "The light-skinned blonde woman in the front right, closest to camera, with straight shoulder-length hair and a dark textured sweater, touching her hair.",
+          "visiblePeople": [
+            "Three adults",
+            "Front right: light-skinned blonde woman with straight shoulder-length hair",
+            "Center rear: light-skinned man with medium brown hair",
+            "Left rear: light-skinned dark-haired man"
+          ],
+          "wardrobe": "Woman in a dark textured sweater; both men in dark outerwear.",
+          "photoStyle": "Color outdoor portrait with warm low-angle sunlight and shallow group arrangement.",
+          "setting": "Pebbled ground by a seafront or beachfront urban edge, with low-rise buildings in the background under clear sky.",
+          "settingStrength": "moderate"
+        },
+        {
+          "source": 5,
+          "filename": "Courtney-Barnett.jpg",
+          "artist": "Courtney Barnett",
+          "description": "Low-angle outdoor portrait of one light-skinned adult woman against a bright blue sky. She has dark brown wavy shoulder-length hair with bangs and is smiling broadly with her head tilted back and eyes closed or nearly closed. She wears an oversized dark blazer over a light top. The frame is loose and airy, dominated by sky.",
+          "primarySubject": "The light-skinned woman with dark wavy shoulder-length hair and bangs, smiling upward in an oversized dark blazer.",
+          "visiblePeople": [
+            "One adult woman with dark wavy shoulder-length hair and bangs"
+          ],
+          "wardrobe": "Oversized dark blazer over a light top; thin necklace visible.",
+          "photoStyle": "Color portrait, low-angle composition, natural daylight, minimal background, candid joyful expression.",
+          "setting": "Open outdoor space with mostly clear blue sky and faint wisps of cloud; no grounded location details visible.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 6,
+          "filename": "Save-Ferris.jpg",
+          "artist": "Save Ferris",
+          "description": "Full-body outdoor band portrait of five adults in front of a modern glass-and-metal building facade. At center is a light-skinned woman with bright magenta shoulder-length hair, heavy eye makeup, and a fitted black dress, standing with hands on hips and one leg bent. Around her are four light-skinned men: left man in a brimmed hat and plaid coat, second man with closely cropped hair and beard in dark casual clothes, fourth man with ginger beard, round glasses, and dark hat, and right man with a shaved head wearing a dark cardigan and jeans. The group smiles or poses casually on a concrete walkway.",
+          "primarySubject": "The light-skinned woman at center with bright magenta shoulder-length hair, black dress, hands on hips, and one leg bent forward.",
+          "visiblePeople": [
+            "Five adults",
+            "Center: light-skinned woman with bright magenta hair",
+            "Far left: light-skinned man in a dark hat",
+            "Left-center: light-skinned man with short hair and beard",
+            "Right-center: light-skinned man with ginger beard, round glasses, and dark hat",
+            "Far right: light-skinned shaved-head man"
+          ],
+          "wardrobe": "Center woman in fitted black dress and heels; left man in plaid coat, white shirt, jeans, and hat; left-center man in dark polo and dark pants; right-center man in glasses, cardigan, dark shirt, jeans, boots, and hat; right man in dark cardigan, light shirt, and jeans.",
+          "photoStyle": "Color posed band portrait in bright daylight, full-body framing, crisp contemporary look.",
+          "setting": "Exterior of a modern building with large grid windows, pale metal framing, reflective glass, and a concrete pavement foreground.",
+          "settingStrength": "strong"
+        },
+        {
+          "source": 7,
+          "filename": "The-Bluetones.jpg",
+          "artist": "The Bluetones",
+          "description": "Outdoor group portrait of four light-skinned adult men in a narrow brick alley or passage. The central man stands closest to camera with short brown hair, thick eyebrows, and a serious expression, wearing a dark leather jacket over a blue striped button-up shirt. Behind him to the left is a man with dense curly dark hair; to the right are two men with short dark hair in dark jackets or shirts. The brick walls and tight passage create depth around the group.",
+          "primarySubject": "The light-skinned man in the center foreground with short brown hair, thick eyebrows, blue striped shirt, and dark leather jacket.",
+          "visiblePeople": [
+            "Four adult men",
+            "Center foreground: light-skinned man with short brown hair and thick eyebrows",
+            "Left rear: light-skinned man with dense curly dark hair",
+            "Right-center rear: light-skinned man with short dark hair",
+            "Far right rear: light-skinned man with short dark hair and trimmed facial hair"
+          ],
+          "wardrobe": "Center in dark leather jacket and blue striped shirt; others in dark jackets or dark shirts.",
+          "photoStyle": "Color environmental portrait with cool tones, moderate depth, and front-facing band arrangement.",
+          "setting": "Narrow brick-lined alley or courtyard passage with masonry walls close on both sides and a darker recess behind the group.",
+          "settingStrength": "strong"
+        },
+        {
+          "source": 8,
+          "filename": "Happy-Mondays.jpg",
+          "artist": "Happy Mondays",
+          "description": "Casual outdoor group photo of seven adults gathered on a terrace or balcony with a railing, tropical trees, and pale sky behind them. Six appear to be men and one appears to be a woman seated lower left. The most prominent standing figure near center-left wears a bright lime shirt, sunglasses, and a light cap, with one hand raised to the cap. Others wear relaxed colorful 1990s-style clothing including a striped polo, gray T-shirt, red-and-black jacket, black T-shirt with sunglasses, purple pullover, and a burgundy top on the seated woman. Poses are loose, with some standing and some crouching.",
+          "primarySubject": "The light-skinned man near center-left wearing a bright lime shirt, sunglasses, and a light cap, standing with one hand touching the cap.",
+          "visiblePeople": [
+            "Seven adults",
+            "Center-left: light-skinned man in sunglasses and cap",
+            "Far left: light-skinned man with short hair and beard",
+            "Center: light-skinned tall man with medium dark hair",
+            "Right standing: light-skinned man with short dark hair and facial hair",
+            "Lower left: medium- to dark-skinned woman with long voluminous curly hair",
+            "Lower center: light-skinned man in round sunglasses",
+            "Lower right: light-skinned long-haired man crouching"
+          ],
+          "wardrobe": "Striped polo shirt on left; lime oversized shirt and cap on center-left; gray T-shirt on center figure; red-and-black jacket and ripped jeans on right standing figure; burgundy top on seated woman; black T-shirt and round sunglasses on crouching center figure; purple pullover and light pants on crouching right figure.",
+          "photoStyle": "Color candid-style group snapshot with flash-lit or bright direct light and casual vacation feel.",
+          "setting": "Outdoor balcony or terrace with metal railing, dense tropical foliage and palm trees beyond, and bright overcast or late-day sky.",
+          "settingStrength": "strong"
+        },
+        {
+          "source": 9,
+          "filename": "Black-Sabbath.jpg",
+          "artist": "Black Sabbath",
+          "description": "Black-and-white portrait of four light-skinned adult men standing in a dark, cave-like or arched stone setting. The rightmost man is closest to camera, with shoulder-length light hair and a pale face, wearing a dark textured top. To the left stand three men with long dark hair and facial hair; one wears a leather vest with a cross pendant, another a light-colored jacket over a dark shirt, and another a dark leather coat. The lighting is high contrast, leaving much of the background in shadow.",
+          "primarySubject": "The light-skinned man on the far right, closest to camera, with shoulder-length light hair, pale face, and dark textured top.",
+          "visiblePeople": [
+            "Four adult men",
+            "Far right: light-skinned man with shoulder-length light hair",
+            "Far left: light-skinned man with long dark hair and mustache",
+            "Left-center: light-skinned man with long dark hair and full mustache",
+            "Right-center: light-skinned man with long curly dark hair and beard"
+          ],
+          "wardrobe": "Dark textured top on rightmost figure; leather vest and cross pendant on far left; light jacket over dark shirt on left-center; dark leather coat on right-center.",
+          "photoStyle": "Black-and-white high-contrast band portrait with moody shadows and vintage treatment.",
+          "setting": "Dark interior or tunnel-like stone space with rough arched openings and deep shadow behind the group.",
+          "settingStrength": "moderate"
+        },
+        {
+          "source": 10,
+          "filename": "LCD-Soundsystem.jpg",
+          "artist": "LCD Soundsystem",
+          "description": "Tight color portrait of one light-skinned adult man facing the camera. He has spiky salt-and-pepper hair, blue or light-colored eyes, and short gray stubble beard. He wears a pale tie-dye or washed light blue V-neck T-shirt. The background is softly blurred and pale, with no distinct environmental detail.",
+          "primarySubject": "The lone light-skinned man with spiky salt-and-pepper hair, short gray stubble, and a pale blue V-neck shirt, staring directly at the camera.",
+          "visiblePeople": [
+            "One adult man with spiky salt-and-pepper hair and short gray stubble"
+          ],
+          "wardrobe": "Light blue or pale tie-dye V-neck T-shirt.",
+          "photoStyle": "Color close-up portrait with shallow depth of field, centered composition, and soft natural light.",
+          "setting": "Indistinct pale background with strong blur and no clear location cues.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 11,
+          "filename": "Steve-Hogarth.jpg",
+          "artist": "Steve Hogarth",
+          "description": "Dark, blue-tinted graphic image showing a softly lit side profile of one adult person with head bowed and face partly obscured in shadow. Only the nose, lips, chin, neck, and shoulder area are faintly visible, suggesting a close-cropped portrait within a mostly black frame. Clothing and facial details are indistinct due to low light and heavy graphic treatment.",
+          "primarySubject": "The single shadowed adult figure in side profile, head bowed, rendered in blue-tinted low light.",
+          "visiblePeople": [
+            "One adult person in shadowed side profile"
+          ],
+          "wardrobe": "Clothing indistinct; only dim shoulder and upper torso contours are visible.",
+          "photoStyle": "Heavily stylized blue-tinted cover art or graphic portrait with very low-key lighting and large black negative space.",
+          "setting": "No discernible physical environment; the figure appears isolated within a dark graphic field.",
+          "settingStrength": "weak"
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2",
+      "model": "openai/gpt-image-2/edit",
+      "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Outdoor balcony or terrace with metal railing, dense tropical foliage and palm trees beyond, and bright overcast or late-day sky.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. On a real outdoor terrace balcony with a waist-high metal railing, dense tropical trees and palms just beyond it, and a bright pale evening sky, photograph a small group of six adults in a shared in-between moment, as if conversation has briefly paused. A woman with long voluminous curly hair in a burgundy top sits low at the left foreground near the railing; a pale man with shoulder-length black hair and heavy dark eye makeup stands center-left closest to camera, half-turned with one hand lifted; a blonde woman with straight shoulder-length hair in a dark textured sweater leans lightly on the railing at right foreground; a dark-haired woman with wavy shoulder-length hair and bangs in an oversized dark blazer stands mid-left with her head tipped back in laughter; a woman with bright magenta shoulder-length hair, heavy eye makeup, and a fitted black dress stands center-right with confident posture and weight on one leg; behind them, a man with spiky salt-and-pepper hair, short gray stubble, and a pale washed blue V-neck T-shirt rests near the rail and looks straight to camera. Compose them asymmetrically with layered depth and overlapping bodies, not evenly spaced, as a casual editorial snapshot from standing eye level with a slightly wide lens, around 35mm, 16:9, showing railing, floor, and foliage for place. Use bright direct on-camera flash mixed with soft ambient dusk light, keeping the terrace believable and the background slightly softer but still legible. Color treatment should feel natural with a subtle 1990s snapshot vibe: pale sky, tropical greens, burgundy, black, magenta, and washed blue, with an intimate, relaxed, slightly electric mood. Attached cast plan: Attached reference image 1: portray only the woman with long voluminous curly hair in a burgundy top; seated low in the left foreground near the railing, angled toward the group. Attached reference image 2: portray only the pale man with shoulder-length black hair and heavy dark eye makeup; center-left, standing closest to camera, half-turned with one hand lifted as if making a point. Attached reference image 3: portray only the blonde woman with straight shoulder-length hair in a dark textured sweater; right foreground, leaning lightly on the railing and looking toward camera. Attached reference image 4: portray only the dark-haired woman with wavy shoulder-length hair and bangs in an oversized dark blazer; mid-left, head tipped back in a spontaneous laugh. Attached reference image 5: portray only the woman with bright magenta shoulder-length hair and heavy eye makeup in a fitted black dress; center-right, standing confidently with weight on one leg, engaged with the others. Attached reference image 6: portray only the man with spiky salt-and-pepper hair and short gray stubble in a pale blue V-neck T-shirt; rear center, relaxed near the rail, looking directly at camera. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. This generation has 6 attached cast reference images; omit any person described in the creative direction who does not have an attached reference.",
+      "inputs": [
+        "Happy-Mondays.jpg",
+        "Killing-Joke.jpg",
+        "Saint-Etienne.jpg",
+        "Courtney-Barnett.jpg",
+        "Save-Ferris.jpg",
+        "LCD-Soundsystem.jpg"
+      ]
     }
   ]
 }
