@@ -110,6 +110,9 @@ classification:
     - Release year: {release_year}
     - Artist biography: {biography}
 
+    Release details from my collection:
+    {release_details}
+
     Return a JSON object with these exact fields:
 
     {{
@@ -350,9 +353,11 @@ questions:
       - "Does it transcend the sum of its parts or feel like a side project?"
       - "What expectations did fans have and were they met?"
     various-artists:
-      - "What unifying vision ties the various contributions together?"
-      - "Which standout tracks define the collection?"
-      - "How does the curation create a cohesive listening experience?"
+      - "Which artists share this sleeve, and what do the best-known names bring to it?"
+      - "What idea, era or scene does the track selection set out to capture?"
+      - "How does the running order pace the record across its sides?"
+      - "Which tracks are the obvious draws, and which are the unexpected inclusions?"
+      - "Who compiled it, and what does the sleeve or label say about why?"
     orchestra:
       - "What orchestration and arrangement choices stand out?"
       - "How does the ensemble create its distinctive voice?"
@@ -417,6 +422,16 @@ agent:
     - Type: {album_type}
     - Artist Type: {artist_category}
     - Significance: {significance_label}
+
+    ## Release Details (from my record collection)
+
+    These facts describe the exact pressing I own, taken from my collection and its Discogs
+    entry. Treat them as authoritative and prefer them over anything the search results say
+    about a different edition. Where the tracklist names a performer per track the release is
+    a compilation, so write about who shares the sleeve and how the running order works, and
+    never treat "Various" as though it were a single band.
+
+    {release_details}
 
     ## Research Questions
     Focus your research on answering these contextual questions:
@@ -486,6 +501,10 @@ agent:
 
   user_message: |
     Research and write a comprehensive blog section about "{album}" by {artist}.
+
+    Release details from my collection:
+
+    {release_details}
 
     Start by using the search tool to gather information relevant to these questions:
 

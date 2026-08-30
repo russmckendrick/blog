@@ -20,6 +20,16 @@ export class QuestionComposer {
     // Always include base questions
     questions.push(...(this.questions.base || []))
 
+    const artistQuestions = this.getArtistTypeQuestions(classification.artist_type)
+
+    // A compilation is defined by who is on it, so its artist-type questions matter more than
+    // the era/genre boilerplate. Promote them ahead of the 8-question cap; every other
+    // category keeps its original ordering.
+    const isCompilation = classification.artist_type?.category === 'various-artists'
+    if (isCompilation) {
+      questions.push(...artistQuestions)
+    }
+
     // Add era-specific questions
     const eraQuestions = this.getEraQuestions(classification.era)
     questions.push(...eraQuestions)
@@ -32,9 +42,10 @@ export class QuestionComposer {
     const typeQuestions = this.getTypeQuestions(classification.type)
     questions.push(...typeQuestions)
 
-    // Add artist-type questions
-    const artistQuestions = this.getArtistTypeQuestions(classification.artist_type)
-    questions.push(...artistQuestions)
+    // Add artist-type questions (already added above for compilations)
+    if (!isCompilation) {
+      questions.push(...artistQuestions)
+    }
 
     // Add significance questions
     const significanceQuestions = this.getSignificanceQuestions(classification)

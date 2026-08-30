@@ -1,4 +1,5 @@
 import { SearchCache } from './search-cache.js'
+import { isVariousArtists } from './text-utils.js'
 
 /**
  * Album Classifier - Classifies albums by genre, era, type, etc.
@@ -21,15 +22,19 @@ export class AlbumClassifier {
    * Classify an album based on artist and album name + collection metadata
    * @param {string} artist - Artist name
    * @param {string} album - Album name
-   * @param {Object} collectionData - Metadata from russ.fm collection (genres, release_year, biography)
+   * @param {Object} collectionData - Metadata from russ.fm collection (genres, release_year,
+   *   biography, release_details)
    * @returns {Promise<Object>} Classification object
    */
   async classify(artist, album, collectionData = {}) {
     // Initialize cache
     await this.cache.init()
 
-    // Check cache first (classifications change less often than research)
-    const cacheKey = 'classification'
+    // Check cache first (classifications change less often than research).
+    // Bumped to v2 when genres/release_year/biography actually started reaching this method -
+    // lookupArtistData/lookupAlbumData used to drop them, so every v1 entry was classified
+    // without any collection metadata.
+    const cacheKey = 'classification-v2'
     const cached = await this.cache.get(artist, album, cacheKey)
     if (cached) {
       console.log(`    ✓ Using cached classification for ${album}`)
@@ -76,7 +81,6 @@ export class AlbumClassifier {
     const classification = this.getDefaultClassification()
 
     const albumLower = album.toLowerCase()
-    const artistLower = artist.toLowerCase()
 
     // --- Genre inference from collection data ---
     if (collectionData.genres && collectionData.genres.length > 0) {
@@ -145,8 +149,9 @@ export class AlbumClassifier {
 
     // --- Artist type inference ---
 
-    // Check for "Various" artist (various artists compilation)
-    if (artistLower === 'various' || artistLower === 'various artists') {
+    // Check for "Various" artist (various artists compilation). Uses the shared predicate
+    // so "VA" and the "Various Artitsts" typo are caught too.
+    if (isVariousArtists(artist)) {
       classification.artist_type.category = 'various-artists'
       if (classification.type.format === 'studio') {
         classification.type.format = 'compilation'
@@ -189,7 +194,9 @@ export class AlbumClassifier {
       album,
       genres,
       release_year: releaseYear,
-      biography: biography.substring(0, 500) // Limit biography length
+      biography: biography.substring(0, 500), // Limit biography length
+      // Always supply this - interpolate() leaves unknown placeholders literal in the prompt
+      release_details: collectionData.release_details || 'None available'
     })
 
     const response = await this.llm.invoke([

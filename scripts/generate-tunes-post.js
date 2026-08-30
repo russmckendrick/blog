@@ -102,7 +102,11 @@ async function main() {
     let topArtists = processArtistData(artistData, collectionInfo.originalCases, itemCount)
     const topAlbums = processAlbumData(albumData, collectionInfo.originalCases, itemCount)
 
-    // Filter out "Various Artists" from the top artists list
+    // Keep "Various Artists" out of the *artists* list only. It is a release credit, not a
+    // performer: there is nobody to photograph for the group portrait and no artist image to
+    // download. Compilations still flow through topAlbums, so they get a full written section,
+    // their sleeve, their russ.fm album link, and a place in the header cover's source pool.
+    // Do not "fix" this by removing the filter.
     const beforeFilter = topArtists.length
     topArtists = topArtists.filter(([artist]) => !isVariousArtists(artist))
     if (beforeFilter > topArtists.length) {

@@ -4,6 +4,7 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { normalizeForFilename, lookupArtistData, lookupAlbumData, escapeQuotes } from './text-utils.js'
 import { SearchCache } from './search-cache.js'
+import { ReleaseDetails, formatReleaseDetails } from './release-details.js'
 import { ExaMusicSearchTool } from './exa-tool.js'
 import { PerplexityMusicSearchTool } from './perplexity-tool.js'
 import { AlbumClassifier } from './album-classifier.js'
@@ -13,6 +14,7 @@ export class ContentGenerator {
   constructor(config = null) {
     this.config = config
     this.searchCache = new SearchCache()
+    this.releaseDetails = new ReleaseDetails()
 
     // Use whichever API key is available (prefer OpenAI if both are set)
     if (process.env.OPENAI_API_KEY) {
@@ -135,11 +137,16 @@ export class ContentGenerator {
         const albumData = lookupAlbumData(artist, album, collectionInfo)
         const artistData = lookupArtistData(artist, collectionInfo)
 
-        // Build collection context for classification
+        // Fetch the detailed release JSON for its tracklist. Best-effort: a null detail
+        // just means the block falls back to what collection.json already knows.
+        const detail = await this.releaseDetails.fetch(albumData?.detail_url)
+
+        // Build collection context for classification and for the writer's prompt
         const collectionContext = {
           genres: albumData?.genres || [],
           release_year: albumData?.release_year || null,
-          biography: artistData?.biography || null
+          biography: artistData?.biography || null,
+          release_details: formatReleaseDetails(albumData, detail)
         }
 
         const section = await this.researchAlbum(artist, album, collectionContext)
@@ -196,8 +203,6 @@ export class ContentGenerator {
           const artistImagePath = `/assets/${dateStr}-listened-to-this-week/artists/${normalizeForFilename(artist)}.jpg`
           const altText = escapeQuotes(artist)
           galleryImages.push(`{ src: "${artistImagePath}", alt: "${altText}" }`)
-          // Mark as used so we don't try to use it again (though we removed that logic anyway)
-          artistData.image = null
         }
 
         // Insert LightGallery component if we have images
@@ -242,7 +247,9 @@ export class ContentGenerator {
     await this.searchCache.init()
 
     // Check cache first
-    const cacheKey = `${this.searchProvider}-tool`
+    // Bumped to v2 when the release-details block (labels, formats, country, tracklist with
+    // per-track performers) was added to the prompt - v1 entries were written without it.
+    const cacheKey = `${this.searchProvider}-tool-v2`
     const cachedResearch = await this.searchCache.get(artist, album, cacheKey)
     if (cachedResearch) {
       console.log(`    ✓ Using cached research for ${album}`)
@@ -285,8 +292,10 @@ export class ContentGenerator {
       console.log(`    Agent researching ${album} by ${artist}...`)
 
       // Build system prompt from config or use default
-      const systemPrompt = this.buildSystemPrompt(artist, album, classification, formattedQuestions)
-      const userMessage = this.buildUserMessage(artist, album, formattedQuestions)
+      // Always a string - ConfigLoader.interpolate leaves unknown placeholders literal
+      const releaseDetails = collectionContext.release_details || 'None available'
+      const systemPrompt = this.buildSystemPrompt(artist, album, classification, formattedQuestions, releaseDetails)
+      const userMessage = this.buildUserMessage(artist, album, formattedQuestions, releaseDetails)
 
       // Bind tools to LLM for tool-calling
       const llmWithTools = this.llm.bindTools(this.tools)
@@ -350,10 +359,11 @@ export class ContentGenerator {
   /**
    * Build system prompt from config template or use default
    */
-  buildSystemPrompt(artist, album, classification, formattedQuestions) {
+  buildSystemPrompt(artist, album, classification, formattedQuestions, releaseDetails = '') {
     // Try to use config-based prompt
     if (this.config && classification) {
       const context = {
+        release_details: releaseDetails,
         artist,
         album,
         genre_primary: classification.genre?.primary || 'unknown',
@@ -387,6 +397,12 @@ You are an expert Music Blogger writing sections of a weekly music blog post. Yo
 ${classification ? `## Album Context
 You are researching: "${album}" by ${artist}
 Classification: ${classification.genre?.primary || 'unknown'} / ${classification.era?.decade || 'unknown'}
+` : ''}
+${releaseDetails ? `## Release Details (from my record collection)
+These facts describe the exact pressing I own. Treat them as authoritative and prefer them
+over anything the search results say about a different edition.
+
+${releaseDetails}
 ` : ''}
 ${formattedQuestions ? `## Research Questions
 Focus your research on answering these contextual questions:
@@ -428,13 +444,14 @@ Remember: FIRST use the search tool to research, THEN write your section based o
   /**
    * Build user message from config template or use default
    */
-  buildUserMessage(artist, album, formattedQuestions) {
+  buildUserMessage(artist, album, formattedQuestions, releaseDetails = '') {
     // Try to use config-based message
     if (this.config && formattedQuestions) {
       const context = {
         artist,
         album,
-        research_questions: formattedQuestions
+        research_questions: formattedQuestions,
+        release_details: releaseDetails
       }
 
       const configMessage = this.config.getAgentUserMessage

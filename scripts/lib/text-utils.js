@@ -108,6 +108,13 @@ export function normalizeForFilename(text) {
 }
 
 export function lookupArtistData(artist, collectionInfo) {
+  // "Various" is a release credit, not a performer. The collection has an /artist/various/
+  // page, but its image is a placeholder and its biography describes an unrelated dubstep
+  // duo, so treating it as an artist would put a bogus portrait and bio into the post.
+  // Returning null here keeps compilations out of the artist image download, the gallery,
+  // the artist russ.fm link and the classifier's biography context in one place.
+  if (isVariousArtists(artist)) return null
+
   // Remove Last.fm disambiguation suffixes like "(3)" before matching
   const cleanArtist = removeBracketedSuffix(artist)
   const normalizedArtist = normalizeText(cleanArtist)
@@ -126,7 +133,8 @@ export function lookupArtistData(artist, collectionInfo) {
           normalizedKeyWithoutThe === normalizedArtistWithoutThe) {
         return {
           link: data.artist_link,
-          image: data.artist_image
+          image: data.artist_image,
+          biography: data.biography || null
         }
       }
     }
@@ -191,7 +199,12 @@ export function lookupAlbumData(artist, album, collectionInfo) {
       const partialArtistMatch = isArtistComponent(normalizedArtist, normalizedKeyArtist) ||
                                   isArtistComponent(normalizedArtistWithoutThe, normalizedKeyArtistWithoutThe)
 
-      const artistMatch = exactArtistMatch || partialArtistMatch
+      // Last.fm scrobbles compilations as "Various Artists" while the collection stores
+      // them as "Various", so neither the exact nor the component match ever fires. Fold
+      // every spelling of the credit onto itself.
+      const variousMatch = isVariousArtists(cleanArtist) && isVariousArtists(keyArtist)
+
+      const artistMatch = exactArtistMatch || partialArtistMatch || variousMatch
 
       // Try album match: exact, without brackets on search term, without brackets on key, or both without brackets
       const albumMatch = normalizedKeyAlbum === normalizedAlbum ||
@@ -200,7 +213,10 @@ export function lookupAlbumData(artist, album, collectionInfo) {
                         normalizedKeyAlbumWithoutBrackets === normalizedAlbumWithoutBrackets
 
       if (artistMatch && albumMatch) {
+        // Spread the stored release metadata (genres, styles, labels, formats, country,
+        // release_year, detail_url) alongside the link/image aliases callers expect.
         return {
+          ...data,
           link: data.album_link,
           image: data.album_image
         }

@@ -273,6 +273,7 @@ byte-exact rather than being kept lint-clean:
 | Path | Purpose |
 |------|---------|
 | `scripts/.research-cache/` | Cached AI research results for tunes generation |
+| `scripts/.release-cache/` | Cached per-release JSON (tracklists) used to build the Release Details prompt block; 30-day TTL, disable with `ENABLE_RELEASE_CACHE=false` |
 | `scripts/.research-cache/.gitignore` | Keeps the cache directory in git without committing cache payloads |
 | `scripts/.classification-cache/` | Cached album classification results |
 | `scripts/.classification-cache/.gitignore` | Keeps the cache directory in git without committing cache payloads |
@@ -288,7 +289,7 @@ These modules support the top-level CLIs and are not intended to be run directly
 |------|------|
 | `scripts/lib/album-classifier.js` | Classifies albums using collection metadata and LLM fallback |
 | `scripts/lib/blog-post-renderer.js` | Renders generated tunes content into MDX templates |
-| `scripts/lib/collection-manager.js` | Fetches and normalizes collection data from `russ.fm` |
+| `scripts/lib/collection-manager.js` | Fetches and normalizes collection data from `russ.fm`, keeping each release's genres, styles, formats, labels, country, release year and per-release detail URL |
 | `scripts/lib/config-loader.js` | Loads and validates tunes generator configuration |
 | `scripts/lib/content-generator.js` | AI writing pipeline for tunes and wrapped sections; normalises each section's headings (collapses doubled markers like `### ###` to a single `###`) before embedding images |
 | `scripts/lib/exa-tool.js` | Exa search integration for research agents |
@@ -307,10 +308,11 @@ These modules support the top-level CLIs and are not intended to be run directly
 | `scripts/lib/mdx-to-medium.js` | Converts blog MDX into Medium-compatible HTML/markdown |
 | `scripts/lib/medium-client.js` | Medium API wrapper |
 | `scripts/lib/perplexity-tool.js` | Perplexity search integration for music research |
-| `scripts/lib/question-composer.js` | Builds contextual research questions for the tunes pipeline |
+| `scripts/lib/question-composer.js` | Builds contextual research questions for the tunes pipeline; promotes the artist-type questions ahead of the era/genre ones for `various-artists` releases so they survive the eight-question cap |
+| `scripts/lib/release-details.js` | Fetches the per-release JSON behind `json_detailed_release` and formats the prompt's Release Details block (labels, country, formats, Discogs link, and the tracklist with per-track performers for compilations). Best-effort, disk-cached in `scripts/.release-cache/` for 30 days |
 | `scripts/lib/search-cache.js` | Shared filesystem cache for research/classification results |
 | `scripts/lib/svg-chart-generator.js` | Generates SVG charts for wrapped posts |
-| `scripts/lib/text-utils.js` | Shared normalization, lookup, and text helper functions |
+| `scripts/lib/text-utils.js` | Shared normalization, lookup, and text helper functions. `lookupAlbumData` folds every spelling of the Various Artists credit onto itself (Last.fm says "Various Artists", the collection says "Various") and returns the full release metadata; `lookupArtistData` returns `null` for that credit so compilations never get an artist image, link or biography |
 | `scripts/lib/year-stats-calculator.js` | Computes annual wrapped insights and derived metrics |
 
 ## Related Docs

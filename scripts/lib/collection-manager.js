@@ -59,16 +59,29 @@ export class CollectionManager {
     }
 
     const albumUri = release.uri_release ? `${this.baseUrl}${release.uri_release}` : null
+    const detailUri = release.json_detailed_release
+      ? `${this.baseUrl}${release.json_detailed_release}`
+      : null
 
     if (artist && album && albumUri) {
       const key = `${this.normalizeText(artist)}|||${this.normalizeText(album)}`
       info[key] = {
         album_image: albumImageUrl,
         album_link: albumUri,
-        // Rich metadata for classification
+        // Rich metadata for classification and for the release-details prompt block
         genres: release.genre_names || [],
         release_year: this.extractYear(release.date_release_year),
-        date_added: release.date_added || null
+        date_added: release.date_added || null,
+        styles: release.styles || [],
+        formats: release.formats || [],
+        format_primary: release.format_primary || null,
+        labels: release.labels || [],
+        country: release.country || null,
+        release_artist: artist,
+        release_name: album,
+        // Points at the per-release JSON, which carries the tracklist (with per-track
+        // artists for compilations). Fetched lazily by ReleaseDetails.
+        detail_url: detailUri
       }
       originalCases[key] = { artist, album }
     }

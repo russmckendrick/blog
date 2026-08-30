@@ -134,19 +134,20 @@ Posts are created in:
 ## How It Works
 
 1. **Fetch Data**: Retrieves weekly charts from Last.fm API
-2. **Get Metadata**: Downloads collection data from russ.fm (images, links, genres, release years)
-3. **AI Research**: For each album (two-phase approach):
+2. **Get Metadata**: Downloads collection data from russ.fm (images, links, genres, release years, styles, labels, formats, country)
+3. **Get Release Details**: For each album, fetches the per-release JSON behind `json_detailed_release` for its tracklist - see [Release Details](#release-details)
+4. **AI Research**: For each album (two-phase approach):
    - **Phase 1 - Classification**: Classifies the album by genre, era, type, artist type, and significance
-     - Uses collection metadata (genres, release year, biography) when confident
+     - Uses collection metadata (genres, release year, biography, release details) when confident
      - Falls back to LLM classification when metadata is insufficient
    - **Phase 2 - Dynamic Questions**: Generates contextual research questions based on classification
      - Base questions (all albums) + era-specific + genre-specific + type-specific + significance questions
    - **Phase 3 - Research**: Uses search tools with contextual focus areas to gather information
    - AI generates engaging blog section (350-450 words) tailored to the album's characteristics
-4. **Download Images**: Fetches high-res artist/album artwork
-5. **Generate Cover**: Creates paired full-size and `-small` AI cover images by summarising the ranked album artwork and asking an AI art director to choose the complete visual direction from those findings
-6. **Generate Artist Portrait**: Creates a photorealistic group portrait from the week's artist photos (best-effort) and embeds it in the post body above the Top Artists/Albums lists — see [Artist Group Portrait](#artist-group-portrait)
-7. **Render MDX**: Creates formatted blog post with galleries and links
+5. **Download Images**: Fetches high-res artist/album artwork
+6. **Generate Cover**: Creates paired full-size and `-small` AI cover images by summarising the ranked album artwork and asking an AI art director to choose the complete visual direction from those findings
+7. **Generate Artist Portrait**: Creates a photorealistic group portrait from the week's artist photos (best-effort) and embeds it in the post body above the Top Artists/Albums lists — see [Artist Group Portrait](#artist-group-portrait)
+8. **Render MDX**: Creates formatted blog post with galleries and links
 
 ## Backfilling Older Posts
 
@@ -185,7 +186,8 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 
 - `generate-tunes-post.js` - Main orchestrator
 - `lib/lastfm-client.js` - Last.fm API client
-- `lib/collection-manager.js` - russ.fm data fetcher/processor (genres, release years, biographies)
+- `lib/collection-manager.js` - russ.fm data fetcher/processor (genres, release years, biographies, styles, labels, formats, country, per-release detail URLs)
+- `lib/release-details.js` - Fetches and formats the per-release JSON (tracklist, labels, country, Discogs link) into the prompt's Release Details block; disk-cached in `scripts/.release-cache/`
 - `lib/content-generator.js` - AI content generation with two-phase classification/research
 - `lib/album-classifier.js` - Hybrid metadata/LLM album classification
 - `lib/question-composer.js` - Dynamic question composition from classification
@@ -476,11 +478,83 @@ The generator now uses a two-phase approach for better content:
 ### Classification Sources
 
 The classifier uses a hybrid approach:
-- **Collection Metadata** (russ.fm): genres, release year, artist biography
+- **Collection Metadata** (russ.fm): genres, release year, artist biography, release details
 - **Album Name Patterns**: detects "Best Of", "Live at", "Soundtrack", etc.
+- **Various Artists**: any spelling of the credit (`Various`, `Various Artists`, `VA`, and the `Various Artitsts` typo) sets `artist_type.category` to `various-artists` and reclassifies a `studio` release as a `compilation`
 - **LLM Fallback**: when metadata confidence is below 70%
 
 Classifications are cached for 90 days (configurable) since album metadata rarely changes.
+
+### Release Details
+
+Every album section is written with a **Release Details** block describing the exact pressing
+in the collection. It is injected into the classification prompt, the agent system prompt and
+the agent user message through the `{release_details}` placeholder in `scripts/tunes-config.yaml`.
+
+The block combines the flat fields from `collection.json` (labels, country, formats, genres,
+styles, release year, date added) with the per-release JSON behind `json_detailed_release`,
+which is the only source of the **tracklist**:
+
+```
+- Release: Now That's What I Call An Era Disco 1973 > 1980
+- Credited artist: Various
+- Labels: Sony Music, EMI
+- Country: UK
+- Released: 2025-11-07
+- Formats: Vinyl, All Media
+- Discogs: https://www.discogs.com/release/35690722-...
+- Tracklist:
+  A1. Chic - Le Freak
+  A2. Sister Sledge - We Are Family
+```
+
+Behaviour worth knowing:
+
+- **Per-track performers** appear only when the release has them, which in practice means
+  compilations. Single-artist releases have an empty per-track `artists` array, so their lines
+  are just `A1. Deadwing (9:46)` with no repeated artist name.
+- **Tracklists are capped** at 40 tracks or ~2000 characters, then summarised as
+  `...and N more tracks`, so a box set cannot swamp the prompt.
+- **Best-effort**: if the detail fetch fails the block falls back to the `collection.json`
+  fields alone and post generation continues.
+- **Cached** in `scripts/.release-cache/` for 30 days (gitignored). Set
+  `ENABLE_RELEASE_CACHE=false` to bypass it.
+
+Because this block changed what the writer sees, the research cache key is `-tool-v2` and the
+classification cache key is `classification-v2`. Sections and classifications cached under the
+old keys are ignored rather than reused.
+
+### Compilations and "Various Artists"
+
+Compilations are included in the post, but they are not treated as an artist.
+
+Last.fm scrobbles a compilation's artist as **"Various Artists"** while the collection stores
+it as **"Various"**. `lookupAlbumData` in `scripts/lib/text-utils.js` folds every spelling of
+the credit onto itself so the release resolves; without that the sleeve, the russ.fm link and
+the cover input were all silently lost.
+
+What a compilation gets:
+
+- A full written section, with the tracklist in its Release Details block, and compilation-specific
+  research questions (who shares the sleeve, what the selection captures, how the running order paces)
+- Its sleeve downloaded to `public/assets/{week}/albums/`, shown in a **single-image** `<LightGallery>`
+- Its sleeve in the source pool for the AI header cover, ranked by plays like any other album
+- A `View ... on russ.fm` bullet for the **album** only
+- A Top Albums line with the album linked and the artist left as plain text
+
+What it deliberately does not get:
+
+- **No artist image.** `lookupArtistData` returns `null` for any Various credit. The collection's
+  `/artist/various/` entry exists but its biography describes an unrelated dubstep duo, so using
+  it would put a wrong bio and a placeholder portrait into the post.
+- **No entry in the Top Artists list**, and no place in the artist group portrait - there is
+  nobody to photograph. This filter is in `scripts/generate-tunes-post.js`; it applies to the
+  artists list only, never to `topAlbums`.
+
+Known wrinkle: `scripts/build-tunes-index.js` does not filter the credit, so a `various-artists`
+pseudo-artist exists in `src/data/tunes-index.json` and renders a thin `/tunes/artist/various-artists/`
+page. Removing it needs its own change, because `src/pages/tunes/album/[album].astro` links every
+album to its artist page.
 
 ### Humaniser Guidelines
 
@@ -545,6 +619,10 @@ tags: []
 - Ensure either `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` is set
 - Check API key validity and rate limits
 - Web search (Tavily) is optional - script works without it
+
+### Compilation has no sleeve or link
+- Confirm the release exists in the collection under the `Various` credit
+- `lookupArtistData` returning `null` for a Various credit is deliberate, not a fault - see [Compilations and "Various Artists"](#compilations-and-various-artists)
 
 ### Missing album links
 - Some albums may not be in your russ.fm collection
