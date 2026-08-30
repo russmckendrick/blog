@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-24T02:43:43.364Z",
+  "generatedAt": "2026-08-30T18:18:48.575Z",
   "totals": {
-    "posts": 170,
+    "posts": 171,
     "artists": 527,
-    "albums": 974
+    "albums": 975
   },
   "artists": [
     {
@@ -3919,7 +3919,7 @@
       "artistUrl": "https://www.russ.fm/artist/fleetwood-mac/",
       "image": "/assets/2023-08-14-listened-to-this-week/artists/Fleetwood-Mac.jpg",
       "albumCount": 5,
-      "postCount": 8,
+      "postCount": 9,
       "albums": [
         "best-of-1969-1974",
         "fleetwood-mac",
@@ -3928,6 +3928,11 @@
         "tango-in-the-night"
       ],
       "posts": [
+        {
+          "title": "Needle Sparks and Laurel Canyon Static on Open Highway",
+          "url": "/2026/08/31/needle-sparks-and-laurel-canyon-static-on-open-highway/",
+          "date": "2026-08-31T00:00:00.000Z"
+        },
         {
           "title": "Midnight Choirs Meet Greasy Riffs and Jazz Sparks at Sea",
           "url": "/2026/08/10/midnight-choirs-meet-greasy-riffs-and-jazz-sparks-at-sea/",
@@ -6447,7 +6452,7 @@
       "artistUrl": "https://www.russ.fm/artist/led-zeppelin/",
       "image": "/assets/2023-09-04-listened-to-this-week/artists/Led-Zeppelin.jpg",
       "albumCount": 4,
-      "postCount": 4,
+      "postCount": 5,
       "albums": [
         "houses-of-the-holy",
         "led-zeppelin-iii",
@@ -6455,6 +6460,11 @@
         "mothership"
       ],
       "posts": [
+        {
+          "title": "Needle Sparks and Laurel Canyon Static on Open Highway",
+          "url": "/2026/08/31/needle-sparks-and-laurel-canyon-static-on-open-highway/",
+          "date": "2026-08-31T00:00:00.000Z"
+        },
         {
           "title": "Chrome Souls, Nervous Rooms, and Holy Houses in Midnight Glow",
           "url": "/2026/05/11/chrome-souls-nervous-rooms-and-holy-houses-in-midnight-glow/",
@@ -13736,13 +13746,19 @@
       "name": "The Rolling Stones",
       "artistUrl": "https://www.russ.fm/artist/the-rolling-stones/",
       "image": "/assets/2023-11-13-listened-to-this-week/artists/The-Rolling-Stones.jpg",
-      "albumCount": 2,
-      "postCount": 4,
+      "albumCount": 3,
+      "postCount": 5,
       "albums": [
         "exile-on-main-st",
+        "forty-licks",
         "hot-rocks-1964-1971"
       ],
       "posts": [
+        {
+          "title": "Needle Sparks and Laurel Canyon Static on Open Highway",
+          "url": "/2026/08/31/needle-sparks-and-laurel-canyon-static-on-open-highway/",
+          "date": "2026-08-31T00:00:00.000Z"
+        },
         {
           "title": "Glam Steel and Dream Pop in Basement Tapes and Sunset Static",
           "url": "/2026/06/22/glam-steel-and-dream-pop-in-basement-tapes-and-sunset-static/",
@@ -15699,12 +15715,17 @@
       "artistUrl": "https://www.russ.fm/artist/xtc/",
       "image": "/assets/2023-11-27-listened-to-this-week/artists/XTC.jpg",
       "albumCount": 2,
-      "postCount": 6,
+      "postCount": 7,
       "albums": [
         "drums-and-wires",
         "live-boots-emerald-city-cherry-hill-new-jersey-17th-april-1981"
       ],
       "posts": [
+        {
+          "title": "Needle Sparks and Laurel Canyon Static on Open Highway",
+          "url": "/2026/08/31/needle-sparks-and-laurel-canyon-static-on-open-highway/",
+          "date": "2026-08-31T00:00:00.000Z"
+        },
         {
           "title": "Cathedrals of Static and Stardust with Velvet Funk Undertow",
           "url": "/2026/05/04/cathedrals-of-static-and-stardust-with-velvet-funk-undertow/",
@@ -20607,6 +20628,11 @@
       "image": "/assets/2023-12-04-listened-to-this-week/albums/Greatest-Hits.jpg",
       "posts": [
         {
+          "title": "Needle Sparks and Laurel Canyon Static on Open Highway",
+          "url": "/2026/08/31/needle-sparks-and-laurel-canyon-static-on-open-highway/",
+          "date": "2026-08-31T00:00:00.000Z"
+        },
+        {
           "title": "This Weeks Top Music Hits: From Genesis to Ride",
           "url": "/2024/09/30/this-weeks-top-music-hits-from-genesis-to-ride/",
           "date": "2024-09-30T00:00:00.000Z"
@@ -23544,6 +23570,11 @@
       "artistUrl": "https://www.russ.fm/artist/led-zeppelin/",
       "image": "/assets/2023-09-04-listened-to-this-week/albums/Led-Zeppelin-III-Remastered.jpg",
       "posts": [
+        {
+          "title": "Needle Sparks and Laurel Canyon Static on Open Highway",
+          "url": "/2026/08/31/needle-sparks-and-laurel-canyon-static-on-open-highway/",
+          "date": "2026-08-31T00:00:00.000Z"
+        },
         {
           "title": "The Jam's Timeless Punk-Rock Electrifies This Week's Playlist",
           "url": "/2023/09/04/the-jams-timeless-punk-rock-electrifies-this-weeks-playlist/",
@@ -32807,6 +32838,22 @@
       ]
     },
     {
+      "slug": "forty-licks",
+      "name": "Forty Licks",
+      "artist": "The Rolling Stones",
+      "artistSlug": "the-rolling-stones",
+      "albumUrl": "https://www.russ.fm/album/forty-licks-38201469/",
+      "artistUrl": "https://www.russ.fm/artist/the-rolling-stones/",
+      "image": "/assets/2026-08-31-listened-to-this-week/albums/Forty-Licks.jpg",
+      "posts": [
+        {
+          "title": "Needle Sparks and Laurel Canyon Static on Open Highway",
+          "url": "/2026/08/31/needle-sparks-and-laurel-canyon-static-on-open-highway/",
+          "date": "2026-08-31T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "hot-rocks-1964-1971",
       "name": "Hot Rocks 1964-1971",
       "artist": "The Rolling Stones",
@@ -35180,6 +35227,11 @@
       "artistUrl": "https://www.russ.fm/artist/xtc/",
       "image": "/assets/2023-11-27-listened-to-this-week/albums/Drums-and-Wires.jpg",
       "posts": [
+        {
+          "title": "Needle Sparks and Laurel Canyon Static on Open Highway",
+          "url": "/2026/08/31/needle-sparks-and-laurel-canyon-static-on-open-highway/",
+          "date": "2026-08-31T00:00:00.000Z"
+        },
         {
           "title": "Rain Slicked Wires and Rebel Choirs Under Stadium Lights",
           "url": "/2026/04/27/rain-slicked-wires-and-rebel-choirs-under-stadium-lights/",

@@ -99,8 +99,10 @@ async function main() {
     // Process data
     console.log('Processing artist and album data...')
     const itemCount = takeCount || (debugMode ? 1 : numberOfItems)
-    let topArtists = processArtistData(artistData, collectionInfo.originalCases, itemCount)
-    const topAlbums = processAlbumData(albumData, collectionInfo.originalCases, itemCount)
+    // Albums first: folding a compilation tells us which artist plays came only from that
+    // compilation, so the artist chart can discount them.
+    const { topAlbums, compilationArtistPlays } = processAlbumData(albumData, collectionInfo.info, itemCount)
+    let topArtists = processArtistData(artistData, compilationArtistPlays, itemCount)
 
     // Keep "Various Artists" out of the *artists* list only. It is a release credit, not a
     // performer: there is nobody to photograph for the group portrait and no artist image to
@@ -270,7 +272,7 @@ function getWeekNumber(date) {
   return Math.ceil((((d - yearStart) / 86400000) + 1) / 7)
 }
 
-function processArtistData(artistData, _originalCases, limit) {
+function processArtistData(artistData, compilationArtistPlays, limit) {
   const artists = {}
   const originalEntries = {}
 
@@ -281,15 +283,29 @@ function processArtistData(artistData, _originalCases, limit) {
     originalEntries[key] = artistName
   }
 
+  // A compilation's track artists each show up in the weekly artist chart, usually with a
+  // single play. Those plays belong to the compilation's section, not to a top-artist slot, so
+  // discount them - an artist played on their own account keeps that part of their count and
+  // stays in the list. Only artists left with nothing are dropped.
+  if (compilationArtistPlays) {
+    for (const [key, plays] of compilationArtistPlays) {
+      if (artists[key] === undefined) continue
+      artists[key] -= plays
+      if (artists[key] <= 0) delete artists[key]
+    }
+  }
+
   return Object.entries(artists)
     .sort((a, b) => b[1] - a[1])
     .slice(0, limit)
     .map(([key, count]) => [originalEntries[key] || key, count])
 }
 
-function processAlbumData(albumData, _originalCases, limit) {
+function processAlbumData(albumData, collectionInfo, limit) {
   const albums = {}
   const originalEntries = {}
+  // Normalised artist name -> plays folded into a compilation, for processArtistData
+  const compilationArtistPlays = new Map()
 
   // First pass: Collect all entries
   for (const album of albumData.weeklyalbumchart.album) {
@@ -342,12 +358,58 @@ function processAlbumData(albumData, _originalCases, limit) {
     let shouldMerge = false
     let dominantArtist = null
 
+    // --- Compilation folding ---
+    // Last.fm reports a compilation two different ways depending on how the tracks were
+    // tagged: sometimes one row credited "Various Artists", but often one row per track
+    // artist, all sharing the album name with a single play each (14 rows for "Empire
+    // Records - The Soundtrack"). The dominance test below can never merge that shape - no
+    // artist holds 70% of one play each - so without this the week would get a separate
+    // written section per track. Fold them into one "Various Artists" entry.
+    //
+    // Only entries whose own artist does NOT own an album of that name are folded, so a real
+    // artist's record is never mis-credited to a compilation that happens to share its title.
+    let remainingEntries = entries
+    if (collectionInfo && !commonTitles.includes(albumName) && lookupAlbumData('Various', albumName, collectionInfo)) {
+      const isCompilationEntry = entry =>
+        isVariousArtists(entry.originalArtist) ||
+        !lookupAlbumData(entry.originalArtist, albumName, collectionInfo)
+
+      const compilationEntries = entries.filter(isCompilationEntry)
+
+      if (compilationEntries.length > 0) {
+        const totalPlays = compilationEntries.reduce((sum, entry) => sum + entry.count, 0)
+        const [{ originalAlbum }] = [...compilationEntries].sort((a, b) => b.count - a.count)
+        const key = `${normalizeText('Various Artists')}|||${albumName}`
+
+        mergedAlbums[key] = (mergedAlbums[key] || 0) + totalPlays
+        mergedOriginalEntries[key] = ['Various Artists', originalAlbum]
+
+        // Record what each real artist contributed so the artist chart can discount it.
+        // "Various Artists" rows have no real artist behind them and are filtered from the
+        // artist list anyway, so they are not recorded.
+        for (const entry of compilationEntries) {
+          if (isVariousArtists(entry.originalArtist)) continue
+          const artistKey = normalizeText(entry.originalArtist)
+          compilationArtistPlays.set(artistKey, (compilationArtistPlays.get(artistKey) || 0) + entry.count)
+        }
+
+        if (compilationEntries.length > 1) {
+          console.log(`Folded ${compilationEntries.length} track-artist entries for compilation "${originalAlbum}" into one section (${totalPlays} plays)`)
+        }
+
+        remainingEntries = entries.filter(entry => !compilationEntries.includes(entry))
+        if (remainingEntries.length === 0) continue
+      }
+    }
+
+    const entriesToProcess = remainingEntries
+
     // Only consider merging if there are multiple entries for the same album name
-    if (entries.length > 1 && !commonTitles.includes(albumName)) {
-      const totalPlays = entries.reduce((sum, entry) => sum + entry.count, 0)
+    if (entriesToProcess.length > 1 && !commonTitles.includes(albumName)) {
+      const totalPlays = entriesToProcess.reduce((sum, entry) => sum + entry.count, 0)
 
       // Find if there's a dominant artist (> 70% of plays)
-      const sortedEntries = [...entries].sort((a, b) => b.count - a.count)
+      const sortedEntries = [...entriesToProcess].sort((a, b) => b.count - a.count)
       const topEntry = sortedEntries[0]
 
       if (topEntry.count / totalPlays > 0.7) {
@@ -360,23 +422,25 @@ function processAlbumData(albumData, _originalCases, limit) {
     if (shouldMerge && dominantArtist) {
       // Merge all entries into the dominant artist
       const key = dominantArtist.key
-      const totalPlays = entries.reduce((sum, entry) => sum + entry.count, 0)
+      const totalPlays = entriesToProcess.reduce((sum, entry) => sum + entry.count, 0)
 
       mergedAlbums[key] = totalPlays
       mergedOriginalEntries[key] = [dominantArtist.originalArtist, dominantArtist.originalAlbum]
     } else {
       // Keep entries separate
-      for (const entry of entries) {
+      for (const entry of entriesToProcess) {
         mergedAlbums[entry.key] = entry.count
         mergedOriginalEntries[entry.key] = [entry.originalArtist, entry.originalAlbum]
       }
     }
   }
 
-  return Object.entries(mergedAlbums)
+  const topAlbums = Object.entries(mergedAlbums)
     .sort((a, b) => b[1] - a[1])
     .slice(0, limit)
     .map(([key, count]) => [mergedOriginalEntries[key] || key.split('|||'), count])
+
+  return { topAlbums, compilationArtistPlays }
 }
 
 function printLinks(collectionInfo, topArtists, topAlbums) {
@@ -402,4 +466,10 @@ function printLinks(collectionInfo, topArtists, topAlbums) {
   console.log('')
 }
 
-main()
+export { processAlbumData, processArtistData }
+
+// Only run when invoked directly, so the pure chart-processing helpers above can be imported
+// by tests without kicking off a real generation run.
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main()
+}

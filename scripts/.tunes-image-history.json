@@ -1804,6 +1804,503 @@
         "Save-Ferris.jpg",
         "LCD-Soundsystem.jpg"
       ]
+    },
+    {
+      "version": 2,
+      "date": "2026-08-31",
+      "type": "cover",
+      "lane": null,
+      "lighting": null,
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Prismatic tongue weather vane over a paper-white plain",
+      "creativeDirection": "A bold cut-paper and screenprint-style editorial illustration with oversized vector-inspired forms and crisp negative space.",
+      "scene": "A wide 16:9 view across a nearly empty paper-white plain, seen slightly from below so a single tall signpost rises against open space.",
+      "elements": [
+        {
+          "source": 1,
+          "element": "The central form is transformed into a giant weather-vane-like emblem: cropped stylized lips with an extended tongue, built from smooth rainbow gradient bands and treated as the dominant sculptural sign."
+        }
+      ],
+      "palette": [
+        "paper white",
+        "dark red",
+        "blue",
+        "purple",
+        "crimson",
+        "orange"
+      ],
+      "mood": "wry, airy, graphic, playful",
+      "coverSummaries": [
+        {
+          "source": 1,
+          "filename": "Forty-Licks.jpg",
+          "album": "Forty Licks",
+          "artist": "",
+          "description": "A clean graphic cover on a white background featuring a very large stylized mouth with white teeth and an extended tongue occupying the right side. The tongue and lips are rendered with smooth gradient bands shifting from blue at the top through purple, red, orange, and yellow. On the left side is a stacked block of dark red text. The composition is minimal, with the oversized tongue-and-lips emblem cropped by the frame.",
+          "signatureMotif": "stylized tongue and lips",
+          "medium": "digital vector-style graphic illustration",
+          "palette": [
+            "white",
+            "dark red",
+            "blue",
+            "purple",
+            "red"
+          ]
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2",
+      "model": "openai/gpt-image-2/edit",
+      "prompt": "A wide 16:9 scene across a vast paper-white plain viewed slightly from below, with one tall signpost rising in open negative space; the primary subject is a giant weather-vane emblem at the top of the post, formed from oversized stylized lips and an extended tongue cropped boldly by the frame; use the source-specific motif of smooth gradient bands shifting from blue through purple, red, orange, and yellow across the lips and tongue, with a small dark red stacked geometric block near the base echoing the source's text mass as an abstract counterweight; create it as a cut-paper and screenprint-style editorial illustration with crisp vector-like edges, flat fields, and subtle ink texture; keep the composition minimal with the emblem dominating the right half and abundant empty white space to the left, bright even studio-like lighting and sharp silhouette clarity; palette of paper white, dark red, blue, purple, crimson, orange, and yellow, with a playful, airy, sharply graphic mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "inputs": [
+        "Forty-Licks.jpg"
+      ]
+    },
+    {
+      "version": 2,
+      "date": "2026-08-31",
+      "type": "artist",
+      "lane": null,
+      "lighting": null,
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Seamless-floor recline with direct stare",
+      "creativeDirection": "A stark monochrome studio portrait that keeps the original full-body editorial stillness but centers one subject in an asymmetrical, fashion-leaning pose.",
+      "scene": "In the same plain photo studio with a continuous light seamless backdrop curving onto the floor, the subject is alone near the center but slightly offset, reclining into a loose kneeling pose on the seamless with open negative space around him.",
+      "locationSource": 1,
+      "locationSetting": "Plain indoor studio setup with a smooth light seamless backdrop and floor, no visible furniture or props aside from a barely visible low support behind the left-center figure. The environment is minimal and featureless.",
+      "locationEvidence": "A smooth light seamless studio backdrop and matching floor are clearly visible, with even high-key lighting and no environmental features beyond the minimal studio setup.",
+      "locationReference": 1,
+      "locationInput": "The-Rolling-Stones.jpg",
+      "cast": [
+        {
+          "source": 1,
+          "person": "light-skinned adult man with medium-length dark shaggy hair, a long face, and a loose floral-patterned blouse with light trousers",
+          "placement": "foreground center-left, reclined on one bent leg with the other extended, looking directly at camera"
+        }
+      ],
+      "selection": [
+        1
+      ],
+      "palette": [
+        "black and white",
+        "soft white",
+        "charcoal",
+        "light grey"
+      ],
+      "mood": "cool, intimate, self-possessed",
+      "artistSummaries": [
+        {
+          "source": 1,
+          "filename": "The-Rolling-Stones.jpg",
+          "artist": "The Rolling Stones",
+          "description": "Black-and-white studio group portrait of five light-skinned adult men against a plain seamless background. One man kneels in front center with medium-length dark shaggy hair, a long face, and a loose floral-patterned blouse with light trousers. To his left stands a slim man with messy dark hair, a narrow face, and a checked blazer over a patterned shirt with dark jeans. Next to him, another slim man with spiky dark hair and a narrow face leans forward in a striped short-sleeve top and very light trousers. Behind the kneeling figure, a crouching man wears dark round sunglasses, a light button-up shirt, and textured trousers. At far right, a tall slim man with a straight dark bob haircut stands with arms crossed in a dark zip-front jacket and very light flared trousers. The group poses casually with asymmetrical spacing and full-body framing.",
+          "primarySubject": "The front-center kneeling man with medium-length dark shaggy hair, light skin, a long face, and a loose floral blouse with light trousers.",
+          "visiblePeople": [
+            "Front-center kneeling light-skinned man with medium-length dark shaggy hair, long face, floral blouse, and light trousers.",
+            "Far-left standing light-skinned man with messy dark hair, slim build, checked blazer, patterned open-collar shirt, and dark jeans.",
+            "Left-center leaning light-skinned man with spiky dark hair, slim build, striped short-sleeve top, belt, and very light trousers.",
+            "Right-center crouching light-skinned man wearing dark round sunglasses, a light button-up shirt, and textured trousers.",
+            "Far-right standing light-skinned man with a straight dark bob haircut, slim build, dark zip-front jacket, and very light flared trousers."
+          ],
+          "wardrobe": "1970s-style mixed outfits: checked blazer over patterned shirt and jeans; striped fitted top with light trousers; loose floral blouse with light trousers; light button-up shirt with textured trousers; dark zip-front jacket with very light flared trousers. One man wears dark round sunglasses.",
+          "photoStyle": "Monochrome studio portrait, full-body group shot, even soft lighting, high-key plain backdrop, posed editorial or publicity style.",
+          "setting": "Plain indoor studio setup with a smooth light seamless backdrop and floor, no visible furniture or props aside from a barely visible low support behind the left-center figure. The environment is minimal and featureless.",
+          "settingStrength": "weak"
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2",
+      "model": "openai/gpt-image-2/edit",
+      "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Plain indoor studio setup with a smooth light seamless backdrop and floor, no visible furniture or props aside from a barely visible low support behind the left-center figure. The environment is minimal and featureless.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A plain indoor photo studio with a smooth light seamless backdrop curving onto the floor, recreated as the only environment and extended naturally with uninterrupted empty space; a light-skinned adult man with medium-length dark shaggy hair and a long face wears a loose floral-patterned blouse and light trousers, reclining in a relaxed kneeling pose with one leg folded under and the other extended, one hand braced on the floor, looking directly into the camera with calm confidence; asymmetrical full-body composition with generous negative space, subject placed slightly off-center, shot from a straight-on low-to-mid height viewpoint with a normal lens, crisp focus and clean studio depth; even soft high-key studio lighting with gentle floor shadows and no dramatic contrast; monochrome black-and-white treatment with subtle tonal separation, minimal editorial mood, quiet and poised. Attached cast plan: Attached reference image 1: portray only light-skinned adult man with medium-length dark shaggy hair, a long face, and a loose floral-patterned blouse with light trousers; foreground center-left, reclined on one bent leg with the other extended, looking directly at camera. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. This generation has 1 attached cast reference image; omit any person described in the creative direction who does not have an attached reference.",
+      "inputs": [
+        "The-Rolling-Stones.jpg"
+      ]
+    },
+    {
+      "version": 2,
+      "date": "2026-08-31",
+      "type": "cover",
+      "lane": null,
+      "lighting": null,
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Carnival mask in a paper aviary",
+      "creativeDirection": "A handcrafted mixed-media relief collage staged as a theatrical still life, combining cut-paper portraiture with floating emblematic miniatures.",
+      "scene": "A frontal view into a shallow shadowbox-like proscenium where a monumental carnival mask rises from the floor while tiny airborne collage fragments drift around it in layered space.",
+      "elements": [
+        {
+          "source": 1,
+          "element": "The central oversized mask is built from an angular yellow face with dark blue geometric features, a single small red circular eye, green hair-like paper fronds, and a red ear, translated into cut painted cardstock."
+        },
+        {
+          "source": 2,
+          "element": "A large smooth rainbow tongue-and-lips form becomes a ribboning banner or pennant curling from the right side of the mask into the open space, with white teeth visible along its upper edge."
+        },
+        {
+          "source": 3,
+          "element": "A simplified white flower emblem appears as a solemn crest pinned at the mask’s chest or pedestal center against deep green backing."
+        },
+        {
+          "source": 4,
+          "element": "Small surreal cutouts—butterflies, birds, dragonfly, dirigible, biplanes, stars, patterned discs, abstract blobs, flowers, and circular portrait-like medallions—swirl as supporting airborne ornaments around the main figure, with faint outlined letterform scaffolds embedded in the set walls."
+        }
+      ],
+      "palette": [
+        "deep blue",
+        "bright yellow",
+        "off-white",
+        "dark green",
+        "red",
+        "green"
+      ],
+      "mood": "playful, ceremonial, surreal",
+      "coverSummaries": [
+        {
+          "source": 1,
+          "filename": "Drums-and-Wires.jpg",
+          "album": "Drums and Wires",
+          "artist": "",
+          "description": "A bold, stylized portrait fills the square cover. The face is rendered as flat geometric shapes with a bright yellow face, dark blue angular features, a small red circular eye, green hair, and a red ear. Behind and around the head are torn-paper-like blocks of red, white, and green against a dark blue background. The composition is close-cropped and graphic, with jagged edges and high contrast.",
+          "signatureMotif": "an angular yellow face with dark blue features",
+          "medium": "graphic illustration with cut-paper/collage styling",
+          "palette": [
+            "yellow",
+            "dark blue",
+            "red",
+            "green",
+            "white"
+          ]
+        },
+        {
+          "source": 2,
+          "filename": "Forty-Licks.jpg",
+          "album": "Forty Licks",
+          "artist": "",
+          "description": "A large tongue-and-lips graphic dominates the right side on a white background. The lips and tongue are simplified and smooth-edged, with a gradient shifting from blue at the top through purple and red to orange and yellow at the bottom. White teeth appear along the upper edge. The left side is mostly empty white space, creating a clean, poster-like layout.",
+          "signatureMotif": "a large stylized tongue and lips",
+          "medium": "digital vector-style graphic illustration",
+          "palette": [
+            "white",
+            "blue",
+            "purple",
+            "red",
+            "orange"
+          ]
+        },
+        {
+          "source": 3,
+          "filename": "Greatest-Hits.jpg",
+          "album": "Greatest Hits",
+          "artist": "",
+          "description": "Centered on a dark, softly blended green background is a white flower emblem with a rounded bloom, two leaves, and a stem. The flower is highly simplified and symmetrical, with black line details inside the petals and leaves. The layout is minimal, with the emblem floating in the middle and ample empty space around it.",
+          "signatureMotif": "a white stylized flower emblem",
+          "medium": "minimal graphic illustration",
+          "palette": [
+            "dark green",
+            "olive green",
+            "white",
+            "black"
+          ]
+        },
+        {
+          "source": 4,
+          "filename": "Led-Zeppelin-III.jpg",
+          "album": "Led Zeppelin III",
+          "artist": "",
+          "description": "A busy collage-style cover on an off-white background features large outlined lettering shapes across the center, surrounded and filled with many small images and symbols. Visible elements include butterflies, birds, a dirigible, biplanes, stars, circular portraits, abstract blobs, flowers, lips, a dragonfly, and various patterned discs and fragments. The composition is dense and playful, with scattered multicolored cutout-like pieces layered across the surface.",
+          "signatureMotif": "a dense collage of small surreal images around large outlined lettering shapes",
+          "medium": "mixed-media collage and illustration",
+          "palette": [
+            "off-white",
+            "black",
+            "blue",
+            "red",
+            "yellow"
+          ]
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2",
+      "model": "openai/gpt-image-2/edit",
+      "prompt": "Frontal view into a shallow shadowbox theater set, like a handcrafted proscenium or cabinet of curiosities, with layered depth and open negative space around one towering central form; a monumental carnival mask stands on a low pedestal as the primary subject, its face constructed from angular cut-paper planes: bright yellow skin, dark blue geometric nose and cheek shapes, one small red circular eye, a red ear, and green paper fronds suggesting hair, close-cropped and bold; from the right side of the mask a huge stylized lips-and-tongue pennant unfurls into the scene, smooth-edged with visible white teeth and a gradient shifting blue to purple to red to orange to yellow; at the pedestal center or chest, place a white simplified flower emblem with black line details on a dark green plaque; around the mask, suspend a dense but secondary halo of tiny surreal collage fragments: butterflies, birds, a dragonfly, a dirigible, small biplanes, stars, patterned discs, abstract blobs, little flowers, and circular medallion portraits, plus faint oversized outlined letterform structures integrated into the off-white side walls as scaffolding rather than readable text; mixed-media relief collage, painted cut paper, inked details, pasted ephemera, matte gouache, slight cast shadows, tactile torn edges; strong central hierarchy with the mask dominating, the tongue banner as the main diagonal accent, the small flying motifs orbiting in layered clusters, balanced asymmetry and generous breathing room; soft spotlighting from above with crisp shadow pockets inside the shadowbox; palette of deep blue, bright yellow, off-white, dark green, red, green, and selective rainbow gradient accents, mood playful, ceremonial, and surreal. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "inputs": [
+        "Drums-and-Wires.jpg",
+        "Forty-Licks.jpg",
+        "Greatest-Hits.jpg",
+        "Led-Zeppelin-III.jpg"
+      ]
+    },
+    {
+      "version": 2,
+      "date": "2026-08-31",
+      "type": "artist",
+      "lane": null,
+      "lighting": null,
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Off-white corner gathering with layered glances",
+      "creativeDirection": "A quiet, semi-posed color portrait staged as a brief conversational pause in a bare interior corner, with staggered depth and natural asymmetry.",
+      "scene": "A simple indoor wall corner with smooth off-white walls and minimal empty floor, shown wider than the source frame as a modest undecorated room edge; the four adults cluster loosely near the corner as if settling between remarks, not lined up.",
+      "locationSource": 3,
+      "locationSetting": "Simple indoor corner or wall area with smooth off-white walls and almost no furnishings or decor visible; only the plain wall surface establishes the environment.",
+      "locationEvidence": "Source 3 is the clearest physical place: a real off-white interior wall with a visible corner seam and simple room surfaces, establishing an actual indoor wall area rather than a featureless backdrop.",
+      "locationReference": 1,
+      "locationInput": "XTC.jpg",
+      "cast": [
+        {
+          "source": 3,
+          "person": "the tall light-skinned man with short light brown hair in a plain black long-sleeve top, wristwatch, and round tinted glasses in hand",
+          "placement": "foreground right, closest to camera, half-turned inward with one arm folded and the glasses hanging from his other hand"
+        },
+        {
+          "source": 1,
+          "person": "the light-skinned man with medium-length dark hair and full lips wearing an open floral shirt and white trousers",
+          "placement": "low near center foreground, seated or crouched casually on the floor, leaning back on one hand and looking up toward the others"
+        },
+        {
+          "source": 2,
+          "person": "the older light-skinned man with short graying hair wearing a black leather jacket over a dark shirt and blue jeans",
+          "placement": "center-left, standing near the wall corner, angled toward the seated man as if mid-conversation"
+        },
+        {
+          "source": 4,
+          "person": "the young light-skinned man with long dark hair falling over one eye, wearing a light patterned shirt",
+          "placement": "left background against the wall, slightly perched or leaning, watching across the group"
+        }
+      ],
+      "selection": [
+        3,
+        1,
+        2,
+        4
+      ],
+      "palette": [
+        "off-white",
+        "black",
+        "deep blue",
+        "soft gray",
+        "muted skin tones"
+      ],
+      "mood": "intimate, restrained, observant",
+      "artistSummaries": [
+        {
+          "source": 1,
+          "filename": "The-Rolling-Stones.jpg",
+          "artist": "The Rolling Stones",
+          "description": "Black-and-white studio group portrait of five light-skinned adult men posed against a seamless white backdrop. Two stand at left, one stands at far right with arms crossed, one kneels low in front center, and one crouches behind him wearing dark sunglasses. The leftmost man is tall and slim with shaggy dark hair, a narrow face, and a patterned blazer over an open-collar printed shirt and dark flared trousers. The second man leans forward with one hand on the first man's shoulder; he has spiky dark hair, a slim build, a striped short-sleeve top, light trousers, and sneakers. The center-front kneeling man has medium-length dark hair, full lips, and a loose floral shirt open at the chest with white trousers. Behind him, a crouching man with short hair wears a light button-up shirt, loose trousers, and sunglasses. The rightmost man is tall and slim with a straight dark bowl-style haircut, long face, dark zip jacket, and very wide light flared trousers. Lighting is even and bright with soft shadows; the treatment is clean, high-contrast monochrome.",
+          "primarySubject": "The kneeling man in front center with medium-length dark hair and a floral open-collar shirt is the most visually prominent.",
+          "visiblePeople": [
+            "Adult man, tall and slim, light skin, shaggy dark hair, clean-shaven, narrow face, standing at far left",
+            "Adult man, slim, light skin, spiky dark hair, clean-shaven, leaning forward near left center",
+            "Adult man, average build, light skin, medium-length dark hair, clean-shaven, kneeling in front center",
+            "Adult man, slim, light skin, short hair, wearing dark sunglasses, crouching behind front center",
+            "Adult man, tall and slim, light skin, straight dark bowl-style hair, clean-shaven, standing at far right with arms crossed"
+          ],
+          "wardrobe": "Mixed stagewear and casual 1970s-style clothing: patterned blazer, printed shirt, striped knit top, floral shirt, zip jacket, button-up shirt, dark and white flared trousers, sneakers, and boots/shoes.",
+          "photoStyle": "Black-and-white studio band portrait, full-body group pose, evenly lit, minimal background.",
+          "setting": "Plain seamless studio backdrop with no visible furniture or props aside from a faintly visible low support behind the figures; the environment is intentionally blank and featureless.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 2,
+          "filename": "Fleetwood-Mac.jpg",
+          "artist": "Fleetwood Mac",
+          "description": "Color studio portrait of five light-skinned older adults against a solid black background. At far left stands a tall bald man with a white beard and mustache, wearing a dark velvet-like jacket, open-collar shirt, layered necklaces, and pinstriped trousers, one hand in his pocket. Slightly behind center-left stands a blonde woman with long straight hair and bangs in a black outfit, resting one hand on the shoulder of the man in front. At center stands a man with short graying hair and an average build in a black leather jacket over a dark shirt and blue jeans, facing the camera with one hand touching his chest. Seated at center-right is a man with a trimmed white beard and mustache, wearing a light flat cap, black shirt, and blue trousers, hands clasped. At far right stands a blonde woman with bangs in a dark jacket over a light top, dark pants, and a long scarf, one hand resting on the seated man's shoulder. Lighting is controlled and directional, isolating the figures against the black background.",
+          "primarySubject": "The standing man at center with short graying hair, black leather jacket, and one hand at his chest is the most visually prominent.",
+          "visiblePeople": [
+            "Older adult man, tall, light skin, bald with white beard and mustache, standing at far left",
+            "Older adult woman, light skin, long blonde hair with bangs, standing slightly behind center-left",
+            "Older adult man, average build, light skin, short graying hair, clean-shaven, standing at center",
+            "Older adult man, light skin, white beard and mustache, wearing a light flat cap, seated at center-right",
+            "Older adult woman, light skin, blonde hair with bangs, standing at far right"
+          ],
+          "wardrobe": "Dark studio clothing with some formal-rock styling: velvet-like jacket, open-collar shirt, layered necklaces, pinstriped trousers, black leather jacket, dark tops, blue jeans, flat cap, scarf, dark jacket, light top, and dark pants.",
+          "photoStyle": "Color studio band portrait, posed group arrangement, black background, crisp controlled lighting.",
+          "setting": "Featureless black studio backdrop with no visible room details, props, or environmental cues; subjects are lit in isolation.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 3,
+          "filename": "XTC.jpg",
+          "artist": "XTC",
+          "description": "Color indoor portrait of four light-skinned adult men standing closely in front of an off-white wall. The rightmost man is tallest and closest to camera, with short light brown or dark blonde hair, a broad forehead, and a neutral expression; he wears a plain black long-sleeve top, a wristwatch, and holds a pair of tinted round-lens glasses in one hand while the other arm crosses his body. To his left stand three men slightly farther back: the leftmost has short dark hair and wears a black-and-white striped button-up shirt with a wide white collar; the second has thick dark shaggy hair and a dark blue button-up shirt with hands in pockets; the third has short dark hair, a slim face, and a gray button-up shirt with chest pockets. Lighting is soft and even, with mild shadows; framing is waist-up to mid-torso.",
+          "primarySubject": "The tall man at far right in a plain black top, holding round-lens glasses and wearing a wristwatch, is the most visually prominent.",
+          "visiblePeople": [
+            "Adult man, light skin, short dark hair, clean-shaven, wearing a striped button-up shirt, standing at far left",
+            "Adult man, light skin, thick dark shaggy hair, clean-shaven, wearing a dark blue button-up shirt, standing left-center",
+            "Adult man, light skin, short dark hair, clean-shaven, wearing a gray button-up shirt, standing right-center",
+            "Adult man, tall, light skin, short light brown or dark blonde hair, clean-shaven, wearing a black long-sleeve top and wristwatch, holding glasses at far right"
+          ],
+          "wardrobe": "Casual shirts and knitwear: striped button-up with white collar, dark blue button-up shirt, gray pocketed button-up shirt, plain black long-sleeve top, wristwatch, and handheld tinted glasses.",
+          "photoStyle": "Color band portrait, informal studio or interior wall setup, medium group framing, soft direct flash or softbox lighting.",
+          "setting": "Simple indoor corner or wall area with smooth off-white walls and almost no furnishings or decor visible; only the plain wall surface establishes the environment.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 4,
+          "filename": "Led-Zeppelin.jpg",
+          "artist": "Led Zeppelin",
+          "description": "Black-and-white close group portrait of four light-skinned young adult men against a dark background. At far left, a slim man with shoulder-length dark hair and a narrow mustache sits or leans with arms folded, wearing a light long-sleeve knit shirt. Next to him, a curly-haired blond man with a serious expression is partly shadowed and wears a dark patterned top. At center-right, a man with long dark hair falling over one eye wears a light patterned shirt and looks directly at the camera, seated forward with hands near his knees. At far right, a fair-haired man with straight medium-length hair rests his cheek on one hand and wears a patterned shirt, giving a faint half-smile. Lighting is moody and directional, emphasizing faces and hair against the black backdrop.",
+          "primarySubject": "The man at center-right with long dark hair partly covering one eye and a light patterned shirt is the most visually prominent.",
+          "visiblePeople": [
+            "Young adult man, light skin, shoulder-length dark hair, narrow mustache, wearing a light knit shirt, at far left",
+            "Young adult man, light skin, curly blond hair, clean-shaven, wearing a dark patterned top, left-center",
+            "Young adult man, light skin, long dark hair covering one eye, clean-shaven, wearing a light patterned shirt, center-right",
+            "Young adult man, light skin, straight fair hair, clean-shaven, wearing a patterned shirt, resting cheek on hand at far right"
+          ],
+          "wardrobe": "Textured and patterned long-sleeve tops or shirts, including one plain light knit shirt and several ornate patterned shirts.",
+          "photoStyle": "Black-and-white studio-style band portrait, tight seated composition, high contrast, dramatic low-key lighting.",
+          "setting": "Dark, nearly featureless backdrop with no visible furniture or room details; the composition focuses tightly on the seated group.",
+          "settingStrength": "weak"
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2",
+      "model": "openai/gpt-image-2/edit",
+      "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Simple indoor corner or wall area with smooth off-white walls and almost no furnishings or decor visible; only the plain wall surface establishes the environment.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A photorealistic 16:9 group portrait in a bare indoor corner with smooth off-white walls and simple floor, the corner seam clearly visible and the plain room extending naturally a little beyond the original frame; four adults share a quiet in-between moment: a tall light-skinned man with short light brown hair in a plain black long-sleeve top stands closest at foreground right, half-turned inward with one arm folded and tinted round-lens glasses dangling from his other hand, a light-skinned dark-haired man in an open floral shirt and white trousers sits low near center leaning back on one hand and looking up, an older light-skinned man with short graying hair in a black leather jacket and jeans stands center-left near the corner angled toward him as if mid-conversation, and a young light-skinned man with long dark hair partly over one eye in a light patterned shirt leans slightly back at left against the wall observing the others; asymmetrical layered composition with varied heights and depth, no lineup, medium-wide framing from about waist-to-floor level, natural eye-level viewpoint, 35mm lens feel with modest room context and crisp facial detail; soft even interior light with mild shadow falloff consistent with a simple room portrait; subdued natural color, off-white walls, black and deep blue clothing accents, calm intimate mood. Attached cast plan: Attached reference image 1: portray only the tall light-skinned man with short light brown hair in a plain black long-sleeve top, wristwatch, and round tinted glasses in hand; foreground right, closest to camera, half-turned inward with one arm folded and the glasses hanging from his other hand. Attached reference image 2: portray only the light-skinned man with medium-length dark hair and full lips wearing an open floral shirt and white trousers; low near center foreground, seated or crouched casually on the floor, leaning back on one hand and looking up toward the others. Attached reference image 3: portray only the older light-skinned man with short graying hair wearing a black leather jacket over a dark shirt and blue jeans; center-left, standing near the wall corner, angled toward the seated man as if mid-conversation. Attached reference image 4: portray only the young light-skinned man with long dark hair falling over one eye, wearing a light patterned shirt; left background against the wall, slightly perched or leaning, watching across the group. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. This generation has 4 attached cast reference images; omit any person described in the creative direction who does not have an attached reference.",
+      "inputs": [
+        "XTC.jpg",
+        "The-Rolling-Stones.jpg",
+        "Fleetwood-Mac.jpg",
+        "Led-Zeppelin.jpg"
+      ]
+    },
+    {
+      "version": 2,
+      "date": "2026-08-31",
+      "type": "cover",
+      "lane": null,
+      "lighting": null,
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Tongue balloon over a cut-paper parade",
+      "creativeDirection": "A handcrafted cut-paper and screenprint-style collage scene with bold graphic shapes and posterized figures.",
+      "scene": "High oblique view into a vast white exhibition floor transformed into a surreal parade ground, where oversized paper emblems and tiny human figures gather beneath a floating balloon-like form.",
+      "elements": [
+        {
+          "source": 1,
+          "element": "a monumental stylized yellow face built as a freestanding cut-paper mural with green hair, red ear, and dark blue features, anchoring the left side"
+        },
+        {
+          "source": 2,
+          "element": "the main focal point is a giant tongue-and-lips hot-air-balloon form drifting low across the space, using the blue-to-orange gradient as the most vivid color accent"
+        },
+        {
+          "source": 3,
+          "element": "a single white flower appears as a tall minimalist placard or standard near the center, providing a calm vertical counterpoint"
+        },
+        {
+          "source": 4,
+          "element": "the six young adults appear once as a small posterized group on the floor below, arranged like a parade troupe looking up toward the balloon"
+        },
+        {
+          "source": 5,
+          "element": "butterflies, birds, biplanes, a zeppelin, stars, portrait cameos, clouds, and abstract symbols become scattered paper pennants, confetti, and small airborne ornaments throughout the scene"
+        }
+      ],
+      "palette": [
+        "white",
+        "dark blue",
+        "yellow",
+        "green",
+        "red-orange",
+        "purple"
+      ],
+      "mood": "playful, graphic, airy",
+      "coverSummaries": [
+        {
+          "source": 1,
+          "filename": "Drums-and-Wires.jpg",
+          "album": "Drums and Wires",
+          "artist": "",
+          "description": "A bold, graphic illustration of a human face fills most of the square. The face is rendered in flat yellow with simplified features drawn in dark blue-purple, including one eye, a long angular nose, and a small mouth. Green hair frames the top and right side, with a red ear visible on the right. Behind the face are torn-paper-like red and yellow shapes with rough white edges, all set against a dark blue background. The composition is asymmetrical and poster-like.",
+          "signatureMotif": "stylized yellow face",
+          "medium": "graphic illustration with torn-paper collage styling",
+          "palette": [
+            "yellow",
+            "dark blue",
+            "red",
+            "green",
+            "white"
+          ]
+        },
+        {
+          "source": 2,
+          "filename": "Forty-Licks.jpg",
+          "album": "Forty Licks",
+          "artist": "",
+          "description": "A large cropped tongue-and-lips graphic dominates the right side against a plain white background. The tongue shape is outlined in yellow-orange and filled with a smooth gradient shifting from blue at the top through purple and red to orange and yellow at the bottom. White teeth curve along the top edge. The left side is mostly empty space aside from text, creating a clean, minimalist layout.",
+          "signatureMotif": "large tongue-and-lips emblem",
+          "medium": "digital vector-style graphic",
+          "palette": [
+            "white",
+            "blue",
+            "purple",
+            "red",
+            "orange"
+          ]
+        },
+        {
+          "source": 3,
+          "filename": "Greatest-Hits.jpg",
+          "album": "Greatest Hits",
+          "artist": "",
+          "description": "A single white flower emblem is centered on a dark, softly blended green background. The flower has a rounded bloom with black internal linework, two leaves, and a simple stem, all rendered in a flat, cutout-like style. The overall composition is sparse and symmetrical, with the flower floating in the middle of the frame.",
+          "signatureMotif": "white stylized flower",
+          "medium": "minimal graphic design with cutout-style illustration",
+          "palette": [
+            "dark green",
+            "olive",
+            "white",
+            "black"
+          ]
+        },
+        {
+          "source": 4,
+          "filename": "Empire-Records-The-Soundtrack.jpg",
+          "album": "Empire Records The Soundtrack",
+          "artist": "",
+          "description": "A group portrait of six young adults stands against a bright white background. The central woman faces forward with arms extended slightly outward, wearing a cropped long-sleeve top and a plaid skirt. Around her are five others in casual 1990s-style clothing: one bald woman at left, a smiling man in a sleeveless sports jersey, a dark-haired man in profile behind, a man in a patterned cardigan at right, and a blonde woman posing with hands near her head. The image has a high-contrast, posterized photographic look with warm yellow and greenish tones.",
+          "signatureMotif": "group of six young adults",
+          "medium": "posterized studio photograph",
+          "palette": [
+            "white",
+            "yellow",
+            "green",
+            "black",
+            "red"
+          ]
+        },
+        {
+          "source": 5,
+          "filename": "Led-Zeppelin-III.jpg",
+          "album": "Led Zeppelin III",
+          "artist": "",
+          "description": "A dense collage fills the cover around a large central outlined wordmark shape, surrounded by many small illustrated and photographic elements. Visible motifs include butterflies, birds, a zeppelin airship, vintage biplanes, stars, circular portrait cameos, abstract blobs, flowers, clouds, and various decorative symbols scattered across an off-white background. The composition is busy and whimsical, with black outlines and multicoloured accents layered throughout.",
+          "signatureMotif": "collage of butterflies, airships, portraits, and abstract symbols",
+          "medium": "mixed-media collage illustration",
+          "palette": [
+            "off-white",
+            "black",
+            "blue",
+            "pink",
+            "yellow"
+          ]
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2",
+      "model": "openai/gpt-image-2/edit",
+      "prompt": "A high oblique view into a surreal white parade ground inside an open, gallery-like expanse; a giant tongue-and-lips hot-air balloon drifts low from the upper right toward center, dominating the scene. Below it, a small troupe of six young adults stands together once on the floor like a posterized parade ensemble, looking upward, while at the left a monumental freestanding cut-paper mural of a stylized yellow face with dark blue features, green hair, and a red ear rises like a ceremonial backdrop. Include a single tall white flower standard near the center with black internal linework and two simple leaves, calm and symmetrical against the activity. Disperse supporting motifs as small cut-paper airborne ornaments and parade debris: butterflies, birds, a zeppelin, vintage biplanes, stars, circular cameos, flowers, clouds, and abstract blobs scattered lightly across the white space without overcrowding the focal areas. Render as handcrafted cut-paper collage combined with screenprint textures and posterized photographic treatment for the group, with visible torn edges, layered paper shadows, flat color fields, and crisp graphic contours. Compose with the balloon as the clear lead at upper right, the yellow face as a heavy counterweight on the left, the flower as a quiet vertical hinge, and the six-person group small but legible near the lower center; use bright diffuse lighting with soft shallow shadows to emphasize the paper construction. Palette of white, dark blue, flat yellow, green, red-orange, purple gradients, off-white, and black; mood playful, airy, and boldly graphic. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "inputs": [
+        "Drums-and-Wires.jpg",
+        "Forty-Licks.jpg",
+        "Greatest-Hits.jpg",
+        "Empire-Records-The-Soundtrack.jpg",
+        "Led-Zeppelin-III.jpg"
+      ]
     }
   ]
 }

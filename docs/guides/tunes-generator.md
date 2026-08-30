@@ -533,6 +533,25 @@ it as **"Various"**. `lookupAlbumData` in `scripts/lib/text-utils.js` folds ever
 the credit onto itself so the release resolves; without that the sleeve, the russ.fm link and
 the cover input were all silently lost.
 
+**Last.fm reports compilations two different ways**, depending on how the scrobbled tracks
+were tagged:
+
+1. One album row credited `Various Artists`
+2. One album row **per track artist**, all sharing the album name with a single play each -
+   14 rows for *Empire Records - The Soundtrack*
+
+Shape 2 is the dangerous one: the split-album dominance test in `processAlbumData` can never
+merge it (no artist holds 70% of one play each), so without handling it the week would get a
+separate written section for every track. `processAlbumData` folds both shapes into a single
+`Various Artists` entry with the plays summed.
+
+Folding is deliberately conservative. A row is only folded when the album resolves as a
+`Various` release in the collection **and** that row's own artist does not own an album of the
+same name. So when a compilation shares its title with a real record - the collection holds both
+a Various *Electronic* and *Electronic* by Electronic - the artist's own record is left alone and
+only the unmatched rows fold. Titles in the `commonTitles` list (`Greatest Hits`, `Collection`,
+and similar) are never folded, and with no collection data available the old behaviour applies.
+
 What a compilation gets:
 
 - A full written section, with the tracklist in its Release Details block, and compilation-specific
@@ -550,6 +569,14 @@ What it deliberately does not get:
 - **No entry in the Top Artists list**, and no place in the artist group portrait - there is
   nobody to photograph. This filter is in `scripts/generate-tunes-post.js`; it applies to the
   artists list only, never to `topAlbums`.
+
+A compilation's track artists also appear in the weekly *artist* chart, normally with a single
+play each. Those plays belong to the compilation's own section rather than a top-artist slot, so
+`processArtistData` subtracts whatever was folded and drops any artist left with nothing. An
+artist played on their own account keeps that part of their count and stays in the list - if you
+played four tracks from Cracker's own LP and one from the soundtrack, Cracker appears with four
+plays. Without this, a quiet week's Top Artists list and portrait cast fill up with one-play
+soundtrack names.
 
 Known wrinkle: `scripts/build-tunes-index.js` does not filter the credit, so a `various-artists`
 pseudo-artist exists in `src/data/tunes-index.json` and renders a thin `/tunes/artist/various-artists/`
