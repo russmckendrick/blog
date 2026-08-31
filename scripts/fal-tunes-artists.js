@@ -22,7 +22,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const PROJECT_ROOT = path.resolve(__dirname, '..')
 
-const DEFAULT_BACKEND = 'nano-banana'
+const DEFAULT_BACKEND = 'nano-banana-pro'
 const MIN_TIMESTAMP_SEED = 604800000
 
 // Resolve the image backend: explicit option first, then the tunes-config.yaml switch, then the
@@ -78,7 +78,7 @@ async function resolveCastCounts(options) {
   }
 
   return {
-    featureCount: Number(process.env.TUNES_ARTIST_PORTRAIT_INPUTS || options.inputs || configInputs || 6),
+    featureCount: Number(process.env.TUNES_ARTIST_PORTRAIT_INPUTS || options.inputs || configInputs || 4),
     candidateCount: Number(process.env.TUNES_ARTIST_PORTRAIT_CANDIDATES || options.candidates || configCandidates || 12)
   }
 }
@@ -408,10 +408,10 @@ Notes:
   - OPENAI_TUNES_ARTIST_SUMMARY_MODEL and OPENAI_TUNES_ARTIST_DIRECTION_MODEL can
     override the two prompt stages; OPENAI_TUNES_ARTIST_MODEL is their shared fallback.
   - Uploads the top TUNES_ARTIST_PORTRAIT_CANDIDATES artists (default 12) as casting
-    options, then features about TUNES_ARTIST_PORTRAIT_INPUTS of them (default 6) - only
+    options, then features about TUNES_ARTIST_PORTRAIT_INPUTS of them (default 4) - only
     the cast is rendered, keeping the group uncrowded.
-  - The image backend (gpt-image-2 or nano-banana) is chosen by settings.artist_portrait_backend
-    in scripts/tunes-config.yaml.
+  - The image backend (nano-banana-pro, gpt-image-2, or nano-banana) is chosen by
+    settings.artist_portrait_backend in scripts/tunes-config.yaml.
 `)
 }
 

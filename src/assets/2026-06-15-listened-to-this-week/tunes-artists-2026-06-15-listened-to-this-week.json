@@ -6,236 +6,221 @@
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Split-room pause between odd companions",
-  "creativeDirection": "Make it a photorealistic, slightly elevated environmental group portrait that uses the graphic split polka-dot room as a surreal but tangible shared space, with staggered depth and offbeat, natural poses rather than a lineup.",
-  "scene": "Inside the split black-and-white polka-dot room, the six adults have gathered in a loose cluster around the center seam where the two patterned halves meet, some seated low against the walls and others standing or leaning, as if caught in a quiet pause while settling into the strange space.",
-  "locationSource": 10,
-  "locationSetting": "Immersive constructed set with floor and walls covered in black-and-white polka-dot fabric or paper, split into white and black halves.",
-  "locationEvidence": "The entire visible room is a highly distinctive constructed set: floor and walls fully wrapped in black-and-white polka-dot material, split cleanly into a white half and a black half with a strong vertical seam and matching dot patterns continuing across surfaces.",
+  "concept": "Lean-in conversation across the empty auditorium",
+  "creativeDirection": "Shoot a naturalistic color group portrait from seat level inside the auditorium, using layered depth and casual mid-conversation body language rather than a formal lineup.",
+  "scene": "In the empty auditorium, the group gathers across adjacent seat backs near the front-middle rows, as if sharing a quick exchange before settling in, with the red seats and warm ceiling lights receding behind them.",
+  "locationSource": 2,
+  "locationSetting": "Modern theater or concert hall interior with upholstered seats, wood acoustic wall panels, aisle rails, and many small ceiling lights.",
+  "locationEvidence": "Rows of red upholstered theater seats, wood acoustic wall panels, aisle rails, and warm ceiling lights clearly establish a modern auditorium interior.",
   "locationReference": 1,
-  "locationInput": "Angine-de-Poitrine.jpg",
+  "locationInput": "Marillion.jpg",
   "cast": [
     {
-      "source": 10,
-      "person": "the standing masked adult in the white draped polka-dot garment with black dotted face covering and yellow cone accent",
-      "placement": "left of center on the white half, standing nearest the wall-floor corner as the visual anchor"
-    },
-    {
-      "source": 9,
-      "person": "the muscular long-haired man in a tight black V-neck shirt with a large cross pendant",
-      "placement": "right of center on the black half, standing square to camera slightly behind the front figures"
-    },
-    {
-      "source": 6,
-      "person": "the tall man with long wavy hair and a large cowboy hat in dark layered clothing",
-      "placement": "rear center straddling the seam, leaning one arm to the wall"
+      "source": 2,
+      "person": "dark-haired light-skinned man in a dark jacket over a colorful patterned shirt, slight smile",
+      "placement": "front center, leaning over a seat back closest to camera"
     },
     {
       "source": 4,
-      "person": "the messy blond-and-brown curly-haired man with faint mustache in a fitted dark T-shirt",
-      "placement": "front center seated low on the floor at the seam, elbows on knees"
+      "person": "younger light-skinned man with voluminous curly blond-brown hair, faint mustache, black T-shirt",
+      "placement": "left side, seated sideways in a seat and leaning forward into the conversation"
     },
     {
       "source": 7,
-      "person": "the long dark-haired man with mustache and goatee wearing a flat-brim cap and zip hoodie",
-      "placement": "front right, crouched on the black half and turned slightly toward the group"
+      "person": "light-skinned man with long dark hair, mustache and goatee, blue flat-brim cap, gray zip hoodie",
+      "placement": "right foreground, half-turned in his seat with one arm draped over the adjacent seat back"
     },
     {
-      "source": 2,
-      "person": "the dark-haired clean-shaven man in a dark jacket over a colorful patterned shirt",
-      "placement": "front left, seated casually on the white half with one arm braced behind him"
+      "source": 9,
+      "person": "pale light-skinned man with long straight black hair, strong brow, fitted black top, large cross pendant",
+      "placement": "standing one row behind center-right, looking down toward the others"
     }
   ],
   "selection": [
-    10,
-    9,
-    6,
+    2,
     4,
     7,
-    2
+    9
   ],
   "palette": [
-    "black",
-    "white",
-    "cream",
+    "deep red",
+    "warm amber",
+    "dark brown",
     "charcoal",
-    "muted skin tones",
-    "small yellow accents"
+    "muted skin tones"
   ],
-  "mood": "surreal, intimate, quietly playful",
+  "mood": "warm, intimate, slightly tense but conversational",
   "artistSummaries": [
     {
       "source": 1,
       "filename": "R-E-M.jpg",
       "artist": "R E M",
-      "description": "Black-and-white outdoor group portrait of four light-skinned adult men posed around a race car. One man stands on the car with one foot raised and one hand lifted, wearing dark sunglasses and holding a drink cup; one man with wavy hair and round sunglasses leans on the car at right; one shaggy-haired man stands center front in an open plaid overshirt; one man in a baseball cap and knit cardigan stands at left. Overhead utility wires, low industrial buildings, and a parked vehicle are visible behind them under an overcast sky.",
-      "primarySubject": "The most prominent adult is the tall man at upper left standing on the car, wearing dark oval sunglasses, a loose dark T-shirt, dark jeans, and raising one hand overhead.",
+      "description": "Black-and-white outdoor group photo of four light-skinned adult men posed around a parked car. One man stands on the car with one foot raised and one hand lifted overhead, wearing dark sunglasses and holding a cup. Another leans on the car at right in sunglasses. Two others stand in front of the car. The background shows low industrial buildings, utility wires, rough ground, and open sky.",
+      "primarySubject": "The man standing on the car at upper left with very short hair, dark sunglasses, a loose T-shirt, dark pants, and one arm raised overhead.",
       "visiblePeople": [
-        "Adult man with short hair, sunglasses, dark T-shirt and jeans, standing on the car with one hand raised",
-        "Adult man with medium wavy hair, round sunglasses, loose light T-shirt and shorts, leaning on the car",
-        "Adult man with shaggy dark hair, no eyewear, dark shirt under an open plaid overshirt, standing center front",
-        "Adult man with a baseball cap, clean-shaven face, white T-shirt and chunky knit cardigan, standing at left"
+        "Adult man with very short hair, light skin, dark sunglasses, loose short-sleeve T-shirt, dark pants, belt; standing high on the car with one hand raised and holding a cup.",
+        "Adult man with wavy medium-length hair, light skin, dark round sunglasses, oversized T-shirt and shorts; leaning against the car at right.",
+        "Adult man with shaggy medium-length dark hair, light skin, plaid overshirt over dark V-neck shirt; standing center front with hands in pockets.",
+        "Adult man with light skin, dark cap, cardigan over a light T-shirt; standing at lower left with a serious expression."
       ],
-      "wardrobe": "Casual T-shirts, jeans, shorts, plaid overshirt, knit cardigan, baseball cap, and sunglasses.",
-      "photoStyle": "Grainy black-and-white documentary-style band portrait with natural light and medium-wide framing.",
-      "setting": "Outdoor industrial lot or roadside area with a race car in the foreground, low warehouse-like buildings, rough ground, a distant parked vehicle, and overhead utility wires.",
-      "settingStrength": "strong"
+      "wardrobe": "Casual T-shirts, cardigan, plaid overshirt, dark pants, shorts, cap, and sunglasses on two men.",
+      "photoStyle": "Grainy black-and-white documentary-style band portrait with natural light and wide framing.",
+      "setting": "Outdoor industrial lot or backstreet area with a parked car covered in decals, low warehouse-like buildings, utility wires crossing the frame, sparse ground cover, and open overcast sky.",
+      "settingStrength": "moderate"
     },
     {
       "source": 2,
       "filename": "Marillion.jpg",
       "artist": "Marillion",
-      "description": "Color group portrait of five light-skinned adult men inside an auditorium. A dark-haired man in front leans toward the camera over the back of a seat or barrier, smiling slightly. Two men stand behind him, including a bald man in a dark jacket and a heavier man with a receding hairline and short beard. At left, a man with curly medium-length hair wears a blazer over a graphic shirt; at right, an older white-haired man in a dark T-shirt faces the camera. Rows of orange-red theater seats and warm ceiling lights fill the background.",
-      "primarySubject": "The most prominent adult is the dark-haired man in front center, leaning toward the camera with a slight smile, wearing a dark jacket over a colorful patterned shirt.",
+      "description": "Color group portrait of five light-skinned adult men inside an auditorium. One dark-haired man leans closest to the camera over a seat back, with four others grouped behind and beside him. Rows of red theater seats and warm ceiling lights recede into the background.",
+      "primarySubject": "The dark-haired man in front center, closest to the camera, smiling slightly and leaning forward over a seat back in a dark jacket with a patterned shirt underneath.",
       "visiblePeople": [
-        "Adult man with medium dark hair, clean-shaven, leaning forward in front center",
-        "Adult man with curly medium-length brown hair, blazer and printed shirt, seated or leaning at left",
-        "Adult man with receding hairline, short beard, dark jacket, standing behind",
-        "Adult man with shaved or bald head, angular face, dark jacket, standing behind right",
-        "Older adult man with short white hair, clean-shaven, dark T-shirt, at right"
+        "Adult man with shoulder-length curly brown hair, light skin, wearing a dark blazer over a graphic shirt; seated or leaning at left.",
+        "Adult man with receding hairline and short beard, light skin, wearing a dark jacket over a light shirt; positioned behind left-center.",
+        "Adult man with shaved or bald head, light skin, wearing a dark jacket over a dark shirt; standing behind center-right with a stern expression.",
+        "Adult man with medium-length dark hair, light skin, wearing a dark jacket over a colorful patterned shirt; front center, leaning toward camera.",
+        "Adult man with short white hair, light skin, wearing a dark T-shirt and tinted glasses hanging at the collar; at right with a slight smile."
       ],
-      "wardrobe": "Dark blazer, jackets, graphic T-shirts, and one colorful patterned shirt.",
-      "photoStyle": "Sharp color editorial portrait with warm indoor lighting and shallow depth of field.",
-      "setting": "Modern theater or concert hall interior with many upholstered seats, aisles, layered wall panels, and small warm ceiling lights.",
+      "wardrobe": "Dark blazers and jackets with T-shirts or patterned shirt; casual-smart stage or interview attire.",
+      "photoStyle": "Sharp color promotional portrait with warm indoor lighting and moderate depth of field.",
+      "setting": "Modern theater or concert hall interior with upholstered seats, wood acoustic wall panels, aisle rails, and many small ceiling lights.",
       "settingStrength": "strong"
     },
     {
       "source": 3,
       "filename": "Pearl-Jam.jpg",
       "artist": "Pearl Jam",
-      "description": "Color studio portrait of five light-skinned adult men against a dark plain backdrop. The front-center man smiles faintly and holds a turquoise electric guitar strap or body; he has short brown hair and light facial hair, wearing a dark plaid overshirt. At left stands a silver-haired man in a black leather jacket. Behind left is a tall man with short dark hair in a dark hoodie. Behind right is a stockier man with short dark hair and beard stubble in a dark T-shirt. At far right is a man with glasses and neatly combed dark hair in a navy shirt.",
-      "primarySubject": "The most prominent adult is the front-center man with short brown hair and light beard stubble, smiling and holding a turquoise electric guitar while wearing a dark plaid overshirt.",
+      "description": "Studio-style color portrait of five light-skinned adult men against a dark plain background. Four stand closely grouped while one sits or leans forward in front holding a blue electric guitar. The figures are lit from the front with soft, even light.",
+      "primarySubject": "The man front center with brown hair and short beard, smiling slightly, wearing a plaid overshirt and holding a blue electric guitar across his body.",
       "visiblePeople": [
-        "Adult man with silver slicked-back hair, clean-shaven, black leather jacket, at left",
-        "Tall adult man with short dark hair, clean-shaven, dark hoodie, behind left",
-        "Adult man with short brown hair and light beard stubble, dark plaid overshirt, holding a turquoise guitar, front center",
-        "Adult man with short dark hair and beard stubble, dark T-shirt, behind right",
-        "Adult man with short neatly combed dark hair, rectangular glasses, navy shirt, at far right"
+        "Adult man with short slicked-back gray hair, light skin, black jacket, neutral expression; standing at far left.",
+        "Adult man with short dark hair, light skin, wearing a dark zip hoodie over a light shirt; standing left rear.",
+        "Adult man with brown hair and short beard, light skin, plaid overshirt over a T-shirt; front center holding a blue electric guitar.",
+        "Adult man with short dark hair and trimmed beard, light skin, dark T-shirt; standing right rear.",
+        "Adult man with short dark hair graying at the sides, light skin, rectangular glasses, dark long-sleeve shirt; standing at far right."
       ],
-      "wardrobe": "Dark jackets, dark T-shirts, plaid overshirt, glasses, and a visible electric guitar.",
-      "photoStyle": "Controlled studio color portrait with soft directional lighting and tight group framing.",
-      "setting": "Plain dark studio backdrop with no visible environmental features beyond the guitar.",
+      "wardrobe": "Mostly dark casual clothing: black jacket, hoodie, T-shirts, plaid overshirt; one visible electric guitar.",
+      "photoStyle": "Clean color studio portrait with dark seamless background and soft controlled lighting.",
+      "setting": "Plain dark studio backdrop with no visible furniture or environmental features.",
       "settingStrength": "weak"
     },
     {
       "source": 4,
       "filename": "Sublime.jpg",
       "artist": "Sublime",
-      "description": "Color portrait of three adult men seated against a nearly black background. The central light-skinned man leans forward with clasped hands, messy blond-and-brown curly hair, and a faint mustache, wearing a tight dark T-shirt. At left, a heavier man with beard stubble wears a white cap, dark sunglasses, black T-shirt, and camouflage shorts; his tattooed arms are visible. At right, a heavier man with round sunglasses and a striped brimmed hat wears a sleeveless black shirt, showing heavily tattooed arms. Lighting is direct and flash-like.",
-      "primarySubject": "The most prominent adult is the central man leaning forward with clasped hands, messy two-tone curly hair, faint mustache, and a fitted dark T-shirt.",
+      "description": "Color portrait of three light-skinned adult men seated against a nearly black background. The central younger man leans forward with clasped hands toward the camera. The two men on either side are heavier-set, tattooed, and wear dark glasses and casual streetwear; the man on the right also wears a striped hat.",
+      "primarySubject": "The younger man at center with voluminous curly blond-brown hair, faint mustache, black T-shirt, and clasped hands leaning directly toward the camera.",
       "visiblePeople": [
-        "Adult man with messy blond-and-brown curly hair, faint mustache, dark T-shirt, leaning forward center",
-        "Heavier adult man with cap, dark sunglasses, beard stubble, black T-shirt and camouflage shorts, seated at left",
-        "Heavier adult man with round sunglasses, striped brimmed hat, sleeveless black shirt, heavily tattooed arms, seated at right"
+        "Adult man with beard, light skin, white cap, dark sunglasses, black T-shirt, camouflage shorts, tattooed arms; seated at left.",
+        "Adult man with tousled curly blond-brown hair, light skin, faint mustache, black T-shirt; seated front center leaning forward with hands clasped.",
+        "Adult man with light skin, round dark sunglasses, striped brimmed hat, black sleeveless shirt, tattooed arms, jeans; seated at right with one hand near his head."
       ],
-      "wardrobe": "Dark T-shirts, camouflage shorts, sunglasses, a white cap, a striped hat, and visible arm tattoos.",
-      "photoStyle": "Dark, high-contrast flash portrait with a candid concert-backstage feel.",
-      "setting": "Very dark interior or stage-side area with the background falling to black and minimal visible location detail.",
+      "wardrobe": "Black T-shirts, sleeveless top, cap, round sunglasses, striped hat, camouflage shorts, jeans; extensive arm tattoos on the side figures.",
+      "photoStyle": "Flash-lit color portrait with dark background, high contrast, and a candid club or backstage feel.",
+      "setting": "Dim interior with a black or very dark backdrop and little visible environmental detail beyond seating position.",
       "settingStrength": "weak"
     },
     {
       "source": 5,
       "filename": "Boards-of-Canada.jpg",
       "artist": "Boards of Canada",
-      "description": "Black-and-white outdoor portrait of two light-skinned adult men at what appears to be a beach or shoreline. The man in the foreground wears a knit beanie and loose dark sweatshirt, with short beard and mustache, and looks directly at the camera. The second man stands farther back out of focus in a light long-sleeve shirt and light trousers, hands in pockets, turned partly sideways. A flat horizon and blurred water or wet sand sit behind them.",
-      "primarySubject": "The most prominent adult is the foreground man wearing a dark knit beanie and oversized dark sweatshirt, with short beard and mustache, looking directly at the camera.",
+      "description": "Black-and-white outdoor portrait of two light-skinned adult men in an open landscape. The man in the foreground faces the camera wearing a knit beanie and dark sweatshirt, while the other stands farther back turned in profile with hands in pockets. The background is softly blurred and appears flat and expansive.",
+      "primarySubject": "The foreground man at left with a knit beanie, medium-length hair peeking out, short beard, and a loose dark sweatshirt, looking directly at the camera.",
       "visiblePeople": [
-        "Adult man with knit beanie, medium-length hair peeking out, short beard and mustache, loose dark sweatshirt, foreground",
-        "Adult man with short hair, short beard, light long-sleeve shirt and light trousers, standing farther back with hands in pockets"
+        "Adult man with knit beanie, light skin, medium-length hair visible at the sides, short beard and mustache, dark oversized sweatshirt; standing in foreground facing camera.",
+        "Adult man with short dark hair, light skin, short beard, light long-sleeve shirt and light pants; standing in background in profile with hands in pockets."
       ],
-      "wardrobe": "Beanie, oversized dark sweatshirt, light long-sleeve shirt, and light trousers.",
+      "wardrobe": "Simple casual clothing: beanie, oversized sweatshirt, long-sleeve shirt, and light pants.",
       "photoStyle": "Soft black-and-white portrait with shallow depth of field and natural outdoor light.",
-      "setting": "Open beach or shoreline with flat sand or tidal area and a distant waterline under a clear sky.",
+      "setting": "Open outdoor area with flat ground and a distant blurred horizon, likely a shoreline or open plain under clear sky.",
       "settingStrength": "moderate"
     },
     {
       "source": 6,
       "filename": "Extreme.jpg",
       "artist": "Extreme",
-      "description": "Black-and-white studio portrait of four light-skinned adult men posed on white blocks against a seamless white background. At center rear, a tall man with long wavy hair wears a large cowboy hat and dark layered clothing, resting an arm on another man. Front center-left, a man in a patterned headscarf and floral shirt sits sideways with one hand under his chin. At left, a curly-haired man with a small goatee leans back in a textured jacket. At right, a man with short dark slicked hair wears dark sunglasses, a dark suit jacket, and patterned boots.",
-      "primarySubject": "The most prominent adult is the tall central man in the back wearing a large cowboy hat, long wavy hair, and dark layered clothing, leaning forward with one arm draped down.",
+      "description": "High-key black-and-white studio group portrait of four light-skinned adult men posed on white cubes against a white background. They wear dark stylish clothing and boots, with one long-haired man in a large cowboy hat positioned highest at center back. The group is arranged in a relaxed seated cluster.",
+      "primarySubject": "The long-haired man at center back wearing a large cowboy hat and dark layered clothing, leaning one arm over the group from a higher seated position.",
       "visiblePeople": [
-        "Adult man with curly hair and small goatee, textured dark jacket, leaning at left",
-        "Adult man with patterned headscarf, long face, floral shirt and jeans, seated front center-left with chin resting on hand",
-        "Tall adult man with long wavy hair, large cowboy hat, dark layered clothing, center rear",
-        "Adult man with slicked dark hair, dark sunglasses, dark suit jacket and patterned boots, seated at right"
+        "Adult man with short tight curly hair, light skin, small goatee, textured dark jacket and slim pants; reclining on a cube at far left.",
+        "Adult man with long straight hair under a bandana, light skin, patterned floral shirt and fitted jeans; seated front left with chin resting on hand.",
+        "Adult man with long wavy hair, light skin, wide-brim cowboy hat, dark layered jacket; positioned center back with one arm draped forward.",
+        "Adult man with slicked-back dark hair, light skin, dark sunglasses, dark blazer over a dotted shirt, dark pants and patterned boots; seated at right."
       ],
-      "wardrobe": "Cowboy hat, headscarf, patterned floral shirt, textured jacket, dark suit jacket, jeans, boots, and sunglasses.",
+      "wardrobe": "Stylized dark rock attire including textured jacket, floral shirt, bandana, cowboy hat, blazer, sunglasses, fitted jeans, and boots.",
       "photoStyle": "High-key black-and-white studio fashion portrait with clean seamless background.",
-      "setting": "Minimal studio setup with white seamless backdrop and white cube blocks used as seating.",
+      "setting": "Minimal studio setup with white seamless background and white cube props only.",
       "settingStrength": "weak"
     },
     {
       "source": 7,
       "filename": "Amplifier.jpg",
       "artist": "Amplifier",
-      "description": "Color portrait of two light-skinned adult men in front of a worn brick wall. The man in the foreground at right is close to the camera, with long dark hair, mustache and goatee, wearing a flat-brim cap, zip hoodie, and T-shirt; harsh light illuminates his face. The second man stands farther back at left, bald with short beard stubble, wearing a black graphic T-shirt and dark pants. The floor edge and a few sparse plants are visible near the wall.",
-      "primarySubject": "The most prominent adult is the foreground man at right with long dark hair, mustache and goatee, flat-brim cap, gray hoodie, and direct bright light on his face.",
+      "description": "Color photo of two light-skinned adult men against an old brick wall. One man stands farther back at left in a black T-shirt, while the other is much closer to the camera at right wearing a flat-brim cap and hoodie, partially overexposed by direct light. The ground appears to be rough paving with some weeds at the base of the wall.",
+      "primarySubject": "The man closest to the camera at right with long dark hair, mustache and goatee, a blue flat-brim cap, and a gray zip hoodie, lit brightly from the front.",
       "visiblePeople": [
-        "Adult man with long dark hair, mustache and goatee, flat-brim cap, hoodie and T-shirt, close foreground right",
-        "Adult man with bald head, short beard stubble, black graphic T-shirt and dark pants, standing back left"
+        "Adult man with shaved or closely cropped hair, light skin, short beard, black graphic T-shirt and dark pants; standing back at left with arms relaxed.",
+        "Adult man with long dark hair, light skin, mustache and goatee, blue flat-brim cap, gray zip hoodie over a dark shirt; close to camera at right."
       ],
-      "wardrobe": "Cap, zip hoodie, T-shirt, black graphic T-shirt, and dark pants.",
-      "photoStyle": "Casual color portrait with strong direct light, slight snapshot feel, and depth from foreground/background placement.",
-      "setting": "Rough brick wall in an outdoor or semi-outdoor corner with uneven masonry, dark edges, ground at the base, and a little vegetation.",
-      "settingStrength": "moderate"
+      "wardrobe": "Black T-shirt and dark pants on one man; cap, zip hoodie, and dark shirt on the other.",
+      "photoStyle": "Casual color portrait with harsh direct flash or spotlight, strong foreground/background separation, and slight snapshot feel.",
+      "setting": "Exterior brick wall with weathered mortar, rough paved ground, and sparse plants along the base; nighttime or very low ambient light.",
+      "settingStrength": "strong"
     },
     {
       "source": 8,
       "filename": "Porcupine-Tree.jpg",
       "artist": "Porcupine Tree",
-      "description": "Color studio portrait of three light-skinned adult men against a dark background. The front-center man has straight medium brown hair parted in the middle, rectangular glasses, and a black T-shirt, facing forward without smiling. At left, a taller man with short dark hair swept to one side wears a black zip jacket and has a narrow goatee. At right, an older man with white hair and dark rectangular glasses wears a black button-up shirt and looks toward the camera with a slight frown.",
-      "primarySubject": "The most prominent adult is the front-center man with medium brown center-parted hair, rectangular glasses, and a black T-shirt, facing straight ahead.",
+      "description": "Studio-style color portrait of three light-skinned adult men framed from mid-torso up against a dark plain background. The central man stands slightly forward, flanked by one man with a close beard at left and an older white-haired man with glasses at right. All wear black clothing and look seriously toward the camera.",
+      "primarySubject": "The central man with straight medium-brown hair parted near the middle, rectangular glasses, and a black T-shirt, standing slightly in front of the others.",
       "visiblePeople": [
-        "Tall adult man with short side-swept dark hair, narrow goatee, black zip jacket, at left",
-        "Adult man with medium brown center-parted hair, rectangular glasses, black T-shirt, center front",
-        "Older adult man with white hair, dark rectangular glasses, black button-up shirt, at right"
+        "Adult man with short side-parted dark hair, light skin, small chin beard, black zip-front jacket; standing at left in three-quarter view.",
+        "Adult man with medium-length straight brown hair, light skin, rectangular glasses, black T-shirt; standing center front facing camera.",
+        "Adult man with shaggy white hair, light skin, rectangular glasses, black button-up shirt; standing at right with a slightly pursed expression."
       ],
-      "wardrobe": "Black jacket, black T-shirt, black button-up shirt, and glasses.",
-      "photoStyle": "Moody studio color portrait with subdued lighting and tight framing.",
-      "setting": "Plain dark studio backdrop with no visible location elements.",
+      "wardrobe": "All-black clothing: zip jacket, T-shirt, and button-up shirt; glasses on the center and right men.",
+      "photoStyle": "Moody color studio portrait with subdued tones and soft directional lighting.",
+      "setting": "Plain dark studio background with no visible props or location details.",
       "settingStrength": "weak"
     },
     {
       "source": 9,
       "filename": "Danzig.jpg",
       "artist": "Danzig",
-      "description": "Color close portrait of one light-skinned adult man from chest up, standing in front of an ornate metal surface with circular patterns. He has long straight black hair, a broad face, and a stern expression. He wears a tight black V-neck top or shirt and a large cross-shaped pendant necklace. The lighting is cool and slightly desaturated.",
-      "primarySubject": "The single adult man with long straight black hair, stern expression, tight black shirt, and large cross-shaped pendant necklace.",
+      "description": "Tight color portrait of a single light-skinned adult man with long straight black hair and a stern expression. He wears a tight black V-neck top and a large cross-shaped pendant necklace. The background is an ornate dark metal or stone surface with circular and arched patterns, softly out of focus.",
+      "primarySubject": "The only visible man, with long straight black hair, pale skin, strong brow, black fitted top, and a large cross-shaped pendant centered on his chest.",
       "visiblePeople": [
-        "Adult man with long straight black hair, clean-shaven face, muscular upper body, tight black V-neck shirt, and large pendant necklace"
+        "Adult man with long straight black hair, light skin, broad face, no visible facial hair, black fitted V-neck top, large cross-shaped pendant necklace; facing camera with a stern expression."
       ],
-      "wardrobe": "Tight black shirt and large cross-shaped pendant necklace.",
-      "photoStyle": "Cool-toned, tightly framed portrait with soft contrast and centered composition.",
-      "setting": "Decorative metal or ironwork background with repeated circular motifs, visible only close behind the subject.",
+      "wardrobe": "Tight black long-sleeve or fitted top and a large pendant necklace.",
+      "photoStyle": "Moody, cool-toned color portrait with shallow depth of field and centered composition.",
+      "setting": "Close-cropped architectural backdrop with decorative circular and arched metal or stone detailing behind the subject.",
       "settingStrength": "moderate"
     },
     {
       "source": 10,
       "filename": "Angine-de-Poitrine.jpg",
       "artist": "Angine de Poitrine",
-      "description": "Stylized image of two human figures posed against a split black-and-white polka-dot environment. The left figure stands on the white side wearing a white draped garment with black dots, black gloves or dark limbs, and a black dotted full-face mask with yellow cone and facial accents. The right figure lies or floats diagonally on the black side wearing a black dotted outfit and a white triangular hood or mask with a yellow triangular accent and long yellow yarn-like strands extending out. The walls and floor are fully covered in matching dot patterns.",
-      "primarySubject": "The most prominent figure is the standing figure on the left in a white polka-dot draped garment and black full-face dotted mask with yellow cone and accents.",
+      "description": "Graphic overhead color image of two human figures in a room divided into white and black halves, both covered with white polka dots. The left figure lies on the white side in a loose white polka-dot garment and black dotted head covering with small yellow facial accents. The right figure lies on the black side in a black outfit with white dots and a white angular head covering with yellow yarn-like strands extending from it.",
+      "primarySubject": "The figure on the left side in a loose white polka-dot garment and black dotted full head covering, lying on the white polka-dot floor.",
       "visiblePeople": [
-        "Human figure standing on the left in a white polka-dot draped outfit and black full-face dotted mask with yellow cone accent",
-        "Human figure on the right posed diagonally in a black polka-dot outfit with a white triangular hood or mask and long yellow strand-like extensions"
+        "Adult-sized figure lying on the white half of the room, body covered in a loose white garment with black dots, black gloves or sleeves, black dotted full head covering with small yellow accents.",
+        "Adult-sized figure lying on the black half of the room, body covered in a black outfit with white dots, white gloves or shoes visible, white angular head covering with yellow yarn-like strands."
       ],
-      "wardrobe": "Full-body costume pieces with polka-dot patterns, draped garment, full-face masks or hoods, and yellow accent elements.",
-      "photoStyle": "Highly stylized color conceptual portrait with graphic pattern contrast and overhead or elevated viewpoint.",
-      "setting": "Immersive constructed set with floor and walls covered in black-and-white polka-dot fabric or paper, split into white and black halves.",
+      "wardrobe": "Full-body costumed outfits in black-and-white polka-dot patterns, with sculptural masks or head coverings and contrasting yellow accents.",
+      "photoStyle": "Highly stylized overhead color composition with graphic contrast and conceptual costume treatment.",
+      "setting": "Interior set split into white and black sections, with walls and floor fully covered in matching polka-dot patterns to create a stark geometric environment.",
       "settingStrength": "strong"
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Immersive constructed set with floor and walls covered in black-and-white polka-dot fabric or paper, split into white and black halves.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A 16:9 photorealistic group portrait inside an immersive constructed room where both walls and floor are fully covered in black-and-white polka-dot material, split into a white left half and black right half by a crisp vertical seam; shoot from a slightly elevated viewpoint looking into the corner so the patterned floor and both walls are clearly visible and the room feels real and continuous beyond the frame. Six adults share the space in a loose, intimate cluster: a masked adult in a white draped polka-dot garment with a black dotted full-face covering and small yellow cone accent stands left of center on the white side near the corner; a dark-haired clean-shaven man in a dark jacket over a colorful patterned shirt sits casually on the white floor in front left, leaning back on one arm; a messy blond-and-brown curly-haired man with a faint mustache in a fitted dark T-shirt sits low at the center seam with elbows on knees; a tall man with long wavy hair and a large cowboy hat in dark layered clothing stands at rear center, lightly leaning an arm to the wall; a muscular man with long straight black hair, a stern face, tight black V-neck shirt, and large cross pendant stands right of center on the black side; a long dark-haired man with mustache and goatee in a flat-brim cap and zip hoodie crouches front right on the black half, angled slightly toward the others. Keep varied posture, depth, and attention, with subtle interaction and no evenly spaced lineup. Medium-wide framing, 35mm lens feel, crisp detail with mild environmental perspective, enough depth of field to keep all six readable while preserving spatial layering. Bright soft overhead light with gentle directional falloff and believable shadows across the dotted floor and walls, matching a practical gallery-set lighting logic. Neutral, clean color with graphic black-white contrast, restrained saturation, and a quietly playful surreal mood. Attached cast plan: Attached reference image 1: portray only the standing masked adult in the white draped polka-dot garment with black dotted face covering and yellow cone accent; left of center on the white half, standing nearest the wall-floor corner as the visual anchor. Attached reference image 2: portray only the muscular long-haired man in a tight black V-neck shirt with a large cross pendant; right of center on the black half, standing square to camera slightly behind the front figures. Attached reference image 3: portray only the tall man with long wavy hair and a large cowboy hat in dark layered clothing; rear center straddling the seam, leaning one arm to the wall. Attached reference image 4: portray only the messy blond-and-brown curly-haired man with faint mustache in a fitted dark T-shirt; front center seated low on the floor at the seam, elbows on knees. Attached reference image 5: portray only the long dark-haired man with mustache and goatee wearing a flat-brim cap and zip hoodie; front right, crouched on the black half and turned slightly toward the group. Attached reference image 6: portray only the dark-haired clean-shaven man in a dark jacket over a colorful patterned shirt; front left, seated casually on the white half with one arm braced behind him. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. This generation has 6 attached cast reference images; omit any person described in the creative direction who does not have an attached reference.",
+  "composeBackend": "nano-banana-pro",
+  "model": "fal-ai/nano-banana-pro/edit",
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Modern theater or concert hall interior with upholstered seats, wood acoustic wall panels, aisle rails, and many small ceiling lights.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A photorealistic 16:9 group photograph inside a modern empty auditorium, viewed from seat level across the front-middle rows, with red upholstered theater seats in the foreground and receding behind the group, wood acoustic wall panels along the sides, aisle rails, and many small warm ceiling lights fading into depth; four adult men share a candid quiet exchange across adjacent seat backs: a dark-haired man in a dark jacket over a colorful patterned shirt leans closest to camera over a seat back with a faint knowing smile, a younger man with voluminous curly blond-brown hair and a faint mustache in a black T-shirt sits to the left turned sideways and leaning in with clasped hands loose between his knees, a long-haired man with a mustache and goatee wearing a blue flat-brim cap and gray zip hoodie sits at right foreground half-turned with one arm over the seat beside him, and a pale stern man with long straight black hair in a fitted black top with a large cross pendant stands one row behind them at center-right looking down into the conversation; asymmetrical composition with layered depth, no lineup, one figure closest to lens and one slightly behind, shot on a moderate wide lens around 35mm with natural perspective and clear environmental context, moderate depth of field; warm practical auditorium lighting with soft frontal fill consistent with the room, gentle falloff into the back rows; rich but natural color, deep reds and amber highlights, cinematic yet realistic, intimate and slightly tense mood. Attached cast plan: Attached reference image 1: portray only dark-haired light-skinned man in a dark jacket over a colorful patterned shirt, slight smile; front center, leaning over a seat back closest to camera. Attached reference image 2: portray only younger light-skinned man with voluminous curly blond-brown hair, faint mustache, black T-shirt; left side, seated sideways in a seat and leaning forward into the conversation. Attached reference image 3: portray only light-skinned man with long dark hair, mustache and goatee, blue flat-brim cap, gray zip hoodie; right foreground, half-turned in his seat with one arm draped over the adjacent seat back. Attached reference image 4: portray only pale light-skinned man with long straight black hair, strong brow, fitted black top, large cross pendant; standing one row behind center-right, looking down toward the others. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
   "inputs": [
-    "Angine-de-Poitrine.jpg",
-    "Danzig.jpg",
-    "Extreme.jpg",
+    "Marillion.jpg",
     "Sublime.jpg",
     "Amplifier.jpg",
-    "Marillion.jpg"
+    "Danzig.jpg"
   ]
 }

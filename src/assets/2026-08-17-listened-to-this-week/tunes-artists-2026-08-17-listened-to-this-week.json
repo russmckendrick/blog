@@ -6,198 +6,184 @@
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Wallpaper-room quiet tension",
-  "creativeDirection": "A warm, softly focused editorial group portrait staged as a cramped candid pause inside the exact floral-wallpaper corner.",
-  "scene": "A small interior corner with the same dense yellow floral wallpaper wrapping across two walls and the metallic wall ornament still visible high on the right, photographed as if the room extends only slightly beyond the original frame with a narrow strip of floor at the bottom.",
-  "locationSource": 7,
-  "locationSetting": "Small interior corner with dense yellow floral wallpaper on two walls and a decorative metallic wall ornament partly visible at upper right.",
-  "locationEvidence": "Two adjoining walls are clearly covered in bold yellow floral wallpaper, forming a tight interior corner, with a decorative metallic wall ornament visible at upper right.",
+  "concept": "Sunlit exchange among headstones",
+  "creativeDirection": "A warm natural-light editorial group portrait in a real cemetery, loosely posed with intimate spacing, layered depth, and a slightly elevated viewpoint.",
+  "scene": "A small group gathered within the cemetery established by the stone grave markers and low fence, using the existing rows of headstones and grass as the full environment in warm daylight.",
+  "locationSource": 6,
+  "locationSetting": "Cemetery or graveyard with upright stone grave markers, grass, a low fence, and open outdoor space in daylight.",
+  "locationEvidence": "Multiple upright stone grave markers, grass, a low fence, and open daylight clearly establish a cemetery setting.",
   "locationReference": 1,
-  "locationInput": "The-Womack-Sisters.jpg",
+  "locationInput": "Pantera.jpg",
   "cast": [
     {
-      "source": 7,
-      "person": "medium-brown-skinned woman with long glossy dark wavy hair in a sleeveless dark denim top",
-      "placement": "foreground left, closest to camera, leaning back into the wallpapered wall and looking past the group"
+      "source": 6,
+      "person": "the muscular light-skinned man with shaved sides, long braided top hair, goatee, arm tattoos, and a white T-shirt",
+      "placement": "foreground near center, standing between two headstones and turned slightly toward the others"
     },
     {
-      "source": 1,
-      "person": "light-skinned man with shaggy shoulder-length dark hair and light stubble in a shiny black, white, and orange-red zip-front shirt",
-      "placement": "midground left, half-turned in the corner behind the foreground woman, one shoulder against the wall"
+      "source": 7,
+      "person": "the dark-skinned woman with long loose waves wearing a sleeveless dark denim top",
+      "placement": "left midground, leaning one hip lightly against a grave marker and glancing across the group"
     },
     {
       "source": 3,
-      "person": "very fair-skinned woman with wet shoulder-length red hair, strong eye makeup, and bright red lipstick in a black spaghetti-strap top",
-      "placement": "center, seated low on the floor beneath the corner seam, looking directly toward camera"
-    },
-    {
-      "source": 4,
-      "person": "adult figure with a television set for a head wearing a colorful geometric patterned jacket and holding a metal antenna",
-      "placement": "back right, partly tucked behind others near the wall ornament, antenna angled upward into open space"
+      "person": "the very fair-skinned woman with wet shoulder-length red hair, pronounced eyeliner, and red lipstick",
+      "placement": "right foreground, seated sideways on the grass beside a headstone with her face lifted toward camera"
     },
     {
       "source": 5,
-      "person": "fair-skinned woman with shoulder-length wavy silver-grey hair, round glasses, and a dark floral high-neck top with layered necklaces",
-      "placement": "midground right, standing close to the right wall with a calm posture and hands gathered near her waist"
-    },
-    {
-      "source": 6,
-      "person": "light-skinned man with partially shaved hair, long braided strands hanging forward, visible tattoos, and a white T-shirt",
-      "placement": "foreground right, crouched with one elbow on a raised knee, slightly nearer camera than the others"
+      "person": "the fair-skinned woman with shoulder-length wavy silver-gray hair, round glasses, layered necklaces, and a high-neck floral top",
+      "placement": "rear left near the low fence, standing calmly with one hand resting on a stone marker"
     }
   ],
   "selection": [
+    6,
     7,
-    1,
     3,
-    4,
-    5,
-    6
+    5
   ],
   "palette": [
-    "mustard yellow",
-    "warm cream",
-    "deep denim blue",
-    "black",
-    "silver-grey",
-    "muted red"
+    "warm gold",
+    "weathered gray stone",
+    "muted green grass",
+    "black and denim blue",
+    "white",
+    "soft skin tones"
   ],
-  "mood": "intimate, stylish, slightly surreal, hushed but charged",
+  "mood": "quiet, intimate, reflective",
   "artistSummaries": [
     {
       "source": 1,
       "filename": "Primal-Scream.jpg",
       "artist": "Primal Scream",
-      "description": "One adult man is shown from the chest up holding a wired microphone near his mouth. He has light skin, shaggy shoulder-length dark hair, and light stubble. He faces slightly left of camera with a serious expression. Strong red-orange lighting covers his face and the background, with a large soft white circular light shape behind him.",
-      "primarySubject": "the light-skinned man with shaggy shoulder-length dark hair and light stubble holding a microphone",
+      "description": "A tightly framed performance-style portrait of one light-skinned adult with shoulder-length dark hair and light stubble, holding a wired microphone near the mouth and looking forward. The face and shirt are strongly lit in saturated red-orange light, with a large white circular light shape behind against a red background.",
+      "primarySubject": "The single light-skinned adult centered in frame with shoulder-length dark hair, light stubble, and a microphone held up in one hand.",
       "visiblePeople": [
-        "1 adult man: light skin, shaggy shoulder-length dark hair, light stubble, no eyewear"
+        "One light-skinned adult with shoulder-length dark hair, light stubble, no eyewear, wearing a shiny short-sleeved collared shirt with contrasting light and dark panels."
       ],
-      "wardrobe": "Shiny short-sleeved zip-front shirt with bold black, white, and orange-red sections.",
-      "photoStyle": "Tight performance portrait, dramatic colored stage lighting, high contrast, saturated color.",
-      "setting": "Indeterminate performance or studio-like backdrop dominated by red-orange light, with a large out-of-focus white circular light shape and no clear environmental details.",
+      "wardrobe": "Shiny short-sleeved collared shirt with contrasting metallic-looking orange, white, and dark sections.",
+      "photoStyle": "Close-up concert or performance portrait with dramatic saturated red lighting, high contrast, and a bold graphic background.",
+      "setting": "Indistinct performance-like backdrop with a flat red field and one large circular white light or projection shape; no other environmental details visible.",
       "settingStrength": "weak"
     },
     {
       "source": 2,
       "filename": "Dodgy.jpg",
       "artist": "Dodgy",
-      "description": "Three adult men stand closely together beneath a low dark overhead structure marked with diagonal yellow-and-black striping. The central man is the most prominent, standing slightly forward with one arm raised to touch the overhead beam; he has light skin, curly reddish hair, and wears a dark cap and dark blazer with jeans. The man at left is slim with short dark hair and light skin, wearing a dark blazer, dark vest, open-collar light shirt, and jeans, with one hand on his hip. The man at right is stockier with light skin, short hair, and a full grey beard, wearing a brown suit jacket and matching trousers.",
-      "primarySubject": "the light-skinned man in the center with curly reddish hair, a dark cap, dark blazer, and raised arm touching the overhead beam",
+      "description": "A group portrait of three light-skinned adult men standing beneath a low dark overhead structure marked by diagonal yellow-and-black striping. The central man is most prominent, standing forward with one arm raised to the ceiling, while the other two stand on either side facing the camera.",
+      "primarySubject": "The tall light-skinned man in the center wearing a dark blazer and dark cap, with curly hair and one arm raised to the low overhead beam.",
       "visiblePeople": [
-        "1 adult man: light skin, short dark hair, clean-shaven, slim build, no eyewear",
-        "1 adult man: light skin, curly reddish hair, clean-shaven, dark cap, average build, no eyewear",
-        "1 adult man: light skin, short hair, full grey beard, stocky build, no eyewear"
+        "Left: one slim light-skinned adult man with short dark hair, clean-shaven face, no eyewear, wearing a dark blazer over a dark vest and open-collar light shirt with jeans.",
+        "Center: one light-skinned adult man with curly hair, light facial stubble, no eyewear, wearing a dark cap, dark blazer, dark shirt, and jeans, standing with one arm raised overhead.",
+        "Right: one stockier light-skinned adult man with short hair, full gray beard, no eyewear, wearing a brown suit jacket and matching trousers over a dark shirt."
       ],
-      "wardrobe": "Dark blazer, vest, open-collar shirt, and jeans on the left; dark blazer, dark shirt, cap, and jeans in the center; brown textured suit jacket and trousers on the right.",
-      "photoStyle": "Group portrait with direct flash or strong frontal lighting, square framing, candid posed stance.",
-      "setting": "A dark underpass or tunnel-like entrance with a low black ceiling, striped hazard edging overhead, shadowy interior behind the group, and a bit of outdoor ground visible at the bottom edge.",
+      "wardrobe": "Smart-casual jackets and jeans on the left and center figures; brown suit with dark shirt on the right figure.",
+      "photoStyle": "Posed band portrait with direct flash or strong frontal lighting and centered composition.",
+      "setting": "A dark underpass or tunnel-like opening with a very low black overhead beam edged in yellow-and-black hazard striping; paved ground visible and a glimpse of daylight and foliage beyond the opening.",
       "settingStrength": "moderate"
     },
     {
       "source": 3,
       "filename": "The-Anchoress.jpg",
       "artist": "The Anchoress",
-      "description": "One adult woman is shown in a tight head-and-shoulders portrait against a plain pale wall. She has very fair skin, wet shoulder-length red hair, defined eye makeup, and bright red lipstick. She faces the camera directly with a neutral expression. Thin black straps of her top are visible on her shoulders.",
-      "primarySubject": "the very fair-skinned woman with wet shoulder-length red hair, strong eye makeup, and bright red lipstick facing the camera",
+      "description": "A tight head-and-shoulders portrait of one very fair-skinned adult woman against a plain pale wall. She faces the camera directly with wet, tousled red hair, pronounced eye makeup, and bright red lipstick.",
+      "primarySubject": "The single very fair-skinned woman with wet shoulder-length red hair, direct gaze, and bright red lipstick.",
       "visiblePeople": [
-        "1 adult woman: very fair skin, wet shoulder-length red hair, no eyewear"
+        "One very fair-skinned adult woman with wet shoulder-length red hair, no facial hair, no eyewear, defined eyeliner, and red lipstick."
       ],
-      "wardrobe": "Black spaghetti-strap top.",
-      "photoStyle": "Close-up beauty portrait, soft natural-looking light, minimal background, sharp facial detail.",
-      "setting": "Plain indoor wall with no visible furniture or architectural detail.",
+      "wardrobe": "Black thin-strap top visible at the shoulders.",
+      "photoStyle": "Close-up beauty portrait with soft natural-looking light and minimal background.",
+      "setting": "Plain indoor wall with no visible furniture or location cues.",
       "settingStrength": "weak"
     },
     {
       "source": 4,
       "filename": "Test-Card.jpg",
       "artist": "Test Card",
-      "description": "One human figure stands outdoors with a television set covering the head and a raised hand holding a metal TV antenna. The figure wears a colorful patterned jacket with blocks and stripes of many colors. Behind the figure are tall evergreen trees, darker shrubs, and a bright sky.",
-      "primarySubject": "the person with a television set for a head, wearing a colorful geometric-patterned jacket and holding a raised metal antenna",
+      "description": "A stylized outdoor image showing one human figure from mid torso up wearing a brightly patterned suit jacket and holding a rooftop-style TV antenna aloft. The figure's head is obscured by a boxy television set displaying a multicolored test pattern, with trees and sky behind.",
+      "primarySubject": "The single figure in a multicolored patterned jacket with a television set covering the head and one arm raised holding an antenna.",
       "visiblePeople": [
-        "1 adult person: face fully obscured by a television set, body visible, no visible hair or eyewear"
+        "One adult-sized figure with face and hair fully obscured by a television set, no visible facial features or eyewear, wearing a brightly patterned jacket and holding a metal antenna overhead."
       ],
-      "wardrobe": "Colorful multicolored patterned jacket or suit top with bold geometric shapes.",
-      "photoStyle": "Conceptual portrait, retro analog look, slightly grainy and soft, saturated color.",
-      "setting": "Outdoor area with dense evergreen trees, lower foliage, and open sky; the subject stands in front of a natural backdrop with no buildings visible.",
+      "wardrobe": "Colorful geometric patterned jacket or suit top.",
+      "photoStyle": "Conceptual, retro-styled portrait with warm color cast and slightly grainy treatment.",
+      "setting": "Outdoor area with dense evergreen trees, blue sky with light clouds, and foliage in the background; the environment is visible but secondary to the staged figure.",
       "settingStrength": "moderate"
     },
     {
       "source": 5,
       "filename": "Laura-Veirs.jpg",
       "artist": "Laura Veirs",
-      "description": "One adult woman sits or stands facing the camera in a waist-up portrait against a teal fabric backdrop. She has fair skin, shoulder-length wavy silver-grey hair, and round eyeglasses. She wears a dark long-sleeved floral patterned dress or top and layered necklaces. Her expression is calm and neutral.",
-      "primarySubject": "the fair-skinned woman with shoulder-length wavy silver-grey hair, round glasses, and a dark floral high-neck top",
+      "description": "A centered studio portrait of one fair-skinned adult woman seated or standing against a teal fabric backdrop. She faces forward with shoulder-length wavy silver-gray hair, round glasses, layered necklaces, and a high-neck floral patterned top.",
+      "primarySubject": "The single fair-skinned woman centered against the teal backdrop, with shoulder-length silver-gray hair and round glasses.",
       "visiblePeople": [
-        "1 adult woman: fair skin, shoulder-length wavy silver-grey hair, round eyeglasses"
+        "One fair-skinned adult woman with shoulder-length wavy silver-gray hair, no facial hair, round eyeglasses, and red-toned lipstick."
       ],
-      "wardrobe": "Dark high-neck long-sleeved floral patterned dress or top with layered metallic necklaces.",
-      "photoStyle": "Formal studio portrait, soft even lighting, centered composition, plain textile backdrop.",
-      "setting": "Studio-style setup with a plain teal cloth backdrop and no visible room elements.",
+      "wardrobe": "High-neck long-sleeved floral patterned dress or top with layered metallic necklaces.",
+      "photoStyle": "Formal studio portrait with soft even lighting and a plain cloth backdrop.",
+      "setting": "Indoor studio setup with a teal fabric backdrop and no visible furniture or architectural features.",
       "settingStrength": "weak"
     },
     {
       "source": 6,
       "filename": "Pantera.jpg",
       "artist": "Pantera",
-      "description": "Four adult men pose outdoors among cemetery headstones. The central man stands closest to camera and is the most prominent; he has light skin, a partially shaved hairstyle with long braided strands hanging forward, visible arm tattoos, and a white T-shirt. At left, a man with long dark hair under a black hood crouches near a grave marker. Behind center, another long-haired light-skinned man stands in a dark jacket. At right, a man with very large curly long hair and facial hair wears a black leather jacket. All look serious.",
-      "primarySubject": "the light-skinned man in front with a partially shaved hairstyle, long braided strands, visible arm tattoos, and a white T-shirt",
+      "description": "A group photo of four light-skinned adult men posed outdoors among stone grave markers. The central foreground man is most prominent, with shaved sides and long braided hair on top, tattoos on both arms, and a white T-shirt, while the others stand or crouch behind in dark clothing.",
+      "primarySubject": "The light-skinned man in the center foreground with shaved sides, long braided top hair, visible arm tattoos, and a white T-shirt.",
       "visiblePeople": [
-        "1 adult man: light skin, long dark hair under hood, facial hair, no eyewear",
-        "1 adult man: light skin, partially shaved hair with long braided strands, clean-shaven or minimal facial hair, tattoos, no eyewear",
-        "1 adult man: light skin, long straight hair, facial hair, no eyewear",
-        "1 adult man: light skin, very large long curly hair, moustache and goatee, no eyewear"
+        "Front center: one muscular light-skinned adult man with shaved sides and long braided hair on top, a goatee, no eyewear, arm tattoos, wearing a white T-shirt.",
+        "Left: one light-skinned adult man crouching with long dark hair partly covered by a dark hood, facial hair, no eyewear, wearing a dark jacket.",
+        "Rear center: one light-skinned adult man with long straight light brown hair and a short beard, no eyewear, wearing a dark jacket.",
+        "Right: one light-skinned adult man with very long voluminous curly dark hair, mustache and goatee, no eyewear, wearing a black leather jacket."
       ],
-      "wardrobe": "Black hooded outerwear on the left; white T-shirt on the central figure; dark jacket on the rear figure; black leather jacket on the right.",
-      "photoStyle": "Band portrait, slightly elevated angle, outdoor daylight, gritty older photo reproduction.",
-      "setting": "Cemetery with upright grave markers, grass, paved or stone pathways, fencing in the distance, and warm daylight across the scene.",
+      "wardrobe": "White printed T-shirt on the central figure; dark jackets and leather outerwear on the others.",
+      "photoStyle": "Outdoor band portrait with slightly elevated camera angle and warm natural light.",
+      "setting": "Cemetery or graveyard with upright stone grave markers, grass, a low fence, and open outdoor space in daylight.",
       "settingStrength": "strong"
     },
     {
       "source": 7,
       "filename": "The-Womack-Sisters.jpg",
       "artist": "The Womack Sisters",
-      "description": "Three adult women stand closely together in a room with bold yellow floral wallpaper. The left woman is most prominent, positioned closest to camera; she has medium-brown skin, long glossy dark wavy hair, and wears a sleeveless dark denim top. The center woman has medium-brown skin and long full curly dark hair, shown in partial side profile with one hand near her shoulder and gold bracelets. The right woman has medium-brown skin and long full curly dark hair, wearing a dark open-front outfit with a deep neckline and a pendant necklace. All have polished makeup and subdued expressions.",
-      "primarySubject": "the woman at left with medium-brown skin, long glossy dark wavy hair, and a sleeveless dark denim top closest to camera",
+      "description": "A group portrait of three dark-skinned adult women posed closely in a room with yellow floral wallpaper. The left woman is closest to camera and most prominent, while the center woman turns in profile and the right woman faces slightly downward; all wear dark outfits and styled hair.",
+      "primarySubject": "The dark-skinned woman closest to camera on the left, with long loose waves and a sleeveless dark denim top.",
       "visiblePeople": [
-        "1 adult woman: medium-brown skin, long dark wavy hair, no eyewear",
-        "1 adult woman: medium-brown skin, long full curly dark hair, no eyewear",
-        "1 adult woman: medium-brown skin, long full curly dark hair, no eyewear"
+        "Left: one dark-skinned adult woman with long wavy dark hair, no eyewear, wearing a sleeveless dark denim top, facing slightly left of camera.",
+        "Center: one dark-skinned adult woman with long dense curly dark hair, no eyewear, wearing a sleeveless dark outfit and metallic bracelets, shown mostly in side profile.",
+        "Right: one dark-skinned adult woman with long full curly dark hair, no eyewear, wearing a dark deep-neck outfit with a necklace, looking downward."
       ],
-      "wardrobe": "Left: sleeveless dark denim top; center: dark sleeveless outfit with gold bracelets; right: dark open-front outfit with deep neckline and pendant necklace.",
-      "photoStyle": "Styled indoor group portrait, warm soft focus, fashion/editorial look.",
-      "setting": "Small interior corner with dense yellow floral wallpaper on two walls and a decorative metallic wall ornament partly visible at upper right.",
-      "settingStrength": "strong"
+      "wardrobe": "Dark coordinated outfits including a sleeveless denim top, a sleeveless dark dress or top with bracelets, and a dark deep-neck outfit with necklace.",
+      "photoStyle": "Soft-focus editorial portrait with warm tones and intimate close grouping.",
+      "setting": "Interior corner with dense yellow floral wallpaper and a decorative metallic wall ornament visible on the right; tightly framed room setting.",
+      "settingStrength": "moderate"
     },
     {
       "source": 8,
       "filename": "EMF.jpg",
       "artist": "EMF",
-      "description": "Five adult men are grouped tightly in a studio-style portrait with pastel blue background tones. The most prominent subject is the man at lower center-right wearing a red cap, with short light hair visible at the sides and a serious expression. At lower left, a smiling man wears a white patterned bandana and layered casual tops. At upper left, a man with styled hair and a plaid shirt leans in. At center, another man with a red cap worn backward looks sideways. At upper right, a tall man with very short hair wears a black leather jacket. All appear light-skinned.",
-      "primarySubject": "the light-skinned man at lower center-right wearing a red cap and looking directly at the camera with a serious expression",
+      "description": "A tightly grouped band portrait of four light-skinned adult men against a softly colored studio backdrop. Two wear red berets, one in front left wears a white bandana, and one in back right wears a black leather jacket; all face the camera with close overlapping poses.",
+      "primarySubject": "The light-skinned man near the center wearing a red beret and dark shirt, leaning forward with an intense sideways stare.",
       "visiblePeople": [
-        "1 adult man: light skin, white patterned bandana, clean-shaven, smiling, no eyewear",
-        "1 adult man: light skin, styled medium-length hair, clean-shaven, no eyewear",
-        "1 adult man: light skin, red cap worn backward, light hair, clean-shaven, no eyewear",
-        "1 adult man: light skin, very short hair, clean-shaven, no eyewear",
-        "1 adult man: light skin, red cap, clean-shaven, no eyewear"
+        "Front left: one light-skinned adult man with a white patterned bandana, clean-shaven face, no eyewear, wearing layered casual tops and smiling slightly.",
+        "Left rear: one light-skinned adult man with styled short hair swept up, clean-shaven, no eyewear, wearing a red plaid shirt over a light top.",
+        "Center: one light-skinned adult man with a red beret, short hair, clean-shaven face, no eyewear, wearing a dark shirt and leaning forward.",
+        "Right rear: one light-skinned adult man with very short hair, prominent ears, clean-shaven face, no eyewear, wearing a black leather jacket.",
+        "Front right: one light-skinned adult man with a red beret, clean-shaven face, no eyewear, wearing a light T-shirt and looking directly at camera."
       ],
-      "wardrobe": "Bandana and layered hoodie/jacket on lower left; plaid shirt on upper left; dark top and backward red cap at center; black leather jacket at upper right; casual light top and red cap on lower right.",
-      "photoStyle": "Tightly framed band portrait, bright even lighting, slightly warm vintage color cast.",
-      "setting": "Studio or plain backdrop setting with softly colored blue background and no distinct environmental features.",
+      "wardrobe": "Casual band clothing including red berets, a white bandana, plaid shirt, leather jacket, dark shirt, and light T-shirt.",
+      "photoStyle": "Vintage studio band portrait with warm slightly faded color and close crowded composition.",
+      "setting": "Simple studio backdrop with soft airbrushed-looking pastel colors and no distinct environmental elements.",
       "settingStrength": "weak"
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Small interior corner with dense yellow floral wallpaper on two walls and a decorative metallic wall ornament partly visible at upper right.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. Photorealistic 16:9 group photograph inside a cramped interior corner lined with bold yellow floral wallpaper on both walls, with a decorative metallic wall ornament high on the right wall and only a narrow strip of floor visible; camera at standing eye level, close enough to feel boxed into the room. Six adults share a quiet tense pause: a medium-brown-skinned woman with long glossy dark wavy hair in a sleeveless dark denim top leans in the foreground left against the wall, looking past the others; a light-skinned man with shaggy shoulder-length dark hair and light stubble in a shiny black, white, and orange-red zip-front shirt stands midground left half-turned with one shoulder to the wall; a very fair-skinned woman with wet shoulder-length red hair, strong eye makeup, bright red lipstick, and a black spaghetti-strap top sits low at center beneath the corner seam, meeting the camera; a TV-headed adult in a colorful geometric patterned jacket stands back right partly obscured, raising a metal antenna upward; a fair-skinned woman with shoulder-length wavy silver-grey hair, round glasses, layered necklaces, and a dark floral high-neck top stands midground right close to the wallpaper; a light-skinned tattooed man with partially shaved hair and long braided strands in a white T-shirt crouches foreground right with one elbow on his knee. Compose them asymmetrically with overlapping bodies, varied heights, and no straight lineup; medium-wide framing, slight soft-focus editorial character, natural depth, roughly 35mm lens. Light the room with warm soft ambient interior light and gentle falloff, preserving the flattering warm glow and subtle haze suggested by the wallpaper portrait, with realistic shadows in the tight corner. Color treatment warm and slightly creamy with rich yellows, denim blues, black accents, and restrained contrast; mood intimate, stylish, hushed, and faintly surreal. Attached cast plan: Attached reference image 1: portray only medium-brown-skinned woman with long glossy dark wavy hair in a sleeveless dark denim top; foreground left, closest to camera, leaning back into the wallpapered wall and looking past the group. Attached reference image 2: portray only light-skinned man with shaggy shoulder-length dark hair and light stubble in a shiny black, white, and orange-red zip-front shirt; midground left, half-turned in the corner behind the foreground woman, one shoulder against the wall. Attached reference image 3: portray only very fair-skinned woman with wet shoulder-length red hair, strong eye makeup, and bright red lipstick in a black spaghetti-strap top; center, seated low on the floor beneath the corner seam, looking directly toward camera. Attached reference image 4: portray only adult figure with a television set for a head wearing a colorful geometric patterned jacket and holding a metal antenna; back right, partly tucked behind others near the wall ornament, antenna angled upward into open space. Attached reference image 5: portray only fair-skinned woman with shoulder-length wavy silver-grey hair, round glasses, and a dark floral high-neck top with layered necklaces; midground right, standing close to the right wall with a calm posture and hands gathered near her waist. Attached reference image 6: portray only light-skinned man with partially shaved hair, long braided strands hanging forward, visible tattoos, and a white T-shirt; foreground right, crouched with one elbow on a raised knee, slightly nearer camera than the others. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. This generation has 6 attached cast reference images; omit any person described in the creative direction who does not have an attached reference.",
+  "composeBackend": "nano-banana-pro",
+  "model": "fal-ai/nano-banana-pro/edit",
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Cemetery or graveyard with upright stone grave markers, grass, a low fence, and open outdoor space in daylight.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. In a real daylight cemetery with upright weathered stone grave markers, patches of grass, and a low fence continuing through the background, photograph a small group gathered in a natural pause among the headstones from a slightly elevated eye-level viewpoint. A muscular light-skinned man with shaved sides, long braided hair on top, a goatee, tattooed arms, and a white T-shirt stands near center between two stones, turned slightly toward the others; a dark-skinned woman with long loose waves in a sleeveless dark denim top leans lightly against a grave marker on the left and looks across the group; a very fair-skinned woman with wet shoulder-length red hair, strong eyeliner, and bright red lipstick sits on the grass at right beside a headstone with her face lifted toward the camera; a fair-skinned woman with shoulder-length wavy silver-gray hair, round glasses, layered necklaces, and a high-neck floral top stands a little farther back near the fence with one hand on a stone marker. Compose them asymmetrically with layered depth and varied posture, avoiding a straight lineup, using a moderately wide environmental portrait lens around 35mm with crisp focus on the group and enough background detail to keep the cemetery recognizable. Use warm late-day natural light consistent with the original outdoor scene, with soft shadows and gentle highlights on faces and stone surfaces. Keep color treatment natural and slightly warm with subdued contrast, creating a quiet, intimate, reflective mood. Attached cast plan: Attached reference image 1: portray only the muscular light-skinned man with shaved sides, long braided top hair, goatee, arm tattoos, and a white T-shirt; foreground near center, standing between two headstones and turned slightly toward the others. Attached reference image 2: portray only the dark-skinned woman with long loose waves wearing a sleeveless dark denim top; left midground, leaning one hip lightly against a grave marker and glancing across the group. Attached reference image 3: portray only the very fair-skinned woman with wet shoulder-length red hair, pronounced eyeliner, and red lipstick; right foreground, seated sideways on the grass beside a headstone with her face lifted toward camera. Attached reference image 4: portray only the fair-skinned woman with shoulder-length wavy silver-gray hair, round glasses, layered necklaces, and a high-neck floral top; rear left near the low fence, standing calmly with one hand resting on a stone marker. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
   "inputs": [
+    "Pantera.jpg",
     "The-Womack-Sisters.jpg",
-    "Primal-Scream.jpg",
     "The-Anchoress.jpg",
-    "Test-Card.jpg",
-    "Laura-Veirs.jpg",
-    "Pantera.jpg"
+    "Laura-Veirs.jpg"
   ]
 }

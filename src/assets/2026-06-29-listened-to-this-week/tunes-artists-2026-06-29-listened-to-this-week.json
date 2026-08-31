@@ -6,212 +6,198 @@
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Post-show pause at the empty theater edge",
-  "creativeDirection": "A naturalistic wide editorial portrait staged as a quiet candid moment on the theater stage, using layered spacing and subtle interaction rather than a formal lineup.",
-  "scene": "On the front edge of an ornate indoor theater stage after the room has emptied, with the visible auditorium, balcony trim, and ceiling lights behind them; the six artists gather in a loose cluster as if catching their breath between songs and conversation.",
-  "locationSource": 3,
-  "locationSetting": "Indoor concert venue with stage floor in foreground, packed audience rising behind, balcony or rear wall with decorative trim and ceiling lights visible above the crowd.",
-  "locationEvidence": "A clearly identifiable indoor theater stage is visible with the stage floor in front, a large auditorium rising behind, decorative balcony trim, and ceiling lights over the crowd area.",
+  "concept": "Windbreak conversation above the surf",
+  "creativeDirection": "A candid environmental portrait with soft-focus edges, muted coastal color, and natural staggered placement shaped by wind and shoreline space.",
+  "scene": "On a rocky coastal turnout beside churning pale surf, the four adults gather in a loose cluster near the waterline, using the rocks as natural spacing while wind lifts hair and coats.",
+  "locationSource": 8,
+  "locationSetting": "Rocky coastal shoreline with foamy water, large weathered rocks, and a blurred cliff or shoreline in the distance.",
+  "locationEvidence": "Foamy coastal water, large weathered shoreline rocks, and a blurred cliffside create a clearly identifiable rocky seaside setting under muted natural light.",
   "locationReference": 1,
-  "locationInput": "Dream-Theater.jpg",
+  "locationInput": "Beth-Orton.jpg",
   "cast": [
     {
-      "source": 3,
-      "person": "light-skinned bald man with a long pointed white goatee in a black T-shirt",
-      "placement": "near center, standing at the stage edge, turned slightly toward the others"
-    },
-    {
       "source": 8,
-      "person": "light-skinned blonde woman in a light felt hat and dark heavy coat",
-      "placement": "seated sideways on the stage edge at front left, looking toward center"
-    },
-    {
-      "source": 5,
-      "person": "dark-skinned woman in a wide-brim black hat, red vest, and patterned sleeves",
-      "placement": "standing just behind the seated woman at left, one shoulder angled toward camera"
+      "person": "light-skinned blonde woman in a light felt hat and dark raised-collar coat",
+      "placement": "foreground right in partial profile, nearest the water, one hand near her collar"
     },
     {
       "source": 2,
-      "person": "light-skinned man with shoulder-length light brown hair, full beard, dark sunglasses, and a light button-up shirt with strap",
-      "placement": "front right, slightly closer to camera, leaning in from the side"
+      "person": "light-skinned man with shoulder-length light brown hair, full beard, dark sunglasses, and a light beige button-up shirt with a shoulder strap",
+      "placement": "midground left, slightly turned toward the group, braced against the wind"
     },
     {
-      "source": 4,
-      "person": "light-skinned man with short dark hair in a red open-collar shirt",
-      "placement": "mid-background center-right, upright and calm, anchoring the rear layer"
+      "source": 5,
+      "person": "dark-skinned woman wearing a wide-brim black hat, earrings, and a red vest with patterned sleeves",
+      "placement": "center-left, half-facing camera, coat and sleeves moving in the breeze"
     },
     {
-      "source": 1,
-      "person": "light-skinned bald man with rectangular glasses in a black suit and patterned tie",
-      "placement": "front center-left, half-turned toward the group with one hand mid-gesture"
+      "source": 6,
+      "person": "light-skinned man with dark curly hair and a full beard in a black polo shirt",
+      "placement": "center-right, slightly behind the blonde woman, arms loosely folded then relaxed into conversation"
     }
   ],
   "selection": [
-    3,
     8,
-    5,
     2,
-    4,
-    1
+    5,
+    6
   ],
   "palette": [
-    "stage black",
-    "warm amber",
-    "deep red",
-    "cream highlights",
-    "muted teal",
-    "soft skin tones"
+    "seafoam",
+    "stone beige",
+    "weathered tan",
+    "soft gray",
+    "black",
+    "muted red"
   ],
-  "mood": "reflective, warm, quietly triumphant",
+  "mood": "windswept, reflective, quietly connected",
   "artistSummaries": [
     {
       "source": 1,
       "filename": "Pixies.jpg",
       "artist": "Pixies",
-      "description": "Studio group portrait of four adults against a pale seamless background. A bald light-skinned man in glasses stands closest to camera in a black suit and patterned tie, gesturing with one hand. Behind him are a light-skinned woman with long dark hair and bangs in black clothing, a light-skinned older man with short hair and glasses, and a light- to medium-skinned bald man in a light plaid shirt. Soft directional lighting creates mild shadows and a clean editorial look.",
-      "primarySubject": "The bald light-skinned man at front center wearing rectangular glasses, a black suit, and a patterned tie, with one hand extended toward the camera.",
+      "description": "Studio group portrait of four adults against a pale gradient backdrop. A bald light-skinned man in glasses stands closest to camera in a black suit and patterned tie, gesturing with one hand. Behind him are a light-skinned woman with long dark hair and bangs in black clothing, a light-skinned older man with short hair and glasses, and a light-skinned bald man in a light plaid shirt. Soft directional lighting creates gentle shadow and depth.",
+      "primarySubject": "The bald light-skinned man wearing rectangular glasses, a black suit, black shirt, and patterned tie, positioned front and center closest to the camera with one hand extended.",
       "visiblePeople": [
-        "Front man: bald, light-skinned, rectangular glasses, clean-shaven, black suit and patterned tie, hand extended.",
-        "Woman at left rear: light-skinned, long dark brown hair with bangs, black outfit, facing camera.",
-        "Man at center rear: light-skinned, short hair, glasses, partial face visible behind front subject, dark top.",
-        "Man at right rear: light- to medium-skinned, bald, clean-shaven, light plaid shirt, standing slightly behind."
+        "One light-skinned bald man with rectangular glasses, clean-shaven, average build, in a black suit and patterned tie.",
+        "One light-skinned woman with long straight dark hair and bangs, slim build, wearing black.",
+        "One light-skinned older man with short hair, glasses, and a receding hairline, partially obscured behind the front figures.",
+        "One light-skinned bald man with short facial stubble or clean-shaven appearance, average build, wearing a light plaid shirt."
       ],
-      "wardrobe": "Mostly dark formal or semi-formal clothing; front subject in black suit and tie, woman in black, rear man in dark top, right rear man in light plaid shirt.",
-      "photoStyle": "Color studio portrait, medium shot, shallow depth, soft directional light, clean backdrop.",
-      "setting": "Plain studio-style seamless background with no visible furniture or architectural features.",
+      "wardrobe": "Predominantly dark formal and semi-casual clothing: black suit and tie, black top or dress, dark jacket/shirt, and a light plaid button-up shirt.",
+      "photoStyle": "Color studio portrait, medium group framing, shallow depth of field, soft dramatic lighting, clean background.",
+      "setting": "Plain studio backdrop with a smooth light gray to white gradient and no visible furniture or props.",
       "settingStrength": "weak"
     },
     {
       "source": 2,
       "filename": "Doves.jpg",
       "artist": "Doves",
-      "description": "Low-angle outdoor portrait of three light-skinned adult men standing close together between modern office buildings under a bright blue sky. The man at right is most prominent, with shoulder-length light brown hair, a full beard, large dark sunglasses, and a light button-up shirt with a dark strap across his chest. At left is a man with short curly dark hair in a dark polo shirt, hands in pockets. In the middle is a man with short hair, dark sunglasses, light facial hair, and a dark button-up shirt. Strong sunlight creates crisp shadows.",
-      "primarySubject": "The tall man at front right with shoulder-length light brown hair, full beard, large dark sunglasses, and a light button-up shirt with a dark strap across his chest.",
+      "description": "Low-angle outdoor portrait of three light-skinned adult men standing close together between modern office buildings under a clear blue sky. The man at right is most prominent, with shoulder-length light brown hair, beard, and dark sunglasses, wearing a light beige button-up shirt with chest pockets and a dark shoulder strap. At left is a man with short curly dark hair in a dark polo shirt with white piping, hands in pockets. In the middle is a man with short dark hair, slight facial hair, and dark sunglasses in a dark shirt. Bright sunlight casts crisp shadows.",
+      "primarySubject": "The light-skinned man on the right with shoulder-length light brown hair, full beard, dark sunglasses, and a light beige button-up shirt, standing closest to the camera.",
       "visiblePeople": [
-        "Man at right: light-skinned, shoulder-length light brown hair, full beard, dark sunglasses, light button-up shirt, strap over shoulder, closest to camera.",
-        "Man at left: light-skinned, short curly dark hair, clean-shaven or very light stubble, dark polo shirt, hands in pockets.",
-        "Man in middle: light-skinned, short hair, dark sunglasses, slight facial hair, dark button-up shirt."
+        "One light-skinned man with shoulder-length light brown hair, full beard, dark sunglasses, average build.",
+        "One light-skinned man with short curly dark hair, clean-shaven or very light stubble, average build.",
+        "One light-skinned man with short dark hair, slight facial hair, dark sunglasses, average build."
       ],
-      "wardrobe": "Casual shirts in dark and light solids; two men wear sunglasses; one has a shoulder strap.",
-      "photoStyle": "Color environmental portrait, low-angle medium shot, bright natural daylight, slightly cinematic perspective.",
-      "setting": "Urban outdoor setting with tall modern office buildings, rectangular window grids, a bright clear sky, utility lines at right, and paved city surroundings partly out of frame.",
+      "wardrobe": "Light beige long-sleeve button-up shirt with chest pockets and a shoulder strap; dark short-sleeve polo with white trim; dark button-up shirt.",
+      "photoStyle": "Color environmental portrait, low-angle composition, sharp daylight, urban candid-style band photo.",
+      "setting": "Outdoor city setting with multi-story modern office buildings featuring repetitive window bays, a bright blue sky, utility lines at right, and hard sunlit concrete or street-level surroundings implied below frame.",
       "settingStrength": "strong"
     },
     {
       "source": 3,
       "filename": "Dream-Theater.jpg",
       "artist": "Dream Theater",
-      "description": "Wide stage-front group photo of five adult men with arms around each other, facing the camera, with a large cheering audience filling a theater behind them. The central figures are light-skinned and dressed mostly in black stage clothes. From left to right: a slim man with very long straight dark hair; a bald man with a long pointed white goatee; a man with shoulder-length dark hair in a sleeveless jersey; a man with long dark hair plus mustache and goatee; and a man with very long dark hair and a very full long beard shouting with eyes squeezed shut. Bright concert and house lighting illuminate both band and crowd.",
-      "primarySubject": "The bald light-skinned man near center-left with a long pointed white goatee, black T-shirt, and one arm around the adjacent band members.",
+      "description": "Wide concert-stage group photo of five adult men standing arm in arm at the front of a stage with a large cheering audience filling the theater behind them. The center-left bald light-skinned man with a long pointed white goatee smiles at the camera in a black graphic T-shirt and ripped black jeans. The others include a long-haired Asian man in black, a light-skinned man with long dark hair in a sleeveless dark jersey, a light-skinned man with long dark hair and a goatee in a black graphic shirt, and a light-skinned man with very long dark hair and a very full beard in black. Bright stage and house lighting illuminate both band and crowd.",
+      "primarySubject": "The bald light-skinned man with a long pointed white goatee, smiling broadly in a black T-shirt, positioned near center with his arm around the others.",
       "visiblePeople": [
-        "Far left man: light-skinned, very long straight dark hair, clean-shaven, black shirt and pants.",
-        "Center-left man: light-skinned, bald, long pointed white goatee, black T-shirt and ripped black jeans.",
-        "Center man: light-skinned, shoulder-length dark hair, clean-shaven, sleeveless dark jersey, black pants.",
-        "Center-right man: light-skinned, long dark hair, mustache and goatee, black graphic T-shirt, patterned dark pants.",
-        "Far right man: light-skinned, very long dark hair, very full long beard, black outfit, shouting expression."
+        "One Asian man with very long straight dark hair, clean-shaven, slim build, wearing black.",
+        "One light-skinned bald man with a long pointed white goatee, average build, wearing a black graphic T-shirt and black jeans.",
+        "One light-skinned man with long dark hair, clean-shaven, athletic build, wearing a sleeveless dark jersey-style top.",
+        "One light-skinned man with long dark hair, mustache and goatee, average build, wearing a black graphic T-shirt and patterned dark pants.",
+        "One light-skinned man with very long dark hair and a very full long beard, stocky build, wearing black."
       ],
-      "wardrobe": "Predominantly black performance clothing: T-shirts, sleeveless top, dark jeans or pants, some distressed or patterned details.",
-      "photoStyle": "Color live-performance group photo, wide angle, high crowd visibility, bright stage and venue lighting.",
-      "setting": "Indoor concert venue with stage floor in foreground, packed audience rising behind, balcony or rear wall with decorative trim and ceiling lights visible above the crowd.",
+      "wardrobe": "Mostly black stage clothing including graphic T-shirts, dark pants, boots or sneakers, and one sleeveless dark jersey top.",
+      "photoStyle": "Color live-performance group photo, wide-angle stage-edge shot, high crowd visibility, bright concert lighting.",
+      "setting": "Indoor theater or concert hall with a visible stage floor in the foreground, dense audience behind, raised hands, balcony or rear wall lighting fixtures, and decorative trim along the upper interior.",
       "settingStrength": "strong"
     },
     {
       "source": 4,
       "filename": "Oceansize.jpg",
       "artist": "Oceansize",
-      "description": "Dramatic low-angle outdoor portrait of five light-skinned adult men under a dark blue stormy sky with electrical pylons and power lines behind them. The central front man wears a red open-collar shirt and tilts his head slightly upward. Two bald men in dark shirts stand to the left, one with arms folded. To the right are two short-haired men in dark tops, one partly behind the front figure. High contrast color and heavy saturation create an intense, stylized look.",
-      "primarySubject": "The light-skinned man at front center in a red open-collar shirt, with short dark hair and head tilted slightly upward toward the camera.",
+      "description": "Dramatic low-angle outdoor portrait of five light-skinned adult men under a dark, heavily saturated sky with power lines and a transmission tower behind them. The central man has medium dark hair and wears a red button-up shirt, leaning slightly forward with a serious expression. Around him stand two bald men in black shirts on the left, a short-haired man with facial hair just behind center-right, and a short-haired man in a black striped shirt at far right. The lighting and color treatment are high contrast and stylized.",
+      "primarySubject": "The light-skinned man in the red button-up shirt with medium dark hair, positioned front center and closest to the camera with his head slightly tilted upward.",
       "visiblePeople": [
-        "Front center man: light-skinned, short dark hair, clean-shaven, red shirt, closest and most central.",
-        "Far left man: light-skinned, bald, strong jaw, dark T-shirt, arms crossed.",
-        "Left-center man: light-skinned, bald, dark shirt, stern expression.",
-        "Right-center man: light-skinned, short dark hair, short beard or stubble, dark top, partly behind front subject.",
-        "Far right man: light-skinned, short dark hair, trimmed facial hair, dark striped shirt, visible forearm tattoos."
+        "One light-skinned bald man, clean-shaven, muscular or solid build, wearing a black T-shirt.",
+        "One light-skinned bald man, clean-shaven, average build, wearing a black T-shirt.",
+        "One light-skinned man with medium dark hair, clean-shaven, average build, wearing a red button-up shirt.",
+        "One light-skinned man with very short dark hair and trimmed facial hair, average build, partially behind the center figure.",
+        "One light-skinned man with short dark hair and light facial hair, average build, wearing a black shirt with horizontal stripes."
       ],
-      "wardrobe": "Mostly dark casual shirts, with the central figure in a standout red button-up shirt.",
-      "photoStyle": "Color environmental band portrait, low angle, high contrast, heavily saturated blue sky, dramatic editorial treatment.",
-      "setting": "Outdoor industrial edge with large power pylons and multiple overhead power lines against a turbulent cloud-filled sky.",
-      "settingStrength": "strong"
+      "wardrobe": "Dark casual clothing with mostly black T-shirts or short-sleeve tops, plus one standout red button-up shirt.",
+      "photoStyle": "Color band portrait with heavy blue-orange saturation, low-angle composition, high contrast, stylized moody treatment.",
+      "setting": "Outdoor industrial-edge setting with a dramatic cloud-filled sky, visible electrical transmission tower and power lines, and little ground detail due to tight upward framing.",
+      "settingStrength": "moderate"
     },
     {
       "source": 5,
       "filename": "Simple-Minds.jpg",
       "artist": "Simple Minds",
-      "description": "Clean studio portrait of six adults against a white seamless background. At front center stands a light-skinned older man with very short hair wearing a dark textured coat and a loose red patterned scarf. Beside him are other adults in layered smart-casual clothing: a dark-skinned woman in a wide-brim black hat and red vest with patterned sleeves; a light-skinned man in a black jacket; a tall light-skinned man with short hair in a dark jacket over a printed shirt; a light-skinned man with tousled dark hair and light facial hair; and a medium-brown-skinned woman with voluminous curly hair in a white T-shirt and black vest. Lighting is bright and even.",
-      "primarySubject": "The light-skinned older man at front center with very short hair, wearing a dark textured coat and a loose red patterned scarf.",
+      "description": "Clean studio group portrait of six adults against a seamless white background. Front center stands a light-skinned middle-aged man with short thinning hair in a dark textured coat and a red patterned scarf. Beside and behind him are three other light-skinned men in dark jackets or shirts, a dark-skinned woman at left wearing a wide-brim black hat and red vest with patterned sleeves, and a light-brown-skinned woman at right with voluminous curly hair wearing a white shirt and dark vest. Even, bright lighting creates a polished editorial look.",
+      "primarySubject": "The light-skinned middle-aged man with short thinning hair, wearing a dark coat and a red patterned scarf, standing front center nearest the camera.",
       "visiblePeople": [
-        "Front center man: light-skinned, very short hair, clean-shaven, dark coat, red scarf.",
-        "Left woman: dark-skinned, wide-brim black hat, red lipstick, dangling earrings, red vest with patterned sleeves.",
-        "Front left man: light-skinned, dark combed-back hair, clean-shaven, black jacket over patterned shirt.",
-        "Rear center man: light-skinned, tall, short hair, serious expression, dark jacket over printed shirt.",
-        "Rear right man: light-skinned, tousled dark hair, light mustache/stubble, dark jacket.",
-        "Right woman: medium-brown-skinned, large curly brown hair, black vest over white T-shirt, standing front right."
+        "One dark-skinned woman with a slim build, wide-brim black hat, earrings, and red lipstick.",
+        "One light-skinned man with dark slicked-back hair, average build, wearing a dark jacket.",
+        "One tall light-skinned man with short gray hair, average build, wearing a dark jacket over a patterned shirt.",
+        "One light-skinned middle-aged man with short thinning hair, average build, wearing a dark coat and scarf.",
+        "One light-skinned man with short dark tousled hair and light facial stubble, slim build, wearing a light shirt and dark jacket.",
+        "One light-brown-skinned woman with voluminous curly brown hair, slim build, wearing a white top and dark vest."
       ],
-      "wardrobe": "Smart-casual layered styling with dark jackets, vest, scarf, wide-brim hat, patterned sleeves, and a white T-shirt.",
-      "photoStyle": "Color studio group portrait, evenly lit, medium-full framing, high-key white background.",
-      "setting": "Plain white studio backdrop with no visible props or architectural features.",
+      "wardrobe": "Stylized smart-casual wardrobe: dark coats and jackets, patterned shirt, red scarf, red vest with floral sleeves, black hat, white T-shirt, black vest, and dark trousers.",
+      "photoStyle": "Color studio editorial portrait, evenly lit, medium-full group framing, clean high-key background.",
+      "setting": "Seamless white studio backdrop with no visible props or furniture.",
       "settingStrength": "weak"
     },
     {
       "source": 6,
       "filename": "Supertramp.jpg",
       "artist": "Supertramp",
-      "description": "Black-and-white studio group portrait of five light-skinned adult men standing in a loose line against a blank light background. At far left is a slim man with short light hair, beard, glasses, and a sleeveless top. Next is a bearded man with thick dark hair in a dark polo shirt, arms folded, turned toward the others. Center is a man with shoulder-length hair and beard in a light shirt, smiling slightly. Next is a clean-shaven man with dark curly hair in a dark shirt and jeans, smiling sideways. Far right is a man with short hair and beard in a striped long-sleeve shirt and jeans. Soft flat lighting and simple framing give an archival portrait feel.",
-      "primarySubject": "The bearded light-skinned man second from left with thick dark hair, a dark polo shirt, and folded arms, turned in profile toward the center.",
+      "description": "Black-and-white studio portrait of five light-skinned adult men standing in a loose row against a plain light background. The central figure in a black polo shirt with dark curly hair and a full beard stands with arms crossed, turned toward the long-haired bearded man in white beside him. At far left is a slim man with glasses, short light hair, and facial hair in a sleeveless knit top. At right are two men in dark and striped tops, both with short hair and facial hair. Soft, even lighting and simple framing emphasize faces and posture.",
+      "primarySubject": "The light-skinned man near center-left with dark curly hair and a full beard, wearing a black polo shirt and standing with arms crossed while turned toward the man in white.",
       "visiblePeople": [
-        "Far left man: light-skinned, short light hair, beard, round glasses, sleeveless light top, patterned trousers.",
-        "Second man: light-skinned, thick dark hair, full beard, dark polo shirt, arms folded.",
-        "Center man: light-skinned, shoulder-length dark hair, beard, light short-sleeve shirt, relaxed smile.",
-        "Second from right man: light-skinned, dark curly hair, clean-shaven, dark shirt tucked into jeans, smiling sideways.",
-        "Far right man: light-skinned, short hair, beard, striped long-sleeve shirt, jeans."
+        "One light-skinned man with short light hair, glasses, mustache and beard, slim build, wearing a sleeveless light knit top.",
+        "One light-skinned man with dark curly hair and a full beard, average build, wearing a black polo shirt.",
+        "One light-skinned man with shoulder-length dark hair and a beard, slim build, wearing a white short-sleeve shirt.",
+        "One light-skinned man with short dark hair, clean-shaven, average build, wearing a dark long-sleeve shirt tucked into jeans.",
+        "One light-skinned man with short light hair and a beard, average build, wearing a striped long-sleeve shirt."
       ],
-      "wardrobe": "Casual clothing including sleeveless knit top, polo shirt, light shirt, dark shirt, striped long-sleeve shirt, and jeans or trousers.",
-      "photoStyle": "Black-and-white studio portrait, mid-length group framing, soft even light, candid posed arrangement.",
-      "setting": "Plain studio backdrop with no visible furniture or location cues.",
+      "wardrobe": "Casual tops including a sleeveless knit shirt, black polo, white short-sleeve shirt, dark buttoned shirt, striped long-sleeve shirt, and light or dark trousers.",
+      "photoStyle": "Black-and-white studio portrait, soft even lighting, medium group framing, minimal background.",
+      "setting": "Plain studio backdrop with no visible furniture, props, or architectural detail.",
       "settingStrength": "weak"
     },
     {
       "source": 7,
       "filename": "U2.jpg",
       "artist": "U2",
-      "description": "High-contrast black-and-white outdoor portrait of four light-skinned adult men in dark coats and sunglasses. The tallest, most prominent man stands left of center in profile with short dark hair and wraparound sunglasses, wearing a dark double-breasted coat. At right front is another man in sunglasses and a high-collared coat facing camera. Behind them are a man in a bandana and short beard, and an older gray-haired man at far left rear. The background is a pale empty sky and faint ground, producing a stark minimalist look.",
-      "primarySubject": "The tall light-skinned man left of center in profile, with short dark hair, wraparound sunglasses, and a dark double-breasted coat.",
+      "description": "High-contrast black-and-white outdoor portrait of four light-skinned adult men in dark coats or jackets. The most prominent figure stands left of center in profile with short dark hair, wraparound sunglasses, and a heavy dark coat. At right stands another man in sunglasses with short spiked hair and a high-collared dark coat. Behind them are a man in a dark beanie or bandana with facial hair and a leather jacket, and an older gray-haired man at far left background. The sky is blank and bright, giving the image a stark graphic look.",
+      "primarySubject": "The light-skinned man left of center in profile with short dark hair, wraparound sunglasses, and a heavy dark coat, occupying the largest area of the frame.",
       "visiblePeople": [
-        "Left-rear man: light-skinned, short gray hair, clean-shaven, dark jacket, partly behind others.",
-        "Left-center front man: light-skinned, short dark hair, wraparound sunglasses, dark double-breasted coat, in profile.",
-        "Center-rear man: light-skinned, bandana or head wrap, short beard and mustache, dark jacket.",
-        "Right-front man: light-skinned, short spiked dark hair, dark sunglasses, dark high-collared coat, facing camera."
+        "One light-skinned older man with short gray hair, average build, wearing a dark jacket, in the background left.",
+        "One light-skinned man with short dark hair, clean-shaven, average build, wearing wraparound sunglasses and a dark coat.",
+        "One light-skinned man with facial hair, average build, wearing a dark head covering and dark jacket.",
+        "One light-skinned man with short spiked dark hair, clean-shaven, average build, wearing dark sunglasses and a high-collared dark coat."
       ],
-      "wardrobe": "Dark coats and jackets throughout; two men wear sunglasses; one wears a bandana.",
-      "photoStyle": "Black-and-white environmental portrait, high contrast, medium shot, stark minimalist editorial treatment.",
-      "setting": "Sparse outdoor setting with pale sky and minimal ground detail, no distinct structures visible.",
+      "wardrobe": "Dark coats and jackets, including leather-like outerwear, with two pairs of sunglasses and one dark head covering.",
+      "photoStyle": "Black-and-white portrait, high contrast, moody editorial treatment, medium-wide group framing.",
+      "setting": "Outdoor open setting with an overcast or blown-out bright sky and little visible ground detail; background is mostly empty and indistinct.",
       "settingStrength": "weak"
     },
     {
       "source": 8,
       "filename": "Beth-Orton.jpg",
       "artist": "Beth Orton",
-      "description": "Soft color outdoor portrait of one light-skinned adult woman shown in side profile near rough surf and rocks. She wears a light felt hat and a dark heavy coat with the collar raised, one hand resting near her chest with dark-painted nails visible. Her shoulder-length blonde hair falls from beneath the hat. The background shows foaming water, rock formations, and a blurred coastal hillside. The light is diffuse and the image has a gentle muted tone.",
-      "primarySubject": "The light-skinned woman in side profile wearing a light felt hat and dark coat, with shoulder-length blonde hair and one hand raised near her chest.",
+      "description": "Soft-focus outdoor portrait of one light-skinned adult woman standing in profile beside churning coastal water and rock formations. She wears a light-colored felt hat and a dark coat with the collar raised, with shoulder-length blonde hair visible beneath the hat. Her hand is lifted near her chest, showing dark nail polish. The background is blurred, with pale surf and large rocks under muted natural light.",
+      "primarySubject": "The light-skinned woman in profile wearing a light felt hat and dark coat, standing beside the water with one hand raised near her collar.",
       "visiblePeople": [
-        "One woman: light-skinned, shoulder-length blonde hair, no eyewear, no visible facial hair, light felt hat, dark coat, side-profile pose with hand near chest and dark nail polish."
+        "One light-skinned woman with shoulder-length blonde hair, slim build, no eyewear, wearing a light felt hat and dark coat."
       ],
-      "wardrobe": "Light felt hat and dark heavy coat with raised collar.",
-      "photoStyle": "Color outdoor portrait, soft focus background, muted tones, side-profile medium shot, natural diffuse light.",
-      "setting": "Rocky coastline with white surf, large rocks in the water, and a blurred hillside or cliff in the distance.",
+      "wardrobe": "Light felt hat, dark heavy coat with raised collar, dark nail polish.",
+      "photoStyle": "Color environmental portrait, soft-focus or shallow depth of field, muted tones, natural light.",
+      "setting": "Rocky coastal shoreline with foamy water, large weathered rocks, and a blurred cliff or shoreline in the distance.",
       "settingStrength": "strong"
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Indoor concert venue with stage floor in foreground, packed audience rising behind, balcony or rear wall with decorative trim and ceiling lights visible above the crowd.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A photorealistic 16:9 group portrait on the front edge of an ornate indoor theater stage, seen from audience level with the empty auditorium rising behind them, including the recognizable stage floor, theater seating, decorative balcony trim, and ceiling lights of the hall; six adults share a relaxed post-show pause rather than posing in a straight line: a bald light-skinned man with a long pointed white goatee in a black T-shirt stands near center turned toward the others, a light-skinned blonde woman in a light felt hat and dark heavy coat sits sideways on the stage edge at front left looking inward, a dark-skinned woman in a wide-brim black hat with a red vest and patterned sleeves stands just behind her angled toward camera, a light-skinned bearded man with shoulder-length light brown hair, large dark sunglasses, and a light button-up shirt with a dark shoulder strap leans in at front right slightly closer to camera, a light-skinned man with short dark hair in a red open-collar shirt stands in the rear center-right layer, and a bald light-skinned man in rectangular glasses, black suit, and patterned tie stands front center-left with one hand mid-gesture as if speaking to the group; asymmetrical composition with layered depth and overlapping bodies, medium-wide environmental framing, subtle candid interaction, shot on a moderately wide lens around 35mm from a slightly low audience viewpoint; warm theater practicals and soft residual stage light, gentle contrast, believable highlights on faces and dimmer depth in the auditorium; natural color with restrained saturation, warm amber mixed with dark stage neutrals and small red accents, intimate, reflective, quietly triumphant mood. Attached cast plan: Attached reference image 1: portray only light-skinned bald man with a long pointed white goatee in a black T-shirt; near center, standing at the stage edge, turned slightly toward the others. Attached reference image 2: portray only light-skinned blonde woman in a light felt hat and dark heavy coat; seated sideways on the stage edge at front left, looking toward center. Attached reference image 3: portray only dark-skinned woman in a wide-brim black hat, red vest, and patterned sleeves; standing just behind the seated woman at left, one shoulder angled toward camera. Attached reference image 4: portray only light-skinned man with shoulder-length light brown hair, full beard, dark sunglasses, and a light button-up shirt with strap; front right, slightly closer to camera, leaning in from the side. Attached reference image 5: portray only light-skinned man with short dark hair in a red open-collar shirt; mid-background center-right, upright and calm, anchoring the rear layer. Attached reference image 6: portray only light-skinned bald man with rectangular glasses in a black suit and patterned tie; front center-left, half-turned toward the group with one hand mid-gesture. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. This generation has 6 attached cast reference images; omit any person described in the creative direction who does not have an attached reference.",
+  "composeBackend": "nano-banana-pro",
+  "model": "fal-ai/nano-banana-pro/edit",
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Rocky coastal shoreline with foamy water, large weathered rocks, and a blurred cliff or shoreline in the distance.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A rocky coastal shoreline beside churning pale surf and large weathered sea rocks, with a blurred cliffline receding in the distance; photograph the group from a slightly elevated eye level on the shore so the foamy water and rock formations remain the clear setting, as if caught during a pause in conversation above the water. A light-skinned blonde woman in a light felt hat and dark raised-collar coat stands foreground right in partial profile with one hand near her collar; a light-skinned bearded man with shoulder-length light brown hair, dark sunglasses, and a light beige button-up shirt with a dark shoulder strap stands midground left, angled toward the others; a dark-skinned woman in a wide-brim black hat, earrings, and a red vest with patterned sleeves stands center-left, half-facing camera; a light-skinned man with dark curly hair and a full beard in a black polo stands center-right slightly behind, engaged with the group. Arrange them in a loose, intimate cluster with varied depth and posture, not a lineup, with subtle eye-lines between them and the wind shaping hair and clothing. Shoot as a naturalistic wide 16:9 group portrait with moderate environmental space, soft shallow focus falloff, and gentle lens compression. Use muted overcast coastal daylight with diffuse highlights, soft shadows, and bright surf bounce. Keep color subdued and filmic with seafoam, stone, black, and a restrained red accent; mood windswept, reflective, and quietly connected. Attached cast plan: Attached reference image 1: portray only light-skinned blonde woman in a light felt hat and dark raised-collar coat; foreground right in partial profile, nearest the water, one hand near her collar. Attached reference image 2: portray only light-skinned man with shoulder-length light brown hair, full beard, dark sunglasses, and a light beige button-up shirt with a shoulder strap; midground left, slightly turned toward the group, braced against the wind. Attached reference image 3: portray only dark-skinned woman wearing a wide-brim black hat, earrings, and a red vest with patterned sleeves; center-left, half-facing camera, coat and sleeves moving in the breeze. Attached reference image 4: portray only light-skinned man with dark curly hair and a full beard in a black polo shirt; center-right, slightly behind the blonde woman, arms loosely folded then relaxed into conversation. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
   "inputs": [
-    "Dream-Theater.jpg",
     "Beth-Orton.jpg",
-    "Simple-Minds.jpg",
     "Doves.jpg",
-    "Oceansize.jpg",
-    "Pixies.jpg"
+    "Simple-Minds.jpg",
+    "Supertramp.jpg"
   ]
 }

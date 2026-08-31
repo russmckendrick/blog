@@ -64,11 +64,11 @@ export class ConfigLoader {
   }
 
   getArtistPortraitBackend() {
-    return this.settings.artist_portrait_backend || 'nano-banana'
+    return this.settings.artist_portrait_backend || 'nano-banana-pro'
   }
 
   getArtistPortraitInputs() {
-    return this.settings.artist_portrait_inputs || 6
+    return this.settings.artist_portrait_inputs || 4
   }
 
   getArtistPortraitCandidates() {

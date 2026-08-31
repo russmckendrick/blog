@@ -1,0 +1,45 @@
+{
+  "date": "2026-08-31",
+  "createdAt": "2026-08-31T15:16:19.290Z",
+  "seed": 20260831,
+  "prompt": "Create one cohesive photorealistic 16:9 group photograph in a modest real room. Use @Image1 as the sole setting authority: preserve its plain off-white wall, narrow partition or door edge at far left, shallow room depth, subdued natural colour and soft diffuse indoor light. Extend only what plausibly continues just outside that frame.\n\nPortray exactly these four adults, once each, and nobody else:\n- From @Image1, only the tall fair-skinned young man at the far right with short light-brown hair, black long-sleeve top, wristwatch and round-lensed sunglasses. Place him front right, nearest camera, holding the sunglasses.\n- From @Image2, only the seated man at front centre with medium-length dark hair, open floral shirt and light trousers. Place him low at front centre with one knee raised.\n- From @Image3, only the older man near centre with short grey hair, black leather jacket, dark shirt and jeans. Place him centre-left, leaning lightly against the wall.\n- From @Image4, only the man third from left with long straight dark hair partly covering one eye and a light patterned shirt. Place him rear centre-right, bending slightly towards camera.\n\nUse a straight-on chest-height viewpoint and a natural 40–50mm lens. Arrange staggered heights and overlapping bodies rather than an even line. Keep every face large, sharp and unobstructed. Preserve each selected person's recognisable facial structure, age, skin tone, hair, facial hair, eyewear, clothing and styling from the corresponding reference. Do not average, beautify, de-age, merge or substitute faces. Do not include any unselected band member, extra person, duplicate, reflection, poster, photograph, silhouette or background face. Natural anatomy and hands. No text, logos, signage, captions or watermark.",
+  "promptLength": 1777,
+  "sourceSidecar": "src/assets/2026-08-31-listened-to-this-week/tunes-artists-2026-08-31-listened-to-this-week.json",
+  "inputs": [
+    "XTC.jpg",
+    "The-Rolling-Stones.jpg",
+    "Fleetwood-Mac.jpg",
+    "Led-Zeppelin.jpg"
+  ],
+  "results": [
+    {
+      "id": "nano-banana-pro-edit",
+      "endpoint": "fal-ai/nano-banana-pro/edit",
+      "requestId": "01a05860-6a84-7063-a4c2-3e9c570b8b15",
+      "outputPath": "test-output/artist-model-comparison-2026-08-31/nano-banana-pro-edit.png",
+      "durationSeconds": 37.7,
+      "width": 2752,
+      "height": 1536
+    },
+    {
+      "id": "kling-o3-image-to-image",
+      "endpoint": "fal-ai/kling-image/o3/image-to-image",
+      "requestId": "01a05860-6a82-7d73-8543-9e3f116399b4",
+      "outputPath": "test-output/artist-model-comparison-2026-08-31/kling-o3-image-to-image.png",
+      "durationSeconds": 270.7,
+      "width": 2720,
+      "height": 1536
+    },
+    {
+      "id": "flux-2-pro-edit",
+      "endpoint": "fal-ai/flux-2-pro/edit",
+      "requestId": "01a05860-6a7a-7173-83f8-1177b8bf293e",
+      "outputPath": "test-output/artist-model-comparison-2026-08-31/flux-2-pro-edit.png",
+      "durationSeconds": 35.3,
+      "width": 1920,
+      "height": 1072
+    }
+  ],
+  "failures": [],
+  "contactSheetPath": "test-output/artist-model-comparison-2026-08-31/comparison-contact-sheet.png"
+}

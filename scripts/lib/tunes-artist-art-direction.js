@@ -107,9 +107,9 @@ const ARTIST_HARD_CONSTRAINTS = [
   'Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member.',
   'Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face.',
   'Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness.',
-  'Do not invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands.',
+  'Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands.',
   'Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed.',
-  'Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage.'
+  'Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks.'
 ]
 
 const openai = process.env.OPENAI_API_KEY
@@ -757,6 +757,6 @@ export function buildArtistGenerationPrompt(artDirection, selectedSources = []) 
     creativePrompt,
     attachedCastPlan ? `Attached cast plan: ${attachedCastPlan}` : '',
     `Hard constraints (override any conflicting creative direction): ${ARTIST_HARD_CONSTRAINTS.join(' ')}`,
-    `This generation has ${selectedSources.length} attached cast reference image${selectedSources.length === 1 ? '' : 's'}; omit any person described in the creative direction who does not have an attached reference.`
+    `This generation has ${selectedSources.length} attached cast reference image${selectedSources.length === 1 ? '' : 's'} and the final image must contain exactly ${selectedSources.length} visible adult${selectedSources.length === 1 ? '' : 's'} total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.`
   ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
 }

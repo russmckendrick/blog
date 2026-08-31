@@ -341,6 +341,9 @@ test('final artist prompt remaps references and forbids duplicates and extra peo
   assert.match(prompt, /each selected person exactly once/i)
   assert.match(prompt, /reflection, mirror portrait, poster, billboard/i)
   assert.match(prompt, /exactly one adult from each attached reference image/i)
+  assert.match(prompt, /exactly 2 visible adults total, no more and no fewer/i)
+  assert.match(prompt, /allow natural, source-grounded readable text or logos/i)
+  assert.match(prompt, /do not add editorial captions, titles, credits, borders, or watermarks/i)
   assert.match(prompt, /no one else/i)
 })
 

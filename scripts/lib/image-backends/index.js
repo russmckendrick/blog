@@ -5,10 +5,12 @@
 // composes from multiple references; images are never sent through a second image-to-image
 // pass, which reliably degraded the album motifs.
 import * as nanoBanana from './nano-banana.js'
+import * as nanoBananaPro from './nano-banana-pro.js'
 import * as gptImage2 from './gpt-image-2.js'
 
 export const BACKENDS = {
   [nanoBanana.id]: nanoBanana,
+  [nanoBananaPro.id]: nanoBananaPro,
   [gptImage2.id]: gptImage2
 }
 
@@ -16,6 +18,7 @@ export const BACKENDS = {
 export function normalizeBackendId(value) {
   const key = String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '')
   if (key.startsWith('gpt')) return gptImage2.id
+  if (key.startsWith('nanobananapro') || key === 'nbpro') return nanoBananaPro.id
   if (key.startsWith('nano')) return nanoBanana.id
   return value || ''
 }

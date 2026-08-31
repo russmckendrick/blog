@@ -26,9 +26,10 @@ settings:
   # instructions (from scripts/.tunes-image-history.json).
   cover_history_size: 8
 
-  # Image backend for the weekly artist group portrait: gpt-image-2 | nano-banana
-  # (unknown/missing values fall back to nano-banana)
-  artist_portrait_backend: gpt-image-2
+  # Image backend for the weekly artist group portrait:
+  # nano-banana-pro | gpt-image-2 | nano-banana
+  # (unknown/missing values fall back to nano-banana-pro)
+  artist_portrait_backend: nano-banana-pro
 
   # Number of top artist photos uploaded as casting options for the weekly group portrait;
   # the AI picks the most interesting subset to actually feature
@@ -39,7 +40,7 @@ settings:
   # selects down to) - only the cast is sent to the image model. Kept small: with more
   # reference faces the model splits its attention and likenesses drift
   # (env TUNES_ARTIST_PORTRAIT_INPUTS overrides this when set)
-  artist_portrait_inputs: 6
+  artist_portrait_inputs: 4
 
 # =============================================================================
 # CLASSIFICATION CONFIGURATION
