@@ -178,7 +178,11 @@ async function main() {
     return
   }
 
-  const weeks = await getRecentWeeks()
+  // Keep the interactive picker concise, but let an explicit --week target any
+  // archived Tunes folder rather than only the 20 entries shown by the picker.
+  const weeks = await getRecentWeeks(
+    args.week ? Number.MAX_SAFE_INTEGER : DEFAULT_RECENT_WEEK_LIMIT
+  )
   if (weeks.length === 0) {
     console.error('No listened-to-this-week folders found in public/assets/')
     process.exit(1)

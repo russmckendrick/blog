@@ -1,0 +1,257 @@
+{
+  "version": 2,
+  "date": "2026-04-06",
+  "type": "artist",
+  "lane": null,
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Library lull with one thread of attention",
+  "creativeDirection": "A warm, controlled environmental group portrait in a lived-in library, shot at eye level with layered candid stillness rather than formal symmetry.",
+  "scene": "Inside the book-lined study from source 9, extending the same tall wooden shelves, framed pictures, warm wood trim, and patterned rug into a wider 16:9 view; the group shares a quiet in-between moment around the open floor area near the shelves.",
+  "locationSource": 9,
+  "locationSetting": "Book-lined study or library with tall wooden bookshelves, framed wall art, decorative objects, and a patterned rug; a dog is seated across the lap of the central figure.",
+  "locationEvidence": "Tall wooden bookshelves packed with books, framed wall art, decorative objects, and a patterned rug clearly establish a recognisable library or study interior.",
+  "locationReference": 1,
+  "locationInput": "Thank-You-Scientist.jpg",
+  "cast": [
+    {
+      "source": 9,
+      "person": "the short dark-haired bearded man in a shiny magenta robe",
+      "placement": "seated low near center on the patterned rug, turned slightly left, anchoring the group"
+    },
+    {
+      "source": 1,
+      "person": "the smiling Black man with a full beard, patterned knit cap, stud earring, and red long-sleeve shirt",
+      "placement": "left foreground, perched on the arm of a wooden chair or low stool, leaning in toward the others"
+    },
+    {
+      "source": 8,
+      "person": "the light-skinned woman with long dark wavy hair and a red-and-black draped top",
+      "placement": "right midground, standing beside the shelves with one shoulder resting lightly against them"
+    },
+    {
+      "source": 12,
+      "person": "the light-skinned man with shoulder-length light brown hair, black rectangular glasses, light stubble, and a blue-gray denim-style jacket",
+      "placement": "rear left-midground, half-standing behind the seated figure, slightly bent forward into the conversation"
+    }
+  ],
+  "selection": [
+    9,
+    1,
+    8,
+    12
+  ],
+  "palette": [
+    "warm wood brown",
+    "magenta",
+    "deep red",
+    "black",
+    "turquoise accents",
+    "aged paper cream"
+  ],
+  "mood": "intimate, literate, slightly offbeat",
+  "artistSummaries": [
+    {
+      "source": 1,
+      "filename": "Marvin-Gaye.jpg",
+      "artist": "Marvin Gaye",
+      "description": "One Black adult man with a full beard and mustache smiles while leaning slightly forward in a close portrait. He wears a patterned knit cap, small stud earring, and a plain long-sleeve red top. Part of a piano keyboard appears at lower left. The image has warm pink-red studio lighting and a soft, slightly grainy color treatment.",
+      "primarySubject": "The single smiling Black man with a full beard, knit cap, stud earring, and red long-sleeve shirt, leaning toward the camera.",
+      "visiblePeople": [
+        "Black adult man, medium-dark skin, full beard and mustache, short hair mostly covered by a patterned knit cap, small stud earring, smiling broadly"
+      ],
+      "wardrobe": "Patterned knit cap, stud earring, plain red long-sleeve shirt.",
+      "photoStyle": "Close indoor color portrait, warm tinted lighting, soft focus/grainy treatment.",
+      "setting": "Interior studio-like room with pink and dark acoustic-style wall panels in the background and part of a piano keyboard visible at the lower left edge.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 2,
+      "filename": "Thundercat.jpg",
+      "artist": "Thundercat",
+      "description": "One adult person is shown from behind in a deep squat against a plain white backdrop. Yellow braided hair hangs from the hood area. Both hands are raised making peace signs, showing tattoos on the hands and painted fingernails. The person wears a red hooded tracksuit with a large colorful face graphic on the back and red, white, and black high-top sneakers.",
+      "primarySubject": "The squatting adult seen from behind in a red hooded tracksuit with yellow braids and both hands raised in peace signs.",
+      "visiblePeople": [
+        "Adult person seen from behind, medium to dark skin visible on hands, yellow braided hair, tattoos on hands, painted fingernails"
+      ],
+      "wardrobe": "Red hooded sweatshirt and matching sweatpants with large colorful graphic on the back, red/white/black high-top sneakers.",
+      "photoStyle": "Studio-style full-body color portrait against a seamless white background.",
+      "setting": "Plain white studio backdrop with no visible furniture or environmental detail.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 3,
+      "filename": "Rush.jpg",
+      "artist": "Rush",
+      "description": "Three light-skinned adult men pose closely together against a bright plain background. The center man is most prominent, smiling with a thick mustache and shoulder-length brown hair, arms folded, wearing a black T-shirt and wristwatch. At left is a blond man with shoulder-length wavy hair and a dark shirt, smiling. At right is a man with very long straight dark hair, neutral expression, dark shirt, folded arms, and a wristwatch. The image has a softly lit vintage studio look.",
+      "primarySubject": "The center light-skinned man with a thick mustache, shoulder-length brown hair, black T-shirt, wristwatch, and folded arms.",
+      "visiblePeople": [
+        "Light-skinned adult man with shoulder-length wavy blond hair, clean-shaven, smiling",
+        "Light-skinned adult man with shoulder-length brown hair, thick mustache, smiling, arms folded",
+        "Light-skinned adult man with very long straight dark hair, clean-shaven, neutral expression, arms folded"
+      ],
+      "wardrobe": "Dark shirts on all three; center man in black T-shirt, right man in dark short-sleeve buttoned shirt, wristwatches visible on center and right men.",
+      "photoStyle": "Studio group portrait, waist-up framing, soft even lighting, vintage color treatment.",
+      "setting": "Plain bright studio background with little visible environmental detail.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 4,
+      "filename": "Radiohead.jpg",
+      "artist": "Radiohead",
+      "description": "Five light-skinned adult men stand in a staggered group portrait against a yellow-green background. The most prominent man stands front center in profile with short spiky dark hair and a black top, arms folded. Behind him are a bald man in a dark jacket, a tall man with short dark hair at far left, a man with short dark hair in a dark V-neck top, and a man with longer dark hair wearing a light T-shirt. The lighting is moody and greenish.",
+      "primarySubject": "The front-center light-skinned man in profile with short spiky dark hair, black top, and folded arms.",
+      "visiblePeople": [
+        "Light-skinned adult man, short dark hair, clean-shaven, serious expression",
+        "Light-skinned adult man, bald, clean-shaven, serious expression",
+        "Light-skinned adult man, short spiky dark hair, clean-shaven, shown in profile, arms folded",
+        "Light-skinned adult man, short dark hair, clean-shaven, neutral expression",
+        "Light-skinned adult man, longer dark hair falling across forehead, clean-shaven, neutral expression"
+      ],
+      "wardrobe": "Mostly dark tops and jackets; one man at far right wears a light T-shirt.",
+      "photoStyle": "Color band portrait with dramatic tinted lighting and shallow depth, medium group framing.",
+      "setting": "Plain indoor backdrop with yellow-green wash and no distinct fixtures or furniture.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 5,
+      "filename": "Descendents.jpg",
+      "artist": "Descendents",
+      "description": "Four light-skinned adult men stand close together in a small room photographed from a slightly high angle in black and white. The front-center man with short gray hair and rectangular glasses looks directly at the camera in a dark graphic T-shirt. At left is a gray-haired man in a T-shirt, behind him a bald man in a zip hoodie, and at right a closely shaved man in a dark T-shirt. A wall-mounted dispenser, doorways, and a metal keg or barrel are visible, making the room feel like a backstage or utility space.",
+      "primarySubject": "The front-center light-skinned man with short gray hair, rectangular glasses, and a dark T-shirt, looking directly up at the camera.",
+      "visiblePeople": [
+        "Light-skinned adult man with short gray hair, clean-shaven, neutral expression",
+        "Light-skinned adult man, bald, clean-shaven, smiling",
+        "Light-skinned adult man with short gray hair, rectangular glasses, clean-shaven, neutral expression",
+        "Light-skinned adult man with closely shaved hair, clean-shaven, smiling"
+      ],
+      "wardrobe": "Casual T-shirts and a zip hoodie; one man wears rectangular glasses.",
+      "photoStyle": "Black-and-white candid-style group portrait from a high angle.",
+      "setting": "Small indoor room with white walls, open doorway, wall-mounted dispenser, countertop edge, and a metal keg or barrel near the lower right.",
+      "settingStrength": "strong"
+    },
+    {
+      "source": 6,
+      "filename": "Guns-N-Roses.jpg",
+      "artist": "Guns N Roses",
+      "description": "Five light-skinned adult men pose in front of a large decorative backdrop. The central seated man is most prominent, wearing a bandana, dark sunglasses on his head, layered bracelets, and a black leather jacket while holding a cup. Around him are men with long teased or shaggy hair, one partly obscured by a tall black top hat, all wearing black leather or sleeveless rock-style clothing. The shot is low-angled and theatrical.",
+      "primarySubject": "The central seated light-skinned man wearing a bandana, black leather jacket, bracelets, and sunglasses on his head, holding a cup.",
+      "visiblePeople": [
+        "Light-skinned adult man with long blond hair under a dark cap, clean-shaven, pouting expression",
+        "Light-skinned adult man mostly obscured by a tall black top hat, long dark hair visible",
+        "Light-skinned adult man with long dark hair, bandana, clean-shaven, seated front center",
+        "Light-skinned adult man with dark shaggy hair, clean-shaven, partially behind center figure",
+        "Light-skinned adult man with long blond teased hair, clean-shaven, sleeveless top"
+      ],
+      "wardrobe": "Black leather jackets, sleeveless tops, bandana, top hat, bracelets, rock-style accessories.",
+      "photoStyle": "Color band publicity photo, low angle, dramatic posed composition.",
+      "setting": "Stage or studio setup with a large illustrated backdrop behind the group and dark drapery at the sides.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 7,
+      "filename": "Nirvana.jpg",
+      "artist": "Nirvana",
+      "description": "Three light-skinned adult men sit outdoors on wooden steps or decking beside a light-sided building. The center man, most prominent, has messy light blond hair, dark sunglasses, light facial hair, and folded arms over bent knees. At left is a long-haired dark-haired man in a light T-shirt. At right is a dark-haired man with a goatee wearing a light graphic T-shirt. The image is high-key black and white with a casual candid feel.",
+      "primarySubject": "The center light-skinned man with messy blond hair, dark sunglasses, light facial hair, and folded arms over his knees.",
+      "visiblePeople": [
+        "Light-skinned adult man with long dark hair, clean-shaven, neutral expression",
+        "Light-skinned adult man with messy light blond hair, dark sunglasses, light mustache and beard stubble, seated with arms folded",
+        "Light-skinned adult man with medium-length dark hair, goatee, neutral expression"
+      ],
+      "wardrobe": "Light T-shirts and casual pants; center man wears dark sunglasses.",
+      "photoStyle": "High-contrast black-and-white outdoor band portrait, seated casual composition.",
+      "setting": "Outdoor wooden steps or deck beside a building with horizontal siding under bright daylight.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 8,
+      "filename": "Kate-Bush.jpg",
+      "artist": "Kate Bush",
+      "description": "One light-skinned adult woman is shown in a tight studio head-and-shoulders portrait against a dark background. She has long dark wavy hair, defined eyebrows, hazel eyes, and subtle makeup. She wears a red and black garment with a draped neckline. Lighting is soft and even, producing a polished contemporary portrait look.",
+      "primarySubject": "The light-skinned woman with long dark wavy hair, hazel eyes, and a red-and-black draped top, facing the camera.",
+      "visiblePeople": [
+        "Light-skinned adult woman with long dark wavy hair, no eyewear, no visible facial hair, calm direct expression"
+      ],
+      "wardrobe": "Red and black draped garment or dress with a low neckline.",
+      "photoStyle": "Tight studio color portrait with soft flattering lighting and clean dark backdrop.",
+      "setting": "Plain dark studio background without visible environmental features.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 9,
+      "filename": "Thank-You-Scientist.jpg",
+      "artist": "Thank You Scientist",
+      "description": "Six adult men pose formally in a library or study, all wearing matching shiny magenta robes. The central seated man with short dark hair and a beard holds a pipe-shaped object and has a brindle dog across his lap. Around him are five standing or seated men, several with facial hair, one with shoulder-length dark hair, one wearing glasses and a red fez-style hat, one wearing glasses and a white captain-style hat, and one wearing white gloves while holding a framed portrait. Bookshelves fill the background.",
+      "primarySubject": "The central seated man with short dark hair and beard in a shiny magenta robe, holding a pipe-shaped object with a brindle dog across his lap.",
+      "visiblePeople": [
+        "Adult man with short dark hair and trimmed beard, medium skin, standing, holding a pipe-shaped object",
+        "Adult man with shoulder-length dark hair and beard, light skin, standing, holding a pipe-shaped object",
+        "Adult man with glasses, beard, light skin, wearing a red fez-style hat, standing, holding a pipe-shaped object",
+        "Adult man with short dark hair and trimmed beard, light skin, standing with hand on hip",
+        "Adult man with shoulder-length dark hair, glasses, medium skin, seated, holding a pipe-shaped object",
+        "Adult man with glasses, light skin, seated, wearing a white captain-style hat, holding a framed portrait"
+      ],
+      "wardrobe": "Matching shiny magenta robes; one man wears a red fez-style hat, one a white captain-style hat, some wear glasses, white gloves visible on one seated figure.",
+      "photoStyle": "Elaborate indoor group portrait with formal humorous posing and warm controlled lighting.",
+      "setting": "Book-lined study or library with tall wooden bookshelves, framed wall art, decorative objects, and a patterned rug; a dog is seated across the lap of the central figure.",
+      "settingStrength": "strong"
+    },
+    {
+      "source": 10,
+      "filename": "Longpigs.jpg",
+      "artist": "Longpigs",
+      "description": "Four light-skinned adult men stand outdoors in warm low-angle sunlight. The nearest man at right dominates the frame, with messy dark hair and a tan corduroy-style jacket over a light shirt, his face partly in shadow. Behind him are a man with very short bright hair in a dark jacket, a taller man with tousled dark hair in a dark shirt, and a partially visible curly-haired man with glasses. The image has a grainy, slightly faded look.",
+      "primarySubject": "The closest light-skinned man at right with messy dark hair and a tan corduroy-style jacket, face partly shadowed.",
+      "visiblePeople": [
+        "Light-skinned adult man with curly dark hair and glasses, partially visible",
+        "Light-skinned adult man with tousled dark hair, clean-shaven, standing farther back",
+        "Light-skinned adult man with very short bright hair, clean-shaven, looking toward camera",
+        "Light-skinned adult man with messy dark hair, clean-shaven, closest to camera"
+      ],
+      "wardrobe": "Casual jackets and shirts, including a tan corduroy-style jacket and dark outerwear.",
+      "photoStyle": "Outdoor color band photo with warm golden light, grainy texture, and candid framing.",
+      "setting": "Outdoor location with open sky and a rough wall or stone surface at the right edge; background details are limited.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 11,
+      "filename": "Paul-Simon.jpg",
+      "artist": "Paul Simon",
+      "description": "One older light-skinned man appears in a close indoor portrait, looking directly at the camera with a calm expression. He has short gray hair, no facial hair, and wears a dark crew-neck shirt. His hand is raised under his chin with two fingers extended, showing a ring. The background is softly blurred, with a lamp and interior furnishings faintly visible.",
+      "primarySubject": "The older light-skinned man with short gray hair in a dark shirt, holding two fingers under his chin and looking directly at the camera.",
+      "visiblePeople": [
+        "Older light-skinned adult man with short gray hair, clean-shaven, no eyewear, calm direct expression"
+      ],
+      "wardrobe": "Dark crew-neck shirt, ring on hand.",
+      "photoStyle": "Close indoor color portrait with shallow depth of field and soft naturalistic lighting.",
+      "setting": "Softly blurred home-like interior with a lamp, doorway, and indistinct furniture in the background.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 12,
+      "filename": "Steven-Wilson.jpg",
+      "artist": "Steven Wilson",
+      "description": "One light-skinned adult man is centered in a close portrait, leaning slightly forward and staring directly at the camera. He has shoulder-length light brown hair, light stubble, blue eyes, and black rectangular glasses. He wears a dark shirt under a blue-gray denim-style jacket. The background shows turquoise-painted door or window frames and a covered corridor or porch receding behind him.",
+      "primarySubject": "The light-skinned man with shoulder-length light brown hair, black rectangular glasses, light stubble, and a blue-gray denim-style jacket.",
+      "visiblePeople": [
+        "Light-skinned adult man with shoulder-length light brown hair, light stubble, black rectangular glasses, blue eyes, serious expression"
+      ],
+      "wardrobe": "Blue-gray denim-style jacket over a dark shirt.",
+      "photoStyle": "Close environmental color portrait with shallow depth of field and vivid cool-toned color.",
+      "setting": "Covered outdoor or semi-outdoor corridor framed by turquoise-painted doors or windows, with a wooden ceiling structure visible overhead.",
+      "settingStrength": "strong"
+    }
+  ],
+  "hint": null,
+  "composeBackend": "nano-banana-pro",
+  "model": "fal-ai/nano-banana-pro/edit",
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Book-lined study or library with tall wooden bookshelves, framed wall art, decorative objects, and a patterned rug; a dog is seated across the lap of the central figure.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. In a warmly lit library/study with tall wooden bookshelves filled with books, framed wall art, small decorative objects, and a patterned rug, photographed at eye level in a wider 16:9 view that naturally extends the original room, four adults share a quiet in-between moment near the open floor space by the shelves. A short dark-haired bearded man in a shiny magenta robe sits low near center on the rug, turned slightly left; at left foreground, a smiling Black man with a full beard, patterned knit cap, stud earring, and red long-sleeve shirt perches on a low chair or stool and leans into the group; at right midground, a light-skinned woman with long dark wavy hair in a red-and-black draped top stands close to the shelves with one shoulder lightly resting against them, watching the others; at rear left-midground, a light-skinned man with shoulder-length light brown hair, black rectangular glasses, light stubble, and a blue-gray denim-style jacket bends slightly forward as if joining the exchange. Compose them asymmetrically with layered depth and negative space from the shelves, avoiding a straight lineup, using a natural 35mm environmental portrait lens look with moderate depth of field so the room remains legible. Light with the warm controlled interior logic of the study, soft directional illumination and gentle falloff, no dramatic stage effects. Keep colour rich but realistic with warm wood, magenta, deep reds, black, turquoise accents, and aged-paper neutrals; mood intimate, thoughtful, and subtly offbeat. Attached cast plan: Attached reference image 1: portray only the short dark-haired bearded man in a shiny magenta robe; seated low near center on the patterned rug, turned slightly left, anchoring the group. Attached reference image 2: portray only the smiling Black man with a full beard, patterned knit cap, stud earring, and red long-sleeve shirt; left foreground, perched on the arm of a wooden chair or low stool, leaning in toward the others. Attached reference image 3: portray only the light-skinned woman with long dark wavy hair and a red-and-black draped top; right midground, standing beside the shelves with one shoulder resting lightly against them. Attached reference image 4: portray only the light-skinned man with shoulder-length light brown hair, black rectangular glasses, light stubble, and a blue-gray denim-style jacket; rear left-midground, half-standing behind the seated figure, slightly bent forward into the conversation. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "inputs": [
+    "Thank-You-Scientist.jpg",
+    "Marvin-Gaye.jpg",
+    "Kate-Bush.jpg",
+    "Steven-Wilson.jpg"
+  ]
+}

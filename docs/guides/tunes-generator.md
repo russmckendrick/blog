@@ -306,6 +306,9 @@ pnpm run tunes
 # (prompts for header vs artist, then the week, when flags are omitted)
 node scripts/regenerate-tunes-cover.js
 
+# --week can target any archived Tunes folder; only the interactive picker is
+# limited to the 20 most recent weeks
+
 # Regenerate the album-cover header for a specific week
 node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --debug
 

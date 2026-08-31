@@ -27,4 +27,8 @@ test('lists the most recent 20 Tunes weeks by default', async (t) => {
   assert.equal(recentWeeks.length, 20)
   assert.equal(recentWeeks[0], '2026-07-22-listened-to-this-week')
   assert.equal(recentWeeks.at(-1), '2026-07-03-listened-to-this-week')
+
+  const allWeeks = await getRecentWeeks(Number.MAX_SAFE_INTEGER, assetsDir)
+  assert.equal(allWeeks.length, 22)
+  assert.equal(allWeeks.at(-1), '2026-07-01-listened-to-this-week')
 })
