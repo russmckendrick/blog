@@ -75,6 +75,13 @@ export class ConfigLoader {
     return this.settings.artist_portrait_candidates || 12
   }
 
+  // How many weeks an artist is benched for after appearing in a group portrait, so the
+  // same heavy-rotation names do not front portrait after portrait. 0 disables the rule.
+  getArtistReuseWeeks() {
+    const value = Number(this.settings.artist_portrait_reuse_weeks)
+    return Number.isFinite(value) && value >= 0 ? value : 6
+  }
+
   getCoverBackend() {
     return this.settings.cover_backend || 'nano-banana'
   }

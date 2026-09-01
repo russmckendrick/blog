@@ -146,7 +146,7 @@ Posts are created in:
    - AI generates engaging blog section (350-450 words) tailored to the album's characteristics
 5. **Download Images**: Fetches high-res artist/album artwork
 6. **Generate Cover**: Creates paired full-size and `-small` AI cover images by summarising the ranked album artwork and asking an AI art director to choose the complete visual direction from those findings
-7. **Generate Artist Portrait**: Creates a photorealistic group portrait from the week's artist photos (best-effort) and embeds it in the post body above the Top Artists/Albums lists — see [Artist Group Portrait](#artist-group-portrait)
+7. **Generate Artist Portrait**: Benches artists cast in the last six weeks, then creates a photorealistic group portrait from the remaining artist photos (best-effort) and embeds it in the post body above the Top Artists/Albums lists — see [Artist Group Portrait](#artist-group-portrait) and [Artist Reuse Rule](#artist-reuse-rule)
 8. **Render MDX**: Creates formatted blog post with galleries and links
 
 ## Backfilling Older Posts
@@ -202,6 +202,9 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 - `lib/tunes-artist-art-direction.js` - Two-stage artist intelligence: factual appearance and setting summaries followed by strongest-location selection, anchored casting, photographic art direction, and location/identity-preserving prompt guardrails
 - `lib/tunes-post-context.js` - Parses ranked artist/album lists only for the manual regeneration harness to reproduce source ordering; its findings are not sent to cover art direction
 - `lib/tunes-image-history.js` - Rolling committed history of weekly image runs (`scripts/.tunes-image-history.json`) plus per-run `.json` sidecars; feeds do-not-repeat concepts back to the art director
+- `lib/tunes-artist-usage.js` - Committed per-week record of who was cast in each artist portrait (`scripts/.tunes-artist-usage.json`); enforces the artist reuse rule before casting
+- `rebuild-tunes-artist-usage.js` - Rebuilds that record from the committed portrait sidecars when it drifts (`pnpm run rebuild-artist-usage`)
+- `check-tunes-artist-reuse.js` - Audits the record against the reuse rule and reports any week repeating an artist inside the window (`pnpm run check-artist-reuse`)
 - `lib/image-backends/` - Generic, swappable multi-reference compose backends shared by both generators (`nano-banana`, `nano-banana-pro`, `gpt-image-2`)
 - `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly image (header or artist) without changing MDX; supports an optional `--hint` for either image type
 
@@ -284,17 +287,65 @@ Alongside the album-cover header there is a second image type: a **literal group
 
 The flow mirrors the cover pipeline:
 
-- **Casts from a wider pool.** It uploads the top `settings.artist_portrait_candidates` artists (`scripts/tunes-config.yaml`; defaults to 12 when unset, env `TUNES_ARTIST_PORTRAIT_CANDIDATES`) in play-rank order as casting options. A factual vision call records the visible adults, primary subject, facial and physical features, wardrobe, pose, physical setting, setting strength, and original photographic treatment for every candidate without casting or inventing a scene.
+- **Casts from a wider pool, minus anyone used recently.** The [artist reuse rule](#artist-reuse-rule) drops artists cast in the last six weeks first, then it uploads the top `settings.artist_portrait_candidates` of what remains (`scripts/tunes-config.yaml`; defaults to 12 when unset, env `TUNES_ARTIST_PORTRAIT_CANDIDATES`) in play-rank order as casting options. A factual vision call records the visible adults, primary subject, facial and physical features, wardrobe, pose, physical setting, setting strength, and original photographic treatment for every candidate without casting or inventing a scene.
 - The factual pass uses low reasoning effort, strict Structured Outputs, and a 6,000-token output allowance. An incomplete or empty response is retried once with 10,000 tokens; response status, incomplete reasons, and refusals are surfaced in the error instead of being disguised as a JSON parsing failure. Every expected source must have a complete summary.
 - A separate art-director call receives those factual summaries, the original candidate photos again, an optional preconfigured hint, and recent do-not-repeat concepts. It selects the photo with the strongest visible physical location, makes that source mandatory and first in the cast, then selects up to `settings.artist_portrait_inputs` sources (set to **4** in config; code default 4), capped to the number of candidate photos available. Behaviour, viewpoint, lens, composition, depth, colour treatment, styling, mood, and final prompt are chosen around that existing location; there is no seeded shoot-style or colour-treatment catalogue.
 - Only the selected original photos are attached to the final image call. A hard location anchor identifies the chosen reference as the sole setting authority: the generator must recreate its recognisable environment and may only extend what plausibly continues immediately outside the frame. It must not invent, replace, genericise, blend, or relocate the setting. The cast remains small deliberately: with more reference faces the model splits its attention and likenesses drift, so fewer, larger faces preserve detail. Where a selected source is a band, the factual primary-subject description tells the generator which single adult to feature.
 - Uploads each photo scaled to fit inside 1024px (no centre-crop, so heads are not sliced off).
 - The final AI-authored photography prompt receives fixed guardrails: exactly one adult from each attached reference, an explicit total headcount, every selected person shown exactly once, no reflections/posters/screens/background copies, no extra people, no averaging, beautifying, de-ageing, substituting, merging, or distorting faces, close framing, faithful likenesses, and no grid or montage. Natural source-grounded lettering and logos on clothing, screens, signs, labels, instruments, and props are allowed; added captions, titles, credits, borders, and watermarks are not.
-- Every run writes a version-2 `.json` sidecar containing the factual summaries, selection, cast plan, creative direction, scene, `locationSource`, `locationSetting`, `locationEvidence`, `locationReference`, `locationInput`, palette, mood, exact prompt, backend, model, and attached inputs. It is mirrored into `src/assets/<week>/` rather than next to the portrait because `public/` deploys verbatim; the weekly flow also appends to `scripts/.tunes-image-history.json`.
+- Every run writes a version-2 `.json` sidecar containing the factual summaries, selection, cast plan, creative direction, scene, `locationSource`, `locationSetting`, `locationEvidence`, `locationReference`, `locationInput`, palette, mood, exact prompt, backend, model, attached inputs, and the reuse-rule audit (`reuseWeeks`, `reuseBlocked`, `reuseRelaxed`). It is mirrored into `src/assets/<week>/` rather than next to the portrait because `public/` deploys verbatim; the weekly flow also appends to `scripts/.tunes-image-history.json`.
 - Artist research fails closed by default: a missing `OPENAI_API_KEY`, refusal, or second incomplete/empty response stops portrait generation rather than silently sending placeholder summaries to art direction. Set `TUNES_ARTIST_ALLOW_DEGRADED_SUMMARIES=1` only when an explicit filename-based degraded fallback is preferred.
 - Outputs `tunes-artists-YYYY-MM-DD-listened-to-this-week.png` (+ `-small`, 1400×800) into `public/assets/YYYY-MM-DD-listened-to-this-week/` — it is a **body** image referenced by a `/assets/...` public path, unlike the hero cover which lives in `src/assets/`.
 
 **In the post:** the weekly `pnpm run tunes` flow generates the portrait after downloading the artist photos and embeds it in the post body — after the album write-ups and above the Top Artists / Top Albums lists — as a bare full-width `<Img>` (16:9, click-to-zoom, no caption, no heading so it stays out of the table of contents). Generation is **best-effort**: if it fails or no artist photos are available, the post is rendered with no portrait (the `{{artistPortrait}}` placeholder collapses to nothing) rather than failing. The placement seam is the `{{artistPortrait}}` placeholder in `scripts/tunes-template.mdx`, filled by `scripts/lib/blog-post-renderer.js`. The regenerate harness (`--type=artist`) writes to the same `public/assets/{week}/` location, so re-running it refreshes the in-post image.
+
+### Artist Reuse Rule
+
+Casting from play rank alone kept handing the art director the same heavy rotation. Across the 35 weeks of 2026, Tears for Fears and Pink Floyd each fronted five portraits, Crowded House and Tori Amos four apiece, and 18 of 137 cast slots repeated an artist who had already appeared within the previous six weeks.
+
+The reuse rule fixes that at the source: **an artist cast in a portrait is benched for the next six weeks**. The filter runs before the candidate slice, so a benched artist does not even occupy a casting slot, and the art director never sees them.
+
+**Tracking**: `scripts/.tunes-artist-usage.json` maps each week date to the artists actually cast that week. It is **committed** for the same reason as `.tunes-image-history.json` — the weekly GitHub Action runs on a fresh checkout, so a gitignored cache would be empty every run. Unlike that append-only history this is a map keyed by week, so regenerating a week replaces its entry instead of stacking duplicates, and reruns stay idempotent.
+
+```json
+{
+  "version": 1,
+  "weeks": {
+    "2026-08-24": ["Save Ferris", "Killing Joke", "Courtney Barnett", "LCD Soundsystem"],
+    "2026-08-31": ["The Rolling Stones", "Fleetwood Mac", "XTC", "Led Zeppelin"]
+  }
+}
+```
+
+**The window is date-based**, not "the last N recorded weeks": a gap in the archive should not quietly reach further back in time than six weeks. A week never blocks itself, so regenerating a week is safe. Artists match across the spellings the pipeline uses — `Tears-for-Fears.jpg`, `Tears for Fears`, and `Tears For Fears` are one artist.
+
+**Thin weeks relax the rule rather than failing.** Some weeks have very few artist photos at all (2026-06-08 has two). If fewer than `settings.artist_portrait_inputs` artists survive the filter, the pool is topped back up from the benched set, **least recently used first**, until there are enough to cast. Relaxed artists are appended after the unused ones so fresh faces still lead the candidate list, and the run warns:
+
+```
+⚠ Only 1 unused artist(s) available; relaxing the rule for the least recently used: Pink Floyd (2026-04-27)
+```
+
+Each run's sidecar records `reuseWeeks`, `reuseBlocked` (benched and left out) and `reuseRelaxed` (benched but let back in), so any portrait can be audited after the fact.
+
+**Configuration**: `settings.artist_portrait_reuse_weeks` in `scripts/tunes-config.yaml` (default 6), overridden by `TUNES_ARTIST_REUSE_WEEKS` or `--reuse-weeks=<n>`. Set it to `0` to disable the rule.
+
+**When the record is written**: usage tracking follows the image, not the `--record` flag. Any run that writes the week's real portrait under `public/assets/<week>/` updates the record, including `regenerate-tunes-cover.js --type=artist`; runs sent elsewhere with `--output` and testing-mode runs leave it alone. That way the tracked cast always matches what is actually committed.
+
+**Repairing drift**: if the file gets out of step with the archive — a hand-edit, a merge conflict, a portrait replaced by hand — rebuild it from the committed per-week sidecars, which record the cast that was actually rendered:
+
+```bash
+pnpm run rebuild-artist-usage --dry-run   # print what would be written
+pnpm run rebuild-artist-usage             # rewrite the file
+```
+
+**Auditing**: `pnpm run check-artist-reuse` walks the record and reports any week whose cast repeats an artist inside the window, exiting non-zero if it finds one. Run it after regenerating a stretch of weeks — a violation usually means portraits were regenerated out of date order, which gives a week a stale view of the six before it. Relaxed casts on thin weeks show up here too, so check the week's sidecar `reuseRelaxed` field before treating a hit as a failure.
+
+```bash
+pnpm run check-artist-reuse
+pnpm run check-artist-reuse --from=2026-01-01 --weeks=4
+```
+
+**Regenerating a stretch of weeks**: always go **oldest first, serially**. Each run records its cast, and the next week reads that record; out of order or in parallel, every week sees a stale window and the rule stops holding.
 
 ### Commands
 
@@ -320,6 +371,12 @@ node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --debug
 
 # Give the artist art director a one-off steer
 node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --hint="candid backstage" --debug
+
+# Regenerate a portrait ignoring the six-week artist reuse rule
+TUNES_ARTIST_REUSE_WEEKS=0 node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --debug
+
+# Rebuild the artist reuse record from the committed portrait sidecars
+pnpm run rebuild-artist-usage --dry-run
 
 # Testing mode keeps all generated files under output/
 pnpm run tunes -- --testing --take=5
@@ -355,6 +412,9 @@ settings:
   cover_image_max: 23
   classification_cache_days: 90    # How long to cache album classifications
   cover_history_size: 8            # Do-not-repeat concepts fed to the art director
+  artist_portrait_candidates: 12   # Artist photos uploaded as casting options
+  artist_portrait_inputs: 4        # Artists actually featured in the portrait
+  artist_portrait_reuse_weeks: 6   # Weeks an artist is benched for after being cast
 
 # Classification Configuration (for dynamic questions)
 classification:

@@ -12,6 +12,8 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `pnpm run tunes` | `scripts/generate-tunes-post.js` | Generate the weekly tunes post from Last.fm data |
 | `pnpm run wrapped` | `scripts/generate-year-wrapped.js` | Generate the annual wrapped post |
 | `pnpm run backfill-tunes-images` | `scripts/backfill-tunes-images.js` | Backfill older weekly tunes artwork and repair resolvable russ.fm links from local `collection.json` |
+| `pnpm run rebuild-artist-usage` | `scripts/rebuild-tunes-artist-usage.js` | Rebuild the committed artist reuse record from the per-week portrait sidecars |
+| `pnpm run check-artist-reuse` | `scripts/check-tunes-artist-reuse.js` | Audit the artist reuse record and report any portrait repeating an artist inside the window |
 | `pnpm run medium` | `scripts/publish-to-medium.js` | Publish an existing post to Medium |
 | `pnpm run reading` | `scripts/fetch-reading-list.js` | Fetch bookmarks from Instapaper into `src/data/reading.json` |
 | `pnpm run optimize` | `scripts/optimize-images.js` | Optimize source and public image assets |
@@ -51,6 +53,8 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `scripts/fal-tunes-cover.js` | manual/internal | AI Tunes cover generator; summarises each selected album cover, asks AI to choose the full creative direction from those visual findings alone, and saves full and `-small` cover images plus a `.json` run sidecar |
 | `scripts/fal-tunes-artists.js` | manual/internal | AI Tunes artist group-portrait generator; summarises every candidate photo, asks a separate AI stage to choose the strongest uploaded location and cast, then renders only the selected original references in that anchored setting and saves full and `-small` images plus a `.json` sidecar |
 | `scripts/regenerate-tunes-cover.js` | manual | Regenerate one weekly tunes image (header cover or artist portrait) without changing MDX frontmatter |
+| `scripts/rebuild-tunes-artist-usage.js` | manual/maintenance | Rebuild `scripts/.tunes-artist-usage.json` from the committed per-week portrait sidecars when the artist reuse record drifts |
+| `scripts/check-tunes-artist-reuse.js` | manual/CI | Audit `scripts/.tunes-artist-usage.json` against the artist reuse rule; exits non-zero when a week repeats an artist inside the window |
 | `scripts/wrapped-cover-generator.js` | internal | AI-assisted wrapped cover compositor |
 | `scripts/bulk-listen.js` | manual | Run the tunes cover generator over a date range of weekly tunes folders |
 
@@ -129,6 +133,8 @@ If the primary backend refuses on a content-policy violation, the generator firs
 
 Every run writes a version-2 JSON sidecar (`<output>.json`) with per-cover summaries, creative direction, source-element plan, scene, palette, prompt, backend, model, and inputs, so past images stay auditable without `--debug` scraping.
 
+Before any of that, the **artist reuse rule** thins the candidate pool: anyone cast in the previous `settings.artist_portrait_reuse_weeks` weeks (default 6, env `TUNES_ARTIST_REUSE_WEEKS`) is dropped before the art director ever sees them, using the committed `scripts/.tunes-artist-usage.json`. See [Artist Reuse Rule](../guides/tunes-generator.md#artist-reuse-rule).
+
 Options:
 - `--output=<path>` writes that file, the matching `-small` derivative, and a `.json` run sidecar
 - `--date=<date>` records the run date explicitly; normally inferred from a standard Tunes input/output path
@@ -158,6 +164,7 @@ Options:
 - `--width=<px>` / `--height=<px>` set the `-small` dimensions (default 1400×800)
 - `--seed=<number>` sets the image-backend seed
 - `--hint=<string>` gives the artist art director an optional one-off steer
+- `--reuse-weeks=<n>` overrides how many weeks an artist is benched for after being cast (`0` disables the rule)
 - `--record` appends the run to `scripts/.tunes-image-history.json` (the weekly generator records automatically; manual runs opt in)
 - `--debug`, `-d` enables verbose summaries, casting, art direction, and prompt output
 
@@ -180,7 +187,7 @@ Options:
 - `--type=<kind>` selects `header` or `artist`; `--header` / `--artist` are shorthands
 - `--week=<date>` selects a weekly post, for example `2026-04-20`
 - `--hint=<string>` gives the selected header or artist art director a one-off steer
-- `--record` appends the run to `scripts/.tunes-image-history.json` (off by default here so regenerating old weeks does not pollute the do-not-repeat memory)
+- `--record` appends the run to `scripts/.tunes-image-history.json` (off by default here so regenerating old weeks does not pollute the do-not-repeat memory). The artist reuse record in `scripts/.tunes-artist-usage.json` is **not** tied to this flag — it follows the image, so any run that overwrites a week's real portrait updates it, while a run sent to `--output` does not
 - `--output=<path>` writes a test image outside the normal asset path
 - `--debug`, `-d` enables verbose output
 
@@ -251,6 +258,8 @@ Checks token validity and account access for Cloudflare Pages workflows.
 |------|---------|
 | `scripts/tunes-config.yaml` | Main configuration for weekly and wrapped tunes generation |
 | `scripts/tunes-cover-blocklist.js` | Manual list of album covers to keep out of cover-art source images (still shown in the post) |
+| `scripts/.tunes-image-history.json` | Committed, capped rolling record of weekly image runs; supplies the do-not-repeat concepts fed back to the art director |
+| `scripts/.tunes-artist-usage.json` | Committed map of week date to the artists cast in that week's group portrait; drives the artist reuse rule. Maintained automatically, rebuildable with `pnpm run rebuild-artist-usage` |
 | `scripts/tunes-template.mdx` | MDX scaffold for weekly tunes posts |
 | `scripts/year-wrapped-template.mdx` | MDX scaffold for wrapped posts |
 | `scripts/SEARCH_INTEGRATION.md` | Internal design note for the tunes research agent/search-provider architecture |
@@ -303,6 +312,7 @@ These modules support the top-level CLIs and are not intended to be run directly
 | `scripts/lib/tunes-artist-art-direction.js` | Factual artist-photo and setting summaries, strongest-location selection, anchored casting and photographic art direction, normalization/fallbacks, reference remapping, and final location/identity/duplication guardrails |
 | `scripts/lib/tunes-post-context.js` | Parses and normalizes ranked artist/album lists for manual regeneration source ordering; it is not used by cover art direction |
 | `scripts/lib/tunes-image-history.js` | Rolling record of weekly image runs in `scripts/.tunes-image-history.json` (committed, capped) plus per-run `.json` sidecars; feeds do-not-repeat concepts back to the art director |
+| `scripts/lib/tunes-artist-usage.js` | Committed per-week record of who was cast in each artist portrait (`scripts/.tunes-artist-usage.json`); benches recently used artists before casting and relaxes least-recently-used first when a week runs thin |
 | `scripts/lib/image-handler.js` | Downloads, stores, and organizes album/artist images |
 | `scripts/lib/lastfm-client.js` | Last.fm client for weekly listening data |
 | `scripts/lib/lastfm-year-client.js` | Last.fm client for annual wrapped data |

@@ -13,6 +13,13 @@ import { ConfigLoader } from './lib/config-loader.js'
 import { getBackend, BACKENDS } from './lib/image-backends/index.js'
 import { appendHistory, recentConcepts, writeSidecar } from './lib/tunes-image-history.js'
 import {
+  applyArtistReuseRule,
+  displayNameFor,
+  recentlyUsedArtists,
+  recordArtistUsage,
+  DEFAULT_REUSE_WEEKS
+} from './lib/tunes-artist-usage.js'
+import {
   buildArtistGenerationPrompt,
   designArtistArtDirection,
   summarizeArtistPhotos
@@ -61,6 +68,26 @@ async function resolveHistorySize() {
   }
 }
 
+// How many weeks an artist is benched for after appearing in a portrait.
+// Precedence: env -> explicit option -> tunes-config.yaml -> code default. Zero disables
+// the rule entirely.
+async function resolveReuseWeeks(options) {
+  const fromEnv = process.env.TUNES_ARTIST_REUSE_WEEKS
+  if (fromEnv !== undefined && fromEnv !== '') {
+    const value = Number(fromEnv)
+    if (Number.isFinite(value) && value >= 0) return value
+  }
+  if (Number.isFinite(options.reuseWeeks) && options.reuseWeeks >= 0) return options.reuseWeeks
+
+  try {
+    const config = new ConfigLoader()
+    await config.load()
+    return config.getArtistReuseWeeks()
+  } catch {
+    return DEFAULT_REUSE_WEEKS
+  }
+}
+
 // Resolve how many artists to cast (featureCount) and how many candidates to upload.
 // Precedence: env -> explicit option -> tunes-config.yaml -> code default. The config tier
 // matters: the weekly generator passes options explicitly, but the regenerate harness and
@@ -101,6 +128,22 @@ function buildSourceReferences(imagePaths) {
     filename: path.basename(imagePath),
     artist: humanizeImageName(imagePath)
   }))
+}
+
+// The week a run belongs to. Callers pass dateLabel; direct CLI runs fall back to the seed,
+// which the weekly and regenerate paths both set to the week's timestamp.
+function weekDateFor(dateLabel, seed) {
+  if (dateLabel) return dateLabel
+  if (Number.isFinite(seed) && seed >= MIN_TIMESTAMP_SEED) return new Date(seed).toISOString().slice(0, 10)
+  return ''
+}
+
+// Usage tracking follows the image, not the --record flag: if a run overwrote the week's
+// real portrait then the tracked cast has to match what is now in the archive, otherwise
+// later weeks bench artists who are no longer there. Throwaway outputs (--output=/tmp/...,
+// testing mode) leave the record alone.
+function writesCanonicalPortrait(outputPath) {
+  return outputPath.startsWith(path.join(PROJECT_ROOT, 'public', 'assets') + path.sep)
 }
 
 // Unlike the album cover upload, never centre-crop - that slices heads off. Fit the whole
@@ -166,10 +209,52 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
 
   const backend = await resolveBackend(options.backend)
 
+  // Bench anyone who already fronted a portrait in the last few weeks. Play rank alone kept
+  // handing the art director the same heavy rotation, so the filter runs before the candidate
+  // slice - a benched artist should not even occupy a casting slot.
+  const reuseWeeks = await resolveReuseWeeks(options)
+  const weekDate = weekDateFor(options.dateLabel, seed)
+  let eligiblePaths = uniquePaths
+  let reuseReport = null
+
+  if (reuseWeeks > 0 && weekDate) {
+    const recentlyUsed = await recentlyUsedArtists(weekDate, reuseWeeks)
+    if (recentlyUsed.size > 0) {
+      reuseReport = applyArtistReuseRule({
+        imagePaths: uniquePaths,
+        recentlyUsed,
+        minimum: Math.max(1, featureCount)
+      })
+      eligiblePaths = reuseReport.imagePaths
+
+      const benched = [...reuseReport.stillBlocked, ...reuseReport.relaxed]
+      if (benched.length > 0) {
+        console.log(`  Reuse rule (${reuseWeeks}-week): benched ${benched.length} recently used artist(s)`)
+        if (debug) {
+          for (const item of benched) {
+            console.log(`    - ${item.name} (used ${item.week}, ${item.weeksAgo} week(s) ago)`)
+          }
+        }
+      }
+      // A thin week can bench almost everyone. Say so out loud rather than silently
+      // producing a portrait that breaks the rule the run is supposed to enforce.
+      if (reuseReport.relaxed.length > 0) {
+        const names = reuseReport.relaxed.map(item => `${item.name} (${item.week})`).join(', ')
+        console.warn(`  ⚠ Only ${reuseReport.imagePaths.length - reuseReport.relaxed.length} unused artist(s) available; relaxing the rule for the least recently used: ${names}`)
+      }
+    }
+  } else if (debug && reuseWeeks <= 0) {
+    console.log('  Reuse rule disabled (artist_portrait_reuse_weeks is 0)')
+  }
+
+  if (eligiblePaths.length === 0) {
+    throw new Error('No eligible artist images left after applying the reuse rule')
+  }
+
   // Upload a wider candidate pool for factual analysis, then let the separate art-direction
   // stage cast the most interesting subset. The image backend anchors on every reference it
   // is handed, so only the selected original photos are attached to the final call.
-  const candidatePaths = uniquePaths.slice(0, Math.max(1, candidateCount))
+  const candidatePaths = eligiblePaths.slice(0, Math.max(1, candidateCount))
   const castSize = Math.min(Math.max(1, featureCount), candidatePaths.length)
   if (debug) {
     console.log(`  Casting from ${candidatePaths.length} candidate photo(s); featuring exactly ${castSize}`)
@@ -257,9 +342,10 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
       console.log(`    Full:  ${saved.outputPath}`)
       console.log(`    Small: ${saved.smallOutputPath}`)
 
+      const castNames = attemptCast.map(item => displayNameFor(item.path))
       const runRecord = {
         version: 2,
-        date: options.dateLabel || (Number.isFinite(seed) && seed >= MIN_TIMESTAMP_SEED ? new Date(seed).toISOString().slice(0, 10) : ''),
+        date: weekDate,
         type: 'artist',
         lane: null,
         lighting: null,
@@ -282,6 +368,9 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
         composeBackend: backend.id,
         model,
         prompt,
+        reuseWeeks,
+        reuseBlocked: reuseReport ? reuseReport.stillBlocked.map(item => ({ artist: item.name, lastUsed: item.week })) : [],
+        reuseRelaxed: reuseReport ? reuseReport.relaxed.map(item => ({ artist: item.name, lastUsed: item.week })) : [],
         inputs: attemptCast.map(item => path.basename(item.path))
       }
 
@@ -289,6 +378,10 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
         const sidecarPath = await writeSidecar(sidecarTargetFor(outputPath), runRecord)
         if (debug) console.log(`  Wrote run sidecar: ${sidecarPath}`)
         if (recordHistory) await appendHistory(runRecord)
+        if (weekDate && writesCanonicalPortrait(outputPath)) {
+          await recordArtistUsage(weekDate, castNames)
+          if (debug) console.log(`  Recorded cast for ${weekDate}: ${castNames.join(', ')}`)
+        }
       } catch (error) {
         console.warn(`  Could not record portrait metadata: ${error.message}`)
       }
@@ -332,6 +425,7 @@ function parseArgs(args) {
     height: 800,
     seed: null,
     hint: null,
+    reuseWeeks: null,
     record: false,
     debug: false,
     help: false
@@ -347,6 +441,7 @@ function parseArgs(args) {
     else if (arg.startsWith('--height=')) options.height = Number(arg.slice('--height='.length))
     else if (arg.startsWith('--seed=')) options.seed = Number(arg.slice('--seed='.length))
     else if (arg.startsWith('--hint=')) options.hint = arg.slice('--hint='.length)
+    else if (arg.startsWith('--reuse-weeks=')) options.reuseWeeks = Number(arg.slice('--reuse-weeks='.length))
     else if (!arg.startsWith('--') && !options.input) options.input = arg
     else if (!arg.startsWith('--') && !options.output) options.output = arg
     else throw new Error(`Unknown argument: ${arg}`)
@@ -365,6 +460,14 @@ async function findLatestArtistsFolder() {
     .reverse()[0]
 
   return latest ? path.join(publicAssetsDir, latest, 'artists') : null
+}
+
+// A direct CLI run has no --week, but its input folder almost always names one
+// (public/assets/2026-04-20-listened-to-this-week/artists). Recover the date from there so
+// the reuse rule looks at the right window instead of defaulting to today.
+function weekFromInputFolder(inputFolder) {
+  const match = inputFolder.match(/(\d{4}-\d{2}-\d{2})-listened-to-this-week/)
+  return match ? match[1] : null
 }
 
 async function readInputImages(inputFolder) {
@@ -392,6 +495,8 @@ Options:
   --height=<px>       Small output height (default: 800)
   --seed=<number>     Image backend seed
   --hint=<string>     Optional author steer for the AI art director
+  --reuse-weeks=<n>   Weeks an artist is benched for after being cast (default: the
+                      settings.artist_portrait_reuse_weeks value, 6; 0 disables)
   --record            Append this run to scripts/.tunes-image-history.json (the
                       weekly generator records automatically; manual runs opt in)
   --debug, -d         Verbose output
@@ -410,6 +515,11 @@ Notes:
   - Uploads the top TUNES_ARTIST_PORTRAIT_CANDIDATES artists (default 12) as casting
     options, then features about TUNES_ARTIST_PORTRAIT_INPUTS of them (default 4) - only
     the cast is rendered, keeping the group uncrowded.
+  - Artists cast in the previous artist_portrait_reuse_weeks weeks (default 6, env
+    TUNES_ARTIST_REUSE_WEEKS) are dropped from the candidate pool before casting, using
+    scripts/.tunes-artist-usage.json. A week with too few unused artists relaxes the rule
+    least-recently-used first and warns. Runs that write the week's real portrait update
+    the usage file; throwaway --output paths do not.
   - The image backend (nano-banana-pro, gpt-image-2, or nano-banana) is chosen by
     settings.artist_portrait_backend in scripts/tunes-config.yaml.
 `)
@@ -438,11 +548,14 @@ async function main() {
   console.log(`  Input: ${inputFolder}`)
   console.log(`  Output: ${outputPath}`)
 
+  const weekFromFolder = weekFromInputFolder(inputFolder)
   await createFALArtistPortrait(imagePaths, outputPath, {
     width: options.width,
     height: options.height,
-    seed: options.seed || Date.now(),
+    seed: options.seed || (weekFromFolder ? new Date(weekFromFolder).getTime() : Date.now()),
     hint: options.hint,
+    reuseWeeks: options.reuseWeeks,
+    dateLabel: weekFromFolder,
     recordHistory: options.record,
     debug: options.debug
   })

@@ -42,6 +42,13 @@ settings:
   # (env TUNES_ARTIST_PORTRAIT_INPUTS overrides this when set)
   artist_portrait_inputs: 4
 
+  # How many weeks an artist is benched for after appearing in a group portrait. Anyone cast
+  # within this many weeks of the target week is dropped from the candidate pool before it
+  # reaches the art director, tracked in scripts/.tunes-artist-usage.json. On a thin week the
+  # rule relaxes least-recently-used first so a portrait can still be cast. 0 disables it
+  # (env TUNES_ARTIST_REUSE_WEEKS overrides this when set)
+  artist_portrait_reuse_weeks: 6
+
 # =============================================================================
 # CLASSIFICATION CONFIGURATION
 # =============================================================================
