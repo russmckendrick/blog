@@ -1,31 +1,194 @@
 {
+  "version": 2,
   "date": "2026-01-19",
   "type": "cover",
-  "lane": "risograph",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Twilight goat amphitheater beneath a cosmic star-crest storm",
-  "scene": "An asymmetric risograph poster set in a twilight desert-farm amphitheater where a slanted fence line climbs diagonally from the lower left to the upper right, guiding the eye from a cluster of bold goat silhouettes toward a distant stage glow. In the lower left, a torn cassette-card shape becomes a weathered gate panel half-buried in sand, its folded seam and ragged edge rendered as chunky cream paper forms. Stepping across it, a large white goat leads several smaller brown goats uphill through generous off-white negative space, their bodies simplified into flat shapes with visible grain. Midway up the slope, a rectangular teal spotlight frame encloses an adult singer in a floral jacket, reduced to a strong microphone-holding silhouette, while behind and above the figure a mirrored pair of elegant profile faces emerge from the darkness like mountain ridges or carved rock formations, their curls blending into a symmetrical mask-like cliff. Cutting across the sky, a huge black star tilts into the composition, echoed by a ring of tiny stars that orbit like a badge or halo. At the upper right, the night breaks into an abstract orange-and-teal splash cloud, as if a cosmic rainbow storm is spilling over the scene in speckled riso droplets. Perched within that storm is a reimagined eagle crest, its wings spread as a printed emblem on a banner or moon, clutching an olive branch while the other talon holds only an abstract baton-like shape, with arrows fanning upward into the sky. Everything is flattened into two-colour and overprinted forms on off-white paper, with slight misregistration, grainy textures, and bold silhouettes so the farm, stage, emblem, portraits, and explosion read as one strange shared world.",
+  "concept": "Midnight refectory with ceremonial tray and chapel echo",
+  "creativeDirection": "A theatrical mixed-media diorama photographed like a handcrafted stage set, combining collage, painted surfaces, and graphic emblem forms.",
+  "scene": "A long refectory-like hall seen from a slightly low frontal viewpoint, as if looking toward a small raised platform at the far end beneath a high wall symbol.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "the central lone singer appears once on the platform, holding a microphone at chest height, with shoulder-length wavy hair and a cream floral-patterned jacket"
+    },
+    {
+      "source": 2,
+      "element": "aged folded cassette-insert paper becomes the cracked runner covering the long table, with visible creases, worn edges, and dense typewriter-like texture worked into the surface"
+    },
+    {
+      "source": 3,
+      "element": "the hall borrows the church interior feeling with stone arches, scattered chairs, a microphone stand, and a glowing cross-like wall light high in the distance"
+    },
+    {
+      "source": 4,
+      "element": "a vivid paint-burst erupts across the tabletop near the foreground like spilled ceremonial pigment, with orange, pink, blue, and yellow droplets radiating outward"
+    },
+    {
+      "source": 5,
+      "element": "one large white goat stands in the foreground beside the table, with a few smaller brown and black goats clustered farther back as curious witnesses"
+    },
+    {
+      "source": 6,
+      "element": "a bold circular eagle seal is transformed into a floor medallion in black, white, and red at the center aisle"
+    },
+    {
+      "source": 7,
+      "element": "a dark-sleeved hand enters prominently from the side presenting a silver tray holding a miniature Earth, flowers, a white dove, butterfly, and tiny golden sun face"
+    },
+    {
+      "source": 8,
+      "element": "a large black five-pointed star appears as a stark cutout banner or window shape above the distant platform, with five small star marks subtly aligned below it"
+    }
+  ],
   "palette": [
     "black",
-    "fluorescent orange",
-    "teal blue"
+    "off-white",
+    "cream",
+    "stone grey",
+    "magenta",
+    "purple"
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": null,
-  "restyled": false,
-  "model": "fal-ai/nano-banana-2/edit",
-  "prompt": "Create one bold risograph print - flat layered shapes, coarse riso grain, overlapping translucent inks slightly out of register, paper texture showing through. The image is a 16:9 music blog header. Scene: An asymmetric risograph poster set in a twilight desert-farm amphitheater where a slanted fence line climbs diagonally from the lower left to the upper right, guiding the eye from a cluster of bold goat silhouettes toward a distant stage glow. In the lower left, a torn cassette-card shape becomes a weathered gate panel half-buried in sand, its folded seam and ragged edge rendered as chunky cream paper forms. Stepping across it, a large white goat leads several smaller brown goats uphill through generous off-white negative space, their bodies simplified into flat shapes with visible grain. Midway up the slope, a rectangular teal spotlight frame encloses an adult singer in a floral jacket, reduced to a strong microphone-holding silhouette, while behind and above the figure a mirrored pair of elegant profile faces emerge from the darkness like mountain ridges or carved rock formations, their curls blending into a symmetrical mask-like cliff. Cutting across the sky, a huge black star tilts into the composition, echoed by a ring of tiny stars that orbit like a badge or halo. At the upper right, the night breaks into an abstract orange-and-teal splash cloud, as if a cosmic rainbow storm is spilling over the scene in speckled riso droplets. Perched within that storm is a reimagined eagle crest, its wings spread as a printed emblem on a banner or moon, clutching an olive branch while the other talon holds only an abstract baton-like shape, with arrows fanning upward into the sky. Everything is flattened into two-colour and overprinted forms on off-white paper, with slight misregistration, grainy textures, and bold silhouettes so the farm, stage, emblem, portraits, and explosion read as one strange shared world. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: adult singer holding a microphone in a floral jacket; source 2: large black five-pointed star; source 3: explosive orange-and-blue abstract splash cloud; source 4: torn folded cassette insert shape; source 5: mirrored adult female profile faces forming a symmetrical mask-like center; source 6: large white goat with smaller goats around it; source 7: teal rectangular studio-frame portrait space; source 8: wing-spread eagle inside a circular ring of stars. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Redraw each album motif as bold flat printed shapes in the limited ink colours - simplified but instantly recognisable silhouettes and forms. Composition: An asymmetric poster composition with one strong diagonal flow, motifs at varied scales, and generous negative space. Colour direction: black, fluorescent orange, teal blue - strictly two or three ink colours pulled from the sleeves, overprinting where they overlap, on off-white paper. Mood: mythic, nocturnal, playful, and slightly surreal. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
-  "restylePrompt": null,
+  "mood": "ceremonial, surreal, intimate, nocturnal",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Glastonbury-2000.jpg",
+      "album": "Glastonbury 2000",
+      "artist": "",
+      "description": "A close-up stage photograph of a single male performer with shoulder-length wavy hair, holding a microphone at chest height. He wears a light-coloured patterned jacket with floral or vine-like detailing. The figure is centered against a dark concert background with pink and purple lighting haze and a soft magenta border glow around the square image.",
+      "signatureMotif": "male singer holding a microphone",
+      "medium": "stage photograph with graphic text overlay",
+      "palette": [
+        "pink",
+        "purple",
+        "magenta",
+        "black",
+        "cream"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Give-Out-But-Dont-Give-Up-The-Original-Memphis-Recordings.jpg",
+      "album": "Give Out But Dont Give Up The Original Memphis Recordings",
+      "artist": "",
+      "description": "A photographed cassette inlay or folded paper insert placed on a black background. The off-white paper has worn edges, a horizontal fold across the lower third, and dense typed track-list formatting. One section is upside down at the bottom, reinforcing the physical folded-paper look.",
+      "signatureMotif": "folded cassette insert sheet",
+      "medium": "photograph of printed paper ephemera",
+      "palette": [
+        "black",
+        "off-white",
+        "cream",
+        "blue",
+        "grey"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "So-Here-We-Are-Best-Of-Doves.jpg",
+      "album": "So Here We Are Best Of Doves",
+      "artist": "",
+      "description": "A wide interior photograph of three musicians seated in a large church-like space with stone columns and arches. Two hold guitars, and a drum kit cymbal is visible in the foreground. A microphone stand sits near the center, with benches and chairs scattered in the background. A glowing cross hangs high on a large pale wall at the back.",
+      "signatureMotif": "glowing cross above musicians in a church interior",
+      "medium": "photograph",
+      "palette": [
+        "green",
+        "grey",
+        "beige",
+        "brown",
+        "yellow"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "In-Rainbows.jpg",
+      "album": "In Rainbows",
+      "artist": "",
+      "description": "An abstract cover filled with splattered and pooled paint-like colour over a black background, with repeated large lettering layered across the image. The central form resembles a bright orange and pink burst or liquid bloom, surrounded by blue, yellow, green, and red accents and speckled droplets.",
+      "signatureMotif": "multicoloured paint-splash burst",
+      "medium": "abstract mixed-media artwork with graphic overlay",
+      "palette": [
+        "black",
+        "orange",
+        "pink",
+        "blue",
+        "yellow"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Pet-Sounds.jpg",
+      "album": "Pet Sounds",
+      "artist": "",
+      "description": "A vintage colour photograph of five young men standing closely together in an outdoor petting-zoo setting, surrounded by several goats. One large white goat dominates the foreground, while brown and black goats cluster around the group. Trees and fencing appear in the background, and a green banner spans the top portion of the cover.",
+      "signatureMotif": "band members feeding and handling goats",
+      "medium": "colour photograph",
+      "palette": [
+        "green",
+        "brown",
+        "white",
+        "tan",
+        "yellow"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Greatest-Hits.jpg",
+      "album": "Greatest Hits",
+      "artist": "",
+      "description": "A stark black background with a large circular seal in white. Inside the seal is an eagle with spread wings holding a branch in one claw and a baseball bat in the other, with stars circling around it. The composition is bold and emblematic, with an additional red stamped-style line of text across the lower portion.",
+      "signatureMotif": "eagle crest inside a circular seal",
+      "medium": "graphic emblem design",
+      "palette": [
+        "black",
+        "white",
+        "red"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Rule-The-World.jpg",
+      "album": "Rule The World",
+      "artist": "",
+      "description": "A surreal collage-like image of a hand in a dark suit sleeve holding up a silver serving tray against a starry black space background. On the tray sit the Earth, bright flowers including sunflowers and daisies, a white dove in flight, a butterfly, and a small golden sun face peeking from the side.",
+      "signatureMotif": "hand presenting a tray topped with Earth and flowers",
+      "medium": "digital collage",
+      "palette": [
+        "black",
+        "blue",
+        "yellow",
+        "white",
+        "pink"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Blackstar.jpg",
+      "album": "Blackstar",
+      "artist": "",
+      "description": "A minimalist graphic cover with a large solid black five-pointed star centered on a plain white background. Beneath it is a row of five much smaller black star-related shapes spaced horizontally.",
+      "signatureMotif": "large black five-pointed star",
+      "medium": "minimalist graphic design",
+      "palette": [
+        "white",
+        "black"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "A midnight refectory-chapel interior seen from a slightly low frontal viewpoint down a long central table toward a small raised platform at the far end; the primary subject is a lone male singer on the platform, centered and depicted only once, with shoulder-length wavy hair, holding a microphone at chest height and wearing a light cream jacket with floral vine-like patterning. A dark-sleeved hand enters prominently from one side in the foreground presenting a silver serving tray topped with a miniature Earth, sunflowers and daisies, a white dove in flight, a butterfly, and a tiny golden sun face; below it, a large white goat dominates the foreground near the table edge while a few smaller brown and black goats linger farther back. The hall has the atmosphere of a church-like stone interior with arches, scattered chairs, a cymbal glimpse, a spare microphone stand, and a glowing cross-like wall light high on the pale back wall; above the platform, a stark large black five-pointed star appears as a cutout banner or window, with five small star marks aligned beneath it. The long tabletop is covered with an off-white folded cassette-insert sheet transformed into a runner, showing worn edges, horizontal creases, and dense typed formatting as surface texture; near the front, a multicolored liquid paint-burst spills across the runner in orange, pink, blue, and yellow with speckles and droplets. In the floor at the center aisle, integrate a bold circular eagle crest medallion in black and white with a red stamped accent. Mixed-media handcrafted diorama, paper collage, painted plaster, cut graphic shapes, miniature props, photographed like a theatrical stage set. Strong central perspective, clear hierarchy with tray and singer leading, goats and paint-burst as supporting accents, deep black negative space in upper reaches, dramatic spotlighting with magenta-purple concert haze around the singer and softer amber light grazing the table and animals. Palette of black, off-white, cream, stone grey, magenta, purple, orange, pink, sunflower yellow, deep green, and red; surreal, ceremonial, intimate, nocturnal mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Glastonbury-2000.jpg",
-    "Blackstar.jpg",
-    "In-Rainbows.jpg",
     "Give-Out-But-Dont-Give-Up-The-Original-Memphis-Recordings.jpg",
-    "Felt-Mountain.jpg",
+    "So-Here-We-Are-Best-Of-Doves.jpg",
+    "In-Rainbows.jpg",
     "Pet-Sounds.jpg",
-    "Off-The-Fence.jpg",
-    "Greatest-Hits.jpg"
+    "Greatest-Hits.jpg",
+    "Rule-The-World.jpg",
+    "Blackstar.jpg"
   ]
 }

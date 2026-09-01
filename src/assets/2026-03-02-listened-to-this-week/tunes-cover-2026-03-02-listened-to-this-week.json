@@ -1,26 +1,196 @@
 {
+  "version": 2,
   "date": "2026-03-02",
   "type": "cover",
-  "lane": "analog-rehearsal-room",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Analog rehearsal-room documentary weaving together the week's album motifs",
-  "scene": "one cohesive, imaginative scene rendered as a candid analog 35mm documentary photograph of adult musicians actively rehearsing in a real working room, combining recognisable elements drawn from every uploaded album cover, tied together by one setting, one light, and one consistent treatment",
-  "palette": [],
+  "concept": "Laundry reliquary beneath a watchful sunbird",
+  "creativeDirection": "A hand-cut paper collage translated into a tactile mixed-media diorama, blending folk emblem design with dreamlike photographic portrait fragments.",
+  "scene": "A frontal view into a shallow domestic shrine assembled like a ceremonial washroom altar, with tiled floor and dark recess behind.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "Central heraldic arrangement of an upright vacuum and crossed yellow cleaning tools, expanded into altar architecture with surrounding bottles, sponge, bucket suds, cord, broom head, and rag as votive objects."
+    },
+    {
+      "source": 2,
+      "element": "A luminous white egret-like bird perched above and slightly to the side of the altar, its feathers forming a soft protective canopy against the dark background."
+    },
+    {
+      "source": 3,
+      "element": "Two embracing girls rendered as a small tinted cutout cameo tucked into the left side of the shrine near a white chair shape and backed by an orange repeating floral pattern."
+    },
+    {
+      "source": 4,
+      "element": "A seated blonde young woman with a wicker basket of pale flowers placed at the base of the altar as an offering bearer in the grass-green foreground."
+    },
+    {
+      "source": 5,
+      "element": "Five softly blurred faces compressed into the dark recess behind the shrine like a clustered chorus, with clasped hands faintly visible low in shadow."
+    },
+    {
+      "source": 6,
+      "element": "The shrine’s back panel and inner frame borrow the rigid symmetry and bright mask-like geometry of the Mesoamerican-style totem as ornamental structure."
+    },
+    {
+      "source": 7,
+      "element": "A single hooded bearded face appears once as a monochrome side banner fragment on the right edge, partially veiled by bold horizontal black bands turned into cloth strips."
+    },
+    {
+      "source": 8,
+      "element": "A large golden sun with a human face crowns the entire scene from above, with a few floating hearts, leaves, birds, and abstract celestial marks dispersed sparingly around it."
+    }
+  ],
+  "palette": [
+    "turquoise",
+    "gold",
+    "dark red",
+    "deep blue",
+    "cream",
+    "yellow"
+  ],
+  "mood": "ritual, tender, uncanny",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "How-to-Clean-Everything.jpg",
+      "album": "How to Clean Everything",
+      "artist": "",
+      "description": "A flat graphic illustration on a turquoise background showing a central upright vacuum cleaner with its hose looping along the bottom. Two long yellow cleaning tools are crossed over it like an emblem. Around them are assorted household cleaning items including a broom head, a coiled cord, a bottle brush, a sponge mop head, a bucket full of suds, a sponge, a rag, a can, and several bottles and spray containers. The composition is symmetrical and poster-like, with bold black outlines and simplified shapes.",
+      "signatureMotif": "crossed cleaning tools over a vacuum cleaner",
+      "medium": "cartoon-style illustration",
+      "palette": [
+        "turquoise",
+        "yellow",
+        "black",
+        "white",
+        "blue"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Angel-Dust.jpg",
+      "album": "Angel Dust",
+      "artist": "",
+      "description": "A photographic image of a white long-necked bird, likely an egret or heron, centered against a dark nearly black background with a glowing blue haze near the lower half. The bird faces right in profile with a long pointed beak and partially spread wings or draping feathers creating a soft triangular shape. The lighting makes the bird appear luminous against the deep shadowy backdrop.",
+      "signatureMotif": "white egret-like bird",
+      "medium": "photograph",
+      "palette": [
+        "black",
+        "deep blue",
+        "cyan",
+        "white",
+        "pale yellow"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Siamese-Dream.jpg",
+      "album": "Siamese Dream",
+      "artist": "",
+      "description": "A tinted photograph of two small girls close together, smiling and leaning into each other. One girl is in the center-left looking sideways, and the other is at right facing forward. A white chair occupies the left foreground. The upper portion has a dense repeating floral or fan-like pattern in orange, while the figures and lower area are heavily tinted pink and purple.",
+      "signatureMotif": "two young girls embracing",
+      "medium": "colour-tinted photograph with patterned graphic background",
+      "palette": [
+        "orange",
+        "pink",
+        "purple",
+        "magenta",
+        "white"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Betty.jpg",
+      "album": "Betty",
+      "artist": "",
+      "description": "A warm-toned photograph of a blonde young woman seated on grass outdoors, wearing a white blouse and smiling slightly. She holds pale flowers in her hands beside a large wicker basket filled with more flowers. The background is an even grassy field, and the image has a soft sunlit, slightly faded look.",
+      "signatureMotif": "young woman with a basket of flowers",
+      "medium": "photograph",
+      "palette": [
+        "green",
+        "cream",
+        "white",
+        "beige",
+        "golden yellow"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "The-House-of-Love.jpg",
+      "album": "The House of Love",
+      "artist": "",
+      "description": "A soft-focus group portrait of five people closely clustered together against a dark background. Their faces are partially blurred and softly lit, with tousled hair and dark clothing. One person is centered, others frame the edges, and two hands are clasped near the bottom center. The overall composition is intimate and shadowy.",
+      "signatureMotif": "closely clustered five-person portrait",
+      "medium": "soft-focus photograph",
+      "palette": [
+        "black",
+        "brown",
+        "beige",
+        "pale skin tones",
+        "muted red"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Dos-Dedos-Mis-Amigos.jpg",
+      "album": "Dos Dedos Mis Amigos",
+      "artist": "",
+      "description": "A graphic cover with a dark red textured background and a central symmetrical figure inspired by Mesoamerican or tribal iconography. The figure is composed of mirrored shapes, masks, limbs, and decorative elements in orange, green, blue, yellow, and black, forming a compact totem-like emblem. The layout is rigid and centered, with a digital or screen-printed feel.",
+      "signatureMotif": "symmetrical Mesoamerican-style totem figure",
+      "medium": "graphic illustration",
+      "palette": [
+        "dark red",
+        "orange",
+        "green",
+        "blue",
+        "yellow"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Mansun-Retold.jpg",
+      "album": "Mansun Retold",
+      "artist": "",
+      "description": "A black-and-white close-up photograph of a bearded man's face wearing a fur-lined hood. Only part of the face is visible, with one eye strongly lit and the other side in shadow. Large bold black letterforms are overlaid across the entire image in horizontal bands, partially obscuring the portrait and creating a stark graphic composition on a white border.",
+      "signatureMotif": "close-up face inside a fur hood",
+      "medium": "black-and-white photograph with typographic overlay",
+      "palette": [
+        "black",
+        "white",
+        "gray"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "The-Seeds-of-Love.jpg",
+      "album": "The Seeds of Love",
+      "artist": "",
+      "description": "A dense surreal collage featuring two men standing side by side in ornate patterned jackets, each holding a staff or symbolic object. Behind them is a large golden sun with a human face rising over pale rocky forms. The scene is filled with floating symbols and objects including hearts, flowers, spheres, leaves, birds, abstract lines, and celestial shapes, all layered in a dreamlike arrangement against a blue and cream background.",
+      "signatureMotif": "large golden sun with a human face",
+      "medium": "surreal photographic collage",
+      "palette": [
+        "blue",
+        "gold",
+        "cream",
+        "white",
+        "green"
+      ]
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one candid analog 35mm photograph of adult musicians caught mid-rehearsal in a lived-in practice room - genuine musical concentration, natural interaction, fine film grain, mixed practical light, and subtle movement in hands or drumsticks while faces and instruments remain crisp; nobody is posing or looking at the camera. The image is a 16:9 music blog header. Scene: one cohesive, imaginative scene rendered as a candid analog 35mm documentary photograph of adult musicians actively rehearsing in a real working room, combining recognisable elements drawn from every uploaded album cover, tied together by one setting, one light, and one consistent treatment. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: a recognisable element from How to Clean Everything; source 2: a recognisable element from Angel Dust; source 3: a recognisable element from Siamese Dream; source 4: a recognisable element from Betty; source 5: a recognisable element from Dos Dedos Mis Amigos; source 6: a recognisable element from The House of Love. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Translate the album motifs into believable parts of the same rehearsal: the musicians and their styling, instrument finishes and shapes, the room architecture, worn furnishings, cables, cases, lighting, and atmosphere. Blend the motifs across the whole scene instead of assigning each one a separate displayed object, poster, or emblem. Composition: One continuous wide rehearsal room photographed unobtrusively from a doorway or back corner, with layered foreground equipment, musicians playing together through the middle ground, and room depth behind them; active, asymmetric, and loosely framed like a real moment rather than a band portrait. Colour direction: a palette pulled from the uploaded artwork - muted analog colour drawn from the sleeves, with warm tungsten and cool fluorescent practical light, soft highlight bloom, subdued blacks, and natural skin tones. Mood: imaginative and music-led. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, posed band portrait, publicity photo, live concert stage, musicians looking at camera, symmetrical lineup, empty recording studio, pristine equipment showroom, album-cover posters, separate displayed symbols, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "Frontal view into a shallow domestic shrine like a ceremonial washroom altar, set on a tiled floor with a dark recess behind; at the center, a heraldic upright vacuum cleaner stands like a relic with two long yellow cleaning tools crossed over it, commanding the image; surround it with symmetrical household offerings from the same source: looping hose along the base, bucket full of suds, sponge mop head, broom head, bottle brush, sponge, rag, can, coiled cord, and spray bottles arranged as votive objects; above and slightly left, a luminous white egret-like bird in profile faces right, perched protectively with draping feathers forming a pale triangular canopy against near-black shadow and blue haze; at the base in the foreground, place a blonde young woman seated on grass in a white blouse holding pale flowers beside a wicker basket overflowing with more flowers, as if presenting an offering to the altar; tuck a small tinted cameo of two smiling young girls embracing into the left inner side of the shrine beside a white chair silhouette, backed by a dense orange repeating floral or fan pattern; in the dark recess behind the altar, let five softly blurred faces gather close together as a shadowy chorus, with clasped hands faintly visible low at center; build the shrine’s back panel and inner framing from symmetrical mask-like geometric ornament inspired by a compact Mesoamerican totem, in orange, green, blue, yellow, and black over a dark red textured field; on the far right edge include a single monochrome fragment of a bearded face inside a fur hood, partially obscured by bold horizontal black bands transformed into hanging cloth strips; crown the whole composition with a large golden sun bearing a human face, with only a few floating hearts, leaves, birds, spheres, and abstract celestial lines scattered around it; hand-cut paper collage with painted gouache, screenprinted textures, pasted photographic fragments, stitched fabric strips, and shallow shadowbox depth; strong central symmetry with the vacuum emblem dominant, secondary vertical pull from the sun above and the flower-bearer below, supporting details contained at the margins, crisp cut edges against velvety darkness; theatrical lighting with the sun and egret glowing, soft warm light on the flowers and woman, dim intimate faces in the recess; palette of turquoise, gold, dark red, deep blue, cream, yellow, pink-magenta, grass green, black, and white; mood ritual, tender, uncanny. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "How-to-Clean-Everything.jpg",
     "Angel-Dust.jpg",
     "Siamese-Dream.jpg",
     "Betty.jpg",
-    "Dos-Dedos-Mis-Amigos.jpg",
     "The-House-of-Love.jpg",
+    "Dos-Dedos-Mis-Amigos.jpg",
     "Mansun-Retold.jpg",
     "The-Seeds-of-Love.jpg"
   ]

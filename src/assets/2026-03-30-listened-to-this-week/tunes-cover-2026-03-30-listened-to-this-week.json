@@ -1,33 +1,195 @@
 {
+  "version": 2,
   "date": "2026-03-30",
   "type": "cover",
-  "lane": "vintage-travel-poster",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Surreal alpine music resort where stage glamour meets snow, soil, and shadow",
-  "scene": "A mid-century travel-poster vista shows a surreal mountain resort at dusk, where a snowy alpine terrace drops into a theatrical valley under a vast cream-to-teal sky. In the foreground, a black grand piano half-buried in stylised snow sits beside a winding ochre path paved with oversized newspaper-like rectangles, while a slim adult traveler in a checked coat uses a polished walking cane as a conductor’s baton, facing the view in profile. Along the middle ground, dark pines and velvet-curtain-like cliffs frame a flower market pavilion crowned with a glittering tiara-shaped marquee, its bouquets rendered as simplified coral and pink bursts. From a circular garden bed of dark earth rises a monumental afro-shaped topiary mound with a radiant singing face abstracted into sunburst lines, becoming the emotional heart of the landscape without reading as a statue. Overhead, suspended between cable-car towers, a white many-legged wheel turns like a fantastical ski-lift emblem against the big sky. On a shadowed overlook to one side, a few long-haired adult silhouettes gather in deep black coats like mysterious travelers, while a dreamy cluster of close, soft-featured adult faces is reimagined as overlapping portrait banners on the resort walls. Snowy peaks in the distance catch stylised coral light, tying the cabaret glamour, underground surrealism, editorial collage, and winter music landscape into one connected poster world.",
-  "palette": [
-    "cream",
-    "teal",
-    "coral",
-    "ochre",
-    "midnight black"
+  "concept": "Snowstage coronation with orbiting limbs",
+  "creativeDirection": "A theatrical mixed-media diorama photographed like a dreamlike editorial set, combining miniature stagecraft, painted backdrops, and soft-focus portrait elements.",
+  "scene": "At night in a snowy alpine clearing, viewed straight on at slightly below piano height, a black grand piano forms an outdoor stage beneath a suspended circular chandelier made of radiating human legs.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "A single man in side profile stands beside the piano holding a wooden cane upright near his mouth, his patterned jacket simplified into bold decorative fabric accents and his presence framed by a flat yellow panel element."
+    },
+    {
+      "source": 2,
+      "element": "A crowned blonde beauty queen sits on the snow-dusted piano lid clutching a bouquet in crinkled wrap, mascara streaked and mouth open in a raw celebratory cry."
+    },
+    {
+      "source": 3,
+      "element": "A grayscale lounge-like woman appears as a quiet supporting figure leaning on the piano edge, sipping from a reflective metal cup through a straw, adding nocturnal cabaret atmosphere."
+    },
+    {
+      "source": 4,
+      "element": "Four half-lit long-haired men emerge from the darkness among the trees as shadowy onlookers, grouped with the same left-middle-right spacing as a distant chorus."
+    },
+    {
+      "source": 5,
+      "element": "A hazy cluster of five youthful faces is translated into ghostly close foreground spectators peering in from the lower left and right edges, with the red-haired woman most prominent."
+    },
+    {
+      "source": 6,
+      "element": "The hanging circular sculpture of radiating legs becomes the central overhead chandelier suspended by visible chains above the piano stage."
+    },
+    {
+      "source": 7,
+      "element": "The snow-covered grand piano, bench, sheet music, mountain horizon, evergreens, and deep blue winter sky provide the main setting and structure."
+    },
+    {
+      "source": 8,
+      "element": "Raised hands, confetti, and blown-out concert light become a ring of celebratory motion around the piano, especially in the background and upper corners."
+    }
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": "ideogram-remix",
-  "restyled": true,
-  "model": "fal-ai/ideogram/v3/remix",
-  "prompt": "Create one mid-century travel poster illustration - simplified geometry, stylised light, smooth gradient skies, flat confident shapes, and absolutely no lettering. The image is a 16:9 music blog header. Scene: A mid-century travel-poster vista shows a surreal mountain resort at dusk, where a snowy alpine terrace drops into a theatrical valley under a vast cream-to-teal sky. In the foreground, a black grand piano half-buried in stylised snow sits beside a winding ochre path paved with oversized newspaper-like rectangles, while a slim adult traveler in a checked coat uses a polished walking cane as a conductor’s baton, facing the view in profile. Along the middle ground, dark pines and velvet-curtain-like cliffs frame a flower market pavilion crowned with a glittering tiara-shaped marquee, its bouquets rendered as simplified coral and pink bursts. From a circular garden bed of dark earth rises a monumental afro-shaped topiary mound with a radiant singing face abstracted into sunburst lines, becoming the emotional heart of the landscape without reading as a statue. Overhead, suspended between cable-car towers, a white many-legged wheel turns like a fantastical ski-lift emblem against the big sky. On a shadowed overlook to one side, a few long-haired adult silhouettes gather in deep black coats like mysterious travelers, while a dreamy cluster of close, soft-featured adult faces is reimagined as overlapping portrait banners on the resort walls. Snowy peaks in the distance catch stylised coral light, tying the cabaret glamour, underground surrealism, editorial collage, and winter music landscape into one connected poster world. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: the side-profile man with the upright cane; source 2: the crowned bouquet-bearing woman; source 3: the snow-covered grand piano in the mountains; source 4: the suspended many-legged circular sculpture; source 5: the shadowy long-haired figures emerging from blackness; source 6: the dreamy overlapping close-up cluster of adult faces; source 7: the afro-framed face rising from dark earth; source 8: the newspaper front-page layout transformed into paving and signage. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Stylise each album motif into the poster world - as landmarks, vehicles, figures, flora, or emblems drawn in the same simplified poster language. Composition: One heroic vista with a strong horizon, a big sky, and clear foreground, middle-ground, and background bands. Colour direction: cream, teal, coral, ochre, midnight black - warm faded lithograph colours - cream, teal, coral, ochre - tuned to the sleeves. Mood: mysterious, theatrical, windswept, and exultant. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
-  "restylePrompt": "Restyle this image as a mid-century travel-poster illustration with simplified geometry and stylised light. Create one mid-century travel poster illustration - simplified geometry, stylised light, smooth gradient skies, flat confident shapes, and absolutely no lettering. Keep the existing composition, and keep every one of these motifs clearly recognisable: source 1: the side-profile man with the upright cane; source 2: the crowned bouquet-bearing woman; source 3: the snow-covered grand piano in the mountains; source 4: the suspended many-legged circular sculpture; source 5: the shadowy long-haired figures emerging from blackness; source 6: the dreamy overlapping close-up cluster of adult faces; source 7: the afro-framed face rising from dark earth; source 8: the newspaper front-page layout transformed into paving and signage. Stylise each album motif into the poster world - as landmarks, vehicles, figures, flora, or emblems drawn in the same simplified poster language. Preserve this composition grammar: One heroic vista with a strong horizon, a big sky, and clear foreground, middle-ground, and background bands. Preserve the colour direction: cream, teal, coral, ochre, midnight black - warm faded lithograph colours - cream, teal, coral, ochre - tuned to the sleeves. Keep the image safe and tasteful: no children or minors, no gore, nudity, or sexual content. Do not add any text, letters, words, numbers, captions, logos, watermarks, or signage. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene.",
+  "palette": [
+    "midnight blue",
+    "snow white",
+    "velvet black",
+    "crown gold",
+    "bouquet pink",
+    "theatrical purple"
+  ],
+  "mood": "strange, ecstatic, wintry, theatrical",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Greatest-Hits.jpg",
+      "album": "Greatest Hits",
+      "artist": "",
+      "description": "A studio portrait of a man in side profile against a flat bright yellow background. He has dark curly hair and wears a patterned jacket with dark lapels. He holds a wooden cane or stick upright near his face, with the rounded top close to his mouth. Large blocks of colored text run vertically along the left side, and a small dark sticker-like box appears near the lower right.",
+      "signatureMotif": "man in profile holding a cane upright near his mouth",
+      "medium": "color photography with graphic text layout",
+      "palette": [
+        "yellow",
+        "red",
+        "blue",
+        "black",
+        "beige"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Live-Through-This.jpg",
+      "album": "Live Through This",
+      "artist": "",
+      "description": "A soft-focus color photograph of a blonde woman wearing a sparkling crown and holding a bouquet of flowers wrapped in clear plastic. Her mouth is open in a wide smile or shout, and dark mascara streaks run beneath her eyes. The background is a dark purple curtain, with an oval text element in the upper right.",
+      "signatureMotif": "crying beauty queen with crown and bouquet",
+      "medium": "color photography",
+      "palette": [
+        "purple",
+        "pink",
+        "gold",
+        "blonde",
+        "green"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Trailer-Park.jpg",
+      "album": "Trailer Park",
+      "artist": "",
+      "description": "A grainy black-and-white photograph framed by wide white borders at top and bottom. A woman leans on a bar or counter with her head resting on one hand while drinking through a straw from a metal cup. The glossy surface in the foreground reflects lights and shapes, and the background is softly blurred with lamp-like highlights.",
+      "signatureMotif": "woman leaning at a bar sipping from a metal cup",
+      "medium": "black-and-white photography",
+      "palette": [
+        "white",
+        "black",
+        "gray",
+        "sepia"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Shake-Your-Money-Maker.jpg",
+      "album": "Shake Your Money Maker",
+      "artist": "",
+      "description": "A very dark group portrait showing four long-haired men in black clothing emerging from a black background. Their faces and white shirt areas are partially lit, creating a low-key moody composition. One figure stands at left, two are grouped in the middle, and one is positioned lower at right.",
+      "signatureMotif": "four band members half-lit against a black background",
+      "medium": "dark color photography",
+      "palette": [
+        "black",
+        "cream",
+        "brown",
+        "deep red"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Souvlaki.jpg",
+      "album": "Souvlaki",
+      "artist": "",
+      "description": "A soft, slightly blurred color photograph of five young people clustered close to the camera outdoors. A red-haired woman occupies the lower right foreground, while four men with dark hair fill the left and center, some partially cropped. The image has a hazy, washed look with shallow focus.",
+      "signatureMotif": "close-up cluster of five faces with a red-haired woman in front",
+      "medium": "soft-focus color photography",
+      "palette": [
+        "cream",
+        "black",
+        "brown",
+        "red",
+        "olive"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Its-Only-About-You-If-You-Think-It-Is.jpg",
+      "album": "Its Only About You If You Think It Is",
+      "artist": "",
+      "description": "A black-and-white image of a suspended sculptural form against a dark stage-like background. The central shape is a bright circular body with multiple human legs radiating outward like spokes. Chains and overhead lights are visible above, and a small light source appears at left.",
+      "signatureMotif": "circular hanging sculpture made of radiating human legs",
+      "medium": "black-and-white photography of an installation or stage prop",
+      "palette": [
+        "black",
+        "white",
+        "gray"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Even-in-the-Quietest-Moments.jpg",
+      "album": "Even in the Quietest Moments",
+      "artist": "",
+      "description": "A black grand piano and matching bench sit outdoors in deep snow, with snow piled on the lid, keys, and seat. A sheet of music rests on the music stand. Behind them is a mountain landscape with evergreen trees and a clear dark blue sky.",
+      "signatureMotif": "snow-covered grand piano in a mountain landscape",
+      "medium": "color photography",
+      "palette": [
+        "white",
+        "black",
+        "blue",
+        "gray",
+        "green"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Boys-And-Girls-In-America.jpg",
+      "album": "Boys And Girls In America",
+      "artist": "",
+      "description": "A crowded party or concert scene filled with overlapping people raising their hands in the air. Confetti or glitter is scattered throughout, and bright stage-like lighting creates a layered, high-energy collage effect. The center is washed with white light, while faces and arms surround it from all sides.",
+      "signatureMotif": "crowd with raised hands amid confetti and bright light",
+      "medium": "color photography with layered collage-like exposure",
+      "palette": [
+        "pink",
+        "red",
+        "white",
+        "purple",
+        "orange"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "A night scene in a snowy alpine clearing, viewed straight on from slightly below piano height, centered on a black grand piano half-buried in deep snow with its bench and sheet music visible, mountains and dark evergreens behind under a deep blue winter sky; on the piano lid sits a crowned blonde beauty queen clutching a bouquet wrapped in clear plastic, mascara streaked under her eyes and mouth open in an ecstatic cry, making her the emotional focal point; beside the piano stands a single man in side profile holding a wooden cane upright near his mouth, wearing a patterned jacket with dark lapels and backed by a flat rectangular yellow scenic panel, while a grayscale woman quietly leans on the piano edge sipping from a reflective metal cup through a straw, four long-haired men in black emerge half-lit from the darkness between the trees as a distant chorus, a soft hazy cluster of five youthful faces presses into the lower frame edges with the red-haired woman most visible, and above everything hangs a circular chandelier-like sculpture made of radiating human legs suspended by chains; mixed-media theatrical diorama, combining miniature stagecraft, painted scenery, textile costume detail, suspended sculpture, editorial set photography, soft blur, grain, and subtle collage layering; strong central hierarchy with the piano and crowned woman dominant, the leg chandelier directly overhead, the man with cane as secondary vertical accent, supporting figures receding into edges and background, confetti and raised hands swirling around the scene like concert afterglow, bright central spotlight fading into dark corners; palette of midnight blue, snow white, velvet black, crown gold, bouquet pink, theatrical purple, poster yellow, and deep evergreen, with a surreal ecstatic winter-cabaret mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Greatest-Hits.jpg",
     "Live-Through-This.jpg",
-    "Even-in-the-Quietest-Moments.jpg",
-    "Its-Only-About-You-If-You-Think-It-Is.jpg",
+    "Trailer-Park.jpg",
     "Shake-Your-Money-Maker.jpg",
     "Souvlaki.jpg",
-    "Maggot-Brain.jpg",
-    "Thick-as-a-Brick.jpg"
+    "Its-Only-About-You-If-You-Think-It-Is.jpg",
+    "Even-in-the-Quietest-Moments.jpg",
+    "Boys-And-Girls-In-America.jpg"
   ]
 }

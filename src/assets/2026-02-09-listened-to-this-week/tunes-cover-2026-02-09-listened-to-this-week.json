@@ -1,33 +1,196 @@
 {
+  "version": 2,
   "date": "2026-02-09",
   "type": "cover",
-  "lane": "macro-detail",
-  "lighting": "dramatic stormlight with sun breaking through, bright shafts of light against dark cloud",
+  "lane": null,
+  "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Stormlit backyard micro-world of music relics gathered around a floral shrine",
-  "scene": "An extreme macro photograph peers into a rain-damp miniature world built inside a tuft of lawn grass just after a storm, with one dominant subject filling the frame: a tiny yellow flower-sculpture shaped like a curved stem and bloom, edged in dew and enclosed by a low rectangular hedge of mustard blossoms. Draped over this floral monument is a doll-sized red cap, its wet fabric and stitched eyelets sharply in focus, while the cap rests against a scrap of blue denim used as a tiny hillside tarp, complete with a glinting studded belt buckle like metal fencing. Behind it, dissolving into luminous stormlit bokeh, a shell-laden black willow rises from a shallow tide pool, its branches hung with scallops, conches, and a perched black-and-white bird; a silver toy glider banks through a shaft of sun above the tree; a miniature cream living-room set spills across a plank path with a tiny guitar, wine glass, houseplant, television glow, and hanging globe; farther back, the rusted grille of an old van forms a shelter wall with four blurred adult silhouettes reflected in its windshield; tucked near the roadside of the miniature scene stands a small hand-painted folk sculpture of a gaunt traveler with exaggerated feet beside a ribbon of black asphalt with yellow dashes; and near the shell tree, half-lost in blur, a rhinestone tiara and crinkled bouquet catch sudden sunlight like pageant relics washed into the grass. Dark cloud shadows keep the world dramatic, while bright shafts of sun ignite the dew, chrome, cellophane, shell edges, and flower petals with rich naturalistic highlights.",
-  "palette": [
-    "grass green",
-    "mustard yellow",
-    "daisy white",
-    "lavender",
-    "denim blue"
+  "concept": "Winners’ circle under a drifting glider",
+  "creativeDirection": "A theatrical mixed-media diorama photographed from above, combining painted figures, cut-paper graphics, floral land art, and miniature interior props.",
+  "scene": "Oblique overhead view of a darkened indoor arena floor transformed into a ceremonial winners’ circle, with a grassy rectangular flower emblem embedded at center stage and a suspended glider crossing the open space above.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "Miniature living-room fragments arranged around the arena edge: sofa, television, fireplace mantel with pink flamingo, globe lamp, bay-window shape, guitar, wine glasses, and five young men redistributed as small posed spectators and loungers in a single unified group."
+    },
+    {
+      "source": 2,
+      "element": "A large painted gaunt hollow-eyed roadside figure stands at the right edge of the circle like an unsettling usher, with a strip of dark road and yellow lane marks bleeding into the floor and a tiny sprawled figure near it."
+    },
+    {
+      "source": 3,
+      "element": "Central back-view male figure in white sleeveless shirt and jeans, holding a red cap behind him, positioned at the lip of the floral emblem as if about to present or receive something."
+    },
+    {
+      "source": 4,
+      "element": "Oversized collage-filled block letterforms become freestanding white placards around the arena, sparse and monumental, framing the action without readable text."
+    },
+    {
+      "source": 5,
+      "element": "Crowned blonde pageant winner with smeared mascara and bouquet is the emotional focal figure, kneeling or half-collapsed beside the central figure under a spotlight."
+    },
+    {
+      "source": 6,
+      "element": "A model glider arcs through the vast negative space overhead, with a few monochrome ground crew figures at one corner of the arena appearing to have just launched it."
+    },
+    {
+      "source": 7,
+      "element": "The old van front becomes a looming proscenium-like backdrop at one end of the arena, its windshield revealing four long-haired men watching from inside."
+    },
+    {
+      "source": 8,
+      "element": "The grass-and-flower rectangular emblem forms the central platform on the arena floor, crisp and ceremonial against the darker surroundings."
+    }
   ],
+  "palette": [
+    "deep blue",
+    "arena black",
+    "grass green",
+    "marigold yellow",
+    "purple",
+    "off-white"
+  ],
+  "mood": "melancholic, uncanny, celebratory but frayed",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Definitely-Maybe.jpg",
+      "album": "Definitely Maybe",
+      "artist": "",
+      "description": "A staged colour photograph of a bright living room with pale walls and a light wooden floor. Five young men are arranged around the room: one sits on a sofa holding an acoustic guitar, one sits in a chair, one stands by tall bay windows with an arm raised, one sits on the floor facing a television, and one lies on his back in the foreground. The room contains framed pictures, a round wall mirror, houseplants, a guitar leaning near the window, a fireplace, shelves with electronics, a television, wine glasses on the floor, and a large globe-like object hanging near the ceiling. A pink flamingo ornament stands on the mantel.",
+      "signatureMotif": "five men posed in a living room",
+      "medium": "colour photograph",
+      "palette": [
+        "cream",
+        "pale blue",
+        "beige",
+        "brown",
+        "black"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Where-You-Been.jpg",
+      "album": "Where You Been",
+      "artist": "",
+      "description": "A rough, expressive painting of a dark road receding into the distance under a deep blue sky. On the right stands a gaunt, bald, human-like figure with hollow white eyes, large hands and feet, a pale green shirt, and blue trousers, holding a small object in one hand. On the left side of the road lies a smaller sprawled figure. The road has bright yellow lane markings, and the surrounding land is brown and barren.",
+      "signatureMotif": "gaunt hollow-eyed figure beside a road",
+      "medium": "painting",
+      "palette": [
+        "dark blue",
+        "black",
+        "brown",
+        "yellow",
+        "pale green"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Born-in-the-U-S-A.jpg",
+      "album": "Born in the U S A",
+      "artist": "",
+      "description": "A close-cropped colour photograph showing the back of a man from shoulders to thighs. He wears a white sleeveless shirt, blue jeans, and a decorated belt, and holds a red cap behind him. The background is filled by broad horizontal red and white stripes.",
+      "signatureMotif": "back view of a man in jeans holding a red cap",
+      "medium": "colour photograph",
+      "palette": [
+        "red",
+        "white",
+        "blue",
+        "tan",
+        "black"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "The-Complete-Singles.jpg",
+      "album": "The Complete Singles",
+      "artist": "",
+      "description": "A minimalist graphic design on a white background. Large block letters dominate the center, and each letter is filled with a collage of small photographic and illustrated fragments in different colours and textures. The composition is otherwise sparse with wide empty white space around the central lettering.",
+      "signatureMotif": "large collage-filled block letters",
+      "medium": "graphic design with photo collage",
+      "palette": [
+        "white",
+        "black",
+        "red",
+        "blue",
+        "orange"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Live-Through-This.jpg",
+      "album": "Live Through This",
+      "artist": "",
+      "description": "A soft-focus colour photograph of a blonde woman wearing a sparkling crown and holding a bouquet of flowers wrapped in clear plastic. She appears close to the camera with mouth open and dark mascara streaked beneath her eyes. The background is a dark curtain, giving a pageant-stage feel.",
+      "signatureMotif": "crowned blonde woman with smeared mascara and bouquet",
+      "medium": "colour photograph",
+      "palette": [
+        "purple",
+        "gold",
+        "pink",
+        "cream",
+        "green"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Scatter-Lost-Not-Lost-Volume-Two-1991-1997.jpg",
+      "album": "Scatter Lost Not Lost Volume Two 1991 1997",
+      "artist": "",
+      "description": "A black-and-white photograph of an open sky with a glider aircraft sweeping across the upper left. In the lower right, several men stand outdoors; one man in light clothing and a bucket hat is in motion with an arm extended as if launching or guiding the glider, while others watch and hold equipment. The composition leaves a large expanse of empty sky.",
+      "signatureMotif": "glider aircraft above men on the ground",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "white",
+        "grey"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "New-Miserable-Experience.jpg",
+      "album": "New Miserable Experience",
+      "artist": "",
+      "description": "A warm-toned colour photograph of the front of an older van or truck seen head-on. Four long-haired men are visible through the windshield, tinted bluish-purple by the glass. The vehicle’s grille and headlights fill most of the frame, and a small guitar-shaped ornament or image appears on the front plate area. The setting suggests an indoor garage or service area.",
+      "signatureMotif": "four men seen through the windshield of an old van",
+      "medium": "colour photograph",
+      "palette": [
+        "brown",
+        "gold",
+        "black",
+        "blue",
+        "purple"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Nothing-But-Love-The-Definitive-Best-Of.jpg",
+      "album": "Nothing But Love The Definitive Best Of",
+      "artist": "",
+      "description": "An overhead colour photograph of a green grassy field dotted with small white flowers. In the center, yellow and purple flowers are carefully arranged into a tall rectangular border containing a stylized flower shape above a curved vertical form. The floral arrangement casts shadows on the grass.",
+      "signatureMotif": "flower arrangement forming a rectangular emblem on grass",
+      "medium": "overhead colour photograph",
+      "palette": [
+        "green",
+        "yellow",
+        "white",
+        "purple"
+      ]
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one extreme macro photograph - a single tabletop-scale world seen from inches away with razor-thin depth of field. The image is a 16:9 music blog header. Scene: An extreme macro photograph peers into a rain-damp miniature world built inside a tuft of lawn grass just after a storm, with one dominant subject filling the frame: a tiny yellow flower-sculpture shaped like a curved stem and bloom, edged in dew and enclosed by a low rectangular hedge of mustard blossoms. Draped over this floral monument is a doll-sized red cap, its wet fabric and stitched eyelets sharply in focus, while the cap rests against a scrap of blue denim used as a tiny hillside tarp, complete with a glinting studded belt buckle like metal fencing. Behind it, dissolving into luminous stormlit bokeh, a shell-laden black willow rises from a shallow tide pool, its branches hung with scallops, conches, and a perched black-and-white bird; a silver toy glider banks through a shaft of sun above the tree; a miniature cream living-room set spills across a plank path with a tiny guitar, wine glass, houseplant, television glow, and hanging globe; farther back, the rusted grille of an old van forms a shelter wall with four blurred adult silhouettes reflected in its windshield; tucked near the roadside of the miniature scene stands a small hand-painted folk sculpture of a gaunt traveler with exaggerated feet beside a ribbon of black asphalt with yellow dashes; and near the shell tree, half-lost in blur, a rhinestone tiara and crinkled bouquet catch sudden sunlight like pageant relics washed into the grass. Dark cloud shadows keep the world dramatic, while bright shafts of sun ignite the dew, chrome, cellophane, shell edges, and flower petals with rich naturalistic highlights. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: red baseball cap against blue denim and studded belt; source 2: sparkling tiara with bouquet; source 3: living-room floor scene with guitar and hanging globe; source 4: front grille and windshield of an old van; source 5: glider aircraft in open sky; source 6: gaunt roadside figure beside a dark highway; source 7: shell-hung tree with black-and-white bird; source 8: rectangular yellow flower border with stylised bloom. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Shrink each album motif into a tiny, exquisitely detailed object or texture inside this one miniature world - carved, folded, grown, or resting among the others. Composition: One dominant close subject filling the frame, the remaining motifs dissolving into soft bokeh layers behind it. Colour direction: grass green, mustard yellow, daisy white, lavender, denim blue - rich naturalistic colour with luminous highlights where the light catches edges and textures. Time of day and light: dramatic stormlight with sun breaking through, bright shafts of light against dark cloud. Mood: nostalgic, uncanny, radiant after the storm. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "Oblique overhead view into a dark indoor arena turned into a ceremonial winners’ circle, with a suspended glider crossing a wide field of open air above and a rectangular grass panel with a floral emblem embedded in the center of the floor; the primary subject is a crowned blonde woman with smeared mascara clutching a bouquet in clear wrap, half-collapsed in a spotlight beside a man seen from the back in a white sleeveless shirt and blue jeans holding a red cap behind him; include a looming old van front as a proscenium backdrop with four long-haired men visible through the bluish-purple windshield, a gaunt hollow-eyed painted figure standing to the right like an ominous usher where a dark road with yellow lane markings bleeds into the floor and a tiny sprawled figure lies off to the side, sparse freestanding white block-letter placards filled with collage fragments arranged around the circle, a few monochrome ground crew figures in one corner appearing to have launched the glider, and around the perimeter miniature bright-living-room fragments with pale walls and light wood tones: sofa, television, fireplace mantel with pink flamingo, round mirror, houseplants, hanging globe lamp, guitar, wine glasses, bay-window framing, plus five young men gathered only once as a small spectator group; mixed-media theatrical diorama photographed like a real constructed set, combining hand-painted expressionist figure surfaces, cut-paper collage, miniature props, floral land-art textures, and subtle photographic grain; clear visual hierarchy with the pageant woman and back-view man at center, the flower emblem beneath them, the glider and van as large secondary anchors, strong negative space in the upper half, spotlight on the central pair with dim ambient arena light and soft shadows; palette of deep blue, arena black, grass green, marigold yellow, purple, off-white, faded red, and warm brown, mood uncanny, tender, and exhausted after a celebration Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
-    "Born-in-the-U-S-A.jpg",
-    "Live-Through-This.jpg",
     "Definitely-Maybe.jpg",
-    "New-Miserable-Experience.jpg",
-    "Scatter-Lost-Not-Lost-Volume-Two-1991-1997.jpg",
     "Where-You-Been.jpg",
-    "Spirit-of-Eden.jpg",
+    "Born-in-the-U-S-A.jpg",
+    "The-Complete-Singles.jpg",
+    "Live-Through-This.jpg",
+    "Scatter-Lost-Not-Lost-Volume-Two-1991-1997.jpg",
+    "New-Miserable-Experience.jpg",
     "Nothing-But-Love-The-Definitive-Best-Of.jpg"
   ]
 }

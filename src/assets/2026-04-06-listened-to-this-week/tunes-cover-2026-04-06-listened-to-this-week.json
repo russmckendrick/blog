@@ -1,32 +1,194 @@
 {
+  "version": 2,
   "date": "2026-04-06",
   "type": "cover",
-  "lane": "screenprint-gigposter",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Mythic desert lagoon pilgrimage around a giant letter-monolith",
-  "scene": "A bold screenprinted poster scene shows a moonlit lagoon at the edge of sweeping dunes, where one colossal white monolith rises from the water as the dominant central motif, its face shaped like a giant block letterform and mirrored in rippling ink below. Wrapped around the base of this monolith is a thick circular wreath of thorny vine and two oversized red roses, reimagining the metallic crest as organic poster geometry. From the lagoon surface leaps an adult mannequin-like swimmer, rendered as a simplified blue silhouette with outstretched arms, reaching toward a hooked paper note that swings from the monolith like bait; the sensitive original is transformed into a symbolic statue-like figure. On the dune ridge behind, a single-file procession snakes toward the water, while at the shoreline a dreamlike woman with streaming hair reclines in lavender cloth, flanked by two hounds whose bodies curve into the composition. Above her, a serene bespectacled blue face appears like a giant cutout moon or theatrical mask in the sky, balanced on the opposite side by a smiling dreadlocked face emerging from shadows and high collar folds. At the top of the dune, a simplified folk-art rider on a white horse carries a long spear, silhouetted against clouds, tying the whole world together as a mythic pilgrimage oasis. Everything is reduced to chunky shapes, crisp knockouts, and halftone shadows in saturated inks, with water, dune, sky, roses, and figures all sharing one dramatic nocturnal glow.",
-  "palette": [
-    "turquoise blue",
-    "deep midnight navy",
-    "warm cream",
-    "oxide red"
+  "concept": "Tidal museum around a glowing earth relic",
+  "creativeDirection": "A cinematic mixed-media diorama combining monochrome storm photography, collage, miniature set design, and painted atmospheric overlays.",
+  "scene": "An oblique wide view into a flooded museum hall whose broken floor opens into a glowing cutaway planet, as if the room itself has become a storm-breached reliquary between sea and desert.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "one large black-and-white portrait presence as a framed wall bust-like photograph, the smiling dreadlocked man in high collar and mesh-gloved hand becoming a singular guardian image on the left wall"
+    },
+    {
+      "source": 2,
+      "element": "blurred highway-interchange geometry and scratchy icy overlays worked into the floodwater surface, cracked floor inlays, and hanging translucent panels"
+    },
+    {
+      "source": 3,
+      "element": "the primary live figure: a glamorous woman in a windblown dress standing on debris at the edge of the opened floor while waves surge through the hall; a thin red heartbeat line appears high across the back wall"
+    },
+    {
+      "source": 4,
+      "element": "a distant single-file procession crossing a sand dune visible through a ruptured archway or panoramic opening beyond the flooded interior"
+    },
+    {
+      "source": 5,
+      "element": "a reclining woman embraced by two large dogs reimagined as a soft lavender painting or tapestry resting on a toppled sofa platform in a side alcove"
+    },
+    {
+      "source": 6,
+      "element": "minimalist bespectacled cartoon figure with tie rendered as a small deadpan museum placard icon or etched wayfinding sign near the foreground"
+    },
+    {
+      "source": 7,
+      "element": "crossed revolvers, gold ring, roses, and green ribbon transformed into an ornate metallic crest mounted above the central breach like a ceremonial museum emblem"
+    },
+    {
+      "source": 8,
+      "element": "the central cutaway Earth with glowing orange core rising from the broken floor, with butterflies and hints of domestic stair railings and furniture fragments absorbed into the hall"
+    }
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": null,
-  "restyled": false,
-  "model": "fal-ai/nano-banana-2/edit",
-  "prompt": "Create one heavy-ink screenprinted gig poster - thick flat colour, hard confident shapes, halftone dots for shading, and absolutely no lettering. The image is a 16:9 music blog header. Scene: A bold screenprinted poster scene shows a moonlit lagoon at the edge of sweeping dunes, where one colossal white monolith rises from the water as the dominant central motif, its face shaped like a giant block letterform and mirrored in rippling ink below. Wrapped around the base of this monolith is a thick circular wreath of thorny vine and two oversized red roses, reimagining the metallic crest as organic poster geometry. From the lagoon surface leaps an adult mannequin-like swimmer, rendered as a simplified blue silhouette with outstretched arms, reaching toward a hooked paper note that swings from the monolith like bait; the sensitive original is transformed into a symbolic statue-like figure. On the dune ridge behind, a single-file procession snakes toward the water, while at the shoreline a dreamlike woman with streaming hair reclines in lavender cloth, flanked by two hounds whose bodies curve into the composition. Above her, a serene bespectacled blue face appears like a giant cutout moon or theatrical mask in the sky, balanced on the opposite side by a smiling dreadlocked face emerging from shadows and high collar folds. At the top of the dune, a simplified folk-art rider on a white horse carries a long spear, silhouetted against clouds, tying the whole world together as a mythic pilgrimage oasis. Everything is reduced to chunky shapes, crisp knockouts, and halftone shadows in saturated inks, with water, dune, sky, roses, and figures all sharing one dramatic nocturnal glow. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: hooked paper note above a blue swimmer figure; source 2: blue-lit bespectacled face with closed eyes; source 3: folk-art rider on a white horse with spear; source 4: smiling dreadlocked face framed by a high dark collar; source 5: reclining woman with two hounds and flowing hair; source 6: circular rose-and-vine crest around a central form; source 7: giant white letter-like monolith rising from reflective water; source 8: single-file procession across dune ridges. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Turn each album motif into a bold screenprinted graphic element - chunky shapes, halftone tone, crisp knockouts - each one readable at a glance. Composition: One dominant central motif with the others orbiting it, tight and punchy like a classic gig poster. Colour direction: turquoise blue, deep midnight navy, warm cream, oxide red - three or four flat saturated ink colours on paper. Mood: mystical, windswept, cinematic. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths. Bold, confident, gallery-quality print design with a strong sense of place.",
-  "restylePrompt": null,
+  "palette": [
+    "charcoal",
+    "silver",
+    "icy blue",
+    "storm white",
+    "sand",
+    "glowing amber"
+  ],
+  "mood": "catastrophic yet reverent, surreal, windswept, elegiac",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Distracted.jpg",
+      "album": "Distracted",
+      "artist": "",
+      "description": "A black-and-white studio portrait of a smiling man with shoulder-length dreadlocks, shown from the chest up against a plain light background. He wears a dark leather jacket with a high folded collar and a mesh glove or sleeve over one hand, which is raised to his cheek. Small facial piercings are visible on his nose and near his mouth. The composition is tightly cropped and centered on his face and upper body.",
+      "signatureMotif": "smiling man with dreadlocks in a high-collared leather jacket",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "white",
+        "grey"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "OK-Computer.jpg",
+      "album": "OK Computer",
+      "artist": "",
+      "description": "An abstract mixed-image cover dominated by white space and icy blue tones. A blurred aerial or elevated view of a highway interchange with a few small cars runs across the lower half, overlaid with scratchy painterly streaks and translucent shapes. On the right side are collage-like graphic elements including a large black X on a blue square, tiny stick-figure-like people near a red object, and a cropped rounded white-and-blue form. Near the upper area are two small rectangular image fragments with dark silhouettes. The overall composition feels layered, smeared, and partially erased.",
+      "signatureMotif": "blurred highway interchange under scratchy blue-white overlays",
+      "medium": "mixed-media collage with painting and photographic elements",
+      "palette": [
+        "white",
+        "light blue",
+        "cyan",
+        "black",
+        "grey"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Permanent-Waves.jpg",
+      "album": "Permanent Waves",
+      "artist": "",
+      "description": "A monochrome storm scene framed by a black border. In the foreground, a glamorous woman with styled hair stands amid scattered wooden debris, her light dress blown strongly to one side. Behind her, huge waves crash through a street lined with small buildings and signs, and a distant figure stands with arms raised near the water. A thin red line resembling a heartbeat trace runs horizontally across the upper portion of the image. The sky is cloudy and dramatic.",
+      "signatureMotif": "woman in a windblown dress standing before crashing waves",
+      "medium": "composite photograph with graphic line element",
+      "palette": [
+        "black",
+        "white",
+        "grey",
+        "red",
+        "beige"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Together-Were-Heavy.jpg",
+      "album": "Together Were Heavy",
+      "artist": "",
+      "description": "A wide desert landscape with pale sand dunes under a bright blue sky filled with soft white clouds. A long line of small human figures walks in single file along the crest of a dune from the lower right toward the upper right. The dunes show gentle ripples and sweeping curves, and the people appear dark and distant against the luminous sand.",
+      "signatureMotif": "single-file procession of people crossing a sand dune",
+      "medium": "colour photograph",
+      "palette": [
+        "sky blue",
+        "turquoise",
+        "white",
+        "pale sand",
+        "dark brown"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Hounds-of-Love.jpg",
+      "album": "Hounds of Love",
+      "artist": "",
+      "description": "A mostly white cover with a centered square photograph bordered by empty space. Inside the square, a woman with voluminous dark hair lies or reclines in soft purple fabric, gazing toward the viewer. Two large dogs press against her, one resting its head near her shoulder and chest. The image has a dreamy, diffused look with lavender tones and soft focus.",
+      "signatureMotif": "reclining woman embraced by two large dogs",
+      "medium": "soft-focus colour photograph",
+      "palette": [
+        "white",
+        "lavender",
+        "purple",
+        "pink",
+        "brown"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Milo-Goes-to-College.jpg",
+      "album": "Milo Goes to College",
+      "artist": "",
+      "description": "A simple cartoon-style drawing on a flat grey background. Centered is a minimalist bust of a human-like figure with a long narrow head, short vertical hair strokes, rectangular glasses, tiny dot eyes, a small nose, and a collared shirt with a patterned necktie. The lines are black and sparse, with a plain, deadpan expression and lots of empty space around the figure.",
+      "signatureMotif": "minimalist bespectacled cartoon figure with a tie",
+      "medium": "line drawing",
+      "palette": [
+        "grey",
+        "black"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Greatest-Hits.jpg",
+      "album": "Greatest Hits",
+      "artist": "",
+      "description": "A metallic emblem centered on a dark brushed-metal background. The emblem consists of a large gold ring surrounding a silver circular center, crossed horizontally by two silver revolvers meeting at the middle. Red roses with green leaves sit on either side of the guns, and a green ribbon-like flourish wraps across the center. The composition is symmetrical and glossy, with a hard rock crest-like appearance.",
+      "signatureMotif": "crossed silver revolvers framed by a gold ring and red roses",
+      "medium": "digital illustration with metallic effects",
+      "palette": [
+        "dark grey",
+        "gold",
+        "silver",
+        "red",
+        "green"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Terraformer.jpg",
+      "album": "Terraformer",
+      "artist": "",
+      "description": "A surreal collage set in outer space, with a star-filled sky as the backdrop. At center is a cutaway Earth showing a large exposed interior core in warm orange and yellow tones. A small seated person appears on top of the globe, while butterflies float around the scene. In the foreground is a domestic interior with carpeted stairs, white railings, sofas, a coffee table with a plant, and three identical suited men seated in profile. To the right stands a door or panel containing a large close-up eye, and additional small Earth-like spheres appear in the room and sky.",
+      "signatureMotif": "cutaway Earth with its glowing interior exposed inside a surreal living room in space",
+      "medium": "surreal photomontage collage",
+      "palette": [
+        "starry blue",
+        "brown",
+        "orange",
+        "yellow",
+        "white"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "An oblique wide view into a flooded museum hall with high walls and a broken floor opening into a glowing cutaway Earth, as if a grand gallery has been breached by sea and transformed into a relic chamber between storm and desert; at the center stands a glamorous woman in a light dress blown hard to one side, balanced on scattered wooden debris at the rim of the planetary opening while waves crash through the hall behind her; the exposed planet core glows orange and yellow from below, butterflies drift in the damp air, fragments of a domestic interior such as white stair railings, a sofa edge, and a small table are half-absorbed into the museum wreckage around the breach; on the left wall, one large framed black-and-white portrait shows a smiling man with shoulder-length dreadlocks in a high-collared leather jacket, mesh-gloved hand raised to his cheek, used only once as a guardian-like image; across the waterlogged floor and suspended translucent panels, incorporate blurred highway-interchange forms, small cars, black X-like graphic geometry, and scratchy blue-white smeared overlays; through a ruptured rear archway, show a distant single-file procession of tiny figures crossing the crest of a pale sand dune under blue sky; in a side alcove, place a toppled sofa platform bearing a dreamy lavender painting or tapestry of a reclining woman with voluminous hair embraced by two large dogs; add a tiny minimalist bespectacled cartoon figure with tie as an etched wayfinding icon or placard near the foreground; mount above the central breach an ornate metallic crest derived from a gold ring, crossed silver revolvers, red roses, and a green ribbon; mixed-media diorama, miniature set photography enhanced with collage, painted atmospheric textures, monochrome storm imagery blended with color accents, tactile surfaces, layered translucency, slight grain; strong central hierarchy with the windblown woman and glowing Earth leading, portrait and crest anchoring the left and upper zones, dune procession and lavender alcove as secondary discoveries; dramatic side lighting, backlit spray, reflective floodwater, a thin red heartbeat line running horizontally across the upper back wall; palette of charcoal, silver, icy blue, storm white, pale sand, glowing amber, lavender, and deep red, with a reverent catastrophic mood Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
-    "Nevermind.jpg",
-    "To-the-Bone.jpg",
-    "Graceland.jpg",
     "Distracted.jpg",
+    "OK-Computer.jpg",
+    "Permanent-Waves.jpg",
+    "Together-Were-Heavy.jpg",
     "Hounds-of-Love.jpg",
+    "Milo-Goes-to-College.jpg",
     "Greatest-Hits.jpg",
-    "Nixon.jpg",
-    "Together-Were-Heavy.jpg"
+    "Terraformer.jpg"
   ]
 }

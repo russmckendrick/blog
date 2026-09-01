@@ -1,33 +1,194 @@
 {
+  "version": 2,
   "date": "2026-01-26",
   "type": "cover",
-  "lane": "vintage-travel-poster",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Dream-punk seaside resort on a tidal poster coast",
-  "scene": "A mid-century travel-poster vista shows a fantastical coastal promenade at dusk, where a stylish seaside market meets a tidal dreamscape. In the foreground, simplified shopfront terraces and display windows echo a chic boutique interior, while elegant adult figures in narrow suits browse papers beneath poster-lined walls. Beside the walkway stands a tall glowing lantern-jar filled with tiny luminous insects, rendered as a civic beacon. A rose-and-ribbon mural and a small hanging cruciform charm appear as decorative street emblems on the promenade architecture. In the middle ground, the beach opens into shallow reflective water where neat rows of iron bedsteads become surreal cabanas stretching toward the horizon, with a few compact radio-shaped kiosks and speaker towers set among them like resort huts. A sleek adult singer silhouette performs at a bandstand, backed by giant stylised flowers and splash-like foliage integrated into the dunes. Above, a red hang glider cuts across a vast cream-to-violet sky, while in the far background a monumental circular eagle crest is reimagined as a lighthouse medallion on the cliff, its branch and bat transformed into balanced ornamental icons. Subtle geometric overlays and the profile of a wolf-like face are worked into clouds and reflected water as poster shapes, tying the whole coast into one bold, unified destination.",
-  "palette": [
-    "cream",
-    "teal",
-    "coral",
-    "ochre",
-    "faded violet"
+  "concept": "Cabinet stage with trapped signals",
+  "creativeDirection": "A handcrafted shadow-box assemblage photographed like a theatrical diorama, combining painted portraiture, print graphics, miniature props, and collage translucency.",
+  "scene": "Front-facing view into a narrow curiosity-shop cabinet transformed into a tiny proscenium stage, with shelves, dangling ties, stacked papers, and boxed objects framing the interior like wings.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "a carved and painted wooden mannequin arm at the left foreground bearing the rose tattoo and a hanging black crucifix chain"
+    },
+    {
+      "source": 2,
+      "element": "a large translucent circular symbol suspended like acrylic signage across the cabinet opening, with neon-smudged cyan and magenta haze and a dark decorative strip on the right frame"
+    },
+    {
+      "source": 3,
+      "element": "a row of miniature boomboxes on the cabinet floor with a blurred striking arm implied as a motion-smeared prop entering from above"
+    },
+    {
+      "source": 4,
+      "element": "a glass specimen jar full of flies placed prominently on the counter, with a child's single watching eye glimpsed softly through a peephole aperture behind it"
+    },
+    {
+      "source": 5,
+      "element": "a bold round eagle seal printed as a stamped medallion on a drawer front beneath the stage, accented by a red band"
+    },
+    {
+      "source": 6,
+      "element": "three painted faces integrated as the cabinet's inner theater curtain, with the central face hanging upside down between rich red drapes"
+    },
+    {
+      "source": 7,
+      "element": "small illustrated performer cutouts and oversized flowers clustered along the lower shelf, while one large spectral face is reduced to a faint painted backdrop glow"
+    },
+    {
+      "source": 8,
+      "element": "the overall cabinet setting, with two suited shopkeepers represented only once as small monochrome figures at the rear sorting papers among the clutter"
+    }
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": "ideogram-remix",
-  "restyled": true,
-  "model": "fal-ai/ideogram/v3/remix",
-  "prompt": "Create one mid-century travel poster illustration - simplified geometry, stylised light, smooth gradient skies, flat confident shapes, and absolutely no lettering. The image is a 16:9 music blog header. Scene: A mid-century travel-poster vista shows a fantastical coastal promenade at dusk, where a stylish seaside market meets a tidal dreamscape. In the foreground, simplified shopfront terraces and display windows echo a chic boutique interior, while elegant adult figures in narrow suits browse papers beneath poster-lined walls. Beside the walkway stands a tall glowing lantern-jar filled with tiny luminous insects, rendered as a civic beacon. A rose-and-ribbon mural and a small hanging cruciform charm appear as decorative street emblems on the promenade architecture. In the middle ground, the beach opens into shallow reflective water where neat rows of iron bedsteads become surreal cabanas stretching toward the horizon, with a few compact radio-shaped kiosks and speaker towers set among them like resort huts. A sleek adult singer silhouette performs at a bandstand, backed by giant stylised flowers and splash-like foliage integrated into the dunes. Above, a red hang glider cuts across a vast cream-to-violet sky, while in the far background a monumental circular eagle crest is reimagined as a lighthouse medallion on the cliff, its branch and bat transformed into balanced ornamental icons. Subtle geometric overlays and the profile of a wolf-like face are worked into clouds and reflected water as poster shapes, tying the whole coast into one bold, unified destination. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: glowing insect-filled glass jar; source 2: rose tattoo motif; source 3: rows of beds in shallow seaside water with a red hang glider; source 4: cluster of boomboxes; source 5: singer with microphone framed by oversized flowers; source 6: spread-winged eagle crest; source 7: wolf-like face with translucent geometric overlays; source 8: stylish boutique interior with adults reading papers. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Stylise each album motif into the poster world - as landmarks, vehicles, figures, flora, or emblems drawn in the same simplified poster language. Composition: One heroic vista with a strong horizon, a big sky, and clear foreground, middle-ground, and background bands. Colour direction: cream, teal, coral, ochre, faded violet - warm faded lithograph colours - cream, teal, coral, ochre - tuned to the sleeves. Mood: restless, romantic, surreal, and celebratory. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
-  "restylePrompt": "Restyle this image as a mid-century travel-poster illustration with simplified geometry and stylised light. Create one mid-century travel poster illustration - simplified geometry, stylised light, smooth gradient skies, flat confident shapes, and absolutely no lettering. Keep the existing composition, and keep every one of these motifs clearly recognisable: source 1: glowing insect-filled glass jar; source 2: rose tattoo motif; source 3: rows of beds in shallow seaside water with a red hang glider; source 4: cluster of boomboxes; source 5: singer with microphone framed by oversized flowers; source 6: spread-winged eagle crest; source 7: wolf-like face with translucent geometric overlays; source 8: stylish boutique interior with adults reading papers. Stylise each album motif into the poster world - as landmarks, vehicles, figures, flora, or emblems drawn in the same simplified poster language. Preserve this composition grammar: One heroic vista with a strong horizon, a big sky, and clear foreground, middle-ground, and background bands. Preserve the colour direction: cream, teal, coral, ochre, faded violet - warm faded lithograph colours - cream, teal, coral, ochre - tuned to the sleeves. Keep the image safe and tasteful: no children or minors, no gore, nudity, or sexual content. Do not add any text, letters, words, numbers, captions, logos, watermarks, or signage. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene.",
+  "palette": [
+    "deep red",
+    "black",
+    "warm amber",
+    "flesh pink",
+    "rose red",
+    "cyan"
+  ],
+  "mood": "claustrophobic, musical, curious, slightly ominous",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Generation-Terrorists.jpg",
+      "album": "Generation Terrorists",
+      "artist": "",
+      "description": "A close-up colour photograph of a bare upper torso and shoulder. A dark crucifix necklace hangs over the chest on the left side, and a tattoo of a pink-red rose with green leaves and a ribbon appears on the upper arm at right. The skin fills almost the entire frame against no visible background.",
+      "signatureMotif": "rose tattoo on the upper arm",
+      "medium": "colour photograph",
+      "palette": [
+        "flesh pink",
+        "black",
+        "rose red",
+        "green",
+        "beige"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Play-More-Music.jpg",
+      "album": "Play More Music",
+      "artist": "",
+      "description": "A layered, collage-like cover with blurred photographic imagery underneath translucent geometric graphics. A large circular symbol with a diagonal bar and central punctuation-like shape overlays the left side, while a vertical dark strip with embossed script-like decoration runs down the right edge. A small square block sits in the lower right corner. The whole image has a smeared, motion-blurred, neon-tinted look.",
+      "signatureMotif": "large translucent circular symbol overlay",
+      "medium": "mixed-media graphic collage with blurred photography",
+      "palette": [
+        "cyan",
+        "teal",
+        "magenta",
+        "red",
+        "black"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Hits-Back.jpg",
+      "album": "Hits Back",
+      "artist": "",
+      "description": "A black-and-white photograph framed by a dark green border. In the foreground, the lower half of a person in boots and trousers stands beside several large portable radios or boomboxes arranged on the floor. A blurred arm swings downward toward the equipment, creating a sense of motion. The setting appears like an indoor room with a plain floor and wall.",
+      "signatureMotif": "person swinging an arm at a row of boomboxes",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "white",
+        "grey",
+        "dark green"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Jar-of-Flies.jpg",
+      "album": "Jar of Flies",
+      "artist": "",
+      "description": "A warm-toned colour photograph showing a glass jar with a metal lid in the foreground, containing several flies and debris at the bottom. Behind the jar, a child's face is softly out of focus, with one eye clearly visible, peering toward the jar from a tabletop level. A hand rests on the wooden surface at left. The lighting is reddish and dim.",
+      "signatureMotif": "glass jar filled with flies",
+      "medium": "colour photograph",
+      "palette": [
+        "red",
+        "pink",
+        "amber",
+        "brown",
+        "black"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Greatest-Hits.jpg",
+      "album": "Greatest Hits",
+      "artist": "",
+      "description": "A stark black background with a large white circular seal-like emblem centered on it. Inside the ring is an eagle with spread wings holding a branch in one claw and a baseball bat in the other, with arrows and stars surrounding it. The design is high-contrast and graphic, with an additional red stamped-looking band across the lower portion.",
+      "signatureMotif": "eagle inside a circular seal holding a baseball bat",
+      "medium": "graphic emblem design",
+      "palette": [
+        "black",
+        "white",
+        "red"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Temple-Of-Low-Men.jpg",
+      "album": "Temple Of Low Men",
+      "artist": "",
+      "description": "A painted portrait-style cover set against deep red stage curtains. Three male faces are shown: one upright on the left, one upside down in the center hanging from above, and one upright on the right. The figures wear stylized clothing with patterned details, and the composition resembles a theatrical puppet-stage or framed curtain opening.",
+      "signatureMotif": "upside-down central male face between red curtains",
+      "medium": "painting",
+      "palette": [
+        "deep red",
+        "black",
+        "flesh tones",
+        "gold",
+        "green"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Not-Like-Everybody-Else.jpg",
+      "album": "Not Like Everybody Else",
+      "artist": "",
+      "description": "A vivid illustrated collage with several band performers across the lower half and a large central face looming behind them. One figure sings into a microphone, another plays guitar, and others stand in sunglasses and hats. Large flowers flank the scene, and paint splatters are scattered across a purple background. The style mixes sketch lines with bold colour washes.",
+      "signatureMotif": "large central illustrated face above performing band members",
+      "medium": "illustrated collage",
+      "palette": [
+        "purple",
+        "green",
+        "yellow",
+        "red",
+        "pink"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Our-Favourite-Shop.jpg",
+      "album": "Our Favourite Shop",
+      "artist": "",
+      "description": "A black-and-white photograph of two young men in dark suits standing inside a cluttered shop or boutique interior. One holds an open magazine or booklet while the other looks at papers in his hands. Around them are shelves, boxes, hanging ties or fabric strips, posters on the walls, and various retail items, creating a busy indoor scene.",
+      "signatureMotif": "two suited men reading papers in a cluttered shop interior",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "white",
+        "grey"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "Front-facing view into a narrow curiosity-shop cabinet turned into a miniature proscenium stage, shelves and hanging ties and paper bundles crowding the sides, boxed objects and retail clutter creating a dense theatrical interior; a glass jar of trapped flies dominates the countertop at center foreground, while behind it a softly hidden child’s single eye peers through a small aperture in the back wall, and at left foreground a carved wooden mannequin arm rests into frame bearing a vivid rose tattoo and a dangling black crucifix necklace; incorporate a row of portable boomboxes across the cabinet floor with a motion-blurred striking arm descending toward them, place two small monochrome suited shopkeepers only once in the deep background reading and sorting papers among the clutter, suspend a large translucent circular symbol with diagonal bar across the cabinet opening like acrylic signage with neon-smudged cyan and magenta blur, add a dark embossed vertical strip along the right frame and a small square block in the lower right, make the cabinet’s inner back panel into painted red stage curtains framing three portrait faces with the central male face upside down, include small illustrated band-performer cutouts and large flowers along the lower shelf with a faint looming face glow behind them, and stamp a high-contrast white eagle seal with a red band onto a drawer front beneath the stage; handcrafted shadow-box assemblage, mixed media diorama, painted wood, cut paper collage, printed graphics, translucent acrylic, miniature props, photographed as an original art object; clear hierarchy with the fly jar and peering eye central, mannequin arm secondary at left, boombox line anchoring the bottom, crowded side details supporting, symmetrical cabinet framing but with lively asymmetry in props, moody spotlight from above and warm underglow from within the cabinet, subtle motion blur on the striking arm and neon haze on the suspended symbol; palette of deep red curtains, black shadows, warm amber wood, flesh pink, rose red, cyan, magenta, dark green, white accents; mood claustrophobic, musical, curious, slightly ominous. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
-    "Jar-of-Flies.jpg",
     "Generation-Terrorists.jpg",
-    "A-Momentary-Lapse-of-Reason-Remixed-Updated.jpg",
-    "Hits-Back.jpg",
-    "Not-Like-Everybody-Else.jpg",
-    "Greatest-Hits.jpg",
     "Play-More-Music.jpg",
+    "Hits-Back.jpg",
+    "Jar-of-Flies.jpg",
+    "Greatest-Hits.jpg",
+    "Temple-Of-Low-Men.jpg",
+    "Not-Like-Everybody-Else.jpg",
     "Our-Favourite-Shop.jpg"
   ]
 }

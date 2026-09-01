@@ -1,33 +1,196 @@
 {
+  "version": 2,
   "date": "2026-01-05",
   "type": "cover",
-  "lane": "neon-noir",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Rainy neon arts district where cosmic relics and synth-era symbols share one street",
-  "scene": "From a low rain-slick street angle in a neon-soaked city at night, a dark out-of-focus curbside shape anchors the foreground while the midground holds a lone adult in a pale pink suit beside another adult in a dark tailored coat under a cobalt streetlamp, echoing the poised dual figures and intimate portrait mood without staging a group. Behind them, a chrome resonator guitar hangs vertically as a glowing pawnshop sign, its metal body catching electric blue and amber reflections in the wet pavement. Across the street, a shattered concrete peace-sign arch is built into a ruined overpass, its exposed rebar lit by ember-red signage, and a giant crescent neon mounted on the facade curves through smoky mist above the skyline. In a flooded gutter, a black swan-shaped storefront display sits in a nest of silver wire and rain-soaked branches under a veil of translucent plastic, mirrored in the street like liquid crimson glass. High on a building corner, a gilded five-point star supports a theatrical mannequin of an adult woman in draped jewel-toned fabric, posed like an old celestial figure in a vintage shop window, while nearby planets and comet streaks appear as projections across wet brick. On a shadowy wall, four faceted blue mannequin heads emerge as a luminous digital mural with red lips and sharp planes, and farther back a grand sun-face relief crowns an arcade entrance surrounded by umbrellas, sunflowers, leaves, orbit-like metal spheres, heart signage, and chalky swirling light trails, tying the whole block into one surreal nocturnal district. Everything is unified by rain, reflections, steam, saturated neon pinks and blues, and deep black shadow.",
-  "palette": [
-    "deep black",
-    "electric blue",
-    "neon pink",
-    "sodium amber",
-    "crimson red"
+  "concept": "Derelict observatory with caged song and fallen monument",
+  "creativeDirection": "A surreal mixed-media diorama photographed like a theatrical set, combining hand-built sculpture, painted backdrops, collage astronomy, and expressive splatter textures.",
+  "scene": "Inside a ruined observatory hall seen from a slightly elevated wide angle, with cracked flooring, tall grimy windows, and a long table receding through the middle of the room beneath a torn celestial ceiling.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "a chrome resonator guitar floats diagonally near the upper left like a polished metallic constellation device, catching cool window light"
+    },
+    {
+      "source": 2,
+      "element": "a black swan on a tangled twig nest sits on the reflective floor in the foreground, partially shrouded by a translucent plastic veil"
+    },
+    {
+      "source": 3,
+      "element": "a single vintage-collage woman sits serenely on a large golden star suspended above the table amid tiny planets and a comet"
+    },
+    {
+      "source": 4,
+      "element": "a broken concrete peace symbol lies toppled and cracked near the back of the hall, silhouetted against smoky orange-red glow and a crescent form"
+    },
+    {
+      "source": 5,
+      "element": "a vivid yellow bird in a geometric wire cage hangs as a focal lantern over the table, with scattered leaves, feathers, and moths below"
+    },
+    {
+      "source": 6,
+      "element": "the two portrait figures appear once together at the table's center as still, tailored occupants emerging from a blue-to-pink luminous haze"
+    },
+    {
+      "source": 7,
+      "element": "the worn bare room, seated group arrangement, dark pillar, and austere table structure provide the architectural stage and secondary human silhouettes"
+    },
+    {
+      "source": 8,
+      "element": "green-black-white splatter painting textures spread across the floor and walls, with three lemon slices and left-edge color swatches incorporated as painted debris and accents"
+    }
   ],
+  "palette": [
+    "deep blue",
+    "smoky red-orange",
+    "gold",
+    "chrome silver",
+    "charcoal black",
+    "sulfur yellow"
+  ],
+  "mood": "haunted, lyrical, apocalyptic, contemplative",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Brothers-in-Arms.jpg",
+      "album": "Brothers in Arms",
+      "artist": "",
+      "description": "A chrome resonator guitar is shown large in the frame, angled diagonally as if floating against a blue sky with soft pale clouds. The main image sits inside a thin light border, with a wide solid blue margin around it. The guitar body reflects light and has decorative cutouts and engraved-looking details.",
+      "signatureMotif": "chrome resonator guitar",
+      "medium": "photograph",
+      "palette": [
+        "sky blue",
+        "silver",
+        "white",
+        "pale pink"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Speak-Spell.jpg",
+      "album": "Speak Spell",
+      "artist": "",
+      "description": "A dark swan-like bird stands on a nest of tangled twigs and branches, with its neck arched upward. A translucent plastic-like veil drapes over parts of the bird and nest. The background is an intense red field with soft streaked highlights, and the lower area has a glossy reflective surface mirroring the nest.",
+      "signatureMotif": "black swan on a twig nest",
+      "medium": "stylized photograph",
+      "palette": [
+        "red",
+        "black",
+        "white",
+        "grey"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Mellon-Collie-and-the-Infinite-Sadness.jpg",
+      "album": "Mellon Collie and the Infinite Sadness",
+      "artist": "",
+      "description": "An illustrated woman in flowing draped clothing sits perched on a large golden star in outer space. Around her are small planets, crescent-like celestial bodies, and a comet against a deep blue starry background. The figure has a vintage, collage-like look with softly painted skin and hair.",
+      "signatureMotif": "woman seated on a golden star",
+      "medium": "illustration/collage",
+      "palette": [
+        "deep blue",
+        "gold",
+        "green",
+        "red",
+        "peach"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "eMOTIVe.jpg",
+      "album": "eMOTIVe",
+      "artist": "",
+      "description": "A huge cracked concrete peace symbol dominates the foreground, with exposed metal reinforcement visible in broken sections. Behind it is a dark city skyline under a dramatic smoky sky lit with fiery orange and red tones. A large crescent shape overlaps the upper right area, and flames or glowing clouds fill much of the background.",
+      "signatureMotif": "broken concrete peace symbol",
+      "medium": "digital collage/illustration",
+      "palette": [
+        "black",
+        "dark red",
+        "orange",
+        "brown"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "The-Very-Best-Of.jpg",
+      "album": "The Very Best Of",
+      "artist": "",
+      "description": "A bright yellow bird is enclosed inside a geometric wire cage at the center of the image. Around the base lie curled leaves, feathers, and moth-like insects on a dark textured ground. The background is a rich brown-black surface with subtle ornamental patterning, making the bird stand out strongly.",
+      "signatureMotif": "yellow bird in a wire cage",
+      "medium": "illustration",
+      "palette": [
+        "yellow",
+        "dark brown",
+        "black",
+        "grey",
+        "beige"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Swimmer.jpg",
+      "album": "Swimmer",
+      "artist": "",
+      "description": "Two people stand in a studio-like portrait against a smooth gradient background shifting from deep blue to pink and pale lavender near the horizon line. One person with curly hair faces forward in shadowed light, while the other, with a blond bowl haircut, turns mostly away in profile. Their clothing appears tailored and softly lit, with strong contrast between the figures and the luminous backdrop.",
+      "signatureMotif": "two figures against a blue-to-pink gradient backdrop",
+      "medium": "photograph",
+      "palette": [
+        "deep blue",
+        "pink",
+        "lavender",
+        "black",
+        "peach"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Upstairs-at-Erics.jpg",
+      "album": "Upstairs at Erics",
+      "artist": "",
+      "description": "Inside a worn, sparsely furnished room with tall multi-pane windows and rough walls, several people sit around a rectangular table. One figure reclines at the left edge, two face each other at the table, and another sits slumped to the right. A dark vertical pillar divides the foreground, and the lighting is dim and moody, emphasizing the empty floor and distressed interior.",
+      "signatureMotif": "figures seated around a table in a bare room",
+      "medium": "photograph",
+      "palette": [
+        "grey",
+        "brown",
+        "black",
+        "off-white",
+        "muted blue"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "The-Stone-Roses.jpg",
+      "album": "The Stone Roses",
+      "artist": "",
+      "description": "An abstract painted surface fills the frame with dense splatters and drips in the style of action painting. The background is mostly green, white, black, and grey, with three horizontal paint swatches at the left in red-orange, cream, and blue. Three lemon slices are placed across the composition, standing out against the chaotic paint marks.",
+      "signatureMotif": "lemon slices on a splattered abstract painting",
+      "medium": "mixed-media collage/painting",
+      "palette": [
+        "green",
+        "white",
+        "black",
+        "yellow",
+        "blue"
+      ]
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one cinematic neon-noir night photograph - wet streets, glowing wordless signs, deep shadow and electric colour. The image is a 16:9 music blog header. Scene: From a low rain-slick street angle in a neon-soaked city at night, a dark out-of-focus curbside shape anchors the foreground while the midground holds a lone adult in a pale pink suit beside another adult in a dark tailored coat under a cobalt streetlamp, echoing the poised dual figures and intimate portrait mood without staging a group. Behind them, a chrome resonator guitar hangs vertically as a glowing pawnshop sign, its metal body catching electric blue and amber reflections in the wet pavement. Across the street, a shattered concrete peace-sign arch is built into a ruined overpass, its exposed rebar lit by ember-red signage, and a giant crescent neon mounted on the facade curves through smoky mist above the skyline. In a flooded gutter, a black swan-shaped storefront display sits in a nest of silver wire and rain-soaked branches under a veil of translucent plastic, mirrored in the street like liquid crimson glass. High on a building corner, a gilded five-point star supports a theatrical mannequin of an adult woman in draped jewel-toned fabric, posed like an old celestial figure in a vintage shop window, while nearby planets and comet streaks appear as projections across wet brick. On a shadowy wall, four faceted blue mannequin heads emerge as a luminous digital mural with red lips and sharp planes, and farther back a grand sun-face relief crowns an arcade entrance surrounded by umbrellas, sunflowers, leaves, orbit-like metal spheres, heart signage, and chalky swirling light trails, tying the whole block into one surreal nocturnal district. Everything is unified by rain, reflections, steam, saturated neon pinks and blues, and deep black shadow. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: chrome resonator guitar; source 2: black swan in a twig nest under translucent veil; source 3: cracked concrete peace-sign with crescent; source 4: adult woman posed on a golden star; source 5: two stylish adults against blue-pink glow; source 6: intimate close-up mood of two adult faces; source 7: four faceted blue mannequin heads with red lips; source 8: large golden sun face with umbrellas and symbolic objects. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Reimagine each album motif as something real in the night city - a neon shape, a reflection in the wet street, a figure under a lamp, a lit shopfront display, a shadow thrown on brick. Composition: A low cinematic angle with layered depth: a dark foreground shape, a clear midground subject, and glowing colour behind. Colour direction: deep black, electric blue, neon pink, sodium amber, crimson red - saturated artificial colour - neon pinks, electric blues, sodium ambers - cutting through deep black shadow. Mood: melancholic, futuristic, dreamlike. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "Inside a ruined observatory hall seen from a slightly elevated wide angle, a long rectangular table receding through the center of a bare distressed room with tall multi-pane windows, rough walls, a dark foreground pillar, cracked floor, and a torn celestial ceiling; a geometric wire cage holding a vivid yellow bird hangs low over the table as the main focal point, glowing like a captive song lantern; include a black swan standing on a tangled twig nest in the reflective foreground with a translucent plastic veil draped over bird and nest, a chrome resonator guitar floating diagonally in the upper left like a polished astronomical instrument against cool sky-toned space, a single vintage-collage woman seated on a large golden star suspended above the table with small planets and a comet around her, a broken cracked concrete peace symbol toppled near the back against a smoky fiery orange-red glow with a crescent shape, two tailored figures appearing only once together at the table's center emerging from a deep blue to pink-lavender haze, sparse secondary seated silhouettes integrated into the room, and green-white-black action-paint splatters across floor and walls with three lemon slices and three horizontal swatches of red-orange, cream, and blue embedded as painterly debris; surreal mixed-media diorama, hand-built sculpture, collage illustration, painted backdrop, splatter-paint surfaces, photographed as a theatrical set; strong central hierarchy on the hanging cage, long perspective lines from table and floorboards, reflective patches on the ground, dramatic contrast between cold window light and warm infernal backlight, generous negative space around the upper star figure; palette of deep blue, smoky red-orange, gold, chrome silver, charcoal black, sulfur yellow, moss green, dusty pink, mood haunted lyrical apocalyptic contemplative Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Brothers-in-Arms.jpg",
     "Speak-Spell.jpg",
-    "eMOTIVe.jpg",
     "Mellon-Collie-and-the-Infinite-Sadness.jpg",
+    "eMOTIVe.jpg",
+    "The-Very-Best-Of.jpg",
     "Swimmer.jpg",
-    "Songs-from-the-Big-Chair.jpg",
-    "Techno-Pop.jpg",
-    "The-Seeds-of-Love.jpg"
+    "Upstairs-at-Erics.jpg",
+    "The-Stone-Roses.jpg"
   ]
 }

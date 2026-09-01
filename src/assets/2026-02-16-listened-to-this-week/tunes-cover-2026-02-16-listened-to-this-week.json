@@ -1,33 +1,199 @@
 {
+  "version": 2,
   "date": "2026-02-16",
   "type": "cover",
-  "lane": "neon-noir",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Rainy neon alley where spa glamour, masks, and pop portraits share one block",
-  "scene": "From a low curb-level angle in a rain-slick neon alley, a dark out-of-focus foreground shape—part parked car tire, part pooled shadow—frames a reflective street where the clear midground subject is a red leather diner booth set just inside an open chrome-edged night café. Reclining there is an adult in a sharp white suit with a large pink flower on the lapel, lit by electric blue and sodium amber spill; fallen petals have washed onto the wet pavement. Behind the booth, the café window glows with a surreal spa tableau: five adult women in aqua towels and powdered makeup sit in hazy peach light, while next to them a mannequin head wears a collage-style facial mask with real cucumber slices over the eyes, making the painted face motif physical and photographable. Above the storefront, a bent yellow neon sign takes the shape of a wavy banner with a black ribbon graphic rendered as a dark inset, its warped outline reflected across the street like liquid gold. On the brick wall farther back, a huge mural of a wild-haired adult male face emerges in violet-blue highlights against orange light, while across the alley a carved wooden mask façade with hollow eye and mouth openings reveals a starry dark interior beyond. Turquoise mist from a vent rolls through the scene in soft circular eddies, echoing the abstract cover as vapor, puddle ripples, and lensy reflections. Under a lone lamp near the alley mouth stands not a child but an empty bee costume on a dress form in a shop display, its black-and-yellow stripes and heart antennae catching pink neon, tying the whole block into one uncanny, glamorous nocturnal story.",
-  "palette": [
-    "neon yellow",
-    "deep black",
-    "electric cyan",
-    "turquoise blue",
-    "peach pink"
+  "concept": "Backstage mirror with feathered omen",
+  "creativeDirection": "A handcrafted mixed-media theatrical diorama rendered as gouache, cut paper, painted woodgrain, and translucent resin textures.",
+  "scene": "An intimate dressing-room interior seen straight on, centered around a vanity mirror and table as if the viewer has just stepped into a small backstage chamber.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "the bright yellow outlined sign becomes the irregular marquee frame crowning the mirror, with glossy laminated reflections echoed in resin-coated surfaces"
+    },
+    {
+      "source": 2,
+      "element": "the blue-pink organic macro becomes a bowl of eerie cosmetic water or a small dish on the vanity, with the dark oval opening transformed into a mysterious liquid center and ringed ripples"
+    },
+    {
+      "source": 3,
+      "element": "the woodgrain face appears as the carved grain pattern of the vanity chair back, its hollow eyes and mouth subtly visible in the wood"
+    },
+    {
+      "source": 4,
+      "element": "the painted man is the single reflected person in the mirror, shoulders up, intense gaze, wild dark-purple hair partly obscured by white makeup cards pinned across the mirror edge"
+    },
+    {
+      "source": 5,
+      "element": "the bee-costumed child appears as a small costume laid out on a dress form or hanger at one side, with striped sleeves, ruffled skirt, and heart antennae clearly visible but unoccupied"
+    },
+    {
+      "source": 6,
+      "element": "the cucumber-eyed face becomes a pinned collage beauty mask on the wall beside the mirror, with cucumber slices and red mouth block as a flat theatrical prop rather than a second person"
+    },
+    {
+      "source": 7,
+      "element": "the five towel-clad women become a cluster of folded spa towels, cold-cream jars, and a tiny grouped photo suggestion reduced into dressing-room pampering atmosphere without distinct repeated faces"
+    },
+    {
+      "source": 8,
+      "element": "peacock feathers and the pale swan-like curve decorate the vanity foreground and mirror corner, framing the scene with watercolor softness and a feminine theatrical flourish"
+    }
   ],
+  "palette": [
+    "marquee yellow",
+    "burnt orange",
+    "warm brown",
+    "turquoise blue",
+    "dusty pink",
+    "peacock green"
+  ],
+  "mood": "private, uncanny, theatrical, intimate",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Out-of-Time.jpg",
+      "album": "Out of Time",
+      "artist": "",
+      "description": "A large bright yellow irregular sign or banner shape with a thick black outline dominates the center. Inside it is a black abstract swoosh-like shape and a thin curved line. The background is a blurred brown and beige surface with glossy plastic-like reflections and seams, giving a wrapped or laminated appearance.",
+      "signatureMotif": "bright yellow outlined sign shape",
+      "medium": "graphic design over a photographed textured background",
+      "palette": [
+        "yellow",
+        "black",
+        "brown",
+        "beige",
+        "cream"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Meddle.jpg",
+      "album": "Meddle",
+      "artist": "",
+      "description": "An extreme close-up image with soft, organic forms in turquoise-blue and dusty pink-brown. Near the top center is a dark oval opening edged with fine pale hairs. The lower area contains circular ripple-like patterns and bubble-like rings, creating an abstract watery texture.",
+      "signatureMotif": "dark oval opening within a blue-pink organic close-up",
+      "medium": "macro photograph",
+      "palette": [
+        "turquoise",
+        "cyan",
+        "pink-brown",
+        "mauve",
+        "black"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Woodface.jpg",
+      "album": "Woodface",
+      "artist": "",
+      "description": "A stylized face fills the frame, constructed from layered woodgrain-like painted strips in warm orange and brown tones. The eyes and mouth are dark hollow shapes with tiny star-like specks inside, and a dark vertical nose shape sits in the center. A dark border surrounds the image.",
+      "signatureMotif": "woodgrain face with hollow eyes and mouth",
+      "medium": "painted collage illustration",
+      "palette": [
+        "orange",
+        "brown",
+        "black",
+        "tan",
+        "rust"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Tim-Finn.jpg",
+      "album": "Tim Finn",
+      "artist": "",
+      "description": "A painted portrait of a man shown from the shoulders up against a flat orange background. He has tousled dark hair with purple and blue highlights, light facial stubble, and an intense forward gaze. Large white block shapes overlay the upper part of the portrait across the forehead and hair.",
+      "signatureMotif": "painted male face with wild dark-purple hair",
+      "medium": "painted portrait illustration",
+      "palette": [
+        "orange",
+        "white",
+        "black",
+        "purple",
+        "blue"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Blind-Melon.jpg",
+      "album": "Blind Melon",
+      "artist": "",
+      "description": "A young child stands centered on a stage-like floor against a plain black backdrop, wearing a bee costume. The outfit includes a yellow bodice, black trim, striped arm coverings, a short black-and-yellow ruffled skirt, black tights, dark shoes with yellow bows, glasses, and a headband with heart-shaped antennae.",
+      "signatureMotif": "child in a bee costume",
+      "medium": "studio photograph",
+      "palette": [
+        "black",
+        "yellow",
+        "orange",
+        "brown",
+        "peach"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Going-Blank-Again.jpg",
+      "album": "Going Blank Again",
+      "artist": "",
+      "description": "A collage-style painted face fills most of the frame. The head is pale blue-white with dark hair, red-orange ears, and a red blocky shape across the mouth area. Two cucumber slices cover the eyes. The background is made of torn or layered painted paper in red, orange, blue, and white.",
+      "signatureMotif": "face with cucumber slices over the eyes",
+      "medium": "mixed-media collage painting",
+      "palette": [
+        "red",
+        "orange",
+        "blue",
+        "white",
+        "yellow"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Beauty-and-the-Beat.jpg",
+      "album": "Beauty and the Beat",
+      "artist": "",
+      "description": "Five women pose together in a soft, high-key studio image with a pale peach background. They wear matching light blue towels wrapped around their bodies and hair, with white facial masks and dark eye makeup visible. The group is arranged seated and standing in a casual cluster, with a small bottle-like object near their feet.",
+      "signatureMotif": "five women in towels and face masks",
+      "medium": "stylized studio photograph",
+      "palette": [
+        "pale peach",
+        "light blue",
+        "white",
+        "pink",
+        "beige"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "My-Maudlin-Career.jpg",
+      "album": "My Maudlin Career",
+      "artist": "",
+      "description": "A watercolor-style portrait of a woman with reddish-brown hair and large dark eyes appears on the right side. Around the lower left and foreground are layered peacock feathers with blue-green eye patterns and a pale swan-like bird shape with a curved neck. The background is washed with soft beige, brown, and cream stains and drips.",
+      "signatureMotif": "watercolor woman beside peacock feathers",
+      "medium": "watercolor and mixed-media illustration",
+      "palette": [
+        "brown",
+        "cream",
+        "beige",
+        "green",
+        "blue"
+      ]
+    }
+  ],
+  "hint": null,
   "composeBackend": "gpt-image-2",
-  "restyleBackend": null,
-  "restyled": false,
   "model": "openai/gpt-image-2/edit",
-  "prompt": "Create one cinematic neon-noir night photograph - wet streets, glowing wordless signs, deep shadow and electric colour. The image is a 16:9 music blog header. Scene: From a low curb-level angle in a rain-slick neon alley, a dark out-of-focus foreground shape—part parked car tire, part pooled shadow—frames a reflective street where the clear midground subject is a red leather diner booth set just inside an open chrome-edged night café. Reclining there is an adult in a sharp white suit with a large pink flower on the lapel, lit by electric blue and sodium amber spill; fallen petals have washed onto the wet pavement. Behind the booth, the café window glows with a surreal spa tableau: five adult women in aqua towels and powdered makeup sit in hazy peach light, while next to them a mannequin head wears a collage-style facial mask with real cucumber slices over the eyes, making the painted face motif physical and photographable. Above the storefront, a bent yellow neon sign takes the shape of a wavy banner with a black ribbon graphic rendered as a dark inset, its warped outline reflected across the street like liquid gold. On the brick wall farther back, a huge mural of a wild-haired adult male face emerges in violet-blue highlights against orange light, while across the alley a carved wooden mask façade with hollow eye and mouth openings reveals a starry dark interior beyond. Turquoise mist from a vent rolls through the scene in soft circular eddies, echoing the abstract cover as vapor, puddle ripples, and lensy reflections. Under a lone lamp near the alley mouth stands not a child but an empty bee costume on a dress form in a shop display, its black-and-yellow stripes and heart antennae catching pink neon, tying the whole block into one uncanny, glamorous nocturnal story. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: wavy yellow banner-shaped neon sign with black ribbon motif; source 2: five towel-wrapped women with white-powdered faces; source 3: turquoise swirling mist and bubble-like ripples; source 4: face with cucumber slices over the eyes; source 5: wild-haired intense male face in violet-blue against orange; source 6: white-suited reclining figure in a red leather booth with pink flower; source 7: black-and-yellow bee costume with heart-shaped antennae; source 8: large carved wooden mask face with hollow dark features. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Reimagine each album motif as something real in the night city - a neon shape, a reflection in the wet street, a figure under a lamp, a lit shopfront display, a shadow thrown on brick. Composition: A low cinematic angle with layered depth: a dark foreground shape, a clear midground subject, and glowing colour behind. Colour direction: neon yellow, deep black, electric cyan, turquoise blue, peach pink - saturated artificial colour - neon pinks, electric blues, sodium ambers - cutting through deep black shadow. Mood: dreamy, stylish, uncanny, rain-soaked nocturnal glamour. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, illustration, illustrated, drawing, painting, cartoon, comic, anime, vector art, sketch, flat graphic style, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Sharp, high quality, visually striking, with real depth and a strong sense of place.",
-  "restylePrompt": null,
+  "prompt": "A small backstage dressing room seen straight on, centered on a vanity mirror and narrow table, as if entering a private chamber before a performance; in the mirror, a single painted male figure from the shoulders up stares forward with tousled dark hair streaked with purple and blue, light stubble, and an intense gaze, his reflection the only live person in the scene; above the mirror, an irregular bright yellow sign shape with a thick black outline forms a handmade marquee crest, while the vanity surface holds a shallow cosmetic water dish derived from a turquoise and dusty pink macro texture with a dark oval liquid center and delicate bubble-like ripple rings; the chair back is carved and painted with warm orange-brown woodgrain strips that subtly resolve into a face with hollow eyes and mouth; at one side hangs a tiny bee costume on a dress form or hook, with yellow bodice, black trim, striped sleeves, short ruffled skirt, black tights, dark shoes with yellow bows, and heart-tipped antennae, clearly present but unworn; beside the mirror, a pinned collage beauty-mask prop shows a pale blue-white face with dark hair, red-orange ears, a red block across the mouth, and cucumber slices over the eyes; nearby are folded pale blue towels, white cream jars, and a small bottle arranged in a clustered spa still life suggesting a group dressing ritual; peacock feathers spill across the vanity foreground and one pale swan-like curved neck shape arcs near the mirror corner, with soft beige watercolor stains and drips ghosting the wall; mixed-media theatrical diorama, gouache on cut paper, painted collage, carved faux woodgrain, translucent resin gloss, watercolor washes; clear hierarchy with the mirror reflection dominant, strong central framing, layered props supporting around the edges, intimate stage-set depth; warm side bulbs and low amber dressing-room light with cool turquoise accents reflecting from the water dish; palette of marquee yellow, burnt orange, warm browns, cream, black, turquoise, dusty pink, peacock green; mood private, uncanny, glamorous, slightly ritualistic. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Out-of-Time.jpg",
-    "Beauty-and-the-Beat.jpg",
     "Meddle.jpg",
-    "Going-Blank-Again.jpg",
+    "Woodface.jpg",
     "Tim-Finn.jpg",
-    "Everybodys-Gotta-Gotta-Learn-Sometime.jpg",
     "Blind-Melon.jpg",
-    "Woodface.jpg"
+    "Going-Blank-Again.jpg",
+    "Beauty-and-the-Beat.jpg",
+    "My-Maudlin-Career.jpg"
   ]
 }

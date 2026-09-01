@@ -1,32 +1,193 @@
 {
+  "version": 2,
   "date": "2026-02-02",
   "type": "cover",
-  "lane": "zine-photocollage",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Photocopied midnight street where portraits, motion, and fragments spill from the walls",
-  "scene": "A chaotic but balanced black-and-white photocopied zine spread centers on a torn halftone fragment of a marquee-lit street corner, its glowing bulb border reimagined as a jagged ring of repeated spot-red dots around the page’s anchor scene: a nighttime sidewalk where a white car nose, café chairs, and a cinema entrance collide into one urban stage. From the left, a rough cut-out of the forward-stepping dog strides across wet pavement, enlarged enough to feel like a guardian of the corner. Behind it, two blue-photo-style adults in long coats become stark black-and-white candid silhouettes mid-stride between bent café chairs. Rising at an odd angle from the curb, a wireframe adult figure made of patchwork paper scraps leans into an invisible wind, its trailing geometric pieces whipping across the composition as torn rectangles and ribbons. Near the center, a serene braided adult face appears as a pasted portrait shard with closed eyes, fused into the body of the street like a mural, while a horizontal guitar neck becomes a fence-like strip running under the crowd. On the right, a cropped halftone face with one intense eye and a white stripe across the cheeks looms as a poster fragment pasted over the theater wall. Below it, a tiny open wooden box sits cracked into the sidewalk, and from it emerges a crouched adult rendered as a small cut-out silhouette, as if the pavement itself contains hidden rooms. The whole page is unified by xerox grain, deep blacks, paper whites, and one loud red spot color splashed across the marquee bulbs, cheek stripe, scattered geometric scraps, and a hazy photocopied glow that echoes the abstract red field as an atmospheric backdrop rather than a separate panel.",
-  "palette": [
-    "black",
-    "white",
-    "photocopy gray",
-    "spot red"
+  "concept": "Procession beneath the listening kiln",
+  "creativeDirection": "A large-scale mixed-media tapestry and relief assemblage turns the album motifs into a ceremonial interior with stitched figures, printed gradients, and collage-built objects.",
+  "scene": "A wide frontal view into a dim textile hall where a glowing kiln-like arch dominates the back wall and a low reflective floor runs toward the viewer.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "the kiln arch and surrounding wall are a smooth red-orange gradient field with faint embedded stencil marks near the crown"
+    },
+    {
+      "source": 2,
+      "element": "a dense upward-reaching cluster of hands rises from the lower foreground like a woven ceremonial offering crowd"
+    },
+    {
+      "source": 3,
+      "element": "a single front-facing dog stands centered on the wet reflective floor as the main living witness"
+    },
+    {
+      "source": 4,
+      "element": "three painted busts become a large hanging banner above the dog, with the braided woman centered between two profile figures and an instrument neck stretched along the banner’s lower edge"
+    },
+    {
+      "source": 5,
+      "element": "split blue street-photo panels become narrow side tapestries showing coat-wearing pedestrians and café furniture along the hall walls"
+    },
+    {
+      "source": 6,
+      "element": "a red car appears as a shrine-like side reliquary with gold fringe roof, fuzzy dice, and stylized occupants visible through windows"
+    },
+    {
+      "source": 7,
+      "element": "a monumental red-black face with a white stripe is rendered as a circular mask medallion suspended high in shadow"
+    },
+    {
+      "source": 8,
+      "element": "a row of seven small symbol panels is stitched across the upper architecture, with a tiny trio silhouette near the lower wall"
+    }
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": null,
-  "restyled": false,
-  "model": "fal-ai/nano-banana-2/edit",
-  "prompt": "Create one DIY zine photo-collage - xeroxed halftone fragments, torn edges, tape marks, high-contrast photocopy grain, punk cut-and-paste energy. The image is a 16:9 music blog header. Scene: A chaotic but balanced black-and-white photocopied zine spread centers on a torn halftone fragment of a marquee-lit street corner, its glowing bulb border reimagined as a jagged ring of repeated spot-red dots around the page’s anchor scene: a nighttime sidewalk where a white car nose, café chairs, and a cinema entrance collide into one urban stage. From the left, a rough cut-out of the forward-stepping dog strides across wet pavement, enlarged enough to feel like a guardian of the corner. Behind it, two blue-photo-style adults in long coats become stark black-and-white candid silhouettes mid-stride between bent café chairs. Rising at an odd angle from the curb, a wireframe adult figure made of patchwork paper scraps leans into an invisible wind, its trailing geometric pieces whipping across the composition as torn rectangles and ribbons. Near the center, a serene braided adult face appears as a pasted portrait shard with closed eyes, fused into the body of the street like a mural, while a horizontal guitar neck becomes a fence-like strip running under the crowd. On the right, a cropped halftone face with one intense eye and a white stripe across the cheeks looms as a poster fragment pasted over the theater wall. Below it, a tiny open wooden box sits cracked into the sidewalk, and from it emerges a crouched adult rendered as a small cut-out silhouette, as if the pavement itself contains hidden rooms. The whole page is unified by xerox grain, deep blacks, paper whites, and one loud red spot color splashed across the marquee bulbs, cheek stripe, scattered geometric scraps, and a hazy photocopied glow that echoes the abstract red field as an atmospheric backdrop rather than a separate panel. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: a hazy red atmospheric field; source 2: the forward-stepping dog; source 3: the braided woman with closed eyes; source 4: a long-coated adult mid-stride among café chairs; source 5: the wireframe figure shedding geometric fragments; source 6: the close-up face with a white stripe across it; source 7: the tiny wooden box with a crouched adult inside; source 8: the cinema marquee and chaotic sidewalk crowd. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and compose them all onto one deliberate page unified by the paper texture, print treatment, and palette. Paste each album motif in as a torn photocopied fragment or hand-cut shape - degraded, rough, but clearly recognisable. Composition: A chaotic but balanced paste-up around one anchor image, fragments overlapping at odd angles. Colour direction: black, white, photocopy gray, spot red - high-contrast black-and-white photocopy with one loud spot colour. Mood: restless, urban, handmade, dreamlike. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
-  "restylePrompt": null,
+  "palette": [
+    "red-orange ember",
+    "magenta purple",
+    "ink black",
+    "cobalt blue",
+    "gold",
+    "chalk white"
+  ],
+  "mood": "ritual, watchful, heat-soaked",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Frames.jpg",
+      "album": "Frames",
+      "artist": "",
+      "description": "A nearly monochrome square filled with a smooth red to orange gradient, darker toward the upper left and brighter toward the lower right. Near the top center there is a very faint row of darker geometric stencil-like shapes embedded into the background.",
+      "signatureMotif": "red-orange gradient field",
+      "medium": "minimal graphic design",
+      "palette": [
+        "red",
+        "orange",
+        "dark red"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Ten.jpg",
+      "album": "Ten",
+      "artist": "",
+      "description": "A group of raised human arms and hands reach upward from the bottom center, overlapping in a tight cluster. Some wrists wear bracelets and a watch. The background is a textured magenta and purple surface with darker vertical rectangular forms behind the figures.",
+      "signatureMotif": "cluster of raised hands",
+      "medium": "photographic collage or treated photograph",
+      "palette": [
+        "magenta",
+        "purple",
+        "white",
+        "black",
+        "skin tones"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Alice-in-Chains.jpg",
+      "album": "Alice in Chains",
+      "artist": "",
+      "description": "A dog stands facing forward on a wet floor, its body angled slightly left while its head looks directly at the viewer. The image has a gritty, high-contrast, heavily tinted look, with a plain interior background and reflections or damp patches on the ground.",
+      "signatureMotif": "front-facing dog",
+      "medium": "heavily processed photograph",
+      "palette": [
+        "yellow",
+        "olive",
+        "brown",
+        "black"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Genuine-Negro-Jig-15th-Anniversary-Edition.jpg",
+      "album": "Genuine Negro Jig 15th Anniversary Edition",
+      "artist": "",
+      "description": "A painted portrait of three people arranged shoulder-up against a blue painted background. In the center, a woman with closed eyes and two long braids faces forward. On the left, a man in profile wears a hat and glasses. On the right, another man in profile faces away from the center. Along the bottom edge, a wooden stringed instrument neck stretches horizontally across the composition.",
+      "signatureMotif": "central woman with braids between two profile figures",
+      "medium": "painting",
+      "palette": [
+        "blue",
+        "brown",
+        "red",
+        "black",
+        "tan"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Cafe-Bleu.jpg",
+      "album": "Cafe Bleu",
+      "artist": "",
+      "description": "A blue-tinted black-and-white street or café scene split into two vertical photo panels. In the left panel, a man in a long coat stands or steps forward near outdoor furniture. In the right panel, another man in a light-colored coat walks past café chairs and tables. The overall image has a candid, documentary feel with strong contrast.",
+      "signatureMotif": "two men in coats in split-panel street scene",
+      "medium": "tinted photograph",
+      "palette": [
+        "blue",
+        "white",
+        "black",
+        "gray"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Together-Alone.jpg",
+      "album": "Together Alone",
+      "artist": "",
+      "description": "A handcrafted collage-like image on a black background showing the side of a red car. Inside the car windows are stylized figures: a gold statue-like figure in the middle, a bearded driver in profile at the front, and a partially hidden figure at the rear behind a patterned curtain. The car roof is topped with a textured gold fringe or halo-like shape, and a pair of fuzzy dice hangs near the front window.",
+      "signatureMotif": "red car with mixed figures inside",
+      "medium": "mixed-media collage or assemblage",
+      "palette": [
+        "black",
+        "red",
+        "gold",
+        "blue",
+        "cream"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "The-Singles.jpg",
+      "album": "The Singles",
+      "artist": "",
+      "description": "A close-up, high-contrast portrait of a person’s face rendered in red and black with halftone texture. The eyes stare directly outward. A bold white horizontal stripe crosses the face around the nose and cheeks, and the cropped composition fills most of the frame.",
+      "signatureMotif": "close-up face with white stripe across it",
+      "medium": "graphic treated photograph",
+      "palette": [
+        "red",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Turn-It-On-Again-The-Hits.jpg",
+      "album": "Turn It On Again The Hits",
+      "artist": "",
+      "description": "A very sparse white cover with a horizontal row of seven small square panels across the upper middle, each containing a different abstract or cropped symbol-like shape in varied colors. Below them is a small black silhouette of three standing human figures near the lower center. The layout is clean and widely spaced.",
+      "signatureMotif": "row of seven small symbol panels",
+      "medium": "minimal graphic design",
+      "palette": [
+        "white",
+        "black",
+        "yellow",
+        "purple",
+        "green"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "A wide frontal view into a dim ceremonial textile hall with a low wet reflective floor leading toward a glowing kiln-like arch in the back wall; a single front-facing dog stands centered on the floor, body slightly angled left but head looking directly out at the viewer, as the primary witness of the scene; the back arch is built from a smooth red-to-orange gradient field that darkens toward the upper left and brightens toward the lower right, with faint stencil-like marks embedded near its crown, a dense cluster of raised human arms and hands rises from the lower foreground in overlapping layers like a woven offering crowd, above the dog hangs a large painted banner showing a central woman with closed eyes and long braids between two profile figures with a wooden stringed instrument neck running horizontally along the banner’s lower edge, the side walls hold two narrow blue-tinted split photo tapestries of coat-wearing pedestrians and café chairs, one red car shrine sits along one side with gold fringe on its roof, fuzzy dice near the front window, and stylized figures visible inside, high in the shadows hangs one monumental circular medallion-mask derived from a close-up face in red and black with a bold white stripe across it, and a row of seven small symbol panels is stitched into the upper architecture with a tiny trio silhouette placed low beneath them; mixed-media tapestry, appliqué, painted fabric, screenprinted halftone cloth, embroidered details, and shallow relief collage assemblage with visible seams and layered textures; strong central hierarchy with the dog and glowing arch foremost, the raised hands anchoring the bottom edge, banners and side relics supporting the space, symmetrical but slightly irregular handmade composition, moody side darkness and warm backlight reflecting off the damp floor; palette of ember red, orange, magenta, purple, cobalt blue, black, gold, chalk white, and olive brown, creating a ritual, watchful, heat-soaked atmosphere Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Frames.jpg",
+    "Ten.jpg",
     "Alice-in-Chains.jpg",
     "Genuine-Negro-Jig-15th-Anniversary-Edition.jpg",
     "Cafe-Bleu.jpg",
-    "Flying-Colors.jpg",
+    "Together-Alone.jpg",
     "The-Singles.jpg",
-    "Little-Earthquakes.jpg",
-    "Easy-Stars-Thrillah.jpg"
+    "Turn-It-On-Again-The-Hits.jpg"
   ]
 }

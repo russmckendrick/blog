@@ -1,32 +1,196 @@
 {
+  "version": 2,
   "date": "2026-01-12",
   "type": "cover",
-  "lane": "screenprint-gigposter",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Crowned hilltop spectacle where pop blasts, folk riders, and new-wave icons converge",
-  "scene": "A hand-pulled screenprinted gig poster shows a surreal hilltop pageant under a huge halftone sky: at the center stands a tall adult seen from behind in a long red-and-navy patchwork coat, planted on a rolling green ridge like a ringmaster surveying the world. Above their head hovers a chunky red crown, enlarged into the main emblem, its points catching a white sunburst rendered as crisp comic-book explosion rays. From the crown erupts a smaller jagged blast cloud, tying the whole sky together in pop-art energy. Orbiting this central figure, a white horse with a simplified folk-art rider gallops across the slope in bold flat shapes, its spears translated into diagonal graphic beams. On one side, a minimalist duo appears as monochrome cutout silhouettes anchored by a strong horizontal blue band that becomes part of the landscape horizon. On the other, an open briefcase spills stylized rings, chains, and watches into the grass as oversized icon-like shapes, becoming treasure scattered across the hill. In the sky, black abstract note-forms from the geometric cover drift like patterned clouds over a red-purple checker field that fades into the atmosphere, while a trumpet-bearing adult silhouette is recast safely as a radiant brass herald, backlit so the metallic object becomes an abstract chrome flare rather than a weapon. Everything is fused by thick flat inks, cream paper showing through as highlights, and halftone shading that turns the borrowed motifs into one punchy, connected concert-poster world.",
-  "palette": [
-    "bright sky blue",
-    "saturated pop red",
-    "deep navy",
-    "warm cream"
+  "concept": "Pageant throne in a windswept field",
+  "creativeDirection": "A theatrical mixed-media tableau combining staged fashion photography with graphic print overlays and comic-paper collage.",
+  "scene": "A wide 16:9 view across a windy rural field under an enormous bright sky, centered on a makeshift outdoor pageant dais set in the grass, seen from a slightly low eye level so the sky and horizon feel expansive.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "the back-view figure in the flag-patterned long coat stands as the central solitary onlooker at the dais, wide-legged on the grass"
+    },
+    {
+      "source": 2,
+      "element": "a simple red crown emblem is transformed into a hovering sign and faint concentric target-like rings around the central stage"
+    },
+    {
+      "source": 3,
+      "element": "the threatening revolver-and-brass-instrument energy becomes a glare-blasted silver trumpet lying near the platform with a hard flash flare and a pointed, confrontational angle, avoiding any second human figure"
+    },
+    {
+      "source": 4,
+      "element": "the red and purple repeating note-like geometry becomes a printed fabric skirting and banner fragments on the pageant platform, cut by yellow bar accents"
+    },
+    {
+      "source": 5,
+      "element": "the tiny black-and-white portrait of two men above a blue bar appears once as a pasted campaign-style placard fixed to the side of the dais"
+    },
+    {
+      "source": 6,
+      "element": "the crying beauty queen with tiara and bouquet is the main subject, seated or collapsing on the throne-like chair on the dais before a dark purple drape"
+    },
+    {
+      "source": 7,
+      "element": "the two childlike stick figures are rendered as chalk doodles and pennants scattered around the platform base"
+    },
+    {
+      "source": 8,
+      "element": "the comic explosion burst becomes a bold backdrop rosette behind the throne, like a celebratory blast frozen in paper layers"
+    }
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": null,
-  "restyled": false,
-  "model": "fal-ai/nano-banana-2/edit",
-  "prompt": "Create one heavy-ink screenprinted gig poster - thick flat colour, hard confident shapes, halftone dots for shading, and absolutely no lettering. The image is a 16:9 music blog header. Scene: A hand-pulled screenprinted gig poster shows a surreal hilltop pageant under a huge halftone sky: at the center stands a tall adult seen from behind in a long red-and-navy patchwork coat, planted on a rolling green ridge like a ringmaster surveying the world. Above their head hovers a chunky red crown, enlarged into the main emblem, its points catching a white sunburst rendered as crisp comic-book explosion rays. From the crown erupts a smaller jagged blast cloud, tying the whole sky together in pop-art energy. Orbiting this central figure, a white horse with a simplified folk-art rider gallops across the slope in bold flat shapes, its spears translated into diagonal graphic beams. On one side, a minimalist duo appears as monochrome cutout silhouettes anchored by a strong horizontal blue band that becomes part of the landscape horizon. On the other, an open briefcase spills stylized rings, chains, and watches into the grass as oversized icon-like shapes, becoming treasure scattered across the hill. In the sky, black abstract note-forms from the geometric cover drift like patterned clouds over a red-purple checker field that fades into the atmosphere, while a trumpet-bearing adult silhouette is recast safely as a radiant brass herald, backlit so the metallic object becomes an abstract chrome flare rather than a weapon. Everything is fused by thick flat inks, cream paper showing through as highlights, and halftone shading that turns the borrowed motifs into one punchy, connected concert-poster world. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: back-view adult in a tattered Union Jack-style long coat on a green hill; source 2: hand-drawn red crown with concentric radiating rings; source 3: backlit trumpet-bearing adult silhouette with intense sun flare; source 4: stark monochrome duo with hat, sunglasses, and suit beside a blue horizontal bar; source 5: black abstract musical note shapes over a red-purple geometric grid; source 6: stylized folk-art rider on a white horse with diagonal spears; source 7: open briefcase densely packed with rings, chains, watches, and bracelets; source 8: jagged comic-book explosion burst with halftone dots and speed lines. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Turn each album motif into a bold screenprinted graphic element - chunky shapes, halftone tone, crisp knockouts - each one readable at a glance. Composition: One dominant central motif with the others orbiting it, tight and punchy like a classic gig poster. Colour direction: bright sky blue, saturated pop red, deep navy, warm cream - three or four flat saturated ink colours on paper. Mood: bold, theatrical, kinetic. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths. Bold, confident, gallery-quality print design with a strong sense of place.",
-  "restylePrompt": null,
+  "palette": [
+    "sky blue",
+    "grass green",
+    "cream",
+    "crimson",
+    "purple",
+    "yellow"
+  ],
+  "mood": "triumphant yet unsteady, ironic, windswept, celebratory with a sting of melancholy",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Earthling.jpg",
+      "album": "Earthling",
+      "artist": "",
+      "description": "A full-body color photograph of a single person seen from behind, standing wide-legged on vivid green grass with hands clasped behind their back. The person wears a long coat patterned like a red, white, and blue flag design, with black trousers and black boots. Beyond them is a rural landscape with fields, a line of trees, and a strip of water under a dramatic bright blue sky with white clouds.",
+      "signatureMotif": "back view of a person in a flag-patterned long coat",
+      "medium": "color photograph",
+      "palette": [
+        "blue",
+        "green",
+        "red",
+        "white",
+        "black"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Fashion-Nugget.jpg",
+      "album": "Fashion Nugget",
+      "artist": "",
+      "description": "A minimalist graphic cover with a pale cream background and faint concentric circular rings radiating from the center. In the middle is a simple red line-drawn crown with rounded points and small circular tips. The composition is sparse and centered.",
+      "signatureMotif": "red crown illustration",
+      "medium": "graphic illustration",
+      "palette": [
+        "cream",
+        "red",
+        "blue",
+        "pale yellow"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Getting-Killed.jpg",
+      "album": "Getting Killed",
+      "artist": "",
+      "description": "A washed-out, high-glare photograph of a person outdoors against a bright blue sky, shot from a low angle. The figure points a revolver directly toward the camera while also holding a trumpet-like brass instrument to the side. Strong sunlight and lens flare obscure much of the body and face, creating a hazy, overexposed effect.",
+      "signatureMotif": "revolver aimed at the viewer",
+      "medium": "overexposed color photograph",
+      "palette": [
+        "light blue",
+        "white",
+        "silver",
+        "black",
+        "pale purple"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "History-Never-Repeats-The-Best-Of-Split-Enz.jpg",
+      "album": "History Never Repeats The Best Of Split Enz",
+      "artist": "",
+      "description": "A flat graphic design filled with a repeating checkerboard-like pattern of red and purple geometric shapes resembling stylized musical notes or abstract symbols. Along the right side, a vertical column of irregular white paper-like rectangles carries bold black characters. Several horizontal yellow bars cut across the composition, adding contrast.",
+      "signatureMotif": "red and purple repeating geometric note-like pattern",
+      "medium": "graphic design",
+      "palette": [
+        "red",
+        "purple",
+        "yellow",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Discography-The-Complete-Singles-Collection-1985-1991.jpg",
+      "album": "Discography The Complete Singles Collection 1985 1991",
+      "artist": "",
+      "description": "A stark, mostly white cover with a small black-and-white portrait of two men placed toward the lower right area. One wears a light-colored hat, dark sunglasses, and a patterned top; the other wears a dark suit and tie. A solid horizontal blue bar runs beneath and across the portrait area, emphasizing the otherwise minimal layout.",
+      "signatureMotif": "black-and-white portrait of two men above a blue horizontal bar",
+      "medium": "black-and-white studio photograph with graphic layout",
+      "palette": [
+        "white",
+        "blue",
+        "black",
+        "gray"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Live-Through-This.jpg",
+      "album": "Live Through This",
+      "artist": "",
+      "description": "A close-up color photograph of a blonde woman wearing a sparkling tiara or pageant crown, smiling or shouting with mouth open. Dark mascara tears streak down from her eyes. She holds a bouquet of flowers wrapped in clear plastic, and the background is a dark purple curtain or drape. The image has a soft, slightly blurred, flash-lit look.",
+      "signatureMotif": "crying beauty queen with tiara and bouquet",
+      "medium": "color photograph",
+      "palette": [
+        "purple",
+        "blonde",
+        "pink",
+        "green",
+        "white"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Lifes-Too-Good.jpg",
+      "album": "Lifes Too Good",
+      "artist": "",
+      "description": "A playful graphic cover on a light green background with oversized black and bright pink typography dominating the composition. Overlaid are two loose, childlike stick-figure characters drawn in black with white oval bodies and limbs, accented with small pink details. One figure appears to be dancing or kicking, and the other is posed beside it in a similarly lively manner.",
+      "signatureMotif": "two childlike stick-figure characters",
+      "medium": "graphic design with hand-drawn illustration",
+      "palette": [
+        "light green",
+        "black",
+        "pink",
+        "white"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Bang.jpg",
+      "album": "Bang",
+      "artist": "",
+      "description": "A pop-art comic-style illustration framed by a cream border. At the center is a large explosive burst shape in red, white, and yellow with black outlines and motion lines radiating outward. The background inside the frame is filled with blue halftone dots, giving it a printed comic-book texture.",
+      "signatureMotif": "comic-book explosion burst",
+      "medium": "pop-art comic illustration",
+      "palette": [
+        "red",
+        "yellow",
+        "blue",
+        "white",
+        "black"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "A wide rural field under a huge bright blue sky with white clouds, viewed in cinematic 16:9 from slightly low eye level, centered on a makeshift outdoor pageant dais in the grass with a dark strip of water and distant trees on the horizon; the primary subject is a blonde crying beauty queen wearing a sparkling tiara, mascara tears visible, clutching a bouquet in clear wrap as she slumps on a throne-like chair before a dark purple drape, while in the foreground a single person seen only from behind stands wide-legged watching, wearing a long red white and blue flag-patterned coat with black trousers and boots; incorporate a simple red crown emblem hovering above the dais with faint concentric rings radiating through the sky, a glare-blasted silver trumpet lying near the platform with harsh overexposed flash flare and confrontational placement, red and purple repeating geometric note-like patterns printed on the dais skirting and torn banner strips with sharp horizontal yellow bars, one small black-and-white placard of two men above a solid blue bar attached to the side of the platform, two playful stick-figure doodles as chalk marks and little pennants around the base, and a large comic-book explosion burst built from layered paper shapes behind the throne; mixed-media theatrical fashion tableau, staged photography fused with silkscreen graphics, collage, halftone comic texture, pasted paper edges, fabric texture, chalk marks, and bold print overlays; clear visual hierarchy with the beauty queen and throne at center, the back-view coat figure anchoring the foreground, supporting graphics orbiting the stage, strong wind-tugged drapery and banners, bright daylight with flash-lit highlights and slight lens haze; palette of sky blue, grass green, cream, crimson, purple, yellow, white, and black, mood triumphant yet unstable, ironic, windswept, celebratory with melancholy Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Earthling.jpg",
     "Fashion-Nugget.jpg",
     "Getting-Killed.jpg",
-    "Discography-The-Complete-Singles-Collection-1985-1991.jpg",
     "History-Never-Repeats-The-Best-Of-Split-Enz.jpg",
-    "Graceland.jpg",
-    "Everything-Must-Go.jpg",
+    "Discography-The-Complete-Singles-Collection-1985-1991.jpg",
+    "Live-Through-This.jpg",
+    "Lifes-Too-Good.jpg",
     "Bang.jpg"
   ]
 }

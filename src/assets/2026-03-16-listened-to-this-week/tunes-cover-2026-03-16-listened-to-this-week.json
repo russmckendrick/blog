@@ -1,33 +1,195 @@
 {
+  "version": 2,
   "date": "2026-03-16",
   "type": "cover",
-  "lane": "retro-sci-fi-paperback",
+  "lane": null,
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Prism frontier beneath a heraldic relay on an alien roadside",
-  "scene": "A panoramic alien roadside spreads across a vast indigo plain under a strange sky, painted as a richly airbrushed 1970s science-fiction paperback scene with softened print grain. In the foreground, a weathered black causeway cuts past a torn red escarpment shaped like a colossal profile emerging from the land, while two small adult explorers in long dark coats stride along it toward the horizon, one carrying a pale rectangular field map. Beside the road stands a tilted diamond sign at the edge of a grove of dark, leafy extraterrestrial trees, half-buried in dust like the marker of a forgotten frontier. Just beyond it rises a monumental shield-like relay tower, its red, white, and blue geometric panels catching radiant horizon light, with antenna lances on either side and tiny spark-stars flickering across one face like metallic rain. Around the tower, six slender harlequin-clad android performers with angular hair crests are reimagined as colorful inhabitants or ceremonial technicians, their diamond and zigzag garments echoing the landscape’s geometry as they move through the scene rather than posing. Vast translucent blue planetary discs overlap in the heavens, and from the horizon a towering multicolored crystalline prism shoots upward, casting yellow, green, orange, and violet spectral bands through the atmosphere so that the sky forms a giant eye-like aperture over the world. In the midground, smooth white habitat domes nestle into the plain, where mint-green luminous reservoirs in clear cylindrical vats glow like cultivated alien elixir. At the far right, a fur-hooded traveler stands near the domes as a solitary witness to the spectacle, while deep indigo shadows, sepia earth, chalk white architecture, and saturated prism colors bind everything into one connected retro-futurist world.",
-  "palette": [
-    "deep indigo",
-    "cobalt blue",
-    "teal blue",
-    "mint green",
-    "chalk white"
+  "concept": "Bathhouse pageant beneath a spectral emblem",
+  "creativeDirection": "A surreal cut-paper collage and gouache illustration staged like a ceremonial spa tableau with graphic overlays.",
+  "scene": "A wide frontal view into an opulent but uncanny tiled bathhouse lounge, centered on a shallow reflective pool and a hanging emblem above it.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "The two bathrobed adults become the central hosts, seated together at the pool edge holding pale green drinks as the main focal figures."
+    },
+    {
+      "source": 2,
+      "element": "The eye and vertical rainbow prism become a luminous hanging bathhouse medallion or skylight directly above the hosts."
+    },
+    {
+      "source": 3,
+      "element": "The six costumed performers appear as supporting attendants in exaggerated patterned robes and makeup, arranged off-balance around the room like a ceremonial chorus."
+    },
+    {
+      "source": 4,
+      "element": "The horizontal red band becomes a bold architectural stripe across the back wall, with a single side-profile relief emerging from it."
+    },
+    {
+      "source": 5,
+      "element": "Glowing distorted orange faces appear as ghostly reflections and steam apparitions in the dark water and upper shadows, with a mirrored tree-frieze pattern along the lower wall."
+    },
+    {
+      "source": 6,
+      "element": "The fur-trimmed hood transforms into a luxurious hanging cloak or towel wrap draped on a prominent stand near the foreground, suggesting warmth and shelter."
+    },
+    {
+      "source": 7,
+      "element": "The four band members under the tilted road sign become a monochrome framed photo strip pinned near a column, treated as a small incidental decorative object."
+    },
+    {
+      "source": 8,
+      "element": "The heraldic shield becomes the main bathhouse crest embedded in floor mosaic and echoed by slender spear-like fixtures flanking the scene."
+    }
   ],
-  "composeBackend": "nano-banana",
-  "restyleBackend": null,
-  "restyled": false,
-  "model": "fal-ai/nano-banana-2/edit",
-  "prompt": "Create one richly detailed retro science-fiction paperback painting from the 1960s or 1970s - hand-painted gouache, oils, and soft airbrush gradients, strange cosmic scale, aged print grain, and absolutely no lettering or border. The image is a 16:9 music blog header. Scene: A panoramic alien roadside spreads across a vast indigo plain under a strange sky, painted as a richly airbrushed 1970s science-fiction paperback scene with softened print grain. In the foreground, a weathered black causeway cuts past a torn red escarpment shaped like a colossal profile emerging from the land, while two small adult explorers in long dark coats stride along it toward the horizon, one carrying a pale rectangular field map. Beside the road stands a tilted diamond sign at the edge of a grove of dark, leafy extraterrestrial trees, half-buried in dust like the marker of a forgotten frontier. Just beyond it rises a monumental shield-like relay tower, its red, white, and blue geometric panels catching radiant horizon light, with antenna lances on either side and tiny spark-stars flickering across one face like metallic rain. Around the tower, six slender harlequin-clad android performers with angular hair crests are reimagined as colorful inhabitants or ceremonial technicians, their diamond and zigzag garments echoing the landscape’s geometry as they move through the scene rather than posing. Vast translucent blue planetary discs overlap in the heavens, and from the horizon a towering multicolored crystalline prism shoots upward, casting yellow, green, orange, and violet spectral bands through the atmosphere so that the sky forms a giant eye-like aperture over the world. In the midground, smooth white habitat domes nestle into the plain, where mint-green luminous reservoirs in clear cylindrical vats glow like cultivated alien elixir. At the far right, a fur-hooded traveler stands near the domes as a solitary witness to the spectacle, while deep indigo shadows, sepia earth, chalk white architecture, and saturated prism colors bind everything into one connected retro-futurist world. Weave in recognisable elements taken from the 8 uploaded album covers: source 1: towering multicolored prism within overlapping translucent blue circles; source 2: red torn landscape shaped like a side-profile head; source 3: mint-green drink reimagined as glowing elixir reservoirs in clear vessels; source 4: two long-coated walkers on a dark road before a weathered wall-like structure; source 5: harlequin-patterned adult figures with angular theatrical styling; source 6: geometric shield emblem transformed into a monumental relay tower; source 7: tilted diamond-shaped roadside end sign beneath leafy trees; source 8: fur-lined hooded adult traveler in a heavy parka. Transform the subjects, figures, creatures, objects, and symbols depicted in the uploaded covers so they stay recognisable, and place them all inside one cohesive world with a single shared setting and consistent light. Reimagine each album motif as something that belongs in the same speculative world - alien terrain, colossal machinery, celestial phenomena, unusual flora, explorers, or distant structures - painted consistently and still recognisable. Composition: One panoramic otherworldly scene with a dramatic foreground anchor, a clear horizon, immense environmental scale, and layered depth into a strange sky; never a book-cover frame or a collection of separate vignettes. Colour direction: deep indigo, cobalt blue, teal blue, mint green, chalk white - luminous vintage-pulp colour drawn from the sleeves - deep indigo shadows, radiant horizon light, and a few saturated cosmic accents softened by aged print. Mood: mysterious, radiant, windswept, ceremonial. Keep the scene safe and tasteful: feature only adults (no children, infants, or minors), and show no gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, or sexual content. Reinterpret any such source motif abstractly, and suggest rather than exactly replicate the likeness of any identifiable real person. Do not include any text, letters, words, numbers, captions, titles, logos, watermarks, or signage anywhere in the image. Avoid: readable text, letters, words, numbers, captions, titles, logos, watermarks, signage, grid layout, contact sheet, evenly tiled squares, raw album-cover thumbnails, collage of separate panels, photorealistic photograph, DSLR photo, 3D render, CGI, octane render, glossy 3D rendering, camera depth of field, lens bokeh, realistic skin texture, book mockup, book-cover border, blank title area, modern glossy concept art, flat vector shapes, a posed group of people arranged for the camera, objects displayed on tables, trays, or plinths, one giant central sculpture as the centrepiece of the scene. Bold, confident, gallery-quality print design with a strong sense of place.",
-  "restylePrompt": null,
+  "palette": [
+    "white",
+    "pale green",
+    "light blue",
+    "deep blue",
+    "red",
+    "gold"
+  ],
+  "mood": "ritualistic, playful, uncanny, luxurious",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Communion.jpg",
+      "album": "Communion",
+      "artist": "",
+      "description": "A glossy studio photograph of a smiling middle-aged woman and an older man in white bathrobes, posed close together and facing the camera. Each holds a clear glass filled with a pale green drink. The background is softly blurred and bright, with a clean lifestyle-advertisement look. A circular sticker-like graphic appears near the upper left, and a pale blue curved band runs along the bottom edge.",
+      "signatureMotif": "two people in white robes holding pale green drinks",
+      "medium": "photograph",
+      "palette": [
+        "white",
+        "pale green",
+        "light blue",
+        "beige",
+        "grey"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Bright-Spirit.jpg",
+      "album": "Bright Spirit",
+      "artist": "",
+      "description": "An abstract geometric design centered on a large eye shape. Overlapping translucent blue circles form a layered halo around the center, while a tall faceted diamond or prism shape runs vertically through the middle in rainbow-like bands of yellow, green, red, purple, and blue. The background is deep blue with faint speckling.",
+      "signatureMotif": "central eye with a vertical multicoloured prism",
+      "medium": "digital illustration",
+      "palette": [
+        "blue",
+        "teal",
+        "yellow",
+        "green",
+        "red"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Second-Thoughts-Wide-Angle-Enz-Enzyclopedia-Volumes-One-Two-Appendices.jpg",
+      "album": "Second Thoughts Wide Angle Enz Enzyclopedia Volumes One Two Appendices",
+      "artist": "",
+      "description": "A studio portrait of six men in theatrical costumes and heavy stage makeup, posed against a plain light background. Their outfits are brightly coloured and patterned, including harlequin-style diamonds, solid blocks of blue, green, pink, red, yellow, and orange. Several have exaggerated hairstyles and white-painted faces, and the group is arranged in a slightly crouched, off-balance formation.",
+      "signatureMotif": "six performers in colourful theatrical costumes and makeup",
+      "medium": "photograph",
+      "palette": [
+        "white",
+        "blue",
+        "pink",
+        "yellow",
+        "orange"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Escapade.jpg",
+      "album": "Escapade",
+      "artist": "",
+      "description": "A minimalist cover with a wide horizontal red band across the middle of a mostly white field. Emerging from the red area is the side profile of a man's head, with dark hair and a brightly lit face partially washed out by strong light. The composition is sparse and high-contrast.",
+      "signatureMotif": "side profile of a man's head emerging from a red band",
+      "medium": "photograph",
+      "palette": [
+        "white",
+        "red",
+        "black",
+        "dark brown"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Superunknown.jpg",
+      "album": "Superunknown",
+      "artist": "",
+      "description": "A dark, blurred image with glowing orange-red distorted human faces or figures floating against a black background. Along the bottom is a stark inverted-looking strip of black tree silhouettes over a white ground, creating a surreal mirrored landscape effect.",
+      "signatureMotif": "glowing distorted face against black",
+      "medium": "photograph with heavy blur/effects",
+      "palette": [
+        "black",
+        "orange",
+        "red",
+        "white"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "The-Ultimate-Collection.jpg",
+      "album": "The Ultimate Collection",
+      "artist": "",
+      "description": "A close-up sepia-toned portrait of a smiling man wearing a heavy parka with a large fur-trimmed hood framing his face. The zipper and quilted fabric of the coat are visible, and the image fills the frame tightly.",
+      "signatureMotif": "smiling man framed by a fur-lined hood",
+      "medium": "photograph",
+      "palette": [
+        "sepia",
+        "tan",
+        "brown",
+        "cream",
+        "black"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Rotten-Apples-Greatest-Hits.jpg",
+      "album": "Rotten Apples Greatest Hits",
+      "artist": "",
+      "description": "A black-and-white band photograph presented inside a film-negative style frame. Four young people stand outdoors beneath leafy trees, facing the camera, with one person in front center and others staggered behind. A tilted road sign appears behind them, and the image has a candid, slightly wide-angle look.",
+      "signatureMotif": "four band members posed beneath a tilted road sign",
+      "medium": "black-and-white photograph",
+      "palette": [
+        "black",
+        "white",
+        "grey"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Sparkle-in-the-Rain.jpg",
+      "album": "Sparkle in the Rain",
+      "artist": "",
+      "description": "A clean graphic design featuring a heraldic shield centered on a white background with decorative gold borders at the top and bottom. The shield is divided into sections with red, white, and blue areas, including diagonal rain-like lines and small starburst shapes in one quadrant. Stylized spear- or antenna-like elements flank the shield on both sides.",
+      "signatureMotif": "heraldic shield with geometric sections",
+      "medium": "graphic illustration",
+      "palette": [
+        "white",
+        "red",
+        "blue",
+        "gold",
+        "black"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2",
+  "model": "openai/gpt-image-2/edit",
+  "prompt": "A wide frontal view into an opulent yet uncanny tiled bathhouse lounge with a shallow reflective pool in the center and a suspended emblem above it; two middle-aged bathhouse hosts in crisp white robes sit close together at the pool edge as the clear focal point, smiling toward the viewer and each holding a clear glass of pale green drink; above them hangs a luminous medallion shaped like a giant eye with overlapping translucent blue halos and a vertical multicolored prism through its center, while a heraldic shield crest is inlaid into the floor mosaic and echoed by slender spear-like fixtures on both sides; six theatrical attendants in vivid harlequin and color-block costumes with white stage makeup occupy the sides and background in a slightly crouched, off-balance chorus, supporting rather than dominating; across the back wall runs a broad horizontal red architectural band from which a single side-profile relief of a man emerges in bright high contrast; ghostly glowing orange-red faces materialize subtly in steam and water reflections, and an inverted black tree-silhouette frieze runs along the lower wall like a surreal mirrored landscape; a sepia fur-trimmed hooded parka is transformed into a sumptuous cloak draped on a stand in the foreground; a small black-and-white film-negative style photo strip showing four young people beneath a tilted road sign is pinned near a side column as a minor incidental detail; surreal cut-paper collage combined with gouache illustration, layered paper textures, crisp graphic edges, hand-painted tile detail, slight printmaking grain; clear central hierarchy with the robed pair dominant, the eye medallion second, attendants framing the sides, generous negative space around the center, symmetrical but gently destabilized staging, soft luminous bathhouse light with cool highlights and pockets of shadow; palette of white, pale green, light blue, deep blue, red, gold, black, orange, and sepia, creating a playful ritual mood that feels luxurious, theatrical, and faintly haunted. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
-    "Bright-Spirit.jpg",
-    "Escapade.jpg",
     "Communion.jpg",
-    "A-Pound-of-Feathers.jpg",
+    "Bright-Spirit.jpg",
     "Second-Thoughts-Wide-Angle-Enz-Enzyclopedia-Volumes-One-Two-Appendices.jpg",
-    "Sparkle-in-the-Rain.jpg",
+    "Escapade.jpg",
+    "Superunknown.jpg",
+    "The-Ultimate-Collection.jpg",
     "Rotten-Apples-Greatest-Hits.jpg",
-    "The-Ultimate-Collection.jpg"
+    "Sparkle-in-the-Rain.jpg"
   ]
 }
