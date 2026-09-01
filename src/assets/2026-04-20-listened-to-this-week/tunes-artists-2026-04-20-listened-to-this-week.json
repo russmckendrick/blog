@@ -6,179 +6,170 @@
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Flash-lit landing bottleneck",
-  "creativeDirection": "A close, direct-flash environmental portrait on a cramped stair landing, mixing candid micro-interaction with deliberate placement and slight wide-angle tension.",
-  "scene": "In the narrow gray stairwell landing, the four musicians bunch naturally around the left rail and top step as if briefly stopped while moving through the space, with the conduit, caged lamp, and dark stair opening all clearly anchoring the scene.",
-  "locationSource": 6,
-  "locationSetting": "Tight interior stairwell or corridor with gray painted walls, exposed electrical conduit, a caged wall lamp, railing or ledge at left, and a dark opening descending behind the group.",
-  "locationEvidence": "A tight gray-painted stairwell is clearly visible, with exposed conduit pipes along the upper wall, a caged wall light overhead, a left-side rail or ledge, and a dark stair opening descending behind the group.",
+  "concept": "Rainlit underpass convergence",
+  "creativeDirection": "A gritty, black-and-white environmental portrait shot wide and slightly low, capturing a loosely staged but natural pause within the tunnel rather than a formal lineup.",
+  "scene": "In the wet brick underpass from source 5, four musicians have just converged mid-passage, lingering in a shared pause between the darker interior and the blown-bright street opening behind them.",
+  "locationSource": 5,
+  "locationSetting": "Narrow tunnel or alley with brick walls on both sides, wet asphalt roadway, double painted edge lines, bright street opening at the far end, and urban building windows visible beyond.",
+  "locationEvidence": "A narrow brick-lined underpass is clearly visible, with wet asphalt, double yellow road lines, a bright street opening beyond, and urban windows seen past the tunnel exit.",
   "locationReference": 1,
-  "locationInput": "Porno-for-Pyros.jpg",
+  "locationInput": "Senser.jpg",
   "cast": [
     {
-      "source": 6,
-      "person": "the clean-shaven man in a black wide-brim hat, patterned dark jacket, and white tank top",
-      "placement": "near center front on the landing, slightly crouched toward camera"
-    },
-    {
-      "source": 4,
-      "person": "the older man with long wavy white hair, full white beard, and burgundy jacket",
-      "placement": "seated sideways on a lower step at right, turned back into the group"
+      "source": 5,
+      "person": "the short-haired man in the dark leather jacket, T-shirt, and jeans",
+      "placement": "foreground right, closest to camera, one foot on the yellow line, half-turned toward the others"
     },
     {
       "source": 2,
-      "person": "the pale man with teased dark hair, dark eye makeup, red lips, and a loose white paint-marked shirt",
-      "placement": "leaning against the left wall beneath the conduit, one shoulder back, watching the others"
+      "person": "the pale man with messy teased black hair, dark eye makeup, red lips, and a white shirt with paint-like markings",
+      "placement": "left-midground, leaning lightly back toward the brick wall, looking across the group"
     },
     {
-      "source": 7,
-      "person": "the man with middle-parted dark hair, rectangular black glasses, and a black T-shirt",
-      "placement": "half a step higher in the rear near the dark opening, looking past the hat-wearing man"
+      "source": 4,
+      "person": "the older man with long wavy white hair, full white beard, burgundy jacket, and jeans",
+      "placement": "center-left, seated casually on the low curb edge or stoop-like side ledge, anchoring the group"
+    },
+    {
+      "source": 6,
+      "person": "the man with medium-length dark hair, rectangular black glasses, and a black T-shirt",
+      "placement": "center-right midground, standing near the seated older man, shoulders angled toward him while glancing outward"
     }
   ],
   "selection": [
-    6,
-    4,
+    5,
     2,
-    7
+    4,
+    6
   ],
   "palette": [
-    "cool gray",
-    "off-white",
-    "black",
-    "burgundy",
-    "muted skin tones",
-    "faded yellow accents"
+    "high-contrast black and white",
+    "deep charcoal",
+    "wet asphalt silver",
+    "brick gray",
+    "bright white backlight"
   ],
-  "mood": "tense, intimate, alert",
+  "mood": "moody, urban, reflective",
   "artistSummaries": [
     {
       "source": 1,
       "filename": "Suede.jpg",
       "artist": "Suede",
-      "description": "Black-and-white studio-style group portrait of four light-skinned adult men framed from chest to head against a dark mottled backdrop. The most prominent man stands near center front with a slim face, medium-length dark hair parted and tucked back, and an open collared shirt exposing his upper chest. At left, another slim man with short dark slicked-back hair tilts his head down and wears a dark leather jacket and small hoop earring. Behind them stands a man with long dark hair and a soft-focus face in a partially open shirt. At right, a man with short spiked dark hair wears a dark jacket over a light ribbed top and a necklace, looking directly at the camera. Lighting is soft and directional with shallow depth of field.",
-      "primarySubject": "The slim light-skinned man in the center front with medium-length dark parted hair, a long narrow face, and an open light button-up shirt exposing his chest.",
+      "description": "Black-and-white studio-style group portrait of four light-skinned adult men framed from chest to head against a dark textured background. The central man is most forward, with straight medium-length dark hair parted back, a long narrow face, and an open button-up shirt. At left, another man tilts his head down and sideways, with slicked dark hair, a slim face, and a dark leather jacket. Behind center-left stands a man with long dark hair and a softer, slightly out-of-focus face. At right, a man with short spiked dark hair wears a dark jacket over a light shirt and looks directly at camera. Lighting is soft and moody with shallow depth of field.",
+      "primarySubject": "The front-center light-skinned man with straight shoulder-length dark hair, a long narrow face, and an open light button-up shirt.",
       "visiblePeople": [
-        "Four adult men; center front man is slim with medium-length dark parted hair and clean-shaven face.",
-        "Left front man is slim with short slicked-back dark hair, clean-shaven face, and a small hoop earring.",
-        "Rear man has long dark hair and a softer, less sharply focused face.",
-        "Right front man has short spiked dark hair, a clean-shaven face, and wears a necklace."
+        "Front-center light-skinned adult man with straight medium-length dark hair, clean-shaven face, slim build, open button-up shirt.",
+        "Front-left light-skinned adult man with slicked dark hair, clean-shaven face, slim build, small earring, dark leather jacket.",
+        "Rear-center-left light-skinned adult man with long dark hair, clean-shaven face, slim build, open-collar shirt.",
+        "Front-right light-skinned adult man with short spiked dark hair, clean-shaven face, slim build, dark jacket over a light shirt, necklace and earring."
       ],
-      "wardrobe": "Open-collar button-up shirt at center, dark leather jacket at left, open shirt on rear figure, dark jacket over a light ribbed top at right, plus small jewelry.",
-      "photoStyle": "Black-and-white, posed band portrait, medium close framing, shallow depth of field, soft moody lighting.",
-      "setting": "Plain dark textured backdrop with no distinct props or location features visible.",
+      "wardrobe": "Dark leather jacket, open-collar shirts, dark blazer or jacket, light undershirt, necklace, earring.",
+      "photoStyle": "Black-and-white, moody studio portrait, tight group composition, shallow depth of field.",
+      "setting": "Dark plain textured backdrop with no visible furniture or location features.",
       "settingStrength": "weak"
     },
     {
       "source": 2,
       "filename": "The-Cure.jpg",
       "artist": "The Cure",
-      "description": "Color studio group portrait of five light-skinned adult men posed closely against a bright solid yellow background. The central front figure is most prominent, seated or crouched lower than the others, with messy teased dark hair, pale face, dark eye makeup, and red lips, wearing a loose white shirt marked with splashes of paint-like color. Two men stand to the left: one with short dark curly hair and a white collared shirt, and one with shoulder-length curly brown hair, red lips, and a loose white top leaning inward. Two men stand to the right: one with blond teased hair and a white short-sleeve shirt with large paint-like red and yellow areas, and one with shaggy dark hair, dark eye makeup, and a white button-up shirt with a red paint-like patch. The lighting is even and bright.",
-      "primarySubject": "The pale light-skinned man in the center front with teased dark hair, dark eye makeup, red lips, and a loose white shirt with paint-like red and yellow marks.",
+      "description": "Color studio group portrait of five light-skinned adult men posed closely in front of a solid bright yellow background. All wear loose white shirts with irregular painted-looking red, yellow, and blue marks. The front-center man is seated or crouched slightly forward with teased black hair, pale face, dark eye makeup, and red lips. Behind him stand four others: at far left a man with short curly dark hair; left-center a man with shoulder-length curly hair and red lipstick; center-back a man with tall wild black hair and heavy dark eye makeup; right-center a blond man with messy spiked hair; and far right a man with shaggy black hair, dark eye makeup, and a wristwatch, one hand in pocket. Lighting is bright and even.",
+      "primarySubject": "The front-center light-skinned man with teased black hair, dark eye makeup, red lips, and a white shirt marked with red and yellow paint-like patches.",
       "visiblePeople": [
-        "Five adult men; center front man has messy teased dark hair, pale skin, dark eye makeup, and red lips.",
-        "Far left man has short dark curly hair and a fuller face.",
-        "Left-center man has shoulder-length curly brown hair and red lips.",
-        "Right-center man has teased blond hair and a long face.",
-        "Far right man has shaggy dark hair, dark eye makeup, and a wristwatch."
+        "Far-left light-skinned adult man with short curly dark hair, clean-shaven face, average build, white marked shirt.",
+        "Left-center light-skinned adult man with shoulder-length curly brown hair, pale face, red lipstick, white marked shirt.",
+        "Center-back light-skinned adult man with tall wild black hair, heavy dark eye makeup, pale face, white marked shirt.",
+        "Front-center light-skinned adult man with messy teased black hair, pale face, dark eye makeup, red lips, white marked shirt.",
+        "Right-center light-skinned adult man with messy blond hair, clean-shaven face, white marked shirt.",
+        "Far-right light-skinned adult man with shaggy black hair, dark eye makeup, clean-shaven face, white marked shirt and wristwatch."
       ],
-      "wardrobe": "All wear white shirts or tops with scattered paint-like red, yellow, and blue marks; dark trousers visible on several figures; one wears a wristwatch.",
-      "photoStyle": "Color studio portrait, bright seamless background, stylized grooming and makeup, evenly lit, medium group framing.",
-      "setting": "Solid yellow studio backdrop with no visible furniture or environmental features.",
+      "wardrobe": "White button-up and pullover shirts with large irregular red, yellow, and blue paint-like markings; dark trousers; wristwatch.",
+      "photoStyle": "Bright color studio portrait, saturated backdrop, 1980s styled hair and makeup, evenly lit.",
+      "setting": "Plain seamless yellow studio background with no visible props or architectural elements.",
       "settingStrength": "weak"
     },
     {
       "source": 3,
       "filename": "The-Who.jpg",
       "artist": "The Who",
-      "description": "Black-and-white live performance photo of four light-skinned adult men on a large stage. The central singer is most prominent, mid-stride with curly hair, open shirt exposing his torso, and arms raised high holding a microphone stand overhead. At left, a bearded guitarist with dark hair plays an electric guitar beside stacked speaker cabinets. At center rear, a drummer sits at a drum kit. At right, another guitarist in a light outfit is captured mid-jump with legs spread wide while playing. Large amplifier stacks line both sides of the stage, and a dark empty background rises above them. Strong stage lighting illuminates the performers from the front.",
-      "primarySubject": "The shirt-open curly-haired male singer at center, striding forward and swinging a microphone stand overhead with both hands.",
+      "description": "Black-and-white live performance photo of four light-skinned adult men on a large stage. At center, a shirtless or open-shirt singer with curly hair swings a microphone stand overhead mid-stride. At right, a guitarist in a light jumpsuit is caught leaping with legs spread while playing. At left, another guitarist with dark curly hair and facial hair plays beside stacked amplifier cabinets. A drummer sits behind a drum kit in the middle rear. The image is wide, high contrast, and action-focused.",
+      "primarySubject": "The center-stage light-skinned curly-haired man with a bare chest or open shirt, swinging a microphone stand overhead while stepping forward.",
       "visiblePeople": [
-        "Four adult men; center singer has curly hair and bare chest under an open shirt.",
-        "Left guitarist has dark hair and a full beard.",
-        "Rear drummer is seated behind the kit with dark hair.",
-        "Right guitarist appears airborne with facial hair and a light-colored outfit."
+        "Left light-skinned adult man with dark curly hair, beard or heavy facial hair, playing electric guitar, dark jacket and trousers.",
+        "Center light-skinned adult man with curly hair, slim build, bare chest or open shirt, light trousers, swinging microphone stand.",
+        "Rear-center light-skinned adult man seated at drum kit, dark hair, light shirt.",
+        "Right light-skinned adult man with beard, slim build, playing guitar, wearing a light one-piece or matching light outfit while jumping."
       ],
-      "wardrobe": "Open shirt and jeans on the singer, darker casual stage clothes on the left guitarist, light clothing on the jumping right guitarist, drummer in a light top.",
-      "photoStyle": "Black-and-white concert action photograph, wide stage view, high contrast, motion captured mid-performance.",
-      "setting": "Indoor concert stage with drum kit centered, tall stacked amplifier cabinets on both sides, stage floor with cables, and a dark unlit backdrop above.",
+      "wardrobe": "Light stage trousers, open shirt or bare chest on singer, dark jacket on left guitarist, light outfit on right guitarist.",
+      "photoStyle": "Black-and-white concert photography, wide shot, high contrast, motion-rich live performance capture.",
+      "setting": "Indoor concert stage with drum kit, multiple stacked amplifier cabinets, microphone stand, instrument cables, and dark empty backdrop above the performers.",
       "settingStrength": "strong"
     },
     {
       "source": 4,
       "filename": "Tears-for-Fears.jpg",
       "artist": "Tears for Fears",
-      "description": "Color portrait of two light-skinned older adult men seated against a dark wall made of angled wooden planks. The man on the left is slim with very short gray hair, clean-shaven face, and wears a black short-sleeve polo shirt with light trim at the collar and sleeves; he sits upright with hands resting near his knees. The man on the right is more visually prominent, with long wavy white hair, a full white beard and mustache, and a burgundy leather-like jacket over a dark top with blue jeans; he sits on a stool with one arm folded across his lap. Lighting is soft and controlled, creating gentle facial modeling.",
-      "primarySubject": "The seated man on the right with long wavy white hair, full white beard, and a burgundy jacket over jeans.",
+      "description": "Color portrait of two older light-skinned adult men posed seated against a dark geometric wood-paneled wall. The man on the left has very short gray hair, a lean face, and wears a fitted black polo shirt, sitting upright with hands resting on his knee. The man on the right is more prominent, with long wavy white hair, a full white beard and mustache, and a burgundy leather-like jacket over jeans, seated on a stool with one arm folded across his lap. Lighting is controlled and directional, giving a polished editorial look.",
+      "primarySubject": "The right-side older light-skinned man with long wavy white hair, a full white beard, and a burgundy jacket, seated on a stool facing camera.",
       "visiblePeople": [
-        "Two adult men; left man is slim, clean-shaven, with very short gray hair.",
-        "Right man has long wavy white hair, a full white beard and mustache, and a broader build."
+        "Left older light-skinned adult man with very short gray hair, clean-shaven face, lean build, black polo shirt, seated upright.",
+        "Right older light-skinned adult man with long wavy white hair, full white beard and mustache, average build, burgundy jacket and blue jeans, seated on stool."
       ],
-      "wardrobe": "Black polo shirt and dark trousers on the left; burgundy jacket, dark shirt, and blue jeans on the right.",
-      "photoStyle": "Color posed portrait, seated composition, low-angle feel, soft studio lighting.",
-      "setting": "Dark interior wall clad in diagonally arranged wooden planks; one stool seat is visible beneath the man on the right. No other furnishings are shown.",
+      "wardrobe": "Black polo shirt; burgundy leather-like jacket; blue jeans.",
+      "photoStyle": "Color editorial portrait, medium shot, low-angle feel, controlled studio lighting.",
+      "setting": "Dark wood-paneled interior wall with angled plank pattern; one subject seated on a stool. Background is minimal but clearly designed.",
       "settingStrength": "moderate"
     },
     {
       "source": 5,
       "filename": "Senser.jpg",
       "artist": "Senser",
-      "description": "Black-and-white group portrait of five adults standing in a narrow brick-lined passageway or alley with wet pavement and double road lines running toward the camera. The most prominent person stands front right, a light-skinned adult man with medium dark hair brushed back, wearing a dark leather jacket over a T-shirt and dark jeans, feet set apart and chin lifted. At far left stands a light-skinned man with long curly hair, glasses, and a denim jacket. Near center front stands a light-skinned woman with short curly hair, sleeveless dark top, fitted jeans, and sneakers, facing squarely forward. Behind her is a shorter-haired man in a dark T-shirt with arms crossed. To the right of him stands a bald man in a zip hoodie and jeans. Bright backlight from the street opening behind them silhouettes the passage entrance and reveals windows of a building outside.",
-      "primarySubject": "The light-skinned man at front right with brushed-back dark hair, a dark leather jacket, and a wide-legged stance closest to the camera edge.",
+      "description": "Black-and-white group portrait of five adults standing in a narrow brick-lined passage or underpass with wet pavement and double road lines leading toward a bright opening behind them. At far right, the most prominent person stands closest to camera with a wide stance, short side-parted hair, and a dark leather jacket over a T-shirt and jeans. At center front stands a woman with short curly hair, sleeveless dark top, jeans, and sneakers. At far left stands a long-haired person in glasses and a denim jacket. Two more men stand behind center, one with arms folded and one bald in a zip hoodie. The lighting is dramatic with strong backlight from the street beyond.",
+      "primarySubject": "The front-right light-skinned adult with short side-parted hair, a dark leather jacket, T-shirt, and jeans, standing closest to camera with feet apart.",
       "visiblePeople": [
-        "Five adults; front-right man has medium dark brushed-back hair and clean-shaven face.",
-        "Far-left man has long curly hair and glasses.",
-        "Center-front woman has short curly hair.",
-        "Rear-center man has short dark hair and crossed arms.",
-        "Right-center man is bald and clean-shaven."
+        "Far-left light-skinned adult with long curly hair, glasses, slim build, denim jacket, dark trousers, sneakers.",
+        "Front-center light-skinned adult woman with short curly hair, average build, sleeveless dark top, jeans, sneakers.",
+        "Rear-center light-skinned adult man with short hair, average build, dark T-shirt, arms folded.",
+        "Right-center light-skinned adult bald man, stockier build, dark zip hoodie, jeans, sneakers.",
+        "Front-right light-skinned adult man with short side-parted hair, average build, dark leather jacket, T-shirt, jeans, wide stance."
       ],
-      "wardrobe": "Leather jacket and T-shirt on front-right man, denim jacket on far-left man, sleeveless top and jeans on the woman, dark T-shirt on rear-center man, zip hoodie and jeans on the bald man, casual shoes and sneakers throughout.",
-      "photoStyle": "Black-and-white environmental band portrait, full-body to three-quarter framing, strong backlighting, gritty documentary feel.",
-      "setting": "Narrow covered alley or underpass with brick side walls, wet asphalt roadway, double painted curb or lane lines, bright opening to an exterior street, and visible windows on the building beyond.",
+      "wardrobe": "Denim jacket, sleeveless dark top, dark T-shirt, zip hoodie, leather jacket, jeans, casual sneakers.",
+      "photoStyle": "Black-and-white environmental band portrait, wide-angle perspective, gritty high-contrast lighting.",
+      "setting": "Narrow tunnel or alley with brick walls on both sides, wet asphalt roadway, double painted edge lines, bright street opening at the far end, and urban building windows visible beyond.",
       "settingStrength": "strong"
     },
     {
       "source": 6,
-      "filename": "Porno-for-Pyros.jpg",
-      "artist": "Porno for Pyros",
-      "description": "Color group photo of four light-skinned adult men posed tightly in a narrow stairwell or corridor with gray painted walls. The most prominent figure stands near center front wearing a black wide-brim hat, a patterned dark jacket, and a white tank top, looking directly at the camera. At left, a gray-haired man with short cropped hair and light stubble leans casually on a rail or ledge, wearing a black shirt under a sleeveless black leather vest. Behind center stands a bearded man with short light-brown hair in a short-sleeve button shirt. At right, a muscular curly-haired man in a white tank top leans in with forearms forward. Exposed conduit pipes run along the upper wall and a caged wall light is mounted above. Lighting is bright and direct.",
-      "primarySubject": "The man near center front wearing a black wide-brim hat, patterned dark jacket, and white tank top, positioned closest to the lens.",
-      "visiblePeople": [
-        "Four adult men; center-front man wears a black hat and has a smooth clean-shaven face.",
-        "Left man has short gray hair and light stubble.",
-        "Rear man has short light-brown hair and a full beard.",
-        "Right man has short curly hair and a muscular bare-armed build."
-      ],
-      "wardrobe": "Black leather vest over black shirt on the left, dark short-sleeve button shirt on the rear man, black hat with patterned jacket and white tank top at center front, white tank top on the right.",
-      "photoStyle": "Color candid-style band portrait, close group framing, flash-lit or direct-lit, slight wide-angle perspective.",
-      "setting": "Tight interior stairwell or corridor with gray painted walls, exposed electrical conduit, a caged wall lamp, railing or ledge at left, and a dark opening descending behind the group.",
-      "settingStrength": "strong"
-    },
-    {
-      "source": 7,
       "filename": "Porcupine-Tree.jpg",
       "artist": "Porcupine Tree",
-      "description": "Color studio portrait of three light-skinned adult men against a dark plain background. The central figure is most prominent, standing slightly forward with straight medium-length dark hair parted in the middle, rectangular black glasses, and a neutral expression, wearing a black T-shirt. On the left stands a taller man with swept side-parted dark hair, a narrow face, and a short pointed goatee, wearing a black zip-front jacket with metal snaps. On the right stands an older man with white hair falling over his forehead, rectangular dark glasses, and a short goatee, dressed in a black buttoned shirt. Lighting is soft and directional, with a subdued warm tint.",
-      "primarySubject": "The center man with middle-parted dark hair, rectangular black glasses, and a plain black T-shirt standing slightly forward.",
+      "description": "Color studio portrait of three light-skinned adult men against a dark plain background. The central man is most prominent, wearing rectangular black glasses and a black T-shirt, with medium-length dark hair parted near the middle and a neutral expression. At left stands a taller man in a black zip jacket with short sides, longer swept-over dark hair, and a small pointed goatee. At right stands an older man with white hair, dark rectangular glasses, and a small chin beard, wearing a black button-up shirt. Lighting is soft and directional, with a subdued editorial finish.",
+      "primarySubject": "The center light-skinned man with medium-length dark hair, rectangular black glasses, and a plain black T-shirt, facing straight toward camera.",
       "visiblePeople": [
-        "Three adult men; center man has medium-length dark hair parted at the middle and wears glasses.",
-        "Left man is taller with side-parted dark hair and a short pointed goatee.",
-        "Right man is older with white hair over his forehead, glasses, and a short goatee."
+        "Left light-skinned adult man with swept-over dark hair and short sides, small pointed goatee, black zip jacket.",
+        "Center light-skinned adult man with medium-length dark hair, rectangular black glasses, clean-shaven face, black T-shirt.",
+        "Right older light-skinned adult man with white hair, dark rectangular glasses, small chin beard, black button-up shirt."
       ],
-      "wardrobe": "All-black clothing: plain black T-shirt at center, black zip jacket at left, black button-up shirt at right.",
-      "photoStyle": "Color studio portrait, tight medium framing, dark backdrop, soft directional lighting.",
-      "setting": "Plain dark studio background with no visible environmental features or props.",
+      "wardrobe": "Black zip jacket, black T-shirt, black button-up shirt, dark glasses.",
+      "photoStyle": "Color studio portrait, subdued tones, tight three-person composition, soft directional lighting.",
+      "setting": "Plain dark studio backdrop with no visible furniture or architectural details.",
       "settingStrength": "weak"
     }
   ],
   "hint": null,
   "composeBackend": "nano-banana-pro",
   "model": "fal-ai/nano-banana-pro/edit",
-  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Tight interior stairwell or corridor with gray painted walls, exposed electrical conduit, a caged wall lamp, railing or ledge at left, and a dark opening descending behind the group.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A photorealistic 16:9 group portrait on a cramped interior stairwell landing with gray painted walls, exposed metal conduit running along the upper left wall, a caged wall lamp overhead, a left-hand rail or ledge, and a dark stair opening descending behind the group; extend the landing and steps naturally just beyond the original frame, keeping the space narrow and enclosed. Four adults share a brief stopped moment: a clean-shaven man in a black wide-brim hat, patterned dark jacket, and white tank top crouches slightly near center front toward the camera; an older man with long wavy white hair and a full white beard in a burgundy jacket sits sideways on a lower step at right, turning back into the group; a pale man with teased dark hair, dark eye makeup, red lips, and a loose white shirt with paint-like marks leans against the left wall under the conduit, one shoulder touching the wall; a man with middle-parted dark hair, rectangular black glasses, and a black T-shirt stands half a step higher near the dark opening, watching past the central figure. Keep them naturally staggered in depth with subtle interaction and uneven spacing, not a lineup. Shoot from close range at eye level with a slight wide-angle feel, horizontal framing, tight environmental composition, and moderate depth of field so faces are clear while the stairwell still reads strongly. Use bright direct flash balanced with the practical caged lamp, preserving the harsh honest lighting logic of the stairwell with crisp facial detail and short shadows. Keep color realistic but slightly subdued, emphasizing cool grays, black clothing, burgundy, and the faded painted accents on the white shirt; mood tense, intimate, and quietly electric. Attached cast plan: Attached reference image 1: portray only the clean-shaven man in a black wide-brim hat, patterned dark jacket, and white tank top; near center front on the landing, slightly crouched toward camera. Attached reference image 2: portray only the older man with long wavy white hair, full white beard, and burgundy jacket; seated sideways on a lower step at right, turned back into the group. Attached reference image 3: portray only the pale man with teased dark hair, dark eye makeup, red lips, and a loose white paint-marked shirt; leaning against the left wall beneath the conduit, one shoulder back, watching the others. Attached reference image 4: portray only the man with middle-parted dark hair, rectangular black glasses, and a black T-shirt; half a step higher in the rear near the dark opening, looking past the hat-wearing man. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Narrow tunnel or alley with brick walls on both sides, wet asphalt roadway, double painted edge lines, bright street opening at the far end, and urban building windows visible beyond.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. Photorealistic 16:9 group photograph in a narrow brick-lined underpass with wet asphalt and double yellow road lines running toward a bright street opening in the background; camera positioned slightly low and several steps back, using the tunnel’s real depth, brick walls, curb edges, ceiling beam, and blown-backlight exit exactly as the environment. Four adults share a quiet converging moment rather than posing in a lineup: at foreground right, a short-haired man in a dark leather jacket, T-shirt, and jeans stands closest to camera with a wide, grounded stance, half-turned toward the others; at left-midground, a pale man with messy teased black hair, dark eye makeup, red lips, and a loose white shirt with bold paint-like markings leans back lightly toward the brick wall, watching across the group; at center-left, an older man with long wavy white hair and a full white beard, wearing a dark jacket and jeans, sits casually on the low side curb or ledge with relaxed authority; at center-right, a man with medium-length dark hair, rectangular black glasses, and a black T-shirt stands near him, shoulders angled inward as if in conversation while glancing outward. Asymmetrical composition with varied depth and posture, leaving negative space above and behind them; wide environmental framing, moderate wide-angle lens around 28–35mm, natural perspective, crisp detail on the cast with slight falloff into the tunnel depth. Strong backlight from the street opening, soft ambient bounce within the tunnel, reflections on wet pavement, deep shadows along the brick walls. High-contrast black-and-white treatment, gritty tonal range, reflective urban mood. Attached cast plan: Attached reference image 1: portray only the short-haired man in the dark leather jacket, T-shirt, and jeans; foreground right, closest to camera, one foot on the yellow line, half-turned toward the others. Attached reference image 2: portray only the pale man with messy teased black hair, dark eye makeup, red lips, and a white shirt with paint-like markings; left-midground, leaning lightly back toward the brick wall, looking across the group. Attached reference image 3: portray only the older man with long wavy white hair, full white beard, burgundy jacket, and jeans; center-left, seated casually on the low curb edge or stoop-like side ledge, anchoring the group. Attached reference image 4: portray only the man with medium-length dark hair, rectangular black glasses, and a black T-shirt; center-right midground, standing near the seated older man, shoulders angled toward him while glancing outward. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "reuseWeeks": 6,
+  "reuseBlocked": [
+    {
+      "artist": "Porno for Pyros",
+      "lastUsed": "2026-03-09"
+    }
+  ],
+  "reuseRelaxed": [],
   "inputs": [
-    "Porno-for-Pyros.jpg",
-    "Tears-for-Fears.jpg",
+    "Senser.jpg",
     "The-Cure.jpg",
+    "Tears-for-Fears.jpg",
     "Porcupine-Tree.jpg"
   ]
 }

@@ -6,218 +6,227 @@
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Diagonal wall gathering before anyone fully settles",
-  "creativeDirection": "A low-angled, quietly candid group portrait that uses the black geometric wood-paneled room as a sculptural backdrop and lets the cast fall into an asymmetrical cluster rather than a formal pose.",
-  "scene": "A close, naturally arranged group portrait in this existing physical setting: Modern corridor or lobby interior with concrete columns, smooth floor, curved white wall, dark ceiling, and suspended linear light fixtures creating depth..",
+  "concept": "Quiet handoff in the curved corridor",
+  "creativeDirection": "A controlled architectural portrait with a poised, in-between moment, using the corridor’s strong linear perspective, warm directional light, and a slightly cinematic editorial stillness.",
+  "scene": "Use the modern corridor from source 10 as the only location, extending its concrete-column side and curved white wall naturally beyond the frame into a wider 16:9 view. Stage a shared pause near the front section of the hallway as if the four adults have just converged and are exchanging attention before moving on.",
   "locationSource": 10,
-  "locationSetting": "Modern corridor or lobby interior with concrete columns, smooth floor, curved white wall, dark ceiling, and suspended linear light fixtures creating depth.",
-  "locationEvidence": "Source 10 has the strongest described physical setting (strong).",
+  "locationSetting": "Modern interior corridor with concrete columns, polished floor, curved white wall, dark ceiling, and suspended curved strip lighting extending into the distance.",
+  "locationEvidence": "A clearly defined modern corridor is visible with repeating concrete columns on the left, a curved white wall on the right, a polished floor, a dark ceiling, and distinctive suspended curved strip lights receding into depth.",
   "locationReference": 1,
   "locationInput": "Kraftwerk.jpg",
   "cast": [
     {
       "source": 10,
-      "person": "the selected adult from source 10",
-      "placement": "placed naturally within the shared group"
+      "person": "the front-right pale male figure with short dark hair, blank expression, bright red shirt, black tie, and gray trousers",
+      "placement": "foreground right, closest to camera, turned slightly inward as the visual anchor"
     },
     {
       "source": 2,
-      "person": "older light-skinned man with long wavy white hair, full white beard, burgundy jacket and jeans",
-      "placement": "seated on the stool at center-right, turned slightly left with one forearm resting across his knee"
+      "person": "the older light-skinned man with long wavy white hair, full white beard, burgundy leather jacket, and jeans",
+      "placement": "midground right-center near the curved wall, half-leaning and looking toward the others"
     },
     {
       "source": 7,
-      "person": "tall light-skinned man with short spiked blond hair and a long fringe over one eye, wearing an oversized plaid jacket",
-      "placement": "standing at far left, slightly behind the others, leaning forward into the group"
+      "person": "the light-skinned woman with short spiky reddish hair, strong eye makeup, and a black top",
+      "placement": "midground left-center between column side and center aisle, head angled down then slightly across toward the group"
     },
     {
-      "source": 9,
-      "person": "light-skinned woman with short tight blonde curls, wearing an off-the-shoulder blue sweater and white pants",
-      "placement": "low in the foreground at left-center, perched on the floor or crouched with one shoulder angled toward the seated man"
+      "source": 1,
+      "person": "the light-skinned blonde woman with long straight hair and red lipstick, wearing a dark top",
+      "placement": "background left near the columns, standing taller and watching the exchange from a step back"
     }
   ],
   "selection": [
     10,
     2,
     7,
-    9
+    1
   ],
   "palette": [
-    "black wood",
-    "burgundy",
-    "soft blue",
-    "cream",
-    "muted gold"
+    "red",
+    "charcoal",
+    "warm white",
+    "concrete gray",
+    "deep black",
+    "burgundy"
   ],
-  "mood": "quiet, intimate, self-possessed",
+  "mood": "tense, stylish, watchful",
   "artistSummaries": [
     {
       "source": 1,
       "filename": "The-Smashing-Pumpkins.jpg",
       "artist": "The Smashing Pumpkins",
-      "description": "Studio group portrait of four adults posed tightly together against a wrinkled light backdrop. In front left, a pale-skinned adult with shoulder-length dark curly hair and a pronounced jaw tilts the head back and looks forward; in front right, an East Asian adult with long straight dark hair faces the camera with a neutral expression. Behind them, a light-skinned adult with shaggy brown mullet-length hair leans forward, and a light-skinned blonde adult with long straight hair stands at the back with red lipstick visible. Soft frontal lighting and a slightly diffused, archival color treatment.",
-      "primarySubject": "Front left adult with pale skin, shoulder-length dark curly hair, a strong jawline, and a wavy patterned button-up shirt, posed closest to the camera with chin raised.",
+      "description": "Studio group portrait of four adults framed from mid torso up against a wrinkled light cloth backdrop. In front left, a very pale adult with shoulder-length dark curly hair and a clean-shaven face tilts his chin upward and looks at the camera. In front right, an East Asian adult with long straight dark hair and a smooth face faces forward with a neutral expression. Behind them at center, a light-skinned adult with brown mullet-length hair and a clean-shaven face leans forward slightly. Behind left, a light-skinned blonde woman with long straight hair, red lipstick, and a faint smile stands taller than the others. Lighting is soft and frontal with a gentle glow behind the middle figures, giving a polished studio look.",
+      "primarySubject": "Front-left adult with very pale skin, shoulder-length dark curly hair, clean-shaven face, and patterned high-collared shirt, posed closest to the camera with chin raised.",
       "visiblePeople": [
-        "Light-skinned blonde adult with long straight hair and red lipstick, standing behind the group.",
-        "Pale-skinned adult with shoulder-length dark curly hair and strong jawline, posed front left with chin raised.",
-        "Light-skinned adult with shaggy brown mullet-length hair, leaning forward from the middle back.",
-        "East Asian adult with long straight dark hair, posed front right facing the camera."
+        "Light-skinned blonde woman with long straight hair and red lipstick",
+        "Very pale adult with shoulder-length dark curly hair",
+        "Light-skinned adult with brown mullet-length hair",
+        "East Asian adult with long straight dark hair"
       ],
-      "wardrobe": "Patterned psychedelic-style button-up shirts in muted purple, blue, and yellow tones; one dark top partially visible; layered necklaces on the front-left subject.",
-      "photoStyle": "Tight studio group portrait, soft diffused lighting, vintage color photo look.",
-      "setting": "Plain studio setup with a wrinkled light fabric backdrop and no visible furniture or props.",
+      "wardrobe": "Bold patterned button-up shirts in swirling and paisley-like prints; the front-left subject wears layered necklaces; the blonde woman wears a dark top.",
+      "photoStyle": "Color studio portrait, softly lit, tightly grouped, mid-close framing, polished 1990s-style treatment.",
+      "setting": "Plain studio setup with a wrinkled fabric backdrop and no visible furniture or props.",
       "settingStrength": "weak"
     },
     {
       "source": 2,
       "filename": "Tears-for-Fears.jpg",
       "artist": "Tears for Fears",
-      "description": "Portrait of two older light-skinned men seated against a dark wall made of angled wood panels. The left man has very short gray hair, no visible facial hair, and wears a black short-sleeve polo; the right man is more prominent, with long wavy white hair, a full white beard and mustache, a dark burgundy jacket, and blue jeans, seated on a stool with one arm across his knee. Low-angle framing and controlled studio lighting create a formal contemporary portrait.",
-      "primarySubject": "Right seated man with long wavy white hair, full white beard, burgundy jacket, and jeans, positioned slightly closer to the camera.",
+      "description": "Two older light-skinned men pose in a dark studio-like interior against a black wall made of angled wood panels. The man on the left is slim, clean-shaven, with very short gray hair, wearing a black short-sleeve polo shirt, seated upright with hands resting low. The man on the right is more prominent, with long wavy white hair, a full white beard and mustache, and a serious expression, seated on a stool in a dark burgundy leather jacket and blue jeans, one arm folded across his lap. The image is crisply lit from the front-left, with deep shadows in the background.",
+      "primarySubject": "Right-side older man with long wavy white hair, full white beard, burgundy leather jacket, and jeans, seated on a stool and facing forward.",
       "visiblePeople": [
-        "Light-skinned older man with very short gray hair, clean-shaven, wearing a black polo shirt.",
-        "Light-skinned older man with long wavy white hair, full white beard and mustache, wearing a burgundy jacket and blue jeans."
+        "Slim older man with very short gray hair and clean-shaven face",
+        "Older man with long wavy white hair and full white beard"
       ],
-      "wardrobe": "Black polo shirt on the left; burgundy jacket over dark shirt with blue jeans on the right.",
-      "photoStyle": "Contemporary studio-style portrait with low-angle framing, crisp detail, and dramatic dark backdrop.",
-      "setting": "Interior portrait setting with a dark geometric wood-paneled wall and a visible stool seat beneath the right subject.",
+      "wardrobe": "Black polo shirt on the left; dark burgundy leather jacket and blue jeans on the right.",
+      "photoStyle": "Contemporary color portrait, controlled studio lighting, seated pose, medium full framing.",
+      "setting": "Dark interior or studio with a black geometric wood-paneled wall and a visible stool.",
       "settingStrength": "moderate"
     },
     {
       "source": 3,
       "filename": "Talk-Talk.jpg",
       "artist": "Talk Talk",
-      "description": "Three light-skinned young men stand in a dark setting with saturated blue and magenta lighting. The center figure faces forward and is most prominent, wearing round dark sunglasses, layered blue shirts, a scarf, and a black leather jacket with hands in pockets. The left figure is shown in side profile with medium brown hair and tinted round glasses; the right figure is also in profile, with dark slicked hair and a patterned shirt tucked into jeans. The image has a stylized, glossy 1980s promotional look.",
-      "primarySubject": "Center man facing forward with light brown hair covering part of the forehead, round dark sunglasses, scarf, layered blue shirt, and black leather jacket.",
+      "description": "Three light-skinned young men stand in a dark space under colored stage-like lighting. The central figure faces forward and is most prominent, wearing round dark sunglasses, a dark leather jacket over a blue denim layer with a popped light collar, and a dark scarf with small dots; his hands are in his jacket pockets. The man on the left is shown in side profile with medium brown hair and tinted round glasses, wearing a dark jacket over a red shirt. The man on the right is also in side profile with short dark hair, wearing a brown patterned shirt tucked into jeans. Bright yellow and magenta highlights fall on their hair and faces, with blue vertical light beams behind them.",
+      "primarySubject": "Center adult wearing round dark sunglasses, a dark leather jacket layered over denim with an upturned pale collar, facing the camera with hands in pockets.",
       "visiblePeople": [
-        "Light-skinned man at left in side profile with medium brown hair and tinted round glasses.",
-        "Light-skinned man in the center with straight light brown hair, round dark sunglasses, and a leather jacket.",
-        "Light-skinned man at right in side profile with dark slicked hair and a patterned button-up shirt."
+        "Left-profile man with medium brown hair and tinted round glasses",
+        "Center man with shaggy light brown hair and dark round sunglasses",
+        "Right-profile man with short dark hair"
       ],
-      "wardrobe": "Black jacket over red shirt at left; center wears black leather jacket over layered blue shirt and scarf; right wears patterned brown shirt with blue jeans and belt.",
-      "photoStyle": "Stylized color portrait with theatrical colored lighting, dark background, and vintage glossy finish.",
-      "setting": "Dark studio or stage-like environment with little visible detail beyond colored light beams and black background.",
+      "wardrobe": "Dark jacket over red shirt at left; leather jacket over denim shirt and scarf at center; brown patterned button-up shirt and jeans at right.",
+      "photoStyle": "Color portrait with theatrical concert-style lighting, saturated blue, yellow, and magenta tones, medium full framing.",
+      "setting": "Dark indeterminate background with visible vertical blue light beams, suggesting a stage or stylized studio lighting setup.",
       "settingStrength": "weak"
     },
     {
       "source": 4,
       "filename": "The-Stone-Roses.jpg",
       "artist": "The Stone Roses",
-      "description": "Four young men pose closely against a seamless bright blue studio background. The front-center man with shaggy brown hair and pale skin looks directly at the camera; to his right, another pale-skinned man with long shaggy dark hair in a black shirt with white circular pattern leans in. At left, a man with short tight dark curls wears a teal turtleneck, and behind them a man with slicked-back hair leans over their shoulders from the top center. Even studio lighting and centered framing create a clean, high-key portrait.",
-      "primarySubject": "Front-center pale-skinned man with shaggy brown hair, large eyes, and a navy polo shirt with white piping, closest to the lens.",
+      "description": "Four young men are tightly grouped against a solid blue studio background. At left, a man with short dark curly hair and medium-light skin wears a teal turtleneck and looks directly at the camera. Behind center, a very pale man with slicked-back light brown hair leans forward between the others with a puckered expression. At right, a pale man with shaggy medium-brown hair and heavy bangs wears a black shirt with a white circular pattern and looks forward. In front center, a pale man with shaggy brown hair wears a navy polo shirt with white piping and faces the camera with parted lips. Their arms rest over each other’s shoulders in a compact pose.",
+      "primarySubject": "Front-center pale young man with shaggy brown hair, wide eyes, and a navy polo shirt with white piping, positioned closest to the camera.",
       "visiblePeople": [
-        "Man with short tight dark curls and medium-light skin wearing a teal turtleneck at left.",
-        "Pale-skinned man with slicked-back hair leaning forward from the top center.",
-        "Pale-skinned man front center with shaggy brown hair wearing a navy polo shirt.",
-        "Pale-skinned man at right with long shaggy dark hair wearing a black shirt with white circular pattern."
+        "Man with short dark curly hair in teal turtleneck",
+        "Very pale man with slicked-back hair leaning forward from the back",
+        "Pale man with shaggy bangs in patterned black shirt",
+        "Pale front-center man with shaggy brown hair in navy polo"
       ],
-      "wardrobe": "Teal turtleneck, dark long-sleeve top, navy polo with white trim, and black patterned button-up shirt.",
-      "photoStyle": "Clean studio group portrait with bright seamless background and even frontal lighting.",
-      "setting": "Minimal studio with a solid blue seamless backdrop and no visible props or furniture.",
+      "wardrobe": "Teal turtleneck, dark long-sleeve top, black patterned button-up shirt, and navy polo shirt with white trim.",
+      "photoStyle": "Color studio portrait, bright even lighting, close group composition, waist-up framing.",
+      "setting": "Plain solid blue seamless studio backdrop with no visible props or furniture.",
       "settingStrength": "weak"
     },
     {
       "source": 5,
       "filename": "A-Perfect-Circle.jpg",
       "artist": "A Perfect Circle",
-      "description": "Full-length studio portrait of five adults standing in a line before a mottled brown backdrop. The central figure is bald, light-skinned, and wears a structured black jacket; to the left stands a pale-skinned man with dark side-swept hair, and next to him an East Asian man with shoulder-length straight dark hair in a black suit with white shirt open at the collar. To the right stands a light-skinned adult with long wavy gray hair and round eyeglasses, and a light-skinned man with short light hair and a trimmed mustache in a dark suit. The lighting is subdued and formal, with dark coordinated clothing.",
-      "primarySubject": "Center adult with light skin, shaved head, clean-shaven face, and a structured black jacket, standing upright at the front of the lineup.",
+      "description": "Five adults stand in a line in front of a mottled brown textured studio backdrop. All wear dark formal or semi-formal clothing and face forward with serious expressions. From left to right: a pale man with shaggy dark hair in a black suit over a dark shirt; an East Asian man with shoulder-length straight black hair in a black suit and open white shirt; a bald pale man in the center wearing a structured black double-breasted jacket and black pants; a light-skinned person with long wavy gray hair and round glasses in a dark suit; and a light-skinned blond man with short hair and a mustache in a black suit. Full-body to three-quarter framing shows dark shoes and the studio floor.",
+      "primarySubject": "Center bald pale man in a structured black double-breasted jacket, standing straight with arms at his sides.",
       "visiblePeople": [
-        "Pale-skinned man with dark side-swept hair wearing a dark suit at far left.",
-        "East Asian man with shoulder-length straight dark hair wearing a black suit and open-collar white shirt.",
-        "Light-skinned bald man in the center wearing a structured black jacket.",
-        "Light-skinned adult with long wavy gray hair and round glasses wearing a black suit.",
-        "Light-skinned man with short light hair and a trimmed mustache wearing a dark suit at far right."
+        "Pale man with shaggy dark hair",
+        "East Asian man with shoulder-length straight black hair",
+        "Bald pale man at center",
+        "Light-skinned person with long wavy gray hair and round glasses",
+        "Light-skinned blond man with short hair and mustache"
       ],
-      "wardrobe": "All-black tailored suits or jackets, with one open-collar white shirt and otherwise dark shirts; black boots and dress shoes visible.",
-      "photoStyle": "Formal full-length studio band portrait with subdued dramatic lighting and muted earth-tone backdrop.",
-      "setting": "Studio setting with a mottled brown painted backdrop and dark floor surface.",
+      "wardrobe": "Mostly black suits and dark shirts; one open-collar white shirt under a black jacket.",
+      "photoStyle": "Formal color studio portrait, even directional lighting, full-length group arrangement.",
+      "setting": "Studio with a mottled brown painted backdrop and dark floor covering visible beneath the group.",
       "settingStrength": "moderate"
     },
     {
       "source": 6,
       "filename": "Depeche-Mode.jpg",
       "artist": "Depeche Mode",
-      "description": "Minimal studio portrait of two older light-skinned men against a plain white background. The left man sits on a metal stool wearing a black pinstriped blazer over a dark shirt, with short curly gray hair and no facial hair. The right man stands beside him in a dark suit and black shirt, with slicked-back gray hair, dark sunglasses, and one arm resting across the seated man's shoulder; rings and a bracelet are visible. Bright even lighting and sparse composition emphasize the figures.",
-      "primarySubject": "Standing man at right with slicked-back gray hair, dark sunglasses, and a dark suit, resting one arm on the seated man's shoulder.",
+      "description": "Two older light-skinned men pose against a clean white studio background. The man on the left sits on a metal stool, with short curly gray hair, a lined face, and no facial hair, wearing a black pinstriped blazer over a dark shirt and black pants. The taller man on the right stands in a dark suit and dark shirt, with slicked-back gray hair, black sunglasses, and rings on his hand; he rests one arm casually on the seated man’s shoulder. Lighting is bright and even, creating a minimalist, high-contrast portrait.",
+      "primarySubject": "Standing man on the right with slicked-back gray hair, black sunglasses, dark suit, and one arm resting on the seated man's shoulder.",
       "visiblePeople": [
-        "Light-skinned older man with short curly gray hair, clean-shaven, seated on a stool in a black pinstriped blazer.",
-        "Light-skinned older man with slicked-back gray hair, dark sunglasses, and a dark suit, standing at right."
+        "Seated older man with short curly gray hair",
+        "Standing older man with slicked-back gray hair and black sunglasses"
       ],
-      "wardrobe": "Black pinstriped blazer and dark trousers on the seated man; dark suit and black shirt on the standing man, with rings and bracelet.",
-      "photoStyle": "Minimal high-key studio portrait with clean white background and sharp contemporary finish.",
-      "setting": "Plain studio with white seamless backdrop and a simple metal stool.",
+      "wardrobe": "Black pinstriped blazer and dark trousers on the left; dark tailored suit with dark shirt on the right; visible rings and bracelet.",
+      "photoStyle": "Minimalist studio portrait, bright even lighting, clean modern editorial look.",
+      "setting": "White seamless studio backdrop with a simple metal stool.",
       "settingStrength": "weak"
     },
     {
       "source": 7,
       "filename": "Yazoo.jpg",
       "artist": "Yazoo",
-      "description": "Moody two-person portrait in warm golden light with strong vertical light bands on the wall behind. At left, a tall light-skinned man with short spiked blond hair and a long fringe covering one eye stands holding a cluster of glowing string lights, wearing an oversized plaid jacket. At right, a light-skinned woman with short reddish cropped hair and heavy eye makeup stands beside a keyboard, wearing a dark top and looking downward. The image is softly focused and stylized.",
-      "primarySubject": "Tall light-skinned man at left with short spiked blond hair and long fringe over one eye, holding glowing string lights and wearing a plaid jacket.",
+      "description": "A stylized duo portrait shows two light-skinned adults in a softly glowing studio environment with vertical bands of warm light behind them. On the left, a tall slim man with very short sides and a long blond fringe covering one eye wears an oversized green-and-blue plaid jacket and holds a cluster of glowing string lights in both hands. On the right, a woman with short spiky reddish hair, strong eye makeup, and a serious downward gaze wears a black top and stands beside an electronic keyboard visible across the lower edge of the frame. The image has a soft-focus, hazy, golden-tinted photographic treatment.",
+      "primarySubject": "Tall slim man at left with blond fringe covering one eye, wearing a plaid jacket and holding glowing string lights.",
       "visiblePeople": [
-        "Light-skinned tall man with short spiked blond hair and long fringe covering one eye, holding glowing lights.",
-        "Light-skinned woman with short reddish hair, strong eye makeup, and dark clothing, standing beside a keyboard."
+        "Tall slim man with blond fringe over one eye",
+        "Woman with short spiky reddish hair and heavy eye makeup"
       ],
-      "wardrobe": "Oversized plaid jacket on the man; dark high-neck or dark top on the woman.",
-      "photoStyle": "Soft-focus, atmospheric portrait with warm tinted lighting and an 1980s stylized music-photo look.",
-      "setting": "Dim interior or studio space with plain walls, vertical bands of projected or directional light, and a keyboard in the foreground.",
+      "wardrobe": "Oversized plaid jacket on the left; black top on the right.",
+      "photoStyle": "Soft-focus color portrait with warm haze, dramatic backlighting, and an 1980s synth-pop studio aesthetic.",
+      "setting": "Dim studio-like space with vertical beams of warm light and an electronic keyboard in the foreground.",
       "settingStrength": "moderate"
     },
     {
       "source": 8,
       "filename": "Dire-Straits.jpg",
       "artist": "Dire Straits",
-      "description": "Studio group portrait of five light-skinned men arranged sitting and crouching against a plain gray backdrop. The central front man sits cross-legged, smiling, and holds a reflective metal resonator guitar; around him are four men with short to medium brown hair wearing casual jackets, collared shirts, jeans, and white sneakers. Expressions are relaxed and friendly, and the lighting is even and straightforward. The image has a clean archival promotional-photo appearance.",
-      "primarySubject": "Front-center smiling man with short light brown hair, wearing a red western-style shirt and holding a shiny metal resonator guitar across his lap.",
+      "description": "Five light-skinned men pose in a studio against a plain gray backdrop. One man sits cross-legged in front center holding a large metal resonator guitar across his lap, smiling at the camera; he has thinning light hair and wears a black-and-red western-style shirt and jeans. To his left on the floor, another man in a striped shirt and jeans smiles broadly. Behind them are three more men: at far left a man in a light blazer and dark pants, near center a man leaning on his hand in a dark jacket, and at upper center-right a man with thick curly dark hair in layered casual clothing. At far right, another man in a loose white jacket and jeans sits on a low block with arms resting on his knees. Lighting is even and straightforward.",
+      "primarySubject": "Front-center seated man with thinning light hair, smiling, wearing a black-and-red western shirt and holding a metal resonator guitar across his lap.",
       "visiblePeople": [
-        "Light-skinned man at upper left with short brown hair in a textured light blazer.",
-        "Light-skinned man at lower left with receding dark hair and striped shirt, seated on the floor.",
-        "Light-skinned man near center back with short light brown hair resting his chin on one hand.",
-        "Light-skinned curly-haired man at upper center-right in a dark jacket over a white shirt.",
-        "Light-skinned man at right with medium brown hair in a white jacket, seated beside the guitar."
+        "Man in light blazer seated at far left rear",
+        "Smiling man in striped shirt seated on floor at front left",
+        "Man in dark jacket leaning on his hand at rear center",
+        "Man with thick curly dark hair at rear center-right",
+        "Man in white jacket seated at far right"
       ],
-      "wardrobe": "Casual 1980s-style mix of blazers, striped shirt, red western-style shirt, white jacket, jeans, and white sneakers.",
-      "photoStyle": "Straightforward studio publicity portrait with even lighting and crisp archival color.",
-      "setting": "Simple studio with seamless gray background and floor, plus a low white block seat at right.",
+      "wardrobe": "Casual 1980s-style clothing including blazer, striped shirt, dark jacket, layered tops, white jacket, jeans, and white sneakers; front-center subject holds a metal-bodied guitar.",
+      "photoStyle": "Straightforward color studio group portrait, even lighting, medium-wide framing.",
+      "setting": "Plain gray studio backdrop and floor with a low white block used as a seat.",
       "settingStrength": "weak"
     },
     {
       "source": 9,
       "filename": "Tennis.jpg",
       "artist": "Tennis",
-      "description": "Two adults pose closely against a dark-to-blue gradient background with a thin horizontal pinkish light band behind them. The left subject is a light-skinned woman with short tight blonde curls, wearing an off-the-shoulder blue sweater and white pants, leaning her head and hand against the man beside her. The right subject is a light-skinned man with a blond bowl haircut, faint facial hair, a white T-shirt, and light trousers, standing with one arm around her. The lighting is soft and cinematic with a modern color-staged look.",
-      "primarySubject": "Light-skinned woman with short tight blonde curls in an off-the-shoulder blue sweater, leaning her head against the man while facing the camera.",
+      "description": "A two-person portrait shows a light-skinned woman and a light-skinned man standing closely together against a dark background that fades to blue with a horizontal pinkish line. The woman, at left, has short dense blonde curls and wears an off-the-shoulder ribbed blue sweater and white bottoms; she leans into the man with one hand against his chest and looks directly at the camera. The taller man, at right, has straight blond hair in a bowl-like cut, faint facial hair, and wears a plain white T-shirt tucked into light trousers; his arm wraps around her back and he faces forward with a neutral expression. The lighting is warm on their skin with a moody stage-like backdrop.",
+      "primarySubject": "Taller man on the right with straight blond bowl-cut hair, faint facial hair, white T-shirt, and arm around the woman beside him.",
       "visiblePeople": [
-        "Light-skinned woman with short tight blonde curls wearing an off-the-shoulder blue sweater and white pants.",
-        "Light-skinned man with blond bowl-cut hair and faint facial hair wearing a white T-shirt and light trousers."
+        "Woman with short tight blonde curls in off-shoulder blue sweater",
+        "Taller man with straight blond bowl-cut hair in white T-shirt"
       ],
-      "wardrobe": "Blue off-the-shoulder sweater with white pants on the woman; plain white T-shirt with light trousers on the man.",
-      "photoStyle": "Modern intimate duo portrait with soft cinematic lighting and color-gradient backdrop.",
-      "setting": "Studio setup with black upper background fading to blue and a horizontal illuminated band behind the pair.",
+      "wardrobe": "Off-the-shoulder blue ribbed sweater and white bottoms on the woman; plain white T-shirt and light trousers on the man.",
+      "photoStyle": "Color portrait with theatrical low-key background, warm subject lighting, and intimate posed composition.",
+      "setting": "Dark studio or stage-like backdrop with a blue gradient and a horizontal pinkish band, no visible furniture.",
       "settingStrength": "weak"
     },
     {
       "source": 10,
       "filename": "Kraftwerk.jpg",
       "artist": "Kraftwerk",
-      "description": "Four human-like mannequin figures stand in a line inside a modern interior corridor. Each figure has a pale molded face, short dark or painted hair, and identical red long-sleeve shirts, black ties, gray trousers, and black belts; the front-right figure is closest and most prominent. The space has concrete columns, a curved white wall, wood or dark ceiling panels, and long linear ceiling lights receding into the distance. Warm interior lighting creates strong highlights on the mannequins and floor.",
-      "primarySubject": "No visible adult; front-right mannequin figure with a pale molded face, short dark painted hair, red shirt, black tie, and gray trousers is most prominent.",
-      "visiblePeople": [],
-      "wardrobe": "Four matching outfits on mannequin figures: red long-sleeve shirts, black ties, gray trousers, and black belts.",
-      "photoStyle": "Staged interior photograph with dramatic perspective, warm lighting, and sharp modern architectural composition.",
-      "setting": "Modern corridor or lobby interior with concrete columns, smooth floor, curved white wall, dark ceiling, and suspended linear light fixtures creating depth.",
+      "description": "Four human-like male figures stand in a receding line inside a modern corridor. Each figure has pale skin, short dark or shaved hair, blank expression, and wears an identical bright red long-sleeve shirt, black tie, gray trousers, and black belt. The front-right figure is closest and most sharply lit; the others stand behind him at regular intervals. The hallway has concrete columns on the left, a curved white wall on the right, a dark ceiling, and long curved strip lights overhead. The image has a staged, futuristic, highly controlled look.",
+      "primarySubject": "Front-right human-like male figure with pale face, short dark hair, red shirt, black tie, and gray trousers, standing closest to the camera.",
+      "visiblePeople": [
+        "Front-right pale male figure with short dark hair",
+        "Second pale male figure with shaved or very short hair",
+        "Third pale male figure with very short dark hair",
+        "Rear pale male figure with short dark hair"
+      ],
+      "wardrobe": "Matching red dress shirts, black ties, gray trousers, and black belts on all four figures.",
+      "photoStyle": "Color architectural portrait with dramatic linear perspective, warm directional lighting, and a staged futuristic aesthetic.",
+      "setting": "Modern interior corridor with concrete columns, polished floor, curved white wall, dark ceiling, and suspended curved strip lighting extending into the distance.",
       "settingStrength": "strong"
     }
   ],
   "hint": null,
   "composeBackend": "nano-banana-pro",
   "model": "fal-ai/nano-banana-pro/edit",
-  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Modern corridor or lobby interior with concrete columns, smooth floor, curved white wall, dark ceiling, and suspended linear light fixtures creating depth.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. Create a close editorial group photograph in the physical setting visible in attached reference image 1: Modern corridor or lobby interior with concrete columns, smooth floor, curved white wall, dark ceiling, and suspended linear light fixtures creating depth.. Preserve its recognisable architecture, surfaces, layout, lighting logic, and atmosphere, extending only what would plausibly continue just outside the original frame. Arrange the selected adults at varied depths with natural interaction, preserving each person’s reference appearance and individual styling. Use true-to-life colour, real skin texture, gentle film grain, and a medium-close composition in which every face is clear and detailed. Attached cast plan: Attached reference image 1: portray only the selected adult from source 10; placed naturally within the shared group. Attached reference image 2: portray only older light-skinned man with long wavy white hair, full white beard, burgundy jacket and jeans; seated on the stool at center-right, turned slightly left with one forearm resting across his knee. Attached reference image 3: portray only tall light-skinned man with short spiked blond hair and a long fringe over one eye, wearing an oversized plaid jacket; standing at far left, slightly behind the others, leaning forward into the group. Attached reference image 4: portray only light-skinned woman with short tight blonde curls, wearing an off-the-shoulder blue sweater and white pants; low in the foreground at left-center, perched on the floor or crouched with one shoulder angled toward the seated man. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Modern interior corridor with concrete columns, polished floor, curved white wall, dark ceiling, and suspended curved strip lighting extending into the distance.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. Photorealistic 16:9 group photograph in a modern interior corridor with repeating concrete columns on the left, a smooth curved white wall on the right, polished floor reflections, a dark ceiling, and long suspended curved strip lights receding into the distance; viewpoint at standing eye level, slightly off-center in the hallway, showing the front section clearly and extending the corridor naturally beyond the original frame. Four adults share a quiet in-between moment as if meeting mid-passage: in the foreground right, a pale man with short dark hair and a blank expression in a bright red long-sleeve shirt, black tie, gray trousers, and black belt stands closest to camera, turned slightly inward; at midground right-center, an older light-skinned man with long wavy white hair, a full white beard and mustache, a burgundy leather jacket, and blue jeans half-leans near the curved wall, watching the others; at midground left-center, a light-skinned woman with short spiky reddish hair, strong eye makeup, and a black top stands with her head slightly lowered and attention angled across the group; in the background left by the concrete columns, a tall light-skinned blonde woman with long straight hair, red lipstick, and a dark top stands a step back, observing. Compose them in a staggered asymmetric cluster with clear depth, not a lineup, leaving breathing room in the corridor and using the architecture’s sweep to frame them; medium-wide editorial framing, moderate wide lens around 35mm, crisp detail with natural perspective and deep enough focus to keep all four readable. Light with the corridor’s warm directional practical glow and overhead strip lights, strongest on the front-right figure and falling softly across the others, with realistic shadowing and gentle floor reflections. Color treatment is clean, cinematic, and restrained, balancing vivid red against concrete gray, black, burgundy, and pale skin tones; mood tense, stylish, and watchful. Attached cast plan: Attached reference image 1: portray only the front-right pale male figure with short dark hair, blank expression, bright red shirt, black tie, and gray trousers; foreground right, closest to camera, turned slightly inward as the visual anchor. Attached reference image 2: portray only the older light-skinned man with long wavy white hair, full white beard, burgundy leather jacket, and jeans; midground right-center near the curved wall, half-leaning and looking toward the others. Attached reference image 3: portray only the light-skinned woman with short spiky reddish hair, strong eye makeup, and a black top; midground left-center between column side and center aisle, head angled down then slightly across toward the group. Attached reference image 4: portray only the light-skinned blonde woman with long straight hair and red lipstick, wearing a dark top; background left near the columns, standing taller and watching the exchange from a step back. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "reuseWeeks": 6,
+  "reuseBlocked": [],
+  "reuseRelaxed": [],
   "inputs": [
     "Kraftwerk.jpg",
     "Tears-for-Fears.jpg",
     "Yazoo.jpg",
-    "Tennis.jpg"
+    "The-Smashing-Pumpkins.jpg"
   ]
 }

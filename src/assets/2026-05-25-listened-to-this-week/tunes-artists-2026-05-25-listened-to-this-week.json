@@ -6,225 +6,229 @@
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Garden-side bottle pass in late sun",
-  "creativeDirection": "A natural-light color snapshot with casual, mid-conversation body language, slight vintage softness, and asymmetrical grouping in the garden setting.",
-  "scene": "A loose candid cluster on the grass directly in front of the tall pampas clump, with the shrubs and trees continuing outward at the edges; one person stands nearest center holding a dark bottle, one leans slightly apart near the plants, one crouches lower in the grass, and one stands back in relaxed authority.",
+  "concept": "Late-afternoon pause by the pampas grass",
+  "creativeDirection": "A warm, slightly loose outdoor color portrait that feels like an informal real moment rather than a formal lineup.",
+  "scene": "A shared moment on the grass in front of the tall ornamental pampas clump, with the garden foliage continuing naturally around it; one person offers a bottle forward, another stands apart in profile tension, another lingers with a microphone in hand, and another sits lower as the group settles into an unguarded pause.",
   "locationSource": 4,
-  "locationSetting": "Garden or yard area with grass underfoot, dense shrubs and trees behind, and a large clump of tall pampas-like grass as the main backdrop.",
-  "locationEvidence": "Bright outdoor yard with visible grass underfoot and a distinctive dense clump of tall feathery pampas-like plants centered against shrubs and trees in direct late-day sun.",
+  "locationSetting": "Garden or yard with green grass, dense shrubs and trees, and a large clump of tall pampas-like ornamental grass behind the group.",
+  "locationEvidence": "Warm direct sunlight falls on a grassy yard with a large dense clump of tall pampas-like ornamental grass centered behind the group, with shrubs and trees enclosing the garden space.",
   "locationReference": 1,
   "locationInput": "Flowered-Up.jpg",
   "cast": [
     {
       "source": 4,
-      "person": "light-skinned man with short dark hair in a pale T-shirt and dark trousers, holding a dark bottle",
-      "placement": "near center foreground, half-turned toward camera, casually offering or lowering the bottle"
+      "person": "light-skinned dark-haired man in a pale T-shirt holding a dark bottle",
+      "placement": "front-center, angled slightly toward camera, extending the bottle loosely at waist height"
+    },
+    {
+      "source": 5,
+      "person": "light-skinned man with shaggy shoulder-length dark hair, light stubble, and a shiny patterned shirt",
+      "placement": "right side, half-turned inward, standing relaxed with microphone lowered in one hand"
     },
     {
       "source": 6,
-      "person": "medium-brown-skinned man with slicked high dark hair, pronounced eye makeup, and a dark embellished high-collared jacket",
-      "placement": "left of center, slightly closer to the pampas, angled sharply with alert sideways glance"
+      "person": "medium-skinned man with high styled dark hair, small mustache, dramatic eye makeup, and a high-collared dark jacket",
+      "placement": "left side near the pampas grass, upright and watchful, head turned sideways"
     },
     {
       "source": 9,
-      "person": "older light-skinned man with slicked-back gray hair, dark sunglasses, and a dark tailored suit",
-      "placement": "right-rear, standing relaxed with one hand in pocket, watching the others"
-    },
-    {
-      "source": 10,
-      "person": "light-skinned man with very long straight light brown hair, full beard and moustache, amber-tinted glasses, and a partly open plaid shirt",
-      "placement": "front right, crouched low or seated on the grass with knees up, anchoring the foreground"
+      "person": "taller light-skinned man with slicked-back gray hair, dark sunglasses, dark tailored suit, and rings",
+      "placement": "lower right foreground, seated casually on the grass with one knee raised, looking toward camera"
     }
   ],
   "selection": [
     4,
+    5,
     6,
-    9,
-    10
+    9
   ],
   "palette": [
-    "sun-faded green",
-    "straw gold",
-    "warm cream",
-    "soft black",
-    "dusty plum"
+    "sun-warmed green",
+    "pale straw",
+    "soft gold",
+    "charcoal black",
+    "muted cream"
   ],
-  "mood": "relaxed, oddball, quietly magnetic",
+  "mood": "casual but charged",
   "artistSummaries": [
     {
       "source": 1,
       "filename": "The-Beat.jpg",
       "artist": "The Beat",
-      "description": "Black-and-white studio group portrait of five adults posed in a loose line with dance-like stances. A Black man in the center and four light-skinned men around him face the camera at varying angles. A graphic wall design of oversized musical notes curves behind them, and strong floor shadows extend toward the viewer.",
-      "primarySubject": "Light-skinned man near the front right-center with dark short hair, clean-shaven face, and a light checked blazer over a dark shirt, turned partly sideways toward the camera",
+      "description": "Black-and-white studio-style group photo of five adult men posed in a loose line, all appearing mid-step or dancing. The most prominent man stands front right, smiling broadly, wearing a dark hat, dark blazer, light narrow tie, slim trousers, and light shoes. Another man at front center-right has light skin, dark short hair styled up, and wears a patterned blazer over a dark shirt. A Black man stands center in a dark zip jacket and light trousers. A light-skinned man in a suit and dark turtleneck stands left of center. Far left, another light-skinned man leans inward in a dark jacket and cropped trousers with light sneakers. The background is a white wall with large painted musical staff lines and notes.",
+      "primarySubject": "The light-skinned man at front right wearing a dark brimmed hat, dark blazer, light skinny tie, slim trousers, and light shoes, smiling and angled toward camera.",
       "visiblePeople": [
-        "Far left: light-skinned man with short dark hair, slim build, leaning forward in a dark jacket and cropped trousers with light shoes",
-        "Left-center: light-skinned man with short dark hair, clean-shaven, wearing a light suit over a dark high-neck top",
-        "Center: Black man with short hair and moustache, wearing a dark jacket over a light collared shirt and light trousers",
-        "Right-center: light-skinned man with dark short hair, clean-shaven, in a light checked blazer and dark shirt",
-        "Far right: light-skinned man smiling broadly, wearing a dark brimmed hat, dark jacket, light narrow tie, and light shoes"
+        "light-skinned man in dark hat and blazer, smiling",
+        "light-skinned man with dark short styled hair in patterned blazer",
+        "Black man in dark zip jacket",
+        "light-skinned man in suit with dark turtleneck",
+        "light-skinned man leaning in from far left in dark jacket and light sneakers"
       ],
-      "wardrobe": "Tailored jackets, suit trousers, collared and high-neck tops, one narrow light tie, one brimmed hat, mixed dark and light shoes.",
-      "photoStyle": "High-contrast black-and-white posed studio portrait with graphic backdrop and full-body framing.",
-      "setting": "Minimal studio set with a plain light background illustrated by a sweeping musical-note mural and dark painted floor lines creating long shadows.",
+      "wardrobe": "Mixed smart and ska-style clothing: blazers, suit, turtleneck, zip jacket, narrow tie, slim trousers, and sneakers.",
+      "photoStyle": "Black-and-white, high-contrast posed group portrait with playful movement in full-to-three-quarter body framing.",
+      "setting": "Minimal studio-like backdrop with white floor and wall covered by oversized painted musical staff lines and notes; no furniture visible.",
       "settingStrength": "moderate"
     },
     {
       "source": 2,
       "filename": "Operation-Ivy.jpg",
       "artist": "Operation Ivy",
-      "description": "Black-and-white live performance photo in a crowded indoor venue. Three adult male performers are clearly visible in the foreground with instruments, while several audience members stand behind them in a dim room. The scene is energetic and tightly framed.",
-      "primarySubject": "Foreground left light-skinned man wearing a soft cap and open plaid shirt, holding an electric guitar close to the camera",
+      "description": "Black-and-white live performance photo in a crowded indoor venue. Four adult men are visible as performers, with additional audience members dimly visible behind them. Foreground left, a light-skinned man in a knit cap and open plaid shirt plays an electric guitar close to the camera. Foreground center-right, a light-skinned blond man with very short bleached hair and a backward cap leans forward holding a microphone low in one hand. At right, another light-skinned man bends over a bass guitar. A drum kit is partly visible at left rear with a drummer obscured behind it. The image is grainy and energetic.",
+      "primarySubject": "The light-skinned guitarist closest to the camera at left, wearing a knit cap and open plaid shirt, holding an electric guitar diagonally across his torso.",
       "visiblePeople": [
-        "Foreground left: light-skinned man with a soft cap over short hair, clean-shaven, playing electric guitar",
-        "Foreground center-right: light-skinned man with very short bleached hair under a backward cap, clean-shaven, bent forward holding a microphone",
-        "Right: light-skinned man in a cap and light T-shirt, bent over a bass guitar"
+        "light-skinned guitarist in knit cap and plaid shirt",
+        "light-skinned blond singer with backward cap holding microphone",
+        "light-skinned bassist bent over instrument at right",
+        "partly obscured drummer behind drum kit",
+        "several dim audience members in background"
       ],
-      "wardrobe": "Caps, open plaid shirt over a light top, dark button-up shirt, light T-shirt, jeans, casual stagewear.",
-      "photoStyle": "Grainy black-and-white candid concert photography with close perspective and motion-filled poses.",
-      "setting": "Small indoor performance space with drum kit at left, audience packed behind the band, dark walls, and minimal visible stage separation.",
+      "wardrobe": "Casual punk clothing: knit caps, open plaid shirt over T-shirt, dark button-up shirt, T-shirts, jeans.",
+      "photoStyle": "Black-and-white candid concert photography with grain, close range, and motion-filled composition.",
+      "setting": "Small indoor performance room with low ceiling, drum kit, electric guitars, standing crowd, dark walls, and tight floor space around the band.",
       "settingStrength": "strong"
     },
     {
       "source": 3,
       "filename": "Crash-Test-Dummies.jpg",
       "artist": "Crash Test Dummies",
-      "description": "Color studio group portrait of five adults against a smooth purple-to-pink gradient background. Two people are seated or crouched lower while three stand behind. Soft lighting gives the image a polished promotional look.",
-      "primarySubject": "Foreground left light-skinned man with long straight dark hair parted to one side, wearing a rust T-shirt under a black vest and looking directly at the camera",
+      "description": "Color studio portrait of five adults against a smooth pink-to-purple gradient backdrop. At front left, a light-skinned man with long straight dark hair wears a reddish T-shirt and black vest, facing camera with one hand in a pocket. Center, a light-skinned woman with long straight blonde hair wears a black dress and necklace, standing with arms folded. Back right, a tall light-skinned red-haired man in a black T-shirt stands slightly behind. Front bottom center, a light-skinned bald man with round eyeglasses and facial stubble wears a white T-shirt under a sleeveless plaid overshirt. Right front, a light-skinned man with long dark hair sits or crouches in a light T-shirt. Soft warm light creates gentle shadows.",
+      "primarySubject": "The light-skinned long-haired man at front left wearing a reddish T-shirt and black vest, closest to the camera and facing forward.",
       "visiblePeople": [
-        "Foreground left: light-skinned man with long straight dark hair, clean-shaven",
-        "Center back: light-skinned woman with long straight blonde hair, wearing a necklace",
-        "Back right: light-skinned man with short curly reddish hair, slim build",
-        "Front lower center: light-skinned bald man with round eyeglasses and close facial hair",
-        "Front right: light-skinned man with long dark hair, seated, clean-shaven"
+        "light-skinned man with long straight dark hair in reddish T-shirt and black vest",
+        "light-skinned woman with long blonde hair in black dress",
+        "tall light-skinned red-haired man in black T-shirt",
+        "light-skinned bald man with round glasses and stubble in white T-shirt and sleeveless plaid overshirt",
+        "light-skinned man with long dark hair seated at right in light T-shirt"
       ],
-      "wardrobe": "Dark and muted casual studio clothing: T-shirts, black dress or top, black vest, sleeveless plaid overshirt, necklace, round eyeglasses.",
-      "photoStyle": "Softly lit color studio portrait with gradient backdrop and arranged group composition.",
-      "setting": "Plain seamless studio background with purple-pink color wash and no furniture or location cues visible.",
+      "wardrobe": "Simple casual studio styling: T-shirts, black vest, black dress, necklace, sleeveless plaid overshirt.",
+      "photoStyle": "Soft-focus color studio portrait with gradient backdrop and arranged group pose.",
+      "setting": "Seamless studio background with pink-purple gradient and no visible props or furniture aside from a seat edge at right.",
       "settingStrength": "weak"
     },
     {
       "source": 4,
       "filename": "Flowered-Up.jpg",
       "artist": "Flowered Up",
-      "description": "Outdoor color snapshot of several adult men standing on grass in front of tall feathery ornamental plants. The framing cuts off two figures at the far left and far right edges. Bright natural light creates a casual candid feel.",
-      "primarySubject": "Center light-skinned man with short dark hair in a pale T-shirt, holding a dark bottle toward his mouth and facing the camera",
+      "description": "Outdoor color snapshot of five adults, though two are only partly visible at the far left and far right edges. Three light-skinned men stand fully visible on grass in front of tall feathery ornamental plants. The center man has short dark hair and holds a dark bottle toward the camera, wearing a pale T-shirt and dark trousers. To his left stands a taller man in a pale polo shirt and blue trousers. To his right stands a man in sunglasses, a light overshirt over a dark T-shirt, jeans, and white sneakers. The cropped figures at both edges also appear casually dressed and each holds or wears dark clothing elements. Sunlight is warm and direct.",
+      "primarySubject": "The light-skinned dark-haired man in the middle holding a dark bottle toward the camera, wearing a pale T-shirt and dark trousers.",
       "visiblePeople": [
-        "Far left edge: partially visible light-skinned man in a striped long-sleeve top and jeans",
-        "Left-center: light-skinned man with short light brown hair in a white polo shirt and blue trousers",
-        "Center: light-skinned man with short dark hair in a pale T-shirt and dark trousers, holding a bottle",
-        "Right-center: light-skinned man with medium-length hair, wearing dark sunglasses, a light overshirt, purple T-shirt, and jeans",
-        "Far right edge: partially visible light-skinned man in a dark jacket holding a bottle"
+        "partly visible adult at far left in striped top and jeans",
+        "light-skinned tall man in pale polo shirt and blue trousers",
+        "light-skinned dark-haired man in pale T-shirt holding bottle",
+        "light-skinned man in sunglasses with light overshirt, dark T-shirt, and jeans",
+        "partly visible adult at far right in dark jacket and light trousers holding a bottle"
       ],
-      "wardrobe": "Casual outdoor clothing including striped top, polo shirt, pale T-shirt, light overshirt, jeans, dark sunglasses.",
-      "photoStyle": "Natural-light color candid/group snapshot with partial cropping at the edges.",
-      "setting": "Garden or yard area with grass underfoot, dense shrubs and trees behind, and a large clump of tall pampas-like grass as the main backdrop.",
+      "wardrobe": "Casual outdoor clothes: striped shirt, polo shirt, pale T-shirt, overshirt, jeans, trousers, sneakers, sunglasses.",
+      "photoStyle": "Informal color outdoor group snapshot with natural light and slightly loose framing.",
+      "setting": "Garden or yard with green grass, dense shrubs and trees, and a large clump of tall pampas-like ornamental grass behind the group.",
       "settingStrength": "strong"
     },
     {
       "source": 5,
       "filename": "Primal-Scream.jpg",
       "artist": "Primal Scream",
-      "description": "Color close-up performance portrait of one adult male holding a microphone. The image is dominated by intense red-orange lighting with a large soft white circular light shape behind him on the left. The framing is from about chest up.",
-      "primarySubject": "Light-skinned man with shaggy shoulder-length dark hair and light stubble, holding a microphone near his mouth while facing forward",
+      "description": "Color close-up performance portrait of one adult man holding a microphone. He has light skin, shaggy shoulder-length dark hair, and light facial stubble. He wears a shiny patterned shirt with dark, white, and reddish sections. He faces slightly left of camera with a serious expression, microphone raised near his mouth. The background is a vivid red-orange field with a large soft white circular light area on the left, giving a stage or projection look.",
+      "primarySubject": "The single light-skinned man with shaggy shoulder-length dark hair and light stubble, holding a microphone near his mouth in front of a red-orange background.",
       "visiblePeople": [
-        "One light-skinned man with shaggy shoulder-length dark hair, light stubble, and a slim build"
+        "light-skinned man with shaggy shoulder-length dark hair and light stubble holding microphone"
       ],
-      "wardrobe": "Shiny patterned shirt in dark and warm tones.",
-      "photoStyle": "Saturated concert or stage portrait with dramatic colored lighting and shallow environmental detail.",
-      "setting": "Stage-like setting obscured by strong red-orange light wash and a large projected or lit white circle in the background; no other fixtures are clearly visible.",
+      "wardrobe": "Shiny patterned shirt with contrasting dark, white, and reddish panels.",
+      "photoStyle": "Saturated color concert or stage portrait with dramatic lighting and tight upper-body framing.",
+      "setting": "Minimal stage-like backdrop dominated by red-orange light or projection with one large out-of-focus white circular light shape; no other fixtures visible.",
       "settingStrength": "weak"
     },
     {
       "source": 6,
       "filename": "Prince.jpg",
       "artist": "Prince",
-      "description": "Black-and-white studio portrait of one adult shown from the chest up against a plain light background. He turns his head to the side with an alert expression, and the styling is sharp and graphic.",
-      "primarySubject": "Medium-brown-skinned man with a slim face, dark slicked high hair, pronounced eye makeup, and a beauty mark on his cheek, wearing a dark embellished jacket",
+      "description": "Black-and-white studio portrait of one adult man from chest up. He has medium skin tone, sharply defined eyebrows and eyes accentuated by makeup, a small mustache, and dark hair styled high and back from the forehead. He turns his head to the side and looks off-frame. He wears a dark high-collared jacket with decorative studs on one shoulder and large contrasting buttons or circular fasteners down the front. The background is plain and light.",
+      "primarySubject": "The single medium-skinned man with high styled dark hair, small mustache, dramatic eye makeup, and a studded high-collared dark jacket, looking sideways.",
       "visiblePeople": [
-        "One medium-brown-skinned man with slicked high dark hair, clean-shaven face, strong eye makeup, and a small cheek beauty mark"
+        "medium-skinned man with high styled dark hair, small mustache, and dramatic eye makeup"
       ],
-      "wardrobe": "Dark high-collared jacket with decorative studs and large buttons.",
-      "photoStyle": "High-contrast black-and-white studio fashion portrait with tight framing.",
-      "setting": "Plain seamless studio background with no visible props or location features.",
+      "wardrobe": "Dark high-collared embellished jacket with studs and large contrasting front buttons.",
+      "photoStyle": "Black-and-white high-contrast studio portrait with clean background and stylized fashion pose.",
+      "setting": "Plain light studio backdrop with no visible props or environmental details.",
       "settingStrength": "weak"
     },
     {
       "source": 7,
       "filename": "Radiohead.jpg",
       "artist": "Radiohead",
-      "description": "Color studio group portrait of five light-skinned adult men standing close together against a warm yellow-green background. The man in front is in side profile while the others look toward the camera. Soft focus and subdued lighting create a moody promotional image.",
-      "primarySubject": "Front-center man with short spiky dark hair, clean-shaven face, and black long-sleeve top, standing in profile with arms crossed",
+      "description": "Color studio group portrait of five light-skinned adult men arranged tightly against a yellow-green background. The most prominent man stands front center in profile with short spiky dark hair, wearing a black long-sleeve top and folded arms. Behind him at left is a tall man with short dark hair and trimmed facial hair in a dark shirt. Left center is a bald man in a dark jacket. Right center is a man with short dark hair and faint facial hair in a dark V-neck top. Far right is a man with medium-length dark hair falling across his forehead, wearing a light T-shirt. The lighting is soft and slightly diffuse.",
+      "primarySubject": "The front-center light-skinned man with short spiky dark hair, shown in side profile with folded arms and a black long-sleeve top.",
       "visiblePeople": [
-        "Far left: light-skinned man with short dark hair and trimmed facial hair, wearing a dark collared shirt",
-        "Left-center: light-skinned bald man in a dark jacket",
-        "Front-center: light-skinned man with short spiky dark hair, clean-shaven, in a black top",
-        "Right-center: light-skinned man with short dark hair, clean-shaven, in a black V-neck top",
-        "Far right: light-skinned man with straight medium-length dark hair partly covering his forehead, wearing a light T-shirt"
+        "light-skinned man with short spiky dark hair in black top",
+        "tall light-skinned man with short dark hair and trimmed facial hair in dark shirt",
+        "light-skinned bald man in dark jacket",
+        "light-skinned man with short dark hair and faint facial hair in dark V-neck top",
+        "light-skinned man with medium-length dark hair in light T-shirt"
       ],
-      "wardrobe": "Mostly dark casual tops and jackets, one light T-shirt.",
-      "photoStyle": "Softly lit color studio portrait with shallow depth and muted green-yellow background.",
-      "setting": "Plain studio backdrop with warm gradient lighting and no visible furniture or architectural details.",
+      "wardrobe": "Mostly dark minimal clothing: black tops, dark jacket, dark shirt, and one light T-shirt.",
+      "photoStyle": "Color studio band portrait with soft focus, compressed grouping, and warm yellow-green tint.",
+      "setting": "Plain studio backdrop in yellow-green with no visible props or furniture.",
       "settingStrength": "weak"
     },
     {
       "source": 8,
       "filename": "Split-Enz.jpg",
       "artist": "Split Enz",
-      "description": "Color studio group portrait of five light-skinned adult men in coordinated formal outfits and theatrical makeup. They are arranged in two rows against a bright yellow background, each striking a stylized pose. Hair is sculpted dramatically on several members.",
-      "primarySubject": "Top right man with sharply sculpted upward dark hair, angular face, and silver patterned suit, leaning forward and looking directly at the camera",
+      "description": "Color studio portrait of five light-skinned adult men in coordinated theatrical outfits against a bright yellow background. All wear matching pale suits with bold black abstract shapes, white shirts, and black ribbon ties. Their makeup includes bright green eye shadow and purple-toned lips. Hairstyles are sculpted and stylized: one at top right has sharply winged high hair, the left front man has thick curly dark hair, and others have slicked or neatly waved dark hair. The group is arranged in a layered composition with varied expressions, one man at upper left touching his head and others looking directly or sideways.",
+      "primarySubject": "The light-skinned man at top right with sharply winged high dark hair, heavy eye makeup, and a patterned pale suit, facing forward more prominently than the others.",
       "visiblePeople": [
-        "Top left: light-skinned man with receding dark hairline, touching his head",
-        "Top center: light-skinned man with short dark hair and visible green eye makeup in profile",
-        "Top right: light-skinned man with exaggerated upward-styled dark hair and narrow face",
-        "Bottom left: light-skinned man with thick curly dark hair and green eye makeup",
-        "Bottom center: light-skinned man with neatly combed dark hair and green eye makeup",
-        "Bottom right: light-skinned man with short dark hair and wide-eyed expression with green eye makeup"
+        "light-skinned man at top right with winged high dark hair and makeup",
+        "light-skinned man at upper center with dark waved hair and green eye shadow in profile",
+        "light-skinned man at upper left with receding dark hair touching his head",
+        "light-skinned man at front left with curly dark hair and makeup",
+        "light-skinned man at front center-right with slicked dark hair and makeup"
       ],
-      "wardrobe": "Matching silver suits with bold black abstract patterns, white shirts, and black ribbon ties; pronounced green eye makeup and styled hair.",
-      "photoStyle": "Highly stylized color studio portrait with theatrical fashion styling and bright seamless backdrop.",
-      "setting": "Plain bright yellow studio background with no props or environmental detail.",
+      "wardrobe": "Matching pale suits with black abstract patterns, white shirts, black ribbon ties, and theatrical makeup.",
+      "photoStyle": "Highly stylized color studio portrait with coordinated costumes, bright backdrop, and fashion-editorial presentation.",
+      "setting": "Flat bright yellow studio background with no visible props or environment.",
       "settingStrength": "weak"
     },
     {
       "source": 9,
       "filename": "Depeche-Mode.jpg",
       "artist": "Depeche Mode",
-      "description": "Color studio portrait of two older light-skinned men against a plain pale background. One sits on a stool while the other stands beside him with one arm resting on the seated man's shoulder. The composition is clean and formal.",
-      "primarySubject": "Standing right man with slicked-back gray hair, dark sunglasses, and a dark tailored suit, leaning one arm on the seated man's shoulder",
+      "description": "Color studio portrait of two light-skinned adult men against a plain white background. Left: a slim older man with short curly gray hair sits on a metal stool, wearing a black pinstriped blazer over a dark shirt and dark trousers, looking directly at the camera. Right: a taller man with slicked-back gray hair stands in a dark tailored suit and dark shirt, wearing dark sunglasses and several rings, resting one forearm casually on the seated man's shoulder. Both have neutral expressions and polished styling.",
+      "primarySubject": "The taller light-skinned man standing at right with slicked-back gray hair, dark sunglasses, dark tailored suit, and rings, resting his forearm on the seated man.",
       "visiblePeople": [
-        "Left seated: light-skinned older man with short curly gray hair, lined face, clean-shaven, wearing a dark pinstriped blazer and black shirt",
-        "Right standing: light-skinned older man with slicked-back gray hair, dark sunglasses, clean-shaven, wearing a dark suit and rings"
+        "light-skinned seated man with short curly gray hair in pinstriped blazer",
+        "light-skinned standing man with slicked-back gray hair, sunglasses, and dark suit"
       ],
-      "wardrobe": "Tailored dark suits, pinstriped blazer, black shirts, dark sunglasses, rings, bracelet.",
-      "photoStyle": "Minimalist modern color studio portrait with soft even lighting.",
-      "setting": "Plain seamless studio background with a simple round-seat stool and no other location features.",
+      "wardrobe": "Tailored dark suits, one pinstriped blazer, dark shirts, sunglasses, rings, and dressy minimalist styling.",
+      "photoStyle": "Clean color studio portrait with crisp lighting and formal pose.",
+      "setting": "Plain white studio backdrop with a simple metal stool and no other visible elements.",
       "settingStrength": "weak"
     },
     {
       "source": 10,
       "filename": "Steely-Dan.jpg",
       "artist": "Steely Dan",
-      "description": "Warm-toned outdoor portrait of two light-skinned adult men standing in front of dense leafy foliage with scattered bright flowers. Both face the camera in a relaxed stance, hands in pockets. The light appears soft and natural.",
-      "primarySubject": "Left man with very long straight hair, full beard and moustache, amber-tinted glasses, and a plaid shirt standing with hands in his pockets",
+      "description": "Warm-toned outdoor portrait of two light-skinned adult men standing in front of dense foliage with pink flowers. Left: a taller man with very long straight hair, full beard and mustache, and tinted aviator-style glasses wears a light plaid button-up shirt tucked into jeans with a large ornate belt buckle, hands in pockets. Right: a man with short curly dark hair wears dark aviator sunglasses, a dark leather jacket over a dark shirt, and light jeans, also with hands in pockets. The framing is mid-length and relaxed.",
+      "primarySubject": "The taller light-skinned man at left with very long straight hair, full beard, tinted glasses, plaid shirt, jeans, and a large ornate belt buckle.",
       "visiblePeople": [
-        "Left: light-skinned man with very long straight light brown hair, full beard and moustache, amber-tinted glasses",
-        "Right: light-skinned man with curly dark hair, clean-shaven, wearing dark aviator-style sunglasses"
+        "light-skinned taller man with very long straight hair, full beard, tinted glasses, plaid shirt, and jeans",
+        "light-skinned man with short curly dark hair, dark aviator sunglasses, leather jacket, and light jeans"
       ],
-      "wardrobe": "Plaid button-up shirt partly open at the collar, jeans, large belt buckle; dark leather jacket over a dark top with light jeans; both wearing sunglasses or tinted glasses.",
+      "wardrobe": "Plaid button-up shirt, jeans, large belt buckle, tinted glasses, dark leather jacket, dark shirt, light jeans, aviator sunglasses.",
       "photoStyle": "Warm color outdoor portrait with slightly soft vintage look.",
-      "setting": "Garden or courtyard edge with dense vine-covered foliage and clusters of bright flowers forming the backdrop; ground level is mostly out of frame.",
-      "settingStrength": "moderate"
+      "setting": "Outdoor garden-like area with dense leafy bushes or vines and scattered bright pink flowers; dark shaded background behind the foliage.",
+      "settingStrength": "strong"
     }
   ],
   "hint": null,
   "composeBackend": "nano-banana-pro",
   "model": "fal-ai/nano-banana-pro/edit",
-  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Garden or yard area with grass underfoot, dense shrubs and trees behind, and a large clump of tall pampas-like grass as the main backdrop.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A candid outdoor group photograph on a grassy yard in front of a tall dense clump of feathery pampas grass, with leafy shrubs and trees naturally continuing beyond it at the edges; photographed at eye level in warm late-afternoon sun. Four adults share an in-between moment: a short-haired light-skinned man in a pale T-shirt and dark trousers stands near center foreground loosely lowering a dark bottle after a sip; a medium-brown-skinned man with slicked high dark hair, dramatic eye makeup, and a dark embellished high-collared jacket stands just left of him near the pampas, body angled and eyes cutting sideways; an older light-skinned man with slicked-back gray hair, dark sunglasses, and a dark suit stands slightly behind on the right with calm detached posture; a light-skinned man with very long straight light brown hair, full beard, amber-tinted glasses, and an open-collar plaid shirt crouches low in the front right grass, relaxed and grounded. Asymmetrical composition with layered depth and varied heights, not a lineup, slight edge crop feel, 35mm snapshot lens character with mild vintage softness and enough depth to keep all four clear. Use the real lighting logic of direct warm sun with gentle shadow fall on the grass and plants. Warm natural color with slightly faded film tones, relaxed and quietly magnetic mood. Attached cast plan: Attached reference image 1: portray only light-skinned man with short dark hair in a pale T-shirt and dark trousers, holding a dark bottle; near center foreground, half-turned toward camera, casually offering or lowering the bottle. Attached reference image 2: portray only medium-brown-skinned man with slicked high dark hair, pronounced eye makeup, and a dark embellished high-collared jacket; left of center, slightly closer to the pampas, angled sharply with alert sideways glance. Attached reference image 3: portray only older light-skinned man with slicked-back gray hair, dark sunglasses, and a dark tailored suit; right-rear, standing relaxed with one hand in pocket, watching the others. Attached reference image 4: portray only light-skinned man with very long straight light brown hair, full beard and moustache, amber-tinted glasses, and a partly open plaid shirt; front right, crouched low or seated on the grass with knees up, anchoring the foreground. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Garden or yard with green grass, dense shrubs and trees, and a large clump of tall pampas-like ornamental grass behind the group.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. In a sunlit garden yard, photograph four adults on grass directly in front of a large clump of tall feathery pampas-like ornamental grass, with dense shrubs and trees naturally enclosing the background; shoot from a standing eye-level viewpoint slightly back from the group so the plants and lawn remain clearly visible. Front-center, a light-skinned dark-haired man in a pale T-shirt and dark trousers loosely extends a dark bottle toward the camera; at left, a medium-skinned man with high swept-back dark hair, a small mustache, dramatic eye makeup, and a dark high-collared embellished jacket stands upright near the grass with his head turned sideways; at right, a light-skinned man with shaggy shoulder-length dark hair, light stubble, and a shiny patterned shirt stands half-turned inward with a microphone lowered in one hand; lower right foreground, a taller light-skinned gray-haired man in dark sunglasses and a dark tailored suit sits casually on the grass with one knee up, rings visible, looking toward camera. Keep them in varied depths and postures, interacting through glances and body orientation rather than posing as a straight lineup. Use a slightly loose mid-wide 16:9 composition with natural spacing, mild vintage softness, and a normal-to-slightly-wide lens around 35mm. Light with warm direct late-afternoon sun consistent with the garden snapshot, with soft natural shadows and no artificial stage lighting. Use warm, natural color with sun-faded greens and pale straw tones, creating a candid, calm but faintly charged mood. Attached cast plan: Attached reference image 1: portray only light-skinned dark-haired man in a pale T-shirt holding a dark bottle; front-center, angled slightly toward camera, extending the bottle loosely at waist height. Attached reference image 2: portray only light-skinned man with shaggy shoulder-length dark hair, light stubble, and a shiny patterned shirt; right side, half-turned inward, standing relaxed with microphone lowered in one hand. Attached reference image 3: portray only medium-skinned man with high styled dark hair, small mustache, dramatic eye makeup, and a high-collared dark jacket; left side near the pampas grass, upright and watchful, head turned sideways. Attached reference image 4: portray only taller light-skinned man with slicked-back gray hair, dark sunglasses, dark tailored suit, and rings; lower right foreground, seated casually on the grass with one knee raised, looking toward camera. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "reuseWeeks": 6,
+  "reuseBlocked": [],
+  "reuseRelaxed": [],
   "inputs": [
     "Flowered-Up.jpg",
+    "Primal-Scream.jpg",
     "Prince.jpg",
-    "Depeche-Mode.jpg",
-    "Steely-Dan.jpg"
+    "Depeche-Mode.jpg"
   ]
 }

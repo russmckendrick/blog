@@ -6,29 +6,29 @@
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Mid-song cue beneath the light fan",
-  "creativeDirection": "A live-performance photograph from the audience viewpoint, capturing a candid onstage interaction with dramatic concert lighting and layered depth.",
-  "scene": "Use the indoor theater stage from source 1 as the only location, preserving the proscenium setup, overhead truss, haze, vertical LED light tubes, mic stand at center, backline gear, drum riser, and the dark seated audience at the bottom edge; depict a shared moment during a song where the three performers briefly lock into one cue rather than posing.",
+  "concept": "Side-stage pause under fading beams",
+  "creativeDirection": "A candid onstage group portrait shot from audience-left, using the concert photo’s dramatic beam-lit haze and the tighter portraits’ direct, intimate presence.",
+  "scene": "On the same theater stage, photographed from audience-left at about waist height, with the central microphone area, drum riser, LED light bars, floor monitors, amplifiers, overhead truss, haze, and the small disco ball all still visible; the empty dark auditorium can fall away beyond the stage edge without showing other people.",
   "locationSource": 1,
-  "locationSetting": "Indoor music venue or theater with a proscenium-style stage, overhead lighting truss, multiple spotlights, haze effects, vertical LED-style light tubes, instrument stands, amplifiers, drum riser, and a seated audience filling the foreground.",
-  "locationEvidence": "Indoor theater stage clearly visible with overhead lighting truss, fanned white spotlights through haze, vertical LED light tubes along the stage front, mic stand, drum riser, amps, and a seated audience in dark foreground silhouette.",
+  "locationSetting": "Indoor performance venue with a proscenium-style stage, overhead lighting truss, multiple hanging stage lights, a small disco ball above center, vertical LED light bars along the stage front and sides, drum riser, amplifiers, keyboards on stands, microphone stands, floor monitors, and a large seated audience in front. The backdrop is dark and partially obscured by light beams and haze.",
+  "locationEvidence": "The photo clearly establishes an indoor theater stage with a proscenium layout, overhead lighting truss, converging white spot beams in haze, vertical LED light bars, drum riser, mic stands, floor monitors, amplifiers, and a small disco ball above center.",
   "locationReference": 1,
   "locationInput": "Big-Big-Train.jpg",
   "cast": [
     {
       "source": 1,
-      "person": "light-skinned adult man with very short or shaved hair, average build, wearing a light jacket and dark trousers",
-      "placement": "center stage at the microphone stand, leaning slightly toward the others as if singing or giving a cue"
+      "person": "light-skinned adult singer in a light jacket and dark trousers",
+      "placement": "near center stage at the main mic stand, turned slightly toward the others with one hand resting on the stand"
     },
     {
       "source": 2,
-      "person": "fair-skinned adult woman with long auburn hair, cat-eye glasses, dark top, and short necklace",
-      "placement": "front right of center, turned partly inward toward the singer, one step forward from the backline"
+      "person": "man with very short dark hair, salt-and-pepper goatee, mirrored aviator sunglasses, and a white collared shirt",
+      "placement": "foreground left, seated casually on a floor monitor at the stage edge, angled inward toward center"
     },
     {
       "source": 3,
-      "person": "light- to medium-skinned adult man with closely cropped hair, salt-and-pepper beard, oversized reflective aviator sunglasses, and a white collared shirt",
-      "placement": "left of center near a keyboard or amp area, slightly behind the singer, looking across toward the group"
+      "person": "fair-skinned woman with long wavy auburn hair, patterned cat-eye glasses, and a dark long-sleeved top",
+      "placement": "mid-right near the LED bars, leaning lightly back toward a riser and looking across to the singer"
     }
   ],
   "selection": [
@@ -37,72 +37,79 @@
     3
   ],
   "palette": [
-    "white spotlight beams",
+    "white beam light",
     "charcoal black",
-    "electric blue",
-    "magenta-violet",
-    "warm skin tones",
-    "soft metallic silver"
+    "steel gray",
+    "electric violet",
+    "soft amber skin tones"
   ],
-  "mood": "charged, focused, cinematic",
+  "mood": "intimate, watchful, after-the-noise calm",
   "artistSummaries": [
     {
       "source": 1,
       "filename": "Big-Big-Train.jpg",
       "artist": "Big Big Train",
-      "description": "Wide live concert photo of a band performing on an indoor stage before a seated audience. Eight adults are visible across the stage, with the central singer most prominent at a microphone stand. Strong white spotlights fan downward through haze, with vertical colored light tubes along the front of the stage. Instruments visible include guitars, keyboards, drums, and a violin. The crowd appears in dark silhouette in the foreground.",
-      "primarySubject": "Adult male singer at center stage, light skin, average build, very short or shaved hair, standing at a microphone in a light-colored jacket and dark trousers.",
+      "description": "Wide live concert photo of a band performing on a theater stage before a seated audience. About eight adults are visible across the stage with instruments and microphones. The central singer stands at a mic stand under intense white spot beams; other performers play bass, keyboards, drums, guitar, and violin. Faces are small at this distance, but the group appears mostly light-skinned, with mixed hair lengths; one performer at right has long blond hair and another near center-right has long light brown hair. The audience appears as dark head silhouettes in the foreground.",
+      "primarySubject": "The adult standing center stage at the main microphone, light-skinned, wearing a light-colored jacket over dark trousers, positioned beneath the brightest converging spotlights.",
       "visiblePeople": [
-        "Center: adult male, light skin, average build, very short or shaved hair, standing upright at a microphone stand.",
-        "Far left: adult male, seated or low-standing with electric bass or guitar, dark clothing.",
-        "Left of center: adult male at a keyboard setup, dark clothing, medium-length hair.",
-        "Just left of center behind equipment: adult adult figure in a hat, partially obscured, seated or standing at keys/electronics.",
-        "Rear center-right: adult male drummer at a drum kit, dark shirt.",
-        "Right of center front: adult with long light hair playing guitar, light top and light trousers.",
-        "Right side: adult male with bald or closely shaved head playing bass or guitar, dark clothing.",
-        "Far right: adult female with long blonde hair playing violin, dark outfit."
+        "Center singer at microphone, light-skinned adult in a light jacket",
+        "Leftmost bassist or guitarist in dark clothing",
+        "Keyboard player left of center in dark clothing",
+        "Seated or partially obscured keyboard/synth player near center-left",
+        "Drummer on riser behind center-right",
+        "Long-haired guitarist or bassist near center-right in light clothing",
+        "Bald or closely shaved guitarist/bassist right of center in dark clothing",
+        "Violinist at far right with long blond hair in dark clothing"
       ],
-      "wardrobe": "Mixed stagewear in mostly dark tones, with the central singer in a light jacket; one guitarist in light clothing; far-right violinist in a dark outfit.",
-      "photoStyle": "Wide audience-perspective concert photograph with dramatic stage lighting, haze, high contrast, and full-stage framing.",
-      "setting": "Indoor music venue or theater with a proscenium-style stage, overhead lighting truss, multiple spotlights, haze effects, vertical LED-style light tubes, instrument stands, amplifiers, drum riser, and a seated audience filling the foreground.",
+      "wardrobe": "Mostly dark stage clothing across the band; the center singer wears a light jacket, the center-right long-haired player wears light-toned clothing, and the far-right violinist wears dark fitted clothing.",
+      "photoStyle": "Wide audience-perspective stage performance photograph with dramatic concert lighting, strong white beams, haze or smoke effects, and high contrast.",
+      "setting": "Indoor performance venue with a proscenium-style stage, overhead lighting truss, multiple hanging stage lights, a small disco ball above center, vertical LED light bars along the stage front and sides, drum riser, amplifiers, keyboards on stands, microphone stands, floor monitors, and a large seated audience in front. The backdrop is dark and partially obscured by light beams and haze.",
       "settingStrength": "strong"
     },
     {
       "source": 2,
-      "filename": "Tori-Amos.jpg",
-      "artist": "Tori Amos",
-      "description": "Close portrait of a single adult woman looking directly at the camera. She has long auburn hair, fair skin, and large cat-eye style eyeglasses with patterned upper rims and translucent lower rims. She wears a dark top and a short necklace. The background is softly blurred, with a tall multi-pane window and dim interior details visible.",
-      "primarySubject": "Adult woman with fair skin, long auburn hair parted to the side, large cat-eye glasses, and a dark top, facing the camera in a tight portrait.",
+      "filename": "George-Michael.jpg",
+      "artist": "George Michael",
+      "description": "Tight studio portrait of one adult man framed from upper chest to top of head against a plain light gray background. He has medium to light brown skin, very short dark hair, a salt-and-pepper goatee and mustache, and wears large mirrored aviator sunglasses. His head is tipped slightly upward with a serious, unsmiling expression, and he wears a white collared shirt.",
+      "primarySubject": "The only visible adult, a man with very short dark hair, a salt-and-pepper goatee, and oversized mirrored aviator sunglasses, facing forward with chin slightly raised.",
       "visiblePeople": [
-        "One adult woman, fair skin, slim to average build, long auburn hair, no visible facial hair, wearing cat-eye eyeglasses and a dark top."
+        "One adult man with very short dark hair, salt-and-pepper goatee and mustache, and mirrored aviator sunglasses"
       ],
-      "wardrobe": "Dark long-sleeved top, short necklace, eyeglasses with patterned and translucent frames.",
-      "photoStyle": "Tight indoor portrait with shallow depth of field, soft warm light on the face, and blurred background.",
-      "setting": "Interior room with a large multi-pane window behind the subject, dark walls or furnishings, and indistinct studio or room details in soft focus.",
-      "settingStrength": "moderate"
+      "wardrobe": "White collared shirt and large metallic-framed mirrored aviator sunglasses.",
+      "photoStyle": "Clean close-up studio portrait with centered composition, soft even lighting, shallow background detail, and a neutral plain backdrop.",
+      "setting": "Plain studio-style backdrop in light gray with no visible furniture or location cues.",
+      "settingStrength": "weak"
     },
     {
       "source": 3,
-      "filename": "George-Michael.jpg",
-      "artist": "George Michael",
-      "description": "Tight studio head-and-shoulders portrait of a single adult man against a plain light gray background. He has light to medium skin, very short closely cropped hair, and a neatly trimmed salt-and-pepper beard and mustache. He wears oversized reflective aviator sunglasses and a white collared shirt. His head is tilted slightly upward, giving a stern, posed expression.",
-      "primarySubject": "Adult man with closely cropped dark hair, light to medium skin, reflective aviator sunglasses, and a trimmed salt-and-pepper beard, shown in a tight front-facing portrait with chin slightly raised.",
+      "filename": "Tori-Amos.jpg",
+      "artist": "Tori Amos",
+      "description": "Portrait of one adult woman indoors, framed from about mid-torso upward. She has fair skin, long wavy auburn hair with side-swept bangs, large patterned cat-eye eyeglasses, and a soft direct gaze toward the camera. She wears a dark long-sleeved top and a short necklace. Warm light outlines her hair, while a bright window behind her creates backlighting.",
+      "primarySubject": "The only visible adult, a fair-skinned woman with long wavy auburn hair and large cat-eye eyeglasses, facing the camera in a dark top.",
       "visiblePeople": [
-        "One adult man, light to medium skin, average build, very short closely cropped hair, neatly trimmed salt-and-pepper beard and mustache, wearing large reflective aviator sunglasses."
+        "One adult woman with fair skin, long wavy auburn hair, and cat-eye eyeglasses"
       ],
-      "wardrobe": "White collared shirt and oversized reflective aviator sunglasses.",
-      "photoStyle": "High-resolution studio portrait with centered symmetrical framing, even lighting, plain backdrop, and crisp detail.",
-      "setting": "Plain studio-style setup with a smooth light gray background and no visible environmental features.",
-      "settingStrength": "weak"
+      "wardrobe": "Dark long-sleeved top, large patterned cat-eye eyeglasses, and a short necklace.",
+      "photoStyle": "Indoor environmental portrait with shallow depth of field, warm backlighting, softly blurred background, and a natural posed expression.",
+      "setting": "Interior room with a large multi-pane window or glass door behind the subject, dark framing around the glass, and softly blurred room details at the sides. The bright outdoor light through the panes dominates the background while the rest of the interior remains indistinct.",
+      "settingStrength": "moderate"
     }
   ],
   "hint": null,
   "composeBackend": "nano-banana-pro",
   "model": "fal-ai/nano-banana-pro/edit",
-  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Indoor music venue or theater with a proscenium-style stage, overhead lighting truss, multiple spotlights, haze effects, vertical LED-style light tubes, instrument stands, amplifiers, drum riser, and a seated audience filling the foreground.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A photorealistic 16:9 live concert group photograph on an indoor theater stage seen from the audience perspective, recreating the visible proscenium stage with overhead lighting truss, strong white spotlights fanning downward through haze, vertical blue-magenta LED light tubes along the front edge, a central microphone stand, drum riser and backline equipment, and a dark seated audience in silhouette at the bottom of frame. Three adults share a mid-song cue: at center, a light-skinned man with a shaved or very closely cropped head in a light jacket and dark trousers leans into the microphone while glancing toward the others; to his front-right, a fair-skinned woman with long auburn hair, distinctive cat-eye glasses, a dark top and short necklace turns inward toward him with alert, engaged body language; left of center and slightly behind, a light- to medium-skinned man with closely cropped hair, a neat salt-and-pepper beard, reflective aviator sunglasses, and a white collared shirt stands near the backline looking across at the group. Avoid an evenly spaced lineup; keep them staggered in depth with the singer central, the woman a step forward, and the bearded man slightly recessed. Wide audience-view composition, natural live-music framing, moderate wide lens character, full-stage context with the trio occupying the middle zone, crisp subjects against atmospheric haze. Lighting is high-contrast concert light with bright white beams, practical LED glow, and realistic stage spill shaping faces and clothing. Color treatment is cinematic but faithful, with cool whites, electric blue and violet accents, deep blacks, and subtle warmth in skin tones; mood charged, focused, and spontaneous. Attached cast plan: Attached reference image 1: portray only light-skinned adult man with very short or shaved hair, average build, wearing a light jacket and dark trousers; center stage at the microphone stand, leaning slightly toward the others as if singing or giving a cue. Attached reference image 2: portray only fair-skinned adult woman with long auburn hair, cat-eye glasses, dark top, and short necklace; front right of center, turned partly inward toward the singer, one step forward from the backline. Attached reference image 3: portray only light- to medium-skinned adult man with closely cropped hair, salt-and-pepper beard, oversized reflective aviator sunglasses, and a white collared shirt; left of center near a keyboard or amp area, slightly behind the singer, looking across toward the group. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 3 attached cast reference images and the final image must contain exactly 3 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Indoor performance venue with a proscenium-style stage, overhead lighting truss, multiple hanging stage lights, a small disco ball above center, vertical LED light bars along the stage front and sides, drum riser, amplifiers, keyboards on stands, microphone stands, floor monitors, and a large seated audience in front. The backdrop is dark and partially obscured by light beams and haze.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A photorealistic 16:9 group photograph on an indoor theater stage, viewed from audience-left at waist height, recreating the visible proscenium stage with overhead lighting truss, bright white spot beams cutting through haze, vertical LED light bars along the stage, central microphone stand, drum riser, floor monitors, amplifiers, and the small disco ball above center; the auditorium beyond is dark and empty, with no other people visible. A light-skinned adult singer in a light jacket and dark trousers stands near the center mic with one hand on the stand, turned slightly toward the others; in the foreground left, a man with very short dark hair, a salt-and-pepper goatee, mirrored aviator sunglasses, and a white collared shirt sits casually on a floor monitor, body angled inward, serious and composed; at mid-right, a fair-skinned woman with long wavy auburn hair, patterned cat-eye glasses, and a dark top leans lightly near the riser and LED bars, looking across toward the singer, creating a quiet between-moments connection. Use an intimate triangular composition with varied depth, no lineup, moderate wide lens around 35mm, natural stage-scale spacing, and crisp facial detail with the stage environment still clearly readable. Light with the concert venue’s strong white beams and haze as the main logic, with subtle warm edge light catching the woman’s hair and soft reflected fill on faces. Keep the color treatment clean and cinematic with charcoal and steel neutrals, electric violet accents from the LED bars, realistic skin tones, and a calm, observant mood. Attached cast plan: Attached reference image 1: portray only light-skinned adult singer in a light jacket and dark trousers; near center stage at the main mic stand, turned slightly toward the others with one hand resting on the stand. Attached reference image 2: portray only man with very short dark hair, salt-and-pepper goatee, mirrored aviator sunglasses, and a white collared shirt; foreground left, seated casually on a floor monitor at the stage edge, angled inward toward center. Attached reference image 3: portray only fair-skinned woman with long wavy auburn hair, patterned cat-eye glasses, and a dark long-sleeved top; mid-right near the LED bars, leaning lightly back toward a riser and looking across to the singer. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 3 attached cast reference images and the final image must contain exactly 3 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "reuseWeeks": 6,
+  "reuseBlocked": [],
+  "reuseRelaxed": [
+    {
+      "artist": "Tori Amos",
+      "lastUsed": "2026-02-02"
+    }
+  ],
   "inputs": [
     "Big-Big-Train.jpg",
-    "Tori-Amos.jpg",
-    "George-Michael.jpg"
+    "George-Michael.jpg",
+    "Tori-Amos.jpg"
   ]
 }

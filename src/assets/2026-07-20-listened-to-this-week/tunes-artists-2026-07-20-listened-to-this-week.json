@@ -6,168 +6,158 @@
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Mid-step arrivals outside the old doorway",
-  "creativeDirection": "A cinematic environmental portrait that feels briefly interrupted rather than formally lined up, using the stone entrance’s symmetry with staggered positions and quiet interaction.",
-  "scene": "Use the tan building entrance from source 3 as the exact setting: broad stone steps, recessed dark wooden double door, round columns, and small plants at the edges. Stage the four adults across different step levels as if they have just gathered and paused mid-conversation.",
-  "locationSource": 3,
-  "locationSetting": "Exterior stone stairway before a tan or peach-colored building facade with two round columns, a large recessed wooden double door, small plants at the sides, and a symmetrical entrance layout.",
-  "locationEvidence": "Wide stone steps lead to a recessed dark wooden double door framed by two round columns in a tan facade, with a symmetrical entrance and small plants at the sides.",
+  "concept": "Lingering conversation on the front steps",
+  "creativeDirection": "A naturalistic environmental portrait at eye level, loosely posed but mid-interaction, using the building steps and doorway for layered depth rather than a formal lineup.",
+  "scene": "Use the exterior entrance from source 2 as the full setting: broad worn stone steps rising to tall pale columns and large paneled wooden double doors, with the warm stucco facade and small plants at the sides. Frame the group in a relaxed pause as if a conversation has just thinned out, spreading them across different step heights and near one column rather than clustering them symmetrically.",
+  "locationSource": 2,
+  "locationSetting": "Exterior stone staircase leading to a building entrance with tall pale columns, stucco-like walls, large paneled wooden double doors, small plants flanking the steps, and a symmetrical front facade.",
+  "locationEvidence": "Clear exterior stone staircase leading to large dark wooden double doors, flanked by tall pale columns, stucco walls, and small plants at the entrance.",
   "locationReference": 1,
   "locationInput": "Haken.jpg",
   "cast": [
     {
+      "source": 2,
+      "person": "light-skinned bald man with a short beard in a dark jacket and dark pants",
+      "placement": "seated low in the foreground on the center-left step, turned slightly toward the others"
+    },
+    {
       "source": 3,
-      "person": "bald light-skinned man with a short beard in a dark jacket and dark clothes",
-      "placement": "front center seated on a lower step, one knee raised, anchoring the frame"
+      "person": "young woman with medium to dark skin, voluminous shoulder-length dark hair parted in the middle, white collared shirt and dark tie",
+      "placement": "one step above him near center, standing with a steady gaze and hands loosely at her sides"
     },
     {
       "source": 4,
-      "person": "medium-dark-skinned woman with shoulder-length voluminous dark hair, oversized white collared shirt and black tie",
-      "placement": "left side halfway up the steps, leaning slightly back toward the column, looking across the group"
+      "person": "light-skinned woman with long auburn hair, side-swept bangs, and oversized patterned cat-eye glasses, wearing a dark top",
+      "placement": "leaning lightly near the right column, half-turned toward the group"
     },
     {
-      "source": 5,
-      "person": "fair-skinned woman with long auburn hair and large patterned cat-eye glasses in a dark top",
-      "placement": "right side seated one step above center, turned partly toward the others"
-    },
-    {
-      "source": 7,
-      "person": "light-skinned man with short dark hair, light stubble, and a dark high-neck top",
-      "placement": "upper step near the doorway, standing off-center and glancing down toward the seated pair"
+      "source": 6,
+      "person": "light-skinned man with short dark hair, light stubble, and a dark high-neck sweater",
+      "placement": "seated higher on the steps near the left side, angled inward toward the others"
     }
   ],
   "selection": [
+    2,
     3,
     4,
-    5,
-    7
+    6
   ],
   "palette": [
-    "tan stone",
-    "dark walnut brown",
-    "charcoal black",
-    "soft cream",
-    "auburn",
-    "muted olive"
+    "weathered stone gray",
+    "warm stucco beige",
+    "dark wood brown",
+    "soft black",
+    "white shirt contrast",
+    "auburn hair warmth"
   ],
-  "mood": "quietly expectant",
+  "mood": "quietly attentive, intimate, thoughtful",
   "artistSummaries": [
     {
       "source": 1,
       "filename": "Lonely-Robot.jpg",
       "artist": "Lonely Robot",
-      "description": "A tightly framed stylized portrait of one adult centered against a dark background. The person has light skin, short light-colored hair brushed upward, and bare shoulders or a strapless neckline visible. The face is heavily obscured by graphic treatment: bright white X shapes cover both eyes and a black strip with a glowing curved smile covers the mouth. Blue-white lighting and haze create a high-contrast, surreal effect.",
-      "primarySubject": "The single adult centered in close-up with short light hair, light skin, bare shoulders, and a face obscured by glowing X eyes and a smiling mouth strip.",
+      "description": "A tightly framed stylized portrait of one adult with light skin and short hair brushed upward. The face is heavily obscured by graphic glowing white X shapes over both eyes and a dark strip over the mouth marked with a glowing curved smile. Bare shoulders and upper chest are visible. The person faces forward against a dark background with blue-white high-contrast lighting and a digitally treated, posterized look.",
+      "primarySubject": "The single centered adult with short upward-styled light hair, bare shoulders, and a face obscured by glowing X eyes and a glowing smile over the mouth.",
       "visiblePeople": [
-        "One adult with light skin, short light hair styled up, no visible facial hair, no visible eyewear, and facial features mostly hidden by graphic overlays."
+        "1 adult: light-skinned, short light hair styled up, face mostly obscured by graphic effects, bare shoulders, front-facing"
       ],
-      "wardrobe": "No clear clothing visible; bare shoulders or very low neckline.",
-      "photoStyle": "Extreme close-up studio portrait with dark background, heavy blue tint, high contrast, glowing graphic facial overlays, and smoky haze.",
-      "setting": "Indeterminate dark studio-like backdrop with no visible environmental details.",
+      "wardrobe": "No visible clothing; bare shoulders/chest visible.",
+      "photoStyle": "Extreme close-up portrait, centered composition, dark background, blue-white high contrast, heavy graphic/digital treatment.",
+      "setting": "Indeterminate dark backdrop with no clear environmental details.",
       "settingStrength": "weak"
     },
     {
       "source": 2,
-      "filename": "New-Order.jpg",
-      "artist": "New Order",
-      "description": "A full-length group portrait of five adults standing in front of a bright blue corrugated metal wall with white structural beams crossing diagonally and vertically. Four men and one woman are visible, all wearing mostly dark clothing and sunglasses except the woman. The central older blond man in a dark coat stands in profile facing right, while the others face the camera. Lighting is even daylight and the composition is clean and architectural.",
-      "primarySubject": "The older light-skinned man near center with short blond hair, sunglasses, and a dark knee-length coat, standing in profile facing right.",
+      "filename": "Haken.jpg",
+      "artist": "Haken",
+      "description": "A group portrait of six adult men posed on outdoor stone steps in front of a building entrance with large dark wooden double doors and tall pale columns. The central foreground man is bald with a short beard and light skin, seated lower on the steps and facing the camera. Around him are five other light-skinned men: one standing at far left with dark swept-back hair and a full beard; one seated left-center with short dark hair and a trimmed beard; one behind center wearing a cap with a gray beard; one right-center with medium-length curly dark hair and facial hair; and one standing at far right, tall with short gray hair and a gray beard. All wear mostly dark casual clothing and neutral expressions.",
+      "primarySubject": "The bald, light-skinned man with a short beard seated in the center foreground on the steps, wearing a dark jacket and dark pants.",
       "visiblePeople": [
-        "Left: one light-skinned adult man with short dark hair, sunglasses, average build, wearing a black jacket over a black-and-white shirt, standing casually with hands near pockets.",
-        "Second from left: one light-skinned adult man, tall and slim, short dark hair styled up, sunglasses, wearing a dark double-breasted coat over a striped shirt.",
-        "Center: one light-skinned older adult man with short blond hair, sunglasses, average build, wearing a dark coat, standing in side profile.",
-        "Second from right: one light-skinned adult woman with a black bob haircut and bangs, average build, wearing a patterned dark jacket over a light top and dark pants, standing with one leg bent.",
-        "Right: one light-skinned adult man with short light brown hair, sunglasses, average build, wearing a dark blazer and dark trousers."
+        "1 adult man: center foreground, bald, short beard, light skin, dark jacket and pants, seated facing camera",
+        "1 adult man: far left, dark swept-back hair, full beard, light skin, dark long-sleeve shirt and dark pants, standing",
+        "1 adult man: left-center, short dark hair, trimmed beard, light skin, dark T-shirt and dark pants, seated",
+        "1 adult man: rear center, cap, gray beard, light skin, dark T-shirt, seated higher on steps",
+        "1 adult man: right-center, medium curly dark hair, facial hair, light skin, dark T-shirt and jeans, seated",
+        "1 adult man: far right, tall, short gray hair, gray beard, light skin, short-sleeve dark shirt and dark pants, standing with arms folded"
       ],
-      "wardrobe": "Predominantly black outerwear, dark trousers, sunglasses on four subjects, one striped shirt, one patterned jacket over a white top.",
-      "photoStyle": "Color environmental band portrait, full-length, straight-on, natural daylight, crisp and minimally stylized.",
-      "setting": "Outdoor industrial or commercial exterior with a vivid blue corrugated metal facade, white metal framing members, flat wall plane, and no other street details visible.",
+      "wardrobe": "Mostly black or dark green casual shirts, T-shirts, jeans, dark shoes, one baseball cap, wristbands on the leftmost man.",
+      "photoStyle": "Environmental group portrait, eye-level to slightly low angle, muted earthy tones, natural light.",
+      "setting": "Exterior stone staircase leading to a building entrance with tall pale columns, stucco-like walls, large paneled wooden double doors, small plants flanking the steps, and a symmetrical front facade.",
       "settingStrength": "strong"
     },
     {
       "source": 3,
-      "filename": "Haken.jpg",
-      "artist": "Haken",
-      "description": "A group portrait of five adult men posed on wide stone steps leading to a large dark wooden double door set in a tan building with columns. Two men stand at the outer edges with arms folded or hands together, two crouch or sit lower on the steps, and one sits centrally in front. Most have beards, short hair, and dark casual clothing. Warm muted color grading gives the image a cinematic look.",
-      "primarySubject": "The bald light-skinned man seated front center on the steps, with a short beard, dark jacket, and one hand resting on his knee.",
-      "visiblePeople": [
-        "Far left: one light-skinned adult man, tall with dark hair swept back, full beard, average-to-athletic build, wearing a dark button-up shirt, black jeans, and wristbands.",
-        "Left-center: one light-skinned adult man with short dark hair and a trimmed beard, muscular build, wearing a fitted dark T-shirt and dark pants, crouched with hands clasped.",
-        "Center rear: one light-skinned adult man with a gray beard and mustache, wearing a dark cap and dark T-shirt, seated higher on the steps.",
-        "Front center: one light-skinned bald adult man with a short beard, average build, wearing a dark jacket, dark shirt, and dark pants, seated with legs apart.",
-        "Right-center: one light-skinned adult man with medium-length curly dark hair and facial hair, average build, wearing a dark T-shirt and dark pants, seated on the steps.",
-        "Far right: one light-skinned adult man, tall with short gray hair and a gray beard, athletic build, wearing a short-sleeve black shirt and dark jeans, standing with arms crossed."
-      ],
-      "wardrobe": "Mostly black or dark casual clothing including T-shirts, button-up shirts, jeans, sneakers, one dark jacket, one cap, and wristbands.",
-      "photoStyle": "Color environmental band portrait with warm subdued tones, medium-wide framing, posed composition, and natural or soft ambient light.",
-      "setting": "Exterior stone stairway before a tan or peach-colored building facade with two round columns, a large recessed wooden double door, small plants at the sides, and a symmetrical entrance layout.",
-      "settingStrength": "strong"
-    },
-    {
-      "source": 4,
       "filename": "Baby-Rose.jpg",
       "artist": "Baby Rose",
-      "description": "A black-and-white close portrait of one adult woman reclining or leaning back against a light surface. She has medium to dark skin tone, large eyes, full lips, and shoulder-length voluminous dark hair parted down the middle. She wears an oversized white collared shirt with a black tie and layered necklaces. Strong directional light casts bold shadows across the wall and part of her face.",
-      "primarySubject": "The single woman with medium-dark skin, center-parted shoulder-length dark hair, and a white shirt with black tie, looking directly at the camera.",
+      "description": "A black-and-white close portrait of one young adult woman with medium to dark skin tone and voluminous shoulder-length dark hair parted down the middle. She looks directly at the camera with a neutral serious expression. She wears a white collared shirt, a dark necktie, and layered delicate necklaces. The crop is chest-up, with strong side lighting casting shadows on a plain light background and the curved top of a chair or cushion behind her.",
+      "primarySubject": "The single young woman with center-parted shoulder-length dark hair, direct gaze, white collared shirt, and dark tie.",
       "visiblePeople": [
-        "One adult woman with medium to dark skin tone, large dark eyes, full lips, no eyewear, no facial hair, and shoulder-length voluminous dark hair parted centrally."
+        "1 adult woman: medium to dark skin tone, large dark eyes, full shoulder-length dark hair parted center, no eyewear, no facial hair, white shirt and dark tie, front-facing"
       ],
-      "wardrobe": "Oversized white collared shirt, black tie, layered necklaces.",
-      "photoStyle": "Black-and-white close portrait with dramatic hard light, strong shadow shapes, and intimate framing.",
-      "setting": "Minimal interior setting with a plain light wall or upholstered surface behind her; no distinct room details visible.",
+      "wardrobe": "White collared shirt, dark necktie, layered thin necklaces.",
+      "photoStyle": "Black-and-white studio-style portrait, close crop, strong directional lighting, sharp shadows.",
+      "setting": "Plain light indoor backdrop with the rounded top of a chair or upholstered surface visible behind the subject.",
       "settingStrength": "weak"
     },
     {
-      "source": 5,
+      "source": 4,
       "filename": "Tori-Amos.jpg",
       "artist": "Tori Amos",
-      "description": "A color close portrait of one adult woman indoors. She has fair skin, long auburn hair with side-swept layers, and wears large cat-eye eyeglasses with a patterned upper frame. She is dressed in a dark long-sleeve top and small jewelry. The background is softly blurred, showing a tall multi-pane window or door with bright daylight behind it and darker interior elements around the edges.",
-      "primarySubject": "The single fair-skinned woman with long auburn hair and large cat-eye glasses, leaning slightly forward in front of a backlit window.",
+      "description": "A color portrait of one light-skinned adult woman indoors, framed from the chest up. She has long auburn hair with side-swept bangs and wears large cat-eye style eyeglasses with a patterned upper frame and translucent lower rims. She faces the camera with a soft neutral expression and wears a dark long-sleeve top and a short necklace. Bright window light behind her creates a warm rim light on her hair, while the background is softly blurred.",
+      "primarySubject": "The single light-skinned woman with long auburn hair, oversized cat-eye glasses, and a dark top, centered in the frame.",
       "visiblePeople": [
-        "One adult woman with fair skin, long auburn hair, large cat-eye eyeglasses, no facial hair, and a slim-to-average build."
+        "1 adult woman: light skin, long auburn hair with side-swept bangs, large patterned cat-eye glasses, no facial hair, dark top, direct gaze"
       ],
-      "wardrobe": "Dark long-sleeve top or dress, large patterned cat-eye glasses, subtle necklace and small earrings.",
-      "photoStyle": "Color indoor portrait with shallow depth of field, warm natural tones, soft backlighting, and a polished editorial look.",
-      "setting": "Interior room with a tall multi-pane window or glass door behind the subject, bright daylight streaming through, and indistinct darker furnishings or walls in the background.",
+      "wardrobe": "Dark long-sleeve top, short necklace, statement eyeglasses.",
+      "photoStyle": "Indoor portrait, shallow depth of field, warm backlighting, soft background blur.",
+      "setting": "Interior space with a large bright-paned window or glass door behind the subject and indistinct room details in soft focus.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 5,
+      "filename": "Grandaddy.jpg",
+      "artist": "Grandaddy",
+      "description": "A casual outdoor group photo of five adult men standing close together. The most prominent figure is a light-skinned blond man with a beard in the center foreground, wearing a dark baseball cap and a light short-sleeve button-up shirt, with one hand at his collar. At left is a man in a bright yellow cap and sleeveless white shirt with short facial hair; behind him another bearded man wears a dark jacket; slightly left of center rear stands a slim dark-haired man in a white T-shirt and light trousers; at far right is a stockier dark-haired man in a dark cap and gray T-shirt. The image has a faded, grainy snapshot look with a bright haze across the top edge.",
+      "primarySubject": "The blond bearded man in the center foreground wearing a dark baseball cap and a light short-sleeve button-up shirt, touching his collar.",
+      "visiblePeople": [
+        "1 adult man: center foreground, light skin, blond beard, dark baseball cap, light short-sleeve button-up shirt, hand at collar",
+        "1 adult man: far left, light skin, yellow cap pulled low, short facial hair, sleeveless white shirt",
+        "1 adult man: left rear, light skin, beard, dark jacket, partially behind left figure",
+        "1 adult man: rear center-left, light skin, slim build, dark hair, white T-shirt, light trousers",
+        "1 adult man: far right, light skin, stockier build, dark hair, dark cap, gray T-shirt"
+      ],
+      "wardrobe": "Caps, T-shirts, sleeveless shirt, dark jacket, light short-sleeve button-up shirt, casual pants.",
+      "photoStyle": "Candid-style group snapshot, faded colors, visible grain, slight haze/light leak at top.",
+      "setting": "Outdoor area beside a building with window panels, leafy tree branches overhead and behind the group, and open pavement in front.",
       "settingStrength": "moderate"
     },
     {
       "source": 6,
-      "filename": "Grandaddy.jpg",
-      "artist": "Grandaddy",
-      "description": "A casual outdoor group photo of five adult men standing loosely together beneath a leafy tree, with a low building and windows behind them. The image has a faded, slightly grainy look with a light leak or washed-out band across the top. The central man in a dark cap and pale short-sleeve button-up shirt stands closest to the camera, holding his collar or neck area. The others wear casual T-shirts, jackets, and caps.",
-      "primarySubject": "The light-skinned man near center foreground wearing a dark baseball cap, short beard, and pale short-sleeve button-up shirt, with one hand at his collar.",
-      "visiblePeople": [
-        "Far left: one light-skinned adult man with a short beard, yellow cap pulled low, sleeveless white shirt, and stocky build.",
-        "Left rear: one light-skinned adult man with a beard, average build, wearing a dark jacket over a dark shirt, standing partly behind the front row.",
-        "Center rear: one light-skinned adult man with dark medium-length hair, clean-shaven face, slim build, white T-shirt, and light trousers.",
-        "Center foreground: one light-skinned adult man with a short beard, dark baseball cap, average build, and pale short-sleeve button-up shirt.",
-        "Far right: one light-skinned adult man with a dark baseball cap, clean-shaven face, stocky build, and gray T-shirt."
-      ],
-      "wardrobe": "Very casual clothing: caps, T-shirts, sleeveless graphic shirt, light button-up shirt, jacket, and simple trousers.",
-      "photoStyle": "Color snapshot-style band photo with soft focus, grain, faded tones, and a washed-out top edge suggestive of film or light leak.",
-      "setting": "Outdoor area beside a building, with a leafy tree overhead, visible windows and wall behind, and open paved ground implied in front.",
-      "settingStrength": "moderate"
-    },
-    {
-      "source": 7,
       "filename": "Black-Grape.jpg",
       "artist": "Black Grape",
-      "description": "A black-and-white close portrait of one adult man against a dark plain background or wall. He has light skin, short dark hair, light stubble, and no eyewear. He wears a dark high-neck or turtleneck top and turns his head slightly toward the camera with a serious expression. Side lighting emphasizes one side of his face while the rest falls into shadow.",
-      "primarySubject": "The single light-skinned man with short dark hair and light stubble, wearing a dark high-neck top and looking toward the camera from a slight angle.",
+      "description": "A black-and-white close portrait of one light-skinned adult man with short dark hair and light stubble. He wears a dark high-neck sweater or turtleneck and turns slightly sideways while looking toward the camera. The lighting is dramatic and directional, leaving much of the clothing and background in deep shadow. A dark wall or panel fills the background.",
+      "primarySubject": "The single light-skinned man with short dark hair, light stubble, and a dark high-neck sweater, turned slightly sideways toward the camera.",
       "visiblePeople": [
-        "One adult man with light skin, short dark hair, light stubble, no eyewear, and an average build."
+        "1 adult man: light skin, short dark hair, light stubble, no eyewear, dark high-neck sweater, head turned slightly, direct gaze"
       ],
       "wardrobe": "Dark high-neck sweater or turtleneck.",
-      "photoStyle": "Black-and-white close portrait with stark contrast, directional side light, and a moody minimalist composition.",
-      "setting": "Dark plain interior backdrop or wall with little visible detail.",
+      "photoStyle": "Black-and-white close portrait, high contrast, moody directional lighting, tight crop.",
+      "setting": "Dark plain interior background, likely a wall or panel, with little environmental detail visible.",
       "settingStrength": "weak"
     }
   ],
   "hint": null,
   "composeBackend": "nano-banana-pro",
   "model": "fal-ai/nano-banana-pro/edit",
-  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Exterior stone stairway before a tan or peach-colored building facade with two round columns, a large recessed wooden double door, small plants at the sides, and a symmetrical entrance layout.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. Photorealistic 16:9 group portrait on the wide stone steps of a tan stucco or plaster building entrance with two round columns and a recessed dark wooden double door, small plants tucked near the sides, shot from a slightly low eye-level viewpoint that preserves the doorway symmetry while showing extra step width to either side. Four adults are gathered in a natural paused moment: a bald light-skinned man with a short beard in a dark jacket sits front center on a lower step with one knee raised, a medium-dark-skinned woman with shoulder-length voluminous dark hair in an oversized white collared shirt, black tie, and layered necklaces stands midway up on the left leaning subtly toward the column and looking across the group, a fair-skinned woman with long auburn hair and large patterned cat-eye glasses in a dark long-sleeve top sits to the right one step higher turned partly inward, and a light-skinned man with short dark hair and light stubble in a dark high-neck top stands near the doorway off-center with his gaze lowered toward the others. Avoid an evenly spaced lineup; create layered depth with varied heights, subtle body angles, and quiet interpersonal tension. Medium-wide environmental composition, 35mm lens character, crisp architectural lines, moderate depth of field keeping all four figures sharp while preserving gentle background falloff. Soft natural ambient daylight with warm subdued contrast consistent with an exterior shaded entrance, no theatrical effects. Muted cinematic color with tan stone, dark wood, black clothing, cream highlights, and auburn hair tones; calm, intimate, expectant mood. Attached cast plan: Attached reference image 1: portray only bald light-skinned man with a short beard in a dark jacket and dark clothes; front center seated on a lower step, one knee raised, anchoring the frame. Attached reference image 2: portray only medium-dark-skinned woman with shoulder-length voluminous dark hair, oversized white collared shirt and black tie; left side halfway up the steps, leaning slightly back toward the column, looking across the group. Attached reference image 3: portray only fair-skinned woman with long auburn hair and large patterned cat-eye glasses in a dark top; right side seated one step above center, turned partly toward the others. Attached reference image 4: portray only light-skinned man with short dark hair, light stubble, and a dark high-neck top; upper step near the doorway, standing off-center and glancing down toward the seated pair. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Exterior stone staircase leading to a building entrance with tall pale columns, stucco-like walls, large paneled wooden double doors, small plants flanking the steps, and a symmetrical front facade.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. Photorealistic 16:9 group portrait on an exterior stone staircase in front of a warm stucco building entrance with tall pale columns, large dark paneled wooden double doors, and small plants at the sides; eye-level to slightly low viewpoint, capturing a shared pause in conversation on the steps. A light-skinned bald man with a short beard in a dark jacket sits low in the foreground turned slightly toward the group; a young woman with medium to dark skin and voluminous shoulder-length dark hair, wearing a white collared shirt and dark tie, stands one step above him at center with a calm steady presence; a light-skinned woman with long auburn hair and oversized patterned cat-eye glasses in a dark top leans near the right column, half-turned inward; a light-skinned man with short dark hair, light stubble, and a dark high-neck sweater sits higher on the left, angled toward the others. Avoid a straight lineup; use staggered heights, open negative space, and subtle eye contact between some subjects while others look away. Shoot as an environmental portrait with a normal-to-slightly-wide lens, moderate depth of field, sharp architectural detail, and natural body language. Use soft natural daylight consistent with the entrance, gentle shadow under the columns, and warm ambient bounce from the stucco and stone. Keep muted earthy color, restrained contrast, and a reflective, understated mood. Attached cast plan: Attached reference image 1: portray only light-skinned bald man with a short beard in a dark jacket and dark pants; seated low in the foreground on the center-left step, turned slightly toward the others. Attached reference image 2: portray only young woman with medium to dark skin, voluminous shoulder-length dark hair parted in the middle, white collared shirt and dark tie; one step above him near center, standing with a steady gaze and hands loosely at her sides. Attached reference image 3: portray only light-skinned woman with long auburn hair, side-swept bangs, and oversized patterned cat-eye glasses, wearing a dark top; leaning lightly near the right column, half-turned toward the group. Attached reference image 4: portray only light-skinned man with short dark hair, light stubble, and a dark high-neck sweater; seated higher on the steps near the left side, angled inward toward the others. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "reuseWeeks": 6,
+  "reuseBlocked": [
+    {
+      "artist": "New Order",
+      "lastUsed": "2026-06-22"
+    }
+  ],
+  "reuseRelaxed": [],
   "inputs": [
     "Haken.jpg",
     "Baby-Rose.jpg",
