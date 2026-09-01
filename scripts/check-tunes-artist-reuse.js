@@ -1,12 +1,7 @@
 #!/usr/bin/env node
 import 'dotenv/config'
-import path from 'path'
-import { fileURLToPath } from 'url'
 import { ConfigLoader } from './lib/config-loader.js'
 import { artistKey, loadArtistUsage, recentlyUsedArtists } from './lib/tunes-artist-usage.js'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
 // Audit the committed artist-usage record against the reuse rule. A violation means some
 // week's portrait features an artist who had already appeared within the window - either the

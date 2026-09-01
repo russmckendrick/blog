@@ -12,6 +12,7 @@ import { ConfigLoader } from './lib/config-loader.js'
 import { normalizeText, lookupArtistData, lookupAlbumData, isVariousArtists, normalizeForFilename } from './lib/text-utils.js'
 import { createFALTunesCover } from './fal-tunes-cover.js'
 import { createFALArtistPortrait } from './fal-tunes-artists.js'
+import { displayNameFor } from './lib/tunes-artist-usage.js'
 import { spawnSync } from 'child_process'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -202,9 +203,10 @@ async function main() {
     const portraitOutputPath = path.join(portraitOutputDir, `tunes-artists-${dateStr}-listened-to-this-week.png`)
 
     let artistPortrait = null
+    let artistPortraitCast = null
     if (artistImagePaths.length > 0) {
       try {
-        await createFALArtistPortrait(artistImagePaths, portraitOutputPath, {
+        const portraitResult = await createFALArtistPortrait(artistImagePaths, portraitOutputPath, {
           seed: dateSeed,
           width: 1400,
           height: 800,
@@ -217,6 +219,9 @@ async function main() {
           debug: debugMode
         })
         artistPortrait = `/assets/${dateStr}-listened-to-this-week/tunes-artists-${dateStr}-listened-to-this-week.png`
+        // Alt text names the artists actually cast, which the reuse rule can make quite
+        // different from the week's top artists.
+        artistPortraitCast = (portraitResult?.selectedImages || []).map(imagePath => displayNameFor(imagePath))
         console.log(`✅ Artist portrait generated: ${portraitOutputPath}`)
       } catch (error) {
         console.warn(`⚠ Artist portrait generation failed, continuing without it: ${error.message}`)
@@ -244,7 +249,8 @@ async function main() {
       randomNumber,
       albumsFolder,
       artistsFolder,
-      artistPortrait
+      artistPortrait,
+      artistPortraitCast
     })
 
     console.log(`✅ Successfully generated blog post for week ${weekNumber}`)

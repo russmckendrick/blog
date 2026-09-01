@@ -32,15 +32,26 @@ export class BlogPostRenderer {
     summary,
     blogSections,
     randomNumber,
-    artistPortrait = null
+    artistPortrait = null,
+    artistPortraitCast = null
   }) {
     // Build the artist group-portrait block. `artistPortrait` is the public /assets/... src
     // when a portrait was generated, or null when it was skipped or failed - in which case the
     // placeholder collapses to nothing.
+    //
+    // The alt text names whoever is actually in the picture. It used to name the week's top
+    // six artists, which stopped being true once the reuse rule started benching recently
+    // used artists - the alt could name the very people the rule had just excluded. Fall
+    // back to the top artists only when the cast is unknown.
     let artistPortraitSection = ''
     if (artistPortrait) {
-      const names = topArtists.slice(0, 6).map(([artist]) => artist).join(', ')
-      const alt = escapeQuotes(`Group portrait of this week's top artists: ${names}`)
+      const names = Array.isArray(artistPortraitCast) && artistPortraitCast.length > 0
+        ? artistPortraitCast.join(', ')
+        : topArtists.slice(0, 6).map(([artist]) => artist).join(', ')
+      const label = Array.isArray(artistPortraitCast) && artistPortraitCast.length > 0
+        ? "Group portrait of this week's artists"
+        : "Group portrait of this week's top artists"
+      const alt = escapeQuotes(`${label}: ${names}`)
       artistPortraitSection = `<Img src="${artistPortrait}" alt="${alt}" aspectRatio="16/9" fullWidth="true" />`
     }
 

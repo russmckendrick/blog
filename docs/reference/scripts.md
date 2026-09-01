@@ -14,6 +14,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `pnpm run backfill-tunes-images` | `scripts/backfill-tunes-images.js` | Backfill older weekly tunes artwork and repair resolvable russ.fm links from local `collection.json` |
 | `pnpm run rebuild-artist-usage` | `scripts/rebuild-tunes-artist-usage.js` | Rebuild the committed artist reuse record from the per-week portrait sidecars |
 | `pnpm run check-artist-reuse` | `scripts/check-tunes-artist-reuse.js` | Audit the artist reuse record and report any portrait repeating an artist inside the window |
+| `pnpm run sync-portrait-alt` | `scripts/sync-tunes-portrait-alt.js` | Rewrite each weekly post's portrait alt text to name the artists actually cast |
 | `pnpm run medium` | `scripts/publish-to-medium.js` | Publish an existing post to Medium |
 | `pnpm run reading` | `scripts/fetch-reading-list.js` | Fetch bookmarks from Instapaper into `src/data/reading.json` |
 | `pnpm run optimize` | `scripts/optimize-images.js` | Optimize source and public image assets |
@@ -55,6 +56,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 | `scripts/regenerate-tunes-cover.js` | manual | Regenerate one weekly tunes image (header cover or artist portrait) without changing MDX frontmatter |
 | `scripts/rebuild-tunes-artist-usage.js` | manual/maintenance | Rebuild `scripts/.tunes-artist-usage.json` from the committed per-week portrait sidecars when the artist reuse record drifts |
 | `scripts/check-tunes-artist-reuse.js` | manual/CI | Audit `scripts/.tunes-artist-usage.json` against the artist reuse rule; exits non-zero when a week repeats an artist inside the window |
+| `scripts/sync-tunes-portrait-alt.js` | manual/maintenance | Rewrite the artist-portrait `alt` text in weekly posts from each week's portrait sidecar cast; run after regenerating portraits |
 | `scripts/wrapped-cover-generator.js` | internal | AI-assisted wrapped cover compositor |
 | `scripts/bulk-listen.js` | manual | Run the tunes cover generator over a date range of weekly tunes folders |
 
@@ -190,6 +192,21 @@ Options:
 - `--record` appends the run to `scripts/.tunes-image-history.json` (off by default here so regenerating old weeks does not pollute the do-not-repeat memory). The artist reuse record in `scripts/.tunes-artist-usage.json` is **not** tied to this flag — it follows the image, so any run that overwrites a week's real portrait updates it, while a run sent to `--output` does not
 - `--output=<path>` writes a test image outside the normal asset path
 - `--debug`, `-d` enables verbose output
+
+### `scripts/sync-tunes-portrait-alt.js`
+
+```bash
+pnpm run sync-portrait-alt --dry-run
+pnpm run sync-portrait-alt
+```
+
+Rewrites the `alt` text on each weekly post's artist group portrait so it names the artists actually cast, read from that week's `tunes-artists-*.json` sidecar. Only the `alt` attribute changes; `src`, placement, and every other attribute are left verbatim, and posts without a portrait are skipped.
+
+Run it after regenerating portraits. A new cast means the old alt text describes the wrong people, and before the artist reuse rule the alt named the week's top six artists — which the rule can make flatly wrong, since a benched artist is precisely the one who is *not* in the picture. It also fills in portraits generated before the renderer set an alt at all.
+
+Options:
+- `--dry-run` reports what would change without writing
+- `--from=<date>` / `--to=<date>` limit the weeks considered
 
 ### `scripts/bulk-listen.js`
 

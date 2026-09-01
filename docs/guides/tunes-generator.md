@@ -205,6 +205,7 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 - `lib/tunes-artist-usage.js` - Committed per-week record of who was cast in each artist portrait (`scripts/.tunes-artist-usage.json`); enforces the artist reuse rule before casting
 - `rebuild-tunes-artist-usage.js` - Rebuilds that record from the committed portrait sidecars when it drifts (`pnpm run rebuild-artist-usage`)
 - `check-tunes-artist-reuse.js` - Audits the record against the reuse rule and reports any week repeating an artist inside the window (`pnpm run check-artist-reuse`)
+- `sync-tunes-portrait-alt.js` - Rewrites weekly posts' portrait alt text from the sidecar cast after a regeneration (`pnpm run sync-portrait-alt`)
 - `lib/image-backends/` - Generic, swappable multi-reference compose backends shared by both generators (`nano-banana`, `nano-banana-pro`, `gpt-image-2`)
 - `regenerate-tunes-cover.js` - Manual test harness for regenerating one older weekly image (header or artist) without changing MDX; supports an optional `--hint` for either image type
 
@@ -347,6 +348,8 @@ pnpm run check-artist-reuse --from=2026-01-01 --weeks=4
 
 **Regenerating a stretch of weeks**: always go **oldest first, serially**. Each run records its cast, and the next week reads that record; out of order or in parallel, every week sees a stale window and the rule stops holding.
 
+**Alt text follows the cast.** The portrait's `alt` names the artists actually in the picture, not the week's top artists — under this rule those can be different sets, and naming a benched artist would describe exactly the person who was excluded. The weekly generator does this automatically; after regenerating existing weeks, run `pnpm run sync-portrait-alt` to bring their posts back in line.
+
 ### Commands
 
 ```bash
@@ -377,6 +380,10 @@ TUNES_ARTIST_REUSE_WEEKS=0 node scripts/regenerate-tunes-cover.js --type=artist 
 
 # Rebuild the artist reuse record from the committed portrait sidecars
 pnpm run rebuild-artist-usage --dry-run
+
+# After regenerating portraits, point each post's alt text at the new cast
+pnpm run sync-portrait-alt --dry-run
+pnpm run sync-portrait-alt
 
 # Testing mode keeps all generated files under output/
 pnpm run tunes -- --testing --take=5
