@@ -301,7 +301,7 @@ const preset = CF_IMAGE_PRESETS.thumbnailHorizontal;
 ```
 
 The blog feed pages (`index.astro`, `page/[...page].astro`,
-`tags/[tag]/[...page].astro`, `[year]/index.astro`, `[year]/page/[...page].astro`)
+`tags/[tag]/[...page].astro`, `[year]/index.astro`, `[year]/page/[page].astro`)
 pass `priority={index < 2}`: on a mobile viewport the first **two** row images sit
 inside the initial viewport, and whichever of them is largest becomes the LCP
 element. A lazy/low-priority image there fails Lighthouse's "LCP request

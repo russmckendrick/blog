@@ -10,6 +10,7 @@
 //    plausible.io. See the Plausible section of docs/architecture/seo-implementation.md.
 // 3. A 301 from the apex domain to the www canonical host.
 // 4. `charset=utf-8` on HTML responses, which the assets binding omits.
+// 5. A 301 from the retired /YYYY/page/ URL to the /YYYY/ year hub.
 
 // --- Canonical host --------------------------------------------------------
 // The zone answers on both russ.cloud and www.russ.cloud, and every canonical
@@ -23,6 +24,22 @@ const CANONICAL_HOST = 'www.russ.cloud'
 function redirectToCanonicalHost(url) {
 	const target = new URL(url)
 	target.hostname = CANONICAL_HOST
+	return Response.redirect(target.toString(), 301)
+}
+
+// --- Retired year pagination URL -------------------------------------------
+// The year archive used to emit /2024/page/ as page 1, a duplicate of the
+// /2024/ hub with its own canonical, and Google indexed both. Pages 2+ still
+// live at /2024/page/N/; only the bare form is gone. A regex is used rather
+// than a _redirects rule because placeholders there cannot be limited to
+// digits, and /:x/page/ would also catch real routes like /tunes/page/.
+const YEAR_PAGE_ONE = /^\/(\d{4})\/page\/?$/
+
+function redirectYearPageOne(url) {
+	const match = url.pathname.match(YEAR_PAGE_ONE)
+	if (!match) return null
+	const target = new URL(`/${match[1]}/`, url)
+	target.search = url.search
 	return Response.redirect(target.toString(), 301)
 }
 
@@ -119,6 +136,9 @@ export default {
 		if (url.hostname === APEX_HOST) {
 			return redirectToCanonicalHost(url)
 		}
+
+		const yearRedirect = redirectYearPageOne(url)
+		if (yearRedirect) return yearRedirect
 
 		if (url.pathname === PLAUSIBLE_SCRIPT_PATH && request.method === 'GET') {
 			return proxyPlausibleScript()

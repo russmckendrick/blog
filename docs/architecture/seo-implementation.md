@@ -265,7 +265,7 @@ Section art is furniture, not post art, so it is briefed against the scrim rathe
 - Auto-generated at build time
 - Inclusion policy in `src/utils/sitemap-filter.ts` (`shouldIncludeInSitemap`), passed as the integration's `filter`:
   - excludes `/draft/`, `/avatars/` and `/search/`
-  - excludes every pagination page (any path ending in a 1-3 digit page number: `/page/2/`, `/tags/docker/2/`, `/2024/page/3/`, `/tunes/artist/{slug}/2/`) plus the bare `/{year}/page/` that the year route emits as page 1; year hubs are four digits and stay in
+  - excludes every pagination page (any path ending in a 1-3 digit page number: `/page/2/`, `/tags/docker/2/`, `/2024/page/3/`, `/tunes/artist/{slug}/2/`); year hubs are four digits and stay in
   - lists `/tunes/album/{slug}/` only when the album appears in at least `SITEMAP_ALBUM_MIN_POSTS` (3) posts, and `/tunes/artist/{slug}/` only at `SITEMAP_ARTIST_MIN_POSTS` (2) posts, read from `src/data/tunes-index.json`
   - everything else (posts, hubs, glossary, books, reading) is listed
 
@@ -308,6 +308,8 @@ The `/cdn-cgi/` pair follows Cloudflare's guidance for its own endpoints: crawle
 ### Listing pages and legacy redirects
 
 The homepage feed (`/`, then `/page/N/`) is the only paginated list of all posts. A second `/blog/N/` archive that paginated the same posts was removed: nothing linked to it and it put 19 near-duplicate URLs in the sitemap. `public/_redirects` sends `/blog/` and `/blog/*` to `/`, `/page/` (no number) to `/`, and the old Hugo tag pagination form `/tags/{tag}/page/{n}/` to the current `/tags/{tag}/{n}/`. The `BlogPosting` schema's `isPartOf.@id` points at the site root for the same reason.
+
+Year archives follow the same shape: `/{year}/` (`[year]/index.astro`) is page 1 and `[year]/page/[page].astro` generates pages 2+ only, both at 9 posts a page. The route previously emitted a bare `/{year}/page/` as page 1, a duplicate of the hub with its own canonical that Google indexed alongside it. `worker/index.js` 301s that URL to `/{year}/`; it is done in the worker rather than `_redirects` because a `/:year/page/` placeholder rule would also catch `/tunes/page/` and `/reading/page/`.
 
 ### RSS Feeds
 

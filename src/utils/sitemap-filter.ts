@@ -25,9 +25,8 @@ const EXCLUDED_PREFIXES = ['/draft/', '/avatars/', '/search/']
 
 // Pagination pages end in a 1-3 digit page number: /page/2/, /tags/docker/2/,
 // /2024/page/3/, /tunes/page/4/, /tunes/artist/kate-bush/2/, /reading/page/2/.
-// Year hubs (/2024/, /tunes/year/2024/) are four digits and stay in. The year
-// route also emits a bare /2024/page/ as its page 1, a duplicate of /2024/.
-const PAGINATION_RE = /(\/\d{1,3}|\/page)\/$/
+// Year hubs (/2024/, /tunes/year/2024/) are four digits and stay in.
+const PAGINATION_RE = /\/\d{1,3}\/$/
 
 interface TunesIndexCounts {
   albums: Record<string, number>

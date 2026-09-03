@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PostCard from '../../../components/blog/PostCard.astro';
+import Pagination from '../../../components/layout/Pagination.astro';
+import { SITE_TITLE } from '../../../consts';
+
+// The year hub (/[year]/) is page 1 of each year's archive. Only pages 2+ are
+// generated here, so no bare /[year]/page/ duplicate of the hub exists;
+// worker/index.js 301s the old URL to the hub.
+export const getStaticPaths = (async () => {
+	// Must match postsPerPage in [year]/index.astro. Declared here because
+	// getStaticPaths is hoisted and cannot see frontmatter-scope constants.
+	const postsPerPage = 9;
+	const allPosts = await getCollection('blog');
+	const allTunes = await getCollection('tunes');
+	const allContent = [...allPosts, ...allTunes]
+		.filter(item => import.meta.env.DEV || !item.data.draft)
+		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+	const years = [...new Set(allContent.map(item => item.data.pubDate.getFullYear().toString()))];
+
+	return years.flatMap(year => {
+		const yearContent = allContent.filter(item => item.data.pubDate.getFullYear().toString() === year);
+		const totalPages = Math.ceil(yearContent.length / postsPerPage);
+
+		return Array.from({ length: Math.max(totalPages - 1, 0) }, (_, i) => {
+			const pageNum = i + 2;
+			const start = (pageNum - 1) * postsPerPage;
+			return {
+				params: { year, page: String(pageNum) },
+				props: {
+					page: {
+						data: yearContent.slice(start, start + postsPerPage),
+						currentPage: pageNum,
+						lastPage: totalPages,
+						total: yearContent.length,
+					}
+				}
+			};
+		});
+	});
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const { year } = Astro.params;
+
+const title = `${year} Archive - Page ${page.currentPage} - ${SITE_TITLE}`;
+const description = `All posts and tunes from ${year} - Page ${page.currentPage}`;
+---
+
+<BaseLayout title={title} description={description}>
+	<section class="max-w-[728px] mx-auto px-6">
+		<header class="pt-8 pb-6 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
+			<h1>{year}</h1>
+			<p class="mt-3 text-lg text-on-surface-variant leading-normal">
+				{page.total} {page.total === 1 ? 'post' : 'posts'} published in {year}
+			</p>
+		</header>
+
+		<div class="feed">
+			{page.data.map((item: CollectionEntry<'blog'> | CollectionEntry<'tunes'>, index: number) => (
+				<div data-reveal>
+					<PostCard post={item} priority={index < 2} headingLevel="2" />
+				</div>
+			))}
+		</div>
+
+		<Pagination
+			currentPage={page.currentPage}
+			totalPages={page.lastPage}
+			getHref={(pageNum) => (pageNum === 1 ? `/${year}/` : `/${year}/page/${pageNum}/`)}
+		/>
+	</section>
+
+</BaseLayout>
