@@ -3,13 +3,6 @@ allowBuilds:
   puppeteer: false
   sharp: true
   workerd: true
-auditConfig:
-  ignoreGhsas:
-    # extract-zip symlink path traversal. The advisory claims a >=2.0.2 fix but
-    # 2.0.1 (Mar 2023) is the last published release, so `pnpm audit --fix` writes
-    # an unresolvable override. Dev/build-only: pulled in by @puppeteer/browsers
-    # and @iconify/tools, neither of which extracts untrusted archives here.
-    - GHSA-jmr9-qjv8-65gv
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - undici@7.29.0 || 8.9.0
