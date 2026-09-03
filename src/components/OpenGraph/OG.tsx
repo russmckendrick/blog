@@ -1,9 +1,9 @@
 import React from "react";
-import sharp from "sharp";
-import { OG_HEIGHT, OG_SCALE, OG_WIDTH } from "./dimensions";
+import { OG_HEIGHT, OG_WIDTH } from "./dimensions";
 import {
   headlineSize,
   HAIRLINE,
+  imageDataUri,
   INK,
   LOCKUP_ON_PAPER,
   LOCKUP_ON_SCRIM,
@@ -20,18 +20,9 @@ import {
 
 async function loadCover(coverImagePath: string): Promise<string | undefined> {
   try {
-    const imagePath = resolveCoverPath(coverImagePath);
-    // Covers are 2560x1440, so the scaled frame is still within their native
-    // resolution. Re-encoding as JPEG keeps the embedded base64 well below
-    // libxml2's 10MB parse limit.
-    const resized = await sharp(imagePath)
-      .resize(OG_WIDTH * OG_SCALE, OG_HEIGHT * OG_SCALE, {
-        fit: "cover",
-        position: "centre",
-      })
-      .jpeg({ quality: 82, mozjpeg: true })
-      .toBuffer();
-    return `data:image/jpeg;base64,${resized.toString("base64")}`;
+    // Covers are 2560x1440, so the 2x frame is still within their native
+    // resolution; the renderer centre-crops them to 1.91:1 itself.
+    return await imageDataUri(resolveCoverPath(coverImagePath));
   } catch (error) {
     console.error("OG Image - Failed to load:", coverImagePath, error);
     return undefined;

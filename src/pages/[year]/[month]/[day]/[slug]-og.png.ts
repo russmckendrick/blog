@@ -116,7 +116,7 @@ export const GET: APIRoute = async function get({ props }) {
 
   // Generate a hash based on the content
   const hash = crypto.createHash('md5');
-  hash.update('og-design:reading-room-scrim-v1'); // bump to invalidate cached renders after a redesign
+  hash.update('og-design:reading-room-scrim-v3'); // bump to invalidate cached renders after a redesign
   hash.update(JSON.stringify({ title, description, meta }));
 
   // Add cover image content hash if it exists

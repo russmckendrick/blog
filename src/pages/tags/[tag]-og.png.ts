@@ -49,7 +49,7 @@ export const GET: APIRoute = async function get({ props }) {
   const { title, description } = props as Props
 
   const hash = crypto.createHash('md5')
-  hash.update('og-design:reading-room-scrim-v2') // bump to invalidate cached renders after a redesign
+  hash.update('og-design:reading-room-scrim-v3') // bump to invalidate cached renders after a redesign
   hash.update(JSON.stringify({ kind: 'tag', title, description, art: SECTION.digest }))
   const digest = hash.digest('hex')
   const cacheFile = path.join(CACHE_DIR, `${digest}.png`)

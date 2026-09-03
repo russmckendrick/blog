@@ -1,4 +1,5 @@
 import React from "react";
+import fs from "node:fs/promises";
 import path from "path";
 import lockup from "../../data/logo-lockup.json";
 
@@ -15,8 +16,9 @@ export const NIGHT = "22, 20, 17";
 export const NIGHT_INK = "#FFFFFF";
 export const NIGHT_MIST = "rgba(255, 255, 255, 0.82)";
 
-// Satori ships no emoji font, so pictographs render as tofu — and they
-// don't belong on the card anyway.
+// Pictographs don't belong on the card: the renderer would need a CDN fetch
+// per emoji to draw them, and a headline set in Schibsted Grotesk reads better
+// without them anyway.
 export const stripEmoji = (text: string) =>
   text
     .replace(/[\p{Extended_Pictographic}\u{FE0F}\u{200D}]/gu, "")
@@ -83,6 +85,30 @@ export const LOCKUP_ON_SCRIM = () =>
     "rgba(255, 255, 255, 0.72)",
     "#BDC3C7",
   );
+
+const IMAGE_MIME: Record<string, string> = {
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".webp": "image/webp",
+  ".gif": "image/gif",
+  ".svg": "image/svg+xml",
+};
+
+/**
+ * Reads an image file and returns it as a data URI for an <img> on the card.
+ *
+ * The bytes go in as they are: Takumi decodes them natively and `objectFit:
+ * "cover"` does the cropping, so there is no resize step and no size ceiling
+ * to stay under. Throws on a missing file or unknown extension so callers can
+ * decide what a missing image means for their card.
+ */
+export async function imageDataUri(filePath: string): Promise<string> {
+  const mime = IMAGE_MIME[path.extname(filePath).toLowerCase()];
+  if (!mime) throw new Error(`Unsupported image type: ${filePath}`);
+  const bytes = await fs.readFile(filePath);
+  return `data:${mime};base64,${bytes.toString("base64")}`;
+}
 
 export function resolveCoverPath(coverImagePath: string): string {
   if (path.isAbsolute(coverImagePath)) return coverImagePath;

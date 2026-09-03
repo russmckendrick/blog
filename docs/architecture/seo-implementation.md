@@ -24,7 +24,7 @@ graph TD
     H --> L[BreadcrumbList Schema]
 
     B --> M[OG Image]
-    M --> N[satori + sharp]
+    M --> N[Takumi + sharp]
     N --> O["Generated 2400x1260 PNG"]
 
     B --> P[Sitemap]
@@ -197,7 +197,7 @@ Added to all blog posts:
 
 ### OpenGraph Image Generation
 
-**Packages**: `satori` (JSX to SVG) + `sharp` (SVG to PNG)
+**Packages**: `@takumi-rs/core` + `@takumi-rs/helpers` (JSX to raw pixels, natively) + `sharp` (PNG encode only)
 
 **Files**:
 - Posts: `src/pages/[year]/[month]/[day]/[slug]-og.png.ts`
@@ -243,12 +243,12 @@ Section art is furniture, not post art, so it is briefed against the scrim rathe
 
 **Features**:
 - Auto-generated for all blog posts
-- Layout box: 1200×630 (standard OG size), rasterised at `OG_SCALE` (currently 2) for 2400×1260 output. `BaseHead.astro` reads the same constants for `og:image:width`/`height`, so the declared size cannot drift from the rendered one. Satori draws text as vector paths, so only the embedded cover is supplied at the scaled size. Cards are roughly 3.4x heavier at 2 than at 1 (photographic cards land ~1.4–2MB, inside the 5MB ceiling X applies to shared images); `dimensions.ts` is the single dial.
-- Design: Reading Room — paper `#FBFAF7`, ink `#1E1C18`, mist `#6F6A61`, hairline `#ECE8E1`. Emoji are stripped from titles and descriptions (satori ships no emoji font).
+- Layout box: 1200×630 (standard OG size), rasterised at `OG_SCALE` (currently 2) for 2400×1260 output. `BaseHead.astro` reads the same constants for `og:image:width`/`height`, so the declared size cannot drift from the rendered one. `createImage.ts` hands `OG_SCALE` to Takumi as `devicePixelRatio` with the canvas at the scaled size, so text, chrome and embedded images all come out at 2x; covers and album art are embedded as their raw file bytes and the renderer's `object-fit: cover` does the cropping. Cards are roughly 3.4x heavier at 2 than at 1; `dimensions.ts` is the single dial.
+- Design: Reading Room — paper `#FBFAF7`, ink `#1E1C18`, mist `#6F6A61`, hairline `#ECE8E1`. Emoji are stripped from titles and descriptions; they don't belong on the card, and drawing them would mean a CDN fetch per glyph at build time.
 - Brand: the masthead lockup is rebuilt as an inline SVG from `src/data/logo-lockup.json`, the same generated file `Logo.astro` reads. On paper the mark keeps its own palette; over photography it reverses to a flat white monitor — the cloud artwork is dropped there because at 32px any contrast between the two cloud shapes reads as a pair of spectacles.
-- Fonts: Schibsted Grotesk 400/500/700 as static TTFs in `src/images/opengraph/fonts/`. Satori reads TTF/OTF only, and renders a variable font at its default instance, so these are cut from `src/assets/fonts/schibsted-grotesk-variable-latin.woff2` with fontTools — see the recipe in `createImage.ts`. **`GPOS` is stripped**: satori misapplies kern pairs involving the space glyph, which opens a visible double gap after words ending in `n` ("Token Use" renders as "Token  Use"). Kerning is no loss at display sizes.
-- Encoding: truecolour PNG. Quantising saves under 5% on scrim cards while dithering the semi-transparent wordmark into visible speckle.
-- Cached: `node_modules/.cache/og-images/`, keyed by content **plus a design-version salt** in every `*-og.png.ts` route (`og-design:reading-room-scrim-v2`, and `og-design:tunes-record-v1` on the two tunes entity routes) — bump the salt after any OG redesign. Source-image swaps invalidate themselves through a byte digest and need no bump: `sectionCover`'s for section art, `artDigest`'s for album and artist artwork. Otherwise CI's cached `node_modules` will keep serving old renders
+- Fonts: the site's own `src/assets/fonts/schibsted-grotesk-variable-latin.woff2`, registered once per process with the `wght` axis live, so the cards' `fontWeight` 400/500/700 map straight onto it. No instanced copies, no fontTools, and kerning is intact (the satori-era `GPOS` strip and its "Token  Use" double gap went with satori).
+- Encoding: Takumi returns raw RGBA and sharp encodes the PNG. Cards are truecolour unless that exceeds the 2.5MB budget in `createImage.ts`, in which case they are quantised to a 256-colour palette. Photographic scrim cards are the ones that exceed it (they land ~1.3–1.6MB, as they always have) and the scrim hides the quantisation; paper cards (Plate and the tunes record) fit the budget in truecolour, which matters because on paper the artwork uses up the palette and the paper takes the nearest entry — the tinted polygons and spikes the old cards carried. sharp treats any palette option (`effort`, `quality`, `colours`, `dither`) as opting in to quantisation, which is how the old `effort: 4` quietly made every card a palette PNG; `palette: false` is explicit for that reason.
+- Cached: `node_modules/.cache/og-images/`, keyed by content **plus a design-version salt** in every `*-og.png.ts` route (`og-design:reading-room-scrim-v3`, and `og-design:tunes-record-v2` on the two tunes entity routes) — bump the salt after any OG redesign, and after a renderer or encoder change, since those move pixels without touching content. Source-image swaps invalidate themselves through a byte digest and need no bump: `sectionCover`'s for section art, `artDigest`'s for album and artist artwork. Otherwise CI's cached `node_modules` will keep serving old renders
 
 **Generated URLs**:
 ```

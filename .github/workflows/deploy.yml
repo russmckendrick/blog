@@ -59,12 +59,10 @@ jobs:
 
       # Note: Main Astro image processing cache removed - no longer needed!
       # Blog post images now use Cloudflare Image Transformations (on-demand CDN processing).
-      # We only cache OpenGraph image generation (astro-og-canvas) which still uses Sharp.
+      # The cache above holds the OpenGraph cards rendered by Takumi (node_modules/.cache/og-images).
 
       - name: 🏗️ Build site
-        run: |
-          mkdir -p node_modules/.astro-og-canvas
-          pnpm run build
+        run: pnpm run build
         env:
           NODE_ENV: production
           INSTAPAPER_CONSUMER_KEY: ${{ secrets.INSTAPAPER_CONSUMER_KEY }}

@@ -67,7 +67,7 @@ graph TB
 | **Analytics** | Plausible | Privacy-focused analytics |
 | **Syntax Highlighting** | Expressive Code | Code block styling |
 | **Image Gallery** | LightGallery | Lightbox image viewer |
-| **OpenGraph Images** | satori + sharp | Auto-generated OG images |
+| **OpenGraph Images** | Takumi (`@takumi-rs/core`) + sharp | Auto-generated OG images |
 
 ## Data Flow
 
@@ -398,7 +398,7 @@ graph TD
     C --> G[Canonical URL]
 
     A --> H[OG Image Generation]
-    H --> I[satori + sharp]
+    H --> I[Takumi + sharp]
     I --> J[2400x1260 PNG]
     J --> E
 

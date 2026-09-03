@@ -13,7 +13,7 @@ This workflow handles building the Astro site and deploying it to Cloudflare Wor
 - **Pull Request** targeting the `main` branch.
 
 ### Process
-1.  **Setup**: Check out code, setup PNPM, and setup Node.js v20.
+1.  **Setup**: Check out code, setup PNPM, and setup Node.js v24.
 2.  **Dependencies**: Install dependencies using `pnpm install --frozen-lockfile`.
 3.  **Audit**: Run `pnpm audit` to check for security vulnerabilities.
 4.  **Cache**: Restore `node_modules/.cache` to speed up builds (specifically for OpenGraph image generation).

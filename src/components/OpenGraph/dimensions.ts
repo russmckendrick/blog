@@ -1,10 +1,10 @@
 // Card geometry, kept dependency-free so BaseHead can declare og:image:width
-// and og:image:height without pulling satori and sharp into every page's
-// module graph.
+// and og:image:height without pulling the renderer into every page's module
+// graph.
 //
 // The card is laid out at the 1200x630 OpenGraph standard and rasterised at a
-// multiple of it. Satori draws text as vector paths, so only the embedded cover
-// has to be supplied at the larger size — see loadCover in OG.tsx.
+// multiple of it: createImage.ts hands OG_SCALE to Takumi as the device pixel
+// ratio, so text, chrome and embedded covers all come out at the larger size.
 export const OG_WIDTH = 1200
 export const OG_HEIGHT = 630
 

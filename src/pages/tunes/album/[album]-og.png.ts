@@ -47,7 +47,7 @@ export const GET: APIRoute = async function get({ props }) {
     props as Props
 
   const hash = crypto.createHash('md5')
-  hash.update('og-design:tunes-record-v1') // bump to invalidate cached renders after a redesign
+  hash.update('og-design:tunes-record-v2') // bump to invalidate cached renders after a redesign
   hash.update(
     JSON.stringify({
       kind: 'tunes-album',

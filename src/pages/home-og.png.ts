@@ -14,7 +14,7 @@ const SECTION = sectionCover('home')
 
 export const GET: APIRoute = async function get() {
   const hash = crypto.createHash('md5')
-  hash.update('og-design:reading-room-scrim-v2') // bump to invalidate cached renders after a redesign
+  hash.update('og-design:reading-room-scrim-v3') // bump to invalidate cached renders after a redesign
   hash.update(JSON.stringify({ kind: 'home', title: SITE_TITLE, description: SITE_DESCRIPTION, art: SECTION.digest }))
   const digest = hash.digest('hex')
   const cacheFile = path.join(CACHE_DIR, `${digest}.png`)
