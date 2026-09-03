@@ -16,7 +16,7 @@ This workflow handles building the Astro site and deploying it to Cloudflare Wor
 1.  **Setup**: Check out code, setup PNPM, and setup Node.js v24.
 2.  **Dependencies**: Install dependencies using `pnpm install --frozen-lockfile`.
 3.  **Audit**: Run `pnpm audit` to check for security vulnerabilities.
-4.  **Cache**: Restore `node_modules/.cache` to speed up builds (specifically for OpenGraph image generation).
+4.  **Cache**: Restore `node_modules/.cache`, which holds the rendered OpenGraph cards (`og-images`, ~2.5 GB for ~2,000 cards at roughly a second each to render) plus the small hero-colour and link-preview caches. Restore and save are separate steps (`actions/cache/restore` before the build, `actions/cache/save` with `if: always()` after it) keyed on `og-cache-{os}-{run_id}`: the key never matches exactly, so restore falls through to the newest entry via `restore-keys` and save always writes a fresh one. A single `actions/cache` step keyed on a content hash only saves on a miss, which is how the Takumi migration (which re-salted every card) left CI hitting a stale cache and re-rendering all cards on every deploy - 28 minutes of a 30 minute run. Expect one slow run after any cache-invalidating change; the next run picks up the saved renders.
 5.  **Build**: Run `pnpm run build` which includes:
     - `prebuild`: Extract hero colors and cache LinkPreview images
     - `astro build`: Generate static assets and worker script

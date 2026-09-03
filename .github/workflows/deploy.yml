@@ -48,18 +48,25 @@ jobs:
       - name: 🔒 Security audit
         run: pnpm audit
 
-      - name: 💾 Build Cache
-        uses: actions/cache@v5
+      # node_modules/.cache holds the OpenGraph cards rendered by Takumi
+      # (og-images, ~2.5 GB for ~2,000 cards at about a second each to render)
+      # plus the small hero-colour and link-preview caches. Blog images need no
+      # cache: they are transformed on demand by Cloudflare.
+      #
+      # Restore and save are split on purpose. The key carries the run id so it
+      # never matches exactly: restore always falls through to the newest
+      # og-cache-* entry, and save always writes a fresh one at the end of the
+      # job. The previous single actions/cache step only saved on a miss of its
+      # content-hash key, so after the Takumi migration re-salted every card the
+      # key kept hitting a pre-migration cache, nothing new was ever saved, and
+      # every deploy re-rendered all ~2,000 cards (28 minutes of a 30 minute run).
+      - name: 💾 Restore build cache
+        uses: actions/cache/restore@v5
         with:
           path: node_modules/.cache
-          key: build-cache-${{ runner.os }}-${{ hashFiles('src/assets/**/*', 'src/content/**/*') }}
+          key: og-cache-${{ runner.os }}-${{ github.run_id }}
           restore-keys: |
-            build-cache-${{ runner.os }}-
-
-
-      # Note: Main Astro image processing cache removed - no longer needed!
-      # Blog post images now use Cloudflare Image Transformations (on-demand CDN processing).
-      # The cache above holds the OpenGraph cards rendered by Takumi (node_modules/.cache/og-images).
+            og-cache-${{ runner.os }}-
 
       - name: 🏗️ Build site
         run: pnpm run build
@@ -69,6 +76,14 @@ jobs:
           INSTAPAPER_CONSUMER_SECRET: ${{ secrets.INSTAPAPER_CONSUMER_SECRET }}
           INSTAPAPER_USERNAME: ${{ secrets.INSTAPAPER_USERNAME }}
           INSTAPAPER_PASSWORD: ${{ secrets.INSTAPAPER_PASSWORD }}
+
+      # Saved even if a later step fails: every card rendered so far is valid.
+      - name: 💾 Save build cache
+        if: always()
+        uses: actions/cache/save@v5
+        with:
+          path: node_modules/.cache
+          key: og-cache-${{ runner.os }}-${{ github.run_id }}
 
       - name: 📊 Build summary
         run: |

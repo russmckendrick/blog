@@ -17,12 +17,10 @@
 # Listing redirects
 # /blog/ paginated the same posts as the homepage feed (/ and /page/N/) and
 # nothing linked to it, so the route was removed. /page/ without a number never
-# existed but Google kept requesting it. Tag pagination is /tags/{tag}/{n}/;
-# the /page/{n}/ form is the old Hugo pattern.
+# existed but Google kept requesting it. The wildcard forms of both live in the
+# dynamic block at the end of this file.
 /blog/ / 301
-/blog/* / 301
 /page/ / 301
-/tags/:tag/page/:n/ /tags/:tag/:n/ 301
 
 # Tag redirects
 /tag/ansible/ /tags/ansible/ 301
@@ -146,3 +144,13 @@
 # Misc redirects
 /terraform_ /tags/infrastructure-as-code 301
 /vagrant /tags/ 301
+
+# Dynamic redirects - KEEP THIS BLOCK LAST.
+# Cloudflare parses _redirects top to bottom and, once it meets a rule with a
+# splat or placeholder, counts every later rule as dynamic too. Dynamic rules
+# are capped at 100 (static at 2,000), so a wildcard placed above the static
+# rules turns them all dynamic and the deploy fails with
+# "Maximum number of dynamic _redirects rules limit of 100 exceeded".
+# Tag pagination is /tags/{tag}/{n}/; the /page/{n}/ form is the old Hugo pattern.
+/blog/* / 301
+/tags/:tag/page/:n/ /tags/:tag/:n/ 301
