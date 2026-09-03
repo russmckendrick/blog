@@ -323,13 +323,22 @@ a.tag-editorial:focus-visible {
   transition: background-color var(--dur-quick) ease, border-color var(--dur-quick) ease;
 }
 
-/* Leading glyph, in mist on every pill - the Use with AI sparkle included, so
-   no one control in the row outweighs the others. */
+/* Leading glyph, full colour on every pill: the local sparkle, RSS and Google
+   SVGs in src/icons/ carry their own fills, so `color` only reaches the GitHub
+   mark, which is brand black - swapped to GitHub's light foreground on dark. */
 .action-pill-icon {
   width: 1rem;
   height: 1rem;
   flex: none;
   color: var(--color-on-surface-variant);
+}
+
+.action-pill-icon--github {
+  color: #24292f;
+}
+
+.dark .action-pill-icon--github {
+  color: #f0f6fc;
 }
 
 a.action-pill:hover,

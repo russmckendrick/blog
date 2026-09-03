@@ -52,7 +52,7 @@ const providers = [
 		aria-controls={menuId}
 		data-uwai-trigger
 	>
-		<Icon name="tabler:sparkles" class="action-pill-icon" aria-hidden="true" />
+		<Icon name="sparkles-color" class="action-pill-icon" aria-hidden="true" />
 		<span>Use with AI</span>
 		<Icon name="tabler:chevron-down" class="uwai-chev" aria-hidden="true" />
 	</button>
@@ -110,9 +110,10 @@ const providers = [
 		display: inline-flex;
 	}
 
-	/* Trigger box and sparkle come from .action-pill / .action-pill-icon in
-	   global.css, shared with the pills beside it so all four glyphs sit in
-	   the same mist. Only the chevron is specific to this control. */
+	/* Trigger box and sparkle sizing come from .action-pill / .action-pill-icon
+	   in global.css, shared with the pills beside it; the sparkle itself is the
+	   full-colour src/icons/sparkles-color.svg. Only the chevron is specific to
+	   this control. */
 
 	.uwai-chev {
 		width: 0.875rem;

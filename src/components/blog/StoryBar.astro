@@ -34,16 +34,16 @@ const { tags = [], markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.
 		<UseWithAI id="use-with-ai-bar" markdownHref={markdownHref} pageUrl={pageUrl} />
 		{editUrl && (
 			<a href={editUrl} rel="noopener noreferrer edit" target="_blank" class="action-pill" title={editTitle}>
-				<Icon name="simple-icons:github" class="action-pill-icon" aria-hidden="true" />
+				<Icon name="simple-icons:github" class="action-pill-icon action-pill-icon--github" aria-hidden="true" />
 				<span>Suggest edits</span>
 			</a>
 		)}
 		<a href={rssHref} class="action-pill">
-			<Icon name="tabler:rss" class="action-pill-icon" aria-hidden="true" />
+			<Icon name="rss-color" class="action-pill-icon" aria-hidden="true" />
 			<span>RSS</span>
 		</a>
 		<a href={PREFERRED_SOURCE.url} rel="noopener noreferrer" target="_blank" class="action-pill" title={PREFERRED_SOURCE.title}>
-			<Icon name="simple-icons:google" class="action-pill-icon" aria-hidden="true" />
+			<Icon name="google-color" class="action-pill-icon" aria-hidden="true" />
 			<span>{PREFERRED_SOURCE.text}</span>
 		</a>
 	</div>
