@@ -2,12 +2,9 @@
 
 ## Always Relevant Rules
 
-- Prefer `pnpm` for all package and script commands.
 - Run `npx astro check` after code, component, schema, or content-model changes; add `pnpm run astro -- sync` when content collections or the schema in `src/content.config.ts` change.
 - Keep code style consistent with the repo: 2-space indent, no semicolons, PascalCase components, kebab-case route files.
-- Blog posts belong in `src/content/blog/` as `YYYY-MM-DD-slug.mdx`.
 - Tunes posts belong in `src/content/tunes/`, usually as directory-based entries with `index.mdx`. Tunes use flat `heroImage:` only - the `cover` object is no longer accepted.
-- Glossary entries live in `src/content/glossary/{term-slug}.mdx`; books live in `src/content/books/{book-slug}.mdx` (each book becomes `/books/{slug}/`).
 - Use `sanitize-html` for HTML sanitization. Do not add regex-based sanitization.
 - Update every affected doc in `docs/` in the same change as the code, checking the index in `docs/README.md`. This applies to every run, not just when you already know a doc covers the topic - if your change introduces, removes, or alters behaviour any doc references, update that doc.
 
