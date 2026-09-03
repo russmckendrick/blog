@@ -121,7 +121,9 @@ export function createBlogPostingSchema({
     },
     isPartOf: {
       '@type': 'Blog',
-      '@id': new URL('/blog/', siteUrl).toString(),
+      // The homepage is the blog's listing; the old /blog/ archive route was
+      // an orphaned duplicate of it and now redirects here.
+      '@id': new URL('/', siteUrl).toString(),
       name: SITE_TITLE
     },
     keywords: keywords.join(', '),

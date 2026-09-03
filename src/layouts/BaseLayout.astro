@@ -13,13 +13,15 @@ interface Props {
 	description?: string;
 	image?: any;
 	keywords?: string[];
+	noindex?: boolean;
 }
 
 const {
 	title = SITE_TITLE,
 	description = SITE_DESCRIPTION,
 	image,
-	keywords
+	keywords,
+	noindex
 } = Astro.props;
 
 // Titles that already carry the site name - the homepage, the paginated feed,
@@ -35,7 +37,7 @@ const pageTitle = title.includes(SITE_TITLE) ? title : `${title} | ${SITE_TITLE}
 	    stylesheet lands in the <body> and the top of the page paints unstyled
 	    on slow connections (CLS ~1.0 in Lighthouse). */}
 	<head>
-		<BaseHead title={pageTitle} description={description} image={image} keywords={keywords} />
+		<BaseHead title={pageTitle} description={description} image={image} keywords={keywords} noindex={noindex} />
 		<slot name="head" />
 	</head>
 	<body class="surface">

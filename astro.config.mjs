@@ -12,6 +12,7 @@ import { rehypeExternalLinks } from './src/utils/rehype-external-links.ts';
 import { rehypeGlossaryLinks } from './src/utils/rehype-glossary-links.ts';
 import { getGlossaryTermMap } from './src/utils/glossary-terms.ts';
 import { getPostModifiedDateMap } from './src/utils/post-dates.ts';
+import { shouldIncludeInSitemap } from './src/utils/sitemap-filter.ts';
 import { expressiveCodeA11yPlugin } from './src/utils/expressive-code-a11y-plugin.ts';
 import pagefind from 'astro-pagefind';
 
@@ -108,7 +109,9 @@ export default defineConfig({
 		astroIcon(),
 		pagefind(),
 		sitemap({
-			filter: (page) => !page.includes('/draft/') && !page.includes('/avatars/'),
+			// Drafts, avatars, search, pagination and thin tunes browse pages stay
+			// out of the sitemap - see src/utils/sitemap-filter.ts for the policy.
+			filter: shouldIncludeInSitemap,
 			changefreq: 'weekly',
 			priority: 0.5,
 			serialize: (item) => {

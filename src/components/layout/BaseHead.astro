@@ -17,13 +17,15 @@ interface Props {
 	lastModified?: Date;
 	author?: string;
 	analytics?: Record<string, string>;
+	/** Emit `noindex` so the page is crawlable but kept out of results (search, utility pages). */
+	noindex?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Default fallback image (public URL)
 const defaultImage = '/images/blog-cover.png';
-const { title, description, image = defaultImage, keywords = SITE_KEYWORDS, datePublished, dateModified, lastModified, author, analytics = { content_type: 'page' } } = Astro.props;
+const { title, description, image = defaultImage, keywords = SITE_KEYWORDS, datePublished, dateModified, lastModified, author, analytics = { content_type: 'page' }, noindex = false } = Astro.props;
 
 // Use lastModified if available, otherwise fall back to dateModified
 const effectiveModifiedDate = lastModified || dateModified;
@@ -62,7 +64,7 @@ const imageURL = image?.startsWith('http')
 		image: imageURL
 	}}
 	robots={{
-		index: true,
+		index: !noindex,
 		follow: true
 	}}
 	additionalMetaTags={[

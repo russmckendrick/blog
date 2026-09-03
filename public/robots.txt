@@ -5,5 +5,9 @@ User-agent: *
 Allow: /
 Disallow: /draft/
 Disallow: /_astro/
+# Cloudflare's own endpoints. Transformed images stay crawlable for image
+# search; the specific Allow wins over the broader Disallow.
+Allow: /cdn-cgi/image/
+Disallow: /cdn-cgi/
 
 Sitemap: https://www.russ.cloud/sitemap-index.xml
