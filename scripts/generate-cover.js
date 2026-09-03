@@ -136,6 +136,8 @@ async function readDraftText(source) {
   return fs.readFile(filePath, 'utf-8')
 }
 
+const HTML_ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'" }
+
 /**
  * Reduce an MDX body to plain-ish text for the prompt model: drop code
  * fences, imports, and embed components, keep the prose and its structure.
@@ -157,13 +159,10 @@ function extractPostText(body) {
   // Strip JSX/HTML tags; inner text of wrapping components is kept
   text = sanitizeHtml(text, { allowedTags: [], allowedAttributes: {} })
 
-  // Undo sanitize-html's entity encoding of plain prose
-  text = text
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
+  // Undo sanitize-html's entity encoding of plain prose. One pass with a
+  // lookup table so each entity is decoded exactly once - decoding &amp;
+  // in a separate earlier pass would let "&amp;lt;" collapse to "<"
+  text = text.replace(/&(amp|lt|gt|quot|#39);/g, (_match, entity) => HTML_ENTITIES[entity])
 
   // Markdown images and links become their text
   text = text.replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1')
