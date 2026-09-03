@@ -113,6 +113,15 @@ export const EDIT_POST = {
   appendFilePath: true,
 };
 
+// Google "preferred sources" deeplink - the same URL Google's own button opens,
+// minus their publisher.js. Bare domain rather than www. so it matches what the
+// preferences tool lists.
+export const PREFERRED_SOURCE = {
+  url: "https://www.google.com/preferences/source?q=russ.cloud",
+  text: "Follow on Google",
+  title: "Add russ.cloud as a preferred source on Google",
+};
+
 export const ERROR_404 = {
   title: "404 - Page Not Found",
   description: "The page you are looking for does not exist",

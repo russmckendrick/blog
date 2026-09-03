@@ -323,8 +323,8 @@ a.tag-editorial:focus-visible {
   transition: background-color var(--dur-quick) ease, border-color var(--dur-quick) ease;
 }
 
-/* Leading glyph. Muted by default so the sparkle on Use with AI - which keeps
-   the secondary accent - stays the one that draws the eye. */
+/* Leading glyph, in mist on every pill - the Use with AI sparkle included, so
+   no one control in the row outweighs the others. */
 .action-pill-icon {
   width: 1rem;
   height: 1rem;

@@ -260,7 +260,7 @@ standfirst — the description belongs to feed rows and meta tags only): a
 cartoons, so the no-photos rule holds — there is no photo anywhere in the
 design) beside `Russ McKendrick · 9 min read · 19 Jul 2026` (name in
 ink 500, the rest mist, one line). Then a hairline **storybar**
-(`StoryBar.astro`): tags left, `Read as Markdown · Suggest edits · RSS`
+(`StoryBar.astro`): tags left, `Use with AI · Suggest edits · RSS · Follow on Google`
 right, rendered below 1200px only — it carries what the rail would show if
 there were a margin to put it in, so the two never appear together. Hero figure at
 column width with a centred mist caption. A **reading-progress rule** — 2px
@@ -269,8 +269,9 @@ article pages only. An **article rail** (`ArticleRail.astro`) sits open and stic
 margin beside the centred column on viewports ≥1200px — hairline-left, three
 headed sections: **Contents** (13px mist entries, current section in ink 600
 via IntersectionObserver, only when `showToc`), **Tags** (small tinted pills,
-`.tag-editorial--sm`), and **Actions** (Read as Markdown · Suggest edits ·
-RSS). Below 1200px the rail disappears and the storybar takes over its tags
+`.tag-editorial--sm`), and **Actions** (Use with AI · Suggest edits · RSS ·
+Follow on Google — the last a plain deeplink to Google's preferred-source
+tool, monochrome G). Below 1200px the rail disappears and the storybar takes over its tags
 and actions under the byline; Contents stays rail-only, so headings and the
 progress rule carry wayfinding and there is still no inline table of
 contents. Feed-row metas show up to three small tag pills. Body in Literata with ink-coloured

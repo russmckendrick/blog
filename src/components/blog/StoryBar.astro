@@ -2,6 +2,7 @@
 import { getTagUrl, getTagName, getTagColorClasses } from '../../utils/tags';
 import UseWithAI from './UseWithAI.astro';
 import { Icon } from 'astro-icon/components';
+import { PREFERRED_SOURCE } from '../../consts';
 
 /**
  * Hairline storybar: tags left, actions right, sitting directly under the
@@ -41,6 +42,10 @@ const { tags = [], markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.
 			<Icon name="tabler:rss" class="action-pill-icon" aria-hidden="true" />
 			<span>RSS</span>
 		</a>
+		<a href={PREFERRED_SOURCE.url} rel="noopener noreferrer" target="_blank" class="action-pill" title={PREFERRED_SOURCE.title}>
+			<Icon name="simple-icons:google" class="action-pill-icon" aria-hidden="true" />
+			<span>{PREFERRED_SOURCE.text}</span>
+		</a>
 	</div>
 </div>
 
@@ -79,7 +84,7 @@ const { tags = [], markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.
 	}
 
 	/* Narrow screens give the actions a block of their own: the AI trigger
-	   across the top, the two links splitting the row beneath. Above 640px
+	   across the top, the links splitting the rows beneath 2-up. Above 640px
 	   there is room for them to sit inline beside the tags. */
 	@media (max-width: 639px) {
 		.storybar {
@@ -108,9 +113,10 @@ const { tags = [], markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.
 			margin-left: auto;
 		}
 
-		/* A post with no editUrl leaves RSS on its own - let it span rather
-		   than sit at half width with a gap beside it. */
-		.storybar-actions .action-pill:last-child:nth-child(2) {
+		/* Three links after the trigger leave the last on its own at the
+		   bottom (with no editUrl the two fill the row). Let the orphan span
+		   rather than sit at half width with a gap beside it. */
+		.storybar-actions .action-pill:last-child:nth-child(4) {
 			grid-column: 1 / -1;
 		}
 	}
