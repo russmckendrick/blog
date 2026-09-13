@@ -85,7 +85,10 @@ node scripts/generate-cover.js --text=<file|-> --output=<path> [options]
 Generates (or regenerates) the cover for a blog post from its actual content.
 The post body is reduced to prose (frontmatter, embeds, imports, and code
 fences stripped), GPT-5.4 designs an image prompt from it, and OpenAI
-`gpt-image-2` (via FAL, 2560×1440 at high quality) renders the image. **No style constraints are imposed** - the
+`gpt-image-2.5` (via FAL, 2560×1440 at high quality) renders the image. A content-policy
+refusal drops to `fal-ai/nano-banana-2` at 2K/16:9 rather than failing the run; both are
+overridable with `COVER_IMAGE_MODEL` and `COVER_IMAGE_FALLBACK_MODEL` (`none` disables the
+fallback). **No style constraints are imposed** - the
 prompt model has creative freedom over style, medium, and concept, with a
 default lean toward photographic realism, and nothing is appended to its
 output. The only hard rules are defect guards: no text or lettering of any

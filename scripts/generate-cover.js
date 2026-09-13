@@ -11,6 +11,7 @@ import sanitizeHtml from 'sanitize-html'
 import dotenv from 'dotenv'
 import OpenAI from 'openai'
 import { fal } from '@fal-ai/client'
+import { isContentPolicyViolation } from './lib/fal-content-policy.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -18,18 +19,47 @@ const __dirname = path.dirname(__filename)
 const BLOG_DIR = path.join(__dirname, '..', 'src', 'content', 'blog')
 const ASSETS_DIR = path.join(__dirname, '..', 'src', 'assets')
 
-const IMAGE_MODEL = 'openai/gpt-image-2'
+const IMAGE_MODEL = process.env.COVER_IMAGE_MODEL || 'openai/gpt-image-2.5/sunburst/text-to-image'
+// Dropped to when the primary refuses on a content-policy violation - nano-banana-2 moderates
+// more permissively than the GPT models. "none" disables it.
+const DEFAULT_FALLBACK_IMAGE_MODEL = 'fal-ai/nano-banana-2'
 const PROMPT_MODEL = 'gpt-5.4'
-// gpt-image-2: dimensions must be multiples of 16; 2560x1440 is the model's
-// recommended upper reliability boundary (2K, exact 16:9)
-const FAL_INPUT = { image_size: { width: 2560, height: 1440 }, quality: 'high', num_images: 1, output_format: 'png' }
+// GPT Image: dimensions must be multiples of 16; 2560x1440 is the model's recommended upper
+// reliability boundary (2K, exact 16:9). Nano Banana takes an aspect ratio and resolution
+// instead, so each model gets its own input shape.
+const COVER_IMAGE_SIZE = { width: 2560, height: 1440 }
+
+function buildImageInput(model, prompt) {
+  if (model.includes('nano-banana')) {
+    return {
+      prompt,
+      aspect_ratio: '16:9',
+      resolution: '2K',
+      num_images: 1,
+      output_format: 'png',
+      safety_tolerance: '5',
+      limit_generations: true,
+      enable_web_search: false
+    }
+  }
+
+  return { prompt, image_size: COVER_IMAGE_SIZE, quality: 'high', num_images: 1, output_format: 'png' }
+}
+
+// Primary first, then the fallback when one is configured and differs from the primary.
+function buildImageModelChain() {
+  const requested = process.env.COVER_IMAGE_FALLBACK_MODEL ?? DEFAULT_FALLBACK_IMAGE_MODEL
+  const fallback = String(requested).trim()
+  const disabled = !fallback || ['none', 'off'].includes(fallback.toLowerCase())
+  return disabled || fallback === IMAGE_MODEL ? [IMAGE_MODEL] : [IMAGE_MODEL, fallback]
+}
 const SMALL_WIDTH = 1400
 const SMALL_HEIGHT = 800
 const MAX_CONTENT_CHARS = 10000
 
 const SYSTEM_PROMPT = `You design cover images for blog posts. You will be given the post itself.
 Read it, work out what the post is really about, and write a prompt for an
-image generation model (gpt-image-2) that would make a striking, relevant
+image generation model (gpt-image-2.5) that would make a striking, relevant
 16:9 blog header image for it. Write the prompt in the order scene, subject,
 key details, constraints - and state the constraints explicitly at the end.
 
@@ -421,41 +451,66 @@ async function generateImage(prompt, outputPath, debug = false) {
 
   fal.config({ credentials: falKey })
 
-  const apiInput = { prompt, ...FAL_INPUT }
+  const modelChain = buildImageModelChain()
 
   if (debug) {
-    console.log(`  Using model: ${IMAGE_MODEL}`)
-    console.log(`  API payload:`, JSON.stringify(apiInput, null, 2))
+    console.log(`  Model chain: ${modelChain.join(' -> ')}`)
   }
 
   const spinner = createSpinner('Generating image with FAL.ai...')
 
   try {
-    spinner.start()
+    let imageUrl = null
+    let usedModel = null
 
-    const result = await fal.subscribe(IMAGE_MODEL, {
-      input: apiInput,
-      logs: debug,
-      onQueueUpdate: (update) => {
-        if (update.status === 'IN_QUEUE') {
-          spinner.update('Queued - waiting for FAL.ai...')
-        } else if (update.status === 'IN_PROGRESS') {
-          spinner.update('Generating image...')
-          if (debug) {
-            update.logs?.map(log => log.message).forEach(msg => console.log(`\n  [FAL] ${msg}`))
-          }
-        }
+    // Try each model in turn. Only content-policy refusals fall through - every other failure
+    // throws immediately, since retrying a broken request on a second model just wastes a call.
+    for (let i = 0; i < modelChain.length; i++) {
+      const model = modelChain[i]
+      const isLastModel = i === modelChain.length - 1
+      const apiInput = buildImageInput(model, prompt)
+
+      if (debug) {
+        console.log(`  Using model: ${model}`)
+        console.log(`  API payload:`, JSON.stringify(apiInput, null, 2))
       }
-    })
 
-    if (!result.data || !result.data.images || result.data.images.length === 0) {
-      spinner.fail('FAL.ai returned no images')
-      throw new Error('FAL.ai returned no images')
+      spinner.start()
+
+      try {
+        const result = await fal.subscribe(model, {
+          input: apiInput,
+          logs: debug,
+          onQueueUpdate: (update) => {
+            if (update.status === 'IN_QUEUE') {
+              spinner.update('Queued - waiting for FAL.ai...')
+            } else if (update.status === 'IN_PROGRESS') {
+              spinner.update('Generating image...')
+              if (debug) {
+                update.logs?.map(log => log.message).forEach(msg => console.log(`\n  [FAL] ${msg}`))
+              }
+            }
+          }
+        })
+
+        if (!result.data || !result.data.images || result.data.images.length === 0) {
+          spinner.fail('FAL.ai returned no images')
+          throw new Error('FAL.ai returned no images')
+        }
+
+        spinner.stop('Image generated')
+        imageUrl = result.data.images[0].url
+        usedModel = model
+        break
+      } catch (error) {
+        if (isContentPolicyViolation(error) && !isLastModel) {
+          spinner.fail(`${model} refused on content policy`)
+          console.warn(`  Falling back to ${modelChain[i + 1]}`)
+          continue
+        }
+        throw error
+      }
     }
-
-    spinner.stop('Image generated')
-
-    const imageUrl = result.data.images[0].url
 
     if (debug) {
       console.log(`  Generated image URL: ${imageUrl}`)
@@ -504,7 +559,7 @@ async function generateImage(prompt, outputPath, debug = false) {
     console.log(`    Original: ${originalWidth}×${originalHeight} → ${path.basename(outputPath)}`)
     console.log(`    Small:    ${SMALL_WIDTH}×${SMALL_HEIGHT} → ${path.basename(smallOutputPath)}`)
 
-    return { outputPath, smallOutputPath, originalWidth, originalHeight, prompt, imageUrl }
+    return { outputPath, smallOutputPath, originalWidth, originalHeight, prompt, imageUrl, model: usedModel }
   } catch (error) {
     let errorMessage = error.message
 
@@ -844,6 +899,12 @@ Output:
 Environment variables:
   FAL_KEY                 FAL.ai API key (required to generate)
   OPENAI_API_KEY          OpenAI API key (required unless --prompt is given)
+  COVER_IMAGE_MODEL       Override the image model (default
+                          openai/gpt-image-2.5/sunburst/text-to-image)
+  COVER_IMAGE_FALLBACK_MODEL
+                          Model to drop to when the primary refuses on a
+                          content-policy violation (default fal-ai/nano-banana-2,
+                          "none" to disable)
 
 Examples:
   # Generate a cover from a finished post

@@ -101,7 +101,7 @@ that represents that specific post (creative freedom over style and concept
 with a default lean toward photographic realism - the only hard rules are no
 text of any kind, no software UIs, no branding, and no watermarks; covers
 are pure visual interpretation), shows you the prompt for review/refinement,
-and generates the cover with OpenAI `gpt-image-2` via FAL:
+and generates the cover with OpenAI `gpt-image-2.5` via FAL:
 
 ```bash
 # 📝 PROMPT REVIEW

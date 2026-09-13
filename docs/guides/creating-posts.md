@@ -28,7 +28,7 @@ node scripts/generate-cover.js YYYY-MM-DD-slug.mdx
 
 The script reads the full post body (frontmatter, embeds, and code blocks are
 stripped down to the prose), has GPT-5.4 design an image prompt that represents
-that specific post, and generates the image with OpenAI `gpt-image-2` (via
+that specific post, and generates the image with OpenAI `gpt-image-2.5` (via
 FAL, at 2560×1440). No
 style constraints are imposed - the model has creative freedom over style,
 medium, mood, and concept, with a default lean toward photographic realism
