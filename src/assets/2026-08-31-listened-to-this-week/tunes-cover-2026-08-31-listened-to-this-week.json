@@ -6,55 +6,55 @@
   "lighting": null,
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Paper conservatory with a singing emblem fountain",
-  "creativeDirection": "A handcrafted mixed-media paper diorama combines torn-poster portraiture, symbolic collage, and stylized studio figures in a surreal indoor garden.",
-  "scene": "Inside a long abandoned glass conservatory viewed from slightly above eye level, a central fountain basin has been transformed into a stage-like paper garden, with aisles and metal framework receding wide across the 16:9 frame.",
+  "concept": "Paper parade around a singing totem",
+  "creativeDirection": "A handcrafted cut-paper and screenprint-style mural assembles the sources into one bold, theatrical collage landscape.",
+  "scene": "A frontal, slightly low-view look into a vast indoor parade hall where a towering ceremonial totem rises from a clean floor, with floating cut-paper relics and a distant human ensemble arranged like participants in a staged procession.",
   "elements": [
     {
       "source": 1,
-      "element": "the main fountain centerpiece is a large torn-paper sculptural face in yellow with angular purple features, rough green hair, red ear, and ripped white edges against dark blue backing panels"
+      "element": "the main totem is built from the stylized angular yellow face, enlarged into a sculptural cut-paper idol with green hair, a red ear, and a single red eye"
     },
     {
       "source": 2,
-      "element": "an oversized iridescent tongue becomes a curved waterfall-banner spilling from the face into the basin, with white teeth forming the lip of the fountain"
+      "element": "the tongue-and-lips emblem becomes a large banner-like mouth opening from the totem’s side, acting as the visual focal accent"
     },
     {
       "source": 3,
-      "element": "a single white stylized flower emblem rises cleanly from the basin as the most serene counterpoint, repeated only as carved linework on nearby planters"
+      "element": "the white flower emblem appears as a simple glowing crest suspended above and repeated minimally as floor inlays"
     },
     {
       "source": 4,
-      "element": "the five-person group appears once as life-size fashion figures arranged around the fountain, with the central woman in fuzzy light blue top and plaid skirt leading the pose while the other four flank her in a tight ensemble"
+      "element": "the six-person cast appears once as a small but distinct posterized procession in the midground, centered beneath the totem with the outstretched central figure leading"
     },
     {
       "source": 5,
-      "element": "the conservatory floor, hanging tags, and distant glass panes are threaded with outlined lettering fragments, butterflies, birds, tiny aircraft, stars, lips, and circular cutout medallions as secondary collage debris"
+      "element": "surreal floating collage fragments—butterflies, birds, zeppelin, vintage planes, stars, circular portraits, abstract blobs, flowers, and lips—drift through the upper space as supporting confetti-like iconography"
     }
   ],
   "palette": [
-    "acid yellow",
-    "deep blue",
-    "leaf green",
-    "purple",
-    "white",
-    "off-white"
+    "dark blue",
+    "off-white",
+    "yellow",
+    "olive green",
+    "red-orange",
+    "blue"
   ],
-  "mood": "playful, theatrical, slightly uncanny, celebratory",
+  "mood": "playful, iconic, ceremonial",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Drums-and-Wires.jpg",
       "album": "Drums and Wires",
       "artist": "",
-      "description": "A bold, graphic illustration of a stylized human face fills most of the square. The face is flat yellow with angular purple features and a small red circular eye, framed by rough green hair and a red ear. Behind it are torn-paper-like blocks of red and yellow on a dark blue background, with irregular white ripped edges around the shapes. The composition is asymmetrical and poster-like, with sharp brushy lines and high contrast.",
-      "signatureMotif": "stylized yellow face with angular purple features",
-      "medium": "graphic illustration with torn-paper collage styling",
+      "description": "A bold, graphic illustration of a stylized human face fills most of the square. The face is a flat yellow shape with angular dark blue features, a small red circular eye, green hair, and a red ear. Behind and around it are torn-paper-like blocks of red, white, and green on a dark blue background, creating a collage effect.",
+      "signatureMotif": "stylized angular yellow face",
+      "medium": "graphic collage-style illustration",
       "palette": [
         "yellow",
-        "purple",
+        "dark blue",
         "red",
         "green",
-        "dark blue"
+        "white"
       ]
     },
     {
@@ -62,9 +62,9 @@
       "filename": "Forty-Licks.jpg",
       "album": "Forty Licks",
       "artist": "",
-      "description": "A large cropped mouth-and-tongue graphic dominates the right side against a plain white background. The tongue is oversized and rounded, rendered with a smooth gradient shifting from blue at the top through purple and red to orange and yellow at the bottom. White teeth curve along the top edge, outlined in yellow and blue. The left side is mostly empty white space, creating a clean, minimalist composition.",
-      "signatureMotif": "oversized tongue and lips emblem",
-      "medium": "clean vector-style graphic illustration",
+      "description": "A large tongue-and-lips graphic dominates the right side against a plain white background. The lips are blue at the top, the teeth are white, and the tongue is rendered in a smooth gradient shifting through yellow, orange, red, and purple. The composition is clean and minimal, with the emblem cropped large within the frame.",
+      "signatureMotif": "tongue-and-lips emblem",
+      "medium": "vector-style graphic illustration",
       "palette": [
         "white",
         "blue",
@@ -78,15 +78,14 @@
       "filename": "Greatest-Hits.jpg",
       "album": "Greatest Hits",
       "artist": "",
-      "description": "Centered on a dark, softly blended green background is a white flower-like emblem with a rounded bloom, two leaves, and a stem, all simplified into a flat symbolic form with black inner line details. The image is sparse and symmetrical, with the emblem floating in the middle and subtle shadowing giving slight depth. The overall look is restrained and elegant.",
-      "signatureMotif": "white stylized flower emblem",
-      "medium": "minimal graphic design with emblem illustration",
+      "description": "A simple centered white flower emblem with a rounded bloom, stem, and two leaves appears on a dark olive-green gradient background. The flower is flat and decorative, with black line details inside the petals and leaves. The overall layout is sparse and symmetrical.",
+      "signatureMotif": "white flower emblem",
+      "medium": "minimal graphic design",
       "palette": [
-        "dark green",
-        "olive",
+        "dark olive green",
         "white",
         "black",
-        "gray"
+        "gray-green"
       ]
     },
     {
@@ -94,15 +93,15 @@
       "filename": "Empire-Records-The-Soundtrack.jpg",
       "album": "Empire Records The Soundtrack",
       "artist": "",
-      "description": "A group portrait of five young adults stands against a bright white background. In the center, a woman with long dark hair wears a fuzzy light blue cropped top and a plaid skirt, standing forward with arms extended. Around her are four others: a bald woman in dark clothing on the left, a smiling person in a red sleeveless top, a dark-haired man in profile behind center-left, a man in layered patterned clothing on center-right, and a blonde woman in black on the far right with hands near her head. The figures are tightly arranged in a fashion-photo style with high contrast and warm yellowish tinting.",
-      "signatureMotif": "five-person group portrait with central woman in plaid skirt",
-      "medium": "stylized studio photograph",
+      "description": "A group portrait of six young adults stands against a white background in a high-contrast, posterized photographic style. A woman in the center wears a long-sleeved cropped top and plaid skirt with her arms extended outward. Around her are five others: one bald person at left, a person in a red basketball jersey, a dark-haired person in profile, a dark-haired person in a checkered top and cardigan, and a blonde person in black with hands raised near the head. The image uses strong yellow-green and orange tinting.",
+      "signatureMotif": "six-person cast portrait",
+      "medium": "posterized studio photograph",
       "palette": [
         "white",
-        "yellow",
+        "yellow-green",
+        "orange",
         "red",
-        "black",
-        "blue"
+        "black"
       ]
     },
     {
@@ -110,22 +109,22 @@
       "filename": "Led-Zeppelin-III.jpg",
       "album": "Led Zeppelin III",
       "artist": "",
-      "description": "A dense collage-style design spreads across an off-white background, centered around very large outlined lettering shapes that weave through the composition. Scattered throughout are many small illustrated and cutout elements: butterflies, birds, a zeppelin, biplanes, stars, circular portraits, abstract blobs, flowers, lips, and other decorative symbols. The layout feels busy and whimsical, with black outlines and multicolored accents distributed across the whole cover.",
-      "signatureMotif": "large outlined lettering filled and surrounded by eclectic collage imagery",
+      "description": "A dense, whimsical collage spreads across an off-white background, centered around very large outlined lettering shapes filled and surrounded by many small images. Scattered throughout are butterflies, birds, a zeppelin, vintage airplanes, stars, circular portraits, abstract blobs, flowers, lips, and other surreal cutout elements. The composition is busy and layered, mixing black outlines with multicolored accents and small photographic fragments.",
+      "signatureMotif": "surreal collage of floating objects and portraits",
       "medium": "mixed-media collage illustration",
       "palette": [
         "off-white",
         "black",
         "blue",
-        "red",
+        "pink",
         "yellow"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "Inside a derelict glass conservatory seen from slightly above eye level, a wide central aisle leads to a fountain basin converted into a surreal paper garden stage; at the center stands a monumental torn-paper sculptural face, flat yellow with angular purple features, a small red eye, rough green hair, a red ear, and irregular white ripped edges mounted on dark blue backing slabs, and from its mouth pours an oversized glossy rainbow tongue as a curved fountain-banner waterfall into the basin, with white teeth forming the fountain lip; a single white stylized flower emblem with black inner line details rises from the water directly below as a calm vertical accent, while five young adults appear only once as a tight fashion-group around the fountain, the central woman forward in a fuzzy light blue cropped top and plaid skirt with arms extended, flanked by a bald woman in dark clothing, a smiling person in a red sleeveless top, a dark-haired man in profile, a man in layered patterned clothes, and a blonde woman in black with hands near her head; throughout the supporting environment, weave large outlined lettering fragments across cracked tiles and hanging glass labels, with scattered butterflies, birds, tiny zeppelins and biplanes, stars, flowers, lips, abstract blobs, and small circular medallions embedded as collage ornaments in the panes and planters; handcrafted mixed-media paper diorama, torn-poster collage, cut paper, gouache-painted surfaces, ink outlines, light relief construction, editorial art direction; clear hierarchy with the face and tongue fountain dominant in the center, the flower directly beneath, the group forming a semicircle midground, and the busy collage details kept to the edges and distance; soft skylight filtered through dirty greenhouse glass with warm highlights on the figures and crisp shadows from metal frames; palette of acid yellow, deep blue, leaf green, purple, off-white, white, red-orange, and small bright accents; mood playful, theatrical, celebratory, and slightly uncanny. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A frontal wide view into a cavernous indoor parade hall, slightly from below, centered on a monumental ceremonial totem rising from an open floor while surreal paper relics drift through the air and a small staged procession gathers beneath it; the primary subject is a towering sculptural idol made from a stylized angular yellow face with dark blue features, green hair, one small red circular eye, and a red ear, with a giant cropped blue-lipped mouth opening from its side and a tongue unfurling in a smooth yellow-to-orange-to-red-to-purple gradient like a banner; incorporate a sparse white flower emblem as a glowing crest suspended above the totem and echoed as a few simple floor inlays, place one single six-person posterized ensemble in the midground under the idol with the central woman’s arms extended and the other five arranged around her as a compact procession, and fill the upper air with supporting mixed-collage fragments inspired by butterflies, birds, a zeppelin, vintage airplanes, stars, circular portrait medallions, abstract blobs, flowers, and lips, all transformed into cut-paper parade ornaments rather than album covers; handcrafted cut-paper collage combined with screenprint and gouache textures, crisp graphic edges, layered paper shadows, bold flat shapes with selective ink linework; strong central hierarchy with the face-totem dominating, the mouth emblem as the brightest accent on the right side of the totem, the group kept smaller for scale, and floating objects distributed in an airy arc overhead, lit like a gallery pageant with even diffuse illumination and subtle spotlight emphasis on the idol; palette of dark blue, off-white, saturated yellow, olive green, red-orange, cobalt blue, and touches of pink and black, with a playful ceremonial mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Drums-and-Wires.jpg",
     "Forty-Licks.jpg",
