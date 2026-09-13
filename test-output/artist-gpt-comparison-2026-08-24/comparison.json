@@ -1,0 +1,63 @@
+{
+  "date": "2026-08-24",
+  "seed": 1787529600000,
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Concrete walkway in front of a large grid of reflective glass windows and horizontal metal panels on a modern building exterior.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A photorealistic 16:9 group photograph on a concrete walkway in front of a modern building exterior with a large grid of reflective glass windows and horizontal metal cladding, seen from a slightly low eye-level viewpoint; four adults share an in-between moment instead of a formal pose: a light-skinned woman with bright magenta shoulder-length hair in a fitted black dress and heels stands near center with her body angled and weight on one leg, a light-skinned man with shoulder-length black hair, dramatic heavy dark eye makeup, and a dark coat occupies the left foreground leaning subtly toward the camera with intense restraint, a light-skinned woman with dark wavy hair and bangs in a dark blazer over a light top stands to the right near the wall with an easy lifted expression, and a light-skinned middle-aged man with spiky salt-and-pepper hair, short gray stubble, and a pale V-neck T-shirt rests slightly behind them, half-leaning near the facade and observing; compose them in an uneven loose cluster with staggered depth and negative space from the window grid, medium-wide framing, natural proportions, shallow-to-moderate depth of field, crisp editorial realism with a 35mm lens feel; light with soft even daylight and subtle reflected brightness from the glass, preserving the believable outdoor lighting logic of the facade; natural color with cool blue-gray reflections, clean skin tones, black clothing contrast, and the magenta hair as the key accent, creating a relaxed, offbeat, contemporary mood. Attached cast plan: Attached reference image 1: portray only light-skinned woman with bright magenta shoulder-length hair, black fitted dress, necklace, and heels; near center, turned three-quarters, weight on one leg, acting as the visual anchor. Attached reference image 2: portray only light-skinned man with shoulder-length black hair, very heavy dark eye makeup, and a dark coat; left foreground, slightly closer to camera, leaning in with guarded intensity. Attached reference image 3: portray only light-skinned woman with dark wavy medium-length hair and bangs, wearing a dark blazer over a light top; right side near the wall, head tipped back slightly in a relaxed, open moment. Attached reference image 4: portray only light-skinned middle-aged man with spiky salt-and-pepper hair, short gray stubble, and a pale V-neck T-shirt; rear left-center, half-leaning against the facade, watching the others. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "cast": [
+    {
+      "source": 6,
+      "person": "light-skinned woman with bright magenta shoulder-length hair, black fitted dress, necklace, and heels",
+      "placement": "near center, turned three-quarters, weight on one leg, acting as the visual anchor"
+    },
+    {
+      "source": 1,
+      "person": "light-skinned man with shoulder-length black hair, very heavy dark eye makeup, and a dark coat",
+      "placement": "left foreground, slightly closer to camera, leaning in with guarded intensity"
+    },
+    {
+      "source": 5,
+      "person": "light-skinned woman with dark wavy medium-length hair and bangs, wearing a dark blazer over a light top",
+      "placement": "right side near the wall, head tipped back slightly in a relaxed, open moment"
+    },
+    {
+      "source": 10,
+      "person": "light-skinned middle-aged man with spiky salt-and-pepper hair, short gray stubble, and a pale V-neck T-shirt",
+      "placement": "rear left-center, half-leaning against the facade, watching the others"
+    }
+  ],
+  "inputs": [
+    "Save-Ferris.jpg",
+    "Killing-Joke.jpg",
+    "Courtney-Barnett.jpg",
+    "LCD-Soundsystem.jpg"
+  ],
+  "results": [
+    {
+      "id": "nano-banana-pro",
+      "label": "Nano Banana Pro",
+      "model": "fal-ai/nano-banana-pro/edit",
+      "outputPath": "/Users/russ.mckendrick/Code/blog/test-output/artist-gpt-comparison-2026-08-24/nano-banana-pro.png",
+      "durationSeconds": 41.4,
+      "width": 2752,
+      "height": 1536
+    },
+    {
+      "id": "gpt-image-2",
+      "label": "GPT Image 2",
+      "model": "openai/gpt-image-2/edit",
+      "outputPath": "/Users/russ.mckendrick/Code/blog/test-output/artist-gpt-comparison-2026-08-24/gpt-image-2.png",
+      "durationSeconds": 84.3,
+      "width": 2560,
+      "height": 1440
+    },
+    {
+      "id": "gpt-image-2-5",
+      "label": "GPT Image 2.5",
+      "model": "openai/gpt-image-2.5/sunburst/edit",
+      "outputPath": "/Users/russ.mckendrick/Code/blog/test-output/artist-gpt-comparison-2026-08-24/gpt-image-2-5.png",
+      "durationSeconds": 43.5,
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "failures": []
+}

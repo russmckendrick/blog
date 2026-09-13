@@ -1,0 +1,63 @@
+{
+  "date": "2026-08-31",
+  "seed": 1788134400000,
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Simple indoor room with a plain off-white wall and minimal visible architectural detail; slight corner or wall edge visible at left.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. In a modest bare interior room with a plain off-white wall, a visible wall edge/corner on the far left, and a simple floor-to-wall junction, photograph a small group gathered in an in-between pause near the wall; at front right, a very fair-skinned blond man with short side-parted hair in a black long-sleeve top and wristwatch loosely lowers a pair of round tinted sunglasses while half-turning toward the others; low near center, a slim dark-haired man in a floral open-collar shirt and light trousers sits on the floor with one knee bent, leaning back slightly and looking outward; center-left, an older gray-bearded man in a light flat cap and dark shirt rests lightly against the wall with hands clasped; far left by the corner, a shoulder-length dark-haired man with a narrow mustache in a light knit top stands with folded arms, watching across the group. Uneven, intimate spacing with layered depth, no lineup, subtle eye-line differences, one shared quiet moment. Medium-wide 16:9 editorial portrait, eye-level viewpoint, naturalistic 50mm lens look, enough room around the figures to show the wall and negative space, crisp but not clinical detail. Soft even indoor light with gentle shadow falloff and no dramatic spotlighting, consistent with ambient room light. Muted natural colour, restrained contrast, understated tones, calm but slightly tense mood. Attached cast plan: Attached reference image 1: portray only very fair-skinned blond man with short side-parted hair, slim build, black long-sleeve top, wristwatch, holding round tinted sunglasses; front right, nearest camera, half-turned toward the group with the sunglasses lowered loosely in one hand. Attached reference image 2: portray only light-skinned slim man with medium-length dark hair, floral open-collar shirt, and light trousers; low in the foreground near center, seated on the floor with one knee bent and torso angled back toward the wall. Attached reference image 3: portray only older light-skinned man with a gray beard, light flat cap, and dark shirt; center-left, slightly behind the seated figure, leaning lightly against the wall with hands clasped. Attached reference image 4: portray only young light-skinned man with shoulder-length dark hair and a narrow mustache, wearing a light knit long-sleeve top; far left by the visible corner, shoulders against the wall, arms folded, looking across the others. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "cast": [
+    {
+      "source": 3,
+      "person": "very fair-skinned blond man with short side-parted hair, slim build, black long-sleeve top, wristwatch, holding round tinted sunglasses",
+      "placement": "front right, nearest camera, half-turned toward the group with the sunglasses lowered loosely in one hand"
+    },
+    {
+      "source": 1,
+      "person": "light-skinned slim man with medium-length dark hair, floral open-collar shirt, and light trousers",
+      "placement": "low in the foreground near center, seated on the floor with one knee bent and torso angled back toward the wall"
+    },
+    {
+      "source": 2,
+      "person": "older light-skinned man with a gray beard, light flat cap, and dark shirt",
+      "placement": "center-left, slightly behind the seated figure, leaning lightly against the wall with hands clasped"
+    },
+    {
+      "source": 4,
+      "person": "young light-skinned man with shoulder-length dark hair and a narrow mustache, wearing a light knit long-sleeve top",
+      "placement": "far left by the visible corner, shoulders against the wall, arms folded, looking across the others"
+    }
+  ],
+  "inputs": [
+    "XTC.jpg",
+    "The-Rolling-Stones.jpg",
+    "Fleetwood-Mac.jpg",
+    "Led-Zeppelin.jpg"
+  ],
+  "results": [
+    {
+      "id": "nano-banana-pro",
+      "label": "Nano Banana Pro",
+      "model": "fal-ai/nano-banana-pro/edit",
+      "outputPath": "/Users/russ.mckendrick/Code/blog/test-output/artist-gpt-comparison-2026-08-31/nano-banana-pro.png",
+      "durationSeconds": 45.6,
+      "width": 2752,
+      "height": 1536
+    },
+    {
+      "id": "gpt-image-2",
+      "label": "GPT Image 2",
+      "model": "openai/gpt-image-2/edit",
+      "outputPath": "/Users/russ.mckendrick/Code/blog/test-output/artist-gpt-comparison-2026-08-31/gpt-image-2.png",
+      "durationSeconds": 88.3,
+      "width": 2560,
+      "height": 1440
+    },
+    {
+      "id": "gpt-image-2-5",
+      "label": "GPT Image 2.5",
+      "model": "openai/gpt-image-2.5/sunburst/edit",
+      "outputPath": "/Users/russ.mckendrick/Code/blog/test-output/artist-gpt-comparison-2026-08-31/gpt-image-2-5.png",
+      "durationSeconds": 48.4,
+      "width": 2560,
+      "height": 1440
+    }
+  ],
+  "failures": []
+}

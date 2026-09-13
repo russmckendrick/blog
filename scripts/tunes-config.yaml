@@ -12,14 +12,15 @@ settings:
   # Classification cache duration (days) - longer than research cache
   classification_cache_days: 90
 
-  # Image backend for the weekly album-cover header: gpt-image-2 | nano-banana
+  # Image backend for the weekly album-cover header:
+  # gpt-image-2-5 | gpt-image-2 | nano-banana
   # (unknown/missing values fall back to nano-banana)
-  cover_backend: gpt-image-2
+  cover_backend: gpt-image-2-5
 
   # Backend to drop to when cover_backend refuses on a content-policy violation (e.g. GPT
-  # Image 2 moderating real-person likenesses). Set to "none" to disable; when unset it
-  # defaults to nano-banana while gpt-image-2 is primary. env TUNES_COVER_FALLBACK_BACKEND
-  # overrides this.
+  # Image moderating real-person likenesses). Set to "none" to disable; when unset it
+  # defaults to nano-banana while a GPT Image backend is primary. env
+  # TUNES_COVER_FALLBACK_BACKEND overrides this.
   cover_fallback_backend: nano-banana
 
   # How many recent weekly concepts are fed back to the art director as do-not-repeat
@@ -27,9 +28,11 @@ settings:
   cover_history_size: 8
 
   # Image backend for the weekly artist group portrait:
-  # nano-banana-pro | gpt-image-2 | nano-banana
+  # gpt-image-2-5 | nano-banana-pro | gpt-image-2 | nano-banana
   # (unknown/missing values fall back to nano-banana-pro)
-  artist_portrait_backend: nano-banana-pro
+  # Chosen over nano-banana-pro on a four-week bake-off: nano-banana-pro framed the group
+  # too wide, smoothed faces toward generic likenesses, and dropped defining traits.
+  artist_portrait_backend: gpt-image-2-5
 
   # Number of top artist photos uploaded as casting options for the weekly group portrait;
   # the AI picks the most interesting subset to actually feature

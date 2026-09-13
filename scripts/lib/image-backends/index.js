@@ -7,17 +7,21 @@
 import * as nanoBanana from './nano-banana.js'
 import * as nanoBananaPro from './nano-banana-pro.js'
 import * as gptImage2 from './gpt-image-2.js'
+import * as gptImage25 from './gpt-image-2-5.js'
 
 export const BACKENDS = {
   [nanoBanana.id]: nanoBanana,
   [nanoBananaPro.id]: nanoBananaPro,
-  [gptImage2.id]: gptImage2
+  [gptImage2.id]: gptImage2,
+  [gptImage25.id]: gptImage25
 }
 
-// Map loose input to a known backend id (e.g. "gpt", "gpt-image2" -> "gpt-image-2").
+// Map loose input to a known backend id (e.g. "gpt", "gpt-image2" -> "gpt-image-2",
+// "gpt-image-2.5" -> "gpt-image-2-5"). Punctuation is stripped first, so the 2.5 family is
+// recognised by the "25" left behind.
 export function normalizeBackendId(value) {
   const key = String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '')
-  if (key.startsWith('gpt')) return gptImage2.id
+  if (key.startsWith('gpt')) return key.includes('25') ? gptImage25.id : gptImage2.id
   if (key.startsWith('nanobananapro') || key === 'nbpro') return nanoBananaPro.id
   if (key.startsWith('nano')) return nanoBanana.id
   return value || ''
