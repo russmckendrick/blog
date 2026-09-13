@@ -71,6 +71,43 @@ async function resolveHistorySize() {
 // How many weeks an artist is benched for after appearing in a portrait.
 // Precedence: env -> explicit option -> tunes-config.yaml -> code default. Zero disables
 // the rule entirely.
+// Resolve the backend to switch to when the primary refuses on a content-policy violation.
+// Precedence: explicit option -> env -> tunes-config.yaml -> default (nano-banana-pro, when it
+// is not already primary). "none"/"off"/"" disables it. Portraits are real-person likenesses,
+// which the GPT backends moderate hardest, so the weekly run should degrade to a more
+// permissive model rather than failing the whole post.
+async function resolveFallbackBackend(primaryBackend, explicit) {
+  let requested = explicit ?? process.env.TUNES_ARTIST_PORTRAIT_FALLBACK_BACKEND
+  if (requested == null) {
+    try {
+      const config = new ConfigLoader()
+      await config.load()
+      requested = config.getArtistPortraitFallbackBackend()
+    } catch {
+      requested = undefined
+    }
+  }
+
+  if (requested == null) {
+    requested = primaryBackend.id === DEFAULT_BACKEND ? '' : DEFAULT_BACKEND
+  }
+
+  const normalized = String(requested).trim().toLowerCase()
+  if (!normalized || normalized === 'none' || normalized === 'off') return null
+
+  const backend = getBackend(requested)
+  if (!backend) {
+    console.warn(`  Unknown artist portrait fallback backend "${requested}"; disabling fallback`)
+    return null
+  }
+  if ((backend.maxInputImages ?? 1) <= 1) {
+    console.warn(`  Artist portrait fallback backend "${backend.id}" cannot compose a group; disabling fallback`)
+    return null
+  }
+
+  return backend.id === primaryBackend.id ? null : backend
+}
+
 async function resolveReuseWeeks(options) {
   const fromEnv = process.env.TUNES_ARTIST_REUSE_WEEKS
   if (fromEnv !== undefined && fromEnv !== '') {
@@ -207,7 +244,9 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
     throw new Error('No artist images provided for portrait generation')
   }
 
-  const backend = await resolveBackend(options.backend)
+  const primaryBackend = await resolveBackend(options.backend)
+  const fallbackBackend = await resolveFallbackBackend(primaryBackend, options.fallbackBackend)
+  const backendChain = fallbackBackend ? [primaryBackend, fallbackBackend] : [primaryBackend]
 
   // Bench anyone who already fronted a portrait in the last few weeks. Play rank alone kept
   // handing the art director the same heavy rotation, so the filter runs before the candidate
@@ -258,7 +297,7 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
   const castSize = Math.min(Math.max(1, featureCount), candidatePaths.length)
   if (debug) {
     console.log(`  Casting from ${candidatePaths.length} candidate photo(s); featuring exactly ${castSize}`)
-    console.log(`  Image backend: ${backend.label} (${backend.id})`)
+    console.log(`  Image backend: ${backendChain.map(b => `${b.label} (${b.id})`).join(' -> ')}`)
   }
 
   const candidateUrls = await uploadArtistImages(candidatePaths, debug)
@@ -318,99 +357,113 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
     attemptSets.push(cast.slice(0, count))
   }
 
-  for (let attempt = 0; attempt < attemptSets.length; attempt++) {
-    const attemptCast = attemptSets[attempt]
-
-    try {
-      if (debug) {
-        console.log(`  Attempt ${attempt + 1}: generating group portrait from ${attemptCast.length} cast photos`)
-      }
-
-      const imageUrls = attemptCast.map(item => item.url)
-      const selectedSources = attemptCast.map(item => item.source)
-      const prompt = buildArtistGenerationPrompt(artDirection, selectedSources)
-
-      if (debug) {
-        console.log(`  Prompt: ${prompt}`)
-      }
-
-      const { imageUrl, model } = await backend.generate({ imageUrls, prompt, seed, debug })
-
-      const saved = await saveGeneratedImage(imageUrl, outputPath, width, height, debug)
-      console.log(`  Created tunes artist portrait (${backend.label}) from ${attemptCast.length} artist photos`)
-      console.log(`    Direction: ${artDirection.creativeDirection}`)
-      console.log(`    Full:  ${saved.outputPath}`)
-      console.log(`    Small: ${saved.smallOutputPath}`)
-
-      const castNames = attemptCast.map(item => displayNameFor(item.path))
-      const runRecord = {
-        version: 2,
-        date: weekDate,
-        type: 'artist',
-        lane: null,
-        lighting: null,
-        shootDirection: null,
-        colourTreatment: null,
-        concept: artDirection.concept,
-        creativeDirection: artDirection.creativeDirection,
-        scene: artDirection.scene,
-        locationSource: artDirection.locationSource,
-        locationSetting: artDirection.locationSetting,
-        locationEvidence: artDirection.locationEvidence,
-        locationReference: selectedSources.indexOf(artDirection.locationSource) + 1,
-        locationInput: path.basename(bySource.get(artDirection.locationSource)?.path || ''),
-        cast: artDirection.cast,
-        selection: artDirection.selection,
-        palette: artDirection.palette,
-        mood: artDirection.mood,
-        artistSummaries,
-        hint: options.hint || null,
-        composeBackend: backend.id,
-        model,
-        prompt,
-        reuseWeeks,
-        reuseBlocked: reuseReport ? reuseReport.stillBlocked.map(item => ({ artist: item.name, lastUsed: item.week })) : [],
-        reuseRelaxed: reuseReport ? reuseReport.relaxed.map(item => ({ artist: item.name, lastUsed: item.week })) : [],
-        inputs: attemptCast.map(item => path.basename(item.path))
-      }
+  // Try each backend in turn. Within a backend, content-policy refusals retry with a smaller
+  // cast; once those are exhausted we drop to the next backend (typically the more permissive
+  // nano-banana-pro) rather than failing the whole post. Non-policy errors throw at once.
+  for (let b = 0; b < backendChain.length; b++) {
+    const backend = backendChain[b]
+    const isLastBackend = b === backendChain.length - 1
+    if (b > 0) {
+      console.warn(`  ${backendChain[b - 1].label} refused all attempts; falling back to ${backend.label}`)
+    }
+    for (let attempt = 0; attempt < attemptSets.length; attempt++) {
+      const attemptCast = attemptSets[attempt]
 
       try {
-        const sidecarPath = await writeSidecar(sidecarTargetFor(outputPath), runRecord)
-        if (debug) console.log(`  Wrote run sidecar: ${sidecarPath}`)
-        if (recordHistory) await appendHistory(runRecord)
-        if (weekDate && writesCanonicalPortrait(outputPath)) {
-          await recordArtistUsage(weekDate, castNames)
-          if (debug) console.log(`  Recorded cast for ${weekDate}: ${castNames.join(', ')}`)
+        if (debug) {
+          console.log(`  Attempt ${attempt + 1} (${backend.label}): generating group portrait from ${attemptCast.length} cast photos`)
+        }
+
+        const imageUrls = attemptCast.map(item => item.url)
+        const selectedSources = attemptCast.map(item => item.source)
+        const prompt = buildArtistGenerationPrompt(artDirection, selectedSources)
+
+        if (debug) {
+          console.log(`  Prompt: ${prompt}`)
+        }
+
+        const { imageUrl, model } = await backend.generate({ imageUrls, prompt, seed, debug })
+
+        const saved = await saveGeneratedImage(imageUrl, outputPath, width, height, debug)
+        console.log(`  Created tunes artist portrait (${backend.label}) from ${attemptCast.length} artist photos`)
+        console.log(`    Direction: ${artDirection.creativeDirection}`)
+        console.log(`    Full:  ${saved.outputPath}`)
+        console.log(`    Small: ${saved.smallOutputPath}`)
+
+        const castNames = attemptCast.map(item => displayNameFor(item.path))
+        const runRecord = {
+          version: 2,
+          date: weekDate,
+          type: 'artist',
+          lane: null,
+          lighting: null,
+          shootDirection: null,
+          colourTreatment: null,
+          concept: artDirection.concept,
+          creativeDirection: artDirection.creativeDirection,
+          scene: artDirection.scene,
+          locationSource: artDirection.locationSource,
+          locationSetting: artDirection.locationSetting,
+          locationEvidence: artDirection.locationEvidence,
+          locationReference: selectedSources.indexOf(artDirection.locationSource) + 1,
+          locationInput: path.basename(bySource.get(artDirection.locationSource)?.path || ''),
+          cast: artDirection.cast,
+          selection: artDirection.selection,
+          palette: artDirection.palette,
+          mood: artDirection.mood,
+          artistSummaries,
+          hint: options.hint || null,
+          composeBackend: backend.id,
+          model,
+          prompt,
+          reuseWeeks,
+          reuseBlocked: reuseReport ? reuseReport.stillBlocked.map(item => ({ artist: item.name, lastUsed: item.week })) : [],
+          reuseRelaxed: reuseReport ? reuseReport.relaxed.map(item => ({ artist: item.name, lastUsed: item.week })) : [],
+          inputs: attemptCast.map(item => path.basename(item.path))
+        }
+
+        try {
+          const sidecarPath = await writeSidecar(sidecarTargetFor(outputPath), runRecord)
+          if (debug) console.log(`  Wrote run sidecar: ${sidecarPath}`)
+          if (recordHistory) await appendHistory(runRecord)
+          if (weekDate && writesCanonicalPortrait(outputPath)) {
+            await recordArtistUsage(weekDate, castNames)
+            if (debug) console.log(`  Recorded cast for ${weekDate}: ${castNames.join(', ')}`)
+          }
+        } catch (error) {
+          console.warn(`  Could not record portrait metadata: ${error.message}`)
+        }
+
+        return {
+          ...saved,
+          selectedImages: attemptCast.map(item => item.path),
+          imageUrl,
+          model,
+          backend: backend.id,
+          creativeDirection: artDirection.creativeDirection,
+          concept: artDirection.concept,
+          locationSource: artDirection.locationSource,
+          locationSetting: artDirection.locationSetting,
+          locationEvidence: artDirection.locationEvidence,
+          locationInput: bySource.get(artDirection.locationSource)?.path || '',
+          artistSummaries,
+          mode: 'summaries_to_prompt',
+          prompt
         }
       } catch (error) {
-        console.warn(`  Could not record portrait metadata: ${error.message}`)
-      }
+        if (isContentPolicyViolation(error)) {
+          if (attempt < attemptSets.length - 1) {
+            console.warn(`  Content policy violation on attempt ${attempt + 1} (${backend.label}); retrying with a smaller group`)
+            continue
+          }
+          // Exhausted the attempt sets on this backend - hand off to the next one if we have it.
+          if (!isLastBackend) break
+        }
 
-      return {
-        ...saved,
-        selectedImages: attemptCast.map(item => item.path),
-        imageUrl,
-        model,
-        backend: backend.id,
-        creativeDirection: artDirection.creativeDirection,
-        concept: artDirection.concept,
-        locationSource: artDirection.locationSource,
-        locationSetting: artDirection.locationSetting,
-        locationEvidence: artDirection.locationEvidence,
-        locationInput: bySource.get(artDirection.locationSource)?.path || '',
-        artistSummaries,
-        mode: 'summaries_to_prompt',
-        prompt
+        let message = error.message
+        if (error.body) message += `\nResponse body: ${JSON.stringify(error.body, null, 2)}`
+        throw new Error(`Artist portrait generation failed using ${backend.label}: ${message}`)
       }
-    } catch (error) {
-      if (isContentPolicyViolation(error) && attempt < attemptSets.length - 1) {
-        console.warn(`  Content policy violation on attempt ${attempt + 1}; retrying with a smaller group`)
-        continue
-      }
-
-      let message = error.message
-      if (error.body) message += `\nResponse body: ${JSON.stringify(error.body, null, 2)}`
-      throw new Error(`Artist portrait generation failed using ${backend.label}: ${message}`)
     }
   }
 
@@ -520,8 +573,11 @@ Notes:
     scripts/.tunes-artist-usage.json. A week with too few unused artists relaxes the rule
     least-recently-used first and warns. Runs that write the week's real portrait update
     the usage file; throwaway --output paths do not.
-  - The image backend (nano-banana-pro, gpt-image-2, or nano-banana) is chosen by
-    settings.artist_portrait_backend in scripts/tunes-config.yaml.
+  - The image backend (gpt-image-2-5, nano-banana-pro, gpt-image-2, or nano-banana) is
+    chosen by settings.artist_portrait_backend in scripts/tunes-config.yaml. On a
+    content-policy refusal the generator retries with a smaller cast, then drops to the
+    fallback backend (settings.artist_portrait_fallback_backend, env
+    TUNES_ARTIST_PORTRAIT_FALLBACK_BACKEND, "none" to disable).
 `)
 }
 
@@ -569,5 +625,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 }
 
 export {
-  createFALArtistPortrait
+  createFALArtistPortrait,
+  resolveFallbackBackend
 }

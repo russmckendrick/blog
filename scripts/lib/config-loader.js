@@ -82,6 +82,12 @@ export class ConfigLoader {
     return Number.isFinite(value) && value >= 0 ? value : 6
   }
 
+  // Backend to fall back to when the primary artist-portrait backend refuses on a
+  // content-policy violation. Returns undefined when unset so the caller can pick a default.
+  getArtistPortraitFallbackBackend() {
+    return this.settings.artist_portrait_fallback_backend
+  }
+
   getCoverBackend() {
     return this.settings.cover_backend || 'nano-banana'
   }

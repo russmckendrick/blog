@@ -34,6 +34,13 @@ settings:
   # too wide, smoothed faces toward generic likenesses, and dropped defining traits.
   artist_portrait_backend: gpt-image-2-5
 
+  # Backend to drop to when artist_portrait_backend refuses on a content-policy violation.
+  # Portraits are real-person likenesses, which the GPT backends moderate hardest, so the
+  # weekly run degrades to a more permissive model rather than failing the whole post. Set to
+  # "none" to disable; when unset it defaults to nano-banana-pro while a GPT Image backend is
+  # primary. env TUNES_ARTIST_PORTRAIT_FALLBACK_BACKEND overrides this.
+  artist_portrait_fallback_backend: nano-banana-pro
+
   # Number of top artist photos uploaded as casting options for the weekly group portrait;
   # the AI picks the most interesting subset to actually feature
   # (env TUNES_ARTIST_PORTRAIT_CANDIDATES overrides this when set)
