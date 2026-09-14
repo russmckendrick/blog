@@ -157,6 +157,7 @@ export function buildFallbackArtDirection(coverSummaries, _sourceReferences) {
 
   return {
     concept: 'A unified world built from this week’s album artwork',
+    medium: 'chosen from the supplied artwork',
     creativeDirection: 'Freeform interpretation of the supplied album artwork',
     scene: 'One cohesive visual world shaped by the strongest factual motifs across every selected cover.',
     elements,
@@ -185,6 +186,8 @@ export function normalizeArtDirection(rawDirection, coverSummaries, sourceRefere
 
   return {
     concept: String(rawDirection?.concept || '').trim() || firstSentence(scene),
+    medium: String(rawDirection?.medium || rawDirection?.chosenMedium || rawDirection?.chosen_medium || '')
+      .trim() || fallback.medium,
     creativeDirection: String(
       rawDirection?.creativeDirection ||
       rawDirection?.creative_direction ||
@@ -260,6 +263,7 @@ export async function designCoverArtDirection({
   sourceReferences,
   hint = '',
   avoidConcepts = [],
+  avoidMedia = [],
   debug
 }) {
   if (!openai) {
@@ -269,6 +273,12 @@ export async function designCoverArtDirection({
 
   const avoidBlock = avoidConcepts.length > 0
     ? `These concepts were used recently and must not be repeated. Choose a different setting, central idea, and composition:\n${avoidConcepts.map(concept => `- ${concept}`).join('\n')}`
+    : ''
+  // Concepts describe settings, so the avoid list above only ever steered *where* a cover was
+  // set. Left unconstrained on medium the art director reached for cut-paper collage every
+  // single week, so recent media are refused on their own axis.
+  const avoidMediaBlock = avoidMedia.length > 0
+    ? `These media and techniques were used on recent covers and are all refused for this one. Do not choose any of them, any close variation of them, and in particular do not build another diorama, shadow box, assemblage, or cut-paper/photo collage unless this week's artwork makes that genuinely unavoidable:\n${avoidMedia.map(medium => `- ${medium}`).join('\n')}\n\nPick a medium that is materially different from every entry above - for example straight photography, oil or watercolour painting, etching or lithography, airbrush, woodcut, stained glass, ceramic, embroidery or weaving, neon, sculpture in metal or stone, or a drawn illustration style - whichever genuinely fits this week's covers.`
     : ''
   const hintBlock = hint ? `Author's steer: ${hint}` : ''
   const summaryBlock = coverSummaries
@@ -286,6 +296,8 @@ You will receive factual visual-research summaries of several album covers. The 
 
 Choose the creative direction yourself from those visual findings alone. Any medium is valid - photography, illustration, painting, printmaking, collage, sculpture, textiles, mixed media, or something less obvious - but it must arise from this particular set of covers. Do not use or assume any blog-post content, do not default to photorealism, and do not rotate through a hidden catalogue of preset styles.
 
+Choosing the medium is a real decision, not a formality. A tabletop paper diorama or collage assemblage is the path of least resistance when several sleeves are graphic or illustrated, and leaning on it has already produced a long unbroken run of near-identical covers. Treat it as a choice you must actively justify against this week's artwork rather than the obvious answer.
+
 Invent one specific, surprising composition with a clear visual hierarchy. Give one or two motifs room to lead, use the other sources as supporting objects, forms, palette, texture, atmosphere, or environmental detail, and make every selected source contribute without giving everything equal visual weight. Transform motifs into the chosen world rather than reproducing album sleeves.
 
 Treat each identifiable person as one unique identity and plan only one depiction of them across the whole composition. Do not reuse the same person as both a live figure and a secondary image, reflection, poster, billboard, screen, portrait, silhouette, or background face. Preserve repeated likenesses only when that repetition is visibly intrinsic to one source cover, and contain it within that source's single contribution.
@@ -294,8 +306,10 @@ The final "prompt" must be ready to send directly to a multi-reference image mod
 
 ${avoidBlock}
 
-Return JSON exactly as {"concept":"string","creativeDirection":"string","scene":"string","elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string","prompt":"string"}.
-"concept" is at most 15 words and is saved to the do-not-repeat history. "creativeDirection" names the chosen medium and visual approach in one sentence. "elements" records how each numbered source contributes.`
+${avoidMediaBlock}
+
+Return JSON exactly as {"concept":"string","medium":"string","creativeDirection":"string","scene":"string","elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string","prompt":"string"}.
+"concept" is at most 15 words and is saved to the do-not-repeat history. "medium" is at most 8 words naming only the chosen medium or technique - it is saved to the history and refused on future weeks, so be specific ("wet-plate photography", "gouache on board") rather than generic ("mixed media"). "creativeDirection" names the chosen medium and visual approach in one sentence. "elements" records how each numbered source contributes.`
 
   try {
     const response = await openai.responses.create({

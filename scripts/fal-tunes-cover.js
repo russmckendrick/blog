@@ -8,7 +8,7 @@ import { COVER_BLOCKLIST } from './tunes-cover-blocklist.js'
 import { isContentPolicyViolation } from './lib/fal-content-policy.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { getBackend, BACKENDS } from './lib/image-backends/index.js'
-import { appendHistory, recentConcepts, writeSidecar } from './lib/tunes-image-history.js'
+import { appendHistory, recentConcepts, recentMedia, writeSidecar } from './lib/tunes-image-history.js'
 import { extractTunesDate } from './lib/tunes-post-context.js'
 import {
   buildGenerationPrompt as buildFreeformGenerationPrompt,
@@ -508,6 +508,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
 
   const historySize = await resolveHistorySize()
   const avoidConcepts = await recentConcepts('cover', historySize)
+  const avoidMedia = await recentMedia('cover', historySize)
 
   const sourceImagePaths = filterBlocklistedCovers(imagePaths, debug)
 
@@ -534,6 +535,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     console.log(`  Image backend: ${backendChain.map(b => b.label).join(' -> ')}`)
     if (options.hint) console.log(`  Author's steer: ${options.hint}`)
     if (avoidConcepts.length > 0) console.log(`  Avoiding recent concepts: ${avoidConcepts.join(' | ')}`)
+    if (avoidMedia.length > 0) console.log(`  Avoiding recent media: ${avoidMedia.join(' | ')}`)
   }
 
   // Try each backend in turn. Within a backend, content-policy refusals retry with alternate
@@ -566,6 +568,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           sourceReferences,
           hint: options.hint,
           avoidConcepts,
+          avoidMedia,
           debug
         })
         const prompt = buildFreeformGenerationPrompt(artDirection)
@@ -591,6 +594,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           shootDirection: null,
           colourTreatment: null,
           concept: artDirection.concept,
+          medium: artDirection.medium,
           creativeDirection: artDirection.creativeDirection,
           scene: artDirection.scene,
           elements: artDirection.elements,
@@ -620,6 +624,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           backend: backend.id,
           creativeDirection: artDirection.creativeDirection,
           concept: artDirection.concept,
+          medium: artDirection.medium,
           coverSummaries,
           mode: 'summaries_to_prompt',
           prompt

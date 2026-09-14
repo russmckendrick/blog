@@ -95,6 +95,28 @@ export async function appendHistory(entry, historyPath = HISTORY_PATH) {
   return history
 }
 
+// The newest `count` chosen media for an image type, most recent first. Concepts alone never
+// constrained the medium, and left free the art director picked cut-paper collage 38 weeks
+// running, so the medium is fed back on its own axis. Entries predating the `medium` field
+// fall back to their creativeDirection sentence, which names the medium in prose.
+export async function recentMedia(type, count = 8, historyPath = HISTORY_PATH) {
+  if (!Number.isFinite(count) || count <= 0) return []
+  const history = await loadHistory(historyPath)
+  const matching = dedupeByTypeAndDate(
+    history.entries.filter(entry => entry?.type === type && (entry?.medium || entry?.creativeDirection))
+  )
+  const seen = new Set()
+  const media = []
+  for (const entry of byDateAscending(matching).slice(-count).reverse()) {
+    const value = String(entry.medium || entry.creativeDirection).trim()
+    const key = value.toLowerCase()
+    if (!value || seen.has(key)) continue
+    seen.add(key)
+    media.push(value)
+  }
+  return media
+}
+
 // The newest `count` concept one-liners for an image type, most recent first - fed to the
 // art director as a do-not-repeat list. Zero means "feed nothing" (slice(-0) would return
 // everything, the exact opposite).

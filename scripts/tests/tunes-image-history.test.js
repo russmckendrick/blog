@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { promises as fs } from 'fs'
 import os from 'os'
 import path from 'path'
-import { appendHistory, recentConcepts, loadHistory } from '../lib/tunes-image-history.js'
+import { appendHistory, recentConcepts, recentMedia, loadHistory } from '../lib/tunes-image-history.js'
 
 async function writeHistory(entries) {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'tunes-history-'))
@@ -93,4 +93,34 @@ test('an undated entry never displaces a real week', async () => {
   ])
 
   assert.deepEqual(await recentConcepts('cover', 1, file), ['Dated'])
+})
+
+test('feeds recent media back on their own axis, newest first', async () => {
+  const file = await writeHistory([
+    { type: 'cover', date: '2026-09-07', concept: 'A', medium: 'cut-paper diorama' },
+    { type: 'cover', date: '2026-09-14', concept: 'B', medium: 'wet-plate photography' }
+  ])
+
+  assert.deepEqual(await recentMedia('cover', 8, file), [
+    'wet-plate photography',
+    'cut-paper diorama'
+  ])
+})
+
+test('falls back to creativeDirection for entries predating the medium field', async () => {
+  const file = await writeHistory([
+    { type: 'cover', date: '2026-08-31', concept: 'A', creativeDirection: 'A hand-cut paper diorama' }
+  ])
+
+  assert.deepEqual(await recentMedia('cover', 8, file), ['A hand-cut paper diorama'])
+})
+
+test('collapses repeats so one medium cannot fill the whole refusal list', async () => {
+  const file = await writeHistory([
+    { type: 'cover', date: '2026-08-31', concept: 'A', medium: 'Cut-paper diorama' },
+    { type: 'cover', date: '2026-09-07', concept: 'B', medium: 'cut-paper diorama' },
+    { type: 'cover', date: '2026-09-14', concept: 'C', medium: 'oil on canvas' }
+  ])
+
+  assert.deepEqual(await recentMedia('cover', 8, file), ['oil on canvas', 'cut-paper diorama'])
 })
