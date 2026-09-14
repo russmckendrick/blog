@@ -18,6 +18,7 @@
     "wrapped": "node scripts/generate-year-wrapped.js",
     "backfill-tunes-images": "node scripts/backfill-tunes-images.js",
     "rebuild-artist-usage": "node scripts/rebuild-tunes-artist-usage.js",
+    "rebuild-image-history": "node scripts/rebuild-tunes-image-history.js",
     "check-artist-reuse": "node scripts/check-tunes-artist-reuse.js",
     "sync-portrait-alt": "node scripts/sync-tunes-portrait-alt.js",
     "medium": "node scripts/publish-to-medium.js",

@@ -201,7 +201,8 @@ For the full `scripts/` inventory, including helper modules, templates, and main
 - `lib/tunes-cover-art-direction.js` - Two-stage cover intelligence: factual per-image summaries followed by freeform AI art direction and final prompt construction
 - `lib/tunes-artist-art-direction.js` - Two-stage artist intelligence: factual appearance and setting summaries followed by strongest-location selection, anchored casting, photographic art direction, and location/identity-preserving prompt guardrails
 - `lib/tunes-post-context.js` - Parses ranked artist/album lists only for the manual regeneration harness to reproduce source ordering; its findings are not sent to cover art direction
-- `lib/tunes-image-history.js` - Rolling committed history of weekly image runs (`scripts/.tunes-image-history.json`) plus per-run `.json` sidecars; feeds do-not-repeat concepts back to the art director
+- `lib/tunes-image-history.js` - Rolling committed history of weekly image runs (`scripts/.tunes-image-history.json`) plus per-run `.json` sidecars; feeds do-not-repeat concepts back to the art director, ordered and capped by date
+- `rebuild-tunes-image-history.js` - Rebuilds that history in date order from the committed sidecars when it drifts (`pnpm run rebuild-image-history`)
 - `lib/tunes-artist-usage.js` - Committed per-week record of who was cast in each artist portrait (`scripts/.tunes-artist-usage.json`); enforces the artist reuse rule before casting
 - `rebuild-tunes-artist-usage.js` - Rebuilds that record from the committed portrait sidecars when it drifts (`pnpm run rebuild-artist-usage`)
 - `check-tunes-artist-reuse.js` - Audits the record against the reuse rule and reports any week repeating an artist inside the window (`pnpm run check-artist-reuse`)
@@ -236,6 +237,8 @@ The generated creative prompt is passed to the image backend with only fixed def
 ### Run History and Do-Not-Repeat Memory
 
 Every run writes a `.json` sidecar next to the PNGs with per-cover summaries, chosen creative direction, source-element plan, scene, palette, exact prompt, backend, model, and input files. The weekly generator also appends each run to `scripts/.tunes-image-history.json` — a **committed**, capped rolling file (the GitHub Action runs on a fresh checkout, so it must ride along in the repo). The most recent concepts from that file are fed back to the art director as explicit do-not-repeat instructions (`settings.cover_history_size`, default 8). Manual runs stay out of the history unless passed `--record`.
+
+The window is ordered and capped by each entry's own `date`, never by its position in the file, and there is one entry per type per week — re-recording a week replaces it. This matters: a backfill once appended older weeks after newer ones, and because both the window and the cap read from the end of the file, the art director was handed six-month-old concepts while genuinely recent weeks were hidden and then silently evicted. A conservatory cover recurred two weeks after the previous one for exactly that reason. Run `pnpm run rebuild-image-history` to rebuild the file in date order from the committed sidecars if it drifts again.
 
 ### Outputs
 

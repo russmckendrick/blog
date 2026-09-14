@@ -278,7 +278,7 @@ Checks token validity and account access for Cloudflare Pages workflows.
 |------|---------|
 | `scripts/tunes-config.yaml` | Main configuration for weekly and wrapped tunes generation |
 | `scripts/tunes-cover-blocklist.js` | Manual list of album covers to keep out of cover-art source images (still shown in the post) |
-| `scripts/.tunes-image-history.json` | Committed, capped rolling record of weekly image runs; supplies the do-not-repeat concepts fed back to the art director |
+| `scripts/.tunes-image-history.json` | Committed, capped rolling record of weekly image runs; supplies the do-not-repeat concepts fed back to the art director. Ordered and capped by entry date, one entry per type per week |
 | `scripts/.tunes-artist-usage.json` | Committed map of week date to the artists cast in that week's group portrait; drives the artist reuse rule. Maintained automatically, rebuildable with `pnpm run rebuild-artist-usage` |
 | `scripts/tunes-template.mdx` | MDX scaffold for weekly tunes posts |
 | `scripts/year-wrapped-template.mdx` | MDX scaffold for wrapped posts |
@@ -332,7 +332,8 @@ These modules support the top-level CLIs and are not intended to be run directly
 | `scripts/lib/tunes-cover-art-direction.js` | Factual vision summaries, freeform AI art direction, normalization/fallbacks, and final prompt guardrails for Tunes headers |
 | `scripts/lib/tunes-artist-art-direction.js` | Factual artist-photo and setting summaries, strongest-location selection, anchored casting and photographic art direction, normalization/fallbacks, reference remapping, and final location/identity/duplication guardrails |
 | `scripts/lib/tunes-post-context.js` | Parses and normalizes ranked artist/album lists for manual regeneration source ordering; it is not used by cover art direction |
-| `scripts/lib/tunes-image-history.js` | Rolling record of weekly image runs in `scripts/.tunes-image-history.json` (committed, capped) plus per-run `.json` sidecars; feeds do-not-repeat concepts back to the art director |
+| `scripts/lib/tunes-image-history.js` | Rolling record of weekly image runs in `scripts/.tunes-image-history.json` (committed, capped) plus per-run `.json` sidecars; feeds do-not-repeat concepts back to the art director. Sorts, dedupes and trims by entry date rather than file position |
+| `scripts/rebuild-tunes-image-history.js` | Rebuilds `scripts/.tunes-image-history.json` in date order from the committed cover/portrait sidecars (`pnpm run rebuild-image-history`, `--dry-run` to preview) |
 | `scripts/lib/tunes-artist-usage.js` | Committed per-week record of who was cast in each artist portrait (`scripts/.tunes-artist-usage.json`); benches recently used artists before casting and relaxes least-recently-used first when a week runs thin |
 | `scripts/lib/image-handler.js` | Downloads, stores, and organizes album/artist images |
 | `scripts/lib/lastfm-client.js` | Last.fm client for weekly listening data |
