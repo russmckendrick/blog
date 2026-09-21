@@ -18,11 +18,17 @@ const DEFAULT_IMAGE_SIZE = { width: 2560, height: 1440 }
 
 const QUALITY_LEVELS = ['auto', 'low', 'medium', 'high', 'xhigh', 'max']
 
+// 'xhigh' rather than the endpoint's 'high' default: on the weekly Tunes cover it was the
+// difference between a Kate Bush who looked like the sleeve and one who did not, once pose,
+// reference map, and trimmed references were already in place. Costs more per run;
+// GPT_IMAGE_2_5_QUALITY or a per-call `quality` still overrides it.
+const DEFAULT_QUALITY = 'xhigh'
+
 function resolveQuality(value) {
   const requested = String(value || '').trim().toLowerCase()
   if (QUALITY_LEVELS.includes(requested)) return requested
-  if (requested) console.warn(`  Unknown GPT Image 2.5 quality "${value}"; using "high"`)
-  return 'high'
+  if (requested) console.warn(`  Unknown GPT Image 2.5 quality "${value}"; using "${DEFAULT_QUALITY}"`)
+  return DEFAULT_QUALITY
 }
 
 // Build the GPT Image 2.5 input. `seed` is accepted for a uniform backend signature but

@@ -58,7 +58,7 @@ test('builds a 16:9 GPT Image 2.5 edit request from the album references', () =>
     prompt: 'A nocturne in miniature',
     image_urls: ['https://example.com/album.png'],
     image_size: { width: 2560, height: 1440 },
-    quality: 'high',
+    quality: 'xhigh',
     num_images: 1,
     output_format: 'png'
   })
@@ -67,5 +67,6 @@ test('builds a 16:9 GPT Image 2.5 edit request from the album references', () =>
 test('accepts the quality levels GPT Image 2.5 added and rejects the rest', () => {
   assert.equal(buildGptImage25Input({ imageUrls: [], prompt: 'x', quality: 'xhigh' }).quality, 'xhigh')
   assert.equal(buildGptImage25Input({ imageUrls: [], prompt: 'x', quality: 'max' }).quality, 'max')
-  assert.equal(buildGptImage25Input({ imageUrls: [], prompt: 'x', quality: 'ultra' }).quality, 'high')
+  assert.equal(buildGptImage25Input({ imageUrls: [], prompt: 'x', quality: 'ultra' }).quality, 'xhigh')
+  assert.equal(buildGptImage25Input({ imageUrls: [], prompt: 'x', quality: 'high' }).quality, 'high')
 })

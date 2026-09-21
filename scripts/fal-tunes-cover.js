@@ -13,6 +13,7 @@ import { extractTunesDate } from './lib/tunes-post-context.js'
 import {
   buildGenerationPrompt as buildFreeformGenerationPrompt,
   designCoverArtDirection,
+  isPhotographicMedium,
   summarizeAlbumCovers
 } from './lib/tunes-cover-art-direction.js'
 
@@ -304,14 +305,36 @@ async function selectCoverInputs(imagePaths, options = {}) {
   }
 }
 
+// Reference size sent to the image model. Faces on a sleeve are often a small fraction of the
+// square (Hounds of Love sits inside a wide white border), and the model copies a face better
+// the more pixels of it it is given, so plain borders are trimmed first and the crop is sent
+// larger than the old 900px.
+const REFERENCE_SIZE = Number(process.env.TUNES_COVER_REFERENCE_SIZE || 1280)
+const TRIM_THRESHOLD = 24
+
+async function prepareReferenceImage(imagePath) {
+  let pipeline = sharp(imagePath)
+  try {
+    const { width = 0, height = 0 } = await sharp(imagePath).metadata()
+    const { info } = await sharp(imagePath).trim({ threshold: TRIM_THRESHOLD }).toBuffer({ resolveWithObject: true })
+    const kept = (info.width * info.height) / Math.max(1, width * height)
+    // Only accept a trim that removed a real border: a near-uniform sleeve (a flat colour
+    // field with one small mark) would otherwise collapse to the mark alone.
+    if (kept < 0.98 && kept >= 0.35) pipeline = sharp(imagePath).trim({ threshold: TRIM_THRESHOLD })
+  } catch {
+    // Uniform image or trim failure: send it untrimmed.
+  }
+  return pipeline
+    .resize(REFERENCE_SIZE, REFERENCE_SIZE, { fit: 'inside', kernel: sharp.kernel.lanczos3 })
+    .jpeg({ quality: 92 })
+    .toBuffer()
+}
+
 async function uploadAlbumImages(imagePaths, debug = false) {
   const urls = []
 
   for (const imagePath of imagePaths) {
-    const buffer = await sharp(imagePath)
-      .resize(900, 900, { fit: 'cover', kernel: sharp.kernel.lanczos3 })
-      .jpeg({ quality: 92 })
-      .toBuffer()
+    const buffer = await prepareReferenceImage(imagePath)
 
     const file = new File([buffer], path.basename(imagePath), { type: 'image/jpeg' })
     const url = await fal.storage.upload(file)
@@ -508,7 +531,8 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
 
   const historySize = await resolveHistorySize()
   const avoidConcepts = await recentConcepts('cover', historySize)
-  const avoidMedia = await recentMedia('cover', historySize)
+  // Photographic treatments are recorded but never refused - photography is the default.
+  const avoidMedia = (await recentMedia('cover', historySize)).filter(medium => !isPhotographicMedium(medium))
 
   const sourceImagePaths = filterBlocklistedCovers(imagePaths, debug)
 
@@ -571,7 +595,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           avoidMedia,
           debug
         })
-        const prompt = buildFreeformGenerationPrompt(artDirection)
+        const prompt = buildFreeformGenerationPrompt(artDirection, coverSummaries)
 
         if (debug) {
           console.log(`  Prompt: ${prompt}`)

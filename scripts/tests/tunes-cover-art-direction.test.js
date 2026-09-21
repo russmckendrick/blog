@@ -3,7 +3,11 @@ import test from 'node:test'
 import {
   buildArtDirectionRequestText,
   buildCoverSummaryRequestText,
+  buildFallbackArtDirection,
   buildGenerationPrompt,
+  buildReferenceMap,
+  hasPeople,
+  isPhotographicMedium,
   normalizeArtDirection,
   normalizeCoverSummaries
 } from '../lib/tunes-cover-art-direction.js'
@@ -112,7 +116,67 @@ test('normalizes freeform art direction and appends only hard generation constra
   assert.match(prompt, /Hard constraints/)
   assert.match(prompt, /no readable text/i)
   assert.match(prompt, /closely match their visible appearance and likeness/i)
+  // Re-posing a person into a new performance (asleep, mid-turn, smeared by long exposure)
+  // makes the image model invent a face, so pose and a sharp unobscured face are hard rules.
+  assert.match(prompt, /pose, expression, and gaze the sleeve shows/i)
+  assert.match(prompt, /sharp, lit, unobscured, and in focus/i)
   assert.match(prompt, /each identifiable reference person only once/i)
   assert.match(prompt, /reflection, mirror portrait, poster, billboard/i)
   assert.doesNotMatch(prompt, /creative-direction lane/i)
+  assert.doesNotMatch(prompt, /Reference map/i, 'no map when the factual pass saw nobody')
+})
+
+test('ties every person on a sleeve back to its numbered reference image', () => {
+  const summaries = normalizeCoverSummaries([
+    { source: 1, description: 'A glitchy abstract', people: 'none' },
+    { source: 2, description: 'A woman with dogs', people: 'one woman reclining with two dogs' }
+  ], sourceReferences)
+
+  assert.equal(hasPeople(summaries[0]), false)
+  assert.equal(hasPeople(summaries[1]), true)
+  assert.equal(hasPeople({ people: 'No people visible' }), false)
+  assert.equal(hasPeople({}), false)
+
+  const map = buildReferenceMap(summaries)
+  assert.match(map, /reference image 2 shows one woman reclining with two dogs/)
+  assert.doesNotMatch(map, /reference image 1/)
+
+  const prompt = buildGenerationPrompt({ prompt: 'A platform at night.' }, summaries)
+  assert.match(prompt, /^A platform at night\. Reference map for people/)
+  assert.match(prompt, /Copy each of these faces directly from that numbered reference image/)
+  assert.match(prompt, /Hard constraints/)
+})
+
+test('photographic media are exempt from the recent-media refusal', () => {
+  for (const medium of [
+    'wet-plate photography',
+    'editorial location photograph',
+    'large-format film',
+    'long-exposure night photography',
+    'cinematic studio shoot'
+  ]) {
+    assert.ok(isPhotographicMedium(medium), `${medium} should count as photographic`)
+  }
+})
+
+test('staged and painted media are still refused, even when they mention a camera', () => {
+  for (const medium of [
+    'oil on canvas',
+    'color lithograph',
+    'pastel mural',
+    'glazed ceramic mural',
+    'cut-paper and photo collage',
+    'mixed-media diorama photographed like a stage set'
+  ]) {
+    assert.ok(!isPhotographicMedium(medium), `${medium} should not count as photographic`)
+  }
+})
+
+test('the deterministic fallback leans photographic rather than refusing a photograph', () => {
+  const summaries = normalizeCoverSummaries([], sourceReferences)
+  const direction = buildFallbackArtDirection(summaries, sourceReferences)
+
+  assert.equal(direction.medium, 'photographic scene')
+  assert.match(direction.prompt, /photographic scene/i)
+  assert.doesNotMatch(direction.prompt, /do not default to a generic photograph/i)
 })

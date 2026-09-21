@@ -107,12 +107,15 @@ test('feeds recent media back on their own axis, newest first', async () => {
   ])
 })
 
-test('falls back to creativeDirection for entries predating the medium field', async () => {
+test('ignores entries predating the medium field rather than feeding their prose', async () => {
+  // The pre-field sentences all read "diorama photographed like a stage set" - feeding them
+  // in put "photographed" on the refusal list and pushed the director towards painting.
   const file = await writeHistory([
-    { type: 'cover', date: '2026-08-31', concept: 'A', creativeDirection: 'A hand-cut paper diorama' }
+    { type: 'cover', date: '2026-08-31', concept: 'A', creativeDirection: 'A hand-built diorama photographed like a theatrical set' },
+    { type: 'cover', date: '2026-09-07', concept: 'B', medium: 'oil on canvas' }
   ])
 
-  assert.deepEqual(await recentMedia('cover', 8, file), ['A hand-cut paper diorama'])
+  assert.deepEqual(await recentMedia('cover', 8, file), ['oil on canvas'])
 })
 
 test('collapses repeats so one medium cannot fill the whole refusal list', async () => {
