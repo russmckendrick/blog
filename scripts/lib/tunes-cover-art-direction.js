@@ -39,6 +39,44 @@ export function isLowLight(value) {
   return LOW_LIGHT_PATTERN.test(String(value || ''))
 }
 
+// The daylight rule fixed the darkness and immediately found the next rut: four of the six
+// covers rerun under it on 28 Sep 2026 came back as "bright overcast afternoon". Recent
+// lighting is refused on its own axis the way media are. The window is short on purpose -
+// bright light has fewer distinct set-ups than media, and refusing a full history window
+// would squeeze the director towards night, which the default is steering away from.
+export const LIGHTING_REPEAT_WINDOW = 4
+
+// Builds the art director's lighting instructions from the recorded history, newest first:
+// a forced daylight rule when the previous cover was low light, then a do-not-repeat list of
+// the last few set-ups (collapsed so one repeated phrase cannot fill it).
+export function buildLightingBlock(recentLighting = []) {
+  const history = (Array.isArray(recentLighting) ? recentLighting : [])
+    .map(value => String(value || '').trim())
+    .filter(Boolean)
+  const blocks = []
+
+  // Only the previous cover decides the forcing rule: one low-light week buys the next one
+  // daylight, which is enough to stop a run without banning night outright.
+  const previousLighting = history[0] || ''
+  if (isLowLight(previousLighting)) {
+    blocks.push(`The previous cover was lit as "${previousLighting}". This cover must be lit by daylight or bright, even light - midday or afternoon sun, open shade, bright overcast, golden hour, or a high-key studio - and must not be set at night, dusk, or twilight, or lit mainly by practical lamps, neon, candles, or stage spots, even if the sleeves are dark.`)
+  }
+
+  const seen = new Set()
+  const recent = []
+  for (const value of history.slice(0, LIGHTING_REPEAT_WINDOW)) {
+    const key = value.toLowerCase()
+    if (seen.has(key)) continue
+    seen.add(key)
+    recent.push(value)
+  }
+  if (recent.length > 0) {
+    blocks.push(`These lighting set-ups were used on the most recent covers and must not be repeated, even under different wording - change the time of day, the main light source, or the weather, not just the phrasing:\n${recent.map(value => `- ${value}`).join('\n')}\n\nBright light is still the default. Pick a materially different bright set-up - for example low-angle early morning sun, hard midday sun with crisp shadows, golden hour, open shade on a sunny day, sunlight through large windows, a high-key studio, crisp winter light, or seaside glare - whichever genuinely fits this week's covers.`)
+  }
+
+  return blocks.join('\n\n')
+}
+
 const openai = process.env.OPENAI_API_KEY
   ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
   : null
@@ -336,12 +374,7 @@ export async function designCoverArtDirection({
   const avoidMediaBlock = refusedMedia.length > 0
     ? `These media and staging techniques were used on recent covers and are refused for this one. Do not choose any of them or any close variation, and in particular do not build another diorama, shadow box, assemblage, or cut-paper collage unless this week's artwork makes that genuinely unavoidable:\n${refusedMedia.map(medium => `- ${medium}`).join('\n')}\n\nPhotography itself is never on this list and is always available. Reach for a photographic treatment that is materially different from the recent covers - for example a sunlit editorial location shoot, a high-key studio set, a clean medium-format daylight portrait, a bright macro still life, a wide environmental portrait under open sky, or a golden-hour exterior - whichever genuinely fits this week's covers.`
     : ''
-  // Only the previous cover decides the forcing rule: one low-light week buys the next one
-  // daylight, which is enough to stop a run without banning night outright.
-  const previousLighting = recentLighting[0] || ''
-  const lightingBlock = isLowLight(previousLighting)
-    ? `The previous cover was lit as "${previousLighting}". This cover must be lit by daylight or bright, even light - midday or afternoon sun, open shade, bright overcast, golden hour, or a high-key studio - and must not be set at night, dusk, or twilight, or lit mainly by practical lamps, neon, candles, or stage spots, even if the sleeves are dark.`
-    : ''
+  const lightingBlock = buildLightingBlock(recentLighting)
   const hintBlock = hint ? `Author's steer: ${hint}` : ''
   const summaryBlock = coverSummaries
     .map(summary => [
@@ -380,7 +413,7 @@ ${avoidMediaBlock}
 ${lightingBlock}
 
 Return JSON exactly as {"concept":"string","medium":"string","lighting":"string","creativeDirection":"string","scene":"string","elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string","prompt":"string"}.
-"concept" is at most 15 words and is saved to the do-not-repeat history. "medium" is at most 8 words naming only the chosen medium or technique - it is saved to the history, and any non-photographic medium is refused on future weeks, so be specific ("daylight location photography", "gouache on board") rather than generic ("mixed media"). "lighting" is at most 6 words naming the time of day and main light source ("midday sun through high windows", "night under neon") - it is saved to the history, and a low-light cover forces daylight on the next one. "creativeDirection" names the chosen medium and visual approach in one sentence. "elements" records how each numbered source contributes.`
+"concept" is at most 15 words and is saved to the do-not-repeat history. "medium" is at most 8 words naming only the chosen medium or technique - it is saved to the history, and any non-photographic medium is refused on future weeks, so be specific ("daylight location photography", "gouache on board") rather than generic ("mixed media"). "lighting" is at most 6 words naming the time of day and main light source ("midday sun through high windows", "night under neon") - it is saved to the history, recent set-ups are refused on future weeks, and a low-light cover forces daylight on the next one. "creativeDirection" names the chosen medium and visual approach in one sentence. "elements" records how each numbered source contributes.`
 
   try {
     const response = await openai.responses.create({

@@ -15,6 +15,7 @@ import {
   designCoverArtDirection,
   isLowLight,
   isPhotographicMedium,
+  LIGHTING_REPEAT_WINDOW,
   summarizeAlbumCovers
 } from './lib/tunes-cover-art-direction.js'
 
@@ -563,6 +564,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     if (options.hint) console.log(`  Author's steer: ${options.hint}`)
     if (avoidConcepts.length > 0) console.log(`  Avoiding recent concepts: ${avoidConcepts.join(' | ')}`)
     if (avoidMedia.length > 0) console.log(`  Avoiding recent media: ${avoidMedia.join(' | ')}`)
+    if (lightingHistory.length > 0) console.log(`  Avoiding recent lighting: ${lightingHistory.slice(0, LIGHTING_REPEAT_WINDOW).join(' | ')}`)
     if (requireBrightLight) console.log(`  Previous cover was low-light (${lightingHistory[0]}); requiring daylight`)
   }
 
@@ -602,6 +604,12 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
         })
         if (requireBrightLight && isLowLight(artDirection.lighting)) {
           console.warn(`  Art director chose low light again (${artDirection.lighting}) despite the daylight rule`)
+        }
+        const repeatedLighting = lightingHistory
+          .slice(0, LIGHTING_REPEAT_WINDOW)
+          .some(value => value.toLowerCase() === String(artDirection.lighting || '').trim().toLowerCase())
+        if (repeatedLighting) {
+          console.warn(`  Art director repeated a recent lighting set-up (${artDirection.lighting})`)
         }
         const prompt = buildFreeformGenerationPrompt(artDirection, coverSummaries)
 

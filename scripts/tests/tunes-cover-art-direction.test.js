@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {
   buildArtDirectionRequestText,
+  buildLightingBlock,
   buildCoverSummaryRequestText,
   buildFallbackArtDirection,
   buildGenerationPrompt,
@@ -9,6 +10,7 @@ import {
   hasPeople,
   isLowLight,
   isPhotographicMedium,
+  LIGHTING_REPEAT_WINDOW,
   normalizeArtDirection,
   normalizeCoverSummaries
 } from '../lib/tunes-cover-art-direction.js'
@@ -220,4 +222,34 @@ test('records the chosen lighting and falls back to daylight when it is missing'
   assert.equal(chosen.lighting, 'golden hour exterior')
   assert.equal(missing.lighting, 'bright daylight')
   assert.match(buildFallbackArtDirection(summaries, sourceReferences).prompt, /bright, open daylight/i)
+})
+
+test('refuses the last few lighting set-ups, collapsed and newest first', () => {
+  const block = buildLightingBlock([
+    'bright overcast pool light',
+    'bright overcast afternoon',
+    'afternoon skylight and sun',
+    'Bright overcast afternoon',
+    'late morning window daylight'
+  ])
+
+  assert.match(block, /must not be repeated/i)
+  assert.match(block, /- bright overcast pool light\n- bright overcast afternoon\n- afternoon skylight and sun/)
+  assert.doesNotMatch(block, /Bright overcast afternoon/, 'case-only repeats collapse')
+  assert.doesNotMatch(block, /late morning window daylight/, `only the last ${LIGHTING_REPEAT_WINDOW} weeks are refused`)
+  assert.match(block, /Bright light is still the default/)
+  assert.doesNotMatch(block, /previous cover was lit as/i, 'no forcing rule after a daylight cover')
+})
+
+test('a low-light previous cover forces daylight on top of the repeat list', () => {
+  const block = buildLightingBlock(['dusk under practical bulbs', 'night under practical lights'])
+
+  assert.match(block, /previous cover was lit as "dusk under practical bulbs"/i)
+  assert.match(block, /must be lit by daylight/i)
+  assert.match(block, /- dusk under practical bulbs\n- night under practical lights/)
+})
+
+test('no lighting history means no lighting block', () => {
+  assert.equal(buildLightingBlock([]), '')
+  assert.equal(buildLightingBlock([null, '  ']), '')
 })
