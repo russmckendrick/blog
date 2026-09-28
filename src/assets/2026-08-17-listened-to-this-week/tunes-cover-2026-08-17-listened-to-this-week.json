@@ -3,70 +3,72 @@
   "date": "2026-08-17",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "late morning window daylight",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Backstage shrine in a cosmic rehearsal hall",
-  "creativeDirection": "A handcrafted mixed-media diorama photographed like an editorial stage set, combining sculptural assemblage, paper cut graphics, and vintage portrait tableaux.",
-  "scene": "A wide view into a theatrical rehearsal hall transformed into a surreal shrine-like set, seen straight on at slightly elevated eye level, with a central altar-platform and layered backstage space receding behind it.",
+  "concept": "Sunlit vintage showroom with surreal portraits",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography in a bright vintage showroom, treating the graphic and collage motifs as real decor, objects, and display pieces while preserving the album portraits as staged figures within one plausible interior.",
+  "scene": "A wide 16:9 editorial photograph inside a spacious mid-century furniture and audio showroom with tall street-facing windows, polished but matte concrete floor, display platforms, record players, mirrors, and sculptural decor, seen from a slightly low eye level looking diagonally across the room.",
   "elements": [
     {
       "source": 1,
-      "element": "A single soft, luminous woman in a long white vintage dress stands at the altar, lifting a small doll upward as if offering it to the room's strange machinery."
+      "element": "the woman from reference image 1 stands in profile near the windows in her white dress, holding a small dark figurine up in both hands exactly as on the cover, surrounded by a gentle warm sun flare"
     },
     {
       "source": 2,
-      "element": "A large minimal cat face appears as a painted emblem on a hanging circular panel high in the set, watching over the scene."
+      "element": "a large stylized white cat face appears as a clean painted panel or rug graphic on an olive green display wall behind the main scene"
     },
     {
       "source": 3,
-      "element": "The walls and platform edges are built from dense collage fragments of knobs, speakers, cables, and motion-blur photographs, creating a kinetic sound-engine environment."
+      "element": "vintage tape decks, knobs, cassette equipment, amber indicator lights, and a suggestion of night-driving imagery appear as stacked hi-fi displays and framed lightbox prints within the showroom"
     },
     {
       "source": 4,
-      "element": "A smiling silver-haired woman in a bright striped sleeveless top appears once at stage right beside a green chair and mirror, caught mid-gesture like a lively backstage host."
+      "element": "the older woman from reference image 4 stands smiling toward camera with arms slightly out beside a green chair and tall vase, integrated as another featured customer or host in the interior"
     },
     {
       "source": 5,
-      "element": "The impact motif becomes a torn-paper burst and dented percussion surface on the left side of the stage, suggesting explosive rhythm rather than literal violence."
+      "element": "the punch motif becomes a black-and-white photographic artwork in a single framed print on the wall, tightly cropped and secondary, not as live action in the room"
     },
     {
       "source": 6,
-      "element": "Three elegantly dressed women in monochrome are restaged as a formal black-and-white portrait tableau seated around a small table in the rear left, like a framed living photograph within the set."
+      "element": "the three women from reference image 6 are posed together around a small showroom table in their coordinated outfits, maintaining their formal arrangement as a distinct group"
     },
     {
       "source": 7,
-      "element": "A spiked ritual mask forms the altar's central sculptural backdrop, looming behind the woman like a radiant sacred speaker icon."
+      "element": "a gold-toned spiked mask appears as a dramatic sculptural object mounted on a pedestal, catching bright highlights"
     },
     {
       "source": 8,
-      "element": "A retro UFO with a pink tractor beam hangs above, beaming down onto a tiny astronaut figurine suspended over the altar."
+      "element": "a retro-futurist flying saucer and beam motif appears as a colorful modular ceiling mobile or illuminated display sign above a central platform"
     }
   ],
   "palette": [
     "apricot",
-    "coral",
     "olive green",
-    "charcoal black",
+    "gold",
+    "teal",
     "cream",
-    "amber"
+    "black"
   ],
-  "mood": "mysterious, playful, ceremonial, musically charged",
+  "mood": "crisp, playful, curated",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "As-We-Once-Were.jpg",
       "album": "As We Once Were",
       "artist": "",
-      "description": "A soft-focus portrait of a woman in profile facing right, wearing a long white vintage-style dress with gathered sleeves and ruffled trim. She raises a dark doll or figurine with light hair in both hands. The background is a hazy warm gradient with a glowing, dreamlike atmosphere and no distinct setting details.",
-      "signatureMotif": "woman holding up a doll",
-      "medium": "soft-focus studio photograph",
+      "description": "A soft-focus portrait of one woman in profile facing right, wearing a long-sleeved white dress with gathered details. She raises both hands to hold up a small dark figurine or doll-like object with a pale top. The entire image is bathed in a hazy warm glow with a plain blurred background.",
+      "signatureMotif": "a woman lifting a small figurine in a dreamy haze",
+      "medium": "soft-focus color photograph",
+      "people": "one woman in profile holding up a small object",
       "palette": [
         "peach",
         "apricot",
         "cream",
         "soft pink",
-        "brown"
+        "warm brown"
       ]
     },
     {
@@ -74,15 +76,16 @@
       "filename": "Tails.jpg",
       "album": "Tails",
       "artist": "",
-      "description": "A simple illustrated cat face centered on a flat green background. The cat has a pale cream head, pointed ears, narrow eyes, a pink triangular nose, whiskers, and rosy cheeks. The composition is minimal and graphic, with the face floating alone in the middle.",
-      "signatureMotif": "stylized cat face",
-      "medium": "naive illustration",
+      "description": "A simple illustrated animal face centered on a flat green background. The face is white with pointed ears, narrow eyes, pink cheeks, a pink triangular nose, and long black whiskers, drawn with loose black outlines.",
+      "signatureMotif": "a stylized white cat face",
+      "medium": "naive hand-drawn illustration",
+      "people": "none",
       "palette": [
         "olive green",
-        "cream",
+        "white",
         "black",
         "pink",
-        "peach"
+        "blue"
       ]
     },
     {
@@ -90,13 +93,14 @@
       "filename": "Vanishing-Point.jpg",
       "album": "Vanishing Point",
       "artist": "",
-      "description": "A dense collage of overlapping rectangular photo fragments showing close-up views of audio equipment, knobs, dials, speakers, cables, and blurred lights or roadway motion streaks. The arrangement is layered against a black background, with bold central text blocks cutting across the middle. The overall look is busy, fragmented, and kinetic.",
-      "signatureMotif": "collaged audio gear and motion-blur photos",
+      "description": "A dense collage of overlapping photographic fragments arranged on a black background. The pieces show close-ups of audio equipment, knobs, a cassette or tape machine, blurred lights, signage, and a speeding car at night, with bold blocky text layered across the center. The composition feels cut-and-pasted and urban, with many rectangular panels.",
+      "signatureMotif": "a collage of blurred night driving and audio gear",
       "medium": "photographic collage",
+      "people": "none",
       "palette": [
         "black",
-        "amber",
         "orange",
+        "amber",
         "brown",
         "white"
       ]
@@ -106,14 +110,15 @@
       "filename": "Temple-Songs.jpg",
       "album": "Temple Songs",
       "artist": "",
-      "description": "A color photograph of a smiling woman standing indoors, framed by a thick coral border. She has shoulder-length silver hair and wears a bright striped sleeveless top, jeans, necklaces, and earrings. Her arms are slightly blurred as if moving. Behind her are dark walls, mirrors, a tall decorative vase-like object, a green chair, and warm interior lighting.",
-      "signatureMotif": "smiling woman in a striped top",
+      "description": "A color photograph of one smiling older woman standing indoors, facing the camera with her arms slightly out. She has shoulder-length gray hair and wears a bright striped sleeveless top, jeans, earrings, and layered necklaces. Behind her are dark walls, mirrors, a tall decorative vase-like object, a green chair, and warm interior lighting.",
+      "signatureMotif": "a smiling gray-haired woman in a bright striped top",
       "medium": "color photograph",
+      "people": "one older woman smiling indoors",
       "palette": [
-        "coral",
         "orange",
+        "red",
+        "blue",
         "black",
-        "denim blue",
         "olive green"
       ]
     },
@@ -122,9 +127,10 @@
       "filename": "Vulgar-Display-of-Power.jpg",
       "album": "Vulgar Display of Power",
       "artist": "",
-      "description": "A grainy, high-contrast close-up image of a fist striking a man's face. The impact compresses the face dramatically, and the scene is cropped tightly so only the arm, fist, and part of the head are visible. The image has a rough printed texture and a dark background.",
-      "signatureMotif": "fist hitting a face",
-      "medium": "grainy photograph",
+      "description": "A grainy high-contrast close-up image showing a clenched fist striking or pressing into the side of a man's face. The scene is cropped tightly, with the arm extending from the right and the face pushed to the left, against a dark background.",
+      "signatureMotif": "a fist impacting a man's face",
+      "medium": "grainy monochrome photograph",
+      "people": "two people partially visible in a punch close-up",
       "palette": [
         "black",
         "gray",
@@ -138,15 +144,14 @@
       "filename": "The-Womack-Sisters.jpg",
       "album": "The Womack Sisters",
       "artist": "",
-      "description": "A black-and-white studio portrait of three women posed around a table in an elegant interior. Two are seated in the foreground and one stands or leans between them in back. They wear coordinated formal outfits with contrasting light collars or shoulders, dark ties, long gloves, patterned stockings, and prominent jewelry. The background includes a textured wall and a doorway or window area at right.",
-      "signatureMotif": "three women posed around a table",
+      "description": "A black-and-white studio-style portrait of three young women posed around a table in an interior space. Two sit in chairs at left and right while one leans forward from the center. They wear coordinated formal outfits with contrasting light shoulders, dark ties, long sleeves, patterned tights, and jewelry. A textured wall and doorway frame the background.",
+      "signatureMotif": "three women posed around a table in coordinated outfits",
       "medium": "black-and-white photograph",
+      "people": "three young women posed around a table",
       "palette": [
         "black",
         "white",
-        "gray",
-        "charcoal",
-        "silver"
+        "gray"
       ]
     },
     {
@@ -154,15 +159,16 @@
       "filename": "Stigma.jpg",
       "album": "Stigma",
       "artist": "",
-      "description": "A dramatic close-up of a carved mask or statue head with open mouth and closed or half-closed eyes, surrounded by many protruding nails or spikes. The figure is lit warmly against a darker background with diagonal striped light patterns and small blurred highlights. The composition centers the face and spiked structure.",
-      "signatureMotif": "spiked ritual mask",
-      "medium": "photograph of sculptural object",
+      "description": "A dramatic close-up of a metallic mask or sculptural face with open mouth and closed or half-closed eyes, surrounded by many protruding nails or spikes. The background has diagonal streaks of light and blurred highlights, giving a theatrical, industrial look.",
+      "signatureMotif": "a gold-toned mask covered with protruding nails",
+      "medium": "stylized color photograph of a sculpture or mask",
+      "people": "none",
       "palette": [
         "gold",
-        "brown",
         "black",
         "purple",
-        "white"
+        "white",
+        "brown"
       ]
     },
     {
@@ -170,22 +176,23 @@
       "filename": "73-Good-Luck.jpg",
       "album": "73 Good Luck",
       "artist": "",
-      "description": "A flat, retro-futuristic cartoon scene with a flying saucer at the top center shining a pink beam downward onto a small astronaut figure. Around them are rounded geometric buildings, circles, arcs, and abstract space-age shapes arranged in a symmetrical, poster-like composition. Thick black outlines define all forms on a pale blue background.",
-      "signatureMotif": "UFO beaming up an astronaut",
-      "medium": "vector-style illustration",
+      "description": "A flat graphic illustration of a retro-futuristic scene built from bold outlined geometric shapes. At the center, a flying saucer hovers above a small astronaut with arms outstretched inside a pink beam. Around them are domed buildings, circular forms, curved bands, and abstract city-like structures arranged symmetrically.",
+      "signatureMotif": "a flying saucer beaming up a small astronaut",
+      "medium": "vector-style geometric illustration",
+      "people": "none",
       "palette": [
+        "teal",
         "light blue",
-        "navy",
-        "yellow",
         "orange",
+        "yellow",
         "pink"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "A wide straight-on view into a surreal backstage rehearsal hall turned into a ceremonial shrine, seen at slightly elevated eye level, with a central altar platform in the foreground and layered theatrical space receding behind it; a luminous woman in profile wearing a long white vintage dress with gathered sleeves stands center stage, raising a small dark doll with pale hair in both hands toward the air; behind her rises a dramatic sculptural altar based on a carved mask head encircled with nails or spikes, transformed into a radiant sacred sound-icon, while above it a retro-futurist flying saucer hangs from visible wires and shines a pink beam onto a tiny suspended astronaut figurine; the set walls, risers, and floor edges are constructed from dense collage fragments of audio gear, knobs, speakers, cables, and amber motion-blur photo strips against deep black, creating a kinetic music-machine architecture; at upper center a simple cream cat face with narrow eyes and pink nose is painted on a circular hanging panel like a watchful emblem; at stage right, include one smiling silver-haired woman in a bright striped sleeveless top beside a green chair, mirror, and tall decorative vase form, her arms slightly blurred as if welcoming or dancing backstage; at rear left, include three women only once as a monochrome formal tableau around a small table, styled like an elegant black-and-white living portrait inset into the set; on the left foreground, reinterpret the fist-impact image as an abstract torn-paper burst and dented drumhead or percussion panel, conveying explosive rhythm without literal assault; handcrafted mixed-media diorama, sculptural assemblage, collage, painted flats, cut paper graphics, fabric details, miniature props, then photographed with shallow atmospheric haze; strong central hierarchy with the white-dressed woman and spiked altar dominant, supporting vignettes balanced on both sides, theatrical framing, layered depth, warm spotlights from below and side lighting with small glittering highlights; palette of apricot, cream, soft pink, coral, olive green, amber, gold, charcoal black, silver gray, and pale blue; mood mysterious, playful, ceremonial, and musically electric. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 editorial interior photograph from a slightly low eye level, looking diagonally across a bright mid-century furniture and hi-fi showroom with tall front windows, matte concrete floor, mirrors, display platforms, record players, speakers, sculptural decor, and open airy space. Primary subject: the woman from reference image 1 near the sunlit windows, kept exactly in her profile pose facing right in her long-sleeved white dress, lifting a small dark figurine with a pale top in both hands, with a soft warm halo of sunlight around her but her face still clear. Nearby, the older woman from reference image 4 stands smiling toward the camera with arms slightly out, wearing her bright striped sleeveless top, jeans, earrings, and layered necklaces, positioned beside a green chair and a tall decorative vase. The three women from reference image 6 appear once as a group at a small showroom table deeper in the room, preserving their posed arrangement and coordinated formal outfits. Source-specific details throughout the space: a large olive panel or rug with the stylized white cat face from reference image 2; vintage tape decks, knobs, cassette machinery, amber LEDs, and framed blurred night-driving imagery from reference image 3 integrated into the hi-fi displays; one secondary framed black-and-white art print of the impact close-up from reference image 5 on a wall; a gold-toned mask sculpture covered in protruding spikes from reference image 7 on a pedestal catching hard highlights; and a retro-futurist flying saucer beaming up a tiny astronaut from reference image 8 translated into a colorful suspended mobile or illuminated showroom sign above a central platform. Daylight location photography, clean realistic editorial treatment, medium-format sharpness, no haze except the natural warm window glow around the woman from reference image 1. Balanced composition with the woman from reference image 1 leading in the left third, the older woman from reference image 4 anchoring the right-middle, and the three women from reference image 6 as a clear supporting cluster in the background; all faces fully visible and sharp. Late morning window daylight, bright open exposure, crisp shadows, saturated but natural color. Palette of apricot, cream, olive green, teal, gold, black, and warm wood; mood playful, curated, surreal but physically plausible. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one woman in profile holding up a small object; reference image 4 shows one older woman smiling indoors; reference image 5 shows two people partially visible in a punch close-up; reference image 6 shows three young women posed around a table. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "As-We-Once-Were.jpg",
     "Tails.jpg",

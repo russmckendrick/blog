@@ -8,11 +8,12 @@ import { COVER_BLOCKLIST } from './tunes-cover-blocklist.js'
 import { isContentPolicyViolation } from './lib/fal-content-policy.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { getBackend, BACKENDS } from './lib/image-backends/index.js'
-import { appendHistory, recentConcepts, recentMedia, writeSidecar } from './lib/tunes-image-history.js'
+import { appendHistory, recentConcepts, recentLighting, recentMedia, writeSidecar } from './lib/tunes-image-history.js'
 import { extractTunesDate } from './lib/tunes-post-context.js'
 import {
   buildGenerationPrompt as buildFreeformGenerationPrompt,
   designCoverArtDirection,
+  isLowLight,
   isPhotographicMedium,
   summarizeAlbumCovers
 } from './lib/tunes-cover-art-direction.js'
@@ -533,6 +534,8 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   const avoidConcepts = await recentConcepts('cover', historySize)
   // Photographic treatments are recorded but never refused - photography is the default.
   const avoidMedia = (await recentMedia('cover', historySize)).filter(medium => !isPhotographicMedium(medium))
+  const lightingHistory = await recentLighting('cover', historySize)
+  const requireBrightLight = isLowLight(lightingHistory[0])
 
   const sourceImagePaths = filterBlocklistedCovers(imagePaths, debug)
 
@@ -560,6 +563,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     if (options.hint) console.log(`  Author's steer: ${options.hint}`)
     if (avoidConcepts.length > 0) console.log(`  Avoiding recent concepts: ${avoidConcepts.join(' | ')}`)
     if (avoidMedia.length > 0) console.log(`  Avoiding recent media: ${avoidMedia.join(' | ')}`)
+    if (requireBrightLight) console.log(`  Previous cover was low-light (${lightingHistory[0]}); requiring daylight`)
   }
 
   // Try each backend in turn. Within a backend, content-policy refusals retry with alternate
@@ -593,8 +597,12 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           hint: options.hint,
           avoidConcepts,
           avoidMedia,
+          recentLighting: lightingHistory,
           debug
         })
+        if (requireBrightLight && isLowLight(artDirection.lighting)) {
+          console.warn(`  Art director chose low light again (${artDirection.lighting}) despite the daylight rule`)
+        }
         const prompt = buildFreeformGenerationPrompt(artDirection, coverSummaries)
 
         if (debug) {
@@ -614,7 +622,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           date: options.dateLabel || (Number.isFinite(seed) && seed >= MIN_TIMESTAMP_SEED ? new Date(seed).toISOString().slice(0, 10) : ''),
           type: 'cover',
           lane: null,
-          lighting: null,
+          lighting: artDirection.lighting,
           shootDirection: null,
           colourTreatment: null,
           concept: artDirection.concept,
@@ -649,6 +657,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           creativeDirection: artDirection.creativeDirection,
           concept: artDirection.concept,
           medium: artDirection.medium,
+          lighting: artDirection.lighting,
           coverSummaries,
           mode: 'summaries_to_prompt',
           prompt

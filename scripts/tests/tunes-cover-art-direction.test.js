@@ -7,6 +7,7 @@ import {
   buildGenerationPrompt,
   buildReferenceMap,
   hasPeople,
+  isLowLight,
   isPhotographicMedium,
   normalizeArtDirection,
   normalizeCoverSummaries
@@ -120,6 +121,8 @@ test('normalizes freeform art direction and appends only hard generation constra
   // makes the image model invent a face, so pose and a sharp unobscured face are hard rules.
   assert.match(prompt, /pose, expression, and gaze the sleeve shows/i)
   assert.match(prompt, /sharp, lit, unobscured, and in focus/i)
+  assert.match(prompt, /expose the image brightly/i)
+  assert.match(prompt, /heavy film grain/i)
   assert.match(prompt, /each identifiable reference person only once/i)
   assert.match(prompt, /reflection, mirror portrait, poster, billboard/i)
   assert.doesNotMatch(prompt, /creative-direction lane/i)
@@ -179,4 +182,42 @@ test('the deterministic fallback leans photographic rather than refusing a photo
   assert.equal(direction.medium, 'photographic scene')
   assert.match(direction.prompt, /photographic scene/i)
   assert.doesNotMatch(direction.prompt, /do not default to a generic photograph/i)
+})
+
+test('classifies night, dusk, and stage lighting as low light', () => {
+  for (const lighting of [
+    'night under practical lights',
+    'dusk under practical bulbs',
+    'stormy dusk sky',
+    'dark interior, glowing window',
+    'neon after-hours club',
+    'candlelit cellar',
+    'low-key stage spotlight'
+  ]) {
+    assert.ok(isLowLight(lighting), `${lighting} should count as low light`)
+  }
+})
+
+test('daylight, overcast, and high-key studio light are not low light', () => {
+  for (const lighting of [
+    'midday sun through high windows',
+    'bright overcast seafront',
+    'golden hour exterior',
+    'high-key studio',
+    'open shade on a sunny afternoon',
+    '',
+    null
+  ]) {
+    assert.ok(!isLowLight(lighting), `${lighting} should not count as low light`)
+  }
+})
+
+test('records the chosen lighting and falls back to daylight when it is missing', () => {
+  const summaries = normalizeCoverSummaries([], sourceReferences)
+  const chosen = normalizeArtDirection({ lighting: 'golden hour exterior', prompt: 'A pier.' }, summaries, sourceReferences)
+  const missing = normalizeArtDirection({ prompt: 'A pier.' }, summaries, sourceReferences)
+
+  assert.equal(chosen.lighting, 'golden hour exterior')
+  assert.equal(missing.lighting, 'bright daylight')
+  assert.match(buildFallbackArtDirection(summaries, sourceReferences).prompt, /bright, open daylight/i)
 })

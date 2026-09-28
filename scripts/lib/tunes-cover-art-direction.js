@@ -9,6 +9,7 @@ const HARD_CONSTRAINTS = [
   'Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly.',
   'When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling.',
   'Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person\'s face.',
+  'Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture.',
   'Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.'
 ]
 
@@ -25,6 +26,17 @@ export function isPhotographicMedium(value) {
   const text = String(value || '')
   if (STAGED_MEDIUM_PATTERN.test(text)) return false
   return PHOTOGRAPHIC_MEDIUM_PATTERN.test(text)
+}
+
+// Once photography became the default, the only lever left was the scene, and the art
+// director reached for night every time: 7 to 28 Sep 2026 ran stormy dusk, a dark flooded
+// hall, a night railway siding, and a drained pool at dusk, each with a wet floor reflecting
+// coloured lights. The chosen lighting is recorded like the medium, and a low-light cover
+// forces the next one into daylight or bright, even light.
+const LOW_LIGHT_PATTERN = /\b(night\w*|midnight|dusk|twilight|blue[- ]hour|after[- ]?hours|moon\w*|candle\w*|lamplit|torchlit|firelit|dark\w*|dim\w*|low[- ]key|noir|chiaroscuro|neon|stage[- ]lit|stage light\w*|spotlit|spotlight\w*|practical lights?|storm\w*|gloom\w*|murk\w*)\b/i
+
+export function isLowLight(value) {
+  return LOW_LIGHT_PATTERN.test(String(value || ''))
 }
 
 const openai = process.env.OPENAI_API_KEY
@@ -189,6 +201,7 @@ export function buildFallbackArtDirection(coverSummaries, _sourceReferences) {
     'Use the factual visual findings from the supplied covers to build one cohesive world.',
     `Use a clear visual hierarchy and transform these source motifs rather than reproducing the sleeves: ${motifText}.`,
     'Render it as a photographic scene - a real place or built set that a camera could capture - unless the supplied artwork strongly calls for another medium; vary the setting, viewpoint, and lighting rather than the medium.',
+    'Light it with bright, open daylight so the colours read clean and saturated.',
     palette.length > 0 ? `Draw the colour direction from ${palette.join(', ')}.` : '',
     'Make the result specific, surprising, and recognisably connected to the reference images.'
   ].filter(Boolean).join(' ')
@@ -196,6 +209,7 @@ export function buildFallbackArtDirection(coverSummaries, _sourceReferences) {
   return {
     concept: 'A unified world built from this week’s album artwork',
     medium: 'photographic scene',
+    lighting: 'bright daylight',
     creativeDirection: 'Freeform interpretation of the supplied album artwork',
     scene: 'One cohesive visual world shaped by the strongest factual motifs across every selected cover.',
     elements,
@@ -235,6 +249,7 @@ export function normalizeArtDirection(rawDirection, coverSummaries, sourceRefere
     ).trim(),
     scene,
     elements: normalizeElements(rawDirection?.elements || rawDirection?.source_elements, sourceReferences),
+    lighting: String(rawDirection?.lighting || rawDirection?.light || '').trim() || fallback.lighting,
     palette: Array.isArray(rawDirection?.palette)
       ? rawDirection.palette.map(item => String(item).trim()).filter(Boolean).slice(0, 6)
       : fallback.palette,
@@ -302,6 +317,7 @@ export async function designCoverArtDirection({
   hint = '',
   avoidConcepts = [],
   avoidMedia = [],
+  recentLighting = [],
   debug
 }) {
   if (!openai) {
@@ -318,7 +334,13 @@ export async function designCoverArtDirection({
   // that refusal (see isPhotographicMedium) because it is the default, not a rotation slot.
   const refusedMedia = avoidMedia.filter(medium => !isPhotographicMedium(medium))
   const avoidMediaBlock = refusedMedia.length > 0
-    ? `These media and staging techniques were used on recent covers and are refused for this one. Do not choose any of them or any close variation, and in particular do not build another diorama, shadow box, assemblage, or cut-paper collage unless this week's artwork makes that genuinely unavoidable:\n${refusedMedia.map(medium => `- ${medium}`).join('\n')}\n\nPhotography itself is never on this list and is always available. Reach for a photographic treatment that is materially different from the recent covers - for example an editorial location shoot, a studio set under practical lights, wet-plate or large-format film, a night shoot under practical lights, available-light documentary, a macro still life, a wide environmental portrait, or a theatre stage lit for a performance - whichever genuinely fits this week's covers.`
+    ? `These media and staging techniques were used on recent covers and are refused for this one. Do not choose any of them or any close variation, and in particular do not build another diorama, shadow box, assemblage, or cut-paper collage unless this week's artwork makes that genuinely unavoidable:\n${refusedMedia.map(medium => `- ${medium}`).join('\n')}\n\nPhotography itself is never on this list and is always available. Reach for a photographic treatment that is materially different from the recent covers - for example a sunlit editorial location shoot, a high-key studio set, a clean medium-format daylight portrait, a bright macro still life, a wide environmental portrait under open sky, or a golden-hour exterior - whichever genuinely fits this week's covers.`
+    : ''
+  // Only the previous cover decides the forcing rule: one low-light week buys the next one
+  // daylight, which is enough to stop a run without banning night outright.
+  const previousLighting = recentLighting[0] || ''
+  const lightingBlock = isLowLight(previousLighting)
+    ? `The previous cover was lit as "${previousLighting}". This cover must be lit by daylight or bright, even light - midday or afternoon sun, open shade, bright overcast, golden hour, or a high-key studio - and must not be set at night, dusk, or twilight, or lit mainly by practical lamps, neon, candles, or stage spots, even if the sleeves are dark.`
     : ''
   const hintBlock = hint ? `Author's steer: ${hint}` : ''
   const summaryBlock = coverSummaries
@@ -339,6 +361,8 @@ Choose the creative direction yourself from those visual findings alone. Lean to
 
 Week-to-week variety comes from the scene, not the medium. A tabletop paper diorama or collage assemblage is the path of least resistance when several sleeves are graphic or illustrated, and leaning on it has already produced a long unbroken run of near-identical covers; swapping to a painting every week is the same failure in a different coat. Vary the location, the staging, the time of day, the light, the viewpoint, and the photographic treatment, and treat any move away from photography as a choice you must actively justify against this week's artwork.
 
+Default to bright, open, well-exposed light: daylight exteriors, sunlit interiors, bright overcast, golden hour, or a high-key studio, so the sleeve colours read clean and saturated at a small size. Night, dusk, stage lighting, and low-key "moody" treatments are the other path of least resistance for rock and alternative sleeves, and leaning on them produced a run of dark, murky covers; use them only when this week's covers genuinely demand it. Do not default to wet, rain-slicked, flooded, or mirror-glossy floors reflecting coloured lights, fog, haze, or smoke as atmosphere - use water or haze only when a sleeve itself shows it. Keep the image clean and crisp: no heavy film grain, faded blacks, or distressed-print texture.
+
 Recognisability is the point of this cover, and people are where it is won or lost. When a source includes a person, stage that sleeve's portrait inside the world rather than recasting the person into a new performance: keep their pose, expression, gaze, hair, styling, and the way the sleeve frames them, and change only where they are and what surrounds them. Do not have them asleep, turned away, mid-motion, or half-hidden by steam, shadow, or crowd unless the sleeve does, and never let the photographic treatment - motion blur, long exposure, fog, shallow focus - touch an identifiable face. The treatment belongs to the environment; the people are the fixed points.
 
 In the final "prompt", name every person by their attached reference rather than by appearance alone - "the woman from reference image 8", "the five people from reference image 7" - using the source numbers you were given. The album images are attached to the image model in that numbered order, and a person described only by looks becomes a new invented face. A code-appended reference map repeats the numbers, so they must match.
@@ -353,8 +377,10 @@ ${avoidBlock}
 
 ${avoidMediaBlock}
 
-Return JSON exactly as {"concept":"string","medium":"string","creativeDirection":"string","scene":"string","elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string","prompt":"string"}.
-"concept" is at most 15 words and is saved to the do-not-repeat history. "medium" is at most 8 words naming only the chosen medium or technique - it is saved to the history, and any non-photographic medium is refused on future weeks, so be specific ("wet-plate photography", "gouache on board") rather than generic ("mixed media"). "creativeDirection" names the chosen medium and visual approach in one sentence. "elements" records how each numbered source contributes.`
+${lightingBlock}
+
+Return JSON exactly as {"concept":"string","medium":"string","lighting":"string","creativeDirection":"string","scene":"string","elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string","prompt":"string"}.
+"concept" is at most 15 words and is saved to the do-not-repeat history. "medium" is at most 8 words naming only the chosen medium or technique - it is saved to the history, and any non-photographic medium is refused on future weeks, so be specific ("daylight location photography", "gouache on board") rather than generic ("mixed media"). "lighting" is at most 6 words naming the time of day and main light source ("midday sun through high windows", "night under neon") - it is saved to the history, and a low-light cover forces daylight on the next one. "creativeDirection" names the chosen medium and visual approach in one sentence. "elements" records how each numbered source contributes.`
 
   try {
     const response = await openai.responses.create({

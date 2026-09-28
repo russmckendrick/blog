@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { promises as fs } from 'fs'
 import os from 'os'
 import path from 'path'
-import { appendHistory, recentConcepts, recentMedia, loadHistory } from '../lib/tunes-image-history.js'
+import { appendHistory, recentConcepts, recentLighting, recentMedia, loadHistory } from '../lib/tunes-image-history.js'
 
 async function writeHistory(entries) {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'tunes-history-'))
@@ -126,4 +126,19 @@ test('collapses repeats so one medium cannot fill the whole refusal list', async
   ])
 
   assert.deepEqual(await recentMedia('cover', 8, file), ['oil on canvas', 'cut-paper diorama'])
+})
+
+test('feeds recent lighting back newest first, skipping entries without it', async () => {
+  const file = await writeHistory([
+    { type: 'cover', date: '2026-09-14', concept: 'A', lighting: 'dark interior' },
+    { type: 'cover', date: '2026-09-21', concept: 'B', lighting: null },
+    { type: 'cover', date: '2026-09-28', concept: 'C', lighting: 'dusk under practical bulbs' },
+    { type: 'artist', date: '2026-10-05', concept: 'D', lighting: 'midday sun' }
+  ])
+
+  assert.deepEqual(await recentLighting('cover', 8, file), [
+    'dusk under practical bulbs',
+    'dark interior'
+  ])
+  assert.deepEqual(await recentLighting('cover', 0, file), [])
 })

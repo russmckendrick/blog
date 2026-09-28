@@ -118,6 +118,22 @@ export async function recentMedia(type, count = 8, historyPath = HISTORY_PATH) {
   return media
 }
 
+// The newest `count` recorded lighting choices for an image type, most recent first. Fed back
+// so a low-light cover forces daylight on the next one; entries predating the field (or with
+// it null) are skipped rather than guessed from their prose.
+export async function recentLighting(type, count = 8, historyPath = HISTORY_PATH) {
+  if (!Number.isFinite(count) || count <= 0) return []
+  const history = await loadHistory(historyPath)
+  const matching = dedupeByTypeAndDate(
+    history.entries.filter(entry => entry?.type === type && entry?.lighting)
+  )
+  return byDateAscending(matching)
+    .slice(-count)
+    .reverse()
+    .map(entry => String(entry.lighting).trim())
+    .filter(Boolean)
+}
+
 // The newest `count` concept one-liners for an image type, most recent first - fed to the
 // art director as a do-not-repeat list. Zero means "feed nothing" (slice(-0) would return
 // everything, the exact opposite).

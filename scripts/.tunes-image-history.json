@@ -7169,69 +7169,71 @@
       "date": "2026-08-10",
       "type": "cover",
       "lane": null,
-      "lighting": null,
+      "lighting": "bright overcast afternoon",
       "shootDirection": null,
       "colourTreatment": null,
-      "concept": "Moonlit puppet stage in a flooded jungle",
-      "creativeDirection": "A handcrafted theatrical shadow-box diorama combining painted scenery, cut-paper figures, suspended ornaments, and miniature props photographed as a surreal stage set.",
-      "scene": "A frontal view into a deep proscenium shadow-box stage where a flooded jungle clearing opens toward a glowing moon-disc backdrop, with shallow water across the floor and layered scenery receding into darkness.",
+      "concept": "Sunlit rehearsal yard with portraits and signals",
+      "medium": "daylight location photography",
+      "creativeDirection": "Daylight location photography in a real outdoor rehearsal yard, using the sleeve portraits as fixed live presences and translating the illustrated and painted motifs into props, sky elements, set dressing, and a mural-like backdrop.",
+      "scene": "A wide 16:9 view across an open concrete yard beside a simple wooden rehearsal shed and chain-link fence, with shallow puddled wetland planters at one edge, a white pole carrying red loudspeaker horns, and freestanding pink window frames set in the open air; the camera is at standing height, slightly wide, looking straight into the arrangement so the people read clearly and the environmental motifs layer behind them.",
       "elements": [
         {
           "source": 1,
-          "element": "A single seated man in a vivid red armchair placed slightly left of center as the dominant grounded figure, with a pale plank-wall fragment and hanging hat turned into part of the stage set behind him."
+          "element": "the man seated front-facing in his worn red armchair, unchanged in pose and styling, placed just outside the shed against a pale plank wall with a small framed picture high left and a hat mounted high right"
         },
         {
           "source": 2,
-          "element": "A huge glowing white disc as the rear backdrop moon, with a tiny black island silhouette in the water near it and a flock of birds arcing up toward the upper right."
+          "element": "a very large pale circular disc in the sky reading as a daytime moon or sun, with a flock of birds crossing diagonally above the scene; the tiny-island solitude becomes a small rock-like planter at the wetland edge"
         },
         {
           "source": 3,
-          "element": "Two small figures standing together on a rust-colored leaf-strewn path at the edge of the jungle midground beneath heavy stormlike cloud flats."
+          "element": "the two young people from reference image 3 standing side by side on a rust-colored path of leaves and dry grasses running through the yard, with reddish shrubs and low distant hills beyond the fence"
         },
         {
           "source": 4,
-          "element": "Large foreshortened cut-paper hands reaching in from the right foreground, threaded among hanging white star ornaments."
+          "element": "the person from reference image 4 positioned close to camera at one side, reaching both hands outward exactly as on the cover, with star-shaped string lights suspended in daylight around them"
         },
         {
           "source": 5,
-          "element": "The main environment: dense tropical foliage, river water, a white wading bird, distant elephants, and a crocodile near the front waterline."
+          "element": "a lush planted wetland strip along one side of the yard with dense tropical foliage, a white wading bird in shallow water, and elephant imagery translated into large painted panels or sculptural silhouettes deeper in the planting; a low crocodile form at the waterline"
         },
         {
           "source": 6,
-          "element": "A narrow glowing horizontal stage aperture high in the set containing a blurred woman under spotlights, like a secondary performance box."
+          "element": "the woman from reference image 6 seated under a simple daylight rig of overhead reflectors and pale stage truss, preserving her seated spotlight portrait but translated into bright daytime lighting rather than darkness"
         },
         {
           "source": 7,
-          "element": "A pole of red loudspeaker horns rising from the left background, silhouetted against twilight as part of the theatrical machinery."
+          "element": "a cluster of red loudspeaker horns mounted high on a white pole as a strong vertical landmark in the midground"
         },
         {
           "source": 8,
-          "element": "A whimsical green-clad headless figure near pink open window frames on an upper side platform, framing a small crescent moon and stars."
+          "element": "the oversized green-suited figure between two open pink window frames, built as a whimsical outdoor set piece seen from behind against open sky"
         }
       ],
       "palette": [
-        "midnight blue",
-        "jungle green",
-        "rust orange",
-        "crimson red",
-        "beige wood",
-        "soft white"
+        "beige",
+        "red",
+        "rust",
+        "amber",
+        "sky blue",
+        "leaf green"
       ],
-      "mood": "mysterious, musical, dreamlike",
+      "mood": "clear, surreal but grounded, spacious, observant",
       "coverSummaries": [
         {
           "source": 1,
           "filename": "Let-Me-Come-Over-25th-Anniversary-Edition.jpg",
           "album": "Let Me Come Over 25th Anniversary Edition",
           "artist": "",
-          "description": "A warm-toned photograph of a man sitting heavily in a bright red armchair in a sparse interior. He wears a hat, jacket, shirt, dark trousers, and shoes, and faces forward with a serious expression. Behind him is a pale wooden plank wall with a small framed picture on the upper left and another hat hanging on the upper right. A patterned circular rug is partly visible at the bottom right on a beige floor.",
+          "description": "A warm-toned photograph of a man seated heavily in a worn red armchair in a sparse interior. He wears a hat, jacket, shirt, dark trousers, and dark shoes, facing forward with a serious expression. Behind him is a pale wooden plank wall with a small framed picture hanging high on the left and another hat mounted high on the right. A patterned rug edge appears at the bottom right on a bare floor.",
           "signatureMotif": "man seated in a red armchair",
           "medium": "photograph",
+          "people": "one man sitting front-facing in an armchair wearing a hat",
           "palette": [
             "red",
             "orange",
+            "yellow",
             "beige",
-            "cream",
             "brown"
           ]
         },
@@ -7240,9 +7242,10 @@
           "filename": "On-an-Island.jpg",
           "album": "On an Island",
           "artist": "",
-          "description": "A minimalist blue-toned cover showing a silhouetted person seated on a tiny rocky island or mound near the bottom center. A large glowing white circular disc dominates the background like a moon or sun, and a flock of black birds arcs upward across it toward the upper right. The composition is spacious with a soft gradient from deep blue to lighter blue.",
-          "signatureMotif": "silhouetted figure on a small island before a large glowing disc",
+          "description": "A minimalist blue-toned illustrated scene with a large glowing white circular moon or sun dominating the center. In the foreground, a black silhouette of a seated person rests on a tiny island or rock in calm water. A flock of black birds rises diagonally upward across the bright circle into the upper right. The composition is spacious with a soft gradient sky and faint distressed border texture.",
+          "signatureMotif": "flock of birds crossing a large glowing moon",
           "medium": "digital illustration",
+          "people": "one seated silhouetted person on a small island",
           "palette": [
             "blue",
             "white",
@@ -7255,15 +7258,16 @@
           "filename": "WHO-ASKED.jpg",
           "album": "WHO ASKED",
           "artist": "",
-          "description": "A staged photograph of two young figures standing side by side in the center of an autumnal landscape. One has long light hair and wears a short dark outfit with sneakers; the other has dark hair and wears a long dark garment. They stand on a leaf-strewn path surrounded by reddish shrubs and trees, with hills in the distance and dramatic heavy clouds filling the sky. A small building edge appears on the left.",
+          "description": "A stylized autumn landscape photograph or composite with two young people standing side by side on a leaf-strewn path. One has long light hair and wears a short dark outfit with high-top sneakers; the other has dark hair and wears loose dark overalls and sneakers. The setting includes reddish shrubs, grasses, a small structure at left, distant hills, and a dramatic sky filled with dense glowing clouds. The whole image is bathed in brown, rust, and amber tones.",
           "signatureMotif": "two figures standing in an autumn landscape under dramatic clouds",
-          "medium": "photograph",
+          "medium": "stylized photograph",
+          "people": "two young people standing side by side in a reddish outdoor scene",
           "palette": [
-            "rust",
             "brown",
-            "orange",
+            "rust",
+            "amber",
             "red",
-            "tan"
+            "orange"
           ]
         },
         {
@@ -7271,15 +7275,16 @@
           "filename": "Greatest-Hits.jpg",
           "album": "Greatest Hits",
           "artist": "",
-          "description": "A high-contrast photograph of a person reaching both hands toward the camera, creating a foreshortened effect with the fingers spread wide in the foreground. Bright white star shapes hang on strings around the figure and overlap the hands and face. The background is dark with blue and purple lighting, and the person’s face is partly obscured by the hands and stars.",
-          "signatureMotif": "outstretched hands surrounded by hanging stars",
+          "description": "A high-contrast photograph of a person reaching both hands toward the camera, with the hands enlarged by perspective and partially obscuring the face. Bright white star-shaped lights hang on strings around the figure and overlap the hands and face. The background is deep blue and black, creating a theatrical, glowing effect.",
+          "signatureMotif": "outstretched hands surrounded by hanging star lights",
           "medium": "photograph",
+          "people": "one person with dark hair reaching both hands toward the camera",
           "palette": [
-            "black",
             "blue",
-            "purple",
+            "black",
             "white",
-            "orange"
+            "orange",
+            "gold"
           ]
         },
         {
@@ -7287,15 +7292,16 @@
           "filename": "Tango-in-the-Night.jpg",
           "album": "Tango in the Night",
           "artist": "",
-          "description": "A framed painted jungle scene set within a dark border. Dense tropical foliage fills the right side, while a river or lagoon runs through the center-left. Visible animals include a white wading bird in the water, elephants in the distance, and a crocodile or alligator near the foreground waterline. The sky is dusky with a pale moon or sun low on the horizon, and the vegetation is lush and layered.",
-          "signatureMotif": "lush tropical jungle with river and animals",
+          "description": "A framed painted jungle scene set within a dark border. Dense tropical foliage fills the right side, while a moonlit or twilight wetland opens on the left with reflective water. Visible animals include a white wading bird in the water, elephants in the middle distance, a crocodile near the foreground waterline, and smaller birds tucked among the plants. The sky fades from pale yellow near the horizon to dusky blue and purple above.",
+          "signatureMotif": "lush tropical wetland with a white bird and elephants",
           "medium": "painting",
+          "people": "none",
           "palette": [
-            "green",
-            "black",
+            "dark green",
+            "teal",
             "purple",
-            "blue",
-            "pale yellow"
+            "yellow",
+            "black"
           ]
         },
         {
@@ -7303,15 +7309,16 @@
           "filename": "Dummy.jpg",
           "album": "Dummy",
           "artist": "",
-          "description": "A mostly deep blue cover with a narrow horizontal rectangular image across the middle. Inside the strip, a woman in a shiny dress appears seated or standing under bright stage-like spotlights in a dark space. The image is grainy and blurred, with strong light blooms above and around her, while the surrounding border remains solid blue.",
-          "signatureMotif": "woman under stage spotlights in a narrow central frame",
+          "description": "A grainy blue-toned cover with a wide rectangular central image showing a woman seated in a chair under bright stage-like spotlights. She wears a shiny reflective dress or top, and the scene is dark and blurred around her. Thick blue bands frame the image above and below, emphasizing the moody, cinematic look.",
+          "signatureMotif": "woman seated under spotlights",
           "medium": "photograph",
+          "people": "one woman seated in a chair under bright lights",
           "palette": [
             "blue",
             "black",
             "white",
-            "gray",
-            "violet"
+            "purple",
+            "grey"
           ]
         },
         {
@@ -7319,14 +7326,15 @@
           "filename": "Music-for-the-Masses.jpg",
           "album": "Music for the Masses",
           "artist": "",
-          "description": "A beige textured background with a wide horizontal photograph centered in the lower half. The photo shows several red loudspeaker horns mounted on a white pole against a twilight sky with blue, purple, and pink tones above a dark horizon line. The layout is clean and graphic, with the speakers as the focal point.",
+          "description": "A mostly beige cover with a centered horizontal photograph near the bottom. The photo shows a white pole supporting several large red loudspeaker horns against a dusk sky with blue and pink clouds above a dark horizon. The surrounding beige area is plain and lightly textured.",
           "signatureMotif": "cluster of red loudspeakers on a pole",
-          "medium": "photograph with graphic layout",
+          "medium": "graphic design with embedded photograph",
+          "people": "none",
           "palette": [
             "beige",
             "red",
             "blue",
-            "purple",
+            "pink",
             "white"
           ]
         },
@@ -7335,9 +7343,10 @@
           "filename": "Duke.jpg",
           "album": "Duke",
           "artist": "",
-          "description": "A simple hand-drawn illustration on a white background. In the center, a headless figure in loose green clothing stands facing an open pair of pink window frames that reveal a blue night sky with a small yellow crescent moon and tiny stars. The figure has small yellow shoes and tiny hands, and the composition is sparse and whimsical.",
-          "signatureMotif": "headless figure facing open windows and a crescent moon",
-          "medium": "hand-drawn illustration",
+          "description": "A simple cartoon-style drawing on a white background. A small head and hands protrude from an oversized green suit seen from behind, standing between two open pink-framed windows. Beyond the windows is a flat blue night sky with tiny dots and a small yellow crescent moon. The composition is sparse and whimsical.",
+          "signatureMotif": "oversized green-suited figure between open windows",
+          "medium": "cartoon illustration",
+          "people": "one simplified cartoon person seen from behind in an oversized green suit",
           "palette": [
             "white",
             "green",
@@ -7348,9 +7357,9 @@
         }
       ],
       "hint": null,
-      "composeBackend": "gpt-image-2",
-      "model": "openai/gpt-image-2/edit",
-      "prompt": "Frontal view into a deep proscenium shadow-box stage set in a flooded jungle clearing, looking straight into layered scenery that recedes toward a giant glowing moon disc at the back; a man seated heavily in a vivid red armchair slightly left of center is the primary subject, serious and still, with a pale wooden plank-wall fragment behind him that includes a tiny framed picture and a hanging hat, while shallow reflective water spreads across the stage floor. Use source-specific details throughout the set: a huge white circular moon backdrop with a tiny black island silhouette near its base and a flock of birds arcing upward to the upper right; two small young figures side by side on a rust-colored leaf path in the midground under dramatic storm-cloud flats; oversized foreshortened hands reaching in from the right foreground among suspended white star ornaments on strings; dense tropical foliage and river margins with a white wading bird in the water, distant elephants half-hidden in the background, and a crocodile near the front waterline; a narrow glowing horizontal aperture high in the set holding a blurred woman under bright spotlights like a miniature performance box; a pole topped with clustered red loudspeaker horns in the left background against twilight; and on an upper side platform a whimsical green-clothed headless figure facing open pink window frames that reveal a blue night sky with a small yellow crescent moon and tiny stars. Handcrafted theatrical diorama, mixed media with painted jungle backdrops, cut-paper silhouettes, miniature sculpture, suspended ornaments, collage textures, and photographic capture of the physical model. Clear hierarchy with the red armchair figure dominant, the moon disc second, supporting motifs distributed in depth; symmetrical stage framing with slight asymmetry in object placement, crisp foreground details and softer atmospheric recession, luminous moon backlight, cool blue-violet ambient light, and selective warm highlights on the chair, leaves, and speakers. Palette of midnight blue, jungle green, rust orange, crimson red, beige wood, soft white, violet glow, and dusky pink; mood mysterious, musical, dreamlike. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "composeBackend": "gpt-image-2-5",
+      "model": "openai/gpt-image-2.5/sunburst/edit",
+      "prompt": "A wide bright 16:9 outdoor scene in a real rehearsal yard beside a simple shed, photographed from standing height with a slightly wide lens, looking straight into a carefully staged arrangement under bright overcast afternoon light. Primary subject: the man from reference image 1 seated front-facing in his worn red armchair, serious and still, placed outdoors against a pale wooden plank wall with a small framed picture hanging high on the left and another hat mounted high on the right. Nearby, the two young people from reference image 3 stand side by side on a rust-colored leaf-strewn path with reddish shrubs and grasses, keeping their original stance and styling. At one side near the foreground, the person from reference image 4 reaches both hands toward the camera exactly as in the source, with enlarged perspective hands and several white star-shaped hanging lights suspended around them in crisp daylight. The woman from reference image 6 sits in her chair as a distinct portrait under a simple overhead rig that suggests spotlights but is lit by daylight, preserving her seated pose and reflective clothing. Include a tall white pole bearing several large red loudspeaker horns from reference image 7 in the midground. Build the motif from reference image 8 as a physical outdoor set piece: the figure from reference image 8 seen from behind in an oversized green suit standing between two open pink window frames. Translate reference image 2 into the sky and distance with a very large pale moonlike sun disc high behind the scene and a flock of dark birds crossing diagonally over it; a small rock at the wetland edge can quietly echo the tiny island. Translate reference image 5 into a planted wetland strip along one edge of the yard with dense tropical foliage, shallow reflective water, a white wading bird, a low crocodile shape at the waterline, and distant elephant forms rendered as believable painted panels or sculptural silhouettes within the planting. Photographic realism, clean editorial location shoot, crisp focus on all identifiable faces, no haze or theatrical darkness. Compose with clear hierarchy: seated man in red chair central, red loudspeaker pole and giant pale sky disc as major anchors, the other portraits and motifs stepping through the space. Bright even daylight, saturated but natural colors, beige wood, red horns and chair, rust foliage, sky blue, green plants, pink window frames, white accents; mood spacious, uncanny, and lucid. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one man sitting front-facing in an armchair wearing a hat; reference image 2 shows one seated silhouetted person on a small island; reference image 3 shows two young people standing side by side in a reddish outdoor scene; reference image 4 shows one person with dark hair reaching both hands toward the camera; reference image 6 shows one woman seated in a chair under bright lights; reference image 8 shows one simplified cartoon person seen from behind in an oversized green suit. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
       "inputs": [
         "Let-Me-Come-Over-25th-Anniversary-Edition.jpg",
         "On-an-Island.jpg",
@@ -7634,70 +7643,72 @@
       "date": "2026-08-17",
       "type": "cover",
       "lane": null,
-      "lighting": null,
+      "lighting": "late morning window daylight",
       "shootDirection": null,
       "colourTreatment": null,
-      "concept": "Backstage shrine in a cosmic rehearsal hall",
-      "creativeDirection": "A handcrafted mixed-media diorama photographed like an editorial stage set, combining sculptural assemblage, paper cut graphics, and vintage portrait tableaux.",
-      "scene": "A wide view into a theatrical rehearsal hall transformed into a surreal shrine-like set, seen straight on at slightly elevated eye level, with a central altar-platform and layered backstage space receding behind it.",
+      "concept": "Sunlit vintage showroom with surreal portraits",
+      "medium": "daylight location photography",
+      "creativeDirection": "Daylight location photography in a bright vintage showroom, treating the graphic and collage motifs as real decor, objects, and display pieces while preserving the album portraits as staged figures within one plausible interior.",
+      "scene": "A wide 16:9 editorial photograph inside a spacious mid-century furniture and audio showroom with tall street-facing windows, polished but matte concrete floor, display platforms, record players, mirrors, and sculptural decor, seen from a slightly low eye level looking diagonally across the room.",
       "elements": [
         {
           "source": 1,
-          "element": "A single soft, luminous woman in a long white vintage dress stands at the altar, lifting a small doll upward as if offering it to the room's strange machinery."
+          "element": "the woman from reference image 1 stands in profile near the windows in her white dress, holding a small dark figurine up in both hands exactly as on the cover, surrounded by a gentle warm sun flare"
         },
         {
           "source": 2,
-          "element": "A large minimal cat face appears as a painted emblem on a hanging circular panel high in the set, watching over the scene."
+          "element": "a large stylized white cat face appears as a clean painted panel or rug graphic on an olive green display wall behind the main scene"
         },
         {
           "source": 3,
-          "element": "The walls and platform edges are built from dense collage fragments of knobs, speakers, cables, and motion-blur photographs, creating a kinetic sound-engine environment."
+          "element": "vintage tape decks, knobs, cassette equipment, amber indicator lights, and a suggestion of night-driving imagery appear as stacked hi-fi displays and framed lightbox prints within the showroom"
         },
         {
           "source": 4,
-          "element": "A smiling silver-haired woman in a bright striped sleeveless top appears once at stage right beside a green chair and mirror, caught mid-gesture like a lively backstage host."
+          "element": "the older woman from reference image 4 stands smiling toward camera with arms slightly out beside a green chair and tall vase, integrated as another featured customer or host in the interior"
         },
         {
           "source": 5,
-          "element": "The impact motif becomes a torn-paper burst and dented percussion surface on the left side of the stage, suggesting explosive rhythm rather than literal violence."
+          "element": "the punch motif becomes a black-and-white photographic artwork in a single framed print on the wall, tightly cropped and secondary, not as live action in the room"
         },
         {
           "source": 6,
-          "element": "Three elegantly dressed women in monochrome are restaged as a formal black-and-white portrait tableau seated around a small table in the rear left, like a framed living photograph within the set."
+          "element": "the three women from reference image 6 are posed together around a small showroom table in their coordinated outfits, maintaining their formal arrangement as a distinct group"
         },
         {
           "source": 7,
-          "element": "A spiked ritual mask forms the altar's central sculptural backdrop, looming behind the woman like a radiant sacred speaker icon."
+          "element": "a gold-toned spiked mask appears as a dramatic sculptural object mounted on a pedestal, catching bright highlights"
         },
         {
           "source": 8,
-          "element": "A retro UFO with a pink tractor beam hangs above, beaming down onto a tiny astronaut figurine suspended over the altar."
+          "element": "a retro-futurist flying saucer and beam motif appears as a colorful modular ceiling mobile or illuminated display sign above a central platform"
         }
       ],
       "palette": [
         "apricot",
-        "coral",
         "olive green",
-        "charcoal black",
+        "gold",
+        "teal",
         "cream",
-        "amber"
+        "black"
       ],
-      "mood": "mysterious, playful, ceremonial, musically charged",
+      "mood": "crisp, playful, curated",
       "coverSummaries": [
         {
           "source": 1,
           "filename": "As-We-Once-Were.jpg",
           "album": "As We Once Were",
           "artist": "",
-          "description": "A soft-focus portrait of a woman in profile facing right, wearing a long white vintage-style dress with gathered sleeves and ruffled trim. She raises a dark doll or figurine with light hair in both hands. The background is a hazy warm gradient with a glowing, dreamlike atmosphere and no distinct setting details.",
-          "signatureMotif": "woman holding up a doll",
-          "medium": "soft-focus studio photograph",
+          "description": "A soft-focus portrait of one woman in profile facing right, wearing a long-sleeved white dress with gathered details. She raises both hands to hold up a small dark figurine or doll-like object with a pale top. The entire image is bathed in a hazy warm glow with a plain blurred background.",
+          "signatureMotif": "a woman lifting a small figurine in a dreamy haze",
+          "medium": "soft-focus color photograph",
+          "people": "one woman in profile holding up a small object",
           "palette": [
             "peach",
             "apricot",
             "cream",
             "soft pink",
-            "brown"
+            "warm brown"
           ]
         },
         {
@@ -7705,15 +7716,16 @@
           "filename": "Tails.jpg",
           "album": "Tails",
           "artist": "",
-          "description": "A simple illustrated cat face centered on a flat green background. The cat has a pale cream head, pointed ears, narrow eyes, a pink triangular nose, whiskers, and rosy cheeks. The composition is minimal and graphic, with the face floating alone in the middle.",
-          "signatureMotif": "stylized cat face",
-          "medium": "naive illustration",
+          "description": "A simple illustrated animal face centered on a flat green background. The face is white with pointed ears, narrow eyes, pink cheeks, a pink triangular nose, and long black whiskers, drawn with loose black outlines.",
+          "signatureMotif": "a stylized white cat face",
+          "medium": "naive hand-drawn illustration",
+          "people": "none",
           "palette": [
             "olive green",
-            "cream",
+            "white",
             "black",
             "pink",
-            "peach"
+            "blue"
           ]
         },
         {
@@ -7721,13 +7733,14 @@
           "filename": "Vanishing-Point.jpg",
           "album": "Vanishing Point",
           "artist": "",
-          "description": "A dense collage of overlapping rectangular photo fragments showing close-up views of audio equipment, knobs, dials, speakers, cables, and blurred lights or roadway motion streaks. The arrangement is layered against a black background, with bold central text blocks cutting across the middle. The overall look is busy, fragmented, and kinetic.",
-          "signatureMotif": "collaged audio gear and motion-blur photos",
+          "description": "A dense collage of overlapping photographic fragments arranged on a black background. The pieces show close-ups of audio equipment, knobs, a cassette or tape machine, blurred lights, signage, and a speeding car at night, with bold blocky text layered across the center. The composition feels cut-and-pasted and urban, with many rectangular panels.",
+          "signatureMotif": "a collage of blurred night driving and audio gear",
           "medium": "photographic collage",
+          "people": "none",
           "palette": [
             "black",
-            "amber",
             "orange",
+            "amber",
             "brown",
             "white"
           ]
@@ -7737,14 +7750,15 @@
           "filename": "Temple-Songs.jpg",
           "album": "Temple Songs",
           "artist": "",
-          "description": "A color photograph of a smiling woman standing indoors, framed by a thick coral border. She has shoulder-length silver hair and wears a bright striped sleeveless top, jeans, necklaces, and earrings. Her arms are slightly blurred as if moving. Behind her are dark walls, mirrors, a tall decorative vase-like object, a green chair, and warm interior lighting.",
-          "signatureMotif": "smiling woman in a striped top",
+          "description": "A color photograph of one smiling older woman standing indoors, facing the camera with her arms slightly out. She has shoulder-length gray hair and wears a bright striped sleeveless top, jeans, earrings, and layered necklaces. Behind her are dark walls, mirrors, a tall decorative vase-like object, a green chair, and warm interior lighting.",
+          "signatureMotif": "a smiling gray-haired woman in a bright striped top",
           "medium": "color photograph",
+          "people": "one older woman smiling indoors",
           "palette": [
-            "coral",
             "orange",
+            "red",
+            "blue",
             "black",
-            "denim blue",
             "olive green"
           ]
         },
@@ -7753,9 +7767,10 @@
           "filename": "Vulgar-Display-of-Power.jpg",
           "album": "Vulgar Display of Power",
           "artist": "",
-          "description": "A grainy, high-contrast close-up image of a fist striking a man's face. The impact compresses the face dramatically, and the scene is cropped tightly so only the arm, fist, and part of the head are visible. The image has a rough printed texture and a dark background.",
-          "signatureMotif": "fist hitting a face",
-          "medium": "grainy photograph",
+          "description": "A grainy high-contrast close-up image showing a clenched fist striking or pressing into the side of a man's face. The scene is cropped tightly, with the arm extending from the right and the face pushed to the left, against a dark background.",
+          "signatureMotif": "a fist impacting a man's face",
+          "medium": "grainy monochrome photograph",
+          "people": "two people partially visible in a punch close-up",
           "palette": [
             "black",
             "gray",
@@ -7769,15 +7784,14 @@
           "filename": "The-Womack-Sisters.jpg",
           "album": "The Womack Sisters",
           "artist": "",
-          "description": "A black-and-white studio portrait of three women posed around a table in an elegant interior. Two are seated in the foreground and one stands or leans between them in back. They wear coordinated formal outfits with contrasting light collars or shoulders, dark ties, long gloves, patterned stockings, and prominent jewelry. The background includes a textured wall and a doorway or window area at right.",
-          "signatureMotif": "three women posed around a table",
+          "description": "A black-and-white studio-style portrait of three young women posed around a table in an interior space. Two sit in chairs at left and right while one leans forward from the center. They wear coordinated formal outfits with contrasting light shoulders, dark ties, long sleeves, patterned tights, and jewelry. A textured wall and doorway frame the background.",
+          "signatureMotif": "three women posed around a table in coordinated outfits",
           "medium": "black-and-white photograph",
+          "people": "three young women posed around a table",
           "palette": [
             "black",
             "white",
-            "gray",
-            "charcoal",
-            "silver"
+            "gray"
           ]
         },
         {
@@ -7785,15 +7799,16 @@
           "filename": "Stigma.jpg",
           "album": "Stigma",
           "artist": "",
-          "description": "A dramatic close-up of a carved mask or statue head with open mouth and closed or half-closed eyes, surrounded by many protruding nails or spikes. The figure is lit warmly against a darker background with diagonal striped light patterns and small blurred highlights. The composition centers the face and spiked structure.",
-          "signatureMotif": "spiked ritual mask",
-          "medium": "photograph of sculptural object",
+          "description": "A dramatic close-up of a metallic mask or sculptural face with open mouth and closed or half-closed eyes, surrounded by many protruding nails or spikes. The background has diagonal streaks of light and blurred highlights, giving a theatrical, industrial look.",
+          "signatureMotif": "a gold-toned mask covered with protruding nails",
+          "medium": "stylized color photograph of a sculpture or mask",
+          "people": "none",
           "palette": [
             "gold",
-            "brown",
             "black",
             "purple",
-            "white"
+            "white",
+            "brown"
           ]
         },
         {
@@ -7801,22 +7816,23 @@
           "filename": "73-Good-Luck.jpg",
           "album": "73 Good Luck",
           "artist": "",
-          "description": "A flat, retro-futuristic cartoon scene with a flying saucer at the top center shining a pink beam downward onto a small astronaut figure. Around them are rounded geometric buildings, circles, arcs, and abstract space-age shapes arranged in a symmetrical, poster-like composition. Thick black outlines define all forms on a pale blue background.",
-          "signatureMotif": "UFO beaming up an astronaut",
-          "medium": "vector-style illustration",
+          "description": "A flat graphic illustration of a retro-futuristic scene built from bold outlined geometric shapes. At the center, a flying saucer hovers above a small astronaut with arms outstretched inside a pink beam. Around them are domed buildings, circular forms, curved bands, and abstract city-like structures arranged symmetrically.",
+          "signatureMotif": "a flying saucer beaming up a small astronaut",
+          "medium": "vector-style geometric illustration",
+          "people": "none",
           "palette": [
+            "teal",
             "light blue",
-            "navy",
-            "yellow",
             "orange",
+            "yellow",
             "pink"
           ]
         }
       ],
       "hint": null,
-      "composeBackend": "gpt-image-2",
-      "model": "openai/gpt-image-2/edit",
-      "prompt": "A wide straight-on view into a surreal backstage rehearsal hall turned into a ceremonial shrine, seen at slightly elevated eye level, with a central altar platform in the foreground and layered theatrical space receding behind it; a luminous woman in profile wearing a long white vintage dress with gathered sleeves stands center stage, raising a small dark doll with pale hair in both hands toward the air; behind her rises a dramatic sculptural altar based on a carved mask head encircled with nails or spikes, transformed into a radiant sacred sound-icon, while above it a retro-futurist flying saucer hangs from visible wires and shines a pink beam onto a tiny suspended astronaut figurine; the set walls, risers, and floor edges are constructed from dense collage fragments of audio gear, knobs, speakers, cables, and amber motion-blur photo strips against deep black, creating a kinetic music-machine architecture; at upper center a simple cream cat face with narrow eyes and pink nose is painted on a circular hanging panel like a watchful emblem; at stage right, include one smiling silver-haired woman in a bright striped sleeveless top beside a green chair, mirror, and tall decorative vase form, her arms slightly blurred as if welcoming or dancing backstage; at rear left, include three women only once as a monochrome formal tableau around a small table, styled like an elegant black-and-white living portrait inset into the set; on the left foreground, reinterpret the fist-impact image as an abstract torn-paper burst and dented drumhead or percussion panel, conveying explosive rhythm without literal assault; handcrafted mixed-media diorama, sculptural assemblage, collage, painted flats, cut paper graphics, fabric details, miniature props, then photographed with shallow atmospheric haze; strong central hierarchy with the white-dressed woman and spiked altar dominant, supporting vignettes balanced on both sides, theatrical framing, layered depth, warm spotlights from below and side lighting with small glittering highlights; palette of apricot, cream, soft pink, coral, olive green, amber, gold, charcoal black, silver gray, and pale blue; mood mysterious, playful, ceremonial, and musically electric. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "composeBackend": "gpt-image-2-5",
+      "model": "openai/gpt-image-2.5/sunburst/edit",
+      "prompt": "A wide 16:9 editorial interior photograph from a slightly low eye level, looking diagonally across a bright mid-century furniture and hi-fi showroom with tall front windows, matte concrete floor, mirrors, display platforms, record players, speakers, sculptural decor, and open airy space. Primary subject: the woman from reference image 1 near the sunlit windows, kept exactly in her profile pose facing right in her long-sleeved white dress, lifting a small dark figurine with a pale top in both hands, with a soft warm halo of sunlight around her but her face still clear. Nearby, the older woman from reference image 4 stands smiling toward the camera with arms slightly out, wearing her bright striped sleeveless top, jeans, earrings, and layered necklaces, positioned beside a green chair and a tall decorative vase. The three women from reference image 6 appear once as a group at a small showroom table deeper in the room, preserving their posed arrangement and coordinated formal outfits. Source-specific details throughout the space: a large olive panel or rug with the stylized white cat face from reference image 2; vintage tape decks, knobs, cassette machinery, amber LEDs, and framed blurred night-driving imagery from reference image 3 integrated into the hi-fi displays; one secondary framed black-and-white art print of the impact close-up from reference image 5 on a wall; a gold-toned mask sculpture covered in protruding spikes from reference image 7 on a pedestal catching hard highlights; and a retro-futurist flying saucer beaming up a tiny astronaut from reference image 8 translated into a colorful suspended mobile or illuminated showroom sign above a central platform. Daylight location photography, clean realistic editorial treatment, medium-format sharpness, no haze except the natural warm window glow around the woman from reference image 1. Balanced composition with the woman from reference image 1 leading in the left third, the older woman from reference image 4 anchoring the right-middle, and the three women from reference image 6 as a clear supporting cluster in the background; all faces fully visible and sharp. Late morning window daylight, bright open exposure, crisp shadows, saturated but natural color. Palette of apricot, cream, olive green, teal, gold, black, and warm wood; mood playful, curated, surreal but physically plausible. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one woman in profile holding up a small object; reference image 4 shows one older woman smiling indoors; reference image 5 shows two people partially visible in a punch close-up; reference image 6 shows three young women posed around a table. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
       "inputs": [
         "As-We-Once-Were.jpg",
         "Tails.jpg",
@@ -8740,65 +8756,66 @@
       "date": "2026-09-07",
       "type": "cover",
       "lane": null,
-      "lighting": null,
+      "lighting": "bright overcast afternoon",
       "shootDirection": null,
       "colourTreatment": null,
-      "concept": "Moths Between Iron Giants",
-      "medium": "oil on canvas",
-      "creativeDirection": "An atmospheric oil painting transforms the album motifs into a surreal dusk landscape centered on scale, confrontation, and fragile natural spectacle.",
-      "scene": "A wide 16:9 open field at dusk viewed from slightly low eye level, with a dark waterfall ravine cutting across the foreground and distant trees closing in at the horizon.",
+      "concept": "Open-air sculpture park with portraits and insects",
+      "medium": "daylight location photography",
+      "creativeDirection": "Daylight location photography in a real rural sculpture park, using a bright editorial environmental portrait approach so the photographic sleeves remain recognisable while the illustrated and painted motifs become physical installations, wildlife displays, and set pieces within one plausible place.",
+      "scene": "A wide 16:9 view across an open grassy sculpture field under bright overcast sky, with two monumental metal heads facing each other near the center like a gateway. The camera is at eye level from a slight distance, capturing the space between the heads, nearby dry grass, a pale dirt path, and a low horizon with sparse trees and one distant building.",
       "elements": [
         {
           "source": 1,
-          "element": "A single red-tinted long-haired male face appears as a monumental painted apparition on one near-metal head surface, integrated like reflected color or patina rather than a separate portrait object."
+          "element": "the young man appears once as a large red-tinted close-up portrait staged on the right side of the scene, framed tightly and vertically beside the sculpture field, keeping his curly hair, direct gaze, bare shoulder, and stark red-and-white split feeling"
         },
         {
           "source": 2,
-          "element": "A cowboy on a dark horse rides through dusty ground in the mid-distance, crossing beneath the larger forms with a rope at his side."
+          "element": "a real cowboy on a dark horse crosses the dusty path in the midground, wearing a light hat, denim jacket, neckerchief, and boots, with faint cattle suggested far behind in pale dust"
         },
         {
           "source": 3,
-          "element": "A large reddish-orange moth becomes the main focal creature, hovering between the two giant heads, with smaller butterflies dispersed subtly around it."
+          "element": "a cloud of butterflies and moths gathers around the space between the metal heads, led by one large orange moth, with a small red heart motif appearing subtly among them"
         },
         {
           "source": 4,
-          "element": "Two enormous riveted metallic heads face each other symmetrically as the dominant architectural forms of the scene."
+          "element": "the two giant metal head sculptures are the central anchor of the composition, facing each other with target-like eyes and mouths nearly meeting"
         },
         {
           "source": 5,
-          "element": "Angular red-and-black bannerlike shards and a small helmeted red-uniform figure are absorbed into the field as sharp graphic accents near the base of the heads."
+          "element": "helmeted figures in red appear once as supporting midground workers or performers near the lower left and center-left, with one raising an arm, their red clothing echoing the angular red graphic accents in the scene"
         },
         {
           "source": 6,
-          "element": "Three theatrical male presences are translated into curtainlike folds of deep red cloud and patterned garment colors around the sky, with only one central upside-down visage faintly implied in the atmosphere to avoid repeated figures."
+          "element": "the three male portraits appear once as theatrical cutout-style signs or suspended portrait panels installed against a red curtain-like outdoor scrim off to the left background, preserving the upside-down center head and decorative gold scroll feeling"
         },
         {
           "source": 7,
-          "element": "A grainy multi-tiered waterfall forms the shadowy foreground ravine, with a tiny solitary suited figure standing at the lower right edge and a small red hand-like mark hidden near the rocks."
+          "element": "a small stepped waterfall and rocky runnel occupies the lower middle-left background of the park, with a tiny suited man at the lower right edge of that water feature and a small stringed instrument resting on a rock"
         },
         {
           "source": 8,
-          "element": "Two glowing white human figures stand together in a dark clearing beyond the waterfall, small but unmistakable against the tree line."
+          "element": "the two people from reference image 8 stand side by side in a small grove of leafless trees at the far background, rendered as pale overexposed white-clad figures in daylight rather than night, retaining their paired stance and uncanny brightness"
         }
       ],
       "palette": [
-        "iron silver",
-        "deep red",
-        "butter yellow",
-        "rust orange",
+        "grass green",
+        "sky blue",
+        "weathered gray",
         "dust beige",
-        "forest black"
+        "signal red",
+        "warm orange"
       ],
-      "mood": "ominous, lyrical, uncanny",
+      "mood": "strange but crisp, spacious, and legible",
       "coverSummaries": [
         {
           "source": 1,
           "filename": "Greatest-Hits.jpg",
           "album": "Greatest Hits",
           "artist": "",
-          "description": "A high-contrast photographic portrait of a long-haired man fills the right side of the square. His bare shoulder is visible, and his face is tinted deep red. A large red diagonal block cuts across a mostly white background, creating a sharp geometric division.",
-          "signatureMotif": "red-tinted close-up portrait of a man",
-          "medium": "photography with graphic geometric overlay",
+          "description": "A stark graphic portrait cover with a close-up photographic image of one young man’s face and bare shoulder filling the right side. His curly dark hair frames his face, and the portrait is heavily tinted red. A large red diagonal block cuts across a white background, creating a sharp split composition.",
+          "signatureMotif": "red-tinted close-up face",
+          "medium": "photography with graphic color overlay",
+          "people": "one young man in close-up portrait with curly hair and bare shoulder",
           "palette": [
             "red",
             "white",
@@ -8810,14 +8827,15 @@
           "filename": "12-Golden-Country-Greats.jpg",
           "album": "12 Golden Country Greats",
           "artist": "",
-          "description": "A painted western scene shows a cowboy in a hat and denim jacket riding a dark horse through a dusty landscape. He holds a coiled rope, and a pale cow or steer emerges faintly from the haze behind him. Sparse dry brush appears near the bottom edges against a muted beige background.",
-          "signatureMotif": "cowboy on horseback",
+          "description": "A painted western scene showing a cowboy riding a dark horse through pale dust or mist. The rider wears a light cowboy hat, denim jacket, neckerchief, and boots, and holds a coiled rope. Faint cattle emerge in the dusty background, with sparse dry brush near the bottom corners and a wide beige sky-like backdrop.",
+          "signatureMotif": "cowboy on a dark horse",
           "medium": "painting",
+          "people": "one man riding a horse in western clothing",
           "palette": [
             "beige",
             "brown",
             "black",
-            "grey",
+            "gray",
             "cream"
           ]
         },
@@ -8826,9 +8844,10 @@
           "filename": "The-Colour-of-Spring.jpg",
           "album": "The Colour of Spring",
           "artist": "",
-          "description": "A central rectangular panel displays an arrangement of butterflies and moths spread across a light background, with one large reddish-orange moth dominating the center. Smaller insects in varied shapes and wing patterns surround it. The panel is framed by a broad yellow border.",
-          "signatureMotif": "large central moth surrounded by butterflies",
+          "description": "A decorative illustration bordered by a warm yellow field, centered on a dense arrangement of butterflies and moths on a pale background. A large reddish-orange moth or butterfly dominates the middle, surrounded by many smaller winged insects in varied shapes and patterns, plus a small red heart near the top center.",
+          "signatureMotif": "large central orange moth surrounded by butterflies",
           "medium": "illustration",
+          "people": "none",
           "palette": [
             "yellow",
             "orange",
@@ -8842,12 +8861,13 @@
           "filename": "The-Division-Bell.jpg",
           "album": "The Division Bell",
           "artist": "",
-          "description": "Two enormous metallic head sculptures face each other in an open field, aligned symmetrically so their profiles nearly meet. Each head has a single circular eye detail and segmented riveted surfaces. In the distance between them are small red flags and a faint building under a blue sky with clouds.",
-          "signatureMotif": "two facing metal heads",
-          "medium": "photography of sculpture installation",
+          "description": "A landscape photograph featuring two enormous metallic head sculptures facing each other in an open field. Their hollow eyes contain circular target-like forms, and their open mouths nearly meet at the center. Behind them are grassy ground, a distant building on the horizon, small red rectangular markers, and a blue sky with clouds.",
+          "signatureMotif": "two giant metal heads facing each other",
+          "medium": "photography",
+          "people": "none",
           "palette": [
-            "silver",
             "blue",
+            "gray",
             "green",
             "brown",
             "red"
@@ -8858,15 +8878,16 @@
           "filename": "Exterminator-XTRMNTR.jpg",
           "album": "Exterminator XTRMNTR",
           "artist": "",
-          "description": "A jagged collage combines helmeted figures in red uniforms with angular graphic shapes and fragmented photographic elements. One figure raises an arm while another stands nearby, and a small silhouetted person appears on a pale ground in the lower left. The composition is layered with blocks, cutouts, and stark contrasts.",
-          "signatureMotif": "helmeted figure in red amid angular collage fragments",
-          "medium": "photomontage collage",
+          "description": "A fragmented collage-style image with angular blocks of muted blue-gray, black, red, and pink. Several helmeted figures in red clothing appear in cutout photographic pieces, including one large figure in the foreground raising an arm and another smaller running figure at lower left. The composition is layered with abstract shapes and partial machinery or vehicle details.",
+          "signatureMotif": "helmeted figure in red raising an arm",
+          "medium": "photographic collage with graphic design elements",
+          "people": "at least three people in fragmented views, wearing helmets and red clothing",
           "palette": [
             "red",
+            "blue-gray",
             "black",
             "white",
-            "grey",
-            "dark blue"
+            "pink"
           ]
         },
         {
@@ -8874,15 +8895,16 @@
           "filename": "Temple-Of-Low-Men.jpg",
           "album": "Temple Of Low Men",
           "artist": "",
-          "description": "A painted theatrical composition places three male portraits against deep red stage curtains. Two upright faces flank an upside-down face hanging from above in the center. The clothing includes patterned and embellished jackets, and the overall framing resembles a stage or puppet-show setting.",
-          "signatureMotif": "upside-down central male portrait between two upright portraits",
+          "description": "A theatrical painted cover with deep red stage curtains as the backdrop. Three male portrait cutouts are arranged across the center, with the middle head hanging upside down from above. The left and right figures wear jackets decorated with small house-like buildings, and the right figure also wears a shirt and dotted tie. Ornamental gold scroll-like shapes run across the top and bottom.",
+          "signatureMotif": "three male portraits with the center one upside down against red curtains",
           "medium": "painting",
+          "people": "three men shown as painted portrait cutouts, one upside down",
           "palette": [
             "red",
             "black",
             "gold",
             "green",
-            "blue"
+            "flesh tones"
           ]
         },
         {
@@ -8890,14 +8912,14 @@
           "filename": "Punching-the-Clown.jpg",
           "album": "Punching the Clown",
           "artist": "",
-          "description": "A dark monochrome collage depicts a tiered waterfall cascading over rocky ledges in a wooded setting. Subtle inserted elements appear within the scene, including a small red hand-like shape near the center-left and a tiny suited figure standing at the lower right edge. The image has a grainy, layered, archival look.",
-          "signatureMotif": "multi-tiered waterfall in a dark collage landscape",
-          "medium": "black-and-white photographic collage",
+          "description": "A dark monochrome image of a tiered waterfall cascading over rocky ledges in a forested setting. The scene appears layered or collaged, with faint inserted elements including a small suited man standing at the lower right edge, a hand-like shape near the center, and a small stringed instrument resting near the lower middle-left. Trees, rocks, pools, and falling water fill the frame.",
+          "signatureMotif": "multi-tiered waterfall",
+          "medium": "photographic collage in black and white",
+          "people": "one small man in a suit standing at the lower right",
           "palette": [
             "black",
-            "grey",
-            "white",
-            "muted red"
+            "gray",
+            "white"
           ]
         },
         {
@@ -8905,21 +8927,22 @@
           "filename": "Losey.jpg",
           "album": "Losey",
           "artist": "",
-          "description": "A night photograph shows two human figures standing side by side on bright green grass in a clearing surrounded by leafless, twisting trees. The figures are intensely overexposed and glowing white, creating a halo of light against the nearly black forest background.",
-          "signatureMotif": "two glowing human figures in a dark forest clearing",
-          "medium": "night photography",
+          "description": "A night photograph of two human figures standing side by side in a grassy clearing surrounded by leafless, twisting trees. The figures are intensely overexposed and glowing white, creating a halo of light around them, while the surrounding woods recede into deep darkness. The grass in the foreground is vividly lit green.",
+          "signatureMotif": "two glowing figures in a dark forest clearing",
+          "medium": "photography",
+          "people": "two people standing side by side, brightly glowing in the center of a dark wooded scene",
           "palette": [
             "black",
-            "white",
+            "dark blue",
             "green",
-            "dark blue"
+            "white"
           ]
         }
       ],
       "hint": null,
       "composeBackend": "gpt-image-2-5",
       "model": "openai/gpt-image-2.5/sunburst/edit",
-      "prompt": "A wide dusk field in 16:9 seen from slightly low eye level, a dark multi-tiered waterfall ravine crossing the foreground and distant leafless trees closing the horizon; two enormous riveted metallic heads facing each other dominate the landscape, nearly meeting in profile, while a large reddish-orange moth hovers between them as the central focal point; one head carries a red-tinted long-haired male visage as integrated patina or reflected color on its surface, not a separate picture, a cowboy on a dark horse rides through dusty mid-distance with rope at his side, smaller butterflies drift sparsely around the central moth, angular red-and-black shard forms and a small helmeted red-uniform figure punctuate the ground near the bases of the heads, deep red curtainlike cloud bands and patterned color passages subtly evoke theatrical portraits with only one faint upside-down face implied in the sky, a tiny suited figure stands at the lower right edge near the waterfall, a small red hand-like mark hides among the rocks, and two glowing white human figures stand together in a clearing beyond the ravine; oil on canvas with visible brushwork, layered glazing, and cinematic surrealist landscape painting technique; strong visual hierarchy with the moth and iron heads largest, broad panoramic spacing, dramatic negative sky, dusk side light catching metal planes and moth wings, waterfall and foreground in deep shadow; palette of iron silver, deep red, butter yellow, rust orange, dust beige, forest black, cloud blue, and moss green, with an ominous lyrical uncanny mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "prompt": "A wide eye-level 16:9 view across a real rural sculpture park in open grass under bright overcast afternoon sky, camera positioned slightly back so the landscape, a dirt path, and the space between two giant facing metal head sculptures are clearly visible. The primary subject is the pair of enormous metallic heads from reference image 4, centered and facing each other like a gateway, with target-like circular eyes and mouths nearly meeting. The young man from reference image 1 appears once at the right side as a large red-tinted close-up portrait installation, tightly framed vertically, preserving his curly dark hair, direct expression, bare shoulder, and the stark red diagonal split against white. A real cowboy on a dark horse from reference image 2 moves through pale dust in the midground wearing a light cowboy hat, denim jacket, neckerchief, and boots, with faint cattle barely visible behind him. Butterflies and moths from reference image 3 gather in the air between and around the sculptures, led by one large central orange moth, with a small red heart subtly included. Helmeted figures in red from reference image 5 appear once as fragmented but physical supporting figures at lower left and center-left, one raising an arm, with hints of machinery and angular blue-gray and red structural panels nearby. The three men from reference image 6 appear once as theatrical portrait panels installed against an outdoor red curtain-like scrim in the left background, including the upside-down center head and touches of gold scroll ornament. A small tiered waterfall from reference image 7 runs through rocks in the lower middle-left background, with the small suited man from reference image 7 standing at its lower right edge and a small stringed instrument resting on a rock nearby. The two people from reference image 8 stand side by side once in a distant grove of leafless trees, retaining their bright overexposed glowing white presence even in daylight. Daylight location photography, clean editorial realism, crisp medium-format detail, physically plausible materials and scale. Strong central hierarchy on the metal heads, supporting action crossing left to right, open readable spacing, sharp focus throughout, no haze or smoke, no night effects. Palette of fresh greens, sky blue, weathered gray metal, pale beige dust, saturated reds, orange insect wings, cream whites; the mood is surreal but bright, clean, and immediately legible. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one young man in close-up portrait with curly hair and bare shoulder; reference image 2 shows one man riding a horse in western clothing; reference image 5 shows at least three people in fragmented views, wearing helmets and red clothing; reference image 6 shows three men shown as painted portrait cutouts, one upside down; reference image 7 shows one small man in a suit standing at the lower right; reference image 8 shows two people standing side by side, brightly glowing in the center of a dark wooded scene. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
       "inputs": [
         "Greatest-Hits.jpg",
         "12-Golden-Country-Greats.jpg",
@@ -9135,65 +9158,117 @@
       "date": "2026-09-14",
       "type": "cover",
       "lane": null,
-      "lighting": null,
+      "lighting": "afternoon skylight and sun",
       "shootDirection": null,
       "colourTreatment": null,
-      "concept": "Kiln Window with Tidal Idols",
-      "medium": "color lithograph",
-      "creativeDirection": "A richly layered color lithograph turns the album motifs into a surreal interior seascape built around a blazing kiln-like window and looming emblematic figures.",
-      "scene": "Inside a dark, abandoned brick bathing hall viewed straight on, where the far wall is dominated by a tall glowing window and the tiled floor gives way to a shallow indoor tide.",
+      "concept": "Sunlit conservatory portraits amid surreal blooms",
+      "medium": "daylight location photography",
+      "creativeDirection": "Daylight location photography in a bright glasshouse, using a physically real conservatory interior to absorb the surreal sleeve motifs as plants, sculpture, walling, cables, and posed portraits.",
+      "scene": "Inside a large Victorian-style glass conservatory in bright afternoon light, viewed from a slightly low eye level down a central aisle toward a white-painted brick back wall, with lush planting beds, a few display plinths, and clean stone flooring.",
       "elements": [
         {
           "source": 1,
-          "element": "A large yellow planet appears beyond the window, while a glowing red reclining female form hovers in the upper right like a celestial mural apparition; speaker-like mechanical boxes and cables cluster low in the scene."
+          "element": "a small theatrical red winged devil sculpture posed upright on a plinth near the center aisle, haloed by a blue oval of painted glass and surrounded by warm ribbon-like hanging forms"
         },
         {
           "source": 2,
-          "element": "An upside-down shirtless performer is transformed into a reflected figure tumbling across the wet floor among coiled cables and performance hardware near the foreground."
+          "element": "the two young girls from reference image 2 posed closely together beside an oversized white conservatory chair, smiling toward each other amid dense floral planting"
         },
         {
           "source": 3,
-          "element": "Four oversized fists thrust forward from the lower left as monumental foreshortened forms, like a crowd surging from shadow with marked knuckles emphasized."
+          "element": "a giant real yellow flower installation with the baby face from reference image 3 set at its center and a ring of multicolored candy-like beads around it, used as the main surreal focal bloom"
         },
         {
           "source": 4,
-          "element": "The hall is built from flat white brick walls with pale mortar, carrying traces of red handwritten paint marks."
+          "element": "a suspended red reclining female sculpture above a bed of speaker-like planters, coiled irrigation hoses, and a dark horned bull-head garden ornament, with a large warm-yellow circular sunshade echoing the planet"
         },
         {
           "source": 5,
-          "element": "Three sunglassed men appear as cool blue-gray busts aligned in a narrow frieze of poster-like panels along the base of the wall, above a strip of tiny colored thumbnails."
+          "element": "the upside-down shirtless performer from reference image 5 doing the same inversion on the conservatory floor among neatly snaking black cables, with the second person from reference image 5 standing farther back near stacked equipment cases"
         },
         {
           "source": 6,
-          "element": "At center in the shallow water sits a woman in a red star-patterned dress with a drum for a head, posed like a strange seaside idol, with small swimmers and boats faintly suggested in the water reflections."
+          "element": "the four young men from reference image 6 posed close to camera with fists thrust forward, staged as a dominant foreground group at one side of the aisle"
         },
         {
           "source": 7,
-          "element": "The glowing curtained window and a solitary bent seated silhouette before it establish the central backlit interior mood."
+          "element": "the far wall of the conservatory rendered as a crisp plain white brick wall backdrop"
         },
         {
           "source": 8,
-          "element": "In the right foreground, a woman’s screaming head emerges from a mound of dark wet earth and reeds that has washed into the hall from the tide."
+          "element": "the three men from reference image 8 wearing sunglasses, posed shoulder to shoulder against the white brick wall, with a narrow strip of small colorful photo cards mounted low beneath them"
         }
       ],
       "palette": [
-        "chalk white",
-        "pale blue-gray",
-        "sulfur yellow",
-        "ember red",
-        "sea green",
-        "black"
+        "white",
+        "yellow",
+        "red",
+        "orange",
+        "leaf green",
+        "sky blue"
       ],
-      "mood": "feverish, tidal, haunted",
+      "mood": "crisp, playful, uncanny, confident",
       "coverSummaries": [
         {
           "source": 1,
+          "filename": "Devil-Hopping.jpg",
+          "album": "Devil Hopping",
+          "artist": "",
+          "description": "A surreal illustrated cover showing a red devil-like humanoid figure standing upright in the center, with small horns and one visible bat-like wing. The figure is outlined by a pale glow and posed with one hand raised near its head. Behind it is a blue, cloudy, star-speckled space-like oval, surrounded by swirling abstract bands of yellow, orange, and red against black.",
+          "signatureMotif": "a red winged devil figure",
+          "medium": "digital collage / psychedelic illustration",
+          "people": "none",
+          "palette": [
+            "red",
+            "yellow",
+            "orange",
+            "blue",
+            "black"
+          ]
+        },
+        {
+          "source": 2,
+          "filename": "Siamese-Dream.jpg",
+          "album": "Siamese Dream",
+          "artist": "",
+          "description": "A tinted photographic image of two young girls close together, smiling and facing slightly toward each other. One girl is partly behind a large white chair on the left. The upper portion has a dense repeating floral pattern, while dark foliage appears in the background behind the girls. The whole image is heavily colorized in pink, purple, and orange.",
+          "signatureMotif": "two young girls posed closely together",
+          "medium": "colorized photograph with patterned graphic background",
+          "people": "two young girls smiling close together",
+          "palette": [
+            "orange",
+            "purple",
+            "pink",
+            "white",
+            "dark blue"
+          ]
+        },
+        {
+          "source": 3,
+          "filename": "Pablo-Honey.jpg",
+          "album": "Pablo Honey",
+          "artist": "",
+          "description": "A large yellow flower fills most of the frame, with a black-and-white baby’s face placed at the center where the flower disk would be. Around the baby’s face is a ring of round candy-like balls covered in multicolored sprinkles. The background is pale and softly textured, with the composition centered on the flower head.",
+          "signatureMotif": "a baby's face in the center of a yellow flower",
+          "medium": "photographic collage",
+          "people": "one baby face centered within a flower collage",
+          "palette": [
+            "yellow",
+            "white",
+            "black",
+            "purple",
+            "multicolor"
+          ]
+        },
+        {
+          "source": 4,
           "filename": "Dopes-to-Infinity.jpg",
           "album": "Dopes to Infinity",
           "artist": "",
-          "description": "A psychedelic illustrated space scene with a large yellow planet on the left, a black starry background, and a glowing red nude female figure floating or reclining on the right. At the bottom are stylized mechanical devices, cables, speaker-like boxes, and a dark astronaut-like figure or suited person. The composition is dense in the lower half and open in the upper half.",
-          "signatureMotif": "glowing red floating female figure in space",
-          "medium": "illustration",
+          "description": "A dark, space-like illustrated scene with a large glowing yellow planet or orb on the left and a red nude female figure floating or reclining diagonally on the right. Below her is a cluster of mechanical and electronic-looking objects, including boxy speaker-like forms, cables, and machine parts. A black bull-like head with long horns emerges from the lower left area, and stars are scattered across the black background.",
+          "signatureMotif": "a red floating female figure in space",
+          "medium": "illustration / painted collage",
+          "people": "none",
           "palette": [
             "black",
             "red",
@@ -9203,13 +9278,14 @@
           ]
         },
         {
-          "source": 2,
+          "source": 5,
           "filename": "Fugazi.jpg",
           "album": "Fugazi",
           "artist": "",
-          "description": "A red border surrounds a central black-and-white live-performance photograph. In the photo, a shirtless person is upside down in a handstand or fall-like pose on a cluttered floor with cables, while another person stands nearby with legs visible. Amplifiers, drum hardware, and tangled wires fill the cramped indoor scene.",
-          "signatureMotif": "upside-down shirtless performer among cables",
-          "medium": "black-and-white photograph with colored border",
+          "description": "A black-and-white live-performance photograph framed within a solid red border. In the photo, a shirtless person is upside down in a headstand or hand-supported inversion on a cluttered floor covered with cables. Another person stands in the background near amplifiers and drum hardware, with the scene cropped tightly and energetically.",
+          "signatureMotif": "an upside-down shirtless performer among cables",
+          "medium": "black-and-white concert photograph with colored border",
+          "people": "two people, one shirtless person upside down and one standing in the background",
           "palette": [
             "red",
             "black",
@@ -9218,111 +9294,67 @@
           ]
         },
         {
-          "source": 3,
+          "source": 6,
           "filename": "Slayed.jpg",
           "album": "Slayed",
           "artist": "",
-          "description": "A studio portrait of four men posed closely together against a brown backdrop, each thrusting a fist toward the camera so their knuckles dominate the foreground. One man is shirtless, others wear patterned or dark clothing, and the perspective exaggerates the hands. Large bright yellow lettering overlays the bottom portion.",
-          "signatureMotif": "four extended fists with marked knuckles",
-          "medium": "color photograph",
+          "description": "A studio portrait of four young men posed closely together, thrusting their fists toward the camera so their knuckles dominate the foreground. One man on the right is shirtless, while the others wear dark or patterned clothing. They have long 1970s-style haircuts, and the background is a plain brownish studio backdrop.",
+          "signatureMotif": "four men extending clenched fists toward the camera",
+          "medium": "color studio photograph",
+          "people": "four young men posing with fists extended toward the viewer",
           "palette": [
             "brown",
             "beige",
-            "yellow",
-            "red",
-            "black"
-          ]
-        },
-        {
-          "source": 4,
-          "filename": "The-Wall.jpg",
-          "album": "The Wall",
-          "artist": "",
-          "description": "A minimal graphic image of a flat white brick wall filling the frame in a regular grid pattern, with thin pale blue-gray mortar lines. Red handwritten-style lettering is centered over the wall.",
-          "signatureMotif": "white brick wall",
-          "medium": "graphic design",
-          "palette": [
-            "white",
-            "light blue",
-            "red"
-          ]
-        },
-        {
-          "source": 5,
-          "filename": "Greatest-Hits.jpg",
-          "album": "Greatest Hits",
-          "artist": "",
-          "description": "A high-contrast portrait of three men wearing dark sunglasses, shown from the chest up against a white background. Their faces and clothing are tinted in cool blue-gray tones. Along the bottom runs a narrow strip of tiny rectangular color images like film stills or thumbnails.",
-          "signatureMotif": "three men in sunglasses",
-          "medium": "photograph with graphic layout",
-          "palette": [
-            "white",
             "black",
-            "blue-gray",
-            "red"
-          ]
-        },
-        {
-          "source": 6,
-          "filename": "In-the-Aeroplane-Over-the-Sea.jpg",
-          "album": "In the Aeroplane Over the Sea",
-          "artist": "",
-          "description": "A vintage-style seaside illustration showing a woman seated at the water’s edge in a red dress decorated with stars, with a round drum replacing her head. Beside her, a child in a striped outfit raises one arm from the water, while additional small heads and swimmers appear in the sea. Boats and a pale sky sit in the background.",
-          "signatureMotif": "woman with a drum for a head",
-          "medium": "vintage illustration/collage",
-          "palette": [
-            "pale blue",
-            "sea green",
             "red",
-            "cream",
-            "brown"
+            "yellow"
           ]
         },
         {
           "source": 7,
-          "filename": "Lost-in-the-Dream.jpg",
-          "album": "Lost in the Dream",
+          "filename": "The-Wall.jpg",
+          "album": "The Wall",
           "artist": "",
-          "description": "A dim, moody interior photograph centered on a tall window with sheer curtains glowing from daylight behind them. In front of the window, a dark-haired seated figure bends forward with arms folded or close to the body, partially blurred. The room edges are shadowy, with muted walls and a hazy, dreamlike texture.",
-          "signatureMotif": "solitary figure silhouetted before a curtained window",
-          "medium": "photograph",
+          "description": "A stark minimalist cover showing a flat white brick wall pattern across the entire image. The bricks are outlined with thin blue-gray lines, creating a clean grid-like masonry surface with no figures or objects.",
+          "signatureMotif": "a plain white brick wall",
+          "medium": "minimal graphic design / illustration",
+          "people": "none",
           "palette": [
-            "green",
-            "gray",
-            "black",
-            "cream",
-            "purple"
+            "white",
+            "light blue",
+            "gray"
           ]
         },
         {
           "source": 8,
-          "filename": "Maggot-Brain.jpg",
-          "album": "Maggot Brain",
+          "filename": "Greatest-Hits.jpg",
+          "album": "Greatest Hits",
           "artist": "",
-          "description": "A dramatic close-up photograph of a woman’s head emerging from dark soil or earth, mouth wide open in a scream. Her large afro spreads outward against the black background, and bits of straw or roots are scattered around the hole. The face is strongly lit, creating stark contrast with the surrounding darkness.",
-          "signatureMotif": "screaming head emerging from soil",
-          "medium": "color photograph",
+          "description": "A high-contrast portrait of three men wearing dark sunglasses, shown from the chest up against a white background. The central figure faces forward, flanked by two others angled slightly inward. Along the bottom runs a narrow strip of small rectangular images in various colors, like film stills or photo thumbnails.",
+          "signatureMotif": "three men in sunglasses posed shoulder to shoulder",
+          "medium": "high-contrast photograph with graphic layout",
+          "people": "three men wearing sunglasses in a close portrait",
           "palette": [
             "black",
-            "dark brown",
-            "tan",
-            "orange"
+            "white",
+            "blue-gray",
+            "red"
           ]
         }
       ],
       "hint": null,
       "composeBackend": "gpt-image-2-5",
       "model": "openai/gpt-image-2.5/sunburst/edit",
-      "prompt": "A dark abandoned brick bathing hall seen straight on, with a tall glowing curtained window centered in the far wall and a shallow indoor tide spreading across the floor; at the center sits a woman in a red dress patterned with stars, her head replaced by a round drum, poised like an idol at the water’s edge inside the room; beyond the window a large yellow planet hangs in black space, and in the upper right a glowing red reclining female apparition floats against darkness, while below her speaker-like mechanical boxes, cables, and audio hardware collect near the floor; a bent solitary figure is silhouetted before the luminous curtains, partially blurred; in the lower left, four monumental foreshortened fists surge toward the viewer from shadow with marked knuckles dominating the foreground; across the wet floor an upside-down shirtless performer appears as a reflected tumbling body among tangled wires and stage debris; along the wall base a narrow frieze holds three blue-gray men in dark sunglasses like poster busts above a strip of tiny color thumbnails; in the right foreground a screaming woman’s head with a halo of textured hair erupts from a mound of soaked soil and reeds washed into the hall; faint swimmers, little heads in water, and tiny distant boats shimmer as reflection-like details in the tide; color lithograph with dense crayon grain, layered transparent inks, bold tonal separations, and slightly offset registration; strong central hierarchy anchored by the drum-headed woman and luminous window, with surrounding motifs orbiting as secondary emblems; dramatic backlighting from the window, deep corner shadows, wet reflective floor, and high contrast accents; palette of chalk white, pale blue-gray, sulfur yellow, ember red, sea green, black, and muddy brown, with a feverish haunted mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "prompt": "Inside a bright Victorian glass conservatory in afternoon skylight and clean sun, viewed from slightly low eye level down a central aisle toward a plain white brick wall. The primary subject is a giant yellow flower installation centered in the space, with the baby face from reference image 3 at its middle encircled by multicolored sprinkle-like candy beads, reading as a real sculptural bloom. At the left foreground, the four young men from reference image 6 are posed tightly together with their fists thrust toward the camera exactly as in their sleeve portrait, dominating one side of the frame. Midground left, the two young girls from reference image 2 stand close together beside an oversized white chair, smiling toward each other within dense flowers and dark foliage. At the back wall, the three men from reference image 8 stand shoulder to shoulder in sunglasses against the white brick wall, with a narrow strip of small colorful image cards mounted low beneath them. Near the center aisle place a small upright red winged devil sculpture inspired by reference image 1, backed by a blue oval pane and warm swirling ribbon forms in yellow and orange. Overhead to the right, suspend a red reclining female sculpture from reference image 4 above speaker-like planters, coiled cables, and a black horned bull-head garden ornament, with a large warm yellow circular shade nearby echoing a planet. On the floor in the right midground, the upside-down shirtless performer from reference image 5 holds the same inversion among black cables, while the second person from reference image 5 stands farther back near equipment cases and drum hardware. Render as photographic realism, a clean editorial location shoot with crisp detail, natural proportions, no haze, no collage edges, no painted texture. Compose with strong depth and clear hierarchy: giant flower centered first, fists in the foreground second, other portraits and surreal objects stepping back through the conservatory. Use bright even daylight with sun patches and soft skylit fill so faces remain fully legible and sharp. Palette of white, yellow, red, orange, leaf green, sky blue, and black; mood playful, uncanny, and vivid. Reference map for people (the album images are attached in this numbered order): reference image 2 shows two young girls smiling close together; reference image 3 shows one baby face centered within a flower collage; reference image 5 shows two people, one shirtless person upside down and one standing in the background; reference image 6 shows four young men posing with fists extended toward the viewer; reference image 8 shows three men wearing sunglasses in a close portrait. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
       "inputs": [
+        "Devil-Hopping.jpg",
+        "Siamese-Dream.jpg",
+        "Pablo-Honey.jpg",
         "Dopes-to-Infinity.jpg",
         "Fugazi.jpg",
         "Slayed.jpg",
         "The-Wall.jpg",
-        "Greatest-Hits.jpg",
-        "In-the-Aeroplane-Over-the-Sea.jpg",
-        "Lost-in-the-Dream.jpg",
-        "Maggot-Brain.jpg"
+        "Greatest-Hits.jpg"
       ]
     },
     {
@@ -9565,71 +9597,72 @@
       "date": "2026-09-21",
       "type": "cover",
       "lane": null,
-      "lighting": null,
+      "lighting": "bright overcast afternoon",
       "shootDirection": null,
       "colourTreatment": null,
-      "concept": "Platform Portraits Under Signal Mist",
-      "medium": "night editorial photography",
-      "creativeDirection": "Night editorial photography in a real rural station uses the steam-train setting as the anchor, staging the sleeve portraits as physically present figures while abstract covers become light, weather, and signage.",
-      "scene": "A deserted countryside railway platform at night, viewed from a low three-quarter angle near the track edge as a blue steam locomotive pulls in from the left through drifting vapor; the camera sees deep down the platform, with wet pavement reflecting signal lights and a dark field beyond.",
+      "concept": "Rail overlook with portraits and signal color",
+      "medium": "daylight location photography",
+      "creativeDirection": "Daylight location photography stages the sleeve portraits and abstract motifs at a real rural rail overlook, using crisp bright overcast light so the varied source colors stay clean while the train landscape ties the set together.",
+      "scene": "A wide 16:9 view from slightly elevated ground beside a countryside railway curve, looking across vivid grass toward tracks, open fields, scattered trees, and a distant body of water under a bright clouded sky; the scene feels like a real editorial location shoot at a rail embankment with enough depth to place several portrait figures clearly without crowding them.",
       "elements": [
         {
           "source": 1,
-          "element": "Vertical red, magenta, cyan, and green glitch stripes become reflections and LED interference in wet glass, platform display spill, and streaked signal light through steam."
+          "element": "vertical glitch stripes translated into tall translucent trackside safety panels or signal screens glowing in red, orange, magenta, blue, and green near the rails, with a few soft circular lens-like light spots low in the frame"
         },
         {
           "source": 2,
-          "element": "The back-view figure in the Union Jack coat stands wide-legged near the platform end, hands clasped behind the back, facing the arriving train exactly as on the sleeve."
+          "element": "the person from reference image 2 stands prominently on the grassy overlook with back to camera, legs apart and hands clasped behind them, wearing the long red-white-blue patterned coat exactly as on the cover"
         },
         {
           "source": 3,
-          "element": "Olive and black amorphous forms become mossy damp growth, oily puddle blooms, and murky fog pockets along the track bed and platform edge."
+          "element": "a pale glowing patch of sky and softly murky olive-green vegetation around the embankment echo the abstract painted halo-and-dark-forms composition"
         },
         {
           "source": 4,
-          "element": "The man's close-up portrait appears once as a large multi-panel monochrome lightbox advertisement on the station wall, with vertical strip segmentation intrinsic to the display."
+          "element": "the repeated black-and-white close-up faces become a sequence of vertical poster strips mounted on a fence or rail barrier, centered on the long-haired man from reference image 4 with the other cropped faces adjacent, plus one bold red horizontal graphic band crossing the installation"
         },
         {
           "source": 5,
-          "element": "The blue steam locomotive is the dominant moving object, entering left to right with heavy white steam and polished metal under moody sky."
+          "element": "a streamlined blue steam locomotive rounds the curve from left to right below the overlook, trailing clean white steam across the middle distance"
         },
         {
           "source": 6,
-          "element": "The pale woman with outstretched arms stands centered in a dark gap between lamps and steam, her flowing fabric lit starkly against blackness like a theatrical apparition."
+          "element": "the five people from reference image 6 are staged together on the grass in a shallow circular depression or painted survey ring, all looking directly up toward the camera from a clustered formation, with subtle concentric ground markings referencing the tunnel graphic"
         },
         {
           "source": 7,
-          "element": "The group of five are clustered tightly on the platform and shot from slightly above as they look upward toward the camera, surrounded by real neon timetable glow, circular signal reflections, and faint code-like LED artifacts."
+          "element": "the person from reference image 7 stands alone near the darker edge of the embankment in flowing dark clothing, pale face and hands visible, arms extended outward as on the cover"
         },
         {
           "source": 8,
-          "element": "The reclining woman with two dogs occupies a sheltered waiting-bench alcove, posed as on the sleeve in translucent lavender fabric under soft diffused station light."
+          "element": "the woman from reference image 8 reclines on a spread of sheer lavender fabric in the grass at frame right, with the two large dogs pressed closely against her in the same intimate arrangement"
         }
       ],
       "palette": [
-        "midnight blue",
+        "grass green",
+        "sky blue",
         "steam white",
         "signal red",
-        "magenta",
-        "cyan",
-        "olive green"
+        "orange",
+        "magenta"
       ],
-      "mood": "haunted, cinematic, expectant",
+      "mood": "surprising but lucid, expansive, graphic, and emotionally charged",
       "coverSummaries": [
         {
           "source": 1,
           "filename": "Twilight.jpg",
           "album": "Twilight",
           "artist": "",
-          "description": "An abstract, glitch-like image filled with vertical bands, scanline distortion, and blurred streaks. The composition is dominated by hot red and magenta tones with cyan and green interference, plus several soft circular light spots near the lower area. The whole image resembles a digitally corrupted or photographed screen.",
+          "description": "An abstract, glitch-like image filled with vertical bands, scan lines, and blurred streaks. The composition is dominated by hot red and orange in the center and lower half, with magenta, purple, blue, and green interference effects layered across it. Several soft circular light spots appear near the bottom edge. No clear figures or objects are distinctly defined.",
           "signatureMotif": "vertical glitch stripes",
-          "medium": "digital abstract image",
+          "medium": "digital abstract graphic",
+          "people": "none",
           "palette": [
             "red",
+            "orange",
             "magenta",
-            "cyan",
-            "green",
-            "black"
+            "purple",
+            "blue"
           ]
         },
         {
@@ -9637,14 +9670,15 @@
           "filename": "Earthling.jpg",
           "album": "Earthling",
           "artist": "",
-          "description": "A full-body figure is seen from behind standing wide-legged on bright green grass, hands clasped behind the back. The person wears a long coat patterned like a Union Jack in red, cream, and dark blue, with black boots. Behind the figure is a vivid landscape with fields, a line of trees, water, and a dramatic blue sky with clouds.",
-          "signatureMotif": "back view of a person in a Union Jack coat",
+          "description": "A single person stands centered with their back to the viewer, legs apart and hands clasped behind them, wearing a long coat patterned like a red, white, and blue flag with dark triangular sections. The figure stands on vivid green grass overlooking a landscape of fields, trees, and a body of water beneath a bright blue sky with scattered clouds. The composition is symmetrical and photographic.",
+          "signatureMotif": "back-facing figure in a flag-patterned long coat",
           "medium": "colour photograph",
+          "people": "one person standing with back turned in a long patterned coat",
           "palette": [
             "blue",
             "green",
             "red",
-            "cream",
+            "white",
             "black"
           ]
         },
@@ -9653,15 +9687,16 @@
           "filename": "Pisces-Iscariot.jpg",
           "album": "Pisces Iscariot",
           "artist": "",
-          "description": "A soft, abstract image with cloudy, organic shapes surrounding a pale central area. Dark green, olive, yellow-green, and black forms blur into one another with a hazy, painterly texture and scattered speckling across the surface.",
-          "signatureMotif": "amorphous green-and-black abstract forms",
-          "medium": "abstract painting or manipulated artwork",
+          "description": "A soft, abstract painted image with a pale glowing center surrounded by murky organic shapes. Dark rounded forms and greenish smudges frame the edges, with subtle speckling and blended transitions throughout. The overall effect is hazy and fluid, with no clearly defined subject.",
+          "signatureMotif": "glowing pale center surrounded by dark green abstract forms",
+          "medium": "abstract painting",
+          "people": "none",
           "palette": [
             "pale yellow",
+            "cream",
             "olive green",
             "dark green",
-            "black",
-            "cream"
+            "black"
           ]
         },
         {
@@ -9669,15 +9704,16 @@
           "filename": "Come-on-Feel-the-Lemonheads.jpg",
           "album": "Come on Feel the Lemonheads",
           "artist": "",
-          "description": "A collage of repeated black-and-white or bluish monochrome photographic close-ups of a man's face arranged in vertical strips. The central panel shows the face most clearly, while surrounding panels crop eyes, cheeks, and profile views. The layout is graphic and poster-like with strong contrast.",
-          "signatureMotif": "repeated close-up portraits of a man's face",
-          "medium": "photographic collage",
+          "description": "A collage of repeated black-and-white photographic close-ups arranged in vertical strips. The central strip shows a long-haired man's face looking slightly upward, while side strips contain cropped eyes, cheeks, and partial faces of other people. The images are grainy and high-contrast, with a bold red overlay element across the upper middle.",
+          "signatureMotif": "repeated close-up face collage in vertical strips",
+          "medium": "black-and-white photo collage with graphic overlay",
+          "people": "multiple people shown as cropped facial close-ups, centered on one long-haired man",
           "palette": [
             "black",
             "white",
             "grey",
-            "deep blue",
-            "red"
+            "red",
+            "yellow"
           ]
         },
         {
@@ -9685,25 +9721,44 @@
           "filename": "Modern-Life-Is-Rubbish.jpg",
           "album": "Modern Life Is Rubbish",
           "artist": "",
-          "description": "A painted scene of a streamlined blue steam locomotive pulling carriages along railway tracks. White steam billows above and around the train, and the background shows open countryside under a dark, moody sky. The train is angled from left to right, dominating the foreground.",
-          "signatureMotif": "blue steam locomotive",
+          "description": "A painted scene of a streamlined blue steam locomotive pulling carriages along railway tracks. White steam billows above and around the train, and the background shows open countryside under a dark, cloudy sky. The train is angled from left to right, dominating the foreground.",
+          "signatureMotif": "streamlined blue steam locomotive",
           "medium": "painting",
+          "people": "none",
           "palette": [
             "blue",
             "grey",
             "cream",
             "brown",
-            "green"
+            "black"
           ]
         },
         {
           "source": 6,
+          "filename": "Hackers-Original-Motion-Picture-Soundtrack.jpg",
+          "album": "Hackers Original Motion Picture Soundtrack",
+          "artist": "",
+          "description": "A stylized, neon-toned montage featuring five young people clustered in the center and viewed from above, all looking up toward the camera. Behind them are concentric circular tunnel-like graphics, enlarged partial faces, and bright electronic-looking visual elements. The image has a glossy, poster-like photographic composite style with strong pink, purple, blue, and red lighting.",
+          "signatureMotif": "five people looking up inside a neon circular graphic tunnel",
+          "medium": "photographic composite poster art",
+          "people": "five young people looking up toward the camera",
+          "palette": [
+            "pink",
+            "purple",
+            "blue",
+            "red",
+            "black"
+          ]
+        },
+        {
+          "source": 7,
           "filename": "Adore.jpg",
           "album": "Adore",
           "artist": "",
-          "description": "A dark, high-contrast black-and-white image of a pale-faced woman in a flowing dress or veil-like fabric. Her arms extend outward, and blurred ghostly shapes surround her in the darkness, creating a floating or theatrical effect. The figure is centered low in the frame with much of the background nearly black.",
-          "signatureMotif": "pale woman emerging from darkness with outstretched arms",
+          "description": "A dark, high-contrast black-and-white image with a ghostly figure emerging from deep shadow. The person appears centered-right, with pale face and hands visible, arms extended outward, and flowing dark fabric blending into the background. Blurred pale shapes hover in the upper left, adding a dreamlike motion effect.",
+          "signatureMotif": "pale-faced figure with outstretched arms in darkness",
           "medium": "black-and-white photograph",
+          "people": "one person in dark flowing clothing with arms spread",
           "palette": [
             "black",
             "white",
@@ -9711,50 +9766,35 @@
           ]
         },
         {
-          "source": 7,
-          "filename": "Hackers-Original-Motion-Picture-Soundtrack.jpg",
-          "album": "Hackers Original Motion Picture Soundtrack",
-          "artist": "",
-          "description": "Five young people are grouped tightly and photographed from above or with a fisheye-like perspective, all looking up toward the camera. Around them are layered neon graphics including concentric circular patterns, large semi-transparent faces, and columns of glowing numbers or code-like marks. A bright rectangular sticker is attached in the upper right, and the image has a glossy package-like appearance.",
-          "signatureMotif": "group of five people surrounded by neon cyber graphics",
-          "medium": "colour photographic cover with graphic overlays",
-          "palette": [
-            "pink",
-            "purple",
-            "blue",
-            "black",
-            "yellow"
-          ]
-        },
-        {
           "source": 8,
           "filename": "Hounds-of-Love.jpg",
           "album": "Hounds of Love",
           "artist": "",
-          "description": "A softly lit portrait set within a large white border. In the central square image, a woman with voluminous dark hair reclines in translucent lavender fabric while two large dogs press against her, one nuzzling her neck. The scene has a dreamy, misty quality with gentle focus and pastel tones.",
-          "signatureMotif": "woman reclining with two dogs",
+          "description": "A soft-focus portrait framed within a wide white border. A woman reclines against sheer lavender fabric, her dark hair spread out around her head. Two large dogs press close to her, one resting its head against her chest and another leaning across her arm. The image has a dreamy, diffused studio-photograph look.",
+          "signatureMotif": "reclining woman embraced by two large dogs",
           "medium": "soft-focus colour photograph",
+          "people": "one woman reclining with two dogs",
           "palette": [
-            "white",
             "lavender",
-            "pink",
+            "purple",
+            "white",
             "brown",
-            "cream"
+            "grey"
           ]
         }
       ],
       "hint": null,
       "composeBackend": "gpt-image-2-5",
       "model": "openai/gpt-image-2.5/sunburst/edit",
-      "prompt": "A deserted rural railway platform at night, seen from a low three-quarter viewpoint near the track edge looking deep along the platform as a streamlined blue steam locomotive arrives from the left through thick white vapor; wet concrete and rails reflect colored signal light, with open dark countryside beyond. Primary subject: the locomotive and the back-view figure in a long Union Jack coat standing wide-legged near the platform end, hands clasped behind the back, facing the train exactly as on the sleeve. A pale-faced woman in flowing dress or veil stands farther down the platform in a pool of darkness with arms outstretched, sharply visible against black space and steam; five young people cluster tightly together under a station lamp, viewed from slightly above and all looking up toward the camera, with concentric circular reflections and code-like LED artifacts around them; a large monochrome station lightbox on the wall shows one man’s face segmented into vertical strips with the central panel clearest; in a sheltered bench alcove, a voluminous-haired woman reclines in translucent lavender fabric with two large dogs pressed close to her, one at her neck, softly lit and misty. Vertical red, magenta, cyan, and green glitch bands appear as real electronic interference, colored signal spill, reflections in wet glass, and streaked light through steam; amorphous olive, dark green, and black forms appear as moss, oily puddles, and murky fog along the track bed. Night editorial photography, physically plausible location shoot, crisp faces on all identifiable people, atmospheric steam and reflections, slight lens bloom only on lights. Strong visual hierarchy with the train and Union Jack figure dominant in the foreground left-to-right sweep, portraits staged at distinct platform zones, deep perspective, moody practical station lighting, patches of darkness, reflective wet surfaces, cinematic contrast. Palette of midnight blue, steam white, wet black, signal red, magenta, cyan, olive green, and soft lavender; mood haunted, expectant, and surreal but real. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "prompt": "A wide 16:9 countryside rail overlook seen from a slightly elevated viewpoint in bright overcast afternoon light, looking across vivid green grass down to curving railway tracks, open fields, scattered trees, and a distant body of water beneath a bright clouded sky; the primary subject is a streamlined blue steam locomotive from reference image 5 rounding the curve left to right below the overlook, trailing crisp white steam, while the person from reference image 2 stands prominently in the foreground on the grassy ridge with back to the viewer, legs apart and hands clasped behind them, wearing the long red white and blue patterned coat exactly as in the source. Nearby, the five people from reference image 6 are grouped together in a shallow circular survey ring on the grass, viewed from above within the same shot and all looking straight up toward the camera in their clustered pose; the woman from reference image 8 reclines at frame right on sheer lavender fabric spread over the grass, her dark hair arranged around her head with the two large dogs pressed close in the same pose; the person from reference image 7 stands farther back near the darker embankment edge in flowing dark clothing with pale face and hands visible and arms spread outward. Along the rail barrier, a sequence of tall vertical black-and-white poster strips reproduces the repeated close-up faces from reference image 4, centered on the long-haired man from reference image 4 with adjacent cropped eyes and cheeks, crossed by one bold red horizontal band. Source 1 appears as tall translucent trackside signal panels made of vertical glitch-like stripes in hot red, orange, magenta, purple, blue, and green near the rails, with a few soft circular light spots low in the frame; source 3 appears in the environment as a pale glowing opening in the cloud cover and softly murky olive-green vegetation framing the scene. Photographic realism, clean daylight editorial location shoot, crisp focus on all identifiable faces, physically plausible staging, medium-format clarity. Balanced wide composition with the coat figure as foreground anchor, the locomotive as sweeping middle-distance lead, portraits spaced across the ridge with clear hierarchy, and vertical graphic elements punctuating the horizon line. Palette of grass green, sky blue, steam white, signal red, orange, magenta, lavender, and deep blacks; mood expansive, graphic, lucid, and charged. Reference map for people (the album images are attached in this numbered order): reference image 2 shows one person standing with back turned in a long patterned coat; reference image 4 shows multiple people shown as cropped facial close-ups, centered on one long-haired man; reference image 6 shows five young people looking up toward the camera; reference image 7 shows one person in dark flowing clothing with arms spread; reference image 8 shows one woman reclining with two dogs. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
       "inputs": [
         "Twilight.jpg",
         "Earthling.jpg",
         "Pisces-Iscariot.jpg",
         "Come-on-Feel-the-Lemonheads.jpg",
         "Modern-Life-Is-Rubbish.jpg",
-        "Adore.jpg",
         "Hackers-Original-Motion-Picture-Soundtrack.jpg",
+        "Adore.jpg",
         "Hounds-of-Love.jpg"
       ]
     },
@@ -9958,72 +9998,72 @@
       "date": "2026-09-28",
       "type": "cover",
       "lane": null,
-      "lighting": null,
+      "lighting": "bright overcast pool light",
       "shootDirection": null,
       "colourTreatment": null,
-      "concept": "Aquatic backstage with statues and smoke",
-      "medium": "editorial photography",
-      "creativeDirection": "Use an editorial location shoot in a drained indoor pool hall, staging the sleeve portraits intact within a physically plausible set where the graphic and sculptural motifs become architecture, props, and lighting.",
-      "scene": "A wide 16:9 view down the deep end of a drained old indoor swimming pool at dusk, shot from pool-floor level looking slightly upward toward the tiled steps and diving end, with the empty basin converted into a temporary backstage-like set. The far wall carries a huge coral-red panel made of thin black horizontal slats warped into a nose-like dip, while a monumental black winged angel statue rises above it. Pool ladders, damp tiles, scattered extension cables, a single wooden stool, and faint haze create depth.",
+      "concept": "Poolside monument portrait tableau",
+      "medium": "daylight location photography",
+      "creativeDirection": "Daylight location photography in a real outdoor public pool complex lets the swim-cap portrait, monument silhouette, tattoos, and intimate close-up faces coexist as staged figures and built details without resorting to collage or illustration.",
+      "scene": "A wide 16:9 view across an older outdoor swimming pool terrace in bright overcast daylight, shot from slightly above deck level so the pool, steps, and a monument plaza beyond read in one continuous realistic space.",
       "elements": [
         {
           "source": 1,
-          "element": "the person from reference image 1 appears in extreme close-up at the left foreground edge, face and hand near the mouth exactly as framed on the sleeve, lit in blue-cyan with two small yellow-orange practical bulbs glowing on either side and thin jagged yellow reflections streaking across nearby glossy tile"
+          "element": "the person from reference image 1 appears as an extreme close-up face framed at the near left foreground edge, blue-tinted by reflected pool light, hand near mouth, with a few warm round deck bulbs or sunlit amber globes floating softly around them and a subtle jagged yellow painted safety-mark line on a nearby wall echoing the sleeve outline"
         },
         {
           "source": 2,
-          "element": "the shirtless torso from reference image 2 is staged as a tight mid-foreground figure leaning against the pool wall so the crucifix necklace and rose tattoo remain clearly visible"
+          "element": "the shirtless person from reference image 2 is shown only from torso to upper arm in the near right foreground, the crucifix pendant and rose tattoo clearly visible as a cropped bodily counterweight"
         },
         {
           "source": 3,
-          "element": "the woman from reference image 3 stands near the center-right on the pool steps, keeping her direct gaze, makeup, slight smile, and flower-decorated white swim cap unchanged"
+          "element": "the woman from reference image 3 is the central portrait presence on the pool deck, wearing the white swim cap decorated with pale yellow flowers and green leaves, posed with the same sideways gaze"
         },
         {
           "source": 4,
-          "element": "the large black angel statue from reference image 4 becomes the dominant sculpture at the far end of the pool, silhouetted against the coral-red slatted backdrop"
+          "element": "a large dark winged angel monument rises beyond the pool at the far end, one arm raised with a wreath-like form and the other extended, with low horse-head statuary or harness shapes at its base"
         },
         {
           "source": 5,
-          "element": "the man from reference image 5 appears in close-up on the right foreground, preserving his direct gaze and cigarette held near his face against a pocket of soft pink light"
+          "element": "the man from reference image 5 stands midground near the pool rail against a soft pink changing-room wall, looking outward and holding a cigarette near his face with the same portrait framing and calm directness"
         },
         {
           "source": 6,
-          "element": "the person from reference image 6 sits hunched on the tiled pool steps with bowed head, folded arms, heavy boots, striped socks, and stark high-contrast lighting intact"
+          "element": "the tattooed person from reference image 6 is placed on the concrete pool steps to one side, seated in the same crouched bowed pose with boots and striped socks, rendered as deep black clothing and shadow against pale concrete"
         },
         {
           "source": 7,
-          "element": "the tattooed man from reference image 7 sits alone on a dark wooden stool on the pool floor, keeping the cowboy hat, sunglasses, white T-shirt, white briefs, barefoot stance, and downward head tilt"
+          "element": "the bearded man from reference image 7 sits on a tall lifeguard-style stool in an open white deck area, wearing cowboy hat, sunglasses, white T-shirt, and light shorts, head tipped downward with one bare foot extended"
         },
         {
           "source": 8,
-          "element": "the horizontal black-line nose motif from reference image 8 is translated into the far-wall installation, with the blue, purple, teal, and yellow geometric shapes appearing as painted lane-marker blocks and floor props near the lower center"
+          "element": "the abstract lined face from reference image 8 becomes a large coral mural on a poolside wall, its black contour lines and purple, blue, teal, and yellow geometric forms painted cleanly as environmental graphics"
         }
       ],
       "palette": [
+        "pool blue",
         "coral red",
+        "white",
         "black",
-        "cyan blue",
         "soft pink",
-        "tile white",
-        "yellow-orange"
+        "yellow-orange accents"
       ],
-      "mood": "moody, theatrical, intimate",
+      "mood": "crisp, surreal, sunlit, poised",
       "coverSummaries": [
         {
           "source": 1,
           "filename": "Glastonbury-1994.jpg",
           "album": "Glastonbury 1994",
           "artist": "",
-          "description": "A grainy, high-contrast close-up image in neon-like colours shows part of a person’s face and hand near the mouth, as if holding or touching something small. Two bright glowing yellow-orange lights appear at left and right, with jagged yellow streaks running across the image. The composition is cropped tightly and feels abstracted by heavy colour treatment.",
-          "signatureMotif": "glowing yellow-orange lights beside a blue-tinted face",
-          "medium": "colour-treated photograph",
+          "description": "A grainy, high-contrast close-up photograph shows part of a blue-tinted face and hand near the mouth, with several glowing yellow-orange lights floating around the dark scene. Jagged yellow linework traces along the left edge and lower right, adding a neon-like outline effect. The composition is cropped tightly and feels abstracted by color treatment.",
+          "signatureMotif": "glowing yellow-orange lights around a blue-tinted face",
+          "medium": "color photograph with heavy posterized/neon treatment",
           "people": "one person in extreme close-up with a hand near the mouth",
           "palette": [
             "blue",
             "cyan",
             "yellow",
             "orange",
-            "green"
+            "black"
           ]
         },
         {
@@ -10031,16 +10071,16 @@
           "filename": "Generation-Terrorists.jpg",
           "album": "Generation Terrorists",
           "artist": "",
-          "description": "A close-up photograph of a bare upper torso fills the frame. A dark metal crucifix necklace hangs over the chest, and a colourful tattoo of a rose with ribbon is visible on the upper arm at right. The background is simply skin, with the composition tightly cropped around the torso and shoulder.",
+          "description": "A close-up photograph of a bare torso and upper arm fills the frame. A dark crucifix pendant hangs on a cord over the chest, and the upper arm bears a colorful tattoo of a red rose with green leaves and a blue ribbon. The background is simply the skin surface, with no separate setting visible.",
           "signatureMotif": "crucifix necklace over a bare chest",
-          "medium": "photograph",
-          "people": "one shirtless person shown from neck to upper torso with an arm tattoo",
+          "medium": "color photograph",
+          "people": "one shirtless person shown from chest to upper arm",
           "palette": [
             "peach",
-            "beige",
             "black",
-            "dark green",
-            "red"
+            "red",
+            "green",
+            "blue"
           ]
         },
         {
@@ -10048,13 +10088,13 @@
           "filename": "Leisure.jpg",
           "album": "Leisure",
           "artist": "",
-          "description": "A close-up portrait of a woman wearing a white swim cap decorated with a ring of pale yellow daisy-like flowers and green leaves. She has dark eyeliner and red lipstick, and looks toward the camera with a slight smile. The background is softly blurred in cool blue and purple tones, suggesting an indoor pool setting.",
+          "description": "A close-up portrait of a woman in a white swim cap decorated with a ring of pale yellow daisy-like flowers and green leaves. She has dark eyeliner and red lipstick, and looks slightly to the side. The softly blurred background suggests an indoor swimming pool in cool blue and purple tones.",
           "signatureMotif": "flower-decorated white swim cap",
-          "medium": "photograph",
-          "people": "one woman in close-up wearing a floral swim cap",
+          "medium": "color photograph",
+          "people": "one woman in close-up wearing a swim cap with flowers",
           "palette": [
             "white",
-            "pale yellow",
+            "yellow",
             "green",
             "blue",
             "purple"
@@ -10065,9 +10105,9 @@
           "filename": "Terrifying-Angels.jpg",
           "album": "Terrifying Angels",
           "artist": "",
-          "description": "A dark winged angel statue stands centered against a vivid red sky or backdrop. The figure raises one arm holding a wreath-like object and extends the other arm holding a branch. At the bottom edge, dark silhouettes of horses and chariot elements frame the statue, creating a dramatic symmetrical composition.",
+          "description": "A dark winged angel statue stands centered against a vivid red sky or backdrop. The figure raises one arm holding a wreath-like object and extends the other with a small branch. At the bottom, silhouetted horse heads and harness elements frame the statue, creating a dramatic monument scene.",
           "signatureMotif": "large black angel statue with spread wings",
-          "medium": "photograph of sculpture",
+          "medium": "photograph of a statue with strong silhouette contrast",
           "people": "none",
           "palette": [
             "red",
@@ -10080,16 +10120,16 @@
           "filename": "ChangesTwoBowie.jpg",
           "album": "ChangesTwoBowie",
           "artist": "",
-          "description": "A studio portrait shows a man from the chest up against a soft pink background. He has dark tousled hair and looks directly at the viewer while holding a cigarette between his fingers near the right side of the frame. He wears layered clothing in dark and muted tones, and the composition is tightly cropped around his face and hand.",
+          "description": "A studio portrait shows a man from the chest up against a soft pink background. He has dark tousled hair and looks directly outward, holding a cigarette between his fingers near the right side of the frame. He wears layered clothing in muted blue and reddish tones.",
           "signatureMotif": "man holding a cigarette near his face",
-          "medium": "photograph",
-          "people": "one man in close-up holding a cigarette",
+          "medium": "color studio photograph",
+          "people": "one man in close-up portrait holding a cigarette",
           "palette": [
             "pink",
+            "peach",
             "black",
             "brown",
-            "blue",
-            "beige"
+            "blue"
           ]
         },
         {
@@ -10097,10 +10137,10 @@
           "filename": "And-Out-Come-the-Wolves.jpg",
           "album": "And Out Come the Wolves",
           "artist": "",
-          "description": "A stark black-and-white image shows a tattooed person seated on outdoor steps with head bowed and arms folded over the knees. The person has a mohawk hairstyle and wears heavy boots and striped socks. The scene is gritty and high-contrast, with the figure centered and the steps forming the background.",
-          "signatureMotif": "seated tattooed punk figure with bowed head on steps",
-          "medium": "high-contrast photograph",
-          "people": "one person with a mohawk sitting hunched on steps",
+          "description": "A stark black-and-white image shows a tattooed person seated on outdoor steps with head bowed and arms folded over bent knees. The figure wears heavy boots and striped socks, and the high-contrast treatment reduces details into bold black shapes against white ground. The composition centers the crouched body beneath large distressed graphic elements.",
+          "signatureMotif": "crouched tattooed person on steps with head down",
+          "medium": "high-contrast black-and-white photograph with graphic overlay",
+          "people": "one seated tattooed person with head bowed on steps",
           "palette": [
             "black",
             "white",
@@ -10112,10 +10152,10 @@
           "filename": "Mule.jpg",
           "album": "Mule",
           "artist": "",
-          "description": "A minimalist black-and-white studio photograph shows a tattooed man sitting on a dark wooden stool in a wide white space. He wears a cowboy hat, dark sunglasses, a fitted white T-shirt, and white briefs, and he is barefoot with legs apart and head tilted downward. The composition is sparse, with the solitary figure centered against a plain background.",
+          "description": "A black-and-white studio photograph shows a bearded man sitting on a tall stool in a mostly empty white space. He wears a cowboy hat, dark sunglasses, a fitted white T-shirt, and light shorts or underwear, and his arms and legs are covered with tattoos. His head tilts downward and one bare foot extends forward.",
           "signatureMotif": "tattooed man in cowboy hat seated on a stool",
-          "medium": "black-and-white photograph",
-          "people": "one tattooed man seated barefoot on a stool wearing a cowboy hat and sunglasses",
+          "medium": "black-and-white studio photograph",
+          "people": "one bearded man seated on a stool wearing a cowboy hat and sunglasses",
           "palette": [
             "white",
             "black",
@@ -10127,15 +10167,15 @@
           "filename": "Galactic-Melt.jpg",
           "album": "Galactic Melt",
           "artist": "",
-          "description": "A flat graphic design features many thin horizontal black lines across a coral-red background. In the center, the lines bend downward into a symmetrical nose-like contour. Around the lower middle are simple geometric shapes with dotted fills: a blue quadrilateral, a purple triangle, a teal polygon, and a yellow hexagon.",
-          "signatureMotif": "horizontal lines forming a stylized nose shape",
-          "medium": "graphic illustration",
+          "description": "A flat graphic illustration presents a coral-red field filled with thin horizontal black lines that bend inward to form the outline of a nose and brow ridge. Beneath the central facial contour sit simple geometric shapes: a purple triangle, a blue slanted rectangle, a teal polygon, and a yellow hexagon, each with dotted texture and black shadowing. The composition is symmetrical around the central nose shape.",
+          "signatureMotif": "lined abstract face centered on a nose shape",
+          "medium": "vector-style graphic illustration",
           "people": "none",
           "palette": [
-            "coral red",
+            "coral",
             "black",
-            "blue",
             "purple",
+            "blue",
             "teal"
           ]
         }
@@ -10143,7 +10183,7 @@
       "hint": null,
       "composeBackend": "gpt-image-2-5",
       "model": "openai/gpt-image-2.5/sunburst/edit",
-      "prompt": "Wide 16:9 editorial photograph inside a drained old indoor swimming pool at dusk, camera placed low on the pool floor looking toward the deep end and tiled steps, one physically real location with damp tiles, pool ladders, faint haze, scattered cables, and a temporary set built into the basin. Primary subject: the large black winged angel statue from reference image 4 rising at the far end as the central anchor, silhouetted against a huge coral-red wall installation of thin black horizontal slats bending downward into a symmetrical nose-like contour. The person from reference image 1 appears once at the left foreground edge in extreme close-up exactly as on the sleeve, face and hand near the mouth, blue-cyan lit, with two yellow-orange practical bulbs flaring at either side and thin jagged yellow light streak reflections across glossy tile nearby; the shirtless person from reference image 2 leans against the pool wall in the mid-foreground with the crucifix necklace over the bare chest and the rose tattoo clearly visible; the woman from reference image 3 stands on the center-right pool steps with her direct gaze, slight smile, eyeliner, red lipstick, and white swim cap decorated with pale yellow flowers and green leaves preserved exactly; the man from reference image 5 appears once in the right foreground in close-up with direct gaze and cigarette held near his face, framed by a soft pink-lit zone; the person from reference image 6 sits once on the tiled steps with bowed head, folded arms, mohawk, heavy boots, striped socks, and gritty stark contrast intact; the tattooed man from reference image 7 sits once on a dark wooden stool on the pool floor, barefoot, wearing cowboy hat, sunglasses, fitted white T-shirt, and white briefs, head tilted downward exactly as in the sleeve; the geometric blue, purple, teal, and yellow shapes from reference image 8 appear as real painted blocks and floor props near the lower middle. Photographic realism, editorial location shoot, crisp focus on every identifiable face, environmental haze only in the background, no blur on people. Strong visual hierarchy with the angel statue and coral slatted wall dominant, portraits grouped in depth around the emptied pool. Dramatic mixed lighting from overhead pool fixtures, cyan side light, soft pink fill, and small warm practical bulbs. Palette of coral red, black, cyan blue, tile white, soft pink, and yellow-orange, creating a moody theatrical intimate atmosphere. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one person in extreme close-up with a hand near the mouth; reference image 2 shows one shirtless person shown from neck to upper torso with an arm tattoo; reference image 3 shows one woman in close-up wearing a floral swim cap; reference image 5 shows one man in close-up holding a cigarette; reference image 6 shows one person with a mohawk sitting hunched on steps; reference image 7 shows one tattooed man seated barefoot on a stool wearing a cowboy hat and sunglasses. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "prompt": "A wide 16:9 outdoor pool complex in bright overcast daylight, viewed from slightly above deck level so the terrace, concrete steps, changing-room wall, and a monument plaza beyond align in one realistic continuous space; the woman from reference image 3 is the central subject on the pool deck in close portrait scale, wearing the white swim cap decorated with pale yellow flowers and green leaves, with dark eyeliner, red lipstick, and the same slightly sideways gaze; at the near left foreground edge, the person from reference image 1 appears in extreme close-up with hand near mouth, face blue-tinted by reflected pool light, surrounded by a few soft warm yellow-orange globe lights, and a subtle jagged yellow line painted on a nearby wall echoes the neon tracing; at the near right foreground edge, the shirtless person from reference image 2 is cropped from chest to upper arm with the crucifix pendant and rose tattoo clearly visible; the man from reference image 5 stands in the midground by a pool rail against a soft pink wall, looking directly outward and holding a cigarette near his face; the tattooed person from reference image 6 sits on the concrete steps in the same bowed crouch with boots and striped socks; the bearded man from reference image 7 sits alone on a tall lifeguard-style stool in an open white deck zone, wearing cowboy hat, sunglasses, fitted white T-shirt, and light shorts, head tipped down with one bare foot extended; beyond them all, a large black winged angel monument from reference image 4 rises at the far end with one arm raised holding a wreath-like object and the other extended, horse-head statuary low at its base; the abstract face from reference image 8 appears as a large coral mural on a poolside wall made of thin black horizontal lines forming a centered nose and brow, with purple, blue, teal, and yellow geometric shapes beneath; daylight location photography, clean editorial realism, crisp focus on all identifiable faces, medium-format clarity; layered composition with the swim-cap portrait as the anchor, cropped foreground bodies framing the scene, seated figures stepping back into depth, and the angel statue as the distant vertical climax; bright even overcast light, saturated but natural color, pool blues balanced by coral, pink, white, black, and small yellow-orange accents; poised, surreal, graphic yet physically plausible. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one person in extreme close-up with a hand near the mouth; reference image 2 shows one shirtless person shown from chest to upper arm; reference image 3 shows one woman in close-up wearing a swim cap with flowers; reference image 5 shows one man in close-up portrait holding a cigarette; reference image 6 shows one seated tattooed person with head bowed on steps; reference image 7 shows one bearded man seated on a stool wearing a cowboy hat and sunglasses. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
       "inputs": [
         "Glastonbury-1994.jpg",
         "Generation-Terrorists.jpg",

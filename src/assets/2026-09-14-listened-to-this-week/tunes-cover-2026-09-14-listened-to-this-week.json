@@ -3,65 +3,117 @@
   "date": "2026-09-14",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "afternoon skylight and sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Kiln Window with Tidal Idols",
-  "medium": "color lithograph",
-  "creativeDirection": "A richly layered color lithograph turns the album motifs into a surreal interior seascape built around a blazing kiln-like window and looming emblematic figures.",
-  "scene": "Inside a dark, abandoned brick bathing hall viewed straight on, where the far wall is dominated by a tall glowing window and the tiled floor gives way to a shallow indoor tide.",
+  "concept": "Sunlit conservatory portraits amid surreal blooms",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography in a bright glasshouse, using a physically real conservatory interior to absorb the surreal sleeve motifs as plants, sculpture, walling, cables, and posed portraits.",
+  "scene": "Inside a large Victorian-style glass conservatory in bright afternoon light, viewed from a slightly low eye level down a central aisle toward a white-painted brick back wall, with lush planting beds, a few display plinths, and clean stone flooring.",
   "elements": [
     {
       "source": 1,
-      "element": "A large yellow planet appears beyond the window, while a glowing red reclining female form hovers in the upper right like a celestial mural apparition; speaker-like mechanical boxes and cables cluster low in the scene."
+      "element": "a small theatrical red winged devil sculpture posed upright on a plinth near the center aisle, haloed by a blue oval of painted glass and surrounded by warm ribbon-like hanging forms"
     },
     {
       "source": 2,
-      "element": "An upside-down shirtless performer is transformed into a reflected figure tumbling across the wet floor among coiled cables and performance hardware near the foreground."
+      "element": "the two young girls from reference image 2 posed closely together beside an oversized white conservatory chair, smiling toward each other amid dense floral planting"
     },
     {
       "source": 3,
-      "element": "Four oversized fists thrust forward from the lower left as monumental foreshortened forms, like a crowd surging from shadow with marked knuckles emphasized."
+      "element": "a giant real yellow flower installation with the baby face from reference image 3 set at its center and a ring of multicolored candy-like beads around it, used as the main surreal focal bloom"
     },
     {
       "source": 4,
-      "element": "The hall is built from flat white brick walls with pale mortar, carrying traces of red handwritten paint marks."
+      "element": "a suspended red reclining female sculpture above a bed of speaker-like planters, coiled irrigation hoses, and a dark horned bull-head garden ornament, with a large warm-yellow circular sunshade echoing the planet"
     },
     {
       "source": 5,
-      "element": "Three sunglassed men appear as cool blue-gray busts aligned in a narrow frieze of poster-like panels along the base of the wall, above a strip of tiny colored thumbnails."
+      "element": "the upside-down shirtless performer from reference image 5 doing the same inversion on the conservatory floor among neatly snaking black cables, with the second person from reference image 5 standing farther back near stacked equipment cases"
     },
     {
       "source": 6,
-      "element": "At center in the shallow water sits a woman in a red star-patterned dress with a drum for a head, posed like a strange seaside idol, with small swimmers and boats faintly suggested in the water reflections."
+      "element": "the four young men from reference image 6 posed close to camera with fists thrust forward, staged as a dominant foreground group at one side of the aisle"
     },
     {
       "source": 7,
-      "element": "The glowing curtained window and a solitary bent seated silhouette before it establish the central backlit interior mood."
+      "element": "the far wall of the conservatory rendered as a crisp plain white brick wall backdrop"
     },
     {
       "source": 8,
-      "element": "In the right foreground, a woman’s screaming head emerges from a mound of dark wet earth and reeds that has washed into the hall from the tide."
+      "element": "the three men from reference image 8 wearing sunglasses, posed shoulder to shoulder against the white brick wall, with a narrow strip of small colorful photo cards mounted low beneath them"
     }
   ],
   "palette": [
-    "chalk white",
-    "pale blue-gray",
-    "sulfur yellow",
-    "ember red",
-    "sea green",
-    "black"
+    "white",
+    "yellow",
+    "red",
+    "orange",
+    "leaf green",
+    "sky blue"
   ],
-  "mood": "feverish, tidal, haunted",
+  "mood": "crisp, playful, uncanny, confident",
   "coverSummaries": [
     {
       "source": 1,
+      "filename": "Devil-Hopping.jpg",
+      "album": "Devil Hopping",
+      "artist": "",
+      "description": "A surreal illustrated cover showing a red devil-like humanoid figure standing upright in the center, with small horns and one visible bat-like wing. The figure is outlined by a pale glow and posed with one hand raised near its head. Behind it is a blue, cloudy, star-speckled space-like oval, surrounded by swirling abstract bands of yellow, orange, and red against black.",
+      "signatureMotif": "a red winged devil figure",
+      "medium": "digital collage / psychedelic illustration",
+      "people": "none",
+      "palette": [
+        "red",
+        "yellow",
+        "orange",
+        "blue",
+        "black"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Siamese-Dream.jpg",
+      "album": "Siamese Dream",
+      "artist": "",
+      "description": "A tinted photographic image of two young girls close together, smiling and facing slightly toward each other. One girl is partly behind a large white chair on the left. The upper portion has a dense repeating floral pattern, while dark foliage appears in the background behind the girls. The whole image is heavily colorized in pink, purple, and orange.",
+      "signatureMotif": "two young girls posed closely together",
+      "medium": "colorized photograph with patterned graphic background",
+      "people": "two young girls smiling close together",
+      "palette": [
+        "orange",
+        "purple",
+        "pink",
+        "white",
+        "dark blue"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Pablo-Honey.jpg",
+      "album": "Pablo Honey",
+      "artist": "",
+      "description": "A large yellow flower fills most of the frame, with a black-and-white baby’s face placed at the center where the flower disk would be. Around the baby’s face is a ring of round candy-like balls covered in multicolored sprinkles. The background is pale and softly textured, with the composition centered on the flower head.",
+      "signatureMotif": "a baby's face in the center of a yellow flower",
+      "medium": "photographic collage",
+      "people": "one baby face centered within a flower collage",
+      "palette": [
+        "yellow",
+        "white",
+        "black",
+        "purple",
+        "multicolor"
+      ]
+    },
+    {
+      "source": 4,
       "filename": "Dopes-to-Infinity.jpg",
       "album": "Dopes to Infinity",
       "artist": "",
-      "description": "A psychedelic illustrated space scene with a large yellow planet on the left, a black starry background, and a glowing red nude female figure floating or reclining on the right. At the bottom are stylized mechanical devices, cables, speaker-like boxes, and a dark astronaut-like figure or suited person. The composition is dense in the lower half and open in the upper half.",
-      "signatureMotif": "glowing red floating female figure in space",
-      "medium": "illustration",
+      "description": "A dark, space-like illustrated scene with a large glowing yellow planet or orb on the left and a red nude female figure floating or reclining diagonally on the right. Below her is a cluster of mechanical and electronic-looking objects, including boxy speaker-like forms, cables, and machine parts. A black bull-like head with long horns emerges from the lower left area, and stars are scattered across the black background.",
+      "signatureMotif": "a red floating female figure in space",
+      "medium": "illustration / painted collage",
+      "people": "none",
       "palette": [
         "black",
         "red",
@@ -71,13 +123,14 @@
       ]
     },
     {
-      "source": 2,
+      "source": 5,
       "filename": "Fugazi.jpg",
       "album": "Fugazi",
       "artist": "",
-      "description": "A red border surrounds a central black-and-white live-performance photograph. In the photo, a shirtless person is upside down in a handstand or fall-like pose on a cluttered floor with cables, while another person stands nearby with legs visible. Amplifiers, drum hardware, and tangled wires fill the cramped indoor scene.",
-      "signatureMotif": "upside-down shirtless performer among cables",
-      "medium": "black-and-white photograph with colored border",
+      "description": "A black-and-white live-performance photograph framed within a solid red border. In the photo, a shirtless person is upside down in a headstand or hand-supported inversion on a cluttered floor covered with cables. Another person stands in the background near amplifiers and drum hardware, with the scene cropped tightly and energetically.",
+      "signatureMotif": "an upside-down shirtless performer among cables",
+      "medium": "black-and-white concert photograph with colored border",
+      "people": "two people, one shirtless person upside down and one standing in the background",
       "palette": [
         "red",
         "black",
@@ -86,110 +139,66 @@
       ]
     },
     {
-      "source": 3,
+      "source": 6,
       "filename": "Slayed.jpg",
       "album": "Slayed",
       "artist": "",
-      "description": "A studio portrait of four men posed closely together against a brown backdrop, each thrusting a fist toward the camera so their knuckles dominate the foreground. One man is shirtless, others wear patterned or dark clothing, and the perspective exaggerates the hands. Large bright yellow lettering overlays the bottom portion.",
-      "signatureMotif": "four extended fists with marked knuckles",
-      "medium": "color photograph",
+      "description": "A studio portrait of four young men posed closely together, thrusting their fists toward the camera so their knuckles dominate the foreground. One man on the right is shirtless, while the others wear dark or patterned clothing. They have long 1970s-style haircuts, and the background is a plain brownish studio backdrop.",
+      "signatureMotif": "four men extending clenched fists toward the camera",
+      "medium": "color studio photograph",
+      "people": "four young men posing with fists extended toward the viewer",
       "palette": [
         "brown",
         "beige",
-        "yellow",
-        "red",
-        "black"
-      ]
-    },
-    {
-      "source": 4,
-      "filename": "The-Wall.jpg",
-      "album": "The Wall",
-      "artist": "",
-      "description": "A minimal graphic image of a flat white brick wall filling the frame in a regular grid pattern, with thin pale blue-gray mortar lines. Red handwritten-style lettering is centered over the wall.",
-      "signatureMotif": "white brick wall",
-      "medium": "graphic design",
-      "palette": [
-        "white",
-        "light blue",
-        "red"
-      ]
-    },
-    {
-      "source": 5,
-      "filename": "Greatest-Hits.jpg",
-      "album": "Greatest Hits",
-      "artist": "",
-      "description": "A high-contrast portrait of three men wearing dark sunglasses, shown from the chest up against a white background. Their faces and clothing are tinted in cool blue-gray tones. Along the bottom runs a narrow strip of tiny rectangular color images like film stills or thumbnails.",
-      "signatureMotif": "three men in sunglasses",
-      "medium": "photograph with graphic layout",
-      "palette": [
-        "white",
         "black",
-        "blue-gray",
-        "red"
-      ]
-    },
-    {
-      "source": 6,
-      "filename": "In-the-Aeroplane-Over-the-Sea.jpg",
-      "album": "In the Aeroplane Over the Sea",
-      "artist": "",
-      "description": "A vintage-style seaside illustration showing a woman seated at the water’s edge in a red dress decorated with stars, with a round drum replacing her head. Beside her, a child in a striped outfit raises one arm from the water, while additional small heads and swimmers appear in the sea. Boats and a pale sky sit in the background.",
-      "signatureMotif": "woman with a drum for a head",
-      "medium": "vintage illustration/collage",
-      "palette": [
-        "pale blue",
-        "sea green",
         "red",
-        "cream",
-        "brown"
+        "yellow"
       ]
     },
     {
       "source": 7,
-      "filename": "Lost-in-the-Dream.jpg",
-      "album": "Lost in the Dream",
+      "filename": "The-Wall.jpg",
+      "album": "The Wall",
       "artist": "",
-      "description": "A dim, moody interior photograph centered on a tall window with sheer curtains glowing from daylight behind them. In front of the window, a dark-haired seated figure bends forward with arms folded or close to the body, partially blurred. The room edges are shadowy, with muted walls and a hazy, dreamlike texture.",
-      "signatureMotif": "solitary figure silhouetted before a curtained window",
-      "medium": "photograph",
+      "description": "A stark minimalist cover showing a flat white brick wall pattern across the entire image. The bricks are outlined with thin blue-gray lines, creating a clean grid-like masonry surface with no figures or objects.",
+      "signatureMotif": "a plain white brick wall",
+      "medium": "minimal graphic design / illustration",
+      "people": "none",
       "palette": [
-        "green",
-        "gray",
-        "black",
-        "cream",
-        "purple"
+        "white",
+        "light blue",
+        "gray"
       ]
     },
     {
       "source": 8,
-      "filename": "Maggot-Brain.jpg",
-      "album": "Maggot Brain",
+      "filename": "Greatest-Hits.jpg",
+      "album": "Greatest Hits",
       "artist": "",
-      "description": "A dramatic close-up photograph of a woman’s head emerging from dark soil or earth, mouth wide open in a scream. Her large afro spreads outward against the black background, and bits of straw or roots are scattered around the hole. The face is strongly lit, creating stark contrast with the surrounding darkness.",
-      "signatureMotif": "screaming head emerging from soil",
-      "medium": "color photograph",
+      "description": "A high-contrast portrait of three men wearing dark sunglasses, shown from the chest up against a white background. The central figure faces forward, flanked by two others angled slightly inward. Along the bottom runs a narrow strip of small rectangular images in various colors, like film stills or photo thumbnails.",
+      "signatureMotif": "three men in sunglasses posed shoulder to shoulder",
+      "medium": "high-contrast photograph with graphic layout",
+      "people": "three men wearing sunglasses in a close portrait",
       "palette": [
         "black",
-        "dark brown",
-        "tan",
-        "orange"
+        "white",
+        "blue-gray",
+        "red"
       ]
     }
   ],
   "hint": null,
   "composeBackend": "gpt-image-2-5",
   "model": "openai/gpt-image-2.5/sunburst/edit",
-  "prompt": "A dark abandoned brick bathing hall seen straight on, with a tall glowing curtained window centered in the far wall and a shallow indoor tide spreading across the floor; at the center sits a woman in a red dress patterned with stars, her head replaced by a round drum, poised like an idol at the water’s edge inside the room; beyond the window a large yellow planet hangs in black space, and in the upper right a glowing red reclining female apparition floats against darkness, while below her speaker-like mechanical boxes, cables, and audio hardware collect near the floor; a bent solitary figure is silhouetted before the luminous curtains, partially blurred; in the lower left, four monumental foreshortened fists surge toward the viewer from shadow with marked knuckles dominating the foreground; across the wet floor an upside-down shirtless performer appears as a reflected tumbling body among tangled wires and stage debris; along the wall base a narrow frieze holds three blue-gray men in dark sunglasses like poster busts above a strip of tiny color thumbnails; in the right foreground a screaming woman’s head with a halo of textured hair erupts from a mound of soaked soil and reeds washed into the hall; faint swimmers, little heads in water, and tiny distant boats shimmer as reflection-like details in the tide; color lithograph with dense crayon grain, layered transparent inks, bold tonal separations, and slightly offset registration; strong central hierarchy anchored by the drum-headed woman and luminous window, with surrounding motifs orbiting as secondary emblems; dramatic backlighting from the window, deep corner shadows, wet reflective floor, and high contrast accents; palette of chalk white, pale blue-gray, sulfur yellow, ember red, sea green, black, and muddy brown, with a feverish haunted mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "prompt": "Inside a bright Victorian glass conservatory in afternoon skylight and clean sun, viewed from slightly low eye level down a central aisle toward a plain white brick wall. The primary subject is a giant yellow flower installation centered in the space, with the baby face from reference image 3 at its middle encircled by multicolored sprinkle-like candy beads, reading as a real sculptural bloom. At the left foreground, the four young men from reference image 6 are posed tightly together with their fists thrust toward the camera exactly as in their sleeve portrait, dominating one side of the frame. Midground left, the two young girls from reference image 2 stand close together beside an oversized white chair, smiling toward each other within dense flowers and dark foliage. At the back wall, the three men from reference image 8 stand shoulder to shoulder in sunglasses against the white brick wall, with a narrow strip of small colorful image cards mounted low beneath them. Near the center aisle place a small upright red winged devil sculpture inspired by reference image 1, backed by a blue oval pane and warm swirling ribbon forms in yellow and orange. Overhead to the right, suspend a red reclining female sculpture from reference image 4 above speaker-like planters, coiled cables, and a black horned bull-head garden ornament, with a large warm yellow circular shade nearby echoing a planet. On the floor in the right midground, the upside-down shirtless performer from reference image 5 holds the same inversion among black cables, while the second person from reference image 5 stands farther back near equipment cases and drum hardware. Render as photographic realism, a clean editorial location shoot with crisp detail, natural proportions, no haze, no collage edges, no painted texture. Compose with strong depth and clear hierarchy: giant flower centered first, fists in the foreground second, other portraits and surreal objects stepping back through the conservatory. Use bright even daylight with sun patches and soft skylit fill so faces remain fully legible and sharp. Palette of white, yellow, red, orange, leaf green, sky blue, and black; mood playful, uncanny, and vivid. Reference map for people (the album images are attached in this numbered order): reference image 2 shows two young girls smiling close together; reference image 3 shows one baby face centered within a flower collage; reference image 5 shows two people, one shirtless person upside down and one standing in the background; reference image 6 shows four young men posing with fists extended toward the viewer; reference image 8 shows three men wearing sunglasses in a close portrait. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
+    "Devil-Hopping.jpg",
+    "Siamese-Dream.jpg",
+    "Pablo-Honey.jpg",
     "Dopes-to-Infinity.jpg",
     "Fugazi.jpg",
     "Slayed.jpg",
     "The-Wall.jpg",
-    "Greatest-Hits.jpg",
-    "In-the-Aeroplane-Over-the-Sea.jpg",
-    "Lost-in-the-Dream.jpg",
-    "Maggot-Brain.jpg"
+    "Greatest-Hits.jpg"
   ]
 }
