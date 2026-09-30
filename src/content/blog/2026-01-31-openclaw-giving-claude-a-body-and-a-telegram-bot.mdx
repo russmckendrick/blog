@@ -61,9 +61,9 @@ Before you go any further, OpenClaw will present you with a security warning, an
 OpenClaw is a hobby project and still in beta. This bot can read files and run actions if tools are enabled. A bad prompt can trick it into doing unsafe things.
 </WarningCallout>
 
-The warning isn't hyperbole. You're essentially giving an AI agent access to your system - it can read files, execute commands, and interact with external services. If you're not comfortable with basic security and access control, this probably isn't for you.
+The warning isn't hyperbole. You're giving an AI agent access to your system - it can read files, execute commands, and interact with external services. If you're not comfortable with basic security and access control, this probably isn't for you.
 
-That said, OpenClaw provides sensible guardrails out of the box:
+OpenClaw does provide sensible guardrails out of the box:
 
 - **Pairing and allowlists**: Only approved users can interact with your agent
 - **Sandbox mode**: Run tools with least-privilege access
@@ -135,7 +135,7 @@ And that's it. Your AI agent is now available in your pocket.
 
 ## What Can It Actually Do?
 
-Once everything's wired up, you've got a persistent AI assistant that can do rather more than just chat. Out of the box, OpenClaw supports web browsing, file operations, shell commands, and a memory system that retains context across sessions. There's also a heartbeat feature that lets the agent proactively check in with you - useful for monitoring tasks or gentle reminders.
+Once everything's wired up, you've got a persistent AI assistant that can do a fair bit more than chat. Out of the box, OpenClaw supports web browsing, file operations, shell commands, and a memory system that retains context across sessions. There's also a heartbeat feature that lets the agent proactively check in with you - useful for monitoring tasks or gentle reminders.
 
 I'm still exploring the edges of what's possible, so I'll save the deep dive for a future post. For now, I'm enjoying having an assistant that remembers our conversations and doesn't require me to re-explain context every time I open a new chat window.
 
@@ -151,8 +151,8 @@ The documentation covers skills, cron jobs, browser automation, and a whole ecos
 
 ## First Impressions
 
-OpenClaw is the kind of project that makes you rethink what "using AI" means. It's not just a chatbot - it's a framework for building something closer to an actual assistant. The onboarding experience is surprisingly charming, the Telegram integration works flawlessly, and the transparent markdown-based memory system means you're never left wondering what the agent knows or why it's behaving a certain way.
+OpenClaw is a framework for building something closer to an actual assistant than a chatbot. The onboarding experience is surprisingly charming and the Telegram integration works flawlessly. Because the memory is plain markdown, you're never left wondering what the agent knows or why it's behaving a certain way.
 
-That said, the security warnings are there for a reason. This is beta software that can execute commands on your system. Treat it accordingly - run it on isolated hardware, keep your secrets elsewhere, and don't give it access to anything you wouldn't hand to a keen but occasionally confused intern.
+The security warnings are there for a reason, though. This is beta software that can execute commands on your system. Treat it accordingly - run it on isolated hardware, keep your secrets elsewhere, and don't give it access to anything you wouldn't hand to a keen but occasionally confused intern.
 
 I'm looking forward to seeing where this goes.

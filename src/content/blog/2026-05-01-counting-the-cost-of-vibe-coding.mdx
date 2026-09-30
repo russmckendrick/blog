@@ -217,11 +217,11 @@ While it's running in the background, the desktop app keeps polling the archive 
 }
 ```
 
-The desktop-only **Open at Login** and **Dock/taskbar icon** toggles are also exposed in the Config tab, so you can opt into a tray-first setup without hand-editing JSON if you'd rather. On Windows and Linux, the Config tab additionally includes an explicit update check against GitHub Releases, which is the supported path for those platforms; macOS desktop updates continue to come through Homebrew Cask.
+The desktop-only **Open at Login** and **Dock/taskbar icon** toggles are also exposed in the Config tab, so you can opt into a tray-first setup without hand-editing JSON if you'd rather. On Windows and Linux, the Config tab also includes an explicit update check against GitHub Releases, which is the supported path for those platforms; macOS desktop updates continue to come through Homebrew Cask.
 
 ## Reports
 
-This is the bit that's changed the most since the first release. The earlier snapshot exports have been replaced with a richer **Reports** workflow. Press `e` on Overview, Deep Dive, Usage, or Session (or click the report button in the desktop app) and you'll get a modal that asks for the period, project scope, format, and whether to redact prompts, commands, raw paths, session IDs, and dedup keys before generation. Reports always include all tools for the chosen scope, regardless of whatever tool filter you have set on the dashboard.
+This is the bit that's changed the most since the first release. The earlier snapshot exports have been replaced with a **Reports** workflow. Press `e` on Overview, Deep Dive, Usage, or Session (or click the report button in the desktop app) and you'll get a modal that asks for the period, project scope, format, and whether to redact prompts, commands, raw paths, session IDs, and dedup keys before generation. Reports always include all tools for the chosen scope, regardless of whatever tool filter you have set on the dashboard.
 
 The available formats cover most use cases:
 

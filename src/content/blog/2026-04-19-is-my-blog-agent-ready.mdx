@@ -122,14 +122,15 @@ The one exception I considered was an empty API catalog (`{"linkset": []}` at `/
 
 ## Takeaways
 
-The rescan of of the site now passes four out of nine checks, and the remaining five are genuinely not applicable. That's the correct state for a blog.
+The rescan of the site now passes four out of nine checks, and the remaining five don't apply to a blog. That's the correct state.
 
-A few things struck me while doing this:
+Most of the "agent readiness" story is just good old web hygiene. A sitemap, an RSS feed, a `robots.txt` that says what you mean - agents want the same things a thoughtful human crawler would.
 
-- **Most of the "agent readiness" story is just good old web hygiene.** A sitemap, an RSS feed, a `robots.txt` that says what you mean - agents want the same things a thoughtful human crawler would.
-- **Content Signals is the one that might matter most.** The HTML metadata and robots directives we've been using for 25 years weren't designed for "may I train a model on this?" questions. An explicit signal is better than arguing about the implicit one.
-- **Markdown-on-demand is surprisingly nice to build.** Agents get cleaner parsing, browsers get the same HTML, and the build already knew how to produce markdown because that's what MDX starts as. Shipping the twin on Free instead of paying for the edge feature was a reasonable trade.
-- **Not every check should pass.** If the tooling treats "green on everything" as the goal, you'll end up with a lot of sites pretending to be OAuth providers. The useful reading of these scanners is as a prompt to ask "should this apply to me?" - and the answer is often no.
+Content Signals is the one that might matter most. The HTML metadata and robots directives we've been using for 25 years weren't designed for "may I train a model on this?" questions, and an explicit signal is better than arguing about the implicit one.
+
+Markdown-on-demand was far less painful to build than I expected. Agents get cleaner parsing, browsers get the same HTML, and the build already knew how to produce markdown because that's what MDX starts as. Shipping the twin on Free instead of paying for the edge feature was a reasonable trade.
+
+And not every check should pass. If the tooling treats "green on everything" as the goal, you'll end up with a lot of sites pretending to be OAuth providers. The useful reading of these scanners is as a prompt to ask "should this apply to me?" - and the answer is often no.
 
 You can read the announcement post from Cloudflare at the link below: 
 

@@ -14,7 +14,7 @@ tags:
 
 I spend real money on AI coding tools. Enough that I built [Token Use](https://tokenuse.app/) to keep an eye on where it all goes across Claude Code, Codex, and the rest. So when a project turns up promising "60-95% fewer tokens, same answers," it gets my attention, even if the part of me that has read a few too many README files starts squinting straightaway.
 
-The project is [Headroom](https://headroom-docs.vercel.app/docs), and I've been running it for a few days against my normal Claude Code workflow to see what those numbers actually look like once they hit my own usage rather than a benchmark. The short version: there are savings, they're worth having, but almost none of them come from the bit the headline is selling. Let me walk through what I found.
+The project is [Headroom](https://headroom-docs.vercel.app/docs), and I've been running it for a few days against my normal Claude Code workflow to see what those numbers actually look like once they hit my own usage rather than a benchmark. The short version: there are savings, they're worth having, but almost none of them come from the bit the headline is selling.
 
 <LinkPreview id="https://github.com/chopratejas/headroom" />
 
@@ -24,7 +24,7 @@ Headroom is a context-compression layer for AI agents. In practice that means a 
 
 It's the work of Tejas Chopra, it's Apache-2.0 licensed, and it's mostly Python with a Rust core. It can run as a Python library, an MCP server, or the proxy I've been using. I went with the proxy because it needs no changes to how I work: point Claude Code at it and carry on.
 
-The compression itself is the clever-sounding part. A content router sniffs each payload, works out what kind of data it is, and hands it to a matching compressor. Arrays of near-identical JSON get crushed down to a representative sample. Logs get de-duplicated. The original is kept locally so nothing is genuinely lost, and the model gets a `headroom_retrieve` tool it can call to pull the full version back if it actually needs it. That last detail is what separates this from just truncating output and hoping, and it's the bit I liked most on paper.
+The compression itself is the clever-sounding part. A content router sniffs each payload, works out what kind of data it is, and hands it to a matching compressor. Arrays of near-identical JSON get crushed down to a representative sample. Logs get de-duplicated. The original is kept locally so nothing is lost, and the model gets a `headroom_retrieve` tool it can call to pull the full version back if it actually needs it. That last detail is what separates this from just truncating output and hoping, and it's the bit I liked most on paper.
 
 ## Getting it running
 

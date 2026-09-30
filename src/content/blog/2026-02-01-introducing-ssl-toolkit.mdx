@@ -17,13 +17,13 @@ tags:
 
 During the day job, I spend a fair amount of time checking SSL certificates - validating chains, comparing certs across different IPs, checking expiry dates, and generally troubleshooting TLS issues. Over the years, I'd built up a long document filled with random notes, one-liners, and half-remembered OpenSSL incantations. It worked, but it wasn't exactly elegant.
 
-So I decided to consolidate all of that into a vibe-coded tool. The result is **ssl-toolkit**, a comprehensive SSL/TLS diagnostic tool built in Rust.
+So I decided to consolidate all of that into a vibe-coded tool. The result is **ssl-toolkit**, an SSL/TLS diagnostic tool built in Rust.
 
 <LinkPreview id="https://www.ssl-toolkit.dev/" />
 
 ## What it does
 
-At its core, ssl-toolkit performs the checks I find myself doing repeatedly: DNS resolution across multiple providers, TLS handshake analysis, certificate chain validation, WHOIS lookups, and cipher suite enumeration. It then rolls everything up into an overall security grade (A+ through F) so you can quickly gauge the health of a certificate.
+ssl-toolkit performs the checks I find myself doing repeatedly: DNS resolution across multiple providers, TLS handshake analysis, certificate chain validation, WHOIS lookups, and cipher suite enumeration. It then rolls everything up into an overall security grade (A+ through F) so you can quickly gauge the health of a certificate.
 
 The tool supports both an interactive mode with a guided menu system and a non-interactive mode for scripting and CI/CD pipelines. There's also JSON output if you need to parse results programmatically.
 
