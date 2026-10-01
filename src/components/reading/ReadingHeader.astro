@@ -1,5 +1,5 @@
 ---
-import { getTagColorClasses, getTagName } from '../../utils/tags'
+import { getTagName } from '../../utils/tags'
 
 interface Props {
   totalArticles: number
@@ -8,48 +8,79 @@ interface Props {
   filteredCount?: number
 }
 
+// Page head plus the topic filter as a row of pills: ink-filled when active,
+// hairline outlines otherwise (the homepage TagTabs pill grammar).
 const { totalArticles, tagCounts, activeTag, filteredCount } = Astro.props
 const sortedTags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1])
 const isFiltered = !!activeTag
+const instapaper = 'https://www.instapaper.com/p/russmckendrick'
 ---
 
-<div class="mb-10">
-  <header class="pt-8 pb-8 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
-    <h1>Reading list</h1>
-    <p class="mt-3 text-lg text-on-surface-variant leading-normal">
-      {isFiltered ? (
-        <span>{filteredCount} of {totalArticles} articles saved on <a href="https://www.instapaper.com/p/russmckendrick" class="underline" target="_blank" rel="noopener noreferrer">Instapaper</a></span>
-      ) : (
-        <span>{totalArticles} articles saved on <a href="https://www.instapaper.com/p/russmckendrick" class="underline" target="_blank" rel="noopener noreferrer">Instapaper</a></span>
-      )}
-    </p>
-  </header>
+<header class="page-head !border-b-0 !pb-0" data-entrance>
+  <h1>Reading list</h1>
+  <p class="page-lede">
+    {isFiltered ? (
+      <span>{filteredCount} of {totalArticles} articles tagged {getTagName(activeTag)}, saved on <a href={instapaper} class="underline" target="_blank" rel="noopener noreferrer">Instapaper</a>.</span>
+    ) : (
+      <span>{totalArticles} articles I've saved on <a href={instapaper} class="underline" target="_blank" rel="noopener noreferrer">Instapaper</a> this year, newest first.</span>
+    )}
+  </p>
+</header>
 
-  {sortedTags.length > 0 && (
-    <div class="mt-6 flex flex-wrap items-center gap-2">
-      <span class="rubric mr-1">Filter:</span>
+{sortedTags.length > 0 && (
+  <nav class="reading-filters" aria-label="Filter by topic">
+    <a href="/reading/" aria-current={!isFiltered ? 'page' : undefined}>All</a>
+    {sortedTags.map(([tag, count]) => (
       <a
-        href="/reading/"
-        class:list={["reading-tag-btn", getTagColorClasses(), { active: !isFiltered }]}
+        href={`/reading/tag/${encodeURIComponent(tag)}/`}
+        aria-current={activeTag === tag ? 'page' : undefined}
       >
-        All
+        {getTagName(tag)}
+        <span class="reading-filter-count">{count}</span>
       </a>
-      {sortedTags.map(([tag, count]) => (
-        <a
-          href={`/reading/tag/${encodeURIComponent(tag)}/`}
-          class:list={["reading-tag-btn", getTagColorClasses(tag), { active: activeTag === tag }]}
-        >
-          {getTagName(tag)}
-          <span class="opacity-60">({count})</span>
-        </a>
-      ))}
-    </div>
-  )}
-</div>
+    ))}
+  </nav>
+)}
 
 <style>
-  .reading-tag-btn.active {
-    color: var(--color-secondary);
-    background-color: var(--pill-hover);
+  .reading-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.75rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .reading-filters a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-height: 36px;
+    padding: 0 0.875rem;
+    border: 1px solid var(--rule);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    color: var(--color-on-surface);
+    text-decoration: none;
+    transition: border-color var(--dur-quick) ease, background-color var(--dur-quick) ease;
+  }
+
+  .reading-filters a:hover {
+    border-color: var(--rule-strong);
+    background-color: var(--paper-well);
+    color: var(--color-on-surface);
+  }
+
+  .reading-filters a[aria-current='page'] {
+    background-color: var(--color-on-surface);
+    border-color: var(--color-on-surface);
+    color: var(--color-surface);
+    font-weight: 600;
+  }
+
+  .reading-filter-count {
+    font-size: 0.75rem;
+    opacity: 0.7;
   }
 </style>

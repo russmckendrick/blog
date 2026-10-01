@@ -1,305 +1,365 @@
 ---
-version: "1.0"
-name: "Russ.Cloud — The Reading Room"
-description: "Medium-calm editorial design system for the Russ.Cloud Astro blog and music site."
+version: "2.0"
+name: "Russ.Cloud — Workbench"
+description: "Clean, light-by-default design system for the Russ.Cloud Astro blog: one face (Geist), white page, near-black ink, an amber accent, and big cover art."
 colors:
-  paper: "#FBFAF7"
-  paper-well: "#F3F1EB"
-  ink: "#1E1C18"
-  mist: "#6F6A61"
-  hairline: "#ECE8E1"
-  accent: "#2B559E"
-  pill: "#EDF1F8"
-  pill-hover: "#E2E9F5"
-  terminal: "#24273A"
-  terminal-bar: "#1E2030"
-  dark-paper: "#161411"
-  dark-paper-well: "#211E1A"
-  dark-ink: "#E8E3DA"
-  dark-mist: "#A69D8F"
-  dark-hairline: "#2B2721"
-  dark-accent: "#9FBCEB"
-  dark-pill: "#20242E"
-  dark-pill-hover: "#272D3B"
+  page: "#FFFFFF"
+  tint: "#F4F4F5"
+  ink: "#0B0B0C"
+  mist: "#5E5E66"
+  rule: "#E6E6E9"
+  rule-strong: "#D4D4D8"
+  accent-fill: "#F2B544"
+  on-accent-fill: "#0B0B0C"
+  accent-text: "#8A5A00"
+  terminal: "#1B1D27"
+  terminal-bar: "#14161E"
+  dark-page: "#0B0B0C"
+  dark-tint: "#151517"
+  dark-ink: "#EDEDEF"
+  dark-mist: "#A1A1A6"
+  dark-rule: "#26262A"
+  dark-rule-strong: "#333338"
+  dark-accent-text: "#F2B544"
   terminal-light-red: "#ED8796"
   terminal-light-amber: "#EED49F"
   terminal-light-green: "#A6DA95"
   terminal-comment: "#939AB7"
-  terminal-shadow: "rgba(15, 14, 20, 0.55)"
 typography:
+  home-intro:
+    fontFamily: "Geist, -apple-system, Helvetica Neue, Arial, sans-serif"
+    fontSize: 62px
+    fontWeight: 800
+    lineHeight: 1.02
+    letterSpacing: "-0.04em"
   article-title:
-    fontFamily: "Schibsted Grotesk, -apple-system, Helvetica Neue, Arial, sans-serif"
-    fontSize: 42px
+    fontFamily: "Geist, sans-serif"
+    fontSize: 58px
+    fontWeight: 800
+    lineHeight: 1.04
+    letterSpacing: "-0.04em"
+  lead-title:
+    fontFamily: "Geist, sans-serif"
+    fontSize: 48px
+    fontWeight: 800
+    lineHeight: 1.04
+    letterSpacing: "-0.035em"
+  section-title:
+    fontFamily: "Geist, sans-serif"
+    fontSize: 34px
     fontWeight: 700
-    lineHeight: 1.19
-    letterSpacing: "-0.011em"
+    lineHeight: 1.15
+    letterSpacing: "-0.03em"
+  prose-h2:
+    fontFamily: "Geist, sans-serif"
+    fontSize: 30px
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: "-0.025em"
+  tile-title:
+    fontFamily: "Geist, sans-serif"
+    fontSize: 23px
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: "-0.02em"
   standfirst:
-    fontFamily: "Schibsted Grotesk, sans-serif"
+    fontFamily: "Geist, sans-serif"
     fontSize: 21px
     fontWeight: 400
-    lineHeight: 1.38
-  feed-title:
-    fontFamily: "Schibsted Grotesk, sans-serif"
-    fontSize: 24px
-    fontWeight: 700
-    lineHeight: 1.375
-    letterSpacing: "-0.014em"
-  lead-title:
-    fontFamily: "Schibsted Grotesk, sans-serif"
-    fontSize: 27px
-    fontWeight: 700
-    lineHeight: 1.24
-    letterSpacing: "-0.014em"
-  prose-h2:
-    fontFamily: "Schibsted Grotesk, sans-serif"
-    fontSize: 22px
-    fontWeight: 600
-    lineHeight: 1.25
-    letterSpacing: "-0.012em"
+    lineHeight: 1.45
   body:
-    fontFamily: "Literata, Georgia, Times New Roman, serif"
-    fontSize: 18px
+    fontFamily: "Geist, sans-serif"
+    fontSize: 19px
     fontWeight: 400
-    lineHeight: 1.67
-    letterSpacing: "-0.003em"
-  dek:
-    fontFamily: "Schibsted Grotesk, sans-serif"
-    fontSize: 16px
+    lineHeight: 1.75
+    letterSpacing: "-0.005em"
+  ui-small:
+    fontFamily: "Geist, sans-serif"
+    fontSize: 15px
     fontWeight: 400
-    lineHeight: 1.4
+    lineHeight: 1.5
   meta:
-    fontFamily: "Schibsted Grotesk, sans-serif"
+    fontFamily: "Geist, sans-serif"
     fontSize: 13px
     fontWeight: 400
     lineHeight: 1.55
-  pull-quote:
-    fontFamily: "Literata, serif"
-    fontSize: 22px
-    fontWeight: 400
-    fontStyle: italic
-    lineHeight: 1.45
-  prose-h3:
-    fontFamily: "Schibsted Grotesk, sans-serif"
-    fontSize: 18px
-    fontWeight: 600
-    lineHeight: 1.3
-    letterSpacing: "-0.008em"
-  ui-small:
-    fontFamily: "Schibsted Grotesk, sans-serif"
-    fontSize: 15px
-    fontWeight: 400
-    lineHeight: 1.45
-  caption:
-    fontFamily: "Schibsted Grotesk, sans-serif"
-    fontSize: 14px
-    fontWeight: 400
-    lineHeight: 1.45
-  count:
-    fontFamily: "Schibsted Grotesk, sans-serif"
-    fontSize: 12px
-    fontWeight: 400
-    lineHeight: 1.4
   code:
-    fontFamily: "IBM Plex Mono, ui-monospace, Consolas, monospace"
-    fontSize: 13.5px
-    lineHeight: 1.7
+    fontFamily: "Geist Mono, ui-monospace, Consolas, monospace"
+    fontSize: 14px
+    lineHeight: 1.75
 mobile:
-  article-title: 32px
-  body: "17px / 1.65"
-  feed-title: 16px
-  thumbnail: "full-width 2:1 banner"
+  home-intro: 36px
+  article-title: 34px
+  lead-title: 32px
+  body: "17px / 1.7"
+  tile: "single column, 16:10 image"
 rounded:
-  image: 3px
-  figure: 4px
-  terminal: 10px
-  search-input: 20px
+  tile-image: 16px
+  lead-image: 22px
+  panel: 22px
+  callout: 14px
+  terminal: 14px
+  code-block: 12px
   pill: 9999px
   portrait: 9999px
 layout:
-  column: 680px
-  masthead: 60px
+  frame: 1320px
+  gutters: "16px / 24px (sm) / 40px (lg)"
+  text-column: 700px
+  masthead: 68px
+  article-columns: "220px | 700px | 220px from 1200px"
   logo-lockup: "28px-tall SVG, fixed at all widths"
-  thumbnail: "160×107 (full-width 2:1 banner mobile)"
-  mobile-gutter: 24px
 ---
 
-# The Reading Room — design system
+# Workbench — design system
 
 ## Overview
 
-Russ.Cloud set as a **single-author reading room**: Medium's measured calm —
-one column width for everything, two text colours, one hairline value, no
-cards — executed in a world that is unmistakably not Medium's. Text leads
-everywhere; cover art is subordinate in listings and artwork inside articles.
-There are **no sidebars anywhere** — the archive's depth (author, the week's
-records, wayfinding) lives in a shared colophon footer that closes every
-page, so even a search arrival deep in the archive ends on who writes here.
+Russ.Cloud as **a builder's workbench**: a clean white page, near-black type,
+one grey, one tint, and an amber accent, with the cover art finally given room
+to work. It replaced "The Reading Room" (Medium-calm paper and serif) in
+October 2026. The homepage says who writes here and what they build before it
+asks anyone to read; the article page is a wide hero over a single 700px text
+column flanked by contents and tools.
+
+**Light is the default.** Dark applies only once a reader has chosen it with the
+toggle (`localStorage.theme === 'dark'`); the system `prefers-color-scheme` is
+deliberately not consulted. Dark is a near-black second material, not an
+inversion.
 
 ## Tokens and naming
 
-- **Paper** `#FBFAF7` is the page — warm off-white, never pure white.
-  `paper-well` is the only fill (search input, inline code). The Night edition
-  is a second material — warm dark paper `#161411`, softened ink and accent —
-  not an inversion.
-- **Ink** `#1E1C18` for titles and body; **mist** `#6F6A61` for *everything*
-  that is not content — deks, dates, read times, captions, inactive tabs,
-  subtitles. There is no third text tint. Both pass 4.5:1 on paper in both
-  editions.
-- **Hairline** `#ECE8E1`, always 1px, is the only separator: masthead edge,
-  feed-row dividers, the full-height sidebar rule, story action bars, tab
-  baseline. Never varied in weight.
-- **Accent** `#2B559E` — blue-black "pen ink" — appears only as: title/link
-  hovers, the tinted tag pills, and the article tombstone. Nothing else —
-  the wordmark's dot and cursor use the logo mark's own palette, not the
-  accent. No burnt orange anywhere (clean break from Print Edition).
-- **Radius:** 3px listing thumbnails, 4px article figures, full pills, round
-  portrait. (A deliberate break from Print Edition's radius-0 rule.)
+The primitives keep their historic names in `global.css` (`--paper`, `--ink`,
+`--rule` …) and the Material-style `--color-*` aliases still resolve through
+them, so older components restyle without edits.
+
+- **Page** `#FFFFFF` (`--paper`). **Tint** `#F4F4F5` (`--paper-well`) is the one
+  fill: the homepage intro band, the tunes panel, the author card, pills,
+  inline code, image placeholders. Dark: `#0B0B0C` page, `#151517` tint — the
+  tint lifts rather than sinks.
+- **Ink** `#0B0B0C` for titles and body; **mist** `#5E5E66` for everything that
+  is not content (dates, read times, descriptions, captions, inactive UI). No
+  third text grey. Both pass 4.5:1 on page and tint in both themes.
+- **Rule** `#E6E6E9` for hairlines and outlined controls; **rule-strong**
+  `#D4D4D8` for their hover state and the few outlines that must read on tint.
+- **Amber** comes in two tokens and they are not interchangeable:
+  - `--accent-fill` `#F2B544` is for **marks only** — the reading-progress
+    bar, the "Latest" badge, the active-contents dot, the tombstone dots and
+    the prose link underline. Text on it is `--on-accent-fill` (ink). It fails
+    contrast as text on white, so it never is.
+  - `--accent` is the **text-safe** shade: `#8A5A00` in light, `#F2B544` in
+    dark. Link and title hovers, section links ("See all 14 books →"), the
+    tunes label, the warning callout.
+- **Terminal** `#1B1D27` / bar `#14161E`: terminal figures (the homepage
+  `russ --now` window and Expressive Code terminal frames) are dark windows in
+  both themes, with Catppuccin Macchiato traffic lights and text colours.
+- **Radius:** 16px tiles, 22px lead/hero images and panels (16–18px below
+  1024px), 14px callouts and terminals, 12px code blocks, full pills, round
+  portraits.
+- **Shadow:** two soft drops, both for physical objects — the terminal
+  figure, and book covers (homepage shelf, `/books/`, About). Nothing else
+  casts.
 
 ## Typography
 
-Two faces, self-hosted through Astro's Fonts API:
+Two faces, self-hosted through Astro's Fonts API, both Vercel's **Geist**
+(OFL, from the `geist` npm package), instanced and subset to Latin with
+fonttools (~24 KB each):
 
-- **Schibsted Grotesk** — display and all UI. Titles bold with negative
-  tracking that scales with size (−0.011em at 42px, −0.014em at 22–27px);
-  headings tight at lh ≈ 1.2–1.27; meta small (13px) and never tracked.
-  Commissioned for a newsroom, so the editorial DNA is native, not borrowed.
-- **Literata** — article body only, **18px/30px** (17px mobile), ~2em
-  paragraph gaps, no indents. Literata's large x-height means 18px here is
-  optically what Source Serif is at 20px — set it nominally larger and the
-  page reads large-print (calibrated against Medium side-by-side, 1 Aug
-  2026); ~65–70 characters per line in the 680px column is the target. Serif never appears in UI; sans never appears in body
-  copy. Pull quotes are large italic Literata in mist, indented, no bar.
-- **IBM Plex Mono** appears only inside terminal figures and inline code —
-  never as metadata costume.
+- **Geist** (variable 400–800, plus italic 400–700) — everything: UI,
+  headings and article body. There is no serif. Headings are heavy and tight:
+  800 weight at display sizes with tracking from −0.035em to −0.04em, 700 for
+  section and tile titles at −0.02em to −0.03em. Meta is 13px mist, never
+  tracked.
+- **Body** is 19px/1.75 in the 700px column (17px/1.7 on mobile) — roughly
+  70 characters a line.
+- **Geist Mono** (400–700) — code, terminals, and the project names and tags
+  on the homepage. Never as decoration elsewhere.
 - The masthead wordmark is **not a live face**: "russ" (Poppins ExtraBold)
   and ".cloud" (Poppins Light) are baked to SVG outline paths by
-  `scripts/generate-logo.js`, so Poppins is never loaded and the two-face
-  rule holds for all live text.
+  `scripts/generate-logo.js`, so Poppins is never loaded.
+- The OpenGraph cards render with the same Geist file, so there is no
+  second family anywhere; the Reading Room faces have been removed.
 
 ## Layout
 
-One centred **680px column** for everything — feed, tunes, and article share
-the same measure (728px incl. 24px gutters), so browsing and reading feel
-like the same room. No sidebars, no rails. Masthead is one 60px row: the
-brand lockup left — one self-contained SVG (`Logo.astro`): the iMac mark +
-`russ.cloud` in baked Poppins outlines (heavy ink "russ", light mist
-".cloud") with the dot and a blinking block cursor on the baseline in the
-mark's own colours — its screen blue `#35495E` on paper, its base grey
-`#BDC3C7` in the Night edition (1.1s square wave, steady under reduced
-motion); seven links
-(Tunes · Books · Reading List · Tags · Archive · About · Source — the last
-off-site to the repo) resting as glyphs alone — a 15px
-hairline mark at 62% opacity, its label collapsed to nothing until hover or
-keyboard focus unfurls it to the right over 150ms and the glyph comes up to
-full ink with it (labels stay visible on touch, where there is no hover to
-give them) — then a 16px vertical hairline
-and the icon-only search trigger and theme toggle right; burger menu below
-768px with the search icon staying beside it. Search is not a widget in the bar:
-the icon (a plain link to `/search/`, JS-upgraded) opens the **search
-sheet** — a native dialog rendered as a full-width paper band under the top
-edge, closed by a hairline, the page behind veiled in 78% paper. Inside the
-728px measure sit a 13px mist label, a real autofocused Pagefind input
-(20px radius, the `paper-well` fill), and an internally scrolling results
-drawer. `⌘K`/`Ctrl+K` or `/` opens it; `Esc`, the X, or the veil closes
-it; Pagefind's assets lazy-load on first open. No card, no shadow — the
-sheet reads as the masthead unfolding. Then silence until the colophon
-footer.
+A **1320px frame** with 16 / 24 / 40px gutters (base / sm / lg) holds every
+page: masthead, homepage, listings, article and footer (`.page-frame`).
+Reading happens in a **700px text column** inside it on articles; text pages
+(about, archives, reading list, glossary, search) cap their content at a
+left-aligned **760px** measure (`.page-frame--text`). Listing pages open with
+a `.page-head` — an 800-weight title up to 60px, a mist `.page-lede`, closed
+by a hairline.
 
-## The feed
+Masthead is one 68px row: the brand lockup left — one self-contained SVG
+(`Logo.astro`): the iMac mark + `russ.cloud` in baked Poppins outlines with
+the dot and a blinking block cursor in the mark's own colours (screen blue
+`#35495E` light, base grey `#BDC3C7` dark; 1.1s square wave, steady under
+reduced motion); seven links (Tunes · Books · Reading List · Tags · Archive ·
+About · Source — the last off-site) resting as **glyphs alone** — a 15px
+hairline mark at 62% opacity whose label **slides out** to the right over
+150ms on hover or keyboard focus while the glyph comes up to full ink (labels
+stay visible on touch) — then a 16px vertical hairline and the icon-only
+search trigger and theme toggle. Burger menu below 768px with the search icon
+beside it. The search icon opens the **search sheet** — a native dialog as a
+full-width band under the top edge, the page veiled behind it, an autofocused
+Pagefind input and a scrolling results drawer; `⌘K`/`Ctrl+K` or `/` opens
+it, `Esc`, the X or the veil closes it, and Pagefind lazy-loads on first open.
 
-Rows, not cards: full-width title (2-line clamp) over a two-column lower
-band — dek (full text, never truncated; hidden on mobile) → meta `date · read time · tags`
-beside a 160×107 thumbnail, bottom edge on the meta baseline, 3px radius.
-The thumbnail alternates sides row by row — odd rows flush right, even rows
-flush left — so a long listing zig-zags instead of running one straight
-edge down the page. Mobile stacks each row as three full-width lines —
-16px title, then the meta line, then a full-width centre-cropped 2:1
-banner (3/4 of the natural 3:2 height) closing the row; the title is
-never squeezed into a side column. The whole row is one click target — an
-empty labelled link laid over it, not a wrapping anchor, so the tag chips
-in the meta line stay real links to their hubs like everywhere else.
-Hairline between rows, ~30px padding. Tab row
-(`Latest · AI · Tools · Code …`) doubles as topic navigation — real tags,
-active state = ink underline on the baseline hairline. Tunes reuses the exact
-grammar with a 21:9 lead banner for the current week and `Artists 512 ·
-Albums 952 · By year` as its tab row; **AI-generated attribution stays in the
-lead meta line — non-negotiable brand commitment.** Under the lead meta, the
-week's records appear as an eight-cover **film strip** (square, 3px radius,
-4-across on mobile) with a quiet `The records themselves live at russ.fm ·
-Last.fm · Discogs` line beneath.
+## The homepage
 
-Listings end in **pagination**, not a browse link: a quiet 14px sans row —
-numerals in mist centred in the column, current page in ink 600 with a 1px
-ink underline (the active-tab idiom), an ellipsis to the last page, `← Newer
-posts` flush left and `Older posts →` flush right. Both steps are always
-present; the one with no page in that direction renders as static mist at
-40% opacity rather than disappearing. Below 640px the Older/Newer labels
-collapse to bare arrows so the row keeps to one line.
+Six sections, top to bottom (`src/pages/index.astro`, components in
+`src/components/home/`):
 
-## The colophon footer
+1. **Lead** (`HomeLead`) — the newest post's cover at full frame width. From
+   1024px it is a 580px letterbox with the headline on a page-coloured panel
+   cut into the bottom-left corner (top-right radius 26px), so the type reads
+   as part of the page rather than laid over the art; below that the panel
+   stacks under a 16:10 / 16:9 image. An amber **Latest** badge leads the meta
+   line. This image is the page's LCP element: eager, `fetchpriority="high"`,
+   and preloaded from `index.astro` with the same attributes
+   (`leadImageAttrs()` in `src/utils/home-lead.ts`).
+2. **Intro band** (`HomeIntro`) — full-bleed tint: cartoon avatar, "Hi, I'm
+   Russ. I build small tools and write up what I learn." at 62px/800, a lede
+   with live counts (books, posts, the year writing began), and beside it the
+   dark **`russ --now`** terminal. Its lines come from content at build time —
+   `writing` (latest post), `spinning` (this week's first record), `topics`
+   (`FEATURED_TAGS`) — plus `building` from `NOW_BUILDING` in `consts.ts`.
+3. **Recent writing** — six `PostTile`s (16:10 image, date · read time,
+   title, three-line description) in a 1/2/3-column grid, headed by the topic
+   pills (`TagTabs variant="pills"`: an ink-filled **All** and outlined
+   featured tags). A "Browse all N posts" pill button to `/archives/` closes
+   it; the homepage has no pagination row (`/page/2/` onward still exists and
+   picks up after `HOME_PAGE_SIZE` = 7).
+4. **Tunes** (`HomeTunes`) — a tint panel: the week's AI cover art beside its
+   title, description, seven record covers and a "+N more" tile.
+   **"AI-generated write-ups · my records" stays visible — non-negotiable.**
+5. **Books** (`HomeBooks`) — the four newest covers beside "I also write
+   books".
+6. **Things I've built** (`HomeProjects`) — outlined tiles from `PROJECTS` in
+   `consts.ts`: a Geist Mono name, a small mono tag, one line of description.
+   Each links to the post that introduced the project.
 
-Every view ends the same way: a hairline, then a two-block footer in the
-680px column (stacking on mobile) — **Links** (the full `SOCIAL_LINKS` set
-as 17px monochrome icons from `Icon.astro` — mist at rest, ink on hover,
-config order, wrapping to two tidy rows; never brand colours; on mobile
-the icon rows centre in the column while the Links head stays left) beside
-**Listened to this week** (four 64px covers — a full-width four-across
-grid on mobile — entry title, `171 weeks of listening →`) — closed by one single line: `About · Archives ·
-Reading list · Glossary · Tags · Source · RSS · © 2026 Russ McKendrick`.
-No bio in the footer — the bio belongs to the About page only; no location,
-no typeface credit, nothing else. This footer is the
-archive's identity block; there is no photo of Russ anywhere in the design
-(the byline avatars are the illustrated tag set).
+Shared section heads (`.home-section-head`, `.home-section-title`,
+`.home-section-link`) live in `global.css`. The footer drops its "Listened to
+this week" block on the homepage (`BaseLayout footerTunes={false}`), which has
+its own.
+
+## Listings and pagination
+
+Every post list — `/page/N/`, tag hubs, years, the author page, tunes weeks,
+artists and albums — is a **`.feed` grid of `PostCard` tiles**: one column on
+phones, two from 640px, three from 1024px. A tile is one link: 16:10 cover
+(16px radius), `date · read time` (plus `AI-generated` on tunes), a 700-weight
+title and a three-line description in mist; `compact` drops the description
+(the article's two-up "Keep reading"). The first two tiles on a page are
+`priority` (eager, high fetch priority).
+
+**Pagination** (`Pagination.astro`) closes every paginated list, the homepage
+included: one centred row of 44px pills — `← Newer`, the page numbers
+(outlined, current page ink-filled, ellipses past seven pages), `Older →`. A
+step with nowhere to go stays as a disabled mist pill so the row never jumps;
+below 640px the labels collapse to arrows.
 
 ## The article
 
-Balanced sans title (42px), then directly a single-line byline (no
-standfirst — the description belongs to feed rows and meta tags only): a
-36px circular **tag-based avatar** (the illustrated set in
-`public/images/avatars/`, chosen per `TAG_AVATAR_MAP` in `src/consts.ts` —
-cartoons, so the no-photos rule holds — there is no photo anywhere in the
-design) beside `Russ McKendrick · 9 min read · 19 Jul 2026` (name in
-ink 500, the rest mist, one line). Then a hairline **storybar**
-(`StoryBar.astro`): tags left, `Use with AI · Suggest edits · RSS · Follow on Google`
-right, rendered below 1200px only — it carries what the rail would show if
-there were a margin to put it in, so the two never appear together. Hero figure at
-column width with a centred mist caption. A **reading-progress rule** — 2px
-of accent, fixed to the top viewport edge, no gradient, no glow — runs on
-article pages only. An **article rail** (`ArticleRail.astro`) sits open and sticky in the right
-margin beside the centred column on viewports ≥1200px — hairline-left, three
-headed sections: **Contents** (13px mist entries, current section in ink 600
-via IntersectionObserver, only when `showToc`), **Tags** (small tinted pills,
-`.tag-editorial--sm`), and **Actions** (Use with AI · Suggest edits · RSS ·
-Follow on Google — the last a plain deeplink to Google's preferred-source
-tool, monochrome G). Below 1200px the rail disappears and the storybar takes over its tags
-and actions under the byline; Contents stays rail-only, so headings and the
-progress rule carry wayfinding and there is still no inline table of
-contents. Feed-row metas show up to three small tag pills. Body in Literata with ink-coloured
-underlined links (accent on hover only). Terminal code figures carry over
-from Print Edition unchanged — macOS window (10px radius), traffic lights in
-the Catppuccin Macchiato reds/ambers/greens documented in the token
-frontmatter, in both editions; they are figures, not chrome, and the one
-permitted shadow (`terminal-shadow`). The mockup's floating view switcher is
-tooling, not part of this system — its colours are exempt from the palette. Articles close with a **three-dot accent tombstone**, then
-tag pills, then two "More from the archive" rows.
+`src/layouts/BlogPost.astro`:
+
+- **Header** in an 860px measure, centred from 640px: outlined tag pills,
+  the title at up to 58px/800, the post's `description` as a **standfirst** in
+  mist, then a one-line byline — 40px tag-based cartoon avatar (the
+  illustrated set in `public/images/avatars/`, chosen per `TAG_AVATAR_MAP`;
+  there is no photo anywhere) beside `Russ McKendrick · date · read time`.
+- **Hero** at frame width — 16:10 on phones, 16:9 from 640px, a 560px
+  letterbox from 1024px, 22px radius. It is still the lightbox's first item
+  and the LCP element (preloaded with the same `HERO_SIZES`).
+- **Three columns from 1200px** (`.post-columns`: 220px | 700px | 220px): the
+  left `ArticleRail part="contents"` is a sticky **On this page** list (13–14px
+  mist, the current section in ink 600 with an amber dot, only when
+  `showToc`); the right `ArticleRail part="tools"` is a sticky **Use this
+  post** stack (Use with AI · Suggest edits · RSS · Follow on Google). Below
+  1200px both rails drop out and the `StoryBar` opens the text column with the
+  same tools; headings and the 2px amber **reading-progress bar** carry
+  wayfinding.
+- **Prose**: Geist 19px/1.75, 30px/700 section heads, ink links with a 2px
+  amber underline (amber text on hover). Callouts are rounded tint panels —
+  no side bar — with a bold sans heading in the variant colour. Code blocks
+  are 12px-radius Expressive Code frames in Geist Mono; terminal frames keep
+  the macOS window treatment.
+- **Close**: three amber tombstone dots, then (human posts) an **author
+  card** on tint — avatar, name, one-line bio, an ink "About me" button —
+  then share buttons, related glossary terms, "More from the archive",
+  comments and previous/next.
+
+## Hub pages
+
+- **Books** — newest first. A tint "Latest book" panel (eager cover, label ·
+  year · publisher, 800 title, description, ink "About the book" and outlined
+  "Buy" buttons), then "The whole shelf": cover cards with `year · topic` and
+  a 700 title, 2 / 3 / 5 columns.
+- **Tags** — outlined cards ordered by post count (1 / 2 / 3 / 4 columns):
+  the tag's cartoon avatar, name, count, two-line description, and a
+  hairline-separated link to its newest post.
+- **Archives** — year cards (1 / 2 / 3 / 4 columns): a 16:9 three-image
+  mosaic from that year's covers, the year at 32px/800, and post and tunes
+  counts.
+- **Reading list** — pill filters (ink-filled when active), then month
+  sections of 1 / 2 / 3-column cards: the article's preview image (or a tint
+  tile with favicon and domain), domain · date, title, description, tag chips.
+  The first row's previews load eagerly.
+- **About** — a shallow full-width tint band like the homepage intro (the
+  clickable random avatar beside "Hi there, my name is Russ.", a lede, and
+  compact 2×2 stat tiles counted at build time), then 700px prose beside a topics/contact aside, the
+  books shelf, and "Things I've built".
+
+## The colophon footer
+
+Every page ends with a tint footer in the 1320px frame, four columns from
+1024px (two below 1024px, one on phones): the **logo** with a one-line description and
+a "Subscribe via RSS" pill; **Explore** (the site's sections); **Elsewhere**
+(every `SOCIAL_LINKS` entry as icon + name, two columns); and **Listened to
+this week** (four covers, the entry title, `N weeks of listening →`; dropped
+on the homepage, which has its own panel). A hairline bar closes it:
+`© 2026 Russ McKendrick` left, `Source on GitHub · RSS · Back to top ↑`
+right.
+
+## OpenGraph cards
+
+`src/components/OpenGraph/` renders every card in the same system: white
+page, Geist 800 headlines, mist rubric, amber marks.
+
+- **Cover card** (posts and hubs): the homepage lead as a card — the cover
+  inset 32px with a 28px radius, the lockup on a white pill in its top-left,
+  and the headline plus `date · read time · tag` on a white panel cut into the
+  cover's bottom-left corner. No scrim; the words sit on the page.
+- **Plate** (coverless fallback): white page, lockup, headline, standfirst,
+  and a tint footer band with an amber dot and the rubric.
+- **Tunes record** (albums and artists): sleeve and disc on white, an amber
+  pill for `Album`/`Artist`, the name at 800.
+
+Bump the `og-design:` salt in the `*-og.png.ts` routes after any card
+change, or CI's cache keeps serving the old renders.
 
 ## Motion
 
-One authored moment: feed rows stagger in on load (8px rise, 450ms,
-`cubic-bezier(.22,.61,.36,1)`, 60ms steps), gated behind
-`prefers-reduced-motion: no-preference`. Hovers are colour shifts only — no
-zooms, no lifts, no springs.
+- Homepage tiles and article header lines stagger in on load (8px rise,
+  450ms, `cubic-bezier(.22,.61,.36,1)`, 60ms steps), gated behind
+  `prefers-reduced-motion: no-preference`.
+- The masthead labels slide out on hover/focus (150ms).
+- The logo cursor and the `russ --now` cursor blink (1.1s square wave),
+  steady under reduced motion.
+- Hovers are colour, border or tint shifts — no zooms, no lifts, no springs.
 
 ## Do's and don'ts
 
 - Do keep everything that is not content in mist — a second grey is a bug.
-- Do spend the accent nowhere; its scarcity is the identity.
-- Do keep the feed text-led; the covers earn their scale inside articles and
-  the tunes lead only.
-- Don't reintroduce cards, shadows (terminal figures excepted), gradients,
-  glass, coloured side-bars, or eyebrow labels.
-- Don't let any UI face drift into the body serif or vice versa.
-- Don't hide the AI-generated byline on tunes, and don't add engagement
-  chrome (claps, share rows, subscriber counts) — the colophon footer carries
-  the archive instead.
-- Don't reintroduce sidebars or rails; the column is the whole page.
+- Do use `--accent-fill` only for marks and `--accent` for text; never set
+  amber `#F2B544` text on white.
+- Do give the cover art room: full frame on the lead and hero, 16:10 tiles.
+- Do keep the LCP image eager, `fetchpriority="high"`, preloaded with the
+  exact `src`/`srcset`/`sizes` it renders with, and everything below it lazy.
+- Don't add a third font family or reintroduce a serif.
+- Don't add shadows (the terminal figure excepted), gradients or glass.
+- Don't hide the AI-generated attribution on tunes, and don't add engagement
+  chrome (claps, subscriber counts).
+- Don't follow the system colour scheme by default — light is the default.

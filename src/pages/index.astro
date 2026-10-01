@@ -1,10 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeLead from '../components/home/HomeLead.astro';
+import HomeIntro from '../components/home/HomeIntro.astro';
 import PostCard from '../components/blog/PostCard.astro';
-import TagTabs from '../components/home/TagTabs.astro';
 import Pagination from '../components/layout/Pagination.astro';
+import TagTabs from '../components/home/TagTabs.astro';
+import HomeTunes from '../components/home/HomeTunes.astro';
+import HomeBooks from '../components/home/HomeBooks.astro';
+import HomeProjects from '../components/home/HomeProjects.astro';
 import { HOME_TITLE, SITE_DESCRIPTION, HOME_PAGE_SIZE, PAGINATION_PAGE_SIZE } from '../consts';
+import { getPostUrl } from '../utils/url';
+import { getTuneCovers } from '../utils/tune-covers';
+import { leadImageAttrs } from '../utils/home-lead';
 import { Schema } from 'astro-seo-schema';
 import { createWebSiteSchema } from '../utils/schema';
 
@@ -12,31 +20,91 @@ const allPosts = (await getCollection('blog'))
 	.filter(post => import.meta.env.DEV || !post.data.draft)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const posts = allPosts.slice(0, HOME_PAGE_SIZE);
-const totalPages = 1 + Math.ceil((allPosts.length - HOME_PAGE_SIZE) / PAGINATION_PAGE_SIZE);
+// The lead plus a six-tile grid; /page/2/ picks up after HOME_PAGE_SIZE.
+const [lead, ...rest] = allPosts.slice(0, HOME_PAGE_SIZE);
+const leadImage = lead?.data.heroImage || lead?.data.cover?.image;
+const leadPreload = leadImage ? leadImageAttrs(leadImage) : undefined;
+const totalPages = 1 + Math.ceil(Math.max(allPosts.length - HOME_PAGE_SIZE, 0) / PAGINATION_PAGE_SIZE);
+
+const tunes = (await getCollection('tunes', ({ data }) => !data.draft))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const latestTune = tunes[0];
+
+// Newest first for the homepage shelf (the /books/ page keeps `order`)
+const books = (await getCollection('books', ({ data }) => !data.draft))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const sinceYear = Math.min(...allPosts.map(post => post.data.pubDate.getFullYear()));
+const spinning = latestTune ? getTuneCovers(latestTune, 1)[0]?.alt : undefined;
 
 const webSiteSchema = createWebSiteSchema(Astro.site?.toString() || 'https://www.russ.cloud/');
 ---
 
-<BaseLayout title={HOME_TITLE} description={SITE_DESCRIPTION} image="/home-og.png">
-	<Schema slot="head" item={webSiteSchema} />
-	<section class="max-w-[728px] mx-auto px-6">
-		<h1 class="sr-only">{HOME_TITLE}</h1>
-
-		<TagTabs active="latest" />
-
-		<div class="feed" data-entrance-group>
-			{posts.map((post, index) => (
-				<div data-entrance>
-					<PostCard post={post} priority={index < 2} headingLevel="2" />
-				</div>
-			))}
-		</div>
-
-		<Pagination
-			currentPage={1}
-			totalPages={totalPages}
-			getHref={(pageNum) => (pageNum === 1 ? '/' : `/page/${pageNum}/`)}
+<BaseLayout title={HOME_TITLE} description={SITE_DESCRIPTION} image="/home-og.png" footerTunes={false}>
+	{leadPreload && (
+		<link
+			slot="head"
+			rel="preload"
+			as="image"
+			href={leadPreload.src}
+			imagesrcset={leadPreload.srcset}
+			imagesizes={leadPreload.sizes}
+			fetchpriority="high"
 		/>
-	</section>
+	)}
+	<Schema slot="head" item={webSiteSchema} />
+	<h1 class="sr-only">{HOME_TITLE}</h1>
+
+	{lead && (
+		<div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10">
+			<HomeLead post={lead} />
+		</div>
+	)}
+
+	<div class="mt-12 lg:mt-24">
+		<HomeIntro
+			postCount={allPosts.length}
+			bookCount={books.length}
+			sinceYear={sinceYear}
+			latestPost={lead ? { title: lead.data.title, href: getPostUrl(lead.data.pubDate, lead.data.title) } : { title: 'Archive', href: '/archives/' }}
+			spinning={spinning}
+		/>
+	</div>
+
+	<div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10">
+		<section aria-labelledby="home-recent-title" class="pt-14 lg:pt-24">
+			<div class="home-section-head">
+				<h2 id="home-recent-title" class="home-section-title">Recent writing</h2>
+				<TagTabs active="latest" variant="pills" />
+			</div>
+			<div class="feed !pt-0" data-entrance-group>
+				{rest.map((post) => (
+					<div data-entrance>
+						<PostCard post={post} headingLevel="3" />
+					</div>
+				))}
+			</div>
+			<Pagination
+				currentPage={1}
+				totalPages={totalPages}
+				getHref={(pageNum) => (pageNum === 1 ? '/' : `/page/${pageNum}/`)}
+			/>
+		</section>
+
+		{latestTune && (
+			<div class="mt-14 lg:mt-[72px]">
+				<HomeTunes tune={latestTune} weeksCount={tunes.length} />
+			</div>
+		)}
+
+		{books.length > 0 && (
+			<div class="pt-14 lg:pt-28">
+				<HomeBooks books={books.slice(0, 4)} total={books.length} />
+			</div>
+		)}
+
+		<div class="pt-14 lg:pt-28 pb-6 lg:pb-12">
+			<HomeProjects />
+		</div>
+	</div>
 </BaseLayout>

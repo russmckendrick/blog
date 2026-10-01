@@ -434,7 +434,7 @@ Automatically generates ToC from h2 and h3 headings:
 #### Details         # Not included
 ```
 
-With `showToc: true`, the headings render as the **Contents rail** - an always-open, sticky list in the right margin beside the article column on wide viewports (≥1200px), with the section currently being read highlighted. On narrower screens no table of contents renders; there is no inline ToC. The rail's other two sections do follow you down: below 1200px the **storybar** (`StoryBar.astro`) renders under the byline with the post's tags on the left and the **Use with AI** menu, `Suggest edits`, `RSS` and `Follow on Google` (Google's preferred-source deeplink) on the right as pill buttons (stacked full-width below 640px). The Use with AI menu (`UseWithAI.astro`) copies or opens the post's markdown twin, or hands it to ChatGPT, Claude, Perplexity or Google AI Mode with a prefilled prompt — note the twins are generated postbuild, so those actions only work against a built site, not `pnpm run dev`.
+With `showToc: true`, the headings render as the **contents rail** ("On this page") - an always-open, sticky list in the left column beside the article text on wide viewports (≥1200px), with the section currently being read in ink and marked by an amber dot. On narrower screens no table of contents renders; there is no inline ToC. The right-hand **tools rail** ("Use this post") does follow you down: below 1200px the **storybar** (`StoryBar.astro`) renders at the top of the text column, under the standfirst and byline, with the **Use with AI** menu, `Suggest edits`, `RSS` and `Follow on Google` (Google's preferred-source deeplink) as pill buttons (stacked full-width below 640px). Tags appear only as pills above the title. The Use with AI menu (`UseWithAI.astro`) copies or opens the post's markdown twin, or hands it to ChatGPT, Claude, Perplexity or Google AI Mode with a prefilled prompt — note the twins are generated postbuild, so those actions only work against a built site, not `pnpm run dev`.
 
 ## Avatars
 
@@ -666,10 +666,10 @@ alt: "Mastering Whatever, Fifth Edition"
 publisher: "Packt Publishing"
 buyLink: "https://www.packtpub.com/..."  # omit for out-of-print titles
 year: 2026
-topic: "Docker"                          # free-form, surfaces in the breadcrumb
+topic: "Docker"                          # free-form: the breadcrumb, the /books/ lede and the shelf card meta
 tags: ["docker", "devops", "containers", "book"]   # lowercase; matches blog tags via normalizeTagSlug
-pubDate: 2026-05-01
-order: 15                                # explicit display order on /books/
+pubDate: 2026-05-01                      # sets the order: the newest book is featured on /books/
+order: 15                                # required by the schema, but unused (books sort by pubDate)
 ---
 ```
 

@@ -1,27 +1,25 @@
 import React from "react";
 import { OG_HEIGHT, OG_WIDTH } from "./dimensions";
 import {
+  ACCENT_FILL,
+  FONT,
   headlineSize,
-  HAIRLINE,
   imageDataUri,
   INK,
   LOCKUP_ON_PAPER,
-  LOCKUP_ON_SCRIM,
   LOCKUP_RATIO,
   MetaLine,
   MIST,
-  NIGHT,
-  NIGHT_INK,
-  NIGHT_MIST,
   PAPER,
   resolveCoverPath,
   stripEmoji,
+  TINT,
 } from "./cardChrome";
 
 async function loadCover(coverImagePath: string): Promise<string | undefined> {
   try {
     // Covers are 2560x1440, so the 2x frame is still within their native
-    // resolution; the renderer centre-crops them to 1.91:1 itself.
+    // resolution; the renderer crops them to the inset frame itself.
     return await imageDataUri(resolveCoverPath(coverImagePath));
   } catch (error) {
     console.error("OG Image - Failed to load:", coverImagePath, error);
@@ -29,9 +27,16 @@ async function loadCover(coverImagePath: string): Promise<string | undefined> {
   }
 }
 
-// Cover art fills the frame; the words are reversed out of a scrim so nothing
-// depends on the artwork behaving.
-function Scrim({
+// Inset margin around the cover, and the white panel's corner cut
+const INSET = 32;
+const COVER_RADIUS = 28;
+const PANEL_RADIUS = 34;
+
+// The homepage lead, as a card: the cover inset on the white page with
+// rounded corners, and the headline on a page-coloured panel cut into its
+// bottom-left corner, so the words sit on the page rather than over the art.
+// The lockup rides on a white pill in the cover's top-left corner.
+function CoverCard({
   title,
   cover,
   meta,
@@ -40,7 +45,9 @@ function Scrim({
   cover: string;
   meta: string[];
 }) {
-  const size = headlineSize(title.length, [66, 58, 50, 44]);
+  const size = headlineSize(title.length, [60, 54, 48, 42]);
+  const coverWidth = OG_WIDTH - INSET * 2;
+  const coverHeight = OG_HEIGHT - INSET * 2;
   return (
     <div
       style={{
@@ -48,95 +55,81 @@ function Scrim({
         width: "100%",
         height: "100%",
         position: "relative",
-        fontFamily: "Schibsted Grotesk",
+        backgroundColor: PAPER,
+        fontFamily: FONT,
       }}
     >
       <img
         src={cover}
-        width={OG_WIDTH}
-        height={OG_HEIGHT}
+        width={coverWidth}
+        height={coverHeight}
         style={{
           position: "absolute",
-          top: 0,
-          left: 0,
-          width: `${OG_WIDTH}px`,
-          height: `${OG_HEIGHT}px`,
+          top: INSET,
+          left: INSET,
+          width: `${coverWidth}px`,
+          height: `${coverHeight}px`,
           objectFit: "cover",
-        }}
-      />
-      {/* Vertical scrim: anchors the lockup at the top and the words at the foot */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: `${OG_WIDTH}px`,
-          height: `${OG_HEIGHT}px`,
-          display: "flex",
-          backgroundImage: `linear-gradient(180deg, rgba(${NIGHT}, 0.72) 0%, rgba(${NIGHT}, 0.28) 34%, rgba(${NIGHT}, 0.55) 68%, rgba(${NIGHT}, 0.93) 100%)`,
-        }}
-      />
-      {/* Horizontal scrim: protects the text column when the art is busy on the left */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: `${OG_WIDTH}px`,
-          height: `${OG_HEIGHT}px`,
-          display: "flex",
-          backgroundImage: `linear-gradient(90deg, rgba(${NIGHT}, 0.42) 0%, rgba(${NIGHT}, 0) 58%)`,
+          borderRadius: `${COVER_RADIUS}px`,
         }}
       />
       <div
         style={{
           position: "absolute",
-          top: 0,
-          left: 0,
-          width: `${OG_WIDTH}px`,
-          height: `${OG_HEIGHT}px`,
+          top: INSET + 22,
+          left: INSET + 22,
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: "46px 60px 48px",
+          alignItems: "center",
+          padding: "11px 18px",
+          borderRadius: "999px",
+          backgroundColor: PAPER,
         }}
       >
         <img
-          src={LOCKUP_ON_SCRIM()}
-          width={Math.round(32 * LOCKUP_RATIO)}
-          height={32}
+          src={LOCKUP_ON_PAPER()}
+          width={Math.round(26 * LOCKUP_RATIO)}
+          height={26}
         />
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: INSET,
+          bottom: INSET,
+          display: "flex",
+          flexDirection: "column",
+          // Short titles ("AI") still get a substantial panel
+          minWidth: "480px",
+          maxWidth: "800px",
+          padding: "30px 46px 2px 0",
+          backgroundColor: PAPER,
+          borderTopRightRadius: `${PANEL_RADIUS}px`,
+        }}
+      >
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            maxWidth: "900px",
+            fontSize: `${size}px`,
+            fontWeight: 800,
+            color: INK,
+            lineHeight: 1.04,
+            letterSpacing: "-0.035em",
           }}
         >
-          <div
-            style={{
-              fontSize: `${size}px`,
-              fontWeight: 700,
-              color: NIGHT_INK,
-              lineHeight: 1.1,
-              letterSpacing: "-0.018em",
-            }}
-          >
-            {title}
-          </div>
-          {meta.length > 0 && (
-            <div style={{ display: "flex", marginTop: "22px" }}>
-              <MetaLine items={meta} color={NIGHT_MIST} />
-            </div>
-          )}
+          {title}
         </div>
+        {meta.length > 0 && (
+          <div style={{ display: "flex", marginTop: "18px" }}>
+            <MetaLine items={meta} color={MIST} />
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-// The coverless card — tag, book, glossary and tunes hubs. Paper ground, so the
-// standfirst earns its place here in a way it never did over the art.
+// The coverless card. White page, the lockup top-left, the headline and
+// standfirst, and a tint footer band carrying the meta line — the site's
+// intro-band grammar.
 function Plate({
   title,
   description,
@@ -146,7 +139,7 @@ function Plate({
   description?: string;
   meta: string[];
 }) {
-  const size = headlineSize(title.length, [64, 56, 48, 42]);
+  const size = headlineSize(title.length, [68, 60, 52, 44]);
   return (
     <div
       style={{
@@ -155,69 +148,88 @@ function Plate({
         width: "100%",
         height: "100%",
         backgroundColor: PAPER,
-        fontFamily: "Schibsted Grotesk",
-        padding: "56px 72px 52px",
+        fontFamily: FONT,
       }}
     >
-      <img
-        src={LOCKUP_ON_PAPER()}
-        width={Math.round(34 * LOCKUP_RATIO)}
-        height={34}
-      />
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           flex: 1,
-          justifyContent: "center",
+          padding: "56px 72px 40px",
+        }}
+      >
+        <img
+          src={LOCKUP_ON_PAPER()}
+          width={Math.round(34 * LOCKUP_RATIO)}
+          height={34}
+        />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            flex: 1,
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              fontSize: `${size}px`,
+              fontWeight: 800,
+              color: INK,
+              lineHeight: 1.04,
+              letterSpacing: "-0.04em",
+            }}
+          >
+            {title}
+          </div>
+          {description && (
+            <div
+              style={{
+                fontSize: "25px",
+                fontWeight: 400,
+                color: MIST,
+                lineHeight: 1.42,
+                marginTop: "22px",
+                maxWidth: "920px",
+              }}
+            >
+              {description}
+            </div>
+          )}
+        </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "16px",
+          height: "88px",
+          padding: "0 72px",
+          backgroundColor: TINT,
         }}
       >
         <div
           style={{
-            fontSize: `${size}px`,
-            fontWeight: 700,
-            color: INK,
-            lineHeight: 1.13,
-            letterSpacing: "-0.016em",
+            display: "flex",
+            width: "12px",
+            height: "12px",
+            borderRadius: "12px",
+            backgroundColor: ACCENT_FILL,
           }}
-        >
-          {title}
-        </div>
-        {description && (
-          <div
-            style={{
-              fontSize: "25px",
-              fontWeight: 400,
-              color: MIST,
-              lineHeight: 1.42,
-              marginTop: "24px",
-              maxWidth: "920px",
-            }}
-          >
-            {description}
-          </div>
+        />
+        {meta.length > 0 ? (
+          <MetaLine items={meta} color={MIST} />
+        ) : (
+          <MetaLine items={["russ.cloud"]} color={MIST} />
         )}
       </div>
-      {meta.length > 0 && (
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div
-            style={{
-              display: "flex",
-              width: "100%",
-              height: "1px",
-              backgroundColor: HAIRLINE,
-              marginBottom: "18px",
-            }}
-          />
-          <MetaLine items={meta} color={MIST} />
-        </div>
-      )}
     </div>
   );
 }
 
 export interface OGOptions {
-  /** Filesystem path to the post cover. Present cover renders the scrim card. */
+  /** Filesystem path to the post cover. Present cover renders the cover card. */
   coverImagePath?: string;
   /** Rubric under the headline, e.g. date, reading time, lead tag. */
   meta?: string[];
@@ -236,7 +248,7 @@ export default async function OG(
     : undefined;
 
   if (cover) {
-    return <Scrim title={title} cover={cover} meta={meta} />;
+    return <CoverCard title={title} cover={cover} meta={meta} />;
   }
 
   // The description is only baked into the coverless card. On a post card it

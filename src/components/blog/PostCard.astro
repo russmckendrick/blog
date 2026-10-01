@@ -3,72 +3,67 @@ import type { CollectionEntry } from 'astro:content'
 import FormattedDate from './FormattedDate.astro'
 import { getPostUrl } from '../../utils/url.ts'
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time'
-import { getTagName, getTagColorClasses, getTagUrl } from '../../utils/tags'
-import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudflare-images'
+import { getCFImageUrl, generateCFSrcSet } from '../../utils/cloudflare-images'
 import { AI_AUTHOR, CF_IMAGE_PRESETS } from '../../consts'
 
 interface Props {
 	post: CollectionEntry<'blog'> | CollectionEntry<'tunes'>;
-	priority?: boolean; // Eager + fetchpriority=high. Set on every row inside the initial mobile viewport (first two), not just row one — a lazy above-the-fold image becomes the LCP element on mobile.
-	/** Legacy variants all collapse onto the single Reading Room row. */
+	priority?: boolean; // Eager + fetchpriority=high. Set on tiles inside the initial mobile viewport (first two), not just tile one — a lazy above-the-fold image becomes the LCP element on mobile.
+	/** Legacy variants all collapse onto the single Workbench tile. */
 	variant?: 'vertical' | 'horizontal' | 'featured' | 'grid' | 'row';
 	headingLevel?: '2' | '3'; // Heading level for accessibility
+	/** Hide the description (dense contexts such as related posts). */
+	compact?: boolean;
 }
 
-const { post, priority = false, headingLevel = '2' } = Astro.props
+// The Workbench listing tile: 16:10 cover, date · read time, title, and a
+// three-line description. Listings lay tiles out through `.feed` (a 1/2/3
+// column grid in global.css); the whole tile is one link.
+const { post, priority = false, headingLevel = '2', compact = false } = Astro.props
 const HeadingTag = `h${headingLevel}` as 'h2' | 'h3'
 const href = getPostUrl(post.data.pubDate, post.data.title)
 const cover = 'cover' in post.data ? post.data.cover : undefined
 const heroImage = post.data.heroImage || cover?.image
 const alt = cover?.alt || post.data.title
 const description = ('summary' in post.data ? post.data.summary : undefined) || post.data.description
-const minutes = calculateReadingTime(post.body ?? '')
-const readingTime = formatReadingTime(minutes)
+const readingTime = formatReadingTime(calculateReadingTime(post.body ?? ''))
 const isAIAuthored = (post.data.author || AI_AUTHOR.name) === AI_AUTHOR.name && post.collection === 'tunes'
-const tags = post.data.tags ?? []
+const preset = priority ? CF_IMAGE_PRESETS.thumbnailPriority : CF_IMAGE_PRESETS.thumbnail
+// Full-frame .feed grids run 1/2/3 columns; compact tiles sit two-up inside
+// the 700px article column ("Keep reading").
+const sizes = compact
+	? '(min-width: 640px) 334px, calc(100vw - 32px)'
+	: '(min-width: 1320px) 392px, (min-width: 1024px) calc((100vw - 144px) / 3), (min-width: 640px) calc((100vw - 80px) / 2), calc(100vw - 32px)'
 
-// Shared-element view transition names: the listing image/title morph
-// into the article hero/title on navigation.
+// Shared-element view transition names: the tile image/title morph into the
+// article hero/title on navigation (mirrors BlogPost's derivation).
 const transitionKey = href.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '')
-const imageTransition = `post-img-${transitionKey}`
-const titleTransition = `post-title-${transitionKey}`
-
-// Generate LQIP placeholder URL for blur-up effect
-// Skip LQIP for priority images to eliminate critical request chain (LCP optimization)
-const lqipUrl = heroImage && !priority ? getLQIPUrl(heroImage) : null
-const preset = CF_IMAGE_PRESETS.thumbnailHorizontal
 ---
 
-<article class="post-row group grid grid-cols-[minmax(0,1fr)_auto] gap-y-2 border-b py-6 sm:py-7" style="border-color: var(--color-outline-variant);">
-	<header class="col-span-2 row-start-1 min-w-0">
-		<HeadingTag
-			class="font-display feed-title text-on-surface line-clamp-2 transition-colors group-hover:text-[var(--color-secondary)]"
-			style="font-weight: 700; letter-spacing: -0.014em;"
-			transition:name={titleTransition}
-		>
-			{post.data.title}
-		</HeadingTag>
-	</header>
-	<div class="post-row-body col-span-2 row-start-2 sm:col-span-1 sm:col-start-1 min-w-0 flex flex-col gap-2">
-		{description && (
-			<p class="hidden sm:block text-base text-on-surface-variant leading-normal">
-				{description}
-			</p>
+<article class="post-tile">
+	<a href={href} class="post-tile-link">
+		{heroImage && (
+			<img
+				src={getCFImageUrl(heroImage, { width: 640, quality: preset.quality, format: preset.format, fit: preset.fit })}
+				srcset={generateCFSrcSet(heroImage, preset.widths, preset.quality, preset.format)}
+				sizes={sizes}
+				alt={alt}
+				width="640"
+				height="400"
+				loading={priority ? 'eager' : 'lazy'}
+				decoding={priority ? 'sync' : 'async'}
+				fetchpriority={priority ? 'high' : 'low'}
+				class="post-tile-image"
+				transition:name={`post-img-${transitionKey}`}
+			/>
 		)}
-		<p class="rubric mt-auto flex flex-wrap items-center gap-x-1.5">
+		<p class="rubric post-tile-meta">
 			<FormattedDate date={post.data.pubDate} />
 			{readingTime && (
 				<>
 					<span aria-hidden="true">&middot;</span>
 					<span>{readingTime}</span>
 				</>
-			)}
-			{tags.length > 0 && (
-				<span class="post-row-tags flex flex-wrap items-center gap-1.5 ml-1">
-					{tags.slice(0, 3).map((tag) => (
-						<a href={getTagUrl(tag)} class={`${getTagColorClasses(tag)} tag-editorial--sm`}>{getTagName(tag)}</a>
-					))}
-				</span>
 			)}
 			{isAIAuthored && (
 				<>
@@ -77,83 +72,68 @@ const preset = CF_IMAGE_PRESETS.thumbnailHorizontal
 				</>
 			)}
 		</p>
-	</div>
-	{heroImage && (
-		<figure
-			class="post-row-figure relative overflow-hidden rounded-[3px] col-span-2 row-start-3 self-start sm:col-span-1 sm:col-start-2 sm:row-start-2 sm:self-end sm:ml-10 w-full aspect-[2/1] sm:w-40 sm:h-[107px] sm:aspect-auto bg-cover bg-center bg-no-repeat"
-			style={lqipUrl ? `background-image: url('${lqipUrl}')` : undefined}
-			transition:name={imageTransition}
-		>
-			{/* LQIP blur overlay - shows while main image loads */}
-			{lqipUrl && (
-				<div
-					class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-lg scale-105 -z-10"
-					style={`background-image: url('${lqipUrl}')`}
-					aria-hidden="true"
-				/>
-			)}
-			<img
-				src={getCFImageUrl(heroImage, {
-					width: 320,
-					quality: preset.quality,
-					format: preset.format,
-					fit: preset.fit
-				})}
-				srcset={generateCFSrcSet(heroImage, preset.widths, preset.quality, preset.format)}
-				sizes="(min-width: 640px) 160px, calc(100vw - 48px)"
-				alt={alt}
-				width="160"
-				height="107"
-				loading={priority ? 'eager' : 'lazy'}
-				decoding={priority ? 'sync' : 'async'}
-				fetchpriority={priority ? 'high' : 'low'}
-				class="w-full h-full object-cover"
-			/>
-		</figure>
-	)}
-
-	{/* The row's single link, laid over the whole row as a direct child so
-	    it clears the heading's view-transition stacking context. Tag chips
-	    sit above it on their own z-index and stay real links to their hubs —
-	    which a wrapping <a> could never allow.
-
-	    It carries the title as visually hidden text rather than an aria-label:
-	    that names the link identically for assistive tech, and it also gives
-	    crawlers real anchor text for the post instead of an empty <a>. */}
-	<a href={href} class="post-row-link"><span class="sr-only">{post.data.title}</span></a>
+		<HeadingTag class="post-tile-title" transition:name={`post-title-${transitionKey}`}>{post.data.title}</HeadingTag>
+		{!compact && description && <p class="post-tile-desc">{description}</p>}
+	</a>
 </article>
 
 <style>
-	/* The row is one click target without being one wrapping <a>, so the tag
-	   chips inside it can stay real links (nesting <a> in <a> is invalid).
-	   The link is an overlay covering the row, named by its sr-only title. */
-	.post-row {
-		position: relative;
-		isolation: isolate;
+	.post-tile-link {
+		display: block;
+		color: var(--color-on-surface);
+		text-decoration: none;
 	}
 
-	.post-row-link {
-		position: absolute;
-		inset: 0;
-		/* Above the thumbnail figure, which is positioned and would otherwise
-		   paint over the overlay; the tag chips sit above both. */
-		z-index: 1;
+	.post-tile-link:hover {
+		color: var(--color-on-surface);
 	}
 
-	.post-row-link:focus-visible {
-		outline: 2px solid var(--color-secondary);
-		outline-offset: 4px;
+	.post-tile-image {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 10;
+		object-fit: cover;
+		border-radius: 16px;
+		background-color: var(--paper-well);
 	}
 
-	.post-row-tags {
-		position: relative;
-		z-index: 2;
+	.post-tile-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0 0.5rem;
+		margin: 1.125rem 0 0.625rem;
 	}
 
-	/* Tag names hide on the narrowest screens so the meta stays one line */
-	@media (max-width: 480px) {
-		.post-row-tags {
-			display: none;
+	.post-tile-title {
+		margin: 0;
+		font-size: 1.3125rem;
+		line-height: 1.2;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		color: inherit;
+		transition: color var(--dur-quick) ease;
+	}
+
+	@media (min-width: 640px) {
+		.post-tile-title {
+			font-size: 1.4375rem;
 		}
+	}
+
+	.post-tile-desc {
+		margin: 0.625rem 0 0;
+		font-size: 0.9375rem;
+		line-height: 1.55;
+		color: var(--color-on-surface-variant);
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.post-tile-link:hover .post-tile-title,
+	.post-tile-link:focus-visible .post-tile-title {
+		color: var(--accent);
 	}
 </style>

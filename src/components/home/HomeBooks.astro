@@ -1,0 +1,96 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getCFImageUrl } from '../../utils/cloudflare-images'
+
+interface Props {
+	books: CollectionEntry<'books'>[];
+	total: number;
+}
+
+// The newest four books (index.astro sorts by pubDate, newest first).
+const { books, total } = Astro.props
+---
+
+<section class="home-books" aria-labelledby="home-books-title">
+	<div>
+		<h2 id="home-books-title" class="home-section-title">I also write books</h2>
+		<p class="home-books-lede">{total} of them, on Docker, Kubernetes, Ansible and infrastructure as code.</p>
+		<a href="/books/" class="home-books-link">See all {total} books →</a>
+	</div>
+	<ul class="home-books-shelf" role="list">
+		{books.map((book) => (
+			<li>
+				<a href={`/books/${book.id}/`} aria-label={book.data.title}>
+					<img
+						src={getCFImageUrl(book.data.cover, { width: 420, quality: 60 })}
+						alt={book.data.alt}
+						width="340"
+						height="420"
+						loading="lazy"
+						decoding="async"
+					/>
+				</a>
+			</li>
+		))}
+	</ul>
+</section>
+
+<style>
+	.home-books {
+		display: grid;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 1024px) {
+		.home-books {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+			gap: 4rem;
+			align-items: center;
+		}
+	}
+
+	.home-books-lede {
+		margin: 0.75rem 0 1.25rem;
+		font-size: 1.0625rem;
+		line-height: 1.55;
+		color: var(--color-on-surface-variant);
+	}
+
+	.home-books-link {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--accent);
+		text-decoration: none;
+	}
+
+	.home-books-shelf {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.625rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	@media (min-width: 640px) {
+		.home-books-shelf {
+			gap: 1.5rem;
+		}
+	}
+
+	.home-books-shelf img {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 34 / 42;
+		object-fit: cover;
+		border-radius: 6px;
+		background-color: var(--paper-well);
+		box-shadow: 0 18px 30px -22px rgba(10, 10, 20, 0.45);
+		transition: opacity var(--dur-quick) ease;
+	}
+
+	.home-books-shelf a:hover img {
+		opacity: 0.85;
+	}
+</style>

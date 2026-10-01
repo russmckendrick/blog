@@ -1,17 +1,16 @@
 ---
-import { getTagUrl, getTagName, getTagColorClasses } from '../../utils/tags';
 import UseWithAI from './UseWithAI.astro';
 import { Icon } from 'astro-icon/components';
 import { PREFERRED_SOURCE } from '../../consts';
 
 /**
- * Hairline storybar: tags left, actions right, sitting directly under the
- * byline. It carries what the article rail shows in the right margin, so it
- * only renders below 1200px — above that the rail is on screen and this would
- * duplicate it. Contents stay rail-only; there is no inline table of contents.
+ * Hairline storybar of article tools, opening the text column under the
+ * standfirst and byline. It carries what the right-hand tools rail shows, so
+ * it only renders below 1200px — above that the rail is on screen and this
+ * would duplicate it. Contents stay rail-only; there is no inline table of
+ * contents, and tags live above the title.
  */
 interface Props {
-	tags?: string[];
 	markdownHref: string;
 	pageUrl: string;
 	editUrl?: string;
@@ -19,17 +18,10 @@ interface Props {
 	rssHref: string;
 }
 
-const { tags = [], markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.props;
+const { markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.props;
 ---
 
 <div class="storybar">
-	{tags.length > 0 && (
-		<p class="storybar-tags">
-			{tags.slice(0, 4).map((tag) => (
-				<a href={getTagUrl(tag)} class={`${getTagColorClasses(tag)} tag-editorial--sm`}>{getTagName(tag)}</a>
-			))}
-		</p>
-	)}
 	<div class="storybar-actions">
 		<UseWithAI id="use-with-ai-bar" markdownHref={markdownHref} pageUrl={pageUrl} />
 		{editUrl && (
@@ -54,7 +46,7 @@ const { tags = [], markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: flex-start;
 		gap: 0.75rem 1.25rem;
 		margin-top: 1.5rem;
 		padding: 0.875rem 0;
@@ -69,13 +61,6 @@ const { tags = [], markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.
 		}
 	}
 
-	.storybar-tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.375rem;
-		min-width: 0;
-	}
-
 	.storybar-actions {
 		display: flex;
 		flex-wrap: wrap;
@@ -85,7 +70,7 @@ const { tags = [], markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.
 
 	/* Narrow screens give the actions a block of their own: the AI trigger
 	   across the top, the links splitting the rows beneath 2-up. Above 640px
-	   there is room for them to sit inline beside the tags. */
+	   they sit inline on one row. */
 	@media (max-width: 639px) {
 		.storybar {
 			flex-direction: column;

@@ -3,22 +3,21 @@ import fs from "node:fs/promises";
 import path from "path";
 import lockup from "../../data/logo-lockup.json";
 
-// Reading Room palette (light theme values from src/styles/global.css)
-export const PAPER = "#FBFAF7";
-export const INK = "#1E1C18";
-export const MIST = "#6F6A61";
-export const HAIRLINE = "#ECE8E1";
-export const ACCENT = "#2B559E";
-
-// The scrim is the Night edition's paper rather than a neutral black, so the
-// two editions of the site are made of the same material.
-export const NIGHT = "22, 20, 17";
-export const NIGHT_INK = "#FFFFFF";
-export const NIGHT_MIST = "rgba(255, 255, 255, 0.82)";
+// Workbench palette (light theme values from src/styles/global.css)
+export const PAPER = "#FFFFFF";
+export const TINT = "#F4F4F5";
+export const INK = "#0B0B0C";
+export const MIST = "#5E5E66";
+export const HAIRLINE = "#E6E6E9";
+// Amber: the fill is for marks (badges, dots) with ink on it; the darker
+// shade is the text-safe one.
+export const ACCENT_FILL = "#F2B544";
+export const ACCENT = "#8A5A00";
+export const FONT = "Geist";
 
 // Pictographs don't belong on the card: the renderer would need a CDN fetch
-// per emoji to draw them, and a headline set in Schibsted Grotesk reads better
-// without them anyway.
+// per emoji to draw them, and a headline set in Geist reads better without
+// them anyway.
 export const stripEmoji = (text: string) =>
   text
     .replace(/[\p{Extended_Pictographic}\u{FE0F}\u{200D}]/gu, "")
@@ -66,24 +65,6 @@ export const LOCKUP_ON_PAPER = () =>
     INK,
     MIST,
     "#35495E",
-  );
-
-// Over photography the mark's own navy silts up against the scrim, so it is
-// reversed out to a flat white monitor. The cloud artwork is dropped rather
-// than knocked back: at 32px any contrast between the two cloud shapes reads
-// as a pair of spectacles, and the silhouette alone carries the mark.
-export const LOCKUP_ON_SCRIM = () =>
-  lockupDataUri(
-    {
-      base: "rgba(255, 255, 255, 0.72)",
-      shadow: "rgba(255, 255, 255, 0.5)",
-      body: "#FFFFFF",
-      screen: "#FFFFFF",
-      clouds: "#FFFFFF",
-    },
-    NIGHT_INK,
-    "rgba(255, 255, 255, 0.72)",
-    "#BDC3C7",
   );
 
 const IMAGE_MIME: Record<string, string> = {

@@ -1,32 +1,40 @@
 @import "tailwindcss";
 
 /* ================================================
-   Design Tokens - "The Reading Room"
-   Warm paper, two text colours, one hairline, a pen-ink
-   accent spent almost nowhere. The Material-style --color-*
-   names are kept as aliases of the paper/ink primitives so
-   existing components keep working; prefer the primitives
-   in new code. See DESIGN.md.
+   Design Tokens - "Workbench"
+   Clean white page (light by default), near-black ink, one
+   grey for everything that is not content, a single tint
+   surface, and an amber accent: as a fill it marks, as
+   darkened text it links. The paper/ink primitive names and
+   the Material-style --color-* aliases are kept so existing
+   components keep working. See DESIGN.md.
    ================================================ */
 
 :root {
-  /* Paper & ink primitives (light: warm off-white, never pure white) */
-  --paper: #fbfaf7;
-  --paper-well: #f3f1eb;
-  --paper-bright: #f3f1eb;
-  --paper-shade: #f3f1eb;
-  --paper-tint: #f3f1eb;
-  --paper-deep: #ece8e1;
-  --paper-deepest: #e2ded4;
-  --ink: #1e1c18;
-  --ink-muted: #6f6a61;
-  --rule: #ece8e1;
-  --rule-strong: #ece8e1;
-  --accent: #2b559e;
-  --accent-strong: #234a8c;
-  --accent-highlight: #8a6d1f;
-  --pill: #edf1f8;
-  --pill-hover: #e2e9f5;
+  /* Page & ink primitives (light: white page, one #f4f4f5 tint surface) */
+  --paper: #ffffff;
+  --paper-well: #f4f4f5;
+  --paper-bright: #f4f4f5;
+  --paper-shade: #f4f4f5;
+  --paper-tint: #f4f4f5;
+  --paper-deep: #e6e6e9;
+  --paper-deepest: #d4d4d8;
+  --ink: #0b0b0c;
+  --ink-muted: #5e5e66;
+  --rule: #e6e6e9;
+  --rule-strong: #d4d4d8;
+  /* Amber: --accent-fill is for marks (progress bar, badges, bullets), never
+     text — it fails contrast on white. --accent is its text-safe shade. */
+  --accent-fill: #f2b544;
+  --on-accent-fill: #0b0b0c;
+  --accent: #8a5a00;
+  --accent-strong: #704900;
+  --accent-highlight: #8a5a00;
+  --pill: #f4f4f5;
+  --pill-hover: #e6e6e9;
+  /* The terminal figure is a dark window in both themes */
+  --terminal-bg: #1b1d27;
+  --terminal-bar: #14161e;
 
   /* Brand aliases */
   --color-primary: var(--accent-strong);
@@ -67,31 +75,31 @@
   --dur-page: 600ms;
 
   /* Reading progress */
-  --reading-progress-color: var(--accent);
+  --reading-progress-color: var(--accent-fill);
 }
 
 .dark {
-  /* Paper & ink primitives (dark: a second edition — warm dark paper, not black) */
-  --paper: #161411;
-  --paper-well: #211e1a;
-  --paper-bright: #211e1a;
-  --paper-shade: #211e1a;
-  --paper-tint: #211e1a;
-  --paper-deep: #2b2721;
-  --paper-deepest: #332e26;
-  --ink: #e8e3da;
-  --ink-muted: #a69d8f;
-  --rule: #2b2721;
-  --rule-strong: #2b2721;
-  --accent: #9fbceb;
-  --accent-strong: #b3ccf2;
-  --accent-highlight: #c9a94e;
-  --pill: #20242e;
-  --pill-hover: #272d3b;
+  /* Page & ink primitives (dark: near-black, the tint surface lifts) */
+  --paper: #0b0b0c;
+  --paper-well: #151517;
+  --paper-bright: #151517;
+  --paper-shade: #151517;
+  --paper-tint: #151517;
+  --paper-deep: #26262a;
+  --paper-deepest: #333338;
+  --ink: #ededef;
+  --ink-muted: #a1a1a6;
+  --rule: #26262a;
+  --rule-strong: #333338;
+  --accent: #f2b544;
+  --accent-strong: #f6c76c;
+  --accent-highlight: #f2b544;
+  --pill: #151517;
+  --pill-hover: #1f1f22;
 
   /* Brand aliases */
-  --color-on-primary: #161411;
-  --color-on-secondary: #161411;
+  --color-on-primary: #0b0b0c;
+  --color-on-secondary: #0b0b0c;
 }
 
 /* ================================================
@@ -122,18 +130,19 @@
    which already include CLS-safe fallback metrics. `inline` is required so Tailwind
    substitutes the var() values into utilities rather than re-wrapping them. */
 @theme inline {
-  --font-sans: var(--font-schibsted), -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  --font-display: var(--font-schibsted), -apple-system, 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: var(--font-ibm-plex-mono), 'IBM Plex Mono', ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
-  --font-serif: var(--font-literata), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-geist), -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font-geist), -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+  /* No serif in this design: body copy is Geist too. Kept as an alias so
+     any font-serif call site falls through to the one face. */
+  --font-serif: var(--font-geist), -apple-system, 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* ================================================
    Base Styling
    ================================================ */
 
-/* Sans is the site's voice: UI, chrome, metadata, headings. The serif
-   appears only inside article prose (.prose sets it explicitly). */
+/* One face, Geist, for everything: UI, headings and article body. */
 body {
   @apply font-sans;
   color: var(--color-on-surface);
@@ -174,9 +183,9 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   @apply leading-tight;
-  font-weight: 700;
-  line-height: 1.19;
-  letter-spacing: -0.011em;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   text-wrap: balance;
 }
 
@@ -187,13 +196,13 @@ aside h1,
 nav h1,
 h1,
 :where(article, section, aside, nav) h1 {
-  font-size: clamp(2rem, 5vw, 2.625rem);
+  font-size: clamp(2rem, 5vw, 2.75rem);
 }
 
 h2 {
   @apply text-2xl leading-snug;
   font-weight: 700;
-  letter-spacing: -0.014em;
+  letter-spacing: -0.025em;
 }
 
 h3 {
@@ -202,40 +211,87 @@ h3 {
   letter-spacing: -0.008em;
 }
 
-/* Feed row title (PostCard). The unlayered h2 rule above outranks Tailwind's
-   layered size utilities, so the listing sizes have to live here too:
-   16px on mobile, the h2's 24px from sm up. */
-.feed-title {
-  font-size: 1rem;
-  line-height: 1.35;
+/* Listing grid. Every listing wraps each PostCard tile in one child of
+   `.feed`: one column on phones, two from sm, three from lg. */
+.feed {
+  display: grid;
+  gap: 3rem 2rem;
+  padding-top: 2.5rem;
 }
 
 @media (min-width: 640px) {
-  .feed-title {
-    font-size: 1.5rem;
-    line-height: 1.375;
+  .feed {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* Feed rows alternate their thumbnail side so a long listing zig-zags instead
-   of running one straight edge down the page. Every single-column listing wraps
-   each PostCard in one child of `.feed`, so nth-child there is the row index —
-   the two-column related-post grids have no `.feed` and stay untouched. Like
-   .feed-title these rules are unlayered so they outrank Tailwind's utilities.
-   Mobile stacks the row (title, text, image), so the flip starts at sm. */
+@media (min-width: 1024px) {
+  .feed {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 3.5rem;
+  }
+}
+
+/* Listing page frame and header: the 1320px frame, a big title, the
+   description in mist and a meta line, closed by a hairline. */
+.page-frame {
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
 @media (min-width: 640px) {
-  .feed > *:nth-child(even) .post-row {
-    grid-template-columns: auto minmax(0, 1fr);
+  .page-frame {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-frame {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Text pages (search, glossary) keep a readable measure, left-aligned in
+   the frame under the logo. */
+.page-frame--text > * {
+  max-width: 760px;
+}
+
+.page-head {
+  padding: 1.5rem 0 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.page-head h1,
+.page-title {
+  margin: 0;
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+/* Keep any prose in a page header to a readable measure */
+.page-head p {
+  max-width: 760px;
+}
+
+.page-lede {
+  margin-top: 1rem;
+  max-width: 720px;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--color-on-surface-variant);
+}
+
+@media (min-width: 640px) {
+  .page-head {
+    padding: 2.5rem 0 2.5rem;
   }
 
-  .feed > *:nth-child(even) .post-row-body {
-    grid-column-start: 2;
-  }
-
-  .feed > *:nth-child(even) .post-row-figure {
-    grid-column-start: 1;
-    margin-left: 0;
-    margin-right: 2.5rem;
+  .page-lede {
+    font-size: 1.25rem;
   }
 }
 
@@ -703,6 +759,47 @@ a:hover {
 #menu-trigger[aria-expanded="true"] .icon-bars { display: none; }
 
 /* ================================================
+   Homepage sections — shared section head
+   Used by the home components (HomeProjects, HomeBooks, the
+   "Recent writing" head in index.astro), which are scoped
+   separately, so the shared head lives here.
+   ================================================ */
+
+.home-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.home-section-title {
+  margin: 0;
+  flex-grow: 1;
+  font-size: 1.625rem;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 640px) {
+  .home-section-title {
+    font-size: 2.125rem;
+  }
+}
+
+.home-section-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.home-section-link:hover {
+  color: var(--accent-strong);
+}
+
+/* ================================================
    Search sheet — full-width paper band in the top
    layer, closed by a hairline, page veiled in paper.
    No card, no shadow; the Reading Room grammar.
@@ -939,10 +1036,17 @@ body {
   .prose {
     @apply max-w-none;
     color: var(--color-on-surface);
-    font-family: var(--font-serif);
-    font-size: 1.125rem;
-    line-height: 1.67;
-    letter-spacing: -0.003em;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    letter-spacing: -0.005em;
+  }
+
+  @media (min-width: 640px) {
+    .prose {
+      font-size: 1.1875rem;
+      line-height: 1.75;
+    }
   }
 }
 
@@ -960,21 +1064,28 @@ body {
   letter-spacing: -0.011em;
 }
 
-/* In-body section heads: quiet sans steps, no rules */
+/* In-body section heads: bold, tight steps, no rules */
 .prose h2 {
-  @apply mb-3 leading-snug;
-  font-size: 1.375rem;
-  font-weight: 600;
-  letter-spacing: -0.012em;
-  margin-top: 1.9em;
+  margin-bottom: 0.6em;
+  line-height: 1.2;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-top: 2.2em;
   outline: none;
+}
+
+@media (min-width: 640px) {
+  .prose h2 {
+    font-size: 1.875rem;
+  }
 }
 
 .prose h3 {
   @apply mt-8 mb-2 leading-snug;
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: -0.008em;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
   outline: none;
 }
 
@@ -1015,11 +1126,209 @@ body {
   max-width: 680px;
 }
 
+/* ================================================
+   Post page — header, wide hero, three columns
+   (BlogPost.astro; the rails are ArticleRail.astro)
+   ================================================ */
+
+.post-header-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.25rem;
+}
+
+.post-header-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-on-surface);
+  text-decoration: none;
+  transition: border-color var(--dur-quick) ease, background-color var(--dur-quick) ease;
+}
+
+.post-header-tag:hover {
+  border-color: var(--rule-strong);
+  background-color: var(--paper-well);
+  color: var(--color-on-surface);
+}
+
+/* The title spans the frame, left-aligned to the hero's edges */
+.post-header .post-title {
+  margin: 0;
+  max-width: 1100px;
+  font-size: clamp(2.125rem, 5.5vw, 4rem);
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+/* Under the hero, at the head of the text column: the description as a
+   standfirst, then the byline, closed off from the prose by a hairline. */
+.post-lede {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.post-standfirst {
+  margin: 0;
+  font-size: 1.1875rem;
+  line-height: 1.45;
+  color: var(--color-on-surface-variant);
+  text-wrap: pretty;
+}
+
+.post-byline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.post-lede > .post-byline:first-child {
+  margin-top: 0;
+}
+
+@media (min-width: 640px) {
+  .post-standfirst {
+    font-size: 1.375rem;
+  }
+
+  .post-byline {
+    margin-top: 1.5rem;
+  }
+}
+
+.post-hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 16px;
+  background-color: var(--paper-well);
+  transition: opacity var(--dur-quick) ease;
+}
+
+.post-hero-image:hover {
+  opacity: 0.92;
+}
+
+@media (min-width: 640px) {
+  .post-hero-image {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (min-width: 1024px) {
+  .post-hero-image {
+    aspect-ratio: auto;
+    height: 560px;
+    border-radius: 22px;
+  }
+}
+
+/* One 700px text column, centred; from 1200px the contents and tools rails
+   flank it as real grid columns rather than floating in the margins. */
+.post-main {
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+@media (min-width: 1200px) {
+  .post-columns {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 700px) 220px;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .post-main {
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+
+/* Below 1200px the StoryBar opens the text column, so it needs air beneath */
+.post-main .storybar {
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+}
+
+/* Author card that closes human-written posts */
+.post-author {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-radius: 18px;
+  background-color: var(--paper-well);
+}
+
+.post-author-avatar {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border-radius: 9999px;
+  object-fit: cover;
+  background-color: var(--color-surface);
+}
+
+.post-author-name {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.post-author-bio {
+  margin-top: 0.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-on-surface-variant);
+}
+
+.post-author-link {
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 1.125rem;
+  border-radius: 10px;
+  background-color: var(--color-on-surface);
+  color: var(--color-surface);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.post-author-link:hover {
+  color: var(--color-surface);
+  opacity: 0.88;
+}
+
+@media (min-width: 640px) {
+  .post-author {
+    flex-wrap: nowrap;
+    padding: 1.75rem;
+  }
+
+  .post-author-avatar {
+    width: 72px;
+    height: 72px;
+  }
+}
+
 /* Three accent dots close every article */
 .tombstone {
   margin-top: 3rem;
   text-align: center;
-  color: var(--color-secondary);
+  color: var(--accent-fill);
   font-size: 0.875rem;
   letter-spacing: 0.5em;
   text-indent: 0.5em;
@@ -1043,13 +1352,13 @@ body {
   color: var(--color-secondary);
 }
 
-/* Prose links: ink with a real underline; accent only on hover */
+/* Prose links: ink with an amber underline; amber text on hover */
 .prose a {
   color: var(--color-on-surface);
   @apply underline transition-colors;
   text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-  text-decoration-color: var(--color-on-surface);
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--accent-fill);
 }
 
 .prose a:hover {
@@ -1296,28 +1605,27 @@ body {
    ================================================ */
 
 :root {
-  --callout-note: #6f6a61;
+  --callout-note: #5e5e66;
   --callout-tip: #3d5c33;
   --callout-important: #2f4a63;
   --callout-caution: #8f2d00;
-  /* Darkened from #8a6d1f, which measured 4.41:1 against the callout's own
-     5%-tinted paper — just under the 4.5:1 the 13px heading needs. Now 4.86:1. */
-  --callout-warning: #836617;
+  /* The text-safe amber: ~5:1 on its own 9% tint */
+  --callout-warning: #8a5a00;
 }
 
 .dark {
-  --callout-note: #a69d8f;
+  --callout-note: #a1a1a6;
   --callout-tip: #a4bd8c;
   --callout-important: #93b2ce;
   --callout-caution: #e5a48c;
-  --callout-warning: #d4b968;
+  --callout-warning: #f2b544;
 }
 
 .callout {
-  margin: 1.5rem 0;
-  padding: 1rem 1.25rem;
-  border-left: 2px solid var(--callout-accent);
-  background-color: color-mix(in srgb, var(--callout-accent) 5%, transparent);
+  margin: 1.75rem 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 14px;
+  background-color: color-mix(in srgb, var(--callout-accent) 9%, var(--color-surface));
   color: var(--color-on-surface);
 }
 
@@ -1329,11 +1637,10 @@ body {
 
 .callout-heading {
   color: var(--callout-accent);
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
 }
 
 .callout .callout-content {

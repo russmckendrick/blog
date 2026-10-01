@@ -14,6 +14,8 @@ interface Props {
 	image?: any;
 	keywords?: string[];
 	noindex?: boolean;
+	/** Show the footer's "Listened to this week" block (off on the homepage, which has its own). */
+	footerTunes?: boolean;
 }
 
 const {
@@ -21,7 +23,8 @@ const {
 	description = SITE_DESCRIPTION,
 	image,
 	keywords,
-	noindex
+	noindex,
+	footerTunes = true
 } = Astro.props;
 
 // Titles that already carry the site name - the homepage, the paginated feed,
@@ -48,7 +51,7 @@ const pageTitle = title.includes(SITE_TITLE) ? title : `${title} | ${SITE_TITLE}
 		<main id="main-content" tabindex="-1" class="mt-6 sm:mt-10">
 			<slot />
 		</main>
-		<Footer />
+		<Footer showTunes={footerTunes} />
 		{import.meta.env.DEV && <WebVitals debug={true} />}
 		<RevealInit />
 		<script>

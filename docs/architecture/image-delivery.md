@@ -8,7 +8,7 @@ The blog uses **Cloudflare Image Transformations** for on-demand image optimizat
 
 **SVG exception**: SVG files are never routed through Cloudflare Image Transformations. `getCFImageUrl()` returns the raw asset path for any `.svg` source and `generateCFSrcSet()` returns no responsive variants, so SVGs are delivered byte-for-byte as static assets with no compression, sanitization, or format conversion anywhere in the pipeline (`scripts/optimize-images.js` also excludes SVGs).
 
-**Avatars are the exception to the exception**: the illustrated avatars in `public/images/avatars/` are detailed vector art — `laptop-02.svg` is ~90 KiB over the wire — so serving them raw meant a 36px byline avatar outweighed the hero image and competed with it for bandwidth during the LCP window. Every avatar ships with a same-name `.png` twin, so avatar call sites go through `getAvatarImageUrl()` in `src/utils/avatars.ts`, which swaps to the PNG and resizes it to the rendered box. See [Avatar delivery](#avatar-delivery).
+**Avatars are the exception to the exception**: the illustrated avatars in `public/images/avatars/` are detailed vector art — `laptop-02.svg` is ~90 KiB over the wire — so serving them raw meant a byline avatar under 40px outweighed the hero image and competed with it for bandwidth during the LCP window. Every avatar ships with a same-name `.png` twin, so avatar call sites go through `getAvatarImageUrl()` in `src/utils/avatars.ts`, which swaps to the PNG and resizes it to the rendered box. See [Avatar delivery](#avatar-delivery).
 
 ## Architecture Comparison
 
@@ -205,7 +205,7 @@ export const CF_IMAGE_PRESETS = {
     widths: [256, 320, 400, 600, 800, 1200]
   },
 
-  // Post card thumbnails (horizontal layout)
+  // Post card thumbnails (horizontal layout; unused since the Workbench tiles)
   thumbnailHorizontal: {
     quality: 25,
     format: 'avif' as const,
@@ -251,21 +251,24 @@ always drawn with, so framing is unchanged. The source illustrations are not squ
 ---
 import { getAvatarImageUrl } from '../utils/avatars';
 
-// Byline avatar renders in a 36px box
-const avatarSrc = getAvatarImageUrl('/images/avatars/laptop-02.svg', 36);
-// → /cdn-cgi/image/width=72,height=72,quality=60,format=auto,fit=cover/images/avatars/laptop-02.png
+// Byline avatar renders in a 40px box
+const avatarSrc = getAvatarImageUrl('/images/avatars/laptop-02.svg', 40);
+// → /cdn-cgi/image/width=80,height=80,quality=60,format=auto,fit=cover/images/avatars/laptop-02.png
 ---
 ```
 
-Effect on the byline avatar: **89,797 bytes → 1,780 bytes** (AVIF), a 98% reduction.
+Effect on the byline avatar (measured when it rendered at 36px): **89,797 bytes → 1,780 bytes** (AVIF), a 98% reduction.
 
 Current call sites:
 
 | Location | Rendered size | Notes |
 |---|---|---|
-| `src/layouts/BlogPost.astro` | 36px | Byline; passes the untransformed path to the `BlogPosting` schema so structured data keeps the full-size asset |
+| `src/layouts/BlogPost.astro` | 40px | Byline; passes the untransformed path to the `BlogPosting` schema so structured data keeps the full-size asset |
+| `src/layouts/BlogPost.astro` | 72px | Author card closing non-tunes posts (`arms-folded.png`; 56px below `sm`) |
+| `src/components/home/HomeIntro.astro` | 84px | Homepage intro band (`arms-folded.png`; 64px below `sm`) |
 | `src/pages/tags/[tag]/[...page].astro` | 80px | Tag hub header (64px below `sm`) |
-| `src/pages/about.astro` | 80px | Resolved server-side into `window.__availableAvatars` so the click-to-randomise swap uses transformed URLs too |
+| `src/pages/tags/index.astro` | 48px | One per tag card (tags without a `TAG_AVATAR_MAP` entry show a "#" placeholder instead) |
+| `src/pages/about.astro` | 96px | Intro-band avatar beside the h1 (drawn at 84px, 64px below `sm`; the 96px URL keeps headroom); resolved server-side into `window.__availableAvatars` so the click-to-randomise swap uses transformed URLs too |
 
 `src/pages/avatars.astro` is deliberately excluded — that gallery exists to expose the raw
 `.svg` and `.png` URLs for copying.
@@ -276,38 +279,58 @@ each `<img>` catches it if not.
 
 ### Component Usage
 
-#### PostCard.astro (Blog Post Thumbnails)
+#### PostCard.astro (Listing Tiles)
+
+`PostCard` is the one listing tile: a 16:10 cover across a column of the `.feed`
+grid (one column, two from 640px, three from 1024px). It uses the
+**thumbnailPriority** preset when `priority` is set and **thumbnail** otherwise.
+There is no LQIP blur; the image sits on a flat `--paper-well` placeholder.
 
 ```astro
 ---
-import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudflare-images';
+import { getCFImageUrl, generateCFSrcSet } from '../../utils/cloudflare-images';
 import { CF_IMAGE_PRESETS } from '../../consts';
 
-const preset = CF_IMAGE_PRESETS.thumbnailHorizontal;
+const preset = priority ? CF_IMAGE_PRESETS.thumbnailPriority : CF_IMAGE_PRESETS.thumbnail;
 ---
 
 <img
-  src={getCFImageUrl(heroImage, { width: 320, quality: preset.quality, format: preset.format, fit: preset.fit })}
+  src={getCFImageUrl(heroImage, { width: 640, quality: preset.quality, format: preset.format, fit: preset.fit })}
   srcset={generateCFSrcSet(heroImage, preset.widths, preset.quality, preset.format)}
-  sizes="(min-width: 640px) 160px, calc(100vw - 48px)"
+  sizes="(min-width: 1320px) 392px, (min-width: 1024px) calc((100vw - 144px) / 3), (min-width: 640px) calc((100vw - 80px) / 2), calc(100vw - 32px)"
   alt={alt}
-  width="160"
-  height="107"
+  width="640"
+  height="400"
   loading={priority ? 'eager' : 'lazy'}
   decoding={priority ? 'sync' : 'async'}
   fetchpriority={priority ? 'high' : 'low'}
-  class="w-full h-full object-cover"
+  class="post-tile-image"
 />
 ```
 
-The blog feed pages (`index.astro`, `page/[...page].astro`,
+The listing pages whose tiles open the page (`page/[...page].astro`,
 `tags/[tag]/[...page].astro`, `[year]/index.astro`, `[year]/page/[page].astro`)
-pass `priority={index < 2}`: on a mobile viewport the first **two** row images sit
-inside the initial viewport, and whichever of them is largest becomes the LCP
-element. A lazy/low-priority image there fails Lighthouse's "LCP request
-discovery" audit, so both rows load eagerly with `fetchpriority="high"`.
-Priority rows also skip the LQIP background (`getLQIPUrl`) so the LCP has no
-extra request in front of it; non-priority rows keep the LQIP blur-up.
+pass `priority={index < 2}`: on a mobile viewport the first **two** tiles sit
+inside or near the initial viewport, and whichever image is largest becomes the
+LCP element. A lazy/low-priority image there fails Lighthouse's "LCP request
+discovery" audit, so both load eagerly with `fetchpriority="high"`. The
+`thumbnailHorizontal` preset is no longer used by any component.
+
+#### Homepage (HomeLead.astro)
+
+The homepage's LCP element is the lead cover in `HomeLead.astro`:
+`loading="eager"`, `fetchpriority="high"`, `decoding="sync"`, using the **hero**
+preset across the 1320px frame. `leadImageAttrs()` in `src/utils/home-lead.ts`
+returns its `src`, `srcset` and `sizes`, and `index.astro` builds its
+`<link rel="preload">` from the same call, so the preload and the `<img>` always
+agree and the browser never fetches twice. The six `PostCard` tiles below it are
+not given `priority` and load lazily.
+
+#### Tunes index lead (tunes/index.astro)
+
+The lead week's image spans the frame (16:10, 21:9 from 640px) on the **hero**
+preset, loads eagerly with `fetchpriority="high"`, and keeps an LQIP blur-up
+(`getLQIPUrl`) behind it. That makes it the only listing image that still uses LQIP.
 
 #### TunesDirectory.astro (Artist/Album Browse Cards)
 
@@ -348,6 +371,8 @@ so the largest one is still smaller and softer than the source. Since the image
 service is `noop`, an imported hero lands in `/_astro/` byte-for-byte and
 `displayImage.src` is the full-resolution file. The on-page `<img>` is unchanged
 and keeps its **hero** preset srcset (see `docs/reference/embed-components.md`).
+The hero spans the 1320px frame; `HERO_SIZES` in `BlogPost.astro` is shared by
+the hero preload `<link>` and the `<img>` so both choose the same candidate.
 
 ```astro
 ---
@@ -359,9 +384,9 @@ const heroLightboxSrc = typeof displayImage === 'string' ? displayImage : displa
 <div class="lightgallery-component" data-options={JSON.stringify({ thumbnail: false, download: false })}>
   <a href={heroLightboxSrc} data-lg-id="true" data-sub-html={`<h4>${title}</h4>`} class="block cursor-zoom-in">
     <img
-      src={getCFImageUrl(displayImage, { width: 1200, quality: preset.quality })}
+      src={getCFImageUrl(displayImage, { width: 1536, quality: preset.quality })}
       srcset={heroSrcSet}
-      sizes="(min-width: 1024px) 1200px, (min-width: 640px) 1024px, 640px"
+      sizes={HERO_SIZES}
       alt={title}
       loading="eager"
       fetchpriority="high"

@@ -224,33 +224,33 @@ The browse-page OG generators all share the same `PNG()` rasteriser and an md5-k
 
 `OG(title, description, options)` renders one of two cards:
 
-- **Scrim** — when `options.coverImagePath` resolves. The cover fills the frame behind a vertical and a horizontal gradient in the Night edition's paper (`rgba(22, 20, 17, …)`), with the brand lockup reversed out top-left and the headline and rubric at the foot. Covers are 2560×1440, so a 1.91:1 frame keeps roughly 93% of the art.
-- **Plate** — the coverless fallback. Warm paper ground, lockup, ink headline, mist standfirst, and a hairline above the section rubric. Nothing routes to it today; it stands as the graceful degradation if a cover file goes missing.
+- **Cover card** — when `options.coverImagePath` resolves. The homepage lead as a card: the cover inset 32px on the white page with a 28px radius, the lockup on a white pill in its top-left corner, and the headline (Geist 800, −0.035em) plus rubric on a white panel cut into the cover's bottom-left corner (34px top-right radius), so the words sit on the page rather than over the art. No scrim. The inset frame is 1136×566, so a 16:9 cover keeps nearly all of its width.
+- **Plate** — the coverless fallback. White page, lockup, Geist 800 headline, mist standfirst, and a tint (`#F4F4F5`) footer band with an amber dot and the section rubric. Nothing routes to it today; it stands as the graceful degradation if a cover file goes missing.
 
-**Album and artist pages get a third card.** `TunesRecord(name, options)` draws the sleeve on paper with the record sliding out from behind it, and the words in the column the disc stops short of. Album pages put the album art on the sleeve and the artist's portrait on the record label; artist pages invert that — portrait on the sleeve, and on the label whichever of their albums has appeared in the most weekly posts (ties break on slug, so the choice is stable across builds). Where the second image is missing the sleeve art is reused for the label.
+**Album and artist pages get a third card.** `TunesRecord(name, options)` draws the sleeve on the white page with the record sliding out from behind it, and the words in the column the disc stops short of. Album pages put the album art on the sleeve and the artist's portrait on the record label; artist pages invert that — portrait on the sleeve, and on the label whichever of their albums has appeared in the most weekly posts (ties break on slug, so the choice is stable across builds). Where the second image is missing the sleeve art is reused for the label.
 
 Both images come from `image` fields in `src/data/tunes-index.json`, which are **site-root URL paths**, not filesystem paths. Resolve them with `resolvePublicAsset` rather than `resolveCoverPath`: the latter treats a leading slash as filesystem-absolute, so a `/assets/…` path sends it looking at the top of the disk, where it silently finds nothing and the card drops to the fallback.
 
-`TunesRecord` returns `undefined` when it cannot read the sleeve art, which is the route's signal to fall back to the section-cover Scrim. 68 albums and 26 artists in the index have no image at all and take that path. The card's geometry constants are load-bearing: the text column is positioned off the right edge of the card rather than laid out beside the disc, so widening `DISC` pushes the record under the headline instead of reflowing anything.
+`TunesRecord` returns `undefined` when it cannot read the sleeve art, which is the route's signal to fall back to the section-cover cover card. Its rubric above the name is an amber pill (ink on `#F2B544`), and the disc is the near-black `#0B0B0C`. 68 albums and 26 artists in the index have no image at all and take that path. The card's geometry constants are load-bearing: the text column is positioned off the right edge of the card rather than laid out beside the disc, so widening `DISC` pushes the record under the headline instead of reflowing anything.
 
 The cache key folds in `artDigest([artPath, labelPath])` — an md5 of the image bytes themselves. `scripts/backfill-tunes-images.js` refetches this artwork, and without the digest a replaced cover leaves every card built from it stale; the card still renders and still looks right, so the mistake only surfaces once it ships.
 
-**Hub routes use section artwork.** Tag, book, glossary and tunes-year hubs have no cover of their own, and a wall of identical paper Plates made the browse pages the dullest thing shared off the site. Each section instead points at one shared image in `src/images/opengraph/sections/` — so all 28 tag hubs share `tags.png`, every book hub shares `books.png`, and so on — which puts them on the Scrim card alongside posts. The images are generated with `scripts/generate-cover.js --prompt=… --output=…` and committed (delete the `-small.png` variant the script also writes; nothing reads it).
+**Hub routes use section artwork.** Tag, book, glossary and tunes-year hubs have no cover of their own, and a wall of identical paper Plates made the browse pages the dullest thing shared off the site. Each section instead points at one shared image in `src/images/opengraph/sections/` — so all 28 tag hubs share `tags.png`, every book hub shares `books.png`, and so on — which puts them on the cover card alongside posts. The images are generated with `scripts/generate-cover.js --prompt=… --output=…` and committed (delete the `-small.png` variant the script also writes; nothing reads it).
 
 Routes resolve theirs through `sectionCover(name)` in `src/components/OpenGraph/sectionCover.ts`, which returns the absolute path plus an md5 of the file's bytes. **Fold that digest into the cache key** — every route does. Without it, regenerating a section image leaves the whole section's cards stale: they look identical to the old ones and nothing fails, so the mistake only surfaces once it ships.
 
-Section art is furniture, not post art, so it is briefed against the scrim rather than for its own sake: interest right of centre and mid-height, the left third dark and quiet under the headline, mid-to-dark tonality throughout, and nothing critical in the top or bottom 3% (a 16:9 source centre-crops to 1.905:1). The usual cover defect guards still apply — no text anywhere, and any prop that normally carries lettering must be described as blank and unmarked, since a card-catalogue drawer or a book spine is exactly what the image model will scrawl gibberish on. Source images that are already low-key come out as a murky rectangle once the scrim lands on them; brief for a lit subject and let the scrim do the darkening.
+Section art is furniture, not post art. It was briefed for the Reading Room's full-bleed scrim (interest right of centre and mid-height, the left third quiet, mid-to-dark tonality); under the Workbench cover card the bottom-left of the art sits behind the white headline panel, so the same brief still works — keep the subject right of centre and above the lower third, and nothing critical in the outer 3%. The usual cover defect guards still apply — no text anywhere, and any prop that normally carries lettering must be described as blank and unmarked, since a card-catalogue drawer or a book spine is exactly what the image model will scrawl gibberish on. Brief for a lit subject: the card no longer darkens the art, so whatever the image looks like is what ships.
 
-**The description is only baked into the Plate.** Every platform prints `og:description` as text beneath the card, so repeating it over the artwork said the same thing twice. Post cards carry a rubric instead — date · reading time · lead tag — which is information the platforms do not duplicate. Hub routes pass their own one-word rubric (`Tag`, `Books`, `Glossary`, `Album`, `Artist`, `Tunes`, `Archive`) through `options.meta`. Now that hubs render as Scrim cards, their descriptions are dropped from the artwork too. The tunes record card has room for more and carries the full rubric — the artist or album count, then the post count and `Listened to This Week`.
+**The description is only baked into the Plate.** Every platform prints `og:description` as text beneath the card, so repeating it over the artwork said the same thing twice. Post cards carry a rubric instead — date · reading time · lead tag — which is information the platforms do not duplicate. Hub routes pass their own one-word rubric (`Tag`, `Books`, `Glossary`, `Album`, `Artist`, `Tunes`, `Archive`) through `options.meta`. Since hubs render as cover cards, their descriptions are dropped from the artwork too. The tunes record card has room for more and carries the full rubric — the artist or album count, then the post count and `Listened to This Week`.
 
 **Features**:
 - Auto-generated for all blog posts
 - Layout box: 1200×630 (standard OG size), rasterised at `OG_SCALE` (currently 2) for 2400×1260 output. `BaseHead.astro` reads the same constants for `og:image:width`/`height`, so the declared size cannot drift from the rendered one. `createImage.ts` hands `OG_SCALE` to Takumi as `devicePixelRatio` with the canvas at the scaled size, so text, chrome and embedded images all come out at 2x; covers and album art are embedded as their raw file bytes and the renderer's `object-fit: cover` does the cropping. Cards are roughly 3.4x heavier at 2 than at 1; `dimensions.ts` is the single dial.
-- Design: Reading Room — paper `#FBFAF7`, ink `#1E1C18`, mist `#6F6A61`, hairline `#ECE8E1`. Emoji are stripped from titles and descriptions; they don't belong on the card, and drawing them would mean a CDN fetch per glyph at build time.
-- Brand: the masthead lockup is rebuilt as an inline SVG from `src/data/logo-lockup.json`, the same generated file `Logo.astro` reads. On paper the mark keeps its own palette; over photography it reverses to a flat white monitor — the cloud artwork is dropped there because at 32px any contrast between the two cloud shapes reads as a pair of spectacles.
-- Fonts: the site's own `src/assets/fonts/schibsted-grotesk-variable-latin.woff2`, registered once per process with the `wght` axis live, so the cards' `fontWeight` 400/500/700 map straight onto it. No instanced copies, no fontTools, and kerning is intact (the satori-era `GPOS` strip and its "Token  Use" double gap went with satori).
-- Encoding: Takumi returns raw RGBA and sharp encodes the PNG. Cards are truecolour unless that exceeds the 2.5MB budget in `createImage.ts`, in which case they are quantised to a 256-colour palette. Photographic scrim cards are the ones that exceed it (they land ~1.3–1.6MB, as they always have) and the scrim hides the quantisation; paper cards (Plate and the tunes record) fit the budget in truecolour, which matters because on paper the artwork uses up the palette and the paper takes the nearest entry — the tinted polygons and spikes the old cards carried. sharp treats any palette option (`effort`, `quality`, `colours`, `dither`) as opting in to quantisation, which is how the old `effort: 4` quietly made every card a palette PNG; `palette: false` is explicit for that reason.
-- Cached: `node_modules/.cache/og-images/`, keyed by content **plus a design-version salt** in every `*-og.png.ts` route (`og-design:reading-room-scrim-v3`, and `og-design:tunes-record-v2` on the two tunes entity routes) — bump the salt after any OG redesign, and after a renderer or encoder change, since those move pixels without touching content. Source-image swaps invalidate themselves through a byte digest and need no bump: `sectionCover`'s for section art, `artDigest`'s for album and artist artwork. Otherwise CI's cached `node_modules` will keep serving old renders
+- Design: the Workbench palette, from `cardChrome.tsx` — page `#FFFFFF`, tint `#F4F4F5`, ink `#0B0B0C`, mist `#5E5E66`, hairline `#E6E6E9`, amber fill `#F2B544` (marks only) and text-safe amber `#8A5A00`. Emoji are stripped from titles and descriptions; they don't belong on the card, and drawing them would mean a CDN fetch per glyph at build time.
+- Brand: the masthead lockup is rebuilt as an inline SVG from `src/data/logo-lockup.json`, the same generated file `Logo.astro` reads. The mark always keeps its own palette: on the cover card it sits on a white pill rather than reversing out of the art, so the old reversed-out variant (`LOCKUP_ON_SCRIM`) is gone.
+- Fonts: `src/assets/fonts/geist-variable-latin.woff2` — the site's own Geist subset (wght 400–800) — registered once per process with the `wght` axis live, so the cards' `fontWeight` 400/500/700/800 map straight onto it. No instanced copies, no fontTools, and kerning is intact (the satori-era `GPOS` strip and its "Token  Use" double gap went with satori).
+- Encoding: Takumi returns raw RGBA and sharp encodes the PNG. Cards are truecolour unless that exceeds the 2.5MB budget in `createImage.ts`, in which case they are quantised to a 256-colour palette. Workbench cover cards land around 1.1MB, so they now fit the budget in truecolour too; the Plate and the tunes record always have, which matters because on paper the artwork uses up the palette and the paper takes the nearest entry — the tinted polygons and spikes the old cards carried. sharp treats any palette option (`effort`, `quality`, `colours`, `dither`) as opting in to quantisation, which is how the old `effort: 4` quietly made every card a palette PNG; `palette: false` is explicit for that reason.
+- Cached: `node_modules/.cache/og-images/`, keyed by content **plus a design-version salt** in every `*-og.png.ts` route (`og-design:workbench-v2`, and `og-design:tunes-record-workbench-v1` on the two tunes entity routes) — bump the salt after any OG redesign, and after a renderer or encoder change, since those move pixels without touching content. Source-image swaps invalidate themselves through a byte digest and need no bump: `sectionCover`'s for section art, `artDigest`'s for album and artist artwork. Otherwise CI's cached `node_modules` will keep serving old renders
 
 **Generated URLs**:
 ```
@@ -309,7 +309,7 @@ The `/cdn-cgi/` pair follows Cloudflare's guidance for its own endpoints: crawle
 
 ### Listing pages and legacy redirects
 
-The homepage feed (`/`, then `/page/N/`) is the only paginated list of all posts. A second `/blog/N/` archive that paginated the same posts was removed: nothing linked to it and it put 19 near-duplicate URLs in the sitemap. `public/_redirects` sends `/blog/` and `/blog/*` to `/`, `/page/` (no number) to `/`, and the old Hugo tag pagination form `/tags/{tag}/page/{n}/` to the current `/tags/{tag}/{n}/`. The two wildcard rules sit in a block at the very end of the file and must stay there: Cloudflare counts every rule after the first splat or placeholder as dynamic, dynamic rules are capped at 100, and a wildcard placed above the ~130 static rules fails the deploy with `Maximum number of dynamic _redirects rules limit of 100 exceeded`. The `BlogPosting` schema's `isPartOf.@id` points at the site root for the same reason.
+The homepage feed (`/`, then `/page/N/`) is the only paginated list of all posts. The homepage shows `HOME_PAGE_SIZE` (7) posts - a lead cover plus six tiles - and ends in the same `Pagination` row as `/page/N/` (page 1 of N), so `/page/2/` is linked from `/`; `/page/2/` onwards slices from `HOME_PAGE_SIZE`. A second `/blog/N/` archive that paginated the same posts was removed: nothing linked to it and it put 19 near-duplicate URLs in the sitemap. `public/_redirects` sends `/blog/` and `/blog/*` to `/`, `/page/` (no number) to `/`, and the old Hugo tag pagination form `/tags/{tag}/page/{n}/` to the current `/tags/{tag}/{n}/`. The two wildcard rules sit in a block at the very end of the file and must stay there: Cloudflare counts every rule after the first splat or placeholder as dynamic, dynamic rules are capped at 100, and a wildcard placed above the ~130 static rules fails the deploy with `Maximum number of dynamic _redirects rules limit of 100 exceeded`. The `BlogPosting` schema's `isPartOf.@id` points at the site root for the same reason.
 
 Year archives follow the same shape: `/{year}/` (`[year]/index.astro`) is page 1 and `[year]/page/[page].astro` generates pages 2+ only, both at 9 posts a page. The route previously emitted a bare `/{year}/page/` as page 1, a duplicate of the hub with its own canonical that Google indexed alongside it. `worker/index.js` 301s that URL to `/{year}/`; it is done in the worker rather than `_redirects` because a `/:year/page/` placeholder rule would also catch `/tunes/page/` and `/reading/page/`.
 
@@ -381,7 +381,7 @@ Both blocks render only when there is a match - empty intersections produce no U
 1. Calculate similarity based on shared tags
 2. Sort by similarity score
 3. Fall back to recent posts if no tag matches
-4. Display up to 3 related posts
+4. Display up to `limit` posts (default 3; `BlogPost.astro` passes 2), excluding the previous/next posts, as "Keep reading" - a two-column grid of compact `PostCard` tiles
 
 **Benefits**:
 - Improves crawlability
@@ -416,18 +416,17 @@ See [Image Delivery Architecture](./image-delivery.md)
 
 **File**: `src/components/layout/BaseHead.astro`
 
-Fonts are self-hosted via Astro's Fonts API (no Google Fonts requests). The two families - Source Serif 4 (display and body) and IBM Plex Mono (code/metadata) - are loaded as CSS variables:
+Fonts are self-hosted via Astro's Fonts API (no Google Fonts requests). The two families - Geist (UI, headings and article body) and Geist Mono (code) - are Latin-subset variable woff2 files of roughly 25 KB each, loaded as CSS variables:
 
 ```astro
-<Font cssVariable="--font-fraunces" />
-<Font cssVariable="--font-source-serif" />
-<Font cssVariable="--font-ibm-plex-mono" />
+<Font cssVariable="--font-geist" />
+<Font cssVariable="--font-geist-mono" />
 ```
 
 **Benefits**:
 - Self-hosted, no third-party font requests
 - `font-display: swap` with Astro's fallback metrics (zero CLS)
-- No font preload - the LCP element is the hero image, so fonts stay off the critical path
+- No font preload - the LCP element is an image (the post hero, or the lead cover on the homepage), so fonts stay off the critical path
 
 ### Build Compression
 
@@ -523,7 +522,7 @@ Provide meaningful alt text for all images:
 
 ### Anchor Text On Internal Links
 
-Icon-only and overlay links are named with a visually hidden text node, not `aria-label`, so crawlers see anchor text instead of an empty `<a>`. This covers the feed rows (the site's main path into every post), the masthead brand link, and the search triggers. Rationale and the button/link split: [accessibility.md](../guides/accessibility.md#naming-icon-only-links).
+Icon-only and overlay links are named with a visually hidden text node, not `aria-label`, so crawlers see anchor text instead of an empty `<a>`. This covers the masthead brand link and the search triggers. Listing tiles (`PostCard`) and the homepage lead headline are ordinary text links, so they carry anchor text without help. Rationale and the button/link split: [accessibility.md](../guides/accessibility.md#naming-icon-only-links).
 
 ### Update Dates
 

@@ -12,8 +12,8 @@ const mobileMenuLabelId = 'mobile-menu-label'
 	id="site-header"
 	class="masthead relative z-40 surface"
 >
-	<nav class="max-w-[1192px] mx-auto px-4 sm:px-6" aria-label="Main navigation">
-		<div class="flex items-center gap-5 h-[60px]">
+	<nav class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10" aria-label="Main navigation">
+		<div class="flex items-center gap-5 h-[68px]">
 			{/* Icon-only links here name themselves with visually hidden text rather
 			    than an aria-label: identical for assistive tech, but it also gives
 			    crawlers anchor text for the site-wide link home and to search. */}
@@ -144,9 +144,8 @@ const mobileMenuLabelId = 'mobile-menu-label'
 
 		// Initialize theme following Tailwind docs pattern
 		const initializeTheme = () => {
-			// Set the dark class based on localStorage or system preference
-			const isDark = localStorage.theme === 'dark' ||
-				(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+			// Light by default; dark only once the reader has chosen it
+			const isDark = localStorage.theme === 'dark';
 
 			html.classList.toggle('dark', isDark);
 			html.setAttribute('data-theme', isDark ? 'dark' : 'light');

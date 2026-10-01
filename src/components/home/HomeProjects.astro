@@ -1,0 +1,117 @@
+---
+import { getCollection } from 'astro:content'
+import { getPostUrl } from '../../utils/url'
+import { PROJECTS, SOCIAL_LINKS } from '../../consts'
+
+// "Things I've built": one tile per PROJECTS entry, linking to the post that
+// introduced it (falling back to the repo if that post is missing).
+const posts = await getCollection('blog')
+const postById = new Map(posts.map((post) => [post.id, post]))
+const projects = PROJECTS.map((project) => {
+	const post = postById.get(project.post)
+	return { ...project, href: post ? getPostUrl(post.data.pubDate, post.data.title) : project.repo }
+})
+const github = SOCIAL_LINKS.find((link) => link.name === 'github')?.url ?? 'https://github.com/russmckendrick'
+---
+
+<section class="home-projects" aria-labelledby="home-projects-title">
+	<div class="home-section-head">
+		<h2 id="home-projects-title" class="home-section-title">Things I've built</h2>
+		<a href={github} class="home-section-link" rel="noopener noreferrer" target="_blank">All projects on GitHub →</a>
+	</div>
+	<ul class="home-projects-grid" role="list">
+		{projects.map((project) => (
+			<li>
+				<a href={project.href} class="home-project">
+					<span class="home-project-head">
+						<span class="home-project-name">{project.name}</span>
+						<span class="home-project-tag">{project.tag}</span>
+					</span>
+					<span class="home-project-desc">{project.description}</span>
+				</a>
+			</li>
+		))}
+	</ul>
+</section>
+
+<style>
+	.home-projects-grid {
+		display: grid;
+		gap: 0.625rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	@media (min-width: 640px) {
+		.home-projects-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 1rem;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.home-projects-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	.home-project {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		height: 100%;
+		box-sizing: border-box;
+		padding: 1.125rem 1.25rem;
+		border: 1px solid var(--rule);
+		border-radius: 16px;
+		color: var(--color-on-surface);
+		text-decoration: none;
+		transition: border-color var(--dur-quick) ease, background-color var(--dur-quick) ease;
+	}
+
+	@media (min-width: 640px) {
+		.home-project {
+			padding: 1.5rem;
+			min-height: 140px;
+		}
+	}
+
+	.home-project:hover,
+	.home-project:focus-visible {
+		border-color: var(--rule-strong);
+		background-color: var(--paper-well);
+		color: var(--color-on-surface);
+	}
+
+	.home-project-head {
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
+	}
+
+	.home-project-name {
+		font-family: var(--font-mono);
+		font-size: 1rem;
+		font-weight: 700;
+	}
+
+	.home-project-tag {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		color: var(--color-on-surface-variant);
+		padding: 0.125rem 0.5rem;
+		background-color: var(--paper-well);
+		border-radius: 6px;
+	}
+
+	.home-project:hover .home-project-tag {
+		background-color: var(--color-surface);
+	}
+
+	.home-project-desc {
+		font-size: 0.9375rem;
+		line-height: 1.5;
+		color: var(--color-on-surface-variant);
+	}
+</style>

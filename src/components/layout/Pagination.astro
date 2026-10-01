@@ -74,63 +74,142 @@ const previousHref = currentPage > 1 ? getHref(currentPage - 1) : null;
 const nextHref = currentPage < totalPages ? getHref(currentPage + 1) : null;
 ---
 
-<nav class="pagination-row pt-7 grid grid-cols-[1fr_auto_1fr] items-center text-sm text-on-surface-variant" aria-label="Pagination">
+{/* Newer · numbered pages · Older, as one centred row of pill buttons.
+    The current page is an ink-filled pill; the step that has nowhere to go
+    renders as a disabled pill so the row never jumps. Below 640px the
+    Newer/Older labels collapse to arrows. */}
+<nav class="pagination" aria-label="Pagination">
 	{previousHref ? (
-		<a
-			href={previousHref}
-			rel="prev"
-			class="justify-self-start -ml-2.5 no-underline inline-flex items-center gap-1 px-2.5 py-1 hover:text-on-surface"
-			aria-label={newerLabel}
-		>
+		<a href={previousHref} rel="prev" class="pagination-step" aria-label={newerLabel}>
 			<span aria-hidden="true">&larr;</span>
-			<span class="hidden sm:inline">{newerLabel}</span>
+			<span class="pagination-step-label">{newerLabel}</span>
 		</a>
 	) : (
-		/* No newer page — hold the grid track so the numbers stay centred. A ghosted
-		   label would fail contrast: --ink-muted is only 5.15:1 on paper, so there is
-		   no headroom to dim it and still clear AA. */
-		<span></span>
+		<span class="pagination-step is-disabled" aria-hidden="true">
+			<span>&larr;</span>
+			<span class="pagination-step-label">{newerLabel}</span>
+		</span>
 	)}
-	<span class="flex flex-wrap items-center justify-center gap-x-0.5 gap-y-2">
+	<ol class="pagination-pages">
 		{pageItems.map((item) => (
-			item === 'ellipsis' ? (
-				<span class="px-1 py-1" aria-hidden="true">&hellip;</span>
-			) : (
-				<a
-					href={getHref(item)}
-					class:list={[
-						'no-underline px-2.5 py-1 hover:text-on-surface',
-						item === currentPage && 'pagination-current',
-					]}
-					aria-current={item === currentPage ? 'page' : undefined}
-					aria-label={`Page ${item}`}
-				>
-					{item}
-				</a>
-			)
+			<li>
+				{item === 'ellipsis' ? (
+					<span class="pagination-gap" aria-hidden="true">&hellip;</span>
+				) : (
+					<a
+						href={getHref(item)}
+						class:list={['pagination-page', item === currentPage && 'is-current']}
+						aria-current={item === currentPage ? 'page' : undefined}
+						aria-label={`Page ${item}`}
+					>
+						{item}
+					</a>
+				)}
+			</li>
 		))}
-	</span>
+	</ol>
 	{nextHref ? (
-		<a
-			href={nextHref}
-			rel="next"
-			class="justify-self-end no-underline inline-flex items-center gap-1 py-1 pl-2.5 hover:text-on-surface"
-			aria-label={olderLabel}
-		>
-			<span class="hidden sm:inline">{olderLabel}</span>
+		<a href={nextHref} rel="next" class="pagination-step" aria-label={olderLabel}>
+			<span class="pagination-step-label">{olderLabel}</span>
 			<span aria-hidden="true">&rarr;</span>
 		</a>
 	) : (
-		<span></span>
+		<span class="pagination-step is-disabled" aria-hidden="true">
+			<span class="pagination-step-label">{olderLabel}</span>
+			<span>&rarr;</span>
+		</span>
 	)}
 </nav>
 
 <style>
-	/* 3px padding + 1px border equals the siblings' 4px py-1, so the row height never shifts. */
-	.pagination-current {
-		color: var(--color-on-surface);
+	.pagination {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		margin-top: 3.5rem;
+		font-size: 0.9375rem;
+	}
+
+	.pagination-pages {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 0.375rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.pagination-page,
+	.pagination-step,
+	.pagination-gap {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		min-width: 44px;
+		height: 44px;
+		border-radius: 9999px;
 		font-weight: 600;
-		border-bottom: 1px solid var(--color-on-surface);
-		padding-bottom: 3px;
+		text-decoration: none;
+		color: var(--color-on-surface);
+	}
+
+	.pagination-page {
+		padding: 0 0.75rem;
+		border: 1px solid var(--rule);
+		transition: border-color var(--dur-quick) ease, background-color var(--dur-quick) ease;
+	}
+
+	.pagination-page:hover {
+		border-color: var(--rule-strong);
+		background-color: var(--paper-well);
+		color: var(--color-on-surface);
+	}
+
+	.pagination-page.is-current {
+		background-color: var(--color-on-surface);
+		border-color: var(--color-on-surface);
+		color: var(--color-surface);
+	}
+
+	.pagination-gap {
+		min-width: 1.5rem;
+		color: var(--color-on-surface-variant);
+	}
+
+	.pagination-step {
+		padding: 0 1.125rem;
+		border: 1px solid var(--rule-strong);
+		transition: background-color var(--dur-quick) ease;
+	}
+
+	.pagination-step:hover {
+		background-color: var(--paper-well);
+		color: var(--color-on-surface);
+	}
+
+	/* Mist text on the page stays above 4.5:1, so the dead step is still legible */
+	.pagination-step.is-disabled {
+		border-color: var(--rule);
+		color: var(--color-on-surface-variant);
+		font-weight: 500;
+	}
+
+	@media (max-width: 639px) {
+		.pagination {
+			gap: 0.5rem;
+		}
+
+		.pagination-step {
+			padding: 0;
+		}
+
+		.pagination-step-label {
+			display: none;
+		}
 	}
 </style>

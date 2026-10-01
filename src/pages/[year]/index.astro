@@ -82,10 +82,10 @@ const breadcrumbSchema = createBreadcrumbSchema(
 <BaseLayout title={title} description={description}>
 	<Schema slot="head" item={collectionSchema} />
 	<Schema slot="head" item={breadcrumbSchema} />
-	<section class="max-w-[728px] mx-auto px-6">
-		<header class="pt-8 pb-6 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
+	<section class="page-frame">
+		<header class="page-head" data-entrance>
 			<h1>{year}</h1>
-			<p class="mt-3 text-lg text-on-surface-variant leading-normal">
+			<p class="page-lede">
 				{totalItems} {totalItems === 1 ? 'post' : 'posts'} published in {year}
 			</p>
 		</header>
