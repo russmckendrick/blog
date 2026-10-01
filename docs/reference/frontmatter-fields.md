@@ -27,6 +27,7 @@ title: "Installing Docker on Ubuntu 24.04"
 - Keep under 60 characters for SEO
 - Be descriptive and specific
 - Use title case
+- The URL slug is generated from the title, so changing it on a published post moves the post to a new address. To change the search-result title only, use [`seoTitle`](#seotitle)
 
 ---
 
@@ -94,6 +95,24 @@ tags: ["docker", "ubuntu", "devops", "containers"]
 ---
 
 ## Optional Fields
+
+### seoTitle
+
+**Type**: `string`
+
+**Default**: `undefined` (falls back to `title`)
+
+**Description**: Blog posts only. Replaces the post title in the `<title>` tag, `og:title`, `twitter:title` and the `BlogPosting` JSON-LD headline. The visible heading, cards, breadcrumbs and the URL keep using `title`.
+
+The post URL slug is generated from `title` (`createUrlFriendlySlug()` in `src/utils/url.ts`), so editing `title` on a published post moves it to a new address. Use `seoTitle` to change what search results show for a post that already ranks.
+
+**Example**:
+```yaml
+title: "My Starship Prompt Setup"
+seoTitle: "My Starship Prompt Setup: Gruvbox Config, Themes and Presets"
+```
+
+---
 
 ### draft
 
@@ -419,6 +438,7 @@ Example:
 ```typescript
 const blogSchema = z.object({
   title: z.string(),
+  seoTitle: z.string().optional(),
   description: z.string(),
   pubDate: z.coerce.date(),
   tags: z.array(z.string()),

@@ -75,6 +75,8 @@ The same worker adds `charset=utf-8` to HTML responses: the assets binding sends
 
 **Page titles**: `BaseLayout.astro` builds `<title>` as `{page title} | {SITE_TITLE}`, but skips the suffix when the page title already contains the site name — otherwise the hubs that bake it in themselves render as `Archives - Russ McKendrick | Russ McKendrick`. The homepage is the one page whose title is neither a section name nor a post: it uses `HOME_TITLE` ("Russ.Cloud — The personal blog of Russ McKendrick") for both `<title>` and its `sr-only` `<h1>`, because the bare 15-character site title is a thin SERP entry for the site's most linked page.
 
+**Post titles**: blog posts render their `title` frontmatter as the `<title>`, `og:title`, `twitter:title` and `BlogPosting` headline, unless the post sets `seoTitle`, in which case `BlogPost.astro` passes that instead. The visible `<h1>`, breadcrumbs, cards and the URL always use `title`. The split exists because post URLs are slugged from `title` (`src/utils/url.ts`), so retitling a post that already ranks would otherwise move it to a new address. See [Frontmatter Fields](../reference/frontmatter-fields.md#seotitle).
+
 ### Structured Data (JSON-LD)
 
 **Package**: `astro-seo-schema` + `schema-dts`

@@ -26,6 +26,10 @@ const blog = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			title: z.string(),
+			// Search-result title: overrides <title>, og:title and the BlogPosting
+			// headline only. The URL slug is built from `title`, so retitling a
+			// ranking post goes here rather than moving its address.
+			seoTitle: z.string().optional(),
 			description: z.string(),
 			// Transform string to Date object - support both pubDate and date
 			pubDate: z.coerce.date().optional(),
