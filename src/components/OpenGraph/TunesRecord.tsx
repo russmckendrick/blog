@@ -3,7 +3,8 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import { OG_HEIGHT, OG_WIDTH } from "./dimensions";
 import {
-  ACCENT,
+  ACCENT_FILL,
+  FONT,
   HAIRLINE,
   imageDataUri,
   INK,
@@ -123,7 +124,7 @@ export default async function TunesRecord(
         width: "100%",
         height: "100%",
         backgroundColor: PAPER,
-        fontFamily: "Schibsted Grotesk",
+        fontFamily: FONT,
         position: "relative",
       }}
     >
@@ -136,7 +137,7 @@ export default async function TunesRecord(
           width: `${DISC}px`,
           height: `${DISC}px`,
           borderRadius: `${DISC}px`,
-          backgroundColor: "#171512",
+          backgroundColor: "#0B0B0C",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -231,9 +232,10 @@ export default async function TunesRecord(
             style={{
               fontSize: "17px",
               fontWeight: 700,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              color: ACCENT,
+              color: INK,
+              backgroundColor: ACCENT_FILL,
+              padding: "6px 14px",
+              borderRadius: "999px",
             }}
           >
             {options.eyebrow}
@@ -241,10 +243,10 @@ export default async function TunesRecord(
           <div
             style={{
               fontSize: `${titleSize(title.length)}px`,
-              fontWeight: 700,
+              fontWeight: 800,
               color: INK,
-              lineHeight: 1.1,
-              letterSpacing: "-0.016em",
+              lineHeight: 1.06,
+              letterSpacing: "-0.035em",
               marginTop: "14px",
             }}
           >

@@ -11,19 +11,17 @@ import { OG_HEIGHT, OG_SCALE, OG_WIDTH } from "./dimensions";
 // first skips the font parse.
 const renderer = new Renderer();
 
-// The site's own variable face, straight from src/assets/fonts. Registered
-// without a weight so the wght axis stays live and the cards' fontWeight
-// 400/500/700 map onto it directly — no static instances, no fontTools.
-// Resolved from the working directory like every other OG asset: in the
-// production bundle import.meta.url points into dist/, where no font lives.
+// The site's own variable face (Geist, wght 400-800), straight from
+// src/assets/fonts. Registered without a weight so the wght axis stays live
+// and the cards' fontWeight values map onto it directly — no static
+// instances. Resolved from the working directory like every other OG asset:
+// in the production bundle import.meta.url points into dist/, where no font
+// lives.
 const fonts = fs
   .readFile(
-    path.join(
-      process.cwd(),
-      "src/assets/fonts/schibsted-grotesk-variable-latin.woff2",
-    ),
+    path.join(process.cwd(), "src/assets/fonts/geist-variable-latin.woff2"),
   )
-  .then((data) => [{ name: "Schibsted Grotesk", data }]);
+  .then((data) => [{ name: "Geist", data }]);
 
 const width = OG_WIDTH * OG_SCALE;
 const height = OG_HEIGHT * OG_SCALE;

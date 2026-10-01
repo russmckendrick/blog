@@ -178,10 +178,8 @@ fonttools (~24 KB each):
 - The masthead wordmark is **not a live face**: "russ" (Poppins ExtraBold)
   and ".cloud" (Poppins Light) are baked to SVG outline paths by
   `scripts/generate-logo.js`, so Poppins is never loaded.
-- The Reading Room faces are gone from the site. Only
-  `schibsted-grotesk-variable-latin.woff2` stays in `src/assets/fonts/`,
-  because the OpenGraph cards (`src/components/OpenGraph/`) still render
-  with it.
+- The OpenGraph cards render with the same Geist file, so there is no
+  second family anywhere; the Reading Room faces have been removed.
 
 ## Layout
 
@@ -324,6 +322,23 @@ this week** (four covers, the entry title, `N weeks of listening →`; dropped
 on the homepage, which has its own panel). A hairline bar closes it:
 `© 2026 Russ McKendrick` left, `Source on GitHub · RSS · Back to top ↑`
 right.
+
+## OpenGraph cards
+
+`src/components/OpenGraph/` renders every card in the same system: white
+page, Geist 800 headlines, mist rubric, amber marks.
+
+- **Cover card** (posts and hubs): the homepage lead as a card — the cover
+  inset 32px with a 28px radius, the lockup on a white pill in its top-left,
+  and the headline plus `date · read time · tag` on a white panel cut into the
+  cover's bottom-left corner. No scrim; the words sit on the page.
+- **Plate** (coverless fallback): white page, lockup, headline, standfirst,
+  and a tint footer band with an amber dot and the rubric.
+- **Tunes record** (albums and artists): sleeve and disc on white, an amber
+  pill for `Album`/`Artist`, the name at 800.
+
+Bump the `og-design:` salt in the `*-og.png.ts` routes after any card
+change, or CI's cache keeps serving the old renders.
 
 ## Motion
 
