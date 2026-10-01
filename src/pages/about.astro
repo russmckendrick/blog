@@ -2,15 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Schema } from 'astro-seo-schema';
 import { getCollection } from 'astro:content';
-import { createPersonSchema, createOrganizationSchema } from '../utils/schema';
+import { createProfilePageSchema } from '../utils/schema';
 import { getAvailableAvatars, getAvatarImageUrl } from '../utils/avatars';
 import { getCFImageUrl } from '../utils/cloudflare-images';
 import { getTagColorClasses, getTagName, normalizeTagSlug } from '../utils/tags';
 import HomeProjects from '../components/home/HomeProjects.astro';
 
 const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
-const personSchema = createPersonSchema(siteUrl);
-const organizationSchema = createOrganizationSchema(siteUrl);
+// A ProfilePage wrapping the author: Google's preferred markup for a person's
+// profile, and the canonical home of the site-wide #person entity.
+const profileSchema = createProfilePageSchema(siteUrl, new URL('/about/', siteUrl).toString());
 
 // Avatar renders at 80px in the byline row. Resolve delivery URLs here
 // rather than in the client script so the swapped-in avatars go through
@@ -69,10 +70,9 @@ const stats = [
 const bookCoverWidth = 200;
 ---
 
-<BaseLayout title="About Russ McKendrick" description="Russ McKendrick — Practice Manager of SRE & DevOps at Node4, author of fourteen technical books, and writing about Linux, containers, and automation on russ.cloud since 2013.">
+<BaseLayout title="About Russ McKendrick" description="Russ McKendrick: Practice Manager of SRE & DevOps at Node4, author of fourteen technical books, and writing about DevOps, AI tooling and Linux since 2013.">
 	<Fragment slot="head">
-		<Schema item={personSchema} />
-		<Schema item={organizationSchema} />
+		<Schema item={profileSchema} />
 	</Fragment>
 	<!-- Intro band: the same full-width tint as the homepage intro — the
 	     clickable avatar, the greeting and lede, and the archive in numbers. -->

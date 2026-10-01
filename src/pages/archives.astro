@@ -1,7 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE_TITLE, CF_IMAGE_PRESETS } from '../consts';
+import { CF_IMAGE_PRESETS } from '../consts';
+import { Schema } from 'astro-seo-schema';
+import { createCollectionPageSchema } from '../utils/schema';
 import { getCFImageUrl } from '../utils/cloudflare-images';
 
 // Get all posts and tunes
@@ -40,11 +42,19 @@ const years = [...byYear.entries()].sort((a, b) => b[0] - a[0]);
 const total = posts.length + tunes.length;
 const preset = CF_IMAGE_PRESETS.thumbnail;
 
-const title = `Archives - ${SITE_TITLE}`;
-const description = 'Browse all posts by year';
+const title = 'Archives';
+const description = `Every post and weekly tunes write-up on Russ.Cloud since ${years.at(-1)?.[0]}, by year: ${posts.length} posts and ${tunes.length} weeks of listening, from Puppet and Docker to AI coding tools.`;
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
+const collectionSchema = createCollectionPageSchema({
+	name: 'Archives',
+	description,
+	url: new URL('/archives/', siteUrl).toString(),
+	items: years.map(([year]) => ({ name: String(year), url: new URL(`/${year}/`, siteUrl).toString() }))
+});
 ---
 
 <BaseLayout title={title} description={description} image="/archives-og.png">
+	<Schema slot="head" item={collectionSchema} />
 	<section class="page-frame pb-16">
 		<header class="page-head" data-entrance>
 			<h1>Archives</h1>

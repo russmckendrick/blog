@@ -19,6 +19,7 @@ import RelatedPosts from '../components/blog/RelatedPosts.astro';
 import { getTagUrl, getTagDisplayName, getTagName, normalizeTagSlug } from '../utils/tags';
 import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, AUTHOR_SLUG, TAG_AVATAR_MAP } from '../consts';
 import { Schema } from 'astro-seo-schema';
+import { stripEmoji } from '../utils/seo';
 import { createBlogPostingSchema, createBreadcrumbSchema, createFAQSchema, createHowToSchema } from '../utils/schema';
 
 
@@ -56,7 +57,7 @@ const faqs = (Astro.props as Props & { faqs?: { question: string; answer: string
 const howto = (Astro.props as Props & { howto?: { totalTime?: string; steps: { name: string; text: string; image?: string }[] } }).howto;
 
 // Default fallback image
-const defaultImage = '/images/blog-cover.png';
+const defaultImage = '/home-og.png';
 
 // Use the provided OG image path
 const ogImage = ogImagePath;
@@ -197,7 +198,7 @@ const howToSchema = howto && howto.steps?.length > 0
 	: null;
 ---
 
-<html lang="en">
+<html lang="en-GB">
 	{/* Plain <head>, not astro-capo's <Head>: wrapping the head in a component
 	    hides it from Astro's static head detection, so the page's inlined
 	    stylesheet lands in the <body> and the top of the page paints unstyled
@@ -212,6 +213,9 @@ const howToSchema = howto && howto.steps?.length > 0
 			lastModified={lastModified}
 			author={authorName}
 			keywords={tags}
+			type="article"
+			articleSection={tags[0] ? stripEmoji(getTagDisplayName(tags[0])) : undefined}
+			articleTags={tags.map((tag) => stripEmoji(getTagDisplayName(tag)))}
 			analytics={{
 				content_type: entry?.collection ?? (isTune ? 'tunes' : 'blog'),
 				primary_tag: tags[0] ?? 'none',

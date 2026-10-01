@@ -38,7 +38,7 @@ export const getStaticPaths = (() => {
 const { items, currentPage, totalPages, tagCounts } = Astro.props
 ---
 
-<BaseLayout title={`Reading List - Page ${currentPage}`} description="Articles and links I've saved and read on Instapaper">
+<BaseLayout title={`Reading list, page ${currentPage}`} description={`Page ${currentPage} of the articles I have saved on Instapaper this year, newest first and grouped by month, each linking to the original.`}>
   <section class="page-frame pb-16">
     <ReadingHeader totalArticles={readingData.length} tagCounts={tagCounts} />
     <ReadingList items={items} />

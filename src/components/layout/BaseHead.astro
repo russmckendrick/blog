@@ -4,7 +4,7 @@
 import '../../styles/global.css';
 import { Font } from 'astro:assets';
 import { AstroSEO } from 'astro-seo-plugin';
-import { SITE_TITLE, SITE_KEYWORDS } from '../../consts';
+import { SITE_NAME, SITE_KEYWORDS } from '../../consts';
 import { OG_HEIGHT, OG_SCALE, OG_WIDTH } from '../OpenGraph/dimensions';
 
 interface Props {
@@ -19,13 +19,28 @@ interface Props {
 	analytics?: Record<string, string>;
 	/** Emit `noindex` so the page is crawlable but kept out of results (search, utility pages). */
 	noindex?: boolean;
+	/** og:type — 'article' on posts, 'website' everywhere else. */
+	type?: 'website' | 'article';
+	/** article:section (posts only) — the primary tag's display name. */
+	articleSection?: string;
+	/** article:tag, one tag per entry (posts only). */
+	articleTags?: string[];
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-// Default fallback image (public URL)
-const defaultImage = '/images/blog-cover.png';
-const { title, description, image = defaultImage, keywords = SITE_KEYWORDS, datePublished, dateModified, lastModified, author, analytics = { content_type: 'page' }, noindex = false } = Astro.props;
+// Default share image: the homepage's generated Workbench card, so pages
+// without a card of their own still share at the declared 2400x1260.
+const defaultImage = '/home-og.png';
+const { title, description, image = defaultImage, keywords = SITE_KEYWORDS, datePublished, dateModified, lastModified, author, analytics = { content_type: 'page' }, noindex = false, type = 'website', articleSection, articleTags = [] } = Astro.props;
+
+// Only generated cards (*-og.png) are known to be OG_WIDTH x OG_HEIGHT at
+// OG_SCALE; any other image is shared without declared dimensions rather
+// than with wrong ones.
+const isGeneratedCard = /-og\.png$/.test(image || defaultImage);
+
+// The tunes feed is advertised alongside the main one on tunes pages
+const isTunes = analytics.content_type === 'tunes' || Astro.url.pathname.startsWith('/tunes/');
 
 // Use lastModified if available, otherwise fall back to dateModified
 const effectiveModifiedDate = lastModified || dateModified;
@@ -45,14 +60,14 @@ const imageURL = image?.startsWith('http')
 <AstroSEO
 	title={title}
 	description={description}
-	canonical={canonicalURL.toString()}
+	canonical={noindex ? undefined : canonicalURL.toString()}
 	openGraph={{
 		title: title,
 		description: description,
-		type: "website",
-		url: Astro.url.toString(),
+		type: type,
+		url: canonicalURL.toString(),
 		image: imageURL,
-		siteName: SITE_TITLE,
+		siteName: SITE_NAME,
 		locale: "en_GB"
 	}}
 	twitter={{
@@ -70,13 +85,16 @@ const imageURL = image?.startsWith('http')
 	additionalMetaTags={[
 		{ name: "keywords", content: keywords.join(', ') },
 		{ name: "generator", content: Astro.generator },
-		{ name: "theme-color", content: "#ffffff" },
-		{ property: "og:image:width", content: String(OG_WIDTH * OG_SCALE) },
-		{ property: "og:image:height", content: String(OG_HEIGHT * OG_SCALE) },
+		...(isGeneratedCard ? [
+			{ property: "og:image:width", content: String(OG_WIDTH * OG_SCALE) },
+			{ property: "og:image:height", content: String(OG_HEIGHT * OG_SCALE) },
+		] : []),
 		{ property: "og:image:alt", content: title },
 		...(datePublished ? [{ property: "article:published_time", content: datePublished.toISOString() }] : []),
 		...(effectiveModifiedDate || datePublished ? [{ property: "article:modified_time", content: (effectiveModifiedDate || datePublished)!.toISOString() }] : []),
-		...(author ? [{ property: "article:author", content: author }] : [])
+		...(author ? [{ property: "article:author", content: author }] : []),
+		...(type === 'article' && articleSection ? [{ property: "article:section", content: articleSection }] : []),
+		...(type === 'article' ? articleTags.map((tag) => ({ property: "article:tag", content: tag })) : [])
 	]}
 	additionalLinkTags={[
 		{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
@@ -85,11 +103,17 @@ const imageURL = image?.startsWith('http')
 		{ rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
 		{ rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
 		{ rel: "mask-icon", href: "/images/logo.svg" },
+		{ rel: "manifest", href: "/site.webmanifest" },
 		{ rel: "sitemap", href: "/sitemap-index.xml" },
-		{ rel: "alternate", type: "application/rss+xml", href: new URL('rss.xml', Astro.site).toString() },
+		{ rel: "alternate", type: "application/rss+xml", title: "Russ.Cloud", href: new URL('rss.xml', Astro.site).toString() },
+		...(isTunes ? [{ rel: "alternate", type: "application/rss+xml", title: "Russ.Cloud: Listened to This Week", href: new URL('tunes/rss.xml', Astro.site).toString() }] : []),
 		{ rel: "me", href: "https://social.mckendrick.io/@russ" }
 	]}
 />
+
+<!-- Browser chrome follows the reader's theme: page white, or the dark page -->
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)" />
 
 <!-- Self-hosted fonts via Astro's Fonts API (auto @font-face + CLS-safe fallback metrics). -->
 <!--

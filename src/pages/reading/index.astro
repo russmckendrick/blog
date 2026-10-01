@@ -4,6 +4,8 @@ import Pagination from '../../components/layout/Pagination.astro'
 import ReadingList from '../../components/reading/ReadingList.astro'
 import ReadingHeader from '../../components/reading/ReadingHeader.astro'
 import readingData from '../../data/reading-filtered'
+import { Schema } from 'astro-seo-schema'
+import { createCollectionPageSchema } from '../../utils/schema'
 
 const ITEMS_PER_PAGE = 30
 
@@ -19,10 +21,18 @@ for (const item of readingData) {
 }
 
 const title = 'Reading List'
-const description = 'Articles and links I\'ve saved and read on Instapaper'
+const description = 'Articles I have saved on Instapaper this year, newest first and grouped by month: AI, security, cloud and the odd essay, each linking to the original.'
+const collectionSchema = createCollectionPageSchema({
+  name: 'Reading list',
+  description,
+  url: new URL('/reading/', Astro.site).toString(),
+  items: items.map((item) => ({ name: item.title, url: item.url })),
+  numberOfItems: readingData.length
+})
 ---
 
 <BaseLayout title={title} description={description}>
+  <Schema slot="head" item={collectionSchema} />
   <section class="page-frame pb-16">
     <ReadingHeader totalArticles={readingData.length} tagCounts={tagCounts} />
     <ReadingList items={items} />

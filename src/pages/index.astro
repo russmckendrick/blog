@@ -14,7 +14,7 @@ import { getPostUrl } from '../utils/url';
 import { getTuneCovers } from '../utils/tune-covers';
 import { leadImageAttrs } from '../utils/home-lead';
 import { Schema } from 'astro-seo-schema';
-import { createWebSiteSchema } from '../utils/schema';
+import { createWebSiteSchema, createPersonSchema } from '../utils/schema';
 
 const allPosts = (await getCollection('blog'))
 	.filter(post => import.meta.env.DEV || !post.data.draft)
@@ -37,7 +37,10 @@ const books = (await getCollection('books', ({ data }) => !data.draft))
 const sinceYear = Math.min(...allPosts.map(post => post.data.pubDate.getFullYear()));
 const spinning = latestTune ? getTuneCovers(latestTune, 1)[0]?.alt : undefined;
 
-const webSiteSchema = createWebSiteSchema(Astro.site?.toString() || 'https://www.russ.cloud/');
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
+const webSiteSchema = createWebSiteSchema(siteUrl);
+// The publisher the WebSite node points at, so the @id resolves on this page
+const personSchema = createPersonSchema(siteUrl);
 ---
 
 <BaseLayout title={HOME_TITLE} description={SITE_DESCRIPTION} image="/home-og.png" footerTunes={false}>
@@ -53,6 +56,7 @@ const webSiteSchema = createWebSiteSchema(Astro.site?.toString() || 'https://www
 		/>
 	)}
 	<Schema slot="head" item={webSiteSchema} />
+	<Schema slot="head" item={personSchema} />
 	<h1 class="sr-only">{HOME_TITLE}</h1>
 
 	{lead && (

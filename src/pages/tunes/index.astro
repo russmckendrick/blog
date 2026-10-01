@@ -10,6 +10,8 @@ import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudfl
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
 import { getTuneCovers } from '../../utils/tune-covers';
 import { CF_IMAGE_PRESETS, SOCIAL_LINKS } from '../../consts';
+import { Schema } from 'astro-seo-schema';
+import { createCollectionPageSchema } from '../../utils/schema';
 
 // Tunes homepage: one lead week + 6 previous weeks as rows
 const firstPagePosts = 7;
@@ -36,9 +38,20 @@ const leadCovers = leadTune ? getTuneCovers(leadTune, 8) : [];
 
 const lastfmUrl = SOCIAL_LINKS.find(l => l.name === 'lastfm')?.url;
 const discogsUrl = SOCIAL_LINKS.find(l => l.name === 'discogs')?.url;
+
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
+const tunesDescription = "What I've been playing, week by week: every Listened to This Week post on Russ.Cloud, with AI-written notes on the records from my own collection.";
+const tunesSchema = createCollectionPageSchema({
+	name: 'Listened to This Week',
+	description: tunesDescription,
+	url: new URL('/tunes/', siteUrl).toString(),
+	items: tunes.map((tune) => ({ name: tune.data.title, url: new URL(getPostUrl(tune.data.pubDate, tune.data.title), siteUrl).toString() })),
+	numberOfItems: allTunes.length
+});
 ---
 
-<BaseLayout title="Listened to This Week" description="My weekly music listening posts - what I've been enjoying on repeat">
+<BaseLayout title="Listened to This Week" description={tunesDescription}>
+	<Schema slot="head" item={tunesSchema} />
 	<section class="page-frame">
 		<header class="page-head !border-b-0 !pb-2" data-entrance>
 			<h1>Listened to This Week</h1>

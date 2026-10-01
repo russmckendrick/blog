@@ -5,7 +5,6 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PostCard from '../../../components/blog/PostCard.astro';
 import Pagination from '../../../components/layout/Pagination.astro';
-import { SITE_TITLE } from '../../../consts';
 
 // The year hub (/[year]/) is page 1 of each year's archive. Only pages 2+ are
 // generated here, so no bare /[year]/page/ duplicate of the hub exists;
@@ -47,8 +46,8 @@ export const getStaticPaths = (async () => {
 const { page } = Astro.props;
 const { year } = Astro.params;
 
-const title = `${year} Archive - Page ${page.currentPage} - ${SITE_TITLE}`;
-const description = `All posts and tunes from ${year} - Page ${page.currentPage}`;
+const title = `${year} archive, page ${page.currentPage}`;
+const description = `Page ${page.currentPage} of everything published on Russ.Cloud in ${year}, newest first: technical posts on DevOps and tooling, and weekly tunes write-ups.`;
 ---
 
 <BaseLayout title={title} description={description}>

@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import Pagination from '../../components/layout/Pagination.astro';
-import { SITE_TITLE } from '../../consts';
 import { Schema } from 'astro-seo-schema';
 import { createCollectionPageSchema, createBreadcrumbSchema } from '../../utils/schema';
 import { createUrlFriendlySlug } from '../../utils/url';
@@ -46,8 +45,8 @@ const yearContent = allContent
 
 const totalPages = Math.ceil(totalItems / postsPerPage);
 
-const title = `${year} Archive - ${SITE_TITLE}`;
-const description = `All posts and tunes from ${year}`;
+const title = `${year} archive`;
+const description = `Everything published on Russ.Cloud in ${year}, newest first: ${totalItems} ${totalItems === 1 ? 'entry' : 'entries'}, from technical posts on DevOps and tooling to weekly tunes write-ups.`;
 
 const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();

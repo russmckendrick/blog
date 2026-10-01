@@ -1,7 +1,6 @@
 import type {
   BlogPosting,
   Person,
-  Organization,
   BreadcrumbList,
   FAQPage,
   HowTo,
@@ -12,43 +11,57 @@ import type {
   DefinedTerm,
   Book,
   WebSite,
+  ProfilePage,
   WithContext
 } from 'schema-dts'
-import { SITE_TITLE, AUTHOR_NAME, AUTHOR_HOMEPAGE, SOCIAL_LINKS } from '../consts'
+import { SITE_TITLE, SITE_NAME, SITE_LANG, AUTHOR_NAME, AUTHOR_HOMEPAGE, SOCIAL_LINKS } from '../consts'
+import { absoluteUrl, avatarPng, stripEmoji } from './seo'
+
+/**
+ * Stable @ids so every page's JSON-LD points at the same author and site
+ * entities instead of redefining them. The person node lives on /about/.
+ */
+export const personId = (siteUrl: string) => absoluteUrl('/about/#person', siteUrl)
+export const websiteId = (siteUrl: string) => absoluteUrl('/#website', siteUrl)
+
+/** Rich results don't take SVG images; this PNG is the author's avatar. */
+const AUTHOR_IMAGE = '/images/avatar-192x192.png'
 
 /**
  * Creates a Person schema for the author
  */
 export function createPersonSchema(siteUrl: string, avatarPath?: string): WithContext<Person> {
   const socialUrls = SOCIAL_LINKS.map(link => link.url)
-  const defaultAvatar = '/images/avatar.svg'
-  const avatarUrl = avatarPath || defaultAvatar
+  const avatarUrl = avatarPng(avatarPath || AUTHOR_IMAGE)
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': personId(siteUrl),
     name: AUTHOR_NAME,
     url: AUTHOR_HOMEPAGE,
-    image: new URL(avatarUrl, siteUrl).toString(),
+    image: absoluteUrl(avatarUrl, siteUrl),
     sameAs: socialUrls,
     knowsAbout: ['DevOps', 'Cloud Computing', 'Docker', 'Kubernetes', 'Azure', 'AWS', 'Linux', 'Automation']
   }
 }
 
 /**
- * Creates an Organization schema for the publisher
+ * Creates a ProfilePage schema for the about page, with the author as its
+ * main entity (Google's preferred markup for a person's profile page).
  */
-export function createOrganizationSchema(siteUrl: string): WithContext<Organization> {
+export function createProfilePageSchema(siteUrl: string, pageUrl: string): WithContext<ProfilePage> {
+  // schema-dts types Person as a union with string, so copy it as a plain
+  // object to drop the nested @context
+  const person = { ...(createPersonSchema(siteUrl) as unknown as Record<string, unknown>) }
+  delete person['@context']
   return {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: SITE_TITLE,
-    url: siteUrl,
-    logo: {
-      '@type': 'ImageObject',
-      url: new URL('/images/logo.svg', siteUrl).toString()
-    },
-    sameAs: SOCIAL_LINKS.map(link => link.url)
+    '@type': 'ProfilePage',
+    url: pageUrl,
+    inLanguage: SITE_LANG,
+    isPartOf: { '@id': websiteId(siteUrl) },
+    mainEntity: person as unknown as Person
   }
 }
 
@@ -88,33 +101,24 @@ export function createBlogPostingSchema({
   articleSection,
   inLanguage = 'en-GB'
 }: BlogPostingSchemaProps): WithContext<BlogPosting> {
-  const authorImageUrl = authorAvatar
-    ? new URL(authorAvatar, siteUrl).toString()
-    : new URL('/images/avatar.svg', siteUrl).toString()
+  const authorImageUrl = absoluteUrl(avatarPng(authorAvatar || AUTHOR_IMAGE), siteUrl)
 
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: title,
     description: description,
-    image: image,
+    image: absoluteUrl(image, siteUrl),
     datePublished: datePublished.toISOString(),
     dateModified: (dateModified || datePublished).toISOString(),
     inLanguage,
-    author: {
-      '@type': 'Person',
-      name: author,
-      url: AUTHOR_HOMEPAGE,
-      image: authorImageUrl
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: SITE_TITLE,
-      logo: {
-        '@type': 'ImageObject',
-        url: new URL('/images/logo.svg', siteUrl).toString()
-      }
-    },
+    // Tunes posts are credited to the AI author; everything else links to
+    // the site-wide person entity.
+    author: author === AUTHOR_NAME
+      ? { '@type': 'Person', '@id': personId(siteUrl), name: author, url: AUTHOR_HOMEPAGE, image: authorImageUrl }
+      : { '@type': 'Person', name: author, image: authorImageUrl },
+    // A personal blog: the publisher is the author, not an organisation
+    publisher: { '@type': 'Person', '@id': personId(siteUrl), name: AUTHOR_NAME, url: AUTHOR_HOMEPAGE },
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': url
@@ -124,14 +128,14 @@ export function createBlogPostingSchema({
       // The homepage is the blog's listing; the old /blog/ archive route was
       // an orphaned duplicate of it and now redirects here.
       '@id': new URL('/', siteUrl).toString(),
-      name: SITE_TITLE
+      name: SITE_NAME
     },
     keywords: keywords.join(', '),
     ...(typeof wordCount === 'number' && wordCount > 0 && { wordCount }),
     ...(typeof readingTimeMinutes === 'number' && readingTimeMinutes > 0 && {
       timeRequired: `PT${readingTimeMinutes}M`
     }),
-    ...(articleSection && { articleSection })
+    ...(articleSection && { articleSection: stripEmoji(articleSection) })
   }
 }
 
@@ -348,6 +352,8 @@ export function createCollectionPageSchema({
     name,
     description,
     url,
+    inLanguage: SITE_LANG,
+    isPartOf: { '@id': websiteId(new URL('/', url).toString()) },
     ...(total > 0 && {
       mainEntity: {
         '@type': 'ItemList',
@@ -481,8 +487,12 @@ export function createWebSiteSchema(siteUrl: string): WithContext<WebSite> {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: SITE_TITLE,
+    '@id': websiteId(siteUrl),
+    name: SITE_NAME,
+    alternateName: SITE_TITLE,
     url: normalised,
+    inLanguage: SITE_LANG,
+    publisher: { '@id': personId(siteUrl) },
     potentialAction: {
       '@type': 'SearchAction',
       target: {
