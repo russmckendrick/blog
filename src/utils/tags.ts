@@ -49,10 +49,21 @@ export function getTagName(slug: string): string {
 }
 
 /**
+ * Tags whose posts live in the tunes collection. Tag hubs under /tags/ are
+ * built from the blog collection only, so these point at the tunes hubs
+ * instead (public/_redirects 301s the old /tags/ paths to the same place).
+ */
+const TAG_URL_OVERRIDES: Record<string, string> = {
+  listened: '/tunes/',
+  yearend: '/tunes/year/',
+};
+
+/**
  * Create tag URL (normalized: lowercase with hyphens)
  */
 export function getTagUrl(slug: string): string {
-  return `/tags/${normalizeTagSlug(slug)}/`;
+  const normalized = normalizeTagSlug(slug);
+  return TAG_URL_OVERRIDES[normalized] ?? `/tags/${normalized}/`;
 }
 
 /**

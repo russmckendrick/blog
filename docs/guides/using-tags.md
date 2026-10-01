@@ -213,6 +213,8 @@ Tag pages show:
 - Tag description
 - All posts with that tag (paginated)
 
+Tag pages are built from the **blog** collection only (`src/pages/tags/[tag]/[...page].astro`). A tag carried only by tunes posts therefore has no `/tags/` page. The two that exist, `listened` and `yearend` (used by the year-in-music posts), are mapped in `TAG_URL_OVERRIDES` in `src/utils/tags.ts`, so `getTagUrl()` sends them to `/tunes/` and `/tunes/year/`, and `public/_redirects` 301s the old `/tags/listened/` and `/tags/yearend/` paths to the same hubs. If you give tunes posts a new tag, add it to that map or the tag chip will link to a 404.
+
 ### 4. Visual Styling
 
 Every tag renders with the same editorial treatment wherever it appears (index entries, the tag index, post headers): small monospace capitals with a hairline underline that shifts to the accent color on hover. `getTagColorClasses()` in `src/utils/tags.ts` returns the single `tag-editorial` class for all tags.
@@ -316,11 +318,14 @@ tags: ["web", "code", "tools"]
 ### Music Posts
 
 ```yaml
-# Weekly listening (tunes posts)
-tags: ["listened"]
+# Weekly listening (tunes posts) carry no tags
+tags: []
 
-# Vinyl posts
-tags: ["vinyl", "listened"]
+# Year-in-music posts (tunes collection) - chips link to the tunes hubs
+tags: ["listened", "yearend"]
+
+# Vinyl posts (blog collection)
+tags: ["vinyl"]
 ```
 
 ### Book Posts
@@ -347,7 +352,6 @@ All tag archives follow the pattern:
 - https://www.russ.cloud/tags/docker/
 - https://www.russ.cloud/tags/kubernetes/
 - https://www.russ.cloud/tags/python/
-- https://www.russ.cloud/tags/listened/
 
 ## Troubleshooting
 

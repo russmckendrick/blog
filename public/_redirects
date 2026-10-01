@@ -2,15 +2,22 @@
 # https://developers.cloudflare.com/pages/configuration/redirects/
 
 # Blog post redirects
+# Hugo-era addresses kept dots and turned "+" into "--"; the Astro slug drops both.
+/2013/08/31/puppet-server-client-installation-centos-6.x/ /2013/08/31/puppet-server-client-installation-centos-6x/ 301
+/2014/07/12/first-play-with-centos-7.0/ /2014/07/12/first-play-with-centos-70/ 301
+/2014/11/02/installing-docker-1.3.x-on-centos-7/ /2014/11/02/installing-docker-13x-on-centos-7/ 301
+/2014/12/02/grunt--jekyll--less/ /2014/12/02/grunt-jekyll-less/ 301
+/2021/12/04/vscode--bicep-on-an-m1-mac/ /2021/12/04/vscode-bicep-on-an-m1-mac/ 301
+/2024/04/22/this-weeks-top-music-hits-from-springsteen-to-r.e.m./ /2024/04/22/this-weeks-top-music-hits-from-springsteen-to-rem/ 301
+/2024/06/16/2024-tools-update/ /2024/06/16/day-to-day-tools-the-2024-edition/ 301
+/2026/04/05/introducing-hostsbutler/ /2026/04/05/introducing-hosts-butler/ 301
 /2014/01/11/another-new-blog/ /tags/blog/ 301
 /2014/04/27/been-playing-with-docker-again-this-weekend-this-time-rather-than-just-doing-for-the-sake-of-doing/ /2014/04/27/deploying-a-stable-docker-setup-on-centos-with-shipyard/ 301
 /2014/04/27/more-docker/ /tags/docker/ 301
 /2014/08/03/operating-system-snob/ /2014/08/03/am-i-an-operating-system-snob/ 301
-/2014/12/02/grunt-jekyll-less/ /tags/blog/ 301
 /2016/06/20/docker-service/ /tags/docker/ 301
-/2016/06/25/docker-service-load-balancing-and-docker-distributed-application-bundles/ /tags/docker 301
-/2016/06/30/docker-service/ /tags/docker 301
-/2021/12/04/vscode-bicep-on-an-m1-mac/ /2021/12/04/vscode--bicep-on-an-m1-mac/ 301
+/2016/06/25/docker-service-load-balancing-and-docker-distributed-application-bundles/ /tags/docker/ 301
+/2016/06/30/docker-service/ /tags/docker/ 301
 /2024/04/01/saving-money-with-azure-logic-apps/Saving /2024/04/01/saving-money-with-azure-logic-apps/ 301
 /2024/04/06/effortless-python-environment-management-on-macos-with-conda/ /2024/04/06/conda-for-python-environment-management-on-macos/ 301
 
@@ -81,6 +88,7 @@
 /tags/jenkins/ /tags/devops/ 301
 /tags/lab/ /tags/ 301
 /tags/lima/ /tags/ 301
+/tags/listened/ /tunes/ 301
 /tags/logs/ /tags 301
 /tags/mac/ /tags/ 301
 /tags/mac/index.xml /tags/macos 301
@@ -139,6 +147,7 @@
 /tags/vagrant/ /tags/ 301
 /tags/virtualbox/ /tags/ 301
 /tags/virtualbox/index.xml /tags 301
+/tags/yearend/ /tunes/year/ 301
 /tags/zsh/ /tags/ 301
 
 # Misc redirects
