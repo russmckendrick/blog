@@ -11,6 +11,20 @@
  *   node scripts/cache-reading-images.js --force                          # Re-fetch entries missing title/description/image
  *   node scripts/cache-reading-images.js --force --force-really-no-cache  # Re-download everything from scratch
  *   node scripts/cache-reading-images.js --refresh-stale                  # Re-download images older than 7 days
+ *   node scripts/cache-reading-images.js --force --limit 10               # Process the next 10 URLs that need work
+ *   node scripts/cache-reading-images.js --force --limit 0                # Dry run: list what needs work
+ *   node scripts/cache-reading-images.js --only <url>                     # (Re)process one URL, whatever its state
+ *
+ * --limit N always means "the next N URLs that need work" under the active
+ * mode, newest first. A URL that keeps failing is given up on after
+ * MAX_ATTEMPTS tries; --force-really-no-cache resets that.
+ *
+ * Sites that answer 403 or sit behind a Cloudflare challenge are retried in
+ * headless Chrome: Puppeteer's own download if installed, otherwise the
+ * system Google Chrome (or PUPPETEER_EXECUTABLE_PATH). Medium posts that are
+ * hard-blocked even there fall back to a read-only Medium mirror (Freedium by
+ * default, MEDIUM_MIRROR to override) for the title, subtitle and cover image
+ * id; the image itself is downloaded from Medium's own CDN.
  */
 
 import 'dotenv/config'
@@ -34,13 +48,21 @@ const READING_DATA = path.join(PROJECT_ROOT, 'src/data/reading.json')
 const STALE_DAYS = 7
 const CONCURRENCY = 1
 const REQUEST_DELAY = 2000
+// Give up on a URL after this many fetches that didn't produce a complete entry
+const MAX_ATTEMPTS = 3
+// Narrower images are favicons or logos standing in for an og:image; the
+// listing falls back to its favicon tile rather than stretching them.
+const MIN_IMAGE_WIDTH = 300
 
 const args = process.argv.slice(2)
 const FORCE_REFRESH = args.includes('--force')
 const FORCE_NO_CACHE = FORCE_REFRESH && args.includes('--force-really-no-cache')
 const REFRESH_STALE = args.includes('--refresh-stale')
 const limitIdx = args.indexOf('--limit')
-const URL_LIMIT = limitIdx !== -1 ? parseInt(args[limitIdx + 1], 10) : null
+const onlyIdx = args.indexOf('--only')
+const ONLY_URL = onlyIdx !== -1 ? args[onlyIdx + 1] : null
+// --limit 0 is a dry run: report what needs work without fetching anything
+const URL_LIMIT = limitIdx !== -1 ? Math.max(0, parseInt(args[limitIdx + 1], 10) || 0) : null
 
 // ── Instapaper API (for deleting 404'd bookmarks) ──────────────────────────
 
@@ -50,6 +72,7 @@ const {
   INSTAPAPER_USERNAME,
   INSTAPAPER_PASSWORD,
   MEDIUM_COOKIE,
+  MEDIUM_MIRROR = 'https://freedium-mirror.cfd',
 } = process.env
 
 const instapaperEnabled = !!(INSTAPAPER_CONSUMER_KEY && INSTAPAPER_CONSUMER_SECRET && INSTAPAPER_USERNAME)
@@ -121,6 +144,22 @@ function getImageFilename(url) {
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+/**
+ * Resolve an og:image / twitter:image value against the page URL (handles
+ * absolute, protocol-relative, root-relative and plain relative paths) and
+ * upgrade it to https. Returns '' for anything unusable (data: URIs etc).
+ */
+function resolveImageUrl(image, pageUrl) {
+  if (!image) return ''
+  try {
+    const resolved = new URL(image.trim(), pageUrl)
+    if (resolved.protocol === 'http:') resolved.protocol = 'https:'
+    return resolved.protocol === 'https:' ? resolved.href : ''
+  } catch {
+    return ''
+  }
 }
 
 const MAX_RETRIES = 5
@@ -195,22 +234,14 @@ async function fetchOGMetadata(url) {
     const description = getMeta('og:description') ||
       getMeta('description') || ''
 
-    let image = getMeta('og:image:secure_url') ||
+    const image = resolveImageUrl(
+      getMeta('og:image:secure_url') ||
       getMeta('og:image:url') ||
-      getMeta('og:image') || ''
-
-    if (image && !image.startsWith('https://')) {
-      if (image.startsWith('http://')) {
-        image = image.replace('http://', 'https://')
-      } else if (image.startsWith('//')) {
-        image = 'https:' + image
-      } else if (image.startsWith('/')) {
-        const urlObj = new URL(url)
-        image = `${urlObj.origin}${image}`
-      } else {
-        image = ''
-      }
-    }
+      getMeta('og:image') ||
+      getMeta('twitter:image') ||
+      getMeta('twitter:image:src'),
+      url
+    )
 
     const imageAlt = getMeta('og:image:alt') || ''
 
@@ -224,10 +255,29 @@ async function fetchOGMetadata(url) {
 // ── Headless Chrome for Cloudflare-protected sites (Medium) ─────────────────
 
 let browser = null
+let browserUnavailable = null
 
 async function getBrowser() {
-  if (!browser) {
-    browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] })
+  if (browser) return browser
+  // Fail fast after the first launch failure rather than once per URL
+  if (browserUnavailable) throw browserUnavailable
+
+  const launchArgs = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] }
+  try {
+    // Puppeteer's own Chrome, or PUPPETEER_EXECUTABLE_PATH when set
+    browser = await puppeteer.launch(launchArgs)
+  } catch (bundledError) {
+    try {
+      // Fall back to the system Google Chrome install
+      browser = await puppeteer.launch({ ...launchArgs, channel: 'chrome' })
+      console.log('    Using system Google Chrome for browser fetches')
+    } catch {
+      browserUnavailable = new Error(
+        `No Chrome available for browser fetches (${bundledError.message.split('\n')[0]}). ` +
+        'Install Google Chrome, run `npx puppeteer browsers install chrome`, or set PUPPETEER_EXECUTABLE_PATH.'
+      )
+      throw browserUnavailable
+    }
   }
   return browser
 }
@@ -262,7 +312,8 @@ async function fetchOGWithBrowser(url) {
       return {
         title: getMeta('og:title') || document.title || '',
         description: getMeta('og:description') || getMeta('description') || '',
-        image: getMeta('og:image:secure_url') || getMeta('og:image:url') || getMeta('og:image') || '',
+        image: getMeta('og:image:secure_url') || getMeta('og:image:url') || getMeta('og:image') ||
+          getMeta('twitter:image') || getMeta('twitter:image:src') || '',
         imageAlt: getMeta('og:image:alt') || '',
       }
     })
@@ -276,18 +327,7 @@ async function fetchOGWithBrowser(url) {
     }
 
     // Normalise image URL
-    if (ogData.image && !ogData.image.startsWith('https://')) {
-      if (ogData.image.startsWith('http://')) {
-        ogData.image = ogData.image.replace('http://', 'https://')
-      } else if (ogData.image.startsWith('//')) {
-        ogData.image = 'https:' + ogData.image
-      } else if (ogData.image.startsWith('/')) {
-        const urlObj = new URL(url)
-        ogData.image = `${urlObj.origin}${ogData.image}`
-      } else {
-        ogData.image = ''
-      }
-    }
+    ogData.image = resolveImageUrl(ogData.image, url)
 
     ogData.title = ogData.title.trim()
     ogData.description = ogData.description.trim()
@@ -301,6 +341,46 @@ async function fetchOGWithBrowser(url) {
     return ogData
   } catch (error) {
     console.warn(`  Warning: Browser fetch failed for ${url}: ${error.message}`)
+    return null
+  }
+}
+
+/**
+ * Medium answers some posts with a hard Cloudflare block ("Attention
+ * Required") that headless Chrome can't pass either. A read-only Medium
+ * mirror still renders the post: take its title, subtitle and the cover
+ * image's Medium id, and point the download at Medium's own image CDN.
+ */
+async function fetchOGViaMediumMirror(url) {
+  try {
+    const { parseHTML } = await import('linkedom')
+    const mirrorUrl = `${MEDIUM_MIRROR.replace(/\/$/, '')}/${url}`
+    const response = await fetchWithRetry(mirrorUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml',
+      },
+      // The mirror renders on demand from Medium and can take over a minute
+      signal: AbortSignal.timeout(90000),
+    }, 1)
+    if (!response.ok) throw new Error(`HTTP ${response.status}`)
+
+    const { document } = parseHTML(await response.text())
+    const title = (document.querySelector('title')?.textContent || '')
+      .replace(/\s+-\s+Freedium\s*$/i, '')
+      .trim()
+    const description = document.querySelector('meta[name="description"]')?.getAttribute('content')?.trim() || ''
+
+    // The cover is marked as such; otherwise the first inline post image
+    const cover = document.querySelector('img[alt="Post cover image"]') || document.querySelector('img.prose-image')
+    const imageId = cover?.getAttribute('src')?.match(/\/img\/medium\/\d+\/(.+)$/)?.[1]
+    const image = imageId ? `https://miro.medium.com/v2/resize:fit:1200/${imageId}` : ''
+
+    if (!title && !image) throw new Error('No post found on the mirror')
+    console.log(`    Medium mirror OK: "${title.substring(0, 50)}"${image ? ' (cover found)' : ' (no cover)'}`)
+    return { title, description, image, imageAlt: '' }
+  } catch (error) {
+    console.warn(`  Warning: Medium mirror fetch failed for ${url}: ${error.message}`)
     return null
   }
 }
@@ -320,15 +400,15 @@ async function downloadImageWithBrowser(imageUrl, localPath) {
     }
 
     const buffer = await response.buffer()
+    await page.close()
     const jpeg = await bufferToJpeg(buffer)
     await fs.mkdir(path.dirname(localPath), { recursive: true })
     await fs.writeFile(localPath, jpeg)
-    await page.close()
 
     return { success: true, size: jpeg.length }
   } catch (error) {
     console.warn(`  Warning: Browser image download failed: ${error.message}`)
-    return { success: false }
+    return { success: false, error: error.message }
   }
 }
 
@@ -339,6 +419,19 @@ async function downloadImageWithBrowser(imageUrl, localPath) {
  * filename break downstream transforms.
  */
 async function bufferToJpeg(buffer) {
+  // Sniff the bytes rather than trusting Content-Type: some CDNs serve real
+  // images as application/octet-stream, others serve HTML block pages.
+  let metadata
+  try {
+    metadata = await sharp(buffer, { failOn: 'none' }).metadata()
+  } catch {
+    throw new Error('Not an image')
+  }
+  if (!metadata.width) throw new Error('Not an image')
+  if (metadata.width < MIN_IMAGE_WIDTH) {
+    throw new Error(`Too small (${metadata.width}px wide, need ${MIN_IMAGE_WIDTH}px)`)
+  }
+
   return sharp(buffer, { failOn: 'none' })
     .rotate()
     .flatten({ background: '#ffffff' })
@@ -367,8 +460,10 @@ async function downloadImage(imageUrl, localPath) {
       throw new Error(`HTTP ${response.status}`)
     }
 
+    // An HTML response is a block or login page; anything else is sniffed
+    // by bufferToJpeg, which rejects non-images and undersized ones.
     const contentType = response.headers.get('content-type') || ''
-    if (!contentType.startsWith('image/')) {
+    if (contentType.includes('text/html')) {
       throw new Error(`Not an image: ${contentType}`)
     }
 
@@ -427,12 +522,49 @@ function formatBytes(bytes) {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
 }
 
+async function fileExists(filePath) {
+  try {
+    await fs.access(filePath)
+    return true
+  } catch {
+    return false
+  }
+}
+
+/** An entry is complete once it has a title, a description and a local image. */
+function isComplete(entry) {
+  return !!(entry?.localImage && entry.title && entry.description)
+}
+
+/**
+ * Whether a URL should be fetched under the active mode. Shared by the
+ * --limit selection and the main loop so the two can never disagree.
+ */
+async function needsWork(url, entry) {
+  if (FORCE_NO_CACHE || !entry) return true
+
+  const imageOnDisk = entry.localImage
+    ? await fileExists(path.join(OUTPUT_DIR, `${getImageFilename(url)}.jpg`))
+    : false
+
+  // A cached image that has gone missing from disk is always re-fetched
+  if (entry.localImage && !imageOnDisk) return true
+
+  if (FORCE_REFRESH) {
+    if (isComplete(entry)) return false
+    // Stop retrying URLs that keep failing (403s, no image, too small)
+    return (entry.attempts ?? 0) < MAX_ATTEMPTS
+  }
+
+  if (REFRESH_STALE) return isStale(entry)
+
+  return false
+}
+
 async function main() {
   console.log('Reading List Image Cache\n')
 
-  if (URL_LIMIT) {
-    console.log(`Mode: Limited (processing first ${URL_LIMIT} uncached URLs)\n`)
-  } else if (FORCE_NO_CACHE) {
+  if (FORCE_NO_CACHE) {
     console.log('Mode: Force (ignoring all cache, re-downloading everything)\n')
   } else if (FORCE_REFRESH) {
     console.log('Mode: Force refresh (re-fetching entries with missing data, skipping complete ones)\n')
@@ -440,6 +572,11 @@ async function main() {
     console.log(`Mode: Refresh stale (re-downloading images older than ${STALE_DAYS} days)\n`)
   } else {
     console.log('Mode: Incremental (downloading new images only)\n')
+  }
+  if (ONLY_URL) {
+    console.log(`Only: ${ONLY_URL}\n`)
+  } else if (URL_LIMIT !== null) {
+    console.log(URL_LIMIT === 0 ? 'Limit: 0 (dry run, nothing will be fetched)\n' : `Limit: the next ${URL_LIMIT} URLs that need work\n`)
   }
 
   // Load reading list
@@ -464,18 +601,27 @@ async function main() {
   const cache = await loadCache()
   const manifest = await loadManifest()
 
-  // When using --limit, filter URLs and cap the count
-  let urls = allUrls
-  if (URL_LIMIT) {
-    if (FORCE_REFRESH) {
-      console.log(`Force refreshing up to ${URL_LIMIT} URLs\n`)
-    } else {
-      urls = allUrls.filter(url => !cache.entries[url])
-      console.log(`${urls.length} uncached, processing up to ${URL_LIMIT}\n`)
-    }
-    urls = urls.slice(0, URL_LIMIT)
-  } else {
-    console.log('')
+  // Work out what needs fetching up front (newest first), so --limit picks
+  // the next N URLs that need work rather than the first N overall.
+  const pending = []
+  for (const url of allUrls) {
+    if (await needsWork(url, cache.entries[url])) pending.push(url)
+  }
+  const givenUp = allUrls.filter(url => {
+    const entry = cache.entries[url]
+    return entry && !isComplete(entry) && (entry.attempts ?? 0) >= MAX_ATTEMPTS
+  }).length
+  console.log(`${pending.length} need work, ${allUrls.length - pending.length} up to date${givenUp ? ` (${givenUp} given up after ${MAX_ATTEMPTS} attempts)` : ''}`)
+
+  if (ONLY_URL && !allUrls.includes(ONLY_URL)) {
+    console.warn(`--only: ${ONLY_URL} is not in reading.json`)
+    return
+  }
+  const urls = ONLY_URL ? [ONLY_URL] : URL_LIMIT !== null ? pending.slice(0, URL_LIMIT) : pending
+  console.log(URL_LIMIT !== null ? `Processing ${urls.length} of them\n` : '')
+  if (URL_LIMIT === 0 && !ONLY_URL) {
+    pending.slice(0, 10).forEach(url => console.log(`  next: ${url}`))
+    return
   }
 
   // Authenticate with Instapaper for 404 cleanup
@@ -494,7 +640,6 @@ async function main() {
   const removedUrls = new Set()
 
   let downloaded = 0
-  let cached = 0
   let failed = 0
   let noImage = 0
   let totalBytes = 0
@@ -510,32 +655,9 @@ async function main() {
       const localPath = path.join(OUTPUT_DIR, `${filename}.jpg`)
       const publicPath = `/assets/reading-previews/${filename}.jpg`
 
-      // Check if we should skip this URL
-      if (!FORCE_NO_CACHE && cacheEntry) {
-        // --force: skip if cache has title, description, and a valid local image
-        if (FORCE_REFRESH) {
-          if (cacheEntry.localImage && cacheEntry.title && cacheEntry.description) {
-            try {
-              await fs.access(localPath)
-              cached++
-              return
-            } catch {
-              // File doesn't exist, need to re-download
-            }
-          }
-        } else if (!REFRESH_STALE || !isStale(cacheEntry)) {
-          // Normal / refresh-stale: skip if already cached
-          try {
-            if (cacheEntry.localImage) {
-              await fs.access(localPath)
-            }
-            cached++
-            return
-          } catch {
-            // File doesn't exist, need to re-download
-          }
-        }
-      }
+      // Every URL here already passed needsWork(); attempts carry over so a
+      // persistently failing URL is eventually given up on.
+      const attempts = FORCE_NO_CACHE ? 1 : (cacheEntry?.attempts ?? 0) + 1
 
       console.log(`  [${processed}/${urls.length}] ${url}`)
 
@@ -568,6 +690,21 @@ async function main() {
         usedBrowserFallback = true
       }
 
+      // Medium hard-blocks some posts even in headless Chrome; the mirror
+      // still exposes the cover image id (and fills in a missing title).
+      if (isMediumUrl(url) && !ogData?.image) {
+        console.log(`    No image yet - trying the Medium mirror...`)
+        const mirrored = await fetchOGViaMediumMirror(url)
+        if (mirrored) {
+          ogData = {
+            title: ogData?.title || mirrored.title,
+            description: ogData?.description || mirrored.description,
+            image: mirrored.image,
+            imageAlt: ogData?.imageAlt || '',
+          }
+        }
+      }
+
       if (!ogData) {
         failed++
         manifest[url] = {
@@ -577,11 +714,14 @@ async function main() {
           title: '',
           description: '',
           fetchedAt: new Date().toISOString(),
+          attempts,
+          lastError: usedBrowserFallback ? 'Blocked (403 / challenge) and browser fetch failed' : 'Page fetch failed',
         }
         cache.entries[url] = manifest[url]
         return
       }
 
+      let imageError = ogData.image ? null : 'No og:image or twitter:image'
       if (ogData.image) {
         let result = await downloadImage(ogData.image, localPath)
 
@@ -605,9 +745,13 @@ async function main() {
             imageAlt: ogData.imageAlt,
             fetchedAt: new Date().toISOString(),
           }
+          // Missing title/description still counts as an attempt under --force
+          if (!isComplete(manifest[url])) manifest[url].attempts = attempts
           cache.entries[url] = manifest[url]
           return
         }
+        imageError = result.error || 'Image download failed'
+        console.log(`    No usable image: ${imageError}`)
       }
 
       // No OG image found or download failed
@@ -619,6 +763,8 @@ async function main() {
         title: ogData.title,
         description: ogData.description,
         fetchedAt: new Date().toISOString(),
+        attempts,
+        lastError: imageError,
       }
       cache.entries[url] = manifest[url]
     }))
@@ -639,7 +785,7 @@ async function main() {
 
   console.log('\nResults:')
   console.log(`  Downloaded: ${downloaded} (${formatBytes(totalBytes)})`)
-  console.log(`  Cached: ${cached}`)
+  console.log(`  Up to date: ${allUrls.length - pending.length}`)
   if (noImage > 0) console.log(`  No OG image: ${noImage}`)
   if (removedUrls.size > 0) console.log(`  Removed (404): ${removedUrls.size}`)
   if (failed > 0) console.log(`  Failed: ${failed}`)

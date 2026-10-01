@@ -105,22 +105,26 @@ Reading list images are cached **locally** and committed to the repo. The CI bui
 
 ### Local Workflow
 1.  Fetch latest bookmarks: `node scripts/fetch-reading-list.js`
-2.  Cache images: `node scripts/cache-reading-images.js --force`
+2.  Cache images: `node scripts/cache-reading-images.js --force` (or `pnpm reading-images`, which runs both steps with `--force --limit 10`)
 3.  Commit and push the updated images and cache JSON
 
 ### Script Features
-- Uses headless Chrome (Puppeteer) to bypass Cloudflare JS challenges on Medium-affiliated domains
+- Uses headless Chrome (Puppeteer) for 403s and Cloudflare JS challenges (Medium-affiliated domains and others). It launches Puppeteer's own Chrome if installed, otherwise the system Google Chrome (`channel: 'chrome'`), or `PUPPETEER_EXECUTABLE_PATH`; if none launches it stops trying after the first failure
+- Reads `og:image` (and its `secure_url`/`url` variants), falling back to `twitter:image`; relative image paths are resolved against the page URL
+- Medium posts that are hard-blocked even in headless Chrome (Cloudflare "Attention Required") fall back to a read-only Medium mirror (Freedium, `https://freedium-mirror.cfd` by default, override with `MEDIUM_MIRROR`) for the title, subtitle and cover-image id; the image itself is downloaded from Medium's CDN (`miro.medium.com`). The mirror renders on demand, so it has a 90s timeout
+- Sniffs downloaded bytes with `sharp` rather than trusting `Content-Type` (HTML responses are rejected), and rejects images narrower than 300px — favicons and logos standing in for an og:image — so the card shows its favicon tile instead
 - Retries with exponential backoff on 429/5xx errors (non-Medium URLs only)
 - Automatically deletes 404'd bookmarks from Instapaper and `reading.json`
 - Saves cache after each batch so progress survives cancellation
-- `--force`: re-fetches entries missing title, description, or image (skips complete ones)
+- `--force`: re-fetches entries missing title, description, or image (skips complete ones). An entry that still isn't complete after 3 attempts is given up on (`attempts` and `lastError` are recorded in the manifest)
 - `--force --force-really-no-cache`: re-downloads everything from scratch
+- `--only <url>`: (re)processes one URL from `reading.json` whatever its cached state
 - `--refresh-stale`: re-downloads entries older than 7 days
-- `--limit N`: caps the number of URLs to process
+- `--limit N`: processes the next N URLs that need work under the active mode, newest first (the same check the main loop uses, so it never re-picks complete entries); `--limit 0` is a dry run that lists them without fetching
 
 ### Files Updated
 - `public/assets/reading-previews/*.jpg` - Cached OG images
-- `src/data/reading-image-cache.json` - URL-to-path manifest (includes `localImage`, `originalImage`, `imageType`, `title`, `description`, `imageAlt`, and `fetchedAt` per entry)
+- `src/data/reading-image-cache.json` - URL-to-path manifest (includes `localImage`, `originalImage`, `imageType`, `title`, `description`, `imageAlt`, and `fetchedAt` per entry, plus `attempts` and `lastError` on incomplete entries)
 
 ### GitHub Workflow (Disabled)
 **Workflow File**: `.github/workflows/refresh-reading-images.yml`
