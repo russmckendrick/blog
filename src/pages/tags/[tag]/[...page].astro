@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { metaDescription, stripEmoji } from '../../../utils/seo';
+import { htmlToText, metaDescription, stripEmoji } from '../../../utils/seo';
 import type { CollectionEntry } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
@@ -75,7 +75,7 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
 
 const collectionSchema = createCollectionPageSchema({
   name: `${metadata.title} - posts`,
-  description: metadata.description.replace(/<[^>]+>/g, ''),
+  description: htmlToText(metadata.description),
   url: pageUrl,
   items: page.data.map((post: CollectionEntry<'blog'>) => {
     const date = post.data.pubDate;
@@ -110,7 +110,7 @@ const pageSuffix = page.currentPage > 1 ? `, page ${page.currentPage}` : '';
 const headTitle = `${plainName} posts${pageSuffix}`;
 const headDescription = metaDescription(
   metadata.intro ??
-    `${totalTagPosts} ${totalTagPosts === 1 ? 'post' : 'posts'} about ${plainName} on Russ.Cloud, newest first. ${metadata.description.replace(/<[^>]+>/g, '')}.`
+    `${totalTagPosts} ${totalTagPosts === 1 ? 'post' : 'posts'} about ${plainName} on Russ.Cloud, newest first. ${htmlToText(metadata.description)}.`
 );
 
 // Get avatar for this tag — rendered at 80px on sm and up

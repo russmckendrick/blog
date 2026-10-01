@@ -88,6 +88,7 @@
     "@langchain/core": "^1.2.13",
     "@langchain/openai": "^1.6.0",
     "@types/hast": "^3.0.5",
+    "@types/sanitize-html": "^2.16.2",
     "dotenv": "^17.4.2",
     "fast-glob": "^3.3.3",
     "opentype.js": "^2.0.0",
