@@ -5,7 +5,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import TagTabs from '../../components/home/TagTabs.astro';
 import Pagination from '../../components/layout/Pagination.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, HOME_PAGE_SIZE, PAGINATION_PAGE_SIZE } from '../../consts';
+import { HOME_PAGE_SIZE, PAGINATION_PAGE_SIZE } from '../../consts';
+import { Schema } from 'astro-seo-schema';
+import { createCollectionPageSchema } from '../../utils/schema';
+import { getPostUrl } from '../../utils/url';
 
 export const getStaticPaths = (async () => {
 	const allPosts = (await getCollection('blog'))
@@ -32,9 +35,23 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
+
+const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
+const description = `Page ${page.currentPage} of every post on Russ.Cloud, newest first: DevOps, AI coding tools, Rust CLIs, macOS and Linux, written by Russ McKendrick since 2013.`;
+const collectionSchema = createCollectionPageSchema({
+	name: `Writing, page ${page.currentPage}`,
+	description,
+	url: new URL(Astro.url.pathname, siteUrl).toString(),
+	items: page.data.map((post) => ({ name: post.data.title, url: new URL(getPostUrl(post.data.pubDate, post.data.title), siteUrl).toString() })),
+	numberOfItems: page.total
+});
 ---
 
-<BaseLayout title={`${SITE_TITLE} - Page ${page.currentPage}`} description={SITE_DESCRIPTION}>
+<BaseLayout
+	title={`Writing, page ${page.currentPage} of ${page.lastPage}`}
+	description={description}
+>
+	<Schema slot="head" item={collectionSchema} />
 	<section class="page-frame">
 		<header class="page-head !border-b-0 !pb-2" data-entrance>
 			<h1>Writing</h1>

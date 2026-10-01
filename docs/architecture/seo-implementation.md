@@ -19,8 +19,8 @@ graph TD
 
     B --> H[Structured Data]
     H --> I[BlogPosting Schema]
-    H --> J[Person Schema]
-    H --> K[Organization Schema]
+    H --> J[Person / ProfilePage Schema]
+    H --> K[WebSite Schema]
     H --> L[BreadcrumbList Schema]
 
     B --> M[OG Image]
@@ -45,14 +45,18 @@ graph TD
 
 **Features**:
 - Title and description meta tags
-- OpenGraph tags (title, description, image, type, URL, siteName)
+- OpenGraph tags (title, description, image, type, URL, `og:site_name` "Russ.Cloud", `og:locale` en_GB). `og:type` is `article` on posts (`BlogPost.astro` passes `type="article"`) and `website` everywhere else; posts also get `article:section` (the primary tag) and one `article:tag` per tag, all emoji-free
+- Default share image: `/home-og.png`, the generated Workbench card, for any page without a card of its own. `og:image:width`/`height` (2400×1260) are declared only for generated `*-og.png` cards, so a page passing any other image never claims the wrong size
 - Twitter Cards (`summary_large_image`)
 - Creator attribution (`@russmckendrick`)
-- Canonical URLs
+- Canonical URLs — omitted on `noindex` pages, since a canonical on a page that asks not to be indexed sends mixed signals
 - Keywords meta tags
-- Robots directives (`index, follow` by default; pass `noindex` to `BaseLayout` for pages that should stay out of results - currently `/search/`)
-- Theme color
+- Robots directives (`index, follow` by default; pass `noindex` to `BaseLayout` for pages that should stay out of results — `/search/`, the 404 page and `/avatars/`)
+- Theme colour per scheme: `#ffffff` for light, `#0b0b0c` for dark (`media`-scoped `theme-color` metas)
+- Web app manifest (`/site.webmanifest`, linked; name "Russ.Cloud", `lang` en-GB)
+- RSS discovery: the main feed with `title="Russ.Cloud"` everywhere, plus the tunes feed on `/tunes/` pages and tunes posts
 - Viewport settings
+- `<html lang="en-GB">` in `BaseLayout` and `BlogPost`, matching `og:locale` and the JSON-LD `inLanguage`
 
 **Example Output**:
 ```html
@@ -73,7 +77,11 @@ The zone answers on both `russ.cloud` and `www.russ.cloud`, while every canonica
 
 The same worker adds `charset=utf-8` to HTML responses: the assets binding sends a bare `Content-Type: text/html`, and while the document carries `<meta charset="utf-8">`, the header is authoritative and saves clients sniffing.
 
-**Page titles**: `BaseLayout.astro` builds `<title>` as `{page title} | {SITE_TITLE}`, but skips the suffix when the page title already contains the site name — otherwise the hubs that bake it in themselves render as `Archives - Russ McKendrick | Russ McKendrick`. The homepage is the one page whose title is neither a section name nor a post: it uses `HOME_TITLE` ("Russ.Cloud — The personal blog of Russ McKendrick") for both `<title>` and its `sr-only` `<h1>`, because the bare 15-character site title is a thin SERP entry for the site's most linked page.
+**Site name**: `SITE_NAME` ("Russ.Cloud") is the site's name for `og:site_name` and the `WebSite` schema's `name` (what Google shows as the site name in results); `SITE_TITLE` ("Russ McKendrick", the author) is the `WebSite` `alternateName` and the `<title>` suffix.
+
+**Page titles**: `BaseLayout.astro` builds `<title>` as `{page title} | {SITE_TITLE}`, but skips the suffix when the page title already contains the site name. Pages pass a plain title and let the layout add the suffix — no page bakes in its own `- Russ McKendrick` — so every title uses the one ` | ` separator (`Archives | Russ McKendrick`, `2026 archive | Russ McKendrick`, `Writing, page 2 of 21 | Russ McKendrick`). Tag hub titles are emoji-free (`AI posts | Russ McKendrick`).
+
+**Meta descriptions**: aim for 120–160 unique characters. `SITE_DESCRIPTION` (the homepage and the RSS feed) is a 154-character summary of the site; tag hubs use the tag's `intro` trimmed by `metaDescription()` in `src/utils/seo.ts` (plain text, word-boundary cut, ellipsis), falling back to a count-and-description sentence; archives, year pages, `/page/N/`, `/tunes/` and the reading list have their own written descriptions. The homepage is the one page whose title is neither a section name nor a post: it uses `HOME_TITLE` ("Russ.Cloud — The personal blog of Russ McKendrick") for both `<title>` and its `sr-only` `<h1>`, because the bare 15-character site title is a thin SERP entry for the site's most linked page.
 
 **Post titles**: blog posts render their `title` frontmatter as the `<title>`, `og:title`, `twitter:title` and `BlogPosting` headline, unless the post sets `seoTitle`, in which case `BlogPost.astro` passes that instead. The visible `<h1>`, breadcrumbs, cards and the URL always use `title`. The split exists because post URLs are slugged from `title` (`src/utils/url.ts`), so retitling a post that already ranks would otherwise move it to a new address. See [Frontmatter Fields](../reference/frontmatter-fields.md#seotitle).
 
@@ -89,15 +97,15 @@ Helpers exported by `src/utils/schema.ts`:
 |--------|-------------|---------|
 | `createBlogPostingSchema` | `BlogPosting` | All posts (`src/layouts/BlogPost.astro`) |
 | `createBreadcrumbSchema` | `BreadcrumbList` | Posts, tag pages, year archives, glossary, author hub, tunes browse pages |
-| `createPersonSchema` | `Person` | `/about/`, `/author/russ-mckendrick/` |
-| `createOrganizationSchema` | `Organization` | `/about/` |
-| `createCollectionPageSchema` | `CollectionPage` (with embedded `ItemList`) | Tag pages, year archives, reading-list tag pages, glossary index, author hub, `/tunes/artist/`, `/tunes/album/` |
+| `createPersonSchema` | `Person` (`@id` `/about/#person`) | `/` (as the WebSite's publisher), `/author/russ-mckendrick/` |
+| `createProfilePageSchema` | `ProfilePage` with the `Person` as `mainEntity` | `/about/` |
+| `createCollectionPageSchema` | `CollectionPage` (with embedded `ItemList`, `inLanguage`, `isPartOf` the WebSite) | Tag pages, year archives, `/archives/`, `/page/N/`, `/tunes/`, `/reading/` and its tag pages, glossary index, author hub, `/tunes/artist/`, `/tunes/album/` |
 | `createMusicAlbumSchema` | `MusicAlbum` | `/tunes/album/[album]/` |
 | `createMusicGroupSchema` | `MusicGroup` | `/tunes/artist/[artist]/` |
 | `createMusicRecordingSchema` | `MusicRecording` | (Available; not currently wired) |
 | `createDefinedTermSchema` | `DefinedTerm` | `/glossary/[term]/` |
 | `createBookSchema` | `Book` | `/books/` (one per book; ~14 entries) |
-| `createWebSiteSchema` | `WebSite` + `SearchAction` | `/` (homepage only - sitelinks search box) |
+| `createWebSiteSchema` | `WebSite` (`@id` `/#website`, name "Russ.Cloud", alternateName "Russ McKendrick", publisher → `#person`) + `SearchAction` | `/` (homepage only - sitelinks search box) |
 | `createFAQSchema` | `FAQPage` | Posts that set `faqs` in frontmatter |
 | `createHowToSchema` | `HowTo` | Posts that set `howto` in frontmatter |
 
@@ -117,16 +125,16 @@ Automatically added to all blog posts:
   "inLanguage": "en-GB",
   "author": {
     "@type": "Person",
+    "@id": "https://www.russ.cloud/about/#person",
     "name": "Russ McKendrick",
-    "url": "https://www.russ.cloud/about/"
+    "url": "https://www.russ.cloud/about/",
+    "image": "https://www.russ.cloud/images/avatars/laptop-02.png"
   },
   "publisher": {
-    "@type": "Organization",
+    "@type": "Person",
+    "@id": "https://www.russ.cloud/about/#person",
     "name": "Russ McKendrick",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.russ.cloud/images/logo.svg"
-    }
+    "url": "https://www.russ.cloud/about/"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -134,8 +142,8 @@ Automatically added to all blog posts:
   },
   "isPartOf": {
     "@type": "Blog",
-    "@id": "https://www.russ.cloud/blog/",
-    "name": "Russ McKendrick"
+    "@id": "https://www.russ.cloud/",
+    "name": "Russ.Cloud"
   },
   "keywords": "docker, kubernetes, devops",
   "wordCount": 1234,
@@ -144,19 +152,20 @@ Automatically added to all blog posts:
 }
 ```
 
-`wordCount`, `timeRequired` (ISO-8601 duration derived from reading time), and `articleSection` (the post's primary tag display name) are emitted only when their inputs are present, so tunes and tag-less posts omit them. `wordCount` and reading time share one definition via `countWords()` in `src/utils/reading-time.ts`. `inLanguage` defaults to `en-GB` to match the OpenGraph locale.
+`image` is always absolute, and the author image is the avatar's PNG twin (rich results don't take SVG). The publisher is the author — a personal blog has no organisation — and both point at the shared `#person` entity; tunes posts keep their AI author as a plain `Person`. `wordCount`, `timeRequired` (ISO-8601 duration derived from reading time), and `articleSection` (the post's primary tag display name, emoji stripped) are emitted only when their inputs are present, so tunes and tag-less posts omit them. `wordCount` and reading time share one definition via `countWords()` in `src/utils/reading-time.ts`. `inLanguage` defaults to `en-GB` to match the OpenGraph locale.
 
 #### Person Schema
 
-Added to About page:
+Defined once as `https://www.russ.cloud/about/#person` and referenced by `@id` everywhere else. On the About page it is the `mainEntity` of a `ProfilePage`; on the homepage it sits beside the `WebSite` node, whose `publisher` points at it:
 
 ```json
 {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://www.russ.cloud/about/#person",
   "name": "Russ McKendrick",
   "url": "https://www.russ.cloud/about/",
-  "image": "https://www.russ.cloud/images/avatar.svg",
+  "image": "https://www.russ.cloud/images/avatar-192x192.png",
   "sameAs": [
     "https://github.com/russmckendrick",
     "https://social.mckendrick.io/@russ",
@@ -359,6 +368,9 @@ Both blocks render only when there is a match - empty intersections produce no U
 <meta property="article:published_time" content="2024-04-14T00:00:00.000Z">
 <meta property="article:modified_time" content="2024-04-14T00:00:00.000Z">
 <meta property="article:author" content="Russ McKendrick">
+<meta property="article:section" content="macOS">
+<meta property="article:tag" content="macOS">
+<meta property="article:tag" content="Code">
 ```
 
 ### Reading Time
@@ -444,7 +456,7 @@ Build-time minification is intentionally not used. Astro/Vite already minify JS 
 3. Verify detected structured data:
    - BlogPosting
    - BreadcrumbList
-   - Person (on About page)
+   - ProfilePage + Person (on About page), WebSite + Person (homepage)
 
 ### Schema Markup Validator
 

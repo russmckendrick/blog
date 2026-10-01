@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { htmlToText, metaDescription, stripEmoji } from '../../../utils/seo';
 import type { CollectionEntry } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
@@ -74,7 +75,7 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
 
 const collectionSchema = createCollectionPageSchema({
   name: `${metadata.title} - posts`,
-  description: metadata.description.replace(/<[^>]+>/g, ''),
+  description: htmlToText(metadata.description),
   url: pageUrl,
   items: page.data.map((post: CollectionEntry<'blog'>) => {
     const date = post.data.pubDate;
@@ -101,6 +102,17 @@ const breadcrumbSchema = createBreadcrumbSchema(
 
 const tagOgImage = `/tags/${tag}-og.png`;
 
+// Head metadata: plain-text title (no emoji) and a description built from the
+// tag's intro where it has one, so hub results don't all read "All my posts
+// about X".
+const plainName = stripEmoji(metadata.title);
+const pageSuffix = page.currentPage > 1 ? `, page ${page.currentPage}` : '';
+const headTitle = `${plainName} posts${pageSuffix}`;
+const headDescription = metaDescription(
+  metadata.intro ??
+    `${totalTagPosts} ${totalTagPosts === 1 ? 'post' : 'posts'} about ${plainName} on Russ.Cloud, newest first. ${htmlToText(metadata.description)}.`
+);
+
 // Get avatar for this tag — rendered at 80px on sm and up
 const avatarSrc = TAG_AVATAR_MAP[tag]
   ? getAvatarImageUrl(`/images/avatars/${TAG_AVATAR_MAP[tag]}`, 80)
@@ -109,8 +121,8 @@ const avatarFallback = '/images/avatar-192x192.png';
 ---
 
 <BaseLayout
-  title={metadata.title}
-  description={metadata.description}
+  title={headTitle}
+  description={headDescription}
   image={tagOgImage}
 >
   <Schema slot="head" item={collectionSchema} />

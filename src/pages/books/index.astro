@@ -26,7 +26,7 @@ const listFormat = new Intl.ListFormat('en-GB', { style: 'long', type: 'conjunct
 const coverSrc = (cover: string, width: number) => getCFImageUrl(cover, { width, quality: 70, format: 'auto' })
 
 const title = `Books by ${AUTHOR_NAME}`
-const description = `${books.length} technical books written or co-authored by ${AUTHOR_NAME}, covering Docker, Kubernetes, Ansible, Infrastructure as Code, and serverless on Packt Publishing and The New Stack.`
+const description = `${books.length} technical books written or co-authored by ${AUTHOR_NAME} on Docker, Kubernetes, Ansible, Infrastructure as Code and serverless, for Packt and The New Stack.`
 
 const collectionSchema = createCollectionPageSchema({
   name: title,

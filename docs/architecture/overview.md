@@ -420,8 +420,8 @@ graph TD
 graph TD
     A[Page Type] --> B{Content Type?}
     B -->|Blog Post| C[BlogPosting Schema]
-    B -->|About Page| D[Person Schema]
-    B -->|All Pages| E[Organization Schema]
+    B -->|About Page| D[ProfilePage + Person Schema]
+    B -->|Homepage| E[WebSite + Person Schema]
 
     C --> F[JSON-LD Output]
     D --> F
@@ -435,9 +435,10 @@ graph TD
 ```
 
 **Schema Types Implemented**:
-- BlogPosting (all blog posts)
-- Person (author information)
-- Organization (publisher)
+- BlogPosting (all blog posts; author and publisher both reference the `#person` entity)
+- Person (author, `@id` `/about/#person`), inside a ProfilePage on `/about/`
+- WebSite (homepage, name "Russ.Cloud", with SearchAction)
+- CollectionPage (hubs and listings)
 - BreadcrumbList (navigation)
 
 See [seo-implementation.md](./seo-implementation.md) for details.

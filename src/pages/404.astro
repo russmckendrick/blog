@@ -6,7 +6,7 @@ import { ERROR_404 } from '../consts';
 Astro.response.status = 404;
 ---
 
-<BaseLayout title={ERROR_404.title} description={ERROR_404.description}>
+<BaseLayout title={ERROR_404.title} description={ERROR_404.description} noindex>
 	<!-- TV Static Background -->
 	<canvas id="static" class="fixed inset-0 w-full h-full pointer-events-none opacity-30 dark:opacity-40" aria-hidden="true"></canvas>
 

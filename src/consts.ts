@@ -2,13 +2,18 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = "Russ McKendrick";
+// The site's own name — og:site_name and the WebSite schema name, which is
+// what Google shows as the site name in results. SITE_TITLE (the author's
+// name) stays the <title> suffix and the WebSite alternateName.
+export const SITE_NAME = "Russ.Cloud";
+export const SITE_LANG = "en-GB";
 // The homepage <title> and its sr-only <h1>. The bare site title is only 15
 // characters, which reads as a thin, ambiguous SERP entry for the site's most
 // linked page; this states the brand and what the site is. It contains
 // SITE_TITLE, so BaseLayout leaves it unsuffixed.
 export const HOME_TITLE = "Russ.Cloud — The personal blog of Russ McKendrick";
 export const SITE_DESCRIPTION =
-  "Russ.Cloud - The personal blog of Russ McKendrick";
+  "Russ McKendrick's blog on DevOps, AI coding tools, Rust CLIs, macOS and Linux, plus a weekly write-up of the records on his turntable. Writing since 2013.";
 export const SITE_LONG_DESCRIPTION =
   "The ramblings of a nerd about random things that interest me.";
 export const SITE_KEYWORDS = [
@@ -175,7 +180,7 @@ export const PREFERRED_SOURCE = {
 };
 
 export const ERROR_404 = {
-  title: "404 - Page Not Found",
+  title: "Page not found",
   description: "The page you are looking for does not exist",
   heading: "Signal Lost",
   message: "The page you're searching for has vanished into the digital void",
