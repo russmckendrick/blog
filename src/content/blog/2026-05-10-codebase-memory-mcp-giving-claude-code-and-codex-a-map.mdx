@@ -1,7 +1,10 @@
 ---
 title: "codebase-memory-mcp: Giving Claude Code (and Codex) a Map"
-description: "A short look at codebase-memory-mcp, an MCP server that indexes your codebase into a queryable knowledge graph so Claude Code or Codex can answer structural questions without grepping every file."
+seoTitle: "codebase-memory-mcp Review: Is It Safe, and Does It Save Tokens?"
+description: "A real Codex session with codebase-memory-mcp cost me 30p. How I set it up for Claude Code and Codex, and whether it's safe to run on your code."
 date: 2026-05-10T16:13:23.750Z
+lastModified: 2026-10-01
+updatedDate: 2026-10-01
 cover:
   image: "../../assets/2026-05-10-codebase-memory-mcp-giving-claude-code-and-codex-a-map/blog-cover-2026-05-10-codebase-memory-mcp-giving-claude-code-and-codex-a-map.png"
 draft: false
@@ -22,7 +25,7 @@ Anyone who has spent a few hours with Claude Code or Codex on a growing project 
 
 The README claims a 99.2% reduction in tokens for structural queries on a multi-service test project (~3,400 tokens via the graph versus ~412,000 via file-by-file exploration), and there's an [arXiv paper](https://arxiv.org/abs/2603.27277) backing the design with benchmarks across 31 real-world repositories: 83% answer quality, 10× fewer tokens, and 2.1× fewer tool calls than file-by-file exploration. I was sceptical, but after a couple of sessions on one of my own projects, I'm prepared to believe it.
 
-It supports 66 languages - the usual suspects (Python, Go, TypeScript, Rust, Java, C/C++, C#, PHP, Ruby) plus a long tail that includes Zig, Elixir, OCaml, Haskell, and infrastructure formats like Dockerfile, Kubernetes manifests, and HCL. The Linux kernel (28M LOC, 75K files) gets indexed in three minutes on an M3 Pro, and most queries return in under a millisecond. 14 MCP tools cover indexing, call-path tracing, dead code detection, git-diff impact analysis, ADR management, and Cypher-like graph queries against the graph. REST routes from FastAPI, Gin, Express and friends are first-class graph nodes too, so you can match HTTP call sites to their handlers across services.
+It now supports 162 languages (up from 66 when I first wrote this) - the usual suspects (Python, Go, TypeScript, Rust, Java, C/C++, C#, PHP, Ruby) plus a long tail that includes Zig, Elixir, OCaml, Haskell, and infrastructure formats like Dockerfile, Kubernetes manifests, and HCL. The Linux kernel (28M LOC, 75K files) gets indexed in three minutes on an M3 Pro, and most queries return in under a millisecond. 17 MCP tools cover indexing, call-path tracing, dead code detection, git-diff impact analysis, ADR management, and Cypher-like graph queries against the graph. REST routes from FastAPI, Gin, Express and friends are first-class graph nodes too, so you can match HTTP call sites to their handlers across services.
 
 It's a single statically-linked binary written in C with no runtime dependencies, backed by SQLite in WAL mode. The cache lives at `~/.cache/codebase-memory-mcp/` and persists across restarts.
 
@@ -36,9 +39,37 @@ curl -fsSL https://raw.githubusercontent.com/DeusData/codebase-memory-mcp/main/i
 
 Windows users get a PowerShell equivalent (`install.ps1` from the same repo) - the [README's Quick Start](https://github.com/DeusData/codebase-memory-mcp#quick-start) has the three-line download-inspect-run sequence.
 
-The script drops the binary into `~/.local/bin` and then runs `codebase-memory-mcp install` to wire it into any agents it detects. It auto-configures eleven of them out of the box (Claude Code, Codex CLI, Gemini CLI, Zed, OpenCode, Antigravity, Aider, KiloCode, VS Code, OpenClaw, and Kiro), adding MCP server entries, instruction files, skills, and pre-tool hooks where each agent supports them. In my case it picked up both Claude Code and Codex without me having to point at anything, and it'll warn you if `~/.local/bin` isn't on your PATH yet.
+The script drops the binary into `~/.local/bin` and then runs `codebase-memory-mcp install` to wire it into any agents it detects. When I first installed it, it auto-configured eleven of them (Claude Code, Codex CLI, Gemini CLI, Zed, OpenCode, Antigravity, Aider, KiloCode, VS Code, OpenClaw, and Kiro), and the README now lists 45 supported setups. It adds MCP server entries, instruction files, skills, and pre-tool hooks where each agent supports them. In my case it picked up both Claude Code and Codex without me having to point at anything, and it'll warn you if `~/.local/bin` isn't on your PATH yet.
 
 After it finishes, restart your coding agent. In Claude Code, `/mcp` will show `codebase-memory-mcp` in the list of available servers; in Codex, the new tools turn up on the next session.
+
+## Is it safe?
+
+It's a fair question to ask of anything you install by piping a script into bash and then hand your source code to, so here's what the project says it does and what you can check for yourself.
+
+Start with what it touches. It reads your codebase, which is the whole point, and the `install` step writes to your coding agents' configuration: MCP server entries, instruction files, skills, and pre-tool hooks. The README is upfront about this ("That is what it is designed to do"), but hooks run inside your agent sessions, so it's worth looking at what got added to your agent's config once the install has finished.
+
+According to the README, here's what it doesn't do:
+
+- Send anything anywhere. Everything runs locally with no telemetry, so your code, queries, environment, and usage stay on your machine.
+- Make network requests of its own accord. There's no background update check and nothing phones home; you find out about new releases from GitHub or the install script.
+- Need an API key. There's no LLM inside it. Your existing agent does the thinking and queries the graph.
+
+The graph itself is a set of SQLite databases under `~/.cache/codebase-memory-mcp/`, and removing that directory wipes it. It can also write a compressed snapshot into a `.codebase-memory/` folder in your repo so teammates can skip the first index, but only if you ask for it, as that's off by default. The optional graph UI, which I cover further down, listens on `localhost:9749`.
+
+The project is MIT-licensed with the full source on GitHub. Every release ships a `checksums.txt` with SHA-256 hashes, and release candidates go through VirusTotal before they are published. The Windows binary isn't signed, so expect a SmartScreen warning, and the README has a section on Microsoft Defender false positives.
+
+If you'd rather not pipe a script straight into bash, download it and read it first:
+
+```bash frame="terminal" title="Download and read the installer before running it"
+curl -fsSL https://raw.githubusercontent.com/DeusData/codebase-memory-mcp/main/install.sh -o install.sh
+less install.sh
+bash install.sh --ui
+```
+
+And if you're pointing it at anything sensitive, setting `CBM_ALLOWED_ROOT` in the environment of the MCP server entry confines indexing to a single directory. Ask it to index a path outside that root and it refuses, and the same check applies to the graph UI.
+
+On your own projects, that's a reasonable set of guarantees. For client code, read the installer and the hooks it adds before running it, which takes about as long as making a coffee.
 
 ## Indexing a project
 

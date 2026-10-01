@@ -1,7 +1,10 @@
 ---
 title: "My Starship Prompt Setup"
-description: "A Deep Dive into a Gruvbox-Themed Terminal"
+seoTitle: "My Starship Prompt Setup: Gruvbox Config, Themes and Presets"
+description: "My full Gruvbox Starship config, plus how to try the built-in presets and swap in Tokyo Night, Nord or Dracula colours without rewriting your starship.toml."
 date: 2025-11-15T13:48:35.271Z
+lastModified: 2026-10-01
+updatedDate: 2026-10-01
 cover:
   image: "../../assets/2025-11-15-my-starship-prompt-setup/blog-cover-2025-11-15-my-starship-prompt-setup.png"
   caption: "A Deep Dive into a Gruvbox-Themed Terminal"
@@ -213,8 +216,7 @@ Want to use this configuration? Here's how:
 
 2. **Install a Nerd Font:** The icons require a Nerd Font. I use Hack Nerd Font Mono:
     ```bash
-    brew tap homebrew/cask-fonts
-    brew install font-hack-nerd-font
+    brew install --cask font-hack-nerd-font
     ```
 
 3. **Configure your shell:** Add to your `~/.zshrc`:
@@ -224,13 +226,127 @@ Want to use this configuration? Here's how:
 
 4. **Edit your configuration:** Find the configuration at `~/.config/starship.toml`
 
+## Themes and presets
+
+If you've landed here looking for a theme rather than my exact setup, there are two ways to go about it: start from one of the presets that ship with Starship, or keep a layout you like and swap the colours underneath it.
+
+### Starting from a built-in preset
+
+Presets are complete `starship.toml` files that Starship ships with, and they make a good starting point if you don't fancy building a prompt from scratch. To see which ones your version knows about, run:
+
+```bash frame="terminal" title="List the built-in presets"
+starship preset --list
+```
+
+On Starship 1.26.0 that gives you twelve:
+
+- `tokyo-night`, `gruvbox-rainbow`, `catppuccin-powerline` and `pastel-powerline` are full powerline-style themes, and the closest to what I'm running
+- `pure-preset` copies the look of the Pure zsh prompt, and `jetpack` is a minimal take inspired by the geometry and spaceship prompts
+- `bracketed-segments` wraps each module in brackets instead of using the default "via" and "on" wording
+- `nerd-font-symbols`, `no-nerd-font` and `plain-text-symbols` only change the icons, which is handy on a machine without a Nerd Font installed
+- `no-runtime-versions` and `no-empty-icons` trim things back by hiding language versions and icons for tools that aren't installed
+
+A preset replaces your whole config rather than merging with it, so back up what you have first:
+
+```bash frame="terminal" title="Back up your config and apply a preset"
+cp ~/.config/starship.toml ~/.config/starship.toml.bak
+starship preset tokyo-night -o ~/.config/starship.toml --force
+```
+
+Without `--force`, the `-o` flag refuses to overwrite an existing file, which is a nice bit of protection. Leave off `-o` altogether and the preset is printed to the terminal instead, which is useful if you only want to borrow a section or two. The Starship site has a screenshot of each one:
+
+<LinkPreview id="https://starship.rs/presets/" />
+
+### Swapping the colours on an existing layout
+
+The modules in my config don't hard-code any hex values. Every style refers to a named colour like `color_orange` or `color_fg0`, and those names are defined once in a palette table:
+
+```toml frame="code" title="Selecting the palette"
+palette = 'gruvbox_dark'
+
+[palettes.gruvbox_dark]
+color_fg0 = '#fbf1c7'
+color_orange = '#d65d0e'
+# ... and the rest of the colours
+```
+
+That means changing theme is a case of adding a second palette table with the same names and pointing `palette` at it. Below are palettes for Tokyo Night, Nord and Dracula, built from each scheme's published colours and covering the names the main blocks use.
+
+Gruvbox's neutral colours are dark enough to carry the cream text the rest of my config uses. These three are much brighter, and cream text on them drops to between 1.0:1 and 3.5:1 contrast, so in each one `color_fg0` flips to the theme's background colour. Dark text clears 4.4:1 on every block apart from Nord's red, which manages 3.1:1.
+
+```toml frame="code" title="Tokyo Night"
+palette = 'tokyo_night'
+
+[palettes.tokyo_night]
+color_fg0 = '#1a1b26'
+color_fg1 = '#c0caf5'
+color_bg0 = '#1a1b26'
+color_bg1 = '#292e42'
+color_bg3 = '#414868'
+color_blue = '#7aa2f7'
+color_aqua = '#7dcfff'
+color_green = '#9ece6a'
+color_orange = '#ff9e64'
+color_purple = '#bb9af7'
+color_red = '#f7768e'
+color_yellow = '#e0af68'
+color_bright_green = '#9ece6a'
+color_bright_red = '#f7768e'
+```
+
+```toml frame="code" title="Nord"
+palette = 'nord'
+
+[palettes.nord]
+color_fg0 = '#2e3440'
+color_fg1 = '#eceff4'
+color_bg0 = '#2e3440'
+color_bg1 = '#3b4252'
+color_bg3 = '#4c566a'
+color_blue = '#81a1c1'
+color_aqua = '#88c0d0'
+color_green = '#a3be8c'
+color_orange = '#d08770'
+color_purple = '#b48ead'
+color_red = '#bf616a'
+color_yellow = '#ebcb8b'
+color_bright_green = '#a3be8c'
+color_bright_red = '#bf616a'
+```
+
+Dracula doesn't have a blue as such, so its purple stands in for blue and its pink takes the purple slot:
+
+```toml frame="code" title="Dracula"
+palette = 'dracula'
+
+[palettes.dracula]
+color_fg0 = '#282a36'
+color_fg1 = '#f8f8f2'
+color_bg0 = '#282a36'
+color_bg1 = '#44475a'
+color_bg3 = '#6272a4'
+color_blue = '#bd93f9'
+color_aqua = '#8be9fd'
+color_green = '#50fa7b'
+color_orange = '#ffb86c'
+color_purple = '#ff79c6'
+color_red = '#ff5555'
+color_yellow = '#f1fa8c'
+color_bright_green = '#50fa7b'
+color_bright_red = '#ff5555'
+```
+
+<NoteCallout title="Check for missing names">
+My current config on GitHub has picked up a few more colour names since I first wrote this, including a set of faded tones for the status blocks and two tints for the git metrics. If a name is missing from the palette you switch to, Starship doesn't complain. The block just quietly loses its colour, so if something turns up looking plain after a swap, that's the first place to look.
+</NoteCallout>
+
 ## Customization Tips
 
 The beauty of Starship is how easy it is to customize. Here are some ideas:
 
 - **Minimize for remote sessions**: Use different configs based on `$SSH_CONNECTION`
 - **Add custom modules**: Starship supports custom commands and environment variables
-- **Theme variations**: Try different palettes like Tokyo Night, Nord, or Dracula
+- **Theme variations**: Swap the palette, as covered in [Themes and presets](#themes-and-presets) above
 - **Context-aware layouts**: Use different formats for different directories
 
 ## Summary
@@ -238,6 +354,8 @@ The beauty of Starship is how easy it is to customize. Here are some ideas:
 Your terminal prompt is personal - it should reflect how you work and what information you need at a glance. My Starship configuration has evolved from when I was using PowerLine10k and will continue to be added to as time goes on.
 
 The key is to start with something functional, then iterate. Pay attention to which information you actually use and which just becomes noise. A great prompt should feel invisible when you don't need it and invaluable when you do.
+
+Since writing this, most of the changes have gone into making blocks appear only when they're needed without leaving a stray powerline arrow behind. I've written that up separately in [My Starship Prompt Revisited: Making Blocks Vanish Cleanly](/2026/08/09/my-starship-prompt-revisited-making-blocks-vanish-cleanly/).
 
 You can find my current and full `starship.toml` configuration at the following link:
 
