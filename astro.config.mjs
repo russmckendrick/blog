@@ -136,6 +136,21 @@ export default defineConfig({
 			// is a 1.5 KiB framework floor, not a tuning opportunity.
 			// Optimize chunking strategy
 			rollupOptions: {
+				// Astro 7 wraps every MDX content module in a proxy that starts with
+				// a "use astro:head-inject" directive, and Rolldown (Vite 8) warns
+				// that it can't preserve module-level directives. Astro reads the
+				// directive while analysing the module graph, before bundling, so
+				// dropping it from the output is harmless. Silence just that pair;
+				// every other warning still reaches the default handler.
+				onwarn(warning, defaultHandler) {
+					if (
+						warning.code === 'MODULE_LEVEL_DIRECTIVE' &&
+						warning.message.includes('astro:head-inject')
+					) {
+						return;
+					}
+					defaultHandler(warning);
+				},
 				output: {
 					// Group small vendor chunks together to reduce requests
 					manualChunks: (id) => {
