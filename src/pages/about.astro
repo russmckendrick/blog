@@ -6,6 +6,7 @@ import { createPersonSchema, createOrganizationSchema } from '../utils/schema';
 import { getAvailableAvatars, getAvatarImageUrl } from '../utils/avatars';
 import { getCFImageUrl } from '../utils/cloudflare-images';
 import { getTagColorClasses, getTagName, normalizeTagSlug } from '../utils/tags';
+import HomeProjects from '../components/home/HomeProjects.astro';
 
 const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
 const personSchema = createPersonSchema(siteUrl);
@@ -14,7 +15,7 @@ const organizationSchema = createOrganizationSchema(siteUrl);
 // Avatar renders at 80px in the byline row. Resolve delivery URLs here
 // rather than in the client script so the swapped-in avatars go through
 // Cloudflare too — the source SVGs are ~90 KiB each.
-const AVATAR_RENDER_SIZE = 80;
+const AVATAR_RENDER_SIZE = 96;
 // Available avatars for client-side random selection, pre-resolved to image URLs
 const availableAvatars = getAvailableAvatars()
   .filter(avatar => avatar.endsWith('.svg'))
@@ -35,7 +36,7 @@ const tunes = (await getCollection('tunes'))
 const glossary = await getCollection('glossary');
 const books = (await getCollection('books'))
   .filter(book => !book.data.draft)
-  .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const firstPost = [...posts].sort(
   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
@@ -55,7 +56,15 @@ for (const post of posts) {
 }
 const topTags = Array.from(tagCounts.entries())
   .sort((a, b) => b[1] - a[1])
-  .slice(0, 8);
+  .slice(0, 12);
+
+// The four numbers in the intro band, each linking to its hub
+const stats = [
+  { value: posts.length, label: 'posts', href: '/archives/' },
+  { value: tunes.length, label: 'weeks of listening', href: '/tunes/' },
+  { value: books.length, label: 'books', href: '/books/' },
+  { value: glossary.length, label: 'glossary entries', href: '/glossary/' },
+];
 
 const bookCoverWidth = 200;
 ---
@@ -65,47 +74,54 @@ const bookCoverWidth = 200;
 		<Schema item={personSchema} />
 		<Schema item={organizationSchema} />
 	</Fragment>
-	<section class="max-w-[728px] mx-auto px-6 py-8">
-
-		<!-- Intro section -->
-		<div class="pt-4 pb-10 mb-10 border-b" style="border-color: var(--color-outline-variant);">
-			<!-- The title leads at the full 680px measure, on the same left edge as
-			     the body copy below it. Nothing is set beside it, so the heading has
-			     no tall neighbour to leave a ragged void against. -->
-			<h1 class="mb-6" data-entrance>
-				<span class="inline-block animate-wave mr-2" style="transform-origin: 70% 70%;">👋</span>Hi there, my name is Russ.
-			</h1>
-
-			<!-- Byline row, borrowing the article's own grammar: a small round
-			     portrait beside one meta line. Nothing is indented and nothing sits
-			     beside a tall block, so there is no ragged void to leave. -->
-			<div class="flex items-center gap-4 mb-8">
+	<!-- Intro band: the same full-width tint as the homepage intro — the
+	     clickable avatar, the greeting and lede, and the archive in numbers. -->
+	<section class="about-band">
+		<div class="page-frame about-band-inner">
+			<div>
+				<div class="about-heading">
 				<button type="button" class="avatar-button block w-fit flex-none" aria-label="Change the avatar" data-entrance>
-					<div class="avatar-inner w-20 h-20 rounded-full overflow-hidden border" style="border-color: var(--color-outline-variant);">
+					<div class="avatar-inner about-avatar">
 						<img
 							src={defaultAvatarPath}
 							alt="Illustrated avatar of Russ McKendrick"
+							width="96"
+							height="96"
 							class="w-full h-full object-cover object-center random-avatar"
 							onerror={`this.onerror=null; this.src='${avatarFallback}';`}
 						/>
 					</div>
 				</button>
-
-				{writingSince && (
-					<p class="byline-facts min-w-0" data-entrance>
-						Writing here since {writingSince} — <a href="/archives/">{posts.length} posts</a>,
-						{' '}<a href="/tunes/">{tunes.length} weeks of listening</a>,
-						{' '}<a href="/glossary/">{glossary.length} glossary entries</a>,
-						{' '}and <a href="/books/">{books.length} books</a>.
-					</p>
-				)}
+				<h1 class="about-title" data-entrance>
+					<span class="inline-block animate-wave mr-2" style="transform-origin: 70% 70%;">👋</span>Hi there, my name is Russ.
+				</h1>
+				</div>
+				<p class="about-lede" data-entrance>
+					I'm an IT professional with a strong background in DevOps and system administration, and I've spent the last 30 years working in IT roles across multiple industries.
+				</p>
 			</div>
 
-			<div class="prose" data-entrance>
-				<p>
-					I'm an IT professional with a strong background in DevOps and system administration. I've spent the last 30 years working in various IT roles across multiple industries.
-				</p>
+			<ul class="about-stats" role="list" data-entrance>
+				{stats.map((stat) => (
+					<li>
+						<a href={stat.href} class="about-stat">
+							<span class="about-stat-value">{stat.value}</span>
+							<span class="about-stat-label">{stat.label}</span>
+						</a>
+					</li>
+				))}
+			</ul>
+		</div>
+	</section>
 
+	<!-- Avatar data for client-side random selection -->
+	<script is:inline define:vars={{ availableAvatars }}>
+		window.__availableAvatars = availableAvatars;
+	</script>
+
+	<div class="page-frame pb-6">
+		<div class="about-columns">
+			<div class="prose" data-reveal>
 				<p>
 					I have a deep passion for Linux, open-source systems, automation, and containers. I currently serve as the Practice Manager of SRE &amp; DevOps at <a href="https://www.node4.co.uk/" target="_blank" rel="noopener noreferrer">Node4</a>, managing projects across public and private clouds.
 				</p>
@@ -113,43 +129,56 @@ const bookCoverWidth = 200;
 				<p>
 					Apart from my work, I have written and contributed to <a href="/books/">fourteen technical books</a> primarily revolving around container technologies and automation. In my downtime, I enjoy expanding <a href="https://www.russ.fm/" target="_blank" rel="noopener noreferrer">my vinyl record collection</a>.
 				</p>
+
+				{writingSince && (
+					<p>
+						I've been writing here since {writingSince}. These days that mostly means the AI coding tools I use, the small Rust CLIs I build, and keeping a Mac terminal tidy, plus a weekly write-up of <a href="/tunes/">whatever I've been listening to</a>.
+					</p>
+				)}
 			</div>
 
-			<!-- Avatar data for client-side random selection -->
-			<script is:inline define:vars={{ availableAvatars }}>
-				window.__availableAvatars = availableAvatars;
-			</script>
+			<aside class="about-aside" data-reveal>
+				{topTags.length > 0 && (
+					<div>
+						<h2 class="about-aside-head">What I write about</h2>
+						<ul class="mt-3 flex flex-wrap gap-2">
+							{topTags.map(([slug, count]) => (
+								<li>
+									<a href={`/tags/${slug}/`} class={getTagColorClasses(slug)}>
+										{getTagName(slug)}
+										<span class="opacity-70">{count}</span>
+									</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
+
+				<div>
+					<h2 class="about-aside-head">Get in touch</h2>
+					<p class="mt-2 text-[15px] text-on-surface-variant leading-snug">
+						<a href="mailto:web.site@mckendrick.email" class="underline">web.site@mckendrick.email</a>{' '}
+						— everywhere else I post is listed at the bottom of this page.
+					</p>
+				</div>
+			</aside>
 		</div>
 
-		{topTags.length > 0 && (
-			<div class="mb-10" data-reveal>
-				<h2 class="section-head">What I write about</h2>
-				<ul class="mt-3 flex flex-wrap gap-2">
-					{topTags.map(([slug, count]) => (
-						<li>
-							<a href={`/tags/${slug}/`} class={getTagColorClasses(slug)}>
-								{getTagName(slug)}
-								<span class="opacity-70">{count}</span>
-							</a>
-						</li>
-					))}
-				</ul>
-			</div>
-		)}
-
 		{books.length > 0 && (
-			<div class="mb-10" data-reveal>
-				<h2 class="section-head">The books</h2>
-				<p class="mt-2 text-[15px] text-on-surface-variant leading-snug">
-					Written or co-authored, oldest first. <a href="/books/" class="underline">All {books.length} with publishers and buy links</a>.
-				</p>
-				<ul class="mt-4 grid grid-cols-4 sm:grid-cols-7 gap-2.5">
+			<section class="pt-16 lg:pt-24" aria-labelledby="about-books" data-reveal>
+				<div class="home-section-head">
+					<h2 id="about-books" class="home-section-title">The books</h2>
+					<a href="/books/" class="home-section-link">All {books.length} with buy links →</a>
+				</div>
+				<ul class="about-shelf" role="list">
 					{books.map((book) => (
 						<li>
-							<a href={`/books/${book.id}/`} class="book-cover block" title={book.data.title}>
+							<a href={`/books/${book.id}/`} class="book-cover block" title={book.data.title} aria-label={book.data.title}>
 								<img
 									src={getCFImageUrl(book.data.cover, { width: bookCoverWidth, quality: 70, format: 'auto' })}
 									alt={book.data.alt || book.data.title}
+									width="100"
+									height="124"
 									class="w-full"
 									loading="lazy"
 									decoding="async"
@@ -158,65 +187,179 @@ const bookCoverWidth = 200;
 						</li>
 					))}
 				</ul>
-			</div>
+			</section>
 		)}
 
-		<div data-reveal>
-			<h2 class="section-head">Get in touch</h2>
-			<p class="mt-2 text-[15px] text-on-surface-variant leading-snug">
-				<a href="mailto:web.site@mckendrick.email" class="underline">web.site@mckendrick.email</a>{' '}
-				— everywhere else I post is listed at the bottom of this page.
-			</p>
+		<div class="pt-16 lg:pt-24 pb-6">
+			<HomeProjects />
 		</div>
-
-	</section>
+	</div>
 </BaseLayout>
 
 <style>
-  /* The evidence line, sat in the byline row: ink, not mist, because it is
-     content. Links stay ink and take the accent on hover like everywhere else. */
-  .byline-facts {
-    font-family: var(--font-display);
-    /* dek step (16px) — the documented size for a sans line of this weight */
-    font-size: 1rem;
-    line-height: 1.4;
-    color: var(--color-on-surface);
-    text-wrap: pretty;
-  }
-  .byline-facts a {
-    text-decoration: underline;
-    text-decoration-color: var(--color-outline-variant);
-    text-underline-offset: 3px;
-    transition: color var(--dur-quick) ease, text-decoration-color var(--dur-quick) ease;
-  }
-  .byline-facts a:hover {
-    color: var(--color-secondary);
-    text-decoration-color: var(--color-secondary);
+  .about-band {
+    background-color: var(--paper-well);
   }
 
-  @media (max-width: 640px) {
-    /* ui-small step (15px) */
-    .byline-facts {
-      font-size: 0.9375rem;
+  .about-band-inner {
+    display: grid;
+    gap: 1.75rem;
+    padding-block: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .about-band-inner {
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 4rem;
+      align-items: center;
+      padding-block: 3rem;
     }
   }
 
-  .section-head {
-    font-family: var(--font-display);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+  /* Avatar beside the greeting, centred on it */
+  .about-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .about-heading {
+      gap: 1.5rem;
+    }
+  }
+
+  .about-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 9999px;
+    overflow: hidden;
+    background-color: var(--color-surface);
+  }
+
+  @media (min-width: 640px) {
+    .about-avatar {
+      width: 84px;
+      height: 84px;
+    }
+  }
+
+  .about-title {
+    margin: 0;
+    font-size: clamp(1.875rem, 5vw, 3.5rem);
+    line-height: 1.02;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  .about-lede {
+    margin-top: 1rem;
+    max-width: 600px;
+    font-size: 1.125rem;
+    line-height: 1.55;
+    color: var(--color-on-surface-variant);
+  }
+
+  @media (min-width: 640px) {
+    .about-lede {
+      font-size: 1.25rem;
+    }
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .about-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    height: 100%;
+    padding: 0.875rem 1.125rem;
+    border-radius: 16px;
+    background-color: var(--color-surface);
     color: var(--color-on-surface);
+    text-decoration: none;
+    transition: box-shadow var(--dur-quick) ease;
+  }
+
+  .about-stat:hover {
+    color: var(--color-on-surface);
+    box-shadow: inset 0 0 0 1px var(--rule-strong);
+  }
+
+  .about-stat-value {
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  .about-stat:hover .about-stat-value {
+    color: var(--accent);
+  }
+
+  .about-stat-label {
+    font-size: 0.875rem;
+    color: var(--color-on-surface-variant);
+  }
+
+  .about-columns {
+    display: grid;
+    gap: 2.5rem;
+    padding-top: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .about-columns {
+      grid-template-columns: minmax(0, 700px) minmax(0, 360px);
+      justify-content: space-between;
+      gap: 4rem;
+      padding-top: 4.5rem;
+    }
+  }
+
+  .about-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-aside-head {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+
+  .about-shelf {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 640px) {
+    .about-shelf {
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 1rem;
+    }
   }
 
   /* Thirteen of the fourteen covers are 81:100; pinning the box to that ratio
-     keeps the strip's rows level instead of ragged, and only the one odd cover
-     takes a slight vertical crop. */
+     keeps the shelf's rows level, and only the odd cover takes a slight crop. */
   .book-cover img {
     aspect-ratio: 81 / 100;
     object-fit: cover;
-    border-radius: 3px;
-    border: 1px solid var(--color-outline-variant);
+    border-radius: 6px;
+    background-color: var(--paper-well);
+    box-shadow: 0 18px 30px -22px rgba(10, 10, 20, 0.45);
     transition: opacity var(--dur-quick) ease;
   }
   .book-cover:hover img {

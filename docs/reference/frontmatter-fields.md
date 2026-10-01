@@ -37,7 +37,7 @@ title: "Installing Docker on Ubuntu 24.04"
 
 **Required**: Yes
 
-**Description**: Post description used in meta tags, OpenGraph, and post cards. Critical for SEO.
+**Description**: Post description used in meta tags, OpenGraph, and post cards, and shown on the post page itself as the standfirst under the hero image. Critical for SEO.
 
 **Example**:
 ```yaml
@@ -193,7 +193,7 @@ lastModified: 2025-11-03
 
 **Default**: `false`
 
-**Description**: Show table of contents at top of post.
+**Description**: Show the contents rail ("On this page") beside the post.
 
 **Example**:
 ```yaml
@@ -202,8 +202,8 @@ showToc: true
 
 **Behavior**:
 - Automatically generates from h2 and h3 headings (h2 only on tunes pages)
-- Inline collapsible component on smaller screens
-- Sticky sidebar with active section highlighting on wide screens (2xl+)
+- Sticky left-hand rail with active-section highlighting on viewports ≥1200px (`ArticleRail.astro`, `part="contents"`)
+- Nothing renders below 1200px - there is no inline table of contents
 - Smooth scrolling navigation
 
 ---
@@ -392,7 +392,7 @@ Warning: Tag "xyz" not found in TAG_METADATA
 
 ## Books collection
 
-Books live at `src/content/books/{slug}.mdx`, where `{slug}` becomes the URL at `/books/{slug}/`. Each entry powers both the `/books/` index grid and a per-book detail page.
+Books live at `src/content/books/{slug}.mdx`, where `{slug}` becomes the URL at `/books/{slug}/`. Each entry powers the `/books/` index (the newest by `pubDate` as the featured "Latest book", the rest in the shelf grid), the homepage and About shelves, and a per-book detail page.
 
 | Field | Type | Required | Notes |
 |-------|------|----------|-------|
@@ -406,7 +406,7 @@ Books live at `src/content/books/{slug}.mdx`, where `{slug}` becomes the URL at 
 | `topic` | string | no | Free-form classification - `"Docker"`, `"Kubernetes"`, etc. Used in the breadcrumb sub-line. |
 | `tags` | string[] | no | Lowercase tags. Used to find related blog posts via tag-overlap (normalised through `normalizeTagSlug`). |
 | `pubDate` | date | yes | Used for sorting on the index and `datePublished` in the Book schema. |
-| `order` | number | yes | Explicit display order on the `/books/` index. Lower first. |
+| `order` | number | yes | Still required by the schema, but no longer read: `/books/`, the homepage and About all sort books newest first by `pubDate`. |
 | `draft` | boolean | no | Defaults to `false`. Drafts are excluded from the index and detail routes in production. |
 
 The body of the file is rendered as MDX in the right column of the detail page. Each entry emits `Book` and `BreadcrumbList` JSON-LD, plus a per-book OG image at `/books/{slug}-og.png`.

@@ -29,41 +29,26 @@ export default defineConfig({
 	fonts: [
 		{
 			provider: fontProviders.local(),
-			name: 'Schibsted Grotesk',
-			cssVariable: '--font-schibsted',
+			name: 'Geist',
+			cssVariable: '--font-geist',
 			fallbacks: ['-apple-system', 'Helvetica Neue', 'Arial', 'sans-serif'],
 			options: {
 				variants: [
-					// Variable font instanced to wght 400-700 (fonttools varLib.instancer):
-					// display/UI/meta face — the site never sets sans heavier than 700.
-					{ weight: '400 700', style: 'normal', src: ['./src/assets/fonts/schibsted-grotesk-variable-latin.woff2'] }
+					// Vercel's Geist (OFL, npm `geist`), instanced to wght 400-800 and
+					// subset to Latin with fonttools — one face for UI, headings and body.
+					{ weight: '400 800', style: 'normal', src: ['./src/assets/fonts/geist-variable-latin.woff2'] },
+					{ weight: '400 700', style: 'italic', src: ['./src/assets/fonts/geist-variable-italic-latin.woff2'] }
 				]
 			}
 		},
 		{
 			provider: fontProviders.local(),
-			name: 'Literata',
-			cssVariable: '--font-literata',
-			fallbacks: ['Georgia', 'Times New Roman', 'serif'],
-			options: {
-				variants: [
-					// Variable font, wght 400-700 with the opsz axis pinned at 20 so the
-					// article body renders at Literata's 18-20px optical size everywhere.
-					{ weight: '400 700', style: 'normal', src: ['./src/assets/fonts/literata-variable-latin.woff2'] },
-					{ weight: '400 700', style: 'italic', src: ['./src/assets/fonts/literata-variable-italic-latin.woff2'] }
-				]
-			}
-		},
-		{
-			provider: fontProviders.local(),
-			name: 'IBM Plex Mono',
-			cssVariable: '--font-ibm-plex-mono',
+			name: 'Geist Mono',
+			cssVariable: '--font-geist-mono',
 			fallbacks: ['ui-monospace', 'Cascadia Code', 'Consolas', 'Courier New', 'monospace'],
 			options: {
 				variants: [
-					{ weight: 400, style: 'normal', src: ['./src/assets/fonts/ibm-plex-mono-400-latin.woff2'] },
-					{ weight: 500, style: 'normal', src: ['./src/assets/fonts/ibm-plex-mono-500-latin.woff2'] },
-					{ weight: 600, style: 'normal', src: ['./src/assets/fonts/ibm-plex-mono-600-latin.woff2'] }
+					{ weight: '400 700', style: 'normal', src: ['./src/assets/fonts/geist-mono-variable-latin.woff2'] }
 				]
 			}
 		}
@@ -90,10 +75,10 @@ export default defineConfig({
 					? "[data-theme='terminal-profile-only']"
 					: `[data-theme='${theme.type}']`,
 			styleOverrides: {
-				borderRadius: '0',
+				borderRadius: '12px',
 				borderColor: 'var(--color-outline-variant)',
-				codeFontFamily: 'IBM Plex Mono, ui-monospace, Consolas, monospace',
-				uiFontFamily: 'IBM Plex Mono, ui-monospace, Consolas, monospace',
+				codeFontFamily: 'var(--font-geist-mono), ui-monospace, Consolas, monospace',
+				uiFontFamily: 'var(--font-geist-mono), ui-monospace, Consolas, monospace',
 				codeBackground: 'var(--color-surface-container-lowest)',
 				frames: {
 					editorBackground: 'var(--color-surface-container-lowest)',

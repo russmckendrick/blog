@@ -185,7 +185,7 @@ avatar: "terminal"  # Use terminal avatar instead of docker
 
 Tags power the related posts algorithm:
 
-- Posts with shared tags appear in "Related Posts" section
+- Posts with shared tags appear in the "Keep reading" section at the end of each post
 - More shared tags = higher similarity score
 - Helps readers discover similar content
 

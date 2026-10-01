@@ -1,10 +1,19 @@
 ---
 import { getCollection } from 'astro:content'
-import { FOOTER_NAV, SOCIAL_LINKS, SOCIAL_LABELS, AUTHOR_NAME } from '../../consts'
+import { SOCIAL_LINKS, SOCIAL_LABELS, AUTHOR_NAME } from '../../consts'
 import { getPostUrl } from '../../utils/url'
 import { getCFImageUrl } from '../../utils/cloudflare-images'
 import { getTuneCovers } from '../../utils/tune-covers'
 import Icon from '../ui/Icon.astro'
+import { Icon as AstroIcon } from 'astro-icon/components'
+import Logo from './Logo.astro'
+
+interface Props {
+	/** Off on the homepage, which carries its own tunes panel. */
+	showTunes?: boolean
+}
+
+const { showTunes = true } = Astro.props
 
 // "Listened to this week": latest tunes entry + four of its record covers.
 // The collection call is served from Astro's content-layer cache; the cover
@@ -18,91 +27,275 @@ const covers = latestTune ? getTuneCovers(latestTune, 4) : []
 
 const latestTuneUrl = latestTune ? getPostUrl(latestTune.data.pubDate, latestTune.data.title) : '/tunes/'
 const today = new Date()
+
+// The site's own sections, in one column
+const EXPLORE = [
+	{ name: 'Home', url: '/' },
+	{ name: 'Tunes', url: '/tunes/' },
+	{ name: 'Books', url: '/books/' },
+	{ name: 'Reading list', url: '/reading/' },
+	{ name: 'Tags', url: '/tags/' },
+	{ name: 'Archives', url: '/archives/' },
+	{ name: 'Glossary', url: '/glossary/' },
+	{ name: 'About', url: '/about/' },
+]
 ---
 
-<footer class="mt-16 border-t" style="border-color: var(--color-outline-variant);">
-	<div class="max-w-[728px] mx-auto px-6 pt-11 pb-1 grid grid-cols-1 sm:grid-cols-2 gap-9 sm:gap-12">
-		<div>
-			<p class="text-[15px] font-semibold" style="letter-spacing: -0.01em;">Links</p>
-			<div class="footer-social mt-4 flex flex-wrap justify-center sm:justify-start gap-x-3.5 gap-y-2.5 max-w-[240px] mx-auto sm:mx-0">
-				{SOCIAL_LINKS.map(link => (
-					<a
-						href={link.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						aria-label={SOCIAL_LABELS[link.name] ?? link.name}
-						title={SOCIAL_LABELS[link.name] ?? link.name}
-						class="footer-social-link"
-					>
-						<Icon name={link.name} size={17} aria-hidden="true" />
-					</a>
-				))}
+<footer class="site-footer">
+	<div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10">
+		<div class:list={['footer-grid', { 'footer-grid--no-tunes': !(showTunes && latestTune) }]}>
+			<div class="footer-brand">
+				<a href="/" class="inline-block" aria-label="Russ.Cloud home">
+					<Logo />
+				</a>
+				<p class="footer-blurb">
+					DevOps, AI coding tools, the Rust CLIs I build and the records I'm playing. Written by {AUTHOR_NAME} since 2013.
+				</p>
+				<a href="/rss.xml" class="footer-rss">
+					<AstroIcon name="rss-color" class="footer-rss-icon" aria-hidden="true" />
+					<span>Subscribe via RSS</span>
+				</a>
 			</div>
+
+			<nav class="footer-col" aria-labelledby="footer-explore">
+				<p id="footer-explore" class="footer-head">Explore</p>
+				<ul class="footer-list" role="list">
+					{EXPLORE.map((item) => (
+						<li><a href={item.url}>{item.name}</a></li>
+					))}
+				</ul>
+			</nav>
+
+			<nav class="footer-col" aria-labelledby="footer-elsewhere">
+				<p id="footer-elsewhere" class="footer-head">Elsewhere</p>
+				<ul class="footer-social" role="list">
+					{SOCIAL_LINKS.map((link) => (
+						<li>
+							<a href={link.url} target="_blank" rel="noopener noreferrer me">
+								<Icon name={link.name} size={16} aria-hidden="true" />
+								<span>{(SOCIAL_LABELS[link.name] ?? link.name).replace(' author page', '')}</span>
+							</a>
+						</li>
+					))}
+				</ul>
+			</nav>
+
+			{showTunes && latestTune && (
+				<div class="footer-col">
+					<p class="footer-head">Listened to this week</p>
+					{covers.length > 0 && (
+						<div class="footer-covers">
+							{covers.map(cover => (
+								<img
+									src={getCFImageUrl(cover.src, { width: 160, quality: 60 })}
+									alt={cover.alt}
+									width="72"
+									height="72"
+									loading="lazy"
+									decoding="async"
+								/>
+							))}
+						</div>
+					)}
+					<a href={latestTuneUrl} class="footer-tunes-title">
+						{latestTune.data.title}
+					</a>
+					<a href="/tunes/" class="footer-more">{weeksCount} weeks of listening →</a>
+				</div>
+			)}
 		</div>
 
-		{latestTune && (
-			<div>
-				<p class="text-[15px] font-semibold" style="letter-spacing: -0.01em;">Listened to this week</p>
-				{covers.length > 0 && (
-					<div class="mt-3.5 grid grid-cols-4 gap-2 sm:flex">
-						{covers.map(cover => (
-							<img
-								src={getCFImageUrl(cover.src, { width: 160, quality: 60 })}
-								alt={cover.alt}
-								width="64"
-								height="64"
-								loading="lazy"
-								decoding="async"
-								class="w-full aspect-square sm:w-16 sm:h-16 object-cover rounded-[3px]"
-							/>
-						))}
-					</div>
-				)}
-				<a href={latestTuneUrl} class="footer-tunes-title block mt-3 no-underline text-sm font-semibold leading-snug">
-					{latestTune.data.title}
-				</a>
-				<a href="/tunes/" class="rubric no-underline block mt-1.5 hover:text-on-surface">
-					{weeksCount} weeks of listening →
-				</a>
-			</div>
-		)}
-	</div>
-
-	<div class="max-w-[728px] mx-auto px-6 pt-6 pb-10">
-		<p class="rubric">
-			{FOOTER_NAV.map((item) => (
-				<>
-					<a
-						href={item.url}
-						class="hover:text-on-surface no-underline"
-						target={item.external ? '_blank' : undefined}
-						rel={item.external ? 'noopener noreferrer' : undefined}
-					>{item.name}</a>
-					<span aria-hidden="true">{' · '}</span>
-				</>
-			))}
-			&copy; {today.getFullYear()} {AUTHOR_NAME}
-		</p>
+		<div class="footer-bar">
+			<p>&copy; {today.getFullYear()} {AUTHOR_NAME}</p>
+			<p class="footer-bar-links">
+				<a href="https://github.com/russmckendrick/blog/" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+				<a href="/rss.xml">RSS</a>
+				<a href="#main-content">Back to top ↑</a>
+			</p>
+		</div>
 	</div>
 </footer>
 
 <style>
-	.footer-social-link {
+	.site-footer {
+		margin-top: 4rem;
+		border-top: 1px solid var(--rule);
+		background-color: var(--paper-well);
+	}
+
+	.footer-grid {
+		display: grid;
+		gap: 2.5rem 2rem;
+		padding-block: 3rem 2.5rem;
+	}
+
+	@media (min-width: 640px) {
+		.footer-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.footer-grid {
+			grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr) minmax(0, 1.3fr) minmax(0, 1.1fr);
+			gap: 3.5rem;
+			padding-block: 4.5rem 3.5rem;
+		}
+
+		.footer-grid--no-tunes {
+			grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr) minmax(0, 1.3fr);
+		}
+	}
+
+	.footer-blurb {
+		margin-top: 1.25rem;
+		max-width: 340px;
+		font-size: 0.9375rem;
+		line-height: 1.55;
 		color: var(--color-on-surface-variant);
-		display: flex;
+	}
+
+	.footer-rss {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		height: 40px;
+		margin-top: 1.25rem;
+		padding: 0 1rem;
+		border-radius: 9999px;
+		background-color: var(--color-surface);
+		border: 1px solid var(--rule-strong);
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--color-on-surface);
+		text-decoration: none;
+	}
+
+	.footer-rss-icon {
+		width: 1rem;
+		height: 1rem;
+	}
+
+	.footer-rss:hover {
+		color: var(--color-on-surface);
+		border-color: var(--color-on-surface-variant);
+	}
+
+	.footer-head {
+		margin-bottom: 1rem;
+		font-size: 0.8125rem;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		color: var(--color-on-surface);
+	}
+
+	.footer-list {
+		display: grid;
+		gap: 0.625rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.footer-list a,
+	.footer-social a {
+		color: var(--color-on-surface-variant);
+		text-decoration: none;
+		font-size: 0.9375rem;
 		transition: color var(--dur-quick) ease;
 	}
 
-	.footer-social-link:hover,
-	.footer-social-link:focus-visible {
+	.footer-list a:hover,
+	.footer-social a:hover {
 		color: var(--color-on-surface);
+	}
+
+	/* Social links as labelled rows, two columns — the names are worth reading */
+	.footer-social {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.625rem 1.25rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.footer-social a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.625rem;
+		min-height: 24px;
+	}
+
+	.footer-social a :global(svg) {
+		flex: none;
+	}
+
+	.footer-covers {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.5rem;
+		max-width: 320px;
+	}
+
+	.footer-covers img {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1;
+		object-fit: cover;
+		border-radius: 6px;
 	}
 
 	.footer-tunes-title {
+		display: block;
+		margin-top: 0.875rem;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		line-height: 1.35;
 		color: var(--color-on-surface);
+		text-decoration: none;
 	}
 
 	.footer-tunes-title:hover {
-		color: var(--color-secondary);
+		color: var(--accent);
+	}
+
+	.footer-more {
+		display: inline-block;
+		margin-top: 0.375rem;
+		font-size: 0.8125rem;
+		color: var(--color-on-surface-variant);
+		text-decoration: none;
+	}
+
+	.footer-more:hover {
+		color: var(--color-on-surface);
+	}
+
+	.footer-bar {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0.75rem 1.5rem;
+		padding-block: 1.5rem 2.5rem;
+		border-top: 1px solid var(--rule);
+		font-size: 0.8125rem;
+		color: var(--color-on-surface-variant);
+	}
+
+	.footer-bar-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.5rem;
+	}
+
+	.footer-bar-links a {
+		color: var(--color-on-surface-variant);
+		text-decoration: none;
+	}
+
+	.footer-bar-links a:hover {
+		color: var(--color-on-surface);
 	}
 </style>

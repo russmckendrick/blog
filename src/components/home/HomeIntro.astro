@@ -1,0 +1,210 @@
+---
+import { getAvatarImageUrl } from '../../utils/avatars'
+import { FEATURED_TAGS, NOW_BUILDING } from '../../consts'
+
+interface Props {
+	postCount: number;
+	bookCount: number;
+	sinceYear: number;
+	latestPost: { title: string; href: string };
+	spinning?: string;
+}
+
+// Full-width tint band: who writes here, plus a `russ --now` terminal whose
+// lines come from content at build time (latest post, this week's first
+// record) and NOW_BUILDING in consts.ts.
+const { postCount, bookCount, sinceYear, latestPost, spinning } = Astro.props
+const avatarSrc = getAvatarImageUrl('/images/avatars/arms-folded.png', 84)
+---
+
+<section class="home-intro" aria-labelledby="home-intro-title">
+	<div class="home-intro-inner max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10">
+		<div>
+			<img src={avatarSrc} alt="" width="84" height="84" loading="lazy" decoding="async" class="home-intro-avatar" />
+			<h2 id="home-intro-title" class="home-intro-title">Hi, I'm Russ. I build small tools and write up what I learn.</h2>
+			<p class="home-intro-lede">
+				DevOps person, author of {bookCount} books, and lately a heavy user of AI coding agents.
+				Writing here since {sinceYear} — {postCount} posts and counting.
+			</p>
+		</div>
+
+		<figure class="home-intro-terminal" aria-label="What I'm up to now">
+			<div class="home-intro-terminal-bar" aria-hidden="true">
+				<span style="background: #ed8796;"></span>
+				<span style="background: #eed49f;"></span>
+				<span style="background: #a6da95;"></span>
+			</div>
+			<div class="home-intro-terminal-body">
+				<p><span class="t-user">russ@cloud</span> <span class="t-path">~</span> <span class="t-dim">$</span> russ --now</p>
+				<dl>
+					<div><dt>writing</dt><dd><a href={latestPost.href}>{latestPost.title}</a></dd></div>
+					<div><dt>building</dt><dd>{NOW_BUILDING}</dd></div>
+					{spinning && <div><dt>spinning</dt><dd>{spinning}</dd></div>}
+					<div><dt>topics</dt><dd>{FEATURED_TAGS.join(' · ')}</dd></div>
+				</dl>
+				<p><span class="t-user">russ@cloud</span> <span class="t-path">~</span> <span class="t-dim">$</span> <span class="t-cursor" aria-hidden="true"></span></p>
+			</div>
+		</figure>
+	</div>
+</section>
+
+<style>
+	.home-intro {
+		background-color: var(--paper-well);
+	}
+
+	.home-intro-inner {
+		display: grid;
+		gap: 2.5rem;
+		padding-block: 3rem;
+	}
+
+	@media (min-width: 1024px) {
+		.home-intro-inner {
+			grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+			gap: 4.5rem;
+			align-items: center;
+			padding-block: 5.5rem;
+		}
+	}
+
+	.home-intro-avatar {
+		display: block;
+		width: 64px;
+		height: 64px;
+		border-radius: 9999px;
+		object-fit: cover;
+		background-color: var(--color-surface);
+	}
+
+	.home-intro-title {
+		margin: 1.375rem 0 0;
+		font-size: 2.25rem;
+		line-height: 1.05;
+		font-weight: 800;
+		letter-spacing: -0.04em;
+		text-wrap: balance;
+	}
+
+	.home-intro-lede {
+		margin: 1rem 0 0;
+		max-width: 560px;
+		font-size: 1.0625rem;
+		line-height: 1.55;
+		color: var(--color-on-surface-variant);
+	}
+
+	@media (min-width: 640px) {
+		.home-intro-avatar {
+			width: 84px;
+			height: 84px;
+		}
+
+		.home-intro-title {
+			margin-top: 1.75rem;
+			font-size: 3.875rem;
+			line-height: 1.02;
+		}
+
+		.home-intro-lede {
+			margin-top: 1.5rem;
+			font-size: 1.1875rem;
+		}
+	}
+
+	.home-intro-terminal {
+		margin: 0;
+		background-color: var(--terminal-bg);
+		border-radius: 14px;
+		overflow: hidden;
+		box-shadow: 0 30px 60px -30px rgba(10, 10, 20, 0.45);
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		line-height: 1.85;
+		color: #cad3f5;
+	}
+
+	@media (min-width: 640px) {
+		.home-intro-terminal {
+			font-size: 0.875rem;
+		}
+	}
+
+	.home-intro-terminal-bar {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		height: 38px;
+		padding: 0 14px;
+		background-color: var(--terminal-bar);
+	}
+
+	.home-intro-terminal-bar span {
+		width: 12px;
+		height: 12px;
+		border-radius: 9999px;
+	}
+
+	.home-intro-terminal-body {
+		padding: 1.25rem 1.5rem 1.5rem;
+	}
+
+	.home-intro-terminal-body p {
+		margin: 0;
+	}
+
+	.home-intro-terminal dl {
+		margin: 0.6rem 0;
+	}
+
+	.home-intro-terminal dl div {
+		display: grid;
+		grid-template-columns: 9ch minmax(0, 1fr);
+	}
+
+	.home-intro-terminal dt {
+		color: #939ab7;
+	}
+
+	.home-intro-terminal dd {
+		margin: 0;
+	}
+
+	.home-intro-terminal a {
+		color: #cad3f5;
+		text-decoration: underline;
+		text-decoration-color: #5b6078;
+		text-underline-offset: 3px;
+	}
+
+	.home-intro-terminal a:hover {
+		color: #eed49f;
+		text-decoration-color: #eed49f;
+	}
+
+	.t-user { color: #a6da95; }
+	.t-path { color: #8aadf4; }
+	.t-dim { color: #939ab7; }
+
+	.t-cursor {
+		display: inline-block;
+		width: 0.6em;
+		height: 1.15em;
+		vertical-align: -0.2em;
+		background-color: #cad3f5;
+		animation: now-cursor-blink 1.1s steps(1, end) infinite;
+	}
+
+	/* Astro does not scope @keyframes names - keep this one unique. */
+	@keyframes now-cursor-blink {
+		50% {
+			opacity: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.t-cursor {
+			animation: none;
+		}
+	}
+</style>

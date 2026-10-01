@@ -1,56 +1,184 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE, CF_IMAGE_PRESETS } from '../consts';
+import { getCFImageUrl } from '../utils/cloudflare-images';
 
 // Get all posts and tunes
 const allPosts = await getCollection('blog');
 const allTunes = await getCollection('tunes');
-const allContent = [...allPosts, ...allTunes];
 
-// Filter out drafts in production
-const publishedContent = allContent.filter(item =>
-	import.meta.env.DEV || !item.data.draft
-);
+const isPublished = (item: { data: { draft?: boolean } }) => import.meta.env.DEV || !item.data.draft;
+const posts = allPosts.filter(isPublished);
+const tunes = allTunes.filter(isPublished);
 
-// Get unique years with post counts
-const yearStats = publishedContent.reduce((acc, item) => {
-	const year = item.data.pubDate.getFullYear().toString();
-	acc[year] = (acc[year] || 0) + 1;
-	return acc;
-}, {} as Record<string, number>);
+type Cover = Parameters<typeof getCFImageUrl>[0];
 
-// Sort years in descending order
-const years = Object.keys(yearStats).sort((a, b) => parseInt(b) - parseInt(a));
+// Per year: post and tunes counts plus up to three covers for the card's
+// mosaic — blog covers first (newest first), tunes art to fill any gaps.
+const byYear = new Map<number, { posts: number; tunes: number; covers: Cover[] }>();
+const entry = (year: number) => {
+	if (!byYear.has(year)) byYear.set(year, { posts: 0, tunes: 0, covers: [] });
+	return byYear.get(year)!;
+};
+const newestFirst = <T extends { data: { pubDate: Date } }>(items: T[]) =>
+	[...items].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+for (const post of newestFirst(posts)) {
+	const year = entry(post.data.pubDate.getFullYear());
+	year.posts += 1;
+	const image = post.data.heroImage || post.data.cover?.image;
+	if (image && year.covers.length < 3) year.covers.push(image);
+}
+for (const tune of newestFirst(tunes)) {
+	const year = entry(tune.data.pubDate.getFullYear());
+	year.tunes += 1;
+	if (tune.data.heroImage && year.covers.length < 3) year.covers.push(tune.data.heroImage);
+}
+
+const years = [...byYear.entries()].sort((a, b) => b[0] - a[0]);
+const total = posts.length + tunes.length;
+const preset = CF_IMAGE_PRESETS.thumbnail;
 
 const title = `Archives - ${SITE_TITLE}`;
 const description = 'Browse all posts by year';
 ---
 
 <BaseLayout title={title} description={description} image="/archives-og.png">
-	<section class="max-w-[728px] mx-auto px-6">
-		<header class="pt-8 pb-8 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
+	<section class="page-frame pb-16">
+		<header class="page-head" data-entrance>
 			<h1>Archives</h1>
-			<p class="mt-3 text-lg text-on-surface-variant leading-normal">
-				All {publishedContent.length} posts, organised by year
+			<p class="page-lede">
+				{total} entries since {years.at(-1)?.[0]} — {posts.length} posts and {tunes.length} weeks of tunes, by year.
 			</p>
 		</header>
 
-		<div data-reveal>
-			{years.map(year => (
-				<a
-					href={`/${year}/`}
-					class="group flex items-baseline justify-between gap-3 py-4 no-underline border-b focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4"
-					style="border-color: var(--color-outline-variant);"
-				>
-					<span class="font-display text-xl text-on-surface transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 600; letter-spacing: -0.008em;">
-						{year}
-					</span>
-					<span class="rubric flex-shrink-0">
-						{yearStats[year]} {yearStats[year] === 1 ? 'post' : 'posts'}
-					</span>
-				</a>
+		<ul class="year-grid" role="list">
+			{years.map(([year, stats]) => (
+				<li>
+					<a href={`/${year}/`} class="year-card">
+						<span class="year-mosaic" aria-hidden="true">
+							{[0, 1, 2].map((index) => (
+								stats.covers[index] ? (
+									<img
+										src={getCFImageUrl(stats.covers[index], { width: 320, quality: preset.quality, format: preset.format, fit: preset.fit })}
+										alt=""
+										width="160"
+										height="120"
+										loading="lazy"
+										decoding="async"
+									/>
+								) : (
+									<span class="year-mosaic-blank"></span>
+								)
+							))}
+						</span>
+						<span class="year-card-body">
+							<span class="year-card-year">{year}</span>
+							<span class="rubric">
+								{stats.posts > 0 && <>{stats.posts} {stats.posts === 1 ? 'post' : 'posts'}</>}
+								{stats.posts > 0 && stats.tunes > 0 && ' · '}
+								{stats.tunes > 0 && <>{stats.tunes} {stats.tunes === 1 ? 'week' : 'weeks'} of tunes</>}
+							</span>
+						</span>
+					</a>
+				</li>
 			))}
-		</div>
+		</ul>
 	</section>
 </BaseLayout>
+
+<style>
+	.year-grid {
+		display: grid;
+		gap: 1.25rem;
+		margin: 2.5rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	@media (min-width: 640px) {
+		.year-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.year-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1.5rem;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.year-grid {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+
+	.year-card {
+		display: block;
+		overflow: hidden;
+		border: 1px solid var(--rule);
+		border-radius: 18px;
+		color: var(--color-on-surface);
+		text-decoration: none;
+		transition: border-color var(--dur-quick) ease;
+	}
+
+	.year-card:hover {
+		border-color: var(--rule-strong);
+		color: var(--color-on-surface);
+	}
+
+	.year-mosaic {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		gap: 3px;
+		aspect-ratio: 16 / 9;
+		background-color: var(--paper-well);
+	}
+
+	.year-mosaic > :first-child {
+		grid-row: 1 / -1;
+	}
+
+	.year-mosaic img,
+	.year-mosaic-blank {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		background-color: var(--paper-well);
+		transition: opacity var(--dur-quick) ease;
+	}
+
+	.year-card:hover .year-mosaic img {
+		opacity: 0.9;
+	}
+
+	.year-card-body {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.75rem;
+		padding: 1rem 1.25rem 1.125rem;
+	}
+
+	.year-card-year {
+		font-size: 2rem;
+		line-height: 1;
+		font-weight: 800;
+		letter-spacing: -0.04em;
+		transition: color var(--dur-quick) ease;
+	}
+
+	.year-card:hover .year-card-year {
+		color: var(--accent);
+	}
+
+	.year-card-body .rubric {
+		text-align: right;
+	}
+</style>

@@ -52,10 +52,62 @@ export const SOCIAL_LINKS = [
 // Homepage feed tabs: Latest + these tags (must exist as /tags/<slug>/ hubs).
 export const FEATURED_TAGS = ["ai", "tools", "code", "macos", "linux"];
 
-// Listing page sizes — the homepage shows HOME_PAGE_SIZE rows, /page/N/
-// shows PAGINATION_PAGE_SIZE. index.astro and page/[...page].astro must agree.
-export const HOME_PAGE_SIZE = 6;
+// Listing page sizes — the homepage shows HOME_PAGE_SIZE posts (the lead plus
+// a six-tile grid), /page/N/ shows PAGINATION_PAGE_SIZE. index.astro and
+// page/[...page].astro must agree.
+export const HOME_PAGE_SIZE = 7;
 export const PAGINATION_PAGE_SIZE = 9;
+
+// Homepage intro terminal: the `building` line of `russ --now`. The other
+// lines (writing, spinning, topics) are derived from content at build time.
+export const NOW_BUILDING = "tokenuse, terminal-svg";
+
+// Homepage "Things I've built". Each tile links to the post that introduced
+// the project (`post` is the blog collection id); `repo` is the source.
+export const PROJECTS = [
+  {
+    name: "tokenuse",
+    tag: "Rust",
+    description: "A local-first dashboard for what Claude Code, Codex, Cursor, Copilot and Gemini CLI cost you.",
+    post: "2026-07-19-token-use-coach-mode-and-a-week-of-releases",
+    repo: "https://github.com/russmckendrick/tokenuse",
+  },
+  {
+    name: "terminal-svg",
+    tag: "Rust",
+    description: "Pixel-perfect terminal screenshots as SVG, for docs and blog posts.",
+    post: "2026-07-12-a-catch-up-terminal-svg-and-token-use-v1",
+    repo: "https://github.com/russmckendrick/terminal-svg",
+  },
+  {
+    name: "aicommit",
+    tag: "Rust",
+    description: "Commit messages, PR drafts and diff reviews from your staged changes.",
+    post: "2026-04-11-introducing-ai-commit",
+    repo: "https://github.com/russmckendrick/aicommit",
+  },
+  {
+    name: "hostsbutler",
+    tag: "Rust",
+    description: "A terminal UI for /etc/hosts, so you stop hand-editing it and hoping.",
+    post: "2026-04-05-introducing-hosts-butler",
+    repo: "https://github.com/russmckendrick/hostsbutler",
+  },
+  {
+    name: "ssl-toolkit",
+    tag: "Rust",
+    description: "SSL/TLS diagnostics that replaced my ever-growing doc of certificate-checking notes.",
+    post: "2026-02-01-introducing-ssl-toolkit",
+    repo: "https://github.com/russmckendrick/ssl-toolkit",
+  },
+  {
+    name: "dotfiles",
+    tag: "Starship",
+    description: "My Starship prompt, with blocks that only appear when they matter.",
+    post: "2026-08-09-my-starship-prompt-revisited-making-blocks-vanish-cleanly",
+    repo: "https://github.com/russmckendrick/dotfiles",
+  },
+];
 
 // Masthead: five quiet links, each with a hairline glyph from Icon.astro;
 // everything else lives in the footer line.

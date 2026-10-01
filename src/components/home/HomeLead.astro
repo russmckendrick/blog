@@ -1,0 +1,167 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import FormattedDate from '../blog/FormattedDate.astro'
+import { getPostUrl } from '../../utils/url'
+import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time'
+import { getTagName } from '../../utils/tags'
+import { leadImageAttrs } from '../../utils/home-lead'
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+}
+
+// The newest post as a full-width cover with its headline on a page-coloured
+// panel cut into the bottom-left corner (stacked under the image below lg).
+// The image is the homepage LCP element; index.astro preloads the same
+// attributes from leadImageAttrs().
+const { post } = Astro.props
+const href = getPostUrl(post.data.pubDate, post.data.title)
+const heroImage = post.data.heroImage || post.data.cover?.image
+const readingTime = formatReadingTime(calculateReadingTime(post.body ?? ''))
+const tags = (post.data.tags ?? []).slice(0, 3).map(getTagName)
+const image = heroImage ? leadImageAttrs(heroImage) : undefined
+const transitionKey = href.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '')
+---
+
+<section class="home-lead" aria-labelledby="home-lead-title">
+	{image && (
+		<a href={href} class="home-lead-figure" tabindex="-1" aria-hidden="true" aria-label={post.data.title}>
+			<img
+				src={image.src}
+				srcset={image.srcset}
+				sizes={image.sizes}
+				alt=""
+				width="1536"
+				height="864"
+				loading="eager"
+				fetchpriority="high"
+				decoding="sync"
+				class="home-lead-image"
+				transition:name={`post-img-${transitionKey}`}
+			/>
+		</a>
+	)}
+	<div class="home-lead-panel">
+		<p class="rubric home-lead-meta">
+			<span class="home-lead-badge">Latest</span>
+			<FormattedDate date={post.data.pubDate} />
+			<span aria-hidden="true">&middot;</span>
+			<span>{readingTime}</span>
+			{tags.length > 0 && (
+				<>
+					<span aria-hidden="true" class="hidden sm:inline">&middot;</span>
+					<span class="hidden sm:inline">{tags.join(', ')}</span>
+				</>
+			)}
+		</p>
+		<h2 id="home-lead-title" class="home-lead-title" transition:name={`post-title-${transitionKey}`}>
+			<a href={href}>{post.data.title}</a>
+		</h2>
+		{post.data.description && <p class="home-lead-desc">{post.data.description}</p>}
+	</div>
+</section>
+
+<style>
+	.home-lead {
+		position: relative;
+	}
+
+	.home-lead-figure {
+		display: block;
+	}
+
+	.home-lead-image {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 10;
+		object-fit: cover;
+		border-radius: 18px;
+		background-color: var(--paper-well);
+	}
+
+	.home-lead-panel {
+		padding-top: 1.125rem;
+	}
+
+	.home-lead-meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.home-lead-badge {
+		background-color: var(--accent-fill);
+		color: var(--on-accent-fill);
+		font-weight: 700;
+		padding: 0.2rem 0.6rem;
+		border-radius: 9999px;
+	}
+
+	.home-lead-title {
+		margin: 0;
+		font-size: 2rem;
+		line-height: 1.08;
+		font-weight: 800;
+		letter-spacing: -0.035em;
+	}
+
+	.home-lead-title a {
+		color: var(--color-on-surface);
+		text-decoration: none;
+	}
+
+	.home-lead-title a:hover {
+		color: var(--accent);
+	}
+
+	.home-lead-desc {
+		margin: 0.875rem 0 0;
+		max-width: 600px;
+		font-size: 1rem;
+		line-height: 1.5;
+		color: var(--color-on-surface-variant);
+	}
+
+	@media (min-width: 640px) {
+		.home-lead-image {
+			aspect-ratio: 16 / 9;
+		}
+
+		.home-lead-title {
+			font-size: 2.5rem;
+		}
+
+		.home-lead-desc {
+			font-size: 1.125rem;
+		}
+	}
+
+	/* Desktop: a fixed-height letterbox with the headline panel cut into the
+	   bottom-left corner in the page colour, so it reads as part of the page. */
+	@media (min-width: 1024px) {
+		.home-lead-image {
+			aspect-ratio: auto;
+			height: 580px;
+			border-radius: 22px;
+		}
+
+		.home-lead-panel {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 700px;
+			max-width: 70%;
+			padding: 1.875rem 2.5rem 0 0;
+			background-color: var(--color-surface);
+			border-top-right-radius: 26px;
+		}
+
+		.home-lead-title {
+			font-size: 3rem;
+			line-height: 1.04;
+		}
+	}
+</style>

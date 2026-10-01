@@ -207,7 +207,7 @@ The site builds several taxonomy and browse hubs from the content collections an
 
 **Key Features**:
 - One MDX file per book; the file's id (filename without extension) becomes the URL slug at `/books/{slug}/`
-- `/books/` index renders a 4-column cover grid linking into the per-book pages, ordered by the explicit `order` field
+- `/books/` index sorts newest first by `pubDate`: a featured "Latest book" panel, then a cover grid of the rest (2 / 3 / 5 columns) linking into the per-book pages. The `order` field is still required by the schema but no longer read
 - Per-book detail page emits `Book` and `BreadcrumbList` JSON-LD, surfaces metadata (year, publisher, topic), and lists up to 6 related blog posts via tag-overlap (normalised through `normalizeTagSlug`)
 - Per-book OG image at `/books/{slug}-og.png` reusing the same generator pattern as glossary/blog OG images
 - Out-of-print titles omit `buyLink` and render "No longer in print." in place of the buy button
@@ -246,23 +246,32 @@ graph TD
 
 **Layout Components** (`src/components/layout/`):
 - `BaseHead.astro` - SEO, meta tags, schema
-- `Header.astro` - Navigation and theme switcher
-- `Footer.astro` - Footer navigation and site metadata
+- `Header.astro` - Navigation and theme switcher (light by default; dark only once chosen)
+- `Footer.astro` - Tint footer: brand blurb and RSS pill, Explore links, Elsewhere (social links with names), Listened to this week, and a © / Source / RSS / Back to top bar; `showTunes` (set from `BaseLayout`'s `footerTunes`) drops the "Listened to this week" block on the homepage
+- `Pagination.astro` - Centred row of pill buttons: Newer step, numbered pages (current page ink-filled), Older step; a step with nowhere to go renders disabled so the row never shifts
+
+**Home Components** (`src/components/home/`):
+- `HomeLead.astro` - Newest post as a full-width cover (the homepage LCP image, preloaded via `leadImageAttrs()` in `src/utils/home-lead.ts`); six `PostCard` tiles and `Pagination` follow it in "Recent writing" (`HOME_PAGE_SIZE` is 7)
+- `HomeIntro.astro` - Tint band with avatar, live counts, and the `russ --now` terminal (`NOW_BUILDING` in `consts.ts`)
+- `TagTabs.astro` - Topic navigation from `FEATURED_TAGS`: underline tabs on listing pages, `variant="pills"` on the homepage
+- `HomeTunes.astro` - This week's tunes entry with record covers
+- `HomeBooks.astro` - Four newest books
+- `HomeProjects.astro` - "Things I've built" grid from `PROJECTS` in `consts.ts`
 
 **Navigation Components** (`src/components/navigation/`):
 - `Breadcrumbs.astro` - Breadcrumb navigation
 - `BackLink.astro` - Hub-page back link: renders a static section fallback, upgrades to a `history.back()` link when the referrer is same-origin and outside that section
 
 **Blog Components** (`src/components/blog/`):
-- `PostCard.astro` - Rule-separated post index entries (featured/vertical/grid/horizontal variants)
-- `RelatedPosts.astro` - Tag-based related posts
-- `ArticleRail.astro` - Sticky right-margin rail (Contents, Tags, Actions) on viewports ≥1200px
-- `StoryBar.astro` - Hairline tags/actions bar under the byline, below 1200px only
+- `PostCard.astro` - The one listing tile (16:10 cover, date · read time, title, description; `compact` drops the description), laid out by the `.feed` grid on every listing. Legacy `variant` values all render the same tile
+- `RelatedPosts.astro` - Tag-based "Keep reading" grid of compact tiles
+- `ArticleRail.astro` - Sticky rails flanking the 700px text column on viewports ≥1200px: `part="contents"` (left, "On this page") and `part="tools"` (right, "Use this post" actions)
+- `StoryBar.astro` - Hairline actions bar at the top of the text column, below 1200px only
 - `ReadingTime.astro` - Reading time estimate
 
 **Reading Components** (`src/components/reading/`):
-- `ReadingHeader.astro` - Page title, article count, and tag filter buttons
-- `ReadingList.astro` - Hairline-framed grid grouped by month; each entry shows OG image, title, cached description (from `reading-image-cache.json`), domain favicon, date, and tags
+- `ReadingHeader.astro` - `.page-head` title and lede, plus a "Filter by topic" pill row with counts (active pill ink-filled)
+- `ReadingList.astro` - Month sections, each a 1/2/3-column grid of cards (one external link each); each card shows the OG image (or a tint placeholder with favicon and domain), title, cached description (from `reading-image-cache.json`), domain favicon, date, and tags
 
 **Embed Components** (`src/components/embeds/`):
 - Media: YouTube, Instagram, Giphy, Audio, AppleMusic

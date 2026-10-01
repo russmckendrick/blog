@@ -115,8 +115,8 @@ const avatarFallback = '/images/avatar-192x192.png';
 >
   <Schema slot="head" item={collectionSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
-  <section class="max-w-[728px] mx-auto px-6">
-    <header class="pt-8 pb-6 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
+  <section class="page-frame">
+    <header class="page-head" data-entrance>
       <p class="mb-5">
         <BackLink fallbackHref="/tags/" fallbackLabel="All tags" />
       </p>
@@ -134,7 +134,7 @@ const avatarFallback = '/images/avatar-192x192.png';
 
         <div class="min-w-0">
           <h1>{getTagName(tag)}</h1>
-          <p class="mt-3 text-lg text-on-surface-variant leading-normal" set:html={metadata.description} />
+          <p class="page-lede" set:html={metadata.description} />
           <p class="rubric mt-2">
             {totalTagPosts} post{totalTagPosts !== 1 ? 's' : ''}
           </p>

@@ -17,7 +17,7 @@ User-facing guides for common tasks and workflows:
 - **[Creating Posts](./guides/creating-posts.md)** - Write and publish blog posts
 - **[Using Tags](./guides/using-tags.md)** - Complete tag system reference (30+ tags)
 - **[Using Embed Components](./guides/using-embeds.md)** - Add media, callouts, and interactive elements
-- **[Design System](./guides/design-system.md)** - "The Reading Room" design tokens, typography, and component patterns
+- **[Design System](./guides/design-system.md)** - "Workbench" design tokens, typography, homepage and article layout, and component patterns
 - **[Style Guide](./guides/style-guide.md)** - UI, navigation, spacing, and interaction conventions
 - **[Tunes Generator](./guides/tunes-generator.md)** - Generate automated weekly music posts and year-end wrapped
 - **[Medium Publisher](./guides/medium-publisher.md)** - Cross-publish blog posts to Medium
@@ -45,7 +45,7 @@ Component and API reference documentation:
 
 Design proposals and their decision history:
 
-- **[2026-07 Redesign](./2026-07-redesign/NOTES.md)** - "The Reading Room" Medium-calm redesign (now live): interactive mockup, proposed DESIGN.md, and decision notes
+- **[2026-07 Redesign](./2026-07-redesign/NOTES.md)** - "The Reading Room" Medium-calm redesign (shipped August 2026, superseded by "Workbench" in October 2026): interactive mockup, proposed DESIGN.md, and decision notes
 
 ### 🗄️ Archive
 

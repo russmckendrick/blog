@@ -16,7 +16,7 @@ import ArticleRail from '../components/blog/ArticleRail.astro';
 import StoryBar from '../components/blog/StoryBar.astro';
 import ReadingTime from '../components/blog/ReadingTime.astro';
 import RelatedPosts from '../components/blog/RelatedPosts.astro';
-import { getTagUrl, getTagDisplayName, getTagName, getTagColorClasses, normalizeTagSlug } from '../utils/tags';
+import { getTagUrl, getTagDisplayName, getTagName, normalizeTagSlug } from '../utils/tags';
 import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, AUTHOR_SLUG, TAG_AVATAR_MAP } from '../consts';
 import { Schema } from 'astro-seo-schema';
 import { createBlogPostingSchema, createBreadcrumbSchema, createFAQSchema, createHowToSchema } from '../utils/schema';
@@ -94,6 +94,10 @@ const editUrl = filePath && EDIT_POST.appendFilePath
 const markdownHref = `${Astro.url.pathname}index.md`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 
+// The hero spans the 1320px frame (1240px of content at desktop gutters);
+// shared by the preload and the <img> so they always pick the same file.
+const HERO_SIZES = '(min-width: 1320px) 1240px, (min-width: 1024px) calc(100vw - 80px), (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)';
+
 // Shared-element view transition names — must mirror PostCard's derivation
 // so the listing image/title morph into this hero/title on navigation.
 const transitionKey = Astro.url.pathname.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -131,7 +135,7 @@ const avatarPath = avatar
 	: getDefaultAvatar();
 // Byline renders at 36px — serve the PNG twin through Cloudflare rather than the
 // full-weight illustration SVG, which otherwise outweighs the hero image.
-const avatarSrc = avatarPath ? getAvatarImageUrl(avatarPath, 36) : undefined;
+const avatarSrc = avatarPath ? getAvatarImageUrl(avatarPath, 40) : undefined;
 const avatarFallback = isTune ? AI_AUTHOR.avatarFallback : '/images/avatar-192x192.png';
 
 // Create BlogPosting schema for SEO
@@ -221,13 +225,13 @@ const howToSchema = howto && howto.steps?.length > 0
 				rel="preload"
 				as="image"
 				href={getCFImageUrl(displayImage, {
-					width: 1360,
+					width: 1536,
 					quality: CF_IMAGE_PRESETS.hero.quality,
 					format: CF_IMAGE_PRESETS.hero.format,
-					fit: CF_IMAGE_PRESETS.hero.fit
+					fit: 'scale-down'
 				})}
 				imagesrcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
-				imagesizes="(max-width: 728px) calc(100vw - 48px), 680px"
+				imagesizes={HERO_SIZES}
 				fetchpriority="high"
 			/>
 		)}
@@ -249,154 +253,184 @@ const howToSchema = howto && howto.steps?.length > 0
 			<Header />
 		</HeaderWrapper>
 		<main id="main-content" tabindex="-1" class="relative">
-			<article class="relative pt-8 sm:pt-12 pb-4">
-				<ArticleRail
-					headings={hasToc ? headings : []}
-					maxDepth={isTune ? 2 : 3}
-					tags={tags}
-					markdownHref={markdownHref}
-					pageUrl={canonicalUrl}
-					editUrl={filePath ? editUrl : undefined}
-					editTitle={`${EDIT_POST.text} on GitHub`}
-					rssHref={isTune ? '/tunes/rss.xml' : '/rss.xml'}
-				/>
-				<div class="mx-auto max-w-[728px] px-6">
-					{/* Story header: title → hero artwork → single-line byline → storybar */}
-					<header class="mb-6">
-						<h1
-							class="font-display text-on-surface"
-							data-entrance
-							transition:name={titleTransition}
-						>
-							{title}
-						</h1>
-					</header>
-
-					{/* Hero image: the artwork, directly below the title. Wrapped as a
-					    gallery item so it opens in the same lightbox as in-post images —
-					    it lands first because the unified gallery collects in DOM order. */}
-					{displayImage && (
-						<figure
-							class="mb-7 rounded-[4px] overflow-hidden"
-							data-settle
-							transition:name={imageTransition}
-						>
-							<div
-								class="lightgallery-component"
-								data-options={JSON.stringify({ thumbnail: false, download: false })}
-							>
-								<a
-									href={heroLightboxSrc}
-									data-lg-id="true"
-									data-sub-html={`<h4>${heroAlt}</h4>`}
-									aria-label={`View ${heroAlt} in full size`}
-									class="block cursor-zoom-in"
-								>
-									<img
-										src={getCFImageUrl(displayImage, {
-											width: 1360,
-											quality: CF_IMAGE_PRESETS.hero.quality,
-											format: CF_IMAGE_PRESETS.hero.format,
-											fit: 'scale-down'
-										})}
-										srcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
-										sizes="(max-width: 728px) calc(100vw - 48px), 680px"
-										alt={heroAlt}
-										loading="eager"
-										fetchpriority="high"
-										decoding="sync"
-										width={heroWidth}
-										height={heroHeight}
-										class="w-full h-auto hover:opacity-90 transition-opacity"
-									/>
-								</a>
-							</div>
-						</figure>
+			<article class="relative pb-4">
+				{/* Story header: tag pills and the title, spanning the 1320px frame
+				    and aligned to the hero's edges. The standfirst and byline sit
+				    under the hero, at the head of the text column. */}
+				<header class="post-header max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 pt-6 sm:pt-10 pb-6 sm:pb-10">
+					{tags.length > 0 && (
+						<p class="post-header-tags" data-entrance>
+							{tags.slice(0, 4).map((tag) => (
+								<a href={getTagUrl(tag)} class="post-header-tag">{getTagName(tag)}</a>
+							))}
+						</p>
 					)}
+					<h1
+						class="post-title font-display text-on-surface"
+						data-entrance
+						transition:name={titleTransition}
+					>
+						{title}
+					</h1>
+				</header>
 
-					<div class="mb-6 flex items-center gap-3" data-entrance>
-							<img
-								src={avatarSrc}
-								alt=""
-								width="36"
-								height="36"
-								class="w-9 h-9 rounded-full object-cover border flex-none"
-								style="border-color: var(--color-outline-variant); background-color: var(--paper-well);"
-								onerror={`this.onerror=null; this.src='${avatarFallback}';`}
-							/>
-							<p class="text-[15px] text-on-surface-variant leading-snug">
-								{isTune ? (
-									<span class="font-medium text-on-surface">{authorName}</span>
-								) : (
-									<a href={AUTHOR_PAGE_PATH} class="font-medium text-on-surface no-underline hover:text-[var(--color-secondary)]">{authorName}</a>
-								)}
-								{readingTime && (
-									<> &middot; <ReadingTime minutes={readingTime} /></>
-								)}
-								{' '}&middot; <FormattedDate date={pubDate} />
-								{updatedDate && (
-									<> &middot; Updated <FormattedDate date={updatedDate} /></>
-								)}
+				{/* Hero image: wide artwork under the header. Wrapped as a gallery
+				    item so it opens in the same lightbox as in-post images — it
+				    lands first because the unified gallery collects in DOM order. */}
+				{displayImage && (
+					<figure
+						class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10"
+						data-settle
+						transition:name={imageTransition}
+					>
+						<div
+							class="lightgallery-component"
+							data-options={JSON.stringify({ thumbnail: false, download: false })}
+						>
+							<a
+								href={heroLightboxSrc}
+								data-lg-id="true"
+								data-sub-html={`<h4>${heroAlt}</h4>`}
+								aria-label={`View ${heroAlt} in full size`}
+								class="block cursor-zoom-in"
+							>
+								<img
+									src={getCFImageUrl(displayImage, {
+										width: 1536,
+										quality: CF_IMAGE_PRESETS.hero.quality,
+										format: CF_IMAGE_PRESETS.hero.format,
+										fit: 'scale-down'
+									})}
+									srcset={generateCFSrcSet(displayImage, CF_IMAGE_PRESETS.hero.widths, CF_IMAGE_PRESETS.hero.quality, CF_IMAGE_PRESETS.hero.format)}
+									sizes={HERO_SIZES}
+									alt={heroAlt}
+									loading="eager"
+									fetchpriority="high"
+									decoding="sync"
+									width={heroWidth}
+									height={heroHeight}
+									class="post-hero-image"
+								/>
+							</a>
+						</div>
+					</figure>
+				)}
+
+				{/* Three columns from 1200px: contents | 700px text | tools.
+				    Below that the rails drop out and the StoryBar carries the tools. */}
+				<div class="post-columns max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 pt-8 sm:pt-12">
+					<ArticleRail
+						part="contents"
+						headings={hasToc ? headings : []}
+						maxDepth={isTune ? 2 : 3}
+						markdownHref={markdownHref}
+						pageUrl={canonicalUrl}
+						rssHref={isTune ? '/tunes/rss.xml' : '/rss.xml'}
+					/>
+
+					<div class="post-main min-w-0">
+						<div class="post-lede">
+							{description && <p class="post-standfirst" data-entrance>{description}</p>}
+							<div class="post-byline" data-entrance>
+								<img
+									src={avatarSrc}
+									alt=""
+									width="40"
+									height="40"
+									class="w-10 h-10 rounded-full object-cover flex-none"
+									style="background-color: var(--paper-well);"
+									onerror={`this.onerror=null; this.src='${avatarFallback}';`}
+								/>
+								<p class="text-[15px] text-on-surface-variant leading-snug">
+									{isTune ? (
+										<span class="font-semibold text-on-surface">{authorName}</span>
+									) : (
+										<a href={AUTHOR_PAGE_PATH} class="font-semibold text-on-surface no-underline hover:text-[var(--color-secondary)]">{authorName}</a>
+									)}
+									{' '}&middot; <FormattedDate date={pubDate} />
+									{readingTime && (
+										<> &middot; <ReadingTime minutes={readingTime} /></>
+									)}
+									{updatedDate && (
+										<> &middot; Updated <FormattedDate date={updatedDate} /></>
+									)}
+								</p>
+							</div>
+						</div>
+
+						<StoryBar
+							markdownHref={markdownHref}
+							pageUrl={canonicalUrl}
+							editUrl={filePath ? editUrl : undefined}
+							editTitle={`${EDIT_POST.text} on GitHub`}
+							rssHref={isTune ? '/tunes/rss.xml' : '/rss.xml'}
+						/>
+
+						<div class="prose">
+							<slot />
+						</div>
+
+						{/* Three amber dots close the story */}
+						<p class="tombstone" aria-hidden="true">&#9679; &#9679; &#9679;</p>
+
+						{!isTune && (
+							<div class="post-author">
+								<img
+									src={getAvatarImageUrl('/images/avatars/arms-folded.png', 72)}
+									alt=""
+									width="72"
+									height="72"
+									loading="lazy"
+									decoding="async"
+									class="post-author-avatar"
+								/>
+								<div class="min-w-0 flex-1">
+									<p class="post-author-name">{AUTHOR_NAME}</p>
+									<p class="post-author-bio">DevOps person, author of books on Docker, Kubernetes and Ansible, and builder of small tools like tokenuse and terminal-svg.</p>
+								</div>
+								<a href="/about/" class="post-author-link">About me</a>
+							</div>
+						)}
+
+						{!isTune && <ShareButtons title={title} url={Astro.url.href} tags={tags} />}
+
+						{relatedGlossary.length > 0 && (
+							<p class="rubric mt-6">
+								Related terms:{' '}
+								{relatedGlossary.map((glossaryEntry, index) => (
+									<>
+										{index > 0 && <span aria-hidden="true"> &middot; </span>}
+										<a href={`/glossary/${glossaryEntry.id}/`} class="no-underline hover:text-on-surface">{glossaryEntry.data.term}</a>
+									</>
+								))}
 							</p>
+						)}
+
+						{!isTune && entry && (
+							<div data-reveal>
+								<RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={2} />
+							</div>
+						)}
+
+						{!isTune && (
+							<div>
+								<Comments />
+							</div>
+						)}
+
+						<div data-reveal>
+							<PostNavigation previousPost={previousPost} nextPost={nextPost} />
+						</div>
 					</div>
 
-					{/* Below 1200px the rail is gone, so tags and actions ride
-					    here instead — directly under the byline. */}
-					<StoryBar
-						tags={tags}
+					<ArticleRail
+						part="tools"
 						markdownHref={markdownHref}
 						pageUrl={canonicalUrl}
 						editUrl={filePath ? editUrl : undefined}
 						editTitle={`${EDIT_POST.text} on GitHub`}
 						rssHref={isTune ? '/tunes/rss.xml' : '/rss.xml'}
 					/>
-
-					<div class="prose mt-10">
-						<slot />
-					</div>
-
-					{/* Three ink dots close the story */}
-					<p class="tombstone" aria-hidden="true">&#9679; &#9679; &#9679;</p>
-
-					{tags.length > 0 && (
-						<div class="mt-8 flex flex-wrap gap-2">
-							{tags.slice(0, 8).map((tag) => (
-								<a href={getTagUrl(tag)} class={getTagColorClasses(tag)}>
-									{getTagName(tag)}
-								</a>
-							))}
-						</div>
-					)}
-
-					{!isTune && <ShareButtons title={title} url={Astro.url.href} tags={tags} />}
-
-					{relatedGlossary.length > 0 && (
-						<p class="rubric mt-6">
-							Related terms:{' '}
-							{relatedGlossary.map((glossaryEntry, index) => (
-								<>
-									{index > 0 && <span aria-hidden="true"> &middot; </span>}
-									<a href={`/glossary/${glossaryEntry.id}/`} class="no-underline hover:text-on-surface">{glossaryEntry.data.term}</a>
-								</>
-							))}
-						</p>
-					)}
-
-					{!isTune && entry && (
-						<div data-reveal>
-							<RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={2} />
-						</div>
-					)}
-
-					{!isTune && (
-						<div>
-							<Comments />
-						</div>
-					)}
-
-					<div data-reveal>
-						<PostNavigation previousPost={previousPost} nextPost={nextPost} />
-					</div>
 				</div>
 			</article>
 		</main>

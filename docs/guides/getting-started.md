@@ -128,9 +128,9 @@ Main Astro configuration:
 ### src/styles/global.css
 
 Tailwind CSS 4 configuration lives in CSS:
-- Design tokens (paper/ink palette, hairline rules, accent colours)
-- Font stacks (Schibsted Grotesk UI/display, Literata body, IBM Plex Mono code)
-- Dark mode overrides
+- Design tokens ("Workbench": white page, ink, one tint surface, hairline rules, amber accent)
+- Font stacks (Geist for UI, headings and body; Geist Mono for code)
+- Dark mode overrides (dark is opt-in from the theme toggle; light is the default)
 
 ### src/content.config.ts
 

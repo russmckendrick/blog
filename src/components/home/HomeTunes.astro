@@ -1,0 +1,209 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import FormattedDate from '../blog/FormattedDate.astro'
+import { getPostUrl } from '../../utils/url'
+import { getCFImageUrl, generateCFSrcSet } from '../../utils/cloudflare-images'
+import { getTuneCovers } from '../../utils/tune-covers'
+import { CF_IMAGE_PRESETS } from '../../consts'
+
+interface Props {
+	tune: CollectionEntry<'tunes'>;
+	weeksCount: number;
+}
+
+// This week's tunes entry: its AI cover art beside the title and a grid of
+// the records. The AI-generated attribution stays visible — a brand rule.
+const { tune, weeksCount } = Astro.props
+const href = getPostUrl(tune.data.pubDate, tune.data.title)
+const allCovers = getTuneCovers(tune, 99)
+const covers = allCovers.slice(0, 7)
+const moreCount = allCovers.length - covers.length
+const preset = CF_IMAGE_PRESETS.thumbnail
+---
+
+<section class="home-tunes" aria-labelledby="home-tunes-title">
+	{tune.data.heroImage && (
+		<a href={href} class="home-tunes-figure" tabindex="-1" aria-hidden="true" aria-label={tune.data.title}>
+			<img
+				src={getCFImageUrl(tune.data.heroImage, { width: 800, quality: preset.quality, format: preset.format, fit: preset.fit })}
+				srcset={generateCFSrcSet(tune.data.heroImage, preset.widths, preset.quality, preset.format)}
+				sizes="(min-width: 1320px) 660px, (min-width: 1024px) 53vw, calc(100vw - 32px)"
+				alt=""
+				width="800"
+				height="533"
+				loading="lazy"
+				decoding="async"
+			/>
+		</a>
+	)}
+	<div class="home-tunes-body">
+		<p class="rubric">
+			<span class="home-tunes-label">Listened to this week</span>
+			<span aria-hidden="true"> · </span>
+			<FormattedDate date={tune.data.pubDate} />
+		</p>
+		<h2 id="home-tunes-title" class="home-tunes-title"><a href={href}>{tune.data.title}</a></h2>
+		{tune.data.description && <p class="home-tunes-desc">{tune.data.description}</p>}
+		{covers.length > 0 && (
+			<ul class="home-tunes-covers" role="list">
+				{covers.map((cover) => (
+					<li>
+						<img
+							src={getCFImageUrl(cover.src, { width: 240, quality: 60 })}
+							alt={cover.alt}
+							width="120"
+							height="120"
+							loading="lazy"
+							decoding="async"
+						/>
+					</li>
+				))}
+				{moreCount > 0 && (
+					<li>
+						<a href={href} class="home-tunes-more">+{moreCount} more</a>
+					</li>
+				)}
+			</ul>
+		)}
+		<p class="rubric home-tunes-foot">
+			<span>AI-generated write-ups · my records</span>
+			<a href="/tunes/">All {weeksCount} weeks →</a>
+		</p>
+	</div>
+</section>
+
+<style>
+	.home-tunes {
+		display: grid;
+		overflow: hidden;
+		border-radius: 18px;
+		background-color: var(--paper-well);
+	}
+
+	@media (min-width: 1024px) {
+		.home-tunes {
+			grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+			border-radius: 22px;
+		}
+	}
+
+	.home-tunes-figure img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		aspect-ratio: 3 / 2;
+		object-fit: cover;
+	}
+
+	@media (min-width: 1024px) {
+		.home-tunes-figure img {
+			aspect-ratio: auto;
+			min-height: 520px;
+		}
+	}
+
+	.home-tunes-body {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 1.375rem;
+	}
+
+	@media (min-width: 640px) {
+		.home-tunes-body {
+			padding: 3rem;
+			gap: 1.125rem;
+		}
+	}
+
+	.home-tunes-body .rubric {
+		margin: 0;
+	}
+
+	.home-tunes-label {
+		color: var(--accent);
+		font-weight: 600;
+	}
+
+	.home-tunes-title {
+		margin: 0;
+		font-size: 1.5rem;
+		line-height: 1.12;
+		font-weight: 700;
+		letter-spacing: -0.03em;
+	}
+
+	@media (min-width: 640px) {
+		.home-tunes-title {
+			font-size: 2.25rem;
+		}
+	}
+
+	.home-tunes-title a {
+		color: var(--color-on-surface);
+		text-decoration: none;
+	}
+
+	.home-tunes-title a:hover {
+		color: var(--accent);
+	}
+
+	.home-tunes-desc {
+		margin: 0;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: var(--color-on-surface-variant);
+	}
+
+	.home-tunes-covers {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.5rem;
+		margin: 0.375rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	@media (min-width: 640px) {
+		.home-tunes-covers {
+			gap: 0.625rem;
+		}
+	}
+
+	.home-tunes-covers img,
+	.home-tunes-more {
+		display: flex;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1;
+		object-fit: cover;
+		border-radius: 8px;
+	}
+
+	.home-tunes-more {
+		align-items: center;
+		justify-content: center;
+		border: 1px solid var(--rule-strong);
+		font-size: 0.875rem;
+		color: var(--color-on-surface-variant);
+		text-decoration: none;
+	}
+
+	.home-tunes-foot {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0.5rem 1rem;
+		margin-top: auto;
+	}
+
+	.home-tunes-foot a {
+		font-weight: 600;
+		color: var(--color-on-surface);
+		text-decoration: none;
+	}
+
+	.home-tunes-foot a:hover {
+		color: var(--accent);
+	}
+</style>

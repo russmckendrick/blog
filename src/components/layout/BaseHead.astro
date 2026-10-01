@@ -100,9 +100,8 @@ const imageURL = image?.startsWith('http')
   and swaps in with zero layout shift (CLS stays 0). If a future design makes
   text the LCP element above the fold, re-add `preload` to the relevant family.
 -->
-<Font cssVariable="--font-schibsted" />
-<Font cssVariable="--font-literata" />
-<Font cssVariable="--font-ibm-plex-mono" />
+<Font cssVariable="--font-geist" />
+<Font cssVariable="--font-geist-mono" />
 
 
 <!-- Note: Giscus and GitHub preconnects moved to BlogPost.astro (only needed on post pages) -->
@@ -149,8 +148,8 @@ const imageURL = image?.startsWith('http')
 <script is:inline>
 	// Set theme immediately to prevent flash
 	function applyThemeImmediately() {
-		const isDark = localStorage.theme === 'dark' ||
-			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+		// Light by default; dark only once the reader has chosen it.
+		const isDark = localStorage.theme === 'dark';
 
 		document.documentElement.classList.toggle('dark', isDark);
 		document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');

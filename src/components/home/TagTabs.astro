@@ -5,13 +5,16 @@ import { getTagName, getTagUrl } from '../../utils/tags'
 interface Props {
 	/** Tag slug of the active tab, or 'latest' for the home feed. */
 	active?: string;
+	/** 'tabs' (underline row, listing pages) or 'pills' (homepage section head). */
+	variant?: 'tabs' | 'pills';
 }
 
-const { active = 'latest' } = Astro.props
+const { active = 'latest', variant = 'tabs' } = Astro.props
+const latestLabel = variant === 'pills' ? 'All' : 'Latest'
 ---
 
-<nav aria-label="Browse by topic" class="feed-tabs">
-	<a href="/" aria-current={active === 'latest' ? 'page' : undefined}>Latest</a>
+<nav aria-label="Browse by topic" class:list={['feed-tabs', { 'feed-tabs--pills': variant === 'pills' }]}>
+	<a href="/" aria-current={active === 'latest' ? 'page' : undefined}>{latestLabel}</a>
 	{FEATURED_TAGS.map(tag => (
 		<a href={getTagUrl(tag)} aria-current={active === tag ? 'page' : undefined}>
 			{getTagName(tag)}
@@ -51,6 +54,34 @@ const { active = 'latest' } = Astro.props
 	.feed-tabs a[aria-current='page'] {
 		color: var(--color-on-surface);
 		border-bottom-color: var(--color-on-surface);
+	}
+
+	/* Pills: the homepage "Recent writing" head. No baseline rule; the active
+	   topic is a filled ink pill, the rest hairline outlines. */
+	.feed-tabs--pills {
+		gap: 0.5rem;
+		margin-top: 0;
+		border-bottom: none;
+	}
+
+	.feed-tabs--pills a {
+		padding: 0.5rem 0.875rem;
+		margin-bottom: 0;
+		border: 1px solid var(--color-outline-variant);
+		border-radius: 9999px;
+		color: var(--color-on-surface);
+	}
+
+	.feed-tabs--pills a:hover {
+		border-color: var(--rule-strong);
+		color: var(--color-on-surface);
+	}
+
+	.feed-tabs--pills a[aria-current='page'] {
+		background-color: var(--color-on-surface);
+		border-color: var(--color-on-surface);
+		color: var(--color-surface);
+		font-weight: 600;
 	}
 
 	@media (max-width: 640px) {
