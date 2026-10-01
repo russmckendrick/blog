@@ -3,64 +3,66 @@
   "date": "2026-05-25",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Marbled stage with watchful sun relic",
-  "creativeDirection": "A theatrical mixed-media paper-cut and screenprint tableau, combining marbled ink textures, collage strips, and painted classical fragments into a surreal proscenium scene.",
-  "scene": "A frontal view into a dark surreal theater stage where a large white marbled void opens like a spotlighted performance floor, bordered by swirling black-and-gray ink textures as if curtains of smoke are parting.",
+  "concept": "Courtyard mural with veiled portraits",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography in a real walled courtyard, using painted murals, fabric, and sculptural props to turn the graphic and classical sleeve motifs into one crisp editorial scene.",
+  "scene": "A sun-struck Mediterranean-style courtyard viewed straight on at medium-wide distance, with a limewashed wall as backdrop, pale stone paving, and one central freestanding plinth or fountain basin creating a strong vertical axis.",
   "elements": [
     {
       "source": 1,
-      "element": "A distressed yellow spiked sun-mask with a rough blue center and two oversized eye-like ovals hangs above the stage as the dominant watchful emblem."
+      "element": "A large hand-painted mural on the back wall: a vivid red field with a yellow sunburst and blue face-like center with oversized black oval eyes, used as the dominant backdrop."
     },
     {
       "source": 2,
-      "element": "A row of alternating black and white side-profile cutouts with hot pink edges forms a frieze along one side of the proscenium, with the tiny female figure reduced to a small poster-like accent in an upper corner."
+      "element": "A procession of hot-pink, black, and white side-profile silhouettes painted as poster-like bands along one side wall; the small standing woman appears as a tiny inset graphic tile near the upper left of the mural area."
     },
     {
       "source": 3,
-      "element": "Vertical torn white paper strips with bold black marks descend stage right over a red-purple checker pattern, intersected by sharp yellow bands like set pieces."
+      "element": "The courtyard paving and low wall details incorporate a red-and-purple geometric tile grid with note-like shapes, yellow bands, and a slim vertical strip of torn white paper-like forms on the right."
     },
     {
       "source": 4,
-      "element": "Classical pastoral bodies and animals appear as painted fragmentary performers and props around the stage edge: a leaping draped figure, a snake-bound torso, and hints of dog, donkey, and spotted cat."
+      "element": "A weathered stone garden statuary group on the central plinth echoes the dramatic classical tableau, including a snake-wrapped male figure, draped elevated figure, and animal forms as carved sculptural references rather than living people."
     },
     {
       "source": 5,
-      "element": "A large crouching black silhouette in a hat reaches from the lower foreground into the white void, acting as the main human-scale figure."
+      "element": "A bold black-and-white banner or painted floor shadow shape near the foreground carries the crouching chain-wearing silhouette and circular dotted halo as a graphic anchor."
     },
     {
       "source": 6,
-      "element": "Four partially obscured faces become dim audience-box apparitions in the surrounding darkness, blocked by purple paint rectangles and magenta scuffs."
+      "element": "The four men from reference image 6 appear once as a single large pasted billboard-style portrait panel on a side wall, with their close-up faces partially obscured by broad purple paint blocks exactly as in the source."
     },
     {
       "source": 7,
-      "element": "A slender red-and-white striped vertical figure stands deep center in the void, with only a faint pale face and red lips emerging from shadow nearby."
+      "element": "The woman from reference image 7 stands once in deep doorway shade at the left edge of the courtyard, preserving her concealed pose and the long narrow white garment shape edged in red descending vertically."
     },
     {
       "source": 8,
-      "element": "The entire stage opening and atmosphere are built from black-gray marbled swirls surrounding a stark white center."
+      "element": "A black-and-white marbled cloth canopy or stretched fabric panel frames the upper part of the scene, with an irregular bright white opening at its center like a void above the courtyard."
     }
   ],
   "palette": [
-    "black",
-    "white",
-    "gray",
-    "yellow",
     "red",
-    "hot pink"
+    "yellow",
+    "blue",
+    "hot pink",
+    "black",
+    "white"
   ],
-  "mood": "enigmatic, dramatic, watchful",
+  "mood": "graphic, sculptural, sunlit, enigmatic",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Screamadelica.jpg",
       "album": "Screamadelica",
       "artist": "",
-      "description": "A bold abstract image fills the square: a bright yellow sunburst-like shape with uneven radiating spikes sits on a red background. At the center is a rough blue oval or face-like form containing two large white-rimmed black oval shapes resembling eyes. The image has a distressed, screen-printed look with splattered edges.",
-      "signatureMotif": "sunburst with two oversized eye-like ovals",
-      "medium": "abstract painted or screen-printed graphic",
+      "description": "A bold abstract image fills the frame: a bright yellow sunburst-like splatter on a red background, with a rough blue oval face-like shape in the center containing two large white-rimmed black oval eyes. The composition is flat, graphic, and highly simplified.",
+      "signatureMotif": "a yellow sunburst with a blue face and oversized black oval eyes",
+      "medium": "abstract painted graphic",
+      "people": "none",
       "palette": [
         "red",
         "yellow",
@@ -74,9 +76,10 @@
       "filename": "I-Just-Cant-Stop-It.jpg",
       "album": "I Just Cant Stop It",
       "artist": "",
-      "description": "A high-contrast graphic design with multiple side-profile silhouettes of faces arranged in a row across the cover. The profiles alternate between black and white shapes with hot pink outlines and background areas. A small cartoon-like standing female figure appears in a narrow panel at the upper left. The composition is flat, angular, and poster-like.",
-      "signatureMotif": "row of alternating side-profile faces",
+      "description": "A high-contrast graphic design in black, white, and hot pink shows several repeated side-profile silhouettes of faces marching across the image. At the far left is a larger black silhouette with a hat and shoulder, and near the top left a small cartoon-like standing woman appears inside a narrow white rectangle. The layout is angular and poster-like.",
+      "signatureMotif": "repeating side-profile face silhouettes",
       "medium": "graphic illustration",
+      "people": "none",
       "palette": [
         "black",
         "white",
@@ -88,9 +91,10 @@
       "filename": "History-Never-Repeats-The-Best-Of-Split-Enz.jpg",
       "album": "History Never Repeats The Best Of Split Enz",
       "artist": "",
-      "description": "An abstract geometric cover made of a repeating checkerboard-like pattern in red and purple, overlaid with black oval and bar shapes clustered toward the upper left. Along the right side, a vertical stack of torn white paper pieces carries large black characters, creating a collage effect. Bright yellow horizontal bands cut across the composition.",
-      "signatureMotif": "vertical stack of torn white paper pieces on a geometric patterned background",
-      "medium": "geometric collage graphic",
+      "description": "An abstract geometric cover made of a repeating grid of red and purple shapes, including rectangles, circles, and note-like forms. A denser black patterned block occupies the upper left area, while a vertical column of white torn-paper-like shapes with black characters runs down the right side. Yellow horizontal bands cut across the top and lower portion.",
+      "signatureMotif": "a red and purple geometric grid with note-like shapes",
+      "medium": "graphic design collage",
+      "people": "none",
       "palette": [
         "red",
         "purple",
@@ -104,9 +108,10 @@
       "filename": "God-Shuffled-His-Feet.jpg",
       "album": "God Shuffled His Feet",
       "artist": "",
-      "description": "A Renaissance-style painted scene with several human figures in a pastoral outdoor setting. In the foreground and center, partially nude figures pose dynamically around a stone structure; one long-haired figure strides or leaps with draped fabric, another muscular figure has a snake wrapped around the body, and others gesture with raised arms. Animals including a spotted big cat, a dark dog, and a donkey appear around them. Trees, distant hills, and a blue sky form the background.",
-      "signatureMotif": "group of dramatic nude and semi-nude figures in a classical pastoral scene",
-      "medium": "classical oil painting reproduction with photomontage-like altered faces",
+      "description": "A classical-style painted scene shows multiple human figures in a pastoral landscape. In the foreground and center, several partially nude figures pose dramatically around a cart or pedestal; one long-haired figure stands elevated with draped cloth, another muscular figure struggles with a snake around the body, and others hold round objects. Animals including a spotted big cat and a dark pig-like animal appear at lower left, with trees, sky, and distant land in the background.",
+      "signatureMotif": "a dramatic classical group scene with a snake-wrapped nude man",
+      "medium": "oil painting reproduction with composited photographic faces",
+      "people": "several people in a staged classical tableau, including multiple partially nude adults",
       "palette": [
         "brown",
         "tan",
@@ -120,9 +125,10 @@
       "filename": "Energy.jpg",
       "album": "Energy",
       "artist": "",
-      "description": "A stark black-and-white cover showing a large central silhouette of a crouching or lunging human figure with one hand extended toward the viewer. The figure wears a brimmed hat, bulky clothing, and a chain necklace. Behind the silhouette is a circular halftone pattern, and the background is divided into horizontal black and white bands.",
-      "signatureMotif": "crouching black silhouette with outstretched hand and hat",
-      "medium": "high-contrast stencil-like graphic",
+      "description": "A stark black-and-white cover with a large central silhouette of a crouching or lunging figure in bulky clothing and a chain necklace. The figure is outlined in white and set against horizontal black and white bands, with a dotted circular shape behind the body. The image is rough-edged and poster-like.",
+      "signatureMotif": "a large black silhouette of a crouching figure with a chain",
+      "medium": "high-contrast graphic illustration",
+      "people": "none",
       "palette": [
         "black",
         "white"
@@ -133,9 +139,10 @@
       "filename": "Songs-of-Faith-and-Devotion.jpg",
       "album": "Songs of Faith and Devotion",
       "artist": "",
-      "description": "A dark collage-like portrait cover with four male faces partially visible against a black painted field. Broad purple brushstroke rectangles obscure parts of each face, creating a fragmented arrangement around the center. The outer border has rough magenta-red painted edges, and the overall look is moody and distressed.",
-      "signatureMotif": "four partially obscured faces covered by purple paint blocks",
+      "description": "A dark collage-like portrait cover featuring four male faces arranged around the frame against a black painted field with a deep magenta border. Each face is partially obscured by broad purple brushstrokes, leaving only parts of eyes, noses, and mouths visible. The overall composition feels layered and distressed.",
+      "signatureMotif": "four partially hidden male faces covered by purple paint blocks",
       "medium": "mixed-media collage with painted overlays",
+      "people": "four men shown in close-up portrait fragments",
       "palette": [
         "black",
         "purple",
@@ -149,14 +156,15 @@
       "filename": "Aja.jpg",
       "album": "Aja",
       "artist": "",
-      "description": "A minimalist, mostly black cover with a narrow vertical figure or draped form near the center, defined by slim red and white stripes. In the upper left area, part of a pale face with red lips emerges from the darkness. The composition is sparse, elegant, and heavily shadowed.",
-      "signatureMotif": "slender central striped figure emerging from blackness",
-      "medium": "stylized studio photograph or photographic graphic",
+      "description": "A minimalist dark cover dominated by black space. Along the left side, part of a woman's face and body is visible in shadow, and a long narrow vertical shape resembling a dress or ribbon runs downward in white with red edges. The figure is elegant and mostly concealed by darkness.",
+      "signatureMotif": "a shadowed woman with a long vertical white-and-red garment shape",
+      "medium": "stylized studio photograph",
+      "people": "one woman partially visible in shadow",
       "palette": [
         "black",
         "red",
         "white",
-        "flesh tone"
+        "skin tone"
       ]
     },
     {
@@ -164,9 +172,10 @@
       "filename": "A-Moon-Shaped-Pool.jpg",
       "album": "A Moon Shaped Pool",
       "artist": "",
-      "description": "A monochrome abstract image resembling marbled liquid or ink swirling around the edges of the frame. The center is a large irregular white void, while black, gray, and white organic textures form a ring around it. Small floating blot-like shapes appear within the central open area.",
-      "signatureMotif": "large white central void surrounded by marbled black-and-gray swirls",
-      "medium": "abstract fluid painting or ink marbling",
+      "description": "A monochrome abstract image with swirling marbled black, gray, and white forms framing a large irregular white void in the center. Small floating blotches and pebble-like ink forms sit within the empty central area. The edges are fluid, organic, and splattered.",
+      "signatureMotif": "a large central white void surrounded by black-and-gray marbling",
+      "medium": "abstract ink or paint marbling",
+      "people": "none",
       "palette": [
         "white",
         "black",
@@ -175,9 +184,9 @@
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "Frontal view into a surreal theater stage, where a large irregular white void forms the performance floor at center and black-and-gray marbled swirls curl around it like ink curtains parting; a distressed yellow spiked sun-mask with a rough blue center and two oversized white-rimmed black eyes hangs above as the dominant emblem, while a large crouching black silhouette in a brimmed hat reaches one hand into the bright void from the lower foreground; along stage left, a row of alternating black and white side-profile faces edged in hot pink forms a sharp poster-like proscenium frieze, with a tiny standing female figure tucked into a narrow upper-corner panel; stage right is built from a red-and-purple checker geometry overlaid by a vertical stack of torn white paper strips with bold black marks and crossed by bright yellow bands; around the edges of the white floor, fragmentary Renaissance painted figures and animals appear as theatrical set pieces and performers, including one draped leaping body, one muscular snake-wrapped torso, and subtle dog, donkey, and spotted big-cat details; deep in the center stands a slender narrow figure defined by red and white stripes, nearly swallowed by darkness, with only a faint pale face and red lips nearby; in the surrounding blackness, four dim audience-box faces emerge in collage fragments, each partially obscured by broad purple paint blocks and rough magenta edging; mixed-media paper-cut collage, screenprint textures, marbled ink, torn-paper assemblage, and painted classical fragments, visibly handmade and distressed; strong central hierarchy with the white void and sun-mask leading, the crouching silhouette anchoring the foreground, asymmetrical but balanced composition, dramatic spotlight effect from the void against velvety darkness; palette of black, white, gray, yellow, red, hot pink, purple, and a touch of blue, moody, theatrical, enigmatic, and watchful. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A sun-struck Mediterranean-style courtyard photographed straight on in a medium-wide 16:9 editorial composition, with pale stone paving, limewashed walls, and a central plinth or shallow fountain basin establishing a strong axis. The primary subject is a large weathered stone statuary group on the plinth echoing the dramatic classical tableau from reference image 4: a snake-wrapped male figure, an elevated draped figure, clustered bodies, and carved animal forms, all treated as plausible old garden sculpture rather than live performers. Behind it, the back wall is dominated by a hand-painted mural from reference image 1: a vivid red field, a bold yellow sunburst, and a blue face-like center with oversized black oval eyes. Along one side wall, integrate the repeating side-profile silhouettes from reference image 2 as hot-pink, black, and white poster-like bands, with the tiny standing woman from reference image 2 appearing once inside a narrow white inset near the upper left. Build the paving and low wall trim from reference image 3 into a red-and-purple geometric tile grid with note-like shapes, yellow horizontal bands, and a slim torn white vertical strip with black marks on the right side of the composition. Place a bold black-and-white banner or painted foreground shape from reference image 5 near the bottom edge, showing the crouching silhouette with chain and a dotted circular form behind it. On a side wall, include the four men from reference image 6 once as a single large pasted portrait panel, keeping their close-up fragmented faces and purple paint-block obscurations intact. At the left edge, in the cool darkness of a doorway, stage the woman from reference image 7 exactly once, preserving her shadowed partial visibility and the long narrow white garment shape edged in red. Overhead, stretch a marbled black-gray-white fabric canopy inspired by reference image 8, with an irregular bright white opening at its center framing the sky. Photographic realism, clean editorial location shoot, crisp focus, no haze, no fog, no wet surfaces. Hard midday sun with sharp shadows, bright reflected light in the courtyard, saturated colors, graphic contrast, and a clear hierarchy from central sculpture to mural to portraits; palette of red, yellow, blue, hot pink, black, white, purple, and sunlit stone, mood enigmatic but bright and sharply legible. Reference map for people (the album images are attached in this numbered order): reference image 4 shows several people in a staged classical tableau, including multiple partially nude adults; reference image 6 shows four men shown in close-up portrait fragments; reference image 7 shows one woman partially visible in shadow. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Screamadelica.jpg",
     "I-Just-Cant-Stop-It.jpg",

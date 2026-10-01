@@ -3,64 +3,66 @@
   "date": "2026-03-23",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Surreal sky-lounge harvest tableau",
-  "creativeDirection": "A handcrafted theatrical collage built as a miniature set and photographed like an editorial still life, mixing folk sculpture, glam portrait fragments, and graphic silhouette into one dreamlike scene.",
-  "scene": "Inside a floating open-air sky lounge shaped from oversized breakfast crockery, viewed straight on at slight table height, with a distant grassy horizon visible through a wide arched opening.",
+  "concept": "Farm-airfield breakfast portrait circle",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography stages the portraits and animal motifs in one crisp, physically plausible rural airfield picnic scene, using the constructed breakfast surrealism as real props while keeping each referenced person posed as on their sleeves.",
+  "scene": "A small rural airfield beside a grassy pasture at midday, photographed from slightly above and just outside the open doorway of a parked propeller plane, looking down onto a picnic-and-service setup on the tarmac with open fields beyond.",
   "elements": [
     {
       "source": 1,
-      "element": "A woven straw donkey with red ribbon and side basket stands prominently on the serving platform as the main sculptural subject."
+      "element": "a woven straw donkey with a red ribbon stands on the tarmac near the foreground as a bright sculptural anchor"
     },
     {
       "source": 2,
-      "element": "Translucent lavender drapery and the intimate softness of a reclining presence become a cushioned divan atmosphere, with two large dog forms resting low beside it rather than dominating."
+      "element": "the woman from reference image 2 reclines on translucent lavender fabric spread over a picnic blanket at the plane doorway, with the two dogs pressed against her on either side in the same intimate pose"
     },
     {
       "source": 3,
-      "element": "The sky-lounge architecture is made from stacked white tableware and breakfast-set forms, and a cheerful orange-uniformed waitress presents a glass of orange juice from the left."
+      "element": "the woman from reference image 3 stands outside the plane in her orange waitress uniform and white cap, smiling and raising a tray with a tall orange drink while holding a menu card; around her are real white tableware and breakfast items arranged into a playful miniature city on a service cart"
     },
     {
       "source": 4,
-      "element": "A black amplifier-like speaker cabinet and a single gold-edged silhouette with raised arm appear as a bold stage cutout in the rear right."
+      "element": "the person from reference image 4 appears once as a backlit dark silhouette standing beside a real guitar amplifier at the far edge of the tarmac, holding an electric guitar with a pale sun rim along the outline"
     },
     {
       "source": 5,
-      "element": "The four glam-styled portraits become decorative cameo masks and floral adornments arranged around the upper border of the set."
+      "element": "the five people from reference image 5 lean inward from the edges of the open plane doorway and nearby windows toward the center of the frame, decorated with flowers, ribbons, and bouquet details, creating a ring of faces around the scene"
     },
     {
       "source": 6,
-      "element": "A monochrome curly-haired face appears once as a large printed moonlike medallion suspended in the open central airspace."
+      "element": "the young man from reference image 6 appears once as a close, frontal black-and-white portrait printed on a rectangular airport-style signboard propped beside the plane steps, preserving the tight face framing without inventing a new pose"
     },
     {
       "source": 7,
-      "element": "Beyond the lounge opening, a black-and-white cow stands in a green field looking back, grounding the surreal interior with pastoral distance."
+      "element": "a black-and-white cow stands in the pasture beyond the tarmac, turned mostly away but looking back toward the camera"
     },
     {
       "source": 8,
-      "element": "A fully fanned peacock tail forms the grand backdrop canopy behind the donkey, radiating outward like an ornate fan wall."
+      "element": "a peacock stands centered in the midground near the blanket with its tail fully fanned, echoing a radiant backdrop behind the reclining figure"
     }
   ],
   "palette": [
-    "golden yellow",
-    "straw tan",
-    "lavender haze",
-    "pale blue",
-    "leaf green",
-    "orange cream"
+    "sunlit yellow",
+    "lavender",
+    "sky blue",
+    "grass green",
+    "orange",
+    "white"
   ],
-  "mood": "playful, uncanny, lush, stagey",
+  "mood": "playful, surreal, bright, editorial",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Straw-Donkey-The-Singles.jpg",
       "album": "Straw Donkey The Singles",
       "artist": "",
-      "description": "A straw donkey sculpture stands slightly angled to the right against a seamless solid yellow background and floor. It has a woven body, long ears, a small tail, a basket hanging at its side, and a bright red ribbon tied around its neck. A soft shadow falls to the left on the floor.",
-      "signatureMotif": "woven straw donkey",
-      "medium": "studio photograph of a handmade woven sculpture",
+      "description": "A woven straw donkey sculpture stands slightly angled to the right on a seamless bright yellow background. It has a red ribbon tied around its neck and casts a soft shadow to the left. The composition is minimal, with the animal centered slightly right of frame and surrounded by empty space.",
+      "signatureMotif": "a straw donkey with a red ribbon",
+      "medium": "studio photograph of a woven sculpture",
+      "people": "none",
       "palette": [
         "yellow",
         "tan",
@@ -73,15 +75,16 @@
       "filename": "Hounds-of-Love.jpg",
       "album": "Hounds of Love",
       "artist": "",
-      "description": "A softly lit portrait photograph is centered within a large white border. A woman with long dark hair lies reclined in translucent lavender fabric, looking toward the viewer, while two large dogs press against her from either side. The image has a dreamy, misty softness with purple tones.",
-      "signatureMotif": "woman reclining with two dogs",
+      "description": "A softly lit portrait shows one woman reclining amid translucent lavender fabric, with two large dogs pressed against her on either side. Her dark hair spreads outward around her head, and the image sits within a wide white border. The overall look is dreamy and hazy.",
+      "signatureMotif": "a reclining woman embraced by two dogs",
       "medium": "soft-focus studio photograph",
+      "people": "one woman reclining with two dogs",
       "palette": [
-        "white",
         "lavender",
         "purple",
-        "pink",
-        "brown"
+        "white",
+        "brown",
+        "pink"
       ]
     },
     {
@@ -89,9 +92,10 @@
       "filename": "Breakfast-in-America.jpg",
       "album": "Breakfast in America",
       "artist": "",
-      "description": "A smiling waitress in an orange uniform and white cap is seen in the foreground through an airplane-style window frame. She raises a plate holding a glass of orange juice and holds a menu or card in her other hand. Behind her is a stylized cityscape made from white tableware and breakfast items, with a blue sky-like backdrop.",
-      "signatureMotif": "waitress holding a glass of orange juice",
-      "medium": "staged photographic collage/set design",
+      "description": "A smiling waitress in an orange uniform and white cap is seen through an airplane window frame, raising a tray with a tall glass of orange drink while holding a menu-like card in her other hand. Behind her is a stylized miniature cityscape made from white tableware, containers, cutlery, and breakfast items arranged against a blue gradient background.",
+      "signatureMotif": "a waitress holding up a tray with a glass of orange drink",
+      "medium": "staged studio photograph with constructed set",
+      "people": "one woman in a waitress uniform smiling and raising a tray",
       "palette": [
         "blue",
         "white",
@@ -105,12 +109,14 @@
       "filename": "Electric-Warrior.jpg",
       "album": "Electric Warrior",
       "artist": "",
-      "description": "A high-contrast black image shows the silhouette of a standing figure with one arm raised beside or in front of a large rectangular amplifier or speaker cabinet. The figure and equipment are outlined in a rough gold glow against a plain black background.",
-      "signatureMotif": "silhouetted figure with raised arm beside amplifier",
-      "medium": "graphic silhouette artwork",
+      "description": "A stark high-contrast image shows the dark silhouette of a standing guitarist holding an electric guitar beside a large amplifier. The figure and amp are outlined with a glowing pale gold edge against a solid black background, creating a dramatic poster-like composition.",
+      "signatureMotif": "a silhouetted guitarist beside an amplifier",
+      "medium": "high-contrast graphic photograph",
+      "people": "one person standing with a guitar",
       "palette": [
         "black",
-        "gold"
+        "gold",
+        "beige"
       ]
     },
     {
@@ -118,14 +124,15 @@
       "filename": "Let-It-Bee.jpg",
       "album": "Let It Bee",
       "artist": "",
-      "description": "Four stylized band portraits are arranged around the edges of a pale blue background, leaving open space in the center. The figures wear dramatic makeup, flowers, bows, jewelry, and brightly colored clothing. One person at lower right appears to blow a kiss toward the viewer, while others hold or pose with flowers.",
-      "signatureMotif": "four glam-styled faces arranged around the border",
-      "medium": "studio portrait photograph",
+      "description": "Five stylized people are arranged around the edges of a pale blue background, leaning inward toward the center. Their faces are brightly lit and somewhat washed out, with flowers, ribbons, and decorative accessories around their hair and clothing. One person at lower right appears to blow a kiss, while another at lower center holds a bouquet in front of the face.",
+      "signatureMotif": "five faces arranged around the edges with flowers",
+      "medium": "stylized color photograph",
+      "people": "five people posed around the frame with flowers and decorative accessories",
       "palette": [
         "pale blue",
+        "white",
         "yellow",
         "pink",
-        "red",
         "black"
       ]
     },
@@ -134,13 +141,15 @@
       "filename": "Amen-So-Be-It.jpg",
       "album": "Amen So Be It",
       "artist": "",
-      "description": "A close-up black-and-white portrait fills the frame, showing a young man facing forward with curly dark hair, intense eyes, and a neutral expression. The background is softly blurred, and only the top of a jacket collar is visible at the bottom.",
-      "signatureMotif": "close-up face with curly hair",
+      "description": "A close-up black-and-white portrait fills the frame, showing one young man facing forward with curly dark hair, strong eyebrows, and a neutral expression. The background is softly blurred, keeping attention on the face.",
+      "signatureMotif": "a close-up face of a curly-haired young man",
       "medium": "black-and-white portrait photograph",
+      "people": "one young man in close-up portrait",
       "palette": [
         "black",
         "white",
-        "gray"
+        "gray",
+        "lavender-gray"
       ]
     },
     {
@@ -148,14 +157,15 @@
       "filename": "Atom-Heart-Mother.jpg",
       "album": "Atom Heart Mother",
       "artist": "",
-      "description": "A black-and-white cow stands in a green grassy field, turned away but looking back toward the camera. The horizon is low, with a few distant trees and a wide pale blue sky occupying much of the background.",
-      "signatureMotif": "cow in a grassy field",
+      "description": "A black-and-white cow stands in a green grassy field, turned mostly away but looking back toward the camera. The background shows a low horizon with distant trees beneath a broad pale blue sky. The composition is simple and naturalistic, with the cow dominating the foreground.",
+      "signatureMotif": "a cow standing in a field and looking back",
       "medium": "outdoor color photograph",
+      "people": "none",
       "palette": [
         "green",
         "blue",
-        "white",
-        "black"
+        "black",
+        "white"
       ]
     },
     {
@@ -163,22 +173,23 @@
       "filename": "Expecting-To-Fly.jpg",
       "album": "Expecting To Fly",
       "artist": "",
-      "description": "A peacock faces forward with its tail fully fanned to fill nearly the entire frame. The feathers create a dense radial pattern of eye-like spots around the bird’s blue head and neck and golden-green body. A dark border frames the image.",
-      "signatureMotif": "peacock with fully spread tail",
+      "description": "A front-facing peacock fills the frame with its tail fully fanned out in a symmetrical display. The bird’s blue neck and head sit at the center, surrounded by dense green feathers patterned with many circular eye spots in blue, orange, and yellow.",
+      "signatureMotif": "a peacock with its tail fully spread",
       "medium": "color photograph",
+      "people": "none",
       "palette": [
         "green",
         "blue",
-        "gold",
-        "brown",
-        "orange"
+        "yellow",
+        "orange",
+        "black"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "A surreal open-air sky lounge built from oversized white breakfast crockery and airplane-diner details, viewed straight on from slight table height, with a wide arched opening to a distant grassy field and pale sky; at center stands a woven straw donkey sculpture angled slightly right, with long ears, small tail, side basket, and a vivid red ribbon at its neck, treated as the hero object on a serving platform; behind it rises a magnificent peacock tail fully fanned into a radial canopy, while at the left a smiling waitress in an orange uniform and white cap steps in presenting a plate with a glass of orange juice and a small card, and at lower right a lavender translucent divan suggests a reclining feminine presence through draped fabric with two large dog forms resting close beside it, soft and secondary; in the rear right place a stark black amplifier cabinet with one rough gold-edged silhouetted figure raising an arm beside it; arrange four glam-styled faces only as decorative cameo masks with flowers and bows around the upper border of the set; suspend one monochrome medallion-like close-up curly-haired face in the open center above as a single moonlike portrait; through the far opening show one black-and-white cow in green grass looking back toward the scene; handcrafted miniature theatrical collage, mixed media set design, folk sculpture, cut paper, painted flats, printed portrait inserts, textile drapery, then photographed as an editorial still life; clear hierarchy with the donkey central and largest, peacock canopy framing it, waitress as active accent on the left, supporting details receding around the perimeter, strong central negative space above the donkey, crisp layered depth; soft studio light with a dreamy haze on the lavender area, brighter spotlight on the donkey and juice glass, subtle shadow fall to the left, black-and-gold stage corner for contrast; palette of golden yellow, straw tan, lavender, pale blue, leaf green, orange cream, black, and metallic gold, with a playful uncanny lush mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "From a slightly elevated viewpoint just outside the open doorway of a parked small propeller plane, look down onto a rural airfield tarmac meeting a green pasture under hard midday sun. Make the primary subject the woman from reference image 2 reclining on translucent lavender fabric at the plane doorway with the two dogs from reference image 2 pressed against her on either side, keeping her original reclined pose, expression, hair spread outward, and dreamy stillness. Place a woven straw donkey with a red ribbon from reference image 1 in the foreground on the tarmac as a strong sculptural accent. Set the woman from reference image 3 nearby in her orange waitress uniform and white cap, smiling and raising a tray with a tall orange drink while holding a menu-like card, surrounded by a real miniature cityscape built from white tableware, cutlery, containers, and breakfast items on a service cart. At the far edge of the tarmac include the person from reference image 4 once only as a standing guitarist silhouette beside a real amplifier, with a pale sun rim outlining the dark figure against brighter ground. Arrange the five people from reference image 5 once only, leaning inward around the edges of the open plane doorway and windows toward the center with their flowers, ribbons, bouquet, and decorative accessories intact, preserving the edge-framing effect. Include the young man from reference image 6 once only as a monochrome close-up portrait on a rectangular airport-style signboard near the plane steps, keeping the direct forward face and tight framing. In the field beyond, place the cow from reference image 7 turned mostly away but looking back, and near center midground place the peacock from reference image 8 front-facing with its tail fully fanned. Use crisp realistic daylight location photography, clean editorial detail, medium-format sharpness, and physically plausible staging. Compose with a clear hierarchy: reclining woman and peacock central, waitress and breakfast city secondary, straw donkey foreground accent, guitarist and cow distant anchors, face-ring at the frame edges. Light with hard midday sun and crisp shadows, keeping all faces clear and unobscured. Palette of sunlit yellow, lavender, sky blue, grass green, orange, white, tan, and black; mood playful, surreal, bright, and clean. Reference map for people (the album images are attached in this numbered order): reference image 2 shows one woman reclining with two dogs; reference image 3 shows one woman in a waitress uniform smiling and raising a tray; reference image 4 shows one person standing with a guitar; reference image 5 shows five people posed around the frame with flowers and decorative accessories; reference image 6 shows one young man in close-up portrait. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Straw-Donkey-The-Singles.jpg",
     "Hounds-of-Love.jpg",

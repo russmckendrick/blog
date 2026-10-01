@@ -3,69 +3,72 @@
   "date": "2026-01-05",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Derelict observatory with caged song and fallen monument",
-  "creativeDirection": "A surreal mixed-media diorama photographed like a theatrical set, combining hand-built sculpture, painted backdrops, collage astronomy, and expressive splatter textures.",
-  "scene": "Inside a ruined observatory hall seen from a slightly elevated wide angle, with cracked flooring, tall grimy windows, and a long table receding through the middle of the room beneath a torn celestial ceiling.",
+  "concept": "Rooftop aviary under hard noon sun",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography stages the album motifs as a crisp, physically plausible rooftop aviary and portrait set under hard noon sun, carrying the sleeve figures into the space unchanged while translating the graphic covers into real objects and surfaces.",
+  "scene": "A wide 16:9 rooftop scene viewed slightly low and straight on, with open sky dominating the left half and a weathered urban roof garden/aviary occupying the right and center; the setting combines a simple portrait backdrop, a sparse sitting area, bird enclosures, and sculptural debris into one coherent outdoor location.",
   "elements": [
     {
       "source": 1,
-      "element": "a chrome resonator guitar floats diagonally near the upper left like a polished metallic constellation device, catching cool window light"
+      "element": "A chrome resonator guitar leans diagonally upward in the foreground/right against a wide bright blue sky with faint pink cloud traces, echoing the sleeve’s sky-filled framing."
     },
     {
       "source": 2,
-      "element": "a black swan on a tangled twig nest sits on the reflective floor in the foreground, partially shrouded by a translucent plastic veil"
+      "element": "A dark long-necked bird sits on a nest of tangled twigs and bits of reflective material, draped in a translucent plastic sheet, placed as a striking sculptural presence near center-left against a saturated red painted wall panel."
     },
     {
       "source": 3,
-      "element": "a single vintage-collage woman sits serenely on a large golden star suspended above the table amid tiny planets and a comet"
+      "element": "The woman from reference image 3 appears once as herself, seated sideways on a large physical golden star sculpture mounted above the rooftop, keeping her upward-looking pose, vintage hair, dress, and framing logic."
     },
     {
       "source": 4,
-      "element": "a broken concrete peace symbol lies toppled and cracked near the back of the hall, silhouetted against smoky orange-red glow and a crescent form"
+      "element": "A broken concrete peace symbol with exposed rebar lies as a major rooftop sculpture in the midground, with an orange crescent ring form mounted high in the background sky line."
     },
     {
       "source": 5,
-      "element": "a vivid yellow bird in a geometric wire cage hangs as a focal lantern over the table, with scattered leaves, feathers, and moths below"
+      "element": "A bright yellow bird perches inside a geometric wire cage on the rooftop floor, surrounded by scattered feathers, dry leaves, caterpillars, and moth-like insects as small still-life details."
     },
     {
       "source": 6,
-      "element": "the two portrait figures appear once together at the table's center as still, tailored occupants emerging from a blue-to-pink luminous haze"
+      "element": "The two people from reference image 6 stand back-to-back on the roof against a freestanding blue-to-pink gradient backdrop panel, preserving their exact pose: the curly-haired person facing camera and the blond-bob person turned mostly away in a pale suit."
     },
     {
       "source": 7,
-      "element": "the worn bare room, seated group arrangement, dark pillar, and austere table structure provide the architectural stage and secondary human silhouettes"
+      "element": "The three people from reference image 7 occupy a sparse rooftop sitting area with a small table, two facing each other and one reclining off to the left partly obscured by a vertical structural post, preserving the room-like arrangement in open air."
     },
     {
       "source": 8,
-      "element": "green-black-white splatter painting textures spread across the floor and walls, with three lemon slices and left-edge color swatches incorporated as painted debris and accents"
+      "element": "Three lemon slices and splattered white, black, and green paint appear as fresh marks and objects on the rooftop floor and on a low parapet, with small red, cream, and blue painted blocks integrated as set accents."
     }
   ],
   "palette": [
-    "deep blue",
-    "smoky red-orange",
-    "gold",
+    "sky blue",
     "chrome silver",
-    "charcoal black",
-    "sulfur yellow"
+    "concrete gray",
+    "signal red",
+    "gold",
+    "lemon yellow"
   ],
-  "mood": "haunted, lyrical, apocalyptic, contemplative",
+  "mood": "crisp, surreal, sun-struck, urban, composed",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Brothers-in-Arms.jpg",
       "album": "Brothers in Arms",
       "artist": "",
-      "description": "A chrome resonator guitar is shown large in the frame, angled diagonally as if floating against a blue sky with soft pale clouds. The main image sits inside a thin light border, with a wide solid blue margin around it. The guitar body reflects light and has decorative cutouts and engraved-looking details.",
-      "signatureMotif": "chrome resonator guitar",
+      "description": "A close-up photograph of a shiny metal resonator guitar angled diagonally upward against a bright blue sky with soft pinkish clouds. The instrument fills the right side while open sky occupies much of the left, and the image is framed by a pale border.",
+      "signatureMotif": "a chrome resonator guitar floating against the sky",
       "medium": "photograph",
+      "people": "none",
       "palette": [
-        "sky blue",
+        "blue",
         "silver",
+        "pink",
         "white",
-        "pale pink"
+        "black"
       ]
     },
     {
@@ -73,14 +76,16 @@
       "filename": "Speak-Spell.jpg",
       "album": "Speak Spell",
       "artist": "",
-      "description": "A dark swan-like bird stands on a nest of tangled twigs and branches, with its neck arched upward. A translucent plastic-like veil drapes over parts of the bird and nest. The background is an intense red field with soft streaked highlights, and the lower area has a glossy reflective surface mirroring the nest.",
-      "signatureMotif": "black swan on a twig nest",
-      "medium": "stylized photograph",
+      "description": "A dark bird with a long curved neck sits on a nest of tangled twigs and reflective material. A translucent plastic sheet drapes over the bird, and the whole scene is set against a vivid red, glossy-looking background with streaked highlights and mirrored reflections below.",
+      "signatureMotif": "a long-necked bird shrouded in transparent plastic on a nest",
+      "medium": "photograph",
+      "people": "none",
       "palette": [
         "red",
         "black",
         "white",
-        "grey"
+        "gray",
+        "brown"
       ]
     },
     {
@@ -88,15 +93,16 @@
       "filename": "Mellon-Collie-and-the-Infinite-Sadness.jpg",
       "album": "Mellon Collie and the Infinite Sadness",
       "artist": "",
-      "description": "An illustrated woman in flowing draped clothing sits perched on a large golden star in outer space. Around her are small planets, crescent-like celestial bodies, and a comet against a deep blue starry background. The figure has a vintage, collage-like look with softly painted skin and hair.",
-      "signatureMotif": "woman seated on a golden star",
-      "medium": "illustration/collage",
+      "description": "A vintage-style illustrated woman with curled hair and a flowing dress sits sideways on a large golden star in outer space. Around her are small planets, crescents, and stars scattered across a deep blue night sky.",
+      "signatureMotif": "a woman seated on a golden star in space",
+      "medium": "illustration",
+      "people": "one woman seated on a star, looking upward",
       "palette": [
-        "deep blue",
+        "blue",
         "gold",
         "green",
         "red",
-        "peach"
+        "cream"
       ]
     },
     {
@@ -104,14 +110,16 @@
       "filename": "eMOTIVe.jpg",
       "album": "eMOTIVe",
       "artist": "",
-      "description": "A huge cracked concrete peace symbol dominates the foreground, with exposed metal reinforcement visible in broken sections. Behind it is a dark city skyline under a dramatic smoky sky lit with fiery orange and red tones. A large crescent shape overlaps the upper right area, and flames or glowing clouds fill much of the background.",
-      "signatureMotif": "broken concrete peace symbol",
-      "medium": "digital collage/illustration",
+      "description": "A large cracked peace symbol made of rough concrete dominates the foreground, with exposed metal reinforcement visible along broken edges. Behind it is a dark city skyline under a fiery, smoke-filled red-orange sky, and an orange crescent-like ring overlays the upper right area.",
+      "signatureMotif": "a broken concrete peace symbol",
+      "medium": "digital collage",
+      "people": "none",
       "palette": [
-        "black",
-        "dark red",
+        "red",
         "orange",
-        "brown"
+        "brown",
+        "black",
+        "gray"
       ]
     },
     {
@@ -119,15 +127,16 @@
       "filename": "The-Very-Best-Of.jpg",
       "album": "The Very Best Of",
       "artist": "",
-      "description": "A bright yellow bird is enclosed inside a geometric wire cage at the center of the image. Around the base lie curled leaves, feathers, and moth-like insects on a dark textured ground. The background is a rich brown-black surface with subtle ornamental patterning, making the bird stand out strongly.",
-      "signatureMotif": "yellow bird in a wire cage",
+      "description": "A bright yellow bird perches inside a geometric wire cage centered on a dark textured background. Around the base lie scattered feathers, leaves, caterpillars, and moth-like insects, creating a still-life arrangement.",
+      "signatureMotif": "a yellow bird inside a wire cage",
       "medium": "illustration",
+      "people": "none",
       "palette": [
         "yellow",
-        "dark brown",
+        "brown",
+        "gray",
         "black",
-        "grey",
-        "beige"
+        "cream"
       ]
     },
     {
@@ -135,15 +144,16 @@
       "filename": "Swimmer.jpg",
       "album": "Swimmer",
       "artist": "",
-      "description": "Two people stand in a studio-like portrait against a smooth gradient background shifting from deep blue to pink and pale lavender near the horizon line. One person with curly hair faces forward in shadowed light, while the other, with a blond bowl haircut, turns mostly away in profile. Their clothing appears tailored and softly lit, with strong contrast between the figures and the luminous backdrop.",
-      "signatureMotif": "two figures against a blue-to-pink gradient backdrop",
+      "description": "A studio portrait shows two people standing against a smooth gradient backdrop with deep blue above and horizontal pink and pale bands near the horizon. One person with curly hair faces the camera in shadow, while the other, with a blond bob haircut, turns mostly away in a pale suit.",
+      "signatureMotif": "two figures posed against a blue-to-pink gradient background",
       "medium": "photograph",
+      "people": "two people standing back-to-back in semi-silhouette, one facing camera and one turned away",
       "palette": [
-        "deep blue",
+        "blue",
         "pink",
-        "lavender",
         "black",
-        "peach"
+        "peach",
+        "gray"
       ]
     },
     {
@@ -151,15 +161,16 @@
       "filename": "Upstairs-at-Erics.jpg",
       "album": "Upstairs at Erics",
       "artist": "",
-      "description": "Inside a worn, sparsely furnished room with tall multi-pane windows and rough walls, several people sit around a rectangular table. One figure reclines at the left edge, two face each other at the table, and another sits slumped to the right. A dark vertical pillar divides the foreground, and the lighting is dim and moody, emphasizing the empty floor and distressed interior.",
-      "signatureMotif": "figures seated around a table in a bare room",
+      "description": "A dimly lit interior photograph of a worn room with tall windows, rough walls, and sparse furniture. Two people sit facing each other across a small table near the center, while a third person reclines on a chair at the left edge, partly obscured by a dark vertical pillar in the foreground.",
+      "signatureMotif": "three people in a sparse room around a small table",
       "medium": "photograph",
+      "people": "three people in a bare room, two seated at a table and one reclining to the side",
       "palette": [
-        "grey",
-        "brown",
+        "gray",
+        "beige",
         "black",
-        "off-white",
-        "muted blue"
+        "white",
+        "brown"
       ]
     },
     {
@@ -167,9 +178,10 @@
       "filename": "The-Stone-Roses.jpg",
       "album": "The Stone Roses",
       "artist": "",
-      "description": "An abstract painted surface fills the frame with dense splatters and drips in the style of action painting. The background is mostly green, white, black, and grey, with three horizontal paint swatches at the left in red-orange, cream, and blue. Three lemon slices are placed across the composition, standing out against the chaotic paint marks.",
-      "signatureMotif": "lemon slices on a splattered abstract painting",
-      "medium": "mixed-media collage/painting",
+      "description": "An abstract painted surface covered in energetic splatters and drips of white, black, and green fills the frame. Three yellow lemon slices are placed across the composition, with a few solid paint blocks in red, cream, and blue along the left side.",
+      "signatureMotif": "three lemon slices on a splattered abstract paint background",
+      "medium": "mixed-media painting/collage",
+      "people": "none",
       "palette": [
         "green",
         "white",
@@ -180,9 +192,9 @@
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "Inside a ruined observatory hall seen from a slightly elevated wide angle, a long rectangular table receding through the center of a bare distressed room with tall multi-pane windows, rough walls, a dark foreground pillar, cracked floor, and a torn celestial ceiling; a geometric wire cage holding a vivid yellow bird hangs low over the table as the main focal point, glowing like a captive song lantern; include a black swan standing on a tangled twig nest in the reflective foreground with a translucent plastic veil draped over bird and nest, a chrome resonator guitar floating diagonally in the upper left like a polished astronomical instrument against cool sky-toned space, a single vintage-collage woman seated on a large golden star suspended above the table with small planets and a comet around her, a broken cracked concrete peace symbol toppled near the back against a smoky fiery orange-red glow with a crescent shape, two tailored figures appearing only once together at the table's center emerging from a deep blue to pink-lavender haze, sparse secondary seated silhouettes integrated into the room, and green-white-black action-paint splatters across floor and walls with three lemon slices and three horizontal swatches of red-orange, cream, and blue embedded as painterly debris; surreal mixed-media diorama, hand-built sculpture, collage illustration, painted backdrop, splatter-paint surfaces, photographed as a theatrical set; strong central hierarchy on the hanging cage, long perspective lines from table and floorboards, reflective patches on the ground, dramatic contrast between cold window light and warm infernal backlight, generous negative space around the upper star figure; palette of deep blue, smoky red-orange, gold, chrome silver, charcoal black, sulfur yellow, moss green, dusty pink, mood haunted lyrical apocalyptic contemplative Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide rooftop aviary scene shot slightly low and straight on in a real urban setting, with open bright blue sky filling much of the left half and a weathered roof garden occupying the center and right; the primary subject is a chrome resonator guitar in the foreground at right leaning diagonally upward into the sky, while the two people from reference image 6 stand back-to-back against a freestanding blue-to-pink gradient backdrop panel near center, keeping exactly their sleeve pose, expression, hair, styling, and orientation, the curly-haired person facing camera and the blond-bob person turned mostly away in a pale suit. The woman from reference image 3 appears once, seated sideways on a large physical golden star sculpture mounted above the roofline, looking upward with the same vintage pose, curled hair, and flowing dress; the three people from reference image 7 appear once in a sparse rooftop sitting area with rough chairs and a small table, two facing each other near the center and one reclining at the left edge partly obscured by a dark vertical post; a dark long-necked bird sits on a nest of tangled twigs and reflective scraps draped with translucent plastic in front of a saturated red painted wall panel; a bright yellow bird perches inside a geometric wire cage on the rooftop floor with scattered feathers, leaves, caterpillars, and moth-like insects around it; a large broken concrete peace symbol with exposed rebar rests in the midground as a major sculptural form, with an orange crescent ring mounted high in the background; three lemon slices lie across white, black, and green splattered paint marks on the roof surface and parapet, with small red, cream, and blue painted blocks as accents. Daylight location photography, clean editorial realism, crisp medium-format detail. Strong visual hierarchy led by the guitar, central portrait pair, and golden star figure, with supporting still-life and sculptural motifs arranged across the roof; hard midday sun with sharp shadows, clear air, high clarity, no haze, no fog, no wet surfaces. Palette of sky blue, chrome silver, concrete gray, vivid red, gold, lemon yellow, beige, and pink; mood surreal but plausible, bright, graphic, and sharply composed. Reference map for people (the album images are attached in this numbered order): reference image 3 shows one woman seated on a star, looking upward; reference image 6 shows two people standing back-to-back in semi-silhouette, one facing camera and one turned away; reference image 7 shows three people in a bare room, two seated at a table and one reclining to the side. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Brothers-in-Arms.jpg",
     "Speak-Spell.jpg",

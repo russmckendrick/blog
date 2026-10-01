@@ -3,69 +3,71 @@
   "date": "2026-03-16",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Bathhouse pageant beneath a spectral emblem",
-  "creativeDirection": "A surreal cut-paper collage and gouache illustration staged like a ceremonial spa tableau with graphic overlays.",
-  "scene": "A wide frontal view into an opulent but uncanny tiled bathhouse lounge, centered on a shallow reflective pool and a hanging emblem above it.",
+  "concept": "Midday roadside spa pageant",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography stages the sleeve portraits as a crisp, slightly surreal roadside stop in hard midday sun, using graphic album motifs as real signage, painted surfaces, and staged objects.",
+  "scene": "A wide 16:9 editorial photograph at a rural roadside pull-off beside a small white stucco refreshment stand, viewed straight on from slightly below eye level so the figures read clearly against open sky and a line of leafy trees.",
   "elements": [
     {
       "source": 1,
-      "element": "The two bathrobed adults become the central hosts, seated together at the pool edge holding pale green drinks as the main focal figures."
+      "element": "the two middle-aged adults from reference image 1 stand together as the main focal point in white bathrobes, smiling directly at camera and each holding a clear glass of pale green drink"
     },
     {
       "source": 2,
-      "element": "The eye and vertical rainbow prism become a luminous hanging bathhouse medallion or skylight directly above the hosts."
+      "element": "a large roadside sign behind the stand uses overlapping translucent circular panels and a central vertical rainbow prism with an eye-shaped oval as its real built design"
     },
     {
       "source": 3,
-      "element": "The six costumed performers appear as supporting attendants in exaggerated patterned robes and makeup, arranged off-balance around the room like a ceremonial chorus."
+      "element": "the seven men from reference image 3 appear grouped around the stand exactly once as a secondary ensemble, keeping their theatrical makeup, angular colorful costumes, and studio-like poses translated into the outdoor setting"
     },
     {
       "source": 4,
-      "element": "The horizontal red band becomes a bold architectural stripe across the back wall, with a single side-profile relief emerging from it."
+      "element": "the side profile of the man from reference image 4 is rendered as a large red painted wall panel on the side of the stand, with his lit profile emerging from the red field"
     },
     {
       "source": 5,
-      "element": "Glowing distorted orange faces appear as ghostly reflections and steam apparitions in the dark water and upper shadows, with a mirrored tree-frieze pattern along the lower wall."
+      "element": "the orange-red blurred screaming-face motif becomes a heat-scorched black advertising lightbox or poster near the edge of the stop, abstract and distressed rather than dominant"
     },
     {
       "source": 6,
-      "element": "The fur-trimmed hood transforms into a luxurious hanging cloak or towel wrap draped on a prominent stand near the foreground, suggesting warmth and shelter."
+      "element": "the smiling man from reference image 6 appears once as a bundled figure in his fur-lined parka hood, seated or standing near the stand and looking directly at camera"
     },
     {
       "source": 7,
-      "element": "The four band members under the tilted road sign become a monochrome framed photo strip pinned near a column, treated as a small incidental decorative object."
+      "element": "the four young people from reference image 7 stand beneath an actual road sign under the nearby trees in the background, preserving their casual grouped arrangement and direct gaze"
     },
     {
       "source": 8,
-      "element": "The heraldic shield becomes the main bathhouse crest embedded in floor mosaic and echoed by slender spear-like fixtures flanking the scene."
+      "element": "the heraldic shield from reference image 8 is incorporated as the stand’s painted crest sign, with dark blue outline, red sections, rain-line panel, starbursts, and gold decorative details"
     }
   ],
   "palette": [
     "white",
     "pale green",
-    "light blue",
-    "deep blue",
     "red",
+    "sky blue",
+    "dark blue",
     "gold"
   ],
-  "mood": "ritualistic, playful, uncanny, luxurious",
+  "mood": "bright, odd, celebratory",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Communion.jpg",
       "album": "Communion",
       "artist": "",
-      "description": "A glossy studio photograph of a smiling middle-aged woman and an older man in white bathrobes, posed close together and facing the camera. Each holds a clear glass filled with a pale green drink. The background is softly blurred and bright, with a clean lifestyle-advertisement look. A circular sticker-like graphic appears near the upper left, and a pale blue curved band runs along the bottom edge.",
-      "signatureMotif": "two people in white robes holding pale green drinks",
+      "description": "A bright studio-style photograph of a smiling middle-aged woman and middle-aged man in white bathrobes, posed close together and facing the camera. Each holds a clear glass filled with a pale green drink. The background is softly blurred in white and pastel tones, and a large pale circular label-like graphic sits in the upper left.",
+      "signatureMotif": "two smiling adults holding pale green drinks",
       "medium": "photograph",
+      "people": "two middle-aged adults smiling in white bathrobes, each holding a glass",
       "palette": [
         "white",
         "pale green",
-        "light blue",
         "beige",
+        "soft blue",
         "grey"
       ]
     },
@@ -74,15 +76,16 @@
       "filename": "Bright-Spirit.jpg",
       "album": "Bright Spirit",
       "artist": "",
-      "description": "An abstract geometric design centered on a large eye shape. Overlapping translucent blue circles form a layered halo around the center, while a tall faceted diamond or prism shape runs vertically through the middle in rainbow-like bands of yellow, green, red, purple, and blue. The background is deep blue with faint speckling.",
-      "signatureMotif": "central eye with a vertical multicoloured prism",
+      "description": "An abstract geometric design on a blue, slightly speckled background. Large translucent overlapping circles frame a central vertical diamond or prism shape made of narrow rainbow-colored triangular bands. An eye-shaped oval sits across the center, creating a layered symmetrical composition.",
+      "signatureMotif": "central rainbow prism within overlapping translucent circles",
       "medium": "digital illustration",
+      "people": "none",
       "palette": [
         "blue",
         "teal",
-        "yellow",
         "green",
-        "red"
+        "yellow",
+        "orange"
       ]
     },
     {
@@ -90,9 +93,10 @@
       "filename": "Second-Thoughts-Wide-Angle-Enz-Enzyclopedia-Volumes-One-Two-Appendices.jpg",
       "album": "Second Thoughts Wide Angle Enz Enzyclopedia Volumes One Two Appendices",
       "artist": "",
-      "description": "A studio portrait of six men in theatrical costumes and heavy stage makeup, posed against a plain light background. Their outfits are brightly coloured and patterned, including harlequin-style diamonds, solid blocks of blue, green, pink, red, yellow, and orange. Several have exaggerated hairstyles and white-painted faces, and the group is arranged in a slightly crouched, off-balance formation.",
-      "signatureMotif": "six performers in colourful theatrical costumes and makeup",
+      "description": "A studio photograph of seven men in theatrical costumes and heavy stage makeup, posed against a plain white background. Their outfits are brightly colored with angular patterns, oversized buttons, and contrasting panels. Several have sharply sculpted or towering hairstyles, and two figures crouch in the foreground while the others stand behind.",
+      "signatureMotif": "seven performers in angular colorful costumes and dramatic makeup",
       "medium": "photograph",
+      "people": "seven men in theatrical makeup and brightly patterned costumes, posed in a studio",
       "palette": [
         "white",
         "blue",
@@ -106,12 +110,13 @@
       "filename": "Escapade.jpg",
       "album": "Escapade",
       "artist": "",
-      "description": "A minimalist cover with a wide horizontal red band across the middle of a mostly white field. Emerging from the red area is the side profile of a man's head, with dark hair and a brightly lit face partially washed out by strong light. The composition is sparse and high-contrast.",
-      "signatureMotif": "side profile of a man's head emerging from a red band",
-      "medium": "photograph",
+      "description": "A minimalist cover with a large horizontal red torn-paper-like block across the middle and a mostly white background. Emerging from the red area is the side profile of a man's head, with dark hair and a brightly lit face partially blending into the red field.",
+      "signatureMotif": "side profile of a man's head emerging from a red field",
+      "medium": "photograph with graphic layout",
+      "people": "one man shown in side profile with dark hair",
       "palette": [
-        "white",
         "red",
+        "white",
         "black",
         "dark brown"
       ]
@@ -121,9 +126,10 @@
       "filename": "Superunknown.jpg",
       "album": "Superunknown",
       "artist": "",
-      "description": "A dark, blurred image with glowing orange-red distorted human faces or figures floating against a black background. Along the bottom is a stark inverted-looking strip of black tree silhouettes over a white ground, creating a surreal mirrored landscape effect.",
-      "signatureMotif": "glowing distorted face against black",
-      "medium": "photograph with heavy blur/effects",
+      "description": "A dark, blurry, high-contrast image with several indistinct human figures glowing in orange-red against a black background. The central figure appears to have an open mouth, and the lower portion fades into a rough white and black textured band resembling dripping reflections or distressed film.",
+      "signatureMotif": "blurred orange-red screaming face against black",
+      "medium": "manipulated photograph",
+      "people": "several blurred human figures, with one central face most prominent",
       "palette": [
         "black",
         "orange",
@@ -136,9 +142,10 @@
       "filename": "The-Ultimate-Collection.jpg",
       "album": "The Ultimate Collection",
       "artist": "",
-      "description": "A close-up sepia-toned portrait of a smiling man wearing a heavy parka with a large fur-trimmed hood framing his face. The zipper and quilted fabric of the coat are visible, and the image fills the frame tightly.",
-      "signatureMotif": "smiling man framed by a fur-lined hood",
+      "description": "A sepia-toned close-up portrait of a smiling man looking directly at the camera. He is bundled in a heavy parka with a large fluffy fur-trimmed hood framing his face, filling most of the image.",
+      "signatureMotif": "close-up smiling face framed by a fur-lined hood",
       "medium": "photograph",
+      "people": "one smiling man in a heavy fur-lined parka hood",
       "palette": [
         "sepia",
         "tan",
@@ -152,9 +159,10 @@
       "filename": "Rotten-Apples-Greatest-Hits.jpg",
       "album": "Rotten Apples Greatest Hits",
       "artist": "",
-      "description": "A black-and-white band photograph presented inside a film-negative style frame. Four young people stand outdoors beneath leafy trees, facing the camera, with one person in front center and others staggered behind. A tilted road sign appears behind them, and the image has a candid, slightly wide-angle look.",
-      "signatureMotif": "four band members posed beneath a tilted road sign",
+      "description": "A black-and-white outdoor band photograph framed like a film negative, with four young people facing the camera beneath leafy trees. A road sign stands behind them, and the group is arranged casually with one person in front center, one at left in a backward cap, one at right partly behind, and one in back wearing a flat cap.",
+      "signatureMotif": "four young people posed beneath a road sign in a black-and-white film-frame photo",
       "medium": "black-and-white photograph",
+      "people": "four young people outdoors, facing the camera beneath trees",
       "palette": [
         "black",
         "white",
@@ -166,22 +174,23 @@
       "filename": "Sparkle-in-the-Rain.jpg",
       "album": "Sparkle in the Rain",
       "artist": "",
-      "description": "A clean graphic design featuring a heraldic shield centered on a white background with decorative gold borders at the top and bottom. The shield is divided into sections with red, white, and blue areas, including diagonal rain-like lines and small starburst shapes in one quadrant. Stylized spear- or antenna-like elements flank the shield on both sides.",
-      "signatureMotif": "heraldic shield with geometric sections",
+      "description": "A clean graphic design on a white background featuring a heraldic shield outlined in dark blue. The shield is divided into four sections with red panels, a white panel filled with diagonal rain lines and starburst shapes, and a white panel containing a stylized emblem. On both sides are symmetrical angular spear- or antenna-like forms, with decorative gold border elements at the top and bottom.",
+      "signatureMotif": "heraldic shield with rain lines and starburst symbols",
       "medium": "graphic illustration",
+      "people": "none",
       "palette": [
         "white",
         "red",
-        "blue",
+        "dark blue",
         "gold",
         "black"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "A wide frontal view into an opulent yet uncanny tiled bathhouse lounge with a shallow reflective pool in the center and a suspended emblem above it; two middle-aged bathhouse hosts in crisp white robes sit close together at the pool edge as the clear focal point, smiling toward the viewer and each holding a clear glass of pale green drink; above them hangs a luminous medallion shaped like a giant eye with overlapping translucent blue halos and a vertical multicolored prism through its center, while a heraldic shield crest is inlaid into the floor mosaic and echoed by slender spear-like fixtures on both sides; six theatrical attendants in vivid harlequin and color-block costumes with white stage makeup occupy the sides and background in a slightly crouched, off-balance chorus, supporting rather than dominating; across the back wall runs a broad horizontal red architectural band from which a single side-profile relief of a man emerges in bright high contrast; ghostly glowing orange-red faces materialize subtly in steam and water reflections, and an inverted black tree-silhouette frieze runs along the lower wall like a surreal mirrored landscape; a sepia fur-trimmed hooded parka is transformed into a sumptuous cloak draped on a stand in the foreground; a small black-and-white film-negative style photo strip showing four young people beneath a tilted road sign is pinned near a side column as a minor incidental detail; surreal cut-paper collage combined with gouache illustration, layered paper textures, crisp graphic edges, hand-painted tile detail, slight printmaking grain; clear central hierarchy with the robed pair dominant, the eye medallion second, attendants framing the sides, generous negative space around the center, symmetrical but gently destabilized staging, soft luminous bathhouse light with cool highlights and pockets of shadow; palette of white, pale green, light blue, deep blue, red, gold, black, orange, and sepia, creating a playful ritual mood that feels luxurious, theatrical, and faintly haunted. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 editorial roadside scene beside a small white stucco refreshment stand, photographed straight on from slightly below eye level under open sky; the two middle-aged adults from reference image 1 are the primary subject, standing close together in white bathrobes, smiling directly at the camera and each holding a clear glass of pale green drink; the seven men from reference image 3 are grouped around the stand as a colorful secondary ensemble, keeping their exact theatrical makeup, angular costumes, hairstyles, and posed arrangement; the smiling man from reference image 6 appears once nearby in his heavy fur-lined parka hood, facing camera; the four young people from reference image 7 appear once in the background beneath a real road sign under leafy trees, preserving their black-and-white-photo grouping and direct gaze; behind the stand, a large constructed sign from reference image 2 features overlapping translucent circles framing a central vertical rainbow prism and eye-shaped oval; on the side wall, the man in side profile from reference image 4 appears as a bold red painted panel with his lit face emerging from the red field; the motif from reference image 5 becomes a scorched, blurry orange-red poster or lightbox at the edge of the stop against black; the heraldic shield from reference image 8 is painted as the stand’s crest with dark blue outline, red quadrants, diagonal rain lines, starbursts, emblem, and gold trim; daylight location photography, crisp realistic detail, physically plausible set dressing, clean lens, deep enough focus to keep every face clear; strong visual hierarchy with the bathrobe pair dominant in the foreground, the costumed group framing them, and the background band and signage supporting; hard midday sun with sharp shadows, bright clean exposure, saturated but natural color; palette of white, pale green, red, blue, gold, and touches of orange-red, mood bright, strange, and celebratory. Reference map for people (the album images are attached in this numbered order): reference image 1 shows two middle-aged adults smiling in white bathrobes, each holding a glass; reference image 3 shows seven men in theatrical makeup and brightly patterned costumes, posed in a studio; reference image 4 shows one man shown in side profile with dark hair; reference image 5 shows several blurred human figures, with one central face most prominent; reference image 6 shows one smiling man in a heavy fur-lined parka hood; reference image 7 shows four young people outdoors, facing the camera beneath trees. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Communion.jpg",
     "Bright-Spirit.jpg",

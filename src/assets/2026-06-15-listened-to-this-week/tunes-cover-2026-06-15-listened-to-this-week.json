@@ -3,64 +3,66 @@
   "date": "2026-06-15",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Neon shrine beneath a fractured dawn triptych",
-  "creativeDirection": "A hand-built mixed-media shadowbox diorama photographed head-on, combining painted figures, cut paper signage, translucent panels, and glowing theatrical light.",
-  "scene": "A shallow proscenium-like night street shrine viewed straight on, where a luminous triptych sky rises behind a small stage of urban debris and reflective paneling.",
+  "concept": "Midday plaza with storm child and rising hands",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography in a real civic plaza, using sculptural public-art forms and staged portrait elements to translate the graphic and painted album motifs into one crisp, bright environmental scene.",
+  "scene": "A wide 16:9 view across a sun-struck modern plaza beside a shallow reflecting basin or lake edge, shot from low standing height so foreground objects feel large and graphic while the distant waterline and trees sit high in frame.",
   "elements": [
     {
       "source": 1,
-      "element": "A large yellow banner-shaped sign becomes the dominant shrine canopy, hanging overhead with a bold black swoosh across one lower corner and slightly wrinkled glossy surfaces."
+      "element": "A large freestanding irregular yellow banner-shaped metal panel with a thick black edge stands as the main sculptural object in the foreground, with a black puddle-like cutout or painted shape near its lower left; nearby surfaces carry warm brown-beige marbled stone or woodgrain-like cladding."
     },
     {
       "source": 2,
-      "element": "Two blurred ghostlike adult figures appear only once as distant fiery presences behind translucent side scrims, their orange-red haze suggesting heat and memory."
+      "element": "A small loose group of indistinct long-haired people appears in the mid-background crossing a sunlit area beyond the main subject, their presence softened by heat shimmer and backscatter rather than heavy blur, with red-orange clothing accents and a green-toned planted zone echoing the cover's fiery haze."
     },
     {
       "source": 3,
-      "element": "A barefoot child in a red military-style jacket stands center stage holding a black-and-white bird, with a single red flower and a small bullet-like object near their feet."
+      "element": "The boy from reference image 3 stands front-facing as a central live figure, barefoot, wearing the same red military-style jacket with gold trim and blue trousers, holding a black-and-white bird on his gloved hand; a single red flower grows from a crack nearby and a small bullet-like metallic object rests on the ground near his feet; behind him a compact storm cloud bank and a faint rainbow appear over the water."
     },
     {
       "source": 4,
-      "element": "A clustered thicket of raised hands rises from the foreground like offerings or carved votive forms at the base of the shrine."
+      "element": "A tight cluster of real raised arms and hands emerges from the lower foreground edge, as if a crowd just below frame is reaching upward toward the boy and the yellow panel; only minimal tops of heads are visible."
     },
     {
       "source": 5,
-      "element": "Three tall vertical sky panels form the backdrop, filled with pale violet dawn light and a sharp sun flare breaking through the center-left panel."
+      "element": "Three tall slim white-framed glass light-box or architectural panel structures stand to one side, each catching a bright white solar flare and pale violet-grey reflections, with faint misty cloudiness trapped within the translucent material."
     },
     {
       "source": 6,
-      "element": "Entertainment-district neon becomes the crowded side architecture, while the spray-can child is transformed into paint drips, stencil marks, and glowing sign clutter rather than another person."
+      "element": "A small childlike painted pavement figure with a spray can is integrated as fresh street art at the base of a wall, beside a yellow paint splash and a ball; farther back, a few bright sign-like commercial panels add hints of marquee color without turning the scene into night."
     },
     {
       "source": 7,
-      "element": "A calm lake and treeline are miniaturized into the distant horizon visible through the lower portions of the triptych, with dark branches subtly framing the upper edges."
+      "element": "The child-like figure from reference image 7 appears once, seen from behind at the water's edge in the distance, centered against the pale lake, framed by real dark leafy branches at the sides."
     },
     {
       "source": 8,
-      "element": "The two spotted mask-like figures become ceremonial objects mounted asymmetrically on the side walls, one angular and tasselled, one rounded and domed, accented with yellow marks."
+      "element": "Two black-and-white polka-dotted hooded sculptural masks are installed as contemporary public-art pieces: one upright mounted on a plinth, one inverted hanging from a simple overhead frame, both with restrained gold geometric details."
     }
   ],
   "palette": [
-    "acid yellow",
-    "magenta",
-    "violet-grey",
-    "ember orange",
+    "yellow",
+    "red",
     "black",
-    "weathered beige"
+    "white",
+    "gold",
+    "pink-magenta"
   ],
-  "mood": "ritualistic, nocturnal, uncanny, hopeful",
+  "mood": "surreal but clean, public, sunlit, theatrical",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Out-of-Time.jpg",
       "album": "Out of Time",
       "artist": "",
-      "description": "A large bright yellow banner-like sign with a thick black outline fills most of the image, set against a glossy brown and beige background that looks like wood or laminated panels. A black abstract swoosh or ribbon shape runs across the lower left portion of the sign. The composition is centered and graphic, with slight reflections and wrinkles visible in the background surface.",
-      "signatureMotif": "yellow banner-shaped sign",
-      "medium": "graphic design with photographed background",
+      "description": "A large irregular yellow banner-like shape with a thick black outline dominates the center, set against a glossy brown and beige background that looks like woodgrain or marbled panels under plastic wrap. Inside the yellow shape is a black abstract puddle or shadow-like form near the lower left. The composition is flat and graphic, with the bright central shape floating over the textured background.",
+      "signatureMotif": "large yellow banner-shaped panel",
+      "medium": "graphic design with photographed textured background",
+      "people": "none",
       "palette": [
         "yellow",
         "black",
@@ -74,15 +76,16 @@
       "filename": "Inferno.jpg",
       "album": "Inferno",
       "artist": "",
-      "description": "A blurred, grainy photographic scene with two human figures standing in a dim outdoor setting. One figure is darker and more central, while another stands to the right with long hair and a lighter face. The lower half glows with fiery red and orange tones, and a dark treeline silhouette runs along the bottom edge. The image has a hazy, double-exposed feel.",
-      "signatureMotif": "blurred standing figures in a fiery haze",
-      "medium": "grainy blurred photograph",
+      "description": "A blurred, grainy photograph in dark red, orange, and green tones shows several long-haired figures standing or walking in a dim outdoor setting. The lower half glows with fiery red-orange light, while the upper area is murky green with shadowy forms. The image has a hazy, distressed look with strong contrast between the warm glow below and the darker silhouettes above.",
+      "signatureMotif": "blurred group of shadowy figures in fiery red light",
+      "medium": "blurred grainy photograph",
+      "people": "several people, indistinct long-haired figures standing or walking",
       "palette": [
-        "orange",
         "red",
+        "orange",
+        "green",
         "black",
-        "dark green",
-        "yellow"
+        "brown"
       ]
     },
     {
@@ -90,15 +93,16 @@
       "filename": "Misplaced-Childhood.jpg",
       "album": "Misplaced Childhood",
       "artist": "",
-      "description": "A painted fantasy scene showing a barefoot child standing front-facing on a plain ground, wearing a red military-style jacket with gold trim and dark trousers. A black-and-white bird perches on the child's gloved hand. Behind the figure are dramatic swirling clouds in purple, grey, and white, with a rainbow emerging from a cloud bank on the left. A red flower with stems stands near the child's feet, and a small bullet-like object lies on the ground nearby.",
-      "signatureMotif": "barefoot child in a red military jacket holding a bird",
-      "medium": "surreal painting",
+      "description": "A painted fantasy scene centers on a barefoot young boy standing front-facing in a red military-style jacket with gold trim and blue trousers. A black-and-white bird perches on his gloved hand. Behind him are dramatic storm clouds, a rainbow emerging from clouds on the left, and a single red flower growing from the ground on the right. A small bullet-like object lies near his feet. The composition is theatrical and surreal, with the child isolated against a dark, cloud-filled sky.",
+      "signatureMotif": "barefoot boy in a red military-style jacket holding a bird",
+      "medium": "painted illustration",
+      "people": "one boy standing barefoot and facing forward",
       "palette": [
         "red",
         "purple",
-        "gold",
-        "white",
-        "black"
+        "blue",
+        "black",
+        "gold"
       ]
     },
     {
@@ -106,14 +110,15 @@
       "filename": "Ten.jpg",
       "album": "Ten",
       "artist": "",
-      "description": "Several human arms and hands reach upward from the bottom center, stacked together in a unified gesture. Some wrists wear bracelets or a watch. The background is a textured magenta and dark pink field with vertical darker bands, giving a rough poster-like appearance. The composition is tightly cropped, focusing on the raised hands.",
-      "signatureMotif": "cluster of raised hands and arms",
-      "medium": "photographic collage or treated photograph",
+      "description": "Multiple human arms and hands rise from the bottom center and reach upward together, overlapping in a tight cluster. The background is a textured pink and magenta field with darker vertical rectangular forms behind it. The image is cropped so only the tops of a few heads are barely visible at the bottom edge, while the raised hands form the main focal point.",
+      "signatureMotif": "cluster of raised hands reaching upward",
+      "medium": "photographic image with textured overlay",
+      "people": "several people, mostly unseen, with arms and hands raised together",
       "palette": [
-        "magenta",
         "pink",
-        "black",
+        "magenta",
         "white",
+        "black",
         "brown"
       ]
     },
@@ -122,15 +127,16 @@
       "filename": "Amplifier.jpg",
       "album": "Amplifier",
       "artist": "",
-      "description": "A minimalist design divided into three tall vertical rectangular panels outlined in white against a black border. Inside the panels is a pale purple sky with a bright sun flare near the lower center-left, producing starburst light and hexagonal lens flare shapes. Small wisps of white cloud appear near the bottom of the left panel and faintly in the right panel.",
-      "signatureMotif": "three vertical sky panels with sun flare",
-      "medium": "minimalist photograph-based graphic layout",
+      "description": "A minimalist design divided into three tall vertical panels outlined in white sits on a black background. Inside the panels is a soft purple-grey sky-like field with a bright white flare near the lower center and hexagonal lens flare shapes drifting across. Wisps of pale smoke or cloud appear near the lower edges. The composition is sparse and geometric.",
+      "signatureMotif": "three tall vertical panels containing a bright lens flare",
+      "medium": "minimalist graphic design using photographic light effects",
+      "people": "none",
       "palette": [
-        "purple",
-        "white",
         "black",
-        "pale blue",
-        "grey"
+        "purple",
+        "grey",
+        "white",
+        "blue"
       ]
     },
     {
@@ -138,9 +144,10 @@
       "filename": "Extreme-II-Pornograffitti.jpg",
       "album": "Extreme II Pornograffitti",
       "artist": "",
-      "description": "A busy illustrated nighttime street scene filled with glowing marquee signs and neon-like lights on both sides. In the center foreground stands a small cartoon-like child with curly dark hair, wearing shorts, socks, and a backpack, holding a spray can with paint dripping onto the ground. Surrounding signs include a stylized woman in lingerie, a suited figure, and many illuminated panels, creating a crowded urban entertainment-district atmosphere.",
-      "signatureMotif": "small child holding a spray can amid neon signs",
-      "medium": "illustrated collage",
+      "description": "A night street scene crowded with glowing marquee signs and illuminated billboards fills the frame. At center bottom stands a cartoon-like child figure holding a spray can, with a small puddle or splash of yellow paint at the feet and a ball tucked under one arm. On the left are lit signs including a stylized blonde pin-up figure and a suited figure in a hat. The background recedes into darkness with scattered neon lights and signage.",
+      "signatureMotif": "cartoon child with spray can beneath neon marquees",
+      "medium": "illustrated collage with neon-sign imagery",
+      "people": "none",
       "palette": [
         "black",
         "yellow",
@@ -154,14 +161,15 @@
       "filename": "Deadwing.jpg",
       "album": "Deadwing",
       "artist": "",
-      "description": "A dark silhouette of a person seen from behind stands in the foreground facing a calm lake. Across the water is a distant line of trees under a pale, overcast sky. Dark leafy branches frame the image from the left and right edges. The overall image is muted and slightly distressed, with a moody, misty atmosphere.",
-      "signatureMotif": "silhouetted figure facing a lake",
-      "medium": "moody photograph",
+      "description": "A dark silhouette of a child or young person is seen from behind in the foreground, facing a pale lake or wide river. Across the water is a line of trees under a muted, cloudy sky. Dark leafy branches frame the scene from the left and right edges. The image is grainy and subdued, creating a distant, moody landscape with the figure centered against the water.",
+      "signatureMotif": "silhouetted child facing a lake",
+      "medium": "grainy photograph",
+      "people": "one child-like figure seen in silhouette from behind",
       "palette": [
         "black",
         "grey",
         "beige",
-        "pale blue",
+        "pale yellow",
         "dark green"
       ]
     },
@@ -170,20 +178,21 @@
       "filename": "Vol-1.jpg",
       "album": "Vol 1",
       "artist": "",
-      "description": "A stark white background with two stylized black-and-white spotted mask-like or helmet-like figures centered beneath a line of text. The left figure is tall and angular with a triangular yellow mark and long tassel-like strands hanging below; it also has a protruding snout-like form and small yellow facial details. The right figure is rounded and domed with white spots, yellow diamond shapes, and a narrow eye-like opening. The composition is sparse and symmetrical.",
-      "signatureMotif": "pair of spotted mask-like figures",
+      "description": "A stark white background features two black-and-white polka-dotted hooded or masked figures drawn in a rough, graphic style with gold accents. The left figure is upside down, with long tassel-like hair or fringe hanging downward, gold lips, and small gold symbols for eyes, plus a gold triangle on the forehead. The right figure is upright, with only intense eyes visible through a dark opening and gold geometric shapes on the face and top. The composition is symmetrical in placement but surreal in subject matter.",
+      "signatureMotif": "pair of polka-dotted hooded figures, one upside down",
       "medium": "graphic illustration",
+      "people": "none",
       "palette": [
         "white",
         "black",
-        "yellow"
+        "gold"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "A shallow proscenium-like night street shrine viewed straight on, with a luminous three-panel sky backdrop rising behind a compact stage of reflective wood-laminate surfaces and urban debris; at the center stands a barefoot child in a red military-style jacket with gold trim, dark trousers, and one gloved hand extended to hold a black-and-white bird, the clear focal point beneath an oversized yellow banner-shaped canopy with a thick black outline and a bold black swoosh crossing one lower corner. Three tall vertical backdrop panels show a pale violet dawn sky with a bright starburst sun flare breaking through the center-left panel, while a miniature calm lake and dark treeline sit low on the horizon within the panels and sparse dark branches frame the upper edges. At the child’s feet place one red flower and a small bullet-like object on the ground. Build the foreground from a clustered rise of upward-reaching hands and arms like votive sculptures or cutout offerings. Along both sides, create crowded neon-entertainment architecture from glowing signs, painted drips, stencil textures, and marquee fragments; include two mounted ceremonial mask objects on the side walls, one angular with tassel strands and yellow accents, one rounded and spotted with yellow diamond details. Behind translucent side scrims, suggest two distant blurred adult figures only as fiery orange-red ghost presences in haze, never sharp or dominant. Hand-built mixed-media shadowbox diorama, combining gouache-painted figure work, cut paper graphics, collage, translucent vellum, miniature set construction, glossy laminated textures, and practical theatrical lighting, photographed head-on. Strong central hierarchy with the child and bird under the yellow canopy, side elements supporting like chapel architecture; layered depth, crisp silhouette shapes, and luminous contrasts between neon edges and soft mist. Palette of acid yellow, magenta, violet-grey, ember orange, black, weathered beige, and cool white; mood ritualistic, nocturnal, uncanny, and quietly hopeful. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 low-eye-level view across a modern lakeside civic plaza in hard midday sun, crisp shadows, clear air, bright exposure, with the distant waterline and trees high in frame. The boy from reference image 3 stands front-facing near center as the primary subject, barefoot, wearing the same red military-style jacket with gold trim and blue trousers, holding a black-and-white bird on his gloved hand, isolated and still. Around him, stage the album motifs as real objects in the plaza: a large freestanding irregular yellow banner-shaped metal panel with a thick black outline dominates the foreground left, with a black puddle-like mark near its lower left and brown-beige marbled cladding on nearby walls and paving; a tight cluster of real raised arms and hands reaches up from the bottom edge with only slight hints of heads visible; three tall slim white-framed translucent architectural panels stand to the right catching a bright white lens flare and pale purple-grey reflections; a small painted street-art child with a spray can, yellow paint splash, and a ball appears on a low wall in the midground; the child-like figure from reference image 7 appears once only, from behind at the water's edge in the distance, framed by dark leafy branches; two polka-dotted hooded sculptural masks inspired by reference image 8 appear as public-art objects, one upright on a plinth and one hanging upside down from a simple frame, both with subtle gold geometric accents; several indistinct long-haired people cross the far background in a sunstruck zone with red-orange accents and adjacent green planting, softened slightly by heat shimmer only. Include a single red flower growing from a crack near the boy and a small bullet-like metallic object near his feet; let a compact dark storm cloud bank and a faint rainbow sit beyond the lake behind him. Daylight location photography, realistic editorial environmental portrait, medium-format clarity, deep focus, crisp textures, no fog, no heavy grain. Strong visual hierarchy led by the boy and the yellow panel, with supporting motifs distributed across the plaza. Palette of saturated yellow, red, black, white, gold, magenta accents, brown-beige stone, pale lake grey, and green, with a surreal but bright public-art mood. Reference map for people (the album images are attached in this numbered order): reference image 2 shows several people, indistinct long-haired figures standing or walking; reference image 3 shows one boy standing barefoot and facing forward; reference image 4 shows several people, mostly unseen, with arms and hands raised together; reference image 7 shows one child-like figure seen in silhouette from behind. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Out-of-Time.jpg",
     "Inferno.jpg",

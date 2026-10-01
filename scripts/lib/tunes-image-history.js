@@ -160,3 +160,23 @@ export async function writeSidecar(outputPath, payload) {
   await fs.writeFile(sidecarPath, `${JSON.stringify(payload, null, 2)}\n`, 'utf-8')
   return sidecarPath
 }
+
+// The newest `count` year treatments (how the digits were built into a Year in Music cover),
+// most recent first and collapsed like media, so successive years are refused the same trick.
+export async function recentYearTreatments(type, count = 8, historyPath = HISTORY_PATH) {
+  if (!Number.isFinite(count) || count <= 0) return []
+  const history = await loadHistory(historyPath)
+  const matching = dedupeByTypeAndDate(
+    history.entries.filter(entry => entry?.type === type && entry?.yearTreatment)
+  )
+  const seen = new Set()
+  const treatments = []
+  for (const entry of byDateAscending(matching).slice(-count).reverse()) {
+    const value = String(entry.yearTreatment).trim()
+    const key = value.toLowerCase()
+    if (!value || seen.has(key)) continue
+    seen.add(key)
+    treatments.push(value)
+  }
+  return treatments
+}

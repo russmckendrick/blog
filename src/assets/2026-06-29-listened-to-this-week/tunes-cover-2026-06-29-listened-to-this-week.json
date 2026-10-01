@@ -3,70 +3,72 @@
   "date": "2026-06-29",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Night banquet over a haunted city",
-  "creativeDirection": "A theatrical mixed-media matte painting combines cut-paper collage, grainy photographic texture, and graphic heraldic design into a surreal nocturnal feast scene.",
-  "scene": "High oblique view into a vast rooftop banquet terrace at night, suspended above a gridded city of lights, with distant ruins and a glowing storm cloud on the horizon.",
+  "concept": "Sunlit hilltop breakfast observatory",
+  "medium": "daylight location photography",
+  "creativeDirection": "Use daylight location photography for a crisp, physically plausible hilltop scene where the album motifs become real architecture, signage, ruins, and staged portraits under clean hard sun.",
+  "scene": "A wide 16:9 editorial landscape photograph from a slightly elevated viewpoint on a dry grassy hilltop lookout above a sprawling city at midday, with a ruined ivy-covered stone observatory building at one side and a breakfast terrace arranged around it.",
   "elements": [
     {
       "source": 1,
-      "element": "A single suited man stands at the head of the table, his upper head dissolving into smoke-like collage scraps and technical line fragments."
+      "element": "the man from reference image 1 stands chest-up in the foreground in his dark suit, white shirt, and black tie, facing forward exactly as on the cover, with white and red paint smears partially obscuring his face; faint technical line markings and simple open window-frame structures appear as real thin metal frames installed around the terrace"
     },
     {
       "source": 2,
-      "element": "An enormous dim face made of tiny sepia photographs appears in the sky like a clouded moon, watching over the scene."
+      "element": "a large circular viewing screen or relief panel near the observatory is constructed as a giant face made from many smaller sepia photographic fragments, giving the dense montage quality without adding another live person"
     },
     {
       "source": 3,
-      "element": "A smiling orange-uniformed waitress advances through the terrace carrying a tray with a glowing glass of orange juice; breakfast vessels are transformed into miniature white skyline architecture along the table."
+      "element": "the woman from reference image 3 appears intact in the midground, smiling in her orange waitress uniform and white cap, holding up a tray with a glass of orange juice and carrying a menu or folder, beside a skyline-like arrangement of cups, bottles, plates, and cutlery on terrace tables that echoes miniature city towers"
     },
     {
       "source": 4,
-      "element": "The background drops away into a grainy black aerial city grid with a central luminous cloud and faint red glows."
+      "element": "the distant city below is visible in clear daylight as a geometric grid, while above it a bright white cloud holds a suspended irregular dark sculptural form, with two small red structures low on the horizon recalling the cover's red glows"
     },
     {
       "source": 5,
-      "element": "An ivy-choked ruined manor rises at one edge of the terrace as a distant architectural mass beneath streaked clouds."
+      "element": "the observatory building takes its form from the ivy-covered ruined castle with rounded towers and broken openings, set in grass with a picnic table and barrel-like object nearby; two very small figures stand in front of the ruin"
     },
     {
       "source": 6,
-      "element": "A heraldic shield with flanking spear-like ornaments is worked into the banquet dais and railing as crisp ceremonial decoration."
+      "element": "a heraldic shield from reference image 6 appears as a real enamel sign mounted on the observatory wall, with symmetrical spear-like finials and gold decorative trim worked into the terrace railings"
     },
     {
       "source": 7,
-      "element": "A monumental turtle head emerges from the lower foreground in shadow, its glossy eye catching light like a guardian creature at the terrace edge."
+      "element": "a large bird-head weather vane or carved telescope housing near the roofline takes the close-up anatomy of reference image 7, emphasizing the glossy eye and open beak shape in sepia-brown metal"
     },
     {
       "source": 8,
-      "element": "A woman in a long white dress stands near the far side of the table, accompanied by one blurred ghostlike double trailing beside her."
+      "element": "the woman from reference image 8 stands in her long loose white garment in a shaded opening of the ruin against a dark interior, with a soft blurred ghostlike double beside her created by a translucent scrim or reflective glass panel, and a thin red line appears as a taut cord crossing low through that part of the scene"
     }
   ],
   "palette": [
-    "black",
-    "sepia",
-    "amber",
-    "burnt orange",
-    "off-white",
-    "deep blue"
+    "sunlit stone",
+    "ivy green",
+    "orange and white",
+    "sepia brown",
+    "deep blue",
+    "signal red"
   ],
-  "mood": "ceremonial, uncanny, elegant, nocturnal",
+  "mood": "strange but welcoming, crisp, theatrical, and open-air",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Everyone-Into-Position.jpg",
       "album": "Everyone Into Position",
       "artist": "",
-      "description": "A central black-and-white portrait of a man in a dark suit, white shirt, and black tie stands against a split background with white at the top and saturated orange across the middle and lower area. The top of his head dissolves into painterly smears, smoke-like wisps, and collage fragments. Around him are scattered paper scraps, circular stamp-like marks, faint technical lines, and skewed window-frame drawings on both sides, creating a layered mixed-media composition.",
-      "signatureMotif": "a suited man with the top of his head fragmented into abstract collage",
-      "medium": "mixed-media digital collage with photographic portrait and graphic overlays",
+      "description": "A collage-style cover centered on a man in a dark suit, white shirt, and black tie, shown from the chest up. His face is partially obscured and fragmented by white and red painterly smears and black shadowing. The background is split into a white upper area and a saturated orange lower area, overlaid with faint technical markings, circles, and sketched lines. Several open window-frame drawings recede on both sides, and small paper scraps and tags appear pinned or floating near the top.",
+      "signatureMotif": "a suited man with a partially erased, paint-smeared face",
+      "medium": "mixed-media digital collage with photography, drawing, and paint textures",
+      "people": "one man in a suit facing forward",
       "palette": [
         "orange",
-        "black",
         "white",
-        "brown",
-        "red"
+        "black",
+        "red",
+        "brown"
       ]
     },
     {
@@ -74,13 +76,14 @@
       "filename": "Metropolis-Pt-2-Scenes-From-a-Memory.jpg",
       "album": "Metropolis Pt 2 Scenes From a Memory",
       "artist": "",
-      "description": "A large human face fills most of the frame, built from and overlaid with many small sepia-toned photographs and scenes. Eyes, nose, and mouth emerge through the collage, while numerous tiny portraits and interior-like snapshots are embedded across the face. The background is very dark, and the overall image has a warm, smoky, layered appearance.",
-      "signatureMotif": "a large face formed from a collage of many small photographs",
-      "medium": "photographic digital collage",
+      "description": "A dark sepia-toned montage built around a large close-up human face filling most of the frame. The face is overlaid with many smaller photographic fragments showing eyes, portraits, couples, children, interiors, and other scenes, all blended into a layered collage. The composition is dense and shadowy, with warm amber highlights emerging from the center and black edges enclosing the image.",
+      "signatureMotif": "a large face constructed from many smaller photo fragments",
+      "medium": "photographic montage/collage",
+      "people": "many people in layered photographic fragments, dominated by one large central face",
       "palette": [
-        "black",
         "sepia",
         "brown",
+        "black",
         "amber",
         "gold"
       ]
@@ -90,13 +93,14 @@
       "filename": "Breakfast-in-America.jpg",
       "album": "Breakfast in America",
       "artist": "",
-      "description": "A smiling waitress in an orange uniform and white apron is seen through an airplane-style window frame. She raises a tray holding a glass of orange juice and carries a menu-like card in her other hand. Behind her is a stylized city skyline made from white breakfast-table objects such as cups, bottles, plates, and utensils, set against a blue sky-like background.",
-      "signatureMotif": "a waitress holding up a tray with a glass of orange juice before a skyline made of breakfast items",
+      "description": "A smiling waitress in an orange uniform and white cap is posed in the foreground, holding up a tray with a glass of orange juice and carrying a menu or folder in the other hand. Behind her is a stylized tabletop cityscape made from pale breakfast objects such as cups, bottles, containers, plates, and cutlery arranged like skyscrapers. The scene is framed by a rounded airplane-window-like border, with a blue gradient sky behind the miniature city.",
+      "signatureMotif": "a waitress holding a tray with a glass of orange juice before a breakfast-object skyline",
       "medium": "staged studio photograph with constructed set",
+      "people": "one woman in a waitress uniform smiling and raising a tray",
       "palette": [
         "blue",
-        "white",
         "orange",
+        "white",
         "cream",
         "gray"
       ]
@@ -106,15 +110,16 @@
       "filename": "The-Last-Broadcast.jpg",
       "album": "The Last Broadcast",
       "artist": "",
-      "description": "A dark aerial night scene shows a grid of city lights stretching across the lower half of the image. Above, the sky is nearly black with a bright glowing cloud or burst of light near the center and two dim red glows on either side. The composition is minimal, grainy, and high-contrast.",
-      "signatureMotif": "a glowing cloud above a grid of city lights at night",
+      "description": "A very dark, grainy night scene showing a glowing grid of city lights spreading across the lower half of the image. Above, a bright cloud or burst of light illuminates the sky, with a black irregular silhouette suspended in front of it. Two dim red glowing shapes sit low on the horizon, adding to the ominous atmosphere.",
+      "signatureMotif": "a dark silhouette against a bright cloud above a city-light grid",
       "medium": "grainy low-light photograph",
+      "people": "none",
       "palette": [
         "black",
         "white",
         "red",
-        "purple",
-        "dark brown"
+        "dark purple",
+        "yellow"
       ]
     },
     {
@@ -122,15 +127,16 @@
       "filename": "The-Unforgettable-Fire.jpg",
       "album": "The Unforgettable Fire",
       "artist": "",
-      "description": "A monochrome, slightly sepia image of a large ruined castle or manor covered heavily in ivy dominates the frame. Small human figures stand in the grassy foreground near the building. Dramatic streaked clouds fill the sky above. Wide maroon bands border the top and bottom of the cover.",
-      "signatureMotif": "an ivy-covered ruined castle under a dramatic sky",
-      "medium": "tinted black-and-white photograph",
+      "description": "A monochrome photograph of a large ruined castle or manor covered heavily in ivy, with rounded towers and broken openings. Dramatic streaked clouds fill the sky above. In the grassy foreground stand two small human figures, and nearby are a picnic table and a barrel-like object. A colored band runs across the top margin, contrasting with the otherwise black-and-white image.",
+      "signatureMotif": "an ivy-covered ruined castle under streaked clouds",
+      "medium": "black-and-white photograph",
+      "people": "two small people standing in front of the ruin",
       "palette": [
-        "maroon",
+        "black",
+        "white",
         "gray",
         "cream",
-        "black",
-        "sepia"
+        "maroon"
       ]
     },
     {
@@ -138,13 +144,14 @@
       "filename": "Sparkle-in-the-Rain.jpg",
       "album": "Sparkle in the Rain",
       "artist": "",
-      "description": "A clean, graphic design centers on a heraldic shield divided into four sections, outlined in dark blue. One section contains diagonal rain-like lines and starburst shapes, while others are filled with solid red or white. A small emblem sits in the lower-right section. On both sides of the shield are symmetrical spear- or antenna-like forms with angular gold panels. Decorative gold border patterns run along the top and bottom edges on a white background.",
-      "signatureMotif": "a stylized heraldic shield flanked by symmetrical spear-like forms",
+      "description": "A clean graphic design on a white background featuring a heraldic shield outlined in dark blue. The shield is divided into four sections with red, white, and blue elements, including diagonal rain-like lines, starburst shapes, and a central emblem. On either side are symmetrical abstract spear- or antenna-like forms with gold panels. Decorative gold border shapes run along the top and bottom edges.",
+      "signatureMotif": "a stylized heraldic shield with geometric symbols",
       "medium": "flat graphic illustration",
+      "people": "none",
       "palette": [
         "white",
-        "red",
         "blue",
+        "red",
         "gold",
         "black"
       ]
@@ -154,14 +161,16 @@
       "filename": "Complete-B-Sides.jpg",
       "album": "Complete B Sides",
       "artist": "",
-      "description": "A close-up of an animal head, likely a turtle, fills the lower and right portions of the frame against a black background. The image emphasizes wrinkled skin texture, a large glossy eye, and an open beak-like mouth. Thin pale linear marks and small typographic elements appear near the top left, but the main focus is the stark animal portrait.",
-      "signatureMotif": "a close-up turtle head with a large eye and open mouth",
+      "description": "An extreme close-up of an animal head, likely a bird, rendered in high-contrast sepia tones against a black background. The image focuses on wrinkled skin, a large glossy eye, and a long open beak or mouth shape rising vertically through the center. The composition is stark and cropped tightly, emphasizing texture and anatomy.",
+      "signatureMotif": "a close-up of a bird-like head with a large eye and open beak",
       "medium": "high-contrast photograph",
+      "people": "none",
       "palette": [
         "black",
+        "sepia",
         "beige",
-        "gray",
-        "brown"
+        "brown",
+        "gray"
       ]
     },
     {
@@ -169,22 +178,23 @@
       "filename": "The-Ground-Above.jpg",
       "album": "The Ground Above",
       "artist": "",
-      "description": "A mostly monochrome cover with a large central rectangular photograph bordered by off-white margins. Inside the photo, a woman in a long, loose white dress stands facing forward, while a blurred ghostlike duplicate or reflection of her appears beside her. The background is dark and soft-focused, and a thin horizontal red line crosses the lower portion of the overall cover.",
-      "signatureMotif": "a woman in a long white dress beside a blurred ghostlike double",
-      "medium": "black-and-white photograph with minimalist graphic layout",
+      "description": "A soft, monochrome portrait composition with a woman in a long loose white garment standing against a dark backdrop. Beside her is a blurred mirrored or double-exposure version of her figure, creating a ghostly twin effect. The image sits within a large pale border, and a thin horizontal red line crosses the lower portion of the frame.",
+      "signatureMotif": "a woman in white beside a blurred ghostlike double of herself",
+      "medium": "black-and-white photograph with motion blur/double exposure",
+      "people": "one woman standing in a long white garment with a blurred duplicate beside her",
       "palette": [
         "white",
-        "gray",
         "black",
-        "off-white",
+        "gray",
+        "cream",
         "red"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "High oblique view into a vast rooftop banquet terrace at night, suspended above a grainy grid of city lights with a glowing cloudburst on the horizon and faint red glows in the black sky; a single suited man stands at the head of a long ceremonial table, his black-and-white portraitlike figure sharply centered while the top of his head dissolves into smoky painterly smears, collage scraps, circular stamp marks, and faint technical linework; above him hangs an enormous spectral face assembled from many tiny sepia photographs, emerging through darkness like a moon-cloud; a smiling waitress in an orange uniform and white apron crosses the scene carrying a tray with a luminous glass of orange juice, while cups, bottles, plates, and utensils become a miniature white skyline running along the banquet table; at the terrace edge a monumental turtle head rises from shadow in the lower foreground, one glossy eye reflecting the lights below; a woman in a long white dress stands near the far side of the table with one blurred ghostlike double beside her; an ivy-covered ruined manor anchors one side of the distance beneath streaked clouds; a heraldic shield divided in red, white, and rain-lined blue with flanking spear-like gold forms is integrated into the dais and railings as formal insignia; mixed-media matte painting with cut-paper collage, grainy photographic transfers, ink wash, and crisp graphic inlays; strong clear hierarchy with the dissolving suited man central, the sky-face secondary, and supporting motifs distributed in deep space, cinematic rim lighting and pools of table light against heavy darkness; palette of black, sepia, amber, burnt orange, off-white, deep blue, maroon, and gold, creating an elegant uncanny nocturnal mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 editorial landscape photograph from a slightly elevated viewpoint on a dry grassy hilltop lookout above a sprawling city at hard midday sun; the primary subject is the man from reference image 1 standing chest-up in the foreground, facing forward exactly as in the source in his dark suit, white shirt, and black tie, his face partially obscured by white and red paint smears, sharp and fully recognizable. Around him, thin metal window-frame structures and faint technical line markings are installed as real objects on a breakfast terrace. The woman from reference image 3 stands intact in the midground, smiling in her orange waitress uniform and white cap, holding up a tray with a glass of orange juice and carrying a menu or folder, beside tables arranged like a miniature skyline from cups, bottles, plates, and cutlery. At one side stands an ivy-covered ruined stone observatory derived from reference image 5, with rounded towers, broken openings, grass, a picnic table, a barrel-like object, and two very small figures standing in front. In a shaded opening of the ruin, the woman from reference image 8 stands in her long loose white garment exactly as framed in the source, beside a blurred ghostlike double created by a translucent reflective panel, with a thin horizontal red cord crossing low through that area. Mounted on the observatory wall is a real enamel heraldic shield from reference image 6 with blue, red, white, and gold geometry, while matching spear-like finials and gold trim decorate the railings. Near the roofline, a sepia-brown weather vane or telescope housing takes the form of the bird-like head from reference image 7, emphasizing its glossy eye and open beak shape. Near the observatory, a large circular viewing screen or relief panel is built as a giant face made from many smaller sepia photographic fragments inspired by reference image 2, dense but clearly integrated as a physical object, not another live person. In the far distance, the city below forms a clear geometric grid in daylight, and above it hangs a bright white cloud with a suspended irregular dark sculptural form, plus two small red structures low on the horizon recalling reference image 4. Daylight location photography, crisp medium-format realism, deep focus, clean surfaces, no haze, no rain, no heavy grain. Composition with the suited man dominant in the foreground, the waitress and breakfast skyline as bright secondary focus, the ruin anchoring one side, and the city and cloud opening the background. Palette of sunlit stone, ivy green, orange and white, sepia brown, deep blue, and signal red; mood strange but welcoming, crisp, theatrical, and open-air. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one man in a suit facing forward; reference image 2 shows many people in layered photographic fragments, dominated by one large central face; reference image 3 shows one woman in a waitress uniform smiling and raising a tray; reference image 5 shows two small people standing in front of the ruin; reference image 8 shows one woman standing in a long white garment with a blurred duplicate beside her. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Everyone-Into-Position.jpg",
     "Metropolis-Pt-2-Scenes-From-a-Memory.jpg",

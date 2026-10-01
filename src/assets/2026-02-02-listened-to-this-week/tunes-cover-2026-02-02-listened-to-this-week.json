@@ -3,64 +3,66 @@
   "date": "2026-02-02",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Procession beneath the listening kiln",
-  "creativeDirection": "A large-scale mixed-media tapestry and relief assemblage turns the album motifs into a ceremonial interior with stitched figures, printed gradients, and collage-built objects.",
-  "scene": "A wide frontal view into a dim textile hall where a glowing kiln-like arch dominates the back wall and a low reflective floor runs toward the viewer.",
+  "concept": "Midday motel courtyard with joined hands and waiting figures",
+  "medium": "daylight location photography",
+  "creativeDirection": "Use daylight location photography to stage a crisp, sun-struck motel courtyard tableau where the most graphic album motifs become real painted architecture, signage, and objects around fixed portrait figures.",
+  "scene": "A wide 16:9 view across a sunlit roadside motel courtyard seen from slightly above table height, looking diagonally past metal café chairs and tables toward a parked red car and a flat stucco wall painted in saturated red-orange. A narrow second-story balcony and exterior room doors frame the background, giving a plausible American roadside location with strong geometry and open sky light.",
   "elements": [
     {
       "source": 1,
-      "element": "the kiln arch and surrounding wall are a smooth red-orange gradient field with faint embedded stencil marks near the crown"
+      "element": "The main rear stucco wall is painted as a nearly solid warm red-orange field, with a faint darker band of blocky stencil-like shapes running near the upper center."
     },
     {
       "source": 2,
-      "element": "a dense upward-reaching cluster of hands rises from the lower foreground like a woven ceremonial offering crowd"
+      "element": "At the center foreground above a café table, several real raised arms and hands reach up and clasp together as a sculptural human knot, staged against a magenta-painted wall section with pale blocky signage shapes behind them."
     },
     {
       "source": 3,
-      "element": "a single front-facing dog stands centered on the wet reflective floor as the main living witness"
+      "element": "A dog stands in a motel doorway or on the concrete walkway, facing the camera with head slightly lowered, lit plainly and clearly, with subtle yellow-green cast confined to the doorway interior."
     },
     {
       "source": 4,
-      "element": "three painted busts become a large hanging banner above the dog, with the braided woman centered between two profile figures and an instrument neck stretched along the banner’s lower edge"
+      "element": "The three people from reference image 4 are staged as one portrait grouping near the wall: the woman from reference image 4 centered in front with eyes closed and long braids, the two men from reference image 4 flanking her in opposite profiles; a real guitar neck runs horizontally along the bottom edge of their grouping, resting on a low wooden ledge."
     },
     {
       "source": 5,
-      "element": "split blue street-photo panels become narrow side tapestries showing coat-wearing pedestrians and café furniture along the hall walls"
+      "element": "The two men from reference image 5 appear once each in the courtyard among café chairs and tables, one facing forward and one turned sideways mid-step, preserving the split-panel feel through their spacing and parallel placement rather than an actual divided frame; their area carries a cool blue cast in clothing and nearby shade."
     },
     {
       "source": 6,
-      "element": "a red car appears as a shrine-like side reliquary with gold fringe roof, fuzzy dice, and stylized occupants visible through windows"
+      "element": "A real red side-view car is parked prominently at right midground, its windows revealing staged interior details: a hanging die, a curtain in the rear, a gold statue-like object in the middle, and the man from reference image 6 visible in profile in the front seat; shell-like decorative trim arcs lightly above the roofline as a physical motel ornament."
     },
     {
       "source": 7,
-      "element": "a monumental red-black face with a white stripe is rendered as a circular mask medallion suspended high in shadow"
+      "element": "The woman from reference image 7 appears once as a large close foreground portrait at the extreme left edge, framed tightly and facing the camera with the white horizontal band translated into a real painted white stripe crossing the wall and passing behind her face at nose level without obscuring her features."
     },
     {
       "source": 8,
-      "element": "a row of seven small symbol panels is stitched across the upper architecture, with a tiny trio silhouette near the lower wall"
+      "element": "A horizontal row of small colorful square tiles with abstract marks is mounted high on the red-orange wall, and three tiny walking figures from reference image 8 become a small black mural silhouette low on a distant white service wall."
     }
   ],
   "palette": [
-    "red-orange ember",
-    "magenta purple",
-    "ink black",
+    "red-orange",
+    "magenta pink",
+    "white",
     "cobalt blue",
-    "gold",
-    "chalk white"
+    "black",
+    "gold"
   ],
-  "mood": "ritual, watchful, heat-soaked",
+  "mood": "graphic, sun-baked, alert",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Frames.jpg",
       "album": "Frames",
       "artist": "",
-      "description": "A nearly monochrome square filled with a smooth red to orange gradient, darker toward the upper left and brighter toward the lower right. Near the top center there is a very faint row of darker geometric stencil-like shapes embedded into the background.",
-      "signatureMotif": "red-orange gradient field",
+      "description": "A minimal cover filled almost entirely with a flat warm red to orange field, with a faint darker band of blocky geometric stencil-like shapes near the upper center. No figures or objects are otherwise visible.",
+      "signatureMotif": "a nearly solid red-orange field",
       "medium": "minimal graphic design",
+      "people": "none",
       "palette": [
         "red",
         "orange",
@@ -72,15 +74,16 @@
       "filename": "Ten.jpg",
       "album": "Ten",
       "artist": "",
-      "description": "A group of raised human arms and hands reach upward from the bottom center, overlapping in a tight cluster. Some wrists wear bracelets and a watch. The background is a textured magenta and purple surface with darker vertical rectangular forms behind the figures.",
-      "signatureMotif": "cluster of raised hands",
-      "medium": "photographic collage or treated photograph",
+      "description": "A cropped photographic image of several human arms and hands reaching upward and clasping together in the center. The background is a textured magenta-pink surface with darker vertical shadow-like bands, and large white block shapes span the upper half behind the hands.",
+      "signatureMotif": "multiple hands raised and joined together",
+      "medium": "photograph with graphic text overlay",
+      "people": "several people partially visible only as raised arms and hands",
       "palette": [
+        "pink",
         "magenta",
-        "purple",
         "white",
         "black",
-        "skin tones"
+        "brown"
       ]
     },
     {
@@ -88,11 +91,12 @@
       "filename": "Alice-in-Chains.jpg",
       "album": "Alice in Chains",
       "artist": "",
-      "description": "A dog stands facing forward on a wet floor, its body angled slightly left while its head looks directly at the viewer. The image has a gritty, high-contrast, heavily tinted look, with a plain interior background and reflections or damp patches on the ground.",
-      "signatureMotif": "front-facing dog",
-      "medium": "heavily processed photograph",
+      "description": "A grainy, high-contrast photograph of a dog standing indoors on a floor, facing forward with its head slightly lowered and eyes looking toward the viewer. The entire image is tinted yellow-green and brown, with a wall or doorway behind the animal.",
+      "signatureMotif": "a dog staring toward the viewer",
+      "medium": "tinted photograph",
+      "people": "none",
       "palette": [
-        "yellow",
+        "yellow-green",
         "olive",
         "brown",
         "black"
@@ -103,9 +107,10 @@
       "filename": "Genuine-Negro-Jig-15th-Anniversary-Edition.jpg",
       "album": "Genuine Negro Jig 15th Anniversary Edition",
       "artist": "",
-      "description": "A painted portrait of three people arranged shoulder-up against a blue painted background. In the center, a woman with closed eyes and two long braids faces forward. On the left, a man in profile wears a hat and glasses. On the right, another man in profile faces away from the center. Along the bottom edge, a wooden stringed instrument neck stretches horizontally across the composition.",
-      "signatureMotif": "central woman with braids between two profile figures",
+      "description": "A painted portrait composition showing three people against a textured blue background: a woman centered in front with closed eyes and long dark braids, flanked by two men in profile facing opposite directions. Along the bottom edge runs the neck of a stringed instrument with tuning pegs visible at both ends, set over a brown wood-like strip.",
+      "signatureMotif": "three painted figures arranged back-to-back with a guitar neck along the bottom",
       "medium": "painting",
+      "people": "three people: one woman centered with braided hair and eyes closed, and two men in side profile on either side",
       "palette": [
         "blue",
         "brown",
@@ -119,9 +124,10 @@
       "filename": "Cafe-Bleu.jpg",
       "album": "Cafe Bleu",
       "artist": "",
-      "description": "A blue-tinted black-and-white street or café scene split into two vertical photo panels. In the left panel, a man in a long coat stands or steps forward near outdoor furniture. In the right panel, another man in a light-colored coat walks past café chairs and tables. The overall image has a candid, documentary feel with strong contrast.",
-      "signatureMotif": "two men in coats in split-panel street scene",
-      "medium": "tinted photograph",
+      "description": "A blue-toned split photograph divided vertically into two panels, each showing a man in a long coat in an outdoor café or street setting. Chairs and tables appear around them, with blurred trees and buildings in the background. The left figure faces forward while leaning or stepping; the right figure turns sideways mid-step.",
+      "signatureMotif": "two blue-tinted men in long coats in a split-panel street café scene",
+      "medium": "blue-tinted photograph",
+      "people": "two men in long coats standing or walking among café chairs",
       "palette": [
         "blue",
         "white",
@@ -134,12 +140,13 @@
       "filename": "Together-Alone.jpg",
       "album": "Together Alone",
       "artist": "",
-      "description": "A handcrafted collage-like image on a black background showing the side of a red car. Inside the car windows are stylized figures: a gold statue-like figure in the middle, a bearded driver in profile at the front, and a partially hidden figure at the rear behind a patterned curtain. The car roof is topped with a textured gold fringe or halo-like shape, and a pair of fuzzy dice hangs near the front window.",
-      "signatureMotif": "red car with mixed figures inside",
-      "medium": "mixed-media collage or assemblage",
+      "description": "A handcrafted collage-like image on a black background featuring a red car seen from the side. Inside the windows are eclectic figures and objects: a curtain and arm in the rear, a gold statue-like figure in the middle, and a bearded male figure in front with a hanging die above. A gold fringed or halo-like trim runs along the roofline, and irregular shell-like cutout shapes arc across the top.",
+      "signatureMotif": "a red side-view car filled with mixed figures and objects",
+      "medium": "collage or assemblage artwork",
+      "people": "one man visible in profile inside the front of the car",
       "palette": [
-        "black",
         "red",
+        "black",
         "gold",
         "blue",
         "cream"
@@ -150,9 +157,10 @@
       "filename": "The-Singles.jpg",
       "album": "The Singles",
       "artist": "",
-      "description": "A close-up, high-contrast portrait of a person’s face rendered in red and black with halftone texture. The eyes stare directly outward. A bold white horizontal stripe crosses the face around the nose and cheeks, and the cropped composition fills most of the frame.",
-      "signatureMotif": "close-up face with white stripe across it",
-      "medium": "graphic treated photograph",
+      "description": "A bold graphic close-up of a woman's face rendered in red, black, and white halftone-style tones. One eye is clearly visible, and a thick white horizontal band crosses the face around the nose and cheek area. Large white block forms run vertically along the right side against the red background.",
+      "signatureMotif": "a red-and-black close-up female face with a white horizontal band across it",
+      "medium": "graphic design using halftone photo treatment",
+      "people": "one woman shown in close-up portrait",
       "palette": [
         "red",
         "black",
@@ -164,22 +172,23 @@
       "filename": "Turn-It-On-Again-The-Hits.jpg",
       "album": "Turn It On Again The Hits",
       "artist": "",
-      "description": "A very sparse white cover with a horizontal row of seven small square panels across the upper middle, each containing a different abstract or cropped symbol-like shape in varied colors. Below them is a small black silhouette of three standing human figures near the lower center. The layout is clean and widely spaced.",
-      "signatureMotif": "row of seven small symbol panels",
+      "description": "A very sparse white cover with a horizontal row of small square tiles across the upper middle, each containing a different abstract letterform-like mark in varied colors and styles. Near the lower middle is a small black silhouette of three walking human figures. The rest of the composition is mostly empty white space.",
+      "signatureMotif": "a row of small square tiles with varied abstract marks",
       "medium": "minimal graphic design",
+      "people": "three tiny black silhouetted figures walking",
       "palette": [
         "white",
         "black",
         "yellow",
         "purple",
-        "green"
+        "orange"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "A wide frontal view into a dim ceremonial textile hall with a low wet reflective floor leading toward a glowing kiln-like arch in the back wall; a single front-facing dog stands centered on the floor, body slightly angled left but head looking directly out at the viewer, as the primary witness of the scene; the back arch is built from a smooth red-to-orange gradient field that darkens toward the upper left and brightens toward the lower right, with faint stencil-like marks embedded near its crown, a dense cluster of raised human arms and hands rises from the lower foreground in overlapping layers like a woven offering crowd, above the dog hangs a large painted banner showing a central woman with closed eyes and long braids between two profile figures with a wooden stringed instrument neck running horizontally along the banner’s lower edge, the side walls hold two narrow blue-tinted split photo tapestries of coat-wearing pedestrians and café chairs, one red car shrine sits along one side with gold fringe on its roof, fuzzy dice near the front window, and stylized figures visible inside, high in the shadows hangs one monumental circular medallion-mask derived from a close-up face in red and black with a bold white stripe across it, and a row of seven small symbol panels is stitched into the upper architecture with a tiny trio silhouette placed low beneath them; mixed-media tapestry, appliqué, painted fabric, screenprinted halftone cloth, embroidered details, and shallow relief collage assemblage with visible seams and layered textures; strong central hierarchy with the dog and glowing arch foremost, the raised hands anchoring the bottom edge, banners and side relics supporting the space, symmetrical but slightly irregular handmade composition, moody side darkness and warm backlight reflecting off the damp floor; palette of ember red, orange, magenta, purple, cobalt blue, black, gold, chalk white, and olive brown, creating a ritual, watchful, heat-soaked atmosphere Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 view across a sunlit roadside motel courtyard from slightly above table height, looking diagonally past scattered metal café chairs and round tables toward a parked red car and a flat stucco wall painted saturated red-orange. In the extreme left foreground, the woman from reference image 7 appears once in a tight close portrait, facing the camera, her recognisable pose and framing preserved; a real white horizontal stripe is painted on the wall behind her at nose level, echoing the band on the cover without covering her face. Near the center, the three people from reference image 4 are staged as a fixed portrait grouping against a textured blue section of wall: the woman from reference image 4 centered in front with closed eyes and long dark braids, the two men from reference image 4 flanking her in opposite profiles, with a real guitar neck running horizontally along the bottom of their grouping on a low wooden ledge. Above a café table in the center foreground, several real raised arms and hands from reference image 2 reach upward and clasp together, silhouetted against a magenta-painted wall panel with pale blocky signage forms. At right midground, a real red side-view car from reference image 6 is parked parallel to camera; inside its windows are a rear curtain and arm, a gold statue-like figure in the middle, the man from reference image 6 in profile in the front seat, and a hanging die above, with shell-like decorative trim arcing above the roofline as a physical ornament. The two men from reference image 5 appear once each among the café chairs and tables in the courtyard, one facing forward and one turned sideways mid-step, spaced to suggest a split-panel relationship while remaining in one continuous scene, with cool blue clothing and shaded tones. The dog from reference image 3 stands in a motel doorway or on the concrete walkway facing the viewer with head slightly lowered. High on the main wall runs the row of small colorful square tiles with abstract marks from reference image 8, while three tiny walking figures from reference image 8 appear as a small black mural silhouette on a distant white wall. The main rear wall carries the nearly solid red-orange field from reference image 1, with a faint darker stencil-like band near the upper center. Daylight location photography, clean editorial realism, crisp lens rendering, deep enough focus to keep all key figures legible. Strong geometric composition with clear hierarchy: close portrait at left, joined hands and three-person grouping at center, red car at right, dog as a small staring accent. Hard midday sun with sharp shadows, open blue sky, high clarity, saturated but natural colour. Palette of red-orange, magenta, white, cobalt blue, black, gold, olive, and sunlit concrete beige; mood graphic, sun-baked, alert. Reference map for people (the album images are attached in this numbered order): reference image 2 shows several people partially visible only as raised arms and hands; reference image 4 shows three people: one woman centered with braided hair and eyes closed, and two men in side profile on either side; reference image 5 shows two men in long coats standing or walking among café chairs; reference image 6 shows one man visible in profile inside the front of the car; reference image 7 shows one woman shown in close-up portrait; reference image 8 shows three tiny black silhouetted figures walking. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Frames.jpg",
     "Ten.jpg",

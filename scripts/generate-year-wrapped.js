@@ -10,7 +10,7 @@ import { ContentGenerator } from './lib/content-generator.js'
 import { ImageHandler } from './lib/image-handler.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { normalizeForFilename, lookupArtistData, lookupAlbumData, isVariousArtists, escapeQuotes } from './lib/text-utils.js'
-import { generateWrappedCover } from './wrapped-cover-generator.js'
+import { createFALTunesCover } from './fal-tunes-cover.js'
 import { generateGenreBarChart, generateMonthlyChart, saveSvgChart } from './lib/svg-chart-generator.js'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -183,9 +183,11 @@ async function main() {
     console.log('\n🎨 Generating AI cover...')
     const coverOutputPath = path.join(srcAssetsFolder, `wrapped-cover-${year}.png`)
 
-    // Get top 12 album image paths in ranked order for AI cover
+    // Hand the cover generator the top 20 downloaded sleeves in ranked order; it keeps the
+    // cleanest ~8 (play rank, colour, and text density), so lettering-heavy sleeves in the
+    // top 12 no longer have to be used just because they ranked.
     const albumImagePaths = []
-    for (const [[, album]] of topAlbums.slice(0, 12)) {
+    for (const [[, album]] of topAlbums.slice(0, 20)) {
       const expectedFilename = `${normalizeForFilename(album)}.jpg`
       const imagePath = path.join(albumsFolder, expectedFilename)
       try {
@@ -207,8 +209,17 @@ async function main() {
     }
 
     try {
-      await generateWrappedCover(albumImagePaths, coverOutputPath, {
+      // Same pipeline as the weekly header (factual summaries, photographic art direction,
+      // likeness guards, configured backend) plus the year built into the scene. Writes the
+      // full-size hero, a -small copy, and a .json sidecar, and records the run under the
+      // "wrapped" history type so later years avoid this one's concept and year treatment.
+      await createFALTunesCover(albumImagePaths, coverOutputPath, {
         year,
+        seed: new Date(`${year}-12-31`).getTime(),
+        width: 1400,
+        height: 800,
+        dateLabel: `${year}-12-31`,
+        recordHistory: true,
         debug: debugMode
       })
       console.log(`✅ AI cover generated: ${coverOutputPath}`)

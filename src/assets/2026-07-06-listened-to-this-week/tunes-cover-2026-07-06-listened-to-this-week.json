@@ -3,64 +3,66 @@
   "date": "2026-07-06",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "midday seaside sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Midnight atelier of sound relics",
-  "creativeDirection": "A handcrafted shadow-box diorama photographed like a theatrical still, mixing paper cutouts, translucent resin miniatures, painted backdrops, and long-exposure light effects.",
-  "scene": "Inside a dark museum-like atelier at night, viewed straight on as if peering into a deep shadow-box room with an open front, where a central worktable faces the viewer and a city-window glows behind it.",
+  "concept": "Boardwalk soundcheck under hard seaside sun",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography stages the sleeve portraits and graphic motifs as a crisp, physically plausible seaside boardwalk scene with strong sun, clean color, and sculptural objects.",
+  "scene": "A wide 16:9 view down a sun-bleached seaside boardwalk beside shallow tidal flats, shot from standing eye level so the planks lead toward the horizon and open water beyond.",
   "elements": [
     {
       "source": 1,
-      "element": "A large hanging cut-paper medallion portrait of the dark-haired woman in stark black and white, suspended against a saturated yellow panel with tiny stars and a dangling heart thread."
+      "element": "the woman from reference image 1 appears as a large close-up portrait on a freestanding bright yellow billboard panel at the left, keeping her tilted head, dark curly hair, shoulders-up framing, necklace, and scattered star motifs including the hanging star with heart"
     },
     {
       "source": 2,
-      "element": "A fiery orange-red translucent resin slab or backlit glass panel embedded in the worktable like a molten core, providing the room’s warm inner glow."
+      "element": "orange-yellow-red fluid swirls appear as a translucent windbreak panel or printed sail element running diagonally through the middle ground"
     },
     {
       "source": 3,
-      "element": "Rainbow-striped geometric mobiles and paper inlays scattered around the room, including a bird silhouette, cloud forms, concentric circles, looping ribbons, a small star, and a guitar-headstock shape extending from the table edge."
+      "element": "rainbow loops, circles, cloud forms, black bird silhouette, star, and the red guitar headstock become painted boardwalk signage and overhead decorative shapes near the performance area"
     },
     {
       "source": 4,
-      "element": "Through the rear window, a lone figure in a long coat stands on the empty street holding a glowing laptop, with horizontal long-exposure light trails slicing across the night outside."
+      "element": "the young girl from reference image 4 stands centered farther down the boardwalk holding her open glowing laptop at chest height, keeping her coat, boots, frontal stance, and the device as a bright focal point"
     },
     {
       "source": 5,
-      "element": "Two small frosted translucent figurines standing on the tabletop near the foreground edge like delicate sculptures lit from below."
+      "element": "the two glowing translucent male figurines from reference image 5 stand on a sunlit refreshment counter or ledge as small ice-like sculptures catching blue-white light"
     },
     {
       "source": 6,
-      "element": "A narrow frieze of four neon-tinted performer silhouettes rendered as stained-glass lantern panels hanging high across the room."
+      "element": "the four people from reference image 6 are posed together on a simple outdoor bandstand on the boardwalk, keeping their arrangement with guitar, conga drum, microphone, large hair, and hanging lantern-like objects above"
     },
     {
       "source": 7,
-      "element": "A silver monochrome bust portrait of the suited man with pale glowing eyes mounted in an oval frame on a side wall, angled upward like a haunted patron saint."
+      "element": "the man from reference image 7 appears as a monochrome chest-up portrait on a vertical signboard or lightbox to the right, preserving his suit, outward gaze, and bright glowing eyes"
     },
     {
       "source": 8,
-      "element": "A washed-out white floor reflection near the room’s threshold where three faint pastel runner-like silhouettes ghost across the brightness."
+      "element": "the three small people from reference image 8 appear in the distant tidal shallows beyond the boardwalk, backlit and tiny against the bright reflective water"
     }
   ],
   "palette": [
-    "saturated yellow",
-    "molten orange-red",
-    "ink black",
-    "silver gray",
-    "electric pink",
-    "soft white"
+    "sun-bleached white",
+    "bright yellow",
+    "cobalt blue",
+    "orange-red",
+    "rainbow accents",
+    "black"
   ],
-  "mood": "mysterious, musical, handcrafted, nocturnal, reverent",
+  "mood": "bold, airy, playful",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Begin-to-Hope.jpg",
       "album": "Begin to Hope",
       "artist": "",
-      "description": "A high-contrast portrait of a woman with dark curly hair, shown from the shoulders up against a flat bright yellow background. Small star shapes are scattered around her, and a thin dangling line with a tiny heart hangs near the upper left. The woman is rendered mostly in black and white, wearing a dark top and a small pendant necklace.",
-      "signatureMotif": "black-and-white portrait of a dark-haired woman on a yellow background",
-      "medium": "photography with graphic design elements",
+      "description": "A high-contrast portrait of one woman fills most of the frame against a flat bright yellow background. She has dark curly hair, pale skin, and is shown from the shoulders up with her head tilted. Small star shapes are scattered around her, including one hanging by a thin line ending in a small heart shape. She wears a thin necklace with a small pendant and a dark shoulder strap is visible.",
+      "signatureMotif": "close-up black-and-white portrait of a woman on a bright yellow background",
+      "medium": "photograph with graphic design elements",
+      "people": "one woman in close-up with dark curly hair and tilted head",
       "palette": [
         "yellow",
         "black",
@@ -73,9 +75,10 @@
       "filename": "Reload.jpg",
       "album": "Reload",
       "artist": "",
-      "description": "An abstract image dominated by a wide rectangular field of fiery orange, yellow, and red swirling together, bordered by black bands at the top and bottom. The central form looks fluid and smoky, with soft gradients and blurred edges.",
-      "signatureMotif": "fiery abstract orange-red fluid field",
-      "medium": "abstract photograph or scan-based artwork",
+      "description": "An abstract image with a large central field of swirling, smoky liquid-like forms in orange, yellow, and red, bordered by black bands at the top and bottom. The composition is diagonal and cropped tightly, with no figures or distinct objects beyond the fluid, fire-like texture.",
+      "signatureMotif": "abstract orange-yellow fluid swirl",
+      "medium": "abstract photograph",
+      "people": "none",
       "palette": [
         "black",
         "orange",
@@ -88,15 +91,16 @@
       "filename": "Mary-Star-of-the-Sea.jpg",
       "album": "Mary Star of the Sea",
       "artist": "",
-      "description": "A clean white background with a bold, colorful central graphic made of rainbow-like stripes and rounded geometric shapes. Elements include a black bird silhouette with wings raised, cloud shapes, a guitar headstock extending to the right, concentric circles, a small star, and looping ribbon-like forms layered into a compact collage.",
-      "signatureMotif": "rainbow-striped geometric collage with bird and guitar headstock",
-      "medium": "vector-style graphic illustration",
+      "description": "A clean white background holds a bold, colorful graphic collage made of rainbow bands, loops, circles, clouds, a black bird silhouette, a star shape, and a red guitar headstock extending from the right. The forms overlap in a playful, flat, poster-like arrangement with strong geometric curves and stripes.",
+      "signatureMotif": "rainbow-striped abstract collage with guitar headstock and bird silhouette",
+      "medium": "graphic illustration",
+      "people": "none",
       "palette": [
         "white",
         "red",
         "orange",
         "yellow",
-        "pink"
+        "blue"
       ]
     },
     {
@@ -104,9 +108,10 @@
       "filename": "marillion-com.jpg",
       "album": "marillion com",
       "artist": "",
-      "description": "A nighttime or dusk city street scene photographed with long exposure. A pale young person stands centered on a traffic island or curb, wearing a long dark coat and boots, holding an open laptop or small screen that glows brightly. Buildings line both sides of the street, cars are visible, and horizontal streaks of yellow and red light pass across the frame.",
-      "signatureMotif": "person holding a glowing laptop in the middle of a city street",
-      "medium": "long-exposure photography",
+      "description": "A young girl stands centered on a city street at dusk or night, wearing a long dark coat and boots. She holds an open laptop or small screen device at chest height, and its screen glows brightly. Surrounding her are buildings, parked and moving cars, and long horizontal light trails crossing the image. The street scene has a cool bluish cast with neon-like highlights.",
+      "signatureMotif": "girl holding a glowing laptop in the middle of a city street",
+      "medium": "photograph with long-exposure light trails",
+      "people": "one young girl standing and holding an open glowing laptop",
       "palette": [
         "blue",
         "purple",
@@ -120,13 +125,14 @@
       "filename": "Pocket-Symphony.jpg",
       "album": "Pocket Symphony",
       "artist": "",
-      "description": "Two translucent human figurines stand on a dark tabletop in an interior setting. They resemble glowing frosted sculptures of men in casual shirts and trousers. Behind them are a black vertical panel, a pale wall, and part of a dark leather chair or sofa, creating a minimalist room scene.",
-      "signatureMotif": "two glowing translucent human figurines on a tabletop",
-      "medium": "photography of sculptural objects",
+      "description": "Two translucent human figurines stand on a dark tabletop in an interior setting. They resemble glowing frosted glass or ice sculptures of two men in casual shirts and trousers. Behind them are dark leather seating and a pale wall, creating a sleek, minimal room scene. The figures emit a cool white-blue glow from below.",
+      "signatureMotif": "two glowing translucent male figurines on a tabletop",
+      "medium": "photograph of sculptural figures",
+      "people": "none",
       "palette": [
-        "white",
-        "pale blue",
         "black",
+        "white",
+        "blue",
         "gray"
       ]
     },
@@ -135,15 +141,16 @@
       "filename": "Cosmic-Thing.jpg",
       "album": "Cosmic Thing",
       "artist": "",
-      "description": "A stylized band portrait shows four people standing side by side in a performance-like setup. One holds a guitar, one stands behind a drum, one sings into a microphone, and one appears mid-vocal pose. The image is tinted with vivid gradients of pink, orange, yellow, green, and blue, with a bright colored border and hanging lantern-like objects above.",
-      "signatureMotif": "four band members in neon-tinted performance portrait",
-      "medium": "color-treated photography",
+      "description": "A stylized band portrait shows four people standing indoors against a warm red-orange background with a blue border glow. From left to right: a man holding an electric guitar, a woman in a polka-dot outfit and hat standing behind a conga drum, a man singing or speaking into a microphone, and a woman with large voluminous hair. Small hanging lantern-like objects appear above them.",
+      "signatureMotif": "four band members posed with guitar, conga drum, and microphone",
+      "medium": "color-treated photograph",
+      "people": "four people: one man with guitar, one woman at a conga drum, one man at a microphone, and one woman with large hair",
       "palette": [
-        "pink",
+        "red",
         "orange",
         "yellow",
-        "green",
-        "blue"
+        "blue",
+        "black"
       ]
     },
     {
@@ -151,9 +158,10 @@
       "filename": "Heathen.jpg",
       "album": "Heathen",
       "artist": "",
-      "description": "A close-up monochrome portrait of a man in a suit jacket, shirt, and tie, turned slightly to the side while looking upward. His eyes appear pale and glowing, giving an eerie effect. The background is softly shaded gray, and the overall image has a muted, silvery tone.",
-      "signatureMotif": "close-up portrait of a man with glowing pale eyes",
-      "medium": "studio photography",
+      "description": "A monochrome close-up portrait of one man in a suit jacket and collared shirt, shown from the chest up. He faces slightly to the side while looking outward, and his eyes appear unnaturally bright or glowing. The background is plain and softly shaded, emphasizing his face and expression.",
+      "signatureMotif": "close-up portrait of a man with glowing eyes",
+      "medium": "black-and-white photograph",
+      "people": "one man in close-up wearing a suit jacket and collared shirt",
       "palette": [
         "gray",
         "black",
@@ -166,22 +174,23 @@
       "filename": "Simple-Things.jpg",
       "album": "Simple Things",
       "artist": "",
-      "description": "A very minimal, overexposed image with a mostly white background. Near the bottom are three faint pastel silhouettes of people walking or running across a reflective surface, with a bright flare of light around the central figure. The composition leaves a large amount of empty space above.",
-      "signatureMotif": "three faint pastel silhouettes moving across a bright white field",
-      "medium": "high-key photography",
+      "description": "A very minimal, overexposed beach or shoreline scene with a vast white background. Near the bottom, three small human silhouettes move across shallow reflective water, backlit by intense light. Their reflections are faintly visible, and the figures are tinted with soft pastel hues from the glare.",
+      "signatureMotif": "three backlit silhouettes walking through shallow water",
+      "medium": "overexposed photograph",
+      "people": "three small silhouetted people walking across shallow water",
       "palette": [
         "white",
+        "cream",
         "pale pink",
         "pale blue",
-        "pale green",
-        "light gray"
+        "pale green"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "A nocturnal shadow-box atelier interior seen straight on, like a miniature stage set with a central worktable in the foreground and a rear window opening onto a city street at night; the primary subject is a large suspended cut-paper medallion portrait of a dark-haired woman in stark black and white, hanging before a saturated yellow panel, tiny stars scattered around her and a thin dangling thread ending in a small heart near the upper left. In the table’s center, embed a fiery translucent slab glowing with orange, red, and yellow smoky fluid swirls as if molten under glass; place rainbow-striped geometric paper forms throughout the room as supporting motifs, including a black bird silhouette with raised wings, small cloud shapes, concentric circles, a tiny star, looping ribbon forms, and a guitar headstock extending sideways from the table edge. Through the back window, show a lone person in a long dark coat standing in the middle of the street holding an open glowing laptop, with yellow and red long-exposure light trails crossing the scene outside. On the tabletop near the viewer, include two small frosted translucent human figurines lit from below. High above, hang a narrow row of lantern-like stained-glass panels containing four neon-tinted performer silhouettes, one with guitar, one at drums, one at microphone, one mid-vocal pose. On a side wall, mount a silver oval framed bust portrait of a suited man gazing upward with pale glowing eyes. At the threshold and lower floor, let a bright overexposed white reflection bloom outward with three faint pastel silhouettes moving across it. Handcrafted mixed-media diorama, paper cut collage, painted board, translucent resin, stained glass accents, miniature sculpture, photographed with theatrical depth and subtle long exposure. Strong central hierarchy, deep layered space, crisp frontal composition, warm core lighting from the molten table, cool blue-violet night light from the window, selective glows and soft shadows. Palette of saturated yellow, molten orange-red, ink black, silver gray, electric pink accents, soft white, and pale pastel blue-green; mood mysterious, musical, reverent, and dreamlike. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 standing-eye-level view down a sun-bleached seaside boardwalk beside shallow tidal flats, with strong leading lines toward bright open water and horizon. The primary subject is the young girl from reference image 4 standing centered in the middle distance on the boardwalk, holding her open glowing laptop at chest height, wearing her long dark coat and boots, posed exactly as in her cover and sharply in focus. At the left foreground, a freestanding bright yellow billboard panel carries the woman from reference image 1 as a large close-up shoulders-up portrait, preserving her tilted head, dark curly hair, necklace, dark shoulder strap, and scattered star motifs including the hanging star with heart. At the right foreground, a vertical monochrome signboard shows the man from reference image 7 chest-up, preserving his suit jacket, collared shirt, side-facing pose, outward gaze, and glowing eyes. In the midground on a simple outdoor boardwalk bandstand, the four people from reference image 6 are posed together exactly in their arrangement: the man with electric guitar, the woman in polka dots and hat behind a conga drum, the man at a microphone, and the woman with large voluminous hair, with small hanging lantern-like objects above them. A diagonal translucent windbreak or sail panel across the scene carries the swirling orange-yellow-red fluid texture from reference image 2. Painted boardwalk signage and playful overhead decorations incorporate the rainbow-striped loops, circles, cloud forms, black bird silhouette, star shape, and red guitar headstock from reference image 3. On a nearby refreshment counter or ledge, the two glowing translucent male figurines from reference image 5 stand as small ice-like sculptures catching cool blue-white light. Far beyond in the tidal shallows, the three small people from reference image 8 walk across reflective water as tiny backlit figures. Daylight location photography, crisp and realistic, like a clean editorial coastal shoot with no haze or grain. Strong hard midday seaside sun with clear shadows, high clarity, saturated colors, and bright reflections off pale wood and shallow water. Palette of sun-bleached white, bright yellow, cobalt blue, orange-red, rainbow accents, and black; mood bold, airy, playful. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one woman in close-up with dark curly hair and tilted head; reference image 4 shows one young girl standing and holding an open glowing laptop; reference image 6 shows four people: one man with guitar, one woman at a conga drum, one man at a microphone, and one woman with large hair; reference image 7 shows one man in close-up wearing a suit jacket and collared shirt; reference image 8 shows three small silhouetted people walking across shallow water. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Begin-to-Hope.jpg",
     "Reload.jpg",

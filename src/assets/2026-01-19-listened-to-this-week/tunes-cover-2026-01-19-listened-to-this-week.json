@@ -3,69 +3,71 @@
   "date": "2026-01-19",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "golden hour sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Midnight refectory with ceremonial tray and chapel echo",
-  "creativeDirection": "A theatrical mixed-media diorama photographed like a handcrafted stage set, combining collage, painted surfaces, and graphic emblem forms.",
-  "scene": "A long refectory-like hall seen from a slightly low frontal viewpoint, as if looking toward a small raised platform at the far end beneath a high wall symbol.",
+  "concept": "Desert chapel picnic with singer and goats",
+  "medium": "daylight location photography",
+  "creativeDirection": "Use daylight location photography to stage a crisp, plausible desert roadside chapel scene where the strongest sleeve motifs become real objects and the portrait figures remain recognisable within the setting.",
+  "scene": "A wide 16:9 editorial photograph at a slight low eye level in an open desert roadside setting, centered on a small weathered white chapel with its doors open to reveal a glowing cross inside, and a long picnic table set out in front on dusty ground.",
   "elements": [
     {
       "source": 1,
-      "element": "the central lone singer appears once on the platform, holding a microphone at chest height, with shoulder-length wavy hair and a cream floral-patterned jacket"
+      "element": "the one person from reference image 1 stands near the front of the table, holding a microphone and keeping the same singing pose, shoulder-length wavy hair, and pale floral-patterned tailored jacket, lit by warm sun with a subtle pink-purple glow only in nearby fabric and objects"
     },
     {
       "source": 2,
-      "element": "aged folded cassette-insert paper becomes the cracked runner covering the long table, with visible creases, worn edges, and dense typewriter-like texture worked into the surface"
+      "element": "a folded vintage cassette J-card from reference image 2 lies on the picnic table as a real worn paper object, with visible creases, typed lines, and the upside-down lower flap"
     },
     {
       "source": 3,
-      "element": "the hall borrows the church interior feeling with stone arches, scattered chairs, a microphone stand, and a glowing cross-like wall light high in the distance"
+      "element": "the chapel architecture and glowing cross come from reference image 3, with the three adult men from reference image 3 seated just inside and near the doorway on simple chairs with guitars, amps, cymbal stand, cables, and a central mic stand arranged naturally"
     },
     {
       "source": 4,
-      "element": "a vivid paint-burst erupts across the tabletop near the foreground like spilled ceremonial pigment, with orange, pink, blue, and yellow droplets radiating outward"
+      "element": "the abstract orange-pink paint explosion from reference image 4 appears as a real burst of paint across a black picnic blanket and a nearby signboard, with blue edging and speckled droplets translated into physical splashes"
     },
     {
       "source": 5,
-      "element": "one large white goat stands in the foreground beside the table, with a few smaller brown and black goats clustered farther back as curious witnesses"
+      "element": "the five young men from reference image 5 stand together beside the table and chapel fence interacting with several goats, including one large white goat clearly in the foreground and brown and black goats around them"
     },
     {
       "source": 6,
-      "element": "a bold circular eagle seal is transformed into a floor medallion in black, white, and red at the center aisle"
+      "element": "the eagle seal from reference image 6 appears as a bold black-and-white circular emblem painted on the chapel door and repeated once on a metal cooler, with the eagle, stars, branch, bat, arrows, and shield intact"
     },
     {
       "source": 7,
-      "element": "a dark-sleeved hand enters prominently from the side presenting a silver tray holding a miniature Earth, flowers, a white dove, butterfly, and tiny golden sun face"
+      "element": "a suited hand and sleeve from reference image 7 enters from one side of the frame holding up a silver serving tray above the table, carrying a small globe, sunflowers and daisies, a white dove, a butterfly, and a small golden sun face as tangible objects"
     },
     {
       "source": 8,
-      "element": "a large black five-pointed star appears as a stark cutout banner or window shape above the distant platform, with five small star marks subtly aligned below it"
+      "element": "the large black star from reference image 8 is mounted high on the chapel exterior facade, with five smaller black star shapes aligned along the fence rail below"
     }
   ],
   "palette": [
+    "sun-bleached white",
+    "warm sand",
+    "pink-orange",
     "black",
-    "off-white",
-    "cream",
-    "stone grey",
-    "magenta",
-    "purple"
+    "leafy green",
+    "sky blue"
   ],
-  "mood": "ceremonial, surreal, intimate, nocturnal",
+  "mood": "surprising, open, sunlit, slightly surreal but grounded",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Glastonbury-2000.jpg",
       "album": "Glastonbury 2000",
       "artist": "",
-      "description": "A close-up stage photograph of a single male performer with shoulder-length wavy hair, holding a microphone at chest height. He wears a light-coloured patterned jacket with floral or vine-like detailing. The figure is centered against a dark concert background with pink and purple lighting haze and a soft magenta border glow around the square image.",
-      "signatureMotif": "male singer holding a microphone",
-      "medium": "stage photograph with graphic text overlay",
+      "description": "A close-up stage photograph of one person centered against a dark concert background with pink and purple lighting haze. The person has shoulder-length wavy hair and holds a microphone in one hand, wearing a pale tailored jacket covered in a floral or vine pattern. The composition is vertically framed with the figure filling most of the image.",
+      "signatureMotif": "a singer holding a microphone under pink-purple stage light",
+      "medium": "colour concert photograph",
+      "people": "one adult person standing and singing into a microphone",
       "palette": [
         "pink",
         "purple",
-        "magenta",
         "black",
+        "white",
         "cream"
       ]
     },
@@ -74,15 +76,16 @@
       "filename": "Give-Out-But-Dont-Give-Up-The-Original-Memphis-Recordings.jpg",
       "album": "Give Out But Dont Give Up The Original Memphis Recordings",
       "artist": "",
-      "description": "A photographed cassette inlay or folded paper insert placed on a black background. The off-white paper has worn edges, a horizontal fold across the lower third, and dense typed track-list formatting. One section is upside down at the bottom, reinforcing the physical folded-paper look.",
-      "signatureMotif": "folded cassette insert sheet",
-      "medium": "photograph of printed paper ephemera",
+      "description": "A worn, off-white cassette J-card or tape insert shown flat, with creases, slight stains, and darkened edges. The layout is mostly blank paper with typed lines arranged in a list, plus small boxes and printed bands at the top and bottom. One lower flap is upside down, emphasizing the folded paper object itself.",
+      "signatureMotif": "a folded vintage cassette tape insert card",
+      "medium": "scanned printed paper ephemera",
+      "people": "none",
       "palette": [
-        "black",
         "off-white",
         "cream",
         "blue",
-        "grey"
+        "black",
+        "beige"
       ]
     },
     {
@@ -90,15 +93,16 @@
       "filename": "So-Here-We-Are-Best-Of-Doves.jpg",
       "album": "So Here We Are Best Of Doves",
       "artist": "",
-      "description": "A wide interior photograph of three musicians seated in a large church-like space with stone columns and arches. Two hold guitars, and a drum kit cymbal is visible in the foreground. A microphone stand sits near the center, with benches and chairs scattered in the background. A glowing cross hangs high on a large pale wall at the back.",
-      "signatureMotif": "glowing cross above musicians in a church interior",
-      "medium": "photograph",
+      "description": "A wide interior photograph of a church or chapel with tall stone columns, arches, wooden paneling, and a large glowing cross mounted high on a pale back wall. Three men sit spaced apart on chairs with guitars, surrounded by music equipment including amplifiers, cymbals, stands, cables, and a microphone stand in the center. The image has a soft, slightly blurred, greenish cast.",
+      "signatureMotif": "a glowing cross above three seated musicians in a church interior",
+      "medium": "colour photograph",
+      "people": "three adult men seated with guitars in a church-like hall",
       "palette": [
         "green",
-        "grey",
-        "beige",
         "brown",
-        "yellow"
+        "beige",
+        "black",
+        "gold"
       ]
     },
     {
@@ -106,15 +110,16 @@
       "filename": "In-Rainbows.jpg",
       "album": "In Rainbows",
       "artist": "",
-      "description": "An abstract cover filled with splattered and pooled paint-like colour over a black background, with repeated large lettering layered across the image. The central form resembles a bright orange and pink burst or liquid bloom, surrounded by blue, yellow, green, and red accents and speckled droplets.",
-      "signatureMotif": "multicoloured paint-splash burst",
-      "medium": "abstract mixed-media artwork with graphic overlay",
+      "description": "An abstract cover filled with splattered paint and layered colour fields on a black background. A large irregular orange and pink burst dominates the center, with blue curved edging on the left and many speckles and droplets scattered across the image. Large repeated letterforms overlay the artwork, but the main visible scene is a vivid paint-splash composition.",
+      "signatureMotif": "a central orange-pink paint explosion on black",
+      "medium": "abstract mixed-media graphic artwork",
+      "people": "none",
       "palette": [
         "black",
         "orange",
         "pink",
         "blue",
-        "yellow"
+        "green"
       ]
     },
     {
@@ -122,15 +127,16 @@
       "filename": "Pet-Sounds.jpg",
       "album": "Pet Sounds",
       "artist": "",
-      "description": "A vintage colour photograph of five young men standing closely together in an outdoor petting-zoo setting, surrounded by several goats. One large white goat dominates the foreground, while brown and black goats cluster around the group. Trees and fencing appear in the background, and a green banner spans the top portion of the cover.",
-      "signatureMotif": "band members feeding and handling goats",
+      "description": "A vintage outdoor group photograph showing five young men standing closely together in an animal enclosure or petting-zoo setting. Several goats crowd around them, including a large white goat in the foreground and brown and black goats at the sides. Trees, fencing, and a rustic structure appear in the background, with the men reaching toward or feeding the animals.",
+      "signatureMotif": "five men surrounded by goats, including a large white goat in front",
       "medium": "colour photograph",
+      "people": "five young men standing among goats",
       "palette": [
         "green",
         "brown",
         "white",
         "tan",
-        "yellow"
+        "black"
       ]
     },
     {
@@ -138,9 +144,10 @@
       "filename": "Greatest-Hits.jpg",
       "album": "Greatest Hits",
       "artist": "",
-      "description": "A stark black background with a large circular seal in white. Inside the seal is an eagle with spread wings holding a branch in one claw and a baseball bat in the other, with stars circling around it. The composition is bold and emblematic, with an additional red stamped-style line of text across the lower portion.",
-      "signatureMotif": "eagle crest inside a circular seal",
+      "description": "A stark black-and-white circular emblem on a black background, resembling a seal or badge. Around the ring are many small stars, and at the center is an eagle with spread wings holding a branch in one claw and a baseball bat in the other. Above the eagle are upward-pointing arrows and ribbon shapes, with a shield on the bird’s chest.",
+      "signatureMotif": "a spread-wing eagle inside a circular seal holding a branch and a baseball bat",
       "medium": "graphic emblem design",
+      "people": "none",
       "palette": [
         "black",
         "white",
@@ -152,9 +159,10 @@
       "filename": "Rule-The-World.jpg",
       "album": "Rule The World",
       "artist": "",
-      "description": "A surreal collage-like image of a hand in a dark suit sleeve holding up a silver serving tray against a starry black space background. On the tray sit the Earth, bright flowers including sunflowers and daisies, a white dove in flight, a butterfly, and a small golden sun face peeking from the side.",
-      "signatureMotif": "hand presenting a tray topped with Earth and flowers",
-      "medium": "digital collage",
+      "description": "A surreal collage set against a star-filled outer-space background. A hand in a dark suit sleeve holds up a silver serving tray. On the tray sit the Earth, bright flowers including sunflowers and daisies, a white dove in flight, a butterfly, and a small golden sun face at the edge. The composition centers the tray and globe against the black sky.",
+      "signatureMotif": "a hand presenting a tray topped with the Earth, flowers, and a white dove",
+      "medium": "digital collage illustration",
+      "people": "none",
       "palette": [
         "black",
         "blue",
@@ -168,9 +176,10 @@
       "filename": "Blackstar.jpg",
       "album": "Blackstar",
       "artist": "",
-      "description": "A minimalist graphic cover with a large solid black five-pointed star centered on a plain white background. Beneath it is a row of five much smaller black star-related shapes spaced horizontally.",
-      "signatureMotif": "large black five-pointed star",
+      "description": "A minimalist white cover featuring a large solid black five-pointed star centered in the upper area. Beneath it is a row of five smaller black star shapes or star fragments spaced across the lower portion. The composition is extremely sparse and geometric.",
+      "signatureMotif": "a large black five-pointed star",
       "medium": "minimalist graphic design",
+      "people": "none",
       "palette": [
         "white",
         "black"
@@ -178,9 +187,9 @@
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "A midnight refectory-chapel interior seen from a slightly low frontal viewpoint down a long central table toward a small raised platform at the far end; the primary subject is a lone male singer on the platform, centered and depicted only once, with shoulder-length wavy hair, holding a microphone at chest height and wearing a light cream jacket with floral vine-like patterning. A dark-sleeved hand enters prominently from one side in the foreground presenting a silver serving tray topped with a miniature Earth, sunflowers and daisies, a white dove in flight, a butterfly, and a tiny golden sun face; below it, a large white goat dominates the foreground near the table edge while a few smaller brown and black goats linger farther back. The hall has the atmosphere of a church-like stone interior with arches, scattered chairs, a cymbal glimpse, a spare microphone stand, and a glowing cross-like wall light high on the pale back wall; above the platform, a stark large black five-pointed star appears as a cutout banner or window, with five small star marks aligned beneath it. The long tabletop is covered with an off-white folded cassette-insert sheet transformed into a runner, showing worn edges, horizontal creases, and dense typed formatting as surface texture; near the front, a multicolored liquid paint-burst spills across the runner in orange, pink, blue, and yellow with speckles and droplets. In the floor at the center aisle, integrate a bold circular eagle crest medallion in black and white with a red stamped accent. Mixed-media handcrafted diorama, paper collage, painted plaster, cut graphic shapes, miniature props, photographed like a theatrical stage set. Strong central perspective, clear hierarchy with tray and singer leading, goats and paint-burst as supporting accents, deep black negative space in upper reaches, dramatic spotlighting with magenta-purple concert haze around the singer and softer amber light grazing the table and animals. Palette of black, off-white, cream, stone grey, magenta, purple, orange, pink, sunflower yellow, deep green, and red; surreal, ceremonial, intimate, nocturnal mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 editorial location photograph at slight low eye level in an open desert roadside setting, centered on a small weathered white chapel with open doors and a long picnic table on dusty ground in front; the one person from reference image 1 is the primary subject, standing near the front of the table holding a microphone in the same singing pose with the same shoulder-length wavy hair, expression, gaze, and pale tailored jacket covered in a floral or vine pattern; inside and around the chapel doorway, the three adult men from reference image 3 sit spaced apart on chairs with guitars, with amplifiers, a cymbal stand, cables, and a central microphone stand beneath a glowing cross mounted high on the back wall; the five young men from reference image 5 stand closely together near a rustic fence beside the chapel with several goats around them, including a large white goat prominently in the foreground and brown and black goats at the sides; a folded vintage cassette tape insert card from reference image 2 rests on the table as a real worn paper object with creases, typed lines, darkened edges, and an upside-down lower flap; the abstract orange-pink burst from reference image 4 becomes real paint splashed across a black picnic blanket and a nearby signboard with blue edging and scattered droplets; the circular eagle seal from reference image 6 is painted on the chapel door and once on a metal cooler; a dark-sleeved hand from reference image 7 enters from the side holding up a silver serving tray carrying a small Earth globe, bright flowers including sunflowers and daisies, a white dove, a butterfly, and a small golden sun face; the large black five-pointed star from reference image 8 is mounted high on the chapel facade with five smaller black star shapes aligned along the fence rail below; daylight location photography, realistic and physically plausible, crisp depth and clean detail, no collage look; balanced wide composition with clear hierarchy on the singer and chapel, supporting figures and objects distributed left and right, golden hour sun with long clean shadows and bright exposure, subtle controlled pink-purple accent only in nearby props and textiles, saturated but natural colours; palette of sun-bleached white, warm sand, pink-orange, black, green, and sky blue, mood surprising, open, sunlit, and grounded Reference map for people (the album images are attached in this numbered order): reference image 1 shows one adult person standing and singing into a microphone; reference image 3 shows three adult men seated with guitars in a church-like hall; reference image 5 shows five young men standing among goats. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Glastonbury-2000.jpg",
     "Give-Out-But-Dont-Give-Up-The-Original-Memphis-Recordings.jpg",

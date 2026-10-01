@@ -5,17 +5,20 @@ import readline from 'readline'
 import { fileURLToPath } from 'url'
 import { createFALTunesCover, smallOutputPathFor } from './fal-tunes-cover.js'
 import { createFALArtistPortrait } from './fal-tunes-artists.js'
-import { normalizeForFilename } from './lib/text-utils.js'
+import { isVariousArtists, normalizeForFilename } from './lib/text-utils.js'
 import { readTunesPostContext } from './lib/tunes-post-context.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const rootDir = path.join(__dirname, '..')
 export const DEFAULT_RECENT_WEEK_LIMIT = 20
+// Matches generate-year-wrapped.js: the top 20 ranked sleeves are the cover candidates.
+export const WRAPPED_COVER_CANDIDATES = 20
 
 function parseArgs(args) {
   const options = {
     week: null,
+    year: null,
     type: null,
     hint: null,
     output: null,
@@ -32,6 +35,7 @@ function parseArgs(args) {
     else if (arg === '--record') options.record = true
     else if (arg.startsWith('--type=')) options.type = arg.slice('--type='.length)
     else if (arg.startsWith('--week=')) options.week = arg.slice('--week='.length)
+    else if (arg.startsWith('--year=')) options.year = arg.slice('--year='.length)
     else if (arg.startsWith('--hint=')) options.hint = arg.slice('--hint='.length)
     else if (arg.startsWith('--output=')) options.output = arg.slice('--output='.length)
     else throw new Error(`Unknown option: ${arg}`)
@@ -39,6 +43,13 @@ function parseArgs(args) {
 
   if (options.type && !['header', 'artist'].includes(options.type)) {
     throw new Error(`Invalid --type "${options.type}". Use "header" or "artist".`)
+  }
+
+  if (options.year != null) {
+    if (!/^\d{4}$/.test(options.year)) throw new Error(`Invalid --year "${options.year}". Use four digits, e.g. 2025.`)
+    if (options.week) throw new Error('Use either --week (weekly post) or --year (Year in Music post), not both.')
+    if (options.type === 'artist') throw new Error('Year in Music posts have no artist portrait; --year only regenerates the header.')
+    options.type = 'header'
   }
 
   return options
@@ -55,6 +66,79 @@ export async function getRecentWeeks(
     .sort()
     .reverse()
     .slice(0, limit)
+}
+
+// Ranked cover candidates for a Year in Music post: the top albums from the cached Last.fm
+// year data (scripts/.year-wrapped-cache-YYYY.json, written by `pnpm run wrapped`), limited to
+// sleeves that were downloaded. Without the cache, every album image is used in name order.
+export async function wrappedAlbumImages(year, albumsFolder, cacheDir = __dirname) {
+  const files = await fs.readdir(albumsFolder)
+  const imagePathByFile = new Map(
+    files
+      .filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file) && !file.endsWith('.meta'))
+      .map(file => [file, path.join(albumsFolder, file)])
+  )
+
+  let topAlbums = null
+  try {
+    const cache = JSON.parse(await fs.readFile(path.join(cacheDir, `.year-wrapped-cache-${year}.json`), 'utf-8'))
+    topAlbums = Array.isArray(cache?.topAlbums) ? cache.topAlbums : null
+  } catch {
+    topAlbums = null
+  }
+
+  if (!topAlbums) {
+    console.warn(`  No .year-wrapped-cache-${year}.json found; using every album image in name order`)
+    return [...imagePathByFile.values()].sort((a, b) => a.localeCompare(b))
+  }
+
+  return topAlbums
+    .filter(item => item?.album && !isVariousArtists(item.artist))
+    .slice(0, WRAPPED_COVER_CANDIDATES)
+    .map(item => imagePathByFile.get(`${normalizeForFilename(item.album)}.jpg`))
+    .filter(Boolean)
+}
+
+async function regenerateYearCover(args) {
+  const year = args.year
+  const slug = `${year}-year-in-music`
+  const albumsFolder = path.join(rootDir, 'public', 'assets', slug, 'albums')
+  const outputPath = args.output
+    ? path.resolve(args.output)
+    : path.join(rootDir, 'src', 'assets', slug, `wrapped-cover-${year}.png`)
+
+  try {
+    await fs.access(albumsFolder)
+  } catch {
+    console.error(`Albums folder not found: ${albumsFolder}`)
+    process.exit(1)
+  }
+
+  const albumImages = await wrappedAlbumImages(year, albumsFolder)
+  if (albumImages.length === 0) {
+    console.error(`No album images found in ${albumsFolder}`)
+    process.exit(1)
+  }
+
+  console.log(`\nRegenerating Year in Music cover for: ${year}`)
+  console.log(`Albums: ${albumImages.length} ranked candidates`)
+  console.log(`Output: ${outputPath}`)
+  console.log(`Small:  ${smallOutputPathFor(outputPath)}\n`)
+
+  const result = await createFALTunesCover(albumImages, outputPath, {
+    year,
+    seed: new Date(`${year}-12-31`).getTime(),
+    width: 1400,
+    height: 800,
+    hint: args.hint,
+    recordHistory: args.record,
+    dateLabel: `${year}-12-31`,
+    debug: args.debug
+  })
+
+  console.log('\nYear in Music cover regenerated')
+  console.log(`  Full:  ${result.outputPath}`)
+  console.log(`  Small: ${result.smallOutputPath}`)
 }
 
 function extractDate(folderName) {
@@ -99,8 +183,9 @@ function showHelp() {
 Regenerate Tunes Image
 
 Regenerates an AI image for a weekly tunes post - either the album-cover header
-scene or a group portrait of the week's artists. This is the manual test harness
-for trying old weeks without changing MDX frontmatter.
+scene or a group portrait of the week's artists - or the header for a Year in
+Music post. This is the manual test harness for trying old weeks and years without
+changing MDX frontmatter.
 
 Usage:
   node scripts/regenerate-tunes-cover.js [options]
@@ -112,10 +197,14 @@ Options:
   --artist            Shorthand for --type=artist
   --week=<date>       Week date, e.g. 2026-04-20 (picker shows the most recent 20
                       weeks when omitted)
+  --year=<yyyy>       Regenerate the Year in Music header for that year instead of
+                      a weekly image (header only; ranked from the cached Last.fm
+                      year data when scripts/.year-wrapped-cache-<yyyy>.json exists)
   --hint=<string>     Optional steer for the selected image's AI art director
   --record            Append the run to scripts/.tunes-image-history.json (off by
                       default here so regenerating old weeks does not pollute the
-                      do-not-repeat memory)
+                      do-not-repeat memory). Year covers record under their own
+                      "wrapped" type, so recording a batch keeps the years distinct
   --output=<path>     Optional output PNG path; also writes <name>-small.png
   --debug, -d         Enable debug output
   --help, -h          Show this help message
@@ -123,12 +212,15 @@ Options:
 Outputs (default):
   header  -> src/assets/<week>/tunes-cover-<week>.png      (+ -small, hero)
   artist  -> public/assets/<week>/tunes-artists-<week>.png (+ -small, body image)
+  --year  -> src/assets/<yyyy>-year-in-music/wrapped-cover-<yyyy>.png (+ -small, hero)
 
 Examples:
   node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --debug
   node scripts/regenerate-tunes-cover.js --type=artist --week=2026-04-20 --hint="candid backstage" --debug
   node scripts/regenerate-tunes-cover.js --type=header --week=2026-04-20 --hint="lean abstract" --debug
   node scripts/regenerate-tunes-cover.js --week=2026-04-20 --output=/tmp/tunes-test.png
+  node scripts/regenerate-tunes-cover.js --year=2025 --record --debug
+  node scripts/regenerate-tunes-cover.js --year=2025 --hint="the year as stadium seating" --output=/tmp/year.png
 `)
 }
 
@@ -175,6 +267,11 @@ async function main() {
 
   if (args.help) {
     showHelp()
+    return
+  }
+
+  if (args.year) {
+    await regenerateYearCover(args)
     return
   }
 

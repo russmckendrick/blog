@@ -3,60 +3,62 @@
   "date": "2026-04-20",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Celestial banquet inside a broken radio tube",
-  "creativeDirection": "A hand-built mixed-media shadowbox collage combines vintage scientific objects, screenprint textures, and theatrical miniature stagecraft.",
-  "scene": "Cutaway view into a giant horizontal vacuum tube transformed into a miniature cosmic proscenium, seen slightly from the left so the metal pins anchor the foreground and the glass chamber opens into a deep star-filled interior.",
+  "concept": "Planetary diner counter with stargazer portraits",
+  "medium": "daylight location photography",
+  "creativeDirection": "Use daylight location photography to stage a crisp, physically plausible retro roadside diner terrace where cosmic and performance motifs appear as tangible props, signage, and decor, while the sleeve portraits remain fixed in their original poses within the scene.",
+  "scene": "A wide 16:9 exterior view of a retro roadside diner forecourt and terrace under clear hard midday sun, shot from slightly below eye level so the counter frontage, terrace tables, and open sky all read cleanly; the setting is real and sunlit, with sharp shadows, chrome details, and a big expanse of blue sky above.",
   "elements": [
     {
       "source": 1,
-      "element": "The entire setting is built inside an enlarged amber vacuum tube, with its pins, dark base, and curved glass defining the architecture."
+      "element": "A giant glass vacuum tube lies horizontally along the diner counter like a sculptural display case, its metal pins prominent at one end and its amber-tinted glass catching the sun."
     },
     {
       "source": 2,
-      "element": "One central figure reaches both hands forward from midstage, palms enlarged in perspective, surrounded by dangling glowing star ornaments."
+      "element": "The person from reference image 2 stands close to the camera at one side of the terrace in the same front-facing pose with both hands thrust toward the lens, with small star-shaped hanging lights and fingertip star glows suspended around them."
     },
     {
       "source": 3,
-      "element": "A scooter sits off to the lower left like a backstage prop, with its cluster of round mirrors catching tiny abstract reflections and the rider implied from behind by a jacket marked with a target emblem."
+      "element": "The young man from reference image 3 remains seated on a scooter seen from behind, parked near the curb outside the diner, still wearing the jacket with the circular target emblem."
     },
     {
       "source": 4,
-      "element": "A pale blue halftone human silhouette becomes a torn screenprinted backdrop panel hovering behind the main figure."
+      "element": "Abstract blue human silhouettes become painted mural panels on the diner's exterior wall, flattened into graphic signage-like decoration with one dominant pale blue figure and accents of red lettering-inspired striping."
     },
     {
       "source": 5,
-      "element": "A formal sleeve-held serving tray floats to the right carrying Earth, oversized flowers, a white dove, butterfly, and sun ornament as a surreal secondary still life."
+      "element": "A server's arm in a dark sleeve extends from a service window holding a silver tray carrying a miniature Earth globe, fresh sunflowers and daisies, a white dove perched among them, and an orange butterfly nearby."
     },
     {
       "source": 6,
-      "element": "A toy rocket with a grinning devil rider streaks diagonally through the upper background like a mischievous marquee ornament, with checkerboard details and spark bursts."
+      "element": "A toy-like coin-operated kiddie rocket ride beside the entrance carries the devil-faced figure as a real sculpted amusement object, angled upward with carnival colors and small star decals."
     },
     {
       "source": 7,
-      "element": "At the far end of the tube, a dense monochrome crowd forms the audience wall, with a single performer silhouette from behind raising both arms toward them."
+      "element": "At the far end of the terrace, the performer from reference image 7 is seen from behind with both arms raised toward a tightly packed daytime crowd gathered beyond a low barrier in the forecourt."
     }
   ],
   "palette": [
-    "amber",
-    "deep blue",
-    "violet",
-    "black",
+    "sky blue",
+    "amber glass",
+    "chrome silver",
     "cream",
-    "pale blue"
+    "black",
+    "red accents"
   ],
-  "mood": "surreal, electric, theatrical",
+  "mood": "buoyant, surreal, sunstruck",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "We-Lost-the-Skyline.jpg",
       "album": "We Lost the Skyline",
       "artist": "",
-      "description": "A close-up photograph of a glass electronic vacuum tube lying horizontally across a pale background. The metal pins and dark base are on the left, with the cylindrical glass body extending to the right. The image is softly lit and slightly blurred at the edges, with a minimal composition and large empty space around the object.",
-      "signatureMotif": "vacuum tube",
+      "description": "A close-up photograph of a glass-and-metal electronic vacuum tube or valve lying horizontally across a pale surface. The left end shows several metal pins, the center is wrapped by a dark cylindrical band, and the right side reveals the transparent glass body with fine internal wire structures. The composition is tightly cropped and softly focused, with a warm amber glow across the whole image.",
+      "signatureMotif": "a close-up vacuum tube with metal pins",
       "medium": "photograph",
+      "people": "none",
       "palette": [
         "amber",
         "gold",
@@ -70,11 +72,12 @@
       "filename": "Greatest-Hits.jpg",
       "album": "Greatest Hits",
       "artist": "",
-      "description": "A distorted, wide-angle photograph of a person facing the camera with both hands thrust forward, palms open and dominating the foreground. Bright glowing star shapes are scattered across the image and hang on strings from above around the figure. The person has dark tousled hair and wears dark clothing, set against a deep blue and purple studio-like background.",
+      "description": "A stylized photograph of one person facing the camera with both hands thrust forward toward the lens, creating a dramatic foreshortened effect. Bright glowing star shapes appear attached to or floating around the fingertips and hang on strings throughout the scene like a mobile. The figure has dark clothing and tousled hair, with the face partly obscured by the hands and starbursts. The background is deep blue and purple with a theatrical, high-contrast look.",
       "signatureMotif": "outstretched hands surrounded by glowing stars",
-      "medium": "photograph with graphic light effects",
+      "medium": "stylized photograph",
+      "people": "one person with tousled hair reaching both hands toward the camera",
       "palette": [
-        "blue",
+        "deep blue",
         "purple",
         "black",
         "white",
@@ -86,13 +89,15 @@
       "filename": "Quadrophenia.jpg",
       "album": "Quadrophenia",
       "artist": "",
-      "description": "A black-and-white photograph of a young man standing beside or straddling a scooter, viewed mostly from behind in a smoky setting. He wears a jacket with a circular target-like emblem on the back, and the scooter has multiple round mirrors reflecting small faces. The composition is framed by empty smoky space and the vehicle occupies the lower left portion.",
-      "signatureMotif": "man with scooter and multiple mirrors",
+      "description": "A black-and-white photograph of a young man seen from behind while sitting astride a scooter in a smoky studio-like setting. He wears a jacket with a large circular target-like emblem on the back. The scooter has mirrors, a rear rack, and a visible license plate area, and several small portrait faces appear reflected in the mirrors on the right side. The image is framed by large dark lettering around the edges, but the central scene is monochrome and atmospheric.",
+      "signatureMotif": "a young man on a scooter seen from behind",
       "medium": "black-and-white photograph",
+      "people": "one young man seated on a scooter, seen from behind",
       "palette": [
         "black",
-        "grey",
-        "white"
+        "gray",
+        "white",
+        "charcoal"
       ]
     },
     {
@@ -100,15 +105,16 @@
       "filename": "Stacked-Up.jpg",
       "album": "Stacked Up",
       "artist": "",
-      "description": "A high-contrast graphic image showing an abstract, posterized human figure in pale blue and white against a dark speckled background. Thick black shapes cut across the top, and the figure appears partially obscured and blurred, with a rough halftone texture throughout. The composition feels layered and screen-printed.",
-      "signatureMotif": "abstract blue human figure",
-      "medium": "graphic halftone illustration",
+      "description": "A graphic, poster-like image with a grainy halftone texture showing abstracted blue-toned human figures or silhouettes layered against a dark background. One pale blue figure dominates the center with raised arms or an elongated torso, while other partial figures and shapes surround it. A bold red wordmark stretches across the upper middle, adding strong contrast to the blue and black composition.",
+      "signatureMotif": "abstract blue human silhouettes",
+      "medium": "graphic illustration with halftone texture",
+      "people": "none",
       "palette": [
         "light blue",
-        "navy",
+        "dark blue",
         "black",
-        "white",
-        "red"
+        "red",
+        "white"
       ]
     },
     {
@@ -116,9 +122,10 @@
       "filename": "Rule-The-World.jpg",
       "album": "Rule The World",
       "artist": "",
-      "description": "A collage-style image set against a starry black space background. A hand in a dark suit sleeve holds up a silver serving tray, on which sit the Earth, large colorful flowers, a white dove, a butterfly, and a small golden sun-like ornament. The objects are arranged like a surreal still life floating in space.",
-      "signatureMotif": "serving tray holding Earth and flowers",
+      "description": "A surreal collage set against a star-filled black space background. A hand in a dark suit sleeve holds up a silver serving tray. On the tray sit the Earth, bright flowers including sunflowers and daisies, a white dove, an orange butterfly, and a small golden sun face peeking from the edge. The arrangement resembles a cosmic still life balanced above the hand.",
+      "signatureMotif": "a serving tray holding the Earth, flowers, and a dove",
       "medium": "digital collage",
+      "people": "none",
       "palette": [
         "black",
         "blue",
@@ -132,14 +139,15 @@
       "filename": "Porno-for-Pyros.jpg",
       "album": "Porno for Pyros",
       "artist": "",
-      "description": "A colorful illustrated space scene with a toy-like rocket ship flying diagonally across a black starry background. A grinning devilish figure rides in the rocket, which has a pointed nose, checkerboard pattern, and flame shooting from the rear. Around it are bright fireworks-like bursts, stars, and a comet-like streak.",
-      "signatureMotif": "toy rocket with grinning devil figure",
+      "description": "A colorful illustrated space scene featuring a toy-like rocket angled diagonally upward from lower right to upper left. A grinning devilish figure with a painted face rides the rocket, gripping it like a carnival or tin toy. Around it are star shapes, a small firework burst, blue speckles, and swirling sun-like forms in orange and blue against a black background. The overall style is playful and psychedelic.",
+      "signatureMotif": "a devil-faced toy figure riding a rocket",
       "medium": "illustration",
+      "people": "none",
       "palette": [
         "black",
         "orange",
-        "red",
         "blue",
+        "red",
         "purple"
       ]
     },
@@ -148,21 +156,23 @@
       "filename": "The-Best-Of-Suede-Beautiful-Ones-1992-2018.jpg",
       "album": "The Best Of Suede Beautiful Ones 1992 2018",
       "artist": "",
-      "description": "A monochrome concert photograph showing a performer from behind at center foreground with both arms raised toward a dense crowd. The audience fills the entire frame, many people clapping, reaching upward, or holding phones and cameras. The image is tightly packed and energetic, with the performer silhouetted against the sea of faces.",
-      "signatureMotif": "performer with raised arms facing a crowd",
+      "description": "A monochrome concert photograph showing a performer from behind at center foreground with both arms raised high toward a densely packed audience. The crowd fills the entire frame, many people clapping, reaching upward, or holding cameras and phones. The performer wears a dark shirt, and the image has a documentary live-show feel with the sea of faces extending to the top edge.",
+      "signatureMotif": "a performer with raised arms facing a large crowd",
       "medium": "black-and-white photograph",
+      "people": "one performer seen from behind facing a large crowd",
       "palette": [
         "black",
-        "grey",
         "white",
-        "sepia"
+        "gray",
+        "sepia",
+        "charcoal"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "Cutaway view into a giant horizontal vacuum tube transformed into a miniature cosmic proscenium, seen slightly from the left so the metal pins and dark base sit in the near foreground and the curved glass chamber opens into a deep stage-like interior; a single dark-haired figure at center reaches both hands dramatically toward the viewer, the palms enlarged by perspective, with glowing star ornaments hanging on strings around them; the tube itself is amber glass with soft cream highlights and lots of negative space at the front edge, a scooter rests in the lower left like a backstage relic with several round mirrors catching tiny abstract reflections and a back-turned rider suggested only by a jacket with a target emblem, a torn pale blue halftone human silhouette hangs behind the central figure as a screenprinted backdrop, to the right a suited arm presents a silver tray carrying a miniature Earth, bold flowers, a white dove, a butterfly, and a small golden sun, in the upper background a toy rocket with a grinning devil rider flies diagonally with checkerboard pattern, flame trail, comet streak, and celebratory spark bursts, and at the far end of the tube a tightly packed monochrome crowd fills the rear wall while one performer silhouette from behind raises both arms toward them; hand-built mixed-media shadowbox collage, combining cut paper, screenprint halftone textures, painted wood miniatures, translucent resin, vintage photo fragments, and theatrical diorama craft; strong left-to-right depth, clear hierarchy with the reaching figure first and the tray second, asymmetrical composition, soft internal glow through the tube glass, pinprick star lighting, moody rim light, subtle haze; palette of amber, deep blue, violet, black, cream, pale blue, silver, and charcoal, surreal electric theatrical mood Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 exterior view of a retro roadside diner forecourt and terrace under hard midday sun, shot from slightly below eye level with open blue sky above and crisp shadows across the pavement; the primary subject is a giant amber-tinted glass vacuum tube stretched horizontally along the diner counter like a sculptural display, its metal pins clearly visible at the left end and delicate inner wires visible through the glass. The person from reference image 2 stands close to the camera at one side of the terrace in the exact original front-facing pose with both hands thrust toward the lens, hair, styling, expression, and dramatic foreshortening preserved, with small glowing star shapes at the fingertips and additional star ornaments hanging on strings overhead. The young man from reference image 3 is seated on a scooter seen from behind near the curb, pose and framing preserved, jacket with large circular target emblem visible on his back. A mural on the diner's wall translates reference image 4 into bold abstract blue human silhouettes with halftone-like graphic treatment and a red horizontal band. From a service window, only an arm in a dark sleeve extends a silver tray carrying a miniature Earth, sunflowers, daisies, a white dove, an orange butterfly, and a small sun-face ornament from reference image 5. Beside the entrance, reference image 6 becomes a real coin-operated kiddie rocket ride with a devil-faced toy figure gripping the rocket, angled diagonally upward with playful carnival paint and star decals. In the distance, the performer from reference image 7 is seen from behind with both arms raised toward a dense daytime crowd filling the far forecourt. Daylight location photography, clean editorial realism, crisp focus, physically plausible materials, no haze or smoke, no text emphasis. Compose with the vacuum tube and reaching figure leading the eye, scooter and tray as midground anchors, rocket ride and crowd as supporting accents. Palette of sky blue, amber glass, cream, chrome, black, red accents, and sunflower yellow; bright, surreal, energetic mood. Reference map for people (the album images are attached in this numbered order): reference image 2 shows one person with tousled hair reaching both hands toward the camera; reference image 3 shows one young man seated on a scooter, seen from behind; reference image 7 shows one performer seen from behind facing a large crowd. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "We-Lost-the-Skyline.jpg",
     "Greatest-Hits.jpg",

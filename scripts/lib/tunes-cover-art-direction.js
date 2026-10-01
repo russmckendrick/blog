@@ -2,10 +2,12 @@ import OpenAI from 'openai'
 
 const DEFAULT_PROMPT_MODEL = 'gpt-5.4'
 
+const TEXT_CONSTRAINT = 'Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage.'
+
 const HARD_CONSTRAINTS = [
   'Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels.',
   'Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition.',
-  'Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage.',
+  TEXT_CONSTRAINT,
   'Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly.',
   'When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling.',
   'Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person\'s face.',
@@ -72,6 +74,62 @@ export function buildLightingBlock(recentLighting = []) {
   }
   if (recent.length > 0) {
     blocks.push(`These lighting set-ups were used on the most recent covers and must not be repeated, even under different wording - change the time of day, the main light source, or the weather, not just the phrasing:\n${recent.map(value => `- ${value}`).join('\n')}\n\nBright light is still the default. Pick a materially different bright set-up - for example low-angle early morning sun, hard midday sun with crisp shadows, golden hour, open shade on a sunny day, sunlight through large windows, a high-key studio, crisp winter light, or seaside glare - whichever genuinely fits this week's covers.`)
+  }
+
+  return blocks.join('\n\n')
+}
+
+// The Year in Music cover is the one tunes image that must carry lettering: the year itself.
+// The old wrapped generator stamped it on as "large centered text" with a glow, which read as
+// a title card pasted over a montage. The year now has to exist inside the photographed world
+// as a physical thing - built, grown, painted, lit, or arranged - and the art director names
+// that treatment so consecutive years do not all reach for the same trick.
+export function normalizeYear(value) {
+  const text = String(value ?? '').trim()
+  return /^\d{4}$/.test(text) ? text : ''
+}
+
+// The year's exception to the no-text rule. Every other character stays banned, and the
+// exception is worded as "exactly these four digits, once" because an image model told it
+// may write something will happily add a caption, a second copy, or a slogan next to it.
+export function buildYearTextConstraint(year) {
+  const digits = normalizeYear(year)
+  if (!digits) return TEXT_CONSTRAINT
+  return `The only lettering anywhere in the image is the year "${digits}": those four digits, spelled exactly ${digits.split('').join(' ')}, appearing once, large and legible, as a physical part of the scene rather than an overlay. Include no other readable text or lettering of any kind: no other words, letters, numbers, dates, code, glyphs, captions, titles, logos, watermarks, labels, or signage.`
+}
+
+export function buildHardConstraints({ year } = {}) {
+  const textConstraint = buildYearTextConstraint(year)
+  return HARD_CONSTRAINTS.map(constraint => constraint === TEXT_CONSTRAINT ? textConstraint : constraint)
+}
+
+// Art-director brief for the year. The treatment menu is a set of examples, not a rotation:
+// recent treatments are refused the same way recent concepts are, so a batch regeneration of
+// several years cannot land on five hedge mazes.
+export function buildYearBlock(year, recentYearTreatments = []) {
+  const digits = normalizeYear(year)
+  if (!digits) return ''
+
+  const seen = new Set()
+  const recent = (Array.isArray(recentYearTreatments) ? recentYearTreatments : [])
+    .map(value => String(value || '').trim())
+    .filter(value => {
+      const key = value.toLowerCase()
+      if (!value || seen.has(key)) return false
+      seen.add(key)
+      return true
+    })
+
+  const blocks = [`This is the header for a Year in Music round-up, not a weekly post. The supplied covers are the albums played most across ${digits}, and the image has to say "${digits}" as clearly as it says which records were in rotation.
+
+Show the year ${digits} as large, legible digits that physically exist inside the scene - something a camera on location could actually photograph. Choose the treatment that belongs to the world you are building rather than a default: for example the digits as huge freestanding letters on a hillside or rooftop, cut into a hedge or topiary, mown or planted into a field, painted across a running track, car park, court, or road seen from above, built from stacked flight cases, speaker cabinets, or vinyl crates, lit as a fairground or theatre marquee, flipped up on a stadium or departure-board display, cast as a long shadow by low sun, carved or poured in concrete, or held up as a card stunt by a crowd in the stands. Never let the digits cover, crop, or crowd an identifiable face.
+
+The year is the lead subject of this cover, not set dressing. On a weekly cover one or two album motifs lead; here the year leads and the sleeves are its supporting cast, arranged around and behind it. Make the digits the first thing the eye reads and big enough to read at thumbnail size: spanning at least half the width of the frame and a substantial share of its height, placed in the upper two-thirds or dead centre rather than tucked along the bottom edge. Choose the viewpoint for the digits first - face-on to an upright treatment, or from high enough above that a ground-level treatment reads flat and square rather than receding in steep perspective - and build the rest of the scene from there. The "prompt" must open with the year: its scale, material, and position come before any album motif.
+
+The year must not be a title overlay, a caption, poster typography, floating 3D text, a glowing graphic stamped over the image, or a design laid on top of a collage. It is a physical object in a real place, lit by the same light as everything else.`]
+
+  if (recent.length > 0) {
+    blocks.push(`These ways of showing the year were used on other Year in Music covers and must not be repeated, even with different materials or wording - change what the digits are made of and how they sit in the scene:\n${recent.map(value => `- ${value}`).join('\n')}`)
   }
 
   return blocks.join('\n\n')
@@ -227,7 +285,8 @@ export function buildArtDirectionRequestText(hintBlock, summaryBlock) {
   ].filter(Boolean).join('\n\n')
 }
 
-export function buildFallbackArtDirection(coverSummaries, _sourceReferences) {
+export function buildFallbackArtDirection(coverSummaries, _sourceReferences, { year } = {}) {
+  const digits = normalizeYear(year)
   const elements = coverSummaries.map(summary => ({
     source: summary.source,
     element: summary.signatureMotif
@@ -240,14 +299,16 @@ export function buildFallbackArtDirection(coverSummaries, _sourceReferences) {
     `Use a clear visual hierarchy and transform these source motifs rather than reproducing the sleeves: ${motifText}.`,
     'Render it as a photographic scene - a real place or built set that a camera could capture - unless the supplied artwork strongly calls for another medium; vary the setting, viewpoint, and lighting rather than the medium.',
     'Light it with bright, open daylight so the colours read clean and saturated.',
+    digits ? `Show the year ${digits} as huge freestanding digits standing in the landscape like a hillside sign, lit by the same daylight and photographed as part of the place.` : '',
     palette.length > 0 ? `Draw the colour direction from ${palette.join(', ')}.` : '',
     'Make the result specific, surprising, and recognisably connected to the reference images.'
   ].filter(Boolean).join(' ')
 
   return {
-    concept: 'A unified world built from this week’s album artwork',
+    concept: digits ? `A unified world built from the albums of ${digits}` : 'A unified world built from this week’s album artwork',
     medium: 'photographic scene',
     lighting: 'bright daylight',
+    yearTreatment: digits ? 'freestanding hillside digits' : null,
     creativeDirection: 'Freeform interpretation of the supplied album artwork',
     scene: 'One cohesive visual world shaped by the strongest factual motifs across every selected cover.',
     elements,
@@ -257,8 +318,8 @@ export function buildFallbackArtDirection(coverSummaries, _sourceReferences) {
   }
 }
 
-export function normalizeArtDirection(rawDirection, coverSummaries, sourceReferences) {
-  const fallback = buildFallbackArtDirection(coverSummaries, sourceReferences)
+export function normalizeArtDirection(rawDirection, coverSummaries, sourceReferences, { year } = {}) {
+  const fallback = buildFallbackArtDirection(coverSummaries, sourceReferences, { year })
   const scene = String(
     rawDirection?.scene ||
     rawDirection?.visualConcept ||
@@ -288,6 +349,9 @@ export function normalizeArtDirection(rawDirection, coverSummaries, sourceRefere
     scene,
     elements: normalizeElements(rawDirection?.elements || rawDirection?.source_elements, sourceReferences),
     lighting: String(rawDirection?.lighting || rawDirection?.light || '').trim() || fallback.lighting,
+    yearTreatment: fallback.yearTreatment
+      ? String(rawDirection?.yearTreatment || rawDirection?.year_treatment || '').trim() || fallback.yearTreatment
+      : null,
     palette: Array.isArray(rawDirection?.palette)
       ? rawDirection.palette.map(item => String(item).trim()).filter(Boolean).slice(0, 6)
       : fallback.palette,
@@ -356,11 +420,14 @@ export async function designCoverArtDirection({
   avoidConcepts = [],
   avoidMedia = [],
   recentLighting = [],
+  year = null,
+  avoidYearTreatments = [],
   debug
 }) {
+  const digits = normalizeYear(year)
   if (!openai) {
     if (debug) console.log('  No OPENAI_API_KEY found; using deterministic art direction')
-    return buildFallbackArtDirection(coverSummaries, sourceReferences)
+    return buildFallbackArtDirection(coverSummaries, sourceReferences, { year: digits })
   }
 
   const avoidBlock = avoidConcepts.length > 0
@@ -375,6 +442,7 @@ export async function designCoverArtDirection({
     ? `These media and staging techniques were used on recent covers and are refused for this one. Do not choose any of them or any close variation, and in particular do not build another diorama, shadow box, assemblage, or cut-paper collage unless this week's artwork makes that genuinely unavoidable:\n${refusedMedia.map(medium => `- ${medium}`).join('\n')}\n\nPhotography itself is never on this list and is always available. Reach for a photographic treatment that is materially different from the recent covers - for example a sunlit editorial location shoot, a high-key studio set, a clean medium-format daylight portrait, a bright macro still life, a wide environmental portrait under open sky, or a golden-hour exterior - whichever genuinely fits this week's covers.`
     : ''
   const lightingBlock = buildLightingBlock(recentLighting)
+  const yearBlock = buildYearBlock(digits, avoidYearTreatments)
   const hintBlock = hint ? `Author's steer: ${hint}` : ''
   const summaryBlock = coverSummaries
     .map(summary => [
@@ -387,7 +455,7 @@ export async function designCoverArtDirection({
     ].filter(Boolean).join('\n'))
     .join('\n\n')
 
-  const instructions = `You are a visual art director creating one original 16:9 header image for a weekly music blog.
+  const instructions = `You are a visual art director creating one original 16:9 header image for ${digits ? `the ${digits} Year in Music post on a music blog` : 'a weekly music blog'}.
 You will receive factual visual-research summaries of several album covers. The original images remain attached to the image-generation call in the same numbered order.
 
 Choose the creative direction yourself from those visual findings alone. Lean towards photographic realism by default: one physically plausible place, set, or location that a camera could actually capture, with the album motifs present as real objects, surfaces, weather, and light within it and the sleeve portraits carried into it as they are. A non-photographic medium - painting, printmaking, illustration, textiles, sculpture - is allowed only when this particular set of covers makes a strong case for it, and "creativeDirection" must say what that case is. Do not use or assume any blog-post content and do not rotate through a hidden catalogue of preset styles.
@@ -412,8 +480,10 @@ ${avoidMediaBlock}
 
 ${lightingBlock}
 
-Return JSON exactly as {"concept":"string","medium":"string","lighting":"string","creativeDirection":"string","scene":"string","elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string","prompt":"string"}.
-"concept" is at most 15 words and is saved to the do-not-repeat history. "medium" is at most 8 words naming only the chosen medium or technique - it is saved to the history, and any non-photographic medium is refused on future weeks, so be specific ("daylight location photography", "gouache on board") rather than generic ("mixed media"). "lighting" is at most 6 words naming the time of day and main light source ("midday sun through high windows", "night under neon") - it is saved to the history, recent set-ups are refused on future weeks, and a low-light cover forces daylight on the next one. "creativeDirection" names the chosen medium and visual approach in one sentence. "elements" records how each numbered source contributes.`
+${yearBlock}
+
+Return JSON exactly as {"concept":"string","medium":"string","lighting":"string",${digits ? '"yearTreatment":"string",' : ''}"creativeDirection":"string","scene":"string","elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string","prompt":"string"}.
+"concept" is at most 15 words and is saved to the do-not-repeat history. "medium" is at most 8 words naming only the chosen medium or technique - it is saved to the history, and any non-photographic medium is refused on future weeks, so be specific ("daylight location photography", "gouache on board") rather than generic ("mixed media"). "lighting" is at most 6 words naming the time of day and main light source ("midday sun through high windows", "night under neon") - it is saved to the history, recent set-ups are refused on future weeks, and a low-light cover forces daylight on the next one.${digits ? ` "yearTreatment" is at most 10 words naming what the digits ${digits} are made of and where they sit ("hedge-cut digits on a hillside", "marquee bulbs above a theatre door") - it is saved to the history and refused on later Year in Music covers. The final "prompt" must describe the year treatment explicitly and quote the digits as "${digits}".` : ''} "creativeDirection" names the chosen medium and visual approach in one sentence. "elements" records how each numbered source contributes.`
 
   try {
     const response = await openai.responses.create({
@@ -437,22 +507,31 @@ Return JSON exactly as {"concept":"string","medium":"string","lighting":"string"
     const direction = normalizeArtDirection(
       parseJSONResponse(response.output_text || ''),
       coverSummaries,
-      sourceReferences
+      sourceReferences,
+      { year: digits }
     )
     if (debug) console.log(`  AI art direction: ${JSON.stringify(direction, null, 2)}`)
     return direction
   } catch (error) {
     console.warn(`  OpenAI art direction failed: ${error.message}`)
-    return buildFallbackArtDirection(coverSummaries, sourceReferences)
+    return buildFallbackArtDirection(coverSummaries, sourceReferences, { year: digits })
   }
 }
 
-export function buildGenerationPrompt(artDirection, coverSummaries = []) {
+export function buildGenerationPrompt(artDirection, coverSummaries = [], { year } = {}) {
   const creativePrompt = String(artDirection?.prompt || '').trim()
   if (!creativePrompt) throw new Error('The Tunes art director returned an empty image prompt')
+  const digits = normalizeYear(year)
+  const treatment = String(artDirection?.yearTreatment || '').trim()
+  // Restated by code so the digits survive an art-director prompt that buries or paraphrases
+  // them; the treatment keeps it tied to the scene rather than inviting a pasted-on title.
+  const yearDirective = digits
+    ? `The year "${digits}" appears exactly once${treatment ? ` as ${treatment}` : ''}, built into the scene and lit like the rest of the photograph. It is the dominant subject and the first thing the eye reads: the digits span at least half the width of the frame, sit high or centred rather than along the bottom edge, and read face-on and legibly at thumbnail size, with the album motifs and people arranged around it.`
+    : ''
   return [
     creativePrompt,
+    yearDirective,
     buildReferenceMap(coverSummaries),
-    `Hard constraints (override any conflicting source material): ${HARD_CONSTRAINTS.join(' ')}`
-  ].join(' ').replace(/\s+/g, ' ').trim()
+    `Hard constraints (override any conflicting source material): ${buildHardConstraints({ year: digits }).join(' ')}`
+  ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
 }

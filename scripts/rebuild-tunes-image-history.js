@@ -45,6 +45,26 @@ async function collectFromSidecars() {
     }
   }
 
+  // Year in Music covers ride in the same file under their own "wrapped" type. Old sidecar-less
+  // wrapped covers (made before they shared the weekly pipeline) are simply skipped.
+  const wrappedFolders = dirEntries
+    .filter(entry => entry.isDirectory() && /^\d{4}-year-in-music$/.test(entry.name))
+    .map(entry => entry.name)
+    .sort()
+
+  for (const folder of wrappedFolders) {
+    const year = folder.slice(0, 4)
+    const sidecarPath = path.join(assetsDir, folder, `wrapped-cover-${year}.json`)
+    let sidecar
+    try {
+      sidecar = JSON.parse(await fs.readFile(sidecarPath, 'utf-8'))
+    } catch {
+      continue
+    }
+    scanned += 1
+    collected.push({ ...sidecar, date: sidecar.date || `${year}-12-31` })
+  }
+
   return { collected, scanned }
 }
 
@@ -77,7 +97,8 @@ Rebuild Tunes Image History
 
 Rebuilds scripts/.tunes-image-history.json - the committed rolling record of weekly cover and
 portrait concepts, fed to the art director as a do-not-repeat list - from the per-week
-tunes-cover-*.json and tunes-artists-*.json sidecars in src/assets/. The generator maintains
+tunes-cover-*.json and tunes-artists-*.json sidecars (plus Year in Music wrapped-cover-*.json
+sidecars) in src/assets/. The generator maintains
 this file automatically; run this only to repair drift, such as a backfill that appended older
 weeks after newer ones.
 
@@ -108,7 +129,7 @@ async function main() {
     return totals
   }, {})
 
-  console.log(`Scanned ${scanned} sidecar(s) across ${new Set(collected.map(e => e.date)).size} week(s)`)
+  console.log(`Scanned ${scanned} sidecar(s) across ${new Set(collected.map(e => e.date)).size} date(s)`)
   console.log(`Keeping ${entries.length} entr(ies): ${Object.entries(counts).map(([t, n]) => `${n} ${t}`).join(', ')}`)
 
   for (const type of Object.keys(counts).sort()) {

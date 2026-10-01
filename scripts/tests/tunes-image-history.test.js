@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { promises as fs } from 'fs'
 import os from 'os'
 import path from 'path'
-import { appendHistory, recentConcepts, recentLighting, recentMedia, loadHistory } from '../lib/tunes-image-history.js'
+import { appendHistory, recentConcepts, recentLighting, recentMedia, recentYearTreatments, loadHistory } from '../lib/tunes-image-history.js'
 
 async function writeHistory(entries) {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'tunes-history-'))
@@ -141,4 +141,19 @@ test('feeds recent lighting back newest first, skipping entries without it', asy
     'dark interior'
   ])
   assert.deepEqual(await recentLighting('cover', 0, file), [])
+})
+
+test('feeds Year in Music treatments back on their own type, collapsed and newest first', async () => {
+  const file = await writeHistory([
+    { type: 'wrapped', date: '2021-12-31', concept: 'A', yearTreatment: 'Hedge-cut digits on a hillside' },
+    { type: 'wrapped', date: '2022-12-31', concept: 'B', yearTreatment: 'hedge-cut digits on a hillside' },
+    { type: 'wrapped', date: '2023-12-31', concept: 'C', yearTreatment: 'marquee bulbs over a theatre door' },
+    { type: 'cover', date: '2026-09-28', concept: 'D', yearTreatment: 'should never be read' }
+  ])
+
+  assert.deepEqual(await recentYearTreatments('wrapped', 8, file), [
+    'marquee bulbs over a theatre door',
+    'hedge-cut digits on a hillside'
+  ])
+  assert.deepEqual(await recentConcepts('cover', 8, file), ['D'], 'year covers stay out of the weekly window')
 })

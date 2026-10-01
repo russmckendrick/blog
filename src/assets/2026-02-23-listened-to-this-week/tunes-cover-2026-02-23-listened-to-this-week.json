@@ -3,46 +3,48 @@
   "date": "2026-02-23",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Stage portal in a carved timber hollow",
-  "creativeDirection": "A tactile mixed-media relief collage combining linocut woodgrain, cut paper portraiture, and hand-painted leather textures.",
-  "scene": "Front-facing view into a giant upright wood cross-section transformed into a shallow theatrical niche, as if a carved tree trunk has opened to reveal a tiny interior stage.",
+  "concept": "Portraits at a timber yard gateway",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography in a real outdoor timber yard uses stacked logs and cut wood as a physically plausible setting, carrying the two sleeve portraits into the scene intact while turning the woodcut motif into monumental timber forms.",
+  "scene": "A wide 16:9 editorial photograph in an open timber yard under hard midday sun, viewed straight on at slightly below eye level so stacked log ends fill the background like a graphic wall while a clear central aisle opens into the distance.",
   "elements": [
     {
       "source": 1,
-      "element": "A single central female figure with long straight platinum-blonde hair, a small yellow hair clip, and a black leather jacket accented by red, white, and grey zigzag trim."
+      "element": "the woman from reference image 1 appears chest-up and front-facing exactly as in her studio portrait, with long straight platinum-blonde hair, the small yellow hair clip, neutral expression, and glossy black jacket with red and white lightning patches"
     },
     {
       "source": 2,
-      "element": "A secondary male figure emerging from shadow at one side, head lowered, one arm lifted near his collar, with a dangling cross earring and black leather jacket shaping the darker edge of the scene."
+      "element": "the man from reference image 2 appears in his close-up dramatic pose with one arm raised, hand gripping his black leather jacket collar, shadowed face, stubble, and dangling cross earring, staged intact within the yard"
     },
     {
       "source": 3,
-      "element": "The entire setting built from a wood cross-section with concentric rings, rough bark, and a miniature forest path receding through the hollow center, rendered in woodcut-like linework."
+      "element": "large cut log ends form oversized tree-ring discs, one especially prominent with a centered opening or painted inset revealing a narrow forest path motif, while smaller flowers and leaves appear growing along one side of the timber stack as a subtle echo of the woodcut decoration"
     }
   ],
   "palette": [
-    "bone white",
-    "ink black",
-    "weathered grey",
+    "sunlit pine wood",
+    "pale grey",
     "platinum blonde",
-    "cobalt blue",
-    "oxblood red"
+    "black leather",
+    "flat sky blue",
+    "red and white accents"
   ],
-  "mood": "enigmatic, intimate, ceremonial",
+  "mood": "crisp, graphic, confident",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Strange-Little-Girls.jpg",
       "album": "Strange Little Girls",
       "artist": "",
-      "description": "A studio portrait of a woman shown from the chest up against a plain light grey background. She faces forward with a neutral expression, long straight platinum-blonde hair, and a small yellow hair clip near the top right side of her hair. She wears a black leather jacket with bold red, white, and grey zigzag or lightning-like trim, with a dark top visible underneath. The composition is centered and tightly cropped around her face and upper torso.",
+      "description": "A studio portrait of one woman shown from the chest up against a pale grey background. She faces forward with a neutral expression, long straight platinum-blonde hair parted near the middle, and a small yellow hair clip on one side. She wears a glossy black jacket with bold red and white lightning-like patches over a dark top with a hint of purple visible at the neckline. The composition is tightly cropped around her face and upper torso.",
       "signatureMotif": "long straight platinum-blonde hair with a small yellow hair clip",
-      "medium": "color studio photography",
+      "medium": "color photograph",
+      "people": "one woman facing forward in a close-up studio portrait",
       "palette": [
-        "light grey",
+        "pale grey",
         "platinum blonde",
         "black",
         "red",
@@ -54,15 +56,16 @@
       "filename": "Faith.jpg",
       "album": "Faith",
       "artist": "",
-      "description": "A close-up color photograph of a man in a dramatic pose, cropped tightly around his head, shoulder, and hand. He wears a black leather jacket and raises one arm over his head while gripping the jacket collar or lapel with the other hand. His face is partly shadowed and turned downward, with short dark hair, facial stubble, and a dangling cross earring. A blue background appears along the left edge, while the rest of the image is dominated by dark clothing and warm skin tones.",
-      "signatureMotif": "dangling cross earring beside a shadowed face in a black leather jacket",
-      "medium": "color studio photography",
+      "description": "A tightly cropped color photograph of one man in a dramatic pose, mostly in shadow, wearing a black leather jacket. One arm is raised over his head while the other hand grips the jacket collar near his face. His face is partly obscured, with visible stubble and a dangling cross-shaped earring on one ear. The background is a flat blue field, and the image emphasizes glossy leather texture, skin highlights, and strong contrast.",
+      "signatureMotif": "dangling cross earring beside a shadowed face and black leather jacket",
+      "medium": "color photograph",
+      "people": "one man in a close-up pose with raised arm, leather jacket, and cross earring",
       "palette": [
         "black",
-        "dark blue",
+        "blue",
+        "gold",
         "tan",
-        "brown",
-        "gold"
+        "brown"
       ]
     },
     {
@@ -70,20 +73,20 @@
       "filename": "Woodcut.jpg",
       "album": "Woodcut",
       "artist": "",
-      "description": "A black-and-white illustration on a white background showing a circular cross-section of wood or a hollow log. The concentric rings and rough bark form an oval frame around a small forest scene visible in the center, with trees and a path receding inward. A flower with leaves grows from the left side of the wood form. The composition is centered with large areas of blank white space around the detailed ink image.",
-      "signatureMotif": "wood cross-section framing a forest interior",
+      "description": "A black-and-white illustrated image centered on an oval cross-section of a tree trunk or wood slice. Inside the rings is a small forest scene with tall trees and a path receding into the distance. The outer wood grain forms swirling concentric shapes around the inner scene, and a cluster of flowers and leaves appears along the left edge. The composition sits on a plain white background with strong contrast and fine carved linework.",
+      "signatureMotif": "tree-ring cross-section enclosing a forest path",
       "medium": "black-and-white woodcut-style illustration",
+      "people": "none",
       "palette": [
-        "white",
         "black",
-        "grey"
+        "white"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "Front-facing view into a giant upright wood cross-section that has been carved open into a shallow theatrical niche, the concentric rings and rough bark forming an oval proscenium around a tiny forest path receding inward through the hollow center; at center stage, one woman shown from the chest up, facing forward with calm authority, long straight platinum-blonde hair falling cleanly over a black leather jacket marked by bold red, white, and grey zigzag trim, a small yellow hair clip near the top right side of her hair as a bright accent; at the shadowed right edge of the timber niche, a man appears only once as a supporting figure, head turned downward, one arm raised near his collar in a dramatic pose, black leather jacket merging into darkness, facial stubble and a single dangling cross earring catching light, with a slim wedge of deep blue tucked behind him; use the wood cross-section and bark from the third source as the full architectural frame, with woodcut-style ink lines describing the rings, bark, and miniature interior forest, and let a small flower with leaves sprout subtly from the left side of the timber rim; mixed-media relief collage, combining linocut and woodcut mark-making for the tree and forest, cut-paper portrait shapes, matte gouache-painted leather textures, and slight shadow-casting layered surfaces; strong visual hierarchy with the blonde figure dominant, the wood portal second, and the male figure as a dark counterweight, centered composition with generous breathing room around the oval form, soft directional light from upper left creating tactile depth and a shrine-like focus; palette of bone white, ink black, weathered grey, platinum blonde, cobalt blue, oxblood red, muted tan, and a pinpoint yellow accent, mood enigmatic, intimate, and ceremonial. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 editorial location photograph in a real open timber yard, shot straight on from slightly below eye level, with stacked cut logs forming a strong graphic backdrop and a central aisle receding into the distance. Primary subject: the woman from reference image 1 and the man from reference image 2 staged as the key figures in front of the log stacks, each appearing only once and keeping their original sleeve portrait poses, framing, expression, hair, styling, and gaze intact. The woman from reference image 1 is shown chest-up and front-facing with long straight platinum-blonde hair parted near the middle, the small yellow hair clip, neutral expression, and glossy black jacket with bold red and white lightning-like patches over a dark top with a hint of purple. The man from reference image 2 is shown in his tight dramatic pose with one arm raised over his head, the other hand gripping the black leather jacket collar near his face, visible stubble, partly shadowed face, and dangling cross-shaped earring, set against a clean blue-painted panel or blue sky pocket within the yard so his source color field is preserved. Use source 3 by making the yard dominated by large circular log ends with crisp concentric tree rings; feature one especially prominent cut trunk cross-section near center or just off-center that reveals a narrow forest path motif within it as a real carved or inset opening, and add a restrained cluster of flowers and leaves along the left side of the timber stack echoing the woodcut embellishment. Daylight location photography, physically plausible and sharply detailed, with clean editorial realism and no collage look. Compose with a clear hierarchy: the two portraits foremost, the monumental tree rings second, the forest-path timber motif as the visual surprise in the middle distance. Hard midday sun with crisp shadows, high clarity, saturated but natural color, clean blacks, bright wood surfaces, pale greys and blue accents, confident graphic mood. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one woman facing forward in a close-up studio portrait; reference image 2 shows one man in a close-up pose with raised arm, leather jacket, and cross earring. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Strange-Little-Girls.jpg",
     "Faith.jpg",

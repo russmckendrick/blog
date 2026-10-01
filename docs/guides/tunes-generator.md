@@ -402,6 +402,9 @@ pnpm run tunes -- --testing --take=5
 # Send a one-off test image somewhere else
 node scripts/regenerate-tunes-cover.js --week=2026-04-20 --output=/tmp/tunes-test.png
 
+# Regenerate a Year in Music header (see Year in Music Cover)
+node scripts/regenerate-tunes-cover.js --year=2025 --record --debug
+
 # Direct low-level generator usage
 node scripts/fal-tunes-cover.js --input=public/assets/2026-04-20-listened-to-this-week/albums --output=/tmp/tunes-cover.png --debug
 node scripts/fal-tunes-artists.js --input=public/assets/2026-04-20-listened-to-this-week/artists --output=/tmp/tunes-artists.png --debug
@@ -828,7 +831,9 @@ public/assets/2025-year-in-music/
   artists/                         # Artist photos
 
 src/assets/2025-year-in-music/
-  wrapped-cover-2025.png          # AI-generated wrapped cover
+  wrapped-cover-2025.png          # AI-generated wrapped cover (hero)
+  wrapped-cover-2025-small.png    # 1400x800 copy
+  wrapped-cover-2025.json         # run sidecar (summaries, direction, year treatment, prompt)
 ```
 
 ### How It Works
@@ -851,15 +856,15 @@ src/assets/2025-year-in-music/
    - Genre breakdown from collection metadata
 
 4. **Download Artwork**: Fetches from russ.fm collection
-   - Top 20 artist images
-   - Top 15 album covers (for featured sections)
+   - Top 12 artist images, plus artists for featured albums, hidden gems, and new discoveries
+   - Top 20 album covers (galleries and cover candidates), plus featured albums, hidden gems, and new discoveries
 
 5. **AI Research**: Uses existing ContentGenerator
    - Same two-phase classification + research pipeline
    - Search caching for efficiency
    - Fallback sections if research fails
 
-6. **Generate Cover**: Uses the wrapped AI cover path with the top album images
+6. **Generate Cover**: Runs the weekly header pipeline in Year in Music mode with the year built into the scene - see [Year in Music Cover](#year-in-music-cover)
 
 7. **Render MDX**: Comprehensive year-end post
    - Stats dashboard with Tailwind styling
@@ -892,7 +897,24 @@ src/assets/2025-year-in-music/
 - `ContentGenerator` - AI album research
 - `ImageHandler` - Image downloads
 - `CollectionManager` - russ.fm metadata
-- `generateWrappedCover()` - AI cover image generation
+- `createFALTunesCover()` (`scripts/fal-tunes-cover.js`) - the weekly header pipeline, called with `year`
+
+### Year in Music Cover
+
+The year cover is the weekly header pipeline run with a `year` option (`createFALTunesCover(..., { year })`), so it inherits everything described in [Cover Image Generation](#cover-image-generation): blocklist, text-density input selection from the top 20 downloaded sleeves, the factual summary pass, the photographic-by-default art director, the likeness and reference-map guards, bright-light and lighting-repeat rules, the configured backend and fallback, and a `.json` sidecar beside the PNG. It replaced `scripts/wrapped-cover-generator.js`, which had not moved since January 2026: one GPT pass writing a "double-exposure movie poster" prompt from twelve sleeves, Nano Banana at 2K, and the year stamped on as large centred text with a glow.
+
+What the year adds:
+
+- **The year is part of the scene.** `buildYearBlock` tells the art director that the four digits must physically exist in the photographed world - freestanding letters on a hillside, hedge or topiary, mown into a field, painted on a track or car park seen from above, stacked flight cases or vinyl crates, a marquee, a stadium or departure board, a cast shadow, a card stunt in the stands - chosen to fit the world it is building and never over a face. Title overlays, captions, floating 3D type, and glowing graphics are ruled out. The art director names its choice in a `yearTreatment` field (at most ten words).
+- **The year leads.** On a weekly cover one or two album motifs lead; here the year is the lead subject and the sleeves are its supporting cast. The first 2025 cover under this pipeline painted the digits on a rooftop floor, where they came out small, foreshortened, and tucked along the bottom edge. The brief now asks for digits spanning at least half the frame width, placed high or centred, read face-on (or from high enough above that a ground treatment reads flat), with the viewpoint chosen for the year first and the art director's prompt opening with it. `buildGenerationPrompt` restates the scale and placement in code.
+- **One exception to the no-text rule.** `buildHardConstraints({ year })` swaps the blanket text ban for one that allows exactly those four digits, spelled out, once, and still bans every other word, number, date, logo, and label. `buildGenerationPrompt` also restates the year and its treatment in code, so the digits survive an art-director prompt that buries them.
+- **Its own history.** Runs record under the `wrapped` type in `scripts/.tunes-image-history.json` (dated `<year>-12-31`), so concepts, media, lighting, and year treatments are refused across years without touching the weekly window. Re-recording a year replaces its entry. `pnpm run wrapped` always records; `regenerate-tunes-cover.js --year` opts in with `--record`.
+
+Regenerate an existing year's cover without touching the post:
+
+```bash
+node scripts/regenerate-tunes-cover.js --year=2025 --record --debug
+```
 
 ### Data Caching
 

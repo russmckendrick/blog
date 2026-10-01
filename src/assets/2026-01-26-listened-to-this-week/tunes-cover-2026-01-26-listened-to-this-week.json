@@ -3,70 +3,72 @@
   "date": "2026-01-26",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Cabinet stage with trapped signals",
-  "creativeDirection": "A handcrafted shadow-box assemblage photographed like a theatrical diorama, combining painted portraiture, print graphics, miniature props, and collage translucency.",
-  "scene": "Front-facing view into a narrow curiosity-shop cabinet transformed into a tiny proscenium stage, with shelves, dangling ties, stacked papers, and boxed objects framing the interior like wings.",
+  "concept": "Record-shop vitrine with living covers",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography stages the sleeve portraits and motifs inside a real old record-and-radio shop window and interior, using crisp midday sun and layered glass reflections to absorb the graphic and collage elements without leaving photographic realism.",
+  "scene": "Street-level view angled slightly into the front window of a vintage record-and-radio shop at midday, camera outside on the pavement looking through sunlit glass into a dense but orderly interior of shelves, counters, hanging ties and paper notices, with strong crisp shadows and reflections on the window.",
   "elements": [
     {
       "source": 1,
-      "element": "a carved and painted wooden mannequin arm at the left foreground bearing the rose tattoo and a hanging black crucifix chain"
+      "element": "the person from reference image 1 appears only as a close cropped bare torso and arm leaning near the front counter, the crucifix necklace across the chest and the red rose tattoo clearly visible"
     },
     {
       "source": 2,
-      "element": "a large translucent circular symbol suspended like acrylic signage across the cabinet opening, with neon-smudged cyan and magenta haze and a dark decorative strip on the right frame"
+      "element": "its translucent geometric symbol becomes a large semi-transparent decal on the shop window, with a faint streaked reflection of a moving passerby behind it and a small bright square sticker at the lower right of the glass"
     },
     {
       "source": 3,
-      "element": "a row of miniature boomboxes on the cabinet floor with a blurred striking arm implied as a motion-smeared prop entering from above"
+      "element": "a row of portable radios and boomboxes lines the shop floor near the window, with the partially visible person from reference image 3 shown only from the legs down among them and the blurred downward arm preserved"
     },
     {
       "source": 4,
-      "element": "a glass specimen jar full of flies placed prominently on the counter, with a child's single watching eye glimpsed softly through a peephole aperture behind it"
+      "element": "a glass jar containing flies sits prominently on the sunlit counter just inside the window, with the child from reference image 4 peering from behind it at close range and one hand resting on the surface"
     },
     {
       "source": 5,
-      "element": "a bold round eagle seal printed as a stamped medallion on a drawer front beneath the stage, accented by a red band"
+      "element": "the eagle crest holding a baseball bat and branch appears as a bold black-and-white circular stamp on a hanging record-sleeve display or wall sign inside the shop"
     },
     {
       "source": 6,
-      "element": "three painted faces integrated as the cabinet's inner theater curtain, with the central face hanging upside down between rich red drapes"
+      "element": "the three men from reference image 6 appear as a painted theater poster pinned on the back wall, with deep red curtains and the upside-down central head intact as a secondary interior detail"
     },
     {
       "source": 7,
-      "element": "small illustrated performer cutouts and oversized flowers clustered along the lower shelf, while one large spectral face is reduced to a faint painted backdrop glow"
+      "element": "the people from reference image 7 appear only once as a brightly colored psychedelic concert poster in the shop, with the large central portrait above the five performing musicians"
     },
     {
       "source": 8,
-      "element": "the overall cabinet setting, with two suited shopkeepers represented only once as small monochrome figures at the rear sorting papers among the clutter"
+      "element": "the two young men from reference image 8 are the main standing figures deeper inside the shop, still in dark suits, each holding and reading printed pages in the cluttered interior"
     }
   ],
   "palette": [
-    "deep red",
+    "sunlit beige",
+    "aged wood brown",
     "black",
-    "warm amber",
-    "flesh pink",
-    "rose red",
-    "cyan"
+    "white",
+    "deep red",
+    "teal"
   ],
-  "mood": "claustrophobic, musical, curious, slightly ominous",
+  "mood": "crisp, curious, urban, slightly uncanny",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Generation-Terrorists.jpg",
       "album": "Generation Terrorists",
       "artist": "",
-      "description": "A close-up colour photograph of a bare upper torso and shoulder. A dark crucifix necklace hangs over the chest on the left side, and a tattoo of a pink-red rose with green leaves and a ribbon appears on the upper arm at right. The skin fills almost the entire frame against no visible background.",
-      "signatureMotif": "rose tattoo on the upper arm",
-      "medium": "colour photograph",
+      "description": "A close cropped photograph of a bare upper torso and arm. A dark crucifix necklace hangs across the chest, and the upper arm shows a colorful tattoo of a red rose with green leaves and a blue ribbon. The composition is minimal, with skin filling most of the frame.",
+      "signatureMotif": "crucifix necklace over a bare chest",
+      "medium": "photograph",
+      "people": "one person shown as a cropped bare torso and arm",
       "palette": [
-        "flesh pink",
+        "peach",
+        "beige",
         "black",
-        "rose red",
-        "green",
-        "beige"
+        "red",
+        "green"
       ]
     },
     {
@@ -74,9 +76,10 @@
       "filename": "Play-More-Music.jpg",
       "album": "Play More Music",
       "artist": "",
-      "description": "A layered, collage-like cover with blurred photographic imagery underneath translucent geometric graphics. A large circular symbol with a diagonal bar and central punctuation-like shape overlays the left side, while a vertical dark strip with embossed script-like decoration runs down the right edge. A small square block sits in the lower right corner. The whole image has a smeared, motion-blurred, neon-tinted look.",
-      "signatureMotif": "large translucent circular symbol overlay",
-      "medium": "mixed-media graphic collage with blurred photography",
+      "description": "A blurred, layered collage-like image with a large translucent geometric symbol over a streaky street or crowd scene. A partially visible person appears in motion behind the overlays. A vertical dark strip runs down the right side, and a small bright square graphic sits in the lower right corner. The whole image has a smeared, neon-tinted, glitchy look.",
+      "signatureMotif": "large translucent geometric symbol over a blurred figure",
+      "medium": "photographic collage with graphic overlays",
+      "people": "one blurred person in motion, partially obscured",
       "palette": [
         "cyan",
         "teal",
@@ -90,14 +93,16 @@
       "filename": "Hits-Back.jpg",
       "album": "Hits Back",
       "artist": "",
-      "description": "A black-and-white photograph framed by a dark green border. In the foreground, the lower half of a person in boots and trousers stands beside several large portable radios or boomboxes arranged on the floor. A blurred arm swings downward toward the equipment, creating a sense of motion. The setting appears like an indoor room with a plain floor and wall.",
-      "signatureMotif": "person swinging an arm at a row of boomboxes",
+      "description": "A monochrome photograph of several large portable radios lined up on the floor. In the foreground, part of a person is visible from the legs down in dark trousers and boots, with one arm swinging or striking downward in a motion blur. The background is plain and light, emphasizing the radios and the figure's movement.",
+      "signatureMotif": "row of boomboxes with a blurred striking arm",
       "medium": "black-and-white photograph",
+      "people": "one person partially visible, showing legs and a blurred arm",
       "palette": [
-        "black",
         "white",
-        "grey",
-        "dark green"
+        "gray",
+        "black",
+        "red",
+        "green"
       ]
     },
     {
@@ -105,13 +110,14 @@
       "filename": "Jar-of-Flies.jpg",
       "album": "Jar of Flies",
       "artist": "",
-      "description": "A warm-toned colour photograph showing a glass jar with a metal lid in the foreground, containing several flies and debris at the bottom. Behind the jar, a child's face is softly out of focus, with one eye clearly visible, peering toward the jar from a tabletop level. A hand rests on the wooden surface at left. The lighting is reddish and dim.",
-      "signatureMotif": "glass jar filled with flies",
-      "medium": "colour photograph",
+      "description": "A warm, dimly lit photograph of a glass jar with a metal lid in the foreground, containing several flies and debris at the bottom. Behind the jar, a child's face is softly out of focus, watching from close range, with one hand resting on the surface at left. The scene feels intimate and shadowy.",
+      "signatureMotif": "glass jar containing flies",
+      "medium": "photograph",
+      "people": "one child peering from behind a jar",
       "palette": [
         "red",
+        "orange",
         "pink",
-        "amber",
         "brown",
         "black"
       ]
@@ -121,9 +127,10 @@
       "filename": "Greatest-Hits.jpg",
       "album": "Greatest Hits",
       "artist": "",
-      "description": "A stark black background with a large white circular seal-like emblem centered on it. Inside the ring is an eagle with spread wings holding a branch in one claw and a baseball bat in the other, with arrows and stars surrounding it. The design is high-contrast and graphic, with an additional red stamped-looking band across the lower portion.",
-      "signatureMotif": "eagle inside a circular seal holding a baseball bat",
-      "medium": "graphic emblem design",
+      "description": "A stark black background with a circular seal-like emblem in white. At the center is an eagle with spread wings holding a branch in one claw and a baseball bat in the other, with arrows and stars arranged around it. The design is bold, symmetrical, and high contrast.",
+      "signatureMotif": "eagle crest holding a baseball bat and branch",
+      "medium": "graphic design illustration",
+      "people": "none",
       "palette": [
         "black",
         "white",
@@ -135,14 +142,15 @@
       "filename": "Temple-Of-Low-Men.jpg",
       "album": "Temple Of Low Men",
       "artist": "",
-      "description": "A painted portrait-style cover set against deep red stage curtains. Three male faces are shown: one upright on the left, one upside down in the center hanging from above, and one upright on the right. The figures wear stylized clothing with patterned details, and the composition resembles a theatrical puppet-stage or framed curtain opening.",
-      "signatureMotif": "upside-down central male face between red curtains",
-      "medium": "painting",
+      "description": "A painted or illustrated scene framed by deep red theater curtains. Three male portrait heads are arranged across the center, with the middle one upside down and hanging from an opening above. The two upright figures wear jackets with small house-like shapes on the shoulders, and the right figure also wears a tie. Decorative gold lettering-like ornamentation runs across the top and bottom.",
+      "signatureMotif": "upside-down male head between two upright portraits against stage curtains",
+      "medium": "painting/illustration",
+      "people": "three illustrated men shown as portrait figures",
       "palette": [
-        "deep red",
+        "red",
         "black",
-        "flesh tones",
         "gold",
+        "cream",
         "green"
       ]
     },
@@ -151,9 +159,10 @@
       "filename": "Not-Like-Everybody-Else.jpg",
       "album": "Not Like Everybody Else",
       "artist": "",
-      "description": "A vivid illustrated collage with several band performers across the lower half and a large central face looming behind them. One figure sings into a microphone, another plays guitar, and others stand in sunglasses and hats. Large flowers flank the scene, and paint splatters are scattered across a purple background. The style mixes sketch lines with bold colour washes.",
-      "signatureMotif": "large central illustrated face above performing band members",
-      "medium": "illustrated collage",
+      "description": "A vivid illustrated band collage with five musicians performing across the lower half and a large central portrait face above them. One figure sings into a microphone, others hold guitars and drums are visible behind. Large flowers and paint splatters fill the background, giving the image a psychedelic poster-like energy.",
+      "signatureMotif": "large central portrait above a performing band collage",
+      "medium": "illustration",
+      "people": "five illustrated band members performing, plus one large illustrated portrait face",
       "palette": [
         "purple",
         "green",
@@ -167,20 +176,21 @@
       "filename": "Our-Favourite-Shop.jpg",
       "album": "Our Favourite Shop",
       "artist": "",
-      "description": "A black-and-white photograph of two young men in dark suits standing inside a cluttered shop or boutique interior. One holds an open magazine or booklet while the other looks at papers in his hands. Around them are shelves, boxes, hanging ties or fabric strips, posters on the walls, and various retail items, creating a busy indoor scene.",
+      "description": "A black-and-white photograph of two young men in dark suits standing inside a cluttered shop or studio, each holding and reading printed pages. The room is filled with posters and pictures on the walls, shelves and counters with assorted objects, and hanging ties or fabric along the right side. The composition feels documentary and busy.",
       "signatureMotif": "two suited men reading papers in a cluttered shop interior",
       "medium": "black-and-white photograph",
+      "people": "two young men in suits reading papers indoors",
       "palette": [
         "black",
         "white",
-        "grey"
+        "gray"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "Front-facing view into a narrow curiosity-shop cabinet turned into a miniature proscenium stage, shelves and hanging ties and paper bundles crowding the sides, boxed objects and retail clutter creating a dense theatrical interior; a glass jar of trapped flies dominates the countertop at center foreground, while behind it a softly hidden child’s single eye peers through a small aperture in the back wall, and at left foreground a carved wooden mannequin arm rests into frame bearing a vivid rose tattoo and a dangling black crucifix necklace; incorporate a row of portable boomboxes across the cabinet floor with a motion-blurred striking arm descending toward them, place two small monochrome suited shopkeepers only once in the deep background reading and sorting papers among the clutter, suspend a large translucent circular symbol with diagonal bar across the cabinet opening like acrylic signage with neon-smudged cyan and magenta blur, add a dark embossed vertical strip along the right frame and a small square block in the lower right, make the cabinet’s inner back panel into painted red stage curtains framing three portrait faces with the central male face upside down, include small illustrated band-performer cutouts and large flowers along the lower shelf with a faint looming face glow behind them, and stamp a high-contrast white eagle seal with a red band onto a drawer front beneath the stage; handcrafted shadow-box assemblage, mixed media diorama, painted wood, cut paper collage, printed graphics, translucent acrylic, miniature props, photographed as an original art object; clear hierarchy with the fly jar and peering eye central, mannequin arm secondary at left, boombox line anchoring the bottom, crowded side details supporting, symmetrical cabinet framing but with lively asymmetry in props, moody spotlight from above and warm underglow from within the cabinet, subtle motion blur on the striking arm and neon haze on the suspended symbol; palette of deep red curtains, black shadows, warm amber wood, flesh pink, rose red, cyan, magenta, dark green, white accents; mood claustrophobic, musical, curious, slightly ominous. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "Street-level view angled into the front window of a vintage record-and-radio shop on a city pavement, camera outside looking through clean glass into a dense but orderly interior, strong hard midday sun casting crisp shadows across the threshold and shelves; the two young men from reference image 8 stand deeper inside the shop as the main figures, still in dark suits and still reading printed pages, surrounded by posters, shelves, counters, hanging ties or fabric, and assorted objects; the person from reference image 1 appears only as a close cropped bare torso and arm leaning near the front counter with the crucifix necklace across the bare chest and the red rose tattoo with green leaves and blue ribbon clearly visible, a row of portable radios and boomboxes from reference image 3 lines the floor near the window with the partially visible person from reference image 3 shown only from the legs down among them and the blurred striking arm preserved, a glass jar containing flies from reference image 4 sits prominently on the counter just inside the window with the child from reference image 4 peering from behind it and one hand resting on the surface, the translucent geometric symbol from reference image 2 is a large semi-transparent decal on the shop window with a faint streaked reflection of a moving passerby behind it and a small bright square sticker in the lower right of the glass, the eagle crest holding a baseball bat and branch from reference image 5 appears as a bold circular black-and-white sign inside, the three men from reference image 6 appear only once as a painted theater poster on the back wall with deep red curtains and the upside-down central head intact, and the people from reference image 7 appear only once as a vivid psychedelic concert poster elsewhere in the shop with the large central portrait above the five performing musicians; photographic realism, daylight location photography, clean editorial detail, medium-format sharpness, no haze or smoke; clear visual hierarchy from the suited men and window layers to the jar and radios, bright sunlit highlights and crisp interior contrast; palette of sunlit neutrals, black and white, aged wood, deep reds, teal, magenta, and rose accents, mood curious, vibrant, urban, slightly uncanny. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one person shown as a cropped bare torso and arm; reference image 2 shows one blurred person in motion, partially obscured; reference image 3 shows one person partially visible, showing legs and a blurred arm; reference image 4 shows one child peering from behind a jar; reference image 6 shows three illustrated men shown as portrait figures; reference image 7 shows five illustrated band members performing, plus one large illustrated portrait face; reference image 8 shows two young men in suits reading papers indoors. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Generation-Terrorists.jpg",
     "Play-More-Music.jpg",

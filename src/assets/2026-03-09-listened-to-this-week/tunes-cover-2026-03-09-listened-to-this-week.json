@@ -3,66 +3,69 @@
   "date": "2026-03-09",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "early morning low sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Rooftop observatory of portraits and signals",
-  "creativeDirection": "A hand-built mixed-media diorama photographed like a cinematic miniature, combining painted backdrops, cut-paper collage, and sculptural objects.",
-  "scene": "A twilight rooftop observatory garden seen from a slightly elevated frontal viewpoint, where a weathered urban roof has been transformed into a listening deck overlooking distant mountains and sky.",
+  "concept": "Desert speaker monument at sunrise",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography of a real desert installation uses a monumental speaker structure as the anchor, carrying the sleeve portraits into a physically plausible sunrise scene with graphic color accents translated into objects, signage, and sky.",
+  "scene": "A wide 16:9 exterior view in a scrubby desert lot at the foot of low mountains, photographed from slightly below eye level so a towering concrete speaker-block monument dominates the frame while the surrounding ground, a roadside storefront edge, and scattered installation objects spread outward under clear early morning sun.",
   "elements": [
     {
       "source": 1,
-      "element": "A single green-cast chest-up portrait of the young man appears as the main live figure, standing among rooftop plants in a white collared shirt with a dark shoulder strap and a long narrow rod-like object angled across the foreground."
+      "element": "the young man from reference image 1 appears chest-up beside dense desert foliage near the foreground edge, keeping his close-up pose, collared shirt, shoulder strap, and green-tinted foliage association"
     },
     {
       "source": 2,
-      "element": "A wide illuminated rectangular sign hangs above a narrow shelf displaying three small framed male portraits as curated objects on the observatory wall."
+      "element": "three framed head-and-shoulders portraits of the three men from reference image 2 sit on a narrow shelf-like ledge built into a pale blue wall section beside the monument, with a larger cream panel mounted above them"
     },
     {
       "source": 3,
-      "element": "Tinted cyan and pink photo fragments plus two black-and-white candid image scraps are reworked into pinned collage panels and translucent overlays around the wall and parapet."
+      "element": "black-and-white candid photo panels with translucent cyan and pink acrylic overlays are installed as clean graphic placards around the site, echoing the floating collage layout"
     },
     {
       "source": 4,
-      "element": "A worn rooftop access door is styled like a bar entrance, with a suited man in hat at the threshold lighting a cigarette and a woman glimpsed through a small side window."
+      "element": "a worn roadside bar storefront adjoins one side of the scene; the man from reference image 4 stands in the doorway lighting a cigarette while the woman from reference image 4 looks out from the window"
     },
     {
       "source": 5,
-      "element": "Oversized keyboard keys become stepping platforms and planters scattered across shallow reflective puddles on the roof, leading the eye toward distant alpine mountains."
+      "element": "oversized off-white keyboard keys lie in staggered rows across the scrub and grass of the lot, leading toward the distant mountains like a path"
     },
     {
       "source": 6,
-      "element": "Two tailored figures lounging on low black chairs occupy a secondary seating nook, accented by a translucent pink circular disc behind them, with the woman’s red shoes and the man’s bright blue suit and pink socks preserved."
+      "element": "the woman from reference image 6 reclines across black leather-and-chrome chairs and the man from reference image 6 sits beside her in his bright blue suit within an open-air wood-paneled lounge nook at the base of the structure, with a translucent pink circular disc mounted behind them"
     },
     {
       "source": 7,
-      "element": "A toy-like rocket with a grinning face streaks across the upper sky like a hanging mobile or animated cutout, leaving a glowing trail among starbursts."
+      "element": "a small toy-like rocket sculpture with the grinning horned figure from reference image 7 is mounted high on a cable or pole crossing the sky diagonally, surrounded by colorful starburst pennants"
     },
     {
       "source": 8,
-      "element": "A monumental speaker tower rises beyond the parapet as the far focal architecture, with tiny climbers, hovering helicopters, tall plants, and a red sun-disc framing the skyline."
+      "element": "the giant concrete speaker tower from reference image 8 is the central monument, with tiny climbers and perched figures distributed across it, helicopters in the far sky, and the shirtless figure from reference image 8 seen from behind in the lower right facing the tower"
     }
   ],
   "palette": [
-    "green",
+    "sand",
+    "concrete grey",
+    "sage green",
     "pale blue",
-    "cyan",
-    "pink",
-    "red-purple",
-    "olive"
+    "off-white",
+    "red"
   ],
-  "mood": "mysterious, playful, nocturnal, expectant",
+  "mood": "crisp, playful, monumental",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "The-Boy-with-the-Arab-Strap.jpg",
       "album": "The Boy with the Arab Strap",
       "artist": "",
-      "description": "A green-tinted photographic close-up of a young man outdoors, shown from the chest up in a white collared shirt. He faces slightly to the side with leafy plants and branches filling the background. A long narrow object extends diagonally across the lower right foreground toward his chest, and a dark strap runs over one shoulder.",
-      "signatureMotif": "green-tinted portrait of a young man in a garden",
-      "medium": "photography",
+      "description": "A green-tinted close-up photograph of a young man outdoors, shown from the chest up in front of dense leafy foliage. He wears a light collared shirt, and a dark strap runs over one shoulder. A long narrow object crosses the lower right foreground diagonally. The composition is soft-focused and monochromatically green.",
+      "signatureMotif": "close-up of a young man against foliage",
+      "medium": "photograph",
+      "people": "one young man in a collared shirt, shown close-up outdoors",
       "palette": [
         "green",
+        "dark green",
         "black",
         "white"
       ]
@@ -72,15 +75,16 @@
       "filename": "Everything-Must-Go.jpg",
       "album": "Everything Must Go",
       "artist": "",
-      "description": "A minimalist studio-style composition on a pale blue background. Near the top is a wide rectangular framed lightbox or sign, and below it sit three small framed portrait photographs aligned in a row on a narrow shelf. Each portrait shows a different man against a dark blue backdrop, with the central figure facing forward and the two side figures turned inward.",
-      "signatureMotif": "three framed male portraits beneath a rectangular sign",
-      "medium": "photography with graphic layout",
+      "description": "A minimalist studio-style cover showing three framed portrait photographs arranged in a row on a narrow shelf against a pale blue wall. Above them hangs a larger rectangular framed panel with a cream background. The three portraits show head-and-shoulders views of men against dark blue backdrops, each in separate frames.",
+      "signatureMotif": "three framed portrait photos on a shelf beneath a large framed panel",
+      "medium": "photograph of framed photographs and wall display",
+      "people": "three men shown in separate framed head-and-shoulders portraits",
       "palette": [
         "pale blue",
-        "white",
-        "navy",
+        "cream",
+        "dark blue",
         "black",
-        "red"
+        "white"
       ]
     },
     {
@@ -88,9 +92,10 @@
       "filename": "Long-Hot-Summers-The-Story-Of-The-Style-Council.jpg",
       "album": "Long Hot Summers The Story Of The Style Council",
       "artist": "",
-      "description": "A clean white cover featuring a collage of four overlapping photographs. On the left is a blue-tinted close-up of a man in profile, on the right a pink-tinted close-up of another man in profile, and in the center two smaller black-and-white street and indoor candid scenes with people standing and talking. The images are arranged in a loose cross-like block with tinted rectangular overlays.",
-      "signatureMotif": "collage of tinted and black-and-white photographs",
-      "medium": "photographic collage",
+      "description": "A white background with a collage of black-and-white photographs overlaid by translucent cyan and pink rectangular blocks. The photos show two men in candid scenes: a close side view of one man on the left, a street scene in the center top, a bar or café conversation at the bottom center, and a close profile of another man on the right. The layout is clean and graphic, with the photos floating in open space.",
+      "signatureMotif": "collage of black-and-white candid photos with cyan and pink overlays",
+      "medium": "photo collage",
+      "people": "two men appearing across multiple candid black-and-white photos",
       "palette": [
         "white",
         "black",
@@ -104,13 +109,14 @@
       "filename": "Redlight.jpg",
       "album": "Redlight",
       "artist": "",
-      "description": "A moody street photograph taken at an angle outside a worn bar or restaurant entrance at dusk or night. A man in a dark suit and hat stands in the doorway lighting a cigarette. To the left, a woman is visible through a window inside the building. The facade shows weathered wood, signage, a partially open door, and a metal shutter, with a vivid red-purple sky above.",
-      "signatureMotif": "suited man lighting a cigarette outside a bar entrance",
-      "medium": "photography",
+      "description": "A moody street photograph taken at an angle outside a worn urban storefront at dusk or night. A man in a dark coat and hat stands in the doorway lighting a cigarette. Inside a window to the left, a woman looks out from behind the glass. The building facade is dark and weathered, with awnings, signage, and a vivid red sky filling the upper right.",
+      "signatureMotif": "man lighting a cigarette in a doorway outside a bar-like storefront",
+      "medium": "photograph",
+      "people": "one man standing in a doorway lighting a cigarette and one woman visible behind a window",
       "palette": [
         "red",
-        "purple",
         "black",
+        "dark purple",
         "brown",
         "cream"
       ]
@@ -120,14 +126,16 @@
       "filename": "The-Sophtware-Slump.jpg",
       "album": "The Sophtware Slump",
       "artist": "",
-      "description": "A surreal landscape image showing a grassy alpine meadow with shallow streams, distant mountains, and a cloudy blue sky. Across the center, oversized computer keyboard keys are arranged in staggered rows as if resting on the grass and water.",
-      "signatureMotif": "giant computer keyboard keys in a mountain meadow",
-      "medium": "photomontage",
+      "description": "A surreal landscape image of a grassy alpine meadow with small winding streams in the foreground, mountains and cliffs in the distance, and a cloudy blue sky above. Large off-white computer keyboard keys are arranged across the field in staggered rows, as if resting on the grass.",
+      "signatureMotif": "computer keyboard keys placed across a mountain meadow",
+      "medium": "photographic collage",
+      "people": "none",
       "palette": [
         "green",
         "blue",
         "white",
-        "grey"
+        "grey",
+        "off-white"
       ]
     },
     {
@@ -135,15 +143,16 @@
       "filename": "Wasted-On-Youth.jpg",
       "album": "Wasted On Youth",
       "artist": "",
-      "description": "A posed interior fashion photograph in a wood-paneled room with low modern black leather chairs. A woman and a man in tailored suits lounge across the chairs, both facing the camera. A translucent pink circular shape overlays the area behind them. The woman wears red shoes, and the man wears a bright blue suit with vivid pink socks.",
-      "signatureMotif": "two suited figures lounging on modern chairs",
-      "medium": "photography with graphic overlay",
+      "description": "A posed interior photograph of two young adults lounging on modern black leather-and-chrome chairs in a wood-paneled room. A woman reclines across the seats in a purple suit with red shoes, while a man in a bright blue suit sits beside her with crossed legs and vivid pink socks. A large translucent pink circle sits behind them as a graphic overlay. The room has a muted carpet and a spare, retro-modern feel.",
+      "signatureMotif": "two stylishly dressed young adults lounging on modern chairs with a pink circle behind them",
+      "medium": "photograph with graphic overlay",
+      "people": "one woman reclining on chairs and one man seated beside her in colorful suits",
       "palette": [
         "brown",
-        "black",
-        "grey",
+        "purple",
+        "blue",
         "pink",
-        "blue"
+        "red"
       ]
     },
     {
@@ -151,15 +160,16 @@
       "filename": "Porno-for-Pyros.jpg",
       "album": "Porno for Pyros",
       "artist": "",
-      "description": "A colorful illustrated outer-space scene on a black background. A toy-like rocket ship with a grinning human-faced figure rides diagonally across the image, with a glowing engine trail behind it. Around it are starburst-like cosmic forms, small stars, and a comet or streaking celestial object.",
-      "signatureMotif": "toy rocket with a grinning figure in space",
+      "description": "A colorful illustrated scene set in outer space with a toy-like rocket ship flying diagonally across a black starry background. Riding the rocket is a grinning devilish figure with a round orange face and small horns, wearing a blue outfit with a checkerboard pattern. Bright fireworks or exploding starbursts appear around the rocket, with scattered blue and pink specks across the dark background.",
+      "signatureMotif": "devilish toy figure riding a rocket through space",
       "medium": "illustration",
+      "people": "none",
       "palette": [
         "black",
-        "purple",
         "orange",
+        "red",
         "blue",
-        "red"
+        "purple"
       ]
     },
     {
@@ -167,22 +177,23 @@
       "filename": "Enter-the-Sound.jpg",
       "album": "Enter the Sound",
       "artist": "",
-      "description": "A poster-like graphic illustration with a large monumental speaker tower or concrete block dominating the center, its face filled with circular speaker openings and bold three-dimensional lettering. Small human figures climb or stand on the structure, while helicopters fly overhead. In the foreground, a shirtless figure is seen from behind facing the tower, surrounded by tall plants. Red decorative borders, a red sun-like circle, and additional emblem-like graphics frame the composition.",
-      "signatureMotif": "massive speaker tower rising from a field",
-      "medium": "graphic illustration",
+      "description": "A graphic, poster-like illustrated cover dominated by a massive concrete speaker tower or block structure rising from scrubby ground. The front face is filled with large rounded speaker openings and bold three-dimensional lettering integrated into the structure. Small human figures climb, rappel, perch, and pose around the tower, while helicopters fly in the sky. A large red sun or circle glows behind the top, and a shirtless figure seen from behind stands in the lower right foreground facing the structure. Decorative red border elements frame the image.",
+      "signatureMotif": "giant speaker-tower structure with people climbing on it",
+      "medium": "digital illustration",
+      "people": "multiple small figures around a giant structure, plus one shirtless person seen from behind in the foreground",
       "palette": [
         "yellow",
         "red",
         "black",
         "brown",
-        "olive"
+        "tan"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "A twilight rooftop observatory garden seen from a slightly elevated frontal viewpoint, a weathered city roof transformed into a listening deck with puddles, planters, collage walls, and a distant mountain horizon; the primary subject is a single green-tinted young man standing chest-up among leafy rooftop plants in a white collared shirt, facing slightly aside, a dark strap over one shoulder and a long narrow rod angled diagonally across the foreground toward his chest; above and behind him hangs a wide illuminated rectangular sign over a narrow shelf holding three small framed male portraits, while nearby cyan and pink tinted photo fragments and two black-and-white candid image scraps are pinned as loose collage panels with translucent rectangular overlays, a worn rooftop access door is dressed like a bar entrance where a suited man in a hat lights a cigarette and a woman is glimpsed through a small side window, oversized computer keyboard keys form staggered stepping platforms and planters across shallow reflective water on the roof, a secondary nook contains two tailored figures lounging on low black leather chairs before a translucent pink circular disc, preserving red shoes, a bright blue suit, and pink socks, the skyline beyond the parapet is dominated by a massive speaker tower with tiny climbers and helicopters overhead, tall plants at its base, and a red sun-disc behind it, while a toy-like rocket with a grinning face crosses diagonally through the upper sky with a glowing trail and small starbursts; hand-built mixed-media diorama, photographed miniature set, painted backdrop, sculpted objects, cut-paper collage, screenprinted graphic accents, slightly rough handmade textures; strong central hierarchy with the green portrait figure in the foreground, the lit sign and framed portraits forming a mid-level altar, the speaker tower anchoring the distance, diagonal movement from keyboard keys to rocket trail, cinematic dusk lighting with practical glow from the sign and doorway, reflective highlights in puddles, deep sky contrast; palette of green, pale blue, cyan, pink, red-purple, olive, black, weathered brown, moody yet playful, mysterious and expectant Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 desert exterior at sunrise, viewed from slightly below eye level, with a towering concrete speaker monument rising from scrubby ground before low mountains; the giant speaker-tower structure from reference image 8 is the primary subject, dominating the center, with tiny climbers and perched figures on it, a large red sun disc visually aligned behind its top, distant helicopters in the clear sky, and the shirtless figure from reference image 8 seen from behind in the lower right foreground facing the tower. Beside dense foliage near the front edge, the young man from reference image 1 appears chest-up outdoors exactly as framed on his sleeve, in his collared shirt with shoulder strap, kept sharp and recognizable. On one side, a worn roadside storefront adjoins the site; the man from reference image 4 stands in the doorway lighting a cigarette while the woman from reference image 4 looks out through the window. Built into a pale blue wall section at the base of the monument, three framed portrait photographs show the three men from reference image 2 in separate head-and-shoulders portraits on a narrow shelf beneath a larger cream panel. Nearby, the woman from reference image 6 reclines across black leather-and-chrome chairs and the man from reference image 6 sits beside her in his bright blue suit and pink socks inside an open-air wood-paneled lounge nook, with a translucent pink circular disc mounted behind them. Across the scrubby lot, oversized off-white keyboard keys from reference image 5 are arranged in staggered rows leading toward the mountains. Clean freestanding placards around the scene incorporate the black-and-white candid photo fragments from reference image 3 with translucent cyan and pink acrylic overlays. High above, a small toy-like rocket sculpture carrying the horned figure from reference image 7 crosses diagonally on a cable or pole, with bright starburst pennants around it. Photorealistic daylight location photography, crisp medium-format detail, physically plausible materials and scale, no collage look. Strong central hierarchy with the monument first, then human vignettes around its base, wide open sky, clean edges, and hard early morning sunlight casting long crisp shadows. Palette of sand, concrete grey, sage green, pale blue, off-white, red, cyan, pink, and black; mood playful, monumental, fresh, and sharply sunlit. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one young man in a collared shirt, shown close-up outdoors; reference image 2 shows three men shown in separate framed head-and-shoulders portraits; reference image 3 shows two men appearing across multiple candid black-and-white photos; reference image 4 shows one man standing in a doorway lighting a cigarette and one woman visible behind a window; reference image 6 shows one woman reclining on chairs and one man seated beside her in colorful suits; reference image 8 shows multiple small figures around a giant structure, plus one shirtless person seen from behind in the foreground. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "The-Boy-with-the-Arab-Strap.jpg",
     "Everything-Must-Go.jpg",

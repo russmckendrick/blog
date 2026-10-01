@@ -7,12 +7,14 @@ import {
   buildFallbackArtDirection,
   buildGenerationPrompt,
   buildReferenceMap,
+  buildYearBlock,
   hasPeople,
   isLowLight,
   isPhotographicMedium,
   LIGHTING_REPEAT_WINDOW,
   normalizeArtDirection,
-  normalizeCoverSummaries
+  normalizeCoverSummaries,
+  normalizeYear
 } from '../lib/tunes-cover-art-direction.js'
 import {
   formatTunesPostContext,
@@ -252,4 +254,56 @@ test('a low-light previous cover forces daylight on top of the repeat list', () 
 test('no lighting history means no lighting block', () => {
   assert.equal(buildLightingBlock([]), '')
   assert.equal(buildLightingBlock([null, '  ']), '')
+})
+
+test('a Year in Music prompt allows exactly the year and builds it into the scene', () => {
+  const summaries = normalizeCoverSummaries([], sourceReferences)
+  const direction = normalizeArtDirection({
+    concept: 'Rooftop record yard',
+    yearTreatment: 'digits stacked from vinyl crates on a rooftop',
+    prompt: 'A rooftop record yard in hard midday sun.'
+  }, summaries, sourceReferences, { year: '2025' })
+  const prompt = buildGenerationPrompt(direction, summaries, { year: 2025 })
+
+  assert.equal(direction.yearTreatment, 'digits stacked from vinyl crates on a rooftop')
+  assert.match(prompt, /The year "2025" appears exactly once as digits stacked from vinyl crates on a rooftop/)
+  assert.match(prompt, /only lettering anywhere in the image is the year "2025"/)
+  assert.match(prompt, /spelled exactly 2 0 2 5/)
+  // The first year cover painted the digits small and foreshortened on the floor; scale,
+  // placement, and viewpoint are now restated by code rather than left to the art director.
+  assert.match(prompt, /dominant subject and the first thing the eye reads/)
+  assert.match(prompt, /at least half the width of the frame/)
+  assert.match(prompt, /no other words, letters, numbers, dates/)
+  assert.doesNotMatch(prompt, /Include no readable text or lettering of any kind/, 'the blanket ban is swapped, not stacked')
+})
+
+test('weekly prompts keep the blanket text ban and carry no year', () => {
+  const summaries = normalizeCoverSummaries([], sourceReferences)
+  const direction = normalizeArtDirection({ prompt: 'A pier at noon.' }, summaries, sourceReferences)
+  const prompt = buildGenerationPrompt(direction, summaries)
+
+  assert.equal(direction.yearTreatment, null)
+  assert.match(prompt, /Include no readable text or lettering of any kind/)
+  assert.doesNotMatch(prompt, /The year "/)
+})
+
+test('a missing year treatment falls back to a physical one, never an overlay', () => {
+  const summaries = normalizeCoverSummaries([], sourceReferences)
+  const fallback = buildFallbackArtDirection(summaries, sourceReferences, { year: '2023' })
+  assert.match(fallback.prompt, /year 2023 as huge freestanding digits/)
+  assert.equal(normalizeArtDirection({ prompt: 'x' }, summaries, sourceReferences, { year: '2023' }).yearTreatment, fallback.yearTreatment)
+})
+
+test('the year brief refuses overlays and recent treatments case-insensitively', () => {
+  assert.equal(buildYearBlock(''), '')
+  assert.equal(normalizeYear('25'), '')
+  assert.equal(normalizeYear(2024), '2024')
+
+  const block = buildYearBlock('2022', ['Hedge maze digits', 'hedge maze digits', 'marquee bulbs'])
+  assert.match(block, /physically exist inside the scene/)
+  assert.match(block, /must not be a title overlay/)
+  assert.match(block, /The year is the lead subject of this cover/)
+  assert.match(block, /must open with the year/)
+  assert.equal(block.match(/hedge maze digits/gi).length, 1)
+  assert.match(block, /- marquee bulbs/)
 })

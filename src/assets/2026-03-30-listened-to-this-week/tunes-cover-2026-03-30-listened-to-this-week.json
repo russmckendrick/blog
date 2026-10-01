@@ -3,70 +3,72 @@
   "date": "2026-03-30",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "early morning mountain sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Snowstage coronation with orbiting limbs",
-  "creativeDirection": "A theatrical mixed-media diorama photographed like a dreamlike editorial set, combining miniature stagecraft, painted backdrops, and soft-focus portrait elements.",
-  "scene": "At night in a snowy alpine clearing, viewed straight on at slightly below piano height, a black grand piano forms an outdoor stage beneath a suspended circular chandelier made of radiating human legs.",
+  "concept": "Summit lodge breakfast after the all-night party",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography stages the sleeve portraits and objects inside a real alpine lodge terrace and dining room, using crisp early morning mountain sun to keep the scene bright, legible, and physically plausible while carrying over each cover’s people and motifs intact.",
+  "scene": "A wide 16:9 editorial photograph from just inside a mountain lodge, looking out through fully opened glass doors onto a sunlit snow terrace with peaks beyond; a long breakfast bar runs across the foreground interior, and the terrace steps down into bright snow where a grand piano sits.",
   "elements": [
     {
       "source": 1,
-      "element": "A single man in side profile stands beside the piano holding a wooden cane upright near his mouth, his patterned jacket simplified into bold decorative fabric accents and his presence framed by a flat yellow panel element."
+      "element": "the man from reference image 1 stands in clear side profile at the left end of the bar against a saturated yellow painted wall panel, holding his cane upright near his open mouth exactly as in the sleeve"
     },
     {
       "source": 2,
-      "element": "A crowned blonde beauty queen sits on the snow-dusted piano lid clutching a bouquet in crinkled wrap, mascara streaked and mouth open in a raw celebratory cry."
+      "element": "the woman from reference image 2 stands near the doorway at right, still wearing her crown with mascara streaks visible and clutching her bouquet wrapped in clear plastic, as if at the end of a pageant night"
     },
     {
       "source": 3,
-      "element": "A grayscale lounge-like woman appears as a quiet supporting figure leaning on the piano edge, sipping from a reflective metal cup through a straw, adding nocturnal cabaret atmosphere."
+      "element": "the woman from reference image 3 leans on the breakfast bar near center, head resting on one hand while drinking through a straw from a metal cup, with reflective steel countertop highlights translating the sleeve’s glossy table reflections"
     },
     {
       "source": 4,
-      "element": "Four half-lit long-haired men emerge from the darkness among the trees as shadowy onlookers, grouped with the same left-middle-right spacing as a distant chorus."
+      "element": "the four men from reference image 4 remain grouped in deep shadow inside a dark side room off the lodge interior, emerging from blackness with only their faces and slight clothing details caught"
     },
     {
       "source": 5,
-      "element": "A hazy cluster of five youthful faces is translated into ghostly close foreground spectators peering in from the lower left and right edges, with the red-haired woman most prominent."
+      "element": "the five young people from reference image 5 cluster close to the camera in the lower foreground, keeping their soft-focus intimacy and warm closeness as if crowding into the frame at breakfast"
     },
     {
       "source": 6,
-      "element": "The hanging circular sculpture of radiating legs becomes the central overhead chandelier suspended by visible chains above the piano stage."
+      "element": "a suspended chandelier-like sculpture made of radiating human legs hangs from chains above the bar in the lodge interior, lit by bright overhead daylight and interior spill"
     },
     {
       "source": 7,
-      "element": "The snow-covered grand piano, bench, sheet music, mountain horizon, evergreens, and deep blue winter sky provide the main setting and structure."
+      "element": "the snow-covered black grand piano and bench from reference image 7 sit on the terrace outside with sheet music on the stand, backed by evergreen trees and mountain range"
     },
     {
       "source": 8,
-      "element": "Raised hands, confetti, and blown-out concert light become a ring of celebratory motion around the piano, especially in the background and upper corners."
+      "element": "confetti scattered across the floor, terrace, and bar, plus a few last airborne pieces caught in sunlight near the doorway, suggest the packed party from reference image 8 without adding a second crowd of repeated faces"
     }
   ],
   "palette": [
-    "midnight blue",
     "snow white",
-    "velvet black",
-    "crown gold",
-    "bouquet pink",
-    "theatrical purple"
+    "deep alpine blue",
+    "pine green",
+    "saturated yellow",
+    "purple",
+    "black"
   ],
-  "mood": "strange, ecstatic, wintry, theatrical",
+  "mood": "crisp, surreal, celebratory morning-after clarity",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Greatest-Hits.jpg",
       "album": "Greatest Hits",
       "artist": "",
-      "description": "A studio portrait of a man in side profile against a flat bright yellow background. He has dark curly hair and wears a patterned jacket with dark lapels. He holds a wooden cane or stick upright near his face, with the rounded top close to his mouth. Large blocks of colored text run vertically along the left side, and a small dark sticker-like box appears near the lower right.",
-      "signatureMotif": "man in profile holding a cane upright near his mouth",
-      "medium": "color photography with graphic text layout",
+      "description": "A studio portrait shows one man in side profile against a flat bright yellow background. He has dark curly hair and wears a small-check jacket with dark lapels. He holds a wooden cane or stick upright near his face, with the rounded handle close to his open mouth. Large blocks of colored text fill the left side, and a small dark sticker-like rectangle sits near the lower right.",
+      "signatureMotif": "a man in profile holding a cane upright near his mouth",
+      "medium": "color photograph",
+      "people": "one man in side profile with dark curly hair holding a cane",
       "palette": [
         "yellow",
         "red",
         "blue",
         "black",
-        "beige"
+        "white"
       ]
     },
     {
@@ -74,15 +76,16 @@
       "filename": "Live-Through-This.jpg",
       "album": "Live Through This",
       "artist": "",
-      "description": "A soft-focus color photograph of a blonde woman wearing a sparkling crown and holding a bouquet of flowers wrapped in clear plastic. Her mouth is open in a wide smile or shout, and dark mascara streaks run beneath her eyes. The background is a dark purple curtain, with an oval text element in the upper right.",
-      "signatureMotif": "crying beauty queen with crown and bouquet",
-      "medium": "color photography",
+      "description": "A soft-focus color photograph of a blonde woman wearing a sparkling tiara or pageant crown. She smiles or shouts with mouth open, with dark mascara streaked beneath her eyes. She clutches a bouquet of flowers wrapped in clear plastic. The background is a dark purple curtain, with text placed in the upper right.",
+      "signatureMotif": "a crowned woman with smeared makeup holding a bouquet",
+      "medium": "color photograph",
+      "people": "one woman with blonde hair wearing a crown and holding flowers",
       "palette": [
         "purple",
         "pink",
         "gold",
         "blonde",
-        "green"
+        "white"
       ]
     },
     {
@@ -90,12 +93,13 @@
       "filename": "Trailer-Park.jpg",
       "album": "Trailer Park",
       "artist": "",
-      "description": "A grainy black-and-white photograph framed by wide white borders at top and bottom. A woman leans on a bar or counter with her head resting on one hand while drinking through a straw from a metal cup. The glossy surface in the foreground reflects lights and shapes, and the background is softly blurred with lamp-like highlights.",
-      "signatureMotif": "woman leaning at a bar sipping from a metal cup",
-      "medium": "black-and-white photography",
+      "description": "A grainy black-and-white photograph shows a woman leaning on a bar or table, resting her head on one hand while drinking through a straw from a metal cup. The foreground is dominated by glossy reflections on the tabletop, and several blurred lights glow in the background and at right. There are white borders at top and bottom with small printed text.",
+      "signatureMotif": "a woman leaning on a bar sipping from a metal cup through a straw",
+      "medium": "black-and-white photograph",
+      "people": "one woman leaning on a counter and drinking through a straw",
       "palette": [
-        "white",
         "black",
+        "white",
         "gray",
         "sepia"
       ]
@@ -105,14 +109,16 @@
       "filename": "Shake-Your-Money-Maker.jpg",
       "album": "Shake Your Money Maker",
       "artist": "",
-      "description": "A very dark group portrait showing four long-haired men in black clothing emerging from a black background. Their faces and white shirt areas are partially lit, creating a low-key moody composition. One figure stands at left, two are grouped in the middle, and one is positioned lower at right.",
-      "signatureMotif": "four band members half-lit against a black background",
-      "medium": "dark color photography",
+      "description": "A very dark group portrait shows four long-haired men dressed mostly in black, emerging from a black background. One face appears at upper left in partial shadow, two figures cluster in the center, and one man is more visible at lower right. The image is low-lit and moody, with pale skin and a few hints of white shirt and red detail standing out.",
+      "signatureMotif": "four men in dark clothing emerging from black shadow",
+      "medium": "dark color photograph",
+      "people": "four men with long hair posed in deep shadow",
       "palette": [
         "black",
+        "dark brown",
         "cream",
-        "brown",
-        "deep red"
+        "white",
+        "red"
       ]
     },
     {
@@ -120,15 +126,16 @@
       "filename": "Souvlaki.jpg",
       "album": "Souvlaki",
       "artist": "",
-      "description": "A soft, slightly blurred color photograph of five young people clustered close to the camera outdoors. A red-haired woman occupies the lower right foreground, while four men with dark hair fill the left and center, some partially cropped. The image has a hazy, washed look with shallow focus.",
-      "signatureMotif": "close-up cluster of five faces with a red-haired woman in front",
-      "medium": "soft-focus color photography",
+      "description": "A soft, slightly blurred color portrait shows five young people close to the camera. A dark-haired young man fills the left foreground, a red-haired young woman appears in the lower right foreground, and three more young men stand behind them out of focus. The background is indistinct and warm-toned, giving the image a hazy look.",
+      "signatureMotif": "a soft-focus group portrait with a red-haired woman in the foreground",
+      "medium": "color photograph",
+      "people": "five young people in a close, soft-focus group portrait",
       "palette": [
         "cream",
-        "black",
         "brown",
+        "black",
         "red",
-        "olive"
+        "gold"
       ]
     },
     {
@@ -136,9 +143,10 @@
       "filename": "Its-Only-About-You-If-You-Think-It-Is.jpg",
       "album": "Its Only About You If You Think It Is",
       "artist": "",
-      "description": "A black-and-white image of a suspended sculptural form against a dark stage-like background. The central shape is a bright circular body with multiple human legs radiating outward like spokes. Chains and overhead lights are visible above, and a small light source appears at left.",
-      "signatureMotif": "circular hanging sculpture made of radiating human legs",
-      "medium": "black-and-white photography of an installation or stage prop",
+      "description": "A black-and-white image shows a suspended sculptural object hanging by chains in a dark interior. The object is a bright white central shape ringed by multiple human legs radiating outward like spokes. Strong overhead lights flare above it, and the background is mostly black, suggesting a stage or gallery space.",
+      "signatureMotif": "a hanging sculpture made of multiple legs radiating from a central form",
+      "medium": "black-and-white photograph",
+      "people": "none",
       "palette": [
         "black",
         "white",
@@ -150,15 +158,16 @@
       "filename": "Even-in-the-Quietest-Moments.jpg",
       "album": "Even in the Quietest Moments",
       "artist": "",
-      "description": "A black grand piano and matching bench sit outdoors in deep snow, with snow piled on the lid, keys, and seat. A sheet of music rests on the music stand. Behind them is a mountain landscape with evergreen trees and a clear dark blue sky.",
-      "signatureMotif": "snow-covered grand piano in a mountain landscape",
-      "medium": "color photography",
+      "description": "A color landscape photograph shows a black grand piano and matching bench sitting outdoors in deep snow. Snow covers the piano lid, keys, and bench, and a sheet of music rests on the music stand. Behind it are evergreen trees and a wide mountain range under a deep blue sky.",
+      "signatureMotif": "a snow-covered grand piano in a mountain landscape",
+      "medium": "color photograph",
+      "people": "none",
       "palette": [
         "white",
-        "black",
         "blue",
-        "gray",
-        "green"
+        "black",
+        "green",
+        "gray"
       ]
     },
     {
@@ -166,22 +175,23 @@
       "filename": "Boys-And-Girls-In-America.jpg",
       "album": "Boys And Girls In America",
       "artist": "",
-      "description": "A crowded party or concert scene filled with overlapping people raising their hands in the air. Confetti or glitter is scattered throughout, and bright stage-like lighting creates a layered, high-energy collage effect. The center is washed with white light, while faces and arms surround it from all sides.",
-      "signatureMotif": "crowd with raised hands amid confetti and bright light",
-      "medium": "color photography with layered collage-like exposure",
+      "description": "A densely layered, high-energy color photograph shows a packed crowd of young people at a party or concert with many arms raised. Confetti or glitter fills the air, and a bright white flash or light blooms near the center. Faces, hands, and bodies overlap across the whole frame in a chaotic collage-like composition.",
+      "signatureMotif": "a confetti-filled crowd with raised hands under a bright central flash",
+      "medium": "color photograph",
+      "people": "many young people packed together with raised arms in a party crowd",
       "palette": [
         "pink",
         "red",
         "white",
-        "purple",
-        "orange"
+        "orange",
+        "purple"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "A night scene in a snowy alpine clearing, viewed straight on from slightly below piano height, centered on a black grand piano half-buried in deep snow with its bench and sheet music visible, mountains and dark evergreens behind under a deep blue winter sky; on the piano lid sits a crowned blonde beauty queen clutching a bouquet wrapped in clear plastic, mascara streaked under her eyes and mouth open in an ecstatic cry, making her the emotional focal point; beside the piano stands a single man in side profile holding a wooden cane upright near his mouth, wearing a patterned jacket with dark lapels and backed by a flat rectangular yellow scenic panel, while a grayscale woman quietly leans on the piano edge sipping from a reflective metal cup through a straw, four long-haired men in black emerge half-lit from the darkness between the trees as a distant chorus, a soft hazy cluster of five youthful faces presses into the lower frame edges with the red-haired woman most visible, and above everything hangs a circular chandelier-like sculpture made of radiating human legs suspended by chains; mixed-media theatrical diorama, combining miniature stagecraft, painted scenery, textile costume detail, suspended sculpture, editorial set photography, soft blur, grain, and subtle collage layering; strong central hierarchy with the piano and crowned woman dominant, the leg chandelier directly overhead, the man with cane as secondary vertical accent, supporting figures receding into edges and background, confetti and raised hands swirling around the scene like concert afterglow, bright central spotlight fading into dark corners; palette of midnight blue, snow white, velvet black, crown gold, bouquet pink, theatrical purple, poster yellow, and deep evergreen, with a surreal ecstatic winter-cabaret mood. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "Wide view from just inside an alpine mountain lodge looking out through open glass doors onto a snow terrace and distant peaks, a long breakfast bar across the foreground interior and a terrace beyond; the primary subject is the snow-covered black grand piano and bench from reference image 7 sitting outside in brilliant snow with sheet music on its stand, mountains and evergreens behind it. At the left end of the bar, the man from reference image 1 stands in exact side profile against a flat saturated yellow wall panel, holding his wooden cane upright near his open mouth. Near center, the woman from reference image 3 leans on the bar with her head resting on one hand, sipping from a metal cup through a straw, with glossy reflections across the steel countertop. Near the right doorway, the woman from reference image 2 stands wearing her sparkling crown, mascara streaked beneath her eyes, clutching her bouquet wrapped in clear plastic. In a dark side room off the interior, the four men from reference image 4 remain grouped in deep shadow, their faces emerging from blackness. In the lower foreground close to camera, the five young people from reference image 5 crowd the frame in a soft-focus cluster, with the red-haired young woman at lower right foreground. Hanging above the bar is the sculptural object from reference image 6, a chandelier-like form suspended by chains with multiple legs radiating around a bright white center. Confetti from reference image 8 is scattered across the lodge floor, bar, and snow terrace, with a few bright pieces still floating in the doorway light. Daylight location photography, crisp editorial realism, medium-format clarity, no collage look. Strong early morning mountain sun from outside creates hard clean shadows on the snow and bright directional light through the doors, while the interior stays open and readable with natural bounce; clear visual hierarchy from piano outside to bar figures inside. Palette of snow white, alpine blue, pine green, black, saturated yellow, purple, gold, and small hot confetti accents; mood is bright, surreal, celebratory morning-after calm. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one man in side profile with dark curly hair holding a cane; reference image 2 shows one woman with blonde hair wearing a crown and holding flowers; reference image 3 shows one woman leaning on a counter and drinking through a straw; reference image 4 shows four men with long hair posed in deep shadow; reference image 5 shows five young people in a close, soft-focus group portrait; reference image 8 shows many young people packed together with raised arms in a party crowd. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Greatest-Hits.jpg",
     "Live-Through-This.jpg",

@@ -3,70 +3,72 @@
   "date": "2026-06-22",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Celestial rehearsal inside a cutaway caravan",
-  "creativeDirection": "A richly layered editorial gouache-and-collage illustration merges cosmic fantasy with graphic minimalism inside a theatrical trailer interior.",
-  "scene": "Wide 16:9 cutaway view into a weathered caravan parked in a dark open field at night, seen straight-on like a stage set with the roof peeled away and the surrounding sky visible.",
+  "concept": "Hard-sun petting farm with celestial props",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography turns the illustrated and graphic sleeves into tangible objects staged in a real petting-farm paddock, using crisp midday realism and strong negative space.",
+  "scene": "A wide 16:9 editorial photograph shot at eye level in a sunlit goat enclosure, with sandy ground, timber fencing, a few scrubby trees, and a cloudless blue sky; the camera faces a clean open paddock where one constructed surreal prop area interrupts the otherwise ordinary farm setting.",
   "elements": [
     {
       "source": 1,
-      "element": "A golden five-pointed star floats as the main seat near the center, with a young woman in a draped blue-green, red, and cream dress posed sideways on it; small painted planets and a comet trail appear through the caravan windows and open roof."
+      "element": "the woman from reference image 1 appears as a life-size painted cutout statue seated sideways on a large physical golden five-pointed star mounted low above the sand, still looking upward, with a few small hanging planet props nearby"
     },
     {
       "source": 2,
-      "element": "One pale figure in an oversized bright red garment appears at left, pressing both hands to their cheeks; their portrait is transformed into staggered vertical paper-strip slices, like hanging cut collage panels."
+      "element": "the child from reference image 2 appears once as a freestanding portrait panel built from narrow vertical slats, preserving the sliced image, red hood, hands-on-cheeks pose, and turquoise backdrop glimpsed between slats"
     },
     {
       "source": 3,
-      "element": "A large white goat stands prominently in the caravan doorway with two smaller goats nearby, while five dark-clad young men are reduced to supporting silhouettes and gestures outside the trailer, as if tending the animals in the field."
+      "element": "the five people from reference image 3 are the main live figures, standing together in the enclosure feeding several goats, with one large white goat dominant in the foreground and smaller brown and black goats around them"
     },
     {
       "source": 4,
-      "element": "The square of striped geometric forms becomes wall art and built-in panels inside the caravan, integrated into cupboards, a folding screen, and rug-like decorative shapes."
+      "element": "the multicolored striped geometric letterforms from reference image 4 become painted wayfinding boards and fence panels in mustard, red, teal, orange, and blue, arranged with lots of white space"
     },
     {
       "source": 5,
-      "element": "The sharp red-and-yellow angular emblem appears as a small illuminated badge above the interior, set against a broad black leather-textured night sky."
+      "element": "the angular red-and-yellow emblem from reference image 5 appears once as a small sharp ranch-brand sign mounted on a matte black feed bin"
     },
     {
       "source": 6,
-      "element": "A single short horizontal black line is used as a spare graphic accent on a white cabinet door or small interior panel, preserving its stark minimal presence."
+      "element": "the short horizontal black line and sparse centered layout from reference image 6 inform a minimal white livestock placard standing in open space with a single black rule near center"
     },
     {
       "source": 7,
-      "element": "A blue biomechanical winged humanoid looms outside behind the caravan as a distant guardian figure, its spiked wings framing the roofline against turbulent cosmic clouds."
+      "element": "the blue armored winged humanoid from reference image 7 becomes one large fabricated metal scarecrow-like sculpture at the back of the paddock, wings spread against the sky, with blue metallic surfaces and ember-colored paint accents"
     },
     {
       "source": 8,
-      "element": "The caravan structure, checkered floor, chandelier, fireplace, red chair, dog, rotary telephone, pineapple, lizard, mannequin torso, ladder, stacked chairs, clock, framed pictures, floating leaves, and tree growing through the room provide the dense theatrical environment."
+      "element": "the caravan from reference image 8 appears parked beside the enclosure as a real cutaway trailer packed with the chandelier, fireplace, framed pictures, ladder with stacked chairs, mannequin torso, pineapple, red rotary telephone with green lizard, television, sailboat model, wall clock, tree trunk, autumn leaves, Dalmatian, and the seated person from reference image 8 hidden behind an open newspaper in a red chair"
     }
   ],
   "palette": [
-    "midnight blue",
+    "sky blue",
+    "sand tan",
+    "goat white",
+    "grass green",
     "gold",
-    "cream",
-    "crimson red",
-    "teal",
-    "mustard yellow"
+    "red"
   ],
-  "mood": "Whimsical, nocturnal, theatrical, and slightly surreal",
+  "mood": "playful, sun-struck, surreal but matter-of-fact",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Mellon-Collie-and-the-Infinite-Sadness.jpg",
       "album": "Mellon Collie and the Infinite Sadness",
       "artist": "",
-      "description": "A vintage-style illustrated scene of a young woman seated sideways on a large golden five-pointed star floating in outer space. She has curled light-brown hair and wears a draped dress in blue-green, red, and cream tones. The background is a deep blue star field with several softly rendered planets and a comet-like streak scattered around the composition.",
-      "signatureMotif": "a woman sitting on a golden star in space",
-      "medium": "illustration/collage in a vintage painted style",
+      "description": "A vintage-style illustration shows one young woman with curled light-brown hair seated sideways on a large golden five-pointed star floating in outer space. She wears a draped dress in green, blue, and red tones and looks upward. The background is a deep blue star field with several softly rendered planets and crescent-like celestial forms scattered around.",
+      "signatureMotif": "a woman seated on a golden star",
+      "medium": "illustration",
+      "people": "one woman seated on a star looking upward",
       "palette": [
-        "deep blue",
+        "blue",
         "gold",
-        "cream",
+        "green",
         "red",
-        "green"
+        "cream"
       ]
     },
     {
@@ -74,15 +76,16 @@
       "filename": "Re-Created.jpg",
       "album": "Re Created",
       "artist": "",
-      "description": "A centered portrait of a person with pale skin and tousled light blond-gray hair, wearing an oversized bright red garment. Their face and body are fragmented into many narrow vertical strips, creating a sliced and staggered effect against a plain white background. The person presses both hands to their cheeks with eyes mostly closed and mouth slightly open.",
-      "signatureMotif": "a vertically sliced portrait in a red garment",
-      "medium": "digitally manipulated photograph",
+      "description": "A minimalist photographic cover on a white background features a centrally placed portrait fragmented into many narrow vertical strips. The image shows a blond child in a red hooded top pressing both hands to their cheeks, with a turquoise-blue backdrop visible through the sliced strips. The strips vary slightly in height, creating a staggered top and bottom edge.",
+      "signatureMotif": "a vertically sliced portrait of a child in red",
+      "medium": "photo collage",
+      "people": "one child with blond hair in a red hooded top, hands on cheeks",
       "palette": [
         "white",
         "red",
-        "light blue",
+        "turquoise",
         "beige",
-        "gray"
+        "light brown"
       ]
     },
     {
@@ -90,9 +93,10 @@
       "filename": "Pet-Sounds.jpg",
       "album": "Pet Sounds",
       "artist": "",
-      "description": "A color photograph of five young men standing outdoors in a petting-zoo-like enclosure surrounded by several goats. One large white goat dominates the foreground, with brown and black goats around it. Trees, fencing, and a sandy ground fill the background, and the men wear dark jackets and casual clothing while interacting with the animals.",
-      "signatureMotif": "five men feeding and standing among goats",
+      "description": "A color photograph shows five young men standing together in an outdoor animal enclosure, feeding and interacting with several goats. A large white goat dominates the foreground, with brown and black goats around it. Trees, fencing, and a sandy ground fill the background, while a broad green band occupies the top portion of the cover.",
+      "signatureMotif": "five men feeding goats",
       "medium": "photograph",
+      "people": "five young men standing together feeding goats",
       "palette": [
         "green",
         "brown",
@@ -106,9 +110,10 @@
       "filename": "Basic.jpg",
       "album": "Basic",
       "artist": "",
-      "description": "A minimalist graphic design on a white background made of four large geometric letter-like forms arranged in a square. Each form is built from parallel curved or straight stripes: mustard yellow at top left, red at top right, teal at bottom left, orange in the center bottom, and blue at bottom right. The composition is clean, flat, and symmetrical.",
-      "signatureMotif": "striped geometric letterforms arranged in a square",
-      "medium": "flat graphic design",
+      "description": "A stark white cover contains a centered arrangement of large geometric striped letterforms made from parallel curved and straight lines. The forms are separated into blocks and colored mustard yellow, red, teal, orange, and blue, creating a clean retro graphic composition with lots of empty white space around it.",
+      "signatureMotif": "multicolored striped geometric letterforms",
+      "medium": "graphic design",
+      "people": "none",
       "palette": [
         "white",
         "mustard yellow",
@@ -122,9 +127,10 @@
       "filename": "Greatest-Hits.jpg",
       "album": "Greatest Hits",
       "artist": "",
-      "description": "A very minimal cover with a nearly full black background that has a subtle leather-like texture. Near the top center is a sharp angular red-and-yellow emblem-like band mark, with a small line of gold text beneath it. Most of the image remains empty black space.",
-      "signatureMotif": "an angular red-and-yellow emblem on a black textured field",
+      "description": "A very minimal cover with a textured black background and a small centered band logo rendered in sharp angular red shapes with yellow inner edges near the upper middle. Beneath it is a short line of small gold text, leaving most of the cover as empty black space.",
+      "signatureMotif": "an angular red-and-yellow emblem on black",
       "medium": "graphic design",
+      "people": "none",
       "palette": [
         "black",
         "red",
@@ -137,9 +143,10 @@
       "filename": "Substance.jpg",
       "album": "Substance",
       "artist": "",
-      "description": "An extremely minimal white cover with centered black serif typography and a single short horizontal black line in the middle area. There are no figures, objects, or scenery beyond the text and line, leaving a large amount of negative space.",
-      "signatureMotif": "a single short horizontal black line on a white field",
-      "medium": "typographic minimalist design",
+      "description": "A minimalist white cover with widely spaced black serif text arranged in stacked lines and a short horizontal black line near the center. The composition is extremely sparse, with the text elements centered and surrounded by large areas of blank white space.",
+      "signatureMotif": "a short horizontal black line amid sparse centered text",
+      "medium": "typographic design",
+      "people": "none",
       "palette": [
         "white",
         "black"
@@ -150,13 +157,14 @@
       "filename": "The-Best-of-Judas-Priest.jpg",
       "album": "The Best of Judas Priest",
       "artist": "",
-      "description": "A dramatic fantasy illustration of a blue metallic humanoid creature with an elongated helmet-like head, glowing eyes, and intricate biomechanical armor. Large spiked feather-like wings fan out behind it. The background is dark with explosive clouds and streaks of magenta, purple, orange, and blue light, creating a fiery cosmic atmosphere.",
-      "signatureMotif": "a blue armored winged humanoid creature",
-      "medium": "digital fantasy illustration",
+      "description": "A dramatic fantasy illustration depicts a humanoid winged creature in metallic blue armor standing against a fiery cosmic background. The figure has a sharp, birdlike or demonic face with glowing eyes, intricate biomechanical body details, and large spiked feather-like wings spreading outward. The background mixes dark space-like tones with vivid red, orange, and magenta bursts.",
+      "signatureMotif": "a blue armored winged humanoid with glowing eyes",
+      "medium": "digital illustration",
+      "people": "none",
       "palette": [
         "blue",
         "purple",
-        "magenta",
+        "red",
         "orange",
         "black"
       ]
@@ -166,22 +174,23 @@
       "filename": "The-Very-Very-Best-of-Crowded-House.jpg",
       "album": "The Very Very Best of Crowded House",
       "artist": "",
-      "description": "A whimsical illustrated cutaway of a caravan or trailer interior packed with eclectic objects. Inside are a chandelier, fireplace with flames, framed pictures, a red chair with a person hidden behind an open newspaper, a Dalmatian, a red rotary telephone, a pineapple, a lizard, a mannequin torso, a ladder, stacked chairs, a wall clock, leaves, and a large tree growing through the room. The floor is black-and-white checkered, and autumn leaves float around the exterior against a warm red-to-orange sky.",
-      "signatureMotif": "a crowded caravan interior filled with eclectic objects and a tree",
-      "medium": "illustrated collage",
+      "description": "A whimsical illustrated cross-section of a caravan or trailer interior is packed with eclectic objects. Inside are a chandelier, fireplace with flames, framed pictures, a ladder with stacked chairs, a mannequin torso, a pineapple, a red rotary telephone with a green lizard on it, a television, a sailboat model, a wall clock, a large tree growing through the room, scattered autumn leaves, and a Dalmatian at the right. A seated person in a red chair is hidden behind an open newspaper, and the trailer sits on a single visible wheel above black grass silhouettes against a warm sunset gradient sky.",
+      "signatureMotif": "a crowded caravan interior filled with surreal household objects",
+      "medium": "illustration",
+      "people": "one seated person hidden behind a newspaper in a red chair",
       "palette": [
         "red",
         "orange",
-        "cream",
+        "gold",
         "brown",
         "green"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "Straight-on wide cutaway view of a weathered caravan in an open dark field at night, the roof peeled away like a stage set and the sky visible beyond; at the center, a young woman with curled light-brown hair sits sideways on a floating golden five-pointed star as if it were a chair, calm and luminous; inside the caravan, include a chandelier, lit fireplace, framed pictures, red chair, Dalmatian, red rotary telephone, pineapple, lizard, mannequin torso, ladder, stacked chairs, wall clock, black-and-white checkered floor, and a large tree trunk growing up through the room with leaves drifting through the air; place one pale figure in an oversized bright red garment at the left interior pressing both hands to their cheeks, their body and face fragmented into narrow staggered vertical paper-strip slices; in the doorway and just outside, a large white goat leads with two smaller goats nearby, while five young men in dark casual clothing remain secondary in the field, tending and feeding the animals; integrate the striped geometric square motifs as built-in decorative wall panels, cupboard fronts, and a folding screen; use a small sharp red-and-yellow angular emblem as a glowing sign near the upper interior against a broad black leather-textured night area; add one stark short horizontal black line on a small white cabinet panel; beyond and above the caravan, a distant blue metallic winged humanoid guardian with glowing eyes and spiked feather-like wings rises against explosive magenta, purple, orange, and blue storm clouds; scatter small planets and a comet streak through the open roof and windows. Gouache, painted collage, cut paper textures, and ink details with editorial illustration precision. Clear hierarchy with the star-seated woman central, goats and red sliced figure secondary, guardian and men tertiary; spacious 16:9 composition with dense interior detail balanced by dark negative sky. Dramatic moonlike side lighting and warm firelight inside. Palette of midnight blue, gold, cream, crimson, teal, mustard, ember orange, black, electric blue, and magenta; mood whimsical, uncanny, celestial, and theatrical. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide eye-level 16:9 view across a real petting-farm goat enclosure under hard midday sun, sandy ground, timber fencing, a few scrubby trees, clean blue sky, with generous open space and crisp shadows; the five people from reference image 3 are the primary subject, standing together in the paddock feeding goats exactly as a documentary farm portrait, with one large white goat dominant in the foreground and smaller brown and black goats around them. To one side, the woman from reference image 1 is preserved as a life-size painted figure seated sideways on a large physical golden five-pointed star mounted just above the sand, still gazing upward, with a few small planet props suspended nearby; the child from reference image 2 appears once as a freestanding portrait made of narrow vertical slats, keeping the blond child, red hooded top, hands pressed to cheeks, and turquoise background visible through the sliced construction; the multicolored striped geometric letterforms from reference image 4 become clean painted fence panels and signboards in mustard yellow, red, teal, orange, and blue; the angular red-and-yellow emblem from reference image 5 appears once as a small sharp sign on a matte black feed bin; the minimal black horizontal line from reference image 6 becomes a sparse white livestock placard with a single black rule near center; the blue armored winged humanoid from reference image 7 stands at the back as one large fabricated metallic sculpture with spread spiked wings and glowing-eye detailing; the caravan from reference image 8 is a real cutaway trailer parked beside the enclosure, densely packed with a chandelier, lit fireplace, framed pictures, ladder with stacked chairs, mannequin torso, pineapple, red rotary telephone with a green lizard on it, television, sailboat model, wall clock, a tree trunk growing through, scattered autumn leaves, a Dalmatian at the right, and the seated person from reference image 8 hidden behind an open newspaper in a red chair. Photographic realism, daylight location shoot, crisp medium-format detail, no haze, no wet surfaces, clean edges, people’s faces sharp and unobscured. Composition gives the goats and the five people clear priority, with the golden star figure and the cutaway caravan as secondary anchors and the graphic signs as supporting accents. Palette of sky blue, sand tan, goat white, green, gold, red, teal, mustard, and matte black; playful, bright, surreal yet physically plausible. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one woman seated on a star looking upward; reference image 2 shows one child with blond hair in a red hooded top, hands on cheeks; reference image 3 shows five young men standing together feeding goats; reference image 8 shows one seated person hidden behind a newspaper in a red chair. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Mellon-Collie-and-the-Infinite-Sadness.jpg",
     "Re-Created.jpg",

@@ -3,70 +3,72 @@
   "date": "2026-06-01",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Crown in the rehearsal crater",
-  "creativeDirection": "A hand-built theatrical diorama rendered as a mixed-media miniature stage, combining painted landscape backdrops, suspended sculptural objects, and photographic haze.",
-  "scene": "A frontal view into an indoor rehearsal hall transformed into a surreal proscenium canyon, as if a stage set opens onto a mountainous valley.",
+  "concept": "Atrium mirror beneath a canyon mural",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography in a real modern atrium uses architectural surfaces, hanging objects, and a large circular mirror to fuse the covers into one crisp, physically plausible editorial scene.",
+  "scene": "A wide 16:9 view inside a bright modern public atrium or museum court, seen from slightly above waist height, looking toward a huge circular floor mirror set beneath a towering interior wall printed or painted as a realistic canyon landscape with a waterfall; strong midday sunlight pours from skylights or a glass roof, casting sharp clean shadows.",
   "elements": [
     {
       "source": 1,
-      "element": "A blurred pair of distant standing figures becomes a smoky tree-line-and-embers scrim along the bottom of the stage, suggesting heat and memory beneath the scene."
+      "element": "blurred figures in fiery red-orange haze appear as distant people moving through the far end of the atrium behind warm orange translucent panels, with one child-sized figure nearest the front and a long-haired figure to the right, kept indistinct and back in space"
     },
     {
       "source": 2,
-      "element": "Multicoloured segmented cylinders hang diagonally overhead like suspended acoustic baffles or tuning pipes, casting soft shadows across the white upper space."
+      "element": "multicolored segmented cylinders are suspended diagonally across the upper air of the atrium as a clean sculptural installation with soft shadows on the white walls"
     },
     {
       "source": 3,
-      "element": "A sketchy red crown serves as the central emblem, suspended above the stage opening with faint circular ripples radiating behind it."
+      "element": "a hand-drawn red crown is painted simply on a pale yellow circular wall panel or banner near the canyon wall, with faint concentric ring texture worked into the surface"
     },
     {
       "source": 4,
-      "element": "The blue double portrait is transformed into two oversized translucent side-curtains or scrims bearing the same man's hazy face once, split across left and right."
+      "element": "the man from reference image 4 appears once only as a large blue-tinted double portrait on a vertical lightbox or printed scrim, both close-up faces side by side with eyes downcast"
     },
     {
       "source": 5,
-      "element": "The main backdrop is a painted mountain valley with towering cliffs and a bright waterfall descending at stage right."
+      "element": "the back wall becomes the dominant environmental feature: a monumental realistic canyon-and-waterfall mural or printed architectural backdrop with cliffs, valley depth, and tiny riders barely visible low in the scene"
     },
     {
       "source": 6,
-      "element": "A single school-uniformed figure stands center stage near a window-frame flat, with a glowing bulb blended over the torso like an illuminated prop-heart."
+      "element": "the young person from reference image 6 stands in the atrium foreground holding a glowing lightbulb toward the camera, wearing the blazer, shirt, and tie from the cover, with the face partially obscured by a bright blur but the pose preserved"
     },
     {
       "source": 7,
-      "element": "The cream dress with red hearts hangs stage left from a wire, like a costume awaiting performance in the empty wings."
+      "element": "the cream dress with the vertical row of red hearts hangs alone from a simple hanger on a freestanding minimalist rack at one side of the space, with generous empty space around it"
     },
     {
       "source": 8,
-      "element": "A large circular fisheye mirror on the floor or rear wall reflects a small band and studio stands, adding depth and a secondary performance space."
+      "element": "the five people from reference image 8 appear only once as a reflection inside the large circular floor mirror, in their studio-like arrangement with the closest person leaning forward so the shoe sole dominates the reflected foreground"
     }
   ],
   "palette": [
-    "off-white",
-    "pale yellow",
-    "cobalt blue",
-    "ember red",
-    "orange glow",
-    "cream"
+    "white",
+    "cream",
+    "canyon blue-gray",
+    "waterfall blue",
+    "red-orange",
+    "pale yellow"
   ],
-  "mood": "enigmatic, ceremonial, slightly haunted",
+  "mood": "clean, surprising, spacious",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Inferno.jpg",
       "album": "Inferno",
       "artist": "",
-      "description": "A blurred, grainy photographic collage with two human figures standing outdoors or near a wooded area. One figure is more visible on the right, while another darker silhouette stands nearer the center. The lower portion is overlaid with fiery red-orange imagery resembling flames or a burning landscape, with a dark tree-line silhouette along the bottom edge. Large blocky graphic shapes in yellow and white overlay the image.",
-      "signatureMotif": "fiery red-orange blaze beneath blurred standing figures",
-      "medium": "photographic collage with graphic text overlay",
+      "description": "A grainy, warm-toned photographic cover with large block lettering over a blurred outdoor scene. Several indistinct human figures stand or move in a wooded or park-like setting, with one child-sized figure in the foreground and another long-haired figure at right. The lower portion glows red-orange like firelight or heavy color burn, and a dark strip of grass silhouettes the bottom edge.",
+      "signatureMotif": "blurred figures in a fiery red-orange haze",
+      "medium": "grainy color photograph with heavy text overlay",
+      "people": "at least three people, blurred figures outdoors including a child-sized figure in front and a long-haired figure at right",
       "palette": [
-        "yellow",
         "orange",
         "red",
-        "black",
-        "dark green"
+        "yellow",
+        "dark green",
+        "black"
       ]
     },
     {
@@ -74,15 +76,16 @@
       "filename": "From-a-Hole-in-the-Floor-to-a-Fountain-of-Youth.jpg",
       "album": "From a Hole in the Floor to a Fountain of Youth",
       "artist": "",
-      "description": "A clean minimalist image showing many smooth cylindrical rods floating diagonally across a white background. Each cylinder is segmented into bands of different colours, and each casts a soft shadow down and to the side, creating a sense of depth and spacing. The composition is orderly but varied, with rods angled in different directions.",
-      "signatureMotif": "multicoloured segmented cylinders",
-      "medium": "digital illustration or 3D-rendered graphic",
+      "description": "A minimalist studio image showing many smooth cylindrical rods floating diagonally across a white background. Each cylinder is segmented into bands of different colors, with circular end caps visible. Soft gray shadows fall behind them, emphasizing depth and spacing.",
+      "signatureMotif": "multicolored segmented cylinders floating diagonally",
+      "medium": "clean studio photograph of painted sculptural objects",
+      "people": "none",
       "palette": [
         "white",
         "light blue",
-        "cyan",
+        "orange",
         "red",
-        "orange"
+        "pink"
       ]
     },
     {
@@ -90,13 +93,15 @@
       "filename": "Fashion-Nugget.jpg",
       "album": "Fashion Nugget",
       "artist": "",
-      "description": "A simple graphic design on a pale yellow background with faint concentric circular rings radiating from the center. In the middle is a hand-drawn red crown with five rounded points and sketch-like linework. Dark blue decorative lettering appears above and below the crown.",
+      "description": "A simple graphic cover with a hand-drawn red crown centered on a pale yellow background filled with faint concentric circular lines. Large dark blue lettering appears above and cursive dark blue lettering below, framing the crown.",
       "signatureMotif": "red hand-drawn crown",
-      "medium": "graphic illustration",
+      "medium": "illustration/graphic design",
+      "people": "none",
       "palette": [
         "pale yellow",
         "red",
-        "dark blue"
+        "dark blue",
+        "white"
       ]
     },
     {
@@ -104,14 +109,15 @@
       "filename": "Blue-Morpho.jpg",
       "album": "Blue Morpho",
       "artist": "",
-      "description": "A monochrome blue-toned photographic image of a man's face shown twice in close-up, one larger view on the left and another on the right, both partially cropped. The image has a soft, hazy, high-contrast look with a worn surface texture. The central area contains small overlaid lettering.",
-      "signatureMotif": "double blue portrait of a man's face",
-      "medium": "treated photograph",
+      "description": "A monochrome blue-tinted portrait image showing the same man's face twice in close-up, mirrored or duplicated side by side. Both views are cropped tightly, with eyes cast downward and facial hair visible. The image has a soft, worn, slightly distressed photographic texture.",
+      "signatureMotif": "duplicated blue-tinted male face",
+      "medium": "blue-toned photographic portrait",
+      "people": "one man shown twice in close-up, with short hair and facial hair, looking downward",
       "palette": [
         "blue",
         "white",
         "navy",
-        "pale peach"
+        "gray"
       ]
     },
     {
@@ -119,9 +125,10 @@
       "filename": "The-World-Is-to-Dig.jpg",
       "album": "The World Is to Dig",
       "artist": "",
-      "description": "A classical-style landscape painting of a broad valley with towering cliffs and mountains under a dramatic cloudy sky. A tall waterfall descends along the right cliff face, and sunbeams break through the clouds. In the foreground are trees, rocks, a river or pool, and a path with tiny riders on horseback. A small framed label-like box sits near the upper right.",
-      "signatureMotif": "towering mountain valley with waterfall",
-      "medium": "landscape painting reproduction",
+      "description": "A romantic landscape painting of a broad valley with towering cliffs, distant mountains, dramatic clouds, and shafts of light. A tall waterfall drops down the right side, with trees and rocky ledges in the foreground. Tiny riders on horseback travel along a path near the lower center, emphasizing the scale of the scenery.",
+      "signatureMotif": "towering waterfall beside massive cliffs",
+      "medium": "classical landscape painting",
+      "people": "a few tiny distant riders on horseback in the valley",
       "palette": [
         "blue",
         "gray",
@@ -135,15 +142,16 @@
       "filename": "Lightbulb-Sun.jpg",
       "album": "Lightbulb Sun",
       "artist": "",
-      "description": "A layered photographic composition featuring a young person in a dark school-style blazer and striped tie, standing indoors near a window. The face is partially obscured by bright haze or smoke-like light effects. Over the torso area is a glowing light bulb shape blended into the image, and a reddish-orange overlay covers much of the right half. A building exterior is faintly visible in the background through the window.",
-      "signatureMotif": "glowing light bulb superimposed over a school-uniformed figure",
-      "medium": "photographic double exposure or layered photo collage",
+      "description": "A double-exposure style photographic cover featuring a young person in a dark school-style blazer, shirt, and tie, standing in front of a building facade. The face is partly obscured by a bright smoky blur, while a glowing lightbulb is held forward in one hand and overlaps the torso. The image mixes grayscale with a strong red-orange wash on the right half.",
+      "signatureMotif": "glowing lightbulb held in front of a blurred face",
+      "medium": "double-exposure photograph",
+      "people": "one young person in a blazer and tie holding a lightbulb toward the camera",
       "palette": [
+        "red",
+        "orange",
         "gray",
         "black",
-        "white",
-        "red",
-        "orange"
+        "white"
       ]
     },
     {
@@ -151,14 +159,14 @@
       "filename": "American-Thighs.jpg",
       "album": "American Thighs",
       "artist": "",
-      "description": "A sparse, off-white cover showing a long cream-coloured dress hanging from a thin wire hanger. Down the center of the dress runs a vertical row of red heart shapes. The dress is placed left of center with large empty space around it.",
-      "signatureMotif": "cream dress with a vertical row of red hearts",
-      "medium": "photograph or painted photographic reproduction",
+      "description": "A sparse cover showing a cream-colored dress hanging from a wire hanger against a plain pale background. A vertical row of red heart shapes runs down the front of the dress. The composition leaves a large empty area to the right.",
+      "signatureMotif": "hanging dress with red hearts down the front",
+      "medium": "photograph of a garment against a plain backdrop",
+      "people": "none",
       "palette": [
-        "off-white",
         "cream",
+        "white",
         "red",
-        "gray",
         "black"
       ]
     },
@@ -167,9 +175,10 @@
       "filename": "Rearviewmirror-Greatest-Hits-1991-2003-Volume-1.jpg",
       "album": "Rearviewmirror Greatest Hits 1991 2003 Volume 1",
       "artist": "",
-      "description": "A black-and-white fisheye-style photograph centered on a large circular mirror or reflective surface. Reflected inside it are several band members in a studio-like room, with one person stepping forward prominently toward the camera. The room contains visible stands and equipment, and the circular frame dominates the composition.",
-      "signatureMotif": "circular mirror reflection of a band in fisheye view",
+      "description": "A black-and-white photograph centered on a large circular mirror or reflective surface. Reflected inside it, five band members appear in a studio-like room with curved ceiling panels and light stands; one person leans forward closest to the mirror with a shoe sole dominating the foreground. The surrounding area outside the circle is rough and pale, framing the distorted reflection.",
+      "signatureMotif": "circular mirror reflecting a band in a studio",
       "medium": "black-and-white photograph",
+      "people": "five people reflected in a circular mirror, with one leaning forward closest to the camera",
       "palette": [
         "black",
         "white",
@@ -178,9 +187,9 @@
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "Frontal view into an indoor rehearsal hall remade as a surreal proscenium canyon, a theatrical stage opening onto a vast painted mountain valley with towering cliffs and a bright waterfall at stage right; a single young figure in a dark school blazer and striped tie stands center stage near a simple window-frame flat, their face partly veiled by haze and a glowing light bulb shape fused over the torso like a luminous inner lantern; above them hangs a sketchy hand-drawn red crown as the main emblem, set against a pale yellow field with faint concentric rings, while diagonally suspended multicoloured segmented cylinders drift across the upper air like acoustic pipes or tuning rods; the left and right sides are framed by oversized translucent blue scrims carrying one split hazy male face across both curtains, worn and monochrome, creating a doubled presence without adding another figure; stage left, a cream dress with a vertical row of red hearts hangs from a thin wire hanger in open negative space; below, the front edge of the set dissolves into a blurred photographic band of black treeline silhouettes and fiery red-orange embers with two ghostlike distant standing forms embedded in the smoke; a large circular fisheye mirror rests upstage or leans at the rear, reflecting a small band, studio stands, and one person stepping forward in black and white; mixed-media miniature diorama, hand-painted backdrop, suspended sculpture, translucent printed scrims, collage textures, soft photographic haze, slightly tactile handcrafted surfaces; strong central hierarchy with the uniformed figure and crown leading, waterfall and mirror balancing the right, dress and blue scrims balancing the left, ample breathing room around key motifs; cool diffused stage light from above with a warm ember glow from below and a concentrated halo inside the bulb, soft shadows from the hanging cylinders; palette of off-white, pale yellow, cobalt blue, ember red, orange glow, cream, mist gray, and forest black, mood ceremonial, enigmatic, dreamlike, slightly haunted. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 interior view in a bright modern atrium or museum court, camera at waist height and slightly back, looking toward a huge circular floor mirror beneath a monumental canyon wall with a waterfall; the primary subject is the young person from reference image 6 in the foreground, standing still in the blazer, shirt, and tie from the cover and holding a glowing lightbulb toward the camera, with the face partially obscured by a bright blur exactly as in the source; behind them, the five people from reference image 8 appear only as a reflection inside the circular mirror, arranged like their cover with the closest person leaning forward and the shoe sole dominating the reflected foreground, while the surrounding atrium is real and sunlit; the back wall is a towering realistic canyon-and-waterfall mural inspired by reference image 5 with tiny riders barely visible low in the valley, multicolored segmented cylinders from reference image 2 hang diagonally overhead as a suspended sculptural installation, the man from reference image 4 appears once only on a tall blue-tinted double-portrait lightbox with both close-up faces side by side and eyes lowered, a cream dress with a vertical row of red hearts from reference image 7 hangs on a simple rack off to one side with open negative space around it, a pale yellow circular panel near the canyon wall carries a simple red hand-drawn crown from reference image 3 with faint concentric ring texture, and at the far end of the atrium the blurred figures from reference image 1 appear as distant indistinct people moving behind warm orange translucent panels, creating a fiery haze with a child-sized figure nearest the front and a long-haired figure at right; daylight location photography, crisp realistic editorial treatment, no collage look, no fog, no heavy grain; strong hard midday sun from skylights or glass roof, sharp shadows, clear visual hierarchy, bright open exposure; palette of white, cream, canyon blue-gray, waterfall blue, pale yellow, dark blue, and red-orange, with a spacious, clean, slightly surreal but physically plausible mood. Reference map for people (the album images are attached in this numbered order): reference image 1 shows at least three people, blurred figures outdoors including a child-sized figure in front and a long-haired figure at right; reference image 4 shows one man shown twice in close-up, with short hair and facial hair, looking downward; reference image 5 shows a few tiny distant riders on horseback in the valley; reference image 6 shows one young person in a blazer and tie holding a lightbulb toward the camera; reference image 8 shows five people reflected in a circular mirror, with one leaning forward closest to the camera. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Inferno.jpg",
     "From-a-Hole-in-the-Floor-to-a-Fountain-of-Youth.jpg",

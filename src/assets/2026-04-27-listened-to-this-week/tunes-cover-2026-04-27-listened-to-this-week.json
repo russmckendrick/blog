@@ -3,69 +3,71 @@
   "date": "2026-04-27",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Celestial listening chamber with sculptural audience",
-  "creativeDirection": "A surreal hand-built diorama photographed like a stage set, combining painted backdrops, metallic sculpture, cut-paper portraiture, and luminous resin forms.",
-  "scene": "Inside a futuristic amphitheater viewed from a slightly elevated central position, facing a small glowing stage framed by towering sculptural forms and cosmic set pieces.",
+  "concept": "Arena concourse of portraits and machine relics",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography stages the sleeve portraits and graphic motifs as a crisp, physically built installation in and around a real empty arena concourse and forecourt.",
+  "scene": "A wide 16:9 editorial photograph from slightly above eye level, looking through the open glass frontage of a large empty arena concourse toward the seating bowl and its central aisle beyond, with the exterior forecourt and sky also visible through the entrance plaza.",
   "elements": [
     {
       "source": 1,
-      "element": "A large iridescent bent resin form hovers above the stage like a liquid comet, with a rough black slab interrupting its upper edge."
+      "element": "a large suspended iridescent curved sculpture hangs in the concourse as the main central object, with a few matte black rectangular panels mounted high nearby"
     },
     {
       "source": 2,
-      "element": "A monumental cut-paper mural of a stylized yellow face with green hair and red accents occupies one side wall as the dominant graphic portrait element."
+      "element": "the stylized yellow face becomes a bold painted wayfinding mural on one concourse wall, with dark blue features, green hair shape, and red ear rendered as flat architectural graphics"
     },
     {
       "source": 3,
-      "element": "The overall setting borrows the symmetrical arena seating and distant-stage perspective, translated into a theatrical interior."
+      "element": "the real empty arena interior and its centered aisle are the background spatial anchor visible through the open doors"
     },
     {
       "source": 4,
-      "element": "A single space-warrior woman appears as a glowing statue at the edge of the stage, aiming her toy-like ray gun upward into the set."
+      "element": "the woman from reference image 4 stands in the concourse in her original pose, helmet, gloves, straps, cheek mark, and ray-gun aimed upward exactly as on the sleeve"
     },
     {
       "source": 5,
-      "element": "A shadowed monochrome bust with a huge afro becomes a dramatic audience-side sculpture, crossed by a soft rainbow light streak."
+      "element": "the person from reference image 5 appears as a close, freestanding portrait presence at the left foreground, keeping the huge afro shadowing the eyes, chain necklace, and lower-face lighting, with a subtle rainbow flare catching nearby glass"
     },
     {
       "source": 6,
-      "element": "Two giant metallic heads form the proscenium arch, facing each other with a narrow gap above the stage."
+      "element": "the two giant metal heads are installed outside on the forecourt facing each other across the entrance axis, visible through the glass"
     },
     {
       "source": 7,
-      "element": "Five small painted figures in formal dress are arranged together in one seating box as a clustered onlooking ensemble."
+      "element": "the five people from reference image 7 stand shoulder to shoulder near the entrance in their original frontal grouped pose and clothing as a secondary human anchor"
     },
     {
       "source": 8,
-      "element": "A lone black-and-white musician holding an upright acoustic guitar stands on the distant center stage as the focal performer."
+      "element": "the man from reference image 8 stands to one side holding the acoustic guitar vertically against his face exactly as on the sleeve, with hands and rings visible"
     }
   ],
   "palette": [
-    "electric yellow",
+    "yellow",
     "silver",
-    "midnight blue",
-    "black",
-    "acid green",
-    "crimson"
+    "white",
+    "blue",
+    "red",
+    "green"
   ],
-  "mood": "ceremonial, uncanny, musical, cosmic",
+  "mood": "bold, clean, surreal but plausible, public-facing",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Best-Of-Pixies-Wave-Of-Mutilation.jpg",
       "album": "Best Of Pixies Wave Of Mutilation",
       "artist": "",
-      "description": "A bright yellow background with a central abstract, glossy, iridescent blob or bent tube-like form that looks liquid or metallic, reflecting rainbow colours. A rough black rectangular strip overlaps the upper right area.",
-      "signatureMotif": "iridescent bent blob",
-      "medium": "digital abstract graphic",
+      "description": "A bright yellow cover with a large glossy abstract curved form in the center, resembling a bent metallic or liquid-coated object with iridescent rainbow reflections. Black rectangular collage-like blocks sit across the upper right area. The composition is sparse with the central object floating against a flat background.",
+      "signatureMotif": "iridescent curved abstract object",
+      "medium": "digital collage / graphic design with 3D-rendered or photographed reflective object",
+      "people": "none",
       "palette": [
         "yellow",
         "black",
         "green",
-        "purple",
+        "pink",
         "blue"
       ]
     },
@@ -74,9 +76,10 @@
       "filename": "Drums-and-Wires.jpg",
       "album": "Drums and Wires",
       "artist": "",
-      "description": "A bold, flat-color illustrated portrait of a human face fills most of the frame. The face is yellow with simplified features drawn in dark angular strokes, green hair, a red ear, and a small red circular eye detail. Torn-paper-like blocks of red, green, white, and dark blue surround the face.",
+      "description": "A bold graphic illustration of a stylized human face filling most of the frame. The face is flat yellow with simplified features drawn in dark blue, including one eye, nose, and mouth, with green hair and a red ear. Behind it are torn-paper-like blocks of red, yellow, white, and dark blue.",
       "signatureMotif": "stylized yellow face",
       "medium": "graphic illustration",
+      "people": "none",
       "palette": [
         "yellow",
         "dark blue",
@@ -90,15 +93,16 @@
       "filename": "Live-From-the-Los-Angeles-Sports-Arena-April-26th-1975.jpg",
       "album": "Live From the Los Angeles Sports Arena April 26th 1975",
       "artist": "",
-      "description": "A tinted photograph of a large sports arena interior seen from high in the seating, looking toward a distant stage. Rows of seats and aisles create strong symmetry, and the image is overlaid with translucent bands of pink, green, yellow, and blue, giving it a posterized, layered look.",
-      "signatureMotif": "arena interior with distant stage",
-      "medium": "color-treated photograph",
+      "description": "A tinted image of a large indoor arena viewed from the seating area toward a distant stage. Rows of empty seats and a central aisle lead toward the stage, with layered translucent color blocks and posterized textures over the scene. The upper area shows a pale pinkish ceiling dotted with small dark and blue marks.",
+      "signatureMotif": "empty arena interior with central aisle",
+      "medium": "treated photograph / posterized collage",
+      "people": "none",
       "palette": [
         "pink",
-        "green",
-        "yellow",
+        "purple",
         "blue",
-        "purple"
+        "green",
+        "red"
       ]
     },
     {
@@ -106,15 +110,16 @@
       "filename": "Teenage-Drug.jpg",
       "album": "Teenage Drug",
       "artist": "",
-      "description": "A woman posed against a starry outer-space background points a large toy-like ray gun upward. She wears a dark helmet, black gloves, and bandoliers of green-tipped ammunition across her bare torso, with red face paint on one cheek and a soft glow around her figure.",
-      "signatureMotif": "woman aiming ray gun",
+      "description": "A woman is posed against a starry outer-space background, aiming a large futuristic toy-like gun upward. She wears a dark helmet, black gloves, and bandoliers or straps with small green cylindrical objects across her chest and arm. Her bare shoulders and torso are visible, and a red painted shape marks one cheek. The figure is outlined by a faint glow.",
+      "signatureMotif": "woman aiming a sci-fi gun",
       "medium": "staged photograph",
+      "people": "one woman posing with a large ray-gun-like prop",
       "palette": [
         "dark blue",
         "black",
-        "skin tone",
         "red",
-        "green"
+        "green",
+        "skin tone"
       ]
     },
     {
@@ -122,9 +127,10 @@
       "filename": "SLY-LIVES-Aka-The-Burden-Of-Black-Genius.jpg",
       "album": "SLY LIVES Aka The Burden Of Black Genius",
       "artist": "",
-      "description": "A monochrome portrait of a person with a very large afro dominates the frame. The hair obscures the eyes in shadow, while the nose and lips are sharply lit. A chain necklace and jacket are visible, and a blurred rainbow-like light streak curves down the right side against a pale gray background.",
-      "signatureMotif": "shadowed face beneath large afro",
-      "medium": "stylized photograph",
+      "description": "A monochrome close portrait of a person with a very large rounded afro obscuring the eyes in shadow. Only the lower half of the face is clearly lit, with full lips and nose visible. A chain necklace and sleeveless top appear at the bottom, while a rainbow-like light flare arcs along the right side over a soft gray background.",
+      "signatureMotif": "shadowed face beneath a huge afro",
+      "medium": "photograph with graphic light effects",
+      "people": "one person in close-up portrait with a large afro",
       "palette": [
         "black",
         "gray",
@@ -138,15 +144,16 @@
       "filename": "The-Division-Bell.jpg",
       "album": "The Division Bell",
       "artist": "",
-      "description": "Two large metallic head sculptures stand face to face in an open field under a blue sky with clouds. Their profiles nearly meet, creating a narrow gap between them. Small red flags and a distant building appear in the background.",
-      "signatureMotif": "two facing metal heads",
-      "medium": "photograph of sculpture installation",
+      "description": "Two enormous metallic head sculptures stand facing each other in an open field, their profiles nearly touching. Each head has riveted panel seams and circular target-like eyes. Between them in the distance are small red flags and a far-off building under a blue sky with clouds.",
+      "signatureMotif": "two giant metal heads facing each other",
+      "medium": "photograph",
+      "people": "none",
       "palette": [
         "silver",
         "blue",
-        "green",
         "brown",
-        "gray"
+        "green",
+        "red"
       ]
     },
     {
@@ -154,9 +161,10 @@
       "filename": "His-n-Hers.jpg",
       "album": "His n Hers",
       "artist": "",
-      "description": "A painted or airbrushed group portrait of five people against a white background. Four men and one woman stand closely together, dressed in formal or semi-formal clothing, including a bright yellow suit, dark jackets, and a mustard sleeveless top. A pale reflective band spans the lower portion of the image.",
-      "signatureMotif": "five-person painted portrait",
-      "medium": "painted illustration",
+      "description": "A painted or airbrushed portrait of five people standing shoulder to shoulder against a white background. Four men and one woman face forward with serious expressions. Their clothing includes a bright yellow suit, dark jackets, a mustard sleeveless top, and a blue shirt. A translucent pale band overlays the lower portion of the image.",
+      "signatureMotif": "group portrait of five stylized figures",
+      "medium": "painted / airbrushed illustration",
+      "people": "five people standing in a posed group portrait",
       "palette": [
         "white",
         "yellow",
@@ -170,9 +178,10 @@
       "filename": "The-Best-of-The-Pogues.jpg",
       "album": "The Best of The Pogues",
       "artist": "",
-      "description": "A black-and-white portrait photograph of a young man in a dark jacket holding an acoustic guitar upright in front of him. The guitar neck runs vertically near the center, partially dividing his face, while his hands with rings rest across the instrument.",
-      "signatureMotif": "man holding guitar upright",
+      "description": "A black-and-white close portrait of a young man partly hidden behind the neck of an acoustic guitar held vertically. His face appears on the right side of the guitar neck, and both hands with rings rest around the instrument. He wears a dark jacket and a small hoop earring, with a plain light background behind him.",
+      "signatureMotif": "man peering from behind a vertically held guitar",
       "medium": "black-and-white photograph",
+      "people": "one man holding an acoustic guitar close to his face",
       "palette": [
         "black",
         "white",
@@ -181,9 +190,9 @@
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "A futuristic indoor amphitheater seen from a slightly elevated centered viewpoint, looking down symmetrical seating aisles toward a small luminous distant stage; at center stage a lone black-and-white young musician stands holding an acoustic guitar upright in front of him, the guitar neck dividing his figure and establishing the main vertical axis; above him hovers a giant glossy iridescent bent resin blob like a liquid comet, partly interrupted by a rough black rectangular slab, while two enormous metallic head sculptures face each other to form a proscenium arch around the stage, a monumental cut-paper mural of a stylized yellow face with green hair, angular dark features, red ear and small red eye detail fills one side wall, a single glowing woman in a dark helmet with black gloves and green-tipped bandoliers appears as a statue at stage left aiming a toy-like ray gun upward, a dramatic monochrome bust with a huge afro and shadowed eyes rises from the opposite audience side with a curved rainbow light streak beside it, and a small painted group of five formally dressed figures watches together from one theater box; surreal hand-built diorama photographed as a theatrical installation, mixing painted set walls, metallic sculpture, resin, airbrushed portrait panels, cut-paper collage surfaces, and subtle photographic grain; strong central hierarchy with the guitarist smallest but brightest at the vanishing point, arena seating and aisles creating depth and symmetry, layered translucent color bands washing parts of the chamber, spotlight on the stage with dim atmospheric glow elsewhere; palette of electric yellow, silver, midnight blue, black, acid green, crimson, soft gray, and iridescent rainbow, mood ceremonial, uncanny, cosmic, and musical. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 editorial location photograph from slightly above eye level, looking through the open glass frontage of a large empty arena concourse toward the seating bowl and its central aisle in the distance, with the entrance forecourt and open sky visible beyond the glass; a large suspended iridescent curved sculpture dominates the center of the concourse, glossy and rainbow-reflective against clean architectural space; the woman from reference image 4 is staged intact in her original pose aiming her futuristic gun upward, wearing the same helmet, gloves, straps with green cylinders, bare shoulders, and red cheek mark; the person from reference image 5 appears once at the left foreground as a freestanding close portrait presence with the huge afro obscuring the eyes in shadow, lower face lit, chain necklace and sleeveless top visible; the five people from reference image 7 stand shoulder to shoulder near the entrance in their original frontal group pose and clothing; the man from reference image 8 stands to one side holding the acoustic guitar vertically against his face exactly as in the reference, with both hands and rings visible; outside on the forecourt, the two giant riveted metal heads from reference image 6 face each other across the entrance axis; on one interior wall, the stylized yellow face from reference image 2 is transformed into a large painted mural with dark blue features, green hair shape, and red ear; a few black rectangular panels derived from reference image 1 are mounted high in the architecture; the empty arena interior from reference image 3 provides the real background space and centered aisle; daylight location photography, crisp realistic construction, no collage look, no fog, no wet floor; strong hard midday sun with sharp shadows outside and bright sunlit interior spill through the glass, clean reflections but clear readable faces; palette of saturated yellow, silver, white, blue, red, green, and black; bold, open, graphic, surreal yet physically plausible. Reference map for people (the album images are attached in this numbered order): reference image 4 shows one woman posing with a large ray-gun-like prop; reference image 5 shows one person in close-up portrait with a large afro; reference image 7 shows five people standing in a posed group portrait; reference image 8 shows one man holding an acoustic guitar close to his face. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Best-Of-Pixies-Wave-Of-Mutilation.jpg",
     "Drums-and-Wires.jpg",

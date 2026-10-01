@@ -3,45 +3,47 @@
   "date": "2026-06-08",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "hard midday sun",
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Handshake Observatory in Blue Static",
-  "creativeDirection": "A handcrafted paper-collage diorama with soft-focus photographic cutouts, translucent acetate overlays, and screenprinted graphic marks.",
-  "scene": "A wide 16:9 view into a shallow tabletop diorama that feels like a dreamlike observatory stage, seen straight on at slight eye level, with layered paper scenery receding into a blue atmospheric backdrop.",
+  "concept": "Handshake in a sunstruck industrial courtyard",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography stages the sleeve portraits and collage motifs as real objects in a crisp industrial yard, using hard midday sun to keep the image bright, graphic, and physically plausible.",
+  "scene": "A wide 16:9 view into a clean concrete industrial courtyard bordered by pale walls and exposed steel structures, photographed from slightly below eye level so the foreground figures feel monumental while the surrounding objects and architectural details spread outward in clear space.",
   "elements": [
     {
       "source": 1,
-      "element": "The short-haired woman becomes the single dominant figure, a large soft-focus cutout in a pale blue halter top positioned slightly left of center, emerging from the blue haze with faint circuitry tracings drifting around her."
+      "element": "The woman from reference image 1 is the primary foreground subject, framed from the chest up and facing the camera in her light blue halter top with the same direct pose, short dark hair, and expression; the two men from reference image 1 stand behind her in softer but still readable focus, one to the left in his multicolored top with the small topknot and one to the right in a blue shirt holding a large angular grey object."
     },
     {
-      "source": 1,
-      "element": "The two men are reduced to secondary, blurred background presences embedded in the blue layers, one central dark figure and one right-side figure whose angular metallic object becomes a folded reflective paper form."
+      "source": 2,
+      "element": "The two men from reference image 2 appear midground at one side of the courtyard, locked in their handshake in dark suits, with one man visibly edged with controlled flame; the off-white collage field becomes the pale courtyard walls, while supporting details are transformed into real environmental features: rainbow safety stripes painted across a low barrier, a green waveform line as a painted conduit or mural, a blue circular skylight-like sign with clouds, a framed desert billboard with pyramids and a tiny pink pig balloon above it, a pink marbled disc mounted on a wall, red rubble and smokestack forms beyond the yard, and blue angular beam structures integrated into the architecture."
     }
   ],
   "palette": [
-    "powder blue",
-    "cyan haze",
-    "off-white paper",
-    "dusty pink",
-    "rust red",
-    "black"
+    "sky blue",
+    "off-white",
+    "concrete grey",
+    "signal red",
+    "rainbow accents",
+    "acid green"
   ],
-  "mood": "enigmatic, airy, slightly surreal",
+  "mood": "bright, strange, editorial, sharply composed",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Becoming-X.jpg",
       "album": "Becoming X",
       "artist": "",
-      "description": "A soft-focus photographic portrait of three people against a blue background. A woman with short dark spiky hair stands in the foreground, facing forward, wearing a light blue halter-style top. Behind her are two men, both slightly blurred; one stands centrally in darker clothing, and the other at right wears a blue shirt and holds a large angular metallic-looking object. Faint abstract circuitry-like lines and a small circular symbol appear in the background, giving the image a hazy electronic overlay.",
-      "signatureMotif": "foreground woman with short spiky hair",
-      "medium": "soft-focus studio photograph with graphic overlay",
+      "description": "A soft-focus photographic portrait of three people against a smooth blue background. In the foreground, a woman with very short dark hair and dark lipstick faces the camera, wearing a light blue halter-style top. Behind her are two men, both slightly blurred; one stands to the right in a blue shirt holding a large angular grey object, and the other stands to the left in a multicolored top with a small topknot or tuft of hair. The composition centers on the woman’s face and shoulders, with the other two figures receding into the background.",
+      "signatureMotif": "close-up of a short-haired woman in a blue halter top",
+      "medium": "soft-focus color photograph",
+      "people": "three people: one woman in front facing the camera, with two men blurred behind her",
       "palette": [
         "blue",
         "cyan",
         "pale yellow",
-        "black",
+        "grey",
         "red"
       ]
     },
@@ -50,22 +52,23 @@
       "filename": "8-Tracks.jpg",
       "album": "8 Tracks",
       "artist": "",
-      "description": "A collage-style composition on an off-white paper background featuring multiple cutout images and geometric elements. At upper left is a black circle. Nearby is a rectangular image of pyramids in warm orange and yellow tones with a small pink pig floating above it. At upper right is a pink circular image resembling a fetus or embryo scan. A blue circular image of clouds appears left of center. To the right is an angular blue-toned architectural or industrial structure. Across the lower half is a reddish industrial landscape with rubble and smokestacks. Two silhouetted men in suits shake hands near the center-bottom. Horizontal rainbow bands run across the lower area, intersected by green heartbeat-like zigzag lines.",
-      "signatureMotif": "two suited figures shaking hands",
-      "medium": "paper collage with photographic cutouts and graphic shapes",
+      "description": "A collage-style image on an off-white background combining multiple cutout pictures and graphic shapes. Near the bottom center, two men in suits shake hands, one figure appearing partially engulfed in flames. Along the lower area is a red-toned industrial scene with rubble and smokestacks, overlaid by horizontal rainbow bands and green heartbeat-like waveform lines. Elsewhere are a blue circular sky image with clouds, a framed desert scene with pyramids and a small pink pig floating above it, a pink circular marbled image, and a blue-toned architectural or industrial structure made of angular beams and repeating columns. The elements are scattered across the page with ample empty space between them.",
+      "signatureMotif": "two suited men shaking hands, one on fire",
+      "medium": "mixed-media collage with photographic cutouts and graphic overlays",
+      "people": "two men in suits shaking hands",
       "palette": [
         "off-white",
-        "black",
-        "pink",
+        "red",
         "blue",
-        "red"
+        "pink",
+        "green"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2",
-  "model": "openai/gpt-image-2/edit",
-  "prompt": "A wide 16:9 view into a shallow tabletop observatory diorama, seen straight on at slight eye level, with layered paper scenery receding into a soft blue atmospheric backdrop; a large soft-focus cutout of a woman with short dark spiky hair in a pale blue halter top dominates slightly left of center, facing forward as the clear focal point; behind her, two blurred male presences are embedded in the blue layers, one a dark central silhouette and one at right associated with a folded reflective angular metallic-paper form, while faint circuitry-like lines and a small circular symbol drift through the haze around them; below, on a lower platform near center, two small silhouetted suited men shake hands; an eclipse-like black disc hangs upper left, a warm orange-yellow pyramid postcard sits in the middle distance with a tiny floating pink pig above it, a translucent pink embryo-like medallion glows upper right, a blue circular cloud window floats left of center, a faceted blue industrial-architectural platform rises at right, and a reddish industrial horizon with rubble and smokestacks runs across the base, crossed by horizontal rainbow bands and green heartbeat zigzag marks; handcrafted paper-collage diorama, cut photographic fragments, torn off-white paper, translucent acetate overlays, screenprinted graphic lines, soft airbrushed blur, subtle shadow-box depth; clear hierarchy with the woman monumental in the foreground, handshake figures small but legible below, supporting motifs distributed in layered planes, spacious negative area around the main figure, gentle studio lighting with diffuse glow and faint edge shadows; palette of powder blue, cyan haze, off-white, dusty pink, rust red, black, and pale yellow, mood enigmatic, airy, surreal, and quietly electronic Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide industrial courtyard under hard midday sun, viewed slightly below eye level with crisp shadows and clear open space; the woman from reference image 1 dominates the foreground, framed chest-up and facing the camera exactly as in her source portrait, wearing the same light blue halter top with the same short dark hair, dark lipstick, direct gaze, and calm expression, while the two men from reference image 1 stand behind her in the same relative arrangement, one at left in his multicolored top with the small topknot and one at right in a blue shirt holding a large angular grey object. At midground to one side, the two men from reference image 2 perform their handshake in dark suits, one partially engulfed in believable controlled flames. Integrate the rest of reference image 2 into the location as real features: pale off-white courtyard walls, blue angular steel beams and repeating industrial columns, a low red rubble zone and distant smokestacks beyond the yard, horizontal rainbow bands painted across a barrier, a green heartbeat waveform as a wall graphic or conduit line, a circular sky sign showing blue sky and clouds, a framed desert billboard with pyramids and a small pink pig balloon floating above it, and a mounted pink marbled disc. Daylight location photography, clean realistic editorial treatment, sharp detail, no collage look, no haze, no rain, no glossy reflections. Strong visual hierarchy with the woman from reference image 1 as the anchor, the handshake from reference image 2 as the secondary focal point, and the remaining motifs distributed as supporting architectural details. Saturated blues, off-white, concrete grey, red industrial accents, rainbow stripes, and touches of green and pink; bright, surreal, confident mood. Reference map for people (the album images are attached in this numbered order): reference image 1 shows three people: one woman in front facing the camera, with two men blurred behind her; reference image 2 shows two men in suits shaking hands. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Becoming-X.jpg",
     "8-Tracks.jpg"

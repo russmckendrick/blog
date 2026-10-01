@@ -8,7 +8,7 @@ import { COVER_BLOCKLIST } from './tunes-cover-blocklist.js'
 import { isContentPolicyViolation } from './lib/fal-content-policy.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { getBackend, BACKENDS } from './lib/image-backends/index.js'
-import { appendHistory, recentConcepts, recentLighting, recentMedia, writeSidecar } from './lib/tunes-image-history.js'
+import { appendHistory, recentConcepts, recentLighting, recentMedia, recentYearTreatments, writeSidecar } from './lib/tunes-image-history.js'
 import { extractTunesDate } from './lib/tunes-post-context.js'
 import {
   buildGenerationPrompt as buildFreeformGenerationPrompt,
@@ -16,6 +16,7 @@ import {
   isLowLight,
   isPhotographicMedium,
   LIGHTING_REPEAT_WINDOW,
+  normalizeYear,
   summarizeAlbumCovers
 } from './lib/tunes-cover-art-direction.js'
 
@@ -25,6 +26,9 @@ const PROJECT_ROOT = path.resolve(__dirname, '..')
 
 const DEFAULT_COVER_BACKEND = 'nano-banana'
 const MIN_TIMESTAMP_SEED = 604800000
+// History type for Year in Music covers. They keep their own do-not-repeat window so a batch
+// of years varies against itself without feeding annual covers into the weekly memory.
+const WRAPPED_HISTORY_TYPE = 'wrapped'
 
 // Resolve the cover compose backend: explicit option first, then tunes-config.yaml, then the
 // default. Unknown ids warn and fall back, and single-image backends are refused because the
@@ -524,6 +528,13 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     debug = process.env.DEBUG_COLLAGE === '1',
     recordHistory = false
   } = options
+  // A year turns this into the Year in Music cover: the art director must build the digits
+  // into the scene, the text guard allows exactly those digits, and history is kept apart.
+  const year = normalizeYear(options.year)
+  if (options.year != null && !year) {
+    throw new Error(`Invalid year "${options.year}" for a Year in Music cover; expected four digits`)
+  }
+  const historyType = year ? WRAPPED_HISTORY_TYPE : 'cover'
 
   const falKey = process.env.FAL_KEY
   if (!falKey) {
@@ -532,10 +543,11 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   fal.config({ credentials: falKey })
 
   const historySize = await resolveHistorySize()
-  const avoidConcepts = await recentConcepts('cover', historySize)
+  const avoidConcepts = await recentConcepts(historyType, historySize)
   // Photographic treatments are recorded but never refused - photography is the default.
-  const avoidMedia = (await recentMedia('cover', historySize)).filter(medium => !isPhotographicMedium(medium))
-  const lightingHistory = await recentLighting('cover', historySize)
+  const avoidMedia = (await recentMedia(historyType, historySize)).filter(medium => !isPhotographicMedium(medium))
+  const lightingHistory = await recentLighting(historyType, historySize)
+  const avoidYearTreatments = year ? await recentYearTreatments(historyType, historySize) : []
   const requireBrightLight = isLowLight(lightingHistory[0])
 
   const sourceImagePaths = filterBlocklistedCovers(imagePaths, debug)
@@ -559,6 +571,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   const backendChain = fallbackBackend ? [primaryBackend, fallbackBackend] : [primaryBackend]
 
   console.log('  Creative direction: AI-selected from factual album-cover summaries')
+  if (year) console.log(`  Year in Music cover: the year ${year} is built into the scene`)
   if (debug) {
     console.log(`  Image backend: ${backendChain.map(b => b.label).join(' -> ')}`)
     if (options.hint) console.log(`  Author's steer: ${options.hint}`)
@@ -566,6 +579,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     if (avoidMedia.length > 0) console.log(`  Avoiding recent media: ${avoidMedia.join(' | ')}`)
     if (lightingHistory.length > 0) console.log(`  Avoiding recent lighting: ${lightingHistory.slice(0, LIGHTING_REPEAT_WINDOW).join(' | ')}`)
     if (requireBrightLight) console.log(`  Previous cover was low-light (${lightingHistory[0]}); requiring daylight`)
+    if (avoidYearTreatments.length > 0) console.log(`  Avoiding recent year treatments: ${avoidYearTreatments.join(' | ')}`)
   }
 
   // Try each backend in turn. Within a backend, content-policy refusals retry with alternate
@@ -600,6 +614,8 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           avoidConcepts,
           avoidMedia,
           recentLighting: lightingHistory,
+          year,
+          avoidYearTreatments,
           debug
         })
         if (requireBrightLight && isLowLight(artDirection.lighting)) {
@@ -611,7 +627,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
         if (repeatedLighting) {
           console.warn(`  Art director repeated a recent lighting set-up (${artDirection.lighting})`)
         }
-        const prompt = buildFreeformGenerationPrompt(artDirection, coverSummaries)
+        const prompt = buildFreeformGenerationPrompt(artDirection, coverSummaries, { year })
 
         if (debug) {
           console.log(`  Prompt: ${prompt}`)
@@ -622,19 +638,21 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
         const saved = await saveGeneratedImage(composed.imageUrl, outputPath, width, height, debug)
         console.log(`  Created tunes cover (${backend.label}) from ${attemptPaths.length} album covers`)
         console.log(`    Direction: ${artDirection.creativeDirection}`)
+        if (year) console.log(`    Year: ${artDirection.yearTreatment}`)
         console.log(`    Full:  ${saved.outputPath}`)
         console.log(`    Small: ${saved.smallOutputPath}`)
 
         const runRecord = {
           version: 2,
           date: options.dateLabel || (Number.isFinite(seed) && seed >= MIN_TIMESTAMP_SEED ? new Date(seed).toISOString().slice(0, 10) : ''),
-          type: 'cover',
+          type: historyType,
           lane: null,
           lighting: artDirection.lighting,
           shootDirection: null,
           colourTreatment: null,
           concept: artDirection.concept,
           medium: artDirection.medium,
+          ...(year ? { year: Number(year), yearTreatment: artDirection.yearTreatment } : {}),
           creativeDirection: artDirection.creativeDirection,
           scene: artDirection.scene,
           elements: artDirection.elements,
@@ -666,6 +684,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           concept: artDirection.concept,
           medium: artDirection.medium,
           lighting: artDirection.lighting,
+          yearTreatment: artDirection.yearTreatment || null,
           coverSummaries,
           mode: 'summaries_to_prompt',
           prompt
@@ -699,6 +718,7 @@ function parseArgs(args) {
     seed: null,
     date: null,
     hint: null,
+    year: null,
     record: false,
     debug: false,
     help: false
@@ -715,6 +735,7 @@ function parseArgs(args) {
     else if (arg.startsWith('--seed=')) options.seed = Number(arg.slice('--seed='.length))
     else if (arg.startsWith('--date=')) options.date = arg.slice('--date='.length)
     else if (arg.startsWith('--hint=')) options.hint = arg.slice('--hint='.length)
+    else if (arg.startsWith('--year=')) options.year = arg.slice('--year='.length)
     else if (!arg.startsWith('--') && !options.input) options.input = arg
     else if (!arg.startsWith('--') && !options.output) options.output = arg
     else throw new Error(`Unknown argument: ${arg}`)
@@ -763,6 +784,8 @@ Options:
   --seed=<number>     Image backend seed (weekly runs use the post date)
   --date=<date>       Run date for sidecar/history; inferred from standard paths
   --hint=<string>     Optional author steer for the AI art director
+  --year=<yyyy>       Make a Year in Music cover: the year is built into the scene
+                      and the run is recorded under the "wrapped" history type
   --record            Append this run to scripts/.tunes-image-history.json (the
                       weekly generator records automatically; manual runs opt in)
   --debug, -d         Verbose output
@@ -801,7 +824,8 @@ async function main() {
   if (imagePaths.length === 0) {
     throw new Error(`No album images found in ${inputFolder}`)
   }
-  const dateLabel = options.date || extractTunesDate(inputFolder) || extractTunesDate(outputPath)
+  const dateLabel = options.date ||
+    (options.year ? `${options.year}-12-31` : extractTunesDate(inputFolder) || extractTunesDate(outputPath))
 
   console.log('Generating tunes cover scene')
   console.log(`  Input: ${inputFolder}`)
@@ -813,6 +837,7 @@ async function main() {
     seed: options.seed || (dateLabel ? new Date(dateLabel).getTime() : Date.now()),
     dateLabel,
     hint: options.hint,
+    year: options.year,
     recordHistory: options.record,
     debug: options.debug
   })
