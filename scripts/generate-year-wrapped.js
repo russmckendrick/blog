@@ -33,6 +33,10 @@ async function main() {
     const debugMode = args.includes('--debug')
     const skipResearch = args.includes('--skip-research')
     const useCache = args.includes('--use-cache')
+    // --cover-only: fetch the year's data and top sleeves, generate the cover, and stop -
+    // no research, no extra image downloads, no MDX. For a year still in progress, or to
+    // give a year its artwork before (or without) writing the post.
+    const coverOnly = args.includes('--cover-only')
 
     // Default to current year if not specified
     const year = yearArg ? parseInt(yearArg.split('=')[1]) : new Date().getFullYear()
@@ -42,6 +46,10 @@ async function main() {
 
     if (debugMode) {
       console.log('Running in debug mode - limited processing')
+    }
+
+    if (coverOnly) {
+      console.log('Cover only - the post will not be written')
     }
 
     // Initialize clients
@@ -67,9 +75,11 @@ async function main() {
     const srcAssetsFolder = path.join(process.cwd(), 'src', 'assets', postSlug)
 
     await fs.mkdir(albumsFolder, { recursive: true })
-    await fs.mkdir(artistsFolder, { recursive: true })
-    await fs.mkdir(chartsFolder, { recursive: true })
     await fs.mkdir(srcAssetsFolder, { recursive: true })
+    if (!coverOnly) {
+      await fs.mkdir(artistsFolder, { recursive: true })
+      await fs.mkdir(chartsFolder, { recursive: true })
+    }
 
     // Check for cached data
     const cacheFile = path.join(__dirname, `.year-wrapped-cache-${year}.json`)
@@ -131,52 +141,56 @@ async function main() {
 
     // Download images
     console.log('\n🖼️  Downloading images...')
-    // Download top 12 artist images for gallery
-    await imageHandler.downloadArtistImages(topArtists.slice(0, 12), collectionInfo.info, artistsFolder)
     // Download top 20 album images for gallery and AI cover
     const top20Albums = topAlbums.slice(0, 20)
     await imageHandler.downloadAlbumImages(top20Albums, collectionInfo.info, albumsFolder)
-    // Also download featured albums (may overlap with top 12)
-    await imageHandler.downloadAlbumImages(featuredAlbums, collectionInfo.info, albumsFolder, true)
 
-    // Also download artist images for featured albums (in case they're not in top 20)
-    console.log('Downloading featured album artist images...')
-    const featuredArtists = featuredAlbums.map(([[artist]]) => [artist])
-    await imageHandler.downloadArtistImages(featuredArtists, collectionInfo.info, artistsFolder, true)
-
-    // Download hidden gems album and artist images
-    const hiddenGems = insights.hiddenGems || []
-    if (hiddenGems.length > 0) {
-      console.log('Downloading hidden gems images...')
-      const hiddenGemsAlbums = hiddenGems.map(gem => [[gem.artist, gem.album], gem.playcount])
-      await imageHandler.downloadAlbumImages(hiddenGemsAlbums, collectionInfo.info, albumsFolder, true)
-      const hiddenGemsArtists = hiddenGems.map(gem => [gem.artist])
-      await imageHandler.downloadArtistImages(hiddenGemsArtists, collectionInfo.info, artistsFolder, true)
-    }
-
-    // Download new discoveries album and artist images
-    const newDiscoveries = insights.newDiscoveries || []
-    if (newDiscoveries.length > 0) {
-      console.log('Downloading new discoveries images...')
-      const newDiscoveriesAlbums = newDiscoveries.map(album => [[album.artist, album.album], album.playcount])
-      await imageHandler.downloadAlbumImages(newDiscoveriesAlbums, collectionInfo.info, albumsFolder, true)
-      const newDiscoveriesArtists = newDiscoveries.map(album => [album.artist])
-      await imageHandler.downloadArtistImages(newDiscoveriesArtists, collectionInfo.info, artistsFolder, true)
-    }
-
-    // Generate AI content for featured albums (unless skipped)
     let blogSections = ''
-    if (!skipResearch) {
-      console.log('\n✍️  Generating AI content for featured albums...')
-      blogSections = await generateFeaturedAlbumSections(
-        featuredAlbums,
-        collectionInfo.info,
-        contentGenerator,
-        postSlug
-      )
-    } else {
-      console.log('\n⏭️  Skipping AI research (--skip-research flag)')
-      blogSections = generateSimpleFeaturedSections(featuredAlbums, collectionInfo.info, postSlug)
+    if (!coverOnly) {
+      // Everything the post itself needs: gallery images, featured-album research
+      // Download top 12 artist images for gallery
+      await imageHandler.downloadArtistImages(topArtists.slice(0, 12), collectionInfo.info, artistsFolder)
+      // Also download featured albums (may overlap with top 12)
+      await imageHandler.downloadAlbumImages(featuredAlbums, collectionInfo.info, albumsFolder, true)
+
+      // Also download artist images for featured albums (in case they're not in top 20)
+      console.log('Downloading featured album artist images...')
+      const featuredArtists = featuredAlbums.map(([[artist]]) => [artist])
+      await imageHandler.downloadArtistImages(featuredArtists, collectionInfo.info, artistsFolder, true)
+
+      // Download hidden gems album and artist images
+      const hiddenGems = insights.hiddenGems || []
+      if (hiddenGems.length > 0) {
+        console.log('Downloading hidden gems images...')
+        const hiddenGemsAlbums = hiddenGems.map(gem => [[gem.artist, gem.album], gem.playcount])
+        await imageHandler.downloadAlbumImages(hiddenGemsAlbums, collectionInfo.info, albumsFolder, true)
+        const hiddenGemsArtists = hiddenGems.map(gem => [gem.artist])
+        await imageHandler.downloadArtistImages(hiddenGemsArtists, collectionInfo.info, artistsFolder, true)
+      }
+
+      // Download new discoveries album and artist images
+      const newDiscoveries = insights.newDiscoveries || []
+      if (newDiscoveries.length > 0) {
+        console.log('Downloading new discoveries images...')
+        const newDiscoveriesAlbums = newDiscoveries.map(album => [[album.artist, album.album], album.playcount])
+        await imageHandler.downloadAlbumImages(newDiscoveriesAlbums, collectionInfo.info, albumsFolder, true)
+        const newDiscoveriesArtists = newDiscoveries.map(album => [album.artist])
+        await imageHandler.downloadArtistImages(newDiscoveriesArtists, collectionInfo.info, artistsFolder, true)
+      }
+
+      // Generate AI content for featured albums (unless skipped)
+      if (!skipResearch) {
+        console.log('\n✍️  Generating AI content for featured albums...')
+        blogSections = await generateFeaturedAlbumSections(
+          featuredAlbums,
+          collectionInfo.info,
+          contentGenerator,
+          postSlug
+        )
+      } else {
+        console.log('\n⏭️  Skipping AI research (--skip-research flag)')
+        blogSections = generateSimpleFeaturedSections(featuredAlbums, collectionInfo.info, postSlug)
+      }
     }
 
     // Generate cover
@@ -225,6 +239,14 @@ async function main() {
       console.log(`✅ AI cover generated: ${coverOutputPath}`)
     } catch (error) {
       throw new Error(`Year wrapped AI cover generation failed and no local fallback is supported: ${error.message}`)
+    }
+
+    if (coverOnly) {
+      console.log('\n' + '='.repeat(50))
+      console.log(`✅ Generated the ${year} Year in Music cover (no post written)`)
+      console.log(`🖼️  Cover: ${coverOutputPath}`)
+      console.log(`📁 Sleeves: public/assets/${postSlug}/albums/`)
+      return
     }
 
     // Generate title and intro

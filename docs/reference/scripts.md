@@ -10,7 +10,7 @@ These are the scripts exposed through `package.json` and intended for regular us
 |---------|-------------|---------|
 | `pnpm run post` | `scripts/new-post.js` | Create a new blog post scaffold with a placeholder cover |
 | `pnpm run tunes` | `scripts/generate-tunes-post.js` | Generate the weekly tunes post from Last.fm data |
-| `pnpm run wrapped` | `scripts/generate-year-wrapped.js` | Generate the annual wrapped post |
+| `pnpm run wrapped` | `scripts/generate-year-wrapped.js` | Generate the annual wrapped post (`--cover-only` makes just the year's cover, no post) |
 | `pnpm run backfill-tunes-images` | `scripts/backfill-tunes-images.js` | Backfill older weekly tunes artwork and repair resolvable russ.fm links from local `collection.json` |
 | `pnpm run rebuild-artist-usage` | `scripts/rebuild-tunes-artist-usage.js` | Rebuild the committed artist reuse record from the per-week portrait sidecars |
 | `pnpm run check-artist-reuse` | `scripts/check-tunes-artist-reuse.js` | Audit the artist reuse record and report any portrait repeating an artist inside the window |

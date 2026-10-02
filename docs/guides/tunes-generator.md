@@ -793,7 +793,12 @@ pnpm run wrapped -- --year=2025 --debug
 
 # Use cached Last.fm data (faster for re-runs)
 pnpm run wrapped -- --year=2025 --use-cache
+
+# Cover only - no post (e.g. the year in progress)
+pnpm run wrapped -- --year=2026 --cover-only
 ```
+
+`--cover-only` fetches (and caches) the year's Last.fm data, downloads just the top 20 album sleeves to `public/assets/<yyyy>-year-in-music/albums/`, generates `src/assets/<yyyy>-year-in-music/wrapped-cover-<yyyy>.png` (plus `-small` and the `.json` sidecar, recorded under the `wrapped` history type), and stops: no artist images, no research, no MDX. The tunes year pages pick the cover up from `src/assets` without a post (`src/utils/year-in-music.ts`) — `/tunes/year/` puts it on that year's card and `/tunes/year/<yyyy>/` leads with it, unlinked, as "<yyyy> so far". Running the full `pnpm run wrapped` at year end regenerates the cover and replaces the history entry; pass `--use-cache` only if the cached data is already complete for the year.
 
 ### Features (Inspired by Spotify Wrapped)
 
