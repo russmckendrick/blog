@@ -136,6 +136,7 @@ const BROWSE = [
 		url: string
 		excerpt: string
 		meta: Record<string, string | undefined>
+		filters?: Record<string, string[]>
 		sub_results?: PagefindSubResult[]
 	}
 
@@ -213,7 +214,8 @@ const BROWSE = [
 	}
 
 	function renderHit(data: PagefindResultData): HTMLLIElement {
-		const type = data.meta.type ?? (data.url.startsWith('/books/') ? 'Book' : data.url.startsWith('/glossary/') ? 'Glossary' : 'Post')
+		// The type is a filter (SearchMeta.astro), so it arrives under filters, not meta
+		const type = data.filters?.type?.[0] ?? 'Post'
 		const item = el('li', 'search-hit-item')
 		const link = el('a', `search-hit search-hit--${type.toLowerCase()}`)
 		link.href = data.url
