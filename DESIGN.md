@@ -306,6 +306,13 @@ below 640px the labels collapse to arrows.
 - **Archives** — year cards (1 / 2 / 3 / 4 columns): a 16:9 three-image
   mosaic from that year's covers, the year at 32px/800, and post and tunes
   counts.
+- **Tunes hubs** — one tab row (Latest weeks · Artists · Albums · By year).
+  The artist and album directories open with a numbered "Most featured" row,
+  then a sticky A–Z bar and letter sections of 2–6-column tiles: square 8px
+  sleeves for albums, round portraits for artists. `/tunes/year/` uses the
+  archive year card with the Year in Music artwork in place of the mosaic;
+  a year page leads with that artwork uncropped on a tint panel beside the
+  review's title and an ink "Read the review" pill.
 - **Reading list** — pill filters (ink-filled when active), then month
   sections of 1 / 2 / 3-column cards: the article's preview image (or a tint
   tile with favicon and domain), domain · date, title, description, tag chips.

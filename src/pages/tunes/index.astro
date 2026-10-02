@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import FormattedDate from '../../components/blog/FormattedDate.astro';
 import Pagination from '../../components/layout/Pagination.astro';
-import { tunesIndex } from '../../utils/tunes-index';
+import TunesTabs from '../../components/tunes/TunesTabs.astro';
 import { getPostUrl } from '../../utils/url';
 import { getCFImageUrl, generateCFSrcSet, getLQIPUrl } from '../../utils/cloudflare-images';
 import { calculateReadingTime, formatReadingTime } from '../../utils/reading-time';
@@ -58,12 +58,7 @@ const tunesSchema = createCollectionPageSchema({
 			<p class="page-lede">What's been on the turntable, week by week — {allTunes.length} weeks so far, written up by AI from my own records.</p>
 		</header>
 
-		<nav aria-label="Browse the tunes archive" class="tunes-tabs">
-			<a href="/tunes/" aria-current="page">Latest weeks</a>
-			<a href="/tunes/artist/">Artists<span class="tab-count">{tunesIndex.totals.artists}</span></a>
-			<a href="/tunes/album/">Albums<span class="tab-count">{tunesIndex.totals.albums}</span></a>
-			<a href="/tunes/year/">By year</a>
-		</nav>
+		<TunesTabs active="latest" />
 
 		{leadTune && (
 			<article class="pt-8 pb-8 border-b" style="border-color: var(--color-outline-variant);" data-entrance>
@@ -166,51 +161,3 @@ const tunesSchema = createCollectionPageSchema({
 		/>
 	</section>
 </BaseLayout>
-
-<style>
-	.tunes-tabs {
-		display: flex;
-		align-items: center;
-		gap: 1.75rem;
-		margin-top: 0.5rem;
-		border-bottom: 1px solid var(--color-outline-variant);
-		overflow-x: auto;
-		scrollbar-width: none;
-	}
-
-	.tunes-tabs::-webkit-scrollbar {
-		display: none;
-	}
-
-	.tunes-tabs a {
-		padding: 1.125rem 0 1rem;
-		font-size: 0.875rem;
-		color: var(--color-on-surface-variant);
-		border-bottom: 1px solid transparent;
-		margin-bottom: -1px;
-		white-space: nowrap;
-		text-decoration: none;
-	}
-
-	.tunes-tabs a:hover {
-		color: var(--color-on-surface);
-	}
-
-	.tunes-tabs a[aria-current='page'] {
-		color: var(--color-on-surface);
-		border-bottom-color: var(--color-on-surface);
-	}
-
-	.tab-count {
-		font-size: 0.75rem;
-		margin-left: 0.2rem;
-		opacity: 0.75;
-	}
-
-	@media (max-width: 640px) {
-		.tunes-tabs {
-			-webkit-mask-image: linear-gradient(to right, black 88%, transparent);
-			mask-image: linear-gradient(to right, black 88%, transparent);
-		}
-	}
-</style>

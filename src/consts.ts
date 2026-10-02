@@ -586,12 +586,13 @@ export const CF_IMAGE_PRESETS = {
     widths: [256, 320, 384, 512, 640],
   },
 
-  // Small square thumbnails for tunes artist/album directory cards
+  // Square sleeves and portraits for the tunes artist/album directory grids
+  // (roughly 150-200 CSS px per tile, larger in the "Most featured" row)
   tunesDirectory: {
-    quality: 25,
+    quality: 30,
     format: "avif" as const,
     fit: "cover" as const,
-    widths: [96, 128, 160, 224, 256],
+    widths: [160, 240, 320, 400, 480],
   },
 
   // Gallery/lightbox images (high quality)

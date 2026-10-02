@@ -213,12 +213,12 @@ export const CF_IMAGE_PRESETS = {
     widths: [256, 320, 384, 512]
   },
 
-  // Small square thumbnails for tunes artist/album directory cards
+  // Square sleeves and portraits for the tunes artist/album directory grids
   tunesDirectory: {
-    quality: 25,
+    quality: 30,
     format: 'avif' as const,
     fit: 'cover' as const,
-    widths: [96, 128, 160, 224, 256]
+    widths: [160, 240, 320, 400, 480]
   },
 
   // Gallery/lightbox images (high quality)
@@ -332,9 +332,9 @@ The lead week's image spans the frame (16:10, 21:9 from 640px) on the **hero**
 preset, loads eagerly with `fetchpriority="high"`, and keeps an LQIP blur-up
 (`getLQIPUrl`) behind it. That makes it the only listing image that still uses LQIP.
 
-#### TunesDirectory.astro (Artist/Album Browse Cards)
+#### TunesDirectory.astro (Artist/Album Browse Grids)
 
-Directory cards use very small square transformations because the thumbnails render at roughly 84-96 CSS pixels.
+Directory tiles are square crops (`gravity: 'auto'`) sized for a 2-6 column grid, roughly 150-200 CSS pixels a tile (`sizes` steps from `45vw` on phones to `190px` at 1280px). The "Most featured" row's first three load eagerly; everything else is lazy.
 
 ```astro
 ---
@@ -354,14 +354,22 @@ const imageSrcSet = preset.widths
 ---
 
 <img
-  src={getCFImageUrl(src, { width: 160, height: 160, quality: preset.quality, format: preset.format, fit: preset.fit })}
+  src={getCFImageUrl(src, { width: 320, height: 320, quality: preset.quality, format: preset.format, fit: preset.fit, gravity: 'auto' })}
   srcset={imageSrcSet}
-  sizes="(min-width: 640px) 96px, 84px"
+  sizes="(min-width: 1280px) 190px, (min-width: 1024px) 18vw, (min-width: 768px) 22vw, (min-width: 640px) 30vw, 45vw"
   alt={alt}
   loading="lazy"
   decoding="async"
 />
 ```
+
+#### Tunes year pages (Year in Music artwork)
+
+`/tunes/year/{year}/` leads with the year's Year in Music `heroImage` on the
+**hero** preset — eager, `fetchpriority="high"`, and preloaded from the page
+head with the same `src`/`srcset`/`sizes`, since it is the LCP element.
+`/tunes/year/` shows the same artwork on each year card through the
+**thumbnail** preset at 400-1200w.
 
 #### BlogPost.astro (Hero Images)
 

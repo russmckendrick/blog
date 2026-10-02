@@ -6,7 +6,11 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro'
 import PostCard from '../../../../components/blog/PostCard.astro'
 import { Schema } from 'astro-seo-schema'
 import { createCollectionPageSchema, createBreadcrumbSchema } from '../../../../utils/schema'
-import { createUrlFriendlySlug } from '../../../../utils/url'
+import { createUrlFriendlySlug, getPostUrl } from '../../../../utils/url'
+import { getCFImageUrl, generateCFSrcSet } from '../../../../utils/cloudflare-images'
+import { CF_IMAGE_PRESETS } from '../../../../consts'
+import TunesTabs from '../../../../components/tunes/TunesTabs.astro'
+import { getYearInMusicCover } from '../../../../utils/year-in-music'
 
 export const getStaticPaths = (async () => {
   const tunes = (await getCollection('tunes'))
@@ -36,21 +40,26 @@ const yearTunes = allTunes
 const wrappedEntry = yearTunes.find((tune) => tune.id === `${year}-year-in-music`)
 const weeklyTunes = wrappedEntry ? yearTunes.filter((tune) => tune.id !== wrappedEntry.id) : yearTunes
 
-const wrappedHref = wrappedEntry
-  ? (() => {
-      const date = wrappedEntry.data.pubDate
-      const month = String(date.getMonth() + 1).padStart(2, '0')
-      const day = String(date.getDate()).padStart(2, '0')
-      return `/${year}/${month}/${day}/${createUrlFriendlySlug(wrappedEntry.data.title)}/`
-    })()
-  : null
+const wrappedHref = wrappedEntry ? getPostUrl(wrappedEntry.data.pubDate, wrappedEntry.data.title) : null
+
+// The Year in Music artwork leads the page (and is its LCP image), shown whole
+// at 16:9 rather than letterboxed: the scenes run edge to edge.
+// Without a post yet (the year in progress), a cover generated with
+// `pnpm run wrapped -- --cover-only` still leads, unlinked.
+const wrappedImage = wrappedEntry?.data.heroImage ?? getYearInMusicCover(year)
+const isCurrentYear = year === new Date().getFullYear()
+const FeatureTag = wrappedHref ? 'a' : 'div'
+const heroPreset = CF_IMAGE_PRESETS.hero
+const wrappedSizes = '(min-width: 1320px) 775px, (min-width: 1024px) calc((100vw - 104px) * 0.636), (min-width: 640px) calc(100vw - 72px), calc(100vw - 56px)'
 
 const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
 
 const title = `Tunes ${year}`
 const description = wrappedEntry
-  ? `${wrappedEntry.data.description} Plus the ${weeklyTunes.length} weekly Listened to This Week posts from ${year}.`
+  ? weeklyTunes.length > 0
+    ? `${wrappedEntry.data.description} Plus the ${weeklyTunes.length} weekly Listened to This Week posts from ${year}.`
+    : wrappedEntry.data.description
   : `${weeklyTunes.length} weekly Listened to This Week post${weeklyTunes.length !== 1 ? 's' : ''} from ${year} on russ.cloud.`
 
 const collectionSchema = createCollectionPageSchema({
@@ -82,48 +91,202 @@ const breadcrumbSchema = createBreadcrumbSchema(
 ---
 
 <BaseLayout title={title} description={description} image={`/tunes/year/${year}-og.png`}>
+  {wrappedImage && (
+    <link
+      slot="head"
+      rel="preload"
+      as="image"
+      href={getCFImageUrl(wrappedImage, { width: 1024, quality: heroPreset.quality, format: heroPreset.format, fit: heroPreset.fit })}
+      imagesrcset={generateCFSrcSet(wrappedImage, heroPreset.widths, heroPreset.quality, heroPreset.format)}
+      imagesizes={wrappedSizes}
+      fetchpriority="high"
+    />
+  )}
   <Schema slot="head" item={collectionSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
 
-  <section class="page-frame">
-    <header class="page-head" data-entrance>
-      <p class="mb-4">
-        <a href="/tunes/year/" class="rubric nav-underline no-underline hover:text-on-surface">&larr; All years</a>
-      </p>
+  <section class="page-frame pb-16">
+    <header class="page-head !border-b-0 !pb-2" data-entrance>
       <h1>Tunes from {year}</h1>
       <p class="page-lede">
-        {weeklyTunes.length} weekly post{weeklyTunes.length !== 1 ? 's' : ''}{wrappedEntry ? ' plus a year-in-review essay' : ''}.
+        {weeklyTunes.length > 0
+          ? <>{weeklyTunes.length} weekly post{weeklyTunes.length !== 1 ? 's' : ''}{wrappedEntry ? ', rounded off with a Year in Music review' : ''}.</>
+          : 'A look back at the year in music, from before the weekly posts began.'}
       </p>
     </header>
 
-    {wrappedEntry && wrappedHref && (
-      <>
-        <p class="mt-8 text-[15px] font-semibold" style="letter-spacing: -0.01em;" role="heading" aria-level="2">Year in review</p>
-        <a
-          href={wrappedHref}
-          class="group block pt-4 pb-6 border-b no-underline"
-          style="border-color: var(--color-outline-variant);"
-        >
-          <h3 class="font-display text-lg sm:text-[1.375rem] text-on-surface leading-[1.3] sm:leading-[1.27] transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 700; letter-spacing: -0.014em;">
-            {wrappedEntry.data.title}
-          </h3>
-          <p class="mt-2 text-base text-on-surface-variant leading-normal">
-            {wrappedEntry.data.description}
-          </p>
-          <p class="rubric mt-3">Read the full essay &rarr;</p>
-        </a>
-      </>
+    <TunesTabs active="years" />
+
+    {(wrappedEntry || wrappedImage) && (
+      <FeatureTag href={wrappedHref ?? undefined} class:list={['wrapped-feature', { 'wrapped-feature--static': !wrappedHref }]} data-entrance>
+        {wrappedImage && (
+          <span class="wrapped-art">
+            <img
+              src={getCFImageUrl(wrappedImage, { width: 1024, quality: heroPreset.quality, format: heroPreset.format, fit: heroPreset.fit })}
+              srcset={generateCFSrcSet(wrappedImage, heroPreset.widths, heroPreset.quality, heroPreset.format)}
+              sizes={wrappedSizes}
+              alt={`Year in Music artwork for ${year}`}
+              width="1536"
+              height="864"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </span>
+        )}
+        {wrappedEntry ? (
+          <span class="wrapped-body">
+            <span class="wrapped-badge">Year in Music</span>
+            <span class="wrapped-title" role="heading" aria-level="2">{wrappedEntry.data.title}</span>
+            {wrappedEntry.data.description && <span class="wrapped-desc">{wrappedEntry.data.description}</span>}
+            <span class="wrapped-cta">Read the review <span aria-hidden="true">&rarr;</span></span>
+          </span>
+        ) : (
+          <span class="wrapped-body">
+            <span class="wrapped-badge">Year in Music</span>
+            <span class="wrapped-title" role="heading" aria-level="2">{year} {isCurrentYear ? 'so far' : 'in music'}</span>
+            <span class="wrapped-desc">
+              {weeklyTunes.length} {weeklyTunes.length === 1 ? 'week' : 'weeks'} of listening{isCurrentYear ? ' so far' : ''}, built into one scene from the year's most-played records. The full review {isCurrentYear ? 'lands at the end of the year' : 'is still to be written'}.
+            </span>
+            {weeklyTunes.length > 0 && (
+              <a href="#weekly-posts" class="wrapped-cta">Browse the weeks <span aria-hidden="true">&darr;</span></a>
+            )}
+          </span>
+        )}
+      </FeatureTag>
     )}
 
-    <p class="mt-8 text-[15px] font-semibold" style="letter-spacing: -0.01em;" role="heading" aria-level="2">
-      Weekly posts from {year}
-    </p>
-    <div class="feed">
-      {weeklyTunes.map((tune: CollectionEntry<'tunes'>) => (
-        <div data-reveal>
-          <PostCard post={tune} headingLevel="3" />
+    {weeklyTunes.length > 0 && (
+      <>
+        <p id="weekly-posts" class="home-section-title wrapped-weeks-title" role="heading" aria-level="2">
+          Weekly posts from {year}
+        </p>
+        <div class="feed">
+          {weeklyTunes.map((tune: CollectionEntry<'tunes'>) => (
+            <div data-reveal>
+              <PostCard post={tune} headingLevel="3" />
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </>
+    )}
   </section>
 </BaseLayout>
+
+<style>
+  /* Year in Music: the artwork whole on a tint panel, the essay beside it
+     from 1024px (stacked below that). One link. */
+  .wrapped-feature {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 2rem;
+    padding: 10px 10px 1.5rem;
+    color: var(--color-on-surface);
+    text-decoration: none;
+    background: var(--paper-well);
+    border-radius: 18px;
+  }
+
+  .wrapped-art {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    background: var(--paper-deep);
+  }
+
+  .wrapped-art img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .wrapped-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0.875rem;
+  }
+
+  .wrapped-badge {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--on-accent-fill);
+    background: var(--accent-fill);
+    border-radius: 9999px;
+  }
+
+  .wrapped-title {
+    margin-top: 0.875rem;
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+    transition: color var(--dur-quick) ease;
+  }
+
+  .wrapped-feature:hover:not(.wrapped-feature--static) .wrapped-title {
+    color: var(--accent);
+  }
+
+  .wrapped-cta:is(a) {
+    text-decoration: none;
+  }
+
+
+  .wrapped-desc {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-on-surface-variant);
+  }
+
+  .wrapped-cta {
+    margin-top: 1.25rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-surface);
+    background: var(--color-on-surface);
+    border-radius: 9999px;
+  }
+
+  .wrapped-weeks-title {
+    margin: 3.5rem 0 0;
+    scroll-margin-top: 92px;
+  }
+
+  @media (min-width: 640px) {
+    .wrapped-title {
+      font-size: 2.25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .wrapped-feature {
+      grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 2rem;
+      padding: 12px 2.25rem 12px 12px;
+      border-radius: 22px;
+    }
+
+    .wrapped-art {
+      border-radius: 14px;
+    }
+
+    .wrapped-body {
+      padding: 0;
+    }
+
+    .wrapped-title {
+      font-size: 2.5rem;
+    }
+
+    .wrapped-desc {
+      font-size: 1.0625rem;
+    }
+  }
+</style>

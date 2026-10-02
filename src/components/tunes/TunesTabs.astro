@@ -1,0 +1,81 @@
+---
+import { tunesIndex } from '../../utils/tunes-index'
+
+interface Props {
+	/** Which tunes hub this page belongs to. */
+	active: 'latest' | 'artists' | 'albums' | 'years'
+}
+
+// The tab row shared by every tunes hub: latest weeks, the artist and album
+// directories, and the year pages. A year page marks "By year" as its section
+// (aria-current="true") rather than the page itself.
+const { active } = Astro.props
+
+const tabs = [
+	{ key: 'latest', href: '/tunes/', label: 'Latest weeks' },
+	{ key: 'artists', href: '/tunes/artist/', label: 'Artists', count: tunesIndex.totals.artists },
+	{ key: 'albums', href: '/tunes/album/', label: 'Albums', count: tunesIndex.totals.albums },
+	{ key: 'years', href: '/tunes/year/', label: 'By year' },
+] as const
+
+const isCurrentPage = (href: string) => Astro.url.pathname === href
+---
+
+<nav aria-label="Browse the tunes archive" class="tunes-tabs">
+	{tabs.map((tab) => (
+		<a
+			href={tab.href}
+			aria-current={tab.key === active ? (isCurrentPage(tab.href) ? 'page' : 'true') : undefined}
+		>
+			{tab.label}{'count' in tab && <span class="tab-count">{tab.count}</span>}
+		</a>
+	))}
+</nav>
+
+<style>
+	.tunes-tabs {
+		display: flex;
+		align-items: center;
+		gap: 1.75rem;
+		margin-top: 0.5rem;
+		border-bottom: 1px solid var(--color-outline-variant);
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+
+	.tunes-tabs::-webkit-scrollbar {
+		display: none;
+	}
+
+	.tunes-tabs a {
+		padding: 1.125rem 0 1rem;
+		font-size: 0.875rem;
+		color: var(--color-on-surface-variant);
+		border-bottom: 1px solid transparent;
+		margin-bottom: -1px;
+		white-space: nowrap;
+		text-decoration: none;
+	}
+
+	.tunes-tabs a:hover {
+		color: var(--color-on-surface);
+	}
+
+	.tunes-tabs a[aria-current] {
+		color: var(--color-on-surface);
+		border-bottom-color: var(--color-on-surface);
+	}
+
+	.tab-count {
+		font-size: 0.75rem;
+		margin-left: 0.2rem;
+		opacity: 0.75;
+	}
+
+	@media (max-width: 640px) {
+		.tunes-tabs {
+			-webkit-mask-image: linear-gradient(to right, black 88%, transparent);
+			mask-image: linear-gradient(to right, black 88%, transparent);
+		}
+	}
+</style>

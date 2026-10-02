@@ -2,6 +2,8 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 import { tunesIndex, getArtistTuneUrl } from '../../../utils/tunes-index'
 import TunesDirectory from '../../../components/tunes/TunesDirectory.astro'
+import type { DirectoryItem } from '../../../components/tunes/TunesDirectory.astro'
+import TunesTabs from '../../../components/tunes/TunesTabs.astro'
 import { Schema } from 'astro-seo-schema'
 import { createCollectionPageSchema, createBreadcrumbSchema } from '../../../utils/schema'
 
@@ -20,13 +22,7 @@ const getDirectoryBucket = (name: string) => {
   return /[A-Z]/.test(firstChar) ? firstChar : '#'
 }
 
-const groups = new Map<string, Array<{
-  href: string
-  name: string
-  image: string | null
-  imageAlt: string
-  meta: string
-}>>()
+const groups = new Map<string, DirectoryItem[]>()
 
 for (const artist of artists) {
   const bucket = getDirectoryBucket(artist.name)
@@ -39,6 +35,19 @@ for (const artist of artists) {
     meta: `${pluralize(artist.albumCount, 'album')} · ${pluralize(artist.postCount, 'post')}`
   })
 }
+
+// The six artists who turn up in the most weekly posts
+const featured = artists
+  .slice()
+  .sort((a, b) => b.postCount - a.postCount || a.name.localeCompare(b.name))
+  .slice(0, 6)
+  .map((artist): DirectoryItem => ({
+    href: getArtistTuneUrl(artist.slug),
+    name: artist.name,
+    image: artist.image,
+    imageAlt: artist.name,
+    meta: `In ${pluralize(artist.postCount, 'weekly post')}`
+  }))
 
 const orderedGroups = Array.from(groups.entries()).sort(([a], [b]) => a.localeCompare(b))
 
@@ -71,16 +80,15 @@ const breadcrumbSchema = createBreadcrumbSchema(
   <Schema slot="head" item={breadcrumbSchema} />
 
   <section class="page-frame">
-    <header class="page-head mb-8" data-entrance>
-      <p class="mb-4">
-        <a href="/tunes/" class="rubric nav-underline no-underline hover:text-on-surface">&larr; Tunes</a>
-      </p>
+    <header class="page-head !border-b-0 !pb-2" data-entrance>
       <h1>{title}</h1>
       <p class="page-lede">
         {artists.length} artists across {tunesIndex.totals.albums} albums and {tunesIndex.totals.posts} weekly posts.
       </p>
     </header>
 
-    <TunesDirectory groups={orderedGroups} />
+    <TunesTabs active="artists" />
+
+    <TunesDirectory variant="artist" featured={{ title: 'Most featured artists', items: featured }} groups={orderedGroups} />
   </section>
 </BaseLayout>

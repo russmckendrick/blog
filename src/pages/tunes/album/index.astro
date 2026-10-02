@@ -2,6 +2,8 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro'
 import { tunesIndex, getAlbumTuneUrl } from '../../../utils/tunes-index'
 import TunesDirectory from '../../../components/tunes/TunesDirectory.astro'
+import type { DirectoryItem } from '../../../components/tunes/TunesDirectory.astro'
+import TunesTabs from '../../../components/tunes/TunesTabs.astro'
 import { Schema } from 'astro-seo-schema'
 import { createCollectionPageSchema, createBreadcrumbSchema } from '../../../utils/schema'
 
@@ -20,14 +22,7 @@ const getDirectoryBucket = (name: string) => {
   return /[A-Z]/.test(firstChar) ? firstChar : '#'
 }
 
-const groups = new Map<string, Array<{
-  href: string
-  name: string
-  image: string | null
-  imageAlt: string
-  kicker: string
-  meta: string
-}>>()
+const groups = new Map<string, DirectoryItem[]>()
 
 for (const album of albums) {
   const bucket = getDirectoryBucket(album.name)
@@ -41,6 +36,20 @@ for (const album of albums) {
     meta: pluralize(album.posts.length, 'post')
   })
 }
+
+// The six albums that turn up in the most weekly posts
+const featured = albums
+  .slice()
+  .sort((a, b) => b.posts.length - a.posts.length || a.name.localeCompare(b.name))
+  .slice(0, 6)
+  .map((album): DirectoryItem => ({
+    href: getAlbumTuneUrl(album.slug),
+    name: album.name,
+    image: album.image,
+    imageAlt: `${album.name} by ${album.artist}`,
+    kicker: album.artist,
+    meta: `In ${pluralize(album.posts.length, 'weekly post')}`
+  }))
 
 const orderedGroups = Array.from(groups.entries()).sort(([a], [b]) => a.localeCompare(b))
 
@@ -73,16 +82,15 @@ const breadcrumbSchema = createBreadcrumbSchema(
   <Schema slot="head" item={breadcrumbSchema} />
 
   <section class="page-frame">
-    <header class="page-head mb-8" data-entrance>
-      <p class="mb-4">
-        <a href="/tunes/" class="rubric nav-underline no-underline hover:text-on-surface">&larr; Tunes</a>
-      </p>
+    <header class="page-head !border-b-0 !pb-2" data-entrance>
       <h1>{title}</h1>
       <p class="page-lede">
         {albums.length} albums covered across {tunesIndex.totals.posts} weekly posts.
       </p>
     </header>
 
-    <TunesDirectory groups={orderedGroups} />
+    <TunesTabs active="albums" />
+
+    <TunesDirectory variant="album" featured={{ title: 'Most featured albums', items: featured }} groups={orderedGroups} />
   </section>
 </BaseLayout>

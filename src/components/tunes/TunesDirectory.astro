@@ -1,112 +1,408 @@
 ---
 import { CF_IMAGE_PRESETS, getCFImageUrl } from '../../utils/cloudflare-images'
 
-interface DirectoryItem {
+export interface DirectoryItem {
   href: string
   name: string
   image: string | null
   imageAlt: string
   kicker?: string
   meta: string
-  detail?: string
 }
 
 interface Props {
+  /** 'album' renders square sleeves; 'artist' renders round portraits. */
+  variant: 'album' | 'artist'
+  /** Heading and items for the "Most featured" row above the A-Z. */
+  featured?: { title: string; items: DirectoryItem[] }
   groups: Array<[string, DirectoryItem[]]>
 }
 
-const { groups } = Astro.props
-const imagePreset = CF_IMAGE_PRESETS.tunesDirectory
+const { variant, featured, groups } = Astro.props
+const preset = CF_IMAGE_PRESETS.tunesDirectory
 
 const getInitial = (name: string) =>
   name.replace(/^the\s+/i, '').trim().charAt(0).toUpperCase() || '#'
 
-const getImageSrcSet = (src: string) =>
-  imagePreset.widths
-    .map((width) => `${getCFImageUrl(src, {
-      width,
-      height: width,
-      quality: imagePreset.quality,
-      format: imagePreset.format,
-      fit: imagePreset.fit,
-      gravity: 'auto'
-    })} ${width}w`)
-    .join(', ')
+const square = (src: string, width: number) =>
+  getCFImageUrl(src, { width, height: width, quality: preset.quality, format: preset.format, fit: preset.fit, gravity: 'auto' })
+
+const srcset = (src: string) => preset.widths.map((width) => `${square(src, width)} ${width}w`).join(', ')
+
+// Grid tiles: 2 / 3 / 4 / 5 / 6 columns across the 1320px frame
+const gridSizes = '(min-width: 1280px) 190px, (min-width: 1024px) 18vw, (min-width: 768px) 22vw, (min-width: 640px) 30vw, 45vw'
+// The featured row runs 3 / 6 columns
+const featuredSizes = '(min-width: 1280px) 190px, (min-width: 768px) 15vw, 30vw'
+
+const letterId = (letter: string) => `letter-${letter === '#' ? 'num' : letter}`
 ---
 
-<nav
-  aria-label="Jump to letter"
-  class="mb-10 pb-4 border-b flex flex-wrap gap-x-4 gap-y-2"
-  style="border-color: var(--color-outline-variant);"
->
-  {groups.map(([letter]) => (
-    <a
-      href={`#letter-${letter}`}
-      class="rubric nav-underline no-underline hover:text-on-surface"
-    >
-      {letter}
-    </a>
-  ))}
+{featured && featured.items.length > 0 && (
+  <section class="dir-featured" aria-labelledby="dir-featured-title">
+    <h2 id="dir-featured-title" class="dir-section-title">{featured.title}</h2>
+    <ol class:list={['dir-grid', 'dir-grid--featured', `dir-grid--${variant}`]}>
+      {featured.items.map((item, index) => (
+        <li>
+          <a href={item.href} class="dir-tile">
+            <span class="dir-art">
+              <span class="dir-initial" aria-hidden="true">{getInitial(item.name)}</span>
+              {item.image && (
+                <img
+                  src={square(item.image, 320)}
+                  srcset={srcset(item.image)}
+                  sizes={featuredSizes}
+                  alt={item.imageAlt}
+                  width="320"
+                  height="320"
+                  loading={index < 3 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  onerror="this.remove()"
+                />
+              )}
+              <span class="dir-rank" aria-hidden="true">{index + 1}</span>
+            </span>
+            <span class="dir-text">
+              <span class="dir-name">{item.name}</span>
+              {item.kicker && <span class="dir-kicker">{item.kicker}</span>}
+              <span class="dir-meta">{item.meta}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+)}
+
+<nav aria-label="Jump to letter" class="dir-letters">
+  <ul>
+    {groups.map(([letter, list]) => (
+      <li>
+        <a href={`#${letterId(letter)}`} title={`${list.length} under ${letter}`}>{letter}</a>
+      </li>
+    ))}
+  </ul>
 </nav>
 
 {groups.map(([letter, list]) => (
-  <section id={`letter-${letter}`} class="mb-12 scroll-mt-24">
-    <h2 class="text-[15px] font-semibold pb-2 mb-2 border-b text-on-surface" style="letter-spacing: -0.01em; border-color: var(--color-outline-variant);">{letter}</h2>
-    <ul class="grid grid-cols-1 lg:grid-cols-2 gap-x-8">
+  <section id={letterId(letter)} class="dir-letter" aria-labelledby={`${letterId(letter)}-title`}>
+    <h2 id={`${letterId(letter)}-title`} class="dir-letter-head">
+      <span class="dir-letter-mark">{letter}</span>
+      <span class="dir-letter-count">{list.length}</span>
+    </h2>
+    <ul class:list={['dir-grid', `dir-grid--${variant}`]}>
       {list.map((item) => (
-        <li class="min-w-0 border-b" style="border-color: var(--color-outline-variant);">
-          <a
-            href={item.href}
-            class="group flex min-w-0 min-h-[96px] overflow-hidden py-3 no-underline focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4"
-          >
-            <div class="relative w-[84px] sm:w-[96px] shrink-0 overflow-hidden rounded-[3px]">
-              <div class="absolute inset-0 flex items-center justify-center surface-container font-display text-3xl text-on-surface-variant opacity-50" aria-hidden="true">
-                {getInitial(item.name)}
-              </div>
+        <li>
+          <a href={item.href} class="dir-tile">
+            <span class="dir-art">
+              <span class="dir-initial" aria-hidden="true">{getInitial(item.name)}</span>
               {item.image && (
                 <img
-                  src={getCFImageUrl(item.image, {
-                    width: 160,
-                    height: 160,
-                    quality: imagePreset.quality,
-                    format: imagePreset.format,
-                    fit: imagePreset.fit,
-                    gravity: 'auto'
-                  })}
-                  srcset={getImageSrcSet(item.image)}
-                  sizes="(min-width: 640px) 96px, 84px"
+                  src={square(item.image, 320)}
+                  srcset={srcset(item.image)}
+                  sizes={gridSizes}
                   alt={item.imageAlt}
-                  width="160"
-                  height="160"
+                  width="320"
+                  height="320"
                   loading="lazy"
                   decoding="async"
                   fetchpriority="low"
-                  onerror="this.style.display = 'none'"
-                  class="absolute inset-0 h-full w-full object-cover"
+                  onerror="this.remove()"
                 />
               )}
-            </div>
-            <div class="min-w-0 flex flex-1 flex-col justify-center p-4">
-              {item.kicker && (
-                <span class="rubric mb-1 block truncate text-xs">
-                  {item.kicker}
-                </span>
-              )}
-              <span class="font-display text-base leading-snug text-on-surface line-clamp-2 transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 600;">
-                {item.name}
-              </span>
-              <span class="mt-1 text-sm text-on-surface-variant leading-snug">
-                {item.meta}
-              </span>
-              {item.detail && (
-                <span class="mt-2 text-xs text-on-surface-variant opacity-80 line-clamp-1">
-                  {item.detail}
-                </span>
-              )}
-            </div>
+            </span>
+            <span class="dir-text">
+              <span class="dir-name">{item.name}</span>
+              {item.kicker && <span class="dir-kicker">{item.kicker}</span>}
+              <span class="dir-meta">{item.meta}</span>
+            </span>
           </a>
         </li>
       ))}
     </ul>
   </section>
 ))}
+
+<style>
+  /* --- Most featured --- */
+
+  .dir-featured {
+    padding: 2.5rem 0 0.5rem;
+  }
+
+  .dir-section-title {
+    margin: 0 0 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  .dir-rank {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 26px;
+    padding: 0 7px;
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--on-accent-fill);
+    background: var(--accent-fill);
+    border-radius: 9999px;
+  }
+
+  /* On a portrait the badge sits over the circle's edge, so the circle
+     clips only the photo, not the badge */
+  .dir-grid--artist .dir-art {
+    overflow: visible;
+  }
+
+  .dir-grid--artist .dir-art img {
+    border-radius: 9999px;
+  }
+
+  .dir-grid--artist .dir-rank {
+    left: 4%;
+    bottom: 4%;
+    outline: 3px solid var(--color-surface);
+  }
+
+  /* --- A-Z bar: sticks under the 68px masthead --- */
+
+  .dir-letters {
+    position: sticky;
+    top: 68px;
+    z-index: 10;
+    margin: 2rem 0 0;
+    padding: 0.75rem 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  .dir-letters ul {
+    display: flex;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .dir-letters ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dir-letters a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-on-surface-variant);
+    text-decoration: none;
+    border-radius: 9999px;
+    transition: color var(--dur-quick) ease, background-color var(--dur-quick) ease;
+  }
+
+  .dir-letters a:hover,
+  .dir-letters a:focus-visible {
+    color: var(--color-on-surface);
+    background: var(--paper-well);
+  }
+
+  @media (min-width: 1024px) {
+    .dir-letters ul {
+      justify-content: space-between;
+    }
+  }
+
+  /* --- Letter sections --- */
+
+  .dir-letter {
+    padding-top: 2.5rem;
+    /* Clear the masthead and the sticky A-Z bar on a jump */
+    scroll-margin-top: 136px;
+  }
+
+  .dir-letter:last-of-type {
+    padding-bottom: 4rem;
+  }
+
+  .dir-letter-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.625rem;
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-outline-variant);
+  }
+
+  .dir-letter-mark {
+    font-size: 2.125rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .dir-letter-count {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--color-on-surface-variant);
+  }
+
+  /* --- Tile grid --- */
+
+  .dir-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 640px) {
+    .dir-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 768px) {
+    .dir-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 2rem 1.25rem;
+    }
+
+    .dir-grid--featured {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .dir-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .dir-grid--featured {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .dir-grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 2.25rem 1.5rem;
+    }
+  }
+
+  .dir-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    color: var(--color-on-surface);
+    text-decoration: none;
+  }
+
+  .dir-art {
+    position: relative;
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--paper-well);
+    border-radius: 8px;
+  }
+
+  .dir-grid--artist .dir-art {
+    border-radius: 9999px;
+  }
+
+  .dir-art img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity var(--dur-quick) ease;
+  }
+
+  .dir-tile:hover .dir-art img {
+    opacity: 0.88;
+  }
+
+  .dir-initial {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--color-on-surface-variant);
+    opacity: 0.5;
+  }
+
+  .dir-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+  }
+
+  .dir-grid--artist .dir-text {
+    align-items: center;
+    text-align: center;
+  }
+
+  .dir-name {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    transition: color var(--dur-quick) ease;
+  }
+
+  .dir-tile:hover .dir-name {
+    color: var(--accent);
+  }
+
+  .dir-grid--featured .dir-name {
+    font-size: 1.0625rem;
+  }
+
+  .dir-kicker {
+    overflow: hidden;
+    font-size: 0.875rem;
+    line-height: 1.35;
+    color: var(--color-on-surface);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .dir-meta {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--color-on-surface-variant);
+  }
+
+  .dir-tile:focus-visible {
+    outline: none;
+  }
+
+  .dir-tile:focus-visible .dir-art {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>

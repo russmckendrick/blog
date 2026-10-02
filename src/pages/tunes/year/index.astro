@@ -1,33 +1,57 @@
 ---
 import { getCollection } from 'astro:content'
 import BaseLayout from '../../../layouts/BaseLayout.astro'
+import TunesTabs from '../../../components/tunes/TunesTabs.astro'
 import { Schema } from 'astro-seo-schema'
 import { createCollectionPageSchema, createBreadcrumbSchema } from '../../../utils/schema'
+import { getCFImageUrl, generateCFSrcSet } from '../../../utils/cloudflare-images'
+import { CF_IMAGE_PRESETS } from '../../../consts'
+import { getYearInMusicCover } from '../../../utils/year-in-music'
 
 const tunes = (await getCollection('tunes'))
   .filter((tune) => import.meta.env.DEV || !tune.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 
-const counts = new Map<number, number>()
+type Cover = Parameters<typeof getCFImageUrl>[0]
+
+// Per year: the weekly post count, the Year in Music artwork when that year
+// has one (from the post, or a cover generated ahead of it with --cover-only),
+// and the three newest weekly covers as the fallback mosaic.
+const byYear = new Map<number, { weeks: number; wrapped?: Cover; hasReview?: boolean; covers: Cover[] }>()
 for (const tune of tunes) {
   const year = tune.data.pubDate.getFullYear()
-  counts.set(year, (counts.get(year) || 0) + 1)
+  if (!byYear.has(year)) byYear.set(year, { weeks: 0, covers: [] })
+  const stats = byYear.get(year)!
+  if (tune.id === `${year}-year-in-music`) {
+    stats.wrapped = tune.data.heroImage
+    stats.hasReview = true
+    continue
+  }
+  stats.weeks += 1
+  if (tune.data.heroImage && stats.covers.length < 3) stats.covers.push(tune.data.heroImage)
 }
 
-const years = Array.from(counts.entries())
-  .sort(([a], [b]) => b - a)
-  .map(([year, count]) => ({ year, count }))
+for (const [year, stats] of byYear) {
+  stats.wrapped ??= getYearInMusicCover(year)
+}
+
+const years = [...byYear.entries()].sort(([a], [b]) => b - a)
+const currentYear = new Date().getFullYear()
+const preset = CF_IMAGE_PRESETS.thumbnail
+const artWidths = [400, 640, 800, 1200]
+const artSizes = '(min-width: 1320px) 400px, (min-width: 1024px) calc((100vw - 128px) / 3), (min-width: 640px) calc((100vw - 68px) / 2), calc(100vw - 32px)'
 
 const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/'
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString()
 
 const title = 'Tunes by year'
-const description = `Browse weekly Listened to This Week posts by calendar year - ${years.length} year${years.length !== 1 ? 's' : ''} of music journals on russ.cloud.`
+const description = `Browse weekly Listened to This Week posts by calendar year - ${years.length} year${years.length !== 1 ? 's' : ''} of music journals on russ.cloud, with a Year in Music review for each finished year.`
 
 const collectionSchema = createCollectionPageSchema({
   name: title,
   description,
   url: pageUrl,
-  items: years.map(({ year }) => ({
+  items: years.map(([year]) => ({
     name: String(year),
     url: new URL(`/tunes/year/${year}/`, siteUrl).toString()
   })),
@@ -48,29 +72,86 @@ const breadcrumbSchema = createBreadcrumbSchema(
   <Schema slot="head" item={collectionSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
 
-  <section class="page-frame">
-    <header class="page-head" data-entrance>
-      <p class="mb-4">
-        <a href="/tunes/" class="rubric nav-underline no-underline hover:text-on-surface">&larr; Tunes</a>
-      </p>
+  <section class="page-frame pb-16">
+    <header class="page-head !border-b-0 !pb-2" data-entrance>
       <h1>{title}</h1>
       <p class="page-lede">
-        {years.length} year{years.length !== 1 ? 's' : ''} of weekly music journals.
+        {years.length} year{years.length !== 1 ? 's' : ''} of weekly music journals, each finished year rounded off with a Year in Music.
       </p>
     </header>
 
-    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 pb-16" data-reveal>
-      {years.map(({ year, count }) => (
-        <li class="border-b" style="border-color: var(--color-outline-variant);">
-          <a
-            href={`/tunes/year/${year}/`}
-            class="group flex items-baseline justify-between gap-3 py-3 no-underline"
-          >
-            <span class="font-display text-lg text-on-surface transition-colors group-hover:text-[var(--color-secondary)]" style="font-weight: 600;">{year}</span>
-            <span class="rubric">{count} post{count !== 1 ? 's' : ''}</span>
+    <TunesTabs active="years" />
+
+    <ul class="tunes-year-grid" role="list">
+      {years.map(([year, stats], index) => (
+        <li>
+          <a href={`/tunes/year/${year}/`} class="year-card">
+            {stats.wrapped ? (
+              <span class="year-art" aria-hidden="true">
+                <img
+                  src={getCFImageUrl(stats.wrapped, { width: 800, quality: preset.quality, format: preset.format, fit: preset.fit })}
+                  srcset={generateCFSrcSet(stats.wrapped, artWidths, preset.quality, preset.format)}
+                  sizes={artSizes}
+                  alt=""
+                  width="800"
+                  height="450"
+                  loading={index < 3 ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
+              </span>
+            ) : (
+              <span class="year-mosaic" aria-hidden="true">
+                {[0, 1, 2].map((slot) => (
+                  stats.covers[slot] ? (
+                    <img
+                      src={getCFImageUrl(stats.covers[slot], { width: slot === 0 ? 640 : 320, quality: preset.quality, format: preset.format, fit: preset.fit })}
+                      alt=""
+                      width="160"
+                      height="120"
+                      loading={index < 3 ? 'eager' : 'lazy'}
+                      decoding="async"
+                    />
+                  ) : (
+                    <span class="year-mosaic-blank"></span>
+                  )
+                ))}
+              </span>
+            )}
+            <span class="year-card-body">
+              <span class="year-card-year">{year}</span>
+              <span class="rubric">
+                {[
+                  stats.weeks > 0 && `${stats.weeks} ${stats.weeks === 1 ? 'week' : 'weeks'}${year === currentYear && !stats.hasReview ? ' so far' : ''}`,
+                  stats.hasReview && 'Year in Music'
+                ].filter(Boolean).join(' · ')}
+              </span>
+            </span>
           </a>
         </li>
       ))}
     </ul>
   </section>
 </BaseLayout>
+
+<style>
+  .tunes-year-grid {
+    display: grid;
+    gap: 1.25rem;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 640px) {
+    .tunes-year-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .tunes-year-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+  }
+</style>
