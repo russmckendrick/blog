@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
+import SearchMeta from '../../components/search/SearchMeta.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import PostCard from '../../components/blog/PostCard.astro'
 import { Schema } from 'astro-seo-schema'
@@ -61,6 +62,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
   description={entry.data.description}
   image={`/books/${entry.id}-og.png`}
 >
+  <SearchMeta slot="head" type="Book" date={entry.data.year ? new Date(Date.UTC(entry.data.year, 0, 1)) : undefined} image={entry.data.cover} />
   <Schema slot="head" item={bookSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
 
@@ -120,7 +122,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
         </dl>
       </aside>
 
-      <div>
+      <div data-pagefind-body>
         <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-on-surface mb-4">
           {entry.data.title}
         </h1>
@@ -134,7 +136,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
         </div>
 
         {relatedPosts.length > 0 && (
-          <aside class="mt-12 pt-6 border-t border-[var(--color-outline-variant)]/40">
+          <aside class="mt-12 pt-6 border-t border-[var(--color-outline-variant)]/40" data-pagefind-ignore>
             <p class="text-xs text-on-surface-variant mb-4">Posts on this topic</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {relatedPosts.map((post) => (

@@ -1,0 +1,33 @@
+---
+/**
+ * Pagefind metadata for a searchable page, emitted into <head>.
+ *
+ * Pagefind reads data-pagefind-* attributes anywhere in the document, so
+ * these <meta> tags carry what the search panel shows beside each result:
+ * the content type (also a filter), the date (also the "Newest" sort key),
+ * a pre-sized cover thumbnail and the read time. Only pages that also mark a
+ * data-pagefind-body region are indexed at all.
+ */
+import { getCFImageUrl } from '../../utils/cloudflare-images'
+
+export type SearchType = 'Post' | 'Tunes' | 'Book' | 'Glossary'
+
+interface Props {
+	type: SearchType
+	date?: Date
+	image?: string | { src: string }
+	readingTime?: number
+}
+
+const { type, date, image, readingTime } = Astro.props
+
+const isoDate = date ? date.toISOString().slice(0, 10) : undefined
+const thumb = image
+	? getCFImageUrl(image, { width: 240, height: 150, fit: 'cover', quality: 75, format: 'auto' })
+	: undefined
+---
+
+<meta data-pagefind-filter="type[content]" content={type} />
+{isoDate && <meta data-pagefind-meta="date[content]" data-pagefind-sort="date[content]" content={isoDate} />}
+{thumb && <meta data-pagefind-meta="image[content]" content={thumb} />}
+{readingTime && <meta data-pagefind-meta="minutes[content]" content={String(readingTime)} />}

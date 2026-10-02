@@ -21,7 +21,7 @@ interface Props {
 const { markdownHref, pageUrl, editUrl, editTitle, rssHref } = Astro.props;
 ---
 
-<div class="storybar">
+<div class="storybar" data-pagefind-ignore>
 	<div class="storybar-actions">
 		<UseWithAI id="use-with-ai-bar" markdownHref={markdownHref} pageUrl={pageUrl} />
 		{editUrl && (

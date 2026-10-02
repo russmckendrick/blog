@@ -12,13 +12,6 @@ interface Window {
     }
   ) => void;
 
-  // Pagefind search UI (present only after /pagefind/pagefind-ui.js loads)
-  PagefindUI?: new (options: {
-    element: Element | string;
-    showImages?: boolean;
-    excerptLength?: number;
-  }) => unknown;
-
   // Swup page transitions (if used)
   swup?: {
     hooks: {

@@ -63,7 +63,7 @@ graph TB
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
 | **Content Collections** | Astro Content Collections | Type-safe content management |
-| **Search** | Pagefind | Static search index |
+| **Search** | Pagefind | Static search index, custom UI over its JS API ([Search Index](#search-index)) |
 | **Analytics** | Plausible | Privacy-focused analytics |
 | **Syntax Highlighting** | Expressive Code | Code block styling |
 | **Image Gallery** | LightGallery | Lightbox image viewer |
@@ -321,6 +321,18 @@ graph TD
 **Build Time**: ~2-3 minutes
 
 **Output**: Fully static site in `dist/`
+
+### Search Index
+
+`astro-pagefind` runs Pagefind over `dist/` at the end of `astro build`. Indexing is opt-in per page: once any page carries `data-pagefind-body`, pages without it are skipped, so tag hubs, year and paginated listings, the homepage and About never appear in results. Four templates opt in:
+
+| Template | Indexed region | `type` filter |
+|----------|----------------|---------------|
+| `BlogPost.astro` (posts and tunes) | the `<article>`; tag pills, hero, rails, StoryBar, byline and everything after the prose carry `data-pagefind-ignore` | `Post` / `Tunes` |
+| `books/[slug].astro` | the title, description and prose column (related posts ignored) | `Book` |
+| `glossary/[term].astro` | the `<article>` (breadcrumb and related lists ignored) | `Glossary` |
+
+Each also renders `SearchMeta.astro` into `<head>`: `<meta>` tags carrying the `type` filter, `date` (metadata and the sort key behind "Newest"; books use 1 January of their year), `minutes` (read time) and `image` — a 240×150 Cloudflare-transformed cover thumbnail built at render time, so the client never constructs image URLs. The client is `SearchPanel.astro`, which imports `/pagefind/pagefind.js` directly (see [design-system.md](../guides/design-system.md) for the UI). Excerpts arrive as HTML with `<mark>` around matches; the panel parses them with `DOMParser` and rebuilds only text and `<mark>` nodes rather than injecting the HTML. Search has no index under `pnpm run dev` — test it with `pnpm run build && pnpm run preview`.
 
 ### Deployment Pipeline
 

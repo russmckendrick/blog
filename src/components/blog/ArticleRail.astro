@@ -27,7 +27,7 @@ const tocHeadings = part === 'contents' ? headings.filter(h => h.depth <= maxDep
 const showTools = part === 'tools';
 ---
 
-<aside class:list={['article-rail', `article-rail--${part}`]} aria-label={part === 'contents' ? 'On this page' : 'Article tools'}>
+<aside class:list={['article-rail', `article-rail--${part}`]} data-pagefind-ignore aria-label={part === 'contents' ? 'On this page' : 'Article tools'}>
 	<div class="article-rail-inner">
 		{tocHeadings.length > 0 && (
 			<nav id="toc-rail" aria-label="Contents">

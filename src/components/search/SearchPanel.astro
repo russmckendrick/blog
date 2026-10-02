@@ -1,0 +1,1091 @@
+---
+/**
+ * The search panel — input, type filters, sort and results — shared by the
+ * masthead search sheet (variant="sheet") and the /search/ page
+ * (variant="page"). It talks to Pagefind's JS API directly rather than
+ * mounting PagefindUI, so results render as Workbench rows: cover thumbnail,
+ * type · date · read time, title, highlighted excerpt and matching sections.
+ *
+ * Pagefind lazy-loads the first time the panel takes focus. What it indexes,
+ * and the type/date/image metadata it returns, is set by SearchMeta.astro and
+ * the data-pagefind-body regions on posts, tunes, books and glossary terms.
+ */
+interface Props {
+	variant: 'sheet' | 'page'
+}
+
+const { variant } = Astro.props
+const resultsId = `search-results-${variant}`
+
+const FILTERS = [
+	{ type: '', label: 'All' },
+	{ type: 'Post', label: 'Posts' },
+	{ type: 'Tunes', label: 'Tunes' },
+	{ type: 'Book', label: 'Books' },
+	{ type: 'Glossary', label: 'Glossary' },
+]
+
+const SUGGESTIONS = ['Docker', 'Kubernetes', 'Ansible', 'Terraform', 'Azure', 'macOS', 'Claude', 'Homebrew']
+
+const BROWSE = [
+	{ href: '/archives/', label: 'Archive' },
+	{ href: '/tags/', label: 'Tags' },
+	{ href: '/tunes/', label: 'Tunes' },
+	{ href: '/books/', label: 'Books' },
+	{ href: '/glossary/', label: 'Glossary' },
+	{ href: '/reading/', label: 'Reading list' },
+]
+---
+
+<div class:list={['search-panel', `search-panel--${variant}`]} data-search-panel data-variant={variant}>
+	<div class="search-field">
+		<svg class="search-field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+			<circle cx="11" cy="11" r="7" />
+			<path d="m20 20-3.5-3.5" />
+		</svg>
+		<input
+			type="search"
+			class="search-input"
+			placeholder="Search the archive"
+			aria-label="Search the archive"
+			aria-controls={resultsId}
+			autocomplete="off"
+			autocapitalize="off"
+			spellcheck="false"
+			enterkeyhint="search"
+			data-search-input
+		/>
+		<button type="button" class="search-clear" data-search-clear hidden>Clear</button>
+		{variant === 'sheet' && (
+			<button type="button" class="search-close" data-search-close aria-label="Close search">
+				<kbd class="search-kbd search-close-kbd">esc</kbd>
+				<svg class="search-close-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+					<path d="M6 6l12 12M18 6L6 18" />
+				</svg>
+			</button>
+		)}
+	</div>
+
+	<div class="search-filters" role="group" aria-label="Filter by type" data-search-filters>
+		{FILTERS.map((filter) => (
+			<button type="button" class="search-filter" data-type={filter.type} aria-pressed={filter.type === '' ? 'true' : 'false'}>
+				{filter.label}<span class="search-filter-count" data-count></span>
+			</button>
+		))}
+	</div>
+
+	<div class="search-body" data-search-body>
+		<div class="search-idle" data-search-idle>
+			<p class="search-idle-label">Try</p>
+			<div class="search-chips">
+				{SUGGESTIONS.map((term) => (
+					<button type="button" class="search-chip" data-search-suggest={term}>{term}</button>
+				))}
+			</div>
+			<p class="search-idle-label">Or browse</p>
+			<div class="search-chips">
+				{BROWSE.map((link) => (
+					<a href={link.href} class="search-chip search-chip--link">{link.label} <span aria-hidden="true">→</span></a>
+				))}
+			</div>
+		</div>
+
+		<div class="search-status" data-search-status-row hidden>
+			<p class="search-count" aria-live="polite" data-search-status></p>
+			<div class="search-sort" role="group" aria-label="Sort results">
+				<button type="button" class="search-sort-option" data-sort="relevance" aria-pressed="true">Best match</button>
+				<button type="button" class="search-sort-option" data-sort="newest" aria-pressed="false">Newest</button>
+			</div>
+		</div>
+
+		<ol class="search-results" id={resultsId} aria-label="Search results" data-search-results></ol>
+
+		<div class="search-empty" data-search-none hidden>
+			<p class="search-empty-title" data-search-none-title></p>
+			<p class="search-empty-hint">Try a broader term, or <a href="/archives/">browse the archive</a>.</p>
+			<button type="button" class="search-empty-all" data-search-none-all hidden></button>
+		</div>
+
+		<button type="button" class="search-more" data-search-more hidden></button>
+
+		{import.meta.env.DEV && (
+			<p class="search-dev">
+				Search needs a production build to index content — run <code>pnpm run build</code> then <code>pnpm run preview</code>.
+			</p>
+		)}
+		<p class="search-dev" data-search-offline hidden>Search is unavailable right now — the index failed to load.</p>
+	</div>
+
+	{variant === 'sheet' && (
+		<div class="search-foot" aria-hidden="true">
+			<span><kbd class="search-kbd">↑</kbd><kbd class="search-kbd">↓</kbd> to move</span>
+			<span><kbd class="search-kbd">↵</kbd> to open</span>
+			<span><kbd class="search-kbd">esc</kbd> to close</span>
+		</div>
+	)}
+</div>
+
+<script>
+	interface PagefindSubResult {
+		title: string
+		url: string
+		excerpt: string
+	}
+
+	interface PagefindResultData {
+		url: string
+		excerpt: string
+		meta: Record<string, string | undefined>
+		sub_results?: PagefindSubResult[]
+	}
+
+	interface PagefindSearch {
+		results: { id: string; data: () => Promise<PagefindResultData> }[]
+		unfilteredResultCount: number
+		totalFilters?: Record<string, Record<string, number>>
+	}
+
+	interface PagefindApi {
+		options: (options: Record<string, unknown>) => Promise<void>
+		init: () => Promise<void> | void
+		preload: (term: string, options?: Record<string, unknown>) => Promise<void>
+		debouncedSearch: (term: string, options?: Record<string, unknown>, timeout?: number) => Promise<PagefindSearch | null>
+		filters: () => Promise<Record<string, Record<string, number>>>
+	}
+
+	const PAGE_SIZE = 10
+	const TYPE_LABELS: Record<string, string> = { Post: 'Post', Tunes: 'Tunes', Book: 'Book', Glossary: 'Glossary' }
+	const dateFormat = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+
+	// One Pagefind instance for the whole page, shared by the sheet and /search/.
+	let pagefindPromise: Promise<PagefindApi | null> | undefined
+
+	function loadPagefind(): Promise<PagefindApi | null> {
+		pagefindPromise ??= (async () => {
+			try {
+				const bundle = '/pagefind/pagefind.js'
+				const pagefind = (await import(/* @vite-ignore */ bundle)) as PagefindApi
+				await pagefind.options({
+					excerptLength: 26,
+					// Soften the default bias towards very short pages, which
+					// otherwise floats thin 2014 notes above the long write-ups.
+					ranking: { pageLength: 0.4 },
+				})
+				await pagefind.init()
+				// Load the filter index up front: until it is, searches report
+				// no per-type counts for the filter pills.
+				await pagefind.filters()
+				return pagefind
+			} catch {
+				return null
+			}
+		})()
+		return pagefindPromise
+	}
+
+	function el<K extends keyof HTMLElementTagNameMap>(tag: K, className?: string, text?: string) {
+		const node = document.createElement(tag)
+		if (className) node.className = className
+		if (text !== undefined) node.textContent = text
+		return node
+	}
+
+	// Pagefind excerpts are HTML with <mark> around matches. Parse them inert and
+	// rebuild only text and <mark> nodes — nothing else reaches the live DOM.
+	function excerptNodes(html: string): DocumentFragment {
+		const parsed = new DOMParser().parseFromString(`<body>${html}</body>`, 'text/html')
+		const fragment = document.createDocumentFragment()
+		parsed.body.childNodes.forEach((node) => {
+			if (node.nodeName === 'MARK') {
+				fragment.append(el('mark', undefined, node.textContent ?? ''))
+			} else {
+				fragment.append(node.textContent ?? '')
+			}
+		})
+		return fragment
+	}
+
+	function formatDate(iso: string | undefined, type: string): string | undefined {
+		if (!iso) return undefined
+		if (type === 'Book') return iso.slice(0, 4)
+		const date = new Date(`${iso}T00:00:00Z`)
+		return Number.isNaN(date.valueOf()) ? undefined : dateFormat.format(date)
+	}
+
+	function renderHit(data: PagefindResultData): HTMLLIElement {
+		const type = data.meta.type ?? (data.url.startsWith('/books/') ? 'Book' : data.url.startsWith('/glossary/') ? 'Glossary' : 'Post')
+		const item = el('li', 'search-hit-item')
+		const link = el('a', `search-hit search-hit--${type.toLowerCase()}`)
+		link.href = data.url
+
+		const thumb = el('span', 'search-hit-thumb')
+		const glyph = () => el('span', 'search-hit-glyph', type === 'Glossary' ? 'Aa' : '¶')
+		if (data.meta.image) {
+			const img = el('img')
+			img.src = data.meta.image
+			img.alt = ''
+			img.loading = 'lazy'
+			img.decoding = 'async'
+			img.width = 120
+			img.height = 75
+			img.addEventListener('error', () => img.replaceWith(glyph()), { once: true })
+			thumb.append(img)
+		} else {
+			thumb.append(glyph())
+		}
+
+		const text = el('span', 'search-hit-text')
+		const meta = el('span', 'search-hit-meta')
+		meta.append(el('span', 'search-hit-type', TYPE_LABELS[type] ?? type))
+		const date = formatDate(data.meta.date, type)
+		if (date) meta.append(el('span', undefined, date))
+		if (data.meta.minutes) meta.append(el('span', undefined, `${data.meta.minutes} min read`))
+
+		const title = el('span', 'search-hit-title', data.meta.title ?? data.url)
+		const excerpt = el('span', 'search-hit-excerpt')
+		excerpt.append(excerptNodes(data.excerpt))
+
+		text.append(meta, title, excerpt)
+		link.append(thumb, text)
+		item.append(link)
+
+		// Deep links into the sections that matched, when they aren't the page itself
+		const sections = (data.sub_results ?? [])
+			.filter((sub) => sub.url.includes('#') && sub.title && sub.title !== data.meta.title)
+			.slice(0, 2)
+		if (sections.length > 0) {
+			const list = el('ul', 'search-hit-sections')
+			sections.forEach((sub) => {
+				const li = el('li')
+				const a = el('a', 'search-hit-section')
+				a.href = sub.url
+				a.append(el('span', 'search-hit-section-mark', '#'), el('span', undefined, sub.title))
+				li.append(a)
+				list.append(li)
+			})
+			item.append(list)
+		}
+
+		return item
+	}
+
+	function initPanel(panel: HTMLElement) {
+		const input = panel.querySelector<HTMLInputElement>('[data-search-input]')
+		const results = panel.querySelector<HTMLOListElement>('[data-search-results]')
+		if (!input || !results) return
+
+		const isPage = panel.dataset.variant === 'page'
+		const clear = panel.querySelector<HTMLButtonElement>('[data-search-clear]')!
+		const idle = panel.querySelector<HTMLElement>('[data-search-idle]')!
+		const statusRow = panel.querySelector<HTMLElement>('[data-search-status-row]')!
+		const status = panel.querySelector<HTMLElement>('[data-search-status]')!
+		const none = panel.querySelector<HTMLElement>('[data-search-none]')!
+		const noneTitle = panel.querySelector<HTMLElement>('[data-search-none-title]')!
+		const noneAll = panel.querySelector<HTMLButtonElement>('[data-search-none-all]')!
+		const more = panel.querySelector<HTMLButtonElement>('[data-search-more]')!
+		const offline = panel.querySelector<HTMLElement>('[data-search-offline]')!
+		const body = panel.querySelector<HTMLElement>('[data-search-body]')!
+		const filterButtons = [...panel.querySelectorAll<HTMLButtonElement>('[data-search-filters] [data-type]')]
+		const sortButtons = [...panel.querySelectorAll<HTMLButtonElement>('[data-sort]')]
+
+		let activeType = ''
+		let sort: 'relevance' | 'newest' = 'relevance'
+		let current: PagefindSearch['results'] = []
+		let shown = 0
+		let sequence = 0
+
+		const setPressed = (buttons: HTMLButtonElement[], match: (b: HTMLButtonElement) => boolean) => {
+			buttons.forEach((b) => b.setAttribute('aria-pressed', String(match(b))))
+		}
+
+		const setCounts = (search?: PagefindSearch) => {
+			const typeCounts = search?.totalFilters?.type ?? {}
+			filterButtons.forEach((button) => {
+				const count = button.querySelector<HTMLElement>('[data-count]')
+				if (!count) return
+				const type = button.dataset.type ?? ''
+				const value = !search ? undefined : type === '' ? search.unfilteredResultCount : typeCounts[type] ?? 0
+				count.textContent = value === undefined ? '' : String(value)
+				button.classList.toggle('is-empty', value === 0)
+			})
+		}
+
+		const syncUrl = (query: string) => {
+			if (!isPage) return
+			const url = new URL(window.location.href)
+			if (query) url.searchParams.set('q', query)
+			else url.searchParams.delete('q')
+			history.replaceState(history.state, '', url)
+		}
+
+		const showIdle = () => {
+			sequence++
+			current = []
+			shown = 0
+			results.replaceChildren()
+			idle.hidden = false
+			statusRow.hidden = true
+			none.hidden = true
+			more.hidden = true
+			panel.classList.remove('is-loading')
+			setCounts()
+		}
+
+		const renderMore = async () => {
+			const token = sequence
+			const batch = current.slice(shown, shown + PAGE_SIZE)
+			const data = await Promise.all(batch.map((r) => r.data()))
+			if (token !== sequence) return
+			results.append(...data.map(renderHit))
+			shown += batch.length
+			const remaining = current.length - shown
+			more.hidden = remaining <= 0
+			more.textContent = `Show ${Math.min(remaining, PAGE_SIZE)} more`
+		}
+
+		const run = async () => {
+			const query = input.value.trim()
+			clear.hidden = input.value === ''
+			syncUrl(query)
+			if (!query) {
+				showIdle()
+				return
+			}
+
+			const token = ++sequence
+			panel.classList.add('is-loading')
+			const pagefind = await loadPagefind()
+			if (token !== sequence) return
+			if (!pagefind) {
+				panel.classList.remove('is-loading')
+				offline.hidden = false
+				return
+			}
+
+			const options: Record<string, unknown> = { filters: activeType ? { type: activeType } : {} }
+			if (sort === 'newest') options.sort = { date: 'desc' }
+			const search = await pagefind.debouncedSearch(query, options, 160)
+			// null means a newer keystroke superseded this one
+			if (search === null || token !== sequence) return
+
+			current = search.results
+			shown = 0
+			results.replaceChildren()
+			body.scrollTop = 0
+			idle.hidden = true
+			setCounts(search)
+
+			const total = current.length
+			statusRow.hidden = total === 0
+			status.textContent = `${total} ${total === 1 ? 'result' : 'results'}`
+			none.hidden = total > 0
+			if (total === 0) {
+				noneTitle.textContent = `Nothing matches “${query}”${activeType ? ' here' : ''}.`
+				const elsewhere = search.unfilteredResultCount
+				noneAll.hidden = !(activeType && elsewhere > 0)
+				noneAll.textContent = `Show ${elsewhere} ${elsewhere === 1 ? 'match' : 'matches'} in everything`
+				more.hidden = true
+			} else {
+				await renderMore()
+			}
+			if (token === sequence) panel.classList.remove('is-loading')
+		}
+
+		const setType = (type: string) => {
+			activeType = type
+			setPressed(filterButtons, (b) => (b.dataset.type ?? '') === type)
+			run()
+		}
+
+		input.addEventListener('input', run)
+		panel.addEventListener('focusin', () => { loadPagefind() }, { once: true })
+
+		clear.addEventListener('click', () => {
+			input.value = ''
+			run()
+			input.focus()
+		})
+
+		filterButtons.forEach((button) => {
+			button.addEventListener('click', () => setType(button.dataset.type ?? ''))
+		})
+
+		sortButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				sort = button.dataset.sort === 'newest' ? 'newest' : 'relevance'
+				setPressed(sortButtons, (b) => b === button)
+				run()
+			})
+		})
+
+		noneAll.addEventListener('click', () => setType(''))
+		more.addEventListener('click', () => { renderMore() })
+
+		panel.querySelectorAll<HTMLButtonElement>('[data-search-suggest]').forEach((chip) => {
+			chip.addEventListener('click', () => {
+				input.value = chip.dataset.searchSuggest ?? ''
+				input.focus()
+				run()
+			})
+		})
+
+		// Arrow keys walk from the input through the result links and back;
+		// typing while a result has focus drops back into the input.
+		panel.addEventListener('keydown', (event) => {
+			const links = [...results.querySelectorAll<HTMLAnchorElement>('a')]
+			const target = event.target as HTMLElement
+
+			if (target === input) {
+				if (event.key === 'ArrowDown' && links.length > 0) {
+					event.preventDefault()
+					links[0].focus()
+				} else if (event.key === 'Enter' && links.length > 0 && window.matchMedia('(hover: hover)').matches) {
+					event.preventDefault()
+					links[0].click()
+				}
+				return
+			}
+
+			const index = links.indexOf(target as HTMLAnchorElement)
+			if (index === -1) return
+			if (event.key === 'ArrowDown') {
+				event.preventDefault()
+				;(links[index + 1] ?? more)?.focus()
+			} else if (event.key === 'ArrowUp') {
+				event.preventDefault()
+				;(index === 0 ? input : links[index - 1]).focus()
+			} else if (event.key.length === 1 && !event.metaKey && !event.ctrlKey && !event.altKey) {
+				input.focus()
+			}
+		})
+
+		// /search/?q= deep links (the WebSite SearchAction points here)
+		if (isPage) {
+			const initial = new URLSearchParams(window.location.search).get('q')
+			if (initial) {
+				input.value = initial
+				run()
+			}
+		}
+	}
+
+	document.querySelectorAll<HTMLElement>('[data-search-panel]').forEach(initPanel)
+
+	// Track search usage as a Plausible goal (debounced, query not sent for privacy).
+	let searchTimer: ReturnType<typeof setTimeout>
+	document.addEventListener('input', (event) => {
+		const target = event.target
+		if (!(target instanceof HTMLInputElement) || !target.matches('[data-search-input]')) return
+		clearTimeout(searchTimer)
+		searchTimer = setTimeout(() => {
+			if (target.value.trim().length >= 2) {
+				window.plausible?.('Search', { interactive: false })
+			}
+		}, 1200)
+	})
+</script>
+
+<style is:global>
+	/* Unscoped: result rows are built in JS, so they carry no scope hash. */
+
+	.search-panel {
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
+		color: var(--ink);
+	}
+
+	/* --- Field --- */
+
+	.search-field {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		flex: none;
+	}
+
+	.search-field-icon {
+		width: 20px;
+		height: 20px;
+		flex: none;
+		color: var(--ink-muted);
+	}
+
+	.search-input {
+		flex: 1;
+		min-width: 0;
+		border: 0;
+		background: transparent;
+		color: var(--ink);
+		font-family: var(--font-sans);
+		font-size: 20px;
+		font-weight: 500;
+		letter-spacing: -0.015em;
+		line-height: 1.3;
+		padding: 0;
+		outline: none;
+		-webkit-appearance: none;
+		appearance: none;
+	}
+
+	.search-input::placeholder {
+		color: var(--ink-muted);
+		font-weight: 400;
+		opacity: 1;
+	}
+
+	.search-input::-webkit-search-cancel-button,
+	.search-input::-webkit-search-decoration {
+		-webkit-appearance: none;
+	}
+
+	.search-clear {
+		flex: none;
+		font-size: 13px;
+		color: var(--ink-muted);
+		padding: 4px 6px;
+		border-radius: 6px;
+		transition: color var(--dur-quick) ease;
+	}
+
+	.search-clear:hover {
+		color: var(--ink);
+	}
+
+	.search-close {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex: none;
+		color: var(--ink-muted);
+		transition: color var(--dur-quick) ease;
+	}
+
+	.search-close:hover {
+		color: var(--ink);
+	}
+
+	.search-close-x {
+		display: none;
+		width: 20px;
+		height: 20px;
+	}
+
+	.search-kbd {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 22px;
+		height: 22px;
+		padding: 0 6px;
+		font-family: var(--font-sans);
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 1;
+		color: var(--ink-muted);
+		background: var(--paper);
+		border: 1px solid var(--rule);
+		border-radius: 6px;
+	}
+
+	.search-close:hover .search-close-kbd {
+		border-color: var(--rule-strong);
+		color: var(--ink);
+	}
+
+	/* --- Filters --- */
+
+	.search-filters {
+		display: flex;
+		gap: 6px;
+		flex: none;
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+
+	.search-filters::-webkit-scrollbar {
+		display: none;
+	}
+
+	.search-filter {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		flex: none;
+		min-height: 32px;
+		padding: 0 12px;
+		font-size: 13px;
+		font-weight: 500;
+		color: var(--ink);
+		border: 1px solid var(--rule);
+		border-radius: 9999px;
+		white-space: nowrap;
+		transition: border-color var(--dur-quick) ease, background-color var(--dur-quick) ease, color var(--dur-quick) ease;
+	}
+
+	.search-filter:hover {
+		border-color: var(--rule-strong);
+	}
+
+	.search-filter[aria-pressed='true'] {
+		background: var(--ink);
+		border-color: var(--ink);
+		color: var(--paper);
+		font-weight: 600;
+	}
+
+	.search-filter-count {
+		font-size: 12px;
+		font-weight: 400;
+		font-variant-numeric: tabular-nums;
+		color: var(--ink-muted);
+	}
+
+	.search-filter-count:empty {
+		display: none;
+	}
+
+	.search-filter[aria-pressed='true'] .search-filter-count {
+		color: inherit;
+		opacity: 0.7;
+	}
+
+	.search-filter.is-empty:not([aria-pressed='true']) {
+		color: var(--ink-muted);
+	}
+
+	/* --- Body --- */
+
+	.search-body {
+		min-height: 0;
+	}
+
+	.search-idle-label {
+		margin: 0 0 10px;
+		font-size: 13px;
+		color: var(--ink-muted);
+	}
+
+	.search-chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		margin-bottom: 22px;
+	}
+
+	.search-chips:last-child {
+		margin-bottom: 0;
+	}
+
+	.search-chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		min-height: 32px;
+		padding: 0 12px;
+		font-size: 13px;
+		color: var(--ink);
+		text-decoration: none;
+		background: var(--pill);
+		border-radius: 9999px;
+		transition: background-color var(--dur-quick) ease;
+	}
+
+	.search-chip:hover,
+	.search-chip:focus-visible {
+		background: var(--pill-hover);
+		color: var(--ink);
+	}
+
+	.search-chip--link {
+		background: transparent;
+		border: 1px solid var(--rule);
+	}
+
+	.search-chip--link span {
+		color: var(--ink-muted);
+	}
+
+	.search-chip--link:hover,
+	.search-chip--link:focus-visible {
+		background: transparent;
+		border-color: var(--rule-strong);
+	}
+
+	.search-status {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		margin-bottom: 6px;
+	}
+
+	.search-count {
+		margin: 0;
+		font-size: 13px;
+		font-variant-numeric: tabular-nums;
+		color: var(--ink-muted);
+		transition: opacity var(--dur-quick) ease;
+	}
+
+	.search-panel.is-loading .search-count {
+		opacity: 0.5;
+	}
+
+	.search-sort {
+		display: inline-flex;
+		padding: 2px;
+		background: var(--paper-well);
+		border-radius: 9999px;
+	}
+
+	.search-sort-option {
+		padding: 4px 10px;
+		font-size: 12px;
+		color: var(--ink-muted);
+		border-radius: 9999px;
+		transition: color var(--dur-quick) ease, background-color var(--dur-quick) ease;
+	}
+
+	.search-sort-option:hover {
+		color: var(--ink);
+	}
+
+	.search-sort-option[aria-pressed='true'] {
+		background: var(--paper);
+		color: var(--ink);
+		font-weight: 500;
+	}
+
+	/* --- Results --- */
+
+	.search-results {
+		list-style: none;
+		margin: 0 -12px;
+		padding: 0;
+		transition: opacity var(--dur-quick) ease;
+	}
+
+	.search-panel.is-loading .search-results {
+		opacity: 0.55;
+	}
+
+	.search-hit-item + .search-hit-item {
+		border-top: 1px solid var(--rule);
+	}
+
+	.search-hit {
+		display: grid;
+		grid-template-columns: 120px minmax(0, 1fr);
+		gap: 18px;
+		align-items: start;
+		padding: 14px 12px;
+		border-radius: 14px;
+		color: inherit;
+		text-decoration: none;
+		transition: background-color var(--dur-quick) ease;
+	}
+
+	.search-hit:hover,
+	.search-hit:focus-visible,
+	.search-hit-section:hover,
+	.search-hit-section:focus-visible {
+		background: var(--paper-well);
+		color: inherit;
+	}
+
+	.search-hit:focus-visible,
+	.search-hit-section:focus-visible {
+		outline: 1px solid var(--rule-strong);
+		outline-offset: -1px;
+	}
+
+	.search-hit-thumb {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		aspect-ratio: 16 / 10;
+		overflow: hidden;
+		background: var(--paper-well);
+		border-radius: 10px;
+	}
+
+	.search-hit-thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	/* Book covers are portrait: show the whole jacket on the tint */
+	.search-hit--book .search-hit-thumb img {
+		width: auto;
+		height: 86%;
+		object-fit: contain;
+		border-radius: 3px;
+	}
+
+	.search-hit-glyph {
+		font-size: 22px;
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		color: var(--ink-muted);
+	}
+
+	.search-hit-text {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		min-width: 0;
+	}
+
+	.search-hit-meta {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		font-size: 13px;
+		line-height: 1.4;
+		color: var(--ink-muted);
+	}
+
+	.search-hit-meta > span + span::before {
+		content: '·';
+		margin: 0 6px;
+	}
+
+	.search-hit-type {
+		font-weight: 600;
+		color: var(--ink);
+	}
+
+	.search-hit--tunes .search-hit-type {
+		color: var(--accent);
+	}
+
+	.search-hit-title {
+		font-size: 17px;
+		font-weight: 700;
+		line-height: 1.3;
+		letter-spacing: -0.015em;
+		color: var(--ink);
+		transition: color var(--dur-quick) ease;
+	}
+
+	.search-hit:hover .search-hit-title {
+		color: var(--accent);
+	}
+
+	.search-hit-excerpt {
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		font-size: 14px;
+		line-height: 1.55;
+		color: var(--ink-muted);
+	}
+
+	.search-hit-excerpt mark {
+		background: color-mix(in srgb, var(--accent-fill) 32%, transparent);
+		color: var(--ink);
+		border-radius: 3px;
+		padding: 0 2px;
+	}
+
+	.search-hit-sections {
+		list-style: none;
+		margin: -8px 0 8px;
+		padding: 0 0 0 150px;
+	}
+
+	.search-hit-section {
+		display: flex;
+		align-items: baseline;
+		gap: 8px;
+		padding: 5px 12px;
+		margin-left: -12px;
+		font-size: 13px;
+		line-height: 1.4;
+		color: var(--ink);
+		text-decoration: none;
+		border-radius: 8px;
+		transition: background-color var(--dur-quick) ease;
+	}
+
+	.search-hit-section-mark {
+		font-family: var(--font-mono);
+		color: var(--accent);
+	}
+
+	.search-empty {
+		padding: 28px 0 8px;
+	}
+
+	.search-empty-title {
+		margin: 0 0 4px;
+		font-size: 17px;
+		font-weight: 700;
+		letter-spacing: -0.015em;
+	}
+
+	.search-empty-hint {
+		margin: 0;
+		font-size: 14px;
+		color: var(--ink-muted);
+	}
+
+	.search-empty-hint a {
+		color: var(--ink);
+		text-decoration: underline;
+		text-decoration-color: var(--accent-fill);
+		text-decoration-thickness: 2px;
+		text-underline-offset: 3px;
+	}
+
+	.search-empty-all,
+	.search-more {
+		display: inline-flex;
+		align-items: center;
+		min-height: 36px;
+		padding: 0 16px;
+		margin-top: 16px;
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--ink);
+		border: 1px solid var(--rule);
+		border-radius: 9999px;
+		transition: border-color var(--dur-quick) ease;
+	}
+
+	.search-empty-all:hover,
+	.search-more:hover,
+	.search-more:focus-visible {
+		border-color: var(--rule-strong);
+	}
+
+	.search-more {
+		display: flex;
+		margin: 16px auto 0;
+	}
+
+	.search-dev {
+		margin: 16px 0 0;
+		font-size: 13px;
+		color: var(--ink-muted);
+	}
+
+	.search-foot {
+		display: flex;
+		gap: 18px;
+		flex: none;
+		font-size: 12px;
+		color: var(--ink-muted);
+	}
+
+	.search-foot span {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	.search-foot .search-kbd {
+		min-width: 20px;
+		height: 20px;
+		font-size: 11px;
+		padding: 0 5px;
+	}
+
+	/* --- Sheet: a centred panel over a veiled page --- */
+
+	.search-panel--sheet {
+		max-height: inherit;
+	}
+
+	.search-panel--sheet .search-field {
+		padding: 18px 20px;
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.search-panel--sheet .search-filters {
+		padding: 14px 20px 10px;
+	}
+
+	.search-panel--sheet .search-body {
+		flex: 1;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		padding: 8px 20px 20px;
+		scrollbar-width: thin;
+		scrollbar-color: var(--paper-deepest) transparent;
+	}
+
+	.search-panel--sheet .search-foot {
+		padding: 11px 20px;
+		background: var(--paper-well);
+		border-top: 1px solid var(--rule);
+	}
+
+	/* --- Page: the same parts on the open page --- */
+
+	.search-panel--page .search-field {
+		padding: 0 18px;
+		min-height: 60px;
+		border: 1px solid var(--rule);
+		border-radius: 16px;
+		transition: border-color var(--dur-quick) ease;
+	}
+
+	.search-panel--page .search-field:focus-within {
+		border-color: var(--ink);
+	}
+
+	.search-panel--page .search-filters {
+		padding: 16px 0 18px;
+	}
+
+	@media (max-width: 640px) {
+		.search-hit {
+			grid-template-columns: 84px minmax(0, 1fr);
+			gap: 14px;
+		}
+
+		.search-hit-sections {
+			padding-left: 110px;
+		}
+
+		.search-hit-title {
+			font-size: 16px;
+		}
+
+		.search-input {
+			font-size: 18px;
+		}
+
+		.search-panel--sheet .search-field {
+			padding: 14px 16px;
+		}
+
+		.search-panel--sheet .search-filters {
+			padding: 12px 16px 8px;
+		}
+
+		.search-panel--sheet .search-body {
+			padding: 6px 16px 24px;
+		}
+	}
+
+	/* Touch: no keyboard hints, a plain X instead of the esc key cap */
+	@media (hover: none) {
+		.search-foot {
+			display: none !important;
+		}
+
+		.search-close-kbd {
+			display: none;
+		}
+
+		.search-close-x {
+			display: block;
+		}
+	}
+</style>

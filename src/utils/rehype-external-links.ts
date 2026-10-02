@@ -46,6 +46,8 @@ export function rehypeExternalLinks() {
 							tagName: 'span',
 							properties: {
 								class: hasNoSpace ? 'external-link-icon no-space' : 'external-link-icon',
+								// Keep the glyph out of search excerpts
+								dataPagefindIgnore: '',
 							},
 							children: [{ type: 'text', value: '↗' }],
 						},

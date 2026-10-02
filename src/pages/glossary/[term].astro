@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
+import SearchMeta from '../../components/search/SearchMeta.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import PostCard from '../../components/blog/PostCard.astro'
 import { Schema } from 'astro-seo-schema'
@@ -69,11 +70,12 @@ const breadcrumbSchema = createBreadcrumbSchema(
 ---
 
 <BaseLayout title={title} description={entry.data.description} image={`/glossary/${entry.id}-og.png`}>
+  <SearchMeta slot="head" type="Glossary" />
   <Schema slot="head" item={definedTermSchema} />
   <Schema slot="head" item={breadcrumbSchema} />
 
-  <article class="page-frame page-frame--text py-10">
-    <p class="text-sm uppercase tracking-wide text-on-surface-variant mb-2">
+  <article class="page-frame page-frame--text py-10" data-pagefind-body>
+    <p class="text-sm uppercase tracking-wide text-on-surface-variant mb-2" data-pagefind-ignore>
       <a href="/glossary/" class="hover:text-[var(--color-secondary)] transition-colors">Glossary</a>
       {entry.data.category && (
         <>
@@ -101,7 +103,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
     </div>
 
     {related.length > 0 && (
-      <aside class="mt-12 pt-6 border-t" style="border-color: var(--color-outline-variant);">
+      <aside class="mt-12 pt-6 border-t" style="border-color: var(--color-outline-variant);" data-pagefind-ignore>
         <p class="rubric mb-3">Related terms</p>
         <ul class="flex flex-wrap gap-2">
           {related.map((rel) => (
@@ -116,7 +118,7 @@ const breadcrumbSchema = createBreadcrumbSchema(
     )}
 
     {relatedPosts.length > 0 && (
-      <aside class="mt-12 pt-6 border-t border-[var(--color-outline-variant)]/40">
+      <aside class="mt-12 pt-6 border-t border-[var(--color-outline-variant)]/40" data-pagefind-ignore>
         <p class="text-xs text-on-surface-variant mb-4">Posts on this topic</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {relatedPosts.map((post) => (

@@ -202,9 +202,12 @@ hairline mark at 62% opacity whose label **slides out** to the right over
 stay visible on touch) — then a 16px vertical hairline and the icon-only
 search trigger and theme toggle. Burger menu below 768px with the search icon
 beside it. The search icon opens the **search sheet** — a native dialog as a
-full-width band under the top edge, the page veiled behind it, an autofocused
-Pagefind input and a scrolling results drawer; `⌘K`/`Ctrl+K` or `/` opens
-it, `Esc`, the X or the veil closes it, and Pagefind lazy-loads on first open.
+centred 720px panel (22px radius, hairline, no shadow; full screen on phones)
+over an ink-veiled page: an autofocused input, type filter pills with live
+counts, and result rows of 16:10 thumbnail, `Type · date · read time`, a
+700 title and an amber-marked excerpt, closed by a tint band of key hints.
+`/search/` renders the same panel. `⌘K`/`Ctrl+K` or `/` opens it, `Esc`, the
+key cap or the veil closes it, and Pagefind lazy-loads on first focus.
 
 ## The homepage
 

@@ -16,6 +16,7 @@ import ArticleRail from '../components/blog/ArticleRail.astro';
 import StoryBar from '../components/blog/StoryBar.astro';
 import ReadingTime from '../components/blog/ReadingTime.astro';
 import RelatedPosts from '../components/blog/RelatedPosts.astro';
+import SearchMeta from '../components/search/SearchMeta.astro';
 import { getTagUrl, getTagDisplayName, getTagName, normalizeTagSlug } from '../utils/tags';
 import { EDIT_POST, AUTHOR_NAME, AI_AUTHOR, AUTHOR_SLUG, TAG_AVATAR_MAP } from '../consts';
 import { Schema } from 'astro-seo-schema';
@@ -244,6 +245,7 @@ const howToSchema = howto && howto.steps?.length > 0
 		<!-- Preconnect to GitHub for faster asset/embed loading -->
 		<link rel="dns-prefetch" href="https://github.githubassets.com">
 		<link rel="dns-prefetch" href="https://opengraph.githubassets.com">
+		<SearchMeta type={isTune ? 'Tunes' : 'Post'} date={pubDate} image={displayImage} readingTime={readingTime} />
 		<Schema item={blogPostingSchema} />
 		<Schema item={breadcrumbSchema} />
 		{faqSchema && <Schema item={faqSchema} />}
@@ -257,13 +259,15 @@ const howToSchema = howto && howto.steps?.length > 0
 			<Header />
 		</HeaderWrapper>
 		<main id="main-content" tabindex="-1" class="relative">
-			<article class="relative pb-4">
+			{/* Pagefind indexes only this article: the title, standfirst and prose.
+			    Chrome inside it (tags, hero, rails, byline, the close) is ignored. */}
+			<article class="relative pb-4" data-pagefind-body>
 				{/* Story header: tag pills and the title, spanning the 1320px frame
 				    and aligned to the hero's edges. The standfirst and byline sit
 				    under the hero, at the head of the text column. */}
 				<header class="post-header max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 pt-6 sm:pt-10 pb-6 sm:pb-10">
 					{tags.length > 0 && (
-						<p class="post-header-tags" data-entrance>
+						<p class="post-header-tags" data-entrance data-pagefind-ignore>
 							{tags.slice(0, 4).map((tag) => (
 								<a href={getTagUrl(tag)} class="post-header-tag">{getTagName(tag)}</a>
 							))}
@@ -285,6 +289,7 @@ const howToSchema = howto && howto.steps?.length > 0
 					<figure
 						class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10"
 						data-settle
+						data-pagefind-ignore
 						transition:name={imageTransition}
 					>
 						<div
@@ -335,7 +340,7 @@ const howToSchema = howto && howto.steps?.length > 0
 					<div class="post-main min-w-0">
 						<div class="post-lede">
 							{description && <p class="post-standfirst" data-entrance>{description}</p>}
-							<div class="post-byline" data-entrance>
+							<div class="post-byline" data-entrance data-pagefind-ignore>
 								<img
 									src={avatarSrc}
 									alt=""
@@ -374,56 +379,59 @@ const howToSchema = howto && howto.steps?.length > 0
 							<slot />
 						</div>
 
-						{/* Three amber dots close the story */}
-						<p class="tombstone" aria-hidden="true">&#9679; &#9679; &#9679;</p>
+						{/* The close (author card, share, related, comments, prev/next) is chrome to search */}
+						<div data-pagefind-ignore>
+							{/* Three amber dots close the story */}
+							<p class="tombstone" aria-hidden="true">&#9679; &#9679; &#9679;</p>
 
-						{!isTune && (
-							<div class="post-author">
-								<img
-									src={getAvatarImageUrl('/images/avatars/arms-folded.png', 72)}
-									alt=""
-									width="72"
-									height="72"
-									loading="lazy"
-									decoding="async"
-									class="post-author-avatar"
-								/>
-								<div class="min-w-0 flex-1">
-									<p class="post-author-name">{AUTHOR_NAME}</p>
-									<p class="post-author-bio">DevOps person, author of books on Docker, Kubernetes and Ansible, and builder of small tools like tokenuse and terminal-svg.</p>
+							{!isTune && (
+								<div class="post-author">
+									<img
+										src={getAvatarImageUrl('/images/avatars/arms-folded.png', 72)}
+										alt=""
+										width="72"
+										height="72"
+										loading="lazy"
+										decoding="async"
+										class="post-author-avatar"
+									/>
+									<div class="min-w-0 flex-1">
+										<p class="post-author-name">{AUTHOR_NAME}</p>
+										<p class="post-author-bio">DevOps person, author of books on Docker, Kubernetes and Ansible, and builder of small tools like tokenuse and terminal-svg.</p>
+									</div>
+									<a href="/about/" class="post-author-link">About me</a>
 								</div>
-								<a href="/about/" class="post-author-link">About me</a>
-							</div>
-						)}
+							)}
 
-						{!isTune && <ShareButtons title={title} url={Astro.url.href} tags={tags} />}
+							{!isTune && <ShareButtons title={title} url={Astro.url.href} tags={tags} />}
 
-						{relatedGlossary.length > 0 && (
-							<p class="rubric mt-6">
-								Related terms:{' '}
-								{relatedGlossary.map((glossaryEntry, index) => (
-									<>
-										{index > 0 && <span aria-hidden="true"> &middot; </span>}
-										<a href={`/glossary/${glossaryEntry.id}/`} class="no-underline hover:text-on-surface">{glossaryEntry.data.term}</a>
-									</>
-								))}
-							</p>
-						)}
+							{relatedGlossary.length > 0 && (
+								<p class="rubric mt-6">
+									Related terms:{' '}
+									{relatedGlossary.map((glossaryEntry, index) => (
+										<>
+											{index > 0 && <span aria-hidden="true"> &middot; </span>}
+											<a href={`/glossary/${glossaryEntry.id}/`} class="no-underline hover:text-on-surface">{glossaryEntry.data.term}</a>
+										</>
+									))}
+								</p>
+							)}
 
-						{!isTune && entry && (
+							{!isTune && entry && (
+								<div data-reveal>
+									<RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={2} />
+								</div>
+							)}
+
+							{!isTune && (
+								<div>
+									<Comments />
+								</div>
+							)}
+
 							<div data-reveal>
-								<RelatedPosts currentPost={entry} previousPost={previousPost} nextPost={nextPost} limit={2} />
+								<PostNavigation previousPost={previousPost} nextPost={nextPost} />
 							</div>
-						)}
-
-						{!isTune && (
-							<div>
-								<Comments />
-							</div>
-						)}
-
-						<div data-reveal>
-							<PostNavigation previousPost={previousPost} nextPost={nextPost} />
 						</div>
 					</div>
 
