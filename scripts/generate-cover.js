@@ -75,6 +75,26 @@ choose the scene and the scale: a location, a landscape, machinery at work,
 a street, weather, a person mid-task, extreme macro, an aerial view. Pick
 the vantage point a photographer would choose for this particular story.
 
+Default to bright, open, well-exposed light: daylight exteriors, sunlit
+interiors, bright overcast, golden hour, crisp winter light, or a high-key
+studio, with clean, saturated colour that reads at a small size. Night, dim
+rooms, low-key "moody" lighting, and glowing light against darkness are the
+path of least resistance for technical posts and turn every cover into the
+same gloomy image - use them only when the post itself is about night or
+darkness. Do not reach for haze, smoke, rain-slicked reflections, or heavy
+grain as atmosphere, and do not label the look "cinematic", "moody", or
+"premium tech photography" - describe the actual light instead.
+
+Steer clear of stock technology imagery: no one hunched over a laptop or
+keyboard, no over-the-shoulder developer shots, no glowing data streams,
+light trails, holograms, or floating translucent panels, and no chips,
+circuit boards, server rooms, or clouds standing in for "the cloud". Find
+the idea sideways instead - a real-world, everyday analogue for what the
+post is actually about, taken from outside computing where you can. Wit is
+welcome: the author writes with a dry sense of humour, and a cover can be
+warm, playful, or quietly absurd as long as it is still clearly about this
+post.
+
 Hard rules (defects, not style choices):
 - ABSOLUTELY NO text or lettering of any kind: no words, letters, numbers,
   code, glyphs, icons, or typography anywhere. Covers are pure visual

@@ -33,7 +33,11 @@ FAL, at 2560×1440). No
 style constraints are imposed - the model has creative freedom over style,
 medium, mood, and concept, with a default lean toward photographic realism
 (illustration only when the post calls for it), and nothing is appended to
-its prompt. The only hard rules are defect guards: no text or lettering of
+its prompt. Light defaults to bright and open (daylight, sunlit interiors,
+high-key studio) rather than night-time or low-key "moody" treatments, and
+the model is steered away from stock tech imagery - people at laptops,
+glowing data streams, holograms, chips - towards a lateral, real-world
+analogue for the post, with room for wit. The only hard rules are defect guards: no text or lettering of
 any kind and no text-bearing props - signs, shopfronts, labels, documents -
 unless described as blank (image models write gibberish on anything that
 usually carries text), no software interfaces (fake app windows, dashboards,

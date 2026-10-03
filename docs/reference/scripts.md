@@ -91,7 +91,10 @@ overridable with `COVER_IMAGE_MODEL` and `COVER_IMAGE_FALLBACK_MODEL` (`none` di
 fallback). **No style constraints are imposed** - the
 prompt model has creative freedom over style, medium, and concept, with a
 default lean toward photographic realism, and nothing is appended to its
-output. The only hard rules are defect guards: no text or lettering of any
+output. Light defaults to bright and open rather than night-time or low-key
+"moody" treatments, and stock tech imagery (people at laptops, glowing data
+streams, holograms, chips, server rooms) is steered away from in favour of a
+lateral, real-world analogue for the post, with room for wit. The only hard rules are defect guards: no text or lettering of any
 kind and no text-bearing props (signs, labels, documents - any essential
 one is described as blank, since image models write gibberish on anything
 that usually carries text), no software interfaces, no branding real or
