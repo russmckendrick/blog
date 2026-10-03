@@ -3,6 +3,13 @@ allowBuilds:
   puppeteer: false
   sharp: true
   workerd: true
+# No patched release exists for either yet (GitHub lists first_patched_version: null).
+# Not reachable here: http-cache-semantics only caches remote images during astro build,
+# braces only sees our own patterns via fast-glob in scripts/. Remove once fixes ship.
+auditConfig:
+  ignoreGhsas:
+    - GHSA-ch52-4w7c-c8xp # http-cache-semantics <=4.2.0
+    - GHSA-vfj7-8cjw-p6xm # braces <=3.0.3
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - undici@7.29.0 || 7.29.1 || 8.9.0
