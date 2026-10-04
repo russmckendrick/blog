@@ -70,11 +70,9 @@ graph TB
 
     Error --> End
 
-    style Start fill:#e1f5ff
-    style End fill:#d4edda
-    style Error fill:#f8d7da
-    style API fill:#fff3cd
-    style Vision fill:#fff3cd
+    class Start,API,Vision accent
+    class End ok
+    class Error error
 
 `} title="Process flow diagram" minimapPosition="off" />
 
@@ -163,9 +161,8 @@ flowchart
     Center --> Resize["Resize to 800×800px"]
     Resize --> Upload["Upload to FAL.ai Storage"]
 
-    style Original fill:#e1f5ff
-    style Center fill:#fff3cd
-    style Upload fill:#d4edda
+    class Original,Center accent
+    class Upload ok
 `} title="Image Preprocessing Pipeline" />
 
 This aggressive cropping removes most album text while preserving the core visual content.
@@ -211,7 +208,7 @@ stateDiagram-v2
         DIFFERENT albums
         from ranked list
     end note
-`} title="Image Preprocessing Pipeline" minimapPosition="BL" />
+`} title="Retry strategy" minimapPosition="BL" />
 
 
 The system:

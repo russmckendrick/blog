@@ -288,7 +288,10 @@ below 640px the labels collapse to arrows.
   amber underline (amber text on hover). Callouts are rounded tint panels —
   no side bar — with a bold sans heading in the variant colour. Code blocks
   are 12px-radius Expressive Code frames in Geist Mono; terminal frames keep
-  the macOS window treatment.
+  the macOS window treatment. Mermaid diagrams sit in a 14px-radius hairline
+  frame with a tint control bar and ghost buttons; nodes are tint with
+  rule-strong strokes, 8px corners, mist connectors and Geist labels, and
+  amber is kept for nodes marked `accent`.
 - **Close**: three amber tombstone dots, then (human posts) an **author
   card** on tint — avatar, name, one-line bio, an ink "About me" button —
   then share buttons, related glossary terms, "More from the archive",

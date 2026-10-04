@@ -353,6 +353,34 @@ The component constructs `{src}-light.{ext}` and `{src}-dark.{ext}` and uses CSS
 - Lazy loaded
 - Works with any image format (SVG, PNG, etc.)
 
+### Mermaid
+Render a Mermaid diagram client-side in a framed panel with pan, Ctrl/Cmd+scroll zoom, a minimap, fullscreen, and SVG/PNG export.
+
+```mdx
+<Mermaid code={`
+flowchart TD
+    A["Install"] --> B["Configure"]
+    B --> C{"Works?"}
+    C -->|Yes| D["Ship it"]
+    C -->|No| E["Debug"]
+    class A accent
+    class D ok
+    class E error
+`} title="Setup flow" minimapPosition="off" />
+```
+
+**Props:**
+- `code` - The Mermaid source (required)
+- `title` - Shown in the control bar, used as the accessible label and the export filename (optional)
+- `minimapPosition` - `TL` / `TR` / `BL` / `BR` / `off` (optional, default: `BR`; use `off` for small diagrams)
+
+**Styling:** diagrams use Mermaid's `base` theme fed with the Workbench tokens (tint nodes, `rule-strong` strokes, mist lines, Geist labels), re-rendered automatically when the reader toggles dark mode. For `flowchart`, `graph` and `stateDiagram` sources the component appends three node classes, so highlight nodes with `class <ids> <name>` rather than colours:
+- `accent` - amber wash, for the start or the step that matters
+- `ok` - green wash, for successful end states
+- `error` - red wash, for failure paths
+
+Don't hand-code `style X fill:#...` colours - they won't adapt to dark mode. SVG and PNG exports always use the light palette.
+
 ### ChatMessage
 Display chat-style messages with optional avatars, names, timestamps, and custom colors - perfect for showing conversations, prompts, or chat interfaces.
 

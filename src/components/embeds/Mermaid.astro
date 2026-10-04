@@ -22,23 +22,18 @@ const positionClasses = {
 const minimapPositionClass = positionClasses[minimapPosition];
 ---
 
-<div class="mermaid-wrapper not-prose my-6 border overflow-hidden bg-white dark:bg-gray-900" style="border-color: var(--color-outline-variant);" data-diagram-id={diagramId} data-diagram-title={title}>
+<div class="mermaid-wrapper not-prose my-6" data-diagram-id={diagramId} data-diagram-title={title}>
   <!-- Controls bar -->
-  <div class="controls-bar flex items-center justify-between px-4 py-2 surface-container-low border-b" style="border-color: var(--color-outline-variant);">
-    <div class="flex items-center gap-3">
+  <div class="mermaid-bar">
+    <div class="flex items-center gap-3 min-w-0">
       {title && title !== "Mermaid diagram" && (
-        <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{title}</span>
+        <span class="mermaid-title">{title}</span>
       )}
     </div>
-    <div class="flex items-center gap-2">
-      <span class="hidden sm:inline-flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400" title="Hold Ctrl (or Cmd on Mac) and scroll to zoom">
-        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        <span>Ctrl+scroll to zoom</span>
-      </span>
+    <div class="flex items-center gap-1">
+      <span class="mermaid-hint hidden sm:inline" title="Hold Ctrl (or Cmd on Mac) and scroll to zoom">Ctrl+scroll to zoom</span>
       <button
-        class="fullscreen-btn px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors inline-flex items-center gap-1"
+        class="mermaid-btn fullscreen-btn"
         data-action="fullscreen"
         aria-label="View fullscreen"
       >
@@ -48,7 +43,7 @@ const minimapPositionClass = positionClasses[minimapPosition];
         <span class="hidden sm:inline">Fullscreen</span>
       </button>
       <button
-        class="export-svg-btn px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors inline-flex items-center gap-1"
+        class="mermaid-btn export-svg-btn"
         data-action="export-svg"
         aria-label="Export as SVG"
       >
@@ -58,7 +53,7 @@ const minimapPositionClass = positionClasses[minimapPosition];
         <span class="hidden sm:inline">SVG</span>
       </button>
       <button
-        class="export-png-btn px-3 py-1 text-xs font-medium text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded transition-colors inline-flex items-center gap-1"
+        class="mermaid-btn export-png-btn"
         data-action="export-png"
         aria-label="Export as PNG"
       >
@@ -71,40 +66,40 @@ const minimapPositionClass = positionClasses[minimapPosition];
   </div>
 
   <!-- Error display -->
-  <div class="error-display hidden px-4 py-3 bg-red-50 dark:bg-red-900/20 border-b border-red-200 dark:border-red-800">
-    <p class="text-sm text-red-800 dark:text-red-200 font-medium">Error rendering diagram:</p>
-    <pre class="text-xs text-red-700 dark:text-red-300 mt-1 overflow-auto max-h-40"></pre>
+  <div class="error-display mermaid-error hidden">
+    <p class="mermaid-error-heading">Error rendering diagram:</p>
+    <pre></pre>
   </div>
 
   <!-- Diagram container -->
   <div
-    class="preview-container relative overflow-hidden bg-white dark:bg-gray-900"
+    class="preview-container relative overflow-hidden"
     role="img"
     aria-label={title}
   >
     <div class="svg-wrap flex items-center justify-center" style="transform-origin: center center; min-height: 200px;"></div>
 
     <!-- Minimap overlay -->
-    <div class={`minimap-container absolute ${minimapPositionClass} bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-300 dark:border-gray-600 rounded shadow-lg overflow-hidden`} style="width: 140px; height: 105px;">
+    <div class={`minimap-container absolute ${minimapPositionClass} overflow-hidden`} style="width: 140px; height: 105px;">
       <div class="minimap-canvas relative" style="width: 100%; height: 100%;"></div>
-      <div class="minimap-viewport absolute border-2 border-blue-500 bg-blue-500/20 cursor-move" style="pointer-events: auto;"></div>
+      <div class="minimap-viewport absolute cursor-move" style="pointer-events: auto;"></div>
       <div class="minimap-controls absolute top-1 right-1 flex flex-col gap-0.5">
         <button
-          class="minimap-zoom-in p-0.5 bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm border border-gray-300 dark:border-gray-600 rounded shadow-sm hover:bg-white dark:hover:bg-gray-600 transition-colors text-xs"
+          class="minimap-zoom-in"
           data-action="zoom-in"
           aria-label="Zoom in"
         >
           <span class="zoom-icon">+</span>
         </button>
         <button
-          class="minimap-zoom-out p-0.5 bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm border border-gray-300 dark:border-gray-600 rounded shadow-sm hover:bg-white dark:hover:bg-gray-600 transition-colors text-xs"
+          class="minimap-zoom-out"
           data-action="zoom-out"
           aria-label="Zoom out"
         >
           <span class="zoom-icon">−</span>
         </button>
         <button
-          class="minimap-reset p-0.5 bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm border border-gray-300 dark:border-gray-600 rounded shadow-sm hover:bg-white dark:hover:bg-gray-600 transition-colors text-xs"
+          class="minimap-reset"
           data-action="reset"
           aria-label="Reset view"
         >
@@ -123,19 +118,119 @@ const minimapPositionClass = positionClasses[minimapPosition];
   import mermaid from 'mermaid';
   import { exportMermaidPNG } from '../../utils/exportMermaidPNG';
 
-  // Initialize Mermaid once with proper font settings
-  mermaid.initialize({
-    startOnLoad: false,
-    theme: 'default',
-    themeVariables: {
-      fontFamily: '"trebuchet ms", verdana, arial, sans-serif'
+  type DiagramTheme = 'light' | 'dark';
+
+  // Workbench tokens (DESIGN.md). Mermaid derives shades from these with its
+  // own colour maths, so they have to be literal hex rather than CSS vars.
+  const PALETTES = {
+    light: {
+      page: '#ffffff',
+      tint: '#f4f4f5',
+      ink: '#0b0b0c',
+      mist: '#5e5e66',
+      rule: '#e6e6e9',
+      ruleStrong: '#d4d4d8',
+      accent: { fill: '#fcf0da', stroke: '#f2b544' },
+      ok: { fill: '#e4e8e2', stroke: '#3d5c33' },
+      error: { fill: '#f2e6e0', stroke: '#8f2d00' }
     },
-    flowchart: {
-      useMaxWidth: true,
-      htmlLabels: true,
-      curve: 'basis'
+    dark: {
+      page: '#0b0b0c',
+      tint: '#151517',
+      ink: '#ededef',
+      mist: '#a1a1a6',
+      rule: '#26262a',
+      ruleStrong: '#333338',
+      accent: { fill: '#352a16', stroke: '#f2b544' },
+      ok: { fill: '#20241e', stroke: '#a4bd8c' },
+      error: { fill: '#2a201e', stroke: '#e5a48c' }
     }
-  });
+  };
+
+  // The Astro font pipeline generates the Geist family name, so read it back
+  // from the page rather than hard-coding it.
+  function diagramFont() {
+    return getComputedStyle(document.body).fontFamily || 'Geist, -apple-system, sans-serif';
+  }
+
+  function configFor(theme: DiagramTheme) {
+    const p = PALETTES[theme];
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'base',
+      look: 'neo',
+      themeVariables: {
+        darkMode: theme === 'dark',
+        fontFamily: diagramFont(),
+        fontSize: '14px',
+        background: p.page,
+        primaryColor: p.tint,
+        primaryTextColor: p.ink,
+        primaryBorderColor: p.ruleStrong,
+        secondaryColor: p.tint,
+        tertiaryColor: p.page,
+        mainBkg: p.tint,
+        nodeBorder: p.ruleStrong,
+        nodeTextColor: p.ink,
+        textColor: p.ink,
+        titleColor: p.ink,
+        lineColor: p.mist,
+        clusterBkg: p.page,
+        clusterBorder: p.rule,
+        edgeLabelBackground: p.page,
+        labelBackgroundColor: p.page,
+        stateBkg: p.tint,
+        stateLabelColor: p.ink,
+        transitionColor: p.mist,
+        compositeBackground: p.page,
+        noteBkgColor: p.accent.fill,
+        noteBorderColor: p.accent.stroke,
+        noteTextColor: p.ink,
+        errorBkgColor: p.error.fill,
+        errorTextColor: p.ink,
+        radius: 8,
+        strokeWidth: 1.5,
+        dropShadow: 'none',
+        useGradient: false
+      },
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
+      }
+    });
+  }
+
+  // Posts mark nodes with `class X accent|ok|error`; the classDefs are added
+  // here so the colours follow the theme and are baked into exported SVGs.
+  function withNodeClasses(diagramCode: string, theme: DiagramTheme) {
+    if (!/^\s*(flowchart|graph|stateDiagram)/.test(diagramCode)) return diagramCode;
+    const p = PALETTES[theme];
+    const defs = (['accent', 'ok', 'error'] as const)
+      .map((name) => `classDef ${name} fill:${p[name].fill},stroke:${p[name].stroke},color:${p.ink}`)
+      .join('\n');
+    return `${diagramCode.trimEnd()}\n${defs}\n`;
+  }
+
+  // Mermaid only rounds rect nodes when the diagram asks for it, so give
+  // square process boxes the same 8px corners as the rest of the site.
+  function roundNodes(svgEl: SVGSVGElement) {
+    svgEl.querySelectorAll('.node rect.label-container, .node > rect').forEach((rect) => {
+      if (Number(rect.getAttribute('rx') || 0) > 0) return;
+      rect.setAttribute('rx', '8');
+      rect.setAttribute('ry', '8');
+    });
+  }
+
+  function roundSvgString(svg: string) {
+    const doc = new DOMParser().parseFromString(svg, 'image/svg+xml');
+    const svgEl = doc.documentElement as unknown as SVGSVGElement;
+    if (svgEl.nodeName !== 'svg') return svg;
+    roundNodes(svgEl);
+    return new XMLSerializer().serializeToString(svgEl);
+  }
+
+  configFor('light');
 
   // Function to initialize a single diagram wrapper
   function initializeDiagram(wrapper: HTMLElement) {
@@ -170,7 +265,7 @@ const minimapPositionClass = positionClasses[minimapPosition];
     let isDragging = false;
     let startX = 0;
     let startY = 0;
-    let currentTheme = 'default';
+    let currentTheme: DiagramTheme = 'light';
 
     // Get DOM elements
     const previewDiv = wrapper.querySelector('.preview-container') as HTMLElement;
@@ -187,8 +282,8 @@ const minimapPositionClass = positionClasses[minimapPosition];
     }
 
     // Detect current theme
-    function detectTheme() {
-      return document.documentElement.classList.contains('dark') ? 'dark' : 'default';
+    function detectTheme(): DiagramTheme {
+      return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
     }
 
     // Apply transform to SVG wrapper
@@ -280,50 +375,11 @@ const minimapPositionClass = positionClasses[minimapPosition];
         // Detect theme and render
         currentTheme = detectTheme();
 
-        // Configure theme-specific settings
-        if (currentTheme === 'dark') {
-          mermaid.initialize({
-            startOnLoad: false,
-            theme: 'dark',
-            themeVariables: {
-              darkMode: true,
-              background: '#0f172a',
-              primaryColor: '#1e3a5f',
-              primaryTextColor: '#f1f5f9',
-              primaryBorderColor: '#64748b',
-              lineColor: '#94a3b8',
-              secondaryColor: '#1e4620',
-              tertiaryColor: '#4a3f1a',
-              mainBkg: '#1e3a5f',
-              secondBkg: '#1e4620',
-              tertiaryBkg: '#4a3f1a',
-              textColor: '#f1f5f9',
-              labelTextColor: '#f1f5f9',
-              clusterBkg: '#334155',
-              clusterBorder: '#64748b',
-              edgeLabelBackground: '#1e293b',
-              nodeBorder: '#64748b',
-              errorBkgColor: '#5a1f1f',
-              errorTextColor: '#f1f5f9'
-            }
-          });
-        } else {
-          mermaid.initialize({
-            startOnLoad: false,
-            theme: 'default',
-            themeVariables: {
-              fontFamily: '"trebuchet ms", verdana, arial, sans-serif',
-              primaryColor: '#e1f5ff',
-              secondaryColor: '#d4edda',
-              tertiaryColor: '#fff3cd',
-              errorBkgColor: '#f8d7da'
-            }
-          });
-        }
+        configFor(currentTheme);
 
         // Render the diagram with unique ID
         const renderId = `${diagramId}-${Date.now()}`;
-        const renderResult = await mermaid.render(renderId, diagramCode);
+        const renderResult = await mermaid.render(renderId, withNodeClasses(diagramCode, currentTheme));
         const svg = renderResult.svg;
 
         // Use requestAnimationFrame for DOM manipulation timing
@@ -332,6 +388,8 @@ const minimapPositionClass = positionClasses[minimapPosition];
 
           const svgEl = svgWrap.querySelector('svg');
           if (svgEl) {
+            roundNodes(svgEl);
+
             // Store viewBox before modifications
             const viewBox = svgEl.viewBox.baseVal;
 
@@ -356,46 +414,6 @@ const minimapPositionClass = positionClasses[minimapPosition];
             // Set the wrapper height to match the SVG with padding
             const wrapperHeight = Math.max(200, displayHeight + 40);
             svgWrap.style.minHeight = `${wrapperHeight}px`;
-
-            // Apply dark mode color overrides directly to elements
-            if (currentTheme === 'dark') {
-              const colorMap = {
-                '#e1f5ff': '#1e3a5f',
-                'rgb(225, 245, 255)': '#1e3a5f',
-                '#d4edda': '#1e4620',
-                'rgb(212, 237, 218)': '#1e4620',
-                '#f8d7da': '#5a1f1f',
-                'rgb(248, 215, 218)': '#5a1f1f',
-                '#fff3cd': '#4a3f1a',
-                'rgb(255, 243, 205)': '#4a3f1a'
-              };
-
-              // Find all elements with fill styles and replace colors
-              svgEl.querySelectorAll('[style*="fill"]').forEach(el => {
-                const style = el.getAttribute('style') || '';
-                let newStyle = style;
-
-                (Object.keys(colorMap) as Array<keyof typeof colorMap>).forEach(lightColor => {
-                  if (style.includes(lightColor)) {
-                    newStyle = newStyle.replace(new RegExp(lightColor, 'gi'), colorMap[lightColor]);
-                  }
-                });
-
-                if (newStyle !== style) {
-                  el.setAttribute('style', newStyle);
-                }
-              });
-
-              // Also update fill attributes directly
-              svgEl.querySelectorAll('[fill]').forEach(el => {
-                const fill = el.getAttribute('fill') || '';
-                (Object.keys(colorMap) as Array<keyof typeof colorMap>).forEach(lightColor => {
-                  if (fill.toLowerCase() === lightColor.toLowerCase()) {
-                    el.setAttribute('fill', colorMap[lightColor]);
-                  }
-                });
-              });
-            }
 
             // Reset transform
             scale = 1;
@@ -547,21 +565,10 @@ const minimapPositionClass = positionClasses[minimapPosition];
 
     // Get light mode version of SVG for export
     async function getLightModeSVG() {
-      // Re-render with light theme
-      mermaid.initialize({
-        startOnLoad: false,
-        theme: 'default',
-        themeVariables: {
-          fontFamily: '"trebuchet ms", verdana, arial, sans-serif',
-          primaryColor: '#e1f5ff',
-          secondaryColor: '#d4edda',
-          tertiaryColor: '#fff3cd',
-          errorBkgColor: '#f8d7da'
-        }
-      });
+      configFor('light');
 
-      const renderResult = await mermaid.render(`${diagramId}-export-${Date.now()}`, code);
-      return renderResult.svg;
+      const renderResult = await mermaid.render(`${diagramId}-export-${Date.now()}`, withNodeClasses(code, 'light'));
+      return roundSvgString(renderResult.svg);
     }
 
     // Export to PNG (always light mode)
@@ -772,8 +779,8 @@ const minimapPositionClass = positionClasses[minimapPosition];
         width: `${fitW}px`,
         height: `${fitH}px`,
         filter: 'drop-shadow(0 4px 24px rgba(0, 0, 0, 0.3))',
-        borderRadius: '0.5rem',
-        background: currentTheme === 'dark' ? '#111418' : 'white',
+        borderRadius: '14px',
+        background: PALETTES[currentTheme].page,
         padding: '1.5rem',
         boxSizing: 'content-box',
       });
@@ -945,10 +952,83 @@ const minimapPositionClass = positionClasses[minimapPosition];
 <style is:global>
   .mermaid-wrapper {
     max-width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    background: var(--paper);
+  }
+
+  .mermaid-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem 0.5rem 1rem;
+    background: var(--paper-well);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .mermaid-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mermaid-hint {
+    margin-right: 0.5rem;
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+
+  .mermaid-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    background: transparent;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .mermaid-btn:hover {
+    background: var(--paper-deep);
+    color: var(--ink);
+  }
+
+  .mermaid-btn:focus-visible,
+  .minimap-controls button:focus-visible {
+    outline: 2px solid var(--accent-fill);
+    outline-offset: 1px;
+  }
+
+  .mermaid-error {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    background: color-mix(in srgb, var(--callout-caution) 9%, var(--paper));
+    color: var(--callout-caution);
+  }
+
+  .mermaid-error-heading {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .mermaid-error pre {
+    margin-top: 0.25rem;
+    max-height: 10rem;
+    overflow: auto;
+    font-size: 12px;
   }
 
   .preview-container {
     cursor: grab;
+    background: var(--paper);
   }
 
   .preview-container:active {
@@ -971,22 +1051,29 @@ const minimapPositionClass = positionClasses[minimapPosition];
     text-align: center;
   }
 
-  /* Minimap styles */
+  /* Minimap */
   .minimap-container {
     pointer-events: auto;
     z-index: 10;
+    border: 1px solid var(--rule-strong);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(4px);
+    transition: opacity 0.2s ease;
+  }
+
+  .minimap-container:hover {
+    opacity: 1;
   }
 
   .minimap-canvas {
-    background: rgba(0, 0, 0, 0.05);
-  }
-
-  .dark .minimap-canvas {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--paper-well);
   }
 
   .minimap-viewport {
     z-index: 11;
+    border: 1.5px solid var(--accent-fill);
+    background: color-mix(in srgb, var(--accent-fill) 8%, transparent);
   }
 
   .minimap-controls {
@@ -1001,55 +1088,16 @@ const minimapPositionClass = positionClasses[minimapPosition];
     justify-content: center;
     padding: 0;
     font-size: 11px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 5px;
+    background: var(--paper);
+    color: var(--ink-muted);
+    transition: background-color 0.15s ease, color 0.15s ease;
   }
 
-  .minimap-container:hover {
-    opacity: 1;
-  }
-
-  .minimap-container {
-    transition: opacity 0.2s ease;
-  }
-
-  /* Ensure Mermaid diagrams are visible in dark mode */
-  .dark .mermaid-wrapper svg {
-    filter: none;
-  }
-
-  /* Dark mode overrides for common Mermaid diagram colors */
-  /* Override default node backgrounds */
-  .dark .mermaid-wrapper svg .node rect,
-  .dark .mermaid-wrapper svg .node circle,
-  .dark .mermaid-wrapper svg .node ellipse,
-  .dark .mermaid-wrapper svg .node polygon,
-  .dark .mermaid-wrapper svg .node path {
-    fill: #334155 !important;
-    stroke: #64748b !important;
-  }
-
-  /* Override specific style fills in dark mode */
-  .dark .mermaid-wrapper svg [style*="fill:#e1f5ff"],
-  .dark .mermaid-wrapper svg [style*="fill: #e1f5ff"],
-  .dark .mermaid-wrapper svg [style*="fill: rgb(225, 245, 255)"] {
-    fill: #1e3a5f !important;
-  }
-
-  .dark .mermaid-wrapper svg [style*="fill:#d4edda"],
-  .dark .mermaid-wrapper svg [style*="fill: #d4edda"],
-  .dark .mermaid-wrapper svg [style*="fill: rgb(212, 237, 218)"] {
-    fill: #1e4620 !important;
-  }
-
-  .dark .mermaid-wrapper svg [style*="fill:#f8d7da"],
-  .dark .mermaid-wrapper svg [style*="fill: #f8d7da"],
-  .dark .mermaid-wrapper svg [style*="fill: rgb(248, 215, 218)"] {
-    fill: #5a1f1f !important;
-  }
-
-  .dark .mermaid-wrapper svg [style*="fill:#fff3cd"],
-  .dark .mermaid-wrapper svg [style*="fill: #fff3cd"],
-  .dark .mermaid-wrapper svg [style*="fill: rgb(255, 243, 205)"] {
-    fill: #4a3f1a !important;
+  .minimap-controls button:hover {
+    background: var(--paper-deep);
+    color: var(--ink);
   }
 
   /* Hide the JSON script tag */
@@ -1057,24 +1105,20 @@ const minimapPositionClass = positionClasses[minimapPosition];
     display: none;
   }
 
-  /* Targeted CSS reset for Mermaid - keep SVG styling, fix text only */
+  /* Keep prose typography from leaking into Mermaid's SVG text */
   .mermaid-wrapper svg {
-    /* Keep Mermaid's SVG styles intact */
-    font-family: "trebuchet ms", verdana, arial, sans-serif !important;
-    font-size: 16px !important;
+    font-family: var(--font-sans) !important;
+    font-size: 14px !important;
   }
 
-  /* Reset ONLY text-related properties that blog CSS is overriding */
   .mermaid-wrapper svg text,
   .mermaid-wrapper svg tspan {
     line-height: 1 !important;
     letter-spacing: 0 !important;
     word-spacing: 0 !important;
-    font-weight: 400 !important;
     font-style: normal !important;
   }
 
-  /* Reset all child elements' text properties */
   .mermaid-wrapper svg * {
     transition: none !important;
     line-height: 1 !important;
@@ -1082,26 +1126,25 @@ const minimapPositionClass = positionClasses[minimapPosition];
     word-spacing: 0 !important;
   }
 
-  /* Fix foreignObject text (used for HTML labels) */
+  /* HTML labels live in foreignObject */
   .mermaid-wrapper svg foreignObject {
     overflow: visible !important;
     font-size: 14px !important;
-    line-height: 1.15 !important;
+    line-height: 1.25 !important;
   }
 
   .mermaid-wrapper svg foreignObject *,
   .mermaid-wrapper svg foreignObject div,
   .mermaid-wrapper svg foreignObject p,
   .mermaid-wrapper svg foreignObject span {
-    font-family: "trebuchet ms", verdana, arial, sans-serif !important;
+    font-family: var(--font-sans) !important;
     font-size: 14px !important;
-    line-height: 1.15 !important;
+    line-height: 1.25 !important;
     margin: 0 !important;
     padding: 0 !important;
     overflow: visible !important;
     letter-spacing: 0 !important;
     word-spacing: 0 !important;
-    font-weight: 400 !important;
     font-style: normal !important;
     text-align: center !important;
     display: block !important;
