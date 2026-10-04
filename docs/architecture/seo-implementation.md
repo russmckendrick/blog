@@ -327,10 +327,12 @@ Year archives follow the same shape: `/{year}/` (`[year]/index.astro`) is page 1
 | Feed | URL | Contents |
 |------|-----|----------|
 | Main | `/rss.xml` | All blog + tunes, full rendered HTML, 50 most recent |
-| Tunes | `/tunes/rss.xml` | Tunes only, descriptions, 50 most recent |
+| Tunes | `/tunes/rss.xml` | Tunes only, descriptions plus `blog:` cover, OG image and album covers, 50 most recent |
 | Per-tag | `/tags/{tag}/rss.xml` | Posts for one tag, descriptions, 30 most recent |
 
 The main feed renders MDX bodies through `experimental_AstroContainer` (see `src/pages/rss.xml.js`). The per-tag and tunes feeds keep generation cheap by serving descriptions only - readers click through for the full post.
+
+The tunes feed also carries the main feed's `blog:` namespace (`https://www.russ.cloud/rss/ns`), so other sites can show a week without scraping `/tunes/`. Each item has `blog:coverImage` (the `heroImage`, 1600px JPEG via Cloudflare), `blog:ogImage`, and up to eight `<blog:album image="…">Album by Artist</blog:album>` entries. Those come from `getTuneCovers()`, the same covers and alt text as the lead row on `/tunes/`, with images at 320px. russ.social's "Listened to This Week" tile reads these. Under `astro dev` the image URLs are raw local paths, because `getCFImageUrl` skips transformations in development.
 
 ### Programmatic SEO browse pages
 
