@@ -9074,8 +9074,8 @@
     "imageType": null,
     "title": "The 4 Lines Every CLAUDE.md Needs",
     "description": "What Karpathy diagnosed, what 60,000 developers bookmarked, and why behavioral constraints beat feature checklists",
-    "fetchedAt": "2026-10-02T13:00:00.143Z",
-    "attempts": 2,
+    "fetchedAt": "2026-10-05T09:46:34.303Z",
+    "attempts": 3,
     "lastError": "No og:image or twitter:image"
   },
   "https://1password.com/blog/what-we-learned-using-ai-agents-to-refactor-a-monolith": {
@@ -9277,5 +9277,14 @@
     "description": "How to track AI adoption, LLM latency, token usage, and costs across your organization using native OTel instrumentation and Grafana…",
     "imageAlt": "",
     "fetchedAt": "2026-10-02T12:58:19.510Z"
+  },
+  "https://claude.dev/blog/how-we-made-claude-ai-faster/": {
+    "localImage": "/assets/reading-previews/claude.dev-b66196e47835.jpg",
+    "originalImage": "https://claude.dev/blog/how-we-made-claude-ai-faster/og.png",
+    "imageType": "og-image",
+    "title": "How we made claude.ai 3x faster in two weeks / claude.dev Blog",
+    "description": "Inside our performance sprint: the benchmarks Claude built, the loop each Slack thread ran, and the guardrails that let us ship 3,000 changes safely.",
+    "imageAlt": "How we made claude.ai 3x faster in two weeks / claude.dev Blog",
+    "fetchedAt": "2026-10-05T09:45:44.117Z"
   }
 }
