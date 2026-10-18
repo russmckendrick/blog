@@ -47,7 +47,7 @@ This workflow automates the creation of the "Weekly Listened To" blog posts by a
 - **Manual**: Can be triggered manually via standard `workflow_dispatch`.
 
 ### Process
-1.  **Setup**: Check out code, setup PNPM, and setup Node.js v20.
+1.  **Setup**: Check out code, setup PNPM, and setup Node.js v22.
 2.  **Cache**: Restore `scripts/.research-cache` to reuse AI research results for albums (saving API costs).
 3.  **Generation**:
     - Runs `pnpm run tunes`.
@@ -80,7 +80,7 @@ This workflow refreshes cached Open Graph images for `<LinkPreview>` components 
 - **Manual**: Can be triggered manually via `workflow_dispatch` with optional `force` parameter.
 
 ### Process
-1.  **Setup**: Check out code, setup PNPM, and setup Node.js v20.
+1.  **Setup**: Check out code, setup PNPM, and setup Node.js v22.
 2.  **Dependencies**: Install dependencies using `pnpm install --frozen-lockfile`.
 3.  **Refresh**:
     - Runs `node scripts/cache-link-preview-images.js --refresh-stale`.

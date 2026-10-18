@@ -146,7 +146,7 @@ Here's a step-by-step guide:
 ## Installation
 
 <NoteCallout title="Prerequisites">
-Ensure you have Node.js 20.x or later installed.
+Ensure you have Node.js 22.x or later installed.
 </NoteCallout>
 
 Run the following command:
