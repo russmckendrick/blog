@@ -374,7 +374,7 @@ flowchart TD
 - `title` - Shown in the control bar, used as the accessible label and the export filename (optional)
 - `minimapPosition` - `TL` / `TR` / `BL` / `BR` / `off` (optional, default: `BR`; use `off` for small diagrams)
 
-**Styling:** diagrams use Mermaid's `base` theme fed with the Workbench tokens (tint nodes, `rule-strong` strokes, mist lines, Geist labels), re-rendered automatically when the reader toggles dark mode. For `flowchart`, `graph` and `stateDiagram` sources the component appends three node classes, so highlight nodes with `class <ids> <name>` rather than colours:
+**Styling:** diagrams use Mermaid's `base` theme fed with the Workbench tokens (tint nodes, `rule-strong` strokes, mist lines, Geist labels), re-rendered automatically when the reader toggles dark mode. Layout is pinned to `dagre` (Mermaid 12 otherwise defaults to ELK); a diagram can opt in by setting `layout: elk` under `config:` in its own front matter. For `flowchart`, `graph` and `stateDiagram` sources the component appends three node classes, so highlight nodes with `class <ids> <name>` rather than colours:
 - `accent` - amber wash, for the start or the step that matters
 - `ok` - green wash, for successful end states
 - `error` - red wash, for failure paths

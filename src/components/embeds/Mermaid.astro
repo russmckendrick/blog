@@ -159,6 +159,8 @@ const minimapPositionClass = positionClasses[minimapPosition];
       startOnLoad: false,
       theme: 'base',
       look: 'neo',
+      // Mermaid 12 defaults to ELK, which re-lays out every existing diagram
+      layout: 'dagre',
       themeVariables: {
         darkMode: theme === 'dark',
         fontFamily: diagramFont(),

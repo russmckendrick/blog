@@ -1,5 +1,5 @@
 import { promises as fs } from 'fs'
-import yaml from 'js-yaml'
+import { load } from 'js-yaml'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
@@ -16,7 +16,7 @@ export class ConfigLoader {
   async load() {
     try {
       const fileContents = await fs.readFile(this.configPath, 'utf8')
-      this.config = yaml.load(fileContents)
+      this.config = load(fileContents)
       return this.config
     } catch (error) {
       console.error(`Error loading config: ${error.message}`)

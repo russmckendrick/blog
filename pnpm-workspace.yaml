@@ -21,7 +21,7 @@ onlyBuiltDependencies:
   - workerd
 catalog:
   # Single openai major for us, @langchain/openai, langsmith and exa-js (via override below)
-  openai: ^7.36.0
+  openai: ^7.38.0
 overrides:
   exa-js>openai: 'catalog:'
   '@anthropic-ai/sdk@>=0.79.0 <0.91.1': '>=0.91.1'
@@ -33,7 +33,8 @@ overrides:
   esbuild@>=0.27.3 <0.28.1: '>=0.28.1'
   fast-xml-parser@<5.7.0: '>=5.7.0'
   fast-xml-parser@>=4.0.0-beta.3 <=5.5.5: '>=5.5.6'
-  js-yaml@<=4.1.1: '>=4.2.0'
+  # gray-matter needs v4: js-yaml 5 stops parsing YAML 1.1 timestamps into Dates
+  js-yaml@<=4.1.1: ^4.2.0
   katex@>=0.11.0 <0.18.2: ^0.18.2
   lodash-es@<=4.17.23: '>=4.18.0'
   lodash-es@>=4.0.0 <=4.17.22: '>=4.17.23'
