@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-12T03:45:55.525Z",
+  "generatedAt": "2026-10-19T02:22:43.174Z",
   "totals": {
-    "posts": 177,
-    "artists": 538,
-    "albums": 1015
+    "posts": 178,
+    "artists": 539,
+    "albums": 1021
   },
   "artists": [
     {
@@ -3477,12 +3477,18 @@
       "name": "Eels",
       "artistUrl": "https://www.russ.fm/artist/eels/",
       "image": "/assets/2026-08-03-listened-to-this-week/artists/Eels.jpg",
-      "albumCount": 1,
-      "postCount": 1,
+      "albumCount": 2,
+      "postCount": 2,
       "albums": [
+        "cookie-happened",
         "meet-the-eels-essential-eels-vol1-1996-2006"
       ],
       "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
+        },
         {
           "title": "Slack Strings, Britpop Friction, and Kingston Heat on Dusk Air",
           "url": "/2026/08/03/slack-strings-britpop-friction-and-kingston-heat-on-dusk-air/",
@@ -4716,12 +4722,18 @@
       "name": "George Michael",
       "artistUrl": "https://www.russ.fm/artist/george-michael/",
       "image": "/assets/2026-02-23-listened-to-this-week/artists/George-Michael.jpg",
-      "albumCount": 1,
-      "postCount": 1,
+      "albumCount": 2,
+      "postCount": 2,
       "albums": [
-        "faith"
+        "faith",
+        "listen-without-prejudice-vol-1"
       ],
       "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
+        },
         {
           "title": "A Musical Journey Through Melancholy: From Big Trains to Bold Faith",
           "url": "/2026/02/23/a-musical-journey-through-melancholy-from-big-trains-to-bold-faith/",
@@ -5435,16 +5447,22 @@
       "name": "INXS",
       "artistUrl": "https://www.russ.fm/artist/inxs/",
       "image": "/assets/2023-06-19-listened-to-this-week/artists/INXS.jpg",
-      "albumCount": 5,
-      "postCount": 12,
+      "albumCount": 6,
+      "postCount": 13,
       "albums": [
         "inxs-kick-25-super-deluxe-edition",
         "kick",
         "live-baby-live-wembley-stadium",
         "the-very-best",
+        "welcome-to-wherever-you-are",
         "x"
       ],
       "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
+        },
         {
           "title": "Midnight Choirs Meet Greasy Riffs and Jazz Sparks at Sea",
           "url": "/2026/08/10/midnight-choirs-meet-greasy-riffs-and-jazz-sparks-at-sea/",
@@ -9491,15 +9509,21 @@
       "name": "Pop Will Eat Itself",
       "artistUrl": "https://www.russ.fm/artist/pop-will-eat-itself/",
       "image": "/assets/2024-01-22-listened-to-this-week/artists/Pop-Will-Eat-Itself.jpg",
-      "albumCount": 4,
-      "postCount": 4,
+      "albumCount": 5,
+      "postCount": 5,
       "albums": [
         "16-different-flavours-of-hell",
+        "cure-for-sanity",
         "delete-everything",
         "dos-dedos-mis-amigos",
         "wise-up-suckers"
       ],
       "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
+        },
         {
           "title": "Gritty Rhythms Clash with Melodic Dreams in Sonic Convergence",
           "url": "/2026/03/02/gritty-rhythms-clash-with-melodic-dreams-in-sonic-convergence/",
@@ -12591,7 +12615,7 @@
       "artistUrl": "https://www.russ.fm/artist/tears-for-fears/",
       "image": "/assets/2023-05-29-listened-to-this-week/artists/Tears-for-Fears.jpg",
       "albumCount": 4,
-      "postCount": 18,
+      "postCount": 19,
       "albums": [
         "rule-the-world",
         "songs-for-a-nervous-planet",
@@ -12599,6 +12623,11 @@
         "the-seeds-of-love"
       ],
       "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
+        },
         {
           "title": "Chrome Souls, Nervous Rooms, and Holy Houses in Midnight Glow",
           "url": "/2026/05/11/chrome-souls-nervous-rooms-and-holy-houses-in-midnight-glow/",
@@ -13519,6 +13548,24 @@
           "title": "Cosmic Country and Velvet Static on Candlelit Club Floors",
           "url": "/2026/09/07/cosmic-country-and-velvet-static-on-candlelit-club-floors/",
           "date": "2026-09-07T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "the-farm",
+      "name": "The Farm",
+      "artistUrl": "https://www.russ.fm/artist/the-farm/",
+      "image": "/assets/2026-10-19-listened-to-this-week/artists/The-Farm.jpg",
+      "albumCount": 1,
+      "postCount": 1,
+      "albums": [
+        "spartacus"
+      ],
+      "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
         }
       ]
     },
@@ -15908,9 +15955,10 @@
       "name": "Various Artists",
       "artistUrl": null,
       "image": "/assets/2024-12-02-listened-to-this-week/artists/Various-Artists.jpg",
-      "albumCount": 9,
-      "postCount": 9,
+      "albumCount": 10,
+      "postCount": 10,
       "albums": [
+        "clowns-and-jugglers-the-songs-of-syd-barrett",
         "empire-records-the-soundtrack",
         "hackers-original-motion-picture-soundtrack",
         "spawn-the-album",
@@ -15922,6 +15970,11 @@
         "various-artists-the-endless-coloured-ways-the-songs-of-nick-drake"
       ],
       "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
+        },
         {
           "title": "Moonlit Britpop and Wired Art Pop in Velvet Afterhours",
           "url": "/2026/09/21/moonlit-britpop-and-wired-art-pop-in-velvet-afterhours/",
@@ -20662,6 +20715,22 @@
       ]
     },
     {
+      "slug": "cookie-happened",
+      "name": "Cookie Happened",
+      "artist": "Eels",
+      "artistSlug": "eels",
+      "albumUrl": "https://www.russ.fm/album/cookie-happened-38740584/",
+      "artistUrl": "https://www.russ.fm/artist/eels/",
+      "image": "/assets/2026-10-19-listened-to-this-week/albums/Cookie-Happened.jpg",
+      "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "meet-the-eels-essential-eels-vol1-1996-2006",
       "name": "Meet The Eels (Essential Eels Vol.1 (1996 - 2006))",
       "artist": "Eels",
@@ -22179,6 +22248,22 @@
       ]
     },
     {
+      "slug": "listen-without-prejudice-vol-1",
+      "name": "Listen Without Prejudice Vol. 1",
+      "artist": "George Michael",
+      "artistSlug": "george-michael",
+      "albumUrl": "https://www.russ.fm/album/listen-without-prejudice-vol-1-9939004/",
+      "artistUrl": "https://www.russ.fm/artist/george-michael/",
+      "image": "/assets/2026-10-19-listened-to-this-week/albums/Listen-Without-Prejudice-Vol-1.jpg",
+      "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "new-miserable-experience",
       "name": "New Miserable Experience",
       "artist": "Gin Blossoms",
@@ -22988,6 +23073,22 @@
           "title": "Pet Shop Boys Reign: Synth-Pop Nostalgia Dominates My Weekly Playlist",
           "url": "/2023/06/19/pet-shop-boys-reign-synth-pop-nostalgia-dominates-my-weekly-playlist/",
           "date": "2023-06-19T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "welcome-to-wherever-you-are",
+      "name": "Welcome to Wherever You Are",
+      "artist": "INXS",
+      "artistSlug": "inxs",
+      "albumUrl": "https://www.russ.fm/album/welcome-to-wherever-you-are-2407929/",
+      "artistUrl": "https://www.russ.fm/artist/inxs/",
+      "image": "/assets/2026-10-19-listened-to-this-week/albums/Welcome-to-Wherever-You-Are.jpg",
+      "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
         }
       ]
     },
@@ -28101,6 +28202,22 @@
       ]
     },
     {
+      "slug": "cure-for-sanity",
+      "name": "Cure for Sanity",
+      "artist": "Pop Will Eat Itself",
+      "artistSlug": "pop-will-eat-itself",
+      "albumUrl": "https://www.russ.fm/album/cure-for-sanity-90393/",
+      "artistUrl": "https://www.russ.fm/artist/pop-will-eat-itself/",
+      "image": "/assets/2026-10-19-listened-to-this-week/albums/Cure-for-Sanity.jpg",
+      "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "slug": "delete-everything",
       "name": "Delete Everything",
       "artist": "Pop Will Eat Itself",
@@ -32305,6 +32422,11 @@
       "image": "/assets/2025-12-15-listened-to-this-week/albums/The-Seeds-of-Love.jpg",
       "posts": [
         {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
+        },
+        {
           "title": "Gritty Rhythms Clash with Melodic Dreams in Sonic Convergence",
           "url": "/2026/03/02/gritty-rhythms-clash-with-melodic-dreams-in-sonic-convergence/",
           "date": "2026-03-02T00:00:00.000Z"
@@ -33281,6 +33403,22 @@
           "title": "Cosmic Country and Velvet Static on Candlelit Club Floors",
           "url": "/2026/09/07/cosmic-country-and-velvet-static-on-candlelit-club-floors/",
           "date": "2026-09-07T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "spartacus",
+      "name": "Spartacus",
+      "artist": "The Farm",
+      "artistSlug": "the-farm",
+      "albumUrl": "https://www.russ.fm/album/spartacus-1407749/",
+      "artistUrl": "https://www.russ.fm/artist/the-farm/",
+      "image": "/assets/2026-10-19-listened-to-this-week/albums/Spartacus.jpg",
+      "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
         }
       ]
     },
@@ -36165,6 +36303,22 @@
           "title": "The Specials Take Center Stage: A Week of Ska-Punk Dominance in My Playlist",
           "url": "/2023/06/05/the-specials-take-center-stage-a-week-of-ska-punk-dominance-in-my-playlist/",
           "date": "2023-06-05T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "slug": "clowns-and-jugglers-the-songs-of-syd-barrett",
+      "name": "Clowns and Jugglers: The Songs of Syd Barrett",
+      "artist": "Various Artists",
+      "artistSlug": "various-artists",
+      "albumUrl": "https://www.russ.fm/album/clowns-and-jugglers-the-songs-of-syd-barrett-38732007/",
+      "artistUrl": null,
+      "image": "/assets/2026-10-19-listened-to-this-week/albums/Clowns-and-Jugglers-The-Songs-of-Syd-Barrett.jpg",
+      "posts": [
+        {
+          "title": "Baggy Daydreams, Stadium Soul, and Psychedelic Petals in Fall",
+          "url": "/2026/10/19/baggy-daydreams-stadium-soul-and-psychedelic-petals-in-fall/",
+          "date": "2026-10-19T00:00:00.000Z"
         }
       ]
     },
