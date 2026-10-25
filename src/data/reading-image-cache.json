@@ -8896,7 +8896,7 @@
     "title": "Inside Anthropic’s biggest design choices",
     "description": "On the latest episode of the ‘By Design’ podcast, Joel Lewenstein, Anthropic’s head of design, shares how he thinks about the role of design (and designers) in a rapidly changing landscape.",
     "imageAlt": "",
-    "fetchedAt": "2026-04-07T12:31:35.495Z"
+    "fetchedAt": "2026-10-25T14:49:23.966Z"
   },
   "https://sherwood.news/markets/anthropic-revenue-run-rate-30-billion-google-broadcom-partnership/": {
     "localImage": "/assets/reading-previews/sherwood.news-5dc14145098f.jpg",
@@ -8914,16 +8914,16 @@
     "title": "Claude Mythos and the end of software",
     "description": "I....yeah. It's all over now.Thank you Blacksmith for sponsoring! Check them out at: https://soydev.link/blacksmithSOURCEShttps://www-cdn.anthropic.com/53566...",
     "imageAlt": "",
-    "fetchedAt": "2026-04-08T13:19:03.036Z"
+    "fetchedAt": "2026-10-25T14:49:12.626Z"
   },
   "https://www.anthropic.com/glasswing": {
     "localImage": "/assets/reading-previews/anthropic.com-3eade88d874f.jpg",
-    "originalImage": "https://cdn.sanity.io/images/4zrzovbb/website/65641e7846f10255c4a3415a10bbf5793ae87b13-1200x630.jpg",
+    "originalImage": "https://assets.claude.com/65641e7846f10255c4a3415a10bbf5793ae87b13.jpg",
     "imageType": "og-image",
     "title": "Project Glasswing: Securing critical software for the AI era",
     "description": "A new initiative to secure the world’s most critical software and give defenders a durable advantage in the coming AI-driven era of cybersecurity.",
     "imageAlt": "Anthropic logo",
-    "fetchedAt": "2026-04-08T13:19:06.334Z"
+    "fetchedAt": "2026-10-25T14:49:18.165Z"
   },
   "https://bryankeller.github.io/2026/04/08/porting-mac-os-x-nintendo-wii.html": {
     "localImage": null,
@@ -8931,16 +8931,18 @@
     "imageType": null,
     "title": "Porting Mac OS X to the Nintendo Wii",
     "description": "Mac OS X 10.0 (Cheetah) running natively on the Nintendo Wii",
-    "fetchedAt": "2026-04-26T08:02:17.489Z"
+    "fetchedAt": "2026-10-25T14:49:07.007Z",
+    "attempts": 1,
+    "lastError": "No og:image or twitter:image"
   },
   "https://leehanchung.github.io/blogs/2026/04/05/the-ai-great-leap-forward/": {
     "localImage": "/assets/reading-previews/leehanchung.github.io-27af03f5917e.jpg",
     "originalImage": "https://leehanchung.github.io/assets/img/2026-04-05/00-tb.png",
     "imageType": "og-image",
-    "title": "The AI Great Leap Forward",
+    "title": "The AI Great Leap Forward and Its Failure Modes",
     "description": "In 1958, Mao ordered every village to produce steel. The steel was useless. The crops rotted. Today's top-down AI mandates are producing the same pattern: ba...",
     "imageAlt": "The AI Great Leap Forward",
-    "fetchedAt": "2026-04-26T08:02:19.802Z"
+    "fetchedAt": "2026-10-25T14:49:09.662Z"
   },
   "https://www.youtube.com/watch?v=I82j7AzMU80": {
     "localImage": "/assets/reading-previews/youtube.com-401a882116ec.jpg",
@@ -8949,7 +8951,7 @@
     "title": "How does Claude Code *actually* work?",
     "description": "We keep talking about Codex, Claude Code, Cursor, etc. But how do they actually work?Thank you Macroscope for sponsoring! Check them out at: https://soydev.l...",
     "imageAlt": "",
-    "fetchedAt": "2026-04-26T08:02:09.207Z"
+    "fetchedAt": "2026-10-25T14:49:00.324Z"
   },
   "https://medium.com/@davidvesely.cz/claude-code-has-an-internal-skill-nobody-knew-about-skillify-915efff67f27": {
     "localImage": "/assets/reading-previews/medium.com-66fd8c79cd7f.jpg",
@@ -8958,7 +8960,7 @@
     "title": "Claude Code Has an Internal Skill Nobody Knew About: /skillify",
     "description": "TL;DR: npx skills@latest add Vesely/skills/skillify and then just use it /skillify",
     "imageAlt": "",
-    "fetchedAt": "2026-04-26T08:02:15.354Z"
+    "fetchedAt": "2026-10-25T14:49:04.813Z"
   },
   "https://generativeprogrammer.com/p/12-agentic-harness-patterns-from?utm_medium=ios": {
     "localImage": "/assets/reading-previews/generativeprogrammer.com-f51e3c3fca38.jpg",
@@ -8967,7 +8969,7 @@
     "title": "12 Agentic Harness Patterns from Claude Code",
     "description": "The leaked source revealed how a production coding agent is actually assembled. Here are the design patterns behind it.",
     "imageAlt": "",
-    "fetchedAt": "2026-04-26T08:02:06.212Z"
+    "fetchedAt": "2026-10-25T14:48:56.896Z"
   },
   "https://www.anthropic.com/engineering/april-23-postmortem": {
     "localImage": "/assets/reading-previews/anthropic.com-2ab8741a9842.jpg",
@@ -8997,13 +8999,14 @@
     "fetchedAt": "2026-10-02T13:00:18.164Z"
   },
   "https://www.bleepingcomputer.com/news/security/vercel-confirms-breach-as-hackers-claim-to-be-selling-stolen-data/": {
-    "localImage": "/assets/reading-previews/bleepingcomputer.com-31daa99e829c.jpg",
-    "originalImage": "https://www.bleepstatic.com/content/hl-images/2026/04/19/vercel-header-lg.jpg",
-    "imageType": "og-image",
-    "title": "Vercel confirms breach as hackers claim to be selling stolen data",
-    "description": "Cloud development platform Vercel has disclosed a security incident after threat actors claimed to have breached its systems and are attempting to sell stolen data.",
-    "imageAlt": "",
-    "fetchedAt": "2026-04-26T08:02:01.198Z"
+    "localImage": null,
+    "originalImage": null,
+    "imageType": null,
+    "title": "",
+    "description": "",
+    "fetchedAt": "2026-10-25T14:48:51.140Z",
+    "attempts": 1,
+    "lastError": "Blocked (403 / challenge) and browser fetch failed"
   },
   "https://dev.to/recharge/ai-was-supposed-to-make-engineers-less-burned-out-the-data-says-otherwise-43l6": {
     "localImage": "/assets/reading-previews/dev.to-feb944eb77b4.jpg",
@@ -9012,7 +9015,7 @@
     "title": "AI Was Supposed to Make Engineers Less Burned Out. The Data Says Otherwise.",
     "description": "Every major AI company publishes research showing their tools save developers hours every week. Our...",
     "imageAlt": "",
-    "fetchedAt": "2026-04-26T08:02:03.742Z"
+    "fetchedAt": "2026-10-25T14:48:54.435Z"
   },
   "https://medium.com/design-bootcamp/google-makes-design-md-open-source-on-its-way-to-become-a-industry-standard-16119f2368dd": {
     "localImage": "/assets/reading-previews/medium.com-068af7d9d156.jpg",
@@ -9286,5 +9289,23 @@
     "description": "Inside our performance sprint: the benchmarks Claude built, the loop each Slack thread ran, and the guardrails that let us ship 3,000 changes safely.",
     "imageAlt": "How we made claude.ai 3x faster in two weeks / claude.dev Blog",
     "fetchedAt": "2026-10-05T09:45:44.117Z"
+  },
+  "https://www.theregister.com/on-prem/2026/10/19/microsoft-abandons-uk-ai-supercomputer-as-grid-struggles-to-keep-up/5303824": {
+    "localImage": "/assets/reading-previews/theregister.com-6469e974fd0d.jpg",
+    "originalImage": "https://image.theregister.com/240959.jpg?imageId=240959&x=0&y=0&cropw=100&croph=100&panox=0&panoy=0&panow=100&panoh=100&width=1200&height=683",
+    "imageType": "og-image",
+    "title": "Microsoft abandons UK AI supercomputer as grid struggles to keep up",
+    "description": "Tech giant walks away from flagship Essex project as power connection delays threaten to leave nation's AI ambitions waiting until the 2030s",
+    "imageAlt": "",
+    "fetchedAt": "2026-10-25T14:47:34.455Z"
+  },
+  "https://thenewstack.io/karpathy-levie-ai-capability-gap/": {
+    "localImage": "/assets/reading-previews/thenewstack.io-4bd366e26984.jpg",
+    "originalImage": "https://cdn.thenewstack.io/media/2026/10/9737c1d9-sarah-sheedy-t3y5gs-5wga-unsplash-scaled.jpg",
+    "imageType": "og-image",
+    "title": "Andrej Karpathy says only 5,000 people have seen what AI can really do",
+    "description": "Andrej Karpathy says the AI capability gap is widening. Box CEO Aaron Levie says agent swarms are next, but most enterprises aren’t ready to use them yet.",
+    "imageAlt": "",
+    "fetchedAt": "2026-10-25T14:47:37.186Z"
   }
 }
