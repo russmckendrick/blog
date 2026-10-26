@@ -1,0 +1,138 @@
+{
+  "version": 2,
+  "date": "2026-10-26",
+  "type": "cover",
+  "lane": null,
+  "lighting": "golden hour seaside sun",
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Clifftop shrine above flowered turf",
+  "medium": "daylight location photography",
+  "creativeDirection": "Use daylight location photography to stage a real coastal lookout where the album motifs become physical land art, carved ornament, and shrine objects, while the figures remain faithful to their source framing.",
+  "scene": "A wide 16:9 view from slightly above a windswept seaside cliff lookout, looking down across a grassy headland toward pale rock and blue water beyond; in the turf near the cliff edge, a tall rectangular flower arrangement is laid out like a ceremonial ground emblem, while a weathered stone wall and lookout platform hold the supporting motifs.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "the central land-art feature: a tall rectangular emblem carefully arranged from white, pale purple, and yellow flowers directly on vivid green grass"
+    },
+    {
+      "source": 2,
+      "element": "a circular opening or mounted round frame near the lookout wall containing the three people from reference image 2 standing side by side in silhouette against a luminous purple-white sky; blue-and-water maplike patterns and angular yellow-green shapes echoed in painted paving, coastline contours, and banner-like details"
+    },
+    {
+      "source": 3,
+      "element": "the young man from reference image 3 stands on the grass beside the floral emblem in his cardigan and collared shirt, keeping his raised-arm pose and expression; at the far left edge, the partially visible person behind a drum kit from reference image 3 appears only once, cropped by the frame near a minimal drum setup"
+    },
+    {
+      "source": 4,
+      "element": "ornate purple scrollwork translated into carved, slightly worn decoration on the stone parapet and ironwork, with a lavender distressed patina"
+    },
+    {
+      "source": 5,
+      "element": "a freestanding devotional object on the lookout platform: a large brown cross with a radiant red heart, small open book, flame, and golden rays, set against pale marbled stone with restrained magenta accents"
+    }
+  ],
+  "palette": [
+    "grass green",
+    "sea blue",
+    "yellow-gold",
+    "purple",
+    "white",
+    "brown"
+  ],
+  "mood": "clear, ceremonial, surprising, expansive",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Nothing-But-Love-The-Definitive-Best-Of.jpg",
+      "album": "Nothing But Love The Definitive Best Of",
+      "artist": "",
+      "description": "An overhead photograph of a bright green grass field dotted with small white and yellow flowers. In the center, flowers are carefully arranged into a tall rectangular border and a stylized floral emblem inside it, with white and pale purple petal clusters at the top and a long curved yellow stem-like form below. The composition is symmetrical and centered, with strong contrast between the vivid lawn and the arranged blossoms.",
+      "signatureMotif": "a flower arrangement forming a tall rectangular emblem on grass",
+      "medium": "photograph of arranged flowers on grass",
+      "people": "none",
+      "palette": [
+        "green",
+        "yellow",
+        "white",
+        "purple"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Street-Fighting-Years.jpg",
+      "album": "Street Fighting Years",
+      "artist": "",
+      "description": "A graphic collage combining a blue-toned aerial or satellite-like view of land and water with large angular yellow-green patterned shapes crossing diagonally. Near the upper right is a circular inset containing the dark silhouettes of three standing people against a purple and white glowing sky. The layout is bold and abstract, with curved and diagonal elements layered over the map-like background.",
+      "signatureMotif": "a circular inset with three silhouetted figures",
+      "medium": "graphic collage with photographic inset",
+      "people": "three people in silhouette standing side by side",
+      "palette": [
+        "blue",
+        "yellow-green",
+        "red",
+        "purple",
+        "white"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "London-0-Hull-4.jpg",
+      "album": "London 0 Hull 4",
+      "artist": "",
+      "description": "A high-contrast, green-tinted photograph of a young man standing mid-gesture, one arm raised and the other bent, wearing a buttoned cardigan over a collared shirt. Part of a drum kit and another partially obscured figure appear at the left edge, suggesting a performance setting. A large black vertical panel occupies the right side, creating a split composition between the photo and the dark block.",
+      "signatureMotif": "one young man in a cardigan with an arm raised",
+      "medium": "tinted black-and-white photograph with graphic layout",
+      "people": "one young man standing with raised arm; one additional partially visible person behind a drum kit",
+      "palette": [
+        "green",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "So-Tonight-That-I-Might-See.jpg",
+      "album": "So Tonight That I Might See",
+      "artist": "",
+      "description": "A textured, distressed purple surface fills the frame, overlaid with ornate symmetrical scrollwork and flourishes that resemble embossed decoration. The center is darker and mottled, with the decorative border-like curls framing the composition from top and bottom. The image has a worn, antique look with soft contrast and layered texture.",
+      "signatureMotif": "ornate purple scrollwork on a distressed textured background",
+      "medium": "textured graphic design resembling aged printed ornament",
+      "people": "none",
+      "palette": [
+        "purple",
+        "lavender",
+        "black",
+        "brown"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "New-Gold-Dream-81-82-83-84.jpg",
+      "album": "New Gold Dream 81 82 83 84",
+      "artist": "",
+      "description": "A stylized graphic cover with a pale marbled background of white and beige veining. A large brown cross dominates the right half, overlaid at its center with a red heart containing a small open book and a flame above it, surrounded by radiating golden rays. The composition mixes religious icon-like symbols with bold angular graphic elements in magenta and gold.",
+      "signatureMotif": "a cross with a radiant heart, book, and flame at its center",
+      "medium": "illustrated graphic design",
+      "people": "none",
+      "palette": [
+        "brown",
+        "gold",
+        "magenta",
+        "red",
+        "white"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "A wide 16:9 coastal lookout photographed from a slightly elevated viewpoint, looking down across vivid green cliff-top grass toward pale rock and bright blue sea; near the cliff edge lies a large rectangular floral land-art emblem arranged directly on the turf. The primary subject is the flower arrangement from reference image 1, carefully built from white, pale purple, and yellow blossoms in a tall symmetrical rectangle. The young man from reference image 3 stands beside it on the grass, keeping his exact raised-arm pose, cardigan, collared shirt, expression, and framing presence; at the far left edge, include the partially visible person behind a drum kit from reference image 3 only once, cropped by the edge near a minimal drum setup. Near a weathered stone parapet, place a circular framed opening inspired by reference image 2 containing the three people from reference image 2 standing side by side in silhouette against a glowing purple-white sky, while blue aerial land-and-water patterning and angular yellow-green geometry from reference image 2 appear as painted paving bands and coastline-shaped surface graphics. Translate the ornate distressed purple scrollwork from reference image 4 into carved and patinated decoration on the lookout wall and iron details. On the platform, include a freestanding shrine-like object from reference image 5: a large brown cross centered with a radiant red heart, a small open book, a flame above it, and golden rays, backed by pale marbled stone with subtle magenta accents. Photographic realism, daylight location shoot, crisp lens, clean detail, physically plausible materials and scale. Balanced composition with the floral emblem dominant in the foreground-middle ground, the standing figure as the main human focal point, and the shrine and circular silhouette feature as secondary anchors; open sky and sea giving depth. Light the scene with golden hour seaside sun, clear and bright, with long clean shadows and saturated but natural color. Palette of grass green, sea blue, yellow-gold, purple, white, brown, and magenta-red; mood ceremonial, expansive, and fresh. Reference map for people (the album images are attached in this numbered order): reference image 2 shows three people in silhouette standing side by side; reference image 3 shows one young man standing with raised arm; one additional partially visible person behind a drum kit. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "inputs": [
+    "Nothing-But-Love-The-Definitive-Best-Of.jpg",
+    "Street-Fighting-Years.jpg",
+    "London-0-Hull-4.jpg",
+    "So-Tonight-That-I-Might-See.jpg",
+    "New-Gold-Dream-81-82-83-84.jpg"
+  ]
+}
