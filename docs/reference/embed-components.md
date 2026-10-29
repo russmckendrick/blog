@@ -354,7 +354,7 @@ The component constructs `{src}-light.{ext}` and `{src}-dark.{ext}` and uses CSS
 - Works with any image format (SVG, PNG, etc.)
 
 ### Mermaid
-Render a Mermaid diagram client-side in a framed panel with pan, Ctrl/Cmd+scroll zoom, a minimap, fullscreen, and SVG/PNG export.
+Render a Mermaid diagram client-side with [Pele](https://pele.run) in a framed panel with zoom, fullscreen, and SVG/PNG export. Pele parses standard Mermaid syntax (every diagram type in Mermaid 12.1) but is its own renderer, so layouts differ a little from mermaid.js - check a new diagram in the browser rather than the Mermaid live editor.
 
 ```mdx
 <Mermaid code={`
@@ -366,20 +366,21 @@ flowchart TD
     class A accent
     class D ok
     class E error
-`} title="Setup flow" minimapPosition="off" />
+`} title="Setup flow" />
 ```
 
 **Props:**
 - `code` - The Mermaid source (required)
 - `title` - Shown in the control bar, used as the accessible label and the export filename (optional)
-- `minimapPosition` - `TL` / `TR` / `BL` / `BR` / `off` (optional, default: `BR`; use `off` for small diagrams)
 
-**Styling:** diagrams use Mermaid's `base` theme fed with the Workbench tokens (tint nodes, `rule-strong` strokes, mist lines, Geist labels), re-rendered automatically when the reader toggles dark mode. Layout is pinned to `dagre` (Mermaid 12 otherwise defaults to ELK); a diagram can opt in by setting `layout: elk` under `config:` in its own front matter. For `flowchart`, `graph` and `stateDiagram` sources the component appends three node classes, so highlight nodes with `class <ids> <name>` rather than colours:
+**Zoom:** Pele's built-in zoom is always on - pinch or Ctrl/Cmd+scroll zooms at the pointer, drag pans a zoomed diagram, double-click zooms or resets, and `+`/`-`/`0`/arrow keys work when the diagram has focus. A plain scroll wheel still scrolls the page. Fullscreen mounts a second copy fitted to the viewport with the same controls; Escape closes it.
+
+**Styling:** the Workbench tokens are mapped onto Pele's `--pele-*` CSS variables in the component (tint nodes, `rule-strong` strokes, mist lines, Geist labels, 8px corners), so diagrams follow dark mode without re-rendering. Each diagram type's script loads on demand through `pele/lazy`. Highlight nodes with `class <ids> <name>` rather than colours - Pele keeps the class on the node, and the component styles three:
 - `accent` - amber wash, for the start or the step that matters
 - `ok` - green wash, for successful end states
 - `error` - red wash, for failure paths
 
-Don't hand-code `style X fill:#...` colours - they won't adapt to dark mode. SVG and PNG exports always use the light palette.
+Don't hand-code `style X fill:#...` or `classDef` colours - they won't adapt to dark mode. SVG and PNG exports bake in the colours on screen, so they follow the reader's current theme.
 
 ### ChatMessage
 Display chat-style messages with optional avatars, names, timestamps, and custom colors - perfect for showing conversations, prompts, or chat interfaces.

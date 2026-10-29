@@ -4,22 +4,10 @@ interface Props {
   code: string;
   /** Optional title for accessibility */
   title?: string;
-  /** Minimap position: TL (top-left), TR (top-right), BL (bottom-left), BR (bottom-right), off (disabled) */
-  minimapPosition?: 'TL' | 'TR' | 'BL' | 'BR' | 'off';
 }
 
-const { code, title = "Mermaid diagram", minimapPosition = "BR" } = Astro.props;
+const { code, title = "Mermaid diagram" } = Astro.props;
 const diagramId = `mermaid-${Math.random().toString(36).substring(2, 9)}`;
-
-// Calculate minimap position classes
-const positionClasses = {
-  TL: 'top-3 left-3',
-  TR: 'top-3 right-3',
-  BL: 'bottom-3 left-3',
-  BR: 'bottom-3 right-3',
-  off: 'hidden'
-};
-const minimapPositionClass = positionClasses[minimapPosition];
 ---
 
 <div class="mermaid-wrapper not-prose my-6" data-diagram-id={diagramId} data-diagram-title={title}>
@@ -31,7 +19,7 @@ const minimapPositionClass = positionClasses[minimapPosition];
       )}
     </div>
     <div class="flex items-center gap-1">
-      <span class="mermaid-hint hidden sm:inline" title="Hold Ctrl (or Cmd on Mac) and scroll to zoom">Ctrl+scroll to zoom</span>
+      <span class="mermaid-hint hidden sm:inline" title="Hold Ctrl (or Cmd on Mac) and scroll, or pinch, to zoom">Ctrl+scroll to zoom</span>
       <button
         class="mermaid-btn fullscreen-btn"
         data-action="fullscreen"
@@ -65,174 +53,62 @@ const minimapPositionClass = positionClasses[minimapPosition];
     </div>
   </div>
 
-  <!-- Error display -->
-  <div class="error-display mermaid-error hidden">
-    <p class="mermaid-error-heading">Error rendering diagram:</p>
-    <pre></pre>
-  </div>
-
-  <!-- Diagram container -->
-  <div
-    class="preview-container relative overflow-hidden"
-    role="img"
-    aria-label={title}
-  >
-    <div class="svg-wrap flex items-center justify-center" style="transform-origin: center center; min-height: 200px;"></div>
-
-    <!-- Minimap overlay -->
-    <div class={`minimap-container absolute ${minimapPositionClass} overflow-hidden`} style="width: 140px; height: 105px;">
-      <div class="minimap-canvas relative" style="width: 100%; height: 100%;"></div>
-      <div class="minimap-viewport absolute cursor-move" style="pointer-events: auto;"></div>
-      <div class="minimap-controls absolute top-1 right-1 flex flex-col gap-0.5">
-        <button
-          class="minimap-zoom-in"
-          data-action="zoom-in"
-          aria-label="Zoom in"
-        >
-          <span class="zoom-icon">+</span>
-        </button>
-        <button
-          class="minimap-zoom-out"
-          data-action="zoom-out"
-          aria-label="Zoom out"
-        >
-          <span class="zoom-icon">−</span>
-        </button>
-        <button
-          class="minimap-reset"
-          data-action="reset"
-          aria-label="Reset view"
-        >
-          <span class="zoom-icon text-[10px]">⟲</span>
-        </button>
-      </div>
-    </div>
-  </div>
+  <!-- Pele renders the SVG (or its error) into this block -->
+  <div class="mermaid-canvas" role="img" aria-label={title}></div>
 
   <!-- Store diagram code in data attribute -->
   <script is:inline type="application/json" class="diagram-code" set:html={JSON.stringify(code)}></script>
 </div>
 
 <script>
-  // This script runs once when the module is loaded
-  import mermaid from 'mermaid';
+  import { mountAsync, type MountOptions } from 'pele/lazy';
   import { exportMermaidPNG } from '../../utils/exportMermaidPNG';
 
-  type DiagramTheme = 'light' | 'dark';
-
-  // Workbench tokens (DESIGN.md). Mermaid derives shades from these with its
-  // own colour maths, so they have to be literal hex rather than CSS vars.
-  const PALETTES = {
-    light: {
-      page: '#ffffff',
-      tint: '#f4f4f5',
-      ink: '#0b0b0c',
-      mist: '#5e5e66',
-      rule: '#e6e6e9',
-      ruleStrong: '#d4d4d8',
-      accent: { fill: '#fcf0da', stroke: '#f2b544' },
-      ok: { fill: '#e4e8e2', stroke: '#3d5c33' },
-      error: { fill: '#f2e6e0', stroke: '#8f2d00' }
-    },
-    dark: {
-      page: '#0b0b0c',
-      tint: '#151517',
-      ink: '#ededef',
-      mist: '#a1a1a6',
-      rule: '#26262a',
-      ruleStrong: '#333338',
-      accent: { fill: '#352a16', stroke: '#f2b544' },
-      ok: { fill: '#20241e', stroke: '#a4bd8c' },
-      error: { fill: '#2a201e', stroke: '#e5a48c' }
-    }
+  // Pele lays out the diagram with these, so they have to match the CSS
+  // variables below. Colours come from CSS alone and follow the site theme
+  // without a re-render.
+  const OPTIONS: MountOptions = {
+    fontSize: 14,
+    padding: 16,
+    zoom: { always: true }
   };
 
-  // The Astro font pipeline generates the Geist family name, so read it back
-  // from the page rather than hard-coding it.
-  function diagramFont() {
-    return getComputedStyle(document.body).fontFamily || 'Geist, -apple-system, sans-serif';
-  }
+  // Pele's attributes reference CSS variables, and the node classes restyle
+  // shapes from the page's CSS. Standalone files see neither, so bake in the
+  // colours each element resolves to on screen.
+  function snapshotSvg(svgEl: SVGSVGElement) {
+    const clone = svgEl.cloneNode(true) as SVGSVGElement;
+    const originals = [svgEl, ...svgEl.querySelectorAll('*')];
+    const copies = [clone, ...clone.querySelectorAll('*')];
 
-  function configFor(theme: DiagramTheme) {
-    const p = PALETTES[theme];
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: 'base',
-      look: 'neo',
-      // Mermaid 12 defaults to ELK, which re-lays out every existing diagram
-      layout: 'dagre',
-      themeVariables: {
-        darkMode: theme === 'dark',
-        fontFamily: diagramFont(),
-        fontSize: '14px',
-        background: p.page,
-        primaryColor: p.tint,
-        primaryTextColor: p.ink,
-        primaryBorderColor: p.ruleStrong,
-        secondaryColor: p.tint,
-        tertiaryColor: p.page,
-        mainBkg: p.tint,
-        nodeBorder: p.ruleStrong,
-        nodeTextColor: p.ink,
-        textColor: p.ink,
-        titleColor: p.ink,
-        lineColor: p.mist,
-        clusterBkg: p.page,
-        clusterBorder: p.rule,
-        edgeLabelBackground: p.page,
-        labelBackgroundColor: p.page,
-        stateBkg: p.tint,
-        stateLabelColor: p.ink,
-        transitionColor: p.mist,
-        compositeBackground: p.page,
-        noteBkgColor: p.accent.fill,
-        noteBorderColor: p.accent.stroke,
-        noteTextColor: p.ink,
-        errorBkgColor: p.error.fill,
-        errorTextColor: p.ink,
-        radius: 8,
-        strokeWidth: 1.5,
-        dropShadow: 'none',
-        useGradient: false
-      },
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true,
-        curve: 'basis'
+    originals.forEach((original, i) => {
+      const copy = copies[i];
+      const computed = getComputedStyle(original);
+      for (const attr of Array.from(copy.attributes)) {
+        if (attr.name === 'fill' || attr.name === 'stroke') {
+          copy.setAttribute(attr.name, computed.getPropertyValue(attr.name));
+        } else if (attr.value.includes('var(')) {
+          copy.setAttribute(
+            attr.name,
+            attr.value.replace(/var\((--[\w-]+)(?:,[^()]*(?:\([^()]*\)[^()]*)*)?\)/g, (match, name) =>
+              computed.getPropertyValue(name).trim() || match
+            )
+          );
+        }
       }
     });
-  }
 
-  // Posts mark nodes with `class X accent|ok|error`; the classDefs are added
-  // here so the colours follow the theme and are baked into exported SVGs.
-  function withNodeClasses(diagramCode: string, theme: DiagramTheme) {
-    if (!/^\s*(flowchart|graph|stateDiagram)/.test(diagramCode)) return diagramCode;
-    const p = PALETTES[theme];
-    const defs = (['accent', 'ok', 'error'] as const)
-      .map((name) => `classDef ${name} fill:${p[name].fill},stroke:${p[name].stroke},color:${p.ink}`)
-      .join('\n');
-    return `${diagramCode.trimEnd()}\n${defs}\n`;
+    const viewBox = svgEl.viewBox.baseVal;
+    clone.style.removeProperty('max-width');
+    clone.style.removeProperty('height');
+    clone.style.removeProperty('touch-action');
+    clone.style.removeProperty('transform');
+    clone.style.removeProperty('transform-origin');
+    clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    clone.setAttribute('width', String(viewBox.width));
+    clone.setAttribute('height', String(viewBox.height));
+    return clone;
   }
-
-  // Mermaid only rounds rect nodes when the diagram asks for it, so give
-  // square process boxes the same 8px corners as the rest of the site.
-  function roundNodes(svgEl: SVGSVGElement) {
-    svgEl.querySelectorAll('.node rect.label-container, .node > rect').forEach((rect) => {
-      if (Number(rect.getAttribute('rx') || 0) > 0) return;
-      rect.setAttribute('rx', '8');
-      rect.setAttribute('ry', '8');
-    });
-  }
-
-  function roundSvgString(svg: string) {
-    const doc = new DOMParser().parseFromString(svg, 'image/svg+xml');
-    const svgEl = doc.documentElement as unknown as SVGSVGElement;
-    if (svgEl.nodeName !== 'svg') return svg;
-    roundNodes(svgEl);
-    return new XMLSerializer().serializeToString(svgEl);
-  }
-
-  configFor('light');
 
   // Function to initialize a single diagram wrapper
   function initializeDiagram(wrapper: HTMLElement) {
@@ -242,16 +118,15 @@ const minimapPositionClass = positionClasses[minimapPosition];
 
     // Get diagram code from JSON script tag
     const codeScript = wrapper.querySelector('.diagram-code');
-    if (!codeScript) {
-      console.error('[Mermaid] No diagram code found');
+    const canvas = wrapper.querySelector('.mermaid-canvas') as HTMLElement | null;
+    if (!codeScript || !canvas) {
+      console.error('[Mermaid] Diagram elements not found');
       return;
     }
 
-    const codeText = codeScript.textContent || '""';
-
     let code: string;
     try {
-      code = JSON.parse(codeText);
+      code = JSON.parse(codeScript.textContent || '""').trim();
     } catch (e) {
       console.error('[Mermaid] Failed to parse code JSON:', e);
       return;
@@ -259,613 +134,85 @@ const minimapPositionClass = positionClasses[minimapPosition];
 
     const diagramId = wrapper.getAttribute('data-diagram-id') || 'mermaid-default';
     const diagramTitle = wrapper.getAttribute('data-diagram-title') || '';
+    const hasTitle = diagramTitle && diagramTitle !== 'Mermaid diagram';
 
-    // Diagram state
-    let scale = 1;
-    let panX = 0;
-    let panY = 0;
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
-    let currentTheme: DiagramTheme = 'light';
-
-    // Get DOM elements
-    const previewDiv = wrapper.querySelector('.preview-container') as HTMLElement;
-    const svgWrap = wrapper.querySelector('.svg-wrap') as HTMLElement;
-    const errorDisplay = wrapper.querySelector('.error-display') as HTMLElement;
-    const errorPre = errorDisplay?.querySelector('pre') as HTMLPreElement;
-    const minimapContainer = wrapper.querySelector('.minimap-container') as HTMLElement;
-    const minimapCanvas = wrapper.querySelector('.minimap-canvas') as HTMLElement;
-    const minimapViewport = wrapper.querySelector('.minimap-viewport') as HTMLElement;
-
-    if (!previewDiv || !svgWrap || !errorDisplay || !errorPre || !minimapContainer || !minimapCanvas || !minimapViewport) {
-      console.error('Mermaid wrapper elements not found');
-      return;
+    function filename(ext: string) {
+      return hasTitle
+        ? `${diagramTitle.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.${ext}`
+        : `${diagramId}.${ext}`;
     }
 
-    // Detect current theme
-    function detectTheme(): DiagramTheme {
-      return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    function currentSvg() {
+      return canvas!.querySelector('svg.pele') as SVGSVGElement | null;
     }
 
-    // Apply transform to SVG wrapper
-    function applyTransform() {
-      svgWrap.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
-      updateMinimap();
+    function handleExportPNG() {
+      const svgEl = currentSvg();
+      if (svgEl) exportMermaidPNG(snapshotSvg(svgEl), filename('png'));
     }
 
-    // Update minimap viewport indicator
-    function updateMinimap() {
-      const svgEl = svgWrap.querySelector('svg');
+    function handleExportSVG() {
+      const svgEl = currentSvg();
       if (!svgEl) return;
 
-      const svgRect = svgEl.getBoundingClientRect();
-      const previewRect = previewDiv.getBoundingClientRect();
-      const viewBox = svgEl.viewBox.baseVal;
-
-      // Calculate minimap dimensions
-      const minimapWidth = minimapCanvas.clientWidth;
-      const minimapHeight = minimapCanvas.clientHeight;
-
-      // Calculate visible viewport in SVG coordinates
-      const visibleWidth = previewRect.width / scale;
-      const visibleHeight = previewRect.height / scale;
-
-      // Calculate viewport position in minimap
-      const viewportWidth = (visibleWidth / viewBox.width) * minimapWidth;
-      const viewportHeight = (visibleHeight / viewBox.height) * minimapHeight;
-
-      // Calculate center offset (since SVG is centered)
-      const svgCenterX = (previewRect.width - svgRect.width) / 2;
-      const svgCenterY = (previewRect.height - svgRect.height) / 2;
-
-      // Calculate viewport position accounting for pan and center offset
-      const viewportX = ((svgCenterX - panX) / scale / viewBox.width) * minimapWidth;
-      const viewportY = ((svgCenterY - panY) / scale / viewBox.height) * minimapHeight;
-
-      // Update viewport indicator
-      minimapViewport.style.left = `${Math.max(0, Math.min(viewportX, minimapWidth - viewportWidth))}px`;
-      minimapViewport.style.top = `${Math.max(0, Math.min(viewportY, minimapHeight - viewportHeight))}px`;
-      minimapViewport.style.width = `${Math.min(viewportWidth, minimapWidth)}px`;
-      minimapViewport.style.height = `${Math.min(viewportHeight, minimapHeight)}px`;
+      const svg = new XMLSerializer().serializeToString(snapshotSvg(svgEl));
+      const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename('svg');
+      a.click();
+      URL.revokeObjectURL(url);
     }
 
-    // Render minimap thumbnail
-    function renderMinimap() {
-      const svgEl = svgWrap.querySelector('svg');
-      if (!svgEl) return;
-
-      // Clone the SVG for minimap
-      const svgClone = svgEl.cloneNode(true) as SVGSVGElement;
-      svgClone.removeAttribute('style');
-
-      const viewBox = svgEl.viewBox.baseVal;
-
-      // Calculate scale to fit minimap
-      const minimapWidth = minimapCanvas.clientWidth;
-      const minimapHeight = minimapCanvas.clientHeight;
-      const scaleX = minimapWidth / viewBox.width;
-      const scaleY = minimapHeight / viewBox.height;
-      const minimapScale = Math.min(scaleX, scaleY);
-
-      const scaledWidth = viewBox.width * minimapScale;
-      const scaledHeight = viewBox.height * minimapScale;
-
-      svgClone.style.width = `${scaledWidth}px`;
-      svgClone.style.height = `${scaledHeight}px`;
-      svgClone.style.position = 'absolute';
-      svgClone.style.left = '50%';
-      svgClone.style.top = '50%';
-      svgClone.style.transform = 'translate(-50%, -50%)';
-      svgClone.style.pointerEvents = 'none';
-      svgClone.style.opacity = '0.7';
-
-      // Clear and add minimap SVG
-      minimapCanvas.innerHTML = '';
-      minimapCanvas.appendChild(svgClone);
-
-      updateMinimap();
-    }
-
-    // Render Mermaid diagram
-    async function renderMermaid(diagramCode: string) {
-      try {
-        // Hide error, clear preview
-        errorDisplay.classList.add('hidden');
-        errorPre.textContent = '';
-
-        // Detect theme and render
-        currentTheme = detectTheme();
-
-        configFor(currentTheme);
-
-        // Render the diagram with unique ID
-        const renderId = `${diagramId}-${Date.now()}`;
-        const renderResult = await mermaid.render(renderId, withNodeClasses(diagramCode, currentTheme));
-        const svg = renderResult.svg;
-
-        // Use requestAnimationFrame for DOM manipulation timing
-        requestAnimationFrame(() => {
-          svgWrap.innerHTML = svg;
-
-          const svgEl = svgWrap.querySelector('svg');
-          if (svgEl) {
-            roundNodes(svgEl);
-
-            // Store viewBox before modifications
-            const viewBox = svgEl.viewBox.baseVal;
-
-            // Critical: Remove fixed dimensions for responsive sizing (Mermaider approach)
-            svgEl.removeAttribute('width');
-            svgEl.removeAttribute('height');
-            svgEl.removeAttribute('style');
-
-            // Calculate responsive sizing based on container width
-            const containerWidth = previewDiv.clientWidth;
-            const aspectRatio = viewBox.height / viewBox.width;
-
-            // If diagram is wider than container, scale it down
-            const displayWidth = Math.min(viewBox.width, containerWidth - 40); // 40px padding
-            const displayHeight = displayWidth * aspectRatio;
-
-            // Apply responsive sizing
-            svgEl.style.width = `${displayWidth}px`;
-            svgEl.style.height = `${displayHeight}px`;
-            svgEl.style.maxWidth = '100%';
-
-            // Set the wrapper height to match the SVG with padding
-            const wrapperHeight = Math.max(200, displayHeight + 40);
-            svgWrap.style.minHeight = `${wrapperHeight}px`;
-
-            // Reset transform
-            scale = 1;
-            panX = 0;
-            panY = 0;
-            applyTransform();
-            renderMinimap();
-          }
-        });
-      } catch (err: any) {
-        // Show error
-        const errorMsg = err?.str || err?.message || (typeof err === 'string' ? err : JSON.stringify(err));
-        errorDisplay.classList.remove('hidden');
-        errorPre.textContent = errorMsg;
-        svgWrap.innerHTML = '';
-      }
-    }
-
-    // Zoom controls
-    function handleZoom(direction: 'in' | 'out' | 'reset') {
-      if (direction === 'in') {
-        scale *= 1.1;
-      } else if (direction === 'out') {
-        scale *= 0.9;
-      } else if (direction === 'reset') {
-        scale = 1;
-        panX = 0;
-        panY = 0;
-      }
-
-      // Clamp scale (0.2x to 5x)
-      scale = Math.max(0.2, Math.min(scale, 5));
-
-      applyTransform();
-    }
-
-    // Mouse wheel zoom (requires Ctrl/Cmd key to zoom, otherwise allows normal scrolling)
-    function handleWheel(e: WheelEvent) {
-      // Only zoom if Ctrl (Windows/Linux) or Cmd (Mac) is held
-      if (!e.ctrlKey && !e.metaKey) {
-        return; // Allow normal page scrolling
-      }
-
-      e.preventDefault();
-      const delta = e.deltaY;
-
-      // Zoom centered on mouse position
-      scale *= delta > 0 ? 0.9 : 1.1;
-      scale = Math.max(0.2, Math.min(scale, 5));
-
-      applyTransform();
-    }
-
-    // Mouse drag pan
-    function handleMouseDown(e: MouseEvent) {
-      isDragging = true;
-      startX = e.clientX - panX;
-      startY = e.clientY - panY;
-      previewDiv.style.cursor = 'grabbing';
-    }
-
-    function handleMouseMove(e: MouseEvent) {
-      if (!isDragging) return;
-      panX = e.clientX - startX;
-      panY = e.clientY - startY;
-      applyTransform();
-    }
-
-    function handleMouseUp() {
-      isDragging = false;
-      previewDiv.style.cursor = 'grab';
-    }
-
-    // Minimap viewport drag
-    let isMinimapDragging = false;
-    let minimapStartX = 0;
-    let minimapStartY = 0;
-    let minimapStartPanX = 0;
-    let minimapStartPanY = 0;
-
-    function handleMinimapViewportMouseDown(e: MouseEvent) {
-      e.stopPropagation();
-      isMinimapDragging = true;
-      minimapStartX = e.clientX;
-      minimapStartY = e.clientY;
-      minimapStartPanX = panX;
-      minimapStartPanY = panY;
-      minimapViewport.style.cursor = 'grabbing';
-    }
-
-    function handleMinimapMouseMove(e: MouseEvent) {
-      if (!isMinimapDragging) return;
-
-      const svgEl = svgWrap.querySelector('svg');
-      if (!svgEl) return;
-
-      const viewBox = svgEl.viewBox.baseVal;
-      const minimapWidth = minimapCanvas.clientWidth;
-      const minimapHeight = minimapCanvas.clientHeight;
-
-      // Calculate movement in minimap space
-      const deltaX = e.clientX - minimapStartX;
-      const deltaY = e.clientY - minimapStartY;
-
-      // Convert to SVG space
-      const svgDeltaX = (deltaX / minimapWidth) * viewBox.width * scale;
-      const svgDeltaY = (deltaY / minimapHeight) * viewBox.height * scale;
-
-      // Update pan (inverted because we're moving the viewport indicator)
-      panX = minimapStartPanX - svgDeltaX;
-      panY = minimapStartPanY - svgDeltaY;
-
-      applyTransform();
-    }
-
-    function handleMinimapMouseUp() {
-      isMinimapDragging = false;
-      minimapViewport.style.cursor = 'move';
-    }
-
-    // Click on minimap to jump to that position
-    function handleMinimapClick(e: MouseEvent) {
-      if (e.target !== minimapCanvas && e.target !== (minimapCanvas.querySelector('svg'))) return;
-
-      const svgEl = svgWrap.querySelector('svg');
-      if (!svgEl) return;
-
-      const viewBox = svgEl.viewBox.baseVal;
-      const minimapRect = minimapCanvas.getBoundingClientRect();
-
-      // Calculate click position relative to minimap
-      const clickX = e.clientX - minimapRect.left;
-      const clickY = e.clientY - minimapRect.top;
-
-      // Convert to SVG coordinates
-      const svgX = (clickX / minimapRect.width) * viewBox.width;
-      const svgY = (clickY / minimapRect.height) * viewBox.height;
-
-      // Calculate new pan to center on click position
-      const previewRect = previewDiv.getBoundingClientRect();
-      const centerX = previewRect.width / 2;
-      const centerY = previewRect.height / 2;
-
-      panX = centerX - (svgX * scale);
-      panY = centerY - (svgY * scale);
-
-      applyTransform();
-    }
-
-    // Get light mode version of SVG for export
-    async function getLightModeSVG() {
-      configFor('light');
-
-      const renderResult = await mermaid.render(`${diagramId}-export-${Date.now()}`, withNodeClasses(code, 'light'));
-      return roundSvgString(renderResult.svg);
-    }
-
-    // Export to PNG (always light mode)
-    async function handleExportPNG() {
-      try {
-        const lightSvg = await getLightModeSVG();
-
-        // Create temporary container
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = lightSvg;
-        tempDiv.style.position = 'absolute';
-        tempDiv.style.left = '-9999px';
-        document.body.appendChild(tempDiv);
-
-        const svgEl = tempDiv.querySelector('svg') as SVGSVGElement;
-        if (svgEl) {
-          const filename = diagramTitle && diagramTitle !== 'Mermaid diagram'
-            ? `${diagramTitle.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.png`
-            : `${diagramId}.png`;
-          exportMermaidPNG(svgEl, filename);
-        }
-
-        // Cleanup
-        document.body.removeChild(tempDiv);
-
-        // Re-render current theme
-        renderMermaid(code);
-      } catch (err) {
-        console.error('Export PNG failed:', err);
-      }
-    }
-
-    // Export to SVG (always light mode)
-    async function handleExportSVG() {
-      try {
-        const lightSvg = await getLightModeSVG();
-
-        // Create blob and download
-        const blob = new Blob([lightSvg], { type: 'image/svg+xml' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = diagramTitle && diagramTitle !== 'Mermaid diagram'
-          ? `${diagramTitle.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.svg`
-          : `${diagramId}.svg`;
-        a.click();
-        URL.revokeObjectURL(url);
-
-        // Re-render current theme
-        renderMermaid(code);
-      } catch (err) {
-        console.error('Export SVG failed:', err);
-      }
-    }
-
-    // Fullscreen overlay
-    function handleFullscreen() {
-      const svgEl = svgWrap.querySelector('svg');
-      if (!svgEl) return;
-
+    // Fullscreen overlay: a second Pele mount sized to the viewport, so it
+    // gets the same zoom, pan and keyboard controls as the inline diagram
+    async function handleFullscreen() {
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Create overlay - all styles inline so they work when appended to body
       const overlay = document.createElement('div');
-      Object.assign(overlay.style, {
-        position: 'fixed',
-        inset: '0',
-        zIndex: '99998',
-        display: 'flex',
-        flexDirection: 'column',
-        background: 'rgba(0, 0, 0, 0.95)',
-        opacity: '0',
-        transition: reducedMotion ? 'none' : 'opacity 0.3s cubic-bezier(0.22, 0.61, 0.36, 1)',
-      });
+      overlay.className = 'mermaid-wrapper mermaid-overlay';
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-label', hasTitle ? diagramTitle : 'Diagram');
+      overlay.tabIndex = -1;
+      if (reducedMotion) overlay.style.transition = 'none';
 
-      // Header bar
       const header = document.createElement('div');
-      Object.assign(header.style, {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0.75rem 1.25rem',
-        background: 'rgba(255, 255, 255, 0.06)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-        flexShrink: '0',
-      });
+      header.className = 'mermaid-bar';
 
       const titleEl = document.createElement('span');
-      Object.assign(titleEl.style, {
-        fontSize: '0.875rem',
-        fontWeight: '500',
-        color: 'rgba(255, 255, 255, 0.9)',
-        letterSpacing: '0.01em',
-      });
-      titleEl.textContent = diagramTitle && diagramTitle !== 'Mermaid diagram' ? diagramTitle : 'Diagram';
-
-      const controls = document.createElement('div');
-      Object.assign(controls.style, {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.25rem',
-      });
-
-      // Shared button style helper
-      function styleBtn(btn: HTMLElement) {
-        Object.assign(btn.style, {
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '2rem',
-          height: '2rem',
-          borderRadius: '0.375rem',
-          border: 'none',
-          background: 'transparent',
-          color: 'rgba(255, 255, 255, 0.7)',
-          cursor: 'pointer',
-          transition: 'background-color 0.15s ease, color 0.15s ease',
-        });
-        btn.addEventListener('mouseenter', () => {
-          btn.style.background = 'rgba(255, 255, 255, 0.1)';
-          btn.style.color = 'rgba(255, 255, 255, 0.95)';
-        });
-        btn.addEventListener('mouseleave', () => {
-          btn.style.background = 'transparent';
-          btn.style.color = 'rgba(255, 255, 255, 0.7)';
-        });
-      }
-
-      const zoomOutBtn = document.createElement('button');
-      zoomOutBtn.innerHTML = '<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>';
-      zoomOutBtn.setAttribute('aria-label', 'Zoom out');
-      styleBtn(zoomOutBtn);
-
-      const zoomLevel = document.createElement('span');
-      Object.assign(zoomLevel.style, {
-        fontSize: '0.75rem',
-        color: 'rgba(255, 255, 255, 0.5)',
-        minWidth: '3rem',
-        textAlign: 'center',
-        fontVariantNumeric: 'tabular-nums',
-      });
-      zoomLevel.textContent = '100%';
-
-      const zoomInBtn = document.createElement('button');
-      zoomInBtn.innerHTML = '<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>';
-      zoomInBtn.setAttribute('aria-label', 'Zoom in');
-      styleBtn(zoomInBtn);
-
-      const resetBtn = document.createElement('button');
-      resetBtn.innerHTML = '<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" /></svg>';
-      resetBtn.setAttribute('aria-label', 'Fit to screen');
-      styleBtn(resetBtn);
+      titleEl.className = 'mermaid-title';
+      titleEl.textContent = hasTitle ? diagramTitle : 'Diagram';
 
       const closeBtn = document.createElement('button');
-      closeBtn.innerHTML = '<svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>';
+      closeBtn.className = 'mermaid-btn';
+      closeBtn.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg><span>Close</span>';
       closeBtn.setAttribute('aria-label', 'Close fullscreen');
-      styleBtn(closeBtn);
-      Object.assign(closeBtn.style, {
-        marginLeft: '0.5rem',
-        borderLeft: '1px solid rgba(255, 255, 255, 0.1)',
-        paddingLeft: '0.75rem',
-        width: 'auto',
-      });
 
-      controls.append(zoomOutBtn, zoomLevel, zoomInBtn, resetBtn, closeBtn);
-      header.append(titleEl, controls);
+      const fsCanvas = document.createElement('div');
+      fsCanvas.className = 'mermaid-canvas';
+      fsCanvas.setAttribute('role', 'img');
+      fsCanvas.setAttribute('aria-label', titleEl.textContent);
 
-      // Canvas area
-      const canvas = document.createElement('div');
-      Object.assign(canvas.style, {
-        flex: '1',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden',
-        cursor: 'grab',
-        padding: '2rem',
-      });
-
-      const svgContainer = document.createElement('div');
-      Object.assign(svgContainer.style, {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        transformOrigin: 'center center',
-        transition: reducedMotion ? 'none' : 'transform 0.1s ease-out',
-      });
-
-      // Clone the SVG and size it to fill the viewport
-      const svgClone = svgEl.cloneNode(true) as SVGSVGElement;
-      const viewBox = svgEl.viewBox.baseVal;
-      svgClone.removeAttribute('style');
-
-      // Calculate size to fit within the available viewport
-      const availW = window.innerWidth - 96; // 2rem padding each side + margin
-      const availH = window.innerHeight - 140; // header + padding
-      const svgAspect = viewBox.width / viewBox.height;
-      let fitW: number, fitH: number;
-      if (availW / availH > svgAspect) {
-        fitH = availH;
-        fitW = fitH * svgAspect;
-      } else {
-        fitW = availW;
-        fitH = fitW / svgAspect;
-      }
-
-      Object.assign(svgClone.style, {
-        width: `${fitW}px`,
-        height: `${fitH}px`,
-        filter: 'drop-shadow(0 4px 24px rgba(0, 0, 0, 0.3))',
-        borderRadius: '14px',
-        background: PALETTES[currentTheme].page,
-        padding: '1.5rem',
-        boxSizing: 'content-box',
-      });
-
-      svgContainer.appendChild(svgClone);
-      canvas.appendChild(svgContainer);
-      overlay.append(header, canvas);
+      header.append(titleEl, closeBtn);
+      overlay.append(header, fsCanvas);
       document.body.appendChild(overlay);
       document.body.style.overflow = 'hidden';
 
-      // Animate in
+      const mounted = await mountAsync(fsCanvas, code, { ...OPTIONS, autoDirection: false });
+
       requestAnimationFrame(() => {
         overlay.style.opacity = '1';
+        overlay.focus();
       });
-
-      // Fullscreen zoom/pan state
-      let fsScale = 1;
-      let fsPanX = 0;
-      let fsPanY = 0;
-      let fsDragging = false;
-      let fsStartX = 0;
-      let fsStartY = 0;
-
-      function applyFsTransform() {
-        svgContainer.style.transform = `translate(${fsPanX}px, ${fsPanY}px) scale(${fsScale})`;
-        zoomLevel.textContent = `${Math.round(fsScale * 100)}%`;
-      }
-
-      function fitToScreen() {
-        fsScale = 1;
-        fsPanX = 0;
-        fsPanY = 0;
-        applyFsTransform();
-      }
-
-      zoomInBtn.addEventListener('click', () => {
-        fsScale = Math.min(fsScale * 1.2, 5);
-        applyFsTransform();
-      });
-
-      zoomOutBtn.addEventListener('click', () => {
-        fsScale = Math.max(fsScale * 0.8, 0.2);
-        applyFsTransform();
-      });
-
-      resetBtn.addEventListener('click', fitToScreen);
-
-      canvas.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        fsScale *= e.deltaY > 0 ? 0.9 : 1.1;
-        fsScale = Math.max(0.2, Math.min(fsScale, 5));
-        applyFsTransform();
-      }, { passive: false });
-
-      canvas.addEventListener('mousedown', (e) => {
-        fsDragging = true;
-        fsStartX = e.clientX - fsPanX;
-        fsStartY = e.clientY - fsPanY;
-        canvas.style.cursor = 'grabbing';
-      });
-
-      const fsMove = (e: MouseEvent) => {
-        if (!fsDragging) return;
-        fsPanX = e.clientX - fsStartX;
-        fsPanY = e.clientY - fsStartY;
-        applyFsTransform();
-      };
-
-      const fsUp = () => {
-        fsDragging = false;
-        canvas.style.cursor = 'grab';
-      };
-
-      document.addEventListener('mousemove', fsMove);
-      document.addEventListener('mouseup', fsUp);
 
       function closeOverlay() {
         overlay.style.opacity = '0';
         const cleanup = () => {
-          document.removeEventListener('mousemove', fsMove);
-          document.removeEventListener('mouseup', fsUp);
+          mounted.destroy();
           overlay.remove();
           document.body.style.overflow = '';
+          wrapper.querySelector<HTMLButtonElement>('.fullscreen-btn')?.focus();
         };
         if (reducedMotion) {
           cleanup();
@@ -878,59 +225,15 @@ const minimapPositionClass = positionClasses[minimapPosition];
       overlay.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeOverlay();
       });
-
-      canvas.addEventListener('dblclick', fitToScreen);
-
-      // Focus overlay for keyboard events
-      overlay.setAttribute('tabindex', '-1');
-      overlay.focus();
     }
 
-    // Event listener for fullscreen button
     wrapper.querySelector('.fullscreen-btn')?.addEventListener('click', handleFullscreen);
-
-    // Event listeners for minimap zoom controls
-    wrapper.querySelector('.minimap-zoom-in')?.addEventListener('click', () => handleZoom('in'));
-    wrapper.querySelector('.minimap-zoom-out')?.addEventListener('click', () => handleZoom('out'));
-    wrapper.querySelector('.minimap-reset')?.addEventListener('click', () => handleZoom('reset'));
-
-    // Event listeners for export buttons
     wrapper.querySelector('.export-png-btn')?.addEventListener('click', handleExportPNG);
     wrapper.querySelector('.export-svg-btn')?.addEventListener('click', handleExportSVG);
 
-    // Mouse interactions for main preview pan/zoom
-    previewDiv.addEventListener('wheel', handleWheel, { passive: false });
-    previewDiv.addEventListener('mousedown', handleMouseDown);
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
-    previewDiv.style.cursor = 'grab';
-
-    // Minimap interactions
-    minimapViewport.addEventListener('mousedown', handleMinimapViewportMouseDown);
-    document.addEventListener('mousemove', handleMinimapMouseMove);
-    document.addEventListener('mouseup', handleMinimapMouseUp);
-    minimapCanvas.addEventListener('click', handleMinimapClick);
-
-    // Watch for theme changes and re-render
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-          const newTheme = detectTheme();
-          if (newTheme !== currentTheme) {
-            currentTheme = newTheme;
-            renderMermaid(code);
-          }
-        }
-      });
+    mountAsync(canvas, code, OPTIONS).catch((err) => {
+      console.error('[Mermaid] Failed to load diagram type:', err);
     });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-
-    // Initial render
-    renderMermaid(code);
   }
 
   // Initialize all diagrams on page load
@@ -958,6 +261,44 @@ const minimapPositionClass = positionClasses[minimapPosition];
     border: 1px solid var(--rule);
     border-radius: 14px;
     background: var(--paper);
+
+    /* Workbench tokens (DESIGN.md) mapped onto Pele's theme variables */
+    --pele-bg: var(--paper);
+    --pele-fg: var(--ink);
+    --pele-fg-on-light: #0b0b0c;
+    --pele-fg-on-dark: #ededef;
+    --pele-muted: var(--ink-muted);
+    --pele-line: var(--ink-muted);
+    --pele-surface: var(--paper-well);
+    --pele-surface-alt: var(--paper);
+    --pele-border: var(--rule-strong);
+    --pele-accent: var(--accent-fill);
+    --pele-critical: var(--callout-caution);
+    --pele-error: var(--callout-caution);
+    --pele-font: var(--font-sans);
+    --pele-font-mono: var(--font-mono);
+    --pele-radius: 8px;
+    --pele-zoom-top: 0.75rem;
+    --pele-zoom-right: 0.75rem;
+    --pele-zoom-bottom: auto;
+    --pele-zoom-left: auto;
+  }
+
+  /* Posts mark nodes with `class <ids> accent|ok|error`. Pele keeps the class
+     on the node group, so retint that node's shape and it follows the theme. */
+  .mermaid-wrapper .pele-node.accent > :not(text, foreignObject) {
+    fill: color-mix(in srgb, var(--accent-fill) 18%, var(--paper));
+    stroke: var(--accent-fill);
+  }
+
+  .mermaid-wrapper .pele-node.ok > :not(text, foreignObject) {
+    fill: color-mix(in srgb, var(--callout-tip) 14%, var(--paper));
+    stroke: var(--callout-tip);
+  }
+
+  .mermaid-wrapper .pele-node.error > :not(text, foreignObject) {
+    fill: color-mix(in srgb, var(--callout-caution) 9%, var(--paper));
+    stroke: var(--callout-caution);
   }
 
   .mermaid-bar {
@@ -1003,152 +344,51 @@ const minimapPositionClass = positionClasses[minimapPosition];
     color: var(--ink);
   }
 
-  .mermaid-btn:focus-visible,
-  .minimap-controls button:focus-visible {
+  .mermaid-btn:focus-visible {
     outline: 2px solid var(--accent-fill);
     outline-offset: 1px;
   }
 
-  .mermaid-error {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--rule);
-    background: color-mix(in srgb, var(--callout-caution) 9%, var(--paper));
-    color: var(--callout-caution);
+  .mermaid-canvas {
+    display: block;
+    position: relative;
+    min-height: 200px;
+    padding: 1rem 0;
+    font-family: var(--font-sans);
   }
 
-  .mermaid-error-heading {
-    font-size: 13px;
-    font-weight: 600;
+  .mermaid-canvas svg.pele {
+    display: block;
+    margin-inline: auto;
   }
 
-  .mermaid-error pre {
-    margin-top: 0.25rem;
-    max-height: 10rem;
-    overflow: auto;
-    font-size: 12px;
-  }
-
-  .preview-container {
-    cursor: grab;
-    background: var(--paper);
-  }
-
-  .preview-container:active {
-    cursor: grabbing;
-  }
-
-  .svg-wrap {
+  /* Fullscreen overlay */
+  .mermaid-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.1s ease-out;
+    flex-direction: column;
+    border: 0;
+    border-radius: 0;
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
   }
 
-  .zoom-icon {
-    font-size: 14px;
-    line-height: 1;
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    text-align: center;
+  .mermaid-overlay .mermaid-canvas {
+    flex: 1;
+    min-height: 0;
+    padding: 1.5rem;
+    overflow: hidden;
   }
 
-  /* Minimap */
-  .minimap-container {
-    pointer-events: auto;
-    z-index: 10;
-    border: 1px solid var(--rule-strong);
-    border-radius: 8px;
-    background: color-mix(in srgb, var(--paper) 92%, transparent);
-    backdrop-filter: blur(4px);
-    transition: opacity 0.2s ease;
-  }
-
-  .minimap-container:hover {
-    opacity: 1;
-  }
-
-  .minimap-canvas {
-    background: var(--paper-well);
-  }
-
-  .minimap-viewport {
-    z-index: 11;
-    border: 1.5px solid var(--accent-fill);
-    background: color-mix(in srgb, var(--accent-fill) 8%, transparent);
-  }
-
-  .minimap-controls {
-    z-index: 12;
-  }
-
-  .minimap-controls button {
-    width: 18px;
-    height: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    font-size: 11px;
-    border: 1px solid var(--rule-strong);
-    border-radius: 5px;
-    background: var(--paper);
-    color: var(--ink-muted);
-    transition: background-color 0.15s ease, color 0.15s ease;
-  }
-
-  .minimap-controls button:hover {
-    background: var(--paper-deep);
-    color: var(--ink);
+  /* Open tall diagrams fitted to the viewport; Pele's zoom takes it from there */
+  .mermaid-overlay svg.pele {
+    max-height: 100%;
   }
 
   /* Hide the JSON script tag */
   .diagram-code {
     display: none;
-  }
-
-  /* Keep prose typography from leaking into Mermaid's SVG text */
-  .mermaid-wrapper svg {
-    font-family: var(--font-sans) !important;
-    font-size: 14px !important;
-  }
-
-  .mermaid-wrapper svg text,
-  .mermaid-wrapper svg tspan {
-    line-height: 1 !important;
-    letter-spacing: 0 !important;
-    word-spacing: 0 !important;
-    font-style: normal !important;
-  }
-
-  .mermaid-wrapper svg * {
-    transition: none !important;
-    line-height: 1 !important;
-    letter-spacing: 0 !important;
-    word-spacing: 0 !important;
-  }
-
-  /* HTML labels live in foreignObject */
-  .mermaid-wrapper svg foreignObject {
-    overflow: visible !important;
-    font-size: 14px !important;
-    line-height: 1.25 !important;
-  }
-
-  .mermaid-wrapper svg foreignObject *,
-  .mermaid-wrapper svg foreignObject div,
-  .mermaid-wrapper svg foreignObject p,
-  .mermaid-wrapper svg foreignObject span {
-    font-family: var(--font-sans) !important;
-    font-size: 14px !important;
-    line-height: 1.25 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: visible !important;
-    letter-spacing: 0 !important;
-    word-spacing: 0 !important;
-    font-style: normal !important;
-    text-align: center !important;
-    display: block !important;
   }
 </style>
