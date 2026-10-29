@@ -22,7 +22,7 @@ onlyBuiltDependencies:
   - workerd
 catalog:
   # Single openai major for us, @langchain/openai, langsmith and exa-js (via override below)
-  openai: ^7.43.0
+  openai: ^7.45.1
 overrides:
   exa-js>openai: 'catalog:'
   '@anthropic-ai/sdk@>=0.79.0 <0.91.1': '>=0.91.1'
@@ -65,3 +65,8 @@ overrides:
   zod@<4.6.6: ^4.6.6
 patchedDependencies:
   gray-matter@4.0.3: patches/gray-matter@4.0.3.patch
+peerDependencyRules:
+  allowedVersions:
+    # astro-seo-schema only imports schema-dts types; our src/utils/schema.ts
+    # needs v2, and the latest release (7.0.1) still asks for ^1.1.0
+    astro-seo-schema>schema-dts: '2'
