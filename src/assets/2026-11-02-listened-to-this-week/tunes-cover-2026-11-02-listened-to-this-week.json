@@ -3,72 +3,91 @@
   "date": "2026-11-02",
   "type": "cover",
   "lane": null,
-  "lighting": "bright overcast skylight",
-  "shootDirection": null,
-  "colourTreatment": null,
-  "concept": "Museum atrium with zeppelin and portraits",
-  "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography in a real civic atrium, turning the graphic sleeves into large-scale installed objects and keeping each referenced portrait intact within a bright, plausible public space.",
-  "scene": "A spacious modern museum atrium viewed from a slightly elevated frontal position, with a high glass roof, pale stone floor, broad stairs, and a central open hall large enough to suspend an airship sculpture overhead.",
-  "elements": [
+  "lighting": "golden hour hangar daylight",
+  "composition": "high vantage over open hangar",
+  "cast": [
+    1,
+    6
+  ],
+  "closeUps": [
     {
       "source": 1,
-      "element": "the man becomes a life-size blue-toned full-body cutout standing front-facing at the center of the hall, backed by a physical purple radial installation mounted against a flat yellow wall panel, with the small helmet-like emblem above"
-    },
-    {
-      "source": 2,
-      "element": "a large zeppelin is suspended diagonally across the upper atrium, while the stair-and-facade geometry informs a symmetrical art deco stage-like plinth at the far end with circular speaker-like details and upward beam-shaped architectural inlays"
-    },
-    {
-      "source": 3,
-      "element": "the young woman from reference image 3 sits on a patch of indoor grass at one side of the atrium exactly as on the cover, holding pale flowers with her wicker basket beside her"
-    },
-    {
-      "source": 4,
-      "element": "the red grinning sun face appears as a stamped graphic on a freestanding off-white archive panel with clipped papers and form markings near the stairs"
-    },
-    {
-      "source": 5,
-      "element": "the five performers from reference image 5 appear once together inside a circular recessed performance platform designed like the center label of a giant floor-mounted vinyl disc, with subtle groove rings radiating around them and a purple band crossing the lower foreground floor"
+      "reference": 9
     },
     {
       "source": 6,
-      "element": "the two men from reference image 6 stand side by side at the right against a stark white freestanding wall element with a long horizontal blue bar near its base, preserving their studio-pose simplicity"
+      "reference": 10
+    }
+  ],
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Airship hangar soundcheck at sunset",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography of one plausible industrial hangar scene, using a real airship, stage equipment, and a few cast portraits integrated as a single photographed moment.",
+  "scene": "A bright, open airship hangar near its doors during golden hour, with a moored zeppelin dominating the upper space and a small soundcheck setup on the concrete floor below.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "the man appears standing full-length beneath the airship, with his afro, collared shirt, and flared trousers preserved; a real freestanding arrangement of purple rounded inflatable tubes and circular forms behind him echoes the psychedelic burst"
+    },
+    {
+      "source": 2,
+      "element": "a large diagonal zeppelin inside the hangar is the main architectural object, with art deco staging cues in the scaffolded speaker setup and red geometric light accents"
+    },
+    {
+      "source": 4,
+      "element": "a distressed red sun-shaped rigging marker made as a physical metal object with pointed rays and crossed tool forms sits among equipment cases"
+    },
+    {
+      "source": 5,
+      "element": "a compact live-performance setup with microphones, keyboard, cables, and warm amber practical stage bulbs suggests a band preparing, without showing extra identifiable people"
+    },
+    {
+      "source": 6,
+      "element": "the two men from reference image 6 stand together at the edge of the setup, preserving their hat, sunglasses, plaid jacket, and suit-and-tie portrait styling"
     },
     {
       "source": 7,
-      "element": "the red and purple geometric pattern becomes banners, tiled wall sections, and a vertical stack of torn white wayfinding panels with bold black marks along one column"
+      "element": "red, purple, yellow, black, and white enter as stacked road cases, cable wraps, and modular acoustic blocks with repeating geometric proportions"
     },
     {
       "source": 8,
-      "element": "the large orange crescent-circle symbol is installed as a sculptural ring on a dark red textured wall niche, with a thin glowing white horizontal light line across it"
+      "element": "a suspended orange split-crescent industrial ring object hangs in the hangar space, with deep red-black tones in fabric drapes and equipment finishes"
     }
   ],
   "palette": [
-    "white",
-    "pale stone",
+    "cream",
     "yellow",
     "purple",
     "red",
-    "orange"
+    "orange",
+    "blue"
   ],
-  "mood": "crisp, surprising, celebratory",
+  "mood": "crisp, expectant, spacious",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Sweet-Inspiration-Guilty-Reggae-Pleasures.jpg",
       "album": "Sweet Inspiration Guilty Reggae Pleasures",
       "artist": "",
-      "description": "A graphic cover with a full-body blue-toned cutout photograph of a man standing front-facing in the center, with an afro, open-collar shirt, belt, and flared trousers. Behind him is a symmetrical purple psychedelic burst of rounded tendrils and circles on a flat yellow background. A small circular helmet-like emblem appears near the top.",
-      "signatureMotif": "purple psychedelic burst behind a blue-toned standing man",
-      "medium": "mixed media graphic design with cutout photography and flat illustration",
-      "people": "one man standing full-length with an afro and flared trousers",
+      "description": "A bright yellow cover with a blue-toned cutout photo of one man standing full-length in the center, wearing a collared shirt and flared trousers. Behind him is a symmetrical purple psychedelic burst made of rounded tendrils and circles radiating outward. Large curved block lettering frames the top, and smaller block lettering sits at the bottom. A small circular helmet-like emblem appears near the top.",
+      "signatureMotif": "purple psychedelic sunburst behind a standing blue-toned man",
+      "medium": "mixed media collage with cutout photograph and graphic design",
+      "people": "one man standing full-length with an afro hairstyle",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.398,
+        0.205,
+        0.617,
+        0.542
+      ],
+      "faceHeight": 0.104,
       "palette": [
         "yellow",
         "purple",
         "blue",
-        "black",
-        "white"
+        "white",
+        "black"
       ]
     },
     {
@@ -76,10 +95,13 @@
       "filename": "Mothership.jpg",
       "album": "Mothership",
       "artist": "",
-      "description": "A stylized illustrated cover showing a large zeppelin airship sweeping diagonally across the upper half of the image. Below it sits a symmetrical art deco building or stage facade with speaker-like circles, steps, and a central emblem, lit by broad triangular beams rising upward. The composition is framed by a black border with angular lightning-like accents.",
+      "description": "A stylized graphic illustration in black, red, and cream. A large zeppelin airship stretches diagonally across the upper half of the image. Below it is an art deco building or stage facade with speaker-like circles, columns, stairs, and a central emblem, all framed by bold geometric borders and lightning-bolt shapes. Strong triangular red spotlight shapes fill the background.",
       "signatureMotif": "large diagonal zeppelin airship",
-      "medium": "graphic illustration/poster-style artwork",
+      "medium": "graphic illustration",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "black",
         "red",
@@ -92,16 +114,24 @@
       "filename": "Betty.jpg",
       "album": "Betty",
       "artist": "",
-      "description": "A softly lit color photograph of a blonde young woman seated on grass outdoors, smiling slightly while holding pale flowers. She wears a white blouse and has her hair tied back in a ponytail. A wicker basket filled with flowers rests beside her, and the whole image has a warm, slightly faded look.",
-      "signatureMotif": "young woman with a wicker basket of flowers",
+      "description": "A soft, warm-tinted outdoor photograph of a young blonde woman seated on grass beside a wicker basket filled with pale flowers. She wears a white blouse and a textured skirt or blanket across her lap, and holds a flower stem while smiling slightly. The grassy background fills the frame with a sunlit, faded look.",
+      "signatureMotif": "young woman with a wicker basket of flowers on grass",
       "medium": "color photograph",
       "people": "one young woman seated on grass holding flowers",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.376,
+        0.117,
+        0.786,
+        0.559
+      ],
+      "faceHeight": 0.157,
       "palette": [
         "green",
-        "white",
         "cream",
-        "blonde",
-        "brown"
+        "white",
+        "beige",
+        "gold"
       ]
     },
     {
@@ -109,16 +139,19 @@
       "filename": "Levelling-The-Land-25th-Anniversary-Edition.jpg",
       "album": "Levelling The Land 25th Anniversary Edition",
       "artist": "",
-      "description": "A collage-like cover resembling a worn studio file or record sleeve, with an off-white paper sheet mounted on a gray textured background. Over the sheet is a large red stamped cartoonish sun face with pointed rays, slanted eyes, and a wide triangular-toothed grin, crossed by bone-like shapes. Handwritten notes and printed form elements are scattered across the page, with part of a dark tab or spine visible at the right edge.",
-      "signatureMotif": "red grinning sun face with pointed rays",
-      "medium": "collage/printed paper assemblage with stamped graphics",
+      "description": "A worn, collage-like cover resembling a paper file or studio master sheet mounted on a gray backing. Over the off-white central sheet is a large distressed red graphic of a grinning sun face with pointed rays and crossed tools beneath it. Handwritten notes, stamps, scuffs, and partial labels overlap the surface, giving it an archival, weathered appearance.",
+      "signatureMotif": "distressed red grinning sun with crossed tools",
+      "medium": "photographed paper collage / scanned document design",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
-        "off-white",
         "gray",
+        "off-white",
         "red",
         "black",
-        "blue"
+        "beige"
       ]
     },
     {
@@ -126,15 +159,23 @@
       "filename": "The-Best-of-Sly-and-The-Family-Stone.jpg",
       "album": "The Best of Sly and The Family Stone",
       "artist": "",
-      "description": "A design based on a black vinyl record surface with circular grooves filling most of the cover. In the center is a round inset color concert photo showing a band performing on stage with microphones, a keyboard, hats, and warm stage lighting. A wide purple horizontal band crosses the lower portion.",
-      "signatureMotif": "circular live-performance photo set into a vinyl record design",
-      "medium": "graphic design with embedded live concert photograph",
-      "people": "five performers on stage at microphones and instruments",
+      "description": "A black background designed like a vinyl record with circular grooves radiating around a central round photo. Inside the circular photo is a live stage performance showing several musicians and singers at microphones, with a keyboard in front and warm amber stage lighting. A wide purple band spans the lower portion of the cover.",
+      "signatureMotif": "circular live-performance photo set inside a vinyl record design",
+      "medium": "graphic design with embedded concert photograph",
+      "people": "five performers on stage at microphones, including one at a keyboard",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.271,
+        0.312,
+        0.739,
+        0.618
+      ],
+      "faceHeight": 0.09,
       "palette": [
         "black",
         "purple",
         "white",
-        "orange",
+        "amber",
         "brown"
       ]
     },
@@ -143,14 +184,22 @@
       "filename": "Discography-The-Complete-Singles-Collection-1985-1991.jpg",
       "album": "Discography The Complete Singles Collection 1985 1991",
       "artist": "",
-      "description": "A minimalist cover with a mostly white background and a long horizontal blue bar near the bottom. At the right side stand two men in a black-and-white studio portrait: one wears a light hat, dark sunglasses, and a patterned top; the other wears a dark suit and tie. The composition leaves a large amount of empty white space.",
-      "signatureMotif": "two men posed against a stark white background",
-      "medium": "minimalist graphic layout with black-and-white studio photograph",
-      "people": "two men standing side by side, one in a hat and sunglasses and one in a suit",
+      "description": "A minimalist black-and-white portrait layout on a mostly white background. Two men appear in the lower right area from chest up: one wears a light hat, dark sunglasses, and a plaid jacket; the other wears a dark suit and tie. A horizontal blue bar runs across the lower portion beneath them, emphasizing the sparse composition.",
+      "signatureMotif": "two men in a sparse black-and-white portrait above a blue horizontal bar",
+      "medium": "studio photograph with minimalist graphic layout",
+      "people": "two men posed side by side, one in a hat and sunglasses and one in a suit",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.545,
+        0.314,
+        0.865,
+        0.637
+      ],
+      "faceHeight": 0.124,
       "palette": [
         "white",
-        "blue",
         "black",
+        "blue",
         "gray"
       ]
     },
@@ -159,16 +208,19 @@
       "filename": "History-Never-Repeats-The-Best-Of-Split-Enz.jpg",
       "album": "History Never Repeats The Best Of Split Enz",
       "artist": "",
-      "description": "An abstract graphic cover filled with a repeating geometric pattern of red and purple blocks, ovals, and bars. On the left is a denser black-and-red patterned area, while along the right side a vertical stack of white torn-paper shapes carries bold black characters. Bright yellow rectangular banners cut across the composition.",
-      "signatureMotif": "red and purple geometric pattern with a vertical stack of torn white paper shapes",
-      "medium": "abstract graphic design",
+      "description": "A flat graphic cover filled with a repeating geometric pattern of red and purple blocks, ovals, and note-like shapes. Along the right side, individual white paper-like rectangles are stacked vertically with bold black letters on them. Bright yellow horizontal banners cut across the top and lower left portions, creating a poster-like layout.",
+      "signatureMotif": "red and purple repeating geometric pattern with vertical white cutout rectangles",
+      "medium": "graphic design",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "red",
         "purple",
+        "yellow",
         "black",
-        "white",
-        "yellow"
+        "white"
       ]
     },
     {
@@ -176,10 +228,13 @@
       "filename": "Mer-de-noms.jpg",
       "album": "Mer de noms",
       "artist": "",
-      "description": "A dark, textured cover with a black and deep red mottled background. Centered is a large orange crescent-like circular symbol made of two opposing curved shapes. Behind and around it are faint decorative vertical calligraphic forms, while a glowing horizontal white line and serif wordmark run across the middle.",
-      "signatureMotif": "large orange crescent-circle symbol",
+      "description": "A dark, textured cover with a black and deep red mottled background. In the center is a large orange crescent-like circular symbol split into two opposing curved shapes. A glowing white horizontal wordmark crosses the middle, with ornate vertical red script-like forms behind it. A small advisory label sits in the lower right corner.",
+      "signatureMotif": "large orange split crescent circle symbol",
       "medium": "digital graphic design",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "black",
         "dark red",
@@ -189,9 +244,9 @@
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2-5",
-  "model": "openai/gpt-image-2.5/sunburst/edit",
-  "prompt": "A spacious modern museum atrium seen from a slightly elevated frontal viewpoint, under a high glass roof with pale stone floors, broad stairs, and a central open hall; a large zeppelin from reference image 2 is suspended diagonally across the upper space as the main overhead form. In the center of the hall, the man from reference image 1 stands as a life-size blue-toned full-body cutout, front-facing and intact in pose, expression, hair, clothing, and framing, backed by a physical purple psychedelic burst mounted on a flat yellow wall panel with the small circular emblem above him. At one side, the young woman from reference image 3 sits on a neat patch of indoor grass exactly in her seated pose, holding pale flowers with her wicker basket beside her. At the right, the two men from reference image 6 stand side by side once, preserving their original studio portrait pose against a stark white freestanding wall with a long horizontal blue bar near the bottom. In the lower foreground, a giant floor-mounted vinyl-disc installation with subtle grooves contains a circular recessed platform where the five performers from reference image 5 appear once together performing under warm natural-looking interior light, while a wide purple band crosses the floor in front. At the far end, a symmetrical art deco stage-like plinth inspired by reference image 2 incorporates circular speaker-like details, steps, a central emblem, and architectural beam motifs. Near the stairs, an off-white archive panel carries the red grinning sun face from reference image 4 with clipped paper forms and file-like markings. Along one column and adjacent wall sections, the geometric language of reference image 7 appears as red and purple patterned banners and tiled surfaces, with a vertical stack of torn white paper shapes carrying bold black marks. In a dark red textured wall niche, the orange crescent-circle symbol from reference image 8 appears as a sculptural ring crossed by a thin glowing white horizontal light line. Photographic realism, clean daylight location photography, crisp detail, no collage look, no fog, no reflections dominating the floor, all faces sharp and recognizable. Balanced but clear hierarchy with the zeppelin and central standing man leading, supporting portraits and installations arranged around them. Bright overcast skylight from above, even exposure, saturated clean colors, airy museum atmosphere, graphic but physically plausible. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one man standing full-length with an afro and flared trousers; reference image 3 shows one young woman seated on grass holding flowers; reference image 5 shows five performers on stage at microphones and instruments; reference image 6 shows two men standing side by side, one in a hat and sunglasses and one in a suit. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-6",
+  "model": "openai/gpt-image-2.6/sunburst/edit",
+  "prompt": "A bright open airship hangar photographed from a high vantage, looking down across the concrete floor toward the open doors at golden hour; a large real zeppelin stretches diagonally through the upper half of the frame, with a compact soundcheck area below it. The primary subjects are the man from reference image 1 standing full-length beneath the airship, preserving his afro, collared shirt, flared trousers, upright pose and direct presence, and the two men from reference image 6 standing together nearby, preserving their sparse portrait styling exactly: one in a light hat, dark sunglasses, and plaid jacket, the other in a dark suit and tie. Behind the man from reference image 1 is a physically plausible sculptural arrangement of rounded purple inflatable tubes and circular forms radiating outward like a burst, built as freestanding stage material rather than a graphic image. The zeppelin from reference image 2 is real and dominant overhead; below it, art deco hints appear in the speaker stacks, stairs, and geometric staging. Include a compact keyboard, microphones, cables, and warm practical bulbs from reference image 5, but no additional identifiable performers. Add a distressed red sun-shaped metal rigging marker with pointed rays and crossed tool forms among flight cases from reference image 4. Fold reference image 7 into the repeating colors and proportions of stacked road cases, acoustic blocks, and cable wraps in red, purple, yellow, black, and white. Include reference image 8 as a suspended orange split-crescent industrial ring object hanging in space, with deep red-black fabric and equipment finishes nearby. Photographic realism, clean crisp daylight location photography, no collage, no poster, no mural, no painted symbol on surfaces. Compose the frame asymmetrically with the zeppelin occupying the upper diagonal, the cast grouped below and slightly off center, and plenty of open floor and air around them. Use golden hour daylight pouring through the hangar opening with clear detail, saturated color, crisp edges, and soft long shadows. Palette of cream, yellow, purple, red, orange, blue, and black; spacious, expectant, and vivid. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one man standing full-length with an afro hairstyle, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9; reference image 6 shows two men posed side by side, one in a hat and sunglasses and one in a suit, and reference image 10 is an enlarged close-up of those same people - take their faces from reference image 10. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 3, 5 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Sweet-Inspiration-Guilty-Reggae-Pleasures.jpg",
     "Mothership.jpg",

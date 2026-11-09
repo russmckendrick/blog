@@ -3,62 +3,67 @@
   "date": "2026-10-19",
   "type": "cover",
   "lane": null,
-  "lighting": "sunlit indoor afternoon",
-  "shootDirection": null,
-  "colourTreatment": null,
-  "concept": "Gymnasium sunburst tableau",
-  "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography in a real old gymnasium, translating the graphic and surreal sleeve motifs into painted court markings, props, and staged portraits while keeping the people from the references intact.",
-  "scene": "A wide 16:9 view inside a vintage school gymnasium seen from slightly elevated bleachers, with a polished maple court, tall sunlit windows along one side, and a basketball hoop dominating the far half of the frame; the floor and walls are temporarily dressed with bold circular court graphics and surreal set pieces derived from the covers.",
-  "elements": [
-    {
-      "source": 1,
-      "element": "The court is overpainted with a huge green circle crossed by a sweeping white arc at center court, with a small white starburst high on the wall, a yellow oval banner near the upper left, and a jagged yellow floor decal near the lower right, all echoing the graphic geometry and palette."
-    },
+  "lighting": "clear morning sidelight",
+  "composition": "low angle, off-centre figure",
+  "cast": [
+    2
+  ],
+  "closeUps": [
     {
       "source": 2,
-      "element": "The man from reference image 2 sits cross-legged barefoot on the gym floor near the foreground, facing forward and holding his electric guitar across his lap with the same calm pose, long hair, brown jacket, and vivid red fabric, accompanied by a vase of yellow flowers and a few framed paintings leaned against the wall beside him."
+      "reference": 6
+    }
+  ],
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Morning court beneath a carnival sun",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography of one real outdoor basketball court, using the graphic sleeves as physical court objects, paint, and sky details while carrying only one portrait source into the scene.",
+  "scene": "An empty neighborhood basketball court beside a plain stucco rec-center wall in crisp early morning light, shot from a low angle near the asphalt so the hoop and sky dominate and the setting feels like one plausible photographed moment.",
+  "elements": [
+    {
+      "source": 2,
+      "element": "the man from reference image 2 sits cross-legged on the court beneath the hoop, holding his electric guitar across his lap, with his bare feet, long hair, calm pose, brown jacket, and red trousers preserved exactly"
+    },
+    {
+      "source": 1,
+      "element": "its red, orange, yellow, green, and white palette becomes the court environment: a vivid red painted key area, a curved white boundary arc sweeping through the foreground, a small green oval backboard pad, and a yellow burst-shaped scrap of paper or cloth caught near the fence"
     },
     {
       "source": 3,
-      "element": "A large sculptural scoreboard centerpiece above the far baseline takes the form of a circuit-detailed robotic skull with antenna-like side rods, backed by concentric rings and subtle red-dot patterning integrated into wall padding."
+      "element": "a real black-and-grey portable speaker or equipment case beside the seated man bears circular vent geometry and circuit-like panel detailing, while the far fence carries a grid of small red reflector dots against purple-painted metal posts"
     },
     {
       "source": 4,
-      "element": "At the main hoop, a luminous neon-green skeleton prop rises diagonally from lower left toward the rim with one arm through the white net, staged like an art installation suspended near the basket."
+      "element": "a neon green skeletal training mannequin or Halloween prop is snagged in the basketball net, one arm reaching upward through the white net as if frozen mid-dunk"
     },
     {
       "source": 5,
-      "element": "The three boys from reference image 5 stand shoulder to shoulder near midcourt in their matching dark blue uniforms and caps, facing the camera with the center boy’s slight lean and smile preserved, lit cleanly against the pale gym wall so they remain immediately recognizable."
-    },
-    {
-      "source": 6,
-      "element": "The two men from reference image 6 stand together beneath the far windows in their ornate patterned jackets, each holding a vertical staff-like object, while a large golden sun-face banner hangs above them and selected surrounding motifs appear as real hanging props and scattered objects: flowers, birds, leaves, a heart emblem, spheres, and rocky forms."
-    },
-    {
-      "source": 7,
-      "element": "The very large crowd from reference image 7 fills the bleachers and baseline edges like spectators in swimwear, packed tightly and waving toward the camera, creating a striking beach-meets-gym contrast without overwhelming the main portraits."
+      "element": "a large carnival-style golden sun face decoration is mounted high above the rec-center roofline in the background, and a black jester-style umbrella lies folded on the asphalt near the seated man, adding a surreal note without introducing more people"
     }
   ],
   "palette": [
-    "maple wood",
     "red",
+    "orange",
+    "yellow",
     "green",
-    "gold",
-    "sky blue",
-    "neon green"
+    "purple",
+    "black"
   ],
-  "mood": "bright, surreal, celebratory",
+  "mood": "playful, strange, bright",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Spartacus.jpg",
       "album": "Spartacus",
       "artist": "",
-      "description": "A bold graphic design with a bright red background, a large green circular shape cut by a sweeping white band, and a small white starburst near the top. A yellow oval sits in the upper left and a jagged yellow burst appears at lower right. The composition is dominated by oversized slanted orange lettering with blue shadowing and a yellow strip along the bottom edge. No figures or scenery are shown.",
-      "signatureMotif": "large green circle crossed by a white swooping band",
-      "medium": "graphic design illustration",
+      "description": "A bold graphic cover with a bright red background, a large green oval-like shape in the upper right, and a sweeping white curved band through the middle. There is a small white starburst near the top center-right and a yellow jagged burst shape at lower right. The composition is dominated by oversized slanted orange lettering with blue shadowing, plus a yellow oval badge at upper left and a yellow horizontal band along the bottom. The design is flat, clean, and poster-like.",
+      "signatureMotif": "oversized slanted orange wordmark-style lettering with blue shadow",
+      "medium": "graphic design",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "red",
         "green",
@@ -72,16 +77,24 @@
       "filename": "Clowns-and-Jugglers-The-Songs-of-Syd-Barrett.jpg",
       "album": "Clowns and Jugglers The Songs of Syd Barrett",
       "artist": "",
-      "description": "A painted portrait of one long-haired man sitting cross-legged barefoot on a striped floor, holding an electric guitar across his lap and facing forward. He wears a brown jacket and vivid red trousers or scarf-like fabric. The room is warmly lit from a window on the left, with a vase of yellow flowers in the foreground and several framed paintings leaning against the wall behind him. The scene has a soft, detailed oil-painting look.",
-      "signatureMotif": "seated long-haired man holding an electric guitar",
-      "medium": "painting",
-      "people": "one man seated cross-legged with a guitar",
+      "description": "An illustrated portrait of one long-haired man seated cross-legged on a striped painted wooden floor, holding an electric guitar across his lap. He wears a brown jacket and red trousers or a red velvet-like outfit, with bare feet visible. Sunlight streams in from a window on the left. Around him are framed paintings leaning against the wall, including floral and abstract works, and a vase of yellow flowers on the floor. The room has warm golden light and a painterly, detailed style.",
+      "signatureMotif": "man seated cross-legged with an electric guitar",
+      "medium": "painting/illustration",
+      "people": "one man seated cross-legged holding a guitar",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.29,
+        0.2,
+        0.72,
+        0.62
+      ],
+      "faceHeight": 0.16,
       "palette": [
         "brown",
         "red",
         "gold",
-        "blue",
-        "yellow"
+        "yellow",
+        "blue"
       ]
     },
     {
@@ -89,14 +102,17 @@
       "filename": "Cure-for-Sanity.jpg",
       "album": "Cure for Sanity",
       "artist": "",
-      "description": "A stylized mechanical skull or robot head fills the center, drawn with circuit-like details and antenna-like rods on both sides. Concentric rings radiate behind it over a purple background patterned with red dots. A black band runs across the top, and a large blocky orange form sits beneath the head. The image is flat and graphic, with a techno-industrial feel.",
-      "signatureMotif": "circuit-patterned robotic skull head",
-      "medium": "graphic illustration",
+      "description": "A graphic cover centered on a stylized robotic or mechanical skull-like head rendered in black and grey circuit patterns. The head has antenna-like rods on both sides and concentric circular rings radiating behind it. The background is purple with evenly spaced red dots. A thick black band runs across the top, and a large blocky orange shape sits below the head. Small icon-like marks appear near the bottom corners. The overall look is retro-futuristic and flat.",
+      "signatureMotif": "circuit-pattern robotic skull head",
+      "medium": "graphic design",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "purple",
         "black",
-        "gray",
+        "grey",
         "red",
         "orange"
       ]
@@ -106,10 +122,13 @@
       "filename": "Cookie-Happened.jpg",
       "album": "Cookie Happened",
       "artist": "",
-      "description": "A stark black cover featuring a neon-green skeleton rising diagonally from the lower left toward a basketball hoop. One bony arm reaches up through the white net as if dunking or placing a ball into the rim. The hoop and backboard are also rendered in green, with the rest of the space mostly empty and dark except for tiny speckled marks. The image has a high-contrast poster-like style.",
-      "signatureMotif": "glowing green skeleton reaching into a basketball hoop",
-      "medium": "graphic illustration",
+      "description": "A stark black cover featuring a neon green skeleton rising diagonally from the lower left toward a basketball hoop near the upper center-left. One bony arm reaches up through the white net as if dunking or placing a ball into the hoop. The hoop support is also rendered in bright green. The rest of the image is mostly empty black space with tiny speckled dots, giving a night-sky or grainy poster effect.",
+      "signatureMotif": "neon green skeleton reaching into a basketball hoop",
+      "medium": "graphic design/illustration",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "black",
         "neon green",
@@ -118,65 +137,39 @@
     },
     {
       "source": 5,
-      "filename": "Welcome-to-Wherever-You-Are.jpg",
-      "album": "Welcome to Wherever You Are",
-      "artist": "",
-      "description": "A studio photograph of three boys standing shoulder to shoulder against a pale backdrop, all wearing matching dark blue uniforms with red trim, ties, belts, and peaked caps. The boy in the center leans slightly and smiles with eyes partly closed, while the other two face forward. Strong lighting creates dark shadows behind them. A horizontal white strip crosses the middle of the image.",
-      "signatureMotif": "three boys in matching formal uniforms and caps",
-      "medium": "photograph",
-      "people": "three boys standing in matching uniforms",
-      "palette": [
-        "blue",
-        "red",
-        "white",
-        "gold",
-        "black"
-      ]
-    },
-    {
-      "source": 6,
       "filename": "The-Seeds-of-Love.jpg",
       "album": "The Seeds of Love",
       "artist": "",
-      "description": "A dense surreal collage with two men standing near the center in ornate patterned jackets, each holding a vertical staff-like object. Above them looms a large golden sun face, while around them float symbolic objects including a heart, flowers, birds, leaves, spheres, a jester-like black shape, rocky forms, and abstract swirling marks. The background is a dreamy blue sky-like field layered with painterly textures and assembled objects. The composition is crowded and fantastical.",
-      "signatureMotif": "large golden sun face above two men amid surreal objects",
-      "medium": "surreal mixed-media collage",
-      "people": "two men standing amid symbolic props",
+      "description": "A surreal, densely layered collage-like scene with two men standing near the center amid symbolic objects and painted elements. One holds a black jester-style umbrella, and both wear ornate patterned jackets. Behind them is a large golden sun face above pale rock formations. Around the scene are floating hearts, flowers including sunflowers, spheres, birds, abstract lines, a dragonfly-like insect, architectural miniatures, and celestial shapes against a swirling blue background. The composition is crowded, dreamlike, and highly decorative.",
+      "signatureMotif": "large golden sun face above two men in a surreal collage",
+      "medium": "photographic collage/mixed-media illustration",
+      "people": "two men standing amid surreal objects, one holding a jester-style umbrella",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.33,
+        0.53,
+        0.61,
+        0.79
+      ],
+      "faceHeight": 0.08,
       "palette": [
         "blue",
         "gold",
-        "white",
-        "orange",
-        "green"
-      ]
-    },
-    {
-      "source": 7,
-      "filename": "Listen-Without-Prejudice-Vol-1.jpg",
-      "album": "Listen Without Prejudice Vol 1",
-      "artist": "",
-      "description": "A black-and-white photograph of a very large crowd packed tightly together on a beach or open public space. Hundreds of people in swimwear fill the frame from edge to edge, many waving, raising arms, or shading their eyes while looking toward the camera. The image is grainy and documentary in style, with no single central figure. A dark rectangular block overlays the upper left corner.",
-      "signatureMotif": "densely packed crowd of beachgoers waving toward the camera",
-      "medium": "black-and-white photograph",
-      "people": "a very large crowd of men, women, and children in swimwear",
-      "palette": [
+        "cream",
         "black",
-        "white",
-        "gray"
+        "white"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2-5",
-  "model": "openai/gpt-image-2.5/sunburst/edit",
-  "prompt": "A wide 16:9 interior view of a vintage school gymnasium from slightly elevated bleachers, sunlit afternoon light streaming through tall side windows onto a polished maple basketball court; the main hoop anchors the far half of the frame and the gym is transformed into a surreal but physically plausible editorial set. In the foreground, the man from reference image 2 sits cross-legged barefoot on the floor facing forward, holding his electric guitar across his lap with the same pose, expression, hair, brown jacket, and vivid red fabric, with a vase of yellow flowers and several framed paintings leaning against the wall nearby. Near midcourt, the three boys from reference image 5 stand shoulder to shoulder facing the camera in their matching dark blue uniforms and peaked caps, preserving the center boy’s slight lean and smile. Beneath the far windows, the two men from reference image 6 stand together in their ornate patterned jackets, each holding a vertical staff-like object, with a large golden sun face suspended above them and selected surreal objects around them as real props: flowers, birds, leaves, a heart emblem, spheres, rocky forms, and a jester-like dark cutout shape. At the basket, a glowing neon-green skeleton installation from reference image 4 rises diagonally toward the hoop with one arm through the white net. Build source 1 into the court and wall graphics: a huge green center-circle crossed by a sweeping white band, a small white starburst high on the wall, a yellow oval near the upper left, and a jagged yellow burst near the lower right, with touches of slanted orange-and-blue striping as painted wayfinding accents. Use source 3 as a large sculptural robotic skull scoreboard or wall installation above the far baseline, detailed with circuits and antenna-like rods, backed by concentric rings and subtle red-dot patterning. Fill the bleachers and baseline edges with the very large crowd from reference image 7 as tightly packed beachgoers in swimwear waving toward the camera like surreal spectators. Clean daylight location photography, crisp lens rendering, realistic materials, no collage look, no haze, no grain. Strong visual hierarchy with the seated guitarist in front, the uniformed boys at midcourt, and the hoop, skeleton, sun face, and robotic skull balancing the background. Bright warm sunlight through windows with clear shadows and high exposure so colors read vividly. Palette of maple wood, saturated red, green, gold, sky blue, neon green, white, and deep blue; mood bright, celebratory, strange, and playful. Reference map for people (the album images are attached in this numbered order): reference image 2 shows one man seated cross-legged with a guitar; reference image 5 shows three boys standing in matching uniforms; reference image 6 shows two men standing amid symbolic props; reference image 7 shows a very large crowd of men, women, and children in swimwear. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-6",
+  "model": "openai/gpt-image-2.6/sunburst/edit",
+  "prompt": "A real outdoor neighborhood basketball court beside a plain stucco recreation-center wall, photographed from a low angle near the asphalt with lots of open sky and the hoop rising high in frame; the primary subject is the man from reference image 2 seated cross-legged on the court beneath the hoop, holding his electric guitar across his lap, with his exact long hair, calm expression, bare feet, brown jacket, and red trousers preserved; the man from reference image 2 is lit by crisp clear morning sidelight and remains sharply recognizable, while above him a neon green skeletal mannequin from reference image 4 is caught in the white basketball net with one arm thrust upward through it; fold in reference image 1 as physical court design and objects only, not as any picture: a vivid red painted key, a sweeping white arc across the foreground asphalt, a small green oval backboard pad, and a yellow burst-shaped scrap near the fence; fold in reference image 3 as a black-and-grey portable speaker or equipment case with circuit-panel detailing and concentric vent circles beside the seated man, with small red reflector dots repeating along purple fence posts in the background; fold in reference image 5 as a large golden carnival sun-face decoration mounted above the roofline in the distance and a folded black jester-style umbrella on the ground near the man; daylight location photography, realistic materials and scale, clean crisp focus, no posters or murals, one cohesive photographed moment; off-centre composition with the seated guitarist in the lower right third and the hoop and skeleton above left, generous negative sky, strong but not harsh morning shadows; saturated red, orange, yellow, green, purple, black, and cream, playful surreal energy in bright fresh air Reference map for people (the album images are attached in this numbered order): reference image 2 shows one man seated cross-legged holding a guitar, and reference image 6 is an enlarged close-up of those same people - take their faces from reference image 6. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference image 5 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Spartacus.jpg",
     "Clowns-and-Jugglers-The-Songs-of-Syd-Barrett.jpg",
     "Cure-for-Sanity.jpg",
     "Cookie-Happened.jpg",
-    "Welcome-to-Wherever-You-Are.jpg",
-    "The-Seeds-of-Love.jpg",
-    "Listen-Without-Prejudice-Vol-1.jpg"
+    "The-Seeds-of-Love.jpg"
   ]
 }
