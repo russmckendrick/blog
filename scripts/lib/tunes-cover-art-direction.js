@@ -13,14 +13,14 @@ const GREENERY_CONSTRAINT = 'Add no incidental plants: no flowers, potted plants
 
 const HARD_CONSTRAINTS = [
   'Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels.',
-  'Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition.',
+  'Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, monitor, television, sign, cut-out, or floor graphic, or carving it as a wall-mounted relief; show no sleeve\'s faces, heads, or figures as a picture, display, sign, or silhouette anywhere; transform their non-text visual motifs into one original composition.',
   TEXT_CONSTRAINT,
   'Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly.',
   'When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish.',
   'Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person\'s face.',
   'Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture.',
   GREENERY_CONSTRAINT,
-  'Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve\'s own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person.',
+  'Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve\'s own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light.',
   'Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.'
 ]
 
@@ -107,6 +107,31 @@ export function isPassage(value) {
   return PASSAGE_PATTERN.test(String(value || ''))
 }
 
+// Refusing exact compositions left the camera height free, and the 27 Jul to 12 Oct 2026
+// backfill put nine of twelve covers at a "low angle" under different framings. Camera height
+// is its own family: when two of the last three covers share one, it is refused outright.
+const LOW_CAMERA_PATTERN = /\b(low[- ]angle|low[- ]vantage|ground[- ]level|knee[- ]height|worm'?s?[- ]eye|looking up)\b/i
+const HIGH_CAMERA_PATTERN = /\b(high[- ]angle|high[- ]vantage|elevated|overhead|top[- ]down|bird'?s?[- ]eye|from above|looking down|aerial)\b/i
+export const CAMERA_HEIGHT_WINDOW = 3
+
+export function cameraHeight(value) {
+  const text = String(value || '')
+  if (LOW_CAMERA_PATTERN.test(text)) return 'low'
+  if (HIGH_CAMERA_PATTERN.test(text)) return 'high'
+  return ''
+}
+
+export function overusedCameraHeight(recentCompositions = []) {
+  const heights = (Array.isArray(recentCompositions) ? recentCompositions : [])
+    .slice(0, CAMERA_HEIGHT_WINDOW)
+    .map(cameraHeight)
+    .filter(Boolean)
+  for (const height of ['low', 'high']) {
+    if (heights.filter(value => value === height).length >= 2) return height
+  }
+  return ''
+}
+
 export function buildCompositionBlock(recentCompositions = []) {
   const history = (Array.isArray(recentCompositions) ? recentCompositions : [])
     .map(value => String(value || '').trim())
@@ -123,6 +148,12 @@ export function buildCompositionBlock(recentCompositions = []) {
   const blocks = ['The wide, slightly elevated, symmetrical tableau - one central set-piece with every source arranged around it like an exhibition - is the composition this blog has used almost every week, and it is the main reason the covers look alike. Do not use it. A deep passage is the other rut: a corridor, hallway, tunnel, underpass, alley, aisle, or a view through a doorway or loading bay running away into the distance. Use one only when the sleeves leave no alternative. Choose the space and the camera deliberately for this week\'s covers - for example a wide open exterior where the people are small against sky, water, or land; straight down from above; a low angle looking up at a subject against open sky; a flat, face-on view of a room, wall, stage, or shopfront with little depth; a long-lens shot that stacks layers of a street or crowd together; a close crop where one subject fills most of the frame; a high vantage over a square, beach, car park, or field; or a single subject placed off-centre in a lot of open space.']
   if (history.slice(0, PASSAGE_REPEAT_WINDOW).some(isPassage)) {
     blocks.push('A recent cover already looked down a passage. This cover must not be set in or framed through a corridor, hallway, tunnel, underpass, alley, lane, aisle, doorway, or loading bay, under any wording: choose an open or face-on space.')
+  }
+  const height = overusedCameraHeight(history)
+  if (height === 'low') {
+    blocks.push('Most recent covers were shot from a low angle looking up. This cover must not be: no low angle, ground-level, or looking-up camera under any wording. Shoot from eye level, or from above.')
+  } else if (height === 'high') {
+    blocks.push('Most recent covers were shot from above. This cover must not be: no high angle, elevated vantage, overhead, or top-down camera under any wording. Shoot from eye level, or from low down.')
   }
   if (recent.length > 0) {
     blocks.push(`These compositions were used on the most recent covers and must not be repeated, even under different wording - change the camera height, the distance, or where the main subject sits in the frame:\n${recent.map(value => `- ${value}`).join('\n')}`)
@@ -411,7 +442,7 @@ export function findUncastPeople(prompt, cast = [], coverSummaries = []) {
 // backdrop", and "a real painted panel ... adapted as venue decor rather than a copied album
 // cover". Any clause that ties a numbered reference to a flat or displayed surface is caught
 // here and the brief is sent back, the same way over-casting is.
-const FLAT_COPY_PATTERN = /\b(murals?|backdrops?|banners?|posters?|billboards?|tapestr(?:y|ies)|decals?|stickers?|signs?|signage|emblems?|plaques?|tiles?|painted|painting|paintings|printed|prints?|stencil\w*|wallpaper|flags?|pennants?|logos?|framed|canvas(?:es)?|artworks?|graphics?|panels?|insignia|badges?|medallions?)\b/i
+const FLAT_COPY_PATTERN = /\b(murals?|backdrops?|banners?|posters?|billboards?|tapestr(?:y|ies)|decals?|stickers?|signs?|signage|emblems?|plaques?|tiles?|painted|painting|paintings|printed|prints?|stencil\w*|wallpaper|flags?|pennants?|logos?|framed|canvas(?:es)?|artworks?|graphics?|panels?|insignia|badges?|medallions?|screens?|monitors?|televisions?|tvs?|reliefs?)\b/i
 const REFERENCE_NUMBER_PATTERN = /reference image (\d+)/gi
 
 // A clause can mention paint and a reference without one being the other ("the man from
@@ -435,6 +466,51 @@ export function findFlatCopies(prompt) {
     })
     for (const { index, source } of refAt) {
       if (flatAt.some(at => Math.abs(at - index) <= FLAT_COPY_WINDOW) && !found.includes(source)) found.push(source)
+    }
+  }
+  return found
+}
+
+// The 5 Oct 2026 redo asked for "a computer terminal ... its screen showing four stylized
+// yellow-green heads" and "one hanging black profile-shaped sign" - the Man-Machine sleeve on
+// a monitor and a portrait as a cut-out - without either sitting near a reference number, so
+// findFlatCopies never saw them. Any sentence that puts faces or figures on a display, sign,
+// or cut-out is a sleeve shown as a picture, whichever source it came from.
+const DISPLAY_PATTERN = /^(screens?|monitors?|displays?|televisions?|tvs?|signs?|signage|cut-?outs?|billboards?|posters?|placards?|murals?|reliefs?|carv(?:ed|ing|ings))$/i
+const DEPICTED_FIGURE_PATTERN = /^(faces?|heads?|figures?|portraits?|profiles?|profile-shaped|silhouettes?|busts?|likeness(?:es)?)$/i
+const DISPLAY_FIGURE_WINDOW = 8
+
+export function findPicturedFigures(prompt) {
+  const found = []
+  for (const sentence of String(prompt || '').split(/(?<=[.;])\s+/)) {
+    const words = sentence.split(/\s+/).map(word => word.replace(/[^a-z-]/gi, ''))
+    const displays = []
+    const figures = []
+    words.forEach((word, index) => {
+      if (DISPLAY_PATTERN.test(word)) displays.push(index)
+      if (DEPICTED_FIGURE_PATTERN.test(word)) figures.push(index)
+    })
+    if (displays.some(at => figures.some(figure => Math.abs(figure - at) <= DISPLAY_FIGURE_WINDOW))) {
+      found.push(sentence.trim().slice(0, 120))
+    }
+  }
+  return found
+}
+
+// The 7 Sep 2026 redo put Jim Morrison "in the extreme right foreground, shoulders-up ...
+// strongly tinted by real red light" in front of a distant desert scene: an oversized cropped
+// head keeping its sleeve's red cast, which reads as two pictures stuck together. A cast
+// person placed at the frame's far edge, or washed in coloured light, is sent back.
+const LOOMING_PATTERN = /\b(?:extreme|far)\s+(?:left\s+|right\s+)?foreground\b|\b(?:tinted|bathed|washed|gelled|drenched|flooded)\b[^.;]{0,40}?\b(?:red|blue|green|magenta|purple|pink|orange|amber|neon|colou?red)\b/i
+
+export function findLoomingCast(prompt, cast = []) {
+  const castSet = new Set((Array.isArray(cast) ? cast : []).map(Number))
+  const found = []
+  for (const sentence of String(prompt || '').split(/(?<=[.;])\s+/)) {
+    if (!LOOMING_PATTERN.test(sentence)) continue
+    for (const match of sentence.matchAll(REFERENCE_NUMBER_PATTERN)) {
+      const source = Number(match[1])
+      if (castSet.has(source) && !found.includes(source)) found.push(source)
     }
   }
   return found
@@ -614,7 +690,7 @@ Do not invent a combined scene and do not give art direction. Observation and in
 Return JSON exactly as {"covers":[{"source":1,"description":"string","signatureMotif":"string","medium":"string","people":"string","peopleBox":[0,0,1,1],"faceHeight":0.1,"moderationRisk":"string","palette":["string"]}]}.
 There must be one item for every supplied source. "signatureMotif" is the single most recognisable non-text visual element in that source. "people" names who is visibly present as a real person in that image - a count and a short visual description such as "one woman reclining with two dogs" or "five young people looking up" - or exactly "none" when the image shows no person. Do not identify anyone by name.
 When "people" is not "none": "peopleBox" is [x0, y0, x1, y1] as fractions of the image width and height (0 to 1, origin top-left) tightly enclosing the heads and shoulders of every real person shown, and "faceHeight" is the height of the largest real face (chin to top of head) as a fraction of the image height - for example 0.06 for small heads in a wide group shot, 0.45 for a close portrait. Measure the image as supplied. When "people" is "none", set "peopleBox" to null and "faceHeight" to 0.
-"moderationRisk" is exactly "none" unless the image contains something a strict image-generation safety filter is likely to refuse when the sleeve is supplied as a reference: nudity or partial nudity, lingerie, swimwear, or other revealing clothing worn in a sexualised way, suggestive or sexualised posing, sexual content, gore or graphic injury, weapons pointed or in use, drug use, hate symbols, or anyone who may be a minor shown in a sensitive way. When it applies, give a short factual reason such as "women in lingerie-style outfits in suggestive poses". Ordinary band portraits, stage shots, casual clothing, and abstract or illustrated imagery are "none".`
+"moderationRisk" is exactly "none" unless the image clearly contains something an image-generation safety filter would refuse outright when the sleeve is supplied as a reference. Only these count: exposed genitals, buttocks, or female breasts (photographed or illustrated); lingerie, swimwear, or revealing clothing worn in a sexualised way, or suggestive, sexualised posing; sexual content; gore or graphic injury; a violent act shown in progress against a person, or a weapon pointed at someone; drugs being injected, snorted, or prepared; hate symbols; or a child shown nude, sexualised, or harmed. When it applies, give a short factual reason such as "women in lingerie-style outfits in suggestive poses". Most sleeves are "none". In particular these are "none": a shirtless man or bare-chested performer, bare shoulders, arms, legs, or midriffs in ordinary clothing, smoking or a cigarette, drinking, children or teenagers shown ordinarily, band portraits, stage shots, tattoos, dark or gothic imagery, skulls, and abstract or illustrated figures without explicit nudity. When unsure, answer "none" - an unnecessary flag throws the sleeve away.`
 
   try {
     const response = await openai.responses.create({
@@ -710,11 +786,11 @@ Cohesion comes first. The picture must read as one real photograph of one moment
 
 Cast at most ${MAX_CAST} sources as people. People are where a cover is won or lost, and every extra group of sleeve people becomes another pasted-in island. Choose the one or two portraits that best suit the moment and leave the others' people out entirely: a sleeve whose people are not cast may still lend its palette, setting, or an object, but nobody from it appears. List the cast in "cast" by source number.
 
-Recognisability is the point for the people you do cast. Stage that sleeve's portrait inside the world rather than recasting the person into a new performance: keep their pose, expression, gaze, hair, and styling, and change where they are, what surrounds them, and the light falling on them - they are standing in this scene's light, not the sleeve's studio. Do not have them asleep, turned away, mid-motion, or half-hidden by steam, shadow, or crowd unless the sleeve does, and never let the photographic treatment - motion blur, long exposure, fog, shallow focus - touch an identifiable face. The treatment belongs to the environment; the people are the fixed points.
+Recognisability is the point for the people you do cast. Stage that sleeve's portrait inside the world rather than recasting the person into a new performance: keep their pose, expression, gaze, hair, and styling, and change where they are, what surrounds them, and the light falling on them - they are standing in this scene's light, not the sleeve's studio. Do not have them asleep, turned away, mid-motion, or half-hidden by steam, shadow, or crowd unless the sleeve does, and never let the photographic treatment - motion blur, long exposure, fog, shallow focus - touch an identifiable face. The treatment belongs to the environment; the people are the fixed points. Place them inside the scene at the scale of the space around them - full figure or three-quarter, sharing the ground and the light with everything else - not as an oversized cropped head looming at the edge of the frame over a distant view, and not washed in the sleeve's coloured light. A close crop is fine only when that person is the whole picture.
 
 In the final "prompt", name every cast person by their attached reference rather than by appearance alone - "the woman from reference image 8", "the five people from reference image 7" - using the source numbers you were given. The album images are attached to the image model in that numbered order, and a person described only by looks becomes a new invented face. A code-appended reference map repeats the numbers, so they must match.
 
-Invent one specific, surprising composition with a clear visual hierarchy. Pick two, at most three, sources to lead as people or major objects. The rest contribute something smaller and folded into the place itself - its palette, a material, a texture, the weather, the light, one prop that belongs there - not another figure, niche, plaque, or set-piece. Transform motifs into the chosen world rather than reproducing album sleeves. No sleeve may appear as a picture on a surface - not a mural, painted wall, painted floor or court marking, backdrop, banner, flag, poster, sign, emblem, plaque, tile, decal, framed picture, or painted panel - however it is justified, "adapted as decor" included. Graphic, abstract, and illustrated sleeves are where this goes wrong, because they have no object to borrow. Translate them into the physical world instead: their colours become the paint of a car, an awning, a shirt, stage gels, or light through coloured glass; their shapes become a real object, a piece of furniture, a sculpture, a shadow, or a building's form; or they contribute only palette. If a graphic sleeve has no natural physical form in this scene, let it contribute colour alone.
+Invent one specific, surprising composition with a clear visual hierarchy. Pick two, at most three, sources to lead as people or major objects. Give at most three sources a physical object; the rest lend palette, material, or light only. A scene that gives every sleeve its own prop - a machine for one, a carving for another, a star for a third - reads as a prop shop, not a place. Transform motifs into the chosen world rather than reproducing album sleeves. No sleeve may appear as a picture on a surface - not a mural, painted wall, painted floor or court marking, backdrop, banner, flag, poster, sign, emblem, plaque, tile, decal, framed picture, painted panel, carved relief, cut-out, or the image on a screen, monitor, or television - however it is justified, "adapted as decor" included. A sleeve's faces and figures appear only as real cast people, never as a picture of them. Graphic, abstract, and illustrated sleeves are where this goes wrong, because they have no object to borrow. Translate them into the physical world instead: their colours become the paint of a car, an awning, a shirt, stage gels, or light through coloured glass; their shapes become a real object, a piece of furniture, a sculpture, a shadow, or a building's form; or they contribute only palette. If a graphic sleeve has no natural physical form in this scene, let it contribute colour alone.
 
 Treat each identifiable person as one unique identity and plan only one depiction of them across the whole composition. Do not reuse the same person as both a live figure and a secondary image, reflection, poster, billboard, screen, portrait, silhouette, or background face. Preserve repeated likenesses only when that repetition is visibly intrinsic to one source cover, and contain it within that source's single contribution.
 
@@ -775,12 +851,20 @@ Return JSON exactly as {"concept":"string","medium":"string","lighting":"string"
       if (flat.length > 0) {
         problems.push(`it shows source${flat.length > 1 ? 's' : ''} ${flat.join(', ')} as a picture on a surface (mural, painted wall or floor, backdrop, banner, sign, emblem, panel, or similar)`)
       }
+      const pictured = findPicturedFigures(candidate.prompt)
+      if (pictured.length > 0) {
+        problems.push(`it shows faces or figures on a screen, sign, cut-out, or carving ("${pictured[0]}")`)
+      }
+      const looming = findLoomingCast(candidate.prompt, candidate.cast)
+      if (looming.length > 0) {
+        problems.push(`it puts the person from source${looming.length > 1 ? 's' : ''} ${looming.join(', ')} at the extreme edge of the frame or under coloured light, which reads as a pasted-in cut-out`)
+      }
       return problems
     }
     const problems = problemsWith(direction)
     if (problems.length > 0) {
       if (debug) console.log(`  Art director brief rejected (${problems.join('; ')}); asking again`)
-      direction = await requestDirection(`Your previous answer was rejected: ${problems.join('; and ')}. Answer again with at most ${MAX_CAST} cast sources and no people from any other source, no sleeve shown as a picture on any surface - translate graphic sleeves into real objects, materials, colour, or light, or let them contribute palette only - and one cohesive moment rather than a station for each sleeve.`)
+      direction = await requestDirection(`Your previous answer was rejected: ${problems.join('; and ')}. Answer again with at most ${MAX_CAST} cast sources and no people from any other source, no sleeve shown as a picture on any surface, screen, sign, or carving - translate graphic sleeves into real objects, materials, colour, or light, or let them contribute palette only - cast people standing in the scene at its own scale and in its own light, and one cohesive moment rather than a station for each sleeve.`)
       const remaining = problemsWith(direction)
       if (remaining.length > 0) console.warn(`  Art director brief still has problems: ${remaining.join('; ')}`)
     }

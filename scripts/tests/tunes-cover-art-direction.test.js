@@ -9,6 +9,7 @@ import {
   buildGenerationPrompt,
   buildReferenceMap,
   buildYearBlock,
+  cameraHeight,
   closeUpBox,
   CLOSE_UP_BELOW,
   dropModerationRisks,
@@ -16,6 +17,8 @@ import {
   isPassage,
   MIN_CASTABLE_FACE,
   findFlatCopies,
+  findLoomingCast,
+  findPicturedFigures,
   findUncastPeople,
   MAX_CAST,
   normalizeCast,
@@ -27,7 +30,8 @@ import {
   LIGHTING_REPEAT_WINDOW,
   normalizeArtDirection,
   normalizeCoverSummaries,
-  normalizeYear
+  normalizeYear,
+  overusedCameraHeight
 } from '../lib/tunes-cover-art-direction.js'
 import {
   formatTunesPostContext,
@@ -473,4 +477,34 @@ test('catches sleeves written in as murals, backdrops, and painted panels', () =
 test('leaves real objects, materials, and unreferenced paint alone', () => {
   const prompt = 'A low angle on a car park with freshly painted white lines; a glossy purple sculpture shaped like the form from reference image 2 rests on a crate; the woman from reference image 5 wears the orange and red of reference image 1 as a silk shirt.'
   assert.deepEqual(findFlatCopies(prompt), [])
+})
+
+test('catches sleeve faces shown on a screen or as a cut-out sign', () => {
+  // From the 5 Oct 2026 redo: the Man-Machine sleeve on a monitor and a portrait as a sign.
+  const prompt = 'A repair kiosk at midday. The counter holds a gray computer terminal from reference image 6, its screen showing four stylized yellow-green heads on a black field. Fold in reference image 2 through red cables and one hanging black profile-shaped sign.'
+  assert.equal(findPicturedFigures(prompt).length, 2)
+})
+
+test('leaves real screens, signs, and people near them alone', () => {
+  const prompt = 'A bright rooftop at noon; a freestanding matte-black geometric cutout structure rises beside the water tank. The man from reference image 3 leans on a railing near a blank sign, and a small television glows blue on a crate.'
+  assert.deepEqual(findPicturedFigures(prompt), [])
+})
+
+test('catches a cast person looming at the frame edge or washed in coloured light', () => {
+  // From the 7 Sep 2026 redo, which read as two pictures stuck together.
+  const prompt = 'A disused desert airstrip; in the extreme right foreground, the young man from reference image 1 appears shoulders-up, strongly tinted by real red light. Far off, a rider crosses the dust.'
+  assert.deepEqual(findLoomingCast(prompt, [1]), [1])
+  assert.deepEqual(findLoomingCast(prompt, [2]), [], 'only cast sources count')
+  assert.deepEqual(findLoomingCast('The band from reference image 4 stands on the court in bright midday sun.', [4]), [])
+})
+
+test('reads camera height from a composition and refuses a repeated one', () => {
+  assert.equal(cameraHeight('low angle, diagonal action'), 'low')
+  assert.equal(cameraHeight('ground-level side view, wide frame'), 'low')
+  assert.equal(cameraHeight('high vantage over open hangar'), 'high')
+  assert.equal(cameraHeight('telephoto rooftop view, stacked layers'), '')
+  assert.equal(overusedCameraHeight(['low angle, close subject left', 'telephoto rooftop', 'low angle, counter corner crop']), 'low')
+  assert.equal(overusedCameraHeight(['low angle', 'eye-level face-on', 'high angle over counter']), '')
+  assert.match(buildCompositionBlock(['low angle, off-centre figure', 'low angle, diagonal action']), /must not be: no low angle/)
+  assert.doesNotMatch(buildCompositionBlock(['face-on room interior', 'low angle, off-centre figure']), /must not be: no low angle/)
 })
