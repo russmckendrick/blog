@@ -3,71 +3,90 @@
   "date": "2026-08-10",
   "type": "cover",
   "lane": null,
-  "lighting": "bright overcast afternoon",
-  "shootDirection": null,
-  "colourTreatment": null,
-  "concept": "Sunlit rehearsal yard with portraits and signals",
-  "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography in a real outdoor rehearsal yard, using the sleeve portraits as fixed live presences and translating the illustrated and painted motifs into props, sky elements, set dressing, and a mural-like backdrop.",
-  "scene": "A wide 16:9 view across an open concrete yard beside a simple wooden rehearsal shed and chain-link fence, with shallow puddled wetland planters at one edge, a white pole carrying red loudspeaker horns, and freestanding pink window frames set in the open air; the camera is at standing height, slightly wide, looking straight into the arrangement so the people read clearly and the environmental motifs layer behind them.",
-  "elements": [
+  "lighting": "golden hour rooftop sun",
+  "composition": "low angle, figure beside mast",
+  "cast": [
+    1,
+    3
+  ],
+  "closeUps": [
     {
       "source": 1,
-      "element": "the man seated front-facing in his worn red armchair, unchanged in pose and styling, placed just outside the shed against a pale plank wall with a small framed picture high left and a hat mounted high right"
-    },
-    {
-      "source": 2,
-      "element": "a very large pale circular disc in the sky reading as a daytime moon or sun, with a flock of birds crossing diagonally above the scene; the tiny-island solitude becomes a small rock-like planter at the wetland edge"
+      "reference": 9
     },
     {
       "source": 3,
-      "element": "the two young people from reference image 3 standing side by side on a rust-colored path of leaves and dry grasses running through the yard, with reddish shrubs and low distant hills beyond the fence"
+      "reference": 10
+    }
+  ],
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Rooftop loudspeaker at golden hour",
+  "medium": "daylight location photography",
+  "creativeDirection": "Use daylight location photography to stage a single plausible rooftop scene where one seated portrait and one standing pair are absorbed into a speaker-and-sky setting, while the graphic sleeves become real sky, birds, windows, lights, and painted surfaces.",
+  "scene": "A city rooftop at golden hour with a tall pole carrying three red loudspeaker horns, a few utilitarian rooftop structures, and a broad open sky streaked with late-day clouds. One weathered red armchair sits near the mast on the tar roof, with a simple freestanding double-window frame nearby opening onto the sky like a salvaged architectural fragment.",
+  "elements": [
+    {
+      "source": 1,
+      "element": "the man seated front-facing in a worn red armchair, kept recognisable with his hat and slouched pose"
+    },
+    {
+      "source": 2,
+      "element": "a large pale white moon low in the blue sky and a flock of black birds arcing upward to the right"
+    },
+    {
+      "source": 3,
+      "element": "the two young people standing side by side on the rooftop, kept recognisable in their styling and stance, with rust and amber tones folded into the clouds and roof details"
     },
     {
       "source": 4,
-      "element": "the person from reference image 4 positioned close to camera at one side, reaching both hands outward exactly as on the cover, with star-shaped string lights suspended in daylight around them"
-    },
-    {
-      "source": 5,
-      "element": "a lush planted wetland strip along one side of the yard with dense tropical foliage, a white wading bird in shallow water, and elephant imagery translated into large painted panels or sculptural silhouettes deeper in the planting; a low crocodile form at the waterline"
+      "element": "a short strand of glowing white star-shaped bulbs hanging from a rooftop cable near the mast"
     },
     {
       "source": 6,
-      "element": "the woman from reference image 6 seated under a simple daylight rig of overhead reflectors and pale stage truss, preserving her seated spotlight portrait but translated into bright daytime lighting rather than darkness"
+      "element": "warm spotlight-like glare catching a metal chair and reflective fabric draped over it near the seated man"
     },
     {
       "source": 7,
-      "element": "a cluster of red loudspeaker horns mounted high on a white pole as a strong vertical landmark in the midground"
+      "element": "the three red loudspeaker horns on a white pole as the main structural object"
     },
     {
       "source": 8,
-      "element": "the oversized green-suited figure between two open pink window frames, built as a whimsical outdoor set piece seen from behind against open sky"
+      "element": "a pink-painted double-window frame standing open on the roof, with a bulky green coat hung from it like a figure-shaped garment and a small crescent moon in the sky"
     }
   ],
   "palette": [
-    "beige",
+    "sky blue",
+    "cream",
     "red",
     "rust",
     "amber",
-    "sky blue",
-    "leaf green"
+    "pink"
   ],
-  "mood": "clear, surreal but grounded, spacious, observant",
+  "mood": "open, strange, expectant",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Let-Me-Come-Over-25th-Anniversary-Edition.jpg",
       "album": "Let Me Come Over 25th Anniversary Edition",
       "artist": "",
-      "description": "A warm-toned photograph of a man seated heavily in a worn red armchair in a sparse interior. He wears a hat, jacket, shirt, dark trousers, and dark shoes, facing forward with a serious expression. Behind him is a pale wooden plank wall with a small framed picture hanging high on the left and another hat mounted high on the right. A patterned rug edge appears at the bottom right on a bare floor.",
+      "description": "A warm, grainy photograph of one man sitting slouched in a worn red armchair in a sparse room with pale wooden plank walls. He wears a hat, jacket, dark trousers, and dark shoes. A small framed picture hangs high on the left wall and another hat hangs on the right wall. The floor is bare and a patterned rug edge appears at the bottom right. The composition is centered on the seated figure with strong orange-yellow tinting.",
       "signatureMotif": "man seated in a red armchair",
       "medium": "photograph",
-      "people": "one man sitting front-facing in an armchair wearing a hat",
+      "people": "one man seated front-facing in an armchair",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.34,
+        0.42,
+        0.67,
+        0.73
+      ],
+      "faceHeight": 0.09,
       "palette": [
-        "red",
         "orange",
+        "red",
         "yellow",
-        "beige",
+        "cream",
         "brown"
       ]
     },
@@ -76,10 +95,13 @@
       "filename": "On-an-Island.jpg",
       "album": "On an Island",
       "artist": "",
-      "description": "A minimalist blue-toned illustrated scene with a large glowing white circular moon or sun dominating the center. In the foreground, a black silhouette of a seated person rests on a tiny island or rock in calm water. A flock of black birds rises diagonally upward across the bright circle into the upper right. The composition is spacious with a soft gradient sky and faint distressed border texture.",
-      "signatureMotif": "flock of birds crossing a large glowing moon",
-      "medium": "digital illustration",
-      "people": "one seated silhouetted person on a small island",
+      "description": "A minimalist blue-toned illustrated cover showing a black silhouette of a seated person on a tiny island or rock in the lower center, backed by a large glowing white circular moon or sun. A flock of black birds arcs upward diagonally from the figure toward the upper right. The rest of the image is an open blue sky or sea gradient with faint distressed texture.",
+      "signatureMotif": "flock of birds rising from a seated silhouette before a large white moon",
+      "medium": "illustration",
+      "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "blue",
         "white",
@@ -92,16 +114,24 @@
       "filename": "WHO-ASKED.jpg",
       "album": "WHO ASKED",
       "artist": "",
-      "description": "A stylized autumn landscape photograph or composite with two young people standing side by side on a leaf-strewn path. One has long light hair and wears a short dark outfit with high-top sneakers; the other has dark hair and wears loose dark overalls and sneakers. The setting includes reddish shrubs, grasses, a small structure at left, distant hills, and a dramatic sky filled with dense glowing clouds. The whole image is bathed in brown, rust, and amber tones.",
-      "signatureMotif": "two figures standing in an autumn landscape under dramatic clouds",
-      "medium": "stylized photograph",
-      "people": "two young people standing side by side in a reddish outdoor scene",
+      "description": "A stylized autumn landscape photograph with two young people standing side by side on a leaf-strewn path. One has very long light hair and wears a short dark outfit with high-top shoes; the other has dark curly hair and wears loose dark overalls. Around them are reddish shrubs, grasses, a small structure at left, distant hills, and dramatic heavy clouds filling the sky. The scene is dominated by warm brown, rust, and amber tones.",
+      "signatureMotif": "two young people standing in an autumn landscape under dramatic clouds",
+      "medium": "photograph",
+      "people": "two young people standing side by side outdoors",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.39,
+        0.49,
+        0.61,
+        0.72
+      ],
+      "faceHeight": 0.08,
       "palette": [
         "brown",
         "rust",
         "amber",
-        "red",
-        "orange"
+        "tan",
+        "dark green"
       ]
     },
     {
@@ -109,10 +139,18 @@
       "filename": "Greatest-Hits.jpg",
       "album": "Greatest Hits",
       "artist": "",
-      "description": "A high-contrast photograph of a person reaching both hands toward the camera, with the hands enlarged by perspective and partially obscuring the face. Bright white star-shaped lights hang on strings around the figure and overlap the hands and face. The background is deep blue and black, creating a theatrical, glowing effect.",
-      "signatureMotif": "outstretched hands surrounded by hanging star lights",
+      "description": "A high-contrast close-up photograph of one person reaching both hands toward the camera, making the hands appear oversized in the foreground. Bright white star-shaped lights hang on strings around the figure against a deep blue and black background. The person’s face is mostly obscured by the hands and shadow, with tousled dark hair visible. The composition is dynamic and centered on the outstretched hands and glowing stars.",
+      "signatureMotif": "outstretched hands surrounded by hanging glowing stars",
       "medium": "photograph",
-      "people": "one person with dark hair reaching both hands toward the camera",
+      "people": "one person reaching both hands toward the camera",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.18,
+        0.08,
+        0.82,
+        0.88
+      ],
+      "faceHeight": 0.12,
       "palette": [
         "blue",
         "black",
@@ -126,16 +164,19 @@
       "filename": "Tango-in-the-Night.jpg",
       "album": "Tango in the Night",
       "artist": "",
-      "description": "A framed painted jungle scene set within a dark border. Dense tropical foliage fills the right side, while a moonlit or twilight wetland opens on the left with reflective water. Visible animals include a white wading bird in the water, elephants in the middle distance, a crocodile near the foreground waterline, and smaller birds tucked among the plants. The sky fades from pale yellow near the horizon to dusky blue and purple above.",
-      "signatureMotif": "lush tropical wetland with a white bird and elephants",
+      "description": "A painted nocturnal jungle scene framed within a border, showing dense tropical foliage around a reflective pond. Visible animals include a white wading bird in the water, elephants in the middle distance, and a crocodile or alligator near the water’s edge. The sky glows pale yellow-green near the horizon and deepens to darker tones above, with small star-like sparkles scattered through the scene.",
+      "signatureMotif": "lush tropical pond scene with a white wading bird and dense foliage",
       "medium": "painting",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "dark green",
-        "teal",
+        "black",
         "purple",
-        "yellow",
-        "black"
+        "yellow-green",
+        "pink"
       ]
     },
     {
@@ -143,16 +184,24 @@
       "filename": "Dummy.jpg",
       "album": "Dummy",
       "artist": "",
-      "description": "A grainy blue-toned cover with a wide rectangular central image showing a woman seated in a chair under bright stage-like spotlights. She wears a shiny reflective dress or top, and the scene is dark and blurred around her. Thick blue bands frame the image above and below, emphasizing the moody, cinematic look.",
-      "signatureMotif": "woman seated under spotlights",
+      "description": "A dark blue-toned cover with a wide horizontal photographic strip across the middle. In the strip, one woman sits or reclines in a chair under several bright stage-like spotlights, wearing a shiny light-colored dress. The surrounding areas are solid dark blue, and the central image is grainy and dim with strong light glare.",
+      "signatureMotif": "woman seated under bright spotlights",
       "medium": "photograph",
-      "people": "one woman seated in a chair under bright lights",
+      "people": "one woman seated under stage lights",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.43,
+        0.14,
+        0.61,
+        0.48
+      ],
+      "faceHeight": 0.12,
       "palette": [
+        "dark blue",
         "blue",
-        "black",
         "white",
-        "purple",
-        "grey"
+        "gray",
+        "black"
       ]
     },
     {
@@ -160,15 +209,18 @@
       "filename": "Music-for-the-Masses.jpg",
       "album": "Music for the Masses",
       "artist": "",
-      "description": "A mostly beige cover with a centered horizontal photograph near the bottom. The photo shows a white pole supporting several large red loudspeaker horns against a dusk sky with blue and pink clouds above a dark horizon. The surrounding beige area is plain and lightly textured.",
-      "signatureMotif": "cluster of red loudspeakers on a pole",
-      "medium": "graphic design with embedded photograph",
+      "description": "A mostly beige cover with a rectangular landscape photograph inset near the bottom center. The inset shows three large red loudspeaker horns mounted on a white pole against a dusk sky with blue, purple, and pink clouds above a dark horizon. The overall layout is sparse with a textured cream background around the inset image.",
+      "signatureMotif": "three red loudspeaker horns on a pole against a sunset sky",
+      "medium": "photograph with graphic layout",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "beige",
         "red",
         "blue",
-        "pink",
+        "purple",
         "white"
       ]
     },
@@ -177,10 +229,13 @@
       "filename": "Duke.jpg",
       "album": "Duke",
       "artist": "",
-      "description": "A simple cartoon-style drawing on a white background. A small head and hands protrude from an oversized green suit seen from behind, standing between two open pink-framed windows. Beyond the windows is a flat blue night sky with tiny dots and a small yellow crescent moon. The composition is sparse and whimsical.",
-      "signatureMotif": "oversized green-suited figure between open windows",
-      "medium": "cartoon illustration",
-      "people": "one simplified cartoon person seen from behind in an oversized green suit",
+      "description": "A simple cartoon-style illustration on a white background showing a bulky green-suited figure from behind, standing between two open pink-framed windows. Beyond the windows is a flat blue night sky with a small yellow crescent moon and tiny black dots suggesting stars. The figure has small yellow shoes and a tiny head peeking above the oversized body.",
+      "signatureMotif": "cartoon figure seen from behind between two open windows",
+      "medium": "illustration",
+      "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "white",
         "green",
@@ -191,9 +246,9 @@
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2-5",
-  "model": "openai/gpt-image-2.5/sunburst/edit",
-  "prompt": "A wide bright 16:9 outdoor scene in a real rehearsal yard beside a simple shed, photographed from standing height with a slightly wide lens, looking straight into a carefully staged arrangement under bright overcast afternoon light. Primary subject: the man from reference image 1 seated front-facing in his worn red armchair, serious and still, placed outdoors against a pale wooden plank wall with a small framed picture hanging high on the left and another hat mounted high on the right. Nearby, the two young people from reference image 3 stand side by side on a rust-colored leaf-strewn path with reddish shrubs and grasses, keeping their original stance and styling. At one side near the foreground, the person from reference image 4 reaches both hands toward the camera exactly as in the source, with enlarged perspective hands and several white star-shaped hanging lights suspended around them in crisp daylight. The woman from reference image 6 sits in her chair as a distinct portrait under a simple overhead rig that suggests spotlights but is lit by daylight, preserving her seated pose and reflective clothing. Include a tall white pole bearing several large red loudspeaker horns from reference image 7 in the midground. Build the motif from reference image 8 as a physical outdoor set piece: the figure from reference image 8 seen from behind in an oversized green suit standing between two open pink window frames. Translate reference image 2 into the sky and distance with a very large pale moonlike sun disc high behind the scene and a flock of dark birds crossing diagonally over it; a small rock at the wetland edge can quietly echo the tiny island. Translate reference image 5 into a planted wetland strip along one edge of the yard with dense tropical foliage, shallow reflective water, a white wading bird, a low crocodile shape at the waterline, and distant elephant forms rendered as believable painted panels or sculptural silhouettes within the planting. Photographic realism, clean editorial location shoot, crisp focus on all identifiable faces, no haze or theatrical darkness. Compose with clear hierarchy: seated man in red chair central, red loudspeaker pole and giant pale sky disc as major anchors, the other portraits and motifs stepping through the space. Bright even daylight, saturated but natural colors, beige wood, red horns and chair, rust foliage, sky blue, green plants, pink window frames, white accents; mood spacious, uncanny, and lucid. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one man sitting front-facing in an armchair wearing a hat; reference image 2 shows one seated silhouetted person on a small island; reference image 3 shows two young people standing side by side in a reddish outdoor scene; reference image 4 shows one person with dark hair reaching both hands toward the camera; reference image 6 shows one woman seated in a chair under bright lights; reference image 8 shows one simplified cartoon person seen from behind in an oversized green suit. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-6",
+  "model": "openai/gpt-image-2.6/sunburst/edit",
+  "prompt": "A golden-hour rooftop photograph seen from a low angle, with open sky taking most of the frame and a tall white pole carrying three red loudspeaker horns rising at one side; near it, the man from reference image 1 sits front-facing and slouched in his worn red armchair on the tar roof, fully recognisable in his hat, jacket, dark trousers, and dark shoes. The two young people from reference image 3 stand side by side a short distance away on the same roof, fully recognisable in their pose, hair, and clothing, as if calmly sharing the moment rather than performing. Include a salvaged pink double-window frame standing open on the rooftop with blue sky beyond it, a bulky green coat or padded garment hung on it to echo a back-turned figure, a large pale white moon low in the sky, a crescent moon faintly higher off to one side, a flock of black birds arcing upward across the blue, and a short string of glowing white star-shaped bulbs hanging from a cable near the speaker mast. Add subtle rooftop details only: a small framed picture leaned against a vent, a second hat hanging from a pipe, the edge of a patterned rug, and a spare metal chair with a shiny pale fabric draped over it catching bright glare like stage lights. Shoot as crisp realistic location photography, physically plausible, no collage, no poster-like album recreations. Compose asymmetrically with the seated man low in frame, the standing pair offset, and the speaker mast cutting into the sky; keep faces sharp and clear. Light with clean golden-hour sun and luminous late-day clouds, bright and well exposed. Palette of sky blue, cream, red, rust, amber, pink, green, and white; mood open, strange, and expectant. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one man seated front-facing in an armchair, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9; reference image 3 shows two young people standing side by side outdoors, and reference image 10 is an enlarged close-up of those same people - take their faces from reference image 10. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 4, 6 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Let-Me-Come-Over-25th-Anniversary-Edition.jpg",
     "On-an-Island.jpg",

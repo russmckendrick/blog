@@ -3,72 +3,81 @@
   "date": "2026-10-12",
   "type": "cover",
   "lane": null,
-  "lighting": "early morning rooftop sun",
+  "lighting": "crisp morning rooftop sun",
+  "composition": "telephoto rooftop view, stacked layers",
+  "cast": [
+    4
+  ],
+  "closeUps": [
+    {
+      "source": 4,
+      "reference": 9
+    }
+  ],
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Rooftop mattress under sunrise halo",
+  "concept": "Morning rooftop with sky loop sculpture",
   "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography stages the sleeve portraits on a real urban rooftop at sunrise, using the sky motifs and abstract forms as physically plausible set pieces and architecture.",
-  "scene": "A wide 16:9 editorial rooftop scene viewed from slightly above mattress height, on a clean flat roof bordered by a tall white brick wall, with open sky occupying the upper half of frame and a glowing oval aerial light effect suspended in the sunrise clouds.",
+  "creativeDirection": "Use daylight location photography to stage a real rooftop scene where the strongest graphic sleeves become physical rooftop structures and sky phenomena, with only one portrait source carried in as a plausible photographic moment.",
+  "scene": "A bright early-morning city rooftop with white service walls, vents, and tar surfaces, seen from a nearby higher building with a slightly compressed long-lens view. A large smooth blue-violet biomorphic rooftop object sits near the roof edge, a black geometric cutout structure rises beside it, and a glowing loop arcs across the actual cloudy sky beyond. A shirtless young man reclines on a striped mattress platform placed on the roof, with faint colored reflections or translucent scrim figures nearby echoing the original layered effect.",
   "elements": [
     {
       "source": 1,
-      "element": "the warm sunrise sky and glowing near-complete oval ring become the dominant sky event above the roof"
+      "element": "a large glowing oval loop suspended across the warm clouded morning sky"
     },
     {
       "source": 2,
-      "element": "deep black roof zones and sparse small corner fixtures inform the stark negative space and minimal rooftop hardware"
+      "element": "deep black tar roofing and dark negative space in the upper shadowed roof areas"
     },
     {
       "source": 3,
-      "element": "a single large smooth blue-violet biomorphic sculpture sits on the roof as a secondary focal object"
+      "element": "a large glossy blue-violet biomorphic sculpture placed on the rooftop"
     },
     {
       "source": 4,
-      "element": "the two people from reference image 4 are posed once on a striped mattress exactly as on the sleeve, becoming the main human subject"
-    },
-    {
-      "source": 5,
-      "element": "the four young men from reference image 5 appear once as a tight close-up cluster emerging above a dense rooftop planter of dark foliage at one side"
+      "element": "the man from reference image 4 reclining shirtless on a striped mattress platform, with subtle pink and lime translucent figure-like overlays created by colored scrims or reflections nearby"
     },
     {
       "source": 6,
-      "element": "a tall white brick wall forms the main architectural backdrop across one side of the roof"
+      "element": "white brick service wall on the rooftop with a small area of loose red paint marks"
     },
     {
       "source": 7,
-      "element": "three dark vertical roof-frame panels or partitions crop part of the sky, catching a bright lavender sun flare across the lower center-left"
+      "element": "bright sunburst and a few natural hexagonal lens flares near the horizon line, with slight panel-like division suggested by rooftop structures"
     },
     {
       "source": 8,
-      "element": "the large dark blocky geometric emblem appears as a freestanding metal rooftop sign against a pale wall section"
+      "element": "a freestanding matte-black geometric cutout form with soft edge shadow standing on the roof"
     }
   ],
   "palette": [
-    "warm gold",
-    "orange",
-    "lavender",
     "white",
+    "black",
     "blue-violet",
-    "deep black"
+    "lime yellow",
+    "red",
+    "warm cream"
   ],
-  "mood": "crisp, surreal, airy",
+  "mood": "clean, strange, airy",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Raise.jpg",
       "album": "Raise",
       "artist": "",
-      "description": "A dark cover with a wide central rectangular image of a cloudy sky in warm sunset tones. A bright glowing loop or ring arcs across the sky, forming an almost complete oval. Thick black bands frame the image above and below.",
-      "signatureMotif": "a glowing oval ring across a cloudy sky",
+      "description": "A dark cover with a wide central rectangular image of a cloudy sky in warm orange, cream, and blue-grey tones. Across the sky is a large bright looping ring or arc of smoke/light, forming an oval-like sweep from left to right. Thick black bands frame the image at the top and bottom.",
+      "signatureMotif": "a large glowing loop across a cloudy sky",
       "medium": "photographic image with graphic layout",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "black",
         "orange",
-        "gold",
         "cream",
-        "blue-grey"
+        "blue-grey",
+        "white"
       ]
     },
     {
@@ -76,10 +85,13 @@
       "filename": "From-Genesis-to-Revelation.jpg",
       "album": "From Genesis to Revelation",
       "artist": "",
-      "description": "An almost entirely black cover with no visible pictorial scene, only a flat dark field and small pale decorative elements near the top corners.",
-      "signatureMotif": "a nearly solid black field",
+      "description": "An almost entirely black cover with a plain dark field and only small pale decorative elements near the top corners. The composition is stark and minimal, with no visible figures or objects in the main area.",
+      "signatureMotif": "an almost completely black field",
       "medium": "minimal graphic design",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "black",
         "dark brown",
@@ -91,14 +103,18 @@
       "filename": "the-best-of-NewOrder.jpg",
       "album": "the best of NewOrder",
       "artist": "",
-      "description": "A clean white background featuring a single large smooth abstract blue-violet shape centered diagonally, with rounded contours and a glossy, molded appearance.",
+      "description": "A clean white background featuring a single large smooth abstract blue-violet shape placed diagonally across the center. The form is glossy and biomorphic, with rounded edges and a cutout-like opening near its middle.",
       "signatureMotif": "a large abstract blue-violet biomorphic shape",
-      "medium": "graphic design with photographed or rendered object",
+      "medium": "graphic design with rendered abstract object",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "white",
         "blue",
-        "violet"
+        "violet",
+        "indigo"
       ]
     },
     {
@@ -106,16 +122,24 @@
       "filename": "Coming-Up.jpg",
       "album": "Coming Up",
       "artist": "",
-      "description": "Two stylized human figures are posed on a striped mattress or cushion against a yellow-to-dark gradient background. One appears as a shirtless dark-haired person reclining, while the other is a brightly colorized, semi-glowing figure leaning forward with long pale hair. The composition has a surreal, cutout-like look.",
-      "signatureMotif": "two stylized figures draped across a striped mattress",
-      "medium": "manipulated studio photograph / collage",
-      "people": "two people posed on a striped mattress, one reclining shirtless and one leaning forward with long hair",
+      "description": "A stylized studio image with a bright yellow-green background fading darker toward the bottom. A striped mattress-like platform sits diagonally across the frame. Reclining on it is a shirtless slim young man in dark trousers, while two additional human-like figures appear as glowing, color-tinted silhouettes layered over the scene, one standing behind and one leaning forward in front. The image mixes photographic and posterized effects.",
+      "signatureMotif": "a shirtless reclining man on a striped mattress with neon-tinted overlay figures",
+      "medium": "stylized photographic collage",
+      "people": "one man reclining shirtless on a striped platform",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.28,
+        0.18,
+        0.58,
+        0.56
+      ],
+      "faceHeight": 0.14,
       "palette": [
         "yellow",
+        "lime",
         "black",
         "white",
-        "pink",
-        "blue"
+        "pink"
       ]
     },
     {
@@ -123,16 +147,24 @@
       "filename": "Rubber-Soul.jpg",
       "album": "Rubber Soul",
       "artist": "",
-      "description": "A close, slightly distorted group portrait of four young men with similar mop-top hairstyles, photographed from a low angle against dense dark green foliage. Their faces fill most of the frame, clustered tightly together.",
-      "signatureMotif": "four close-up faces clustered against dark foliage",
+      "description": "A close group portrait of four young men with similar dark mop-top hairstyles, photographed from a low angle against dense dark green foliage. Their faces fill most of the frame, with one centered lower, one at upper right, one at lower right, and one at lower left. The image has a slightly stretched or warped look and muted earthy tones.",
+      "signatureMotif": "four close-up faces with mop-top hair against dark foliage",
       "medium": "colour photograph",
-      "people": "four young men in close-up with mop-top haircuts",
+      "people": "four young men in a close low-angle group portrait",
+      "moderationRisk": "",
+      "peopleBox": [
+        0,
+        0,
+        1,
+        0.98
+      ],
+      "faceHeight": 0.31,
       "palette": [
         "dark green",
         "teal",
         "brown",
         "beige",
-        "orange"
+        "black"
       ]
     },
     {
@@ -140,13 +172,18 @@
       "filename": "The-Wall.jpg",
       "album": "The Wall",
       "artist": "",
-      "description": "A stark white brick wall fills the entire cover in a regular grid pattern, creating a flat, minimalist facade.",
+      "description": "A white brick wall pattern filling the entire cover, drawn with thin blue-grey lines. In the center is a large area of red handwritten-style paint marks over the bricks. The composition is flat, stark, and highly minimal.",
       "signatureMotif": "a white brick wall",
-      "medium": "minimal graphic design / photographed wall texture",
+      "medium": "graphic design / illustration",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "white",
-        "light grey"
+        "red",
+        "light blue",
+        "grey"
       ]
     },
     {
@@ -154,16 +191,19 @@
       "filename": "Amplifier.jpg",
       "album": "Amplifier",
       "artist": "",
-      "description": "A black background is divided into three tall vertical panels containing a hazy purple sky. A bright sun flare blooms across the lower center-left, with hexagonal lens flare shapes and faint wisps of cloud or smoke near the bottom edges.",
-      "signatureMotif": "three vertical panels framing a bright sun flare in a purple sky",
+      "description": "A dark cover divided into three tall vertical panels separated by black bars. Inside the panels is a hazy purple-grey sky with a bright burst of light near the lower center and several hexagonal lens flares. Wispy cloud-like forms appear near the bottom edges.",
+      "signatureMotif": "three vertical panels showing bright lens flare in a hazy sky",
       "medium": "photograph with graphic panel layout",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "black",
         "purple",
-        "lavender",
+        "grey",
         "white",
-        "grey"
+        "lavender"
       ]
     },
     {
@@ -171,22 +211,25 @@
       "filename": "Far-and-Wide.jpg",
       "album": "Far and Wide",
       "artist": "",
-      "description": "A pale greenish-white background centers a large dark geometric emblem shaped like a blocky capital form with stepped cut-ins, resembling a heavy stencil or carved letterform. The symbol has soft shadowing and a slightly metallic or embossed look.",
-      "signatureMotif": "a large dark blocky geometric emblem centered on a pale background",
-      "medium": "graphic design with embossed or photographed object effect",
+      "description": "A pale greenish-white background with a large central black geometric cutout shape resembling a blocky capital letter form. The shape has soft shadowing or glow around its edges, giving it a recessed or stencil-like appearance. The composition is centered and minimal.",
+      "signatureMotif": "a large black geometric cutout resembling a blocky letterform",
+      "medium": "graphic design",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
-        "pale green",
         "off-white",
-        "grey",
-        "black"
+        "pale green",
+        "black",
+        "grey"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2-5",
-  "model": "openai/gpt-image-2.5/sunburst/edit",
-  "prompt": "A real urban rooftop at sunrise in a wide 16:9 frame, photographed from a slightly elevated viewpoint near mattress height, with open sky filling the upper half and a tall white brick wall anchoring one side; the primary subject is the two people from reference image 4 posed once on a striped mattress exactly as in their sleeve, with their pose, expression, gaze, hair, styling, and framing preserved inside this rooftop setting. Above them, use the warm clouded sky and glowing near-complete oval ring from reference image 1 as the dominant sky event; incorporate the nearly solid black minimalism of reference image 2 as deep shadowed roof zones and sparse small rooftop fixtures; place one large smooth blue-violet biomorphic sculpture from reference image 3 on the roof nearby; include the four young men from reference image 5 once only as a tight close-up cluster rising from dense dark foliage in a rooftop planter at one edge, keeping their close low-angle portrait feel and recognizable faces sharp; make the white brick wall from reference image 6 the main architectural backdrop; add three tall dark vertical panels from reference image 7 cutting into the sky with a bright lavender sun flare blooming across the lower center-left; place the dark blocky geometric emblem from reference image 8 as a freestanding metal sign against a pale greenish off-white wall section. Daylight location photography, clean editorial realism with surreal but physically plausible set dressing, crisp medium-format detail. Clear visual hierarchy with the mattress figures first, the sunrise ring second, and the other motifs supporting; bright early morning sun with long clean shadows, clear air, no haze or rain, faces fully sharp and unobscured. Palette of warm gold, orange, lavender, white, blue-violet, deep black, pale green, and dark foliage; mood crisp, airy, and quietly uncanny. Reference map for people (the album images are attached in this numbered order): reference image 4 shows two people posed on a striped mattress, one reclining shirtless and one leaning forward with long hair; reference image 5 shows four young men in close-up with mop-top haircuts. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-6",
+  "model": "openai/gpt-image-2.6/sunburst/edit",
+  "prompt": "A bright early-morning city rooftop seen from a nearby higher building with a slightly compressed telephoto view, layered rooflines and open sky beyond; the man from reference image 4 is the primary subject, reclining shirtless in the same pose on a striped mattress platform placed near a white brick rooftop service wall; a large glossy blue-violet biomorphic sculpture from reference image 3 sits nearby, a freestanding matte-black geometric cutout structure from reference image 8 rises beside it, a loose patch of red paint marks appears on the white brick wall from reference image 6, the roof surface carries deep black tar areas from reference image 2, and a large glowing oval loop crosses the warm cloudy sky from reference image 1, with a bright low sunburst and a few natural hexagonal lens flares inspired by reference image 7; daylight location photography, physically plausible rooftop set, crisp realistic detail, no posters or printed album art; stacked telephoto composition with the reclining figure in one layer and the rooftop objects and sky compressed behind, clear visual hierarchy, wide 16:9 frame; crisp morning rooftop sun with clean shadows and bright open exposure; palette of white, black, blue-violet, lime yellow, red, warm cream, and blue-grey, mood clean strange and airy Reference map for people (the album images are attached in this numbered order): reference image 4 shows one man reclining shirtless on a striped platform, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference image 5 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Raise.jpg",
     "From-Genesis-to-Revelation.jpg",

@@ -3,71 +3,84 @@
   "date": "2026-10-05",
   "type": "cover",
   "lane": null,
-  "lighting": "hard midday sun",
+  "lighting": "sunlight through factory skylights",
+  "composition": "face-on room, subject right",
+  "cast": [
+    1
+  ],
+  "closeUps": [],
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Hard-sun courtyard with ritual stage relics",
+  "concept": "Rehearsal hall under skylight with lone portrait",
   "medium": "daylight location photography",
-  "creativeDirection": "Use daylight location photography to build a real sun-struck courtyard where the album motifs appear as physical stage gear, painted surfaces, emblems, and one fixed portrait presence, with the graphic sources translated into plausible objects rather than collage.",
-  "scene": "A rectangular stucco courtyard seen from a slightly elevated three-quarter viewpoint, like a medium-format editorial shoot from a balcony or stair landing, with crisp shadows cutting across pale paving and a clear central axis leading to a doorway at the back wall.",
+  "creativeDirection": "Daylight location photography in a real rehearsal hall, using one cast portrait and translating the graphic sleeves into stage hardware, painted surfaces, and light.",
+  "scene": "A bright old rehearsal hall or small civic stage seen almost face-on, with scuffed wooden floorboards, high factory skylights, and a deep matte red back wall. Off to the right stands the woman from source 1 at three-quarter scale, resting her chin on her hand exactly as in her portrait, but now in the room's clean skylight. Around and above her, a few real yellow flowering branches hang in from the edge of frame as if brought in for set dressing, kept local to her side only. The left half of the room holds a sparse cluster of real stage equipment: microphone stands, a drum kit, guitar amps, cables, and a retro gray desktop computer body on a wheeled stand with its monitor turned away from camera so no screen image is visible. A single black chair sits in a hard white shaft of light cutting diagonally across the floor from an open backstage door at upper left. Behind the kit, a suspended circular lighting truss carries one glowing red five-pointed star lamp at its center. Near the back wall, stacked road cases and amp fronts carry warm wood-grain veneer panels with irregular cut-through openings into dark voids, echoing an abstract face without becoming an image. A few white tape streamers or hanging cords descend near the equipment, recalling the white streak motif as real material rather than a figure.",
   "elements": [
     {
       "source": 1,
-      "element": "the woman from reference image 1 appears once as the only clear live portrait, close to camera at one side of the courtyard, keeping her chin-on-hand pose, direct gaze, long reddish-blonde hair, and being framed by real yellow flowering branches trained around a sunlit window or trellis"
+      "element": "the woman appears full-height at the right side, chin on hand, with a few yellow flowering branches framing her locally"
     },
     {
       "source": 2,
-      "element": "a compact performance setup occupies the middle distance with microphones, drum kit, guitar amps, and circular stage lamps switched off in daylight, while four large dark portrait-like banner silhouettes hang high across the back wall against heat-warmed red and orange fabric panels"
+      "element": "stage gear, rehearsal-hall setting, and restrained magenta accents in cables and gels"
     },
     {
       "source": 3,
-      "element": "a large painted wooden mask panel with orange and tan woodgrain brushwork and dark cutout facial features leans prominently against a wall as a major sculptural object"
+      "element": "wood-grain veneered cases and cut-out void shapes in stacked equipment"
     },
     {
       "source": 4,
-      "element": "the red star-in-circle symbol appears as a bold enamel emblem mounted centrally near the doorway, with tiny star-like specks scattered on a deep black painted door surround"
+      "element": "a glowing red star lamp inside a circular truss, with tiny star-like points in the dark upper space"
     },
     {
       "source": 5,
-      "element": "a distressed bronze-toned fabric scrim or painted backdrop near the stage carries the energy of the screaming figure through smeared marks and white streaks, but without introducing a second identifiable person"
+      "element": "white hanging tape or cords near the stage gear and rusty industrial browns in surfaces"
     },
     {
       "source": 6,
-      "element": "a retro gray desktop computer sits on a simple equipment case or table in the courtyard, its screen showing four neon yellow-green stylized heads against black"
+      "element": "retro gray desktop computer as a physical object with screen turned away and no visible image"
     },
     {
       "source": 7,
-      "element": "the back-left doorway throws a sharp white wedge of sunlight across the paving, and within that beam sits the small bent-forward figure on a chair as a distant solitary presence with long dark hair or shadow trailing downward"
+      "element": "a black chair placed in a sharp beam of white light from an upper-left doorway across the floor"
     },
     {
       "source": 8,
-      "element": "an ornate crest is rendered as a weathered painted banner or wall mural above part of the courtyard, with the white winged bird, two lions, flames, and pastel rays acting as ceremonial decoration"
+      "element": "white, gold, pale pink, and pale blue accents in rigging paint and fabric details near the back wall"
     }
   ],
   "palette": [
-    "sunlit yellow",
-    "terracotta red",
-    "orange-brown",
+    "deep red",
+    "yellow",
+    "wood brown",
+    "gray",
     "black",
-    "cream",
-    "lime accents"
+    "white"
   ],
-  "mood": "ceremonial, charged, sun-baked",
+  "mood": "clear, theatrical, expectant",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Free-World-The-Best-Of-1979-2000.jpg",
       "album": "Free World The Best Of 1979 2000",
       "artist": "",
-      "description": "A soft-focus color portrait of a young woman with long reddish-blonde hair, resting her chin on her hand and looking directly at the camera. She is surrounded by abundant yellow blossoms and dark leafy branches, with the flowers framing the top and sides of the image. The composition is a close-up outdoor photograph with a warm, gentle look.",
-      "signatureMotif": "close-up portrait framed by yellow flowers",
+      "description": "A close-up color photograph of one woman with long reddish-blonde hair resting her chin on her hand, framed by abundant yellow flowering branches around the top and sides. The background is softly blurred foliage, and the composition is warm and bright with the face centered slightly left.",
+      "signatureMotif": "yellow flowering branches around a close-up female portrait",
       "medium": "photograph",
-      "people": "one woman in close-up portrait with chin resting on her hand among flowers",
+      "people": "one woman in a close-up portrait resting her chin on her hand",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.08,
+        0.18,
+        0.67,
+        0.78
+      ],
+      "faceHeight": 0.33,
       "palette": [
         "yellow",
         "gold",
         "cream",
-        "brown",
+        "light brown",
         "green"
       ]
     },
@@ -76,10 +89,18 @@
       "filename": "MTV-Unplugged.jpg",
       "album": "MTV Unplugged",
       "artist": "",
-      "description": "A collage-like concert image combining stylized portraits and live performance photography. Four dark, high-contrast upper-body portraits or silhouettes of men appear across the top against a fiery red-orange background. Below them is a stage scene with several musicians performing under bright pink, purple, and white spotlights, with guitars, microphones, drums, and circular stage lights visible. The overall composition is layered and saturated, blending illustration-like treatment with photographic performance imagery.",
-      "signatureMotif": "layered band silhouettes above a brightly lit live stage",
-      "medium": "photo collage with heavily stylized color treatment",
-      "people": "several men, including four large stylized portrait figures and multiple musicians performing on stage",
+      "description": "A collage-like concert image combining illustrated and photographic elements. Several male musicians appear on a stage under bright pink, purple, and white spotlights, with guitars, microphone stands, and drums visible. Large dark silhouettes and stylized portraits of band members fill the upper half against a fiery orange-red background.",
+      "signatureMotif": "band performing onstage under bright magenta lights with large silhouettes above",
+      "medium": "mixed media collage combining photography and illustration",
+      "people": "seven men, including several performing onstage with instruments and larger portrait-like figures above",
+      "moderationRisk": "",
+      "peopleBox": [
+        0,
+        0.06,
+        0.99,
+        0.95
+      ],
+      "faceHeight": 0.18,
       "palette": [
         "red",
         "orange",
@@ -93,16 +114,19 @@
       "filename": "Woodface.jpg",
       "album": "Woodface",
       "artist": "",
-      "description": "An abstract painted face fills most of the square frame, constructed from woodgrain-like brushstrokes in orange, brown, and tan. The eyes, nose, and mouth are rendered as dark cutout-like shapes, with one eye surrounded by a jagged starburst form. The image sits within a dark border speckled with small star-like dots.",
-      "signatureMotif": "abstract woodgrain face mask",
-      "medium": "painting",
+      "description": "An illustrated abstract face fills most of the frame, constructed from wood-grain patterned shapes in orange, brown, and tan. The eyes, nose, and mouth are dark hollow openings showing a starry night sky within, all bordered by a dark frame.",
+      "signatureMotif": "wood-grain abstract face with starry voids for features",
+      "medium": "painting/illustration",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "orange",
         "brown",
         "tan",
         "black",
-        "gold"
+        "dark blue"
       ]
     },
     {
@@ -110,10 +134,13 @@
       "filename": "2112.jpg",
       "album": "2112",
       "artist": "",
-      "description": "A dark space-like scene with many small stars scattered across a black background. Near the top center is large glowing lettering, and below it a red symbol resembling a five-pointed star enclosed within a circular shape appears reflected or floating over a dark glossy surface. The composition is minimal and centered, with strong contrast between the black field and the luminous red and blue-purple elements.",
-      "signatureMotif": "red star-in-circle symbol",
-      "medium": "graphic design illustration",
+      "description": "A dark space-themed graphic with a star-filled black sky. Near the bottom is a glowing red five-pointed star enclosed in a circular shape, reflected in dark water-like ripples, while large stylized numerals sit above it.",
+      "signatureMotif": "glowing red star inside a circle beneath a starry sky",
+      "medium": "graphic design/illustration",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "black",
         "red",
@@ -127,16 +154,24 @@
       "filename": "Burn-My-Eyes.jpg",
       "album": "Burn My Eyes",
       "artist": "",
-      "description": "A blurred, distressed image of a human figure dominates the center, rendered in dark bronze and black tones against a hot orange background. White streaks or scribble-like lines run from the eye area downward, and the figure appears to be screaming or grimacing. The image includes layered textures, smears, and industrial-looking marks, creating a harsh, chaotic composition.",
-      "signatureMotif": "distorted screaming figure with white streaks from the eyes",
-      "medium": "manipulated photograph with graphic overlays",
-      "people": "one person, a blurred dark-toned figure with mouth open and arms partly visible",
+      "description": "A blurred, distressed image of a human figure in dark metallic tones against an orange-brown industrial-looking background. White streaks or scribble-like lines run from the eye area downward, and the composition includes layered textures, smears, and abstract blocks. The torso is visible but obscured by blur and overlays.",
+      "signatureMotif": "blurred human figure with white streaks descending from the eyes",
+      "medium": "manipulated photograph/collage",
+      "people": "one person shown as a blurred upper-body figure",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.22,
+        0.03,
+        0.63,
+        0.56
+      ],
+      "faceHeight": 0.22,
       "palette": [
         "orange",
-        "black",
         "brown",
-        "white",
-        "yellow"
+        "black",
+        "yellow",
+        "white"
       ]
     },
     {
@@ -144,15 +179,19 @@
       "filename": "Computer-World.jpg",
       "album": "Computer World",
       "artist": "",
-      "description": "A retro desktop computer is shown at an angle against a flat bright yellow background. The machine is gray with a built-in monitor and keyboard. On the screen are four stylized human heads in profile and three-quarter view, rendered in black and neon yellow-green, arranged side by side. The composition is clean and graphic, emphasizing the computer as the main object.",
-      "signatureMotif": "retro computer with four stylized faces on the screen",
-      "medium": "graphic illustration",
+      "description": "A stylized illustration of a large gray desktop computer angled toward the viewer on a bright yellow background. On the monitor is a black screen showing four simplified yellow-green human heads in profile and three-quarter view, with a keyboard and keypad built into the computer body.",
+      "signatureMotif": "retro desktop computer with four stylized heads on the screen",
+      "medium": "illustration",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "yellow",
         "gray",
         "black",
-        "lime"
+        "yellow-green",
+        "white"
       ]
     },
     {
@@ -160,10 +199,13 @@
       "filename": "in-a-fever-dream.jpg",
       "album": "in a fever dream",
       "artist": "",
-      "description": "A dark red painted scene shows a narrow black doorway at upper left with a white beam of light extending diagonally across the floor. In the beam sits a small pale human figure on a chair, bent forward, with long black hair or shadow-like strands cascading downward and forming a dark elongated shadow. The background is textured and painterly, with a stark, minimal composition.",
-      "signatureMotif": "small seated figure in a white beam of light from a doorway",
+      "description": "A minimalist painting with a deep red background and a black vertical doorway at upper left emitting a long white beam of light across the floor. In the light sits a small pale human figure slumped on a dark chair, with long black hair hanging downward and a small red mark at the top of the head.",
+      "signatureMotif": "slumped pale figure on a chair in a beam of light from a doorway",
       "medium": "painting",
-      "people": "one seated human figure, pale and bent forward on a chair",
+      "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "dark red",
         "black",
@@ -176,10 +218,13 @@
       "filename": "A-Night-at-the-Opera.jpg",
       "album": "A Night at the Opera",
       "artist": "",
-      "description": "A heraldic crest-like illustration on a white background features a large white winged bird at the top with wings spread wide above flames. On either side are two golden lions standing upright, one wearing a crown. At the center is a large oval frame or shield, flanked below by two small fairy-like winged figures in green and pink. Behind the crest is a fan of pink and pale blue rays. The composition is symmetrical and ornate.",
-      "signatureMotif": "ornate crest with a large winged bird and two lions",
+      "description": "A heraldic-style illustration on a white background featuring a large white winged bird above an oval crest with flames behind it. Two golden lions flank the crest, and two small fairy-like winged figures sit near the lower sides. The backdrop behind the crest is a fan of pink and pale blue rays.",
+      "signatureMotif": "ornate crest with a white winged bird and two golden lions",
       "medium": "illustration",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "white",
         "gold",
@@ -190,9 +235,9 @@
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2-5",
-  "model": "openai/gpt-image-2.5/sunburst/edit",
-  "prompt": "A sun-struck stucco courtyard photographed from a slightly elevated three-quarter viewpoint, crisp paving lines and hard shadows leading toward a narrow doorway at the back; the woman from reference image 1 is the primary subject in the near foreground at one side, shown once only, keeping her close-up portrait pose with chin resting on her hand, direct gaze, long reddish-blonde hair, and framed by abundant real yellow blossoms and dark leafy branches around a trellis or window; in the middle distance place a compact live-performance setup inspired by reference image 2 with microphones, drum kit, guitars, amps, and circular stage lights, and hang four large dark portrait-silhouette banners high across red-orange fabric on the back wall; add a large painted wooden mask panel from reference image 3 leaning prominently against a wall, orange and tan woodgrain with dark cutout eyes nose and mouth and one jagged eye surround; mount the red star-in-circle symbol from reference image 4 as a centered enamel emblem near the doorway, with tiny star specks on a black door surround; include the energy of reference image 5 as a distressed bronze-orange scrim or painted backdrop with white streaks and smeared industrial marks, but no extra identifiable face; place the retro gray desktop computer from reference image 6 on an equipment case, screen glowing with four black and neon yellow-green stylized heads; stage the small seated bent-forward figure from reference image 7 once in the back-left doorway beam, tiny and pale on a chair inside a sharp white wedge of light; render the crest from reference image 8 as a weathered ceremonial banner or wall mural with the white winged bird, two gold lions, flames, oval shield, small winged figures, and pink-blue rays; daylight location photography, clean realistic editorial treatment, deep focus, crisp detail, physically plausible objects and surfaces, strong visual hierarchy with the woman from reference image 1 first, then the courtyard stage relics, then the symbolic back wall; hard midday sun with sharp-edged shadows, high contrast but well exposed; palette of yellow, gold, cream, terracotta, orange-brown, black, lime, pink, pale blue, and touches of magenta, mood ceremonial and charged rather than dark or smoky Reference map for people (the album images are attached in this numbered order): reference image 1 shows one woman in close-up portrait with chin resting on her hand among flowers; reference image 2 shows several men, including four large stylized portrait figures and multiple musicians performing on stage; reference image 5 shows one person, a blurred dark-toned figure with mouth open and arms partly visible; reference image 7 shows one seated human figure, pale and bent forward on a chair. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-6",
+  "model": "openai/gpt-image-2.6/sunburst/edit",
+  "prompt": "A bright old rehearsal hall or small civic stage photographed straight on, with scuffed wooden floorboards, high factory skylights, and a matte deep red back wall; the primary subject is the woman from reference image 1 standing on the right at natural three-quarter to full-figure scale, keeping her exact chin-on-hand pose, expression, hair, and styling, lit by clean sunlight from the skylights, with a few real yellow flowering branches entering only around her side of the frame. On the left half of the room, translate reference image 2 into real rehearsal equipment: microphone stands, drum kit, guitar amps, cables, and subtle magenta-pink stage-gel accents, not a performance crowd. Include from reference image 7 a single black chair sitting in a sharp white beam of light cast diagonally from an open upper-left backstage door across the floor. Include from reference image 4 one glowing red five-pointed star lamp suspended inside a circular truss behind the equipment, with a few tiny star-like ceiling lights in the dark rafters. Include from reference image 3 warm wood-grain veneered road cases or amp cabinets with irregular dark cut-through openings that only suggest facial geometry abstractly. Include from reference image 6 a retro gray desktop computer body on a wheeled stand with the monitor angled away so no screen content is visible. Include from reference image 5 rusty orange-brown industrial wear and a few white tape streamers or cords hanging near the gear. Let reference image 8 contribute only small heraldic color notes of white, gold, pale pink, and pale blue in straps, fabric, or painted trim, never as an emblem. Photographic realism, daylight location photography, crisp detail, no collage look, no poster or screen imagery, no extra people. Face-on room framing with the subject positioned to the right and open negative space to the left, bright sunlight through skylights, clean saturated color, clear visual hierarchy, expectant rehearsal atmosphere. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one woman in a close-up portrait resting her chin on her hand. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 2, 5 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, monitor, television, sign, cut-out, or floor graphic, or carving it as a wall-mounted relief; show no sleeve's faces, heads, or figures as a picture, display, sign, or silhouette anywhere; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Free-World-The-Best-Of-1979-2000.jpg",
     "MTV-Unplugged.jpg",

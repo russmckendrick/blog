@@ -3,66 +3,75 @@
   "date": "2026-09-21",
   "type": "cover",
   "lane": null,
-  "lighting": "bright overcast afternoon",
+  "lighting": "golden hour side sun",
+  "composition": "ground-level side view, wide frame",
+  "cast": [
+    2
+  ],
+  "closeUps": [
+    {
+      "source": 2,
+      "reference": 9
+    }
+  ],
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Rail overlook with portraits and signal color",
+  "concept": "Rail embankment lookout above a passing steam train",
   "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography stages the sleeve portraits and abstract motifs at a real rural rail overlook, using crisp bright overcast light so the varied source colors stay clean while the train landscape ties the set together.",
-  "scene": "A wide 16:9 view from slightly elevated ground beside a countryside railway curve, looking across vivid grass toward tracks, open fields, scattered trees, and a distant body of water under a bright clouded sky; the scene feels like a real editorial location shoot at a rail embankment with enough depth to place several portrait figures clearly without crowding them.",
+  "creativeDirection": "Daylight location photography of a real rail embankment scene, using one cast figure and a passing locomotive as the main anchors while folding the abstract sleeves into sky colour, steam, and trackside materials.",
+  "scene": "A real grassy rail embankment beside open water and low fields, with a blue steam locomotive passing left to right below the viewer and one solitary figure standing at the top of the slope looking out over it.",
   "elements": [
     {
       "source": 1,
-      "element": "vertical glitch stripes translated into tall translucent trackside safety panels or signal screens glowing in red, orange, magenta, blue, and green near the rails, with a few soft circular lens-like light spots low in the frame"
+      "element": "hot red, orange, magenta, and blue glitch colours translated into narrow vertical signal reflections and banded sunset tints in the train windows and polished metal"
     },
     {
       "source": 2,
-      "element": "the person from reference image 2 stands prominently on the grassy overlook with back to camera, legs apart and hands clasped behind them, wearing the long red-white-blue patterned coat exactly as on the cover"
+      "element": "the person from reference image 2 seen from behind, standing wide-legged with hands clasped behind their back in the same flag-patterned long coat at the top of the embankment"
     },
     {
       "source": 3,
-      "element": "a pale glowing patch of sky and softly murky olive-green vegetation around the embankment echo the abstract painted halo-and-dark-forms composition"
-    },
-    {
-      "source": 4,
-      "element": "the repeated black-and-white close-up faces become a sequence of vertical poster strips mounted on a fence or rail barrier, centered on the long-haired man from reference image 4 with the other cropped faces adjacent, plus one bold red horizontal graphic band crossing the installation"
+      "element": "soft pale cream-yellow sunlit steam cloud surrounded by darker olive and deep green trackside vegetation masses"
     },
     {
       "source": 5,
-      "element": "a streamlined blue steam locomotive rounds the curve from left to right below the overlook, trailing clean white steam across the middle distance"
+      "element": "a streamlined blue steam locomotive pulling carriages along the tracks below, with white steam billowing above it"
     },
     {
       "source": 6,
-      "element": "the five people from reference image 6 are staged together on the grass in a shallow circular depression or painted survey ring, all looking directly up toward the camera from a clustered formation, with subtle concentric ground markings referencing the tunnel graphic"
+      "element": "subtle concentric industrial forms and neon pink-purple-blue accents reduced to lens-clean colour pops in signal glass and carriage reflections"
     },
     {
       "source": 7,
-      "element": "the person from reference image 7 stands alone near the darker edge of the embankment in flowing dark clothing, pale face and hands visible, arms extended outward as on the cover"
+      "element": "high-contrast black clothing silhouette quality carried into the cast figure against the bright sky"
     },
     {
       "source": 8,
-      "element": "the woman from reference image 8 reclines on a spread of sheer lavender fabric in the grass at frame right, with the two large dogs pressed closely against her in the same intimate arrangement"
+      "element": "lavender haze and lilac fabric tones translated into a faint purple cast in the steam and evening sky near the horizon"
     }
   ],
   "palette": [
+    "railway blue",
     "grass green",
     "sky blue",
     "steam white",
-    "signal red",
-    "orange",
+    "sunset orange",
     "magenta"
   ],
-  "mood": "surprising but lucid, expansive, graphic, and emotionally charged",
+  "mood": "windswept, expectant, cinematic",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Twilight.jpg",
       "album": "Twilight",
       "artist": "",
-      "description": "An abstract, glitch-like image filled with vertical bands, scan lines, and blurred streaks. The composition is dominated by hot red and orange in the center and lower half, with magenta, purple, blue, and green interference effects layered across it. Several soft circular light spots appear near the bottom edge. No clear figures or objects are distinctly defined.",
+      "description": "An abstract, glitch-like image filled with vertical bands, scan lines, and blurred streaks. The composition is dominated by hot red and orange in the lower and central areas, with magenta, purple, blue, and green interference patterns across the whole frame. Several soft circular light shapes appear near the bottom edge. No clear figures or objects are distinctly visible.",
       "signatureMotif": "vertical glitch stripes",
-      "medium": "digital abstract graphic",
+      "medium": "abstract digital graphic",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "red",
         "orange",
@@ -76,10 +85,18 @@
       "filename": "Earthling.jpg",
       "album": "Earthling",
       "artist": "",
-      "description": "A single person stands centered with their back to the viewer, legs apart and hands clasped behind them, wearing a long coat patterned like a red, white, and blue flag with dark triangular sections. The figure stands on vivid green grass overlooking a landscape of fields, trees, and a body of water beneath a bright blue sky with scattered clouds. The composition is symmetrical and photographic.",
-      "signatureMotif": "back-facing figure in a flag-patterned long coat",
+      "description": "A full-body photograph of one person seen from behind, standing wide-legged on bright green grass with hands clasped behind their back. They wear a long coat patterned like a large red, white, and blue flag, with black boots and short spiky hair visible from the rear. Behind them is a vivid landscape with fields, a line of trees, a body of water, and a bright blue sky with white clouds.",
+      "signatureMotif": "back view of a person in a flag-patterned long coat",
       "medium": "colour photograph",
-      "people": "one person standing with back turned in a long patterned coat",
+      "people": "one person standing with back to camera in a long patterned coat",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.398,
+        0.102,
+        0.617,
+        0.463
+      ],
+      "faceHeight": 0.073,
       "palette": [
         "blue",
         "green",
@@ -93,13 +110,16 @@
       "filename": "Pisces-Iscariot.jpg",
       "album": "Pisces Iscariot",
       "artist": "",
-      "description": "A soft, abstract painted image with a pale glowing center surrounded by murky organic shapes. Dark rounded forms and greenish smudges frame the edges, with subtle speckling and blended transitions throughout. The overall effect is hazy and fluid, with no clearly defined subject.",
-      "signatureMotif": "glowing pale center surrounded by dark green abstract forms",
+      "description": "A soft, abstract painted image with a large pale cream and yellow central area surrounded by murky green and black organic shapes. The edges are dark and diffuse, with watercolor-like blending and scattered speckles across the surface. No distinct figures or objects are defined.",
+      "signatureMotif": "pale central shape surrounded by dark green organic forms",
       "medium": "abstract painting",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
-        "pale yellow",
         "cream",
+        "pale yellow",
         "olive green",
         "dark green",
         "black"
@@ -110,15 +130,23 @@
       "filename": "Come-on-Feel-the-Lemonheads.jpg",
       "album": "Come on Feel the Lemonheads",
       "artist": "",
-      "description": "A collage of repeated black-and-white photographic close-ups arranged in vertical strips. The central strip shows a long-haired man's face looking slightly upward, while side strips contain cropped eyes, cheeks, and partial faces of other people. The images are grainy and high-contrast, with a bold red overlay element across the upper middle.",
-      "signatureMotif": "repeated close-up face collage in vertical strips",
-      "medium": "black-and-white photo collage with graphic overlay",
-      "people": "multiple people shown as cropped facial close-ups, centered on one long-haired man",
+      "description": "A collage-like black-and-white photographic design made from multiple close-up portrait fragments arranged in vertical strips. The central strip shows a large face of a long-haired man looking slightly upward, while other strips show partial faces, eyes, noses, and profiles around him. The overall image has a grainy texture with strong contrast and dark borders between the strips.",
+      "signatureMotif": "strip-collage of repeated black-and-white male faces",
+      "medium": "black-and-white photographic collage",
+      "people": "multiple men shown as repeated close-up portrait fragments, with one central long-haired man most prominent",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.001,
+        0,
+        0.999,
+        0.999
+      ],
+      "faceHeight": 0.278,
       "palette": [
         "black",
         "white",
         "grey",
-        "red",
+        "dark red",
         "yellow"
       ]
     },
@@ -127,16 +155,19 @@
       "filename": "Modern-Life-Is-Rubbish.jpg",
       "album": "Modern Life Is Rubbish",
       "artist": "",
-      "description": "A painted scene of a streamlined blue steam locomotive pulling carriages along railway tracks. White steam billows above and around the train, and the background shows open countryside under a dark, cloudy sky. The train is angled from left to right, dominating the foreground.",
-      "signatureMotif": "streamlined blue steam locomotive",
+      "description": "A painted scene of a streamlined blue steam locomotive pulling carriages along railway tracks. White steam billows above and around the engine, and the train is angled from left to right across the foreground. The background shows open countryside under a dark, cloudy sky, with earthy ground tones and distant green fields.",
+      "signatureMotif": "blue steam locomotive on railway tracks",
       "medium": "painting",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "blue",
         "grey",
         "cream",
         "brown",
-        "black"
+        "green"
       ]
     },
     {
@@ -144,16 +175,24 @@
       "filename": "Hackers-Original-Motion-Picture-Soundtrack.jpg",
       "album": "Hackers Original Motion Picture Soundtrack",
       "artist": "",
-      "description": "A stylized, neon-toned montage featuring five young people clustered in the center and viewed from above, all looking up toward the camera. Behind them are concentric circular tunnel-like graphics, enlarged partial faces, and bright electronic-looking visual elements. The image has a glossy, poster-like photographic composite style with strong pink, purple, blue, and red lighting.",
-      "signatureMotif": "five people looking up inside a neon circular graphic tunnel",
-      "medium": "photographic composite poster art",
-      "people": "five young people looking up toward the camera",
+      "description": "A stylized colour photo montage of five young people leaning inward and looking down toward the viewer from above. One person with braided hair is centered with arms spread wide; two others are at the bottom, and two flank the sides. The background is a neon, cyber-themed collage with concentric circular patterns, enlarged faces, glowing numbers, and electronic graphic elements in pink, purple, and blue.",
+      "signatureMotif": "five young people leaning over the viewer in a neon cyber collage",
+      "medium": "stylized photographic montage",
+      "people": "five young people leaning inward and looking down",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.129,
+        0,
+        0.873,
+        0.817
+      ],
+      "faceHeight": 0.173,
       "palette": [
         "pink",
         "purple",
         "blue",
-        "red",
-        "black"
+        "black",
+        "yellow"
       ]
     },
     {
@@ -161,10 +200,18 @@
       "filename": "Adore.jpg",
       "album": "Adore",
       "artist": "",
-      "description": "A dark, high-contrast black-and-white image with a ghostly figure emerging from deep shadow. The person appears centered-right, with pale face and hands visible, arms extended outward, and flowing dark fabric blending into the background. Blurred pale shapes hover in the upper left, adding a dreamlike motion effect.",
+      "description": "A dark, high-contrast black-and-white photograph of one person in flowing dark clothing against a nearly black background. The figure is positioned slightly right of center, leaning forward with both arms extended outward, while the face appears pale and sharply lit. Blurred, ghostly shapes in the upper left suggest motion or layered exposure.",
       "signatureMotif": "pale-faced figure with outstretched arms in darkness",
       "medium": "black-and-white photograph",
       "people": "one person in dark flowing clothing with arms spread",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.522,
+        0.41,
+        0.756,
+        0.677
+      ],
+      "faceHeight": 0.111,
       "palette": [
         "black",
         "white",
@@ -176,23 +223,31 @@
       "filename": "Hounds-of-Love.jpg",
       "album": "Hounds of Love",
       "artist": "",
-      "description": "A soft-focus portrait framed within a wide white border. A woman reclines against sheer lavender fabric, her dark hair spread out around her head. Two large dogs press close to her, one resting its head against her chest and another leaning across her arm. The image has a dreamy, diffused studio-photograph look.",
+      "description": "A soft-focus colour photograph framed within a wide white border. One woman reclines on a lavender surface, wrapped in translucent lilac fabric, with long dark hair spread out around her head. Two large dogs rest against her, one on each side, their heads nestled near her shoulders and chest. The image has a dreamy purple haze and gentle lighting.",
       "signatureMotif": "reclining woman embraced by two large dogs",
       "medium": "soft-focus colour photograph",
       "people": "one woman reclining with two dogs",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.325,
+        0.253,
+        0.624,
+        0.559
+      ],
+      "faceHeight": 0.164,
       "palette": [
+        "white",
         "lavender",
         "purple",
-        "white",
-        "brown",
-        "grey"
+        "pink",
+        "brown"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2-5",
-  "model": "openai/gpt-image-2.5/sunburst/edit",
-  "prompt": "A wide 16:9 countryside rail overlook seen from a slightly elevated viewpoint in bright overcast afternoon light, looking across vivid green grass down to curving railway tracks, open fields, scattered trees, and a distant body of water beneath a bright clouded sky; the primary subject is a streamlined blue steam locomotive from reference image 5 rounding the curve left to right below the overlook, trailing crisp white steam, while the person from reference image 2 stands prominently in the foreground on the grassy ridge with back to the viewer, legs apart and hands clasped behind them, wearing the long red white and blue patterned coat exactly as in the source. Nearby, the five people from reference image 6 are grouped together in a shallow circular survey ring on the grass, viewed from above within the same shot and all looking straight up toward the camera in their clustered pose; the woman from reference image 8 reclines at frame right on sheer lavender fabric spread over the grass, her dark hair arranged around her head with the two large dogs pressed close in the same pose; the person from reference image 7 stands farther back near the darker embankment edge in flowing dark clothing with pale face and hands visible and arms spread outward. Along the rail barrier, a sequence of tall vertical black-and-white poster strips reproduces the repeated close-up faces from reference image 4, centered on the long-haired man from reference image 4 with adjacent cropped eyes and cheeks, crossed by one bold red horizontal band. Source 1 appears as tall translucent trackside signal panels made of vertical glitch-like stripes in hot red, orange, magenta, purple, blue, and green near the rails, with a few soft circular light spots low in the frame; source 3 appears in the environment as a pale glowing opening in the cloud cover and softly murky olive-green vegetation framing the scene. Photographic realism, clean daylight editorial location shoot, crisp focus on all identifiable faces, physically plausible staging, medium-format clarity. Balanced wide composition with the coat figure as foreground anchor, the locomotive as sweeping middle-distance lead, portraits spaced across the ridge with clear hierarchy, and vertical graphic elements punctuating the horizon line. Palette of grass green, sky blue, steam white, signal red, orange, magenta, lavender, and deep blacks; mood expansive, graphic, lucid, and charged. Reference map for people (the album images are attached in this numbered order): reference image 2 shows one person standing with back turned in a long patterned coat; reference image 4 shows multiple people shown as cropped facial close-ups, centered on one long-haired man; reference image 6 shows five young people looking up toward the camera; reference image 7 shows one person in dark flowing clothing with arms spread; reference image 8 shows one woman reclining with two dogs. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-6",
+  "model": "openai/gpt-image-2.6/sunburst/edit",
+  "prompt": "A real rail embankment beside open water and low rural fields, seen from ground level in a wide 16:9 side view, the camera positioned partway down the slope so the horizon sits high and the tracks cut across the lower third; the primary subject is the person from reference image 2, shown from behind at the top of the embankment in the same wide-legged stance with hands clasped behind their back, wearing the same long red, white, and blue flag-patterned coat and black boots, looking out over a streamlined blue steam locomotive passing left to right below. The locomotive from reference image 5 is physically present on real tracks with cream carriages and a large billow of white steam rising behind and above it; the steam catches warm low sun and forms a pale cream-yellow center with darker olive-green land masses around it, echoing reference image 3. Fold reference image 1 into the scene as thin vertical bands of hot red, orange, magenta, purple, and blue appearing only as narrow signal-light reflections, window streaks, and polished metal colour interference, not as graphics. Fold reference image 6 into the place only through subtle concentric industrial details and small neon pink-purple-blue accents in signal glass and carriage reflections. Fold reference image 7 into the stark dark silhouette quality of the cast figure against the bright sky. Fold reference image 8 into a faint lavender tint within parts of the steam and the far sky near the horizon, with no reclining figure or dogs present. Photographic realism, daylight location photography, crisp detail, physically plausible train, coat, grass, steam, and distance. Compose it as an asymmetrical wide frame with the figure small but dominant near the upper right, the locomotive occupying the lower left and center, and generous open sky above. Light the scene with golden-hour side sun, clean and bright, producing clear shadows, saturated colour, and luminous steam. Palette of railway blue, grass green, bright sky blue, steam white, sunset orange, magenta, lavender, and black; mood windswept, expectant, cinematic. Reference map for people (the album images are attached in this numbered order): reference image 2 shows one person standing with back to camera in a long patterned coat, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 4, 6, 7, 8 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Twilight.jpg",
     "Earthling.jpg",

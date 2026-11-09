@@ -3,56 +3,70 @@
   "date": "2026-08-31",
   "type": "cover",
   "lane": null,
-  "lighting": null,
+  "lighting": "golden hour seaside glare",
+  "composition": "low angle, close subject left",
+  "cast": [
+    4
+  ],
+  "closeUps": [
+    {
+      "source": 4,
+      "reference": 6
+    }
+  ],
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Neon mouth over a tiled bathhouse",
-  "medium": "glazed ceramic mural",
-  "creativeDirection": "A glazed ceramic mural transforms the album motifs into a luminous modernist bathhouse wall, led by a giant tongue-shaped fountain mask and supported by graphic figural and emblematic tiles.",
-  "scene": "A frontal wide view into an empty indoor bathhouse, centered on a monumental tiled wall above a shallow reflecting pool.",
+  "concept": "Seaside kiosk with carnival mouth sculpture",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography of a real beachfront snack kiosk, translating the graphic sleeves into built objects, painted materials, and one bold sculpture while keeping a single crisp photographic moment.",
+  "scene": "A bright seaside promenade beside a compact snack kiosk and service counter, shot from a low standing angle so the kiosk and a large sculptural mouth dominate the foreground with open sky and a sliver of water behind.",
   "elements": [
     {
-      "source": 1,
-      "element": "The stylized angular yellow face becomes the main wall mask on the left side of the mural, built from bold ceramic colour fields with dark blue incised facial lines, green hair tiles, a red ear tile, and a small red circular eye accent."
+      "source": 4,
+      "element": "the five people from the group portrait stand clustered beside the kiosk in their original close, front-facing pose and styling, as if pausing on the promenade"
     },
     {
       "source": 2,
-      "element": "The multicoloured tongue-and-lips emblem becomes the dominant central fountain spout, oversized and cropped by the frame, with glossy gradient glaze flowing from blue through purple, red, orange, and yellow."
+      "element": "a large physically built carnival-style mouth sculpture projects from the kiosk roofline, with blue upper lip, white teeth, and a smooth rainbow tongue curling downward like a slide or sign form"
+    },
+    {
+      "source": 1,
+      "element": "the kiosk exterior uses the source palette as real painted panels and awning colours: yellow fascia, dark purple trim, red circular light, green canopy edge, and angular cut panel shapes suggesting the face geometry without depicting a face"
     },
     {
       "source": 3,
-      "element": "The white stylized flower appears as repeated simple tile inlays and one larger medallion reflected in the water, set against deep moss-green glazed sections."
-    },
-    {
-      "source": 4,
-      "element": "The group of five young people becomes a single horizontal procession of five simplified full-body mosaic figures along the lower wall, posterized into saturated blocks of colour, each distinct and readable but secondary to the fountain mask."
+      "element": "a single white metal flower pinwheel with two leaves is mounted as a small ornamental object near the counter, silhouetted against olive-green painted siding"
     },
     {
       "source": 5,
-      "element": "The whimsical vintage collage imagery becomes decorative border tiles and floating bathhouse ornament: butterflies, birds, tiny airships, stars, circular cameos, and abstract outlined shapes woven through the upper frieze and corners."
+      "element": "small believable promenade details nod to the collage: a moored advertising blimp far in the sky, a few star decals on a cooler, and tiny butterfly-shaped bunting tags tucked into the kiosk display"
     }
   ],
   "palette": [
-    "cobalt blue",
-    "sunlit yellow",
-    "moss green",
     "white",
-    "scarlet",
-    "violet"
+    "blue",
+    "yellow",
+    "olive green",
+    "red",
+    "purple"
   ],
-  "mood": "playful, graphic, surreal, sun-warmed, slightly reverent",
+  "mood": "playful and sharply graphic but physically real",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Drums-and-Wires.jpg",
       "album": "Drums and Wires",
       "artist": "",
-      "description": "A bold, stylized portrait of a human face fills most of the square. The face is rendered in flat yellow with sharp dark blue angular lines forming the features, a small red circular eye detail, green hair, and a red ear. Torn-paper-like blocks of red, yellow, green, and white sit against a dark blue background, creating a collage effect.",
-      "signatureMotif": "stylized angular yellow face",
-      "medium": "graphic illustration with cut-paper collage styling",
+      "description": "A bold graphic illustration of a stylized human face fills most of the square. The face is flat yellow with simplified dark purple features, a small red circular eye, green hair, and a red ear. Behind and around it are torn-paper-like blocks of red, green, white, and dark blue, creating a layered collage look.",
+      "signatureMotif": "stylized yellow face with angular dark features",
+      "medium": "graphic illustration with torn-paper collage styling",
+      "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "yellow",
-        "dark blue",
+        "dark purple",
         "red",
         "green",
         "white"
@@ -63,15 +77,19 @@
       "filename": "Forty-Licks.jpg",
       "album": "Forty Licks",
       "artist": "",
-      "description": "A large tongue-and-lips graphic dominates the right side on a plain white background. The tongue shape is cropped by the frame and filled with a smooth gradient shifting from blue at the top through purple and red to orange and yellow at the bottom, with white teeth above and a golden-yellow outline around the form. The composition is clean and minimal.",
-      "signatureMotif": "large multicoloured tongue-and-lips emblem",
-      "medium": "vector-style graphic illustration",
+      "description": "A large cropped tongue-and-lips graphic dominates the right side against a plain white background. The lips are blue at the top with white teeth visible, and the tongue hangs downward in a smooth gradient shifting from blue and purple into red, orange, and yellow. The composition is clean and minimal with the emblem enlarged and partially cut off by the frame.",
+      "signatureMotif": "large multicolored tongue-and-lips emblem",
+      "medium": "clean vector-style graphic illustration",
+      "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "white",
         "blue",
+        "yellow",
         "purple",
-        "red",
-        "orange"
+        "red"
       ]
     },
     {
@@ -79,12 +97,16 @@
       "filename": "Greatest-Hits.jpg",
       "album": "Greatest Hits",
       "artist": "",
-      "description": "A simple white flower emblem with a rounded bloom, stem, and two leaves is centered on a dark, softly mottled green background. The flower is flat and stylized, with black internal line details. The overall layout is sparse and symmetrical.",
-      "signatureMotif": "white stylized flower",
+      "description": "A centered white flower emblem with two leaves and a stem sits on a dark olive-green gradient background. The flower is simple and symmetrical, outlined with black interior lines, and casts a faint shadow that gives it a slightly raised appearance. The overall layout is sparse and formal.",
+      "signatureMotif": "white stylized flower with two leaves",
       "medium": "minimal graphic design",
+      "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "dark green",
-        "olive green",
+        "olive",
         "white",
         "black"
       ]
@@ -94,14 +116,23 @@
       "filename": "Empire-Records-The-Soundtrack.jpg",
       "album": "Empire Records The Soundtrack",
       "artist": "",
-      "description": "Five young people are posed shoulder-to-thigh across the cover against a white background, treated with high-contrast, posterized colour. A woman in the center stands forward with arms out, wearing a cropped long-sleeve top and plaid skirt. Around her are two women and two men in casual 1990s-style clothing, including a sleeveless sports jersey, cardigan, and dark fitted outfits. The image has a bright, saturated, cutout-photo look.",
-      "signatureMotif": "group of five young people posed in a row",
-      "medium": "posterized photographic collage",
+      "description": "Five young people are posed shoulder-to-thigh in a studio-style group portrait against a white background. In the center, a young woman with long dark hair stands forward with arms out, wearing a fuzzy cropped top and plaid skirt. To her left are a bald young woman in a cropped top and a short-haired young man in a sleeveless sports-style shirt; behind them stands a dark-haired young man in profile. To her right are a dark-haired young man in a checkered cardigan and a blonde young woman in a black cropped outfit with her hands raised near her head. The image has a high-contrast, posterized photographic look with warm yellow and greenish tones.",
+      "signatureMotif": "five young people posed in a stylized group portrait",
+      "medium": "posterized studio photograph",
+      "people": "five young people standing close together, centered around one woman in a plaid skirt",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.02,
+        0.29,
+        0.98,
+        0.77
+      ],
+      "faceHeight": 0.14,
       "palette": [
         "white",
         "yellow",
-        "teal",
-        "red",
+        "orange",
+        "green",
         "black"
       ]
     },
@@ -110,22 +141,26 @@
       "filename": "Led-Zeppelin-III.jpg",
       "album": "Led Zeppelin III",
       "artist": "",
-      "description": "A dense, whimsical collage spreads across a light cream background. Large outlined lettering-like shapes weave through the center, surrounded and filled with many small images and symbols: butterflies, birds, a dirigible, biplanes, stars, circular portraits, flowers, abstract blobs, and decorative fragments. The composition is busy and scattered, mixing black outlines with multicoloured accents and vintage-style cutout imagery.",
-      "signatureMotif": "surreal collage of small vintage-style images around large outlined forms",
-      "medium": "mixed-media collage illustration",
+      "description": "An off-white background is covered with a dense collage of small illustrated and photographic cutout elements surrounding large outlined lettering shapes. Scattered motifs include butterflies, birds, a zeppelin airship, old airplanes, circular portrait cameos, a mouth with teeth, abstract blobs and splashes, stars, floral forms, and various decorative symbols. The composition is busy and whimsical, with many small multicolored accents distributed across the page.",
+      "signatureMotif": "zeppelin airship among dense collage elements",
+      "medium": "mixed-media collage with illustration and photo cutouts",
+      "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
-        "cream",
+        "off-white",
         "black",
         "blue",
-        "pink",
-        "yellow"
+        "yellow",
+        "pink"
       ]
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2-5",
-  "model": "openai/gpt-image-2.5/sunburst/edit",
-  "prompt": "Frontal wide view into an empty indoor bathhouse, centered on a monumental tiled wall above a shallow reflecting pool; a giant tongue-and-lips fountain mask dominates the composition at center-right, projecting from the wall with glossy teeth above and a smooth rainbow tongue glaze shifting from blue through purple and red to orange and yellow; on the left, a bold angular yellow face formed from ceramic tile fields, with dark blue incised features, green hair, a red ear, and a small red circular eye, occupies most of the upper wall; along the lower wall runs a secondary procession of five distinct young people rendered once only as simplified mosaic figures in posterized 1990s-style clothing, arranged shoulder-to-thigh in a shallow row beneath the larger icons; integrate a white stylized flower as one large medallion and several smaller tile inlays on deep green sections, and weave source-inspired details from vintage collage imagery into the bathhouse architecture as decorative friezes and corner ornaments: butterflies, birds, tiny dirigibles, biplanes, stars, circular cameo medallions, flowers, and abstract outlined forms; glazed ceramic mural with hand-cut tiles, majolica-like glossy surfaces, visible grout lines, subtle kiln variation, and crisp graphic contours; strong visual hierarchy with the tongue fountain first, angular face second, figures third, ornamental borders last; balanced asymmetrical composition, bright overhead clerestory light reflecting in the pool, clean architectural perspective, no text; palette of cobalt blue, sunlit yellow, moss green, white, scarlet, violet, orange, cream, and black; mood playful, graphic, surreal, and quietly ceremonial. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-6",
+  "model": "openai/gpt-image-2.6/sunburst/edit",
+  "prompt": "A bright seaside promenade beside a compact snack kiosk and service counter, photographed from a low standing angle with the kiosk filling the left half of the frame and open sky with a thin strip of sea behind it; the primary subject is the five people from reference image 4 standing tightly clustered beside the kiosk in the same close studio-like pose, same expressions, same hair, same styling, facing camera clearly and recognisably; above and slightly behind them a large physically built carnival-style mouth sculpture inspired by reference image 2 projects from the kiosk roofline, with a blue upper lip, white teeth, and a smooth rainbow tongue curling downward as a real three-dimensional form; the kiosk itself folds in reference image 1 through real painted materials only: yellow fascia panels, dark purple trim, a red circular lamp, green canopy edge, and angular cut panel geometry that hints at the graphic face without depicting any picture; add a small white metal flower pinwheel with two leaves from reference image 3 mounted near the counter against olive-green siding; fold in reference image 5 subtly with a distant blimp in the sky and a few tiny whimsical display accents that belong to a beach kiosk; daylight location photography, crisp realistic lens rendering, no collage look, no painted mural or graphic image on surfaces; low-angle close framing with the group left-of-centre, the mouth sculpture rising above them, plenty of clean sky around the forms; golden hour seaside glare with bright clear exposure, saturated colours, defined edges, and no haze; palette of white, blue, yellow, olive green, red, and purple, playful, strange, and clean. Reference map for people (the album images are attached in this numbered order): reference image 4 shows five young people standing close together, centered around one woman in a plaid skirt, and reference image 6 is an enlarged close-up of those same people - take their faces from reference image 6. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Drums-and-Wires.jpg",
     "Forty-Licks.jpg",

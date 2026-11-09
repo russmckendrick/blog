@@ -3,66 +3,85 @@
   "date": "2026-09-07",
   "type": "cover",
   "lane": null,
-  "lighting": "bright overcast afternoon",
+  "lighting": "sunlight through arena skylights",
+  "composition": "high corner view across arena",
+  "cast": [
+    1,
+    2
+  ],
+  "closeUps": [
+    {
+      "source": 2,
+      "reference": 9
+    }
+  ],
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Open-air sculpture park with portraits and insects",
+  "concept": "Indoor riding ring under skylit moth mobile",
   "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography in a real rural sculpture park, using a bright editorial environmental portrait approach so the photographic sleeves remain recognisable while the illustrated and painted motifs become physical installations, wildlife displays, and set pieces within one plausible place.",
-  "scene": "A wide 16:9 view across an open grassy sculpture field under bright overcast sky, with two monumental metal heads facing each other near the center like a gateway. The camera is at eye level from a slight distance, capturing the space between the heads, nearby dry grass, a pale dirt path, and a low horizon with sparse trees and one distant building.",
+  "creativeDirection": "Daylight location photography in a real indoor equestrian arena, using a single skylit riding lesson scene to absorb the sleeves as architecture, props, and colour rather than separate displays.",
+  "scene": "A bright indoor riding arena with pale sand, white kickboards, steel roof trusses, and large skylights. A rider on a dark horse crosses the ring while, near the rail, the young man from source 1 stands bare-shouldered under the same arena light, his red cast tint translated into a nearby translucent red training screen and warm reflected color. Suspended high from the rafters hangs a physically built mobile of moth forms, with one larger reddish-orange moth most prominent. At the far end of the arena, two monumental brushed-metal horse-jump standards face each other like abstract heads with circular cutouts, making a surprising sculptural gateway.",
   "elements": [
     {
       "source": 1,
-      "element": "the young man appears once as a large red-tinted close-up portrait staged on the right side of the scene, framed tightly and vertically beside the sculpture field, keeping his curly hair, direct gaze, bare shoulder, and stark red-and-white split feeling"
+      "element": "the young man appears at life scale by the arena rail, with his close-up intensity preserved and his red tint translated into local reflected color and a translucent red screen beside him"
     },
     {
       "source": 2,
-      "element": "a real cowboy on a dark horse crosses the dusty path in the midground, wearing a light hat, denim jacket, neckerchief, and boots, with faint cattle suggested far behind in pale dust"
+      "element": "main action is a cowboy in hat, denim jacket, scarf, and boots riding a dark horse through pale kicked-up arena dust"
     },
     {
       "source": 3,
-      "element": "a cloud of butterflies and moths gathers around the space between the metal heads, led by one large orange moth, with a small red heart motif appearing subtly among them"
+      "element": "overhead suspended moth mobile with one large reddish-orange moth and smaller butterflies, plus a small red heart charm"
     },
     {
       "source": 4,
-      "element": "the two giant metal head sculptures are the central anchor of the composition, facing each other with target-like eyes and mouths nearly meeting"
+      "element": "two large brushed-metal jump standards facing each other with circular openings, echoing monumental heads"
     },
     {
       "source": 5,
-      "element": "helmeted figures in red appear once as supporting midground workers or performers near the lower left and center-left, with one raising an arm, their red clothing echoing the angular red graphic accents in the scene"
+      "element": "angular red, navy, black, and white blocks appear as horse blankets, jump padding, and arena equipment color accents"
     },
     {
       "source": 6,
-      "element": "the three male portraits appear once as theatrical cutout-style signs or suspended portrait panels installed against a red curtain-like outdoor scrim off to the left background, preserving the upside-down center head and decorative gold scroll feeling"
+      "element": "deep red stage-curtain color influences the hanging divider drapes at one side of the arena, with small gold ornamental hardware details"
     },
     {
       "source": 7,
-      "element": "a small stepped waterfall and rocky runnel occupies the lower middle-left background of the park, with a tiny suited man at the lower right edge of that water feature and a small stringed instrument resting on a rock"
+      "element": "a grayscale rocky-waterfall mural is not shown; instead its tones inform the far-end misty footing, with a small stringed instrument case and a dark equipment box near the wall"
     },
     {
       "source": 8,
-      "element": "the two people from reference image 8 stand side by side in a small grove of leafless trees at the far background, rendered as pale overexposed white-clad figures in daylight rather than night, retaining their paired stance and uncanny brightness"
+      "element": "two intense white work lights at a side doorway flare against a patch of vivid green turf just outside, suggesting paired glowing figures without depicting people"
     }
   ],
   "palette": [
-    "grass green",
-    "sky blue",
-    "weathered gray",
-    "dust beige",
-    "signal red",
-    "warm orange"
+    "sand beige",
+    "red",
+    "white",
+    "brushed silver",
+    "dark horse brown",
+    "navy black"
   ],
-  "mood": "strange but crisp, spacious, and legible",
+  "mood": "strange but crisp, open, and sunlit",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "Greatest-Hits.jpg",
       "album": "Greatest Hits",
       "artist": "",
-      "description": "A stark graphic portrait cover with a close-up photographic image of one young man’s face and bare shoulder filling the right side. His curly dark hair frames his face, and the portrait is heavily tinted red. A large red diagonal block cuts across a white background, creating a sharp split composition.",
-      "signatureMotif": "red-tinted close-up face",
+      "description": "A high-contrast photographic close-up portrait of one young man with curly dark hair, shown from bare shoulders upward and tinted deep red. His face fills the right side of the square, while a large diagonal red block cuts across a white background on the left.",
+      "signatureMotif": "red-tinted close-up male face",
       "medium": "photography with graphic color overlay",
-      "people": "one young man in close-up portrait with curly hair and bare shoulder",
+      "people": "one young man in a close-up portrait with bare shoulders",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.42,
+        0.02,
+        1,
+        0.93
+      ],
+      "faceHeight": 0.56,
       "palette": [
         "red",
         "white",
@@ -74,16 +93,24 @@
       "filename": "12-Golden-Country-Greats.jpg",
       "album": "12 Golden Country Greats",
       "artist": "",
-      "description": "A painted western scene showing a cowboy riding a dark horse through pale dust or mist. The rider wears a light cowboy hat, denim jacket, neckerchief, and boots, and holds a coiled rope. Faint cattle emerge in the dusty background, with sparse dry brush near the bottom corners and a wide beige sky-like backdrop.",
+      "description": "A painted western scene showing one cowboy riding a dark horse through pale dust or mist. The rider wears a light cowboy hat, denim jacket, scarf, and boots, and holds a coiled rope. A faint white cow appears in the hazy background, with sparse dry brush near the bottom corners and a soft beige sky behind.",
       "signatureMotif": "cowboy on a dark horse",
       "medium": "painting",
       "people": "one man riding a horse in western clothing",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.18,
+        0.08,
+        0.36,
+        0.33
+      ],
+      "faceHeight": 0.08,
       "palette": [
         "beige",
         "brown",
         "black",
         "gray",
-        "cream"
+        "white"
       ]
     },
     {
@@ -91,10 +118,13 @@
       "filename": "The-Colour-of-Spring.jpg",
       "album": "The Colour of Spring",
       "artist": "",
-      "description": "A decorative illustration bordered by a warm yellow field, centered on a dense arrangement of butterflies and moths on a pale background. A large reddish-orange moth or butterfly dominates the middle, surrounded by many smaller winged insects in varied shapes and patterns, plus a small red heart near the top center.",
-      "signatureMotif": "large central orange moth surrounded by butterflies",
+      "description": "A yellow-bordered illustrated layout centered on a dense arrangement of butterflies and moths on a pale background. A large reddish-orange moth dominates the middle, surrounded by many smaller insects in varied wing shapes and patterns, plus a small red heart near the top center.",
+      "signatureMotif": "large central reddish-orange moth",
       "medium": "illustration",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "yellow",
         "orange",
@@ -108,16 +138,19 @@
       "filename": "The-Division-Bell.jpg",
       "album": "The Division Bell",
       "artist": "",
-      "description": "A landscape photograph featuring two enormous metallic head sculptures facing each other in an open field. Their hollow eyes contain circular target-like forms, and their open mouths nearly meet at the center. Behind them are grassy ground, a distant building on the horizon, small red rectangular markers, and a blue sky with clouds.",
-      "signatureMotif": "two giant metal heads facing each other",
-      "medium": "photography",
+      "description": "A surreal outdoor scene with two enormous metallic head sculptures facing each other in a field. Their open mouths and circular eyes create a symmetrical composition, with blue sky and clouds above, ploughed ground below, and a distant building and small red flags visible between them.",
+      "signatureMotif": "two giant metallic heads facing each other",
+      "medium": "photography of sculpture installation",
       "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "blue",
         "gray",
-        "green",
+        "silver",
         "brown",
-        "red"
+        "green"
       ]
     },
     {
@@ -125,16 +158,19 @@
       "filename": "Exterminator-XTRMNTR.jpg",
       "album": "Exterminator XTRMNTR",
       "artist": "",
-      "description": "A fragmented collage-style image with angular blocks of muted blue-gray, black, red, and pink. Several helmeted figures in red clothing appear in cutout photographic pieces, including one large figure in the foreground raising an arm and another smaller running figure at lower left. The composition is layered with abstract shapes and partial machinery or vehicle details.",
-      "signatureMotif": "helmeted figure in red raising an arm",
-      "medium": "photographic collage with graphic design elements",
-      "people": "at least three people in fragmented views, wearing helmets and red clothing",
+      "description": "A collage-like graphic composition in dark blue, black, red, and white, featuring helmeted figures in red uniforms in fragmented cutout shapes. One large figure raises an arm in the foreground, while another smaller figure appears in the background near industrial or military-looking forms and angular red bands.",
+      "signatureMotif": "helmeted figure in red uniform raising an arm",
+      "medium": "photomontage / graphic collage",
+      "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "red",
-        "blue-gray",
+        "dark blue",
         "black",
         "white",
-        "pink"
+        "gray"
       ]
     },
     {
@@ -142,16 +178,19 @@
       "filename": "Temple-Of-Low-Men.jpg",
       "album": "Temple Of Low Men",
       "artist": "",
-      "description": "A theatrical painted cover with deep red stage curtains as the backdrop. Three male portrait cutouts are arranged across the center, with the middle head hanging upside down from above. The left and right figures wear jackets decorated with small house-like buildings, and the right figure also wears a shirt and dotted tie. Ornamental gold scroll-like shapes run across the top and bottom.",
-      "signatureMotif": "three male portraits with the center one upside down against red curtains",
-      "medium": "painting",
-      "people": "three men shown as painted portrait cutouts, one upside down",
+      "description": "A painted theatrical composition framed by deep red curtains, showing three male portrait cutouts against a black stage-like opening. One face is upside down in the center, while the two upright men flank it. Decorative gold ornamental shapes and small house-like forms appear around the portraits.",
+      "signatureMotif": "three male portrait cutouts with one upside down against red curtains",
+      "medium": "painting / mixed-media illustration",
+      "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "red",
         "black",
         "gold",
         "green",
-        "flesh tones"
+        "cream"
       ]
     },
     {
@@ -159,14 +198,19 @@
       "filename": "Punching-the-Clown.jpg",
       "album": "Punching the Clown",
       "artist": "",
-      "description": "A dark monochrome image of a tiered waterfall cascading over rocky ledges in a forested setting. The scene appears layered or collaged, with faint inserted elements including a small suited man standing at the lower right edge, a hand-like shape near the center, and a small stringed instrument resting near the lower middle-left. Trees, rocks, pools, and falling water fill the frame.",
-      "signatureMotif": "multi-tiered waterfall",
-      "medium": "photographic collage in black and white",
-      "people": "one small man in a suit standing at the lower right",
+      "description": "A dark monochrome collage of a tiered waterfall and rocky landscape with trees and pools. Faint inserted elements are layered into the scene, including a small hand with long red nails near the center-left, a small stringed instrument near the lower left-center, a box-like object near the lower middle-right, and a tiny suited figure standing at the lower right edge.",
+      "signatureMotif": "multi-tiered waterfall in grayscale collage",
+      "medium": "photographic collage",
+      "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
       "palette": [
         "black",
         "gray",
-        "white"
+        "white",
+        "dark green",
+        "muted red"
       ]
     },
     {
@@ -174,10 +218,18 @@
       "filename": "Losey.jpg",
       "album": "Losey",
       "artist": "",
-      "description": "A night photograph of two human figures standing side by side in a grassy clearing surrounded by leafless, twisting trees. The figures are intensely overexposed and glowing white, creating a halo of light around them, while the surrounding woods recede into deep darkness. The grass in the foreground is vividly lit green.",
+      "description": "A nighttime photograph of two glowing human figures standing side by side on bright green grass in the middle of a dark grove. Bare twisting tree branches arch inward from both sides, forming a tunnel-like frame around the overexposed figures against a nearly black background.",
       "signatureMotif": "two glowing figures in a dark forest clearing",
       "medium": "photography",
-      "people": "two people standing side by side, brightly glowing in the center of a dark wooded scene",
+      "people": "two people standing side by side, brightly overexposed in a dark wooded clearing",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.39,
+        0.56,
+        0.62,
+        0.88
+      ],
+      "faceHeight": 0.09,
       "palette": [
         "black",
         "dark blue",
@@ -187,9 +239,9 @@
     }
   ],
   "hint": null,
-  "composeBackend": "gpt-image-2-5",
-  "model": "openai/gpt-image-2.5/sunburst/edit",
-  "prompt": "A wide eye-level 16:9 view across a real rural sculpture park in open grass under bright overcast afternoon sky, camera positioned slightly back so the landscape, a dirt path, and the space between two giant facing metal head sculptures are clearly visible. The primary subject is the pair of enormous metallic heads from reference image 4, centered and facing each other like a gateway, with target-like circular eyes and mouths nearly meeting. The young man from reference image 1 appears once at the right side as a large red-tinted close-up portrait installation, tightly framed vertically, preserving his curly dark hair, direct expression, bare shoulder, and the stark red diagonal split against white. A real cowboy on a dark horse from reference image 2 moves through pale dust in the midground wearing a light cowboy hat, denim jacket, neckerchief, and boots, with faint cattle barely visible behind him. Butterflies and moths from reference image 3 gather in the air between and around the sculptures, led by one large central orange moth, with a small red heart subtly included. Helmeted figures in red from reference image 5 appear once as fragmented but physical supporting figures at lower left and center-left, one raising an arm, with hints of machinery and angular blue-gray and red structural panels nearby. The three men from reference image 6 appear once as theatrical portrait panels installed against an outdoor red curtain-like scrim in the left background, including the upside-down center head and touches of gold scroll ornament. A small tiered waterfall from reference image 7 runs through rocks in the lower middle-left background, with the small suited man from reference image 7 standing at its lower right edge and a small stringed instrument resting on a rock nearby. The two people from reference image 8 stand side by side once in a distant grove of leafless trees, retaining their bright overexposed glowing white presence even in daylight. Daylight location photography, clean editorial realism, crisp medium-format detail, physically plausible materials and scale. Strong central hierarchy on the metal heads, supporting action crossing left to right, open readable spacing, sharp focus throughout, no haze or smoke, no night effects. Palette of fresh greens, sky blue, weathered gray metal, pale beige dust, saturated reds, orange insect wings, cream whites; the mood is surreal but bright, clean, and immediately legible. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one young man in close-up portrait with curly hair and bare shoulder; reference image 2 shows one man riding a horse in western clothing; reference image 5 shows at least three people in fragmented views, wearing helmets and red clothing; reference image 6 shows three men shown as painted portrait cutouts, one upside down; reference image 7 shows one small man in a suit standing at the lower right; reference image 8 shows two people standing side by side, brightly glowing in the center of a dark wooded scene. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "composeBackend": "gpt-image-2-6",
+  "model": "openai/gpt-image-2.6/sunburst/edit",
+  "prompt": "A bright indoor equestrian arena seen from a high corner, looking diagonally across pale sand toward the far end; the main subject is the man from reference image 2 riding a dark horse through a veil of lightly kicked-up dust, while the man from reference image 1 stands at life scale near the side rail under the same skylight, bare-shouldered, keeping his direct close-up intensity as a real person in the space. Above them, suspend a physically built mobile of butterflies and moths with one large reddish-orange moth dominant and a tiny red heart charm; at the far end place two monumental brushed-metal jump standards facing each other with circular cutouts like abstract head sculptures; add angular red, navy, black, and white arena equipment accents inspired by reference image 5; a translucent red training screen near the man from reference image 1 provides his red field and diagonal block energy; one side of the arena has deep red divider drapes with small gold hardware details; near the wall sit a small stringed-instrument case and a dark utility box; through a side doorway, two intense white work lights flare above a patch of vivid green turf outside. Daylight location photography, physically plausible, crisp realistic detail, no collage or painted surfaces. Compose as a wide 16:9 frame from an elevated corner with layered depth across the ring, the rider crossing mid-ground and the standing figure offset near the rail, plenty of roof truss space for the moth mobile, no symmetry and no exhibition-like stations. Light the scene with strong sunlight pouring through arena skylights, bright and clean with soft-edged shadows and clear color separation. Palette of sand beige, red, white, brushed silver, dark brown, navy-black, and orange; mood uncanny yet open, fresh, and sharply observed. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one young man in a close-up portrait with bare shoulders; reference image 2 shows one man riding a horse in western clothing, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference image 8 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, monitor, television, sign, cut-out, or floor graphic, or carving it as a wall-mounted relief; show no sleeve's faces, heads, or figures as a picture, display, sign, or silhouette anywhere; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
   "inputs": [
     "Greatest-Hits.jpg",
     "12-Golden-Country-Greats.jpg",
