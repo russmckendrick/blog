@@ -1,0 +1,253 @@
+{
+  "version": 2,
+  "date": "2026-11-09",
+  "type": "artist",
+  "lane": null,
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "After-rain plaza convergence",
+  "creativeDirection": "A high-angle environmental portrait capturing a quiet, semi-candid meeting in the stark modern plaza with natural post-rain realism and restrained stylization.",
+  "scene": "Outside the modern glass-fronted building from source 3, on the damp concrete plaza between the door and the rectangular planters, with trimmed shrubs at frame edge and the same elevated vantage looking down into the space.",
+  "locationSource": 3,
+  "locationSetting": "Concrete plaza or walkway outside a modern building with large window panels, a glass door, rectangular concrete planters, drainage channels, and trimmed bushes.",
+  "locationEvidence": "Visible modern exterior with large glass facade, a glass door, concrete paving, long drainage channels, rectangular concrete planters, and trimmed box shrubs seen from above.",
+  "locationReference": 1,
+  "locationInput": "Ride.jpg",
+  "cast": [
+    {
+      "source": 3,
+      "person": "tall light-skinned man with short light hair in dark clothing",
+      "placement": "near center, standing upright and turned slightly toward the others as the visual anchor"
+    },
+    {
+      "source": 5,
+      "person": "light-skinned man with shoulder-length brown hair, light stubble, rectangular black glasses, and a denim jacket",
+      "placement": "left side near the building facade, slightly closer to camera, pausing with hands relaxed as he looks toward center"
+    },
+    {
+      "source": 6,
+      "person": "light-skinned woman with long auburn-red hair and large cat-eye glasses in a dark top",
+      "placement": "right side by a concrete planter, lightly leaning back on one hand and facing inward toward the group"
+    },
+    {
+      "source": 11,
+      "person": "medium-brown-skinned adult with a sculpted high pompadour, dramatic eye makeup, and dark high-collared clothing",
+      "placement": "foreground-right, a step nearer camera, chin lifted and gaze angled upward across the plaza"
+    }
+  ],
+  "selection": [
+    3,
+    5,
+    6,
+    11
+  ],
+  "palette": [
+    "wet concrete gray",
+    "soft black",
+    "muted charcoal",
+    "cool window reflections",
+    "auburn hair warmth",
+    "subtle blue-magenta accents"
+  ],
+  "mood": "quiet, attentive, slightly charged",
+  "artistSummaries": [
+    {
+      "source": 1,
+      "filename": "The-Avalanches.jpg",
+      "artist": "The Avalanches",
+      "description": "Two light-skinned adults pose closely in a dark studio-like portrait with dramatic colored light effects. The left person is more centered and prominent, with very short bleached-blond hair, a slim face, and a serious expression. The right person has short dark wavy hair, an earring, and raises one hand in front of the face; bright white and blue light streaks partially obscure the face and hand. One hand rests on the other person's shoulder. Both wear dark jackets. The image uses lens flares, long-exposure or composited light painting, and a moody blue-purple color cast.",
+      "primarySubject": "the centered left adult with very short bleached-blond hair, light skin, dark jacket, and a serious forward-facing expression",
+      "visiblePeople": [
+        "adult 1: light-skinned, very short bleached-blond hair, slim face, no visible facial hair, dark jacket, facing camera",
+        "adult 2: light-skinned, short dark wavy hair, earring, no visible facial hair, dark jacket, hand raised across face, leaning in from the right"
+      ],
+      "wardrobe": "Both adults wear dark outerwear; the left person has a dark jacket over a dark top, and the right person wears a dark jacket with a visible earring.",
+      "photoStyle": "stylized studio portrait with neon-like light streaks, lens flare, low-key lighting, and moody blue-purple tones",
+      "setting": "Dark, non-descript backdrop with no visible furniture or architecture; the environment is largely obscured by darkness and photographic light effects.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 2,
+      "filename": "ZZ-Top.jpg",
+      "artist": "ZZ Top",
+      "description": "Three light-skinned adult men stand in a studio portrait against a dark background with a sepia-brown, distressed texture overlay. The central man is most prominent and slightly forward, wearing a wide-brim hat, large black sunglasses, a long full beard, and a dark jacket. The man on the left also wears a wide-brim hat, large black sunglasses, a very long full beard, and a dark jacket. The man on the right has short gray hair, a mustache, no eyewear, and a dark jacket. All face the camera with reserved expressions.",
+      "primarySubject": "the tall central adult man wearing a wide-brim hat, large black sunglasses, a very long beard, and a dark jacket, standing slightly forward",
+      "visiblePeople": [
+        "adult 1: light-skinned man, wide-brim hat, large black sunglasses, very long full beard, dark jacket",
+        "adult 2: light-skinned man, wide-brim hat, large black sunglasses, very long full beard, dark jacket, centered and forward",
+        "adult 3: light-skinned man, short gray hair, mustache, no glasses, dark jacket"
+      ],
+      "wardrobe": "All three wear dark jackets; two also wear wide-brim hats and oversized dark sunglasses.",
+      "photoStyle": "formal studio group portrait with warm sepia toning and a distressed textured treatment",
+      "setting": "Plain dark studio backdrop with no visible location details.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 3,
+      "filename": "Ride.jpg",
+      "artist": "Ride",
+      "description": "Four light-skinned adult men stand spaced apart on a paved outdoor area, photographed from a high angle in black and white. The tallest figure stands near center in dark clothing. One man at right wears a dark flat cap. Another in the foreground turns partly away, walking or stepping. The fourth stands at left with head lowered slightly. All wear dark coats or jackets and slim trousers. Behind them is a modern building facade with large glass panels and a door; rectangular planters and trimmed shrubs line the concrete space.",
+      "primarySubject": "the tall central adult man in dark clothing standing upright and facing slightly left within the group",
+      "visiblePeople": [
+        "adult 1: light-skinned man at left, short dark hair, dark jacket, looking downward",
+        "adult 2: light-skinned tall man near center, short light hair, dark sweater or jacket, standing upright",
+        "adult 3: light-skinned man in foreground, back partly turned, medium dark coat, stepping forward",
+        "adult 4: light-skinned man at right, dark flat cap, dark jacket, standing in profile"
+      ],
+      "wardrobe": "All four wear dark coats or jackets with dark trousers and boots or shoes; one wears a flat cap.",
+      "photoStyle": "high-angle black-and-white environmental group photograph",
+      "setting": "Concrete plaza or walkway outside a modern building with large window panels, a glass door, rectangular concrete planters, drainage channels, and trimmed bushes.",
+      "settingStrength": "strong"
+    },
+    {
+      "source": 4,
+      "filename": "Alice-in-Chains.jpg",
+      "artist": "Alice in Chains",
+      "description": "Four light-skinned adult men pose in a studio set among large irregular sculptural forms. The central standing man is most prominent, with long blond dreadlocked hair, a dark headband, slight facial hair, and crossed arms, wearing a black leather coat over a striped shirt. At left stands a tall man with long straight blond hair and an open overshirt over a graphic T-shirt. At upper right stands a man with long dark curly hair in a dark leather jacket. In front at lower right, a seated or crouching man with long brown hair wears a dark hat and patterned sweater, looking directly at the camera. The lighting is warm with pink and beige tones.",
+      "primarySubject": "the central standing adult man with long blond dreadlocks, a dark headband, slight facial hair, and a black leather coat, arms crossed",
+      "visiblePeople": [
+        "adult 1: light-skinned tall man, long straight blond hair, light facial hair, open overshirt over T-shirt, standing left",
+        "adult 2: light-skinned man, long blond dreadlocks, headband, slight beard or goatee, black leather coat, arms crossed, center",
+        "adult 3: light-skinned man, long dark curly hair, dark jacket, standing upper right",
+        "adult 4: light-skinned man, long brown hair, dark hat, patterned sweater, seated or crouching front right"
+      ],
+      "wardrobe": "Leather jackets and layered casual rock clothing; one wears a headband, one a brimmed hat, one an overshirt over a T-shirt, and one a patterned sweater.",
+      "photoStyle": "posed color studio band portrait with warm theatrical lighting",
+      "setting": "Indoor studio set with large abstract textured sculptural forms or panels surrounding the group against softly lit walls.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 5,
+      "filename": "Steven-Wilson.jpg",
+      "artist": "Steven Wilson",
+      "description": "A single light-skinned adult man is shown in a close head-and-shoulders portrait. He has straight shoulder-length brown hair parted to one side, light stubble, rectangular black eyeglasses, and a calm direct gaze. He wears a blue denim or chambray jacket over a dark shirt. The softly blurred background shows a corridor or porch-like space with teal-framed windows on both sides and a dark ceiling receding behind him.",
+      "primarySubject": "the single adult man with shoulder-length brown hair, light stubble, rectangular black glasses, and a denim jacket",
+      "visiblePeople": [
+        "adult 1: light-skinned man, shoulder-length brown hair, light stubble, rectangular black glasses, blue denim jacket over dark shirt"
+      ],
+      "wardrobe": "Blue denim or chambray jacket layered over a dark crew-neck shirt.",
+      "photoStyle": "sharp close portrait with shallow depth of field and natural-looking light",
+      "setting": "Narrow architectural passage or porch with teal-painted window frames and a darker recessed interior behind.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 6,
+      "filename": "Tori-Amos.jpg",
+      "artist": "Tori Amos",
+      "description": "A single light-skinned adult woman is shown in a close portrait indoors. She has long layered auburn-red hair, large cat-eye eyeglasses with patterned upper rims and translucent lower rims, and a direct expression. She wears a dark top and delicate jewelry. Bright window light glows behind her from a multi-pane window, while the surrounding room is softly blurred and warm-toned.",
+      "primarySubject": "the single adult woman with long auburn hair and large cat-eye glasses facing the camera",
+      "visiblePeople": [
+        "adult 1: light-skinned woman, long auburn-red hair, large cat-eye eyeglasses, dark top, subtle jewelry"
+      ],
+      "wardrobe": "Dark long-sleeved top with eyeglasses and small jewelry accents.",
+      "photoStyle": "close indoor portrait with shallow depth of field, backlight from a window, and polished soft-focus treatment",
+      "setting": "Interior room with a bright multi-pane window behind the subject and indistinct furnishings or wall surfaces in soft blur.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 7,
+      "filename": "Paul-Simon.jpg",
+      "artist": "Paul Simon",
+      "description": "A single older light-skinned adult man appears in a close portrait indoors. He has short thinning gray hair, no visible facial hair, and a neutral slight smile. He wears a dark crew-neck shirt and holds two fingers near his chin; a wedding ring is visible. The softly blurred background suggests a home interior with a lamp, mantel or shelf, doorway, and muted walls.",
+      "primarySubject": "the single older adult man with short thinning gray hair, clean-shaven face, and dark shirt holding two fingers near his chin",
+      "visiblePeople": [
+        "adult 1: older light-skinned man, short thinning gray hair, clean-shaven, dark shirt, hand raised near chin with ring visible"
+      ],
+      "wardrobe": "Plain dark crew-neck shirt.",
+      "photoStyle": "intimate close portrait with soft natural indoor light and shallow depth of field",
+      "setting": "Domestic interior with softly blurred lamp, doorway, mantel or shelf, and neutral walls.",
+      "settingStrength": "moderate"
+    },
+    {
+      "source": 8,
+      "filename": "XTC.jpg",
+      "artist": "XTC",
+      "description": "Four light-skinned adult men pose against a plain off-white wall in a simple indoor group portrait. The man at front right is most prominent and closest to camera, with short light brown hair, a long face, and a black sweater; he holds a pair of round-lensed sunglasses and wears a wristwatch. At left stands a man with short dark hair in a striped button-up shirt. Next to him is a man with shaggy dark hair in a blue button-up shirt, turned slightly toward the others. The third man from left wears a gray button-up shirt and looks directly ahead. Lighting is even and straightforward.",
+      "primarySubject": "the front-right adult man in a black sweater holding round sunglasses, with short light brown hair and a long face",
+      "visiblePeople": [
+        "adult 1: light-skinned man, short dark hair, striped button-up shirt, standing left",
+        "adult 2: light-skinned man, shaggy dark hair, blue button-up shirt, turned slightly sideways",
+        "adult 3: light-skinned man, short dark hair, gray button-up shirt, standing behind center-right",
+        "adult 4: light-skinned man, short light brown hair, black sweater, wristwatch, holding round sunglasses, closest to camera"
+      ],
+      "wardrobe": "Casual shirts and sweater: striped button-up, blue button-up, gray button-up, and black crew-neck sweater; one wears a wristwatch and holds sunglasses.",
+      "photoStyle": "plain documentary-style indoor group portrait with neutral lighting",
+      "setting": "Simple interior with a blank off-white wall and no visible furniture or decor.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 9,
+      "filename": "The-Mission.jpg",
+      "artist": "The Mission",
+      "description": "Four light-skinned adult men appear in a tightly framed studio portrait against a soft gradient background. The left man has shoulder-length brown hair and wears dark clothing. The second man from left is most prominent, with long dark hair, a patterned headband, dark sunglasses, bracelets, and dark clothing, raising a hand near his face. The third man has long dark hair, dark sunglasses, an earring, and a patterned shirt under dark outerwear. The man at right has long dark hair and wears a peaked black hat and dark shirt. The image has a soft-focus, glam-styled look.",
+      "primarySubject": "the second adult from left with long dark hair, patterned headband, dark sunglasses, bracelets, and a raised hand near his face",
+      "visiblePeople": [
+        "adult 1: light-skinned man, shoulder-length brown hair, dark clothing, left side",
+        "adult 2: light-skinned man, long dark hair, patterned headband, dark sunglasses, bracelets, dark clothing, hand near face",
+        "adult 3: light-skinned man, long dark hair, dark sunglasses, earring, patterned shirt with dark outerwear",
+        "adult 4: light-skinned man, long dark hair, black peaked hat, dark shirt, right side"
+      ],
+      "wardrobe": "Dark glam/goth-style clothing with sunglasses, bracelets, a headband, a peaked hat, and one patterned shirt.",
+      "photoStyle": "soft-focus stylized studio band portrait with moody gradient backdrop",
+      "setting": "Plain studio background with no visible environmental features.",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 10,
+      "filename": "The-War-on-Drugs.jpg",
+      "artist": "The War on Drugs",
+      "description": "Seven adults stand closely together in a grassy park beneath a large leafy tree. The tallest man at far left has long wavy hair, a beard, and a multicolored jacket over a light shirt. Next to him stands a slim man with short dark hair in a light T-shirt and jeans. Near center, a man with curly dark hair and a mustache wears a brown jacket and scarf. A woman with long straight hair and a black outfit stands smiling slightly in front center. To her right stands a man with long dark curly hair in a dark jacket over a patterned shirt. Another bald or closely shaved man stands behind in a dark shirt. At far right is a bearded man wearing glasses, a red knit beanie, and a colorful tie-dye T-shirt. In the background are stone building walls, trees, and distant street elements.",
+      "primarySubject": "the adult woman near the front center with long straight hair, light skin, black outfit, and a slight smile",
+      "visiblePeople": [
+        "adult 1: light-skinned man, tall, long wavy hair, beard, multicolored jacket, far left",
+        "adult 2: light-skinned slim man, short dark hair, light T-shirt and jeans",
+        "adult 3: light-skinned man, curly dark hair, mustache, brown jacket and scarf",
+        "adult 4: light-skinned woman, long straight hair, black top and dark jeans, standing front center",
+        "adult 5: light-skinned man, long dark curly hair, dark jacket over patterned shirt",
+        "adult 6: light-skinned man, bald or closely shaved head, dark shirt, standing behind",
+        "adult 7: light-skinned man, beard, glasses, red knit beanie, tie-dye T-shirt, far right"
+      ],
+      "wardrobe": "Casual mixed clothing including jackets, jeans, scarf, black outfit, glasses, red knit beanie, and a bright tie-dye T-shirt.",
+      "photoStyle": "casual outdoor group portrait in natural light",
+      "setting": "Park or green space with grass, a large leafy tree overhead, stone building in the background, and hints of surrounding street or urban park features.",
+      "settingStrength": "strong"
+    },
+    {
+      "source": 11,
+      "filename": "Prince-The-Revolution.jpg",
+      "artist": "Prince The Revolution",
+      "description": "A single adult with medium-brown skin is shown in a tight stage portrait with a three-quarter upward gaze. The person has a sculpted high pompadour hairstyle, strong eyebrows, eyeliner or stage makeup around the eyes, and full lips slightly parted. Dark clothing with a high collar is visible at the bottom of frame. Blue light falls across one side of the face, and the background is an out-of-focus pink-purple lit stage or set with geometric divisions.",
+      "primarySubject": "the single adult with a high pompadour hairstyle, medium-brown skin, dramatic eye makeup, and dark high-collared clothing",
+      "visiblePeople": [
+        "adult 1: medium-brown-skinned adult, high pompadour hairstyle, dramatic eye makeup, no visible facial hair, dark high-collared clothing, looking upward to the side"
+      ],
+      "wardrobe": "Dark high-collared top or jacket.",
+      "photoStyle": "tight performance-style portrait with colored stage lighting and shallow focus",
+      "setting": "Out-of-focus stage or studio backdrop lit in pink-purple tones with large geometric panel divisions.",
+      "settingStrength": "weak"
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2-5",
+  "model": "openai/gpt-image-2.5/sunburst/edit",
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Concrete plaza or walkway outside a modern building with large window panels, a glass door, rectangular concrete planters, drainage channels, and trimmed bushes.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. A photorealistic group portrait in a damp concrete plaza outside a modern building with tall glass window panels and a glass door, seen from an elevated high-angle viewpoint; rectangular concrete planters and trimmed box shrubs define the space, with dark drainage channels and faint wet patches on the pavement after rain. Four adults share a quiet meeting: a tall light-skinned man with short light hair in dark clothes stands near center turned slightly toward the others; a light-skinned man with shoulder-length brown hair, light stubble, rectangular black glasses, and a denim jacket pauses near the facade on the left looking inward; a light-skinned woman with long auburn-red hair and large cat-eye glasses in a dark top leans lightly against a concrete planter on the right; and a medium-brown-skinned adult with a sculpted high pompadour, strong eye makeup, and dark high-collared clothing stands a step closer in the foreground-right with chin lifted and gaze angled upward. Compose them asymmetrically with layered depth and open negative space in the plaza, avoiding any straight lineup, using a moderately wide environmental lens from above, with all four clearly visible and naturally separated. Light the scene with soft overcast daylight and gentle reflections off the wet concrete and glass, consistent with a post-rain exterior. Keep color natural and restrained with cool concrete grays, soft blacks, subtle reflective blues and magentas, and the warm auburn hair as a small accent; the mood is calm, observant, and quietly electric. Attached cast plan: Attached reference image 1: portray only tall light-skinned man with short light hair in dark clothing; near center, standing upright and turned slightly toward the others as the visual anchor. Attached reference image 2: portray only light-skinned man with shoulder-length brown hair, light stubble, rectangular black glasses, and a denim jacket; left side near the building facade, slightly closer to camera, pausing with hands relaxed as he looks toward center. Attached reference image 3: portray only light-skinned woman with long auburn-red hair and large cat-eye glasses in a dark top; right side by a concrete planter, lightly leaning back on one hand and facing inward toward the group. Attached reference image 4: portray only medium-brown-skinned adult with a sculpted high pompadour, dramatic eye makeup, and dark high-collared clothing; foreground-right, a step nearer camera, chin lifted and gaze angled upward across the plaza. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
+  "reuseWeeks": 6,
+  "reuseBlocked": [
+    {
+      "artist": "New Order",
+      "lastUsed": "2026-10-12"
+    },
+    {
+      "artist": "Hole",
+      "lastUsed": "2026-11-02"
+    }
+  ],
+  "reuseRelaxed": [],
+  "inputs": [
+    "Ride.jpg",
+    "Steven-Wilson.jpg",
+    "Tori-Amos.jpg",
+    "Prince-The-Revolution.jpg"
+  ]
+}
