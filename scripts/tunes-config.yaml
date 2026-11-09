@@ -13,9 +13,9 @@ settings:
   classification_cache_days: 90
 
   # Image backend for the weekly album-cover header:
-  # gpt-image-2-5 | gpt-image-2 | nano-banana
+  # gpt-image-2-6 | gpt-image-2-5 | gpt-image-2 | nano-banana
   # (unknown/missing values fall back to nano-banana)
-  cover_backend: gpt-image-2-5
+  cover_backend: gpt-image-2-6
 
   # Backend to drop to when cover_backend refuses on a content-policy violation (e.g. GPT
   # Image moderating real-person likenesses). Set to "none" to disable; when unset it
@@ -28,11 +28,11 @@ settings:
   cover_history_size: 8
 
   # Image backend for the weekly artist group portrait:
-  # gpt-image-2-5 | nano-banana-pro | gpt-image-2 | nano-banana
+  # gpt-image-2-6 | gpt-image-2-5 | nano-banana-pro | gpt-image-2 | nano-banana
   # (unknown/missing values fall back to nano-banana-pro)
   # Chosen over nano-banana-pro on a four-week bake-off: nano-banana-pro framed the group
   # too wide, smoothed faces toward generic likenesses, and dropped defining traits.
-  artist_portrait_backend: gpt-image-2-5
+  artist_portrait_backend: gpt-image-2-6
 
   # Backend to drop to when artist_portrait_backend refuses on a content-policy violation.
   # Portraits are real-person likenesses, which the GPT backends moderate hardest, so the

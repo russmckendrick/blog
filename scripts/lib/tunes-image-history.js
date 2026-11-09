@@ -17,7 +17,10 @@ const __dirname = path.dirname(__filename)
 // Entries are ordered and trimmed by their own `date`, never by file position: backfills and
 // repair runs append older weeks after newer ones, and a positional window silently served the
 // art director a stale do-not-repeat list while evicting genuinely recent weeks.
-const HISTORY_PATH = path.join(__dirname, '..', '.tunes-image-history.json')
+// TUNES_IMAGE_HISTORY_PATH points test runs at a scratch copy, so a batch of trial renders
+// can chain their do-not-repeat history (each run sees the previous one's choices) without
+// touching the committed file.
+const HISTORY_PATH = process.env.TUNES_IMAGE_HISTORY_PATH || path.join(__dirname, '..', '.tunes-image-history.json')
 const MAX_ENTRIES_PER_TYPE = 26
 
 // Sort key for an entry. Undated entries sort oldest so a malformed record can never displace
@@ -131,6 +134,21 @@ export async function recentLighting(type, count = 8, historyPath = HISTORY_PATH
     .slice(-count)
     .reverse()
     .map(entry => String(entry.lighting).trim())
+    .filter(Boolean)
+}
+
+// The newest `count` recorded compositions (camera position and framing) for an image type,
+// most recent first. Entries predating the field are skipped.
+export async function recentCompositions(type, count = 8, historyPath = HISTORY_PATH) {
+  if (!Number.isFinite(count) || count <= 0) return []
+  const history = await loadHistory(historyPath)
+  const matching = dedupeByTypeAndDate(
+    history.entries.filter(entry => entry?.type === type && entry?.composition)
+  )
+  return byDateAscending(matching)
+    .slice(-count)
+    .reverse()
+    .map(entry => String(entry.composition).trim())
     .filter(Boolean)
 }
 

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { promises as fs } from 'fs'
 import os from 'os'
 import path from 'path'
-import { appendHistory, recentConcepts, recentLighting, recentMedia, recentYearTreatments, loadHistory } from '../lib/tunes-image-history.js'
+import { appendHistory, recentCompositions, recentConcepts, recentLighting, recentMedia, recentYearTreatments, loadHistory } from '../lib/tunes-image-history.js'
 
 async function writeHistory(entries) {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'tunes-history-'))
@@ -156,4 +156,19 @@ test('feeds Year in Music treatments back on their own type, collapsed and newes
     'hedge-cut digits on a hillside'
   ])
   assert.deepEqual(await recentConcepts('cover', 8, file), ['D'], 'year covers stay out of the weekly window')
+})
+
+test('feeds recent compositions back newest first, skipping entries without it', async () => {
+  const file = await writeHistory([
+    { type: 'cover', date: '2026-11-02', concept: 'A', composition: 'wide elevated frontal tableau' },
+    { type: 'cover', date: '2026-11-09', concept: 'B' },
+    { type: 'cover', date: '2026-11-16', concept: 'C', composition: 'low angle, lone figure off-centre' },
+    { type: 'artist', date: '2026-11-16', concept: 'D', composition: 'tight group crop' }
+  ])
+
+  assert.deepEqual(await recentCompositions('cover', 8, file), [
+    'low angle, lone figure off-centre',
+    'wide elevated frontal tableau'
+  ])
+  assert.deepEqual(await recentCompositions('cover', 0, file), [])
 })

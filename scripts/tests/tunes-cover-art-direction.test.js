@@ -2,15 +2,28 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import {
   buildArtDirectionRequestText,
+  buildCompositionBlock,
   buildLightingBlock,
   buildCoverSummaryRequestText,
   buildFallbackArtDirection,
   buildGenerationPrompt,
   buildReferenceMap,
   buildYearBlock,
+  closeUpBox,
+  CLOSE_UP_BELOW,
+  dropModerationRisks,
+  isCastable,
+  isPassage,
+  MIN_CASTABLE_FACE,
+  findFlatCopies,
+  findUncastPeople,
+  MAX_CAST,
+  normalizeCast,
+  normalizeModerationRisk,
   hasPeople,
   isLowLight,
   isPhotographicMedium,
+  COMPOSITION_REPEAT_WINDOW,
   LIGHTING_REPEAT_WINDOW,
   normalizeArtDirection,
   normalizeCoverSummaries,
@@ -306,4 +319,158 @@ test('the year brief refuses overlays and recent treatments case-insensitively',
   assert.match(block, /must open with the year/)
   assert.equal(block.match(/hedge maze digits/gi).length, 1)
   assert.match(block, /- marquee bulbs/)
+})
+
+test('always refuses the symmetrical tableau and lists only the recent compositions', () => {
+  const block = buildCompositionBlock([
+    'low angle, lone figure off-centre',
+    'Low angle, lone figure off-centre',
+    'top-down over a crowded floor',
+    'long lens through a doorway',
+    'close cropped interior',
+    'wide elevated frontal tableau'
+  ])
+  assert.match(block, /symmetrical tableau/)
+  assert.equal(block.match(/low angle, lone figure off-centre/gi).length, 1, 'repeats collapse')
+  assert.doesNotMatch(block, /wide elevated frontal tableau/, `only the last ${COMPOSITION_REPEAT_WINDOW} are refused`)
+  assert.match(buildCompositionBlock([]), /symmetrical tableau/)
+  assert.doesNotMatch(buildCompositionBlock([]), /most recent covers/)
+})
+
+test('hard constraints refuse incidental plants and sleeve murals', () => {
+  const prompt = buildGenerationPrompt({ prompt: 'A stone courtyard at noon.' }, [])
+  assert.match(prompt, /no flowers, potted plants/)
+  assert.match(prompt, /mural, banner, poster/)
+})
+
+test('records the chosen composition, with a fallback when the director omits it', () => {
+  const summaries = normalizeCoverSummaries([], [{ source: 1, filename: 'a.png', album: 'A' }])
+  const refs = [{ source: 1, filename: 'a.png', album: 'A' }]
+  assert.equal(normalizeArtDirection({ prompt: 'x', composition: 'top-down over a floor' }, summaries, refs).composition, 'top-down over a floor')
+  assert.ok(normalizeArtDirection({ prompt: 'x' }, summaries, refs).composition)
+})
+
+test('reads the moderation flag as empty unless the summary gives a reason', () => {
+  assert.equal(normalizeModerationRisk('none'), '')
+  assert.equal(normalizeModerationRisk('None.'), '')
+  assert.equal(normalizeModerationRisk(undefined), '')
+  assert.equal(normalizeModerationRisk(false), '')
+  assert.equal(normalizeModerationRisk(true), 'flagged')
+  assert.equal(normalizeModerationRisk('women in lingerie-style outfits'), 'women in lingerie-style outfits')
+})
+
+test('drops flagged sleeves and renumbers the rest to match the attached order', () => {
+  const summaries = normalizeCoverSummaries([
+    { source: 1, description: 'a purple shape', moderationRisk: 'none' },
+    { source: 2, description: 'models posed round a film camera', moderationRisk: 'women in lingerie-style outfits in suggestive poses' },
+    { source: 3, description: 'pigeons over flats' }
+  ], [
+    { source: 1, filename: 'a.jpg', album: 'A' },
+    { source: 2, filename: 'zz.jpg', album: 'Greatest Hits' },
+    { source: 3, filename: 'c.jpg', album: 'C' }
+  ])
+  const { kept, keepIndexes, dropped } = dropModerationRisks(summaries)
+  assert.deepEqual(keepIndexes, [0, 2])
+  assert.deepEqual(kept.map(item => [item.source, item.filename]), [[1, 'a.jpg'], [2, 'c.jpg']])
+  assert.deepEqual(dropped.map(item => item.filename), ['zz.jpg'])
+})
+
+test('keeps every sleeve rather than fall below the minimum', () => {
+  const summaries = [
+    { source: 1, filename: 'a.jpg', moderationRisk: 'x' },
+    { source: 2, filename: 'b.jpg', moderationRisk: '' }
+  ]
+  const { kept, dropped } = dropModerationRisks(summaries, { minKeep: 2 })
+  assert.equal(kept.length, 2)
+  assert.equal(dropped.length, 0)
+})
+
+const CAST_SUMMARIES = [
+  { source: 1, people: 'none' },
+  { source: 2, people: 'four people standing together' },
+  { source: 3, people: 'one woman crouching in a box' },
+  { source: 4, people: 'one man with head bowed' }
+]
+
+test('keeps the cast to sources with people, deduped and capped', () => {
+  assert.deepEqual(normalizeCast([1, 3, '3', 2, 4], CAST_SUMMARIES), [3, 2])
+  assert.equal(normalizeCast([2, 3, 4], CAST_SUMMARIES).length, MAX_CAST)
+  assert.deepEqual(normalizeCast(undefined, CAST_SUMMARIES), [])
+})
+
+test('the reference map names only the cast and excludes the rest', () => {
+  const map = buildReferenceMap(CAST_SUMMARIES, [3])
+  assert.match(map, /reference image 3 shows one woman/)
+  assert.doesNotMatch(map, /reference image 2 shows/)
+  assert.match(map, /Nobody from reference images 2, 4 appears/)
+  assert.match(buildReferenceMap(CAST_SUMMARIES), /reference image 2 shows.*reference image 4 shows/, 'no cast keeps every person')
+})
+
+test('spots people from uncast sources in the prompt', () => {
+  const prompt = 'The woman from reference image 3 crouches in an alcove; the man from reference image 4 bows by a cross; pigeons from reference image 1 wheel overhead.'
+  assert.deepEqual(findUncastPeople(prompt, [3], CAST_SUMMARIES), [4])
+  assert.deepEqual(findUncastPeople(prompt, [3, 4], CAST_SUMMARIES), [])
+})
+
+test('every person is lit by the scene, not the sleeve', () => {
+  assert.match(buildGenerationPrompt({ prompt: 'x' }, []), /same light as the rest of the scene/)
+})
+
+test('reads the people box and face height from the summary, tolerating percentages', () => {
+  const [summary] = normalizeCoverSummaries([
+    { source: 1, people: 'two men side by side', peopleBox: [55, 20, 85, 45], faceHeight: 8 }
+  ], [{ source: 1, filename: 'psb.jpg', album: 'Discography' }])
+  assert.deepEqual(summary.peopleBox, [0.55, 0.2, 0.85, 0.45])
+  assert.equal(summary.faceHeight, 0.08)
+  const [none] = normalizeCoverSummaries([{ source: 1, people: 'none', peopleBox: null, faceHeight: 0 }], [{ source: 1, filename: 'x.jpg' }])
+  assert.equal(none.peopleBox, null)
+  assert.equal(none.faceHeight, null)
+})
+
+test('faces too small to copy are not castable; unmeasured ones still are', () => {
+  assert.equal(isCastable({ source: 1, people: 'a crowd', faceHeight: MIN_CASTABLE_FACE / 2 }), false)
+  assert.equal(isCastable({ source: 1, people: 'two men', faceHeight: 0.08 }), true)
+  assert.equal(isCastable({ source: 1, people: 'two men', faceHeight: null }), true)
+  assert.deepEqual(normalizeCast([1, 2], [
+    { source: 1, people: 'a crowd', faceHeight: 0.02 },
+    { source: 2, people: 'one woman', faceHeight: 0.3 }
+  ]), [2])
+})
+
+test('small cast faces get a padded close-up box; large ones do not', () => {
+  const box = closeUpBox({ peopleBox: [0.5, 0.2, 0.9, 0.5], faceHeight: 0.08 })
+  assert.ok(box[0] < 0.5 && box[1] < 0.2 && box[2] > 0.9 && box[3] > 0.5)
+  assert.ok(box.every(value => value >= 0 && value <= 1))
+  assert.equal(closeUpBox({ peopleBox: [0.1, 0.1, 0.9, 0.9], faceHeight: CLOSE_UP_BELOW + 0.1 }), null)
+  assert.equal(closeUpBox({ peopleBox: null, faceHeight: 0.05 }), null)
+})
+
+test('the reference map points the cast at their close-up', () => {
+  const map = buildReferenceMap([{ source: 6, people: 'two men side by side' }], [6], [{ source: 6, reference: 9 }])
+  assert.match(map, /reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9/)
+})
+
+test('corridors, underpasses, and doorway views count as one passage family', () => {
+  for (const value of ['through doorway, deep diagonal view', 'low angle through underpass opening', 'view through doorway, diagonal depth', 'school hallway at dawn', 'loading bay looking out']) {
+    assert.equal(isPassage(value), true, value)
+  }
+  for (const value of ['top-down over a crowded floor', 'low angle, lone figure off-centre', 'wide beach, figures small']) {
+    assert.equal(isPassage(value), false, value)
+  }
+})
+
+test('a recent passage cover refuses the whole family, and the menu no longer offers doorways', () => {
+  assert.doesNotMatch(buildCompositionBlock([]), /for example[^.]*through a doorway/)
+  assert.doesNotMatch(buildCompositionBlock([]), /must not be set in or framed through a corridor/)
+  assert.match(buildCompositionBlock(['top-down over a market', 'view through doorway, diagonal depth']), /must not be set in or framed through a corridor/)
+})
+
+test('catches sleeves written in as murals, backdrops, and painted panels', () => {
+  const prompt = 'A bright studio room with a painted concrete floor; a large freestanding painted green circular backdrop from reference image 1; a metallic robotic skull head from reference image 3 on a stand; a neon-green skeleton from reference image 4 rendered as a painted wall mural under the real hoop. Behind the band, a real painted panel carries the burst motif from reference image 6, adapted as venue decor.'
+  assert.deepEqual(findFlatCopies(prompt), [1, 4, 6])
+})
+
+test('leaves real objects, materials, and unreferenced paint alone', () => {
+  const prompt = 'A low angle on a car park with freshly painted white lines; a glossy purple sculpture shaped like the form from reference image 2 rests on a crate; the woman from reference image 5 wears the orange and red of reference image 1 as a silk shirt.'
+  assert.deepEqual(findFlatCopies(prompt), [])
 })

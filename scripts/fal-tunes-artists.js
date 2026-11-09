@@ -573,7 +573,7 @@ Notes:
     scripts/.tunes-artist-usage.json. A week with too few unused artists relaxes the rule
     least-recently-used first and warns. Runs that write the week's real portrait update
     the usage file; throwaway --output paths do not.
-  - The image backend (gpt-image-2-5, nano-banana-pro, gpt-image-2, or nano-banana) is
+  - The image backend (gpt-image-2-6, gpt-image-2-5, nano-banana-pro, gpt-image-2, or nano-banana) is
     chosen by settings.artist_portrait_backend in scripts/tunes-config.yaml. On a
     content-policy refusal the generator retries with a smaller cast, then drops to the
     fallback backend (settings.artist_portrait_fallback_backend, env

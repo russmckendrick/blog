@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { BACKENDS, getBackend, normalizeBackendId } from '../lib/image-backends/index.js'
 import { buildInput } from '../lib/image-backends/nano-banana-pro.js'
 import { buildInput as buildGptImage25Input } from '../lib/image-backends/gpt-image-2-5.js'
+import { buildInput as buildGptImage26Input } from '../lib/image-backends/gpt-image-2-6.js'
 
 test('registers Nano Banana Pro separately from Nano Banana 2', () => {
   assert.equal(BACKENDS['nano-banana-pro'].label, 'Nano Banana Pro')
@@ -69,4 +70,37 @@ test('accepts the quality levels GPT Image 2.5 added and rejects the rest', () =
   assert.equal(buildGptImage25Input({ imageUrls: [], prompt: 'x', quality: 'max' }).quality, 'max')
   assert.equal(buildGptImage25Input({ imageUrls: [], prompt: 'x', quality: 'ultra' }).quality, 'xhigh')
   assert.equal(buildGptImage25Input({ imageUrls: [], prompt: 'x', quality: 'high' }).quality, 'high')
+})
+
+test('tells GPT Image 2.6 apart from 2.5 and 2 however it is spelled', () => {
+  assert.equal(BACKENDS['gpt-image-2-6'].label, 'GPT Image 2.6')
+  assert.equal(normalizeBackendId('gpt-image-2.6'), 'gpt-image-2-6')
+  assert.equal(normalizeBackendId('GPT Image 2.6'), 'gpt-image-2-6')
+  assert.equal(normalizeBackendId('gpt-image-2-6'), 'gpt-image-2-6')
+  assert.equal(normalizeBackendId('gpt-image-2.5'), 'gpt-image-2-5')
+  assert.equal(normalizeBackendId('gpt-image-2'), 'gpt-image-2')
+})
+
+test('builds a 16:9 GPT Image 2.6 edit request and only sends reasoning effort when asked', () => {
+  const previous = process.env.GPT_IMAGE_2_6_REASONING_EFFORT
+  delete process.env.GPT_IMAGE_2_6_REASONING_EFFORT
+  try {
+    assert.deepEqual(buildGptImage26Input({
+      imageUrls: ['https://example.com/album.png'],
+      prompt: 'A rooftop at noon'
+    }), {
+      prompt: 'A rooftop at noon',
+      image_urls: ['https://example.com/album.png'],
+      image_size: { width: 2560, height: 1440 },
+      quality: 'xhigh',
+      num_images: 1,
+      output_format: 'png'
+    })
+    assert.equal(buildGptImage26Input({ imageUrls: [], prompt: 'x', reasoningEffort: 'medium' }).reasoning_effort, 'medium')
+    assert.equal('reasoning_effort' in buildGptImage26Input({ imageUrls: [], prompt: 'x', reasoningEffort: 'extreme' }), false)
+    assert.equal(buildGptImage26Input({ imageUrls: [], prompt: 'x', quality: 'max' }).quality, 'max')
+  } finally {
+    if (previous === undefined) delete process.env.GPT_IMAGE_2_6_REASONING_EFFORT
+    else process.env.GPT_IMAGE_2_6_REASONING_EFFORT = previous
+  }
 })

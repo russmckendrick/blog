@@ -8,13 +8,16 @@ import { COVER_BLOCKLIST } from './tunes-cover-blocklist.js'
 import { isContentPolicyViolation } from './lib/fal-content-policy.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { getBackend, BACKENDS } from './lib/image-backends/index.js'
-import { appendHistory, recentConcepts, recentLighting, recentMedia, recentYearTreatments, writeSidecar } from './lib/tunes-image-history.js'
+import { appendHistory, recentCompositions, recentConcepts, recentLighting, recentMedia, recentYearTreatments, writeSidecar } from './lib/tunes-image-history.js'
 import { extractTunesDate } from './lib/tunes-post-context.js'
 import {
   buildGenerationPrompt as buildFreeformGenerationPrompt,
+  closeUpBox,
   designCoverArtDirection,
+  dropModerationRisks,
   isLowLight,
   isPhotographicMedium,
+  COMPOSITION_REPEAT_WINDOW,
   LIGHTING_REPEAT_WINDOW,
   normalizeYear,
   summarizeAlbumCovers
@@ -336,6 +339,28 @@ async function prepareReferenceImage(imagePath) {
     .toBuffer()
 }
 
+// Crop a padded close-up of a sleeve's people from the same trimmed reference the summariser
+// measured, enlarged so a small face arrives at a size the image model can actually copy.
+const CLOSE_UP_SIZE = 1024
+
+async function uploadCloseUp(imagePath, box, debug = false) {
+  const reference = await prepareReferenceImage(imagePath)
+  const { width = 0, height = 0 } = await sharp(reference).metadata()
+  const left = Math.floor(box[0] * width)
+  const top = Math.floor(box[1] * height)
+  const cropWidth = Math.max(16, Math.min(width - left, Math.ceil((box[2] - box[0]) * width)))
+  const cropHeight = Math.max(16, Math.min(height - top, Math.ceil((box[3] - box[1]) * height)))
+  const buffer = await sharp(reference)
+    .extract({ left, top, width: cropWidth, height: cropHeight })
+    .resize(CLOSE_UP_SIZE, CLOSE_UP_SIZE, { fit: 'inside', kernel: sharp.kernel.lanczos3, withoutEnlargement: false })
+    .jpeg({ quality: 92 })
+    .toBuffer()
+  const name = `closeup-${path.basename(imagePath)}`
+  const url = await fal.storage.upload(new File([buffer], name, { type: 'image/jpeg' }))
+  if (debug) console.log(`    Uploaded close-up ${name} (${cropWidth}x${cropHeight} -> ${CLOSE_UP_SIZE}) -> ${url}`)
+  return url
+}
+
 async function uploadAlbumImages(imagePaths, debug = false) {
   const urls = []
 
@@ -547,6 +572,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   // Photographic treatments are recorded but never refused - photography is the default.
   const avoidMedia = (await recentMedia(historyType, historySize)).filter(medium => !isPhotographicMedium(medium))
   const lightingHistory = await recentLighting(historyType, historySize)
+  const compositionHistory = await recentCompositions(historyType, historySize)
   const avoidYearTreatments = year ? await recentYearTreatments(historyType, historySize) : []
   const requireBrightLight = isLowLight(lightingHistory[0])
 
@@ -578,6 +604,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     if (avoidConcepts.length > 0) console.log(`  Avoiding recent concepts: ${avoidConcepts.join(' | ')}`)
     if (avoidMedia.length > 0) console.log(`  Avoiding recent media: ${avoidMedia.join(' | ')}`)
     if (lightingHistory.length > 0) console.log(`  Avoiding recent lighting: ${lightingHistory.slice(0, LIGHTING_REPEAT_WINDOW).join(' | ')}`)
+    if (compositionHistory.length > 0) console.log(`  Avoiding recent compositions: ${compositionHistory.slice(0, COMPOSITION_REPEAT_WINDOW).join(' | ')}`)
     if (requireBrightLight) console.log(`  Previous cover was low-light (${lightingHistory[0]}); requiring daylight`)
     if (avoidYearTreatments.length > 0) console.log(`  Avoiding recent year treatments: ${avoidYearTreatments.join(' | ')}`)
   }
@@ -593,20 +620,29 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     }
 
     for (let attempt = 0; attempt < attemptSets.length; attempt++) {
-      const attemptPaths = attemptSets[attempt]
+      let attemptPaths = attemptSets[attempt]
 
       try {
         if (debug) {
           console.log(`  Attempt ${attempt + 1} (${backend.label}): generating a freeform cover from ${attemptPaths.length} album covers`)
         }
 
-        const imageUrls = await uploadAlbumImages(attemptPaths, debug)
-        const sourceReferences = buildSourceReferences(attemptPaths)
-        const coverSummaries = await summarizeAlbumCovers({
-          imageUrls,
-          sourceReferences,
+        const uploadedUrls = await uploadAlbumImages(attemptPaths, debug)
+        const summarised = await summarizeAlbumCovers({
+          imageUrls: uploadedUrls,
+          sourceReferences: buildSourceReferences(attemptPaths),
           debug
         })
+        // Drop sleeves the summary pass flagged as likely to be refused before spending a
+        // generation call on them. The remaining sources are renumbered to match the order
+        // their images are attached in.
+        const { kept: coverSummaries, keepIndexes, dropped } = dropModerationRisks(summarised, { minKeep: minCount })
+        if (dropped.length > 0) {
+          console.log(`  Dropping ${dropped.length} sleeve(s) likely to be refused: ${dropped.map(item => `${item.filename} (${item.moderationRisk})`).join('; ')}`)
+        }
+        attemptPaths = keepIndexes.map(index => attemptPaths[index])
+        const imageUrls = keepIndexes.map(index => uploadedUrls[index])
+        const sourceReferences = buildSourceReferences(attemptPaths)
         const artDirection = await designCoverArtDirection({
           coverSummaries,
           sourceReferences,
@@ -614,6 +650,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           avoidConcepts,
           avoidMedia,
           recentLighting: lightingHistory,
+          recentCompositions: compositionHistory,
           year,
           avoidYearTreatments,
           debug
@@ -627,13 +664,31 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
         if (repeatedLighting) {
           console.warn(`  Art director repeated a recent lighting set-up (${artDirection.lighting})`)
         }
-        const prompt = buildFreeformGenerationPrompt(artDirection, coverSummaries, { year })
+        // Check the cast's faces before sending: any cast sleeve whose faces are small gets an
+        // enlarged close-up attached after the sleeves, so the numbering of the sleeves holds.
+        const closeUps = []
+        const generationUrls = [...imageUrls]
+        for (const source of artDirection.cast || []) {
+          const summary = coverSummaries.find(item => item.source === source)
+          const box = closeUpBox(summary)
+          if (!box || generationUrls.length >= (backend.maxInputImages ?? 1)) continue
+          try {
+            generationUrls.push(await uploadCloseUp(attemptPaths[source - 1], box, debug))
+            closeUps.push({ source, reference: generationUrls.length })
+          } catch (error) {
+            console.warn(`  Could not attach a close-up for source ${source}: ${error.message}`)
+          }
+        }
+        if (closeUps.length > 0) {
+          console.log(`  Attached face close-ups for source(s) ${closeUps.map(item => item.source).join(', ')}`)
+        }
+        const prompt = buildFreeformGenerationPrompt(artDirection, coverSummaries, { year, closeUps })
 
         if (debug) {
           console.log(`  Prompt: ${prompt}`)
         }
 
-        const composed = await backend.generate({ imageUrls, prompt, seed, debug })
+        const composed = await backend.generate({ imageUrls: generationUrls, prompt, seed, debug })
 
         const saved = await saveGeneratedImage(composed.imageUrl, outputPath, width, height, debug)
         console.log(`  Created tunes cover (${backend.label}) from ${attemptPaths.length} album covers`)
@@ -648,6 +703,9 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           type: historyType,
           lane: null,
           lighting: artDirection.lighting,
+          composition: artDirection.composition,
+          cast: artDirection.cast ?? null,
+          closeUps,
           shootDirection: null,
           colourTreatment: null,
           concept: artDirection.concept,
@@ -684,6 +742,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           concept: artDirection.concept,
           medium: artDirection.medium,
           lighting: artDirection.lighting,
+          composition: artDirection.composition,
           yearTreatment: artDirection.yearTreatment || null,
           coverSummaries,
           mode: 'summaries_to_prompt',
