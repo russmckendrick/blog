@@ -252,7 +252,7 @@ graph TD
 
 **Home Components** (`src/components/home/`):
 - `HomeLead.astro` - Newest post as a full-width cover (the homepage LCP image, preloaded via `leadImageAttrs()` in `src/utils/home-lead.ts`); six `PostCard` tiles and `Pagination` follow it in "Recent writing" (`HOME_PAGE_SIZE` is 7)
-- `HomeIntro.astro` - Tint band with avatar, live counts, and the `russ --now` terminal (`NOW_BUILDING` in `consts.ts`)
+- `HomeIntro.astro` - Tint band with avatar, live counts, and the `russ --now` terminal, every line linked (`NOW_BUILDING` in `consts.ts` names `PROJECTS` entries)
 - `TagTabs.astro` - Topic navigation from `FEATURED_TAGS`: underline tabs on listing pages, `variant="pills"` on the homepage
 - `HomeTunes.astro` - This week's tunes entry with record covers
 - `HomeBooks.astro` - Four newest books

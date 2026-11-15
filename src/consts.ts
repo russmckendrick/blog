@@ -63,9 +63,10 @@ export const FEATURED_TAGS = ["ai", "tools", "code", "macos", "linux"];
 export const HOME_PAGE_SIZE = 7;
 export const PAGINATION_PAGE_SIZE = 9;
 
-// Homepage intro terminal: the `building` line of `russ --now`. The other
-// lines (writing, spinning, topics) are derived from content at build time.
-export const NOW_BUILDING = "tokenuse, terminal-svg";
+// Homepage intro terminal: the `building` line of `russ --now`, as PROJECTS
+// names - each links to that project's repo. The other lines (writing,
+// spinning, topics) are derived from content at build time.
+export const NOW_BUILDING = ["tokenuse", "terminal-svg"];
 
 // Homepage "Things I've built". Each tile links to the post that introduced
 // the project (`post` is the blog collection id); `repo` is the source.

@@ -35,7 +35,10 @@ const books = (await getCollection('books', ({ data }) => !data.draft))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const sinceYear = Math.min(...allPosts.map(post => post.data.pubDate.getFullYear()));
-const spinning = latestTune ? getTuneCovers(latestTune, 1)[0]?.alt : undefined;
+const spinningTitle = latestTune ? getTuneCovers(latestTune, 1)[0]?.alt : undefined;
+const spinning = latestTune && spinningTitle
+	? { title: spinningTitle, href: getPostUrl(latestTune.data.pubDate, latestTune.data.title) }
+	: undefined;
 
 const siteUrl = Astro.site?.toString() || 'https://www.russ.cloud/';
 const webSiteSchema = createWebSiteSchema(siteUrl);

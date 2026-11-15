@@ -228,6 +228,8 @@ Six sections, top to bottom (`src/pages/index.astro`, components in
    dark **`russ --now`** terminal. Its lines come from content at build time —
    `writing` (latest post), `spinning` (this week's first record), `topics`
    (`FEATURED_TAGS`) — plus `building` from `NOW_BUILDING` in `consts.ts`.
+   Every value is a link: the post, each project's repo, the tunes week,
+   each tag hub.
 3. **Recent writing** — six `PostTile`s (16:10 image, date · read time,
    title, three-line description) in a 1/2/3-column grid, headed by the topic
    pills (`TagTabs variant="pills"`: an ink-filled **All** and outlined

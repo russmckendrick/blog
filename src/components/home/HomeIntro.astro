@@ -1,19 +1,24 @@
 ---
 import { getAvatarImageUrl } from '../../utils/avatars'
-import { FEATURED_TAGS, NOW_BUILDING } from '../../consts'
+import { FEATURED_TAGS, NOW_BUILDING, PROJECTS } from '../../consts'
 
 interface Props {
 	postCount: number;
 	bookCount: number;
 	sinceYear: number;
 	latestPost: { title: string; href: string };
-	spinning?: string;
+	spinning?: { title: string; href: string };
 }
 
 // Full-width tint band: who writes here, plus a `russ --now` terminal whose
 // lines come from content at build time (latest post, this week's first
-// record) and NOW_BUILDING in consts.ts.
+// record) and NOW_BUILDING in consts.ts. Every value links somewhere: the
+// post, each project's repo, the tunes week, each tag hub.
 const { postCount, bookCount, sinceYear, latestPost, spinning } = Astro.props
+const building = NOW_BUILDING.map((name) => ({
+	name,
+	href: PROJECTS.find((item) => item.name === name)?.repo,
+}))
 const avatarSrc = getAvatarImageUrl('/images/avatars/arms-folded.png', 84)
 ---
 
@@ -38,9 +43,13 @@ const avatarSrc = getAvatarImageUrl('/images/avatars/arms-folded.png', 84)
 				<p><span class="t-user">russ@cloud</span> <span class="t-path">~</span> <span class="t-dim">$</span> russ --now</p>
 				<dl>
 					<div><dt>writing</dt><dd><a href={latestPost.href}>{latestPost.title}</a></dd></div>
-					<div><dt>building</dt><dd>{NOW_BUILDING}</dd></div>
-					{spinning && <div><dt>spinning</dt><dd>{spinning}</dd></div>}
-					<div><dt>topics</dt><dd>{FEATURED_TAGS.join(' · ')}</dd></div>
+					<div><dt>building</dt><dd>{building.map((item, index) => (
+						<>{index > 0 && ', '}{item.href ? <a href={item.href} rel="noopener noreferrer" target="_blank">{item.name}</a> : item.name}</>
+					))}</dd></div>
+					{spinning && <div><dt>spinning</dt><dd><a href={spinning.href}>{spinning.title}</a></dd></div>}
+					<div><dt>topics</dt><dd>{FEATURED_TAGS.map((tag, index) => (
+						<>{index > 0 && ' · '}<a href={`/tags/${tag}/`}>{tag}</a></>
+					))}</dd></div>
 				</dl>
 				<p><span class="t-user">russ@cloud</span> <span class="t-path">~</span> <span class="t-dim">$</span> <span class="t-cursor" aria-hidden="true"></span></p>
 			</div>
