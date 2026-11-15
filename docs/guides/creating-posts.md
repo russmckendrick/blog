@@ -595,6 +595,7 @@ git push
 - Use **bold** for emphasis
 - Use `code` for inline code/commands
 - Use code blocks for multi-line code
+  - An empty fence (a stray or doubled-up closing ```` ``` ````) renders nothing - `remark-drop-empty-code.ts` removes it at build time
 - Use callouts for important info
 - Add images to illustrate concepts
 

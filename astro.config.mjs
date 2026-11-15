@@ -10,6 +10,7 @@ import { unified } from '@astrojs/markdown-remark';
 import astroIcon from 'astro-icon';
 import { rehypeExternalLinks } from './src/utils/rehype-external-links.ts';
 import { rehypeGlossaryLinks } from './src/utils/rehype-glossary-links.ts';
+import { remarkDropEmptyCode } from './src/utils/remark-drop-empty-code.ts';
 import { getGlossaryTermMap } from './src/utils/glossary-terms.ts';
 import { getPostModifiedDateMap } from './src/utils/post-dates.ts';
 import { shouldIncludeInSitemap } from './src/utils/sitemap-filter.ts';
@@ -56,6 +57,7 @@ export default defineConfig({
 	markdown: {
 		syntaxHighlight: false,
 		processor: unified({
+			remarkPlugins: [remarkDropEmptyCode],
 			rehypePlugins: [
 				rehypeExternalLinks,
 				[rehypeGlossaryLinks, { termMap: glossaryTermMap }],

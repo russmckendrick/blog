@@ -65,7 +65,7 @@ graph TB
 | **Content Collections** | Astro Content Collections | Type-safe content management |
 | **Search** | Pagefind | Static search index, custom UI over its JS API ([Search Index](#search-index)) |
 | **Analytics** | Plausible | Privacy-focused analytics |
-| **Syntax Highlighting** | Expressive Code | Code block styling |
+| **Syntax Highlighting** | Expressive Code | Code block styling. Empty code blocks are dropped first by `src/utils/remark-drop-empty-code.ts` (registered in `astro.config.mjs`) - Expressive Code fails the build on a `<code>` with no text |
 | **Image Gallery** | LightGallery | Lightbox image viewer |
 | **OpenGraph Images** | Takumi (`@takumi-rs/core`) + sharp | Auto-generated OG images |
 
