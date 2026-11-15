@@ -71,6 +71,10 @@ export class ConfigLoader {
     return this.settings.artist_portrait_inputs || 4
   }
 
+  getArtistPortraitMinInputs() {
+    return this.settings.artist_portrait_min_inputs || 4
+  }
+
   getArtistPortraitCandidates() {
     return this.settings.artist_portrait_candidates || 12
   }

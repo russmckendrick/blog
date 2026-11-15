@@ -20,6 +20,8 @@ import {
   DEFAULT_REUSE_WEEKS
 } from './lib/tunes-artist-usage.js'
 import {
+  artistCloseUpBox,
+  isCastableArtist,
   buildArtistGenerationPrompt,
   designArtistArtDirection,
   summarizeArtistPhotos
@@ -125,24 +127,31 @@ async function resolveReuseWeeks(options) {
   }
 }
 
-// Resolve how many artists to cast (featureCount) and how many candidates to upload.
+// Resolve the largest cast (featureCount), the size a thin week shrinks towards (minCount), and
+// how many candidates to upload.
 // Precedence: env -> explicit option -> tunes-config.yaml -> code default. The config tier
 // matters: the weekly generator passes options explicitly, but the regenerate harness and
 // direct CLI runs do not, and they must still honour settings.artist_portrait_inputs.
 async function resolveCastCounts(options) {
   let configInputs
+  let configMinInputs
   let configCandidates
   try {
     const config = new ConfigLoader()
     await config.load()
     configInputs = config.getArtistPortraitInputs()
+    configMinInputs = config.getArtistPortraitMinInputs()
     configCandidates = config.getArtistPortraitCandidates()
   } catch {
     // fall through to code defaults
   }
 
+  const featureCount = Number(process.env.TUNES_ARTIST_PORTRAIT_INPUTS || options.inputs || configInputs || 4)
+  const minCount = Number(process.env.TUNES_ARTIST_PORTRAIT_MIN_INPUTS || options.minInputs || configMinInputs || 4)
+
   return {
-    featureCount: Number(process.env.TUNES_ARTIST_PORTRAIT_INPUTS || options.inputs || configInputs || 4),
+    featureCount,
+    minCount: Math.max(1, Math.min(featureCount, minCount)),
     candidateCount: Number(process.env.TUNES_ARTIST_PORTRAIT_CANDIDATES || options.candidates || configCandidates || 12)
   }
 }
@@ -206,6 +215,31 @@ async function uploadArtistImages(imagePaths, debug = false) {
   return urls
 }
 
+// A cast member who is only part of their photo (one face in a band shot) is sent as a padded
+// crop cut from the original file, so the image model gets that face at full size instead of a
+// fraction of a 1024px frame shared with the rest of the band.
+const CLOSE_UP_SIZE = 1024
+const MIN_CLOSE_UP_PIXELS = 96
+
+async function uploadArtistCloseUp(imagePath, box, debug = false) {
+  const { width = 0, height = 0 } = await sharp(imagePath).metadata()
+  const left = Math.floor(box[0] * width)
+  const top = Math.floor(box[1] * height)
+  const cropWidth = Math.min(width - left, Math.ceil((box[2] - box[0]) * width))
+  const cropHeight = Math.min(height - top, Math.ceil((box[3] - box[1]) * height))
+  if (cropWidth < MIN_CLOSE_UP_PIXELS || cropHeight < MIN_CLOSE_UP_PIXELS) return null
+
+  const buffer = await sharp(imagePath)
+    .extract({ left, top, width: cropWidth, height: cropHeight })
+    .resize(CLOSE_UP_SIZE, CLOSE_UP_SIZE, { fit: 'inside', kernel: sharp.kernel.lanczos3 })
+    .jpeg({ quality: 92 })
+    .toBuffer()
+  const name = `closeup-${path.basename(imagePath)}`
+  const url = await fal.storage.upload(new File([buffer], name, { type: 'image/jpeg' }))
+  if (debug) console.log(`    Uploaded close-up ${name} (${cropWidth}x${cropHeight}) -> ${url}`)
+  return url
+}
+
 async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
   const {
     width = 1400,
@@ -221,7 +255,7 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
   }
   fal.config({ credentials: falKey })
 
-  const { featureCount, candidateCount } = await resolveCastCounts(options)
+  const { featureCount, minCount, candidateCount } = await resolveCastCounts(options)
   const historySize = await resolveHistorySize()
   const avoidConcepts = await recentConcepts('artist', historySize)
   if (debug) {
@@ -262,7 +296,7 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
       reuseReport = applyArtistReuseRule({
         imagePaths: uniquePaths,
         recentlyUsed,
-        minimum: Math.max(1, featureCount)
+        minimum: minCount
       })
       eligiblePaths = reuseReport.imagePaths
 
@@ -292,11 +326,9 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
 
   // Upload a wider candidate pool for factual analysis, then let the separate art-direction
   // stage cast the most interesting subset. The image backend anchors on every reference it
-  // is handed, so only the selected original photos are attached to the final call.
+  // is handed, so only the cast's references and the one location photo reach the final call.
   const candidatePaths = eligiblePaths.slice(0, Math.max(1, candidateCount))
-  const castSize = Math.min(Math.max(1, featureCount), candidatePaths.length)
   if (debug) {
-    console.log(`  Casting from ${candidatePaths.length} candidate photo(s); featuring exactly ${castSize}`)
     console.log(`  Image backend: ${backendChain.map(b => `${b.label} (${b.id})`).join(' -> ')}`)
   }
 
@@ -307,6 +339,17 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
     sourceReferences,
     debug
   })
+  // The cast fills up to featureCount only with artists whose face is large enough to copy. A
+  // week short of those shrinks towards minCount, and only below that does the art-direction
+  // stage let a tiny face back in.
+  const usableFaces = artistSummaries.filter(isCastableArtist).length
+  const castSize = Math.min(
+    candidatePaths.length,
+    Math.max(1, featureCount),
+    Math.max(minCount, usableFaces)
+  )
+  console.log(`  Casting ${castSize} from ${candidatePaths.length} candidate photo(s), ${usableFaces} with a usable face`)
+
   const artDirection = await designArtistArtDirection({
     artistSummaries,
     sourceReferences,
@@ -325,8 +368,8 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
     console.log(`    Evidence: ${artDirection.locationEvidence}`)
   }
 
-  // Resolve the cast: map selected source numbers back to candidates and retain only those
-  // original photos for the final multi-reference generation call.
+  // Resolve the cast: map selected source numbers back to candidates. The location photo is a
+  // separate, setting-only reference and does not have to supply a cast member.
   const bySource = new Map(candidatePaths.map((p, i) => [
     i + 1,
     { source: i + 1, path: p, url: candidateUrls[i] }
@@ -343,10 +386,26 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
     }))
   }
 
+  const locationUrl = candidateUrls[artDirection.locationSource - 1] || candidateUrls[0]
+  const summaryBySource = new Map(artistSummaries.map(summary => [summary.source, summary]))
+  for (const item of cast) {
+    const box = artistCloseUpBox(summaryBySource.get(item.source))
+    if (!box) continue
+    try {
+      const closeUpUrl = await uploadArtistCloseUp(item.path, box, debug)
+      if (closeUpUrl) {
+        item.url = closeUpUrl
+        item.closeUp = box.map(value => Number(value.toFixed(3)))
+      }
+    } catch (error) {
+      console.warn(`  Could not crop ${path.basename(item.path)} to its cast member; sending the whole photo: ${error.message}`)
+    }
+  }
+
   if (debug) {
     console.log(`  Cast ${cast.length} artist photo(s):`)
     cast.forEach((item, index) => {
-      console.log(`    ${index + 1}. ${path.basename(item.path)}`)
+      console.log(`    ${index + 1}. ${path.basename(item.path)}${item.closeUp ? ' (close-up crop)' : ''}`)
     })
   }
 
@@ -374,7 +433,7 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
           console.log(`  Attempt ${attempt + 1} (${backend.label}): generating group portrait from ${attemptCast.length} cast photos`)
         }
 
-        const imageUrls = attemptCast.map(item => item.url)
+        const imageUrls = [...attemptCast.map(item => item.url), locationUrl]
         const selectedSources = attemptCast.map(item => item.source)
         const prompt = buildArtistGenerationPrompt(artDirection, selectedSources)
 
@@ -405,7 +464,7 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
           locationSource: artDirection.locationSource,
           locationSetting: artDirection.locationSetting,
           locationEvidence: artDirection.locationEvidence,
-          locationReference: selectedSources.indexOf(artDirection.locationSource) + 1,
+          locationReference: attemptCast.length + 1,
           locationInput: path.basename(bySource.get(artDirection.locationSource)?.path || ''),
           cast: artDirection.cast,
           selection: artDirection.selection,
@@ -419,7 +478,10 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
           reuseWeeks,
           reuseBlocked: reuseReport ? reuseReport.stillBlocked.map(item => ({ artist: item.name, lastUsed: item.week })) : [],
           reuseRelaxed: reuseReport ? reuseReport.relaxed.map(item => ({ artist: item.name, lastUsed: item.week })) : [],
-          inputs: attemptCast.map(item => path.basename(item.path))
+          inputs: attemptCast.map(item => path.basename(item.path)),
+          closeUps: Object.fromEntries(
+            attemptCast.filter(item => item.closeUp).map(item => [path.basename(item.path), item.closeUp])
+          )
         }
 
         try {
@@ -566,8 +628,13 @@ Notes:
   - OPENAI_TUNES_ARTIST_SUMMARY_MODEL and OPENAI_TUNES_ARTIST_DIRECTION_MODEL can
     override the two prompt stages; OPENAI_TUNES_ARTIST_MODEL is their shared fallback.
   - Uploads the top TUNES_ARTIST_PORTRAIT_CANDIDATES artists (default 12) as casting
-    options, then features about TUNES_ARTIST_PORTRAIT_INPUTS of them (default 4) - only
-    the cast is rendered, keeping the group uncrowded.
+    options, then features up to TUNES_ARTIST_PORTRAIT_INPUTS of them (6 in config) - only
+    the cast is rendered. A week short of fresh, usable faces shrinks towards
+    TUNES_ARTIST_PORTRAIT_MIN_INPUTS (default 4) rather than relaxing the reuse rule.
+  - The place and the people are chosen separately: the photo with the strongest location
+    is attached as a setting-only reference, the cast comes from photos whose face is
+    large enough to copy, and a cast member who is one face in a band shot is sent as a
+    close crop of that person.
   - Artists cast in the previous artist_portrait_reuse_weeks weeks (default 6, env
     TUNES_ARTIST_REUSE_WEEKS) are dropped from the candidate pool before casting, using
     scripts/.tunes-artist-usage.json. A week with too few unused artists relaxes the rule

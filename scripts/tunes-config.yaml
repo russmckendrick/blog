@@ -46,11 +46,17 @@ settings:
   # (env TUNES_ARTIST_PORTRAIT_CANDIDATES overrides this when set)
   artist_portrait_candidates: 12
 
-  # How many of the candidates to feature in the rendered portrait (the cast size the AI
-  # selects down to) - only the cast is sent to the image model. Kept small: with more
-  # reference faces the model splits its attention and likenesses drift
+  # The most candidates to feature in the rendered portrait (the cast size the AI selects
+  # down to) - only the cast is sent to the image model. Six held likeness in the 15 Nov
+  # 2026 trials once each cast member arrived as a large face or a close crop
   # (env TUNES_ARTIST_PORTRAIT_INPUTS overrides this when set)
-  artist_portrait_inputs: 4
+  artist_portrait_inputs: 6
+
+  # The cast only grows past this when the week has enough artists who are both off the
+  # reuse bench and photographed with a usable face. A thin week shrinks towards this number
+  # rather than re-admitting benched artists or tiny faces just to fill six places
+  # (env TUNES_ARTIST_PORTRAIT_MIN_INPUTS overrides this when set)
+  artist_portrait_min_inputs: 4
 
   # How many weeks an artist is benched for after appearing in a group portrait. Anyone cast
   # within this many weeks of the target week is dropped from the candidate pool before it
