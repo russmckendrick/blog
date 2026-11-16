@@ -3,77 +3,92 @@
   "date": "2026-08-03",
   "type": "cover",
   "lane": null,
-  "lighting": "bright overcast winter daylight",
-  "composition": "street-level three-quarter view",
-  "cast": [
-    5
-  ],
-  "closeUps": [
-    {
-      "source": 5,
-      "reference": 7
-    }
-  ],
+  "setting": "night",
+  "lighting": "shop windows and streetlamp",
+  "composition": "eye-level, off-centre environmental portrait",
+  "cast": [],
+  "closeUps": [],
+  "castCrops": [],
+  "peopleAudit": {
+    "expected": 0,
+    "counted": 0,
+    "retried": false
+  },
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Winter shopfront with hovering flare",
-  "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography of a real winter street corner, using the band portrait as the only cast and translating the graphic sleeves into weather, small physical objects, and light phenomena within one plausible scene.",
-  "scene": "A cold winter street corner outside an old brick corner shop beside a frozen canal or snow-covered basin, with slushy pavement, bare masonry, and a broad pale sky reflected in the shop windows.",
+  "concept": "Dog beneath a star-marked shopfront",
+  "medium": "night location photography",
+  "creativeDirection": "Night location photography: rebuild the corner-shop street as a real urban scene after dark, using the shopfront as the lead place and letting the other sleeves appear as small physical details within one clean, plausible photograph.",
+  "scene": "A quiet city corner at night outside an old corner shop with big display windows and a tiled pavement, seen from eye level at the curb so the storefront fills most of the frame and the sidewalk slips away to the left. The street is empty except for a small dog sitting near the right foreground under the shop window, with painted and incidental details tying the other covers into the same block.",
   "elements": [
     {
-      "source": 5,
-      "element": "the four band members stand together against the real brick wall of the corner shop, keeping their original row arrangement and styling"
-    },
-    {
-      "source": 6,
-      "element": "the location is a corner shop on a city pavement, seen from a slightly wide street angle with receding sidewalk and large windows"
+      "source": 1,
+      "role": "lead",
+      "element": "the corner-shop street location with large windows, tiled sidewalk, neighboring buildings, and strong black-and-white architectural contrast translated into a real night scene"
     },
     {
       "source": 2,
-      "element": "snowbanks and a frozen water edge sit just beyond the shop, and a small black-and-white dog sits near the lower right foreground facing the camera"
-    },
-    {
-      "source": 2,
-      "element": "the three colorful emblems become three small real objects suspended on thin wires above the street: a tiger-head shop ornament, a burst-shaped paper decoration, and a six-pointed star light"
-    },
-    {
-      "source": 3,
-      "element": "a faint shooting-star form appears as a real curved neon tube reflection or hanging light arc above and behind the group, subtle and physical rather than graphic"
+      "role": "lead",
+      "element": "a small black-and-white dog seated at the lower right by the curb, with traces of dirty snow and icy slush along the edge of the pavement"
     },
     {
       "source": 4,
-      "element": "a lavender plume of fine vapor or powdery light haze drifts across the cold air near the shopfront, airy and sparse"
+      "role": "support",
+      "element": "a black outlined shooting star with trailing curved lines painted on the shop's side wall"
+    },
+    {
+      "source": 5,
+      "role": "support",
+      "element": "a pale lavender tangle of fine looping lines and specks drifting across one window display as painted decoration or condensation drawing"
+    },
+    {
+      "source": 6,
+      "role": "support",
+      "element": "a tiny bouquet of white daisy-like flowers tucked discreetly above the shop doorframe"
+    },
+    {
+      "source": 3,
+      "role": "colour",
+      "element": "brick, grayscale, and muted red accents in the neighboring facade"
     }
   ],
   "palette": [
-    "brick red",
-    "winter white",
-    "charcoal black",
-    "steel gray",
-    "lavender",
-    "cream"
+    "black",
+    "white",
+    "gray",
+    "olive green",
+    "muted red",
+    "lavender"
   ],
-  "mood": "crisp, quiet, urban, slightly uncanny",
+  "mood": "quiet, wintry, watchful",
   "coverSummaries": [
     {
       "source": 1,
-      "filename": "Meet-The-Eels-Essential-Eels-Vol-1-1996-2006.jpg",
-      "album": "Meet The Eels Essential Eels Vol 1 1996 2006",
+      "filename": "Melting-Pot.jpg",
+      "album": "Melting Pot",
       "artist": "",
-      "description": "A minimalist cover with a worn, yellowed paper background and a vertical golden strip along the left edge like a book spine. Near the top center is a small bouquet of white daisy-like flowers with yellow centers and green stems. The rest of the composition is mostly empty space with centered text elements.",
-      "signatureMotif": "small bouquet of white daisies",
-      "medium": "graphic design with paper texture and small illustration",
-      "people": "none",
+      "description": "A high-contrast black-and-white street photograph taken with a wide-angle lens, showing a corner shop with large windows and signage, a tiled sidewalk receding into the distance, and a lone person walking away on the left.",
+      "signatureMotif": "corner shop on a wide-angle street",
+      "medium": "black-and-white photograph",
+      "people": "one adult walking away along the sidewalk",
+      "place": "an urban street corner with a shopfront, large display windows, tiled pavement, neighboring buildings, and deep shadow.",
       "moderationRisk": "",
-      "peopleBox": null,
+      "peopleBox": [
+        0.02,
+        0.52,
+        0.12,
+        0.76
+      ],
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
       "palette": [
-        "cream",
-        "beige",
-        "yellow",
-        "brown",
-        "black"
+        "black",
+        "white",
+        "gray",
+        "blue"
       ]
     },
     {
@@ -81,13 +96,18 @@
       "filename": "The-Three-E-P-s.jpg",
       "album": "The Three E P s",
       "artist": "",
-      "description": "A mostly monochrome snowy landscape with a frozen or still body of water in the foreground and snow-covered banks receding into the distance. In the lower right sits a small black-and-white dog facing the camera. Across the top are three separate colorful illustrated emblems spaced horizontally: a roaring tiger head, an exploding firecracker or cannon-like object with a burst, and a six-pointed star emblem with a blue center.",
-      "signatureMotif": "three colorful symbols floating above a snowy landscape",
-      "medium": "photograph with overlaid illustrations",
+      "description": "A grayscale snowy landscape with a frozen or partially frozen body of water and a small black-and-white dog sitting at the lower right, while three colorful illustrated emblems float across the top: a tiger head, an exploding stick of dynamite, and a six-pointed star.",
+      "signatureMotif": "three colorful emblems above a snowy scene",
+      "medium": "photo collage with illustrated symbols",
       "people": "none",
+      "place": "a snow-covered shoreline or riverbank with icy water, low snowy hills, sparse grasses, and overcast light.",
       "moderationRisk": "",
       "peopleBox": null,
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 4,
       "palette": [
         "gray",
         "white",
@@ -98,16 +118,75 @@
     },
     {
       "source": 3,
+      "filename": "Elastica.jpg",
+      "album": "Elastica",
+      "artist": "",
+      "description": "A black-and-white band portrait of four adults standing against a brick wall, all dressed in dark clothing, with one person facing sideways and the others looking forward or off to the side.",
+      "signatureMotif": "four band members against a brick wall",
+      "medium": "black-and-white photograph with colored text overlay",
+      "people": "four adults standing in a row against a wall",
+      "place": "an exterior brick wall in flat, even light with no visible furnishings.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.03,
+        0.45,
+        0.95,
+        0.93
+      ],
+      "faceHeight": 0.14,
+      "faceBoxes": [
+        [
+          0.05,
+          0.47,
+          0.18,
+          0.61
+        ],
+        [
+          0.31,
+          0.45,
+          0.47,
+          0.62
+        ],
+        [
+          0.52,
+          0.47,
+          0.66,
+          0.61
+        ],
+        [
+          0.82,
+          0.46,
+          0.94,
+          0.59
+        ]
+      ],
+      "peopleCount": 4,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "black",
+        "white",
+        "gray",
+        "red"
+      ]
+    },
+    {
+      "source": 4,
       "filename": "Recovering-The-Satellites.jpg",
       "album": "Recovering The Satellites",
       "artist": "",
-      "description": "A dark, grainy, green-tinted image resembling a night photograph or distressed print. In the center-lower area is a black outlined shooting star or comet shape with a star at one end and several curved trailing lines extending to the right. The edges are vignetted and rough, with dark structural forms framing the sides.",
-      "signatureMotif": "outlined shooting star with trailing arcs",
-      "medium": "distressed photograph or graphic print",
+      "description": "A dark, green-tinted image of a wall or large flat surface marked with a black outlined shooting star and trailing curved lines, framed by shadowy edges on both sides.",
+      "signatureMotif": "shooting star graffiti",
+      "medium": "photograph",
       "people": "none",
+      "place": "a dim urban exterior with a large greenish wall or billboard-like surface seen at night, bordered by dark structures.",
       "moderationRisk": "",
       "peopleBox": null,
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 3,
       "palette": [
         "black",
         "dark green",
@@ -116,84 +195,65 @@
       ]
     },
     {
-      "source": 4,
+      "source": 5,
       "filename": "Ask-Me-Tomorrow.jpg",
       "album": "Ask Me Tomorrow",
       "artist": "",
-      "description": "An abstract image on a pale gray-white background. From the left-center spreads a soft purple cloud or blur that transitions into fine looping lines, wispy filaments, and scattered spiky dots drifting toward the right. The composition is airy and sparse, with the abstract form concentrated across the middle.",
-      "signatureMotif": "purple cloud of wispy lines and spiky particles",
-      "medium": "abstract digital or photographic artwork",
+      "description": "An abstract pale background with a drifting purple cloud-like form made of fine lines, loops, and scattered fuzzy specks spreading from left to right.",
+      "signatureMotif": "purple cloud of fine tangled lines and specks",
+      "medium": "abstract digital or photographic image",
       "people": "none",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": null,
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 2,
       "palette": [
         "white",
-        "light gray",
+        "pale gray",
         "lavender",
-        "purple",
-        "violet"
-      ]
-    },
-    {
-      "source": 5,
-      "filename": "Elastica.jpg",
-      "album": "Elastica",
-      "artist": "",
-      "description": "A black-and-white band portrait against a brick wall, with a large red handwritten-style graphic across the upper portion. Four young adults stand in a row wearing dark clothing. From left to right: one person with shaggy dark hair facing forward, one person with a dark bob haircut turned in profile, one person with short light hair facing forward with hands clasped, and one person with short dark hair looking slightly to the side. The image is high-contrast and grainy.",
-      "signatureMotif": "four band members standing against a brick wall",
-      "medium": "black-and-white photograph with overlaid graphic text",
-      "people": "four young adults standing against a brick wall",
-      "moderationRisk": "",
-      "peopleBox": [
-        0.03,
-        0.42,
-        0.95,
-        0.76
-      ],
-      "faceHeight": 0.12,
-      "palette": [
-        "black",
-        "white",
-        "gray",
-        "red"
+        "purple"
       ]
     },
     {
       "source": 6,
-      "filename": "Melting-Pot.jpg",
-      "album": "Melting Pot",
+      "filename": "Meet-The-Eels-Essential-Eels-Vol-1-1996-2006.jpg",
+      "album": "Meet The Eels Essential Eels Vol 1 1996 2006",
       "artist": "",
-      "description": "A high-contrast black-and-white street photograph taken with a wide-angle or fisheye effect. A corner shop with large windows dominates the right side, while a tiled sidewalk and street recede into the distance on the left. A lone person in a light coat walks away along the pavement. Blue block text spans the top of the cover.",
-      "signatureMotif": "fisheye view of a corner shop on a city street",
-      "medium": "black-and-white photograph with overlaid graphic text",
-      "people": "one person walking away on the sidewalk",
+      "description": "A mostly plain, aged cream paper background with a small bouquet of white daisy-like flowers near the top center and a narrow golden vertical band along the left edge.",
+      "signatureMotif": "small bouquet of white flowers",
+      "medium": "graphic design on textured paper",
+      "people": "none",
+      "place": "",
       "moderationRisk": "",
-      "peopleBox": [
-        0,
-        0.48,
-        0.12,
-        0.66
-      ],
-      "faceHeight": 0.03,
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 1,
       "palette": [
+        "cream",
+        "beige",
+        "brown",
         "black",
-        "white",
-        "gray",
-        "blue"
+        "white"
       ]
     }
   ],
   "hint": null,
   "composeBackend": "gpt-image-2-6",
   "model": "openai/gpt-image-2.6/sunburst/edit",
-  "prompt": "A real winter street corner beside a frozen canal, seen from street level in a three-quarter view, with an old brick corner shop and broad pale sky reflected in large windows; the four people from reference image 5 are the primary subject, standing together against the actual brick wall in the same row, pose, gaze, hair, and styling as their cover portrait, sharply visible and recognisable. Include the corner-shop architecture and receding pavement from reference image 6, but no other cast people. Near the lower right foreground, the small black-and-white dog from reference image 2 sits facing the camera on snowy slush. Above the street, translate the three colorful symbols from reference image 2 into small real hanging objects on thin wires: a tiger-head ornament, a burst-shaped paper decoration, and a six-pointed star light. Translate the shooting-star motif from reference image 3 into a subtle physical curved neon or tube-light reflection arcing in the air above and behind the group. Let reference image 4 appear as a sparse lavender vapor plume drifting lightly across the cold air near the shopfront. Add the tiny bouquet of white daisies from reference image 1 tucked into a doorway ledge or wall crack, with aged cream-and-yellow paper tones in trim and notices. Photographic realism, crisp daylight location photography, clean detail, no posters or murals, no album art reproduced on surfaces. Frame it as one cohesive moment with the band off-centre and the shop and frozen edge layered around them, bright overcast winter daylight, high clarity, cool air, restrained saturated accents against brick, snow, and gray sky. Reference map for people (the album images are attached in this numbered order): reference image 5 shows four young adults standing against a brick wall, and reference image 7 is an enlarged close-up of those same people - take their faces from reference image 7. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference image 6 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "prompt": "A quiet urban street corner at night, viewed from eye level near the curb in a 16:9 frame, focused on an old corner shop with large display windows and a tiled sidewalk receding left; the primary subject is a small black-and-white dog from reference image 2 sitting at the lower right by the curb under the glow of the shop window, with dirty snow and icy slush gathered along the pavement edge and no other people anywhere in the scene; rebuild the corner-shop place from reference image 1 as the main location with neighboring buildings, deep shadow, strong storefront geometry, and a grayscale city feel, add a black outlined shooting star with trailing curved lines painted on the shop's side wall from reference image 4, a pale lavender cloud of fine tangled looping lines and specks across one window display from reference image 5, and a tiny bouquet of white daisy-like flowers tucked above the shop doorframe from reference image 6, while reference image 3 contributes only muted brick, grayscale, and small red accent tones in the adjacent facade; photographic realism, night location photography, crisp editorial detail, clean surfaces, no haze or rain; off-centre environmental composition with the dog in the right foreground and the storefront dominating the middle ground, faces not applicable, sharp focus throughout, well-lit by warm shop windows and a cool streetlamp so every detail reads clearly at small size; palette of black, white, gray, olive green, muted red, lavender, and cream, with a quiet wintry mood. Nobody from reference images 1, 3 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, posters, record covers, or pictures on a screen, monitor, or television. A sleeve's abstract graphics, shapes, patterns, and colours may be painted onto the walls, doors, floor, or objects of the place as part of its decoration, without any lettering. Show no sleeve's faces, heads, or figures as a picture, mural, display, sign, relief, or silhouette anywhere; transform the sleeves' non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image cleanly whatever the light: every person's face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere. The image contains no people at all: no figures, faces, hands, limbs, silhouettes, reflections, or shadows of people, in the foreground or the background.",
   "inputs": [
-    "Meet-The-Eels-Essential-Eels-Vol-1-1996-2006.jpg",
+    "Melting-Pot.jpg",
     "The-Three-E-P-s.jpg",
+    "Elastica.jpg",
     "Recovering-The-Satellites.jpg",
     "Ask-Me-Tomorrow.jpg",
-    "Elastica.jpg",
-    "Melting-Pot.jpg"
+    "Meet-The-Eels-Essential-Eels-Vol-1-1996-2006.jpg"
   ]
 }

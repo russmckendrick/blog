@@ -3,124 +3,185 @@
   "date": "2026-09-14",
   "type": "cover",
   "lane": null,
-  "lighting": "golden hour open shade",
-  "composition": "low angle, close-cropped ringside",
+  "setting": "interior",
+  "lighting": "bare bulbs in daytime room",
+  "composition": "eye-level tight group portrait",
   "cast": [
-    5
+    1
   ],
   "closeUps": [
     {
-      "source": 5,
-      "reference": 8
+      "source": 1,
+      "reference": 9
     }
   ],
+  "castCrops": [],
+  "peopleAudit": {
+    "expected": 4,
+    "counted": 4,
+    "retried": false
+  },
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Open-air boxing gym under mural sky",
-  "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography in a real outdoor boxing gym, using the ring and gym surfaces to absorb the graphic sleeves while staging only the strongest portrait as a physically plausible ringside moment.",
-  "scene": "An outdoor neighborhood boxing gym set in a paved lot beside a tall white brick wall, with a boxing ring under a simple corrugated canopy and open sky beyond.",
+  "concept": "Basement fists in rehearsal light",
+  "medium": "location photography",
+  "creativeDirection": "Location photography in a cramped rehearsal room, using one plausible interior and editorial realism to stage the strongest cast inside a sleeve-derived place.",
+  "scene": "A cramped, worn rehearsal basement with a cable-strewn floor, amplifiers and drum hardware pushed against the walls, and a softly glowing curtained window at one side. Four men stand close together in the near ground, thrusting their fists toward the camera as if confronting it, their faces clearly lit by the room’s practical bulbs and window spill. The room feels used and airless but readable, with a few strange, memorable objects embedded naturally in the space.",
   "elements": [
     {
       "source": 1,
-      "element": "a red speed bag with small wing-like leather flaps and horn-like seams hanging near the ring, plus warm red-orange-yellow paint swirls on worn gym padding"
+      "role": "lead",
+      "element": "the four men from reference image 1 posed closely together with fists extended toward the camera"
     },
     {
       "source": 2,
-      "element": "the pale pink slatted ringside chair and a purple-orange towel draped over it, bringing the girls' tint and floral warmth as color only"
-    },
-    {
-      "source": 3,
-      "element": "a rosin bucket or training target designed like a yellow petaled pad with a circular center ring of multicolored sprinkle-like grips"
+      "role": "lead",
+      "element": "the small rehearsal-room interior with worn floor, loose cables, amplifiers, and drum stands"
     },
     {
       "source": 4,
-      "element": "loose black cables, scuffed monochrome gym clutter, and a shirt discarded over the ropes suggesting raw live-performance energy"
+      "role": "support",
+      "element": "a large window with sheer curtains glowing softly at the side of the room"
     },
     {
       "source": 5,
-      "element": "the four young men from reference image 5 posed tightly together at ringside with their fists thrust toward the camera, preserving the original portrait dynamic"
+      "role": "support",
+      "element": "a round drum painted red with small star marks resting on a low railing-like shelf"
     },
     {
-      "source": 6,
-      "element": "the tall white brick wall with faint blue-gray mortar lines as the main architectural backdrop, marked by a vertical red hand-painted scrawl"
+      "source": 3,
+      "role": "support",
+      "element": "a single oversized yellow flower head lying on a case, its center ringed with multicolored sprinkled candy balls"
     },
     {
       "source": 7,
-      "element": "cool blue-gray mirrored sunglasses on the cast and a narrow strip of small colored photo thumbnails taped along the ring apron"
+      "role": "support",
+      "element": "a narrow strip of tiny red-and-blue contact-print-like photo panels taped along the base of an amplifier with no visible people in them"
     }
   ],
   "palette": [
-    "white",
+    "brown",
+    "beige",
+    "black",
     "red",
-    "blue-gray",
-    "tan",
-    "pink",
-    "orange"
+    "yellow",
+    "cream"
   ],
-  "mood": "bold, playful, confrontational",
+  "mood": "tense, intimate, scrappy",
   "coverSummaries": [
     {
       "source": 1,
-      "filename": "Devil-Hopping.jpg",
-      "album": "Devil Hopping",
-      "artist": "",
-      "description": "A psychedelic illustrated cover with a red devil-like humanoid figure standing in the center, with small horns, one visible bat-like wing, and a hand raised to its forehead. The figure is outlined with a glowing white edge and stands against a blue, cloudy, star-speckled space-like opening. Around it are swirling bands of yellow, orange, red, and black filling the frame.",
-      "signatureMotif": "red winged devil figure",
-      "medium": "illustration",
-      "people": "none",
+      "filename": "Slayed.jpg",
+      "album": "Slayed",
+      "artist": "Slade",
+      "description": "A studio portrait shows four men posed closely together against a plain brown backdrop, each thrusting a fist toward the camera. One man on the right is shirtless, while the others wear dark or patterned clothing; the fists dominate the foreground.",
+      "signatureMotif": "four men extending fists toward the camera",
+      "medium": "color photograph",
+      "people": "four men posing closely with fists extended toward the camera",
+      "place": "a plain studio-like interior with a neutral brown backdrop and even lighting",
       "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
+      "peopleBox": [
+        0.02,
+        0.08,
+        0.99,
+        0.98
+      ],
+      "faceHeight": 0.22,
+      "faceBoxes": [
+        [
+          0.03,
+          0.17,
+          0.25,
+          0.39
+        ],
+        [
+          0.18,
+          0.12,
+          0.39,
+          0.36
+        ],
+        [
+          0.39,
+          0.09,
+          0.62,
+          0.31
+        ],
+        [
+          0.72,
+          0.07,
+          0.96,
+          0.29
+        ]
+      ],
+      "peopleCount": 4,
+      "minors": false,
+      "strength": 5,
       "palette": [
+        "brown",
+        "beige",
+        "black",
         "red",
-        "yellow",
-        "orange",
-        "blue",
-        "black"
+        "yellow"
       ]
     },
     {
       "source": 2,
-      "filename": "Siamese-Dream.jpg",
-      "album": "Siamese Dream",
-      "artist": "",
-      "description": "A tinted photograph of two young girls close together, smiling and facing slightly toward the camera. A large pale pink chair or slatted seat occupies the left foreground. The upper background is filled with a dense orange floral pattern, while the girls and lower area are tinted purple and pink.",
-      "signatureMotif": "two young girls in purple tint",
-      "medium": "tinted photograph with graphic patterned background",
-      "people": "two young girls close together smiling",
+      "filename": "Fugazi.jpg",
+      "album": "Fugazi",
+      "artist": "Fugazi",
+      "description": "A black-and-white live performance photograph is framed within a red border. One shirtless person is upside down in the foreground with arms spread on a cluttered floor full of cables, while another person stands near amplifiers and drum hardware in a cramped indoor venue.",
+      "signatureMotif": "upside-down shirtless performer on a cable-covered floor",
+      "medium": "black-and-white photograph",
+      "people": "two people, one shirtless person upside down in the foreground and one standing person near amplifiers",
+      "place": "a small indoor music venue or rehearsal room with amplifiers, drum stands, cables, and a worn floor",
       "moderationRisk": "",
       "peopleBox": [
-        0.37,
-        0.29,
-        0.98,
-        0.76
+        0.16,
+        0.14,
+        0.86,
+        0.95
       ],
-      "faceHeight": 0.24,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": 2,
+      "minors": false,
+      "strength": 5,
       "palette": [
-        "orange",
-        "purple",
-        "pink",
-        "lavender"
+        "red",
+        "black",
+        "white",
+        "gray"
       ]
     },
     {
       "source": 3,
       "filename": "Pablo-Honey.jpg",
       "album": "Pablo Honey",
-      "artist": "",
-      "description": "A close-up flower-like composition dominated by large yellow petals radiating outward. At the center is a black-and-white baby face surrounded by a ring of round candy-like balls covered in multicolored sprinkles. The background is pale and softly textured.",
+      "artist": "Radiohead",
+      "description": "A large yellow flower fills most of the image, with a black-and-white baby’s face placed at the center and ringed by round candy-like balls covered in multicolored sprinkles. The background is pale and softly textured.",
       "signatureMotif": "baby face inside a flower center ringed with sprinkled candy balls",
       "medium": "photo collage",
-      "people": "one baby face centered within a flower-like collage",
+      "people": "one baby face shown in a collage",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": [
-        0.39,
-        0.39,
-        0.61,
-        0.61
+        0.38,
+        0.34,
+        0.63,
+        0.62
       ],
-      "faceHeight": 0.16,
+      "faceHeight": 0.19,
+      "faceBoxes": [
+        [
+          0.41,
+          0.37,
+          0.59,
+          0.56
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": true,
+      "strength": 5,
       "palette": [
         "yellow",
         "white",
@@ -131,108 +192,202 @@
     },
     {
       "source": 4,
-      "filename": "Fugazi.jpg",
-      "album": "Fugazi",
-      "artist": "",
-      "description": "A black-and-white live-performance photograph framed within a red border. In the photo, a shirtless person is upside down in a handstand or dive-like pose on a cluttered floor with cables, while another person stands in the background near amplifiers and drum hardware. The scene looks like a small indoor music venue or practice space.",
-      "signatureMotif": "upside-down shirtless performer among cables",
-      "medium": "black-and-white photograph",
-      "people": "two people in a live performance scene, one upside down shirtless and one standing in back",
+      "filename": "Lost-in-the-Dream.jpg",
+      "album": "Lost in the Dream",
+      "artist": "The War on Drugs",
+      "description": "A dim, moody interior photograph shows a large window with sheer curtains glowing from daylight outside. In the lower right, a blurred dark-haired person bends forward or sits hunched, partially obscured by shadow and soft double-exposure-like texture.",
+      "signatureMotif": "glowing curtained window with a hunched blurred figure",
+      "medium": "photograph",
+      "people": "one person with dark hair hunched near the window",
+      "place": "a dark room with a large window, sheer curtains, wood-toned walls, and soft daylight filtering in",
       "moderationRisk": "",
       "peopleBox": [
-        0.31,
-        0.39,
-        0.72,
-        0.93
+        0.51,
+        0.58,
+        0.86,
+        0.98
       ],
-      "faceHeight": 0.08,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
       "palette": [
-        "red",
+        "dark green",
+        "brown",
+        "cream",
         "black",
-        "white",
-        "gray"
+        "muted purple"
       ]
     },
     {
       "source": 5,
-      "filename": "Slayed.jpg",
-      "album": "Slayed",
-      "artist": "",
-      "description": "A studio portrait of four young men posed closely together against a brown backdrop, each thrusting a fist toward the camera. One man at right is shirtless, while the others wear dark or patterned clothing. The composition emphasizes the foreshortened fists in the foreground and the faces behind them.",
-      "signatureMotif": "four men thrusting fists toward the camera",
-      "medium": "color photograph",
-      "people": "four young men posing with fists extended toward the camera",
+      "filename": "In-the-Aeroplane-Over-the-Sea.jpg",
+      "album": "In the Aeroplane Over the Sea",
+      "artist": "Neutral Milk Hotel",
+      "description": "A vintage-style seaside illustration shows a woman in a red star-patterned dress seated on a railing with a round drum replacing her head, raising one arm. Beside her, a child in striped clothing stands in the water with one arm raised, while small boats and distant figures appear on the sea under a pale sky.",
+      "signatureMotif": "woman with a drum for a head by the sea",
+      "medium": "vintage-style illustration",
+      "people": "none",
+      "place": "a seaside scene with calm water, distant boats, a pale sky, and a railing at the shore",
       "moderationRisk": "",
-      "peopleBox": [
-        0.03,
-        0.08,
-        0.96,
-        0.47
-      ],
-      "faceHeight": 0.18,
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 5,
       "palette": [
-        "brown",
-        "tan",
-        "black",
+        "pale blue",
         "red",
-        "yellow"
+        "beige",
+        "brown",
+        "sea green"
       ]
     },
     {
       "source": 6,
-      "filename": "The-Wall.jpg",
-      "album": "The Wall",
-      "artist": "",
-      "description": "A minimal graphic cover showing a flat white brick wall pattern across the entire image, with thin blue-gray mortar lines. In the center is red handwritten-style paint or marker text-like scrawl arranged vertically.",
-      "signatureMotif": "white brick wall",
-      "medium": "graphic design",
-      "people": "none",
+      "filename": "Siamese-Dream.jpg",
+      "album": "Siamese Dream",
+      "artist": "The Smashing Pumpkins",
+      "description": "A tinted photograph shows two young girls close together, smiling and leaning beside a large white chair. The image is heavily colorized in pink and purple, with an orange background filled with a repeating floral pattern across the top.",
+      "signatureMotif": "two girls beside a white chair",
+      "medium": "colorized photograph with graphic patterned background",
+      "people": "two young girls smiling close together",
+      "place": "outdoor area with blurred dark foliage behind a large white chair, partly obscured by heavy color treatment and a patterned graphic overlay",
       "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
+      "peopleBox": [
+        0.39,
+        0.28,
+        0.99,
+        0.86
+      ],
+      "faceHeight": 0.28,
+      "faceBoxes": [
+        [
+          0.43,
+          0.31,
+          0.74,
+          0.59
+        ],
+        [
+          0.72,
+          0.31,
+          0.98,
+          0.58
+        ]
+      ],
+      "peopleCount": 2,
+      "minors": true,
+      "strength": 4,
       "palette": [
+        "orange",
+        "pink",
+        "purple",
         "white",
-        "red",
-        "light blue",
-        "gray"
+        "dark brown"
       ]
     },
     {
       "source": 7,
       "filename": "Greatest-Hits.jpg",
       "album": "Greatest Hits",
-      "artist": "",
-      "description": "A high-contrast portrait of three young men wearing dark sunglasses, shown from the chest up against a white background. The image is tinted in cool blue-gray tones. A strip of small rectangular thumbnail images runs along the bottom edge, adding red, blue, and dark accents.",
+      "artist": "The Police",
+      "description": "A high-contrast portrait shows three men from the chest up against a white background, all wearing dark sunglasses. A narrow strip of small rectangular images runs along the bottom, showing tiny performance and scene snapshots in red, blue, and dark tones.",
       "signatureMotif": "three men in sunglasses",
-      "medium": "tinted photograph with graphic strip of thumbnails",
-      "people": "three young men wearing sunglasses in a close portrait",
+      "medium": "photograph with graphic layout",
+      "people": "three men wearing sunglasses in a close portrait",
+      "place": "a plain white studio backdrop with a narrow contact-strip-like row of tiny image panels along the bottom",
       "moderationRisk": "",
       "peopleBox": [
-        0.07,
-        0.18,
-        0.88,
-        0.72
+        0.03,
+        0.2,
+        0.92,
+        0.88
       ],
-      "faceHeight": 0.23,
+      "faceHeight": 0.24,
+      "faceBoxes": [
+        [
+          0.05,
+          0.27,
+          0.28,
+          0.51
+        ],
+        [
+          0.34,
+          0.22,
+          0.61,
+          0.46
+        ],
+        [
+          0.63,
+          0.24,
+          0.88,
+          0.49
+        ]
+      ],
+      "peopleCount": 3,
+      "minors": false,
+      "strength": 4,
       "palette": [
         "white",
         "black",
-        "blue-gray",
+        "gray",
+        "blue",
         "red"
-      ]
+      ],
+      "ledOn": "2026-09-07"
+    },
+    {
+      "source": 8,
+      "filename": "Maggot-Brain.jpg",
+      "album": "Maggot Brain",
+      "artist": "Funkadelic",
+      "description": "A dramatic photograph shows a woman’s head emerging from dark soil, framed by a large afro hairstyle spread around her. Her mouth is wide open in a scream, and the surrounding ground is rough with scattered twigs and debris against a nearly black background.",
+      "signatureMotif": "screaming woman’s head emerging from soil",
+      "medium": "color photograph",
+      "people": "one woman’s head emerging from the ground with mouth open",
+      "place": "dark earth or soil with scattered twigs and debris under very low light, fading into a black background",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.22,
+        0.12,
+        0.77,
+        0.72
+      ],
+      "faceHeight": 0.34,
+      "faceBoxes": [
+        [
+          0.31,
+          0.25,
+          0.67,
+          0.59
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "black",
+        "dark brown",
+        "skin tone",
+        "orange"
+      ],
+      "ledOn": "2026-08-10"
     }
   ],
   "hint": null,
   "composeBackend": "gpt-image-2-6",
   "model": "openai/gpt-image-2.6/sunburst/edit",
-  "prompt": "A real outdoor boxing gym in a paved city lot beside a tall white brick wall, seen from a low ringside angle with a close-cropped 16:9 frame looking slightly upward; the four young men from reference image 5 are the primary subject, posed tightly together at the ring edge with their fists thrust toward the camera exactly in the spirit of their sleeve portrait, preserving their recognisable faces, styling, and foreshortened fists; behind and around them, a white brick wall with thin blue-gray mortar lines carries a single vertical red hand-painted scrawl, a pale pink slatted chair sits at left with a purple-orange towel over it, a red speed bag with subtle horn-like seams and small wing-like leather flaps hangs near the ropes, worn ring pads carry red-orange-yellow swirling bands, loose black cables and scuffed gym hardware sit on the floor, a yellow flower-like training pad or rosin bucket with a circular center ring of multicolored sprinkle-like grips rests near a corner post, and a narrow strip of tiny colored thumbnail photos is taped along the ring apron; daylight location photography, crisp realistic textures, physically plausible gym details, no collage, no posterized graphics; dynamic off-centre close crop with the fists dominating the foreground, the wall and ring stacking behind them, clean depth and sharp focus on all faces; golden hour open shade under the canopy with bright ambient light from the open side of the lot, saturated but natural color, clean whites, warm reds and oranges, cool blue-gray accents, bold playful confrontational mood. Reference map for people (the album images are attached in this numbered order): reference image 5 shows four young men posing with fists extended toward the camera, and reference image 8 is an enlarged close-up of those same people - take their faces from reference image 8. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 2, 3, 4, 7 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "prompt": "A cramped basement rehearsal room photographed from eye level in a tight three-quarter-length group portrait, with a worn floor scattered with cables, amplifiers and drum hardware against the walls, and a softly glowing curtained window at one side. The four men from reference image 1 are the primary subject, standing very close together in the near ground and thrusting their fists toward the camera, keeping their original front-facing pose, expression, gaze, hair, and styling, their faces clearly visible and properly lit. Build the place from reference image 2 as the main interior: scuffed floor, cable clutter, small-venue rehearsal-room density, stacked amps and stands. Add the large sheer-curtained glowing window from reference image 4 at the side of the room. Include as small supporting details a round drum painted red with tiny star marks resting on a low railing-like shelf from reference image 5, and a single oversized yellow flower head on a case with its center ringed by multicolored sprinkled candy balls from reference image 3. Add a narrow strip of tiny red-and-blue contact-print-like abstract panels taped along the base of one amplifier as a nod to reference image 7, with no people visible in those panels. Clean, crisp editorial location photography, physically plausible and cohesive, not collage. Light with bare practical bulbs in the room plus soft daytime spill through the curtained window, enough contrast to feel moody but with every cast face clean and readable. Palette of brown, beige, black, red, yellow, and cream; tense, intimate, scrappy atmosphere. Reference map for people (the album images are attached in this numbered order): reference image 1 shows four men posing closely with fists extended toward the camera, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 2, 3, 4, 6, 7, 8 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, posters, record covers, or pictures on a screen, monitor, or television. A sleeve's abstract graphics, shapes, patterns, and colours may be painted onto the walls, doors, floor, or objects of the place as part of its decoration, without any lettering. Show no sleeve's faces, heads, or figures as a picture, mural, display, sign, relief, or silhouette anywhere; transform the sleeves' non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image cleanly whatever the light: every person's face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere. The only people anywhere in the image are the reference people named in the reference map, and of those only the ones whose faces are clearly visible in their reference. Add no one else: no extra band members, musicians, staff, bystanders, passers-by, crowd, audience, background or out-of-focus figures, and no hands, arms, legs, or shadows of unseen people. Never complete a person who is hidden, cropped, turned away, blurred, or only partly visible in a reference with an invented face or body - leave that person out entirely. Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.",
   "inputs": [
-    "Devil-Hopping.jpg",
-    "Siamese-Dream.jpg",
-    "Pablo-Honey.jpg",
-    "Fugazi.jpg",
     "Slayed.jpg",
-    "The-Wall.jpg",
-    "Greatest-Hits.jpg"
+    "Fugazi.jpg",
+    "Pablo-Honey.jpg",
+    "Lost-in-the-Dream.jpg",
+    "In-the-Aeroplane-Over-the-Sea.jpg",
+    "Siamese-Dream.jpg",
+    "Greatest-Hits.jpg",
+    "Maggot-Brain.jpg"
   ]
 }

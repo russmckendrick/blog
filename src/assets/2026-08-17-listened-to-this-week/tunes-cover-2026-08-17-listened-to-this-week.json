@@ -3,136 +3,198 @@
   "date": "2026-08-17",
   "type": "cover",
   "lane": null,
-  "lighting": "golden hour roadside sun",
-  "composition": "low angle, subject left-of-frame",
+  "setting": "studio",
+  "lighting": "cool skylight with soft fill",
+  "composition": "face-on seated group portrait",
   "cast": [
-    1
+    2
   ],
   "closeUps": [
     {
-      "source": 1,
-      "reference": 8
-    }
-  ],
-  "shootDirection": null,
-  "colourTreatment": null,
-  "concept": "Roadside mask under saucer signage",
-  "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography of a single believable roadside scene, translating the graphic sleeves into real signage, paint, and sculptural objects while keeping only one portrait figure recognisable.",
-  "scene": "An open roadside pull-off beside a low retro-futurist service stop in dry country, photographed as one crisp golden-hour moment with big sky and long light.",
-  "elements": [
-    {
-      "source": 1,
-      "element": "the woman in profile in her white dress, still lifting a small dark figurine in both hands"
+      "source": 2,
+      "reference": 9
     },
     {
       "source": 2,
-      "element": "olive-green and cream colour blocking on the service stop facade and a cat-ear silhouette worked into the roofline, with small pink accents in practical details"
+      "reference": 10
     },
     {
-      "source": 3,
-      "element": "a parked older car with warm dashboard glow and hints of audio equipment visible through the window, suggesting a night-drive collage translated into real objects"
+      "source": 2,
+      "reference": 11
+    }
+  ],
+  "castCrops": [],
+  "peopleAudit": {
+    "expected": 3,
+    "counted": 3,
+    "retried": false
+  },
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Monochrome table portrait with cosmic details",
+  "medium": "studio portrait photography",
+  "creativeDirection": "Studio portrait photography: rebuild the sparse table-and-wall geometry of source 2 as a controlled set, then fold in a few tactile motifs from the other sleeves as real props and painted details while keeping the scene readable as one crisp photograph.",
+  "scene": "A purpose-built studio set with a textured pale wall, a simple rectangular table, mismatched chairs, and an opening at the right suggesting the spare interior from source 2. Three women sit and lean around the table in the poised arrangement of source 2, photographed front-on. The set is mostly monochrome, but a few carefully placed accents bring in this week's other records: a small dark doll with pale hair stands on the tabletop, a simple cat face is painted small on an olive chair seat, and a suspended saucer-shaped practical light above the table casts a faint geometric beam shape onto the wall. The mood is formal, strange, and clean rather than theatrical.",
+  "elements": [
+    {
+      "source": 2,
+      "role": "lead",
+      "element": "the three women from reference image 2 posed around a table in coordinated formal outfits, within a sparse textured-wall studio set based on that sleeve"
     },
     {
-      "source": 6,
-      "element": "a large gold sculptural mask mounted as a roadside object, ringed with metal spikes like antenna rods"
+      "source": 1,
+      "role": "support",
+      "element": "the small dark doll-like figure with light hair placed on the table as a real object"
+    },
+    {
+      "source": 5,
+      "role": "support",
+      "element": "a saucer-shaped overhead lamp with a subtle beam-like patch of light on the wall"
     },
     {
       "source": 7,
-      "element": "a real retro flying-saucer-shaped canopy light above the stop, casting a narrow cone of light downward like a beam, with teal, orange, yellow, and red accents in the architecture"
+      "role": "support",
+      "element": "a small stylized cat face painted on the olive seat of one chair"
+    },
+    {
+      "source": 4,
+      "role": "colour",
+      "element": "warm amber-black accents in small studio equipment details and shadows"
+    },
+    {
+      "source": 6,
+      "role": "colour",
+      "element": "muted gold and blue notes in the metallic fixtures and cool edge highlights"
+    },
+    {
+      "source": 3,
+      "role": "colour",
+      "element": "tiny restrained touches of red and blue in the otherwise neutral scene"
     }
   ],
   "palette": [
-    "peach",
-    "pink",
+    "black",
+    "white",
+    "gray",
+    "olive",
     "cream",
-    "olive green",
-    "gold",
-    "teal"
+    "amber"
   ],
-  "mood": "strange but sunlit, cinematic, clear-headed",
+  "mood": "poised, uncanny, elegant",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "As-We-Once-Were.jpg",
       "album": "As We Once Were",
       "artist": "",
-      "description": "A soft-focus, warmly lit portrait shows one woman in side profile facing left, wearing a long-sleeved white dress with gathered cuffs and bodice details. She raises a small dark figurine or doll-like object with a pale top in both hands. The background is a hazy peach and pink gradient with an ethereal glow, and the figure occupies the right half of the composition.",
-      "signatureMotif": "woman lifting a small figurine",
-      "medium": "soft-focus photograph",
-      "people": "one woman in profile holding up a small object",
+      "description": "A soft-focus portrait of one woman in profile facing right, wearing a long white dress with ruffled cuffs and bodice, holding up a small dark doll or figurine with light hair against a glowing peach-pink background. The whole image has a hazy, dreamlike blur.",
+      "signatureMotif": "woman holding up a small doll-like figure",
+      "medium": "photograph",
+      "people": "one woman in side profile holding a small doll-like object aloft",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": [
-        0.52,
+        0.18,
         0.18,
         0.93,
-        0.66
+        0.98
       ],
-      "faceHeight": 0.16,
+      "faceHeight": 0.18,
+      "faceBoxes": [
+        [
+          0.58,
+          0.24,
+          0.77,
+          0.42
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
       "palette": [
         "peach",
         "pink",
         "cream",
         "white",
-        "brown"
+        "soft orange"
       ]
     },
     {
       "source": 2,
-      "filename": "Tails.jpg",
-      "album": "Tails",
+      "filename": "The-Womack-Sisters.jpg",
+      "album": "The Womack Sisters",
       "artist": "",
-      "description": "A simple illustrated cat face fills the center on a flat olive-green background. The cat is cream-colored with black outline, pointed ears, narrow eyes, pink cheeks, a pink triangular nose, and long black whiskers. The composition is minimal and graphic.",
-      "signatureMotif": "large stylized cat face",
-      "medium": "illustration",
-      "people": "none",
+      "description": "A black-and-white posed portrait of three women seated around a table in a sparse interior, all wearing coordinated dark-and-light outfits with ties and patterned stockings, looking toward the camera with composed expressions.",
+      "signatureMotif": "three women posed around a table in matching formal outfits",
+      "medium": "photograph",
+      "people": "three women seated and leaning around a table in coordinated outfits",
+      "place": "a minimally furnished interior with a textured wall, a table, chairs, and a doorway or window opening at the right.",
       "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
+      "peopleBox": [
+        0.03,
+        0.34,
+        0.96,
+        0.98
+      ],
+      "faceHeight": 0.16,
+      "faceBoxes": [
+        [
+          0.08,
+          0.43,
+          0.25,
+          0.59
+        ],
+        [
+          0.4,
+          0.31,
+          0.58,
+          0.47
+        ],
+        [
+          0.77,
+          0.42,
+          0.95,
+          0.58
+        ]
+      ],
+      "peopleCount": 3,
+      "minors": false,
+      "strength": 5,
       "palette": [
-        "olive green",
-        "cream",
         "black",
-        "pink"
+        "white",
+        "gray"
       ]
     },
     {
       "source": 3,
-      "filename": "Vanishing-Point.jpg",
-      "album": "Vanishing Point",
-      "artist": "",
-      "description": "A dense collage of overlapping photographs and graphic fragments shows close-ups of audio equipment, knobs, dials, speakers, blurred lights, and a speeding car on a road at night. The layout is layered and cut-and-paste in style, with dark negative space around the edges and warm glowing highlights throughout.",
-      "signatureMotif": "collaged night-driving car image",
-      "medium": "photo collage",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "black",
-        "orange",
-        "amber",
-        "brown",
-        "cream"
-      ]
-    },
-    {
-      "source": 4,
       "filename": "Temple-Songs.jpg",
       "album": "Temple Songs",
       "artist": "",
-      "description": "A candid indoor portrait shows one smiling woman standing with her arms slightly out, wearing a bright striped sleeveless top in orange, red, blue, and black, along with light blue jeans, necklaces, and large earrings. She has shoulder-length light gray hair. The background includes dark walls, mirrors, a tall decorative vase-like object, a green chair, and warm interior lighting.",
-      "signatureMotif": "smiling woman in a bright striped top",
+      "description": "A casual indoor portrait of one smiling older woman with shoulder-length gray hair, wearing a bright striped sleeveless top, jeans, earrings, and necklaces, standing with slightly blurred hands in front of dark walls, mirrors, a green chair, and warm wood surfaces.",
+      "signatureMotif": "smiling gray-haired woman in a bright striped top",
       "medium": "photograph",
-      "people": "one woman standing indoors and smiling",
+      "people": "one older woman smiling and gesturing with her hands",
+      "place": "a dim stylish lounge or bar interior with dark paneled walls, mirrors, a green upholstered chair, wooden tables, and warm ambient lighting.",
       "moderationRisk": "",
       "peopleBox": [
-        0.16,
+        0.05,
         0.08,
-        0.66,
-        0.47
+        0.82,
+        0.98
       ],
-      "faceHeight": 0.15,
+      "faceHeight": 0.2,
+      "faceBoxes": [
+        [
+          0.27,
+          0.1,
+          0.53,
+          0.3
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
       "palette": [
         "black",
         "orange",
@@ -142,26 +204,53 @@
       ]
     },
     {
-      "source": 5,
-      "filename": "The-Womack-Sisters.jpg",
-      "album": "The Womack Sisters",
+      "source": 4,
+      "filename": "Vanishing-Point.jpg",
+      "album": "Vanishing Point",
       "artist": "",
-      "description": "A black-and-white studio-style portrait shows three women posed around a table in an interior space. Two are seated at left and right while one stands or leans forward in the center. They wear coordinated formal outfits with strong white shoulders, dark ties, long sleeves, and patterned or textured dark garments. All three have styled long hair, jewelry, and composed expressions. The background is a large textured wall with a doorway or window at right.",
-      "signatureMotif": "three women posed around a table in coordinated outfits",
-      "medium": "black-and-white photograph",
-      "people": "three women posed around a table",
+      "description": "A dense collage of overlapping photographs and graphic blocks showing blurred night road lights, a speeding car, audio equipment knobs, amplifiers, a cassette or tape machine, and other close-up mechanical details on a mostly black background with warm orange highlights.",
+      "signatureMotif": "blurred speeding car amid a collage of audio gear and lights",
+      "medium": "photo collage",
+      "people": "none",
+      "place": "",
       "moderationRisk": "",
-      "peopleBox": [
-        0.08,
-        0.39,
-        0.94,
-        0.73
-      ],
-      "faceHeight": 0.12,
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 5,
       "palette": [
         "black",
-        "white",
-        "gray"
+        "orange",
+        "amber",
+        "brown",
+        "cream"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "73-Good-Luck.jpg",
+      "album": "73 Good Luck",
+      "artist": "",
+      "description": "A bold flat-color retro-futurist illustration featuring a flying saucer at the top center beaming up a small astronaut with arms outstretched above rounded buildings, circles, arcs, and flowing geometric shapes.",
+      "signatureMotif": "UFO beaming up a small astronaut",
+      "medium": "illustration",
+      "people": "none",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "light blue",
+        "teal",
+        "orange",
+        "yellow",
+        "red"
       ]
     },
     {
@@ -169,53 +258,89 @@
       "filename": "Stigma.jpg",
       "album": "Stigma",
       "artist": "",
-      "description": "A dramatic close-up image centers on a metallic mask or sculptural face with an open mouth and closed or lowered eyes. The figure is surrounded by many protruding nails or spikes embedded around the head and body. Behind it are diagonal bands of purple-blue light and bright highlights, creating a theatrical, high-contrast scene.",
-      "signatureMotif": "golden mask covered with protruding nails",
-      "medium": "photograph of a sculptural object",
+      "description": "A dramatic close-up of a gold-toned sculptural mask or face surrounded by many protruding nails or spikes, set against a dark background with diagonal bluish light streaks. The face has closed or half-closed eyes and an open mouth.",
+      "signatureMotif": "gold mask surrounded by protruding nails",
+      "medium": "photograph",
       "people": "none",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": null,
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 5,
       "palette": [
         "gold",
         "black",
         "purple",
         "blue",
-        "white"
+        "brown"
       ]
     },
     {
       "source": 7,
-      "filename": "73-Good-Luck.jpg",
-      "album": "73 Good Luck",
+      "filename": "Tails.jpg",
+      "album": "Tails",
       "artist": "",
-      "description": "A colorful retro-futuristic illustration shows a small astronaut figure suspended beneath a flying saucer beam in the center. Around them are rounded geometric shapes suggesting domes, buildings, planets, and abstract machinery. Thick black outlines divide flat areas of teal, blue, yellow, orange, red, and pink in a symmetrical, poster-like composition.",
-      "signatureMotif": "astronaut being lifted by a flying saucer beam",
-      "medium": "vector-style illustration",
+      "description": "A simple illustrated animal face centered on a flat olive-green background, drawn with black outlines and pale cream fill, with pointed ears, narrow eyes, pink cheeks, a pink triangular nose, and long whiskers.",
+      "signatureMotif": "stylized cat face",
+      "medium": "illustration",
       "people": "none",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": null,
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 4,
       "palette": [
-        "teal",
+        "olive green",
+        "cream",
+        "black",
+        "pink",
+        "white"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Free-Peace-Sweet.jpg",
+      "album": "Free Peace Sweet",
+      "artist": "",
+      "description": "A close-up photograph of a tree trunk with a large speech-bubble-shaped carving cut into the bark, with grass and blue sky with clouds visible in the background around the trunk.",
+      "signatureMotif": "speech-bubble carving in a tree trunk",
+      "medium": "photograph",
+      "people": "none",
+      "place": "an outdoor grassy field under a bright sky, seen mostly through a close view of a rough-barked tree trunk.",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "brown",
+        "gray",
+        "green",
         "blue",
-        "yellow",
-        "orange",
-        "red"
+        "white"
       ]
     }
   ],
   "hint": null,
   "composeBackend": "gpt-image-2-6",
   "model": "openai/gpt-image-2.6/sunburst/edit",
-  "prompt": "A bright golden-hour roadside photograph at a dry-country pull-off beside a small retro-futurist service stop, shot from a low angle with lots of open sky, the main subject placed left of frame. The woman from reference image 1 stands in side profile facing left in her long-sleeved white dress, recognisably lifting the small dark figurine with both hands exactly as in the reference, her face clear and untouched by blur. Behind and slightly to the right stands a large real gold sculptural mask object inspired by reference image 6, with an open mouth and many metal spike-like rods radiating around it like antennae. Above part of the stop is a physical flying-saucer-shaped canopy light inspired by reference image 7, its underside forming a narrow downward beam of light onto the pavement. An older parked car nearby contributes the warm amber dashboard glow and visible stereo knobs and dials from reference image 3 through the side window. The building itself uses the olive-green and cream palette from reference image 2, with a subtle cat-ear roof silhouette and tiny pink practical accents rather than any graphic image. Photorealistic daylight location photography, crisp focus, physically plausible materials, no collage, no mural, no poster, no text. Compose it as one cohesive moment with the woman as the fixed human point, the mask and saucer canopy as the major objects, and the car secondary. Warm low sun from the side, long shadows, clean saturated colour, peach-pink highlights in the sky, clear air, surreal but believable roadside mood. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one woman in profile holding up a small object, and reference image 8 is an enlarged close-up of those same people - take their faces from reference image 8. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 4, 5 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "prompt": "A face-on seated group portrait in a purpose-built studio set, framed medium-wide at eye level with little depth; a sparse textured pale wall, a simple rectangular table, mismatched chairs, and an opening at the right recreate the minimal interior geometry of reference image 2. The three women from reference image 2 are the primary subject, posed seated and leaning around the table in their coordinated formal outfits, looking toward the camera with composed expressions, preserving their arrangement and styling. On the tabletop, include the small dark doll-like figure with light hair from reference image 1 as a real object; above the table, a saucer-shaped practical lamp inspired by reference image 5 casts a subtle beam-like geometric patch onto the wall; on the seat of one olive chair, paint a small stylized cat face from reference image 7. Let reference image 4 influence a few amber-black studio hardware details and shadow tones, reference image 6 influence restrained gold metal notes and faint cool blue edge highlights, and reference image 3 contribute only tiny accents of red and blue within the otherwise neutral set. Crisp studio portrait photography, physically plausible set build, clean editorial realism, no collage look. Balanced asymmetry, clear visual hierarchy on the three women, faces fully legible, sharp focus, cool skylight-style key with soft fill, gentle shadow definition, no murk. Palette of black, white, gray, cream, olive, amber, muted gold, and cool blue; mood poised, uncanny, elegant. Reference map for people (the album images are attached in this numbered order): reference image 2 shows three women seated and leaning around a table in coordinated outfits, and reference images 9, 10, 11 are enlarged close-ups of those same people, one face each from left to right - take each face from its own close-up. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 1, 3 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, posters, record covers, or pictures on a screen, monitor, or television. A sleeve's abstract graphics, shapes, patterns, and colours may be painted onto the walls, doors, floor, or objects of the place as part of its decoration, without any lettering. Show no sleeve's faces, heads, or figures as a picture, mural, display, sign, relief, or silhouette anywhere; transform the sleeves' non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image cleanly whatever the light: every person's face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere. The only people anywhere in the image are the reference people named in the reference map, and of those only the ones whose faces are clearly visible in their reference. Add no one else: no extra band members, musicians, staff, bystanders, passers-by, crowd, audience, background or out-of-focus figures, and no hands, arms, legs, or shadows of unseen people. Never complete a person who is hidden, cropped, turned away, blurred, or only partly visible in a reference with an invented face or body - leave that person out entirely. Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.",
   "inputs": [
     "As-We-Once-Were.jpg",
-    "Tails.jpg",
-    "Vanishing-Point.jpg",
-    "Temple-Songs.jpg",
     "The-Womack-Sisters.jpg",
+    "Temple-Songs.jpg",
+    "Vanishing-Point.jpg",
+    "73-Good-Luck.jpg",
     "Stigma.jpg",
-    "73-Good-Luck.jpg"
+    "Tails.jpg",
+    "Free-Peace-Sweet.jpg"
   ]
 }

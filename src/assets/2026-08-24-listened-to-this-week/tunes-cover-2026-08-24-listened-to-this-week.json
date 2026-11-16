@@ -3,246 +3,392 @@
   "date": "2026-08-24",
   "type": "cover",
   "lane": null,
-  "lighting": "hard midday sun",
-  "composition": "close crop, subject fills frame",
+  "setting": "interior",
+  "lighting": "flash and daylight interior",
+  "composition": "low eye-level half-length portrait",
   "cast": [
-    8
+    1
   ],
   "closeUps": [],
+  "castCrops": [],
+  "peopleAudit": {
+    "expected": 1,
+    "counted": 1,
+    "retried": false
+  },
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Hard-sun ice cream yard portrait",
-  "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography: a crisp, realistic industrial ice cream stop where the strongest portrait anchors the frame and the graphic and abstract sleeves become physical objects, materials, and color accents within one sunstruck moment.",
-  "scene": "A small paved service yard outside an ice cream depot or roadside stand, shot at eye level in hard midday sun. The setting is plain and industrial rather than leafy: pale stucco wall, blacktop, a circular metal hatch or barrel opening near the foreground edge, a battered yellow chair set on a worn green outdoor mat scattered with blue paper order slips, and a few utilitarian poles and wires overhead.",
+  "concept": "Portrait by a gilded frame with peacock",
+  "medium": "editorial location photography",
+  "creativeDirection": "Editorial location photography in a real interior, using the ornate framed studio-like room as the place and building a crisp, plausibly photographed portrait around the strongest cast face.",
+  "scene": "Inside a faded rehearsal room or small gallery-like interior dominated by a huge freestanding ornate gilded frame against a pale worn wall, a black-and-white-dressed man stands just in front of it holding a melting ice cream bar toward the camera, while a real peacock with its tail fully fanned occupies the side of the room; the wall and floor carry small traces of bright packaging colour and distressed wire-streaked wear.",
   "elements": [
     {
       "source": 1,
-      "element": "stacked blue and yellow circular plastic tubs or lids grouped vertically at the left edge, intersected by two thin black cables or rods"
-    },
-    {
-      "source": 3,
-      "element": "sun-bleached cream wall with stains, hairline cracks, rust drips, and a dark rough strip of debris near the base with a few thin wires"
-    },
-    {
-      "source": 4,
-      "element": "a circular metal opening at the very bottom foreground and one large hand entering from the right edge as if reaching into the space, echoing the looking-into-an-opening perspective without adding more people"
-    },
-    {
-      "source": 5,
-      "element": "a yellow wooden chair with a woven seat standing on a green mat strewn with loose blue square papers"
-    },
-    {
-      "source": 8,
-      "element": "the smiling man from reference image 8 holding his ice cream cone with the chocolate-covered bar, kept recognisable in a close portrait"
-    }
-  ],
-  "palette": [
-    "cream",
-    "black",
-    "bright yellow",
-    "light blue",
-    "green",
-    "rust brown"
-  ],
-  "mood": "playful, stark, sun-baked",
-  "coverSummaries": [
-    {
-      "source": 1,
-      "filename": "It-Means-Everything.jpg",
-      "album": "It Means Everything",
-      "artist": "",
-      "description": "A bold geometric graphic cover divided into blocks by black lines. Along the left side are four large overlapping circles stacked vertically, alternating light blue and bright yellow, with two thin black diagonal lines crossing through them. The right side has a large bright yellow rectangle below a cyan-blue rectangle. The overall background and borders are black.",
-      "signatureMotif": "stacked overlapping blue and yellow circles crossed by two thin black diagonal lines",
-      "medium": "graphic design",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "black",
-        "bright yellow",
-        "light blue",
-        "white"
-      ]
-    },
-    {
-      "source": 2,
-      "filename": "The-Singles-Collection-1979-2012.jpg",
-      "album": "The Singles Collection 1979 2012",
-      "artist": "",
-      "description": "A collage-style illustrated scene with a vivid red sky and yellow cloud-like textures above a green ground. In the center, a person seen from behind stands facing several large upright record sleeves or posters arranged in a semicircle. Two cutout-style male figures stand near the lower left and lower right foreground. The image uses high-contrast posterized tones and a retro print look.",
-      "signatureMotif": "back-facing central figure looking at a semicircle of large record sleeves",
-      "medium": "photomontage / collage illustration",
-      "people": "three people: one central person seen from behind and two cutout-style men at left and right",
-      "moderationRisk": "",
-      "peopleBox": [
-        0.12,
-        0.46,
-        0.87,
-        0.92
-      ],
-      "faceHeight": 0.12,
-      "palette": [
-        "red",
-        "yellow",
-        "green",
-        "black",
-        "white"
-      ]
-    },
-    {
-      "source": 3,
-      "filename": "The-Downward-Spiral.jpg",
-      "album": "The Downward Spiral",
-      "artist": "",
-      "description": "An abstract, distressed artwork on a pale beige and cream surface with crackled texture, stains, and vertical rust-like drips. A dark horizontal mass of rough debris or soil stretches from the left-center, with several thin wires extending across the image. Small brown moth- or leaf-like shapes appear scattered around the surface.",
-      "signatureMotif": "dark horizontal clump with thin wires on a stained cracked background",
-      "medium": "mixed-media painting / assemblage",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "beige",
-        "cream",
-        "rust brown",
-        "dark brown",
-        "black"
-      ]
-    },
-    {
-      "source": 4,
-      "filename": "Greatest-Hits.jpg",
-      "album": "Greatest Hits",
-      "artist": "",
-      "description": "A fisheye-lens photograph looking outward from inside a circular opening or container rim. Five men in dark clothing lean in and look downward toward the camera against a blue sky. Large hands and fingers frame the lower foreground and right edge, as if holding or reaching into the opening. The image has a slightly blurred, wide-angle rock-band portrait feel.",
-      "signatureMotif": "five men viewed through a circular opening with large hands in the foreground",
-      "medium": "photograph",
-      "people": "five men leaning over and looking down into the camera",
-      "moderationRisk": "",
-      "peopleBox": [
-        0.14,
-        0.3,
-        0.83,
-        0.67
-      ],
-      "faceHeight": 0.14,
-      "palette": [
-        "blue",
-        "black",
-        "skin tone",
-        "yellow",
-        "red"
-      ]
-    },
-    {
-      "source": 5,
-      "filename": "Sometimes-I-Sit-and-Think-and-Sometimes-I-Just-Sit.jpg",
-      "album": "Sometimes I Sit and Think and Sometimes I Just Sit",
-      "artist": "",
-      "description": "A simple hand-drawn illustration on a white background with a thin irregular black border. Near the center is a green rug-like shape covered with loosely drawn blue square tiles or papers. On top sits a yellow-brown wooden chair with a rounded back and a yellow mesh or woven seat. The drawing has a casual sketchbook style with black outlines.",
-      "signatureMotif": "yellow chair on a green rug covered with blue square shapes",
-      "medium": "hand-drawn illustration",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "white",
-        "green",
-        "light blue",
-        "yellow",
-        "black"
-      ]
+      "role": "lead",
+      "element": "the man from the close portrait, posed with the same slight smile and melting ice cream bar held toward camera"
     },
     {
       "source": 6,
-      "filename": "Foxbase-Alpha.jpg",
-      "album": "Foxbase Alpha",
-      "artist": "",
-      "description": "A color photograph of a young woman standing outdoors in a leafy park or tree-lined setting. She wears a light knitted cap, a short-sleeved striped top, and a dark green skirt, and holds a wooden signpost with a large rectangular sign angled above her shoulder. Sunlit tree branches and soft-focus foliage fill the background, while a plain white vertical band runs down the left side.",
-      "signatureMotif": "young woman holding a large sign in a sunlit park",
-      "medium": "photograph",
-      "people": "one woman standing and holding a sign",
-      "moderationRisk": "",
-      "peopleBox": [
-        0.28,
-        0.22,
-        0.63,
-        0.56
-      ],
-      "faceHeight": 0.12,
-      "palette": [
-        "green",
-        "white",
-        "cream",
-        "brown",
-        "black"
-      ]
+      "role": "lead",
+      "element": "the interior location centred on a large ornate gilded picture frame against a pale backdrop-like wall"
+    },
+    {
+      "source": 4,
+      "role": "support",
+      "element": "a real peacock with its tail fully fanned beside the frame"
     },
     {
       "source": 7,
-      "filename": "Sabotage.jpg",
-      "album": "Sabotage",
-      "artist": "",
-      "description": "A studio photograph of a rock band posed in front of a large ornate gold picture frame containing mirrored or repeated images of themselves. Several long-haired men wear patterned jackets, open shirts, necklaces, and flared trousers in a 1970s style. One man sits cross-legged at the bottom left, while others stand across the frame, with duplicated reflections creating extra figures. The outer border is dark brown or black.",
-      "signatureMotif": "band members posed before a large ornate frame with repeated mirrored figures",
-      "medium": "photograph",
-      "people": "six men posed in front of a large framed reflective backdrop",
-      "moderationRisk": "",
-      "peopleBox": [
-        0.09,
-        0.34,
-        0.95,
-        0.86
-      ],
-      "faceHeight": 0.12,
-      "palette": [
-        "red",
-        "black",
-        "white",
-        "gold",
-        "blue"
-      ]
+      "role": "support",
+      "element": "a few bright packaging-collage fragments and bold black painted shapes on a low side panel and floor edge"
     },
     {
       "source": 8,
+      "role": "support",
+      "element": "stained plaster, scattered dark debris, and thin exposed wires running across the lower wall"
+    }
+  ],
+  "palette": [
+    "black",
+    "white",
+    "gold",
+    "peacock blue",
+    "green",
+    "rust"
+  ],
+  "mood": "wry, theatrical, sharp, slightly surreal but physically real",
+  "coverSummaries": [
+    {
+      "source": 1,
       "filename": "Ice-Cream-Genius.jpg",
       "album": "Ice Cream Genius",
       "artist": "",
-      "description": "A high-contrast black-and-white portrait of a smiling man against a white background. He has dark hair tied back, wears dark clothing and dangling earrings, and holds an ice cream cone topped with a rectangular chocolate-covered bar and a scoop. The composition is a close-up with the face dominating the right half of the image.",
-      "signatureMotif": "smiling man holding an ice cream cone with a chocolate-covered bar",
+      "description": "A high-contrast black-and-white close portrait of one man with dark hair tied back, slight smile, and an earring, wearing a dark jacket and holding a melting ice cream bar or confection toward the camera against a plain white background.",
+      "signatureMotif": "smiling man holding a melting ice cream bar",
       "medium": "black-and-white photograph",
-      "people": "one man in close portrait holding an ice cream cone",
+      "people": "one man in close portrait holding an ice cream bar",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": [
         0.28,
         0.02,
         0.98,
-        0.78
+        0.98
       ],
       "faceHeight": 0.42,
+      "faceBoxes": [
+        [
+          0.31,
+          0.08,
+          0.79,
+          0.5
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 5,
       "palette": [
         "black",
         "white",
-        "gray",
-        "light blue"
+        "grey"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Greatest-Hits.jpg",
+      "album": "Greatest Hits",
+      "artist": "",
+      "description": "A low-angle band portrait framed by the circular rim of a large opening in the foreground, with five men in dark clothing leaning and looking downward toward the viewer under a blue sky, while large hands grip the rim at the bottom and right edges.",
+      "signatureMotif": "five men viewed through a circular opening with hands on the rim",
+      "medium": "photograph",
+      "people": "five men leaning over and looking down into the camera",
+      "place": "an outdoor setting under open sky seen from inside or below a large circular metal or plastic opening.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.14,
+        0.34,
+        0.84,
+        0.74
+      ],
+      "faceHeight": 0.16,
+      "faceBoxes": [
+        [
+          0.18,
+          0.39,
+          0.31,
+          0.57
+        ],
+        [
+          0.31,
+          0.43,
+          0.45,
+          0.61
+        ],
+        [
+          0.44,
+          0.46,
+          0.58,
+          0.64
+        ],
+        [
+          0.51,
+          0.35,
+          0.68,
+          0.58
+        ],
+        [
+          0.66,
+          0.36,
+          0.85,
+          0.59
+        ]
+      ],
+      "peopleCount": 5,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "blue",
+        "black",
+        "dark grey",
+        "skin tone",
+        "yellow"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Foxbase-Alpha.jpg",
+      "album": "Foxbase Alpha",
+      "artist": "",
+      "description": "A colour photograph of a young woman standing outdoors beneath leafy trees, wearing a striped short-sleeve top, dark skirt, and light knitted cap, and holding a large placard on a wooden stick; a wide white margin runs down the left side.",
+      "signatureMotif": "young woman holding a placard in a sunlit park",
+      "medium": "photograph",
+      "people": "one young woman standing and holding a placard",
+      "place": "a sunlit park or tree-lined outdoor area with dense leafy branches overhead and soft dappled light.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.31,
+        0.28,
+        0.79,
+        0.95
+      ],
+      "faceHeight": 0.12,
+      "faceBoxes": [
+        [
+          0.39,
+          0.31,
+          0.56,
+          0.43
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "white",
+        "green",
+        "yellow-green",
+        "brown",
+        "cream"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Expecting-To-Fly.jpg",
+      "album": "Expecting To Fly",
+      "artist": "",
+      "description": "A frontal photograph of a peacock with its tail fully fanned, filling the frame with radiating eye-spotted feathers around the bird’s bright blue neck and golden-green body.",
+      "signatureMotif": "peacock with fully fanned tail",
+      "medium": "photograph",
+      "people": "none",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "green",
+        "blue",
+        "gold",
+        "brown",
+        "teal"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "The-Singles-Collection-1979-2012.jpg",
+      "album": "The Singles Collection 1979 2012",
+      "artist": "",
+      "description": "A poster-like collage scene with a child seen from behind in the center, standing before a row of propped-up record sleeves or posters featuring cutout figures, against a vivid red and yellow sky-like background and a strip of green ground below.",
+      "signatureMotif": "child seen from behind facing a display of album-cover posters",
+      "medium": "photomontage/collage",
+      "people": "one child seen from behind standing before a display of posters",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.39,
+        0.36,
+        0.66,
+        0.92
+      ],
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": 1,
+      "minors": true,
+      "strength": 4,
+      "palette": [
+        "red",
+        "yellow",
+        "black",
+        "white",
+        "green"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Sabotage.jpg",
+      "album": "Sabotage",
+      "artist": "",
+      "description": "A studio-style group portrait arranged in front of a large ornate gold frame, showing multiple repeated images of four long-haired men in flamboyant 1970s clothing against a pale backdrop, with one seated figure at lower left and mirrored or duplicated standing figures across the frame.",
+      "signatureMotif": "repeated band members posed inside a large ornate frame",
+      "medium": "photograph",
+      "people": "four men shown in repeated mirrored poses, with one seated and others standing",
+      "place": "a studio-like interior with a pale backdrop dominated by a large ornate gilded picture frame.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.12,
+        0.34,
+        0.95,
+        0.95
+      ],
+      "faceHeight": 0.12,
+      "faceBoxes": [
+        [
+          0.13,
+          0.41,
+          0.24,
+          0.53
+        ],
+        [
+          0.25,
+          0.42,
+          0.36,
+          0.54
+        ],
+        [
+          0.43,
+          0.39,
+          0.56,
+          0.52
+        ],
+        [
+          0.56,
+          0.41,
+          0.67,
+          0.53
+        ],
+        [
+          0.7,
+          0.35,
+          0.84,
+          0.5
+        ],
+        [
+          0.84,
+          0.37,
+          0.95,
+          0.51
+        ],
+        [
+          0.26,
+          0.67,
+          0.37,
+          0.79
+        ],
+        [
+          0.4,
+          0.68,
+          0.49,
+          0.79
+        ]
+      ],
+      "peopleCount": 8,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "black",
+        "white",
+        "gold",
+        "red",
+        "blue"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Pills-n-Thrills-and-Bellyaches.jpg",
+      "album": "Pills n Thrills and Bellyaches",
+      "artist": "",
+      "description": "A dense pop-art collage filling the frame with brightly coloured packaging fragments, cartoonish food graphics, stripes, stars, and labels, overlaid by large irregular black letterforms that cut across the composition.",
+      "signatureMotif": "bright packaging collage with oversized black cutout letterforms",
+      "medium": "collage/graphic design",
+      "people": "none",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "yellow",
+        "red",
+        "blue",
+        "green",
+        "pink"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "The-Downward-Spiral.jpg",
+      "album": "The Downward Spiral",
+      "artist": "",
+      "description": "An abstract distressed surface resembling aged plaster or canvas in off-white and beige, marked by rust-coloured stains, cracks, dark clumps of debris, and several thin exposed wires stretching horizontally across the lower left and center.",
+      "signatureMotif": "rusted debris with exposed wires on a stained pale surface",
+      "medium": "mixed-media abstract artwork",
+      "people": "none",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 3,
+      "palette": [
+        "off-white",
+        "beige",
+        "rust",
+        "brown",
+        "black"
       ]
     }
   ],
   "hint": null,
   "composeBackend": "gpt-image-2-6",
   "model": "openai/gpt-image-2.6/sunburst/edit",
-  "prompt": "Eye-level close-cropped view in a small paved service yard outside an ice cream depot, hard midday sun, crisp shadows, pale cracked stucco wall behind, blacktop below, a circular metal hatch or barrel opening clipped at the bottom foreground and one oversized hand entering from the right edge as if reaching into the opening. Primary subject: the smiling man from reference image 8 dominates the right half of the frame, recognisable as in the reference, facing camera and holding his ice cream cone topped with the rectangular chocolate-covered bar and scoop. Around him, fold in the other motifs as real objects in the same place: at the left edge a vertical stack of overlapping blue and yellow plastic tubs or round lids crossed by two thin black cables, a worn yellow wooden chair with woven seat on a green outdoor mat scattered with loose blue square papers, and along the wall base a dark rough strip of debris with a few thin wires, while the cream wall itself shows stains, hairline cracks, and rust drips. Daylight location photography, realistic materials and proportions, no collage, no poster art, no album covers displayed. Tight asymmetrical composition with the face large in frame, objects compressed around him, sharp focus on the face and cone, clean depth and crisp detail. Palette of cream, black, bright yellow, light blue, green, and rust brown; playful but stark, sun-baked, graphic, and clean. Reference map for people (the album images are attached in this numbered order): reference image 8 shows one man in close portrait holding an ice cream cone. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 2, 4, 6, 7 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "prompt": "An interior photographed at low eye level in a half-length environmental portrait, inside a faded rehearsal room or small gallery dominated by a huge ornate gilded frame standing against a pale worn wall. Primary subject: the man from reference image 1, properly lit and close enough to read clearly, with the same dark tied-back hair, slight smile, earring, dark jacket, and the same pose holding a melting ice cream bar toward the camera. Place him just in front of the large gold frame from reference image 6 so the frame surrounds him loosely without becoming symmetrical. Add a real peacock from reference image 4 at one side of the room with its tail fully fanned, natural scale, clearly secondary to the man. Include support details from reference image 7 as a few bright packaging-like colour fragments and bold black cutout-like painted shapes on a low side panel and along the floor edge, not as text or posters. Include support details from reference image 8 in the room surfaces: pale stained plaster, a little dark debris near the skirting, and a few thin exposed wires running horizontally across the lower wall. Photographic realism, editorial location photography, crisp focus, clean detail, no grain or haze. Compose asymmetrically, with the man slightly off-centre and the peacock balancing the open side of the frame; camera close enough for the face to remain the anchor. Light with a bright direct flash on the subject combined with soft daylight entering the room, keeping every surface and colour legible and the cast face cleanly modelled. Palette of black, white, pale beige, gold, peacock blue and green, rust, with small vivid red and yellow accents; mood wry, theatrical, and memorable. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one man in close portrait holding an ice cream bar. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 2, 3, 5, 6 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, posters, record covers, or pictures on a screen, monitor, or television. A sleeve's abstract graphics, shapes, patterns, and colours may be painted onto the walls, doors, floor, or objects of the place as part of its decoration, without any lettering. Show no sleeve's faces, heads, or figures as a picture, mural, display, sign, relief, or silhouette anywhere; transform the sleeves' non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image cleanly whatever the light: every person's face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere. The only people anywhere in the image are the reference people named in the reference map, and of those only the ones whose faces are clearly visible in their reference. Add no one else: no extra band members, musicians, staff, bystanders, passers-by, crowd, audience, background or out-of-focus figures, and no hands, arms, legs, or shadows of unseen people. Never complete a person who is hidden, cropped, turned away, blurred, or only partly visible in a reference with an invented face or body - leave that person out entirely. Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.",
   "inputs": [
-    "It-Means-Everything.jpg",
-    "The-Singles-Collection-1979-2012.jpg",
-    "The-Downward-Spiral.jpg",
+    "Ice-Cream-Genius.jpg",
     "Greatest-Hits.jpg",
-    "Sometimes-I-Sit-and-Think-and-Sometimes-I-Just-Sit.jpg",
     "Foxbase-Alpha.jpg",
+    "Expecting-To-Fly.jpg",
+    "The-Singles-Collection-1979-2012.jpg",
     "Sabotage.jpg",
-    "Ice-Cream-Genius.jpg"
+    "Pills-n-Thrills-and-Bellyaches.jpg",
+    "The-Downward-Spiral.jpg"
   ]
 }

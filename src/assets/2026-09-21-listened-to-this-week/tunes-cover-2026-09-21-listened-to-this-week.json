@@ -3,215 +3,313 @@
   "date": "2026-09-21",
   "type": "cover",
   "lane": null,
-  "lighting": "golden hour side sun",
-  "composition": "ground-level side view, wide frame",
+  "setting": "night",
+  "lighting": "station lamps and carriage glow",
+  "composition": "eye-level medium telephoto portrait",
   "cast": [
-    2
+    8
   ],
   "closeUps": [
     {
-      "source": 2,
+      "source": 8,
       "reference": 9
-    }
-  ],
-  "shootDirection": null,
-  "colourTreatment": null,
-  "concept": "Rail embankment lookout above a passing steam train",
-  "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography of a real rail embankment scene, using one cast figure and a passing locomotive as the main anchors while folding the abstract sleeves into sky colour, steam, and trackside materials.",
-  "scene": "A real grassy rail embankment beside open water and low fields, with a blue steam locomotive passing left to right below the viewer and one solitary figure standing at the top of the slope looking out over it.",
-  "elements": [
-    {
-      "source": 1,
-      "element": "hot red, orange, magenta, and blue glitch colours translated into narrow vertical signal reflections and banded sunset tints in the train windows and polished metal"
-    },
-    {
-      "source": 2,
-      "element": "the person from reference image 2 seen from behind, standing wide-legged with hands clasped behind their back in the same flag-patterned long coat at the top of the embankment"
-    },
-    {
-      "source": 3,
-      "element": "soft pale cream-yellow sunlit steam cloud surrounded by darker olive and deep green trackside vegetation masses"
-    },
-    {
-      "source": 5,
-      "element": "a streamlined blue steam locomotive pulling carriages along the tracks below, with white steam billowing above it"
-    },
-    {
-      "source": 6,
-      "element": "subtle concentric industrial forms and neon pink-purple-blue accents reduced to lens-clean colour pops in signal glass and carriage reflections"
-    },
-    {
-      "source": 7,
-      "element": "high-contrast black clothing silhouette quality carried into the cast figure against the bright sky"
     },
     {
       "source": 8,
-      "element": "lavender haze and lilac fabric tones translated into a faint purple cast in the steam and evening sky near the horizon"
+      "reference": 10
     }
   ],
-  "palette": [
-    "railway blue",
-    "grass green",
-    "sky blue",
-    "steam white",
-    "sunset orange",
-    "magenta"
-  ],
-  "mood": "windswept, expectant, cinematic",
-  "coverSummaries": [
+  "castCrops": [],
+  "peopleAudit": {
+    "expected": 2,
+    "counted": 2,
+    "retried": false
+  },
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Platform portrait before the blue locomotive",
+  "medium": "night location photography",
+  "creativeDirection": "Night location photography in a real rural station, using the dark piano-room mood as the place and staging the cast as a crisp editorial portrait within it.",
+  "scene": "A small old railway platform at night beside a stopped streamlined blue steam locomotive, with a dark upright piano left out under the station canopy as if for an after-hours performance; two men stand near it while the engine idles behind them.",
+  "elements": [
     {
-      "source": 1,
-      "filename": "Twilight.jpg",
-      "album": "Twilight",
-      "artist": "",
-      "description": "An abstract, glitch-like image filled with vertical bands, scan lines, and blurred streaks. The composition is dominated by hot red and orange in the lower and central areas, with magenta, purple, blue, and green interference patterns across the whole frame. Several soft circular light shapes appear near the bottom edge. No clear figures or objects are distinctly visible.",
-      "signatureMotif": "vertical glitch stripes",
-      "medium": "abstract digital graphic",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "red",
-        "orange",
-        "magenta",
-        "purple",
-        "blue"
-      ]
+      "source": 4,
+      "role": "lead",
+      "element": "the station platform is built around the dim upright-piano scene, with an upright piano under a single blue hanging lamp and a bottle resting on the piano"
+    },
+    {
+      "source": 8,
+      "role": "lead",
+      "element": "the two men from reference image 8 stand side by side near the piano, one looking to the side and the other looking upward, kept close to their original pose and styling"
+    },
+    {
+      "source": 7,
+      "role": "support",
+      "element": "a streamlined blue steam locomotive is stopped along the platform behind them"
     },
     {
       "source": 2,
-      "filename": "Earthling.jpg",
-      "album": "Earthling",
-      "artist": "",
-      "description": "A full-body photograph of one person seen from behind, standing wide-legged on bright green grass with hands clasped behind their back. They wear a long coat patterned like a large red, white, and blue flag, with black boots and short spiky hair visible from the rear. Behind them is a vivid landscape with fields, a line of trees, a body of water, and a bright blue sky with white clouds.",
-      "signatureMotif": "back view of a person in a flag-patterned long coat",
-      "medium": "colour photograph",
-      "people": "one person standing with back to camera in a long patterned coat",
-      "moderationRisk": "",
-      "peopleBox": [
-        0.398,
-        0.102,
-        0.617,
-        0.463
-      ],
-      "faceHeight": 0.073,
-      "palette": [
-        "blue",
-        "green",
-        "red",
-        "white",
-        "black"
-      ]
-    },
-    {
-      "source": 3,
-      "filename": "Pisces-Iscariot.jpg",
-      "album": "Pisces Iscariot",
-      "artist": "",
-      "description": "A soft, abstract painted image with a large pale cream and yellow central area surrounded by murky green and black organic shapes. The edges are dark and diffuse, with watercolor-like blending and scattered speckles across the surface. No distinct figures or objects are defined.",
-      "signatureMotif": "pale central shape surrounded by dark green organic forms",
-      "medium": "abstract painting",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "cream",
-        "pale yellow",
-        "olive green",
-        "dark green",
-        "black"
-      ]
-    },
-    {
-      "source": 4,
-      "filename": "Come-on-Feel-the-Lemonheads.jpg",
-      "album": "Come on Feel the Lemonheads",
-      "artist": "",
-      "description": "A collage-like black-and-white photographic design made from multiple close-up portrait fragments arranged in vertical strips. The central strip shows a large face of a long-haired man looking slightly upward, while other strips show partial faces, eyes, noses, and profiles around him. The overall image has a grainy texture with strong contrast and dark borders between the strips.",
-      "signatureMotif": "strip-collage of repeated black-and-white male faces",
-      "medium": "black-and-white photographic collage",
-      "people": "multiple men shown as repeated close-up portrait fragments, with one central long-haired man most prominent",
-      "moderationRisk": "",
-      "peopleBox": [
-        0.001,
-        0,
-        0.999,
-        0.999
-      ],
-      "faceHeight": 0.278,
-      "palette": [
-        "black",
-        "white",
-        "grey",
-        "dark red",
-        "yellow"
-      ]
+      "role": "support",
+      "element": "a sheer lavender cloth is draped loosely over the top corner of the piano"
     },
     {
       "source": 5,
-      "filename": "Modern-Life-Is-Rubbish.jpg",
-      "album": "Modern Life Is Rubbish",
-      "artist": "",
-      "description": "A painted scene of a streamlined blue steam locomotive pulling carriages along railway tracks. White steam billows above and around the engine, and the train is angled from left to right across the foreground. The background shows open countryside under a dark, cloudy sky, with earthy ground tones and distant green fields.",
-      "signatureMotif": "blue steam locomotive on railway tracks",
-      "medium": "painting",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "blue",
-        "grey",
-        "cream",
-        "brown",
-        "green"
-      ]
+      "role": "support",
+      "element": "one long coat hanging from the piano bench carries the bold red, cream, and dark blue flag-like pattern"
     },
     {
-      "source": 6,
+      "source": 1,
+      "role": "colour",
+      "element": "pink, purple, and blue neon-like accents appear only as subtle reflected station-light colour in metal and glass"
+    }
+  ],
+  "palette": [
+    "midnight blue",
+    "black",
+    "brown",
+    "cream",
+    "lavender",
+    "steel blue"
+  ],
+  "mood": "brooding, cinematic, poised",
+  "coverSummaries": [
+    {
+      "source": 1,
       "filename": "Hackers-Original-Motion-Picture-Soundtrack.jpg",
       "album": "Hackers Original Motion Picture Soundtrack",
       "artist": "",
-      "description": "A stylized colour photo montage of five young people leaning inward and looking down toward the viewer from above. One person with braided hair is centered with arms spread wide; two others are at the bottom, and two flank the sides. The background is a neon, cyber-themed collage with concentric circular patterns, enlarged faces, glowing numbers, and electronic graphic elements in pink, purple, and blue.",
-      "signatureMotif": "five young people leaning over the viewer in a neon cyber collage",
-      "medium": "stylized photographic montage",
-      "people": "five young people leaning inward and looking down",
+      "description": "Five young adults cluster in a dramatic overhead group portrait, leaning inward and looking up toward the camera. Around them are layered neon graphics, concentric tunnel-like rings, large tinted faces in the background, and glowing numeric interface elements in pink, purple, blue, and red.",
+      "signatureMotif": "five people looking up inside a neon cyber collage",
+      "medium": "photographic collage with digital graphic overlays",
+      "people": "five young adults grouped tightly and looking up at the camera",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": [
-        0.129,
-        0,
-        0.873,
-        0.817
+        0.14,
+        0.16,
+        0.89,
+        0.92
       ],
-      "faceHeight": 0.173,
+      "faceHeight": 0.17,
+      "faceBoxes": [
+        [
+          0.39,
+          0.16,
+          0.62,
+          0.38
+        ],
+        [
+          0.18,
+          0.31,
+          0.38,
+          0.52
+        ],
+        [
+          0.64,
+          0.39,
+          0.82,
+          0.57
+        ],
+        [
+          0.24,
+          0.68,
+          0.43,
+          0.87
+        ],
+        [
+          0.47,
+          0.63,
+          0.7,
+          0.88
+        ]
+      ],
+      "peopleCount": 5,
+      "minors": false,
+      "strength": 5,
       "palette": [
         "pink",
         "purple",
         "blue",
+        "red",
+        "black"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Hounds-of-Love.jpg",
+      "album": "Hounds of Love",
+      "artist": "",
+      "description": "A softly lit portrait shows one woman reclining against a dreamy lavender backdrop, her long dark hair spread around her head. Two large dogs press against her, one resting its head on her chest and the other leaning across her arm, while sheer purple fabric drapes over her shoulders and torso.",
+      "signatureMotif": "reclining woman embraced by two large dogs",
+      "medium": "soft-focus colour photograph",
+      "people": "one woman reclining with two dogs",
+      "place": "A soft studio setting with lavender fabric and diffused light forms a dreamy backdrop around the reclining figure and dogs.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.23,
+        0.24,
+        0.82,
+        0.92
+      ],
+      "faceHeight": 0.18,
+      "faceBoxes": [
+        [
+          0.41,
+          0.34,
+          0.62,
+          0.52
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "lavender",
+        "purple",
+        "pink",
+        "brown",
+        "cream"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Come-on-Feel-the-Lemonheads.jpg",
+      "album": "Come on Feel the Lemonheads",
+      "artist": "",
+      "description": "A collage-like grid of grainy black-and-white photographic close-ups shows the same long-haired man repeated in several panels, with additional cropped eyes and side views around him. The central portrait looks upward, and the overall image has a rough contact-sheet feel with dark borders between frames.",
+      "signatureMotif": "repeated black-and-white close-up portraits of a long-haired man",
+      "medium": "black-and-white photographic collage",
+      "people": "one man shown repeatedly in close-up portrait panels",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.18,
+        0.02,
+        0.98,
+        0.99
+      ],
+      "faceHeight": 0.27,
+      "faceBoxes": [
+        [
+          0.31,
+          0.31,
+          0.72,
+          0.58
+        ],
+        [
+          0.35,
+          0.72,
+          0.69,
+          0.97
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
+      "palette": [
         "black",
+        "white",
+        "grey",
+        "red",
         "yellow"
       ]
     },
     {
-      "source": 7,
+      "source": 4,
+      "filename": "Closing-Time.jpg",
+      "album": "Closing Time",
+      "artist": "",
+      "description": "A dimly lit scene shows one man leaning over an upright piano, one hand in his hair, under a blue hanging lamp. The room is mostly dark, with the piano keys, open top, and a bottle on the instrument visible against the black background.",
+      "signatureMotif": "man leaning over an upright piano under a blue lamp",
+      "medium": "colour photograph",
+      "people": "one man leaning over a piano",
+      "place": "A dark interior room contains an upright piano under a single blue hanging lamp, with most of the space fading into shadow.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.02,
+        0.18,
+        0.35,
+        0.72
+      ],
+      "faceHeight": 0.12,
+      "faceBoxes": [
+        [
+          0.08,
+          0.22,
+          0.24,
+          0.34
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "black",
+        "brown",
+        "blue",
+        "cream",
+        "white"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Earthling.jpg",
+      "album": "Earthling",
+      "artist": "",
+      "description": "A single man is seen from behind standing wide-legged on a vivid green hill, hands clasped behind his back, wearing a long coat patterned like a flag in red, cream, and dark blue. Behind him is a bright rural landscape with fields, trees, water, and a dramatic blue sky with white clouds.",
+      "signatureMotif": "man from behind in a flag-patterned long coat",
+      "medium": "colour photograph",
+      "people": "one man standing with his back to the camera on a hill",
+      "place": "An open grassy hill overlooks patchwork fields, tree lines, a body of water, and a bright cloud-filled sky.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.34,
+        0.14,
+        0.67,
+        0.88
+      ],
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "blue",
+        "green",
+        "red",
+        "cream",
+        "black"
+      ]
+    },
+    {
+      "source": 6,
       "filename": "Adore.jpg",
       "album": "Adore",
       "artist": "",
-      "description": "A dark, high-contrast black-and-white photograph of one person in flowing dark clothing against a nearly black background. The figure is positioned slightly right of center, leaning forward with both arms extended outward, while the face appears pale and sharply lit. Blurred, ghostly shapes in the upper left suggest motion or layered exposure.",
-      "signatureMotif": "pale-faced figure with outstretched arms in darkness",
+      "description": "A dark, high-contrast black-and-white image shows a pale-faced woman in flowing dark clothing, arms extended outward as if moving or dancing. The background is almost entirely black, with blurred ghostly shapes around her that suggest motion.",
+      "signatureMotif": "pale-faced woman with outstretched arms in darkness",
       "medium": "black-and-white photograph",
-      "people": "one person in dark flowing clothing with arms spread",
+      "people": "one woman in flowing dark clothing with arms outstretched",
+      "place": "A nearly black, undefined interior or studio-like void surrounds a single figure with no visible environmental details.",
       "moderationRisk": "",
       "peopleBox": [
-        0.522,
-        0.41,
-        0.756,
-        0.677
+        0.43,
+        0.28,
+        0.86,
+        0.72
       ],
-      "faceHeight": 0.111,
+      "faceHeight": 0.11,
+      "faceBoxes": [
+        [
+          0.56,
+          0.39,
+          0.68,
+          0.5
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
       "palette": [
         "black",
         "white",
@@ -219,27 +317,70 @@
       ]
     },
     {
-      "source": 8,
-      "filename": "Hounds-of-Love.jpg",
-      "album": "Hounds of Love",
+      "source": 7,
+      "filename": "Modern-Life-Is-Rubbish.jpg",
+      "album": "Modern Life Is Rubbish",
       "artist": "",
-      "description": "A soft-focus colour photograph framed within a wide white border. One woman reclines on a lavender surface, wrapped in translucent lilac fabric, with long dark hair spread out around her head. Two large dogs rest against her, one on each side, their heads nestled near her shoulders and chest. The image has a dreamy purple haze and gentle lighting.",
-      "signatureMotif": "reclining woman embraced by two large dogs",
-      "medium": "soft-focus colour photograph",
-      "people": "one woman reclining with two dogs",
+      "description": "A painted scene of a streamlined blue steam locomotive pulling carriages along railway tracks, with white steam billowing backward under a dark cloudy sky. The train dominates the foreground at a low angle, with open countryside stretching behind it.",
+      "signatureMotif": "streamlined blue steam locomotive",
+      "medium": "painting",
+      "people": "none",
+      "place": "Railway tracks run through open countryside beneath a dark sky, with fields and distant horizon behind a passing steam train.",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "blue",
+        "grey",
+        "brown",
+        "cream",
+        "black"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "The-Sound-Of-McAlmont-Butler.jpg",
+      "album": "The Sound Of McAlmont Butler",
+      "artist": "",
+      "description": "A simple outdoor portrait shows two men from the chest up against a pale sky with soft shadows. One man on the left wears round glasses and has short dreadlocks with shaved sides, looking to the side, while the other man on the right looks upward in a dark open-collared shirt.",
+      "signatureMotif": "two men posed against a pale sky",
+      "medium": "colour photograph",
+      "people": "two men standing side by side outdoors, one looking sideways and one looking upward",
+      "place": "An outdoor setting with open sky and soft daylight provides a minimal background behind the two figures.",
       "moderationRisk": "",
       "peopleBox": [
-        0.325,
-        0.253,
-        0.624,
-        0.559
+        0.02,
+        0.34,
+        0.84,
+        0.98
       ],
-      "faceHeight": 0.164,
+      "faceHeight": 0.17,
+      "faceBoxes": [
+        [
+          0.03,
+          0.39,
+          0.22,
+          0.61
+        ],
+        [
+          0.54,
+          0.39,
+          0.77,
+          0.62
+        ]
+      ],
+      "peopleCount": 2,
+      "minors": false,
+      "strength": 4,
       "palette": [
+        "sky blue",
         "white",
-        "lavender",
-        "purple",
-        "pink",
+        "green",
+        "navy",
         "brown"
       ]
     }
@@ -247,15 +388,15 @@
   "hint": null,
   "composeBackend": "gpt-image-2-6",
   "model": "openai/gpt-image-2.6/sunburst/edit",
-  "prompt": "A real rail embankment beside open water and low rural fields, seen from ground level in a wide 16:9 side view, the camera positioned partway down the slope so the horizon sits high and the tracks cut across the lower third; the primary subject is the person from reference image 2, shown from behind at the top of the embankment in the same wide-legged stance with hands clasped behind their back, wearing the same long red, white, and blue flag-patterned coat and black boots, looking out over a streamlined blue steam locomotive passing left to right below. The locomotive from reference image 5 is physically present on real tracks with cream carriages and a large billow of white steam rising behind and above it; the steam catches warm low sun and forms a pale cream-yellow center with darker olive-green land masses around it, echoing reference image 3. Fold reference image 1 into the scene as thin vertical bands of hot red, orange, magenta, purple, and blue appearing only as narrow signal-light reflections, window streaks, and polished metal colour interference, not as graphics. Fold reference image 6 into the place only through subtle concentric industrial details and small neon pink-purple-blue accents in signal glass and carriage reflections. Fold reference image 7 into the stark dark silhouette quality of the cast figure against the bright sky. Fold reference image 8 into a faint lavender tint within parts of the steam and the far sky near the horizon, with no reclining figure or dogs present. Photographic realism, daylight location photography, crisp detail, physically plausible train, coat, grass, steam, and distance. Compose it as an asymmetrical wide frame with the figure small but dominant near the upper right, the locomotive occupying the lower left and center, and generous open sky above. Light the scene with golden-hour side sun, clean and bright, producing clear shadows, saturated colour, and luminous steam. Palette of railway blue, grass green, bright sky blue, steam white, sunset orange, magenta, lavender, and black; mood windswept, expectant, cinematic. Reference map for people (the album images are attached in this numbered order): reference image 2 shows one person standing with back to camera in a long patterned coat, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 4, 6, 7, 8 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "prompt": "At a small rural train station platform at night, viewed at eye level in a medium-telephoto three-quarter-length portrait, under a canopy beside a stopped steam engine. The two men from reference image 8 are the primary subject, standing side by side near an upright piano, kept close to their original pose and styling: the man on the left with round glasses and short dreadlocks with shaved sides looking to the side, the man on the right in a dark open-collared shirt looking upward, both lit cleanly by the scene's light and standing at natural scale in the space. Build the place from reference image 4: a dark upright piano under a single blue hanging lamp, with a bottle on the piano, most of the surrounding station falling into rich shadow. Behind them, include the streamlined blue steam locomotive from reference image 7 stopped along the platform as a real train. Add a sheer lavender cloth from reference image 2 draped over one corner of the piano, and a long coat with the bold red, cream, and dark blue flag-like pattern from reference image 5 hanging from the piano bench. Let reference image 1 contribute only restrained pink-purple-blue reflected colour accents in station glass and metal, with no graphics or text. Photorealistic night location photography, crisp and clean, no haze, no collage, no poster-like inserts. Off-centre portrait framing with the cast in the near ground and the locomotive stacked behind them, clear facial readability, dark negative space around the lamp and canopy. Light with warm station lamps and soft carriage-window glow, plus the cool blue pendant over the piano, balancing warm and cool tones so faces remain properly exposed. Palette of midnight blue, black, brown, cream, lavender, steel blue, muted purple, and small red accents; mood brooding, cinematic, and poised. Reference map for people (the album images are attached in this numbered order): reference image 8 shows two men standing side by side outdoors, one looking sideways and one looking upward, and reference images 9, 10 are enlarged close-ups of those same people, one face each from left to right - take each face from its own close-up. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 1, 2, 3, 4, 5, 6 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, posters, record covers, or pictures on a screen, monitor, or television. A sleeve's abstract graphics, shapes, patterns, and colours may be painted onto the walls, doors, floor, or objects of the place as part of its decoration, without any lettering. Show no sleeve's faces, heads, or figures as a picture, mural, display, sign, relief, or silhouette anywhere; transform the sleeves' non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image cleanly whatever the light: every person's face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere. The only people anywhere in the image are the reference people named in the reference map, and of those only the ones whose faces are clearly visible in their reference. Add no one else: no extra band members, musicians, staff, bystanders, passers-by, crowd, audience, background or out-of-focus figures, and no hands, arms, legs, or shadows of unseen people. Never complete a person who is hidden, cropped, turned away, blurred, or only partly visible in a reference with an invented face or body - leave that person out entirely. Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.",
   "inputs": [
-    "Twilight.jpg",
-    "Earthling.jpg",
-    "Pisces-Iscariot.jpg",
-    "Come-on-Feel-the-Lemonheads.jpg",
-    "Modern-Life-Is-Rubbish.jpg",
     "Hackers-Original-Motion-Picture-Soundtrack.jpg",
+    "Hounds-of-Love.jpg",
+    "Come-on-Feel-the-Lemonheads.jpg",
+    "Closing-Time.jpg",
+    "Earthling.jpg",
     "Adore.jpg",
-    "Hounds-of-Love.jpg"
+    "Modern-Life-Is-Rubbish.jpg",
+    "The-Sound-Of-McAlmont-Butler.jpg"
   ]
 }
