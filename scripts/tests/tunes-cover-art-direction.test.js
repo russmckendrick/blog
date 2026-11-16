@@ -23,6 +23,7 @@ import {
   refusedSettings,
   settingFamily,
   uncastableReason,
+  findExtraPeople,
   findFlatCopies,
   findLettering,
   findHierarchyProblems,
@@ -159,7 +160,7 @@ test('normalizes freeform art direction and appends only hard generation constra
   assert.match(prompt, /each identifiable reference person only once/i)
   assert.match(prompt, /reflection, mirror portrait, poster, billboard/i)
   assert.doesNotMatch(prompt, /creative-direction lane/i)
-  assert.doesNotMatch(prompt, /Reference map/i, 'no map when the factual pass saw nobody')
+  assert.doesNotMatch(prompt, /Reference map for people/i, 'no map when the factual pass saw nobody')
 })
 
 test('ties every person on a sleeve back to its numbered reference image', () => {
@@ -394,7 +395,9 @@ test('always refuses the symmetrical tableau and lists only the recent compositi
 test('hard constraints refuse incidental plants and sleeve murals', () => {
   const prompt = buildGenerationPrompt({ prompt: 'A stone courtyard at noon.' }, [])
   assert.match(prompt, /no flowers, potted plants/)
-  assert.match(prompt, /mural, banner, poster/)
+  assert.match(prompt, /framed thumbnails, posters, record covers/)
+  assert.match(prompt, /may be painted onto the walls, doors, floor/, 'sleeve graphics on surfaces are allowed')
+  assert.match(prompt, /faces, heads, or figures as a picture, mural/, 'pictures of sleeve people are not')
 })
 
 test('records the chosen composition, with a fallback when the director omits it', () => {
@@ -642,4 +645,19 @@ test('a sleeve keeps its place even when its people cannot be cast', () => {
   assert.match(room.place, /living room/)
   assert.equal(hasPlace(graphic), false)
   assert.equal(graphic.place, '')
+})
+
+test('nobody appears except the cast, and hidden sleeve figures are not completed', () => {
+  const summaries = [{ source: 1, people: 'two people, one man in front and one partially hidden drummer behind' }]
+  const withCast = buildGenerationPrompt({ prompt: 'A rehearsal set.', cast: [1] }, summaries)
+  assert.match(withCast, /The only people anywhere in the image are the reference people/)
+  assert.match(withCast, /Never complete a person who is hidden, cropped, turned away/)
+  const noCast = buildGenerationPrompt({ prompt: 'An empty rehearsal set.', cast: [] }, summaries)
+  assert.match(noCast, /The image contains no people at all/)
+  assert.doesNotMatch(noCast, /three-quarter length or closer/)
+
+  assert.equal(findExtraPeople('The man from reference image 1 stands at the bar. A bartender polishes glasses behind him.').length, 1)
+  assert.equal(findExtraPeople('A small crowd gathers at the back of the room.').length, 1)
+  assert.deepEqual(findExtraPeople('Controlled studio photography, no collage, no extra people.'), [])
+  assert.deepEqual(findExtraPeople('The singer from reference image 2 leans on an amp beside a drum kit.'), [])
 })

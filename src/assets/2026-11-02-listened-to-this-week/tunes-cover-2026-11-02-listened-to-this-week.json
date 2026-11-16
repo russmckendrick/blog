@@ -3,105 +3,185 @@
   "date": "2026-11-02",
   "type": "cover",
   "lane": null,
-  "lighting": "golden hour hangar daylight",
-  "composition": "high vantage over open hangar",
+  "setting": "interior",
+  "lighting": "late afternoon window light",
+  "composition": "low angle, close off-centre portrait",
   "cast": [
-    1,
-    6
+    1
   ],
   "closeUps": [
     {
       "source": 1,
       "reference": 9
-    },
-    {
-      "source": 6,
-      "reference": 10
     }
   ],
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Airship hangar soundcheck at sunset",
-  "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography of one plausible industrial hangar scene, using a real airship, stage equipment, and a few cast portraits integrated as a single photographed moment.",
-  "scene": "A bright, open airship hangar near its doors during golden hour, with a moored zeppelin dominating the upper space and a small soundcheck setup on the concrete floor below.",
+  "concept": "Lavender drapery portrait in a parked scooter garage",
+  "medium": "editorial location photography",
+  "creativeDirection": "Editorial location photography in a real industrial garage corner, using a physically built scene and crisp naturalistic light to restage the strongest portrait within one plausible place.",
+  "scene": "In a quiet indoor scooter garage or repair bay, a corner has been softened by hanging translucent lavender fabric and pale painted walls; a parked vintage scooter sits nearby, and one woman reclines on layered fabric on a low platform or padded mechanic's creeper while two large dogs press against her, turning the utilitarian space unexpectedly tender.",
   "elements": [
     {
       "source": 1,
-      "element": "the man appears standing full-length beneath the airship, with his afro, collared shirt, and flared trousers preserved; a real freestanding arrangement of purple rounded inflatable tubes and circular forms behind him echoes the psychedelic burst"
+      "role": "lead",
+      "element": "the woman from reference image 1 reclining with the two large dogs on pooled sheer lavender fabric"
     },
     {
-      "source": 2,
-      "element": "a large diagonal zeppelin inside the hangar is the main architectural object, with art deco staging cues in the scaffolded speaker setup and red geometric light accents"
+      "source": 3,
+      "role": "lead",
+      "element": "a real vintage scooter parked close behind her, angled so its body and mirrors are clearly visible"
     },
     {
       "source": 4,
-      "element": "a distressed red sun-shaped rigging marker made as a physical metal object with pointed rays and crossed tool forms sits among equipment cases"
+      "role": "support",
+      "element": "a cream and red art deco garage door panel and circular speaker-like wall vents echoing the airship cover's architecture"
     },
     {
-      "source": 5,
-      "element": "a compact live-performance setup with microphones, keyboard, cables, and warm amber practical stage bulbs suggests a band preparing, without showing extra identifiable people"
+      "source": 2,
+      "role": "support",
+      "element": "a bold yellow-painted service bay stripe on the wall with rounded purple tool shadows radiating behind the subject"
     },
     {
       "source": 6,
-      "element": "the two men from reference image 6 stand together at the edge of the setup, preserving their hat, sunglasses, plaid jacket, and suit-and-tie portrait styling"
+      "role": "support",
+      "element": "a stark white work cabinet with a horizontal blue band near its base"
     },
     {
       "source": 7,
-      "element": "red, purple, yellow, black, and white enter as stacked road cases, cable wraps, and modular acoustic blocks with repeating geometric proportions"
-    },
-    {
-      "source": 8,
-      "element": "a suspended orange split-crescent industrial ring object hangs in the hangar space, with deep red-black tones in fabric drapes and equipment finishes"
+      "role": "support",
+      "element": "a red metal shop lamp with a jagged sun-like guard hanging above the scene"
     }
   ],
   "palette": [
+    "lavender",
     "cream",
     "yellow",
     "purple",
     "red",
-    "orange",
-    "blue"
+    "white"
   ],
-  "mood": "crisp, expectant, spacious",
+  "mood": "dreamlike tenderness inside a practical workspace",
   "coverSummaries": [
     {
       "source": 1,
-      "filename": "Sweet-Inspiration-Guilty-Reggae-Pleasures.jpg",
-      "album": "Sweet Inspiration Guilty Reggae Pleasures",
+      "filename": "Hounds-of-Love.jpg",
+      "album": "Hounds of Love",
       "artist": "",
-      "description": "A bright yellow cover with a blue-toned cutout photo of one man standing full-length in the center, wearing a collared shirt and flared trousers. Behind him is a symmetrical purple psychedelic burst made of rounded tendrils and circles radiating outward. Large curved block lettering frames the top, and smaller block lettering sits at the bottom. A small circular helmet-like emblem appears near the top.",
-      "signatureMotif": "purple psychedelic sunburst behind a standing blue-toned man",
-      "medium": "mixed media collage with cutout photograph and graphic design",
-      "people": "one man standing full-length with an afro hairstyle",
+      "description": "A dreamy soft-focus portrait of one woman reclining amid sheer lavender fabric with two large dogs pressed against her, her dark hair spread out around her head against a pale violet background.",
+      "signatureMotif": "reclining woman embraced by two dogs",
+      "medium": "soft-focus studio photograph",
+      "people": "one woman reclining with two dogs",
+      "place": "a soft studio setup draped in translucent fabric with diffuse lavender lighting",
       "moderationRisk": "",
       "peopleBox": [
-        0.398,
-        0.205,
-        0.617,
-        0.542
+        0.18,
+        0.28,
+        0.82,
+        0.88
       ],
-      "faceHeight": 0.104,
+      "faceHeight": 0.2,
+      "faceBoxes": [
+        [
+          0.39,
+          0.39,
+          0.63,
+          0.59
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 5,
       "palette": [
-        "yellow",
+        "lavender",
         "purple",
-        "blue",
         "white",
-        "black"
+        "brown",
+        "pink"
       ]
     },
     {
       "source": 2,
+      "filename": "Sweet-Inspiration-Guilty-Reggae-Pleasures.jpg",
+      "album": "Sweet Inspiration Guilty Reggae Pleasures",
+      "artist": "",
+      "description": "A graphic cover with a full-body cutout photograph of one Black man standing front-facing in flared trousers and an open-collar shirt, tinted blue, centered over a flat yellow background with symmetrical purple blob-like rays and circles radiating behind him.",
+      "signatureMotif": "blue-tinted standing man over purple radiating shapes",
+      "medium": "photo cutout combined with flat graphic design",
+      "people": "one man standing full-length against a graphic backdrop",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.36,
+        0.22,
+        0.64,
+        0.84
+      ],
+      "faceHeight": 0.14,
+      "faceBoxes": [
+        [
+          0.43,
+          0.22,
+          0.57,
+          0.36
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "yellow",
+        "purple",
+        "blue",
+        "black",
+        "white"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Quadrophenia.jpg",
+      "album": "Quadrophenia",
+      "artist": "",
+      "description": "A black-and-white photograph of a young man seen mostly from behind sitting astride a scooter in a smoky setting, with several small face reflections visible in the scooter mirrors.",
+      "signatureMotif": "young man on scooter in smoke",
+      "medium": "black-and-white photograph",
+      "people": "one young man seated on a scooter, seen mostly from behind",
+      "place": "a smoky studio-like space with a scooter and diffuse haze",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.33,
+        0.12,
+        0.67,
+        0.78
+      ],
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "black",
+        "grey",
+        "white"
+      ]
+    },
+    {
+      "source": 4,
       "filename": "Mothership.jpg",
       "album": "Mothership",
       "artist": "",
-      "description": "A stylized graphic illustration in black, red, and cream. A large zeppelin airship stretches diagonally across the upper half of the image. Below it is an art deco building or stage facade with speaker-like circles, columns, stairs, and a central emblem, all framed by bold geometric borders and lightning-bolt shapes. Strong triangular red spotlight shapes fill the background.",
-      "signatureMotif": "large diagonal zeppelin airship",
-      "medium": "graphic illustration",
+      "description": "A bold illustrated design showing a large zeppelin airship sweeping diagonally across the upper half above an art deco building facade with speaker-like circles, lightning-bolt borders, and a strong red, black, and cream colour scheme.",
+      "signatureMotif": "large zeppelin airship",
+      "medium": "illustration/graphic design",
       "people": "none",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": null,
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 5,
       "palette": [
         "black",
         "red",
@@ -110,72 +190,57 @@
       ]
     },
     {
-      "source": 3,
-      "filename": "Betty.jpg",
-      "album": "Betty",
-      "artist": "",
-      "description": "A soft, warm-tinted outdoor photograph of a young blonde woman seated on grass beside a wicker basket filled with pale flowers. She wears a white blouse and a textured skirt or blanket across her lap, and holds a flower stem while smiling slightly. The grassy background fills the frame with a sunlit, faded look.",
-      "signatureMotif": "young woman with a wicker basket of flowers on grass",
-      "medium": "color photograph",
-      "people": "one young woman seated on grass holding flowers",
-      "moderationRisk": "",
-      "peopleBox": [
-        0.376,
-        0.117,
-        0.786,
-        0.559
-      ],
-      "faceHeight": 0.157,
-      "palette": [
-        "green",
-        "cream",
-        "white",
-        "beige",
-        "gold"
-      ]
-    },
-    {
-      "source": 4,
-      "filename": "Levelling-The-Land-25th-Anniversary-Edition.jpg",
-      "album": "Levelling The Land 25th Anniversary Edition",
-      "artist": "",
-      "description": "A worn, collage-like cover resembling a paper file or studio master sheet mounted on a gray backing. Over the off-white central sheet is a large distressed red graphic of a grinning sun face with pointed rays and crossed tools beneath it. Handwritten notes, stamps, scuffs, and partial labels overlap the surface, giving it an archival, weathered appearance.",
-      "signatureMotif": "distressed red grinning sun with crossed tools",
-      "medium": "photographed paper collage / scanned document design",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "gray",
-        "off-white",
-        "red",
-        "black",
-        "beige"
-      ]
-    },
-    {
       "source": 5,
-      "filename": "The-Best-of-Sly-and-The-Family-Stone.jpg",
-      "album": "The Best of Sly and The Family Stone",
+      "filename": "Pretty-on-the-Inside.jpg",
+      "album": "Pretty on the Inside",
       "artist": "",
-      "description": "A black background designed like a vinyl record with circular grooves radiating around a central round photo. Inside the circular photo is a live stage performance showing several musicians and singers at microphones, with a keyboard in front and warm amber stage lighting. A wide purple band spans the lower portion of the cover.",
-      "signatureMotif": "circular live-performance photo set inside a vinyl record design",
-      "medium": "graphic design with embedded concert photograph",
-      "people": "five performers on stage at microphones, including one at a keyboard",
+      "description": "A soft-focus pink and magenta photograph of four women posed among dense foliage or flowers, with one pale blonde face prominent in the foreground and three others receding behind her.",
+      "signatureMotif": "four women in pink-tinted floral setting",
+      "medium": "soft-focus colour photograph",
+      "people": "four women posed among foliage, one close in front and three behind",
+      "place": "a dense garden-like setting filled with blurred foliage and blossoms in pink-purple tones",
       "moderationRisk": "",
       "peopleBox": [
-        0.271,
-        0.312,
-        0.739,
-        0.618
+        0.08,
+        0.08,
+        0.86,
+        0.92
       ],
-      "faceHeight": 0.09,
+      "faceHeight": 0.18,
+      "faceBoxes": [
+        [
+          0.54,
+          0.68,
+          0.82,
+          0.86
+        ],
+        [
+          0.12,
+          0.7,
+          0.31,
+          0.88
+        ],
+        [
+          0.42,
+          0.12,
+          0.63,
+          0.31
+        ],
+        [
+          0.69,
+          0.43,
+          0.86,
+          0.61
+        ]
+      ],
+      "peopleCount": 4,
+      "minors": false,
+      "strength": 4,
       "palette": [
-        "black",
+        "pink",
+        "magenta",
         "purple",
         "white",
-        "amber",
         "brown"
       ]
     },
@@ -184,77 +249,118 @@
       "filename": "Discography-The-Complete-Singles-Collection-1985-1991.jpg",
       "album": "Discography The Complete Singles Collection 1985 1991",
       "artist": "",
-      "description": "A minimalist black-and-white portrait layout on a mostly white background. Two men appear in the lower right area from chest up: one wears a light hat, dark sunglasses, and a plaid jacket; the other wears a dark suit and tie. A horizontal blue bar runs across the lower portion beneath them, emphasizing the sparse composition.",
-      "signatureMotif": "two men in a sparse black-and-white portrait above a blue horizontal bar",
+      "description": "A minimalist mostly white cover with a blue horizontal band near the bottom and a black-and-white portrait of two men cropped at the chest on the right, one in a hat and dark sunglasses and the other in a suit and tie.",
+      "signatureMotif": "two men in stark black-and-white portrait on white field",
       "medium": "studio photograph with minimalist graphic layout",
-      "people": "two men posed side by side, one in a hat and sunglasses and one in a suit",
+      "people": "two men posed side by side in studio portrait, one wearing a hat and sunglasses",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": [
-        0.545,
-        0.314,
-        0.865,
-        0.637
+        0.55,
+        0.32,
+        0.89,
+        0.62
       ],
-      "faceHeight": 0.124,
+      "faceHeight": 0.14,
+      "faceBoxes": [
+        [
+          0.58,
+          0.32,
+          0.71,
+          0.46
+        ],
+        [
+          0.76,
+          0.33,
+          0.88,
+          0.47
+        ]
+      ],
+      "peopleCount": 2,
+      "minors": false,
+      "strength": 3,
       "palette": [
         "white",
-        "black",
         "blue",
-        "gray"
+        "black",
+        "grey"
       ]
     },
     {
       "source": 7,
-      "filename": "History-Never-Repeats-The-Best-Of-Split-Enz.jpg",
-      "album": "History Never Repeats The Best Of Split Enz",
+      "filename": "Levelling-The-Land-25th-Anniversary-Edition.jpg",
+      "album": "Levelling The Land 25th Anniversary Edition",
       "artist": "",
-      "description": "A flat graphic cover filled with a repeating geometric pattern of red and purple blocks, ovals, and note-like shapes. Along the right side, individual white paper-like rectangles are stacked vertically with bold black letters on them. Bright yellow horizontal banners cut across the top and lower left portions, creating a poster-like layout.",
-      "signatureMotif": "red and purple repeating geometric pattern with vertical white cutout rectangles",
-      "medium": "graphic design",
+      "description": "A collage-like cover resembling a worn paper record sleeve or studio sheet, with typed and handwritten markings layered over a large red stamped cartoon sun face with sharp teeth and crossed tools on an off-white and grey background.",
+      "signatureMotif": "red stamped grinning sun face with crossed tools",
+      "medium": "paper collage/printed graphic",
       "people": "none",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": null,
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 4,
       "palette": [
+        "off-white",
+        "grey",
         "red",
-        "purple",
-        "yellow",
         "black",
-        "white"
+        "blue"
       ]
     },
     {
       "source": 8,
-      "filename": "Mer-de-noms.jpg",
-      "album": "Mer de noms",
+      "filename": "Betty.jpg",
+      "album": "Betty",
       "artist": "",
-      "description": "A dark, textured cover with a black and deep red mottled background. In the center is a large orange crescent-like circular symbol split into two opposing curved shapes. A glowing white horizontal wordmark crosses the middle, with ornate vertical red script-like forms behind it. A small advisory label sits in the lower right corner.",
-      "signatureMotif": "large orange split crescent circle symbol",
-      "medium": "digital graphic design",
-      "people": "none",
+      "description": "A warm-toned photograph of a blonde girl or young woman seated on grass outdoors, smiling slightly while holding pale flowers beside a wicker basket filled with blossoms, wearing a white blouse and patterned skirt.",
+      "signatureMotif": "girl with flower basket on grass",
+      "medium": "colour photograph",
+      "people": "one young female seated on grass with a basket of flowers",
+      "place": "a grassy lawn in soft daylight with no visible buildings or furniture",
       "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
+      "peopleBox": [
+        0.34,
+        0.16,
+        0.82,
+        0.72
+      ],
+      "faceHeight": 0.17,
+      "faceBoxes": [
+        [
+          0.43,
+          0.16,
+          0.66,
+          0.33
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": true,
+      "strength": 4,
       "palette": [
-        "black",
-        "dark red",
-        "orange",
-        "white"
+        "green",
+        "white",
+        "cream",
+        "tan",
+        "gold"
       ]
     }
   ],
   "hint": null,
   "composeBackend": "gpt-image-2-6",
   "model": "openai/gpt-image-2.6/sunburst/edit",
-  "prompt": "A bright open airship hangar photographed from a high vantage, looking down across the concrete floor toward the open doors at golden hour; a large real zeppelin stretches diagonally through the upper half of the frame, with a compact soundcheck area below it. The primary subjects are the man from reference image 1 standing full-length beneath the airship, preserving his afro, collared shirt, flared trousers, upright pose and direct presence, and the two men from reference image 6 standing together nearby, preserving their sparse portrait styling exactly: one in a light hat, dark sunglasses, and plaid jacket, the other in a dark suit and tie. Behind the man from reference image 1 is a physically plausible sculptural arrangement of rounded purple inflatable tubes and circular forms radiating outward like a burst, built as freestanding stage material rather than a graphic image. The zeppelin from reference image 2 is real and dominant overhead; below it, art deco hints appear in the speaker stacks, stairs, and geometric staging. Include a compact keyboard, microphones, cables, and warm practical bulbs from reference image 5, but no additional identifiable performers. Add a distressed red sun-shaped metal rigging marker with pointed rays and crossed tool forms among flight cases from reference image 4. Fold reference image 7 into the repeating colors and proportions of stacked road cases, acoustic blocks, and cable wraps in red, purple, yellow, black, and white. Include reference image 8 as a suspended orange split-crescent industrial ring object hanging in space, with deep red-black fabric and equipment finishes nearby. Photographic realism, clean crisp daylight location photography, no collage, no poster, no mural, no painted symbol on surfaces. Compose the frame asymmetrically with the zeppelin occupying the upper diagonal, the cast grouped below and slightly off center, and plenty of open floor and air around them. Use golden hour daylight pouring through the hangar opening with clear detail, saturated color, crisp edges, and soft long shadows. Palette of cream, yellow, purple, red, orange, blue, and black; spacious, expectant, and vivid. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one man standing full-length with an afro hairstyle, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9; reference image 6 shows two men posed side by side, one in a hat and sunglasses and one in a suit, and reference image 10 is an enlarged close-up of those same people - take their faces from reference image 10. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 3, 5 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "prompt": "A real indoor scooter garage corner photographed from a low eye-level angle, close and slightly off-centre, with shallow-to-moderate depth and the space wrapping tightly around the subject rather than opening into a deep passage. The primary subject is the woman from reference image 1, reclined on pooled sheer lavender fabric spread over a low padded platform in the garage, with the two large dogs from reference image 1 pressed closely against her; keep her recognisable to the reference image with the same reclining pose, dark hair spread around her head, calm expression, and direct dreamy stillness, all lit by the room's late afternoon window light. Behind and beside her, include the vintage scooter from reference image 3 as a real parked vehicle angled across the middle ground with its mirrors visible, integrated naturally into the bay. Add a cream-and-red art deco garage door panel and circular wall vents inspired by reference image 4, a bold yellow wall section with soft rounded purple radiating tool shadows inspired by reference image 2, a stark white work cabinet with a blue horizontal band near the bottom inspired by reference image 6, and a red metal shop lamp with a jagged sun-like protective guard inspired by reference image 7. Photoreal editorial location photography, crisp and clean, no haze, no collage look, no text anywhere. Keep the composition intimate and asymmetrical, faces fully readable, the scooter and supports secondary to the reclining figure and dogs. Use late afternoon window light mixed with soft interior fill so the lavender fabric, yellow wall, cream surfaces, and red details all read clearly at small size. Palette of lavender, cream, yellow, purple, red, and white; mood dreamlike, strange, and tender inside a practical industrial room. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one woman reclining with two dogs, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 2, 3, 5, 6, 8 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, monitor, television, sign, cut-out, or floor graphic, or carving it as a wall-mounted relief; show no sleeve's faces, heads, or figures as a picture, display, sign, or silhouette anywhere; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image cleanly whatever the light: every person's face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere. Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.",
   "inputs": [
+    "Hounds-of-Love.jpg",
     "Sweet-Inspiration-Guilty-Reggae-Pleasures.jpg",
+    "Quadrophenia.jpg",
     "Mothership.jpg",
-    "Betty.jpg",
-    "Levelling-The-Land-25th-Anniversary-Edition.jpg",
-    "The-Best-of-Sly-and-The-Family-Stone.jpg",
+    "Pretty-on-the-Inside.jpg",
     "Discography-The-Complete-Singles-Collection-1985-1991.jpg",
-    "History-Never-Repeats-The-Best-Of-Split-Enz.jpg",
-    "Mer-de-noms.jpg"
+    "Levelling-The-Land-25th-Anniversary-Edition.jpg",
+    "Betty.jpg"
   ]
 }

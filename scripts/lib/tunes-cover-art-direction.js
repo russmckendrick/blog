@@ -13,7 +13,7 @@ const GREENERY_CONSTRAINT = 'Add no incidental plants: no flowers, potted plants
 
 const HARD_CONSTRAINTS = [
   'Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels.',
-  'Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, monitor, television, sign, cut-out, or floor graphic, or carving it as a wall-mounted relief; show no sleeve\'s faces, heads, or figures as a picture, display, sign, or silhouette anywhere; transform their non-text visual motifs into one original composition.',
+  'Do not reproduce the album sleeves as framed thumbnails, posters, record covers, or pictures on a screen, monitor, or television. A sleeve\'s abstract graphics, shapes, patterns, and colours may be painted onto the walls, doors, floor, or objects of the place as part of its decoration, without any lettering. Show no sleeve\'s faces, heads, or figures as a picture, mural, display, sign, relief, or silhouette anywhere; transform the sleeves\' non-text visual motifs into one original composition.',
   TEXT_CONSTRAINT,
   'Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly.',
   'When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish.',
@@ -246,10 +246,21 @@ export function buildYearTextConstraint(year) {
 // pixels high, whatever the prompt says about likeness.
 const CAST_FRAMING_CONSTRAINT = 'Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.'
 
-export function buildHardConstraints({ year, hasCast = false } = {}) {
+// Nobody is in the picture unless a reference shows their face. The 26 Oct 2026 redo drew a
+// drummer behind the cast: he is on the sleeve, but half hidden behind his kit, so the image
+// model finished him with a face of its own. An extra nobody asked for and a sleeve figure
+// "completed" from a glimpse are the same failure - an invented person - so both are ruled out,
+// and a cover with no cast has no people at all.
+const CAST_ONLY_CONSTRAINT = 'The only people anywhere in the image are the reference people named in the reference map, and of those only the ones whose faces are clearly visible in their reference. Add no one else: no extra band members, musicians, staff, bystanders, passers-by, crowd, audience, background or out-of-focus figures, and no hands, arms, legs, or shadows of unseen people. Never complete a person who is hidden, cropped, turned away, blurred, or only partly visible in a reference with an invented face or body - leave that person out entirely.'
+const NO_PEOPLE_CONSTRAINT = 'The image contains no people at all: no figures, faces, hands, limbs, silhouettes, reflections, or shadows of people, in the foreground or the background.'
+
+export function buildHardConstraints({ year, hasCast = false, cast = undefined } = {}) {
   const textConstraint = buildYearTextConstraint(year)
   const constraints = HARD_CONSTRAINTS.map(constraint => constraint === TEXT_CONSTRAINT ? textConstraint : constraint)
-  return hasCast ? [...constraints, CAST_FRAMING_CONSTRAINT] : constraints
+  const castSize = Array.isArray(cast) ? cast.length : (hasCast ? 1 : null)
+  if (castSize === 0) return [...constraints, NO_PEOPLE_CONSTRAINT]
+  if (castSize > 0) return [...constraints, CAST_ONLY_CONSTRAINT, CAST_FRAMING_CONSTRAINT]
+  return [...constraints, CAST_ONLY_CONSTRAINT]
 }
 
 // Art-director brief for the year. The treatment menu is a set of examples, not a rotation:
@@ -713,6 +724,22 @@ export function findLettering(prompt) {
   return found
 }
 
+// People the director writes in who are not the cast: a bartender, a drummer, a crowd. Sentences
+// that only rule them out ("no extra people") are the director agreeing with the rule.
+const EXTRA_PEOPLE_PATTERN = /\b(drummers?|guitarists?|bassists?|singers?|bartenders?|barmaids?|waiters?|waitress(?:es)?|roadies?|technicians?|photographers?|crew|staff|dancers?|crowds?|audiences?|onlookers?|bystanders?|passers?-?by|pedestrians?|customers?|patrons?|drinkers?|extras|strangers?|other (?:people|figures?|band members?|musicians?)|another (?:person|figure|man|woman)|background figures?)\b/i
+
+export function findExtraPeople(prompt) {
+  const found = []
+  for (const sentence of String(prompt || '').split(/(?<=[.;])\s+/)) {
+    const at = sentence.search(EXTRA_PEOPLE_PATTERN)
+    if (at < 0) continue
+    if (/reference image \d+/i.test(sentence)) continue
+    if (/\b(no|not|never|without|free of|nobody|avoid\w*)\b[^.;]{0,60}$/i.test(sentence.slice(0, at))) continue
+    found.push(sentence.trim().slice(0, 120))
+  }
+  return found
+}
+
 // True when the factual pass saw an actual person on the sleeve - the summariser answers
 // "none" (or nothing) otherwise. Those sources get an explicit reference map in the final
 // prompt so the image model copies the face from the numbered image instead of inventing one.
@@ -1053,7 +1080,9 @@ In the final "prompt", name every cast person by their attached reference rather
 
 Invent one specific, surprising composition with a clear visual hierarchy. The sleeves do not contribute equally, and they do not contribute nothing. Give every source you use one of three roles. "lead": one source, at most ${MAX_LEADS}, that the picture is built around - the cast, or the main subject or place. "support": ${MIN_SUPPORTS} to ${MAX_SUPPORTS} further sources that each appear as one real, recognisable thing taken from that sleeve - an object on a table, a piece of furniture, something worn or held, an animal, a fixture, a detail of the room - clearly smaller and quieter than the lead, placed where such a thing would plausibly be, and noticed on a second look. Each support is a different sleeve: several things from one sleeve count once, a lead sleeve's extra details do not count as supports, and lending a colour is the colour role, not a support. Someone who knows the record should be able to spot it. "colour": the remaining sources, which lend only palette, material, or light, or are left out. A cover where only one sleeve is recognisable is that sleeve restaged, not a picture of the week; a cover where every sleeve gets its own prop - a machine for one, a carving for another, a star for a third - is a prop shop. Aim between them: one clear subject and a few finds around it.
 
-The image model is told to avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, weapons, and hate symbols, so do not write any of them into the scene. A sleeve built on such a motif - a resuscitation dummy, an operating table, a skull, a gun - contributes its colours only; do not restage it as a prop. Transform motifs into the chosen world rather than reproducing album sleeves. No sleeve may appear as a picture on a surface - not a mural, painted wall, painted floor or court marking, backdrop, banner, flag, poster, sign, emblem, plaque, tile, decal, framed picture, painted panel, carved relief, cut-out, or the image on a screen, monitor, or television - however it is justified, "adapted as decor" included. A sleeve's faces and figures appear only as real cast people, never as a picture of them. Graphic, abstract, illustrated, and lettering-led sleeves are where this goes wrong, because they have no object to borrow. They make good supports when their motif is already a thing - a snake, a flame, a bird, a flower, a globe, a lamp - which can simply be there, real and at its natural size. When the motif is only a shape, an emblem, or lettering, the sleeve takes the colour role: the paint of a car, an awning, a shirt, a wall, stage gels, or light through coloured glass. Never invent a contraption, sculpture, or piece of equipment just to stand in for a logo or emblem.
+The image model is told to avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, weapons, and hate symbols, so do not write any of them into the scene. A sleeve built on such a motif - a resuscitation dummy, an operating table, a skull, a gun - contributes its colours only; do not restage it as a prop. Transform motifs into the chosen world rather than reproducing album sleeves. A sleeve's graphics may be part of the place: its abstract shapes, patterns, and colours can be painted across a wall, a door, a floor, or an object as that place's own decoration, as long as it carries no lettering and is not the whole sleeve hung up as a framed picture, poster, or record cover or shown on a screen. What never appears as a picture is a person: a sleeve's faces and figures are real cast people or they are absent - not a mural, portrait, poster, cut-out, relief, or image on a screen.
+
+Nobody is in the picture except the cast. Write no one else into the scene - no bartender, drummer, band, crowd, passer-by, or background figure - and when you cast a sleeve, cast only the people whose faces are clearly visible on it: say which ones ("the man in front from reference image 2") and leave out anyone the sleeve shows hidden, cropped, turned away, or blurred, because the image model will invent a face for them. When "cast" is empty the scene has no people at all. Graphic, abstract, illustrated, and lettering-led sleeves are where this goes wrong, because they have no object to borrow. They make good supports when their motif is already a thing - a snake, a flame, a bird, a flower, a globe, a lamp - which can simply be there, real and at its natural size. When the motif is only a shape, a pattern, or an emblem, it can be painted onto a surface of the place as a support, or the sleeve takes the colour role. Lettering is never carried over. Never invent a contraption, sculpture, or piece of equipment just to stand in for a logo or emblem.
 
 Treat each identifiable person as one unique identity and plan only one depiction of them across the whole composition. Do not reuse the same person as both a live figure and a secondary image, reflection, poster, billboard, screen, portrait, silhouette, or background face. Preserve repeated likenesses only when that repetition is visibly intrinsic to one source cover, and contain it within that source's single contribution.
 
@@ -1112,9 +1141,15 @@ Return JSON exactly as {"concept":"string","medium":"string","setting":"string",
       if (uncast.length > 0) {
         problems.push(`it cast ${candidate.cast.length ? `source${candidate.cast.length > 1 ? 's' : ''} ${candidate.cast.join(', ')}` : 'nobody'} but still placed people from source${uncast.length > 1 ? 's' : ''} ${uncast.join(', ')} in the scene`)
       }
-      const flat = findFlatCopies(candidate.prompt)
+      // Graphics painted onto the place are allowed; a sleeve with people on it copied flat
+      // onto a surface is a picture of those people, which is not.
+      const flat = findFlatCopies(candidate.prompt).filter(source => hasPeople(coverSummaries.find(summary => summary.source === source)))
       if (flat.length > 0) {
-        problems.push(`it shows source${flat.length > 1 ? 's' : ''} ${flat.join(', ')} as a picture on a surface (mural, painted wall or floor, backdrop, banner, sign, emblem, panel, or similar)`)
+        problems.push(`it shows source${flat.length > 1 ? 's' : ''} ${flat.join(', ')}, a sleeve with people on it, as a picture on a surface (mural, painted wall, backdrop, banner, sign, panel, or similar)`)
+      }
+      const extras = findExtraPeople(candidate.prompt)
+      if (extras.length > 0) {
+        problems.push(`it writes in people who are not the cast ("${extras[0]}") - nobody appears except the cast`)
       }
       const pictured = findPicturedFigures(candidate.prompt)
       if (pictured.length > 0) {
@@ -1140,7 +1175,7 @@ Return JSON exactly as {"concept":"string","medium":"string","setting":"string",
     const problems = problemsWith(direction)
     if (problems.length > 0) {
       if (debug) console.log(`  Art director brief rejected (${problems.join('; ')}); asking again`)
-      direction = await requestDirection(`Your previous answer was rejected: ${problems.join('; and ')}. Answer again with at most ${MAX_CAST} cast sources and no people from any other source, no sleeve shown as a picture on any surface, screen, sign, or carving - translate graphic sleeves into real objects, materials, colour, or light, or let them contribute palette only - cast people standing in the scene at its own scale and in its own light, photographed from eye level at three-quarter length or closer,${refused.length > 0 ? ` a setting that is not ${refused.join(' or ')},` : ''} one or two lead sources with ${MIN_SUPPORTS} to ${MAX_SUPPORTS} others each present as a real, recognisable supporting element, and one cohesive moment rather than a station for each sleeve.`)
+      direction = await requestDirection(`Your previous answer was rejected: ${problems.join('; and ')}. Answer again with at most ${MAX_CAST} cast sources and no people from any other source, no sleeve's people shown as a picture on any surface, screen, sign, or carving, nobody in the scene except the cast, no lettering, cast people standing in the scene at its own scale and in its own light, photographed from eye level at three-quarter length or closer,${refused.length > 0 ? ` a setting that is not ${refused.join(' or ')},` : ''} one or two lead sources with ${MIN_SUPPORTS} to ${MAX_SUPPORTS} others each present as a real, recognisable supporting element, and one cohesive moment rather than a station for each sleeve.`)
       const remaining = problemsWith(direction)
       if (remaining.length > 0) console.warn(`  Art director brief still has problems: ${remaining.join('; ')}`)
     }
@@ -1167,6 +1202,6 @@ export function buildGenerationPrompt(artDirection, coverSummaries = [], { year,
     creativePrompt,
     yearDirective,
     buildReferenceMap(coverSummaries, cast, closeUps),
-    `Hard constraints (override any conflicting source material): ${buildHardConstraints({ year: digits, hasCast: Boolean(cast?.length) }).join(' ')}`
+    `Hard constraints (override any conflicting source material): ${buildHardConstraints({ year: digits, cast: cast ?? undefined }).join(' ')}`
   ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
 }
