@@ -1030,333 +1030,6 @@
     },
     {
       "version": 2,
-      "date": "2026-05-18",
-      "type": "cover",
-      "lane": null,
-      "lighting": "hard midday sun",
-      "shootDirection": null,
-      "colourTreatment": null,
-      "concept": "Hazard shrine at a city callbox",
-      "medium": "daylight location photography",
-      "creativeDirection": "Use daylight location photography to build a crisp urban editorial scene where the strongest graphic motifs become real objects staged around a city phone booth, with the illustrated and painted covers translated into plausible murals, statues, and signage within one physically believable place.",
-      "scene": "A wide 16:9 street-corner view photographed from slightly low eye level across the sidewalk toward a glass phone booth in a sunstruck city plaza, with enough surrounding pavement and building wall to stage several transformed album motifs without crowding the frame.",
-      "elements": [
-        {
-          "source": 1,
-          "element": "A large red radiation hazard symbol painted on a bright yellow metal utility panel or safety door directly behind and slightly offset from the phone booth, serving as the dominant graphic backdrop."
-        },
-        {
-          "source": 2,
-          "element": "Translucent amber and red dice scattered across a reflective stainless-steel public ledge or ashtray tray beside the booth, with a few cylindrical metal cups or bollard tops nearby and thin white line markings resembling card-suit doodles etched or painted on the booth glass."
-        },
-        {
-          "source": 3,
-          "element": "The four silhouetted performers appear as a flat orange street poster or painted mural on a side wall, with sweeping white curves integrated as graphic public-art lines, kept secondary in scale."
-        },
-        {
-          "source": 4,
-          "element": "A large owl with wings spread rendered as a realistic sculptural relief or painted security-shutter mural above a dark basement grate or service opening, echoing the original forward-facing stance without turning the whole scene fantastical."
-        },
-        {
-          "source": 5,
-          "element": "A haloed angel translated into a weathered mosaic, devotional tile panel, or small shrine image mounted on the wall near the booth, leaning diagonally as in the source and reading as urban found art."
-        },
-        {
-          "source": 6,
-          "element": "The glass phone booth and city sidewalk structure the entire composition, with a few tiny distant pedestrians and passing cars far in the background only."
-        }
-      ],
-      "palette": [
-        "hazard yellow",
-        "signal red",
-        "stainless silver",
-        "sunlit orange",
-        "sky blue",
-        "concrete gray"
-      ],
-      "mood": "graphic, strange, sun-bleached, urban, sharply observed",
-      "coverSummaries": [
-        {
-          "source": 1,
-          "filename": "Radio-Activity.jpg",
-          "album": "Radio Activity",
-          "artist": "",
-          "description": "A stark graphic cover with a large red radiation hazard symbol centered on a flat bright yellow background. The composition is minimal and symmetrical, with wide empty space around the symbol.",
-          "signatureMotif": "red radiation hazard symbol",
-          "medium": "graphic design",
-          "people": "none",
-          "palette": [
-            "yellow",
-            "red",
-            "black"
-          ]
-        },
-        {
-          "source": 2,
-          "filename": "King.jpg",
-          "album": "King",
-          "artist": "",
-          "description": "A warm-toned photographic still life of translucent dice scattered on and around a reflective metal tray or dish, with metallic cups or cylindrical containers in the background. White outline drawings of card-suit shapes and looping lines are layered across the upper half of the image.",
-          "signatureMotif": "scattered translucent dice on a reflective metal surface",
-          "medium": "photograph with graphic overlay",
-          "people": "none",
-          "palette": [
-            "gold",
-            "amber",
-            "red",
-            "green",
-            "white"
-          ]
-        },
-        {
-          "source": 3,
-          "filename": "Motorcade-of-Generosity.jpg",
-          "album": "Motorcade of Generosity",
-          "artist": "",
-          "description": "A simplified two-colour illustration showing four dark silhouetted figures standing against an orange field filled with sweeping white curved streaks. One figure appears to sing into a microphone, one plays a trumpet, one plays a violin, and one stands beside the singer.",
-          "signatureMotif": "four silhouetted performers with instruments",
-          "medium": "illustration",
-          "people": "four illustrated figures, including a singer and two instrumentalists",
-          "palette": [
-            "orange",
-            "white",
-            "dark brown"
-          ]
-        },
-        {
-          "source": 4,
-          "filename": "Fly-by-Night.jpg",
-          "album": "Fly by Night",
-          "artist": "",
-          "description": "A painted fantasy image of a large owl facing forward with wings spread wide and glowing yellow eyes. The bird stands over a dark opening in snowy ground, with a deep purple night sky and sparse bare trees in the background.",
-          "signatureMotif": "large front-facing owl with spread wings",
-          "medium": "painting",
-          "people": "none",
-          "palette": [
-            "blue",
-            "purple",
-            "black",
-            "yellow",
-            "white"
-          ]
-        },
-        {
-          "source": 5,
-          "filename": "Pilgrimage.jpg",
-          "album": "Pilgrimage",
-          "artist": "",
-          "description": "A religious icon-style painting of a winged angel shown close-up, leaning diagonally into the frame. The figure has a golden halo, brown hair, large brown wings, and layered robes in brown, blue, and white against a soft blue background.",
-          "signatureMotif": "haloed angel with large wings",
-          "medium": "icon-style painting",
-          "people": "none",
-          "palette": [
-            "blue",
-            "gold",
-            "brown",
-            "white",
-            "black"
-          ]
-        },
-        {
-          "source": 6,
-          "filename": "Pocket-Full-of-Kryptonite.jpg",
-          "album": "Pocket Full of Kryptonite",
-          "artist": "",
-          "description": "A grainy black-and-white street photograph at dusk or night showing a sidewalk with a glass phone booth near the center and a wire mesh trash can in the foreground at right. Cars, streetlights, buildings, and a few distant pedestrians line the street under a cloudy sky, with purple lettering overlaid across the top.",
-          "signatureMotif": "glass phone booth on a city sidewalk",
-          "medium": "black-and-white photograph with colored text overlay",
-          "people": "a few distant pedestrians on a city sidewalk",
-          "palette": [
-            "black",
-            "white",
-            "gray",
-            "purple"
-          ]
-        }
-      ],
-      "hint": null,
-      "composeBackend": "gpt-image-2-5",
-      "model": "openai/gpt-image-2.5/sunburst/edit",
-      "prompt": "A wide 16:9 city street-corner scene photographed from slightly low eye level in hard midday sun, looking across a clean sidewalk toward a glass phone booth as the central anchor. Behind and slightly offset from the booth, a large bright yellow metal utility panel bears a huge red radiation hazard symbol, bold and symmetrical, dominating the composition. Around the base of the booth, scatter translucent amber and red dice across a reflective stainless-steel public tray or ledge, with a few cylindrical metal containers or bollard tops nearby; add thin white line drawings of card suits and looping lines on the upper glass of the booth as subtle graphic markings. On a side wall, include a secondary orange mural showing the four silhouetted performers from reference image 3 — singer with microphone, trumpet player, violin player, and fourth standing figure — with sweeping white curved streaks around them, clearly readable but smaller than the hazard panel. Above a dark basement grate or service opening, place a realistic owl image inspired by reference image 4, front-facing with wings spread, translated into a believable urban mural or sculptural relief. Nearby, mount a weathered devotional tile or mosaic of the haloed angel from reference image 5, leaning diagonally into its frame, integrated as found street art. Use the phone booth and street setting from reference image 6 as the spatial basis, with only a few tiny distant pedestrians and cars far back on the street, not prominent. Photorealistic daylight location photography, crisp editorial detail, medium-format clarity, no haze, no rain, no moody darkness. Strong clean shadows, bright open exposure, saturated primary colors against pale concrete and glass. Palette of hazard yellow, red, silver, orange, blue, and gray; mood graphic, uncanny, sun-bleached, urban. Reference map for people (the album images are attached in this numbered order): reference image 3 shows four illustrated figures, including a singer and two instrumentalists; reference image 6 shows a few distant pedestrians on a city sidewalk. Copy each of these faces directly from that numbered reference image - same face, hair, expression, and styling - rather than drawing a new person from the description. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
-      "inputs": [
-        "Radio-Activity.jpg",
-        "King.jpg",
-        "Motorcade-of-Generosity.jpg",
-        "Fly-by-Night.jpg",
-        "Pilgrimage.jpg",
-        "Pocket-Full-of-Kryptonite.jpg"
-      ]
-    },
-    {
-      "version": 2,
-      "date": "2026-05-18",
-      "type": "artist",
-      "lane": null,
-      "lighting": null,
-      "shootDirection": null,
-      "colourTreatment": null,
-      "concept": "Conspiracy at the corridor bend",
-      "creativeDirection": "Use a sharp, staged editorial group portrait approach with dramatic architectural perspective, staggered depth, and moody directional light from the hallway fixtures.",
-      "scene": "A four-person gathering paused in the modern concrete hallway, clustered near the bend where the curved white wall meets the row of columns, with the ceiling light ribbons leading overhead into depth.",
-      "locationSource": 2,
-      "locationSetting": "Wide modern interior corridor with concrete columns, smooth floor, dark ceiling, curved white wall, and long glowing linear ceiling fixtures leading into the distance.",
-      "locationEvidence": "The photo clearly shows a distinctive modern corridor with repeating concrete columns, a smooth floor, a curved white wall, dark ceiling planes, and long glowing linear ceiling lights sweeping through the space.",
-      "locationReference": 1,
-      "locationInput": "Kraftwerk.jpg",
-      "cast": [
-        {
-          "source": 2,
-          "person": "the pale mannequin-faced adult with short dark hair in a bright red shirt, black tie, and gray trousers",
-          "placement": "front right, closest to camera, turned slightly inward toward the group"
-        },
-        {
-          "source": 3,
-          "person": "the smiling light-skinned woman with shoulder-length light brown hair in a pale pink sweater",
-          "placement": "mid-left, leaning lightly toward the others with one hand half-raised as if finishing a point"
-        },
-        {
-          "source": 1,
-          "person": "the light-skinned clean-shaven man in a dark fedora and loose gray suit",
-          "placement": "center, anchoring the cluster and facing slightly left of camera"
-        },
-        {
-          "source": 6,
-          "person": "the light-skinned man with glasses, a dark beanie, and a very long full beard",
-          "placement": "back left near a concrete column, slightly recessed, watching the exchange"
-        }
-      ],
-      "selection": [
-        2,
-        3,
-        1,
-        6
-      ],
-      "palette": [
-        "concrete gray",
-        "curved white",
-        "signal red",
-        "soft pink",
-        "charcoal black"
-      ],
-      "mood": "tense, curious, quietly surreal",
-      "artistSummaries": [
-        {
-          "source": 1,
-          "filename": "Cake.jpg",
-          "artist": "Cake",
-          "description": "Four light-skinned adult men stand close together in a worn interior with dark wood paneling. The man at center is most prominent, facing forward in a gray suit and dark fedora, holding a silver candlestick with a lit candle. At left, a man in a black fuzzy hat, black blazer, black shirt, and light trousers stands with a slight lean. Behind center-right, a slimmer man with shaggy blond hair wears a black jacket over a red shirt and dark vest. At right, a bearded man in a patterned brimmed hat wears a gray double-breasted coat over a plaid shirt and tan trousers, one hand in pocket. A red upholstered bench and a wall mirror are visible. Lighting is even and naturalistic, with a polished editorial portrait look.",
-          "primarySubject": "The light-skinned man in the center wearing a dark fedora and loose gray suit, holding a silver candlestick upright and looking directly at the camera.",
-          "visiblePeople": [
-            "Light-skinned adult man in a black fuzzy hat, clean-shaven, dark eyebrows, black blazer and shirt, light trousers, standing at left with a slight lean.",
-            "Light-skinned adult man in a dark fedora, clean-shaven, short hair mostly hidden, gray suit over a pale patterned shirt, holding a silver candlestick at center.",
-            "Light-skinned adult man with medium-length shaggy blond hair, clean-shaven, black jacket, dark vest, red shirt, standing slightly behind center-right.",
-            "Light-skinned adult man with a full dark beard and mustache, patterned brimmed hat, gray coat, plaid shirt, tan trousers, standing at right with one hand in pocket."
-          ],
-          "wardrobe": "Mixed tailored and casual menswear: hats, black blazer and shirt, gray suit, black jacket with red shirt and vest, gray pea coat over plaid shirt, light and tan trousers.",
-          "photoStyle": "Color group portrait, mid-to-full length framing, posed editorial style with direct gazes and crisp detail.",
-          "setting": "Indoor room with distressed dark wood wall paneling, a large wall mirror, red upholstered bench seating, and a dark table edge in the foreground.",
-          "settingStrength": "moderate"
-        },
-        {
-          "source": 2,
-          "filename": "Kraftwerk.jpg",
-          "artist": "Kraftwerk",
-          "description": "Four human-like adult figures stand in a line receding into depth inside a modern hallway. They have smooth mannequin-like faces, short dark or shaved hair, pale skin-toned surfaces, and identical neutral expressions. Each wears a bright red long-sleeve shirt, black tie, gray trousers, and black belt. The nearest figure at right is largest in frame; the others align diagonally behind. The corridor has concrete columns, a smooth floor, a curved white wall, and long linear ceiling lights. Lighting is dramatic and directional, emphasizing the red shirts and giving the scene a staged, futuristic look.",
-          "primarySubject": "The front-right human-like figure with pale mannequin-like face, short dark hair, red shirt, black tie, and gray trousers, closest to the camera.",
-          "visiblePeople": [
-            "Pale mannequin-like adult figure with short dark hair, red shirt, black tie, gray trousers, standing farthest back at left.",
-            "Pale mannequin-like adult figure with very short dark hair, red shirt, black tie, gray trousers, standing second in line.",
-            "Pale mannequin-like adult figure with bald or closely shaved head, red shirt, black tie, gray trousers, standing third in line.",
-            "Pale mannequin-like adult figure with short dark hair, red shirt, black tie, gray trousers, standing closest at right."
-          ],
-          "wardrobe": "Matching uniforms of bright red button-up shirts, black ties, gray trousers, and black belts.",
-          "photoStyle": "Color staged group portrait with strong perspective, glossy surfaces, and dramatic architectural lighting.",
-          "setting": "Wide modern interior corridor with concrete columns, smooth floor, dark ceiling, curved white wall, and long glowing linear ceiling fixtures leading into the distance.",
-          "settingStrength": "strong"
-        },
-        {
-          "source": 3,
-          "filename": "Belly.jpg",
-          "artist": "Belly",
-          "description": "Four light-skinned adults pose closely against a plain warm beige backdrop. A smiling woman at center front with shoulder-length light brown or dark blond hair wears a pale pink sweater and raises both hands outward. At left, another smiling woman with light hair in two braids and bangs wears a bright blue ribbed turtleneck and mirrors a hand-out gesture. Behind them stand two men: one at upper left with short light brown hair in a dark top, and one at upper right with short spiky blond hair in a black sweater, both facing forward. The image has soft focus, warm lighting, and a hazy 1990s studio portrait feel.",
-          "primarySubject": "The smiling light-skinned woman in the center front with shoulder-length light brown hair, pale pink sweater, and both hands raised outward.",
-          "visiblePeople": [
-            "Light-skinned adult woman with bangs and two braids, smiling, wearing a bright blue ribbed turtleneck, posed at left with one palm up.",
-            "Light-skinned adult man with short light brown hair, clean-shaven, wearing a dark top, standing behind at upper left.",
-            "Light-skinned adult woman with shoulder-length light brown or dark blond hair, smiling, wearing a pale pink sweater, centered in front with both hands raised.",
-            "Light-skinned adult man with short spiky blond hair, clean-shaven, wearing a black sweater, standing behind at upper right with a serious expression."
-          ],
-          "wardrobe": "Casual knit tops: blue ribbed turtleneck, pale pink sweater, and dark sweaters/shirts.",
-          "photoStyle": "Soft-focus color studio portrait with warm glow and slight blur.",
-          "setting": "Plain studio backdrop in a warm beige tone with no visible furniture or architectural elements.",
-          "settingStrength": "weak"
-        },
-        {
-          "source": 4,
-          "filename": "Spin-Doctors.jpg",
-          "artist": "Spin Doctors",
-          "description": "Four light-skinned adult men stand shoulder to shoulder in a bright interior. At left, a smiling older man with very short white hair and a short white goatee wears a black T-shirt and a long striped scarf. Next to him, a bearded man with a gray brimmed hat wears a dark denim jacket over a black shirt. Third is a man in a gray knit cap layered over a red bandana, wearing a brown distressed jacket over a light shirt and a patterned scarf. At right, a long-haired man wears a camouflage jacket over a black shirt with round sunglasses hanging from the placket. Behind them are a white doorway and tall vertical striped curtains or wall panels. The image is sharp, brightly lit, and posed like a contemporary press portrait.",
-          "primarySubject": "The smiling light-skinned man at far left with very short white hair, a short white goatee, black T-shirt, and long striped scarf, positioned closest to the camera.",
-          "visiblePeople": [
-            "Light-skinned older adult man with very short white hair, short white goatee, smiling, black T-shirt, long striped scarf, standing closest at left.",
-            "Light-skinned adult man with a full gray-brown beard and mustache, gray brimmed hat, dark denim jacket, black shirt, standing second from left.",
-            "Light-skinned adult man with a gray knit cap over a red bandana, clean-shaven face, brown distressed jacket, light shirt, patterned scarf, standing third from left.",
-            "Light-skinned adult man with long straight dark brown hair, clean-shaven, camouflage jacket over black shirt, round sunglasses hanging at chest, standing at right."
-          ],
-          "wardrobe": "Casual rock styling: black T-shirt with scarf, denim jacket and hat, knit cap with bandana and distressed jacket, camouflage jacket over black shirt.",
-          "photoStyle": "Color group portrait, waist-up framing, crisp editorial lighting and detail.",
-          "setting": "Indoor space with a white doorframe, hinge visible, and tall vertical brown-and-cream striped curtains or panels behind the group.",
-          "settingStrength": "moderate"
-        },
-        {
-          "source": 5,
-          "filename": "Rush.jpg",
-          "artist": "Rush",
-          "description": "Three light-skinned adult men pose tightly cropped against a bright plain studio background. The central man is tallest and most prominent, smiling with a thick dark mustache and shoulder-length dark hair, arms crossed, wearing a black T-shirt with a floral graphic and a wristwatch. At left, a smiling man with long wavy blond hair wears a dark shirt. At right, a man with very long straight dark hair wears a dark patterned shirt and a digital wristwatch, also with arms crossed. The lighting is soft and even, producing a clean classic studio portrait.",
-          "primarySubject": "The central light-skinned man with shoulder-length dark hair, thick mustache, black T-shirt with floral graphic, and crossed arms, smiling directly at the camera.",
-          "visiblePeople": [
-            "Light-skinned adult man with long wavy blond hair, clean-shaven, smiling, wearing a dark shirt, positioned at left.",
-            "Light-skinned adult man with shoulder-length dark hair, thick dark mustache, smiling, black T-shirt with floral graphic, wristwatch, arms crossed at center.",
-            "Light-skinned adult man with very long straight dark hair, clean-shaven, dark patterned shirt, digital wristwatch, arms crossed at right."
-          ],
-          "wardrobe": "Dark casual tops; center wears a black graphic T-shirt, others wear dark shirts, with visible wristwatches on center and right.",
-          "photoStyle": "Color studio group portrait with tight waist-up crop, soft even lighting, and a clean plain background.",
-          "setting": "Plain bright studio backdrop with no visible environmental elements.",
-          "settingStrength": "weak"
-        },
-        {
-          "source": 6,
-          "filename": "Om.jpg",
-          "artist": "Om",
-          "description": "Three adult men stand spaced apart against a nearly black background in a high-contrast black-and-white portrait. At left, a light-skinned man with a very long full beard and mustache wears glasses and a dark beanie, dressed in dark clothing. In the middle, a light-skinned man with short hair and slight stubble wears a dark zip-front jacket with hood cords, looking directly at the camera. At right, a light-skinned man with medium-length side-swept hair wears a dark T-shirt, hands behind his back. The image is stark, minimal, and dramatically lit from the front.",
-          "primarySubject": "The light-skinned man at left with glasses, a dark beanie, and a very long full beard, strongly silhouetted against the black background.",
-          "visiblePeople": [
-            "Light-skinned adult man with glasses, dark beanie, very long full beard and mustache, dark clothing, standing at left.",
-            "Light-skinned adult man with short hair and light stubble, dark zip-front jacket with hood cords, standing at center and facing forward.",
-            "Light-skinned adult man with medium-length side-swept hair, clean-shaven, dark T-shirt, standing at right with hands behind his back."
-          ],
-          "wardrobe": "All-dark clothing: beanie and layered dark outerwear on left, zip-front jacket in center, plain dark T-shirt on right.",
-          "photoStyle": "Black-and-white low-key studio portrait with high contrast, sparse composition, and strong frontal lighting.",
-          "setting": "Featureless black studio background with no visible props or environmental details.",
-          "settingStrength": "weak"
-        }
-      ],
-      "hint": null,
-      "composeBackend": "nano-banana-pro",
-      "model": "fal-ai/nano-banana-pro/edit",
-      "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 1 is the sole authority for the physical setting: Wide modern interior corridor with concrete columns, smooth floor, dark ceiling, curved white wall, and long glowing linear ceiling fixtures leading into the distance.. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. In a wide modern interior corridor with repeating concrete columns on the left, a smooth reflective floor, a curved white wall on the right, a dark ceiling, and long glowing linear ceiling fixtures sweeping overhead, photograph a four-person group paused near the corridor bend where the architecture opens into depth. Closest to camera at front right stands a pale mannequin-faced adult with short dark hair, wearing a bright red button-up shirt, black tie, and gray trousers, turned slightly inward; at center stands a clean-shaven light-skinned man in a dark fedora and loose gray suit, calmly anchoring the group; at mid-left a smiling light-skinned woman with shoulder-length light brown hair in a pale pink sweater leans in with one hand half-raised as if finishing a thought; farther back left by a concrete column stands a light-skinned man in glasses and a dark beanie with a very long full beard, slightly recessed and observant. Keep them in one intimate, asymmetrical cluster with varied depth and posture, not a lineup, sharing a quiet conspiratorial moment. Shoot from eye level with a moderately wide editorial lens that preserves the hallway perspective and ceiling light curves, with crisp detail and natural proportions. Light primarily from the corridor fixtures and existing directional ambient spill, creating sculpted faces, gentle falloff, and luminous highlights on the red shirt against the concrete and white surfaces. Use clean realistic color with cool neutral architecture, the red shirt as the strongest accent, and a restrained moody tone that feels sharp, contemporary, and subtly uncanny. Attached cast plan: Attached reference image 1: portray only the pale mannequin-faced adult with short dark hair in a bright red shirt, black tie, and gray trousers; front right, closest to camera, turned slightly inward toward the group. Attached reference image 2: portray only the smiling light-skinned woman with shoulder-length light brown hair in a pale pink sweater; mid-left, leaning lightly toward the others with one hand half-raised as if finishing a point. Attached reference image 3: portray only the light-skinned clean-shaven man in a dark fedora and loose gray suit; center, anchoring the cluster and facing slightly left of camera. Attached reference image 4: portray only the light-skinned man with glasses, a dark beanie, and a very long full beard; back left near a concrete column, slightly recessed, watching the exchange. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached reference image and no one else; when a reference shows a band, use only the one specifically described cast member. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 4 attached cast reference images and the final image must contain exactly 4 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached reference.",
-      "reuseWeeks": 6,
-      "reuseBlocked": [],
-      "reuseRelaxed": [],
-      "inputs": [
-        "Kraftwerk.jpg",
-        "Belly.jpg",
-        "Cake.jpg",
-        "Om.jpg"
-      ]
-    },
-    {
-      "version": 2,
       "date": "2026-05-25",
       "type": "cover",
       "lane": null,
@@ -12171,6 +11844,619 @@
         "Tori-Amos.jpg",
         "Prince-The-Revolution.jpg"
       ]
+    },
+    {
+      "version": 2,
+      "date": "2026-11-16",
+      "type": "cover",
+      "lane": null,
+      "lighting": "hard midday sun",
+      "composition": "top-down over concrete apron",
+      "cast": [
+        1,
+        8
+      ],
+      "closeUps": [
+        {
+          "source": 1,
+          "reference": 9
+        },
+        {
+          "source": 8,
+          "reference": 10
+        }
+      ],
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Clinic loading bay with map shadows",
+      "medium": "daylight location photography",
+      "creativeDirection": "Use daylight location photography to stage one crisp overhead moment in an industrial clinic loading bay, letting the strongest sleeves become real people and objects while the graphic covers resolve into markings, equipment colour, and small physical details.",
+      "scene": "A sun-bleached concrete loading apron beside a medical warehouse or ambulance service building, seen almost straight down from an upper-storey window or fire escape. Painted handling lines and faded freight markings crisscross the ground. A large weathered world map is painted directly onto the concrete as a practical navigation/training surface, not as a picture display, with continents and grid lines worn by use. Near one edge sits a training mannequin on a wheeled gurney in full sun. A single coiled snake lies in shadow near a drain at the lower right. The space is otherwise spare and open, with strong shadows and lots of pale concrete around the subjects.",
+      "elements": [
+        {
+          "source": 1,
+          "element": "the four young men from reference image 1 stand full-length in a line across the worn world-map concrete, keeping their posed stillness, dark clothing, hat and cap, with long diagonal shadows cast across the map"
+        },
+        {
+          "source": 2,
+          "element": "a medical training mannequin on a gurney, head tilted back with electrode pads on its chest, placed near the band as a real object in the loading bay"
+        },
+        {
+          "source": 3,
+          "element": "red hazardous-material paint and a small real scorch-blackened flame mark on a utility drum and on floor safety markings contribute the red-diamond warning palette without showing a graphic sign"
+        },
+        {
+          "source": 4,
+          "element": "a real coiled snake in the lower-right shadow, small and understated against the concrete"
+        },
+        {
+          "source": 7,
+          "element": "lavender and blue medical tubing loops from the gurney, with a star-shaped blue valve assembly echoing the circular emblem form"
+        },
+        {
+          "source": 8,
+          "element": "the young girl from reference image 8 crouches forward on her hands on the blank concrete at the right side, preserving her direct surreal stare and light dress; a single small flower lies beneath one hand"
+        }
+      ],
+      "palette": [
+        "pale concrete",
+        "sepia beige",
+        "red warning paint",
+        "black shadow",
+        "lavender tubing",
+        "clinical white"
+      ],
+      "mood": "stark, surreal, sun-struck",
+      "coverSummaries": [
+        {
+          "source": 1,
+          "filename": "The-World-According-To-Clash.jpg",
+          "album": "The World According To Clash",
+          "artist": "",
+          "description": "A sepia-toned photomontage shows four young men standing full-length across the lower half of the image on top of a world map floor with latitude-like grid lines and faint continent outlines. Behind them is a cloudy sky gradient. The figures wear dark trousers and jackets or shirts; one wears a wide-brim hat, one a flat cap and scarf. Long shadows stretch diagonally across the map surface. Large block text dominates the upper half, but the main visual scene is the band posed against the map-and-sky backdrop.",
+          "signatureMotif": "four men standing on a world map floor",
+          "medium": "photographic collage",
+          "people": "four young men standing in a line on a map backdrop",
+          "moderationRisk": "",
+          "peopleBox": [
+            0.31,
+            0.43,
+            0.93,
+            0.78
+          ],
+          "faceHeight": 0.08,
+          "palette": [
+            "sepia",
+            "beige",
+            "black",
+            "cream",
+            "grey"
+          ]
+        },
+        {
+          "source": 2,
+          "filename": "The-Bends.jpg",
+          "album": "The Bends",
+          "artist": "",
+          "description": "A close-up, grainy photograph of a medical mannequin or dummy fills most of the frame against a black background. The head is tilted back with eyes closed and mouth slightly open, and the upper chest and neck are visible. Two round electrode pads are attached to the chest. A bold horizontal red band with white lettering crosses the lower middle, partially covering the torso.",
+          "signatureMotif": "close-up of a medical mannequin face and chest with electrodes",
+          "medium": "photograph",
+          "people": "none",
+          "moderationRisk": "",
+          "peopleBox": null,
+          "faceHeight": null,
+          "palette": [
+            "black",
+            "peach",
+            "pink",
+            "red",
+            "white"
+          ]
+        },
+        {
+          "source": 3,
+          "filename": "Blue-Lines.jpg",
+          "album": "Blue Lines",
+          "artist": "",
+          "description": "A minimalist graphic design on a tan paper-like background features a large red diamond hazard sign centered in the frame. Inside the diamond is a black flame symbol above a short horizontal bar. Oversized black lettering overlaps the sign, creating a layered poster-like composition.",
+          "signatureMotif": "black flame inside a red diamond hazard sign",
+          "medium": "graphic design",
+          "people": "none",
+          "moderationRisk": "",
+          "peopleBox": null,
+          "faceHeight": null,
+          "palette": [
+            "tan",
+            "red",
+            "black",
+            "brown"
+          ]
+        },
+        {
+          "source": 4,
+          "filename": "Metallica.jpg",
+          "album": "Metallica",
+          "artist": "",
+          "description": "A very dark, nearly black cover with a faint coiled snake drawn in grey at the lower right. In the upper left, a barely visible angular metallic or stone-like shape emerges from the darkness. The composition is sparse and shadowy, with most details subdued into black.",
+          "signatureMotif": "coiled snake outline in the lower right",
+          "medium": "dark photographic/graphic cover art",
+          "people": "none",
+          "moderationRisk": "",
+          "peopleBox": null,
+          "faceHeight": null,
+          "palette": [
+            "black",
+            "dark grey",
+            "charcoal"
+          ]
+        },
+        {
+          "source": 5,
+          "filename": "Definitely-Maybe.jpg",
+          "album": "Definitely Maybe",
+          "artist": "",
+          "description": "A softly tinted interior photograph of a living room shows five young men arranged casually around the space. One sits on a sofa holding an acoustic guitar, one sits in a chair, one stands by bright windows, one sits on the floor facing a television, and one lies on the wooden floor in the foreground with his head nearest the camera. The room contains a fireplace, shelves, framed pictures, a standing globe-like lamp or large spherical object, a potted plant, a mirror, glasses of red drink, bottles, and another guitar leaning near the window. The perspective leads inward along the floorboards toward the back windows.",
+          "signatureMotif": "five men posed around a cluttered living room",
+          "medium": "photograph",
+          "people": "five young men in a living room, one lying on the floor and others sitting or standing",
+          "moderationRisk": "",
+          "peopleBox": [
+            0.14,
+            0.34,
+            0.72,
+            0.93
+          ],
+          "faceHeight": 0.11,
+          "palette": [
+            "cream",
+            "pale blue",
+            "beige",
+            "brown",
+            "black"
+          ]
+        },
+        {
+          "source": 6,
+          "filename": "Sublime.jpg",
+          "album": "Sublime",
+          "artist": "",
+          "description": "A centered photograph shows the bare back and neck of a person seen from behind, with short reddish hair visible at the top. Across the upper back is a large black tattoo in ornate lettering. The image is framed by a decorative black-and-white border of large flowers, leaves, and roses around all sides. The background behind the person is softly blurred.",
+          "signatureMotif": "bare back with a large upper-back tattoo framed by flowers",
+          "medium": "photograph with illustrated floral border",
+          "people": "one person seen from behind with a tattoo across the upper back",
+          "moderationRisk": "",
+          "peopleBox": [
+            0.34,
+            0,
+            0.66,
+            0.24
+          ],
+          "faceHeight": 0.06,
+          "palette": [
+            "skin tone",
+            "black",
+            "white",
+            "grey",
+            "red"
+          ]
+        },
+        {
+          "source": 7,
+          "filename": "The-Orbs-Adventures-Beyond-the-Ultraworld.jpg",
+          "album": "The Orbs Adventures Beyond the Ultraworld",
+          "artist": "",
+          "description": "A stylized abstract graphic on a black background features a large circular form at left with a blue starburst or compass-like shape inside translucent lavender rings. Pink curved bars arc around parts of the circle. Extending from the circle to the right is a long pale lavender tubular shape, giving the whole design a futuristic emblem-like appearance. White text sits at the top, but the main image is the geometric symbol.",
+          "signatureMotif": "blue starburst inside a circular abstract emblem with a long tube-like extension",
+          "medium": "graphic design",
+          "people": "none",
+          "moderationRisk": "",
+          "peopleBox": null,
+          "faceHeight": null,
+          "palette": [
+            "black",
+            "blue",
+            "lavender",
+            "pink",
+            "white"
+          ]
+        },
+        {
+          "source": 8,
+          "filename": "Beautiful-Freak.jpg",
+          "album": "Beautiful Freak",
+          "artist": "",
+          "description": "A mostly white cover shows a black-and-white image of a young girl crawling or leaning forward on her hands, positioned on the right half of the frame. Her eyes are enlarged to an unnatural scale, creating a surreal effect. She has dark shoulder-length hair and wears a light short-sleeved dress. A flower lies beneath one hand near the floor. Blue and black text appears on the left side, leaving a large area of white negative space.",
+          "signatureMotif": "young girl with oversized eyes leaning forward on a white background",
+          "medium": "photograph with manipulated facial features",
+          "people": "one young girl leaning forward on her hands",
+          "moderationRisk": "",
+          "peopleBox": [
+            0.53,
+            0.18,
+            0.91,
+            0.73
+          ],
+          "faceHeight": 0.24,
+          "palette": [
+            "white",
+            "black",
+            "grey",
+            "light blue"
+          ]
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2-6",
+      "model": "openai/gpt-image-2.6/sunburst/edit",
+      "prompt": "Almost straight down from above onto a sun-bleached concrete loading apron beside a medical warehouse, with lots of open pale ground and crisp painted handling lines; the primary subjects are the four young men from reference image 1 standing full-length in a line across a large worn world map painted on the concrete, and the young girl from reference image 8 crouched forward on her hands at the right side on blank concrete, keeping her enlarged eyes, dark shoulder-length hair, light short-sleeved dress, and the small flower beneath one hand. Near them, a medical training mannequin on a wheeled gurney rests in full sun with its head tilted back and electrode pads attached to its chest. Include a real coiled snake lying small in the lower-right shadow near a drain. Let source 3 appear only through red hazardous-material paint accents and a small scorch-blackened flame mark on a utility drum and adjacent safety floor markings, not as a graphic sign. Let source 7 appear only through looping pale lavender and pinkish medical tubing from the gurney and a blue star-shaped valve assembly. Shoot as crisp daylight location photography, physically plausible and clean, no collage look, no poster, mural, banner, or picture-on-surface references. Compose as a high overhead asymmetrical frame with the band crossing the map diagonally, the girl separated in open negative space to the right, the gurney offset near the top edge, and the snake a small discovery at lower right. Use hard midday sun with short sharp shadows and high clarity. Keep the palette pale concrete, sepia, cream, black, warning red, lavender, dusty blue, and white; mood stark, surreal, and sun-struck. Reference map for people (the album images are attached in this numbered order): reference image 1 shows four young men standing in a line on a map backdrop, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9; reference image 8 shows one young girl leaning forward on her hands, and reference image 10 is an enlarged close-up of those same people - take their faces from reference image 10. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 5, 6 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, monitor, television, sign, cut-out, or floor graphic, or carving it as a wall-mounted relief; show no sleeve's faces, heads, or figures as a picture, display, sign, or silhouette anywhere; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+      "inputs": [
+        "The-World-According-To-Clash.jpg",
+        "The-Bends.jpg",
+        "Blue-Lines.jpg",
+        "Metallica.jpg",
+        "Definitely-Maybe.jpg",
+        "Sublime.jpg",
+        "The-Orbs-Adventures-Beyond-the-Ultraworld.jpg",
+        "Beautiful-Freak.jpg"
+      ]
+    },
+    {
+      "version": 2,
+      "date": "2026-11-16",
+      "type": "artist",
+      "lane": null,
+      "lighting": null,
+      "shootDirection": null,
+      "colourTreatment": null,
+      "concept": "Column gap gathering in cool daylight",
+      "creativeDirection": "A moody medium-close environmental portrait that pulls the camera into the concrete colonnade and arranges the six faces in a tight, overlapping cluster shaped by the vertical architecture.",
+      "scene": "Inside the same concrete colonnade from source 10, closer to the subjects than the reference, with repeating columns on both sides and thin bands of daylight glowing through the gaps behind them; the group is paused in a compact huddle along one side of the corridor, some leaning lightly against columns and each other.",
+      "locationSource": 10,
+      "locationSetting": "Architectural outdoor or semi-outdoor colonnade with tall concrete columns, narrow vertical openings of daylight, and a shadowy corridor-like space.",
+      "locationEvidence": "Tall raw concrete columns create a shadowy colonnade with narrow vertical slits of pale daylight between them, establishing a very specific corridor-like architectural setting.",
+      "locationReference": 7,
+      "locationInput": "Massive-Attack.jpg",
+      "cast": [
+        {
+          "source": 1,
+          "person": "light-skinned man with very short spiky hair, long face, light zip jacket over a printed shirt, and light cargo-style trousers",
+          "placement": "Front-left of the cluster, standing closest to the camera edge with one shoulder slightly forward and body angled inward; his serious face stays upright and his existing gaze lands directly at the camera."
+        },
+        {
+          "source": 2,
+          "person": "light-skinned man with voluminous wavy blond-brown hair, faint mustache and beard, wearing a fitted black T-shirt",
+          "placement": "Low near the center foreground, seated or crouched on the corridor ledge with clasped hands near his knees and torso leaning forward; his existing gaze lands straight to camera."
+        },
+        {
+          "source": 7,
+          "person": "tall pale-skinned man with shoulder-length wavy dark hair, white shirt and tie under a green overshirt and matching trousers",
+          "placement": "Rear-center, slightly taller than the others and lightly braced against a column, one arm resting along the stone beside the group; his existing gaze lands toward the camera."
+        },
+        {
+          "source": 8,
+          "person": "dark-skinned man with a short beard, woven hat, reflective blue sunglasses, patterned shirt, brown jacket, and pastel argyle scarf",
+          "placement": "Mid-left, seated higher on a low concrete base beside a column so his shoulders overlap the crouched center figure; his head stays tipped as photographed and his existing gaze lands toward the camera through the sunglasses."
+        },
+        {
+          "source": 9,
+          "person": "light-skinned older man with very short or shaved hair, weathered skin, one blue eye visible, and one hand covering the right side of his face with large round rings",
+          "placement": "Front-right, leaning in close from the side of the group with his elbow tucked against his body, preserving the hand-to-face pose; his one visible eye keeps its direct gaze to camera."
+        },
+        {
+          "source": 10,
+          "person": "light-skinned man with short hair, trimmed stubble, and a long black leather coat over a printed shirt",
+          "placement": "Right-center, standing slightly behind the older man with his coat falling straight and shoulders squared, turned a touch inward to anchor the group; his existing gaze lands forward at the camera."
+        }
+      ],
+      "selection": [
+        1,
+        2,
+        7,
+        8,
+        9,
+        10
+      ],
+      "palette": [
+        "cool grey concrete",
+        "charcoal black",
+        "muted olive green",
+        "weathered brown",
+        "soft daylight white",
+        "small accents of pastel scarf blue and pink"
+      ],
+      "mood": "cool, intimate, unsmiling, urban, quietly charged",
+      "artistSummaries": [
+        {
+          "source": 1,
+          "filename": "The-Clash.jpg",
+          "artist": "The Clash",
+          "faceHeight": 0.15,
+          "subjectBox": [
+            0.523,
+            0.154,
+            0.758,
+            0.984
+          ],
+          "description": "Black-and-white group portrait of four light-skinned adult men posed in a rough urban alley-like area. One man at left has short dark hair and a serious expression, wearing a dark zip jacket over a T-shirt. A second man near front center has spiky light hair, an open mouth, and bends forward with hands on thighs, wearing a dark jacket, light trousers, and a studded wristband. The most prominent man stands center-right with very short spiky hair and a long face, wearing a light zip jacket over a printed shirt and light cargo-style trousers. At far right, a tall curly-haired man in a dark leather jacket stands partly cropped. Behind them are a low brick wall, peeling plaster, and piled scrap or wrecked machinery.",
+          "primarySubject": "light-skinned man at center-right with short spiky hair, serious face, light zip jacket, and light cargo trousers, standing upright facing camera",
+          "visiblePeople": [
+            "left man with short dark hair in dark jacket",
+            "front-center man with spiky light hair bending forward",
+            "center-right man with short spiky hair in light jacket",
+            "right man with curly dark hair in leather jacket"
+          ],
+          "wardrobe": "Punk-style jackets including leather and zip jackets, graphic T-shirts, light trousers, studded wristband.",
+          "photoStyle": "Black-and-white, gritty documentary-style group portrait with slightly low angle and natural-looking light.",
+          "setting": "Outdoor urban wall setting with a low brick barrier in front, peeling painted plaster on the wall, exposed rough masonry, and a heap of discarded metal or machinery behind the group.",
+          "settingStrength": "strong"
+        },
+        {
+          "source": 2,
+          "filename": "Sublime.jpg",
+          "artist": "Sublime",
+          "faceHeight": 0.17,
+          "subjectBox": [
+            0.312,
+            0.227,
+            0.679,
+            0.977
+          ],
+          "description": "Color portrait of three adult men seated against a very dark, nearly black backdrop. The central light-skinned man is closest to camera, with voluminous wavy blond-brown hair, light facial hair, and clasped hands, leaning forward in a black T-shirt. On the left sits a heavier-built light-skinned man with a beard, dark sunglasses, a white cap, black T-shirt, and camouflage shorts; tattooed arms are visible. On the right sits a heavyset light-skinned man with round dark glasses, a striped straw-like hat, sleeveless black shirt, jeans, and heavily tattooed arms, holding one hand near his temple.",
+          "primarySubject": "light-skinned man in the center leaning forward with clasped hands, wavy blond-brown hair, faint mustache and beard, and a black T-shirt",
+          "visiblePeople": [
+            "left seated bearded man in cap and sunglasses",
+            "center leaning man with wavy hair and light facial hair",
+            "right seated heavyset man in round glasses and striped hat"
+          ],
+          "wardrobe": "Black T-shirts dominate; left man wears camouflage shorts and cap, right man wears sleeveless shirt and hat, center man wears fitted black T-shirt.",
+          "photoStyle": "Direct-flash color portrait with dark background and high contrast, informal seated band pose.",
+          "setting": "Very dark interior or studio-like space with black draped or shadowed background and little visible environmental detail.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 3,
+          "filename": "Metallica.jpg",
+          "artist": "Metallica",
+          "faceHeight": 0.14,
+          "subjectBox": [
+            0.463,
+            0.239,
+            0.761,
+            0.99
+          ],
+          "description": "Color group portrait of four adult men standing as dark silhouettes inside a tunnel or rounded passage. Strong yellow backlight fills the tunnel and multiple bright linear beams radiate from behind them. The tallest man stands slightly right of center, chin raised, in dark clothing. To his left is a man in a backward cap; at far left a man with long wavy hair; at far right a man with straight shoulder-length hair. Facial details are mostly obscured by the intense backlight.",
+          "primarySubject": "tall man slightly right of center in dark clothing, standing with legs apart and face mostly in shadow against the yellow backlight",
+          "visiblePeople": [
+            "far-left long-haired man in dark clothes",
+            "left-center man wearing a backward cap",
+            "tall center-right man standing broad-legged",
+            "far-right shoulder-length-haired man in dark shirt"
+          ],
+          "wardrobe": "All-black or very dark clothing, mostly T-shirts and jackets, with a backward cap on one man.",
+          "photoStyle": "Highly stylized backlit color image with silhouetted figures and dramatic yellow laser-like beams.",
+          "setting": "Rounded tunnel or passageway interior with textured curved walls and strong radiating light beams extending from a bright point behind the band.",
+          "settingStrength": "strong"
+        },
+        {
+          "source": 4,
+          "filename": "Oasis.jpg",
+          "artist": "Oasis",
+          "faceHeight": 0.15,
+          "subjectBox": [
+            0.345,
+            0.129,
+            0.681,
+            0.996
+          ],
+          "description": "Cool blue-green tinted studio portrait of five light-skinned adult men standing indoors. The central man is most forward, with dark medium-length hair, heavy-lidded expression, and a dark V-neck sweater over a patterned collared shirt; a guitar stands upright in front of him. To his left and right are four men with short dark hair wearing layered shirts, jackets, or sweaters. The group faces camera with reserved expressions.",
+          "primarySubject": "light-skinned central man with dark medium-length hair, dark sweater over a patterned collared shirt, standing in front of an upright guitar",
+          "visiblePeople": [
+            "far-left man with short bowl-like haircut in leather jacket",
+            "left-center man with shaggy dark hair in blue outfit",
+            "center man in dark sweater and collared shirt",
+            "right-center man with short curly hair in jacket",
+            "far-right man with dark sweater and rounded haircut"
+          ],
+          "wardrobe": "Casual layered clothing in dark blues and blacks: leather jacket, zip jacket, sweaters, collared shirts, jeans.",
+          "photoStyle": "Tinted studio-style color portrait with cool blue-green lighting and soft shadows.",
+          "setting": "Plain interior room with smooth wall panels and a radiator partly visible at right; sparse floor-level studio or room setting.",
+          "settingStrength": "moderate"
+        },
+        {
+          "source": 5,
+          "filename": "Radiohead.jpg",
+          "artist": "Radiohead",
+          "faceHeight": 0.17,
+          "subjectBox": [
+            0.252,
+            0.116,
+            0.739,
+            0.997
+          ],
+          "description": "Softly lit color portrait of five light-skinned adult men against a warm yellow-green plain backdrop. The central foreground man has short spiky hair and stands in profile with arms folded, wearing a black long-sleeve top. Behind him are a tall man with short dark hair, a bald man in a dark jacket, another man with short dark hair in a dark shirt, and a man at far right with straight dark hair and a pale T-shirt. Expressions are neutral and subdued.",
+          "primarySubject": "foreground light-skinned man with short spiky hair, side-facing profile, and black long-sleeve top with folded arms",
+          "visiblePeople": [
+            "far-left tall man with short dark hair",
+            "left-center bald man in dark jacket",
+            "center foreground man with spiky hair in black top",
+            "right-center man with short dark hair in dark shirt",
+            "far-right man with straight dark hair in pale T-shirt"
+          ],
+          "wardrobe": "Mostly dark minimalist clothing including black shirts and dark jacket, with one pale T-shirt.",
+          "photoStyle": "Soft-focus color portrait with muted tones and shallow depth of field.",
+          "setting": "Simple studio or interior backdrop with smooth yellow-green wall and little visible furniture or architectural detail.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 6,
+          "filename": "The-Mighty-Mighty-Bosstones.jpg",
+          "artist": "The Mighty Mighty Bosstones",
+          "faceHeight": 0.13,
+          "subjectBox": [
+            0.348,
+            0.41,
+            0.63,
+            0.998
+          ],
+          "description": "Graphic studio group image of eight adult men arranged closely against a solid red background. Most are light-skinned, with one dark-skinned man near the back right. They wear matching black suits, white shirts, and black ties; two wear black hats. The most prominent man kneels front center wearing dark sunglasses and holding his hands together in front of his chest. Another man kneels front right smiling and gesturing with both hands. The others stand behind, smiling or leaning in.",
+          "primarySubject": "front-center kneeling man in a black suit and tie with short dark hair and dark sunglasses, hands pressed together",
+          "visiblePeople": [
+            "far-left leaning man with receding hairline",
+            "left man in black hat",
+            "rear-center smiling man",
+            "center standing man behind front figure",
+            "back-right dark-skinned man in black hat and glasses",
+            "upper-right man with glasses",
+            "far-right man with close-cropped hair",
+            "front-right kneeling smiling man"
+          ],
+          "wardrobe": "Matching black suits, white dress shirts, black ties; two black hats; one man wears sunglasses.",
+          "photoStyle": "High-contrast studio composite-style color portrait with flat solid background.",
+          "setting": "Plain solid red studio backdrop with no visible furniture or environmental detail.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 7,
+          "filename": "Unpeople.jpg",
+          "artist": "Unpeople",
+          "faceHeight": 0.13,
+          "subjectBox": [
+            0.339,
+            0.133,
+            0.698,
+            0.682
+          ],
+          "description": "Bright color studio portrait of four adults against a smooth blue gradient backdrop. At left, a pale-skinned woman with long black hair sits on a white stool with arms crossed, wearing a red-orange striped polo shirt, camouflage skirt, fishnet tights, black boots, and visible arm and leg tattoos. Standing behind center is a pale-skinned tall man with shoulder-length wavy dark hair, white shirt and tie, and green overshirt and trousers, resting one hand on the seated woman and one on the hat of the crouching man at right. In front center sits a shirtless long-haired man wearing plaid trousers and a pendant necklace. At right crouches a man with facial hair in a green jumpsuit and orange bucket hat.",
+          "primarySubject": "tall pale-skinned standing man at center with shoulder-length wavy dark hair, white shirt and tie under a green overshirt, one hand resting on each side figure",
+          "visiblePeople": [
+            "seated woman with long black hair and tattoos",
+            "standing central man with wavy shoulder-length hair in green outfit",
+            "shirtless seated long-haired man with pendant",
+            "crouching man in green jumpsuit and orange bucket hat"
+          ],
+          "wardrobe": "Striped polo, camouflage skirt, fishnet tights, black boots; green overshirt with tie and trousers; shirtless with plaid trousers and pendant; green jumpsuit with bucket hat.",
+          "photoStyle": "Color studio portrait with clean gradient backdrop and fashion-editorial styling.",
+          "setting": "Studio setup with smooth blue gradient background and a simple white stool; no other environmental features visible.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 8,
+          "filename": "McAlmont-Butler.jpg",
+          "artist": "McAlmont Butler",
+          "faceHeight": 0.2,
+          "subjectBox": [
+            0.036,
+            0.201,
+            0.512,
+            0.89
+          ],
+          "description": "Outdoor color portrait of two adult men seated side by side on stone steps before a building entrance. At left, a dark-skinned man with a short beard wears a woven hat, reflective blue sunglasses, patterned shirt, brown jacket, and pastel argyle scarf. At right, a light-skinned man with side-swept brown hair wears a dark coat over layered tops and looks off to the side. Behind them are broad stone steps, white side walls, and a dark doorway.",
+          "primarySubject": "dark-skinned man on the left wearing a woven hat, reflective blue sunglasses, beard, brown jacket, patterned shirt, and pastel argyle scarf",
+          "visiblePeople": [
+            "left man with beard, hat, and blue sunglasses",
+            "right man with side-swept brown hair in dark coat"
+          ],
+          "wardrobe": "Left: hat, sunglasses, scarf, patterned shirt, brown jacket. Right: dark coat over layered knit or shirt.",
+          "photoStyle": "Natural-light outdoor portrait with shallow depth of field.",
+          "setting": "Stone stairway leading to a dark doorway, flanked by white building walls or rail structures, suggesting the front steps of a formal building.",
+          "settingStrength": "strong"
+        },
+        {
+          "source": 9,
+          "filename": "The-Orb.jpg",
+          "artist": "The Orb",
+          "faceHeight": 0.72,
+          "subjectBox": [
+            0.006,
+            0,
+            0.999,
+            1
+          ],
+          "description": "Extreme close-up color portrait of a single light-skinned older man against a dark background. He has very short or shaved hair, blue eye visible, and weathered skin. One hand covers the right side of his face and forehead; large round rings are on two fingers, and a small tattoo is visible on his forearm. He looks directly at the camera with a slight closed-mouth expression.",
+          "primarySubject": "single light-skinned older man in extreme close-up, one blue eye visible, hand covering half his face, wearing large rings",
+          "visiblePeople": [
+            "older man with shaved or very short hair covering half his face with his hand"
+          ],
+          "wardrobe": "Only a pale crew-neck shirt edge is visible; large metal rings and forearm tattoo stand out.",
+          "photoStyle": "Extreme close-up flash portrait with dark background and strong skin detail.",
+          "setting": "Indeterminate dark background with no readable environmental details.",
+          "settingStrength": "weak"
+        },
+        {
+          "source": 10,
+          "filename": "Massive-Attack.jpg",
+          "artist": "Massive Attack",
+          "faceHeight": 0.17,
+          "subjectBox": [
+            0.456,
+            0.147,
+            0.826,
+            0.999
+          ],
+          "description": "Moody color portrait of two adult men standing among tall concrete columns. At right, a light-skinned man with short hair and trimmed stubble stands closer to camera in a long black leather coat over a printed shirt, hands down, facing forward. At left, a dark-skinned man with short spiky dread-like hair stands slightly behind in a dark jacket over a camouflage shirt, one hand in pocket. Vertical gaps between the columns show pale daylight in the distance.",
+          "primarySubject": "light-skinned man at right foreground with short hair, trimmed stubble, and a long black leather coat over a printed shirt",
+          "visiblePeople": [
+            "left man with short spiky dread-like hair in dark jacket and camouflage shirt",
+            "right foreground man with short hair and stubble in long leather coat"
+          ],
+          "wardrobe": "Dark outerwear: long black leather coat on right, dark jacket on left, layered shirts including camouflage print.",
+          "photoStyle": "Muted cinematic color portrait with shallow depth, subdued contrast, and environmental framing.",
+          "setting": "Architectural outdoor or semi-outdoor colonnade with tall concrete columns, narrow vertical openings of daylight, and a shadowy corridor-like space.",
+          "settingStrength": "strong"
+        }
+      ],
+      "hint": null,
+      "composeBackend": "gpt-image-2-6",
+      "model": "openai/gpt-image-2.6/sunburst/edit",
+      "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 7, the last one, is the sole authority for the physical setting: Architectural outdoor or semi-outdoor colonnade with tall concrete columns, narrow vertical openings of daylight, and a shadowy corridor-like space.. It is a setting reference only: the one cast member from that photo has their own cast reference above, and nobody else visible in it appears. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. Take the place from it, not its camera distance: if it is a wide, distant, or aerial view, move the camera in within that same place. Medium-close group portrait inside a shadowy concrete colonnade with tall raw columns and narrow vertical slits of pale daylight between them, camera brought in close within the same corridor so the architecture still reads clearly behind the group. Six adults gathered in one tight overlapping cluster during a quiet pause: at front left, a light-skinned man with very short spiky hair and a light zip jacket stands angled inward looking straight at camera; low in the center foreground, a light-skinned man with voluminous wavy blond-brown hair in a black T-shirt crouches or sits forward with clasped hands, looking to camera; behind them at center, a tall pale-skinned man with shoulder-length wavy dark hair in a green overshirt, white shirt and tie stands lightly against a column, looking toward camera; at mid-left, a dark-skinned bearded man in a woven hat, reflective blue sunglasses, brown jacket, patterned shirt, and pastel argyle scarf sits slightly raised on a concrete base, head tipped as in reference; at front right, an older light-skinned man leans in with one hand covering half his face, large rings visible, one blue eye fixed on the camera; at right-center, a light-skinned man with trimmed stubble in a long black leather coat stands just behind him, squared to camera. Natural, still body language only, no lineup, with shared contact through shoulders, proximity, and column edges. Shot at eye level with a 35mm environmental portrait feel, medium-close framing, slight depth but all faces large and readable, vertical columns structuring the composition. Lit only by the cool diffused daylight already present in the colonnade, falling evenly across the whole group and softly wrapping from the bright gaps between columns. Muted cinematic color, cool grey and charcoal tones with subdued olive, brown, and pastel scarf accents; restrained, moody, intimate atmosphere. Attached cast plan: Attached reference image 1: portray only light-skinned man with very short spiky hair, long face, light zip jacket over a printed shirt, and light cargo-style trousers; Front-left of the cluster, standing closest to the camera edge with one shoulder slightly forward and body angled inward; his serious face stays upright and his existing gaze lands directly at the camera.. Attached reference image 2: portray only light-skinned man with voluminous wavy blond-brown hair, faint mustache and beard, wearing a fitted black T-shirt; Low near the center foreground, seated or crouched on the corridor ledge with clasped hands near his knees and torso leaning forward; his existing gaze lands straight to camera.. Attached reference image 3: portray only tall pale-skinned man with shoulder-length wavy dark hair, white shirt and tie under a green overshirt and matching trousers; Rear-center, slightly taller than the others and lightly braced against a column, one arm resting along the stone beside the group; his existing gaze lands toward the camera.. Attached reference image 4: portray only dark-skinned man with a short beard, woven hat, reflective blue sunglasses, patterned shirt, brown jacket, and pastel argyle scarf; Mid-left, seated higher on a low concrete base beside a column so his shoulders overlap the crouched center figure; his head stays tipped as photographed and his existing gaze lands toward the camera through the sunglasses.. Attached reference image 5: portray only light-skinned older man with very short or shaved hair, weathered skin, one blue eye visible, and one hand covering the right side of his face with large round rings; Front-right, leaning in close from the side of the group with his elbow tucked against his body, preserving the hand-to-face pose; his one visible eye keeps its direct gaze to camera.. Attached reference image 6: portray only light-skinned man with short hair, trimmed stubble, and a long black leather coat over a printed shirt; Right-center, standing slightly behind the older man with his coat falling straight and shoulders squared, turned a touch inward to anchor the group; his existing gaze lands forward at the camera.. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached cast reference image and no one else; when a cast reference shows more than one person, use only the one specifically described cast member. The setting reference contributes the place only and never a person. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. FACE LOCK: copy each person's face from their reference as photographed - the same expression, mouth, eyes, eyewear, and head angle, turned by no more than a few degrees. Never invent a smile, grin, laugh, open mouth, squint, raised brow, or new head tilt that the reference does not show. A neutral or serious reference face stays neutral or serious. A cast reference fixes the face, not the light or the grade. Never carry over a reference's lighting direction, coloured or stage light, colour cast, black-and-white treatment, contrast, grain, sharpness, background fragments, or cut-out edges. Render the photograph in full natural colour, always - including when the setting reference or any cast reference is black-and-white, monochrome, or tinted. Take the place and the faces from such references and supply true-to-life colour for both. This is one photograph taken in one exposure through one lens. Light every person with the single light of the location: the same direction, softness, colour temperature, and shadow density on every face, with the location's bounce and reflections on skin, hair, and clothing. Give everyone the same colour grade, grain, perspective, and depth of field, sized by their distance from the camera. Unify the group through bodies and placement, not faces: stand or sit them shoulder to shoulder, overlapping and partly occluding one another, leaning on each other or on the same surface, with contact shadows and real weight on the ground. Turn and place each body so that the gaze their reference already has lands on the camera or on another person. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 6 attached cast reference images (images 1 to 6) followed by one setting reference, and the final image must contain exactly 6 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached cast reference.",
+      "reuseWeeks": 6,
+      "reuseBlocked": [
+        {
+          "artist": "Eels",
+          "lastUsed": "2026-10-19"
+        }
+      ],
+      "reuseRelaxed": [],
+      "inputs": [
+        "The-Clash.jpg",
+        "Sublime.jpg",
+        "Unpeople.jpg",
+        "McAlmont-Butler.jpg",
+        "The-Orb.jpg",
+        "Massive-Attack.jpg"
+      ],
+      "closeUps": {
+        "The-Clash.jpg": [
+          0.488,
+          0.03,
+          0.793,
+          1
+        ],
+        "Sublime.jpg": [
+          0.257,
+          0.115,
+          0.734,
+          1
+        ],
+        "Unpeople.jpg": [
+          0.285,
+          0.051,
+          0.752,
+          0.764
+        ],
+        "McAlmont-Butler.jpg": [
+          0,
+          0.098,
+          0.583,
+          0.993
+        ],
+        "Massive-Attack.jpg": [
+          0.401,
+          0.019,
+          0.881,
+          1
+        ]
+      }
     },
     {
       "version": 2,
