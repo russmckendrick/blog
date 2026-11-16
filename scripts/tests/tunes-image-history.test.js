@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { promises as fs } from 'fs'
 import os from 'os'
 import path from 'path'
-import { appendHistory, recentCompositions, recentConcepts, recentLighting, recentMedia, recentYearTreatments, loadHistory } from '../lib/tunes-image-history.js'
+import { appendHistory, recentCompositions, recentConcepts, recentLighting, recentMedia, recentSettings, recentYearTreatments, loadHistory } from '../lib/tunes-image-history.js'
 
 async function writeHistory(entries) {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'tunes-history-'))
@@ -171,4 +171,20 @@ test('feeds recent compositions back newest first, skipping entries without it',
     'wide elevated frontal tableau'
   ])
   assert.deepEqual(await recentCompositions('cover', 0, file), [])
+})
+
+test('a regenerated week only looks back from its own date', async () => {
+  // Redoing 26 Oct after 16 Nov had been made: without the scope it read 16 Nov as "the
+  // previous cover" and its own old entry as recent.
+  const file = await writeHistory([
+    { type: 'cover', date: '2026-10-19', concept: 'Gym', lighting: 'skylights', setting: 'interior' },
+    { type: 'cover', date: '2026-10-26', concept: 'Old take', lighting: 'worklights', setting: 'interior' },
+    { type: 'cover', date: '2026-11-16', concept: 'Bar', lighting: 'bar lamps', setting: 'night' }
+  ])
+  const scope = { before: '2026-10-26' }
+  assert.deepEqual(await recentConcepts('cover', 8, file, scope), ['Gym'])
+  assert.deepEqual(await recentLighting('cover', 8, file, scope), ['skylights'])
+  assert.deepEqual(await recentSettings('cover', 8, file, scope), [{ setting: 'interior', lighting: 'skylights' }])
+  assert.deepEqual(await recentConcepts('cover', 8, file), ['Bar', 'Old take', 'Gym'], 'no scope keeps the whole window')
+  assert.deepEqual(await recentConcepts('cover', 8, file, { before: '2026-11-23' }), ['Bar', 'Old take', 'Gym'], 'a new week sees everything')
 })

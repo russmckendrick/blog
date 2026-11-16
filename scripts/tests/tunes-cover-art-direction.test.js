@@ -11,6 +11,9 @@ import {
   buildSettingBlock,
   buildYearBlock,
   cameraHeight,
+  castCropBox,
+  expectedPeople,
+  hasHiddenPeople,
   closeUpBox,
   closeUpBoxes,
   CLOSE_UP_BELOW,
@@ -590,8 +593,8 @@ test('a small cast gets one close-up per face, left to right; otherwise the grou
   assert.equal(boxes.length, 2)
   assert.ok(boxes[0][0] < boxes[1][0], 'sorted left to right')
   assert.ok(boxes[1][0] < 0.6 && boxes[1][2] > 0.7, 'padded round the face')
-  assert.equal(closeUpBoxes({ ...summary, faceBoxes: [summary.faceBoxes[0]] }).length, 1, 'a missing face falls back to the group')
-  assert.deepEqual(closeUpBoxes({ ...summary, faceBoxes: [summary.faceBoxes[0]] })[0], closeUpBox(summary))
+  assert.equal(closeUpBoxes({ ...summary, faceBoxes: [summary.faceBoxes[0]] }).length, 1, 'only clear faces get a close-up')
+  assert.deepEqual(closeUpBoxes({ ...summary, faceBoxes: [] })[0], closeUpBox(summary), 'no face boxes falls back to the group')
   assert.deepEqual(closeUpBoxes({ ...summary, faceHeight: 0.4 }), [])
   const map = buildReferenceMap([{ source: 2, people: 'two men' }], [2], [{ source: 2, reference: 9 }, { source: 2, reference: 10 }])
   assert.match(map, /reference images 9, 10 are enlarged close-ups of those same people, one face each from left to right/)
@@ -660,4 +663,20 @@ test('nobody appears except the cast, and hidden sleeve figures are not complete
   assert.equal(findExtraPeople('A small crowd gathers at the back of the room.').length, 1)
   assert.deepEqual(findExtraPeople('Controlled studio photography, no collage, no extra people.'), [])
   assert.deepEqual(findExtraPeople('The singer from reference image 2 leans on an amp beside a drum kit.'), [])
+})
+
+test('a cast sleeve with a hidden person is cropped to its clear faces and counted by them', () => {
+  // 26 Oct 2026: a man in front, a drummer half hidden behind his kit at the left.
+  const sleeve = { source: 1, people: 'two people, one man in front and one partially hidden drummer', peopleCount: 2, faceHeight: 0.2, faceBoxes: [[0.45, 0.1, 0.6, 0.3]] }
+  assert.equal(hasHiddenPeople(sleeve), true)
+  const box = castCropBox(sleeve)
+  assert.ok(box[0] > 0.2 && box[0] < 0.45, 'cuts off the far left where the drummer sits')
+  assert.ok(box[2] > 0.6 && box[3] === 1, 'keeps the man and everything below his face')
+  assert.equal(castCropBox({ ...sleeve, peopleCount: 1 }), null, 'nobody hidden, nothing cropped')
+  assert.equal(expectedPeople([1], [sleeve]), 1)
+  assert.equal(expectedPeople([], [sleeve]), 0)
+  assert.equal(expectedPeople(null, [sleeve]), null)
+  assert.equal(expectedPeople([1], [{ source: 1, people: 'a man' }]), null, 'unknown head count is not audited')
+  const map = buildReferenceMap([sleeve], [1], [{ source: 1, reference: 8 }])
+  assert.match(map, /reference image 1 is cropped to the one person on that sleeve whose face is clearly visible - portray only that person and nobody else from it, and reference image 8 is an enlarged close-up/)
 })

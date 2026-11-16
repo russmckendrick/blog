@@ -520,14 +520,61 @@ function padBox([x0, y0, x1, y1], padding) {
 export function closeUpBoxes(summary) {
   if (!summary || summary.faceHeight == null || summary.faceHeight >= CLOSE_UP_BELOW) return []
   const faces = Array.isArray(summary.faceBoxes) ? summary.faceBoxes : []
-  const expected = summary.peopleCount || faces.length
-  if (faces.length >= 1 && faces.length <= MAX_FACE_CLOSE_UPS && faces.length === expected) {
+  if (faces.length >= 1 && faces.length <= MAX_FACE_CLOSE_UPS) {
     return [...faces]
       .sort((a, b) => a[0] - b[0])
       .map(box => padBox(box, FACE_CLOSE_UP_PADDING))
   }
   const group = closeUpBox(summary)
   return group ? [group] : []
+}
+
+// A sleeve can show more people than it shows faces: someone half hidden behind a drum kit,
+// turned away, or blurred in the background. Telling the image model to leave them out does
+// not work - the 26 Oct 2026 cover drew the hidden drummer twice, the second time under a
+// constraint written for exactly him - because the whole sleeve is attached and the model
+// copies what it sees. So the reference itself is cropped to the people with clear faces, and
+// the finished image is counted (see countPeopleInImage).
+export function clearFaceCount(summary) {
+  return Array.isArray(summary?.faceBoxes) ? summary.faceBoxes.length : 0
+}
+
+export function hasHiddenPeople(summary) {
+  const clear = clearFaceCount(summary)
+  return clear >= 1 && (summary?.peopleCount || 0) > clear
+}
+
+// The crop (fractions of the reference) that keeps the clear-faced people of a sleeve and as
+// little else as possible: about one face-width either side of them, a little headroom, and
+// everything below so their clothes and pose survive. Null when nobody is hidden.
+export function castCropBox(summary) {
+  if (!hasHiddenPeople(summary)) return null
+  const faces = summary.faceBoxes
+  const x0 = Math.min(...faces.map(box => box[0]))
+  const y0 = Math.min(...faces.map(box => box[1]))
+  const x1 = Math.max(...faces.map(box => box[2]))
+  const faceWidth = Math.max(...faces.map(box => box[2] - box[0]))
+  const faceHeight = Math.max(...faces.map(box => box[3] - box[1]))
+  return [
+    Math.max(0, x0 - faceWidth * 1.1),
+    Math.max(0, y0 - faceHeight * 0.6),
+    Math.min(1, x1 + faceWidth * 1.1),
+    1
+  ]
+}
+
+// How many people the finished cover should show: the clear faces of the cast sleeves (or
+// their head count when no faces were boxed), 0 for an empty cast, null when it is unknown.
+export function expectedPeople(cast, coverSummaries = []) {
+  if (!Array.isArray(cast)) return null
+  let total = 0
+  for (const source of cast) {
+    const summary = coverSummaries.find(item => item.source === source)
+    const count = clearFaceCount(summary) || summary?.peopleCount || 0
+    if (!count) return null
+    total += count
+  }
+  return total
 }
 
 // Which sleeves are sent to the art director and the image model. Until 16 Nov 2026 this was
@@ -767,14 +814,23 @@ export function buildReferenceMap(coverSummaries = [], cast = null, closeUps = [
       closeUpsBySource.get(item.source).push(item.reference)
     }
     const describe = summary => {
+      const shown = describePeople(summary)
+      return shown.replace('@@', mapCloseUps(summary))
+    }
+    const describePeople = summary => {
+      if (!hasHiddenPeople(summary)) return `reference image ${summary.source} shows ${summary.people}@@`
+      const clear = clearFaceCount(summary)
+      return `reference image ${summary.source} is cropped to the ${clear === 1 ? 'one person' : `${clear} people`} on that sleeve whose face is clearly visible - portray only ${clear === 1 ? 'that person' : 'those people'} and nobody else from it@@`
+    }
+    const mapCloseUps = summary => {
       const references = closeUpsBySource.get(summary.source) || []
       if (references.length === 1) {
-        return `reference image ${summary.source} shows ${summary.people}, and reference image ${references[0]} is an enlarged close-up of those same people - take their faces from reference image ${references[0]}`
+        return `, and reference image ${references[0]} is an enlarged close-up of those same people - take their faces from reference image ${references[0]}`
       }
       if (references.length > 1) {
-        return `reference image ${summary.source} shows ${summary.people}, and reference images ${references.join(', ')} are enlarged close-ups of those same people, one face each from left to right - take each face from its own close-up`
+        return `, and reference images ${references.join(', ')} are enlarged close-ups of those same people, one face each from left to right - take each face from its own close-up`
       }
-      return `reference image ${summary.source} shows ${summary.people}`
+      return ''
     }
     parts.push(`Reference map for people (the album images are attached in this numbered order): ${shown.map(describe).join('; ')}. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description.`)
   }
@@ -965,7 +1021,7 @@ There must be one item for every supplied source. "signatureMotif" is the single
 "strength" rates, from 1 to 5, how much there is to photograph once the lettering is ignored: 5 is a striking, instantly recognisable image with a clear subject - a strong portrait, a staged scene, a vivid object; 3 is a clear but ordinary picture; 1 is almost nothing but lettering, a logo, a flat colour field, or a near-black square. Rate what is visibly there, not how famous the record is.
 "place" describes the real location the image is set in, with its defining features - the kind of room or landscape, its architecture, furniture, surfaces, and light - in one sentence, described as if empty of people. It is exactly "none" when the image shows no real place: a plain or studio backdrop, a graphic or illustration, a collage, or a crop too tight to show where it is.
 "peopleCount" is the number of real people shown (0 when "people" is "none"). "minors" is true when any real person shown appears to be a child or young teenager, otherwise false.
-When "people" is not "none": "faceBoxes" lists one [x0, y0, x1, y1] box per real face, tightly enclosing that face from chin to top of hair, in the same fractions, left to right, for up to 8 faces; a person seen only from behind has no face box. "peopleBox" is [x0, y0, x1, y1] as fractions of the image width and height (0 to 1, origin top-left) tightly enclosing the heads and shoulders of every real person shown, and "faceHeight" is the height of the largest real face (chin to top of head) as a fraction of the image height - for example 0.06 for small heads in a wide group shot, 0.45 for a close portrait. Measure the image as supplied. When "people" is "none", set "peopleBox" to null, "faceBoxes" to [], and "faceHeight" to 0.
+When "people" is not "none": "faceBoxes" lists one [x0, y0, x1, y1] box per clearly visible real face, tightly enclosing that face from chin to top of hair, in the same fractions, left to right, for up to 8 faces. Only box a face that is fully visible and sharp enough to recognise: a person who is partly hidden behind something, cropped by the edge, turned away, seen from behind, blurred, or a small background figure still counts in "peopleCount" but gets no face box. "peopleBox" is [x0, y0, x1, y1] as fractions of the image width and height (0 to 1, origin top-left) tightly enclosing the heads and shoulders of every real person shown, and "faceHeight" is the height of the largest real face (chin to top of head) as a fraction of the image height - for example 0.06 for small heads in a wide group shot, 0.45 for a close portrait. Measure the image as supplied. When "people" is "none", set "peopleBox" to null, "faceBoxes" to [], and "faceHeight" to 0.
 "moderationRisk" is exactly "none" unless the image clearly contains something an image-generation safety filter would refuse outright when the sleeve is supplied as a reference. Only these count: exposed genitals, buttocks, or female breasts (photographed or illustrated); lingerie, swimwear, or revealing clothing worn in a sexualised way, or suggestive, sexualised posing; sexual content; gore or graphic injury; a violent act shown in progress against a person, or a weapon pointed at someone; drugs being injected, snorted, or prepared; hate symbols; or a child shown nude, sexualised, or harmed. When it applies, give a short factual reason such as "women in lingerie-style outfits in suggestive poses". Most sleeves are "none". In particular these are "none": a shirtless man or bare-chested performer, bare shoulders, arms, legs, or midriffs in ordinary clothing, smoking or a cigarette, drinking, children or teenagers shown ordinarily, band portraits, stage shots, tattoos, dark or gothic imagery, skulls, and abstract or illustrated figures without explicit nudity. When unsure, answer "none" - an unnecessary flag throws the sleeve away.`
 
   try {
@@ -1204,4 +1260,36 @@ export function buildGenerationPrompt(artDirection, coverSummaries = [], { year,
     buildReferenceMap(coverSummaries, cast, closeUps),
     `Hard constraints (override any conflicting source material): ${buildHardConstraints({ year: digits, cast: cast ?? undefined }).join(' ')}`
   ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
+}
+
+// Counts the people in a finished cover. Instructions alone do not keep extras out, so the
+// render is checked: the caller compares this with expectedPeople and retries when it is over.
+// Returns null when the count is unavailable, which callers treat as "not checked".
+export async function countPeopleInImage(imageUrl, { debug = false } = {}) {
+  if (!openai || !imageUrl) return null
+  try {
+    const response = await openai.responses.create({
+      model: process.env.OPENAI_TUNES_COVER_SUMMARY_MODEL || process.env.OPENAI_TUNES_COVER_MODEL || process.env.OPENAI_MODEL || DEFAULT_PROMPT_MODEL,
+      instructions: 'You count people in photographs. Count every real human visible anywhere in the image, including anyone partly hidden behind an object, cropped by the frame edge, out of focus, in the background, or seen from behind. Do not count statues, mannequins, dolls, toys, masks, drawings, paintings, or pictures of people. Return JSON exactly as {"people":0,"where":"string"}, where "where" briefly says where each person is.',
+      input: [{
+        type: 'message',
+        role: 'user',
+        content: [
+          { type: 'input_text', text: 'Return JSON only. How many people are in this image?' },
+          { type: 'input_image', image_url: imageUrl, detail: 'high' }
+        ]
+      }],
+      text: { format: { type: 'json_object' } },
+      max_output_tokens: 300,
+      temperature: 0
+    })
+    const parsed = parseJSONResponse(response.output_text || '')
+    const people = Math.round(Number(parsed?.people))
+    if (!Number.isFinite(people) || people < 0) return null
+    if (debug) console.log(`  People in render: ${people} (${parsed?.where || 'no detail'})`)
+    return { people, where: String(parsed?.where || '').trim() }
+  } catch (error) {
+    console.warn(`  Could not count the people in the render: ${error.message}`)
+    return null
+  }
 }

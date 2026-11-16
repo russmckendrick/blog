@@ -257,7 +257,8 @@ async function createFALArtistPortrait(imagePaths, outputPath, options = {}) {
 
   const { featureCount, minCount, candidateCount } = await resolveCastCounts(options)
   const historySize = await resolveHistorySize()
-  const avoidConcepts = await recentConcepts('artist', historySize)
+  // Only weeks before this one, so a regenerated portrait does not read later weeks as recent.
+  const avoidConcepts = await recentConcepts('artist', historySize, undefined, { before: options.dateLabel || '' })
   if (debug) {
     if (options.hint) console.log(`  Author's steer: ${options.hint}`)
     if (avoidConcepts.length > 0) console.log(`  Avoiding recent concepts: ${avoidConcepts.join(' | ')}`)

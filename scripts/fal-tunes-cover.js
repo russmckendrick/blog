@@ -12,8 +12,11 @@ import { appendHistory, recentCompositions, recentConcepts, recentLighting, rece
 import { extractTunesDate } from './lib/tunes-post-context.js'
 import {
   buildGenerationPrompt as buildFreeformGenerationPrompt,
+  castCropBox,
   closeUpBoxes,
   contentScore,
+  countPeopleInImage,
+  expectedPeople,
   designCoverArtDirection,
   dropModerationRisks,
   isPhotographicMedium,
@@ -575,13 +578,17 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   fal.config({ credentials: falKey })
 
   const historySize = await resolveHistorySize()
-  const avoidConcepts = await recentConcepts(historyType, historySize)
+  // A weekly cover only looks back from its own week, so regenerating an old week does not
+  // read later ones (or itself) as "recent". Year in Music covers keep the whole window: a
+  // batch of years is run in any order and has to vary against itself.
+  const historyScope = { before: year ? '' : (options.dateLabel || '') }
+  const avoidConcepts = await recentConcepts(historyType, historySize, undefined, historyScope)
   // Photographic treatments are recorded but never refused - photography is the default.
-  const avoidMedia = (await recentMedia(historyType, historySize)).filter(medium => !isPhotographicMedium(medium))
-  const lightingHistory = await recentLighting(historyType, historySize)
-  const compositionHistory = await recentCompositions(historyType, historySize)
-  const avoidYearTreatments = year ? await recentYearTreatments(historyType, historySize) : []
-  const settingHistory = (await recentSettings(historyType, historySize))
+  const avoidMedia = (await recentMedia(historyType, historySize, undefined, historyScope)).filter(medium => !isPhotographicMedium(medium))
+  const lightingHistory = await recentLighting(historyType, historySize, undefined, historyScope)
+  const compositionHistory = await recentCompositions(historyType, historySize, undefined, historyScope)
+  const avoidYearTreatments = year ? await recentYearTreatments(historyType, historySize, undefined, historyScope) : []
+  const settingHistory = (await recentSettings(historyType, historySize, undefined, historyScope))
     .map(entry => settingFamily(entry.setting, entry.lighting))
     .filter(Boolean)
   const refusedSettingFamilies = refusedSettings(settingHistory)
@@ -697,9 +704,22 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
         // enlarged close-ups - one per face when the faces were located, otherwise one of the
         // group - attached after the sleeves, so the numbering of the sleeves holds.
         const closeUps = []
+        const castCrops = []
         const generationUrls = [...imageUrls]
         for (const source of artDirection.cast || []) {
           const summary = coverSummaries.find(item => item.source === source)
+          // A cast sleeve that also shows someone without a clear face is sent cropped to the
+          // people who have one, in place of the whole sleeve, so the hidden person never
+          // reaches the image model.
+          const cropBox = castCropBox(summary)
+          if (cropBox) {
+            try {
+              generationUrls[source - 1] = await uploadCloseUp(attemptPaths[source - 1], cropBox, debug)
+              castCrops.push({ source, box: cropBox.map(value => Number(value.toFixed(3))) })
+            } catch (error) {
+              console.warn(`  Could not crop the cast reference for source ${source}: ${error.message}`)
+            }
+          }
           for (const box of closeUpBoxes(summary)) {
             if (generationUrls.length >= (backend.maxInputImages ?? 1)) break
             try {
@@ -713,13 +733,39 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
         if (closeUps.length > 0) {
           console.log(`  Attached face close-ups for source(s) ${closeUps.map(item => item.source).join(', ')}`)
         }
+        if (castCrops.length > 0) {
+          console.log(`  Cropped hidden people out of the reference for source(s) ${castCrops.map(item => item.source).join(', ')}`)
+        }
         const prompt = buildFreeformGenerationPrompt(artDirection, coverSummaries, { year, closeUps })
 
         if (debug) {
           console.log(`  Prompt: ${prompt}`)
         }
 
-        const composed = await backend.generate({ imageUrls: generationUrls, prompt, seed, debug })
+        let composed = await backend.generate({ imageUrls: generationUrls, prompt, seed, debug })
+
+        // Count the people in the render. One over the cast is an invented person, so the
+        // image is made once more with the miscount spelled out; a second miss ships with a
+        // warning and is recorded in the sidecar.
+        const wantedPeople = expectedPeople(artDirection.cast, coverSummaries)
+        let peopleAudit = null
+        if (wantedPeople != null) {
+          const first = await countPeopleInImage(composed.imageUrl, { debug })
+          if (first) {
+            peopleAudit = { expected: wantedPeople, counted: first.people, retried: false }
+            if (first.people > wantedPeople) {
+              console.warn(`  Render shows ${first.people} people but the cast is ${wantedPeople} (${first.where}); generating again`)
+              const correction = `${prompt} CORRECTION: an earlier render of this prompt was rejected because it showed ${first.people} people (${first.where}). The image must show exactly ${wantedPeople} ${wantedPeople === 1 ? 'person' : 'people'}${wantedPeople === 0 ? '' : ', the reference cast'}, and nobody else anywhere in the frame - leave any other seat, stool, instrument, or doorway empty.`
+              const retry = await backend.generate({ imageUrls: generationUrls, prompt: correction, seed: seed + 1, debug })
+              const second = await countPeopleInImage(retry.imageUrl, { debug })
+              peopleAudit = { expected: wantedPeople, counted: second ? second.people : null, firstCount: first.people, retried: true }
+              if (!second || second.people <= first.people) composed = retry
+              if (second && second.people > wantedPeople) {
+                console.warn(`  Retry still shows ${second.people} people for a cast of ${wantedPeople} (${second.where}); shipping it with this warning`)
+              }
+            }
+          }
+        }
 
         const saved = await saveGeneratedImage(composed.imageUrl, outputPath, width, height, debug)
         console.log(`  Created tunes cover (${backend.label}) from ${attemptPaths.length} album covers`)
@@ -738,6 +784,8 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           composition: artDirection.composition,
           cast: artDirection.cast ?? null,
           closeUps,
+          castCrops,
+          peopleAudit,
           shootDirection: null,
           colourTreatment: null,
           concept: artDirection.concept,

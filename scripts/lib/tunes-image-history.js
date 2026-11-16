@@ -59,6 +59,17 @@ function dedupeByTypeAndDate(entries) {
   return [...undated, ...kept.values()]
 }
 
+// Every reader takes an optional `before` date and then only sees entries from earlier weeks.
+// Without it a regenerated week read the newest entries in the file, its own included: redoing
+// 19 Oct to 9 Nov 2026 after 16 Nov, all four treated the 16 Nov cover as "the previous one"
+// and refused its setting, and each run's do-not-repeat list held weeks that came after it.
+// Undated entries are kept, as everywhere else in this file.
+function isBefore(entry, before) {
+  if (!before) return true
+  const date = dateKey(entry)
+  return !date || date < before
+}
+
 export { byDateAscending, dedupeByTypeAndDate, MAX_ENTRIES_PER_TYPE }
 
 export async function loadHistory(historyPath = HISTORY_PATH) {
@@ -103,11 +114,11 @@ export async function appendHistory(entry, historyPath = HISTORY_PATH) {
 // running, so the medium is fed back on its own axis. Entries predating the `medium` field
 // are ignored: their creativeDirection sentences all described dioramas "photographed like a
 // stage set", and feeding those in put the word photographed on the refusal list.
-export async function recentMedia(type, count = 8, historyPath = HISTORY_PATH) {
+export async function recentMedia(type, count = 8, historyPath = HISTORY_PATH, { before = '' } = {}) {
   if (!Number.isFinite(count) || count <= 0) return []
   const history = await loadHistory(historyPath)
   const matching = dedupeByTypeAndDate(
-    history.entries.filter(entry => entry?.type === type && entry?.medium)
+    history.entries.filter(entry => entry?.type === type && isBefore(entry, before) && entry?.medium)
   )
   const seen = new Set()
   const media = []
@@ -124,11 +135,11 @@ export async function recentMedia(type, count = 8, historyPath = HISTORY_PATH) {
 // The newest `count` recorded lighting choices for an image type, most recent first. Fed back
 // so a low-light cover forces daylight on the next one; entries predating the field (or with
 // it null) are skipped rather than guessed from their prose.
-export async function recentLighting(type, count = 8, historyPath = HISTORY_PATH) {
+export async function recentLighting(type, count = 8, historyPath = HISTORY_PATH, { before = '' } = {}) {
   if (!Number.isFinite(count) || count <= 0) return []
   const history = await loadHistory(historyPath)
   const matching = dedupeByTypeAndDate(
-    history.entries.filter(entry => entry?.type === type && entry?.lighting)
+    history.entries.filter(entry => entry?.type === type && isBefore(entry, before) && entry?.lighting)
   )
   return byDateAscending(matching)
     .slice(-count)
@@ -140,11 +151,11 @@ export async function recentLighting(type, count = 8, historyPath = HISTORY_PATH
 // The newest `count` covers' setting and lighting, most recent first, for the setting rotation.
 // Entries written before the `setting` field existed still carry their lighting, which is
 // enough to read the family from, so they are returned rather than skipped.
-export async function recentSettings(type, count = 8, historyPath = HISTORY_PATH) {
+export async function recentSettings(type, count = 8, historyPath = HISTORY_PATH, { before = '' } = {}) {
   if (!Number.isFinite(count) || count <= 0) return []
   const history = await loadHistory(historyPath)
   const matching = dedupeByTypeAndDate(
-    history.entries.filter(entry => entry?.type === type && (entry?.setting || entry?.lighting))
+    history.entries.filter(entry => entry?.type === type && isBefore(entry, before) && (entry?.setting || entry?.lighting))
   )
   return byDateAscending(matching)
     .slice(-count)
@@ -154,11 +165,11 @@ export async function recentSettings(type, count = 8, historyPath = HISTORY_PATH
 
 // The newest `count` recorded compositions (camera position and framing) for an image type,
 // most recent first. Entries predating the field are skipped.
-export async function recentCompositions(type, count = 8, historyPath = HISTORY_PATH) {
+export async function recentCompositions(type, count = 8, historyPath = HISTORY_PATH, { before = '' } = {}) {
   if (!Number.isFinite(count) || count <= 0) return []
   const history = await loadHistory(historyPath)
   const matching = dedupeByTypeAndDate(
-    history.entries.filter(entry => entry?.type === type && entry?.composition)
+    history.entries.filter(entry => entry?.type === type && isBefore(entry, before) && entry?.composition)
   )
   return byDateAscending(matching)
     .slice(-count)
@@ -170,11 +181,11 @@ export async function recentCompositions(type, count = 8, historyPath = HISTORY_
 // The newest `count` concept one-liners for an image type, most recent first - fed to the
 // art director as a do-not-repeat list. Zero means "feed nothing" (slice(-0) would return
 // everything, the exact opposite).
-export async function recentConcepts(type, count = 8, historyPath = HISTORY_PATH) {
+export async function recentConcepts(type, count = 8, historyPath = HISTORY_PATH, { before = '' } = {}) {
   if (!Number.isFinite(count) || count <= 0) return []
   const history = await loadHistory(historyPath)
   const matching = dedupeByTypeAndDate(
-    history.entries.filter(entry => entry?.type === type && entry?.concept)
+    history.entries.filter(entry => entry?.type === type && isBefore(entry, before) && entry?.concept)
   )
   return byDateAscending(matching)
     .slice(-count)
@@ -196,11 +207,11 @@ export async function writeSidecar(outputPath, payload) {
 
 // The newest `count` year treatments (how the digits were built into a Year in Music cover),
 // most recent first and collapsed like media, so successive years are refused the same trick.
-export async function recentYearTreatments(type, count = 8, historyPath = HISTORY_PATH) {
+export async function recentYearTreatments(type, count = 8, historyPath = HISTORY_PATH, { before = '' } = {}) {
   if (!Number.isFinite(count) || count <= 0) return []
   const history = await loadHistory(historyPath)
   const matching = dedupeByTypeAndDate(
-    history.entries.filter(entry => entry?.type === type && entry?.yearTreatment)
+    history.entries.filter(entry => entry?.type === type && isBefore(entry, before) && entry?.yearTreatment)
   )
   const seen = new Set()
   const treatments = []
