@@ -8,15 +8,17 @@ import { COVER_BLOCKLIST } from './tunes-cover-blocklist.js'
 import { isContentPolicyViolation } from './lib/fal-content-policy.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { getBackend, BACKENDS } from './lib/image-backends/index.js'
-import { appendHistory, recentCompositions, recentConcepts, recentLighting, recentMedia, recentYearTreatments, writeSidecar } from './lib/tunes-image-history.js'
+import { appendHistory, recentCompositions, recentConcepts, recentLighting, recentMedia, recentSettings, recentYearTreatments, writeSidecar } from './lib/tunes-image-history.js'
 import { extractTunesDate } from './lib/tunes-post-context.js'
 import {
   buildGenerationPrompt as buildFreeformGenerationPrompt,
-  closeUpBox,
+  closeUpBoxes,
+  contentScore,
   designCoverArtDirection,
   dropModerationRisks,
-  isLowLight,
   isPhotographicMedium,
+  refusedSettings,
+  settingFamily,
   COMPOSITION_REPEAT_WINDOW,
   LIGHTING_REPEAT_WINDOW,
   normalizeYear,
@@ -524,26 +526,31 @@ async function saveGeneratedImage(imageUrl, outputPath, width, height, debug = f
   }
 }
 
-function buildAttemptSets(selectedPaths, analyses, maxCount, minCount) {
-  const sets = [selectedPaths]
-  const rankedByScore = [...analyses]
-    .sort((a, b) => b.score - a.score)
-    .map(item => item.path)
+// Attempt sets for content-policy retries, built from candidates already ranked best first:
+// the top `maxCount`, then the same ranking without its three leaders (a refusal is nearly
+// always one of the sleeves leading the picture), then the bottom of the ranking.
+function buildAttemptSets(ranked, maxCount, minCount) {
+  const first = ranked.slice(0, maxCount)
+  const sets = [first]
 
-  const second = rankedByScore.filter(item => !selectedPaths.slice(0, 3).includes(item)).slice(0, maxCount)
+  const second = ranked.filter(item => !first.slice(0, 3).includes(item)).slice(0, maxCount)
   if (second.length >= minCount) sets.push(second)
 
-  const third = rankedByScore.slice(Math.max(0, rankedByScore.length - maxCount))
+  const third = ranked.slice(Math.max(0, ranked.length - maxCount))
   if (third.length >= minCount) sets.push(third)
 
   const seen = new Set()
   return sets.filter(set => {
-    const key = set.join('|')
+    const key = set.map(item => item.path).join('|')
     if (seen.has(key)) return false
     seen.add(key)
     return true
   })
 }
+
+// The most sleeves the factual pass reads in one go. A weekly post has about a dozen; a Year
+// in Music post offers twenty, which the pixel score trims to this many first.
+const MAX_SUMMARY_CANDIDATES = Number(process.env.TUNES_COVER_SUMMARY_CANDIDATES || 14)
 
 async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   const {
@@ -574,23 +581,22 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   const lightingHistory = await recentLighting(historyType, historySize)
   const compositionHistory = await recentCompositions(historyType, historySize)
   const avoidYearTreatments = year ? await recentYearTreatments(historyType, historySize) : []
-  const requireBrightLight = isLowLight(lightingHistory[0])
+  const settingHistory = (await recentSettings(historyType, historySize))
+    .map(entry => settingFamily(entry.setting, entry.lighting))
+    .filter(Boolean)
+  const refusedSettingFamilies = refusedSettings(settingHistory)
 
   const sourceImagePaths = filterBlocklistedCovers(imagePaths, debug)
 
-  const { selectedPaths, analyses } = await selectCoverInputs(sourceImagePaths, {
-    maxCount: Number(process.env.TUNES_COVER_MAX_INPUTS || 8),
-    primaryCount: Number(process.env.TUNES_COVER_PRIMARY_INPUTS || 7),
-    debug
+  // The pixel score only caps how many sleeves the factual pass reads (and breaks near-ties
+  // afterwards); which ones are used is decided from what the pass saw in them.
+  const { selectedPaths: candidatePaths, analyses } = await selectCoverInputs(sourceImagePaths, {
+    maxCount: MAX_SUMMARY_CANDIDATES,
+    primaryCount: MAX_SUMMARY_CANDIDATES,
+    debug: false
   })
-
-  const minCount = Math.min(2, selectedPaths.length)
-  const attemptSets = buildAttemptSets(
-    selectedPaths,
-    analyses,
-    Number(process.env.TUNES_COVER_MAX_INPUTS || 8),
-    minCount
-  )
+  const maxInputs = Number(process.env.TUNES_COVER_MAX_INPUTS || 8)
+  const minCount = Math.min(2, candidatePaths.length)
 
   const primaryBackend = await resolveCoverBackend(options.backend)
   const fallbackBackend = await resolveCoverFallbackBackend(primaryBackend, options.fallbackBackend)
@@ -605,8 +611,41 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     if (avoidMedia.length > 0) console.log(`  Avoiding recent media: ${avoidMedia.join(' | ')}`)
     if (lightingHistory.length > 0) console.log(`  Avoiding recent lighting: ${lightingHistory.slice(0, LIGHTING_REPEAT_WINDOW).join(' | ')}`)
     if (compositionHistory.length > 0) console.log(`  Avoiding recent compositions: ${compositionHistory.slice(0, COMPOSITION_REPEAT_WINDOW).join(' | ')}`)
-    if (requireBrightLight) console.log(`  Previous cover was low-light (${lightingHistory[0]}); requiring daylight`)
     if (avoidYearTreatments.length > 0) console.log(`  Avoiding recent year treatments: ${avoidYearTreatments.join(' | ')}`)
+  }
+  if (settingHistory.length > 0) console.log(`  Recent settings: ${settingHistory.slice(0, 5).join(', ')}${refusedSettingFamilies.length > 0 ? ` (refusing ${refusedSettingFamilies.join(', ')})` : ''}`)
+
+  // Read every candidate sleeve once, before choosing: the summaries decide which sleeves are
+  // sent on, and a content-policy retry reuses them rather than paying for the pass again.
+  const candidateUrls = await uploadAlbumImages(candidatePaths, debug)
+  const candidateSummaries = await summarizeAlbumCovers({
+    imageUrls: candidateUrls,
+    sourceReferences: buildSourceReferences(candidatePaths),
+    debug
+  })
+  // Drop sleeves the summary pass flagged as likely to be refused before spending a
+  // generation call on them.
+  const { keepIndexes, dropped } = dropModerationRisks(candidateSummaries, { minKeep: minCount })
+  if (dropped.length > 0) {
+    console.log(`  Dropping ${dropped.length} sleeve(s) likely to be refused: ${dropped.map(item => `${item.filename} (${item.moderationRisk})`).join('; ')}`)
+  }
+  const analysisByPath = new Map(analyses.map(item => [item.path, item]))
+  const ranked = keepIndexes
+    .map(index => {
+      const analysis = analysisByPath.get(candidatePaths[index])
+      const summary = candidateSummaries[index]
+      return {
+        path: candidatePaths[index],
+        url: candidateUrls[index],
+        summary,
+        score: contentScore(summary, { rank: analysis?.rank ?? index, pixelScore: analysis?.score ?? 0 })
+      }
+    })
+    .sort((a, b) => b.score - a.score)
+  const attemptSets = buildAttemptSets(ranked, maxInputs, minCount)
+  console.log(`  Sleeves chosen by content (${attemptSets[0].length} of ${candidatePaths.length}): ${attemptSets[0].map(item => path.basename(item.path)).join(', ')}`)
+  if (debug) {
+    ranked.forEach(item => console.log(`    ${item.score.toFixed(1)}  ${path.basename(item.path)} [strength: ${item.summary.strength ?? '?'}, face: ${item.summary.faceHeight ?? '-'}, people: ${item.summary.people}]`))
   }
 
   // Try each backend in turn. Within a backend, content-policy refusals retry with alternate
@@ -620,28 +659,17 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     }
 
     for (let attempt = 0; attempt < attemptSets.length; attempt++) {
-      let attemptPaths = attemptSets[attempt]
+      const attemptItems = attemptSets[attempt]
+      const attemptPaths = attemptItems.map(item => item.path)
 
       try {
         if (debug) {
           console.log(`  Attempt ${attempt + 1} (${backend.label}): generating a freeform cover from ${attemptPaths.length} album covers`)
         }
 
-        const uploadedUrls = await uploadAlbumImages(attemptPaths, debug)
-        const summarised = await summarizeAlbumCovers({
-          imageUrls: uploadedUrls,
-          sourceReferences: buildSourceReferences(attemptPaths),
-          debug
-        })
-        // Drop sleeves the summary pass flagged as likely to be refused before spending a
-        // generation call on them. The remaining sources are renumbered to match the order
-        // their images are attached in.
-        const { kept: coverSummaries, keepIndexes, dropped } = dropModerationRisks(summarised, { minKeep: minCount })
-        if (dropped.length > 0) {
-          console.log(`  Dropping ${dropped.length} sleeve(s) likely to be refused: ${dropped.map(item => `${item.filename} (${item.moderationRisk})`).join('; ')}`)
-        }
-        attemptPaths = keepIndexes.map(index => attemptPaths[index])
-        const imageUrls = keepIndexes.map(index => uploadedUrls[index])
+        // Sources are renumbered 1..n to match the order this attempt's images are attached in.
+        const coverSummaries = attemptItems.map((item, index) => ({ ...item.summary, source: index + 1 }))
+        const imageUrls = attemptItems.map(item => item.url)
         const sourceReferences = buildSourceReferences(attemptPaths)
         const artDirection = await designCoverArtDirection({
           coverSummaries,
@@ -651,12 +679,13 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           avoidMedia,
           recentLighting: lightingHistory,
           recentCompositions: compositionHistory,
+          recentSettings: settingHistory,
           year,
           avoidYearTreatments,
           debug
         })
-        if (requireBrightLight && isLowLight(artDirection.lighting)) {
-          console.warn(`  Art director chose low light again (${artDirection.lighting}) despite the daylight rule`)
+        if (refusedSettingFamilies.includes(artDirection.setting)) {
+          console.warn(`  Art director chose a refused setting (${artDirection.setting}) despite the rotation rule`)
         }
         const repeatedLighting = lightingHistory
           .slice(0, LIGHTING_REPEAT_WINDOW)
@@ -664,19 +693,21 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
         if (repeatedLighting) {
           console.warn(`  Art director repeated a recent lighting set-up (${artDirection.lighting})`)
         }
-        // Check the cast's faces before sending: any cast sleeve whose faces are small gets an
-        // enlarged close-up attached after the sleeves, so the numbering of the sleeves holds.
+        // Check the cast's faces before sending: any cast sleeve whose faces are small gets
+        // enlarged close-ups - one per face when the faces were located, otherwise one of the
+        // group - attached after the sleeves, so the numbering of the sleeves holds.
         const closeUps = []
         const generationUrls = [...imageUrls]
         for (const source of artDirection.cast || []) {
           const summary = coverSummaries.find(item => item.source === source)
-          const box = closeUpBox(summary)
-          if (!box || generationUrls.length >= (backend.maxInputImages ?? 1)) continue
-          try {
-            generationUrls.push(await uploadCloseUp(attemptPaths[source - 1], box, debug))
-            closeUps.push({ source, reference: generationUrls.length })
-          } catch (error) {
-            console.warn(`  Could not attach a close-up for source ${source}: ${error.message}`)
+          for (const box of closeUpBoxes(summary)) {
+            if (generationUrls.length >= (backend.maxInputImages ?? 1)) break
+            try {
+              generationUrls.push(await uploadCloseUp(attemptPaths[source - 1], box, debug))
+              closeUps.push({ source, reference: generationUrls.length })
+            } catch (error) {
+              console.warn(`  Could not attach a close-up for source ${source}: ${error.message}`)
+            }
           }
         }
         if (closeUps.length > 0) {
@@ -702,6 +733,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           date: options.dateLabel || (Number.isFinite(seed) && seed >= MIN_TIMESTAMP_SEED ? new Date(seed).toISOString().slice(0, 10) : ''),
           type: historyType,
           lane: null,
+          setting: artDirection.setting,
           lighting: artDirection.lighting,
           composition: artDirection.composition,
           cast: artDirection.cast ?? null,
@@ -741,6 +773,7 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
           creativeDirection: artDirection.creativeDirection,
           concept: artDirection.concept,
           medium: artDirection.medium,
+          setting: artDirection.setting,
           lighting: artDirection.lighting,
           composition: artDirection.composition,
           yearTreatment: artDirection.yearTreatment || null,

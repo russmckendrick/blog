@@ -18,7 +18,7 @@ const HARD_CONSTRAINTS = [
   'Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly.',
   'When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish.',
   'Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person\'s face.',
-  'Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture.',
+  'Expose the image cleanly whatever the light: every person\'s face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture.',
   GREENERY_CONSTRAINT,
   'Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve\'s own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light.',
   'Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.'
@@ -57,21 +57,13 @@ export function isLowLight(value) {
 // would squeeze the director towards night, which the default is steering away from.
 export const LIGHTING_REPEAT_WINDOW = 4
 
-// Builds the art director's lighting instructions from the recorded history, newest first:
-// a forced daylight rule when the previous cover was low light, then a do-not-repeat list of
-// the last few set-ups (collapsed so one repeated phrase cannot fill it).
+// Builds the art director's lighting instructions from the recorded history, newest first: a
+// do-not-repeat list of the last few set-ups (collapsed so one repeated phrase cannot fill
+// it). Which kind of place the cover is set in is a separate axis - see buildSettingBlock.
 export function buildLightingBlock(recentLighting = []) {
   const history = (Array.isArray(recentLighting) ? recentLighting : [])
     .map(value => String(value || '').trim())
     .filter(Boolean)
-  const blocks = []
-
-  // Only the previous cover decides the forcing rule: one low-light week buys the next one
-  // daylight, which is enough to stop a run without banning night outright.
-  const previousLighting = history[0] || ''
-  if (isLowLight(previousLighting)) {
-    blocks.push(`The previous cover was lit as "${previousLighting}". This cover must be lit by daylight or bright, even light - midday or afternoon sun, open shade, bright overcast, golden hour, or a high-key studio - and must not be set at night, dusk, or twilight, or lit mainly by practical lamps, neon, candles, or stage spots, even if the sleeves are dark.`)
-  }
 
   const seen = new Set()
   const recent = []
@@ -81,10 +73,80 @@ export function buildLightingBlock(recentLighting = []) {
     seen.add(key)
     recent.push(value)
   }
-  if (recent.length > 0) {
-    blocks.push(`These lighting set-ups were used on the most recent covers and must not be repeated, even under different wording - change the time of day, the main light source, or the weather, not just the phrasing:\n${recent.map(value => `- ${value}`).join('\n')}\n\nBright light is still the default. Pick a materially different bright set-up - for example low-angle early morning sun, hard midday sun with crisp shadows, golden hour, open shade on a sunny day, sunlight through large windows, a high-key studio, crisp winter light, or seaside glare - whichever genuinely fits this week's covers.`)
-  }
+  if (recent.length === 0) return ''
 
+  return `These lighting set-ups were used on the most recent covers and must not be repeated, even under different wording - change the time of day, the main light source, or the weather, not just the phrasing:\n${recent.map(value => `- ${value}`).join('\n')}\n\nPick a materially different set-up inside the setting you choose, worked out from this week's sleeves and the place you are building rather than from a stock list.`
+}
+
+// The daylight rule and its bright-only menu fixed the murky September run and built the
+// opposite rut: all fourteen covers from 17 Aug to 16 Nov 2026 were "daylight location
+// photography", ten of them outdoors, ending in a top-down view of a sunlit concrete yard with
+// the cast too small to recognise. Where a cover is set is now its own recorded axis with four
+// families, and a family that has run twice in a row, or filled three of the last five covers,
+// is refused. Night keeps its one-week limit from the old rule.
+export const SETTING_FAMILIES = ['exterior', 'interior', 'studio', 'night']
+export const SETTING_WINDOW = 5
+
+const STUDIO_LIGHT_PATTERN = /\b(studio|high[- ]key|seamless|backdrop|softbox|strobe|cyclorama)\b/i
+const INTERIOR_LIGHT_PATTERN = /\b(interiors?|indoors?|windows?|skylights?|rooms?|halls?|hangars?|lamps?|lamplight|tungsten|fluorescent|ceiling|chandeliers?)\b/i
+
+// The setting family of a cover. An explicit "setting" wins; history written before the field
+// existed is read from its lighting phrase instead. Empty when there is nothing to read.
+export function settingFamily(setting, lighting = '') {
+  const explicit = String(setting || '').trim().toLowerCase()
+  if (/\bstudio\b/.test(explicit)) return 'studio'
+  if (/\b(night|low[- ]?light|after dark)\b/.test(explicit)) return 'night'
+  if (/\b(interior|indoors?|inside)\b/.test(explicit)) return 'interior'
+  if (/\b(exterior|outdoors?|outside)\b/.test(explicit)) return 'exterior'
+
+  const light = String(lighting || '').trim()
+  if (!light) return ''
+  if (isLowLight(light)) return 'night'
+  if (STUDIO_LIGHT_PATTERN.test(light)) return 'studio'
+  if (INTERIOR_LIGHT_PATTERN.test(light)) return 'interior'
+  return 'exterior'
+}
+
+// Families the next cover may not use, from the recent ones newest first.
+export function refusedSettings(recentFamilies = []) {
+  const recent = (Array.isArray(recentFamilies) ? recentFamilies : []).filter(Boolean)
+  const refused = new Set()
+  if (recent[0] === 'night') refused.add('night')
+  if (recent.length >= 2 && recent[0] === recent[1]) refused.add(recent[0])
+  const window = recent.slice(0, SETTING_WINDOW)
+  for (const family of SETTING_FAMILIES) {
+    if (window.filter(value => value === family).length >= 3) refused.add(family)
+  }
+  return SETTING_FAMILIES.filter(family => refused.has(family))
+}
+
+// Definitions only, on purpose. The first version listed example places after each one ("a
+// bar, kitchen, rehearsal room ...", "a seamless or painted backdrop") and the director treated
+// them as a menu: the first three renders under it were a bar, a white seamless studio, and the
+// same bar again. Preset catalogues are what this pipeline keeps removing - the family is a
+// constraint, the place has to come from the sleeves.
+const SETTING_DESCRIPTIONS = {
+  exterior: 'outdoors, in daylight',
+  interior: 'indoors, in a real place, lit by daylight coming in or by the room\'s own lights',
+  studio: 'a photographer\'s studio or a purpose-built set, under controlled light',
+  night: 'after dark or in low light, indoors or out, with every cast face properly lit and the picture still clean and readable'
+}
+
+export function buildSettingBlock(recentFamilies = []) {
+  const recent = (Array.isArray(recentFamilies) ? recentFamilies : []).filter(Boolean)
+  const refused = refusedSettings(recent)
+  const window = recent.slice(0, SETTING_WINDOW)
+  const unused = SETTING_FAMILIES.filter(family => !window.includes(family) && !refused.includes(family))
+  const blocks = [`Every cover is set in one of four kinds of place, and you name the one you chose in "setting":\n${SETTING_FAMILIES.map(family => `- ${family}: ${SETTING_DESCRIPTIONS[family]}`).join('\n')}\n\nNone of them is the default, and none comes with a stock location. The setting only says what kind of place it is; the actual place is yours to invent from what this week's sleeves show - their rooms, objects, streets, landscapes, and moods - and should be somewhere these covers have not been before. Outdoor daylight has been used for most recent covers and has made them look alike, so do not reach for it out of habit.`]
+  if (window.length > 0) {
+    blocks.push(`The most recent covers were set, newest first: ${window.join(', ')}.`)
+  }
+  if (refused.length > 0) {
+    blocks.push(`This cover must not be ${refused.map(family => `"${family}"`).join(' or ')}: ${refused.length > 1 ? 'those settings have' : 'that setting has'} been used too often or too recently. Do not get round it with a half-way place: anywhere open to the sky and lit by the sun is still an exterior.`)
+  }
+  if (unused.length > 0 && window.length > 0) {
+    blocks.push(`Not used recently: ${unused.join(', ')}. Prefer one of these when the sleeves suit it.`)
+  }
   return blocks.join('\n\n')
 }
 
@@ -145,7 +207,7 @@ export function buildCompositionBlock(recentCompositions = []) {
     recent.push(value)
   }
 
-  const blocks = ['The wide, slightly elevated, symmetrical tableau - one central set-piece with every source arranged around it like an exhibition - is the composition this blog has used almost every week, and it is the main reason the covers look alike. Do not use it. A deep passage is the other rut: a corridor, hallway, tunnel, underpass, alley, aisle, or a view through a doorway or loading bay running away into the distance. Use one only when the sleeves leave no alternative. Choose the space and the camera deliberately for this week\'s covers - for example a wide open exterior where the people are small against sky, water, or land; straight down from above; a low angle looking up at a subject against open sky; a flat, face-on view of a room, wall, stage, or shopfront with little depth; a long-lens shot that stacks layers of a street or crowd together; a close crop where one subject fills most of the frame; a high vantage over a square, beach, car park, or field; or a single subject placed off-centre in a lot of open space.']
+  const blocks = ['The wide, slightly elevated, symmetrical tableau - one central set-piece with every source arranged around it like an exhibition - is the composition this blog has used almost every week, and it is the main reason the covers look alike. Do not use it. A deep passage is the other rut: a corridor, hallway, tunnel, underpass, alley, aisle, or a view through a doorway or loading bay running away into the distance. Use one only when the sleeves leave no alternative. Choose the space and the camera deliberately for this week\'s covers - for example an eye-level, three-quarter-length environmental portrait with the place wrapped around the people; a flat, face-on view with little depth and the people in the near ground; a close crop where one subject fills most of the frame; a long-lens shot that stacks layers of the scene together; a low angle looking up at a subject; or a subject placed off-centre beside open space. These are camera positions, not locations. When people are cast the camera is close enough, and level enough, to read their faces: never straight down from above, never a high or distant vantage where they are small. Top-down and wide, distant views are for covers with nobody in them.']
   if (history.slice(0, PASSAGE_REPEAT_WINDOW).some(isPassage)) {
     blocks.push('A recent cover already looked down a passage. This cover must not be set in or framed through a corridor, hallway, tunnel, underpass, alley, lane, aisle, doorway, or loading bay, under any wording: choose an open or face-on space.')
   }
@@ -180,9 +242,14 @@ export function buildYearTextConstraint(year) {
   return `The only lettering anywhere in the image is the year "${digits}": those four digits, spelled exactly ${digits.split('').join(' ')}, appearing once, large and legible, as a physical part of the scene rather than an overlay. Include no other readable text or lettering of any kind: no other words, letters, numbers, dates, code, glyphs, captions, titles, logos, watermarks, labels, or signage.`
 }
 
-export function buildHardConstraints({ year } = {}) {
+// Added only when the cover has a cast: a reference face cannot survive being rendered a few
+// pixels high, whatever the prompt says about likeness.
+const CAST_FRAMING_CONSTRAINT = 'Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.'
+
+export function buildHardConstraints({ year, hasCast = false } = {}) {
   const textConstraint = buildYearTextConstraint(year)
-  return HARD_CONSTRAINTS.map(constraint => constraint === TEXT_CONSTRAINT ? textConstraint : constraint)
+  const constraints = HARD_CONSTRAINTS.map(constraint => constraint === TEXT_CONSTRAINT ? textConstraint : constraint)
+  return hasCast ? [...constraints, CAST_FRAMING_CONSTRAINT] : constraints
 }
 
 // Art-director brief for the year. The treatment menu is a set of examples, not a rotation:
@@ -288,9 +355,15 @@ export function normalizeCoverSummaries(rawCovers = [], sourceReferences = []) {
     ).trim()
     const medium = String(item?.medium || item?.style || item?.art_style || '').trim()
     const people = String(item?.people || item?.persons || item?.figures || '').trim()
+    const place = normalizePlace(item?.place ?? item?.location ?? item?.setting)
     const moderationRisk = normalizeModerationRisk(item?.moderationRisk ?? item?.moderation_risk)
     const peopleBox = normalizeBox(item?.peopleBox ?? item?.people_box)
     const faceHeight = normalizeFraction(item?.faceHeight ?? item?.face_height)
+    const rawFaceBoxes = item?.faceBoxes ?? item?.face_boxes
+    const faceBoxes = (Array.isArray(rawFaceBoxes) ? rawFaceBoxes : []).map(normalizeBox).filter(Boolean).slice(0, 8)
+    const peopleCount = normalizeCount(item?.peopleCount ?? item?.people_count)
+    const minors = normalizeFlag(item?.minors ?? item?.children ?? item?.child)
+    const strength = normalizeStrength(item?.strength ?? item?.visualStrength ?? item?.visual_strength)
     const rawPalette = item?.palette || item?.colours || item?.colors
     const palette = Array.isArray(rawPalette)
       ? rawPalette.map(value => String(value).trim()).filter(Boolean).slice(0, 5)
@@ -305,9 +378,14 @@ export function normalizeCoverSummaries(rawCovers = [], sourceReferences = []) {
       signatureMotif: signatureMotif || `the most recognisable non-text motif from ${identity}`,
       medium: medium || 'medium not confidently identified',
       people: people || 'none',
+      place,
       moderationRisk,
       peopleBox,
       faceHeight,
+      faceBoxes,
+      peopleCount,
+      minors,
+      strength,
       palette
     }
   })
@@ -318,16 +396,56 @@ export function normalizeCoverSummaries(rawCovers = [], sourceReferences = []) {
 // a tenth of the sleeve) and the small tinted figure on Sweet Inspiration came back as generic
 // strangers. So the factual pass also locates the people and measures the largest face, and
 // before anything is sent: faces below MIN_CASTABLE_FACE are not castable at all, and cast
-// faces below CLOSE_UP_BELOW get a padded close-up crop attached as an extra reference.
-export const MIN_CASTABLE_FACE = 0.04
+// faces below CLOSE_UP_BELOW get padded close-up crops attached as extra references.
+//
+// The first floor (4%) was far too low. The 16 Nov 2026 cover cast a compilation sleeve of four
+// full-length figures with faces at 8% and got four near-identical strangers back, so the floor
+// now matches the artist portrait's 10%, and a group of four or more needs larger faces still
+// because every extra likeness dilutes the rest.
+export const MIN_CASTABLE_FACE = 0.1
+export const LARGE_GROUP = 4
+export const MIN_GROUP_FACE = 0.15
 export const CLOSE_UP_BELOW = 0.25
 const CLOSE_UP_PADDING = 0.2
+const FACE_CLOSE_UP_PADDING = 0.6
+export const MAX_FACE_CLOSE_UPS = 3
 
 function normalizeFraction(value) {
   const number = Number(value)
   if (!Number.isFinite(number)) return null
   const fraction = number > 1 && number <= 100 ? number / 100 : number
   return fraction > 0 && fraction <= 1 ? fraction : null
+}
+
+// The place a sleeve is photographed in, or '' when it shows none (a plain backdrop, a graphic,
+// a close crop). A sleeve whose people cannot be cast often has the best location of the week:
+// the 16 Nov 2026 runs marked a famous living-room sleeve "do not cast" and then used it for
+// one guitar. Its room, empty of its people, is exactly what a cover can be set in.
+function normalizePlace(value) {
+  const text = String(value ?? '').trim()
+  if (!text || /^(none|no\b|n\/a|unknown|plain|blank)/i.test(text)) return ''
+  return text
+}
+
+export function hasPlace(summary) {
+  return Boolean(summary?.place)
+}
+
+function normalizeCount(value) {
+  const number = Math.round(Number(value))
+  return Number.isFinite(number) && number > 0 ? number : null
+}
+
+function normalizeFlag(value) {
+  if (value === true) return true
+  return /^(true|yes|child|children|minor|minors)\b/i.test(String(value ?? '').trim())
+}
+
+// 1 (almost nothing to photograph: lettering, a flat field) to 5 (a striking, instantly
+// recognisable image). Null when the factual pass did not rate it.
+function normalizeStrength(value) {
+  const number = Math.round(Number(value))
+  return Number.isFinite(number) && number >= 1 ? Math.min(5, number) : null
 }
 
 function normalizeBox(value) {
@@ -347,26 +465,75 @@ function normalizeBox(value) {
   return [x0, y0, x1, y1]
 }
 
-// A person-sleeve is castable unless the factual pass measured its largest face as too small to
-// copy. Sleeves with no measurement stay castable rather than being dropped on a missing field.
+// Why a sleeve's people cannot be cast, or '' when they can. A sleeve with no measurement stays
+// castable rather than being dropped on a missing field. A child is never cast: the image model
+// is told to show adults only, so the 16 Nov 2026 cover's girl with enlarged eyes could only
+// ever come back as somebody else, and a child's likeness is not ours to restage anyway.
+export function uncastableReason(summary) {
+  if (!hasPeople(summary)) return 'nobody is shown'
+  if (summary.minors) return 'it shows a child, and children are never cast'
+  const face = summary.faceHeight
+  if (face != null && face < MIN_CASTABLE_FACE) return 'the faces on this sleeve are too small to reproduce recognisably'
+  if (face != null && (summary.peopleCount || 0) >= LARGE_GROUP && face < MIN_GROUP_FACE) {
+    return 'it is a large group with small faces, which comes back as strangers'
+  }
+  return ''
+}
+
 export function isCastable(summary) {
-  if (!hasPeople(summary)) return false
-  return summary.faceHeight == null || summary.faceHeight >= MIN_CASTABLE_FACE
+  return uncastableReason(summary) === ''
 }
 
 // The padded crop (fractions of the reference image) to attach as a close-up for a cast
 // sleeve, or null when its faces are already large enough or the people were not located.
 export function closeUpBox(summary) {
   if (!summary?.peopleBox || summary.faceHeight == null || summary.faceHeight >= CLOSE_UP_BELOW) return null
-  const [x0, y0, x1, y1] = summary.peopleBox
-  const padX = (x1 - x0) * CLOSE_UP_PADDING
-  const padY = (y1 - y0) * CLOSE_UP_PADDING
+  return padBox(summary.peopleBox, CLOSE_UP_PADDING)
+}
+
+function padBox([x0, y0, x1, y1], padding) {
+  const padX = (x1 - x0) * padding
+  const padY = (y1 - y0) * padding
   return [
     Math.max(0, x0 - padX),
     Math.max(0, y0 - padY),
     Math.min(1, x1 + padX),
     Math.min(1, y1 + padY)
   ]
+}
+
+// Every close-up to attach for a cast sleeve. One crop of the whole group still leaves each
+// face small, so when the factual pass located every face of a small cast (up to
+// MAX_FACE_CLOSE_UPS people) each one gets its own head-and-shoulders crop, left to right.
+// Otherwise it falls back to the single group crop.
+export function closeUpBoxes(summary) {
+  if (!summary || summary.faceHeight == null || summary.faceHeight >= CLOSE_UP_BELOW) return []
+  const faces = Array.isArray(summary.faceBoxes) ? summary.faceBoxes : []
+  const expected = summary.peopleCount || faces.length
+  if (faces.length >= 1 && faces.length <= MAX_FACE_CLOSE_UPS && faces.length === expected) {
+    return [...faces]
+      .sort((a, b) => a[0] - b[0])
+      .map(box => padBox(box, FACE_CLOSE_UP_PADDING))
+  }
+  const group = closeUpBox(summary)
+  return group ? [group] : []
+}
+
+// Which sleeves are sent to the art director and the image model. Until 16 Nov 2026 this was
+// decided before anything had looked at the pictures, on saturation, contrast, and how
+// text-like the edges were: that week it threw away the one sleeve with two large, clean
+// faces and kept a near-black square. The factual pass now reads every candidate, and the
+// score leads with what is in the picture: how striking it is, then whether it has faces
+// big enough to copy. Play rank and the pixel score only separate near-ties.
+export function contentScore(summary, { rank = 0, pixelScore = 0 } = {}) {
+  const strength = summary?.strength ?? 3
+  let score = strength * 12
+  if (isCastable(summary)) {
+    score += 10 + (Math.min(summary.faceHeight ?? MIN_CASTABLE_FACE, 0.5) * 60)
+  }
+  score += Math.max(0, 12 - rank)
+  score += Math.max(-10, Math.min(10, pixelScore * 0.1))
+  return score
 }
 
 // The image model refuses some sleeves outright - ZZ Top's Greatest Hits, with its models in
@@ -516,6 +683,36 @@ export function findLoomingCast(prompt, cast = []) {
   return found
 }
 
+// The 16 Nov 2026 cover put its cast on a concrete yard seen "almost straight down from above":
+// four full-length figures a few dozen pixels tall, which no reference can make recognisable.
+// A cover with people in it is shot close and level enough to read their faces.
+const DISTANT_COMPOSITION_PATTERN = /\b(top[- ]down|overhead|straight down|bird'?s?[- ]eye|aerial|drone|from above|looking down|high[- ](?:angle|vantage)|elevated|distant|far[- ]off|figures? small|small figures?|tiny)\b/i
+const DISTANT_PROMPT_PATTERN = /\b(top[- ]down|straight down|bird'?s?[- ]eye|aerial|drone|from (?:high )?above|looking down (?:on|onto|at|over)|small (?:against|within|in the)|tiny figures?|in the far distance)\b/i
+
+export function isDistantCast(direction) {
+  if (!Array.isArray(direction?.cast) || direction.cast.length === 0) return false
+  if (DISTANT_COMPOSITION_PATTERN.test(String(direction.composition || ''))) return true
+  return DISTANT_PROMPT_PATTERN.test(firstSentence(direction.prompt))
+}
+
+// The no-text rule is a hard constraint, but the director can still write lettering into its
+// own prompt: a 16 Nov 2026 render turned a sleeve's back tattoo into "black tattoo-style
+// lettering painted across a bare plaster panel", and the image model duly drew a slab of
+// blackletter. Any request for lettering on a weekly cover is sent back. Year in Music covers
+// are exempt, because their digits are lettering by design.
+const LETTERING_PATTERN = /\b(lettering|letters|letterforms?|typography|typographic|calligraph\w*|blackletter|inscri\w+|handwriting|handwritten|graffiti|slogans?|monograms?|initials|captions?|spell(?:s|ed|ing) out)\b/i
+
+export function findLettering(prompt) {
+  const found = []
+  for (const sentence of String(prompt || '').split(/(?<=[.;])\s+/)) {
+    // "no lettering", "without any text" and the like are the director agreeing with the rule.
+    if (LETTERING_PATTERN.test(sentence) && !/\b(no|not|never|without|free of|avoid\w*)\b[^.;]{0,40}$/i.test(sentence.slice(0, sentence.search(LETTERING_PATTERN)))) {
+      found.push(sentence.trim().slice(0, 120))
+    }
+  }
+  return found
+}
+
 // True when the factual pass saw an actual person on the sleeve - the summariser answers
 // "none" (or nothing) otherwise. Those sources get an explicit reference map in the final
 // prompt so the image model copies the face from the numbered image instead of inventing one.
@@ -537,12 +734,20 @@ export function buildReferenceMap(coverSummaries = [], cast = null, closeUps = [
   const omitted = castSet ? people.filter(summary => !castSet.has(summary.source)) : []
   const parts = []
   if (shown.length > 0) {
-    const closeUpBySource = new Map((Array.isArray(closeUps) ? closeUps : []).map(item => [item.source, item.reference]))
+    const closeUpsBySource = new Map()
+    for (const item of Array.isArray(closeUps) ? closeUps : []) {
+      if (!closeUpsBySource.has(item.source)) closeUpsBySource.set(item.source, [])
+      closeUpsBySource.get(item.source).push(item.reference)
+    }
     const describe = summary => {
-      const closeUp = closeUpBySource.get(summary.source)
-      return closeUp
-        ? `reference image ${summary.source} shows ${summary.people}, and reference image ${closeUp} is an enlarged close-up of those same people - take their faces from reference image ${closeUp}`
-        : `reference image ${summary.source} shows ${summary.people}`
+      const references = closeUpsBySource.get(summary.source) || []
+      if (references.length === 1) {
+        return `reference image ${summary.source} shows ${summary.people}, and reference image ${references[0]} is an enlarged close-up of those same people - take their faces from reference image ${references[0]}`
+      }
+      if (references.length > 1) {
+        return `reference image ${summary.source} shows ${summary.people}, and reference images ${references.join(', ')} are enlarged close-ups of those same people, one face each from left to right - take each face from its own close-up`
+      }
+      return `reference image ${summary.source} shows ${summary.people}`
     }
     parts.push(`Reference map for people (the album images are attached in this numbered order): ${shown.map(describe).join('; ')}. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description.`)
   }
@@ -550,6 +755,44 @@ export function buildReferenceMap(coverSummaries = [], cast = null, closeUps = [
     parts.push(`Nobody from reference image${omitted.length > 1 ? 's' : ''} ${omitted.map(summary => summary.source).join(', ')} appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them.`)
   }
   return parts.join(' ')
+}
+
+// How much of the picture a sleeve gets. The 16 Nov 2026 cover gave every sleeve its own prop
+// and read as a prop shop; the first fix made everything but the lead "colour only" and the
+// redo was one sleeve restaged with nothing else recognisable in it. The answer is a
+// hierarchy: one or two leads, a few supports that are each a real, recognisable thing at a
+// smaller scale, and the rest colour.
+export const ELEMENT_ROLES = ['lead', 'support', 'colour']
+export const MAX_LEADS = 2
+export const MIN_SUPPORTS = 2
+export const MAX_SUPPORTS = 4
+
+function normalizeRole(value) {
+  const text = String(value || '').trim().toLowerCase()
+  if (/^lead/.test(text)) return 'lead'
+  if (/^support/.test(text)) return 'support'
+  if (/^(colou?r|palette|light|material)/.test(text)) return 'colour'
+  return null
+}
+
+// What is wrong with the balance of a brief's elements, given how many sleeves it had to work
+// with. Briefs with no roles at all (the deterministic fallback, old sidecars) are not judged.
+export function findHierarchyProblems(elements = [], sourceCount = 0) {
+  const withRoles = (Array.isArray(elements) ? elements : []).filter(item => item?.role)
+  if (withRoles.length === 0) return []
+  // Counted by sleeve, not by element: the first render under this rule met its quota of
+  // supports with three things from the sleeve that was already a lead.
+  const sourcesWith = role => new Set(withRoles.filter(item => item.role === role).map(item => item.source))
+  const leadSources = sourcesWith('lead')
+  const leads = leadSources.size
+  const supports = [...sourcesWith('support')].filter(source => !leadSources.has(source)).length
+  const wanted = Math.min(MIN_SUPPORTS, Math.max(0, sourceCount - 1))
+  const problems = []
+  if (leads === 0) problems.push('no source leads the picture')
+  if (leads > MAX_LEADS) problems.push(`${leads} sources lead the picture, and at most ${MAX_LEADS} may`)
+  if (supports < wanted) problems.push(`only ${supports} source${supports === 1 ? '' : 's'} besides the lead contribute${supports === 1 ? 's' : ''} something recognisable, so the cover is one sleeve restaged; at least ${wanted} more must each appear as a real, recognisable supporting element`)
+  if (supports > MAX_SUPPORTS) problems.push(`${supports} sources each get a supporting element, which reads as a prop shop; at most ${MAX_SUPPORTS} may`)
+  return problems
 }
 
 function normalizeElements(rawElements = [], sourceReferences = []) {
@@ -560,6 +803,7 @@ function normalizeElements(rawElements = [], sourceReferences = []) {
       if (!element) return null
       return {
         source: Number.isFinite(source) && source > 0 ? source : index + 1,
+        role: normalizeRole(item?.role),
         element
       }
     })
@@ -612,11 +856,12 @@ export function buildFallbackArtDirection(coverSummaries, _sourceReferences, { y
     'Make the result specific, surprising, and recognisably connected to the reference images.'
   ].filter(Boolean).join(' ')
 
-  const cast = coverSummaries.filter(hasPeople).slice(0, 1).map(summary => summary.source)
+  const cast = coverSummaries.filter(isCastable).slice(0, 1).map(summary => summary.source)
   return {
     cast,
     concept: digits ? `A unified world built from the albums of ${digits}` : 'A unified world built from this week’s album artwork',
     medium: 'photographic scene',
+    setting: 'exterior',
     lighting: 'bright daylight',
     composition: 'off-centre subject, deep open space',
     yearTreatment: digits ? 'freestanding hillside digits' : null,
@@ -661,6 +906,7 @@ export function normalizeArtDirection(rawDirection, coverSummaries, sourceRefere
     cast: Array.isArray(rawDirection?.cast) ? normalizeCast(rawDirection.cast, coverSummaries) : (prompt ? null : fallback.cast),
     elements: normalizeElements(rawDirection?.elements || rawDirection?.source_elements, sourceReferences),
     lighting: String(rawDirection?.lighting || rawDirection?.light || '').trim() || fallback.lighting,
+    setting: settingFamily(rawDirection?.setting, rawDirection?.lighting || rawDirection?.light) || fallback.setting,
     composition: String(rawDirection?.composition || rawDirection?.framing || '').trim() || fallback.composition,
     yearTreatment: fallback.yearTreatment
       ? String(rawDirection?.yearTreatment || rawDirection?.year_treatment || '').trim() || fallback.yearTreatment
@@ -687,9 +933,12 @@ export async function summarizeAlbumCovers({ imageUrls, sourceReferences, debug 
 Describe only what is visibly present in EACH image: subjects, figures, objects, symbols, setting, composition, physical or illustrated medium, and dominant colours.
 Ignore all printed words, letters, numbers, titles, logos, labels, and branding. Never quote or transcribe them.
 Do not invent a combined scene and do not give art direction. Observation and interpretation must stay separate so another model can make the creative decisions later.
-Return JSON exactly as {"covers":[{"source":1,"description":"string","signatureMotif":"string","medium":"string","people":"string","peopleBox":[0,0,1,1],"faceHeight":0.1,"moderationRisk":"string","palette":["string"]}]}.
+Return JSON exactly as {"covers":[{"source":1,"description":"string","signatureMotif":"string","medium":"string","strength":3,"place":"string","people":"string","peopleCount":0,"minors":false,"peopleBox":[0,0,1,1],"faceHeight":0.1,"faceBoxes":[[0,0,1,1]],"moderationRisk":"string","palette":["string"]}]}.
 There must be one item for every supplied source. "signatureMotif" is the single most recognisable non-text visual element in that source. "people" names who is visibly present as a real person in that image - a count and a short visual description such as "one woman reclining with two dogs" or "five young people looking up" - or exactly "none" when the image shows no person. Do not identify anyone by name.
-When "people" is not "none": "peopleBox" is [x0, y0, x1, y1] as fractions of the image width and height (0 to 1, origin top-left) tightly enclosing the heads and shoulders of every real person shown, and "faceHeight" is the height of the largest real face (chin to top of head) as a fraction of the image height - for example 0.06 for small heads in a wide group shot, 0.45 for a close portrait. Measure the image as supplied. When "people" is "none", set "peopleBox" to null and "faceHeight" to 0.
+"strength" rates, from 1 to 5, how much there is to photograph once the lettering is ignored: 5 is a striking, instantly recognisable image with a clear subject - a strong portrait, a staged scene, a vivid object; 3 is a clear but ordinary picture; 1 is almost nothing but lettering, a logo, a flat colour field, or a near-black square. Rate what is visibly there, not how famous the record is.
+"place" describes the real location the image is set in, with its defining features - the kind of room or landscape, its architecture, furniture, surfaces, and light - in one sentence, described as if empty of people. It is exactly "none" when the image shows no real place: a plain or studio backdrop, a graphic or illustration, a collage, or a crop too tight to show where it is.
+"peopleCount" is the number of real people shown (0 when "people" is "none"). "minors" is true when any real person shown appears to be a child or young teenager, otherwise false.
+When "people" is not "none": "faceBoxes" lists one [x0, y0, x1, y1] box per real face, tightly enclosing that face from chin to top of hair, in the same fractions, left to right, for up to 8 faces; a person seen only from behind has no face box. "peopleBox" is [x0, y0, x1, y1] as fractions of the image width and height (0 to 1, origin top-left) tightly enclosing the heads and shoulders of every real person shown, and "faceHeight" is the height of the largest real face (chin to top of head) as a fraction of the image height - for example 0.06 for small heads in a wide group shot, 0.45 for a close portrait. Measure the image as supplied. When "people" is "none", set "peopleBox" to null, "faceBoxes" to [], and "faceHeight" to 0.
 "moderationRisk" is exactly "none" unless the image clearly contains something an image-generation safety filter would refuse outright when the sleeve is supplied as a reference. Only these count: exposed genitals, buttocks, or female breasts (photographed or illustrated); lingerie, swimwear, or revealing clothing worn in a sexualised way, or suggestive, sexualised posing; sexual content; gore or graphic injury; a violent act shown in progress against a person, or a weapon pointed at someone; drugs being injected, snorted, or prepared; hate symbols; or a child shown nude, sexualised, or harmed. When it applies, give a short factual reason such as "women in lingerie-style outfits in suggestive poses". Most sleeves are "none". In particular these are "none": a shirtless man or bare-chested performer, bare shoulders, arms, legs, or midriffs in ordinary clothing, smoking or a cigarette, drinking, children or teenagers shown ordinarily, band portraits, stage shots, tattoos, dark or gothic imagery, skulls, and abstract or illustrated figures without explicit nudity. When unsure, answer "none" - an unnecessary flag throws the sleeve away.`
 
   try {
@@ -714,7 +963,7 @@ When "people" is not "none": "peopleBox" is [x0, y0, x1, y1] as fractions of the
         }
       ],
       text: { format: { type: 'json_object' } },
-      max_output_tokens: 2600,
+      max_output_tokens: Math.max(2600, imageUrls.length * 420),
       temperature: 0.2
     })
 
@@ -736,6 +985,7 @@ export async function designCoverArtDirection({
   avoidMedia = [],
   recentLighting = [],
   recentCompositions = [],
+  recentSettings = [],
   year = null,
   avoidYearTreatments = [],
   debug
@@ -755,9 +1005,11 @@ export async function designCoverArtDirection({
   // that refusal (see isPhotographicMedium) because it is the default, not a rotation slot.
   const refusedMedia = avoidMedia.filter(medium => !isPhotographicMedium(medium))
   const avoidMediaBlock = refusedMedia.length > 0
-    ? `These media and staging techniques were used on recent covers and are refused for this one. Do not choose any of them or any close variation, and in particular do not build another diorama, shadow box, assemblage, or cut-paper collage unless this week's artwork makes that genuinely unavoidable:\n${refusedMedia.map(medium => `- ${medium}`).join('\n')}\n\nPhotography itself is never on this list and is always available. Reach for a photographic treatment that is materially different from the recent covers - for example a sunlit editorial location shoot, a high-key studio set, a clean medium-format daylight portrait, a bright macro still life, a wide environmental portrait under open sky, or a golden-hour exterior - whichever genuinely fits this week's covers.`
+    ? `These media and staging techniques were used on recent covers and are refused for this one. Do not choose any of them or any close variation, and in particular do not build another diorama, shadow box, assemblage, or cut-paper collage unless this week's artwork makes that genuinely unavoidable:\n${refusedMedia.map(medium => `- ${medium}`).join('\n')}\n\nPhotography itself is never on this list and is always available. Reach for a photographic treatment that is materially different from the recent covers and genuinely fits this week's sleeves.`
     : ''
   const lightingBlock = buildLightingBlock(recentLighting)
+  const settingBlock = buildSettingBlock(recentSettings)
+  const refused = refusedSettings(recentSettings)
   const compositionBlock = buildCompositionBlock(recentCompositions)
   const yearBlock = buildYearBlock(digits, avoidYearTreatments)
   const hintBlock = hint ? `Author's steer: ${hint}` : ''
@@ -767,8 +1019,11 @@ export async function designCoverArtDirection({
       `Description: ${summary.description}`,
       `Signature motif: ${summary.signatureMotif}`,
       `Original medium: ${summary.medium}`,
+      summary.strength ? `Visual strength: ${summary.strength} of 5` : '',
+      summary.place ? `Place: ${summary.place}` : '',
       `People: ${summary.people || 'none'}`,
-      hasPeople(summary) && !isCastable(summary) ? 'Castable: no - the faces on this sleeve are too small to reproduce recognisably; do not cast its people' : '',
+      hasPeople(summary) && isCastable(summary) ? `Castable: yes${summary.faceHeight ? ` - largest face is ${Math.round(summary.faceHeight * 100)}% of the sleeve height` : ''}` : '',
+      hasPeople(summary) && !isCastable(summary) ? `Castable: no - ${uncastableReason(summary)}; do not cast or depict its people${summary.place ? ', but its place is fully available as the location' : ''}` : '',
       summary.palette.length > 0 ? `Palette: ${summary.palette.join(', ')}` : ''
     ].filter(Boolean).join('\n'))
     .join('\n\n')
@@ -780,17 +1035,25 @@ Choose the creative direction yourself from those visual findings alone. Lean to
 
 Week-to-week variety comes from the scene, not the medium. A tabletop paper diorama or collage assemblage is the path of least resistance when several sleeves are graphic or illustrated, and leaning on it has already produced a long unbroken run of near-identical covers; swapping to a painting every week is the same failure in a different coat. Vary the location, the staging, the time of day, the light, the viewpoint, and the photographic treatment, and treat any move away from photography as a choice you must actively justify against this week's artwork.
 
-Default to bright, open, well-exposed light: daylight exteriors, sunlit interiors, bright overcast, golden hour, or a high-key studio, so the sleeve colours read clean and saturated at a small size. Bright and saturated does not mean lush: do not dress the scene with flowers, potted plants, vines, ivy, hedges, lawns, or gardens. Flowers and foliage have crept into almost every recent cover as filler and made them look alike. Use a plant only when a sleeve itself shows it (or, on a Year in Music cover, when the digits themselves are grown or cut from it), and keep it inside that contribution rather than spreading it across the scene. Prefer locations that are not gardens, parks, courtyards, or meadows unless a sleeve puts you there. Night, dusk, stage lighting, and low-key "moody" treatments are the other path of least resistance for rock and alternative sleeves, and leaning on them produced a run of dark, murky covers; use them only when this week's covers genuinely demand it. Do not default to wet, rain-slicked, flooded, or mirror-glossy floors reflecting coloured lights, fog, haze, or smoke as atmosphere - use water or haze only when a sleeve itself shows it. Keep the image clean and crisp: no heavy film grain, faded blacks, or distressed-print texture.
+Light the picture well, wherever it is set. Outdoor daylight is not the default and neither is night: the setting rules below decide which kinds of place are open this week, and an interior, a studio, or a lit night scene is as good a choice as a sunny exterior. Whatever you choose, the cast's faces are properly lit and the sleeve colours read clean at a small size - a night or interior cover is lit like a good editorial photograph, not left murky. Do not dress the scene with flowers, potted plants, vines, ivy, hedges, lawns, or gardens. Flowers and foliage have crept into many recent covers as filler and made them look alike. Use a plant only when a sleeve itself shows it (or, on a Year in Music cover, when the digits themselves are grown or cut from it), and keep it inside that contribution rather than spreading it across the scene. Prefer locations that are not gardens, parks, courtyards, or meadows unless a sleeve puts you there. Do not default to wet, rain-slicked, flooded, or mirror-glossy floors reflecting coloured lights, fog, haze, or smoke as atmosphere - use water or haze only when a sleeve itself shows it. Keep the image clean and crisp: no heavy film grain, faded blacks, or distressed-print texture.
 
 Cohesion comes first. The picture must read as one real photograph of one moment in one place - something a photographer could have walked up to and shot - not a set of stations where each sleeve gets its own corner, alcove, prop, or figure. Decide what is happening in the scene before deciding what goes in it. It is fine, and usually better, for several sources to contribute nothing but colour, light, material, or weather, and for one or two to contribute nothing at all; a cover that finds a place for every sleeve reads as an exhibition, not a picture.
 
 Cast at most ${MAX_CAST} sources as people. People are where a cover is won or lost, and every extra group of sleeve people becomes another pasted-in island. Choose the one or two portraits that best suit the moment and leave the others' people out entirely: a sleeve whose people are not cast may still lend its palette, setting, or an object, but nobody from it appears. List the cast in "cast" by source number.
 
-Recognisability is the point for the people you do cast. Stage that sleeve's portrait inside the world rather than recasting the person into a new performance: keep their pose, expression, gaze, hair, and styling, and change where they are, what surrounds them, and the light falling on them - they are standing in this scene's light, not the sleeve's studio. Do not have them asleep, turned away, mid-motion, or half-hidden by steam, shadow, or crowd unless the sleeve does, and never let the photographic treatment - motion blur, long exposure, fog, shallow focus - touch an identifiable face. The treatment belongs to the environment; the people are the fixed points. Place them inside the scene at the scale of the space around them - full figure or three-quarter, sharing the ground and the light with everything else - not as an oversized cropped head looming at the edge of the frame over a distant view, and not washed in the sleeve's coloured light. A close crop is fine only when that person is the whole picture.
+Cast the strongest portraits, not the most convenient ones. Each summary says whether its people are castable and how large the largest face is: a face can only be copied when there is enough of it, so prefer the sleeves with the largest faces and the fewest people, and never cast a sleeve marked "Castable: no" - its people do not appear in any form, and neither does a stand-in for them. Never cast or depict a child. When a week's best portrait is available, build the picture around it instead of around whichever sleeve suggests the cleverest location. A cover with one well-copied person beats a cover with two groups of strangers, and a cover with nobody in it beats both when no sleeve has a usable face.
+
+A sleeve's people and its place are separate things. When a summary has a "Place", that location can be the cover's location whether or not its people are castable: rebuild that room, street, or landscape as a real place - its architecture, furniture, surfaces, and light, recognisable to anyone who knows the sleeve - with none of the sleeve's own people in it, and stage this week's cast there. A sleeve marked "Castable: no" with a strong place is often the best location you have, so do not write it off as a single borrowed prop. A sleeve used this way takes the "lead" role as the place, alongside the cast sleeve as the other lead. Take the location from one sleeve only; do not merge two sleeves' places.
+
+Lead with the strongest sleeves. "Visual strength" rates how much each sleeve gives you to photograph; the picture is built from the high-rated ones, and a weak sleeve contributes colour or nothing.
+
+Recognisability is the point for the people you do cast. Stage that sleeve's portrait inside the world rather than recasting the person into a new performance: keep their pose, expression, gaze, hair, and styling, and change where they are, what surrounds them, and the light falling on them - they are standing in this scene's light, not the sleeve's studio. Do not have them asleep, turned away, mid-motion, or half-hidden by steam, shadow, or crowd unless the sleeve does, and never let the photographic treatment - motion blur, long exposure, fog, shallow focus - touch an identifiable face. The treatment belongs to the environment; the people are the fixed points. Place them inside the scene at the scale of the space around them - three-quarter length or closer, in the near or middle ground, sharing the ground and the light with everything else - not as an oversized cropped head looming at the edge of the frame over a distant view, and not washed in the sleeve's coloured light. A close crop is fine only when that person is the whole picture. Point the camera at the cast the way the sleeve's camera did - front-on if the sleeve is front-on - so their pose and gaze still make sense: never look straight down on them, and never put them so far away that their faces are a few pixels high.
 
 In the final "prompt", name every cast person by their attached reference rather than by appearance alone - "the woman from reference image 8", "the five people from reference image 7" - using the source numbers you were given. The album images are attached to the image model in that numbered order, and a person described only by looks becomes a new invented face. A code-appended reference map repeats the numbers, so they must match.
 
-Invent one specific, surprising composition with a clear visual hierarchy. Pick two, at most three, sources to lead as people or major objects. Give at most three sources a physical object; the rest lend palette, material, or light only. A scene that gives every sleeve its own prop - a machine for one, a carving for another, a star for a third - reads as a prop shop, not a place. Transform motifs into the chosen world rather than reproducing album sleeves. No sleeve may appear as a picture on a surface - not a mural, painted wall, painted floor or court marking, backdrop, banner, flag, poster, sign, emblem, plaque, tile, decal, framed picture, painted panel, carved relief, cut-out, or the image on a screen, monitor, or television - however it is justified, "adapted as decor" included. A sleeve's faces and figures appear only as real cast people, never as a picture of them. Graphic, abstract, and illustrated sleeves are where this goes wrong, because they have no object to borrow. Translate them into the physical world instead: their colours become the paint of a car, an awning, a shirt, stage gels, or light through coloured glass; their shapes become a real object, a piece of furniture, a sculpture, a shadow, or a building's form; or they contribute only palette. If a graphic sleeve has no natural physical form in this scene, let it contribute colour alone.
+Invent one specific, surprising composition with a clear visual hierarchy. The sleeves do not contribute equally, and they do not contribute nothing. Give every source you use one of three roles. "lead": one source, at most ${MAX_LEADS}, that the picture is built around - the cast, or the main subject or place. "support": ${MIN_SUPPORTS} to ${MAX_SUPPORTS} further sources that each appear as one real, recognisable thing taken from that sleeve - an object on a table, a piece of furniture, something worn or held, an animal, a fixture, a detail of the room - clearly smaller and quieter than the lead, placed where such a thing would plausibly be, and noticed on a second look. Each support is a different sleeve: several things from one sleeve count once, a lead sleeve's extra details do not count as supports, and lending a colour is the colour role, not a support. Someone who knows the record should be able to spot it. "colour": the remaining sources, which lend only palette, material, or light, or are left out. A cover where only one sleeve is recognisable is that sleeve restaged, not a picture of the week; a cover where every sleeve gets its own prop - a machine for one, a carving for another, a star for a third - is a prop shop. Aim between them: one clear subject and a few finds around it.
+
+The image model is told to avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, weapons, and hate symbols, so do not write any of them into the scene. A sleeve built on such a motif - a resuscitation dummy, an operating table, a skull, a gun - contributes its colours only; do not restage it as a prop. Transform motifs into the chosen world rather than reproducing album sleeves. No sleeve may appear as a picture on a surface - not a mural, painted wall, painted floor or court marking, backdrop, banner, flag, poster, sign, emblem, plaque, tile, decal, framed picture, painted panel, carved relief, cut-out, or the image on a screen, monitor, or television - however it is justified, "adapted as decor" included. A sleeve's faces and figures appear only as real cast people, never as a picture of them. Graphic, abstract, illustrated, and lettering-led sleeves are where this goes wrong, because they have no object to borrow. They make good supports when their motif is already a thing - a snake, a flame, a bird, a flower, a globe, a lamp - which can simply be there, real and at its natural size. When the motif is only a shape, an emblem, or lettering, the sleeve takes the colour role: the paint of a car, an awning, a shirt, a wall, stage gels, or light through coloured glass. Never invent a contraption, sculpture, or piece of equipment just to stand in for a logo or emblem.
 
 Treat each identifiable person as one unique identity and plan only one depiction of them across the whole composition. Do not reuse the same person as both a live figure and a secondary image, reflection, poster, billboard, screen, portrait, silhouette, or background face. Preserve repeated likenesses only when that repetition is visibly intrinsic to one source cover, and contain it within that source's single contribution.
 
@@ -800,14 +1063,16 @@ ${avoidBlock}
 
 ${avoidMediaBlock}
 
+${settingBlock}
+
 ${lightingBlock}
 
 ${compositionBlock}
 
 ${yearBlock}
 
-Return JSON exactly as {"concept":"string","medium":"string","lighting":"string","composition":"string",${digits ? '"yearTreatment":"string",' : ''}"creativeDirection":"string","scene":"string","cast":[1],"elements":[{"source":1,"element":"string"}],"palette":["string"],"mood":"string","prompt":"string"}.
-"concept" is at most 15 words and is saved to the do-not-repeat history. "medium" is at most 8 words naming only the chosen medium or technique - it is saved to the history, and any non-photographic medium is refused on future weeks, so be specific ("daylight location photography", "gouache on board") rather than generic ("mixed media"). "lighting" is at most 6 words naming the time of day and main light source ("midday sun through high windows", "night under neon") - it is saved to the history, recent set-ups are refused on future weeks, and a low-light cover forces daylight on the next one. "composition" is at most 8 words naming the camera position and framing ("low angle, lone figure off-centre", "top-down over a crowded floor") - it is saved to the history and recent ones are refused on future weeks.${digits ? ` "yearTreatment" is at most 10 words naming what the digits ${digits} are made of and where they sit ("hedge-cut digits on a hillside", "marquee bulbs above a theatre door") - it is saved to the history and refused on later Year in Music covers. The final "prompt" must describe the year treatment explicitly and quote the digits as "${digits}".` : ''} "creativeDirection" names the chosen medium and visual approach in one sentence. "elements" records how each numbered source contributes; leave out any source that contributes nothing. "cast" lists the source numbers whose people appear, at most ${MAX_CAST}, or is empty.`
+Return JSON exactly as {"concept":"string","medium":"string","setting":"string","lighting":"string","composition":"string",${digits ? '"yearTreatment":"string",' : ''}"creativeDirection":"string","scene":"string","cast":[1],"elements":[{"source":1,"role":"lead","element":"string"}],"palette":["string"],"mood":"string","prompt":"string"}.
+"concept" is at most 15 words and is saved to the do-not-repeat history. "medium" is at most 8 words naming only the chosen medium or technique - it is saved to the history, and any non-photographic medium is refused on future weeks, so be specific ("daylight location photography", "gouache on board") rather than generic ("mixed media"). "setting" is exactly one of "exterior", "interior", "studio", or "night" - it is saved to the history and a setting used too often is refused on future weeks. "lighting" is at most 6 words naming the time of day and main light source ("window light across a bar", "softbox on grey seamless", "street lamps after rain") - it is saved to the history and recent set-ups are refused on future weeks. "composition" is at most 8 words naming the camera position and framing ("low angle, lone figure off-centre", "top-down over a crowded floor") - it is saved to the history and recent ones are refused on future weeks.${digits ? ` "yearTreatment" is at most 10 words naming what the digits ${digits} are made of and where they sit ("hedge-cut digits on a hillside", "marquee bulbs above a theatre door") - it is saved to the history and refused on later Year in Music covers. The final "prompt" must describe the year treatment explicitly and quote the digits as "${digits}".` : ''} "creativeDirection" names the chosen medium and visual approach in one sentence. "elements" records how each numbered source contributes, with its "role" as exactly "lead", "support", or "colour"; leave out any source that contributes nothing. Every "support" element must also be written into the "prompt" as a concrete thing with a place in the scene. "cast" lists the source numbers whose people appear, at most ${MAX_CAST}, or is empty.`
 
   const requestText = buildArtDirectionRequestText(hintBlock, summaryBlock)
   const requestDirection = async correction => {
@@ -859,12 +1124,23 @@ Return JSON exactly as {"concept":"string","medium":"string","lighting":"string"
       if (looming.length > 0) {
         problems.push(`it puts the person from source${looming.length > 1 ? 's' : ''} ${looming.join(', ')} at the extreme edge of the frame or under coloured light, which reads as a pasted-in cut-out`)
       }
+      const lettering = digits ? [] : findLettering(candidate.prompt)
+      if (lettering.length > 0) {
+        problems.push(`it asks for lettering, which the cover may not contain ("${lettering[0]}") - a sleeve's lettering or tattoo contributes colour or nothing`)
+      }
+      if (isDistantCast(candidate)) {
+        problems.push(`it casts people but shoots them from above or from far away ("${candidate.composition}"), so their faces are too small to recognise`)
+      }
+      problems.push(...findHierarchyProblems(candidate.elements, coverSummaries.length).map(problem => `the balance is wrong: ${problem}`))
+      if (refused.includes(candidate.setting)) {
+        problems.push(`it is set as "${candidate.setting}", which is refused this week`)
+      }
       return problems
     }
     const problems = problemsWith(direction)
     if (problems.length > 0) {
       if (debug) console.log(`  Art director brief rejected (${problems.join('; ')}); asking again`)
-      direction = await requestDirection(`Your previous answer was rejected: ${problems.join('; and ')}. Answer again with at most ${MAX_CAST} cast sources and no people from any other source, no sleeve shown as a picture on any surface, screen, sign, or carving - translate graphic sleeves into real objects, materials, colour, or light, or let them contribute palette only - cast people standing in the scene at its own scale and in its own light, and one cohesive moment rather than a station for each sleeve.`)
+      direction = await requestDirection(`Your previous answer was rejected: ${problems.join('; and ')}. Answer again with at most ${MAX_CAST} cast sources and no people from any other source, no sleeve shown as a picture on any surface, screen, sign, or carving - translate graphic sleeves into real objects, materials, colour, or light, or let them contribute palette only - cast people standing in the scene at its own scale and in its own light, photographed from eye level at three-quarter length or closer,${refused.length > 0 ? ` a setting that is not ${refused.join(' or ')},` : ''} one or two lead sources with ${MIN_SUPPORTS} to ${MAX_SUPPORTS} others each present as a real, recognisable supporting element, and one cohesive moment rather than a station for each sleeve.`)
       const remaining = problemsWith(direction)
       if (remaining.length > 0) console.warn(`  Art director brief still has problems: ${remaining.join('; ')}`)
     }
@@ -886,10 +1162,11 @@ export function buildGenerationPrompt(artDirection, coverSummaries = [], { year,
   const yearDirective = digits
     ? `The year "${digits}" appears exactly once${treatment ? ` as ${treatment}` : ''}, built into the scene and lit like the rest of the photograph. It is the dominant subject and the first thing the eye reads: the digits span at least half the width of the frame, sit high or centred rather than along the bottom edge, and read face-on and legibly at thumbnail size, with the album motifs and people arranged around it.`
     : ''
+  const cast = Array.isArray(artDirection?.cast) ? artDirection.cast : null
   return [
     creativePrompt,
     yearDirective,
-    buildReferenceMap(coverSummaries, Array.isArray(artDirection?.cast) ? artDirection.cast : null, closeUps),
-    `Hard constraints (override any conflicting source material): ${buildHardConstraints({ year: digits }).join(' ')}`
+    buildReferenceMap(coverSummaries, cast, closeUps),
+    `Hard constraints (override any conflicting source material): ${buildHardConstraints({ year: digits, hasCast: Boolean(cast?.length) }).join(' ')}`
   ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim()
 }

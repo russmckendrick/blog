@@ -3,214 +3,340 @@
   "date": "2026-11-16",
   "type": "cover",
   "lane": null,
-  "lighting": "hard midday sun",
-  "composition": "top-down over concrete apron",
+  "setting": "night",
+  "lighting": "neon bar light and sconces",
+  "composition": "eye-level booth portrait, side-framed",
   "cast": [
-    1,
-    8
+    1
   ],
   "closeUps": [
     {
       "source": 1,
       "reference": 9
-    },
-    {
-      "source": 8,
-      "reference": 10
     }
   ],
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Clinic loading bay with map shadows",
-  "medium": "daylight location photography",
-  "creativeDirection": "Use daylight location photography to stage one crisp overhead moment in an industrial clinic loading bay, letting the strongest sleeves become real people and objects while the graphic covers resolve into markings, equipment colour, and small physical details.",
-  "scene": "A sun-bleached concrete loading apron beside a medical warehouse or ambulance service building, seen almost straight down from an upper-storey window or fire escape. Painted handling lines and faded freight markings crisscross the ground. A large weathered world map is painted directly onto the concrete as a practical navigation/training surface, not as a picture display, with continents and grid lines worn by use. Near one edge sits a training mannequin on a wheeled gurney in full sun. A single coiled snake lies in shadow near a drain at the lower right. The space is otherwise spare and open, with strong shadows and lots of pale concrete around the subjects.",
+  "concept": "Late bar toast by the games table",
+  "medium": "night location photography",
+  "creativeDirection": "Night location photography: a crisp editorial bar interior built around one recognisable portrait, with a few album motifs translated into ordinary bar objects and surfaces.",
+  "scene": "A warmly lit old bar interior at night, seen from eye level across the corner of a booth beside a small games table, with the room falling away softly behind.",
   "elements": [
     {
       "source": 1,
-      "element": "the four young men from reference image 1 stand full-length in a line across the worn world-map concrete, keeping their posed stillness, dark clothing, hat and cap, with long diagonal shadows cast across the map"
-    },
-    {
-      "source": 2,
-      "element": "a medical training mannequin on a gurney, head tilted back with electrode pads on its chest, placed near the band as a real object in the loading bay"
+      "role": "lead",
+      "element": "the man from reference image 1 seated in a booth, smiling and raising a stemmed cocktail glass toward the camera"
     },
     {
       "source": 3,
-      "element": "red hazardous-material paint and a small real scorch-blackened flame mark on a utility drum and on floor safety markings contribute the red-diamond warning palette without showing a graphic sign"
+      "role": "support",
+      "element": "a pair of round eyeglasses resting on the games table beside him"
     },
     {
       "source": 4,
-      "element": "a real coiled snake in the lower-right shadow, small and understated against the concrete"
+      "role": "support",
+      "element": "an acoustic guitar leaning naturally against the booth end near the wall"
+    },
+    {
+      "source": 5,
+      "role": "support",
+      "element": "a small hourglass standing on a back shelf behind the bar"
+    },
+    {
+      "source": 6,
+      "role": "support",
+      "element": "an antique sepia-toned globe on a shelf near the bottles"
+    },
+    {
+      "source": 2,
+      "role": "colour",
+      "element": "black, white, and skin-pink floral upholstery pattern on the booth seating"
     },
     {
       "source": 7,
-      "element": "lavender and blue medical tubing loops from the gurney, with a star-shaped blue valve assembly echoing the circular emblem form"
+      "role": "colour",
+      "element": "deep black background areas and warm peach highlights in the skin tones"
     },
     {
       "source": 8,
-      "element": "the young girl from reference image 8 crouches forward on her hands on the blank concrete at the right side, preserving her direct surreal stare and light dress; a single small flower lies beneath one hand"
+      "role": "colour",
+      "element": "clean white negative space in the tabletop and wall accents"
     }
   ],
   "palette": [
-    "pale concrete",
-    "sepia beige",
-    "red warning paint",
-    "black shadow",
-    "lavender tubing",
-    "clinical white"
+    "black",
+    "white",
+    "warm peach",
+    "sepia",
+    "gold",
+    "pale blue"
   ],
-  "mood": "stark, surreal, sun-struck",
+  "mood": "intimate, witty, nocturnal",
   "coverSummaries": [
     {
       "source": 1,
-      "filename": "The-World-According-To-Clash.jpg",
-      "album": "The World According To Clash",
+      "filename": "20th-Century-Paddy-The-Songs-Of-Shane-MacGowan.jpg",
+      "album": "20th Century Paddy The Songs Of Shane MacGowan",
       "artist": "",
-      "description": "A sepia-toned photomontage shows four young men standing full-length across the lower half of the image on top of a world map floor with latitude-like grid lines and faint continent outlines. Behind them is a cloudy sky gradient. The figures wear dark trousers and jackets or shirts; one wears a wide-brim hat, one a flat cap and scarf. Long shadows stretch diagonally across the map surface. Large block text dominates the upper half, but the main visual scene is the band posed against the map-and-sky backdrop.",
-      "signatureMotif": "four men standing on a world map floor",
-      "medium": "photographic collage",
-      "people": "four young men standing in a line on a map backdrop",
+      "description": "A black-and-white portrait of one adult man seated and smiling, holding up a stemmed cocktail glass toward the viewer. Behind him is a dense collage-like wall of white chalk-style doodles, handwritten marks, symbols, figures, bottles, hearts, crosses, faces, and rough sketches on black. Small gold-toned highlights appear on some jewelry and the drink.",
+      "signatureMotif": "smiling man raising a cocktail glass before a wall of doodles",
+      "medium": "photograph with drawn collage background",
+      "people": "one man seated, smiling, and holding up a cocktail glass",
       "moderationRisk": "",
       "peopleBox": [
-        0.31,
-        0.43,
-        0.93,
-        0.78
+        0.25,
+        0.47,
+        0.72,
+        0.99
       ],
-      "faceHeight": 0.08,
+      "faceHeight": 0.16,
+      "faceBoxes": [
+        [
+          0.35,
+          0.48,
+          0.52,
+          0.64
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 5,
       "palette": [
-        "sepia",
-        "beige",
         "black",
-        "cream",
+        "white",
+        "grey",
+        "gold",
+        "brown"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Sublime.jpg",
+      "album": "Sublime",
+      "artist": "",
+      "description": "A centered photograph of a shirtless person's back and neck, cropped from just below the shoulders upward, with a large tattoo across the upper back. The image is framed by dense black-and-white illustrated flowers and roses around all edges.",
+      "signatureMotif": "tattooed bare back framed by flowers",
+      "medium": "photograph with illustrated border",
+      "people": "one person seen from behind with a tattooed back",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.28,
+        0.02,
+        0.72,
+        0.3
+      ],
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "skin pink",
+        "black",
+        "white",
         "grey"
       ]
     },
     {
-      "source": 2,
-      "filename": "The-Bends.jpg",
-      "album": "The Bends",
-      "artist": "",
-      "description": "A close-up, grainy photograph of a medical mannequin or dummy fills most of the frame against a black background. The head is tilted back with eyes closed and mouth slightly open, and the upper chest and neck are visible. Two round electrode pads are attached to the chest. A bold horizontal red band with white lettering crosses the lower middle, partially covering the torso.",
-      "signatureMotif": "close-up of a medical mannequin face and chest with electrodes",
-      "medium": "photograph",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "black",
-        "peach",
-        "pink",
-        "red",
-        "white"
-      ]
-    },
-    {
       "source": 3,
-      "filename": "Blue-Lines.jpg",
-      "album": "Blue Lines",
+      "filename": "The-Sound-Of-McAlmont-Butler.jpg",
+      "album": "The Sound Of McAlmont Butler",
       "artist": "",
-      "description": "A minimalist graphic design on a tan paper-like background features a large red diamond hazard sign centered in the frame. Inside the diamond is a black flame symbol above a short horizontal bar. Oversized black lettering overlaps the sign, creating a layered poster-like composition.",
-      "signatureMotif": "black flame inside a red diamond hazard sign",
-      "medium": "graphic design",
-      "people": "none",
+      "description": "A soft outdoor portrait of two adult men from the chest up against a blurred pale blue background. The man on the left wears round glasses and has partially shaved hair with long dreadlocks; the man on the right has medium brown hair and looks upward. Both wear dark buttoned shirts.",
+      "signatureMotif": "two men posed against a soft blue sky-like background",
+      "medium": "photograph",
+      "people": "two men standing side by side in dark shirts",
       "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
+      "peopleBox": [
+        0.03,
+        0.48,
+        0.84,
+        0.99
+      ],
+      "faceHeight": 0.2,
+      "faceBoxes": [
+        [
+          0.03,
+          0.54,
+          0.22,
+          0.74
+        ],
+        [
+          0.54,
+          0.5,
+          0.75,
+          0.7
+        ]
+      ],
+      "peopleCount": 2,
+      "minors": false,
+      "strength": 4,
       "palette": [
-        "tan",
-        "red",
-        "black",
+        "pale blue",
+        "white",
+        "dark green",
+        "navy",
         "brown"
       ]
     },
     {
       "source": 4,
-      "filename": "Metallica.jpg",
-      "album": "Metallica",
-      "artist": "",
-      "description": "A very dark, nearly black cover with a faint coiled snake drawn in grey at the lower right. In the upper left, a barely visible angular metallic or stone-like shape emerges from the darkness. The composition is sparse and shadowy, with most details subdued into black.",
-      "signatureMotif": "coiled snake outline in the lower right",
-      "medium": "dark photographic/graphic cover art",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "black",
-        "dark grey",
-        "charcoal"
-      ]
-    },
-    {
-      "source": 5,
       "filename": "Definitely-Maybe.jpg",
       "album": "Definitely Maybe",
       "artist": "",
-      "description": "A softly tinted interior photograph of a living room shows five young men arranged casually around the space. One sits on a sofa holding an acoustic guitar, one sits in a chair, one stands by bright windows, one sits on the floor facing a television, and one lies on the wooden floor in the foreground with his head nearest the camera. The room contains a fireplace, shelves, framed pictures, a standing globe-like lamp or large spherical object, a potted plant, a mirror, glasses of red drink, bottles, and another guitar leaning near the window. The perspective leads inward along the floorboards toward the back windows.",
-      "signatureMotif": "five men posed around a cluttered living room",
+      "description": "A staged interior photograph of a bright living room with five adult men arranged around the space. One sits holding an acoustic guitar on a sofa, one reclines on the wooden floor in the foreground, one sits near a television, and two stand or sit toward the back. The room contains a fireplace, shelves, framed pictures, plants, a globe-like hanging object, glasses of red drink, bottles, and another guitar leaning near the window.",
+      "signatureMotif": "five men posed in a living room",
       "medium": "photograph",
-      "people": "five young men in a living room, one lying on the floor and others sitting or standing",
+      "people": "five men posed around a living room, including one lying on the floor and one holding a guitar",
       "moderationRisk": "",
       "peopleBox": [
-        0.14,
-        0.34,
-        0.72,
-        0.93
+        0.12,
+        0.3,
+        0.79,
+        0.98
       ],
-      "faceHeight": 0.11,
+      "faceHeight": 0.12,
+      "faceBoxes": [
+        [
+          0.12,
+          0.38,
+          0.23,
+          0.49
+        ],
+        [
+          0.34,
+          0.41,
+          0.41,
+          0.5
+        ],
+        [
+          0.46,
+          0.33,
+          0.54,
+          0.43
+        ],
+        [
+          0.58,
+          0.52,
+          0.67,
+          0.61
+        ],
+        [
+          0.41,
+          0.83,
+          0.55,
+          0.95
+        ]
+      ],
+      "peopleCount": 5,
+      "minors": false,
+      "strength": 5,
       "palette": [
-        "cream",
         "pale blue",
+        "cream",
         "beige",
         "brown",
         "black"
       ]
     },
     {
-      "source": 6,
-      "filename": "Sublime.jpg",
-      "album": "Sublime",
+      "source": 5,
+      "filename": "we-are-unpeople.jpg",
+      "album": "we are unpeople",
       "artist": "",
-      "description": "A centered photograph shows the bare back and neck of a person seen from behind, with short reddish hair visible at the top. Across the upper back is a large black tattoo in ornate lettering. The image is framed by a decorative black-and-white border of large flowers, leaves, and roses around all sides. The background behind the person is softly blurred.",
-      "signatureMotif": "bare back with a large upper-back tattoo framed by flowers",
-      "medium": "photograph with illustrated floral border",
-      "people": "one person seen from behind with a tattoo across the upper back",
-      "moderationRisk": "",
-      "peopleBox": [
-        0.34,
-        0,
-        0.66,
-        0.24
-      ],
-      "faceHeight": 0.06,
-      "palette": [
-        "skin tone",
-        "black",
-        "white",
-        "grey",
-        "red"
-      ]
-    },
-    {
-      "source": 7,
-      "filename": "The-Orbs-Adventures-Beyond-the-Ultraworld.jpg",
-      "album": "The Orbs Adventures Beyond the Ultraworld",
-      "artist": "",
-      "description": "A stylized abstract graphic on a black background features a large circular form at left with a blue starburst or compass-like shape inside translucent lavender rings. Pink curved bars arc around parts of the circle. Extending from the circle to the right is a long pale lavender tubular shape, giving the whole design a futuristic emblem-like appearance. White text sits at the top, but the main image is the geometric symbol.",
-      "signatureMotif": "blue starburst inside a circular abstract emblem with a long tube-like extension",
-      "medium": "graphic design",
+      "description": "A surreal painted scene with a large yellow horned face floating above a freestanding brown door in a green valley between pale mountains. Around it are clouds, a flying swallow, a giant eye in a pearl-like frame, a severed-looking red clawed arm, a skeletal hand, an hourglass, a shell, a playing card, a small blue devil-like figure carrying a red bundle, a tiny dog, a flaming black figure, and a balloon basket carrying a human head and a white animal.",
+      "signatureMotif": "large yellow horned face above a door",
+      "medium": "painting",
       "people": "none",
       "moderationRisk": "",
       "peopleBox": null,
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "yellow",
+        "green",
+        "white",
+        "red",
+        "blue"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "The-World-According-To-Clash.jpg",
+      "album": "The World According To Clash",
+      "artist": "",
+      "description": "A sepia-toned composite image showing four adult men standing full-length across a world map floor beneath a cloudy sky. The figures wear dark, slim-fitting clothes; one has a wide-brim hat, one a flat cap and scarf. The composition places the men along the lower middle with large empty sky above.",
+      "signatureMotif": "four men standing on a world map",
+      "medium": "photographic collage",
+      "people": "four men standing in a line on a map-like floor",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.31,
+        0.43,
+        0.89,
+        0.86
+      ],
+      "faceHeight": 0.08,
+      "faceBoxes": [
+        [
+          0.39,
+          0.44,
+          0.47,
+          0.52
+        ],
+        [
+          0.54,
+          0.44,
+          0.61,
+          0.52
+        ],
+        [
+          0.68,
+          0.45,
+          0.76,
+          0.54
+        ],
+        [
+          0.82,
+          0.43,
+          0.89,
+          0.51
+        ]
+      ],
+      "peopleCount": 4,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "sepia",
+        "black",
+        "cream",
+        "grey"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "The-Bends.jpg",
+      "album": "The Bends",
+      "artist": "",
+      "description": "A close-up, high-contrast photograph of a human mannequin or medical dummy head and upper chest against a black background. The face is tilted upward with closed eyes and open mouth, and round electrode pads are attached to the chest. The image is grainy with warm skin tones and stark black surrounding it.",
+      "signatureMotif": "upturned mannequin-like face with chest electrodes",
+      "medium": "photograph",
+      "people": "none",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 4,
       "palette": [
         "black",
-        "blue",
-        "lavender",
-        "pink",
-        "white"
+        "peach",
+        "cream",
+        "red"
       ]
     },
     {
@@ -218,22 +344,33 @@
       "filename": "Beautiful-Freak.jpg",
       "album": "Beautiful Freak",
       "artist": "",
-      "description": "A mostly white cover shows a black-and-white image of a young girl crawling or leaning forward on her hands, positioned on the right half of the frame. Her eyes are enlarged to an unnatural scale, creating a surreal effect. She has dark shoulder-length hair and wears a light short-sleeved dress. A flower lies beneath one hand near the floor. Blue and black text appears on the left side, leaving a large area of white negative space.",
-      "signatureMotif": "young girl with oversized eyes leaning forward on a white background",
-      "medium": "photograph with manipulated facial features",
-      "people": "one young girl leaning forward on her hands",
+      "description": "A sparse white cover with a black-and-white image of a young girl crawling forward on hands and knees from the right side. Her eyes are enlarged unnaturally, and a flower lies beneath her chest area. The composition leaves a large blank white area on the left.",
+      "signatureMotif": "girl with oversized eyes crawling forward",
+      "medium": "photo-based manipulated image",
+      "people": "one young girl crawling forward",
       "moderationRisk": "",
       "peopleBox": [
-        0.53,
-        0.18,
-        0.91,
-        0.73
+        0.52,
+        0.31,
+        0.94,
+        0.95
       ],
-      "faceHeight": 0.24,
+      "faceHeight": 0.27,
+      "faceBoxes": [
+        [
+          0.6,
+          0.33,
+          0.82,
+          0.6
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": true,
+      "strength": 4,
       "palette": [
         "white",
-        "black",
         "grey",
+        "black",
         "light blue"
       ]
     }
@@ -241,15 +378,15 @@
   "hint": null,
   "composeBackend": "gpt-image-2-6",
   "model": "openai/gpt-image-2.6/sunburst/edit",
-  "prompt": "Almost straight down from above onto a sun-bleached concrete loading apron beside a medical warehouse, with lots of open pale ground and crisp painted handling lines; the primary subjects are the four young men from reference image 1 standing full-length in a line across a large worn world map painted on the concrete, and the young girl from reference image 8 crouched forward on her hands at the right side on blank concrete, keeping her enlarged eyes, dark shoulder-length hair, light short-sleeved dress, and the small flower beneath one hand. Near them, a medical training mannequin on a wheeled gurney rests in full sun with its head tilted back and electrode pads attached to its chest. Include a real coiled snake lying small in the lower-right shadow near a drain. Let source 3 appear only through red hazardous-material paint accents and a small scorch-blackened flame mark on a utility drum and adjacent safety floor markings, not as a graphic sign. Let source 7 appear only through looping pale lavender and pinkish medical tubing from the gurney and a blue star-shaped valve assembly. Shoot as crisp daylight location photography, physically plausible and clean, no collage look, no poster, mural, banner, or picture-on-surface references. Compose as a high overhead asymmetrical frame with the band crossing the map diagonally, the girl separated in open negative space to the right, the gurney offset near the top edge, and the snake a small discovery at lower right. Use hard midday sun with short sharp shadows and high clarity. Keep the palette pale concrete, sepia, cream, black, warning red, lavender, dusty blue, and white; mood stark, surreal, and sun-struck. Reference map for people (the album images are attached in this numbered order): reference image 1 shows four young men standing in a line on a map backdrop, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9; reference image 8 shows one young girl leaning forward on her hands, and reference image 10 is an enlarged close-up of those same people - take their faces from reference image 10. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 5, 6 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, monitor, television, sign, cut-out, or floor graphic, or carving it as a wall-mounted relief; show no sleeve's faces, heads, or figures as a picture, display, sign, or silhouette anywhere; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "prompt": "An eye-level view across the corner of a booth in a real old bar at night, framed slightly from the side so the subject sits left-of-centre and the small games table occupies the near foreground; the room behind is shallow but believable, with bottle shelves and dark wood receding softly. The primary subject is the man from reference image 1, seated at the booth at three-quarter length, smiling directly toward the camera and raising a stemmed cocktail glass in the same pose and expression as the reference, properly lit and sharply focused, wearing his jewelry with small gold glints. On the table beside him place a pair of round eyeglasses from reference image 3, natural and easy to notice on second look; let an acoustic guitar from reference image 4 lean against the booth end near the wall; place a small hourglass from reference image 5 on a back shelf behind the bar; include an antique sepia globe from reference image 6 on another shelf among bottles and glassware. Use reference image 2 only as a black-and-white floral upholstery pattern on the booth seat, with no tattoo or person shown; use reference image 7 only in the deep black surrounding areas and warm skin-tone contrast; use reference image 8 only in the clean white tabletop edge and small wall accents. Photographic realism, crisp night location photography, editorial music-blog header image. Compose it as one cohesive moment in one real place, not symmetrical, not a tableau, with the subject close enough for clear facial recognition. Light with a mix of coloured bar neon and warm wall sconces, but keep the man from reference image 1 cleanly and naturally lit, his face not tinted or obscured, colours readable at small size. Palette of black, white, sepia, gold, warm peach, and a trace of pale blue; intimate, witty, nocturnal mood. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one man seated, smiling, and holding up a cocktail glass, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 2, 3, 4, 6, 8 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, monitor, television, sign, cut-out, or floor graphic, or carving it as a wall-mounted relief; show no sleeve's faces, heads, or figures as a picture, display, sign, or silhouette anywhere; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image cleanly whatever the light: every person's face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere. Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.",
   "inputs": [
+    "20th-Century-Paddy-The-Songs-Of-Shane-MacGowan.jpg",
+    "Sublime.jpg",
+    "The-Sound-Of-McAlmont-Butler.jpg",
+    "Definitely-Maybe.jpg",
+    "we-are-unpeople.jpg",
     "The-World-According-To-Clash.jpg",
     "The-Bends.jpg",
-    "Blue-Lines.jpg",
-    "Metallica.jpg",
-    "Definitely-Maybe.jpg",
-    "Sublime.jpg",
-    "The-Orbs-Adventures-Beyond-the-Ultraworld.jpg",
     "Beautiful-Freak.jpg"
   ]
 }

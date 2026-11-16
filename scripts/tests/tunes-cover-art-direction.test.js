@@ -8,15 +8,24 @@ import {
   buildFallbackArtDirection,
   buildGenerationPrompt,
   buildReferenceMap,
+  buildSettingBlock,
   buildYearBlock,
   cameraHeight,
   closeUpBox,
+  closeUpBoxes,
   CLOSE_UP_BELOW,
+  contentScore,
   dropModerationRisks,
   isCastable,
+  isDistantCast,
   isPassage,
   MIN_CASTABLE_FACE,
+  refusedSettings,
+  settingFamily,
+  uncastableReason,
   findFlatCopies,
+  findLettering,
+  findHierarchyProblems,
   findLoomingCast,
   findPicturedFigures,
   findUncastPeople,
@@ -24,6 +33,7 @@ import {
   normalizeCast,
   normalizeModerationRisk,
   hasPeople,
+  hasPlace,
   isLowLight,
   isPhotographicMedium,
   COMPOSITION_REPEAT_WINDOW,
@@ -142,7 +152,9 @@ test('normalizes freeform art direction and appends only hard generation constra
   // makes the image model invent a face, so pose and a sharp unobscured face are hard rules.
   assert.match(prompt, /pose, expression, and gaze the sleeve shows/i)
   assert.match(prompt, /sharp, lit, unobscured, and in focus/i)
-  assert.match(prompt, /expose the image brightly/i)
+  assert.match(prompt, /expose the image cleanly whatever the light/i)
+  assert.doesNotMatch(prompt, /expose the image brightly/i, 'bright-only exposure is gone')
+  assert.doesNotMatch(prompt, /three-quarter length or closer/i, 'no cast, no cast-framing rule')
   assert.match(prompt, /heavy film grain/i)
   assert.match(prompt, /each identifiable reference person only once/i)
   assert.match(prompt, /reflection, mirror portrait, poster, billboard/i)
@@ -256,16 +268,54 @@ test('refuses the last few lighting set-ups, collapsed and newest first', () => 
   assert.match(block, /- bright overcast pool light\n- bright overcast afternoon\n- afternoon skylight and sun/)
   assert.doesNotMatch(block, /Bright overcast afternoon/, 'case-only repeats collapse')
   assert.doesNotMatch(block, /late morning window daylight/, `only the last ${LIGHTING_REPEAT_WINDOW} weeks are refused`)
-  assert.match(block, /Bright light is still the default/)
-  assert.doesNotMatch(block, /previous cover was lit as/i, 'no forcing rule after a daylight cover')
+  assert.match(block, /materially different set-up inside the setting you choose/)
+  assert.doesNotMatch(block, /Bright light is still the default/, 'the bright-only menu is gone')
 })
 
-test('a low-light previous cover forces daylight on top of the repeat list', () => {
+test('the lighting block no longer forces daylight after a low-light cover', () => {
   const block = buildLightingBlock(['dusk under practical bulbs', 'night under practical lights'])
 
-  assert.match(block, /previous cover was lit as "dusk under practical bulbs"/i)
-  assert.match(block, /must be lit by daylight/i)
+  assert.doesNotMatch(block, /must be lit by daylight/i)
   assert.match(block, /- dusk under practical bulbs\n- night under practical lights/)
+})
+
+test('reads the setting family from the field, or from old lighting phrases', () => {
+  assert.equal(settingFamily('Interior'), 'interior')
+  assert.equal(settingFamily('studio set', 'hard midday sun'), 'studio', 'an explicit setting wins')
+  assert.equal(settingFamily('', 'hard midday sun'), 'exterior')
+  assert.equal(settingFamily(null, 'bright overcast rooftop daylight'), 'exterior')
+  assert.equal(settingFamily(null, 'sunlight through tall windows'), 'interior')
+  assert.equal(settingFamily(null, 'high-key studio'), 'studio')
+  assert.equal(settingFamily(null, 'night under neon'), 'night')
+  assert.equal(settingFamily(null, ''), '')
+})
+
+test('refuses a setting used twice running or three times in five, and night twice in a row', () => {
+  assert.deepEqual(refusedSettings(['exterior', 'exterior', 'interior']), ['exterior'])
+  assert.deepEqual(refusedSettings(['interior', 'exterior', 'studio', 'exterior', 'exterior']), ['exterior'])
+  assert.deepEqual(refusedSettings(['night', 'exterior', 'interior']), ['night'])
+  assert.deepEqual(refusedSettings(['interior', 'exterior', 'studio']), [])
+  assert.deepEqual(refusedSettings([]), [])
+})
+
+test('the setting block offers all four families and names the refused and unused ones', () => {
+  const block = buildSettingBlock(['exterior', 'exterior', 'interior', 'interior', 'exterior'])
+  for (const family of ['exterior', 'interior', 'studio', 'night']) assert.match(block, new RegExp(`- ${family}:`))
+  assert.match(block, /None of them is the default/)
+  // Example places turned the families into a menu: bar, seamless studio, the same bar again.
+  assert.doesNotMatch(block, /\b(bar|kitchen|launderette|seamless|backdrop|rooftop|seafront|shopfront)\b/i)
+  assert.doesNotMatch(buildLightingBlock(['hard midday sun']), /\b(bar|kitchen|softbox|seamless|tungsten|club)\b/i)
+  assert.doesNotMatch(buildCompositionBlock([]), /\b(bar|shopfront|stage)\b/i)
+  assert.match(block, /must not be "exterior"/)
+  assert.match(block, /Not used recently: studio, night/)
+  assert.doesNotMatch(buildSettingBlock([]), /must not be/)
+})
+
+test('records the chosen setting, read from the lighting when the director omits it', () => {
+  const summaries = normalizeCoverSummaries([], sourceReferences)
+  assert.equal(normalizeArtDirection({ prompt: 'x', setting: 'night', lighting: 'street lamps' }, summaries, sourceReferences).setting, 'night')
+  assert.equal(normalizeArtDirection({ prompt: 'x', lighting: 'window light across a bar' }, summaries, sourceReferences).setting, 'interior')
+  assert.equal(normalizeArtDirection({ prompt: 'x' }, summaries, sourceReferences).setting, 'exterior')
 })
 
 test('no lighting history means no lighting block', () => {
@@ -433,7 +483,8 @@ test('reads the people box and face height from the summary, tolerating percenta
 
 test('faces too small to copy are not castable; unmeasured ones still are', () => {
   assert.equal(isCastable({ source: 1, people: 'a crowd', faceHeight: MIN_CASTABLE_FACE / 2 }), false)
-  assert.equal(isCastable({ source: 1, people: 'two men', faceHeight: 0.08 }), true)
+  assert.equal(isCastable({ source: 1, people: 'two men', faceHeight: 0.08 }), false, 'the 16 Nov 2026 compilation sleeve')
+  assert.equal(isCastable({ source: 1, people: 'two men', faceHeight: 0.3 }), true)
   assert.equal(isCastable({ source: 1, people: 'two men', faceHeight: null }), true)
   assert.deepEqual(normalizeCast([1, 2], [
     { source: 1, people: 'a crowd', faceHeight: 0.02 },
@@ -507,4 +558,88 @@ test('reads camera height from a composition and refuses a repeated one', () => 
   assert.equal(overusedCameraHeight(['low angle', 'eye-level face-on', 'high angle over counter']), '')
   assert.match(buildCompositionBlock(['low angle, off-centre figure', 'low angle, diagonal action']), /must not be: no low angle/)
   assert.doesNotMatch(buildCompositionBlock(['face-on room interior', 'low angle, off-centre figure']), /must not be: no low angle/)
+})
+
+test('children and large groups with small faces are never cast', () => {
+  const [girl, group, duo] = normalizeCoverSummaries([
+    { source: 1, people: 'one young girl leaning forward', peopleCount: 1, minors: true, faceHeight: 0.24 },
+    { source: 2, people: 'five young men in a living room', peopleCount: 5, minors: false, faceHeight: 0.11 },
+    { source: 3, people: 'two men side by side', peopleCount: 2, minors: 'false', faceHeight: 0.4 }
+  ], [1, 2, 3].map(source => ({ source, filename: `${source}.jpg`, album: `Album ${source}` })))
+  assert.match(uncastableReason(girl), /child/)
+  assert.match(uncastableReason(group), /large group/)
+  assert.equal(uncastableReason(duo), '')
+  assert.deepEqual(normalizeCast([1, 2, 3], [girl, group, duo]), [3])
+})
+
+test('ranks sleeves by what is in them, not by pixels', () => {
+  const duo = { people: 'two men', peopleCount: 2, faceHeight: 0.4, strength: 4 }
+  const black = { people: 'none', strength: 1 }
+  // The portrait was played least and has the worse pixel score; it still wins.
+  assert.ok(contentScore(duo, { rank: 9, pixelScore: 29 }) > contentScore(black, { rank: 5, pixelScore: 40 }))
+  assert.ok(contentScore({ people: 'none', strength: 5 }) > contentScore({ people: 'none', strength: 2 }))
+  assert.ok(contentScore({ people: 'none' }, { rank: 0 }) > contentScore({ people: 'none' }, { rank: 6 }), 'play rank separates ties')
+})
+
+test('a small cast gets one close-up per face, left to right; otherwise the group crop', () => {
+  const summary = { people: 'two men', peopleCount: 2, faceHeight: 0.12, peopleBox: [0.2, 0.2, 0.8, 0.6], faceBoxes: [[0.6, 0.25, 0.7, 0.4], [0.3, 0.25, 0.4, 0.4]] }
+  const boxes = closeUpBoxes(summary)
+  assert.equal(boxes.length, 2)
+  assert.ok(boxes[0][0] < boxes[1][0], 'sorted left to right')
+  assert.ok(boxes[1][0] < 0.6 && boxes[1][2] > 0.7, 'padded round the face')
+  assert.equal(closeUpBoxes({ ...summary, faceBoxes: [summary.faceBoxes[0]] }).length, 1, 'a missing face falls back to the group')
+  assert.deepEqual(closeUpBoxes({ ...summary, faceBoxes: [summary.faceBoxes[0]] })[0], closeUpBox(summary))
+  assert.deepEqual(closeUpBoxes({ ...summary, faceHeight: 0.4 }), [])
+  const map = buildReferenceMap([{ source: 2, people: 'two men' }], [2], [{ source: 2, reference: 9 }, { source: 2, reference: 10 }])
+  assert.match(map, /reference images 9, 10 are enlarged close-ups of those same people, one face each from left to right/)
+})
+
+test('a cast is never shot from above or from far away', () => {
+  assert.equal(isDistantCast({ cast: [1], composition: 'top-down over concrete apron', prompt: 'x' }), true)
+  assert.equal(isDistantCast({ cast: [1], composition: 'eye level, off-centre', prompt: 'Almost straight down from above onto a loading apron. The men stand in a line.' }), true)
+  assert.equal(isDistantCast({ cast: [], composition: 'top-down over concrete apron', prompt: 'x' }), false, 'fine with nobody in it')
+  assert.equal(isDistantCast({ cast: [2], composition: 'face-on room, subject right', prompt: 'A bar at eye level under overhead lamps.' }), false)
+  const prompt = buildGenerationPrompt({ prompt: 'A bar.', cast: [2] }, [{ source: 2, people: 'two men' }])
+  assert.match(prompt, /three-quarter length or closer/)
+})
+
+test('one or two sleeves lead, a few support, and the rest lend colour', () => {
+  const roles = list => list.map((role, index) => ({ source: index + 1, role, element: 'x' }))
+  assert.deepEqual(findHierarchyProblems(roles(['lead', 'support', 'support', 'colour', 'colour']), 8), [])
+  assert.match(findHierarchyProblems(roles(['lead', 'colour', 'colour', 'colour']), 8)[0], /one sleeve restaged/)
+  assert.match(findHierarchyProblems(roles(['lead', 'support', 'support', 'support', 'support', 'support']), 8)[0], /prop shop/)
+  assert.match(findHierarchyProblems(roles(['lead', 'lead', 'lead', 'support', 'support']), 8)[0], /at most 2 may/)
+  assert.match(findHierarchyProblems(roles(['support', 'support']), 8)[0], /no source leads/)
+  assert.deepEqual(findHierarchyProblems(roles(['lead', 'support']), 2), [], 'a two-sleeve week needs one support')
+  assert.deepEqual(findHierarchyProblems([{ source: 1, element: 'x' }], 8), [], 'briefs without roles are not judged')
+  const direction = normalizeArtDirection({ prompt: 'x', elements: [{ source: 1, role: 'Lead', element: 'a man' }, { source: 2, role: 'palette only', element: 'blue' }] }, normalizeCoverSummaries([], sourceReferences), sourceReferences)
+  assert.deepEqual(direction.elements.map(item => item.role), ['lead', 'colour'])
+})
+
+test('supports are counted by sleeve, and a lead sleeve cannot also fill them', () => {
+  // The first 16 Nov render under the hierarchy: three "supports" from the sleeve already leading.
+  const elements = [
+    { source: 1, role: 'lead' }, { source: 5, role: 'lead' },
+    { source: 5, role: 'support' }, { source: 5, role: 'support' }, { source: 4, role: 'support' }
+  ]
+  assert.match(findHierarchyProblems(elements, 8)[0], /only 1 source besides the lead/)
+  assert.deepEqual(findHierarchyProblems([...elements, { source: 3, role: 'support' }], 8), [])
+})
+
+test('catches lettering the director writes into its own prompt', () => {
+  assert.equal(findLettering('A studio set. Black tattoo-style lettering is painted across a bare plaster panel leaning near the edge.').length, 1)
+  assert.deepEqual(findLettering('A studio set with a guitar by the door; no lettering or signage anywhere.'), [])
+  assert.deepEqual(findLettering('The man raises a glass beside a worn globe.'), [])
+})
+
+test('a sleeve keeps its place even when its people cannot be cast', () => {
+  const [room, graphic] = normalizeCoverSummaries([
+    { source: 1, people: 'five men posed around a living room', peopleCount: 5, faceHeight: 0.11, place: 'a bay-windowed living room with bare floorboards and a fireplace' },
+    { source: 2, people: 'none', place: 'None' }
+  ], sourceReferences)
+  assert.equal(isCastable(room), false)
+  assert.equal(hasPlace(room), true)
+  assert.match(room.place, /living room/)
+  assert.equal(hasPlace(graphic), false)
+  assert.equal(graphic.place, '')
 })

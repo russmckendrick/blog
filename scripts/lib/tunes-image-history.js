@@ -137,6 +137,21 @@ export async function recentLighting(type, count = 8, historyPath = HISTORY_PATH
     .filter(Boolean)
 }
 
+// The newest `count` covers' setting and lighting, most recent first, for the setting rotation.
+// Entries written before the `setting` field existed still carry their lighting, which is
+// enough to read the family from, so they are returned rather than skipped.
+export async function recentSettings(type, count = 8, historyPath = HISTORY_PATH) {
+  if (!Number.isFinite(count) || count <= 0) return []
+  const history = await loadHistory(historyPath)
+  const matching = dedupeByTypeAndDate(
+    history.entries.filter(entry => entry?.type === type && (entry?.setting || entry?.lighting))
+  )
+  return byDateAscending(matching)
+    .slice(-count)
+    .reverse()
+    .map(entry => ({ setting: entry.setting || null, lighting: entry.lighting || null }))
+}
+
 // The newest `count` recorded compositions (camera position and framing) for an image type,
 // most recent first. Entries predating the field are skipped.
 export async function recentCompositions(type, count = 8, historyPath = HISTORY_PATH) {
