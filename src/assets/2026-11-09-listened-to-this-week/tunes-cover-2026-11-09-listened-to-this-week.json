@@ -3,76 +3,87 @@
   "date": "2026-11-09",
   "type": "cover",
   "lane": null,
-  "setting": "studio",
-  "lighting": "strobe backlight and fill",
-  "composition": "flat face-on near-group portrait",
+  "setting": "interior",
+  "lighting": "late afternoon skylight and lamps",
+  "composition": "eye-level medium-long portrait",
   "cast": [
     2
   ],
-  "closeUps": [
-    {
-      "source": 2,
-      "reference": 9
-    }
-  ],
+  "closeUps": [],
+  "castCrops": [],
+  "peopleAudit": {
+    "expected": 1,
+    "counted": 1,
+    "retried": false
+  },
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Backlit band portrait on a white film set",
-  "medium": "studio location photography",
-  "creativeDirection": "Studio location photography: rebuild the white film-set space as a crisp editorial photograph, using one cast portrait group as the anchor and letting the strongest graphic sleeves appear as real studio objects and controlled colour accents.",
-  "scene": "A bright white photo studio set with seamless backdrop and visible film-production equipment, photographed straight on at near eye level. The four adults from source 2 stand close together in the near ground, keeping their front-facing pose and tight grouping, while a blown-out white backlight blooms behind them within the studio. Around them, the set includes a movie camera on a tripod, a large spotlight, and a suspended lamp from source 4; a pair of small retro digital-storage props from source 5 sit casually on the studio floor near a cable coil; and an ornate gold arch-like set piece with low lion sculptures from source 6 stands off to one side as part of the stage dressing.",
+  "concept": "Mausoleum rehearsal with pigeons",
+  "medium": "location photography",
+  "creativeDirection": "Photographic realism: stage the cast in a real mausoleum-like chapel interior rebuilt as a rehearsal space, letting the cemetery sleeve provide the place and the strongest portrait while other covers enter as plausible fixtures, painted surfaces, and objects.",
+  "scene": "Inside a weathered domed cemetery chapel converted into a stripped-back rehearsal room, the bowed man stands near a large stone cross on worn flagstones while soft late-afternoon light falls from a high window and a few practical lamps pick out instruments, walls, and airborne pigeons near the rafters.",
   "elements": [
     {
       "source": 2,
       "role": "lead",
-      "element": "the four-person black-and-white portrait group, front-facing and tightly grouped"
+      "element": "the man from reference image 2 standing bowed beside a large stone cross inside a decayed domed chapel with peeling walls and gravestones pushed to the edges"
     },
     {
-      "source": 4,
-      "role": "lead",
-      "element": "the white seamless film studio with movie camera, large spotlight, suspended lamp, and production-set feel"
+      "source": 1,
+      "role": "support",
+      "element": "a small live-music setup with microphone stand, guitar amp, drum hardware, and a warm orange-red stage glow worked into the rehearsal space"
+    },
+    {
+      "source": 7,
+      "role": "support",
+      "element": "the large red X-like abstract form painted directly on one worn plaster wall as chapel decoration"
+    },
+    {
+      "source": 8,
+      "role": "support",
+      "element": "several pigeons circling under the dome and a glimpse of apartment blocks through the high window"
     },
     {
       "source": 5,
       "role": "support",
-      "element": "small real-world player and floppy-disk props placed on the studio floor"
+      "element": "a white portable music player and a blue floppy disk rendered as actual mascot-like rehearsal-room figurines on an equipment case"
+    },
+    {
+      "source": 4,
+      "role": "colour",
+      "element": "brown-green dimness, sheer-curtain cream light, and somber room tone"
+    },
+    {
+      "source": 3,
+      "role": "colour",
+      "element": "monochrome contrast in the shadowed edges and bright backlit halo around the space"
     },
     {
       "source": 6,
-      "role": "support",
-      "element": "an ornate gold arch set piece with two low lion figures at its base"
-    },
-    {
-      "source": 1,
       "role": "colour",
-      "element": "magenta-orange stage-light accents in the backlight bloom"
-    },
-    {
-      "source": 8,
-      "role": "colour",
-      "element": "subtle translucent warm colour gels and accents"
+      "element": "small accents of sky blue, purple, and sunlit primary colour in scattered equipment details"
     }
   ],
   "palette": [
-    "white",
-    "black",
-    "grey",
-    "gold",
-    "magenta",
-    "orange"
+    "stone gray",
+    "oxblood red",
+    "burnt orange",
+    "dusty cream",
+    "brown-green",
+    "muted blue"
   ],
-  "mood": "dramatic, graphic, controlled",
+  "mood": "solemn but alive, haunted rehearsal calm",
   "coverSummaries": [
     {
       "source": 1,
       "filename": "MTV-Unplugged.jpg",
       "album": "MTV Unplugged",
       "artist": "",
-      "description": "A collage-style cover combining illustrated and photographic band imagery: four dark portrait figures across the top against a fiery orange-red background, and a live stage performance scene across the bottom with musicians, guitars, microphone stands, drums, and bright pink-white spotlights.",
-      "signatureMotif": "live band performance under bright stage lights",
-      "medium": "photo collage with painted/illustrated overlays",
-      "people": "seven men performing and posed in a collage, including four large upper portraits and three or more musicians on stage",
-      "place": "a concert stage filled with spotlights, microphone stands, instruments, and a dark performance backdrop.",
+      "description": "A collage-like concert image with four large stylized band-member portraits across the top against a fiery orange-red background, including one dark side-profile silhouette dominating the right side. The lower half shows a live stage performance with several musicians, guitars, drums, microphones, and bright pink-white stage lights.",
+      "signatureMotif": "large black side-profile silhouette over concert stage",
+      "medium": "photo collage with heavy color treatment",
+      "people": "seven adult performers shown as large portraits and onstage musicians",
+      "place": "a live music stage with spotlights, microphones, instruments, and a dark audience-facing performance setup under intense colored lighting.",
       "moderationRisk": "",
       "peopleBox": [
         0.02,
@@ -80,49 +91,37 @@
         0.98,
         0.95
       ],
-      "faceHeight": 0.18,
+      "faceHeight": 0.23,
       "faceBoxes": [
         [
-          0.05,
+          0.03,
           0.18,
           0.18,
-          0.34
-        ],
-        [
-          0.39,
-          0.2,
-          0.5,
-          0.35
-        ],
-        [
-          0.73,
-          0.02,
-          0.95,
-          0.33
-        ],
-        [
-          0.84,
-          0.24,
-          0.96,
           0.39
         ],
         [
-          0.12,
-          0.63,
-          0.2,
-          0.74
+          0.35,
+          0.22,
+          0.49,
+          0.42
         ],
         [
-          0.43,
-          0.66,
-          0.52,
-          0.78
-        ],
-        [
-          0.73,
-          0.58,
+          0.57,
+          0.02,
           0.84,
-          0.73
+          0.4
+        ],
+        [
+          0.84,
+          0.25,
+          0.97,
+          0.43
+        ],
+        [
+          0.69,
+          0.58,
+          0.82,
+          0.79
         ]
       ],
       "peopleCount": 7,
@@ -132,165 +131,121 @@
         "black",
         "orange",
         "red",
-        "magenta",
+        "pink",
         "purple"
       ]
     },
     {
       "source": 2,
-      "filename": "Celebrity-Skin.jpg",
-      "album": "Celebrity Skin",
-      "artist": "",
-      "description": "A black-and-white band portrait of four adults standing close together against a dark background with a bright blown-out light or smoke shape behind them; one woman at center wears an off-shoulder cropped top, while the others wear dark clothing.",
-      "signatureMotif": "four-person band portrait backlit by bright smoke or flame-like light",
-      "medium": "photograph",
-      "people": "four adults standing together, three women and one man, facing the camera",
-      "place": "a dark studio or night setting with a strong backlight and smoky or blown-out luminous backdrop.",
-      "moderationRisk": "",
-      "peopleBox": [
-        0.03,
-        0.48,
-        0.98,
-        0.98
-      ],
-      "faceHeight": 0.16,
-      "faceBoxes": [
-        [
-          0.04,
-          0.54,
-          0.18,
-          0.7
-        ],
-        [
-          0.36,
-          0.56,
-          0.52,
-          0.72
-        ],
-        [
-          0.58,
-          0.6,
-          0.71,
-          0.74
-        ],
-        [
-          0.83,
-          0.52,
-          0.98,
-          0.68
-        ]
-      ],
-      "peopleCount": 4,
-      "minors": false,
-      "strength": 5,
-      "palette": [
-        "black",
-        "white",
-        "grey"
-      ]
-    },
-    {
-      "source": 3,
       "filename": "Requiem-for-a-Village.jpg",
       "album": "Requiem for a Village",
       "artist": "",
-      "description": "A moody outdoor portrait in a graveyard or memorial garden: a man in a long dark coat stands with head bowed beside a weathered stone cross, with old tomb slabs, red ground cover, bare branches, and a decaying domed mausoleum-like structure behind him.",
+      "description": "A solitary adult man in a long dark coat stands with head bowed among gravestones and red vegetation in front of an old domed mausoleum or chapel with columns and peeling walls. A large stone cross stands beside him, and bare branches with reddish leaves frame the scene.",
       "signatureMotif": "bowed man beside a stone cross in a graveyard",
       "medium": "photograph",
-      "people": "one man in a dark coat standing with head bowed beside a cross",
-      "place": "an overgrown cemetery with stone graves, a large cross, red vegetation, leafless branches, and an aged domed mausoleum.",
+      "people": "one adult man standing with head bowed in a graveyard",
+      "place": "an old cemetery with gravestones, a large stone cross, red ground cover, leafless or sparse trees, and a weathered domed mausoleum with columns.",
       "moderationRisk": "",
       "peopleBox": [
-        0.28,
-        0.42,
+        0.31,
+        0.44,
         0.53,
-        0.82
+        0.83
       ],
-      "faceHeight": 0.1,
-      "faceBoxes": [
-        [
-          0.31,
-          0.43,
-          0.41,
-          0.53
-        ]
-      ],
+      "faceHeight": null,
+      "faceBoxes": [],
       "peopleCount": 1,
       "minors": false,
       "strength": 5,
       "palette": [
         "red",
         "brown",
-        "grey",
+        "gray",
         "black",
         "cream"
       ]
     },
     {
-      "source": 4,
-      "filename": "Greatest-Hits.jpg",
-      "album": "Greatest Hits",
+      "source": 3,
+      "filename": "Celebrity-Skin.jpg",
+      "album": "Celebrity Skin",
       "artist": "",
-      "description": "A studio scene with three bearded men in matching patterned jackets and hats standing on black pedestals, surrounded by film-production equipment including a large spotlight, a hanging light, and a movie camera, plus three women posed around the set on a white seamless background.",
-      "signatureMotif": "band posed on pedestals in a film studio with camera and lights",
-      "medium": "studio photograph",
-      "people": "six adults posed in a studio: three bearded men in matching outfits and three women around film equipment",
-      "place": "a white photo studio set with seamless backdrop, large stage lights, a suspended lamp, pedestals, and a movie camera on a tripod.",
+      "description": "A black-and-white band portrait shows four adults standing close together against a dark background with a bright blown-out light or smoke shape behind them. The central woman wears an off-shoulder cropped top, while the others wear dark clothing; all are lit from behind, creating glowing edges around their hair and shoulders.",
+      "signatureMotif": "four backlit band members in black and white",
+      "medium": "photograph",
+      "people": "four adults standing together in a backlit portrait",
+      "place": "a dark studio or stage-like space with strong backlighting and a bright smoky light source behind the group.",
       "moderationRisk": "",
       "peopleBox": [
-        0.1,
-        0.22,
-        0.95,
-        0.92
+        0.03,
+        0.42,
+        0.98,
+        0.98
       ],
-      "faceHeight": 0.11,
+      "faceHeight": 0.16,
       "faceBoxes": [
         [
-          0.24,
-          0.26,
-          0.34,
-          0.37
+          0.03,
+          0.5,
+          0.2,
+          0.71
         ],
         [
-          0.38,
-          0.31,
-          0.47,
-          0.41
+          0.33,
+          0.5,
+          0.52,
+          0.73
         ],
         [
-          0.48,
-          0.27,
-          0.58,
-          0.38
-        ],
-        [
-          0.58,
-          0.38,
-          0.67,
-          0.48
-        ],
-        [
-          0.12,
-          0.67,
-          0.24,
-          0.79
+          0.56,
+          0.56,
+          0.72,
+          0.75
         ],
         [
           0.82,
-          0.54,
-          0.94,
-          0.67
+          0.45,
+          0.98,
+          0.68
         ]
       ],
-      "peopleCount": 6,
+      "peopleCount": 4,
       "minors": false,
-      "strength": 5,
+      "strength": 4,
       "palette": [
-        "white",
         "black",
-        "tan",
+        "white",
+        "gray"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Lost-in-the-Dream.jpg",
+      "album": "Lost in the Dream",
+      "artist": "",
+      "description": "A moody interior photograph shows a large window with sheer curtains glowing from daylight outside. In front of it, a dark-haired person bends forward with head lowered, partly silhouetted, while the room around them is dim and brown-green with a hazy, textured overlay.",
+      "signatureMotif": "bent figure silhouetted before a curtained window",
+      "medium": "photograph with textured overlay",
+      "people": "one adult person bent forward in front of a window",
+      "place": "a dim room with a tall window, sheer curtains, dark walls, and soft daylight filtering in from outside.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.47,
+        0.63,
+        0.79,
+        0.98
+      ],
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
+      "palette": [
         "brown",
-        "gold"
+        "green",
+        "black",
+        "cream",
+        "gray"
       ]
     },
     {
@@ -298,9 +253,9 @@
       "filename": "No-Bad-Memories.jpg",
       "album": "No Bad Memories",
       "artist": "",
-      "description": "Two cartoonish anthropomorphic devices stand side by side on a white background: a white music player with a simple face on its screen and blue shoes, and a blue floppy disk with a worn metal shutter, glossy black legs, and colorful gloved hands and ring-like cuffs.",
-      "signatureMotif": "anthropomorphic music player and floppy disk characters",
-      "medium": "3D digital illustration/render",
+      "description": "Two anthropomorphic retro tech objects stand side by side on a plain light background: a white music player with a simple face on its screen and a blue floppy disk with a worn metal shutter. Both have cartoon-like arms, gloves, legs, and oversized shoes, with glossy colorful accessories and shadows beneath them.",
+      "signatureMotif": "anthropomorphic white music player and blue floppy disk",
+      "medium": "3D digital illustration",
       "people": "none",
       "place": "",
       "moderationRisk": "",
@@ -313,43 +268,19 @@
       "palette": [
         "white",
         "blue",
-        "purple",
+        "gray",
         "green",
         "orange"
       ]
     },
     {
       "source": 6,
-      "filename": "Gods-own-medicine-Limited-MMXXVI-MWIS-Edition.jpg",
-      "album": "Gods own medicine Limited MMXXVI MWIS Edition",
-      "artist": "",
-      "description": "An ornate symmetrical illustration in gold on a dark marbled blue-black background, centered on a robed female figure with radiating halo-like lines standing beneath a decorative arch, flanked by two banners and two reclining lions on a pedestal.",
-      "signatureMotif": "gold robed female figure beneath an ornate arch with lions",
-      "medium": "ornamental illustration/graphic design",
-      "people": "none",
-      "place": "",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "faceBoxes": [],
-      "peopleCount": null,
-      "minors": false,
-      "strength": 5,
-      "palette": [
-        "gold",
-        "dark blue",
-        "black",
-        "white"
-      ]
-    },
-    {
-      "source": 7,
       "filename": "Around-the-World-in-a-Day.jpg",
       "album": "Around the World in a Day",
       "artist": "",
-      "description": "A colorful painted fantasy scene with many stylized figures gathered on stepped platforms beside water, under a blue sky with clouds and white birds; visible figures include musicians, robed people, a floating child holding a round balloon-like sign, and other theatrical characters in vivid patterned clothing.",
-      "signatureMotif": "floating child holding a large round balloon-like sign above a crowded painted scene",
-      "medium": "painting/illustration",
+      "description": "A colorful painted fantasy scene beside a pool or terrace under a blue sky with clouds and white birds. Various stylized figures gather around steps and a wall, including a flying child holding a round balloon-like sign, seated and standing musicians, robed figures, and other costumed characters in bright patterned clothing.",
+      "signatureMotif": "flying child holding a large round balloon-like sign",
+      "medium": "painting",
       "people": "none",
       "place": "",
       "moderationRisk": "",
@@ -368,13 +299,13 @@
       ]
     },
     {
-      "source": 8,
+      "source": 7,
       "filename": "45-Volume-1.jpg",
       "album": "45 Volume 1",
       "artist": "",
-      "description": "A flat abstract graphic made of overlapping translucent geometric shapes in bright orange, red, pink, green, yellow, and deep blue, with two vertical green stem-like forms ending in spade-shaped tips near the center.",
-      "signatureMotif": "overlapping abstract geometric shapes with green spade-like forms",
-      "medium": "abstract digital graphic",
+      "description": "An abstract graphic cover made of overlapping flat geometric shapes and translucent colour fields. A large red X-like form sits in the center, intersected by green vertical stem shapes with spade-like ends, with broad orange, yellow, blue, pink, and green areas filling the square.",
+      "signatureMotif": "large red X-shaped form",
+      "medium": "abstract graphic design",
       "people": "none",
       "place": "",
       "moderationRisk": "",
@@ -385,26 +316,51 @@
       "minors": false,
       "strength": 4,
       "palette": [
-        "orange",
         "red",
-        "pink",
+        "orange",
+        "yellow",
         "green",
-        "yellow"
+        "blue"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "OX4_-The-Best-of-Ride.jpg",
+      "album": "OX4 The Best of Ride",
+      "artist": "",
+      "description": "A flock of pigeons flies across a pale sky above modern apartment towers with repeating balconies and glass sections. Blurred branches frame the lower right foreground, and the birds are scattered across the whole composition.",
+      "signatureMotif": "flock of pigeons over apartment blocks",
+      "medium": "photograph",
+      "people": "none",
+      "place": "an urban residential skyline with tall apartment buildings, stacked balconies, pale overcast sky, and some out-of-focus tree branches in the foreground.",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "gray",
+        "white",
+        "black",
+        "blue-gray",
+        "green"
       ]
     }
   ],
   "hint": null,
   "composeBackend": "gpt-image-2-6",
   "model": "openai/gpt-image-2.6/sunburst/edit",
-  "prompt": "A crisp straight-on studio photograph inside a real white film set, camera near eye level and close enough for a near-group portrait; the four adults from reference image 2 stand tightly together in the near ground, facing the camera with the same pose, expression, gaze, and styling as their sleeve, sharply lit and fully readable. Rebuild the location from reference image 4 around them: white seamless backdrop, a large studio spotlight, a suspended lamp overhead, and a movie camera on a tripod visible as part of the set. Add the support details as real objects: two small retro digital-storage props inspired by reference image 5 resting on the studio floor near cables, and an ornate gold arch-like set piece with two low lion sculptures at its base from reference image 6 placed off to one side of the set. Let reference image 1 contribute only vivid magenta-orange performance-light energy in the backlight bloom behind the group, and reference image 8 contribute subtle translucent warm colour-gel accents at the edges of the white set. Studio location photography, highly realistic, clean editorial finish, sharp focus, no haze obscuring faces. Flat face-on framing with shallow depth kept modest so the cast and key set pieces stay legible; bright blown-out backlight behind the group balanced by soft frontal fill on their faces; crisp whites, deep blacks, gold details, and controlled magenta-orange warmth. Graphic, dramatic, polished mood. Reference map for people (the album images are attached in this numbered order): reference image 2 shows four adults standing together, three women and one man, facing the camera, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 1, 3, 4 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, monitor, television, sign, cut-out, or floor graphic, or carving it as a wall-mounted relief; show no sleeve's faces, heads, or figures as a picture, display, sign, or silhouette anywhere; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image cleanly whatever the light: every person's face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere. Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.",
+  "prompt": "Inside a weathered domed cemetery chapel converted into a rehearsal room, seen at eye level in a medium-long 16:9 view, the camera close enough to clearly read the face and bowed posture of the man from reference image 2. He stands near the left-middle of the frame beside a tall stone cross on worn flagstones, keeping his original lowered head, dark coat, stillness, and grave expression, with peeling cream walls, shallow side chapels, and the curve of the dome around him. Build the place primarily from reference image 2 as a real mausoleum interior, but add from reference image 1 a plausible live-music setup: a microphone stand, a guitar leaning by a small amp, partial drum hardware and cables, and a restrained orange-red performance glow from practical stage bulbs in the room. Add from reference image 7 a large red X-like geometric form painted directly onto one cracked plaster wall, faded and integrated as architectural decoration rather than graphic art. Add from reference image 8 several pigeons circling below the dome and a high window revealing pale apartment blocks outside. Add from reference image 5 a white music player figurine and a blue floppy-disk figurine standing on a road case as quirky real mascot objects, small and secondary. Use the brown-green dimness and curtained cream light mood of reference image 4 only as atmosphere, and the black-white backlit contrast of reference image 3 only as tonal shaping around edges; take small blue, purple, and primary-colour accents from reference image 6 only in minor equipment details. Realistic editorial location photography, crisp and clean, no collage look, no haze, no heavy grain. Off-centre portrait with open space to the right, layered but not symmetrical, faces properly lit, textures sharp, late-afternoon skylight from a high window mixed with a few warm rehearsal lamps so the cast face and all sleeve colours remain legible. Palette of stone gray, oxblood red, burnt orange, dusty cream, brown-green, and muted blue; solemn, strange, quietly musical. Reference map for people (the album images are attached in this numbered order): reference image 2 shows one adult man standing with head bowed in a graveyard. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 1, 3, 4 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, posters, record covers, or pictures on a screen, monitor, or television. A sleeve's abstract graphics, shapes, patterns, and colours may be painted onto the walls, doors, floor, or objects of the place as part of its decoration, without any lettering. Show no sleeve's faces, heads, or figures as a picture, mural, display, sign, relief, or silhouette anywhere; transform the sleeves' non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image cleanly whatever the light: every person's face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere. The only people anywhere in the image are the reference people named in the reference map, and of those only the ones whose faces are clearly visible in their reference. Add no one else: no extra band members, musicians, staff, bystanders, passers-by, crowd, audience, background or out-of-focus figures, and no hands, arms, legs, or shadows of unseen people. Never complete a person who is hidden, cropped, turned away, blurred, or only partly visible in a reference with an invented face or body - leave that person out entirely. Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.",
   "inputs": [
     "MTV-Unplugged.jpg",
-    "Celebrity-Skin.jpg",
     "Requiem-for-a-Village.jpg",
-    "Greatest-Hits.jpg",
+    "Celebrity-Skin.jpg",
+    "Lost-in-the-Dream.jpg",
     "No-Bad-Memories.jpg",
-    "Gods-own-medicine-Limited-MMXXVI-MWIS-Edition.jpg",
     "Around-the-World-in-a-Day.jpg",
-    "45-Volume-1.jpg"
+    "45-Volume-1.jpg",
+    "OX4_-The-Best-of-Ride.jpg"
   ]
 }

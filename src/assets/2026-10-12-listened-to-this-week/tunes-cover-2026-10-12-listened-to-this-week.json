@@ -3,241 +3,376 @@
   "date": "2026-10-12",
   "type": "cover",
   "lane": null,
-  "lighting": "crisp morning rooftop sun",
-  "composition": "telephoto rooftop view, stacked layers",
+  "setting": "night",
+  "lighting": "floodlights and sodium yard lamps",
+  "composition": "eye-level medium-wide group portrait",
   "cast": [
-    4
+    1
   ],
-  "closeUps": [
-    {
-      "source": 4,
-      "reference": 9
-    }
-  ],
+  "closeUps": [],
+  "castCrops": [],
+  "peopleAudit": {
+    "expected": 4,
+    "counted": 4,
+    "retried": false
+  },
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Morning rooftop with sky loop sculpture",
-  "medium": "daylight location photography",
-  "creativeDirection": "Use daylight location photography to stage a real rooftop scene where the strongest graphic sleeves become physical rooftop structures and sky phenomena, with only one portrait source carried in as a plausible photographic moment.",
-  "scene": "A bright early-morning city rooftop with white service walls, vents, and tar surfaces, seen from a nearby higher building with a slightly compressed long-lens view. A large smooth blue-violet biomorphic rooftop object sits near the roof edge, a black geometric cutout structure rises beside it, and a glowing loop arcs across the actual cloudy sky beyond. A shirtless young man reclines on a striped mattress platform placed on the roof, with faint colored reflections or translucent scrim figures nearby echoing the original layered effect.",
+  "concept": "Floodlit scrapyard portrait under smoke loop",
+  "medium": "night location photography",
+  "creativeDirection": "Night location photography in a real scrapyard, using one cast portrait group as the anchor and folding the other sleeves into fixtures, paint, and sky details within a single plausible editorial shot.",
+  "scene": "An after-dark industrial scrapyard yard with muddy ground, stacked wrecked cars, scattered scrap, and rough embankments, seen at eye level as a cleanly lit editorial photograph. Four men stand close in the near-middle ground, leaning slightly inward toward the camera as on their sleeve, with a bright looping smoke trail high in the cloudy night sky above them. Around the yard are a few sharp, recognisable details from other sleeves: a painted open-mouth graphic on the side of a dented metal container, a small heraldic shield sign fixed to a fence panel, and a glossy purple biomorphic object resting on a scrap heap.",
   "elements": [
     {
       "source": 1,
-      "element": "a large glowing oval loop suspended across the warm clouded morning sky"
-    },
-    {
-      "source": 2,
-      "element": "deep black tar roofing and dark negative space in the upper shadowed roof areas"
+      "role": "lead",
+      "element": "the four men leaning inward toward the camera, kept recognisable as the group portrait"
     },
     {
       "source": 3,
-      "element": "a large glossy blue-violet biomorphic sculpture placed on the rooftop"
-    },
-    {
-      "source": 4,
-      "element": "the man from reference image 4 reclining shirtless on a striped mattress platform, with subtle pink and lime translucent figure-like overlays created by colored scrims or reflections nearby"
+      "role": "lead",
+      "element": "the scrapyard-like muddy wrecked street as the main location, with abandoned vehicles, litter, puddled earth, and rough embankments"
     },
     {
       "source": 6,
-      "element": "white brick service wall on the rooftop with a small area of loose red paint marks"
-    },
-    {
-      "source": 7,
-      "element": "bright sunburst and a few natural hexagonal lens flares near the horizon line, with slight panel-like division suggested by rooftop structures"
-    },
-    {
-      "source": 8,
-      "element": "a freestanding matte-black geometric cutout form with soft edge shadow standing on the roof"
-    }
-  ],
-  "palette": [
-    "white",
-    "black",
-    "blue-violet",
-    "lime yellow",
-    "red",
-    "warm cream"
-  ],
-  "mood": "clean, strange, airy",
-  "coverSummaries": [
-    {
-      "source": 1,
-      "filename": "Raise.jpg",
-      "album": "Raise",
-      "artist": "",
-      "description": "A dark cover with a wide central rectangular image of a cloudy sky in warm orange, cream, and blue-grey tones. Across the sky is a large bright looping ring or arc of smoke/light, forming an oval-like sweep from left to right. Thick black bands frame the image at the top and bottom.",
-      "signatureMotif": "a large glowing loop across a cloudy sky",
-      "medium": "photographic image with graphic layout",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "black",
-        "orange",
-        "cream",
-        "blue-grey",
-        "white"
-      ]
-    },
-    {
-      "source": 2,
-      "filename": "From-Genesis-to-Revelation.jpg",
-      "album": "From Genesis to Revelation",
-      "artist": "",
-      "description": "An almost entirely black cover with a plain dark field and only small pale decorative elements near the top corners. The composition is stark and minimal, with no visible figures or objects in the main area.",
-      "signatureMotif": "an almost completely black field",
-      "medium": "minimal graphic design",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "black",
-        "dark brown",
-        "beige"
-      ]
-    },
-    {
-      "source": 3,
-      "filename": "the-best-of-NewOrder.jpg",
-      "album": "the best of NewOrder",
-      "artist": "",
-      "description": "A clean white background featuring a single large smooth abstract blue-violet shape placed diagonally across the center. The form is glossy and biomorphic, with rounded edges and a cutout-like opening near its middle.",
-      "signatureMotif": "a large abstract blue-violet biomorphic shape",
-      "medium": "graphic design with rendered abstract object",
-      "people": "none",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "white",
-        "blue",
-        "violet",
-        "indigo"
-      ]
-    },
-    {
-      "source": 4,
-      "filename": "Coming-Up.jpg",
-      "album": "Coming Up",
-      "artist": "",
-      "description": "A stylized studio image with a bright yellow-green background fading darker toward the bottom. A striped mattress-like platform sits diagonally across the frame. Reclining on it is a shirtless slim young man in dark trousers, while two additional human-like figures appear as glowing, color-tinted silhouettes layered over the scene, one standing behind and one leaning forward in front. The image mixes photographic and posterized effects.",
-      "signatureMotif": "a shirtless reclining man on a striped mattress with neon-tinted overlay figures",
-      "medium": "stylized photographic collage",
-      "people": "one man reclining shirtless on a striped platform",
-      "moderationRisk": "",
-      "peopleBox": [
-        0.28,
-        0.18,
-        0.58,
-        0.56
-      ],
-      "faceHeight": 0.14,
-      "palette": [
-        "yellow",
-        "lime",
-        "black",
-        "white",
-        "pink"
-      ]
+      "role": "support",
+      "element": "a bright looping smoke trail arcing across the cloudy sky above the yard"
     },
     {
       "source": 5,
+      "role": "support",
+      "element": "a large painted open mouth graphic on the side of a battered metal skip or container"
+    },
+    {
+      "source": 7,
+      "role": "support",
+      "element": "a small geometric heraldic shield sign bolted to a wire fence"
+    },
+    {
+      "source": 8,
+      "role": "support",
+      "element": "a smooth glossy purple biomorphic form lying among the scrap"
+    },
+    {
+      "source": 4,
+      "role": "colour",
+      "element": "soft monochrome tonal restraint in the portrait lighting"
+    },
+    {
+      "source": 2,
+      "role": "colour",
+      "element": "subtle yellow-to-red heat in parts of the yard lighting"
+    }
+  ],
+  "palette": [
+    "mud brown",
+    "sepia rust",
+    "dark green",
+    "sodium yellow",
+    "red accents",
+    "purple-violet"
+  ],
+  "mood": "tense, strange, gritty, sharply observed",
+  "coverSummaries": [
+    {
+      "source": 1,
       "filename": "Rubber-Soul.jpg",
       "album": "Rubber Soul",
       "artist": "",
-      "description": "A close group portrait of four young men with similar dark mop-top hairstyles, photographed from a low angle against dense dark green foliage. Their faces fill most of the frame, with one centered lower, one at upper right, one at lower right, and one at lower left. The image has a slightly stretched or warped look and muted earthy tones.",
-      "signatureMotif": "four close-up faces with mop-top hair against dark foliage",
-      "medium": "colour photograph",
-      "people": "four young men in a close low-angle group portrait",
+      "description": "A close, slightly distorted colour portrait of four young men with long hair and dark clothing, leaning inward and looking down toward the camera, with dense dark green foliage behind them.",
+      "signatureMotif": "four men leaning over the camera",
+      "medium": "photograph",
+      "people": "four young men leaning over the camera in dark jackets",
+      "place": "An outdoor area beneath dense leafy trees or shrubs, seen from a low angle looking upward.",
       "moderationRisk": "",
       "peopleBox": [
-        0,
-        0,
+        0.01,
+        0.03,
         1,
-        0.98
+        0.99
       ],
-      "faceHeight": 0.31,
+      "faceHeight": 0.32,
+      "faceBoxes": [
+        [
+          0.01,
+          0.58,
+          0.21,
+          0.95
+        ],
+        [
+          0.29,
+          0.37,
+          0.55,
+          0.69
+        ],
+        [
+          0.74,
+          0.06,
+          0.99,
+          0.39
+        ],
+        [
+          0.72,
+          0.39,
+          0.95,
+          0.71
+        ]
+      ],
+      "peopleCount": 4,
+      "minors": false,
+      "strength": 5,
       "palette": [
         "dark green",
         "teal",
         "brown",
         "beige",
-        "black"
+        "orange"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Coming-Up.jpg",
+      "album": "Coming Up",
+      "artist": "",
+      "description": "A stylised composite image of two human figures draped across a striped mattress against a yellow-to-dark gradient background; one reclining figure is a shirtless pale young adult with dark hair, while the other is rendered in glowing false colours with elongated limbs and hair spilling downward.",
+      "signatureMotif": "two figures on a striped mattress",
+      "medium": "photo-collage",
+      "people": "one shirtless young adult reclining on a mattress; the second figure appears heavily stylised and not clearly a real person",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.24,
+        0.22,
+        0.56,
+        0.58
+      ],
+      "faceHeight": 0.12,
+      "faceBoxes": [
+        [
+          0.34,
+          0.24,
+          0.46,
+          0.36
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "yellow",
+        "black",
+        "white",
+        "red",
+        "pink"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "The-Southern-Harmony-and-Musical-Companion.jpg",
+      "album": "The Southern Harmony and Musical Companion",
+      "artist": "",
+      "description": "A sepia-toned band photograph showing five long-haired men gathered in the foreground of a muddy debris-strewn street with damaged vehicles, scattered rubbish, and rough embankments behind them.",
+      "signatureMotif": "five men in a wrecked muddy street",
+      "medium": "photograph",
+      "people": "five men standing close together in the foreground of a ruined street",
+      "place": "A muddy urban or industrial backstreet filled with wreckage, abandoned vehicles, puddles, litter, and rough sloping sides, viewed from slightly above.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.01,
+        0.57,
+        1,
+        1
+      ],
+      "faceHeight": 0.16,
+      "faceBoxes": [
+        [
+          0.01,
+          0.75,
+          0.18,
+          0.98
+        ],
+        [
+          0.22,
+          0.63,
+          0.37,
+          0.82
+        ],
+        [
+          0.43,
+          0.6,
+          0.61,
+          0.84
+        ],
+        [
+          0.66,
+          0.72,
+          0.84,
+          0.93
+        ],
+        [
+          0.88,
+          0.67,
+          1,
+          0.93
+        ]
+      ],
+      "peopleCount": 5,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "sepia",
+        "brown",
+        "cream",
+        "black",
+        "grey"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "The-Meaning-of-Flowers.jpg",
+      "album": "The Meaning of Flowers",
+      "artist": "",
+      "description": "A black-and-white portrait of one woman in a light sleeveless dress, posed from the waist up with one hand behind her neck, standing before a textured backdrop of crumpled translucent material.",
+      "signatureMotif": "woman before crumpled translucent backdrop",
+      "medium": "photograph",
+      "people": "one woman standing and looking upward to the side",
+      "place": "An indoor studio-like setting with a wall-sized backdrop of layered crumpled translucent fabric or plastic, lit softly in monochrome.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.29,
+        0.63,
+        0.63,
+        0.99
+      ],
+      "faceHeight": 0.14,
+      "faceBoxes": [
+        [
+          0.35,
+          0.66,
+          0.5,
+          0.8
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "black",
+        "white",
+        "grey"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Do-Not-Dare-To-Dream.jpg",
+      "album": "Do Not Dare To Dream",
+      "artist": "",
+      "description": "A painted graphic of a large open mouth with red lips and yellow teeth surrounding a black interior, with a grey rectangular object and green strip placed inside the mouth, all on a black background with pink flesh-like border shapes.",
+      "signatureMotif": "open mouth with object inside",
+      "medium": "painting",
+      "people": "none",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "black",
+        "pink",
+        "red",
+        "yellow",
+        "grey"
       ]
     },
     {
       "source": 6,
-      "filename": "The-Wall.jpg",
-      "album": "The Wall",
+      "filename": "Raise.jpg",
+      "album": "Raise",
       "artist": "",
-      "description": "A white brick wall pattern filling the entire cover, drawn with thin blue-grey lines. In the center is a large area of red handwritten-style paint marks over the bricks. The composition is flat, stark, and highly minimal.",
-      "signatureMotif": "a white brick wall",
-      "medium": "graphic design / illustration",
+      "description": "A grainy colour photograph of a cloudy sky with a bright looping smoke trail forming a large oval or spiral across the center, framed by black bands at the top and bottom.",
+      "signatureMotif": "looping smoke trail in the sky",
+      "medium": "photograph",
       "people": "none",
+      "place": "An open sky filled with clouds and warm light, with no ground visible.",
       "moderationRisk": "",
       "peopleBox": null,
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 4,
       "palette": [
-        "white",
-        "red",
-        "light blue",
-        "grey"
+        "black",
+        "cream",
+        "orange",
+        "gold",
+        "blue-grey"
       ]
     },
     {
       "source": 7,
-      "filename": "Amplifier.jpg",
-      "album": "Amplifier",
+      "filename": "Sparkle-in-the-Rain.jpg",
+      "album": "Sparkle in the Rain",
       "artist": "",
-      "description": "A dark cover divided into three tall vertical panels separated by black bars. Inside the panels is a hazy purple-grey sky with a bright burst of light near the lower center and several hexagonal lens flares. Wispy cloud-like forms appear near the bottom edges.",
-      "signatureMotif": "three vertical panels showing bright lens flare in a hazy sky",
-      "medium": "photograph with graphic panel layout",
+      "description": "A clean heraldic-style illustration centered on a white background: a shield divided into geometric sections in red, white, and blue, flanked by angular spear-like forms, with decorative gold border elements at the top and bottom.",
+      "signatureMotif": "geometric heraldic shield",
+      "medium": "illustration",
       "people": "none",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": null,
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 4,
       "palette": [
-        "black",
-        "purple",
-        "grey",
         "white",
-        "lavender"
+        "red",
+        "blue",
+        "black",
+        "gold"
       ]
     },
     {
       "source": 8,
-      "filename": "Far-and-Wide.jpg",
-      "album": "Far and Wide",
+      "filename": "the-best-of-NewOrder.jpg",
+      "album": "the best of NewOrder",
       "artist": "",
-      "description": "A pale greenish-white background with a large central black geometric cutout shape resembling a blocky capital letter form. The shape has soft shadowing or glow around its edges, giving it a recessed or stencil-like appearance. The composition is centered and minimal.",
-      "signatureMotif": "a large black geometric cutout resembling a blocky letterform",
+      "description": "A smooth abstract purple shape with rounded contours floats diagonally on a plain white background, resembling a glossy biomorphic cutout.",
+      "signatureMotif": "abstract purple biomorphic shape",
       "medium": "graphic design",
       "people": "none",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": null,
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 3,
       "palette": [
-        "off-white",
-        "pale green",
-        "black",
-        "grey"
+        "white",
+        "purple",
+        "blue-violet"
       ]
     }
   ],
   "hint": null,
   "composeBackend": "gpt-image-2-6",
   "model": "openai/gpt-image-2.6/sunburst/edit",
-  "prompt": "A bright early-morning city rooftop seen from a nearby higher building with a slightly compressed telephoto view, layered rooflines and open sky beyond; the man from reference image 4 is the primary subject, reclining shirtless in the same pose on a striped mattress platform placed near a white brick rooftop service wall; a large glossy blue-violet biomorphic sculpture from reference image 3 sits nearby, a freestanding matte-black geometric cutout structure from reference image 8 rises beside it, a loose patch of red paint marks appears on the white brick wall from reference image 6, the roof surface carries deep black tar areas from reference image 2, and a large glowing oval loop crosses the warm cloudy sky from reference image 1, with a bright low sunburst and a few natural hexagonal lens flares inspired by reference image 7; daylight location photography, physically plausible rooftop set, crisp realistic detail, no posters or printed album art; stacked telephoto composition with the reclining figure in one layer and the rooftop objects and sky compressed behind, clear visual hierarchy, wide 16:9 frame; crisp morning rooftop sun with clean shadows and bright open exposure; palette of white, black, blue-violet, lime yellow, red, warm cream, and blue-grey, mood clean strange and airy Reference map for people (the album images are attached in this numbered order): reference image 4 shows one man reclining shirtless on a striped platform, and reference image 9 is an enlarged close-up of those same people - take their faces from reference image 9. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference image 5 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "prompt": "After-dark scrapyard yard, eye-level medium-wide view, camera close enough to read faces clearly, muddy ground and rough embankments with stacked wrecked cars and scattered scrap, no other people anywhere. The primary subject is the four men from reference image 1, standing in the near-middle ground and leaning inward toward the camera as in their sleeve, long hair, dark jackets, recognisable faces properly lit, their pose and gaze preserved while placed in this yard. Build the location mainly from reference image 3: a ruined muddy industrial backstreet turned into a real scrapyard with abandoned vehicles, litter, puddled earth, dented metal, and rough sloping sides. Add a bright looping smoke trail from reference image 6 high across the cloudy sky above them; a large painted open-mouth graphic from reference image 5 on the side of a battered metal skip; a small geometric heraldic shield from reference image 7 as a sign bolted to a fence panel; and a smooth glossy purple biomorphic object from reference image 8 lying among the scrap at natural size. Photographic realism, night location photography, crisp editorial detail, physically plausible materials and scale, no collage feel. Compose as an eye-level medium-wide group portrait with the men occupying the lower middle of frame and the yard wrapping around them, layered depth but not a corridor, clean separation of subject and background. Light with floodlights and sodium yard lamps, balanced so every cast face is clear and natural, with the smoke loop and support details still readable. Palette of mud brown, rust, dark green, sepia, sodium yellow, red accents, purple-violet, and clouded blue-grey; mood tense, strange, gritty, and cinematic. Reference map for people (the album images are attached in this numbered order): reference image 1 shows four young men leaning over the camera in dark jackets. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 2, 3, 4 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, posters, record covers, or pictures on a screen, monitor, or television. A sleeve's abstract graphics, shapes, patterns, and colours may be painted onto the walls, doors, floor, or objects of the place as part of its decoration, without any lettering. Show no sleeve's faces, heads, or figures as a picture, mural, display, sign, relief, or silhouette anywhere; transform the sleeves' non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image cleanly whatever the light: every person's face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere. The only people anywhere in the image are the reference people named in the reference map, and of those only the ones whose faces are clearly visible in their reference. Add no one else: no extra band members, musicians, staff, bystanders, passers-by, crowd, audience, background or out-of-focus figures, and no hands, arms, legs, or shadows of unseen people. Never complete a person who is hidden, cropped, turned away, blurred, or only partly visible in a reference with an invented face or body - leave that person out entirely. Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.",
   "inputs": [
-    "Raise.jpg",
-    "From-Genesis-to-Revelation.jpg",
-    "the-best-of-NewOrder.jpg",
-    "Coming-Up.jpg",
     "Rubber-Soul.jpg",
-    "The-Wall.jpg",
-    "Amplifier.jpg",
-    "Far-and-Wide.jpg"
+    "Coming-Up.jpg",
+    "The-Southern-Harmony-and-Musical-Companion.jpg",
+    "The-Meaning-of-Flowers.jpg",
+    "Do-Not-Dare-To-Dream.jpg",
+    "Raise.jpg",
+    "Sparkle-in-the-Rain.jpg",
+    "the-best-of-NewOrder.jpg"
   ]
 }

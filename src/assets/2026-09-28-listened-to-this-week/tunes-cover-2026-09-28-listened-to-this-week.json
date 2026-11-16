@@ -3,79 +3,143 @@
   "date": "2026-09-28",
   "type": "cover",
   "lane": null,
-  "lighting": "bright overcast daylight",
-  "composition": "low angle, off-centre foreground figure",
+  "setting": "interior",
+  "lighting": "overhead pool lights at dusk",
+  "composition": "eye-level, off-centre environmental portrait",
   "cast": [
-    3
+    1
   ],
   "closeUps": [],
+  "castCrops": [],
+  "peopleAudit": {
+    "expected": 1,
+    "counted": 1,
+    "retried": false
+  },
   "shootDirection": null,
   "colourTreatment": null,
-  "concept": "Poolside memorial with angel plinth",
+  "concept": "Poolside portrait under hanging bulbs",
   "medium": "daylight location photography",
-  "creativeDirection": "Daylight location photography of a real outdoor lido where the strongest portrait is staged intact and the graphic covers are translated into built surfaces and props rather than reproduced as images.",
-  "scene": "An empty urban outdoor swimming pool deck beside a drained pool, dominated by a dark winged angel statue on a plinth near the deep end, with painted lane markings, concrete steps, and a few scattered poolside objects in a clean, physically plausible public-lido setting.",
+  "creativeDirection": "Daylight location photography in a real indoor pool, using one cast portrait anchored in a recognisable architectural place with a few small physical motifs from other sleeves folded into the same moment.",
+  "scene": "An empty indoor swimming pool hall after hours, shot from the deck at eye level along one side of the pool. Cool blue tiled walls, pale concrete deck, lane ropes disappearing softly behind, and a few warm hanging bulbs over the near side create a crisp editorial atmosphere. The cast figure stands near the pool edge in the near-middle ground, with the room wrapping around her rather than a staged backdrop.",
   "elements": [
     {
       "source": 1,
-      "element": "two real candle flames in the near foreground beside the cast woman's face, adding blue-versus-amber colour contrast"
+      "role": "lead",
+      "element": "the woman from reference image 1 standing by the pool in her white swim cap decorated with yellow daisies, facing the camera in the same close-portrait spirit"
     },
     {
       "source": 2,
-      "element": "a crucifix necklace hanging visibly at the neckline of the cast woman's pool robe or swimsuit styling"
+      "role": "support",
+      "element": "two small warm hanging bulbs suspended over the pool deck near the camera side"
     },
     {
       "source": 3,
-      "element": "the woman from the cover appears recognisably, wearing the white swim cap decorated with pale yellow flowers and leaves, with stylized eyeliner and red lipstick"
-    },
-    {
-      "source": 4,
-      "element": "a black winged angel statue on a stone plinth rises beside the pool against a vivid red-painted wall or red sky glow"
+      "role": "support",
+      "element": "a soft monochrome tonal treatment in a brushed stainless wall panel and pale grey seating area that echoes the plain black-and-white studio restraint"
     },
     {
       "source": 5,
-      "element": "a cigarette rests between the cast woman's raised fingers near her face"
-    },
-    {
-      "source": 6,
-      "element": "bleached concrete pool steps and stark monochrome striping on the deck echo the graphic severity of the seated-on-steps photograph"
-    },
-    {
-      "source": 7,
-      "element": "a simple tall lifeguard stool stands empty near the pool, borrowing the isolated stool silhouette"
+      "role": "support",
+      "element": "a folded patterned fan resting on a plastic bench beside the pool"
     },
     {
       "source": 8,
-      "element": "the pool floor and deck furniture use coral, teal, blue, yellow, and purple geometric accents, and curved drainage lines subtly suggest the stylized nose motif"
+      "role": "support",
+      "element": "a dark crucifix necklace hanging from a metal hook with a towel nearby"
+    },
+    {
+      "source": 4,
+      "role": "colour",
+      "element": "a muted blush-pink accent in one section of painted wall"
+    },
+    {
+      "source": 6,
+      "role": "colour",
+      "element": "a hard black-and-white contrast note in the deck shadows and tile grout"
+    },
+    {
+      "source": 7,
+      "role": "colour",
+      "element": "clean white-and-charcoal tonal balance in the room"
     }
   ],
   "palette": [
-    "coral",
-    "pool blue",
+    "cool blue",
+    "purple-blue",
     "white",
-    "black",
-    "red",
-    "pale yellow"
+    "yellow",
+    "warm amber",
+    "soft blush"
   ],
-  "mood": "ceremonial, strange, sunless-bright, poised",
+  "mood": "quiet, poised, slightly uncanny",
   "coverSummaries": [
     {
       "source": 1,
+      "filename": "Leisure.jpg",
+      "album": "Leisure",
+      "artist": "",
+      "description": "A close portrait of a woman in a white swim cap decorated with yellow daisy flowers, with strong eyeliner and red lipstick, set against a softly blurred blue and purple background that suggests an indoor pool.",
+      "signatureMotif": "flower-decorated swim cap",
+      "medium": "photograph",
+      "people": "one woman in close-up wearing a floral swim cap",
+      "place": "an indoor swimming pool area with cool blue surfaces and soft blurred lighting.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.08,
+        0.08,
+        0.82,
+        0.98
+      ],
+      "faceHeight": 0.48,
+      "faceBoxes": [
+        [
+          0.22,
+          0.24,
+          0.79,
+          0.72
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "blue",
+        "purple",
+        "white",
+        "yellow",
+        "green"
+      ]
+    },
+    {
+      "source": 2,
       "filename": "Glastonbury-1994.jpg",
       "album": "Glastonbury 1994",
       "artist": "",
-      "description": "A grainy, high-contrast close-up photograph in neon-like colours shows part of a person’s face and hand in blue tones, with the hand raised near the mouth. Two glowing yellow-orange candle flames appear in the foreground, one large on the left edge and one smaller on the right. The background is dark and abstracted by the heavy colour treatment.",
-      "signatureMotif": "glowing candle flames beside a blue-tinted face",
-      "medium": "colour photograph with heavy posterized/grainy treatment",
-      "people": "one person in extreme close-up with hand near face",
+      "description": "A grainy, high-contrast close-up image in neon-like colours shows part of a person's face and hand in blue tones, with two glowing yellow-orange lights hanging in the foreground and jagged yellow streaks crossing the frame against a dark background.",
+      "signatureMotif": "glowing hanging lights beside a blue-tinted face",
+      "medium": "photograph with heavy colour treatment",
+      "people": "one person in extreme close-up with a hand near the face",
+      "place": "",
       "moderationRisk": "",
       "peopleBox": [
-        0.47,
-        0.02,
-        0.99,
-        0.55
+        0.46,
+        0.05,
+        0.98,
+        0.86
       ],
-      "faceHeight": 0.28,
+      "faceHeight": 0.34,
+      "faceBoxes": [
+        [
+          0.58,
+          0.08,
+          0.95,
+          0.42
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
       "palette": [
         "blue",
         "cyan",
@@ -85,91 +149,118 @@
       ]
     },
     {
-      "source": 2,
-      "filename": "Generation-Terrorists.jpg",
-      "album": "Generation Terrorists",
-      "artist": "",
-      "description": "A close cropped colour photograph of a bare male torso and upper arm. A dark crucifix necklace hangs over the chest, and a colourful tattoo of a rose with ribbon is visible on the upper arm. The skin-toned background is simply the body filling the frame.",
-      "signatureMotif": "crucifix necklace on a bare chest",
-      "medium": "colour photograph",
-      "people": "one shirtless man shown from neck to upper torso",
-      "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
-      "palette": [
-        "peach",
-        "beige",
-        "black",
-        "brown",
-        "red"
-      ]
-    },
-    {
       "source": 3,
-      "filename": "Leisure.jpg",
-      "album": "Leisure",
+      "filename": "ChangesOneBowie.jpg",
+      "album": "ChangesOneBowie",
       "artist": "",
-      "description": "A close-up colour photograph of a woman’s face and shoulders. She wears a white swim cap decorated with a ring of pale yellow daisy-like flowers and green leaves. Her makeup is stylized with dark eyeliner and red lipstick. The softly blurred background suggests an indoor swimming pool in cool blue and purple tones.",
-      "signatureMotif": "flower-decorated white swim cap",
-      "medium": "colour photograph",
-      "people": "one woman in close portrait wearing a floral swim cap",
+      "description": "A black-and-white close portrait shows one man with swept-back hair, resting fingers near his mouth and looking off to the side against a softly lit plain background.",
+      "signatureMotif": "black-and-white portrait with fingers near mouth",
+      "medium": "photograph",
+      "people": "one man in a close black-and-white portrait",
+      "place": "a plain studio backdrop with soft tonal lighting.",
       "moderationRisk": "",
       "peopleBox": [
-        0.12,
-        0.1,
-        0.83,
-        0.95
+        0.06,
+        0.04,
+        0.98,
+        0.98
       ],
-      "faceHeight": 0.53,
+      "faceHeight": 0.5,
+      "faceBoxes": [
+        [
+          0.24,
+          0.12,
+          0.82,
+          0.62
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
       "palette": [
+        "black",
         "white",
-        "pale yellow",
-        "green",
-        "blue",
-        "purple"
+        "gray"
       ]
     },
     {
       "source": 4,
-      "filename": "Terrifying-Angels.jpg",
-      "album": "Terrifying Angels",
+      "filename": "ChangesTwoBowie.jpg",
+      "album": "ChangesTwoBowie",
       "artist": "",
-      "description": "A dramatic image of a dark winged angel statue centered against a vivid red sky. The statue raises one arm holding a wreath-like object and extends the other holding a branch. At the bottom, dark silhouettes of horse figures and chariot elements frame the base of the statue.",
-      "signatureMotif": "black winged angel statue against a red sky",
-      "medium": "photograph of a statue",
-      "people": "none",
+      "description": "A colour studio portrait shows one man from the chest up against a soft pink background, looking toward the camera while holding a cigarette near his face.",
+      "signatureMotif": "man holding a cigarette in close portrait",
+      "medium": "photograph",
+      "people": "one man in a close portrait holding a cigarette",
+      "place": "a plain studio backdrop with even soft lighting.",
       "moderationRisk": "",
-      "peopleBox": null,
-      "faceHeight": null,
+      "peopleBox": [
+        0,
+        0.02,
+        0.98,
+        0.95
+      ],
+      "faceHeight": 0.46,
+      "faceBoxes": [
+        [
+          0.12,
+          0.12,
+          0.67,
+          0.58
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
       "palette": [
-        "red",
-        "black",
-        "dark brown"
+        "pink",
+        "peach",
+        "brown",
+        "blue",
+        "black"
       ]
     },
     {
       "source": 5,
-      "filename": "ChangesTwoBowie.jpg",
-      "album": "ChangesTwoBowie",
+      "filename": "Kimono-My-House.jpg",
+      "album": "Kimono My House",
       "artist": "",
-      "description": "A close portrait photograph of a man with dark hair against a soft pink background. He faces forward with one hand raised, holding a cigarette between his fingers. He wears layered clothing in dark and blue tones.",
-      "signatureMotif": "man holding a cigarette near his face",
-      "medium": "colour photograph",
-      "people": "one man in close portrait holding a cigarette",
+      "description": "Two women stand against a flat yellow-green backdrop wearing patterned kimonos; one holds her face with both hands in a surprised expression, while the other smiles and holds an open fan.",
+      "signatureMotif": "two women in patterned kimonos",
+      "medium": "photograph",
+      "people": "two women standing in kimonos, one with hands on face and one holding a fan",
+      "place": "a plain studio backdrop in yellow-green with direct frontal lighting.",
       "moderationRisk": "",
       "peopleBox": [
-        0,
-        0,
-        0.86,
-        0.78
+        0.12,
+        0.12,
+        0.92,
+        0.98
       ],
-      "faceHeight": 0.42,
+      "faceHeight": 0.22,
+      "faceBoxes": [
+        [
+          0.18,
+          0.18,
+          0.38,
+          0.4
+        ],
+        [
+          0.58,
+          0.18,
+          0.79,
+          0.39
+        ]
+      ],
+      "peopleCount": 2,
+      "minors": false,
+      "strength": 5,
       "palette": [
-        "pink",
-        "peach",
+        "yellow-green",
+        "light blue",
+        "white",
         "black",
-        "dark brown",
-        "blue"
+        "orange"
       ]
     },
     {
@@ -177,21 +268,26 @@
       "filename": "And-Out-Come-the-Wolves.jpg",
       "album": "And Out Come the Wolves",
       "artist": "",
-      "description": "A stark black-and-white, high-contrast photograph shows a tattooed person seated on outdoor steps with head bowed and arms folded over their knees. The figure wears a sleeveless top, striped socks, and dark shoes. The composition is gritty and centered, with the steps and pavement forming the background.",
-      "signatureMotif": "seated tattooed person with head bowed on steps",
-      "medium": "black-and-white photograph with high-contrast graphic treatment",
-      "people": "one person seated with head down and tattooed arms",
+      "description": "A stark black-and-white image shows a seated punk figure on outdoor steps, hunched forward with arms folded over knees and head bowed, wearing striped socks and heavy shoes, with tattooed arms visible.",
+      "signatureMotif": "hunched seated punk figure on steps",
+      "medium": "high-contrast photograph",
+      "people": "one person seated on steps with head bowed and tattooed arms",
+      "place": "an outdoor concrete stairway and pavement area rendered in harsh black and white.",
       "moderationRisk": "",
       "peopleBox": [
-        0.3,
-        0.19,
-        0.69,
-        0.58
+        0.28,
+        0.23,
+        0.75,
+        0.92
       ],
-      "faceHeight": 0.18,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
       "palette": [
-        "white",
         "black",
+        "white",
         "red"
       ]
     },
@@ -200,18 +296,23 @@
       "filename": "Mule.jpg",
       "album": "Mule",
       "artist": "",
-      "description": "A black-and-white studio photograph of a tattooed man sitting on a tall stool against a plain white background. He wears a cowboy hat, dark sunglasses, a fitted white T-shirt, and white briefs, with bare legs and feet visible. His head tilts downward and his hands rest loosely between his knees.",
-      "signatureMotif": "tattooed man in cowboy hat seated on a stool",
-      "medium": "black-and-white studio photograph",
-      "people": "one man seated on a stool wearing a cowboy hat and sunglasses",
+      "description": "A black-and-white studio photograph shows a tattooed bearded man sitting on a dark stool in a white seamless space, wearing a cowboy hat, dark sunglasses, a fitted T-shirt, and briefs, with bare feet and legs spread.",
+      "signatureMotif": "tattooed man on a stool in cowboy hat",
+      "medium": "black-and-white photograph",
+      "people": "one seated man wearing a cowboy hat and sunglasses",
+      "place": "a white studio cyclorama with a single stool and even lighting.",
       "moderationRisk": "",
       "peopleBox": [
-        0.57,
-        0.01,
-        0.88,
-        0.33
+        0.49,
+        0.03,
+        0.98,
+        0.98
       ],
-      "faceHeight": 0.14,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
       "palette": [
         "white",
         "black",
@@ -220,37 +321,47 @@
     },
     {
       "source": 8,
-      "filename": "Galactic-Melt.jpg",
-      "album": "Galactic Melt",
+      "filename": "Generation-Terrorists.jpg",
+      "album": "Generation Terrorists",
       "artist": "",
-      "description": "A flat graphic illustration on a coral-orange background filled with thin horizontal black lines. In the center, the lines curve downward to form a stylized nose shape. Around the lower sides of the nose are simple geometric shapes: a blue quadrilateral, a teal polygon, a yellow hexagon, and a purple triangle, each with dotted fill and black shadowing.",
-      "signatureMotif": "stylized nose formed by curved horizontal lines",
-      "medium": "digital graphic illustration",
-      "people": "none",
+      "description": "A tightly cropped colour photograph shows a bare male torso from neck to upper arm, wearing a dark crucifix necklace, with a rose tattoo on the upper arm against a plain skin-toned background.",
+      "signatureMotif": "crucifix necklace on a bare chest",
+      "medium": "photograph",
+      "people": "one shirtless man shown from neck to torso with an arm tattoo",
+      "place": "",
       "moderationRisk": "",
-      "peopleBox": null,
+      "peopleBox": [
+        0.02,
+        0,
+        0.98,
+        1
+      ],
       "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 3,
       "palette": [
-        "coral",
+        "peach",
+        "beige",
         "black",
-        "blue",
-        "teal",
-        "yellow"
+        "pink",
+        "green"
       ]
     }
   ],
   "hint": null,
   "composeBackend": "gpt-image-2-6",
   "model": "openai/gpt-image-2.6/sunburst/edit",
-  "prompt": "A real outdoor public lido photographed from a low angle near pool-deck level, looking across the edge of a drained swimming pool toward a dark winged angel statue on a plinth near the deep end; the primary subject is the woman from reference image 3 staged recognisably in the foreground off-centre, close to camera, wearing her white swim cap decorated with pale yellow flowers and green leaves, with the same stylized eyeliner and red lipstick, facing the camera with a calm direct presence. Two real candle flames from reference image 1 burn in the near foreground beside her face, one larger near the left edge and one smaller to the right; a crucifix necklace from reference image 2 is visible at her neckline; she holds a cigarette near her face in the manner of reference image 5. Behind her, the black winged angel statue from reference image 4 rises over the pool deck, with horse-and-chariot hints contained in the plinth sculpture. The drained pool has stark concrete steps and severe black-and-white striping echoing reference image 6, and an empty tall lifeguard stool quietly echoes reference image 7. Reference image 8 is translated into the place through curved drainage lines and small geometric poolside accents in coral, teal, blue, yellow, and purple on deck furniture and pool markings, with no printed graphics or posters. Daylight location photography, crisp realistic detail, no collage, no painted sleeve reproductions. Compose with the woman large in the lower left or centre-left foreground and the angel statue farther back to the right, leaving open deck and pool basin visible; bright overcast daylight with clean even exposure and saturated colour, no haze, no rain, no lush foliage. Palette of coral, pool blue, white, black, red, and pale yellow; mood ceremonial, uncanny, and poised. Reference map for people (the album images are attached in this numbered order): reference image 3 shows one woman in close portrait wearing a floral swim cap. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 1, 2, 5, 6, 7 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, and do not get round that by copying a sleeve flat onto a mural, banner, poster, billboard, tapestry, wall panel, screen, or floor graphic; transform their non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image brightly and cleanly: open, readable shadows and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere.",
+  "prompt": "An empty indoor swimming pool hall after hours, viewed from the deck at eye level along one side of the pool, a real architectural interior with cool blue tiled walls, pale concrete, lane ropes, metal hooks, plastic benches, and a few warm hanging bulbs over the near side; the woman from reference image 1 stands near the pool edge in the near-middle ground at three-quarter length, facing the camera with the same poised expression, strong eyeliner, red lipstick, and white swim cap decorated with yellow daisies, lit by the room's own overhead pool lights and the warm bulbs so her face is crisp and clear; include two small glowing hanging bulbs from reference image 2 near the camera side, a folded patterned fan from reference image 5 resting on a bench, and a dark crucifix necklace from reference image 8 hanging from a metal hook beside a towel; let reference image 3 contribute plain monochrome restraint in a brushed steel panel and pale grey seating area, while reference images 4, 6, and 7 contribute only blush, contrast, and white-charcoal tonal balance; photographic realism, clean editorial location photography, sharp focus, no haze, no collage, no posters or pictures on surfaces; off-centre environmental portrait with the subject on one side and pool space opening beside her, faces properly lit, crisp small-scale readability; palette of cool blue, purple-blue, white, yellow, warm amber, blush pink, and charcoal, with a quiet poised slightly uncanny mood. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one woman in close-up wearing a floral swim cap. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 2, 3, 4, 5, 6, 7, 8 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, posters, record covers, or pictures on a screen, monitor, or television. A sleeve's abstract graphics, shapes, patterns, and colours may be painted onto the walls, doors, floor, or objects of the place as part of its decoration, without any lettering. Show no sleeve's faces, heads, or figures as a picture, mural, display, sign, relief, or silhouette anywhere; transform the sleeves' non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image cleanly whatever the light: every person's face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere. The only people anywhere in the image are the reference people named in the reference map, and of those only the ones whose faces are clearly visible in their reference. Add no one else: no extra band members, musicians, staff, bystanders, passers-by, crowd, audience, background or out-of-focus figures, and no hands, arms, legs, or shadows of unseen people. Never complete a person who is hidden, cropped, turned away, blurred, or only partly visible in a reference with an invented face or body - leave that person out entirely. Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.",
   "inputs": [
-    "Glastonbury-1994.jpg",
-    "Generation-Terrorists.jpg",
     "Leisure.jpg",
-    "Terrifying-Angels.jpg",
+    "Glastonbury-1994.jpg",
+    "ChangesOneBowie.jpg",
     "ChangesTwoBowie.jpg",
+    "Kimono-My-House.jpg",
     "And-Out-Come-the-Wolves.jpg",
     "Mule.jpg",
-    "Galactic-Melt.jpg"
+    "Generation-Terrorists.jpg"
   ]
 }
