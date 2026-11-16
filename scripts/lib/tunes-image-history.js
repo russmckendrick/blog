@@ -163,6 +163,17 @@ export async function recentSettings(type, count = 8, historyPath = HISTORY_PATH
     .map(entry => ({ setting: entry.setting || null, lighting: entry.lighting || null }))
 }
 
+// The newest `count` entries for an image type, most recent first, whole. Used for the sleeve
+// rest, which needs each cover's cast, element roles, and sleeve summaries together.
+export async function recentEntries(type, count = 8, historyPath = HISTORY_PATH, { before = '' } = {}) {
+  if (!Number.isFinite(count) || count <= 0) return []
+  const history = await loadHistory(historyPath)
+  const matching = dedupeByTypeAndDate(
+    history.entries.filter(entry => entry?.type === type && isBefore(entry, before) && dateKey(entry))
+  )
+  return byDateAscending(matching).slice(-count).reverse()
+}
+
 // The newest `count` recorded compositions (camera position and framing) for an image type,
 // most recent first. Entries predating the field are skipped.
 export async function recentCompositions(type, count = 8, historyPath = HISTORY_PATH, { before = '' } = {}) {

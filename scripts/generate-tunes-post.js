@@ -173,6 +173,9 @@ async function main() {
       hint: coverHint,
       recordHistory: !testingMode,
       dateLabel: dateStr,
+      albumArtists: Object.fromEntries(
+        topAlbums.filter(([[artist, album]]) => artist && album).map(([[artist, album]]) => [`${normalizeForFilename(album)}.jpg`, artist])
+      ),
       debug: debugMode
     })
 

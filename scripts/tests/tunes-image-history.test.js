@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { promises as fs } from 'fs'
 import os from 'os'
 import path from 'path'
-import { appendHistory, recentCompositions, recentConcepts, recentLighting, recentMedia, recentSettings, recentYearTreatments, loadHistory } from '../lib/tunes-image-history.js'
+import { appendHistory, recentCompositions, recentConcepts, recentEntries, recentLighting, recentMedia, recentSettings, recentYearTreatments, loadHistory } from '../lib/tunes-image-history.js'
 
 async function writeHistory(entries) {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'tunes-history-'))
@@ -187,4 +187,18 @@ test('a regenerated week only looks back from its own date', async () => {
   assert.deepEqual(await recentSettings('cover', 8, file, scope), [{ setting: 'interior', lighting: 'skylights' }])
   assert.deepEqual(await recentConcepts('cover', 8, file), ['Bar', 'Old take', 'Gym'], 'no scope keeps the whole window')
   assert.deepEqual(await recentConcepts('cover', 8, file, { before: '2026-11-23' }), ['Bar', 'Old take', 'Gym'], 'a new week sees everything')
+})
+
+test('returns whole recent entries newest first, scoped to the week being made', async () => {
+  const file = await writeHistory([
+    { type: 'cover', date: '2026-08-10', cast: [1] },
+    { type: 'cover', date: '2026-09-07', cast: [2] },
+    { type: 'cover', date: '2026-09-14', cast: [1] },
+    { type: 'artist', date: '2026-09-07', cast: [3] },
+    { type: 'cover', cast: [9] }
+  ])
+  const entries = await recentEntries('cover', 8, file, { before: '2026-09-14' })
+  assert.deepEqual(entries.map(entry => entry.date), ['2026-09-07', '2026-08-10'])
+  assert.deepEqual((await recentEntries('cover', 1, file)).map(entry => entry.date), ['2026-09-14'])
+  assert.deepEqual(await recentEntries('cover', 0, file), [])
 })

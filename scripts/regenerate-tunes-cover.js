@@ -387,6 +387,7 @@ async function main() {
     hint: args.hint,
     recordHistory: args.record,
     dateLabel: dateStr,
+    albumArtists: Object.fromEntries(postContext.topAlbums.filter(item => item.album && item.artist).map(item => [`${normalizeForFilename(item.album)}.jpg`, item.artist])),
     debug: args.debug
   })
 

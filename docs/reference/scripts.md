@@ -149,6 +149,7 @@ Options:
 - `--hint=<string>` gives the AI art director an optional one-off steer
 - `--year=<yyyy>` makes a Year in Music cover: the art director must build the year into the scene as physical digits, the no-text guard allows exactly those four digits, and the run records under the `wrapped` history type (date `<yyyy>-12-31`)
 - `--record` appends the run to `scripts/.tunes-image-history.json` (the weekly generator records automatically; manual runs opt in)
+- A sleeve that was cast or led one of the previous eight weekly covers rests: it can only be a support or lend colour, so no archive page of nine shows it leading twice. The direct CLI has no post to read artists from, so it matches sleeves by file name alone; `regenerate-tunes-cover.js` and the weekly generator pass the artists through
 - `--debug`, `-d` enables verbose input selection and prompt output
 
 The two prompt stages default to `OPENAI_TUNES_COVER_MODEL` / `OPENAI_MODEL`, and can be overridden independently with `OPENAI_TUNES_COVER_SUMMARY_MODEL` and `OPENAI_TUNES_COVER_DIRECTION_MODEL`.

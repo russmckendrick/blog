@@ -482,6 +482,7 @@ function normalizeBox(value) {
 // ever come back as somebody else, and a child's likeness is not ours to restage anyway.
 export function uncastableReason(summary) {
   if (!hasPeople(summary)) return 'nobody is shown'
+  if (summary.ledOn) return `it led the cover on ${summary.ledOn}, and a sleeve rests for ${LEAD_REST_COVERS} covers after leading`
   if (summary.minors) return 'it shows a child, and children are never cast'
   const face = summary.faceHeight
   if (face != null && face < MIN_CASTABLE_FACE) return 'the faces on this sleeve are too small to reproduce recognisably'
@@ -493,6 +494,61 @@ export function uncastableReason(summary) {
 
 export function isCastable(summary) {
   return uncastableReason(summary) === ''
+}
+
+// The archive shows nine weeks to a page, and Maggot Brain was cast on both 10 Aug and 14 Sep
+// 2026: the same screaming head twice in one screenful. A sleeve that was cast or took the lead
+// role rests for the next LEAD_REST_COVERS covers, so no page of nine shows it twice. Resting
+// only bars it from the cast and the lead role; it can still be a support or lend colour.
+export const LEAD_REST_COVERS = 8
+
+function sleeveKey(value) {
+  return String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '')
+}
+
+// Sleeve files are named after the album alone, so two artists' "Greatest Hits" share a file
+// name. When both sides know the artist it has to match too; history written before the artist
+// was recorded falls back to the file name.
+export function isSameSleeve(a, b) {
+  if (!a?.filename || sleeveKey(a.filename) !== sleeveKey(b?.filename)) return false
+  const left = sleeveKey(a.artist)
+  const right = sleeveKey(b?.artist)
+  return !left || !right || left === right
+}
+
+// The sleeves a recorded cover was built around: its cast plus any source in the lead role.
+export function leadSleevesOf(entry) {
+  const summaries = Array.isArray(entry?.coverSummaries) ? entry.coverSummaries : []
+  const sources = new Set(Array.isArray(entry?.cast) ? entry.cast : [])
+  for (const element of Array.isArray(entry?.elements) ? entry.elements : []) {
+    if (element?.role === 'lead') sources.add(element.source)
+  }
+  return [...sources]
+    .map(source => summaries.find(summary => summary?.source === source))
+    .filter(summary => summary?.filename)
+    .map(summary => ({ filename: summary.filename, artist: summary.artist || '', date: entry.date || '' }))
+}
+
+// Marks each summary whose sleeve led a recent cover with `ledOn` (the newest such date). A
+// week where every sleeve is resting has nothing left to lead with, so the rest is lifted for
+// all of them rather than forcing a cover with no subject.
+export function markRestingSleeves(summaries = [], recentLeads = []) {
+  const marked = summaries.map(summary => {
+    const dates = recentLeads.filter(lead => isSameSleeve(summary, lead)).map(lead => lead.date || 'a recent week').sort()
+    return dates.length > 0 ? { ...summary, ledOn: dates[dates.length - 1] } : summary
+  })
+  if (marked.length > 0 && marked.every(summary => summary.ledOn)) return summaries
+  return marked
+}
+
+// Resting sources the brief still cast or gave the lead role.
+export function findRestedLeads(direction, coverSummaries = []) {
+  const resting = new Set(coverSummaries.filter(summary => summary?.ledOn).map(summary => summary.source))
+  const used = new Set((direction?.cast || []).filter(source => resting.has(source)))
+  for (const element of direction?.elements || []) {
+    if (element?.role === 'lead' && resting.has(element.source)) used.add(element.source)
+  }
+  return [...used].sort((a, b) => a - b)
 }
 
 // The padded crop (fractions of the reference image) to attach as a close-up for a cast
@@ -586,6 +642,8 @@ export function expectedPeople(cast, coverSummaries = []) {
 export function contentScore(summary, { rank = 0, pixelScore = 0 } = {}) {
   const strength = summary?.strength ?? 3
   let score = strength * 12
+  // A resting sleeve cannot lead, so it should not take a place from one that can.
+  if (summary?.ledOn) score -= 15
   if (isCastable(summary)) {
     score += 10 + (Math.min(summary.faceHeight ?? MIN_CASTABLE_FACE, 0.5) * 60)
   }
@@ -1106,7 +1164,8 @@ export async function designCoverArtDirection({
       summary.place ? `Place: ${summary.place}` : '',
       `People: ${summary.people || 'none'}`,
       hasPeople(summary) && isCastable(summary) ? `Castable: yes${summary.faceHeight ? ` - largest face is ${Math.round(summary.faceHeight * 100)}% of the sleeve height` : ''}` : '',
-      hasPeople(summary) && !isCastable(summary) ? `Castable: no - ${uncastableReason(summary)}; do not cast or depict its people${summary.place ? ', but its place is fully available as the location' : ''}` : '',
+      hasPeople(summary) && !isCastable(summary) ? `Castable: no - ${uncastableReason(summary)}; do not cast or depict its people${summary.place && !summary.ledOn ? ', but its place is fully available as the location' : ''}` : '',
+      summary.ledOn ? `Resting: this sleeve led the cover on ${summary.ledOn}. It may not be cast, be the location, or take the "lead" role this week; use it as a "support" or for "colour" only` : '',
       summary.palette.length > 0 ? `Palette: ${summary.palette.join(', ')}` : ''
     ].filter(Boolean).join('\n'))
     .join('\n\n')
@@ -1127,6 +1186,8 @@ Cast at most ${MAX_CAST} sources as people. People are where a cover is won or l
 Cast the strongest portraits, not the most convenient ones. Each summary says whether its people are castable and how large the largest face is: a face can only be copied when there is enough of it, so prefer the sleeves with the largest faces and the fewest people, and never cast a sleeve marked "Castable: no" - its people do not appear in any form, and neither does a stand-in for them. Never cast or depict a child. When a week's best portrait is available, build the picture around it instead of around whichever sleeve suggests the cleverest location. A cover with one well-copied person beats a cover with two groups of strangers, and a cover with nobody in it beats both when no sleeve has a usable face.
 
 A sleeve's people and its place are separate things. When a summary has a "Place", that location can be the cover's location whether or not its people are castable: rebuild that room, street, or landscape as a real place - its architecture, furniture, surfaces, and light, recognisable to anyone who knows the sleeve - with none of the sleeve's own people in it, and stage this week's cast there. A sleeve marked "Castable: no" with a strong place is often the best location you have, so do not write it off as a single borrowed prop. A sleeve used this way takes the "lead" role as the place, alongside the cast sleeve as the other lead. Take the location from one sleeve only; do not merge two sleeves' places.
+
+Some sleeves are resting. A sleeve that led a recent cover is marked "Resting" in its summary: readers see several weeks of covers side by side, and the same record leading twice makes two of them look alike. A resting sleeve is never cast, never the location, and never a "lead"; it can still be a "support" or lend "colour". Build this week's picture around a sleeve that is not resting.
 
 Lead with the strongest sleeves. "Visual strength" rates how much each sleeve gives you to photograph; the picture is built from the high-rated ones, and a weak sleeve contributes colour or nothing.
 
@@ -1223,6 +1284,10 @@ Return JSON exactly as {"concept":"string","medium":"string","setting":"string",
         problems.push(`it casts people but shoots them from above or from far away ("${candidate.composition}"), so their faces are too small to recognise`)
       }
       problems.push(...findHierarchyProblems(candidate.elements, coverSummaries.length).map(problem => `the balance is wrong: ${problem}`))
+      const rested = findRestedLeads(candidate, coverSummaries)
+      if (rested.length > 0) {
+        problems.push(`it casts or leads with source${rested.length > 1 ? 's' : ''} ${rested.join(', ')}, which led a recent cover and is resting - support or colour only`)
+      }
       if (refused.includes(candidate.setting)) {
         problems.push(`it is set as "${candidate.setting}", which is refused this week`)
       }
@@ -1231,7 +1296,7 @@ Return JSON exactly as {"concept":"string","medium":"string","setting":"string",
     const problems = problemsWith(direction)
     if (problems.length > 0) {
       if (debug) console.log(`  Art director brief rejected (${problems.join('; ')}); asking again`)
-      direction = await requestDirection(`Your previous answer was rejected: ${problems.join('; and ')}. Answer again with at most ${MAX_CAST} cast sources and no people from any other source, no sleeve's people shown as a picture on any surface, screen, sign, or carving, nobody in the scene except the cast, no lettering, cast people standing in the scene at its own scale and in its own light, photographed from eye level at three-quarter length or closer,${refused.length > 0 ? ` a setting that is not ${refused.join(' or ')},` : ''} one or two lead sources with ${MIN_SUPPORTS} to ${MAX_SUPPORTS} others each present as a real, recognisable supporting element, and one cohesive moment rather than a station for each sleeve.`)
+      direction = await requestDirection(`Your previous answer was rejected: ${problems.join('; and ')}. Answer again with at most ${MAX_CAST} cast sources and no people from any other source, no sleeve's people shown as a picture on any surface, screen, sign, or carving, nobody in the scene except the cast, no lettering, no resting sleeve cast or in the lead role, cast people standing in the scene at its own scale and in its own light, photographed from eye level at three-quarter length or closer,${refused.length > 0 ? ` a setting that is not ${refused.join(' or ')},` : ''} one or two lead sources with ${MIN_SUPPORTS} to ${MAX_SUPPORTS} others each present as a real, recognisable supporting element, and one cohesive moment rather than a station for each sleeve.`)
       const remaining = problemsWith(direction)
       if (remaining.length > 0) console.warn(`  Art director brief still has problems: ${remaining.join('; ')}`)
     }

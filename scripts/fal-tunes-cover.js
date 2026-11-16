@@ -8,7 +8,7 @@ import { COVER_BLOCKLIST } from './tunes-cover-blocklist.js'
 import { isContentPolicyViolation } from './lib/fal-content-policy.js'
 import { ConfigLoader } from './lib/config-loader.js'
 import { getBackend, BACKENDS } from './lib/image-backends/index.js'
-import { appendHistory, recentCompositions, recentConcepts, recentLighting, recentMedia, recentSettings, recentYearTreatments, writeSidecar } from './lib/tunes-image-history.js'
+import { appendHistory, recentCompositions, recentConcepts, recentEntries, recentLighting, recentMedia, recentSettings, recentYearTreatments, writeSidecar } from './lib/tunes-image-history.js'
 import { extractTunesDate } from './lib/tunes-post-context.js'
 import {
   buildGenerationPrompt as buildFreeformGenerationPrompt,
@@ -20,9 +20,12 @@ import {
   designCoverArtDirection,
   dropModerationRisks,
   isPhotographicMedium,
+  leadSleevesOf,
+  markRestingSleeves,
   refusedSettings,
   settingFamily,
   COMPOSITION_REPEAT_WINDOW,
+  LEAD_REST_COVERS,
   LIGHTING_REPEAT_WINDOW,
   normalizeYear,
   summarizeAlbumCovers
@@ -592,6 +595,11 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
     .map(entry => settingFamily(entry.setting, entry.lighting))
     .filter(Boolean)
   const refusedSettingFamilies = refusedSettings(settingHistory)
+  // Sleeves that were cast or led one of the last LEAD_REST_COVERS weekly covers rest this
+  // week. Year in Music covers draw on a whole year's records and are exempt.
+  const restingLeads = year
+    ? []
+    : (await recentEntries(historyType, LEAD_REST_COVERS, undefined, historyScope)).flatMap(leadSleevesOf)
 
   const sourceImagePaths = filterBlocklistedCovers(imagePaths, debug)
 
@@ -625,11 +633,24 @@ async function createFALTunesCover(imagePaths, outputPath, options = {}) {
   // Read every candidate sleeve once, before choosing: the summaries decide which sleeves are
   // sent on, and a content-policy retry reuses them rather than paying for the pass again.
   const candidateUrls = await uploadAlbumImages(candidatePaths, debug)
-  const candidateSummaries = await summarizeAlbumCovers({
+  const summarized = await summarizeAlbumCovers({
     imageUrls: candidateUrls,
     sourceReferences: buildSourceReferences(candidatePaths),
     debug
   })
+  // The artist is attached after the factual pass, which describes the pictures and is not
+  // told whose they are; it is recorded so two artists' same-titled albums stay distinct.
+  const albumArtists = options.albumArtists || {}
+  const candidateSummaries = markRestingSleeves(
+    summarized.map(summary => ({ ...summary, artist: summary.artist || albumArtists[summary.filename] || '' })),
+    restingLeads
+  )
+  const resting = candidateSummaries.filter(summary => summary.ledOn)
+  if (resting.length > 0) {
+    console.log(`  Resting sleeve(s), support or colour only: ${resting.map(summary => `${summary.filename} (led ${summary.ledOn})`).join('; ')}`)
+  } else if (summarized.length > 0 && summarized.every(summary => restingLeads.some(lead => lead.filename === summary.filename))) {
+    console.warn('  Every sleeve this week led a recent cover; lifting the rest so the cover has a subject')
+  }
   // Drop sleeves the summary pass flagged as likely to be refused before spending a
   // generation call on them.
   const { keepIndexes, dropped } = dropModerationRisks(candidateSummaries, { minKeep: minCount })

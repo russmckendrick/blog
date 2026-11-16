@@ -30,6 +30,11 @@ import {
   findFlatCopies,
   findLettering,
   findHierarchyProblems,
+  findRestedLeads,
+  isSameSleeve,
+  leadSleevesOf,
+  markRestingSleeves,
+  LEAD_REST_COVERS,
   findLoomingCast,
   findPicturedFigures,
   findUncastPeople,
@@ -679,4 +684,54 @@ test('a cast sleeve with a hidden person is cropped to its clear faces and count
   assert.equal(expectedPeople([1], [{ source: 1, people: 'a man' }]), null, 'unknown head count is not audited')
   const map = buildReferenceMap([sleeve], [1], [{ source: 1, reference: 8 }])
   assert.match(map, /reference image 1 is cropped to the one person on that sleeve whose face is clearly visible - portray only that person and nobody else from it, and reference image 8 is an enlarged close-up/)
+})
+
+test('a sleeve that led a recent cover rests: no cast, no lead, lower rank', () => {
+  // Maggot Brain was cast on 10 Aug and again on 14 Sep 2026, inside one archive page of nine.
+  assert.equal(LEAD_REST_COVERS, 8, 'eight covers of rest keeps a page of nine free of repeats')
+  const entry = {
+    date: '2026-08-10',
+    cast: [1],
+    elements: [
+      { source: 1, role: 'lead', element: 'the woman' },
+      { source: 2, role: 'lead', element: 'the room' },
+      { source: 3, role: 'support', element: 'a guitar' }
+    ],
+    coverSummaries: [
+      { source: 1, filename: 'Maggot-Brain.jpg', artist: '' },
+      { source: 2, filename: 'Let-Me-Come-Over.jpg', artist: '' },
+      { source: 3, filename: 'Sabotage.jpg', artist: '' }
+    ]
+  }
+  const leads = leadSleevesOf(entry)
+  assert.deepEqual(leads.map(lead => lead.filename), ['Maggot-Brain.jpg', 'Let-Me-Come-Over.jpg'], 'cast and lead sleeves, not supports')
+
+  const face = { people: 'one woman', peopleCount: 1, faceHeight: 0.4, strength: 5 }
+  const summaries = [
+    { source: 1, filename: 'Maggot-Brain.jpg', ...face },
+    { source: 2, filename: 'Fugazi.jpg', ...face },
+    { source: 3, filename: 'Sabotage.jpg', ...face }
+  ]
+  const marked = markRestingSleeves(summaries, leads)
+  assert.equal(marked[0].ledOn, '2026-08-10')
+  assert.equal(marked[1].ledOn, undefined)
+  assert.equal(marked[2].ledOn, undefined, 'a support on the earlier cover is not resting')
+  assert.equal(isCastable(marked[0]), false)
+  assert.match(uncastableReason(marked[0]), /led the cover on 2026-08-10/)
+  assert.ok(contentScore(marked[0]) < contentScore(marked[1]), 'a resting sleeve ranks below an equal fresh one')
+
+  assert.deepEqual(findRestedLeads({ cast: [1], elements: [] }, marked), [1])
+  assert.deepEqual(findRestedLeads({ cast: [2], elements: [{ source: 1, role: 'lead' }] }, marked), [1])
+  assert.deepEqual(findRestedLeads({ cast: [2], elements: [{ source: 1, role: 'support' }, { source: 2, role: 'lead' }] }, marked), [], 'support is allowed')
+})
+
+test('the rest is lifted when every sleeve is resting, and same-titled albums stay distinct', () => {
+  const leads = [{ filename: 'A.jpg', artist: '', date: '2026-08-10' }, { filename: 'B.jpg', artist: '', date: '2026-08-17' }]
+  const all = [{ source: 1, filename: 'A.jpg' }, { source: 2, filename: 'B.jpg' }]
+  assert.ok(markRestingSleeves(all, leads).every(summary => !summary.ledOn), 'a week with nothing else keeps its subject')
+
+  assert.equal(isSameSleeve({ filename: 'Greatest-Hits.jpg', artist: 'ZZ Top' }, { filename: 'Greatest-Hits.jpg', artist: 'The Doors' }), false)
+  assert.equal(isSameSleeve({ filename: 'Greatest-Hits.jpg', artist: 'ZZ Top' }, { filename: 'Greatest-Hits.jpg', artist: '' }), true, 'old history without an artist matches on file name')
+  assert.equal(isSameSleeve({ filename: 'Greatest-Hits.jpg', artist: 'ZZ Top' }, { filename: 'greatest-hits.jpg', artist: 'zz top' }), true)
+  assert.equal(isSameSleeve({ filename: 'So.jpg' }, { filename: 'Solo.jpg' }), false)
 })
