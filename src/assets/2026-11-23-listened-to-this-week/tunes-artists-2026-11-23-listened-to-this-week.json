@@ -1,0 +1,299 @@
+{
+  "version": 2,
+  "date": "2026-11-23",
+  "type": "artist",
+  "lane": null,
+  "lighting": null,
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Twilight shoreline cluster beneath the cliff",
+  "creativeDirection": "A medium-close environmental group portrait on the beach, using the cove’s sunset glow and subtle fill to unite six distinct faces in one relaxed, tightly layered moment.",
+  "scene": "On the wet sand inside the rocky beach cove at sunset, the group stands close together near the edge of shallow reflective water with the dark cliff wall rising behind and the glowing horizon opening between rock formations.",
+  "locationSource": 5,
+  "locationSetting": "rocky beach cove with wet reflective sand, shallow water, ocean horizon, large dark cliff faces on both sides, and a vivid sunset sky with layered clouds",
+  "locationEvidence": "Wet reflective sand in a rocky beach cove, shallow water, dark cliff faces on both sides, ocean horizon, and a vivid cloud-filled sunset clearly establish a real outdoor shoreline location.",
+  "locationReference": 7,
+  "locationInput": "Crowded-House.jpg",
+  "cast": [
+    {
+      "source": 1,
+      "person": "older light-skinned man with short silver-gray side-parted hair, angular clean-shaven face, gray textured blazer, and dark green V-neck top",
+      "placement": "At the far right edge of the cluster, body angled inward toward the group, shown in his existing left-facing profile, standing close enough that his shoulder overlaps the person beside him; his gaze lands inward across the group."
+    },
+    {
+      "source": 2,
+      "person": "older light-skinned man with brushed-back light brown graying hair, broad clean-shaven face, and black suit over a black shirt",
+      "placement": "Right of center, half a step behind the front line, torso turned slightly toward camera but with his existing leftward gaze crossing toward the others; one arm relaxed by his side, shoulders easy and upright."
+    },
+    {
+      "source": 4,
+      "person": "Black man with short twisted hair, stocky build, clean-shaven face, and dark long-sleeve shirt",
+      "placement": "Front center, closest to camera, feet planted on the wet sand and shoulders squared, head tipped slightly down exactly as in reference; his gaze lands straight toward the camera."
+    },
+    {
+      "source": 5,
+      "person": "light-skinned silver-haired man with a smile, wearing a dark blazer over a dark shirt",
+      "placement": "Left of center in the front line, slightly forward beside the central figure, relaxed stance on the reflective sand; his existing smiling gaze lands toward the camera."
+    },
+    {
+      "source": 7,
+      "person": "light-skinned woman with long voluminous dark wavy hair, light eyes, and a red-and-black outfit with a black outer layer",
+      "placement": "At the far left of the group, angled gently inward with hair catching the breeze, shoulders close to the others; her direct gaze lands straight at the camera."
+    },
+    {
+      "source": 9,
+      "person": "young light-skinned man with dark medium-length hair, round clean-shaven face, and a light short-sleeve collared shirt",
+      "placement": "Low in the foreground near the left-center, crouched or seated lightly on one heel in front of the others and leaning slightly forward as in reference; his gaze lands directly at the camera."
+    }
+  ],
+  "selection": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    9
+  ],
+  "palette": [
+    "sunset orange",
+    "violet-blue sky",
+    "charcoal rock",
+    "wet sand silver",
+    "black clothing",
+    "deep red accent"
+  ],
+  "mood": "intimate, windswept, calm, quietly iconic",
+  "artistSummaries": [
+    {
+      "source": 1,
+      "filename": "Paul-Weller.jpg",
+      "artist": "Paul Weller",
+      "faceHeight": 0.43,
+      "subjectBox": [
+        0.14,
+        0.02,
+        0.93,
+        0.95
+      ],
+      "description": "A tightly cropped studio portrait of one older light-skinned man shown from the chest up in left-facing profile against a black background. He has short straight silver-gray hair with a side part, a lean angular face, no facial hair, and no eyewear. He wears a textured gray blazer over a dark green V-neck top with a thin chain necklace visible. Dramatic directional lighting highlights the face and hair while the background falls to solid black.",
+      "primarySubject": "older light-skinned man with short silver-gray side-parted hair and an angular clean-shaven face, turned in left profile",
+      "visiblePeople": [
+        "one older light-skinned man with short silver-gray hair, clean-shaven face, and a slim build"
+      ],
+      "wardrobe": "gray textured blazer, dark green V-neck top, thin chain necklace",
+      "photoStyle": "tight studio portrait, high contrast, sharp focus, dark background",
+      "setting": "plain black studio backdrop with no visible environmental details",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 2,
+      "filename": "John-Farnham.jpg",
+      "artist": "John Farnham",
+      "faceHeight": 0.2,
+      "subjectBox": [
+        0.24,
+        0.07,
+        0.8,
+        0.97
+      ],
+      "description": "A studio portrait of one older light-skinned man framed from about mid-thigh upward against a smooth gray gradient background. He has short light brown to graying hair brushed back, a broad face, no facial hair, and no eyewear. He looks off to the left with a slight smile. He wears a black suit jacket over a black button-up shirt. Soft even lighting gives the image a polished formal look.",
+      "primarySubject": "older light-skinned man with brushed-back light brown graying hair, broad clean-shaven face, and black suit, looking left",
+      "visiblePeople": [
+        "one older light-skinned man with short brushed-back hair, clean-shaven face, and average build"
+      ],
+      "wardrobe": "black suit jacket and black button-up shirt",
+      "photoStyle": "formal studio portrait with soft lighting and neutral gradient backdrop",
+      "setting": "smooth gray studio background with no visible furniture or architecture",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 3,
+      "filename": "Thunder.jpg",
+      "artist": "Thunder",
+      "faceHeight": 0.12,
+      "subjectBox": [
+        0.21,
+        0.23,
+        0.45,
+        0.92
+      ],
+      "description": "A full-length studio group portrait of five older light-skinned men standing in a row on a seamless floor against a pale gray gradient backdrop. The most prominent figure is the second from left, with medium-length swept-back blond-gray hair, a short beard, layered necklaces, and a black leather jacket, standing slightly forward with hands clasped. The others wear mostly black jackets, shirts, trousers, and boots; one man at far right is bald and wears dark round sunglasses, and another near center has very short white hair and a black turtleneck under a blazer. Lighting is even and controlled with soft shadows on the floor.",
+      "primarySubject": "older light-skinned man second from left with swept-back blond-gray hair, short beard, layered necklaces, and a black leather jacket, standing slightly forward",
+      "visiblePeople": [
+        "older light-skinned man at far left with short gray hair and short gray beard, wearing a dark jacket and dark shirt",
+        "older light-skinned man second from left with medium-length blond-gray hair and short beard, wearing a black leather jacket and necklaces",
+        "older light-skinned man at center with very short white hair and clean-shaven face, wearing a dark blazer over a black turtleneck",
+        "older light-skinned tall man second from right with short light hair and clean-shaven face, wearing a dark vest over a dark shirt",
+        "older light-skinned bald man at far right wearing dark round sunglasses and a dark jacket"
+      ],
+      "wardrobe": "all five wear dark clothing: jackets, blazers, vest, turtleneck, dark trousers, and black shoes or boots; one wears layered necklaces and another dark sunglasses",
+      "photoStyle": "full-length studio band portrait with cool neutral tones and soft gradient backdrop",
+      "setting": "seamless studio floor and pale gray gradient background with no furniture or architectural features",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 4,
+      "filename": "Living-Colour.jpg",
+      "artist": "Living Colour",
+      "faceHeight": 0.16,
+      "subjectBox": [
+        0.28,
+        0.17,
+        0.73,
+        1
+      ],
+      "description": "A high-contrast black-and-white studio photo of four Black men standing closely against a white backdrop. The most prominent figure stands front center with a stocky build, short twisted hair, and a dark long-sleeve shirt, head tipped slightly down while facing the camera. At left, one man has a high flat-top hairstyle and fitted dark T-shirt; behind center-left another has long dreadlocks and facial hair; at right another has spiked dread-like hair held by a dark headband and stands with arms crossed. The image uses stark lighting and strong tonal contrast.",
+      "primarySubject": "Black man at front center with short twisted hair, stocky build, and a dark long-sleeve shirt, standing closest to camera with head slightly lowered",
+      "visiblePeople": [
+        "Black man at left with high flat-top hair, clean-shaven face, dark fitted T-shirt, and slim build",
+        "Black man behind center-left with long dreadlocks, facial hair, and dark shirt",
+        "Black man at front center with short twisted hair, clean-shaven face, dark long-sleeve shirt, and stockier build",
+        "Black man at right with spiked dread-like hair under a headband, faint facial hair, dark T-shirt, and arms crossed"
+      ],
+      "wardrobe": "dark T-shirts and dark pants; one wears a headband",
+      "photoStyle": "high-contrast black-and-white studio band portrait",
+      "setting": "plain white studio backdrop with no visible location details",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 5,
+      "filename": "Crowded-House.jpg",
+      "artist": "Crowded House",
+      "faceHeight": 0.12,
+      "subjectBox": [
+        0.59,
+        0.26,
+        0.87,
+        0.98
+      ],
+      "description": "An outdoor group portrait of five light-skinned men standing on wet sand at a rocky beach at sunset. The most prominent figure is the silver-haired man second from right, smiling, wearing a dark blazer over a dark shirt, and standing slightly forward. The others wear mostly dark jackets and shirts; one younger bearded man is barefoot with rolled dark trousers, another older man wears glasses, and the man at far right leans inward with his head resting on his hand. Behind them are dark rock formations, shallow reflective water, the ocean horizon, and a colorful cloud-filled sunset sky.",
+      "primarySubject": "light-skinned silver-haired man second from right, smiling and standing slightly forward in a dark blazer and dark shirt",
+      "visiblePeople": [
+        "older light-skinned man at far left with short gray hair, wearing a dark blazer, white shirt, jeans, and sneakers",
+        "younger light-skinned man second from left with medium dark hair and beard, wearing a dark jacket and rolled dark trousers, barefoot",
+        "older light-skinned man at center with curly thinning hair and glasses, wearing a black long-sleeve top and dark trousers",
+        "older light-skinned man second from right with tousled silver hair, smiling, in a dark blazer and dark shirt",
+        "light-skinned man at far right with dark hair and beard, leaning inward in a dark striped shirt or jacket"
+      ],
+      "wardrobe": "mostly dark blazers, jackets, shirts, and trousers; one white shirt visible, one pair of sneakers, one barefoot figure, one striped dark top",
+      "photoStyle": "environmental band portrait at dusk with balanced flash or fill light against a sunset background",
+      "setting": "rocky beach cove with wet reflective sand, shallow water, ocean horizon, large dark cliff faces on both sides, and a vivid sunset sky with layered clouds",
+      "settingStrength": "strong"
+    },
+    {
+      "source": 6,
+      "filename": "Genesis.jpg",
+      "artist": "Genesis",
+      "faceHeight": 0.18,
+      "subjectBox": [
+        0.28,
+        0.18,
+        0.67,
+        0.98
+      ],
+      "description": "A waist-up group portrait of three older light-skinned men standing close together against a dark nearly black background. The most prominent figure is the bald man in the center, smiling, wearing a dark short-sleeve T-shirt, a thin necklace, and light trousers. At left stands a taller man with sandy-gray hair and a short goatee in a dark button-front shirt; at right stands a gray-haired man in a black T-shirt. Lighting is soft and frontal, with the background mostly featureless.",
+      "primarySubject": "older light-skinned bald man in the center with a smiling clean-shaven face, dark T-shirt, and light trousers",
+      "visiblePeople": [
+        "older light-skinned tall man at left with sandy-gray medium-length hair and a short goatee, wearing a dark button-front shirt",
+        "older light-skinned bald man in the center with a clean-shaven face and dark short-sleeve T-shirt",
+        "older light-skinned man at right with short gray hair and clean-shaven face, wearing a black T-shirt"
+      ],
+      "wardrobe": "dark casual shirts and T-shirts; center man wears light trousers and a thin necklace",
+      "photoStyle": "casual studio or backstage-style group portrait with dark background and soft flash lighting",
+      "setting": "plain very dark background with no visible environmental details",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 7,
+      "filename": "Kate-Bush.jpg",
+      "artist": "Kate Bush",
+      "faceHeight": 0.29,
+      "subjectBox": [
+        0.07,
+        0.04,
+        0.93,
+        1
+      ],
+      "description": "A studio head-and-shoulders portrait of one light-skinned woman against a dark gray background. She has long voluminous dark wavy hair, large light-colored eyes, shaped brows, and no eyewear. She faces the camera directly with a composed expression. She wears a red garment with black detailing and a black outer layer around the shoulders. Soft frontal lighting produces an even polished look.",
+      "primarySubject": "light-skinned woman with long dark wavy hair, light eyes, and a red-and-black outfit, facing the camera directly",
+      "visiblePeople": [
+        "one light-skinned woman with long dark wavy hair, no eyewear, and a full face framed by voluminous curls"
+      ],
+      "wardrobe": "red top or dress with black detailing and a black outer layer or shawl",
+      "photoStyle": "close studio portrait with soft even lighting and dark plain background",
+      "setting": "plain dark gray studio backdrop with no visible room details",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 8,
+      "filename": "Dreadzone.jpg",
+      "artist": "Dreadzone",
+      "faceHeight": null,
+      "subjectBox": null,
+      "description": "A centered square image of a stained-glass panel on a plain brown background. No people are visible. The panel contains blue, red, orange, yellow, green, and white sections with a circular central emblem and decorative round corner motifs. The image appears graphic and frontally presented.",
+      "primarySubject": "no visible adult; stained-glass panel centered in frame",
+      "visiblePeople": [],
+      "wardrobe": "none visible",
+      "photoStyle": "front-on graphic reproduction of stained glass or album artwork",
+      "setting": "plain flat brown background surrounding a single centered stained-glass-style square panel; no physical room details visible",
+      "settingStrength": "weak"
+    },
+    {
+      "source": 9,
+      "filename": "Tom-Tom-Club.jpg",
+      "artist": "Tom Tom Club",
+      "faceHeight": 0.24,
+      "subjectBox": [
+        0.01,
+        0.05,
+        0.66,
+        0.98
+      ],
+      "description": "A black-and-white portrait of two young light-skinned adults seated closely against a plain white background. The more prominent subject is the young man at left, with dark medium-length hair, a round clean-shaven face, and a short-sleeve collared shirt, leaning slightly forward toward the camera. Beside him is a young woman with a short blond bob and a collared shirt, partly tucked behind his shoulder. Lighting is flat and even, and the framing is tight around their upper bodies.",
+      "primarySubject": "young light-skinned man at left with dark medium-length hair, clean-shaven round face, and a light short-sleeve collared shirt, seated slightly forward",
+      "visiblePeople": [
+        "young light-skinned man at left with dark medium-length hair and a light short-sleeve collared shirt",
+        "young light-skinned woman at right with a short blond bob and a light collared shirt"
+      ],
+      "wardrobe": "both wear light collared shirts; the man wears a short-sleeve shirt and the woman a long-sleeve button-up shirt with a thin necklace",
+      "photoStyle": "tight black-and-white portrait with simple high-key background",
+      "setting": "plain white background with no visible environmental context",
+      "settingStrength": "weak"
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2-6",
+  "model": "openai/gpt-image-2.6/sunburst/edit",
+  "prompt": "LOCATION ANCHOR — HIGHEST PRIORITY: Attached reference image 7, the last one, is the sole authority for the physical setting: rocky beach cove with wet reflective sand, shallow water, ocean horizon, large dark cliff faces on both sides, and a vivid sunset sky with layered clouds. It is a setting reference only: the one cast member from that photo has their own cast reference above, and nobody else visible in it appears. Recreate that recognisable location faithfully and stage every selected person there. Preserve its visible architecture, spatial layout, surfaces, fixtures, furniture or landscape, ambient conditions, and lighting logic. Extend only what would plausibly continue immediately beyond the photographed frame. Do not invent, replace, genericise, relocate, or combine this setting with any other reference location. Ignore any conflicting location in the creative direction. Take the place from it, not its camera distance: if it is a wide, distant, or aerial view, move the camera in within that same place. Photorealistic 16:9 group portrait on wet reflective sand inside a rocky beach cove at sunset, viewed from a medium-close distance at eye level; dark cliff faces rise on both sides, a shallow ribbon of water lies around their feet, and a glowing ocean horizon with layered clouds opens behind them. Six adults gathered in a tight, natural cluster as one shared still moment: a young light-skinned man with dark medium-length hair in a light short-sleeve collared shirt crouched low in the foreground leaning slightly forward and looking at camera; at far left a light-skinned woman with long voluminous dark wavy hair in a red-and-black outfit faces camera directly; left of center a smiling light-skinned older man with tousled silver hair in a dark blazer stands slightly forward looking toward camera; front center a stocky Black man with short twisted hair in a dark long-sleeve shirt stands closest with head slightly lowered and eyes toward camera; right of center an older light-skinned man with brushed-back graying hair in a black suit stands half a step back looking left across the group; at far right an older light-skinned man with short silver-gray side-parted hair and an angular clean-shaven face stands in left-facing profile in a gray textured blazer and dark green V-neck, angled inward so his shoulder overlaps the group. Compose them in a layered semicircle with overlapping shoulders and varied heights, not a lineup, using a 50mm environmental portrait feel with crisp faces and moderate depth so every face stays clear while the cliffs and horizon remain legible. Light the whole group with the cove’s single sunset ambient light, warm from the horizon and cool from the open sky, with subtle photographic fill consistent across all faces and soft reflections rising from the wet sand. Natural rich color, restrained contrast, detailed skin and fabric, luminous sky reflections, calm intimate mood. Attached cast plan: Attached reference image 1: portray only older light-skinned man with short silver-gray side-parted hair, angular clean-shaven face, gray textured blazer, and dark green V-neck top; At the far right edge of the cluster, body angled inward toward the group, shown in his existing left-facing profile, standing close enough that his shoulder overlaps the person beside him; his gaze lands inward across the group.. Attached reference image 2: portray only older light-skinned man with brushed-back light brown graying hair, broad clean-shaven face, and black suit over a black shirt; Right of center, half a step behind the front line, torso turned slightly toward camera but with his existing leftward gaze crossing toward the others; one arm relaxed by his side, shoulders easy and upright.. Attached reference image 3: portray only Black man with short twisted hair, stocky build, clean-shaven face, and dark long-sleeve shirt; Front center, closest to camera, feet planted on the wet sand and shoulders squared, head tipped slightly down exactly as in reference; his gaze lands straight toward the camera.. Attached reference image 4: portray only light-skinned silver-haired man with a smile, wearing a dark blazer over a dark shirt; Left of center in the front line, slightly forward beside the central figure, relaxed stance on the reflective sand; his existing smiling gaze lands toward the camera.. Attached reference image 5: portray only light-skinned woman with long voluminous dark wavy hair, light eyes, and a red-and-black outfit with a black outer layer; At the far left of the group, angled gently inward with hair catching the breeze, shoulders close to the others; her direct gaze lands straight at the camera.. Attached reference image 6: portray only young light-skinned man with dark medium-length hair, round clean-shaven face, and a light short-sleeve collared shirt; Low in the foreground near the left-center, crouched or seated lightly on one heel in front of the others and leaning slightly forward as in reference; his gaze lands directly at the camera.. Hard constraints (override any conflicting creative direction): Create one cohesive photorealistic 16:9 group photograph in a single real-world scene, not a grid, contact sheet, row, montage, or collection of separate panels. Portray exactly one adult from each attached cast reference image and no one else; when a cast reference shows more than one person, use only the one specifically described cast member. The setting reference contributes the place only and never a person. Depict each selected person exactly once in the entire composition. Never duplicate or clone anyone as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. Keep every selected person closely recognisable and faithful to their reference photo, preserving facial features, skin tone, hair, facial hair, eyewear, clothing, styling, and overall likeness. FACE LOCK: copy each person's face from their reference as photographed - the same expression, mouth, eyes, eyewear, and head angle, turned by no more than a few degrees. Never invent a smile, grin, laugh, open mouth, squint, raised brow, or new head tilt that the reference does not show. A neutral or serious reference face stays neutral or serious. A cast reference fixes the face, not the light or the grade. Never carry over a reference's lighting direction, coloured or stage light, colour cast, black-and-white treatment, contrast, grain, sharpness, background fragments, or cut-out edges. Render the photograph in full natural colour, always - including when the setting reference or any cast reference is black-and-white, monochrome, or tinted. Take the place and the faces from such references and supply true-to-life colour for both. This is one photograph taken in one exposure through one lens. Light every person with the single light of the location: the same direction, softness, colour temperature, and shadow density on every face, with the location's bounce and reflections on skin, hair, and clothing. Give everyone the same colour grade, grain, perspective, and depth of field, sized by their distance from the camera. Unify the group through bodies and placement, not faces: stand or sit them shoulder to shoulder, overlapping and partly occluding one another, leaning on each other or on the same surface, with contact shadows and real weight on the ground. Turn and place each body so that the gaze their reference already has lands on the camera or on another person. Do not average, beautify, de-age, substitute, invent, merge, blend, morph, or distort faces or bodies, and do not add a background crowd, extra limbs, or deformed hands. Frame the group close or medium-close so every face is large, sharp, unobstructed, and richly detailed. Allow natural, source-grounded readable text or logos on clothing, screens, signs, labels, instruments, or props. Do not add editorial captions, titles, credits, borders, or watermarks. This generation has 6 attached cast reference images (images 1 to 6) followed by one setting reference, and the final image must contain exactly 6 visible adults total, no more and no fewer. Omit any person described in the creative direction who does not have an attached cast reference.",
+  "reuseWeeks": 6,
+  "reuseBlocked": [],
+  "reuseRelaxed": [],
+  "inputs": [
+    "Paul-Weller.jpg",
+    "John-Farnham.jpg",
+    "Living-Colour.jpg",
+    "Crowded-House.jpg",
+    "Kate-Bush.jpg",
+    "Tom-Tom-Club.jpg"
+  ],
+  "closeUps": {
+    "Living-Colour.jpg": [
+      0.213,
+      0.046,
+      0.797,
+      1
+    ],
+    "Crowded-House.jpg": [
+      0.548,
+      0.152,
+      0.912,
+      1
+    ],
+    "Tom-Tom-Club.jpg": [
+      0,
+      0,
+      0.758,
+      1
+    ]
+  }
+}

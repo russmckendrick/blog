@@ -1,0 +1,309 @@
+{
+  "version": 2,
+  "date": "2026-11-23",
+  "type": "cover",
+  "lane": null,
+  "setting": "exterior",
+  "lighting": "overcast coastal daylight",
+  "composition": "low angle, layered foreground portrait",
+  "cast": [
+    1
+  ],
+  "closeUps": [],
+  "castCrops": [],
+  "peopleAudit": {
+    "expected": 1,
+    "counted": 1,
+    "retried": false
+  },
+  "shootDirection": null,
+  "colourTreatment": null,
+  "concept": "Windshield portrait beside a seaside machine",
+  "medium": "daylight location photography",
+  "creativeDirection": "Daylight location photography in a real coastal pull-off, using the surreal beach-and-machine sleeve as a plausible built structure and staging one cast portrait close to camera for recognisable presence.",
+  "scene": "A real seafront turnout beside a weathered concrete building that has been made to resemble a towering rusted mechanical face, its single round porthole eye and huge circular mouth built into the facade like industrial architecture. Parked diagonally in the foreground is a red car, shot from a low angle near the front quarter panel so the windshield and side windows stack with the building behind. The cast man stands outside the car close to camera, turned in profile toward the driver's side window so his face nearly meets his own reflection in the glass. The sea and pale sky open out beyond the building, with no other people present.",
+  "elements": [
+    {
+      "source": 2,
+      "role": "lead",
+      "element": "the coastal location and the towering rusted mechanical-face building with one circular eye, open ringed mouth, tiled concrete details, and a lone chair near the wall"
+    },
+    {
+      "source": 1,
+      "role": "lead",
+      "element": "the man from reference image 1 in his tight profile pose, facing his reflection in the car window"
+    },
+    {
+      "source": 7,
+      "role": "support",
+      "element": "a red car parked in the foreground, with a small pair of dice hanging inside near the windshield"
+    },
+    {
+      "source": 5,
+      "role": "support",
+      "element": "a circular stained-glass medallion panel set into the building wall beside the mouth, echoing the blue multi-armed figure in orange and yellow glass"
+    },
+    {
+      "source": 4,
+      "role": "support",
+      "element": "a crown-like spiked metal headpiece mounted high on the roofline with a controlled gas flame burning beside it"
+    },
+    {
+      "source": 8,
+      "role": "support",
+      "element": "two pink open window frames fixed to the exterior wall as sculptural architectural features"
+    }
+  ],
+  "palette": [
+    "rust brown",
+    "sea blue",
+    "cream",
+    "red",
+    "black",
+    "yellow-orange"
+  ],
+  "mood": "strange, crisp, solitary",
+  "coverSummaries": [
+    {
+      "source": 1,
+      "filename": "Whispering-Jack.jpg",
+      "album": "Whispering Jack",
+      "artist": "John Farnham",
+      "description": "A high-contrast black-and-white close portrait of one man in profile facing his own reflection or a mirror image. The composition is tightly cropped around two near-touching faces, surrounded by dark shadow and a white border.",
+      "signatureMotif": "close profile face meeting its reflection",
+      "medium": "photograph",
+      "people": "one man shown close-up beside his reflection",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.03,
+        0.3,
+        0.97,
+        0.98
+      ],
+      "faceHeight": 0.42,
+      "faceBoxes": [
+        [
+          0.36,
+          0.33,
+          0.82,
+          0.75
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "white",
+        "black",
+        "grey"
+      ]
+    },
+    {
+      "source": 2,
+      "filename": "Laughing-On-Judgement-Day.jpg",
+      "album": "Laughing On Judgement Day",
+      "artist": "Thunder",
+      "description": "A surreal composite scene centered on a towering rusted mechanical face or totem with one glowing circular eye and a huge open mouth filled with teeth and nested rings. To the left is a seashore with a blurred walking figure and a yellow sun-like shape; to the right is an interior wall with faint clockwork imagery, a wall clock, a chair, and tiled floor panels.",
+      "signatureMotif": "towering rusted mechanical face with a huge open mouth",
+      "medium": "photographic composite",
+      "people": "one blurred person walking near the shore",
+      "place": "A surreal split setting combining a beach with sea and sky on one side and a sparse tiled room with patterned wall, chair, and clock on the other.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.03,
+        0.5,
+        0.16,
+        0.76
+      ],
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "rust brown",
+        "blue",
+        "cream",
+        "black",
+        "yellow"
+      ]
+    },
+    {
+      "source": 3,
+      "filename": "Modern-Classics-The-Greatest-Hits.jpg",
+      "album": "Modern Classics The Greatest Hits",
+      "artist": "Paul Weller",
+      "description": "A low-angle colour photograph of one man standing outdoors beneath a deep blue sky with white clouds. He wears a dark floral-patterned jacket and is strongly shadowed, with tall grass or plant stems rising at the lower edges of the frame.",
+      "signatureMotif": "low-angle portrait against a blue sky",
+      "medium": "photograph",
+      "people": "one man standing outdoors in a floral jacket",
+      "place": "An outdoor open area under a bright sky with scattered clouds and tall grasses at the edges.",
+      "moderationRisk": "",
+      "peopleBox": [
+        0.28,
+        0.52,
+        0.72,
+        0.98
+      ],
+      "faceHeight": 0.16,
+      "faceBoxes": [
+        [
+          0.39,
+          0.52,
+          0.61,
+          0.68
+        ]
+      ],
+      "peopleCount": 1,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "deep blue",
+        "white",
+        "black",
+        "brown",
+        "cream"
+      ]
+    },
+    {
+      "source": 4,
+      "filename": "Times-Up.jpg",
+      "album": "Times Up",
+      "artist": "Living Colour",
+      "description": "A dense collage of graphic and photographic elements including a large flame, a spiked statue head resembling a liberty crown, painted masks or carved faces, a small rocket or missile-like object, angular black shapes, and bright cutout panels layered across the image.",
+      "signatureMotif": "large flame over a spiked statue head",
+      "medium": "collage",
+      "people": "none",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "yellow",
+        "orange",
+        "red",
+        "black",
+        "grey"
+      ]
+    },
+    {
+      "source": 5,
+      "filename": "Second-Light.jpg",
+      "album": "Second Light",
+      "artist": "Dreadzone",
+      "description": "A stained-glass style image with a central blue multi-armed dancing figure inside a circular medallion, surrounded by flame-like orange and yellow shapes and green curved forms. The border contains pale blue panes and circular emblems in the corners.",
+      "signatureMotif": "blue dancing figure in a stained-glass medallion",
+      "medium": "illustration",
+      "people": "none",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "blue",
+        "orange",
+        "yellow",
+        "green",
+        "black"
+      ]
+    },
+    {
+      "source": 6,
+      "filename": "Tom-Tom-Club.jpg",
+      "album": "Tom Tom Club",
+      "artist": "Tom Tom Club",
+      "description": "A busy hand-drawn cartoon scene of a pop band performing, with several stylized figures singing, playing keyboard, drums, percussion, and bass. The white background is filled with stars, hearts, musical notes, flying saucers, fish, palm trees, confetti-like marks, and many small doodles in bright colours.",
+      "signatureMotif": "cartoon band performing amid dense doodles",
+      "medium": "illustration",
+      "people": "none",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 5,
+      "palette": [
+        "white",
+        "pink",
+        "yellow",
+        "blue",
+        "green"
+      ]
+    },
+    {
+      "source": 7,
+      "filename": "Together-Alone.jpg",
+      "album": "Together Alone",
+      "artist": "Crowded House",
+      "description": "A handmade-looking assemblage or photographed sculpture of a red car shown side-on against a black background. Inside the windows are mixed figures and objects: a curtain and arm at left, a gold Buddha-like statue in the middle, and a bearded male figure at right with a pair of dice hanging near him.",
+      "signatureMotif": "red car with mixed figures in the windows",
+      "medium": "mixed-media assemblage",
+      "people": "none",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "black",
+        "red",
+        "gold",
+        "blue",
+        "cream"
+      ]
+    },
+    {
+      "source": 8,
+      "filename": "Duke.jpg",
+      "album": "Duke",
+      "artist": "Genesis",
+      "description": "A simple cartoon drawing on a white background showing a headless figure in a loose green suit and yellow shoes, seen from behind, facing a blue rectangular night sky with a small yellow moon. Two pink open window frames stand on either side.",
+      "signatureMotif": "headless figure facing an open window and moon",
+      "medium": "illustration",
+      "people": "none",
+      "place": "",
+      "moderationRisk": "",
+      "peopleBox": null,
+      "faceHeight": null,
+      "faceBoxes": [],
+      "peopleCount": null,
+      "minors": false,
+      "strength": 4,
+      "palette": [
+        "white",
+        "blue",
+        "green",
+        "pink",
+        "yellow"
+      ]
+    }
+  ],
+  "hint": null,
+  "composeBackend": "gpt-image-2-6",
+  "model": "openai/gpt-image-2.6/sunburst/edit",
+  "prompt": "A real coastal turnout shot from a low angle near a parked car, with the sea and pale sky behind a weathered concrete building whose facade resembles a towering rusted mechanical face: one glowing circular porthole eye, a huge open mouth formed by nested metal rings, sparse tiled wall sections, and a lone chair against the wall. In the near foreground, the man from reference image 1 stands beside a red car from reference image 7, close enough for his face to read clearly, turned in the same tight profile pose as his cover and facing his own reflection in the driver's side window so the two near-touching profiles echo the sleeve. Inside the car, hang a small pair of dice near the windshield. Set a circular stained-glass medallion into the wall beside the mechanical mouth, clearly inspired by reference image 5 with a blue dancing figure surrounded by orange and yellow glass. Mount a spiked metal crown-like headpiece along the roofline with a controlled flame burning beside it, nodding to reference image 4. Attach two pink open window frames to the exterior wall as odd architectural features from reference image 8. Photographic realism, crisp editorial location photography, physically plausible textures of rust, salt air, concrete, glass, and painted metal. Strong low-angle layered composition with the car and cast figure in the foreground and the mechanical building rising behind, no symmetry, no other people. Bright overcast coastal daylight, faces fully legible, clean detail, restrained contrast. Palette of rust brown, sea blue, cream, red, black, and yellow-orange, with a surreal but believable seaside mood. Reference map for people (the album images are attached in this numbered order): reference image 1 shows one man shown close-up beside his reflection. Copy each of these faces directly from that numbered reference image - same face, bone structure, hair, expression, and styling - rather than drawing a new person from the description. Nobody from reference images 2, 3 appears in the picture: use those images only for colour, setting, and objects, and add no figures, faces, or silhouettes from them. Hard constraints (override any conflicting source material): Create a single cohesive 16:9 image, not a grid, contact sheet, row of covers, or collage of separate panels. Do not reproduce the album sleeves as framed thumbnails, posters, record covers, or pictures on a screen, monitor, or television. A sleeve's abstract graphics, shapes, patterns, and colours may be painted onto the walls, doors, floor, or objects of the place as part of its decoration, without any lettering. Show no sleeve's faces, heads, or figures as a picture, mural, display, sign, relief, or silhouette anywhere; transform the sleeves' non-text visual motifs into one original composition. Include no readable text or lettering of any kind: no words, letters, numbers, code, glyphs, captions, titles, logos, watermarks, labels, or signage. Feature only adults and avoid gore, wounds, body horror, medical or anatomical imagery, blank or milky eyes, nudity, sexual content, weapons, and hate symbols; reinterpret any sensitive source motif abstractly. When a source includes a person, closely match their visible appearance and likeness to the reference image, preserving recognisable facial features, hair, skin tone, clothing, and styling, and their apparent age: every person is shown as the adult they are on the sleeve, never younger, smoothed, or more boyish or girlish. Keep each reference person in the pose, expression, and gaze the sleeve shows, and keep every identifiable face sharp, lit, unobscured, and in focus: no motion blur, long-exposure smearing, steam, fog, shadow, crowding, or shallow depth of field over a reference person's face. Expose the image cleanly whatever the light: every person's face well lit and readable, shadows that hold detail, and clear colour, with no murky underexposure, crushed blacks, heavy film grain, digital noise, or dust-and-scratches texture. Add no incidental plants: no flowers, potted plants, planters, climbing vines, ivy, hanging foliage, hedges, lawns, flower beds, or greenery framing the edges or carpeting the floor, unless the description above explicitly asks for that plant as part of a source motif or the year treatment. Dress the scene with the materials of the place itself - stone, metal, concrete, wood, fabric, glass, water, equipment - rather than vegetation. Everyone in the picture is photographed in the same place, at the same moment, under the same light as the rest of the scene, in full colour and with the same lens and grain: do not carry over a sleeve's own backdrop, studio lighting, backlit flare, monochrome, colour cast, or print texture onto the person. Each person stands inside the scene at the scale of the space around them, never as an oversized cropped head or bust looming at the edge of the frame over a distant scene, and never washed in red, blue, or other coloured light. Depict each identifiable reference person only once in the entire composition; do not repeat or clone them as another figure, reflection, mirror portrait, poster, billboard, screen, photograph, painting, silhouette, or background face. The only exception is repetition visibly intrinsic to one source cover: keep that repetition within that single source motif and do not echo the person elsewhere. The only people anywhere in the image are the reference people named in the reference map, and of those only the ones whose faces are clearly visible in their reference. Add no one else: no extra band members, musicians, staff, bystanders, passers-by, crowd, audience, background or out-of-focus figures, and no hands, arms, legs, or shadows of unseen people. Never complete a person who is hidden, cropped, turned away, blurred, or only partly visible in a reference with an invented face or body - leave that person out entirely. Photograph the reference people from roughly eye level, at three-quarter length or closer, in the near or middle ground, so each of their faces is large, sharp, and clearly recognisable in the final frame: never from directly above, and never as small distant figures.",
+  "inputs": [
+    "Whispering-Jack.jpg",
+    "Laughing-On-Judgement-Day.jpg",
+    "Modern-Classics-The-Greatest-Hits.jpg",
+    "Times-Up.jpg",
+    "Second-Light.jpg",
+    "Tom-Tom-Club.jpg",
+    "Together-Alone.jpg",
+    "Duke.jpg"
+  ]
+}
